@@ -112,22 +112,24 @@ public class ExportAsImageSVGTest extends AbstractExportAsImageTest {
      * @throws Exception
      */
     public void testExportAsSVGNoAutoScaling() throws Exception {
-        DiagramExportResult exportResult = exportImage(getRepresentation(REPRESENTATION_NODE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.NO_SCALING);
-        checkResults(exportResult, 21, 7, 0.0);
-        exportResult = exportImage(getRepresentation(REPRESENTATION_NODE_RESIZE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.NO_SCALING);
-        checkResults(exportResult, 21, 19, 0.0);
-        exportResult = exportImage(getRepresentation(REPRESENTATION_CONTAINER), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.NO_SCALING);
-        checkResults(exportResult, 21, 7, 0.0);
-        exportResult = exportImage(getRepresentation(REPRESENTATION_CONTAINER_RESIZE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.NO_SCALING);
-        checkResults(exportResult, 21, 21, 0.0);
-        exportResult = exportImage(getRepresentation(REPRESENTATION_CONTAINER_IMAGE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.NO_SCALING);
-        checkResults(exportResult, 22, 8, 0.0);
-        exportResult = exportImage(getRepresentation(REPRESENTATION_CONTAINER_PARALLELOGRAM), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.NO_SCALING);
-        checkResults(exportResult, 21, 7, 0.0);
-        exportResult = exportImage(getRepresentation(REPRESENTATION_BORDERED_NODE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.NO_SCALING);
-        checkResults(exportResult, 15, 5, 0.0);
-        exportResult = exportImage(getRepresentation(REPRESENTATION_BORDERED_NODE_RESIZE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.NO_SCALING);
-        checkResults(exportResult, 15, 15, 0.0);
+        if (!TestsUtil.shouldSkipLongTests()) {
+            DiagramExportResult exportResult = exportImage(getRepresentation(REPRESENTATION_NODE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.NO_SCALING);
+            checkResults(exportResult, 21, 7, 0.0);
+            exportResult = exportImage(getRepresentation(REPRESENTATION_NODE_RESIZE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.NO_SCALING);
+            checkResults(exportResult, 21, 19, 0.0);
+            exportResult = exportImage(getRepresentation(REPRESENTATION_CONTAINER), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.NO_SCALING);
+            checkResults(exportResult, 21, 7, 0.0);
+            exportResult = exportImage(getRepresentation(REPRESENTATION_CONTAINER_RESIZE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.NO_SCALING);
+            checkResults(exportResult, 21, 21, 0.0);
+            exportResult = exportImage(getRepresentation(REPRESENTATION_CONTAINER_IMAGE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.NO_SCALING);
+            checkResults(exportResult, 22, 8, 0.0);
+            exportResult = exportImage(getRepresentation(REPRESENTATION_CONTAINER_PARALLELOGRAM), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.NO_SCALING);
+            checkResults(exportResult, 21, 7, 0.0);
+            exportResult = exportImage(getRepresentation(REPRESENTATION_BORDERED_NODE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.NO_SCALING);
+            checkResults(exportResult, 15, 5, 0.0);
+            exportResult = exportImage(getRepresentation(REPRESENTATION_BORDERED_NODE_RESIZE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.NO_SCALING);
+            checkResults(exportResult, 15, 15, 0.0);
+        }
     }
 
     /**
@@ -137,22 +139,24 @@ public class ExportAsImageSVGTest extends AbstractExportAsImageTest {
      * @throws Exception
      */
     public void testExportAsSVGAutoScaling() throws Exception {
-        DiagramExportResult exportResult = exportImage(getRepresentation(REPRESENTATION_NODE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.AUTO_SCALING);
-        checkResults(exportResult, 21, 7, 0.0);
-        exportResult = exportImage(getRepresentation(REPRESENTATION_NODE_RESIZE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.AUTO_SCALING);
-        checkResults(exportResult, 21, 19, 0.0);
-        exportResult = exportImage(getRepresentation(REPRESENTATION_CONTAINER), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.AUTO_SCALING);
-        checkResults(exportResult, 21, 7, 0.0);
-        exportResult = exportImage(getRepresentation(REPRESENTATION_CONTAINER_RESIZE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.AUTO_SCALING);
-        checkResults(exportResult, 21, 21, 0.0);
-        exportResult = exportImage(getRepresentation(REPRESENTATION_CONTAINER_IMAGE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.AUTO_SCALING);
-        checkResults(exportResult, 22, 8, 0.0);
-        exportResult = exportImage(getRepresentation(REPRESENTATION_CONTAINER_PARALLELOGRAM), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.AUTO_SCALING);
-        checkResults(exportResult, 21, 7, 0.0);
-        exportResult = exportImage(getRepresentation(REPRESENTATION_BORDERED_NODE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.AUTO_SCALING);
-        checkResults(exportResult, 15, 5, 0.0);
-        exportResult = exportImage(getRepresentation(REPRESENTATION_BORDERED_NODE_RESIZE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.AUTO_SCALING);
-        checkResults(exportResult, 15, 15, 0.0);
+        if (!TestsUtil.shouldSkipLongTests()) {
+            DiagramExportResult exportResult = exportImage(getRepresentation(REPRESENTATION_NODE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.AUTO_SCALING);
+            checkResults(exportResult, 21, 7, 0.0);
+            exportResult = exportImage(getRepresentation(REPRESENTATION_NODE_RESIZE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.AUTO_SCALING);
+            checkResults(exportResult, 21, 19, 0.0);
+            exportResult = exportImage(getRepresentation(REPRESENTATION_CONTAINER), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.AUTO_SCALING);
+            checkResults(exportResult, 21, 7, 0.0);
+            exportResult = exportImage(getRepresentation(REPRESENTATION_CONTAINER_RESIZE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.AUTO_SCALING);
+            checkResults(exportResult, 21, 21, 0.0);
+            exportResult = exportImage(getRepresentation(REPRESENTATION_CONTAINER_IMAGE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.AUTO_SCALING);
+            checkResults(exportResult, 22, 8, 0.0);
+            exportResult = exportImage(getRepresentation(REPRESENTATION_CONTAINER_PARALLELOGRAM), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.AUTO_SCALING);
+            checkResults(exportResult, 21, 7, 0.0);
+            exportResult = exportImage(getRepresentation(REPRESENTATION_BORDERED_NODE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.AUTO_SCALING);
+            checkResults(exportResult, 15, 5, 0.0);
+            exportResult = exportImage(getRepresentation(REPRESENTATION_BORDERED_NODE_RESIZE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.AUTO_SCALING);
+            checkResults(exportResult, 15, 15, 0.0);
+        }
     }
 
     /**
@@ -162,22 +166,24 @@ public class ExportAsImageSVGTest extends AbstractExportAsImageTest {
      * @throws Exception
      */
     public void testExportAsSVGAutoScalingIfLarger() throws Exception {
-        DiagramExportResult exportResult = exportImage(getRepresentation(REPRESENTATION_NODE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.AUTO_SCALING_IF_LARGER);
-        checkResults(exportResult, 21, 7, 0.0);
-        exportResult = exportImage(getRepresentation(REPRESENTATION_NODE_RESIZE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.AUTO_SCALING_IF_LARGER);
-        checkResults(exportResult, 21, 19, 0.0);
-        exportResult = exportImage(getRepresentation(REPRESENTATION_CONTAINER), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.AUTO_SCALING_IF_LARGER);
-        checkResults(exportResult, 21, 7, 0.0);
-        exportResult = exportImage(getRepresentation(REPRESENTATION_CONTAINER_RESIZE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.AUTO_SCALING_IF_LARGER);
-        checkResults(exportResult, 21, 21, 0.0);
-        exportResult = exportImage(getRepresentation(REPRESENTATION_CONTAINER_IMAGE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.AUTO_SCALING_IF_LARGER);
-        checkResults(exportResult, 22, 8, 0.0);
-        exportResult = exportImage(getRepresentation(REPRESENTATION_CONTAINER_PARALLELOGRAM), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.AUTO_SCALING_IF_LARGER);
-        checkResults(exportResult, 21, 7, 0.0);
-        exportResult = exportImage(getRepresentation(REPRESENTATION_BORDERED_NODE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.AUTO_SCALING_IF_LARGER);
-        checkResults(exportResult, 15, 5, 0.0);
-        exportResult = exportImage(getRepresentation(REPRESENTATION_BORDERED_NODE_RESIZE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.AUTO_SCALING_IF_LARGER);
-        checkResults(exportResult, 15, 15, 0.0);
+        if (!TestsUtil.shouldSkipLongTests()) {
+            DiagramExportResult exportResult = exportImage(getRepresentation(REPRESENTATION_NODE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.AUTO_SCALING_IF_LARGER);
+            checkResults(exportResult, 21, 7, 0.0);
+            exportResult = exportImage(getRepresentation(REPRESENTATION_NODE_RESIZE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.AUTO_SCALING_IF_LARGER);
+            checkResults(exportResult, 21, 19, 0.0);
+            exportResult = exportImage(getRepresentation(REPRESENTATION_CONTAINER), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.AUTO_SCALING_IF_LARGER);
+            checkResults(exportResult, 21, 7, 0.0);
+            exportResult = exportImage(getRepresentation(REPRESENTATION_CONTAINER_RESIZE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.AUTO_SCALING_IF_LARGER);
+            checkResults(exportResult, 21, 21, 0.0);
+            exportResult = exportImage(getRepresentation(REPRESENTATION_CONTAINER_IMAGE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.AUTO_SCALING_IF_LARGER);
+            checkResults(exportResult, 22, 8, 0.0);
+            exportResult = exportImage(getRepresentation(REPRESENTATION_CONTAINER_PARALLELOGRAM), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.AUTO_SCALING_IF_LARGER);
+            checkResults(exportResult, 21, 7, 0.0);
+            exportResult = exportImage(getRepresentation(REPRESENTATION_BORDERED_NODE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.AUTO_SCALING_IF_LARGER);
+            checkResults(exportResult, 15, 5, 0.0);
+            exportResult = exportImage(getRepresentation(REPRESENTATION_BORDERED_NODE_RESIZE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.AUTO_SCALING_IF_LARGER);
+            checkResults(exportResult, 15, 15, 0.0);
+        }
     }
 
     /**
@@ -188,12 +194,14 @@ public class ExportAsImageSVGTest extends AbstractExportAsImageTest {
      * @throws Exception
      */
     public void testExportAsSVGWithTraceability() throws Exception {
-        DiagramExportResult exportResult = exportImage(getRepresentation(REPRESENTATION_NODE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.NO_SCALING, true);
-        checkResults(exportResult, 21, 7, 0.0);
-        checkTraceability(exportResult.getExportedFiles(), true);
-        exportResult = exportImage(getRepresentation(REPRESENTATION_CONTAINER), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.NO_SCALING, true);
-        checkResults(exportResult, 21, 7, 0.0);
-        checkTraceability(exportResult.getExportedFiles(), true);
+        if (!TestsUtil.shouldSkipLongTests()) {
+            DiagramExportResult exportResult = exportImage(getRepresentation(REPRESENTATION_NODE), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.NO_SCALING, true);
+            checkResults(exportResult, 21, 7, 0.0);
+            checkTraceability(exportResult.getExportedFiles(), true);
+            exportResult = exportImage(getRepresentation(REPRESENTATION_CONTAINER), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.NO_SCALING, true);
+            checkResults(exportResult, 21, 7, 0.0);
+            checkTraceability(exportResult.getExportedFiles(), true);
+        }
     }
 
     /**
