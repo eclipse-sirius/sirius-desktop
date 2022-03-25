@@ -51,6 +51,16 @@ public class ImageManagerForWorkspaceResource implements ImageManager {
     protected static final CharSequence SLASH = "/"; //$NON-NLS-1$
 
     /**
+     * HTTP protocol.
+     */
+    protected static final String HTTP = "http"; //$NON-NLS-1$
+
+    /**
+     * HTTPS protocol.
+     */
+    protected static final String HTTPS = "https"; //$NON-NLS-1$
+
+    /**
      * QUOTE.
      */
     private static final CharSequence QUOTE = "\""; //$NON-NLS-1$
@@ -134,10 +144,12 @@ public class ImageManagerForWorkspaceResource implements ImageManager {
 
         while (matcher.find()) {
             String originalPath = matcher.group(1);
-            // The path is made relative to the current project
-            String workspaceRelativePath = "../" + originalPath; //$NON-NLS-1$
-            htmlToOriginalImagePath.put(workspaceRelativePath, matcher.group(1));
-            returnedString = replaceString(returnedString, originalPath, workspaceRelativePath);
+            if (!originalPath.startsWith(HTTP) && !originalPath.startsWith(HTTPS)) {
+                // The path is made relative to the current project
+                String workspaceRelativePath = "../" + originalPath; //$NON-NLS-1$
+                htmlToOriginalImagePath.put(workspaceRelativePath, matcher.group(1));
+                returnedString = replaceString(returnedString, originalPath, workspaceRelativePath);
+            }
         }
 
         return returnedString;

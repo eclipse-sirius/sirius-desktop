@@ -68,7 +68,7 @@ public class Base64ImageHelper {
         String newStringValue = strValue;
         // change the attribute value to replace with a path to the created file.
         for (String fileName : pathToImages.values()) {
-            newStringValue = newStringValue.replaceFirst(BASE64_IMAGE_PATTERN, "\"" + fileName + "\""); //$NON-NLS-1$ //$NON-NLS-2$
+            newStringValue = newStringValue.replaceAll(BASE64_IMAGE_PATTERN, "\"" + fileName + "\""); //$NON-NLS-1$ //$NON-NLS-2$
         }
         if (!Objects.equals(newStringValue, strValue)) {
             eObject.eSet(attr, newStringValue);
