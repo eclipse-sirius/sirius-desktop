@@ -108,7 +108,7 @@ public class SessionLabelProvider extends AdapterFactoryLabelProvider {
             String fileName = resource.getURI().lastSegment();
             ImageDescriptor imageDescriptor = PlatformUI.getWorkbench().getEditorRegistry().getImageDescriptor(fileName);
             if (imageDescriptor != null) {
-                image = imageDescriptor.createImage();
+                image = SiriusEditPlugin.getPlugin().getImage(imageDescriptor);
             }
         } else {
             image = super.getImage(object);
