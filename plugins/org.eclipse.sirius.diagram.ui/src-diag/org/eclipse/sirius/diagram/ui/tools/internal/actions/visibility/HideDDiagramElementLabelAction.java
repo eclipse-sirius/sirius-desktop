@@ -219,6 +219,7 @@ public class HideDDiagramElementLabelAction extends Action implements IObjectAct
                         Set<EObject> partsToSemantic = partsToSemantic(selectionList);
                         runHideLabelSelectionCommand(root, diagramEditor, partsToSemantic, collectLabelsToHideVisualIds(partsToSemantic, selectionList));
                     } else {
+                        semanticToLabelsVisualIDToHideMap.clear();
                         runHideLabelCommand(root, diagramEditor, partsToSemantic(selectionList));
                     }
                 } else if (nextSelected instanceof DDiagramElement || nextSelected instanceof AbstractDDiagramElementLabelItemProvider) {
