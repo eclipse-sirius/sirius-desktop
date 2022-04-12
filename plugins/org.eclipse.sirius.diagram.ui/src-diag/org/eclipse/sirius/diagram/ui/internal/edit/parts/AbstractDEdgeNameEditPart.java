@@ -107,6 +107,9 @@ public class AbstractDEdgeNameEditPart extends AbstractGeneratedDiagramNameEditP
             if (NotationPackage.eINSTANCE.getNode_LayoutConstraint().equals(feature)) {
                 refreshBounds();
             }
+            if (DiagramPackage.eINSTANCE.getDDiagram_IsInShowingMode() == feature) {
+                refresh();
+            }
             super.handleNotificationEvent(event);
         }
     }
