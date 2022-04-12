@@ -147,20 +147,20 @@ public class ImagePathConstraint extends AbstractConstraint {
                 if (stringObj instanceof String) {
                     String htmlText = (String) stringObj;
 
-                    statuses.addAll(checkAbsolutePathInString(context, eObject, htmlText, attr, imagePathTarget));
-                    statuses.addAll(checkRelativePathInString(context, eObject, htmlText, attr, imagePathTarget));
+                    List<String> alreadyCheckedPath = new ArrayList<>();
+                    statuses.addAll(checkAbsolutePathInString(context, eObject, htmlText, attr, imagePathTarget, alreadyCheckedPath));
+                    statuses.addAll(checkRelativePathInString(context, eObject, htmlText, attr, imagePathTarget, alreadyCheckedPath));
                 }
             }
         }
         return statuses;
     }
 
-    private Collection<IStatus> checkRelativePathInString(IValidationContext ctx, EObject eObject, String strValue, EAttribute attr, ImagePathTarget imagePathTarget) {
+    private Collection<IStatus> checkRelativePathInString(IValidationContext ctx, EObject eObject, String strValue, EAttribute attr, ImagePathTarget imagePathTarget, List<String> alreadyCheckedPath) {
         Collection<IStatus> statuses = new ArrayList<>();
         Pattern pattern = Pattern.compile(ImageManager.HTML_IMAGE_PATH_PATTERN);
         Matcher matcher = pattern.matcher(strValue);
 
-        List<String> alreadyCheckedPath = new ArrayList<>();
         while (matcher.find()) {
             if (matcher.groupCount() == 1) {
                 String path = matcher.group(1);
@@ -178,18 +178,22 @@ public class ImagePathConstraint extends AbstractConstraint {
         return statuses;
     }
 
-    private Collection<IStatus> checkAbsolutePathInString(IValidationContext ctx, EObject eObject, String strValue, EAttribute attr, ImagePathTarget imagePathTarget) {
+    private Collection<IStatus> checkAbsolutePathInString(IValidationContext ctx, EObject eObject, String strValue, EAttribute attr, ImagePathTarget imagePathTarget, List<String> alreadyCheckedPath) {
         Collection<IStatus> statuses = new ArrayList<>();
         Pattern pattern = Pattern.compile(HTML_IMAGE_ABSOLUTE_PATH_PATTERN);
         Matcher matcher = pattern.matcher(strValue);
 
         while (matcher.find()) {
             if (matcher.groupCount() == 1) {
-                String message = MessageFormat.format(Messages.ImagePathConstraint_absolutePathError, matcher.group(1), new EditingDomainServices().getLabelProviderText(eObject));
-                ImagePathWrappingStatus imagePathWrappingStatus = new ImagePathWrappingStatus((ConstraintStatus) ctx.createFailureStatus(ctx, eObject, ctx.getResultLocus(), MESSAGE_ITSELF, message), // $NON-NLS-1$
-                        imagePathTarget, matcher.group(1));
-                imagePathWrappingStatus.setEAttribute(attr);
-                statuses.add(imagePathWrappingStatus);
+                String path = matcher.group(1);
+                if (!alreadyCheckedPath.contains(path)) {
+                    alreadyCheckedPath.add(path);
+                    String message = MessageFormat.format(Messages.ImagePathConstraint_absolutePathError, path, new EditingDomainServices().getLabelProviderText(eObject));
+                    ImagePathWrappingStatus imagePathWrappingStatus = new ImagePathWrappingStatus(ConstraintStatus.createStatus(ctx, eObject, ctx.getResultLocus(), MESSAGE_ITSELF, message), // $NON-NLS-1$
+                            imagePathTarget, path);
+                    imagePathWrappingStatus.setEAttribute(attr);
+                    statuses.add(imagePathWrappingStatus);
+                }
             }
         }
         return statuses;
