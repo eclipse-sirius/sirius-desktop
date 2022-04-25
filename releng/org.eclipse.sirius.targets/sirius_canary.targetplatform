@@ -21,7 +21,7 @@ location Eclipse-Integration "https://download.eclipse.org/eclipse/updates/I-bui
     org.eclipse.equinox.p2.extras.feature.feature.group lazy
 }
 
-location Orbit-latest-I "https://download.eclipse.org/tools/orbit/downloads/latest-I" {
+location Orbit-202203 "https://download.eclipse.org/tools/orbit/downloads/drops/R20220302172233/repository/" {
     org.apache.log4j lazy
     org.easymock lazy
     org.hamcrest.library lazy
