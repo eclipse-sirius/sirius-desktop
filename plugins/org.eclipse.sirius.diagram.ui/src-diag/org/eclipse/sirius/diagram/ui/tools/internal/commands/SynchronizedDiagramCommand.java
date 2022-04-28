@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2015, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
+ *    Vincent LORENZO (CEA LIST) - vincent.lorenzo@cea.fr - Bug 579780
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.commands;
 
@@ -54,8 +55,14 @@ public class SynchronizedDiagramCommand extends AbstractActionWrapperHandler imp
 
         final IWorkbenchPage activePage = window.getActivePage();
         final IEditorPart activeEditor = activePage.getActiveEditor();
+        DDiagramEditor ddiagramEditor = null;
         if (activeEditor instanceof DDiagramEditor) {
-            final DDiagramEditor ddiagramEditor = (DDiagramEditor) activeEditor;
+            ddiagramEditor = (DDiagramEditor) activeEditor;
+        } else if (activeEditor != null) {
+        	//required when the DDiagramEditor is embedded in a multipage editor
+            ddiagramEditor = activeEditor.getAdapter(DDiagramEditor.class);
+        }
+        if (ddiagramEditor != null) {
             if (ddiagramEditor.getRepresentation() instanceof DDiagram) {
                 final DDiagram diagram = (DDiagram) ddiagramEditor.getRepresentation();
                 element.setChecked(!diagram.isSynchronized());
