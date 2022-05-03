@@ -102,7 +102,7 @@ public class FilterListener implements ModelChangeTrigger {
     private Command getSortFiltersCommand(Collection<Notification> notifications) {
         RecordingCommand recordingCommand = null;
         for (Notification notification : notifications) {
-            if (notification.getNotifier() instanceof DDiagram && notification.getFeature().equals(DiagramPackage.eINSTANCE.getDDiagram_ActivatedFilters())
+            if (notification.getNotifier() == dDiagram && notification.getFeature().equals(DiagramPackage.eINSTANCE.getDDiagram_ActivatedFilters())
                     && (Notification.ADD == notification.getEventType() || Notification.ADD_MANY == notification.getEventType())) {
                 DDiagram diagram = (DDiagram) notification.getNotifier();
                 List<FilterDescription> sortedFilters = FilterService.sortFilters(diagram.getActivatedFilters());
@@ -140,7 +140,7 @@ public class FilterListener implements ModelChangeTrigger {
     }
 
     /**
-     * A command to update the activated filters. 
+     * A command to update the activated filters.
      * 
      * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
      *
