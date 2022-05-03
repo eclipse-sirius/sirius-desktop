@@ -18,6 +18,7 @@ import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.sirius.common.tools.api.query.NotificationQuery;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.GraphicalFilter;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 import com.google.common.base.Predicate;
 
@@ -31,6 +32,7 @@ public class FilterListenerScope implements Predicate<Notification> {
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean apply(Notification input) {
         boolean applies = false;
 
@@ -38,6 +40,9 @@ public class FilterListenerScope implements Predicate<Notification> {
         if (!input.isTouch() && notifier instanceof EObject) {
             // Do not react to GMF changes.
             applies = !NotationPackage.eINSTANCE.equals(((EObject) notifier).eClass().getEPackage());
+
+            // Do not react to changeId feature changes.
+            applies = applies && !ViewpointPackage.eINSTANCE.getDRepresentationDescriptor_ChangeId().equals(input.getFeature());
 
             // Do not react to internal storage on filter application nor to
             // their modifications.
