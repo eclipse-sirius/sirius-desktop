@@ -44,6 +44,9 @@ public class FilterListenerScope implements Predicate<Notification> {
             // Do not react to changeId feature changes.
             applies = applies && !ViewpointPackage.eINSTANCE.getDRepresentationDescriptor_ChangeId().equals(input.getFeature());
 
+            // Do not react to arrangeConstraints feature changes.
+            applies = applies && !DiagramPackage.eINSTANCE.getAbstractDNode_ArrangeConstraints().equals(input.getFeature());
+
             // Do not react to internal storage on filter application nor to
             // their modifications.
             applies = applies && !(notifier instanceof GraphicalFilter) && !(DiagramPackage.eINSTANCE.getDDiagramElement_GraphicalFilters().equals(input.getFeature()));
