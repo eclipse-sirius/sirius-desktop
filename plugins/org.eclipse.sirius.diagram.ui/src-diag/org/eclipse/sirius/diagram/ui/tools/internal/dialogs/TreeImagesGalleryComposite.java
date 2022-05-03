@@ -432,7 +432,7 @@ public class TreeImagesGalleryComposite extends FilteredTree {
                 if (o1 instanceof Comparable && o2 instanceof Comparable) {
                     return ((Comparable<Object>) o1).compareTo(o2);
                 }
-                return o1.toString().compareTo(o2.toString());
+                return String.CASE_INSENSITIVE_ORDER.compare(o1.toString(), o2.toString());
             }
         };
         Set<Object> imagesToAdd = new TreeSet<>(comparator);

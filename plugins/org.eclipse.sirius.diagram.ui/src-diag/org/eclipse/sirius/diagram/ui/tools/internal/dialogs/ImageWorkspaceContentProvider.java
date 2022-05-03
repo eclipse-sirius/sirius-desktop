@@ -13,7 +13,10 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.dialogs;
 
 import java.io.File;
+import java.util.Comparator;
 import java.util.Optional;
+import java.util.Set;
+import java.util.TreeSet;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
@@ -28,6 +31,26 @@ import org.eclipse.ui.model.WorkbenchContentProvider;
  *
  */
 public class ImageWorkspaceContentProvider extends WorkbenchContentProvider implements ITreeImagesContentProvider {
+
+    @Override
+    public Object[] getChildren(Object element) {
+        Object[] superResult = super.getChildren(element);
+        Comparator<Object> comparator = new Comparator<Object>() {
+            @SuppressWarnings("unchecked")
+            @Override
+            public int compare(Object o1, Object o2) {
+                if (o1 instanceof Comparable && o2 instanceof Comparable) {
+                    return ((Comparable<Object>) o1).compareTo(o2);
+                }
+                return String.CASE_INSENSITIVE_ORDER.compare(o1.toString(), o2.toString());
+            }
+        };
+        Set<Object> result = new TreeSet<>(comparator);
+        for (Object o : superResult) {
+            result.add(o);
+        }
+        return result.toArray();
+    }
 
     @Override
     public Optional<File> getImageFile(Object element) {
