@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="sirius_headless_photon" sequenceNumber="1645629057">
+<target name="sirius_headless_photon" sequenceNumber="1651595017">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.apache.log4j" version="0.0.0"/>
@@ -18,7 +18,7 @@
       <unit id="org.apache.batik.codec" version="1.14.0.v20210324-0332"/>
       <unit id="org.apache.batik.bridge" version="1.14.0.v20210324-0332"/>
       <unit id="org.apache.batik.script" version="1.14.0.v20210324-0332"/>
-      <repository id="Orbit-202203" location="https://download.eclipse.org/tools/orbit/downloads/drops/S20220215213605/repository/"/>
+      <repository id="Orbit-202203" location="https://download.eclipse.org/tools/orbit/downloads/drops/R20220302172233/repository/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.elk.sdk.feature.feature.group" version="0.0.0"/>
