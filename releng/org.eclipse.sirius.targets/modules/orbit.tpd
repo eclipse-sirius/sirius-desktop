@@ -11,8 +11,4 @@ location Orbit-202203 "https://download.eclipse.org/tools/orbit/downloads/drops/
     ch.qos.logback.core [1.0.7,1.0.8)
     org.apache.xalan 2.7.1
     org.antlr.runtime [4.7.1,4.7.2)
-    org.apache.batik.ext [1.14.0,1.14.1)
-    org.apache.batik.codec [1.14.0,1.14.1)
-    org.apache.batik.bridge [1.14.0,1.14.1)
-    org.apache.batik.script [1.14.0,1.14.1)
 }

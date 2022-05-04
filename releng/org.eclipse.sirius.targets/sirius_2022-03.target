@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="sirius_2022-03" sequenceNumber="1648840859">
+<target name="sirius_2022-03" sequenceNumber="1651653615">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.apache.log4j" version="0.0.0"/>
@@ -14,10 +14,6 @@
       <unit id="ch.qos.logback.core" version="1.0.7.v20121108-1250"/>
       <unit id="org.apache.xalan" version="2.7.2.v20201124-1837"/>
       <unit id="org.antlr.runtime" version="4.7.1.v20181120-0808"/>
-      <unit id="org.apache.batik.ext" version="1.14.0.v20210324-0332"/>
-      <unit id="org.apache.batik.codec" version="1.14.0.v20210324-0332"/>
-      <unit id="org.apache.batik.bridge" version="1.14.0.v20210324-0332"/>
-      <unit id="org.apache.batik.script" version="1.14.0.v20210324-0332"/>
       <repository id="Orbit-202203" location="https://download.eclipse.org/tools/orbit/downloads/drops/R20220302172233/repository/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
@@ -71,7 +67,7 @@
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.gmf.runtime.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.gmf.runtime.thirdparty.feature.group" version="0.0.0"/>
-      <repository id="GMF-Runtime-1.14.1" location="https://download.eclipse.org/modeling/gmp/gmf-runtime/updates/releases/R202202190902/"/>
+      <repository id="GMF-Runtime-1.14.2" location="https://download.eclipse.org/modeling/gmp/gmf-runtime/updates/releases/R202204130739"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.sirius.common.interpreter" version="0.0.0"/>
