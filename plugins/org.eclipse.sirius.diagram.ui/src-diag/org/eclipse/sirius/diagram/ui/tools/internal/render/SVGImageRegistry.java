@@ -13,10 +13,12 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.render;
 
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.UUID;
 
 import org.apache.batik.anim.dom.SVGDOMImplementation;
@@ -46,6 +48,11 @@ public final class SVGImageRegistry {
      * Link symbol.
      */
     private static final String LINK_SYMBOL = "#"; //$NON-NLS-1$
+
+    /**
+     * The prefix used for new ids.
+     */
+    private static final String NEW_ID_PREFIX = "_"; //$NON-NLS-1$
 
     /**
      * Register a UUID for each image URL.
@@ -194,7 +201,7 @@ public final class SVGImageRegistry {
         Document copiedDocument = DOMUtilities.deepCloneDocument(doc, impl);
 
         // update all ids and their references in the document.
-        Map<String, String> ids = new HashMap<>();
+        Map<String, String> ids = new TreeMap<>(Comparator.reverseOrder());
         updateIDs(copiedDocument.getDocumentElement(), ids);
         updateLinks(copiedDocument.getDocumentElement(), ids);
 
@@ -265,18 +272,28 @@ public final class SVGImageRegistry {
                 String nodeValue = item.getNodeValue();
                 if (!SVGConstants.SVG_ID_ATTRIBUTE.equals(item.getNodeName()) && nodeValue != null && !nodeValue.isEmpty()) {
                     ids.forEach((k, v) -> {
-                        if (nodeValue.contains(LINK_SYMBOL + k)) {
+                        String currentNodeValue = item.getNodeValue();
+                        if (currentNodeValue.contains(LINK_SYMBOL + k)) {
                             String newId = ids.get(k);
-                            String newValue = nodeValue.replaceAll(LINK_SYMBOL + k, LINK_SYMBOL + newId);
+                            /*
+                             * NEW_ID_PREFIX of newId on ensures that a given id is replaced only once. Otherwise if two
+                             * ids begin by the same characters they can either be replaced twice or replaced by the non
+                             * corresponding newID.
+                             */
+                            /*
+                             * ids is a TreeMap with reverse ordering that ensure that longer ids are replaced before
+                             * shorter For example if there are two ids, id1 and id11, we must not replace id1 character
+                             * of the id11 id by newid1. That's why id11 must be managed first so that #id11 will be
+                             * replaced by #_newId11
+                             */
+                            String newValue = currentNodeValue.replaceAll(LINK_SYMBOL + k, LINK_SYMBOL + newId);
                             item.setNodeValue(newValue);
                         }
                     });
 
                 }
-
             }
         }
-
     }
 
     /**
@@ -308,7 +325,7 @@ public final class SVGImageRegistry {
             Node idItem = attr.getNamedItem(SVGConstants.SVG_ID_ATTRIBUTE);
             if (idItem != null) {
                 String idValue = idItem.getNodeValue();
-                String newValue = idValue + "_" + UUID.randomUUID(); //$NON-NLS-1$
+                String newValue = NEW_ID_PREFIX + idValue + "_" + UUID.randomUUID(); //$NON-NLS-1$
                 ids.put(idValue, newValue);
                 idItem.setNodeValue(newValue);
             }
