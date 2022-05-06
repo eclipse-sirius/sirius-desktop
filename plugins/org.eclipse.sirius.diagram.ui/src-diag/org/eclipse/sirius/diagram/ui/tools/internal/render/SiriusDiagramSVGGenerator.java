@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2004, 2020 IBM Corporation and others.
+ * Copyright (c) 2004, 2022 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -182,6 +182,7 @@ public class SiriusDiagramSVGGenerator extends DiagramGenerator {
      * org.eclipse.gmf.runtime.diagram.ui.render.clipboard.DiagramGenerator.createSWTImageDescriptorForParts(List,
      * Rectangle) to override the RenderedMapModeGraphics by the Sirius one.
      */
+    @Override
     public ImageDescriptor createSWTImageDescriptorForParts(List editparts, org.eclipse.swt.graphics.Rectangle sourceRect) {
 
         // initialize imageDesc to the error icon
@@ -191,6 +192,7 @@ public class SiriusDiagramSVGGenerator extends DiagramGenerator {
              * (non-Javadoc)
              * @see org.eclipse.jface.resource.ImageDescriptor#getImageData()
              */
+            @Override
             public ImageData getImageData() {
                 return SharedImages.get(SharedImages.IMG_ERROR).getImageData();
             }
@@ -355,7 +357,7 @@ public class SiriusDiagramSVGGenerator extends DiagramGenerator {
      * @return true if embedded SVG must be enabled or false to have the current behavior.
      */
     public static boolean isEmbeddedSVGinSVGExportEnabled() {
-        return Boolean.valueOf(System.getProperty(ENABLE_EMBEDDED_SVG_IN_SVG_EXPORT, "false")); //$NON-NLS-1$
+        return Boolean.valueOf(System.getProperty(ENABLE_EMBEDDED_SVG_IN_SVG_EXPORT, "true")); //$NON-NLS-1$
     }
 
 }
