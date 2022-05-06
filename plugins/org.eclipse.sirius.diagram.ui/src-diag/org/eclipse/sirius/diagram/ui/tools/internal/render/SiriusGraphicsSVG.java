@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2004, 2016, 2021 IBM Corporation and others.
+ * Copyright (c) 2004, 2022 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -146,6 +146,13 @@ public class SiriusGraphicsSVG extends SiriusGraphicsToGraphics2DAdaptor impleme
         public void drawSVGReference(String uri, int x, int y, int width, int height) {
             Element useElement = getDOMFactory().createElementNS(SVG_NAMESPACE_URI, SVGConstants.SVG_USE_TAG);
             UUID uuid = SVGImageRegistry.registerUUID(uri);
+
+            // Ignore the currentState of the Graphics by setting default attributes
+            // These attributes can be overloaded if they are defined in the embedded svg
+            useElement.setAttributeNS(null, SVG_FILL_ATTRIBUTE, SVGConstants.CSS_BLACK_VALUE);
+            useElement.setAttributeNS(null, SVG_STROKE_ATTRIBUTE, SVGConstants.CSS_BLACK_VALUE);
+            useElement.setAttributeNS(null, SVG_STROKE_WIDTH_ATTRIBUTE, "0"); //$NON-NLS-1$
+
             useElement.setAttributeNS(null, SVG_X_ATTRIBUTE, getGeneratorContext().doubleString(x));
             useElement.setAttributeNS(null, SVG_Y_ATTRIBUTE, getGeneratorContext().doubleString(y));
             useElement.setAttributeNS(null, SVG_WIDTH_ATTRIBUTE, getGeneratorContext().doubleString(width));
