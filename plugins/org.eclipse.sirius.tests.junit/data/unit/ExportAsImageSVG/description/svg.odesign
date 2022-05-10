@@ -258,5 +258,15 @@
         </containerMappings>
       </defaultLayer>
     </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="SVGImages_Node_ForAttributesTest" domainClass="EPackage" enablePopupBars="true">
+      <defaultLayer name="Default">
+        <containerMappings name="EClass_Container_WorkspaceImage" semanticCandidatesExpression="feature:eAllContents" domainClass="EClass">
+          <style xsi:type="style:WorkspaceImageDescription" labelSize="12" sizeComputationExpression="10" workspacePath="/DesignerTestProject/images/Capability.svg">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
   </ownedViewpoints>
 </description:Group>

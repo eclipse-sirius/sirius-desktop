@@ -45,11 +45,7 @@ public class ExportAsImageSVGTest extends AbstractExportAsImageTest {
 
     private static final String SEMANTIC_MODEL_RELATIVE_PATH = DATA_FOLFER_TEST + SEMANTIC_MODEL_FILE_NAME;
 
-    private static final String MODELER_FILE_NAME = "svg.odesign"; //$NON-NLS-1$
-
-    private static final String MODELER_RELATIVE_PATH = DATA_FOLFER_TEST + MODELER_FILE_NAME;
-
-    private static final String MODELER_WORKSPACE_PATH = TEMPORARY_PROJECT_NAME + "/" + MODELER_FILE_NAME; //$NON-NLS-1$
+    private static final String MODELER_FILE_NAME = "/description/svg.odesign"; //$NON-NLS-1$
 
     private static final String AIRD_RELATIVE_PATH = DATA_FOLFER_TEST + AIRD_FILE_NAME;
 
@@ -67,6 +63,10 @@ public class ExportAsImageSVGTest extends AbstractExportAsImageTest {
 
     private static final String REPRESENTATION_NODE = "new SVGImages_Node"; //$NON-NLS-1$
 
+    private static final String REPRESENTATION_NODE_CHECK_ATTRIBUTES = "new SVGImages_Node_ForAttributesTest"; //$NON-NLS-1$
+
+    private static final String REPRESENTATION_NODE_CHECK_INNER_REFERENCES = "new SVGImages_Node_ForInnerReferencesTest"; //$NON-NLS-1$
+
     private static final String REPRESENTATION_NODE_RESIZE = "new SVGImages_Node_Resize"; //$NON-NLS-1$
 
     private static final String IMAGES_SYSTEM_ACTOR_SVG = "/images/SystemActor.svg"; //$NON-NLS-1$
@@ -79,11 +79,15 @@ public class ExportAsImageSVGTest extends AbstractExportAsImageTest {
 
     private static final String IMAGES_BELLSPROUT_SVG = "/images/Bellsprout.svg"; //$NON-NLS-1$
 
+    private static final String IMAGES_CAPABILITY_SVG = "/images/Capability.svg"; //$NON-NLS-1$
+
+    private static final String IMAGES_PORT_SVG = "/images/StandardPort_providedrequired_right.svg"; //$NON-NLS-1$
+
     @Override
     protected void setUp() throws Exception {
         super.setUp();
 
-        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, MODELER_RELATIVE_PATH, MODELER_WORKSPACE_PATH);
+        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, DATA_FOLFER_TEST + MODELER_FILE_NAME, TEMPORARY_PROJECT_NAME + MODELER_FILE_NAME);
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, SEMANTIC_MODEL_RELATIVE_PATH, SEMANTIC_MODEL_WORKSPACE_PATH);
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, AIRD_RELATIVE_PATH, AIRD_WORKSPACE_PATH);
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, DATA_FOLFER_TEST + IMAGES_BELLSPROUT_SVG, TEMPORARY_PROJECT_NAME + IMAGES_BELLSPROUT_SVG);
@@ -91,8 +95,10 @@ public class ExportAsImageSVGTest extends AbstractExportAsImageTest {
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, DATA_FOLFER_TEST + IMAGES_FAN_SVG, TEMPORARY_PROJECT_NAME + IMAGES_FAN_SVG);
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, DATA_FOLFER_TEST + IMAGES_SQUARE_SVG, TEMPORARY_PROJECT_NAME + IMAGES_SQUARE_SVG);
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, DATA_FOLFER_TEST + IMAGES_SYSTEM_ACTOR_SVG, TEMPORARY_PROJECT_NAME + IMAGES_SYSTEM_ACTOR_SVG);
+        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, DATA_FOLFER_TEST + IMAGES_CAPABILITY_SVG, TEMPORARY_PROJECT_NAME + IMAGES_CAPABILITY_SVG);
+        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, DATA_FOLFER_TEST + IMAGES_PORT_SVG, TEMPORARY_PROJECT_NAME + IMAGES_PORT_SVG);
 
-        genericSetUp(SEMANTIC_MODEL_WORKSPACE_PATH, MODELER_WORKSPACE_PATH, AIRD_WORKSPACE_PATH);
+        genericSetUp(SEMANTIC_MODEL_WORKSPACE_PATH, TEMPORARY_PROJECT_NAME + MODELER_FILE_NAME, AIRD_WORKSPACE_PATH);
 
         TestsUtil.emptyEventsFromUIThread();
 
@@ -103,6 +109,44 @@ public class ExportAsImageSVGTest extends AbstractExportAsImageTest {
     protected void tearDown() throws Exception {
         System.setProperty(SiriusDiagramSVGGenerator.ENABLE_EMBEDDED_SVG_IN_SVG_EXPORT, "false"); //$NON-NLS-1$
         super.tearDown();
+    }
+
+    /**
+     * Tests that the use tag has proper default attributes for stroke, stroke-width and fill.
+     */
+    public void testAttributeWhenExportingAsSVG() throws Exception {
+        DiagramExportResult exportResult = exportImage(getRepresentation(REPRESENTATION_NODE_CHECK_ATTRIBUTES), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.NO_SCALING);
+        Set<IPath> exportedFiles = exportResult.getExportedFiles();
+
+        Document doc = getSVGDocument(exportedFiles);
+
+        List<Node> useNodes = getAllNodesWithName(doc, SVGConstants.SVG_USE_TAG);
+        Node namedItem = useNodes.get(0).getAttributes().getNamedItem(SVGConstants.SVG_FILL_ATTRIBUTE);
+        assertEquals("Bad " + SVGConstants.SVG_FILL_ATTRIBUTE + " attribute value", "black", namedItem.getTextContent()); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        namedItem = useNodes.get(0).getAttributes().getNamedItem(SVGConstants.SVG_STROKE_ATTRIBUTE);
+        assertEquals("Bad " + SVGConstants.SVG_STROKE_ATTRIBUTE + " attribute value", "black", namedItem.getTextContent()); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        namedItem = useNodes.get(0).getAttributes().getNamedItem(SVGConstants.SVG_STROKE_WIDTH_ATTRIBUTE);
+        assertEquals("Bad " + SVGConstants.SVG_STROKE_WIDTH_ATTRIBUTE + " attribute value", "0", namedItem.getTextContent()); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    }
+
+    /**
+     * Tests that the embedded svg has correct id references.
+     */
+    public void testEmbeddedIds() throws Exception {
+        DiagramExportResult exportResult = exportImage(getRepresentation(REPRESENTATION_NODE_CHECK_INNER_REFERENCES), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.NO_SCALING);
+        Set<IPath> exportedFiles = exportResult.getExportedFiles();
+
+        Document doc = getSVGDocument(exportedFiles);
+
+        List<Node> linearGradientNodes = getAllNodesWithName(doc, SVGConstants.SVG_LINEAR_GRADIENT_TAG);
+        Node namedItem = linearGradientNodes.get(3).getAttributes().getNamedItem(SVGConstants.SVG_ID_ATTRIBUTE);
+        String linearGradientId = namedItem.getTextContent();
+        assertTrue("The id of the linearGradient should be on the form _linearGradient4868-6xxx ", linearGradientId.contains("_linearGradient4868-6")); //$NON-NLS-1$ //$NON-NLS-2$
+
+        List<Node> pathNodes = getAllNodesWithName(doc, SVGConstants.SVG_PATH_ATTRIBUTE);
+        namedItem = pathNodes.get(3).getAttributes().getNamedItem(SVGConstants.SVG_STYLE_ATTRIBUTE);
+        String styleText = namedItem.getTextContent();
+        assertTrue("The style attribute of the use tag has a bad linearGradient reference id", styleText.contains("#" + linearGradientId)); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
