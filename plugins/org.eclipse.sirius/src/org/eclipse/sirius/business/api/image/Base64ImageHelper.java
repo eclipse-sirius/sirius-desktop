@@ -12,8 +12,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.image;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -38,7 +39,7 @@ public class Base64ImageHelper {
 
     private static final String BASE64_IMAGE_PATTERN = "\"data:image/[a-zA-Z]{3,4};base64,.*?\""; //$NON-NLS-1$
 
-    private static final String IMAGE_NAME_FORMAT = "yyyyMMdd_HHmmssSSS"; //$NON-NLS-1$
+    private static final String IMAGE_NAME_FORMAT = "yyyyMMdd_HHmmss_SSSSSS"; //$NON-NLS-1$
 
     /**
      * This method converts the base64 string from the String attribute of the given eObject<br/>
@@ -83,9 +84,9 @@ public class Base64ImageHelper {
         while (matcher.find()) {
             if (matcher.groupCount() == 2) {
                 ImageManager imageManager = ImageManagerProvider.getImageManager();
-                Date date = new Date();
-                SimpleDateFormat formatter = new SimpleDateFormat(IMAGE_NAME_FORMAT);
-                String strDate = formatter.format(date);
+                Instant now = Instant.now();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern(IMAGE_NAME_FORMAT).withZone(ZoneId.systemDefault());
+                String strDate = formatter.format(now);
 
                 String simpleImageName = strDate + "." + matcher.group(1); //$NON-NLS-1$
                 String imagePath = imageManager.createFile(notifier, simpleImageName, matcher.group(2));
