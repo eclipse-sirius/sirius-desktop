@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.common.tools.api.query.IllegalStateExceptionQuery;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
@@ -179,7 +180,17 @@ public class Operand extends AbstractSequenceNode implements ISequenceEvent {
             combinedFragment = CacheHelper.getOperandToCombinedFragmentCache().get(this);
         }
         if (combinedFragment == null) {
-            EObject viewContainer = this.view.eContainer();
+            EObject viewContainer = null;
+            try {
+                viewContainer = this.view.eContainer();
+            } catch (IllegalStateException e) {
+                if (new IllegalStateExceptionQuery(e).isAConnectionLostException()) {
+                    // Nothing to log here, this can happen if the resource is not accessible anymore (distant
+                    // resource).
+                } else {
+                    throw e;
+                }
+            }
             if (viewContainer instanceof View) {
                 View parentView = (View) viewContainer;
                 Option<CombinedFragment> parentElement = ISequenceElementAccessor.getCombinedFragment(parentView);
