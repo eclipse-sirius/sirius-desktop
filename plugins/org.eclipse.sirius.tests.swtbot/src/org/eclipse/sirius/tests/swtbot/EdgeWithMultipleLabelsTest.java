@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -426,26 +426,30 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
         editor.bot().toolbarButtonWithTooltip("Show/Hide").click();
         SWTBot wizardBot = SWTBotSiriusHelper.getShellBot("Diagram elements visibility");
         wizardBot.text().setText("*label");
-        wizardBot.tree().getTreeItem("EC1 -> EC3").getNode("label").select().toggleCheck();
+        wizardBot.tree().getTreeItem("EC1 -> EC3").getNode("EC1 begin label").select().toggleCheck();
+        wizardBot.tree().getTreeItem("EC1 -> EC3").getNode("EC1 center label").select().toggleCheck();
+        wizardBot.tree().getTreeItem("EC1 -> EC3").getNode("EC1 end label").select().toggleCheck();
 
         wizardBot.button("OK").click();
 
-        // bot.waitUntil(new CheckEdgeLabelIsHidden(editor, "EC1 begin"));
+        bot.waitUntil(new CheckEdgeLabelVisibility(editor, "EC1 begin", false));
         bot.waitUntil(new CheckEdgeLabelVisibility(editor, "EC1 center", false));
-        // bot.waitUntil(new CheckEdgeLabelIsHidden(editor, "EC1 end"));
+        bot.waitUntil(new CheckEdgeLabelVisibility(editor, "EC1 end", false));
 
         // Show the label
         editor.bot().toolbarButtonWithTooltip("Show/Hide").click();
 
         wizardBot = SWTBotSiriusHelper.getShellBot("Diagram elements visibility");
         wizardBot.text().setText("*label");
-        wizardBot.tree().getTreeItem("EC1 -> EC3").getNode("label").select().toggleCheck();
+        wizardBot.tree().getTreeItem("EC1 -> EC3").getNode("EC1 begin label").select().toggleCheck();
+        wizardBot.tree().getTreeItem("EC1 -> EC3").getNode("EC1 center label").select().toggleCheck();
+        wizardBot.tree().getTreeItem("EC1 -> EC3").getNode("EC1 end label").select().toggleCheck();
 
         wizardBot.button("OK").click();
 
-        // bot.waitUntil(new CheckEdgeLabelIsHidden(editor, "EC1 begin"));
+        bot.waitUntil(new CheckEdgeLabelVisibility(editor, "EC1 begin", true));
         bot.waitUntil(new CheckEdgeLabelVisibility(editor, "EC1 center", true));
-        // bot.waitUntil(new CheckEdgeLabelIsHidden(editor, "EC1 end"));
+        bot.waitUntil(new CheckEdgeLabelVisibility(editor, "EC1 end", true));
 
         removeWarningListenerAndCheckWarning();
     }
@@ -490,25 +494,29 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
         editor.bot().toolbarButtonWithTooltip("Show/Hide").click();
         SWTBot wizardBot = SWTBotSiriusHelper.getShellBot("Diagram elements visibility");
         wizardBot.text().setText("*label");
-        wizardBot.tree().getTreeItem("ec2 : EC2").getNode("label").select().toggleCheck();
+        wizardBot.tree().getTreeItem("ec2 : EC2").getNode("ec2 begin label").select().toggleCheck();
+        wizardBot.tree().getTreeItem("ec2 : EC2").getNode("ec2 center label").select().toggleCheck();
+        wizardBot.tree().getTreeItem("ec2 : EC2").getNode("ec2 end label").select().toggleCheck();
 
         wizardBot.button("OK").click();
 
-        // bot.waitUntil(new CheckEdgeLabelIsHidden(editor, "EC1 begin"));
+        bot.waitUntil(new CheckEdgeLabelVisibility(editor, "ec2 begin", false));
         bot.waitUntil(new CheckEdgeLabelVisibility(editor, "ec2 center", false));
-        // bot.waitUntil(new CheckEdgeLabelIsHidden(editor, "EC1 end"));
+        bot.waitUntil(new CheckEdgeLabelVisibility(editor, "ec2 end", false));
 
         // Show the label
         editor.bot().toolbarButtonWithTooltip("Show/Hide").click();
         wizardBot = SWTBotSiriusHelper.getShellBot("Diagram elements visibility");
         wizardBot.text().setText("*label");
-        wizardBot.tree().getTreeItem("ec2 : EC2").getNode("label").select().toggleCheck();
+        wizardBot.tree().getTreeItem("ec2 : EC2").getNode("ec2 begin label").select().toggleCheck();
+        wizardBot.tree().getTreeItem("ec2 : EC2").getNode("ec2 center label").select().toggleCheck();
+        wizardBot.tree().getTreeItem("ec2 : EC2").getNode("ec2 end label").select().toggleCheck();
 
         wizardBot.button("OK").click();
 
-        // bot.waitUntil(new CheckEdgeLabelIsHidden(editor, "EC1 begin"));
+        bot.waitUntil(new CheckEdgeLabelVisibility(editor, "ec2 begin", true));
         bot.waitUntil(new CheckEdgeLabelVisibility(editor, "ec2 center", true));
-        // bot.waitUntil(new CheckEdgeLabelIsHidden(editor, "EC1 end"));
+        bot.waitUntil(new CheckEdgeLabelVisibility(editor, "ec2 end", true));
 
         removeWarningListenerAndCheckWarning();
     }
