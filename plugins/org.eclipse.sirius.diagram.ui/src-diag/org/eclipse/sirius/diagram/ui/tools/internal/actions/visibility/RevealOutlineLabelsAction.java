@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.eclipse.gef.Disposable;
 import org.eclipse.gef.RootEditPart;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -47,7 +48,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.editor.DiagramOutlinePage;
  * 
  * @author lredor
  */
-public class RevealOutlineLabelsAction extends AbstractRevealElementsAction<Object> {
+public class RevealOutlineLabelsAction extends AbstractRevealElementsAction<Object> implements Disposable {
 
     private Map<EObject, List<Integer>> semanticToLabelsVisualIDToHideMap = new HashMap<EObject, List<Integer>>();
 
@@ -79,6 +80,11 @@ public class RevealOutlineLabelsAction extends AbstractRevealElementsAction<Obje
     public RevealOutlineLabelsAction(final String text, final ImageDescriptor image) {
         super(text, image);
         setId(text);
+    }
+
+    @Override
+    public void dispose() {
+        this.semanticToLabelsVisualIDToHideMap = null;
     }
 
     /**
