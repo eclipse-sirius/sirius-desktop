@@ -23,8 +23,10 @@ import java.util.regex.Pattern;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.image.ImageManager;
@@ -145,10 +147,20 @@ public class ImageManagerForWorkspaceResource implements ImageManager {
         while (matcher.find()) {
             String originalPath = matcher.group(1);
             if (!originalPath.startsWith(HTTP) && !originalPath.startsWith(HTTPS)) {
-                // The path is made relative to the current project
-                String workspaceRelativePath = "../" + originalPath; //$NON-NLS-1$
-                htmlToOriginalImagePath.put(workspaceRelativePath, matcher.group(1));
-                returnedString = replaceString(returnedString, originalPath, workspaceRelativePath);
+                IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
+                Path contextRelativePath = new Path(contextObject.eResource().getURI().toPlatformString(true));
+                IPath pathContextProjectParentFolder = workspaceRoot.getFile(contextRelativePath).getProject().getLocation().removeLastSegments(1);
+                IPath pathImageProjectParentFolder = workspaceRoot.findMember(originalPath).getProject().getLocation().removeLastSegments(1);
+                String computedImagePath;
+                if (pathContextProjectParentFolder.equals(pathImageProjectParentFolder)) {
+                 // The path is made relative to the current project
+                  computedImagePath = "../" + originalPath; //$NON-NLS-1$
+                } else {
+                 // The path is made absolute
+                    computedImagePath = workspaceRoot.findMember(originalPath).getLocation().toString();
+                }
+                htmlToOriginalImagePath.put(computedImagePath, matcher.group(1));
+                returnedString = replaceString(returnedString, originalPath, computedImagePath);
             }
         }
 
