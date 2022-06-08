@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES
+ * Copyright (c) 2010, 2022 THALES GLOBAL SERVICES
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,12 +21,17 @@ import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.LightweightSystem;
+import org.eclipse.draw2d.RangeModel;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.draw2d.text.TextFlow;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.GraphicalViewer;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.SameScreenBoundsCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.widget.SWTBotSiriusFigureCanvas;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Control;
@@ -171,12 +176,34 @@ public class SWTBotSiriusGefViewer extends SWTBotGefViewer {
         if (revealedEP == null) {
             throw new WidgetNotFoundException(String.format(SWTBotSiriusDiagramEditor.EXPECTED_TO_FIND_WIDGET_S, revealedEP));
         }
+        // Compute the initial bounds to use as initial value to compare with, in the waiting condition.
+        Rectangle initialBounds = Rectangle.SINGLETON;
+        if (revealedEP instanceof IGraphicalEditPart) {
+            initialBounds = ((IGraphicalEditPart) revealedEP).getFigure().getBounds().getCopy();
+            GraphicalHelper.logical2screen(initialBounds, (IGraphicalEditPart) revealedEP);
+        }
+
+        // Reveal the edit part
         UIThreadRunnable.syncExec(new VoidResult() {
             @Override
             public void run() {
                 graphicalViewer.reveal(revealedEP);
             }
         });
+        if (revealedEP instanceof IGraphicalEditPart) {
+            // Ensure that the reveal is graphically finished (to avoid random failure), the reveal launches several
+            // runnable to do a smooth scroll. We wait that the figure remains at the same location to consider that the
+            // scroll is really finished.
+            bot().waitUntil(new SameScreenBoundsCondition((IGraphicalEditPart) revealedEP, initialBounds));
+        }
+    }
+
+    /**
+     * Copy of org.eclipse.draw2d.FigureCanvas.verifyScrollBarOffset(RangeModel, int).
+     */
+    private int verifyScrollBarOffset(RangeModel model, int value) {
+        int newValue = Math.max(model.getMinimum(), value);
+        return Math.min(model.getMaximum() - model.getExtent(), newValue);
     }
 
     /**
