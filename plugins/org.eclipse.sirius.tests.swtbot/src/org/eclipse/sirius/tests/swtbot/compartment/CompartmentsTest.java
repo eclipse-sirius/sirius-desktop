@@ -12,13 +12,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.compartment;
 
-import java.awt.GraphicsEnvironment;
 import java.io.IOException;
 import java.text.MessageFormat;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -91,12 +88,11 @@ import org.eclipse.ui.PlatformUI;
  */
 public class CompartmentsTest extends AbstractCompartmentTest {
 
-    private static final String TEST_FONT = "Comic Sans MS"; //$NON-NLS-1$
-
-    private static final boolean TEST_FONT_AVAILABLE = Arrays.asList(GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames()).stream()
-            .anyMatch(font -> Objects.equals(TEST_FONT, font));
-
-    private static final int FONT_WIDTH_DELTA = TEST_FONT_AVAILABLE ? 0 : 1;
+    /**
+     * Add a delta of 1 pixel for width checks on Linux OS (on some IC server the font "Comic Sans MS" has not exactly
+     * the same "size").
+     */
+    private static final int FONT_WIDTH_DELTA = System.getProperty("os.name").contains("Linux") ? 1 : 0; //$NON-NLS-1$//$NON-NLS-2$
 
     /** Location where the end-user click to create a container. */
     private static final Point CONTAINER_CREATION_LOCATION = new Point(400, 300);
