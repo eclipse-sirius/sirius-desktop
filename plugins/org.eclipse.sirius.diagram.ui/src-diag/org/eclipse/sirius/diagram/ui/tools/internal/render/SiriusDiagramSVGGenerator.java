@@ -55,7 +55,6 @@ import org.eclipse.gmf.runtime.draw2d.ui.render.internal.RenderedImageDescriptor
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.CommonEditPartOperation;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -292,9 +291,9 @@ public class SiriusDiagramSVGGenerator extends DiagramGenerator {
     }
 
     private void setCurrentId(Graphics gfx, GraphicalEditPart part) {
-        if (part instanceof IDiagramElementEditPart) {
+        if (part instanceof IGraphicalEditPart) {
             CommonEditPartOperation.setGraphicsTraceabilityId(gfx, () -> {
-                EObject o = ((IDiagramElementEditPart) part).resolveSemanticElement();
+                EObject o = ((IGraphicalEditPart) part).resolveSemanticElement();
                 if (o instanceof DSemanticDecorator) {
                     return ((DSemanticDecorator) o).getTarget();
                 }

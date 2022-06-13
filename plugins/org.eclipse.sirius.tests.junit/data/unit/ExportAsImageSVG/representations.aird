@@ -18,7 +18,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_e6lfcJrSEeyArMQjDt_ywA">
       <viewpoint xmi:type="description:Viewpoint" href="description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_IrOr4prTEeyArMQjDt_ywA" name="new SVGImages_Node" repPath="#_IrOr4JrTEeyArMQjDt_ywA" changeId="35eb3973-d504-4c5f-b6f2-4dfdfedf575e">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_IrOr4prTEeyArMQjDt_ywA" name="new SVGImages_Node" repPath="#_IrOr4JrTEeyArMQjDt_ywA" changeId="a2bfa7ab-3489-4ba6-8a81-ffcb5e43a27b">
         <description xmi:type="description_1:DiagramDescription" href="description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Node']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#//p1"/>
       </ownedRepresentationDescriptors>
@@ -26,7 +26,7 @@
         <description xmi:type="description_1:DiagramDescription" href="description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Node']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#//p1"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_twXdUJuVEeytjv1FlCBMSQ" name="new SVGImages_Container" repPath="#_twWPMJuVEeytjv1FlCBMSQ" changeId="5e19e3f4-127a-48b4-b1cb-fcaf4dc39187">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_twXdUJuVEeytjv1FlCBMSQ" name="new SVGImages_Container" repPath="#_twWPMJuVEeytjv1FlCBMSQ" changeId="b7e626e9-4cfe-42d5-84a8-b4f14a6c21ff">
         <description xmi:type="description_1:DiagramDescription" href="description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Container']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#//p1"/>
       </ownedRepresentationDescriptors>
@@ -276,6 +276,17 @@
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_IshshJrTEeyArMQjDt_ywA" fontName="Segoe UI" fontHeight="12"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_IshshZrTEeyArMQjDt_ywA" x="2328"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_mtb60OveEeyiZe8SQm8IDQ" type="Note" element="_IrOr4prTEeyArMQjDt_ywA" fontName="Segoe UI" description="Self reference" fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_mtb60eveEeyiZe8SQm8IDQ" source="specificStyles">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_mtb60uveEeyiZe8SQm8IDQ" key="verticalAlignment" value="8"/>
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_mtch4uveEeyiZe8SQm8IDQ" key="representationlink"/>
+          </eAnnotations>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_mtch4OveEeyiZe8SQm8IDQ" type="DiagramName"/>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_mtch4eveEeyiZe8SQm8IDQ" type="Description"/>
+          <styles xmi:type="notation:TextStyle" xmi:id="_mtb60-veEeyiZe8SQm8IDQ" textAlignment="Center"/>
+          <styles xmi:type="notation:LineTypeStyle" xmi:id="_mtb61OveEeyiZe8SQm8IDQ"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_mtb61eveEeyiZe8SQm8IDQ" x="5" y="55"/>
         </children>
         <styles xmi:type="notation:DiagramStyle" xmi:id="_IrOr5prTEeyArMQjDt_ywA"/>
       </data>
@@ -1142,6 +1153,17 @@
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_tyN3cZuVEeytjv1FlCBMSQ" fontName="Segoe UI" fontHeight="12"/>
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tyN3cpuVEeytjv1FlCBMSQ" x="2275" y="30" width="100" height="87"/>
+            </children>
+            <children xmi:type="notation:Shape" xmi:id="_vnmZcOveEeyiZe8SQm8IDQ" type="Note" element="_IrOr4prTEeyArMQjDt_ywA" fontName="Segoe UI" description="SVGImages_Node reference" fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+              <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_vnmZceveEeyiZe8SQm8IDQ" source="specificStyles">
+                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_vnmZcuveEeyiZe8SQm8IDQ" key="verticalAlignment" value="8"/>
+                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_vnmZeOveEeyiZe8SQm8IDQ" key="representationlink"/>
+              </eAnnotations>
+              <children xmi:type="notation:BasicDecorationNode" xmi:id="_vnmZduveEeyiZe8SQm8IDQ" type="DiagramName"/>
+              <children xmi:type="notation:BasicDecorationNode" xmi:id="_vnmZd-veEeyiZe8SQm8IDQ" type="Description"/>
+              <styles xmi:type="notation:TextStyle" xmi:id="_vnmZc-veEeyiZe8SQm8IDQ" textAlignment="Center"/>
+              <styles xmi:type="notation:LineTypeStyle" xmi:id="_vnmZdOveEeyiZe8SQm8IDQ"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_vnmZdeveEeyiZe8SQm8IDQ" x="25" y="79" width="226"/>
             </children>
             <styles xmi:type="notation:SortingStyle" xmi:id="_twqYQpuVEeytjv1FlCBMSQ"/>
             <styles xmi:type="notation:FilteringStyle" xmi:id="_twqYQ5uVEeytjv1FlCBMSQ"/>

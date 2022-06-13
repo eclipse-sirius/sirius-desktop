@@ -36,6 +36,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.view.ShowingViewUtil;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.CommonEditPartOperation;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.OpenDRepresentationEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.internal.ui.SnapToAllDragEditPartsTracker;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
@@ -138,7 +139,9 @@ public class SiriusNoteEditPart extends NoteEditPart {
             public void paint(Graphics graphics) {
                 ShowingViewUtil.initGraphicsForVisibleAndInvisibleElements(this, graphics, (View) getModel());
                 try {
+                    CommonEditPartOperation.setGraphicsTraceabilityId(graphics, () -> resolveSemanticElement());
                     super.paint(graphics);
+                    CommonEditPartOperation.setGraphicsTraceabilityId(graphics, null);
                     graphics.restoreState();
                 } finally {
                     graphics.popState();

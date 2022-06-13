@@ -392,7 +392,7 @@ public class ExportAsImageSVGTest extends AbstractExportAsImageTest {
         assertEquals("The class C1 id is not exported in the SVG file as expected", Integer.valueOf(17), semanticTargetIdToOccurrences.get("platform:/resource/DesignerTestProject/My.ecore#//p1/C1")); //$NON-NLS-1$//$NON-NLS-2$
         assertEquals("The class C2 id is not exported in the SVG file as expected", Integer.valueOf(17), semanticTargetIdToOccurrences.get("platform:/resource/DesignerTestProject/My.ecore#//p1/C2")); //$NON-NLS-1$//$NON-NLS-2$
         assertEquals("The class C3 id is not exported in the SVG file as expected", Integer.valueOf(17), semanticTargetIdToOccurrences.get("platform:/resource/DesignerTestProject/My.ecore#//p1/C3")); //$NON-NLS-1$ //$NON-NLS-2$
-
+        assertEquals("The Representation Link id is not exported in the SVG file as expected", Integer.valueOf(12), semanticTargetIdToOccurrences.get("_IrOr4prTEeyArMQjDt_ywA")); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
 }
