@@ -26,7 +26,6 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -127,12 +126,12 @@ public abstract class AbstractValidationFix implements IMarkerResolution {
 
             View markedView = getMarkedView(currentSession, marker);
             if (markedView != null) {
-                doExecuteFix(marker, editor, markedView, currentSession.getTransactionalEditingDomain());
+                doExecuteFix(marker, editor, markedView, currentSession);
             }
         }
     }
 
-    protected abstract void doExecuteFix(IMarker marker, IEditorPart editor, View markedView, TransactionalEditingDomain transactionalEditingDomain);
+    protected abstract void doExecuteFix(IMarker marker, IEditorPart editor, View markedView, Session session);
 
     protected View getMarkedView(Session session, IMarker marker) {
         String elementID = marker.getAttribute(org.eclipse.gmf.runtime.common.ui.resources.IMarker.ELEMENT_ID, null);

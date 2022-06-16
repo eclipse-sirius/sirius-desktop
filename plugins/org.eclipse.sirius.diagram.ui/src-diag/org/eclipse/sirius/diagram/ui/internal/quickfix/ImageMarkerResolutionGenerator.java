@@ -28,7 +28,13 @@ public class ImageMarkerResolutionGenerator implements IMarkerResolutionGenerato
     public IMarkerResolution[] getResolutions(IMarker marker) {
         final boolean isImagePathMarker = marker.getAttribute(NavigationMarkerConstants.MARKER_IMAGE, false);
         if (isImagePathMarker) {
-            IMarkerResolution[] resolutions = new IMarkerResolution[] { new ImageMarkerResolution() };
+            String imageIssueKind = marker.getAttribute(NavigationMarkerConstants.IMAGE_PATH_TARGET_KEY, ""); //$NON-NLS-1$
+            IMarkerResolution[] resolutions = null;
+            if (imageIssueKind.isBlank()) {
+                resolutions = new IMarkerResolution[] { new ImageMarkerResolution() };
+            } else {
+                resolutions = new IMarkerResolution[] { new ImageMarkerResolution(), new ImageMarkerMassResolution() };
+            }
             return resolutions;
         }
         return new IMarkerResolution[] {};

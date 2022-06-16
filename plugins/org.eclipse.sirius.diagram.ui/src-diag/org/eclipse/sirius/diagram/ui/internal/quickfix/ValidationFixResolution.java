@@ -54,11 +54,11 @@ public class ValidationFixResolution extends AbstractValidationFix {
     }
 
     @Override
-    protected void doExecuteFix(IMarker marker, IEditorPart editor, View markedView, TransactionalEditingDomain transactionalEditingDomain) {
+    protected void doExecuteFix(IMarker marker, IEditorPart editor, View markedView, Session session) {
         EObject fixTarget = getFixTarget(markedView);
         if (fixTarget != null) {
             Diagram diagram = markedView.getDiagram();
-            executeFix(editor, (DDiagram) diagram.getElement(), fixTarget, transactionalEditingDomain);
+            executeFix(editor, (DDiagram) diagram.getElement(), fixTarget, session.getTransactionalEditingDomain());
             revalidate(editor, diagram);
         }
     }

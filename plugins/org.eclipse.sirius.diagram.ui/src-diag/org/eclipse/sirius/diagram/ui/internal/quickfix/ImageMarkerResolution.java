@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.resource.FileProvider;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.tools.internal.validation.constraints.ImagePathWrappingStatus.ImagePathTarget;
@@ -50,7 +51,8 @@ public class ImageMarkerResolution extends AbstractValidationFix {
     }
 
     @Override
-    protected void doExecuteFix(IMarker marker, IEditorPart editor, View markedView, TransactionalEditingDomain transactionalEditingDomain) {
+    protected void doExecuteFix(IMarker marker, IEditorPart editor, View markedView, Session session) {
+        TransactionalEditingDomain transactionalEditingDomain = session.getTransactionalEditingDomain();
         String imageIssueKind = marker.getAttribute(NavigationMarkerConstants.IMAGE_PATH_TARGET_KEY, ""); //$NON-NLS-1$
         String imagePath = marker.getAttribute(NavigationMarkerConstants.IMAGE_PATH_KEY, null);
         boolean exists = FileProvider.getDefault().exists(new Path(imagePath));

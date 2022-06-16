@@ -23,12 +23,14 @@ import java.util.regex.Pattern;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.image.ImageManager;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
@@ -148,19 +150,25 @@ public class ImageManagerForWorkspaceResource implements ImageManager {
             String originalPath = matcher.group(1);
             if (!originalPath.startsWith(HTTP) && !originalPath.startsWith(HTTPS)) {
                 IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
-                Path contextRelativePath = new Path(contextObject.eResource().getURI().toPlatformString(true));
-                IPath pathContextProjectParentFolder = workspaceRoot.getFile(contextRelativePath).getProject().getLocation().removeLastSegments(1);
-                IPath pathImageProjectParentFolder = workspaceRoot.findMember(originalPath).getProject().getLocation().removeLastSegments(1);
-                String computedImagePath;
-                if (pathContextProjectParentFolder.equals(pathImageProjectParentFolder)) {
-                 // The path is made relative to the current project
-                  computedImagePath = "../" + originalPath; //$NON-NLS-1$
-                } else {
-                 // The path is made absolute
-                    computedImagePath = workspaceRoot.findMember(originalPath).getLocation().toString();
+                Resource eResource = contextObject.eResource();
+                if (eResource != null) {
+                    Path contextRelativePath = new Path(eResource.getURI().toPlatformString(true));
+                    IPath pathContextProjectParentFolder = workspaceRoot.getFile(contextRelativePath).getProject().getLocation().removeLastSegments(1);
+                    IResource member = workspaceRoot.findMember(originalPath);
+                    if (member != null && member.getProject() != null) {
+                        IPath pathImageProjectParentFolder = member.getProject().getLocation().removeLastSegments(1);
+                        String computedImagePath;
+                        if (pathContextProjectParentFolder.equals(pathImageProjectParentFolder)) {
+                            // The path is made relative to the current project
+                            computedImagePath = "../" + originalPath; //$NON-NLS-1$
+                        } else {
+                            // The path is made absolute
+                            computedImagePath = member.getLocation().toString();
+                        }
+                        htmlToOriginalImagePath.put(computedImagePath, matcher.group(1));
+                        returnedString = replaceString(returnedString, originalPath, computedImagePath);
+                    }
                 }
-                htmlToOriginalImagePath.put(computedImagePath, matcher.group(1));
-                returnedString = replaceString(returnedString, originalPath, computedImagePath);
             }
         }
 

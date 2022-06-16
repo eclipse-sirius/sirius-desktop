@@ -176,6 +176,36 @@ public final class Messages {
     public static String ChangeFilterActivation_label;
 
     @TranslatableMessage
+    public static String ChangeMassivelyImagePathDialog_title;
+
+    @TranslatableMessage
+    public static String ChangeMassivelyImagePathDialog_invalidCharInName;
+
+    @TranslatableMessage
+    public static String ChangeMassivelyImagePathDialog_badLeadingCharacter;
+
+    @TranslatableMessage
+    public static String ChangeMassivelyImagePathDialog_newLabel;
+
+    @TranslatableMessage
+    public static String ChangeMassivelyImagePathDialog_newTooltip;
+
+    @TranslatableMessage
+    public static String ChangeMassivelyImagePathDialog_oldLabel;
+
+    @TranslatableMessage
+    public static String ChangeMassivelyImagePathDialog_oldTooltip;
+
+    @TranslatableMessage
+    public static String ChangeMassivelyImagePathDialog_warning;
+
+    @TranslatableMessage
+    public static String ChangeMassivelyImagePathDialog_processDiagramContentLabel;
+
+    @TranslatableMessage
+    public static String ChangeMassivelyImagePathDialog_processDiagramContentTooltip;
+
+    @TranslatableMessage
     public static String ChangeSynchronizedDagramStatusCommand_label;
 
     @TranslatableMessage
@@ -669,6 +699,9 @@ public final class Messages {
 
     @TranslatableMessage
     public static String ImageMarkerResolution_label;
+
+    @TranslatableMessage
+    public static String ImageMarkerMassResolution_label;
 
     @TranslatableMessage
     public static String ImageSelectionDialog_imageNotFound;
