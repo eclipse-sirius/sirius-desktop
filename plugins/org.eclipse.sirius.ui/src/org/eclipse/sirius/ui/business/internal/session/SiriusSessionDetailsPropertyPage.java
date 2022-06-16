@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.Session;
@@ -43,6 +44,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.PropertyPage;
 
@@ -54,6 +56,10 @@ import org.eclipse.ui.dialogs.PropertyPage;
 public class SiriusSessionDetailsPropertyPage extends PropertyPage {
 
     private Text text;
+
+    private Session session;
+
+    private Button computeDependenciesButton;
 
     @Override
     protected Control createContents(Composite parent) {
@@ -80,38 +86,23 @@ public class SiriusSessionDetailsPropertyPage extends PropertyPage {
         String airdName = resourceAird.getProject().getName() + "/" + resourceAird.getProjectRelativePath(); //$NON-NLS-1$
 
         URI airdURI = URI.createPlatformResourceURI(airdName, true);
-        Session session = SessionManager.INSTANCE.getExistingSession(airdURI);
+        session = SessionManager.INSTANCE.getExistingSession(airdURI);
         if (session == null) {
             text.setText(Messages.SiriusSessionDetailsPropertyPage_sessionNotOpened);
         } else {
-            Job job = new Job(Messages.SiriusSessionDetailsPropertyPage_computeSessionDetails) {
-                @Override
-                protected IStatus run(IProgressMonitor monitor) {
-                    String sessionInformation = getSessionInformation(session);
-                    Display.getDefault().asyncExec(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (!text.isDisposed()) {
-                                text.setText(sessionInformation);
-                            }
-                        }
-                    });
-                    return Status.OK_STATUS;
-                }
-            };
-            job.setUser(true);
-            job.schedule();
+            computeSessionDetails(Messages.SiriusSessionDetailsPropertyPage_computeSessionDetails, false);
         }
+        computeDependenciesButton.setEnabled(session != null);
     }
 
-    private String getSessionInformation(Session session) {
+    private String getSessionInformation(boolean computeDependencies) {
         SessionDetailsReport sessionQuery = new SessionDetailsReport(session);
-        String formattedInformation = sessionQuery.getSessionFormattedInformation();
+        String formattedInformation = sessionQuery.getSessionFormattedInformation(computeDependencies);
 
         // Add part about the opened editors
         StringBuilder informations = new StringBuilder();
         List<DRepresentation> openedRepresentations = SessionUIManager.INSTANCE.getUISession(session).getEditors().stream().map(editor -> editor.getRepresentation()).collect(Collectors.toList());
-        String cr = "\n"; //$NON-NLS-1$
+        String cr = System.lineSeparator();
         String tab = "  "; //$NON-NLS-1$
         informations.append(cr + MessageFormat.format(Messages.SiriusSessionDetailsPropertyPage_repOpenedInEditor, openedRepresentations.size()) + cr);
         openedRepresentations.stream().forEach(rep -> {
@@ -132,6 +123,22 @@ public class SiriusSessionDetailsPropertyPage extends PropertyPage {
         layout.marginWidth = 0;
         sessionDetailsComposite.setLayout(layout);
         sessionDetailsComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+
+        computeDependenciesButton = new Button(sessionDetailsComposite, SWT.NONE);
+        computeDependenciesButton.setText(Messages.SiriusSessionDetailsPropertyPage_computeDependenciesButton);
+        computeDependenciesButton.setLayoutData(new GridData(SWT.LEFT, SWT.FILL, false, false));
+        computeDependenciesButton.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                String description = Messages.SiriusSessionDetailsPropertyPage_confirmComputingDependenciesDescriptionDialog;
+                String title = Messages.SiriusSessionDetailsPropertyPage_confirmComputingDependenciesTitleDialog;
+                Shell shell = Display.getCurrent().getActiveShell();
+                
+                boolean dialogChoice = MessageDialog.openQuestion(shell, title, description);
+                computeSessionDetails(Messages.SiriusSessionDetailsPropertyPage_computeDependenciesSessionDetails, dialogChoice);
+                computeDependenciesButton.setEnabled(!dialogChoice);
+            }
+        });
 
         // CHECKSTYLE:OFF
         text = new Text(sessionDetailsComposite, SWT.MULTI | SWT.BORDER | SWT.READ_ONLY | SWT.V_SCROLL | SWT.NO_FOCUS | SWT.H_SCROLL);
@@ -163,4 +170,23 @@ public class SiriusSessionDetailsPropertyPage extends PropertyPage {
         });
     }
 
+    private void computeSessionDetails(String jobName, boolean computeDependencies) {
+        Job job = new Job(jobName) {
+            @Override
+            protected IStatus run(IProgressMonitor monitor) {
+                String sessionInformation = getSessionInformation(computeDependencies);
+                Display.getDefault().asyncExec(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (!text.isDisposed()) {
+                            text.setText(sessionInformation);
+                        }
+                    }
+                });
+                return Status.OK_STATUS;
+            }
+        };
+        job.setUser(true);
+        job.schedule();
+    }
 }

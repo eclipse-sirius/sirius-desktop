@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2021 Obeo.
+ * Copyright (c) 2015, 2022 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -1071,12 +1071,24 @@ public final class Messages {
 
     @TranslatableMessage
     public static String SiriusSessionDetailsPropertyPage_sessionNotOpened;
+    
+    @TranslatableMessage
+    public static String SiriusSessionDetailsPropertyPage_computeDependenciesButton;
+    
+    @TranslatableMessage
+    public static String SiriusSessionDetailsPropertyPage_computeDependenciesSessionDetails;
 
     @TranslatableMessage
     public static String SiriusSessionDetailsPropertyPage_computeSessionDetails;
 
     @TranslatableMessage
     public static String SiriusSessionDetailsPropertyPage_computingSessionDetails;
+    
+    @TranslatableMessage
+    public static String SiriusSessionDetailsPropertyPage_confirmComputingDependenciesDescriptionDialog;
+    
+    @TranslatableMessage
+    public static String SiriusSessionDetailsPropertyPage_confirmComputingDependenciesTitleDialog;
 
     @TranslatableMessage
     public static String SiriusSessionDetailsPropertyPage_repOpenedInEditor;

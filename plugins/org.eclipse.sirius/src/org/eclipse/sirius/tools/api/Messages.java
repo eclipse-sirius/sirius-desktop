@@ -565,6 +565,18 @@ public final class Messages {
 
     @TranslatableMessage
     public static String SessionQuery_Date;
+    
+    @TranslatableMessage
+    public static String SessionQuery_Dependencies;
+    
+    @TranslatableMessage
+    public static String SessionQuery_GeneralProjectsDependencies;
+    
+    @TranslatableMessage
+    public static String SessionQuery_ImageProjectsDependencies;
+    
+    @TranslatableMessage
+    public static String SessionQuery_NonComputedDependencies;
 
     @TranslatableMessage
     public static String SessionQuery_Resources;
