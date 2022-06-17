@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -169,11 +169,8 @@ public class AbstractHideRevealDiagramElementsLabelTest extends AbstractSiriusSw
      *            the label to search
      */
     protected void checkEdgeLabelIsVisible(String label) {
-        // If the editPart can be retrieved from the given name, it means that
-        // the element has an LabelEditPart.
-        SWTBotGefEditPart editPart = editor.getEditPart(label);
-        assertNotNull("This element's label should not be hidden : " + label, editPart);
-        assertTrue(((AbstractGraphicalEditPart) editPart.part()).getFigure().isVisible());
+        SWTBotUtils.waitAllUiEvents();
+        bot.waitUntil(new CheckEdgeLabelIsVisible(editor, label));
     }
 
     /**
@@ -339,7 +336,7 @@ public class AbstractHideRevealDiagramElementsLabelTest extends AbstractSiriusSw
 
         @Override
         public String getFailureMessage() {
-            return "The label is still visible.";
+            return "The label \"" + this.label + "\" is still visible.";
         }
     }
 
@@ -374,7 +371,53 @@ public class AbstractHideRevealDiagramElementsLabelTest extends AbstractSiriusSw
 
         @Override
         public String getFailureMessage() {
-            return "The label is still visible.";
+            return "The label \"" + this.label + "\" is still visible.";
+        }
+    }
+
+    /**
+     * Inner class to check if the label of this edge edit part is visible.
+     * 
+     * @author lredor
+     */
+    protected class CheckEdgeLabelIsVisible extends DefaultCondition {
+
+        private final String label;
+
+        private final SWTBotSiriusDiagramEditor editor;
+
+        private String errorMessage;
+
+        /**
+         * Constructor.
+         * 
+         * @param editor
+         *            the current editor
+         * @param label
+         *            name of the edit part to wait for its hiding.
+         */
+        public CheckEdgeLabelIsVisible(SWTBotSiriusDiagramEditor editor, String label) {
+            this.label = label;
+            this.editor = editor;
+        }
+
+        @Override
+        public boolean test() throws Exception {
+            errorMessage = null;
+            // If the editPart can be retrieved from the given name, it means that
+            // the element has an LabelEditPart.
+            SWTBotGefEditPart editPart = editor.getEditPart(label);
+            if (editPart == null) {
+                errorMessage = "This element's label should not be hidden : " + label;
+            } else if (!((AbstractGraphicalEditPart) editPart.part()).getFigure().isVisible()) {
+                errorMessage = "This element should be visible : " + label;
+            }
+            return errorMessage == null;
+        }
+
+        @Override
+        public String getFailureMessage() {
+            return errorMessage;
         }
     }
 }

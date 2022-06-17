@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2021, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -590,6 +590,9 @@ public class HideRevealEdgeLabelsTest extends AbstractHideRevealDiagramElementsL
         SWTBotTreeItem referenceTreeItem = outlineTreeRoot.expandNode(eReferenceTreeLabel);
         // Hide the labels and check that they are correctly hidden
         for (SWTBotTreeItem edgeLabelTreeItem : referenceTreeItem.getItems()) {
+            // Select the item and wait that all Ui Events are done.
+            edgeLabelTreeItem.select();
+            SWTBotUtils.waitAllUiEvents();
             // Check it exists on diagram, then hide it from outline and check it is hidden on diagram
             checkEdgeLabelIsVisible(edgeLabelTreeItem.getText().replace(" label", "")); //$NON-NLS-1$ //$NON-NLS-2$
             edgeLabelTreeItem.contextMenu(HIDE_LABEL_TOOLTIP).click();
@@ -600,7 +603,10 @@ public class HideRevealEdgeLabelsTest extends AbstractHideRevealDiagramElementsL
 
         // Reveal the labels and check that they are correctly revealed
         for (SWTBotTreeItem edgeLabelTreeItem : referenceTreeItem.getItems()) {
-            // Check it is hidden on diagram, then hide it from outline and check it is shown on diagram
+            // Select the item and wait that all Ui Events are done.
+            edgeLabelTreeItem.select();
+            SWTBotUtils.waitAllUiEvents();
+            // Check it is hidden on diagram, then reveal it from outline and check it is shown on diagram
             checkEdgeLabelIsHidden(edgeLabelTreeItem.getText().replace(" label", "")); //$NON-NLS-1$ //$NON-NLS-2$
             edgeLabelTreeItem.contextMenu(REVEAL_LABEL_TOOLTIP).click();
             checkEdgeLabelIsVisible(edgeLabelTreeItem.getText().replace(" label", "")); //$NON-NLS-1$ //$NON-NLS-2$
