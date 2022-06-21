@@ -723,16 +723,22 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
 
                 DDiagramElementQuery dDiagramElementQuery = new DDiagramElementQuery(edge);
                 if (!edge.getParentDiagram().isIsInShowingMode()) {
-                    if (edge.getName() == null || StringUtil.isEmpty(edge.getName()) || dDiagramElementQuery.isLabelHidden(DEdgeNameEditPart.VISUAL_ID)) {
+                    // Update label visibility
+                    fFigureViewEdgeNameFigure.setVisible(!dDiagramElementQuery.isLabelHidden(DEdgeNameEditPart.VISUAL_ID));
+                    fFigureViewEdgeEndNameFigure.setVisible(!dDiagramElementQuery.isLabelHidden(DEdgeEndNameEditPart.VISUAL_ID));
+                    fFigureViewEdgeBeginNameFigure.setVisible(!dDiagramElementQuery.isLabelHidden(DEdgeBeginNameEditPart.VISUAL_ID));
+                    // Set label invisible if the label is empty
+                    if (edge.getName() == null || StringUtil.isEmpty(edge.getName())) {
                         fFigureViewEdgeNameFigure.setVisible(false);
-                    } else if (edge.getEndLabel() == null || StringUtil.isEmpty(edge.getEndLabel()) || dDiagramElementQuery.isLabelHidden(DEdgeEndNameEditPart.VISUAL_ID)) {
+                    }
+                    if (edge.getEndLabel() == null || StringUtil.isEmpty(edge.getEndLabel())) {
                         fFigureViewEdgeEndNameFigure.setVisible(false);
-                    } else if (edge.getBeginLabel() == null || StringUtil.isEmpty(edge.getBeginLabel()) || dDiagramElementQuery.isLabelHidden(DEdgeBeginNameEditPart.VISUAL_ID)) {
+                    }
+                    if (edge.getBeginLabel() == null || StringUtil.isEmpty(edge.getBeginLabel())) {
                         fFigureViewEdgeBeginNameFigure.setVisible(false);
                     }
                 } else {
-                    if (edge.getName() != null && !StringUtil.isEmpty(edge.getName()) && !(dDiagramElementQuery.isLabelHidden(DEdgeNameEditPart.VISUAL_ID))
-                        && !fFigureViewEdgeNameFigure.isVisible()) {
+                    if (edge.getName() != null && !StringUtil.isEmpty(edge.getName()) && !(dDiagramElementQuery.isLabelHidden(DEdgeNameEditPart.VISUAL_ID)) && !fFigureViewEdgeNameFigure.isVisible()) {
                         fFigureViewEdgeNameFigure.setVisible(true);
                     } else if (edge.getEndLabel() != null && !StringUtil.isEmpty(edge.getEndLabel()) && !(dDiagramElementQuery.isLabelHidden(DEdgeEndNameEditPart.VISUAL_ID))
                             && !fFigureViewEdgeEndNameFigure.isVisible()) {

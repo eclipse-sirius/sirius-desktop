@@ -866,7 +866,7 @@ public class HideRevealEdgeLabelsTest extends AbstractHideRevealDiagramElementsL
      */
     private void checkAllEdgeLabelsAreHidden(SWTBotGefEditPart parent) {
         for (SWTBotGefEditPart labelSWTBotGefEditPart : parent.children()) {
-            if (labelSWTBotGefEditPart.part() instanceof AbstractDEdgeNameEditPart) {
+            if (labelSWTBotGefEditPart.part() instanceof AbstractDEdgeNameEditPart && !((AbstractDEdgeNameEditPart) labelSWTBotGefEditPart.part()).getLabelText().isEmpty()) {
                 AbstractDEdgeNameEditPart abstractDEdgeNameEditPart = (AbstractDEdgeNameEditPart) labelSWTBotGefEditPart.part();
                 checkEdgeLabelIsHidden(abstractDEdgeNameEditPart.getLabelText());
             }

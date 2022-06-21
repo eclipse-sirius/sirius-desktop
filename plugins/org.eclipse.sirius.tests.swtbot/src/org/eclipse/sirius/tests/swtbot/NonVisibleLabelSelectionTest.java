@@ -117,7 +117,7 @@ public class NonVisibleLabelSelectionTest extends AbstractSiriusSwtBotGefTestCas
         checkSelection(containerEditPart, beginLabelCenter, centerLabelCenter, endLabelCenter);
 
         // undo, the edge labels are visible and can be selected.
-        undo();
+        undo(this.localSession.getOpenedSession());
         checkSelection(beginLabelEditPart, beginLabelCenter);
         checkSelection(centerLabelEditPart, centerLabelCenter);
         checkSelection(endLabelEditPart, endLabelCenter);
