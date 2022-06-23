@@ -28,7 +28,7 @@ import org.eclipse.sirius.diagram.formatdata.tools.internal.util.FormatHelperImp
  */
 public interface FormatHelper {
 
-    public interface FormatDifference<T> {
+    interface FormatDifference<T> {
 
         /**
          * Get left element of difference.

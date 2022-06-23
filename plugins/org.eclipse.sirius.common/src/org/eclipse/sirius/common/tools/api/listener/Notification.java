@@ -24,7 +24,7 @@ public interface Notification {
      * 
      * @author mchauvin
      */
-    public interface Kind {
+    interface Kind {
         /** start kind. */
         int START = 0;
 
