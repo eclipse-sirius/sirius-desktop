@@ -59,6 +59,7 @@ Export-Package: org.eclipse.sirius.diagram.business.api.componentization;version
  org.eclipse.sirius.diagram.tools.api;version="7.0.0",
  org.eclipse.sirius.diagram.tools.api.command;version="7.0.0",
  org.eclipse.sirius.diagram.tools.api.command.view;version="7.0.0",
+ org.eclipse.sirius.diagram.tools.api.interpreter;version="7.1.0",
  org.eclipse.sirius.diagram.tools.api.layout;version="7.0.0",
  org.eclipse.sirius.diagram.tools.api.management;version="7.0.0",
  org.eclipse.sirius.diagram.tools.api.preferences;version="7.0.0",

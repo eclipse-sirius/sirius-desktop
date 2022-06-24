@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -40,6 +40,7 @@ import org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription;
 import org.eclipse.sirius.diagram.description.tool.ReconnectionKind;
 import org.eclipse.sirius.diagram.model.business.internal.description.spec.EdgeMappingImportWrapper;
 import org.eclipse.sirius.diagram.tools.api.Messages;
+import org.eclipse.sirius.diagram.tools.api.interpreter.IInterpreterSiriusDiagramVariables;
 import org.eclipse.sirius.diagram.tools.internal.command.reconnect.ReconnectSourceNodeCommand;
 import org.eclipse.sirius.diagram.tools.internal.command.reconnect.SetEdgeActualMappingCommand;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
@@ -286,8 +287,6 @@ public class ReconnectionCommandBuilder extends AbstractDiagramCommandBuilder {
      */
     public static class OtherEndVariable extends ElementSelectVariableImpl implements SubVariable {
 
-        private static final String OTHER_END_VARIABLE_NAME = "otherEnd"; //$NON-NLS-1$
-
         /**
          * {@inheritDoc}
          * 
@@ -295,7 +294,7 @@ public class ReconnectionCommandBuilder extends AbstractDiagramCommandBuilder {
          */
         @Override
         public String getName() {
-            return OTHER_END_VARIABLE_NAME;
+            return IInterpreterSiriusDiagramVariables.OTHER_END_VARIABLE_NAME;
         }
     }
 

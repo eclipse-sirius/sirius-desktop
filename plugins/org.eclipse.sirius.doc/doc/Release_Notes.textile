@@ -4,6 +4,18 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for recent major releases of Sirius. See also "the release notes from previous versions":Release_Notes_Previous.html for details about older releases.
 
+h2(#sirius7.0.2). Changes in Sirius 7.0.2
+
+h3. Developer-Visible Changes
+
+h4. Changes in @org.eclipse.sirius@
+
+* <span class="label label-success">Added</span> The method @org.eclipse.sirius.business.api.helper.task.TaskHelper.checkPrecondition(EObject, AbstractToolDescription, Map<String, EObject>, boolean, boolean)@ has been added to factorize code for the evaluation of a tool precondition.
+
+h4. Changes in @org.eclipse.sirius.diagram@
+
+* <span class="label label-success">Added</span> The name for variables @edgeView@ and @otherEnd@ is now available in @org.eclipse.sirius.diagram.tools.api.interpreter.IInterpreterSiriusDiagramVariables@. Before, it was duplicated constants in several classes.
+
 h2(#sirius7.0.1). Changes in Sirius 7.0.1
 
 h3. Developer-Visible Changes

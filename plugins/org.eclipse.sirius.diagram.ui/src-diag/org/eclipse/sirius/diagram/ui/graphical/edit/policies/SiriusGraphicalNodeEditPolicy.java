@@ -13,9 +13,11 @@
 package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.eclipse.core.runtime.IAdaptable;
@@ -76,10 +78,8 @@ import org.eclipse.gmf.runtime.notation.Routing;
 import org.eclipse.gmf.runtime.notation.RoutingStyle;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
-import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.business.api.helper.task.TaskHelper;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
@@ -120,10 +120,8 @@ import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
-import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 
@@ -619,30 +617,16 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
             // Check precondtion
             while (toolIterator.hasNext()) {
                 final ReconnectEdgeDescription myTool = toolIterator.next();
-                final String precondition = myTool.getPrecondition();
-                if (computePreCondition && precondition != null && !StringUtil.isEmpty(precondition)) {
+                Map<String, EObject> variables = new HashMap<>();
+                variables.put(IInterpreterSiriusVariables.DIAGRAM, edge.getParentDiagram());
+                variables.put(IInterpreterSiriusVariables.SOURCE, semanticSource);
+                variables.put(IInterpreterSiriusVariables.SOURCE_VIEW, oldTarget);
+                variables.put(IInterpreterSiriusVariables.TARGET, semanticTarget);
+                variables.put(IInterpreterSiriusVariables.TARGET_VIEW, newTarget);
+                variables.put(IInterpreterSiriusVariables.ELEMENT, semanticElement);
 
-                    final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semanticElement);
-
-                    interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, edge.getParentDiagram());
-                    interpreter.setVariable(IInterpreterSiriusVariables.SOURCE, semanticSource);
-                    interpreter.setVariable(IInterpreterSiriusVariables.SOURCE_VIEW, oldTarget);
-                    interpreter.setVariable(IInterpreterSiriusVariables.TARGET, semanticTarget);
-                    interpreter.setVariable(IInterpreterSiriusVariables.TARGET_VIEW, newTarget);
-                    interpreter.setVariable(IInterpreterSiriusVariables.ELEMENT, semanticElement);
-
-                    final boolean preconditionOK = RuntimeLoggerManager.INSTANCE.decorate(interpreter).evaluateBoolean(semanticElement, myTool,
-                            ToolPackage.eINSTANCE.getAbstractToolDescription_Precondition());
-                    if (!preconditionOK) {
-                        toolIterator.remove();
-                    }
-
-                    interpreter.unSetVariable(IInterpreterSiriusVariables.SOURCE);
-                    interpreter.unSetVariable(IInterpreterSiriusVariables.TARGET);
-                    interpreter.unSetVariable(IInterpreterSiriusVariables.ELEMENT);
-                    interpreter.unSetVariable(IInterpreterSiriusVariables.DIAGRAM);
-                    interpreter.unSetVariable(IInterpreterSiriusVariables.SOURCE_VIEW);
-                    interpreter.unSetVariable(IInterpreterSiriusVariables.TARGET_VIEW);
+                if (!TaskHelper.checkPrecondition(semanticElement, myTool, variables, false, false)) {
+                    toolIterator.remove();
                 }
             }
             // Check that the mapping of the new end is in the

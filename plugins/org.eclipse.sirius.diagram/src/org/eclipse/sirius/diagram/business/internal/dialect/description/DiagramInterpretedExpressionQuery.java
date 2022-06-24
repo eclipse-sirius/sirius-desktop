@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -73,6 +73,7 @@ import org.eclipse.sirius.diagram.description.tool.DoubleClickDescription;
 import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription;
+import org.eclipse.sirius.diagram.tools.api.interpreter.IInterpreterSiriusDiagramVariables;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.internal.interpreter.SiriusInterpreterContextFactory;
@@ -360,7 +361,7 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
         super.addVariableFromCreateOperation(modelOperation);
 
         if (modelOperation instanceof CreateEdgeView) {
-            availableVariables.put(((CreateEdgeView) modelOperation).getVariableName(), VariableType.fromString("diagram.DEdge")); //$NON-NLS-1$
+            availableVariables.put(((CreateEdgeView) modelOperation).getVariableName(), VariableType.fromString(DIAGRAM_D_EDGE_TYPE));
         } else if (modelOperation instanceof CreateView) {
             availableVariables.put(((CreateView) modelOperation).getVariableName(), VariableType.fromString("viewpoint.DView")); //$NON-NLS-1$
         }
@@ -441,8 +442,8 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
         if (toolContext instanceof ReconnectEdgeDescription) {
             ReconnectEdgeDescription tool = (ReconnectEdgeDescription) toolContext;
             declareEdgeSourceTargets(availableVariables, tool.getMappings(), Collections.<DiagramElementMapping> emptyList(), Collections.<DiagramElementMapping> emptyList());
-            availableVariables.put("otherEnd", EDGE_TARGET_POSSIBILITIES); //$NON-NLS-1$
-            availableVariables.put("edgeView", VariableType.fromString(DIAGRAM_D_EDGE_TYPE)); //$NON-NLS-1$
+            availableVariables.put(IInterpreterSiriusDiagramVariables.OTHER_END_VARIABLE_NAME, EDGE_TARGET_POSSIBILITIES);
+            availableVariables.put(IInterpreterSiriusDiagramVariables.EDGE_VIEW_VARIABLE_NAME, VariableType.fromString(DIAGRAM_D_EDGE_TYPE));
 
             Collection<String> possibleSources = new ArrayList<>();
             for (EdgeMapping eMapping : tool.getMappings()) {

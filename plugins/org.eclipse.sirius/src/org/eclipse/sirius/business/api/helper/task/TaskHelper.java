@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,14 +15,18 @@ package org.eclipse.sirius.business.api.helper.task;
 import static org.eclipse.sirius.viewpoint.ViewpointPackage.Literals.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS;
 import static org.eclipse.sirius.viewpoint.ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter;
+import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
@@ -44,6 +48,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
  * Helper for get tasks from ModelOperation. Provide some utilities reused in different EMFCommandFactory
@@ -213,20 +218,56 @@ public class TaskHelper {
      * @return <code>true</code> if the predicate is <code>true</code>.
      */
     public boolean checkPrecondition(final EObject container, final AbstractToolDescription toolDescription) {
-        boolean result = true;
-        if (toolDescription.getPrecondition() != null && !StringUtil.isEmpty(toolDescription.getPrecondition().trim())) {
-            final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(container);
-            // acceleoInterpreter.clearVariables();
-            interpreter.setVariable(IInterpreterSiriusVariables.CONTAINER, container);
+        Map<String, EObject> variables = new HashMap<>();
+        variables.put(IInterpreterSiriusVariables.CONTAINER, container);
+        return checkPrecondition(container, toolDescription, variables, true, false);
+    }
+
+    /**
+     * Check the precondition of the specified tool. If an exception is thrown during the evaluation of the expression,
+     * it is silently catch.
+     * 
+     * @param context
+     *            the context on which the precondition expression must be evaluated.
+     * @param toolDescription
+     *            the {@link org.eclipse.sirius.viewpoint.description.tool.ToolDescription} .
+     * @param variablesToSet
+     *            List of couples variableName/variableValue to set in the interpreter before evaluating the
+     *            precondition
+     * @param catchExceptionSilently
+     *            true to just return false in case of exception, false to encapsulate the interpreter into a
+     *            {@link RuntimeLoggerInterpreter}.
+     * @param flagCondition
+     *            this flag is used to know if evaluateBoolean call come from IfTask or SwitchTask (only used if
+     *            <code>catchExceptionSilently</code> is false).
+     * @return <code>true</code> if the predicate is <code>true</code>, <code>false</code> otherwise.
+     */
+    public static boolean checkPrecondition(final EObject context, final AbstractToolDescription toolDescription, final Map<String, EObject> variablesToSet, boolean catchExceptionSilently,
+            boolean flagCondition) {
+        boolean result = false;
+        if (toolDescription.getPrecondition() == null || StringUtil.isEmpty(toolDescription.getPrecondition())) {
+            result = true;
+        } else {
+            final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(context);
             try {
-                result = false;
-                result = interpreter.evaluateBoolean(container, toolDescription.getPrecondition());
-            } catch (final EvaluationException e) {
-                // silent.
+                for (var variableToSet : variablesToSet.entrySet()) {
+                    interpreter.setVariable(variableToSet.getKey(), variableToSet.getValue());
+                }
+                if (catchExceptionSilently) {
+                    try {
+                        result = interpreter.evaluateBoolean(context, toolDescription.getPrecondition());
+                    } catch (final EvaluationException e) {
+                        // silent.
+                    }
+                } else {
+                    result = RuntimeLoggerManager.INSTANCE.decorate(interpreter).evaluateBoolean(context, toolDescription, ToolPackage.eINSTANCE.getAbstractToolDescription_Precondition());
+                }
+            } finally {
+                for (var variableNameToUnset : variablesToSet.keySet()) {
+                    interpreter.unSetVariable(variableNameToUnset);
+                }
             }
-            interpreter.unSetVariable(IInterpreterSiriusVariables.CONTAINER);
         }
         return result;
     }
-
 }
