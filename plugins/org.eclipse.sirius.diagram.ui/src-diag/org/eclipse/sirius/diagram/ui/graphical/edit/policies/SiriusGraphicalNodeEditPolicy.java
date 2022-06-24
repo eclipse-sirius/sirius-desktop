@@ -99,6 +99,7 @@ import org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription;
 import org.eclipse.sirius.diagram.description.tool.ReconnectionKind;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
+import org.eclipse.sirius.diagram.tools.api.interpreter.IInterpreterSiriusDiagramVariables;
 import org.eclipse.sirius.diagram.ui.business.api.query.ConnectionEditPartQuery;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.business.internal.command.SetReconnectingConnectionBendpointsCommand;
@@ -188,8 +189,10 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
             edge = (DEdge) ((View) connectionEditPart.getModel()).getElement();
         }
         EdgeTarget source = null;
+        EdgeTarget otherEnd = null;
         if (edge != null) {
             source = edge.getSourceNode();
+            otherEnd = edge.getTargetNode();
         }
         if (request.getTarget().getModel() instanceof View && ((View) request.getTarget().getModel()).getElement() instanceof EdgeTarget) {
             target = (EdgeTarget) ((View) request.getTarget().getModel()).getElement();
@@ -197,10 +200,10 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
 
         Command cmd = UnexecutableCommand.INSTANCE;
 
-        if (source != null && target != null) {
+        if (source != null && target != null && otherEnd != null) {
             if (target != source) {
                 Option<EdgeMapping> edgeMapping = new IEdgeMappingQuery(edge.getActualMapping()).getEdgeMapping();
-                final ReconnectEdgeDescription tool = edgeMapping.some() ? getBestTool(edgeMapping.get(), true, source, target, edge, true) : null;
+                final ReconnectEdgeDescription tool = edgeMapping.some() ? getBestTool(edgeMapping.get(), true, source, target, edge, true, otherEnd) : null;
                 if (tool != null) {
                     final CompoundCommand result = new CompoundCommand();
                     result.add(this.getToolCommand(tool, edge, source, target));
@@ -300,18 +303,20 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
             edge = (DEdge) ((View) connectionEditPart.getModel()).getElement();
         }
         EdgeTarget source = null;
+        EdgeTarget otherEnd = null;
         if (edge != null) {
             source = edge.getTargetNode();
+            otherEnd = edge.getSourceNode();
         }
         if (request.getTarget().getModel() instanceof View && ((View) request.getTarget().getModel()).getElement() instanceof EdgeTarget) {
             target = (EdgeTarget) ((View) request.getTarget().getModel()).getElement();
         }
 
         Command cmd = UnexecutableCommand.INSTANCE;
-        if (source != null && target != null) {
+        if (source != null && target != null && otherEnd != null) {
             if (target != source) {
                 Option<EdgeMapping> edgeMapping = new IEdgeMappingQuery(edge.getActualMapping()).getEdgeMapping();
-                final ReconnectEdgeDescription tool = edgeMapping.some() ? getBestTool(edgeMapping.get(), false, source, target, edge, true) : null;
+                final ReconnectEdgeDescription tool = edgeMapping.some() ? getBestTool(edgeMapping.get(), false, source, target, edge, true, otherEnd) : null;
                 if (tool != null) {
                     final CompoundCommand result = new CompoundCommand();
                     result.add(this.getToolCommand(tool, edge, source, target));
@@ -593,7 +598,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
     }
 
     private ReconnectEdgeDescription getBestTool(final EdgeMapping mapping, final boolean source, final EdgeTarget oldTarget, final EdgeTarget newTarget, final DEdge edge,
-            boolean computePreCondition) {
+            boolean computePreCondition, EdgeTarget otherEnd) {
         final List<ReconnectEdgeDescription> candidateTool = new ArrayList<ReconnectEdgeDescription>(mapping.getReconnections());
 
         ReconnectEdgeDescription bestTool = null;
@@ -624,6 +629,8 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
                 variables.put(IInterpreterSiriusVariables.TARGET, semanticTarget);
                 variables.put(IInterpreterSiriusVariables.TARGET_VIEW, newTarget);
                 variables.put(IInterpreterSiriusVariables.ELEMENT, semanticElement);
+                variables.put(IInterpreterSiriusDiagramVariables.EDGE_VIEW_VARIABLE_NAME, edge);
+                variables.put(IInterpreterSiriusDiagramVariables.OTHER_END_VARIABLE_NAME, otherEnd);
 
                 if (!TaskHelper.checkPrecondition(semanticElement, myTool, variables, false, false)) {
                     toolIterator.remove();
@@ -1273,11 +1280,11 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         if (reconnectionTarget != null) {
             // If we are reconnecting the source
             if (RequestConstants.REQ_RECONNECT_SOURCE.equals(((ReconnectRequest) request).getType())) {
-                bestTool = getBestTool(actualIEdgeMapping, true, dEdge.getSourceNode(), reconnectionTarget, dEdge, false);
+                bestTool = getBestTool(actualIEdgeMapping, true, dEdge.getSourceNode(), reconnectionTarget, dEdge, false, dEdge.getTargetNode());
             }
             // Or the target
             else if (RequestConstants.REQ_RECONNECT_TARGET.equals(((ReconnectRequest) request).getType())) {
-                bestTool = getBestTool(actualIEdgeMapping, false, dEdge.getTargetNode(), reconnectionTarget, dEdge, false);
+                bestTool = getBestTool(actualIEdgeMapping, false, dEdge.getTargetNode(), reconnectionTarget, dEdge, false, dEdge.getSourceNode());
             }
         }
         return bestTool != null;

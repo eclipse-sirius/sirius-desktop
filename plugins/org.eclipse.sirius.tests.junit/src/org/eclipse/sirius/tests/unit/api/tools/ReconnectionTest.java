@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,17 +12,24 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.api.tools;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.business.api.helper.task.TaskHelper;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription;
+import org.eclipse.sirius.diagram.tools.api.interpreter.IInterpreterSiriusDiagramVariables;
 import org.eclipse.sirius.tests.unit.common.DocbookTestCase;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * Test edges reconnections.
@@ -32,33 +39,61 @@ import org.eclipse.sirius.tests.unit.common.DocbookTestCase;
 public class ReconnectionTest extends DocbookTestCase {
 
     private static final String E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_SECT1_SOURCE_NODE_NAME_CHAP1_N_SIZE = "aql:self.eAllContents(diagram::DEdge)->select(e | e.targetNode.target.oclIsTypeOf(docbook::Sect1) and e.sourceNode.name='chap1')->size()";
+
     private static final String E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_SECT1_SOURCE_NODE_NAME_CHAP0_N_SIZE = "aql:self.eAllContents(diagram::DEdge)->select(e | e.targetNode.target.oclIsTypeOf(docbook::Sect1) and e.sourceNode.name='chap0')->size()";
+
     private static final String E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_SECT2_SOURCE_NODE_NAME_CHAP1_N_SIZE = "aql:self.eAllContents(diagram::DEdge)->select(e | e.targetNode.target.oclIsTypeOf(docbook::Sect2) and e.sourceNode.name='chap1')->size()";
+
     private static final String E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_SECT2_SOURCE_NODE_NAME_CHAP0_N_SIZE = "aql:self.eAllContents(diagram::DEdge)->select(e | e.targetNode.target.oclIsTypeOf(docbook::Sect2) and e.sourceNode.name='chap0')->size()";
+
     private static final String E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_CHAPTER_TARGET_NODE_TARGET_E_CLASS_NAME_SECT1_N_GET_0 = "aql:self.eAllContents(diagram::DEdge)->select(e | e.sourceNode.target.oclIsTypeOf(docbook::Chapter) and e.targetNode.target.oclIsTypeOf(docbook::Sect1))->first()";
+
     private static final String E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT3_TARGET_NODE_TARGET_E_CLASS_NAME_CHAPTER_N_GET_0 = "aql:self.eAllContents(diagram::DEdge)->select(e | e.sourceNode.target.oclIsTypeOf(docbook::Sect3) and e.targetNode.target.oclIsTypeOf(docbook::Chapter))->first()";
+
     private static final String E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_PARA_SOURCE_NODE_NAME_CHAP1_N_SIZE = "aql:self.eAllContents(diagram::DEdge)->select(e | e.targetNode.target.eClass().name = 'Para' and e.sourceNode.name = 'chap1')->size()";
+
     private static final String E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_PARA_SOURCE_NODE_NAME_CHAP0_N_SIZE = "aql:self.eAllContents(diagram::DEdge)->select(e | e.targetNode.target.eClass().name = 'Para' and e.sourceNode.name = 'chap0')->size()";
+
     private static final String E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_CHAPTER_TARGET_NODE_TARGET_E_CLASS_NAME_SECT2_N_GET_0 = "aql:self.eAllContents(diagram::DEdge)->select(e | e.sourceNode.target.eClass().name = 'Chapter' and e.targetNode.target.eClass().name = 'Sect2')->first()";
+
     private static final String E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT3_TARGET_NODE_TARGET_E_CLASS_NAME_CHAPTER_TARGET_NODE_N_GET_0 = "aql:self.eAllContents(diagram::DEdge)->select( e | e.sourceNode.target.eClass().name = 'Sect3' and e.targetNode.target.eClass().name = 'Chapter').targetNode->first()";
+
     private static final String E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT3_TARGET_NODE_TARGET_E_CLASS_NAME_CHAPTER_TARGET_NODE_N_SIZE = "aql:self.eAllContents(diagram::DEdge)->select( e | e.sourceNode.target.eClass().name = 'Sect3' and e.targetNode.target.eClass().name = 'Chapter').targetNode->size()";
+
     private static final String E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT3_TARGET_NODE_TARGET_E_CLASS_NAME_SECT2_TARGET_NODE_N_SIZE = "aql:self.eAllContents(diagram::DEdge)->select( e | e.sourceNode.target.eClass().name = 'Sect3' and e.targetNode.target.eClass().name = 'Sect2').targetNode->size()";
+
     private static final String E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT3_TARGET_NODE_TARGET_E_CLASS_NAME_SECT2_TARGET_NODE_N_GET_0 = "aql:self.eAllContents(diagram::DEdge)->select( e | e.sourceNode.target.eClass().name = 'Sect3' and e.targetNode.target.eClass().name = 'Sect2').targetNode->first()";
+
     private static final String E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT3_TARGET_NODE_TARGET_E_CLASS_NAME_SECT2_N_GET_0 = "aql:self.eAllContents(diagram::DEdge)->select( e | e.sourceNode.target.eClass().name = 'Sect3' and e.targetNode.target.eClass().name = 'Sect2')->first()";
+
     private static final String E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT1_TARGET_NODE_NAME_CHAP0_N_SIZE = "aql:self.eAllContents(diagram::DEdge)->select( e | e.sourceNode.target.eClass().name = 'Sect1' and e.targetNode.name = 'chap0')->size()";
+
     private static final String E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT2_TARGET_NODE_NAME_CHAP1_N_SIZE = "aql:self.eAllContents(diagram::DEdge)->select( e | e.sourceNode.target.eClass().name = 'Sect2' and e.targetNode.name = 'chap1')->size()";
+
     private static final String E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT2_TARGET_NODE_NAME_CHAP0_N_SIZE = "aql:self.eAllContents(diagram::DEdge)->select( e | e.sourceNode.target.eClass().name = 'Sect2' and e.targetNode.name = 'chap0')->size()";
+
     private static final String E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_CHAPTER_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT1_N_GET_0 = "aql:self.eAllContents(diagram::DEdge)->select( e | e.targetNode.target.eClass().name = 'Chapter' and e.sourceNode.target.eClass().name = 'Sect1')->first()";
+
     private static final String E_ALL_CONTENTS_D_NODE_TARGET_E_CLASS_NAME_SECT2_N_GET_12 = "aql:self.eAllContents(diagram::DNode)->select( e | e.target.eClass().name = 'Sect2')->at(2)";
+
     private static final String E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_SECT3_SOURCE_NODE_TARGET_E_CLASS_NAME_CHAPTER_N_GET_0 = "aql:self.eAllContents(diagram::DEdge)->select( e | e.targetNode.target.eClass().name = 'Sect3' and e.sourceNode.target.eClass().name = 'Chapter')->first()";
+
     private static final String E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_PARA_TARGET_NODE_NAME_CHAP1_N_SIZE = "aql:self.eAllContents(diagram::DEdge)->select( e | e.sourceNode.target.eClass().name = 'Para' and e.targetNode.name = 'chap1')->size()";
+
     private static final String E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_PARA_TARGET_NODE_NAME_CHAP0_N_SIZE = "aql:self.eAllContents(diagram::DEdge)->select( e | e.sourceNode.target.eClass().name = 'Para' and e.targetNode.name = 'chap0')->size()";
+
     private static final String E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_CHAPTER_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT2_N_GET_0 = "aql:self.eAllContents(diagram::DEdge)->select( e | e.targetNode.target.eClass().name = 'Chapter' and e.sourceNode.target.eClass().name = 'Sect2')->first()";
+
     private static final String E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_SECT3_SOURCE_NODE_TARGET_E_CLASS_NAME_CHAPTER_SOURCE_NODE_N_GET_0 = "aql:self.eAllContents(diagram::DEdge)->select( e | e.targetNode.target.eClass().name = 'Sect3' and e.sourceNode.target.eClass().name = 'Chapter').sourceNode->first()";
+
     private static final String E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_SECT3_SOURCE_NODE_TARGET_E_CLASS_NAME_CHAPTER_SOURCE_NODE_N_SIZE = "aql:self.eAllContents(diagram::DEdge)->select( e | e.targetNode.target.eClass().name = 'Sect3' and e.sourceNode.target.eClass().name = 'Chapter').sourceNode->size()";
+
     private static final String E_ALL_CONTENTS_D_NODE_CONTAINER_TARGET_E_CLASS_NAME_CHAPTER_N_GET_1 = "aql:self.eAllContents(diagram::DNodeContainer)->select( e | e.target.eClass().name = 'Chapter')->at(2)";
+
     private static final String E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_SECT3_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT2_SOURCE_NODE_N_SIZE = "aql:self.eAllContents(diagram::DEdge)->select( e | e.targetNode.target.eClass().name = 'Sect3' and e.sourceNode.target.eClass().name = 'Sect2').sourceNode->size()";
+
     private static final String E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_SECT3_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT2_SOURCE_NODE_N_GET_0 = "aql:self.eAllContents(diagram::DEdge)->select( e | e.targetNode.target.eClass().name = 'Sect3' and e.sourceNode.target.eClass().name = 'Sect2').sourceNode->first()";
+
     private static final String E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_SECT3_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT2_N_GET_0 = "aql:self.eAllContents(diagram::DEdge)->select( e | e.targetNode.target.eClass().name = 'Sect3' and e.sourceNode.target.eClass().name = 'Sect2')->first()";
 
     /**
@@ -78,8 +113,7 @@ public class ReconnectionTest extends DocbookTestCase {
         }
 
         try {
-            source = INTERPRETER.evaluateEObject(obviousDiagram,
-                    E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_SECT3_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT2_SOURCE_NODE_N_GET_0);
+            source = INTERPRETER.evaluateEObject(obviousDiagram, E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_SECT3_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT2_SOURCE_NODE_N_GET_0);
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the EObject source.");
             e.printStackTrace();
@@ -98,8 +132,7 @@ public class ReconnectionTest extends DocbookTestCase {
         int targetCount = 0;
 
         try {
-            targetCount = INTERPRETER.evaluateInteger(obviousDiagram,
-                    E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_SECT3_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT2_SOURCE_NODE_N_SIZE).intValue();
+            targetCount = INTERPRETER.evaluateInteger(obviousDiagram, E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_SECT3_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT2_SOURCE_NODE_N_SIZE).intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
@@ -108,8 +141,7 @@ public class ReconnectionTest extends DocbookTestCase {
         assertEquals("Wrong source count for the considered edge.", 1, targetCount);
 
         try {
-            effectiveTarget = INTERPRETER.evaluateEObject(obviousDiagram,
-                    E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_SECT3_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT2_SOURCE_NODE_N_GET_0);
+            effectiveTarget = INTERPRETER.evaluateEObject(obviousDiagram, E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_SECT3_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT2_SOURCE_NODE_N_GET_0);
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the EObject source.");
             e.printStackTrace();
@@ -137,8 +169,7 @@ public class ReconnectionTest extends DocbookTestCase {
         }
 
         try {
-            source = INTERPRETER.evaluateEObject(obviousDiagram,
-                    E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_SECT3_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT2_SOURCE_NODE_N_GET_0);
+            source = INTERPRETER.evaluateEObject(obviousDiagram, E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_SECT3_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT2_SOURCE_NODE_N_GET_0);
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the EObject source.");
             e.printStackTrace();
@@ -163,8 +194,8 @@ public class ReconnectionTest extends DocbookTestCase {
         int targetCount = 0;
 
         try {
-            targetCount = INTERPRETER.evaluateInteger(obviousDiagram,
-                    E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_SECT3_SOURCE_NODE_TARGET_E_CLASS_NAME_CHAPTER_SOURCE_NODE_N_SIZE).intValue();
+            targetCount = INTERPRETER.evaluateInteger(obviousDiagram, E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_SECT3_SOURCE_NODE_TARGET_E_CLASS_NAME_CHAPTER_SOURCE_NODE_N_SIZE)
+                    .intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
@@ -173,8 +204,7 @@ public class ReconnectionTest extends DocbookTestCase {
         assertEquals("Wrong target count for the considered edge.", 1, targetCount);
 
         try {
-            effectiveTarget = INTERPRETER.evaluateEObject(obviousDiagram,
-                    E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_SECT3_SOURCE_NODE_TARGET_E_CLASS_NAME_CHAPTER_SOURCE_NODE_N_GET_0);
+            effectiveTarget = INTERPRETER.evaluateEObject(obviousDiagram, E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_SECT3_SOURCE_NODE_TARGET_E_CLASS_NAME_CHAPTER_SOURCE_NODE_N_GET_0);
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the EObject source.");
             e.printStackTrace();
@@ -186,9 +216,8 @@ public class ReconnectionTest extends DocbookTestCase {
     /**
      * test reconnection of edge source from DNode to BorderedNode.
      * 
-     * Reconnect the source of an edge (mapping : mediumToChapter). The original
-     * source of the edge is the mediume section (node in a container). The
-     * destination of the edge is a Para (Border NodeMapping chapNote). The new
+     * Reconnect the source of an edge (mapping : mediumToChapter). The original source of the edge is the mediume
+     * section (node in a container). The destination of the edge is a Para (Border NodeMapping chapNote). The new
      * mapping is chapterNoteToChapter.
      * 
      * 
@@ -261,8 +290,7 @@ public class ReconnectionTest extends DocbookTestCase {
         }
 
         try {
-            source = INTERPRETER.evaluateEObject(obviousDiagram,
-                    E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_SECT3_SOURCE_NODE_TARGET_E_CLASS_NAME_CHAPTER_SOURCE_NODE_N_GET_0);
+            source = INTERPRETER.evaluateEObject(obviousDiagram, E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_SECT3_SOURCE_NODE_TARGET_E_CLASS_NAME_CHAPTER_SOURCE_NODE_N_GET_0);
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the EObject source.");
             e.printStackTrace();
@@ -287,8 +315,7 @@ public class ReconnectionTest extends DocbookTestCase {
         int targetCount = 0;
 
         try {
-            targetCount = INTERPRETER.evaluateInteger(obviousDiagram,
-                    E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_SECT3_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT2_SOURCE_NODE_N_SIZE).intValue();
+            targetCount = INTERPRETER.evaluateInteger(obviousDiagram, E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_SECT3_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT2_SOURCE_NODE_N_SIZE).intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
@@ -297,8 +324,7 @@ public class ReconnectionTest extends DocbookTestCase {
         assertEquals("Wrong target count for the considered edge.", 1, targetCount);
 
         try {
-            effectiveTarget = INTERPRETER.evaluateEObject(obviousDiagram,
-                    E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_SECT3_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT2_SOURCE_NODE_N_GET_0);
+            effectiveTarget = INTERPRETER.evaluateEObject(obviousDiagram, E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_SECT3_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT2_SOURCE_NODE_N_GET_0);
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the EObject source.");
             e.printStackTrace();
@@ -326,8 +352,7 @@ public class ReconnectionTest extends DocbookTestCase {
         }
 
         try {
-            source = INTERPRETER.evaluateEObject(obviousDiagram,
-                    E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_SECT3_SOURCE_NODE_TARGET_E_CLASS_NAME_CHAPTER_SOURCE_NODE_N_GET_0);
+            source = INTERPRETER.evaluateEObject(obviousDiagram, E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_SECT3_SOURCE_NODE_TARGET_E_CLASS_NAME_CHAPTER_SOURCE_NODE_N_GET_0);
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the EObject source.");
             e.printStackTrace();
@@ -352,8 +377,8 @@ public class ReconnectionTest extends DocbookTestCase {
         int targetCount = 0;
 
         try {
-            targetCount = INTERPRETER.evaluateInteger(obviousDiagram,
-                    E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_SECT3_SOURCE_NODE_TARGET_E_CLASS_NAME_CHAPTER_SOURCE_NODE_N_SIZE).intValue();
+            targetCount = INTERPRETER.evaluateInteger(obviousDiagram, E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_SECT3_SOURCE_NODE_TARGET_E_CLASS_NAME_CHAPTER_SOURCE_NODE_N_SIZE)
+                    .intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
@@ -362,8 +387,7 @@ public class ReconnectionTest extends DocbookTestCase {
         assertEquals("Wrong target count for the considered edge.", 1, targetCount);
 
         try {
-            effectiveTarget = INTERPRETER.evaluateEObject(obviousDiagram,
-                    E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_SECT3_SOURCE_NODE_TARGET_E_CLASS_NAME_CHAPTER_SOURCE_NODE_N_GET_0);
+            effectiveTarget = INTERPRETER.evaluateEObject(obviousDiagram, E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_SECT3_SOURCE_NODE_TARGET_E_CLASS_NAME_CHAPTER_SOURCE_NODE_N_GET_0);
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the EObject source.");
             e.printStackTrace();
@@ -497,7 +521,9 @@ public class ReconnectionTest extends DocbookTestCase {
         assertEquals("Wrong target count for the considered edge.", 1, targetCount);
 
         try {
-            targetCount = INTERPRETER.evaluateInteger(obviousDiagram, "aql:self.eAllContents(diagram::DEdge)->select( e | e.sourceNode.target.eClass().name = 'Sect1' and e.targetNode.name = 'chap1')->size()").intValue();
+            targetCount = INTERPRETER
+                    .evaluateInteger(obviousDiagram, "aql:self.eAllContents(diagram::DEdge)->select( e | e.sourceNode.target.eClass().name = 'Sect1' and e.targetNode.name = 'chap1')->size()")
+                    .intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
@@ -564,8 +590,7 @@ public class ReconnectionTest extends DocbookTestCase {
         }
 
         try {
-            source = INTERPRETER.evaluateEObject(obviousDiagram,
-                    E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT3_TARGET_NODE_TARGET_E_CLASS_NAME_SECT2_TARGET_NODE_N_GET_0);
+            source = INTERPRETER.evaluateEObject(obviousDiagram, E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT3_TARGET_NODE_TARGET_E_CLASS_NAME_SECT2_TARGET_NODE_N_GET_0);
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the EObject source.");
             e.printStackTrace();
@@ -584,8 +609,7 @@ public class ReconnectionTest extends DocbookTestCase {
         int targetCount = 0;
 
         try {
-            targetCount = INTERPRETER.evaluateInteger(obviousDiagram,
-                    E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT3_TARGET_NODE_TARGET_E_CLASS_NAME_SECT2_TARGET_NODE_N_SIZE).intValue();
+            targetCount = INTERPRETER.evaluateInteger(obviousDiagram, E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT3_TARGET_NODE_TARGET_E_CLASS_NAME_SECT2_TARGET_NODE_N_SIZE).intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
@@ -594,8 +618,7 @@ public class ReconnectionTest extends DocbookTestCase {
         assertEquals("Wrong target count for the considered edge.", 1, targetCount);
 
         try {
-            effectiveTarget = INTERPRETER.evaluateEObject(obviousDiagram,
-                    E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT3_TARGET_NODE_TARGET_E_CLASS_NAME_SECT2_TARGET_NODE_N_GET_0);
+            effectiveTarget = INTERPRETER.evaluateEObject(obviousDiagram, E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT3_TARGET_NODE_TARGET_E_CLASS_NAME_SECT2_TARGET_NODE_N_GET_0);
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the EObject source.");
             e.printStackTrace();
@@ -623,8 +646,7 @@ public class ReconnectionTest extends DocbookTestCase {
         }
 
         try {
-            source = INTERPRETER.evaluateEObject(obviousDiagram,
-                    E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT3_TARGET_NODE_TARGET_E_CLASS_NAME_SECT2_TARGET_NODE_N_GET_0);
+            source = INTERPRETER.evaluateEObject(obviousDiagram, E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT3_TARGET_NODE_TARGET_E_CLASS_NAME_SECT2_TARGET_NODE_N_GET_0);
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the EObject source.");
             e.printStackTrace();
@@ -649,8 +671,8 @@ public class ReconnectionTest extends DocbookTestCase {
         int targetCount = 0;
 
         try {
-            targetCount = INTERPRETER.evaluateInteger(obviousDiagram,
-                    E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT3_TARGET_NODE_TARGET_E_CLASS_NAME_CHAPTER_TARGET_NODE_N_SIZE).intValue();
+            targetCount = INTERPRETER.evaluateInteger(obviousDiagram, E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT3_TARGET_NODE_TARGET_E_CLASS_NAME_CHAPTER_TARGET_NODE_N_SIZE)
+                    .intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
@@ -659,8 +681,7 @@ public class ReconnectionTest extends DocbookTestCase {
         assertEquals("Wrong target count for the considered edge.", 1, targetCount);
 
         try {
-            effectiveTarget = INTERPRETER.evaluateEObject(obviousDiagram,
-                    E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT3_TARGET_NODE_TARGET_E_CLASS_NAME_CHAPTER_TARGET_NODE_N_GET_0);
+            effectiveTarget = INTERPRETER.evaluateEObject(obviousDiagram, E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT3_TARGET_NODE_TARGET_E_CLASS_NAME_CHAPTER_TARGET_NODE_N_GET_0);
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the EObject source.");
             e.printStackTrace();
@@ -738,8 +759,7 @@ public class ReconnectionTest extends DocbookTestCase {
         }
 
         try {
-            source = INTERPRETER.evaluateEObject(obviousDiagram,
-                    E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT3_TARGET_NODE_TARGET_E_CLASS_NAME_CHAPTER_TARGET_NODE_N_GET_0);
+            source = INTERPRETER.evaluateEObject(obviousDiagram, E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT3_TARGET_NODE_TARGET_E_CLASS_NAME_CHAPTER_TARGET_NODE_N_GET_0);
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the EObject source.");
             e.printStackTrace();
@@ -764,8 +784,7 @@ public class ReconnectionTest extends DocbookTestCase {
         int targetCount = 0;
 
         try {
-            targetCount = INTERPRETER.evaluateInteger(obviousDiagram,
-                    E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT3_TARGET_NODE_TARGET_E_CLASS_NAME_SECT2_TARGET_NODE_N_SIZE).intValue();
+            targetCount = INTERPRETER.evaluateInteger(obviousDiagram, E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT3_TARGET_NODE_TARGET_E_CLASS_NAME_SECT2_TARGET_NODE_N_SIZE).intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
@@ -773,8 +792,7 @@ public class ReconnectionTest extends DocbookTestCase {
         assertEquals("Wrong target count for the considered edge.", 1, targetCount);
 
         try {
-            effectiveTarget = INTERPRETER.evaluateEObject(obviousDiagram,
-                    E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT3_TARGET_NODE_TARGET_E_CLASS_NAME_SECT2_TARGET_NODE_N_GET_0);
+            effectiveTarget = INTERPRETER.evaluateEObject(obviousDiagram, E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT3_TARGET_NODE_TARGET_E_CLASS_NAME_SECT2_TARGET_NODE_N_GET_0);
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the EObject source.");
             e.printStackTrace();
@@ -802,8 +820,7 @@ public class ReconnectionTest extends DocbookTestCase {
         }
 
         try {
-            source = INTERPRETER.evaluateEObject(obviousDiagram,
-                    E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT3_TARGET_NODE_TARGET_E_CLASS_NAME_CHAPTER_TARGET_NODE_N_GET_0);
+            source = INTERPRETER.evaluateEObject(obviousDiagram, E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT3_TARGET_NODE_TARGET_E_CLASS_NAME_CHAPTER_TARGET_NODE_N_GET_0);
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the EObject source.");
             e.printStackTrace();
@@ -828,8 +845,8 @@ public class ReconnectionTest extends DocbookTestCase {
         int targetCount = 0;
 
         try {
-            targetCount = INTERPRETER.evaluateInteger(obviousDiagram,
-                    E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT3_TARGET_NODE_TARGET_E_CLASS_NAME_CHAPTER_TARGET_NODE_N_SIZE).intValue();
+            targetCount = INTERPRETER.evaluateInteger(obviousDiagram, E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT3_TARGET_NODE_TARGET_E_CLASS_NAME_CHAPTER_TARGET_NODE_N_SIZE)
+                    .intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
@@ -838,8 +855,7 @@ public class ReconnectionTest extends DocbookTestCase {
         assertEquals("Wrong target count for the considered edge.", 1, targetCount);
 
         try {
-            effectiveTarget = INTERPRETER.evaluateEObject(obviousDiagram,
-                    E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT3_TARGET_NODE_TARGET_E_CLASS_NAME_CHAPTER_TARGET_NODE_N_GET_0);
+            effectiveTarget = INTERPRETER.evaluateEObject(obviousDiagram, E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT3_TARGET_NODE_TARGET_E_CLASS_NAME_CHAPTER_TARGET_NODE_N_GET_0);
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the EObject source.");
             e.printStackTrace();
@@ -1022,5 +1038,52 @@ public class ReconnectionTest extends DocbookTestCase {
         }
 
         assertEquals("Wrong target count for the considered edge.", 0, targetCount);
+    }
+
+    /**
+     * Check that the evaluation of a reconnect tool precondition containing variables edgeView and otherEnd, is
+     * evaluated without errors (test done using a new API from TaskHelper used in SiriusGraphicalNodeEditPolicy).
+     */
+    public void testReconnectPreconditionEvaluation() {
+        final EdgeTarget reconnectionTarget = createTinySectionAndExtraMediumSection();
+        final Command command;
+        EObject edge = null;
+        EObject reconnectionSource = null;
+        EObject otherEnd = null;
+
+        try {
+            edge = INTERPRETER.evaluateEObject(obviousDiagram, E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT3_TARGET_NODE_TARGET_E_CLASS_NAME_SECT2_N_GET_0);
+        } catch (final EvaluationException e) {
+            fail("Exception while trying to get the EObject edge:" + e.getMessage());
+        }
+
+        try {
+            reconnectionSource = INTERPRETER.evaluateEObject(obviousDiagram, E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT3_TARGET_NODE_TARGET_E_CLASS_NAME_SECT2_TARGET_NODE_N_GET_0);
+        } catch (final EvaluationException e) {
+            fail("Exception while trying to get the existing graphical target of the edge:" + e.getMessage());
+        }
+
+        try {
+            otherEnd = INTERPRETER.evaluateEObject(obviousDiagram, E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_SECT3_SOURCE_NODE_TARGET_E_CLASS_NAME_SECT2_SOURCE_NODE_N_GET_0);
+        } catch (final EvaluationException e) {
+            fail("Exception while trying to get the existing graphical source of the edge:" + e.getMessage());
+        }
+
+        assertTrue("source and target objet don't have expected type", (reconnectionSource instanceof EdgeTarget) && (edge instanceof DEdge) && (reconnectionSource instanceof DSemanticDecorator));
+        Map<String, EObject> variables = new HashMap<>();
+        variables.put(IInterpreterSiriusVariables.DIAGRAM, obviousDiagram);
+        variables.put(IInterpreterSiriusVariables.SOURCE, ((DSemanticDecorator) reconnectionSource).getTarget());
+        variables.put(IInterpreterSiriusVariables.SOURCE_VIEW, reconnectionSource);
+        variables.put(IInterpreterSiriusVariables.TARGET, ((DSemanticDecorator) reconnectionTarget).getTarget());
+        variables.put(IInterpreterSiriusVariables.TARGET_VIEW, reconnectionTarget);
+        variables.put(IInterpreterSiriusVariables.ELEMENT, ((DEdge) edge).getTarget());
+        variables.put(IInterpreterSiriusDiagramVariables.EDGE_VIEW_VARIABLE_NAME, edge);
+        variables.put(IInterpreterSiriusDiagramVariables.OTHER_END_VARIABLE_NAME, otherEnd);
+
+        final ReconnectEdgeDescription reconnectTool = (ReconnectEdgeDescription) getTool(obviousDiagram, "medium section target reconnection");
+        assertNotNull("Could not find the tool to reconnect edge target to a node.", reconnectTool);
+
+        boolean preconditionResult = TaskHelper.checkPrecondition(((DSemanticDecorator) edge).getTarget(), reconnectTool, variables, false, false);
+        assertTrue("The precondition must be evaluated to true.", preconditionResult);
     }
 }

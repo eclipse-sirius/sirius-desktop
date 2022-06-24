@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Docbook modelers" version="10.1.3.201511131800">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Docbook modelers" version="12.0.0.2017041100">
   <ownedViewpoints name="docbook1" modelFileExtension="docbook">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='drag%26drop']/@ownedTools[name='drop%20chapter%20note%20in%20diagram']" documentation="mon premier projet designer" name="obviousDiagram" initialisation="true" domainClass="Book">
       <metamodel href="http://docbook.org/ns/docbook#/"/>
@@ -155,7 +155,7 @@
           <initialOperation>
             <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
               <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Sect1" referenceName="sect1">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="aql:'Sect' + self.precedingSiblings()->size()"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="aql:'Sect1-' + self.precedingSiblings()->size()"/>
               </subModelOperations>
             </firstModelOperations>
           </initialOperation>
@@ -165,7 +165,9 @@
           <viewVariable name="containerView"/>
           <initialOperation>
             <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-              <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Sect2" referenceName="sect2"/>
+              <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Sect2" referenceName="sect2">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="aql:'Sect2-' + self.precedingSiblings()->size()"/>
+              </subModelOperations>
             </firstModelOperations>
           </initialOperation>
         </ownedTools>
@@ -204,7 +206,9 @@
           <viewVariable name="containerView"/>
           <initialOperation>
             <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eResource().getContents()->first().eAllContents(docbook::Sect2)->last())">
-              <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Sect3" referenceName="sect3"/>
+              <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Sect3" referenceName="sect3">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="aql:'Sect3-' + self.precedingSiblings()->size()"/>
+              </subModelOperations>
             </firstModelOperations>
           </initialOperation>
         </ownedTools>
@@ -325,7 +329,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="medium section target reconnection" precondition="aql:target.eClass().name = 'Sect2'" forceRefresh="true">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="medium section target reconnection" precondition="aql:target.id = 'Sect2-1' and otherEnd.target.id = 'Sect2-0' and edgeView &lt;> null" forceRefresh="true">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>

@@ -111,6 +111,7 @@ public class EdgeReconnectionTests extends AbstractSiriusSwtBotGefTestCase {
         try {
             SWTBotGefEditPart eClass1EditPartBot = editor.getEditPart("EClass1", AbstractDiagramContainerEditPart.class);
             SWTBotGefEditPart eClass2EditPartBot = editor.getEditPart("EClass2", AbstractDiagramContainerEditPart.class);
+            SWTBotGefEditPart eClassKOEditPartBot = editor.getEditPart("EClassKO", AbstractDiagramContainerEditPart.class);
             SWTBotGefEditPart ref1EditPartBot = editor.getEditPart("ref1", AbstractDiagramContainerEditPart.class);
             SWTBotGefEditPart ref2EditPartBot = editor.getEditPart("ref2", AbstractDiagramContainerEditPart.class);
             SWTBotGefEditPart ref3EditPartBot = editor.getEditPart("ref3", AbstractDiagramContainerEditPart.class);
@@ -327,6 +328,25 @@ public class EdgeReconnectionTests extends AbstractSiriusSwtBotGefTestCase {
                 removeSelectionListenerAndCheckIt(selectionListener);
             }
 
+            // Reconnect target of first connection on an element forbidden by a wrong precondition using otherEnd and
+            // edgeView variables
+            connection1Points = ((AbstractConnectionEditPart) connection1EditPartBot.part()).getConnectionFigure().getPoints().getCopy();
+            from = connection1Points.getLastPoint();
+            to = from.getCopy().setX(editor.getBounds(eClassKOEditPartBot).x);
+            connection1EditPartBot.select();
+
+            // Add a selection listener to detect wrong diagram selection during drag'n'drop
+            selectionListener = new NoDiagramSelectionListener();
+            EclipseUIUtil.getActivePage().addSelectionListener(selectionListener);
+            try {
+                editor.drag(from, to);
+                // Check that reconnection does nothing (wrong precondition)
+                assertEquals("The edge should still exist as before reconnection, before the precondition is false.", 1, editor.getConnectionEditPart(ref1EditPartBot, eClass1EditPartBot).size()); //$NON-NLS-1$
+                List<SWTBotGefConnectionEditPart> newConnection1EditPartBotList = editor.getConnectionEditPart(ref1EditPartBot, eClassKOEditPartBot);
+                assertEquals("No edge should be created after reconnection.", 0, newConnection1EditPartBotList.size()); //$NON-NLS-1$
+            } finally {
+                removeSelectionListenerAndCheckIt(selectionListener);
+            }
         } finally {
             editor.restore();
         }

@@ -519,7 +519,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="Reconnect participantnode to interaction node" precondition="aql:container.ownedInteractions->size() > 0 and source.type &lt;> null and target.messages->size() > 0 and diagram&lt;>null and sourceView &lt;>null and targetView&lt;>null " reconnectionKind="RECONNECT_BOTH">
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="Reconnect participantnode to interaction node" precondition="aql:container.ownedInteractions->size() > 0 and source.type &lt;> null and target.messages->size() > 0 and diagram&lt;>null and sourceView &lt;>null and targetView&lt;>null and edgeView&lt;>null and otherEnd &lt;> null" reconnectionKind="RECONNECT_BOTH">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -532,6 +532,8 @@
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:targetView.resizeKind"/>
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source.type"/>
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:target.states"/>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:edgeView"/>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:otherEnd"/>
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>

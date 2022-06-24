@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2022 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -127,14 +127,49 @@ public final class VariableType {
     }
 
     /**
-     * Return a {@link TypeName} representation of a common type matching all
-     * the definitions. This should only be used by interpreters or code which
-     * can't take into account the fact that a Variable can have multiple types
-     * which no common super type in a Viewpoint Specification model.
+     * Create a new {@link VariableType} from a list of other {@link VariableType}s (concatenation without duplicates).
      * 
-     * When a {@link VariableType} is defined by several typeNames common super
-     * types will be searched for but if several common types are found, then
-     * one will be arbitrarly choosen.
+     * @param variableType
+     *            a collection of VariableType.
+     * @return the newly created instance.
+     */
+    public static VariableType fromVariableTypes(VariableType... variableTypes) {
+        VariableType result = new VariableType();
+        for (VariableType variableType : variableTypes) {
+            for (TypeName typeName : variableType.getPossibleTypes()) {
+                if (!containsType(result, typeName.getCompleteName())) {
+                    result.types.add(typeName);
+                }
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Check if {@link VariableType} already contains a {@link TypeName} with this <code>typeName</code>.
+     * 
+     * @param variableType
+     *            The variable type to check
+     * @param typeName
+     *            The type name to check
+     * @return true if the VariableType contains a TypeName with this name, false otherwise.
+     */
+    private static boolean containsType(VariableType variableType, String typeName) {
+        for (TypeName existingTypeName : variableType.getPossibleTypes()) {
+            if (typeName.equals(existingTypeName.getCompleteName())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Return a {@link TypeName} representation of a common type matching all the definitions. This should only be used
+     * by interpreters or code which can't take into account the fact that a Variable can have multiple types which no
+     * common super type in a Viewpoint Specification model.
+     * 
+     * When a {@link VariableType} is defined by several typeNames common super types will be searched for but if
+     * several common types are found, then one will be arbitrarly choosen.
      * 
      * @param availableEPackages
      *            the available EPackages to use.

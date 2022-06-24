@@ -9,4 +9,5 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="ref3"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ref4"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EClassKO"/>
 </ecore:EPackage>

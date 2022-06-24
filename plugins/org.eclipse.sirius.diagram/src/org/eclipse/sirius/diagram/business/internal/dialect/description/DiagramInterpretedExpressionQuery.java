@@ -660,6 +660,10 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
         availableVariables.put(IInterpreterSiriusVariables.TARGET, VariableType.fromStrings(targetSemanticType));
         availableVariables.put(IInterpreterSiriusVariables.TARGET_VIEW, VariableType.fromStrings(targetViewType));
         availableVariables.put(IInterpreterSiriusVariables.DIAGRAM, VariableType.fromString(DIAGRAM_D_SEMANTIC_DIAGRAM));
+        // The otherEnd type is a concatenation of sourceView types and TargetView types (instead of all
+        // EDGE_TARGET_POSSIBILITIES)
+        availableVariables.put(IInterpreterSiriusDiagramVariables.OTHER_END_VARIABLE_NAME, VariableType.fromVariableTypes(VariableType.fromStrings(sourceViewType), VariableType.fromStrings(targetViewType)));
+        availableVariables.put(IInterpreterSiriusDiagramVariables.EDGE_VIEW_VARIABLE_NAME, VariableType.fromString(DIAGRAM_D_EDGE_TYPE));
     }
 
     /**
