@@ -27,7 +27,6 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -152,19 +151,14 @@ public class ImageManagerForWorkspaceResource implements ImageManager {
                 IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
                 Resource eResource = contextObject.eResource();
                 if (eResource != null) {
-                    Path contextRelativePath = new Path(eResource.getURI().toPlatformString(true));
-                    IPath pathContextProjectParentFolder = workspaceRoot.getFile(contextRelativePath).getProject().getLocation().removeLastSegments(1);
                     IResource member = workspaceRoot.findMember(originalPath);
                     if (member != null && member.getProject() != null) {
-                        IPath pathImageProjectParentFolder = member.getProject().getLocation().removeLastSegments(1);
                         String computedImagePath;
-                        if (pathContextProjectParentFolder.equals(pathImageProjectParentFolder)) {
-                            // The path is made relative to the current project
-                            computedImagePath = "../" + originalPath; //$NON-NLS-1$
-                        } else {
-                            // The path is made absolute
-                            computedImagePath = member.getLocation().toString();
-                        }
+                        // It should be made relative to the current project when the image is in the same project
+                        // than the EObject but making it absolute allows to fix an issue in Capella and display
+                        // correctly the image in the rich text editor when embedded in a dialog box
+                        computedImagePath = member.getLocation().toString();
+
                         htmlToOriginalImagePath.put(computedImagePath, matcher.group(1));
                         returnedString = replaceString(returnedString, originalPath, computedImagePath);
                     }
