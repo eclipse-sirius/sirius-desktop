@@ -18,6 +18,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -37,7 +38,7 @@ public class Base64ImageHelper {
      */
     public static final String BASE64_IMAGE_PATTERN_WITH_SUBSTRINGS = "\"data:image/([a-zA-Z]{3,4});base64,(.*?)\""; //$NON-NLS-1$
 
-    private static final String BASE64_IMAGE_PATTERN = "\"data:image/[a-zA-Z]{3,4};base64,.*?\""; //$NON-NLS-1$
+    private static final String BASE64_IMAGE_PATTERN = "data:image/[a-zA-Z]{3,4};base64,"; //$NON-NLS-1$
 
     private static final String IMAGE_NAME_FORMAT = "yyyyMMdd_HHmmss_SSSSSS"; //$NON-NLS-1$
 
@@ -68,8 +69,8 @@ public class Base64ImageHelper {
     private void updateField(EObject eObject, EAttribute attr, String strValue, Map<String, String> pathToImages) {
         String newStringValue = strValue;
         // change the attribute value to replace with a path to the created file.
-        for (String fileName : pathToImages.values()) {
-            newStringValue = newStringValue.replaceAll(BASE64_IMAGE_PATTERN, "\"" + fileName + "\""); //$NON-NLS-1$ //$NON-NLS-2$
+        for (Entry<String, String> entry : pathToImages.entrySet()) {
+            newStringValue = newStringValue.replaceAll(BASE64_IMAGE_PATTERN + Pattern.quote(entry.getKey()), entry.getValue());
         }
         if (!Objects.equals(newStringValue, strValue)) {
             eObject.eSet(attr, newStringValue);
