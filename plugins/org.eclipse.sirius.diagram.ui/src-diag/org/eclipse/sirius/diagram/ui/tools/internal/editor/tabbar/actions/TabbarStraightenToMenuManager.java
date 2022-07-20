@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -33,7 +33,7 @@ import org.eclipse.ui.IWorkbenchPage;
  * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
  *
  */
-public class TabbarStraightenToMenuManager extends DistributeMenuManager {
+public class TabbarStraightenToMenuManager extends StraightenToMenuManager {
 
     @Override
     public void add(IAction action) {
@@ -66,6 +66,7 @@ public class TabbarStraightenToMenuManager extends DistributeMenuManager {
      * @param actionId
      *            the action id to set
      */
+    @Override
     public void setDefaultAction(String actionId) {
         for (final IContributionItem item : getItems()) {
             if (item instanceof ActionContributionItem) {

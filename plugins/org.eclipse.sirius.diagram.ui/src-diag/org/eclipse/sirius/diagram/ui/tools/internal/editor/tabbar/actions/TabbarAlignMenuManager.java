@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,12 +18,12 @@ import java.lang.reflect.Method;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.gef.ui.actions.GEFActionConstants;
 import org.eclipse.gmf.runtime.common.ui.action.IDisposableAction;
-import org.eclipse.gmf.runtime.diagram.ui.actions.AlignAction;
 import org.eclipse.gmf.runtime.diagram.ui.actions.internal.AlignMenuManager;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.distribute.SiriusAlignAction;
 import org.eclipse.ui.IWorkbenchPage;
 
 /**
@@ -122,12 +122,12 @@ public class TabbarAlignMenuManager extends AlignMenuManager {
         if (isEmpty() && visible) {
             IWorkbenchPage page = EclipseUIUtil.getActivePage();
             if (page != null) {
-                add(new AlignAction(page, GEFActionConstants.ALIGN_LEFT, PositionConstants.LEFT));
-                add(new AlignAction(page, GEFActionConstants.ALIGN_CENTER, PositionConstants.CENTER));
-                add(new AlignAction(page, GEFActionConstants.ALIGN_RIGHT, PositionConstants.RIGHT));
-                add(new AlignAction(page, GEFActionConstants.ALIGN_TOP, PositionConstants.TOP));
-                add(new AlignAction(page, GEFActionConstants.ALIGN_MIDDLE, PositionConstants.MIDDLE));
-                add(new AlignAction(page, GEFActionConstants.ALIGN_BOTTOM, PositionConstants.BOTTOM));
+                add(new SiriusAlignAction(page, GEFActionConstants.ALIGN_LEFT, PositionConstants.LEFT));
+                add(new SiriusAlignAction(page, GEFActionConstants.ALIGN_CENTER, PositionConstants.CENTER));
+                add(new SiriusAlignAction(page, GEFActionConstants.ALIGN_RIGHT, PositionConstants.RIGHT));
+                add(new SiriusAlignAction(page, GEFActionConstants.ALIGN_TOP, PositionConstants.TOP));
+                add(new SiriusAlignAction(page, GEFActionConstants.ALIGN_MIDDLE, PositionConstants.MIDDLE));
+                add(new SiriusAlignAction(page, GEFActionConstants.ALIGN_BOTTOM, PositionConstants.BOTTOM));
                 setDefaultAction(GEFActionConstants.ALIGN_LEFT);
             }
         }

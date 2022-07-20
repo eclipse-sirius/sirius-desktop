@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2014, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -24,20 +24,29 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.draw2d.ConnectionLocator;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Dimension;
+import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.gef.GraphicalEditPart;
+import org.eclipse.gef.editparts.AbstractConnectionEditPart;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.figures.IBorderItemLocator;
+import org.eclipse.gmf.runtime.diagram.ui.internal.figures.LabelHelper;
+import org.eclipse.gmf.runtime.diagram.ui.internal.util.LabelViewConstants;
+import org.eclipse.gmf.runtime.draw2d.ui.geometry.PointListUtilities;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.ShiftDirectBorderedNodesOperation;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.distribute.DistributeAction;
@@ -48,10 +57,9 @@ import com.google.common.base.Functions;
 import com.google.common.collect.Lists;
 
 /**
- * This command distributes shapes.<BR>
- * Performance information: This command is only time consumming on execution,
- * not creation. The "real" command, <code>wrappedCommand</code>, is created
- * during the execution.
+ * This command distributes shapes OR labels of edges.<BR>
+ * Performance information: This command is only time consuming on execution, not creation. The "real" command,
+ * <code>wrappedCommand</code>, is created during the execution.
  *
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
@@ -59,7 +67,7 @@ public class DistributeCommand extends AbstractTransactionalCommand {
     /** Command created only during the execution of the DistributeCommand. */
     CompositeTransactionalCommand wrappedCommand;
 
-    /** List of parts to distribute. */
+    /** List of parts to distribute (labels of edges or nodes but not a mix of both). */
     List<IGraphicalEditPart> editPartsToDistribute;
 
     /**
@@ -78,13 +86,10 @@ public class DistributeCommand extends AbstractTransactionalCommand {
      *
      * @param domain
      *            my editing domain
-     * @param host
-     *            the <i>host</i> EditPart on which the corresponding policy is
-     *            installed.
-     * @param moveDelta
-     *            The move delta
-     * @param movedEditParts
+     * @param editPartsToDistribute
      *            Selected edit parts that will be moved (distributed)
+     * @param distributeType
+     *            The distribution type
      */
     public DistributeCommand(TransactionalEditingDomain domain, List<IGraphicalEditPart> editPartsToDistribute, int distributeType) {
         super(domain, DistributeAction.getLabel(distributeType, true), null);
@@ -569,8 +574,17 @@ public class DistributeCommand extends AbstractTransactionalCommand {
         if (!(partsToMove.get(0) instanceof IBorderItemEditPart)) {
             for (IGraphicalEditPart editPart : partsToMove) {
                 Rectangle newBounds = getNewBoundsFunction.apply(editPart, previousPartBounds, gap);
+
                 IAdaptable adapter = new EObjectAdapter((Node) editPart.getModel());
-                wrappedCommand.compose(new SetBoundsCommand(wrappedCommand.getEditingDomain(), wrappedCommand.getLabel(), adapter, newBounds));
+                if (editPart instanceof AbstractDEdgeNameEditPart) {
+                    // Compute label relative location (as in
+                    // ResizableShapeLabelEditPolicy.getMoveCommand(ChangeBoundsRequest))
+                    Point refPoint = getReferencePoint((AbstractDEdgeNameEditPart) editPart);
+                    Point relativeLabelLocation = LabelHelper.offsetFromRelativeCoordinate(editPart.getFigure(), newBounds, refPoint);
+                    wrappedCommand.compose(new SetBoundsCommand(wrappedCommand.getEditingDomain(), wrappedCommand.getLabel(), adapter, relativeLabelLocation));
+                } else {
+                    wrappedCommand.compose(new SetBoundsCommand(wrappedCommand.getEditingDomain(), wrappedCommand.getLabel(), adapter, newBounds));
+                }
                 previousPartBounds = newBounds;
             }
         } else {
@@ -610,6 +624,46 @@ public class DistributeCommand extends AbstractTransactionalCommand {
                 previousPartBounds = expectedNewBounds;
             }
         }
+    }
+
+    /**
+     * Get the referenced point used as target point. Method copied from
+     * {@link org.eclipse.sirius.diagram.ui.graphical.edit.policies.ResizableShapeLabelEditPolicy#getReferencePoint()}.
+     *
+     * @return the referenced point used as target point
+     */
+    private Point getReferencePoint(AbstractDEdgeNameEditPart dEdgeNameEditPart) {
+        if (dEdgeNameEditPart.getParent() instanceof AbstractConnectionEditPart) {
+            PointList ptList = ((AbstractConnectionEditPart) dEdgeNameEditPart.getParent()).getConnectionFigure().getPoints();
+            return PointListUtilities.calculatePointRelativeToLine(ptList, 0, getLocation(dEdgeNameEditPart), true);
+        } else {
+            return ((GraphicalEditPart) dEdgeNameEditPart.getParent()).getFigure().getBounds().getLocation();
+        }
+    }
+
+    /**
+     * Get the location among {@link LabelViewConstants} constants where to relocate the label figure. Method copied
+     * from {@link org.eclipse.sirius.diagram.ui.graphical.edit.policies.ResizableShapeLabelEditPolicy#getLocation()}.
+     *
+     * @return the location among {@link LabelViewConstants} constants
+     */
+    private int getLocation(AbstractDEdgeNameEditPart dEdgeNameEditPart) {
+        int location = LabelViewConstants.MIDDLE_LOCATION;
+        switch (dEdgeNameEditPart.getKeyPoint()) {
+        case ConnectionLocator.SOURCE:
+            location = LabelViewConstants.TARGET_LOCATION;
+            break;
+        case ConnectionLocator.TARGET:
+            location = LabelViewConstants.SOURCE_LOCATION;
+            break;
+        case ConnectionLocator.MIDDLE:
+            location = LabelViewConstants.MIDDLE_LOCATION;
+            break;
+        default:
+            location = LabelViewConstants.MIDDLE_LOCATION;
+            break;
+        }
+        return location;
     }
 
     @Override

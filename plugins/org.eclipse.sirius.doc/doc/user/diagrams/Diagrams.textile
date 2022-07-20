@@ -122,6 +122,101 @@ To change the z-order of one or several nodes, you have to select them and choos
 
 	!images/nodesZOrderContextualMenu.png!
 
+h4(#align). Align elements
+
+Six actions allow to distribute shapes OR label of edges: 
+
+!images/alignTabbarMenus.png!
+
+* Align Left: Aligns all the left side of the selected elements to the left side of the last selected element, ie the primary selection.
+* Align Center: Aligns all the center of the selected elements to the center of the last selected element, ie the primary selection.
+* Align Right: Aligns all the right side of the selected elements to the right side of the last selected element, ie the primary selection.
+* Align Top: Aligns all the top side of the selected elements to the top side of the last selected element, ie the primary selection.
+* Align Middle: Aligns all the middle of the selected elements to the middle of the last selected element, ie the primary selection.
+* Align Bottom: Aligns all the bottom side of the selected elements to the bottom side of the last selected element, ie the primary selection.
+
+These actions are also available in contextual menu _Format/Align_ or in menu bar _ Diagram/Align_.
+
+The selection must not contain a mix of shapes and label of edges. In this case, the actions will be disabled.
+
+Only the top level shapes of the selection are retained for these actions: if inner shapes, border labels or edges are selected, they are ignored.
+At least 2 shapes, or 2 labels of edges, should be selected to enable align actions.
+These actions are enabled only if the selected shapes have the same direct parent. There is no real constraint, on this topic, concerning labels of edges, because they are all "contained" in the diagram.
+These actions are not enabled for border nodes.
+
+In sequence diagram, the align actions are only available on labels of edge. Indeed, in sequence diagram, the order, and therefore the alignment, is constrained by the sequence of the elements.
+
+h4(#distribute). Distribute elements
+
+Four actions allow to distribute shapes OR label of edges: 
+
+!images/distribute_initialState.png!
+
+* Distribute centers horizontally: Distributes the selected elements so that the gap between horizontal centers of each selected elements will be the same.
+
+!images/distribute_Centers.png!
+
+* Distribute gaps horizontally: Distributes the selected elements so that the gap between the left side and the right side of each consecutive elements will be the same.
+
+!images/distribute_WithUniformGap.png!
+
+* Distribute centers vertically: Distributes the selected elements so that the gap between vertical centers of each selected elements will be the same.
+
+* Distribute gaps vertically: the gap between the bottom side and the top side of each consecutive elements will be the same.
+
+These actions are also available in contextual menu _Format/Distribute_ or in menu bar _ Diagram/Distribute_.
+
+The selection must not contain a mix of shapes and label of edges. In this case, the actions will be disabled.
+
+Only the top level shapes of the selection are retained for these actions: if inner shapes, border labels or edges are selected, they are ignored.
+At least 3 shapes, or 3 labels of edges, should be selected to enable distribute actions.
+These actions are enabled only if the selected shapes have the same direct parent. There is no real constraint, on this topic, concerning labels of edges, because they are all "contained" in the diagram.
+For border nodes, they will be enabled only if all selected border nodes have the same parent and are on the same axis (top and bottom sides for horizontal actions, left and right for vertical actions). The overlap is forbidden for border nodes, so in some conditions (location already used), these actions may not have accurate results.
+
+In sequence diagram, the distribute actions are not available. Indeed, in sequence diagram, the order, and therefore the distribution, is constrained by the sequence of the elements.
+
+h5. First and last elements
+
+For all distribute actions, the first and the last elements do not move. The first and last elements do not depend on the selection order. They depend on the location of each selected elements and the chosen action.
+
+For horizontal distribution with uniform gaps:
+* the first element is the leftmost one (with the minimum x location). If several elements have the same x location, the highest one is the first.
+* the last element is the rightmost one (with the right side with the maximum x coordinate). If several elements are aligned to the right, the lowest one is the last.
+
+For horizontal centered distribution:
+* the first element is the leftmost one (with its center at the minimum x coordinate). If several elements are aligned on center, the one with the highest center is the first.
+* the last element is the rightmost one (with its center at the maximum x coordinate). If several elements are aligned by center, the one with the lowest center is the last.
+
+For vertical distribution with uniform gaps:
+* the first element is the highest one (with the minimum y location). If several elements have the same y location, the leftmost one is the first.
+* the last element is the lowest one (with the bottom side with the maximum y coordinate). If several elements are aligned to the bottom, the rightmost one is the last.
+
+For vertical centered distribution:
+* the first element is the highest one (with its center at the minimum y coordinate). If several elements are aligned on middle, the leftmost one is the first.
+* the last element is the lowest one (with the bottom side with the maximum y coordinate). If several elements are aligned by middle, the rightmost one is the last.
+
+h4(#reset_origin). Reset Diagram or Container Origin
+
+This action is available within the diagram or containers contextual menu ("Reset Origin") or via "M1" + "HOME" shortcut.
+The diagram (or container) bounds (the rectangle formed by the highest, the leftmost, the lowest and the rightmost elements) can have a negative origin or can be shifted toward the bottom-right with a blank zone at the top-left.
+This action aims to move all diagram (or container) elements so that the diagram (or container) retrieves its origin while keeping the element layout.
+
+This action can be launched on several containers at same time.
+
+This is an example of a diagram with a blank zone between the origin location and the figures bounds:
+!images/reset_origin_before.png!
+
+After applying the action, the diagram figures are moved toward the top-left origin location:
+!images/reset_origin_after.png!
+
+h5. Specific cases
+
+* Elements hidden by the user are not considered to compute the shift size but are shifted as the other shapes. That means if an hidden element is located at the top-left corner, the diagram coordinates will turn negative if the user reveals it after having executed the "Reset Origin" action.
+* Edges hidden because of a masked source or target are taken in account to compute the diagram bounds:
+!images/reset_origin_visible_edge.png!
+After having scrolled the container, one of the edge end is masked so the edge is hidden. This one will be considered to compute the diagram bounds:
+!images/reset_origin_masked_edge.png!
+
 h3. Manage edges
 
 h4. Properties
@@ -313,72 +408,6 @@ If the edge is selected, one attachment is displayed for all associated labels.
 If a label is selected, only the attachment between the edge and this label is displayed.
 
 	!images/edgeLabelAttachment_labelSelected.png!
-
-h3(#distribute). Distribute elements
-
-Four new actions allow to distribute shapes: 
-
-!images/distribute_initialState.png!
-
-* Distribute centers horizontally: Distributes the selected shapes so that the gap between horizontal centers of each selected shapes will be the same.
-
-!images/distribute_Centers.png!
-
-* Distribute gaps horizontally: Distributes the selected shapes so that the gap between the left side and the right side of each consecutive shapes will be the same.
-
-!images/distribute_WithUniformGap.png!
-
-* Distribute centers vertically: Distributes the selected shapes so that the gap between vertical centers of each selected shapes will be the same.
-
-* Distribute gaps vertically: the gap between the bottom side and the top side of each consecutive shapes will be the same.
-
-These new actions are also available in contextual menu _Format/Distribute_ or in menu bar _ Diagram/Distribute_.
-
-Only the top level shapes of the selection are retained for these actions: if inner shapes, border labels or edges are selected, they are ignored. 
-These actions are enabled only if the selected shapes have the same direct parent. At least 3 shapes should be selected to enable distribute actions.
-For border nodes, they will be enabled only if all selected border nodes have the same parent and are on the same axis (top and bottom sides for horizontal actions, left and right for vertical actions). The overlap is forbidden for border nodes, so in some conditions (location already used), these actions may not have accurate results.
-
-h4. First and last shapes
-
-For all distribute actions, the first and the last shapes do not move. The first and last shapes do not depend on the selection order. They depend on the location of each selected shapes and the chosen action.
-
-For horizontal distribution with uniform gaps:
-* the first shape is the leftmost one (with the minimum x location). If several shapes have the same x location, the highest one is the first.
-* the last shape is the rightmost one (with the right side with the maximum x coordinate). If several shapes are aligned to the right, the lowest one is the last.
-
-For horizontal centered distribution:
-* the first shape is the leftmost one (with its center at the minimum x coordinate). If several shapes are aligned on center, the one with the highest center is the first.
-* the last shape is the rightmost one (with its center at the maximum x coordinate). If several shapes are aligned by center, the one with the lowest center is the last.
-
-For vertical distribution with uniform gaps:
-* the first shape is the highest one (with the minimum y location). If several shapes have the same y location, the leftmost one is the first.
-* the last shape is the lowest one (with the bottom side with the maximum y coordinate). If several shapes are aligned to the bottom, the rightmost one is the last.
-
-For vertical centered distribution:
-* the first shape is the highest one (with its center at the minimum y coordinate). If several shapes are aligned on middle, the leftmost one is the first.
-* the last shape is the lowest one (with the bottom side with the maximum y coordinate). If several shapes are aligned by middle, the rightmost one is the last.
-
-h3(#reset_origin). Reset Diagram or Container Origin
-
-This action is available within the diagram or containers contextual menu ("Reset Origin") or via "M1" + "HOME" shortcut.
-The diagram (or container) bounds (the rectangle formed by the highest, the leftmost, the lowest and the rightmost elements) can have a negative origin or can be shifted toward the bottom-right with a blank zone at the top-left.
-This action aims to move all diagram (or container) elements so that the diagram (or container) retrieves its origin while keeping the element layout.
-
-This action can be launched on several containers at same time.
-
-This is an example of a diagram with a blank zone between the origin location and the figures bounds:
-!images/reset_origin_before.png!
-
-After applying the action, the diagram figures are moved toward the top-left origin location:
-!images/reset_origin_after.png!
-
-h4. Specific cases
-
-* Elements hidden by the user are not considered to compute the shift size but are shifted as the other shapes. That means if an hidden element is located at the top-left corner, the diagram coordinates will turn negative if the user reveals it after having executed the "Reset Origin" action.
-* Edges hidden because of a masked source or target are taken in account to compute the diagram bounds:
-!images/reset_origin_visible_edge.png!
-After having scrolled the container, one of the edge end is masked so the edge is hidden. This one will be considered to compute the diagram bounds:
-!images/reset_origin_masked_edge.png!
  
 h3. Hiding elements
 
