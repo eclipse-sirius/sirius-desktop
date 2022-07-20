@@ -13,7 +13,7 @@
         <description xmi:type="description_1:DiagramDescription" href="Bug467663.odesign#//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug467663']"/>
         <target xmi:type="ecore:EPackage" href="Bug467663.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_XRr8APb2EeyRspMicPuGiw" name="new DiagramForBug467663WithRectilinear" repPath="#_i7bPcBXREeWwcbvMkwT-CQ" changeId="32b1e427-c8e2-489d-a3c0-de5a0613fe86">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_XRr8APb2EeyRspMicPuGiw" name="new DiagramForBug467663WithRectilinear" repPath="#_i7bPcBXREeWwcbvMkwT-CQ" changeId="e941f894-4765-4528-bdb2-e98b0c7fed9c">
         <description xmi:type="description_1:DiagramDescription" href="Bug467663.odesign#//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug467663']"/>
         <target xmi:type="ecore:EPackage" href="Bug467663.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -695,6 +695,15 @@
           <styles xmi:type="notation:ShapeStyle" xmi:id="_i7bPjxXREeWwcbvMkwT-CQ" fontName="Cantarell" fontHeight="8"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_i7bPkBXREeWwcbvMkwT-CQ" x="485" y="45" width="288" height="248"/>
         </children>
+        <children xmi:type="notation:Node" xmi:id="_svA9QgguEe2Pe4F27G9wVQ" type="2002" element="_su_IFAguEe2Pe4F27G9wVQ">
+          <children xmi:type="notation:Node" xmi:id="_svBkUAguEe2Pe4F27G9wVQ" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_svBkUQguEe2Pe4F27G9wVQ" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_svBkUgguEe2Pe4F27G9wVQ"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_svBkUwguEe2Pe4F27G9wVQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_svA9QwguEe2Pe4F27G9wVQ" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_vbBQgAguEe2Pe4F27G9wVQ" x="790" y="45" width="117" height="248"/>
+        </children>
         <styles xmi:type="notation:DiagramStyle" xmi:id="_i7bPkRXREeWwcbvMkwT-CQ"/>
         <edges xmi:type="notation:Edge" xmi:id="_i7bPkhXREeWwcbvMkwT-CQ" type="4001" element="_i7bPshXREeWwcbvMkwT-CQ" source="_i7bPeBXREeWwcbvMkwT-CQ" target="_i7bPdRXREeWwcbvMkwT-CQ">
           <children xmi:type="notation:Node" xmi:id="_i7bPkxXREeWwcbvMkwT-CQ" type="6001">
@@ -810,6 +819,17 @@
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_i7bPtxXREeWwcbvMkwT-CQ"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="Bug467663.odesign#//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug467663']/@defaultLayer/@edgeMappings[name='ETypeMapping']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_su_IFAguEe2Pe4F27G9wVQ" name="EClassKO">
+      <target xmi:type="ecore:EClass" href="Bug467663.ecore#//EClassKO"/>
+      <semanticElements xmi:type="ecore:EClass" href="Bug467663.ecore#//EClassKO"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_su_IFQguEe2Pe4F27G9wVQ" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="Bug467663.odesign#//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug467663']/@defaultLayer/@containerMappings[name='EClassMapping']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="Bug467663.odesign#//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug467663']/@defaultLayer/@containerMappings[name='EClassMapping']"/>
     </ownedDiagramElements>
     <description xmi:type="description_1:DiagramDescription" href="Bug467663.odesign#//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug467663']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_i7bPuBXREeWwcbvMkwT-CQ"/>
