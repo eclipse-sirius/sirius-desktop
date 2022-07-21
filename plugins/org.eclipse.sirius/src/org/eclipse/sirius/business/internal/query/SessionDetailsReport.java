@@ -49,6 +49,7 @@ import org.eclipse.sirius.business.api.query.DRepresentationElementQuery;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.URIQuery;
+import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.Messages;
@@ -304,10 +305,20 @@ public final class SessionDetailsReport {
             informations.append("description: null"); //$NON-NLS-1$
         }
         informations.append(SEPARATOR);
-        informations.append("repPath: "); //$NON-NLS-1$
-        informations.append(repDescriptor.getRepPath().toString());
+        ResourceDescriptor repPath = repDescriptor.getRepPath();
+        if (repPath != null) {
+            informations.append("repPath: "); //$NON-NLS-1$
+            informations.append(repPath.toString());
+        } else {
+            informations.append("repPath: null"); //$NON-NLS-1$
+        }
         informations.append(ARROW);
-        informations.append(new EObjectQuery(repDescriptor.getTarget()).getGenericDecription());
+        EObject target = repDescriptor.getTarget();
+        if (target != null) {
+            informations.append(new EObjectQuery(target).getGenericDecription());
+        } else {
+            informations.append("null"); //$NON-NLS-1$
+        }
         informations.append(TAB);
         informations.append(repDescToTags.get(repDescriptor));
     }

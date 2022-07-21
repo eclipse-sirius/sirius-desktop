@@ -107,7 +107,11 @@ public class SiriusSessionDetailsPropertyPage extends PropertyPage {
         informations.append(cr + MessageFormat.format(Messages.SiriusSessionDetailsPropertyPage_repOpenedInEditor, openedRepresentations.size()) + cr);
         openedRepresentations.stream().forEach(rep -> {
             informations.append(tab);
-            sessionQuery.addRepresentationDescriptorSimpleInfo(informations, new DRepresentationQuery(rep).getRepresentationDescriptor());
+            if (rep != null) {
+                sessionQuery.addRepresentationDescriptorSimpleInfo(informations, new DRepresentationQuery(rep).getRepresentationDescriptor());
+            } else {
+                informations.append("null"); //$NON-NLS-1$
+            }
             informations.append(cr);
         });
 
@@ -133,7 +137,7 @@ public class SiriusSessionDetailsPropertyPage extends PropertyPage {
                 String description = Messages.SiriusSessionDetailsPropertyPage_confirmComputingDependenciesDescriptionDialog;
                 String title = Messages.SiriusSessionDetailsPropertyPage_confirmComputingDependenciesTitleDialog;
                 Shell shell = Display.getCurrent().getActiveShell();
-                
+
                 boolean dialogChoice = MessageDialog.openQuestion(shell, title, description);
                 computeSessionDetails(Messages.SiriusSessionDetailsPropertyPage_computeDependenciesSessionDetails, dialogChoice);
                 computeDependenciesButton.setEnabled(!dialogChoice);
