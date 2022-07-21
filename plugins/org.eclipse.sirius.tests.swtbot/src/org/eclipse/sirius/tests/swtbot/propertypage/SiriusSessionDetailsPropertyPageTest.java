@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2021, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -148,7 +148,7 @@ public class SiriusSessionDetailsPropertyPageTest extends AbstractSiriusSwtBotGe
         strBuilder.append("*** Resources\n");
         strBuilder.append("\n");
         strBuilder.append("Session Resources (1)\n");
-        strBuilder.append("  platform:/resource/DesignerTestProject/representations.aird - 173 elements - x bytes\n");
+        strBuilder.append("  platform:/resource/DesignerTestProject/representations.aird - 183 elements - x bytes\n");
         strBuilder.append("\n");
         strBuilder.append("Semantic Resources (1)\n");
         strBuilder.append("  platform:/resource/DesignerTestProject/My.ecore - 7 elements - x bytes\n");
@@ -162,31 +162,38 @@ public class SiriusSessionDetailsPropertyPageTest extends AbstractSiriusSwtBotGe
         strBuilder.append("\n");
         strBuilder.append("*** Representations\n");
         strBuilder.append("\n");
-        strBuilder.append("All representations: 3\n");
-        strBuilder.append("  Diagram: 2\n");
+        strBuilder.append("All representations: 5\n");
+        strBuilder.append("  Diagram: 4\n");
         strBuilder.append("  Sequence: 0\n");
         strBuilder.append("  EditionTable: 1\n");
         strBuilder.append("  CrossTable: 0\n");
         strBuilder.append("  Tree: 0\n");
         strBuilder.append("\n");
         strBuilder.append("Loaded representations:  3\n");
-        strBuilder.append("Representation elements in loaded representations:  22\n");
+        strBuilder.append("Representation elements in loaded representations:  15\n");
         strBuilder.append("\n");
-        strBuilder.append("Loaded representations containing elements with no semantic target (red cross decorator) (2)\n");
-        strBuilder.append("  root package entities BROKEN - uid: _X14A0Gu5EeucgZBzLx9xaw\n");
+        strBuilder.append("Loaded representations containing elements with no semantic target (red cross decorator) (1)\n");
         strBuilder.append("  Classes in root package - uid: _KjzRUGu6EeucgZBzLx9xaw\n");
         strBuilder.append(Messages.SessionQuery_LoadedBrokenRepsInfo + "\n");
         strBuilder.append("\n");
-        strBuilder.append("Invalid representations (0)\n");
+        strBuilder.append("Invalid representations (3)\n");
+        strBuilder.append("  no target package entities BROKEN NoTarget - uid: _XlP0gAj6Ee2OwOZgulCHPg\n");
+        strBuilder.append("  root package entities BROKEN NoRepPath - uid: _TMvtwAj7Ee2OwOZgulCHPg\n");
+        strBuilder.append("  root package entities BROKEN NoRep - uid: _Uf3ihgj7Ee2OwOZgulCHPg\n");
         strBuilder.append(Messages.SessionQuery_InvalidRepsInfo + "\n");
         strBuilder.append("\n");
-        strBuilder.append("Representation descriptors details (3)\n");
+        strBuilder.append("Representation descriptors details (5)\n");
         strBuilder.append(
                 "  root package entities - uid: _8t7_oGu3EeuuXbLvG4gakA - description: Entities - viewpoint: Design - repPath: platform:/resource/DesignerTestProject/representations.aird#_8tukQGu3EeuuXbLvG4gakA -> {eClass: ecore::EPackage, name: root}  [Loaded][Diagram]\n");
         strBuilder.append(
-                "  root package entities BROKEN - uid: _X14A0Gu5EeucgZBzLx9xaw - description: Entities - viewpoint: Design - repPath: platform:/resource/DesignerTestProject/representations.aird#_X1N5gGu5EeucgZBzLx9xaw -> {eClass: ecore::EPackage, name: root}  [Loaded][Diagram]\n");
-        strBuilder.append(
                 "  Classes in root package - uid: _KjzRUGu6EeucgZBzLx9xaw - description: Classes - viewpoint: Design - repPath: platform:/resource/DesignerTestProject/representations.aird#_Kh3-sGu6EeucgZBzLx9xaw -> {eClass: ecore::EPackage, name: root}  [Loaded][EditionTable]\n");
+        strBuilder.append(
+                "  no target package entities BROKEN NoTarget - uid: _XlP0gAj6Ee2OwOZgulCHPg - description: Entities - viewpoint: Design - repPath: platform:/resource/DesignerTestProject/representations.aird#_XlNYQAj6Ee2OwOZgulCHPg -> null  [Invalid][Loaded][Diagram]\n");
+        strBuilder.append(
+                "  root package entities BROKEN NoRepPath - uid: _TMvtwAj7Ee2OwOZgulCHPg - description: Entities - viewpoint: Design - repPath: null -> {eClass: ecore::EPackage, name: root}  [Invalid][Diagram]\n");
+        strBuilder.append(
+                "  root package entities BROKEN NoRep - uid: _Uf3ihgj7Ee2OwOZgulCHPg - description: Entities - viewpoint: Design - repPath: platform:/resource/DesignerTestProject/representations.aird#_Uf2UYAj7Ee2OwOZgulCHPg -> {eClass: ecore::EPackage, name: root}  [Invalid][Diagram]\n"
+        );
         strBuilder.append("\n");
         strBuilder.append("Representations opened in an editor (1)\n");
         strBuilder.append("  root package entities - uid: _8t7_oGu3EeuuXbLvG4gakA\n");

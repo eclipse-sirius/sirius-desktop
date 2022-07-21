@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2021, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -116,7 +116,11 @@ public class SiriusSessionDetailsPropertyPage extends PropertyPage {
         informations.append(cr + MessageFormat.format(Messages.SiriusSessionDetailsPropertyPage_repOpenedInEditor, openedRepresentations.size()) + cr);
         openedRepresentations.stream().forEach(rep -> {
             informations.append(tab);
-            sessionQuery.addRepresentationDescriptorSimpleInfo(informations, new DRepresentationQuery(rep).getRepresentationDescriptor());
+            if (rep != null) {
+                sessionQuery.addRepresentationDescriptorSimpleInfo(informations, new DRepresentationQuery(rep).getRepresentationDescriptor());
+            } else {
+                informations.append("null"); //$NON-NLS-1$
+            }
             informations.append(cr);
         });
 
