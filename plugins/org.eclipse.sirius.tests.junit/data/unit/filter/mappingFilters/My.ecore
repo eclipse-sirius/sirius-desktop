@@ -6,4 +6,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="C2"/>
     <eClassifiers xsi:type="ecore:EClass" name="C3"/>
   </eSubpackages>
+  <eSubpackages name="p2">
+    <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  </eSubpackages>
 </ecore:EPackage>
