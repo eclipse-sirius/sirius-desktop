@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayMode;
@@ -45,6 +46,7 @@ import org.eclipse.sirius.diagram.description.filter.VariableFilter;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
+import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
 /**
@@ -313,7 +315,16 @@ public final class FilterService {
                 } else if (hasCollapse1 && !hasCollapse0) {
                     result = -1;
                 } else {
-                    result = filterDescription0.hashCode() - filterDescription1.hashCode();
+                    result = getHashCode(filterDescription0) - getHashCode(filterDescription1);
+                }
+                return result;
+            }
+
+            private int getHashCode(FilterDescription filterDescription) {
+                int result = filterDescription.hashCode();
+                if (filterDescription.eContainer() instanceof IdentifiedElement && !StringUtil.isEmpty(((IdentifiedElement) filterDescription.eContainer()).getName())
+                        && !StringUtil.isEmpty(filterDescription.getName())) {
+                    result = ((IdentifiedElement) filterDescription.eContainer()).getName().hashCode() + filterDescription.getName().hashCode();
                 }
                 return result;
             }
