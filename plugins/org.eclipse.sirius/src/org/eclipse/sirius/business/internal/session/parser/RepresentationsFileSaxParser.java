@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -25,7 +25,6 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.xml.sax.SAXException;
@@ -46,6 +45,10 @@ public class RepresentationsFileSaxParser {
 
     private Set<URI> referencedAnalysis = new LinkedHashSet<>();
 
+    private Set<URI> semanticElements = new LinkedHashSet<>();
+
+    private Set<String> imageDependencies = new LinkedHashSet<>();
+
     /**
      * Constructor.
      * 
@@ -63,8 +66,7 @@ public class RepresentationsFileSaxParser {
      * @param monitor
      *            A progress monitor
      */
-    public void analyze(final IProgressMonitor monitor) {
-        monitor.beginTask("", 1); //$NON-NLS-1$
+    public void analyze() {
         RepresentationsFileHandler sessionHandler = new RepresentationsFileHandler(getRepresentationsFileURI());
         InputStream inputStream = null;
         try {
@@ -75,6 +77,8 @@ public class RepresentationsFileSaxParser {
         } catch (final SiriusSaxParserNormalAbortException e) {
             // That is the normal exit for the parsing.
             referencedAnalysis = sessionHandler.getReferencedAnalysis();
+            imageDependencies = sessionHandler.getImageProjectDependencies();
+            semanticElements = sessionHandler.getSemanticElements();
         } catch (final SAXException e) {
             SiriusPlugin.getDefault().error(e.getMessage(), e);
         } catch (final FileNotFoundException e) {
@@ -91,7 +95,6 @@ public class RepresentationsFileSaxParser {
                     SiriusPlugin.getDefault().error(e.getMessage(), e);
                 }
             }
-            monitor.done();
         }
     }
 
@@ -111,5 +114,14 @@ public class RepresentationsFileSaxParser {
      */
     public Set<URI> getReferencedAnalysis() {
         return referencedAnalysis;
+    }
+
+    public Set<URI> getSemanticElements() {
+        return semanticElements;
+    }
+
+    public Set<String> getImageDependencies() {
+        return imageDependencies;
+
     }
 }

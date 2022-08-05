@@ -145,7 +145,11 @@ public class SiriusSessionDetailsPropertyPageTest extends AbstractSiriusSwtBotGe
     private String getExpectedSessionDetails() {
         StringBuilder strBuilder = new StringBuilder();
         strBuilder.append("\n");
-        strBuilder.append("*** Non computed dependencies\n");
+        strBuilder.append("*** Dependencies\n");
+        strBuilder.append("\n");
+        strBuilder.append("General projects dependencies (0) (calculated from serialized data)\n");
+        strBuilder.append("\n");
+        strBuilder.append("Image projects dependencies (0)\n");
         strBuilder.append("\n");
         strBuilder.append("*** Resources\n");
         strBuilder.append("\n");
@@ -194,8 +198,7 @@ public class SiriusSessionDetailsPropertyPageTest extends AbstractSiriusSwtBotGe
         strBuilder.append(
                 "  root package entities BROKEN NoRepPath - uid: _TMvtwAj7Ee2OwOZgulCHPg - description: Entities - viewpoint: Design - repPath: null -> {eClass: ecore::EPackage, name: root}  [Invalid][Diagram]\n");
         strBuilder.append(
-                "  root package entities BROKEN NoRep - uid: _Uf3ihgj7Ee2OwOZgulCHPg - description: Entities - viewpoint: Design - repPath: platform:/resource/DesignerTestProject/representations.aird#_Uf2UYAj7Ee2OwOZgulCHPg -> {eClass: ecore::EPackage, name: root}  [Invalid][Diagram]\n"
-        );
+                "  root package entities BROKEN NoRep - uid: _Uf3ihgj7Ee2OwOZgulCHPg - description: Entities - viewpoint: Design - repPath: platform:/resource/DesignerTestProject/representations.aird#_Uf2UYAj7Ee2OwOZgulCHPg -> {eClass: ecore::EPackage, name: root}  [Invalid][Diagram]\n");
         strBuilder.append("\n");
         strBuilder.append("Representations opened in an editor (1)\n");
         strBuilder.append("  root package entities - uid: _8t7_oGu3EeuuXbLvG4gakA\n");

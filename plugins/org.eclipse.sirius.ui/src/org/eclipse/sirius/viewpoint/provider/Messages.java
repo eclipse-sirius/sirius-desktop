@@ -1070,11 +1070,11 @@ public final class Messages {
     public static String SiriusRepresentationWithInactiveStatusLabelProvider_representationDescriptionItem_tooltip;
 
     @TranslatableMessage
-    public static String SiriusSessionDetailsPropertyPage_sessionNotOpened;
-    
-    @TranslatableMessage
     public static String SiriusSessionDetailsPropertyPage_computeDependenciesButton;
-    
+
+    @TranslatableMessage
+    public static String SiriusSessionDetailsPropertyPage_computeDependenciesButtonTooltip;
+
     @TranslatableMessage
     public static String SiriusSessionDetailsPropertyPage_computeDependenciesSessionDetails;
 
@@ -1083,10 +1083,10 @@ public final class Messages {
 
     @TranslatableMessage
     public static String SiriusSessionDetailsPropertyPage_computingSessionDetails;
-    
+
     @TranslatableMessage
     public static String SiriusSessionDetailsPropertyPage_confirmComputingDependenciesDescriptionDialog;
-    
+
     @TranslatableMessage
     public static String SiriusSessionDetailsPropertyPage_confirmComputingDependenciesTitleDialog;
 

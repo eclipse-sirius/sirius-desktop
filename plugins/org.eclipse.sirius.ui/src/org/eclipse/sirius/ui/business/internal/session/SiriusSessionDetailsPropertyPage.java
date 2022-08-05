@@ -16,19 +16,22 @@ import java.text.MessageFormat;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.Adapters;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.business.internal.image.ImageDependenciesAnnotationHelper;
 import org.eclipse.sirius.business.internal.query.SessionDetailsReport;
+import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.provider.Messages;
@@ -57,6 +60,8 @@ public class SiriusSessionDetailsPropertyPage extends PropertyPage {
 
     private Text text;
 
+    private IFile resourceAird;
+
     private Session session;
 
     private Button computeDependenciesButton;
@@ -82,40 +87,42 @@ public class SiriusSessionDetailsPropertyPage extends PropertyPage {
     }
 
     private void initialize() {
-        IResource resourceAird = Adapters.adapt(getElement(), IResource.class);
-        String airdName = resourceAird.getProject().getName() + "/" + resourceAird.getProjectRelativePath(); //$NON-NLS-1$
+        resourceAird = Adapters.adapt(getElement(), IFile.class);
 
-        URI airdURI = URI.createPlatformResourceURI(airdName, true);
+        URI airdURI = URI.createPlatformResourceURI(resourceAird.getFullPath().toString(), true);
+
         session = SessionManager.INSTANCE.getExistingSession(airdURI);
         if (session == null) {
-            text.setText(Messages.SiriusSessionDetailsPropertyPage_sessionNotOpened);
+            computeSessionDetails(Messages.SiriusSessionDetailsPropertyPage_computeSessionDetails, false);
         } else {
             computeSessionDetails(Messages.SiriusSessionDetailsPropertyPage_computeSessionDetails, false);
         }
         computeDependenciesButton.setEnabled(session != null);
     }
 
-    private String getSessionInformation(boolean computeDependencies) {
-        SessionDetailsReport sessionQuery = new SessionDetailsReport(session);
-        String formattedInformation = sessionQuery.getSessionFormattedInformation(computeDependencies);
+    private String getSessionInformation() {
+        SessionDetailsReport sessionQuery = new SessionDetailsReport(resourceAird);
+        String formattedInformation = sessionQuery.getSessionFormattedInformation();
 
         // Add part about the opened editors
-        StringBuilder informations = new StringBuilder();
-        List<DRepresentation> openedRepresentations = SessionUIManager.INSTANCE.getUISession(session).getEditors().stream().map(editor -> editor.getRepresentation()).collect(Collectors.toList());
-        String cr = System.lineSeparator();
-        String tab = "  "; //$NON-NLS-1$
-        informations.append(cr + MessageFormat.format(Messages.SiriusSessionDetailsPropertyPage_repOpenedInEditor, openedRepresentations.size()) + cr);
-        openedRepresentations.stream().forEach(rep -> {
-            informations.append(tab);
-            if (rep != null) {
-                sessionQuery.addRepresentationDescriptorSimpleInfo(informations, new DRepresentationQuery(rep).getRepresentationDescriptor());
-            } else {
-                informations.append("null"); //$NON-NLS-1$
-            }
-            informations.append(cr);
-        });
+        if (session != null) {
+            StringBuilder informations = new StringBuilder();
+            List<DRepresentation> openedRepresentations = SessionUIManager.INSTANCE.getUISession(session).getEditors().stream().map(editor -> editor.getRepresentation()).collect(Collectors.toList());
+            String cr = System.lineSeparator();
+            String tab = "  "; //$NON-NLS-1$
+            informations.append(cr + MessageFormat.format(Messages.SiriusSessionDetailsPropertyPage_repOpenedInEditor, openedRepresentations.size()) + cr);
+            openedRepresentations.stream().forEach(rep -> {
+                informations.append(tab);
+                if (rep != null) {
+                    sessionQuery.addRepresentationDescriptorSimpleInfo(informations, new DRepresentationQuery(rep).getRepresentationDescriptor());
+                } else {
+                    informations.append("null"); //$NON-NLS-1$
+                }
+                informations.append(cr);
+            });
 
-        formattedInformation = formattedInformation + informations.toString();
+            formattedInformation = formattedInformation + informations.toString();
+        }
 
         return formattedInformation;
     }
@@ -130,6 +137,7 @@ public class SiriusSessionDetailsPropertyPage extends PropertyPage {
 
         computeDependenciesButton = new Button(sessionDetailsComposite, SWT.NONE);
         computeDependenciesButton.setText(Messages.SiriusSessionDetailsPropertyPage_computeDependenciesButton);
+        computeDependenciesButton.setToolTipText(Messages.SiriusSessionDetailsPropertyPage_computeDependenciesButtonTooltip);
         computeDependenciesButton.setLayoutData(new GridData(SWT.LEFT, SWT.FILL, false, false));
         computeDependenciesButton.addSelectionListener(new SelectionAdapter() {
             @Override
@@ -138,9 +146,10 @@ public class SiriusSessionDetailsPropertyPage extends PropertyPage {
                 String title = Messages.SiriusSessionDetailsPropertyPage_confirmComputingDependenciesTitleDialog;
                 Shell shell = Display.getCurrent().getActiveShell();
 
-                boolean dialogChoice = MessageDialog.openQuestion(shell, title, description);
-                computeSessionDetails(Messages.SiriusSessionDetailsPropertyPage_computeDependenciesSessionDetails, dialogChoice);
-                computeDependenciesButton.setEnabled(!dialogChoice);
+                boolean computeImageDepencies = MessageDialog.openQuestion(shell, title, description);
+                if (computeImageDepencies) {
+                    computeSessionDetails(Messages.SiriusSessionDetailsPropertyPage_computeDependenciesSessionDetails, computeImageDepencies);
+                }
             }
         });
 
@@ -174,11 +183,20 @@ public class SiriusSessionDetailsPropertyPage extends PropertyPage {
         });
     }
 
-    private void computeSessionDetails(String jobName, boolean computeDependencies) {
+    private void computeSessionDetails(String jobName, boolean updateImageProjectDependencies) {
         Job job = new Job(jobName) {
             @Override
             protected IStatus run(IProgressMonitor monitor) {
-                String sessionInformation = getSessionInformation(computeDependencies);
+                if (updateImageProjectDependencies && session != null) {
+                    session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+
+                        @Override
+                        protected void doExecute() {
+                            new ImageDependenciesAnnotationHelper((DAnalysisSessionImpl) session).updateAllImageProjectsDependencies();
+                        }
+                    });
+                }
+                String sessionInformation = getSessionInformation();
                 Display.getDefault().asyncExec(new Runnable() {
                     @Override
                     public void run() {

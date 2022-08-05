@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,8 +16,10 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.sirius.business.internal.image.ImageDependenciesAnnotationHelper;
 import org.eclipse.sirius.tools.api.Messages;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -43,6 +45,16 @@ public class RepresentationsFileHandler extends DefaultHandler {
     private Set<URI> usedModels = new LinkedHashSet<>();
 
     private Set<URI> referencedAnalysis = new LinkedHashSet<>();
+
+    private Set<URI> semanticElements = new LinkedHashSet<>();
+
+    private Set<String> imageProjectDependencies = new LinkedHashSet<>();
+
+    private boolean inSemanticElement;
+
+    private boolean inImageAnnotation;
+
+    private boolean inAnnotationDetail;
 
     /**
      * Constructor.
@@ -74,9 +86,38 @@ public class RepresentationsFileHandler extends DefaultHandler {
             if (hrefValue != null) {
                 referencedAnalysis.add(URI.createURI(hrefValue).resolve(sessionURI).trimFragment());
             }
+        } else if (qName.equals(ViewpointPackage.eINSTANCE.getDAnalysis_EAnnotations().getName())) {
+            String hrefValue = attributes.getValue("source"); //$NON-NLS-1$
+            if (ImageDependenciesAnnotationHelper.IMAGES_DEPENDENCIES_ANNOTATION_SOURCE_NAME.equals(hrefValue)) {
+                inImageAnnotation = true;
+            }
+        } else if (qName.equals(ViewpointPackage.eINSTANCE.getDAnalysis_SemanticResources().getName())) {
+            inSemanticElement = true;
+        } else if (qName.equals(DescriptionPackage.eINSTANCE.getDAnnotationEntry_Details().getName())) {
+            inAnnotationDetail = true;
         } else if (qName.equals(ViewpointPackage.eINSTANCE.getDAnalysis_OwnedViews().getName()) && (dAnalysisReferencedAnalysis || dAnalysisModels)) {
             throw new SiriusSaxParserNormalAbortException(Messages.XMIModelFileHandler_parsingStopedMsg);
         }
+    }
+
+    @Override
+    public void characters(char[] ch, int start, int length) throws SAXException {
+        if (inSemanticElement) {
+            String value = new String(ch, start, length);
+            if (value != null) {
+                semanticElements.add(URI.createURI(value).resolve(sessionURI).trimFragment());
+            }
+            inSemanticElement = false;
+        } else if (inAnnotationDetail && inImageAnnotation) {
+            String value = new String(ch, start, length);
+            if (value != null) {
+                String[] detailsSplit = value.split(ImageDependenciesAnnotationHelper.SEPARATOR);
+                if (detailsSplit.length == 2) {
+                    imageProjectDependencies.add(detailsSplit[1]);
+                }
+            }
+        }
+        inAnnotationDetail = false;
     }
 
     @Override
@@ -100,5 +141,23 @@ public class RepresentationsFileHandler extends DefaultHandler {
      */
     public Set<URI> getReferencedAnalysis() {
         return referencedAnalysis;
+    }
+
+    /**
+     * Get the semantic elements.
+     * 
+     * @return
+     */
+    public Set<URI> getSemanticElements() {
+        return semanticElements;
+    }
+
+    /**
+     * Get the project containing images used by this analysis.
+     * 
+     * @return
+     */
+    public Set<String> getImageProjectDependencies() {
+        return imageProjectDependencies;
     }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2021 THALES GLOBAL SERVICES and others,
+ * Copyright (c) 2013, 2022 THALES GLOBAL SERVICES and others,
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -193,6 +193,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     private UpdateBase64ImageEncodingPreCommitListener updateBase64ImageEncodingPreCommitListener;
 
+    private UpdateImageDependenciesPreCommitListener updateImageDependenciesPreCommitListener;
+
     /**
      * Create a new session.
      * 
@@ -222,6 +224,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         getTransactionalEditingDomain().addResourceSetListener(changeIdUpdaterListener);
         updateBase64ImageEncodingPreCommitListener = new UpdateBase64ImageEncodingPreCommitListener(this);
         getTransactionalEditingDomain().addResourceSetListener(updateBase64ImageEncodingPreCommitListener);
+        updateImageDependenciesPreCommitListener = new UpdateImageDependenciesPreCommitListener(this);
+        getTransactionalEditingDomain().addResourceSetListener(updateImageDependenciesPreCommitListener);
     }
 
     // *******************
@@ -468,7 +472,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         }
     }
 
-    DAnalysis getMainAnalysis() {
+    public DAnalysis getMainAnalysis() {
         return this.mainDAnalysis;
     }
 
@@ -1312,6 +1316,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         changeIdUpdaterListener = null;
         getTransactionalEditingDomain().removeResourceSetListener(updateBase64ImageEncodingPreCommitListener);
         updateBase64ImageEncodingPreCommitListener = null;
+        getTransactionalEditingDomain().removeResourceSetListener(updateImageDependenciesPreCommitListener);
+        updateImageDependenciesPreCommitListener = null;
         refreshEditorsListeners = null;
         reloadingPolicy = null;
         savingPolicy = null;

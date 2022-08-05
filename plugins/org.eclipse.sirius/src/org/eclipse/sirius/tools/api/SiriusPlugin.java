@@ -35,6 +35,8 @@ import org.eclipse.sirius.business.internal.helper.delete.DeleteHookDescriptorRe
 import org.eclipse.sirius.business.internal.helper.task.ModelOperationManagerRegistryListener;
 import org.eclipse.sirius.business.internal.migration.IMigrationHandler;
 import org.eclipse.sirius.business.internal.query.DRepresentationWithSessionInternalQueryHelper;
+import org.eclipse.sirius.business.internal.query.LocalProjectDependencyProvider;
+import org.eclipse.sirius.business.internal.query.ProjectDependencyProviderRegistry;
 import org.eclipse.sirius.business.internal.representation.DRepresentationLocationRuleRegistryListener;
 import org.eclipse.sirius.business.internal.resource.strategy.ResourceStrategyRegistryListener;
 import org.eclipse.sirius.business.internal.session.factory.SessionFactoryRegistryListener;
@@ -237,6 +239,8 @@ public final class SiriusPlugin extends EMFPlugin {
             DRepresentationInternalQueryHelper.setInstance(new DRepresentationWithSessionInternalQueryHelper());
 
             RichTextAttributeRegistry.INSTANCE.add(DescriptionPackage.eINSTANCE.getDocumentedElement_Documentation());
+
+            ProjectDependencyProviderRegistry.getDefault().registerProjectDependencyProvider(new LocalProjectDependencyProvider());
         }
 
         /**

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2021 Obeo.
+ * Copyright (c) 2015, 2022 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -28,8 +28,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
-import org.eclipse.sirius.business.internal.query.ModelingProjectQuery;
+import org.eclipse.sirius.business.internal.query.SiriusProjectQuery;
 import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.xml.sax.Attributes;
@@ -61,9 +60,7 @@ public final class AirdFileParser {
         IProject project = workspace.getRoot().getProject(projectName);
 
         // get the file
-        ModelingProject modelingProject = new ModelingProject();
-        modelingProject.setProject(project);
-        IFile airdFile = new ModelingProjectQuery(modelingProject).getRepresentationFiles().get(0);
+        IFile airdFile = new SiriusProjectQuery(project).getRepresentationFiles().get(0);
 
         InputStream inputStream = null;
         try {

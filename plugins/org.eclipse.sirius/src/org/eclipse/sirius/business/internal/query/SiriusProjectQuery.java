@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -22,8 +22,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.SubProgressMonitor;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
@@ -36,7 +35,7 @@ import org.eclipse.sirius.tools.api.Messages;
  * 
  * @author lredor
  */
-public class ModelingProjectQuery {
+public class SiriusProjectQuery {
 
     /**
      * Error code when no representation file found.
@@ -48,7 +47,7 @@ public class ModelingProjectQuery {
      */
     public static final String A_MODELING_PROJECT_MUST_CONTAIN_ONLY_ONE = "*"; //$NON-NLS-1$
 
-    private final ModelingProject modelingProject;
+    private final IProject project;
 
     /**
      * Create a new query.
@@ -56,8 +55,8 @@ public class ModelingProjectQuery {
      * @param modelingProject
      *            the project to query.
      */
-    public ModelingProjectQuery(ModelingProject modelingProject) {
-        this.modelingProject = modelingProject;
+    public SiriusProjectQuery(IProject project) {
+        this.project = project;
     }
 
     /**
@@ -67,7 +66,7 @@ public class ModelingProjectQuery {
      *         this project
      */
     public List<IFile> getRepresentationFiles() {
-        return WorkspaceUtil.getFilesFromWorkspace(Collections.singleton(modelingProject.getProject()), SiriusUtil.SESSION_RESOURCE_EXTENSION);
+        return WorkspaceUtil.getFilesFromWorkspace(Collections.singleton(project), SiriusUtil.SESSION_RESOURCE_EXTENSION);
     }
 
     /**
@@ -81,14 +80,32 @@ public class ModelingProjectQuery {
      * @throws IllegalArgumentException
      *             In case of zero or multiples main representations file in the references.
      */
-    public URI computeMainRepresentationsFileURI(IProgressMonitor monitor) throws IllegalArgumentException {
+    public URI computeMainRepresentationsFileURI() throws IllegalArgumentException {
         URI result = null;
+        List<URI> notReferencedURIs = getMainAirdURIs();
+
+        if (notReferencedURIs.isEmpty()) {
+            throw new IllegalArgumentException(MessageFormat.format(Messages.ModelingProjectQuery_mustContainOneRepFileMsg, project.getName()), new Throwable(ZERO_REPRESENTATIONS_FILE_FOUND_IN));
+        } else if (notReferencedURIs.size() == 1) {
+            result = notReferencedURIs.get(0);
+        } else {
+            throw new IllegalArgumentException(
+                    MessageFormat.format(Messages.ModelingProjectQuery_severalRepresentationsFiles, notReferencedURIs.size(), project.getName(), getFragments(notReferencedURIs)),
+                    new Throwable(A_MODELING_PROJECT_MUST_CONTAIN_ONLY_ONE));
+        }
+        return result;
+    }
+
+    /**
+     * Get the platform/resource URIs of all the aird contained in this project that are not referenced by any other
+     * aird.
+     */
+    public List<URI> getMainAirdURIs() {
         List<IFile> sessionFiles = getRepresentationFiles();
-        monitor.beginTask("", sessionFiles.size() + 1); //$NON-NLS-1$
         Map<URI, Set<URI>> references = new HashMap<URI, Set<URI>>(sessionFiles.size());
         for (IFile sessionFile : sessionFiles) {
             final RepresentationsFileSaxParser sessionSaxParser = new RepresentationsFileSaxParser(sessionFile);
-            sessionSaxParser.analyze(new SubProgressMonitor(monitor, 1));
+            sessionSaxParser.analyze();
             references.put(sessionSaxParser.getRepresentationsFileURI(), sessionSaxParser.getReferencedAnalysis());
         }
         List<URI> notReferencedURIs = new ArrayList<URI>();
@@ -105,20 +122,7 @@ public class ModelingProjectQuery {
                 notReferencedURIs.add(uri);
             }
         }
-        monitor.worked(1);
-
-        if (notReferencedURIs.isEmpty()) {
-            throw new IllegalArgumentException(MessageFormat.format(Messages.ModelingProjectQuery_mustContainOneRepFileMsg, modelingProject.getProject().getName()),
-                    new Throwable(ZERO_REPRESENTATIONS_FILE_FOUND_IN));
-        } else if (notReferencedURIs.size() == 1) {
-            result = notReferencedURIs.get(0);
-        } else {
-            throw new IllegalArgumentException(
-                    MessageFormat.format(Messages.ModelingProjectQuery_severalRepresentationsFiles, notReferencedURIs.size(), modelingProject.getProject().getName(), getFragments(notReferencedURIs)),
-                    new Throwable(A_MODELING_PROJECT_MUST_CONTAIN_ONLY_ONE));
-        }
-        monitor.done();
-        return result;
+        return notReferencedURIs;
     }
 
     /**

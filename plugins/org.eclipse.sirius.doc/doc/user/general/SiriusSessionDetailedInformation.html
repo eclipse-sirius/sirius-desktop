@@ -9,7 +9,7 @@
 	<body>
 		<h1 id="SiriusSessiondetailedinformation">Sirius Session detailed information</h1>
 		<p>This document describes how to see information on the opened Sirius Session.</p>
-		<p>The Sirius Session is the runtime concept of a Sirius Modeling Project. It corresponds to the information in memory of an opened modeling project.</p>
+		<p>The Sirius Session is the runtime concept of a Sirius Modeling Project. It corresponds mainly to the information in memory of an opened Sirius project.</p>
 		<p>To get this information, right click on the aird and select 
 			<strong>Properties</strong> and then 
 			<strong>Sirius Session Details</strong>.
@@ -19,6 +19,11 @@
 			<li>the resources used (aird, srm, semantic and controlled resources as well) with number of contained elements</li>
 			<li>the viewpoints used</li>
 			<li>the representations (number, size, loaded representations, invalid representations, etc)</li>
+		</ul>
+		<p>It also provides project dependencies information:</p>
+		<ul>
+			<li>General project dependencies: All direct and indirect projects that are used by the current project. They are projects that contain an aird or a semantic resource used by the current project. To calculate the indirect projects, it checks dependencies from the aird of the direct project dependency and so on recursively.</li>
+			<li>Images project dependencies: Projects that contain images used by the nodes of the diagrams or by the rich text description.</li>
 		</ul>
 		<p>Example:</p>
 		<p>

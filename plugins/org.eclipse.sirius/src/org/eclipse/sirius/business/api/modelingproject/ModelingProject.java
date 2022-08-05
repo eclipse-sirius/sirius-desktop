@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,11 +18,10 @@ import org.eclipse.core.resources.IProjectNature;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.business.internal.query.ModelingProjectQuery;
+import org.eclipse.sirius.business.internal.query.SiriusProjectQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.Messages;
@@ -208,7 +207,7 @@ public class ModelingProject implements IProjectNature, IModelingElement {
                 // The main representations file is not known (or is known but
                 // must be recomputed). We must compute it.
                 try {
-                    mainRepresentationsFileURI = new ModelingProjectQuery(this).computeMainRepresentationsFileURI(new SubProgressMonitor(monitor, 1));
+                    mainRepresentationsFileURI = new SiriusProjectQuery(this.getProject()).computeMainRepresentationsFileURI();
                 } catch (IllegalArgumentException e) {
                     // Set this project in invalid state
                     setValid(false);

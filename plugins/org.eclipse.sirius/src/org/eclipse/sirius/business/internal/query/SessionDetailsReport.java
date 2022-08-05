@@ -22,12 +22,11 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 import java.util.Spliterator;
 import java.util.Spliterators;
 import java.util.TreeSet;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -35,24 +34,27 @@ import org.eclipse.core.filesystem.EFS;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
-import org.eclipse.sirius.business.api.image.ImageManager;
-import org.eclipse.sirius.business.api.image.RichTextAttributeRegistry;
 import org.eclipse.sirius.business.api.query.DRepresentationDescriptorQuery;
 import org.eclipse.sirius.business.api.query.DRepresentationElementQuery;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
+import org.eclipse.sirius.business.api.query.SiriusProjectDependencies;
+import org.eclipse.sirius.business.api.query.SiriusProjectDependencyQuery;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.business.internal.image.ImageDependenciesAnnotationHelper;
+import org.eclipse.sirius.common.tools.api.resource.FileProvider;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.Messages;
+import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
@@ -85,7 +87,13 @@ public final class SessionDetailsReport {
 
     private static final String COLON = ":"; //$NON-NLS-1$
 
+    private static final String NOT_ANALYSED = "(Not analysed)"; //$NON-NLS-1$
+
+    private static final String TRANSITIVE_DEPENDENCY = "(Transitive dependency)"; //$NON-NLS-1$
+
     private Session session;
+
+    private IFile resourceAird;
 
     /**
      * Default constructor.
@@ -93,8 +101,10 @@ public final class SessionDetailsReport {
      * @param session
      *            the session
      */
-    public SessionDetailsReport(Session session) {
-        this.session = session;
+    public SessionDetailsReport(IFile resourceAird) {
+        this.resourceAird = resourceAird;
+        URI airdURI = URI.createPlatformResourceURI(resourceAird.getFullPath().toString(), true);
+        session = SessionManager.INSTANCE.getExistingSession(airdURI);
     }
 
     /**
@@ -107,23 +117,24 @@ public final class SessionDetailsReport {
      * 
      * @return the formatted information
      */
-    public String getSessionFormattedInformation(boolean computeDependencies) {
+    public String getSessionFormattedInformation() {
         StringBuilder informations = new StringBuilder();
+        if (session == null) {
+            informations.append(Messages.SessionQuery_sessionNotOpened).append(CR);
+        }
 
         informations.append(STARS);
         informations.append(Messages.SessionQuery_Date).append(SPACE).append(Date.from(Instant.now())).append(CR).append(CR);
 
-        if (computeDependencies) {
-            addDependenciesInformation(informations);
-        } else {
-            informations.append(STARS);
-            informations.append(Messages.SessionQuery_NonComputedDependencies).append(CR).append(CR);
+        addDependenciesInformation(informations);
+
+        if (session != null) {
+            addResourcesInformation(informations);
+
+            addViewpointsInformation(informations);
+
+            addRepresentationsInformation(informations);
         }
-        addResourcesInformation(informations);
-
-        addViewpointsInformation(informations);
-
-        addRepresentationsInformation(informations);
 
         return informations.toString();
     }
@@ -234,12 +245,9 @@ public final class SessionDetailsReport {
     private void addDependenciesInformation(StringBuilder informations) {
         informations.append(STARS);
         informations.append(Messages.SessionQuery_Dependencies).append(CR);
-        Set<Resource> allResourcesUsed = new LinkedHashSet<>();
-        allResourcesUsed.addAll(session.getSemanticResources());
-        allResourcesUsed.addAll(session.getAllSessionResources());
-        allResourcesUsed.addAll(((DAnalysisSessionEObject) session).getControlledResources());
-        addGeneralProjectsDependencies(informations, allResourcesUsed);
-        addImageProjectsDependencies(informations);
+        SiriusProjectDependencies directDependencies = new SiriusProjectDependencyQuery(resourceAird.getProject()).getAllDependencies();
+        addGeneralProjectsDependencies(informations, directDependencies);
+        addImageProjectsDependencies(informations, directDependencies);
 
         informations.append(CR);
     }
@@ -393,104 +401,81 @@ public final class SessionDetailsReport {
                 .append(Messages.SessionQuery_FileSize);
     }
 
-    private void addGeneralProjectsDependencies(StringBuilder informations, Set<Resource> resources) {
-        Set<String> projectNames = new TreeSet<>();
-        for (Resource res : resources) {
-            URI uri = res.getURI();
-            String[] segments = uri.segments();
-            if (uri.hasAuthority()) {
-                projectNames.add(segments[0]);
-            } else {
-                projectNames.add(segments[1]);
-            }
+    private void addGeneralProjectsDependencies(StringBuilder informations, SiriusProjectDependencies dependencies) {
+        Set<String> directDependencyProjectNames = new TreeSet<>(dependencies.getGeneralProjectDirectDependencies());
+        Set<String> transitiveDependencyProjectNames = new TreeSet<>(dependencies.getGeneralProjectTransitiveDependencies());
+        Set<String> notAnalysedDependencyProjectNames = new TreeSet<>(dependencies.getNotAnalysedGeneralProjectDependencies());
+        int nbProjects = directDependencyProjectNames.size() + transitiveDependencyProjectNames.size() + notAnalysedDependencyProjectNames.size();
+
+        informations.append(CR).append(MessageFormat.format(Messages.SessionQuery_GeneralProjectsDependencies, nbProjects)).append(CR);
+        directDependencyProjectNames.forEach(project -> {
+            informations.append(TAB);
+            informations.append(project);
+            informations.append(CR);
+        });
+
+        transitiveDependencyProjectNames.forEach(project -> {
+            informations.append(TAB);
+            informations.append(TRANSITIVE_DEPENDENCY);
+            informations.append(project);
+            informations.append(CR);
+        });
+
+        notAnalysedDependencyProjectNames.forEach(project -> {
+            informations.append(TAB);
+            informations.append(NOT_ANALYSED);
+            informations.append(project);
+            informations.append(CR);
+        });
+    }
+
+    private void addImageProjectsDependencies(StringBuilder informations, SiriusProjectDependencies dependencies) {
+        Set<String> imageProjectsDirectDependencies = new TreeSet<>(dependencies.getImageProjectsDirectDependencies());
+        if (session != null) {
+            // if the session is opened we take the result directly from the DAnnotation instead of serialized
+            // dependencies because it may have been modified without being saved.
+            // @formatter:off
+            Set<String> imageProjectsDirectDependenciesSet = session.getAllSessionResources().stream()
+                    .flatMap(res -> res.getContents().stream())
+                    .filter(DAnalysis.class::isInstance)
+                    .map(DAnalysis.class::cast)
+                    .flatMap(dAnalysis -> ImageDependenciesAnnotationHelper.getAllImageProjectsDirectDependencies(dAnalysis).stream())
+                    .filter(projectName -> !projectName.equals(resourceAird.getProject().getName()))
+                    .collect(Collectors.toSet());
+            // @formatter:on
+            imageProjectsDirectDependencies = new TreeSet<>(imageProjectsDirectDependenciesSet);
         }
-        String selfProject = session.getSessionResource().getURI().segment(1);
-        projectNames.remove(selfProject);
-        informations.append(CR).append(MessageFormat.format(Messages.SessionQuery_GeneralProjectsDependencies, projectNames.size())).append(CR);
-        projectNames.forEach(project -> {
+
+        informations.append(CR).append(MessageFormat.format(Messages.SessionQuery_ImageProjectsDependencies, imageProjectsDirectDependencies.size())).append(CR);
+        imageProjectsDirectDependencies.forEach(project -> {
             informations.append(TAB);
             informations.append(project);
             informations.append(CR);
         });
     }
 
-    private void addImageProjectsDependencies(StringBuilder informations) {
-        Set<String> projectsContainingUsedImages = new TreeSet<>();
+    /**
+     * Used to get the project name from the workspacePath of a WorkspaceImage.
+     * 
+     * @param imagePath
+     *            the path of the image
+     * @return the name of the project containing the image
+     */
+    public static Optional<String> getProjectFromImagePath(String imagePath) {
+        boolean exists = FileProvider.getDefault().exists(new Path(imagePath));
+        String projectName = null;
+        if (exists) {
+            URI uri = URI.createURI(imagePath);
+            String cdoPrefix = URIQuery.CDO_URI_SCHEME + ":/"; //$NON-NLS-1$
+            if ((uri.scheme() == null || imagePath.startsWith(cdoPrefix)) && !imagePath.startsWith("/")) { //$NON-NLS-1$
+                String path = imagePath.startsWith(cdoPrefix) ? imagePath.substring(cdoPrefix.length()) : imagePath;
 
-        findImagePathInRichTextDescription(projectsContainingUsedImages);
-        findImagePathInWorkspaceImage(projectsContainingUsedImages);
-
-        String selfProject = session.getSessionResource().getURI().segment(1);
-        projectsContainingUsedImages.remove(selfProject);
-        informations.append(CR).append(MessageFormat.format(Messages.SessionQuery_ImageProjectsDependencies, projectsContainingUsedImages.size())).append(CR);
-        projectsContainingUsedImages.forEach(project -> {
-            informations.append(TAB);
-            informations.append(project);
-            informations.append(CR);
-        });
-    }
-
-    private void findImagePathInRichTextDescription(Set<String> projectsContainingUsedImages) {
-        Set<EAttribute> eAttributes = RichTextAttributeRegistry.INSTANCE.getEAttributes();
-
-        for (Resource resource : session.getSemanticResources()) {
-            EcoreUtil.getAllProperContents(resource, true).forEachRemaining(object -> {
-                if (object instanceof EObject) {
-                    findImagePathInRichText(eAttributes, (EObject) object, projectsContainingUsedImages);
-                }
-            });
-        }
-
-        for (DRepresentationDescriptor repDescriptor : DialectManager.INSTANCE.getAllRepresentationDescriptors(session)) {
-            findImagePathInRichText(eAttributes, repDescriptor, projectsContainingUsedImages);
-        }
-    }
-
-    private static void findImagePathInRichText(Set<EAttribute> eAttributes, EObject eObject, Set<String> projectsContainingUsedImages) {
-        Pattern pattern = Pattern.compile(ImageManager.HTML_IMAGE_PATH_PATTERN);
-
-        List<EAttribute> attributesToCheck = eObject.eClass().getEAllAttributes().stream().filter(eAttributes::contains).collect(Collectors.toList());
-        for (EAttribute eAttribute : attributesToCheck) {
-            Object stringObj = eObject.eGet(eAttribute);
-            if (stringObj instanceof String) {
-                String htmlText = (String) stringObj;
-                Matcher matcher = pattern.matcher(htmlText);
-                while (matcher.find()) {
-                    String imagePath = matcher.group(1);
-                    addProjectFromImagePath(imagePath, projectsContainingUsedImages);
+                String[] split = path.split("/"); //$NON-NLS-1$
+                if (split.length > 0) {
+                    projectName = split[0];
                 }
             }
         }
-    }
-
-    private static void addProjectFromImagePath(String imagePath, Set<String> projectsContainingUsedImages) {
-        URI uri = URI.createURI(imagePath);
-        String cdoPrefix = URIQuery.CDO_URI_SCHEME + ":/"; //$NON-NLS-1$
-        if ((uri.scheme() == null || imagePath.startsWith(cdoPrefix)) && !imagePath.startsWith("/")) { //$NON-NLS-1$
-            String path = imagePath.startsWith(cdoPrefix) ? imagePath.substring(cdoPrefix.length()) : imagePath;
-
-            String[] split = path.split("/"); //$NON-NLS-1$
-            if (split.length > 0) {
-                projectsContainingUsedImages.add(split[0]);
-            }
-        }
-    }
-
-    private void findImagePathInWorkspaceImage(Set<String> projectsContainingUsedImages) {
-
-        for (DRepresentation representation : DialectManager.INSTANCE.getAllRepresentations(session)) {
-            Iterable<EObject> it = () -> representation.eAllContents();
-            //@formatter:off
-            StreamSupport.stream(it.spliterator(), false)
-                .filter(object -> object.eClass().getName().equals("WorkspaceImage")) //$NON-NLS-1$
-                .forEach(object -> {
-                    EStructuralFeature feature = object.eClass().getEStructuralFeature("workspacePath"); //$NON-NLS-1$
-                    Object value = object.eGet(feature);
-                    if (value instanceof String) {
-                        addProjectFromImagePath((String) value, projectsContainingUsedImages);
-                    }
-                });
-            //@formatter:on
-        }
+        return Optional.ofNullable(projectName);
     }
 }

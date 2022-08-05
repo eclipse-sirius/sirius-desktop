@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -50,7 +50,7 @@ import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.business.internal.modelingproject.marker.ModelingMarker;
-import org.eclipse.sirius.business.internal.query.ModelingProjectQuery;
+import org.eclipse.sirius.business.internal.query.SiriusProjectQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
@@ -379,7 +379,7 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
                     } catch (final CoreException ce) {
                         SiriusPlugin.getDefault().getLog().log(ce.getStatus());
                     }
-                    if (e.getCause() != null && ModelingProjectQuery.ZERO_REPRESENTATIONS_FILE_FOUND_IN.equals(e.getCause().getMessage())) {
+                    if (e.getCause() != null && SiriusProjectQuery.ZERO_REPRESENTATIONS_FILE_FOUND_IN.equals(e.getCause().getMessage())) {
                         // 0 files has been found : create a representation
                         ModelingProjectManager.INSTANCE.createLocalRepresentationsFile(project, new SubProgressMonitor(monitor, 1));
                         // Project has been marked as invalid but now it has a
@@ -395,7 +395,7 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
                         } catch (final CoreException ce) {
                             SiriusPlugin.getDefault().getLog().log(ce.getStatus());
                         }
-                        if (e.getCause() != null && ModelingProjectQuery.A_MODELING_PROJECT_MUST_CONTAIN_ONLY_ONE.equals(e.getCause().getMessage())) {
+                        if (e.getCause() != null && SiriusProjectQuery.A_MODELING_PROJECT_MUST_CONTAIN_ONLY_ONE.equals(e.getCause().getMessage())) {
                             // several files have been found : rollback
                             removeModelingNature(project, new SubProgressMonitor(monitor, 1));
                             throw new CoreException(new Status(IStatus.ERROR, SiriusEditPlugin.ID, e.getMessage()));
