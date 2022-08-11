@@ -220,5 +220,4 @@
          Parts of other projects that are needed by some Sirius features.
       </description>
    </category-def>
-   <repository-reference location="http://download.eclipse.org/jetty/updates/jetty-bundles-9.x/9.4.10.v20180503/" enabled="true" />
 </site>
