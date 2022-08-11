@@ -13,10 +13,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.ext.e3.ui.dialogs;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import org.eclipse.jface.viewers.AbstractTreeViewer;
 import org.eclipse.jface.viewers.ILabelProvider;
@@ -25,8 +24,6 @@ import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.ui.dialogs.SearchPattern;
-
-import com.ibm.icu.text.BreakIterator;
 
 /**
  * A filter used in conjunction with <code>FilteredTree</code>. In order to
@@ -40,6 +37,8 @@ import com.ibm.icu.text.BreakIterator;
  */
 //CHECKSTYLE:OFF
 public class PatternFilter extends ViewerFilter {
+    private static final Pattern NON_WORD = Pattern.compile("\\W+", Pattern.UNICODE_CHARACTER_CLASS); //$NON-NLS-1$
+    
     /*
      * Cache of filtered elements in the tree
      */
@@ -287,41 +286,6 @@ public class PatternFilter extends ViewerFilter {
     }
     
     /**
-     * Take the given filter text and break it down into words using a 
-     * BreakIterator.  
-     * 
-     * @param text
-     * @return an array of words
-     */
-    private String[] getWords(String text){
-        List words = new ArrayList();
-        // Break the text up into words, separating based on whitespace and
-        // common punctuation.
-        // Previously used String.split(..., "\\W"), where "\W" is a regular
-        // expression (see the Javadoc for class Pattern).
-        // Need to avoid both String.split and regular expressions, in order to
-        // compile against JCL Foundation (bug 80053).
-        // Also need to do this in an NL-sensitive way. The use of BreakIterator
-        // was suggested in bug 90579.
-        BreakIterator iter = BreakIterator.getWordInstance();
-        iter.setText(text);
-        int i = iter.first();
-        while (i != java.text.BreakIterator.DONE && i < text.length()) {
-            int j = iter.following(i);
-            if (j == java.text.BreakIterator.DONE) {
-                j = text.length();
-            }
-            // match the word
-            if (Character.isLetterOrDigit(text.charAt(i))) {
-                String word = text.substring(i, j);
-                words.add(word);
-            }
-            i = j;
-        }
-        return (String[]) words.toArray(new String[words.size()]);
-    }
-    
-    /**
      * Return whether or not if any of the words in text satisfy the
      * match critera.
      * 
@@ -340,7 +304,10 @@ public class PatternFilter extends ViewerFilter {
         }
         
         // Otherwise check if any of the words of the text matches
-        String[] words = getWords(text);
+        // See org.eclipse.ui.internal.misc.TextMatcher.getWords(String)
+        // which is the implementation used in platform's version of
+        // org.eclipse.ui.dialogs.PatternFilter
+        String[] words = NON_WORD.split(text);
         for (int i = 0; i < words.length; i++) {
             String word = words[i];
             if (match(word)) {
