@@ -116,7 +116,7 @@ create_redirect() {
     <property name='p2.timestamp' value='$P2_TIMESTAMP'/>
   </properties>
   <children size='1'>
-    <child location='http://download.eclipse.org/sirius/updates/$TO'/>
+    <child location='https://download.eclipse.org/sirius/updates/$TO'/>
   </children>
 </repository>
 EOF
@@ -130,7 +130,7 @@ EOF
     <property name='p2.timestamp' value='$P2_TIMESTAMP'/>
   </properties>
   <children size='1'>
-    <child location='http://download.eclipse.org/sirius/updates/$TO'/>
+    <child location='https://download.eclipse.org/sirius/updates/$TO'/>
   </children>
 </repository>
 EOF
