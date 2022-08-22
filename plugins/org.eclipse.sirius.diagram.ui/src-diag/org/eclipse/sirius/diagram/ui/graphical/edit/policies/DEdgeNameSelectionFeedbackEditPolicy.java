@@ -19,8 +19,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.eclipse.draw2d.Connection;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
-import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
@@ -60,11 +61,14 @@ public class DEdgeNameSelectionFeedbackEditPolicy extends AbstractEdgeSelectionF
         if (getHost() instanceof AbstractDEdgeNameEditPart) {
             @SuppressWarnings("unchecked")
             List<AbstractDEdgeNameEditPart> edgeNameEditParts = (List<AbstractDEdgeNameEditPart>) getEdgeEditPart().getChildren().stream().filter(AbstractDEdgeNameEditPart.class::isInstance)
-                    .map(AbstractDEdgeNameEditPart.class::cast)
-                    .collect(Collectors.toList());
+                    .map(AbstractDEdgeNameEditPart.class::cast).collect(Collectors.toList());
             for (final AbstractDEdgeNameEditPart editPart : edgeNameEditParts) {
-                if (!new DDiagramElementQuery((DEdge) ((Node) editPart.getModel()).getElement()).isLabelHidden(new EditPartQuery(editPart).getVisualID())) {
-                    names.add(editPart);
+                View view = editPart.getNotationView();
+                if (view != null) {
+                    EObject element = view.getElement();
+                    if (element instanceof DEdge && !new DDiagramElementQuery((DEdge) element).isLabelHidden(new EditPartQuery(editPart).getVisualID())) {
+                        names.add(editPart);
+                    }
                 }
             }
         }
