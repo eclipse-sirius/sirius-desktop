@@ -4,6 +4,18 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for recent major releases of Sirius. See also "the release notes from previous versions":Release_Notes_Previous.html for details about older releases.
 
+h2(#sirius7.0.4). Changes in Sirius 7.0.4
+
+h3. User-Visible Changes
+
+Minor release to avoid errors thrown during indirect deletion of edges whose label is selected (deletion done from outside the diagram editor or from a custom command).
+
+h2(#sirius7.0.3). Changes in Sirius 7.0.3
+
+h3. Developer-Visible Changes
+
+* <span class="label label-danger">Removed</span> To ensure compatibility with Eclipse 2022-09, dependency to @com.ibm.icu@ has been removed.
+
 h2(#sirius7.0.2). Changes in Sirius 7.0.2
 
 h3. Specifier-Visible Changes

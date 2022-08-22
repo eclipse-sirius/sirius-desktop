@@ -13,13 +13,29 @@
 				<a href="#ReleaseNotesforSirius">Release Notes for Sirius</a>
 				<ol style="list-style: disc;">
 					<li>
+						<a href="#sirius7.0.4">Changes in Sirius 7.0.4</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="#UserVisibleChanges">User-Visible Changes</a>
+							</li>
+						</ol>
+					</li>
+					<li>
+						<a href="#sirius7.0.3">Changes in Sirius 7.0.3</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="#DeveloperVisibleChanges">Developer-Visible Changes</a>
+							</li>
+						</ol>
+					</li>
+					<li>
 						<a href="#sirius7.0.2">Changes in Sirius 7.0.2</a>
 						<ol style="list-style: disc;">
 							<li>
 								<a href="#SpecifierVisibleChanges">Specifier-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges2">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -27,23 +43,12 @@
 						<a href="#sirius7.0.1">Changes in Sirius 7.0.1</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#DeveloperVisibleChanges2">Developer-Visible Changes</a>
-							</li>
-						</ol>
-					</li>
-					<li>
-						<a href="#sirius7.0.0">Changes in Sirius 7.0.0</a>
-						<ol style="list-style: disc;">
-							<li>
-								<a href="#UserVisibleChanges">User-Visible Changes</a>
-							</li>
-							<li>
 								<a href="#DeveloperVisibleChanges3">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
 					<li>
-						<a href="#sirius6.6.0">Changes in Sirius 6.6.0</a>
+						<a href="#sirius7.0.0">Changes in Sirius 7.0.0</a>
 						<ol style="list-style: disc;">
 							<li>
 								<a href="#UserVisibleChanges2">User-Visible Changes</a>
@@ -54,10 +59,21 @@
 						</ol>
 					</li>
 					<li>
+						<a href="#sirius6.6.0">Changes in Sirius 6.6.0</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="#UserVisibleChanges3">User-Visible Changes</a>
+							</li>
+							<li>
+								<a href="#DeveloperVisibleChanges5">Developer-Visible Changes</a>
+							</li>
+						</ol>
+					</li>
+					<li>
 						<a href="#sirius6.5.1">Changes in Sirius 6.5.1</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#DeveloperVisibleChanges5">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges6">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -65,13 +81,13 @@
 						<a href="#sirius6.5.0">Changes in Sirius 6.5.0</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#UserVisibleChanges3">User-Visible Changes</a>
+								<a href="#UserVisibleChanges4">User-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#SpecifierVisibleChanges2">Specifier-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges6">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges7">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -81,6 +97,16 @@
 		<p>This document contains the release notes for recent major releases of Sirius. See also 
 			<a href="Release_Notes_Previous.html">the release notes from previous versions</a> for details about older releases.
 		</p>
+		<h2 id="sirius7.0.4">Changes in Sirius 7.0.4</h2>
+		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
+		<p>Minor release to avoid errors thrown during indirect deletion of edges whose label is selected (deletion done from outside the diagram editor or from a custom command).</p>
+		<h2 id="sirius7.0.3">Changes in Sirius 7.0.3</h2>
+		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
+		<ul>
+			<li><span class="label label-danger">Removed</span> To ensure compatibility with Eclipse 2022-09, dependency to 
+				<code>com.ibm.icu</code> has been removed.
+			</li>
+		</ul>
 		<h2 id="sirius7.0.2">Changes in Sirius 7.0.2</h2>
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
 		<ul>
@@ -89,7 +115,7 @@
 				<code>otherEnd</code> are now also available during precondition evaluation of a reconnect tool. Before, these variables were available only during the reconnection tool execution.
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges2">Developer-Visible Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
@@ -117,7 +143,7 @@
 			</li>
 		</ul>
 		<h2 id="sirius7.0.1">Changes in Sirius 7.0.1</h2>
-		<h3 id="DeveloperVisibleChanges2">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges3">Developer-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-info">Modified</span> The behavior concerning SVG images export has been improved. You can refer to 
 				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=578509">bugzilla 578509</a> for more details. This behavior is activated by default but you may disable it by setting the system property 
@@ -126,7 +152,7 @@
 			</li>
 		</ul>
 		<h2 id="sirius7.0.0">Changes in Sirius 7.0.0</h2>
-		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> Some enhancement have been done about the images management.
 				<ul>
@@ -143,7 +169,7 @@
 			<li><span class="label label-info">Modified</span> It is now possible to move a regions container by moving one of its region with the &#8220;Ctrl&#8221; shortcut key pressed. In the same way, it is now possible to select a regions container by clicking on one of its region with the &#8220;Ctrl&#8221; shortcut key pressed.</li>
 			<li><span class="label label-danger">Removed</span> It is no longer possible to change the workspace image of a diagram element with an image from an internal plugin via the &#8220;Set style to workspace image&#8221; action. This functionality affects a very small part of the use cases. The new UI of the &#8220;Set style to workspace image&#8221; action does not support this advanced functionality. However, it is still possible to go through Properties &gt; Style &gt; Workspace Image, then paste the path of the internal plugin image.</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges3">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges4">Developer-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> Sirius core and dialects metamodels have been extracted in new 
 				<b>.model</b> plugins with minimum dependencies. Each new plugin is re-exported by the plugin which was the previous container of its metamodel. The base packages of the generated code has not been modified. Each API modification is listed in the corresponding plugin section. Additional dialect providers and extension providers might have to modify the path or references to Sirius .ecore and .genmodel files to reflect this change. The new plugins are:
@@ -470,7 +496,7 @@
 			</li>
 		</ul>
 		<h2 id="sirius6.6.0">Changes in Sirius 6.6.0</h2>
-		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges3">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> 4 new actions have been added to control the &#8220;z-order&#8221; of edges. These actions are mainly useful in the context of 
 				<a href="user/diagrams/Diagrams.html#Appearance">jump links</a>. Similar actions already existed for nodes but not for edges. A chapter dedicated to these new actions has been added in 
@@ -478,7 +504,7 @@
 			</li>
 			<li><span class="label label-danger">Removed</span> To be coherent, the actions available &#8220;Diagram/Order&#8221; menu of Eclipse menu bar have been removed. Indeed, these actions are always visible but only valid for nodes. Now, only the contextual menus are to be used (for nodes or for edges).</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges4">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges5">Developer-Visible Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius.diagram3">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
@@ -536,7 +562,7 @@
 			</li>
 		</ul>
 		<h2 id="sirius6.5.1">Changes in Sirius 6.5.1</h2>
-		<h3 id="DeveloperVisibleChanges5">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges6">Developer-Visible Changes</h3>
 		<h4 id="Migrations3">Migrations</h4>
 		<ul>
 			<li><span class="label label-info">Modified</span> The migration participant 
@@ -545,7 +571,7 @@
 			</li>
 		</ul>
 		<h2 id="sirius6.5.0">Changes in Sirius 6.5.0</h2>
-		<h3 id="UserVisibleChanges3">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges4">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> It is possible to override at the aird level both &#8220;Sirius/Do Refresh on representation opening&#8221; and &#8220;Sirius/Automatic refresh&#8221; preferences. To override the preferences, right-click on the 
 				<code>aird</code> file, select &#8220;Properties&#8221;, and in the dialog go to the &#8220;Sirius settings&#8221; section. The preferences are stored in the project scope and associated to the aird file. For more details, refer the 
@@ -581,7 +607,7 @@
 				</ul>
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges6">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges7">Developer-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> It is now possible to keep semantic element traceability during the representation export. For now, this option is only supported for diagram SVG export. In this case, a new attribute 
 				<code>diagram:targetSemanticId</code> is added on SVG elements to reference the target semantic id on which the graphical element is based on. This option can be activated programmatically or by setting a preference. See the details below:
