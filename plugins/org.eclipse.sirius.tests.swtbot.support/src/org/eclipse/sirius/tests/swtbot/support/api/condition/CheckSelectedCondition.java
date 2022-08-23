@@ -17,6 +17,9 @@ import java.util.Collection;
 
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
@@ -94,11 +97,17 @@ public class CheckSelectedCondition extends DefaultCondition {
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean test() throws Exception {
         return isSelected(getEditPart());
     }
 
     private boolean isSelected(EditPart part) {
+        if (part instanceof DDiagramEditPart) {
+            // part.getSelected() will return EditPart.SELECTED_NONE.
+            ISelection selection = editor.getSelection();
+            return selection instanceof IStructuredSelection && part.equals(((IStructuredSelection) selection).getFirstElement());
+        }
         return part != null && part.getSelected() == EditPart.SELECTED_PRIMARY || part.getSelected() == EditPart.SELECTED;
     }
 
@@ -117,6 +126,7 @@ public class CheckSelectedCondition extends DefaultCondition {
     /**
      * {@inheritDoc}
      */
+    @Override
     public String getFailureMessage() {
         String simpleClassName = "";
         if (editPartToWaitForSelection != null) {

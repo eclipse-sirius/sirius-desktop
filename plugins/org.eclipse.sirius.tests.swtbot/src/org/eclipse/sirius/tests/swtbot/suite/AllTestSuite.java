@@ -392,6 +392,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(EdgeWithBorderNodeCreationPositionWithSnapToGridTest.class);
         suite.addTestSuite(HideRevealDiagramElementsLabelsTest.class);
         suite.addTestSuite(HideRevealEdgeLabelsTest.class);
+        suite.addTestSuite(IndirectDeleteEdgeWithLabelSelectedTest.class);
         suite.addTestSuite(LinkWithEditorFeatureWithModelExplorerViewTest.class);
         suite.addTestSuite(SpecificLayoutBendpointsOnReopeningTest.class);
         suite.addTestSuite(BorderSizeComputationExpressionTest.class);
