@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ package org.eclipse.sirius.diagram.tools.internal.command.builders;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -84,8 +85,7 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
     private boolean deleteFromDiagram;
 
     /**
-     * Create a deletion command builder not to create a command, but only to
-     * add delete diagram tasks.
+     * Create a deletion command builder not to create a command, but only to add delete diagram tasks.
      */
     public DeletionCommandBuilder() {
     }
@@ -106,8 +106,7 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
      * @param diagramElement
      *            the diagram element to delete
      * @param deleteFromDiagram
-     *            define if the delete should be a graphical one, or a semantic
-     *            one.
+     *            define if the delete should be a graphical one, or a semantic one.
      */
     public DeletionCommandBuilder(final DDiagramElement diagramElement, final boolean deleteFromDiagram) {
         this.diagramElement = diagramElement;
@@ -143,17 +142,35 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
 
             final List<EObject> contents = new ArrayList<EObject>(this.modelAccessor.eAllContents(diagramElement, "EdgeTarget")); //$NON-NLS-1$
             contents.add(diagramElement);
+            Set<DEdge> alreadyProcessedDEdge = new HashSet<>();
             for (final EObject element : contents) {
-                if (element instanceof EdgeTarget) {
-                    final EdgeTarget target = (EdgeTarget) element;
-                    for (final DEdge edge : Iterables.concat(target.getIncomingEdges(), target.getOutgoingEdges())) {
-                        cmd.getTasks().add(new DeleteEObjectTask(edge, modelAccessor));
-                    }
+                if (element instanceof DSemanticDecorator) {
+                    // If the semantic decorator is related to edges,
+                    // these edges should also be deleted
+                    deleteConnectedEdges((DSemanticDecorator) element, cmd.getTasks(), alreadyProcessedDEdge);
                 }
             }
             return cmd;
         }
         return UnexecutableCommand.INSTANCE;
+    }
+
+    private void deleteConnectedEdges(DSemanticDecorator decorator, List<ICommandTask> tasks, Set<DEdge> alreadyProcessedDEdge) {
+        // If the semantic decorator is related to edges,
+        // these edges should also be deleted
+        if (decorator instanceof EdgeTarget) {
+            EdgeTarget edgeTarget = (EdgeTarget) decorator;
+
+            for (final DEdge edge : Iterables.concat(edgeTarget.getIncomingEdges(), edgeTarget.getOutgoingEdges())) {
+                if (!alreadyProcessedDEdge.contains(edge)) {
+                    alreadyProcessedDEdge.add(edge);
+                    tasks.add(new DeleteEObjectTask(edge, modelAccessor));
+
+                    // It is possible to have edges whose source or target is another edge, but not both.
+                    deleteConnectedEdges(edge, tasks, alreadyProcessedDEdge);
+                }
+            }
+        }
     }
 
     private Command buildDeleteDiagramElement() {
@@ -208,8 +225,9 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
     private void addDeleteDiagramElementFromTool(final DCommand cmd) {
         final EObject semanticContainer = ((DSemanticDecorator) diagramElement).getTarget();
         final EObject viewContainer = diagramElement.eContainer();
-
         cmd.getTasks().addAll(buildDeleteFromToolTask(semanticContainer, viewContainer).getTasks());
+
+        final Set<DEdge> alreadyProcessedDEdge = new HashSet<>();
         cmd.getTasks().add(new DeleteDRepresentationElementsTask(modelAccessor, cmd, taskHelper, diagramElement) {
 
             @Override
@@ -217,12 +235,7 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
                 // Nothing to add per default.
                 // If the semantic decorator is related to edges,
                 // these edges should also be deleted
-                if (decorator instanceof EdgeTarget) {
-                    EdgeTarget edgeTarget = (EdgeTarget) decorator;
-                    for (final DEdge edge : Iterables.concat(edgeTarget.getIncomingEdges(), edgeTarget.getOutgoingEdges())) {
-                        subTasks.add(new DeleteEObjectTask(edge, modelAccessor));
-                    }
-                }
+                deleteConnectedEdges(decorator, subTasks, alreadyProcessedDEdge);
             }
         });
         if (diagramElement instanceof DEdge) {
@@ -236,8 +249,7 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
 
     /**
      * Check the delete availability from tool</br>
-     * If a deletion tool exists and if the condition expression returns false,
-     * the deletion is not available
+     * If a deletion tool exists and if the condition expression returns false, the deletion is not available
      * 
      * @return if the deletion is available from tool
      */
@@ -297,6 +309,7 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
         } else {
             // Now delete all the diagram elements corresponding to
             // the semantic elements to delete
+            final Set<DEdge> alreadyProcessedDEdge = new HashSet<>();
             ICommandTask deleteWithoutToolTask = new DeleteWithoutToolTask(diagramElement, semanticElements, modelAccessor, taskHelper) {
 
                 @Override
@@ -304,12 +317,7 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
                     // Nothing to add per default.
                     // If the semantic decorator is related to edges,
                     // these edges should also be deleted
-                    if (decorator instanceof EdgeTarget) {
-                        EdgeTarget edgeTarget = (EdgeTarget) decorator;
-                        for (final DEdge edge : Iterables.concat(edgeTarget.getIncomingEdges(), edgeTarget.getOutgoingEdges())) {
-                            subTasks.add(new DeleteEObjectTask(edge, modelAccessor));
-                        }
-                    }
+                    deleteConnectedEdges(decorator, subTasks, alreadyProcessedDEdge);
                 }
             };
             result.getTasks().add(deleteWithoutToolTask);
@@ -323,12 +331,10 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
     }
 
     /**
-     * Get root semantic elements to destroy to delete the specified diagram
-     * element.
+     * Get root semantic elements to destroy to delete the specified diagram element.
      * 
-     * Note: this method can returns more than root semantic elements to
-     * destroy, in case DDiagramElement tree to delete doesn't mirror the
-     * semantic tree, the result can be not minimized.
+     * Note: this method can returns more than root semantic elements to destroy, in case DDiagramElement tree to delete
+     * doesn't mirror the semantic tree, the result can be not minimized.
      */
     private Set<EObject> getRootSemanticElementsToDestroy(final DDiagramElement currentDiagramElement) {
         Set<EObject> elementsToDestroy = new LinkedHashSet<>();
