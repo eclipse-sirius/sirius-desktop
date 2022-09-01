@@ -91,6 +91,7 @@ public class DeleteWithoutToolTask extends AbstractCompoundTask {
     @Override
     protected List<ICommandTask> prepareSubTasks() {
         List<ICommandTask> subTasks = new ArrayList<>();
+        Set<EObject> deletedEObjects = new HashSet<EObject>();
         Option<DRepresentation> parentRepresentation = new EObjectQuery(element).getRepresentation();
         if (parentRepresentation.some()) {
 
@@ -107,8 +108,11 @@ public class DeleteWithoutToolTask extends AbstractCompoundTask {
             // semantic elements to delete
             final Set<DSemanticDecorator> diagramElements = taskHelper.getDElementToClearFromSemanticElements(parentRepresentation.get(), getAllSemanticElements());
             for (final DSemanticDecorator decorator : diagramElements) {
-                subTasks.add(new DeleteEObjectTask(decorator, modelAccessor));
-                addDialectSpecificAdditionalDeleteSubTasks(decorator, subTasks);
+                if (!deletedEObjects.contains(decorator)) {
+                    deletedEObjects.add(decorator);
+                    subTasks.add(new DeleteEObjectTask(decorator, modelAccessor));
+                    addDialectSpecificAdditionalDeleteSubTasks(decorator, subTasks, deletedEObjects);
+                }
             }
         }
 
@@ -129,8 +133,10 @@ public class DeleteWithoutToolTask extends AbstractCompoundTask {
      *            the current decorator to delete
      * @param subTasks
      *            a List<ICommand> to complete
+     * @param deletedEObjects
+     *            a Set<EObject> of EObjects that are already handled by a {@link DeleteEObjectTask}
      */
-    protected void addDialectSpecificAdditionalDeleteSubTasks(DSemanticDecorator decorator, List<ICommandTask> subTasks) {
+    protected void addDialectSpecificAdditionalDeleteSubTasks(DSemanticDecorator decorator, List<ICommandTask> subTasks, Set<EObject> deletedEObjects) {
         // Nothing to add per default.
     }
 

@@ -10,6 +10,12 @@ h3. User-Visible Changes
 
 In a tree editor, if the expand is done with the right arrow key, the behavior is now OK. Before this version, if the expand is done for the first time with the right arrow key, only a blank child is displayed. You can refer to "bugzilla 549352":https://bugs.eclipse.org/bugs/show_bug.cgi?id=549352 for more details. 
 
+h3. Developer-Visible Changes
+
+h4. Changes in @org.eclipse.sirius@
+
+* <span class="label label-success">Added</span> The method @org.eclipse.sirius.business.api.helper.task.DeleteEObjectTask.getEObjectToDelete()@ has been added to get the EObject that will be deleted by this task.
+
 h2(#sirius7.0.4). Changes in Sirius 7.0.4
 
 h3. User-Visible Changes

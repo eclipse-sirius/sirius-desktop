@@ -142,12 +142,13 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
 
             final List<EObject> contents = new ArrayList<EObject>(this.modelAccessor.eAllContents(diagramElement, "EdgeTarget")); //$NON-NLS-1$
             contents.add(diagramElement);
-            Set<DEdge> alreadyProcessedDEdge = new HashSet<>();
+            // A Set<EObject> of EObjects that are already handled by a {@link DeleteEObjectTask}
+            Set<EObject> deletedEObjects = new HashSet<>();
             for (final EObject element : contents) {
                 if (element instanceof DSemanticDecorator) {
                     // If the semantic decorator is related to edges,
                     // these edges should also be deleted
-                    deleteConnectedEdges((DSemanticDecorator) element, cmd.getTasks(), alreadyProcessedDEdge);
+                    deleteConnectedEdges((DSemanticDecorator) element, cmd.getTasks(), deletedEObjects);
                 }
             }
             return cmd;
@@ -155,19 +156,26 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
         return UnexecutableCommand.INSTANCE;
     }
 
-    private void deleteConnectedEdges(DSemanticDecorator decorator, List<ICommandTask> tasks, Set<DEdge> alreadyProcessedDEdge) {
+    private void deleteConnectedEdges(DSemanticDecorator decorator, List<ICommandTask> tasks, Set<EObject> deletedEObjects) {
         // If the semantic decorator is related to edges,
         // these edges should also be deleted
         if (decorator instanceof EdgeTarget) {
             EdgeTarget edgeTarget = (EdgeTarget) decorator;
 
+            Set<EObject> objectsDeletedByATask = new HashSet<>();
+            for (ICommandTask task : tasks) {
+                if (task instanceof DeleteEObjectTask) {
+                    objectsDeletedByATask.add(((DeleteEObjectTask) task).getEObjectToDelete());
+                }
+            }
+
             for (final DEdge edge : Iterables.concat(edgeTarget.getIncomingEdges(), edgeTarget.getOutgoingEdges())) {
-                if (!alreadyProcessedDEdge.contains(edge)) {
-                    alreadyProcessedDEdge.add(edge);
+                if (!deletedEObjects.contains(edge)) {
+                    deletedEObjects.add(edge);
                     tasks.add(new DeleteEObjectTask(edge, modelAccessor));
 
                     // It is possible to have edges whose source or target is another edge, but not both.
-                    deleteConnectedEdges(edge, tasks, alreadyProcessedDEdge);
+                    deleteConnectedEdges(edge, tasks, deletedEObjects);
                 }
             }
         }
@@ -227,7 +235,8 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
         final EObject viewContainer = diagramElement.eContainer();
         cmd.getTasks().addAll(buildDeleteFromToolTask(semanticContainer, viewContainer).getTasks());
 
-        final Set<DEdge> alreadyProcessedDEdge = new HashSet<>();
+        // A Set<EObject> of EObjects that are already handled by a {@link DeleteEObjectTask}
+        final Set<EObject> deletedEObjects = new HashSet<>();
         cmd.getTasks().add(new DeleteDRepresentationElementsTask(modelAccessor, cmd, taskHelper, diagramElement) {
 
             @Override
@@ -235,7 +244,7 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
                 // Nothing to add per default.
                 // If the semantic decorator is related to edges,
                 // these edges should also be deleted
-                deleteConnectedEdges(decorator, subTasks, alreadyProcessedDEdge);
+                deleteConnectedEdges(decorator, subTasks, deletedEObjects);
             }
         });
         if (diagramElement instanceof DEdge) {
@@ -309,15 +318,14 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
         } else {
             // Now delete all the diagram elements corresponding to
             // the semantic elements to delete
-            final Set<DEdge> alreadyProcessedDEdge = new HashSet<>();
             ICommandTask deleteWithoutToolTask = new DeleteWithoutToolTask(diagramElement, semanticElements, modelAccessor, taskHelper) {
 
                 @Override
-                protected void addDialectSpecificAdditionalDeleteSubTasks(DSemanticDecorator decorator, List<ICommandTask> subTasks) {
+                protected void addDialectSpecificAdditionalDeleteSubTasks(DSemanticDecorator decorator, List<ICommandTask> subTasks, Set<EObject> deletedEObjects) {
                     // Nothing to add per default.
                     // If the semantic decorator is related to edges,
                     // these edges should also be deleted
-                    deleteConnectedEdges(decorator, subTasks, alreadyProcessedDEdge);
+                    deleteConnectedEdges(decorator, subTasks, deletedEObjects);
                 }
             };
             result.getTasks().add(deleteWithoutToolTask);
