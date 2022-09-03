@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.resource;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,6 +37,11 @@ import org.osgi.framework.Version;
 public class AirDResourceFactory extends SiriusResourceFactory {
 
     /**
+     * Git schemes available in org.eclipse.emf.diffmerge.connector.git.ext.GitHelper
+     */
+    private static final String[] GIT_SCHEME = new String[] { "commit", "index", "remote" }; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+
+    /**
      * 
      * {@inheritDoc}
      * 
@@ -51,7 +57,11 @@ public class AirDResourceFactory extends SiriusResourceFactory {
         }
 
         final XMIResource resource = doCreateAirdResourceImpl(uri);
-        setOptions(resource, migrationIsNeeded, loadedVersion);
+        if (uri != null && uri.scheme() != null && Arrays.stream(GIT_SCHEME).anyMatch(uri.scheme()::equals)) {
+            setOptions(resource, false, loadedVersion);
+        } else {
+            setOptions(resource, migrationIsNeeded, loadedVersion);
+        }
 
         if (!resource.getEncoding().equals(XMI_ENCODING)) {
             resource.setEncoding(XMI_ENCODING);
