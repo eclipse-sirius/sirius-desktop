@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2021, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -72,13 +72,18 @@ public class SetChangeIdMigrationParticipantTest extends SiriusDiagramTestCase {
     }
 
     /**
-     * Checks that there are no more null changeId after the migration.
+     * Checks that the changeId is a time stamp after the migration.
      */
     public void testChangeIds() {
         for (DView view : session.getOwnedViews()) {
             for (DRepresentationDescriptor descriptor : view.getOwnedRepresentationDescriptors()) {
                 if (descriptor.getName().equals("root package entities")) {
-                    assertEquals("The changeId of the representation \"" + descriptor.getName() + "\" should not be overridden.", ROOT_PACKAGE_ENTITIES_CHANGE_ID, descriptor.getChangeId());
+                    assertFalse("The changeId of the representation \"" + descriptor.getName() + "\" should not be overridden.", ROOT_PACKAGE_ENTITIES_CHANGE_ID.equals(descriptor.getChangeId()));
+                    try {
+                        Long.parseLong(descriptor.getChangeId());
+                    } catch (NumberFormatException e) {
+                        fail("The changeId of the representation \"" + descriptor.getName() + "\" should be a Long");
+                    }
                 }
                 assertNotNull("The changeId of the representation \"" + descriptor.getName() + "\" should not be null.", descriptor.getChangeId());
             }

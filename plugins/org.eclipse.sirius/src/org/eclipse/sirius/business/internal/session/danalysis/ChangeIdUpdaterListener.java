@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2021, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -31,6 +31,8 @@ import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.sirius.business.api.helper.RepresentationHelper;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
+import org.eclipse.sirius.business.api.refresh.RepresentationTimeStampInformationSupplier;
+import org.eclipse.sirius.business.api.refresh.RepresentationTimeStampInformationSupplierRegistry;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
@@ -67,6 +69,17 @@ public class ChangeIdUpdaterListener extends ResourceSetListenerImpl {
     @Override
     public Command transactionAboutToCommit(ResourceSetChangeEvent event) throws RollbackException {
         List<Notification> notifications = event.getNotifications();
+
+        // In some cases, the changeId must not be updated.
+        Set<RepresentationTimeStampInformationSupplier> representationTimeStampInformationSuppliers = RepresentationTimeStampInformationSupplierRegistry.INSTANCE
+                .getRepresentationTimeStampInformationSuppliers();
+        for (RepresentationTimeStampInformationSupplier representationTimeStampInformationSupplier : representationTimeStampInformationSuppliers) {
+            boolean preventTimeStampFromBeingUpdated = representationTimeStampInformationSupplier.preventTimeStampFromBeingUpdated(notifications);
+            if (preventTimeStampFromBeingUpdated) {
+                return null;
+            }
+        }
+
         Set<EObject> notifierWithoutRepresentationDescriptors = new HashSet<>();
         Map<EObject, DRepresentationDescriptor> notifierToDRepMap = new HashMap<>();
         Set<DRepresentationDescriptor> descriptorsToUpdate = new HashSet<>();
@@ -86,8 +99,7 @@ public class ChangeIdUpdaterListener extends ResourceSetListenerImpl {
                 if (representationDescriptor != null) {
                     descriptorsToUpdate.add(representationDescriptor);
                 }
-                if (ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR.isInstance(notifier)
-                        && ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR__CHANGE_ID.equals(notification.getFeature())) {
+                if (ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR.isInstance(notifier) && ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR__CHANGE_ID.equals(notification.getFeature())) {
                     // Ignore descriptor with a change of "ChangeId"
                     descriptorsToIgnore.add((DRepresentationDescriptor) notifier);
                 }
@@ -104,8 +116,10 @@ public class ChangeIdUpdaterListener extends ResourceSetListenerImpl {
             }
         }
         descriptorsToUpdate.removeAll(descriptorsToIgnore);
+
+        RecordingCommand changeIdRecordingCommand = null;
         if (!descriptorsToUpdate.isEmpty()) {
-            RecordingCommand changeIdRecordingCommand = new RecordingCommand(this.dAnalysisSessionImpl.getTransactionalEditingDomain()) {
+            changeIdRecordingCommand = new RecordingCommand(this.dAnalysisSessionImpl.getTransactionalEditingDomain()) {
                 @Override
                 protected void doExecute() {
                     for (DRepresentationDescriptor dRepresentationDescriptor : descriptorsToUpdate) {
@@ -113,13 +127,11 @@ public class ChangeIdUpdaterListener extends ResourceSetListenerImpl {
                     }
                 }
             };
-            return changeIdRecordingCommand;
         }
-        return null;
+        return changeIdRecordingCommand;
     }
 
-    private DRepresentationDescriptor getDRepresentationDescriptor(EObject eObject, Set<EObject> notifierWithoutRepresentationDescriptors,
-            Map<EObject, DRepresentationDescriptor> notifierToDRepMap) {
+    private DRepresentationDescriptor getDRepresentationDescriptor(EObject eObject, Set<EObject> notifierWithoutRepresentationDescriptors, Map<EObject, DRepresentationDescriptor> notifierToDRepMap) {
         DRepresentationDescriptor dRepresentationDescriptor = null;
         DRepresentationDescriptor repAssociatedToEObject = notifierToDRepMap.get(eObject);
         if (repAssociatedToEObject == null && !notifierWithoutRepresentationDescriptors.contains(eObject)) {

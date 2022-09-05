@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -11,8 +11,6 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.business.api.migration;
-
-import java.util.UUID;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.xmi.XMLResource;
@@ -93,7 +91,7 @@ public abstract class AbstractRepresentationsFileMigrationParticipant extends Ab
     protected void updateChangeId(DAnalysis dAnalysis, DRepresentation representation) {
         DRepresentationDescriptor representationDescriptor = getRepresentationDescriptor(dAnalysis, representation);
         if (representationDescriptor != null) {
-            representationDescriptor.setChangeId(UUID.randomUUID().toString());
+            representationDescriptor.setChangeId(Long.valueOf(System.currentTimeMillis()).toString());
         }
     }
 

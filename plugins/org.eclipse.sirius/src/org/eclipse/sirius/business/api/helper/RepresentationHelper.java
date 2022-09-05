@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -11,8 +11,6 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.business.api.helper;
-
-import java.util.UUID;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
@@ -41,10 +39,8 @@ public final class RepresentationHelper {
      *            the {@link DRepresentationDescriptor} from which we want to update attached change id.
      */
     public static void updateChangeId(DRepresentationDescriptor representationDescriptor) {
-        representationDescriptor.setChangeId(UUID.randomUUID().toString());
+        representationDescriptor.setChangeId(Long.valueOf(System.currentTimeMillis()).toString());
     }
-
-
 
     /**
      * Return true if content of given representation is not the same or if we cannot determined if the content have

@@ -1112,9 +1112,6 @@ public final class Messages {
     public static String SetChangeIdMigrationParticipant_title;
 
     @TranslatableMessage
-    public static String SetChangeIdMigrationParticipant_changeIDModified;
-
-    @TranslatableMessage
     public static String SetConnectionBendpointsAccordingToExtremityMoveCommmand_sourceSidedLabel;
 
     @TranslatableMessage

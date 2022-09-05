@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -90,6 +90,11 @@ public class ChangeIdAPIForMigrationTest extends SiriusTestCase {
             List<DRepresentationDescriptor> ownedRepresentationDescriptors = dView.getOwnedRepresentationDescriptors();
             for (DRepresentationDescriptor representationDescriptor : ownedRepresentationDescriptors) {
                 assertTrue("Change id has not been updated.", representationDescriptor.getChangeId() != null && !representationDescriptor.getChangeId().isEmpty());
+                try {
+                    Long.parseLong(representationDescriptor.getChangeId());
+                } catch (NumberFormatException e) {
+                    fail(String.format("The changeId {0} of the DRepresentationDescriptor {1} is not a time stamp", representationDescriptor.getChangeId(), representationDescriptor.getName()));
+                }
             }
         }
     }

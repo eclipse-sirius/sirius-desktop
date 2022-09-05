@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -181,7 +181,7 @@ public class DRepresentationDescriptorChangeIdTests extends SiriusDiagramTestCas
      * updated.
      */
     public void testDRepresentationAndChangeIdUpdateNoChange() {
-        String expectedChangeId = "newValue";
+        String expectedChangeId = Long.valueOf(System.currentTimeMillis()).toString();
         String changeIdBeforeModification = new DRepresentationQuery(diagram).getRepresentationDescriptor().getChangeId();
 
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {

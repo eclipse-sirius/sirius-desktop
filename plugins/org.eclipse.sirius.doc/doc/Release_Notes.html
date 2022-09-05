@@ -140,6 +140,17 @@
 			<li><span class="label label-success">Added</span> The method 
 				<code>org.eclipse.sirius.business.api.helper.task.DeleteEObjectTask.getEObjectToDelete()</code> has been added to get the EObject that will be deleted by this task.
 			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.business.api.refresh.RepresentationTimeStampInformationSupplierRegistry</code> and 
+				<code>org.eclipse.sirius.business.api.refresh.RepresentationTimeStampInformationSupplier</code> have been added. The first is the registry to register instance of the second that allows to tell when the DRepresentationDescriptor.changeId is updated or not. 
+			</li>
+		</ul>
+		<h4 id="Migrations">Migrations</h4>
+		<ul>
+			<li><span class="label label-info">Modified</span> The migration participant that sets a changeId value for each DRepresentationDescriptor that did not have one has been changed. The migration participant 
+				<code>org.eclipse.sirius.diagram.ui.business.internal.migration.SetChangeIdMigrationParticipant</code> sets a time stamp that represents the absolute time. The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is 
+				<em>15.7.0.202209051100</em>.
+			</li>
 		</ul>
 		<h4 id="Migrations">Migrations</h4>
 		<ul>

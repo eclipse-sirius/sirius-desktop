@@ -20,6 +20,12 @@ h3. Developer-Visible Changes
 h4. Changes in @org.eclipse.sirius@
 
 * <span class="label label-success">Added</span> The method @org.eclipse.sirius.business.api.helper.task.DeleteEObjectTask.getEObjectToDelete()@ has been added to get the EObject that will be deleted by this task.
+* <span class="label label-success">Added</span> @org.eclipse.sirius.business.api.refresh.RepresentationTimeStampInformationSupplierRegistry@ and @org.eclipse.sirius.business.api.refresh.RepresentationTimeStampInformationSupplier@ have been added. The first is the registry to register instance of the second that allows to tell when the DRepresentationDescriptor.changeId is updated or not. 
+
+h4. Migrations
+
+* <span class="label label-info">Modified</span> The migration participant that sets a changeId value for each DRepresentationDescriptor that did not have one has been changed. The migration participant @org.eclipse.sirius.diagram.ui.business.internal.migration.SetChangeIdMigrationParticipant@ sets a time stamp that represents the absolute time. The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _15.7.0.202209051100_.
+
 
 h4. Migrations
 
