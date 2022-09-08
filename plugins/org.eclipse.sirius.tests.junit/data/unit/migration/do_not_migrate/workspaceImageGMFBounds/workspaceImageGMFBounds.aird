@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
   <viewpoint:DAnalysis uid="_BjGrwJ7XEd-_KuSX82kl6A" selectedViews="_CFDiQJ7XEd-_KuSX82kl6A" version="14.6.0.202109231100">
     <semanticResources>workspaceImageGMFBounds.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_CFDiQJ7XEd-_KuSX82kl6A">
       <viewpoint xmi:type="description:Viewpoint" href="workspaceImageGMFBounds.odesign#//@ownedViewpoints[name='bug.test']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_ntW8ATcOEeyL_94R6_bb6g" name="workspaceImageGMFBounds" repPath="#_YjaB0J7bEd-_KuSX82kl6A" changeId="01ecfedf-e164-47f5-b269-2a25bd5c132d">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_ntW8ATcOEeyL_94R6_bb6g" name="workspaceImageGMFBounds" repPath="#_YjaB0J7bEd-_KuSX82kl6A" changeId="11700a3e-6f98-4b82-9785-f87ebeca9fad">
         <description xmi:type="description_1:DiagramDescription" href="workspaceImageGMFBounds.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='workspaceImageGMFBounds']"/>
         <target xmi:type="ecore:EPackage" href="workspaceImageGMFBounds.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -34,6 +34,17 @@
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9E7SkrKiEeSI84JZFmnEHw" x="468" y="316"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_D__nQLKjEeSI84JZFmnEHw" type="2003" element="_D_mlsLKjEeSI84JZFmnEHw">
+          <children xmi:type="notation:Node" xmi:id="_xPc5cC64Ee2eLK7Gct5Djw" type="3012" element="_xPShYC64Ee2eLK7Gct5Djw">
+            <children xmi:type="notation:Node" xmi:id="_xPiZAC64Ee2eLK7Gct5Djw" type="5010">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_xPiZAS64Ee2eLK7Gct5Djw" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_xPt_MC64Ee2eLK7Gct5Djw" type="3005" element="_xPTvgC64Ee2eLK7Gct5Djw">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_xPt_MS64Ee2eLK7Gct5Djw" fontName="Cantarell"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xPt_Mi64Ee2eLK7Gct5Djw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_xPc5cS64Ee2eLK7Gct5Djw" fontName="Cantarell" fontHeight="12"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8y5SAC65Ee2eLK7Gct5Djw" x="112" y="1" width="1" height="1"/>
+          </children>
           <children xmi:type="notation:Node" xmi:id="_EAAOULKjEeSI84JZFmnEHw" type="5007"/>
           <children xmi:type="notation:Node" xmi:id="_EAA1YLKjEeSI84JZFmnEHw" type="7004">
             <styles xmi:type="notation:SortingStyle" xmi:id="_EAA1YbKjEeSI84JZFmnEHw"/>
@@ -69,7 +80,7 @@
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gGqotDcUEeyW4p8o1xwqIA"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_gGqBoTcUEeyW4p8o1xwqIA" fontName="Segoe UI" fontHeight="12"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gGqBojcUEeyW4p8o1xwqIA" x="19" y="316" width="346" height="346"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gGqBojcUEeyW4p8o1xwqIA" x="19" y="316" width="50" height="50"/>
         </children>
         <styles xmi:type="notation:DiagramStyle" xmi:id="_Yjao4p7bEd-_KuSX82kl6A"/>
       </data>
@@ -102,6 +113,18 @@
     <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_D_mlsLKjEeSI84JZFmnEHw" name="list_image">
       <target xmi:type="ecore:EClass" href="workspaceImageGMFBounds.ecore#//Class1"/>
       <semanticElements xmi:type="ecore:EClass" href="workspaceImageGMFBounds.ecore#//Class1"/>
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_xPShYC64Ee2eLK7Gct5Djw" name="att" width="1" height="1" resizeKind="NSEW">
+        <target xmi:type="ecore:EAttribute" href="workspaceImageGMFBounds.ecore#//Class1/att"/>
+        <semanticElements xmi:type="ecore:EAttribute" href="workspaceImageGMFBounds.ecore#//Class1/att"/>
+        <graphicalFilters xmi:type="diagram:CollapseFilter" uid="_IOa90DTTEe2tOa_UJsEsJA" width="56" height="20"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_xPTvgC64Ee2eLK7Gct5Djw" labelSize="12" labelPosition="node" workspacePath="/org.eclipse.sirius.tests.junit/images/logo_o.png">
+          <description xmi:type="style:WorkspaceImageDescription" href="workspaceImageGMFBounds.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='workspaceImageGMFBounds']/@defaultLayer/@containerMappings[name='EClassContainerMapping_list_img']/@borderedNodeMappings[name='eAtt']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="workspaceImageGMFBounds.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='workspaceImageGMFBounds']/@defaultLayer/@containerMappings[name='EClassContainerMapping_list_img']/@borderedNodeMappings[name='eAtt']"/>
+      </ownedBorderedNodes>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -144,6 +167,7 @@
       <actualMapping xmi:type="description_1:NodeMapping" href="workspaceImageGMFBounds.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='workspaceImageGMFBounds']/@defaultLayer/@nodeMappings[name='EEnumMapping']"/>
     </ownedDiagramElements>
     <description xmi:type="description_1:DiagramDescription" href="workspaceImageGMFBounds.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='workspaceImageGMFBounds']"/>
+    <activatedFilters xmi:type="filter:CompositeFilterDescription" href="workspaceImageGMFBounds.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='workspaceImageGMFBounds']/@filters[name='filters']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_YjaB0Z7bEd-_KuSX82kl6A"/>
     <activatedLayers xmi:type="description_1:Layer" href="workspaceImageGMFBounds.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='workspaceImageGMFBounds']/@defaultLayer"/>
     <target xmi:type="ecore:EPackage" href="workspaceImageGMFBounds.ecore#/"/>

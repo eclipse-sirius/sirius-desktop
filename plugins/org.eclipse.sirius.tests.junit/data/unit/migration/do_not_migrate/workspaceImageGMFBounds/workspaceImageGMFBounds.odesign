@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="description" version="12.0.0.2017041100">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="description" version="12.0.0.2017041100">
   <ownedViewpoints name="bug.test" label="workspaceImageGMFBounds" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="workspaceImageGMFBounds" label="workspaceImageGMFBounds" domainClass="EPackage" enablePopupBars="true">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <filters xsi:type="filter:CompositeFilterDescription" name="filters">
+        <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='workspaceImageGMFBounds']/@defaultLayer/@containerMappings[name='EClassContainerMapping_list_img']/@borderedNodeMappings[name='eAtt']"/>
+      </filters>
       <defaultLayer name="Default" label="default">
         <nodeMappings name="EPackageMapping" semanticCandidatesExpression="feature:eContents" domainClass="EPackage">
           <style xsi:type="style:WorkspaceImageDescription" sizeComputationExpression="-1" resizeKind="NSEW" arcWidth="1" arcHeight="1">
@@ -23,6 +26,12 @@
           </style>
         </containerMappings>
         <containerMappings name="EClassContainerMapping_list_img" semanticCandidatesExpression="aql:self.eClassifiers->filter(ecore::EClass)" domainClass="EClass" childrenPresentation="List">
+          <borderedNodeMappings name="eAtt" semanticCandidatesExpression="feature:eAllContents" domainClass="EAttribute">
+            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" sizeComputationExpression="1" labelPosition="node" workspacePath="/org.eclipse.sirius.tests.junit/images/logo_o.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </borderedNodeMappings>
           <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" labelExpression="list_image" sizeComputationExpression="-1" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.sirius.tests.junit/images/UseCase.png">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
