@@ -13,11 +13,11 @@ package org.eclipse.sirius.tree.ui.tools.internal.editor.listeners;
 
 import java.lang.reflect.InvocationTargetException;
 import java.text.MessageFormat;
+import java.util.Optional;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.TreePackage;
@@ -45,8 +45,6 @@ public class TreeItemExpansionManager implements Listener {
 
     private Session session;
 
-    private ModelAccessor modelAccessor;
-
     private IPermissionAuthority permissionAuthority;
 
     /**
@@ -64,8 +62,7 @@ public class TreeItemExpansionManager implements Listener {
         tree.addListener(SWT.Expand, this);
         tree.addListener(SWT.Collapse, this);
         tree.addListener(SWT.Dispose, this);
-        modelAccessor = session.getModelAccessor();
-        permissionAuthority = modelAccessor.getPermissionAuthority();
+        permissionAuthority = session.getModelAccessor().getPermissionAuthority();
     }
 
     /**
@@ -92,41 +89,78 @@ public class TreeItemExpansionManager implements Listener {
     }
 
     /**
-     * Handle the undo of the swt TreeItem collapse if the current
-     * {@link IPermissionAuthority} disallow it.
+     * Handle the undo of the swt TreeItem collapse if the current {@link IPermissionAuthority} disallow it.
      */
     private void handleTreeCollapse(Event event) {
-        if (event.item instanceof TreeItem) {
-            TreeItem treeItem = (TreeItem) event.item;
+        handleTreeCollapse(event, Optional.empty(), session, permissionAuthority);
+    }
+
+    /**
+     * Handle the undo of the swt TreeItem collapse if the current {@link IPermissionAuthority} disallow it.
+     * 
+     * @param event
+     *            the specified {@link Event}
+     * @param currentSession
+     *            the current session
+     * @param currentPermissionAuthority
+     *            The {@link IPermissionAuthority} responsible to validate if the element is editable
+     */
+    public static void handleTreeCollapse(Event event, Optional<TreeItem> currentTreeItem, Session currentSession, IPermissionAuthority currentPermissionAuthority) {
+        TreeItem treeItem = null;
+        if (currentTreeItem.isPresent()) {
+            treeItem = currentTreeItem.get();
+        } else if (event.item instanceof TreeItem) {
+            treeItem = (TreeItem) event.item;
+        }
+        if (treeItem != null) {
             Object data = treeItem.getData();
             if (data instanceof DTreeItem) {
                 DTreeItem dTreeItem = (DTreeItem) data;
-                if (isEventForDTreeItemExpandable(event)) {
-                    treeExpandingCollapsingAction(treeItem, dTreeItem, false, Messages.TreeItemExpansionManager_treeCollapsing);
+                if (isForDTreeItemExpandable(treeItem, currentPermissionAuthority)) {
+                    treeExpandingCollapsingAction(currentSession, treeItem, dTreeItem, false, Messages.TreeItemExpansionManager_treeCollapsing);
                 } else {
                     new ChangeExpandeStateRunnable(treeItem, true).run();
                 }
             }
         }
-        if (!isEventForDTreeItemExpandable(event)) {
+        if (!isForDTreeItemExpandable(treeItem, currentPermissionAuthority)) {
             event.type = SWT.None;
-            final TreeItem treeItem = (TreeItem) event.item;
             new ChangeExpandeStateRunnable(treeItem, true).run();
         }
     }
 
     /**
-     * Handle the undo the swt TreeItem expansion if the current
-     * {@link IPermissionAuthority} disallow it.
+     * Handle the undo of the swt TreeItem expansion if the current {@link IPermissionAuthority} disallow it.
      */
     private void handleTreeExpand(Event event) {
-        if (event.item instanceof TreeItem) {
-            TreeItem treeItem = (TreeItem) event.item;
+        handleTreeExpand(event, Optional.empty(), session, permissionAuthority);
+    }
+
+    /**
+     * Handle the undo of the swt TreeItem expansion if the current {@link IPermissionAuthority} disallow it.
+     * 
+     * @param event
+     *            the specified {@link Event}
+     * @param currentTreeItem
+     *            the current tree item, or null of the event is supposed to have the data
+     * @param currentSession
+     *            the current session
+     * @param currentPermissionAuthority
+     *            The {@link IPermissionAuthority} responsible to validate if the element is editable
+     */
+    public static void handleTreeExpand(Event event, Optional<TreeItem> currentTreeItem, Session currentSession, IPermissionAuthority currentPermissionAuthority) {
+        TreeItem treeItem = null;
+        if (currentTreeItem.isPresent()) {
+            treeItem = currentTreeItem.get();
+        } else if (event.item instanceof TreeItem) {
+            treeItem = (TreeItem) event.item;
+        }
+        if (treeItem != null) {
             Object data = treeItem.getData();
             if (data instanceof DTreeItem) {
                 DTreeItem dTreeItem = (DTreeItem) data;
-                if (isEventForDTreeItemExpandable(event)) {
-                    treeExpandingCollapsingAction(treeItem, dTreeItem, true, Messages.TreeItemExpansionManager_treeExpanding);
+                if (isForDTreeItemExpandable(treeItem, currentPermissionAuthority)) {
+                    treeExpandingCollapsingAction(currentSession, treeItem, dTreeItem, true, Messages.TreeItemExpansionManager_treeExpanding);
                 } else {
                     new ChangeExpandeStateRunnable(treeItem, false).run();
                 }
@@ -135,32 +169,33 @@ public class TreeItemExpansionManager implements Listener {
     }
 
     /**
-     * Tells if the specified {@link Event} is a event of a {@link TreeItem}
-     * collapse/expansion which should be allowed by the current
-     * {@link IPermissionAuthority}.
+     * Tells if the specified {@link TreeItem} concerned a DTreeIem for which collapse/expansion should be allowed by
+     * the current {@link IPermissionAuthority}.
      * 
-     * @param event
-     *            the specified {@link Event}
-     * @return true if the specified {@link Event} is allowed by the current
-     *         {@link IPermissionAuthority}, false else
+     * @param treeItem
+     *            the specified {@link TreeItem}
+     * @param currentPermissionAuthority
+     *            The {@link IPermissionAuthority} responsible to validate if the element is editable
+     * @return true if the specified {@link Event} is allowed by the current {@link IPermissionAuthority}, false else
      */
-    private boolean isEventForDTreeItemExpandable(Event event) {
-        boolean isEventForDTreeItemExpandable = true;
-        if (event.item instanceof TreeItem) {
-            TreeItem treeItem = (TreeItem) event.item;
+    private static boolean isForDTreeItemExpandable(TreeItem treeItem, IPermissionAuthority currentPermissionAuthority) {
+        boolean isForDTreeItemExpandable = true;
+        if (treeItem != null) {
             Object data = treeItem.getData();
             if (data instanceof DTreeItem) {
                 DTreeItem dTreeItem = (DTreeItem) data;
-                boolean canEditFeature = permissionAuthority != null && permissionAuthority.canEditFeature(dTreeItem, TreePackage.Literals.DTREE_ITEM__EXPANDED.getName());
-                isEventForDTreeItemExpandable = canEditFeature;
+                boolean canEditFeature = currentPermissionAuthority != null && currentPermissionAuthority.canEditFeature(dTreeItem, TreePackage.Literals.DTREE_ITEM__EXPANDED.getName());
+                isForDTreeItemExpandable = canEditFeature;
             }
         }
-        return isEventForDTreeItemExpandable;
+        return isForDTreeItemExpandable;
     }
 
     /**
      * Expanding/collapsing a DTreeItem.
      * 
+     * @param currentSession
+     *            the current session
      * @param treeItem
      *            the {@link TreeItem} concerned by the collapse/expand
      * @param dTreeItem
@@ -170,12 +205,12 @@ public class TreeItemExpansionManager implements Listener {
      * @param errorMessage
      *            the error message while expanding/collapsing the tree
      */
-    private void treeExpandingCollapsingAction(final TreeItem treeItem, final DTreeItem dTreeItem, final boolean expand, final String errorMessage) {
+    private static void treeExpandingCollapsingAction(final Session currentSession, final TreeItem treeItem, final DTreeItem dTreeItem, final boolean expand, final String errorMessage) {
         if ((expand && !dTreeItem.isExpanded()) || (!expand && dTreeItem.isExpanded())) {
             IWorkbench wb = PlatformUI.getWorkbench();
             IProgressService ps = wb.getProgressService();
             try {
-                ps.busyCursorWhile(new ExpandDTreeItemRunnableWithProgress(session, dTreeItem, expand));
+                ps.busyCursorWhile(new ExpandDTreeItemRunnableWithProgress(currentSession, dTreeItem, expand));
             } catch (InvocationTargetException e) {
                 TreeUIPlugin.INSTANCE.log(new Status(IStatus.ERROR, TreeUIPlugin.ID, MessageFormat.format(Messages.TreeItemExpansionManager_expandOrCollaseError, errorMessage), e));
             } catch (InterruptedException e) {
@@ -195,5 +230,6 @@ public class TreeItemExpansionManager implements Listener {
         }
         tree = null;
         session = null;
+        permissionAuthority = null;
     }
 }

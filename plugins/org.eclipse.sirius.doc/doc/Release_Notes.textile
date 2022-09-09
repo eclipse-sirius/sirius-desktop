@@ -4,6 +4,12 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for recent major releases of Sirius. See also "the release notes from previous versions":Release_Notes_Previous.html for details about older releases.
 
+h2(#sirius7.1.0). Changes in Sirius 7.1.0
+
+h3. User-Visible Changes
+
+In a tree editor, if the expand is done with the right arrow key, the behavior is now OK. Before this version, if the expand is done for the first time with the right arrow key, only a blank child is displayed. You can refer to "bugzilla 549352":https://bugs.eclipse.org/bugs/show_bug.cgi?id=549352 for more details. 
+
 h2(#sirius7.0.4). Changes in Sirius 7.0.4
 
 h3. User-Visible Changes
