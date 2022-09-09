@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -202,10 +202,12 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
         initializeKeyBindingSupport();
         ColumnViewerToolTipSupport.enableFor(treeViewer);
 
-        // Create a TreeViewerEditor
+        // Create a TreeViewerFocusCellManager with a specific CellNavigationStrategy to "create" children elements on
+        // the first expand with the right arrow key.
         final TreeViewerFocusCellManager focusCellManager = new TreeViewerFocusCellManager(treeViewer,
-                new FocusCellHighlighter(treeViewer) { /* Highlighter doing nothing */ });
+                new FocusCellHighlighter(treeViewer) { /* Highlighter doing nothing */ }, new SiriusDTreeCellNavigationStrategy(getSession()));
 
+        // Create a TreeViewerEditor
         TreeViewerEditor.create(treeViewer, focusCellManager, new DTableColumnViewerEditorActivationStrategy(treeViewer),
                 ColumnViewerEditor.TABBING_HORIZONTAL | ColumnViewerEditor.TABBING_MOVE_TO_ROW_NEIGHBOR | ColumnViewerEditor.TABBING_VERTICAL | ColumnViewerEditor.KEYBOARD_ACTIVATION);
 

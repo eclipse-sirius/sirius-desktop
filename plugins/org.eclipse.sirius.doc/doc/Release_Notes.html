@@ -13,6 +13,14 @@
 				<a href="#ReleaseNotesforSirius">Release Notes for Sirius</a>
 				<ol style="list-style: disc;">
 					<li>
+						<a href="#sirius7.0.6">Changes in Sirius 7.0.6</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="#UserVisibleChanges">User-Visible Changes</a>
+							</li>
+						</ol>
+					</li>
+					<li>
 						<a href="#sirius7.0.5">Changes in Sirius 7.0.5</a>
 						<ol style="list-style: disc;">
 							<li>
@@ -24,7 +32,7 @@
 						<a href="#sirius7.0.4">Changes in Sirius 7.0.4</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#UserVisibleChanges">User-Visible Changes</a>
+								<a href="#UserVisibleChanges2">User-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -59,7 +67,7 @@
 						<a href="#sirius7.0.0">Changes in Sirius 7.0.0</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#UserVisibleChanges2">User-Visible Changes</a>
+								<a href="#UserVisibleChanges3">User-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#DeveloperVisibleChanges4">Developer-Visible Changes</a>
@@ -70,7 +78,7 @@
 						<a href="#sirius6.6.0">Changes in Sirius 6.6.0</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#UserVisibleChanges3">User-Visible Changes</a>
+								<a href="#UserVisibleChanges4">User-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#DeveloperVisibleChanges5">Developer-Visible Changes</a>
@@ -89,7 +97,7 @@
 						<a href="#sirius6.5.0">Changes in Sirius 6.5.0</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#UserVisibleChanges4">User-Visible Changes</a>
+								<a href="#UserVisibleChanges5">User-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#SpecifierVisibleChanges2">Specifier-Visible Changes</a>
@@ -105,6 +113,13 @@
 		<p>This document contains the release notes for recent major releases of Sirius. See also 
 			<a href="Release_Notes_Previous.html">the release notes from previous versions</a> for details about older releases.
 		</p>
+		<h2 id="sirius7.0.6">Changes in Sirius 7.0.6</h2>
+		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
+		<ul>
+			<li><span class="label label-info">Modified</span> In a tree editor, if the expand is done with the right arrow key, the behavior is now OK. Before this version, if the expand is done for the first time with the right arrow key, only a blank child is displayed. You can refer to 
+				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=549352">bugzilla 549352</a> for more details. 
+			</li>
+		</ul>
 		<h2 id="sirius7.0.5">Changes in Sirius 7.0.5</h2>
 		<h4 id="Migrations">Migrations</h4>
 		<ul>
@@ -118,7 +133,7 @@
 			</li>
 		</ul>
 		<h2 id="sirius7.0.4">Changes in Sirius 7.0.4</h2>
-		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
 		<p>Minor release to avoid errors thrown during indirect deletion of edges whose label is selected (deletion done from outside the diagram editor or from a custom command).</p>
 		<h2 id="sirius7.0.3">Changes in Sirius 7.0.3</h2>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
@@ -172,7 +187,7 @@
 			</li>
 		</ul>
 		<h2 id="sirius7.0.0">Changes in Sirius 7.0.0</h2>
-		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges3">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> Some enhancement have been done about the images management.
 				<ul>
@@ -516,7 +531,7 @@
 			</li>
 		</ul>
 		<h2 id="sirius6.6.0">Changes in Sirius 6.6.0</h2>
-		<h3 id="UserVisibleChanges3">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges4">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> 4 new actions have been added to control the &#8220;z-order&#8221; of edges. These actions are mainly useful in the context of 
 				<a href="user/diagrams/Diagrams.html#Appearance">jump links</a>. Similar actions already existed for nodes but not for edges. A chapter dedicated to these new actions has been added in 
@@ -591,7 +606,7 @@
 			</li>
 		</ul>
 		<h2 id="sirius6.5.0">Changes in Sirius 6.5.0</h2>
-		<h3 id="UserVisibleChanges4">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges5">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> It is possible to override at the aird level both &#8220;Sirius/Do Refresh on representation opening&#8221; and &#8220;Sirius/Automatic refresh&#8221; preferences. To override the preferences, right-click on the 
 				<code>aird</code> file, select &#8220;Properties&#8221;, and in the dialog go to the &#8220;Sirius settings&#8221; section. The preferences are stored in the project scope and associated to the aird file. For more details, refer the 
