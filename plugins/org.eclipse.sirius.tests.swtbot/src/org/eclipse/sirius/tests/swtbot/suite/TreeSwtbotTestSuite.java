@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.eclipse.sirius.tests.swtbot.tree.NavigateInTreeRepresentationTest;
 import org.eclipse.sirius.tests.swtbot.tree.OpenCloseCreateDeleteTreeRepresentationTest;
 import org.eclipse.sirius.tests.swtbot.tree.RefreshWithPropertiesViewTest;
 import org.eclipse.sirius.tests.swtbot.tree.RenameTreeRepresentationTest;
+import org.eclipse.sirius.tests.swtbot.tree.TreeExpandFoldWithKeyTests;
 import org.eclipse.sirius.tests.swtbot.tree.TreeItemMappingTest;
 import org.eclipse.sirius.tests.swtbot.tree.TreeItemPopupMenusTest;
 import org.eclipse.sirius.tests.swtbot.tree.TreeItemPopupMenusWithJavaActionTest;
@@ -82,6 +83,7 @@ public class TreeSwtbotTestSuite extends TestCase {
         suite.addTestSuite(TreeUIRefreshTests.class);
         suite.addTestSuite(TreeRefreshWithF5ShortcutTests.class);
         suite.addTestSuite(DisplayLabelOnNodeTest.class);
+        suite.addTestSuite(TreeExpandFoldWithKeyTests.class);
         return suite;
     }
 
