@@ -58,6 +58,7 @@ public class DeleteEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
      * model has expected.
      */
     private Predicate<EPackage> edgeDeletionFromEdgeToNodeSemanticPredicate = new Predicate<EPackage>() {
+        @Override
         public boolean apply(EPackage semanticRoot) {
             EReference annotationReference = ((EClass) semanticRoot.getEClassifier("C0")).getEReferences().iterator().next();
             EAnnotation targetAnnotation = getAnnotationFromSource(annotationReference, "AnnotRef1");
@@ -71,6 +72,7 @@ public class DeleteEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
      * model has expected.
      */
     private Predicate<EPackage> edgeDeletionFromNodeToEdgeSemanticPredicate = new Predicate<EPackage>() {
+        @Override
         public boolean apply(EPackage semanticRoot) {
             EReference annotationReference = ((EClass) semanticRoot.getEClassifier("C0")).getEReferences().iterator().next();
             EAnnotation sourceAnnotation = getAnnotationFromSource(annotationReference, "AnnotRef1");
@@ -85,8 +87,8 @@ public class DeleteEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
     private int oldNumberOfSourceConnectionsForOldSourceNodeOfDeletedEdge;
 
     /**
-     * Ensures that creating an edge from an edge to a node mode works as
-     * expected in manual refresh mode and with unsynchronized targetMapping.
+     * Ensures that deleting an edge from an edge to a node mode works as expected in manual refresh mode and with
+     * unsynchronized targetMapping.
      */
     public void testEdgeDeletionFromEdgeToNodeInManualRefreshUnsynchronizedTargetMapping() {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false);
@@ -99,8 +101,8 @@ public class DeleteEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
     }
 
     /**
-     * Ensures that creating an edge from an edge to a node mode works as
-     * expected in manual refresh mode and with unsynchronized mapping.
+     * Ensures that deleting an edge from an edge to a node mode works as expected in manual refresh mode and with
+     * unsynchronized mapping.
      */
     public void testEdgeDeletionFromEdgeToNodeInManualRefreshUnsynchronizedEdgeOnEdgeMapping() {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false);
@@ -113,8 +115,7 @@ public class DeleteEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
     }
 
     /**
-     * Ensures that creating an edge from an edge to a node mode works as
-     * expected in automatic refresh mode.
+     * Ensures that deleting an edge from an edge to a node mode works as expected in automatic refresh mode.
      */
     public void testEdgeDeletionFromEdgeToNodeInAutoRefresh() {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
@@ -123,8 +124,8 @@ public class DeleteEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
     }
 
     /**
-     * Ensures that creating an edge from an edge to a node mode works as
-     * expected in automatic refresh mode with unsynchronized diagram.
+     * Ensures that deleting an edge from an edge to a node mode works as expected in automatic refresh mode with
+     * unsynchronized diagram.
      */
     public void testEdgeDeletionFromEdgeToNodeInAutoRefreshUnsynchronizedDiagram() {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
@@ -134,8 +135,8 @@ public class DeleteEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
     }
 
     /**
-     * Ensures that creating an edge from an edge to a node mode works as
-     * expected in automatic refresh mode with unsynchronized sourceMapping.
+     * Ensures that deleting an edge from an edge to a node mode works as expected in automatic refresh mode with
+     * unsynchronized sourceMapping.
      */
     public void testEdgeDeletionFromEdgeToNodeInAutoRefreshUnsynchronizedSourceMapping() {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
@@ -148,8 +149,8 @@ public class DeleteEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
     }
 
     /**
-     * Ensures that creating an edge from an edge to a node mode works as
-     * expected in automatic refresh mode with unsynchronized targetMapping.
+     * Ensures that deleting an edge from an edge to a node mode works as expected in automatic refresh mode with
+     * unsynchronized targetMapping.
      */
     public void testEdgeDeletionFromEdgeToNodeInAutoRefreshUnsynchronizedTargetMapping() {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
@@ -162,8 +163,8 @@ public class DeleteEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
     }
 
     /**
-     * Ensures that creating an edge from an edge to a node mode works as
-     * expected in automatic refresh mode with unsynchronized mapping.
+     * Ensures that deleting an edge from an edge to a node mode works as expected in automatic refresh mode with
+     * unsynchronized mapping.
      */
     public void testEdgeDeletionFromEdgeToNodeInAutoRefreshUnsynchronizedEdgeOnEdgeMapping() {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
@@ -176,8 +177,7 @@ public class DeleteEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
     }
 
     /**
-     * Ensures that creating an edge from a node to an edge mode works as
-     * expected in manual refresh mode.
+     * Ensures that deleting an edge from a node to an edge mode works as expected in manual refresh mode.
      */
     public void testEdgeDeletionFromNodeToEdgeInManualRefresh() {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false);
@@ -186,8 +186,8 @@ public class DeleteEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
     }
 
     /**
-     * Ensures that creating an edge from a node to an edge mode works as
-     * expected in manual refresh mode and with unsynchronized diagram.
+     * Ensures that deleting an edge from a node to an edge mode works as expected in manual refresh mode and with
+     * unsynchronized diagram.
      */
     public void testEdgeDeletionFromNodeToEdgeInManualRefreshUnsynchronizedDiagram() {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false);
@@ -197,8 +197,8 @@ public class DeleteEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
     }
 
     /**
-     * Ensures that creating an edge from a node to an edge mode works as
-     * expected in manual refresh mode and with unsynchronized sourceMapping.
+     * Ensures that deleting an edge from a node to an edge mode works as expected in manual refresh mode and with
+     * unsynchronized sourceMapping.
      */
     public void testEdgeDeletionFromNodeToEdgeInManualRefreshUnsynchronizedSourceMapping() {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false);
@@ -211,8 +211,8 @@ public class DeleteEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
     }
 
     /**
-     * Ensures that creating an edge from a node to an edge mode works as
-     * expected in manual refresh mode and with unsynchronized targetMapping.
+     * Ensures that deleting an edge from a node to an edge mode works as expected in manual refresh mode and with
+     * unsynchronized targetMapping.
      */
     public void testEdgeDeletionFromNodeToEdgeInManualRefreshUnsynchronizedTargetMapping() {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false);
@@ -225,8 +225,8 @@ public class DeleteEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
     }
 
     /**
-     * Ensures that creating an edge from a node to an edge mode works as
-     * expected in manual refresh mode and with unsynchronized mapping.
+     * Ensures that deleting an edge from a node to an edge mode works as expected in manual refresh mode and with
+     * unsynchronized mapping.
      */
     public void testEdgeDeletionFromNodeToEdgeInManualRefreshUnsynchronizedEdgeOnEdgeMapping() {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false);
@@ -239,8 +239,7 @@ public class DeleteEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
     }
 
     /**
-     * Ensures that creating an edge from a node to an edge mode works as
-     * expected in automatic refresh mode.
+     * Ensures that deleting an edge from a node to an edge mode works as expected in automatic refresh mode.
      */
     public void testEdgeDeletionFromNodeToEdgeInAutoRefresh() {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
@@ -249,8 +248,8 @@ public class DeleteEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
     }
 
     /**
-     * Ensures that creating an edge from a node to an edge mode works as
-     * expected in automatic refresh mode and with unsynchronized diagram.
+     * Ensures that deleting an edge from a node to an edge mode works as expected in automatic refresh mode and with
+     * unsynchronized diagram.
      */
     public void testEdgeDeletionFromNodeToEdgeInAutoRefreshUnsynchronizedDiagram() {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
@@ -260,8 +259,8 @@ public class DeleteEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
     }
 
     /**
-     * Ensures that creating an edge from a node to an edge mode works as
-     * expected in automatic refresh mode and with unsynchronized sourceMapping.
+     * Ensures that deleting an edge from a node to an edge mode works as expected in automatic refresh mode and with
+     * unsynchronized sourceMapping.
      */
     public void testEdgeDeletionFromNodeToEdgeInAutoRefreshUnsynchronizedSourceMapping() {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
@@ -274,8 +273,8 @@ public class DeleteEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
     }
 
     /**
-     * Ensures that creating an edge from a node to an edge mode works as
-     * expected in automatic refresh mode and with unsynchronized targetMapping.
+     * Ensures that deleting an edge from a node to an edge mode works as expected in automatic refresh mode and with
+     * unsynchronized targetMapping.
      */
     public void testEdgeDeletionFromNodeToEdgeInAutoRefreshUnsynchronizedTargetMapping() {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
@@ -288,8 +287,8 @@ public class DeleteEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
     }
 
     /**
-     * Ensures that creating an edge from a node to an edge mode works as
-     * expected in automatic refresh mode and with unsynchronized mapping.
+     * Ensures that deleting an edge from a node to an edge mode works as expected in automatic refresh mode and with
+     * unsynchronized mapping.
      */
     public void testEdgeDeletionFromNodeToEdgeInAutoRefreshUnsynchronizedEdgeOnEdgeMapping() {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
@@ -302,9 +301,8 @@ public class DeleteEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
     }
 
     /**
-     * Ensures that the edge Deletion modifies correctly the semantic and
-     * graphical model, with undo/redo, editor reopenning... When the source of
-     * the Edge is a Node and its target an Edge.
+     * Ensures that the edge deletion modifies correctly the semantic and graphical model, with undo/redo, editor
+     * reopenning... When the source of the Edge is a Node and its target an Edge.
      */
     public void genericTestEdgeDeletionFromNodeToEdge() {
         EReference annotationReference = ((EClass) semanticRoot.getEClassifier("C0")).getEReferences().iterator().next();
