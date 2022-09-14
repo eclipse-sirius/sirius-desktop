@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="2182">
   <eAnnotations source="A5" references="#//C0/ref1"/>
   <eAnnotations source="myAnnotation"/>
@@ -26,4 +25,27 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20AbstractClass%208"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="new AbstractClass 8"/>
+  <eSubpackages name="newcase580691-1">
+    <eClassifiers xsi:type="ecore:EClass" name="C1">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//newcase580691-1/C0"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//newcase580691-1/C1"/>
+    <eClassifiers xsi:type="ecore:EClass" name="C0"/>
+    <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//newcase580691-1/C2"/>
+    <eClassifiers xsi:type="ecore:EClass" name="C4" eSuperTypes="#//newcase580691-1/C3"/>
+  </eSubpackages>
+  <eSubpackages name="newcase580691-2">
+    <eSubpackages name="p1">
+      <eClassifiers xsi:type="ecore:EClass" name="C1">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//newcase580691-2/p1/C0"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//newcase580691-2/p1/C1"/>
+      <eClassifiers xsi:type="ecore:EClass" name="C0"/>
+      <eClassifiers xsi:type="ecore:EClass" name="C2Bis" eSuperTypes="#//newcase580691-2/p1/C1"/>
+    </eSubpackages>
+    <eSubpackages name="p2">
+      <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//newcase580691-2/p1/C2Bis #//newcase580691-2/p1/C2"/>
+      <eClassifiers xsi:type="ecore:EClass" name="C4" eSuperTypes="#//newcase580691-2/p2/C3"/>
+    </eSubpackages>
+  </eSubpackages>
 </ecore:EPackage>

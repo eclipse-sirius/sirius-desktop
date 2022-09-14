@@ -697,6 +697,102 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="bugzilla580691_TC1" domainClass="ecore::EPackage" enablePopupBars="true">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="classNode" semanticCandidatesExpression="feature:eClassifiers" domainClass="ecore::EClass">
+          <style xsi:type="style:SquareDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="superTypeEdge" sourceMapping="//@ownedViewpoints[name='doremi_2182']/@ownedRepresentations[name='bugzilla580691_TC1']/@defaultLayer/@nodeMappings[name='classNode']" targetMapping="//@ownedViewpoints[name='doremi_2182']/@ownedRepresentations[name='bugzilla580691_TC1']/@defaultLayer/@edgeMappings[name='referenceEdge']" targetFinderExpression="aql:self.eSuperTypes">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_red']"/>
+            <centerLabelStyleDescription labelSize="12" labelExpression="aql:self.name+' ste'">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_red']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="referenceEdge" sourceMapping="//@ownedViewpoints[name='doremi_2182']/@ownedRepresentations[name='bugzilla580691_TC1']/@defaultLayer/@nodeMappings[name='classNode']" targetMapping="//@ownedViewpoints[name='doremi_2182']/@ownedRepresentations[name='bugzilla580691_TC1']/@defaultLayer/@nodeMappings[name='classNode']" targetFinderExpression="aql:self.eReferences.eType" sourceFinderExpression="aql:self.eContainer()" domainClass="ecore::EReference">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <centerLabelStyleDescription labelSize="12" labelExpression="aql:self.name+' re'">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="superSuperTypeEdge" documentation="Returns superTypes that have superTypes" sourceMapping="//@ownedViewpoints[name='doremi_2182']/@ownedRepresentations[name='bugzilla580691_TC1']/@defaultLayer/@nodeMappings[name='classNode']" targetMapping="//@ownedViewpoints[name='doremi_2182']/@ownedRepresentations[name='bugzilla580691_TC1']/@defaultLayer/@edgeMappings[name='referenceEdge'] //@ownedViewpoints[name='doremi_2182']/@ownedRepresentations[name='bugzilla580691_TC1']/@defaultLayer/@edgeMappings[name='superTypeEdge']" targetFinderExpression="aql:self.eSuperTypes->reject(s | s.eSuperTypes -> isEmpty())">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            <centerLabelStyleDescription labelSize="12" labelExpression="aql:self.name+' sste'">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="superSuperSuperTypeEdge" sourceMapping="//@ownedViewpoints[name='doremi_2182']/@ownedRepresentations[name='bugzilla580691_TC1']/@defaultLayer/@nodeMappings[name='classNode']" targetMapping="//@ownedViewpoints[name='doremi_2182']/@ownedRepresentations[name='bugzilla580691_TC1']/@defaultLayer/@edgeMappings[name='superSuperTypeEdge']" targetFinderExpression="aql:self.eSuperTypes->reject(s | s.eSuperTypes -> isEmpty())">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+            <centerLabelStyleDescription labelSize="12" labelExpression="aql:self.name+' ssste'">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="bugzilla580691_TC2" domainClass="ecore::EPackage" enablePopupBars="true">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <defaultLayer name="Default">
+        <edgeMappings name="superTypeEdge" sourceMapping="//@ownedViewpoints[name='doremi_2182']/@ownedRepresentations[name='bugzilla580691_TC2']/@defaultLayer/@containerMappings[name='subPackages']/@subNodeMappings[name='classNode']" targetMapping="//@ownedViewpoints[name='doremi_2182']/@ownedRepresentations[name='bugzilla580691_TC2']/@defaultLayer/@edgeMappings[name='referenceEdge']" targetFinderExpression="aql:self.eSuperTypes">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_red']"/>
+            <centerLabelStyleDescription labelSize="12" labelExpression="aql:self.name+' ste'">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_red']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="referenceEdge" sourceMapping="//@ownedViewpoints[name='doremi_2182']/@ownedRepresentations[name='bugzilla580691_TC2']/@defaultLayer/@containerMappings[name='subPackages']/@subNodeMappings[name='classNode']" targetMapping="//@ownedViewpoints[name='doremi_2182']/@ownedRepresentations[name='bugzilla580691_TC2']/@defaultLayer/@containerMappings[name='subPackages']/@subNodeMappings[name='classNode']" targetFinderExpression="aql:self.eReferences.eType" sourceFinderExpression="aql:self.eContainer()" domainClass="ecore::EReference">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <centerLabelStyleDescription labelSize="12" labelExpression="aql:self.name+' re'">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="superSuperTypeEdge" documentation="Returns superTypes that have superTypes" sourceMapping="//@ownedViewpoints[name='doremi_2182']/@ownedRepresentations[name='bugzilla580691_TC2']/@defaultLayer/@containerMappings[name='subPackages']/@subNodeMappings[name='classNode']" targetMapping="//@ownedViewpoints[name='doremi_2182']/@ownedRepresentations[name='bugzilla580691_TC2']/@defaultLayer/@edgeMappings[name='referenceEdge'] //@ownedViewpoints[name='doremi_2182']/@ownedRepresentations[name='bugzilla580691_TC2']/@defaultLayer/@edgeMappings[name='superTypeEdge']" targetFinderExpression="aql:self.eSuperTypes->reject(s | s.eSuperTypes -> isEmpty())">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            <centerLabelStyleDescription labelSize="12" labelExpression="aql:self.name+' sste'">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="superSuperSuperTypeEdge" sourceMapping="//@ownedViewpoints[name='doremi_2182']/@ownedRepresentations[name='bugzilla580691_TC2']/@defaultLayer/@containerMappings[name='subPackages']/@subNodeMappings[name='classNode']" targetMapping="//@ownedViewpoints[name='doremi_2182']/@ownedRepresentations[name='bugzilla580691_TC2']/@defaultLayer/@edgeMappings[name='superSuperTypeEdge']" targetFinderExpression="aql:self.eSuperTypes->reject(s | s.eSuperTypes -> isEmpty())">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+            <centerLabelStyleDescription labelSize="12" labelExpression="aql:self.name+' ssste'">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="subPackages" semanticCandidatesExpression="feature:eSubpackages" domainClass="ecore::EPackage">
+          <subNodeMappings name="classNode" semanticCandidatesExpression="feature:eClassifiers" domainClass="ecore::EClass">
+            <style xsi:type="style:SquareDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.ecore.design.service.EcoreService"/>
   </ownedViewpoints>
   <userColorsPalettes name="Ecore Palette">

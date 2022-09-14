@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,8 @@ package org.eclipse.sirius.tests.unit.diagram.action;
 
 import java.util.List;
 
+import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -21,12 +23,19 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.sirius.business.api.helper.task.DeleteEObjectTask;
+import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.unit.api.mappings.edgeonedge.AbstractEdgeOnEdgeTest;
+import org.eclipse.sirius.tools.api.command.SiriusCommand;
+import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
+import org.eclipse.ui.IEditorPart;
 
 import com.google.common.base.Predicate;
 
@@ -194,6 +203,194 @@ public class DeleteEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
         unsynchronizeDiagram(diagram);
 
         genericTestEdgeDeletionFromNodeToEdge();
+    }
+
+    /**
+     * Ensures that deleting a node used as target by an edge from a node to an edge, with "successive edge on egde
+     * cases" works as expected in manual refresh mode and with unsynchronized diagram:<BR/>
+     * First case with a simple case.
+     */
+    public void testIndirectEdgeDeletionFromNodeToEdgeWithSuccessiveEgdeOnEdgesInManualRefreshUnsynchronizedDiagram1_diagram() {
+        testIndirectEdgeDeletionFromNodeToEdgeWithSuccessiveEgdeOnEdgesInManualRefreshUnsynchronizedDiagram1(true);
+    }
+
+    /**
+     * Ensures that deleting a node used as target by an edge from a node to an edge, with "successive edge on egde
+     * cases" works as expected in manual refresh mode and with unsynchronized diagram:<BR/>
+     * First case with a simple case.
+     */
+    public void testIndirectEdgeDeletionFromNodeToEdgeWithSuccessiveEgdeOnEdgesInManualRefreshUnsynchronizedDiagram1_model() {
+        testIndirectEdgeDeletionFromNodeToEdgeWithSuccessiveEgdeOnEdgesInManualRefreshUnsynchronizedDiagram1(false);
+    }
+
+    /**
+     * Ensures that deleting a node used as target by an edge from a node to an edge, with "successive edge on egde
+     * cases" works as expected in manual refresh mode and with unsynchronized diagram:<BR/>
+     * First case with a simple case.
+     */
+    private void testIndirectEdgeDeletionFromNodeToEdgeWithSuccessiveEgdeOnEdgesInManualRefreshUnsynchronizedDiagram1(boolean deleteFromDiagram) {
+        changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false);
+
+        // Open a specific diagram
+        DDiagram diagram2 = (DDiagram) getRepresentations("bugzilla580691_TC1").toArray()[0]; //$NON-NLS-1$
+        assertNotNull(diagram2);
+        IEditorPart editor2 = DialectUIManager.INSTANCE.openEditor(session, diagram2, new NullProgressMonitor());
+        TestsUtil.synchronizationWithUIThread();
+        try {
+            unsynchronizeDiagram(diagram2);
+
+            int nbEdgesBeforeDelete = diagram2.getNodes().stream().mapToInt(dNode -> dNode.getIncomingEdges().size() + dNode.getOutgoingEdges().size()).sum();
+
+            // Step 1 : delete an edge on edge
+            // edge should not exist before tool applying
+            EClass classC0 = null;
+            try {
+                classC0 = (EClass) semanticRoot.getESubpackages().get(0).getEClassifiers().get(2);
+            } catch (Exception e) {
+                fail("Impossible de get the semantic EObject corresponding to the class C0:" + e.getMessage()); //$NON-NLS-1$
+            }
+
+            DDiagramElement ddeC0 = getFirstDiagramElement(diagram2, classC0);
+            if (deleteFromDiagram) {
+                // Check the number of DeleteEObjectTask in case of a "Delete from Diagram" command (to check in
+                // improvement
+                // made at the same time that a fix)
+                Command cdm = getCommandFactory().buildDeleteFromDiagramCommand(ddeC0);
+                // Count the number of tasks in this command (one for DNode and one for each DEdge, ie 4)
+                assertEquals("Wrong number of DeleteEObjectTask.", 5, getNbDeleteTasksInCommand(cdm)); //$NON-NLS-1$
+            } else {
+                // Execute a "Delete from Model" command
+                delete(getEditPart(ddeC0));
+                TestsUtil.synchronizationWithUIThread();
+
+                // Step 2 : check number of edges reachable through nodes (outgoingEdges and incomingEdges)
+                assertEquals("Wrong number of edges, DEdge, after the deletion.", 0, //$NON-NLS-1$
+                        diagram2.getNodes().stream().mapToInt(dNode -> dNode.getIncomingEdges().size() + dNode.getOutgoingEdges().size()).sum());
+
+                // Step 3 : testing undo/redo
+                // Step 3.1 : Undo the Deletion of the edge
+                session.getTransactionalEditingDomain().getCommandStack().undo();
+                assertEquals("Undo deletion failed, wrong number of edges (DEdge).", nbEdgesBeforeDelete, //$NON-NLS-1$
+                        diagram2.getNodes().stream().mapToInt(dNode -> dNode.getIncomingEdges().size() + dNode.getOutgoingEdges().size()).sum());
+
+                // Step 3.2 : Redo the Deletion of the edge
+                session.getTransactionalEditingDomain().getCommandStack().redo();
+                assertEquals("Wrong number of edges, DEdge, after the redo of deletion.", 0, //$NON-NLS-1$
+                        diagram2.getNodes().stream().mapToInt(dNode -> dNode.getIncomingEdges().size() + dNode.getOutgoingEdges().size()).sum());
+
+                // Step 4 : refreshing diagram
+                refresh(diagram2);
+                assertEquals("Wrong number of edges, DEdge, after refresh.", 0, //$NON-NLS-1$
+                        diagram2.getNodes().stream().mapToInt(dNode -> dNode.getIncomingEdges().size() + dNode.getOutgoingEdges().size()).sum());
+            }
+        } finally {
+            DialectUIManager.INSTANCE.closeEditor(editor2, false);
+            TestsUtil.emptyEventsFromUIThread();
+        }
+    }
+
+    /**
+     * Ensures that deleting a node used as target by an edge from a node to an edge, with "successive edge on egde
+     * cases" works as expected in manual refresh mode and with unsynchronized diagram:<BR/>
+     * Second case with a more complex case: The deleted object, indirectly deletes sub nodes, with as consequence, the
+     * deletion of the same edge "several times", two times to be more precise. This allows to check the number of
+     * DeleteEObjectTask in case of "Delete from Diagram" case. For the case of "Delete from Model", it is not possible
+     * to count them.
+     */
+    public void testIndirectEdgeDeletionFromNodeToEdgeWithSuccessiveEgdeOnEdgesInManualRefreshUnsynchronizedDiagram2_diagram() {
+        testIndirectEdgeDeletionFromNodeToEdgeWithSuccessiveEgdeOnEdgesInManualRefreshUnsynchronizedDiagram2(true);
+    }
+
+    /**
+     * Ensures that deleting a node used as target by an edge from a node to an edge, with "successive edge on egde
+     * cases" works as expected in manual refresh mode and with unsynchronized diagram:<BR/>
+     * Second case with a more complex case: The deleted object, indirectly deletes sub nodes, with as consequence, the
+     * deletion of the same edge "several times", two times to be more precise. This allows to check the number of
+     * DeleteEObjectTask in case of "Delete from Diagram" case. For the case of "Delete from Model", it is not possible
+     * to count them.
+     */
+    public void testIndirectEdgeDeletionFromNodeToEdgeWithSuccessiveEgdeOnEdgesInManualRefreshUnsynchronizedDiagram2_model() {
+        testIndirectEdgeDeletionFromNodeToEdgeWithSuccessiveEgdeOnEdgesInManualRefreshUnsynchronizedDiagram2(false);
+    }
+
+    /**
+     * Ensures that deleting a node used as target by an edge from a node to an edge, with "successive edge on egde
+     * cases" works as expected in manual refresh mode and with unsynchronized diagram:<BR/>
+     * Second case with a more complex case: The deleted object, indirectly deletes sub nodes, with as consequence, the
+     * deletion of the same edge "several times", two times to be more precise. This allows to check the number of
+     * DeleteEObjectTask in case of "Delete from Diagram" case. For the case of "Delete from Model", it is not possible
+     * to count them.
+     */
+    private void testIndirectEdgeDeletionFromNodeToEdgeWithSuccessiveEgdeOnEdgesInManualRefreshUnsynchronizedDiagram2(boolean deleteFromDiagram) {
+        changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false);
+
+        // Open a specific diagram
+        DDiagram diagram2 = (DDiagram) getRepresentations("bugzilla580691_TC2").toArray()[0]; //$NON-NLS-1$
+        assertNotNull(diagram2);
+        IEditorPart editor2 = DialectUIManager.INSTANCE.openEditor(session, diagram2, new NullProgressMonitor());
+        TestsUtil.synchronizationWithUIThread();
+        try {
+            unsynchronizeDiagram(diagram2);
+
+            int nbEdgesBeforeDelete = diagram2.getNodes().stream().mapToInt(dNode -> dNode.getIncomingEdges().size() + dNode.getOutgoingEdges().size()).sum();
+
+            // Step 1 : delete an edge on edge
+            // edge should not exist before tool applying
+            EPackage packageP1 = null;
+            try {
+                packageP1 = semanticRoot.getESubpackages().get(1).getESubpackages().get(0);
+            } catch (Exception e) {
+                fail("Impossible de get the semantic EObject corresponding to the package p1:" + e.getMessage()); //$NON-NLS-1$
+            }
+
+            DDiagramElement ddeP1 = getFirstDiagramElement(diagram2, packageP1);
+            if (deleteFromDiagram) {
+                // Check the number of DeleteEObjectTask in case of a "Delete from Diagram" command (to check in
+                // improvement
+                // made at the same time that a fix)
+                Command cdm = getCommandFactory().buildDeleteFromDiagramCommand(ddeP1);
+                // Count the number of tasks in this command (one for DNode and one for each DEdge, ie 4)
+                assertEquals("Wrong number of DeleteEObjectTask.", 8, getNbDeleteTasksInCommand(cdm)); //$NON-NLS-1$
+            } else {
+            // Execute a "Delete from Model" command
+            delete(getEditPart(ddeP1));
+            TestsUtil.synchronizationWithUIThread();
+
+            // Step 2 : check number of edges reachable through nodes (outgoingEdges and incomingEdges)
+            assertEquals("Wrong number of edges, DEdge, after the deletion.", 0, //$NON-NLS-1$
+                    diagram2.getNodes().stream().mapToInt(dNode -> dNode.getIncomingEdges().size() + dNode.getOutgoingEdges().size()).sum());
+
+            // Step 3 : testing undo/redo
+            // Step 3.1 : Undo the Deletion of the edge
+            session.getTransactionalEditingDomain().getCommandStack().undo();
+            assertEquals("Undo deletion failed, wrong number of edges (DEdge).", nbEdgesBeforeDelete, //$NON-NLS-1$
+                    diagram2.getNodes().stream().mapToInt(dNode -> dNode.getIncomingEdges().size() + dNode.getOutgoingEdges().size()).sum());
+
+            // Step 3.2 : Redo the Deletion of the edge
+            session.getTransactionalEditingDomain().getCommandStack().redo();
+            assertEquals("Wrong number of edges, DEdge, after the redo of deletion.", 0, //$NON-NLS-1$
+                    diagram2.getNodes().stream().mapToInt(dNode -> dNode.getIncomingEdges().size() + dNode.getOutgoingEdges().size()).sum());
+
+            // Step 4 : refreshing diagram
+            refresh(diagram2);
+            assertEquals("Wrong number of edges, DEdge, after refresh.", 0, diagram2.getNodes().stream().mapToInt(dNode -> dNode.getIncomingEdges().size() + dNode.getOutgoingEdges().size()).sum()); //$NON-NLS-1$
+        }
+        } finally {
+            DialectUIManager.INSTANCE.closeEditor(editor2, false);
+            TestsUtil.emptyEventsFromUIThread();
+        }
+    }
+
+    private int getNbDeleteTasksInCommand(Command cmd) {
+        int nbsuBTasks = 0;
+        if (cmd instanceof SiriusCommand) {
+            for (ICommandTask task : ((SiriusCommand) cmd).getTasks()) {
+                if (task instanceof DeleteEObjectTask) {
+                    nbsuBTasks++;
+                }
+            }
+        }
+        return nbsuBTasks;
     }
 
     /**
