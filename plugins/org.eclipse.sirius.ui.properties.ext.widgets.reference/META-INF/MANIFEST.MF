@@ -5,17 +5,17 @@ Bundle-SymbolicName: org.eclipse.sirius.ui.properties.ext.widgets.reference;sing
 Bundle-Version: 7.1.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-11
-Require-Bundle: org.eclipse.sirius.properties;bundle-version="7.0.0",
- org.eclipse.sirius.properties.ext.widgets.reference;bundle-version="7.0.0",
- org.eclipse.sirius.ui.properties;bundle-version="7.0.0",
+Require-Bundle: org.eclipse.sirius.properties;bundle-version="7.1.0",
+ org.eclipse.sirius.properties.ext.widgets.reference;bundle-version="7.1.0",
+ org.eclipse.sirius.ui.properties;bundle-version="7.1.0",
  org.eclipse.eef;bundle-version="1.8.0",
  org.eclipse.eef.ext.widgets.reference;bundle-version="1.8.0",
  org.eclipse.eef.ide.ui.ext.widgets.reference;bundle-version="1.8.0",
  org.eclipse.eef.common;bundle-version="1.8.0",
  org.eclipse.jface;bundle-version="3.0.0",
- org.eclipse.sirius;bundle-version="7.0.0",
- org.eclipse.sirius.properties.core;bundle-version="7.0.0",
+ org.eclipse.sirius;bundle-version="7.1.0",
+ org.eclipse.sirius.properties.core;bundle-version="7.1.0",
  org.eclipse.sirius.common.interpreter;bundle-version="5.0.0"
 Bundle-Localization: plugin
-Export-Package: org.eclipse.sirius.ui.properties.ext.widgets.reference.internal;version="7.0.0";x-internal:=true
+Export-Package: org.eclipse.sirius.ui.properties.ext.widgets.reference.internal;version="7.1.0";x-internal:=true
 Automatic-Module-Name: org.eclipse.sirius.ui.properties.ext.widgets.reference

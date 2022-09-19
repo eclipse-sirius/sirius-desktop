@@ -8,26 +8,26 @@ Bundle-Activator: org.eclipse.sirius.diagram.sequence.description.provider.Seque
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-11
-Export-Package: org.eclipse.sirius.diagram.sequence.description.provider;version="7.0.0",
- org.eclipse.sirius.diagram.sequence.description.tool.provider;version="7.0.0",
- org.eclipse.sirius.diagram.sequence.internal.description.provider;version="7.0.0",
- org.eclipse.sirius.diagram.sequence.ordering.provider;version="7.0.0",
- org.eclipse.sirius.diagram.sequence.provider;version="7.0.0",
- org.eclipse.sirius.diagram.sequence.template.provider;version="7.0.0"
+Export-Package: org.eclipse.sirius.diagram.sequence.description.provider;version="7.1.0",
+ org.eclipse.sirius.diagram.sequence.description.tool.provider;version="7.1.0",
+ org.eclipse.sirius.diagram.sequence.internal.description.provider;version="7.1.0",
+ org.eclipse.sirius.diagram.sequence.ordering.provider;version="7.1.0",
+ org.eclipse.sirius.diagram.sequence.provider;version="7.1.0",
+ org.eclipse.sirius.diagram.sequence.template.provider;version="7.1.0"
 Require-Bundle: org.eclipse.core.runtime;bundle-version="3.8.0",
- org.eclipse.sirius.diagram.sequence.model;bundle-version="7.0.0";visibility:=reexport,
- org.eclipse.sirius.diagram.sequence;bundle-version="7.0.0";visibility:=reexport,
+ org.eclipse.sirius.diagram.sequence.model;bundle-version="7.1.0";visibility:=reexport,
+ org.eclipse.sirius.diagram.sequence;bundle-version="7.1.0";visibility:=reexport,
  org.eclipse.emf.edit;bundle-version="2.8.0";visibility:=reexport,
  org.eclipse.emf.ecore;bundle-version="2.8.3";visibility:=reexport,
  org.eclipse.emf.ecore.edit;bundle-version="2.8.0";visibility:=reexport,
- org.eclipse.sirius.model;bundle-version="7.0.0";visibility:=reexport,
- org.eclipse.sirius;bundle-version="7.0.0";visibility:=reexport,
- org.eclipse.sirius.ui;bundle-version="7.0.0";visibility:=reexport,
- org.eclipse.sirius.diagram.model;bundle-version="7.0.0";visibility:=reexport,
- org.eclipse.sirius.diagram;bundle-version="7.0.0";visibility:=reexport,
- org.eclipse.sirius.diagram.ui;bundle-version="7.0.0";visibility:=reexport,
- org.eclipse.sirius.diagram.ui.ext;bundle-version="7.0.0";visibility:=reexport,
- org.eclipse.sirius.common;bundle-version="7.0.0"
+ org.eclipse.sirius.model;bundle-version="7.1.0";visibility:=reexport,
+ org.eclipse.sirius;bundle-version="7.1.0";visibility:=reexport,
+ org.eclipse.sirius.ui;bundle-version="7.1.0";visibility:=reexport,
+ org.eclipse.sirius.diagram.model;bundle-version="7.1.0";visibility:=reexport,
+ org.eclipse.sirius.diagram;bundle-version="7.1.0";visibility:=reexport,
+ org.eclipse.sirius.diagram.ui;bundle-version="7.1.0";visibility:=reexport,
+ org.eclipse.sirius.diagram.ui.ext;bundle-version="7.1.0";visibility:=reexport,
+ org.eclipse.sirius.common;bundle-version="7.1.0"
 Eclipse-LazyStart: true
 Bundle-ActivationPolicy: lazy
 Automatic-Module-Name: org.eclipse.sirius.diagram.sequence.edit
