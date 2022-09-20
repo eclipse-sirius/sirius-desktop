@@ -75,6 +75,16 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
     private boolean selectOnlyViewWithNewSemanticTarget;
 
     /**
+     * Value defined by the system property
+     * "org.eclipse.sirius.ui.enableCreatedElementsConstraintInSelectElementsListener". If true, if the default list of
+     * elements is not empty, the list of elements returned is filtered with the default selected elements. If false,
+     * the value returned by the elementsToSelect expression is considered without the above constraint.
+     */
+    private boolean enableCreatedElementsConstraintInSelectElementsListener = Boolean
+            .valueOf(System.getProperty("org.eclipse.sirius.ui.enableCreatedElementsConstraintInSelectElementsListener", "true")); //$NON-NLS-1$ //$NON-NLS-2$
+                                                                                                                                                                                      // ;
+
+    /**
      * Default constructor.
      *
      * @param editor
@@ -271,10 +281,12 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
                 selectedElements = new ArrayList<>();
                 caseHasSemanticElement(selectedElements, notifiedElements, semanticElements, currentRep);
             } else if (hasRepElement && !hasRepresentation && !hasSemanticElement) {
-                // Selected elements are filtered with the notified only
-                // if there is at least a notified element
-                if (!notifiedElements.isEmpty()) {
-                    dRepElements.retainAll(notifiedElements);
+                if (enableCreatedElementsConstraintInSelectElementsListener) {
+                    // Selected elements are filtered with the notified only
+                    // if there is at least a notified element
+                    if (!notifiedElements.isEmpty()) {
+                        dRepElements.retainAll(notifiedElements);
+                    }
                 }
                 selectedElements = new ArrayList<DRepresentationElement>(dRepElements);
             } else {
@@ -300,11 +312,11 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
             // Selected elements are filtered with the notified only
             // if there is at least a notified element
             boolean notifiedElementsEmpty = notifiedElements.isEmpty();
-            if (!notifiedElementsEmpty) {
+            if (enableCreatedElementsConstraintInSelectElementsListener && !notifiedElementsEmpty) {
                 // The representation elements corresponding to a semantic
                 // element must follow the notifiedElements order
                 for (DRepresentationElement elem : notifiedElements) {
-                    if (notifiedElementsEmpty || repElementsFromSemantic.contains(elem)) {
+                    if (repElementsFromSemantic.contains(elem)) {
                         selectedElements.add(elem);
                     }
                 }

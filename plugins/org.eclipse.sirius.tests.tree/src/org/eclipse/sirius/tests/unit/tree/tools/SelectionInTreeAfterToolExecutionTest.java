@@ -66,9 +66,6 @@ public class SelectionInTreeAfterToolExecutionTest extends AbstractToolDescripti
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
 
         treeClasses = (DTree) getRepresentations("Tree", semanticModel).iterator().next();
-        editor = (DTreeEditor) DialectUIManager.INSTANCE.openEditor(session, treeClasses, new NullProgressMonitor());
-
-        TestsUtil.emptyEventsFromUIThread();
     }
 
     /**
@@ -79,6 +76,9 @@ public class SelectionInTreeAfterToolExecutionTest extends AbstractToolDescripti
      * </ul>
      */
     public void testSelectionAfterTreeItemCreationTool() {
+        editor = (DTreeEditor) DialectUIManager.INSTANCE.openEditor(session, treeClasses, new NullProgressMonitor());
+        TestsUtil.emptyEventsFromUIThread();
+
         DTreeItem dTreeItem = treeClasses.getOwnedTreeItems().get(0);
 
         final String tool_Name = "Tree_CreateItem";
@@ -127,8 +127,42 @@ public class SelectionInTreeAfterToolExecutionTest extends AbstractToolDescripti
         TestsUtil.synchronizationWithUIThread();
         applyTreeItemCreationTool(tool_Name, dTreeItem.getContainer(), dTreeItem.getTarget());
         TestsUtil.synchronizationWithUIThread();
-        // check the selection is the existing DTreeItem corresponding to variable element (ie package P0)
-        checkExpectedElementsInSelection(editor, Collections.singletonList(dTreeItem.getName()), 1);
+        // check the selection is empty, because the system property
+        // "org.eclipse.sirius.ui.enableCreatedElementsConstraintInSelectElementsListener" has its default value, and
+        // the existing DTreeItem corresponding to variable element (ie package P0) is not in the list of created
+        // elements during the tool execution
+        checkExpectedElementsInSelection(editor, null, 0);
+    }
+
+    /**
+     * Test selection after TreeItemCreation tool with the system property
+     * "org.eclipse.sirius.ui.enableCreatedElementsConstraintInSelectElementsListener" set to false and check that the
+     * behavior is not the same when the "elements to select" expression does not contain the created elements. The
+     * scenario is the same than the last of {@link #testSelectionAfterTreeItemCreationTool()}, but with a different
+     * expected result.
+     */
+    public void testSelectionAfterTreeItemCreationTool_withConstraintPropertySystemSetToFalse() {
+        System.setProperty("org.eclipse.sirius.ui.enableCreatedElementsConstraintInSelectElementsListener", "false"); //$NON-NLS-1$ //$NON-NLS-2$
+        try {
+
+            editor = (DTreeEditor) DialectUIManager.INSTANCE.openEditor(session, treeClasses, new NullProgressMonitor());
+            TestsUtil.emptyEventsFromUIThread();
+
+            DTreeItem dTreeItem = treeClasses.getOwnedTreeItems().get(0);
+
+            final String tool_Name = "Tree_CreateItem"; //$NON-NLS-1$
+            final AbstractToolDescription tool = getTool(tool_Name);
+
+            changeSelectionExpression(tool, "var:element", false); //$NON-NLS-1$
+            TestsUtil.synchronizationWithUIThread();
+            applyTreeItemCreationTool(tool_Name, dTreeItem.getContainer(), dTreeItem.getTarget());
+            TestsUtil.synchronizationWithUIThread();
+            // check the selection is the existing DTreeItem corresponding to variable element (ie package P0). New
+            // behavior according to system property set to false and used in SelectDRepresentationElementsListener.
+            checkExpectedElementsInSelection(editor, Collections.singletonList(dTreeItem.getName()), 1);
+        } finally {
+            System.setProperty("org.eclipse.sirius.ui.enableCreatedElementsConstraintInSelectElementsListener", "true"); //$NON-NLS-1$ //$NON-NLS-2$
+        }
     }
 
     void applyTreeItemCreationTool(String toolName, final DTreeItemContainer lineContainer, final EObject semanticCurrentElement) {
@@ -153,6 +187,9 @@ public class SelectionInTreeAfterToolExecutionTest extends AbstractToolDescripti
      * Check that variables are recognized during expression run time computation for CreateLineTool
      */
     public void testRunTimeVariableAfterCreateLineTool() {
+        editor = (DTreeEditor) DialectUIManager.INSTANCE.openEditor(session, treeClasses, new NullProgressMonitor());
+        TestsUtil.emptyEventsFromUIThread();
+
         DTreeItem dTreeItem = treeClasses.getOwnedTreeItems().get(0);
 
         final String tool_Name = "Tree_CreateItem";

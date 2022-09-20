@@ -8,7 +8,11 @@ h2(#sirius7.1.0). Changes in Sirius 7.1.0
 
 h3. User-Visible Changes
 
-In a tree editor, if the expand is done with the right arrow key, the behavior is now OK. Before this version, if the expand is done for the first time with the right arrow key, only a blank child is displayed. You can refer to "bugzilla 549352":https://bugs.eclipse.org/bugs/show_bug.cgi?id=549352 for more details. 
+* <span class="label label-info">Modified</span> In a tree editor, if the expand is done with the right arrow key, the behavior is now OK. Before this version, if the expand is done for the first time with the right arrow key, only a blank child is displayed. You can refer to "bugzilla 549352":https://bugs.eclipse.org/bugs/show_bug.cgi?id=549352 for more details. 
+
+h3. Specifier-Visible Changes
+
+* <span class="label label-info">Added</span> The system property @org.eclipse.sirius.ui.enableCreatedElementsConstraintInSelectElementsListener@ has been added to allow to ignore the "created elements" constraint when the @SelectDRepresentationElementsListener@ is called to select elements after a tool execution. In other words, this allows to select an element that is not created during the tool execution. The default value of the system property is @true@. It must be set to @false@ to ignore the constraint.
 
 h3. Developer-Visible Changes
 
