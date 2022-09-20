@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2021 Obeo.
+ * Copyright (c) 2015, 2022 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -81,31 +81,38 @@ public class SelectionInTableAfterToolExecutionTest extends AbstractToolDescript
 
         changeSelectionExpression(tool, "[instance/]", false);
         TestsUtil.synchronizationWithUIThread();
-        applyCreateLineTool(tool_Name, dLine.getContainer(), dLine.getTarget());
+        applyCreateLineTool(tool_Name, dLine, dLine.getTarget());
         TestsUtil.synchronizationWithUIThread();
         // check the selection
         checkExpectedElementsInSelection(editor, Arrays.asList("NewEClass"), 1, true);
 
         changeSelectionExpression(tool, "", false);
         TestsUtil.synchronizationWithUIThread();
-        applyCreateLineTool(tool_Name, dLine.getContainer(), dLine.getTarget());
+        applyCreateLineTool(tool_Name, dLine, dLine.getTarget());
         TestsUtil.synchronizationWithUIThread();
         // check the selection is the newly created element by default
         checkExpectedElementsInSelection(editor, Arrays.asList("NewEClass"), 1, true);
 
         changeSelectionExpression(tool, "[/]", false);
         TestsUtil.synchronizationWithUIThread();
-        applyCreateLineTool(tool_Name, dLine.getContainer(), dLine.getTarget());
+        applyCreateLineTool(tool_Name, dLine, dLine.getTarget());
         TestsUtil.synchronizationWithUIThread();
         // check the selection is empty
         checkExpectedElementsInSelection(editor, null, 0);
 
         changeSelectionExpression(tool, "service:stdEmptyCollection", false);
         TestsUtil.synchronizationWithUIThread();
-        applyCreateLineTool(tool_Name, dLine.getContainer(), dLine.getTarget());
+        applyCreateLineTool(tool_Name, dLine, dLine.getTarget());
         TestsUtil.synchronizationWithUIThread();
         // check the selection is empty
         checkExpectedElementsInSelection(editor, null, 0);
+
+        changeSelectionExpression(tool, "var:element", false);
+        TestsUtil.synchronizationWithUIThread();
+        applyCreateLineTool(tool_Name, dLine, dLine.getTarget());
+        TestsUtil.synchronizationWithUIThread();
+        // check the selection is the existing DLine corresponding to variable element (ie class A)
+        checkExpectedElementsInSelection(editor, Collections.singletonList(dLine.getName()), 1);
     }
 
     void applyCreateLineTool(String toolName, final LineContainer lineContainer, final EObject semanticCurrentElement) {
@@ -136,7 +143,7 @@ public class SelectionInTableAfterToolExecutionTest extends AbstractToolDescript
         final AbstractToolDescription tool = getTool(tool_Name);
 
         changeSelectionExpression(tool, "[container->including(element)->including(root)/]", false);
-        applyCreateLineTool(tool_Name, dLine.getContainer(), dLine.getTarget());
+        applyCreateLineTool(tool_Name, dLine, dLine.getTarget());
 
         assertFalse("An error occurred during runtime execution of ElementsToSelect expression", doesAnErrorOccurs());
     }

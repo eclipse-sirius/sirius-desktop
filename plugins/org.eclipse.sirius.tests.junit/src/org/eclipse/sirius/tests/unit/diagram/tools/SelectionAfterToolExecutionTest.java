@@ -102,6 +102,13 @@ public class SelectionAfterToolExecutionTest extends SiriusDiagramTestCase {
         TestsUtil.synchronizationWithUIThread();
         // check the selection containing a DRepresentationElement
         checkExpectedElementsInSelection(editorForSelection, Arrays.asList("NodeList SubB"), 1);
+
+        changeSelectionExpression(tool, "var:containerView", false);
+        TestsUtil.synchronizationWithUIThread();
+        applyContainerCreationTool(CONTAINER_CREATION_TOOL, diagramForSelection, nodeB);
+        TestsUtil.synchronizationWithUIThread();
+        // check the selection is the existing DNode corresponding to variable containerView (ie class B)
+        checkExpectedElementsInSelection(editorForSelection, Arrays.asList(nodeB.getName()), 1);
     }
 
     /**
@@ -146,6 +153,14 @@ public class SelectionAfterToolExecutionTest extends SiriusDiagramTestCase {
         TestsUtil.synchronizationWithUIThread();
         // check the selection with subSet of created semantic elements
         checkExpectedElementsInSelection(editorForSelection, Arrays.asList("Edge source:NodeList SubA_2", "NodeList SubA_2"), 2);
+
+        changeSelectionExpression(tool, "var:container", false);
+        TestsUtil.synchronizationWithUIThread();
+        applyContainerCreationTool(CONTAINER_CREATION_TOOL2, diagramForSelection, nodeA);
+        TestsUtil.synchronizationWithUIThread();
+        // check the selection is the existing DNode corresponding to variable container (ie class A)
+        checkExpectedElementsInSelection(editorForSelection, Arrays.asList(nodeA.getName()), 1);
+
     }
 
     /**
