@@ -56,15 +56,15 @@ public class DirectEditTreeItemTest extends AbstractTreeSiriusSWTBotGefTestCase 
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        copyFileToTestProject(Activator.PLUGIN_ID, PATH, MODELER_RESOURCE_FILE, SESSION_RESOURCE_FILE,
-                SEMANTIC_RESOURCE_FILE);
+        copyFileToTestProject(Activator.PLUGIN_ID, PATH, MODELER_RESOURCE_FILE, SESSION_RESOURCE_FILE, SEMANTIC_RESOURCE_FILE);
 
         sessionAirdResource = new UIResource(designerProject, "/", SESSION_RESOURCE_FILE); //$NON-NLS-1$
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
         SWTBotUtils.waitAllUiEvents();
+    }
 
+    private void endSetup() {
         treeRepresentation = openEditor(localSession, "487428", "tree", "new tree"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-
         treeEditorBot = treeRepresentation.getEditor();
     }
 
@@ -77,10 +77,10 @@ public class DirectEditTreeItemTest extends AbstractTreeSiriusSWTBotGefTestCase 
     }
 
     /**
-     * Test that direct edition on label of the tree element modifies the
-     * label with F2 key.
+     * Test that direct edition on label of the tree element modifies the label with F2 key.
      */
     public void testDirectEditLabelWithF2Key() {
+        endSetup();
         SWTBotTreeItem treeItem = treeEditorBot.bot().tree().getTreeItem(c1TreeItemName).select();
         treeItem.click();
         treeItem.pressShortcut(Keystrokes.F2);
@@ -105,6 +105,7 @@ public class DirectEditTreeItemTest extends AbstractTreeSiriusSWTBotGefTestCase 
      * Test that direct edition on label of the tree element modifies the label with return key.
      */
     public void testDirectEditLabelWithReturnKey() {
+        endSetup();
         SWTBotTreeItem treeItem = treeEditorBot.bot().tree().getTreeItem(c1TreeItemName).select();
         treeItem.click();
         treeItem.pressShortcut(SWT.CR, SWT.LF);
@@ -126,11 +127,14 @@ public class DirectEditTreeItemTest extends AbstractTreeSiriusSWTBotGefTestCase 
     }
 
     /**
-     * Test that direct edition on label of the tree element modifies the label with "any alphanumeric" key. This is the
-     * current behavior but it should not.<BR/>
-     * TODO: This test is OK but should be KO.
+     * Test that direct edition on label of the tree element modifies the label with "any alphanumeric" key if the
+     * system property "org.eclipse.sirius.ui.restoreBehaviorEnablingDirectEditOnAlphanumericKey" is set to true; ie to
+     * restore previous behavior.
      */
-    public void testDirectEditLabelWithAnyAlphanumericKeyDoesSomethingButShouldNot() {
+    public void testDirectEditLabelWithAnyAlphanumericKeyWithSpecificSystemProperty() {
+        System.setProperty("org.eclipse.sirius.ui.restoreBehaviorEnablingDirectEditOnAlphanumericKey", "true"); //$NON-NLS-1$ //$NON-NLS-2$
+        try {
+            endSetup();
             SWTBotTreeItem treeItem = treeEditorBot.bot().tree().getTreeItem(c1TreeItemName).select();
             treeItem.click();
             treeItem.pressShortcut(Keystrokes.create('P'));
@@ -149,14 +153,17 @@ public class DirectEditTreeItemTest extends AbstractTreeSiriusSWTBotGefTestCase 
                     return "The treeItem must display \"newLabel\" after direct edit with F2"; //$NON-NLS-1$
                 }
             });
+        } finally {
+            System.setProperty("org.eclipse.sirius.ui.restoreBehaviorEnablingDirectEditOnAlphanumericKey", "false"); //$NON-NLS-1$ //$NON-NLS-2$
+        }
     }
 
     /**
      * Test that the direct edition on label of the tree element is not possible when pressing an alphanumeric key.
-     * Instead, the next item, starting with the key pressed, is selected.<BR/>
-     * TODO: This test is KO but should be OK. This is the expected behavior.
+     * Instead, the next item, starting with the key pressed, is selected.
      */
     public void testDirectEditLabelWithAnyAlphanumericKeyDoesNothing() {
+        endSetup();
         SWTBotTreeItem treeItem = treeEditorBot.bot().tree().getTreeItem(c1TreeItemName).select();
         treeItem.click();
         treeItem.pressShortcut(Keystrokes.create('P'));
