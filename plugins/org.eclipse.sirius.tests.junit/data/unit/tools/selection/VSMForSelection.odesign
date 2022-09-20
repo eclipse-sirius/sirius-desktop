@@ -57,20 +57,20 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="8" arcHeight="8" tooltipExpression="feature:name" roundedCorner="true" widthComputationExpression="12" heightComputationExpression="10" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='EClass']">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="8" arcHeight="8" borderSizeComputationExpression="1" tooltipExpression="feature:name" roundedCorner="true" widthComputationExpression="12" heightComputationExpression="10" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='EClass']">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
           <conditionnalStyles predicateExpression="feature:interface">
-            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="8" arcHeight="8" borderColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='Dark%20EClass']" iconPath="/org.eclipse.emf.ecoretools.design/icons/full/obj16/EClass_interface.gif" tooltipExpression="feature:name" roundedCorner="true" widthComputationExpression="12" heightComputationExpression="10" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='Abstract%20EClass']">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="8" arcHeight="8" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='Dark%20EClass']" iconPath="/org.eclipse.emf.ecoretools.design/icons/full/obj16/EClass_interface.gif" tooltipExpression="feature:name" roundedCorner="true" widthComputationExpression="12" heightComputationExpression="10" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='Abstract%20EClass']">
               <labelFormat>italic</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="feature:abstract">
-            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="8" arcHeight="8" borderColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='Dark%20EClass']" iconPath="/org.eclipse.emf.ecoretools.design/icons/full/obj16/EClass_abstract.gif" tooltipExpression="service:renderTooltip" roundedCorner="true" widthComputationExpression="12" heightComputationExpression="10" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='Abstract%20EClass']">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="8" arcHeight="8" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='Dark%20EClass']" iconPath="/org.eclipse.emf.ecoretools.design/icons/full/obj16/EClass_abstract.gif" tooltipExpression="service:renderTooltip" roundedCorner="true" widthComputationExpression="12" heightComputationExpression="10" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='Abstract%20EClass']">
               <labelFormat>italic</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -344,7 +344,7 @@
           </defaultStyle>
         </subItemMappings>
       </subItemMappings>
-      <createTreeItem name="Tree_CreateItem" mapping="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Tree']/@subItemMappings[name='Tree_Package']/@subItemMappings[name='Tree_NamedElement']">
+      <createTreeItem name="Tree_CreateItem" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Tree']/@subItemMappings[name='Tree_Package']/@subItemMappings[name='Tree_NamedElement']">
         <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:element">
           <subModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers"/>
         </firstModelOperation>
@@ -363,7 +363,7 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_3:EditionTableDescription" name="Classes" domainClass="EPackage">
       <ownedLineMappings name="Classes lines" domainClass="EClass" semanticCandidatesExpression="[eContents(ecore::EClass)/]"/>
-      <ownedCreateLine name="Create Class" forceRefresh="true" mapping="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Classes']/@ownedLineMappings[name='Classes%20lines']">
+      <ownedCreateLine name="Create Class" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Classes']/@ownedLineMappings[name='Classes%20lines']">
         <variables name="root" documentation="The semantic element of the table."/>
         <variables name="element" documentation="The semantic currently edited element."/>
         <variables name="container" documentation="The semantic element corresponding to the view container."/>
