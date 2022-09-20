@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,8 +14,8 @@ package org.eclipse.sirius.business.api.query;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -190,7 +190,7 @@ public class EObjectQuery {
         if (xref == null) {
             return Collections.emptySet();
         } else {
-            Collection<EObject> result = new HashSet<>();
+            Collection<EObject> result = new LinkedHashSet<>();
             for (EStructuralFeature.Setting setting : Iterables.filter(xref.getInverseReferences(internalQuery.getEObject()), predicate)) {
                 result.add(setting.getEObject());
             }
