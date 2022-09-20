@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2015, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -63,15 +63,27 @@ public class SelectionAfterToolExecutionTest extends SiriusDiagramTestCase {
                 TEMPORARY_PROJECT_NAME + "/" + REPRESENTATIONS_RESOURCE_NAME);
 
         diagramForSelection = (DDiagram) getRepresentations("Diagram", semanticModel).iterator().next();
-        editorForSelection = (DDiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diagramForSelection, new NullProgressMonitor());
+    }
 
-        TestsUtil.emptyEventsFromUIThread();
+    protected void endSetUp(boolean enableCreatedElementsConstraintInSelectElementsListener) {
+        if (!enableCreatedElementsConstraintInSelectElementsListener) {
+            System.setProperty("org.eclipse.sirius.ui.enableCreatedElementsConstraintInSelectElementsListener", "false"); //$NON-NLS-1$ //$NON-NLS-2$
+        }
+        try {
+            editorForSelection = (DDiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diagramForSelection, new NullProgressMonitor());
+            TestsUtil.emptyEventsFromUIThread();
+        } finally {
+            if (!enableCreatedElementsConstraintInSelectElementsListener) {
+                System.setProperty("org.eclipse.sirius.ui.enableCreatedElementsConstraintInSelectElementsListener", "true"); //$NON-NLS-1$ //$NON-NLS-2$
+            }
+        }
     }
 
     /**
      * Test selection after container creation
      */
     public void testSelectionAfterContainerCreation() {
+        endSetUp(true);
         DDiagramElement nodeA = diagramForSelection.getDiagramElements().get(2);
         DDiagramElement nodeB = diagramForSelection.getDiagramElements().get(3);
         final AbstractToolDescription tool = getTool(diagramForSelection, CONTAINER_CREATION_TOOL);
@@ -107,15 +119,39 @@ public class SelectionAfterToolExecutionTest extends SiriusDiagramTestCase {
         TestsUtil.synchronizationWithUIThread();
         applyContainerCreationTool(CONTAINER_CREATION_TOOL, diagramForSelection, nodeB);
         TestsUtil.synchronizationWithUIThread();
-        // check the selection is the existing DNode corresponding to variable containerView (ie class B)
-        checkExpectedElementsInSelection(editorForSelection, Arrays.asList(nodeB.getName()), 1);
+        // check the selection is is empty, because the system property
+        // "org.eclipse.sirius.ui.enableCreatedElementsConstraintInSelectElementsListener" has its default value, and
+        // the existing DDiagramElement corresponding to variable containerView (ie class B) is not in the list of
+        // created elements during the tool execution
+        checkExpectedElementsInSelection(editorForSelection, null, 0);
     }
 
+    /**
+     * Test selection after container creation with the system property
+     * "org.eclipse.sirius.ui.enableCreatedElementsConstraintInSelectElementsListener" set to false and check that the
+     * behavior is not the same when the "elements to select" expression does not contain the created elements. The
+     * scenario is the same than the last of {@link #testSelectionAfterContainerCreation()}, but with a different
+     * expected result.
+     */
+    public void testSelectionAfterContainerCreation_withConstraintPropertySystemSetToFalse() {
+        endSetUp(false);
+        DDiagramElement nodeB = diagramForSelection.getDiagramElements().get(3);
+        final AbstractToolDescription tool = getTool(diagramForSelection, CONTAINER_CREATION_TOOL);
+
+        changeSelectionExpression(tool, "var:containerView", false);
+        TestsUtil.synchronizationWithUIThread();
+        applyContainerCreationTool(CONTAINER_CREATION_TOOL, diagramForSelection, nodeB);
+        TestsUtil.synchronizationWithUIThread();
+        // check the selection is the existing DNode corresponding to variable containerView (ie class B). New
+        // behavior according to system property set to false and used in SelectDRepresentationElementsListener.
+        checkExpectedElementsInSelection(editorForSelection, Arrays.asList(nodeB.getName()), 1);
+    }
     /**
      * Test selection after container creation for expression containing
      * semantic elements
      */
     public void testSelectionFromSemanticElementAfterContainerCreation() {
+        endSetUp(true);
         DDiagramElement nodeA = diagramForSelection.getDiagramElements().get(2);
 
         final AbstractToolDescription tool = getTool(diagramForSelection, CONTAINER_CREATION_TOOL2);
@@ -158,15 +194,41 @@ public class SelectionAfterToolExecutionTest extends SiriusDiagramTestCase {
         TestsUtil.synchronizationWithUIThread();
         applyContainerCreationTool(CONTAINER_CREATION_TOOL2, diagramForSelection, nodeA);
         TestsUtil.synchronizationWithUIThread();
-        // check the selection is the existing DNode corresponding to variable container (ie class A)
-        checkExpectedElementsInSelection(editorForSelection, Arrays.asList(nodeA.getName()), 1);
+        // check the selection is is empty, because the system property
+        // "org.eclipse.sirius.ui.enableCreatedElementsConstraintInSelectElementsListener" has its default value, and
+        // the existing DDiagramElement corresponding to variable container (ie class A) is not in the list of
+        // created elements during the tool execution
+        checkExpectedElementsInSelection(editorForSelection, null, 0);
 
+    }
+
+    /**
+     * Test selection after container creation for expression containing semantic elements, with the system property
+     * "org.eclipse.sirius.ui.enableCreatedElementsConstraintInSelectElementsListener" set to false and check that the
+     * behavior is not the same when the "elements to select" expression does not contain the created elements. The
+     * scenario is the same than the last of {@link #testSelectionFromSemanticElementAfterContainerCreation()}, but with
+     * a different expected result.
+     */
+    public void testSelectionFromSemanticElementAfterContainerCreation_withConstraintPropertySystemSetToFalse() {
+        endSetUp(false);
+        DDiagramElement nodeA = diagramForSelection.getDiagramElements().get(2);
+
+        final AbstractToolDescription tool = getTool(diagramForSelection, CONTAINER_CREATION_TOOL2);
+
+        changeSelectionExpression(tool, "var:container", false);
+        TestsUtil.synchronizationWithUIThread();
+        applyContainerCreationTool(CONTAINER_CREATION_TOOL2, diagramForSelection, nodeA);
+        TestsUtil.synchronizationWithUIThread();
+        // check the selection is the existing DNode corresponding to variable container (ie class A). New
+        // behavior according to system property set to false and used in SelectDRepresentationElementsListener.
+        checkExpectedElementsInSelection(editorForSelection, Arrays.asList(nodeA.getName()), 1);
     }
 
     /**
      * Test selection after edge creation
      */
     public void testSelectionAfterEdgeCreation() {
+        endSetUp(true);
         DDiagramElement nodeA = diagramForSelection.getDiagramElements().get(2);
         DDiagramElement nodeB = diagramForSelection.getDiagramElements().get(3);
 
@@ -189,6 +251,7 @@ public class SelectionAfterToolExecutionTest extends SiriusDiagramTestCase {
      * Test selection after generic tool
      */
     public void testSelectionAfterGenericTool() {
+        endSetUp(true);
         final AbstractToolDescription tool = getTool(diagramForSelection, GENERIC_CREATION_TOOL);
 
         changeSelectionExpression(tool, "[viewForComponent/]", false);
@@ -208,6 +271,7 @@ public class SelectionAfterToolExecutionTest extends SiriusDiagramTestCase {
      * </ul>
      */
     public void testSelectionAfterDirectEditTool() {
+        endSetUp(true);
         final String tool_Name = "Edit Name";
         DDiagramElement nodeA = diagramForSelection.getDiagramElements().get(2);
 
@@ -235,6 +299,7 @@ public class SelectionAfterToolExecutionTest extends SiriusDiagramTestCase {
      * computation for NodeCreation
      */
     public void testRunTimeVariableAfterNodeCreation() {
+        endSetUp(true);
         final String tool_Name = "Package Creation";
         DDiagramElement nodeP1 = diagramForSelection.getDiagramElements().get(1);
         final AbstractToolDescription tool = getTool(diagramForSelection, tool_Name);
@@ -250,6 +315,7 @@ public class SelectionAfterToolExecutionTest extends SiriusDiagramTestCase {
      * computation for ContainerCreation
      */
     public void testRunTimeVariableAfterContainerCreation() {
+        endSetUp(true);
         DDiagramElement nodeA = diagramForSelection.getDiagramElements().get(2);
         final AbstractToolDescription tool = getTool(diagramForSelection, CONTAINER_CREATION_TOOL);
 
@@ -264,6 +330,7 @@ public class SelectionAfterToolExecutionTest extends SiriusDiagramTestCase {
      * computation for EdgeCreation
      */
     public void testRunTimeVariableAfterEdgeCreation() {
+        endSetUp(true);
         DDiagramElement nodeA = diagramForSelection.getDiagramElements().get(2);
         DDiagramElement nodeB = diagramForSelection.getDiagramElements().get(3);
 
@@ -280,6 +347,7 @@ public class SelectionAfterToolExecutionTest extends SiriusDiagramTestCase {
      * computation for Reconnect
      */
     public void testRunTimeVariableAfterReconnect() {
+        endSetUp(true);
         final String tool_Name = "ReconnectEReference";
         DDiagramElement nodeB = diagramForSelection.getDiagramElements().get(3);
         DDiagramElement nodeC = diagramForSelection.getDiagramElements().get(4);
@@ -298,6 +366,7 @@ public class SelectionAfterToolExecutionTest extends SiriusDiagramTestCase {
      * computation for ContainerDrop
      */
     public void testRunTimeVariableAfterContainerDrop() {
+        endSetUp(true);
         final String tool_Name = "Drop EClass";
         DDiagramElement nodeA = diagramForSelection.getDiagramElements().get(2);
         DDiagramElement p1 = diagramForSelection.getDiagramElements().get(1);
@@ -315,6 +384,7 @@ public class SelectionAfterToolExecutionTest extends SiriusDiagramTestCase {
      * computation for Deletion
      */
     public void testRunTimeVariableAfterDeletion() {
+        endSetUp(true);
         final String tool_Name = "Delete Class";
         DDiagramElement nodeA = diagramForSelection.getDiagramElements().get(2);
 
@@ -331,6 +401,7 @@ public class SelectionAfterToolExecutionTest extends SiriusDiagramTestCase {
      * computation for DirectEdit
      */
     public void testRunTimeVariableAfterDirectEdit() {
+        endSetUp(true);
         final String tool_Name = "Edit Name";
         DDiagramElement nodeA = diagramForSelection.getDiagramElements().get(2);
 
@@ -347,6 +418,7 @@ public class SelectionAfterToolExecutionTest extends SiriusDiagramTestCase {
      * computation for DoubleClick
      */
     public void testRunTimeVariableAfterDoubleClick() {
+        endSetUp(true);
         final String tool_Name = "Double Click";
         DDiagramElement nodeA = diagramForSelection.getDiagramElements().get(2);
 

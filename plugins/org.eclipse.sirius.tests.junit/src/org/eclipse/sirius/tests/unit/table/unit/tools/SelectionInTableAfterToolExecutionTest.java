@@ -61,9 +61,6 @@ public class SelectionInTableAfterToolExecutionTest extends AbstractToolDescript
                 TEMPORARY_PROJECT_NAME + "/" + REPRESENTATIONS_RESOURCE_NAME);
 
         tableClasses = (DTable) getRepresentations("Classes", semanticModel).iterator().next();
-        editor = (DTableEditor) DialectUIManager.INSTANCE.openEditor(session, tableClasses, new NullProgressMonitor());
-
-        TestsUtil.emptyEventsFromUIThread();
     }
 
     /**
@@ -74,6 +71,9 @@ public class SelectionInTableAfterToolExecutionTest extends AbstractToolDescript
      * </ul>
      */
     public void testSelectionAfterCreateLineTool() {
+        editor = (DTableEditor) DialectUIManager.INSTANCE.openEditor(session, tableClasses, new NullProgressMonitor());
+        TestsUtil.emptyEventsFromUIThread();
+
         DLine dLine = tableClasses.getLines().get(0);
 
         final String tool_Name = "Create Class";
@@ -111,8 +111,42 @@ public class SelectionInTableAfterToolExecutionTest extends AbstractToolDescript
         TestsUtil.synchronizationWithUIThread();
         applyCreateLineTool(tool_Name, dLine, dLine.getTarget());
         TestsUtil.synchronizationWithUIThread();
-        // check the selection is the existing DLine corresponding to variable element (ie class A)
-        checkExpectedElementsInSelection(editor, Collections.singletonList(dLine.getName()), 1);
+        // check the selection is empty, because the system property
+        // "org.eclipse.sirius.ui.enableCreatedElementsConstraintInSelectElementsListener" has its default value, and
+        // the existing DLine corresponding to variable element (ie class A) is not in the list of created
+        // elements during the tool execution
+        checkExpectedElementsInSelection(editor, null, 0);
+    }
+
+    /**
+     * Test selection after CreateLine tool with the system property
+     * "org.eclipse.sirius.ui.enableCreatedElementsConstraintInSelectElementsListener" set to false and check that the
+     * behavior is not the same when the "elements to select" expression does not contain the created elements. The
+     * scenario is the same than the last of {@link #testSelectionAfterCreateLineTool()}, but with a different expected
+     * result.
+     */
+    public void testSelectionAfterCreateLineTool_withConstraintPropertySystemSetToFalse() {
+        System.setProperty("org.eclipse.sirius.ui.enableCreatedElementsConstraintInSelectElementsListener", "false"); //$NON-NLS-1$ //$NON-NLS-2$
+        try {
+            editor = (DTableEditor) DialectUIManager.INSTANCE.openEditor(session, tableClasses, new NullProgressMonitor());
+            TestsUtil.emptyEventsFromUIThread();
+
+            DLine dLine = tableClasses.getLines().get(0);
+
+            final String tool_Name = "Create Class";
+            final AbstractToolDescription tool = getTool(tool_Name);
+
+            changeSelectionExpression(tool, "var:element", false);
+            TestsUtil.synchronizationWithUIThread();
+            applyCreateLineTool(tool_Name, dLine, dLine.getTarget());
+            TestsUtil.synchronizationWithUIThread();
+            // check the selection is the existing DLine corresponding to variable element (ie class A). New
+            // behavior according to system property set to false and used in SelectDRepresentationElementsListener.
+            checkExpectedElementsInSelection(editor, Collections.singletonList(dLine.getName()), 1);
+        } finally {
+            System.setProperty("org.eclipse.sirius.ui.enableCreatedElementsConstraintInSelectElementsListener", "true"); //$NON-NLS-1$ //$NON-NLS-2$
+        }
+
     }
 
     void applyCreateLineTool(String toolName, final LineContainer lineContainer, final EObject semanticCurrentElement) {
@@ -137,6 +171,9 @@ public class SelectionInTableAfterToolExecutionTest extends AbstractToolDescript
      * Check that variables are recognized during expression run time computation for CreateLineTool
      */
     public void testRunTimeVariableAfterCreateLineTool() {
+        editor = (DTableEditor) DialectUIManager.INSTANCE.openEditor(session, tableClasses, new NullProgressMonitor());
+        TestsUtil.emptyEventsFromUIThread();
+
         DLine dLine = tableClasses.getLines().get(0);
 
         final String tool_Name = "Create Class";

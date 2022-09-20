@@ -18,6 +18,9 @@
 							<li>
 								<a href="#UserVisibleChanges">User-Visible Changes</a>
 							</li>
+							<li>
+								<a href="#SpecifierVisibleChanges">Specifier-Visible Changes</a>
+							</li>
 						</ol>
 					</li>
 					<li>
@@ -48,7 +51,7 @@
 						<a href="#sirius7.0.2">Changes in Sirius 7.0.2</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#SpecifierVisibleChanges">Specifier-Visible Changes</a>
+								<a href="#SpecifierVisibleChanges2">Specifier-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#DeveloperVisibleChanges2">Developer-Visible Changes</a>
@@ -100,7 +103,7 @@
 								<a href="#UserVisibleChanges5">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#SpecifierVisibleChanges2">Specifier-Visible Changes</a>
+								<a href="#SpecifierVisibleChanges3">Specifier-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#DeveloperVisibleChanges7">Developer-Visible Changes</a>
@@ -118,6 +121,15 @@
 		<ul>
 			<li><span class="label label-info">Modified</span> In a tree editor, if the expand is done with the right arrow key, the behavior is now OK. Before this version, if the expand is done for the first time with the right arrow key, only a blank child is displayed. You can refer to 
 				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=549352">bugzilla 549352</a> for more details. 
+			</li>
+		</ul>
+		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
+		<ul>
+			<li><span class="label label-info">Added</span> The system property 
+				<code>org.eclipse.sirius.ui.enableCreatedElementsConstraintInSelectElementsListener</code> has been added to allow to ignore the &#8220;created elements&#8221; constraint when the 
+				<code>SelectDRepresentationElementsListener</code> is called to select elements after a tool execution. In other words, this allows to select an element that is not created during the tool execution. The default value of the system property is 
+				<code>true</code>. It must be set to 
+				<code>false</code> to ignore the constraint.
 			</li>
 		</ul>
 		<h2 id="sirius7.0.5">Changes in Sirius 7.0.5</h2>
@@ -143,7 +155,7 @@
 			</li>
 		</ul>
 		<h2 id="sirius7.0.2">Changes in Sirius 7.0.2</h2>
-		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges2">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> The variables 
 				<code>edgeView</code> and 
@@ -616,7 +628,7 @@
 				<a href="user/general/SiriusSessionDetailedInformation.html">documentation</a> .
 			</li>
 		</ul>
-		<h3 id="SpecifierVisibleChanges2">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges3">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> A new 
 				<code>CellEditor</code> tool is available for feature column mapping of edition table. It allows to define a specific 

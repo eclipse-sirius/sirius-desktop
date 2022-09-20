@@ -40,7 +40,8 @@
 		</p>
 		<ul>
 			<li>
-				<code>Elements to select</code>: Expression to list the elements to select after tool execution. There are four possibilities for the list of elements returned by this expression. In any case, if the default list of elements is not empty, the list of elements returned is filtered with the default selected elements. In case of creation tool, the default list contains newly created elements so, the returned list can contain at most that elements.
+				<code>Elements to select</code>: Expression to list the elements to select after tool execution. There are four possibilities for the list of elements returned by this expression. In any case, if the default list of elements is not empty, the list of elements returned is filtered with the default selected elements. In case of creation tool, the default list contains newly created elements so, the returned list can contain at most that elements. For specific cases, this constraint can be removed by setting to false the system property 
+				<code>org.eclipse.sirius.ui.enableCreatedElementsConstraintInSelectElementsListener</code>.
 				<ul>
 					<li>Empty expression: The default behavior is applied: if graphical elements has been created, these elements will be selected(excluding the sub elements), else, the selection is unchanged.</li>
 					<li>List of 
