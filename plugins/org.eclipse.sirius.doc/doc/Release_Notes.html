@@ -115,7 +115,12 @@
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-info">Modified</span> In a tree editor, if the expand is done with the right arrow key, the behavior is now OK. Before this version, if the expand is done for the first time with the right arrow key, only a blank child is displayed. You can refer to 
-				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=549352">bugzilla 549352</a> for more details. 
+				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=549352">bugzilla 549352</a> for more details.
+			</li>
+			<li><span class="label label-info">Modified</span> In a tree or a table representation, the direct edit is no longer accessible with any alphanumeric character key pressed, but only with double-clicking or pressing 
+				<em>F2</em> or 
+				<em>Return</em> (as the documentation always said). It is possible to restore the previous behavior by setting the system property 
+				<code>org.eclipse.sirius.ui.restoreBehaviorEnablingDirectEditOnAlphanumericKey</code> to true
 			</li>
 		</ul>
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>

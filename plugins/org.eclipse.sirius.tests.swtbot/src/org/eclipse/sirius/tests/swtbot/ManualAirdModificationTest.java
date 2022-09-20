@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 Obeo.
+ * Copyright (c) 2017, 2022 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -73,6 +73,8 @@ public class ManualAirdModificationTest extends AbstractSiriusSwtBotGefTestCase 
 
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
+        System.setProperty("org.eclipse.sirius.ui.restoreBehaviorEnablingDirectEditOnAlphanumericKey", "true"); //$NON-NLS-1$ //$NON-NLS-2$
+
         sessionAirdResource = new UIResource(designerProject, "/", REPRESENTATIONS_RESOURCE_NAME);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource, true);
         session = localSession.getOpenedSession();
@@ -89,6 +91,12 @@ public class ManualAirdModificationTest extends AbstractSiriusSwtBotGefTestCase 
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, PATH, SEMANTIC_RESOURCE_NAME, REPRESENTATIONS_RESOURCE_NAME, MODELER_RESOURCE_NAME);
+    }
+
+    @Override
+    protected void tearDown() throws Exception {
+        System.setProperty("org.eclipse.sirius.ui.restoreBehaviorEnablingDirectEditOnAlphanumericKey", "false"); //$NON-NLS-1$ //$NON-NLS-2$
+        super.tearDown();
     }
 
     /**

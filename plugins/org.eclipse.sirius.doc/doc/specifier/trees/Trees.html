@@ -262,9 +262,10 @@
 				<code>false</code> for the elements which should not be deleted.
 			</li>
 			<li>
-				<em>Direct Edit Tool</em>, used to allow end-users to directly edit the label of a Tree Item (by double-clicking or pressing 
+				<em>Direct Edit Tool</em>, used to allow end-users to directly edit the label of a Tree Item by double-clicking or pressing 
 				<em>F2</em> or 
-				<em>Return</em> on a Tree Item). It specifies how to interpret the new label value, and which changes to apply to the model element. The 
+				<em>Return</em> on a Tree Item. Note: Since Sirius 7.1.0, the activation conditions are really these ones. Previously, pressing any alphanumeric character key would activate direct editing. You can retrieve the previous behavior by setting the system property 
+				<code>org.eclipse.sirius.ui.restoreBehaviorEnablingDirectEditOnAlphanumericKey</code> to true. The direct edit tool specifies how to interpret the new label value, and which changes to apply to the model element. The 
 				<em>Edit Mask</em> element (contained inside the tool) is used to parse the new label&#8217;s value as entered by the user, and to select part of this label as input variables to the editing action&#8217;s body. The mask can contain substrings of the form 
 				<code>{N}</code> where 
 				<em>N</em> is a number. The parts of the new label&#8217;s value which correspond to these substring will be available as variables named <code>argN</code>. For example, with an edit mask of <code>{0}:{1}</code> and an input string entered by the user of <code>attr : EString</code>, the tool&#8217;s body would be executed with variables <code>arg0</code> set to <code>attr&#9251;</code> and <code>arg1</code> set to <code>&#9251;EString</code>.

@@ -8,7 +8,8 @@ h2(#sirius7.1.0). Changes in Sirius 7.1.0
 
 h3. User-Visible Changes
 
-* <span class="label label-info">Modified</span> In a tree editor, if the expand is done with the right arrow key, the behavior is now OK. Before this version, if the expand is done for the first time with the right arrow key, only a blank child is displayed. You can refer to "bugzilla 549352":https://bugs.eclipse.org/bugs/show_bug.cgi?id=549352 for more details. 
+* <span class="label label-info">Modified</span> In a tree editor, if the expand is done with the right arrow key, the behavior is now OK. Before this version, if the expand is done for the first time with the right arrow key, only a blank child is displayed. You can refer to "bugzilla 549352":https://bugs.eclipse.org/bugs/show_bug.cgi?id=549352 for more details.
+* <span class="label label-info">Modified</span> In a tree or a table representation, the direct edit is no longer accessible with any alphanumeric character key pressed, but only with double-clicking or pressing _F2_ or _Return_ (as the documentation always said). It is possible to restore the previous behavior by setting the system property @org.eclipse.sirius.ui.restoreBehaviorEnablingDirectEditOnAlphanumericKey@ to true
 
 h3. Specifier-Visible Changes
 
