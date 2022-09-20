@@ -362,17 +362,18 @@
       </createTreeItem>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_3:EditionTableDescription" name="Classes" domainClass="EPackage">
-      <ownedLineMappings name="Classes lines" domainClass="EClass" semanticCandidatesExpression="[eContents(ecore::EClass)/]"/>
-      <ownedCreateLine name="Create Class" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Classes']/@ownedLineMappings[name='Classes%20lines']">
-        <variables name="root" documentation="The semantic element of the table."/>
-        <variables name="element" documentation="The semantic currently edited element."/>
-        <variables name="container" documentation="The semantic element corresponding to the view container."/>
-        <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:container">
-          <subModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
-            <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['NewEClass'  + eContainer().eContents(ecore::EClass)->size()/]"/>
-          </subModelOperations>
-        </firstModelOperation>
-      </ownedCreateLine>
+      <ownedLineMappings name="Classes lines" domainClass="EClass" semanticCandidatesExpression="[eContents(ecore::EClass)/]">
+        <create name="Create Class" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Classes']/@ownedLineMappings[name='Classes%20lines']">
+          <variables name="root" documentation="The semantic element of the table."/>
+          <variables name="element" documentation="The semantic currently edited element."/>
+          <variables name="container" documentation="The semantic element corresponding to the view container."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="aql:element.eContainer()">
+            <subModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+              <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['NewEClass'  + eContainer().eContents(ecore::EClass)->size()/]"/>
+            </subModelOperations>
+          </firstModelOperation>
+        </create>
+      </ownedLineMappings>
       <ownedCreateLine name="Initialized_Create Class" forceRefresh="true" elementsToSelect="[instance/]" mapping="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Classes']/@ownedLineMappings[name='Classes%20lines']">
         <variables name="root" documentation="The semantic element of the table."/>
         <variables name="element" documentation="The semantic currently edited element."/>

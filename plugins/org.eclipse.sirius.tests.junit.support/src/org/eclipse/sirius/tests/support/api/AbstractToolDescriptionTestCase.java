@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2015, 2019 Obeo
+ * Copyright (c) 2015, 2022 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -72,7 +72,7 @@ public abstract class AbstractToolDescriptionTestCase extends SiriusTestCase {
             }
             @Override
             public String getFailureMessage() {
-                return "Bad selection size, after tool execution.";
+                return "Bad selection size, after tool execution. Expected " + expectedSize + ", but was " + DialectUIManager.INSTANCE.getSelection(editor).size();
             }
         });
 
