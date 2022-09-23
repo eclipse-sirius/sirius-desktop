@@ -4,6 +4,12 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for recent major releases of Sirius. See also "the release notes from previous versions":Release_Notes_Previous.html for details about older releases.
 
+h2(#sirius7.0.5). Changes in Sirius 7.0.5
+
+h4. Migrations
+
+* <span class="label label-info">Modified</span>The migration participant introduced by "Bug 576423 - _Incorrect representation size when using 'Size Computation Expression'_":https://bugs.eclipse.org/bugs/show_bug.cgi?id=576423 was wrongly resizing the GMF bounds of collapsed nodes. @org.eclipse.sirius.diagram.ui.business.internal.migration.WorkspaceImageGMFBoundsMigrationParticipant@ migration participant has been modified to fix the previous version _15.0.0.202201261500_ . The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _15.0.0.202209061200_.
+
 h2(#sirius7.0.4). Changes in Sirius 7.0.4
 
 h3. User-Visible Changes
