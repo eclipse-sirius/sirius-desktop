@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -311,45 +311,12 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
     }
 
     private void closeOthersEditors(final boolean save) {
-        Display.getDefault().asyncExec(new Runnable() {
-            @Override
-            public void run() {
-                final IWorkbenchPage page = EclipseUIUtil.getActivePage();
-                if (page != null) {
-                    final IEditorReference[] editorReferences = page.getEditorReferences();
-                    final List<IEditorReference> editorsToClose = new ArrayList<IEditorReference>();
-                    for (final IEditorReference editor : editorReferences) {
-                        try {
-                            final IEditorInput input = editor.getEditorInput();
-                            final IEditorPart editorPart = editor.getEditor(false);
-                            if (editorPart == null && input instanceof URIEditorInput) {
-                                if (shouldCloseEditor((URIEditorInput) input)) {
-                                    editorsToClose.add(editor);
-                                }
-                            }
-                        } catch (final PartInitException e) {
-                            // do nothing
-                        }
-                    }
-
-                    if (!editorsToClose.isEmpty()) {
-                        final IEditorReference[] toClose = editorsToClose.toArray(new IEditorReference[editorsToClose.size()]);
-                        page.closeEditors(toClose, save);
-                    }
-                }
-            }
-
-            private boolean shouldCloseEditor(URIEditorInput input) {
-                if (session instanceof DAnalysisSession) {
-                    for (final Resource resource : ((DAnalysisSession) session).getAllSessionResources()) {
-                        if (resource.getURI() != null && resource.getURI().equals(input.getURI().trimFragment())) {
-                            return true;
-                        }
-                    }
-                }
-                return false;
-            }
-        });
+        CloseOthersEditorsRunnable closeOthersEditorsRunnable = new CloseOthersEditorsRunnable(save);
+        if (Display.getDefault().getThread() == Thread.currentThread()) {
+            closeOthersEditorsRunnable.run();
+        } else {
+            Display.getDefault().asyncExec(closeOthersEditorsRunnable);
+        }
     }
 
     @Override
@@ -466,6 +433,52 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
     @Override
     public boolean shouldRefresh(DRepresentation representation) {
         return getOpenedRepresantationsToRefresh().contains(representation);
+    }
+
+    private final class CloseOthersEditorsRunnable implements Runnable {
+        private final boolean save;
+
+        private CloseOthersEditorsRunnable(boolean save) {
+            this.save = save;
+        }
+
+        @Override
+        public void run() {
+            final IWorkbenchPage page = EclipseUIUtil.getActivePage();
+            if (page != null) {
+                final IEditorReference[] editorReferences = page.getEditorReferences();
+                final List<IEditorReference> editorsToClose = new ArrayList<IEditorReference>();
+                for (final IEditorReference editor : editorReferences) {
+                    try {
+                        final IEditorInput input = editor.getEditorInput();
+                        final IEditorPart editorPart = editor.getEditor(false);
+                        if (editorPart == null && input instanceof URIEditorInput) {
+                            if (shouldCloseEditor((URIEditorInput) input)) {
+                                editorsToClose.add(editor);
+                            }
+                        }
+                    } catch (final PartInitException e) {
+                        // do nothing
+                    }
+                }
+
+                if (!editorsToClose.isEmpty()) {
+                    final IEditorReference[] toClose = editorsToClose.toArray(new IEditorReference[editorsToClose.size()]);
+                    page.closeEditors(toClose, save);
+                }
+            }
+        }
+
+        private boolean shouldCloseEditor(URIEditorInput input) {
+            if (session instanceof DAnalysisSession) {
+                for (final Resource resource : ((DAnalysisSession) session).getAllSessionResources()) {
+                    if (resource.getURI() != null && resource.getURI().equals(input.getURI().trimFragment())) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
     }
 
     /**
