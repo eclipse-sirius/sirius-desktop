@@ -9,6 +9,7 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
+ *    Vincent LORENZO (CEA LIST) - vincent.lorenzo@cea.fr - Bug 580836
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.editor;
 
@@ -82,7 +83,6 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
      */
     private boolean enableCreatedElementsConstraintInSelectElementsListener = Boolean
             .valueOf(System.getProperty("org.eclipse.sirius.ui.enableCreatedElementsConstraintInSelectElementsListener", "true")); //$NON-NLS-1$ //$NON-NLS-2$
-                                                                                                                                                                                      // ;
 
     /**
      * Default constructor.
@@ -146,6 +146,10 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
             // We are the UI Thread, so we perform the selection.
             if (display != null && Thread.currentThread() == display.getThread()) {
                 IEditorPart activeEditor = EclipseUIUtil.getActiveEditor();
+                if (activeEditor != null) {
+                    //see bug 580836, to work in a multipage editor
+                    activeEditor = activeEditor.getAdapter(DialectEditor.class);
+                }
                 if (dialectEditor.equals(activeEditor)) {
                     List<DRepresentationElement> elementsToSelect = extractElementsToSelect(event, currentRep);
                     if (elementsToSelect != null) {
@@ -170,6 +174,10 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
                     executorService.submit(() -> {
                         // getActiveEditor will perform a synExec.
                         IEditorPart activeEditor = EclipseUIUtil.getActiveEditor();
+                        if (activeEditor != null) {
+                            //see bug 580836, to work in a multipage editor
+                            activeEditor = activeEditor.getAdapter(DialectEditor.class);
+                        }
                         if (dialectEditor.equals(activeEditor)) {
                             // Set the selection in async exec: for some dialect, ui
                             // could be refresh by another post commit triggered after
