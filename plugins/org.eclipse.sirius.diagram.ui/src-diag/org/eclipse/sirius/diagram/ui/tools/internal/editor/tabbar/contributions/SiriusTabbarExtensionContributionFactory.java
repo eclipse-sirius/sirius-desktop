@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2014, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
+ *    Vincent LORENZO (CEA LIST) - vincent.lorenzo@cea.fr - Bug 580836
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions;
 
@@ -152,6 +153,11 @@ public abstract class SiriusTabbarExtensionContributionFactory extends Extension
         public void selectionChanged(IWorkbenchPart part, ISelection selection) {
             // we refresh action only if selection is in the same part than
             // current action tabbar.
+            if (representationPart != null && part != null && part.getAdapter(representationPart.getClass()) != null) {
+                 //try to adapt the part to the current representationPart
+                 //see bug 580836, to work in a multipage editor
+                 part = part.getAdapter(this.representationPart.getClass());
+            }
             if (representationPart != null && representationPart.equals(part)) {
                 IAction action = getAction();
                 if (action instanceof IActionDelegate) {

@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2004, 2014 IBM Corporation and others.
+ * Copyright (c) 2004, 2014, 2022 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  * Contributors:
  *    IBM Corporation - initial API and implementation
  *    Obeo - Adaptations.
+ *    Vincent LORENZO (CEA LIST) - vincent.lorenzo@cea.fr - Bug 580836
  ****************************************************************************/
 
 package org.eclipse.sirius.diagram.ui.tools.internal.actions.delete;
@@ -174,6 +175,11 @@ public class DeleteFromModelWithHookAction extends DeleteFromModelAction {
      */
     protected boolean calculateEnabled() {
         IWorkbenchPart part = getWorkbenchPart();
+        if (representationPart != null && part != null && part.getAdapter(representationPart.getClass()) != null) {
+            //try to adapt the part to the current representationPart
+            //see bug 580836, to work in a multipage editor
+            part = part.getAdapter(this.representationPart.getClass());
+        }
         if (representationPart != null && !representationPart.equals(part)) {
             return super.isEnabled();
         }
