@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -65,7 +65,6 @@ import org.eclipse.sirius.table.metamodel.table.description.TableMapping;
 import org.eclipse.sirius.table.tools.api.interpreter.IInterpreterSiriusTableVariables;
 import org.eclipse.sirius.table.tools.internal.Messages;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 import com.google.common.collect.Sets;
 
@@ -100,13 +99,12 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
      * @param interpreter
      *            current Interpreter.
      */
-    public DTableSynchronizerImpl(final TableDescription description, final ModelAccessor accessor, final IInterpreter interpreter) {
-        super();
-        this.accessor = accessor;
+    public DTableSynchronizerImpl(final TableDescription description, final DTableElementSynchronizer sync) {
+        this.sync = sync;
+        this.accessor = sync.getAccessor();
         this.description = description;
-        this.interpreter = interpreter;
+        this.interpreter = sync.getInterpreter();
         this.safeInterpreter = RuntimeLoggerManager.INSTANCE.decorate(interpreter);
-        this.sync = new DTableElementSynchronizer(accessor, interpreter);
     }
 
     /**
@@ -767,7 +765,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
                                     final DLine line = (DLine) viewsCouple.getObj1();
                                     final DColumn column = (DColumn) viewsCouple.getObj2();
 
-                                    if (checkIntersectionPrecondition(column.getTarget(), line, column, iMapping.getPreconditionExpression())) {
+                                    if (sync.evaluateIntersectionPrecondition(column.getTarget(), line, column, iMapping)) {
                                         status.addInNew(new DCellCandidate(iMapping.getColumnMapping(), target, line, column, this.ids));
                                     }
 
@@ -898,7 +896,8 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
                                 }
                                 linesToColumnSemantics.put(line, columnSemantics);
                             }
-                            if (columnSemantics.contains(column.getTarget()) && checkIntersectionPrecondition(column.getTarget(), line, column, iMapping.getPreconditionExpression())) {
+                            if (columnSemantics.contains(column.getTarget()) 
+                                    && sync.evaluateIntersectionPrecondition(column.getTarget(), line, column, iMapping)) {
                                 status.addInNew(new DCellCandidate(iMapping.getColumnMapping(), line.getTarget(), line, column, this.ids));
                             }
                         }
@@ -1116,28 +1115,5 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
         return table;
     }
 
-    private boolean checkIntersectionPrecondition(final EObject semanticColumn, final DLine line, final DColumn column, final String preconditionExpression) {
-        DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.CHECK_PRECONDITION_KEY);
-        boolean result = true;
-        if (!StringUtil.isEmpty(preconditionExpression)) {
-            this.interpreter.setVariable(IInterpreterSiriusTableVariables.LINE, line);
-            this.interpreter.setVariable(IInterpreterSiriusTableVariables.LINE_SEMANTIC, ((DSemanticDecorator) line).getTarget());
-            this.interpreter.setVariable(IInterpreterSiriusTableVariables.COLUMN, column);
-            this.interpreter.setVariable(IInterpreterSiriusTableVariables.COLUMN_SEMANTIC, ((DSemanticDecorator) column).getTarget());
-            this.interpreter.setVariable(IInterpreterSiriusVariables.TABLE, this.table);
-            try {
-                result = interpreter.evaluateBoolean(semanticColumn, preconditionExpression);
-            } catch (final EvaluationException e) {
-                // nothing special, keep silent
-            }
-            this.interpreter.unSetVariable(IInterpreterSiriusTableVariables.LINE);
-            this.interpreter.unSetVariable(IInterpreterSiriusTableVariables.LINE_SEMANTIC);
-            this.interpreter.unSetVariable(IInterpreterSiriusTableVariables.COLUMN);
-            this.interpreter.unSetVariable(IInterpreterSiriusTableVariables.COLUMN_SEMANTIC);
-            this.interpreter.unSetVariable(IInterpreterSiriusVariables.TABLE);
-        }
-        DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.CHECK_PRECONDITION_KEY);
-        return result;
-    }
 
 }
