@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -369,7 +369,7 @@ public class DTableElementSynchronizer {
         if (line != null && line.getTarget() != null && column != null && column.getTarget() != null) {
             Collection<EObject> foundColumnTargets = evaluateColumnFinderExpression(cell, intersectionMapping);
             if (foundColumnTargets != null && foundColumnTargets.contains(column.getTarget())) {
-                if (evaluateIntersectionPrecondition(cell.getColumn().getTarget(), cell.getLine(), cell.getColumn(), intersectionMapping.getPreconditionExpression())) {
+                if (evaluateIntersectionPrecondition(cell.getColumn().getTarget(), cell.getLine(), cell.getColumn(), intersectionMapping)) {
                     cellNeeded = refreshLabel(cell, labelExpression);
                 }
             }
@@ -410,11 +410,12 @@ public class DTableElementSynchronizer {
      *            The line to use as "line" variable by the interpreter
      * @param column
      *            The column to use as "column" variable by the interpreter
-     * @param preconditionExpression
-     *            The expression to evaluate.
+     * @param mapping
+     *            The mapping to evaluate.
      * @return The result of the expression evaluation
      */
-    private boolean evaluateIntersectionPrecondition(final EObject semanticElement, final DLine line, final DColumn column, final String preconditionExpression) {
+    public boolean evaluateIntersectionPrecondition(final EObject semanticElement, final DLine line, final DColumn column, final IntersectionMapping mapping) {
+        String preconditionExpression = mapping.getPreconditionExpression();
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.CHECK_PRECONDITION_KEY);
         boolean result = true;
         if (!StringUtil.isEmpty(preconditionExpression)) {
@@ -1147,5 +1148,29 @@ public class DTableElementSynchronizer {
         if (target.eIsSet(feature)) {
             target.eUnset(feature);
         }
+    }
+
+    /**
+     * Provides the associated accessor.
+     * <p>
+     * Restricted to table synchronizer.
+     * </p>
+     * 
+     * @return accessor
+     */
+    ModelAccessor getAccessor() {
+        return accessor;
+    }
+
+    /**
+     * Provides the associated interpretor.
+     * <p>
+     * Restricted to table synchronizer.
+     * </p>
+     * 
+     * @return interpretor
+     */
+    IInterpreter getInterpreter() {
+        return interpreter;
     }
 }

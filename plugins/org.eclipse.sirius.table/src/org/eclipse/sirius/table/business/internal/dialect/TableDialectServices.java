@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -129,7 +129,7 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
             IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(table.getTarget());
             ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(representation);
             TableDescription description = table.getDescription();
-            DTableSynchronizer sync = new DTableSynchronizerImpl(description, accessor, interpreter);
+            DTableSynchronizer sync = new DTableSynchronizerImpl(description, createElementSynchronizer(accessor, interpreter));
             sync.setTable(table);
             sync.refresh(new SubProgressMonitor(monitor, 1));
         } finally {
@@ -137,6 +137,10 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
         }
     }
 
+    private DTableElementSynchronizer createElementSynchronizer(final ModelAccessor accessor, final IInterpreter interpreter) {
+        return new DTableElementSynchronizer(accessor, interpreter);
+    }
+    
     @Override
     public void refreshImpactedElements(DRepresentation representation, Collection<Notification> notifications, IProgressMonitor monitor) {
         try {
@@ -147,7 +151,7 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
 
             Set<DTableElement> dTableElements = getTableElementsToRefresh(notifications, table);
             monitor.worked(2);
-            DTableElementSynchronizer synchronizer = new DTableElementSynchronizer(accessor, interpreter);
+            DTableElementSynchronizer synchronizer = createElementSynchronizer(accessor, interpreter);
             IProgressMonitor subMonitor = new SubProgressMonitor(monitor, 8);
             try {
                 subMonitor.beginTask(Messages.TableDialectServices_RefreshImpactedElements, dTableElements.size());
