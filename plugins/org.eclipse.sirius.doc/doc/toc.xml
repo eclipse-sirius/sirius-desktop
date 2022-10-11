@@ -54,7 +54,9 @@
     </topic>
     <topic href="doc/user/trees/Trees.html" label="Trees">
       <topic href="doc/user/trees/Trees.html#introduction" label="Introduction" />
+      <topic href="doc/user/trees/Trees.html#navigation" label="Navigation with keys" />
       <topic href="doc/user/trees/Trees.html#managing" label="Creating, Renaming and Deleting Trees" />
+      <topic href="doc/user/trees/Trees.html#refresh" label="Refreshing Trees" />
       <topic href="doc/user/trees/Trees.html#items" label="Adding and Removing Tree Items" />
       <topic href="doc/user/trees/Trees.html#editing" label="Editing Tree Items" />
       <topic href="doc/user/trees/Trees.html#dragndrop" label="Tree Items Drag and Drop" />

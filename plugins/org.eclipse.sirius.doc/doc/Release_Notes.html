@@ -114,6 +114,13 @@
 		<h2 id="sirius7.1.0">Changes in Sirius 7.1.0</h2>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
 		<ul>
+			<li><span class="label label-success">Added</span> In a tree editor, if the 
+				<code>Shift</code> key is pressed during using the 
+				<code>left arrow</code> key, a collapse all is done instead of a simple collapse. This is the same for expand with 
+				<code>Shift</code> + 
+				<code>right arrow</code> key. You can refer to 
+				<a href="user/trees/Trees.html#navigation">navigation documentation</a> for more details.
+			</li>
 			<li><span class="label label-info">Modified</span> In a tree editor, if the expand is done with the right arrow key, the behavior is now OK. Before this version, if the expand is done for the first time with the right arrow key, only a blank child is displayed. You can refer to 
 				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=549352">bugzilla 549352</a> for more details.
 			</li>
@@ -125,7 +132,7 @@
 		</ul>
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
 		<ul>
-			<li><span class="label label-info">Added</span> The system property 
+			<li><span class="label label-success">Added</span> The system property 
 				<code>org.eclipse.sirius.ui.enableCreatedElementsConstraintInSelectElementsListener</code> has been added to allow to ignore the &#8220;created elements&#8221; constraint when the 
 				<code>SelectDRepresentationElementsListener</code> is called to select elements after a tool execution. In other words, this allows to select an element that is not created during the tool execution. The default value of the system property is 
 				<code>true</code>. It must be set to 
