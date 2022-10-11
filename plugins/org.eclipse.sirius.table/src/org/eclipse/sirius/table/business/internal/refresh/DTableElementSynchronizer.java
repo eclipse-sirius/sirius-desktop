@@ -17,8 +17,11 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
+import java.util.function.Function;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
@@ -26,13 +29,13 @@ import org.eclipse.emf.edit.provider.AdapterFactoryItemDelegator;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.ReflectiveItemProvider;
+import org.eclipse.sirius.business.api.logger.InterpretationContext;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.metamodel.helper.FontFormatHelper;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
-import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
@@ -70,7 +73,6 @@ import org.eclipse.sirius.table.metamodel.table.description.TableMapping;
 import org.eclipse.sirius.table.tools.api.interpreter.IInterpreterSiriusTableVariables;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 import org.eclipse.sirius.viewpoint.description.FixedColor;
 
@@ -89,7 +91,7 @@ public class DTableElementSynchronizer {
 
     private final ModelAccessor accessor;
 
-    private final IInterpreter interpreter;
+    private final RuntimeLoggerInterpreter interpreter;
 
     /**
      * Synchronizer for table elements.
@@ -100,10 +102,24 @@ public class DTableElementSynchronizer {
      *            current interpreter.
      */
     public DTableElementSynchronizer(final ModelAccessor accessor, final IInterpreter interpreter) {
-        this.interpreter = interpreter;
+        this.interpreter = RuntimeLoggerManager.INSTANCE.decorate(interpreter);
         this.accessor = accessor;
     }
 
+    private String getHeaderLabel(DTableElement header, TableMapping mapping, EStructuralFeature labelExpression) {
+        if (!StringUtil.isEmpty((String) mapping.eGet(labelExpression))) {
+            return InterpretationContext.with(interpreter, it -> {
+                it.setLogError(false);
+                return interpreter.evaluateString(header.getTarget(), mapping, labelExpression);
+            });
+
+        } else {
+            // If there is no headerLabelExpression, 
+            // we use the label provider to get label to display
+            return getText(header.getTarget());
+        }
+    }
+    
     /**
      * Refresh a line.
      * 
@@ -112,25 +128,11 @@ public class DTableElementSynchronizer {
      */
     public void refresh(final DLine line) {
         if (accessor.getPermissionAuthority().canEditInstance(line)) {
-            final LineMapping mapping = line.getOriginMapping();
-            if (!StringUtil.isEmpty(mapping.getHeaderLabelExpression())) {
-                try {
-                    final String label = interpreter.evaluateString(line.getTarget(), mapping.getHeaderLabelExpression());
-                    if (!StringUtil.equals(line.getLabel(), label)) {
-                        line.setLabel(label);
-                    }
-                } catch (final EvaluationException e) {
-                    // silent catch.
-                }
-            } else {
-                // If there is no headerLabelExpression, we use the label
-                // provider
-                // to get label to display
-                final String label = getText(line.getTarget());
-                // We change the value only if it's different
-                if (!StringUtil.equals(line.getLabel(), label)) {
-                    line.setLabel(label);
-                }
+            final String label = getHeaderLabel(line, line.getOriginMapping(), 
+                    DescriptionPackage.eINSTANCE.getLineMapping_HeaderLabelExpression());
+            // We change the value only if it's different
+            if (!StringUtil.equals(line.getLabel(), label)) {
+                line.setLabel(label);
             }
             // Trac #1125 Line height modification (aborted because of Windows
             // SWT
@@ -182,24 +184,11 @@ public class DTableElementSynchronizer {
     private void refresh(final DTargetColumn column) {
         final ColumnMapping mapping = column.getOriginMapping();
         if (accessor.getPermissionAuthority().canEditInstance(column)) {
-            if (!StringUtil.isEmpty(mapping.getHeaderLabelExpression())) {
-                try {
-                    final String label = interpreter.evaluateString(column.getTarget(), mapping.getHeaderLabelExpression());
-                    if (!StringUtil.equals(column.getLabel(), label)) {
-                        column.setLabel(label);
-                    }
-                } catch (final EvaluationException e) {
-                    // silent catch.
-                }
-            } else {
-                // If there is no headerLabelExpression, we use the label
-                // provider
-                // to get label to display
-                final String label = getText(column.getTarget());
-                // We change the value only if it's different
-                if (!StringUtil.equals(column.getLabel(), label)) {
-                    column.setLabel(label);
-                }
+            final String label = getHeaderLabel(column, column.getOriginMapping(), 
+                    DescriptionPackage.eINSTANCE.getColumnMapping_HeaderLabelExpression());
+            // We change the value only if it's different
+            if (!StringUtil.equals(column.getLabel(), label)) {
+                column.setLabel(label);
             }
             if (mapping.getInitialWidth() != 0 && column.getWidth() == 0) {
                 column.setWidth(mapping.getInitialWidth());
@@ -238,53 +227,44 @@ public class DTableElementSynchronizer {
      *         invalid featureName for featureParent).
      */
     public boolean refreshTarget(final DCell cell) {
+        if (cell.getLine() == null) {
+            return true; // decrease complexity
+        }
         boolean deletedCell = false;
-        if (cell.getLine() != null) {
-            EObject featureParent = cell.getLine().getTarget();
-            if (cell.getColumn() instanceof DFeatureColumn) {
-                final FeatureColumnMapping featureColumnMapping = (FeatureColumnMapping) cell.getColumn().getMapping();
-                final String featureParentExpression = featureColumnMapping.getFeatureParentExpression();
-                if (featureParentExpression != null && featureParentExpression.length() > 0) {
-                    final DTable table = TableHelper.getTable(cell);
-
-                    this.interpreter.setVariable(IInterpreterSiriusVariables.CONTAINER, cell.getLine().getTarget());
-                    this.interpreter.setVariable(IInterpreterSiriusTableVariables.LINE, cell.getLine());
-                    this.interpreter.setVariable(IInterpreterSiriusTableVariables.TABLE, table);
+        EObject featureParent = cell.getLine().getTarget();
+        if (cell.getColumn() instanceof DFeatureColumn) {
+            final FeatureColumnMapping featureColumnMapping = (FeatureColumnMapping) cell.getColumn().getMapping();
+            final String featureParentExpression = featureColumnMapping.getFeatureParentExpression();
+            if (featureParentExpression != null && featureParentExpression.length() > 0) {
+                final DTable table = TableHelper.getTable(cell);
+                featureParent = InterpretationContext.with(interpreter, it-> {
+                    it.setVariable(IInterpreterSiriusVariables.CONTAINER, cell.getLine().getTarget());
+                    it.setVariable(IInterpreterSiriusTableVariables.LINE, cell.getLine());
+                    it.setVariable(IInterpreterSiriusTableVariables.TABLE, table);
                     if (table != null) {
-                        this.interpreter.setVariable(IInterpreterSiriusVariables.ROOT, table.getTarget());
+                        it.setVariable(IInterpreterSiriusVariables.ROOT, table.getTarget());
                     }
-                    if (TableHelper.hasTableDescriptionOnlyOneLineMapping(cell)) {
-                        featureParent = RuntimeLoggerManager.INSTANCE.decorate(interpreter).evaluateEObject(cell.getLine().getTarget(), featureColumnMapping,
+                    it.setLogError(TableHelper.hasTableDescriptionOnlyOneLineMapping(cell));
+                    return interpreter.evaluateEObject(cell.getLine().getTarget(), featureColumnMapping,
                                 DescriptionPackage.eINSTANCE.getFeatureColumnMapping_FeatureParentExpression());
-                    } else {
-                        try {
-                            featureParent = interpreter.evaluateEObject(cell.getLine().getTarget(), featureParentExpression);
-                        } catch (final EvaluationException e) {
-                            // Silent catch
-                        }
-                    }
-                    this.interpreter.unSetVariable(IInterpreterSiriusVariables.CONTAINER);
-                    this.interpreter.unSetVariable(IInterpreterSiriusTableVariables.LINE);
-                    this.interpreter.unSetVariable(IInterpreterSiriusTableVariables.TABLE);
-                    if (table != null) {
-                        this.interpreter.unSetVariable(IInterpreterSiriusVariables.ROOT);
-                    }
 
-                }
-                if (featureParent == null) {
+                });
+
+            }
+            if (featureParent == null) {
+                removeUneededCell(cell);
+                deletedCell = true;
+            } else if (!featureParent.equals(cell.getTarget())) {
+                String featureName = featureColumnMapping.getFeatureName();
+                if (SKIP_FEATURENAME_VALIDATION.equals(featureName) || accessor.eValid(featureParent, featureName)) {
+                    cell.setTarget(featureParent);
+                } else {
                     removeUneededCell(cell);
                     deletedCell = true;
-                } else if (!featureParent.equals(cell.getTarget())) {
-                    String featureName = featureColumnMapping.getFeatureName();
-                    if (SKIP_FEATURENAME_VALIDATION.equals(featureName) || accessor.eValid(featureParent, featureName)) {
-                        cell.setTarget(featureParent);
-                    } else {
-                        removeUneededCell(cell);
-                        deletedCell = true;
-                    }
                 }
             }
         }
+
         return !deletedCell;
     }
 
@@ -301,11 +281,10 @@ public class DTableElementSynchronizer {
         if (column != null) {
             final CellUpdater updater = cell.getUpdater();
             if (updater != null) {
-                final String labelExpression = updater.getLabelComputationExpression();
                 if (updater instanceof IntersectionMapping && cell.getLabel() != null) {
-                    cellStillExists = refreshLabelIntersectionMapping(cell, labelExpression, (IntersectionMapping) updater, column);
+                    cellStillExists = refreshLabelIntersectionMapping(cell, (IntersectionMapping) updater);
                 } else {
-                    cellStillExists = refreshLabel(cell, labelExpression);
+                    cellStillExists = updateCellLabel(cell);
                 }
             }
         }
@@ -359,18 +338,20 @@ public class DTableElementSynchronizer {
      * 
      * @param cell
      *            The current corresponding cell
-     * @param labelExpression
-     *            The label expression used to refresh the label
-     * @return true if a cell is already needed for ths intersection mapping
+     * @param intersectionMapping
+     *            The intersection mapping that contains the expression to evaluate
+     *  
+     * @return true if a cell is already needed
      */
-    private boolean refreshLabelIntersectionMapping(final DCell cell, final String labelExpression, final IntersectionMapping intersectionMapping, final DColumn column) {
+    private boolean refreshLabelIntersectionMapping(final DCell cell, final IntersectionMapping intersectionMapping) {
         boolean cellNeeded = false;
         DLine line = cell.getLine();
+        DColumn column = cell.getColumn();
         if (line != null && line.getTarget() != null && column != null && column.getTarget() != null) {
             Collection<EObject> foundColumnTargets = evaluateColumnFinderExpression(cell, intersectionMapping);
-            if (foundColumnTargets != null && foundColumnTargets.contains(column.getTarget())) {
+            if (foundColumnTargets.contains(column.getTarget())) {
                 if (evaluateIntersectionPrecondition(cell.getColumn().getTarget(), cell.getLine(), cell.getColumn(), intersectionMapping)) {
-                    cellNeeded = refreshLabel(cell, labelExpression);
+                    cellNeeded = updateCellLabel(cell);
                 }
             }
         }
@@ -414,38 +395,24 @@ public class DTableElementSynchronizer {
      * @return List of column candidates for this cell and this intersection mapping.
      */
     public Collection<EObject> evaluateColumnFinderExpression(EObject candidate, DSemanticDecorator container, IntersectionMapping iMapping, boolean logError) {
-        DTable table;
-        
-        if (iMapping.isUseDomainClass()) {
-            table = (DTable) container;
-        } else {
-            DLine line = (DLine) container;
-            interpreter.setVariable(IInterpreterSiriusTableVariables.LINE, line);
-            interpreter.setVariable(IInterpreterSiriusTableVariables.LINE_SEMANTIC, line.getTarget());
-            table = TableHelper.getTable(line);            
-        }
-                
-        interpreter.setVariable(IInterpreterSiriusVariables.ROOT, table.getTarget());
-        interpreter.setVariable(IInterpreterSiriusVariables.VIEWPOINT, table);
-        interpreter.setVariable(IInterpreterSiriusVariables.TABLE, table);
-        
-        try {
-            return interpreter.evaluateCollection(candidate, iMapping.getColumnFinderExpression());
-        } catch (EvaluationException e) {
-            if (logError) {
-                RuntimeLoggerManager.INSTANCE.error(container, // Save an error in the "Problems" view.
-                        DescriptionPackage.eINSTANCE.getIntersectionMapping_ColumnFinderExpression(), e);
+        return InterpretationContext.with(interpreter, it -> {
+            it.setLogError(logError);
+            DTable table;
+            if (iMapping.isUseDomainClass()) {
+                table = (DTable) container;
+            } else {
+                DLine line = (DLine) container;
+                it.setVariable(IInterpreterSiriusTableVariables.LINE, line);
+                it.setVariable(IInterpreterSiriusTableVariables.LINE_SEMANTIC, line.getTarget());
+                table = TableHelper.getTable(line);            
             }
-            return Collections.emptyList();
-        } finally {
-            interpreter.unSetVariable(IInterpreterSiriusVariables.TABLE);
-            interpreter.unSetVariable(IInterpreterSiriusVariables.ROOT);
-            interpreter.unSetVariable(IInterpreterSiriusVariables.VIEWPOINT);
-            if (!iMapping.isUseDomainClass()) {
-                interpreter.unSetVariable(IInterpreterSiriusTableVariables.LINE);
-                interpreter.unSetVariable(IInterpreterSiriusTableVariables.LINE_SEMANTIC);
-            }            
-        }
+                    
+            it.setVariable(IInterpreterSiriusVariables.ROOT, table.getTarget());
+            it.setVariable(IInterpreterSiriusVariables.VIEWPOINT, table);
+            it.setVariable(IInterpreterSiriusVariables.TABLE, table);
+            
+            return interpreter.evaluateCollection(candidate, iMapping, DescriptionPackage.eINSTANCE.getIntersectionMapping_ColumnFinderExpression());
+        });
     }
     
     
@@ -454,28 +421,19 @@ public class DTableElementSynchronizer {
      * 
      * @param candidate
      *            Semantic element to find from
-     * @param container
+     * @param table
      *            the table to search from
      * @param iMapping
      *            The intersection mapping that contains the expression to evaluate
-     * @param logError
-     *            Flag to log if an error happens
      * @return List of column candidates for this cell and this intersection mapping.
      */
     public Collection<EObject> evaluateLineFinderExpression(EObject candidate, DTable table, IntersectionMapping iMapping) {
-                
-        interpreter.setVariable(IInterpreterSiriusVariables.ROOT, table.getTarget());
-        interpreter.setVariable(IInterpreterSiriusVariables.VIEWPOINT, table);
-        interpreter.setVariable(IInterpreterSiriusVariables.TABLE, table);
-        
-        final RuntimeLoggerInterpreter safeInterpreter = RuntimeLoggerManager.INSTANCE.decorate(interpreter);
-        try {
-            return safeInterpreter.evaluateCollection(candidate, iMapping, DescriptionPackage.eINSTANCE.getIntersectionMapping_LineFinderExpression());
-        } finally {
-            interpreter.unSetVariable(IInterpreterSiriusVariables.TABLE);
-            interpreter.unSetVariable(IInterpreterSiriusVariables.ROOT);
-            interpreter.unSetVariable(IInterpreterSiriusVariables.VIEWPOINT);
-        }
+        return InterpretationContext.with(interpreter, it -> {
+            it.setVariable(IInterpreterSiriusVariables.ROOT, table.getTarget());
+            it.setVariable(IInterpreterSiriusVariables.VIEWPOINT, table);
+            it.setVariable(IInterpreterSiriusVariables.TABLE, table);            
+            return interpreter.evaluateCollection(candidate, iMapping, DescriptionPackage.eINSTANCE.getIntersectionMapping_LineFinderExpression());
+        });
     }
 
     /**
@@ -496,21 +454,15 @@ public class DTableElementSynchronizer {
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.CHECK_PRECONDITION_KEY);
         boolean result = true;
         if (!StringUtil.isEmpty(preconditionExpression)) {
-            this.interpreter.setVariable(IInterpreterSiriusTableVariables.LINE, line);
-            this.interpreter.setVariable(IInterpreterSiriusTableVariables.LINE_SEMANTIC, ((DSemanticDecorator) line).getTarget());
-            this.interpreter.setVariable(IInterpreterSiriusTableVariables.COLUMN, column);
-            this.interpreter.setVariable(IInterpreterSiriusTableVariables.COLUMN_SEMANTIC, ((DSemanticDecorator) column).getTarget());
-            this.interpreter.setVariable(IInterpreterSiriusVariables.TABLE, TableHelper.getTable(line));
-            try {
-                result = interpreter.evaluateBoolean(semanticElement, preconditionExpression);
-            } catch (final EvaluationException e) {
-                // nothing special, keep silent
-            }
-            this.interpreter.unSetVariable(IInterpreterSiriusTableVariables.LINE);
-            this.interpreter.unSetVariable(IInterpreterSiriusTableVariables.LINE_SEMANTIC);
-            this.interpreter.unSetVariable(IInterpreterSiriusTableVariables.COLUMN);
-            this.interpreter.unSetVariable(IInterpreterSiriusTableVariables.COLUMN_SEMANTIC);
-            this.interpreter.unSetVariable(IInterpreterSiriusVariables.TABLE);
+            result = InterpretationContext.with(interpreter, it -> {
+                it.setLogError(false);
+                it.setVariable(IInterpreterSiriusTableVariables.LINE, line);
+                it.setVariable(IInterpreterSiriusTableVariables.LINE_SEMANTIC, ((DSemanticDecorator) line).getTarget());
+                it.setVariable(IInterpreterSiriusTableVariables.COLUMN, column);
+                it.setVariable(IInterpreterSiriusTableVariables.COLUMN_SEMANTIC, ((DSemanticDecorator) column).getTarget());
+                it.setVariable(IInterpreterSiriusVariables.TABLE, TableHelper.getTable(line));
+                return interpreter.evaluateBoolean(semanticElement, mapping, DescriptionPackage.eINSTANCE.getIntersectionMapping_PreconditionExpression());
+            });
         }
         DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.CHECK_PRECONDITION_KEY);
         return result;
@@ -521,50 +473,41 @@ public class DTableElementSynchronizer {
      * 
      * @param cell
      *            cell to refresh.
-     * @param labelExpression
-     *            the new label for this Cell
-     * @return
+     * @return true if cell is needed
      */
-    private boolean refreshLabel(final DCell cell, final String labelExpression) {
+    private boolean updateCellLabel(final DCell cell) {
+        CellUpdater updater = cell.getUpdater();
+        String labelExpression = updater.getLabelComputationExpression();
         boolean cellNeeded = false;
         if (!StringUtil.isEmpty(labelExpression)) {
             if (cell.getTarget() != null) {
-                try {
+                String label = InterpretationContext.with(interpreter, it -> {
+                    it.setLogError(TableHelper.hasTableDescriptionOnlyOneLineMapping(cell));
                     if (cell.getLine() != null) {
-                        this.interpreter.setVariable(IInterpreterSiriusTableVariables.LINE, cell.getLine());
-                        this.interpreter.setVariable(IInterpreterSiriusTableVariables.LINE_SEMANTIC, cell.getLine().getTarget());
-                        this.interpreter.setVariable(IInterpreterSiriusVariables.CONTAINER, cell.getLine().getTarget());
+                        it.setVariable(IInterpreterSiriusTableVariables.LINE, cell.getLine());
+                        it.setVariable(IInterpreterSiriusTableVariables.LINE_SEMANTIC, cell.getLine().getTarget());
+                        it.setVariable(IInterpreterSiriusVariables.CONTAINER, cell.getLine().getTarget());
                     }
                     if (cell.getColumn() != null) {
-                        this.interpreter.setVariable(IInterpreterSiriusTableVariables.COLUMN, cell.getColumn());
-                        this.interpreter.setVariable(IInterpreterSiriusTableVariables.COLUMN_SEMANTIC, cell.getColumn().getTarget());
+                        it.setVariable(IInterpreterSiriusTableVariables.COLUMN, cell.getColumn());
+                        it.setVariable(IInterpreterSiriusTableVariables.COLUMN_SEMANTIC, cell.getColumn().getTarget());
                     }
                     final DTable table = TableHelper.getTable(cell);
                     if (table != null) {
-                        this.interpreter.setVariable(IInterpreterSiriusVariables.ROOT, table.getTarget());
+                        it.setVariable(IInterpreterSiriusVariables.ROOT, table.getTarget());
                     }
-                    final String label = interpreter.evaluateString(cell.getTarget(), labelExpression);
-                    cellNeeded = true;
-                    // We change the value only if it's different
-                    if (!StringUtil.equals(cell.getLabel(), label)) {
-                        cell.setLabel(label);
+                    EStructuralFeature labelFeature;
+                    if (updater instanceof IntersectionMapping) {
+                        labelFeature = DescriptionPackage.eINSTANCE.getIntersectionMapping_LabelExpression();
+                    } else { // updater instanceof FeatureColumnMapping, no other cases
+                        labelFeature = DescriptionPackage.eINSTANCE.getFeatureColumnMapping_LabelExpression();
                     }
-                } catch (final EvaluationException e) {
-                    if (TableHelper.hasTableDescriptionOnlyOneLineMapping(cell)) {
-                        RuntimeLoggerManager.INSTANCE.error(cell.getUpdater(), TablePackage.eINSTANCE.getDCell_Label(), e);
-                    }
-                    // Silent catch if many line mappings
-                } finally {
-                    if (cell.getLine() != null) {
-                        this.interpreter.unSetVariable(IInterpreterSiriusVariables.CONTAINER);
-                        this.interpreter.unSetVariable(IInterpreterSiriusTableVariables.LINE);
-                        this.interpreter.unSetVariable(IInterpreterSiriusTableVariables.LINE_SEMANTIC);
-                    }
-                    if (cell.getColumn() != null) {
-                        this.interpreter.unSetVariable(IInterpreterSiriusTableVariables.COLUMN);
-                        this.interpreter.unSetVariable(IInterpreterSiriusTableVariables.COLUMN_SEMANTIC);
-                    }
-                    this.interpreter.unSetVariable(IInterpreterSiriusVariables.ROOT);
+                    return interpreter.evaluateString(cell.getTarget(), cell.getUpdater(), labelFeature);
+                });
+
+                cellNeeded = true;
+                if (!StringUtil.equals(cell.getLabel(), label)) {
+                    cell.setLabel(label);
                 }
             }
         } else {
@@ -673,7 +616,8 @@ public class DTableElementSynchronizer {
 
         final StyleWithDefaultStatus bestBackgroundStyle = getBestBackgroundColor(cell, intersectionMapping, columnStyleUpdater);
         if (bestBackgroundStyle != null) {
-            colorUpdater.updateBackgroundColor(style, ((BackgroundStyleDescription) bestBackgroundStyle.getStyle()).getBackgroundColor(), bestBackgroundStyle.isDefaultStyle(), cell.getTarget());
+            colorUpdater.updateBackgroundColor(style, ((BackgroundStyleDescription) bestBackgroundStyle.getStyle()).getBackgroundColor(), 
+                    bestBackgroundStyle.isDefaultStyle(), cell.getTarget());
             if (new DCellQuery(cell).isStyleDescriptionInIntersectionMapping(bestBackgroundStyle.getStyle())) {
                 style.setBackgroundStyleOrigin(intersectionMapping);
             } else {
@@ -683,16 +627,18 @@ public class DTableElementSynchronizer {
             reset(style, TablePackage.eINSTANCE.getDTableElementStyle_BackgroundColor());
             reset(style, TablePackage.eINSTANCE.getDTableElementStyle_DefaultBackgroundStyle());
         }
+        
         final StyleWithDefaultStatus bestForegroundStyle = getBestForegroundStyle(cell, intersectionMapping, columnStyleUpdater);
         if (bestForegroundStyle != null) {
             ForegroundStyleDescription bestForegroundStyleDesc = (ForegroundStyleDescription) bestForegroundStyle.getStyle();
-            colorUpdater.updateForegroundColor(style, ((ForegroundStyleDescription) bestForegroundStyle.getStyle()).getForeGroundColor(), bestForegroundStyle.isDefaultStyle(), cell.getTarget());
+            colorUpdater.updateForegroundColor(style, ((ForegroundStyleDescription) bestForegroundStyle.getStyle()).getForeGroundColor(), 
+                    bestForegroundStyle.isDefaultStyle(), cell.getTarget());
             if (new DCellQuery(cell).isStyleDescriptionInIntersectionMapping(bestForegroundStyle.getStyle())) {
                 style.setForegroundStyleOrigin(intersectionMapping);
             } else {
                 style.setForegroundStyleOrigin(columnMapping);
             }
-            if (bestForegroundStyleDesc.getLabelFormat() != null && !isEqual(style.getLabelFormat(), bestForegroundStyleDesc.getLabelFormat())) {
+            if (bestForegroundStyleDesc.getLabelFormat() != null && !Objects.equals(style.getLabelFormat(), bestForegroundStyleDesc.getLabelFormat())) {
                 FontFormatHelper.setFontFormat(style.getLabelFormat(), bestForegroundStyleDesc.getLabelFormat());
             }
             if (bestForegroundStyleDesc.getLabelSize() != -1 && style.getLabelSize() != bestForegroundStyleDesc.getLabelSize()) {
@@ -745,18 +691,14 @@ public class DTableElementSynchronizer {
         if (bestBackgroundColor != null) {
             colorUpdater.updateBackgroundColor(style, bestBackgroundColor, new StyleUpdaterQuery(originMapping).isDefaultBackgroundColor(bestBackgroundColor), line.getTarget());
         } else {
-            if (style.eIsSet(TablePackage.eINSTANCE.getDTableElementStyle_BackgroundColor())) {
-                style.eUnset(TablePackage.eINSTANCE.getDTableElementStyle_BackgroundColor());
-            }
-            if (style.eIsSet(TablePackage.eINSTANCE.getDTableElementStyle_DefaultBackgroundStyle())) {
-                style.eUnset(TablePackage.eINSTANCE.getDTableElementStyle_DefaultBackgroundStyle());
-            }
+            reset(style, TablePackage.eINSTANCE.getDTableElementStyle_BackgroundColor());
+            reset(style, TablePackage.eINSTANCE.getDTableElementStyle_DefaultBackgroundStyle());
         }
         final ForegroundStyleDescription bestForegroundStyle = getBestForegroundStyle(line, originMapping);
         if (bestForegroundStyle != null) {
             boolean defaultStyleDescription = new StyleUpdaterQuery(originMapping).isDefaultForegroundColor(bestForegroundStyle.getForeGroundColor());
             colorUpdater.updateForegroundColor(style, bestForegroundStyle.getForeGroundColor(), defaultStyleDescription, line.getTarget());
-            if (bestForegroundStyle.getLabelFormat() != null && !isEqual(style.getLabelFormat(), bestForegroundStyle.getLabelFormat())) {
+            if (bestForegroundStyle.getLabelFormat() != null && !Objects.equals(style.getLabelFormat(), bestForegroundStyle.getLabelFormat())) {
                 FontFormatHelper.setFontFormat(style.getLabelFormat(), bestForegroundStyle.getLabelFormat());
             }
             if (bestForegroundStyle.getLabelSize() != -1 && style.getLabelSize() != bestForegroundStyle.getLabelSize()) {
@@ -764,18 +706,10 @@ public class DTableElementSynchronizer {
             }
             style.setDefaultForegroundStyle(defaultStyleDescription);
         } else {
-            if (style.eIsSet(TablePackage.eINSTANCE.getDTableElementStyle_ForegroundColor())) {
-                style.eUnset(TablePackage.eINSTANCE.getDTableElementStyle_ForegroundColor());
-            }
-            if (style.getLabelFormat() != null && !style.getLabelFormat().isEmpty()) {
-                style.getLabelFormat().clear();
-            }
-            if (style.eIsSet(TablePackage.eINSTANCE.getDTableElementStyle_LabelSize())) {
-                style.eUnset(TablePackage.eINSTANCE.getDTableElementStyle_LabelSize());
-            }
-            if (style.eIsSet(TablePackage.eINSTANCE.getDTableElementStyle_DefaultForegroundStyle())) {
-                style.eUnset(TablePackage.eINSTANCE.getDTableElementStyle_DefaultForegroundStyle());
-            }
+            reset(style, TablePackage.eINSTANCE.getDTableElementStyle_ForegroundColor());
+            reset(style, TablePackage.eINSTANCE.getDTableElementStyle_LabelSize());
+            reset(style, TablePackage.eINSTANCE.getDTableElementStyle_DefaultForegroundStyle());
+            reset(style, TablePackage.eINSTANCE.getDTableElementStyle_LabelFormat());
         }
     }
 
@@ -821,18 +755,14 @@ public class DTableElementSynchronizer {
         if (bestBackgroundColor != null) {
             colorUpdater.updateBackgroundColor(style, bestBackgroundColor, new StyleUpdaterQuery(styleUpdater).isDefaultBackgroundColor(bestBackgroundColor), column.getTarget());
         } else {
-            if (style.eIsSet(TablePackage.eINSTANCE.getDTableElementStyle_BackgroundColor())) {
-                style.eUnset(TablePackage.eINSTANCE.getDTableElementStyle_BackgroundColor());
-            }
-            if (style.eIsSet(TablePackage.eINSTANCE.getDTableElementStyle_DefaultBackgroundStyle())) {
-                style.eUnset(TablePackage.eINSTANCE.getDTableElementStyle_DefaultBackgroundStyle());
-            }
+            reset(style, TablePackage.eINSTANCE.getDTableElementStyle_BackgroundColor());
+            reset(style, TablePackage.eINSTANCE.getDTableElementStyle_DefaultBackgroundStyle());
         }
         final ForegroundStyleDescription bestForegroundStyle = getBestForegroundStyle(column, styleUpdater);
         if (bestForegroundStyle != null) {
             boolean defaultStyleDescription = new StyleUpdaterQuery(styleUpdater).isDefaultForegroundColor(bestForegroundStyle.getForeGroundColor());
             colorUpdater.updateForegroundColor(style, bestForegroundStyle.getForeGroundColor(), defaultStyleDescription, column.getTarget());
-            if (bestForegroundStyle.getLabelFormat() != null && !isEqual(style.getLabelFormat(), bestForegroundStyle.getLabelFormat())) {
+            if (bestForegroundStyle.getLabelFormat() != null && !Objects.equals(style.getLabelFormat(), bestForegroundStyle.getLabelFormat())) {
                 FontFormatHelper.setFontFormat(style.getLabelFormat(), bestForegroundStyle.getLabelFormat());
             }
             if (bestForegroundStyle.getLabelSize() != -1 && style.getLabelSize() != bestForegroundStyle.getLabelSize()) {
@@ -840,27 +770,11 @@ public class DTableElementSynchronizer {
             }
             style.setDefaultForegroundStyle(defaultStyleDescription);
         } else {
-            if (style.eIsSet(TablePackage.eINSTANCE.getDTableElementStyle_ForegroundColor())) {
-                style.eUnset(TablePackage.eINSTANCE.getDTableElementStyle_ForegroundColor());
-            }
-            if (style.getLabelFormat() != null && !style.getLabelFormat().isEmpty()) {
-                style.getLabelFormat().clear();
-            }
-            if (style.eIsSet(TablePackage.eINSTANCE.getDTableElementStyle_LabelSize())) {
-                style.eUnset(TablePackage.eINSTANCE.getDTableElementStyle_LabelSize());
-            }
-            if (style.eIsSet(TablePackage.eINSTANCE.getDTableElementStyle_DefaultForegroundStyle())) {
-                style.eUnset(TablePackage.eINSTANCE.getDTableElementStyle_DefaultForegroundStyle());
-            }
+            reset(style, TablePackage.eINSTANCE.getDTableElementStyle_ForegroundColor());
+            reset(style, TablePackage.eINSTANCE.getDTableElementStyle_LabelSize());
+            reset(style, TablePackage.eINSTANCE.getDTableElementStyle_DefaultForegroundStyle());
+            reset(style, TablePackage.eINSTANCE.getDTableElementStyle_LabelFormat());
         }
-    }
-
-    private boolean isEqual(List<FontFormat> labelFormat, List<FontFormat> labelFormat2) {
-        if (labelFormat != null && labelFormat2 != null) {
-            return labelFormat.equals(labelFormat2);
-        }
-        return false;
-
     }
 
     /**
@@ -876,67 +790,102 @@ public class DTableElementSynchronizer {
      * 
      * @param cell
      *            The current Cell
-     * @param lineUpdater
-     *            The associate {@link StyleUpdater line updater}
-     * @param columnUpdater
+     * @param cellStyleUpdater
+     *            The associate {@link StyleUpdater cell updater}
+     * @param columnStyleUpdater
      *            The associate {@link StyleUpdater column updater}
      * @return The best colorMapping for this cell, or null otherwise
      */
     private StyleWithDefaultStatus getBestBackgroundColor(final DCell cell, final StyleUpdater cellStyleUpdater, final StyleUpdater columnStyleUpdater) {
-        BackgroundStyleDescription bestBackgroundStyleDesc = null;
-        boolean bestBackgroundColorIsConditonal = false;
+        return getBestColorStyle(cell, cellStyleUpdater, columnStyleUpdater, 
+                styleUpdater -> getApplicableBgConditionalStyle(cell, styleUpdater),
+                styleUpdater -> getDefaulBgStyle(styleUpdater));
+    }
 
+    private <S extends EObject> StyleWithDefaultStatus getBestColorStyle(final DCell cell, 
+            final StyleUpdater cellStyleUpdater, 
+            final StyleUpdater columnStyleUpdater,
+            Function<StyleUpdater, S> conditionalStyleGetter, 
+            Function<StyleUpdater, S> defaultStyleGetter) {
+
+        // Preferred style
+        S descr = conditionalStyleGetter.apply(cellStyleUpdater);
+
+        if (descr == null) { // then conditional of column
+            descr = conditionalStyleGetter.apply(columnStyleUpdater);            
+        }
+        boolean conditional = descr != null;
+        if (descr == null) { // then default cell style
+            descr = defaultStyleGetter.apply(cellStyleUpdater);
+        }
         // Use the default style
-        if (cellStyleUpdater != null) {
-            if (cellStyleUpdater.getDefaultBackground() != null && cellStyleUpdater.getDefaultBackground().getBackgroundColor() != null) {
-                bestBackgroundStyleDesc = cellStyleUpdater.getDefaultBackground();
+        if (descr == null) { // the default column
+            descr = defaultStyleGetter.apply(columnStyleUpdater);
+            if (descr instanceof FixedColor) {
+                descr = null;    
             }
         }
-        // If no default style for cell use the default style of column (if it
-        // deos not use FixedColor)
-        if (columnStyleUpdater != null && bestBackgroundStyleDesc == null) {
-            if (columnStyleUpdater.getDefaultBackground() != null && !(columnStyleUpdater.getDefaultBackground().getBackgroundColor() instanceof FixedColor)) {
-                bestBackgroundStyleDesc = columnStyleUpdater.getDefaultBackground();
-            }
-        }
-        // Replace the default style by the first true conditional style of the
-        // cell
-        if (cellStyleUpdater != null) {
-            for (BackgroundConditionalStyle condStyle : cellStyleUpdater.getBackgroundConditionalStyle()) {
-                if (!bestBackgroundColorIsConditonal) {
-                    if (condStyle.getStyle() != null && cell.getTarget() != null) {
-                        final RuntimeLoggerInterpreter safeInterpreter = RuntimeLoggerManager.INSTANCE.decorate(interpreter);
-                        boolean predicate = safeInterpreter.evaluateBoolean(cell.getTarget(), condStyle, DescriptionPackage.eINSTANCE.getBackgroundConditionalStyle_PredicateExpression());
-                        if (predicate) {
-                            bestBackgroundStyleDesc = condStyle.getStyle();
-                            bestBackgroundColorIsConditonal = true;
-                        }
-                    }
-                }
-            }
-        }
-        // If no conditional style for cell, replace the default style by the
-        // first true conditional style of the column
-        if (columnStyleUpdater != null) {
-            for (BackgroundConditionalStyle condStyle : columnStyleUpdater.getBackgroundConditionalStyle()) {
-                if (!bestBackgroundColorIsConditonal) {
-                    if (condStyle.getStyle() != null && cell.getTarget() != null) {
-                        final RuntimeLoggerInterpreter safeInterpreter = RuntimeLoggerManager.INSTANCE.decorate(interpreter);
-                        boolean predicate = safeInterpreter.evaluateBoolean(cell.getTarget(), condStyle, DescriptionPackage.eINSTANCE.getBackgroundConditionalStyle_PredicateExpression());
-                        if (predicate) {
-                            bestBackgroundStyleDesc = condStyle.getStyle();
-                            bestBackgroundColorIsConditonal = true;
-                        }
-                    }
-                }
-            }
-        }
-        if (bestBackgroundStyleDesc != null) {
-            return new StyleWithDefaultStatus(bestBackgroundStyleDesc, !bestBackgroundColorIsConditonal);
+        
+        if (descr != null) {
+            return new StyleWithDefaultStatus(descr, !conditional);
         } else {
             return null;
         }
     }
+
+
+    private BackgroundStyleDescription getDefaulBgStyle(final StyleUpdater styleUpdater) {
+        if (styleUpdater != null 
+                && styleUpdater.getDefaultBackground() != null 
+                && styleUpdater.getDefaultBackground().getBackgroundColor() != null) {
+            return styleUpdater.getDefaultBackground();
+        }
+        return null;
+    }
+    
+    private BackgroundStyleDescription getApplicableBgConditionalStyle(final DSemanticDecorator element, final StyleUpdater styleUpdater) {
+        return getApplicableConditionalStyle(element, styleUpdater, 
+                StyleUpdater::getBackgroundConditionalStyle,
+                BackgroundConditionalStyle::getStyle,
+                DescriptionPackage.eINSTANCE.getBackgroundConditionalStyle_PredicateExpression());
+    }
+    
+    private ForegroundStyleDescription getDefaulFgStyle(final StyleUpdater styleUpdater) {
+        if (styleUpdater != null 
+                && styleUpdater.getDefaultForeground() != null 
+                && styleUpdater.getDefaultForeground().getForeGroundColor() != null) {
+            return styleUpdater.getDefaultForeground();
+        }
+        return null;
+    }
+    
+    private ForegroundStyleDescription getApplicableFgConditionalStyle(final DTableElement element, final StyleUpdater styleUpdater) {
+        return getApplicableConditionalStyle(element, styleUpdater, 
+                StyleUpdater::getForegroundConditionalStyle,
+                ForegroundConditionalStyle::getStyle,
+                DescriptionPackage.eINSTANCE.getForegroundConditionalStyle_PredicateExpression());
+    }
+    
+    private <S extends EObject, C extends EObject> S getApplicableConditionalStyle(
+            final DSemanticDecorator element, final StyleUpdater styleUpdater, 
+            Function<StyleUpdater, List<C>> conditionalsProvider, Function<C, S> styleProvider,
+            EStructuralFeature feat) {
+        EObject self = element.getTarget();
+        if (self == null || styleUpdater == null) {
+            return null;
+        }
+        
+        S result = null;
+        for (C condStyle : conditionalsProvider.apply(styleUpdater)) {
+            if (styleProvider.apply(condStyle) != null // incomplete style are ignored
+                    && interpreter.evaluateBoolean(self, condStyle, feat)) {
+                result = styleProvider.apply(condStyle);
+                break;
+            }
+        }
+        return result;
+    }
+
 
     /**
      * Return a value only if the current background color is the default background color or one of the conditional
@@ -944,28 +893,19 @@ public class DTableElementSynchronizer {
      * 
      * @param line
      *            The current DLine
+     * @param styleUpdater
+     *            style update of the line
      * @return The best background color for this line, or null otherwise
      */
     private ColorDescription getBestBackgroundColor(final DLine line, final StyleUpdater styleUpdater) {
-        ColorDescription bestBackgroundColor = null;
-        boolean bestBackgroundColorIsConditonal = false;
-
-        if (styleUpdater.getDefaultBackground() != null && styleUpdater.getDefaultBackground().getBackgroundColor() != null) {
-            bestBackgroundColor = styleUpdater.getDefaultBackground().getBackgroundColor();
+        BackgroundStyleDescription descr = getApplicableBgConditionalStyle(line, styleUpdater);
+        if (descr == null) { // then default cell style
+            descr = getDefaulBgStyle(styleUpdater);
         }
-        for (BackgroundConditionalStyle condStyle : styleUpdater.getBackgroundConditionalStyle()) {
-            if (!bestBackgroundColorIsConditonal) {
-                if (condStyle.getStyle() != null && line.getTarget() != null) {
-                    final RuntimeLoggerInterpreter safeInterpreter = RuntimeLoggerManager.INSTANCE.decorate(interpreter);
-                    boolean predicate = safeInterpreter.evaluateBoolean(line.getTarget(), condStyle, DescriptionPackage.eINSTANCE.getBackgroundConditionalStyle_PredicateExpression());
-                    if (predicate) {
-                        bestBackgroundColor = condStyle.getStyle().getBackgroundColor();
-                        bestBackgroundColorIsConditonal = true;
-                    }
-                }
-            }
+        if (descr.getBackgroundColor() != null) {
+            return descr.getBackgroundColor();
         }
-        return bestBackgroundColor;
+        return null;
     }
 
     /**
@@ -973,14 +913,16 @@ public class DTableElementSynchronizer {
      * 
      * @param column
      *            The current DLine
+     * @param styleUpdater
+     *            style update of the column
      * @return The default background color if it uses a FixedColor for this column, or null otherwise
      */
     private ColorDescription getBestBackgroundColor(final DColumn column, final StyleUpdater styleUpdater) {
-        ColorDescription bestBackgroundColor = null;
-        if (styleUpdater.getDefaultBackground() != null && styleUpdater.getDefaultBackground().getBackgroundColor() instanceof FixedColor) {
-            bestBackgroundColor = styleUpdater.getDefaultBackground().getBackgroundColor();
+        BackgroundStyleDescription descr = getDefaulBgStyle(styleUpdater);
+        if (descr != null && styleUpdater.getDefaultBackground().getBackgroundColor() instanceof FixedColor) {
+            return styleUpdater.getDefaultBackground().getBackgroundColor();
         }
-        return bestBackgroundColor;
+        return null;
     }
 
     /**
@@ -996,62 +938,16 @@ public class DTableElementSynchronizer {
      * 
      * @param cell
      *            The current Cell
+     * @param cellStyleUpdater
+     *            The associate {@link StyleUpdater cell updater}
+     * @param columnStyleUpdater
+     *            The associate {@link StyleUpdater column updater}
      * @return The best ForegroundStyleDescription for this cell, or null otherwise
      */
     private StyleWithDefaultStatus getBestForegroundStyle(final DCell cell, final StyleUpdater cellStyleUpdater, final StyleUpdater columnStyleUpdater) {
-        ForegroundStyleDescription bestForegroundStyleDesc = null;
-        boolean bestForegroundColorIsConditonal = false;
-
-        // Use the default style
-        if (cellStyleUpdater != null) {
-            if (cellStyleUpdater.getDefaultForeground() != null && cellStyleUpdater.getDefaultForeground().getForeGroundColor() != null) {
-                bestForegroundStyleDesc = cellStyleUpdater.getDefaultForeground();
-            }
-        }
-        // If no default style for cell use the default style of column (if it
-        // deos not use FixedColor)
-        if (columnStyleUpdater != null && bestForegroundStyleDesc == null) {
-            if (columnStyleUpdater.getDefaultForeground() != null && !(columnStyleUpdater.getDefaultForeground().getForeGroundColor() instanceof FixedColor)) {
-                bestForegroundStyleDesc = columnStyleUpdater.getDefaultForeground();
-            }
-        }
-        // Replace the default style by the first true conditional style of the
-        // cell
-        if (cellStyleUpdater != null) {
-            for (ForegroundConditionalStyle condStyle : cellStyleUpdater.getForegroundConditionalStyle()) {
-                if (!bestForegroundColorIsConditonal) {
-                    if (condStyle.getStyle() != null && cell.getTarget() != null) {
-                        final RuntimeLoggerInterpreter safeInterpreter = RuntimeLoggerManager.INSTANCE.decorate(interpreter);
-                        boolean predicate = safeInterpreter.evaluateBoolean(cell.getTarget(), condStyle, DescriptionPackage.eINSTANCE.getForegroundConditionalStyle_PredicateExpression());
-                        if (predicate) {
-                            bestForegroundStyleDesc = condStyle.getStyle();
-                            bestForegroundColorIsConditonal = true;
-                        }
-                    }
-                }
-            }
-        }
-        // If no conditional style for cell, replace the default style by the
-        // first true conditional style of the column
-        if (columnStyleUpdater != null) {
-            for (ForegroundConditionalStyle condStyle : columnStyleUpdater.getForegroundConditionalStyle()) {
-                if (!bestForegroundColorIsConditonal) {
-                    if (condStyle.getStyle() != null && cell.getTarget() != null) {
-                        final RuntimeLoggerInterpreter safeInterpreter = RuntimeLoggerManager.INSTANCE.decorate(interpreter);
-                        boolean predicate = safeInterpreter.evaluateBoolean(cell.getTarget(), condStyle, DescriptionPackage.eINSTANCE.getForegroundConditionalStyle_PredicateExpression());
-                        if (predicate) {
-                            bestForegroundStyleDesc = condStyle.getStyle();
-                            bestForegroundColorIsConditonal = true;
-                        }
-                    }
-                }
-            }
-        }
-        if (bestForegroundStyleDesc != null) {
-            return new StyleWithDefaultStatus(bestForegroundStyleDesc, !bestForegroundColorIsConditonal);
-        } else {
-            return null;
-        }
+        return getBestColorStyle(cell, cellStyleUpdater, columnStyleUpdater, 
+                styleUpdater -> getApplicableFgConditionalStyle(cell, styleUpdater),
+                styleUpdater -> getDefaulFgStyle(styleUpdater));
     }
 
     /**
@@ -1069,28 +965,16 @@ public class DTableElementSynchronizer {
      * 
      * @param line
      *            The current DLine
+     * @param styleUpdater
+     *            The associate {@link StyleUpdater updater}
      * @return The best ForegroundStyleDescription for this cell, or null otherwise
      */
     private ForegroundStyleDescription getBestForegroundStyle(final DLine line, final StyleUpdater styleUpdater) {
-        ForegroundStyleDescription bestForegroundStyleDescription = null;
-        boolean bestStyleIsConditonalStyle = false;
-
-        if (styleUpdater.getDefaultForeground() != null) {
-            bestForegroundStyleDescription = styleUpdater.getDefaultForeground();
+        ForegroundStyleDescription result = getApplicableFgConditionalStyle(line, styleUpdater);
+        if (result == null) {
+            result = styleUpdater.getDefaultForeground();
         }
-        for (ForegroundConditionalStyle condStyle : styleUpdater.getForegroundConditionalStyle()) {
-            if (!bestStyleIsConditonalStyle) {
-                if (condStyle.getStyle() != null && line.getTarget() != null) {
-                    final RuntimeLoggerInterpreter safeInterpreter = RuntimeLoggerManager.INSTANCE.decorate(interpreter);
-                    boolean predicate = safeInterpreter.evaluateBoolean(line.getTarget(), condStyle, DescriptionPackage.eINSTANCE.getForegroundConditionalStyle_PredicateExpression());
-                    if (predicate) {
-                        bestForegroundStyleDescription = condStyle.getStyle();
-                        bestStyleIsConditonalStyle = true;
-                    }
-                }
-            }
-        }
-        return bestForegroundStyleDescription;
+        return result;
     }
 
     /**
@@ -1098,6 +982,8 @@ public class DTableElementSynchronizer {
      * 
      * @param column
      *            The current DLine
+     * @param styleUpdater
+     *            The associate {@link StyleUpdater updater}
      * @return The default foreground style if it uses a FixedColor for this column, or null otherwise
      */
     private ForegroundStyleDescription getBestForegroundStyle(final DColumn column, final StyleUpdater styleUpdater) {
@@ -1115,11 +1001,11 @@ public class DTableElementSynchronizer {
      *            cell to update.
      */
     public void refreshSemanticElements(final DCell newCell) {
-        final Collection<EObject> newElements = new ArrayList<>();
         IntersectionMapping intersectionMapping = newCell.getIntersectionMapping();
         if (intersectionMapping != null) {
             refreshSemanticElements(newCell, intersectionMapping);
         } else {
+            final Collection<EObject> newElements = new ArrayList<>();
             if (newCell.getColumn().getOriginMapping() instanceof FeatureColumnMapping) {
                 if (newCell.getTarget() != null) {
                     newElements.add(newCell.getTarget());
@@ -1164,43 +1050,31 @@ public class DTableElementSynchronizer {
      *            mapping used to retrieve the semantic elements.
      */
     public void refreshSemanticElements(final DTableElement tableElement, final TableMapping mapping) {
+        Collection<EObject> elements;
+        
         if (mapping.getSemanticElements() != null && !StringUtil.isEmpty(mapping.getSemanticElements())) {
-
-            if (tableElement.eContainer() != null) {
-                this.interpreter.setVariable(IInterpreterSiriusVariables.CONTAINER_VIEW, tableElement.eContainer());
-                if (tableElement.eContainer() instanceof DSemanticDecorator) {
-                    this.interpreter.setVariable(IInterpreterSiriusVariables.CONTAINER, ((DSemanticDecorator) tableElement.eContainer()).getTarget());
+            elements = InterpretationContext.with(interpreter, it -> {
+                EObject container = tableElement.eContainer();
+                if (container != null) {
+                    it.setVariable(IInterpreterSiriusVariables.CONTAINER_VIEW, container);
+                    if (container instanceof DSemanticDecorator) {
+                        it.setVariable(IInterpreterSiriusVariables.CONTAINER, ((DSemanticDecorator) container).getTarget());
+                    }
                 }
-            }
-            this.interpreter.setVariable(IInterpreterSiriusVariables.VIEW, tableElement);
-
-            Collection<EObject> elements;
-            if (mapping instanceof LineMapping || TableHelper.hasTableDescriptionOnlyOneLineMapping(mapping)) {
-                elements = RuntimeLoggerManager.INSTANCE.decorate(interpreter).evaluateCollection(tableElement.getTarget(), mapping, DescriptionPackage.eINSTANCE.getTableMapping_SemanticElements());
-            } else {
-                try {
-                    elements = interpreter.evaluateCollection(tableElement.getTarget(), mapping.getSemanticElements());
-                } catch (final EvaluationException e) {
-                    // Silent catch
-                    elements = Collections.emptyList();
-                }
-            }
-            synchronizeLists(tableElement.getSemanticElements(), elements);
-
-            if (tableElement.eContainer() != null) {
-                this.interpreter.unSetVariable(IInterpreterSiriusVariables.CONTAINER_VIEW);
-                if (tableElement.eContainer() instanceof DSemanticDecorator) {
-                    this.interpreter.unSetVariable(IInterpreterSiriusVariables.CONTAINER);
-                }
-            }
-            this.interpreter.unSetVariable(IInterpreterSiriusVariables.VIEW);
+                it.setVariable(IInterpreterSiriusVariables.VIEW, tableElement);
+                it.setLogError(mapping instanceof LineMapping 
+                        || TableHelper.hasTableDescriptionOnlyOneLineMapping(mapping));
+                
+                EAttribute semElemFeature = DescriptionPackage.eINSTANCE.getTableMapping_SemanticElements();
+                return interpreter.evaluateCollection(tableElement.getTarget(), mapping, semElemFeature);
+            });
 
         } else if (tableElement.getTarget() != null) {
-            synchronizeLists(tableElement.getSemanticElements(), Collections.singletonList(tableElement.getTarget()));
+            elements = Collections.singletonList(tableElement.getTarget());
         } else {
-            final Collection<EObject> elements = Collections.emptyList();
-            synchronizeLists(tableElement.getSemanticElements(), elements);
+            elements = Collections.emptyList();
         }
+        synchronizeLists(tableElement.getSemanticElements(), elements);
     }
 
     private String getText(final EObject element) {
@@ -1222,7 +1096,7 @@ public class DTableElementSynchronizer {
     }
 
     private void reset(EObject target, EStructuralFeature feature) {
-        if (target.eIsSet(feature)) {
+        if (target.eIsSet(feature)) { // applicable for simple or multi-value
             target.eUnset(feature);
         }
     }
@@ -1247,7 +1121,7 @@ public class DTableElementSynchronizer {
      * 
      * @return interpretor
      */
-    IInterpreter getInterpreter() {
+    RuntimeLoggerInterpreter getInterpreter() {
         return interpreter;
     }
 }
