@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -32,6 +32,7 @@ import org.eclipse.sirius.tools.api.SiriusPlugin;
 public class RuntimeLoggerInterpreterImpl implements RuntimeLoggerInterpreter {
 
     private IInterpreter interpreter;
+    private boolean logError = true;
 
     /**
      * Only {@link RuntimeLoggerManagerImpl} should call this constructor.
@@ -42,7 +43,16 @@ public class RuntimeLoggerInterpreterImpl implements RuntimeLoggerInterpreter {
     protected RuntimeLoggerInterpreterImpl(final IInterpreter interpreter) {
         this.interpreter = interpreter;
     }
-
+    
+    /**
+     * Returns the decorated interpreter.
+     * 
+     * @return interpreter
+     */
+    public IInterpreter getDecorated() {
+        return interpreter;
+    }
+    
     @Override
     public Object evaluate(final EObject context, final EObject descriptionObject, final EStructuralFeature descriptionFeature) {
         final String expression = (String) descriptionObject.eGet(descriptionFeature);
@@ -50,7 +60,7 @@ public class RuntimeLoggerInterpreterImpl implements RuntimeLoggerInterpreter {
             final Object result = interpreter.evaluate(context, expression);
             return result;
         } catch (final EvaluationException e) {
-            RuntimeLoggerManager.INSTANCE.error(descriptionObject, descriptionFeature, e);
+            handleError(e, descriptionObject, descriptionFeature);
         }
         return null;
     }
@@ -67,7 +77,7 @@ public class RuntimeLoggerInterpreterImpl implements RuntimeLoggerInterpreter {
             final boolean result = interpreter.evaluateBoolean(context, expression);
             return result;
         } catch (final EvaluationException e) {
-            RuntimeLoggerManager.INSTANCE.error(descriptionObject, descriptionFeature, e);
+            handleError(e, descriptionObject, descriptionFeature);
             if (flagCondition) {
                 SiriusPlugin.getDefault().error(Messages.RuntimeLoggerInterpreterImpl_evaluationConditionErrorMsg, e);
             }
@@ -82,7 +92,7 @@ public class RuntimeLoggerInterpreterImpl implements RuntimeLoggerInterpreter {
             final Integer result = interpreter.evaluateInteger(context, expression);
             return result;
         } catch (final EvaluationException e) {
-            RuntimeLoggerManager.INSTANCE.error(descriptionObject, descriptionFeature, e);
+            handleError(e, descriptionObject, descriptionFeature);
         }
         return null;
     }
@@ -94,7 +104,7 @@ public class RuntimeLoggerInterpreterImpl implements RuntimeLoggerInterpreter {
             final String result = interpreter.evaluateString(context, expression);
             return result;
         } catch (final EvaluationException e) {
-            RuntimeLoggerManager.INSTANCE.error(descriptionObject, descriptionFeature, e);
+            handleError(e, descriptionObject, descriptionFeature);
         }
         return null;
     }
@@ -106,7 +116,7 @@ public class RuntimeLoggerInterpreterImpl implements RuntimeLoggerInterpreter {
             final EObject result = interpreter.evaluateEObject(context, expression);
             return result;
         } catch (final EvaluationException e) {
-            RuntimeLoggerManager.INSTANCE.error(descriptionObject, descriptionFeature, e);
+            handleError(e, descriptionObject, descriptionFeature);
         }
         return null;
     }
@@ -118,8 +128,24 @@ public class RuntimeLoggerInterpreterImpl implements RuntimeLoggerInterpreter {
             final Collection<EObject> result = interpreter.evaluateCollection(context, expression);
             return result;
         } catch (final EvaluationException e) {
-            RuntimeLoggerManager.INSTANCE.error(descriptionObject, descriptionFeature, e);
+            handleError(e, descriptionObject, descriptionFeature);
         }
         return Collections.emptySet();
     }
+
+    /**
+     * Enables if errors are logged.
+     * 
+     * @param log error
+     */
+    public void setLogError(boolean log) {
+        logError = log;
+    }
+    
+    private void handleError(EvaluationException failure, final EObject descriptionObject, final EStructuralFeature descriptionFeature) {
+        if (logError) {
+            RuntimeLoggerManager.INSTANCE.error(descriptionObject, descriptionFeature, failure);
+        }
+    }
+    
 }
