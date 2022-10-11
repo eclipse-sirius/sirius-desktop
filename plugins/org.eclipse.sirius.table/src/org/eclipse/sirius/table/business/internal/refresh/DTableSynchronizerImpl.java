@@ -750,8 +750,8 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
             // Now we've got the semantic element from which we should try to
             // create Edges we can start evaluating possible candidates.
             for (final EObject target : targetCandidates) {
-                Collection<EObject> lineSemanticCandidates = safeInterpreter.evaluateCollection(target, iMapping, DescriptionPackage.eINSTANCE.getIntersectionMapping_LineFinderExpression());
-                Collection<EObject> columnSemanticCandidates = safeInterpreter.evaluateCollection(target, iMapping, DescriptionPackage.eINSTANCE.getIntersectionMapping_ColumnFinderExpression());
+                Collection<EObject> lineSemanticCandidates = sync.evaluateLineFinderExpression(target, table, iMapping);
+                Collection<EObject> columnSemanticCandidates = sync.evaluateColumnFinderExpression(target, table, iMapping, true);
                 for (final EObject lineSemantic : lineSemanticCandidates) {
 
                     for (final EObject columnSemantic : columnSemanticCandidates) {
@@ -887,13 +887,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
                             final DTargetColumn column = (DTargetColumn) columnElem;
                             Collection<EObject> columnSemantics = linesToColumnSemantics.get(line);
                             if (columnSemantics == null) {
-                                try {
-                                    columnSemantics = interpreter.evaluateCollection(line.getTarget(), iMapping.getColumnFinderExpression());
-                                } catch (final EvaluationException e) {
-                                    columnSemantics = new ArrayList<EObject>(0);
-                                    // Save an error in the "Problems" view.
-                                    RuntimeLoggerManager.INSTANCE.error(line, DescriptionPackage.eINSTANCE.getIntersectionMapping_ColumnFinderExpression(), e);
-                                }
+                                columnSemantics = sync.evaluateColumnFinderExpression(line, line, iMapping, true);
                                 linesToColumnSemantics.put(line, columnSemantics);
                             }
                             if (columnSemantics.contains(column.getTarget()) 
