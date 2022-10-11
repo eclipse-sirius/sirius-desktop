@@ -387,17 +387,94 @@ public class DTableElementSynchronizer {
      * @return List of column candidates for this cell and this intersection mapping.
      */
     private Collection<EObject> evaluateColumnFinderExpression(DCell cell, IntersectionMapping iMapping) {
-        EObject preconditionContext;
+        DSemanticDecorator source;
+        DSemanticDecorator container;
         if (iMapping.isUseDomainClass()) {
-            preconditionContext = cell.getTarget();
+            source = cell;
+            container = TableHelper.getTable(cell.getLine());
         } else {
-            preconditionContext = cell.getLine().getTarget();
+            source = cell.getLine();
+            container = source;
         }
-
+        return evaluateColumnFinderExpression(source.getTarget(), container, iMapping, false);
+    }
+    
+    
+    /**
+     * Search the column candidates for this line semantic element and this intersection mapping.
+     * 
+     * @param candidate
+     *            Semantic element to find from
+     * @param container
+     *            the table or line to search from (accordingly with using domain class)
+     * @param iMapping
+     *            The intersection mapping that contains the expression to evaluate
+     * @param logError
+     *            Flag to log if an error happens
+     * @return List of column candidates for this cell and this intersection mapping.
+     */
+    public Collection<EObject> evaluateColumnFinderExpression(EObject candidate, DSemanticDecorator container, IntersectionMapping iMapping, boolean logError) {
+        DTable table;
+        
+        if (iMapping.isUseDomainClass()) {
+            table = (DTable) container;
+        } else {
+            DLine line = (DLine) container;
+            interpreter.setVariable(IInterpreterSiriusTableVariables.LINE, line);
+            interpreter.setVariable(IInterpreterSiriusTableVariables.LINE_SEMANTIC, line.getTarget());
+            table = TableHelper.getTable(line);            
+        }
+                
+        interpreter.setVariable(IInterpreterSiriusVariables.ROOT, table.getTarget());
+        interpreter.setVariable(IInterpreterSiriusVariables.VIEWPOINT, table);
+        interpreter.setVariable(IInterpreterSiriusVariables.TABLE, table);
+        
         try {
-            return interpreter.evaluateCollection(preconditionContext, iMapping.getColumnFinderExpression());
+            return interpreter.evaluateCollection(candidate, iMapping.getColumnFinderExpression());
         } catch (EvaluationException e) {
-            return new ArrayList<EObject>(0);
+            if (logError) {
+                RuntimeLoggerManager.INSTANCE.error(container, // Save an error in the "Problems" view.
+                        DescriptionPackage.eINSTANCE.getIntersectionMapping_ColumnFinderExpression(), e);
+            }
+            return Collections.emptyList();
+        } finally {
+            interpreter.unSetVariable(IInterpreterSiriusVariables.TABLE);
+            interpreter.unSetVariable(IInterpreterSiriusVariables.ROOT);
+            interpreter.unSetVariable(IInterpreterSiriusVariables.VIEWPOINT);
+            if (!iMapping.isUseDomainClass()) {
+                interpreter.unSetVariable(IInterpreterSiriusTableVariables.LINE);
+                interpreter.unSetVariable(IInterpreterSiriusTableVariables.LINE_SEMANTIC);
+            }            
+        }
+    }
+    
+    
+    /**
+     * Search the line candidates for this cell semantic element and this intersection mapping.
+     * 
+     * @param candidate
+     *            Semantic element to find from
+     * @param container
+     *            the table to search from
+     * @param iMapping
+     *            The intersection mapping that contains the expression to evaluate
+     * @param logError
+     *            Flag to log if an error happens
+     * @return List of column candidates for this cell and this intersection mapping.
+     */
+    public Collection<EObject> evaluateLineFinderExpression(EObject candidate, DTable table, IntersectionMapping iMapping) {
+                
+        interpreter.setVariable(IInterpreterSiriusVariables.ROOT, table.getTarget());
+        interpreter.setVariable(IInterpreterSiriusVariables.VIEWPOINT, table);
+        interpreter.setVariable(IInterpreterSiriusVariables.TABLE, table);
+        
+        final RuntimeLoggerInterpreter safeInterpreter = RuntimeLoggerManager.INSTANCE.decorate(interpreter);
+        try {
+            return safeInterpreter.evaluateCollection(candidate, iMapping, DescriptionPackage.eINSTANCE.getIntersectionMapping_LineFinderExpression());
+        } finally {
+            interpreter.unSetVariable(IInterpreterSiriusVariables.TABLE);
+            interpreter.unSetVariable(IInterpreterSiriusVariables.ROOT);
+            interpreter.unSetVariable(IInterpreterSiriusVariables.VIEWPOINT);
         }
     }
 
