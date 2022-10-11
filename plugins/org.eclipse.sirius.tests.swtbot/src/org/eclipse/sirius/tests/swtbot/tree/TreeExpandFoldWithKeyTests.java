@@ -29,6 +29,7 @@ import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.ui.tools.api.editor.DTreeEditor;
+import org.eclipse.sirius.tree.ui.tools.internal.editor.SiriusDTreeCellNavigationStrategy;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.TreeItem;
@@ -135,6 +136,80 @@ public class TreeExpandFoldWithKeyTests extends AbstractTreeSiriusSWTBotGefTestC
     }
 
     /**
+     * Test expand all and collapse all of a tree item with the right/left arrow keys + Shift key pressed.
+     */
+    public void testExpandAndCollapseAllWithKeyboard() {
+        testExpandAndCollapseAllWithKeyboard(false);
+    }
+
+    /**
+     * Test expand all and collapse all of a tree item with the right/left arrow keys + Shift key pressed.
+     */
+    public void testExpandAndCollapseAllWithKeyboardWithSpecificDepthLimit() {
+        testExpandAndCollapseAllWithKeyboard(true);
+    }
+
+    /**
+     * Test expand all and collapse all of a tree item with the right/left arrow keys + Shift key pressed.
+     * 
+     * @param applySpecificDepthLimit
+     *            True to apply a specific depth limit or false to have the default depth limit of {@link SiriusDTreeCellNavigationStrategy}.
+     */
+    private void testExpandAndCollapseAllWithKeyboard(boolean applySpecificDepthLimit) {
+        if (applySpecificDepthLimit) {
+            SiriusDTreeCellNavigationStrategy.setExpandDepthLimit(2);
+        }
+        DTreeItem p4DTreeItem = dTree.getOwnedTreeItems().get(3);
+        String p4Name = "\"" + p4DTreeItem.getName() + "\""; //$NON-NLS-1$ //$NON-NLS-2$
+        SWTBotTreeItem p4SwtBotTreeItem = treeEditorBot.bot().tree().getAllItems()[3];
+        p4SwtBotTreeItem.select();
+
+        assertEquals("Wrong initial expanded status for graphical TreeItem " + p4Name + ", before expanding with keyboard.", false, isExpanded(p4SwtBotTreeItem.widget));//$NON-NLS-1$ //$NON-NLS-2$
+        assertEquals("Wrong initial expanded status for Sirius DTreeItem " + p4Name + ", before expanding with keyboard.", false, p4DTreeItem.isExpanded());//$NON-NLS-1$ //$NON-NLS-2$
+        assertEquals("Wrong initial children number of graphical TreeItem " + p4Name + ", before expanding with keyboard.", 1, getItemCount(p4SwtBotTreeItem.widget));//$NON-NLS-1$ //$NON-NLS-2$
+        assertEquals("Wrong initial children number of Sirius DTreeItem " + p4Name + ", before expanding with keyboard.", 1, p4DTreeItem.getOwnedTreeItems().size());//$NON-NLS-1$ //$NON-NLS-2$
+
+        expandAllWithArrowKey(treeRepresentation.getTree(), p4SwtBotTreeItem, p4Name, SWTBotPreferences.TIMEOUT);
+
+        assertEquals("Wrong expanded status for graphical TreeItem " + p4Name + " after expanding with keyboard.", true, isExpanded(p4SwtBotTreeItem.widget));//$NON-NLS-1$ //$NON-NLS-2$
+        assertEquals("Wrong expanded status for Sirius DTreeItem " + p4Name + " after expanding with keyboard", true, p4DTreeItem.isExpanded());//$NON-NLS-1$ //$NON-NLS-2$
+        assertEquals("Wrong children number of graphical TreeItem " + p4Name + " after expanding with keyboard.", 2, getItemCount(p4SwtBotTreeItem.widget));//$NON-NLS-1$ //$NON-NLS-2$
+        assertEquals("Wrong children number of Sirius DTreeItem " + p4Name + " after expanding with keyboard.", 2, p4DTreeItem.getOwnedTreeItems().size());//$NON-NLS-1$ //$NON-NLS-2$
+        String eClass1P4Name = "EClass 1 P4";//$NON-NLS-1$
+        SWTBotTreeItem eClass1P4SwtBotTreeItem = p4SwtBotTreeItem.getItems()[0];
+        DTreeItem eClass1P4DTreeItem = p4DTreeItem.getOwnedTreeItems().get(0);
+        assertEquals("Wrong expanded status for graphical TreeItem " + eClass1P4Name + " after expanding with keyboard.", true, isExpanded(eClass1P4SwtBotTreeItem.widget));//$NON-NLS-1$ //$NON-NLS-2$
+        assertEquals("Wrong expanded status for Sirius DTreeItem " + eClass1P4Name + " after expanding with keyboard", true, eClass1P4DTreeItem.isExpanded());//$NON-NLS-1$ //$NON-NLS-2$
+        assertEquals("Wrong children number of graphical TreeItem " + eClass1P4Name + " after expanding with keyboard.", 1, getItemCount(eClass1P4SwtBotTreeItem.widget));//$NON-NLS-1$ //$NON-NLS-2$
+        assertEquals("Wrong children number of Sirius DTreeItem " + eClass1P4Name + " after expanding with keyboard.", 1, eClass1P4DTreeItem.getOwnedTreeItems().size());//$NON-NLS-1$ //$NON-NLS-2$
+        String eClass1P4CategorieName = "EClass 1 P4 Categorie";//$NON-NLS-1$
+        SWTBotTreeItem eClass1P4CategorieSwtBotTreeItem = eClass1P4SwtBotTreeItem.getItems()[0];
+        DTreeItem eClass1P4CategorieDTreeItem = eClass1P4DTreeItem.getOwnedTreeItems().get(0);
+        assertEquals("Wrong expanded status for graphical TreeItem " + eClass1P4CategorieName + " after expanding with keyboard.", !applySpecificDepthLimit, //$NON-NLS-1$ //$NON-NLS-2$
+                isExpanded(eClass1P4CategorieSwtBotTreeItem.widget));
+        assertEquals("Wrong expanded status for Sirius DTreeItem " + eClass1P4CategorieName + " after expanding with keyboard", !applySpecificDepthLimit, eClass1P4CategorieDTreeItem.isExpanded());//$NON-NLS-1$ //$NON-NLS-2$
+        assertEquals("Wrong children number of graphical TreeItem " + eClass1P4CategorieName + " after expanding with keyboard.", 1, getItemCount(eClass1P4CategorieSwtBotTreeItem.widget)); //$NON-NLS-1$ //$NON-NLS-2$
+        assertEquals("Wrong children number of Sirius DTreeItem " + eClass1P4CategorieName + " after expanding with keyboard.", 1, eClass1P4CategorieDTreeItem.getOwnedTreeItems().size()); //$NON-NLS-1$ //$NON-NLS-2$
+
+        collapseAllWithArrowKey(treeRepresentation.getTree(), p4SwtBotTreeItem, p4Name, SWTBotPreferences.TIMEOUT);
+
+        assertEquals("Wrong expanded status for graphical TreeItem " + p4Name + " after collapsing with keyboard.", false, isExpanded(p4SwtBotTreeItem.widget));//$NON-NLS-1$ //$NON-NLS-2$
+        assertEquals("Wrong expanded status for Sirius DTreeItem " + p4Name + " after collapsing with keyboard", false, p4DTreeItem.isExpanded());//$NON-NLS-1$ //$NON-NLS-2$
+        assertEquals("Wrong children number of graphical TreeItem " + p4Name + " after collapsing with keyboard.", 2, getItemCount(p4SwtBotTreeItem.widget));//$NON-NLS-1$ //$NON-NLS-2$
+        assertEquals("Wrong children number of Sirius DTreeItem " + p4Name + " after collapsing with keyboard.", 2, p4DTreeItem.getOwnedTreeItems().size());//$NON-NLS-1$ //$NON-NLS-2$
+
+        assertEquals("Wrong expanded status for graphical TreeItem " + eClass1P4Name + " after collapsing with keyboard.", false, isExpanded(eClass1P4SwtBotTreeItem.widget));//$NON-NLS-1$ //$NON-NLS-2$
+        assertEquals("Wrong expanded status for Sirius DTreeItem " + eClass1P4Name + " after collapsing with keyboard", false, eClass1P4DTreeItem.isExpanded());//$NON-NLS-1$ //$NON-NLS-2$
+        assertEquals("Wrong children number of graphical TreeItem " + eClass1P4Name + " after collapsing with keyboard.", 1, getItemCount(eClass1P4SwtBotTreeItem.widget));//$NON-NLS-1$ //$NON-NLS-2$
+        assertEquals("Wrong children number of Sirius DTreeItem " + eClass1P4Name + " after collapsing with keyboard.", 1, eClass1P4DTreeItem.getOwnedTreeItems().size());//$NON-NLS-1$ //$NON-NLS-2$
+
+        assertEquals("Wrong expanded status for graphical TreeItem " + eClass1P4CategorieName + " after collapsing with keyboard.", false, isExpanded(eClass1P4CategorieSwtBotTreeItem.widget));//$NON-NLS-1$ //$NON-NLS-2$
+        assertEquals("Wrong expanded status for Sirius DTreeItem " + eClass1P4CategorieName + " after collapsing with keyboard", false, eClass1P4CategorieDTreeItem.isExpanded());//$NON-NLS-1$ //$NON-NLS-2$
+        assertEquals("Wrong children number of graphical TreeItem " + eClass1P4CategorieName + " after collapsing with keyboard.", 1, getItemCount(eClass1P4CategorieSwtBotTreeItem.widget));//$NON-NLS-1$ //$NON-NLS-2$
+        assertEquals("Wrong children number of Sirius DTreeItem " + eClass1P4CategorieName + " after collapsing with keyboard.", 1, eClass1P4CategorieDTreeItem.getOwnedTreeItems().size());//$NON-NLS-1$ //$NON-NLS-2$
+    }
+
+    /**
      * Test expand and collapse of a tree item with the right/left arrow keys when the permission authority forbid them.
      * 
      * @throws TimeoutException
@@ -221,6 +296,12 @@ public class TreeExpandFoldWithKeyTests extends AbstractTreeSiriusSWTBotGefTestC
         bot.waitUntil(condition, timeout);
     }
 
+    private void expandAllWithArrowKey(final SWTBotTree swtBotTree, final SWTBotTreeItem treeItemToExpand, final String treeItemToExpandName, long timeout) {
+        ICondition condition = new TreeItemExpanded(treeItemToExpand, treeItemToExpandName);
+        SWTBotUtils.pressKeyboardKey(swtBotTree.widget, SWT.SHIFT, (char) SWT.None, SWT.ARROW_RIGHT);
+        bot.waitUntil(condition, timeout);
+    }
+
     private void collapseWithArrowKey(final SWTBotTree swtBotTree, final SWTBotTreeItem treeItemToExpand, final String treeItemToExpandName) {
         collapseWithArrowKey(swtBotTree, treeItemToExpand, treeItemToExpandName, SWTBotPreferences.TIMEOUT);
     }
@@ -228,6 +309,12 @@ public class TreeExpandFoldWithKeyTests extends AbstractTreeSiriusSWTBotGefTestC
     private void collapseWithArrowKey(final SWTBotTree swtBotTree, final SWTBotTreeItem treeItemToExpand, final String treeItemToExpandName, long timeout) {
         ICondition condition = new TreeItemExpanded(treeItemToExpand, treeItemToExpandName, false);
         SWTBotUtils.pressKeyboardKey(swtBotTree.widget, SWT.ARROW_LEFT);
+        bot.waitUntil(condition, timeout);
+    }
+
+    private void collapseAllWithArrowKey(final SWTBotTree swtBotTree, final SWTBotTreeItem treeItemToExpand, final String treeItemToExpandName, long timeout) {
+        ICondition condition = new TreeItemExpanded(treeItemToExpand, treeItemToExpandName, false);
+        SWTBotUtils.pressKeyboardKey(swtBotTree.widget, SWT.SHIFT, (char) SWT.None, SWT.ARROW_LEFT);
         bot.waitUntil(condition, timeout);
     }
 

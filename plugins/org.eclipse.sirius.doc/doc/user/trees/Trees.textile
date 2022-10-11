@@ -12,6 +12,16 @@ Sirius provides support for hierarchical representations called _trees_, which r
 
 Note that as always with Sirius, some of the features described below may or may not be available with all specific tree editors. Some tree editors are configured to only display information but do not allow edition for example. It all depends on which features the person who _specified_ (configured) the tree decided to support.
 
+h2(#navigation). Navigation with keys
+
+Several keys exist to facilitate the navigation in tree editors using keyboard:
+* *Next item* with @bottom arrow@ key : Go to the next item (a brother, a child, or anything else according to visible items)
+* *Previous item* with @up arrow@ key: Go to the previous item (a brother, the parent, or anything else according to visible items)
+* *Collapse* with @left arrow@ key: Collapse the current item
+* *Expand* with @right arrow@ key: Expand the current item
+* *Collapse all* with @left arrow@ key + @Shift@ key pressed: Collapse the current item and all its children recursively.
+* *Expand all* with @right arrow@ key + @Shift@ key pressed (or @star@ key depending on the OS): Expand the current item and all its children recursively. _Warning:_ According to the depth of the tree, this feature can be long to process. To limit this problem, the expand automatically stops after having expanded 20 levels.
+
 h2(#managing). Creating, Renaming and Deleting Trees
 
 Trees are managed in the same way as the other kinds or representations supported by Sirius (diagrams, tables...). They are created either through the _New Representation_ context menu on a semantic element, or through the _Create Representation_ action on the context menu of a _Modeling Project_. Newly created trees are automatically opened. To open an existing tree, simply double-click on it in the _Model Explorer_: it will appear both inside the representation file (@aird@ file) and under the semantic element it represents inside the semantic model.

@@ -17,6 +17,9 @@
 						<a href="#introduction">Introduction</a>
 					</li>
 					<li>
+						<a href="#navigation">Navigation with keys</a>
+					</li>
+					<li>
 						<a href="#managing">Creating, Renaming and Deleting Trees</a>
 					</li>
 					<li>
@@ -48,6 +51,38 @@
 		<p>Note that as always with Sirius, some of the features described below may or may not be available with all specific tree editors. Some tree editors are configured to only display information but do not allow edition for example. It all depends on which features the person who 
 			<em>specified</em> (configured) the tree decided to support.
 		</p>
+		<h2 id="navigation">Navigation with keys</h2>
+		<p>Several keys exist to facilitate the navigation in tree editors using keyboard:</p>
+		<ul>
+			<li>
+				<strong>Next item</strong> with 
+				<code>bottom arrow</code> key : Go to the next item (a brother, a child, or anything else according to visible items)
+			</li>
+			<li>
+				<strong>Previous item</strong> with 
+				<code>up arrow</code> key: Go to the previous item (a brother, the parent, or anything else according to visible items)
+			</li>
+			<li>
+				<strong>Collapse</strong> with 
+				<code>left arrow</code> key: Collapse the current item
+			</li>
+			<li>
+				<strong>Expand</strong> with 
+				<code>right arrow</code> key: Expand the current item
+			</li>
+			<li>
+				<strong>Collapse all</strong> with 
+				<code>left arrow</code> key + 
+				<code>Shift</code> key pressed: Collapse the current item and all its children recursively.
+			</li>
+			<li>
+				<strong>Expand all</strong> with 
+				<code>right arrow</code> key + 
+				<code>Shift</code> key pressed (or 
+				<code>star</code> key depending on the OS): Expand the current item and all its children recursively. 
+				<em>Warning:</em> According to the depth of the tree, this feature can be long to process. To limit this problem, the expand automatically stops after having expanded 20 levels.
+			</li>
+		</ul>
 		<h2 id="managing">Creating, Renaming and Deleting Trees</h2>
 		<p>Trees are managed in the same way as the other kinds or representations supported by Sirius (diagrams, tables...). They are created either through the 
 			<em>New Representation</em> context menu on a semantic element, or through the 

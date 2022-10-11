@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2009, 2020 THALES GLOBAL SERVICES and others
+ * Copyright (c) 2009, 2022 THALES GLOBAL SERVICES and others
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -185,16 +185,39 @@ public final class SWTBotUtils {
      * 
      * @param widget
      *            the current widget
-     * @param key
-     *            the key to press
+     * @param modifierKeys
+     *            the modifier keys to press
      * @param c
      *            the key character to press
      */
-    public static void pressKeyboardKey(final Widget widget, final int key, final char c) {
+    public static void pressKeyboardKey(final Widget widget, final int modifierKeys, final char c) {
         UIThreadRunnable.asyncExec(new VoidResult() {
             @Override
             public void run() {
-                Event event = SWTBotUtils.keyEvent(key, c, SWT.Selection, widget);
+                Event event = SWTBotUtils.keyEvent(modifierKeys, c, SWT.Selection, widget);
+                widget.notifyListeners(SWT.KeyDown, event);
+                widget.notifyListeners(SWT.KeyUp, event);
+            }
+        });
+    }
+
+    /**
+     * Press a combination of keys.
+     * 
+     * @param widget
+     *            the current widget
+     * @param modifierKeys
+     *            the modifier keys to press
+     * @param c
+     *            the key character to press or null if any (for example when pressing an arrow key)
+     * @param keyCode
+     *            the key code (see {@link Event#keyCode}
+     */
+    public static void pressKeyboardKey(final Widget widget, final int modifierKeys, final char c, final int keyCode) {
+        UIThreadRunnable.asyncExec(new VoidResult() {
+            @Override
+            public void run() {
+                Event event = SWTBotUtils.keyEvent(modifierKeys, c, keyCode, widget);
                 widget.notifyListeners(SWT.KeyDown, event);
                 widget.notifyListeners(SWT.KeyUp, event);
             }
@@ -219,8 +242,8 @@ public final class SWTBotUtils {
     /**
      * @param c
      *            the character.
-     * @param modificationKey
-     *            the modification key.
+     * @param modifierKeys
+     *            the modifier keys.
      * @param keyCode
      *            the keycode.
      * @return a key event with the specified keys.
@@ -229,9 +252,9 @@ public final class SWTBotUtils {
      * @see Event#stateMask
      * @since 1.2
      */
-    private static Event keyEvent(final int modificationKey, final char c, final int keyCode, final Widget widget) {
+    private static Event keyEvent(final int modifierKeys, final char c, final int keyCode, final Widget widget) {
         final Event keyEvent = SWTBotUtils.createEvent(widget);
-        keyEvent.stateMask = modificationKey;
+        keyEvent.stateMask = modifierKeys;
         keyEvent.character = c;
         keyEvent.keyCode = keyCode;
 
