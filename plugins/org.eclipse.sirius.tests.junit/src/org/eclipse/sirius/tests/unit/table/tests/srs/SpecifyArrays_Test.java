@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,7 +20,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.table.business.api.refresh.DTableSynchronizer;
-import org.eclipse.sirius.table.business.internal.refresh.DTableSynchronizerImpl;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.TableFactory;
 import org.eclipse.sirius.table.metamodel.table.description.CreateCellTool;
@@ -91,7 +90,7 @@ public class SpecifyArrays_Test extends TableTestCase {
         final TableDescription desc = find("Colored Classes Table");
         assertNotNull("Unit test data is not correct", desc);
 
-        final DTableSynchronizer sync = new DTableSynchronizerImpl(desc, accessor, interpreter);
+        final DTableSynchronizer sync = createTableSynchronizer(desc);
 
         final DTable newTable = TableFactory.eINSTANCE.createDTable();
         newTable.setDescription(desc);
@@ -121,7 +120,7 @@ public class SpecifyArrays_Test extends TableTestCase {
         final TableDescription desc = find("Colored Classes Table");
         assertNotNull("Unit test data is not correct", desc);
 
-        final DTableSynchronizer sync = new DTableSynchronizerImpl(desc, accessor, interpreter);
+        final DTableSynchronizer sync = createTableSynchronizer(desc);
 
         final DTable newTable = TableFactory.eINSTANCE.createDTable();
         newTable.setDescription(desc);
@@ -251,7 +250,7 @@ public class SpecifyArrays_Test extends TableTestCase {
         final TableDescription desc = find("Cross Table Colors");
         assertNotNull("Unit test data is not correct", desc);
 
-        final DTableSynchronizer sync = new DTableSynchronizerImpl(desc, accessor, interpreter);
+        final DTableSynchronizer sync = createTableSynchronizer(desc);
 
         final DTable newTable = TableFactory.eINSTANCE.createDTable();
         newTable.setDescription(desc);
@@ -281,7 +280,7 @@ public class SpecifyArrays_Test extends TableTestCase {
         final TableDescription desc = find("Cross Table Colors");
         assertNotNull("Unit test data is not correct", desc);
 
-        final DTableSynchronizer sync = new DTableSynchronizerImpl(desc, accessor, interpreter);
+        final DTableSynchronizer sync = createTableSynchronizer(desc);
 
         final DTable newTable = TableFactory.eINSTANCE.createDTable();
         newTable.setDescription(desc);

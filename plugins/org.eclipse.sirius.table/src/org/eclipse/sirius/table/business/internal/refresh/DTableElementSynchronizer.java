@@ -130,13 +130,9 @@ public class DTableElementSynchronizer {
         if (accessor.getPermissionAuthority().canEditInstance(line)) {
             final String label = getHeaderLabel(line, line.getOriginMapping(), 
                     DescriptionPackage.eINSTANCE.getLineMapping_HeaderLabelExpression());
-            // We change the value only if it's different
-            if (!StringUtil.equals(line.getLabel(), label)) {
-                line.setLabel(label);
-            }
-            // Trac #1125 Line height modification (aborted because of Windows
-            // SWT
-            // limitation)
+            setLabelOnUpdate(line, label);
+            // Trac #1125 Line height modification 
+            // (aborted because of Windows SWT limitation)
             // if (mapping.getInitialHeight() != 0 && line.getHeight() == 0) {
             // line.setHeight(mapping.getInitialHeight());
             // }
@@ -186,10 +182,7 @@ public class DTableElementSynchronizer {
         if (accessor.getPermissionAuthority().canEditInstance(column)) {
             final String label = getHeaderLabel(column, column.getOriginMapping(), 
                     DescriptionPackage.eINSTANCE.getColumnMapping_HeaderLabelExpression());
-            // We change the value only if it's different
-            if (!StringUtil.equals(column.getLabel(), label)) {
-                column.setLabel(label);
-            }
+            setLabelOnUpdate(column, label);
             if (mapping.getInitialWidth() != 0 && column.getWidth() == 0) {
                 column.setWidth(mapping.getInitialWidth());
             }
@@ -206,9 +199,7 @@ public class DTableElementSynchronizer {
     public void refresh(final DFeatureColumn column) {
         final ColumnMapping mapping = column.getOriginMapping();
         if (accessor.getPermissionAuthority().canEditInstance(column)) {
-            if (!StringUtil.equals(column.getLabel(), mapping.getHeaderLabelExpression())) {
-                column.setLabel(mapping.getHeaderLabelExpression());
-            }
+            setLabelOnUpdate(column, mapping.getHeaderLabelExpression());
             if (mapping.getInitialWidth() != 0 && column.getWidth() == 0) {
                 column.setWidth(mapping.getInitialWidth());
             }
@@ -255,8 +246,7 @@ public class DTableElementSynchronizer {
                 removeUneededCell(cell);
                 deletedCell = true;
             } else if (!featureParent.equals(cell.getTarget())) {
-                String featureName = featureColumnMapping.getFeatureName();
-                if (SKIP_FEATURENAME_VALIDATION.equals(featureName) || accessor.eValid(featureParent, featureName)) {
+                if (isValidFeatureMapping(featureParent, featureColumnMapping)) {
                     cell.setTarget(featureParent);
                 } else {
                     removeUneededCell(cell);
@@ -268,6 +258,11 @@ public class DTableElementSynchronizer {
         return !deletedCell;
     }
 
+    private boolean isValidFeatureMapping(EObject target, FeatureColumnMapping mapping) {
+        String featureName = mapping.getFeatureName();
+        return SKIP_FEATURENAME_VALIDATION.equals(featureName) || accessor.eValid(target, featureName);
+    }
+    
     /**
      * Refresh the cell label.
      * 
@@ -280,12 +275,10 @@ public class DTableElementSynchronizer {
         DColumn column = cell.getColumn();
         if (column != null) {
             final CellUpdater updater = cell.getUpdater();
-            if (updater != null) {
-                if (updater instanceof IntersectionMapping && cell.getLabel() != null) {
-                    cellStillExists = refreshLabelIntersectionMapping(cell, (IntersectionMapping) updater);
-                } else {
-                    cellStillExists = updateCellLabel(cell);
-                }
+            if (updater instanceof IntersectionMapping && cell.getLabel() != null) {
+                cellStillExists = refreshValidIntersectionLabel(cell, (IntersectionMapping) updater);
+            } else {
+                cellStillExists = updateCellLabel(cell);
             }
         }
         if (!cellStillExists) {
@@ -343,11 +336,14 @@ public class DTableElementSynchronizer {
      *  
      * @return true if a cell is already needed
      */
-    private boolean refreshLabelIntersectionMapping(final DCell cell, final IntersectionMapping intersectionMapping) {
+    private boolean refreshValidIntersectionLabel(final DCell cell, final IntersectionMapping intersectionMapping) {
         boolean cellNeeded = false;
         DLine line = cell.getLine();
         DColumn column = cell.getColumn();
-        if (line != null && line.getTarget() != null && column != null && column.getTarget() != null) {
+        if (line != null 
+    		    && line.getTarget() != null 
+    		    && column != null 
+    		    && column.getTarget() != null) {
             Collection<EObject> foundColumnTargets = evaluateColumnFinderExpression(cell, intersectionMapping);
             if (foundColumnTargets.contains(column.getTarget())) {
                 if (evaluateIntersectionPrecondition(cell.getColumn().getTarget(), cell.getLine(), cell.getColumn(), intersectionMapping)) {
@@ -394,7 +390,7 @@ public class DTableElementSynchronizer {
      *            Flag to log if an error happens
      * @return List of column candidates for this cell and this intersection mapping.
      */
-    public Collection<EObject> evaluateColumnFinderExpression(EObject candidate, DSemanticDecorator container, IntersectionMapping iMapping, boolean logError) {
+    Collection<EObject> evaluateColumnFinderExpression(EObject candidate, DSemanticDecorator container, IntersectionMapping iMapping, boolean logError) {
         return InterpretationContext.with(interpreter, it -> {
             it.setLogError(logError);
             DTable table;
@@ -408,8 +404,10 @@ public class DTableElementSynchronizer {
             }
                     
             it.setVariable(IInterpreterSiriusVariables.ROOT, table.getTarget());
-            it.setVariable(IInterpreterSiriusVariables.VIEWPOINT, table);
             it.setVariable(IInterpreterSiriusVariables.TABLE, table);
+            // Legacy
+            it.setVariable(IInterpreterSiriusVariables.VIEWPOINT, table);
+
             
             return interpreter.evaluateCollection(candidate, iMapping, DescriptionPackage.eINSTANCE.getIntersectionMapping_ColumnFinderExpression());
         });
@@ -477,102 +475,105 @@ public class DTableElementSynchronizer {
      */
     private boolean updateCellLabel(final DCell cell) {
         CellUpdater updater = cell.getUpdater();
-        String labelExpression = updater.getLabelComputationExpression();
-        boolean cellNeeded = false;
-        if (!StringUtil.isEmpty(labelExpression)) {
-            if (cell.getTarget() != null) {
-                String label = InterpretationContext.with(interpreter, it -> {
-                    it.setLogError(TableHelper.hasTableDescriptionOnlyOneLineMapping(cell));
-                    if (cell.getLine() != null) {
-                        it.setVariable(IInterpreterSiriusTableVariables.LINE, cell.getLine());
-                        it.setVariable(IInterpreterSiriusTableVariables.LINE_SEMANTIC, cell.getLine().getTarget());
-                        it.setVariable(IInterpreterSiriusVariables.CONTAINER, cell.getLine().getTarget());
-                    }
-                    if (cell.getColumn() != null) {
-                        it.setVariable(IInterpreterSiriusTableVariables.COLUMN, cell.getColumn());
-                        it.setVariable(IInterpreterSiriusTableVariables.COLUMN_SEMANTIC, cell.getColumn().getTarget());
-                    }
-                    final DTable table = TableHelper.getTable(cell);
-                    if (table != null) {
-                        it.setVariable(IInterpreterSiriusVariables.ROOT, table.getTarget());
-                    }
-                    EStructuralFeature labelFeature;
-                    if (updater instanceof IntersectionMapping) {
-                        labelFeature = DescriptionPackage.eINSTANCE.getIntersectionMapping_LabelExpression();
-                    } else { // updater instanceof FeatureColumnMapping, no other cases
-                        labelFeature = DescriptionPackage.eINSTANCE.getFeatureColumnMapping_LabelExpression();
-                    }
-                    return interpreter.evaluateString(cell.getTarget(), cell.getUpdater(), labelFeature);
-                });
 
-                cellNeeded = true;
-                if (!StringUtil.equals(cell.getLabel(), label)) {
-                    cell.setLabel(label);
-                }
-            }
-        } else {
-            final ColumnMapping columnMapping = cell.getColumn().getOriginMapping();
-            if (columnMapping instanceof FeatureColumnMapping) {
-                if (cell.getTarget() != null) {
-                    final String featureName = ((FeatureColumnMapping) columnMapping).getFeatureName();
-                    if (!StringUtil.isEmpty(featureName)) {
-                        cellNeeded = setLabelWithFeatureValue(cell, columnMapping, featureName);
-                    } else {
-                        cell.setLabel(""); //$NON-NLS-1$
-                    }
-                }
-            } else {
-                cellNeeded = true;
-                // We change the value only if it's different
-                if (!StringUtil.equals(cell.getLabel(), null)) {
-                    cell.setLabel(null);
-                }
-            }
+        boolean cellNeeded = false;
+        if (updater instanceof IntersectionMapping) {
+            cellNeeded = updateCellLabel(cell, (IntersectionMapping) updater);
+        } else if (updater instanceof FeatureColumnMapping) {
+            cellNeeded = updateCellLabel(cell, (FeatureColumnMapping) updater);
         }
+
+        return cellNeeded;
+    }
+    
+    private boolean updateCellLabel(final DCell cell, IntersectionMapping updater) {
+        boolean cellNeeded = false;
+        
+        if (!StringUtil.isEmpty(updater.getLabelComputationExpression())) {
+            cellNeeded = updateCellLabel(cell, updater, DescriptionPackage.eINSTANCE.getIntersectionMapping_LabelExpression());
+        } else {
+            // Even without label when may need color.
+            cellNeeded = true;
+            setLabelOnUpdate(cell, null);
+        }
+
         return cellNeeded;
     }
 
-    private boolean setLabelWithFeatureValue(final DCell cell, final ColumnMapping columnMapping, final String featureName) {
-        boolean init = false;
-        String label = ""; //$NON-NLS-1$
+    
+    private boolean updateCellLabel(final DCell cell, FeatureColumnMapping updater) {
+        boolean cellNeeded = false;
+        final String featureName = updater.getFeatureName();
+        
+        if (isValidFeatureMapping(cell.getTarget(), updater)) {
+            if (!StringUtil.isEmpty(updater.getLabelComputationExpression())) {
+                cellNeeded = updateCellLabel(cell, updater, DescriptionPackage.eINSTANCE.getFeatureColumnMapping_LabelExpression());
+            } else {
+                cellNeeded = updateCellLabel(cell, updater, featureName);
+            }
+        } // ill-mapped: no cell
+        return cellNeeded;
+    }
+    
+    private boolean updateCellLabel(final DCell cell, CellUpdater updater, EStructuralFeature labelFeature) {
+
+        if (cell.getTarget() == null) {
+            return false; // cell not needed
+        }
+        String label = InterpretationContext.with(interpreter, it -> {
+            it.setLogError(TableHelper.hasTableDescriptionOnlyOneLineMapping(cell));
+            if (cell.getLine() != null) {
+                it.setVariable(IInterpreterSiriusTableVariables.LINE, cell.getLine());
+                it.setVariable(IInterpreterSiriusTableVariables.LINE_SEMANTIC, cell.getLine().getTarget());
+                it.setVariable(IInterpreterSiriusVariables.CONTAINER, cell.getLine().getTarget());
+            }
+            if (cell.getColumn() != null) {
+                it.setVariable(IInterpreterSiriusTableVariables.COLUMN, cell.getColumn());
+                it.setVariable(IInterpreterSiriusTableVariables.COLUMN_SEMANTIC, cell.getColumn().getTarget());
+            }
+            final DTable table = TableHelper.getTable(cell);
+            if (table != null) {
+                it.setVariable(IInterpreterSiriusVariables.TABLE, table);                
+                it.setVariable(IInterpreterSiriusVariables.ROOT, table.getTarget());
+            }
+
+            return interpreter.evaluateString(cell.getTarget(), cell.getUpdater(), labelFeature);
+        });
+
+        setLabelOnUpdate(cell, label);
+        return true;
+
+    }
+    
+
+    private boolean updateCellLabel(final DCell cell, final ColumnMapping columnMapping, final String featureName) {
+        String label = null;
         try {
             final Object featureObject = accessor.eGet(cell.getTarget(), featureName);
             if (featureObject != null) {
-                // if featureObject is multivalue, return the label of all its
-                // objects
-                if (featureObject instanceof EList<?>) {
+                // if featureObject is multivalue, 
+            	// return the label of all its objects
+                if (featureObject instanceof Collection) {
                     List<String> texts = new ArrayList<>();
-                    for (Object obj : (EList<?>) featureObject) {
-                        String text;
-                        if (obj instanceof EObject) {
-                            text = getText((EObject) obj);
-                        } else {
-                            text = obj.toString();
-                        }
-                        texts.add(text);
+                    for (Object obj : (Collection<?>) featureObject) {
+                        texts.add(getValueText(obj));
                     }
                     label = texts.toString();
-                } else if (featureObject instanceof EObject) {
-                    label = getText((EObject) featureObject);
                 } else {
-                    label = featureObject.toString();
+                    label = getValueText(featureObject);
                 }
-                init = true;
             } else if (cell.getTarget().eClass().getEStructuralFeature(featureName) != null) {
                 // if the featureObject is null but the feature name exists, we
                 // consider blank string as text.
-                init = true;
+                label = ""; //$NON-NLS-1$
             }
-            if (init) {
-                // We change the value only if it's different
-                if (!StringUtil.equals(cell.getLabel(), label)) {
-                    cell.setLabel(label);
-                }
+            if (label != null) {
+                setLabelOnUpdate(cell, label);
             }
         } catch (final FeatureNotFoundException e) {
             RuntimeLoggerManager.INSTANCE.error(columnMapping, DescriptionPackage.eINSTANCE.getFeatureColumnMapping_FeatureName(), e);
         }
-        return init;
+        return label != null;
     }
 
     /**
@@ -601,19 +602,26 @@ public class DTableElementSynchronizer {
      */
     private void doUpdateStyle(final DCell cell, final DCellStyle style) {
         final TableStyleColorUpdater colorUpdater = new TableStyleColorUpdater();
-        IntersectionMapping intersectionMapping = cell.getIntersectionMapping();
-
+        
         // Get the style updater for the column
         ColumnMapping columnMapping = null;
         StyleUpdater columnStyleUpdater = null;
         DColumn column = cell.getColumn();
-        if (column != null) {
+        if (column != null) { // Suspicious
             columnMapping = column.getOriginMapping();
             if (columnMapping instanceof FeatureColumnMapping || columnMapping instanceof ElementColumnMapping) {
                 columnStyleUpdater = (StyleUpdater) columnMapping;
             }
         }
 
+        doUpdateFgStyle(cell, style, colorUpdater, columnMapping, columnStyleUpdater);
+        doUpdateBgStyle(cell, style, colorUpdater, columnMapping, columnStyleUpdater);
+    }
+
+
+    private void doUpdateFgStyle(final DCell cell, final DCellStyle style, final TableStyleColorUpdater colorUpdater, ColumnMapping columnMapping,
+            StyleUpdater columnStyleUpdater) {
+        IntersectionMapping intersectionMapping = cell.getIntersectionMapping();
         final StyleWithDefaultStatus bestBackgroundStyle = getBestBackgroundColor(cell, intersectionMapping, columnStyleUpdater);
         if (bestBackgroundStyle != null) {
             colorUpdater.updateBackgroundColor(style, ((BackgroundStyleDescription) bestBackgroundStyle.getStyle()).getBackgroundColor(), 
@@ -624,10 +632,14 @@ public class DTableElementSynchronizer {
                 style.setBackgroundStyleOrigin(columnMapping);
             }
         } else {
-            reset(style, TablePackage.eINSTANCE.getDTableElementStyle_BackgroundColor());
-            reset(style, TablePackage.eINSTANCE.getDTableElementStyle_DefaultBackgroundStyle());
+            resetStyle(style, false);
         }
-        
+    }
+
+
+    private void doUpdateBgStyle(final DCell cell, final DCellStyle style, final TableStyleColorUpdater colorUpdater, ColumnMapping columnMapping,
+            StyleUpdater columnStyleUpdater) {
+        IntersectionMapping intersectionMapping = cell.getIntersectionMapping();
         final StyleWithDefaultStatus bestForegroundStyle = getBestForegroundStyle(cell, intersectionMapping, columnStyleUpdater);
         if (bestForegroundStyle != null) {
             ForegroundStyleDescription bestForegroundStyleDesc = (ForegroundStyleDescription) bestForegroundStyle.getStyle();
@@ -645,10 +657,7 @@ public class DTableElementSynchronizer {
                 style.setLabelSize(bestForegroundStyleDesc.getLabelSize());
             }
         } else {
-            reset(style, TablePackage.eINSTANCE.getDTableElementStyle_ForegroundColor());
-            reset(style, TablePackage.eINSTANCE.getDTableElementStyle_LabelFormat());
-            reset(style, TablePackage.eINSTANCE.getDTableElementStyle_LabelSize());
-            reset(style, TablePackage.eINSTANCE.getDTableElementStyle_DefaultForegroundStyle());
+            resetStyle(style, true);
         }
     }
 
@@ -689,10 +698,11 @@ public class DTableElementSynchronizer {
         final ColorDescription bestBackgroundColor = getBestBackgroundColor(line, originMapping);
 
         if (bestBackgroundColor != null) {
-            colorUpdater.updateBackgroundColor(style, bestBackgroundColor, new StyleUpdaterQuery(originMapping).isDefaultBackgroundColor(bestBackgroundColor), line.getTarget());
+            colorUpdater.updateBackgroundColor(style, bestBackgroundColor, 
+                    new StyleUpdaterQuery(originMapping).isDefaultBackgroundColor(bestBackgroundColor), 
+                    line.getTarget());
         } else {
-            reset(style, TablePackage.eINSTANCE.getDTableElementStyle_BackgroundColor());
-            reset(style, TablePackage.eINSTANCE.getDTableElementStyle_DefaultBackgroundStyle());
+            resetStyle(style, false);
         }
         final ForegroundStyleDescription bestForegroundStyle = getBestForegroundStyle(line, originMapping);
         if (bestForegroundStyle != null) {
@@ -706,13 +716,23 @@ public class DTableElementSynchronizer {
             }
             style.setDefaultForegroundStyle(defaultStyleDescription);
         } else {
+            resetStyle(style, true);
+        }
+    }
+
+    private void resetStyle(final DTableElementStyle style, boolean foreground) {
+        if (foreground) {
             reset(style, TablePackage.eINSTANCE.getDTableElementStyle_ForegroundColor());
             reset(style, TablePackage.eINSTANCE.getDTableElementStyle_LabelSize());
             reset(style, TablePackage.eINSTANCE.getDTableElementStyle_DefaultForegroundStyle());
             reset(style, TablePackage.eINSTANCE.getDTableElementStyle_LabelFormat());
+        } else {
+            reset(style, TablePackage.eINSTANCE.getDTableElementStyle_BackgroundColor());
+            reset(style, TablePackage.eINSTANCE.getDTableElementStyle_DefaultBackgroundStyle());
         }
     }
 
+    
     /**
      * Refresh the column styles.
      * 
@@ -755,8 +775,7 @@ public class DTableElementSynchronizer {
         if (bestBackgroundColor != null) {
             colorUpdater.updateBackgroundColor(style, bestBackgroundColor, new StyleUpdaterQuery(styleUpdater).isDefaultBackgroundColor(bestBackgroundColor), column.getTarget());
         } else {
-            reset(style, TablePackage.eINSTANCE.getDTableElementStyle_BackgroundColor());
-            reset(style, TablePackage.eINSTANCE.getDTableElementStyle_DefaultBackgroundStyle());
+            resetStyle(style, false);
         }
         final ForegroundStyleDescription bestForegroundStyle = getBestForegroundStyle(column, styleUpdater);
         if (bestForegroundStyle != null) {
@@ -770,10 +789,7 @@ public class DTableElementSynchronizer {
             }
             style.setDefaultForegroundStyle(defaultStyleDescription);
         } else {
-            reset(style, TablePackage.eINSTANCE.getDTableElementStyle_ForegroundColor());
-            reset(style, TablePackage.eINSTANCE.getDTableElementStyle_LabelSize());
-            reset(style, TablePackage.eINSTANCE.getDTableElementStyle_DefaultForegroundStyle());
-            reset(style, TablePackage.eINSTANCE.getDTableElementStyle_LabelFormat());
+            resetStyle(style, true);
         }
     }
 
@@ -802,6 +818,25 @@ public class DTableElementSynchronizer {
                 styleUpdater -> getDefaulBgStyle(styleUpdater));
     }
 
+    /**
+     * TODO : TBD The priority of the StyleUpdater is (the highest priority to lowest priority).
+     * <UL>
+     * <LI>Intersection mapping (conditional style)</LI>
+     * <LI>Line mapping (conditional style)</LI>
+     * <LI>Column Mapping (conditional style)</LI>
+     * <LI>Intersection mapping (default style)</LI>
+     * <LI>Line mapping (default style)</LI>
+     * <LI>Column Mapping (default style)</LI>
+     * </UL>
+     * 
+     * @param <S> Style description
+     * @param cell to get style for
+     * @param cellStyleUpdater of the cell
+     * @param columnStyleUpdater of the column of the cell
+     * @param conditionalStyleGetter provider from StyleUpdater
+     * @param defaultStyleGetter provider from StyleUpdater
+     * @return Best style
+     */
     private <S extends EObject> StyleWithDefaultStatus getBestColorStyle(final DCell cell, 
             final StyleUpdater cellStyleUpdater, 
             final StyleUpdater columnStyleUpdater,
@@ -815,10 +850,11 @@ public class DTableElementSynchronizer {
             descr = conditionalStyleGetter.apply(columnStyleUpdater);            
         }
         boolean conditional = descr != null;
+
+        // Use the default style
         if (descr == null) { // then default cell style
             descr = defaultStyleGetter.apply(cellStyleUpdater);
         }
-        // Use the default style
         if (descr == null) { // the default column
             descr = defaultStyleGetter.apply(columnStyleUpdater);
             if (descr instanceof FixedColor) {
@@ -902,7 +938,7 @@ public class DTableElementSynchronizer {
         if (descr == null) { // then default cell style
             descr = getDefaulBgStyle(styleUpdater);
         }
-        if (descr.getBackgroundColor() != null) {
+        if (descr != null && descr.getBackgroundColor() != null) {
             return descr.getBackgroundColor();
         }
         return null;
@@ -926,7 +962,7 @@ public class DTableElementSynchronizer {
     }
 
     /**
-     * TODO : TBD The priority of the StyleUpdater is (the highest priority to lowest priority) :
+     * TODO : TBD The priority of the StyleUpdater is (the highest priority to lowest priority).
      * <UL>
      * <LI>Intersection mapping (conditional style)</LI>
      * <LI>Line mapping (conditional style)</LI>
@@ -951,9 +987,8 @@ public class DTableElementSynchronizer {
     }
 
     /**
+     * The priority of the StyleUpdater is (the highest priority to lowest priority).
      * TODO: Doc to review.
-     * 
-     * The priority of the StyleUpdater is (the highest priority to lowest priority) :
      * <UL>
      * <LI>Intersection mapping (conditional style)</LI>
      * <LI>Line mapping (conditional style)</LI>
@@ -1077,6 +1112,13 @@ public class DTableElementSynchronizer {
         synchronizeLists(tableElement.getSemanticElements(), elements);
     }
 
+    private String getValueText(Object element) {
+        if (element instanceof EObject) {
+            return getText((EObject) element);
+        }
+        return element.toString();
+    }
+    
     private String getText(final EObject element) {
         String text = null;
         ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
@@ -1124,4 +1166,30 @@ public class DTableElementSynchronizer {
     RuntimeLoggerInterpreter getInterpreter() {
         return interpreter;
     }
+    
+    private static void setLabelOnUpdate(DLine line, String value) {
+        // We change the value only if it's different 
+        // to prevent unnecessary dirty state.
+        if (!StringUtil.equals(line.getLabel(), value)) {
+            line.setLabel(value);
+        }
+    }
+    
+    private static void setLabelOnUpdate(DColumn column, String value) {
+        // We change the value only if it's different 
+        // to prevent unnecessary dirty state.
+        if (!StringUtil.equals(column.getLabel(), value)) {
+            column.setLabel(value);
+        }
+    }
+    
+    private static void setLabelOnUpdate(DCell cell, String value) {
+        // We change the value only if it's different 
+        // to prevent unnecessary dirty state.
+        if (!StringUtil.equals(cell.getLabel(), value)) {
+            cell.setLabel(value);
+        }
+    }
+    
+
 }

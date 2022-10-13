@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -28,7 +28,6 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.table.business.api.query.DCellQuery;
 import org.eclipse.sirius.table.business.api.query.DTableQuery;
 import org.eclipse.sirius.table.business.api.refresh.DTableSynchronizer;
-import org.eclipse.sirius.table.business.internal.refresh.DTableSynchronizerImpl;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DColumn;
 import org.eclipse.sirius.table.metamodel.table.DLine;
@@ -58,7 +57,7 @@ public class DTableSynchronizerTest extends TableTestCase {
         final TableDescription desc = find("Colored Classes Table");
         assertNotNull("Unit test data is not correct", desc);
 
-        final DTableSynchronizer sync = new DTableSynchronizerImpl(desc, accessor, interpreter);
+        final DTableSynchronizer sync = createTableSynchronizer(desc);
 
         final DTable newTable = TableFactory.eINSTANCE.createDTable();
         newTable.setDescription(desc);
@@ -85,7 +84,7 @@ public class DTableSynchronizerTest extends TableTestCase {
         final TableDescription desc = find("Virtual columns");
         assertNotNull("Unit test data is not correct", desc);
 
-        final DTableSynchronizer sync = new DTableSynchronizerImpl(desc, accessor, interpreter);
+        final DTableSynchronizer sync = createTableSynchronizer(desc);
 
         final DTable newTable = TableFactory.eINSTANCE.createDTable();
         newTable.setDescription(desc);
@@ -116,7 +115,7 @@ public class DTableSynchronizerTest extends TableTestCase {
         final TableDescription desc = find("Model Generalization Cross Table");
         assertNotNull("Unit test data is not correct", desc);
 
-        final DTableSynchronizer sync = new DTableSynchronizerImpl(desc, accessor, interpreter);
+        final DTableSynchronizer sync = createTableSynchronizer(desc);
 
         final DTable newTable = TableFactory.eINSTANCE.createDTable();
         newTable.setDescription(desc);
@@ -173,7 +172,7 @@ public class DTableSynchronizerTest extends TableTestCase {
         final TableDescription desc = find("Model Association Cross Table");
         assertNotNull("Unit test data is not correct", desc);
 
-        final DTableSynchronizer sync = new DTableSynchronizerImpl(desc, accessor, interpreter);
+        final DTableSynchronizer sync = createTableSynchronizer(desc);
 
         final DTable newTable = TableFactory.eINSTANCE.createDTable();
         newTable.setDescription(desc);
@@ -201,7 +200,7 @@ public class DTableSynchronizerTest extends TableTestCase {
         final TableDescription desc = find("Cross Table Colors");
         assertNotNull("Unit test data is not correct", desc);
 
-        final DTableSynchronizer sync = new DTableSynchronizerImpl(desc, accessor, interpreter);
+        final DTableSynchronizer sync = createTableSynchronizer(desc);
 
         final DTable newTable = TableFactory.eINSTANCE.createDTable();
         newTable.setDescription(desc);
@@ -233,7 +232,7 @@ public class DTableSynchronizerTest extends TableTestCase {
         final TableDescription desc = find("Cross Table Colors");
         assertNotNull("Unit test data is not correct", desc);
 
-        final DTableSynchronizer sync = new DTableSynchronizerImpl(desc, accessor, interpreter);
+        final DTableSynchronizer sync = createTableSynchronizer(desc);
 
         final DTable newTable = TableFactory.eINSTANCE.createDTable();
         newTable.setDescription(desc);
@@ -265,7 +264,7 @@ public class DTableSynchronizerTest extends TableTestCase {
         final TableDescription desc = find("VariablesAccess");
         assertNotNull("Unit test data is not correct", desc);
 
-        final DTableSynchronizer sync = new DTableSynchronizerImpl(desc, accessor, interpreter);
+        final DTableSynchronizer sync = createTableSynchronizer(desc);
 
         final DTable newTable = TableFactory.eINSTANCE.createDTable();
         newTable.setDescription(desc);
@@ -300,7 +299,7 @@ public class DTableSynchronizerTest extends TableTestCase {
         final TableDescription desc = find("TestColumnWithoutHeaderLabelExpression");
         assertNotNull("Unit test data is not correct", desc);
 
-        final DTableSynchronizer sync = new DTableSynchronizerImpl(desc, accessor, interpreter);
+        final DTableSynchronizer sync = createTableSynchronizer(desc);
 
         final DTable newTable = TableFactory.eINSTANCE.createDTable();
         newTable.setDescription(desc);
@@ -329,7 +328,7 @@ public class DTableSynchronizerTest extends TableTestCase {
         final TableDescription desc = find("VariablesAccess");
         assertNotNull("Unit test data is not correct", desc);
 
-        final DTableSynchronizer sync = new DTableSynchronizerImpl(desc, accessor, interpreter);
+        final DTableSynchronizer sync = createTableSynchronizer(desc);
 
         final DTable newTable = TableFactory.eINSTANCE.createDTable();
         newTable.setDescription(desc);
@@ -390,7 +389,7 @@ public class DTableSynchronizerTest extends TableTestCase {
         final TableDescription desc = find("VariablesAccess");
         assertNotNull("Unit test data is not correct", desc);
 
-        final DTableSynchronizer sync = new DTableSynchronizerImpl(desc, accessor, interpreter);
+        final DTableSynchronizer sync = createTableSynchronizer(desc);
 
         final DTable newTable = TableFactory.eINSTANCE.createDTable();
         newTable.setDescription(desc);
@@ -444,7 +443,7 @@ public class DTableSynchronizerTest extends TableTestCase {
         final TableDescription desc = find("Model Association Cross Table");
         assertNotNull("Unit test data is not correct", desc);
 
-        final DTableSynchronizer sync = new DTableSynchronizerImpl(desc, accessor, interpreter);
+        final DTableSynchronizer sync = createTableSynchronizer(desc);
 
         final DTable newTable = TableFactory.eINSTANCE.createDTable();
         newTable.setDescription(desc);
@@ -512,7 +511,7 @@ public class DTableSynchronizerTest extends TableTestCase {
         final TableDescription desc = find(tableDescriptionName);
         assertNotNull("Unit test data is not correct", desc);
 
-        final DTableSynchronizer sync = new DTableSynchronizerImpl(desc, accessor, interpreter);
+        final DTableSynchronizer sync = createTableSynchronizer(desc);
 
         final DTable newTable = TableFactory.eINSTANCE.createDTable();
         newTable.setDescription(desc);
@@ -605,7 +604,7 @@ public class DTableSynchronizerTest extends TableTestCase {
         final TableDescription desc = find("SimpleTableVariables");
         assertNotNull("Unit test data is not correct", desc);
 
-        final DTableSynchronizer sync = new DTableSynchronizerImpl(desc, accessor, interpreter);
+        final DTableSynchronizer sync = createTableSynchronizer(desc);
 
         final DTable newTable = TableFactory.eINSTANCE.createDTable();
         newTable.setDescription(desc);
