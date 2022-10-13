@@ -81,11 +81,13 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
 
     private final ModelAccessor accessor;
 
-    private DTable table;
-
     private final DTableElementSynchronizer sync;
 
+    private DTable table;
+
     private RefreshIdsHolder ids;
+    
+    private ECrossReferenceAdapter xref;
 
     /**
      * Create a new {@link DTableSynchronizer} for an EditionTable.
@@ -117,18 +119,17 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
             KeyCache.DEFAULT.clear();
             DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.REFRESH_TABLE_KEY);
 
-            final Map<TableMapping, Collection<DTableElement>> mappingToElements = new HashMap<TableMapping, Collection<DTableElement>>();
-            ECrossReferenceAdapter xref = ECrossReferenceAdapter.getCrossReferenceAdapter(table.getTarget());
+            final Map<TableMapping, Collection<DTableElement>> mappingToElements = new HashMap<>();
 
             if (!table.eIsSet(TablePackage.Literals.DTABLE__HEADER_COLUMN_WIDTH)) {
                 table.setHeaderColumnWidth(description.getInitialHeaderColumnWidth());
             }
 
-            refreshLines(new SubProgressMonitor(monitor, 1), mappingToElements, xref);
+            refreshLines(new SubProgressMonitor(monitor, 1), mappingToElements);
 
-            refreshColumns(new SubProgressMonitor(monitor, 1), mappingToElements, xref);
+            refreshColumns(new SubProgressMonitor(monitor, 1), mappingToElements);
 
-            refreshCells(new SubProgressMonitor(monitor, 1), mappingToElements, xref);
+            refreshCells(new SubProgressMonitor(monitor, 1), mappingToElements);
 
             DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.REFRESH_TABLE_KEY);
         } finally {
@@ -136,7 +137,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
         }
     }
 
-    private void refreshLines(final IProgressMonitor monitor, final Map<TableMapping, Collection<DTableElement>> mappingToElements, final ECrossReferenceAdapter xref) {
+    private void refreshLines(final IProgressMonitor monitor, final Map<TableMapping, Collection<DTableElement>> mappingToElements) {
         try {
 
             List<LineMapping> lMappings = new ArrayList<LineMapping>();
@@ -147,14 +148,14 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
 
             int currentLineIndex = 0;
             for (final LineMapping lMapping : lMappings) {
-                currentLineIndex = refreshLineMapping(table, lMapping, mappingToElements, currentLineIndex, xref);
+                currentLineIndex = refreshLineMapping(table, lMapping, mappingToElements, currentLineIndex);
                 monitor.worked(1);
             }
             // if there is no more line mapping in vsm delete table rows
             // corresponding
             if (lMappings.isEmpty()) {
                 for (final DLine lineToDelete : new ArrayList<DLine>(table.getLines())) {
-                    doDeleteLine(lineToDelete, xref);
+                    doDeleteLine(lineToDelete);
                 }
             }
             KeyCache.DEFAULT.clear();
@@ -163,7 +164,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
         }
     }
 
-    private void refreshColumns(final IProgressMonitor monitor, final Map<TableMapping, Collection<DTableElement>> mappingToElements, final ECrossReferenceAdapter xref) {
+    private void refreshColumns(final IProgressMonitor monitor, final Map<TableMapping, Collection<DTableElement>> mappingToElements) {
         try {
             List<? extends ColumnMapping> cMappings = new ArrayList<ColumnMapping>();
             if (description instanceof EditionTableDescription) {
@@ -175,13 +176,13 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
 
             int currentColumnIndex = 0;
             for (final ColumnMapping cMapping : cMappings) {
-                currentColumnIndex = refreshColumnMapping(cMapping, mappingToElements, currentColumnIndex, xref);
+                currentColumnIndex = refreshColumnMapping(cMapping, mappingToElements, currentColumnIndex);
                 monitor.worked(1);
             }
             // If there is no more column mapping in VSM, delete column in table
             if (cMappings.isEmpty()) {
                 for (final DColumn columnToDelete : new ArrayList<DColumn>(table.getColumns())) {
-                    doDeleteColumn(columnToDelete, xref);
+                    doDeleteColumn(columnToDelete);
                 }
             }
 
@@ -196,23 +197,21 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
      *            The progress monitor
      * @param mappingToElements
      *            A map that list the DTableElement (line or column) for each mapping
-     * @param xref
-     *            the cross referencer to use
      */
-    private void refreshCells(final IProgressMonitor monitor, final Map<TableMapping, Collection<DTableElement>> mappingToElements, ECrossReferenceAdapter xref) {
+    private void refreshCells(final IProgressMonitor monitor, final Map<TableMapping, Collection<DTableElement>> mappingToElements) {
         if (description instanceof EditionTableDescription) {
             // Clean orphan cells
             for (final DColumn column : table.getColumns()) {
                 for (DCell cell : new ArrayList<DCell>(column.getCells())) {
                     if (cell.getLine() == null) {
-                        doDeleteCell(cell, xref);
+                        this.sync.removeUneededCell(cell);
                     }
                 }
             }
 
             fillTableDCells(table);
         } else if (description instanceof CrossTableDescription) {
-            refreshCellsOfCrossTable(monitor, mappingToElements, xref);
+            refreshCellsOfCrossTable(monitor, mappingToElements);
         }
         KeyCache.DEFAULT.clear();
     }
@@ -229,10 +228,8 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
      *            The progress monitor
      * @param mappingToElements
      *            A map that list the DTableElement (line or column) for each mapping
-     * @param xref
-     *            the cross reference to use
      */
-    private void refreshCellsOfCrossTable(final IProgressMonitor monitor, final Map<TableMapping, Collection<DTableElement>> mappingToElements, ECrossReferenceAdapter xref) {
+    private void refreshCellsOfCrossTable(final IProgressMonitor monitor, final Map<TableMapping, Collection<DTableElement>> mappingToElements) {
         try {
             monitor.beginTask(Messages.DTableSynchronizerImpl_refreshIntersectionMapping, ((CrossTableDescription) description).getIntersection().size());
             if (((CrossTableDescription) description).getIntersection().isEmpty()) {
@@ -241,11 +238,11 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
                 // cells of the DTable (this must normally be done in the first
                 // intersectionMapping)
                 for (final DCell cell : new DTableQuery(table).getCells()) {
-                    doDeleteCell(cell, xref);
+                    this.sync.removeUneededCell(cell);
                 }
             } else {
                 for (final IntersectionMapping iMapping : ((CrossTableDescription) description).getIntersection()) {
-                    refreshIntersectionMapping(iMapping, mappingToElements, xref);
+                    refreshIntersectionMapping(iMapping, mappingToElements);
                     monitor.worked(1);
                 }
             }
@@ -422,30 +419,27 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
      * @param mappingToElements
      *            an holder for the mapping to element mapping.
      * @param previousCurrentIndex of column
-     * @param xref
-     *            the cross referencer to use
      * @return new column index 
      */
-    private int refreshColumnMapping(final ColumnMapping mapping, final Map<TableMapping, Collection<DTableElement>> mappingToElements, final int previousCurrentIndex, ECrossReferenceAdapter xref) {
+    private int refreshColumnMapping(final ColumnMapping mapping, final Map<TableMapping, Collection<DTableElement>> mappingToElements, final int previousCurrentIndex) {
         int result = 0;
         if (mapping instanceof FeatureColumnMapping) {
-            result = refreshFeatureColumnMapping((FeatureColumnMapping) mapping, mappingToElements, previousCurrentIndex, xref);
+            result = refreshFeatureColumnMapping((FeatureColumnMapping) mapping, mappingToElements, previousCurrentIndex);
         } else if (mapping instanceof ElementColumnMapping) {
-            result = refreshElementColumnMapping((ElementColumnMapping) mapping, mappingToElements, previousCurrentIndex, xref);
+            result = refreshElementColumnMapping((ElementColumnMapping) mapping, mappingToElements, previousCurrentIndex);
         }
         return result;
     }
 
-    private int refreshElementColumnMapping(final ElementColumnMapping mapping, final Map<TableMapping, Collection<DTableElement>> mappingToElements, final int previousCurrentIndex,
-            ECrossReferenceAdapter xref) {
+    private int refreshElementColumnMapping(final ElementColumnMapping mapping, final Map<TableMapping, Collection<DTableElement>> mappingToElements, final int previousCurrentIndex) {
         int currentIndex = previousCurrentIndex;
         if (accessor.getPermissionAuthority().canEditInstance(table)) {
-            final SetIntersection<DTargetColumnCandidate> status = computeCurrentStatus(mapping, xref);
+            final SetIntersection<DTargetColumnCandidate> status = computeCurrentStatus(mapping);
             final Collection<DTableElement> elementsToKeep = new ArrayList<DTableElement>();
             // Remove old elements
             for (final DTargetColumnCandidate toDelete : status.getRemovedElements()) {
                 if (toDelete.getOriginalElement() != null) {
-                    doDeleteColumn(toDelete.getOriginalElement(), xref);
+                    doDeleteColumn(toDelete.getOriginalElement());
                 }
             }
             
@@ -482,9 +476,9 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
         return currentIndex;
     }
 
-    private SetIntersection<DTargetColumnCandidate> computeCurrentStatus(final ElementColumnMapping mapping, ECrossReferenceAdapter xref) {
+    private SetIntersection<DTargetColumnCandidate> computeCurrentStatus(final ElementColumnMapping mapping) {
         
-        removeTargetLessColumns(mapping, xref);
+        removeTargetLessColumns(mapping);
 
         final SetIntersection<DTargetColumnCandidate> status = new GSetIntersection<DTargetColumnCandidate>();
         for (final DColumn column : table.getColumns()) {
@@ -527,11 +521,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
 
     }
 
-    /**
-     * @param mapping
-     * @param xref
-     */
-    private void removeTargetLessColumns(final ElementColumnMapping mapping, ECrossReferenceAdapter xref) {
+    private void removeTargetLessColumns(final ElementColumnMapping mapping) {
         // Remove column with no target (target == null). This case can happen
         // when the dangling references are removed during the delete of the
         // semantic element.
@@ -554,20 +544,19 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
                 }
             }
             for (DColumn columnWithoutTarget : columnsWithoutTarget) {
-                doDeleteColumn(columnWithoutTarget, xref);
+                doDeleteColumn(columnWithoutTarget);
             }
         }
     }
 
-    private int refreshFeatureColumnMapping(final FeatureColumnMapping mapping, final Map<TableMapping, Collection<DTableElement>> mappingToElements, final int previousCurrentIndex,
-            ECrossReferenceAdapter xref) {
+    private int refreshFeatureColumnMapping(final FeatureColumnMapping mapping, final Map<TableMapping, Collection<DTableElement>> mappingToElements, final int previousCurrentIndex) {
         int currentIndex = previousCurrentIndex;
         if (accessor.getPermissionAuthority().canCreateIn(table)) {
             final SetIntersection<DFeatureColumnCandidate> status = computeCurrentStatus(mapping);
             // Remove old elements
             for (final DFeatureColumnCandidate toDelete : status.getRemovedElements()) {
                 if (toDelete.getOriginalElement() != null) {
-                    doDeleteColumn(toDelete.getOriginalElement(), xref);
+                    doDeleteColumn(toDelete.getOriginalElement());
                 }
             }
             // Treat existing elements and new elements in the order of the
@@ -620,23 +609,20 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
      *            the mapping to refresh.
      * @param mappingToElements
      *            an holder for the mapping to element mapping.
-     * @param xref
-     *            the session cross referencer
      * @param previousCurrentIndex
      *            current line index
      * @return new index to refresh
      */
-    private int refreshLineMapping(final LineContainer container, final LineMapping mapping, final Map<TableMapping, Collection<DTableElement>> mappingToElements, final int previousCurrentIndex,
-            ECrossReferenceAdapter xref) {
+    private int refreshLineMapping(final LineContainer container, final LineMapping mapping, final Map<TableMapping, Collection<DTableElement>> mappingToElements, final int previousCurrentIndex) {
         int currentIndex = previousCurrentIndex;
-        final SetIntersection<DLineCandidate> status = computeCurrentStatus(container, mapping, xref);
+        final SetIntersection<DLineCandidate> status = computeCurrentStatus(container, mapping);
         final Collection<DLine> possibleContainers = new ArrayList<DLine>();
         final Collection<DTableElement> elementsToKeep = new ArrayList<DTableElement>();
         // Remove old elements
         if (this.accessor.getPermissionAuthority().canEditInstance(container)) {
             for (final DLineCandidate toDelete : status.getRemovedElements()) {
                 if (toDelete.getOriginalElement() != null) {
-                    doDeleteLine(toDelete.getOriginalElement(), xref);
+                    doDeleteLine(toDelete.getOriginalElement());
                 }
             }
         }
@@ -650,7 +636,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
             currentIndex++;
         }
         putOrAdd(mappingToElements, mapping, elementsToKeep);
-        refreshLineCandidates(possibleContainers, mappingToElements, xref);
+        refreshLineCandidates(possibleContainers, mappingToElements);
         return currentIndex;
     }
 
@@ -699,13 +685,13 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
     }
 
 
-    private void refreshLineCandidates(final Collection<DLine> possibleContainers, final Map<TableMapping, Collection<DTableElement>> mappingToElements, ECrossReferenceAdapter xref) {
+    private void refreshLineCandidates(final Collection<DLine> possibleContainers, final Map<TableMapping, Collection<DTableElement>> mappingToElements) {
         for (final DLine newContainer : possibleContainers) {
             int currentSubIndex = 0;
             EList<LineMapping> allSubLines = newContainer.getOriginMapping().getAllSubLines();
 
             for (final LineMapping subMapping : allSubLines) {
-                currentSubIndex = refreshLineMapping(newContainer, subMapping, mappingToElements, currentSubIndex, xref);
+                currentSubIndex = refreshLineMapping(newContainer, subMapping, mappingToElements, currentSubIndex);
             }
 
             if (allSubLines.isEmpty() && !newContainer.getLines().isEmpty()) {
@@ -714,7 +700,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
                 // delete lines without mapping
                 if (this.accessor.getPermissionAuthority().canEditInstance(newContainer)) {
                     for (final DLine lineToDelete : new ArrayList<DLine>(newContainer.getLines())) {
-                        doDeleteLine(lineToDelete, xref);
+                        doDeleteLine(lineToDelete);
                     }
                 }
             }
@@ -728,17 +714,15 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
      *            The intersection mapping for which we want to refresh the corresponding cells.
      * @param mappingToElements
      *            A map that list the DTableElement (line or column) for each mapping
-     * @param xref
-     *            the cross referencer to use
      */
-    private void refreshIntersectionMapping(final IntersectionMapping iMapping, final Map<TableMapping, Collection<DTableElement>> mappingToElements, ECrossReferenceAdapter xref) {
+    private void refreshIntersectionMapping(final IntersectionMapping iMapping, final Map<TableMapping, Collection<DTableElement>> mappingToElements) {
         SetIntersection<DCellCandidate> status = null;
         if (iMapping.isUseDomainClass()) {
             status = refreshIntersectionMappingWithDomain(iMapping, mappingToElements);
         } else {
             status = refreshIntersectionMappingWithoutDomain(iMapping, mappingToElements);
         }
-        updateCells(iMapping, status, xref);
+        updateCells(iMapping, status);
     }
 
     /**
@@ -868,10 +852,8 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
      *            the intersection mapping that is being refreshed
      * @param cellsToUpdate
      *            the {@link SetIntersection} containing new, kept and deleted elements
-     * @param xref
-     *            the cross referencer to use
      */
-    private void updateCells(final IntersectionMapping iMapping, final SetIntersection<DCellCandidate> cellsToUpdate, ECrossReferenceAdapter xref) {
+    private void updateCells(final IntersectionMapping iMapping, final SetIntersection<DCellCandidate> cellsToUpdate) {
         // Let's now create the new cells, update the kept ones and remove the
         // old ones.
         for (final DCellCandidate toCreate : cellsToUpdate.getNewElements()) {
@@ -900,7 +882,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
         }
         for (final DCellCandidate toRemove : cellsToUpdate.getRemovedElements()) {
             final DCell cell = toRemove.getOriginalElement();
-            doDeleteCell(cell, xref);
+            this.sync.removeUneededCell(cell);
         }
     }
 
@@ -1022,19 +1004,16 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
      *
      * @param lineToDelete
      *            the line to delete
-     * @param xref
-     *            the cross reference to use to get the elements referencing the deleted line (or its sublines and
-     *            cells)
      */
-    private void doDeleteLine(DLine lineToDelete, ECrossReferenceAdapter xref) {
+    private void doDeleteLine(DLine lineToDelete) {
         // Step 1: delete all sublines (and all references to these sublines)
         for (DLine line : Sets.newLinkedHashSet(lineToDelete.getLines())) {
-            doDeleteLine(line, xref);
+            doDeleteLine(line);
         }
 
         // Step 2 : delete all cells (and all references to these cells)
         for (DCell cell : Sets.newLinkedHashSet(lineToDelete.getCells())) {
-            doDeleteCell(cell, xref);
+            this.sync.removeUneededCell(cell);
         }
 
         // Step 3 : delete the line (and all references to it)
@@ -1048,14 +1027,12 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
      *
      * @param columnToDelete
      *            the column to delete
-     * @param xref
-     *            the cross reference to use to get the elements referencing the deleted column (or its cells)
      */
-    private void doDeleteColumn(DColumn columnToDelete, ECrossReferenceAdapter xref) {
+    private void doDeleteColumn(DColumn columnToDelete) {
         // Step 1: delete all cells contained in this column (and all references
         // to these cells)
         for (DCell cell : Sets.newLinkedHashSet(columnToDelete.getCells())) {
-            doDeleteCell(cell, xref);
+            this.sync.removeUneededCell(cell);
         }
         // Step 2: delete the column (and all references to this column)
         if (accessor.getPermissionAuthority().canDeleteInstance(columnToDelete)) {
@@ -1065,33 +1042,17 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
     }
 
     /**
-     * Deletes the given cell, and removes all references to deleted elements.
-     *
-     * @param cell
-     *            the cell to delete
-     * @param xref
-     *            the cross reference to use to get the elements referencing the deleted cell
-     */
-    private void doDeleteCell(DCell cell, ECrossReferenceAdapter xref) {
-        // Delegate to the DTable elements synchronize,
-        // that will properly remove the cell and all references to it
-        this.sync.removeUneededCell(cell);
-    }
-
-    /**
      * Compute the current status of a given line container for a given LineMapping.
      *
      * @param container
      *            current line container.
      * @param mapping
      *            current line mapping.
-     * @param xref
-     *            the session corss referencer
      * @return a {@link SetIntersection} representing the current status.
      */
-    private SetIntersection<DLineCandidate> computeCurrentStatus(final LineContainer container, final LineMapping mapping, ECrossReferenceAdapter xref) {
+    private SetIntersection<DLineCandidate> computeCurrentStatus(final LineContainer container, final LineMapping mapping) {
         final SetIntersection<DLineCandidate> status = new SetIntersection<DLineCandidate>();
-        removeTargetLessLines(container, xref);
+        removeTargetLessLines(container);
         setOldlineCandidates(container, mapping, status);
         final MultipleCollection<EObject> semantics = new MultipleCollection<EObject>();
         if (TableHelper.hasSemanticCandidatesExpression(mapping)) {
@@ -1131,7 +1092,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
         }
     }
 
-    private void removeTargetLessLines(final LineContainer container, ECrossReferenceAdapter xref) {
+    private void removeTargetLessLines(final LineContainer container) {
         // Remove line with no target (target == null). This case can happen
         // when the dangling references are removed during the delete of the
         // semantic element.
@@ -1143,7 +1104,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
                 }
             }
             for (DLine lineWithoutTarget : linesWithoutTarget) {
-                doDeleteLine(lineWithoutTarget, xref);
+                doDeleteLine(lineWithoutTarget);
             }
         }
     }
@@ -1152,6 +1113,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
     public void setTable(final DTable newTable) {
         this.table = newTable;
         this.ids = RefreshIdsHolder.getOrCreateHolder(table);
+        xref = ECrossReferenceAdapter.getCrossReferenceAdapter(table.getTarget());
     }
 
     @Override
