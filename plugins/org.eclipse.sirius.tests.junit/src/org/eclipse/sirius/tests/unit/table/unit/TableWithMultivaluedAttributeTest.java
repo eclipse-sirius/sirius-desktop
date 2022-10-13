@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2016, 2023 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,7 +14,7 @@ package org.eclipse.sirius.tests.unit.table.unit;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.sirius.table.business.api.refresh.DTableSynchronizer;
-import org.eclipse.sirius.table.business.internal.refresh.DTableSynchronizerImpl;
+import org.eclipse.sirius.table.business.internal.dialect.TableDialectServices;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.TableFactory;
 import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
@@ -70,7 +70,7 @@ public class TableWithMultivaluedAttributeTest extends SiriusTestCase {
         Assert.assertNotNull("The table description " + TABLE_DESCRIPTION_NAME + " has not been found in the activated viewpoint", aliasesTableDescription);
 
         // Creation of the table
-        DTableSynchronizer sync = new DTableSynchronizerImpl(aliasesTableDescription, accessor, interpreter);
+        DTableSynchronizer sync = new TableDialectServices().createTableSynchronizer(aliasesTableDescription, accessor, interpreter);
         DTable newTable = TableFactory.eINSTANCE.createDTable();
         newTable.setDescription(aliasesTableDescription);
         newTable.setTarget(semanticModel);

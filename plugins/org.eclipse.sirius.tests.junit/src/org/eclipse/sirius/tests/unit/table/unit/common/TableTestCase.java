@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,8 @@ package org.eclipse.sirius.tests.unit.table.unit.common;
 
 import java.util.Iterator;
 
+import org.eclipse.sirius.table.business.api.refresh.DTableSynchronizer;
+import org.eclipse.sirius.table.business.internal.dialect.TableDialectServices;
 import org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription;
 import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
 import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
@@ -57,6 +59,16 @@ public abstract class TableTestCase extends SiriusTestCase {
         activateViewpoint("UML2 tables for tests");
     }
 
+    /**
+     * Creates a synchronizer.
+     * 
+     * @param descr description of table
+     * @return synchronizer
+     */
+    protected DTableSynchronizer createTableSynchronizer(TableDescription descr) {
+    	return new TableDialectServices().createTableSynchronizer(descr, accessor, interpreter);
+    }
+    
     /**
      * Return the searched tableDescription.
      * 
