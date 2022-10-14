@@ -13,12 +13,20 @@
 package org.eclipse.sirius.tests.unit.common.interpreter.variable;
 
 import java.util.Collection;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.Map;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
+import org.eclipse.sirius.business.internal.dialect.CompositeInterpretedExpressionQuery;
+import org.eclipse.sirius.common.tools.api.interpreter.DefaultInterpreterContextFactory;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
@@ -31,6 +39,7 @@ import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.internal.interpreter.SiriusInterpreterContextFactory;
 
 import junit.framework.TestCase;
@@ -174,6 +183,7 @@ public class VariableInterpreterTests extends TestCase {
     }
 
     public void testVariableInterpreterValidationOnIncorrectVariableExpression() {
+
         // Setup
         DiagramDescription diagramDescription = DescriptionFactory.eINSTANCE.createDiagramDescription();
         diagramDescription.setDomainClass(EcorePackage.eNAME + "." + EcorePackage.Literals.EPACKAGE.getName());
@@ -223,6 +233,78 @@ public class VariableInterpreterTests extends TestCase {
         } catch (EvaluationException e) {
             fail("EvaluationException should not be thrown");
         }
+    }
+
+    /**
+     * Tests the validation with a {@link CompositeInterpretedExpressionQuery} in which new variables have been added,
+     * and also a variable with at least 2 possible types.
+     */
+    public void testVariableInterpreterValidationWithCompositeInterpretedExpressionQuery() {
+        // Setup
+        DiagramDescription diagramDescription = DescriptionFactory.eINSTANCE.createDiagramDescription();
+        diagramDescription.setDomainClass(EcorePackage.eNAME + "." + EcorePackage.Literals.EPACKAGE.getName());
+
+        String varExampleName1 = "varExampleName1";
+        String varExampleValue1 = "varExampleValue1";
+        String varExampleName2 = "varExampleName2";
+        String varExampleValue2 = "varExampleValue2";
+        String varSeveralTypes = "varSeveralTypes";
+
+        IInterpretedExpressionQuery query1 = DialectManager.INSTANCE.createInterpretedExpressionQuery(diagramDescription, DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__PRECONDITION_EXPRESSION);
+        query1.getAvailableVariables().put(varSeveralTypes, VariableType.fromJavaClass(Object.class));
+        query1.getAvailableVariables().put(varExampleName1, VariableType.fromString(varExampleValue1));
+
+        IInterpretedExpressionQuery query2 = DialectManager.INSTANCE.createInterpretedExpressionQuery(diagramDescription, DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__PRECONDITION_EXPRESSION);
+        query2.getAvailableVariables().put(varSeveralTypes, VariableType.fromJavaClass(String.class));
+        query2.getAvailableVariables().put(varExampleName2, VariableType.fromString(varExampleValue2));
+
+        CompositeInterpretedExpressionQuery compositeQuery = new CompositeInterpretedExpressionQuery();
+        compositeQuery.add(query1);
+        compositeQuery.add(query2);
+
+        VariableType customizedType = compositeQuery.getAvailableVariables().get(varSeveralTypes);
+        assertEquals("There should be 2 possible types", 2, customizedType.getPossibleTypes().size());
+
+        IInterpreterContext customContext = createCustomInterpreterContext(diagramDescription, DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__PRECONDITION_EXPRESSION, compositeQuery);
+
+        // Check validation is successful
+        Collection<IInterpreterStatus> status = interpreter.validateExpression(customContext, VariableInterpreter.PREFIX + varExampleName1);
+        assertNotNull(status);
+        assertTrue("The validation should be successful", status.isEmpty());
+
+        status = interpreter.validateExpression(customContext, VariableInterpreter.PREFIX + varExampleName2);
+        assertNotNull(status);
+        assertTrue("The validation should be successful", status.isEmpty());
+
+        status = interpreter.validateExpression(customContext, VariableInterpreter.PREFIX + varSeveralTypes);
+        assertNotNull(status);
+        assertTrue("The validation should be successful", status.isEmpty());
+    }
+
+    private static IInterpreterContext createCustomInterpreterContext(EObject element, EStructuralFeature feature, IInterpretedExpressionQuery query) {
+        Collection<String> targetDomainClasses = new LinkedHashSet<>();
+        Collection<EPackage> avalaiblePackages = new LinkedHashSet<>();
+        Collection<String> dependencies = new LinkedHashSet<>();
+        Map<String, VariableType> variables = new LinkedHashMap<>();
+        boolean requiresTargetType = true;
+
+        Option<Collection<String>> targetDomainClassesOption = query.getTargetDomainClasses();
+        if (!targetDomainClassesOption.some()) {
+            requiresTargetType = false;
+        } else {
+            for (String domainClass : targetDomainClassesOption.get()) {
+                targetDomainClasses.add(domainClass);
+            }
+        }
+        if (!targetDomainClassesOption.some() || !targetDomainClassesOption.get().isEmpty()) {
+            avalaiblePackages = query.getPackagesToImport();
+            variables = query.getAvailableVariables();
+            dependencies = query.getDependencies();
+        }
+
+        IInterpreterContext context = DefaultInterpreterContextFactory.createInterpreterContext(element, requiresTargetType, feature, VariableType.fromStrings(targetDomainClasses), avalaiblePackages,
+                variables, dependencies);
+        return context;
     }
 
     @Override

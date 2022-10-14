@@ -381,29 +381,28 @@ public class DialectManagerImpl implements DialectManager {
 
     @Override
     public IInterpretedExpressionQuery createInterpretedExpressionQuery(EObject target, EStructuralFeature feature) {
-        IInterpretedExpressionQuery returnedQuery = null;
+        CompositeInterpretedExpressionQuery compositeQuery = new CompositeInterpretedExpressionQuery();
         // Ask registered providers first
         for (IInterpretedExpressionQueryProvider provider : SiriusPlugin.getDefault().getInterpretedExpressionQueryProviders()) {
             Option<IInterpretedExpressionQuery> answer = provider.getExpressionQueryFor(target, feature);
             if (answer.some()) {
-                returnedQuery = answer.get();
-                break;
+                compositeQuery.add(answer.get());
             }
         }
-        if (returnedQuery == null) {
+        if (compositeQuery.isEmpty()) {
             // Step 1 : we search for a Dialect compatible with
             // the given target
             Dialect dialect = getDialectFromEObjectAccordingToRepresentationDescription(target);
             if (dialect != null) {
                 // Step 2 : we delegate the query creation to the found
                 // DialectDescription
-                returnedQuery = dialect.getServices().createInterpretedExpressionQuery(target, feature);
+                compositeQuery.add(dialect.getServices().createInterpretedExpressionQuery(target, feature));
             } else if (new EObjectQuery(target).getFirstAncestorOfType(DescriptionPackage.Literals.EXTENSION).some()) {
                 // We are not inside a dialect, but inside an extension
             }
         }
-        if (returnedQuery != null) {
-            return returnedQuery;
+        if (!compositeQuery.isEmpty()) {
+            return compositeQuery.unwrap();
         }
         // If no query can be built, we return a default query that will
         // avoid NPE
