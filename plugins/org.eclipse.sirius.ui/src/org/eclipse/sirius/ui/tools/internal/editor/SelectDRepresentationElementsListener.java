@@ -82,7 +82,7 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
      */
     private boolean enableCreatedElementsConstraintInSelectElementsListener = Boolean
             .valueOf(System.getProperty("org.eclipse.sirius.ui.enableCreatedElementsConstraintInSelectElementsListener", "true")); //$NON-NLS-1$ //$NON-NLS-2$
-                                                                                                                                                                                      // ;
+                                                                                                                                   // ;
 
     /**
      * Default constructor.
@@ -148,36 +148,31 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
                 IEditorPart activeEditor = EclipseUIUtil.getActiveEditor();
                 if (dialectEditor.equals(activeEditor)) {
                     List<DRepresentationElement> elementsToSelect = extractElementsToSelect(event, currentRep);
-                    if (elementsToSelect != null) {
-                        // Set the selection in async exec: for some dialect, ui
-                        // could be refresh by another post commit triggered after
-                        // this one and doing some UI refresh in sync exec.
-                        setSelectionInAsyncExec(dialectEditor, elementsToSelect);
-                    }
+                    // Set the selection in async exec: for some dialect, ui could be refresh by another post commit
+                    // triggered after this one and doing some UI refresh in sync exec.
+                    setSelectionInAsyncExec(dialectEditor, elementsToSelect);
                 }
             }
             // We are out of the UI Thread.
             else {
                 // We retrieve the elementToSelect before since we cannot differ this call in a separate thread.
                 List<DRepresentationElement> elementsToSelect = extractElementsToSelect(event, currentRep);
-                if (elementsToSelect != null) {
-                    // The current EMF transaction (we are in a post commit listener here) is not released until all
-                    // post commits are executed. If we are out of the UI Thread, retrieving the current active editor
-                    // implies to wait for the UI Thread. To avoid a dead lock by blocking the current transaction while
-                    // waiting for the UI Thread (this one could also be waiting for the transaction to be released) we
-                    // execute this code in a separate thread.
-                    ExecutorService executorService = Executors.newSingleThreadExecutor();
-                    executorService.submit(() -> {
-                        // getActiveEditor will perform a synExec.
-                        IEditorPart activeEditor = EclipseUIUtil.getActiveEditor();
-                        if (dialectEditor.equals(activeEditor)) {
-                            // Set the selection in async exec: for some dialect, ui
-                            // could be refresh by another post commit triggered after
-                            // this one and doing some UI refresh in sync exec.
-                            setSelectionInAsyncExec(dialectEditor, elementsToSelect);
-                        }
-                    });
-                }
+                // The current EMF transaction (we are in a post commit listener here) is not released until all post
+                // commits are executed. If we are out of the UI Thread, retrieving the current active editor implies to
+                // wait for the UI Thread. To avoid a dead lock by blocking the current transaction while waiting for
+                // the UI Thread (this one could also be waiting for the transaction to be released) we execute this
+                // code in a separate thread.
+                ExecutorService executorService = Executors.newSingleThreadExecutor();
+                executorService.submit(() -> {
+                    // getActiveEditor will perform a syncExec.
+                    IEditorPart activeEditor = EclipseUIUtil.getActiveEditor();
+                    if (dialectEditor.equals(activeEditor)) {
+                        // Set the selection in async exec: for some dialect, ui
+                        // could be refresh by another post commit triggered after
+                        // this one and doing some UI refresh in sync exec.
+                        setSelectionInAsyncExec(dialectEditor, elementsToSelect);
+                    }
+                });
             }
         }
     }
@@ -188,10 +183,12 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
      * @param currentDialectEditor
      *            The current dialect editor
      * @param elementsToSelect
-     *            The elements to select
+     *            The elements to select. This list can be null. In this case, nothing is selected.
      */
     protected void setSelectionInAsyncExec(DialectEditor currentDialectEditor, List<DRepresentationElement> elementsToSelect) {
-        EclipseUIUtil.displayAsyncExec(new SetSelectionRunnable(currentDialectEditor, elementsToSelect));
+        if (elementsToSelect != null) {
+            EclipseUIUtil.displayAsyncExec(new SetSelectionRunnable(currentDialectEditor, elementsToSelect));
+        }
     }
 
     /**
