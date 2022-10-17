@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:component="http://www.eclipse.org/sirius/sample/component" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_mS1nUBT5EeWQ37jeOcGsxQ" selectedViews="_n8o2sBT5EeWQ37jeOcGsxQ" version="15.0.0.202201261500">
+  <viewpoint:DAnalysis uid="_mS1nUBT5EeWQ37jeOcGsxQ" selectedViews="_n8o2sBT5EeWQ37jeOcGsxQ" version="15.0.0.202209061200">
     <semanticResources>Bug467663.component</semanticResources>
     <semanticResources>Bug467663.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_n8o2sBT5EeWQ37jeOcGsxQ">
@@ -15,6 +15,10 @@
       </ownedRepresentationDescriptors>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_XRr8APb2EeyRspMicPuGiw" name="new DiagramForBug467663WithRectilinear" repPath="#_i7bPcBXREeWwcbvMkwT-CQ" changeId="e941f894-4765-4528-bdb2-e98b0c7fed9c">
         <description xmi:type="description_1:DiagramDescription" href="Bug467663.odesign#//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug467663']"/>
+        <target xmi:type="ecore:EPackage" href="Bug467663.ecore#/"/>
+      </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_aq-X0E4xEe2HQIlWATdpEQ" name="new DiagramForBug580924" repPath="#_aq5fUE4xEe2HQIlWATdpEQ" changeId="af737680-4a8a-4868-90ee-b0ae7dd8edb5">
+        <description xmi:type="description_1:DiagramDescription" href="Bug467663.odesign#//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug580924']"/>
         <target xmi:type="ecore:EPackage" href="Bug467663.ecore#/"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
@@ -834,6 +838,187 @@
     <description xmi:type="description_1:DiagramDescription" href="Bug467663.odesign#//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug467663']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_i7bPuBXREeWwcbvMkwT-CQ"/>
     <activatedLayers xmi:type="description_1:Layer" href="Bug467663.odesign#//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug467663']/@defaultLayer"/>
+    <target xmi:type="ecore:EPackage" href="Bug467663.ecore#/"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram uid="_aq5fUE4xEe2HQIlWATdpEQ">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_arR50E4xEe2HQIlWATdpEQ" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_arR50U4xEe2HQIlWATdpEQ" type="Sirius" element="_aq5fUE4xEe2HQIlWATdpEQ" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_artXoE4xEe2HQIlWATdpEQ" type="2002" element="_arWLQE4xEe2HQIlWATdpEQ">
+          <children xmi:type="notation:Node" xmi:id="_ar0FUE4xEe2HQIlWATdpEQ" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_ar0sYE4xEe2HQIlWATdpEQ" type="7001">
+            <children xmi:type="notation:Node" xmi:id="_ar3vsE4xEe2HQIlWATdpEQ" type="3008" element="_arc48E4xEe2HQIlWATdpEQ">
+              <children xmi:type="notation:Node" xmi:id="_ar3vs04xEe2HQIlWATdpEQ" type="5005"/>
+              <children xmi:type="notation:Node" xmi:id="_ar3vtE4xEe2HQIlWATdpEQ" type="7002">
+                <styles xmi:type="notation:SortingStyle" xmi:id="_ar3vtU4xEe2HQIlWATdpEQ"/>
+                <styles xmi:type="notation:FilteringStyle" xmi:id="_ar3vtk4xEe2HQIlWATdpEQ"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_ar3vsU4xEe2HQIlWATdpEQ" fontName="Cantarell" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_feZqkk4xEe2HQIlWATdpEQ" x="90" y="24" width="150" height="70"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_ar3vt04xEe2HQIlWATdpEQ" type="3008" element="_arc4804xEe2HQIlWATdpEQ">
+              <children xmi:type="notation:Node" xmi:id="_ar3vuk4xEe2HQIlWATdpEQ" type="5005"/>
+              <children xmi:type="notation:Node" xmi:id="_ar3vu04xEe2HQIlWATdpEQ" type="7002">
+                <styles xmi:type="notation:SortingStyle" xmi:id="_ar3vvE4xEe2HQIlWATdpEQ"/>
+                <styles xmi:type="notation:FilteringStyle" xmi:id="_ar3vvU4xEe2HQIlWATdpEQ"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_ar3vuE4xEe2HQIlWATdpEQ" fontName="Cantarell" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_feZql04xEe2HQIlWATdpEQ" x="90" y="124" width="150" height="70"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_ar0sYU4xEe2HQIlWATdpEQ"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_ar0sYk4xEe2HQIlWATdpEQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_artXoU4xEe2HQIlWATdpEQ" fontName="Cantarell" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_feZqkE4xEe2HQIlWATdpEQ" x="20" y="80" width="388" height="248"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_ar16gE4xEe2HQIlWATdpEQ" type="2002" element="_arZ1oU4xEe2HQIlWATdpEQ">
+          <children xmi:type="notation:Node" xmi:id="_ar16g04xEe2HQIlWATdpEQ" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_ar16hE4xEe2HQIlWATdpEQ" type="7001">
+            <children xmi:type="notation:Node" xmi:id="_ar3vvk4xEe2HQIlWATdpEQ" type="3008" element="_areHEU4xEe2HQIlWATdpEQ">
+              <children xmi:type="notation:Node" xmi:id="_ar3vwU4xEe2HQIlWATdpEQ" type="5005"/>
+              <children xmi:type="notation:Node" xmi:id="_ar3vwk4xEe2HQIlWATdpEQ" type="7002">
+                <styles xmi:type="notation:SortingStyle" xmi:id="_ar3vw04xEe2HQIlWATdpEQ"/>
+                <styles xmi:type="notation:FilteringStyle" xmi:id="_ar3vxE4xEe2HQIlWATdpEQ"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_ar3vv04xEe2HQIlWATdpEQ" fontName="Cantarell" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_feZqnk4xEe2HQIlWATdpEQ" x="30" y="29" width="150" height="70"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_ar3vxU4xEe2HQIlWATdpEQ" type="3008" element="_areHFE4xEe2HQIlWATdpEQ">
+              <children xmi:type="notation:Node" xmi:id="_ar3vyE4xEe2HQIlWATdpEQ" type="5005"/>
+              <children xmi:type="notation:Node" xmi:id="_ar3vyU4xEe2HQIlWATdpEQ" type="7002">
+                <styles xmi:type="notation:SortingStyle" xmi:id="_ar3vyk4xEe2HQIlWATdpEQ"/>
+                <styles xmi:type="notation:FilteringStyle" xmi:id="_ar3vy04xEe2HQIlWATdpEQ"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_ar3vxk4xEe2HQIlWATdpEQ" fontName="Cantarell" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_feZqoE4xEe2HQIlWATdpEQ" x="30" y="124" width="150" height="70"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_ar16hU4xEe2HQIlWATdpEQ"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_ar16hk4xEe2HQIlWATdpEQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_ar16gU4xEe2HQIlWATdpEQ" fontName="Cantarell" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_feZqnE4xEe2HQIlWATdpEQ" x="440" y="80" width="288" height="248"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_ar16h04xEe2HQIlWATdpEQ" type="2002" element="_arZ1pE4xEe2HQIlWATdpEQ">
+          <children xmi:type="notation:Node" xmi:id="_ar16ik4xEe2HQIlWATdpEQ" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_ar16i04xEe2HQIlWATdpEQ" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_ar16jE4xEe2HQIlWATdpEQ"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_ar16jU4xEe2HQIlWATdpEQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_ar16iE4xEe2HQIlWATdpEQ" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_feZqok4xEe2HQIlWATdpEQ" x="771" y="80" width="117" height="248"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_arR50k4xEe2HQIlWATdpEQ"/>
+        <edges xmi:type="notation:Edge" xmi:id="_ar92UE4xEe2HQIlWATdpEQ" type="4001" element="_armp8E4xEe2HQIlWATdpEQ" source="_ar3vsE4xEe2HQIlWATdpEQ" target="_artXoE4xEe2HQIlWATdpEQ">
+          <children xmi:type="notation:Node" xmi:id="_ar-dYE4xEe2HQIlWATdpEQ" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_feZqlk4xEe2HQIlWATdpEQ" x="1" y="-6"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_ar-dYk4xEe2HQIlWATdpEQ" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ar-dY04xEe2HQIlWATdpEQ" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_asBgsE4xEe2HQIlWATdpEQ" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_asBgsU4xEe2HQIlWATdpEQ" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_ar92UU4xEe2HQIlWATdpEQ"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_ar92Uk4xEe2HQIlWATdpEQ" fontName="Cantarell" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ar92U04xEe2HQIlWATdpEQ" points="[3, -4, -126, 89]$[127, -140, -2, -47]$[127, -96, -2, -3]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_asbwYE4xEe2HQIlWATdpEQ" id="(0.98,0.9714285714285714)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_asbwYU4xEe2HQIlWATdpEQ" id="(0.9561855670103093,0.016129032258064516)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_asbwYk4xEe2HQIlWATdpEQ" type="4001" element="_arptRE4xEe2HQIlWATdpEQ" source="_ar3vt04xEe2HQIlWATdpEQ" target="_artXoE4xEe2HQIlWATdpEQ">
+          <children xmi:type="notation:Node" xmi:id="_asbwZk4xEe2HQIlWATdpEQ" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_feZqm04xEe2HQIlWATdpEQ" x="-17" y="-6"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_asbwaE4xEe2HQIlWATdpEQ" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_asbwaU4xEe2HQIlWATdpEQ" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_asbwak4xEe2HQIlWATdpEQ" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_asbwa04xEe2HQIlWATdpEQ" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_asbwY04xEe2HQIlWATdpEQ"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_asbwZE4xEe2HQIlWATdpEQ" fontName="Cantarell" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_asbwZU4xEe2HQIlWATdpEQ" points="[2, 2, -140, 28]$[126, 119, -16, 145]$[133, 50, -9, 76]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_asbwbE4xEe2HQIlWATdpEQ" id="(0.9866666666666667,0.9714285714285714)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_asbwbU4xEe2HQIlWATdpEQ" id="(0.9922680412371134,0.6935483870967742)"/>
+        </edges>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_arptSU4xEe2HQIlWATdpEQ" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_arptSk4xEe2HQIlWATdpEQ"/>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_arWLQE4xEe2HQIlWATdpEQ" name="EClass1" incomingEdges="_armp8E4xEe2HQIlWATdpEQ _arptRE4xEe2HQIlWATdpEQ">
+      <target xmi:type="ecore:EClass" href="Bug467663.ecore#//EClass1"/>
+      <semanticElements xmi:type="ecore:EClass" href="Bug467663.ecore#//EClass1"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_k14FkU4xEe2HQIlWATdpEQ" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="Bug467663.odesign#//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug580924']/@defaultLayer/@containerMappings[name='EClassMapping']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="Bug467663.odesign#//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug580924']/@defaultLayer/@containerMappings[name='EClassMapping']"/>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_arc48E4xEe2HQIlWATdpEQ" name="ref1" outgoingEdges="_armp8E4xEe2HQIlWATdpEQ">
+        <target xmi:type="ecore:EReference" href="Bug467663.ecore#//EClass1/ref1"/>
+        <semanticElements xmi:type="ecore:EReference" href="Bug467663.ecore#//EClass1/ref1"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_k14Fmk4xEe2HQIlWATdpEQ" borderSize="1" borderSizeComputationExpression="1">
+          <description xmi:type="style:FlatContainerStyleDescription" href="Bug467663.odesign#//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug580924']/@defaultLayer/@containerMappings[name='EClassMapping']/@subContainerMappings[name='EReferenceMapping']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="Bug467663.odesign#//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug580924']/@defaultLayer/@containerMappings[name='EClassMapping']/@subContainerMappings[name='EReferenceMapping']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_arc4804xEe2HQIlWATdpEQ" name="ref2" outgoingEdges="_arptRE4xEe2HQIlWATdpEQ">
+        <target xmi:type="ecore:EReference" href="Bug467663.ecore#//EClass1/ref2"/>
+        <semanticElements xmi:type="ecore:EReference" href="Bug467663.ecore#//EClass1/ref2"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_k14FnU4xEe2HQIlWATdpEQ" borderSize="1" borderSizeComputationExpression="1">
+          <description xmi:type="style:FlatContainerStyleDescription" href="Bug467663.odesign#//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug580924']/@defaultLayer/@containerMappings[name='EClassMapping']/@subContainerMappings[name='EReferenceMapping']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="Bug467663.odesign#//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug580924']/@defaultLayer/@containerMappings[name='EClassMapping']/@subContainerMappings[name='EReferenceMapping']"/>
+      </ownedDiagramElements>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_arZ1oU4xEe2HQIlWATdpEQ" name="EClass2">
+      <target xmi:type="ecore:EClass" href="Bug467663.ecore#//EClass2"/>
+      <semanticElements xmi:type="ecore:EClass" href="Bug467663.ecore#//EClass2"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_k14FlE4xEe2HQIlWATdpEQ" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="Bug467663.odesign#//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug580924']/@defaultLayer/@containerMappings[name='EClassMapping']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="Bug467663.odesign#//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug580924']/@defaultLayer/@containerMappings[name='EClassMapping']"/>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_areHEU4xEe2HQIlWATdpEQ" name="ref3">
+        <target xmi:type="ecore:EReference" href="Bug467663.ecore#//EClass2/ref3"/>
+        <semanticElements xmi:type="ecore:EReference" href="Bug467663.ecore#//EClass2/ref3"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_k14FoE4xEe2HQIlWATdpEQ" borderSize="1" borderSizeComputationExpression="1">
+          <description xmi:type="style:FlatContainerStyleDescription" href="Bug467663.odesign#//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug580924']/@defaultLayer/@containerMappings[name='EClassMapping']/@subContainerMappings[name='EReferenceMapping']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="Bug467663.odesign#//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug580924']/@defaultLayer/@containerMappings[name='EClassMapping']/@subContainerMappings[name='EReferenceMapping']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_areHFE4xEe2HQIlWATdpEQ" name="ref4">
+        <target xmi:type="ecore:EReference" href="Bug467663.ecore#//EClass2/ref4"/>
+        <semanticElements xmi:type="ecore:EReference" href="Bug467663.ecore#//EClass2/ref4"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_k14Fo04xEe2HQIlWATdpEQ" borderSize="1" borderSizeComputationExpression="1">
+          <description xmi:type="style:FlatContainerStyleDescription" href="Bug467663.odesign#//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug580924']/@defaultLayer/@containerMappings[name='EClassMapping']/@subContainerMappings[name='EReferenceMapping']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="Bug467663.odesign#//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug580924']/@defaultLayer/@containerMappings[name='EClassMapping']/@subContainerMappings[name='EReferenceMapping']"/>
+      </ownedDiagramElements>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_arZ1pE4xEe2HQIlWATdpEQ" name="EClassKO">
+      <target xmi:type="ecore:EClass" href="Bug467663.ecore#//EClassKO"/>
+      <semanticElements xmi:type="ecore:EClass" href="Bug467663.ecore#//EClassKO"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_k14Fl04xEe2HQIlWATdpEQ" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="Bug467663.odesign#//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug580924']/@defaultLayer/@containerMappings[name='EClassMapping']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="Bug467663.odesign#//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug580924']/@defaultLayer/@containerMappings[name='EClassMapping']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_armp8E4xEe2HQIlWATdpEQ" sourceNode="_arc48E4xEe2HQIlWATdpEQ" targetNode="_arWLQE4xEe2HQIlWATdpEQ">
+      <target xmi:type="ecore:EReference" href="Bug467663.ecore#//EClass1/ref1"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_k14FpU4xEe2HQIlWATdpEQ" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="Bug467663.odesign#//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug580924']/@defaultLayer/@edgeMappings[name='ETypeMapping']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_k14Fpk4xEe2HQIlWATdpEQ"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="Bug467663.odesign#//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug580924']/@defaultLayer/@edgeMappings[name='ETypeMapping']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_arptRE4xEe2HQIlWATdpEQ" sourceNode="_arc4804xEe2HQIlWATdpEQ" targetNode="_arWLQE4xEe2HQIlWATdpEQ">
+      <target xmi:type="ecore:EReference" href="Bug467663.ecore#//EClass1/ref2"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_k14Fp04xEe2HQIlWATdpEQ" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="Bug467663.odesign#//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug580924']/@defaultLayer/@edgeMappings[name='ETypeMapping']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_k14FqE4xEe2HQIlWATdpEQ"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="Bug467663.odesign#//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug580924']/@defaultLayer/@edgeMappings[name='ETypeMapping']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="Bug467663.odesign#//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug580924']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_aq9JsE4xEe2HQIlWATdpEQ"/>
+    <activatedLayers xmi:type="description_1:Layer" href="Bug467663.odesign#//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug580924']/@defaultLayer"/>
     <target xmi:type="ecore:EPackage" href="Bug467663.ecore#/"/>
   </diagram:DSemanticDiagram>
 </xmi:XMI>

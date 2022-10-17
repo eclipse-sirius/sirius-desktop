@@ -33,8 +33,11 @@ import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCa
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
+import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
+import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IWorkbenchPart;
 import org.hamcrest.core.IsInstanceOf;
@@ -61,6 +64,9 @@ public class EdgeReconnectionTests extends AbstractSiriusSwtBotGefTestCase {
     private static final String REPRESENTATION2_NAME = "DiagramForBug467663Bis";
 
     private static final String REPRESENTATION3_NAME = "DiagramForBug467663WithRectilinear";
+
+    private static final String REPRESENTATION4_NAME = "DiagramForBug580924";
+
 
     /**
      * A selection listener to detect if the diagram is selected during the reconnection of an edge.
@@ -590,6 +596,59 @@ public class EdgeReconnectionTests extends AbstractSiriusSwtBotGefTestCase {
         assertEquals(2, newConnection2Points.size());
         assertEquals("After source port dnd source end point is not at the correct position.", to.getTranslated(5, 0), newConnection2Points.getFirstPoint());
         assertEquals("After source port dnd target end point is not at the correct position.", connection2Points.getLastPoint(), newConnection2Points.getLastPoint());
+    }
+
+    /**
+     * Test that the selection change behavior is OK even after a reconnect tool that has an unexpected behavior, ie the
+     * reconnect edge is no longer here after the execution of the reconnect tool.
+     */
+    public void testSelectionChangeBehaviorAfterAReconnectToolWithUnexpectedBehavior() {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION4_NAME, "new " + REPRESENTATION4_NAME, DDiagram.class, true);
+        try {
+            // Access to property view
+            SWTBotView propertiesView = bot.viewByTitle("Properties");
+            propertiesView.setFocus();
+
+            // Access to tab General
+            SWTBotSiriusHelper.selectPropertyTabItem("General", propertiesView.bot());
+
+            // Check that "root" item is displayed in the General tab of Properties view
+            propertiesView.bot().tree(0).getTreeItem("root");
+
+            SWTBotGefEditPart eClass1EditPartBot = editor.getEditPart("EClass1", AbstractDiagramContainerEditPart.class);
+            SWTBotGefEditPart eClass2EditPartBot = editor.getEditPart("EClass2", AbstractDiagramContainerEditPart.class);
+            SWTBotGefEditPart ref1EditPartBot = editor.getEditPart("ref1", AbstractDiagramContainerEditPart.class);
+            SWTBotGefEditPart ref3EditPartBot = editor.getEditPart("ref3", AbstractDiagramContainerEditPart.class);
+            SWTBotGefConnectionEditPart connection1EditPartBot = editor.getConnectionEditPart(ref1EditPartBot, eClass1EditPartBot).get(0);
+
+            // Reconnect source of a connection that "removes" the connection
+            PointList connection1Points = ((AbstractConnectionEditPart) connection1EditPartBot.part()).getConnectionFigure().getPoints().getCopy();
+            Point from = connection1Points.getFirstPoint();
+            Point to = from.getCopy().setX(editor.getBounds(ref3EditPartBot).x);
+            connection1EditPartBot.select();
+
+            // Add a selection listener to detect wrong diagram selection during drag'n'drop
+            NoDiagramSelectionListener selectionListener = new NoDiagramSelectionListener();
+            EclipseUIUtil.getActivePage().addSelectionListener(selectionListener);
+            try {
+                editor.drag(from, to);
+                // Check that reconnection no longer exists
+                assertEquals(0, editor.getConnectionEditPart(ref1EditPartBot, eClass1EditPartBot).size());
+                assertEquals(0, editor.getConnectionEditPart(ref3EditPartBot, eClass1EditPartBot).size());
+                // Select another class to check that notifications are thrown, Properties view is used to check this.
+                editor.select(eClass2EditPartBot);
+                try {
+                    // Check that "EClass2" item is displayed in the General tab of Properties view
+                    propertiesView.bot().tree(0).getTreeItem("EClass2");
+                } catch (WidgetNotFoundException e) {
+                    fail("The properties view should be refreshed and the name of the selected class EClass2 should be dislayed in it.");
+                }
+            } finally {
+                EclipseUIUtil.getActivePage().removeSelectionListener(selectionListener);
+            }
+        } finally {
+            editor.restore();
+        }
     }
 
     @Override

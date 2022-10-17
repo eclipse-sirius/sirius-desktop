@@ -38,8 +38,11 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.DiagramWithChildrensCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
+import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.eclipse.ui.ISelectionListener;
@@ -72,6 +75,8 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String REPRESENTATION_INSTANCE_6BLANK = "new TC1041 representation 6 Blank";
 
+    private static final String REPRESENTATION_INSTANCE_7BLANK = "new TC1041 representation 7 Blank";
+
     private static final String REPRESENTATION_NAME_2 = "TC1041 representation 2 Blank";
 
     private static final String REPRESENTATION_NAME_3 = "TC1041 representation 3";
@@ -79,6 +84,8 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String REPRESENTATION_NAME_5 = "TC1041 representation 5 Blank";
 
     private static final String REPRESENTATION_NAME_6 = "TC1041 representation 6 Blank";
+
+    private static final String REPRESENTATION_NAME_7 = "TC1041 representation 7 Blank";
 
     private static final String MODEL = "tc1041.ecore";
 
@@ -213,6 +220,18 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
      */
     private void openRepresentation6() {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_6, REPRESENTATION_INSTANCE_6BLANK, DDiagram.class);
+        if (snapToGrid) {
+            editor.setSnapToGrid(true, GRID_STEP, 2);
+        } else {
+            editor.setSnapToGrid(false);
+        }
+    }
+
+    /**
+     * Open "TC1041 representation 7 Blank" diagram.
+     */
+    private void openRepresentation7() {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_7, REPRESENTATION_INSTANCE_7BLANK, DDiagram.class);
         if (snapToGrid) {
             editor.setSnapToGrid(true, GRID_STEP, 2);
         } else {
@@ -826,6 +845,68 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
         assertEquals("Bad number of elements", 0, Sets.newLinkedHashSet(filter).size());
         assertFalse("An error message was generated !", doesAWarningOccurs() || doesAnErrorOccurs());
+    }
+
+    /**
+     * Test that the selection change behavior is OK even after a DnD tool that has an unexpected behavior, ie the drag
+     * element is no longer here after the execution of the DnD tool.
+     */
+    @Test
+    public void test_SelectionChangeBehaviorAfterADnDWithUnexpectedBehavior() throws Exception {
+
+        openRepresentation7();
+
+        startToListenErrorLog(true, true);
+
+        // Access to property view
+        SWTBotView propertiesView = bot.viewByTitle("Properties");
+        propertiesView.setFocus();
+
+        // Access to tab General
+        SWTBotSiriusHelper.selectPropertyTabItem("General", propertiesView.bot());
+
+        // Check that "Package" item is displayed in the General tab of Properties view
+        propertiesView.bot().tree(0).getTreeItem("Package");
+
+        // Get the location of P1
+        SWTBotGefEditPart p1Bot = editor.getEditPart(CONTAINER_TO_DRAG_P1).parent();
+        Point p1Location = editor.getBounds(p1Bot).getLocation();
+
+        // DnD P2(EPackage) from the Model Content view to P1
+        semanticResourceNode = localSession.getSemanticResourceNode(ecoreEcoreResource);
+        final SWTBotTreeItem ecoreTreeItem1 = semanticResourceNode.expandNode(ROOTPACKAGE_NAME).getNode(CONTAINER_TO_DRAG_P2);
+        ecoreTreeItem1.dragAndDrop(editor.getCanvas(), new org.eclipse.swt.graphics.Point(p1Location.x + 25, p1Location.y + 25));
+        bot.waitUntil(new DiagramWithChildrensCondition(editor, 1));
+
+        assertFalse("An error message has been logged!", doesAWarningOccurs() || doesAnErrorOccurs());
+
+        // Get the location of P2
+        SWTBotGefEditPart p2Bot = editor.getEditPart(CONTAINER_TO_DRAG_P2).parent();
+
+        Point targetLocation = editor.getBounds(p1Bot).getTopRight().getTranslated(10, 0);
+
+        // Add a selection listener to detect wrong diagram selection during drag'n'drop
+        NoDiagramSelectionListener selectionListener = new NoDiagramSelectionListener();
+        EclipseUIUtil.getActivePage().addSelectionListener(selectionListener);
+        try {
+            editor.drag(p2Bot, targetLocation);
+            List<SWTBotGefEditPart> allEditParts = editor.mainEditPart().children();
+
+            assertFalse("An error message was generated !", doesAWarningOccurs() || doesAnErrorOccurs());
+            // Check that the drag element P2 no longer exists
+            assertEquals("Bad number of elements!", 1, allEditParts.size());
+
+            // Select another element to check that notifications are thrown, Properties view is used to check this.
+            editor.select(p1Bot);
+            try {
+                // Check that "P1" item is displayed in the General tab of Properties view
+                propertiesView.bot().tree(0).getTreeItem("P1");
+            } catch (WidgetNotFoundException e) {
+                fail("The properties view should be refreshed and the name of the selected package P1 should be dislayed in it.");
+            }
+        } finally {
+            removeSelectionListenerAndCheckIt(selectionListener);
+        }
     }
 
     @Override
