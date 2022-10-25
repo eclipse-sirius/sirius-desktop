@@ -367,6 +367,7 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
         if (Messages.BundledImageShape_idMissing.equals(uri)) {
             DiagramPlugin.getDefault().logError(Messages.SVGFigure_usingInvalidBundledImageShape);
         } else {
+            ClassLoader previousClassLoader = Thread.currentThread().getContextClassLoader();
             if (forceClassLoader) {
                 Thread.currentThread().setContextClassLoader(this.getClass().getClassLoader());
             }
@@ -381,7 +382,7 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
                 }
             } finally {
                 if (forceClassLoader) {
-                    Thread.currentThread().setContextClassLoader(null);
+                    Thread.currentThread().setContextClassLoader(previousClassLoader);
                 }
             }
         }
