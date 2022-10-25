@@ -459,11 +459,12 @@
         <module>../../packaging/org.eclipse.sirius.samples.properties.feature</module>
 
         <module>../../packaging/org.eclipse.sirius.diagram.elk.feature</module>
-		    <module>../../packaging/org.eclipse.sirius.diagram.elk.sdk.feature</module>
+        <module>../../packaging/org.eclipse.sirius.diagram.elk.sdk.feature</module>
         <module>../../packaging/org.eclipse.sirius.sample.basicfamily.feature</module>
 
         <!-- update sites -->
         <module>../../packaging/org.eclipse.sirius.update</module>
+
         <module>../../packaging/org.eclipse.sirius.sample.basicfamily.update</module>
 
         <!-- Test metamodels and modelers -->
@@ -504,6 +505,11 @@
 
         <!-- update sites -->
         <module>../../packaging/org.eclipse.sirius.tests.update</module>
+
+        <!-- patch -->
+        <module>../../patch/org.eclipse.sirius.runtime.ide.ui.feature.patch</module>
+        <module>../../patch/org.eclipse.sirius.specifier.feature.patch</module>
+        <module>../../patch/org.eclipse.sirius.update.patch</module>
     </modules>
   </profile>
 
@@ -817,5 +823,29 @@
              <tests.vmargs>${jacoco.agent.ut.arg} ${tests.vmargs.mac} -Xmx1024m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
          </properties>
      </profile>
- </profiles>
+
+    <profile>
+      <id>patch_580950</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <build>
+          <directory>${build-folder-name}</directory>
+      </build>
+      <properties>
+        <target-platform-path>.</target-platform-path>
+      </properties>
+      <modules>
+        <!-- plugins -->
+         <!-- plugins -->
+        <module>../../plugins/org.eclipse.sirius.diagram.ui</module>
+
+        <!-- patch -->
+        <module>../../patch/org.eclipse.sirius.runtime.ide.ui.feature.patch</module>
+        <module>../../patch/org.eclipse.sirius.specifier.feature.patch</module>
+        <module>../../patch/org.eclipse.sirius.update.patch</module>
+      </modules>
+    </profile>
+
+  </profiles>
 </project>

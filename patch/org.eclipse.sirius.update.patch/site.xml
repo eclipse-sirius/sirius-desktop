@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description url="http://www.eclipse.org/sirius">
+      Eclipse Sirius - The easiest way to get your own Modeling Tool.
+   </description>
+   <feature url="features/org.eclipse.sirius.runtime.ide.ui.feature.patch_7.0.4.qualifier.jar" id="org.eclipse.sirius.runtime.ide.ui.feature.patch" version="7.0.4.qualifier" patch="true">
+      <category name="Sirius.Patch"/>
+   </feature>
+   <feature url="features/org.eclipse.sirius.specifier.feature.patch_7.0.4.qualifier.jar" id="org.eclipse.sirius.specifier.feature.patch" version="7.0.4.qualifier" patch="true">
+      <category name="Sirius.Patch"/>
+   </feature>
+   <category-def name="Sirius.Patch" label="Sirius Patch for Bug 580950">
+      <description>
+         Patch for https://bugs.eclipse.org/bugs/show_bug.cgi?id=580950
+      </description>
+   </category-def>
+</site>
