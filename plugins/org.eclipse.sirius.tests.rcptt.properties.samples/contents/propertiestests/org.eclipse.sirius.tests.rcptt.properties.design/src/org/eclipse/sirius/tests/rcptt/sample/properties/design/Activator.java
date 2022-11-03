@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2016, 2022 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -25,7 +25,7 @@ import org.osgi.framework.BundleContext;
  */
 public class Activator extends AbstractUIPlugin {
     // The plug-in ID
-    public static final String PLUGIN_ID = "org.eclipse.sirius.tests.rcptt.sample.properties.design";
+    public static final String PLUGIN_ID = "org.eclipse.sirius.tests.rcptt.sample.properties.design"; //$NON-NLS-1$
 
     // The shared instance
     private static Activator plugin;
@@ -40,21 +40,21 @@ public class Activator extends AbstractUIPlugin {
 
     /*
      * (non-Javadoc)
-     * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.
-     * BundleContext)
+     * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework. BundleContext)
      */
+    @Override
     public void start(BundleContext context) throws Exception {
         super.start(context);
         plugin = this;
         viewpoints = new HashSet<Viewpoint>();
-        viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin(PLUGIN_ID + "/description/PropertiesTests.odesign"));
+        viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin(PLUGIN_ID + "/description/PropertiesTests.odesign")); //$NON-NLS-1$
     }
 
     /*
      * (non-Javadoc)
-     * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.
-     * BundleContext)
+     * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework. BundleContext)
      */
+    @Override
     public void stop(BundleContext context) throws Exception {
         plugin = null;
         if (viewpoints != null) {
