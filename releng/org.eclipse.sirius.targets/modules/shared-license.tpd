@@ -1,5 +1,0 @@
-target "shared_license"
-
-location Eclipse-Shared-License "https://download.eclipse.org/cbi/updates/license" {
-	org.eclipse.license.feature.group lazy
-}
