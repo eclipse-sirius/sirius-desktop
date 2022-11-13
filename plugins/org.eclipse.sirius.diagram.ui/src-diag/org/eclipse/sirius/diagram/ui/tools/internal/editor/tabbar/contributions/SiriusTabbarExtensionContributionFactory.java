@@ -151,19 +151,21 @@ public abstract class SiriusTabbarExtensionContributionFactory extends Extension
          * @See {@link ISelectionListener#selectionChanged(IWorkbenchPart, ISelection)}
          */
         public void selectionChanged(IWorkbenchPart part, ISelection selection) {
+            IWorkbenchPart effectivePart = part; 
             // we refresh action only if selection is in the same part than
             // current action tabbar.
             if (representationPart != null && part != null && part.getAdapter(representationPart.getClass()) != null) {
                  //try to adapt the part to the current representationPart
                  //see bug 580836, to work in a multipage editor
-                 part = part.getAdapter(this.representationPart.getClass());
+                effectivePart = part.getAdapter(this.representationPart.getClass());
             }
-            if (representationPart != null && representationPart.equals(part)) {
+            
+            if (representationPart != null && representationPart.equals(effectivePart)) {
                 IAction action = getAction();
                 if (action instanceof IActionDelegate) {
                     ((IObjectActionDelegate) action).selectionChanged(action, selection);
                 } else if (action instanceof ISelectionListener) {
-                    ((ISelectionListener) action).selectionChanged(part, selection);
+                    ((ISelectionListener) action).selectionChanged(effectivePart, selection);
                 }
                 update();
             }
