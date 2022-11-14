@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
-<target name="sirius_2021-09" sequenceNumber="1660221128">
+<!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
+<target name="sirius_2021-09" sequenceNumber="1668445883">
   <locations>
-	<location includeSource="true" missingManifest="generate" type="Maven">
-      <dependencies>
-        <dependency>
-          <groupId>org.easymock</groupId>
-          <artifactId>easymock</artifactId>
-          <version>4.3</version>
-        </dependency>
-      </dependencies>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.easymock" version="0.0.0"/>
+      <repository id="Orbit-2022-03" location="https://download.eclipse.org/tools/orbit/downloads/drops/R20220302172233/repository/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.apache.log4j" version="0.0.0"/>
@@ -20,7 +16,7 @@
       <unit id="ch.qos.logback.classic" version="0.0.0"/>
       <unit id="ch.qos.logback.core" version="0.0.0"/>
       <unit id="org.antlr.runtime" version="0.0.0"/>
-      <repository id="Orbit" location="https://download.eclipse.org/tools/orbit/downloads/drops/I20221027104851/repository"/>
+      <repository id="Orbit-2022-12" location="https://download.eclipse.org/tools/orbit/downloads/drops/I20221027104851/repository"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.swtbot.eclipse.feature.group" version="3.1.0.202106041005"/>
