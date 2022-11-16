@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -78,6 +78,7 @@ import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.operation.CenterEdgeEndModelChangeOperation;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.diagram.ui.internal.refresh.borderednode.CanonicalDBorderItemLocator;
@@ -120,7 +121,7 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
             addEdgeFormatData(null, (DEdge) semanticElement, rootEditPart.getRoot().getViewer());
         } else if (toStoreView instanceof Diagram && semanticElement instanceof DDiagram) {
             addChildFormat((DDiagram) semanticElement, rootEditPart, discoveredKeys);
-        } else if (toStoreView instanceof Node) {
+        } else if (toStoreView instanceof Node && !(rootEditPart instanceof AbstractDiagramNameEditPart)) {
             if (semanticElement instanceof DDiagramElement && semanticElement instanceof DSemanticDecorator) {
                 addChildFormat(null, (DDiagramElement) semanticElement, (Node) toStoreView, rootEditPart, discoveredKeys);
             }
