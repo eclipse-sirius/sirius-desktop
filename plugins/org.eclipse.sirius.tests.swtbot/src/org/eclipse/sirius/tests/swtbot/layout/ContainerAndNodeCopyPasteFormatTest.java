@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -174,16 +174,6 @@ public class ContainerAndNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGef
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         final UIResource sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
-        // Open the 6 representations
-        diagramEditor3 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME3, DDiagram.class);
-        diagramEditor4 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME4, DDiagram.class);
-        diagramEditor5 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_SQUARE_LCNODE, REPRESENTATION_NAME_WITH_SQUARE,
-                DDiagram.class);
-        diagramEditor6 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_ELLIPSE_LCNODE, REPRESENTATION_NAME_WITH_ELLIPSE,
-                DDiagram.class);
-        diagramEditor7 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_DIAMOND_LCNODE, REPRESENTATION_NAME_WITH_DIAMOND,
-                DDiagram.class);
-        diagramEditor8 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_IMAGE_LCNODE, REPRESENTATION_NAME_WITH_IMAGE, DDiagram.class);
     }
 
     /**
@@ -212,7 +202,10 @@ public class ContainerAndNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGef
      * </ul>
      */
     public void testContainerCopyPasteLayoutOnDiagramWithExtension() {
-        diagramEditor3.show();
+        // Open the 2 required representations
+        diagramEditor4 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME4, DDiagram.class);
+        diagramEditor3 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME3, DDiagram.class);
+
         // Check LogicalFunction1 container locations before the copy layout.
         checkContainerBounds(diagramEditor3, LC1_LABEL, LC1_CONTAINER_BOUNDS_DIAG3, LC1_CONTAINER_BOUNDS_DIAG3);
 
@@ -272,7 +265,11 @@ public class ContainerAndNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGef
      * </ul>
      */
     public void testContainerToNodeCopyPasteLayoutOnDiagramWithExtension() {
-        diagramEditor3.show();
+        // Open the 2 required representations
+        diagramEditor5 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_SQUARE_LCNODE, REPRESENTATION_NAME_WITH_SQUARE,
+                DDiagram.class);
+        diagramEditor3 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME3, DDiagram.class);
+
         // Check LogicalFunction1 container locations before the copy layout.
         checkContainerBounds(diagramEditor3, LC1_LABEL, LC1_CONTAINER_BOUNDS_DIAG3, LC1_CONTAINER_BOUNDS_DIAG3);
 
@@ -314,7 +311,12 @@ public class ContainerAndNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGef
      * </ul>
      */
     public void testNodeToNodeCopyPasteEllipseStyleOnDiagramWithExtension() {
-        diagramEditor6.show();
+        // Open the 2 required representations
+        diagramEditor5 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_SQUARE_LCNODE, REPRESENTATION_NAME_WITH_SQUARE,
+                DDiagram.class);
+        diagramEditor6 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_ELLIPSE_LCNODE, REPRESENTATION_NAME_WITH_ELLIPSE,
+                DDiagram.class);
+
         // Copy LC1 style
         diagramEditor6.click(LC2_POINT);
         diagramEditor6.clickContextMenu(Messages.CopyFormatAction_text);
@@ -356,7 +358,12 @@ public class ContainerAndNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGef
      * </ul>
      */
     public void testNodeToNodeCopyPasteDiamondStyleOnDiagramWithExtension() {
-        diagramEditor7.show();
+        // Open the 2 required representations
+        diagramEditor5 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_SQUARE_LCNODE, REPRESENTATION_NAME_WITH_SQUARE,
+                DDiagram.class);
+        diagramEditor7 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_DIAMOND_LCNODE, REPRESENTATION_NAME_WITH_DIAMOND,
+                DDiagram.class);
+
         // Copy LC1 layout
         diagramEditor7.click(LC2_POINT);
         diagramEditor7.clickContextMenu(Messages.CopyFormatAction_text);
@@ -399,7 +406,11 @@ public class ContainerAndNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGef
      * </ul>
      */
     public void testNodeToNodeCopyPasteWSImageStyleOnDiagramWithExtension() {
-        diagramEditor8.show();
+        // Open the 2 required representations
+        diagramEditor5 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_SQUARE_LCNODE, REPRESENTATION_NAME_WITH_SQUARE,
+                DDiagram.class);
+        diagramEditor8 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_IMAGE_LCNODE, REPRESENTATION_NAME_WITH_IMAGE, DDiagram.class);
+
         // Copy LC1 Style
         diagramEditor8.click(LC2_POINT);
         diagramEditor8.clickContextMenu(Messages.CopyFormatAction_text);
@@ -442,7 +453,12 @@ public class ContainerAndNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGef
      * </ul>
      */
     public void testNodeToNodeCopyPasteEllipseLayoutAndStyleOnDiagramWithExtension() {
-        diagramEditor6.show();
+        // Open the 2 required representations
+        diagramEditor5 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_SQUARE_LCNODE, REPRESENTATION_NAME_WITH_SQUARE,
+                DDiagram.class);
+        diagramEditor6 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_ELLIPSE_LCNODE, REPRESENTATION_NAME_WITH_ELLIPSE,
+                DDiagram.class);
+
         // Check LogicalFunction2 node locations before the copy layout and
         // style.
         Rectangle LC2Diag6Bounds = checkNodeBounds(diagramEditor6, LC2_LABEL, NEW_STYLE_LC2_NODE_BOUNDS, NEW_STYLE_LC2_NODE_BOUNDS);
@@ -497,7 +513,12 @@ public class ContainerAndNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGef
      * </ul>
      */
     public void testNodeToNodeCopyPasteDiamondLayoutAndStyleOnDiagramWithExtension() {
-        diagramEditor7.show();
+        // Open the 2 required representations
+        diagramEditor5 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_SQUARE_LCNODE, REPRESENTATION_NAME_WITH_SQUARE,
+                DDiagram.class);
+        diagramEditor7 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_DIAMOND_LCNODE, REPRESENTATION_NAME_WITH_DIAMOND,
+                DDiagram.class);
+
         // Check LogicalFunction2 node locations before the copy layout and
         // style.
         Rectangle LC2Diag7Bounds = checkNodeBounds(diagramEditor7, LC2_LABEL, NEW_STYLE_LC2_NODE_BOUNDS, NEW_STYLE_LC2_NODE_BOUNDS);
@@ -551,7 +572,11 @@ public class ContainerAndNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGef
      * </ul>
      */
     public void testNodeToNodeCopyPasteImageLayoutAndStyleOnDiagramWithExtension() {
-        diagramEditor8.show();
+        // Open the 2 required representations
+        diagramEditor5 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_SQUARE_LCNODE, REPRESENTATION_NAME_WITH_SQUARE,
+                DDiagram.class);
+        diagramEditor8 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_IMAGE_LCNODE, REPRESENTATION_NAME_WITH_IMAGE, DDiagram.class);
+
         // Check LogicalFunction2 node locations before the copy layout and
         // style.
         Rectangle LC2Diag8Bounds = checkNodeBounds(diagramEditor8, LC2_LABEL, NEW_STYLE_LC2_NODE_BOUNDS, NEW_STYLE_LC2_NODE_BOUNDS);

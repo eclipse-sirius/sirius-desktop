@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -116,11 +116,6 @@ public class BorderedNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGefTest
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         final UIResource sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
-        // Open the 2 representations
-        diagramEditor1 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME1, DDiagram.class);
-        diagramEditor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME2, DDiagram.class);
-        diagramEditor3 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME3, DDiagram.class);
-        diagramEditor4 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME4, DDiagram.class);
 
         // Set expected bordered nodes locations for first container and second
         // container.
@@ -189,6 +184,8 @@ public class BorderedNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGefTest
     protected void tearDown() throws Exception {
         diagramEditor1 = null;
         diagramEditor2 = null;
+        diagramEditor3 = null;
+        diagramEditor4 = null;
         expectedBList = null;
         expectedAList = null;
         expectedNonCollapsedNodeList = null;
@@ -207,7 +204,9 @@ public class BorderedNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGefTest
      * </ul>
      */
     public void testBorderedNodeCopyPasteLayout() {
-        diagramEditor1.show();
+        // Open the 2 required representations
+        diagramEditor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME2, DDiagram.class);
+        diagramEditor1 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME1, DDiagram.class);
         // Check LogicalFunction1 bordered nodes locations before the copy
         // layout.
         checkFirstContainerABorderedNodes(diagramEditor1, expectedAList, expectedAList_GMF);
@@ -289,7 +288,9 @@ public class BorderedNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGefTest
      * </ul>
      */
     public void testBorderedNodeCopyPasteLayoutOnDiagram() {
-        diagramEditor1.show();
+        // Open the 2 required representations
+        diagramEditor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME2, DDiagram.class);
+        diagramEditor1 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME1, DDiagram.class);
         // Check LogicalFunction1 bordered nodes locations before the copy
         // layout.
         checkFirstContainerABorderedNodes(diagramEditor1, expectedAList, expectedAList_GMF);
@@ -350,7 +351,9 @@ public class BorderedNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGefTest
      * </ul>
      */
     public void testBorderedNodeCopyPasteLayoutWithSelectAll() {
-        diagramEditor1.show();
+        // Open the 2 required representations
+        diagramEditor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME2, DDiagram.class);
+        diagramEditor1 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME1, DDiagram.class);
         // Check LogicalFunction1 bordered nodes locations before the copy
         // layout.
         checkFirstContainerABorderedNodes(diagramEditor1, expectedAList, expectedAList_GMF);
@@ -417,7 +420,9 @@ public class BorderedNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGefTest
      * </ul>
      */
     public void testBorderedNodeCopyPasteLayoutWithHiddenTargetNodes() {
-        diagramEditor1.show();
+        // Open the 2 required representations
+        diagramEditor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME2, DDiagram.class);
+        diagramEditor1 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME1, DDiagram.class);
         // Check LogicalFunction1 bordered nodes locations before the copy
         // layout.
         checkFirstContainerABorderedNodes(diagramEditor1, expectedAList, expectedAList_GMF);
@@ -490,7 +495,9 @@ public class BorderedNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGefTest
      * </ul>
      */
     public void testBorderedNodeCopyPasteLayoutWithCollapsedTargetNodes() {
-        diagramEditor1.show();
+        // Open the 2 required representations
+        diagramEditor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME2, DDiagram.class);
+        diagramEditor1 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME1, DDiagram.class);
         // Check LogicalFunction1 bordered nodes locations before the copy
         // layout.
         checkFirstContainerABorderedNodes(diagramEditor1, expectedAList, expectedAList_GMF);
@@ -554,7 +561,9 @@ public class BorderedNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGefTest
      * </ul>
      */
     public void testBorderedNodeCopyPasteLayoutWithCollapsedSourceNodes() {
-        diagramEditor1.show();
+        // Open the 2 required representations
+        diagramEditor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME2, DDiagram.class);
+        diagramEditor1 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME1, DDiagram.class);
         // Check LogicalFunction1 bordered nodes locations before the copy
         // layout.
         checkFirstContainerABorderedNodes(diagramEditor1, expectedAList, expectedAList_GMF);
@@ -614,7 +623,9 @@ public class BorderedNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGefTest
      * </ul>
      */
     public void testBorderedNodeCopyPasteLayoutWithCollapsedSourceAndTargetNodes() {
-        diagramEditor1.show();
+        // Open the 2 required representations
+        diagramEditor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME2, DDiagram.class);
+        diagramEditor1 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME1, DDiagram.class);
         // Check LogicalFunction1 bordered nodes locations before the copy
         // layout.
         checkFirstContainerABorderedNodes(diagramEditor1, expectedAList, expectedAList_GMF);
@@ -682,7 +693,8 @@ public class BorderedNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGefTest
      * </ul>
      */
     public void testBorderedNodeCopyPasteLayoutOnSameDiagram() {
-        diagramEditor1.show();
+        // Open the required representation
+        diagramEditor1 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME1, DDiagram.class);
         // Check LogicalFunction1 bordered nodes locations before the copy
         // layout.
         checkFirstContainerABorderedNodes(diagramEditor1, expectedAList, expectedAList_GMF);
@@ -811,7 +823,9 @@ public class BorderedNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGefTest
      * </ul>
      */
     public void testBorderedNodeCopyPasteLayoutOnDiagramWithExtension() {
-        diagramEditor3.show();
+        // Open the 2 required representations
+        diagramEditor4 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME4, DDiagram.class);
+        diagramEditor3 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME3, DDiagram.class);
         // Check LogicalFunction1 bordered nodes locations before the copy
         // layout.
         checkFirstContainerABorderedNodes(diagramEditor3, expectedAList, expectedAList_GMF);
@@ -848,6 +862,10 @@ public class BorderedNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGefTest
      * </ul>
      */
     public void testBorderNodeCopyPasteStyleOnDiagramWithExtension() {
+        // Open the 2 required representations
+        diagramEditor4 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME4, DDiagram.class);
+        diagramEditor3 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME3, DDiagram.class);
+
         diagramEditor3.show();
         // Copy LC1 layout
         diagramEditor3.click(COPY_POINT);

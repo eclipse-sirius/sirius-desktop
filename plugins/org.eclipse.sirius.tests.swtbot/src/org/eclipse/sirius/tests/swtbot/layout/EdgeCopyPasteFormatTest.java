@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -137,11 +137,6 @@ public class EdgeCopyPasteFormatTest extends AbstractSiriusSwtBotGefTestCase {
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         final UIResource sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
-        // Open the 4 representations
-        diagram1 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME1, DDiagram.class);
-        diagram2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME2, DDiagram.class);
-        diagram3 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME3, DDiagram.class);
-        diagram4 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME4, DDiagram.class);
     }
 
     /**
@@ -160,6 +155,9 @@ public class EdgeCopyPasteFormatTest extends AbstractSiriusSwtBotGefTestCase {
      * Test that the paste layout affect custom style for edges.
      */
     public void testEdgeCopyPasteLayout() {
+        // Open the 2 required representations
+        diagram2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME2, DDiagram.class);
+        diagram1 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME1, DDiagram.class);
         // Check style of the first representation : it should have custom style
         // and not the second
         checkLayoutStyleReferences(diagram1, REFERENCE1, ABOVE_LINK_STATUS, CHAMFERED_LINK_TYPE, NONE_SMOOTHNESS, true);
@@ -169,7 +167,6 @@ public class EdgeCopyPasteFormatTest extends AbstractSiriusSwtBotGefTestCase {
         checkLayoutStyleReferences(diagram2, REFERENCE1, NONE_LINK_STATUS, SEMICIRCLE_LINK_TYPE, NONE_SMOOTHNESS, false);
         checkLayoutStyleReferences(diagram2, REFERENCE2, NONE_LINK_STATUS, SEMICIRCLE_LINK_TYPE, NONE_SMOOTHNESS, false);
         // Select all elements on first representation and copy layout.
-        diagram1.show();
         diagram1.click(FIRST_POINT);
         diagram1.clickContextMenu(Messages.CopyFormatAction_text);
         // Paste layout on second representation
@@ -189,6 +186,9 @@ public class EdgeCopyPasteFormatTest extends AbstractSiriusSwtBotGefTestCase {
      * ).
      */
     public void testEdgeCopyPasteLayoutUsingDiagramsWithExtension() {
+        // Open the 2 required representations
+        diagram4 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME4, DDiagram.class);
+        diagram3 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME3, DDiagram.class);
         // Check style of the first representation : it should have custom style
         // and not the second
         checkLayoutStyleReferences(diagram3, REFERENCE1, ABOVE_LINK_STATUS, CHAMFERED_LINK_TYPE, NONE_SMOOTHNESS, true);
@@ -200,7 +200,6 @@ public class EdgeCopyPasteFormatTest extends AbstractSiriusSwtBotGefTestCase {
         checkLayoutStyleReferences(diagram4, REFERENCE2, NONE_LINK_STATUS, SEMICIRCLE_LINK_TYPE, NONE_SMOOTHNESS, false);
         checkEdgeColor(diagram4, REFERENCE1, GRAY, "Gray");
         // Select all elements on first representation and copy layout.
-        diagram3.show();
         diagram3.click(FIRST_POINT);
         diagram3.clickContextMenu(Messages.CopyFormatAction_text);
         // Paste layout on second representation
@@ -220,6 +219,9 @@ public class EdgeCopyPasteFormatTest extends AbstractSiriusSwtBotGefTestCase {
      * ).
      */
     public void testEdgeCopyPasteStyleUsingDiagramsWithExtension() {
+        // Open the 2 required representations
+        diagram4 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME4, DDiagram.class);
+        diagram3 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME3, DDiagram.class);
         // Check style of the first representation : it should have custom style
         // and not the second
         checkLayoutStyleReferences(diagram3, REFERENCE1, ABOVE_LINK_STATUS, CHAMFERED_LINK_TYPE, NONE_SMOOTHNESS, true);
@@ -232,7 +234,6 @@ public class EdgeCopyPasteFormatTest extends AbstractSiriusSwtBotGefTestCase {
         checkEdgeColor(diagram4, REFERENCE1, GRAY, "Gray");
         checkEdgeColor(diagram4, REFERENCE2, GRAY, "Gray");
         // Select all elements on first representation and copy layout.
-        diagram3.show();
         diagram3.click(FIRST_POINT);
         diagram3.clickContextMenu(Messages.CopyFormatAction_text);
         // Paste layout on second representation
@@ -253,6 +254,9 @@ public class EdgeCopyPasteFormatTest extends AbstractSiriusSwtBotGefTestCase {
      * ).
      */
     public void testEdgeCopyPasteFormatUsingDiagramsWithExtension() {
+        // Open the 2 required representations
+        diagram4 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME4, DDiagram.class);
+        diagram3 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME3, DDiagram.class);
         // Check style of the first representation : it should have custom style
         // and not the second
         checkLayoutStyleReferences(diagram3, REFERENCE1, ABOVE_LINK_STATUS, CHAMFERED_LINK_TYPE, NONE_SMOOTHNESS, true);
@@ -265,7 +269,6 @@ public class EdgeCopyPasteFormatTest extends AbstractSiriusSwtBotGefTestCase {
         checkEdgeColor(diagram4, REFERENCE1, GRAY, "Gray");
         checkEdgeColor(diagram4, REFERENCE2, GRAY, "Gray");
         // Select all elements on first representation and copy layout.
-        diagram3.show();
         diagram3.click(FIRST_POINT);
         diagram3.clickContextMenu(Messages.CopyFormatAction_text);
         // Paste layout on second representation
