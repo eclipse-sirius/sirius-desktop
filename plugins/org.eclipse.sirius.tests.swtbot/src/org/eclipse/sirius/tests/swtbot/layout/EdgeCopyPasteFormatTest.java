@@ -22,14 +22,17 @@ import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.model.business.internal.spec.DEdgeSpec;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.swt.graphics.Color;
@@ -97,6 +100,8 @@ public class EdgeCopyPasteFormatTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String REFERENCE1 = "[0..1] newEReference1";
 
     private static final String REFERENCE2 = "[0..1] newEReference2";
+
+    private static final String ECLASS_1_NAME = "NewEClass1";
 
     /**
      * Diagram on first representation.
@@ -180,10 +185,30 @@ public class EdgeCopyPasteFormatTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that the paste layout affect custom style for edges from and to
-     * diagrams using a specific copy/paste extension (
-     * {@link org.eclipse.sirius.tests.unit.diagram.format.data.manager.extension.SampleNameDataProvider}
-     * ).
+     * Just check that the copy layout is OK, ie without exception, when the selection contains a Node and an edge's
+     * label.
+     */
+    public void testNodeAndEdgeLabelCopyLayout() {
+        boolean oldIsErrorCatchActive = isErrorCatchActive();
+        setErrorCatchActive(true);
+        try {
+            // Open the required representation
+            diagram1 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME1, DDiagram.class);
+            // Select a node and an edge's label
+            SWTBotGefEditPart ege1LabelEditPart = diagram1.getEditPart(REFERENCE1, AbstractDiagramNameEditPart.class);
+            SWTBotGefEditPart nodeEditPart = diagram1.getEditPart(ECLASS_1_NAME, DNodeListEditPart.class);
+            diagram1.select(nodeEditPart, ege1LabelEditPart);
+            diagram1.clickContextMenu(Messages.CopyFormatAction_text);
+            SWTBotUtils.waitAllUiEvents();
+        } finally {
+            setErrorCatchActive(oldIsErrorCatchActive);
+            assertFalse("The copy format action fails." + getErrorLoggersMessage(), doesAnErrorOccurs());
+        }
+    }
+
+    /**
+     * Test that the paste layout affect custom style for edges from and to diagrams using a specific copy/paste
+     * extension ( {@link org.eclipse.sirius.tests.unit.diagram.format.data.manager.extension.SampleNameDataProvider} ).
      */
     public void testEdgeCopyPasteLayoutUsingDiagramsWithExtension() {
         // Open the 2 required representations
