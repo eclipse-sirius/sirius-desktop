@@ -3,7 +3,7 @@ target "orbit" with source, requirements
 location Orbit-2022-03 "https://download.eclipse.org/tools/orbit/downloads/drops/R20220302172233/repository/" {
     org.easymock lazy
 }
-location Orbit-2022-12 "https://download.eclipse.org/tools/orbit/downloads/drops/S20221118032057/repository/" {
+location Orbit-2022-12 "https://download.eclipse.org/tools/orbit/downloads/drops/R20221123021534/repository/" {
     org.apache.log4j lazy
     org.hamcrest.library lazy
     org.junit lazy
