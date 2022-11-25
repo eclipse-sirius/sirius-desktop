@@ -2,7 +2,7 @@ target "aql-3.7"
 
 with requirements
 
-location Acceleo-3.7 "https://download.eclipse.org/acceleo/updates/milestones/3.7/S202211151354/" {
+location Acceleo-3.7 "https://download.eclipse.org/acceleo/updates/releases/3.7/R202211151354/" {
     org.eclipse.acceleo.query.feature.group lazy
     org.eclipse.acceleo.query.source.feature.group lazy
     org.eclipse.acceleo.query.ui.feature.group lazy
