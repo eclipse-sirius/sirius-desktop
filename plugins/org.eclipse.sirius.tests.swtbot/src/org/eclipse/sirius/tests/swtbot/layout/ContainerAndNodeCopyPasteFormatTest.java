@@ -14,6 +14,7 @@ package org.eclipse.sirius.tests.swtbot.layout;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Shape;
+import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
@@ -22,7 +23,10 @@ import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.SquareEditPart.SquareFigure;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
@@ -34,13 +38,13 @@ import org.eclipse.sirius.ext.draw2d.figure.ODesignEllipseFigure;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 
 /**
- * Test container and node Copy-Paste layout and style from and to diagram with
- * extension.
+ * Test container and node Copy-Paste layout and style from and to diagram with extension.
  * 
  * @author jmallet
  */
@@ -83,6 +87,28 @@ public class ContainerAndNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGef
     /** Initial bounds for LC2 square node. */
     private static final Rectangle INITIAL_LC2_SQUARE_NODE_BOUNDS = new Rectangle(90, 0, 30, 30);
 
+    private static final Rectangle D_NODE_BOUNDS_CASE1 = new Rectangle(15, 34, 61, 61);
+
+    private static final Rectangle E_NODE_BOUNDS_CASE1 = new Rectangle(95, 34, 61, 61);
+
+    private static final Rectangle A_NODE_BOUNDS_CASE3 = new Rectangle(45, 44, 126, 51);
+
+    private static final Rectangle B_NODE_BOUNDS_CASE3 = new Rectangle(45, 119, 126, 51);
+
+    private static final Rectangle P11_CONTAINER_BOUNDS_CASE4 = new Rectangle(50, 50, 228, 203);
+
+    private static final Rectangle A_NODE_BOUNDS_CASE5 = new Rectangle(120, 119, 151, 76);
+
+    private static final Rectangle B_NODE_BOUNDS_CASE5 = new Rectangle(120, 219, 151, 76);
+
+    private static final Rectangle P1_CONTAINER_BOUNDS_CASE5 = new Rectangle(100, 100, 403, 403);
+
+    private static final Rectangle C1_NODE_BOUNDS_CASE6 = new Rectangle(45, 69, 76, 126);
+
+    private static final Rectangle C2_NODE_BOUNDS_CASE6 = new Rectangle(220, 69, 76, 126);
+
+    private static final Rectangle C3_NODE_BOUNDS_CASE6 = new Rectangle(45, 44, 76, 126);
+
     private static final String FILE_DIR = "/";
 
     private static final String VSM = "VP-3601.odesign";
@@ -107,6 +133,24 @@ public class ContainerAndNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGef
 
     private static final String REPRESENTATION_NAME_WITH_IMAGE = "repImageAdaptedForCopyPasteFormatTest";
 
+    private static final String REPRESENTATION_NAME_CASE1_SRC = "newDiagPasteLayoutCase1-Source";
+
+    private static final String REPRESENTATION_NAME_CASE1_TGT1 = "newDiagPasteLayoutCase1-Target1";
+
+    private static final String REPRESENTATION_NAME_CASE1_TGT2 = "newDiagPasteLayoutCase1-Target2";
+
+    private static final String REPRESENTATION_NAME_CASE2_SRC = "newDiagPasteLayoutCase2-Source";
+
+    private static final String REPRESENTATION_NAME_CASE2_TGT = "newDiagPasteLayoutCase2-Target";
+
+    private static final String REPRESENTATION_NAME_CASE5_SRC = "newDiagPasteLayoutCase5-Source";
+
+    private static final String REPRESENTATION_NAME_CASE5_TGT = "newDiagPasteLayoutCase5-Target";
+
+    private static final String REPRESENTATION_NAME_CASE6_SRC = "newDiagPasteLayoutCase6-Source";
+
+    private static final String REPRESENTATION_NAME_CASE6_TGT = "newDiagPasteLayoutCase6-Target";
+
     private static final String REPRESENTATION_DESCRIPTION_NAME = "Diagram";
 
     private static final String REPRESENTATION_DESCRIPTION_NAME_SQUARE_LCNODE = "DiagramWithSquareLCNode";
@@ -117,47 +161,19 @@ public class ContainerAndNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGef
 
     private static final String REPRESENTATION_DESCRIPTION_NAME_IMAGE_LCNODE = "DiagramWithImageLCNode";
 
-    /**
-     * Diagram on third representation using a specific copy/paste extension (
-     * {@link org.eclipse.sirius.tests.unit.diagram.format.data.manager.extension.SampleNameDataProvider}
-     * ).
-     */
-    private SWTBotSiriusDiagramEditor diagramEditor3;
+    private static final String REPRESENTATION_DESCRIPTION_NAME_BOUNDING_1 = "DiagPasteLayoutCase1";
+
+    private static final String REPRESENTATION_DESCRIPTION_NAME_BOUNDING_2 = "DiagPasteLayoutCase2";
 
     /**
-     * Diagram on second representation using a specific copy/paste extension (
-     * {@link org.eclipse.sirius.tests.unit.diagram.format.data.manager.extension.SampleNameDataProvider}
-     * ).
+     * Diagram used as source of the copy/paste.
      */
-    private SWTBotSiriusDiagramEditor diagramEditor4;
+    private SWTBotSiriusDiagramEditor diagramEditorSrc;
 
     /**
-     * Diagram on fifth representation using a specific copy/paste extension (
-     * {@link org.eclipse.sirius.tests.unit.diagram.format.data.manager.extension.SampleNameDataProvider}
-     * ), package are represented by gray square.
+     * Diagram used as target of the copy/paste.
      */
-    private SWTBotSiriusDiagramEditor diagramEditor5;
-
-    /**
-     * Diagram on fifth representation using a specific copy/paste extension (
-     * {@link org.eclipse.sirius.tests.unit.diagram.format.data.manager.extension.SampleNameDataProvider}
-     * ), package are represented by orange diamond.
-     */
-    private SWTBotSiriusDiagramEditor diagramEditor6;
-
-    /**
-     * Diagram on fifth representation using a specific copy/paste extension (
-     * {@link org.eclipse.sirius.tests.unit.diagram.format.data.manager.extension.SampleNameDataProvider}
-     * ), package are represented by yellow ellipse.
-     */
-    private SWTBotSiriusDiagramEditor diagramEditor7;
-
-    /**
-     * Diagram on fifth representation using a specific copy/paste extension (
-     * {@link org.eclipse.sirius.tests.unit.diagram.format.data.manager.extension.SampleNameDataProvider}
-     * ), package are represented by workspace image.
-     */
-    private SWTBotSiriusDiagramEditor diagramEditor8;
+    private SWTBotSiriusDiagramEditor diagramEditorTgt;
 
     /**
      * {@inheritDoc}
@@ -181,20 +197,15 @@ public class ContainerAndNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGef
      */
     @Override
     protected void tearDown() throws Exception {
-        diagramEditor3 = null;
-        diagramEditor4 = null;
-        diagramEditor5 = null;
-        diagramEditor6 = null;
-        diagramEditor7 = null;
-        diagramEditor8 = null;
+        diagramEditorSrc = null;
+        diagramEditorTgt = null;
         super.tearDown();
     }
 
     /**
-     * Test that the paste layout puts the elements at the expected location.
-     * This test uses the copy-paste layout on Diagram using the
-     * org.eclipse.sirius.diagram.ui.layoutDataManager extension-point (the
-     * sampleNameDataProvider contributed in oes.tests.junit plug-in).
+     * Test that the paste layout puts the elements at the expected location. This test uses the copy-paste layout on
+     * Diagram using the org.eclipse.sirius.diagram.ui.layoutDataManager extension-point (the sampleNameDataProvider
+     * contributed in oes.tests.junit plug-in).
      * <ul>
      * <li>Check container locations before copy-paste on rep3</li>
      * <li>Run copy-paste from rep3 to rep4</li>
@@ -203,39 +214,39 @@ public class ContainerAndNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGef
      */
     public void testContainerCopyPasteLayoutOnDiagramWithExtension() {
         // Open the 2 required representations
-        diagramEditor4 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME4, DDiagram.class);
-        diagramEditor3 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME3, DDiagram.class);
+        diagramEditorTgt = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME4, DDiagram.class);
+        diagramEditorSrc = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME3, DDiagram.class);
 
         // Check LogicalFunction1 container locations before the copy layout.
-        checkContainerBounds(diagramEditor3, LC1_LABEL, LC1_CONTAINER_BOUNDS_DIAG3, LC1_CONTAINER_BOUNDS_DIAG3);
+        checkContainerBounds(diagramEditorSrc, LC1_LABEL, LC1_CONTAINER_BOUNDS_DIAG3, LC1_CONTAINER_BOUNDS_DIAG3);
 
         // Check LogicalFunction2 container locations before the copy layout.
-        checkContainerBounds(diagramEditor3, LC2_LABEL, LC2_CONTAINER_BOUNDS_DIAG3, LC2_CONTAINER_BOUNDS_DIAG3);
+        checkContainerBounds(diagramEditorSrc, LC2_LABEL, LC2_CONTAINER_BOUNDS_DIAG3, LC2_CONTAINER_BOUNDS_DIAG3);
 
-        Option<Color> originalCopiedColor = getBackgroundColor(diagramEditor3, LC2_LABEL);
+        Option<Color> originalCopiedColor = getBackgroundColor(diagramEditorSrc, LC2_LABEL);
 
         // Copy LC1 layout
-        diagramEditor3.click(LC2_POINT);
-        diagramEditor3.clickContextMenu(Messages.CopyFormatAction_text);
+        diagramEditorSrc.click(LC2_POINT);
+        diagramEditorSrc.clickContextMenu(Messages.CopyFormatAction_text);
 
-        diagramEditor4.show();
+        diagramEditorTgt.show();
 
         // Check LogicalFunction1 container locations before the paste layout.
-        checkContainerBounds(diagramEditor4, LC1_LABEL, LC1_CONTAINER_BOUNDS_DIAG4, LC1_CONTAINER_BOUNDS_DIAG4);
+        checkContainerBounds(diagramEditorTgt, LC1_LABEL, LC1_CONTAINER_BOUNDS_DIAG4, LC1_CONTAINER_BOUNDS_DIAG4);
 
         // Check LogicalFunction2 container locations before the paste layout.
-        checkContainerBounds(diagramEditor4, LC2_LABEL, LC2_CONTAINER_BOUNDS_DIAG4, LC2_CONTAINER_BOUNDS_DIAG4);
+        checkContainerBounds(diagramEditorTgt, LC2_LABEL, LC2_CONTAINER_BOUNDS_DIAG4, LC2_CONTAINER_BOUNDS_DIAG4);
 
         // Paste layout on second representation
-        diagramEditor4.click(EMPTY_POINT);
-        diagramEditor4.clickContextMenu(Messages.PasteLayoutAction_text);
+        diagramEditorTgt.click(EMPTY_POINT);
+        diagramEditorTgt.clickContextMenu(Messages.PasteLayoutAction_text);
 
         // Check LogicalFunction1 container locations after the paste layout.
-        checkContainerBounds(diagramEditor4, LC1_LABEL, LC2_CONTAINER_BOUNDS_DIAG3, LC2_CONTAINER_BOUNDS_DIAG3);
+        checkContainerBounds(diagramEditorTgt, LC1_LABEL, LC2_CONTAINER_BOUNDS_DIAG3, LC2_CONTAINER_BOUNDS_DIAG3);
 
         // Check that style has not changed (current color is not the copied
         // color)
-        Option<Color> currentColor = getBackgroundColor(diagramEditor4, LC1_LABEL);
+        Option<Color> currentColor = getBackgroundColor(diagramEditorTgt, LC1_LABEL);
         if (originalCopiedColor.some() && currentColor.some()) {
             assertFalse("The style must not be changed with a Copy Layout", originalCopiedColor.get().equals(currentColor.get()));
         }
@@ -251,200 +262,184 @@ public class ContainerAndNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGef
     }
 
     /**
-     * Test that the paste layout puts the elements at the expected location.
-     * This test uses the copy-paste layout on Diagram using the
-     * org.eclipse.sirius.diagram.ui.layoutDataManager extension-point (the
-     * sampleNameDataProvider contributed in oes.tests.junit plug-in) Layout of
-     * container LC2 from a first diagram is applied on node LC1 from a second
-     * diagram.
+     * Test that the paste layout puts the elements at the expected location. This test uses the copy-paste layout on
+     * Diagram using the org.eclipse.sirius.diagram.ui.layoutDataManager extension-point (the sampleNameDataProvider
+     * contributed in oes.tests.junit plug-in) Layout of container LC2 from a first diagram is applied on node LC1 from
+     * a second diagram.
      * <ul>
      * <li>Check container locations before copy-paste on rep3</li>
      * <li>Run copy-paste from rep3 to rep5</li>
-     * <li>Check container locations after copy-paste on rep5. Check node
-     * becomes container.</li>
+     * <li>Check container locations after copy-paste on rep5. Check node becomes container.</li>
      * </ul>
      */
     public void testContainerToNodeCopyPasteLayoutOnDiagramWithExtension() {
         // Open the 2 required representations
-        diagramEditor5 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_SQUARE_LCNODE, REPRESENTATION_NAME_WITH_SQUARE,
+        diagramEditorTgt = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_SQUARE_LCNODE, REPRESENTATION_NAME_WITH_SQUARE,
                 DDiagram.class);
-        diagramEditor3 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME3, DDiagram.class);
+        diagramEditorSrc = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME3, DDiagram.class);
 
         // Check LogicalFunction1 container locations before the copy layout.
-        checkContainerBounds(diagramEditor3, LC1_LABEL, LC1_CONTAINER_BOUNDS_DIAG3, LC1_CONTAINER_BOUNDS_DIAG3);
+        checkContainerBounds(diagramEditorSrc, LC1_LABEL, LC1_CONTAINER_BOUNDS_DIAG3, LC1_CONTAINER_BOUNDS_DIAG3);
 
         // Check LogicalFunction2 container locations before the copy layout.
-        Rectangle LC2Bounds = checkContainerBounds(diagramEditor3, LC2_LABEL, LC2_CONTAINER_BOUNDS_DIAG3, LC2_CONTAINER_BOUNDS_DIAG3);
+        Rectangle LC2Bounds = checkContainerBounds(diagramEditorSrc, LC2_LABEL, LC2_CONTAINER_BOUNDS_DIAG3, LC2_CONTAINER_BOUNDS_DIAG3);
 
         // Copy LC1 layout
-        diagramEditor3.click(LC2_POINT);
-        diagramEditor3.clickContextMenu(Messages.CopyFormatAction_text);
+        diagramEditorSrc.click(LC2_POINT);
+        diagramEditorSrc.clickContextMenu(Messages.CopyFormatAction_text);
 
-        diagramEditor5.show();
+        diagramEditorTgt.show();
 
         // Check LogicalFunction1 node locations before the paste layout.
-        checkNodeBounds(diagramEditor5, LC1_LABEL, INITIAL_LC1_SQUARE_NODE_BOUNDS, INITIAL_LC1_SQUARE_NODE_BOUNDS);
+        checkNodeBounds(diagramEditorTgt, LC1_LABEL, INITIAL_LC1_SQUARE_NODE_BOUNDS, INITIAL_LC1_SQUARE_NODE_BOUNDS);
 
         // Check LogicalFunction2 node locations before the paste layout.
-        checkNodeBounds(diagramEditor5, LC2_LABEL, INITIAL_LC2_SQUARE_NODE_BOUNDS, INITIAL_LC2_SQUARE_NODE_BOUNDS);
+        checkNodeBounds(diagramEditorTgt, LC2_LABEL, INITIAL_LC2_SQUARE_NODE_BOUNDS, INITIAL_LC2_SQUARE_NODE_BOUNDS);
 
         // Paste layout on second representation
-        diagramEditor5.click(EMPTY_POINT);
-        diagramEditor5.clickContextMenu(Messages.PasteLayoutAction_text);
+        diagramEditorTgt.click(EMPTY_POINT);
+        diagramEditorTgt.clickContextMenu(Messages.PasteLayoutAction_text);
 
         // Check LogicalFunction1 node locations after the paste layout.
-        checkNodeBounds(diagramEditor5, LC1_LABEL, LC2Bounds, LC2Bounds);
+        checkNodeBounds(diagramEditorTgt, LC1_LABEL, LC2Bounds, LC2Bounds);
     }
 
     /**
-     * Test that the paste style changes style on the expected figure. This test
-     * uses the copy-paste style on Diagram using the
-     * org.eclipse.sirius.diagram.ui.layoutDataManager extension-point (the
-     * sampleNameDataProvider contributed in oes.tests.junit plug-in). Style of
-     * node LC2 from a first diagram is applied on node LC1 from a second
-     * diagram.
+     * Test that the paste style changes style on the expected figure. This test uses the copy-paste style on Diagram
+     * using the org.eclipse.sirius.diagram.ui.layoutDataManager extension-point (the sampleNameDataProvider contributed
+     * in oes.tests.junit plug-in). Style of node LC2 from a first diagram is applied on node LC1 from a second diagram.
      * <ul>
      * <li>Check node location and style before paste on rep5</li>
      * <li>Run copy-paste Style from rep6 to rep5</li>
-     * <li>Check node locations and style after copy-paste on rep5. Check style
-     * node changes into yellow ellipse.</li>
+     * <li>Check node locations and style after copy-paste on rep5. Check style node changes into yellow ellipse.</li>
      * </ul>
      */
     public void testNodeToNodeCopyPasteEllipseStyleOnDiagramWithExtension() {
         // Open the 2 required representations
-        diagramEditor5 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_SQUARE_LCNODE, REPRESENTATION_NAME_WITH_SQUARE,
+        diagramEditorTgt = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_SQUARE_LCNODE, REPRESENTATION_NAME_WITH_SQUARE,
                 DDiagram.class);
-        diagramEditor6 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_ELLIPSE_LCNODE, REPRESENTATION_NAME_WITH_ELLIPSE,
+        diagramEditorSrc = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_ELLIPSE_LCNODE, REPRESENTATION_NAME_WITH_ELLIPSE,
                 DDiagram.class);
 
         // Copy LC1 style
-        diagramEditor6.click(LC2_POINT);
-        diagramEditor6.clickContextMenu(Messages.CopyFormatAction_text);
-        diagramEditor5.show();
+        diagramEditorSrc.click(LC2_POINT);
+        diagramEditorSrc.clickContextMenu(Messages.CopyFormatAction_text);
+        diagramEditorTgt.show();
 
         // Check LogicalFunction1 node locations before the paste style.
-        Rectangle LC1Bounds = checkNodeBounds(diagramEditor5, LC1_LABEL, INITIAL_LC1_SQUARE_NODE_BOUNDS, INITIAL_LC1_SQUARE_NODE_BOUNDS);
+        Rectangle LC1Bounds = checkNodeBounds(diagramEditorTgt, LC1_LABEL, INITIAL_LC1_SQUARE_NODE_BOUNDS, INITIAL_LC1_SQUARE_NODE_BOUNDS);
 
         // Check LogicalFunction2 node locations before the paste style.
-        checkNodeBounds(diagramEditor5, LC2_LABEL, INITIAL_LC2_SQUARE_NODE_BOUNDS, INITIAL_LC2_SQUARE_NODE_BOUNDS);
+        checkNodeBounds(diagramEditorTgt, LC2_LABEL, INITIAL_LC2_SQUARE_NODE_BOUNDS, INITIAL_LC2_SQUARE_NODE_BOUNDS);
 
         // check LogicalFunction1 node style before the paste style.
-        checkGraySquareStyle(diagramEditor5, LC1_LABEL);
+        checkGraySquareStyle(diagramEditorTgt, LC1_LABEL);
 
         // Paste style on second representation
-        diagramEditor5.click(EMPTY_POINT);
-        diagramEditor5.clickContextMenu(Messages.PasteStyleAction_text);
+        diagramEditorTgt.click(EMPTY_POINT);
+        diagramEditorTgt.clickContextMenu(Messages.PasteStyleAction_text);
 
         // Check LogicalFunction1 node locations does not changed after the
         // paste layout.
-        checkNodeBounds(diagramEditor5, LC1_LABEL, LC1Bounds, LC1Bounds);
+        checkNodeBounds(diagramEditorTgt, LC1_LABEL, LC1Bounds, LC1Bounds);
 
         // Check style
-        checkYellowEllipseStyle(diagramEditor5, LC1_LABEL);
+        checkYellowEllipseStyle(diagramEditorTgt, LC1_LABEL);
     }
 
     /**
-     * Test that the paste style changes style on the expected figure. This test
-     * uses the copy-paste style on Diagram using the
-     * org.eclipse.sirius.diagram.ui.layoutDataManager extension-point (the
-     * sampleNameDataProvider contributed in oes.tests.junit plug-in). Style of
-     * node LC2 from a first diagram is applied on node LC1 from a second
-     * diagram.
+     * Test that the paste style changes style on the expected figure. This test uses the copy-paste style on Diagram
+     * using the org.eclipse.sirius.diagram.ui.layoutDataManager extension-point (the sampleNameDataProvider contributed
+     * in oes.tests.junit plug-in). Style of node LC2 from a first diagram is applied on node LC1 from a second diagram.
      * <ul>
      * <li>Check node location and style before paste on rep5</li>
      * <li>Run copy-paste Style from rep7 to rep5</li>
-     * <li>Check node locations and style after copy-paste on rep5. Check style
-     * node changes into orange diamond.</li>
+     * <li>Check node locations and style after copy-paste on rep5. Check style node changes into orange diamond.</li>
      * </ul>
      */
     public void testNodeToNodeCopyPasteDiamondStyleOnDiagramWithExtension() {
         // Open the 2 required representations
-        diagramEditor5 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_SQUARE_LCNODE, REPRESENTATION_NAME_WITH_SQUARE,
+        diagramEditorTgt = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_SQUARE_LCNODE, REPRESENTATION_NAME_WITH_SQUARE,
                 DDiagram.class);
-        diagramEditor7 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_DIAMOND_LCNODE, REPRESENTATION_NAME_WITH_DIAMOND,
+        diagramEditorSrc = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_DIAMOND_LCNODE, REPRESENTATION_NAME_WITH_DIAMOND,
                 DDiagram.class);
 
         // Copy LC1 layout
-        diagramEditor7.click(LC2_POINT);
-        diagramEditor7.clickContextMenu(Messages.CopyFormatAction_text);
+        diagramEditorSrc.click(LC2_POINT);
+        diagramEditorSrc.clickContextMenu(Messages.CopyFormatAction_text);
 
-        diagramEditor5.show();
+        diagramEditorTgt.show();
 
         // Check LogicalFunction1 node locations before the paste style.
-        Rectangle LC1Bounds = checkNodeBounds(diagramEditor5, LC1_LABEL, INITIAL_LC1_SQUARE_NODE_BOUNDS, INITIAL_LC1_SQUARE_NODE_BOUNDS);
+        Rectangle LC1Bounds = checkNodeBounds(diagramEditorTgt, LC1_LABEL, INITIAL_LC1_SQUARE_NODE_BOUNDS, INITIAL_LC1_SQUARE_NODE_BOUNDS);
 
         // Check LogicalFunction2 node locations before the paste style.
-        checkNodeBounds(diagramEditor5, LC2_LABEL, INITIAL_LC2_SQUARE_NODE_BOUNDS, INITIAL_LC2_SQUARE_NODE_BOUNDS);
+        checkNodeBounds(diagramEditorTgt, LC2_LABEL, INITIAL_LC2_SQUARE_NODE_BOUNDS, INITIAL_LC2_SQUARE_NODE_BOUNDS);
 
         // check LogicalFunction1 node style before the paste style.
-        checkGraySquareStyle(diagramEditor5, LC1_LABEL);
+        checkGraySquareStyle(diagramEditorTgt, LC1_LABEL);
 
         // Paste layout on second representation
-        diagramEditor5.click(EMPTY_POINT);
-        diagramEditor5.clickContextMenu(Messages.PasteStyleAction_text);
+        diagramEditorTgt.click(EMPTY_POINT);
+        diagramEditorTgt.clickContextMenu(Messages.PasteStyleAction_text);
 
         // Check LogicalFunction1 node locations does not change after the paste
         // style.
-        checkNodeBounds(diagramEditor5, LC1_LABEL, LC1Bounds, LC1Bounds);
+        checkNodeBounds(diagramEditorTgt, LC1_LABEL, LC1Bounds, LC1Bounds);
 
         // check style
-        checkOrangeDiamondStyle(diagramEditor5, LC1_LABEL);
+        checkOrangeDiamondStyle(diagramEditorTgt, LC1_LABEL);
     }
 
     /**
-     * Test that the paste style changes style on the expected figure. This test
-     * uses the copy-paste style on Diagram using the
-     * org.eclipse.sirius.diagram.ui.layoutDataManager extension-point (the
-     * sampleNameDataProvider contributed in oes.tests.junit plug-in). Style of
-     * node LC2 from a first diagram is applied on node LC1 from a second
-     * diagram.
+     * Test that the paste style changes style on the expected figure. This test uses the copy-paste style on Diagram
+     * using the org.eclipse.sirius.diagram.ui.layoutDataManager extension-point (the sampleNameDataProvider contributed
+     * in oes.tests.junit plug-in). Style of node LC2 from a first diagram is applied on node LC1 from a second diagram.
      * <ul>
      * <li>Check node location and style before paste on rep5</li>
      * <li>Run copy-paste Style from rep8 to rep5</li>
-     * <li>Check node locations and style after copy-paste on rep5. Check style
-     * node changes into workspace Image.</li>
+     * <li>Check node locations and style after copy-paste on rep5. Check style node changes into workspace Image.</li>
      * </ul>
      */
     public void testNodeToNodeCopyPasteWSImageStyleOnDiagramWithExtension() {
         // Open the 2 required representations
-        diagramEditor5 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_SQUARE_LCNODE, REPRESENTATION_NAME_WITH_SQUARE,
+        diagramEditorTgt = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_SQUARE_LCNODE, REPRESENTATION_NAME_WITH_SQUARE,
                 DDiagram.class);
-        diagramEditor8 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_IMAGE_LCNODE, REPRESENTATION_NAME_WITH_IMAGE, DDiagram.class);
+        diagramEditorSrc = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_IMAGE_LCNODE, REPRESENTATION_NAME_WITH_IMAGE,
+                DDiagram.class);
 
         // Copy LC1 Style
-        diagramEditor8.click(LC2_POINT);
-        diagramEditor8.clickContextMenu(Messages.CopyFormatAction_text);
-        diagramEditor5.show();
+        diagramEditorSrc.click(LC2_POINT);
+        diagramEditorSrc.clickContextMenu(Messages.CopyFormatAction_text);
+        diagramEditorTgt.show();
 
         // Check LogicalFunction1 node locations before the paste style.
-        Rectangle LC1Bounds = checkNodeBounds(diagramEditor5, LC1_LABEL, INITIAL_LC1_SQUARE_NODE_BOUNDS, INITIAL_LC1_SQUARE_NODE_BOUNDS);
+        Rectangle LC1Bounds = checkNodeBounds(diagramEditorTgt, LC1_LABEL, INITIAL_LC1_SQUARE_NODE_BOUNDS, INITIAL_LC1_SQUARE_NODE_BOUNDS);
 
         // Check LogicalFunction2 node locations before the paste style.
-        checkNodeBounds(diagramEditor5, LC2_LABEL, INITIAL_LC2_SQUARE_NODE_BOUNDS, INITIAL_LC2_SQUARE_NODE_BOUNDS);
+        checkNodeBounds(diagramEditorTgt, LC2_LABEL, INITIAL_LC2_SQUARE_NODE_BOUNDS, INITIAL_LC2_SQUARE_NODE_BOUNDS);
 
         // check LogicalFunction1 node style before the paste style.
-        checkGraySquareStyle(diagramEditor5, LC1_LABEL);
+        checkGraySquareStyle(diagramEditorTgt, LC1_LABEL);
 
         // Paste style on second representation
-        diagramEditor5.click(EMPTY_POINT);
-        diagramEditor5.clickContextMenu(Messages.PasteStyleAction_text);
+        diagramEditorTgt.click(EMPTY_POINT);
+        diagramEditorTgt.clickContextMenu(Messages.PasteStyleAction_text);
 
         // Check LogicalFunction1 node locations does not change after the paste
         // style.
-        checkNodeBounds(diagramEditor5, LC1_LABEL, LC1Bounds, LC1Bounds);
+        checkNodeBounds(diagramEditorTgt, LC1_LABEL, LC1Bounds, LC1Bounds);
 
         // Check that the style has changed
-        checkWSFigureStyle(diagramEditor5, LC1_LABEL);
+        checkWSFigureStyle(diagramEditorTgt, LC1_LABEL);
     }
 
     /**
-     * Test that the paste style and layout changes style on the expected figure
-     * and puts the elements at the expected location. This test uses the
-     * copy-paste layout and style on Diagram using the
-     * org.eclipse.sirius.diagram.ui.layoutDataManager extension-point (the
-     * sampleNameDataProvider contributed in oes.tests.junit plug-in). Style and
-     * layout of node LC2 from a first diagram is applied on node LC1 from a
-     * second diagram.
+     * Test that the paste style and layout changes style on the expected figure and puts the elements at the expected
+     * location. This test uses the copy-paste layout and style on Diagram using the
+     * org.eclipse.sirius.diagram.ui.layoutDataManager extension-point (the sampleNameDataProvider contributed in
+     * oes.tests.junit plug-in). Style and layout of node LC2 from a first diagram is applied on node LC1 from a second
+     * diagram.
      * <ul>
      * <li>Check node locations before copy-paste on rep3</li>
      * <li>Run copy-paste Style from rep6 to rep5</li>
@@ -454,56 +449,54 @@ public class ContainerAndNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGef
      */
     public void testNodeToNodeCopyPasteEllipseLayoutAndStyleOnDiagramWithExtension() {
         // Open the 2 required representations
-        diagramEditor5 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_SQUARE_LCNODE, REPRESENTATION_NAME_WITH_SQUARE,
+        diagramEditorTgt = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_SQUARE_LCNODE, REPRESENTATION_NAME_WITH_SQUARE,
                 DDiagram.class);
-        diagramEditor6 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_ELLIPSE_LCNODE, REPRESENTATION_NAME_WITH_ELLIPSE,
+        diagramEditorSrc = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_ELLIPSE_LCNODE, REPRESENTATION_NAME_WITH_ELLIPSE,
                 DDiagram.class);
 
         // Check LogicalFunction2 node locations before the copy layout and
         // style.
-        Rectangle LC2Diag6Bounds = checkNodeBounds(diagramEditor6, LC2_LABEL, NEW_STYLE_LC2_NODE_BOUNDS, NEW_STYLE_LC2_NODE_BOUNDS);
+        Rectangle LC2Diag6Bounds = checkNodeBounds(diagramEditorSrc, LC2_LABEL, NEW_STYLE_LC2_NODE_BOUNDS, NEW_STYLE_LC2_NODE_BOUNDS);
 
         // Copy LC1 layout and Style
-        diagramEditor6.click(LC2_POINT);
-        diagramEditor6.clickContextMenu(Messages.CopyFormatAction_text);
+        diagramEditorSrc.click(LC2_POINT);
+        diagramEditorSrc.clickContextMenu(Messages.CopyFormatAction_text);
 
-        diagramEditor5.show();
+        diagramEditorTgt.show();
 
         // Check LogicalFunction1 node locations before the paste layout and
         // style.
-        checkNodeBounds(diagramEditor5, LC1_LABEL, INITIAL_LC1_SQUARE_NODE_BOUNDS, INITIAL_LC1_SQUARE_NODE_BOUNDS);
+        checkNodeBounds(diagramEditorTgt, LC1_LABEL, INITIAL_LC1_SQUARE_NODE_BOUNDS, INITIAL_LC1_SQUARE_NODE_BOUNDS);
 
         // Check LogicalFunction2 node locations before the paste layout and
         // style.
-        Rectangle LC2Diag5Bounds = checkNodeBounds(diagramEditor5, LC2_LABEL, INITIAL_LC2_SQUARE_NODE_BOUNDS, INITIAL_LC2_SQUARE_NODE_BOUNDS);
+        Rectangle LC2Diag5Bounds = checkNodeBounds(diagramEditorTgt, LC2_LABEL, INITIAL_LC2_SQUARE_NODE_BOUNDS, INITIAL_LC2_SQUARE_NODE_BOUNDS);
 
         // check LogicalFunction1 node style before the paste style.
-        checkGraySquareStyle(diagramEditor5, LC1_LABEL);
+        checkGraySquareStyle(diagramEditorTgt, LC1_LABEL);
 
         // Paste layout on second representation
-        diagramEditor5.click(EMPTY_POINT);
-        diagramEditor5.clickContextMenu(Messages.PasteFormatAction_text);
+        diagramEditorTgt.click(EMPTY_POINT);
+        diagramEditorTgt.clickContextMenu(Messages.PasteFormatAction_text);
 
         // Check LogicalFunction1 node locations after the paste layout.
         // By using diagram extension, it matches with LC2 bounds of diagram6
         // representation (LC2 annotation on LC1).
-        checkNodeBounds(diagramEditor5, LC1_LABEL, LC2Diag6Bounds, LC2Diag6Bounds);
+        checkNodeBounds(diagramEditorTgt, LC1_LABEL, LC2Diag6Bounds, LC2Diag6Bounds);
         // Check LogicalFunction2 node locations does not change after the paste
         // layout (no annotation on LC2).
-        checkNodeBounds(diagramEditor5, LC2_LABEL, LC2Diag5Bounds, LC2Diag5Bounds);
+        checkNodeBounds(diagramEditorTgt, LC2_LABEL, LC2Diag5Bounds, LC2Diag5Bounds);
 
         // Check style
-        checkYellowEllipseStyle(diagramEditor5, LC1_LABEL);
+        checkYellowEllipseStyle(diagramEditorTgt, LC1_LABEL);
     }
 
     /**
-     * Test that the paste style and layout changes style on the expected figure
-     * and puts the elements at the expected location. This test uses the
-     * copy-paste layout and style on Diagram using the
-     * org.eclipse.sirius.diagram.ui.layoutDataManager extension-point (the
-     * sampleNameDataProvider contributed in oes.tests.junit plug-in). Style and
-     * layout of node LC2 from a first diagram is applied on node LC1 from a
-     * second diagram.
+     * Test that the paste style and layout changes style on the expected figure and puts the elements at the expected
+     * location. This test uses the copy-paste layout and style on Diagram using the
+     * org.eclipse.sirius.diagram.ui.layoutDataManager extension-point (the sampleNameDataProvider contributed in
+     * oes.tests.junit plug-in). Style and layout of node LC2 from a first diagram is applied on node LC1 from a second
+     * diagram.
      * <ul>
      * <li>Check node locations before copy-paste on rep3</li>
      * <li>Run copy-paste Style from rep7 to rep5</li>
@@ -514,56 +507,54 @@ public class ContainerAndNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGef
      */
     public void testNodeToNodeCopyPasteDiamondLayoutAndStyleOnDiagramWithExtension() {
         // Open the 2 required representations
-        diagramEditor5 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_SQUARE_LCNODE, REPRESENTATION_NAME_WITH_SQUARE,
+        diagramEditorTgt = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_SQUARE_LCNODE, REPRESENTATION_NAME_WITH_SQUARE,
                 DDiagram.class);
-        diagramEditor7 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_DIAMOND_LCNODE, REPRESENTATION_NAME_WITH_DIAMOND,
+        diagramEditorSrc = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_DIAMOND_LCNODE, REPRESENTATION_NAME_WITH_DIAMOND,
                 DDiagram.class);
 
         // Check LogicalFunction2 node locations before the copy layout and
         // style.
-        Rectangle LC2Diag7Bounds = checkNodeBounds(diagramEditor7, LC2_LABEL, NEW_STYLE_LC2_NODE_BOUNDS, NEW_STYLE_LC2_NODE_BOUNDS);
+        Rectangle LC2Diag7Bounds = checkNodeBounds(diagramEditorSrc, LC2_LABEL, NEW_STYLE_LC2_NODE_BOUNDS, NEW_STYLE_LC2_NODE_BOUNDS);
 
         // Copy LC1 layout and style
-        diagramEditor7.click(LC2_POINT);
-        diagramEditor7.clickContextMenu(Messages.CopyFormatAction_text);
+        diagramEditorSrc.click(LC2_POINT);
+        diagramEditorSrc.clickContextMenu(Messages.CopyFormatAction_text);
 
-        diagramEditor5.show();
+        diagramEditorTgt.show();
 
         // Check LogicalFunction1 node locations before the paste layout and
         // style.
-        checkNodeBounds(diagramEditor5, LC1_LABEL, INITIAL_LC1_SQUARE_NODE_BOUNDS, INITIAL_LC1_SQUARE_NODE_BOUNDS);
+        checkNodeBounds(diagramEditorTgt, LC1_LABEL, INITIAL_LC1_SQUARE_NODE_BOUNDS, INITIAL_LC1_SQUARE_NODE_BOUNDS);
 
         // Check LogicalFunction2 node locations before the paste layout and
         // style.
-        Rectangle LC2Diag5Bounds = checkNodeBounds(diagramEditor5, LC2_LABEL, INITIAL_LC2_SQUARE_NODE_BOUNDS, INITIAL_LC2_SQUARE_NODE_BOUNDS);
+        Rectangle LC2Diag5Bounds = checkNodeBounds(diagramEditorTgt, LC2_LABEL, INITIAL_LC2_SQUARE_NODE_BOUNDS, INITIAL_LC2_SQUARE_NODE_BOUNDS);
 
         // check LogicalFunction1 node style before the paste style.
-        checkGraySquareStyle(diagramEditor5, LC1_LABEL);
+        checkGraySquareStyle(diagramEditorTgt, LC1_LABEL);
 
         // Paste layout on second representation
-        diagramEditor5.click(EMPTY_POINT);
-        diagramEditor5.clickContextMenu(Messages.PasteFormatAction_text);
+        diagramEditorTgt.click(EMPTY_POINT);
+        diagramEditorTgt.clickContextMenu(Messages.PasteFormatAction_text);
 
         // Check LogicalFunction1 node locations after the paste layout.
         // By using diagram extension, it matches with LC2 bounds of diagram7
         // representation (LC2 annotation on LC1).
-        checkNodeBounds(diagramEditor5, LC1_LABEL, LC2Diag7Bounds, LC2Diag7Bounds);
+        checkNodeBounds(diagramEditorTgt, LC1_LABEL, LC2Diag7Bounds, LC2Diag7Bounds);
         // Check LogicalFunction2 node locations does not change after the paste
         // layout (no annotation on LC2).
-        checkNodeBounds(diagramEditor5, LC2_LABEL, LC2Diag5Bounds, LC2Diag5Bounds);
+        checkNodeBounds(diagramEditorTgt, LC2_LABEL, LC2Diag5Bounds, LC2Diag5Bounds);
 
         // Check style
-        checkOrangeDiamondStyle(diagramEditor5, LC1_LABEL);
+        checkOrangeDiamondStyle(diagramEditorTgt, LC1_LABEL);
     }
 
     /**
-     * Test that the paste style and layout changes style on the expected figure
-     * and puts the elements at the expected location. This test uses the
-     * copy-paste layout and style on Diagram using the
-     * org.eclipse.sirius.diagram.ui.layoutDataManager extension-point (the
-     * sampleNameDataProvider contributed in oes.tests.junit plug-in). Style and
-     * layout of node LC2 from a first diagram is applied on node LC1 from a
-     * second diagram.
+     * Test that the paste style and layout changes style on the expected figure and puts the elements at the expected
+     * location. This test uses the copy-paste layout and style on Diagram using the
+     * org.eclipse.sirius.diagram.ui.layoutDataManager extension-point (the sampleNameDataProvider contributed in
+     * oes.tests.junit plug-in). Style and layout of node LC2 from a first diagram is applied on node LC1 from a second
+     * diagram.
      * <ul>
      * <li>Check node locations before copy-paste on rep3</li>
      * <li>Run copy-paste Style from rep8 to rep5</li>
@@ -573,45 +564,335 @@ public class ContainerAndNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGef
      */
     public void testNodeToNodeCopyPasteImageLayoutAndStyleOnDiagramWithExtension() {
         // Open the 2 required representations
-        diagramEditor5 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_SQUARE_LCNODE, REPRESENTATION_NAME_WITH_SQUARE,
+        diagramEditorTgt = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_SQUARE_LCNODE, REPRESENTATION_NAME_WITH_SQUARE,
                 DDiagram.class);
-        diagramEditor8 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_IMAGE_LCNODE, REPRESENTATION_NAME_WITH_IMAGE, DDiagram.class);
+        diagramEditorSrc = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_IMAGE_LCNODE, REPRESENTATION_NAME_WITH_IMAGE,
+                DDiagram.class);
 
         // Check LogicalFunction2 node locations before the copy layout and
         // style.
-        Rectangle LC2Diag8Bounds = checkNodeBounds(diagramEditor8, LC2_LABEL, NEW_STYLE_LC2_NODE_BOUNDS, NEW_STYLE_LC2_NODE_BOUNDS);
+        Rectangle LC2Diag8Bounds = checkNodeBounds(diagramEditorSrc, LC2_LABEL, NEW_STYLE_LC2_NODE_BOUNDS, NEW_STYLE_LC2_NODE_BOUNDS);
 
         // Copy LC1 layout
-        diagramEditor8.click(LC2_POINT);
-        diagramEditor8.clickContextMenu(Messages.CopyFormatAction_text);
+        diagramEditorSrc.click(LC2_POINT);
+        diagramEditorSrc.clickContextMenu(Messages.CopyFormatAction_text);
 
-        diagramEditor5.show();
+        diagramEditorTgt.show();
 
         // Check LogicalFunction1 node locations before the paste layout and
         // style.
-        checkNodeBounds(diagramEditor5, LC1_LABEL, INITIAL_LC1_SQUARE_NODE_BOUNDS, INITIAL_LC1_SQUARE_NODE_BOUNDS);
+        checkNodeBounds(diagramEditorTgt, LC1_LABEL, INITIAL_LC1_SQUARE_NODE_BOUNDS, INITIAL_LC1_SQUARE_NODE_BOUNDS);
 
         // Check LogicalFunction2 node locations before the paste layout and
         // style.
-        Rectangle LC2Diag5Bounds = checkNodeBounds(diagramEditor5, LC2_LABEL, INITIAL_LC2_SQUARE_NODE_BOUNDS, INITIAL_LC2_SQUARE_NODE_BOUNDS);
+        Rectangle LC2Diag5Bounds = checkNodeBounds(diagramEditorTgt, LC2_LABEL, INITIAL_LC2_SQUARE_NODE_BOUNDS, INITIAL_LC2_SQUARE_NODE_BOUNDS);
 
         // check LogicalFunction1 node style before the paste style.
-        checkGraySquareStyle(diagramEditor5, LC1_LABEL);
+        checkGraySquareStyle(diagramEditorTgt, LC1_LABEL);
 
         // Paste layout on second representation
-        diagramEditor5.click(EMPTY_POINT);
-        diagramEditor5.clickContextMenu(Messages.PasteFormatAction_text);
+        diagramEditorTgt.click(EMPTY_POINT);
+        diagramEditorTgt.clickContextMenu(Messages.PasteFormatAction_text);
 
         // Check LogicalFunction1 node locations after the paste layout.
         // By using diagram extension, it matches with LC2 bounds of diagram8
         // representation (LC2 annotation on LC1).
-        checkNodeBounds(diagramEditor5, LC1_LABEL, LC2Diag8Bounds, LC2Diag8Bounds);
+        checkNodeBounds(diagramEditorTgt, LC1_LABEL, LC2Diag8Bounds, LC2Diag8Bounds);
         // Check LogicalFunction2 node locations does not change after the paste
         // layout (no annotation on LC2).
-        checkNodeBounds(diagramEditor5, LC2_LABEL, LC2Diag5Bounds, LC2Diag5Bounds);
+        checkNodeBounds(diagramEditorTgt, LC2_LABEL, LC2Diag5Bounds, LC2Diag5Bounds);
 
         // Check style
-        checkWSFigureStyle(diagramEditor5, LC1_LABEL);
+        checkWSFigureStyle(diagramEditorTgt, LC1_LABEL);
+    }
+
+    /**
+     * Test the copy paste layout with bounding box mode. This test corresponds to the case 1 of the specification.
+     */
+    public void testCopyPasteLayoutWithBoundingBoxMode_Case1() {
+        // Enable the bounding box mode by default without popup.
+        forceBoundingBoxPasteMode();
+        // Open the 2 required representations
+        diagramEditorTgt = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_BOUNDING_1, REPRESENTATION_NAME_CASE1_TGT1, DDiagram.class);
+        diagramEditorSrc = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_BOUNDING_1, REPRESENTATION_NAME_CASE1_SRC, DDiagram.class);
+
+        // Check "D" and "E" locations before the copy layout.
+        Rectangle dSourceBounds = checkNodeBounds(diagramEditorSrc, "D", D_NODE_BOUNDS_CASE1, D_NODE_BOUNDS_CASE1);
+        Rectangle eSourceBounds = checkNodeBounds(diagramEditorSrc, "E", E_NODE_BOUNDS_CASE1, E_NODE_BOUNDS_CASE1);
+        Dimension deltaBetweenDAndE = eSourceBounds.getLocation().getDifference(dSourceBounds.getLocation());
+
+        // Copy D and E layout from source diagram
+        SWTBotGefEditPart nodeDEditPart = diagramEditorSrc.getEditPart("D", AbstractDiagramNodeEditPart.class);
+        SWTBotGefEditPart nodeEEditPart = diagramEditorSrc.getEditPart("E", AbstractDiagramNodeEditPart.class);
+        diagramEditorSrc.select(nodeDEditPart, nodeEEditPart);
+        bot.waitUntil(new CheckSelectedCondition(diagramEditorSrc, nodeDEditPart.part()));
+        bot.waitUntil(new CheckSelectedCondition(diagramEditorSrc, nodeEEditPart.part()));
+        diagramEditorSrc.clickContextMenu(Messages.CopyFormatAction_text);
+
+        diagramEditorTgt.show();
+
+        Rectangle absoluteBoundsBeforePaste = diagramEditorTgt.getAbsoluteBounds(diagramEditorTgt.getEditPart("D", AbstractDiagramNodeEditPart.class));
+
+        // Paste layout on target diagram
+        diagramEditorTgt.click(EMPTY_POINT);
+        diagramEditorTgt.clickContextMenu(Messages.PasteLayoutAction_text);
+
+        // Check "D" and "E" locations after the paste layout.
+        Rectangle expectedBoundsForD = new Rectangle(absoluteBoundsBeforePaste.getLocation(), D_NODE_BOUNDS_CASE1.getSize());
+        checkNodeBounds(diagramEditorTgt, "D", expectedBoundsForD, expectedBoundsForD);
+        Rectangle expectedBoundsForE = expectedBoundsForD.getTranslated(deltaBetweenDAndE.width, deltaBetweenDAndE.height);
+        checkNodeBounds(diagramEditorTgt, "E", expectedBoundsForE, expectedBoundsForE);
+    }
+
+    /**
+     * Test the copy paste layout with bounding box mode. This test corresponds to the case 2 of the specification.
+     */
+    public void testCopyPasteLayoutWithBoundingBoxMode_Case2() {
+        // Enable the bounding box mode by default without popup.
+        forceBoundingBoxPasteMode();
+        // Open the 2 required representations
+        diagramEditorTgt = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_BOUNDING_1, REPRESENTATION_NAME_CASE1_TGT2, DDiagram.class);
+        diagramEditorSrc = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_BOUNDING_1, REPRESENTATION_NAME_CASE1_SRC, DDiagram.class);
+
+        // Check "D" and "E" locations before the copy layout.
+        Rectangle dSourceBounds = checkNodeBounds(diagramEditorSrc, "D", D_NODE_BOUNDS_CASE1, D_NODE_BOUNDS_CASE1);
+        Rectangle eSourceBounds = checkNodeBounds(diagramEditorSrc, "E", E_NODE_BOUNDS_CASE1, E_NODE_BOUNDS_CASE1);
+        Dimension deltaBetweenDAndE = eSourceBounds.getLocation().getDifference(dSourceBounds.getLocation());
+
+        // Copy D and E layout from source diagram
+        SWTBotGefEditPart nodeDEditPart = diagramEditorSrc.getEditPart("D", AbstractDiagramNodeEditPart.class);
+        SWTBotGefEditPart nodeEEditPart = diagramEditorSrc.getEditPart("E", AbstractDiagramNodeEditPart.class);
+        diagramEditorSrc.select(nodeDEditPart, nodeEEditPart);
+        bot.waitUntil(new CheckSelectedCondition(diagramEditorSrc, nodeDEditPart.part()));
+        bot.waitUntil(new CheckSelectedCondition(diagramEditorSrc, nodeEEditPart.part()));
+        diagramEditorSrc.clickContextMenu(Messages.CopyFormatAction_text);
+
+        diagramEditorTgt.show();
+
+        Rectangle absoluteBoundsBeforePaste = diagramEditorTgt.getAbsoluteBounds(diagramEditorTgt.getEditPart("E", AbstractDiagramNodeEditPart.class));
+
+        // Paste layout on target diagram
+        diagramEditorTgt.click(EMPTY_POINT);
+        diagramEditorTgt.clickContextMenu(Messages.PasteLayoutAction_text);
+
+        // Check "D" and "E" locations after the paste layout.
+        Rectangle expectedBoundsForD = new Rectangle(absoluteBoundsBeforePaste.getLocation(), D_NODE_BOUNDS_CASE1.getSize());
+        checkNodeBounds(diagramEditorTgt, "D", expectedBoundsForD, expectedBoundsForD);
+        Rectangle expectedBoundsForE = expectedBoundsForD.getTranslated(deltaBetweenDAndE.width, deltaBetweenDAndE.height);
+        checkNodeBounds(diagramEditorTgt, "E", expectedBoundsForE, expectedBoundsForE);
+    }
+
+    /**
+     * Test the copy paste layout with bounding box mode. This test corresponds to the case 3 of the specification.
+     */
+    public void testCopyPasteLayoutWithBoundingBoxMode_Case3() {
+        // Enable the bounding box mode by default without popup.
+        forceBoundingBoxPasteMode();
+        // Open the 2 required representations
+        diagramEditorTgt = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_BOUNDING_1, REPRESENTATION_NAME_CASE2_TGT, DDiagram.class);
+        diagramEditorSrc = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_BOUNDING_1, REPRESENTATION_NAME_CASE2_SRC, DDiagram.class);
+
+        // Check "A" and "B" locations before the copy layout.
+        Rectangle aSourceBounds = checkNodeBounds(diagramEditorSrc, "A", A_NODE_BOUNDS_CASE3, A_NODE_BOUNDS_CASE3);
+        Rectangle bSourceBounds = checkNodeBounds(diagramEditorSrc, "B", B_NODE_BOUNDS_CASE3, B_NODE_BOUNDS_CASE3);
+        Dimension deltaBetweenAAndB = bSourceBounds.getLocation().getDifference(aSourceBounds.getLocation());
+
+        // Copy A and B layout from source diagram
+        SWTBotGefEditPart nodeDEditPart = diagramEditorSrc.getEditPart("A", AbstractDiagramNodeEditPart.class);
+        SWTBotGefEditPart nodeEEditPart = diagramEditorSrc.getEditPart("B", AbstractDiagramNodeEditPart.class);
+        diagramEditorSrc.select(nodeDEditPart, nodeEEditPart);
+        bot.waitUntil(new CheckSelectedCondition(diagramEditorSrc, nodeDEditPart.part()));
+        bot.waitUntil(new CheckSelectedCondition(diagramEditorSrc, nodeEEditPart.part()));
+        diagramEditorSrc.clickContextMenu(Messages.CopyFormatAction_text);
+
+        diagramEditorTgt.show();
+
+        Rectangle absoluteBoundsBeforePaste = diagramEditorTgt.getAbsoluteBounds(diagramEditorTgt.getEditPart("A", AbstractDiagramNodeEditPart.class));
+
+        // Paste layout on target diagram
+        diagramEditorTgt.click(EMPTY_POINT);
+        diagramEditorTgt.clickContextMenu(Messages.PasteLayoutAction_text);
+
+        // Check "A" and "B" locations after the paste layout.
+        Rectangle expectedBoundsForA = new Rectangle(absoluteBoundsBeforePaste.getLocation(), A_NODE_BOUNDS_CASE3.getSize());
+        checkNodeBounds(diagramEditorTgt, "A", expectedBoundsForA, expectedBoundsForA);
+        Rectangle expectedBoundsForB = expectedBoundsForA.getTranslated(deltaBetweenAAndB.width, deltaBetweenAAndB.height);
+        checkNodeBounds(diagramEditorTgt, "B", expectedBoundsForB, expectedBoundsForB);
+    }
+
+    /**
+     * Test the copy paste layout with bounding box mode. This test corresponds to the case 4 of the specification.
+     */
+    public void testCopyPasteLayoutWithBoundingBoxMode_Case4() {
+        // Enable the bounding box mode by default without popup.
+        forceBoundingBoxPasteMode();
+        // Open the 2 required representations
+        diagramEditorTgt = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_BOUNDING_1, REPRESENTATION_NAME_CASE2_TGT, DDiagram.class);
+        diagramEditorSrc = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_BOUNDING_1, REPRESENTATION_NAME_CASE2_SRC, DDiagram.class);
+
+        // Check "P11", "A" and "B" locations before the copy layout.
+        checkContainerBounds(diagramEditorSrc, "P11", P11_CONTAINER_BOUNDS_CASE4, P11_CONTAINER_BOUNDS_CASE4);
+        checkNodeBounds(diagramEditorSrc, "A", A_NODE_BOUNDS_CASE3, A_NODE_BOUNDS_CASE3);
+        checkNodeBounds(diagramEditorSrc, "B", B_NODE_BOUNDS_CASE3, B_NODE_BOUNDS_CASE3);
+
+        // Copy P11 layout from source diagram (and so "A" and "B" layout)
+        SWTBotGefEditPart containerP11EditPart = diagramEditorSrc.getEditPart("P11", AbstractDiagramContainerEditPart.class);
+        diagramEditorSrc.select(containerP11EditPart);
+        bot.waitUntil(new CheckSelectedCondition(diagramEditorSrc, containerP11EditPart.part()));
+        diagramEditorSrc.clickContextMenu(Messages.CopyFormatAction_text);
+
+        diagramEditorTgt.show();
+
+        Rectangle absoluteBoundsBeforePaste = diagramEditorTgt.getAbsoluteBounds(diagramEditorTgt.getEditPart("P11", AbstractDiagramContainerEditPart.class));
+
+        // Paste layout on target diagram
+        diagramEditorTgt.click(EMPTY_POINT);
+        diagramEditorTgt.clickContextMenu(Messages.PasteLayoutAction_text);
+
+        // Check "P11" location after the paste layout.
+        Rectangle expectedBoundsForP11 = new Rectangle(absoluteBoundsBeforePaste.getLocation(), P11_CONTAINER_BOUNDS_CASE4.getSize());
+        checkContainerBounds(diagramEditorTgt, "P11", expectedBoundsForP11, expectedBoundsForP11);
+        // Check "A" and "B" locations after the paste layout (same relative locations compared to source)
+        checkNodeBounds(diagramEditorTgt, "A", A_NODE_BOUNDS_CASE3, A_NODE_BOUNDS_CASE3);
+        checkNodeBounds(diagramEditorTgt, "B", B_NODE_BOUNDS_CASE3, B_NODE_BOUNDS_CASE3);
+    }
+
+    /**
+     * Test the copy paste layout with bounding box mode. This test corresponds to the case 5 of the specification.
+     */
+    public void testCopyPasteLayoutWithBoundingBoxMode_Case5() {
+        // Enable the bounding box mode by default without popup.
+        forceBoundingBoxPasteMode();
+        // Open the 2 required representations
+        diagramEditorTgt = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_BOUNDING_1, REPRESENTATION_NAME_CASE5_TGT, DDiagram.class);
+        diagramEditorSrc = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_BOUNDING_1, REPRESENTATION_NAME_CASE5_SRC, DDiagram.class);
+
+        // Check "P1", "A" and "B" locations before the copy layout.
+        Rectangle p1SourceBounds = checkContainerBounds(diagramEditorSrc, "P1", P1_CONTAINER_BOUNDS_CASE5, P1_CONTAINER_BOUNDS_CASE5);
+        Rectangle aSourceBounds = checkNodeBounds(diagramEditorSrc, "A", A_NODE_BOUNDS_CASE5, A_NODE_BOUNDS_CASE5);
+        Rectangle bSourceBounds = checkNodeBounds(diagramEditorSrc, "B", B_NODE_BOUNDS_CASE5, B_NODE_BOUNDS_CASE5);
+        Dimension deltaBetweenAAndB = bSourceBounds.getLocation().getDifference(aSourceBounds.getLocation());
+
+        // Copy P1 layout from source diagram (and so "A" and "B" layout)
+        SWTBotGefEditPart containerP1EditPart = diagramEditorSrc.getEditPart("P1", AbstractDiagramContainerEditPart.class);
+        diagramEditorSrc.select(containerP1EditPart);
+        bot.waitUntil(new CheckSelectedCondition(diagramEditorSrc, containerP1EditPart.part()));
+        diagramEditorSrc.clickContextMenu(Messages.CopyFormatAction_text);
+
+        diagramEditorTgt.show();
+
+        Rectangle p1AbsoluteBoundsBeforePaste = diagramEditorTgt.getAbsoluteBounds(diagramEditorTgt.getEditPart("P1", AbstractDiagramContainerEditPart.class));
+        Rectangle aAbsoluteBoundsBeforePaste = diagramEditorTgt.getAbsoluteBounds(diagramEditorTgt.getEditPart("A", AbstractDiagramNodeEditPart.class));
+
+        // Paste layout on target diagram
+        diagramEditorTgt.click(EMPTY_POINT);
+        diagramEditorTgt.clickContextMenu(Messages.PasteLayoutAction_text);
+
+        // Check "P1" location after the paste layout.
+        Rectangle expectedBoundsForP11 = new Rectangle(p1AbsoluteBoundsBeforePaste.getLocation(), P1_CONTAINER_BOUNDS_CASE5.getSize());
+        checkContainerBounds(diagramEditorTgt, "P1", expectedBoundsForP11, expectedBoundsForP11);
+        // Check "A" and "B" locations after the paste layout (same relative locations compared to source)
+        Rectangle expectedBoundsForA = new Rectangle(aAbsoluteBoundsBeforePaste.getLocation(), A_NODE_BOUNDS_CASE5.getSize());
+        checkNodeBounds(diagramEditorTgt, "A", expectedBoundsForA, expectedBoundsForA);
+        Rectangle expectedBoundsForB = expectedBoundsForA.getTranslated(deltaBetweenAAndB.width, deltaBetweenAAndB.height);
+        checkNodeBounds(diagramEditorTgt, "B", expectedBoundsForB, expectedBoundsForB);
+    }
+
+    /**
+     * Test the copy paste layout with bounding box mode. This test corresponds to the case 6 of the specification.
+     */
+    public void testCopyPasteLayoutWithBoundingBoxMode_Case6() {
+        testCopyPasteLayoutWithBoundingBoxMode_Case6(false);
+    }
+
+    /**
+     * Test the copy paste layout with bounding box mode. This test corresponds to the case 7 of the specification.
+     */
+    public void testCopyPasteLayoutWithBoundingBoxMode_Case7() {
+        testCopyPasteLayoutWithBoundingBoxMode_Case6(true);
+    }
+
+    /**
+     * Test the copy paste layout with bounding box mode using date of Case6.
+     */
+    private void testCopyPasteLayoutWithBoundingBoxMode_Case6(boolean copyC3) {
+        // Enable the bounding box mode by default without popup.
+        forceBoundingBoxPasteMode();
+        // Open the 2 required representations
+        diagramEditorTgt = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_BOUNDING_2, REPRESENTATION_NAME_CASE6_TGT, DDiagram.class);
+        diagramEditorSrc = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_BOUNDING_2, REPRESENTATION_NAME_CASE6_SRC, DDiagram.class);
+
+        // Check "C1", "C2", and "C3" locations before the copy layout.
+        Rectangle c1SourceBounds = checkNodeBounds(diagramEditorSrc, "C1", C1_NODE_BOUNDS_CASE6, C1_NODE_BOUNDS_CASE6);
+        Rectangle c2SourceBounds = checkNodeBounds(diagramEditorSrc, "C2", C2_NODE_BOUNDS_CASE6, C2_NODE_BOUNDS_CASE6);
+        checkNodeBounds(diagramEditorSrc, "C3", C3_NODE_BOUNDS_CASE6, C3_NODE_BOUNDS_CASE6);
+        Dimension deltaBetweenC1AndC2 = c2SourceBounds.getLocation().getDifference(c1SourceBounds.getLocation());
+        Point c1AbsoluteLocationInSourceDiag = diagramEditorSrc.getAbsoluteLocation("C1", AbstractDiagramNodeEditPart.class);
+        Point edgeLabelAbsoluteBoundsInSourceDiag = diagramEditorSrc.getAbsoluteLocation("refToC2", AbstractDiagramNameEditPart.class);
+        Point edgeAbsoluteLocationInSourceDiag = diagramEditorSrc.getAbsoluteLocation("refToC2", AbstractDiagramEdgeEditPart.class, false);
+        Dimension deltaBetweenC1AndEdgeLabelInAbsolute = edgeLabelAbsoluteBoundsInSourceDiag.getDifference(c1AbsoluteLocationInSourceDiag);
+        Dimension deltaBetweenC1AndEdgeInAbsolute = edgeAbsoluteLocationInSourceDiag.getDifference(c1AbsoluteLocationInSourceDiag);
+
+        // Copy C1, C2 (and C3) layout from source diagram
+        SWTBotGefEditPart nodeC1EditPart = diagramEditorSrc.getEditPart("C1", AbstractDiagramNodeEditPart.class);
+        SWTBotGefEditPart nodeC2EditPart = diagramEditorSrc.getEditPart("C2", AbstractDiagramNodeEditPart.class);
+        SWTBotGefEditPart nodeC3EditPart = null;
+        if (copyC3) {
+            nodeC3EditPart = diagramEditorSrc.getEditPart("C3", AbstractDiagramNodeEditPart.class);
+            diagramEditorSrc.select(nodeC1EditPart, nodeC2EditPart, nodeC3EditPart);
+        } else {
+            diagramEditorSrc.select(nodeC1EditPart, nodeC2EditPart);
+        }
+        bot.waitUntil(new CheckSelectedCondition(diagramEditorSrc, nodeC1EditPart.part()));
+        bot.waitUntil(new CheckSelectedCondition(diagramEditorSrc, nodeC2EditPart.part()));
+        if (copyC3) {
+            bot.waitUntil(new CheckSelectedCondition(diagramEditorSrc, nodeC3EditPart.part()));
+        }
+        diagramEditorSrc.clickContextMenu(Messages.CopyFormatAction_text);
+
+        diagramEditorTgt.show();
+
+        Rectangle c1AbsoluteBoundsBeforePaste = diagramEditorTgt.getAbsoluteBounds(diagramEditorTgt.getEditPart("C1", AbstractDiagramNodeEditPart.class));
+        Rectangle c3AbsoluteBoundsBeforePaste = diagramEditorTgt.getAbsoluteBounds(diagramEditorTgt.getEditPart("C3", AbstractDiagramNodeEditPart.class));
+
+        // Paste layout on target diagram
+        diagramEditorTgt.click(EMPTY_POINT);
+        diagramEditorTgt.clickContextMenu(Messages.PasteLayoutAction_text);
+
+        // Check "C1" and "C2" locations after the paste layout (same relative locations compared to source)
+        Rectangle expectedBoundsForC1 = new Rectangle(c1AbsoluteBoundsBeforePaste.getLocation().x(), c1AbsoluteBoundsBeforePaste.getLocation().y(), C1_NODE_BOUNDS_CASE6.width(),
+                C1_NODE_BOUNDS_CASE6.height());
+        checkNodeBounds(diagramEditorTgt, "C1", expectedBoundsForC1, expectedBoundsForC1);
+        Rectangle expectedBoundsForC2 = expectedBoundsForC1.getTranslated(deltaBetweenC1AndC2.width, deltaBetweenC1AndC2.height);
+        checkNodeBounds(diagramEditorTgt, "C2", expectedBoundsForC2, expectedBoundsForC2);
+        // Check location of edge, between C1 and C2, and its label (if edge is OK, we consider that border nodes too).
+        Rectangle expectedBoundsForLabel = expectedBoundsForC1.getTranslated(deltaBetweenC1AndEdgeLabelInAbsolute.width, deltaBetweenC1AndEdgeLabelInAbsolute.height);
+        ((AbstractDiagramNodeEditPart) diagramEditorTgt.getEditPart("C1", AbstractDiagramNodeEditPart.class).part()).getFigure().translateToAbsolute(expectedBoundsForLabel);
+        Point edgeLabelAbsoluteLocationAfterPaste = diagramEditorTgt.getAbsoluteLocation("refToC2", AbstractDiagramNameEditPart.class);
+        assertEquals("Wrong Draw2D location for edge label refToC2", expectedBoundsForLabel.getLocation(), edgeLabelAbsoluteLocationAfterPaste);
+        Rectangle expectedBoundsForEdge = expectedBoundsForC1.getTranslated(deltaBetweenC1AndEdgeInAbsolute.width, deltaBetweenC1AndEdgeInAbsolute.height);
+        ((AbstractDiagramNodeEditPart) diagramEditorTgt.getEditPart("C1", AbstractDiagramNodeEditPart.class).part()).getFigure().translateToAbsolute(expectedBoundsForEdge);
+        Point edgeAbsoluteLocationAfterPaste = diagramEditorTgt.getAbsoluteLocation("refToC2", AbstractDiagramEdgeEditPart.class);
+        assertEquals("Wrong Draw2D location for edge label refToC2", expectedBoundsForEdge.getLocation(), edgeAbsoluteLocationAfterPaste);
+        if (copyC3) {
+            // Check C3 location after past (same location compared to before paste layout, because it is alone in its
+            // group/in its container)
+            Rectangle expectedBoundsForC3 = new Rectangle(c3AbsoluteBoundsBeforePaste.getLocation().x(), c3AbsoluteBoundsBeforePaste.getLocation().y(), C3_NODE_BOUNDS_CASE6.width(),
+                    C3_NODE_BOUNDS_CASE6.height());
+            checkNodeBounds(diagramEditorTgt, "C3", expectedBoundsForC3, expectedBoundsForC3);
+        }
+    }
+
+    /**
+     * Change the boolean preferences concerning the Paste mode and store the old values. These values will be
+     * automatically reset during tear down.
+     *
+     * WARNING : THIS METHOD MUST BE CALL ONLY ONCE PER TEST (set up + test)
+     */
+    private void forceBoundingBoxPasteMode() {
+        // TODO : to enable as soon as preferences are available
+        // changeDiagramUIPreference(SiriusDiagramUiPreferencesKeys.PREF_PROMPT_PASTE_MODE.name(), false);
+        // changeDiagramUIPreference(SiriusDiagramUiPreferencesKeys.PREF_PASTE_MODE_ABSOLUTE.name(), false);
     }
 
     /**
@@ -624,10 +905,8 @@ public class ContainerAndNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGef
      * @param expectedGmfBounds
      *            The GMF expected bounds
      * @param expectedFigureBounds
-     *            The draw2d expected bounds. If the x, y , width or height in
-     *            this bounds is equal to -1, we don't check it. This is useful
-     *            in case of size that depends on Font (with different result
-     *            according to OS).
+     *            The draw2d expected bounds. If the x, y , width or height in this bounds is equal to -1, we don't
+     *            check it. This is useful in case of size that depends on Font (with different result according to OS).
      */
     private Rectangle checkContainerBounds(SWTBotSiriusDiagramEditor editorToCheck, String label, Rectangle expectedGmfBounds, Rectangle expectedFigureBounds) {
         SWTBotGefEditPart editPart = editorToCheck.getEditPart(label, AbstractDiagramElementContainerEditPart.class);
@@ -648,10 +927,8 @@ public class ContainerAndNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGef
      * @param expectedGmfBounds
      *            The GMF expected bounds
      * @param expectedFigureBounds
-     *            The draw2d expected bounds. If the x, y , width or height in
-     *            this bounds is equal to -1, we don't check it. This is useful
-     *            in case of size that depends on Font (with different result
-     *            according to OS).
+     *            The draw2d expected bounds. If the x, y , width or height in this bounds is equal to -1, we don't
+     *            check it. This is useful in case of size that depends on Font (with different result according to OS).
      */
     private Rectangle checkNodeBounds(SWTBotSiriusDiagramEditor editorToCheck, String label, Rectangle expectedGmfBounds, Rectangle expectedFigureBounds) {
         SWTBotGefEditPart editPart = editorToCheck.getEditPart(label, AbstractDiagramNodeEditPart.class);
@@ -670,10 +947,8 @@ public class ContainerAndNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGef
      * @param expectedGmfBounds
      *            The GMF expected bounds
      * @param expectedFigureBounds
-     *            The draw2d expected bounds. If the x, y , width or height in
-     *            this bounds is equal to -1, we don't check it. This is useful
-     *            in case of size that depends on Font (with different result
-     *            according to OS).
+     *            The draw2d expected bounds. If the x, y , width or height in this bounds is equal to -1, we don't
+     *            check it. This is useful in case of size that depends on Font (with different result according to OS).
      * @param part
      *            edit part to compare
      */

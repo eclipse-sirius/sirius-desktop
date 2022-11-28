@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" version="11.0.0.201601261200">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" version="12.0.0.2017041100">
   <ownedViewpoints name="Doremi-2842">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Diagram" domainClass="EPackage">
       <filters xsi:type="filter:CompositeFilterDescription" name="test">
@@ -92,6 +92,77 @@
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Doremi-2842']/@ownedRepresentations[name='DiagPasteLayoutCase1']/@defaultLayer/@toolSections.0/@ownedTools[name='DnDPackagesFromModelExplorer']" name="DiagPasteLayoutCase1" domainClass="ecore::EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings name="Classes" semanticCandidatesExpression="aql:self.eAllContents()" createElements="false" domainClass="ecore::EClass">
+          <style xsi:type="style:SquareDescription" labelSize="12" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </nodeMappings>
+        <containerMappings name="Packages" semanticCandidatesExpression="aql:self.eAllContents()" createElements="false" domainClass="ecore::EPackage" dropDescriptions="//@ownedViewpoints[name='Doremi-2842']/@ownedRepresentations[name='DiagPasteLayoutCase1']/@defaultLayer/@toolSections.0/@ownedTools[name='DnDPackagesFromModelExplorer']" reusedNodeMappings="//@ownedViewpoints[name='Doremi-2842']/@ownedRepresentations[name='DiagPasteLayoutCase1']/@defaultLayer/@nodeMappings[name='Classes']" reusedContainerMappings="//@ownedViewpoints[name='Doremi-2842']/@ownedRepresentations[name='DiagPasteLayoutCase1']/@defaultLayer/@containerMappings[name='Packages']">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="dnd">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="DnDPackagesFromModelExplorer" forceRefresh="true" mappings="//@ownedViewpoints[name='Doremi-2842']/@ownedRepresentations[name='DiagPasteLayoutCase1']/@defaultLayer/@containerMappings[name='Packages'] //@ownedViewpoints[name='Doremi-2842']/@ownedRepresentations[name='DiagPasteLayoutCase1']/@defaultLayer/@nodeMappings[name='Classes']" dragSource="PROJECT_EXPLORER">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagPasteLayoutCase2" domainClass="ecore::EPackage">
+      <defaultLayer name="Default">
+        <edgeMappings name="ref" sourceMapping="//@ownedViewpoints[name='Doremi-2842']/@ownedRepresentations[name='DiagPasteLayoutCase2']/@defaultLayer/@containerMappings[name='Packages']/@subNodeMappings[name='Classes']/@borderedNodeMappings[name='references']" targetMapping="//@ownedViewpoints[name='Doremi-2842']/@ownedRepresentations[name='DiagPasteLayoutCase2']/@defaultLayer/@containerMappings[name='Packages']/@subNodeMappings[name='Classes']/@borderedNodeMappings[name='attributes']" targetFinderExpression="aql:self.eType.eAttributes->first()">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelExpression="aql:self.name">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="Packages" semanticCandidatesExpression="aql:self.eSubpackages" domainClass="ecore::EPackage" reusedContainerMappings="//@ownedViewpoints[name='Doremi-2842']/@ownedRepresentations[name='DiagPasteLayoutCase2']/@defaultLayer/@containerMappings[name='Packages']">
+          <subNodeMappings name="Classes" label="Class" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="EClass">
+            <borderedNodeMappings name="attributes" semanticCandidatesExpression="feature:eAttributes" domainClass="EAttribute">
+              <style xsi:type="style:SquareDescription" labelExpression="" sizeComputationExpression="1" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+              </style>
+            </borderedNodeMappings>
+            <borderedNodeMappings name="references" semanticCandidatesExpression="feature:eReferences" domainClass="EReference">
+              <style xsi:type="style:SquareDescription" labelExpression="" sizeComputationExpression="1" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+              </style>
+            </borderedNodeMappings>
+            <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </containerMappings>
       </defaultLayer>
     </ownedRepresentations>
   </ownedViewpoints>

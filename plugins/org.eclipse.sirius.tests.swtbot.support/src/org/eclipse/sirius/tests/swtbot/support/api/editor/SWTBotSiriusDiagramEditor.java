@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2020 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -55,6 +55,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.diagram.ui.business.internal.dialect.DiagramDialectUIServices;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
@@ -1293,9 +1294,12 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
      *            The searched name
      * @param expectedEditPartType
      *            The expected type of edit part (go up in the parent hierarchy to find this type).
+     * @param withEdgeLabel
+     *            true if the bounds should include the label of the edge, false otherwise. This parameter is useful
+     *            only for edge edit part.
      * @return A location
      */
-    public Point getAbsoluteLocation(final String editPartName, final Class<? extends EditPart> expectedEditPartType) {
+    public Point getAbsoluteLocation(final String editPartName, final Class<? extends EditPart> expectedEditPartType, final boolean withEdgeLabel) {
         final SWTBotGefEditPart editPartBot = getEditPart(editPartName, expectedEditPartType);
         if (editPartBot == null) {
             throw new WidgetNotFoundException(String.format(SWTBotSiriusDiagramEditor.EXPECTED_TO_FIND_WIDGET_S, editPartName));
@@ -1305,7 +1309,51 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
             throw new WidgetNotFoundException(String.format(SWTBotSiriusDiagramEditor.EXPECTED_TO_FIND_GRAPHICAL_EDIT_PART_S, editPartName));
         }
         IGraphicalEditPart part = (IGraphicalEditPart) editPart;
-        return getAbsoluteLocation(part);
+        return getAbsoluteLocation(part, withEdgeLabel);
+    }
+
+    /**
+     * Get the figure location corresponding to that name and to the editPart type. The location is in absolute
+     * coordinate (from the origin 0,0). Examples :
+     * <UL>
+     * <LI>If the zoom is set to 50% a position at (80, 80) return (80, 80)</LI>
+     * <LI>If the vertical scroll bar is set to 40 a position at (80, 80) return (80, 80)</LI>
+     * </UL>
+     * 
+     * @param editPartName
+     *            The searched name
+     * @param expectedEditPartType
+     *            The expected type of edit part (go up in the parent hierarchy to find this type).
+     * @return A location
+     */
+    public Point getAbsoluteLocation(final String editPartName, final Class<? extends EditPart> expectedEditPartType) {
+        return getAbsoluteLocation(editPartName, expectedEditPartType, false);
+    }
+
+    /**
+     * Get the figure location corresponding to that editPart type. The location is in absolute coordinate (from the
+     * origin 0,0). Examples :
+     * <UL>
+     * <LI>If the zoom is set to 50% a position at (80, 80) return (80, 80)</LI>
+     * <LI>If the vertical scroll bar is set to 40 a position at (80, 80) return (80, 80)</LI>
+     * </UL>
+     * 
+     * @param editPart
+     *            The concerned edit part
+     * @param withEdgeLabel
+     *            true if the bounds should include the label of the edge, false otherwise. This parameter is useful
+     *            only for edge edit part.
+     * @return A location
+     */
+    public Point getAbsoluteLocation(final GraphicalEditPart editPart, final boolean withEdgeLabel) {
+        Point figureLocation;
+        if (withEdgeLabel || !(editPart instanceof AbstractDiagramEdgeEditPart)) {
+            figureLocation = editPart.getFigure().getBounds().getLocation();
+        } else {
+            figureLocation = ((AbstractDiagramEdgeEditPart) editPart).getConnectionFigure().getPoints().getBounds().getTopLeft();
+        }
+        FigureUtilities.translateToAbsoluteByIgnoringScrollbar(editPart.getFigure(), figureLocation);
+        return figureLocation;
     }
 
     /**
@@ -1321,9 +1369,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
      * @return A location
      */
     public Point getAbsoluteLocation(final GraphicalEditPart editPart) {
-        Point figureLocation = editPart.getFigure().getBounds().getLocation();
-        FigureUtilities.translateToAbsoluteByIgnoringScrollbar(editPart.getFigure(), figureLocation);
-        return figureLocation;
+        return getAbsoluteLocation(editPart, false);
     }
 
     /**
