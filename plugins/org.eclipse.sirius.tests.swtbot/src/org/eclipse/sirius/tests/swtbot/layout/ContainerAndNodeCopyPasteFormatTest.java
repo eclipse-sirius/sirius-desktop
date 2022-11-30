@@ -649,8 +649,7 @@ public class ContainerAndNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGef
             diagramEditorSrc.clickContextMenu(Messages.CopyFormatAction_text);
 
             // Paste format on diagram and cancel. This is just to check that dialog is asked on "Paste format" action,
-            // the
-            // additional tests will be done on "Paste layout" action
+            // the additional tests will be done on "Paste layout" action
             diagramEditorSrc.click(EMPTY_POINT);
             diagramEditorSrc.clickContextMenu(Messages.PasteFormatAction_text);
             bot.waitUntilWidgetAppears(Conditions.shellIsActive(Messages.SelectPasteModeDialog_title));

@@ -21,10 +21,13 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.Set;
 
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
+import org.eclipse.draw2d.geometry.PrecisionDimension;
+import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
@@ -169,11 +172,19 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
         if (toStoreView instanceof Edge) {
             // Currently not managed...
         } else if (toStoreView instanceof Diagram && semanticElement instanceof DDiagram) {
-            applyFormat((DDiagram) semanticElement, (Diagram) toStoreView, rootEditPart.getRoot().getViewer(), applyLayout, applyStyle);
+            if (absoluteCoordinates) {
+                applyFormatAbsoluteMode((DDiagram) semanticElement, rootEditPart.getRoot().getViewer(), applyLayout, applyStyle);
+            } else {
+                applyFormatBoundingBoxMode((DDiagram) semanticElement, rootEditPart.getRoot().getViewer(), applyLayout, applyStyle);
+            }
             centerEdgesEnds(toStoreView);
         } else if (toStoreView instanceof Node) {
-            if (semanticElement instanceof DDiagramElement && semanticElement instanceof DSemanticDecorator) {
-                applyFormat((DDiagramElement) semanticElement, (Node) toStoreView, rootEditPart.getRoot().getViewer(), null, applyLayout, applyStyle);
+            if (semanticElement instanceof AbstractDNode && semanticElement instanceof DSemanticDecorator) {
+                if (absoluteCoordinates) {
+                    applyFormatAbsoluteMode((AbstractDNode) semanticElement, (Node) toStoreView, rootEditPart.getRoot().getViewer(), null, applyLayout, applyStyle);
+                } else {
+                    applyFormatOnChildrenForBoundingBox(Arrays.asList((AbstractDNode) semanticElement), rootEditPart.getRoot().getViewer(), null, applyLayout, applyStyle, Optional.empty());
+                }
             }
             centerEdgesEnds(toStoreView);
         }
@@ -194,19 +205,220 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
     }
 
     /**
+     * Apply the format to the selected <code>diagram</code> in absolute mode.
+     * 
+     * @param diagram
+     *            The diagram used as root element to apply the current stored format
      * @param semanticDecorator
      * @param toStoreView
      * @param editPartViewer
      *            The viewer responsible for the current editparts lifecycle.
+     * @param applyLayout
+     *            true if the format must be applied, false otherwise
+     * @param applyStyle
+     *            true if the style must be applied, false otherwise
      */
-    private void applyFormat(final DDiagram diagram, final Diagram toStoreView, final EditPartViewer editPartViewer, boolean applyFormat, boolean applyStyle) {
+    private void applyFormatAbsoluteMode(final DDiagram diagram, final EditPartViewer editPartViewer, boolean applyLayout, boolean applyStyle) {
         // We don't apply format on diagram but only on its node children (the
         // edge is applied during source node).
         for (final AbstractDNode node : Iterables.filter(diagram.getOwnedDiagramElements(), AbstractDNode.class)) {
             final Node gmfNode = SiriusGMFHelper.getGmfNode(node);
             if (gmfNode != null) {
-                applyFormat(node, gmfNode, editPartViewer, null, applyFormat, applyStyle);
+                applyFormatAbsoluteMode(node, gmfNode, editPartViewer, null, applyLayout, applyStyle);
             }
+        }
+    }
+
+    /**
+     * Apply the format to the selected <code>diagram</code> in bounding box mode.
+     * 
+     * @param diagram
+     *            The diagram used as root element to apply the current stored format
+     * @param semanticDecorator
+     * @param toStoreView
+     * @param editPartViewer
+     *            The viewer responsible for the current editparts lifecycle.
+     * @param applyLayout
+     *            true if the format must be applied, false otherwise
+     * @param applyStyle
+     *            true if the style must be applied, false otherwise
+     */
+    private void applyFormatBoundingBoxMode(final DDiagram diagram, final EditPartViewer editPartViewer, boolean applyLayout, boolean applyStyle) {
+        // We don't apply format on diagram but only on its node children (the edge layout application is done during
+        // the layout application of its source node).
+        applyFormatOnChildrenForBoundingBox(Iterables.filter(diagram.getOwnedDiagramElements(), AbstractDNode.class), editPartViewer, null, applyLayout, applyStyle, Optional.empty());
+    }
+
+    private void applyFormatOnChildrenForBoundingBox(final Iterable<AbstractDNode> children, final EditPartViewer editPartViewer, NodeFormatData parentFormatData, boolean applyLayout,
+            boolean applyStyle, Optional<PrecisionDimension> parentDeltaBoundingBox) {
+        // List children having a corresponding stored format (to consider them in bounding box computing). Common
+        // parent is an IdentifiedElement: DDiagram or
+        // DDiagramElement
+        HashMap<AbstractDNode, Optional<NodeFormatData>> childrenWithFormatMap = new HashMap<>();
+        for (final AbstractDNode node : children) {
+            final Node gmfNode = SiriusGMFHelper.getGmfNode(node);
+            if (gmfNode != null) {
+                Optional<NodeFormatData> optionalFormat = getFormatData(node, gmfNode, editPartViewer, null);
+                childrenWithFormatMap.put(node, optionalFormat);
+            }
+        }
+
+        // CHECKSTYLE:OFF
+        // The delta between the bounding box of the elements to paste and the bounding box of the copied
+        // elements.
+        PrecisionDimension deltaBewteenBoundingBoxes = new PrecisionDimension();
+        if (applyLayout && parentDeltaBoundingBox.isEmpty()) {
+            // Absolute origin of bounding box elements on which to apply
+            org.eclipse.draw2d.geometry.PrecisionPoint absoluteOriginOfToPasteElements = new org.eclipse.draw2d.geometry.PrecisionPoint(Double.MAX_VALUE, Double.MAX_VALUE);
+            // Absolute origin of bounding box of layout to apply
+            org.eclipse.draw2d.geometry.PrecisionPoint absoluteOriginOfCopiedLayout = new org.eclipse.draw2d.geometry.PrecisionPoint(Double.MAX_VALUE, Double.MAX_VALUE);
+            childrenWithFormatMap.forEach((dNode, formatData) -> {
+                if (formatData.isPresent()) {
+                    final Node gmfNode = SiriusGMFHelper.getGmfNode(dNode);
+                    Object editPartAsObject = editPartViewer.getEditPartRegistry().get(gmfNode);
+                    // we can have a null edit part when pasting format on root diagram
+                    // element of a diagram with hidden part that are not hidden in source
+                    // diagram.
+                    if (editPartAsObject instanceof IGraphicalEditPart) {
+                        final IGraphicalEditPart graphicalEditPart = (IGraphicalEditPart) editPartAsObject;
+                        org.eclipse.draw2d.geometry.Point absoluteLocation = graphicalEditPart.getFigure().getBounds().getTopLeft().getCopy();
+                        FigureUtilities.translateToAbsoluteByIgnoringScrollbar(graphicalEditPart.getFigure(), absoluteLocation);
+                        computeBoundingBoxTopLeftCorner(absoluteOriginOfToPasteElements, absoluteLocation);
+                        Point absoluteCopiedLocationToApply = FormatDataHelper.INSTANCE.getAbsoluteLocation(formatData.get());
+                        computeBoundingBoxTopLeftCorner(absoluteOriginOfCopiedLayout, new PrecisionPoint(absoluteCopiedLocationToApply.getX(), absoluteCopiedLocationToApply.getY()));
+                    }
+                }
+            });
+            deltaBewteenBoundingBoxes.expand(absoluteOriginOfToPasteElements.preciseX(), absoluteOriginOfToPasteElements.preciseY()).shrink(absoluteOriginOfCopiedLayout.preciseX(),
+                    absoluteOriginOfCopiedLayout.preciseY());
+        }
+        childrenWithFormatMap.forEach((dNode, formatData) -> {
+            final Node gmfNode = SiriusGMFHelper.getGmfNode(dNode);
+            // Apply layout
+            if (applyLayout && formatData.isPresent()) {
+                if (parentDeltaBoundingBox.isPresent()) {
+                    applyLayout(dNode, gmfNode, editPartViewer, formatData.get(), parentDeltaBoundingBox);
+                } else {
+                    applyLayout(dNode, gmfNode, editPartViewer, formatData.get(), Optional.of(deltaBewteenBoundingBoxes));
+                }
+            }
+            // Apply style
+            if (applyStyle && formatData.isPresent()) {
+                applyStyle(dNode, gmfNode, formatData.get());
+            }
+            // Apply format on children
+            if (formatData.isPresent()) {
+                if (parentDeltaBoundingBox.isPresent()) {
+                    applyFormatOnChildrenAndOutgoingEdgesBoundingBoxMode(dNode, editPartViewer, formatData.get(), applyLayout, applyStyle, parentDeltaBoundingBox);
+                } else {
+                    applyFormatOnChildrenAndOutgoingEdgesBoundingBoxMode(dNode, editPartViewer, formatData.get(), applyLayout, applyStyle, Optional.of(deltaBewteenBoundingBoxes));
+                }
+            } else {
+                applyFormatOnChildrenAndOutgoingEdgesBoundingBoxMode(dNode, editPartViewer, null, applyLayout, applyStyle, Optional.empty());
+            }
+        });
+        // CHECKSTYLE:ON
+    }
+
+    private void computeBoundingBoxTopLeftCorner(PrecisionPoint boundingBoxTopLeftCorner, final org.eclipse.draw2d.geometry.Point topLeftCornerOfAnElement) {
+        if (boundingBoxTopLeftCorner.preciseX() > topLeftCornerOfAnElement.preciseX()) {
+            boundingBoxTopLeftCorner.setPreciseX(topLeftCornerOfAnElement.preciseX());
+        }
+        if (boundingBoxTopLeftCorner.preciseY() > topLeftCornerOfAnElement.preciseY()) {
+            boundingBoxTopLeftCorner.setPreciseY(topLeftCornerOfAnElement.preciseY());
+        }
+    }
+
+    private void applyLayout(final DRepresentationElement dRepresentationElement, final Node toRestoreView, final EditPartViewer editPartViewer, final NodeFormatData formatData,
+            Optional<PrecisionDimension> deltaBewteenBoundingBoxes) {
+        Object editPartAsObject = editPartViewer.getEditPartRegistry().get(toRestoreView);
+        // we can have a null edit part when pasting format on root diagram
+        // element of a diagram with hidden part that are not hidden in source
+        // diagram.
+        if (formatData != null && editPartAsObject != null) {
+            final Bounds bounds = NotationFactory.eINSTANCE.createBounds();
+            final IGraphicalEditPart graphicalEditPart = (IGraphicalEditPart) editPartAsObject;
+            Point locationToApply;
+            boolean isCollapsed = false;
+            if (graphicalEditPart instanceof AbstractDiagramBorderNodeEditPart) {
+                // Specific treatment for border node
+                // Compute absolute location
+                locationToApply = FormatDataHelper.INSTANCE.getAbsoluteLocation(formatData);
+                // Compute the best location according to other existing
+                // bordered nodes.
+                Node parentNode = (Node) toRestoreView.eContainer();
+                CanonicalDBorderItemLocator locator = new CanonicalDBorderItemLocator(parentNode, PositionConstants.NSEW);
+                if (dRepresentationElement instanceof DDiagramElement) {
+                    if (new DDiagramElementQuery((DDiagramElement) dRepresentationElement).isIndirectlyCollapsed()) {
+                        isCollapsed = true;
+                        locator.setBorderItemOffset(IBorderItemOffsets.COLLAPSE_FILTER_OFFSET);
+                    } else {
+                        locator.setBorderItemOffset(IBorderItemOffsets.DEFAULT_OFFSET);
+                    }
+                } else {
+                    locator.setBorderItemOffset(IBorderItemOffsets.DEFAULT_OFFSET);
+                }
+                final Rectangle rect = new Rectangle(locationToApply.getX(), locationToApply.getY(), formatData.getWidth(), formatData.getHeight());
+                final org.eclipse.draw2d.geometry.Point realLocation = locator.getValidLocation(rect, toRestoreView, new ArrayList<Node>(Arrays.asList(toRestoreView)));
+                // Compute the new relative position to the parent
+                final org.eclipse.draw2d.geometry.Point parentAbsoluteLocation = ((IGraphicalEditPart) graphicalEditPart.getParent()).getFigure().getBounds().getTopLeft().getCopy();
+                FigureUtilities.translateToAbsoluteByIgnoringScrollbar(((IGraphicalEditPart) graphicalEditPart.getParent()).getFigure(), parentAbsoluteLocation);
+                locationToApply.setX(realLocation.x);
+                locationToApply.setY(realLocation.y);
+                locationToApply = FormatDataHelper.INSTANCE.getTranslated(locationToApply, parentAbsoluteLocation.negate());
+            } else {
+                // locationToApply = FormatDataHelper.INSTANCE.getRelativeLocation(formatData, graphicalEditPart);
+                locationToApply = FormatDataHelper.INSTANCE.getAbsoluteLocation(formatData);
+                PrecisionPoint newLoc = new PrecisionPoint(locationToApply.getX(), locationToApply.getY());
+                // Adapt the point according to the delta between each bounding box
+                if (deltaBewteenBoundingBoxes.isPresent()) {
+                    newLoc.translate(deltaBewteenBoundingBoxes.get());
+                }
+                // Translate the location to be relative to its parent
+                FigureUtilities.translateToRelativeByIgnoringScrollbar(graphicalEditPart.getFigure(), newLoc);
+                // Reset the location to apply used to set GMF bounds
+                locationToApply.setX(newLoc.x());
+                locationToApply.setY(newLoc.y());
+                // Apply the location to the figure to, to correctly compute the relative location of the children
+                graphicalEditPart.getFigure().setLocation(newLoc);
+            }
+            bounds.setX(locationToApply.getX());
+            bounds.setY(locationToApply.getY());
+            if (isCollapsed) {
+                Dimension dim = new NodeQuery(toRestoreView).getCollapsedSize();
+                bounds.setHeight(dim.height);
+                bounds.setWidth(dim.width);
+            } else {
+                bounds.setHeight(formatData.getHeight());
+                bounds.setWidth(formatData.getWidth());
+            }
+            toRestoreView.setLayoutConstraint(bounds);
+        }
+    }
+
+    private void applyStyle(final DRepresentationElement dRepresentationElement, final Node toRestoreView, final NodeFormatData formatData) {
+        if (formatData != null) {
+            // Apply Sirius style properties
+            applySiriusStyle(dRepresentationElement, formatData);
+            // Apply GMF style properties
+            applyGMFStyle(toRestoreView, formatData);
+        }
+    }
+
+    private void applyFormatOnChildrenAndOutgoingEdgesBoundingBoxMode(final DRepresentationElement dRepresentationElement, final EditPartViewer editPartViewer, final NodeFormatData formatData,
+            boolean applyLayout, boolean applyStyle, Optional<PrecisionDimension> parentDeltaBoundingBox) {
+        if (dRepresentationElement instanceof DNode) {
+            applyFormatToNodeChildren((DNode) dRepresentationElement, editPartViewer, formatData, applyLayout, applyStyle, parentDeltaBoundingBox);
+        } else if (dRepresentationElement instanceof DNodeContainer) {
+            applyFormatToNodeContainerChildrenBoundingBoxMode((DNodeContainer) dRepresentationElement, editPartViewer, formatData, applyLayout, applyStyle, parentDeltaBoundingBox);
+        } else if (dRepresentationElement instanceof DNodeList) {
+            applyFormatToNodeListChildren((DNodeList) dRepresentationElement, editPartViewer, formatData, applyLayout, applyStyle);
+        } else {
+            logUnhandledDiagramElementKindMessage(dRepresentationElement);
+        }
+        // Deal with the outgoing edges
+        if (dRepresentationElement instanceof EdgeTarget) {
+            applyFormatToOutgoingEdge((EdgeTarget) dRepresentationElement, editPartViewer, applyLayout, applyStyle);
         }
     }
 
@@ -214,11 +426,11 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
      * @param sourceNode
      * @param editPartViewer
      */
-    private void applyFormatToOutgoingEdge(final EdgeTarget sourceNode, final EditPartViewer editPartViewer, boolean applyFormat, boolean applyStyle) {
+    private void applyFormatToOutgoingEdge(final EdgeTarget sourceNode, final EditPartViewer editPartViewer, boolean applyLayout, boolean applyStyle) {
         for (final DEdge edge : sourceNode.getOutgoingEdges()) {
             final Edge gmfEdge = SiriusGMFHelper.getGmfEdge(edge);
             if (gmfEdge != null) {
-                applyFormat(edge, gmfEdge, editPartViewer, applyFormat, applyStyle);
+                applyFormat(edge, gmfEdge, editPartViewer, applyLayout, applyStyle);
             }
         }
     }
@@ -228,22 +440,21 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
      * @param gmfEdge
      * @param editPartViewer
      */
-    private void applyFormat(final DEdge edge, final Edge gmfEdge, final EditPartViewer editPartViewer, boolean applyFormat, boolean applyStyle) {
-        final EdgeFormatData formatData;
-        formatData = (EdgeFormatData) this.getFormatData(createKey(edge), edge.getMapping());
+    private void applyFormat(final DEdge edge, final Edge gmfEdge, final EditPartViewer editPartViewer, boolean applyLayout, boolean applyStyle) {
+        final Optional<EdgeFormatData> formatData = getFormatData(edge);
 
-        if (formatData != null) {
-            if (applyFormat) {
-                applyEdgeFormat(gmfEdge, formatData);
+        if (formatData.isPresent()) {
+            if (applyLayout) {
+                applyEdgeFormat(gmfEdge, formatData.get());
             }
             if (applyStyle) {
                 // Apply Sirius style properties
-                applySiriusStyle(edge, formatData);
+                applySiriusStyle(edge, formatData.get());
                 // Apply GMF style properties
-                applyGMFStyle(gmfEdge, formatData);
+                applyGMFStyle(gmfEdge, formatData.get());
             }
 
-            applyLabelFormat(gmfEdge, formatData, applyFormat, applyStyle);
+            applyLabelFormat(gmfEdge, formatData.get(), applyLayout, applyStyle);
 
         }
     }
@@ -297,11 +508,11 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
         }
     }
 
-    private void applyLabelFormat(final View gmfView, final AbstractFormatData parentFormatData, boolean applyFormat, boolean applyStyle) {
+    private void applyLabelFormat(final View gmfView, final AbstractFormatData parentFormatData, boolean applyLayout, boolean applyStyle) {
         if (parentFormatData != null) {
             final Node labelNode = SiriusGMFHelper.getLabelNode(gmfView);
             if (parentFormatData.getLabel() != null && labelNode != null) {
-                if (applyFormat) {
+                if (applyLayout) {
                     if (!parentFormatData.getLabel().eIsSet(FormatdataPackage.eINSTANCE.getNodeFormatData_Width())
                             && !parentFormatData.getLabel().eIsSet(FormatdataPackage.eINSTANCE.getNodeFormatData_Height())) {
                         Location location = NotationFactory.eINSTANCE.createLocation();
@@ -356,22 +567,77 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
     }
 
     /**
+     * 
      * Search a format corresponding to the semantic decorator and applies it to the node. Then it applies to it's
      * children and outgoing edges.
      *
-     * @param semanticDecorator
-     *            The semantic decorator to search the corresponding format
+     * @param dRepresentationElement
+     *            The representation element used as root element to apply the current stored format. Is is used to
+     *            search the corresponding format.
      * @param toRestoreView
      *            Node on which to apply the format
      * @param editPartViewer
      *            The viewer responsible for the current editparts lifecycle.
      * @parentFormatData the format of the parent of <code>toRestoreView<code>
+     * @param applyLayout
+     *            true if the format must be applied, false otherwise
+     * @param applyStyle
+     *            true if the style must be applied, false otherwise
      */
-    private void applyFormat(final DRepresentationElement semanticDecorator, final Node toRestoreView, final EditPartViewer editPartViewer, final NodeFormatData parentFormatData, boolean applyFormat,
-            boolean applyStyle) {
-        FormatDataKey key = createKey(semanticDecorator);
+    private Optional<NodeFormatData> getFormatData(final DRepresentationElement dRepresentationElement, final Node toRestoreView, final EditPartViewer editPartViewer,
+            final NodeFormatData parentFormatData) {
+        FormatDataKey key = createKey(dRepresentationElement);
         NodeFormatData formatData;
-        formatData = (NodeFormatData) this.getFormatData(key, semanticDecorator.getMapping());
+        formatData = (NodeFormatData) this.getFormatData(key, dRepresentationElement.getMapping());
+        // If a direct child have the same format data and key than its parents,
+        // look in the parent format data 's children for a child format data
+        // with the expected id.
+        if (parentFormatData != null && parentFormatData == formatData && !StringUtil.isEmpty(key.getId())) {
+            formatData = null;
+            for (NodeFormatData childFormatData : parentFormatData.getChildren()) {
+                // if many children format with same id, a choice will not be
+                // possible;
+                if (key.getId().equals(childFormatData.getId())) {
+                    if (formatData == null) {
+                        formatData = childFormatData;
+                    } else {
+                        formatData = null;
+                        break;
+                    }
+                }
+            }
+        }
+        return Optional.ofNullable(formatData);
+    }
+
+    private Optional<EdgeFormatData> getFormatData(final DEdge edge) {
+        return Optional.ofNullable((EdgeFormatData) this.getFormatData(createKey(edge), edge.getMapping()));
+    }
+
+    /**
+     * 
+     * Search a format corresponding to the semantic decorator and applies it to the node. Then it applies to it's
+     * children and outgoing edges.
+     *
+     * @param dRepresentationElement
+     *            The representation element used as root element to apply the current stored format. Is is used to
+     *            search the corresponding format.
+     * @param toRestoreView
+     *            Node on which to apply the format
+     * @param editPartViewer
+     *            The viewer responsible for the current editparts lifecycle.
+     * @param parentFormatData
+     *            the format of the parent of <code>toRestoreView<code>
+     * @param applyLayout
+     *            true if the format must be applied, false otherwise
+     * @param applyStyle
+     *            true if the style must be applied, false otherwise
+     */
+    private void applyFormatAbsoluteMode(final DRepresentationElement dRepresentationElement, final Node toRestoreView, final EditPartViewer editPartViewer, final NodeFormatData parentFormatData,
+            boolean applyLayout, boolean applyStyle) {
+        FormatDataKey key = createKey(dRepresentationElement);
+        NodeFormatData formatData;
+        formatData = (NodeFormatData) this.getFormatData(key, dRepresentationElement.getMapping());
         // If a direct child have the same format data and key than its parents,
         // look in the parent format data 's children for a child format data
         // with the expected id.
@@ -394,7 +660,7 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
         // we can have a null edit part when pasting format on root diagram
         // element of a diagram with hidden part that are not hidden in source
         // diagram.
-        if (formatData != null && applyFormat && editPartAsObject != null) {
+        if (formatData != null && applyLayout && editPartAsObject != null) {
             final Bounds bounds = NotationFactory.eINSTANCE.createBounds();
             final IGraphicalEditPart graphicalEditPart = (IGraphicalEditPart) editPartAsObject;
             Point locationToApply;
@@ -407,8 +673,8 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
                 // bordered nodes.
                 Node parentNode = (Node) toRestoreView.eContainer();
                 CanonicalDBorderItemLocator locator = new CanonicalDBorderItemLocator(parentNode, PositionConstants.NSEW);
-                if (semanticDecorator instanceof DDiagramElement) {
-                    if (new DDiagramElementQuery((DDiagramElement) semanticDecorator).isIndirectlyCollapsed()) {
+                if (dRepresentationElement instanceof DDiagramElement) {
+                    if (new DDiagramElementQuery((DDiagramElement) dRepresentationElement).isIndirectlyCollapsed()) {
                         isCollapsed = true;
                         locator.setBorderItemOffset(IBorderItemOffsets.COLLAPSE_FILTER_OFFSET);
                     } else {
@@ -427,7 +693,6 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
                 locationToApply = FormatDataHelper.INSTANCE.getTranslated(locationToApply, parentAbsoluteLocation.negate());
             } else {
                 locationToApply = FormatDataHelper.INSTANCE.getRelativeLocation(formatData, graphicalEditPart);
-
                 // Apply the location to the figure to, to correctly compute
                 // the relative location of the children
                 graphicalEditPart.getFigure().setLocation(new org.eclipse.draw2d.geometry.Point(locationToApply.getX(), locationToApply.getY()));
@@ -446,22 +711,22 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
         }
         if (formatData != null && applyStyle) {
             // Apply Sirius style properties
-            applySiriusStyle(semanticDecorator, formatData);
+            applySiriusStyle(dRepresentationElement, formatData);
             // Apply GMF style properties
             applyGMFStyle(toRestoreView, formatData);
         }
-        if (semanticDecorator instanceof DNode) {
-            applyFormatToNodeChildren((DNode) semanticDecorator, editPartViewer, formatData, applyFormat, applyStyle);
-        } else if (semanticDecorator instanceof DNodeContainer) {
-            applyFormatToNodeContainerChildren((DNodeContainer) semanticDecorator, editPartViewer, formatData, applyFormat, applyStyle);
-        } else if (semanticDecorator instanceof DNodeList) {
-            applyFormatToNodeListChildren((DNodeList) semanticDecorator, editPartViewer, formatData, applyFormat, applyStyle);
+        if (dRepresentationElement instanceof DNode) {
+            applyFormatToNodeChildren((DNode) dRepresentationElement, editPartViewer, formatData, applyLayout, applyStyle, Optional.empty());
+        } else if (dRepresentationElement instanceof DNodeContainer) {
+            applyFormatToNodeContainerChildrenAbsoluteMode((DNodeContainer) dRepresentationElement, editPartViewer, formatData, applyLayout, applyStyle);
+        } else if (dRepresentationElement instanceof DNodeList) {
+            applyFormatToNodeListChildren((DNodeList) dRepresentationElement, editPartViewer, formatData, applyLayout, applyStyle);
         } else {
-            logUnhandledDiagramElementKindMessage(semanticDecorator);
+            logUnhandledDiagramElementKindMessage(dRepresentationElement);
         }
         // Deal with the outgoing edges
-        if (semanticDecorator instanceof EdgeTarget) {
-            applyFormatToOutgoingEdge((EdgeTarget) semanticDecorator, editPartViewer, applyFormat, applyStyle);
+        if (dRepresentationElement instanceof EdgeTarget) {
+            applyFormatToOutgoingEdge((EdgeTarget) dRepresentationElement, editPartViewer, applyLayout, applyStyle);
         }
     }
 
@@ -553,17 +818,18 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
      *            The viewer responsible for the current editparts lifecycle.
      * @param formatData
      *            The format data to apply.
-     * @param applyFormat
+     * @param applyLayout
      *            Whether or not to apply format.
      * @param applyStyle
      *            Whether or not to apply style.
      */
-    private void applyFormatToNodeChildren(final DNode parentNode, final EditPartViewer editPartViewer, final NodeFormatData formatData, boolean applyFormat, boolean applyStyle) {
+    private void applyFormatToNodeChildren(final DNode parentNode, final EditPartViewer editPartViewer, final NodeFormatData formatData, boolean applyLayout, boolean applyStyle,
+            Optional<PrecisionDimension> parentDeltaBoundingBox) {
         // Restore Bordered nodes
-        applyFormatForBorderedNodes(parentNode.getOwnedBorderedNodes(), editPartViewer, formatData, applyFormat, applyStyle);
+        applyFormatForBorderedNodes(parentNode.getOwnedBorderedNodes(), editPartViewer, formatData, applyLayout, applyStyle, parentDeltaBoundingBox);
         // Restore label
         final Node gmfNode = SiriusGMFHelper.getGmfNode(parentNode);
-        applyLabelFormat(gmfNode, formatData, applyFormat, applyStyle);
+        applyLabelFormat(gmfNode, formatData, applyLayout, applyStyle);
     }
 
     /**
@@ -574,22 +840,42 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
      * @param editPartViewer
      *            The viewer responsible for the current editparts lifecycle.
      */
-    private void applyFormatToNodeContainerChildren(final DNodeContainer container, final EditPartViewer editPartViewer, final NodeFormatData formatData, boolean applyFormat, boolean applyStyle) {
+    private void applyFormatToNodeContainerChildrenAbsoluteMode(final DNodeContainer container, final EditPartViewer editPartViewer, final NodeFormatData formatData, boolean applyLayout,
+            boolean applyStyle) {
         // Restore children
         for (final DDiagramElement child : container.getOwnedDiagramElements()) {
             if (child instanceof AbstractDNode) {
                 // Search the GMF node corresponding to the child
                 final Node gmfNode = SiriusGMFHelper.getGmfNode(child);
                 if (gmfNode != null) {
-                    applyFormat(child, gmfNode, editPartViewer, formatData, applyFormat, applyStyle);
+                    applyFormatAbsoluteMode(child, gmfNode, editPartViewer, formatData, applyLayout, applyStyle);
                 }
             }
         }
         // Restore Bordered nodes
-        applyFormatForBorderedNodes(container.getOwnedBorderedNodes(), editPartViewer, formatData, applyFormat, applyStyle);
+        applyFormatForBorderedNodes(container.getOwnedBorderedNodes(), editPartViewer, formatData, applyLayout, applyStyle, Optional.empty());
         // Restore label
         final Node gmfNode = SiriusGMFHelper.getGmfNode(container);
-        applyLabelFormat(gmfNode, formatData, applyFormat, applyStyle);
+        applyLabelFormat(gmfNode, formatData, applyLayout, applyStyle);
+    }
+
+    /**
+     * Try to apply a format to the children of the {@link DNodeContainer}.
+     *
+     * @param container
+     *            The parent containing children to apply format on.
+     * @param editPartViewer
+     *            The viewer responsible for the current editparts lifecycle.
+     */
+    private void applyFormatToNodeContainerChildrenBoundingBoxMode(final DNodeContainer container, final EditPartViewer editPartViewer, final NodeFormatData formatData, boolean applyLayout,
+            boolean applyStyle, Optional<PrecisionDimension> parentDeltaBoundingBox) {
+        // Restore children
+        applyFormatOnChildrenForBoundingBox(Iterables.filter(container.getOwnedDiagramElements(), AbstractDNode.class), editPartViewer, formatData, applyLayout, applyStyle, parentDeltaBoundingBox);
+        // Restore Bordered nodes
+        applyFormatForBorderedNodes(container.getOwnedBorderedNodes(), editPartViewer, formatData, applyLayout, applyStyle, parentDeltaBoundingBox);
+        // Restore label
+        final Node gmfNode = SiriusGMFHelper.getGmfNode(container);
+        applyLabelFormat(gmfNode, formatData, applyLayout, applyStyle);
     }
 
     /**
@@ -601,12 +887,13 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
      *            The viewer responsible for the current editparts lifecycle.
      * @param parentFormatData
      *            The formatData of the parent of the borderedNodes.
-     * @param applyFormat
+     * @param applyLayout
      *            Whether or not to apply format.
      * @param applyStyle
      *            Whether or not to apply style.
      */
-    private void applyFormatForBorderedNodes(EList<DNode> borderedNodes, EditPartViewer editPartViewer, NodeFormatData parentFormatData, boolean applyFormat, boolean applyStyle) {
+    private void applyFormatForBorderedNodes(EList<DNode> borderedNodes, EditPartViewer editPartViewer, NodeFormatData parentFormatData, boolean applyLayout, boolean applyStyle,
+            Optional<PrecisionDimension> parentShift) {
         HashMap<Node, NodeFormatData> nodesWithFormatDataToApply = new HashMap<>();
         HashMap<Node, DSemanticDecorator> nodesWithCoresspondingDSemanticDecorator = new HashMap<>();
         // Search each bordered nodes that have formatData to apply
@@ -646,7 +933,7 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
         Set<Node> toIgnore = nodesWithFormatDataToApply.keySet();
         for (Entry<Node, NodeFormatData> entry : nodesWithFormatDataToApply.entrySet()) {
             Node node = entry.getKey();
-            applyFormatForBorderedNode(nodesWithCoresspondingDSemanticDecorator.get(node), node, editPartViewer, entry.getValue(), toIgnore, applyFormat, applyStyle);
+            applyFormatForBorderedNode(nodesWithCoresspondingDSemanticDecorator.get(node), node, editPartViewer, entry.getValue(), toIgnore, applyLayout, applyStyle, parentShift);
         }
     }
 
@@ -663,10 +950,19 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
      *            the format to apply on <code>toRestoreView<code>
      * @param portsNodesToIgnore
      *            The list of bordered nodes to ignore in the conflict detection
+     * @param applyLayout
+     *            Whether or not to apply format.
+     * @param applyStyle
+     *            Whether or not to apply style.
+     * @param parentShift
+     *            If the parent has been moved because of a previous "Paste Format in bounding box mode", the border
+     *            nodes are also shift with the same delta.
      */
+    // CHECKSTYLE:OFF
     private void applyFormatForBorderedNode(final DSemanticDecorator semanticDecorator, final Node toRestoreView, final EditPartViewer editPartViewer, final NodeFormatData formatData,
-            final Set<Node> portsNodesToIgnore, boolean applyFormat, boolean applyStyle) {
-        if (applyFormat) {
+            final Set<Node> portsNodesToIgnore, boolean applyLayout, boolean applyStyle, Optional<PrecisionDimension> parentShift) {
+        // CHECKSTYLE:ON
+        if (applyLayout) {
             final Bounds bounds = NotationFactory.eINSTANCE.createBounds();
             Point locationToApply;
             boolean isCollapsed = false;
@@ -682,6 +978,7 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
                 // Specific treatment for border node
                 // Compute absolute location
                 locationToApply = FormatDataHelper.INSTANCE.getAbsoluteLocation(formatData);
+
                 // Compute the best location according to other existing
                 // bordered nodes.
 
@@ -698,7 +995,10 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
                 }
 
                 final Rectangle rect = new Rectangle(locationToApply.getX(), locationToApply.getY(), formatData.getWidth(), formatData.getHeight());
-
+                // Adapt with the parent shift
+                if (parentShift.isPresent()) {
+                    rect.translate(parentShift.get().preciseWidth(), parentShift.get().preciseHeight());
+                }
                 final org.eclipse.draw2d.geometry.Point realLocation = locator.getValidLocation(rect, toRestoreView, portsNodesToIgnore);
 
                 // Compute the new relative position to the parent
@@ -739,16 +1039,12 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
         }
 
         if (semanticDecorator instanceof DNode) {
-            applyFormatToNodeChildren((DNode) semanticDecorator, editPartViewer, formatData, applyFormat, applyStyle);
-        } else if (semanticDecorator instanceof DNodeContainer) {
-            applyFormatToNodeContainerChildren((DNodeContainer) semanticDecorator, editPartViewer, formatData, applyFormat, applyStyle);
-        } else if (semanticDecorator instanceof DNodeList) {
-            applyFormatToNodeListChildren((DNodeList) semanticDecorator, editPartViewer, formatData, applyFormat, applyStyle);
+            applyFormatToNodeChildren((DNode) semanticDecorator, editPartViewer, formatData, applyLayout, applyStyle, Optional.empty());
         } else {
             logUnhandledDiagramElementKindMessage(semanticDecorator);
         }
         if (semanticDecorator instanceof EdgeTarget) {
-            applyFormatToOutgoingEdge((EdgeTarget) semanticDecorator, editPartViewer, applyFormat, applyStyle);
+            applyFormatToOutgoingEdge((EdgeTarget) semanticDecorator, editPartViewer, applyLayout, applyStyle);
         }
     }
 
@@ -760,13 +1056,13 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
      * @param editPartViewer
      *            The viewer responsible for the current editparts lifecycle.
      */
-    private void applyFormatToNodeListChildren(final DNodeList nodeList, final EditPartViewer editPartViewer, final NodeFormatData formatData, boolean applyFormat, boolean applyStyle) {
+    private void applyFormatToNodeListChildren(final DNodeList nodeList, final EditPartViewer editPartViewer, final NodeFormatData formatData, boolean applyLayout, boolean applyStyle) {
         // Restore Bordered nodes
-        applyFormatForBorderedNodes(nodeList.getOwnedBorderedNodes(), editPartViewer, formatData, applyFormat, applyStyle);
+        applyFormatForBorderedNodes(nodeList.getOwnedBorderedNodes(), editPartViewer, formatData, applyLayout, applyStyle, Optional.empty());
 
         // Restore label
         final Node gmfNode = SiriusGMFHelper.getGmfNode(nodeList);
-        applyLabelFormat(gmfNode, formatData, applyFormat, applyStyle);
+        applyLabelFormat(gmfNode, formatData, applyLayout, applyStyle);
     }
 
     /**
