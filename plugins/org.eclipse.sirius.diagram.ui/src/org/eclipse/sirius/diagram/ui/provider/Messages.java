@@ -458,6 +458,15 @@ public final class Messages {
     public static String DiagramGeneralPreferencePage_moveUnlinkedNodeLabel;
 
     @TranslatableMessage
+    public static String DiagramGeneralPreferencePage_pasteLayoutModeGroupLabel;
+
+    @TranslatableMessage
+    public static String DiagramGeneralPreferencePage_pasteLayoutModePromptMessage;
+
+    @TranslatableMessage
+    public static String DiagramGeneralPreferencePage_pasteLayoutModePromptTooltip;
+
+    @TranslatableMessage
     public static String DiagramGeneralPreferencePage_pinMovedElementsLabel;
 
     @TranslatableMessage
@@ -1098,6 +1107,36 @@ public final class Messages {
 
     @TranslatableMessage
     public static String SelectionWizardCommand_cancelExceptionMsg;
+
+    @TranslatableMessage
+    public static String SelectPasteModeDialog_absoluteModeLabel;
+
+    @TranslatableMessage
+    public static String SelectPasteModeDialog_absoluteModeTooltip;
+
+    @TranslatableMessage
+    public static String SelectPasteModeDialog_boundingBoxModeLabel;
+
+    @TranslatableMessage
+    public static String SelectPasteModeDialog_boundingBoxModeTooltip;
+
+    @TranslatableMessage
+    public static String SelectPasteModeDialog_message;
+
+    @TranslatableMessage
+    public static String SelectPasteModeDialog_pasteButtonLabel;
+
+    @TranslatableMessage
+    public static String SelectPasteModeDialog_rememberButtonLabel;
+
+    @TranslatableMessage
+    public static String SelectPasteModeDialog_rememberButtonTooltip;
+
+    @TranslatableMessage
+    public static String SelectPasteModeDialog_tearDownCommandName;
+
+    @TranslatableMessage
+    public static String SelectPasteModeDialog_title;
 
     @TranslatableMessage
     public static String SelectPinnedElementsAction_label;

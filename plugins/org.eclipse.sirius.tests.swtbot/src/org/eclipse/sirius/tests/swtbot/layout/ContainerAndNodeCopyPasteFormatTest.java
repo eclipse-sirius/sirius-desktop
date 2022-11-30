@@ -22,6 +22,8 @@ import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Size;
+import org.eclipse.jface.dialogs.IDialogConstants;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
@@ -29,8 +31,10 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContain
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.SquareEditPart.SquareFigure;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SVGWorkspaceImageFigure;
+import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.draw2d.figure.LozengeFigure;
@@ -39,9 +43,20 @@ import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.ItemEnabledCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swtbot.eclipse.finder.waits.Conditions;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
+import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
+import org.eclipse.swtbot.swt.finder.results.Result;
+import org.eclipse.swtbot.swt.finder.results.VoidResult;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotRadio;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
+import org.eclipse.swtbot.swt.finder.widgets.TimeoutException;
 
 /**
  * Test container and node Copy-Paste layout and style from and to diagram with extension.
@@ -607,6 +622,120 @@ public class ContainerAndNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGef
     }
 
     /**
+     * Test that the dialog appears if it should, and check the default value according to preference values. The test
+     * also checks that the preference values are modified according to user selection in dialog.
+     */
+    public void testPasteModeDialogAndPreferenceValues() {
+        // Change the promptPasteMode pref to override the default changed in setup (to retrieve a Sirius standard
+        // behavior).
+        final Boolean defaultPromptPasteMode = UIThreadRunnable.syncExec(new Result<Boolean>() {
+            @Override
+            public Boolean run() {
+                IPreferenceStore preferenceStore = DiagramUIPlugin.getPlugin().getPreferenceStore();
+                boolean result = preferenceStore.getBoolean(SiriusDiagramUiPreferencesKeys.PREF_PROMPT_PASTE_MODE.name());
+                preferenceStore.setValue(SiriusDiagramUiPreferencesKeys.PREF_PROMPT_PASTE_MODE.name(), true);
+                return result;
+            }
+        });
+        try {
+            // Open the required representation
+            diagramEditorSrc = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_BOUNDING_1, REPRESENTATION_NAME_CASE1_SRC,
+                    DDiagram.class);
+
+            // Copy D layout from diagram (to enable the paste action)
+            SWTBotGefEditPart nodeDEditPart = diagramEditorSrc.getEditPart("D", AbstractDiagramNodeEditPart.class);
+            diagramEditorSrc.select(nodeDEditPart);
+            bot.waitUntil(new CheckSelectedCondition(diagramEditorSrc, nodeDEditPart.part()));
+            diagramEditorSrc.clickContextMenu(Messages.CopyFormatAction_text);
+
+            // Paste format on diagram and cancel. This is just to check that dialog is asked on "Paste format" action,
+            // the
+            // additional tests will be done on "Paste layout" action
+            diagramEditorSrc.click(EMPTY_POINT);
+            diagramEditorSrc.clickContextMenu(Messages.PasteFormatAction_text);
+            bot.waitUntilWidgetAppears(Conditions.shellIsActive(Messages.SelectPasteModeDialog_title));
+            SWTBotShell selectPasteModeDialog = bot.shell(Messages.SelectPasteModeDialog_title);
+            selectPasteModeDialog.activate();
+            // Click cancel
+            SWTBotButton cancelButton = bot.button(IDialogConstants.CANCEL_LABEL);
+            bot.waitUntilWidgetAppears(new ItemEnabledCondition(cancelButton));
+            cancelButton.click();
+            SWTBotUtils.waitAllUiEvents();
+
+            // Paste layout on diagram
+            diagramEditorSrc.click(EMPTY_POINT);
+            diagramEditorSrc.clickContextMenu(Messages.PasteLayoutAction_text);
+
+            // By default a dialog should appears to ask the Paste mode to the end-user, and the radio button "Absolute"
+            // should be checked.
+            bot.waitUntilWidgetAppears(Conditions.shellIsActive(Messages.SelectPasteModeDialog_title));
+            selectPasteModeDialog = bot.shell(Messages.SelectPasteModeDialog_title);
+            selectPasteModeDialog.activate();
+
+            // Check radio value
+            SWTBotRadio absoluteRadioButton = bot.radio(Messages.SelectPasteModeDialog_absoluteModeLabel);
+            assertTrue("By default, Absolute mode should be selected.", absoluteRadioButton.isSelected()); //$NON-NLS-1$
+
+            // Click cancel
+            cancelButton = bot.button(IDialogConstants.CANCEL_LABEL);
+            bot.waitUntilWidgetAppears(new ItemEnabledCondition(cancelButton));
+            cancelButton.click();
+            SWTBotUtils.waitAllUiEvents();
+
+            // Change the preference value to have "Bounding mode" as default value
+            changeDiagramUIPreference(SiriusDiagramUiPreferencesKeys.PREF_PASTE_MODE_ABSOLUTE.name(), false);
+
+            // Paste layout on diagram
+            diagramEditorSrc.clickContextMenu(Messages.PasteLayoutAction_text);
+
+            // Get dialog
+            bot.waitUntilWidgetAppears(Conditions.shellIsActive(Messages.SelectPasteModeDialog_title));
+            selectPasteModeDialog = bot.shell(Messages.SelectPasteModeDialog_title);
+            selectPasteModeDialog.activate();
+            // Check radio value
+            absoluteRadioButton = bot.radio(Messages.SelectPasteModeDialog_absoluteModeLabel);
+            assertFalse("After changing preference, the Absolute mode should not be selected.", absoluteRadioButton.isSelected()); //$NON-NLS-1$
+
+            // Change value to "Absolute"
+            absoluteRadioButton.click();
+
+            // Click OK
+            SWTBotButton pasteButton = bot.button(Messages.SelectPasteModeDialog_pasteButtonLabel);
+            bot.waitUntilWidgetAppears(new ItemEnabledCondition(pasteButton));
+            pasteButton.click();
+            SWTBotUtils.waitAllUiEvents();
+
+            // Check preference value (should be absolute as the last user choice)
+            IPreferenceStore preferenceStore = DiagramUIPlugin.getPlugin().getPreferenceStore();
+            assertTrue("The preference for absolute mode must be set to true after the selection of the end-user in the dialog.", //$NON-NLS-1$
+                    preferenceStore.getBoolean(SiriusDiagramUiPreferencesKeys.PREF_PASTE_MODE_ABSOLUTE.name()));
+
+            // Change the preference value to not open the dialog
+            changeDiagramUIPreference(SiriusDiagramUiPreferencesKeys.PREF_PROMPT_PASTE_MODE.name(), false);
+
+            // Paste layout on diagram
+            OperationDoneCondition doneCondition = new OperationDoneCondition();
+            diagramEditorSrc.clickContextMenu(Messages.PasteLayoutAction_text);
+
+            // No dialog appears
+            try {
+                bot.waitUntil(doneCondition);
+            } catch (TimeoutException e) {
+                fail("The paste action has not been executed, probably because a dialog appears."); //$NON-NLS-1$
+            }
+        } finally {
+            UIThreadRunnable.syncExec(new VoidResult() {
+
+                @Override
+                public void run() {
+                    IPreferenceStore preferenceStore = DiagramUIPlugin.getPlugin().getPreferenceStore();
+                    preferenceStore.setValue(SiriusDiagramUiPreferencesKeys.PREF_PROMPT_PASTE_MODE.name(), defaultPromptPasteMode);
+                }
+            });
+        }
+    }
+
+    /**
      * Test the copy paste layout with bounding box mode. This test corresponds to the case 1 of the specification.
      */
     public void testCopyPasteLayoutWithBoundingBoxMode_Case1() {
@@ -884,15 +1013,92 @@ public class ContainerAndNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGef
     }
 
     /**
+     * Test using same scenario and data than {@link #testCopyPasteLayoutWithBoundingBoxMode_Case6()}, but instead of
+     * selecting the diagram, 3 elements are selected to paste. This allows to check that only one dialog is displayed
+     * and not one for each selected element.
+     */
+    public void testCopyPasteFormatWithBoundingBoxMode_Case6_withPasteOnMultiSelection() {
+        testCopyPasteWithBoundingBoxMode_Case6_withPasteOnMultiSelection(true);
+    }
+
+    /**
+     * Test using same scenario and data than {@link #testCopyPasteLayoutWithBoundingBoxMode_Case6()}, but instead of
+     * selecting the diagram, 3 elements are selected to paste. This allows to check that only one dialog is displayed
+     * and not one for each selected element.
+     */
+    public void testCopyPasteLayoutWithBoundingBoxMode_Case6_withPasteOnMultiSelection() {
+        testCopyPasteWithBoundingBoxMode_Case6_withPasteOnMultiSelection(false);
+    }
+
+    /**
+     * Test using same scenario and data than {@link #testCopyPasteLayoutWithBoundingBoxMode_Case6()}, but instead of
+     * selecting the diagram, 3 elements are selected to paste. This allows to check that only one dialog is displayed
+     * and not one for each selected element.
+     */
+    protected void testCopyPasteWithBoundingBoxMode_Case6_withPasteOnMultiSelection(boolean pasteFormat) {
+        // Enable the bounding box mode by default (but without popup).
+        changeDiagramUIPreference(SiriusDiagramUiPreferencesKeys.PREF_PASTE_MODE_ABSOLUTE.name(), false);
+        changeDiagramUIPreference(SiriusDiagramUiPreferencesKeys.PREF_PROMPT_PASTE_MODE.name(), true);
+        // Open the 2 required representations
+        diagramEditorTgt = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_BOUNDING_2, REPRESENTATION_NAME_CASE6_TGT, DDiagram.class);
+        diagramEditorSrc = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_BOUNDING_2, REPRESENTATION_NAME_CASE6_SRC, DDiagram.class);
+
+        // Copy C1, C2 and C3 layout from source diagram
+        SWTBotGefEditPart nodeC1EditPart = diagramEditorSrc.getEditPart("C1", AbstractDiagramNodeEditPart.class);
+        SWTBotGefEditPart nodeC2EditPart = diagramEditorSrc.getEditPart("C2", AbstractDiagramNodeEditPart.class);
+        SWTBotGefEditPart nodeC3EditPart = diagramEditorSrc.getEditPart("C3", AbstractDiagramNodeEditPart.class);
+        diagramEditorSrc.select(nodeC1EditPart, nodeC2EditPart, nodeC3EditPart);
+        bot.waitUntil(new CheckSelectedCondition(diagramEditorSrc, nodeC1EditPart.part()));
+        bot.waitUntil(new CheckSelectedCondition(diagramEditorSrc, nodeC2EditPart.part()));
+        bot.waitUntil(new CheckSelectedCondition(diagramEditorSrc, nodeC3EditPart.part()));
+        diagramEditorSrc.clickContextMenu(Messages.CopyFormatAction_text);
+
+        diagramEditorTgt.show();
+
+        Rectangle c1AbsoluteBoundsBeforePaste = diagramEditorTgt.getAbsoluteBounds(diagramEditorTgt.getEditPart("C1", AbstractDiagramNodeEditPart.class));
+
+        // Paste layout on target diagram
+        SWTBotGefEditPart targetNodeC1EditPart = diagramEditorTgt.getEditPart("C1", AbstractDiagramNodeEditPart.class);
+        SWTBotGefEditPart targetNodeC2EditPart = diagramEditorTgt.getEditPart("C2", AbstractDiagramNodeEditPart.class);
+        SWTBotGefEditPart targetNodeC3EditPart = diagramEditorTgt.getEditPart("C3", AbstractDiagramNodeEditPart.class);
+        diagramEditorTgt.select(targetNodeC1EditPart, targetNodeC2EditPart, targetNodeC3EditPart);
+        bot.waitUntil(new CheckSelectedCondition(diagramEditorTgt, targetNodeC1EditPart.part()));
+        bot.waitUntil(new CheckSelectedCondition(diagramEditorTgt, targetNodeC2EditPart.part()));
+        bot.waitUntil(new CheckSelectedCondition(diagramEditorTgt, targetNodeC3EditPart.part()));
+        OperationDoneCondition doneCondition = new OperationDoneCondition();
+        if (pasteFormat) {
+            diagramEditorTgt.clickContextMenu(Messages.PasteFormatAction_text);
+        } else {
+            diagramEditorTgt.clickContextMenu(Messages.PasteLayoutAction_text);
+        }
+
+        // A a dialog should appears to ask the Paste mode to the end-user.
+        bot.waitUntilWidgetAppears(Conditions.shellIsActive(Messages.SelectPasteModeDialog_title));
+        SWTBotShell selectPasteModeDialog = bot.shell(Messages.SelectPasteModeDialog_title);
+        selectPasteModeDialog.activate();
+        // Click OK
+        SWTBotButton pasteButton = bot.button(Messages.SelectPasteModeDialog_pasteButtonLabel);
+        bot.waitUntilWidgetAppears(new ItemEnabledCondition(pasteButton));
+        pasteButton.click();
+        SWTBotUtils.waitAllUiEvents();
+
+        // If other dialog is displayed the test will fail here.
+        try {
+            bot.waitUntil(doneCondition);
+        } catch (TimeoutException e) {
+            fail("The paste action has not been executed, probably because another dialog appears."); //$NON-NLS-1$
+        }
+    }
+
+    /**
      * Change the boolean preferences concerning the Paste mode and store the old values. These values will be
      * automatically reset during tear down.
      *
      * WARNING : THIS METHOD MUST BE CALL ONLY ONCE PER TEST (set up + test)
      */
     private void forceBoundingBoxPasteMode() {
-        // TODO : to enable as soon as preferences are available
-        // changeDiagramUIPreference(SiriusDiagramUiPreferencesKeys.PREF_PROMPT_PASTE_MODE.name(), false);
-        // changeDiagramUIPreference(SiriusDiagramUiPreferencesKeys.PREF_PASTE_MODE_ABSOLUTE.name(), false);
+        changeDiagramUIPreference(SiriusDiagramUiPreferencesKeys.PREF_PROMPT_PASTE_MODE.name(), false);
+        changeDiagramUIPreference(SiriusDiagramUiPreferencesKeys.PREF_PASTE_MODE_ABSOLUTE.name(), false);
     }
 
     /**

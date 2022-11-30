@@ -157,6 +157,36 @@
 			</li>
 		</ul>
 		<p>dependencies from a given project.</p>
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
+			<code>org.eclipse.sirius.diagram.ui</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> Two new preferences have been added in  
+				<code>org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys</code>:
+				<ul>
+					<li>
+						<code>PREF_PROMPT_PASTE_MODE</code>: A boolean preference to say if the paste mode must be requested at each &#8220;Paste format&#8221; or &#8220;Paste layout&#8221; action.
+					</li>
+					<li>
+						<code>PREF_PASTE_MODE_ABSOLUTE</code>: : A boolean preference for the paste mode, true for &#8220;Absolute&#8221; mode, false for &#8220;Bounding box&#8221; mode. This preference is changed as soon as the user changes the selection in the dialog asking the mode. Thereby, at the next dialog, the last choice is pre-selected.
+						<ul>
+							<li>If the 
+								<code>PREF_PROMPT_PASTE_MODE</code> is true, this preference is used to pre-select the choice in the dialog.
+							</li>
+							<li>If the 
+								<code>PREF_PROMPT_PASTE_MODE</code> is false, this preference is used as the Paste mode to apply.
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<p>The Sirius default values for these preferences can be overridden for a specific product. For example:</p>
+		<pre><code>    // Preference customization for plugin "org.eclipse.sirius.diagram.ui"
+    IEclipsePreferences diagramPreferences = DefaultScope.INSTANCE.getNode(org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin.ID);
+    // By default override the PREF_PROMPT_PASTE_MODE default value
+    diagramPreferences.putBoolean(SiriusDiagramUiPreferencesKeys.PREF_PROMPT_PASTE_MODE, false);
+</code></pre>
 		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support">Changes in 
 			<code>org.eclipse.sirius.tests.swtbot.support</code>
 		</h4>
@@ -436,7 +466,7 @@
 				<code>org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContentHelper.getAllEdgeMappings(diagramDescription, false)</code> alongside with the getAllNodeMappings and getAllContainerMappings methods.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui2">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -628,7 +658,7 @@
 				</ul>
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui3">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -750,7 +780,7 @@
 				<code>new DRepresentationQuery(DRpresentation).isAutoRefresh()</code> instead.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui4">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>

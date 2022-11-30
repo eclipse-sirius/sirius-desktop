@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2012 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -92,7 +92,25 @@ public enum SiriusDiagramUiPreferencesKeys {
      * Maximum size (in pixels) of the image buffer used to render the diagrams under Windows (which safely supports
      * larger buffers).
      */
-    PREF_MAXIMUM_EXPORT_BUFFER_SIZE_WINDOWS(int.class);
+    PREF_MAXIMUM_EXPORT_BUFFER_SIZE_WINDOWS(int.class),
+
+    /**
+     * A boolean preference to say if the paste mode must be requested at each "Paste format" or "Paste layout" action.
+     */
+    PREF_PROMPT_PASTE_MODE(boolean.class),
+
+    /**
+     * A boolean preference for the paste mode: true for "Absolute" mode, false for "Bounding box" mode:
+     * <UL>
+     * <LI>If the {@link #PREF_PROMPT_PASTE_MODE} is true, this preference is used to pre-select the choice in the
+     * dialog.</LI>
+     * <LI>If the {@link #PREF_PROMPT_PASTE_MODE} is false, this preference is used as the Paste mode to apply.</LI>
+     * </UL>
+     * 
+     * This preference is changed as soon as the user changes the selection in the dialog asking the mode. Thereby, at
+     * the next dialog, the last choice is pre-selected.
+     */
+    PREF_PASTE_MODE_ABSOLUTE(boolean.class);
 
     /** The type of the preference. */
     private Class<?> type;

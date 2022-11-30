@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -73,16 +73,50 @@ public interface SiriusFormatDataManager {
      * 
      * @param rootEditPart
      *            the root edit from which we would try to apply the current stored format
+     * @deprecated Use {@link #applyFormat(IGraphicalEditPart, boolean)} instead. A default implementation is provided
+     *             to use the previous existing mode "Similar locations in absolute coordinates". As consequence, you
+     *             can already remove this method from your code.
      */
-    void applyFormat(IGraphicalEditPart rootEditPart);
+    @Deprecated
+    default void applyFormat(IGraphicalEditPart rootEditPart) {
+        applyFormat(rootEditPart, true);
+    }
 
     /**
      * Apply the current layout data to the rootEditPart.
      * 
      * @param rootEditPart
      *            the root edit from which we would try to apply the current stored format
+     * @deprecated Use {@link #applyLayout(IGraphicalEditPart, boolean)} instead. A default implementation is provided
+     *             to use the previous existing mode "Similar locations in absolute coordinates". As consequence, you
+     *             can already remove this method from your code.
      */
-    void applyLayout(IGraphicalEditPart rootEditPart);
+    @Deprecated
+    default void applyLayout(IGraphicalEditPart rootEditPart) {
+        applyLayout(rootEditPart, true);
+    }
+
+    /**
+     * Apply the current format data to the rootEditPart.
+     * 
+     * @param rootEditPart
+     *            the root edit from which we would try to apply the current stored format
+     * @param absoluteCoordinates
+     *            true if the paste format must apply the layout with absolute coordinates, false if the paste must
+     *            apply layout with a conservative origin of the bounding box containing the elements to layout
+     */
+    void applyFormat(IGraphicalEditPart rootEditPart, boolean absoluteCoordinates);
+
+    /**
+     * Apply the current layout data to the rootEditPart.
+     * 
+     * @param rootEditPart
+     *            the root edit from which we would try to apply the current stored format
+     * @param absoluteCoordinates
+     *            true if the paste format must apply the layout with absolute coordinates, false if the paste must
+     *            apply layout with a conservative origin of the bounding box containing the elements to layout
+     */
+    void applyLayout(IGraphicalEditPart rootEditPart, boolean absoluteCoordinates);
 
     /**
      * Apply the current style data to the rootEditPart.

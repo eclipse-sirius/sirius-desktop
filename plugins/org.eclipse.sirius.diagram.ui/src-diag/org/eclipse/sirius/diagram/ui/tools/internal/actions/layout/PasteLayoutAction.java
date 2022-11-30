@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2002, 2019 IBM Corporation and others.
+ * Copyright (c) 2002, 2022 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import java.util.List;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CompoundCommand;
@@ -39,6 +40,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
 import org.eclipse.sirius.diagram.ui.tools.internal.format.data.extension.FormatDataManagerRegistry;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 
@@ -79,11 +81,6 @@ public class PasteLayoutAction extends AbstractCopyPasteFormatAction {
         this(workbenchPage, null);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.actions.DiagramAction#getCommandLabel()
-     */
     @Override
     protected String getCommandLabel() {
         return Messages.PasteLayoutAction_commandLabel;
@@ -110,9 +107,15 @@ public class PasteLayoutAction extends AbstractCopyPasteFormatAction {
                         final Object next = iter.next();
                         if (next instanceof IGraphicalEditPart) {
                             final IGraphicalEditPart torestore = (IGraphicalEditPart) next;
-                            doPasteLayoutsCmd.add(new ICommandProxy(new PasteLayoutDataCommand(torestore.getEditingDomain(), diagram.get(), torestore)));
+                            doPasteLayoutsCmd.add(new ICommandProxy(new PasteLayoutDataCommand(torestore.getEditingDomain(), diagram.get(), torestore, getWorkbenchPage().getActivePart().getSite().getShell())));
                         }
                     }
+                    doPasteLayoutsCmd.add(new Command(Messages.SelectPasteModeDialog_tearDownCommandName) {
+                        @Override
+                        public void execute() {
+                            SelectPasteModeDialog.tearDownPromptResult();
+                        }
+                    });
                 }
             }
             pasteLayoutCommand = doPasteLayoutsCmd.unwrap();
@@ -132,6 +135,8 @@ public class PasteLayoutAction extends AbstractCopyPasteFormatAction {
 
         private DDiagram dDiagram;
 
+        private Shell shell;
+        
         /**
          * Default constructor.
          * 
@@ -141,20 +146,26 @@ public class PasteLayoutAction extends AbstractCopyPasteFormatAction {
          *            the {@link DDiagram} on which layout will be pasted
          * @param editPartToRestore
          *            the edit part to restore
+         * @param shell
+         *            the parent shell, or <code>null</code> to create a top-level shell
          */
-        PasteLayoutDataCommand(TransactionalEditingDomain domain, DDiagram dDiagram, IGraphicalEditPart editPartToRestore) {
+        PasteLayoutDataCommand(TransactionalEditingDomain domain, DDiagram dDiagram, IGraphicalEditPart editPartToRestore, Shell shell) {
             super(domain, Messages.PasteLayoutDataCommand_label, null);
             this.dDiagram = dDiagram;
             this.editPartToRestore = editPartToRestore;
+            this.shell = shell;
         }
 
         @Override
         protected CommandResult doExecuteWithResult(final IProgressMonitor monitor, final IAdaptable info) throws ExecutionException {
             List<SiriusFormatDataManager> formatDataManagers = FormatDataManagerRegistry.getSiriusFormatDataManagers(dDiagram);
             if (!formatDataManagers.isEmpty()) {
-                formatDataManagers.get(0).applyLayout(editPartToRestore);
+                try {
+                formatDataManagers.get(0).applyLayout(editPartToRestore, SelectPasteModeDialog.promptIsAbsolutePasteMode(shell));
+                } catch (OperationCanceledException e) {
+                    return CommandResult.newCancelledCommandResult();
+                }
             }
-
             return CommandResult.newOKCommandResult();
         }
 

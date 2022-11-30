@@ -129,26 +129,14 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
         discoveredKeys.clear();
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager#applyFormat(org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart,
-     *      org.eclipse.gef.EditPartViewer)
-     */
     @Override
-    public void applyFormat(final IGraphicalEditPart rootEditPart) {
-        applyFormat(rootEditPart, true, true);
+    public void applyFormat(IGraphicalEditPart rootEditPart, boolean absoluteCoordinates) {
+        applyFormat(rootEditPart, true, true, absoluteCoordinates);
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager#applyFormat(org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart,
-     *      org.eclipse.gef.EditPartViewer)
-     */
     @Override
-    public void applyLayout(final IGraphicalEditPart rootEditPart) {
-        applyFormat(rootEditPart, true, false);
+    public void applyLayout(IGraphicalEditPart rootEditPart, boolean absoluteCoordinates) {
+        applyFormat(rootEditPart, true, false, absoluteCoordinates);
     }
 
     /**
@@ -159,7 +147,7 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
      */
     @Override
     public void applyStyle(final IGraphicalEditPart rootEditPart) {
-        applyFormat(rootEditPart, false, true);
+        applyFormat(rootEditPart, false, true, true);
     }
 
     /**
@@ -167,22 +155,25 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
      * 
      * @param rootEditPart
      *            The root edit from which we would try to apply the current stored format
-     * @param applyFormat
+     * @param applyLayout
      *            true if the format must be applied, false otherwise
      * @param applyStyle
      *            true if the style must be applied, false otherwise
+     * @param absoluteCoordinates
+     *            true if the paste format must apply the layout with absolute coordinates, false if the paste must
+     *            apply layout with a conservative origin of the bounding box containing the elements to layout
      */
-    protected void applyFormat(final IGraphicalEditPart rootEditPart, boolean applyFormat, boolean applyStyle) {
+    protected void applyFormat(final IGraphicalEditPart rootEditPart, boolean applyLayout, boolean applyStyle, boolean absoluteCoordinates) {
         final EObject semanticElement = rootEditPart.resolveSemanticElement();
         final View toStoreView = (View) rootEditPart.getModel();
         if (toStoreView instanceof Edge) {
             // Currently not managed...
         } else if (toStoreView instanceof Diagram && semanticElement instanceof DDiagram) {
-            applyFormat((DDiagram) semanticElement, (Diagram) toStoreView, rootEditPart.getRoot().getViewer(), applyFormat, applyStyle);
+            applyFormat((DDiagram) semanticElement, (Diagram) toStoreView, rootEditPart.getRoot().getViewer(), applyLayout, applyStyle);
             centerEdgesEnds(toStoreView);
         } else if (toStoreView instanceof Node) {
             if (semanticElement instanceof DDiagramElement && semanticElement instanceof DSemanticDecorator) {
-                applyFormat((DDiagramElement) semanticElement, (Node) toStoreView, rootEditPart.getRoot().getViewer(), null, applyFormat, applyStyle);
+                applyFormat((DDiagramElement) semanticElement, (Node) toStoreView, rootEditPart.getRoot().getViewer(), null, applyLayout, applyStyle);
             }
             centerEdgesEnds(toStoreView);
         }

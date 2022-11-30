@@ -99,4 +99,9 @@ public class BooleanFieldEditorWithHelp extends BooleanFieldEditor {
         ImageDescriptor findImageDescriptor = SiriusEditPlugin.Implementation.findImageDescriptor(ICONS_PREFERENCES_HELP);
         return SiriusEditPlugin.getPlugin().getImage(findImageDescriptor);
     }
+
+    @Override
+    protected void adjustForNumColumns(int numColumns) {
+        ((GridData) image.getLayoutData()).horizontalSpan = numColumns - 1;
+    }
 }

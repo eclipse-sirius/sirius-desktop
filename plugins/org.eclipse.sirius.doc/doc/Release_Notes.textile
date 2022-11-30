@@ -26,6 +26,22 @@ h4. Changes in @org.eclipse.sirius@
 * <span class="label label-success">Added</span>The class @org.eclipse.sirius.business.api.query.SiriusProjectDependencyQuery@ is added to get project
 dependencies from a given project.
 
+h4. Changes in @org.eclipse.sirius.diagram.ui@
+
+* <span class="label label-success">Added</span> Two new preferences have been added in  @org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys@:
+** @PREF_PROMPT_PASTE_MODE@: A boolean preference to say if the paste mode must be requested at each "Paste format" or "Paste layout" action.
+** @PREF_PASTE_MODE_ABSOLUTE@: : A boolean preference for the paste mode, true for "Absolute" mode, false for "Bounding box" mode. This preference is changed as soon as the user changes the selection in the dialog asking the mode. Thereby, at the next dialog, the last choice is pre-selected.
+*** If the @PREF_PROMPT_PASTE_MODE@ is true, this preference is used to pre-select the choice in the dialog.
+*** If the @PREF_PROMPT_PASTE_MODE@ is false, this preference is used as the Paste mode to apply.
+
+The Sirius default values for these preferences can be overridden for a specific product. For example:
+
+bc. 
+    // Preference customization for plugin "org.eclipse.sirius.diagram.ui"
+    IEclipsePreferences diagramPreferences = DefaultScope.INSTANCE.getNode(org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin.ID);
+    // By default override the PREF_PROMPT_PASTE_MODE default value
+    diagramPreferences.putBoolean(SiriusDiagramUiPreferencesKeys.PREF_PROMPT_PASTE_MODE, false);
+
 h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 
 * <span class="label label-success">Added</span> Two new methods have been added in @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor@: @getAbsoluteLocation(String, Class<? extends EditPart>, boolean)@ and @getAbsoluteLocation(GraphicalEditPart, boolean)@. Only a boolean parameter has been added to two existing methods (same name without last boolean parameter). This boolean allows to consider, or note, the label of an edge in the bounds computation.

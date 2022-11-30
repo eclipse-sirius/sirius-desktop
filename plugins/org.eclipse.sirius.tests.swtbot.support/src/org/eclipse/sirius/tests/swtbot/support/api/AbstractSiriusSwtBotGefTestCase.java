@@ -227,6 +227,8 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
 
     private boolean defaultEnableAnimatedLayout;
 
+    private boolean defaultPromptPasteMode;
+
     /**
      * HashMaps to store the initial values of preferences before changes.
      */
@@ -300,6 +302,8 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
                 preferenceStore.setValue(IPreferenceConstants.PREF_ENABLE_ANIMATED_ZOOM, false);
                 defaultEnableAnimatedLayout = preferenceStore.getBoolean(IPreferenceConstants.PREF_ENABLE_ANIMATED_LAYOUT);
                 preferenceStore.setValue(IPreferenceConstants.PREF_ENABLE_ANIMATED_LAYOUT, false);
+                defaultPromptPasteMode = preferenceStore.getBoolean(SiriusDiagramUiPreferencesKeys.PREF_PROMPT_PASTE_MODE.name());
+                preferenceStore.setValue(SiriusDiagramUiPreferencesKeys.PREF_PROMPT_PASTE_MODE.name(), false);
 
                 // Set the auto-refresh to false because it's historically
                 // the default value
@@ -1697,6 +1701,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
                     IPreferenceStore preferenceStore = DiagramUIPlugin.getPlugin().getPreferenceStore();
                     preferenceStore.setValue(IPreferenceConstants.PREF_ENABLE_ANIMATED_ZOOM, defaultEnableAnimatedZoom);
                     preferenceStore.setValue(IPreferenceConstants.PREF_ENABLE_ANIMATED_LAYOUT, defaultEnableAnimatedLayout);
+                    preferenceStore.setValue(SiriusDiagramUiPreferencesKeys.PREF_PROMPT_PASTE_MODE.name(), defaultPromptPasteMode);
                 }
 
             });

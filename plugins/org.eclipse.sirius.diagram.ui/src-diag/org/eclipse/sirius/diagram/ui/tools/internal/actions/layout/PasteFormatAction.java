@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import java.util.List;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CompoundCommand;
@@ -39,6 +40,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.format.data.extension.Format
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 
@@ -106,9 +108,18 @@ public class PasteFormatAction extends AbstractCopyPasteFormatAction {
                         final Object next = iter.next();
                         if (next instanceof IGraphicalEditPart) {
                             final IGraphicalEditPart torestore = (IGraphicalEditPart) next;
-                            doPasteFormatsCmd.add(new ICommandProxy(new PasteFormatDataCommand(torestore.getEditingDomain(), diagram.get(), torestore)));
+                            doPasteFormatsCmd.add(
+                                    new ICommandProxy(new PasteFormatDataCommand(torestore.getEditingDomain(), diagram.get(), torestore, getWorkbenchPage().getActivePart().getSite().getShell())));
                         }
                     }
+
+                    doPasteFormatsCmd.add(new Command(Messages.SelectPasteModeDialog_tearDownCommandName) {
+                        @Override
+                        public void execute() {
+                            SelectPasteModeDialog.tearDownPromptResult();
+                        }
+                    });
+
                 }
             }
             pasteFormatCommand = doPasteFormatsCmd.unwrap();
@@ -128,6 +139,8 @@ public class PasteFormatAction extends AbstractCopyPasteFormatAction {
 
         private DDiagram dDiagram;
 
+        private Shell shell;
+
         /**
          * Default constructor.
          * 
@@ -137,11 +150,14 @@ public class PasteFormatAction extends AbstractCopyPasteFormatAction {
          *            the {@link DDiagram} on which format will be pasted
          * @param editPartToRestore
          *            the edit part to restore
+         * @param shell
+         *            the parent shell, or <code>null</code> to create a top-level shell
          */
-        PasteFormatDataCommand(TransactionalEditingDomain domain, DDiagram dDiagram, IGraphicalEditPart editPartToRestore) {
+        PasteFormatDataCommand(TransactionalEditingDomain domain, DDiagram dDiagram, IGraphicalEditPart editPartToRestore, Shell shell) {
             super(domain, Messages.PasteFormatDataCommand_label, null);
             this.dDiagram = dDiagram;
             this.editPartToRestore = editPartToRestore;
+            this.shell = shell;
         }
 
         /**
@@ -155,10 +171,13 @@ public class PasteFormatAction extends AbstractCopyPasteFormatAction {
         protected CommandResult doExecuteWithResult(final IProgressMonitor monitor, final IAdaptable info) throws ExecutionException {
             List<SiriusFormatDataManager> formatDataManagers = FormatDataManagerRegistry.getSiriusFormatDataManagers(dDiagram);
             if (!formatDataManagers.isEmpty()) {
-                formatDataManagers.get(0).applyFormat(editPartToRestore);
+                try {
+                    formatDataManagers.get(0).applyFormat(editPartToRestore, SelectPasteModeDialog.promptIsAbsolutePasteMode(shell));
+                } catch (OperationCanceledException e) {
+                    return CommandResult.newCancelledCommandResult();
+                }
             }
             return CommandResult.newOKCommandResult();
         }
-
     }
 }

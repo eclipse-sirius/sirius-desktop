@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020 Obeo.
+ * Copyright (c) 2020, 2022 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -139,21 +139,6 @@ public class MappingBasedSiriusFormatDataManager extends SiriusFormatDataManager
             result = new SemanticNodeFormatDataKey(usedAsKeySemanticElement);
         }
         return result;
-    }
-
-    @Override
-    public void applyFormat(IGraphicalEditPart rootEditPart) {
-        super.applyFormat(rootEditPart);
-    }
-
-    @Override
-    public void applyLayout(IGraphicalEditPart rootEditPart) {
-        super.applyLayout(rootEditPart);
-    }
-
-    @Override
-    public void applyStyle(IGraphicalEditPart rootEditPart) {
-        super.applyStyle(rootEditPart);
     }
 
     /**
