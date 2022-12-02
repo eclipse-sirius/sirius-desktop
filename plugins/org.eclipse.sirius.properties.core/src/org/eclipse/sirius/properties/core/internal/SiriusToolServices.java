@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2021 Obeo.
+ * Copyright (c) 2015, 2022 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -145,6 +145,18 @@ public class SiriusToolServices {
     }
 
     /**
+     * Returns the list of {@link SiriusContext} associated with a {@link SiriusInputDescriptor} (typically the "input" variable
+     * of the properties view).
+     * 
+     * @param sid
+     *            a {@link SiriusInputDescriptor} (typically the "input" variable of the properties view).
+     * @return the list of all contexts of the input
+     */
+    public List<SiriusContext> getContextSelections(SiriusInputDescriptor sid) {
+        return sid.getContextSelections();
+    }
+
+    /**
      * Returns the semantic element for the given input descriptor.
      * 
      * @param sid
@@ -153,6 +165,17 @@ public class SiriusToolServices {
      */
     public EObject getSemanticElement(SiriusInputDescriptor sid) {
         return sid.getSemanticElement();
+    }
+
+    /**
+     * Returns the list of semantic elements for the given input descriptor.
+     * 
+     * @param sid
+     *            The input descriptor
+     * @return The list of semantic elements for the given input descriptor
+     */
+    public List<EObject> getSelectedSemanticElements(SiriusInputDescriptor sid) {
+        return sid.getSemanticElements();
     }
 
     /**
@@ -175,6 +198,17 @@ public class SiriusToolServices {
      */
     public Object getOriginalSelection(SiriusInputDescriptor sid) {
         return sid.getOriginalSelection();
+    }
+
+    /**
+     * Returns the list of original selections for the given input descriptor.
+     * 
+     * @param sid
+     *            The input descriptor
+     * @return the list of original selections for the given input descriptor
+     */
+    public List<Object> getSelectedOriginalSelections(SiriusInputDescriptor sid) {
+        return sid.getOriginalSelections();
     }
 
     /**

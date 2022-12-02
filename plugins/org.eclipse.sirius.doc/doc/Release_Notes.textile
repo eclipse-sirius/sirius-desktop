@@ -10,7 +10,11 @@ h3. User-Visible Changes
 
 h3. Specifier-Visible Changes
 
+* <span class="label label-success">Added</span> The enhancement of the properties views with the @org.eclipse.sirius.properties.core.api.SiriusInputDescriptor@ and @org.eclipse.sirius.properties.core.internal.SiriusToolServices@ classes allows to use the list of selected elements in order to exploit additional informations. It is now possible to retrieve the list of selected elements via an aql expression like @aql:input.getSelectedOriginalSelections()@, the list of semantic elements with @aql:input.getSelectedSemanticElements()@ and the list of contexts with @aql:input.getContextSelections()@.
+
 h3. Developer-Visible Changes
+
+* <span class="label label-success">Added</span> The @org.eclipse.sirius.properties.core.api.SiriusInputDescriptor@ class has been modified to handle the selection of many elements by creating a list of SiriusContext. This enhancement allows to access the list of selected semantic elements with @org.eclipse.sirius.properties.core.api.SiriusInputDescriptor.getSemanticElements()@ and the list of original selected objects with @org.eclipse.sirius.properties.core.api.SiriusInputDescriptor.getOriginalSelections()@.
 
 h2(#sirius7.0.6). Changes in Sirius 7.0.6
 
