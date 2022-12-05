@@ -159,13 +159,6 @@
 		<p>dependencies from a given project.</p>
 		<h4 id="Migrations">Migrations</h4>
 		<ul>
-			<li><span class="label label-info">Modified</span> The migration participant that sets a changeId value for each DRepresentationDescriptor that did not have one has been changed. The migration participant 
-				<code>org.eclipse.sirius.diagram.ui.business.internal.migration.SetChangeIdMigrationParticipant</code> sets a time stamp that represents the absolute time. The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is 
-				<em>15.7.0.202209051100</em>.
-			</li>
-		</ul>
-		<h4 id="Migrations2">Migrations</h4>
-		<ul>
 			<li><span class="label label-info">Modified</span>The migration participant introduced by 
 				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=576423">Bug 576423 - 
 					<em>Incorrect representation size when using 'Size Computation Expression'</em>
@@ -173,6 +166,10 @@
 				<code>org.eclipse.sirius.diagram.ui.business.internal.migration.WorkspaceImageGMFBoundsMigrationParticipant</code> migration participant has been modified to fix the previous version 
 				<em>15.0.0.202201261500</em> . The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is 
 				<em>15.0.0.202209061200</em>.
+			</li>
+			<li><span class="label label-info">Modified</span> The migration participant 
+				<code>org.eclipse.sirius.diagram.ui.business.internal.migration.SetChangeIdMigrationParticipant</code> that set a changeId value for each DRepresentationDescriptor that did not have one has been changed. The migration participant now sets a time stamp that represents the absolute time. The corresponding version, stored in the attribute version of viewpoint:DAnalysis of the aird file, is 
+				<em>15.1.0.202211301600</em>.
 			</li>
 		</ul>
 		<h2 id="sirius7.0.4">Changes in Sirius 7.0.4</h2>
@@ -563,7 +560,7 @@
 				<code>org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper.copyDirectory(String, String)</code> have been added to ease to the copy of the test files from the test plugin to the junit workspace.
 			</li>
 		</ul>
-		<h4 id="Migrations3">Migrations</h4>
+		<h4 id="Migrations2">Migrations</h4>
 		<ul>
 			<li><span class="label label-success">Added</span> A migration participant has been added to repair size of GMF nodes with Workspace Image style description. A default size was set for this type of nodes, which resulted in graphical inconsistencies (see 
 				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=576423)">Bug 576423 - 
@@ -629,7 +626,7 @@
 				<code>org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDDiagramEditPart.refreshChildren()</code> has been overridden to redraw the edges figures according to the order of the GMF edges.
 			</li>
 		</ul>
-		<h4 id="Migrations4">Migrations</h4>
+		<h4 id="Migrations3">Migrations</h4>
 		<ul>
 			<li><span class="label label-success">Added</span> A migration participant has been added to set a changeId value for each DRepresentationDescriptor that did not have one. Some old models were missing the changeId attribute, which could lead to technical problems. The migration participant 
 				<code>org.eclipse.sirius.diagram.ui.business.internal.migration.SetChangeIdMigrationParticipant</code> sets a random changeId if it didn&#8217;t already exist. The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is 
@@ -641,7 +638,7 @@
 		</ul>
 		<h2 id="sirius6.5.1">Changes in Sirius 6.5.1</h2>
 		<h3 id="DeveloperVisibleChanges7">Developer-Visible Changes</h3>
-		<h4 id="Migrations5">Migrations</h4>
+		<h4 id="Migrations4">Migrations</h4>
 		<ul>
 			<li><span class="label label-info">Modified</span> The migration participant 
 				<code>org.eclipse.sirius.diagram.ui.business.internal.migration.NoteShapeDefaultLabelAlignmentMigrationParticipant</code> has been updated to repair Notes with a potential wrong vertical label alignment. This problem can occur since Sirius 6.3.2 used in a collaborative environment, Obeo Designer Team Edition or Team For Capella for example. The corresponding version, stored in the attribute version of viewpoint:DAnalysis of the aird file, is 
@@ -781,7 +778,7 @@
 				<code>org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper.getAbsoluteBoundsWithoutLabelsIn100Percent(GraphicalEditPart)</code> has been added to get the rectangle bounds without taking labels into account. This is used, in particular, to compute the bendpoints of an edge when the source or the target of the edge is an edge.
 			</li>
 		</ul>
-		<h4 id="Migrations6">Migrations</h4>
+		<h4 id="Migrations5">Migrations</h4>
 		<ul>
 			<li><span class="label label-success">Added</span> A migration participant has been added to repair rectilinear edges containing only one bendpoint. Bracket edges are not relevant. The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is 
 				<em>14.5.0.202104070943</em>.

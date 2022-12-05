@@ -29,12 +29,8 @@ dependencies from a given project.
 
 h4. Migrations
 
-* <span class="label label-info">Modified</span> The migration participant that sets a changeId value for each DRepresentationDescriptor that did not have one has been changed. The migration participant @org.eclipse.sirius.diagram.ui.business.internal.migration.SetChangeIdMigrationParticipant@ sets a time stamp that represents the absolute time. The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _15.7.0.202209051100_.
-
-
-h4. Migrations
-
 * <span class="label label-info">Modified</span>The migration participant introduced by "Bug 576423 - _Incorrect representation size when using 'Size Computation Expression'_":https://bugs.eclipse.org/bugs/show_bug.cgi?id=576423 was wrongly resizing the GMF bounds of collapsed nodes. @org.eclipse.sirius.diagram.ui.business.internal.migration.WorkspaceImageGMFBoundsMigrationParticipant@ migration participant has been modified to fix the previous version _15.0.0.202201261500_ . The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _15.0.0.202209061200_.
+* <span class="label label-info">Modified</span> The migration participant @org.eclipse.sirius.diagram.ui.business.internal.migration.SetChangeIdMigrationParticipant@ that set a changeId value for each DRepresentationDescriptor that did not have one has been changed. The migration participant now sets a time stamp that represents the absolute time. The corresponding version, stored in the attribute version of viewpoint:DAnalysis of the aird file, is _15.1.0.202211301600_.
 
 h2(#sirius7.0.4). Changes in Sirius 7.0.4
 
