@@ -41,6 +41,7 @@ import org.eclipse.swt.dnd.TextTransfer;
 import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -92,11 +93,7 @@ public class SiriusSessionDetailsPropertyPage extends PropertyPage {
         URI airdURI = URI.createPlatformResourceURI(resourceAird.getFullPath().toString(), true);
 
         session = SessionManager.INSTANCE.getExistingSession(airdURI);
-        if (session == null) {
-            computeSessionDetails(Messages.SiriusSessionDetailsPropertyPage_computeSessionDetails, false);
-        } else {
-            computeSessionDetails(Messages.SiriusSessionDetailsPropertyPage_computeSessionDetails, false);
-        }
+        computeSessionDetails(Messages.SiriusSessionDetailsPropertyPage_computeSessionDetails, false);
         computeDependenciesButton.setEnabled(session != null);
     }
 
@@ -135,9 +132,15 @@ public class SiriusSessionDetailsPropertyPage extends PropertyPage {
         sessionDetailsComposite.setLayout(layout);
         sessionDetailsComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
-        computeDependenciesButton = new Button(sessionDetailsComposite, SWT.NONE);
+        // Necessary to have the tooltip even if the button is disabled
+        Composite compositeForTooltip = new Composite(sessionDetailsComposite, SWT.NONE);
+        compositeForTooltip.setLayoutData(new GridData());
+        compositeForTooltip.setLayout(new FillLayout());
+
+        computeDependenciesButton = new Button(compositeForTooltip, SWT.NONE);
         computeDependenciesButton.setText(Messages.SiriusSessionDetailsPropertyPage_computeDependenciesButton);
         computeDependenciesButton.setToolTipText(Messages.SiriusSessionDetailsPropertyPage_computeDependenciesButtonTooltip);
+        compositeForTooltip.setToolTipText(Messages.SiriusSessionDetailsPropertyPage_computeDependenciesButtonTooltip);
         computeDependenciesButton.setLayoutData(new GridData(SWT.LEFT, SWT.FILL, false, false));
         computeDependenciesButton.addSelectionListener(new SelectionAdapter() {
             @Override

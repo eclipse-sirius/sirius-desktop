@@ -38,8 +38,11 @@ public class SiriusProjectDependencyQuery {
     /**
      * Get the direct and transitive project dependencies of the {@link IProject} for resources(aird and semantic
      * resources) and only the direct project dependencies for image used by this project.<br/>
-     * It will use SaxParser to analyze the referenced analysis and semantic elements recursively<br/>
-     * It will use SaxParser to analyze the DAnnotation containing the project used for image<br/>
+     * For local projects, it will use SaxParser to analyze the referenced analysis and semantic elements
+     * recursively<br/>
+     * For local projects, it will use SaxParser to analyze the DAnnotation containing the project used for images<br/>
+     * 
+     * @return null if something went wrong.
      */
     public SiriusProjectDependencies getAllDependencies() {
         // @formatter:off
@@ -49,7 +52,7 @@ public class SiriusProjectDependencyQuery {
                 .map(provider -> provider.getAllDependencies(project));
         // @formatter:on
 
-        return dependencies.orElseGet(() -> new SiriusProjectDependencies(new LinkedHashSet<>(), new LinkedHashSet<>(), new LinkedHashSet<>(), new LinkedHashSet<>()));
+        return dependencies.orElse(null);
     }
 
     /**

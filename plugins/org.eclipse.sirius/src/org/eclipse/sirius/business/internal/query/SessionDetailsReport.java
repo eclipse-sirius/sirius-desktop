@@ -119,9 +119,6 @@ public final class SessionDetailsReport {
      */
     public String getSessionFormattedInformation() {
         StringBuilder informations = new StringBuilder();
-        if (session == null) {
-            informations.append(Messages.SessionQuery_sessionNotOpened).append(CR);
-        }
 
         informations.append(STARS);
         informations.append(Messages.SessionQuery_Date).append(SPACE).append(Date.from(Instant.now())).append(CR).append(CR);
@@ -245,9 +242,13 @@ public final class SessionDetailsReport {
     private void addDependenciesInformation(StringBuilder informations) {
         informations.append(STARS);
         informations.append(Messages.SessionQuery_Dependencies).append(CR);
-        SiriusProjectDependencies directDependencies = new SiriusProjectDependencyQuery(resourceAird.getProject()).getAllDependencies();
-        addGeneralProjectsDependencies(informations, directDependencies);
-        addImageProjectsDependencies(informations, directDependencies);
+        SiriusProjectDependencies dependencies = new SiriusProjectDependencyQuery(resourceAird.getProject()).getAllDependencies();
+        if (dependencies != null) {
+            addGeneralProjectsDependencies(informations, dependencies);
+            addImageProjectsDependencies(informations, dependencies);
+        } else {
+            informations.append(Messages.SessionQuery_sessionNotOpened).append(CR);
+        }
 
         informations.append(CR);
     }

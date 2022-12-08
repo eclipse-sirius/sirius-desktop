@@ -12,8 +12,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.query;
 
+import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Stream;
 
@@ -25,6 +27,7 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.business.api.query.SiriusProjectDependencies;
 import org.eclipse.sirius.business.api.query.SiriusProjectDependencyQuery;
+import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.internal.session.parser.RepresentationsFileSaxParser;
 
 /**
@@ -36,7 +39,19 @@ public class LocalProjectDependencyProvider implements IProjectDependencyProvide
 
     @Override
     public boolean canHandle(IProject project) {
-        return true;
+        boolean canHandle = false;
+
+        Map<URI, Set<URI>> mainAirdReferencedURIs = new SiriusProjectQuery(project).getMainAirdReferencedURIs();
+
+        if (!mainAirdReferencedURIs.isEmpty()) {
+            canHandle = Stream.of(mainAirdReferencedURIs.values())//
+                    .flatMap(Collection::stream)//
+                    .flatMap(Collection::stream)//
+                    .filter(uri -> new URIQuery(uri).isCDOURI())//
+                    .findFirst()//
+                    .isEmpty();
+        }
+        return canHandle;
     }
 
     @Override
@@ -96,10 +111,13 @@ public class LocalProjectDependencyProvider implements IProjectDependencyProvide
     public SiriusProjectDependencies getAllDependencies(IProject project) {
         Set<String> allGeneralProjectDependencies = new LinkedHashSet<>();
         Set<String> notAnalysedGeneralProjectDependencies = new LinkedHashSet<>();
+
         SiriusProjectDependencies directDependencies = addAllGeneralDependencies(project, allGeneralProjectDependencies, notAnalysedGeneralProjectDependencies);
         allGeneralProjectDependencies.removeAll(directDependencies.getGeneralProjectDirectDependencies());
 
-        return new SiriusProjectDependencies(directDependencies.getImageProjectsDirectDependencies(), directDependencies.getGeneralProjectDirectDependencies(), allGeneralProjectDependencies,
-                notAnalysedGeneralProjectDependencies);
+        Set<String> directProjectDepsName = new LinkedHashSet<String>(directDependencies.getGeneralProjectDirectDependencies());
+        directProjectDepsName.removeAll(notAnalysedGeneralProjectDependencies);
+
+        return new SiriusProjectDependencies(directDependencies.getImageProjectsDirectDependencies(), directProjectDepsName, allGeneralProjectDependencies, notAnalysedGeneralProjectDependencies);
     }
 }

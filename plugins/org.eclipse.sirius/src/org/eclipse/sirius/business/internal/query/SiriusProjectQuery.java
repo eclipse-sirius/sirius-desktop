@@ -15,11 +15,12 @@ package org.eclipse.sirius.business.internal.query;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -101,8 +102,17 @@ public class SiriusProjectQuery {
      * aird.
      */
     public List<URI> getMainAirdURIs() {
+        return new ArrayList<URI>(getMainAirdReferencedURIs().keySet());
+    }
+
+    /**
+     * Get the referenced Analysis URI of the main airds.<br/>
+     * 
+     * {@link getMainAirdURIs}
+     */
+    public Map<URI, Set<URI>> getMainAirdReferencedURIs() {
         List<IFile> sessionFiles = getRepresentationFiles();
-        Map<URI, Set<URI>> references = new HashMap<URI, Set<URI>>(sessionFiles.size());
+        Map<URI, Set<URI>> references = new LinkedHashMap<URI, Set<URI>>(sessionFiles.size());
         for (IFile sessionFile : sessionFiles) {
             final RepresentationsFileSaxParser sessionSaxParser = new RepresentationsFileSaxParser(sessionFile);
             sessionSaxParser.analyze();
@@ -122,7 +132,9 @@ public class SiriusProjectQuery {
                 notReferencedURIs.add(uri);
             }
         }
-        return notReferencedURIs;
+
+        Map<URI, Set<URI>> mainAirdWithReferencedAnalysisURIs = notReferencedURIs.stream().collect(Collectors.toMap(uri -> uri, uri -> references.get(uri)));
+        return mainAirdWithReferencedAnalysisURIs;
     }
 
     /**
