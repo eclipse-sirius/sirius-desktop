@@ -295,6 +295,8 @@ public class DiagramOutlinePage extends AbstractExtendedContentOutlinePage {
         // create the outline
         outline = createOutline(pb);
         outlineViewer = super.getTreeViewer();
+        // activates hashlookup for performance 
+        outlineViewer.setUseHashlookup(true);
 
         // create the context menu
         final MenuManager menuManager = new MenuManager();
