@@ -149,6 +149,8 @@ import org.eclipse.sirius.diagram.ui.edit.internal.part.listener.DiagramHeaderPo
 import org.eclipse.sirius.diagram.ui.edit.internal.part.listener.RepresentationLinkPostCommitListener;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.listener.SynchronizedStatusPostCommitListener;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.listener.VisibilityPostCommitListener;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDiagramElementContainerNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.refresh.layout.SiriusCanonicalLayoutHandler;
 import org.eclipse.sirius.diagram.ui.internal.refresh.listeners.GMFDiagramUpdater;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
@@ -1165,7 +1167,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         if (isClosing) {
             return;
         }
-
+        
         super.selectionChanged(part, selection);
         if (getTabbar() != null) {
             getTabbar().selectionChanged(part, selection);
@@ -1190,27 +1192,27 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             final IDiagramGraphicalViewer viewer = getDiagramGraphicalViewer();
             if (viewer != null) {
                 for (final Object object : selected) {
-                    if (object instanceof EObject) {
-                        try {
-                            // TODO remove this try/catch once the
-                            // offline mode will be supported
-                            String elementID = EMFCoreUtil.getProxyID((EObject) object);
+                    if (object instanceof AbstractDDiagramElementLabelItemProvider) {
+                        Option<DDiagramElement> diagramElementTarget = ((AbstractDDiagramElementLabelItemProvider) object).getDiagramElementTarget();
+                        if (diagramElementTarget.some()) {
+                            String elementID = EMFCoreUtil.getProxyID(diagramElementTarget.get());
                             final List<IGraphicalEditPart> concernedEditParts = viewer.findEditPartsForElement(elementID, IGraphicalEditPart.class);
-                            result.addAll(concernedEditParts);
-                        } catch (IllegalStateException e) {
-                            // An issue has been encountered while connecting to
-                            // remote CDO server
-                            if (DiagramUIPlugin.getPlugin().isDebugging()) {
-                                DiagramUIPlugin.getPlugin().getLog().log(new Status(IStatus.WARNING, DiagramUIPlugin.ID, Messages.DDiagramEditorImpl_cdoServerConnectionPbMsg));
-                            }
+                            result.addAll(Sets.newHashSet(Iterables.filter(concernedEditParts, AbstractDiagramNameEditPart.class)));
                         }
                     } else {
-                        if (object instanceof AbstractDDiagramElementLabelItemProvider) {
-                            Option<DDiagramElement> diagramElementTarget = ((AbstractDDiagramElementLabelItemProvider) object).getDiagramElementTarget();
-                            if (diagramElementTarget.some()) {
-                                String elementID = EMFCoreUtil.getProxyID(diagramElementTarget.get());
+                        if (object instanceof EObject) {
+                            try {
+                                // TODO remove this try/catch once the
+                                // offline mode will be supported
+                                String elementID = EMFCoreUtil.getProxyID((EObject) object);
                                 final List<IGraphicalEditPart> concernedEditParts = viewer.findEditPartsForElement(elementID, IGraphicalEditPart.class);
-                                result.addAll(Sets.newHashSet(Iterables.filter(concernedEditParts, AbstractDiagramNameEditPart.class)));
+                                result.add(concernedEditParts.get(0));
+                            } catch (IllegalStateException e) {
+                                // An issue has been encountered while connecting to
+                                // remote CDO server
+                                if (DiagramUIPlugin.getPlugin().isDebugging()) {
+                                    DiagramUIPlugin.getPlugin().getLog().log(new Status(IStatus.WARNING, DiagramUIPlugin.ID, Messages.DDiagramEditorImpl_cdoServerConnectionPbMsg));
+                                }
                             }
                         }
                     }

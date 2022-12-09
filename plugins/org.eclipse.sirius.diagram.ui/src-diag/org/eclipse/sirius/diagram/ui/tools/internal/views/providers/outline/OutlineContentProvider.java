@@ -160,6 +160,11 @@ public class OutlineContentProvider implements ITreeContentProvider, DiagramOutl
                 theParent = parent;
             }
         }
+        else if (element instanceof AbstractDDiagramElementLabelItemProvider) {
+            
+            AbstractDDiagramElementLabelItemProvider theElement = (AbstractDDiagramElementLabelItemProvider) element;
+            theParent = theElement.getTarget();
+        }
 
         return theParent;
     }
