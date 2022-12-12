@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2002, 2015 IBM Corporation and others.
+ * Copyright (c) 2002, 2022 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -37,6 +37,7 @@ import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.GroupMarker;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
@@ -300,6 +301,7 @@ public class DiagramOutlinePage extends AbstractExtendedContentOutlinePage {
 
         // create the context menu
         final MenuManager menuManager = new MenuManager();
+        menuManager.add(new GroupMarker("additions")); //$NON-NLS-1$
         menuManager.setRemoveAllWhenShown(true);
         menuManager.addMenuListener(new IMenuListener() {
             @Override
@@ -314,6 +316,8 @@ public class DiagramOutlinePage extends AbstractExtendedContentOutlinePage {
         });
         outlineViewer.getTree().setMenu(menuManager.createContextMenu(outlineViewer.getTree()));
 
+        getSite().registerContextMenu("org.eclipse.ui.views.ContentOutline", menuManager, this); //$NON-NLS-1$
+        menuManager.markDirty();
         // create the overview
         overview = new Canvas(pb, SWT.NONE);
         if (contentProvider instanceof DiagramOutlinePageListener) {
