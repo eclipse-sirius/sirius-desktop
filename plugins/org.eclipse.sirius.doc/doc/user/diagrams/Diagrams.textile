@@ -581,7 +581,9 @@ The next picture shows a partial view of a diagram. The tool to replicate the fo
 
 	!images/diagram_editor_copy_format.png!
 
-h4. Paste Layout
+When an element format is copied, the format of all its children is also recursively copied (containers, nodes or border nodes). The format of the label and outgoing edges of all these elements, is also copied.
+
+h4(#paste_layout). Paste Layout
 
 The next picture shows the diagram where the layout will be replicated. The tool to paste layout is called "Paste Layout" and can be activated from the tab-bar or from the contextual menu (see _Edit_ section).
 	
@@ -592,6 +594,100 @@ The layout applies to John Doe and Earvin Johnson and is exactly the same as the
 	!images/diagram_editor_paste_layout2.png!
 
 *Warning* : This copy/paste operation copies exactly what you see on a diagram. When using low zoom level, some diagram elements can be twisted and the paste operation will duplicate theses twistings on the other diagram. Please, zoom in to reduce twistings.
+
+h5. Two modes for paste layout
+
+Since Sirius 7.1.0, there are 2 modes to paste the layout. At each execution of the action "Paste format" or "Paste layout", a dialog is displayed to choose the mode.
+
+	!images/pasteMode_dialog.png!
+	
+A description of each mode is available in the following chapters. If you check the "Remember my decision" check-box, this dialog is no longer displayed and the last choice is used at each execution.
+
+These elements are stored in the Sirius preferences and can be accessed through a preference page @Sirius/Sirius Diagram@ in the group @Paste layout mode@.
+
+	!images/pasteMode_preferencePage.png!
+	
+* The check-box @Prompt to select paste mode@ allows to display, or not, the dialog at each execution of the Paste action.
+* The radio buttons @Similar locations in absolute coordinates@ and @Optimized locations by group@ allow to choose the mode: the default mode if the check-box is not checked or the default selected mode in the dialog if checked.
+
+h6. Similar locations in absolute coordinates
+
+The paste action applies a layout to conserve the absolute coordinates of copied elements (independently of the containment hierarchy in source or target).
+
+**Sample**
+
+From a Capella diagram, "system data flow blank" diagram, copy the layout containing all the functions hierarchy to a diagram having only "last children" functions:
+* Launch the action "Copy format" from the source diagram
+
+	!images/copyLayout_absoluteMode_sample1-1.png!
+
+* Select the target diagram
+
+	!images/copyLayout_absoluteMode_sample1-2.png!
+
+* Launch the action "Paste layout", expected result: The absolute coordinates of each element are preserved.
+
+	!images/copyLayout_absoluteMode_sample1-3.png!
+
+h6. Optimized locations by group
+
+The paste action groups elements having the same container in the target diagram. Then it applies the copied layout of these elements relative to each other, while maintaining the same location for the group in the target diagram. 
+
+**Sample 1**
+
+From a Capella diagram, "system data flow blank" diagram, copy the layout containing only "last children" functions to a diagram having all the functions hierarchy:
+
+* Launch the action "Copy format" from the source diagram
+
+	!images/copyLayout_boundingBoxMode_sample1-1.png!
+
+* Select the target diagram
+
+	!images/copyLayout_boundingBoxMode_sample1-2.png!
+
+* Launch the action "Paste layout", expected result: The origin of each group of brothers, in the target diagram,  are preserved (as you can see with guide on the horizontal and vertical rulers). And the layout of brothers, in the target diagram, is applied relative to each other.
+
+	!images/copyLayout_boundingBoxMode_sample1-3.png!
+
+**Sample 2**
+
+In the same Capella diagram, "system data flow blank" diagram, copy the layout from a "REC system function containing children system functions" to two corresponding "RPL system function  containing children system functions":
+
+* Select the children functions SF1, SF2, SF3 and SF4 in the REC system function.
+* Launch the action "Copy format"
+
+	!images/copyLayout_boundingBoxMode_sample2-1.png!
+
+* Select the diagram
+* Launch the action "Paste layout", expected result: The layout of 4 functions are copied into RPL1 and RPL2. The origin of each group of functions is preserved.
+
+	!images/copyLayout_boundingBoxMode_sample2-2.png!
+
+* Another solution is to select the REC system function.
+* Launch the action "Copy format"
+
+	!images/copyLayout_boundingBoxMode_sample2-3.png!
+
+* Launch the action "Paste layout" successively with RPL1 and RPL2 selected, expected result: The result is slightly different. The layout of REC is applied to RPL1 (only its size is modified, the location remains the same) and the layout of their children are applied. The layout of REC is applied to RPL2 (only its size is modified, the location remains the same) and the layout of their children are applied.
+
+	!images/copyLayout_boundingBoxMode_sample2-4.png!
+
+	
+**Sample 3**
+
+In the same Capella diagram, "system data flow blank" diagram, copy the layout from the "REC system functions" to the "RPL system functions":
+* Select "REC system functions"
+* Launch the action "Copy format"
+
+	!images/copyLayout_boundingBoxMode_sample3-1.png!
+
+* Select "RPL system functions"
+
+	!images/copyLayout_boundingBoxMode_sample3-2.png!
+
+* Launch the action "Paste layout"
+
+	!images/copyLayout_boundingBoxMode_sample3-3.png!
 
 h4. Paste Style
 

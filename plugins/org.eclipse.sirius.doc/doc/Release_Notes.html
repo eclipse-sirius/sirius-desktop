@@ -121,6 +121,10 @@
 				<code>right arrow</code> key. You can refer to 
 				<a href="user/trees/Trees.html#navigation">navigation documentation</a> for more details.
 			</li>
+			<li><span class="label label-success">Added</span> A new mode has been added to 
+				<a href="user/diagrams/Diagrams.html#paste_layout">paste the layout</a> of elements between two diagrams. This mode is useful in case of diagrams having the same elements represented several times in a diagram or to copy the layout from a diagram having a hierarchy different than the target diagram. This mode is called &#8220;Optimized locations by group&#8221; (the existing mode is called &#8220;Similar locations in absolute coordinates&#8221;). With this new mode, the paste action groups elements having the same container in the target diagram. Then it applies the copied layout of these elements relative to each other, while maintaining the same location for the group in the target diagram. Examples are available in the 
+				<a href="user/diagrams/Diagrams.html#paste_layout">corresponding documentation</a>.
+			</li>
 			<li><span class="label label-info">Modified</span> In a tree editor, if the expand is done with the right arrow key, the behavior is now OK. Before this version, if the expand is done for the first time with the right arrow key, only a blank child is displayed. You can refer to 
 				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=549352">bugzilla 549352</a> for more details.
 			</li>

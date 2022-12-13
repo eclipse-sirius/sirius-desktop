@@ -138,7 +138,7 @@
 								<a href="#copy_paste_format">Copy/paste of format</a>
 								<ol style="list-style: disc;">
 									<li>
-										<a href="#PasteLayout">Paste Layout</a>
+										<a href="#paste_layout">Paste Layout</a>
 									</li>
 									<li>
 										<a href="#PasteStyle">Paste Style</a>
@@ -1061,7 +1061,8 @@
 		<p>	
 			<img border="0" src="images/diagram_editor_copy_format.png"/>
 		</p>
-		<h4 id="PasteLayout">Paste Layout</h4>
+		<p>When an element format is copied, the format of all its children is also recursively copied (containers, nodes or border nodes). The format of the label and outgoing edges of all these elements, is also copied.</p>
+		<h4 id="paste_layout">Paste Layout</h4>
 		<p>The next picture shows the diagram where the layout will be replicated. The tool to paste layout is called &#8220;Paste Layout&#8221; and can be activated from the tab-bar or from the contextual menu (see 
 			<em>Edit</em> section).
 		</p>
@@ -1074,6 +1075,130 @@
 		</p>
 		<p>
 			<strong>Warning</strong> : This copy/paste operation copies exactly what you see on a diagram. When using low zoom level, some diagram elements can be twisted and the paste operation will duplicate theses twistings on the other diagram. Please, zoom in to reduce twistings.
+		</p>
+		<h5 id="Twomodesforpastelayout">Two modes for paste layout</h5>
+		<p>Since Sirius 7.1.0, there are 2 modes to paste the layout. At each execution of the action &#8220;Paste format&#8221; or &#8220;Paste layout&#8221;, a dialog is displayed to choose the mode.</p>
+		<p>	
+			<img border="0" src="images/pasteMode_dialog.png"/>
+		</p>
+		<p>A description of each mode is available in the following chapters. If you check the &#8220;Remember my decision&#8221; check-box, this dialog is no longer displayed and the last choice is used at each execution.</p>
+		<p>These elements are stored in the Sirius preferences and can be accessed through a preference page 
+			<code>Sirius/Sirius Diagram</code> in the group 
+			<code>Paste layout mode</code>.
+		</p>
+		<p>	
+			<img border="0" src="images/pasteMode_preferencePage.png"/>
+		</p>
+		<ul>
+			<li>The check-box 
+				<code>Prompt to select paste mode</code> allows to display, or not, the dialog at each execution of the Paste action.
+			</li>
+			<li>The radio buttons 
+				<code>Similar locations in absolute coordinates</code> and 
+				<code>Optimized locations by group</code> allow to choose the mode: the default mode if the check-box is not checked or the default selected mode in the dialog if checked.
+			</li>
+		</ul>
+		<h6 id="Similarlocationsinabsolutecoordinates">Similar locations in absolute coordinates</h6>
+		<p>The paste action applies a layout to conserve the absolute coordinates of copied elements (independently of the containment hierarchy in source or target).</p>
+		<p>
+			<b>Sample</b>
+		</p>
+		<p>From a Capella diagram, &#8220;system data flow blank&#8221; diagram, copy the layout containing all the functions hierarchy to a diagram having only &#8220;last children&#8221; functions:</p>
+		<ul>
+			<li>Launch the action &#8220;Copy format&#8221; from the source diagram</li>
+		</ul>
+		<p>	
+			<img border="0" src="images/copyLayout_absoluteMode_sample1-1.png"/>
+		</p>
+		<ul>
+			<li>Select the target diagram</li>
+		</ul>
+		<p>	
+			<img border="0" src="images/copyLayout_absoluteMode_sample1-2.png"/>
+		</p>
+		<ul>
+			<li>Launch the action &#8220;Paste layout&#8221;, expected result: The absolute coordinates of each element are preserved.</li>
+		</ul>
+		<p>	
+			<img border="0" src="images/copyLayout_absoluteMode_sample1-3.png"/>
+		</p>
+		<h6 id="Optimizedlocationsbygroup">Optimized locations by group</h6>
+		<p>The paste action groups elements having the same container in the target diagram. Then it applies the copied layout of these elements relative to each other, while maintaining the same location for the group in the target diagram. </p>
+		<p>
+			<b>Sample 1</b>
+		</p>
+		<p>From a Capella diagram, &#8220;system data flow blank&#8221; diagram, copy the layout containing only &#8220;last children&#8221; functions to a diagram having all the functions hierarchy:</p>
+		<ul>
+			<li>Launch the action &#8220;Copy format&#8221; from the source diagram</li>
+		</ul>
+		<p>	
+			<img border="0" src="images/copyLayout_boundingBoxMode_sample1-1.png"/>
+		</p>
+		<ul>
+			<li>Select the target diagram</li>
+		</ul>
+		<p>	
+			<img border="0" src="images/copyLayout_boundingBoxMode_sample1-2.png"/>
+		</p>
+		<ul>
+			<li>Launch the action &#8220;Paste layout&#8221;, expected result: The origin of each group of brothers, in the target diagram,  are preserved (as you can see with guide on the horizontal and vertical rulers). And the layout of brothers, in the target diagram, is applied relative to each other.</li>
+		</ul>
+		<p>	
+			<img border="0" src="images/copyLayout_boundingBoxMode_sample1-3.png"/>
+		</p>
+		<p>
+			<b>Sample 2</b>
+		</p>
+		<p>In the same Capella diagram, &#8220;system data flow blank&#8221; diagram, copy the layout from a &#8220;REC system function containing children system functions&#8221; to two corresponding &#8220;RPL system function  containing children system functions&#8221;:</p>
+		<ul>
+			<li>Select the children functions SF1, SF2, SF3 and SF4 in the REC system function.</li>
+			<li>Launch the action "Copy format"</li>
+		</ul>
+		<p>	
+			<img border="0" src="images/copyLayout_boundingBoxMode_sample2-1.png"/>
+		</p>
+		<ul>
+			<li>Select the diagram</li>
+			<li>Launch the action &#8220;Paste layout&#8221;, expected result: The layout of 4 functions are copied into RPL1 and RPL2. The origin of each group of functions is preserved.</li>
+		</ul>
+		<p>	
+			<img border="0" src="images/copyLayout_boundingBoxMode_sample2-2.png"/>
+		</p>
+		<ul>
+			<li>Another solution is to select the REC system function.</li>
+			<li>Launch the action "Copy format"</li>
+		</ul>
+		<p>	
+			<img border="0" src="images/copyLayout_boundingBoxMode_sample2-3.png"/>
+		</p>
+		<ul>
+			<li>Launch the action &#8220;Paste layout&#8221; successively with RPL1 and RPL2 selected, expected result: The result is slightly different. The layout of REC is applied to RPL1 (only its size is modified, the location remains the same) and the layout of their children are applied. The layout of REC is applied to RPL2 (only its size is modified, the location remains the same) and the layout of their children are applied.</li>
+		</ul>
+		<p>	
+			<img border="0" src="images/copyLayout_boundingBoxMode_sample2-4.png"/>
+		</p>
+		<p>
+			<b>Sample 3</b>
+		</p>
+		<p>In the same Capella diagram, &#8220;system data flow blank&#8221; diagram, copy the layout from the &#8220;REC system functions&#8221; to the &#8220;RPL system functions&#8221;:</p>
+		<ul>
+			<li>Select "REC system functions"</li>
+			<li>Launch the action "Copy format"</li>
+		</ul>
+		<p>	
+			<img border="0" src="images/copyLayout_boundingBoxMode_sample3-1.png"/>
+		</p>
+		<ul>
+			<li>Select "RPL system functions"</li>
+		</ul>
+		<p>	
+			<img border="0" src="images/copyLayout_boundingBoxMode_sample3-2.png"/>
+		</p>
+		<ul>
+			<li>Launch the action "Paste layout"</li>
+		</ul>
+		<p>	
+			<img border="0" src="images/copyLayout_boundingBoxMode_sample3-3.png"/>
 		</p>
 		<h4 id="PasteStyle">Paste Style</h4>
 		<p>The next picture shows the diagram where the layout will be replicated. The tool to paste style is called &#8220;Paste Style&#8221; and can be activated from the tab-bar or from the contextual menu (see 
