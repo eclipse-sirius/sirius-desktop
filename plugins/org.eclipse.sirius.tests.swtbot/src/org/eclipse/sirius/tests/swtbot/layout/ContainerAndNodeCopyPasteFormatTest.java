@@ -1090,6 +1090,69 @@ public class ContainerAndNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGef
     }
 
     /**
+     * Same test than case1 but instead of selecting the diagram, 2 brothers are selected to paste format. This allows
+     * to check that only one command is executed, and not one for each brother, during the paste format action.
+     */
+    public void testCopyPasteFormatWithBoundingBoxMode_Case1_withPasteOnBrothers() {
+        testCopyPasteWithBoundingBoxMode_Case1_withPasteOnBrothers(true);
+    }
+
+    /**
+     * Same test than case1 but instead of selecting the diagram, 2 brothers are selected to paste format. This allows
+     * to check that only one command is executed, and not one for each brother, during the paste layout action.
+     */
+    public void testCopyPasteLayoutWithBoundingBoxMode_Case1_withPasteOnBrothers() {
+        testCopyPasteWithBoundingBoxMode_Case1_withPasteOnBrothers(false);
+    }
+
+    /**
+     * Same test than case1 but instead of selecting the diagram, 2 brothers are selected to paste format. This allows
+     * to check that only one command is executed, and not one for each brother, during the paste action.
+     */
+    protected void testCopyPasteWithBoundingBoxMode_Case1_withPasteOnBrothers(boolean pasteFormat) {
+        // Enable the bounding box mode by default without popup.
+        forceBoundingBoxPasteMode();
+        // Open the 2 required representations
+        diagramEditorTgt = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_BOUNDING_1, REPRESENTATION_NAME_CASE1_TGT1, DDiagram.class);
+        diagramEditorSrc = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_BOUNDING_1, REPRESENTATION_NAME_CASE1_SRC, DDiagram.class);
+
+        // Check "D" and "E" locations before the copy layout.
+        Rectangle dSourceBounds = checkNodeBounds(diagramEditorSrc, "D", D_NODE_BOUNDS_CASE1, D_NODE_BOUNDS_CASE1);
+        Rectangle eSourceBounds = checkNodeBounds(diagramEditorSrc, "E", E_NODE_BOUNDS_CASE1, E_NODE_BOUNDS_CASE1);
+        Dimension deltaBetweenDAndE = eSourceBounds.getLocation().getDifference(dSourceBounds.getLocation());
+
+        // Copy D and E layout from source diagram
+        SWTBotGefEditPart nodeDEditPart = diagramEditorSrc.getEditPart("D", AbstractDiagramNodeEditPart.class);
+        SWTBotGefEditPart nodeEEditPart = diagramEditorSrc.getEditPart("E", AbstractDiagramNodeEditPart.class);
+        diagramEditorSrc.select(nodeDEditPart, nodeEEditPart);
+        bot.waitUntil(new CheckSelectedCondition(diagramEditorSrc, nodeDEditPart.part()));
+        bot.waitUntil(new CheckSelectedCondition(diagramEditorSrc, nodeEEditPart.part()));
+        diagramEditorSrc.clickContextMenu(Messages.CopyFormatAction_text);
+
+        diagramEditorTgt.show();
+
+        Rectangle absoluteBoundsBeforePaste = diagramEditorTgt.getAbsoluteBounds(diagramEditorTgt.getEditPart("D", AbstractDiagramNodeEditPart.class));
+
+        // Paste layout on D and E
+        SWTBotGefEditPart targetNodeDEditPart = diagramEditorTgt.getEditPart("D", AbstractDiagramNodeEditPart.class);
+        SWTBotGefEditPart targetNodeEEditPart = diagramEditorTgt.getEditPart("E", AbstractDiagramNodeEditPart.class);
+        diagramEditorTgt.select(targetNodeDEditPart, targetNodeEEditPart);
+        bot.waitUntil(new CheckSelectedCondition(diagramEditorTgt, targetNodeDEditPart.part()));
+        bot.waitUntil(new CheckSelectedCondition(diagramEditorTgt, targetNodeEEditPart.part()));
+        if (pasteFormat) {
+            diagramEditorTgt.clickContextMenu(Messages.PasteFormatAction_text);
+        } else {
+            diagramEditorTgt.clickContextMenu(Messages.PasteLayoutAction_text);
+        }
+
+        // Check "D" and "E" locations after the paste layout.
+        Rectangle expectedBoundsForD = new Rectangle(absoluteBoundsBeforePaste.getLocation(), D_NODE_BOUNDS_CASE1.getSize());
+        checkNodeBounds(diagramEditorTgt, "D", expectedBoundsForD, expectedBoundsForD);
+        Rectangle expectedBoundsForE = expectedBoundsForD.getTranslated(deltaBetweenDAndE.width, deltaBetweenDAndE.height);
+        checkNodeBounds(diagramEditorTgt, "E", expectedBoundsForE, expectedBoundsForE);
+    }
+
+    /**
      * Change the boolean preferences concerning the Paste mode and store the old values. These values will be
      * automatically reset during tear down.
      *
