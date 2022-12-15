@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.api.format;
 
+import java.util.List;
+
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.formatdata.AbstractFormatData;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -108,6 +110,20 @@ public interface SiriusFormatDataManager {
     void applyFormat(IGraphicalEditPart rootEditPart, boolean absoluteCoordinates);
 
     /**
+     * Apply the current format data only to the subpart of the children of the parentEditPart. The current format is
+     * not applied on parentEditPart.
+     * 
+     * @param parentEditPart
+     *            the common parent of <code>childrenSubpart</code>
+     * @param childrenSubpart
+     *            a subpart of the children of parentEditPart
+     * @param absoluteCoordinates
+     *            true if the paste format must apply the layout with absolute coordinates, false if the paste must
+     *            apply layout with a conservative origin of the bounding box containing the elements to layout
+     */
+    void applyFormat(IGraphicalEditPart parentEditPart, List<IGraphicalEditPart> childrenSubpart, boolean absoluteCoordinates);
+
+    /**
      * Apply the current layout data to the rootEditPart.
      * 
      * @param rootEditPart
@@ -117,6 +133,20 @@ public interface SiriusFormatDataManager {
      *            apply layout with a conservative origin of the bounding box containing the elements to layout
      */
     void applyLayout(IGraphicalEditPart rootEditPart, boolean absoluteCoordinates);
+
+    /**
+     * Apply the current layout data only to the subpart of the children of the parentEditPart. The current layout is
+     * not applied on parentEditPart.
+     * 
+     * @param parentEditPart
+     *            the common parent of <code>childrenSubpart</code>
+     * @param childrenSubpart
+     *            a subpart of the children of parentEditPart
+     * @param absoluteCoordinates
+     *            true if the paste format must apply the layout with absolute coordinates, false if the paste must
+     *            apply layout with a conservative origin of the bounding box containing the elements to layout
+     */
+    void applyLayout(IGraphicalEditPart rootEditPart, List<IGraphicalEditPart> childrenSubpart, boolean absoluteCoordinates);
 
     /**
      * Apply the current style data to the rootEditPart.

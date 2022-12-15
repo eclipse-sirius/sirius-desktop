@@ -191,6 +191,14 @@
     // By default override the PREF_PROMPT_PASTE_MODE default value
     diagramPreferences.putBoolean(SiriusDiagramUiPreferencesKeys.PREF_PROMPT_PASTE_MODE, false);
 </code></pre>
+		<ul>
+			<li><span class="label label-success">Added</span> Two new methods have been added in  
+				<code>org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager</code> to allow to paste the layout on a subpart of the children of a container and not on all children of this container: 
+				<code>applyLayout(IGraphicalEditPart, List&lt;IGraphicalEditPart&gt;, boolean)</code> and 
+				<code>applyFormat(IGraphicalEditPart, List&lt;IGraphicalEditPart&gt;, boolean)</code>. A default implementation is available in 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.format.AbstractSiriusFormatDataManager</code>.
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support">Changes in 
 			<code>org.eclipse.sirius.tests.swtbot.support</code>
 		</h4>

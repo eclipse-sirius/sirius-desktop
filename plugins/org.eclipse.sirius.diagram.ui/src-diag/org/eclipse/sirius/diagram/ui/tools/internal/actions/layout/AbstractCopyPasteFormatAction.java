@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,9 +15,13 @@ package org.eclipse.sirius.diagram.ui.tools.internal.actions.layout;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.Request;
+import org.eclipse.gef.tools.ToolUtilities;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -25,6 +29,7 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptorRegistry;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
+import org.eclipse.sirius.diagram.ui.tools.api.util.EditPartTools;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.AbstractDiagramAction;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.ui.IWorkbenchPage;
@@ -178,4 +183,32 @@ public abstract class AbstractCopyPasteFormatAction extends AbstractDiagramActio
 
         return result;
     }
+
+    /**
+     * Sort the selection by common parent and also remove children from the selection if an ancestor is in the
+     * selection.
+     * 
+     * @param selection
+     *            The initial selection
+     * @return A subpart of the selection grouped by common parent
+     */
+    protected Map<IGraphicalEditPart, List<IGraphicalEditPart>> sortSelection(List<?> selection) {
+        // Remove child from selection if an ancestor is also in the selection.
+        List<?> selectionWithoutDependants = ToolUtilities.getSelectionWithoutDependants(selection);
+        Map<IGraphicalEditPart, List<IGraphicalEditPart>> result = new HashMap<>();
+        for (Object object : selectionWithoutDependants) {
+            if (object instanceof IGraphicalEditPart) {
+                IGraphicalEditPart part = (IGraphicalEditPart) object;
+                IGraphicalEditPart parent = EditPartTools.getParentOfType(part.getParent(), IGraphicalEditPart.class);
+                List<IGraphicalEditPart> children = result.get(parent);
+                if (children == null) {
+                    children = new ArrayList<IGraphicalEditPart>();
+                    result.put(parent, children);
+                }
+                children.add(part);
+            }
+        }
+        return result;
+    }
+
 }

@@ -43,6 +43,8 @@ bc.
     // By default override the PREF_PROMPT_PASTE_MODE default value
     diagramPreferences.putBoolean(SiriusDiagramUiPreferencesKeys.PREF_PROMPT_PASTE_MODE, false);
 
+* <span class="label label-success">Added</span> Two new methods have been added in  @org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager@ to allow to paste the layout on a subpart of the children of a container and not on all children of this container: @applyLayout(IGraphicalEditPart, List<IGraphicalEditPart>, boolean)@ and @applyFormat(IGraphicalEditPart, List<IGraphicalEditPart>, boolean)@. A default implementation is available in @org.eclipse.sirius.diagram.ui.tools.api.format.AbstractSiriusFormatDataManager@.
+
 h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 
 * <span class="label label-success">Added</span> Two new methods have been added in @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor@: @getAbsoluteLocation(String, Class<? extends EditPart>, boolean)@ and @getAbsoluteLocation(GraphicalEditPart, boolean)@. Only a boolean parameter has been added to two existing methods (same name without last boolean parameter). This boolean allows to consider, or note, the label of an edge in the bounds computation.

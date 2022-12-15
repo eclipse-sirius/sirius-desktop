@@ -138,19 +138,58 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
     }
 
     @Override
+    public void applyFormat(IGraphicalEditPart parentEditPart, List<IGraphicalEditPart> childrenSubpart, boolean absoluteCoordinates) {
+        applyFormat(parentEditPart, childrenSubpart, true, true, absoluteCoordinates);
+    }
+
+    @Override
     public void applyLayout(IGraphicalEditPart rootEditPart, boolean absoluteCoordinates) {
         applyFormat(rootEditPart, true, false, absoluteCoordinates);
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager#applyStyle(org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart,
-     *      org.eclipse.gef.EditPartViewer)
-     */
+    @Override
+    public void applyLayout(IGraphicalEditPart parentEditPart, List<IGraphicalEditPart> childrenSubpart, boolean absoluteCoordinates) {
+        applyFormat(parentEditPart, childrenSubpart, true, false, absoluteCoordinates);
+    }
+
     @Override
     public void applyStyle(final IGraphicalEditPart rootEditPart) {
         applyFormat(rootEditPart, false, true, true);
+    }
+
+    /**
+     * Apply the format only to the subpart of the children of the <code>parentEditPart</code>. The current format is
+     * not applied on <code>parentEditPart</code>.
+     * 
+     * @param parentEditPart
+     *            the common parent of <code>childrenSubpart</code>
+     * @param childrenSubpart
+     *            a subpart of the children of parentEditPart
+     * @param applyLayout
+     *            true if the format must be applied, false otherwise
+     * @param applyStyle
+     *            true if the style must be applied, false otherwise
+     * @param absoluteCoordinates
+     *            true if the paste format must apply the layout with absolute coordinates, false if the paste must
+     *            apply layout with a conservative origin of the bounding box containing the elements to layout
+     */
+    protected void applyFormat(IGraphicalEditPart parentEditPart, List<IGraphicalEditPart> childrenSubpart, boolean applyLayout, boolean applyStyle, boolean absoluteCoordinates) {
+        if (absoluteCoordinates) {
+            // For absolute mode, we apply the layout one by one on the children.
+            for (IGraphicalEditPart child : childrenSubpart) {
+                applyFormat(child, applyLayout, applyStyle, absoluteCoordinates);
+            }
+        } else {
+            List<AbstractDNode> dNodeChildren = new ArrayList<AbstractDNode>();
+            for (IGraphicalEditPart child : childrenSubpart) {
+                final View toStoreView = (View) child.getModel();
+                final EObject semanticElement = child.resolveSemanticElement();
+                if (toStoreView instanceof Node && semanticElement instanceof AbstractDNode && semanticElement instanceof DSemanticDecorator) {
+                    dNodeChildren.add((AbstractDNode) semanticElement);
+                }
+            }
+            applyFormatOnChildrenForBoundingBox(dNodeChildren, parentEditPart.getRoot().getViewer(), null, applyLayout, applyStyle, Optional.empty());
+        }
     }
 
     /**

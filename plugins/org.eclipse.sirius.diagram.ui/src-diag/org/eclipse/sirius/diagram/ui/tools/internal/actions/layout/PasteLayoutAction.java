@@ -15,6 +15,8 @@ package org.eclipse.sirius.diagram.ui.tools.internal.actions.layout;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
@@ -94,8 +96,6 @@ public class PasteLayoutAction extends AbstractCopyPasteFormatAction {
             // Create a compound command to hold the paste commands
             CompoundCommand doPasteLayoutsCmd = new CompoundCommand(Messages.PasteLayoutAction_restoreLayoutCommandLabel);
 
-            // Create an iterator for the selection
-            final Iterator<?> iter = getSelectedObjects().iterator();
             DiagramEditPart diagramEditPart = getDiagramEditPart();
             if (diagramEditPart instanceof IDDiagramEditPart) {
                 final Option<DDiagram> diagram = ((IDDiagramEditPart) diagramEditPart).resolveDDiagram();
@@ -103,24 +103,36 @@ public class PasteLayoutAction extends AbstractCopyPasteFormatAction {
                 // If ddiagram is locked, we will return an unexecutableCommand
                 // so that action is disabled
                 if (diagram.some() && PermissionAuthorityRegistry.getDefault().getPermissionAuthority(diagram.get()).canEditInstance(diagram.get())) {
-                    while (iter.hasNext()) {
-                        final Object next = iter.next();
-                        if (next instanceof IGraphicalEditPart) {
-                            final IGraphicalEditPart torestore = (IGraphicalEditPart) next;
-                            doPasteLayoutsCmd.add(new ICommandProxy(new PasteLayoutDataCommand(torestore.getEditingDomain(), diagram.get(), torestore, getWorkbenchPage().getActivePart().getSite().getShell())));
+                    // Sort selection by common parent, to allow a common PasteFormatDataCommand for brothers (and
+                    // allow a right "bounding box" mode application).
+                    Map<IGraphicalEditPart, List<IGraphicalEditPart>> selectionSortedByCommonParent = sortSelection(getSelectedObjects());
+                    if (!selectionSortedByCommonParent.isEmpty()) {
+                        Iterator<Entry<IGraphicalEditPart, List<IGraphicalEditPart>>> iter = selectionSortedByCommonParent.entrySet().iterator();
+                        while (iter.hasNext()) {
+                            doPasteLayoutsCmd.add(getCommand(diagram.get(), iter.next()));
                         }
+                        doPasteLayoutsCmd.add(new Command(Messages.SelectPasteModeDialog_tearDownCommandName) {
+                            @Override
+                            public void execute() {
+                                SelectPasteModeDialog.tearDownPromptResult();
+                            }
+                        });
                     }
-                    doPasteLayoutsCmd.add(new Command(Messages.SelectPasteModeDialog_tearDownCommandName) {
-                        @Override
-                        public void execute() {
-                            SelectPasteModeDialog.tearDownPromptResult();
-                        }
-                    });
                 }
             }
             pasteLayoutCommand = doPasteLayoutsCmd.unwrap();
         }
         return pasteLayoutCommand;
+    }
+
+    private Command getCommand(DDiagram dDiagram, Entry<IGraphicalEditPart, List<IGraphicalEditPart>> entry) {
+        if (entry.getValue().size() == 1) {
+            return new ICommandProxy(
+                    new PasteLayoutDataCommand(entry.getValue().get(0).getEditingDomain(), dDiagram, entry.getValue().get(0), getWorkbenchPage().getActivePart().getSite().getShell()));
+        } else {
+            return new ICommandProxy(
+                    new PasteLayoutDataCommand(entry.getValue().get(0).getEditingDomain(), dDiagram, entry.getKey(), entry.getValue(), getWorkbenchPage().getActivePart().getSite().getShell()));
+        }
     }
 
     /**
@@ -131,12 +143,14 @@ public class PasteLayoutAction extends AbstractCopyPasteFormatAction {
      */
     private static final class PasteLayoutDataCommand extends AbstractTransactionalCommand {
 
-        private IGraphicalEditPart editPartToRestore;
+        private IGraphicalEditPart containerOrMainEditPartToRestore;
+
+        private List<IGraphicalEditPart> editPartsToRestore;
 
         private DDiagram dDiagram;
 
         private Shell shell;
-        
+
         /**
          * Default constructor.
          * 
@@ -152,7 +166,29 @@ public class PasteLayoutAction extends AbstractCopyPasteFormatAction {
         PasteLayoutDataCommand(TransactionalEditingDomain domain, DDiagram dDiagram, IGraphicalEditPart editPartToRestore, Shell shell) {
             super(domain, Messages.PasteLayoutDataCommand_label, null);
             this.dDiagram = dDiagram;
-            this.editPartToRestore = editPartToRestore;
+            this.containerOrMainEditPartToRestore = editPartToRestore;
+            this.shell = shell;
+        }
+
+        /**
+         * Constructor to apply the layout to a subpart of a container.
+         * 
+         * @param domain
+         *            the editing domain on which this command will be executed
+         * @param dDiagram
+         *            the {@link DDiagram} on which layout will be pasted
+         * @param editPartContainer
+         *            the container of editPartsToRestore
+         * @param editPartsToRestore
+         *            the edit parts to restore (children of the editPartContainer)
+         * @param shell
+         *            the parent shell, or <code>null</code> to create a top-level shell
+         */
+        PasteLayoutDataCommand(TransactionalEditingDomain domain, DDiagram dDiagram, IGraphicalEditPart editPartContainer, List<IGraphicalEditPart> editPartsToRestore, Shell shell) {
+            super(domain, Messages.PasteLayoutDataCommand_label, null);
+            this.dDiagram = dDiagram;
+            this.containerOrMainEditPartToRestore = editPartContainer;
+            this.editPartsToRestore = editPartsToRestore;
             this.shell = shell;
         }
 
@@ -161,13 +197,16 @@ public class PasteLayoutAction extends AbstractCopyPasteFormatAction {
             List<SiriusFormatDataManager> formatDataManagers = FormatDataManagerRegistry.getSiriusFormatDataManagers(dDiagram);
             if (!formatDataManagers.isEmpty()) {
                 try {
-                formatDataManagers.get(0).applyLayout(editPartToRestore, SelectPasteModeDialog.promptIsAbsolutePasteMode(shell));
+                    if (editPartsToRestore == null) {
+                        formatDataManagers.get(0).applyLayout(containerOrMainEditPartToRestore, SelectPasteModeDialog.promptIsAbsolutePasteMode(shell));
+                    } else {
+                        formatDataManagers.get(0).applyLayout(containerOrMainEditPartToRestore, editPartsToRestore, SelectPasteModeDialog.promptIsAbsolutePasteMode(shell));
+                    }
                 } catch (OperationCanceledException e) {
                     return CommandResult.newCancelledCommandResult();
                 }
             }
             return CommandResult.newOKCommandResult();
         }
-
     }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,8 @@ package org.eclipse.sirius.diagram.ui.tools.internal.actions.layout;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
@@ -91,8 +93,6 @@ public class PasteStyleAction extends AbstractCopyPasteFormatAction {
             // Create a compound command to hold the paste commands
             CompoundCommand doPasteStylesCmd = new CompoundCommand(Messages.PasteStyleAction_restoreStyleCommandLabel);
 
-            // Create an iterator for the selection
-            final Iterator<?> iter = getSelectedObjects().iterator();
             DiagramEditPart diagramEditPart = getDiagramEditPart();
             if (diagramEditPart instanceof IDDiagramEditPart) {
                 final Option<DDiagram> diagram = ((IDDiagramEditPart) diagramEditPart).resolveDDiagram();
@@ -100,11 +100,13 @@ public class PasteStyleAction extends AbstractCopyPasteFormatAction {
                 // If ddiagram is locked, we will return an unexecutableCommand
                 // so that action is disabled
                 if (diagram.some() && PermissionAuthorityRegistry.getDefault().getPermissionAuthority(diagram.get()).canEditInstance(diagram.get())) {
-                    while (iter.hasNext()) {
-                        final Object next = iter.next();
-                        if (next instanceof IGraphicalEditPart) {
-                            final IGraphicalEditPart torestore = (IGraphicalEditPart) next;
-                            doPasteStylesCmd.add(new ICommandProxy(new PasteStyleDataCommand(torestore.getEditingDomain(), diagram.get(), torestore)));
+                    // Sort selection by common parent, to allow a common PasteFormatDataCommand for brothers (and
+                    // allow a right "bounding box" mode application).
+                    Map<IGraphicalEditPart, List<IGraphicalEditPart>> selectionSortedByCommonParent = sortSelection(getSelectedObjects());
+                    if (!selectionSortedByCommonParent.isEmpty()) {
+                        Iterator<Entry<IGraphicalEditPart, List<IGraphicalEditPart>>> iter = selectionSortedByCommonParent.entrySet().iterator();
+                        while (iter.hasNext()) {
+                            doPasteStylesCmd.add(getCommand(diagram.get(), iter.next()));
                         }
                     }
                 }
@@ -114,6 +116,16 @@ public class PasteStyleAction extends AbstractCopyPasteFormatAction {
         return pasteStyleCommand;
     }
 
+    private Command getCommand(DDiagram dDiagram, Entry<IGraphicalEditPart, List<IGraphicalEditPart>> entry) {
+        if (entry.getValue().size() == 1) {
+            return new ICommandProxy(
+                    new PasteStyleDataCommand(entry.getValue().get(0).getEditingDomain(), dDiagram, entry.getValue().get(0)));
+        } else {
+            return new ICommandProxy(
+                    new PasteStyleDataCommand(entry.getValue().get(0).getEditingDomain(), dDiagram, entry.getKey(), entry.getValue()));
+        }
+    }
+
     /**
      * A command allowing to paste style data.
      * 
@@ -121,7 +133,9 @@ public class PasteStyleAction extends AbstractCopyPasteFormatAction {
      */
     private static final class PasteStyleDataCommand extends AbstractTransactionalCommand {
 
-        private IGraphicalEditPart editPartToRestore;
+        private IGraphicalEditPart containerOrMainEditPartToRestore;
+
+        private List<IGraphicalEditPart> editPartsToRestore;
 
         private DDiagram dDiagram;
 
@@ -138,18 +152,41 @@ public class PasteStyleAction extends AbstractCopyPasteFormatAction {
         PasteStyleDataCommand(TransactionalEditingDomain domain, DDiagram dDiagram, IGraphicalEditPart editPartToRestore) {
             super(domain, Messages.PasteStyleDataCommand_label, null);
             this.dDiagram = dDiagram;
-            this.editPartToRestore = editPartToRestore;
+            this.containerOrMainEditPartToRestore = editPartToRestore;
+        }
+
+        /**
+         * Constructor to apply the style to a subpart of a container.
+         * 
+         * @param domain
+         *            the editing domain on which this command will be executed
+         * @param dDiagram
+         *            the {@link DDiagram} on which style will be pasted
+         * @param editPartContainer
+         *            the container of editPartsToRestore
+         * @param editPartsToRestore
+         *            the edit parts to restore (children of the editPartContainer)
+         */
+        PasteStyleDataCommand(TransactionalEditingDomain domain, DDiagram dDiagram, IGraphicalEditPart editPartContainer, List<IGraphicalEditPart> editPartsToRestore) {
+            super(domain, Messages.PasteLayoutDataCommand_label, null);
+            this.dDiagram = dDiagram;
+            this.containerOrMainEditPartToRestore = editPartContainer;
+            this.editPartsToRestore = editPartsToRestore;
         }
 
         @Override
         protected CommandResult doExecuteWithResult(final IProgressMonitor monitor, final IAdaptable info) throws ExecutionException {
             List<SiriusFormatDataManager> formatDataManagers = FormatDataManagerRegistry.getSiriusFormatDataManagers(dDiagram);
             if (!formatDataManagers.isEmpty()) {
-                formatDataManagers.get(0).applyStyle(editPartToRestore);
+                if (editPartsToRestore == null) {
+                    formatDataManagers.get(0).applyStyle(containerOrMainEditPartToRestore);
+                } else {
+                    for (IGraphicalEditPart editPartToRestore : editPartsToRestore) {
+                        formatDataManagers.get(0).applyStyle(editPartToRestore);
+                    }
+                }
             }
-
             return CommandResult.newOKCommandResult();
         }
-
     }
 }
