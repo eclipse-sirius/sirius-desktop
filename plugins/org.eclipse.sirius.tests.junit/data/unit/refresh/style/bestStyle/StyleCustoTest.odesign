@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="StyleCustoTest" version="12.0.0.2017041100">
+  <ownedViewpoints name="StyleCustoVP" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="ClassDiagram" domainClass="ecore::EPackage" enablePopupBars="true">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="CD_Class" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="EClass">
+          <style xsi:type="style:SquareDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+          <conditionnalStyles predicateExpression="aql:diagram!=null and view!=null and container!=null and containerView != null">
+            <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelPosition="node" resizeKind="NSEW" shape="triangle">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            </style>
+          </conditionnalStyles>
+        </nodeMappings>
+        <edgeMappings name="CD_SuperClass" sourceMapping="//@ownedViewpoints[name='StyleCustoVP']/@ownedRepresentations[name='ClassDiagram']/@defaultLayer/@nodeMappings[name='CD_Class']" targetMapping="//@ownedViewpoints[name='StyleCustoVP']/@ownedRepresentations[name='ClassDiagram']/@defaultLayer/@nodeMappings[name='CD_Class']" targetFinderExpression="aql:self.eSuperTypes">
+          <style lineStyle="dash" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+          <conditionnalStyles predicateExpression="aql:diagram!=null and view!=null and container!=null and containerView!=null and sourceView!=null and targetView!=null">
+            <style xsi:type="style:BracketEdgeStyleDescription" sizeComputationExpression="2">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+              <centerLabelStyleDescription labelSize="12">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+        </edgeMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="ClassDiagramExtension" viewpointURI="viewpoint:/testEcoreRefreshStyleCusto/StyleCustoVP" representationName="ClassDiagram">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <layers name="ChangeColorLayer">
+        <customization>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="true">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='StyleCustoVP']/@ownedRepresentations[name='ClassDiagram']/@defaultLayer/@nodeMappings[name='CD_Class']/@conditionnalStyles.0/@style" referenceName="borderColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            </featureCustomizations>
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='StyleCustoVP']/@ownedRepresentations[name='ClassDiagram']/@defaultLayer/@edgeMappings[name='CD_SuperClass']/@style" attributeName="lineStyle" value="aql:diagram::LineStyle::dash_dot"/>
+          </vsmElementCustomizations>
+        </customization>
+      </layers>
+    </ownedRepresentationExtensions>
+  </ownedViewpoints>
+</description:Group>

@@ -143,6 +143,9 @@
 				<code>true</code>. It must be set to 
 				<code>false</code> to ignore the constraint.
 			</li>
+			<li><span class="label label-info">Modified</span> A fix has been done to ensure that all the necessary interpreter variables are set when computing the conditional style expression whatever the context of call. Variables for Node and NodeContainer styles: (diagram, view, containerView, container) and for Edge style: (same than for Node, sourceView, targetView). 
+				<strong>Warning</strong> The impact is that, potentially, if you used the variables diagram or containerView in the precondition of your conditional styles, the precondition that returned false before the fix, could now returned true. So you may encounter different node or edge rendering.
+			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius">Changes in 

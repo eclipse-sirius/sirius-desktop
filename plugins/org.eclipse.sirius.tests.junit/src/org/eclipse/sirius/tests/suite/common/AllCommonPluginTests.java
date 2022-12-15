@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -40,6 +40,7 @@ import org.eclipse.sirius.tests.unit.api.modelingproject.SemanticResourcesManage
 import org.eclipse.sirius.tests.unit.api.navigator.GroupingContentProviderByContainingTest;
 import org.eclipse.sirius.tests.unit.api.navigator.GroupingContentProviderTest;
 import org.eclipse.sirius.tests.unit.api.query.NotificationQueryTests;
+import org.eclipse.sirius.tests.unit.api.refresh.MappingWithInterpreterHelperTest;
 import org.eclipse.sirius.tests.unit.api.refresh.ModifyHeaderLabelExpressionTest;
 import org.eclipse.sirius.tests.unit.api.representation.DRepresentationLocationManagerTest;
 import org.eclipse.sirius.tests.unit.api.representation.InvalidRepresentationTest;
@@ -367,6 +368,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(PageOrdererTest.class);
         suite.addTestSuite(ModelingProjectDetectionTest.class);
         suite.addTestSuite(NotificationQueryTests.class);
+        suite.addTestSuite(MappingWithInterpreterHelperTest.class);
     }
 
     /**

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -97,7 +97,7 @@ public class BestStyleDescriptionRegistry extends HashMap<BestStyleDescriptionKe
         final Iterator<? extends ConditionalStyleDescription> it = getConditionalStyles(diagramElementMapping, dDiagram).iterator();
         while (it.hasNext() && result == null) {
             final ConditionalStyleDescription condStyle = it.next();
-            if (ConditionalStyleSpecOperations.checkPredicate(condStyle, modelElement, viewVariable, containerVariable, interpreter)) {
+            if (ConditionalStyleSpecOperations.checkPredicate(condStyle, modelElement, viewVariable, containerVariable, dDiagram, interpreter)) {
                 result = getStyleDescription(condStyle);
             }
         }

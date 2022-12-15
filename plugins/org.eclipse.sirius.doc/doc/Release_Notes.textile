@@ -17,6 +17,7 @@ h3. User-Visible Changes
 h3. Specifier-Visible Changes
 
 * <span class="label label-success">Added</span> The system property @org.eclipse.sirius.ui.enableCreatedElementsConstraintInSelectElementsListener@ has been added to allow to ignore the "created elements" constraint when the @SelectDRepresentationElementsListener@ is called to select elements after a tool execution. In other words, this allows to select an element that is not created during the tool execution. The default value of the system property is @true@. It must be set to @false@ to ignore the constraint.
+* <span class="label label-info">Modified</span> A fix has been done to ensure that all the necessary interpreter variables are set when computing the conditional style expression whatever the context of call. Variables for Node and NodeContainer styles: (diagram, view, containerView, container) and for Edge style: (same than for Node, sourceView, targetView). *Warning* The impact is that, potentially, if you used the variables diagram or containerView in the precondition of your conditional styles, the precondition that returned false before the fix, could now returned true. So you may encounter different node or edge rendering.
 
 h3. Developer-Visible Changes
 
