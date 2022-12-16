@@ -149,8 +149,6 @@ import org.eclipse.sirius.diagram.ui.edit.internal.part.listener.DiagramHeaderPo
 import org.eclipse.sirius.diagram.ui.edit.internal.part.listener.RepresentationLinkPostCommitListener;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.listener.SynchronizedStatusPostCommitListener;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.listener.VisibilityPostCommitListener;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDiagramElementContainerNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.refresh.layout.SiriusCanonicalLayoutHandler;
 import org.eclipse.sirius.diagram.ui.internal.refresh.listeners.GMFDiagramUpdater;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
@@ -1167,7 +1165,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         if (isClosing) {
             return;
         }
-        
+
         super.selectionChanged(part, selection);
         if (getTabbar() != null) {
             getTabbar().selectionChanged(part, selection);
@@ -1505,7 +1503,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     protected Tabbar createTabbar(Composite parent, IDiagramWorkbenchPart part) {
         return new Tabbar(parent, part);
     }
-    
+
     private boolean isOldUIEnabled() {
         return Platform.getPreferencesService().getBoolean(DiagramUIPlugin.ID, SiriusDiagramUiPreferencesKeys.PREF_OLD_UI.name(), false, null);
     }
