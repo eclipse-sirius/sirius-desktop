@@ -40,7 +40,7 @@ import org.eclipse.sirius.tests.unit.api.modelingproject.SemanticResourcesManage
 import org.eclipse.sirius.tests.unit.api.navigator.GroupingContentProviderByContainingTest;
 import org.eclipse.sirius.tests.unit.api.navigator.GroupingContentProviderTest;
 import org.eclipse.sirius.tests.unit.api.query.NotificationQueryTests;
-import org.eclipse.sirius.tests.unit.api.refresh.MappingWithInterpreterHelperTest;
+import org.eclipse.sirius.tests.unit.api.refresh.StylesInterpretedExpressionTest;
 import org.eclipse.sirius.tests.unit.api.refresh.ModifyHeaderLabelExpressionTest;
 import org.eclipse.sirius.tests.unit.api.representation.DRepresentationLocationManagerTest;
 import org.eclipse.sirius.tests.unit.api.representation.InvalidRepresentationTest;
@@ -368,7 +368,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(PageOrdererTest.class);
         suite.addTestSuite(ModelingProjectDetectionTest.class);
         suite.addTestSuite(NotificationQueryTests.class);
-        suite.addTestSuite(MappingWithInterpreterHelperTest.class);
+        suite.addTestSuite(StylesInterpretedExpressionTest.class);
     }
 
     /**

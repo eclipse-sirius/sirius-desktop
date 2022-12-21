@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,11 +12,18 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.internal.query;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.BestStyleDescriptionKey;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.EAttributeCustomization;
 
@@ -49,14 +56,40 @@ public class EAttributeCustomizationQuery extends org.eclipse.sirius.model.busin
     public Object getNewAttributeValue(BestStyleDescriptionKey bestStyleDescriptionKey, IInterpreter interpreter) {
         Object newAttributeValue = null;
         if (eAttributeCustomization.getValue() != null && !StringUtil.isEmpty(eAttributeCustomization.getValue().trim())) {
-            interpreter.setVariable(IInterpreterSiriusVariables.VIEW, bestStyleDescriptionKey.getViewVariable());
-            interpreter.setVariable(IInterpreterSiriusVariables.CONTAINER, bestStyleDescriptionKey.getContainerVariable());
 
-            newAttributeValue = RuntimeLoggerManager.INSTANCE.decorate(interpreter).evaluate(bestStyleDescriptionKey.getModelElement(), eAttributeCustomization,
-                    DescriptionPackage.eINSTANCE.getEAttributeCustomization_Value());
+            Set<String> variablesToUnset = new LinkedHashSet<>();
+            EObject viewVariable = bestStyleDescriptionKey.getViewVariable();
+            if (viewVariable instanceof DDiagramElement) {
+                interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, bestStyleDescriptionKey.getDDiagram());
+                variablesToUnset.add(IInterpreterSiriusVariables.DIAGRAM);
+                interpreter.setVariable(IInterpreterSiriusVariables.VIEW, viewVariable);
+                variablesToUnset.add(IInterpreterSiriusVariables.VIEW);
+                if (viewVariable instanceof DEdge) {
+                    EObject sourceNode = ((DEdge) viewVariable).getSourceNode();
+                    EObject targetNode = ((DEdge) viewVariable).getTargetNode();
+                    interpreter.setVariable(IInterpreterSiriusVariables.SOURCE_VIEW, sourceNode);
+                    variablesToUnset.add(IInterpreterSiriusVariables.SOURCE_VIEW);
+                    interpreter.setVariable(IInterpreterSiriusVariables.TARGET_VIEW, targetNode);
+                    variablesToUnset.add(IInterpreterSiriusVariables.TARGET_VIEW);
+                }
+                EObject eContainer = viewVariable.eContainer();
+                if (eContainer != null) {
+                    interpreter.setVariable(IInterpreterSiriusVariables.CONTAINER_VIEW, eContainer);
+                    variablesToUnset.add(IInterpreterSiriusVariables.CONTAINER_VIEW);
+                    if (eContainer instanceof DSemanticDecorator) {
+                        EObject semanticContainer = ((DSemanticDecorator) eContainer).getTarget();
+                        interpreter.setVariable(IInterpreterSiriusVariables.CONTAINER, semanticContainer);
+                        variablesToUnset.add(IInterpreterSiriusVariables.CONTAINER);
+                    }
+                }
+            }
 
-            interpreter.unSetVariable(IInterpreterSiriusVariables.VIEW);
-            interpreter.unSetVariable(IInterpreterSiriusVariables.CONTAINER);
+            try {
+                newAttributeValue = RuntimeLoggerManager.INSTANCE.decorate(interpreter).evaluate(bestStyleDescriptionKey.getModelElement(), eAttributeCustomization,
+                        DescriptionPackage.eINSTANCE.getEAttributeCustomization_Value());
+            } finally {
+                variablesToUnset.forEach(interpreter::unSetVariable);
+            }
         }
         return newAttributeValue;
     }
