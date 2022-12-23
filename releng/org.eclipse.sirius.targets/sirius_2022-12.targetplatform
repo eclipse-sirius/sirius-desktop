@@ -1,10 +1,11 @@
-target "sirius_2022-06"
+target "sirius_2022-12"
 
 include "modules/orbit.tpd"
 include "modules/swtbot-3.1.tpd"
 include "modules/shared-license.tpd"
 include "modules/aql-3.7.tpd"
 include "modules/acceleo-3.7.tpd"
+include "modules/eef-1.5.tpd"
 include "modules/eef-2.1.tpd"
 include "modules/elk-0.7.tpd"
 include "modules/gmf-runtime-1.15.tpd"
@@ -15,13 +16,12 @@ location Sirius-7.0.0 "https://download.eclipse.org/sirius/updates/releases/7.0.
 	org.eclipse.sirius.common.interpreter lazy
 }
 
-location Eclipse-2022-06 "https://download.eclipse.org/releases/2022-06/" {
+location Eclipse-2022-12 "https://download.eclipse.org/releases/2022-12/" {
 	com.google.guava lazy
 	org.eclipse.emf.common.feature.group lazy
 	org.eclipse.emf.compare.feature.group lazy
 	org.eclipse.emf.ecore.feature.group lazy
 	org.eclipse.emf.edit.feature.group lazy
-	org.eclipse.emf.eef.runtime lazy
 	org.eclipse.emf.feature.group lazy
 	org.eclipse.emf.mwe.sdk.feature.group lazy
 	org.eclipse.emf.mwe2.language.sdk.feature.group lazy

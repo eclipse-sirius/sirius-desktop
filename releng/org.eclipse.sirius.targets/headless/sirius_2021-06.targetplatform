@@ -3,11 +3,11 @@ target "sirius_headless_photon"
 include "../modules/orbit.tpd"
 include "../modules/elk-0.7.tpd"
 include "../modules/shared-license.tpd"
-include "../modules/gmf-runtime-1.14.tpd"
+include "../modules/gmf-runtime-1.15.tpd"
 
 with source, requirements
 
-location Acceleo-3.7 "https://download.eclipse.org/acceleo/updates/releases/3.7/R202002210922/" {
+location Acceleo-3.7 "https://download.eclipse.org/acceleo/updates/releases/3.7/R202211151354/" {
     org.eclipse.acceleo.engine lazy
     org.eclipse.acceleo.parser lazy
     org.eclipse.acceleo.query.feature.group lazy

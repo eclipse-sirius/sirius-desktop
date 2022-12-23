@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="sirius_2022-06" sequenceNumber="1672240343">
+<target name="sirius_2022-12" sequenceNumber="1672240339">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.easymock" version="0.0.0"/>
@@ -41,6 +41,10 @@
       <unit id="org.eclipse.acceleo.query.ui.source.feature.group" version="0.0.0"/>
       <unit id="org.antlr.runtime" version="4.7.2.v20221112-0806"/>
       <repository id="Acceleo-3.7" location="https://download.eclipse.org/acceleo/updates/releases/3.7/R202211151354/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.emf.eef.runtime-feature.feature.group" version="1.5.1.201601141612"/>
+      <repository id="EEF-1.5" location="https://download.eclipse.org/modeling/emft/eef/updates/releases/1.5/R201601141612"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.eef.sdk.feature.feature.group" version="0.0.0"/>
@@ -87,7 +91,6 @@
       <unit id="org.eclipse.emf.compare.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.emf.ecore.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.emf.edit.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.emf.eef.runtime" version="0.0.0"/>
       <unit id="org.eclipse.emf.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.emf.mwe.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.emf.mwe2.language.sdk.feature.group" version="0.0.0"/>
@@ -104,7 +107,7 @@
       <unit id="org.eclipse.uml2.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.xtend.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.xtext.sdk.feature.group" version="0.0.0"/>
-      <repository id="Eclipse-2022-06" location="https://download.eclipse.org/releases/2022-06/"/>
+      <repository id="Eclipse-2022-12" location="https://download.eclipse.org/releases/2022-12/"/>
     </location>
   </locations>
 </target>

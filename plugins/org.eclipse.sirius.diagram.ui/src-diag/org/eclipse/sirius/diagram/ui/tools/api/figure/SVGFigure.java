@@ -19,7 +19,6 @@ import java.io.InputStream;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Optional;
 import java.util.WeakHashMap;
 
 import org.apache.batik.anim.dom.SAXSVGDocumentFactory;
@@ -27,7 +26,6 @@ import org.apache.batik.anim.dom.SVGDOMImplementation;
 import org.apache.batik.anim.dom.SVGOMDocument;
 import org.apache.batik.util.MimeTypeConstants;
 import org.apache.batik.util.ParsedURL;
-import org.apache.batik.util.XMLResourceDescriptor;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.XYLayout;
@@ -294,8 +292,7 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
     }
 
     private Document createDocument() {
-        String parser = Optional.ofNullable(XMLResourceDescriptor.getXMLParserClassName()).orElse("org.apache.xerces.parsers.SAXParser"); //$NON-NLS-1$
-        SAXSVGDocumentFactory factory = new SAXSVGDocumentFactory(parser) {
+        SAXSVGDocumentFactory factory = new SAXSVGDocumentFactory(null) {
             /*
              * This method is exactly same method as @see
              * org.apache.batik.anim.dom.SAXSVGDocumentFactory#createDocument(java.lang.String) but with the workaround

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="sirius_2022-06" sequenceNumber="1672240343">
+<target name="sirius_2022-09" sequenceNumber="1672240339">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.easymock" version="0.0.0"/>
@@ -104,7 +104,7 @@
       <unit id="org.eclipse.uml2.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.xtend.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.xtext.sdk.feature.group" version="0.0.0"/>
-      <repository id="Eclipse-2022-06" location="https://download.eclipse.org/releases/2022-06/"/>
+      <repository id="Eclipse-2022-09" location="https://download.eclipse.org/releases/2022-09/"/>
     </location>
   </locations>
 </target>

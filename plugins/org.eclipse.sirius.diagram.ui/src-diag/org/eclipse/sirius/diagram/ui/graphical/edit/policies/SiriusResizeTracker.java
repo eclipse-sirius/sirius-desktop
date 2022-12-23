@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
+import org.eclipse.draw2d.geometry.Dimension;
+import org.eclipse.draw2d.geometry.PrecisionRectangle;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
@@ -68,7 +70,13 @@ public class SiriusResizeTracker extends ResizeTracker {
      * This variable is used to update the request.
      */
     boolean snapToAllShape = NoCopyDragEditPartsTrackerEx.DEFAULT_SNAP_TO_SHAPE_MODE;
-
+    
+    /**
+     * Local copy of the parent's field, which is private.
+     * Needed for our local override of {@link #enforceConstraintsForResize(ChangeBoundsRequest)}.
+     */
+    private GraphicalEditPart owner;
+    
     /**
      * Default constructor.
      * 
@@ -79,6 +87,7 @@ public class SiriusResizeTracker extends ResizeTracker {
      */
     public SiriusResizeTracker(GraphicalEditPart owner, int direction) {
         super(owner, direction);
+        this.owner = owner;
     }
 
     @Override
@@ -160,5 +169,37 @@ public class SiriusResizeTracker extends ResizeTracker {
         childrenMoveMode = SiriusResizeTracker.DEFAULT_CHILDREN_MOVE_MODE;
         snapToAllShape = NoCopyDragEditPartsTrackerEx.DEFAULT_SNAP_TO_SHAPE_MODE;
         return result;
+    }
+    
+    /**
+     * Copied from GEF 3.14. GEF 3.15 changed the behavior in
+     * https://github.com/eclipse/gef-classic/commit/f6b571bc67e1acb7d6b8ba0f4af9880afd5f9328
+     */
+    @Override
+    protected void enforceConstraintsForResize(ChangeBoundsRequest changeBoundsRequest) {
+        // adjust request, so that minimum and maximum size constraints are
+        // respected
+        if (owner != null) {
+            PrecisionRectangle originalConstraint = new PrecisionRectangle(owner.getFigure().getBounds());
+            owner.getFigure().translateToAbsolute(originalConstraint);
+            PrecisionRectangle manipulatedConstraint = new PrecisionRectangle(
+                    changeBoundsRequest.getTransformedRectangle(originalConstraint));
+            owner.getFigure().translateToRelative(manipulatedConstraint);
+            // validate constraint (maximum and minimum size are regarded to be
+            // 'normalized', i.e. relative to this figure's bounds coordinates).
+            manipulatedConstraint
+                    .setSize(Dimension.max(manipulatedConstraint.getSize(), getMinimumSizeFor(changeBoundsRequest)));
+            manipulatedConstraint
+                    .setSize(Dimension.min(manipulatedConstraint.getSize(), getMaximumSizeFor(changeBoundsRequest)));
+            // translate back to absolute
+            owner.getFigure().translateToAbsolute(manipulatedConstraint);
+            Dimension newSizeDelta = manipulatedConstraint.getSize().getShrinked(originalConstraint.getSize());
+            changeBoundsRequest.setSizeDelta(newSizeDelta);
+            // The 3 lines below have been added in GEF 3.15 but change the behavior in a way
+            // that break some of our tests. Comment them to revert to the previous behavior.
+            // if (isTopOrLeftResize()) {
+            //   enforceResizeConstraintsForBottomRightCorner(changeBoundsRequest);
+            // }
+        }
     }
 }

@@ -1,14 +1,15 @@
 target "orbit" with source, requirements
 
-location Orbit-202203 "https://download.eclipse.org/tools/orbit/downloads/drops/R20220302172233/repository/" {
-    org.apache.log4j lazy
+location Orbit-2022-03 "https://download.eclipse.org/tools/orbit/downloads/drops/R20220302172233/repository/" {
     org.easymock lazy
+}
+location Orbit-2022-12 "https://download.eclipse.org/tools/orbit/downloads/drops/R20221123021534/repository/" {
+    org.apache.log4j lazy
     org.hamcrest.library lazy
-    org.junit [4.11.0,5.0.0)
-    org.slf4j.api [1.7.2,1.7.3)
-    ch.qos.logback.slf4j [1.0.7,1.0.8)
-    ch.qos.logback.classic [1.0.7,1.0.8)
-    ch.qos.logback.core [1.0.7,1.0.8)
-    org.apache.xalan 2.7.1
-    org.antlr.runtime [4.7.1,4.7.2)
+    org.junit lazy
+    org.slf4j.api lazy
+    ch.qos.logback.slf4j lazy
+    ch.qos.logback.classic lazy
+    ch.qos.logback.core lazy
+    org.antlr.runtime  lazy
 }
