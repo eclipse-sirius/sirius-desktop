@@ -289,7 +289,8 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
     private Session lookForAlreadyLoadedSession(URI sessionModelURI) {
         Session alreadyLoadedSession = null;
         for (Session loadedSession : getSessions()) {
-            if (loadedSession.getSessionResource().getURI().equals(sessionModelURI)) {
+            Resource sessionResource = loadedSession.getSessionResource();
+            if (sessionResource != null && sessionResource.getURI().equals(sessionModelURI)) {
                 alreadyLoadedSession = loadedSession;
             }
         }
