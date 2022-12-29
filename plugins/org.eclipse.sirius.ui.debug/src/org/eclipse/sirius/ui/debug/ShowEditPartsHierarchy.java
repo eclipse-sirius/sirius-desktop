@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2022 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.GraphicalFilter;
@@ -89,14 +90,17 @@ final class ShowEditPartsHierarchy implements Runnable {
             } else {
                 out.append(element.getClass().getSimpleName());
             }
-        } else {
+        } else if (model instanceof View) {
             out.append(": ");
-            out.append(model.getClass().getSimpleName());
+            out.append(model.getClass().getSimpleName() + " " + ((View) model).getType());
         }
     }
 
     private void addDDiagramElement(EditPart part, Node node, DDiagramElement element, int level, StringBuilder out) {
         int subLevel = level + 1;
+        out.append(node.getClass().getSimpleName() + " " + node.getType());
+
+        out.append(": ");
         out.append(element.getClass().getSimpleName());
 
         out.append(": ");
