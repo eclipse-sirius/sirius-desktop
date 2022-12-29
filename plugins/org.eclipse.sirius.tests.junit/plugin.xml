@@ -101,4 +101,14 @@
             kind="RepresentationsFile">
       </participant>
    </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.ui.views.ContentOutline?after=additions">
+         <separator
+               name="org.eclipse.sirius.tests.junit.separator1">
+         </separator>
+      </menuContribution>
+   </extension>
 </plugin>

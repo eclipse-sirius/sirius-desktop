@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.services.EReferenceSe
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.services.EcoreServiceTest;
 import org.eclipse.sirius.tests.unit.diagram.operations.ChangeContextOperationTest;
 import org.eclipse.sirius.tests.unit.diagram.operations.CreateInstanceOperationTest;
+import org.eclipse.sirius.tests.unit.diagram.outline.OutlineContextualMenuTest;
 import org.eclipse.sirius.tests.unit.diagram.query.DDiagramElementQueryTest;
 import org.eclipse.sirius.tests.unit.diagram.query.DDiagramInternalQueryTest;
 import org.eclipse.sirius.tests.unit.diagram.refresh.DDiagramElementSynchronizerTest;
@@ -65,6 +66,7 @@ public class AllDiagramStandaloneTests {
     public static Test suite() {
         final TestSuite suite = new TestSuite("Diagram Standalone Tests");
 
+        suite.addTestSuite(OutlineContextualMenuTest.class);
         suite.addTestSuite(EdgeMappingImportTests.class);
         suite.addTestSuite(ImportSpecClassesUnsetTests.class);
         suite.addTestSuite(DEdgeCandidateTest.class);
