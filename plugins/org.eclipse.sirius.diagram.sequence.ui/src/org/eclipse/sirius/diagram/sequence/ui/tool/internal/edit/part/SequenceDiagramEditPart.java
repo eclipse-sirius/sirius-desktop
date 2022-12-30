@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -70,6 +70,7 @@ import org.eclipse.sirius.diagram.ui.graphical.figures.OverlayLabelsDrawerFigure
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.part.DDiagramRootEditPart;
+import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.swt.widgets.Display;
@@ -341,7 +342,10 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
         public void resourceSetChanged(org.eclipse.emf.transaction.ResourceSetChangeEvent event) {
             refreshInstanceRoleEditPartsOnAbstractNodeEventSetBounds(event);
             new SequenceZOrderingRefresher(SequenceDiagramEditPart.this).run();
-            refreshConnectionsBendpoints();
+            EObject element = ((View) SequenceDiagramEditPart.this.getModel()).getElement();
+            if (!PermissionAuthorityRegistry.getDefault().getPermissionAuthority(element).isFrozen(element)) {
+                refreshConnectionsBendpoints();
+            }
         }
 
         private void refreshInstanceRoleEditPartsOnAbstractNodeEventSetBounds(ResourceSetChangeEvent event) {

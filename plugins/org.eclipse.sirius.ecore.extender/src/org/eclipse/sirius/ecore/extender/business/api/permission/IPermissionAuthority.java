@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -192,4 +192,13 @@ public interface IPermissionAuthority {
      * @return an unmodifiable list of the locked objects.
      */
     List<EObject> getLockedObjects();
+
+    /**
+     * Check if an {@link EObject} is frozen.
+     * 
+     * @param eObject
+     *            the {@link EObject} to check if frozen.
+     * @return if the {@link EObject} is frozen or not.
+     */
+    boolean isFrozen(EObject eObject);
 }

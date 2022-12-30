@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009-2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009-2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -129,4 +129,9 @@ public class ReadOnlyPermissionAuthority extends AbstractPermissionAuthority {
         return canEditInstance(element) ? LockStatus.NOT_LOCKED : LockStatus.LOCKED_BY_OTHER;
     }
 
+    @Override
+    public boolean isFrozen(EObject eObject) {
+        return false;
+    }
+    
 }

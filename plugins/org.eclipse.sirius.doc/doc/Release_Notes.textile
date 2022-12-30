@@ -24,6 +24,8 @@ h3. Specifier-Visible Changes
 
 h3. Developer-Visible Changes
 
+* <span class="label label-success">Added</span> The interface @org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority@ now has a @isFrozen(EObject)@ method. This is a status handled by the collaborative plugins, but this new API makes this status available for queries from Sirius core plugins.
+
 h4. Changes in @org.eclipse.sirius@
 
 * <span class="label label-success">Added</span> The method @org.eclipse.sirius.business.api.helper.task.DeleteEObjectTask.getEObjectToDelete()@ has been added to get the EObject that will be deleted by this task.
