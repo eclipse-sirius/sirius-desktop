@@ -821,6 +821,41 @@
         <details key="imagePath" value="icons/full/decorator/inputArrowWithFillDiamond.gif"/>
       </eAnnotations>
     </eLiterals>
+    <eLiterals name="CirclePlus" value="11" literal="CirclePlus">
+      <eAnnotations source="Sirius">
+        <details key="imagePath" value="icons/full/decorator/circlePlus.gif"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="Dot" value="12" literal="Dot">
+      <eAnnotations source="Sirius">
+        <details key="imagePath" value="icons/full/decorator/dot.gif"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="InputArrowWithDot" value="13" literal="InputArrowWithDot">
+      <eAnnotations source="Sirius">
+        <details key="imagePath" value="icons/full/decorator/inputArrowWithDot.gif"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="DiamondWithDot" value="14" literal="DiamondWithDot">
+      <eAnnotations source="Sirius">
+        <details key="imagePath" value="icons/full/decorator/diamondWithDot.gif"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="FillDiamondWithDot" value="15" literal="FillDiamondWithDot">
+      <eAnnotations source="Sirius">
+        <details key="imagePath" value="icons/full/decorator/fillDiamondWithDot.gif"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="InputArrowWithDiamondAndDot" value="16" literal="InputArrowWithDiamondAndDot">
+      <eAnnotations source="Sirius">
+        <details key="imagePath" value="icons/full/decorator/inputArrowWithDiamondAndDot.gif"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="InputArrowWithFillDiamondAndDot" value="17" literal="InputArrowWithFillDiamondAndDot">
+      <eAnnotations source="Sirius">
+        <details key="imagePath" value="icons/full/decorator/inputArrowWithFillDiamondAndDot.gif"/>
+      </eAnnotations>
+    </eLiterals>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="EdgeRouting">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

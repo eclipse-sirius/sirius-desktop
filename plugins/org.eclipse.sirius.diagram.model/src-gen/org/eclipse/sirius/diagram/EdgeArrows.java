@@ -126,7 +126,65 @@ public enum EdgeArrows implements Enumerator {
      * @generated
      * @ordered
      */
-    INPUT_ARROW_WITH_FILL_DIAMOND_LITERAL(10, "InputArrowWithFillDiamond", "InputArrowWithFillDiamond"); //$NON-NLS-1$ //$NON-NLS-2$
+    INPUT_ARROW_WITH_FILL_DIAMOND_LITERAL(10, "InputArrowWithFillDiamond", "InputArrowWithFillDiamond"), //$NON-NLS-1$ //$NON-NLS-2$
+    /**
+     * The '<em><b>Circle Plus</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #CIRCLE_PLUS
+     * @generated
+     * @ordered
+     */
+    CIRCLE_PLUS_LITERAL(11, "CirclePlus", "CirclePlus"), //$NON-NLS-1$ //$NON-NLS-2$
+    /**
+     * The '<em><b>Dot</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #DOT
+     * @generated
+     * @ordered
+     */
+    DOT_LITERAL(12, "Dot", "Dot"), //$NON-NLS-1$//$NON-NLS-2$
+    /**
+     * The '<em><b>Input Arrow With Dot</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #INPUT_ARROW_WITH_DOT
+     * @generated
+     * @ordered
+     */
+    INPUT_ARROW_WITH_DOT_LITERAL(13, "InputArrowWithDot", "InputArrowWithDot"), //$NON-NLS-1$ //$NON-NLS-2$
+    /**
+     * The '<em><b>Diamond With Dot</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #DIAMOND_WITH_DOT
+     * @generated
+     * @ordered
+     */
+    DIAMOND_WITH_DOT_LITERAL(14, "DiamondWithDot", "DiamondWithDot"), //$NON-NLS-1$//$NON-NLS-2$
+    /**
+     * The '<em><b>Fill Diamond With Dot</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #FILL_DIAMOND_WITH_DOT
+     * @generated
+     * @ordered
+     */
+    FILL_DIAMOND_WITH_DOT_LITERAL(15, "FillDiamondWithDot", "FillDiamondWithDot"), //$NON-NLS-1$ //$NON-NLS-2$
+    /**
+     * The '<em><b>Input Arrow With Diamond And Dot</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @see #INPUT_ARROW_WITH_DIAMOND_AND_DOT
+     * @generated
+     * @ordered
+     */
+    INPUT_ARROW_WITH_DIAMOND_AND_DOT_LITERAL(16, "InputArrowWithDiamondAndDot", "InputArrowWithDiamondAndDot"), //$NON-NLS-1$ //$NON-NLS-2$
+    /**
+     * The '<em><b>Input Arrow With Fill Diamond And Dot</b></em>' literal object. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #INPUT_ARROW_WITH_FILL_DIAMOND_AND_DOT
+     * @generated
+     * @ordered
+     */
+    INPUT_ARROW_WITH_FILL_DIAMOND_AND_DOT_LITERAL(17, "InputArrowWithFillDiamondAndDot", "InputArrowWithFillDiamondAndDot"); //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>No Decoration</b></em>' literal value. <!-- begin-user-doc -->
@@ -297,12 +355,88 @@ public enum EdgeArrows implements Enumerator {
     public static final int INPUT_ARROW_WITH_FILL_DIAMOND = 10;
 
     /**
+     * The '<em><b>Circle Plus</b></em>' literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #CIRCLE_PLUS_LITERAL
+     * @model name="CirclePlus" annotation="Sirius imagePath='icons/full/decorator/circlePlus.gif'"
+     * @generated
+     * @ordered
+     */
+    public static final int CIRCLE_PLUS = 11;
+
+    /**
+     * The '<em><b>Dot</b></em>' literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #DOT_LITERAL
+     * @model name="Dot" annotation="Sirius imagePath='icons/full/decorator/dot.gif'"
+     * @generated
+     * @ordered
+     */
+    public static final int DOT = 12;
+
+    /**
+     * The '<em><b>Input Arrow With Dot</b></em>' literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #INPUT_ARROW_WITH_DOT_LITERAL
+     * @model name="InputArrowWithDot" annotation="Sirius imagePath='icons/full/decorator/inputArrowWithDot.gif'"
+     * @generated
+     * @ordered
+     */
+    public static final int INPUT_ARROW_WITH_DOT = 13;
+
+    /**
+     * The '<em><b>Diamond With Dot</b></em>' literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #DIAMOND_WITH_DOT_LITERAL
+     * @model name="DiamondWithDot" annotation="Sirius imagePath='icons/full/decorator/diamondWithDot.gif'"
+     * @generated
+     * @ordered
+     */
+    public static final int DIAMOND_WITH_DOT = 14;
+
+    /**
+     * The '<em><b>Fill Diamond With Dot</b></em>' literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #FILL_DIAMOND_WITH_DOT_LITERAL
+     * @model name="FillDiamondWithDot" annotation="Sirius imagePath='icons/full/decorator/fillDiamondWithDot.gif'"
+     * @generated
+     * @ordered
+     */
+    public static final int FILL_DIAMOND_WITH_DOT = 15;
+
+    /**
+     * The '<em><b>Input Arrow With Diamond And Dot</b></em>' literal value. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @see #INPUT_ARROW_WITH_DIAMOND_AND_DOT_LITERAL
+     * @model name="InputArrowWithDiamondAndDot" annotation="Sirius
+     *        imagePath='icons/full/decorator/inputArrowWithDiamondAndDot.gif'"
+     * @generated
+     * @ordered
+     */
+    public static final int INPUT_ARROW_WITH_DIAMOND_AND_DOT = 16;
+
+    /**
+     * The '<em><b>Input Arrow With Fill Diamond And Dot</b></em>' literal value. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #INPUT_ARROW_WITH_FILL_DIAMOND_AND_DOT_LITERAL
+     * @model name="InputArrowWithFillDiamondAndDot" annotation="Sirius
+     *        imagePath='icons/full/decorator/inputArrowWithFillDiamondAndDot.gif'"
+     * @generated
+     * @ordered
+     */
+    public static final int INPUT_ARROW_WITH_FILL_DIAMOND_AND_DOT = 17;
+
+    /**
      * An array of all the '<em><b>Edge Arrows</b></em>' enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     private static final EdgeArrows[] VALUES_ARRAY = new EdgeArrows[] { NO_DECORATION_LITERAL, OUTPUT_ARROW_LITERAL, INPUT_ARROW_LITERAL, OUTPUT_CLOSED_ARROW_LITERAL, INPUT_CLOSED_ARROW_LITERAL,
-            OUTPUT_FILL_CLOSED_ARROW_LITERAL, INPUT_FILL_CLOSED_ARROW_LITERAL, DIAMOND_LITERAL, FILL_DIAMOND_LITERAL, INPUT_ARROW_WITH_DIAMOND_LITERAL, INPUT_ARROW_WITH_FILL_DIAMOND_LITERAL, };
+            OUTPUT_FILL_CLOSED_ARROW_LITERAL, INPUT_FILL_CLOSED_ARROW_LITERAL, DIAMOND_LITERAL, FILL_DIAMOND_LITERAL, INPUT_ARROW_WITH_DIAMOND_LITERAL, INPUT_ARROW_WITH_FILL_DIAMOND_LITERAL,
+            CIRCLE_PLUS_LITERAL, DOT_LITERAL, INPUT_ARROW_WITH_DOT_LITERAL, DIAMOND_WITH_DOT_LITERAL, FILL_DIAMOND_WITH_DOT_LITERAL, INPUT_ARROW_WITH_DIAMOND_AND_DOT_LITERAL,
+            INPUT_ARROW_WITH_FILL_DIAMOND_AND_DOT_LITERAL, };
 
     /**
      * A public read-only list of all the '<em><b>Edge Arrows</b></em>' enumerators. <!-- begin-user-doc --> <!--
@@ -381,6 +515,20 @@ public enum EdgeArrows implements Enumerator {
             return INPUT_ARROW_WITH_DIAMOND_LITERAL;
         case INPUT_ARROW_WITH_FILL_DIAMOND:
             return INPUT_ARROW_WITH_FILL_DIAMOND_LITERAL;
+        case CIRCLE_PLUS:
+            return CIRCLE_PLUS_LITERAL;
+        case DOT:
+            return DOT_LITERAL;
+        case INPUT_ARROW_WITH_DOT:
+            return INPUT_ARROW_WITH_DOT_LITERAL;
+        case DIAMOND_WITH_DOT:
+            return DIAMOND_WITH_DOT_LITERAL;
+        case FILL_DIAMOND_WITH_DOT:
+            return FILL_DIAMOND_WITH_DOT_LITERAL;
+        case INPUT_ARROW_WITH_DIAMOND_AND_DOT:
+            return INPUT_ARROW_WITH_DIAMOND_AND_DOT_LITERAL;
+        case INPUT_ARROW_WITH_FILL_DIAMOND_AND_DOT:
+            return INPUT_ARROW_WITH_FILL_DIAMOND_AND_DOT_LITERAL;
         }
         return null;
     }

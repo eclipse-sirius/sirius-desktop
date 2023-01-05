@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2021, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
+ *    Vincent Lorenzo (CEA LIST) <vincent.lorenzo@cea.fr> - Bug 581287
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.edit.internal.part;
 
@@ -69,7 +70,9 @@ import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.EdgeRoutingStyleChangedCommand;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
+import org.eclipse.sirius.ext.draw2d.figure.CirclePlusDecoration;
 import org.eclipse.sirius.ext.draw2d.figure.PolygoneAndPolylineDecoraction;
+import org.eclipse.sirius.ext.draw2d.figure.PolygoneAndPolylineWithDotDecoration;
 import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.RGBValues;
@@ -84,6 +87,11 @@ public final class DiagramEdgeEditPartOperation {
      * Basic shape of an inverse triangle tip.
      */
     public static final PointList INVERSE_TRIANGLE_TIP = new PointList();
+
+    /**
+     * The diamond figure.
+     */
+    public static final PointList DIAMOND = new PointList();
 
     /**
      * A zoom error margin to determine if a bendpoint of a path exist. An error margin is needed because the zoom can
@@ -105,6 +113,11 @@ public final class DiagramEdgeEditPartOperation {
         INVERSE_TRIANGLE_TIP.addPoint(1, -1);
         INVERSE_TRIANGLE_TIP.addPoint(0, 0);
         INVERSE_TRIANGLE_TIP.addPoint(1, 1);
+
+        DIAMOND.addPoint(0, 0);
+        DIAMOND.addPoint(-1, 1);
+        DIAMOND.addPoint(-2, 0);
+        DIAMOND.addPoint(-1, -1);
     }
 
     /**
@@ -305,6 +318,27 @@ public final class DiagramEdgeEditPartOperation {
         case INPUT_ARROW_WITH_FILL_DIAMOND_LITERAL:
             result = DiagramEdgeEditPartOperation.createArrowInWithFillDiamond(self);
             break;
+        case CIRCLE_PLUS_LITERAL:
+            result = DiagramEdgeEditPartOperation.createCirclePlus(self);
+            break;
+        case DOT_LITERAL:
+            result = DiagramEdgeEditPartOperation.createDot(self);
+            break;
+        case INPUT_ARROW_WITH_DOT_LITERAL:
+            result = DiagramEdgeEditPartOperation.createArrowInWithDot(self);
+            break;
+        case INPUT_ARROW_WITH_FILL_DIAMOND_AND_DOT_LITERAL:
+            result = DiagramEdgeEditPartOperation.createArrowInWithFillDiamondAndDot(self);
+            break;
+        case INPUT_ARROW_WITH_DIAMOND_AND_DOT_LITERAL:
+            result = DiagramEdgeEditPartOperation.createArrowInWithDiamondAndDot(self);
+            break;
+        case DIAMOND_WITH_DOT_LITERAL:
+            result = DiagramEdgeEditPartOperation.createDiamondAndDotDecoration(self);
+            break;
+        case FILL_DIAMOND_WITH_DOT_LITERAL:
+            result = DiagramEdgeEditPartOperation.createFillDiamondAndDotDecoration(self);
+            break;
         default:
             assert false;
             result = null;
@@ -469,12 +503,7 @@ public final class DiagramEdgeEditPartOperation {
      */
     public static PolygonDecoration createFillDiamondDecoration(final IDiagramEdgeEditPart self) {
         final PolygonDecoration decoration = new PolygonDecoration();
-        final PointList decorationPointList = new PointList();
-        decorationPointList.addPoint(0, 0);
-        decorationPointList.addPoint(-1, 1);
-        decorationPointList.addPoint(-2, 0);
-        decorationPointList.addPoint(-1, -1);
-        decoration.setTemplate(decorationPointList);
+        decoration.setTemplate(DIAMOND);
         decoration.setScale(6, 3);
         DiagramEdgeEditPartOperation.applyLineWidth(decoration, self);
         return decoration;
@@ -612,13 +641,121 @@ public final class DiagramEdgeEditPartOperation {
      */
     private static RotatableDecoration createArrowInWithFillDiamond(IDiagramEdgeEditPart self) {
         final PolygoneAndPolylineDecoraction decoration = new PolygoneAndPolylineDecoraction();
-        final PointList decorationPointList = new PointList();
-        decorationPointList.addPoint(0, 0);
-        decorationPointList.addPoint(-1, 1);
-        decorationPointList.addPoint(-2, 0);
-        decorationPointList.addPoint(-1, -1);
-        decoration.setTemplate(decorationPointList);
+        decoration.setTemplate(DIAMOND);
         decoration.setScale(6, 3);
+        DiagramEdgeEditPartOperation.applyLineWidth(decoration, self);
+        return decoration;
+    }
+
+    /**
+     * Creates a circle with a plus decoration.
+     * 
+     * @param self
+     *            the edge edit part
+     * @return the new decoration
+     */
+    private static RotatableDecoration createCirclePlus(final IDiagramEdgeEditPart self) {
+        final CirclePlusDecoration decoration = new CirclePlusDecoration();
+        return decoration;
+    }
+
+    /**
+     * Creates a dot decoration.
+     * 
+     * @param self
+     *            the edge edit part
+     * @return the new decoration
+     */
+    private static RotatableDecoration createDot(final IDiagramEdgeEditPart self) {
+        final PolygoneAndPolylineWithDotDecoration decoration = new PolygoneAndPolylineWithDotDecoration();
+        decoration.setPolylineTemplate(new PointList()); // remove the arrow
+        decoration.setTemplate(new PointList()); // remove the diamond
+        DiagramEdgeEditPartOperation.applyLineWidth(decoration, self);
+        return decoration;
+    }
+
+    /**
+     * Creates an input arrow with a dot decoration.
+     * 
+     * @param self
+     *            the edge edit part
+     * @return the new decoration
+     */
+    private static RotatableDecoration createArrowInWithDot(IDiagramEdgeEditPart self) {
+        PolygoneAndPolylineWithDotDecoration decoration = new PolygoneAndPolylineWithDotDecoration();
+        decoration.setScale(6, 3);
+        DiagramEdgeEditPartOperation.applyLineWidth(decoration, self);
+        return decoration;
+
+    }
+
+    /**
+     * Creates an input arrow with diamond and dot decoration.
+     * 
+     * @param self
+     *            the edge edit part
+     * @return the new decoration
+     */
+    private static RotatableDecoration createArrowInWithDiamondAndDot(IDiagramEdgeEditPart self) {
+        PolygoneAndPolylineWithDotDecoration decoration = (PolygoneAndPolylineWithDotDecoration) createArrowInWithFillDiamondAndDot(self);
+        decoration.setBackgroundColor(ColorConstants.white);
+        DiagramEdgeEditPartOperation.applyLineWidth(decoration, self);
+        return decoration;
+    }
+    
+    /**
+     * Creates an input arrow with fill diamond and dot decoration.
+     * 
+     * @param self
+     *            the edge edit part
+     * @return the new decoration
+     */
+    private static RotatableDecoration createArrowInWithFillDiamondAndDot(IDiagramEdgeEditPart self) {
+        PolygoneAndPolylineWithDotDecoration decoration = new PolygoneAndPolylineWithDotDecoration();
+        final PointList decorationPointList = DIAMOND.getCopy();
+        // translate the diamond to be able to display the dot
+        decorationPointList.translate(-1, 0);
+        decoration.setTemplate(decorationPointList);
+
+        PointList arrow = PolygoneAndPolylineDecoraction.TRIANGLE_TIP.getCopy();
+        arrow.translate(-1, 0);
+        decoration.setPolylineTemplate(arrow);
+
+        DiagramEdgeEditPartOperation.applyLineWidth(decoration, self);
+        return decoration;
+
+    }
+
+    /**
+     * Creates a diamond with dot decoration.
+     * 
+     * @param self
+     *            the edge edit part
+     * @return the new decoration
+     */
+    private static RotatableDecoration createDiamondAndDotDecoration(IDiagramEdgeEditPart self) {
+        PolygoneAndPolylineWithDotDecoration decoration = (PolygoneAndPolylineWithDotDecoration) createFillDiamondAndDotDecoration(self);
+        decoration.setBackgroundColor(ColorConstants.white);
+        DiagramEdgeEditPartOperation.applyLineWidth(decoration, self);
+        return decoration;
+    }
+
+    /**
+     * Creates a fill diamond with dot decoration.
+     * 
+     * @param self
+     *            the edge edit part
+     * @return the new decoration
+     */
+    private static RotatableDecoration createFillDiamondAndDotDecoration(IDiagramEdgeEditPart self) {
+        PolygoneAndPolylineWithDotDecoration decoration = new PolygoneAndPolylineWithDotDecoration();
+        decoration.setPolylineTemplate(new PointList()); // remove the arrow
+
+        final PointList decorationPointList = DIAMOND.getCopy();
+        // translate the diamond to be able to display the dot
+        decorationPointList.translate(-1, 0);
+
+        decoration.setTemplate(decorationPointList);
         DiagramEdgeEditPartOperation.applyLineWidth(decoration, self);
         return decoration;
     }
@@ -706,7 +843,7 @@ public final class DiagramEdgeEditPartOperation {
      */
     public static void refreshBendpointsWithPath(AbstractDiagramEdgeEditPart self, DEdge edge) {
         RelativeBendpoints bendpoints = (RelativeBendpoints) ((Edge) self.getModel()).getBendpoints();
-        List modelConstraint = bendpoints.getPoints();
+        List<?> modelConstraint = bendpoints.getPoints();
         List<RelativeBendpoint> defaultFigureConstraint = new ArrayList<RelativeBendpoint>();
         for (int i = 0; i < modelConstraint.size(); i++) {
             org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint wbp = (org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint) modelConstraint.get(i);
