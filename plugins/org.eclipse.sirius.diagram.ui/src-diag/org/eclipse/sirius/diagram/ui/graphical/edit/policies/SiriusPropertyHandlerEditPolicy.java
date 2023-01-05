@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,8 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
+
+import java.util.List;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
@@ -43,6 +45,7 @@ import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.refresh.diagram.ViewPropertiesSynchronizer;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.tools.internal.SiriusCopierHelper;
@@ -199,8 +202,17 @@ public class SiriusPropertyHandlerEditPolicy extends PropertyHandlerEditPolicy {
         if (result instanceof AbstractDEdgeNameEditPart && result.getParent() instanceof AbstractDiagramEdgeEditPart) {
             // For DEdge name, this kind of request is handled by its parent
             // DEdge.
-            return result.getParent();
+            result = result.getParent();
+            // } else if (result instanceof DNodeNameEditPart && request instanceof ChangePropertyValueRequest) {
+        } else if (result instanceof DNodeNameEditPart && request instanceof ChangePropertyValueRequest) {
+            String propertyID = ((ChangePropertyValueRequest) request).getPropertyID();
+            List<String> propertyIds = List.of(Properties.ID_FONTBOLD, Properties.ID_FONTITALIC, Properties.ID_FONTCOLOR, Properties.ID_FONTNAME, Properties.ID_FONTSIZE,
+                    Properties.ID_FONTSTRIKETHROUGH, Properties.ID_FONTUNDERLINE);
+            if (propertyIds.contains(propertyID)) {
+                result = result.getParent();
+            }
         }
+
         return result;
     }
 }

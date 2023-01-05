@@ -20,6 +20,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ITextAwareEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
@@ -30,6 +31,7 @@ import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.ui.business.internal.view.ShowingViewUtil;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.CommonEditPartOperation;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusPropertyHandlerEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.providers.SiriusElementTypes;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
@@ -64,6 +66,10 @@ public class DNodeNameEditPart extends AbstractGeneratedDiagramNameEditPart impl
     @Override
     protected void createDefaultEditPolicies() {
         super.createDefaultEditPolicies();
+
+        // Enables Font and Style action
+        removeEditPolicy(EditPolicyRoles.PROPERTY_HANDLER_ROLE);
+        installEditPolicy(EditPolicyRoles.PROPERTY_HANDLER_ROLE, new SiriusPropertyHandlerEditPolicy());
     }
 
     /**
