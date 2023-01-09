@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -40,8 +40,8 @@ import org.eclipse.sirius.tests.unit.api.modelingproject.SemanticResourcesManage
 import org.eclipse.sirius.tests.unit.api.navigator.GroupingContentProviderByContainingTest;
 import org.eclipse.sirius.tests.unit.api.navigator.GroupingContentProviderTest;
 import org.eclipse.sirius.tests.unit.api.query.NotificationQueryTests;
-import org.eclipse.sirius.tests.unit.api.refresh.StylesInterpretedExpressionTest;
 import org.eclipse.sirius.tests.unit.api.refresh.ModifyHeaderLabelExpressionTest;
+import org.eclipse.sirius.tests.unit.api.refresh.StylesInterpretedExpressionTest;
 import org.eclipse.sirius.tests.unit.api.representation.DRepresentationLocationManagerTest;
 import org.eclipse.sirius.tests.unit.api.representation.InvalidRepresentationTest;
 import org.eclipse.sirius.tests.unit.api.representation.RepresentationCRUDTest;
@@ -166,6 +166,7 @@ import org.eclipse.sirius.tests.unit.diagram.migration.TechnicalUidMigrationTest
 import org.eclipse.sirius.tests.unit.diagram.migration.TransientLayerMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.UnsetOriginalStyleFeatureMigrationParticipantTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.ViewWithNullElementMigrationParticipantTest;
+import org.eclipse.sirius.tests.unit.diagram.migration.participantordering.OrderingParticipantTest;
 import org.eclipse.sirius.tests.unit.multipageeditor.SiriusMultiPageEditorTest;
 import org.eclipse.sirius.tests.unit.perf.common.CommonPreferencesTest;
 import org.eclipse.sirius.tests.unit.perf.common.Session1MillionTests;
@@ -262,6 +263,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(ViewWithNullElementMigrationParticipantTest.class);
         suite.addTestSuite(UnsetOriginalStyleFeatureMigrationParticipantTest.class);
         suite.addTestSuite(SetChangeIdMigrationParticipantTest.class);
+        suite.addTestSuite(OrderingParticipantTest.class);
 
         suite.addTest(new JUnit4TestAdapter(CommonPreferencesTest.class));
         suite.addTest(new JUnit4TestAdapter(GroupingContentProviderTest.class));

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -66,7 +66,7 @@ public abstract class AbstractSiriusMigrationService implements IMigrationPartic
     /**
      * loaded delegates contributions.
      */
-    private List<IMigrationParticipant> delegatesParticipants = new ArrayList<IMigrationParticipant>();
+    protected List<IMigrationParticipant> delegatesParticipants = new ArrayList<IMigrationParticipant>();
 
     /**
      * The last Sirius version where a migration participant is added (computed from the delegatesParticipants list).
