@@ -180,15 +180,19 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
                 applyFormat(child, applyLayout, applyStyle, absoluteCoordinates);
             }
         } else {
-            List<AbstractDNode> dNodeChildren = new ArrayList<AbstractDNode>();
-            for (IGraphicalEditPart child : childrenSubpart) {
-                final View toStoreView = (View) child.getModel();
-                final EObject semanticElement = child.resolveSemanticElement();
-                if (toStoreView instanceof Node && semanticElement instanceof AbstractDNode && semanticElement instanceof DSemanticDecorator) {
-                    dNodeChildren.add((AbstractDNode) semanticElement);
+            // If the childrenSubpart are edges, we ignore them for the bounding box mode, as there is no real group for
+            // edges. Their layout is processed during the application of the layout of the "source node".
+            if (childrenSubpart.stream().filter(ConnectionEditPart.class::isInstance).findFirst().isEmpty()) {
+                List<AbstractDNode> dNodeChildren = new ArrayList<AbstractDNode>();
+                for (IGraphicalEditPart child : childrenSubpart) {
+                    final View toStoreView = (View) child.getModel();
+                    final EObject semanticElement = child.resolveSemanticElement();
+                    if (toStoreView instanceof Node && semanticElement instanceof AbstractDNode && semanticElement instanceof DSemanticDecorator) {
+                        dNodeChildren.add((AbstractDNode) semanticElement);
+                    }
                 }
+                applyFormatOnChildrenForBoundingBox(dNodeChildren, parentEditPart.getRoot().getViewer(), null, applyLayout, applyStyle, Optional.empty());
             }
-            applyFormatOnChildrenForBoundingBox(dNodeChildren, parentEditPart.getRoot().getViewer(), null, applyLayout, applyStyle, Optional.empty());
         }
     }
 

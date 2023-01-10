@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2002, 2022 IBM Corporation and others.
+ * Copyright (c) 2002, 2023 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -178,9 +178,10 @@ public class PasteLayoutAction extends AbstractCopyPasteFormatAction {
          * @param dDiagram
          *            the {@link DDiagram} on which layout will be pasted
          * @param editPartContainer
-         *            the container of editPartsToRestore
+         *            the container of editPartsToRestore, or null if editPartsToRestore are a list edges (as edge edit
+         *            part has not really a parent).
          * @param editPartsToRestore
-         *            the edit parts to restore (children of the editPartContainer)
+         *            the edit parts to restore (children of the editPartContainer, except for edges)
          * @param shell
          *            the parent shell, or <code>null</code> to create a top-level shell
          */

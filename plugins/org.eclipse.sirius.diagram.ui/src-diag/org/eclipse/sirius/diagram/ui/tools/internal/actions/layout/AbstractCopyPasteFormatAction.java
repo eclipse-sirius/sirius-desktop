@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -186,7 +186,9 @@ public abstract class AbstractCopyPasteFormatAction extends AbstractDiagramActio
 
     /**
      * Sort the selection by common parent and also remove children from the selection if an ancestor is in the
-     * selection.
+     * selection.<BR/>
+     * Warning: The edges have not really a parent, so there are added with null as common parent. This must be handled
+     * in the use of the Map later.
      * 
      * @param selection
      *            The initial selection

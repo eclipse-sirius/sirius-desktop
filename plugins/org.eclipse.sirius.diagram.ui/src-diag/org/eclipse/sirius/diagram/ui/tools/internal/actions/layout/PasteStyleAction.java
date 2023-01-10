@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -163,9 +163,10 @@ public class PasteStyleAction extends AbstractCopyPasteFormatAction {
          * @param dDiagram
          *            the {@link DDiagram} on which style will be pasted
          * @param editPartContainer
-         *            the container of editPartsToRestore
+         *            the container of editPartsToRestore, or null if editPartsToRestore are a list edges (as edge edit
+         *            part has not really a parent).
          * @param editPartsToRestore
-         *            the edit parts to restore (children of the editPartContainer)
+         *            the edit parts to restore (children of the editPartContainer, except for edges)
          */
         PasteStyleDataCommand(TransactionalEditingDomain domain, DDiagram dDiagram, IGraphicalEditPart editPartContainer, List<IGraphicalEditPart> editPartsToRestore) {
             super(domain, Messages.PasteLayoutDataCommand_label, null);
