@@ -62,10 +62,9 @@ public class SiriusTabDescriptorProvider implements IEEFTabDescriptorProvider {
     public Collection<IEEFTabDescriptor> get(IWorkbenchPart part, ISelection selection, IEEFTabbedPropertySheetPageContributor contributor) {
         if (selection instanceof IStructuredSelection) {
             IStructuredSelection structuredSelection = (IStructuredSelection) selection;
-            Object[] objects = structuredSelection.toArray();
-            // FIXME We take the first one
-            if (objects.length > 0) {
-                SiriusInputDescriptor sid = new SiriusInputDescriptor(objects[0]);
+            List<Object> objects = structuredSelection.toList();
+            if (objects.size() > 0) {
+                SiriusInputDescriptor sid = new SiriusInputDescriptor(objects.get(0), objects);
                 if (sid.getSemanticElement() != null) {
                     // Let's find out the description of the view
                     return this.getTabDescriptors(sid);

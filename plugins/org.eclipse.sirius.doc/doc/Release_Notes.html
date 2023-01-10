@@ -146,6 +146,13 @@
 			<li><span class="label label-info">Modified</span> A fix has been done to ensure that all the necessary interpreter variables are set when computing the conditional style expression whatever the context of call. Variables for Node and NodeContainer styles: (diagram, view, containerView, container) and for Edge style: (same than for Node, sourceView, targetView). 
 				<strong>Warning</strong> The impact is that, potentially, if you used the variables diagram or containerView in the precondition of your conditional styles, the precondition that returned false before the fix, could now returned true. So you may encounter different node or edge rendering.
 			</li>
+			<li><span class="label label-success">Added</span> The enhancement of the properties views with the 
+				<code>org.eclipse.sirius.properties.core.api.SiriusInputDescriptor</code> and 
+				<code>org.eclipse.sirius.properties.core.internal.SiriusToolServices</code> classes allows to use the list of selected elements in order to exploit additional informations. It is now possible to retrieve the list of selected elements via an aql expression like 
+				<code>aql:input.getSelectedOriginalSelections()</code>, the list of semantic elements with 
+				<code>aql:input.getSelectedSemanticElements()</code> and the list of contexts with 
+				<code>aql:input.getContextSelections()</code>.
+			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius">Changes in 
@@ -210,6 +217,16 @@
 				<code>org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor</code>: 
 				<code>getAbsoluteLocation(String, Class&lt;? extends EditPart&gt;, boolean)</code> and 
 				<code>getAbsoluteLocation(GraphicalEditPart, boolean)</code>. Only a boolean parameter has been added to two existing methods (same name without last boolean parameter). This boolean allows to consider, or note, the label of an edge in the bounds computation.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.properties.core">Changes in 
+			<code>org.eclipse.sirius.properties.core</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> The 
+				<code>org.eclipse.sirius.properties.core.api.SiriusInputDescriptor</code> class has been modified to handle the selection of many elements by creating a list of SiriusContext. This enhancement allows to access the list of selected semantic elements with 
+				<code>org.eclipse.sirius.properties.core.api.SiriusInputDescriptor.getSemanticElements()</code> and the list of original selected objects with 
+				<code>org.eclipse.sirius.properties.core.api.SiriusInputDescriptor.getOriginalSelections()</code>.
 			</li>
 		</ul>
 		<h4 id="Migrations">Migrations</h4>

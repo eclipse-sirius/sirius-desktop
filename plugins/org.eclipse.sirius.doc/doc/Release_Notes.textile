@@ -18,6 +18,7 @@ h3. Specifier-Visible Changes
 
 * <span class="label label-success">Added</span> The system property @org.eclipse.sirius.ui.enableCreatedElementsConstraintInSelectElementsListener@ has been added to allow to ignore the "created elements" constraint when the @SelectDRepresentationElementsListener@ is called to select elements after a tool execution. In other words, this allows to select an element that is not created during the tool execution. The default value of the system property is @true@. It must be set to @false@ to ignore the constraint.
 * <span class="label label-info">Modified</span> A fix has been done to ensure that all the necessary interpreter variables are set when computing the conditional style expression whatever the context of call. Variables for Node and NodeContainer styles: (diagram, view, containerView, container) and for Edge style: (same than for Node, sourceView, targetView). *Warning* The impact is that, potentially, if you used the variables diagram or containerView in the precondition of your conditional styles, the precondition that returned false before the fix, could now returned true. So you may encounter different node or edge rendering.
+* <span class="label label-success">Added</span> The enhancement of the properties views with the @org.eclipse.sirius.properties.core.api.SiriusInputDescriptor@ and @org.eclipse.sirius.properties.core.internal.SiriusToolServices@ classes allows to use the list of selected elements in order to exploit additional informations. It is now possible to retrieve the list of selected elements via an aql expression like @aql:input.getSelectedOriginalSelections()@, the list of semantic elements with @aql:input.getSelectedSemanticElements()@ and the list of contexts with @aql:input.getContextSelections()@.
 
 h3. Developer-Visible Changes
 
@@ -49,6 +50,9 @@ bc.
 h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 
 * <span class="label label-success">Added</span> Two new methods have been added in @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor@: @getAbsoluteLocation(String, Class<? extends EditPart>, boolean)@ and @getAbsoluteLocation(GraphicalEditPart, boolean)@. Only a boolean parameter has been added to two existing methods (same name without last boolean parameter). This boolean allows to consider, or note, the label of an edge in the bounds computation.
+h4. Changes in @org.eclipse.sirius.properties.core@
+
+* <span class="label label-success">Added</span> The @org.eclipse.sirius.properties.core.api.SiriusInputDescriptor@ class has been modified to handle the selection of many elements by creating a list of SiriusContext. This enhancement allows to access the list of selected semantic elements with @org.eclipse.sirius.properties.core.api.SiriusInputDescriptor.getSemanticElements()@ and the list of original selected objects with @org.eclipse.sirius.properties.core.api.SiriusInputDescriptor.getOriginalSelections()@.
 
 
 h4. Migrations
