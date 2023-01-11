@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2020 Obeo.
+ * Copyright (c) 2015, 2023 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,18 @@ public final class Messages {
     }
 
     // CHECKSTYLE:OFF
+
+    @TranslatableMessage
+    public static String AbstractDTreeItemRunnableWithProgress_emptyDTreeItemsParameter;
+
+    @TranslatableMessage
+    public static String AbstractDTreeItemRunnableWithProgress_nullDTreeItemParameter;
+
+    @TranslatableMessage
+    public static String CollapseDTreeItemRunnableWithProgress_collapseAllTreeItems;
+
+    @TranslatableMessage
+    public static String CollapseDTreeItemRunnableWithProgress_collapseTreeItem;
 
     @TranslatableMessage
     public static String DTreeEditor_editorToBeClosedAndReopenedSinceContentIsNotAccessible;
@@ -80,13 +92,10 @@ public final class Messages {
     public static String EditorRefresh_treeRefreshError;
 
     @TranslatableMessage
+    public static String ExpandDTreeItemRunnableWithProgress_expandAllTreeItems;
+
+    @TranslatableMessage
     public static String ExpandDTreeItemRunnableWithProgress_expandTreeItem;
-
-    @TranslatableMessage
-    public static String ExpandDTreeItemRunnableWithProgress_treeItemCollapsing;
-
-    @TranslatableMessage
-    public static String ExpandDTreeItemRunnableWithProgress_treeItemExpanding;
 
     @TranslatableMessage
     public static String HierarchyLabelTreeProvider_elementWithoutName;
