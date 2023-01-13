@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -1017,7 +1017,7 @@ public class ContainerAndNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGef
      * and not one for each selected element.
      */
     public void testCopyPasteFormatWithBoundingBoxMode_Case6_withPasteOnMultiSelection() {
-        testCopyPasteWithBoundingBoxMode_Case6_withPasteOnMultiSelection(true);
+        testCopyPasteWithBoundingBoxMode_Case6_withPasteOnMultiSelection(true, false);
     }
 
     /**
@@ -1026,7 +1026,17 @@ public class ContainerAndNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGef
      * and not one for each selected element.
      */
     public void testCopyPasteLayoutWithBoundingBoxMode_Case6_withPasteOnMultiSelection() {
-        testCopyPasteWithBoundingBoxMode_Case6_withPasteOnMultiSelection(false);
+        testCopyPasteWithBoundingBoxMode_Case6_withPasteOnMultiSelection(false, false);
+    }
+
+    /**
+     * Test using same scenario and data than {@link #testCopyPasteLayoutWithBoundingBoxMode_Case6()}, but instead of
+     * selecting the diagram, 5 elements are selected to paste (including 2 edges). This allows to check that only one
+     * dialog is displayed and not one for each selected element. And also that there is no problem with edges
+     * selection.
+     */
+    public void testCopyPasteLayoutWithBoundingBoxMode_Case6_withPasteOnMultiSelectionIncludingEdges() {
+        testCopyPasteWithBoundingBoxMode_Case6_withPasteOnMultiSelection(false, true);
     }
 
     /**
@@ -1034,7 +1044,7 @@ public class ContainerAndNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGef
      * selecting the diagram, 3 elements are selected to paste. This allows to check that only one dialog is displayed
      * and not one for each selected element.
      */
-    protected void testCopyPasteWithBoundingBoxMode_Case6_withPasteOnMultiSelection(boolean pasteFormat) {
+    protected void testCopyPasteWithBoundingBoxMode_Case6_withPasteOnMultiSelection(boolean pasteFormat, boolean selectEdgesBeforePaste) {
         // Enable the bounding box mode by default (but without popup).
         changeDiagramUIPreference(SiriusDiagramUiPreferencesKeys.PREF_PASTE_MODE_ABSOLUTE.name(), false);
         changeDiagramUIPreference(SiriusDiagramUiPreferencesKeys.PREF_PROMPT_PASTE_MODE.name(), true);
@@ -1060,10 +1070,22 @@ public class ContainerAndNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGef
         SWTBotGefEditPart targetNodeC1EditPart = diagramEditorTgt.getEditPart("C1", AbstractDiagramNodeEditPart.class);
         SWTBotGefEditPart targetNodeC2EditPart = diagramEditorTgt.getEditPart("C2", AbstractDiagramNodeEditPart.class);
         SWTBotGefEditPart targetNodeC3EditPart = diagramEditorTgt.getEditPart("C3", AbstractDiagramNodeEditPart.class);
-        diagramEditorTgt.select(targetNodeC1EditPart, targetNodeC2EditPart, targetNodeC3EditPart);
+        SWTBotGefEditPart targetEdgeToC2EditPart = null;
+        SWTBotGefEditPart targetEdgeToC3EditPart = null;
+        if (selectEdgesBeforePaste) {
+            targetEdgeToC2EditPart = diagramEditorTgt.getEditPart("refToC2", AbstractDiagramEdgeEditPart.class);
+            targetEdgeToC3EditPart = diagramEditorTgt.getEditPart("refToC3", AbstractDiagramEdgeEditPart.class);
+            diagramEditorTgt.select(targetNodeC1EditPart, targetNodeC2EditPart, targetNodeC3EditPart, targetEdgeToC2EditPart, targetEdgeToC3EditPart);
+        } else {
+            diagramEditorTgt.select(targetNodeC1EditPart, targetNodeC2EditPart, targetNodeC3EditPart);
+        }
         bot.waitUntil(new CheckSelectedCondition(diagramEditorTgt, targetNodeC1EditPart.part()));
         bot.waitUntil(new CheckSelectedCondition(diagramEditorTgt, targetNodeC2EditPart.part()));
         bot.waitUntil(new CheckSelectedCondition(diagramEditorTgt, targetNodeC3EditPart.part()));
+        if (selectEdgesBeforePaste) {
+            bot.waitUntil(new CheckSelectedCondition(diagramEditorTgt, targetEdgeToC2EditPart.part()));
+            bot.waitUntil(new CheckSelectedCondition(diagramEditorTgt, targetEdgeToC3EditPart.part()));
+        }
         OperationDoneCondition doneCondition = new OperationDoneCondition();
         if (pasteFormat) {
             diagramEditorTgt.clickContextMenu(Messages.PasteFormatAction_text);
