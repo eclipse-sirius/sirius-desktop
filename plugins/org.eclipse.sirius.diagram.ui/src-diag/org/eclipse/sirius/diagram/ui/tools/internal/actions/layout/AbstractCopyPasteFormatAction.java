@@ -15,7 +15,7 @@ package org.eclipse.sirius.diagram.ui.tools.internal.actions.layout;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -197,7 +197,7 @@ public abstract class AbstractCopyPasteFormatAction extends AbstractDiagramActio
     protected Map<IGraphicalEditPart, List<IGraphicalEditPart>> sortSelection(List<?> selection) {
         // Remove child from selection if an ancestor is also in the selection.
         List<?> selectionWithoutDependants = ToolUtilities.getSelectionWithoutDependants(selection);
-        Map<IGraphicalEditPart, List<IGraphicalEditPart>> result = new HashMap<>();
+        Map<IGraphicalEditPart, List<IGraphicalEditPart>> result = new LinkedHashMap<>();
         for (Object object : selectionWithoutDependants) {
             if (object instanceof IGraphicalEditPart) {
                 IGraphicalEditPart part = (IGraphicalEditPart) object;
