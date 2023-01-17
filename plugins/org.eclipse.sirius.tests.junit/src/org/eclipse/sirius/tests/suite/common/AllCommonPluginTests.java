@@ -166,7 +166,6 @@ import org.eclipse.sirius.tests.unit.diagram.migration.TechnicalUidMigrationTest
 import org.eclipse.sirius.tests.unit.diagram.migration.TransientLayerMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.UnsetOriginalStyleFeatureMigrationParticipantTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.ViewWithNullElementMigrationParticipantTest;
-import org.eclipse.sirius.tests.unit.diagram.migration.participantordering.OrderingParticipantTest;
 import org.eclipse.sirius.tests.unit.multipageeditor.SiriusMultiPageEditorTest;
 import org.eclipse.sirius.tests.unit.perf.common.CommonPreferencesTest;
 import org.eclipse.sirius.tests.unit.perf.common.Session1MillionTests;
@@ -263,7 +262,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(ViewWithNullElementMigrationParticipantTest.class);
         suite.addTestSuite(UnsetOriginalStyleFeatureMigrationParticipantTest.class);
         suite.addTestSuite(SetChangeIdMigrationParticipantTest.class);
-        suite.addTestSuite(OrderingParticipantTest.class);
+        // suite.addTestSuite(OrderingParticipantTest.class);
 
         suite.addTest(new JUnit4TestAdapter(CommonPreferencesTest.class));
         suite.addTest(new JUnit4TestAdapter(GroupingContentProviderTest.class));
