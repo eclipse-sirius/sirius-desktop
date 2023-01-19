@@ -2,6 +2,21 @@ h1. Translation Keys Changes
 
 This document lists the changes in @TranslatableMessage@ used for Sirius internationalization in each Sirius version.
 
+h2(#sirius707). Translation Keys Changes in Sirius 7.0.7 (from Sirius 7.0.6)
+
+h3. Message Keys Added
+
+* @org.eclipse.sirius.tree.ui.provider.Messages.AbstractDTreeItemRunnableWithProgress_emptyDTreeItemsParameter@
+* @org.eclipse.sirius.tree.ui.provider.Messages.AbstractDTreeItemRunnableWithProgress_nullDTreeItemParameter@
+* @org.eclipse.sirius.tree.ui.provider.Messages.CollapseDTreeItemRunnableWithProgress_collapseAllTreeItems@
+* @org.eclipse.sirius.tree.ui.provider.Messages.CollapseDTreeItemRunnableWithProgress_collapseTreeItem@
+* @org.eclipse.sirius.tree.ui.provider.Messages.ExpandDTreeItemRunnableWithProgress_expandAllTreeItems@
+
+h3. Message Keys Removed
+
+* @org.eclipse.sirius.tree.ui.provider.Messages.ExpandDTreeItemRunnableWithProgress_treeItemCollapsing@
+* @org.eclipse.sirius.tree.ui.provider.Messages.ExpandDTreeItemRunnableWithProgress_treeItemExpanding@
+
 h2(#sirius702). Translation Keys Changes in Sirius 7.0.2 (from Sirius 7.0.1)
 
 h3. Message Keys Added
