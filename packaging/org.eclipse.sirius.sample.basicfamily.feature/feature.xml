@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.sirius.sample.basicfamily.feature"
       label="%featureName"
-      version="7.0.7.qualifier"
+      version="7.0.8.qualifier"
       provider-name="%providerName"
       license-feature="org.eclipse.license"
       license-feature-version="0.0.0">
