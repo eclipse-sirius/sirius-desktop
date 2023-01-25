@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2016, 2023 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.properties.internal;
 
-import org.eclipse.eef.properties.ui.api.EEFTabbedPropertySheetPage;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
@@ -47,7 +46,7 @@ public class EEFPropertySheetPageProvider implements ISiriusPropertySheetPagePro
             }
         }
 
-        return new EEFTabbedPropertySheetPage(new ContributorWrapper(source, contributorId));
+        return new SiriusEEFTabbedPropertySheetPage(new ContributorWrapper(source, contributorId));
     }
 
     private boolean forcesLegacyPropertySheet(RepresentationDescription description) {
