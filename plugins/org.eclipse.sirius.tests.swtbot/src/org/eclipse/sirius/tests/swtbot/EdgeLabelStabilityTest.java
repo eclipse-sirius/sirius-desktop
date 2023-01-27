@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -132,13 +132,13 @@ public class EdgeLabelStabilityTest extends AbstractSiriusSwtBotGefTestCase {
             Dimension edgeLabelDimension = editor.getDimension("extends " + C2, AbstractDiagramNameEditPart.class);
 
             // Copy layout
-            bot.toolbarButtonWithTooltip(Messages.CopyFormatAction_toolTipText).click();
+            bot.toolbarButtonWithTooltip(Messages.CopyFormatAction_toolTipText_diagram).click();
 
             // Open temp diagram
             editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME_TEMP, DDiagram.class);
 
             // Paste layout
-            bot.toolbarButtonWithTooltip(Messages.PasteFormatAction_toolTipText).click();
+            bot.toolbarButtonWithTooltip(Messages.PasteFormatAction_toolTipText_diagram).click();
 
             assertEquals("The edge label width has changed", edgeLabelDimension.width, editor.getDimension("extends " + C2, AbstractDiagramNameEditPart.class).width);
             assertEquals("The edge label height has changed", edgeLabelDimension.height, editor.getDimension("extends " + C2, AbstractDiagramNameEditPart.class).height);
@@ -150,7 +150,7 @@ public class EdgeLabelStabilityTest extends AbstractSiriusSwtBotGefTestCase {
             edgeLabelDimension = editor.getDimension("extends " + C2, AbstractDiagramNameEditPart.class);
 
             // Copy layout
-            bot.toolbarButtonWithTooltip(Messages.CopyFormatAction_toolTipText).click();
+            bot.toolbarButtonWithTooltip(Messages.CopyFormatAction_toolTipText_diagram).click();
 
             // Close this editor to toggle back to temp diagram
             bot.activeEditor().close();
@@ -162,7 +162,7 @@ public class EdgeLabelStabilityTest extends AbstractSiriusSwtBotGefTestCase {
                     .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME_TEMP, UIDiagramRepresentation.class).open();
 
             // Paste layout
-            bot.toolbarButtonWithTooltip(Messages.PasteFormatAction_toolTipText).click();
+            bot.toolbarButtonWithTooltip(Messages.PasteFormatAction_toolTipText_diagram).click();
 
             assertEquals("The edge label width has changed", edgeLabelDimension.width, editor.getDimension("extends " + C2, AbstractDiagramNameEditPart.class).width);
             assertEquals("The edge label height has changed", edgeLabelDimension.height, editor.getDimension("extends " + C2, AbstractDiagramNameEditPart.class).height);

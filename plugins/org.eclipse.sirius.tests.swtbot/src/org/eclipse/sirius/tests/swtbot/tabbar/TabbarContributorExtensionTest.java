@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2019 Obeo.
+ * Copyright (c) 2015, 2023 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -91,15 +91,15 @@ public class TabbarContributorExtensionTest extends AbstractSiriusSwtBotGefTestC
         selectDiagramElement();
         SWTBotUtils.waitAllUiEvents();
         int count = getTabbarItemsCount();
-        assertEquals("Unexpected number of tabbar contribution items", 33, count);
+        assertEquals("Unexpected number of tabbar contribution items", 34, count);
         selectDiagram();
         SWTBotUtils.waitAllUiEvents();
         count = getTabbarItemsCount();
-        assertEquals("Unexpected number of tabbar contribution items", 20, count);
+        assertEquals("Unexpected number of tabbar contribution items", 21, count);
         selectEdge();
         SWTBotUtils.waitAllUiEvents();
         count = getTabbarItemsCount();
-        assertEquals("Unexpected number of tabbar contribution items", 33, count);
+        assertEquals("Unexpected number of tabbar contribution items", 34, count);
     }
 
     /**

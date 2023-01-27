@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -70,6 +70,7 @@ import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 
 /**
+ * Tests that check the content of the tabbar.
  * 
  * @author smonnier
  */
@@ -93,15 +94,16 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String FILE_DIR = "/";
 
     private static final String[] DIAGRAM_TOOLBARDROPDOWNBUTTONS_TOOLTIPS = { "Arrange All", "Select &All", "Layers", "Filters", Messages.EditModeAction_Label,
-            Messages.PasteFormatAction_toolTipText };
+            Messages.PasteFormatAction_toolTipText_diagram };
 
     private static final String[] DIAGRAM_TOOLBARBUTTONS_TOOLTIPS = { Messages.SiriusDiagramActionBarContributor_refreshDiagram, Messages.SelectHiddenElementsAction_tooltip,
-            Messages.SelectPinnedElementsAction_tooltip, "Zoom In (Ctrl+=)", "Zoom Out (Ctrl+-)", Messages.SaveAsImageFileAction_label };
+            Messages.SelectPinnedElementsAction_tooltip, Messages.CopyFormatAction_toolTipText_diagram, "Zoom In (Ctrl+=)", "Zoom Out (Ctrl+-)", Messages.SaveAsImageFileAction_label };
 
     private static final String[] CONTAINER_TOOLBARDROPDOWNBUTTONS_TOOLTIPS = { "Arrange Selection", "Align Left", DistributeAction.getTooltip(DistributeAction.GAPS_HORIZONTALLY), "Straighten to top",
-            Messages.EditModeAction_Label, "Font Color", "Fill &Color", "Li&ne Color", "Line Style" };
+            Messages.EditModeAction_Label, Messages.PasteFormatAction_toolTipText_diagramElements, "Font Color", "Fill &Color", "Li&ne Color", "Line Style" };
 
-    private static final String[] CONTAINER_TOOLBARBUTTONS_TOOLTIPS = { Messages.PinElementsEclipseAction_text, Messages.UnpinElementsEclipseAction_text, Messages.CopyFormatAction_toolTipText,
+    private static final String[] CONTAINER_TOOLBARBUTTONS_TOOLTIPS = { Messages.PinElementsEclipseAction_text, Messages.UnpinElementsEclipseAction_text,
+            Messages.CopyFormatAction_toolTipText_diagramElements,
             Messages.SiriusDiagramActionBarContributor_showElement, Messages.SiriusDiagramActionBarContributor_hideElement, Messages.RevealOutlineLabelsAction_label,
             Messages.SiriusDiagramActionBarContributor_hideLabel, Messages.SiriusDiagramActionBarContributor_deleteFromDiagram, Messages.SiriusDiagramActionBarContributor_deleteFromModel, "Font",
             Messages.SetStyleToWorkspaceImageAction_text, Messages.ResetStylePropertiesToDefaultValuesAction_text,
@@ -508,7 +510,7 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
             SWTBotToolbarDropDownButton toolbarDropDownButton = editor.bot().toolbarDropDownButton(i);
             String expectedTooltip = DIAGRAM_TOOLBARDROPDOWNBUTTONS_TOOLTIPS[i];
             assertEquals("The toolbarDropDownButton index " + i + " does not have the expected tooltip", expectedTooltip, toolbarDropDownButton.getToolTipText());
-            if (expectedTooltip.equals(Messages.PasteFormatAction_toolTipText)) {
+            if (expectedTooltip.equals(Messages.PasteFormatAction_toolTipText_diagram)) {
                 // Paste layout is not enabled if there is no previous copy
                 // layout.
                 continue;
@@ -518,7 +520,7 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
         for (int i = 0; i < diagramSelectedTabbarButtons.size(); i++) {
             String expectedTooltip = diagramSelectedTabbarButtons.get(i);
             SWTBotToolbarButton button = editor.bot().toolbarButton(i);
-            if (i == 3) {
+            if (i == 4) {
                 final String zoomIn = "Zoom In (Ctrl+";
                 assertTrue("The toolbarButton index " + i + " does not have the expected tooltip, it does not starts with" + zoomIn, editor.bot().toolbarButton(i).getToolTipText().startsWith(zoomIn));
             } else {

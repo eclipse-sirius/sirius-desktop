@@ -63,7 +63,7 @@ public class PasteStyleAction extends AbstractCopyPasteFormatAction {
 
         setText(Messages.PasteStyleAction_text);
         setId(ActionIds.PASTE_STYLE);
-        setToolTipText(Messages.PasteStyleAction_toolTipText);
+        setToolTipText(Messages.PasteStyleAction_toolTipText_diagram);
 
         setImageDescriptor(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.PASTE_STYLE_ICON));
         setDisabledImageDescriptor(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.PASTE_STYLE_DISABLED_ICON));
@@ -114,6 +114,16 @@ public class PasteStyleAction extends AbstractCopyPasteFormatAction {
             pasteStyleCommand = doPasteStylesCmd.unwrap();
         }
         return pasteStyleCommand;
+    }
+
+    @Override
+    protected String getToolTipForDiagramSelection() {
+        return Messages.PasteStyleAction_toolTipText_diagram;
+    }
+
+    @Override
+    protected String getToolTipForDiagramElementsSelection() {
+        return Messages.PasteStyleAction_toolTipText_diagramElements;
     }
 
     private Command getCommand(DDiagram dDiagram, Entry<IGraphicalEditPart, List<IGraphicalEditPart>> entry) {

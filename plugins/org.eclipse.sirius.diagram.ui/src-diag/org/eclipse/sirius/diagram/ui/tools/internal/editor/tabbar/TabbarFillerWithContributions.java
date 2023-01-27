@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -183,6 +183,7 @@ public class TabbarFillerWithContributions extends AbstractTabbarFiller {
         addContributionItem(diagramContributionItems, MODES, contributionFactory.createModesMenuManager((DDiagram) part.getDiagram().getElement()));
 
         addContributionItem(diagramContributionItems, PAST, contributionFactory.createPasteFormatContribution(part));
+        addContributionItem(diagramContributionItems, PAST, contributionFactory.createCopyFormatContribution(part));
 
         addContributionItem(diagramContributionItems, ZOOM, contributionFactory.createZoomContribution(part));
         addContributionItem(diagramContributionItems, ZOOM, contributionFactory.createZoomOutContribution(part));
@@ -208,6 +209,8 @@ public class TabbarFillerWithContributions extends AbstractTabbarFiller {
         addContributionItem(diagramElementContributionItems, HIDE_PIN, contributionFactory.createUnPinElementContribution(part, pinElementContributionItem));
         addContributionItem(diagramElementContributionItems, HIDE_PIN, pinElementContributionItem);
         addContributionItem(diagramElementContributionItems, MODES, contributionFactory.createModesMenuManager((DDiagram) part.getDiagram().getElement()));
+
+        addContributionItem(diagramElementContributionItems, PAST, contributionFactory.createPasteFormatContribution(part));
         addContributionItem(diagramElementContributionItems, PAST, contributionFactory.createCopyFormatContribution(part));
 
         addContributionItem(diagramElementContributionItems, HIDE_DELETE, contributionFactory.createDeleteFromModelContribution(part));

@@ -29,9 +29,11 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptorRegistry;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.util.EditPartTools;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.AbstractDiagramAction;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 
@@ -119,7 +121,42 @@ public abstract class AbstractCopyPasteFormatAction extends AbstractDiagramActio
                 enable = super.calculateEnabled();
             }
         }
+
         return enable;
+    }
+
+    @Override
+    public void refresh() {
+        super.refresh();
+        // Change the tooltip if necessary, we cannot do this change in internalRefresh of super class because this
+        // method is private.
+        if (Display.getCurrent() == null) {
+            /*
+             * We are not in a UI thread, so we call the refresh later to avoid potential
+             * ConcurrentModificationException or worse.
+             */
+            Display.getDefault().asyncExec(new Runnable() {
+                @Override
+                public void run() {
+                    internalRefresh();
+                }
+            });
+        } else {
+            /* Here we are in UI Thread */
+            internalRefresh();
+        }
+    }
+
+    private void internalRefresh() {
+        // Change the tooltip if necessary, we cannot do this change in internalRefresh of super class because this
+        // method is private.
+        if (getSelectedObjects().size() == 1 && getSelectedObjects().get(0) instanceof AbstractDDiagramEditPart) {
+            if (getToolTipForDiagramElementsSelection().equals(getToolTipText())) {
+                setToolTipText(getToolTipForDiagramSelection());
+            }
+        } else if (getToolTipForDiagramSelection().equals(getToolTipText())) {
+            setToolTipText(getToolTipForDiagramElementsSelection());
+        }
     }
 
     /**
@@ -213,4 +250,17 @@ public abstract class AbstractCopyPasteFormatAction extends AbstractDiagramActio
         return result;
     }
 
+    /**
+     * Return The tooltip to use when at least one diagram element is selected.
+     * 
+     * @return The tooltip to use when at least one diagram element is selected.
+     */
+    protected abstract String getToolTipForDiagramElementsSelection();
+
+    /**
+     * Return The tooltip to use when the diagram is selected.
+     * 
+     * @return The tooltip to use when the diagram is selected.
+     */
+    protected abstract String getToolTipForDiagramSelection();
 }

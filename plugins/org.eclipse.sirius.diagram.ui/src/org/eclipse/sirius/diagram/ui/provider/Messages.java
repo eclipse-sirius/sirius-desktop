@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2022 Obeo and THALES GLOBAL SERVICES.
+ * Copyright (c) 2015, 2023 Obeo and THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -248,7 +248,10 @@ public final class Messages {
     public static String CopyFormatAction_text;
 
     @TranslatableMessage
-    public static String CopyFormatAction_toolTipText;
+    public static String CopyFormatAction_toolTipText_diagram;
+
+    @TranslatableMessage
+    public static String CopyFormatAction_toolTipText_diagramElements;
 
     @TranslatableMessage
     public static String CopyFormatDataCommand_label;
@@ -935,7 +938,10 @@ public final class Messages {
     public static String PasteFormatAction_text;
 
     @TranslatableMessage
-    public static String PasteFormatAction_toolTipText;
+    public static String PasteFormatAction_toolTipText_diagram;
+
+    @TranslatableMessage
+    public static String PasteFormatAction_toolTipText_diagramElements;
 
     @TranslatableMessage
     public static String PasteFormatDataCommand_label;
@@ -950,7 +956,10 @@ public final class Messages {
     public static String PasteLayoutAction_text;
 
     @TranslatableMessage
-    public static String PasteLayoutAction_toolTipText;
+    public static String PasteLayoutAction_toolTipText_diagram;
+
+    @TranslatableMessage
+    public static String PasteLayoutAction_toolTipText_diagramElements;
 
     @TranslatableMessage
     public static String PasteLayoutDataCommand_label;
@@ -965,7 +974,10 @@ public final class Messages {
     public static String PasteStyleAction_text;
 
     @TranslatableMessage
-    public static String PasteStyleAction_toolTipText;
+    public static String PasteStyleAction_toolTipText_diagram;
+
+    @TranslatableMessage
+    public static String PasteStyleAction_toolTipText_diagramElements;
 
     @TranslatableMessage
     public static String PasteStyleDataCommand_label;

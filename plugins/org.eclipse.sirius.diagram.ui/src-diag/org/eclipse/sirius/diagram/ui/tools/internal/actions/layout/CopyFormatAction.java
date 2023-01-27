@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2002, 2020 IBM Corporation and others.
+ * Copyright (c) 2002, 2023 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -69,7 +69,7 @@ public class CopyFormatAction extends AbstractCopyPasteFormatAction {
         setText(Messages.CopyFormatAction_text);
         setAccelerator(SWT.CTRL | SWT.SHIFT | SWT.ALT | 'C');
         setId(ActionIds.COPY_FORMAT);
-        setToolTipText(Messages.CopyFormatAction_toolTipText);
+        setToolTipText(Messages.CopyFormatAction_toolTipText_diagramElements);
 
         setImageDescriptor(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.COPY_FORMAT_ICON));
         setDisabledImageDescriptor(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.COPY_FORMAT_DISABLED_ICON));
@@ -171,6 +171,16 @@ public class CopyFormatAction extends AbstractCopyPasteFormatAction {
         return doStoreFormatsCmd.unwrap();
     }
 
+    @Override
+    protected String getToolTipForDiagramSelection() {
+        return Messages.CopyFormatAction_toolTipText_diagram;
+    }
+
+    @Override
+    protected String getToolTipForDiagramElementsSelection() {
+        return Messages.CopyFormatAction_toolTipText_diagramElements;
+    }
+
     /**
      * Remove label from selection if its parent's node is also selected.
      * 
@@ -239,4 +249,5 @@ public class CopyFormatAction extends AbstractCopyPasteFormatAction {
             return super.doUndo(monitor, info);
         }
     }
+
 }

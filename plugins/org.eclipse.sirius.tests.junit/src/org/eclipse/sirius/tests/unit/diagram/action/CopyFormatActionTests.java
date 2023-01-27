@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2020, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocument
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.CopyFormatAction;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ecore.extender.business.internal.permission.ReadOnlyPermissionAuthority;
@@ -57,19 +58,26 @@ public class CopyFormatActionTests extends SiriusDiagramTestCase implements Ecor
         diagramEditor = (DiagramDocumentEditor) editor;
         diagramEditor.setFocus();
 
-        // select one element in diagram
-        DEdge edge1 = rootdiagram.getEdges().get(0);
-        diagramEditor.getDiagramGraphicalViewer().select(getEditPart(edge1));
-
-        TestsUtil.synchronizationWithUIThread();
-
         final IWorkbenchPage page = EclipseUIUtil.getActivePage();
         assertNotNull("We should have an active page.", page);
 
         CopyFormatAction copyFormatAction = new CopyFormatAction(page);
         copyFormatAction.init();
         copyFormatAction.refresh();
+        assertTrue("CopyFormatAction should be enabled when the diagram is selected.", copyFormatAction.isEnabled());
+        assertEquals("The tooltip should correspond to the diagram.", Messages.CopyFormatAction_toolTipText_diagram, copyFormatAction.getToolTipText());
+
+        // select one element in diagram
+        DEdge dEdge = rootdiagram.getEdges().get(0);
+        diagramEditor.getDiagramGraphicalViewer().select(getEditPart(dEdge));
+
+        TestsUtil.synchronizationWithUIThread();
+
+        copyFormatAction = new CopyFormatAction(page);
+        copyFormatAction.init();
+        copyFormatAction.refresh();
         assertTrue("CopyFormatAction should be enabled when a diagram element is selected.", copyFormatAction.isEnabled());
+        assertEquals("The tooltip should correspond to the diagram elements.", Messages.CopyFormatAction_toolTipText_diagramElements, copyFormatAction.getToolTipText());
 
         ReadOnlyPermissionAuthority permissionAuthority = (ReadOnlyPermissionAuthority) PermissionAuthorityRegistry.getDefault().getPermissionAuthority(rootdiagram);
         permissionAuthority.activate();

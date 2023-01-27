@@ -67,7 +67,7 @@ public class PasteFormatAction extends AbstractCopyPasteFormatAction {
         setText(Messages.PasteFormatAction_text);
         setAccelerator(SWT.CTRL | SWT.SHIFT | SWT.ALT | 'V');
         setId(ActionIds.PASTE_FORMAT);
-        setToolTipText(Messages.PasteFormatAction_toolTipText);
+        setToolTipText(Messages.PasteFormatAction_toolTipText_diagram);
 
         setImageDescriptor(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.PASTE_FORMAT_ICON));
         setDisabledImageDescriptor(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.PASTE_FORMAT_DISABLED_ICON));
@@ -124,6 +124,16 @@ public class PasteFormatAction extends AbstractCopyPasteFormatAction {
             pasteFormatCommand = doPasteFormatsCmd.unwrap();
         }
         return pasteFormatCommand;
+    }
+
+    @Override
+    protected String getToolTipForDiagramSelection() {
+        return Messages.PasteFormatAction_toolTipText_diagram;
+    }
+
+    @Override
+    protected String getToolTipForDiagramElementsSelection() {
+        return Messages.PasteFormatAction_toolTipText_diagramElements;
     }
 
     private Command getCommand(DDiagram dDiagram, Entry<IGraphicalEditPart, List<IGraphicalEditPart>> entry) {

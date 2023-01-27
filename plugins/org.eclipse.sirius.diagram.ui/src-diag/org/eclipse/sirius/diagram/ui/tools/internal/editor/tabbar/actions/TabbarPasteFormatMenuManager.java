@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -119,21 +119,32 @@ public class TabbarPasteFormatMenuManager extends PasteFormatMenuManager {
     }
 
     /**
-     * Refresh the enablement of the encapsulated action and then update this
-     * contribution.
+     * Refresh the enablement of all the encapsulated actions and then update this contribution.
      *
-     * When the diagram part is selected, the update of the tabbar is done
-     * before the enablement refresh of the action for selection listener.
+     * When the diagram part is selected, the update of the tabbar is done before the enablement refresh of the action
+     * for selection listener.
      *
      * {@inheritDoc}
      */
     @Override
     public void update() {
+        for (IContributionItem contributionItem : getItems()) {
+            if (contributionItem instanceof ActionContributionItem) {
+                // There's no reason it shouldn't because the add of the actions creates an ActionContributionItem.
+                IAction aContributedAction = ((ActionContributionItem) contributionItem).getAction();
+                if (aContributedAction instanceof DiagramAction) {
+                    // There's no reason it shouldn't because the 3 added actions are PasteFormatAction,
+                    // PasteLayoutAction and PasteStyleAction.
+                    ((DiagramAction) aContributedAction).refresh();
+                }
+            }
+        }
         DiagramAction diagramAction = (DiagramAction) getDefaultAction();
         if (diagramAction != null) {
-            diagramAction.refresh();
+            // This action has already been refreshed because it is one of the "contribution items actions".
+            action.setEnabled(diagramAction.isEnabled());
         }
-        action.setEnabled(diagramAction.isEnabled());
+
         super.update();
     }
 }

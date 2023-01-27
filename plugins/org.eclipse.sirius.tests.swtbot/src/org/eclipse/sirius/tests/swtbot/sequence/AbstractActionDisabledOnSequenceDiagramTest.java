@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -101,7 +101,7 @@ public abstract class AbstractActionDisabledOnSequenceDiagramTest extends Abstra
      * combinedFragments, Lost messages and found messages.
      */
     public void testCopyLayoutFromTabbarOnSequenceDiagramsComponents() {
-        testActionFromTabbarOnSequenceDiagramComponents("The Copy Format action in tabbar should not be enabled", Messages.CopyFormatAction_toolTipText);
+        testActionFromTabbarOnSequenceDiagramComponents("The Copy Format action in tabbar should not be enabled", Messages.CopyFormatAction_toolTipText_diagramElements);
     }
 
     /**
