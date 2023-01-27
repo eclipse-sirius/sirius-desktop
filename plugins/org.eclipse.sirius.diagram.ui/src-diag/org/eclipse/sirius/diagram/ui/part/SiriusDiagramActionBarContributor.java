@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import java.util.Optional;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.gef.Disposable;
+import org.eclipse.gef.ui.actions.GEFActionConstants;
 import org.eclipse.gmf.runtime.common.core.util.Log;
 import org.eclipse.gmf.runtime.common.ui.services.action.internal.CommonUIServicesActionPlugin;
 import org.eclipse.gmf.runtime.common.ui.services.action.internal.CommonUIServicesActionStatusCodes;
@@ -261,6 +262,12 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
                 removeExistingItem(ActionIds.ACTION_TOOLBAR_SELECT_ALL_CONNECTIONS, "/selectMenu", bars.getToolBarManager(), false).ifPresent(contributionItem -> disposeIfPossible(contributionItem)); //$NON-NLS-1$
                 removeExistingItem(ActionIds.ACTION_SELECT_ALL_CONNECTIONS, "/diagramMenu/selectMenu", bars.getMenuManager(), true).ifPresent(contributionItem -> disposeIfPossible(contributionItem)); //$NON-NLS-1$
                 removeExistingItem(ActionIds.ACTION_TOOLBAR_SELECT_ALL, "/selectMenu", bars.getToolBarManager(), false).ifPresent(contributionItem -> disposeIfPossible(contributionItem)); //$NON-NLS-1$
+                removeExistingItem(GEFActionConstants.ALIGN_LEFT, "/diagramMenu/alignMenu", bars.getMenuManager(), true).ifPresent(contributionItem -> disposeIfPossible(contributionItem)); //$NON-NLS-1$
+                removeExistingItem(GEFActionConstants.ALIGN_CENTER, "/diagramMenu/alignMenu", bars.getMenuManager(), true).ifPresent(contributionItem -> disposeIfPossible(contributionItem)); //$NON-NLS-1$
+                removeExistingItem(GEFActionConstants.ALIGN_RIGHT, "/diagramMenu/alignMenu", bars.getMenuManager(), true).ifPresent(contributionItem -> disposeIfPossible(contributionItem)); //$NON-NLS-1$
+                removeExistingItem(GEFActionConstants.ALIGN_TOP, "/diagramMenu/alignMenu", bars.getMenuManager(), true).ifPresent(contributionItem -> disposeIfPossible(contributionItem)); //$NON-NLS-1$
+                removeExistingItem(GEFActionConstants.ALIGN_MIDDLE, "/diagramMenu/alignMenu", bars.getMenuManager(), true).ifPresent(contributionItem -> disposeIfPossible(contributionItem)); //$NON-NLS-1$
+                removeExistingItem(GEFActionConstants.ALIGN_BOTTOM, "/diagramMenu/alignMenu", bars.getMenuManager(), true).ifPresent(contributionItem -> disposeIfPossible(contributionItem)); //$NON-NLS-1$
                 cleanOldToolBarGMFAction(toolBarManager, ActionIds.CUSTOM_ZOOM);
 
                 cleanOldToolBarGMFAction(toolBarManager, ActionIds.MENU_ARRANGE);
@@ -359,8 +366,8 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
     }
 
     /**
-     * Remove the contribution with the given id and dispose the corresponding
-     * action if this contribution is an {@link ActionContributionItem}.
+     * Remove the contribution with the given id and dispose the corresponding action if this contribution is an
+     * {@link ActionContributionItem}.
      * 
      * @param toolBarManager
      *            The {@link IToolBarManager} to clean.

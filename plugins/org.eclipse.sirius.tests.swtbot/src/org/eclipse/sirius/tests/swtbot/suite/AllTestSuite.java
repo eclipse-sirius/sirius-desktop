@@ -54,6 +54,7 @@ import org.eclipse.sirius.tests.swtbot.layout.EdgeAndPortStabilityOnSemanticChan
 import org.eclipse.sirius.tests.swtbot.layout.EdgeCopyPasteFormatTest;
 import org.eclipse.sirius.tests.swtbot.layout.EdgeLayoutStabilityWithToolWizardTest;
 import org.eclipse.sirius.tests.swtbot.layout.EdgeStabilityOnCopyPasteLayoutTest;
+import org.eclipse.sirius.tests.swtbot.layout.EdgeLabelsAlignAndDistributeTests;
 import org.eclipse.sirius.tests.swtbot.layout.LayoutStabilityOnManualRefreshTest;
 import org.eclipse.sirius.tests.swtbot.layout.ModifyEdgeLayoutAfterRefreshTest;
 import org.eclipse.sirius.tests.swtbot.layout.PackageLayoutStabilityOnManyViewsCreationToolTest;
@@ -299,6 +300,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(ArrangeAllLinkedBorderedNodesLayoutStabilityTest.class);
         suite.addTestSuite(ArrangeAllLinkedBorderedNodesWithSnapToGridTest.class);
         suite.addTestSuite(DistributeActionTests.class);
+        suite.addTestSuite(EdgeLabelsAlignAndDistributeTests.class);
         suite.addTestSuite(CompartmentsTest.class);
         suite.addTestSuite(CompartmentsWithComponentTest.class);
 

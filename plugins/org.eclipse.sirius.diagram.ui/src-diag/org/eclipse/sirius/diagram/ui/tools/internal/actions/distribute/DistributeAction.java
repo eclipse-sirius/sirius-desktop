@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2014, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -26,12 +26,15 @@ import org.eclipse.gmf.runtime.diagram.ui.actions.DiagramAction;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPart;
+import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.DistributeRequest;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
+import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
 
 import com.google.common.base.Predicates;
@@ -39,9 +42,8 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
- * A {@link DiagramAction} to distribute shapes.<BR>
- * Inspired by the class
- * {@link org.eclipse.gmf.runtime.diagram.ui.actions.internal.ArrangeAction}.
+ * A {@link DiagramAction} to distribute shapes or labels of edges.<BR>
+ * Inspired by the class {@link org.eclipse.gmf.runtime.diagram.ui.actions.internal.ArrangeAction}.
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
@@ -87,8 +89,7 @@ public class DistributeAction extends DiagramAction {
      * @param distributeType
      *            The distribute type
      * @param isToolbarItem
-     *            the indicator of whether or not this is a toolbar action as
-     *            opposed to a context-menu action.
+     *            the indicator of whether or not this is a toolbar action as opposed to a context-menu action.
      */
     protected DistributeAction(IWorkbenchPage workbenchPage, int distributeType, boolean isToolbarItem) {
         super(workbenchPage);
@@ -98,14 +99,12 @@ public class DistributeAction extends DiagramAction {
     }
 
     /**
-     * Get the label of the action according to <code>distributionType</code>
-     * and <code>isToolbarItem</code>.
+     * Get the label of the action according to <code>distributionType</code> and <code>isToolbarItem</code>.
      * 
      * @param distributeType
      *            the kind of distribution.
      * @param isToolbarItem
-     *            the indicator of whether or not this is a toolbar action as
-     *            opposed to a context-menu action
+     *            the indicator of whether or not this is a toolbar action as opposed to a context-menu action
      * @return The label
      */
     public static String getLabel(int distributeType, boolean isToolbarItem) {
@@ -177,14 +176,12 @@ public class DistributeAction extends DiagramAction {
     }
 
     /**
-     * Creates the Distribute action to distribute shapes horizontally with
-     * uniform gaps.
+     * Creates the Distribute action to distribute shapes horizontally with uniform gaps.
      * 
      * @param workbenchPage
      *            the workbench part used to obtain context
      * @param isToolbarItem
-     *            the indicator of whether or not this is a toolbar action as
-     *            opposed to a context-menu action.
+     *            the indicator of whether or not this is a toolbar action as opposed to a context-menu action.
      * @return the corresponding action
      */
     public static DistributeAction createDistributeHorizontallyWithUniformGapsAction(IWorkbenchPage workbenchPage, boolean isToolbarItem) {
@@ -197,14 +194,12 @@ public class DistributeAction extends DiagramAction {
     }
 
     /**
-     * Creates the Distribute action to distribute evenly centers of shapes
-     * horizontally.
+     * Creates the Distribute action to distribute evenly centers of shapes horizontally.
      * 
      * @param workbenchPage
      *            the workbench part used to obtain context
      * @param isToolbarItem
-     *            the indicator of whether or not this is a toolbar action as
-     *            opposed to a context-menu action.
+     *            the indicator of whether or not this is a toolbar action as opposed to a context-menu action.
      * @return the corresponding action
      */
     public static DistributeAction createDistributeCentersHorizontallyAction(IWorkbenchPage workbenchPage, boolean isToolbarItem) {
@@ -217,14 +212,12 @@ public class DistributeAction extends DiagramAction {
     }
 
     /**
-     * Creates the Distribute action to distribute shapes vertically with
-     * uniform gaps.
+     * Creates the Distribute action to distribute shapes vertically with uniform gaps.
      * 
      * @param workbenchPage
      *            the workbench part used to obtain context
      * @param isToolbarItem
-     *            the indicator of whether or not this is a toolbar action as
-     *            opposed to a context-menu action.
+     *            the indicator of whether or not this is a toolbar action as opposed to a context-menu action.
      * @return the corresponding action
      */
     public static DistributeAction createDistributeVerticallyWithUniformGapsAction(IWorkbenchPage workbenchPage, boolean isToolbarItem) {
@@ -237,14 +230,12 @@ public class DistributeAction extends DiagramAction {
     }
 
     /**
-     * Creates the Distribute action to distribute evenly centers of shapes
-     * vertically.
+     * Creates the Distribute action to distribute evenly centers of shapes vertically.
      * 
      * @param workbenchPage
      *            the workbench part used to obtain context
      * @param isToolbarItem
-     *            the indicator of whether or not this is a toolbar action as
-     *            opposed to a context-menu action.
+     *            the indicator of whether or not this is a toolbar action as opposed to a context-menu action.
      * @return the corresponding action
      */
     public static DistributeAction createDistributeCentersVerticallyAction(IWorkbenchPage workbenchPage, boolean isToolbarItem) {
@@ -298,6 +289,7 @@ public class DistributeAction extends DiagramAction {
             } else {
                 EditPart parent = ((EditPart) selection.get(0)).getParent();
                 int sideOfFirstSelection = PositionConstants.NONE;
+                boolean isEdgeLabel = false;
                 if (selection.get(0) instanceof IBorderItemEditPart) {
                     // If the first selected element is a border node
                     sideOfFirstSelection = ((IBorderItemEditPart) selection.get(0)).getBorderItemLocator().getCurrentSideOfParent();
@@ -306,26 +298,38 @@ public class DistributeAction extends DiagramAction {
                     if (!isHorizontalAxisAuthorizedForBorderNode(sideOfFirstSelection) && !isVerticalAxisAuthorizedForBorderNode(sideOfFirstSelection)) {
                         selection = Collections.EMPTY_LIST;
                     }
+                } else if (selection.get(0) instanceof AbstractDEdgeNameEditPart) {
+                    isEdgeLabel = true;
                 }
 
                 for (int i = 1; i < selection.size(); i++) {
                     EditPart part = (EditPart) selection.get(i);
-                    if (part.getParent() != parent) {
-                        // All the selected shapes must have the same parent.
-                        selection = Collections.EMPTY_LIST;
-                        break;
-                    } else if (sideOfFirstSelection != PositionConstants.NONE && !isABorderNodeOnSameAxis(part, sideOfFirstSelection)) {
-                        // All the selected border nodes must have the same
-                        // axis.
-                        selection = Collections.EMPTY_LIST;
-                        break;
-                    } else if (part instanceof IGraphicalEditPart) {
-                        EditPartQuery containerLayoutQuery = new EditPartQuery((IGraphicalEditPart) part);
-                        if (!containerLayoutQuery.isFreeFormContainerChildrenPresentation()) {
-                            // List item and elements inside compartment can not
-                            // be distribute
+                    if (isEdgeLabel) {
+                        if (!(part instanceof AbstractDEdgeNameEditPart)) {
+                            // If the first item is an edge label, all the selected elements must be edge label.
                             selection = Collections.EMPTY_LIST;
                             break;
+                        }
+                    } else {
+                        if (part instanceof AbstractDEdgeNameEditPart) {
+                            // If the first item is not an edge label, no selected elements must be an edge label.
+                            selection = Collections.EMPTY_LIST;
+                            break;
+                        } else if (part.getParent() != parent) {
+                            // All the selected shapes must have the same parent.
+                            selection = Collections.EMPTY_LIST;
+                            break;
+                        } else if (sideOfFirstSelection != PositionConstants.NONE && !isABorderNodeOnSameAxis(part, sideOfFirstSelection)) {
+                            // All the selected border nodes must have the same axis.
+                            selection = Collections.EMPTY_LIST;
+                            break;
+                        } else if (part instanceof IGraphicalEditPart) {
+                            EditPartQuery containerLayoutQuery = new EditPartQuery((IGraphicalEditPart) part);
+                            if (!containerLayoutQuery.isFreeFormContainerChildrenPresentation()) {
+                                // List item and elements inside compartment can not be distribute
+                                selection = Collections.EMPTY_LIST;
+                                break;
+                            }
                         }
                     }
                 }
@@ -372,22 +376,32 @@ public class DistributeAction extends DiagramAction {
     }
 
     private EditPart getTargetEditPartForDistributeSelection(List<?> editparts) {
-        // The Distribute request gets sent to the common parent.
-        EditPart parent = ((EditPart) editparts.get(0)).getParent();
-        if (parent != null) {
+        EditPart result = null;
+        // The Distribute request gets sent to the common parent for nodes and to the diagram for labels of edges.
+        EditPart firstEditPart = (EditPart) editparts.get(0);
+        if (firstEditPart instanceof AbstractDEdgeNameEditPart) {
+            // As in ArrangeBorderNodesAction.getCommand(), avoid NPE in getDiagramEditPart when diagramGraphialViewer
+            // is not ready.
+            if (getDiagramGraphicalViewer() != null) {
+                final IEditorPart activeEditor = getWorkbenchPage().getActiveEditor();
+                if (activeEditor instanceof SiriusDiagramEditor) {
+                    result = ((SiriusDiagramEditor) activeEditor).getDiagramEditPart();
+                }
+            }
+        } else {
+            result = firstEditPart.getParent();
             // Check that the parent is the same for all selected edit parts
             // (normally it was already done via createOperationSet()).
-            for (int i = 1; i < editparts.size(); i++) {
+            for (int i = 1; i < editparts.size() && result != null; i++) {
                 EditPart part = (EditPart) editparts.get(i);
                 // if there is no common parent, then Distribute isn't
                 // supported.
-                if (part.getParent() != parent) {
-                    return null;
+                if (part.getParent() != result) {
+                    result = null;
                 }
             }
         }
-        return parent;
-
+        return result;
     }
 
 }

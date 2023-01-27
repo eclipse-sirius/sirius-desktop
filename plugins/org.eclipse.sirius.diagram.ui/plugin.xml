@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
 <!--
-  Copyright (c) 2014, 2022 THALES GLOBAL SERVICES
+  Copyright (c) 2014, 2023 THALES GLOBAL SERVICES
   This program and the accompanying materials
   are made available under the terms of the Eclipse Public License 2.0
   which accompanies this distribution, and is available at
@@ -148,6 +148,16 @@
            <partAction toolbarPath="/arrangeMenu/arrangeGroup" id="arrangeBorderNodesActionToolBar"/>
            <!-- Add the DeselectAll action after selectAll action-->
            <partAction menubarPath="/edit/selectAll" id="deselectAll"/>
+           <!-- Add Sirius align actions in new group to replace GMF align actions (cleaned in org.eclipse.sirius.diagram.ui.part.SiriusDiagramActionBarContributor.contributeToToolBar(IToolBarManager))-->
+           <partMenu menubarPath="/diagramMenu/formatGroup" id="alignMenu"/>
+           <partMenuGroup menubarPath="/diagramMenu/alignMenu/" id="alignHorizontalGroup"/>
+           <partMenuGroup menubarPath="/diagramMenu/alignMenu/" id="alignVerticalGroup"/>
+           <partAction menubarPath="/diagramMenu/alignMenu/alignHorizontalGroup" toolbarPath="/alignMenu/alignHorizontalGroup" id="org.eclipse.gef.align_left"/>
+           <partAction menubarPath="/diagramMenu/alignMenu/alignHorizontalGroup" toolbarPath="/alignMenu/alignHorizontalGroup" id="org.eclipse.gef.align_center"/>
+           <partAction menubarPath="/diagramMenu/alignMenu/alignHorizontalGroup" toolbarPath="/alignMenu/alignHorizontalGroup" id="org.eclipse.gef.align_right"/>
+           <partAction menubarPath="/diagramMenu/alignMenu/alignVerticalGroup" toolbarPath="/alignMenu/alignVerticalGroup" id="org.eclipse.gef.align_top"/>
+           <partAction menubarPath="/diagramMenu/alignMenu/alignVerticalGroup" toolbarPath="/alignMenu/alignVerticalGroup" id="org.eclipse.gef.align_middle"/>
+           <partAction menubarPath="/diagramMenu/alignMenu/alignVerticalGroup" toolbarPath="/alignMenu/alignVerticalGroup" id="org.eclipse.gef.align_bottom"/>
            <!-- Add distribute action in new group -->
            <partMenu menubarPath="/diagramMenu/alignMenu" id="distributeMenu"/>
            <partMenuGroup menubarPath="/diagramMenu/distributeMenu/" id="distributeHorizontalGroup"/>
@@ -256,6 +266,36 @@
                   path="/formatMenu/applyAppearanceGroup">
             </popupAction>
          </popupContribution>
+         <popupContribution class="org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramEditorContextMenuProvider"
+            id="specificContributionsForEdgeLabelSelection">
+            <popupStructuredContributionCriteria objectClass="org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPart">
+            </popupStructuredContributionCriteria>                    
+            <popupMenu path="/formatMenu/miscellaneousGroup" id="alignMenu">
+            </popupMenu>
+            <popupMenuGroup path="/formatMenu/alignMenu/" id="alignHorizontalGroup">
+            </popupMenuGroup>
+            <popupMenuGroup path="/formatMenu/alignMenu/" id="alignVerticalGroup">
+            </popupMenuGroup>
+            <popupAction path="/formatMenu/alignMenu/alignHorizontalGroup" id="alignLeftAction">
+            </popupAction>
+            <popupAction path="/formatMenu/alignMenu/alignHorizontalGroup" id="alignCenterAction">
+            </popupAction>
+            <popupAction path="/formatMenu/alignMenu/alignHorizontalGroup" id="alignRightAction">
+            </popupAction>
+            <popupAction path="/formatMenu/alignMenu/alignVerticalGroup" id="alignTopAction">
+            </popupAction>
+            <popupAction path="/formatMenu/alignMenu/alignVerticalGroup" id="alignMiddleAction">
+            </popupAction>
+            <popupAction path="/formatMenu/alignMenu/alignVerticalGroup" id="alignBottomAction">
+            </popupAction>  
+            <popupMenu path="/formatMenu/miscellaneousGroup" id="distributeMenu"/>
+            <popupMenuGroup path="/formatMenu/distributeMenu/" id="distributeHorizontalGroup"/>
+            <popupMenuGroup path="/formatMenu/distributeMenu/" id="distributeVerticalGroup"/>
+            <popupAction path="/formatMenu/distributeMenu/distributeHorizontalGroup" id="distributeGapsHorizontally" />
+            <popupAction path="/formatMenu/distributeMenu/distributeHorizontalGroup" id="distributeCentersHorizontally"/>
+            <popupAction path="/formatMenu/distributeMenu/distributeVerticalGroup" id="distributeGapsVertically"/>
+            <popupAction path="/formatMenu/distributeMenu/distributeVerticalGroup" id="distributeCentersVertically"/>
+         </popupContribution>   
          <popupContribution
                class="org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramEditorContextMenuProvider">
             <popupStructuredContributionCriteria

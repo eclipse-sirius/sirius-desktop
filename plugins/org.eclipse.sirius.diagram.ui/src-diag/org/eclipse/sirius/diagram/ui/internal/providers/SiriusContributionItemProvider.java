@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,8 +12,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.providers;
 
+import org.eclipse.draw2d.PositionConstants;
+import org.eclipse.gef.ui.actions.GEFActionConstants;
 import org.eclipse.gmf.runtime.common.ui.services.action.contributionitem.AbstractContributionItemProvider;
 import org.eclipse.gmf.runtime.common.ui.util.IWorkbenchPartDescriptor;
+import org.eclipse.gmf.runtime.diagram.ui.actions.internal.AlignMenuManager;
 import org.eclipse.gmf.runtime.diagram.ui.actions.internal.RouterMenuManager;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IMenuManager;
@@ -28,6 +31,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.actions.SiriusSelectAllActio
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SizeBothAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.TabbarRouterAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.distribute.DistributeAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.distribute.SiriusAlignAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.ArrangeBorderNodesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.CopyFormatAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteFormatAction;
@@ -126,6 +130,30 @@ public class SiriusContributionItemProvider extends AbstractContributionItemProv
             result = SiriusSelectAllAction.createToolbarSelectAllShapesAction(workbenchPage);
         } else if (ActionIds.ACTION_SIRIUS_TOOLBAR_SELECT_ALL_CONNECTIONS.equals(actionId)) {
             result = SiriusSelectAllAction.createToolbarSelectAllConnectionsAction(workbenchPage);
+        } else if (actionId.equals(GEFActionConstants.ALIGN_LEFT)) {
+            return new SiriusAlignAction(workbenchPage, actionId, PositionConstants.LEFT);
+        } else if (actionId.equals(GEFActionConstants.ALIGN_CENTER)) {
+            return new SiriusAlignAction(workbenchPage, actionId, PositionConstants.CENTER);
+        } else if (actionId.equals(GEFActionConstants.ALIGN_RIGHT)) {
+            return new SiriusAlignAction(workbenchPage, actionId, PositionConstants.RIGHT);
+        } else if (actionId.equals(GEFActionConstants.ALIGN_TOP)) {
+            return new SiriusAlignAction(workbenchPage, actionId, PositionConstants.TOP);
+        } else if (actionId.equals(GEFActionConstants.ALIGN_MIDDLE)) {
+            return new SiriusAlignAction(workbenchPage, actionId, PositionConstants.MIDDLE);
+        } else if (actionId.equals(GEFActionConstants.ALIGN_BOTTOM)) {
+            return new SiriusAlignAction(workbenchPage, actionId, PositionConstants.BOTTOM);
+        } else if (actionId.equals(org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds.ACTION_ALIGN_LEFT)) {
+            return new SiriusAlignAction(workbenchPage, actionId, PositionConstants.LEFT, false);
+        } else if (actionId.equals(org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds.ACTION_ALIGN_CENTER)) {
+            return new SiriusAlignAction(workbenchPage, actionId, PositionConstants.CENTER, false);
+        } else if (actionId.equals(org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds.ACTION_ALIGN_RIGHT)) {
+            return new SiriusAlignAction(workbenchPage, actionId, PositionConstants.RIGHT, false);
+        } else if (actionId.equals(org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds.ACTION_ALIGN_TOP)) {
+            return new SiriusAlignAction(workbenchPage, actionId, PositionConstants.TOP, false);
+        } else if (actionId.equals(org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds.ACTION_ALIGN_MIDDLE)) {
+            return new SiriusAlignAction(workbenchPage, actionId, PositionConstants.MIDDLE, false);
+        } else if (actionId.equals(org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds.ACTION_ALIGN_BOTTOM)) {
+            return new SiriusAlignAction(workbenchPage, actionId, PositionConstants.BOTTOM, false);
         } else {
             result = super.createAction(actionId, partDescriptor);
         }
@@ -135,11 +163,13 @@ public class SiriusContributionItemProvider extends AbstractContributionItemProv
     @Override
     protected IMenuManager createMenuManager(String menuId, IWorkbenchPartDescriptor partDescriptor) {
         if (menuId.equals(ActionIds.MENU_DISTRIBUTE)) {
-            return new DistributeMenuManager();
+            return new DistributeMenuManager(); 
         } else if (menuId.equals(ActionIds.MENU_STRAIGHTEN_TO)) {
             return new StraightenToMenuManager();
         } else if (menuId.equals(org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds.MENU_ROUTER)) {
             return new RouterMenuManager();
+        } else if (menuId.equals(ActionIds.MENU_ALIGN)) {
+            return new AlignMenuManager();
         }
         return super.createMenuManager(menuId, partDescriptor);
     }

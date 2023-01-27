@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editparts.AbstractConnectionEditPart;
+import org.eclipse.gef.requests.AlignmentRequest;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
@@ -39,8 +40,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPa
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.locator.EdgeLabelQuery;
 
 /**
- * Edit policy which supports TARGET and SOURCE label connections for feedback
- * on the edge.
+ * Edit policy which supports TARGET and SOURCE label connections for feedback on the edge.
  *
  * @author nlepine
  */
@@ -64,8 +64,7 @@ public class ResizableShapeLabelEditPolicy extends ResizableShapeEditPolicy {
     }
 
     /**
-     * Get the location among {@link LabelViewConstants} constants where to
-     * relocate the label figure.
+     * Get the location among {@link LabelViewConstants} constants where to relocate the label figure.
      *
      * @return the location among {@link LabelViewConstants} constants
      */
@@ -88,11 +87,6 @@ public class ResizableShapeLabelEditPolicy extends ResizableShapeEditPolicy {
         return location;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.gef.editpolicies.NonResizableEditPolicy#eraseChangeBoundsFeedback(org.eclipse.gef.requests.ChangeBoundsRequest)
-     */
     @Override
     protected void eraseChangeBoundsFeedback(ChangeBoundsRequest request) {
         super.eraseChangeBoundsFeedback(request);
@@ -102,11 +96,6 @@ public class ResizableShapeLabelEditPolicy extends ResizableShapeEditPolicy {
         tether = null;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.gmf.runtime.diagram.ui.editpolicies.ResizableShapeEditPolicy#createDragSourceFeedbackFigure()
-     */
     @Override
     protected IFigure createDragSourceFeedbackFigure() {
         IFigure feedback = super.createDragSourceFeedbackFigure();
@@ -117,11 +106,6 @@ public class ResizableShapeLabelEditPolicy extends ResizableShapeEditPolicy {
         return feedback;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.gef.editpolicies.ResizableEditPolicy#getResizeCommand(org.eclipse.gef.requests.ChangeBoundsRequest)
-     */
     @Override
     protected Command getResizeCommand(ChangeBoundsRequest request) {
         PrecisionRectangle rect = new PrecisionRectangle(getInitialFeedbackBounds().getCopy());
@@ -136,9 +120,13 @@ public class ResizableShapeLabelEditPolicy extends ResizableShapeEditPolicy {
         Point refPoint = getReferencePoint();
         Point normalPoint;
         if (getHost().getParent() instanceof AbstractConnectionEditPart) {
+            // In case of a label of an edge, there is specific computation according to the "location" of the label
+            // (begin, center, end). Indeed, in GMF, the location is stored according to the reference point (begin,
+            // center, end).
             PointList ptList = ((AbstractConnectionEditPart) getHost().getParent()).getConnectionFigure().getPoints();
             normalPoint = EdgeLabelQuery.offsetFromRelativeCoordinate(getHostFigure().getBounds().getCenter().getCopy(), ptList, refPoint);
         } else {
+            // For a label of a shape, the location is "just" relative to the shape origin.
             normalPoint = LabelHelper.offsetFromRelativeCoordinate(getHostFigure(), rect, refPoint);
         }
 
@@ -147,11 +135,6 @@ public class ResizableShapeLabelEditPolicy extends ResizableShapeEditPolicy {
         return new ICommandProxy(resizeCommand);
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.gef.editpolicies.NonResizableEditPolicy#getMoveCommand(org.eclipse.gef.requests.ChangeBoundsRequest)
-     */
     @Override
     protected Command getMoveCommand(ChangeBoundsRequest request) {
         Point refPoint = getReferencePoint();
@@ -166,9 +149,13 @@ public class ResizableShapeLabelEditPolicy extends ResizableShapeEditPolicy {
 
         Point normalPoint;
         if (getHost().getParent() instanceof AbstractConnectionEditPart) {
+            // In case of a label of an edge, there is specific computation according to the "location" of the label
+            // (begin, center, end). Indeed, in GMF, the location is stored according to the reference point (begin,
+            // center, end).
             PointList ptList = ((AbstractConnectionEditPart) getHost().getParent()).getConnectionFigure().getPoints();
             normalPoint = EdgeLabelQuery.offsetFromRelativeCoordinate(rect.getCenter(), ptList, refPoint);
         } else {
+            // For a label of a shape, the location is "just" relative to the shape origin.
             normalPoint = LabelHelper.offsetFromRelativeCoordinate(getHostFigure(), rect, refPoint);
         }
 
@@ -180,9 +167,8 @@ public class ResizableShapeLabelEditPolicy extends ResizableShapeEditPolicy {
     }
 
     /**
-     * adjust the rectangle used for the move command; the default
-     * implementation assumes no behavior, clients can override this function to
-     * change this behavior.
+     * adjust the rectangle used for the move command; the default implementation assumes no behavior, clients can
+     * override this function to change this behavior.
      *
      * @param rect
      *            Rect to adjust
@@ -191,11 +177,6 @@ public class ResizableShapeLabelEditPolicy extends ResizableShapeEditPolicy {
         // do nothing
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.gmf.runtime.diagram.ui.editpolicies.ResizableEditPolicyEx#showChangeBoundsFeedback(org.eclipse.gef.requests.ChangeBoundsRequest)
-     */
     @Override
     protected void showChangeBoundsFeedback(ChangeBoundsRequest request) {
         super.showChangeBoundsFeedback(request);
@@ -239,5 +220,36 @@ public class ResizableShapeLabelEditPolicy extends ResizableShapeEditPolicy {
 
         tether.setStart(startPoint);
         tether.setEnd(ref.getLocation());
+    }
+
+    /*
+     * Inspired from #getMoveCommand(ChangeBoundsRequest)
+     */
+    @Override
+    protected Command getAlignCommand(AlignmentRequest request) {
+        Point refPoint = getReferencePoint();
+        PrecisionRectangle locationAndSize = new PrecisionRectangle(getHostFigure().getBounds());
+        getHostFigure().translateToAbsolute(locationAndSize);
+        locationAndSize = (PrecisionRectangle) request.getTransformedRectangle(locationAndSize);
+        getHostFigure().translateToRelative(locationAndSize);
+        adjustRect(locationAndSize);
+
+        Point normalPoint;
+        if (getHost().getParent() instanceof AbstractConnectionEditPart) {
+            // In case of a label of an edge, there is specific computation according to the "location" of the label
+            // (begin, center, end). Indeed, in GMF, the location is stored according to the reference point (begin,
+            // center, end).
+            PointList ptList = ((AbstractConnectionEditPart) getHost().getParent()).getConnectionFigure().getPoints();
+            normalPoint = EdgeLabelQuery.offsetFromRelativeCoordinate(locationAndSize.getCenter(), ptList, refPoint);
+        } else {
+            // For a label of a shape, the location is "just" relative to the shape origin.
+            normalPoint = LabelHelper.offsetFromRelativeCoordinate(getHostFigure(), locationAndSize, refPoint);
+        }
+
+        TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) getHost()).getEditingDomain();
+
+        ICommand alignCommand = new org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand(editingDomain, DiagramUIMessages.MoveLabelCommand_Label_Location,
+                new EObjectAdapter((View) getHost().getModel()), normalPoint);
+        return new ICommandProxy(alignCommand);
     }
 }
