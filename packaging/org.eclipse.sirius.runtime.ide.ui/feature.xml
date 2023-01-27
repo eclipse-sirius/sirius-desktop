@@ -21,7 +21,7 @@
       license-feature-version="0.0.0">
 
    <description url="http://www.eclipse.org/sirius">
-Sirius UI and workbench integration, including graphical editors for all types of Sirius representations, and support for Modeling projects with streamlined workflow.
+      Sirius UI and workbench integration, including graphical editors for all types of Sirius representations, and support for Modeling projects with streamlined workflow.
 Install this if you need to use Sirius-based modelers or create new ones.
    </description>
 
@@ -39,6 +39,7 @@ Install this if you need to use Sirius-based modelers or create new ones.
 
    <requires>
       <import feature="org.eclipse.gmf" version="1.4.2"/>
+      <import plugin="org.apache.xalan"/>
    </requires>
 
    <plugin
@@ -47,7 +48,7 @@ Install this if you need to use Sirius-based modelers or create new ones.
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-         
+
    <plugin
          id="org.eclipse.sirius.common.ui.ext"
          download-size="0"
@@ -61,7 +62,7 @@ Install this if you need to use Sirius-based modelers or create new ones.
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-         
+
    <plugin
          id="org.eclipse.sirius.diagram.sequence.model"
          download-size="0"
@@ -89,7 +90,7 @@ Install this if you need to use Sirius-based modelers or create new ones.
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-         
+
    <plugin
          id="org.eclipse.sirius.diagram.ui.ext"
          download-size="0"
@@ -103,7 +104,7 @@ Install this if you need to use Sirius-based modelers or create new ones.
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-         
+
    <plugin
          id="org.eclipse.sirius.table.ui.ext"
          download-size="0"
@@ -117,7 +118,7 @@ Install this if you need to use Sirius-based modelers or create new ones.
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-         
+
    <plugin
          id="org.eclipse.sirius.tree.ui.ext"
          download-size="0"
@@ -131,14 +132,14 @@ Install this if you need to use Sirius-based modelers or create new ones.
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-         
-    <plugin
+
+   <plugin
          id="org.eclipse.sirius.ui.editor"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-                 
+
    <plugin
          id="org.eclipse.sirius.ui.ext"
          download-size="0"

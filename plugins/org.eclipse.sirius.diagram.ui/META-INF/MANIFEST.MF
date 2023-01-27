@@ -51,7 +51,8 @@ Require-Bundle: com.google.guava;bundle-version="[21.0,30.2)",
  org.apache.batik.anim;bundle-version="1.16.0",
  org.apache.batik.ext;bundle-version="1.16.0",
  org.apache.batik.codec;bundle-version="1.16.0",
- org.apache.batik.constants;bundle-version="1.16.0"
+ org.apache.batik.constants;bundle-version="1.16.0",
+ org.apache.xalan;bundle-version="2.7.2"
 Eclipse-LazyStart: true
 Export-Package: org.eclipse.sirius.diagram.description.concern.provider;version="7.0.0",
  org.eclipse.sirius.diagram.description.filter.provider;version="7.0.0",

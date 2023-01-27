@@ -5,6 +5,7 @@ location Orbit-2022-03 "https://download.eclipse.org/tools/orbit/downloads/drops
 }
 location Orbit-2022-12 "https://download.eclipse.org/tools/orbit/downloads/drops/R20221123021534/repository/" {
     org.apache.log4j lazy
+    org.apache.xalan [2.7.2,2.7.3)
     org.hamcrest.library lazy
     org.junit lazy
     org.slf4j.api lazy
