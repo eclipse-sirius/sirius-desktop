@@ -81,7 +81,7 @@ public class SiriusDTreeCellNavigationStrategy extends CellNavigationStrategy {
                     // The shift key is pressed, collapse the current item and all its sub tree items
                     List<TreeItem> subItems = new ArrayList<>();
                     collectSubItems(currentTreeItem, subItems);
-                    TreeItemExpansionManager.handleTreeCollapse(event, subItems, session, permissionAuthority);
+                    TreeItemExpansionManager.handleTreeCollapse(event, subItems, session, permissionAuthority, !currentTreeItem.getExpanded());
                 } else {
                     // Collapse the current item
                     TreeItemExpansionManager.handleTreeCollapse(event, Optional.of(currentTreeItem), session, permissionAuthority);

@@ -106,13 +106,18 @@ public class TreeItemExpansionManager implements Listener {
      */
     public static void handleTreeCollapse(Event event, Optional<TreeItem> currentTreeItem, Session currentSession, IPermissionAuthority currentPermissionAuthority) {
         TreeItem treeItem = null;
+        boolean isAlreadyCollapsed = false;
         if (currentTreeItem.isPresent()) {
             treeItem = currentTreeItem.get();
+            // In this case (left arrow key press for example), we can use the treeItem expanded status.
+            isAlreadyCollapsed = !treeItem.getExpanded();
         } else if (event.item instanceof TreeItem) {
             treeItem = (TreeItem) event.item;
+            // In this case (mouse click for example), it is not possible to use treeItem expanded status because it is
+            // already collapsed here.
         }
         if (treeItem != null) {
-            handleTreeCollapse(event, List.of(treeItem), currentSession, currentPermissionAuthority);
+            handleTreeCollapse(event, List.of(treeItem), currentSession, currentPermissionAuthority, isAlreadyCollapsed);
         }
     }
 
@@ -129,13 +134,14 @@ public class TreeItemExpansionManager implements Listener {
      *            the current session
      * @param currentPermissionAuthority
      *            The {@link IPermissionAuthority} responsible to validate if the element is editable
+     * @param isAlreadyCollapsed
+     *            The graphical collapse status (of root collapse tree item, in case of "collapse all").
      */
-    public static void handleTreeCollapse(Event event, List<TreeItem> treeItemsToCollapse, Session currentSession, IPermissionAuthority currentPermissionAuthority) {
+    public static void handleTreeCollapse(Event event, List<TreeItem> treeItemsToCollapse, Session currentSession, IPermissionAuthority currentPermissionAuthority, boolean isAlreadyCollapsed) {
         if (treeItemsToCollapse.size() > 0) {
             // Get the last tree item of the list, ie the root collapse tree item, in case of "collapse all".
             TreeItem treeItem = treeItemsToCollapse.get(treeItemsToCollapse.size() - 1);
             Object data = treeItem.getData();
-            boolean isAlreadyCollapsed = !treeItem.getExpanded();
             boolean isCollapseToRevert = false;
             if (data instanceof DTreeItem) {
                 DTreeItem dTreeItem = (DTreeItem) data;
@@ -203,14 +209,18 @@ public class TreeItemExpansionManager implements Listener {
      *            should be expanded.
      */
     public static void handleTreeExpand(Event event, Optional<TreeItem> currentTreeItem, Session currentSession, IPermissionAuthority currentPermissionAuthority, boolean all, int expandDepthLimit) {
+        boolean isAlreadyExpanded = false;
         TreeItem treeItem = null;
         if (currentTreeItem.isPresent()) {
             treeItem = currentTreeItem.get();
+            // In this case (right arrow key press for example), we can use the treeItem expanded status.
+            isAlreadyExpanded = treeItem.getExpanded();
         } else if (event.item instanceof TreeItem) {
+            // In this case (mouse click for example), it is not possible to use treeItem expanded status because it is
+            // already expanded here.
             treeItem = (TreeItem) event.item;
         }
         if (treeItem != null) {
-            boolean isAlreadyExpanded = treeItem.getExpanded();
             Object data = treeItem.getData();
             if (data instanceof DTreeItem) {
                 DTreeItem dTreeItem = (DTreeItem) data;
