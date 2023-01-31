@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -32,6 +32,8 @@ import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeNameEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
@@ -47,8 +49,8 @@ import org.eclipse.ui.IWorkbenchPage;
 import com.google.common.collect.Iterables;
 
 /**
- * This action reset the style properties to their default values as defined in
- * the VSM or in the diagram preference page.
+ * This action reset the style properties to their default values as defined in the VSM or in the diagram preference
+ * page.
  * 
  * @author mchauvin
  */
@@ -103,7 +105,7 @@ public class ResetStylePropertiesToDefaultValuesAction extends Action implements
                                 result = true;
                                 break;
                             }
-                        }                 
+                        }
 
                         ViewQuery viewQuery = new ViewQuery(view);
                         if (viewQuery.isCustomized()) {
@@ -111,8 +113,9 @@ public class ResetStylePropertiesToDefaultValuesAction extends Action implements
                             break;
                         }
                     } catch (IllegalStateException e) {
-                        // Nothing to log here, this can happen if the resource is not accessible anymore (distant resource).
-                    }   
+                        // Nothing to log here, this can happen if the resource is not accessible anymore (distant
+                        // resource).
+                    }
                 } // for
             }
         }
@@ -164,6 +167,10 @@ public class ResetStylePropertiesToDefaultValuesAction extends Action implements
                         // AbstractDiagramEdgeEditPart must be considered (the
                         // GMF styles is
                         // supported by the Edge view)
+                        graphicalEditPart = (IGraphicalEditPart) graphicalEditPart.getParent();
+                    } else if (graphicalEditPart instanceof DNodeNameEditPart && graphicalEditPart.getParent() instanceof DNodeEditPart) {
+                        // For DNodeNameEditPart, the parent DNodeEditPart must be considered (the GMF styles is
+                        // supported by the Node view)
                         graphicalEditPart = (IGraphicalEditPart) graphicalEditPart.getParent();
                     }
                     View view = graphicalEditPart.getNotationView();
