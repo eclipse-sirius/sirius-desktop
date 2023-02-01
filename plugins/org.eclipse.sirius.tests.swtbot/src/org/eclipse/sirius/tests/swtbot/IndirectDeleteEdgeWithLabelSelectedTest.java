@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2022, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -29,6 +29,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
@@ -88,6 +89,7 @@ public class IndirectDeleteEdgeWithLabelSelectedTest extends AbstractHideRevealD
         SWTBotGefEditPart editPartLabel = editor.getEditPart(EDGE_NAMED_REFTOC1);
         checkAllEdgeLabelsAreVisible(editPartREFTOC1);
         editor.select(editPartLabel);
+        SWTBotUtils.waitAllUiEvents();
 
         assertTrue("Edge label must be selected", editPartLabel.part() == ((IStructuredSelection) editor.getSelection()).iterator().next()); //$NON-NLS-1$
 
@@ -102,6 +104,7 @@ public class IndirectDeleteEdgeWithLabelSelectedTest extends AbstractHideRevealD
                 EcoreUtil.delete(edge.getTarget());
             }
         });
+        SWTBotUtils.waitAllUiEvents();
 
         // Waiting for command execution
         bot.waitUntil(done);
