@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -233,7 +233,7 @@ public final class TreeUtils {
         boolean expanded = dTreeItem.isExpanded();
         TreeItem treeItem = TreeUtils.getTreeItem(swtBotTreeEditor, dTreeItem);
         boolean widgetExpansion = TreeUtils.getWidgetExpansion(treeItem);
-        Assert.assertEquals("As the DTreeitem is " + (expanded ? TreeUtils.COLLAPSE : TreeUtils.EXPANDED) + ", its TreeItem should be also " + (expanded ? TreeUtils.COLLAPSE : TreeUtils.EXPANDED),
+        Assert.assertEquals("As the DTreeitem is " + (expanded ? TreeUtils.EXPANDED : TreeUtils.COLLAPSE) + ", its TreeItem should be also " + (expanded ? TreeUtils.EXPANDED : TreeUtils.COLLAPSE),
                 expanded, widgetExpansion);
     }
 

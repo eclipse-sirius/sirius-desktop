@@ -105,6 +105,7 @@ public class TreeUIPermissionAuthorityTests extends AbstractTreeSiriusSWTBotGefT
      * {@link TreeItem}.
      */
     public void testTreeItemExpansion() {
+        TreeUtils.collapseTreeItem(treeEditorBot, firstDTreeItem);
         readOnlyPermissionAuthority.activate();
 
         // Test expansion
@@ -120,7 +121,6 @@ public class TreeUIPermissionAuthorityTests extends AbstractTreeSiriusSWTBotGefT
      * {@link TreeItem}.
      */
     public void testTreeItemCollapse() {
-        TreeUtils.collapseTreeItem(treeEditorBot, firstDTreeItem);
         readOnlyPermissionAuthority.activate();
 
         // Test collapse
