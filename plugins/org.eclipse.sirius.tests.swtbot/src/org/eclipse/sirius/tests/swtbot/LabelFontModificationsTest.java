@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import java.util.List;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.FigureUtilities;
 import org.eclipse.sirius.business.api.metamodel.helper.FontFormatHelper;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramListEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
@@ -31,7 +32,9 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeList2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeNameEditPart;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.swt.SWT;
@@ -165,9 +168,30 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         }
     };
 
+    @Override
+    protected void onSetUpBeforeClosingWelcomePage() throws Exception {
+        super.onSetUpBeforeClosingWelcomePage();
+        copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, "testLabelProperties.odesign"); //$NON-NLS-1$
+    }
+
     /**
-     * Ensures that changing the color of a label from the appearance page works
-     * as expected (and also tests that the style is considered as custom).
+     * Ensures that changing the color of a label from the appearance page works as expected (and also tests that the
+     * style is considered as custom).
+     */
+    public void testToolbarActionWithNodeLabelSelection() {
+        editor.close();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "ClassDiagram", "new ClassDiagram", DDiagram.class);
+        doTestItalicFromToolbar("myEClass", DNodeNameEditPart.class);
+        doTestBoldFromToolbar("myEClass", DNodeNameEditPart.class);
+        doTestChangeLabelColorFromTabbar("myEClass", DNodeNameEditPart.class);
+
+        // check that buttons associated to the node are not enabled
+        getSetStyleToWorkspaceImageButton(true, false);
+    }
+
+    /**
+     * Ensures that changing the color of a label from the appearance page works as expected (and also tests that the
+     * style is considered as custom).
      */
     public void testChangeLabelColorFromAppearanceSection() {
         doTestChangeLabelColorFromAppearanceSection("myEClass", DNodeList2EditPart.class);
@@ -180,8 +204,8 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     }
 
     /**
-     * Ensures that changing the color of a label from the appearance page works
-     * as expected (and also tests that the style is considered as custom).
+     * Ensures that changing the color of a label from the appearance page works as expected (and also tests that the
+     * style is considered as custom).
      * 
      * @param name
      *            the edit part name
@@ -195,8 +219,8 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     }
 
     /**
-     * Ensures that changing a label as bold from tabbar works as expected (and
-     * also tests that the style is considered as custom).
+     * Ensures that changing a label as bold from tabbar works as expected (and also tests that the style is considered
+     * as custom).
      */
     public void testBoldFromToolbar() {
         doTestBoldFromToolbar("myEClass", DNodeList2EditPart.class);
@@ -209,8 +233,8 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     }
 
     /**
-     * Ensures that changing a label as bold from tabbar works as expected (and
-     * also tests that the style is considered as custom).
+     * Ensures that changing a label as bold from tabbar works as expected (and also tests that the style is considered
+     * as custom).
      * 
      * @param name
      *            the edit part name
@@ -223,8 +247,8 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     }
 
     /**
-     * Ensures that changing a label as stroke from tabbar works as expected
-     * (and also tests that the style is considered as custom).
+     * Ensures that changing a label as stroke from tabbar works as expected (and also tests that the style is
+     * considered as custom).
      */
     public void testItalicFromToolbar() {
         doTestItalicFromToolbar("myEClass", DNodeList2EditPart.class);
@@ -237,8 +261,8 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     }
 
     /**
-     * Ensures that changing a label as stroke from tabbar works as expected
-     * (and also tests that the style is considered as custom).
+     * Ensures that changing a label as stroke from tabbar works as expected (and also tests that the style is
+     * considered as custom).
      * 
      * @param name
      *            the edit part name
@@ -251,8 +275,8 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     }
 
     /**
-     * Ensures that changing the font color of a label from the tabbar works as
-     * expected (and also tests that the style is considered as custom).
+     * Ensures that changing the font color of a label from the tabbar works as expected (and also tests that the style
+     * is considered as custom).
      */
     public void testChangeLabelColorFromTabbar() {
         doTestChangeLabelColorFromTabbar("myEClass", DNodeList2EditPart.class);
@@ -265,8 +289,8 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     }
 
     /**
-     * Ensures that changing the font color of a label from the tabbar works as
-     * expected (and also tests that the style is considered as custom).
+     * Ensures that changing the font color of a label from the tabbar works as expected (and also tests that the style
+     * is considered as custom).
      * 
      * @param name
      *            the edit part name
@@ -312,8 +336,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     }
 
     /**
-     * Ensures that changing a label as stroke and bold from tabbar works as
-     * expected.
+     * Ensures that changing a label as stroke and bold from tabbar works as expected.
      * 
      * @param name
      *            the edit part name
@@ -373,8 +396,8 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     }
 
     /**
-     * Ensures that changing a label as bold from the appearance page works as
-     * expected (and also tests that the style is considered as custom).
+     * Ensures that changing a label as bold from the appearance page works as expected (and also tests that the style
+     * is considered as custom).
      */
     public void testBoldFromAppearanceSection() {
         doTestBoldFromAppearanceSection("myEClass", DNodeList2EditPart.class);
@@ -387,8 +410,8 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     }
 
     /**
-     * Ensures that changing a label as bold from the appearance page works as
-     * expected (and also tests that the style is considered as custom).
+     * Ensures that changing a label as bold from the appearance page works as expected (and also tests that the style
+     * is considered as custom).
      * 
      * @param name
      *            the edit part name
@@ -401,8 +424,8 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     }
 
     /**
-     * Ensures that changing a label as italic from the appearance page works as
-     * expected (and also tests that the style is considered as custom).
+     * Ensures that changing a label as italic from the appearance page works as expected (and also tests that the style
+     * is considered as custom).
      */
     public void testItalicFromAppearanceSection() {
         doTestItalicFromAppearanceSection("myEClass", DNodeList2EditPart.class);
@@ -415,8 +438,8 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     }
 
     /**
-     * Ensures that changing a label as italic from the appearance page works as
-     * expected (and also tests that the style is considered as custom).
+     * Ensures that changing a label as italic from the appearance page works as expected (and also tests that the style
+     * is considered as custom).
      * 
      * @param name
      *            the edit part name
@@ -429,8 +452,8 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     }
 
     /**
-     * Ensures that striking a label from the appearance page works as expected
-     * (and also tests that the style is considered as customized).
+     * Ensures that striking a label from the appearance page works as expected (and also tests that the style is
+     * considered as customized).
      */
     public void testStrikeFromAppearanceSection() {
         doTestStrikeFromAppearanceSection("myEClass", DNodeList2EditPart.class);
@@ -441,8 +464,8 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     }
 
     /**
-     * Ensures that striking a label from the appearance page works as expected
-     * (and also tests that the style is considered as customized).
+     * Ensures that striking a label from the appearance page works as expected (and also tests that the style is
+     * considered as customized).
      * 
      * @param name
      *            the edit part name
@@ -455,8 +478,8 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     }
 
     /**
-     * Ensures that underlining a label from the appearance page works as
-     * expected (and also tests that the style is considered as customized).
+     * Ensures that underlining a label from the appearance page works as expected (and also tests that the style is
+     * considered as customized).
      */
     public void testUnderlineFromAppearanceSection() {
         doTestUnderlineFromAppearanceSection("myEClass", DNodeList2EditPart.class);
@@ -505,8 +528,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     }
 
     /**
-     * Check if the menu "Font..." is available on the edit part with the given
-     * name and of the given type.
+     * Check if the menu "Font..." is available on the edit part with the given name and of the given type.
      * 
      * @param name
      *            the edit part name
@@ -538,8 +560,8 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     }
 
     /**
-     * Ensures that underlining a label from the appearance page works as
-     * expected (and also tests that the style is considered as customized).
+     * Ensures that underlining a label from the appearance page works as expected (and also tests that the style is
+     * considered as customized).
      * 
      * @param name
      *            the edit part name
@@ -552,8 +574,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     }
 
     /**
-     * Ensures that changing a label as italic and bold from the appearance page
-     * works as expected.
+     * Ensures that changing a label as italic and bold from the appearance page works as expected.
      */
     public void testItalicAndBoldFromAppearanceSection() {
         doTestItalicAndBoldFromAppearanceSection("myEClass", DNodeList2EditPart.class);
@@ -566,8 +587,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     }
 
     /**
-     * Ensures that changing a label as italic and bold from the appearance page
-     * works as expected.
+     * Ensures that changing a label as italic and bold from the appearance page works as expected.
      * 
      * @param name
      *            the edit part name
@@ -694,9 +714,8 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     }
 
     /**
-     * Ensures that changing the font size of a label from the appearance page
-     * works as expected (and also tests that the style is considered as
-     * custom).
+     * Ensures that changing the font size of a label from the appearance page works as expected (and also tests that
+     * the style is considered as custom).
      */
     public void testChangeFontSizeFromAppearanceSection() {
         doTestChangeFontSizeFromAppearanceSection("myEClass", DNodeList2EditPart.class);
@@ -707,9 +726,8 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     }
 
     /**
-     * Ensures that changing the font size of a label from the appearance page
-     * works as expected (and also tests that the style is considered as
-     * custom).
+     * Ensures that changing the font size of a label from the appearance page works as expected (and also tests that
+     * the style is considered as custom).
      * 
      * @param name
      *            the edit part name
@@ -736,8 +754,8 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     }
 
     /**
-     * Ensures that changing the font of a label from the appearance page works
-     * as expected (and also tests that the style is considered as custom).
+     * Ensures that changing the font of a label from the appearance page works as expected (and also tests that the
+     * style is considered as custom).
      */
     public void testChangeFontFromAppearanceSection() {
         doTestChangeFontFromAppearanceSection("myEClass", DNodeList2EditPart.class);
@@ -748,8 +766,8 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     }
 
     /**
-     * Ensures that changing the font of a label from the appearance page works
-     * as expected (and also tests that the style is considered as custom).
+     * Ensures that changing the font of a label from the appearance page works as expected (and also tests that the
+     * style is considered as custom).
      * 
      * @param name
      *            the edit part name
@@ -759,9 +777,8 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     public void doTestChangeFontFromAppearanceSection(String name, Class<? extends EditPart> type) {
         SWTBotGefEditPart selectedEditPart = selectAndCheckEditPart(name, type);
         /*
-         * Last found common fonts : Arial, Arial Black, Comic Sans MS, Courier
-         * New, DejaVu Sans, DejaVu Sans Mono, DejaVu Serif, Georgia, Impact,
-         * Times New Roma, Trebuchet MS, Verdana , Webdings.
+         * Last found common fonts : Arial, Arial Black, Comic Sans MS, Courier New, DejaVu Sans, DejaVu Sans Mono,
+         * DejaVu Serif, Georgia, Impact, Times New Roma, Trebuchet MS, Verdana , Webdings.
          */
         final String modifiedFont = "Courier New";
         Predicate<SWTBotGefEditPart> stateWhenButtonIsCheckedPredicate = new Predicate<SWTBotGefEditPart>() {

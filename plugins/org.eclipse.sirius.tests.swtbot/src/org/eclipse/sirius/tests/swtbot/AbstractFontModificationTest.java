@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
@@ -56,7 +57,7 @@ public class AbstractFontModificationTest extends AbstractRefreshWithCustomizedS
 
     private static final String SESSION_FILE = "tc2250.aird";
 
-    private static final String DATA_UNIT_DIR = "data/unit/font/";
+    protected static final String DATA_UNIT_DIR = "data/unit/font/";
 
     private static final String FILE_DIR = "/";
 
@@ -66,7 +67,7 @@ public class AbstractFontModificationTest extends AbstractRefreshWithCustomizedS
 
     private UIResource sessionAirdResource;
 
-    private UILocalSession localSession;
+    protected UILocalSession localSession;
 
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
@@ -83,8 +84,8 @@ public class AbstractFontModificationTest extends AbstractRefreshWithCustomizedS
     }
 
     /**
-     * Ensures that the given {@link SWTBotGefEditPart}'s label is displayed
-     * with a 'normal' font (neither bold, italic, underline nor stroke).
+     * Ensures that the given {@link SWTBotGefEditPart}'s label is displayed with a 'normal' font (neither bold, italic,
+     * underline nor stroke).
      * 
      * @param myEClassEP
      *            the {@link SWTBotGefEditPart} to test
@@ -94,8 +95,7 @@ public class AbstractFontModificationTest extends AbstractRefreshWithCustomizedS
     }
 
     /**
-     * Ensures that the given {@link SWTBotGefEditPart}'s label is displayed as
-     * bold.
+     * Ensures that the given {@link SWTBotGefEditPart}'s label is displayed as bold.
      * 
      * @param myEClassEP
      *            the {@link SWTBotGefEditPart} to test
@@ -107,8 +107,7 @@ public class AbstractFontModificationTest extends AbstractRefreshWithCustomizedS
     }
 
     /**
-     * Ensures that the given {@link SWTBotGefEditPart}'s label is displayed as
-     * italic.
+     * Ensures that the given {@link SWTBotGefEditPart}'s label is displayed as italic.
      * 
      * @param myEClassEP
      *            the {@link SWTBotGefEditPart} to test
@@ -120,8 +119,7 @@ public class AbstractFontModificationTest extends AbstractRefreshWithCustomizedS
     }
 
     /**
-     * Ensures that the given {@link SWTBotGefEditPart}'s label is displayed as
-     * bold and italic.
+     * Ensures that the given {@link SWTBotGefEditPart}'s label is displayed as bold and italic.
      * 
      * @param myEClassEP
      *            the {@link SWTBotGefEditPart} to test
@@ -134,8 +132,7 @@ public class AbstractFontModificationTest extends AbstractRefreshWithCustomizedS
     }
 
     /**
-     * Ensures that the given {@link SWTBotGefEditPart}'s label is displayed as
-     * specified.
+     * Ensures that the given {@link SWTBotGefEditPart}'s label is displayed as specified.
      * 
      * @param editPart
      *            the {@link SWTBotGefEditPart} to test
@@ -146,11 +143,9 @@ public class AbstractFontModificationTest extends AbstractRefreshWithCustomizedS
      * @param viewpointStyle
      *            the viewpoint style
      * @param underlined
-     *            true if the given {@link SWTBotGefEditPart}'s label should be
-     *            underlined
+     *            true if the given {@link SWTBotGefEditPart}'s label should be underlined
      * @param strikedThrough
-     *            true if the given {@link SWTBotGefEditPart}'s label should be
-     *            stroke through
+     *            true if the given {@link SWTBotGefEditPart}'s label should be stroke through
      * 
      */
     protected static void checkFontStyle(SWTBotGefEditPart editPart, int d2dStyle, int gmfStyle, List<FontFormat> viewpointStyle, boolean underlined, boolean strikedThrough) {
@@ -158,8 +153,7 @@ public class AbstractFontModificationTest extends AbstractRefreshWithCustomizedS
     }
 
     /**
-     * Ensures that the given {@link SWTBotGefEditPart}'s label is displayed as
-     * specified.
+     * Ensures that the given {@link SWTBotGefEditPart}'s label is displayed as specified.
      * 
      * @param editPart
      *            the {@link SWTBotGefEditPart} to test
@@ -170,22 +164,18 @@ public class AbstractFontModificationTest extends AbstractRefreshWithCustomizedS
      * @param viewpointStyle
      *            the viewpoint style
      * @param underlined
-     *            true if the given {@link SWTBotGefEditPart}'s label should be
-     *            underlined
+     *            true if the given {@link SWTBotGefEditPart}'s label should be underlined
      * @param strikedThrough
-     *            true if the given {@link SWTBotGefEditPart}'s label should be
-     *            stroke through
+     *            true if the given {@link SWTBotGefEditPart}'s label should be stroke through
      * @param fontName
-     *            the name (null if no specific name is expected) of the font
-     *            that should be associated to the given
+     *            the name (null if no specific name is expected) of the font that should be associated to the given
      *            {@link SWTBotGefEditPart}'s label
      * @param fontSize
-     *            the expected size (-1 if no specific size is expected)for the
-     *            font associated to the given {@link SWTBotGefEditPart}'s label
+     *            the expected size (-1 if no specific size is expected)for the font associated to the given
+     *            {@link SWTBotGefEditPart}'s label
      * @param fontColor
-     *            the expected color (-1 if no specific color is expected) for
-     *            the font associated to the given {@link SWTBotGefEditPart}'s
-     *            label
+     *            the expected color (-1 if no specific color is expected) for the font associated to the given
+     *            {@link SWTBotGefEditPart}'s label
      * 
      */
     protected static void checkFontStyle(SWTBotGefEditPart editPart, int d2dStyle, int gmfStyle, List<FontFormat> viewpointStyle, boolean underlined, boolean strikedThrough, String fontName,
@@ -252,26 +242,26 @@ public class AbstractFontModificationTest extends AbstractRefreshWithCustomizedS
      *            the gmf style
      * 
      * @param underlined
-     *            true if the given {@link SWTBotGefEditPart}'s label should be
-     *            underlined
+     *            true if the given {@link SWTBotGefEditPart}'s label should be underlined
      * @param strikedThrough
-     *            true if the given {@link SWTBotGefEditPart}'s label should be
-     *            stroke through
+     *            true if the given {@link SWTBotGefEditPart}'s label should be stroke through
      * @param fontName
-     *            the name (null if no specific name is expected) of the font
-     *            that should be associated to the given
+     *            the name (null if no specific name is expected) of the font that should be associated to the given
      *            {@link SWTBotGefEditPart}'s label
      * @param fontSize
-     *            the expected size (-1 if no specific size is expected)for the
-     *            font associated to the given {@link SWTBotGefEditPart}'s label
+     *            the expected size (-1 if no specific size is expected)for the font associated to the given
+     *            {@link SWTBotGefEditPart}'s label
      * @param fontColor
-     *            the expected color (-1 if no specific color is expected) for
-     *            the font associated to the given {@link SWTBotGefEditPart}'s
-     *            label
+     *            the expected color (-1 if no specific color is expected) for the font associated to the given
+     *            {@link SWTBotGefEditPart}'s label
      * 
      */
     protected static void checkFont(View gmfNode, int style, boolean underlined, boolean strikedThrough, String fontName, int fontSize, int fontColor) {
         FontStyle gmfFontStyle = (FontStyle) gmfNode.getStyle(NotationPackage.eINSTANCE.getFontStyle());
+        if (gmfFontStyle == null) {
+            // case of DNodeNameEditPart.class
+            gmfFontStyle = (FontStyle) ((View) gmfNode.eContainer()).getStyle(NotationPackage.eINSTANCE.getFontStyle());
+        }
         boolean italicStatus;
         boolean boldStatus;
 
@@ -329,6 +319,8 @@ public class AbstractFontModificationTest extends AbstractRefreshWithCustomizedS
             label = ((DNodeListElement) element).getOwnedStyle();
         } else if (element instanceof DEdge) {
             label = ((DEdge) element).getOwnedStyle().getCenterLabelStyle();
+        } else if (element instanceof DNode) {
+            label = ((DNode) element).getOwnedStyle();
         }
 
         assertNotNull(label);
