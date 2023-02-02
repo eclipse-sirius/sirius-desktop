@@ -200,5 +200,7 @@ public interface IPermissionAuthority {
      *            the {@link EObject} to check if frozen.
      * @return if the {@link EObject} is frozen or not.
      */
-    boolean isFrozen(EObject eObject);
+    default boolean isFrozen(EObject eObject) {
+        return false;
+    };
 }

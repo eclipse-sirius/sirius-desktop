@@ -129,9 +129,4 @@ public class ReadOnlyPermissionAuthority extends AbstractPermissionAuthority {
         return canEditInstance(element) ? LockStatus.NOT_LOCKED : LockStatus.LOCKED_BY_OTHER;
     }
 
-    @Override
-    public boolean isFrozen(EObject eObject) {
-        return false;
-    }
-    
 }

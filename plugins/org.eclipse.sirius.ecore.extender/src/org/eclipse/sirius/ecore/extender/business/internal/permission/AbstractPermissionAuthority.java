@@ -124,5 +124,4 @@ public abstract class AbstractPermissionAuthority implements IPermissionAuthorit
     public boolean isNewInstance(final EObject instance) {
         return false;
     }
-
 }

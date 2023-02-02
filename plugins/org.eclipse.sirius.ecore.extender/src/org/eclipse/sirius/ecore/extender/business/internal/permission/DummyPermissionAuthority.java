@@ -172,9 +172,4 @@ public class DummyPermissionAuthority implements IPermissionAuthority {
         return Collections.unmodifiableList(new ArrayList<EObject>());
     }
 
-    @Override
-    public boolean isFrozen(EObject eObject) {
-        return false;
-    }
-
 }
