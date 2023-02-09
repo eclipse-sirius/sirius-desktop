@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2022 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2022, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -61,7 +61,7 @@ public class ImageMarkerMassResolution extends AbstractValidationFix {
     @Override
     protected void doExecuteFix(IMarker marker, IEditorPart editor, View markedView, Session session) {
         String imagePath = marker.getAttribute(NavigationMarkerConstants.IMAGE_PATH_KEY, null);
-        boolean exists = FileProvider.getDefault().exists(new Path(imagePath));
+        boolean exists = FileProvider.getDefault().exists(new Path(imagePath), session);
         if (!exists) {
             boolean fixSucceeded = ImageMarkerMassResolution.fixImagePathMassively(session, imagePath);
             if (fixSucceeded) {

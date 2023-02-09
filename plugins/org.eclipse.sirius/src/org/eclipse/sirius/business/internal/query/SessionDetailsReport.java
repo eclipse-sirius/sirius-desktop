@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2022, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -22,7 +22,6 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.Set;
 import java.util.Spliterator;
 import java.util.Spliterators;
@@ -34,7 +33,6 @@ import org.eclipse.core.filesystem.EFS;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -51,7 +49,6 @@ import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.image.ImageDependenciesAnnotationHelper;
-import org.eclipse.sirius.common.tools.api.resource.FileProvider;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.Messages;
 import org.eclipse.sirius.viewpoint.DAnalysis;
@@ -453,30 +450,5 @@ public final class SessionDetailsReport {
             informations.append(project);
             informations.append(CR);
         });
-    }
-
-    /**
-     * Used to get the project name from the workspacePath of a WorkspaceImage.
-     * 
-     * @param imagePath
-     *            the path of the image
-     * @return the name of the project containing the image
-     */
-    public static Optional<String> getProjectFromImagePath(String imagePath) {
-        boolean exists = FileProvider.getDefault().exists(new Path(imagePath));
-        String projectName = null;
-        if (exists) {
-            URI uri = URI.createURI(imagePath);
-            String cdoPrefix = URIQuery.CDO_URI_SCHEME + ":/"; //$NON-NLS-1$
-            if ((uri.scheme() == null || imagePath.startsWith(cdoPrefix)) && !imagePath.startsWith("/")) { //$NON-NLS-1$
-                String path = imagePath.startsWith(cdoPrefix) ? imagePath.substring(cdoPrefix.length()) : imagePath;
-
-                String[] split = path.split("/"); //$NON-NLS-1$
-                if (split.length > 0) {
-                    projectName = split[0];
-                }
-            }
-        }
-        return Optional.ofNullable(projectName);
     }
 }

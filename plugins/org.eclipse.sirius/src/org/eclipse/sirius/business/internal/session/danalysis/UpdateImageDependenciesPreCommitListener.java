@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2022, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -35,7 +35,6 @@ import org.eclipse.sirius.business.api.image.ImageManager;
 import org.eclipse.sirius.business.api.image.RichTextAttributeRegistry;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.image.ImageDependenciesAnnotationHelper;
-import org.eclipse.sirius.business.internal.query.SessionDetailsReport;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
@@ -105,7 +104,7 @@ public class UpdateImageDependenciesPreCommitListener extends ResourceSetListene
                     DRepresentation representation = SiriusUtil.findRepresentation(dRepElement);
                     String workspacePath = getWorkspacePath((EObject) newValue);
                     if (workspacePath != null) {
-                        Optional<String> projectName = SessionDetailsReport.getProjectFromImagePath(workspacePath);
+                        Optional<String> projectName = imageDependenciesAnnotationHelper.getProjectFromImagePath(workspacePath);
                         if (representation != null && projectName.isPresent()) {
                             addElementInMultiMap(diagramToNewImageDependency, representation, projectName.get());
                         }
@@ -121,13 +120,13 @@ public class UpdateImageDependenciesPreCommitListener extends ResourceSetListene
                         dRepElement = (DRepresentationElement) notifierEObject.eContainer();
                         DRepresentation representation = SiriusUtil.findRepresentation(dRepElement);
                         String workspacePath = (String) newValue;
-                        Optional<String> newProjectName = SessionDetailsReport.getProjectFromImagePath(workspacePath);
+                        Optional<String> newProjectName = imageDependenciesAnnotationHelper.getProjectFromImagePath(workspacePath);
                         if (representation != null && newProjectName.isPresent()) {
                             addElementInMultiMap(diagramToNewImageDependency, representation, newProjectName.get());
                         }
 
                         String oldWorkspacePath = (String) oldValue;
-                        Optional<String> oldProjectName = SessionDetailsReport.getProjectFromImagePath(oldWorkspacePath);
+                        Optional<String> oldProjectName = imageDependenciesAnnotationHelper.getProjectFromImagePath(oldWorkspacePath);
                         if (!newProjectName.equals(oldProjectName) && representation != null && oldProjectName.isPresent()) {
                             addElementInMultiMap(diagramToOldImageDependency, representation, oldProjectName.get());
                         }
@@ -144,7 +143,7 @@ public class UpdateImageDependenciesPreCommitListener extends ResourceSetListene
                     Matcher matcher = pattern.matcher(valueStr);
                     while (matcher.find()) {
                         String workspacePath = matcher.group(1);
-                        SessionDetailsReport.getProjectFromImagePath(workspacePath).ifPresent(projectName -> {
+                        imageDependenciesAnnotationHelper.getProjectFromImagePath(workspacePath).ifPresent(projectName -> {
                             addElementInMultiMap(diagramToNewImageDependency, null, projectName);
                         });
                     }
@@ -158,7 +157,7 @@ public class UpdateImageDependenciesPreCommitListener extends ResourceSetListene
                     dRepElement = (DRepresentationElement) notifierEObject;
                     DRepresentation representation = SiriusUtil.findRepresentation(dRepElement);
                     String workspacePath = getWorkspacePath(oldValueEObject);
-                    Optional<String> projectName = SessionDetailsReport.getProjectFromImagePath(workspacePath);
+                    Optional<String> projectName = imageDependenciesAnnotationHelper.getProjectFromImagePath(workspacePath);
                     if (representation != null && !projectName.isEmpty()) {
                         addElementInMultiMap(diagramToOldImageDependency, representation, projectName.get());
                     }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2022, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -24,7 +24,9 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -33,8 +35,9 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.image.ImageManager;
 import org.eclipse.sirius.business.api.image.RichTextAttributeRegistry;
-import org.eclipse.sirius.business.internal.query.SessionDetailsReport;
+import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
+import org.eclipse.sirius.common.tools.api.resource.FileProvider;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -257,7 +260,7 @@ public final class ImageDependenciesAnnotationHelper {
                 Matcher matcher = pattern.matcher(htmlText);
                 while (matcher.find()) {
                     String imagePath = matcher.group(1);
-                    SessionDetailsReport.getProjectFromImagePath(imagePath).ifPresent(projectName -> {
+                    this.getProjectFromImagePath(imagePath).ifPresent(projectName -> {
                         addProjectDependency(diagramToNewImageDependency, null, projectName);
                     });
                 }
@@ -284,7 +287,7 @@ public final class ImageDependenciesAnnotationHelper {
                     EStructuralFeature feature = object.eClass().getEStructuralFeature("workspacePath"); //$NON-NLS-1$
                     Object imagePath = object.eGet(feature);
                     if (imagePath instanceof String) {
-                        SessionDetailsReport.getProjectFromImagePath((String) imagePath).ifPresent(projectName -> {
+                        this.getProjectFromImagePath((String) imagePath).ifPresent(projectName -> {
                             addProjectDependency(diagramToNewImageDependency, representation, projectName);
                         });
                     }
@@ -357,5 +360,30 @@ public final class ImageDependenciesAnnotationHelper {
      */
     public boolean isWorkspaceImageInstance(Object object) {
         return object instanceof EObject && ((EObject) object).eClass().getName().equals(ImageDependenciesAnnotationHelper.WORKSPACE_IMAGE_CLASS_NAME);
+    }
+
+    /**
+     * Used to get the project name from the workspacePath of a WorkspaceImage.
+     * 
+     * @param imagePath
+     *            the path of the image
+     * @return the name of the project containing the image
+     */
+    public Optional<String> getProjectFromImagePath(String imagePath) {
+        boolean exists = FileProvider.getDefault().exists(new Path(imagePath), session);
+        String projectName = null;
+        if (exists) {
+            URI uri = URI.createURI(imagePath);
+            String cdoPrefix = URIQuery.CDO_URI_SCHEME + ":/"; //$NON-NLS-1$
+            if ((uri.scheme() == null || imagePath.startsWith(cdoPrefix)) && !imagePath.startsWith("/")) { //$NON-NLS-1$
+                String path = imagePath.startsWith(cdoPrefix) ? imagePath.substring(cdoPrefix.length()) : imagePath;
+
+                String[] split = path.split("/"); //$NON-NLS-1$
+                if (split.length > 0) {
+                    projectName = split[0];
+                }
+            }
+        }
+        return Optional.ofNullable(projectName);
     }
 }

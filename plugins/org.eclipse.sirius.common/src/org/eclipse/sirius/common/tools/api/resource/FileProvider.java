@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005, 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2005, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -121,15 +121,19 @@ public class FileProvider {
      * 
      * @param fullPath
      *            is the full path of the file
+     * @param context
+     *            the context object that may be used as resource locator. It can be the session or other object that
+     *            IFileGetter implement can manage.<br/>
+     *            If null, the resource can be found in the workspace or in the plugin but not in other locations.
      * @return the file
      */
-    public boolean exists(final IPath fullPath) {
+    public boolean exists(final IPath fullPath, Object context) {
         boolean exists = false;
         if (fullPath != null && fullPath.segmentCount() > 0) {
 
             // If the path contains a specific URI
             for (IFileGetter getter : fileGetters) {
-                Optional<Boolean> existsOptional = getter.exists(fullPath);
+                Optional<Boolean> existsOptional = getter.exists(fullPath, context);
                 if (existsOptional.isPresent()) {
                     return existsOptional.get();
                 }
@@ -148,13 +152,28 @@ public class FileProvider {
      * @return the file
      */
     public File getFile(final IPath fullPath) {
+        return getFile(fullPath, null);
+    }
+
+    /**
+     * Gets the file for the given full path in the workspace or in the plugins.
+     * 
+     * @param fullPath
+     *            is the full path of the file
+     * @param context
+     *            the context object that may be used as resource locator. It can be the session or other object that
+     *            IFileGetter implement can manage.<br/>
+     *            If null, the resource can be found in the workspace or in the plugin but not in other locations.
+     * @return the file
+     */
+    public File getFile(final IPath fullPath, Object session) {
         File file = null;
 
         if (fullPath != null && fullPath.segmentCount() > 0) {
 
             // Step 1 : if path contains a specific URI
             for (IFileGetter getter : fileGetters) {
-                file = getter.getFile(fullPath);
+                file = getter.getFile(fullPath, session);
                 if (file != null) {
                     break;
                 }

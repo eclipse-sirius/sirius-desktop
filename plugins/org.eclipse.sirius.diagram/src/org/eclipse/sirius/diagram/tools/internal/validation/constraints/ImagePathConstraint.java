@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2022, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -33,6 +33,7 @@ import org.eclipse.sirius.business.api.image.ImageManager;
 import org.eclipse.sirius.business.api.image.RichTextAttributeRegistry;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.resource.FileProvider;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DiagramPackage;
@@ -108,7 +109,7 @@ public class ImagePathConstraint extends AbstractConstraint {
         String workspacePath = workspaceImage.getWorkspacePath();
         // Ignore bundle image
         if (!workspacePath.startsWith("/")) { //$NON-NLS-1$
-            boolean exists = FileProvider.getDefault().exists(new Path(workspacePath));
+            boolean exists = FileProvider.getDefault().exists(new Path(workspacePath), Session.of(workspaceImage).get());
             if (!exists) {
                 EObject eContainer = workspaceImage.eContainer();
                 String repDescName = ""; //$NON-NLS-1$
@@ -164,7 +165,7 @@ public class ImagePathConstraint extends AbstractConstraint {
         while (matcher.find()) {
             if (matcher.groupCount() == 1) {
                 String path = matcher.group(1);
-                boolean exists = FileProvider.getDefault().exists(new Path(path));
+                boolean exists = FileProvider.getDefault().exists(new Path(path), Session.of(eObject).get());
                 if (!exists && !alreadyCheckedPath.contains(path)) {
                     alreadyCheckedPath.add(path);
                     String message = MessageFormat.format(Messages.ImagePathConstraint_relativePathError, path, new EditingDomainServices().getLabelProviderText(eObject));
