@@ -32,6 +32,7 @@ h4. Changes in @org.eclipse.sirius@
 * <span class="label label-success">Added</span> @org.eclipse.sirius.business.api.refresh.RepresentationTimeStampInformationSupplierRegistry@ and @org.eclipse.sirius.business.api.refresh.RepresentationTimeStampInformationSupplier@ have been added. The first is the registry to register instance of the second that allows to tell when the DRepresentationDescriptor.changeId is updated or not. 
 * <span class="label label-success">Added</span>The class @org.eclipse.sirius.business.api.query.SiriusProjectDependencyQuery@ is added to get project
 dependencies from a given project.
+* <span class="label label-success">Added</span>The method @org.eclipse.sirius.business.api.session.Session.getSharedMainDAnalysis()@ is added to get the DAnalysis that holds data and can be shared in some context such as CDO.
 
 h4. Changes in @org.eclipse.sirius.diagram.ui@
 

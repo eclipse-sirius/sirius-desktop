@@ -121,7 +121,7 @@ public final class ImageDependenciesAnnotationHelper {
     public DAnnotationEntry getOrCreateImagesDependenciesAnnotationEntry() {
         DAnnotationEntry dAnnotationEntry = getImagesDependenciesAnnotationEntry().orElseGet(() -> {
             DAnnotationEntry annotationEntry = createImagesDependenciesDAnnotationEntry();
-            session.getMainAnalysis().getEAnnotations().add(annotationEntry);
+            session.getSharedMainDAnalysis().getEAnnotations().add(annotationEntry);
             return annotationEntry;
         });
         return dAnnotationEntry;
@@ -134,7 +134,7 @@ public final class ImageDependenciesAnnotationHelper {
      *         otherwise
      */
     public Optional<DAnnotationEntry> getImagesDependenciesAnnotationEntry() {
-        return getImagesDependenciesAnnotationEntry(session.getMainAnalysis());
+        return getImagesDependenciesAnnotationEntry(session.getSharedMainDAnalysis());
     }
 
     /**
@@ -157,7 +157,7 @@ public final class ImageDependenciesAnnotationHelper {
      * Remove the given {@link DAnnotationEntry} from the main {@link DAnalysis}.
      */
     private void removeMainDAnalysisDAnnotationEntry(DAnnotationEntry dAnnotationEntryToRemove) {
-        EList<DAnnotationEntry> sessionAnnotations = session.getMainAnalysis().getEAnnotations();
+        EList<DAnnotationEntry> sessionAnnotations = session.getSharedMainDAnalysis().getEAnnotations();
         sessionAnnotations.remove(dAnnotationEntryToRemove);
     }
 

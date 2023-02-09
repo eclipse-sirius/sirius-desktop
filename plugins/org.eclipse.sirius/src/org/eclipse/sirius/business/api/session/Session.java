@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,7 @@ import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener;
+import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
@@ -383,4 +384,15 @@ public interface Session {
      * @return the api.
      */
     SiriusPreferences getSiriusPreferences();
+
+    /**
+     * Return the root {@link DAnalysis} that is owned by the aird resource that hold the main content and is
+     * shared.<br/>
+     * <li>In Sirius context, this is the DAnalysis of {@code Session.getSessionResource()}</li>
+     * <li>In other context, this may be the DAnalysis of other aird resource that is shared to multiple users such as
+     * CDO repository</li>
+     * 
+     * @return the DAnalysis.
+     */
+    DAnalysis getSharedMainDAnalysis();
 }
