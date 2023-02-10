@@ -85,6 +85,10 @@ public class UpdateImageDependenciesPreCommitListener extends ResourceSetListene
      * otherwise, the newValue is used when the WorkspaceImage style is set.
      */
     public Command transactionAboutToCommit(ResourceSetChangeEvent event) throws RollbackException {
+        if (session == null || !session.isOpen()) {
+            return null;
+        }
+
         Map<DRepresentation, List<String>> diagramToNewImageDependency = new HashMap<>();
         Map<DRepresentation, List<String>> diagramToOldImageDependency = new HashMap<>();
         for (Notification notification : event.getNotifications()) {
@@ -165,12 +169,13 @@ public class UpdateImageDependenciesPreCommitListener extends ResourceSetListene
             }
         }
         RecordingCommandWithCustomUndo recordingCommand = new RecordingCommandWithCustomUndo(this.session.getTransactionalEditingDomain()) {
-
             @Override
             protected void doExecute() {
                 if (!diagramToNewImageDependency.isEmpty()) {
                     DAnnotationEntry imageDependenciesEntry = imageDependenciesAnnotationHelper.getOrCreateImagesDependenciesAnnotationEntry();
-                    imageDependenciesAnnotationHelper.addImageDependencyAnnotationDetails(diagramToNewImageDependency, imageDependenciesEntry);
+                    if (imageDependenciesEntry != null) {
+                        imageDependenciesAnnotationHelper.addImageDependencyAnnotationDetails(diagramToNewImageDependency, imageDependenciesEntry);
+                    }
                 }
                 if (!diagramToOldImageDependency.isEmpty()) {
                     imageDependenciesAnnotationHelper.removeImageDependencyAnnotationDetails(diagramToOldImageDependency);

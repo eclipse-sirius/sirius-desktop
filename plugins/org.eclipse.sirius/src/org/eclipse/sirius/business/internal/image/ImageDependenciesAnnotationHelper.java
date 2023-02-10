@@ -119,22 +119,17 @@ public final class ImageDependenciesAnnotationHelper {
      * @return the "Images Dependencies" DAnnotationEntry
      */
     public DAnnotationEntry getOrCreateImagesDependenciesAnnotationEntry() {
-        DAnnotationEntry dAnnotationEntry = getImagesDependenciesAnnotationEntry().orElseGet(() -> {
-            DAnnotationEntry annotationEntry = createImagesDependenciesDAnnotationEntry();
-            session.getSharedMainDAnalysis().getEAnnotations().add(annotationEntry);
-            return annotationEntry;
-        });
-        return dAnnotationEntry;
-    }
+        DAnnotationEntry dAnnotationEntry = null;
+        final Optional<DAnalysis> sharedMainDAnalysis = session.getSharedMainDAnalysis();
+        if (sharedMainDAnalysis.isPresent()) {
+            dAnnotationEntry = getImagesDependenciesAnnotationEntry(sharedMainDAnalysis.get()).orElseGet(() -> {
+                DAnnotationEntry annotationEntry = createImagesDependenciesDAnnotationEntry();
+                sharedMainDAnalysis.get().getEAnnotations().add(annotationEntry);
+                return annotationEntry;
+            });
 
-    /**
-     * Get the "Images Dependencies" DAnnotationEntry.
-     * 
-     * @return the "Images Dependencies" DAnnotationEntry in Optional container if it exists; an empty Optional instance
-     *         otherwise
-     */
-    public Optional<DAnnotationEntry> getImagesDependenciesAnnotationEntry() {
-        return getImagesDependenciesAnnotationEntry(session.getSharedMainDAnalysis());
+        }
+        return dAnnotationEntry;
     }
 
     /**
@@ -157,8 +152,11 @@ public final class ImageDependenciesAnnotationHelper {
      * Remove the given {@link DAnnotationEntry} from the main {@link DAnalysis}.
      */
     private void removeMainDAnalysisDAnnotationEntry(DAnnotationEntry dAnnotationEntryToRemove) {
-        EList<DAnnotationEntry> sessionAnnotations = session.getSharedMainDAnalysis().getEAnnotations();
-        sessionAnnotations.remove(dAnnotationEntryToRemove);
+        Optional<DAnalysis> sharedMainDAnalysis = session.getSharedMainDAnalysis();
+        if (sharedMainDAnalysis.isPresent()) {
+            EList<DAnnotationEntry> sessionAnnotations = sharedMainDAnalysis.get().getEAnnotations();
+            sessionAnnotations.remove(dAnnotationEntryToRemove);
+        }
     }
 
     /**
@@ -224,6 +222,11 @@ public final class ImageDependenciesAnnotationHelper {
     public void updateAllImageProjectsDependencies() {
 
         DAnnotationEntry imageDependenciesEntry = this.getOrCreateImagesDependenciesAnnotationEntry();
+
+        if (imageDependenciesEntry == null) {
+            return;
+        }
+
         imageDependenciesEntry.getDetails().clear();
 
         Map<DRepresentation, List<String>> diagramToImageProjectDependencies = new HashMap<>();
@@ -319,6 +322,9 @@ public final class ImageDependenciesAnnotationHelper {
      */
     public void removeImageDependencyAnnotationDetails(Map<DRepresentation, List<String>> diagramToOldImageDependency) {
         DAnnotationEntry imageDependenciesEntry = getOrCreateImagesDependenciesAnnotationEntry();
+        if (imageDependenciesEntry == null) {
+            return;
+        }
 
         diagramToOldImageDependency.entrySet().stream().forEach(entry -> {
             DRepresentation dRepresentation = entry.getKey();

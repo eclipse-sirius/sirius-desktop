@@ -392,7 +392,7 @@ public interface Session {
      * <li>In other context, this may be the DAnalysis of other aird resource that is shared to multiple users such as
      * CDO repository</li>
      * 
-     * @return the DAnalysis.
+     * @return an Optional of DAnalysis.
      */
-    DAnalysis getSharedMainDAnalysis();
+    Optional<DAnalysis> getSharedMainDAnalysis();
 }
