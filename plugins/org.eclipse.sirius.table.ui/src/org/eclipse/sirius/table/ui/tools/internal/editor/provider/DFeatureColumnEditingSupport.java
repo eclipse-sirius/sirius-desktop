@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -55,12 +55,12 @@ import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.TextCellEditor;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.ViewerCell;
+import org.eclipse.sirius.business.api.logger.InterpretationContext;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
-import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
@@ -84,7 +84,6 @@ import org.eclipse.sirius.table.ui.tools.internal.editor.AbstractDTableEditor;
 import org.eclipse.sirius.table.ui.tools.internal.editor.DTableTreeViewer;
 import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.tools.api.interpreter.IInterpreterMessages;
-import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
@@ -153,15 +152,30 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
             if (optCell.some()) {
                 DCell cell = optCell.get();
                 CellUpdater updater = cell.getUpdater();
-                if (updater != null && updater.getCanEdit() != null && updater.getCanEdit().length() > 0) {
-                    final IInterpreter interpreter = InterpreterUtil.getInterpreter(cell.getTarget());
-                    try {
-                        canEdit = interpreter.evaluateBoolean(cell.getTarget(), updater.getCanEdit());
-                    } catch (final EvaluationException e) {
-                        RuntimeLoggerManager.INSTANCE.error(updater, DescriptionPackage.eINSTANCE.getCellUpdater_CanEdit(), e);
-                    }
+                if (updater != null && updater.getCanEdit() != null && !updater.getCanEdit().isEmpty()) {
+
+                    canEdit = InterpretationContext.with(cell.getTarget(), ctx -> {
+                        DTable table = TableHelper.getTable(line);
+                        
+                        ctx.setVariable(IInterpreterSiriusVariables.CONTAINER_VIEW, line);
+                        ctx.setVariable(IInterpreterSiriusTableVariables.LINE, line);                        
+                        ctx.setVariable(IInterpreterSiriusVariables.CONTAINER, line.getTarget());
+                        ctx.setVariable(IInterpreterSiriusTableVariables.LINE_SEMANTIC, line.getTarget());
+                        // For DFeatureColumn, no semantic for columns.
+                        ctx.setVariable(IInterpreterSiriusVariables.VIEWPOINT, table);
+                        ctx.setVariable(IInterpreterSiriusVariables.TABLE, table);
+                        
+                        ctx.setVariable(IInterpreterSiriusVariables.ELEMENT, cell.getTarget());
+                        
+                        return ctx.getInterpreter().evaluateBoolean(cell.getTarget(), updater, 
+                                DescriptionPackage.eINSTANCE.getCellUpdater_CanEdit());
+                    });
+                    
+
                 }
-                result = canEdit && getAuthority().canEditFeature(cell.getTarget(), getFeatureName()) && getAuthority().canEditInstance(line);
+                result = canEdit 
+                        && getAuthority().canEditFeature(cell.getTarget(), getFeatureName()) 
+                        && getAuthority().canEditInstance(line);
             }
         }
         return result;
@@ -595,11 +609,13 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
     }
 
     /**
+     * Finds the index of enum literal in an Enum.
+     * 
      * @param enumeration
      *            the enum in which search
      * @param literal
      *            the searched literal
-     * @return
+     * @return index of literal or -1
      */
     private int getIndex(final EEnum enumeration, final String literal) {
         int result = -1;
