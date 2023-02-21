@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -22,13 +22,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
@@ -43,6 +43,7 @@ import org.eclipse.sirius.ui.business.api.editor.ISiriusEditor;
 import org.eclipse.sirius.ui.business.api.session.EditingSessionEvent;
 import org.eclipse.sirius.ui.business.api.session.EditorNameAdapter;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
+import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.sirius.ui.business.internal.dialect.editor.DialectEditorCloser;
 import org.eclipse.sirius.ui.tools.internal.util.SessionCallBackWithUI;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -452,8 +453,10 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
                     try {
                         final IEditorInput input = editor.getEditorInput();
                         final IEditorPart editorPart = editor.getEditor(false);
-                        if (editorPart == null && input instanceof URIEditorInput) {
-                            if (shouldCloseEditor((URIEditorInput) input)) {
+                        if (isEditorAdaptableToSession(input)) {
+                            editorsToClose.add(editor);
+                        } else if (editorPart == null && input instanceof URIEditorInput) {
+                            if (isInputAssociatedToClosingSession((URIEditorInput) input)) {
                                 editorsToClose.add(editor);
                             }
                         }
@@ -469,15 +472,26 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
             }
         }
 
-        private boolean shouldCloseEditor(URIEditorInput input) {
-            if (session instanceof DAnalysisSession) {
-                for (final Resource resource : ((DAnalysisSession) session).getAllSessionResources()) {
-                    if (resource.getURI() != null && resource.getURI().equals(input.getURI().trimFragment())) {
-                        return true;
-                    }
-                }
+        private boolean isEditorAdaptableToSession(IEditorInput input) {
+            if (input != null) {
+                Session adaptedSession = input.getAdapter(Session.class);
+                return session == adaptedSession;
             }
             return false;
+        }
+
+        private boolean isInputAssociatedToClosingSession(URIEditorInput input) {
+            boolean isInputAssociatedToClosingSession = false;
+            if (input instanceof SessionEditorInput) {
+                isInputAssociatedToClosingSession = ((SessionEditorInput) input).getSession(false) == session;
+            } else if (session instanceof DAnalysisSession) {
+                isInputAssociatedToClosingSession = Stream.concat(session.getAllSessionResources().stream(), session.getSrmResources().stream())//
+                        .filter(resource -> {
+                            return resource.getURI() != null && resource.getURI().equals(input.getURI().trimFragment());
+                        }).findFirst()//
+                        .isPresent();
+            }
+            return isInputAssociatedToClosingSession;
         }
     }
 
