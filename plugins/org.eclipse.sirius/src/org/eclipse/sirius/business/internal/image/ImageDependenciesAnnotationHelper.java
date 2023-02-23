@@ -36,6 +36,7 @@ import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.image.ImageManager;
 import org.eclipse.sirius.business.api.image.RichTextAttributeRegistry;
 import org.eclipse.sirius.business.api.query.URIQuery;
+import org.eclipse.sirius.business.internal.query.SiriusSessionQuery;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.common.tools.api.resource.FileProvider;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
@@ -85,6 +86,8 @@ public final class ImageDependenciesAnnotationHelper {
 
     private DAnalysisSessionImpl session;
 
+    private String currentProjectName;
+
     /**
      * Default constructor.
      * 
@@ -114,22 +117,27 @@ public final class ImageDependenciesAnnotationHelper {
     }
 
     /**
-     * Get the "Images Dependencies" DAnnotationEntry or create it if not found.
+     * Get the "Images Dependencies" DAnnotationEntry or create it if not found.<br/>
+     * It does not change the session model.
+     * 
+     * @param createIfNotPresent
      * 
      * @return the "Images Dependencies" DAnnotationEntry
      */
-    public DAnnotationEntry getOrCreateImagesDependenciesAnnotationEntry() {
+    private DAnnotationEntry getOrCreateImagesDependenciesAnnotationEntry() {
         DAnnotationEntry dAnnotationEntry = null;
         final Optional<DAnalysis> sharedMainDAnalysis = session.getSharedMainDAnalysis();
         if (sharedMainDAnalysis.isPresent()) {
             dAnnotationEntry = getImagesDependenciesAnnotationEntry(sharedMainDAnalysis.get()).orElseGet(() -> {
                 DAnnotationEntry annotationEntry = createImagesDependenciesDAnnotationEntry();
-                sharedMainDAnalysis.get().getEAnnotations().add(annotationEntry);
                 return annotationEntry;
             });
-
         }
         return dAnnotationEntry;
+    }
+
+    private boolean hasImageDependenciesAnnotationEntry() {
+        return session.getSharedMainDAnalysis().flatMap(dAnalysis -> getImagesDependenciesAnnotationEntry(dAnalysis)).isPresent();
     }
 
     /**
@@ -151,11 +159,13 @@ public final class ImageDependenciesAnnotationHelper {
     /**
      * Remove the given {@link DAnnotationEntry} from the main {@link DAnalysis}.
      */
-    private void removeMainDAnalysisDAnnotationEntry(DAnnotationEntry dAnnotationEntryToRemove) {
-        Optional<DAnalysis> sharedMainDAnalysis = session.getSharedMainDAnalysis();
-        if (sharedMainDAnalysis.isPresent()) {
-            EList<DAnnotationEntry> sessionAnnotations = sharedMainDAnalysis.get().getEAnnotations();
-            sessionAnnotations.remove(dAnnotationEntryToRemove);
+    private void removeMainDAnalysisDAnnotationEntry() {
+        if (hasImageDependenciesAnnotationEntry()) {
+            Optional<DAnalysis> sharedMainDAnalysis = session.getSharedMainDAnalysis();
+            if (sharedMainDAnalysis.isPresent()) {
+                EList<DAnnotationEntry> sessionAnnotations = sharedMainDAnalysis.get().getEAnnotations();
+                sessionAnnotations.remove(getOrCreateImagesDependenciesAnnotationEntry());
+            }
         }
     }
 
@@ -220,20 +230,16 @@ public final class ImageDependenciesAnnotationHelper {
      * Find all image dependencies in diagrams and in rich text and return the list of project in dependencies.
      */
     public void updateAllImageProjectsDependencies() {
-
-        DAnnotationEntry imageDependenciesEntry = this.getOrCreateImagesDependenciesAnnotationEntry();
-
-        if (imageDependenciesEntry == null) {
-            return;
+        // Do not remove DAnnotationEntry until it is necessary to avoid potential differences with Diff/merge
+        if (hasImageDependenciesAnnotationEntry()) {
+            getOrCreateImagesDependenciesAnnotationEntry().getDetails().clear();
         }
-
-        imageDependenciesEntry.getDetails().clear();
 
         Map<DRepresentation, List<String>> diagramToImageProjectDependencies = new HashMap<>();
         findImagePathInRichTextDescription(diagramToImageProjectDependencies);
         findImagePathInWorkspaceImage(diagramToImageProjectDependencies);
 
-        addImageDependencyAnnotationDetails(diagramToImageProjectDependencies, imageDependenciesEntry);
+        addImageDependencyAnnotationDetails(diagramToImageProjectDependencies);
     }
 
     private void findImagePathInRichTextDescription(Map<DRepresentation, List<String>> diagramToNewImageDependency) {
@@ -276,7 +282,9 @@ public final class ImageDependenciesAnnotationHelper {
         if (!projectNames.contains(projectName)) {
             projectNames.add(projectName);
         }
-        diagramToNewImageDependency.put(key, projectNames);
+        if (!projectNames.isEmpty()) {
+            diagramToNewImageDependency.put(key, projectNames);
+        }
     }
 
     private void findImagePathInWorkspaceImage(Map<DRepresentation, List<String>> diagramToNewImageDependency) {
@@ -300,29 +308,44 @@ public final class ImageDependenciesAnnotationHelper {
     }
 
     /**
-     * Fill details corresponding to projects dependencies.
+     * Fill details corresponding to projects dependencies.<br/>
+     * Note that :
+     * <li>dependency to current project is ignored.</li>
+     * <li>ImageDependency DAnnotation is removed if empty</li>
      */
-    public void addImageDependencyAnnotationDetails(Map<DRepresentation, List<String>> diagramToNewImageDependency, DAnnotationEntry imageDependenciesEntry) {
+    public void addImageDependencyAnnotationDetails(Map<DRepresentation, List<String>> diagramToNewImageDependency) {
+
+        DAnnotationEntry imageDependenciesEntry = getOrCreateImagesDependenciesAnnotationEntry();
 
         diagramToNewImageDependency.entrySet().stream().forEach(entry -> {
             DRepresentation dRepresentation = entry.getKey();
             List<String> projectNames = entry.getValue();
             for (String projectName : projectNames) {
-                String dRepresentationString = dRepresentation != null ? dRepresentation.getUid() : RICH_TEXT_KEY;
-                String optDetailsEntry = this.getDetailsForDiagramToImageDependencyEntry(imageDependenciesEntry, dRepresentationString, projectName);
-                if (optDetailsEntry.isEmpty()) {
-                    this.createDetailsForDAnnotationEntry(imageDependenciesEntry, dRepresentationString, projectName);
+                if (!getCurrentProjectName().equals(projectName)) {
+                    String dRepresentationString = dRepresentation != null ? dRepresentation.getUid() : RICH_TEXT_KEY;
+                    String optDetailsEntry = this.getDetailsForDiagramToImageDependencyEntry(imageDependenciesEntry, dRepresentationString, projectName);
+                    if (optDetailsEntry.isEmpty()) {
+                        this.createDetailsForDAnnotationEntry(imageDependenciesEntry, dRepresentationString, projectName);
+                    }
                 }
             }
         });
+
+        if (imageDependenciesEntry.getDetails().size() == 0) {
+            removeMainDAnalysisDAnnotationEntry();
+        } else if (!hasImageDependenciesAnnotationEntry()) {
+            final Optional<DAnalysis> sharedMainDAnalysis = session.getSharedMainDAnalysis();
+            if (sharedMainDAnalysis.isPresent()) {
+                sharedMainDAnalysis.get().getEAnnotations().add(imageDependenciesEntry);
+            }
+        }
     }
 
     /**
      * Remove details corresponding to unused projects in representation workspace image.
      */
     public void removeImageDependencyAnnotationDetails(Map<DRepresentation, List<String>> diagramToOldImageDependency) {
-        DAnnotationEntry imageDependenciesEntry = getOrCreateImagesDependenciesAnnotationEntry();
-        if (imageDependenciesEntry == null) {
+        if (!hasImageDependenciesAnnotationEntry()) {
             return;
         }
 
@@ -345,12 +368,13 @@ public final class ImageDependenciesAnnotationHelper {
                     }
                 }
             }
+            DAnnotationEntry imageDependenciesEntry = getOrCreateImagesDependenciesAnnotationEntry();
             for (String projectName : notAlreadyExistingImageDependencyProjects) {
                 String detailsEntry = this.getDetailsForDiagramToImageDependencyEntry(imageDependenciesEntry, dRepresentation.getUid(), projectName);
                 if (!detailsEntry.isEmpty()) {
                     imageDependenciesEntry.getDetails().remove(detailsEntry);
                     if (imageDependenciesEntry.getDetails().isEmpty()) {
-                        removeMainDAnalysisDAnnotationEntry(imageDependenciesEntry);
+                        removeMainDAnalysisDAnnotationEntry();
                     }
                 }
             }
@@ -390,6 +414,16 @@ public final class ImageDependenciesAnnotationHelper {
                 }
             }
         }
-        return Optional.ofNullable(projectName);
+        return Optional.ofNullable(URI.decode(projectName));
+    }
+
+    /**
+     * Get the project Name.
+     */
+    public String getCurrentProjectName() {
+        if (currentProjectName == null) {
+            this.currentProjectName = new SiriusSessionQuery(session).getSharedProjectName();
+        }
+        return currentProjectName;
     }
 }

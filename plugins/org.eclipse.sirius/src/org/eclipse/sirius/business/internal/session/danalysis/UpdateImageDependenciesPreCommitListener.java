@@ -38,7 +38,6 @@ import org.eclipse.sirius.business.internal.image.ImageDependenciesAnnotationHel
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
-import org.eclipse.sirius.viewpoint.description.DAnnotationEntry;
 
 /**
  * A precommit listener that will update the images dependencies DAnnotationEntry for each new WorkspaceImage style
@@ -172,10 +171,7 @@ public class UpdateImageDependenciesPreCommitListener extends ResourceSetListene
             @Override
             protected void doExecute() {
                 if (!diagramToNewImageDependency.isEmpty()) {
-                    DAnnotationEntry imageDependenciesEntry = imageDependenciesAnnotationHelper.getOrCreateImagesDependenciesAnnotationEntry();
-                    if (imageDependenciesEntry != null) {
-                        imageDependenciesAnnotationHelper.addImageDependencyAnnotationDetails(diagramToNewImageDependency, imageDependenciesEntry);
-                    }
+                    imageDependenciesAnnotationHelper.addImageDependencyAnnotationDetails(diagramToNewImageDependency);
                 }
                 if (!diagramToOldImageDependency.isEmpty()) {
                     imageDependenciesAnnotationHelper.removeImageDependencyAnnotationDetails(diagramToOldImageDependency);

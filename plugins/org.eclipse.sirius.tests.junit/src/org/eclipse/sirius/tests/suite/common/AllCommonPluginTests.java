@@ -56,6 +56,7 @@ import org.eclipse.sirius.tests.unit.api.semantic.XSDSemanticResourceTests;
 import org.eclipse.sirius.tests.unit.api.session.DAnalysisSessionTests;
 import org.eclipse.sirius.tests.unit.api.session.ModelAccessorLifecycleTest;
 import org.eclipse.sirius.tests.unit.api.session.OpenSessionTest;
+import org.eclipse.sirius.tests.unit.api.session.ProjectDependenciesTest;
 import org.eclipse.sirius.tests.unit.api.session.ReloadSessionTest;
 import org.eclipse.sirius.tests.unit.api.session.ResourceVersionMismatchTest;
 import org.eclipse.sirius.tests.unit.api.session.SampleSessionTest;
@@ -370,6 +371,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(ModelingProjectDetectionTest.class);
         suite.addTestSuite(NotificationQueryTests.class);
         suite.addTestSuite(StylesInterpretedExpressionTest.class);
+        suite.addTestSuite(ProjectDependenciesTest.class);
     }
 
     /**

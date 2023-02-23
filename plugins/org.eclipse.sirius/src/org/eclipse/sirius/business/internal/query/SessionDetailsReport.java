@@ -430,6 +430,7 @@ public final class SessionDetailsReport {
     private void addImageProjectsDependencies(StringBuilder informations, SiriusProjectDependencies dependencies) {
         Set<String> imageProjectsDirectDependencies = new TreeSet<>(dependencies.getImageProjectsDirectDependencies());
         if (session != null) {
+            String sessionProjectName = new SiriusSessionQuery(session).getSharedProjectName();
             // if the session is opened we take the result directly from the DAnnotation instead of serialized
             // dependencies because it may have been modified without being saved.
             // @formatter:off
@@ -438,7 +439,7 @@ public final class SessionDetailsReport {
                     .filter(DAnalysis.class::isInstance)
                     .map(DAnalysis.class::cast)
                     .flatMap(dAnalysis -> ImageDependenciesAnnotationHelper.getAllImageProjectsDirectDependencies(dAnalysis).stream())
-                    .filter(projectName -> !projectName.equals(resourceAird.getProject().getName()))
+                    .filter(projectName -> !projectName.equals(sessionProjectName))
                     .collect(Collectors.toSet());
             // @formatter:on
             imageProjectsDirectDependencies = new TreeSet<>(imageProjectsDirectDependenciesSet);
