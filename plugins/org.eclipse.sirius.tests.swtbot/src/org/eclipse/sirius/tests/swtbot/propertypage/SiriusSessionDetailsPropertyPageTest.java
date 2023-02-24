@@ -147,9 +147,9 @@ public class SiriusSessionDetailsPropertyPageTest extends AbstractSiriusSwtBotGe
         strBuilder.append("\n");
         strBuilder.append("*** Dependencies\n");
         strBuilder.append("\n");
-        strBuilder.append("General projects dependencies(direct and transitive) (0)\n");
+        strBuilder.append("General projects dependencies (direct and transitive) (0)\n");
         strBuilder.append("\n");
-        strBuilder.append("Image projects dependencies(direct) (0)\n");
+        strBuilder.append("Image projects dependencies (direct) (0)\n");
         strBuilder.append("\n");
         strBuilder.append("*** Resources\n");
         strBuilder.append("\n");
