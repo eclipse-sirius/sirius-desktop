@@ -13,6 +13,8 @@
 package org.eclipse.sirius.business.internal.session.danalysis;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +22,8 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.Notification;
@@ -27,6 +31,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.RollbackException;
@@ -36,6 +41,7 @@ import org.eclipse.sirius.business.api.image.RichTextAttributeRegistry;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.image.ImageDependenciesAnnotationHelper;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 
@@ -49,7 +55,10 @@ import org.eclipse.sirius.viewpoint.DRepresentationElement;
  */
 public class UpdateImageDependenciesPreCommitListener extends ResourceSetListenerImpl {
 
-    private static final String OWNED_STYLE = ImageDependenciesAnnotationHelper.OWNED_STYLE_FEATURE_NAME;
+    /**
+     * The name of the ownedStyle feature for many DRepresentationElements (DNode, DNodeContainer, ...).
+     */
+    private static final String OWNED_STYLE_FEATURE_NAME = "ownedStyle"; //$NON-NLS-1$
 
     private final ImageDependenciesAnnotationHelper imageDependenciesAnnotationHelper;
 
@@ -90,7 +99,10 @@ public class UpdateImageDependenciesPreCommitListener extends ResourceSetListene
 
         Map<DRepresentation, List<String>> diagramToNewImageDependency = new HashMap<>();
         Map<DRepresentation, List<String>> diagramToOldImageDependency = new HashMap<>();
-        for (Notification notification : event.getNotifications()) {
+
+        List<Notification> notifications = filterNotifications(event.getNotifications());
+
+        for (Notification notification : notifications) {
             Object newValue = notification.getNewValue();
             Object oldValue = notification.getOldValue();
             Set<EAttribute> richTextAttributes = RichTextAttributeRegistry.INSTANCE.getEAttributes();
@@ -102,7 +114,7 @@ public class UpdateImageDependenciesPreCommitListener extends ResourceSetListene
             // case when the WorkspaceImage style is created
             if (imageDependenciesAnnotationHelper.isWorkspaceImageInstance(newValue)) {
                 EObject eContainer = ((EObject) newValue).eContainer();
-                if (eContainer instanceof DRepresentationElement && OWNED_STYLE.equals(featureName)) {
+                if (eContainer instanceof DRepresentationElement && OWNED_STYLE_FEATURE_NAME.equals(featureName)) {
                     dRepElement = (DRepresentationElement) eContainer;
                     DRepresentation representation = SiriusUtil.findRepresentation(dRepElement);
                     String workspacePath = getWorkspacePath((EObject) newValue);
@@ -156,7 +168,7 @@ public class UpdateImageDependenciesPreCommitListener extends ResourceSetListene
                 EObject notifierEObject = (EObject) notification.getNotifier();
                 EObject oldValueEObject = (EObject) oldValue;
                 // Set ownedStyle, reset style properties to default values
-                if (notifierEObject instanceof DRepresentationElement && OWNED_STYLE.equals(featureName)) {
+                if (notifierEObject instanceof DRepresentationElement && OWNED_STYLE_FEATURE_NAME.equals(featureName)) {
                     dRepElement = (DRepresentationElement) notifierEObject;
                     DRepresentation representation = SiriusUtil.findRepresentation(dRepElement);
                     String workspacePath = getWorkspacePath(oldValueEObject);
@@ -179,6 +191,63 @@ public class UpdateImageDependenciesPreCommitListener extends ResourceSetListene
             }
         };
         return recordingCommand;
+    }
+
+    /**
+     * Filter the notifications to keep.
+     */
+    private List<Notification> filterNotifications(List<Notification> notifications) {
+        Set<EAttribute> richTextAttributes = RichTextAttributeRegistry.INSTANCE.getEAttributes();
+        List<Notification> filteredNotifications = notifications.stream()//
+                // first, it checks the feature so that isNotifRelatedToSessionResource is called the less as possible
+                .filter(notif -> notif.getNotifier() instanceof EObject)//
+                .filter(notif -> {
+                    Object feature = notif.getFeature();
+                    boolean keepNotif = richTextAttributes.contains(feature);
+                    if (!keepNotif && feature instanceof EStructuralFeature) {
+                        String featureName = ((ENamedElement) feature).getName();
+                        keepNotif = OWNED_STYLE_FEATURE_NAME.equals(featureName);
+                        keepNotif = keepNotif || ImageDependenciesAnnotationHelper.WORKSPACE_PATH_FEATURE_NAME.equals(featureName);
+                    }
+                    return keepNotif;
+                })//
+                .collect(Collectors.toList());
+        if (!filteredNotifications.isEmpty()) {
+            filteredNotifications = filterNotifRelatedToSessionResource(filteredNotifications);
+        }
+        return filteredNotifications;
+    }
+
+    /**
+     * This method keeps the notifications coming from an EObject that is not considered as a resource (semantic or not)
+     * of the Session.<br/>
+     * The use case is using diff/merge. If Project1 has an opened Session, if diff/merge between P1 and P2, the change
+     * done in P2 will be notified in PreCommit listeners of the P1 Session.<br/>
+     * It is ugly. Diff/merge should put P2 resources in a dedicated ResourceSet but for now the workaround to ignore
+     * that notification is done in Sirius.
+     */
+    private List<Notification> filterNotifRelatedToSessionResource(List<Notification> notifications) {
+        Collection<Resource> semanticResources = session.getSemanticResources();
+        Collection<Resource> controlledResources = Collections.emptyList();
+        if (session instanceof DAnalysisSessionEObject) {
+            controlledResources = ((DAnalysisSessionEObject) session).getControlledResources();
+        }
+        Set<Resource> allSessionResources = session.getAllSessionResources();
+        Collection<Resource> srmResources = session.getSrmResources();
+        List<Resource> allResourcesAssociatedToTheSession = Stream.concat(Stream.concat(semanticResources.stream(), controlledResources.stream())//
+                , Stream.concat(srmResources.stream(), allSessionResources.stream())).collect(Collectors.toList());
+
+        List<Notification> filteredNotifications = notifications.stream()//
+                .filter(notification -> {
+                    Object notifier = notification.getNotifier();
+                    if (notifier instanceof EObject) {
+                        Resource eResource = ((EObject) notifier).eResource();
+                        return allResourcesAssociatedToTheSession.contains(eResource);
+                    }
+                    return false;
+                })//
+                .collect(Collectors.toList());
+        return filteredNotifications;
     }
 
     /**

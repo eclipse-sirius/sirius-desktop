@@ -2,7 +2,7 @@
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
   <viewpoint:DAnalysis uid="__NNR0HcGEe2Wh71muoLWJQ" selectedViews="_MTqLcHebEe2Wh71muoLWJQ" version="15.1.0.202211301600">
     <semanticResources>My2.ecore</semanticResources>
-    <semanticResources>platform:/resource/project3 Ecore/My3.ecore</semanticResources>
+    <semanticResources>platform:/resource/project3%20Ecore/My3.ecore</semanticResources>
     <eAnnotations xmi:type="description:DAnnotationEntry" uid="_Pkm-0HebEe2Wh71muoLWJQ" source="ImagesDependencies">
       <details>_MU790HebEe2Wh71muoLWJQ:project2 Ecore</details>
     </eAnnotations>
@@ -14,7 +14,7 @@
       </ownedRepresentationDescriptors>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_MV8DYXebEe2Wh71muoLWJQ" name=" package entities" repPath="#_MV7cUHebEe2Wh71muoLWJQ" changeId="1670574395054">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
-        <target xmi:type="ecore:EPackage" href="platform:/resource/project3 Ecore/My3.ecore#/"/>
+        <target xmi:type="ecore:EPackage" href="platform:/resource/project3%20Ecore/My3.ecore#/"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
   </viewpoint:DAnalysis>
@@ -64,6 +64,6 @@
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_MV8DYHebEe2Wh71muoLWJQ"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer"/>
     <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Package']"/>
-    <target xmi:type="ecore:EPackage" href="platform:/resource/project3 Ecore/My3.ecore#/"/>
+    <target xmi:type="ecore:EPackage" href="platform:/resource/project3%20Ecore/My3.ecore#/"/>
   </diagram:DSemanticDiagram>
 </xmi:XMI>

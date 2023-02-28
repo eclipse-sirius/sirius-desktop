@@ -77,11 +77,6 @@ public final class ImageDependenciesAnnotationHelper {
      */
     public static final String WORKSPACE_PATH_FEATURE_NAME = "workspacePath"; //$NON-NLS-1$
 
-    /**
-     * The name of the ownedStyle feature for many DRepresentationElements (DNode, DNodeContainer, ...).
-     */
-    public static final String OWNED_STYLE_FEATURE_NAME = "ownedStyle"; //$NON-NLS-1$
-
     private static final String RICH_TEXT_KEY = "RichText"; //$NON-NLS-1$
 
     private DAnalysisSessionImpl session;
