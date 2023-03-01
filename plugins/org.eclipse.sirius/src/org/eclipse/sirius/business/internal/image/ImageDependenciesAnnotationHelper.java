@@ -395,6 +395,9 @@ public final class ImageDependenciesAnnotationHelper {
      * @return the name of the project containing the image
      */
     public Optional<String> getProjectFromImagePath(String imagePath) {
+        if (imagePath == null || imagePath.isBlank()) {
+            return Optional.empty();
+        }
         boolean exists = FileProvider.getDefault().exists(new Path(imagePath), session);
         String projectName = null;
         if (exists) {
