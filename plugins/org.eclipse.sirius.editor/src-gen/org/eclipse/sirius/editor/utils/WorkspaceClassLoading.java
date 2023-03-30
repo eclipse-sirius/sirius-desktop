@@ -13,8 +13,7 @@
 package org.eclipse.sirius.editor.utils;
 
 import java.io.File;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -546,22 +545,9 @@ public class WorkspaceClassLoading extends BundleClassLoading {
     }
 
     private void closeClassLoader(URLClassLoader old) {
-        /*
-         * we invoke the "URLClassLoader.close()" method reflectively as it has only been introduced with Java 7.
-         */
         try {
-            Method closeMethod = URLClassLoader.class.getMethod("close", new Class<?>[0]);
-            closeMethod.invoke(old, new Object[0]);
-        } catch (NoSuchMethodException e) {
-            /*
-             * Java pre-7
-             */
-        } catch (IllegalAccessException e) {
-        } catch (IllegalArgumentException e) {
-        } catch (InvocationTargetException e) {
-            /*
-             * the close() call triggered an exception
-             */
+            old.close();
+        } catch (IllegalArgumentException | IOException e) {
             SiriusEditorPlugin.INSTANCE.log(e.getCause());
         }
     }
