@@ -725,7 +725,10 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         Command connectionCompleteCommand = null;
 
         if (new RequestQuery(request).isNoteAttachmentCreationRequest()) {
-            connectionCompleteCommand = super.getConnectionCompleteCommand(request);
+            // Check if at least source or target is a Note or a Text
+            if (new RequestQuery(request).hasNoteOrTextAsExtremity()) {
+                connectionCompleteCommand = super.getConnectionCompleteCommand(request);
+            }
         } else {
             connectionCompleteCommand = buildSiriusConnectionCreationCmd(request);
         }

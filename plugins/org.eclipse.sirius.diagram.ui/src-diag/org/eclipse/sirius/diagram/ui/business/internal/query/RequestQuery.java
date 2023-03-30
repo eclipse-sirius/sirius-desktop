@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -359,6 +359,22 @@ public class RequestQuery {
             isConcerningBorderNode = !getEditParts().isEmpty() && Iterables.all(getEditParts(), Predicates.instanceOf(IBorderItemEditPart.class));
         }
         return isConcerningBorderNode;
+    }
+
+    /**
+     * Checks if at least the source or the target is a Note or Text.</BR>
+     * The method {@link #isNoteAttachmentCreationRequest()} must be verify before calling this method.
+     * 
+     * @return true if the current {@link Request} request has a Note or Text for one of its extremity
+     */
+    public boolean hasNoteOrTextAsExtremity() {
+        boolean hasNoteOrTextAsExtremity = false;
+        if (request instanceof CreateConnectionViewRequest) {
+            CreateConnectionViewRequest cvr = (CreateConnectionViewRequest) request;
+            hasNoteOrTextAsExtremity = cvr.getSourceEditPart() instanceof NoteEditPart || cvr.getTargetEditPart() instanceof NoteEditPart || cvr.getSourceEditPart() instanceof TextEditPart
+                    || cvr.getTargetEditPart() instanceof TextEditPart;
+        }
+        return hasNoteOrTextAsExtremity;
     }
 
 }
