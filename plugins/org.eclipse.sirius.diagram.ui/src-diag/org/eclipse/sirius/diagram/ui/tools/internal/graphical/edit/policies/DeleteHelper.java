@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -132,13 +132,15 @@ public final class DeleteHelper {
         public void execute() throws MetaClassNotFoundException, FeatureNotFoundException {
             Set<View> allViewsToDelete = new HashSet<>();
 
-            allContentsViewsToDelete(view, allViewsToDelete);
+            completeViewsToDelete(view, allViewsToDelete);
+            // Go through all children to detect Notes linked to nodes children
             final Iterator<View> allContents = Iterators.filter(view.eAllContents(), View.class);
             while (allContents.hasNext()) {
                 final Object next = allContents.next();
-                allContentsViewsToDelete((View) next, allViewsToDelete);
+                completeViewsToDelete((View) next, allViewsToDelete);
             }
 
+            // Delete all detected views
             for (final View v : allViewsToDelete) {
                 EcoreUtil.remove(v);
             }
@@ -154,14 +156,22 @@ public final class DeleteHelper {
             return Messages.DeleteRelatedNotesTask_label;
         }
 
+        /**
+         * Get all elements linked to the {@link View} <code>viewToDelete</code> through a note attachment (except in
+         * case of several elements linked to a Note).
+         * 
+         * @param viewToDelete
+         *            The view to delete
+         * @return all elements linked to the {@link View} <code>viewToDelete</code> through a note attachment.
+         */
         private Set<View> getAllRelatedNotesToDelete(View viewToDelete) {
             Set<View> linkedViews = new HashSet<>();
 
             for (Edge sourceEdge : Iterables.filter(viewToDelete.getSourceEdges(), Edge.class)) {
-                View target = sourceEdge.getTarget();
                 if (GMFNotationHelper.isNoteAttachment(sourceEdge)) {
                     Set<View> linked = new HashSet<>();
                     linked.add(viewToDelete);
+                    View target = sourceEdge.getTarget();
                     collectLinkedViews(target, linked);
                     linked.remove(viewToDelete);
 
@@ -171,10 +181,10 @@ public final class DeleteHelper {
             }
 
             for (Edge targetEdge : Iterables.filter(viewToDelete.getTargetEdges(), Edge.class)) {
-                View source = targetEdge.getSource();
                 if (GMFNotationHelper.isNoteAttachment(targetEdge)) {
                     Set<View> linked = new HashSet<>();
                     linked.add(viewToDelete);
+                    View source = targetEdge.getSource();
                     collectLinkedViews(source, linked);
                     linked.remove(viewToDelete);
 
@@ -216,6 +226,15 @@ public final class DeleteHelper {
             return linkedView instanceof Node && GMFNotationHelper.isNote((Node) linkedView);
         }
 
+        /**
+         * Add all elements linked to the {@link View} <code>v</code> through a note attachment into
+         * <code>linkedViews</code> list.
+         * 
+         * @param v
+         *            The starting view
+         * @param linkedViews
+         *            All views linked to <code>v</code> through a note attachment
+         */
         private void collectLinkedViews(final View v, Set<View> linkedViews) {
             linkedViews.add(v);
             for (Edge sourceEdge : Iterables.filter(v.getSourceEdges(), Edge.class)) {
@@ -241,14 +260,27 @@ public final class DeleteHelper {
             }
         }
 
+        /**
+         * Add notes and note attachments linked to the {@link View} <code>viewToDelete</code> into
+         * <code>linkedViews</code> list.
+         * 
+         * @param viewToDelete
+         *            The view to delete
+         * @param allViewsToDelete
+         *            The list to amend
+         */
         @SuppressWarnings("unchecked")
-        private void allContentsViewsToDelete(View viewToDelete, Set<View> allViewsToDelete) {
+        private void completeViewsToDelete(View viewToDelete, Set<View> allViewsToDelete) {
+            // Add notes linked to the viewToDelete
             allViewsToDelete.addAll(getAllRelatedNotesToDelete(viewToDelete));
 
             for (Edge edge : Iterables.filter(Iterables.concat(viewToDelete.getSourceEdges(), viewToDelete.getTargetEdges()), Edge.class)) {
                 if (GMFNotationHelper.isNoteAttachment(edge)) {
+                    // Add the Note Attachment itself to the list of views to delete
                     allViewsToDelete.add(edge);
                 }
+                // The edge can also have related Notes, so iterate over it.
+                completeViewsToDelete(edge, allViewsToDelete);
             }
         }
 
