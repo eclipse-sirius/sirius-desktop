@@ -30,13 +30,16 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditP
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusNoteEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusTextEditPart;
+import org.eclipse.sirius.diagram.ui.tools.internal.preferences.SiriusDiagramUiInternalPreferencesKeys;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
+import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 
 /**
@@ -138,7 +141,8 @@ public class NoteAttachmentTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Checks that Note attachments are deleted after an indirect edge "deletion".
+     * Checks that Note attachments are deleted on all cases of indirect "drag'n'drop" (node, edge, another note
+     * attachment). Before this fix, the behavior was not the same for edge and node.
      * 
      * @see "https://bugs.eclipse.org/bugs/show_bug.cgi?id=581751"
      */
@@ -156,6 +160,37 @@ public class NoteAttachmentTest extends AbstractSiriusSwtBotGefTestCase {
         // Check that a note attachments have been removed.
         for (String nameOfNoteToCheck : namesOfNotesToCheck) {
             checkNoteAttachmentEditPartFrom(nameOfNoteToCheck, 0);
+        }
+    }
+
+    /**
+     * Checks that Note is deleted on all cases of indirect "deletion" (node, edge, another note attachment). Before
+     * this fix, the behavior was not the same for edge and node.
+     * 
+     * @see "https://bugs.eclipse.org/bugs/show_bug.cgi?id=581752"
+     */
+    public void test_Note_deletion() {
+        List<String> namesOfNotesToCheck = Arrays.asList("NoteOnNode", "NoteOnEdge", "NoteOnNoteAttachment");
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "Entities", "ghostCase package entities", DDiagram.class);
+        changeDiagramUIPreference(SiriusDiagramUiInternalPreferencesKeys.PREF_REMOVE_HIDE_NOTE_WHEN_ANNOTED_ELEMENT_HIDDEN_OR_REMOVE.name(), true);
+        for (String nameOfNoteToCheck : namesOfNotesToCheck) {
+            checkNoteAttachmentEditPartFrom(nameOfNoteToCheck, 1);
+        }
+        // Select packageA
+        editor.select(editor.getEditPart("packageA", AbstractDiagramContainerEditPart.class));
+        bot.waitUntil(new CheckSelectedCondition(editor, "packageA", AbstractDiagramContainerEditPart.class));
+        // Delete it
+        deleteSelectedElement();
+        SWTBotUtils.waitAllUiEvents();
+
+        // Check that the note has been removed.
+        for (String nameOfNoteToCheck : namesOfNotesToCheck) {
+            try {
+                editor.getEditPart(nameOfNoteToCheck, SiriusNoteEditPart.class);
+                fail("The Note \"" + nameOfNoteToCheck + "\" should be deleted during the deletion of \"packageA\".");
+            } catch (WidgetNotFoundException e) {
+                // This is the expected behavior
+            }
         }
     }
 
