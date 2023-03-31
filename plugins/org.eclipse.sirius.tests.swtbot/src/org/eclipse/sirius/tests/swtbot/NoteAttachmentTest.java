@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -25,6 +26,7 @@ import org.eclipse.gmf.runtime.diagram.ui.internal.editparts.TextEditPart;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusNoteEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusTextEditPart;
@@ -54,7 +56,6 @@ public class NoteAttachmentTest extends AbstractSiriusSwtBotGefTestCase {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL_FILE, SESSION_FILE);
         sessionAirdResource = new UIResource(designerProject, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource, true);
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "Entities", " package entities", DDiagram.class);
     }
 
     /**
@@ -63,6 +64,7 @@ public class NoteAttachmentTest extends AbstractSiriusSwtBotGefTestCase {
      * @see "https://bugs.eclipse.org/bugs/show_bug.cgi?id=527391"
      */
     public void test_NoteAttachments_can_be_selected() {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "Entities", " package entities", DDiagram.class);
         List<NoteAttachmentEditPart> notes = editor.getConnectionsEditPart().stream().map(SWTBotGefConnectionEditPart::part).filter(NoteAttachmentEditPart.class::isInstance)
                 .map(NoteAttachmentEditPart.class::cast).collect(Collectors.toList());
         assertEquals("The test diagram should contain 2 note attachments", 2, notes.size());
@@ -99,6 +101,7 @@ public class NoteAttachmentTest extends AbstractSiriusSwtBotGefTestCase {
      * @see "https://bugs.eclipse.org/bugs/show_bug.cgi?id=581740"
      */
     public void test_NoteAttachmentCreation_betweenNodeAndNote() {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "Entities", " package entities", DDiagram.class);
         // Create the note attachment
         createNoteAttachment("NewEClass2", DNodeListEditPart.class, "A note", SiriusNoteEditPart.class);
 
@@ -112,6 +115,7 @@ public class NoteAttachmentTest extends AbstractSiriusSwtBotGefTestCase {
      * @see "https://bugs.eclipse.org/bugs/show_bug.cgi?id=581740"
      */
     public void test_NoteAttachmentCreation_betweenNodeAndText() {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "Entities", " package entities", DDiagram.class);
         // Create the note attachment
         createNoteAttachment("NewEClass2", DNodeListEditPart.class, "A text", SiriusTextEditPart.class);
 
@@ -125,11 +129,34 @@ public class NoteAttachmentTest extends AbstractSiriusSwtBotGefTestCase {
      * @see "https://bugs.eclipse.org/bugs/show_bug.cgi?id=581740"
      */
     public void test_NoteAttachmentCreation_betweenNodeAndNode() {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "Entities", " package entities", DDiagram.class);
         // Create the note attachment
         createNoteAttachment("NewEClass2", DNodeListEditPart.class, "A", DNodeListEditPart.class);
 
         // Check that a note attachment has been created.
         checkNoteAttachmentEditPartFrom("NewEClass2", 0);
+    }
+
+    /**
+     * Checks that Note attachments are deleted after an indirect edge "deletion".
+     * 
+     * @see "https://bugs.eclipse.org/bugs/show_bug.cgi?id=581751"
+     */
+    public void test_NoteAttachments_deletion() {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "Entities", "ghostCase package entities", DDiagram.class);
+        List<String> namesOfNotesToCheck = Arrays.asList("NoteOnNode", "NoteOnEdge", "NoteOnNoteAttachment");
+        for (String nameOfNoteToCheck : namesOfNotesToCheck) {
+            checkNoteAttachmentEditPartFrom(nameOfNoteToCheck, 1);
+        }
+        // Drag'n'drop packageA into packageB
+        SWTBotGefEditPart sourceSwtBotPart = editor.getEditPart("packageA", AbstractDiagramContainerEditPart.class);
+        SWTBotGefEditPart targetSwtBotPart = editor.getEditPart("packageB", AbstractDiagramContainerEditPart.class);
+        Point targetCenter = ((IGraphicalEditPart) targetSwtBotPart.part()).getFigure().getBounds().getCenter();
+        editor.drag(sourceSwtBotPart, targetCenter);
+        // Check that a note attachments have been removed.
+        for (String nameOfNoteToCheck : namesOfNotesToCheck) {
+            checkNoteAttachmentEditPartFrom(nameOfNoteToCheck, 0);
+        }
     }
 
     private void createNoteAttachment(String sourceName, Class<? extends EditPart> expectedSourceClass, String targetName, Class<? extends EditPart> expectedTargetClass) {
@@ -146,7 +173,7 @@ public class NoteAttachmentTest extends AbstractSiriusSwtBotGefTestCase {
 
     private void checkNoteAttachmentEditPartFrom(String sourceName, int expectedNumberOfNoteAttachment) {
         SWTBotGefEditPart sourcePart = editor.getEditPart(sourceName).parent();
-        assertEquals("Bad number of note attachmeent from " + sourceName, expectedNumberOfNoteAttachment, sourcePart.sourceConnections().size());
+        assertEquals("Bad number of note attachment from " + sourceName, expectedNumberOfNoteAttachment, sourcePart.sourceConnections().size());
         for (int i = 0; i < expectedNumberOfNoteAttachment; i++) {
             SWTBotGefConnectionEditPart swtBotConnectionEditPart = sourcePart.sourceConnections().get(i);
             assertTrue("The connection from " + sourceName + ", at index " + i + " is not a note attachment.", swtBotConnectionEditPart.part() instanceof NoteAttachmentEditPart);
