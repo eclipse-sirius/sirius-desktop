@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -908,10 +908,8 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
             // CrossReferencerAdapter
 
             EcoreUtil.remove(view);
-            // Then remove incoming or outgoing edges
-            for (Edge edge : edgesToDelete) {
-                EcoreUtil.remove(edge);
-            }
+            // Then remove incoming or outgoing edges (with the same rules for incoming or outgoing of thess edges
+            deleteViews(edgesToDelete);
         }
         return !views.isEmpty();
     }
