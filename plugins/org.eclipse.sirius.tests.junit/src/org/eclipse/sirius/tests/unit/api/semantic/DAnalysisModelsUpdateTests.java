@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -226,10 +226,10 @@ public class DAnalysisModelsUpdateTests extends SiriusDiagramTestCase implements
         // Checks before test that we have the expected resources in the
         // workspace
         IResource[] members = temporaryProject.members();
-        assertEquals("The current project should contains 4 files : .project, " + SEMANTIC_RESOURCE_NAME + ", " + SEMANTIC_RESOURCE_NAME_P3 + " and " + SESSION_RESOURCE_NAME, 4, members.length);
+        assertEquals("The current project should contains 1 folder and 4 files : .settings, .project, " + SEMANTIC_RESOURCE_NAME + ", " + SEMANTIC_RESOURCE_NAME_P3 + " and " + SESSION_RESOURCE_NAME, 5, members.length);
         assertEquals("The current project should contain .project ", ".project", members[0].getName());
-        assertEquals("The current project should contain " + SESSION_RESOURCE_NAME, SESSION_RESOURCE_NAME, members[1].getName());
-        assertEquals("The current project should contain " + SEMANTIC_RESOURCE_NAME, SEMANTIC_RESOURCE_NAME, members[2].getName());
+        assertEquals("The current project should contain " + SESSION_RESOURCE_NAME, SESSION_RESOURCE_NAME, members[2].getName());
+        assertEquals("The current project should contain " + SEMANTIC_RESOURCE_NAME, SEMANTIC_RESOURCE_NAME, members[3].getName());
 
         assertEquals("The DAnalysis.models reference of the main session resource before fragmentation should only reference root EPackage", Collections.singletonList(rootEPackage),
                 dAnalysisOfMainSessionResource.getModels());
@@ -365,15 +365,15 @@ public class DAnalysisModelsUpdateTests extends SiriusDiagramTestCase implements
         // Checks that 2 new resources has been created
         IResource[] members = temporaryProject.members();
         if (Boolean.getBoolean("createRepresentationInSeparateResource")) { //$NON-NLS-1$
-            assertEquals("The current project should contains 7 files : .project, " + SEMANTIC_RESOURCE_NAME + ", " + SEMANTIC_RESOURCE_NAME_P3 + ", " + SESSION_RESOURCE_NAME, 7, members.length);
+            assertEquals("The current project should contains 1 folder and 7 files : .settings, .project, " + SEMANTIC_RESOURCE_NAME + ", " + SEMANTIC_RESOURCE_NAME_P3 + ", " + SESSION_RESOURCE_NAME, 8, members.length);
         } else {
-            assertEquals("The current project should contains 6 files : .project, " + SEMANTIC_RESOURCE_NAME + ", " + SEMANTIC_RESOURCE_NAME_P3 + ", " + SESSION_RESOURCE_NAME, 6, members.length);
+            assertEquals("The current project should contains 1 folder and 6 files : .settings, .project, " + SEMANTIC_RESOURCE_NAME + ", " + SEMANTIC_RESOURCE_NAME_P3 + ", " + SESSION_RESOURCE_NAME, 7, members.length);
         }
         assertEquals("The current project should contain .project ", ".project", members[0].getName());
-        assertEquals("The current project should contain " + SESSION_RESOURCE_NAME, SESSION_RESOURCE_NAME, members[1].getName());
-        assertEquals("The current project should contain " + SEMANTIC_RESOURCE_NAME, SEMANTIC_RESOURCE_NAME, members[2].getName());
-        assertEquals("The current project should contain " + p1FragmentedSessionResourceURI.lastSegment(), p1FragmentedSessionResourceURI.lastSegment(), members[3].getName());
-        assertEquals("The current project should contain " + p1FragmentedSemanticResourceURI.lastSegment(), p1FragmentedSemanticResourceURI.lastSegment(), members[4].getName());
+        assertEquals("The current project should contain " + SESSION_RESOURCE_NAME, SESSION_RESOURCE_NAME, members[2].getName());
+        assertEquals("The current project should contain " + SEMANTIC_RESOURCE_NAME, SEMANTIC_RESOURCE_NAME, members[3].getName());
+        assertEquals("The current project should contain " + p1FragmentedSessionResourceURI.lastSegment(), p1FragmentedSessionResourceURI.lastSegment(), members[4].getName());
+        assertEquals("The current project should contain " + p1FragmentedSemanticResourceURI.lastSegment(), p1FragmentedSemanticResourceURI.lastSegment(), members[5].getName());
 
         // Checks that DAnalysis.models and DAnalysis.referencedAnalysis
         // references has been updated to reference newly created resources
@@ -398,15 +398,15 @@ public class DAnalysisModelsUpdateTests extends SiriusDiagramTestCase implements
         // Checks that 2 new resources has been created
         IResource[] members = temporaryProject.members();
         if (Boolean.getBoolean("createRepresentationInSeparateResource")) { //$NON-NLS-1$
-            assertEquals("The current project should contains 7 files : .project, " + SEMANTIC_RESOURCE_NAME + ", " + SEMANTIC_RESOURCE_NAME_P3 + ", " + SESSION_RESOURCE_NAME, 7, members.length);
+            assertEquals("The current project should contains 1 folder and 7 files : .settings, .project, " + SEMANTIC_RESOURCE_NAME + ", " + SEMANTIC_RESOURCE_NAME_P3 + ", " + SESSION_RESOURCE_NAME, 8, members.length);
         } else {
-            assertEquals("The current project should contains 6 files : .project, " + SEMANTIC_RESOURCE_NAME + ", " + SEMANTIC_RESOURCE_NAME_P3 + ", " + SESSION_RESOURCE_NAME, 6, members.length);
+            assertEquals("The current project should contains 1 folder and 6 files : .settings, .project, " + SEMANTIC_RESOURCE_NAME + ", " + SEMANTIC_RESOURCE_NAME_P3 + ", " + SESSION_RESOURCE_NAME, 7, members.length);
         }
         assertEquals("The current project should contain .project ", ".project", members[0].getName());
-        assertEquals("The current project should contain " + SESSION_RESOURCE_NAME, SESSION_RESOURCE_NAME, members[1].getName());
-        assertEquals("The current project should contain " + SEMANTIC_RESOURCE_NAME, SEMANTIC_RESOURCE_NAME, members[2].getName());
-        assertEquals("The current project should contain " + p2FragmentedSessionResourceURI.lastSegment(), p2FragmentedSessionResourceURI.lastSegment(), members[3].getName());
-        assertEquals("The current project should contain " + p2FragmentedSemanticResourceURI.lastSegment(), p2FragmentedSemanticResourceURI.lastSegment(), members[4].getName());
+        assertEquals("The current project should contain " + SESSION_RESOURCE_NAME, SESSION_RESOURCE_NAME, members[2].getName());
+        assertEquals("The current project should contain " + SEMANTIC_RESOURCE_NAME, SEMANTIC_RESOURCE_NAME, members[3].getName());
+        assertEquals("The current project should contain " + p2FragmentedSessionResourceURI.lastSegment(), p2FragmentedSessionResourceURI.lastSegment(), members[4].getName());
+        assertEquals("The current project should contain " + p2FragmentedSemanticResourceURI.lastSegment(), p2FragmentedSemanticResourceURI.lastSegment(), members[5].getName());
 
         // Checks that DAnalysis.models and DAnalysis.referencedAnalysis
         // references has been updated to reference newly created resources
@@ -430,14 +430,14 @@ public class DAnalysisModelsUpdateTests extends SiriusDiagramTestCase implements
 
         // Checks that 2 new resources has been created
         IResource[] members = temporaryProject.members();
-        assertEquals("The current project should contains 8 files : .project, " + SEMANTIC_RESOURCE_NAME + ", " + SEMANTIC_RESOURCE_NAME_P3 + ", " + SESSION_RESOURCE_NAME, 8, members.length);
+        assertEquals("The current project should contains 1 folder and 8 files : .settings, .project, " + SEMANTIC_RESOURCE_NAME + ", " + SEMANTIC_RESOURCE_NAME_P3 + ", " + SESSION_RESOURCE_NAME, 9, members.length);
         assertEquals("The current project should contain .project ", ".project", members[0].getName());
-        assertEquals("The current project should contain " + SESSION_RESOURCE_NAME, SESSION_RESOURCE_NAME, members[1].getName());
-        assertEquals("The current project should contain " + SEMANTIC_RESOURCE_NAME, SEMANTIC_RESOURCE_NAME, members[2].getName());
-        assertEquals("The current project should contain " + p1FragmentedSessionResourceURI.lastSegment(), p1FragmentedSessionResourceURI.lastSegment(), members[3].getName());
-        assertEquals("The current project should contain " + p1FragmentedSemanticResourceURI.lastSegment(), p1FragmentedSemanticResourceURI.lastSegment(), members[4].getName());
-        assertEquals("The current project should contain " + p2FragmentedSessionResourceURI.lastSegment(), p2FragmentedSessionResourceURI.lastSegment(), members[5].getName());
-        assertEquals("The current project should contain " + p2FragmentedSemanticResourceURI.lastSegment(), p2FragmentedSemanticResourceURI.lastSegment(), members[6].getName());
+        assertEquals("The current project should contain " + SESSION_RESOURCE_NAME, SESSION_RESOURCE_NAME, members[2].getName());
+        assertEquals("The current project should contain " + SEMANTIC_RESOURCE_NAME, SEMANTIC_RESOURCE_NAME, members[3].getName());
+        assertEquals("The current project should contain " + p1FragmentedSessionResourceURI.lastSegment(), p1FragmentedSessionResourceURI.lastSegment(), members[4].getName());
+        assertEquals("The current project should contain " + p1FragmentedSemanticResourceURI.lastSegment(), p1FragmentedSemanticResourceURI.lastSegment(), members[5].getName());
+        assertEquals("The current project should contain " + p2FragmentedSessionResourceURI.lastSegment(), p2FragmentedSessionResourceURI.lastSegment(), members[6].getName());
+        assertEquals("The current project should contain " + p2FragmentedSemanticResourceURI.lastSegment(), p2FragmentedSemanticResourceURI.lastSegment(), members[7].getName());
 
         // Checks that DAnalysis.models and DAnalysis.referencedAnalysis
         // references has been updated to reference newly created resources
@@ -463,14 +463,14 @@ public class DAnalysisModelsUpdateTests extends SiriusDiagramTestCase implements
 
         // Checks that 2 new resources has been created
         IResource[] members = temporaryProject.members();
-        assertEquals("The current project should contains 8 files : .project, " + SEMANTIC_RESOURCE_NAME + ", " + SEMANTIC_RESOURCE_NAME_P3 + ", " + SESSION_RESOURCE_NAME, 8, members.length);
+        assertEquals("The current project should contains 1 folder and 8 files : .settings, .project, " + SEMANTIC_RESOURCE_NAME + ", " + SEMANTIC_RESOURCE_NAME_P3 + ", " + SESSION_RESOURCE_NAME, 9, members.length);
         assertEquals("The current project should contain .project ", ".project", members[0].getName());
-        assertEquals("The current project should contain " + SESSION_RESOURCE_NAME, SESSION_RESOURCE_NAME, members[1].getName());
-        assertEquals("The current project should contain " + SEMANTIC_RESOURCE_NAME, SEMANTIC_RESOURCE_NAME, members[2].getName());
-        assertEquals("The current project should contain " + p2FragmentedSessionResourceURI.lastSegment(), p2FragmentedSessionResourceURI.lastSegment(), members[3].getName());
-        assertEquals("The current project should contain " + p2FragmentedSemanticResourceURI.lastSegment(), p2FragmentedSemanticResourceURI.lastSegment(), members[4].getName());
-        assertEquals("The current project should contain " + p22FragmentedSessionResourceURI.lastSegment(), p22FragmentedSessionResourceURI.lastSegment(), members[5].getName());
-        assertEquals("The current project should contain " + p22FragmentedSemanticResourceURI.lastSegment(), p22FragmentedSemanticResourceURI.lastSegment(), members[6].getName());
+        assertEquals("The current project should contain " + SESSION_RESOURCE_NAME, SESSION_RESOURCE_NAME, members[2].getName());
+        assertEquals("The current project should contain " + SEMANTIC_RESOURCE_NAME, SEMANTIC_RESOURCE_NAME, members[3].getName());
+        assertEquals("The current project should contain " + p2FragmentedSessionResourceURI.lastSegment(), p2FragmentedSessionResourceURI.lastSegment(), members[4].getName());
+        assertEquals("The current project should contain " + p2FragmentedSemanticResourceURI.lastSegment(), p2FragmentedSemanticResourceURI.lastSegment(), members[5].getName());
+        assertEquals("The current project should contain " + p22FragmentedSessionResourceURI.lastSegment(), p22FragmentedSessionResourceURI.lastSegment(), members[6].getName());
+        assertEquals("The current project should contain " + p22FragmentedSemanticResourceURI.lastSegment(), p22FragmentedSemanticResourceURI.lastSegment(), members[7].getName());
 
         // Checks that DAnalysis.models and DAnalysis.referencedAnalysis
         // references has been updated to reference newly created resources
@@ -547,11 +547,11 @@ public class DAnalysisModelsUpdateTests extends SiriusDiagramTestCase implements
         // Checks before test that we have the expected resources in the
         // workspace
         IResource[] members = temporaryProject.members();
-        assertEquals("The current project should contains 4 files : .project, " + SEMANTIC_RESOURCE_NAME + ", " + SEMANTIC_RESOURCE_NAME_P3 + " and " + SESSION_RESOURCE_NAME, 4, members.length);
+        assertEquals("The current project should contains 1 folder and 4 files : .settings, .project, " + SEMANTIC_RESOURCE_NAME + ", " + SEMANTIC_RESOURCE_NAME_P3 + " and " + SESSION_RESOURCE_NAME, 5, members.length);
         assertEquals("The current project should contain .project ", ".project", members[0].getName());
-        assertEquals("The current project should contain " + SESSION_RESOURCE_NAME, SESSION_RESOURCE_NAME, members[1].getName());
-        assertEquals("The current project should contain " + SEMANTIC_RESOURCE_NAME, SEMANTIC_RESOURCE_NAME, members[2].getName());
-        assertEquals("The current project should contain " + SEMANTIC_RESOURCE_NAME_P3, SEMANTIC_RESOURCE_NAME_P3, members[3].getName());
+        assertEquals("The current project should contain " + SESSION_RESOURCE_NAME, SESSION_RESOURCE_NAME, members[2].getName());
+        assertEquals("The current project should contain " + SEMANTIC_RESOURCE_NAME, SEMANTIC_RESOURCE_NAME, members[3].getName());
+        assertEquals("The current project should contain " + SEMANTIC_RESOURCE_NAME_P3, SEMANTIC_RESOURCE_NAME_P3, members[4].getName());
 
         assertEquals("The DAnalysis.models reference of the main session resource before fragmentation should only reference root EPackage", Collections.singletonList(rootEPackage),
                 dAnalysisOfMainSessionResource.getModels());
