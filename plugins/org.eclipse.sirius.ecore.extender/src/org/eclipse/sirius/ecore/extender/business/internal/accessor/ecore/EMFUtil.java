@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2006, 2015 IBM Corporation and others.
+ * Copyright (c) 2006, 2023 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,8 +14,15 @@
 package org.eclipse.sirius.ecore.extender.business.internal.accessor.ecore;
 
 import java.lang.ref.WeakReference;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Spliterator;
+import java.util.Spliterators;
+import java.util.function.Function;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
+import org.eclipse.emf.common.util.AbstractTreeIterator;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -26,7 +33,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 
 /**
  * This class comes from org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.
- * 
+ *
  * @author mchauvin
  *
  */
@@ -57,7 +64,7 @@ public class EMFUtil {
 
     /**
      * Gets the name attribute of an <code>EClass</code>.
-     * 
+     *
      * @param eClass
      *            The <code>EClass</code>.
      * @return The name attribute.
@@ -93,7 +100,7 @@ public class EMFUtil {
 
     /**
      * Gets the qualified name attribute of an <code>EClass</code>.
-     * 
+     *
      * @param eClass
      *            The <code>EClass</code>.
      * @return The qualified name attribute.
@@ -124,7 +131,7 @@ public class EMFUtil {
 
     /**
      * Gets the fully qualified name of an object.
-     * 
+     *
      * @param eObject
      *            The object.
      * @param formatted
@@ -172,7 +179,7 @@ public class EMFUtil {
     /**
      * Gets the localized name of a meta-model element. The name will not
      * contain spaces.
-     * 
+     *
      * @param element
      *            The meta-model element.
      * @return The localized name of the meta-model element.
@@ -184,7 +191,7 @@ public class EMFUtil {
     /**
      * Gets the name of an object if the object has name, returns an empty
      * string otherwise.
-     * 
+     *
      * @param eObject
      *            The object.
      * @return The object's name.
@@ -214,5 +221,28 @@ public class EMFUtil {
         return result;
     }
 
+    /**
+     * Create stream on a tree to visit each node (excluding the root element)
+     *
+     * @param <T>
+     *            Type of elements
+     * @param root
+     *            The root element of the tree
+     * @param childrenFunc
+     *            A function that takes a node and returns an iterator on all direct children
+     * @return The stream of all elements of tree
+     */
+    public static <T extends EObject> Stream<T> getTreeStream(T root, Function<T, Iterable<T>> childrenFunc) {
+        AbstractTreeIterator<T> iterator = new AbstractTreeIterator<T>(root, false) {
+            private static final long serialVersionUID = 1L;
+
+            @SuppressWarnings("unchecked")
+            @Override
+            public Iterator<T> getChildren(Object parent) {
+                return childrenFunc.apply((T) parent).iterator();
+            }
+        };
+        return StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator, Spliterator.ORDERED), false);
+    }
 }
 //CHECKSTYLE:ON

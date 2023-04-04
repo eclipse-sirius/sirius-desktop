@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2022 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -172,6 +172,7 @@ import org.eclipse.sirius.tests.unit.diagram.migration.EdgesZOrderMigrationParti
 import org.eclipse.sirius.tests.unit.diagram.migration.JumpLinkNewTypeMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.LabelOnBorderMigrationTests6_3_0;
 import org.eclipse.sirius.tests.unit.diagram.migration.LabelOnBorderMigrationTestsBefore6_3_0;
+import org.eclipse.sirius.tests.unit.diagram.migration.NodeStyleMigrationParticipantTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.WorkspaceImageGMFBoundsMigrationParticipantTest;
 import org.eclipse.sirius.tests.unit.diagram.modelaccessor.ModelAccessorTest;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.design.EntitiesDiagramBackgroundTests;
@@ -281,7 +282,7 @@ public class AllDiagramPluginsTests {
 
     /**
      * Launches the test with the given arguments.
-     * 
+     *
      * @param args
      *            Arguments of the testCase.
      */
@@ -291,7 +292,7 @@ public class AllDiagramPluginsTests {
 
     /**
      * Add the gerrit part of the Junit tests to the specified suite.
-     * 
+     *
      * @param suite
      *            the suite into which to add the tests.
      */
@@ -568,6 +569,7 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(LabelOnBorderMigrationTests6_3_0.class);
         suite.addTestSuite(EdgesZOrderMigrationParticipantTest.class);
         suite.addTestSuite(WorkspaceImageGMFBoundsMigrationParticipantTest.class);
+        suite.addTestSuite(NodeStyleMigrationParticipantTest.class);
 
         // Edge on edge tests
         suite.addTestSuite(EdgeOnEdgeHideRevealTest.class);
@@ -601,7 +603,7 @@ public class AllDiagramPluginsTests {
 
     /**
      * Add the tests which for one reason or another are not part of the suite launched on each Gerrit verification.
-     * 
+     *
      * @param suite
      *            the suite to add the tests into.
      */
@@ -615,7 +617,7 @@ public class AllDiagramPluginsTests {
 
     /**
      * Creates the {@link junit.framework.TestSuite TestSuite} for all the test.
-     * 
+     *
      * @return The testsuite containing all the tests
      */
     public static Test suite() {

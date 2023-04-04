@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -95,14 +95,14 @@ import junit.textui.TestRunner;
 
 /**
  * All SWTBot tests.
- * 
+ *
  * @author lredor
  */
 public class AllTestSuite extends TestCase {
 
     /**
      * Launches the test with the given arguments.
-     * 
+     *
      * @param args
      *            Arguments of the testCase.
      */
@@ -121,7 +121,7 @@ public class AllTestSuite extends TestCase {
      * Creates the {@link junit.framework.TestSuite TestSuite} for all the test.<BR>
      * This suite can also launch a specific test by setting the environment variable TEST_CLASS_NAME to the qualified
      * name of the expected class to launch.
-     * 
+     *
      * @return The testsuite containing all the tests
      */
     @SuppressWarnings("unchecked")
@@ -147,7 +147,7 @@ public class AllTestSuite extends TestCase {
 
     /**
      * Add the first part of the SWTbot Gerrit tests to the specified suite.
-     * 
+     *
      * @param suite
      *            the suite into which to add the tests.
      */
@@ -203,7 +203,7 @@ public class AllTestSuite extends TestCase {
 
     /**
      * Add the second part of the SWTbot Gerrit tests to the specified suite.
-     * 
+     *
      * @param suite
      *            the suite into which to add the tests.
      */
@@ -270,7 +270,7 @@ public class AllTestSuite extends TestCase {
     /**
      * Add the first part of the SWTbot tests to the specified suite. This corresponds roughly to the first half of the
      * execution time of the complete suite.
-     * 
+     *
      * @param suite
      *            the suite into which to add the tests.
      */
@@ -351,12 +351,13 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(ContainerDropPropertySectionsTests.class);
         suite.addTestSuite(BorderNodeSidePropertySectionTest.class);
         suite.addTestSuite(EditPartSelectionTest.class);
+        suite.addTestSuite(LabelFontModificationsTest.class);
     }
 
     /**
      * Add the second part of the SWTbot tests to the specified suite. This corresponds roughly to the second half of
      * the execution time of the complete suite.
-     * 
+     *
      * @param suite
      *            the suite into which to add the tests.
      */
@@ -498,7 +499,7 @@ public class AllTestSuite extends TestCase {
 
     /**
      * Creates the {@link junit.framework.TestSuite TestSuite} for all the disabled test.
-     * 
+     *
      * @return The test suite containing all the disabled tests.
      */
     public static Test disabledSuite() {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -26,16 +26,23 @@ import org.eclipse.gmf.runtime.notation.IdentityAnchor;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationFactory;
 import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
+import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 import org.eclipse.sirius.diagram.ui.business.api.query.EdgeQuery;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode3EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode4EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.NotationViewIDs;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
+import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
 /**
  * Utilities for GMF notation model modifications.
- * 
+ *
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
 public final class GMFNotationUtilities {
@@ -54,7 +61,7 @@ public final class GMFNotationUtilities {
     /**
      * Set the source anchor of the <code>edge</code> according to the new points list. The second point of this list is
      * used to determine the new X location of this Anchor.
-     * 
+     *
      * @param edge
      *            The edge to modify
      * @param newPoints
@@ -105,7 +112,7 @@ public final class GMFNotationUtilities {
     /**
      * Set the target anchor of the <code>edge</code> according to the new points list. The third point of this list is
      * used to determine the new X location of this Anchor.
-     * 
+     *
      * @param edge
      *            The edge to modify
      * @param newPoints
@@ -154,7 +161,7 @@ public final class GMFNotationUtilities {
 
     /**
      * Set the id of an IdentiyAnchor from x and y percentages.
-     * 
+     *
      * @param anchor
      *            The anchor on which to set id
      * @param xPercentage
@@ -168,7 +175,7 @@ public final class GMFNotationUtilities {
 
     /**
      * Get the terminal string used in {@link IdentityAnchor} from its xPercentage and yPercentage.
-     * 
+     *
      * @param xPercentage
      *            the x percentage to use in id
      * @param yPercentage
@@ -182,7 +189,7 @@ public final class GMFNotationUtilities {
     /**
      * Change the bendpoints of the GMF edge according to draw2d elements (pointList, sourceRefPoint and
      * targetRefPoint).
-     * 
+     *
      * @param edge
      *            The edge to modify
      * @param newPoints
@@ -206,12 +213,12 @@ public final class GMFNotationUtilities {
 
     /**
      * Compute the new source anchor according to an horizontal move representing by the deltaX.
-     * 
+     *
      * @param edge
      *            The edge to modify
      * @param deltaX
      *            The horizontal delta move
-     * 
+     *
      * @return an optional Point representing the source reference point corresponding to the new source. This Option
      *         can be null if the anchor is not changed.
      */
@@ -243,12 +250,12 @@ public final class GMFNotationUtilities {
 
     /**
      * Compute the new target anchor according to an horizontal move representing by the deltaX.
-     * 
+     *
      * @param edge
      *            The edge to modify
      * @param deltaX
      *            The horizontal delta move
-     * 
+     *
      * @return an optional Point representing the target reference point corresponding to the new target anchor. This
      *         Option can be null if the anchor is not changed.
      */
@@ -281,7 +288,7 @@ public final class GMFNotationUtilities {
     /**
      * Recompute all the bendpoints of <code>edgeToModify</code> according to a reference edge. This two edges must be
      * branch on the same tree (TreeRouter).
-     * 
+     *
      * @param referenceEdge
      *            The reference edge
      * @param edgeToModify
@@ -339,7 +346,7 @@ public final class GMFNotationUtilities {
      * Set the target anchor of the <code>edgeToModify</code> with the same target anchor of the
      * <code>referencEdge</code> (only if reference anchor is an identity anchor and, the anchor of edge to modify is
      * null or is an identify anchor).
-     * 
+     *
      * @param referenceEdge
      *            reference edge
      * @param edgeToModify
@@ -360,7 +367,7 @@ public final class GMFNotationUtilities {
      * Set the source anchor of the <code>edgeToModify</code> with the same target anchor of the
      * <code>referenceEdge</code> (only if reference anchor is an identity anchor and, the anchor of edge to modify is
      * null or is an identify anchor).
-     * 
+     *
      * @param referenceEdge
      *            reference edge
      * @param edgeToModify
@@ -380,7 +387,7 @@ public final class GMFNotationUtilities {
     /**
      * Change the source or target anchor and the bendpoints of the brothers of <code>edge</code> according to this
      * edge.
-     * 
+     *
      * @param edge
      *            The edge reference
      */
@@ -404,5 +411,27 @@ public final class GMFNotationUtilities {
             }
             GMFNotationUtilities.setBendpoints(edge, brother);
         }
+    }
+
+    /**
+     * Return if this GMF view is associated to DNode Sirius diagram element.
+     */
+    public static boolean viewIsNode(View view) {
+        int type = SiriusVisualIDRegistry.getVisualID(view.getType());
+        return type == DNodeEditPart.VISUAL_ID //
+                || type == DNode2EditPart.VISUAL_ID //
+                || type == DNode3EditPart.VISUAL_ID //
+                || type == DNode4EditPart.VISUAL_ID;
+    }
+
+    /**
+     * Return if this GMF view is associated to label of DNode Sirius diagram element.
+     */
+    public static boolean viewIsLabel(View view) {
+        int type = SiriusVisualIDRegistry.getVisualID(view.getType());
+        return type == NotationViewIDs.DNODE_NAME_EDIT_PART_VISUAL_ID //
+                || type == NotationViewIDs.DNODE_NAME_2_EDIT_PART_VISUAL_ID //
+                || type == NotationViewIDs.DNODE_NAME_3_EDIT_PART_VISUAL_ID //
+                || type == NotationViewIDs.DNODE_NAME_4_EDIT_PART_VISUAL_ID;
     }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2023 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,14 +18,14 @@ import java.util.Map;
 /**
  * RGBValues are descriptions of colors in terms of the primary additive color
  * model (red, green and blue).
- * 
+ *
  * A color may be described in terms of the relative intensities of these three
  * primary colors. The brightness of each color is specified by a value in the
  * range 0 to 255, where 0 indicates no color (blackness) and 255 indicates
  * maximum intensity.
- * 
+ *
  * RGBValues instances are interned.
- * 
+ *
  * @author cbrun
  *
  */
@@ -53,7 +53,7 @@ public final class RGBValues {
 
     /**
      * Create a new {@link RGBValues}.
-     * 
+     *
      * @param red
      *            red channel.
      * @param green
@@ -78,6 +78,17 @@ public final class RGBValues {
 
     public int getBlue() {
         return blue;
+    }
+
+    /**
+     * Converts from an {@link RGBValues} representation to an Integer.
+     *
+     * The Integer encoding is the one used by gmf notation.
+     *
+     * @return an integer value encoding of this instance
+     */
+    public int toInteger() {
+        return this.red | (this.green << 8) | (this.blue << 16);
     }
 
     // CHECKSTYLE:OFF
@@ -127,7 +138,7 @@ public final class RGBValues {
      * Return a RGBValues corresponding to the given red, green and blue
      * attributes. The RGBValues elements are interned, successive calls with
      * the same color attributes will return the same object.
-     * 
+     *
      * @param r
      *            the red attribute.
      * @param g
@@ -153,7 +164,7 @@ public final class RGBValues {
     /**
      * Converts from an Integer to an {@link RGBValues} representation. The
      * Integer encoding is the one used by gmf notation.
-     * 
+     *
      * @param color
      *            an integer value encoding
      * @return An {@link RGBValues} instance matching the integer values.
@@ -161,5 +172,4 @@ public final class RGBValues {
     public static RGBValues integerToRGBValues(int color) {
         return RGBValues.create(color & 0x000000FF, (color & 0x0000FF00) >> 8, (color & 0x00FF0000) >> 16);
     }
-
 }

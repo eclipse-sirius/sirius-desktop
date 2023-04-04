@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -47,6 +47,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeList2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.diagram.ui.tools.internal.util.GMFNotationUtilities;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DView;
@@ -59,7 +60,7 @@ import com.google.common.collect.Iterators;
 
 /**
  * Migration contribution for sequence diagram part of representations file.
- * 
+ *
  * @author mporhel
  */
 public class SequenceDiagramRepresentationsFileMigrationParticipant extends AbstractRepresentationsFileMigrationParticipant {
@@ -91,7 +92,7 @@ public class SequenceDiagramRepresentationsFileMigrationParticipant extends Abst
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.business.api.migration.IMigrationParticipant#getMigrationVersion()
      */
     @Override
@@ -145,7 +146,7 @@ public class SequenceDiagramRepresentationsFileMigrationParticipant extends Abst
 
     /**
      * Retrieve all GMF diagrams of the {@link DAnalysis}.
-     * 
+     *
      * @param dAnalysis
      *            The analysis of the resource to migrate
      * @return Sequence GMF diagrams of this {@link DAnalysis}
@@ -164,7 +165,7 @@ public class SequenceDiagramRepresentationsFileMigrationParticipant extends Abst
 
     /**
      * Retrieve all {@link SequenceDDiagram} of the {@link DAnalysis}.
-     * 
+     *
      * @param dAnalysis
      *            The analysis of the resource to migrate
      * @return {@link SequenceDDiagram} diagrams of this {@link DAnalysis}
@@ -213,7 +214,7 @@ public class SequenceDiagramRepresentationsFileMigrationParticipant extends Abst
      * (to retrieve the same behavior as before). The migration of GMF bounds of
      * this indirectly collapsed nodes, if they are bordered nodes, are deal
      * later in method {{@link #migrateGMFBoundsOfBorderedNodes(List)}.
-     * 
+     *
      * @param diagram
      *            GMF Diagram to migrate.
      */
@@ -252,14 +253,13 @@ public class SequenceDiagramRepresentationsFileMigrationParticipant extends Abst
     private static class IsNode implements Predicate<Node> {
         @Override
         public boolean apply(Node input) {
-            int type = SiriusVisualIDRegistry.getVisualID(input.getType());
-            return type == DNodeEditPart.VISUAL_ID || type == DNode2EditPart.VISUAL_ID || type == DNode3EditPart.VISUAL_ID || type == DNode4EditPart.VISUAL_ID;
+            return GMFNotationUtilities.viewIsNode(input);
         }
     }
 
     /**
      * Predicate that checks that this GMF Node is collapsed (directly or not).
-     * 
+     *
      * No check is done on the border position of a node because we need to
      * handle ObservationPoints.
      */
@@ -272,7 +272,7 @@ public class SequenceDiagramRepresentationsFileMigrationParticipant extends Abst
 
     /**
      * Predicate that checks that this GMF Node is directly collapsed.
-     * 
+     *
      * No check is done on the border position of a node because we need to
      * handle ObservationPoints.
      */

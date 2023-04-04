@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gef.Disposable;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.action.Action;
@@ -31,8 +32,8 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPart;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeNameEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
@@ -51,7 +52,7 @@ import com.google.common.collect.Iterables;
 /**
  * This action reset the style properties to their default values as defined in the VSM or in the diagram preference
  * page.
- * 
+ *
  * @author mchauvin
  */
 public class ResetStylePropertiesToDefaultValuesAction extends Action implements Disposable {
@@ -68,7 +69,7 @@ public class ResetStylePropertiesToDefaultValuesAction extends Action implements
 
     /**
      * Create a new {@link ResetStylePropertiesToDefaultValuesAction}.
-     * 
+     *
      * @param page
      *            the {@link IWorkbenchPage}
      */
@@ -85,7 +86,7 @@ public class ResetStylePropertiesToDefaultValuesAction extends Action implements
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.jface.action.Action#isEnabled()
      */
     @Override
@@ -137,7 +138,7 @@ public class ResetStylePropertiesToDefaultValuesAction extends Action implements
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.ui.actions.RetargetAction#run()
      */
     @Override
@@ -168,7 +169,9 @@ public class ResetStylePropertiesToDefaultValuesAction extends Action implements
                         // GMF styles is
                         // supported by the Edge view)
                         graphicalEditPart = (IGraphicalEditPart) graphicalEditPart.getParent();
-                    } else if (graphicalEditPart instanceof DNodeNameEditPart && graphicalEditPart.getParent() instanceof DNodeEditPart) {
+                    } else if (graphicalEditPart instanceof DNodeNameEditPart //
+                            && (graphicalEditPart.getParent() instanceof AbstractDiagramNodeEditPart //
+                                    || graphicalEditPart.getParent() instanceof AbstractBorderItemEditPart)) {
                         // For DNodeNameEditPart, the parent DNodeEditPart must be considered (the GMF styles is
                         // supported by the Node view)
                         graphicalEditPart = (IGraphicalEditPart) graphicalEditPart.getParent();

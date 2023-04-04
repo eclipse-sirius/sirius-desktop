@@ -4,14 +4,14 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="ClassDiagram" domainClass="ecore::EPackage" enablePopupBars="true">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <defaultLayer name="Default">
-        <nodeMappings name="CD_ClassNode" semanticCandidatesExpression="feature:eAllContents" domainClass="ecore::EClass">
+        <nodeMappings name="CD_EnumNode" semanticCandidatesExpression="feature:eContents" domainClass="ecore::EEnum">
           <style xsi:type="style:SquareDescription" labelSize="12" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </nodeMappings>
-        <containerMappings name="CD_ClassContainer" semanticCandidatesExpression="feature:eAllContents" domainClass="ecore::EClass">
+        <containerMappings name="CD_ClassContainer" semanticCandidatesExpression="feature:eContents" domainClass="ecore::EClass">
           <borderedNodeMappings name="CD_Operation" semanticCandidatesExpression="feature:eAllContents" domainClass="ecore::EOperation">
             <style xsi:type="style:EllipseNodeDescription" labelSize="12" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

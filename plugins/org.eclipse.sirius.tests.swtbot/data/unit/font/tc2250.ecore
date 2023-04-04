@@ -2,6 +2,7 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="2250">
   <eClassifiers xsi:type="ecore:EClass" name="myEClass3">
+    <eOperations name="myOperation"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="newAttribute3"/>
   </eClassifiers>
   <eSubpackages name="myPackage">

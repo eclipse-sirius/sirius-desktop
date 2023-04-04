@@ -55,7 +55,7 @@ import com.google.common.base.Predicates;
 
 /**
  * Tests the label font modifications.
- * 
+ *
  * @author mporhel
  */
 public class LabelFontModificationsTest extends AbstractFontModificationTest {
@@ -181,9 +181,20 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     public void testToolbarActionWithNodeLabelSelection() {
         editor.close();
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "ClassDiagram", "new ClassDiagram", DDiagram.class);
+        // Root Node
         doTestItalicFromToolbar("myEClass", DNodeNameEditPart.class);
         doTestBoldFromToolbar("myEClass", DNodeNameEditPart.class);
         doTestChangeLabelColorFromTabbar("myEClass", DNodeNameEditPart.class);
+
+        // SubNode
+        doTestItalicFromToolbar("newAttribute3", DNodeNameEditPart.class);
+        doTestBoldFromToolbar("newAttribute3", DNodeNameEditPart.class);
+        doTestChangeLabelColorFromTabbar("newAttribute3", DNodeNameEditPart.class);
+
+        // BorderNode
+        doTestItalicFromToolbar("myOperation", DNodeNameEditPart.class);
+        doTestBoldFromToolbar("myOperation", DNodeNameEditPart.class);
+        doTestChangeLabelColorFromTabbar("myOperation", DNodeNameEditPart.class);
 
         // check that buttons associated to the node are not enabled
         getSetStyleToWorkspaceImageButton(true, false);
@@ -206,7 +217,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     /**
      * Ensures that changing the color of a label from the appearance page works as expected (and also tests that the
      * style is considered as custom).
-     * 
+     *
      * @param name
      *            the edit part name
      * @param type
@@ -235,7 +246,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     /**
      * Ensures that changing a label as bold from tabbar works as expected (and also tests that the style is considered
      * as custom).
-     * 
+     *
      * @param name
      *            the edit part name
      * @param type
@@ -263,7 +274,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     /**
      * Ensures that changing a label as stroke from tabbar works as expected (and also tests that the style is
      * considered as custom).
-     * 
+     *
      * @param name
      *            the edit part name
      * @param type
@@ -291,7 +302,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     /**
      * Ensures that changing the font color of a label from the tabbar works as expected (and also tests that the style
      * is considered as custom).
-     * 
+     *
      * @param name
      *            the edit part name
      * @param type
@@ -337,7 +348,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
 
     /**
      * Ensures that changing a label as stroke and bold from tabbar works as expected.
-     * 
+     *
      * @param name
      *            the edit part name
      * @param type
@@ -412,7 +423,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     /**
      * Ensures that changing a label as bold from the appearance page works as expected (and also tests that the style
      * is considered as custom).
-     * 
+     *
      * @param name
      *            the edit part name
      * @param type
@@ -440,7 +451,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     /**
      * Ensures that changing a label as italic from the appearance page works as expected (and also tests that the style
      * is considered as custom).
-     * 
+     *
      * @param name
      *            the edit part name
      * @param type
@@ -466,7 +477,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     /**
      * Ensures that striking a label from the appearance page works as expected (and also tests that the style is
      * considered as customized).
-     * 
+     *
      * @param name
      *            the edit part name
      * @param type
@@ -529,7 +540,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
 
     /**
      * Check if the menu "Font..." is available on the edit part with the given name and of the given type.
-     * 
+     *
      * @param name
      *            the edit part name
      * @param type
@@ -562,7 +573,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     /**
      * Ensures that underlining a label from the appearance page works as expected (and also tests that the style is
      * considered as customized).
-     * 
+     *
      * @param name
      *            the edit part name
      * @param type
@@ -588,7 +599,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
 
     /**
      * Ensures that changing a label as italic and bold from the appearance page works as expected.
-     * 
+     *
      * @param name
      *            the edit part name
      * @param type
@@ -728,7 +739,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     /**
      * Ensures that changing the font size of a label from the appearance page works as expected (and also tests that
      * the style is considered as custom).
-     * 
+     *
      * @param name
      *            the edit part name
      * @param type
@@ -768,7 +779,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     /**
      * Ensures that changing the font of a label from the appearance page works as expected (and also tests that the
      * style is considered as custom).
-     * 
+     *
      * @param name
      *            the edit part name
      * @param type
@@ -780,7 +791,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
          * Last found common fonts : Arial, Arial Black, Comic Sans MS, Courier New, DejaVu Sans, DejaVu Sans Mono,
          * DejaVu Serif, Georgia, Impact, Times New Roma, Trebuchet MS, Verdana , Webdings.
          */
-        final String modifiedFont = "Courier New";
+        final String modifiedFont = "Comic Sans MS";
         Predicate<SWTBotGefEditPart> stateWhenButtonIsCheckedPredicate = new Predicate<SWTBotGefEditPart>() {
 
             @Override
