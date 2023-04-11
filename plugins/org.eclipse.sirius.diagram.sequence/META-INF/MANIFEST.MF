@@ -28,7 +28,7 @@ Export-Package: org.eclipse.sirius.diagram.sequence.business.api.util;version="7
  org.eclipse.sirius.diagram.sequence.tool.internal.validation.description.constraints;version="7.2.0";x-internal:=true
 Require-Bundle: org.eclipse.sirius.common;bundle-version="7.2.0",
  org.eclipse.sirius.ecore.extender;bundle-version="7.2.0",
- com.google.guava;bundle-version="[21.0,30.2)",
+ com.google.guava;bundle-version="[21.0,32)",
  org.eclipse.gmf.runtime.notation;bundle-version="1.10.0",
  org.eclipse.draw2d;bundle-version="3.9.0",
  org.eclipse.sirius.diagram;bundle-version="7.2.0";visibility:=reexport,

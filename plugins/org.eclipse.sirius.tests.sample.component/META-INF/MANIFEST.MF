@@ -13,6 +13,6 @@ Export-Package: org.eclipse.sirius.tests.sample.component,
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.emf.ecore.xmi,
- com.google.guava;bundle-version="[21.0,30.2)"
+ com.google.guava;bundle-version="[21.0,32)"
 Bundle-ActivationPolicy: lazy
 Automatic-Module-Name: org.eclipse.sirius.tests.sample.component
