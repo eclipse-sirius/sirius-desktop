@@ -34,4 +34,10 @@ location Eclipse-2023-03 "https://download.eclipse.org/releases/2023-03/" {
 	org.eclipse.platform.feature.group lazy
 	org.eclipse.sdk.feature.group lazy
 	org.eclipse.uml2.sdk.feature.group lazy
+	org.eclipse.xtend.sdk.feature.group lazy
+	org.eclipse.xtext.sdk.feature.group lazy
+}
+
+location EEF-1.5 "https://download.eclipse.org/modeling/emft/eef/updates/releases/1.5/R201601141612" {
+        org.eclipse.emf.eef.runtime lazy
 }
