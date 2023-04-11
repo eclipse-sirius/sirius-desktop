@@ -28,7 +28,7 @@ Bundle-Activator: org.eclipse.sirius.ecore.design.service.EcoreSamplePlugin
 Export-Package: org.eclipse.sirius.ecore.design.service;version="3.0.0",
  org.eclipse.sirius.sample.ecore.design.action;version="3.0.0",
  org.eclipse.sirius.sample.ecore.design.editor;version="3.0.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.sirius.ext.base;version="2.0.0",
  org.eclipse.sirius.ext.emf;version="2.0.0"

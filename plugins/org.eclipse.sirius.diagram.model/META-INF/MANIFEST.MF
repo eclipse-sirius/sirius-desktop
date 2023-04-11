@@ -41,7 +41,7 @@ Export-Package: org.eclipse.sirius.diagram;version="7.2.0",
  org.eclipse.sirius.diagram.model.tools.internal;version="7.2.0";x-internal:=true,
  org.eclipse.sirius.diagram.model.tools.internal.util,
  org.eclipse.sirius.diagram.util;version="7.2.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.sirius.ext.base;version="2.1.0",
  org.eclipse.sirius.ext.base.cache;version="2.0.0",

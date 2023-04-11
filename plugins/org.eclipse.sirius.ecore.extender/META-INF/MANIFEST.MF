@@ -22,7 +22,7 @@ Export-Package: org.eclipse.sirius.ecore.extender.business.api.accessor;version=
  org.eclipse.sirius.ecore.extender.tool.internal;version="3.0.0";x-internal:=true
 Bundle-Activator: org.eclipse.sirius.ecore.extender.business.internal.ExtenderPlugin$Implementation
 Eclipse-LazyStart: true
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Import-Package: org.eclipse.sirius.ext.base;version="2.1.0",

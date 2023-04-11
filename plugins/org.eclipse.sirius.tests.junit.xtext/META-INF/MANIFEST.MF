@@ -20,7 +20,7 @@ Require-Bundle: org.eclipse.sirius.tests.junit,
 Bundle-Activator: org.eclipse.sirius.tests.xtext.SiriusXtextTestsPlugin
 Eclipse-LazyStart: true
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Vendor: %providerName
 Export-Package: org.eclipse.sirius.tests.xtext,
  org.eclipse.sirius.tests.xtext.suite

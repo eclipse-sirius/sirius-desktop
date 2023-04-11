@@ -8,11 +8,15 @@ h2(#sirius7.2.0). Changes in Sirius 7.2.0
 
 h3. User-Visible Changes
 
+* <span class="label label-info">Modified</span>JRE17 is required to use Sirius.
+
 h3. Specifier-Visible Changes
 
 * <span class="label label-success">Added</span> New decorators are now available for the beginning and edge of edges: @CirclePlus@, @DiamondWithDot@, @FillDiamondWithDot@, @InputArrowWithDiamondAndDot@, @InputArrowWithDot@, @InputArrowWithFillDiamondAndDot@.
 
 h3. Developer-Visible Changes
+
+* <span class="label label-info">Modified</span>Java 17 is required as BREE and source level. But the runtime compatibility is already effective since Sirius 7.0.
 
 h2(#sirius7.1.0). Changes in Sirius 7.1.0
 

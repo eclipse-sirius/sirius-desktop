@@ -7,7 +7,7 @@ Bundle-ClassPath: .
 Bundle-Activator: org.eclipse.sirius.sample.interactions.provider.InteractionsEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: org.eclipse.sirius.sample.interactions.provider
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.sirius.sample.interactions;visibility:=reexport,

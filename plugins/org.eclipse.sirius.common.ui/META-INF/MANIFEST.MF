@@ -39,7 +39,7 @@ Export-Package: org.eclipse.sirius.common.ui;version="2.1.0",
  org.eclipse.sirius.common.ui.tools.internal.util;x-internal:=true;version="2.0.4"
 Bundle-Activator: org.eclipse.sirius.common.ui.SiriusTransPlugin$Implementation
 Eclipse-LazyStart: true
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Import-Package: org.eclipse.sirius.ext.base;version="2.1.0",

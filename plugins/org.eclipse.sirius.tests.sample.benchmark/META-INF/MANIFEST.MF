@@ -6,7 +6,7 @@ Bundle-Version: 7.2.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: org.eclipse.sirius.tests.sample.benchmark,
  org.eclipse.sirius.tests.sample.benchmark.impl,
  org.eclipse.sirius.tests.sample.benchmark.util

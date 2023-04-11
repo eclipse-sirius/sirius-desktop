@@ -9,7 +9,7 @@ Bundle-Localization: plugin
 Require-Bundle: org.eclipse.sirius.tests.sample.xtext.statemachine,
  org.eclipse.xtext.ide,
  org.eclipse.xtext.xbase.ide
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: org.eclipse.sirius.tests.sample.xtext.ide.contentassist.antlr.internal,
  org.eclipse.sirius.tests.sample.xtext.ide.contentassist.antlr
 Automatic-Module-Name: org.eclipse.sirius.tests.sample.xtext.statemachine.ide

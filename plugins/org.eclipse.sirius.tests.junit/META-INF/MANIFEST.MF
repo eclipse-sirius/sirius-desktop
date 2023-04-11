@@ -89,7 +89,7 @@ Require-Bundle: org.eclipse.sirius.tests.sample.benchmark,
 Bundle-Activator: org.eclipse.sirius.tests.SiriusTestsPlugin
 Eclipse-LazyStart: true
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Vendor: %providerName
 Export-Package: org.eclipse.sirius.tests,
  org.eclipse.sirius.tests.suite,
