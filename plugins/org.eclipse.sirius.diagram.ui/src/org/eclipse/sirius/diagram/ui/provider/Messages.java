@@ -710,10 +710,13 @@ public final class Messages {
     public static String IDiagramOutlinePage_overviewTooltip;
 
     @TranslatableMessage
-    public static String ImageMarkerResolution_label;
+    public static String ImageMarkerMassResolution_label;
 
     @TranslatableMessage
-    public static String ImageMarkerMassResolution_label;
+    public static String ImageMarkerRemove_label;
+
+    @TranslatableMessage
+    public static String ImageMarkerResolution_label;
 
     @TranslatableMessage
     public static String ImageSelectionDialog_imageNotFound;

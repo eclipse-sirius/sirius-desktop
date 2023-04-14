@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2022 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2022, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -19,23 +19,20 @@ import org.eclipse.ui.IMarkerResolutionGenerator;
 
 /**
  * Marker resolution generator looking for Marker related to broken images.
- * 
+ *
  * @author lfasani
- * 
+ *
  */
 public class ImageMarkerResolutionGenerator implements IMarkerResolutionGenerator {
     @Override
     public IMarkerResolution[] getResolutions(IMarker marker) {
         final boolean isImagePathMarker = marker.getAttribute(NavigationMarkerConstants.MARKER_IMAGE, false);
         if (isImagePathMarker) {
-            String imageIssueKind = marker.getAttribute(NavigationMarkerConstants.IMAGE_PATH_TARGET_KEY, ""); //$NON-NLS-1$
-            IMarkerResolution[] resolutions = null;
-            if (imageIssueKind.isBlank()) {
-                resolutions = new IMarkerResolution[] { new ImageMarkerResolution() };
-            } else {
-                resolutions = new IMarkerResolution[] { new ImageMarkerResolution(), new ImageMarkerMassResolution() };
-            }
-            return resolutions;
+            return new IMarkerResolution[] { //
+                    new ImageMarkerResolution(), //
+                    new ImageMarkerMassResolution(), //
+                    new ImageMarkerRemoveResolution() //
+            };
         }
         return new IMarkerResolution[] {};
     }
