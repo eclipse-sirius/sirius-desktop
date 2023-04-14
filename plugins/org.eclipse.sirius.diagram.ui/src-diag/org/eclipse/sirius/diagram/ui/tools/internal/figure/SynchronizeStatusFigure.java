@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2018, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -230,7 +230,7 @@ public class SynchronizeStatusFigure extends Ellipse implements IFixedFigure {
      */
     public static Optional<SynchronizeStatusFigure> getDiagramSynchronizeStatusFigure(DiagramRootEditPart rootEditPart) {
         final LayeredPane pane = (LayeredPane) rootEditPart.getLayer(LayerConstants.PRINTABLE_LAYERS);
-        return pane.getChildren().stream().filter(SynchronizeStatusFigure.class::isInstance).findFirst();
+        return pane.getChildren().stream().filter(SynchronizeStatusFigure.class::isInstance).map(SynchronizeStatusFigure.class::cast).findFirst();
     }
 
     /**

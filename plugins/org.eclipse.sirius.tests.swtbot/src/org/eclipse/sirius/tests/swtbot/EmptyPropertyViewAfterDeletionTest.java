@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -294,7 +294,7 @@ public class EmptyPropertyViewAfterDeletionTest extends AbstractSiriusSwtBotGefT
         EditPart rootEditPart = editor.rootEditPart().part();
         LayerManager layerManager = LayerManager.Helper.find(rootEditPart);
         IFigure decorationLayer = layerManager.getLayer(DiagramRootEditPart.DECORATION_PRINTABLE_LAYER);
-        Stream<IDecoration> decorations = decorationLayer.getChildren().stream().filter(IDecoration.class::isInstance);
+        Stream<IDecoration> decorations = decorationLayer.getChildren().stream().filter(IDecoration.class::isInstance).map(IDecoration.class::cast);
         redCrossDecoratorNumbers += decorations.count();
         return redCrossDecoratorNumbers;
     }

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010, 2022 THALES GLOBAL SERVICES
+ * Copyright (c) 2010, 2022, 2023 THALES GLOBAL SERVICES
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -314,7 +314,7 @@ public class SWTBotSiriusGefViewer extends SWTBotGefViewer {
         if (isLabel(figure, label)) {
             result = true;
         } else {
-            for (Iterator<Object> iteratorFigureChildren = figure.getChildren().iterator(); iteratorFigureChildren.hasNext() && !result; /* */) {
+            for (Iterator<? extends IFigure> iteratorFigureChildren = figure.getChildren().iterator(); iteratorFigureChildren.hasNext() && !result; /* */) {
                 Object figureChild = iteratorFigureChildren.next();
                 if (isLabel((IFigure) figureChild, label) || findLabelFigure((IFigure) figureChild, label)) {
                     result = true;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2021, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -237,9 +237,9 @@ public abstract class AbstractEdgesZOrderAction implements IObjectActionDelegate
         PointList tmpLine = connection.getSmoothPoints();
 
         // only check intersections with connect views which are above or below this one.
-        List<IFigure> children = pParent.getChildren();
+        List<? extends IFigure> children = pParent.getChildren();
         int nIndex = children.indexOf(connection);
-        ListIterator<IFigure> childIter = children.listIterator(nIndex);
+        ListIterator<? extends IFigure> childIter = children.listIterator(nIndex);
 
         while (above ? childIter.hasNext() : childIter.hasPrevious()) {
             IFigure figure = above ? childIter.next() : childIter.previous();

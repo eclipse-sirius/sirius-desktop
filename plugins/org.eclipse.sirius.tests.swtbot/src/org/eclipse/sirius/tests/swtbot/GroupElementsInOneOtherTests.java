@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2020, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -251,7 +251,7 @@ public class GroupElementsInOneOtherTests extends AbstractSiriusSwtBotGefTestCas
      * @return true if there is a figure at this location, false otherwise.
      */
     protected boolean isThereFigureAtLocation(IFigure parent, Point location, Set<IFigure> figuresToIgnore) {
-        ListIterator<IFigure> listIterator = parent.getChildren().listIterator();
+        ListIterator<? extends IFigure> listIterator = parent.getChildren().listIterator();
         while (listIterator.hasNext()) {
             IFigure child = listIterator.next();
             if (!figuresToIgnore.contains(child)) {

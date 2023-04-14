@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2020, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -312,8 +312,8 @@ public class DecorationDisplayTest extends GenericTestCase {
      */
     private void checkDecorationStringTooltip(List<Figure> dDiagramElementDecorationFigures, Position position, Rectangle expectedGroupBounds, String tooltipLabel) {
         Figure groupFigure = getGroupFigure(dDiagramElementDecorationFigures, position, expectedGroupBounds);
-        List<Figure> children = ((Figure) groupFigure.getChildren().get(0)).getChildren();
-        Figure figure = children.get(0);
+        List<? extends IFigure> children = ((IFigure) groupFigure.getChildren().get(0)).getChildren();
+        IFigure figure = children.get(0);
         assertTrue("Decoration tooltip figure should be an instance of org.eclipse.draw2d.Label in " + position.getName() + " group", figure.getToolTip() instanceof Label);
         assertEquals("Bad decoration tooltip in " + position.getName() + " group", tooltipLabel, ((Label) figure.getToolTip()).getText());
     }
@@ -335,14 +335,14 @@ public class DecorationDisplayTest extends GenericTestCase {
     private void checkGroupBoundingBox(List<Figure> dDiagramElementDecorationFigures, Position position, Rectangle expectedGroupBounds, List<Rectangle> expectedDecosBounds, boolean isListDecorator) {
         Figure groupFigure = getGroupFigure(dDiagramElementDecorationFigures, position, expectedGroupBounds);
 
-        List<Figure> children = ((Figure) groupFigure.getChildren().get(0)).getChildren();
+        List<? extends IFigure> children = ((IFigure) groupFigure.getChildren().get(0)).getChildren();
         assertTrue("The decorations at " + position + " should " + (isListDecorator ? "" : "NOT ") + "be merged into a list decorator",
                 isListDecorator == children.get(0).getClass().getName().contains("ListDecorationFigure"));
 
         // check the content of group decorator
         if (!isListDecorator) {
             assertEquals("Bad decoration number in " + position.getName(), expectedDecosBounds.size(), children.size());
-            for (Figure figure : children) {
+            for (IFigure figure : children) {
                 assertTrue("Bad decoration position in " + position.getName() + "group", expectedDecosBounds.contains(figure.getBounds()));
             }
         }
@@ -412,7 +412,7 @@ public class DecorationDisplayTest extends GenericTestCase {
         Figure groupFigure = getGroupFigure(dDiagramElementDecorationFigures, Position.SOUTH_EAST_LITERAL, new Rectangle(646, 163, 16, 16));
         Figure tooltip = (Figure) ((Figure) (((Figure) groupFigure.getChildren().get(0)).getChildren().get(0))).getToolTip();
         assertTrue("Decoration tooltip figure should be an instance of org.eclipse.draw2d.Label in " + Position.SOUTH_EAST_LITERAL + " group", tooltip instanceof Figure);
-        List<Figure> children = tooltip.getChildren();
+        List<? extends IFigure> children = tooltip.getChildren();
         assertEquals("The number of figure contained in the " + Position.SOUTH_EAST_LITERAL + " list decorator tooltip is incorrect", 8, children.size());
 
     }

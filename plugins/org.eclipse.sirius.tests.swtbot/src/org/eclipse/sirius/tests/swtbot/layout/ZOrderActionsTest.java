@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2021, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -191,7 +191,7 @@ public class ZOrderActionsTest extends AbstractSiriusSwtBotGefTestCase {
         int gmfIndexToCompare = gmfDiagram.getEdges().indexOf(gmfEdgeToCompare);
 
         IFigure figureEdgeToCompare = ((DEdgeEditPart) swtBotEditPartEdgeToCompare.part()).getFigure();
-        List<IFigure> edgeFigures = editor.getDiagramEditPart().getLayer(LayerConstants.CONNECTION_LAYER).getChildren();
+        List<? extends IFigure> edgeFigures = editor.getDiagramEditPart().getLayer(LayerConstants.CONNECTION_LAYER).getChildren();
         int figureIndexToCompare = edgeFigures.indexOf(figureEdgeToCompare);
 
         int previousGmfIndexOfMovedEdge = -1;

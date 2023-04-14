@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES
+ * Copyright (c) 2010, 2017, 2023 THALES GLOBAL SERVICES
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartViewer;
@@ -69,9 +68,9 @@ public abstract class AbstractDecoratorMatcher extends BaseMatcher<EditPart> {
         }
 
         boolean imageFigureExFound = false;
-        Iterator<Figure> it = figure.getChildren().iterator();
+        Iterator<? extends IFigure> it = figure.getChildren().iterator();
         while (it.hasNext() && !imageFigureExFound) {
-            Figure innerFigure = it.next();
+            IFigure innerFigure = it.next();
             imageFigureExFound = findFigureWithImage(innerFigure, image);
         }
 
