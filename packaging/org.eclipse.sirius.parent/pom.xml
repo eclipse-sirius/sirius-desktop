@@ -264,7 +264,7 @@
           <artifactId>maven-resources-plugin</artifactId>
           <version>3.2.0</version>
           <configuration>
-            <encoding>ISO-8859-1</encoding>
+            <encoding>UTF-8</encoding>
           </configuration>
         </plugin>
         <!-- Exclude pom.xml and pom.properties from generated archive (see http://maven.apache.org/shared/maven-archiver/) -->
