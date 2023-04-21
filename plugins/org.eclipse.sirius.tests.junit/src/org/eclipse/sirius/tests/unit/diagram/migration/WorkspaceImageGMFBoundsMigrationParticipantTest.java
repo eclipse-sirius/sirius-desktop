@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2022, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -38,7 +38,7 @@ import org.osgi.framework.Version;
 
 /**
  * Tests for {@link WorkspaceImageGMFBoundsMigrationParticipant}
- * 
+ *
  * @author Glenn Plouhinec
  *
  */
@@ -77,7 +77,7 @@ public class WorkspaceImageGMFBoundsMigrationParticipantTest extends SiriusDiagr
         Version migrationVersion = new WorkspaceImageGMFBoundsMigrationParticipant().getMigrationVersion();
 
         // Check that the migration of the session resource is needed.
-        Version loadedVersion = checkRepresentationFileMigrationStatus(URI.createPlatformResourceURI(SESSION_RESOURCE_PATH, true), true);
+        Version loadedVersion = checkRepresentationFileMigrationStatus(URI.createPlatformPluginURI(SESSION_RESOURCE_PATH, true), true);
         assertTrue("The migration must be required on test data.", migrationVersion.compareTo(loadedVersion) > 0); //$NON-NLS-1$
     }
 

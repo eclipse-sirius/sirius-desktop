@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2021, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -35,7 +35,7 @@ import org.osgi.framework.Version;
 
 /**
  * Test for {@link EdgesZOrderMigrationParticipant}.
- * 
+ *
  * @author lredor
  */
 public class EdgesZOrderMigrationParticipantTest extends SiriusDiagramTestCase {
@@ -75,7 +75,7 @@ public class EdgesZOrderMigrationParticipantTest extends SiriusDiagramTestCase {
         Version migrationVersion = new EdgesZOrderMigrationParticipant().getMigrationVersion();
 
         // Check that the migration of the session resource is needed.
-        Version loadedVersion = checkRepresentationFileMigrationStatus(URI.createPlatformResourceURI(SESSION_RESOURCE_PATH, true), true);
+        Version loadedVersion = checkRepresentationFileMigrationStatus(URI.createPlatformPluginURI(SESSION_RESOURCE_PATH, true), true);
         assertTrue("The migration must be required on test data.", migrationVersion.compareTo(loadedVersion) > 0);
     }
 
@@ -114,7 +114,7 @@ public class EdgesZOrderMigrationParticipantTest extends SiriusDiagramTestCase {
     /**
      * Check the number of jump links. This method uses ReflectionHelper to access private fields to count the jump
      * links on the figure.
-     * 
+     *
      * @param edgeName
      *            The edge that is currently tested
      * @param connection
@@ -149,14 +149,14 @@ public class EdgesZOrderMigrationParticipantTest extends SiriusDiagramTestCase {
 
     /**
      * Get the connection figure corresponding to the edge name.
-     * 
+     *
      * @param diagram
      *            The diagram containing the edge.
      * @param editor
      *            The editor containing the searched figure.
      * @param edgeName
      *            The name of the searched edge.
-     * 
+     *
      * @return The connection figure corresponding to the edge name.
      */
     protected SiriusPolylineConnectionEx getConnection(DDiagram diagram, IEditorPart editor, String edgeName) {

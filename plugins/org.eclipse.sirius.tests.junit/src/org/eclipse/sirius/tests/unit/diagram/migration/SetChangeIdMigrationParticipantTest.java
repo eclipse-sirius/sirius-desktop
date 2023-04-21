@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021, 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2021, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -33,7 +33,7 @@ import org.xml.sax.helpers.DefaultHandler;
 
 /**
  * Tests the migration participant {@link SetChangeIdMigrationParticipant}.
- * 
+ *
  * @author Glenn Plouhinec
  *
  */
@@ -63,8 +63,8 @@ public class SetChangeIdMigrationParticipantTest extends SiriusDiagramTestCase {
         Version migrationVersion = new SetChangeIdMigrationParticipant().getMigrationVersion();
 
         // Check that the migration of the session resource is needed.
-        URI uri = URI.createPlatformPluginURI(SiriusTestsPlugin.PLUGIN_ID + PATH + SESSION_RESOURCE_NAME, true);
-        Version loadedVersion = checkRepresentationFileMigrationStatus(URI.createPlatformResourceURI(SESSION_RESOURCE_PATH, true), true);
+        URI uri = URI.createPlatformPluginURI(SESSION_RESOURCE_PATH, true);
+        Version loadedVersion = checkRepresentationFileMigrationStatus(uri, true);
         assertTrue("The migration must be required on test data.", migrationVersion.compareTo(loadedVersion) > 0);
 
         checkFileMissingChangeId(uri, true, "Test data should contain changeId");
