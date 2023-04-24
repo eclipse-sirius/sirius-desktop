@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -23,7 +23,6 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.internal.componentization.mappings.table.CandidateMappingManager;
-import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
@@ -41,7 +40,7 @@ import org.eclipse.swtbot.swt.finder.waits.ICondition;
 
 /**
  * Test that we do not get an error when closing several selected projects.
- * 
+ *
  * @author mporhel
  */
 public class ProjectsConcurrentCloseTest extends AbstractSiriusSwtBotGefTestCase {
@@ -65,34 +64,16 @@ public class ProjectsConcurrentCloseTest extends AbstractSiriusSwtBotGefTestCase
         // Creation
         designerPerspective.createProject(getProject2Name());
         // Copy files
-        copyFileToProject(getProject2Name() + "/", Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL_FILE, SESSION_FILE);
+        copyFileToProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, getProject2Name(), MODEL_FILE, SESSION_FILE);
     }
 
     /**
      * Get the project name to create.
-     * 
+     *
      * @return Project name.
      */
     protected String getProject2Name() {
         return getProjectName() + "2";
-    }
-
-    /***
-     * Copy file to the given project.
-     * 
-     * @param destinationPath
-     *            a "projetID/path/" path.
-     * @param pluginId
-     *            corresponding to project name containing data for test
-     * @param dataUnitDir
-     *            the path of the directory containing datas
-     * @param fileNames
-     *            the files to copy
-     */
-    private void copyFileToProject(String destinationPath, String pluginId, String dataUnitDir, final String... fileNames) {
-        for (final String fileName : fileNames) {
-            EclipseTestsSupportHelper.INSTANCE.copyFile(pluginId, dataUnitDir + fileName, destinationPath + "/" + fileName);
-        }
     }
 
     @Override
@@ -142,7 +123,7 @@ public class ProjectsConcurrentCloseTest extends AbstractSiriusSwtBotGefTestCase
     /**
      * This test verifies that two projects can be closed 'concurrently': user
      * select several projects and right click "Close Project".
-     * 
+     *
      * No {@link ConcurrentModificationException} should occur (one was
      * previously triggered in {@link EditingSession}).
      */
@@ -183,7 +164,7 @@ public class ProjectsConcurrentCloseTest extends AbstractSiriusSwtBotGefTestCase
      * This test verifies that two projects with opened diagrams can be closed
      * 'concurrently': user select several projects and right click
      * "Close Project".
-     * 
+     *
      * No {@link ConcurrentModificationException} should occur (one was
      * previously triggered in {@link CandidateMappingManager}).
      */

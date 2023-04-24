@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2022 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -481,7 +481,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      * @see #runTest()
      */
     public void takeScreenshot(CharSequence suffix) {
-        String fileName = SWTBotPreferences.SCREENSHOTS_DIR + "/" + "screenshot-" + ClassUtils.simpleClassName(getClass()) + AbstractSiriusSwtBotGefTestCase.POINT + getName() + suffix
+        String fileName = SWTBotPreferences.SCREENSHOTS_DIR + "/screenshot-" + ClassUtils.simpleClassName(getClass()) + AbstractSiriusSwtBotGefTestCase.POINT + getName() + suffix
                 + AbstractSiriusSwtBotGefTestCase.POINT + SWTBotPreferences.SCREENSHOT_FORMAT.toLowerCase();
         new File(SWTBotPreferences.SCREENSHOTS_DIR).mkdirs(); // $NON-NLS-1$
         SWTUtils.captureScreenshot(fileName);
@@ -602,9 +602,9 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
 
     /**
      * Change a preference and store the old value. It will be automatically reset during tear down.
-     * 
+     *
      * TO CALL ONLY ONCE PER TEST (set up + test)
-     * 
+     *
      * @param preferenceKey
      *            The key of the preference.
      * @param newValue
@@ -1035,7 +1035,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     /**
      * Returns the first representation descriptor with a given name, optionally filtering by a representation
      * description name.
-     * 
+     *
      * @param session
      *            The session to search
      * @param representationDescriptionName
@@ -1478,7 +1478,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
 
     /**
      * Enable warning and/or error catch and reset existing recorded warnings and/or errors.
-     * 
+     *
      * @param activateWarningCatch
      *            True to activate warning catch and reset existing recorded warnings, false to not activate it.
      * @param activateErrorCatch
@@ -1775,13 +1775,31 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      * @param pluginId
      *            corresponding to project name containing data for test
      * @param dataUnitDir
-     *            the path of the directory containing datas
+     *            the path of the directory containing data
      * @param fileNames
      *            the files to copy
      */
     protected void copyFileToTestProject(String pluginId, String dataUnitDir, final String... fileNames) {
+        copyFileToProject(pluginId, dataUnitDir, getProjectName(), fileNames);
+    }
+
+    /**
+     * Copy file to specified test project.
+     *
+     * @param pluginId
+     *            corresponding to project name containing data for test
+     * @param dataUnitDir
+     *            the path of the directory containing data
+     * @param projectName
+     *            the name of the target project
+     * @param fileNames
+     *            the files to copy
+     */
+    protected void copyFileToProject(String pluginId, String dataUnitDir, String projectName, final String... fileNames) {
         for (final String fileName : fileNames) {
-            EclipseTestsSupportHelper.INSTANCE.copyFile(pluginId, dataUnitDir + fileName, getProjectName() + "/" + fileName);
+            String from = dataUnitDir + fileName;
+            String to = projectName + "/" + fileName;
+            EclipseTestsSupportHelper.INSTANCE.copyFile(pluginId, from, to);
         }
     }
 
