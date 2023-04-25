@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,7 +20,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.action.Action;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
-import org.eclipse.sirius.table.business.api.query.DLineQuery;
+import org.eclipse.sirius.table.business.api.helper.TableVariablesHelper;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.description.DeleteTool;
 import org.eclipse.sirius.table.metamodel.table.description.LineMapping;
@@ -109,14 +109,19 @@ public class DeleteLinesAction extends Action {
         boolean canExecute = !lines.isEmpty();
 
         for (DLine lineToDelete : lines) {
-            canExecute = canExecute && new DLineQuery(lineToDelete).canBeDeleted();
-
+            canExecute = canExecute && canExecute(lineToDelete);
             if (!canExecute) {
                 break;
             }
         }
 
         return canExecute;
+    }
+    
+    private boolean canExecute(DLine line) {
+        DeleteTool tool = getDeleteTool(line);
+        return tool == null // By default (no tool), element can be deleted
+                || TableVariablesHelper.isAxisToolEnable(tool, line);
     }
 
     private DeleteTool getDeleteTool(DLine line) {

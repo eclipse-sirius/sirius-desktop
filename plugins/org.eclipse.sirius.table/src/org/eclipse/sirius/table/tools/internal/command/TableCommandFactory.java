@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
@@ -13,9 +13,11 @@
 package org.eclipse.sirius.table.tools.internal.command;
 
 import java.text.MessageFormat;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Supplier;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.command.AbstractCommand;
@@ -28,21 +30,17 @@ import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
 import org.eclipse.sirius.business.api.helper.task.TaskHelper;
 import org.eclipse.sirius.business.api.helper.task.label.InitInterpreterFromParsedVariableTask2;
-import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.internal.helper.task.DeleteDRepresentationElementsTask;
 import org.eclipse.sirius.business.internal.helper.task.DeleteWithoutToolTask;
-import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
+import org.eclipse.sirius.table.business.api.helper.TableVariablesHelper;
 import org.eclipse.sirius.table.business.internal.helper.task.CreateTableTask;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DLine;
@@ -60,7 +58,6 @@ import org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping
 import org.eclipse.sirius.table.metamodel.table.description.LabelEditTool;
 import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
 import org.eclipse.sirius.table.metamodel.table.description.TableTool;
-import org.eclipse.sirius.table.metamodel.table.description.TableVariable;
 import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
 import org.eclipse.sirius.table.tools.api.interpreter.IInterpreterSiriusTableVariables;
 import org.eclipse.sirius.table.tools.internal.Messages;
@@ -77,8 +74,9 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
+import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
+import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
-import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
  * A command factory that creates commands that can be undone.
@@ -116,6 +114,9 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
 
     /**
      * Returns a command that can delete the specified element.
+     * <p>
+     * Precondition must be evaluated before calling this method: Usually on UiAction 'canExecute'.
+     * </p>
      *
      * @param element
      *            the element to delete (a {@link DLine} or a {@link DTargetColumn}).
@@ -127,38 +128,43 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
 
         if (element instanceof DLine || element instanceof DTargetColumn) {
             // We check that, in case of tool, the tool allows the deletion
-            DeleteTool deleteTool = getDeleteTool(element);
-            if (deleteTool == null || isDeleteAllowedByTool(element, deleteTool)) {
-                if (!getPermissionAuthority().canEditInstance(element)) {
-                    cmd = new InvalidPermissionCommand(domain, element);
+            
+            return createAuthorisedCommand(element, element.eContainer(), () -> {
+                DeleteTool deleteTool = getDeleteTool(element);
+                final SiriusCommand result;
+                if (deleteTool != null) {
+                    result = addDeleteTableElementFromTool(element, deleteTool);
                 } else {
-                    if (!getPermissionAuthority().canEditInstance(element.eContainer())) {
-                        cmd = new InvalidPermissionCommand(domain, element.eContainer());
-                    } else {
-
-                        final SiriusCommand result = new SiriusCommand(domain);
-                        final DTable parentTable = TableHelper.getTable(element);
-                        if (deleteTool != null) {
-                            addDeleteTableElementFromTool(result, element, deleteTool);
-                            addRefreshTask(parentTable, result, deleteTool);
-                            cmd = new NoNullResourceCommand(result, element);
-                        } else {
-                            result.getTasks().add(new DeleteWithoutToolTask(element, modelAccessor, commandTaskHelper));
-                            addRefreshTask(parentTable, result, deleteTool);
-                            cmd = new NoNullResourceCommand(result, element);
-                        }
-                    }
+                    result = new SiriusCommand(domain);
+                    result.getTasks().add(new DeleteWithoutToolTask(element, modelAccessor, commandTaskHelper));
                 }
-            }
+                addRefreshTask(TableHelper.getTable(element), result, deleteTool);
+                return new NoNullResourceCommand(result, element);
+            });
         }
         return cmd;
     }
 
+
+    @Override
+    public Command buildCreateLineCommandFromTool(LineContainer lineContainer, CreateTool tool) {
+        return buildCreateCommandFromTool(lineContainer, lineContainer.getTarget(), 
+                TableVariablesHelper.getVariables(lineContainer), tool);
+    }
+
+    @Override
+    public Command buildCreateColumnCommandFromTool(DSemanticDecorator containerView, CreateTool tool) {
+        return buildCreateCommandFromTool(containerView, containerView.getTarget(), 
+                TableVariablesHelper.getVariables(containerView), tool);
+    }
+    
+    
     /**
      * Create a command that creates a line.
      *
      * @param lineContainer
      *            container element in which the command should put the created line.
+     *            the semantic current element
      * @param semanticCurrentElement
      *            the semantic current element
      * @param tool
@@ -166,21 +172,16 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
      * @return a command able to create the line and putting it in the container, corresponding to the
      *         {@link CreateTool}.
      */
-    @Override
+    @Override @Deprecated
     public Command buildCreateLineCommandFromTool(final LineContainer lineContainer, final EObject semanticCurrentElement, final CreateTool tool) {
-        Command result = UnexecutableCommand.INSTANCE;
-        if (!getPermissionAuthority().canEditInstance(lineContainer)) {
-            result = new InvalidPermissionCommand(domain, lineContainer);
-        } else {
-            if (commandTaskHelper.checkPrecondition(semanticCurrentElement, tool)) {
-                SiriusCommand createLineCommand = buildCommandFromModelOfTool(semanticCurrentElement, tool, lineContainer);
-                addRefreshTask(lineContainer, createLineCommand, tool);
-                Option<DRepresentation> dRepresentation = new EObjectQuery(lineContainer).getRepresentation();
-                createLineCommand.getTasks().add(new ElementsToSelectTask(tool, InterpreterUtil.getInterpreter(lineContainer.getTarget()), lineContainer.getTarget(), dRepresentation.get()));
-                result = createLineCommand;
-            }
-        }
-        return result;
+        // legacy method:
+        // not used by UI anymore but interface.
+        
+        return buildCreateCommandFromTool(lineContainer, semanticCurrentElement, 
+                mapOf(IInterpreterSiriusVariables.ROOT, TableHelper.getTable(lineContainer).getTarget(),
+                        IInterpreterSiriusVariables.CONTAINER, lineContainer.getTarget(),
+                        IInterpreterSiriusVariables.ELEMENT, semanticCurrentElement), 
+                tool);
     }
 
     /**
@@ -195,24 +196,31 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
      * @return a command able to create the line and putting it in the container, corresponding to the
      *         {@link CreateTool}.
      */
-    @Override
+    @Override @Deprecated
     public Command buildCreateColumnCommandFromTool(final DTable containerView, final EObject semanticCurrentElement, final CreateTool tool) {
-        Command result = UnexecutableCommand.INSTANCE;
-        if (!getPermissionAuthority().canEditInstance(containerView)) {
-            result = new InvalidPermissionCommand(domain, containerView);
-        } else {
-            if (commandTaskHelper.checkPrecondition(semanticCurrentElement, tool)) {
-                SiriusCommand createColumnCommand = buildCommandFromModelOfTool(semanticCurrentElement, tool, containerView);
-                // Add the task that creates the element DTargetColumn
-                // result.getTasks().add(new CreateDLineTask(tool, result,
-                // modelAccessor, lineContainer));
-                addRefreshTask(containerView, createColumnCommand, tool);
-                Option<DRepresentation> dRepresentation = new EObjectQuery(containerView).getRepresentation();
-                createColumnCommand.getTasks().add(new ElementsToSelectTask(tool, InterpreterUtil.getInterpreter(containerView.getTarget()), containerView.getTarget(), dRepresentation.get()));
-                result = createColumnCommand;
-            }
-        }
-        return result;
+        // legacy method:
+        // not used by UI anymore but interface.
+
+        return buildCreateCommandFromTool(containerView, semanticCurrentElement, 
+                mapOf(IInterpreterSiriusVariables.ROOT, containerView.getTarget(),
+                        IInterpreterSiriusVariables.CONTAINER, containerView.getTarget(),
+                        IInterpreterSiriusVariables.ELEMENT, semanticCurrentElement), 
+                tool);
+        
+
+    }
+    
+    private <TT extends AbstractToolDescription & TableTool> Command buildCreateCommandFromTool(
+            final DSemanticDecorator view, 
+            final EObject semanticCurrentElement, Map<String, EObject> variables,
+            final TT tool) {
+        return createAuthorisedCommand(view, () -> {        
+            SiriusCommand result = buildCommandFromTool(TableHelper.getTable(view),
+                    semanticCurrentElement,  variables, tool);
+            addRefreshTask(view, result, tool);
+            addSelectTask(view, result, tool);
+            return result;
+        });
     }
 
     private DeleteTool getDeleteTool(final DTableElement element) {
@@ -228,119 +236,61 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
         return result;
     }
 
-    /**
-     * Check the delete availability from tool, based on its condition expression.
-     * 
-     * @param element
-     *            the DTableElement
-     * @param deleteTool
-     *            the tool
-     * @return if the deletion is available from tool
-     */
-    private boolean isDeleteAllowedByTool(final DTableElement element, final DeleteTool deleteTool) {
-        final EObject semanticElement = ((DSemanticDecorator) element).getTarget();
-        final EObject rootContainer = TableHelper.getTable(element).getTarget();
-        // check precondition
-        boolean delete = true;
-        if (deleteTool.getPrecondition() != null && !StringUtil.isEmpty(deleteTool.getPrecondition().trim())) {
-            delete = false;
-            final IInterpreter acceleoInterpreter = InterpreterUtil.getInterpreter(semanticElement);
-            acceleoInterpreter.setVariable(IInterpreterSiriusVariables.ROOT, rootContainer);
-            acceleoInterpreter.setVariable(IInterpreterSiriusVariables.ELEMENT, semanticElement);
-            try {
-                delete = acceleoInterpreter.evaluateBoolean(semanticElement, deleteTool.getPrecondition());
-            } catch (final EvaluationException e) {
-                RuntimeLoggerManager.INSTANCE.error(deleteTool, ToolPackage.eINSTANCE.getAbstractToolDescription_Precondition(), e);
-            }
-            acceleoInterpreter.unSetVariable(IInterpreterSiriusVariables.ROOT);
-            acceleoInterpreter.unSetVariable(IInterpreterSiriusVariables.ELEMENT);
-        }
-        return delete;
-    }
+    private SiriusCommand addDeleteTableElementFromTool(final DTableElement element, final DeleteTool deleteTool) {
+        final SiriusCommand result = buildCommandFromTool(element, deleteTool);
 
-    private void addDeleteTableElementFromTool(final SiriusCommand cmd, final DTableElement element, final DeleteTool deleteTool) {
-        final EObject semanticElement = ((DSemanticDecorator) element).getTarget();
-        cmd.getTasks().addAll(buildCommandFromModelOfTool(semanticElement, deleteTool, element.eContainer()).getTasks());
-        cmd.getTasks().add(new DeleteDRepresentationElementsTask(modelAccessor, cmd, commandTaskHelper, element) {
+        result.getTasks().add(new DeleteDRepresentationElementsTask(modelAccessor, result, commandTaskHelper, element) {
             @Override
             protected void addDialectSpecificAdditionalDeleteSubTasks(DSemanticDecorator semDec, List<ICommandTask> subTasks) {
                 super.addDialectSpecificAdditionalDeleteSubTasks(semDec, subTasks);
                 if (semDec instanceof DCell) {
                     final DCell cell = (DCell) semDec;
-                    subTasks.add(new AbstractCommandTask() {
-
-                        @Override
-                        public String getLabel() {
-                            return ""; //$NON-NLS-1$
-                        }
-
-                        @Override
-                        public void execute() throws MetaClassNotFoundException, FeatureNotFoundException {
-                            cell.setColumn(null);
-                        }
-                    });
+                    subTasks.add(createTask("", () -> cell.setColumn(null))); //$NON-NLS-1$
                 }
             }
         });
+        return result;
     }
 
     /**
      * Build a command that covers all the model operations corresponding to a the semantic container and a
      * {@link org.eclipse.sirius.viewpoint.description.tool.ToolDescription}.
      *
-     * @param semanticCurrentElement
-     *            the semantic current Element.
+     * @param view
+     *            the container View
      * @param tool
      *            the {@link org.eclipse.sirius.viewpoint.description.tool.ToolDescription} .
-     * @param containerView
-     *            the container View
      * @return a command able to execute the tool.
      */
-    protected SiriusCommand buildCommandFromModelOfTool(final EObject semanticCurrentElement, final AbstractToolDescription tool, final EObject containerView) {
+    @Deprecated // 1 case ?
+    protected SiriusCommand buildCommandFromTool(final DSemanticDecorator view, final TableTool tool) {
+        return buildCommandFromTool(TableHelper.getTable(view), view.getTarget(), TableVariablesHelper.getVariables(view), tool);
+    }
+    
+
+    /**
+     * Build a command that covers all the model operations corresponding to a the semantic container and a
+     * {@link org.eclipse.sirius.viewpoint.description.tool.ToolDescription}.
+     *
+     * @param table
+     *            the containing table
+     * @param semanticCurrentElement
+     *            the semantic current Element.
+     * @param variables
+     *            used in operation
+     * @param tool
+     *            the {@link org.eclipse.sirius.viewpoint.description.tool.ToolDescription} .
+     * @return a command able to execute the tool.
+     */
+    protected SiriusCommand buildCommandFromTool(final DTable table, final EObject semanticCurrentElement, final Map<String, EObject> variables, final TableTool tool) {
         SiriusCommand result = new SiriusCommand(domain);
-        if (!getPermissionAuthority().canEditInstance(containerView)) {
-            result = new InvalidPermissionCommand(domain, containerView);
-        } else {
-            final Map<AbstractVariable, Object> variables = new HashMap<AbstractVariable, Object>();
-            if (tool instanceof DeleteTool) {
-                final DeleteTool deleteTool = (DeleteTool) tool;
-                if (containerView instanceof DTableElement) {
-                    variables.put(TableHelper.getVariable(deleteTool, IInterpreterSiriusVariables.ROOT), TableHelper.getTable(containerView).getTarget());
-                } else if (containerView instanceof DTable) {
-                    variables.put(TableHelper.getVariable(deleteTool, IInterpreterSiriusVariables.ROOT), ((DTable) containerView).getTarget());
-                }
-                variables.put(TableHelper.getVariable(deleteTool, IInterpreterSiriusVariables.ELEMENT), semanticCurrentElement);
-                // Initialization of the variables
-                result.getTasks().add(new InitInterpreterVariablesTask(variables, InterpreterUtil.getInterpreter(semanticCurrentElement), uiCallBack));
-                // Creation of the tasks to execute the tool
-                result.getTasks().add(commandTaskHelper.buildTaskFromModelOperation(TableHelper.getTable(containerView), semanticCurrentElement, deleteTool.getFirstModelOperation()));
-            } else if (tool instanceof CreateTool) {
-                final CreateTool creationTool = (CreateTool) tool;
-                if (containerView instanceof DTableElement) {
-                    variables.put(TableHelper.getVariable(creationTool, IInterpreterSiriusVariables.ROOT), TableHelper.getTable(containerView).getTarget());
-                    if (containerView instanceof DLine) {
-                        variables.put(TableHelper.getVariable(creationTool, IInterpreterSiriusVariables.CONTAINER), ((DLine) containerView).getTarget());
-                    }
-                } else if (containerView instanceof DTable) {
-                    TableVariable rootVariable = TableHelper.getVariable(creationTool, IInterpreterSiriusVariables.ROOT);
-                    if (rootVariable != null) {
-                        variables.put(rootVariable, ((DTable) containerView).getTarget());
-                    }
-                    TableVariable containerVariable = TableHelper.getVariable(creationTool, IInterpreterSiriusVariables.CONTAINER);
-                    if (containerVariable != null) {
-                        variables.put(containerVariable, ((DTable) containerView).getTarget());
-                    }
-                }
-                TableVariable elementVariable = TableHelper.getVariable(creationTool, IInterpreterSiriusVariables.ELEMENT);
-                if (elementVariable != null) {
-                    variables.put(elementVariable, semanticCurrentElement);
-                }
-                // Initialization of the variables
-                result.getTasks().add(new InitInterpreterVariablesTask(variables, InterpreterUtil.getInterpreter(semanticCurrentElement), uiCallBack));
-                // Creation of the tasks to execute the tool
-                result.getTasks().add(commandTaskHelper.buildTaskFromModelOperation(TableHelper.getTable(containerView), semanticCurrentElement, creationTool.getFirstModelOperation()));
-            }
-        }
+        
+        // Initialization of the variables
+        addInitVariablesTask(result, semanticCurrentElement, TableVariablesHelper.getTableVariables(tool, variables));
+        
+        // Creation of the tasks to execute the tool
+        addOperationTask(result, table, semanticCurrentElement, tool.getFirstModelOperation());
+    
         return result;
     }
 
@@ -360,52 +310,45 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
      */
     private SiriusCommand buildCommandFromCell(final DCell currentCell, final TableTool tool, final Object newValue) {
         SiriusCommand result = new SiriusCommand(domain, Messages.TableCommandFactory_setCellContent);
-        if (!getPermissionAuthority().canEditInstance(currentCell)) {
-            result = new InvalidPermissionCommand(domain, currentCell);
-        } else {
-            EObject interpreterContext = currentCell.getTarget();
-            if (interpreterContext == null) {
-                interpreterContext = currentCell.getLine().getTarget();
-            }
 
-            final Map<AbstractVariable, Object> variables = new HashMap<AbstractVariable, Object>();
-            variables.put(TableHelper.getVariable(tool, IInterpreterSiriusVariables.ROOT), TableHelper.getTable(currentCell).getTarget());
-            variables.put(TableHelper.getVariable(tool, IInterpreterSiriusTableVariables.LINE_SEMANTIC), currentCell.getLine().getTarget());
-            variables.put(TableHelper.getVariable(tool, IInterpreterSiriusTableVariables.LINE), currentCell.getLine());
-            variables.put(TableHelper.getVariable(tool, IInterpreterSiriusTableVariables.TABLE), TableHelper.getTable(currentCell));
-            if (currentCell.getColumn() instanceof DTargetColumn) {
-                variables.put(TableHelper.getVariable(tool, IInterpreterSiriusTableVariables.COLUMN_SEMANTIC), ((DTargetColumn) currentCell.getColumn()).getTarget());
-            }
-            if (tool instanceof LabelEditTool) {
-                variables.put(TableHelper.getVariable(tool, IInterpreterSiriusVariables.ELEMENT), currentCell.getTarget());
-            } else if (tool instanceof CellEditorTool) {
-                variables.put(TableHelper.getVariable(tool, IInterpreterSiriusVariables.ELEMENT), currentCell.getTarget());
-                variables.put(TableHelper.getVariable(tool, IInterpreterSiriusTableVariables.CELL_EDITOR_RESULT), newValue);
-            }
-            // Initialization of the variables
-            result.getTasks().add(new InitInterpreterVariablesTask(variables, InterpreterUtil.getInterpreter(interpreterContext), uiCallBack));
-            if (tool instanceof LabelEditTool) {
-                final LabelEditTool labelEditTool = (LabelEditTool) tool;
-                if (labelEditTool.getMask() != null) {
-                    /*
-                     * First we need to init the mask variables.
-                     */
-                    final String messageFormat = labelEditTool.getMask().getMask();
-                    result.getTasks().add(new InitInterpreterFromParsedVariableTask2(InterpreterUtil.getInterpreter(interpreterContext), messageFormat, newValue));
-                }
-            } else if (tool instanceof CreateCellTool) {
-                final CreateCellTool createCellTool = (CreateCellTool) tool;
-                if (createCellTool.getMask() != null) {
-                    /*
-                     * First we need to init the mask variables.
-                     */
-                    final String messageFormat = createCellTool.getMask().getMask();
-                    result.getTasks().add(new InitInterpreterFromParsedVariableTask2(InterpreterUtil.getInterpreter(interpreterContext), messageFormat, newValue));
-                }
-            }
-            // Creation of the tasks to execute the tool
-            result.getTasks().add(commandTaskHelper.buildTaskFromModelOperation(TableHelper.getTable(currentCell), interpreterContext, tool.getFirstModelOperation()));
+        EObject interpreterContext = currentCell.getTarget();
+        if (interpreterContext == null) {
+            interpreterContext = currentCell.getLine().getTarget();
         }
+
+        final Map<String, Object> variables = new HashMap<>();
+        variables.put(IInterpreterSiriusVariables.ROOT, TableHelper.getTable(currentCell).getTarget());
+        variables.put(IInterpreterSiriusTableVariables.LINE_SEMANTIC, currentCell.getLine().getTarget());
+        variables.put(IInterpreterSiriusTableVariables.LINE, currentCell.getLine());
+        variables.put(IInterpreterSiriusTableVariables.TABLE, TableHelper.getTable(currentCell));
+        if (currentCell.getColumn() instanceof DTargetColumn) {
+            variables.put(IInterpreterSiriusTableVariables.COLUMN_SEMANTIC, 
+                    ((DTargetColumn) currentCell.getColumn()).getTarget());
+        }
+        
+        EditMaskVariables mask = null;
+        if (tool instanceof LabelEditTool) {
+            final LabelEditTool labelEditTool = (LabelEditTool) tool;
+            variables.put(IInterpreterSiriusVariables.ELEMENT, currentCell.getTarget());
+            mask = labelEditTool.getMask();
+        } else if (tool instanceof CreateCellTool) {
+            // TODO add "cellEditorResult" when CreateCellTool is active for CrossTable.
+            
+            // ?? how a cell can exist for CreateCellTool
+            final CreateCellTool createCellTool = (CreateCellTool) tool;
+            mask = createCellTool.getMask();
+
+        } else if (tool instanceof CellEditorTool) {
+            variables.put(IInterpreterSiriusVariables.ELEMENT, currentCell.getTarget());
+            variables.put(IInterpreterSiriusTableVariables.CELL_EDITOR_RESULT, newValue);
+        }
+        
+        // Initialization of the variables
+        addInitVariablesTask(result, interpreterContext, TableVariablesHelper.getTableVariables(tool, variables));
+        addMaskInitTask(result, interpreterContext, mask, newValue);
+        // Creation of the tasks to execute the tool
+        addOperationTask(result, currentCell, interpreterContext, tool.getFirstModelOperation());
+    
         return result;
     }
 
@@ -426,32 +369,21 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
      */
     private SiriusCommand buildCommandFromIntersection(final DLine currentLine, final DTargetColumn currentColumn, final CreateCellTool tool, final Object newValue) {
         SiriusCommand result = new SiriusCommand(domain, Messages.TableCommandFactory_setCellContent);
-        if (!getPermissionAuthority().canEditInstance(currentLine)) {
-            result = new InvalidPermissionCommand(domain, currentLine);
-        } else {
-            if (!getPermissionAuthority().canEditInstance(currentColumn)) {
-                result = new InvalidPermissionCommand(domain, currentColumn);
-            } else {
-                EObject interpreterContext = currentLine.getTarget();
+        EObject interpreterContext = currentLine.getTarget();
 
-                final Map<AbstractVariable, Object> variables = new HashMap<AbstractVariable, Object>();
-                variables.put(TableHelper.getVariable(tool, IInterpreterSiriusVariables.ROOT), TableHelper.getTable(currentLine).getTarget());
-                variables.put(TableHelper.getVariable(tool, IInterpreterSiriusTableVariables.LINE_SEMANTIC), currentLine.getTarget());
-                variables.put(TableHelper.getVariable(tool, IInterpreterSiriusTableVariables.COLUMN_SEMANTIC), currentColumn.getTarget());
+        // XXX Change for Map.of(...) in Java9
+        final Map<String, EObject> variables = mapOf(
+                IInterpreterSiriusVariables.ROOT, TableHelper.getTable(currentLine).getTarget(),
+                IInterpreterSiriusTableVariables.LINE_SEMANTIC, currentLine.getTarget(),
+                IInterpreterSiriusTableVariables.COLUMN_SEMANTIC, currentColumn.getTarget());
 
-                // Initialization of the variables
-                result.getTasks().add(new InitInterpreterVariablesTask(variables, InterpreterUtil.getInterpreter(interpreterContext), uiCallBack));
-                if (tool.getMask() != null) {
-                    /*
-                     * First we need to init the mask variables.
-                     */
-                    final String messageFormat = tool.getMask().getMask();
-                    result.getTasks().add(new InitInterpreterFromParsedVariableTask2(InterpreterUtil.getInterpreter(interpreterContext), messageFormat, newValue));
-                }
-                // Creation of the tasks to execute the tool
-                result.getTasks().add(commandTaskHelper.buildTaskFromModelOperation(TableHelper.getTable(currentLine), interpreterContext, tool.getFirstModelOperation()));
-            }
-        }
+        // Initialization of the variables
+        addInitVariablesTask(result, interpreterContext, TableVariablesHelper.getTableVariables(tool, variables));
+        addMaskInitTask(result, interpreterContext, tool.getMask(), newValue);
+
+        // Creation of the tasks to execute the tool
+        addOperationTask(result, currentLine, interpreterContext, tool.getFirstModelOperation());
+        
         return result;
     }
 
@@ -460,6 +392,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
      *
      * @return the commandTaskHelper
      */
+    @Deprecated // unused
     public TaskHelper getCommandTaskHelper() {
         return commandTaskHelper;
     }
@@ -497,25 +430,23 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
      */
     @Override
     public Command buildSetCellValueFromTool(final DCell editedCell, final Object newValue) {
-        Command result = UnexecutableCommand.INSTANCE;
-        if (!getPermissionAuthority().canEditInstance(editedCell)) {
-            result = new InvalidPermissionCommand(domain, editedCell);
-        } else {
-            CellUpdater updater = editedCell.getUpdater();
-            if (updater != null) {
-                if (updater.getDirectEdit() != null || updater.getCellEditor() != null) {
-                    // If both directEdit and cellEditor is defined, the cell editor has priority (explained in
-                    // documentation).
-                    if (updater.getCellEditor() != null) {
-                        result = buildCommandFromCell(editedCell, updater.getCellEditor(), newValue);
-                    } else {
-                        result = buildCommandFromCell(editedCell, updater.getDirectEdit(), newValue);
-                    }
-                    addRefreshTask(TableHelper.getTable(editedCell), (SiriusCommand) result, null);
-                }
+        CellUpdater updater = editedCell.getUpdater();
+        if (updater == null || (updater.getDirectEdit() == null && updater.getCellEditor() == null)) {
+            return UnexecutableCommand.INSTANCE;
+        }        
+        return createAuthorisedCommand(editedCell, () -> {
+            // If both directEdit and cellEditor is defined, the cell editor has priority 
+            // (explained in documentation).
+            TableTool toolEdit; 
+            if (updater.getCellEditor() != null) {
+                toolEdit = updater.getCellEditor();
+            } else {
+                toolEdit = updater.getDirectEdit();
             }
-        }
-        return result;
+            SiriusCommand result = buildCommandFromCell(editedCell, toolEdit, newValue);
+            addRefreshTask(TableHelper.getTable(editedCell), result, null);
+            return result;
+        });
     }
 
     /**
@@ -526,24 +457,17 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
      */
     @Override
     public Command buildCreateCellFromTool(DLine line, DTargetColumn column, Object newValue) {
-        Command result = UnexecutableCommand.INSTANCE;
-        if (!getPermissionAuthority().canEditInstance(line)) {
-            result = new InvalidPermissionCommand(domain, line);
-        } else {
-            if (!getPermissionAuthority().canEditInstance(column)) {
-                result = new InvalidPermissionCommand(domain, column);
-            } else {
-                final Option<CreateCellTool> optionalCreateCellTool = TableHelper.getCreateCellTool(line, column);
-                if (optionalCreateCellTool.some()) {
-                    result = buildCommandFromIntersection(line, column, optionalCreateCellTool.get(), newValue);
-                    addRefreshTask(TableHelper.getTable(line), (SiriusCommand) result, optionalCreateCellTool.get());
-                    Option<DRepresentation> dRepresentation = new EObjectQuery(line).getRepresentation();
-                    ((SiriusCommand) result).getTasks()
-                            .add(new ElementsToSelectTask(optionalCreateCellTool.get(), InterpreterUtil.getInterpreter(line.getTarget()), line.getTarget(), dRepresentation.get()));
-                }
+        return createAuthorisedCommand(line, column, ()-> {
+            final Option<CreateCellTool> optionalCreateCellTool = TableHelper.getCreateCellTool(line, column);
+            if (!optionalCreateCellTool.some()) {
+                return UnexecutableCommand.INSTANCE;
             }
-        }
-        return result;
+            SiriusCommand result = buildCommandFromIntersection(line, column, optionalCreateCellTool.get(), newValue);
+            addRefreshTask(TableHelper.getTable(line), result, optionalCreateCellTool.get());
+            addSelectTask(line, result, optionalCreateCellTool.get());
+            
+            return result;
+        });
     }
 
     /**
@@ -558,21 +482,15 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
      * @return a command that is able to create a table.
      */
     public DCommand buildCreateTableFromDescription(final TableDescription description, final EObject semanticElement, IProgressMonitor monitor) {
+        // Creation of a table must not be undoable !
         final DCommand command = new SiriusCommand(domain) {
-            /**
-             * Creation of a table must not be undoable ! <BR>
-             * {@inheritDoc}
-             *
-             * @see org.eclipse.emf.transaction.RecordingCommand#canUndo()
-             */
+
             @Override
             public boolean canUndo() {
                 return false;
             }
         };
-
         command.getTasks().add(new CreateTableTask(description, semanticElement, monitor));
-
         return command;
     }
 
@@ -584,34 +502,20 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
      */
     @Override
     public Command buildSetValue(final EObject instance, final String name, final Object value) {
-        if (getPermissionAuthority().canEditInstance(instance)) {
+        return createAuthorisedCommand(instance, ()-> {
             final SiriusCommand result = new SiriusCommand(domain);
-            result.getTasks().add(new AbstractCommandTask() {
-
-                private final Object newValue = value;
-
-                @Override
-                public String getLabel() {
-                    return MessageFormat.format(Messages.TableCommandFactory_setValue, name);
-                }
-
-                @Override
-                public void execute() {
+            result.getTasks().add(createTask(MessageFormat.format(Messages.TableCommandFactory_setValue, name), 
+                () -> {
                     try {
-                        if (!getModelAccessor().eGet(instance, name).equals(newValue)) {
-                            getModelAccessor().eSet(instance, name, newValue);
+                        if (!getModelAccessor().eGet(instance, name).equals(value)) {
+                            getModelAccessor().eSet(instance, name, value);
                         }
-                    } catch (final LockedInstanceException e) {
-                        SiriusPlugin.getDefault().error(IInterpreterMessages.EVALUATION_ERROR_ON_MODEL_MODIFICATION, e);
                     } catch (final FeatureNotFoundException e) {
                         SiriusPlugin.getDefault().error(IInterpreterMessages.EVALUATION_ERROR_ON_MODEL_MODIFICATION, e);
                     }
-                }
-            });
+                }));
             return result;
-        } else {
-            return new InvalidPermissionCommand(domain, instance);
-        }
+        });
 
     }
 
@@ -623,30 +527,19 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
      */
     @Override
     public Command buildAddValue(final EObject instance, final String name, final Object value) {
-        if (getPermissionAuthority().canEditInstance(instance)) {
+        return createAuthorisedCommand(instance, ()-> {
             final SiriusCommand result = new SiriusCommand(domain);
-            result.getTasks().add(new AbstractCommandTask() {
-
-                @Override
-                public String getLabel() {
-                    return MessageFormat.format(Messages.TableCommandFactory_addValue, name);
-                }
-
-                @Override
-                public void execute() {
+            result.getTasks().add(createTask(MessageFormat.format(Messages.TableCommandFactory_addValue, name),
+                () -> {
                     try {
                         getModelAccessor().eAdd(instance, name, value);
-                    } catch (final LockedInstanceException e) {
-                        SiriusPlugin.getDefault().error(IInterpreterMessages.EVALUATION_ERROR_ON_MODEL_MODIFICATION, e);
                     } catch (final FeatureNotFoundException e) {
                         SiriusPlugin.getDefault().error(IInterpreterMessages.EVALUATION_ERROR_ON_MODEL_MODIFICATION, e);
                     }
-                }
-            });
+                }));
+
             return result;
-        } else {
-            return new InvalidPermissionCommand(domain, instance);
-        }
+        });
     }
 
     /**
@@ -657,29 +550,12 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
      */
     @Override
     public Command buildClearValue(final EObject instance, final String name) {
-        if (getPermissionAuthority().canEditInstance(instance)) {
-
+        return createAuthorisedCommand(instance, ()-> {
             final SiriusCommand result = new SiriusCommand(domain);
-            result.getTasks().add(new AbstractCommandTask() {
-
-                @Override
-                public String getLabel() {
-                    return MessageFormat.format(Messages.TableCommandFactory_clearValue, name);
-                }
-
-                @Override
-                public void execute() {
-                    try {
-                        getModelAccessor().eClear(instance, name);
-                    } catch (final LockedInstanceException e) {
-                        SiriusPlugin.getDefault().error(IInterpreterMessages.EVALUATION_ERROR_ON_MODEL_MODIFICATION, e);
-                    }
-                }
-            });
+            String label = MessageFormat.format(Messages.TableCommandFactory_clearValue, name);
+            result.getTasks().add(createTask(label, () -> getModelAccessor().eClear(instance, name)));
             return result;
-        } else {
-            return new InvalidPermissionCommand(domain, instance);
-        }
+        });
     }
 
     /**
@@ -690,14 +566,95 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
      */
     @Override
     public AbstractCommand buildDoExecuteDetailsOperation(final DSemanticDecorator target, final RepresentationCreationDescription desc, final String newRepresentationName) {
-        final SiriusCommand cmd = new SiriusCommand(domain);
-        final Map<AbstractVariable, Object> variables = new HashMap<AbstractVariable, Object>();
-        variables.put(desc.getContainerViewVariable(), target);
-        final Map<AbstractVariable, String> stringVariables = new HashMap<AbstractVariable, String>();
-        stringVariables.put(desc.getRepresentationNameVariable(), newRepresentationName);
-        final ICommandTask initInterpreterVariables = new InitInterpreterVariablesTask(variables, stringVariables, InterpreterUtil.getInterpreter(target), uiCallBack);
-        cmd.getTasks().add(initInterpreterVariables);
-        cmd.getTasks().add(commandTaskHelper.buildTaskFromModelOperation(TableHelper.getTable(target), target.getTarget(), desc.getInitialOperation().getFirstModelOperations()));
-        return cmd;
+        final SiriusCommand result = new SiriusCommand(domain);
+        
+        result.getTasks().add(new InitInterpreterVariablesTask(
+                mapOf(desc.getContainerViewVariable(), target), 
+                mapOf(desc.getRepresentationNameVariable(), newRepresentationName), 
+                InterpreterUtil.getInterpreter(target), uiCallBack));
+        
+        addOperationTask(result, target, target.getTarget(), desc.getInitialOperation().getFirstModelOperations());
+        return result;
     }
+    
+    private Command createAuthorisedCommand(EObject view1, EObject view2, Supplier<Command> factory) {
+        Command result;
+        if (!getPermissionAuthority().canEditInstance(view1)) {
+            result = new InvalidPermissionCommand(domain, view1);
+        } else {
+            result = createAuthorisedCommand(view2, factory);
+        }
+        return result;
+    }
+
+    private Command createAuthorisedCommand(EObject view, Supplier<Command> factory) {
+        Command result;
+        if (!getPermissionAuthority().canEditInstance(view)) {
+            result = new InvalidPermissionCommand(domain, view);
+        } else {
+            result = factory.get();
+            if (result == null) {
+                result = UnexecutableCommand.INSTANCE;
+            }
+        }
+        return result;
+    }
+
+    private void addSelectTask(DSemanticDecorator view, SiriusCommand result, final AbstractToolDescription tool) {
+        Option<DRepresentation> dRepresentation = new EObjectQuery(view).getRepresentation();
+        result.getTasks().add(new ElementsToSelectTask(tool, InterpreterUtil.getInterpreter(view.getTarget()), view.getTarget(), dRepresentation.get()));
+    }
+    
+    private void addInitVariablesTask(SiriusCommand result, EObject context, Map<AbstractVariable, Object> variables) {
+        result.getTasks().add(new InitInterpreterVariablesTask(variables, InterpreterUtil.getInterpreter(context), uiCallBack));
+    }
+    
+    private void addMaskInitTask(SiriusCommand result, EObject context, EditMaskVariables mask, final Object newValue) {
+        if (mask != null && mask.getMask() != null) {
+            // First we need to init the mask variables.
+            result.getTasks().add(new InitInterpreterFromParsedVariableTask2(InterpreterUtil.getInterpreter(context), mask.getMask(), newValue));
+        }
+    }
+    
+    private void addOperationTask(SiriusCommand result, DSemanticDecorator tableElement, EObject context, ModelOperation operation) {
+        DTable table = TableHelper.getTable(tableElement);
+        result.getTasks().add(commandTaskHelper.buildTaskFromModelOperation(table, context, operation));
+    }
+
+    private static AbstractCommandTask createTask(String label, Runnable task) {
+        return new AbstractCommandTask() {
+
+            @Override
+            public String getLabel() {
+                return label;
+            }
+    
+            @Override
+            public void execute() {
+                try {
+                    task.run();
+                } catch (LockedInstanceException e) {
+                    SiriusPlugin.getDefault().error(IInterpreterMessages.EVALUATION_ERROR_ON_MODEL_MODIFICATION, e);
+                }
+            }
+        };
+    }
+    
+    private static <K, V> Map<K, V> mapOf(K k1, V v1) {
+        // XXX For Java 9+, replace Map.of()
+        Map<K, V> result = new HashMap<>();
+        result.put(k1, v1);
+        return Collections.unmodifiableMap(result);
+    }
+
+    private static <K, V> Map<K, V> mapOf(K k1, V v1, K k2, V v2, K k3, V v3) {
+        // XXX For Java 9+, replace Map.of()
+        Map<K, V> result = new HashMap<>();
+        result.put(k1, v1);
+        result.put(k2, v2);
+        result.put(k3, v3);
+        
+        return Collections.unmodifiableMap(result);
+    }
+
 }

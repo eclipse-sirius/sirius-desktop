@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -119,11 +119,11 @@ public class TableInterpretedTargetSwitch extends DescriptionSwitch<Option<Colle
      * Returns the {@link LineMapping} associated to the given
      * {@link FeatureColumnMapping}
      * 
-     * @param object
-     * @return
+     * @param featureColumnMapping
+     * @return sibling or container
      */
     private EObject getLineMapping(FeatureColumnMapping featureColumnMapping) {
-        // If featureColumnMapping has slibing, consider sliblings
+        // If featureColumnMapping has sibling, consider siblings
         Iterator<LineMapping> siblings = Iterables.filter(featureColumnMapping.eContainer().eContents(), LineMapping.class).iterator();
         if (siblings.hasNext()) {
             return siblings.next();
