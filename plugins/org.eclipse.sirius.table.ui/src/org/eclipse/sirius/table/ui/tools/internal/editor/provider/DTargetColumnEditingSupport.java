@@ -16,10 +16,8 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.viewers.CellEditor;
-import org.eclipse.jface.viewers.ColumnViewer;
 import org.eclipse.jface.viewers.EditingSupport;
 import org.eclipse.jface.viewers.TextCellEditor;
-import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.ViewerCell;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
@@ -67,7 +65,7 @@ public class DTargetColumnEditingSupport extends EditingSupport {
      * @param tableEditor
      *            The associated editor
      */
-    public DTargetColumnEditingSupport(final ColumnViewer viewer, final DTargetColumn targetColumn, final TransactionalEditingDomain editingDomain, final ModelAccessor accessor,
+    public DTargetColumnEditingSupport(final DTableTreeViewer viewer, final DTargetColumn targetColumn, final TransactionalEditingDomain editingDomain, final ModelAccessor accessor,
             final ITableCommandFactory tableCommandFactory, final AbstractDTableEditor tableEditor) {
         super(viewer);
         this.targetColumn = targetColumn;
@@ -75,6 +73,10 @@ public class DTargetColumnEditingSupport extends EditingSupport {
         this.accessor = accessor;
         this.tableCommandFactory = tableCommandFactory;
         this.tableEditor = tableEditor;
+    }
+    
+    public DTableTreeViewer getViewer() {
+        return (DTableTreeViewer) super.getViewer();
     }
 
     @Override
@@ -173,7 +175,7 @@ public class DTargetColumnEditingSupport extends EditingSupport {
      * @return An adapted cell Editor
      */
     private CellEditor getBestCellEditor(final EObject element) {
-        final Tree tree = ((TreeViewer) getViewer()).getTree();
+        final Tree tree = getViewer().getTree();
         final TextCellEditor textEditor = new TextCellEditor(tree) {
             /**
              * {@inheritDoc} We override the doSetFocus for clearing the
@@ -227,8 +229,8 @@ public class DTargetColumnEditingSupport extends EditingSupport {
 
     @Override
     protected void initializeCellEditorValue(final CellEditor cellEditor, final ViewerCell cell) {
-        if (((DTableTreeViewer) getViewer()).getFirstEditionCharacter() != null) {
-            cellEditor.setValue(((DTableTreeViewer) getViewer()).getFirstEditionCharacter().toString());
+        if (getViewer().getFirstEditionCharacter() != null) {
+            cellEditor.setValue(getViewer().getFirstEditionCharacter().toString());
         } else {
             super.initializeCellEditorValue(cellEditor, cell);
         }

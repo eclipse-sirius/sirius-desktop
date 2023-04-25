@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -24,7 +24,7 @@ import org.eclipse.ui.PlatformUI;
 /**
  * Manage the specific background for selected cell. <BR>
  * There is a problem under Windows OS, the handleEvent method of the
- * SWT.MeasuerItem Listener is called twice : one with the old column and
+ * {@link SWT#MeasureItem} Listener is called twice : one with the old column and
  * another with the new column. The result is that there are two selected cells.
  * So we make some tests to correct this problem. We use lastSelectedLineDrawned
  * to remember the last line which was drawn with selected color.

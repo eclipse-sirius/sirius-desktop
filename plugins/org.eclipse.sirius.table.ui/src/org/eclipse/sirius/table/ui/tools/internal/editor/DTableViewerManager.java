@@ -263,6 +263,7 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
         initializeColumnsAndComponentsRelatedToDRepresentation(treeLayout);
     }
 
+
     /**
      * Initialize the columns and everything initialized according to DRepresentation.
      * 
@@ -663,6 +664,27 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
             }
         }
 
+        final TreeViewerColumn treeViewerColumn = createViewerColumn(newColumn, index);
+
+        // Add the LabelProvider with decorating feature
+        ILabelDecorator decorator = PlatformUI.getWorkbench().getDecoratorManager().getLabelDecorator();
+        DTableDecoratingLabelProvider labelProvider = new DTableDecoratingLabelProvider(newColumn, decorator);
+        treeViewerColumn.setLabelProvider(new DelegatingStyledCellLabelProvider(labelProvider));
+
+        if (newColumn instanceof DFeatureColumn) {
+            treeViewerColumn.setEditingSupport(
+                    new DFeatureColumnEditingSupport(getViewer(), (DFeatureColumn) newColumn, getEditingDomain(), getAccessor(), getTableCommandFactory(), (AbstractDTableEditor) treeEditor));
+        } else if (newColumn instanceof DTargetColumn) {
+            treeViewerColumn.setEditingSupport(
+                    new DTargetColumnEditingSupport(getViewer(), (DTargetColumn) newColumn, getEditingDomain(), getAccessor(), tableCommandFactory, (AbstractDTableEditor) treeEditor));
+        }
+        treeViewerColumn.getColumn().setData(TABLE_COLUMN_DATA, newColumn);
+        treeViewerColumn.getColumn().addControlListener(tableViewerListener);
+        treeViewerColumn.getColumn().addListener(SWT.Selection, sortListener);
+        DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.ADD_SWT_COLUMN_KEY);
+    }
+
+    private TreeViewerColumn createViewerColumn(final DColumn newColumn, final int index) {
         final TreeViewerColumn treeViewerColumn = new TreeViewerColumn(treeViewer, SWT.LEFT, index);
         if (newColumn.getLabel() != null) {
             DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.SET_COLUMN_NAME_KEY);
@@ -679,14 +701,15 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
 
             DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.SET_COLUMN_NAME_KEY);
         }
+        TreeColumnLayout columnLayout = (TreeColumnLayout) treeViewer.getControl().getParent().getLayout();
         if (newColumn.isVisible()) {
             if (newColumn.getWidth() != 0) {
-                ((TreeColumnLayout) treeViewer.getControl().getParent().getLayout()).setColumnData(treeViewerColumn.getColumn(), new ColumnPixelData(newColumn.getWidth()));
+                columnLayout.setColumnData(treeViewerColumn.getColumn(), new ColumnPixelData(newColumn.getWidth()));
                 if (treeViewerColumn.getColumn().getWidth() != newColumn.getWidth()) {
                     treeViewerColumn.getColumn().setWidth(newColumn.getWidth());
                 }
             } else {
-                ((TreeColumnLayout) treeViewer.getControl().getParent().getLayout()).setColumnData(treeViewerColumn.getColumn(), new ColumnWeightData(1));
+                columnLayout.setColumnData(treeViewerColumn.getColumn(), new ColumnWeightData(1));
                 if (IS_GTK_OS) {
                     // Do not launch treeViewerColumn.getColumn().pack() here
                     // for windows because the size is computed only with the
@@ -699,25 +722,9 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
             }
         } else {
             // Set the size of the column to 0
-            ((TreeColumnLayout) treeViewer.getControl().getParent().getLayout()).setColumnData(treeViewerColumn.getColumn(), new ColumnPixelData(0));
+            columnLayout.setColumnData(treeViewerColumn.getColumn(), new ColumnPixelData(0));
         }
-
-        // Add the LabelProvider with decorating feature
-        ILabelDecorator decorator = PlatformUI.getWorkbench().getDecoratorManager().getLabelDecorator();
-        DTableDecoratingLabelProvider labelProvider = new DTableDecoratingLabelProvider(newColumn, decorator);
-        treeViewerColumn.setLabelProvider(new DelegatingStyledCellLabelProvider(labelProvider));
-
-        if (newColumn instanceof DFeatureColumn) {
-            treeViewerColumn.setEditingSupport(
-                    new DFeatureColumnEditingSupport(treeViewer, (DFeatureColumn) newColumn, getEditingDomain(), getAccessor(), getTableCommandFactory(), (AbstractDTableEditor) treeEditor));
-        } else if (newColumn instanceof DTargetColumn) {
-            treeViewerColumn.setEditingSupport(
-                    new DTargetColumnEditingSupport(treeViewer, (DTargetColumn) newColumn, getEditingDomain(), getAccessor(), tableCommandFactory, (AbstractDTableEditor) treeEditor));
-        }
-        treeViewerColumn.getColumn().setData(TABLE_COLUMN_DATA, newColumn);
-        treeViewerColumn.getColumn().addControlListener(tableViewerListener);
-        treeViewerColumn.getColumn().addListener(SWT.Selection, sortListener);
-        DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.ADD_SWT_COLUMN_KEY);
+        return treeViewerColumn;
     }
 
     /**
@@ -745,6 +752,10 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
     @Override
     public AbstractDTableEditor getEditor() {
         return (AbstractDTableEditor) treeEditor;
+    }
+    
+    public DTableTreeViewer getViewer() {
+        return (DTableTreeViewer) treeViewer;
     }
 
     /**

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -224,7 +224,10 @@ public class DTableColumnLabelProvider extends ColumnLabelProvider implements IS
     }
 
     /**
-     * Returns the image with the given key, or <code>null</code> if not found.
+     * Returns the image for a boolean according provided value.
+     * 
+     * @param isSelected value of cell
+     * @return image or checked or un-checked
      */
     private Image getImage(final boolean isSelected) {
         final String key = isSelected ? CHECKED_IMAGE : UNCHECKED_IMAGE;

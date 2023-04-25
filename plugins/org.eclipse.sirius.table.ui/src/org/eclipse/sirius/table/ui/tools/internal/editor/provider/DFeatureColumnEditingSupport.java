@@ -46,14 +46,12 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.CheckboxCellEditor;
-import org.eclipse.jface.viewers.ColumnViewer;
 import org.eclipse.jface.viewers.ComboBoxCellEditor;
 import org.eclipse.jface.viewers.EditingSupport;
 import org.eclipse.jface.viewers.ICellEditorValidator;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.TextCellEditor;
-import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.ViewerCell;
 import org.eclipse.sirius.business.api.logger.InterpretationContext;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
@@ -126,7 +124,7 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
      * @param tableEditor
      *            The associated editor
      */
-    public DFeatureColumnEditingSupport(final ColumnViewer viewer, final DFeatureColumn featureColumn, final TransactionalEditingDomain editingDomain, final ModelAccessor accessor,
+    public DFeatureColumnEditingSupport(final DTableTreeViewer viewer, final DFeatureColumn featureColumn, final TransactionalEditingDomain editingDomain, final ModelAccessor accessor,
             final ITableCommandFactory tableCommandFactory, final AbstractDTableEditor tableEditor) {
         super(viewer);
         this.featureColumn = featureColumn;
@@ -142,6 +140,11 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
         this.adapterFactory = new ComposedAdapterFactory(factories);
     }
 
+    @Override
+    public DTableTreeViewer getViewer() {
+        return (DTableTreeViewer) super.getViewer();
+    }
+    
     @Override
     protected boolean canEdit(final Object element) {
         boolean result = false;
@@ -230,7 +233,7 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
                         parameters.put(IInterpreterSiriusTableVariables.LINE_SEMANTIC, ((DLine) element).getTarget());
                         parameters.put(IInterpreterSiriusTableVariables.ROOT, dTable.getTarget());
                         // Get the cell editor according to parameters
-                        final Tree tree = ((TreeViewer) getViewer()).getTree();
+                        final Tree tree = getViewer().getTree();
                         cellEditor = cellEditorFactory.getCellEditor(tree, parameters);
                         // if specific cellEditor is not provided, 
                         // it is safer to assume that the cell should not be edited 
@@ -418,96 +421,107 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
      */
     private CellEditor getBuiltInCellEditor(final EObject element, final boolean directEdit) {
         CellEditor result = null;
-        final Tree tree = ((TreeViewer) getViewer()).getTree();
+        
         final EClassifier eClassifier = getEClassifier(element);
 
         final IItemPropertyDescriptor iItemPropertyDescriptor = getPropertyDescriptor(element);
         if (directEdit) {
-            boolean isMultiLine = false;
-            if (iItemPropertyDescriptor != null) {
-                isMultiLine = iItemPropertyDescriptor.isMultiLine(element);
-            }
-            result = getBestCellEditorForDirectEdit(tree, isMultiLine);
-        } else {
-            if (isEReference(element)) {
-                final Collection<?> choiceOfValues = iItemPropertyDescriptor.getChoiceOfValues(element);
-                if (iItemPropertyDescriptor.isMany(element)) {
-                    // CellEditor with button "..." for select the correct
-                    // elements
-                    boolean valid = true;
-                    for (Object choice : choiceOfValues) {
-                        if (!eClassifier.isInstance(choice)) {
-                            valid = false;
-                            break;
-                        }
-                    }
-
-                    if (valid) {
-                        result = new ExtendedDialogCellEditor(tree, getLabelProvider(element)) {
-                            @Override
-                            protected Object openDialogBox(final Control cellEditorWindow) {
-
-                                FeatureEditorDialog dialog = new FeatureEditorDialog(cellEditorWindow.getShell(), getLabelProvider(element), element, eClassifier, (List<?>) doGetValue(),
-                                        iItemPropertyDescriptor.getDisplayName(element), new ArrayList<Object>(choiceOfValues), false, iItemPropertyDescriptor.isSortChoices(element), true);
-                                dialog.open();
-                                return dialog.getResult();
-                            }
-                        };
-                    }
-                } else {
-                    // We reuse the list of the ItemPropertyDescriptor for
-                    // populate the combo
-                    result = new ExtendedComboBoxCellEditor(tree, new ArrayList<Object>(choiceOfValues), getLabelProvider(element), iItemPropertyDescriptor.isSortChoices(element));
-                }
-            } else {
-                if (eClassifier != null) {
-                    // In case of multi-valued attribute, we delegate to the
-                    // PropertyDescriptor.
-                    if (iItemPropertyDescriptor != null && iItemPropertyDescriptor.isMany(element)) {
-                        PropertyDescriptor descriptor = new PropertyDescriptor(element, iItemPropertyDescriptor);
-                        result = descriptor.createPropertyEditor(tree);
-                    } else if (eClassifier instanceof EDataType && ("Boolean".equals(((EDataType) eClassifier).getName()) || "EBoolean".equals(((EDataType) eClassifier).getName()))) { //$NON-NLS-1$ //$NON-NLS-2$
-                        result = new CheckboxCellEditor(tree);
-                    } else if (eClassifier instanceof EEnum) {
-                        final Object genericFeature = iItemPropertyDescriptor.getFeature(element);
-                        if (genericFeature instanceof EStructuralFeature) {
-                            final Collection<?> choiceOfValues = iItemPropertyDescriptor.getChoiceOfValues(element);
-                            if (choiceOfValues != null) {
-                                result = new ExtendedComboBoxCellEditor(tree, new ArrayList<Object>(choiceOfValues), getLabelProvider(element), iItemPropertyDescriptor.isSortChoices(element));
-                            }
-                        }
-                        if (result == null) {
-                            result = new ComboBoxCellEditor(tree, getValues((EEnum) eClassifier).toArray(new String[0]), SWT.READ_ONLY);
-                        }
-                    } else {
-                        int style = SWT.SINGLE;
-                        if (iItemPropertyDescriptor != null && iItemPropertyDescriptor.isMultiLine(element)) {
-                            style = SWT.WRAP | SWT.MULTI;
-                        }
-                        final TextCellEditor textEditor = new TextCellEditor(tree, style) {
-                            /**
-                             * {@inheritDoc} We override the doSetFocus for clearing the selection for the direct
-                             * edition of the cell.
-                             *
-                             * @see org.eclipse.jface.viewers.TextCellEditor#doSetFocus()
-                             */
-                            @Override
-                            protected void doSetFocus() {
-                                super.doSetFocus();
-                                if (text != null) {
-                                    text.clearSelection();
-                                }
-                            }
-                        };
-                        textEditor.getControl().addFocusListener(new DTableCellEditorFocusListener(tableEditor, textEditor));
-                        result = textEditor;
-                    }
-                }
-            }
+            boolean isMultiLine = iItemPropertyDescriptor != null
+                    && iItemPropertyDescriptor.isMultiLine(element);
+            result = getBestCellEditorForDirectEdit(getViewer().getTree(), isMultiLine);
+        } else if (isEReference(element)) {
+           result = getReferenceCellEditor(element, iItemPropertyDescriptor, eClassifier);
+        } else if (eClassifier != null) {
+            result = getAttributeCellEditor(element, iItemPropertyDescriptor, eClassifier);
         }
         return result;
     }
 
+    private CellEditor getReferenceCellEditor(final EObject element, IItemPropertyDescriptor iItemPropertyDescriptor, EClassifier eClassifier) {
+        CellEditor result = null;
+        
+        final Collection<?> choiceOfValues = iItemPropertyDescriptor.getChoiceOfValues(element);
+        if (iItemPropertyDescriptor.isMany(element)) {
+            // CellEditor with button "..." for select the correct
+            // elements
+            boolean valid = true;
+            for (Object choice : choiceOfValues) {
+                if (!eClassifier.isInstance(choice)) {
+                    valid = false;
+                    break;
+                }
+            }
+
+            if (valid) {
+                result = new ExtendedDialogCellEditor(getViewer().getTree(), getLabelProvider(element)) {
+                    @Override
+                    protected Object openDialogBox(final Control cellEditorWindow) {
+
+                        FeatureEditorDialog dialog = new FeatureEditorDialog(cellEditorWindow.getShell(), getLabelProvider(element), element, eClassifier, (List<?>) doGetValue(),
+                                iItemPropertyDescriptor.getDisplayName(element), new ArrayList<Object>(choiceOfValues), false, iItemPropertyDescriptor.isSortChoices(element), true);
+                        dialog.open();
+                        return dialog.getResult();
+                    }
+                };
+            }
+        } else {
+            // We reuse the list of the ItemPropertyDescriptor for
+            // populate the combo
+            result = new ExtendedComboBoxCellEditor(getViewer().getTree(), 
+                    new ArrayList<>(choiceOfValues), getLabelProvider(element), 
+                    iItemPropertyDescriptor.isSortChoices(element));
+        }
+        return result;
+    }
+    
+    private CellEditor getAttributeCellEditor(final EObject element, IItemPropertyDescriptor iItemPropertyDescriptor, EClassifier eClassifier) {
+        CellEditor result = null;
+        final Tree tree = getViewer().getTree();
+        
+        // In case of multi-valued attribute, we delegate to the
+        // PropertyDescriptor.
+        if (iItemPropertyDescriptor != null && iItemPropertyDescriptor.isMany(element)) {
+            PropertyDescriptor descriptor = new PropertyDescriptor(element, iItemPropertyDescriptor);
+            result = descriptor.createPropertyEditor(tree);
+        } else if (eClassifier instanceof EDataType && ("Boolean".equals(((EDataType) eClassifier).getName()) || "EBoolean".equals(((EDataType) eClassifier).getName()))) { //$NON-NLS-1$ //$NON-NLS-2$
+            result = new CheckboxCellEditor(tree);
+        } else if (eClassifier instanceof EEnum) {
+            final Object genericFeature = iItemPropertyDescriptor.getFeature(element);
+            if (genericFeature instanceof EStructuralFeature) {
+                final Collection<?> choiceOfValues = iItemPropertyDescriptor.getChoiceOfValues(element);
+                if (choiceOfValues != null) {
+                    result = new ExtendedComboBoxCellEditor(tree, new ArrayList<Object>(choiceOfValues), getLabelProvider(element), iItemPropertyDescriptor.isSortChoices(element));
+                }
+            }
+            if (result == null) {
+                result = new ComboBoxCellEditor(tree, getValues((EEnum) eClassifier).toArray(new String[0]), SWT.READ_ONLY);
+            }
+        } else {
+            int style = SWT.SINGLE;
+            if (iItemPropertyDescriptor != null && iItemPropertyDescriptor.isMultiLine(element)) {
+                style = SWT.WRAP | SWT.MULTI;
+            }
+            final TextCellEditor textEditor = new TextCellEditor(tree, style) {
+                /**
+                 * {@inheritDoc} We override the doSetFocus for clearing the selection for the direct
+                 * edition of the cell.
+                 *
+                 * @see org.eclipse.jface.viewers.TextCellEditor#doSetFocus()
+                 */
+                @Override
+                protected void doSetFocus() {
+                    super.doSetFocus();
+                    if (text != null) {
+                        text.clearSelection();
+                    }
+                }
+            };
+            textEditor.getControl().addFocusListener(new DTableCellEditorFocusListener(tableEditor, textEditor));
+            result = textEditor;
+        }
+        return result;
+    }
+    
     /**
      * @param tree
      *            The tree
@@ -731,8 +745,8 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
 
     @Override
     protected void initializeCellEditorValue(final CellEditor cellEditor, final ViewerCell cell) {
-        if (((DTableTreeViewer) getViewer()).getFirstEditionCharacter() != null) {
-            cellEditor.setValue(((DTableTreeViewer) getViewer()).getFirstEditionCharacter().toString());
+        if (getViewer().getFirstEditionCharacter() != null) {
+            cellEditor.setValue(getViewer().getFirstEditionCharacter().toString());
         } else {
             super.initializeCellEditorValue(cellEditor, cell);
         }
