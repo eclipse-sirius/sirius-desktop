@@ -25,6 +25,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
+import org.eclipse.sirius.table.business.internal.dialect.description.TableToolVariables;
 import org.eclipse.sirius.table.metamodel.table.description.BackgroundConditionalStyle;
 import org.eclipse.sirius.table.metamodel.table.description.CellEditorTool;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionFactory;
@@ -249,22 +250,12 @@ public class FeatureColumnMappingItemProvider extends ColumnMappingItemProvider 
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
         LabelEditTool labelEditTool = DescriptionFactory.eINSTANCE.createLabelEditTool();
+        new TableToolVariables().doSwitch(labelEditTool);
         labelEditTool.setMask(ToolFactory.eINSTANCE.createEditMaskVariables());
-        addVariableDescriptor(labelEditTool, IInterpreterSiriusVariables.ELEMENT, Messages.Table_CellElement);
-        addVariableDescriptor(labelEditTool, IInterpreterSiriusVariables.TABLE, Messages.Table_TableElement);
-        addVariableDescriptor(labelEditTool, IInterpreterSiriusTableVariables.LINE, Messages.Table_LineElement);
-        addVariableDescriptor(labelEditTool, IInterpreterSiriusTableVariables.LINE_SEMANTIC, Messages.Table_SemanticLineElement);
-        addVariableDescriptor(labelEditTool, IInterpreterSiriusVariables.ROOT, Messages.Table_SemanticRootElement);
-
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CELL_UPDATER__DIRECT_EDIT, labelEditTool));
 
         CellEditorTool cellEditorTool = DescriptionFactory.eINSTANCE.createCellEditorTool();
-        addVariableDescriptor(cellEditorTool, IInterpreterSiriusVariables.ELEMENT, Messages.Table_CellElement);
-        addVariableDescriptor(cellEditorTool, IInterpreterSiriusVariables.TABLE, Messages.Table_TableElement);
-        addVariableDescriptor(cellEditorTool, IInterpreterSiriusTableVariables.LINE, Messages.Table_LineElement);
-        addVariableDescriptor(cellEditorTool, IInterpreterSiriusTableVariables.LINE_SEMANTIC, Messages.Table_SemanticLineElement);
-        addVariableDescriptor(cellEditorTool, IInterpreterSiriusVariables.ROOT, Messages.Table_SemanticRootElement);
-        addVariableDescriptor(cellEditorTool, IInterpreterSiriusTableVariables.CELL_EDITOR_RESULT, Messages.Table_CellEditorResult);
+        new TableToolVariables().doSwitch(labelEditTool);
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CELL_UPDATER__CELL_EDITOR, cellEditorTool));
 
@@ -279,15 +270,6 @@ public class FeatureColumnMappingItemProvider extends ColumnMappingItemProvider 
         BackgroundConditionalStyle backgroundConditionalStyle = DescriptionFactory.eINSTANCE.createBackgroundConditionalStyle();
         backgroundConditionalStyle.setStyle(DescriptionFactory.eINSTANCE.createBackgroundStyleDescription());
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.STYLE_UPDATER__BACKGROUND_CONDITIONAL_STYLE, backgroundConditionalStyle));
-    }
-
-    private void addVariableDescriptor(final TableTool tool, final String name, final String documentation) {
-        if (TableHelper.getVariable(tool, name) == null) {
-            final TableVariable newVar = DescriptionFactory.eINSTANCE.createTableVariable();
-            newVar.setName(name);
-            newVar.setDocumentation(documentation);
-            tool.getVariables().add(newVar);
-        }
     }
 
 }

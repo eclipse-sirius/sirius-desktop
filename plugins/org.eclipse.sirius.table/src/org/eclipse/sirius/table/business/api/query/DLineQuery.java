@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -34,6 +34,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * @author mporhel
  * 
  */
+@Deprecated
 public class DLineQuery {
 
     private final DLine line;
@@ -67,7 +68,7 @@ public class DLineQuery {
                 if (delete.getFirstModelOperation() == null) {
                     result = false;
                 } else {
-                    if (delete.getPrecondition() != null && !StringUtil.isEmpty(delete.getPrecondition().trim())) {
+                    if (!StringUtil.isEmpty(delete.getPrecondition())) {
                         final IInterpreter interpreter = InterpreterUtil.getInterpreter(line.getTarget());
                         interpreter.setVariable(IInterpreterSiriusVariables.ROOT, TableHelper.getTable(line).getTarget());
                         interpreter.setVariable(IInterpreterSiriusVariables.ELEMENT, line.getTarget());

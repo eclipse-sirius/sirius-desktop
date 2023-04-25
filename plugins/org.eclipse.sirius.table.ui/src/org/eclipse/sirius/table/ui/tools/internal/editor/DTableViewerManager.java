@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2020 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -403,8 +403,8 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
             descriptionFileChanged = false;
 
             final Map<TableMapping, DeleteTargetColumnAction> mappingToDeleteActions = new HashMap<>();
-            final Map<TableMapping, List<AbstractToolAction>> mappingToCreateActions = new HashMap<>();
-            final List<AbstractToolAction> createActionsForTable = new ArrayList<>();
+            final Map<TableMapping, List<AbstractToolAction<?>>> mappingToCreateActions = new HashMap<>();
+            final List<AbstractToolAction<?>> createActionsForTable = new ArrayList<>();
             calculateAvailableMenus(mappingToDeleteActions, mappingToCreateActions, createActionsForTable);
 
             mgr.setRemoveAllWhenShown(true);
@@ -443,8 +443,8 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
      * @param createActionsForTable
      *            A list of the actions for create lines under the table.
      */
-    private void calculateAvailableMenus(final Map<TableMapping, DeleteTargetColumnAction> mappingToDeleteActions, final Map<TableMapping, List<AbstractToolAction>> mappingToCreateActions,
-            final List<AbstractToolAction> createActionsForTable) {
+    private void calculateAvailableMenus(final Map<TableMapping, DeleteTargetColumnAction> mappingToDeleteActions, final Map<TableMapping, List<AbstractToolAction<?>>> mappingToCreateActions,
+            final List<AbstractToolAction<?>> createActionsForTable) {
 
         final TableDescription tableDescription = ((DTable) dRepresentation).getDescription();
 
@@ -465,9 +465,11 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
                 // Actions on table
                 final EList<? extends CreateTool> createColumnsTools = ((CrossTableDescription) tableDescription).getCreateColumn();
                 for (final CreateTool createTool : createColumnsTools) {
-                    final CreateTargetColumnAction createTargetColumnAction = new CreateTargetColumnAction(createTool, getEditingDomain(), getTableCommandFactory());
-                    createTargetColumnAction.setTable((DTable) dRepresentation);
-                    createActionsForTable.add(createTargetColumnAction);
+                    if (createTool.getFirstModelOperation() != null) {
+                        final CreateTargetColumnAction createTargetColumnAction = new CreateTargetColumnAction(createTool, getEditingDomain(), getTableCommandFactory());
+                        createTargetColumnAction.setTable((DTable) dRepresentation);
+                        createActionsForTable.add(createTargetColumnAction);
+                    }
                 }
             }
 
@@ -487,8 +489,9 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
      *            A map which associates {@link TableMapping} with the corresponding list of {@link AbstractToolAction}
      *            ( {@link CreateLineAction} or {@link CreateTargetColumnAction})
      */
-    private void calculateAvailableMenusForColumn(final EList<ElementColumnMapping> columnMappings, final Map<TableMapping, DeleteTargetColumnAction> mappingToDeleteActions,
-            final Map<TableMapping, List<AbstractToolAction>> mappingToCreateActions) {
+    private void calculateAvailableMenusForColumn(final EList<ElementColumnMapping> columnMappings, final Map<TableMapping, 
+            DeleteTargetColumnAction> mappingToDeleteActions,
+            final Map<TableMapping, List<AbstractToolAction<?>>> mappingToCreateActions) {
         for (final ElementColumnMapping mapping : columnMappings) {
             if (mapping != null && !mappingToDeleteActions.keySet().contains(mapping) && !mappingToCreateActions.keySet().contains(mapping)) {
                 final DeleteTool deleteTool = mapping.getDelete();
@@ -496,14 +499,16 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
                 // (it's an delete action without specific tasks)
                 mappingToDeleteActions.put(mapping, new DeleteTargetColumnAction(deleteTool, getEditingDomain(), tableCommandFactory));
                 final EList<? extends CreateTool> createTools = mapping.getCreate();
-                List<AbstractToolAction> existingCreateTools = mappingToCreateActions.get(mapping);
+                List<AbstractToolAction<?>> existingCreateTools = mappingToCreateActions.get(mapping);
                 if (existingCreateTools == null) {
-                    existingCreateTools = new ArrayList<AbstractToolAction>();
+                    existingCreateTools = new ArrayList<AbstractToolAction<?>>();
+                    mappingToCreateActions.put(mapping, existingCreateTools);
                 }
                 for (final CreateTool createTool : createTools) {
-                    existingCreateTools.add(new CreateTargetColumnAction(createTool, getEditingDomain(), tableCommandFactory));
+                    if (createTool.getFirstModelOperation() != null) {
+                        existingCreateTools.add(new CreateTargetColumnAction(createTool, getEditingDomain(), tableCommandFactory));
+                    }
                 }
-                mappingToCreateActions.put(mapping, existingCreateTools);
             }
         }
     }
@@ -517,20 +522,22 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
      * @param mappingToCreateActions
      *            A map which associates {@link TableMapping} with the corresponding list of {@link AbstractToolAction}
      *            ( {@link CreateLineAction} or {@link CreateTargetColumnAction})
+     * @param processedLineMappings
+     * 
      */
-    private void calculateAvailableMenusForLine(final EList<LineMapping> lineMappings, final Map<TableMapping, List<AbstractToolAction>> mappingToCreateActions,
+    private void calculateAvailableMenusForLine(final EList<LineMapping> lineMappings, final Map<TableMapping, List<AbstractToolAction<?>>> mappingToCreateActions,
             final List<LineMapping> processedLineMappings) {
         for (final LineMapping lineMapping : lineMappings) {
             if (lineMapping != null && !mappingToCreateActions.keySet().contains(lineMapping)) {
                 final EList<? extends CreateTool> createTools = lineMapping.getCreate();
-                List<AbstractToolAction> existingCreateTools = mappingToCreateActions.get(lineMapping);
+                List<AbstractToolAction<?>> existingCreateTools = mappingToCreateActions.get(lineMapping);
                 if (existingCreateTools == null) {
-                    existingCreateTools = new ArrayList<AbstractToolAction>();
+                    existingCreateTools = new ArrayList<>();
+                    mappingToCreateActions.put(lineMapping, existingCreateTools);
                 }
                 for (final CreateTool createTool : createTools) {
                     existingCreateTools.add(new CreateLineAction(createTool, getEditingDomain(), getTableCommandFactory()));
                 }
-                mappingToCreateActions.put(lineMapping, existingCreateTools);
             }
             if (lineMapping != null && !processedLineMappings.contains(lineMapping)) {
                 processedLineMappings.add(lineMapping);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -126,9 +126,9 @@ public class DTableMenuListener implements IMenuListener {
 
     private final DeleteLinesAction deleteLinesAction;
 
-    private Map<TableMapping, List<AbstractToolAction>> mappingToCreateActions;
+    private Map<TableMapping, List<AbstractToolAction<?>>> mappingToCreateActions;
 
-    private List<AbstractToolAction> createActionsForTable;
+    private List<AbstractToolAction<?>> createActionsForTable;
 
     private final HideLinesAction hideLineAction;
 
@@ -167,8 +167,8 @@ public class DTableMenuListener implements IMenuListener {
      * @param createActionsForTable
      *            A list of the actions for create lines under the table.
      */
-    public DTableMenuListener(final DTable table, final DTableViewerManager treeViewManager, final Map<TableMapping, List<AbstractToolAction>> mappingToCreateActions,
-            final Map<TableMapping, DeleteTargetColumnAction> mappingToDeleteColumnActions, final List<AbstractToolAction> createActionsForTable) {
+    public DTableMenuListener(final DTable table, final DTableViewerManager treeViewManager, final Map<TableMapping, List<AbstractToolAction<?>>> mappingToCreateActions,
+            final Map<TableMapping, DeleteTargetColumnAction> mappingToDeleteColumnActions, final List<AbstractToolAction<?>> createActionsForTable) {
         super();
         adapterFactory = DialectUIManager.INSTANCE.createAdapterFactory();
         this.dTable = table;
@@ -238,7 +238,7 @@ public class DTableMenuListener implements IMenuListener {
     private void addTableMenus(final IMenuManager manager) {
         final Collection<DLine> selectedLines = treeViewManager.getSelectedLines();
         if (selectedLines != null && !selectedLines.isEmpty()) {
-            for (final AbstractToolAction abstractToolAction : getCreateActionsForTable()) {
+            for (final AbstractToolAction<?> abstractToolAction : getCreateActionsForTable()) {
                 if (abstractToolAction instanceof CreateLineAction) {
                     final CreateLineAction createLineAction = (CreateLineAction) abstractToolAction;
                     createLineAction.setTable(dTable);
@@ -312,10 +312,6 @@ public class DTableMenuListener implements IMenuListener {
         }
     }
 
-    /**
-     * @param navigateMenuItem
-     * @param semanticElement
-     */
     private void createOpenAction(final SubContributionItem openRepresentation, final DSemanticDecorator decorator) {
         final EObject semanticElement = decorator.getTarget();
         final Session session = SessionManager.INSTANCE.getSession(semanticElement);
@@ -524,15 +520,15 @@ public class DTableMenuListener implements IMenuListener {
             // Tools only available for column of type DTargetColumn
             if (column instanceof DTargetColumn && ((DTargetColumn) column).getOriginMapping() != null) {
                 final DTargetColumn targetColumn = (DTargetColumn) column;
-                final AbstractTargetColumnAction deleteAction = getMappingToDeleteActions().get(targetColumn.getOriginMapping());
+                final AbstractTargetColumnAction<?> deleteAction = getMappingToDeleteActions().get(targetColumn.getOriginMapping());
                 deleteAction.setColumn(targetColumn);
                 if (deleteAction.canExecute()) {
                     manager.add(deleteAction);
                 }
-                final List<AbstractToolAction> createActions = getMappingToCreateActions().get(targetColumn.getOriginMapping());
+                final List<AbstractToolAction<?>> createActions = getMappingToCreateActions().get(targetColumn.getOriginMapping());
                 if (createActions != null) {
-                    for (final AbstractToolAction createAction : createActions) {
-                        ((AbstractTargetColumnAction) createAction).setColumn(targetColumn);
+                    for (final AbstractToolAction<?> createAction : createActions) {
+                        ((AbstractTargetColumnAction<?>) createAction).setColumn(targetColumn);
                         if (createAction.canExecute()) {
                             manager.add(createAction);
                         }
@@ -565,10 +561,10 @@ public class DTableMenuListener implements IMenuListener {
     }
 
     private void addCreateActions(final IMenuManager manager, DLine singleSelectedLine) {
-        final List<AbstractToolAction> createActions = getMappingToCreateActions().get(singleSelectedLine.getOriginMapping());
+        final List<AbstractToolAction<?>> createActions = getMappingToCreateActions().get(singleSelectedLine.getOriginMapping());
         if (createActions != null && !createActions.isEmpty()) {
-            for (final AbstractToolAction createAction : createActions) {
-                ((AbstractLineAction) createAction).setLine(singleSelectedLine);
+            for (final AbstractToolAction<?> createAction : createActions) {
+                ((AbstractLineAction<?>) createAction).setLine(singleSelectedLine);
                 if (createAction.canExecute()) {
                     manager.add(createAction);
                 }
@@ -637,19 +633,19 @@ public class DTableMenuListener implements IMenuListener {
         this.mappingToDeleteColumnActions = mappingToDeleteActions;
     }
 
-    protected Map<TableMapping, List<AbstractToolAction>> getMappingToCreateActions() {
+    protected Map<TableMapping, List<AbstractToolAction<?>>> getMappingToCreateActions() {
         return mappingToCreateActions;
     }
 
-    public void setMappingToCreateActions(final Map<TableMapping, List<AbstractToolAction>> mappingToCreateActions) {
+    public void setMappingToCreateActions(final Map<TableMapping, List<AbstractToolAction<?>>> mappingToCreateActions) {
         this.mappingToCreateActions = mappingToCreateActions;
     }
 
-    protected List<AbstractToolAction> getCreateActionsForTable() {
+    protected List<AbstractToolAction<?>> getCreateActionsForTable() {
         return createActionsForTable;
     }
 
-    public void setCreateActionsForTable(final List<AbstractToolAction> createActionsForTable) {
+    public void setCreateActionsForTable(final List<AbstractToolAction<?>> createActionsForTable) {
         this.createActionsForTable = createActionsForTable;
     }
 
