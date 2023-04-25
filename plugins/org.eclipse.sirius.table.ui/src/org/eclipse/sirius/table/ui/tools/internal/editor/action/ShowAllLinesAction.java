@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -50,16 +50,10 @@ public class ShowAllLinesAction extends AbstractTransactionalTableAction {
     public void run() {
         super.run();
         CompoundCommand compoundCommand = new CompoundCommand(MessageFormat.format(Messages.Action_setValues, TablePackage.eINSTANCE.getDLine_Visible().getName()));
-        showLines(compoundCommand);
+        showLines(compoundCommand, getTable());
         getEditingDomain().getCommandStack().execute(compoundCommand);
     }
 
-    /**
-     * Show all the lines of the table.
-     */
-    private void showLines(CompoundCommand compoundCommand) {
-        showLines(compoundCommand, getTable());
-    }
 
     /**
      * Show all the lines of this line container.

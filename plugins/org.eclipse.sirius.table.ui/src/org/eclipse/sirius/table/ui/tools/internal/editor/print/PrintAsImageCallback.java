@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -172,8 +172,6 @@ public class PrintAsImageCallback implements PrintCallback {
 
     /**
      * Compute the maximum height possible for a page.
-     *
-     * @return the maximum height possible
      */
     private void computeMaxPageHeightAndMargin() {
         final int max = PageSetup.size(PageSetup.inches(pageSetup.getDimension().getHeight()), printParameters.getPrinter().getDPI().y);
@@ -188,8 +186,6 @@ public class PrintAsImageCallback implements PrintCallback {
 
     /**
      * Compute the maximum width possible for a page.
-     *
-     * @return the maximum width possible
      */
     private void computeMaxPageWidth() {
         maxPageWidth = PageSetup.size(PageSetup.inches(pageSetup.getDimension().getWidth()), printParameters.getPrinter().getDPI().x);
