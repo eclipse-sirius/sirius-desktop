@@ -56,11 +56,14 @@ public abstract class AbstractEditorCreateMenuAction<T extends AbstractToolActio
 
     // menu item selection listener: listens to selection events
     private final Listener menuItemListener = new Listener() {
+        
         @Override
         public void handleEvent(final Event event) {
             if (SWT.Selection == event.type && !event.widget.isDisposed()) {
                 final ActionContributionItem item = (ActionContributionItem) event.widget.getData();
-                setLastAction((T) item.getAction());
+                @SuppressWarnings("unchecked")
+                T last = (T) item.getAction();
+                setLastAction(last);
             }
         }
     };
