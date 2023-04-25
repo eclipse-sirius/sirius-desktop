@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,15 +15,18 @@ package org.eclipse.sirius.table.ui.tools.internal.editor.action;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.table.metamodel.table.description.TableTool;
 import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 
 /**
  * An abstract class for all actions which launch tool (DeleteTool, CreateTool).
  * 
  * @author lredor
+ * @param <T> type of the tool
  */
-public class AbstractToolAction extends Action {
+public class AbstractToolAction<T extends TableTool> extends Action {
     TransactionalEditingDomain editingDomain;
 
     ITableCommandFactory tableCommandFactory;
@@ -31,7 +34,7 @@ public class AbstractToolAction extends Action {
     /**
      * The tool corresponding to this action.
      */
-    TableTool tool;
+    T tool;
 
     /**
      * Creates a new action with the given text.
@@ -46,7 +49,7 @@ public class AbstractToolAction extends Action {
      *            The tool corresponding to this action
      * 
      */
-    public AbstractToolAction(final String text, final TransactionalEditingDomain editingDomain, final ITableCommandFactory tableCommandFactory, final TableTool tableTool) {
+    public AbstractToolAction(final String text, final TransactionalEditingDomain editingDomain, final ITableCommandFactory tableCommandFactory, final T tableTool) {
         super(text);
         this.editingDomain = editingDomain;
         this.tableCommandFactory = tableCommandFactory;
@@ -67,7 +70,7 @@ public class AbstractToolAction extends Action {
      * @param tableTool
      *            The tool corresponding to this action
      */
-    public AbstractToolAction(final String text, final ImageDescriptor image, final TransactionalEditingDomain editingDomain, final ITableCommandFactory tableCommandFactory, final TableTool tableTool) {
+    public AbstractToolAction(final String text, final ImageDescriptor image, final TransactionalEditingDomain editingDomain, final ITableCommandFactory tableCommandFactory, final T tableTool) {
         super(text, image);
         this.editingDomain = editingDomain;
         this.tableCommandFactory = tableCommandFactory;
@@ -102,7 +105,9 @@ public class AbstractToolAction extends Action {
         return false;
     }
 
-    protected TableTool getTool() {
+    protected T getTool() {
         return tool;
     }
+
+    
 }

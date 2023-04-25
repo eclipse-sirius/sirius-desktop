@@ -14,6 +14,7 @@ package org.eclipse.sirius.business.api.logger;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
@@ -74,6 +75,17 @@ public final class InterpretationContext {
         implementation.getDecorated().setVariable(name, value);
     }
     
+    
+    /**
+     * Add variables.
+     * 
+     * @param values
+     *            couples of (name, value)
+     */
+    public void setVariables(Map<String, ? extends Object> values) {
+        values.forEach((key, value) -> setVariable(key, value));
+    }
+    
     /**
      * Enables if errors are logged.
      * <p>
@@ -101,7 +113,7 @@ public final class InterpretationContext {
      */
     public static void with(RuntimeLoggerInterpreter interpreter, Consumer<InterpretationContext> task) {
         InterpretationContext ctx = new InterpretationContext(interpreter);
-        try { // Cannot use closable unless by exposing IOException
+        try { // Cannot use closable for Java 8
             task.accept(ctx);
         } finally {
             ctx.close();

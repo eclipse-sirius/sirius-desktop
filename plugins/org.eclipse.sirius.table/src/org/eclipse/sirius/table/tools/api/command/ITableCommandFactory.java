@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.sirius.table.metamodel.table.DTargetColumn;
 import org.eclipse.sirius.table.metamodel.table.LineContainer;
 import org.eclipse.sirius.table.metamodel.table.description.CreateTool;
 import org.eclipse.sirius.tools.api.command.ICommandFactory;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * Describes the contract of the table command factory.
@@ -33,6 +34,10 @@ public interface ITableCommandFactory extends ICommandFactory {
 
     /**
      * Create a command that creates a line.
+     * <p>
+     * Legacy implementation:
+     * Deprecated to {@link ITableCommandFactory#buildCreateLineCommandFromTool(LineContainer, CreateTool)}.
+     * </p>
      * 
      * @param lineContainer
      *            container element in which the command should put the created
@@ -44,10 +49,15 @@ public interface ITableCommandFactory extends ICommandFactory {
      * @return a command able to create the line and putting it in the
      *         container, corresponding to the {@link CreateTool}.
      */
+    @Deprecated
     Command buildCreateLineCommandFromTool(LineContainer lineContainer, EObject semanticCurrentElement, CreateTool tool);
 
     /**
      * Create a command that creates a column.
+     * <p>
+     * Legacy implementation:
+     * Deprecated to {@link ITableCommandFactory#buildCreateLineCommandFromTool(LineContainer, CreateTool)}.
+     * </p>
      * 
      * @param containerView
      *            container element in which the command should put the created
@@ -59,7 +69,35 @@ public interface ITableCommandFactory extends ICommandFactory {
      * @return a command able to create the line and putting it in the
      *         container, corresponding to the {@link CreateTool}.
      */
+    @Deprecated
     Command buildCreateColumnCommandFromTool(DTable containerView, EObject semanticCurrentElement, CreateTool tool);
+
+    /**
+     * Create a command that creates a line.
+     * 
+     * @param lineContainer
+     *            container element in which the command should put the created
+     *            line.
+     * @param tool
+     *            {@link CreateTool} used to build the command.
+     * @return a command able to create the line and putting it in the
+     *         container, corresponding to the {@link CreateTool}.
+     */
+
+    Command buildCreateLineCommandFromTool(LineContainer lineContainer, CreateTool tool);
+
+    /**
+     * Create a command that creates a column.
+     * 
+     * @param containerView
+     *            container element in which the command should put the created
+     *            line.
+     * @param tool
+     *            {@link CreateTool} used to build the command.
+     * @return a command able to create the line and putting it in the
+     *         container, corresponding to the {@link CreateTool}.
+     */
+    Command buildCreateColumnCommandFromTool(DSemanticDecorator containerView, CreateTool tool);
 
     /**
      * Returns a command that can delete the specified element.
