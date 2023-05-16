@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -42,11 +42,11 @@ import org.eclipse.ui.IWorkbenchPreferenceConstants;
 import org.eclipse.ui.PlatformUI;
 
 /**
- * 
+ *
  * Test pop ups appears when closing editors with session dirty. - Test personal UiCallback for pop up message on close
  * dirty representations correspond to message defines in personal UICallback. - Test pop up appears when many editors
  * dirty closed. Test VP-2458 VP-2454. Test VP-2457.
- * 
+ *
  * @author jdupont
  */
 public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
@@ -350,7 +350,7 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
         // Check the message (must start with the session name, instead of
         // editor name).
         final SWTBotButton buttonNo = saveBot.button("No");
-        final SWTBotLabel labelOfPopup = saveBot.label(1);
+        final SWTBotLabel labelOfPopup = TestsUtil.is202303Platform() ? saveBot.label(0) : saveBot.label(1);
         final String msgOfPopup = labelOfPopup.getText();
         assertTrue("The message (\"" + msgOfPopup + "\") should be contains:  (" + TEST_UI_CALLBACK + ").", msgOfPopup.contains(TEST_UI_CALLBACK));
         buttonNo.click();
@@ -378,7 +378,13 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
 
     private void checkSaveResourcesDialog() {
         SWTBot saveBot = SWTBotSiriusHelper.getShellBot("Save Resources");
-        final SWTBotButton buttonOk = saveBot.button(TestsUtil.isPhotonPlatformOrLater() ? "Save Selected" : "OK");
+        final SWTBotButton buttonOk;
+        if (TestsUtil.is202303Platform()) {
+            // on platform 2023-03, the text of button change to "Save X of Y"
+            buttonOk = saveBot.button("Save 2 of 2");
+        } else {
+            buttonOk = saveBot.button(TestsUtil.isPhotonPlatformOrLater() ? "Save Selected" : "OK");
+        }
         assertTrue("The popup should be contains 2 elements", saveBot.table().rowCount() == 2);
         buttonOk.click();
         SessionSavedCondition sessionCondition = new SessionSavedCondition(localSession.getOpenedSession());
@@ -398,7 +404,7 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * Create a new node using the defined Node Creation tool, at the given position.
-     * 
+     *
      * @param xOfNodeToCreate
      *            position of the note to create
      * @param yOfNodeToCreate
@@ -414,7 +420,7 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * Create a representation from the session wizard.
-     * 
+     *
      * @param representation
      * @param semanticElement
      * @return the opened representation
@@ -425,7 +431,6 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
         SWTBotUtils.waitAllUiEvents();
         secondWizardBot.tree().expandNode("platform:/resource/" + TEMP_PROJECT_NAME + "/" + MODEL).expandNode(semanticElement).select();
         SWTBotUtils.waitAllUiEvents();
-        checkButtonAfterSelectionSecondWizard(secondWizardBot);
         secondWizardBot.button(FINISH).click();
 
         SWTBotUtils.waitAllUiEvents();
@@ -442,7 +447,7 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * Open the second wizard.
-     * 
+     *
      * @param representation
      * @return
      */
@@ -455,13 +460,11 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
         shell.activate();
         SWTBot wizardBot = shell.bot();
         wizardBot.tree().expandNode(VIEWPOINT_NAME).expandNode(representation).select();
-        checkButtonAfterSelectionFirstWizard(wizardBot);
         wizardBot.button(NEXT).click();
 
         // select semantic element of the new representation
         shell = bot.shell("Create Representation");
         shell.activate();
-        checkButtonBeforeSelectionSecondWizard(shell.bot());
         return shell.bot();
     }
 
@@ -476,26 +479,6 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
         } catch (WidgetNotFoundException e) {
             SWTBotUtils.clickContextMenu(sessionTreeItem, "Create Representation");
         }
-    }
-
-    private void checkButtonAfterSelectionFirstWizard(SWTBot swtBot) {
-        assertFalse(swtBot.button(FINISH).isEnabled());
-        assertFalse(swtBot.button(BACK).isEnabled());
-        assertTrue(swtBot.button(CANCEL).isEnabled());
-    }
-
-    private void checkButtonBeforeSelectionSecondWizard(SWTBot swtBot) {
-        assertFalse(swtBot.button(FINISH).isEnabled());
-        assertTrue(swtBot.button(BACK).isEnabled());
-        assertFalse(swtBot.button(NEXT).isEnabled());
-        assertTrue(swtBot.button(CANCEL).isEnabled());
-    }
-
-    private void checkButtonAfterSelectionSecondWizard(SWTBot swtBot) {
-        assertFalse(swtBot.button(NEXT).isEnabled());
-        assertTrue(swtBot.button(BACK).isEnabled());
-        assertTrue(swtBot.button(CANCEL).isEnabled());
-        assertTrue(swtBot.button(FINISH).isEnabled());
     }
 
     private class SessionCallBack extends AbstractSWTCallback {

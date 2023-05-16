@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021, 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2021, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -592,7 +592,8 @@ public class HideRevealEdgeLabelsTest extends AbstractHideRevealDiagramElementsL
         for (SWTBotTreeItem edgeLabelTreeItem : referenceTreeItem.getItems()) {
             // Select the item and wait that all Ui Events are done.
             edgeLabelTreeItem.select();
-            SWTBotUtils.waitAllUiEvents();
+            // Need to sleep: waitAllUiEvents doesn't work here (and already in select method)
+            bot.sleep(100);
             // Check it exists on diagram, then hide it from outline and check it is hidden on diagram
             checkEdgeLabelIsVisible(edgeLabelTreeItem.getText().replace(" label", "")); //$NON-NLS-1$ //$NON-NLS-2$
             edgeLabelTreeItem.contextMenu(HIDE_LABEL_TOOLTIP).click();
@@ -732,7 +733,7 @@ public class HideRevealEdgeLabelsTest extends AbstractHideRevealDiagramElementsL
     /**
      * Check that a label is hidden independently from the visibility mode status. Instead of checking the edit part
      * display status, this method check for the HideLabelFilter in the DEdge.
-     * 
+     *
      * @param dEdge
      *            the {@link DEdge} to check
      * @param labelEditPart
@@ -805,7 +806,7 @@ public class HideRevealEdgeLabelsTest extends AbstractHideRevealDiagramElementsL
 
     /**
      * Ensures that all labels from the edge with the given name are visible.
-     * 
+     *
      * @param label
      *            the label to search
      */
@@ -816,7 +817,7 @@ public class HideRevealEdgeLabelsTest extends AbstractHideRevealDiagramElementsL
 
     /**
      * Ensures that all labels from the edge with the given name are visible.
-     * 
+     *
      * @param label
      *            the label to search
      */
@@ -849,7 +850,7 @@ public class HideRevealEdgeLabelsTest extends AbstractHideRevealDiagramElementsL
 
     /**
      * Ensures that no label from the edge with the given name is visible.
-     * 
+     *
      * @param label
      *            the label to search
      */
@@ -860,7 +861,7 @@ public class HideRevealEdgeLabelsTest extends AbstractHideRevealDiagramElementsL
 
     /**
      * Ensures that no label from the edge with the given name is visible.
-     * 
+     *
      * @param label
      *            the label to search
      */

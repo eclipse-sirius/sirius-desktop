@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
@@ -38,9 +39,9 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
  * viewpoint which contains the extended representation: if the extension references the base viewpoint through
  * "viewpoint:/" URIs, the base VSM was loaded through that logical URI instead of a concrete "platform:/" one, which
  * causes problems in other parts of Sirius.
- * 
+ *
  * See VP-2529
- * 
+ *
  * @author pierre-charles.david@obeo.fr
  */
 public class ExtensionActivationOrderTest extends AbstractSiriusSwtBotGefTestCase {
@@ -180,7 +181,11 @@ public class ExtensionActivationOrderTest extends AbstractSiriusSwtBotGefTestCas
          * Check that the error message exists on the dialog. Throws a WidgetNotFoundException if the message does not
          * exist.
          */
-        botSiriusSelection.label(" Extension_A requires: Base");
+        if (TestsUtil.is202303Platform()) {
+            botSiriusSelection.text(" Extension_A requires: Base");
+        } else {
+            botSiriusSelection.label(" Extension_A requires: Base");
+        }
 
         /*
          * We got the "error" message, now we complete the selection normally and try to create a diagram.

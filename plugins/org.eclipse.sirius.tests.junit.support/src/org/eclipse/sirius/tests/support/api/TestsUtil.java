@@ -1,12 +1,12 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
  * https://www.eclipse.org/legal/epl-2.0/
  *
  * SPDX-License-Identifier: EPL-2.0
- * 
+ *
  * Contributors:
  *      Obeo - Initial API and implementation
  *      Ketan Padegaonkar and others - the various waitUntil() methods come
@@ -38,7 +38,7 @@ import org.osgi.framework.Version;
 
 /**
  * Useful operation common to test cases.
- * 
+ *
  * @author mchauvin
  */
 public final class TestsUtil {
@@ -58,6 +58,8 @@ public final class TestsUtil {
     private static final String UI_WORKBENCH_202006_START = "3.119";
 
     private static final String UI_WORKBENCH_202106_START = "3.122";
+
+    private static final String UI_WORKBENCH_202303_START = "3.128";
 
     private static final String CREATE_REPRESENTATATION_IN_SEPARATE_RESOURCE = "createLocalRepresentationInSeparateResource";
 
@@ -99,11 +101,11 @@ public final class TestsUtil {
      * Tests whether the environment is configured to skip non-critical tests which take a long time. This possibility
      * to skip some tests should only be used on developer machines to get faster feedback, and never on a continuous
      * integration server.<BR/>
-     * 
+     *
      * <B>WARNING:</B> All tests using this method must be added in a corresponding tests suite class:
      * org.eclipse.sirius.tests.suite.AllSiriusLongTestSuite, org.eclipse.sirius.tests.swtbot.suite.AllLongTestSuite,
      * ...
-     * 
+     *
      * @return <code>true</code> if the environment is setup to skip long tests.
      */
     public static boolean shouldSkipLongTests() {
@@ -112,7 +114,7 @@ public final class TestsUtil {
 
     /**
      * Tests whether the environment has a version of gtk that correctly supports GTK3.
-     * 
+     *
      * @return <code>true</code> if GTK3 is supported, false otherwise.
      */
     public static boolean isGTK3supported() {
@@ -128,17 +130,17 @@ public final class TestsUtil {
 
     /**
      * Tests whether unreliable tests should be run. See {@link #shouldSkipUnreliableTests()}. Can be used in tests as:
-     * 
+     *
      * <pre>
      * Assume.assumeTrue(TestUtil.shouldRunUnreliableTests())
      * </pre>
-     * 
+     *
      * at the beginning of such tests.<BR/>
-     * 
+     *
      * <B>WARNING:</B> All tests using this method must be added in a corresponding tests suite class:
      * org.eclipse.sirius.tests.suite.AllSiriusUnreliableTestSuite,
      * org.eclipse.sirius.tests.swtbot.suite.AllUnreliableTestSuite, ...
-     * 
+     *
      * @return <code>true</code> iff unreliable tests should be run.
      */
     public static boolean shouldRunUnreliableTests() {
@@ -151,7 +153,7 @@ public final class TestsUtil {
      * <B>WARNING:</B> All tests using this method must be added in a corresponding tests suite class:
      * org.eclipse.sirius.tests.suite.AllSiriusUnreliableTestSuite,
      * org.eclipse.sirius.tests.swtbot.suite.AllUnreliableTestSuite, ...
-     * 
+     *
      * @return <code>true</code> if the environment is setup to skip unreliable tests.
      */
     public static boolean shouldSkipUnreliableTests() {
@@ -160,17 +162,17 @@ public final class TestsUtil {
 
     /**
      * Tests whether long running tests should be run. See {@link #shouldSkipLongTests()}. Can be used in tests as:
-     * 
+     *
      * <pre>
      * Assume.assumeTrue(TestUtil.shouldRunLongTests())
      * </pre>
-     * 
+     *
      * at the beginning of such tests.<BR/>
-     * 
+     *
      * <B>WARNING:</B> All tests using this method must be added in a corresponding tests suite class:
      * org.eclipse.sirius.tests.suite.AllSiriusLongTestSuite, org.eclipse.sirius.tests.swtbot.suite.AllLongTestSuite,
      * ...
-     * 
+     *
      * @return <code>true</code> iff long running tests should be run.
      */
     public static boolean shouldRunLongTests() {
@@ -179,7 +181,7 @@ public final class TestsUtil {
 
     /**
      * Whether the createLocalRepresentationInSeparateResource system property is set at true or not.
-     * 
+     *
      * @return true if createLocalRepresentationInSeparateResource property is set at true, otherwise false.
      */
     public static boolean isCreateRepresentationInSeparateResource() {
@@ -188,10 +190,10 @@ public final class TestsUtil {
 
     /**
      * Change the createLocalRepresentationInSeparateResource system property.
-     * 
+     *
      * @param value
      *            the value
-     * 
+     *
      * @return the previous value
      */
     public static boolean setCreateRepresentationInSeparateResource(boolean value) {
@@ -201,7 +203,7 @@ public final class TestsUtil {
 
     /**
      * Tests if the EEF-based properties view support is installed.
-     * 
+     *
      * @return <code>true</code> if the EEF-based properties view support is installed.
      */
     public static boolean isEEFBasedPropertiesViewsSupportInstalled() {
@@ -210,7 +212,7 @@ public final class TestsUtil {
 
     /**
      * Tells if the current platform corresponds to juno3 (i.e. Eclipse 3.8).
-     * 
+     *
      * @return true if the current platform corresponds to juno3 (i.e. Eclipse 3.8), false else
      */
     public static boolean isJuno3Platform() {
@@ -224,7 +226,7 @@ public final class TestsUtil {
 
     /**
      * Tells if the current platform corresponds to Juno, Kepler, Luna, .. (i.e. Eclipse 4.x).
-     * 
+     *
      * @return true if the current platform corresponds to eclipse 4.x, false otherwise.
      */
     public static boolean isEclipse4xPlatform() {
@@ -234,7 +236,7 @@ public final class TestsUtil {
 
     /**
      * Tells if the current platform corresponds to Juno (i.e. Eclipse 4.x).
-     * 
+     *
      * @return true if the current platform corresponds to Juno 4.x, false otherwise.
      */
     public static boolean isJuno4Platform() {
@@ -257,7 +259,7 @@ public final class TestsUtil {
 
     /**
      * Tells if the current platform corresponds to Kepler.
-     * 
+     *
      * @return true if the current platform corresponds to Kepler, false otherwise.
      */
     public static boolean isKeplerPlatform() {
@@ -268,7 +270,7 @@ public final class TestsUtil {
 
     /**
      * Tells if the current platform corresponds to Luna.
-     * 
+     *
      * @return true if the current platform corresponds to Luna, false otherwise.
      */
     public static boolean isLunaPlatform() {
@@ -277,7 +279,7 @@ public final class TestsUtil {
 
     /**
      * Tells if the current platform corresponds to a version before Oxygen.
-     * 
+     *
      * @return true if the current platform corresponds to a version before Oxygen, false otherwise.
      */
     public static boolean isBeforeOxygenPlatform() {
@@ -286,7 +288,7 @@ public final class TestsUtil {
 
     /**
      * Tells if the current platform corresponds to Oxygen or later.
-     * 
+     *
      * @return true if the current platform corresponds to Oxygen or later, false otherwise.
      */
     public static boolean isOxygenPlatform() {
@@ -295,7 +297,7 @@ public final class TestsUtil {
 
     /**
      * Tells if the current platform corresponds to Photon or later.
-     * 
+     *
      * @return true if the current platform corresponds to Photon or later, false otherwise.
      */
     public static boolean isPhotonPlatformOrLater() {
@@ -304,7 +306,7 @@ public final class TestsUtil {
 
     /**
      * Tells if the current platform corresponds to 2020-03 or later.
-     * 
+     *
      * @return true if the current platform corresponds to 2020-03 or later, false otherwise.
      */
     public static boolean is202003Platform() {
@@ -313,7 +315,7 @@ public final class TestsUtil {
 
     /**
      * Tells if the current platform corresponds to 2020-06 or later.
-     * 
+     *
      * @return true if the current platform corresponds to 2020-06 or later, false otherwise.
      */
     public static boolean is202006Platform() {
@@ -322,7 +324,7 @@ public final class TestsUtil {
 
     /**
      * Tells if the current platform corresponds to 2021-06 or later.
-     * 
+     *
      * @return true if the current platform corresponds to 2021-06 or later, false otherwise.
      */
     public static boolean is202106Platform() {
@@ -330,11 +332,20 @@ public final class TestsUtil {
     }
 
     /**
+     * Tells if the current platform corresponds to 2023-03 or later.
+     *
+     * @return true if the current platform corresponds to 2023-03 or later, false otherwise.
+     */
+    public static boolean is202303Platform() {
+        return checkUiWorkbenchVersion(Version.parseVersion(UI_WORKBENCH_202303_START), null);
+    }
+
+    /**
      * Copied and adapted from org.eclipse.swtbot.swt.finder.SWTBotFactory.waitUntil(ICondition, long, long)
-     * 
+     *
      * Waits until the condition has been meet, or the timeout is reached. The interval is the delay between evaluating
      * the condition after it has failed.
-     * 
+     *
      * @param condition
      *            the condition to be evaluated.
      * @param timeout
@@ -370,12 +381,12 @@ public final class TestsUtil {
 
     /**
      * Copied and adapted from org.eclipse.swtbot.swt.finder.SWTBotFactory.waitUntil(ICondition, long, long)
-     * 
+     *
      * Waits until the condition has been meet, or the timeout is reached. The interval is the delay between evaluating
      * the condition after it has failed.
-     * 
+     *
      * Interval : 500
-     * 
+     *
      * @param condition
      *            the condition to be evaluated.
      * @param timeout
@@ -387,12 +398,12 @@ public final class TestsUtil {
 
     /**
      * Copied and adapted from org.eclipse.swtbot.swt.finder.SWTBotFactory.waitUntil(ICondition, long, long)
-     * 
+     *
      * Waits until the condition has been meet, or the timeout is reached. The interval is the delay between evaluating
      * the condition after it has failed.
-     * 
+     *
      * Timeout: 5000 Interval : 500
-     * 
+     *
      * @param condition
      *            the condition to be evaluated.
      */
@@ -404,10 +415,10 @@ public final class TestsUtil {
      * Sets a target platform in the test platform to get workspace builds OK with PDE.<BR>
      * Copied and adpated from http://git.eclipse.org/c/gmf-tooling/org.eclipse.gmf-tooling.git/tree/
      * tests/org.eclipse.gmf.tests/src/org/eclipse/gmf/tests/Utils.java
-     * 
+     *
      * @param currentPluginSymbolicName
      *            The plug-in name from where the tests are currently launched.
-     * 
+     *
      * @throws CoreException
      *             In case of problem to retrieve current target platform or to save the new one.
      * @throws InterruptedException
@@ -451,10 +462,10 @@ public final class TestsUtil {
 
     /**
      * Tells if the current java runtime version is the expected one.
-     * 
+     *
      * @param expectedVersion
      *            The expected version (i.e. 7, 8, 9, 10..., 14, ...)
-     * 
+     *
      * @return true if the current java runtime version is the expected one, false otherwise.
      */
     public static boolean isJavaVersion(int expectedVersion) {
@@ -463,10 +474,10 @@ public final class TestsUtil {
 
     /**
      * Tells if the current java runtime version is the expected one or older.
-     * 
+     *
      * @param expectedVersion
      *            The expected version (i.e. 7, 8, 9, 10..., 14, ...)
-     * 
+     *
      * @return true if the current java runtime version is 8 or lower, false otherwise.
      */
     public static boolean isJavaVersionOrOlder(int expectedVersion) {
@@ -475,10 +486,10 @@ public final class TestsUtil {
 
     /**
      * Tells if the current java runtime version is the expected one or older.
-     * 
+     *
      * @param expectedVersion
      *            The expected version (i.e. 7, 8, 9, 10..., 14, ...)
-     * 
+     *
      * @return true if the current java runtime version is 8 or lower, false otherwise.
      */
     public static boolean isJavaVersionOrNewer(int expectedVersion) {
@@ -487,7 +498,7 @@ public final class TestsUtil {
 
     /**
      * Return the java version according to convention changes (starting with "1." or not).
-     * 
+     *
      * @return The java version.
      */
     private static int getJavaRuntimeVersion() {
