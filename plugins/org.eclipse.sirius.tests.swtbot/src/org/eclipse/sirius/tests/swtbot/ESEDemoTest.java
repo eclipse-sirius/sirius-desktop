@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -117,7 +117,7 @@ public class ESEDemoTest extends AbstractScenarioTestCase {
         SWTBotTreeItem nodeClass22Name = tree.getTreeItem(NEW_ECLASS_2).getNode("Name");
 
         nodeClass22Name.select();
-        nodeClass22Name.click();
+        bot.sleep(100);
         done = new OperationDoneCondition();
         SWTBotText text = propertiesViewBot.text();
         text.setText("Class2");

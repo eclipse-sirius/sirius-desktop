@@ -593,7 +593,7 @@ public class HideRevealEdgeLabelsTest extends AbstractHideRevealDiagramElementsL
             // Select the item and wait that all Ui Events are done.
             edgeLabelTreeItem.select();
             // Need to sleep: waitAllUiEvents doesn't work here (and already in select method)
-            bot.sleep(100);
+            bot.sleep(200);
             // Check it exists on diagram, then hide it from outline and check it is hidden on diagram
             checkEdgeLabelIsVisible(edgeLabelTreeItem.getText().replace(" label", "")); //$NON-NLS-1$ //$NON-NLS-2$
             edgeLabelTreeItem.contextMenu(HIDE_LABEL_TOOLTIP).click();
