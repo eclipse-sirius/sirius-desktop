@@ -8,7 +8,7 @@ h2(#sirius7.2.0). Changes in Sirius 7.2.0
 
 h3. User-Visible Changes
 
-* <span class="label label-info">Modified</span>JRE17 is required to use Sirius.
+* <span class="label label-info">Modified</span>Java 17 (or later) is now required to run Sirius.
 
 h3. Specifier-Visible Changes
 
@@ -16,7 +16,7 @@ h3. Specifier-Visible Changes
 
 h3. Developer-Visible Changes
 
-* <span class="label label-info">Modified</span>Java 17 is required as BREE and source level. But the runtime compatibility is already effective since Sirius 7.0.
+* <span class="label label-info">Modified</span>Java 17 is required as BREE and source level.
 
 h2(#sirius7.1.0). Changes in Sirius 7.1.0
 
