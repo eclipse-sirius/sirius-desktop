@@ -56,7 +56,7 @@ public interface ITableCommandFactory extends ICommandFactory {
      * Create a command that creates a column.
      * <p>
      * Legacy implementation:
-     * Deprecated to {@link ITableCommandFactory#buildCreateLineCommandFromTool(LineContainer, CreateTool)}.
+     * Deprecated to {@link ITableCommandFactory#buildCreateColumnCommandFromTool(DSemanticDecorator, CreateTool)}.
      * </p>
      * 
      * @param containerView

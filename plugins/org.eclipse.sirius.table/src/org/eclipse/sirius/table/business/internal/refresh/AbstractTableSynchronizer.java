@@ -32,6 +32,7 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ext.base.collect.MultipleCollection;
 import org.eclipse.sirius.ext.base.collect.SetIntersection;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
+import org.eclipse.sirius.table.business.api.helper.TableVariablesHelper;
 import org.eclipse.sirius.table.business.api.refresh.DTableSynchronizer;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DColumn;
@@ -448,11 +449,9 @@ public abstract class AbstractTableSynchronizer<D extends TableDescription, C ex
         final MultipleCollection<EObject> semantics = new MultipleCollection<EObject>();
         if (TableHelper.hasSemanticCandidatesExpression(mapping)) {
             InterpretationContext.with(interpreter, ctx -> {
-                ctx.setVariable(IInterpreterSiriusVariables.CONTAINER_VIEW, container);
-                ctx.setVariable(IInterpreterSiriusVariables.CONTAINER, container.getTarget());
-                ctx.setVariable(IInterpreterSiriusVariables.ROOT, table.getTarget());
+                ctx.setVariables(TableVariablesHelper.getVariablesForCandidates(container));
+                // Deprecated: for compatibility purpose.
                 ctx.setVariable(IInterpreterSiriusVariables.VIEWPOINT, this.table);
-                ctx.setVariable(IInterpreterSiriusVariables.TABLE, this.table);
 
                 final Collection<EObject> candidates = interpreter.evaluateCollection(container.getTarget(), mapping, 
                         DescriptionPackage.eINSTANCE.getLineMapping_SemanticCandidatesExpression());

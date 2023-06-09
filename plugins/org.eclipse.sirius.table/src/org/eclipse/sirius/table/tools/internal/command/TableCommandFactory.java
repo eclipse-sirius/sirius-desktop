@@ -158,20 +158,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
                 TableVariablesHelper.getVariables(containerView), tool);
     }
     
-    
-    /**
-     * Create a command that creates a line.
-     *
-     * @param lineContainer
-     *            container element in which the command should put the created line.
-     *            the semantic current element
-     * @param semanticCurrentElement
-     *            the semantic current element
-     * @param tool
-     *            {@link CreateTool} used to build the command.
-     * @return a command able to create the line and putting it in the container, corresponding to the
-     *         {@link CreateTool}.
-     */
+
     @Override @Deprecated
     public Command buildCreateLineCommandFromTool(final LineContainer lineContainer, final EObject semanticCurrentElement, final CreateTool tool) {
         // legacy method:
@@ -184,18 +171,6 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
                 tool);
     }
 
-    /**
-     * Create a command that creates a column.
-     *
-     * @param containerView
-     *            container element in which the command should put the created line.
-     * @param semanticCurrentElement
-     *            the semantic current element
-     * @param tool
-     *            {@link CreateTool} used to build the command.
-     * @return a command able to create the line and putting it in the container, corresponding to the
-     *         {@link CreateTool}.
-     */
     @Override @Deprecated
     public Command buildCreateColumnCommandFromTool(final DTable containerView, final EObject semanticCurrentElement, final CreateTool tool) {
         // legacy method:
@@ -206,8 +181,6 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
                         IInterpreterSiriusVariables.CONTAINER, containerView.getTarget(),
                         IInterpreterSiriusVariables.ELEMENT, semanticCurrentElement), 
                 tool);
-        
-
     }
     
     private <TT extends AbstractToolDescription & TableTool> Command buildCreateCommandFromTool(
@@ -316,30 +289,15 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
             interpreterContext = currentCell.getLine().getTarget();
         }
 
-        final Map<String, Object> variables = new HashMap<>();
-        variables.put(IInterpreterSiriusVariables.ROOT, TableHelper.getTable(currentCell).getTarget());
-        variables.put(IInterpreterSiriusTableVariables.LINE_SEMANTIC, currentCell.getLine().getTarget());
-        variables.put(IInterpreterSiriusTableVariables.LINE, currentCell.getLine());
-        variables.put(IInterpreterSiriusTableVariables.TABLE, TableHelper.getTable(currentCell));
-        if (currentCell.getColumn() instanceof DTargetColumn) {
-            variables.put(IInterpreterSiriusTableVariables.COLUMN_SEMANTIC, 
-                    ((DTargetColumn) currentCell.getColumn()).getTarget());
-        }
-        
+        final Map<String, Object> variables = new HashMap<>(TableVariablesHelper.getVariables(currentCell));
+
         EditMaskVariables mask = null;
         if (tool instanceof LabelEditTool) {
-            final LabelEditTool labelEditTool = (LabelEditTool) tool;
-            variables.put(IInterpreterSiriusVariables.ELEMENT, currentCell.getTarget());
-            mask = labelEditTool.getMask();
+            mask = ((LabelEditTool) tool).getMask();
         } else if (tool instanceof CreateCellTool) {
-            // TODO add "cellEditorResult" when CreateCellTool is active for CrossTable.
-            
-            // ?? how a cell can exist for CreateCellTool
-            final CreateCellTool createCellTool = (CreateCellTool) tool;
-            mask = createCellTool.getMask();
-
+            mask = ((CreateCellTool) tool).getMask();
         } else if (tool instanceof CellEditorTool) {
-            variables.put(IInterpreterSiriusVariables.ELEMENT, currentCell.getTarget());
+            // For custom editor, value may be anything provided by CellEditSupport.
             variables.put(IInterpreterSiriusTableVariables.CELL_EDITOR_RESULT, newValue);
         }
         
@@ -371,11 +329,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
         SiriusCommand result = new SiriusCommand(domain, Messages.TableCommandFactory_setCellContent);
         EObject interpreterContext = currentLine.getTarget();
 
-        // XXX Change for Map.of(...) in Java9
-        final Map<String, EObject> variables = mapOf(
-                IInterpreterSiriusVariables.ROOT, TableHelper.getTable(currentLine).getTarget(),
-                IInterpreterSiriusTableVariables.LINE_SEMANTIC, currentLine.getTarget(),
-                IInterpreterSiriusTableVariables.COLUMN_SEMANTIC, currentColumn.getTarget());
+        final Map<String, EObject> variables = TableVariablesHelper.getVariables(currentLine, currentColumn);
 
         // Initialization of the variables
         addInitVariablesTask(result, interpreterContext, TableVariablesHelper.getTableVariables(tool, variables));
