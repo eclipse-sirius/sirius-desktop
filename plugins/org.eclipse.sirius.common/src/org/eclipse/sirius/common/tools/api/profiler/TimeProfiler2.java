@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -35,7 +35,7 @@ import org.eclipse.sirius.ext.base.collect.StackEx;
 public class TimeProfiler2 extends TimeProfiler {
 
     /** The Other task. */
-    public static final ProfilerTask OTHER_TASK = new ProfilerTask("Other", "Other");  //$NON-NLS-1$//$NON-NLS-2$
+    public static final ProfilerTask OTHER_TASK = new ProfilerTask("Other", "Other"); //$NON-NLS-1$//$NON-NLS-2$
 
     /** The roots tasks. */
     private List<CompositeTask> roots;
@@ -184,8 +184,7 @@ public class TimeProfiler2 extends TimeProfiler {
     }
 
     /**
-     * Returns the composite task chich profiler task is equal to
-     * <code>task</code>.
+     * Returns the composite task chich profiler task is equal to <code>task</code>.
      * 
      * @param task
      *            The task which CompositeTask we seek.
@@ -206,15 +205,14 @@ public class TimeProfiler2 extends TimeProfiler {
     }
 
     /**
-     * Returns a composite task in the given <code>parent</code>'s children list
-     * which ProfilerTask is equal to the given <code>task</code>.
+     * Returns a composite task in the given <code>parent</code>'s children list which ProfilerTask is equal to the
+     * given <code>task</code>.
      * 
      * @param parent
      *            Parent in which children we seek a composite task.
      * @param task
      *            Task which CompositeTask we seek.
-     * @return The sought composite task, <code>null</code> if it wasn't found
-     *         in this parent.
+     * @return The sought composite task, <code>null</code> if it wasn't found in this parent.
      */
     private CompositeTask internalGetCompositeTask(final CompositeTask parent, final ProfilerTask task) {
         CompositeTask result = null;
@@ -242,7 +240,7 @@ public class TimeProfiler2 extends TimeProfiler {
         try {
             // default implementation.
             super.stopWork(task);
-            if (isActive()) {
+            if (isActive() && !this.runningTasks.isEmpty()) {
                 // specific implementation.
                 final Date stop = new Date();
                 final CompositeTask runningTask = this.runningTasks.pop();
@@ -331,8 +329,7 @@ public class TimeProfiler2 extends TimeProfiler {
         }
 
         /**
-         * Finds or creates the {@link CompositeTask} corresponding to the
-         * specified {@link ProfilerTask}.
+         * Finds or creates the {@link CompositeTask} corresponding to the specified {@link ProfilerTask}.
          * 
          * @param task
          *            the profiler task.
