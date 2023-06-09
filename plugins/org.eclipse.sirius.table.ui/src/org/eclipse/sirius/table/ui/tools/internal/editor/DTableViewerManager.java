@@ -81,10 +81,8 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.ByteArrayTransfer;
 import org.eclipse.swt.dnd.DND;
-import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.KeyListener;
-import org.eclipse.swt.events.MouseAdapter;
-import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
@@ -365,22 +363,15 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
     }
 
     private void initializeKeyBindingSupport() {
-        treeViewer.getTree().addKeyListener(new KeyListener() {
-            @Override
-            public void keyPressed(final KeyEvent e) {
-                if (e.keyCode == SWT.DEL) {
-                    DeleteLinesAction deleteLinesAction = new DeleteLinesAction(getEditingDomain(), getTableCommandFactory());
-                    deleteLinesAction.setLines(getSelectedLines());
-                    if (deleteLinesAction.canExecute()) {
-                        deleteLinesAction.run();
-                    }
+        treeViewer.getTree().addKeyListener(KeyListener.keyPressedAdapter(e -> {
+            if (e.keyCode == SWT.DEL) {
+                DeleteLinesAction deleteLinesAction = new DeleteLinesAction(getEditingDomain(), getTableCommandFactory());
+                deleteLinesAction.setLines(getSelectedLines());
+                if (deleteLinesAction.canExecute()) {
+                    deleteLinesAction.run();
                 }
             }
-
-            @Override
-            public void keyReleased(final KeyEvent e) {
-            };
-        });
+        }));
     }
 
     /**
@@ -559,37 +550,25 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
      * Add a listener on the tree to listen the mouseDouwn or the key left-right arrows and store the activeColumn.
      */
     protected void triggerColumnSelectedColumn() {
-        treeViewer.getTree().addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mouseDown(final MouseEvent event) {
-                int x = 0;
-                for (int i = 0; i < treeViewer.getTree().getColumnCount(); i++) {
-                    x += treeViewer.getTree().getColumn(i).getWidth();
-                    if (event.x <= x) {
-                        activeColumn = i;
-                        break;
-                    }
+        treeViewer.getTree().addMouseListener(MouseListener.mouseDownAdapter(event -> {
+            int x = 0;
+            for (int i = 0; i < treeViewer.getTree().getColumnCount(); i++) {
+                x += treeViewer.getTree().getColumn(i).getWidth();
+                if (event.x <= x) {
+                    activeColumn = i;
+                    break;
                 }
             }
-
-        });
-        treeViewer.getTree().addKeyListener(new KeyListener() {
-            @Override
-            public void keyPressed(final KeyEvent e) {
-                if (e.keyCode == SWT.ARROW_LEFT && activeColumn > 0) {
-                    activeColumn--;
-                    treeViewer.getTree().showColumn(treeViewer.getTree().getColumn(activeColumn));
-                } else if (e.keyCode == SWT.ARROW_RIGHT && activeColumn < treeViewer.getTree().getColumnCount() - 1) {
-                    activeColumn++;
-                    treeViewer.getTree().showColumn(treeViewer.getTree().getColumn(activeColumn));
-                }
+        }));
+        treeViewer.getTree().addKeyListener(KeyListener.keyPressedAdapter(e -> {
+            if (e.keyCode == SWT.ARROW_LEFT && activeColumn > 0) {
+                activeColumn--;
+                treeViewer.getTree().showColumn(treeViewer.getTree().getColumn(activeColumn));
+            } else if (e.keyCode == SWT.ARROW_RIGHT && activeColumn < treeViewer.getTree().getColumnCount() - 1) {
+                activeColumn++;
+                treeViewer.getTree().showColumn(treeViewer.getTree().getColumn(activeColumn));
             }
-
-            @Override
-            public void keyReleased(final KeyEvent e) {
-            };
-        });
+        }));
 
     }
 
