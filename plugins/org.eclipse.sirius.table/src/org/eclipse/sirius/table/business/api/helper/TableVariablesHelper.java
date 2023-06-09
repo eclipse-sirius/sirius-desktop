@@ -21,9 +21,11 @@ import org.eclipse.sirius.business.api.logger.InterpretationContext;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.table.metamodel.table.DCell;
+import org.eclipse.sirius.table.metamodel.table.DColumn;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.DTargetColumn;
+import org.eclipse.sirius.table.metamodel.table.LineContainer;
 import org.eclipse.sirius.table.metamodel.table.description.TableTool;
 import org.eclipse.sirius.table.metamodel.table.description.TableVariable;
 import org.eclipse.sirius.table.tools.api.interpreter.IInterpreterSiriusTableVariables;
@@ -68,14 +70,14 @@ public final class TableVariablesHelper {
     }
     
     /**
-     * Returns the map of values for variables using map with variable names. 
+     * Adapts a map of variable name to value into a map variable to value.
      * 
-     * @param tool
-     * @param values
-     * @return
+     * @param tool with variables
+     * @param values to adapt
+     * @return map of variable to value.
      */
     public static Map<AbstractVariable, Object> getTableVariables(TableTool tool, Map<String, ?> values) {
-        Map<AbstractVariable, Object> result = new HashMap<AbstractVariable, Object>();
+        Map<AbstractVariable, Object> result = new HashMap<>();
         values.forEach((key, value) -> {
             TableVariable variable = TableHelper.getVariable(tool, key);
             if (variable != null) {
@@ -85,13 +87,32 @@ public final class TableVariablesHelper {
         return result;
     }
     
+    
+    /**
+     * Creates a map for context to evaluate candidate of lines.
+     * 
+     * @param container of lines
+     * @return map of values
+     */
+    public static Map<String, EObject> getVariablesForCandidates(LineContainer container) {
+        DTable table = TableHelper.getTable(container);
+        Map<String, EObject> result = new HashMap<>();
+
+        result.put(IInterpreterSiriusVariables.CONTAINER_VIEW, container);
+        result.put(IInterpreterSiriusVariables.CONTAINER, container.getTarget());
+
+        result.put(IInterpreterSiriusVariables.TABLE, table);
+        result.put(IInterpreterSiriusVariables.ROOT, table.getTarget());
+        return result;
+    }
+    
     /**
      * Returns applicable variables for line expressions and operations.
      * 
      * @param line current context
      * @return variables
      */
-    public static Map<String, EObject> getVariables(DLine line) {
+    private static Map<String, EObject> getVariables(DLine line) {
         Map<String, EObject> result = new HashMap<>();
         DTable table = TableHelper.getTable(line);
 
@@ -114,7 +135,7 @@ public final class TableVariablesHelper {
      * @param table current context
      * @return variables
      */
-    public static Map<String, EObject> getVariables(DTable table) {
+    private static Map<String, EObject> getVariables(DTable table) {
         Map<String, EObject> result = new HashMap<>();
 
         result.put(IInterpreterSiriusVariables.VIEW, table);
@@ -123,6 +144,9 @@ public final class TableVariablesHelper {
         result.put(IInterpreterSiriusVariables.TABLE, table);
         result.put(IInterpreterSiriusVariables.ROOT, table.getTarget());
         
+        result.put(IInterpreterSiriusVariables.CONTAINER_VIEW, table);
+        result.put(IInterpreterSiriusVariables.CONTAINER, table.getTarget());
+
         return result;
     }
     
@@ -132,7 +156,7 @@ public final class TableVariablesHelper {
      * @param column current context
      * @return variables
      */
-    public static Map<String, EObject> getVariables(DTargetColumn column) {
+    private static Map<String, EObject> getVariables(DTargetColumn column) {
         Map<String, EObject> result = new HashMap<>();
         DTable table = TableHelper.getTable(column);
 
@@ -155,36 +179,45 @@ public final class TableVariablesHelper {
      * @param cell current context
      * @return variables
      */
-    public static Map<String, EObject> getVariables(DCell cell) {
+    public static Map<String, EObject> getVariables(DLine line, final DColumn column) {
         Map<String, EObject> result = new HashMap<>();
-        DTable table = TableHelper.getTable(cell);
+        DTable table = TableHelper.getTable(line);
 
         result.put(IInterpreterSiriusVariables.TABLE, table);
         result.put(IInterpreterSiriusVariables.ROOT, table.getTarget());
         
-        result.put(IInterpreterSiriusVariables.VIEW, cell);
-        result.put(IInterpreterSiriusVariables.ELEMENT, cell.getTarget());
-        
-        result.put(IInterpreterSiriusVariables.CONTAINER_VIEW, cell.getLine());
-        result.put(IInterpreterSiriusVariables.CONTAINER, cell.getLine().getTarget());
+        result.put(IInterpreterSiriusVariables.CONTAINER_VIEW, line);
+        result.put(IInterpreterSiriusVariables.CONTAINER, line.getTarget());
 
-        
-        result.put(IInterpreterSiriusTableVariables.LINE, cell.getLine());
-        result.put(IInterpreterSiriusTableVariables.LINE_SEMANTIC, cell.getLine().getTarget());
+        result.put(IInterpreterSiriusTableVariables.LINE, line);
+        result.put(IInterpreterSiriusTableVariables.LINE_SEMANTIC, line.getTarget());
 
-        result.put(IInterpreterSiriusTableVariables.COLUMN, cell.getColumn());
-        if (cell.getColumn() instanceof DTargetColumn) {
-            result.put(IInterpreterSiriusTableVariables.COLUMN_SEMANTIC, cell.getColumn().getTarget());
+        result.put(IInterpreterSiriusTableVariables.COLUMN, column);
+        if (column instanceof DTargetColumn) {
+            result.put(IInterpreterSiriusTableVariables.COLUMN_SEMANTIC, column.getTarget());
         }
         
         return result;
     }
-
+    
+    /**
+     * Returns applicable variables for cell expressions and operations.
+     * 
+     * @param cell current context
+     * @return variables
+     */
+    public static Map<String, EObject> getVariables(DCell cell) {
+        Map<String, EObject> result = getVariables(cell.getLine(), cell.getColumn());
+        result.put(IInterpreterSiriusVariables.VIEW, cell);
+        result.put(IInterpreterSiriusVariables.ELEMENT, cell.getTarget());        
+        return result;
+    }
+    
     
     /**
      * Evaluates if a tool is enable for the selection.
      * <p>
-     * Sselection may be line, column or whole table.
+     * Selection may be line, column or whole table.
      * </p>
      * 
      * @param <TT> tool with precondition
@@ -208,4 +241,5 @@ public final class TableVariablesHelper {
     private static boolean hasPrecondition(AbstractToolDescription tool) {
         return !StringUtil.isEmpty(tool.getPrecondition());
     }
+
 }
