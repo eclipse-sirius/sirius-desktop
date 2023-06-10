@@ -58,7 +58,6 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
  */
 public class CrossTableSynchronizer extends AbstractTableSynchronizer<CrossTableDescription, ElementColumnMapping> {
 
-
     /**
      * Create a new {@link DTableSynchronizer} for an EditionTable.
      *
@@ -91,7 +90,7 @@ public class CrossTableSynchronizer extends AbstractTableSynchronizer<CrossTable
                 // cells of the DTable (this must normally be done in the first
                 // intersectionMapping)
                 for (final DCell cell : new DTableQuery(table).getCells()) {
-                    this.sync.removeUneededCell(cell);
+                    sync.removeUneededCell(cell);
                 }
             } else {
                 for (final IntersectionMapping iMapping : description.getIntersection()) {
@@ -120,34 +119,39 @@ public class CrossTableSynchronizer extends AbstractTableSynchronizer<CrossTable
             // Treat existing elements and new elements in the order of the
             // result of the expression
             for (final DTargetColumnCandidate targetColumnCandidate : status.getAllElements()) {
-                if (targetColumnCandidate.getOriginalElement() == null) {
-                    final DTargetColumn newC = createNewColumn(targetColumnCandidate.getMapping(), targetColumnCandidate.getSemantic());
-                    this.sync.refresh(newC);
-                    sync.refreshSemanticElements(newC, targetColumnCandidate.getMapping());
-                    if (accessor.getPermissionAuthority().canCreateIn(table)) {
-                        table.getColumns().add(currentIndex, newC);
-                    }
-                    elementsToKeep.add(newC);
-                } else {
-                    this.sync.refresh(targetColumnCandidate.getOriginalElement());
-                    sync.refreshSemanticElements(targetColumnCandidate.getOriginalElement(), targetColumnCandidate.getMapping());
-                    final DTable parentTable = targetColumnCandidate.getOriginalElement().getTable();
-                    if (parentTable.getColumns().size() >= currentIndex) {
-                        if (accessor.getPermissionAuthority().canEditInstance(parentTable) && !targetColumnCandidate.getOriginalElement().equals(parentTable.getColumns().get(currentIndex))) {
-                            parentTable.getColumns().move(currentIndex, targetColumnCandidate.getOriginalElement());
-                        }
-                    } else {
-                        if (accessor.getPermissionAuthority().canEditInstance(parentTable)) {
-                            parentTable.getColumns().move(parentTable.getColumns().size() - 1, targetColumnCandidate.getOriginalElement());
-                        }
-                    }
-                    elementsToKeep.add(targetColumnCandidate.getOriginalElement());
-                }
+                refreshColumnCandidate(targetColumnCandidate, currentIndex, elementsToKeep);
                 currentIndex++;
             }
             putOrAdd(mappingToElements, mapping, elementsToKeep);
         }
         return currentIndex;
+    }
+
+    private void refreshColumnCandidate(final DTargetColumnCandidate candidate, int currentIndex, final Collection<DTableElement> elementsToKeep) {
+        if (candidate.getOriginalElement() == null) {
+            final DTargetColumn newC = createNewColumn(candidate.getMapping(), candidate.getSemantic());
+            sync.refresh(newC);
+            sync.refreshSemanticElements(newC, candidate.getMapping());
+            if (accessor.getPermissionAuthority().canCreateIn(table)) {
+                table.getColumns().add(currentIndex, newC);
+            }
+            elementsToKeep.add(newC);
+        } else {
+            sync.refresh(candidate.getOriginalElement());
+            sync.refreshSemanticElements(candidate.getOriginalElement(), candidate.getMapping());
+            final DTable parentTable = candidate.getOriginalElement().getTable();
+            if (parentTable.getColumns().size() >= currentIndex) {
+                if (accessor.getPermissionAuthority().canEditInstance(parentTable) 
+                        && !candidate.getOriginalElement().equals(parentTable.getColumns().get(currentIndex))) {
+                    parentTable.getColumns().move(currentIndex, candidate.getOriginalElement());
+                }
+            } else {
+                if (accessor.getPermissionAuthority().canEditInstance(parentTable)) {
+                    parentTable.getColumns().move(parentTable.getColumns().size() - 1, candidate.getOriginalElement());
+                }
+            }
+            elementsToKeep.add(candidate.getOriginalElement());
+        }
     }
 
     private SetIntersection<DTargetColumnCandidate> computeCurrentStatus(final ElementColumnMapping mapping) {
@@ -158,18 +162,18 @@ public class CrossTableSynchronizer extends AbstractTableSynchronizer<CrossTable
         for (final DColumn column : table.getColumns()) {
             if (column.getOriginMapping() == mapping) {
                 if (column instanceof DTargetColumn) {
-                    status.addInOld(new DTargetColumnCandidate((DTargetColumn) column, this.ids));
+                    status.addInOld(new DTargetColumnCandidate((DTargetColumn) column, ids));
                 }
             }
         }
         
-        final MultipleCollection<EObject> semantics = new MultipleCollection<EObject>();
+        final MultipleCollection<EObject> semantics = new MultipleCollection<>();
         if (TableHelper.hasSemanticCandidatesExpression(mapping)) {
             final Collection<EObject> candidates = InterpretationContext.with(interpreter, ctx -> {
                 ctx.setVariable(IInterpreterSiriusVariables.CONTAINER_VIEW, table);
                 ctx.setVariable(IInterpreterSiriusVariables.CONTAINER, table.getTarget());
-                ctx.setVariable(IInterpreterSiriusVariables.VIEWPOINT, this.table);
-                ctx.setVariable(IInterpreterSiriusVariables.TABLE, this.table);
+                ctx.setVariable(IInterpreterSiriusVariables.VIEWPOINT, table);
+                ctx.setVariable(IInterpreterSiriusVariables.TABLE, table);
 
                 return interpreter.evaluateCollection(table.getTarget(), mapping, 
                         DescriptionPackage.eINSTANCE.getElementColumnMapping_SemanticCandidatesExpression());
@@ -180,15 +184,15 @@ public class CrossTableSynchronizer extends AbstractTableSynchronizer<CrossTable
             }
 
         } else {
-            semantics.addAll(this.accessor.eAllContents(table.getTarget(), mapping.getDomainClass()));
+            semantics.addAll(accessor.eAllContents(table.getTarget(), mapping.getDomainClass()));
         }
 
         /*
          * produce the candidates states if the precondition is valid.
          */
         for (final EObject semantic : semantics) {
-            if (this.accessor.eInstanceOf(semantic, mapping.getDomainClass())) {
-                status.addInNew(new DTargetColumnCandidate(mapping, semantic, this.ids));
+            if (accessor.eInstanceOf(semantic, mapping.getDomainClass())) {
+                status.addInNew(new DTargetColumnCandidate(mapping, semantic, ids));
             }
         }
         return status;
@@ -199,8 +203,8 @@ public class CrossTableSynchronizer extends AbstractTableSynchronizer<CrossTable
         // Remove column with no target (target == null). This case can happen
         // when the dangling references are removed during the delete of the
         // semantic element.
-        if (this.accessor.getPermissionAuthority().canEditInstance(table)) {
-            List<DColumn> columnsWithoutTarget = new ArrayList<DColumn>();
+        if (accessor.getPermissionAuthority().canEditInstance(table)) {
+            List<DColumn> columnsWithoutTarget = new ArrayList<>();
             /*
              * let's analyze the existing columns.
              */
@@ -260,43 +264,56 @@ public class CrossTableSynchronizer extends AbstractTableSynchronizer<CrossTable
         // Compute the cells for the current intersection mapping and add them
         // to the new values.
         Collection<EObject> targetCandidates = getTargetCanditatesWithDomain(iMapping);
-        final Collection<DTableElement> columnViews = mappingToElements.get(iMapping.getColumnMapping());
-        final Collection<DTableElement> lineViews = collectLineElementsWithDomain(iMapping, mappingToElements);
-
-        // No need to do many computation if no semantic element is found.
-        if (targetCandidates.size() > 0 && columnViews != null) {
-
+        if (!targetCandidates.isEmpty()) {
+            
+            Map<EObject, Collection<DLine>> linesSemantics = groupLinesByTarget(mappingToElements, iMapping.getLineMapping());
             // Let's build the "semantic to mapping element" map.
-            final Map<EObject, Collection<DLine>> linesSemantics = groupDecorators(lineViews, DLine.class);
-            final Map<EObject, Collection<DTargetColumn>> columnSemantics = groupDecorators(columnViews, DTargetColumn.class);
-
-            // Now we've got the semantic element from which we should try to
-            // create Edges we can start evaluating possible candidates.
-            for (final EObject target : targetCandidates) {
-                Collection<EObject> lineSemanticCandidates = sync.evaluateLineFinderExpression(target, table, iMapping);
-                Collection<EObject> columnSemanticCandidates = sync.evaluateColumnFinderExpression(target, table, iMapping, true);
-                for (final EObject lineSemantic : lineSemanticCandidates) {
-                    for (final EObject columnSemantic : columnSemanticCandidates) {
-                        final Collection<DLine> sourceViews = linesSemantics.get(lineSemantic);
-                        if (sourceViews == null) {
-                            break;
-                        }
-                        
-                        final Collection<DTargetColumn> targetViews = columnSemantics.get(columnSemantic);
-                        if (targetViews == null) {
-                            break;
-                        }
-
-                        setNewCellCandidatesWithDomain(iMapping, status, target, sourceViews, targetViews);
-                    }
-                }
+            Map<EObject, Collection<DTargetColumn>> columnSemantics = groupDecorators(
+                    mappingToElements.getOrDefault(iMapping.getColumnMapping(), Collections.emptyList()),
+                    DTargetColumn.class);
+            
+            if (!linesSemantics.isEmpty() && !columnSemantics.isEmpty()) {
+                refreshIntersectionWithDomain(iMapping, status, targetCandidates, linesSemantics, columnSemantics);
             }
-
         }
 
         return status;
     }
 
+    private void refreshIntersectionWithDomain(final IntersectionMapping iMapping, 
+            final SetIntersection<DCellCandidate> status,
+            final Collection<EObject> targetCandidates,
+            Map<EObject, Collection<DLine>> linesSemantics,
+            Map<EObject, Collection<DTargetColumn>> columnSemantics) {
+        
+        // Now we've got the semantic element from which we should try to
+        // create Edges we can start evaluating possible candidates.
+        for (final EObject target : targetCandidates) {
+            Collection<EObject> lineSemanticCandidates = sync.evaluateLineFinderExpression(target, table, iMapping);
+            if (lineSemanticCandidates.isEmpty()) {
+                continue;
+            }
+            Collection<EObject> columnSemanticCandidates = sync.evaluateColumnFinderExpression(target, table, iMapping, true);
+            if (columnSemanticCandidates.isEmpty()) {
+                continue;
+            }
+            
+            for (final EObject lineSemantic : lineSemanticCandidates) {
+                final Collection<DLine> sourceViews = linesSemantics.get(lineSemantic);
+                if (sourceViews != null) {
+                    for (final EObject columnSemantic : columnSemanticCandidates) {
+                        final Collection<DTargetColumn> targetViews = columnSemantics.get(columnSemantic);
+                        if (targetViews != null) {
+                            setNewCellCandidatesWithDomain(iMapping, status, target, sourceViews, targetViews);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    
+    
     /**
      * @param iMapping
      * @param status
@@ -308,7 +325,7 @@ public class CrossTableSynchronizer extends AbstractTableSynchronizer<CrossTable
             IntersectionMapping intersectionMapping = cell.getIntersectionMapping();
             boolean mappingIsObsolete = intersectionMapping == null || intersectionMapping.eResource() == null;
             if (iMapping.equals(intersectionMapping) || mappingIsObsolete) {
-                status.addInOld(new DCellCandidate(cell, this.ids));
+                status.addInOld(new DCellCandidate(cell, ids));
             }
         }
     }
@@ -317,7 +334,7 @@ public class CrossTableSynchronizer extends AbstractTableSynchronizer<CrossTable
         Collection<EObject> result;
         final EObject rootContent = table.getTarget();
         if (StringUtil.isEmpty(iMapping.getSemanticCandidatesExpression())) {
-            result = this.accessor.eAllContents(rootContent, iMapping.getDomainClass());
+            result = accessor.eAllContents(rootContent, iMapping.getDomainClass());
         } else {
             result = interpreter.evaluateCollection(rootContent, iMapping, DescriptionPackage.eINSTANCE.getIntersectionMapping_SemanticCandidatesExpression());
         }
@@ -333,26 +350,27 @@ public class CrossTableSynchronizer extends AbstractTableSynchronizer<CrossTable
             final DColumn column = (DColumn) viewsCouple.getObj2();
 
             if (sync.evaluateIntersectionPrecondition(column.getTarget(), line, column, iMapping)) {
-                status.addInNew(new DCellCandidate(iMapping.getColumnMapping(), target, line, column, this.ids));
+                status.addInNew(new DCellCandidate(iMapping.getColumnMapping(), target, line, column, ids));
             }
         }
     }
 
 
-    private Collection<DTableElement> collectLineElementsWithDomain(final IntersectionMapping iMapping, final Map<TableMapping, Collection<DTableElement>> mappingToElements) {
-        final Collection<DTableElement> lineViews = new MultipleCollection<DTableElement>();
-        for (final LineMapping lMapping : iMapping.getLineMapping()) {
+    private Map<EObject, Collection<DLine>> groupLinesByTarget(final Map<TableMapping, Collection<DTableElement>> mappingToElements, List<LineMapping> mappings) {
+        final Collection<DTableElement> lineViews = new MultipleCollection<>();
+        for (final LineMapping lMapping : mappings) {
             final Collection<DTableElement> lines = mappingToElements.get(lMapping);
             if (lines != null) {
                 lineViews.addAll(lines);
             }
         }
-        return lineViews;
+        return groupDecorators(lineViews, DLine.class);
     }
 
     private <D extends DSemanticDecorator> Map<EObject, Collection<D>> groupDecorators(Collection<?> source, Class<D> expectedType) {
         final Map<EObject, Collection<D>> result = new HashMap<>(source.size());
-        Function<EObject, Collection<D>> groupProvider = key -> new ArrayList<>();
+        // In most of case, 1 semantic element is associated to 1 axis value.
+        Function<EObject, Collection<D>> groupProvider = key -> new ArrayList<>(1);
         for (final Object element : source) {
             if (expectedType.isInstance(element)) {
                 D decorator = expectedType.cast(element);
@@ -377,7 +395,7 @@ public class CrossTableSynchronizer extends AbstractTableSynchronizer<CrossTable
         for (final DCellCandidate toCreate : cellsToUpdate.getNewElements()) {
             final DCell newCell = createCell(toCreate.getLine(), toCreate.getColumn(), toCreate.getSemantic(), (ElementColumnMapping) toCreate.getMapping());
             newCell.setIntersectionMapping(iMapping);
-            this.sync.refresh(newCell);
+            sync.refresh(newCell);
 
         }
         for (final DCellCandidate toUpdate : cellsToUpdate.getKeptElements()) {
@@ -392,13 +410,13 @@ public class CrossTableSynchronizer extends AbstractTableSynchronizer<CrossTable
                     if (cell.getIntersectionMapping() != iMapping) {
                         cell.setIntersectionMapping(iMapping);
                     }
-                    this.sync.refresh(cell);
+                    sync.refresh(cell);
                 }
             }
         }
         for (final DCellCandidate toRemove : cellsToUpdate.getRemovedElements()) {
             final DCell cell = toRemove.getOriginalElement();
-            this.sync.removeUneededCell(cell);
+            sync.removeUneededCell(cell);
         }
     }
 
@@ -418,10 +436,14 @@ public class CrossTableSynchronizer extends AbstractTableSynchronizer<CrossTable
 
         // Compute the cells for the current intersection mapping and add them
         // to the new values.
+        final Collection<DTableElement> targetColumns = mappingToElements.getOrDefault(iMapping.getColumnMapping(),
+                Collections.emptyList());
+        if (targetColumns.isEmpty()) {
+            return status;
+        }
+        
         for (final LineMapping curLineMapping : iMapping.getLineMapping()) {
             final Collection<DTableElement> sourceLines = mappingToElements.getOrDefault(curLineMapping, 
-                    Collections.emptyList());
-            final Collection<DTableElement> targetColumns = mappingToElements.getOrDefault(iMapping.getColumnMapping(),
                     Collections.emptyList());
 
             final Map<DLine, Collection<EObject>> linesToColumnSemantics = new HashMap<>();
@@ -436,7 +458,7 @@ public class CrossTableSynchronizer extends AbstractTableSynchronizer<CrossTable
 
                         if (columnSemantics.contains(column.getTarget()) 
                                 && sync.evaluateIntersectionPrecondition(column.getTarget(), line, column, iMapping)) {
-                            status.addInNew(new DCellCandidate(iMapping.getColumnMapping(), line.getTarget(), line, column, this.ids));
+                            status.addInNew(new DCellCandidate(iMapping.getColumnMapping(), line.getTarget(), line, column, ids));
                         }
                     }
                 }
