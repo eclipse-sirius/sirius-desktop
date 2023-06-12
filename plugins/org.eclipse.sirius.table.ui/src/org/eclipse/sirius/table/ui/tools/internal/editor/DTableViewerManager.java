@@ -249,8 +249,7 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
         ColumnViewerToolTipSupport.enableFor(treeViewer);
         treeViewer.getTree().setLinesVisible(true);
         treeViewer.getTree().setHeaderVisible(true);
-        // Manage height of the lines, selected colors,
-        triggerCustomDrawingTreeItems();
+
         // Create a new CellFocusManager
         final TreeViewerFocusCellManager focusCellManager = new TreeViewerFocusCellManager(treeViewer, new FocusCellOwnerDrawHighlighter(treeViewer));
         // Create a TreeViewerEditor with focusable cell
@@ -536,14 +535,6 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
                 calculateAvailableMenusForLine(lineMapping.getAllSubLines(), mappingToCreateActions, processedLineMappings);
             }
         }
-    }
-
-    /**
-     * Manage height of the lines, selected colors.
-     */
-    protected void triggerCustomDrawingTreeItems() {
-        // Manage selected colors for cells
-        treeViewer.getTree().addListener(SWT.EraseItem, new DTableEraseItemListener(this, treeViewer));
     }
 
     /**

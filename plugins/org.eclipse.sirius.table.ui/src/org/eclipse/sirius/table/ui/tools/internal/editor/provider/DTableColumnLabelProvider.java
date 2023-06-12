@@ -41,6 +41,7 @@ import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.RGB;
 
 /**
  * Label provider for all the DTable column (except the line header column).
@@ -62,6 +63,9 @@ public class DTableColumnLabelProvider extends ColumnLabelProvider implements IS
         imageRegistry.put(UNCHECKED_IMAGE, ImageDescriptor.createFromURL((URL) TableUIPlugin.INSTANCE.getImage(UNCHECKED_IMAGE)));
     }
 
+    /** Default background color: constant as VSM only supports white background. */
+    private static final RGB DEFAULT_BG_COLOR = new RGB(255, 255, 255);
+    
     /**
      * The index of the column (0 corresponding to the second Column, the first
      * being the line header)
@@ -104,6 +108,10 @@ public class DTableColumnLabelProvider extends ColumnLabelProvider implements IS
                 }
             }
         }
+        if (result != null && DEFAULT_BG_COLOR.equals(result.getRGB())) {
+            result = null;
+        }
+        
         return result;
     }
 
