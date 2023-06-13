@@ -55,6 +55,7 @@ import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.DTableElement;
 import org.eclipse.sirius.table.metamodel.table.DTableElementStyle;
 import org.eclipse.sirius.table.metamodel.table.DTargetColumn;
+import org.eclipse.sirius.table.metamodel.table.LineContainer;
 import org.eclipse.sirius.table.metamodel.table.TableFactory;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
 import org.eclipse.sirius.table.metamodel.table.description.BackgroundConditionalStyle;
@@ -365,13 +366,13 @@ public class DTableElementSynchronizer {
      */
     private Collection<EObject> evaluateColumnFinderExpression(DCell cell, IntersectionMapping iMapping) {
         DSemanticDecorator source;
-        DSemanticDecorator container;
+        LineContainer container;
         if (iMapping.isUseDomainClass()) {
             source = cell;
             container = TableHelper.getTable(cell.getLine());
         } else {
-            source = cell.getLine();
-            container = source;
+            container = cell.getLine();
+            source = container;
         }
         return evaluateColumnFinderExpression(source.getTarget(), container, iMapping, false);
     }
@@ -390,7 +391,7 @@ public class DTableElementSynchronizer {
      *            Flag to log if an error happens
      * @return List of column candidates for this cell and this intersection mapping.
      */
-    Collection<EObject> evaluateColumnFinderExpression(EObject candidate, DSemanticDecorator container, IntersectionMapping iMapping, boolean logError) {
+    Collection<EObject> evaluateColumnFinderExpression(EObject candidate, LineContainer container, IntersectionMapping iMapping, boolean logError) {
         return InterpretationContext.with(interpreter, it -> {
             it.setLogError(logError);
             DTable table;
@@ -601,8 +602,6 @@ public class DTableElementSynchronizer {
      * @param style
      */
     private void doUpdateStyle(final DCell cell, final DCellStyle style) {
-        final TableStyleColorUpdater colorUpdater = new TableStyleColorUpdater();
-        
         // Get the style updater for the column
         ColumnMapping columnMapping = null;
         StyleUpdater columnStyleUpdater = null;
@@ -614,46 +613,28 @@ public class DTableElementSynchronizer {
             }
         }
 
-        doUpdateFgStyle(cell, style, colorUpdater, columnMapping, columnStyleUpdater);
-        doUpdateBgStyle(cell, style, colorUpdater, columnMapping, columnStyleUpdater);
+        doUpdateFgStyle(cell, style, columnMapping, columnStyleUpdater);
+        doUpdateBgStyle(cell, style, columnMapping, columnStyleUpdater);
     }
 
 
-    private void doUpdateFgStyle(final DCell cell, final DCellStyle style, final TableStyleColorUpdater colorUpdater, ColumnMapping columnMapping,
-            StyleUpdater columnStyleUpdater) {
-        IntersectionMapping intersectionMapping = cell.getIntersectionMapping();
-        final StyleWithDefaultStatus bestBackgroundStyle = getBestBackgroundColor(cell, intersectionMapping, columnStyleUpdater);
-        if (bestBackgroundStyle != null) {
-            colorUpdater.updateBackgroundColor(style, ((BackgroundStyleDescription) bestBackgroundStyle.getStyle()).getBackgroundColor(), 
-                    bestBackgroundStyle.isDefaultStyle(), cell.getTarget());
-            if (new DCellQuery(cell).isStyleDescriptionInIntersectionMapping(bestBackgroundStyle.getStyle())) {
-                style.setBackgroundStyleOrigin(intersectionMapping);
-            } else {
-                style.setBackgroundStyleOrigin(columnMapping);
-            }
-        } else {
-            resetStyle(style, false);
-        }
-    }
-
-
-    private void doUpdateBgStyle(final DCell cell, final DCellStyle style, final TableStyleColorUpdater colorUpdater, ColumnMapping columnMapping,
+    private void doUpdateFgStyle(final DCell cell, final DCellStyle style, ColumnMapping columnMapping,
             StyleUpdater columnStyleUpdater) {
         IntersectionMapping intersectionMapping = cell.getIntersectionMapping();
         final StyleWithDefaultStatus bestForegroundStyle = getBestForegroundStyle(cell, intersectionMapping, columnStyleUpdater);
         if (bestForegroundStyle != null) {
             ForegroundStyleDescription bestForegroundStyleDesc = (ForegroundStyleDescription) bestForegroundStyle.getStyle();
-            colorUpdater.updateForegroundColor(style, ((ForegroundStyleDescription) bestForegroundStyle.getStyle()).getForeGroundColor(), 
+            
+            new TableStyleColorUpdater().updateForegroundColor(style, 
+                    ((ForegroundStyleDescription) bestForegroundStyle.getStyle()).getForeGroundColor(), 
                     bestForegroundStyle.isDefaultStyle(), cell.getTarget());
-            if (new DCellQuery(cell).isStyleDescriptionInIntersectionMapping(bestForegroundStyle.getStyle())) {
-                style.setForegroundStyleOrigin(intersectionMapping);
-            } else {
-                style.setForegroundStyleOrigin(columnMapping);
-            }
-            if (bestForegroundStyleDesc.getLabelFormat() != null && !Objects.equals(style.getLabelFormat(), bestForegroundStyleDesc.getLabelFormat())) {
+            
+            setStyleOrigin(cell, style, bestForegroundStyle, false);
+            
+            if (!Objects.equals(style.getLabelFormat(), bestForegroundStyleDesc.getLabelFormat())) {
                 FontFormatHelper.setFontFormat(style.getLabelFormat(), bestForegroundStyleDesc.getLabelFormat());
             }
-            if (bestForegroundStyleDesc.getLabelSize() != -1 && style.getLabelSize() != bestForegroundStyleDesc.getLabelSize()) {
+            if (style.getLabelSize() != bestForegroundStyleDesc.getLabelSize()) {
                 style.setLabelSize(bestForegroundStyleDesc.getLabelSize());
             }
         } else {
@@ -661,6 +642,41 @@ public class DTableElementSynchronizer {
         }
     }
 
+
+    private void doUpdateBgStyle(final DCell cell, final DCellStyle style, ColumnMapping columnMapping,
+            StyleUpdater columnStyleUpdater) {
+        IntersectionMapping intersectionMapping = cell.getIntersectionMapping();
+        final StyleWithDefaultStatus bestBackgroundStyle = getBestBackgroundColor(cell, intersectionMapping, columnStyleUpdater);
+        if (bestBackgroundStyle != null) {
+            new TableStyleColorUpdater().updateBackgroundColor(style, 
+                    ((BackgroundStyleDescription) bestBackgroundStyle.getStyle()).getBackgroundColor(), 
+                    bestBackgroundStyle.isDefaultStyle(), cell.getTarget());
+            
+            setStyleOrigin(cell, style, bestBackgroundStyle, false);
+        } else {
+            resetStyle(style, false);
+        }
+    }
+
+    private void setStyleOrigin(DCell cell, DCellStyle style, StyleWithDefaultStatus bestStyle, boolean foreground) {
+        EObject styleDescription = bestStyle.getStyle();
+        TableMapping styleOrigin = cell.getColumn().getOriginMapping();
+        if (cell.getIntersectionMapping() != null 
+                && new DCellQuery(cell).isStyleDescriptionInIntersectionMapping(styleDescription)) {
+            styleOrigin = cell.getIntersectionMapping();
+        }
+        if (foreground) {
+            if (style.getForegroundStyleOrigin() != styleOrigin) {
+                style.setForegroundStyleOrigin(styleOrigin);
+            }
+        } else { // background
+            if (style.getBackgroundStyleOrigin() != styleOrigin) {
+                style.setBackgroundStyleOrigin(styleOrigin);
+            }            
+        }
+    }
+    
+    
     /**
      * Refresh the line styles.
      * 
@@ -708,10 +724,10 @@ public class DTableElementSynchronizer {
         if (bestForegroundStyle != null) {
             boolean defaultStyleDescription = new StyleUpdaterQuery(originMapping).isDefaultForegroundColor(bestForegroundStyle.getForeGroundColor());
             colorUpdater.updateForegroundColor(style, bestForegroundStyle.getForeGroundColor(), defaultStyleDescription, line.getTarget());
-            if (bestForegroundStyle.getLabelFormat() != null && !Objects.equals(style.getLabelFormat(), bestForegroundStyle.getLabelFormat())) {
+            if (!Objects.equals(style.getLabelFormat(), bestForegroundStyle.getLabelFormat())) {
                 FontFormatHelper.setFontFormat(style.getLabelFormat(), bestForegroundStyle.getLabelFormat());
             }
-            if (bestForegroundStyle.getLabelSize() != -1 && style.getLabelSize() != bestForegroundStyle.getLabelSize()) {
+            if (style.getLabelSize() != bestForegroundStyle.getLabelSize()) {
                 style.setLabelSize(bestForegroundStyle.getLabelSize());
             }
             style.setDefaultForegroundStyle(defaultStyleDescription);
@@ -781,10 +797,10 @@ public class DTableElementSynchronizer {
         if (bestForegroundStyle != null) {
             boolean defaultStyleDescription = new StyleUpdaterQuery(styleUpdater).isDefaultForegroundColor(bestForegroundStyle.getForeGroundColor());
             colorUpdater.updateForegroundColor(style, bestForegroundStyle.getForeGroundColor(), defaultStyleDescription, column.getTarget());
-            if (bestForegroundStyle.getLabelFormat() != null && !Objects.equals(style.getLabelFormat(), bestForegroundStyle.getLabelFormat())) {
+            if (!Objects.equals(style.getLabelFormat(), bestForegroundStyle.getLabelFormat())) {
                 FontFormatHelper.setFontFormat(style.getLabelFormat(), bestForegroundStyle.getLabelFormat());
             }
-            if (bestForegroundStyle.getLabelSize() != -1 && style.getLabelSize() != bestForegroundStyle.getLabelSize()) {
+            if (style.getLabelSize() != bestForegroundStyle.getLabelSize()) {
                 style.setLabelSize(bestForegroundStyle.getLabelSize());
             }
             style.setDefaultForegroundStyle(defaultStyleDescription);

@@ -83,11 +83,9 @@ import org.eclipse.swt.dnd.ByteArrayTransfer;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.MouseListener;
-import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.swt.widgets.TreeItem;
@@ -319,19 +317,7 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
         DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.SET_COLUMN_NAME_KEY);
 
         ILabelDecorator decorator = PlatformUI.getWorkbench().getDecoratorManager().getLabelDecorator();
-        CellLabelProvider lineheaderColumnLabelProvider = new DTableLineLabelProvider(decorator) {
-            /* Display gray background for the OS other than GTK. */
-            @Override
-            public Color getBackground(final Object element) {
-                if (IS_GTK_OS) {
-                    // We could desactivate the gray background color for Linux
-                    // return super.getBackground(element);
-                    return Display.getCurrent().getSystemColor(SWT.COLOR_WIDGET_LIGHT_SHADOW);
-                } else {
-                    return Display.getCurrent().getSystemColor(SWT.COLOR_WIDGET_LIGHT_SHADOW);
-                }
-            }
-        };
+        CellLabelProvider lineheaderColumnLabelProvider = new DTableLineLabelProvider(decorator);
         headerTreeColumn.setLabelProvider(lineheaderColumnLabelProvider);
         int headerColumnWidth = ((DTable) dRepresentation).getHeaderColumnWidth();
         if (headerColumnWidth > 0) {
@@ -639,6 +625,7 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
         // Add the LabelProvider with decorating feature
         ILabelDecorator decorator = PlatformUI.getWorkbench().getDecoratorManager().getLabelDecorator();
         DTableDecoratingLabelProvider labelProvider = new DTableDecoratingLabelProvider(newColumn, decorator);
+        labelProvider.setDefaultFont(treeViewer.getTree().getFont());
         treeViewerColumn.setLabelProvider(new DelegatingStyledCellLabelProvider(labelProvider));
 
         if (newColumn instanceof DFeatureColumn) {
