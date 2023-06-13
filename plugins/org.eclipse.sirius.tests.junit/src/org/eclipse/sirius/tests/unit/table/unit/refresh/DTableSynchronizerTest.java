@@ -523,7 +523,7 @@ public class DTableSynchronizerTest extends TableTestCase {
         if (optionalCell.some()) {
             Option<DTableElementStyle> optionalForegroundStyleToApply = new DCellQuery(optionalCell.get()).getForegroundStyleToApply();
             assertTrue("We should have a currentStyle for the cell.", optionalForegroundStyleToApply.some());
-            checkStyle(optionalForegroundStyleToApply.get(), false, 8, Collections.emptyList());
+            checkStyle(optionalForegroundStyleToApply.get(), false, -1, Collections.emptyList());
         }
 
         final LineMapping mapping = findLineMapping(desc, lineMappingName);
@@ -567,7 +567,7 @@ public class DTableSynchronizerTest extends TableTestCase {
         if (optionalCell.some()) {
             Option<DTableElementStyle> optionalForegroundStyleToApply = new DCellQuery(optionalCell.get()).getForegroundStyleToApply();
             assertTrue("We should have a currentStyle for the cell.", optionalForegroundStyleToApply.some());
-            checkStyle(optionalForegroundStyleToApply.get(), false, 8, Collections.emptyList());
+            checkStyle(optionalForegroundStyleToApply.get(), false, -1, Collections.emptyList());
         }
     }
 
