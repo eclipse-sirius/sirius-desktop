@@ -8,7 +8,7 @@ include "modules/acceleo-3.7.tpd"
 include "modules/eef-1.5.tpd"
 include "modules/eef-2.1.tpd"
 include "modules/elk-0.7.tpd"
-include "modules/gmf-runtime-1.15.tpd"
+include "modules/gmf-runtime-1.16.tpd"
 
 with source, requirements
 
