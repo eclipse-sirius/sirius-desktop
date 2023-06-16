@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2022 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -529,6 +529,9 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
      * @author mporhel
      */
     public static class RegionContainerLayoutManager extends FreeFormLayoutEx {
+        
+        private static final boolean REGION_IMPROVED_AUTOSIZE_LAYOUT = Boolean.getBoolean("org.eclipse.sirius.diagram.ui.internal.region.autosize.figure.optimized"); //$NON-NLS-1$
+        
 
         private final boolean isVertical;
 
@@ -631,7 +634,9 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
                     x += bounds.width;
                 }
 
-                setConstraint(f, bounds);
+                if(!REGION_IMPROVED_AUTOSIZE_LAYOUT) {
+                  setConstraint(f, bounds);
+                }
                 f.setBounds(bounds.translate(offset));
                 // For vertical stack, notify last region of the width change (it is useful only if the current figure f
                 // is also a region with HStack).
@@ -656,7 +661,9 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
                 if (!isVertical && delta > 0) {
                     bounds = regionsBounds.get(last);
                     bounds.setWidth(bounds.width + delta);
-                    setConstraint(last, bounds);
+                    if(!REGION_IMPROVED_AUTOSIZE_LAYOUT) {
+                        setConstraint(last, bounds);
+                      }
                     last.setBounds(bounds.translate(offset));
                 }
             }
