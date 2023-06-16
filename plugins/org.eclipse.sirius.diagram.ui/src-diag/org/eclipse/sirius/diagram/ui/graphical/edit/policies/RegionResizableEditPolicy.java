@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2013, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -74,6 +74,9 @@ import com.google.common.collect.Lists;
  * @author mporhel
  */
 public class RegionResizableEditPolicy extends AirResizableEditPolicy {
+    
+    private static final boolean REGION_IMPROVED_AUTOSIZE_ACTION = Boolean.getBoolean("org.eclipse.sirius.diagram.ui.internal.region.autosize.action.optimized"); //$NON-NLS-1$
+    
 
     /**
      * {@inheritDoc}
@@ -192,7 +195,7 @@ public class RegionResizableEditPolicy extends AirResizableEditPolicy {
             Object object = request.getExtendedData().get(RegionContainerResizableEditPolicy.REGION_AUTO_SIZE_PROPAGATOR);
             if (object == getHost()) {
                 autoSizeCommand = null;
-            } else if (object != regionContainerPart) {
+            } else if (object != regionContainerPart && !REGION_IMPROVED_AUTOSIZE_ACTION) {
                 // Redirect the auto-size to the parent RegionContainer
                 Request req = new Request();
                 req.setType(request.getType());
