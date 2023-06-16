@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -56,6 +56,7 @@ import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer;
+import org.eclipse.sirius.diagram.model.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.model.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
@@ -83,7 +84,9 @@ import com.google.common.collect.Sets;
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
  */
 public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchronizer {
-
+    
+    private final static boolean STANDARD_LAYOUT_FOR_CREATED_REGION_CONTENT = Boolean.getBoolean("org.eclipse.sirius.diagram.ui.internal.region.content.canonical.layout.standard"); //$NON-NLS-1$
+    
     /**
      * Say if we should store created views to layout in SiriusLayoutDataManager.
      */
@@ -232,7 +235,7 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
      * @param gmfView
      *            The concerned view (corresponding to the regions container itself or one of its sub-part)
      * @param isRegionsContainer
-     *            true is the current view represents the regions container, false otherwise
+     *                                     true is the current view represents the regions container, false otherwise
      * @param isPartOfRegionsContainer
      *            true is the current view represents the regions container or a sub-part of the regions container (as
      *            CompartmentView for example), false otherwise
@@ -688,9 +691,25 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
                     // AirXYLayoutEditPolicy#getConstraintFor(request), except for children of regions container for
                     // which layout is managed with RegionContainerUpdateLayoutOperation.
                     if (layoutData == null && SiriusLayoutDataManager.INSTANCE.getData().some() && !(new DNodeContainerExperimentalQuery((DNodeContainer) parent).isRegionContainer())) {
-                        // mark with special layout
-                        markCreatedViewsWithCenterLayout(createdView);
-                        isAlreadylayouted = true;
+
+                        // Skip centered layout for region content when the region has been created by the user operation (it already has a
+                        // layout marker).
+                        // TODO for future version: generalize this to content of created DNodeContainer elements to have only the first level
+                        // of created view which will be centered but not their content.
+                        boolean skip = false;
+                        if (STANDARD_LAYOUT_FOR_CREATED_REGION_CONTENT && new DDiagramElementContainerExperimentalQuery((DNodeContainer) parent).isRegion()) {
+                            // Get CompartmentView edit part
+                            EObject dnodeContainer2_3008 = createdView.eContainer();
+                            dnodeContainer2_3008 = dnodeContainer2_3008 != null ? dnodeContainer2_3008.eContainer() : null;
+
+                            skip = dnodeContainer2_3008 != null && (dnodeContainer2_3008.eAdapters().contains(SiriusLayoutDataManager.INSTANCE.getCenterAdapterMarker())
+                                    || dnodeContainer2_3008.eAdapters().contains(SiriusLayoutDataManager.INSTANCE.getAdapterMarker()));
+                        }
+                        if (!skip) {
+                            // mark with special layout
+                            markCreatedViewsWithCenterLayout(createdView);
+                            isAlreadylayouted = true;
+                        }
                     }
                 }
             }
