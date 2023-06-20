@@ -4,6 +4,18 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for recent major releases of Sirius. See also "the release notes from previous versions":Release_Notes_Previous.html for details about older releases.
 
+h2(#sirius7.0.8). Changes in Sirius 7.0.8
+
+h3. User-Visible Changes
+
+Minor release to provide auto-size or layout optimizations for containers with compartments. Those optimizations are disabled by default and can be enabled via three system properties:
+* -Dorg.eclipse.sirius.diagram.ui.internal.region.content.canonical.layout.standard=true
+** Use standard layout and not centered layout for creation of compartment content when the compartments have been created in the same user action. 
+* -Dorg.eclipse.sirius.diagram.ui.internal.region.autosize.figure.optimized=true
+** Use model constraints to layout compartments and their container.
+* -Dorg.eclipse.sirius.diagram.ui.internal.region.autosize.action.optimized=true
+** Enable individual auto-size action and status for compartments.
+
 h2(#sirius7.0.7). Changes in Sirius 7.0.7
 
 h3. User-Visible Changes
