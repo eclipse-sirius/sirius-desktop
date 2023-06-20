@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,11 +12,17 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import java.util.List;
+
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.impl.EdgeStyleImpl;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramListEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
@@ -24,10 +30,15 @@ import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEdi
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.widget.WrappedSWTBotRadio;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.RGBValues;
+import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarToggleButton;
+
+import junit.framework.TestCase;
 
 /**
  * Test that the action "Reset style properties to default values" is refreshed in tabbar when style is changed. Test
@@ -55,6 +66,10 @@ public class ResetStylePropertiesToDefaultValuesActionTests extends AbstractSiri
 
     private static final String REF1 = "[0..1] newEReference1";
 
+    private static final String BEGIN_LABEL_NAME = "BEGIN";
+
+    private static final String ODESIGN_FILE = "My.odesign";
+
     private String oldDefaultFontName;
 
     @Override
@@ -63,7 +78,7 @@ public class ResetStylePropertiesToDefaultValuesActionTests extends AbstractSiri
         // "Reset style properties to default values" button works.
         oldDefaultFontName = changeDefaultFontName("Times New Roman");
 
-        copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE);
+        copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE, ODESIGN_FILE);
     }
 
     @Override
@@ -77,7 +92,6 @@ public class ResetStylePropertiesToDefaultValuesActionTests extends AbstractSiri
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
     }
 
     /**
@@ -85,6 +99,7 @@ public class ResetStylePropertiesToDefaultValuesActionTests extends AbstractSiri
      * container.
      */
     public void testRefreshActionCancelCustomStyleTabbarForListContainer() {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
         selectAndCheckEditPart(C1, AbstractDiagramListEditPart.class);
         // Check that the "Reset style properties to default values" button is
         // disabled
@@ -102,10 +117,10 @@ public class ResetStylePropertiesToDefaultValuesActionTests extends AbstractSiri
     }
 
     /**
-     * Test refresh "Reset style properties to default values" button after click on Fill Color in tabbar for a
-     * Container.
+     * Test refresh "Reset style properties to default values" button after click on Fill Color in tabbar for a Container.
      */
     public void testRefreshActionCancelCustomStyleTabbarForContainer() {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
         selectAndCheckEditPart(P1, AbstractDiagramContainerEditPart.class);
         // Check that the "Reset style properties to default values" button is
         // disabled
@@ -126,6 +141,7 @@ public class ResetStylePropertiesToDefaultValuesActionTests extends AbstractSiri
      * Test refresh "Reset style properties to default values" button after click on bold button in tabbar for an edge.
      */
     public void _testRefreshActionCancelCustomStyleTabbarForEdgeWithBoldFontStyle() {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
         selectAndCheckEditPart(REF1, AbstractDiagramEdgeEditPart.class);
         // Check that the "Reset style properties to default values" button is
         // disabled
@@ -149,6 +165,7 @@ public class ResetStylePropertiesToDefaultValuesActionTests extends AbstractSiri
      * Test refresh "Reset style properties to default values" button after click on Line Color in tabbar for an edge.
      */
     public void testRefreshActionCancelCustomStyleTabbarForEdgeWithLineColor() {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
         selectAndCheckEditPart(REF1, AbstractDiagramEdgeEditPart.class);
         // Check that the "Reset style properties to default values" button is
         // disabled
@@ -166,10 +183,11 @@ public class ResetStylePropertiesToDefaultValuesActionTests extends AbstractSiri
     }
 
     /**
-     * Test refresh "Reset style properties to default values" button after click on Style in properties view Appearance
-     * for an edge.
+     * Test refresh "Reset style properties to default values" button after click on Style in properties view Appearance for
+     * an edge.
      */
     public void testRefreshActionCancelCustomStylePropertiesViewForEdge() {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
         selectAndCheckEditPart(REF1, AbstractDiagramEdgeEditPart.class);
         // Check that the "Reset style properties to default values" button is
         // disabled
@@ -190,10 +208,78 @@ public class ResetStylePropertiesToDefaultValuesActionTests extends AbstractSiri
     }
 
     /**
+     * Test refresh "Reset style properties to default values" button after click changing colors on edge
+     */
+    public void testRefreshActionCancelCustomStylePropertiesViewForFunctionnalChain() {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "testLabelEdgeDiagram", "functionnalChain", DDiagram.class);
+        SWTBotGefEditPart editPartBot = selectAndCheckEditPart(BEGIN_LABEL_NAME, AbstractDEdgeNameEditPart.class);
+        DEdgeBeginNameEditPart editPart = (DEdgeBeginNameEditPart) editPartBot.part();
+        EdgeStyleImpl edgeStyleImpl = (EdgeStyleImpl) ((DRepresentationElement) ((Node) (editPart.getModel())).getElement()).getStyle();
+
+        // Check that the "Reset style properties to default values" button is
+        // disabled
+        getResetStylePropertiesToDefaultValuesButton(true, false);
+        // Check the equality of colors between model from editPart and figures
+        TestCase.assertTrue(areSameFiguresAndModelsColorsFromEditPart(editPart));
+        List<Integer> colors = extractLabelColors(edgeStyleImpl);
+        editor.bot().toolbarDropDownButtonWithTooltip("Font Color").menuItem("Cyan").click();
+        // Check the equality of colors between model from editPart and figures
+        TestCase.assertTrue(areSameFiguresAndModelsColorsFromEditPart(editPart));
+        // Verify that colors have changed
+        TestCase.assertFalse(colors.equals(extractLabelColors(edgeStyleImpl)));
+        // Check that the "Reset style properties to default values" button is
+        // enabled and use it
+        click(getResetStylePropertiesToDefaultValuesButton(true, true));
+        // Check the equality of colors between model from editPart and figures
+        TestCase.assertTrue(areSameFiguresAndModelsColorsFromEditPart(editPart));
+        edgeStyleImpl = (EdgeStyleImpl) ((DRepresentationElement) ((Node) (editPart.getModel())).getElement()).getStyle();
+        // Verify that colors are back to the inital ones
+        TestCase.assertTrue(colors.equals(extractLabelColors(edgeStyleImpl)));
+    }
+
+    private List<Integer> extractLabelColors(EdgeStyleImpl edgeImpl) {
+        return List.of(edgeImpl.getBeginLabelStyle().getLabelColor().toInteger(), edgeImpl.getCenterLabelStyle().getLabelColor().toInteger(), edgeImpl.getEndLabelStyle().getLabelColor().toInteger());
+    }
+
+    /**
+     * Compare colors of the three labels (1 by 1) between model and figures gmf : BEGIN-CENTER-END
+     * @param editPart editPart from which we get model and figures
+     * @return true if colors are the same
+     */
+    private boolean areSameFiguresAndModelsColorsFromEditPart(DEdgeBeginNameEditPart editPart) {
+        DRepresentationElement labelRepresentation = (DRepresentationElement) ((Node) (editPart.getModel())).getElement();
+        EdgeStyleImpl edgeImpl = (EdgeStyleImpl) labelRepresentation.getStyle();
+        RGBValues c1, c2, c3;
+        c1 = edgeImpl.getBeginLabelStyle().getLabelColor();
+        c2 = edgeImpl.getCenterLabelStyle().getLabelColor();
+        c3 = edgeImpl.getEndLabelStyle().getLabelColor();
+        boolean e1 = false, e2 = false, e3 = false;
+        for (AbstractDEdgeNameEditPart edgeEditPart : (List<AbstractDEdgeNameEditPart>) editPart.getParent().getChildren()) {
+            switch (edgeEditPart.getEditText()) {
+            case "BEGIN":
+                e1 = isSameColor(edgeEditPart.getFigure().getForegroundColor().getRGB(), c1);
+                break;
+            case "CENTER":
+                e2 = isSameColor(edgeEditPart.getFigure().getForegroundColor().getRGB(), c2);
+                break;
+            case "END":
+                e3 = isSameColor(edgeEditPart.getFigure().getForegroundColor().getRGB(), c3);
+                break;
+            }
+        }
+        return e1 && e2 && e3;
+    }
+
+    private boolean isSameColor(RGB rgb, RGBValues rgbValues) {
+        return rgb.green == rgbValues.getGreen() && rgb.red == rgbValues.getRed() && rgb.blue == rgbValues.getBlue();
+    }
+
+    /**
      * Test refresh "Reset style properties to default values" button after click on Fill Color on contextual menu for a
      * list Container.
      */
     public void testRefreshActionCancelCustomStyleContextualMenuForListContainer() {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
         selectAndCheckEditPart(C1, AbstractDiagramListEditPart.class);
         // Check that the "Reset style properties to default values" button is
         // disabled

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -42,6 +42,7 @@ import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.gmf.runtime.diagram.core.listener.DiagramEventBroker;
 import org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
 import org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.Draw2dRenderPlugin;
@@ -58,6 +59,7 @@ import org.eclipse.sirius.diagram.ui.api.layout.CustomLayoutAlgorithm;
 import org.eclipse.sirius.diagram.ui.business.internal.image.ImageSelectorDescriptorRegistryListener;
 import org.eclipse.sirius.diagram.ui.business.internal.image.refresh.WorkspaceImageFigureRefresher;
 import org.eclipse.sirius.diagram.ui.internal.layout.CustomLayoutAlgorithmProviderRegistry;
+import org.eclipse.sirius.diagram.ui.internal.refresh.diagram.SiriusDiagramEventBrokerFactory;
 import org.eclipse.sirius.diagram.ui.internal.refresh.listeners.WorkspaceFileResourceChangeListener;
 import org.eclipse.sirius.diagram.ui.tools.api.decoration.SiriusDecorationProviderRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
@@ -160,8 +162,8 @@ public final class DiagramUIPlugin extends EMFPlugin {
         private DynamicDiagramUIPreferences dynamicPreferences;
 
         /**
-         * A registry containing all layout providers that can be specified directly in the VSM. A layout provider
-         * provides a layout algorithm that can be used when doing an arrange all on a Sirius diagram.
+         * A registry containing all layout providers that can be specified directly in the VSM. A layout provider provides a
+         * layout algorithm that can be used when doing an arrange all on a Sirius diagram.
          */
         private Map<String, CustomLayoutAlgorithm> layoutAlgorithmsRegistry;
 
@@ -187,7 +189,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
          * Add a new custom layout algorithm to the registry.
          *
          * @param customLayoutAlgorithm
-         *            the layout algorithm to add.
+         *                                  the layout algorithm to add.
          */
         public void addLayoutAlgorithm(CustomLayoutAlgorithm customLayoutAlgorithm) {
             layoutAlgorithmsRegistry.put(customLayoutAlgorithm.getId(), customLayoutAlgorithm);
@@ -197,7 +199,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
          * Remove the layout algorithm identified by the given id from the registry.
          *
          * @param layoutProviderId
-         *            the id of the layout algorithm to remove from the registry.
+         *                             the id of the layout algorithm to remove from the registry.
          * @return the layout algorithm removed if such element exists.
          */
         public CustomLayoutAlgorithm removeLayoutAlgorithm(String layoutProviderId) {
@@ -217,9 +219,9 @@ public final class DiagramUIPlugin extends EMFPlugin {
          * Logs an error in the error log.
          *
          * @param message
-         *            the message to log (optional).
+         *                    the message to log (optional).
          * @param e
-         *            the exception (optional).
+         *                    the exception (optional).
          */
         public void error(final String message, final Exception e) {
             String msgToDisplay = message;
@@ -271,6 +273,8 @@ public final class DiagramUIPlugin extends EMFPlugin {
             // Force initialization of org.eclipse.gmf.runtime.draw2d.ui.render.awt to register the Batik image formats
             // needed
             Draw2dRenderPlugin.getInstance();
+
+            DiagramEventBroker.registerDiagramEventBrokerFactory(new SiriusDiagramEventBrokerFactory());
         }
 
         private void registerCoreDecorationProviders() {
@@ -429,7 +433,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
          *
          * @was-generated
          * @param path
-         *            the path
+         *                 the path
          * @return the image descriptor
          */
         public static ImageDescriptor getBundledImageDescriptor(String path) {
@@ -440,7 +444,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
          * Returns an image descriptor for the image file at the given url.
          *
          * @param url
-         *            the url
+         *                the url
          * @return the image descriptor
          */
         public static ImageDescriptor getURLImageDescriptor(URL url) {
@@ -448,13 +452,12 @@ public final class DiagramUIPlugin extends EMFPlugin {
         }
 
         /**
-         * Respects images residing in any plug-in. If path is relative, then this bundle is looked up for the image,
-         * otherwise, for absolute path, first segment is taken as id of plug-in with image
+         * Respects images residing in any plug-in. If path is relative, then this bundle is looked up for the image, otherwise,
+         * for absolute path, first segment is taken as id of plug-in with image
          *
          * @was-generated
          * @param path
-         *            the path to image, either absolute (with plug-in id as first segment), or relative for bundled
-         *            images
+         *                 the path to image, either absolute (with plug-in id as first segment), or relative for bundled images
          * @return the image descriptor
          */
         public static ImageDescriptor findImageDescriptor(String path) {
@@ -467,12 +470,11 @@ public final class DiagramUIPlugin extends EMFPlugin {
         }
 
         /**
-         * Respects images residing in any plug-in. If path is relative, then this bundle is looked up for the image,
-         * otherwise, for absolute path, first segment is taken as id of plug-in with image
+         * Respects images residing in any plug-in. If path is relative, then this bundle is looked up for the image, otherwise,
+         * for absolute path, first segment is taken as id of plug-in with image
          *
          * @param path
-         *            the path to image, either absolute (with plug-in id as first segment), or relative for bundled
-         *            images
+         *                 the path to image, either absolute (with plug-in id as first segment), or relative for bundled images
          * @return the image descriptor
          */
         public static ImageWithDimensionDescriptor findImageWithDimensionDescriptor(String path, final Dimension dimension) {
@@ -484,12 +486,11 @@ public final class DiagramUIPlugin extends EMFPlugin {
         }
 
         /**
-         * Respects images residing in any plug-in. If path is relative, then this bundle is looked up for the image,
-         * otherwise, for absolute path, first segment is taken as id of plug-in with image
+         * Respects images residing in any plug-in. If path is relative, then this bundle is looked up for the image, otherwise,
+         * for absolute path, first segment is taken as id of plug-in with image
          *
          * @param path
-         *            the path to image, either absolute (with plug-in id as first segment), or relative for bundled
-         *            images
+         *                 the path to image, either absolute (with plug-in id as first segment), or relative for bundled images
          * @return the image descriptor
          */
         public static ImageWithDimensionDescriptor findImageWithDimensionDescriptor(String path) {
@@ -500,7 +501,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
          * Returns an image descriptor for the image file at the given URL.
          *
          * @param url
-         *            the URL.
+         *                the URL.
          * @return the image descriptor.
          */
         public static ImageDescriptor findImageDescriptor(URL url) {
@@ -575,12 +576,12 @@ public final class DiagramUIPlugin extends EMFPlugin {
         }
 
         /**
-         * Returns an image for the image file at the given plug-in relative path. Client do not need to dispose this
-         * image. Images will be disposed automatically.
+         * Returns an image for the image file at the given plug-in relative path. Client do not need to dispose this image.
+         * Images will be disposed automatically.
          *
          * @was-generated
          * @param path
-         *            the path
+         *                 the path
          * @return image instance
          */
         public Image getBundledImage(String path) {
@@ -595,7 +596,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
         /**
          *
          * @param desc
-         *            an image descriptor.
+         *                 an image descriptor.
          * @return an Image instance
          */
         public Image getImage(ImageWithDimensionDescriptor desc) {
@@ -617,7 +618,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
         /**
          *
          * @param desc
-         *            an image descriptor.
+         *                 an image descriptor.
          * @return an Image instance
          */
         public Image getImage(ImageDescriptor desc) {
@@ -631,7 +632,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
         /**
          *
          * @param desc
-         *            an image descriptor.
+         *                 an image descriptor.
          * @return an Image instance
          */
         public boolean removeCacheImage(ImageDescriptor desc) {
@@ -666,8 +667,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
         }
 
         /**
-         * This class is a mean to keep sync with possible changes of the {@link SiriusDiagramUiPreferencesKeys}
-         * preferences.
+         * This class is a mean to keep sync with possible changes of the {@link SiriusDiagramUiPreferencesKeys} preferences.
          */
         public class DynamicDiagramUIPreferences extends DynamicConfigurationHelper {
             /**

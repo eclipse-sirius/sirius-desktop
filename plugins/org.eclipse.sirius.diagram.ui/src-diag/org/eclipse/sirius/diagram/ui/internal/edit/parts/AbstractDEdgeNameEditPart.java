@@ -101,6 +101,13 @@ public class AbstractDEdgeNameEditPart extends AbstractGeneratedDiagramNameEditP
     protected void handleNotificationEvent(Notification event) {
         if (resolveSemanticElement() instanceof DEdge) {
             Object feature = event.getFeature();
+            // We ignore FontStyle color otherwise the Sirius label color will be overridden by this color. Sirius label color holds
+            // the color. There is only one GMF font style whereas there are 3 Sirius label style(for end, begin and center labels)
+            // So the unique font style color must not override the three label style color.
+            if (NotationPackage.eINSTANCE.getFontStyle_FontColor() == feature) {
+                refreshVisuals();
+                return;
+            }
             if (DiagramPackage.eINSTANCE.getDDiagramElementContainer_OwnedStyle() == feature) {
                 refreshVisuals();
             }
