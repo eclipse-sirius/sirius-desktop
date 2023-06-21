@@ -47,8 +47,8 @@ import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
- * This class update the notation and viewpoint models font style attributes
- * when it receives a notification about a Node font style changes.
+ * This class update the notation and viewpoint models font style attributes when it receives a notification about a
+ * Node font style changes.
  * 
  * Make sure to attach and detach the updater to the editing domain.
  * 
@@ -70,7 +70,7 @@ public class FontFormatUpdater extends ResourceSetListenerImpl {
      * Default constructor.
      * 
      * @param domain
-     *            the current editing domain.
+     *                   the current editing domain.
      */
     public FontFormatUpdater(final TransactionalEditingDomain domain) {
         super(FEATURES_TO_REFACTOR_FILTER);
@@ -115,24 +115,7 @@ public class FontFormatUpdater extends ResourceSetListenerImpl {
                 Style style = dDiagramElement.getStyle();
                 if (isViewFontStylePropertiesDifferentOfGMFOne(style, fontStyle, features)) {
                     Set<String> featureNames = getFeatureNames(features);
-                    if (style instanceof EdgeStyle) {
-                        EdgeStyle edgeStyle = (EdgeStyle) style;
-                        if (edgeStyle.getBeginLabelStyle() != null) {
-                            featureNames.addAll(edgeStyle.getBeginLabelStyle().getCustomFeatures());
-                            Command addCustomFeaturesCmd = SetCommand.create(getTarget(), edgeStyle.getBeginLabelStyle(), ViewpointPackage.Literals.CUSTOMIZABLE__CUSTOM_FEATURES, featureNames);
-                            cc.append(addCustomFeaturesCmd);
-                        }
-                        if (edgeStyle.getCenterLabelStyle() != null) {
-                            featureNames.addAll(edgeStyle.getCenterLabelStyle().getCustomFeatures());
-                            Command addCustomFeaturesCmd = SetCommand.create(getTarget(), edgeStyle.getCenterLabelStyle(), ViewpointPackage.Literals.CUSTOMIZABLE__CUSTOM_FEATURES, featureNames);
-                            cc.append(addCustomFeaturesCmd);
-                        }
-                        if (edgeStyle.getEndLabelStyle() != null) {
-                            featureNames.addAll(edgeStyle.getEndLabelStyle().getCustomFeatures());
-                            Command addCustomFeaturesCmd = SetCommand.create(getTarget(), edgeStyle.getEndLabelStyle(), ViewpointPackage.Literals.CUSTOMIZABLE__CUSTOM_FEATURES, featureNames);
-                            cc.append(addCustomFeaturesCmd);
-                        }
-                    } else {
+                    if (!(style instanceof EdgeStyle)) {
                         featureNames.addAll(style.getCustomFeatures());
                         Command addCustomFeaturesCmd = SetCommand.create(getTarget(), style, ViewpointPackage.Literals.CUSTOMIZABLE__CUSTOM_FEATURES, featureNames);
                         cc.append(addCustomFeaturesCmd);

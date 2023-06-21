@@ -235,6 +235,9 @@ public class ResetStylePropertiesToDefaultValuesActionTests extends AbstractSiri
         edgeStyleImpl = (EdgeStyleImpl) ((DRepresentationElement) ((Node) (editPart.getModel())).getElement()).getStyle();
         // Verify that colors are back to the inital ones
         TestCase.assertTrue(colors.equals(extractLabelColors(edgeStyleImpl)));
+        // Check that the "Reset style properties to default values" button is
+        // disabled
+        getResetStylePropertiesToDefaultValuesButton(true, false);
     }
 
     private List<Integer> extractLabelColors(EdgeStyleImpl edgeImpl) {
