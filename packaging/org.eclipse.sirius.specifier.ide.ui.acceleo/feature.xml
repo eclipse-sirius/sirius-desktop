@@ -14,7 +14,7 @@
 <feature
       id="org.eclipse.sirius.specifier.ide.ui.acceleo"
       label="%featureName"
-      version="7.2.0.qualifier"
+      version="7.2.1.qualifier"
       provider-name="%providerName"
       plugin="org.eclipse.sirius.common.acceleo.mtl.ide"
       license-feature="org.eclipse.license"

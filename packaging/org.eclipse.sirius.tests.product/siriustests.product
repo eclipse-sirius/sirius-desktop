@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="%productName" uid="org.eclipse.sirius.tests.product" id="org.eclipse.sirius.tests.product.SiriusTestsProduct" application="org.eclipse.ui.ide.workbench" version="7.2.0.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="%productName" uid="org.eclipse.sirius.tests.product" id="org.eclipse.sirius.tests.product.SiriusTestsProduct" application="org.eclipse.ui.ide.workbench" version="7.2.1.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="eclipse_lg.png"/>
@@ -120,25 +120,25 @@
    </plugins>
 
    <features>
-      <feature id="org.eclipse.sirius.aql" version="7.2.0.qualifier"/>
-      <feature id="org.eclipse.sirius.doc.feature" version="7.2.0.qualifier"/>
-      <feature id="org.eclipse.sirius.properties.feature" version="7.2.0.qualifier"/>
-      <feature id="org.eclipse.sirius.runtime" version="7.2.0.qualifier"/>
-      <feature id="org.eclipse.sirius.runtime.acceleo" version="7.2.0.qualifier"/>
-      <feature id="org.eclipse.sirius.runtime.aql" version="7.2.0.qualifier"/>
-      <feature id="org.eclipse.sirius.runtime.ide.eef" version="7.2.0.qualifier"/>
-      <feature id="org.eclipse.sirius.runtime.ide.ui" version="7.2.0.qualifier"/>
-      <feature id="org.eclipse.sirius.runtime.ide.ui.acceleo" version="7.2.0.qualifier"/>
-      <feature id="org.eclipse.sirius.runtime.ide.xtext" version="7.2.0.qualifier"/>
-      <feature id="org.eclipse.sirius.runtime.ocl" version="7.2.0.qualifier"/>
-      <feature id="org.eclipse.sirius.specifier" version="7.2.0.qualifier"/>
-      <feature id="org.eclipse.sirius.specifier.ide.ui" version="7.2.0.qualifier"/>
-      <feature id="org.eclipse.sirius.specifier.ide.ui.acceleo" version="7.2.0.qualifier"/>
-      <feature id="org.eclipse.sirius.specifier.ide.ui.aql" version="7.2.0.qualifier"/>
-      <feature id="org.eclipse.sirius.specifier.properties.feature" version="7.2.0.qualifier"/>
+      <feature id="org.eclipse.sirius.aql" version="7.2.1.qualifier"/>
+      <feature id="org.eclipse.sirius.doc.feature" version="7.2.1.qualifier"/>
+      <feature id="org.eclipse.sirius.properties.feature" version="7.2.1.qualifier"/>
+      <feature id="org.eclipse.sirius.runtime" version="7.2.1.qualifier"/>
+      <feature id="org.eclipse.sirius.runtime.acceleo" version="7.2.1.qualifier"/>
+      <feature id="org.eclipse.sirius.runtime.aql" version="7.2.1.qualifier"/>
+      <feature id="org.eclipse.sirius.runtime.ide.eef" version="7.2.1.qualifier"/>
+      <feature id="org.eclipse.sirius.runtime.ide.ui" version="7.2.1.qualifier"/>
+      <feature id="org.eclipse.sirius.runtime.ide.ui.acceleo" version="7.2.1.qualifier"/>
+      <feature id="org.eclipse.sirius.runtime.ide.xtext" version="7.2.1.qualifier"/>
+      <feature id="org.eclipse.sirius.runtime.ocl" version="7.2.1.qualifier"/>
+      <feature id="org.eclipse.sirius.specifier" version="7.2.1.qualifier"/>
+      <feature id="org.eclipse.sirius.specifier.ide.ui" version="7.2.1.qualifier"/>
+      <feature id="org.eclipse.sirius.specifier.ide.ui.acceleo" version="7.2.1.qualifier"/>
+      <feature id="org.eclipse.sirius.specifier.ide.ui.aql" version="7.2.1.qualifier"/>
+      <feature id="org.eclipse.sirius.specifier.properties.feature" version="7.2.1.qualifier"/>
       <feature id="org.eclipse.eef.sdk.feature" />
       <feature id="org.eclipse.platform"/>
-      <feature id="org.eclipse.sirius.tests.rcptt.feature" version="7.2.0.qualifier"/>
+      <feature id="org.eclipse.sirius.tests.rcptt.feature" version="7.2.1.qualifier"/>
    </features>
 
    <configurations>
