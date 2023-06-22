@@ -22,7 +22,7 @@
 
   <groupId>org.eclipse.sirius</groupId>
   <artifactId>org.eclipse.sirius.releng.targets</artifactId>
-  <version>7.2.0-SNAPSHOT</version>
+  <version>7.2.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <licenses>

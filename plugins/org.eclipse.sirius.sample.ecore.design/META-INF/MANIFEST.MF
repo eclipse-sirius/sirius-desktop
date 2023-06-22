@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.sample.ecore.design;singleton:=true
-Bundle-Version: 7.2.0.qualifier
+Bundle-Version: 7.2.1.qualifier
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.ui;bundle-version="3.8.2",
  org.eclipse.sirius.common;bundle-version="2.0.0",

@@ -17,12 +17,12 @@
   <parent>
     <groupId>org.eclipse.sirius</groupId>
     <artifactId>sirius-parent</artifactId>
-    <version>7.2.0-SNAPSHOT</version>
+    <version>7.2.1-SNAPSHOT</version>
     <relativePath>../../packaging/org.eclipse.sirius.parent</relativePath>
   </parent>
 
   <artifactId>org.eclipse.sirius.ext.swt</artifactId>
   <packaging>eclipse-plugin</packaging>
-  <version>7.2.0-SNAPSHOT</version>
+  <version>7.2.1-SNAPSHOT</version>
 
 </project>

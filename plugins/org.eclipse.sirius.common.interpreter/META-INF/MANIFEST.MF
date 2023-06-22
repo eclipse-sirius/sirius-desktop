@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-SymbolicName: org.eclipse.sirius.common.interpreter
-Bundle-Version: 7.2.0.qualifier
+Bundle-Version: 7.2.1.qualifier
 Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin

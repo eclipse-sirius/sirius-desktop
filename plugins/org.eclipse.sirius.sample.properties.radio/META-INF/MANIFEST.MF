@@ -4,7 +4,7 @@ Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-SymbolicName: org.eclipse.sirius.sample.properties.radio;singleton:=true
-Bundle-Version: 7.2.0.qualifier
+Bundle-Version: 7.2.1.qualifier
 Bundle-Activator: org.eclipse.sirius.sample.properties.radio.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
