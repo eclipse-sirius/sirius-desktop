@@ -8,7 +8,9 @@ h2(#sirius7.2.0). Changes in Sirius 7.2.0
 
 h3. User-Visible Changes
 
-* <span class="label label-info">Modified</span>Java 17 (or later) is now required to run Sirius.
+* <span class="label label-info">Modified</span> Java 17 (or later) is now required to run Sirius.
+* <span class="label label-info">Modified</span> When a semantic modification is made on a diagram (e.g. Drag and Drop of an element), the notes and texts attached to the element remain attached, and the notes and texts contained in the element are preserved as much as possible.
+* <span class="label label-info">Modified</span> When an element is deleted after drag and drop, its attached notes and texts are also removed if preference "Remove/hide note when the annotated element is removed/hidden" is enabled.
 
 h3. Specifier-Visible Changes
 
@@ -16,7 +18,15 @@ h3. Specifier-Visible Changes
 
 h3. Developer-Visible Changes
 
-* <span class="label label-info">Modified</span>Java 17 is required as BREE and source level.
+* <span class="label label-info">Modified</span> Java 17 is required as BREE and source level.
+
+h4. Changes in @org.eclipse.sirius.diagram.ui@
+
+<span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery.getFreeFormContainerCompartment()@ is added to get the compartment of the GMF node container with "free form" layout.
+<span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery.isFreeFormContainer()@ and @org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery.isRegionContainer()@ are added to test if a GMF node is associated to DNodeContainer Sirius diagram element with respectively free form layout and stack layout (horizontal or vartical).
+<span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery.isFreeFormCompartment()@ is added to test if a GMF node is compartment of node corresponding to a Sirius container free form.
+<span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery.isNode()@ is added to test if a GMF node is associated to DNode Sirius diagram element.
+<span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery.isNodeLabel()@ is added to test if a GMF node is associated to label of DNode Sirius diagram element.
 
 h2(#sirius7.1.0). Changes in Sirius 7.1.0
 

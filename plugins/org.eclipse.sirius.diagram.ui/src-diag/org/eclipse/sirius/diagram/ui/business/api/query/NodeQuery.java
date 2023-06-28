@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,9 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.business.api.query;
+
+import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
@@ -178,6 +181,23 @@ public class NodeQuery {
         int type = SiriusVisualIDRegistry.getVisualID(this.node.getType());
         boolean result = type == DNodeContainer2EditPart.VISUAL_ID || type == DNodeContainerEditPart.VISUAL_ID || type == DNodeList2EditPart.VISUAL_ID || type == DNodeListEditPart.VISUAL_ID;
         return result;
+    }
+
+    /**
+     * Return the compartment of the GMF node container with "free form" layout.
+     * 
+     * @return the compartment or Optional.empty if view is not container or compartment not found
+     */
+    public Optional<Node> getFreeFormContainerCompartment() {
+        if (new ViewQuery(this.node).isFreeFormContainer()) {
+            List<View> children = this.node.getChildren();
+            return children.stream() //
+                    .filter(child -> new ViewQuery(child).isFreeFormCompartment()) //
+                    .map(Node.class::cast) //
+                    .findAny();
+        } else {
+            return Optional.empty();
+        }
     }
 
     /**

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="root">
+  <eSubpackages name="scenarioA-node">
+    <eSubpackages name="p1">
+      <eClassifiers xsi:type="ecore:EClass" name="ClassA"/>
+    </eSubpackages>
+  </eSubpackages>
+  <eSubpackages name="scenarioA-package">
+    <eSubpackages name="p1">
+      <eSubpackages name="p2"/>
+    </eSubpackages>
+  </eSubpackages>
+  <eSubpackages name="scenarioA-elementBasedAndRelationBasedEdges">
+    <eSubpackages name="p1">
+      <eClassifiers xsi:type="ecore:EClass" name="ClassA">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="toClassB" eType="#//scenarioA-elementBasedAndRelationBasedEdges/p1/ClassB"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="ClassB"/>
+    </eSubpackages>
+  </eSubpackages>
+  <eSubpackages name="scenarioB">
+    <eSubpackages name="p1">
+      <eSubpackages name="p11">
+        <eClassifiers xsi:type="ecore:EClass" name="ClassA">
+          <eStructuralFeatures xsi:type="ecore:EReference" name="toClassB" eType="#//scenarioB/p1/p11/ClassB"/>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="ClassB">
+          <eStructuralFeatures xsi:type="ecore:EReference" name="toClassA" eType="#//scenarioB/p1/p11/ClassA"/>
+        </eClassifiers>
+      </eSubpackages>
+    </eSubpackages>
+    <eSubpackages name="p2"/>
+  </eSubpackages>
+  <eSubpackages name="scenarioC-node">
+    <eSubpackages name="p1">
+      <eClassifiers xsi:type="ecore:EClass" name="ClassA"/>
+    </eSubpackages>
+  </eSubpackages>
+  <eSubpackages name="scenarioD">
+    <eSubpackages name="p1">
+      <eClassifiers xsi:type="ecore:EClass" name="ClassA"/>
+    </eSubpackages>
+  </eSubpackages>
+  <eSubpackages name="scenarioE">
+    <eSubpackages name="p1">
+      <eSubpackages name="p1-1">
+        <eSubpackages name="p1-1-1">
+          <eClassifiers xsi:type="ecore:EClass" name="ClassA"/>
+        </eSubpackages>
+      </eSubpackages>
+    </eSubpackages>
+  </eSubpackages>
+  <eSubpackages name="scenarioF">
+    <eSubpackages name="p1">
+      <eSubpackages name="p2"/>
+    </eSubpackages>
+  </eSubpackages>
+  <eSubpackages name="scenarioG">
+    <eSubpackages name="p1">
+      <eClassifiers xsi:type="ecore:EClass" name="ClassA"/>
+    </eSubpackages>
+  </eSubpackages>
+  <eSubpackages name="scenarioH">
+    <eSubpackages name="p1">
+      <eClassifiers xsi:type="ecore:EClass" name="ClassA"/>
+    </eSubpackages>
+  </eSubpackages>
+  <eSubpackages name="scenarioIandJ">
+    <eSubpackages name="p1">
+      <eClassifiers xsi:type="ecore:EClass" name="ClassA">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="toClassB" eType="#//scenarioIandJ/p2/ClassB"/>
+      </eClassifiers>
+    </eSubpackages>
+    <eSubpackages name="p2">
+      <eClassifiers xsi:type="ecore:EClass" name="ClassB"/>
+      <eClassifiers xsi:type="ecore:EClass" name="ClassC"/>
+    </eSubpackages>
+    <eSubpackages name="p3"/>
+  </eSubpackages>
+  <eSubpackages name="p">
+    <eClassifiers xsi:type="ecore:EClass" name="A"/>
+    <eClassifiers xsi:type="ecore:EClass" name="NewEClass2"/>
+    <eSubpackages name="ghostCase">
+      <eSubpackages name="packageA">
+        <eClassifiers xsi:type="ecore:EClass" name="Class1">
+          <eStructuralFeatures xsi:type="ecore:EReference" name="Ref" eType="#//p/ghostCase/packageA/Class2"/>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="Class2"/>
+      </eSubpackages>
+      <eSubpackages name="packageB"/>
+    </eSubpackages>
+  </eSubpackages>
+  <eSubpackages name="scenarioK">
+    <eSubpackages name="p1">
+      <eSubpackages name="p2">
+        <eClassifiers xsi:type="ecore:EClass" name="ClassA">
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="attr1"/>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="attr2"/>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="ClassB">
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="attr3"/>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="attr4"/>
+        </eClassifiers>
+      </eSubpackages>
+      <eSubpackages name="p3">
+        <eClassifiers xsi:type="ecore:EClass" name="ClassC">
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="attr5"/>
+        </eClassifiers>
+      </eSubpackages>
+    </eSubpackages>
+  </eSubpackages>
+</ecore:EPackage>

@@ -128,7 +128,9 @@
 		<h2 id="sirius7.2.0">Changes in Sirius 7.2.0</h2>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
 		<ul>
-			<li><span class="label label-info">Modified</span>Java 17 (or later) is now required to run Sirius.</li>
+			<li><span class="label label-info">Modified</span> Java 17 (or later) is now required to run Sirius.</li>
+			<li><span class="label label-info">Modified</span> When a semantic modification is made to a diagram (e.g. Drag and Drop of an element), the notes and texts attached to the element remain attached, and the notes and texts contained in the element are preserved as far as possible.</li>
+			<li><span class="label label-info">Modified</span> When an element is deleted after drag and drop, its notes and attached text are also removed if preference &#171;Remove/hide note when the annotated element is removed/hidden&#187; is enabled.</li>
 		</ul>
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
 		<ul>
@@ -143,8 +145,23 @@
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<ul>
-			<li><span class="label label-info">Modified</span>Java 17 is required as BREE and source level.</li>
+			<li><span class="label label-info">Modified</span> Java 17 is required as BREE and source level.</li>
 		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
+			<code>org.eclipse.sirius.diagram.ui</code>
+		</h4>
+		<p><span class="label label-success">Added</span> 
+			<code>org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery.getFreeFormContainerCompartment()</code> is added to get the compartment of the GMF node container with &#171;free form&#187; layout.
+			<br/><span class="label label-success">Added</span> 
+			<code>org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery.isFreeFormContainer()</code> and 
+			<code>org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery.isRegionContainer()</code> was added to test if a GMF node is associated to DNodeContainer Sirius diagram element with respectively free form layout and stack layout (horizontal or vartical).
+			<br/><span class="label label-success">Added</span> 
+			<code>org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery.isFreeFormCompartment()</code> is added to test if a GMF node is compartment of node corresponding to a Sirius container free form.
+			<br/><span class="label label-success">Added</span> 
+			<code>org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery.isNode()</code> is added to test if a GMF node is associated to DNode Sirius diagram element.
+			<br/><span class="label label-success">Added</span> 
+			<code>org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery.isNodeLabel()</code> is added to test if a GMF node is associated to label of DNode Sirius diagram element.
+		</p>
 		<h2 id="sirius7.1.0">Changes in Sirius 7.1.0</h2>
 		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
 		<ul>
