@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -31,12 +31,9 @@ import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvid
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.SiriusComponentEditPolicy;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramUpdater;
 import org.eclipse.sirius.diagram.ui.part.SiriusNodeDescriptor;
-import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
-import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies.DeleteHelper;
-import org.eclipse.sirius.diagram.ui.tools.internal.preferences.SiriusDiagramUiInternalPreferencesKeys;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -86,12 +83,6 @@ public class NodeDeletionEditPolicy extends SiriusComponentEditPolicy {
     private Command buildGlobalDeleteCommand(final IDiagramCommandFactory commandFactory, final View view, final DDiagramElement diagramElement) {
         final CompositeCommand compositeCommand = new CompositeCommand(Messages.NodeDeletionEditPolicy_deleteElementCommandLabel);
         org.eclipse.emf.common.command.Command buildedCommand = commandFactory.buildDeleteDiagramElement(diagramElement);
-        boolean removeHideNote = DiagramUIPlugin.getPlugin().getPreferenceStore().getBoolean(SiriusDiagramUiInternalPreferencesKeys.PREF_REMOVE_HIDE_NOTE_WHEN_ANNOTED_ELEMENT_HIDDEN_OR_REMOVE.name());
-        if (removeHideNote) {
-            DeleteHelper.addDeleteLinkedNotesTask(buildedCommand, view);
-        } else {
-            DeleteHelper.addDeleteLinkedNoteAttachmentsTask(buildedCommand, view);
-        }
         compositeCommand.add(new GMFCommandWrapper(editingDomain, buildedCommand));
         return new ICommandProxy(compositeCommand.reduce());
     }

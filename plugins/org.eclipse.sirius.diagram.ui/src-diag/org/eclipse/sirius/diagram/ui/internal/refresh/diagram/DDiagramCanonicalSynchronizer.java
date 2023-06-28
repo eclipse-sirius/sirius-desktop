@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,7 +18,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
@@ -31,13 +30,13 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.util.AbstractTreeIterator;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gef.rulers.RulerProvider;
 import org.eclipse.gmf.runtime.common.ui.services.editor.EditorService;
 import org.eclipse.gmf.runtime.common.ui.util.DisplayUtils;
+import org.eclipse.gmf.runtime.diagram.core.util.ViewType;
 import org.eclipse.gmf.runtime.diagram.ui.internal.properties.WorkspaceViewerProperties;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer;
@@ -47,7 +46,6 @@ import org.eclipse.gmf.runtime.draw2d.ui.mapmode.IMapMode;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.Node;
-import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.diagram.CollapseFilter;
@@ -63,6 +61,7 @@ import org.eclipse.sirius.diagram.ui.business.internal.dialect.SetBestHeightHead
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.internal.operation.RegionContainerUpdateLayoutOperation;
 import org.eclipse.sirius.diagram.ui.internal.refresh.AbstractCanonicalSynchronizer;
+import org.eclipse.sirius.diagram.ui.internal.refresh.CanonicalSynchronizerResult;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramUpdater;
 import org.eclipse.sirius.diagram.ui.part.SiriusLinkDescriptor;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
@@ -188,21 +187,34 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
 
     private void refreshSemantic() {
         if (gmfDiagram != null && gmfDiagram.getElement() != null) {
-            final Set<View> createdNodeViews = new LinkedHashSet<>();
-            createdNodeViews.addAll(refreshSemanticChildren(gmfDiagram, gmfDiagram.getElement()));
-            for (final Object object : gmfDiagram.getChildren()) {
-                createdNodeViews.addAll(refreshSemantic((View) object));
+            CanonicalSynchronizerResult canonicalSynchronizerResult = new CanonicalSynchronizerResult();
+
+            // 1. Refresh nodes
+            refreshSemanticChildren(gmfDiagram, gmfDiagram.getElement(), canonicalSynchronizerResult);
+            List<View> children = gmfDiagram.getChildren();
+            for (final View view : children) {
+                refreshSemantic(view, canonicalSynchronizerResult);
             }
+            // reconciliation delete/create, compute deletion dependencies and confirm deletion
+            canonicalSynchronizerResult.reconciliateOrphanNodes();
+            canonicalSynchronizerResult.collectDetachedPGEFromNode();
+            canonicalSynchronizerResult.collectAttachedEdgeToNodes();
+            canonicalSynchronizerResult.deleteOrphanNodes();
 
-            final Set<Edge> createdConnectionViews = new LinkedHashSet<>();
-            createdConnectionViews.addAll(refreshConnections(gmfDiagram));
+            // 2. Refresh edges
+            refreshConnections(gmfDiagram, canonicalSynchronizerResult);
+            // reconciliation delete/create, compute deletion dependencies and confirm deletion
+            canonicalSynchronizerResult.reconciliateOrphanEdges();
+            canonicalSynchronizerResult.collectAttachedEdgeToEdges();
+            canonicalSynchronizerResult.collectDetachedPGEFromEdge();
+            canonicalSynchronizerResult.deleteOrphanEdges();
 
-            Set<View> createdViews = Sets.union(createdNodeViews, createdConnectionViews);
+            // 3. Delete collected note attached to removed element
+            canonicalSynchronizerResult.deleteDetachedPGE();
 
-            manageCreatedViewsLayout(createdViews);
-
-            manageCollapse(createdNodeViews);
-
+            // 4. Manage views
+            manageCreatedViewsLayout(canonicalSynchronizerResult.getCreatedViews());
+            manageCollapse(canonicalSynchronizerResult.getCreatedNodes());
             manageRegions();
         }
     }
@@ -322,16 +334,32 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
         }
     }
 
-    private Collection<Edge> refreshConnections(final Diagram diagram) {
+    /**
+     * Refresh diagram edges from Sirius to GMF
+     * 
+     * <ul>
+     * <li>Compute differences between Sirius and GMF model</li>
+     * <li>Create all missing GMF edges and mark it in `canonicalSynchronizerResult`</li>
+     * <li>Mark as orphan (i.e to remove) in `canonicalSynchronizerResult` all GMF edges not present on Sirius side</li>
+     * </ul>
+     */
+    private CanonicalSynchronizerResult refreshConnections(final Diagram diagram, CanonicalSynchronizerResult canonicalSynchronizerResult) {
+        // Algorithm description:
+        // Take descriptor of all Sirius edges and remove all those that exist in GMF:
+        // // -> so, it remains all edges which are to be created (GMF edges to create)
+        // Take all edges (except noteAttachments and lines) and remove those that have associated Sirius element:
+        // // -> so, it remains all orphan edges (GMF edges to remove)
+
         final Map<EObject, View> domain2NotationMap = new HashMap<EObject, View>();
         final Collection<SiriusLinkDescriptor> linkDescriptors = collectAllLinks(diagram, domain2NotationMap);
-        final Collection<Edge> existingLinks = new LinkedList<Edge>(diagram.getEdges());
-        existingLinks.addAll(collectAllDanglingEdges(diagram));
+        final List<Edge> existingLinks = new LinkedList<Edge>(diagram.getEdges());
 
-        final Collection<Edge> noteAttachments = collectAllNoteAttachments(diagram);
-        existingLinks.removeAll(noteAttachments);
-        final Collection<Edge> lines = collectAllLines(diagram);
-        existingLinks.removeAll(lines);
+        // Remove NoteAttachments, Lines and already marked edges to remove
+        existingLinks.removeAll(collectAllNoteAttachments(diagram));
+        existingLinks.removeAll(collectAllLines(diagram));
+        existingLinks.removeAll(canonicalSynchronizerResult.getOrphanEdges());
+
+        // for each edge except noteAttachments and lines
         final Iterator<Edge> linksIterator = existingLinks.iterator();
         while (linksIterator.hasNext()) {
             final Edge nextDiagramLink = linksIterator.next();
@@ -352,26 +380,14 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
                         exist = exist && diagramLinkSrc == nextLinkDescriptor.getSource() && diagramLinkDst == nextLinkDescriptor.getDestination()
                                 && diagramLinkVisualID == nextLinkDescriptor.getVisualID();
                         if (exist && diagramLinkSrc instanceof DEdge) {
-                            Predicate<SiriusLinkDescriptor> existingEdgeSource = new Predicate<SiriusLinkDescriptor>() {
-
-                                @Override
-                                public boolean apply(SiriusLinkDescriptor input) {
-                                    return input.getModelElement().equals(diagramLinkSrc);
-                                }
-                            };
-
-                            exist = exist && Iterables.isEmpty(Iterables.filter(linkDescriptors, existingEdgeSource));
+                            exist = linkDescriptors.stream().noneMatch(input -> {
+                                return input.getModelElement().equals(diagramLinkSrc);
+                            });
                         }
                         if (exist && diagramLinkDst instanceof DEdge) {
-                            Predicate<SiriusLinkDescriptor> existingEdgeTarget = new Predicate<SiriusLinkDescriptor>() {
-
-                                @Override
-                                public boolean apply(SiriusLinkDescriptor input) {
-                                    return input.getModelElement().equals(diagramLinkDst);
-                                }
-                            };
-
-                            exist = exist && Iterables.isEmpty(Iterables.filter(linkDescriptors, existingEdgeTarget));
+                            exist = linkDescriptors.stream().noneMatch(input -> {
+                                return input.getModelElement().equals(diagramLinkDst);
+                            });
                         }
                         if (exist) {
                             linksIterator.remove();
@@ -381,11 +397,13 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
                 }
             }
         }
-        deleteViews(existingLinks);
-        return createConnections(linkDescriptors, domain2NotationMap, diagram);
+
+        canonicalSynchronizerResult.addOrphanEdges(existingLinks);
+        canonicalSynchronizerResult.addCreatedEdges(createConnections(linkDescriptors, domain2NotationMap, diagram));
+        return canonicalSynchronizerResult;
     }
 
-    private Collection<Edge> createConnections(final Collection<SiriusLinkDescriptor> linkDescriptors, final Map<EObject, View> domain2NotationMap, final Diagram diagram) {
+    private List<Edge> createConnections(final Collection<SiriusLinkDescriptor> linkDescriptors, final Map<EObject, View> domain2NotationMap, final Diagram diagram) {
 
         List<Edge> createdEdges = new ArrayList<Edge>();
 
@@ -398,6 +416,16 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
         return createdEdges;
     }
 
+    /**
+     * Collect all links in Sirius model and return description of these links and create map between existing Sirius
+     * elements and GMF View
+     * 
+     * @param view
+     *            The view associated to DDiagram Sirius
+     * @param domain2NotationMap
+     *            The map between Sirius elements and GMF views
+     * @return List of Sirius links summary (some information about source, target, type...)
+     */
     private Collection<SiriusLinkDescriptor> collectAllLinks(final View view, final Map<EObject, View> domain2NotationMap) {
         if (!DDiagramEditPart.MODEL_ID.equals(SiriusVisualIDRegistry.getModelID(view))) {
             return Collections.<SiriusLinkDescriptor> emptyList();
@@ -428,34 +456,11 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
                 domain2NotationMap.put(element, child);
             }
         }
-        for (Edge edge : Iterables.filter(((Diagram) view).getEdges(), Edge.class)) {
+        List<Edge> edges = ((Diagram) view).getEdges();
+        for (Edge edge : edges) {
             EObject element = edge.getElement();
             if (!domain2NotationMap.containsKey(element)) {
                 domain2NotationMap.put(element, edge);
-            }
-        }
-        return result;
-    }
-
-    private Collection<Edge> collectAllDanglingEdges(Diagram diagram) {
-        final Collection<Edge> result = new LinkedList<Edge>();
-        final Iterator<EObject> iterContents = diagram.eAllContents();
-        while (iterContents.hasNext()) {
-            final EObject next = iterContents.next();
-            final Iterator<EReference> iterReferences = next.eClass().getEAllReferences().iterator();
-            while (iterReferences.hasNext()) {
-                final EReference eReference = iterReferences.next();
-                if (eReference.getEType().equals(NotationPackage.eINSTANCE.getEdge()) && !eReference.isContainment() && eReference.isMany()) {
-                    @SuppressWarnings("unchecked")
-                    Collection<Edge> values = (Collection<Edge>) next.eGet(eReference);
-                    final Iterator<Edge> iterValues = values.iterator();
-                    while (iterValues.hasNext()) {
-                        final Edge edge = iterValues.next();
-                        if (edge.eContainer() == null) {
-                            result.add(edge);
-                        }
-                    }
-                }
             }
         }
         return result;
@@ -473,7 +478,7 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
         final Iterator<Edge> edges = diagram.getEdges().iterator();
         while (edges.hasNext()) {
             final Edge currentEdge = edges.next();
-            if ("NoteAttachment".equals(currentEdge.getType())) { //$NON-NLS-1$
+            if (ViewType.NOTEATTACHMENT.equals(currentEdge.getType())) {
                 result.add(currentEdge);
             }
         }

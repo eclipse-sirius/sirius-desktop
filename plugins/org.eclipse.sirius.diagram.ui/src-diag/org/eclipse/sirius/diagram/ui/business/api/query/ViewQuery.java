@@ -14,6 +14,7 @@
 package org.eclipse.sirius.diagram.ui.business.api.query;
 
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -38,15 +39,28 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferenceConverter;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.NodeStyle;
+import org.eclipse.sirius.diagram.business.api.query.ContainerMappingQuery;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramCorePreferences;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode3EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode4EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainer2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerName2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartment2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeList2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListName2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.NotationViewIDs;
@@ -325,6 +339,92 @@ public class ViewQuery {
             }
         }
         return result;
+    }
+
+    /**
+     * Tests whether the queried Node corresponds to a bordered node.
+     * 
+     * @return <code>true</code> if the queried View corresponds to a bordered node.
+     */
+    public boolean isBorderedNode() {
+        int type = SiriusVisualIDRegistry.getVisualID(this.view.getType());
+        boolean result = type == DNode2EditPart.VISUAL_ID || type == DNode4EditPart.VISUAL_ID;
+        return result;
+    }
+
+    /**
+     * Tests whether the queried Node corresponds to a container (list or not).
+     * 
+     * @return <code>true</code> if the queried View corresponds to a container node.
+     */
+    public boolean isContainer() {
+        int type = SiriusVisualIDRegistry.getVisualID(this.view.getType());
+        boolean result = type == DNodeContainer2EditPart.VISUAL_ID || type == DNodeContainerEditPart.VISUAL_ID || type == DNodeList2EditPart.VISUAL_ID || type == DNodeListEditPart.VISUAL_ID;
+        return result;
+    }
+
+    /**
+     * Return if this GMF node is associated to DNodeContainer Sirius diagram element with free form layout.
+     */
+    public boolean isFreeFormContainer() {
+        int type = SiriusVisualIDRegistry.getVisualID(this.view.getType());
+        return type == DNodeContainerEditPart.VISUAL_ID || type == DNodeContainer2EditPart.VISUAL_ID;
+    }
+
+    /**
+     * Return if this GMF node is compartment of node corresponding to a Sirius container free form.
+     */
+    public boolean isFreeFormCompartment() {
+        int type = SiriusVisualIDRegistry.getVisualID(this.view.getType());
+        return type == DNodeContainerViewNodeContainerCompartmentEditPart.VISUAL_ID //
+                || type == DNodeContainerViewNodeContainerCompartment2EditPart.VISUAL_ID;
+    }
+
+    /**
+     * Return if this GMF node have vertical/horizontal stack layout.
+     */
+    public boolean isRegionContainer() {
+        return this.view.getElement() instanceof DDiagramElement element //
+                && element.getDiagramElementMapping() instanceof ContainerMapping mapping //
+                && new ContainerMappingQuery(mapping).isRegionContainer();
+    }
+
+    /**
+     * Return if this GMF node is associated to DNode Sirius diagram element.
+     */
+    public boolean isNode() {
+        int type = SiriusVisualIDRegistry.getVisualID(this.view.getType());
+        return type == DNodeEditPart.VISUAL_ID //
+                || type == DNode2EditPart.VISUAL_ID //
+                || type == DNode3EditPart.VISUAL_ID //
+                || type == DNode4EditPart.VISUAL_ID;
+    }
+
+    /**
+     * Return if this GMF node is associated to label of DNode Sirius diagram element.
+     */
+    public boolean isNodeLabel() {
+        int type = SiriusVisualIDRegistry.getVisualID(this.view.getType());
+        return type == NotationViewIDs.DNODE_NAME_EDIT_PART_VISUAL_ID //
+                || type == NotationViewIDs.DNODE_NAME_2_EDIT_PART_VISUAL_ID //
+                || type == NotationViewIDs.DNODE_NAME_3_EDIT_PART_VISUAL_ID //
+                || type == NotationViewIDs.DNODE_NAME_4_EDIT_PART_VISUAL_ID;
+    }
+
+    /**
+     * Return the compartment of the GMF node container with "free form" layout.
+     * 
+     * @return the compartment or Optional.empty if view is not container or compartment not found
+     */
+    public Optional<View> getFreeFormContainerCompartment() {
+        if (this.isFreeFormContainer()) {
+            List<View> children = this.view.getChildren();
+            return children.stream() //
+                    .filter(child -> new ViewQuery(child).isFreeFormCompartment()) //
+                    .findAny();
+        } else {
+            return Optional.empty();
+        }
     }
 
     /**

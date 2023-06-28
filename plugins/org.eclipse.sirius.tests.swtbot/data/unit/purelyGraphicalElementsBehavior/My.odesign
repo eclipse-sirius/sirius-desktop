@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="PureGraphicalElementsCases" version="12.0.0.2017041100">
+  <ownedViewpoints name="PureGraphicalElementsCases" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithNodeDnDAndMappingChange']/@defaultLayer/@toolSections.0/@ownedTools[name='ClassFromPackageToDiagram']" name="DiagramWithNodeDnDAndMappingChange" domainClass="ecore::EPackage" enablePopupBars="true">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="Classes" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="ecore::EClass">
+          <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </nodeMappings>
+        <containerMappings name="Package" semanticCandidatesExpression="aql:self.eSubpackages" domainClass="ecore::EPackage" dropDescriptions="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithNodeDnDAndMappingChange']/@defaultLayer/@toolSections.0/@ownedTools[name='ClassFromDiagramToPackage']">
+          <subNodeMappings name="Classes" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="ecore::EClass">
+            <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="tools">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="ClassFromPackageToDiagram" forceRefresh="true" mappings="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithNodeDnDAndMappingChange']/@defaultLayer/@nodeMappings[name='Classes'] //@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithNodeDnDAndMappingChange']/@defaultLayer/@containerMappings[name='Package']/@subNodeMappings[name='Classes']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="eClassifiers"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="ClassFromDiagramToPackage" forceRefresh="true" mappings="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithNodeDnDAndMappingChange']/@defaultLayer/@nodeMappings[name='Classes'] //@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithNodeDnDAndMappingChange']/@defaultLayer/@containerMappings[name='Package']/@subNodeMappings[name='Classes']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="eClassifiers"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithNodeDnDAndSameMapping']/@defaultLayer/@toolSections.0/@ownedTools[name='ClassFromPackageToDiagram']" name="DiagramWithNodeDnDAndSameMapping" domainClass="ecore::EPackage" enablePopupBars="true">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="Classes" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="ecore::EClass">
+          <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="ReferencesWithElement" sourceMapping="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithNodeDnDAndSameMapping']/@defaultLayer/@nodeMappings[name='Classes']" targetMapping="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithNodeDnDAndSameMapping']/@defaultLayer/@nodeMappings[name='Classes']" targetFinderExpression="feature:eType" sourceFinderExpression="feature:eContainer" domainClass="ecore::EReference" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12" labelExpression="element">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="ReferencesWithRelation" sourceMapping="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithNodeDnDAndSameMapping']/@defaultLayer/@nodeMappings[name='Classes']" targetMapping="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithNodeDnDAndSameMapping']/@defaultLayer/@nodeMappings[name='Classes']" targetFinderExpression="aql:self.eReferences.eType">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12" labelExpression="relation">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="Package" semanticCandidatesExpression="aql:self.eSubpackages" domainClass="ecore::EPackage" dropDescriptions="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithNodeDnDAndSameMapping']/@defaultLayer/@toolSections.0/@ownedTools[name='ClassFromDiagramToPackage']" reusedNodeMappings="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithNodeDnDAndSameMapping']/@defaultLayer/@nodeMappings[name='Classes']">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="tools">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="ClassFromPackageToDiagram" forceRefresh="true" mappings="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithNodeDnDAndSameMapping']/@defaultLayer/@nodeMappings[name='Classes']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="eClassifiers"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="ClassFromDiagramToPackage" forceRefresh="true" mappings="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithNodeDnDAndSameMapping']/@defaultLayer/@nodeMappings[name='Classes']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="eClassifiers"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithFakeNodeDnD']/@defaultLayer/@toolSections.0/@ownedTools[name='ClassFromPackageToDiagram'] //@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithFakeNodeDnD']/@defaultLayer/@toolSections.0/@ownedTools[name='ClassFromModelToPackageOrDiagram']" name="DiagramWithFakeNodeDnD" domainClass="ecore::EPackage" enablePopupBars="true">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="Classes" semanticCandidatesExpression="aql:self.eClassifiers" createElements="false" domainClass="ecore::EClass">
+          <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </nodeMappings>
+        <containerMappings name="Package" semanticCandidatesExpression="aql:self.eSubpackages" domainClass="ecore::EPackage" dropDescriptions="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithFakeNodeDnD']/@defaultLayer/@toolSections.0/@ownedTools[name='ClassFromDiagramToPackage'] //@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithFakeNodeDnD']/@defaultLayer/@toolSections.0/@ownedTools[name='ClassFromModelToPackageOrDiagram']" reusedNodeMappings="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithFakeNodeDnD']/@defaultLayer/@nodeMappings[name='Classes']">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="tools">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="ClassFromPackageToDiagram" forceRefresh="true" mappings="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithFakeNodeDnD']/@defaultLayer/@nodeMappings[name='Classes']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="ClassFromDiagramToPackage" forceRefresh="true" mappings="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithFakeNodeDnD']/@defaultLayer/@nodeMappings[name='Classes']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:DeleteView"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="ClassFromModelToPackageOrDiagram" forceRefresh="true" mappings="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithFakeNodeDnD']/@defaultLayer/@nodeMappings[name='Classes']" dragSource="PROJECT_EXPLORER">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithFakeNodeDnD']/@defaultLayer/@nodeMappings[name='Classes']" containerViewExpression="var:newContainerView"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithContainerDnDAndMappingChange']/@defaultLayer/@toolSections.0/@ownedTools[name='PackageFromPackageToDiagram']" name="DiagramWithContainerDnDAndMappingChange" domainClass="ecore::EPackage" enablePopupBars="true">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <defaultLayer name="Default">
+        <containerMappings name="Package" semanticCandidatesExpression="aql:self.eSubpackages" domainClass="ecore::EPackage" dropDescriptions="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithContainerDnDAndMappingChange']/@defaultLayer/@toolSections.0/@ownedTools[name='PackageFromDiagramToPackage']">
+          <subContainerMappings name="SubPackages" semanticCandidatesExpression="aql:self.eSubpackages" domainClass="ecore::EPackage">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="tools">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="PackageFromPackageToDiagram" forceRefresh="true" mappings="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithContainerDnDAndMappingChange']/@defaultLayer/@containerMappings[name='Package'] //@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithContainerDnDAndMappingChange']/@defaultLayer/@containerMappings[name='Package']/@subContainerMappings[name='SubPackages']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="eSubpackages"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="PackageFromDiagramToPackage" forceRefresh="true" mappings="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithContainerDnDAndMappingChange']/@defaultLayer/@containerMappings[name='Package'] //@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithContainerDnDAndMappingChange']/@defaultLayer/@containerMappings[name='Package']/@subContainerMappings[name='SubPackages']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="eSubpackages"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithContainerDnDAndSameMapping']/@defaultLayer/@toolSections.0/@ownedTools[name='PackageFromPackageToDiagram']" name="DiagramWithContainerDnDAndSameMapping" domainClass="ecore::EPackage" enablePopupBars="true">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="Classes" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="ecore::EClass">
+          <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="References" sourceMapping="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithContainerDnDAndSameMapping']/@defaultLayer/@nodeMappings[name='Classes']" targetMapping="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithContainerDnDAndSameMapping']/@defaultLayer/@nodeMappings[name='Classes']" targetFinderExpression="feature:eType" sourceFinderExpression="feature:eContainer" domainClass="ecore::EReference" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12" labelExpression="element">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Edge2Edge" sourceMapping="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithContainerDnDAndSameMapping']/@defaultLayer/@edgeMappings[name='References']" targetMapping="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithContainerDnDAndSameMapping']/@defaultLayer/@edgeMappings[name='References']" targetFinderExpression="aql:self.eType.oclAsType(ecore::EClass).eReferences">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Edge3" sourceMapping="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithContainerDnDAndSameMapping']/@defaultLayer/@edgeMappings[name='Edge2Edge']" targetMapping="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithContainerDnDAndSameMapping']/@defaultLayer/@edgeMappings[name='Edge2Edge']" targetFinderExpression="aql:self.eType.oclAsType(ecore::EClass).eReferences">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12" labelExpression="aql:'middle'">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="Package" semanticCandidatesExpression="aql:self.eSubpackages" domainClass="ecore::EPackage" dropDescriptions="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithContainerDnDAndSameMapping']/@defaultLayer/@toolSections.0/@ownedTools[name='PackageFromDiagramToPackage']" reusedNodeMappings="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithContainerDnDAndSameMapping']/@defaultLayer/@nodeMappings[name='Classes']" reusedContainerMappings="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithContainerDnDAndSameMapping']/@defaultLayer/@containerMappings[name='Package']">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="tools">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="PackageFromPackageToDiagram" forceRefresh="true" mappings="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithContainerDnDAndSameMapping']/@defaultLayer/@containerMappings[name='Package']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="eSubpackages"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="PackageFromDiagramToPackage" forceRefresh="true" mappings="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithContainerDnDAndSameMapping']/@defaultLayer/@containerMappings[name='Package']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="eSubpackages"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithUnsynchronizedHierarchy']/@defaultLayer/@toolSections.0/@ownedTools[name='PackageFromPackageToDiagram'] //@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithUnsynchronizedHierarchy']/@defaultLayer/@toolSections.0/@ownedTools[name='PackageFromModelToPackageOrDiagram']" name="DiagramWithUnsynchronizedHierarchy" domainClass="ecore::EPackage" enablePopupBars="true">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="ClassesAA" semanticCandidatesExpression="aql:self.eAllContents()" createElements="false" domainClass="ecore::EClass">
+          <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </nodeMappings>
+        <containerMappings name="PackageAA" deletionDescription="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithUnsynchronizedHierarchy']/@defaultLayer/@toolSections.0/@ownedTools[name='DeletePackageAndRecreateClass']" semanticCandidatesExpression="aql:self.eAllContents()" createElements="false" domainClass="ecore::EPackage" dropDescriptions="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithUnsynchronizedHierarchy']/@defaultLayer/@toolSections.0/@ownedTools[name='PackageFromDiagramToPackage'] //@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithUnsynchronizedHierarchy']/@defaultLayer/@toolSections.0/@ownedTools[name='PackageFromModelToPackageOrDiagram'] //@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithUnsynchronizedHierarchy']/@defaultLayer/@toolSections.0/@ownedTools[name='ClassFromModelToPackageOrDiagram']" reusedNodeMappings="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithUnsynchronizedHierarchy']/@defaultLayer/@nodeMappings[name='ClassesAA']" reusedContainerMappings="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithUnsynchronizedHierarchy']/@defaultLayer/@containerMappings[name='PackageAA']">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="tools">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="PackageFromPackageToDiagram" forceRefresh="true" mappings="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithUnsynchronizedHierarchy']/@defaultLayer/@containerMappings[name='PackageAA']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="eSubpackages"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="PackageFromDiagramToPackage" forceRefresh="true" mappings="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithUnsynchronizedHierarchy']/@defaultLayer/@containerMappings[name='PackageAA']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="eSubpackages"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="ClassFromModelToPackageOrDiagram" forceRefresh="true" mappings="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithUnsynchronizedHierarchy']/@defaultLayer/@nodeMappings[name='ClassesAA']" dragSource="PROJECT_EXPLORER">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithUnsynchronizedHierarchy']/@defaultLayer/@nodeMappings[name='ClassesAA']" containerViewExpression="var:newContainerView"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="PackageFromModelToPackageOrDiagram" forceRefresh="true" mappings="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithUnsynchronizedHierarchy']/@defaultLayer/@containerMappings[name='PackageAA']" dragSource="PROJECT_EXPLORER">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithUnsynchronizedHierarchy']/@defaultLayer/@containerMappings[name='PackageAA']" containerViewExpression="var:newContainerView" variableName="containerCreatedView">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:newContainerView.ownedDiagramElements->select( p | p.name.equalsIgnoreCase('ClassA'))->size() > 0">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:newContainerView.ownedDiagramElements->at(1).target">
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithUnsynchronizedHierarchy']/@defaultLayer/@nodeMappings[name='ClassesAA']" containerViewExpression="var:containerCreatedView" variableName="classCreatedView"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:newContainerView.ownedDiagramElements->at(1)">
+                      <subModelOperations xsi:type="tool_1:DeleteView"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="DeletePackageAndRecreateClass" forceRefresh="true">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:containerView">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:elementView.ownedDiagramElements->select( p | p.name.equalsIgnoreCase('ClassA'))->size() > 0">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.ownedDiagramElements->at(1).target">
+                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithUnsynchronizedHierarchy']/@defaultLayer/@nodeMappings[name='ClassesAA']" containerViewExpression="var:containerView" variableName="classCreatedView"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView">
+                    <subModelOperations xsi:type="tool_1:DeleteView"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithNodeAndBorderNodeDnDAndSameMapping']/@defaultLayer/@toolSections.0/@ownedTools[name='ClassFromPackageToDiagram']" name="DiagramWithNodeAndBorderNodeDnDAndSameMapping" domainClass="ecore::EPackage" enablePopupBars="true">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="Classes" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="ecore::EClass">
+          <borderedNodeMappings name="Self" semanticCandidatesExpression="var:self" domainClass="ecore::EClass">
+            <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="" hideLabelByDefault="true" sizeComputationExpression="1">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="ReferencesWithElement" sourceMapping="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithNodeAndBorderNodeDnDAndSameMapping']/@defaultLayer/@nodeMappings[name='Classes']/@borderedNodeMappings[name='Self']" targetMapping="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithNodeAndBorderNodeDnDAndSameMapping']/@defaultLayer/@nodeMappings[name='Classes']/@borderedNodeMappings[name='Self']" targetFinderExpression="feature:eType" sourceFinderExpression="feature:eContainer" domainClass="ecore::EReference" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12" labelExpression="element">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="ReferencesWithRelation" sourceMapping="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithNodeAndBorderNodeDnDAndSameMapping']/@defaultLayer/@nodeMappings[name='Classes']" targetMapping="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithNodeAndBorderNodeDnDAndSameMapping']/@defaultLayer/@nodeMappings[name='Classes']" targetFinderExpression="aql:self.eReferences.eType">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12" labelExpression="relation">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="Package" semanticCandidatesExpression="aql:self.eSubpackages" domainClass="ecore::EPackage" dropDescriptions="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithNodeAndBorderNodeDnDAndSameMapping']/@defaultLayer/@toolSections.0/@ownedTools[name='ClassFromDiagramToPackage']" reusedNodeMappings="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithNodeAndBorderNodeDnDAndSameMapping']/@defaultLayer/@nodeMappings[name='Classes']">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="tools">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="ClassFromPackageToDiagram" forceRefresh="true" mappings="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithNodeAndBorderNodeDnDAndSameMapping']/@defaultLayer/@nodeMappings[name='Classes']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="eClassifiers"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="ClassFromDiagramToPackage" forceRefresh="true" mappings="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithNodeAndBorderNodeDnDAndSameMapping']/@defaultLayer/@nodeMappings[name='Classes']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="eClassifiers"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithNodeAndBorderNodeDnDAndMappingChange']/@defaultLayer/@toolSections.0/@ownedTools[name='ClassFromPackageToDiagram']" name="DiagramWithNodeAndBorderNodeDnDAndMappingChange" domainClass="ecore::EPackage" enablePopupBars="true">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="Classes" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="ecore::EClass">
+          <borderedNodeMappings name="Self" semanticCandidatesExpression="var:self" domainClass="ecore::EClass">
+            <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="" hideLabelByDefault="true" sizeComputationExpression="1">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </nodeMappings>
+        <containerMappings name="Package" semanticCandidatesExpression="aql:self.eSubpackages" domainClass="ecore::EPackage" dropDescriptions="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithNodeAndBorderNodeDnDAndMappingChange']/@defaultLayer/@toolSections.0/@ownedTools[name='ClassFromDiagramToPackage']">
+          <subNodeMappings name="Classes" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="ecore::EClass">
+            <borderedNodeMappings name="Self" semanticCandidatesExpression="var:self" domainClass="ecore::EClass">
+              <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="" hideLabelByDefault="true" sizeComputationExpression="1">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+              </style>
+            </borderedNodeMappings>
+            <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="tools">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="ClassFromPackageToDiagram" forceRefresh="true" mappings="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithNodeAndBorderNodeDnDAndMappingChange']/@defaultLayer/@nodeMappings[name='Classes'] //@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithNodeAndBorderNodeDnDAndMappingChange']/@defaultLayer/@containerMappings[name='Package']/@subNodeMappings[name='Classes']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="eClassifiers"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="ClassFromDiagramToPackage" forceRefresh="true" mappings="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithNodeAndBorderNodeDnDAndMappingChange']/@defaultLayer/@nodeMappings[name='Classes'] //@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithNodeAndBorderNodeDnDAndMappingChange']/@defaultLayer/@containerMappings[name='Package']/@subNodeMappings[name='Classes']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="eClassifiers"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagramWithReconnect" domainClass="ecore::EPackage" enablePopupBars="true">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <defaultLayer name="Default">
+        <edgeMappings name="ReferencesWithElement" sourceMapping="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithReconnect']/@defaultLayer/@containerMappings[name='Package']/@borderedNodeMappings[name='Classes']" targetMapping="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithReconnect']/@defaultLayer/@containerMappings[name='Package']/@borderedNodeMappings[name='Classes']" targetFinderExpression="feature:eType" sourceFinderExpression="feature:eContainer" domainClass="ecore::EReference" useDomainElement="true" reconnections="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithReconnect']/@defaultLayer/@toolSections.0/@ownedTools[name='ReconnectEdgeTarget']">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12" labelExpression="elementMapping">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="Package" semanticCandidatesExpression="aql:self.eSubpackages" domainClass="ecore::EPackage" dropDescriptions="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithReconnect']/@defaultLayer/@toolSections.0/@ownedTools[name='ClassFromPackage']">
+          <borderedNodeMappings name="Classes" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="ecore::EClass">
+            <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" sizeComputationExpression="1">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="tools">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="ClassFromPackage" forceRefresh="true" mappings="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithReconnect']/@defaultLayer/@containerMappings[name='Package']/@borderedNodeMappings[name='Classes']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="eClassifiers"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="ReconnectEdgeTarget" forceRefresh="true">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="eType" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithCompartmentDnDAndSameMapping']/@defaultLayer/@toolSections.0/@ownedTools[name='PackageFromPackageToDiagram']" name="DiagramWithCompartmentDnDAndSameMapping" domainClass="ecore::EPackage" enablePopupBars="true">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <defaultLayer name="Default">
+        <containerMappings name="Package" semanticCandidatesExpression="aql:self.eSubpackages" domainClass="ecore::EPackage" dropDescriptions="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithCompartmentDnDAndSameMapping']/@defaultLayer/@toolSections.0/@ownedTools[name='PackageFromDiagramToPackage']" reusedContainerMappings="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithCompartmentDnDAndSameMapping']/@defaultLayer/@containerMappings[name='Package'] //@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithCompartmentDnDAndSameMapping']/@defaultLayer/@containerMappings[name='Classes']" childrenPresentation="VerticalStack">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="Classes" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="ecore::EClass" childrenPresentation="List">
+          <subNodeMappings name="Attributes" semanticCandidatesExpression="feature:eAttributes" domainClass="ecore::EAttribute">
+            <style xsi:type="style:SquareDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="tools">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="PackageFromPackageToDiagram" forceRefresh="true" mappings="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithCompartmentDnDAndSameMapping']/@defaultLayer/@containerMappings[name='Package']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="eSubpackages"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="PackageFromDiagramToPackage" forceRefresh="true" mappings="//@ownedViewpoints[name='PureGraphicalElementsCases']/@ownedRepresentations[name='DiagramWithCompartmentDnDAndSameMapping']/@defaultLayer/@containerMappings[name='Package']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="eSubpackages"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

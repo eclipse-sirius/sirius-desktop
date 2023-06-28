@@ -33,7 +33,6 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint;
 import org.eclipse.gmf.runtime.diagram.core.providers.IViewProvider;
 import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
@@ -135,16 +134,16 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
      * 
      * @param view
      *            the view to refresh.
-     * @return the create {@link View}s
+     * @param canonicalSynchronizerResult
+     *            List of created {@link View}s and detected orphan {@link View}s during the canonical refresh of the
+     *            diagram.
+     * @return the {@link CanonicalSynchronizerResult} for convenience
      */
-    protected Set<View> refreshSemantic(final View view) {
-        final Set<View> createdViews = new LinkedHashSet<>();
-        createdViews.addAll(refreshSemanticChildren(view, ViewUtil.resolveSemanticElement(view)));
+    protected void refreshSemantic(final View view, CanonicalSynchronizerResult canonicalSynchronizerResult) {
+        refreshSemanticChildren(view, ViewUtil.resolveSemanticElement(view), canonicalSynchronizerResult);
         for (View childView : Iterables.filter(view.getChildren(), View.class)) {
-            createdViews.addAll(refreshSemantic(childView));
+            refreshSemantic(childView, canonicalSynchronizerResult);
         }
-
-        return createdViews;
     }
 
     /**
@@ -154,14 +153,17 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
      *            the specified {@link View}
      * @param semanticView
      *            the semantic element of the specified {@link View}
-     * @return the created {@link View}s
+     * @param canonicalSynchronizerResult
+     *            List of created {@link View}s and detected orphan {@link View}s during the canonical refresh of the
+     *            diagram.
+     * @return the {@link CanonicalSynchronizerResult} for convenience
      */
-    protected Set<View> refreshSemanticChildren(final View gmfView, final EObject semanticView) {
+    protected void refreshSemanticChildren(final View gmfView, final EObject semanticView, CanonicalSynchronizerResult canonicalSynchronizerResult) {
 
         // Don't try to refresh children if the semantic element
         // cannot be resolved.
         if (semanticView == null) {
-            return Collections.emptySet();
+            return;
         }
 
         // isPartOfRegionsContainer is true for regions container and all its
@@ -179,25 +181,27 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
             }
         }
 
-        //
         // current views
         final List<View> viewChildren = getViewChildren(gmfView);
         final List<SiriusNodeDescriptor> semanticChildren = new ArrayList<SiriusNodeDescriptor>(SiriusDiagramUpdater.getSemanticChildren(gmfView));
 
-        List<View> orphaned = cleanCanonicalSemanticChildren(gmfView, viewChildren, semanticChildren);
+        List<View> orphan = cleanCanonicalSemanticChildren(gmfView, viewChildren, semanticChildren);
 
-        if (!orphaned.isEmpty()) {
+        if (!orphan.isEmpty()) {
+            canonicalSynchronizerResult.addOrphanNodes(orphan);
+
             // Some children views have been deleted, this container must be
             // layouted if it is a regions container or a sub part of a regions
             // container
             setRegionsContainerAsImpacted(gmfView, isRegionsContainer, isPartOfRegionsContainer);
         }
-        deleteViews(orphaned);
+
 
         // create a view for each remaining semantic element.
         Set<View> createdViews = createViews(semanticChildren, gmfView.getType(), gmfView);
 
         if (!createdViews.isEmpty()) {
+            canonicalSynchronizerResult.addCreatedNodes(createdViews);
             // There is at least one new child, this container must be
             // layouted if it is a regions container or a sub part of a regions
             // container.
@@ -208,8 +212,6 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
         if (semanticView instanceof DNodeList || isPartOfRegionsContainer) {
             refreshSemanticChildrenOrdering(gmfView);
         }
-
-        return createdViews;
     }
 
     protected boolean isSnapToGrid() {
@@ -875,7 +877,7 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
         View viewChild;
         EObject semanticChild;
         Iterator<View> viewChildrenIT = viewChildren.iterator();
-        List<View> orphaned = new ArrayList<View>();
+        List<View> orphan = new ArrayList<View>();
         Map<EObject, View> viewToSemanticMap = new HashMap<EObject, View>();
         Map<EObject, SiriusNodeDescriptor> semanticToObjectInMap = new HashMap<EObject, SiriusNodeDescriptor>();
         final Set<EObject> realSemanticChilren = new HashSet<EObject>();
@@ -890,65 +892,18 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
                 semanticChildren.remove(semanticToObjectInMap.get(semanticChild));
                 viewToSemanticMap.put(semanticChild, viewChild);
             } else {
-                orphaned.add(viewChild);
+                orphan.add(viewChild);
             }
 
             View viewInMap = viewToSemanticMap.get(semanticChild);
             if (viewInMap != null && !viewChild.equals(viewInMap)) {
                 if (viewInMap.isMutable()) {
-                    orphaned.remove(viewChild);
-                    orphaned.add(viewInMap);
+                    orphan.remove(viewChild);
+                    orphan.add(viewInMap);
                     viewToSemanticMap.put(semanticChild, viewChild);
                 }
             }
         }
-        return orphaned;
+        return orphan;
     }
-
-    /**
-     * Deletes a list of views. The views will be deleted <tt>if</tt> their semantic element has also been deleted.
-     * 
-     * @param views
-     *            the {@link View}s to delete
-     * @return <tt>true</tt> if the host editpart should be refreshed; either one one of the supplied views was deleted
-     *         or has been reparented.
-     */
-    protected boolean deleteViews(Collection<? extends View> views) {
-        for (View view : views) {
-            // Before removing this view, we must identify incoming or outgoing
-            // edges of this view or of one of its children to delete them just
-            // after. Indeed, an Edge without source (or target) must not exist.
-            List<Edge> edgesToDelete = getIncomingOutgoingEdges(view);
-
-            // org.eclipse.gmf.runtime.diagram.core.util.ViewUtil.destroy(v) is
-            // no more needed, simply remove the view
-            // from its container, DanglinRefRemovalTrigger will complete
-            // the work. This prevents GMF to install its
-            // CrossReferencerAdapter
-
-            EcoreUtil.remove(view);
-            // Then remove incoming or outgoing edges (with the same rules for incoming or outgoing of thess edges
-            deleteViews(edgesToDelete);
-        }
-        return !views.isEmpty();
-    }
-
-    /**
-     * Get all incoming and outgoing edges of this <code>view</code> or of one of its children (except NoteAttachment).
-     * 
-     * @param view
-     *            the concern view
-     * @return list of edges
-     */
-    private List<Edge> getIncomingOutgoingEdges(View view) {
-        List<Edge> edgesToDelete = new ArrayList<>();
-        Iterables.addAll(edgesToDelete, Iterables.filter(view.getSourceEdges(), Edge.class));
-        Iterables.addAll(edgesToDelete, Iterables.filter(view.getTargetEdges(), Edge.class));
-
-        for (View child : getViewChildren(view)) {
-            edgesToDelete.addAll(getIncomingOutgoingEdges(child));
-        }
-        return edgesToDelete;
-    }
-
 }

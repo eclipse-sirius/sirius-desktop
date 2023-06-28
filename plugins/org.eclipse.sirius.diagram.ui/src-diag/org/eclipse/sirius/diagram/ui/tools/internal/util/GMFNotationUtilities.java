@@ -26,16 +26,9 @@ import org.eclipse.gmf.runtime.notation.IdentityAnchor;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationFactory;
 import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
-import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 import org.eclipse.sirius.diagram.ui.business.api.query.EdgeQuery;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode2EditPart;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode3EditPart;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode4EditPart;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.NotationViewIDs;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
-import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
@@ -411,27 +404,5 @@ public final class GMFNotationUtilities {
             }
             GMFNotationUtilities.setBendpoints(edge, brother);
         }
-    }
-
-    /**
-     * Return if this GMF view is associated to DNode Sirius diagram element.
-     */
-    public static boolean viewIsNode(View view) {
-        int type = SiriusVisualIDRegistry.getVisualID(view.getType());
-        return type == DNodeEditPart.VISUAL_ID //
-                || type == DNode2EditPart.VISUAL_ID //
-                || type == DNode3EditPart.VISUAL_ID //
-                || type == DNode4EditPart.VISUAL_ID;
-    }
-
-    /**
-     * Return if this GMF view is associated to label of DNode Sirius diagram element.
-     */
-    public static boolean viewIsLabel(View view) {
-        int type = SiriusVisualIDRegistry.getVisualID(view.getType());
-        return type == NotationViewIDs.DNODE_NAME_EDIT_PART_VISUAL_ID //
-                || type == NotationViewIDs.DNODE_NAME_2_EDIT_PART_VISUAL_ID //
-                || type == NotationViewIDs.DNODE_NAME_3_EDIT_PART_VISUAL_ID //
-                || type == NotationViewIDs.DNODE_NAME_4_EDIT_PART_VISUAL_ID;
     }
 }
