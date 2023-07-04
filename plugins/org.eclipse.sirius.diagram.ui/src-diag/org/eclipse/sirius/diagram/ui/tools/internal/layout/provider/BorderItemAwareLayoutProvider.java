@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -1578,22 +1578,26 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
     @SuppressWarnings("unchecked")
     private int getRightSizeXCoordinateOfRightMostChild(final IGraphicalEditPart part, final double scale, final Dimension moveDelta) {
         int result = 0;
-        final Collection<IGraphicalEditPart> children = Collections2.filter(part.getChildren(), Predicates.and(Predicates.instanceOf(IGraphicalEditPart.class),
-                Predicates.not(Predicates.instanceOf(AbstractDiagramBorderNodeEditPart.class)), Predicates.not(Predicates.instanceOf(AbstractDiagramNameEditPart.class))));
-        for (IGraphicalEditPart child : children) {
+        Collection<IGraphicalEditPart> children = Collections2.filter(part.getChildren(), Predicates.and(Predicates.instanceOf(IGraphicalEditPart.class),
+                Predicates.not(Predicates.instanceOf(AbstractDiagramBorderNodeEditPart.class)), Predicates.not(Predicates.instanceOf(AbstractDiagramNameEditPart.class))))
+                .stream()
+                .filter(IGraphicalEditPart.class::isInstance)
+                .map(IGraphicalEditPart.class::cast)
+                .toList();
+        for (var child : children) {
             if (child instanceof ShapeCompartmentEditPart) {
                 // Only delegates to the grandchildren
-                final Collection<IGraphicalEditPart> grandchildren = Collections2.filter(child.getChildren(), Predicates.and(Predicates.instanceOf(IGraphicalEditPart.class),
+                var grandchildren = Collections2.filter(child.getChildren(), Predicates.and(Predicates.instanceOf(IGraphicalEditPart.class),
                         Predicates.not(Predicates.instanceOf(AbstractDiagramBorderNodeEditPart.class)), Predicates.not(Predicates.instanceOf(AbstractDiagramNameEditPart.class))));
-                for (IGraphicalEditPart grandchild : grandchildren) {
-                    final Rectangle bounds = getBounds(grandchild, scale, moveDelta, true, false);
+                for (var grandchild : grandchildren) {
+                    final Rectangle bounds = getBounds((IGraphicalEditPart) grandchild, scale, moveDelta, true, false);
                     final int rightSizeXCoordinate = bounds.x + bounds.width;
                     if (result < rightSizeXCoordinate) {
                         result = rightSizeXCoordinate;
                     }
                 }
             } else {
-                final Rectangle bounds = getBounds(child, scale, moveDelta, true, false);
+                final Rectangle bounds = getBounds((IGraphicalEditPart) child, scale, moveDelta, true, false);
                 final int rightSizeXCoordinate = bounds.x + bounds.width;
                 if (result < rightSizeXCoordinate) {
                     result = rightSizeXCoordinate;
@@ -1614,25 +1618,28 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      *            The parent move delta if it is know, null otherwise
      * @return the y axis coordinate of the bottom size of the lowest child
      */
-    @SuppressWarnings("unchecked")
     private int getBottomSizeYCoordinateOfLowestChild(final IGraphicalEditPart part, final double scale, final Dimension moveDelta) {
         int result = 0;
-        final Collection<IGraphicalEditPart> children = Collections2.filter(part.getChildren(), Predicates.and(Predicates.instanceOf(IGraphicalEditPart.class),
-                Predicates.not(Predicates.instanceOf(AbstractDiagramBorderNodeEditPart.class)), Predicates.not(Predicates.instanceOf(AbstractDiagramNameEditPart.class))));
-        for (IGraphicalEditPart child : children) {
+        Collection<IGraphicalEditPart> children = Collections2.filter(part.getChildren(), Predicates.and(Predicates.instanceOf(IGraphicalEditPart.class),
+                Predicates.not(Predicates.instanceOf(AbstractDiagramBorderNodeEditPart.class)), Predicates.not(Predicates.instanceOf(AbstractDiagramNameEditPart.class))))
+                .stream()
+                .filter(IGraphicalEditPart.class::isInstance)
+                .map(IGraphicalEditPart.class::cast)
+                .toList();
+        for (var child : children) {
             if (child instanceof ShapeCompartmentEditPart) {
                 // Only delegates to the grandchildren
-                final Collection<IGraphicalEditPart> grandchildren = Collections2.filter(child.getChildren(), Predicates.and(Predicates.instanceOf(IGraphicalEditPart.class),
+                var grandchildren = Collections2.filter(child.getChildren(), Predicates.and(Predicates.instanceOf(IGraphicalEditPart.class),
                         Predicates.not(Predicates.instanceOf(AbstractDiagramBorderNodeEditPart.class)), Predicates.not(Predicates.instanceOf(AbstractDiagramNameEditPart.class))));
-                for (IGraphicalEditPart grandchild : grandchildren) {
-                    final Rectangle bounds = getBounds(grandchild, scale, moveDelta, false, true);
+                for (var grandchild : grandchildren) {
+                    final Rectangle bounds = getBounds((IGraphicalEditPart) grandchild, scale, moveDelta, false, true);
                     final int bottomSizeYCoordinate = bounds.y + bounds.height;
                     if (result < bottomSizeYCoordinate) {
                         result = bottomSizeYCoordinate;
                     }
                 }
             } else {
-                final Rectangle bounds = getBounds(child);
+                final Rectangle bounds = getBounds((IGraphicalEditPart) child);
                 final int bottomSizeYCoordinate = bounds.y + bounds.height;
                 if (result < bottomSizeYCoordinate) {
                     result = bottomSizeYCoordinate;

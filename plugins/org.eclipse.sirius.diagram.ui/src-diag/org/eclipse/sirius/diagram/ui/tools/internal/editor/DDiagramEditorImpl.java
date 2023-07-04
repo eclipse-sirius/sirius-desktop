@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2022 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -1090,9 +1089,9 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     public void setFocus() {
         if (getDiagram() != null) {
             super.setFocus();
-            final Iterator<EditPart> iterParts = getDiagramGraphicalViewer().getRootEditPart().getChildren().iterator();
+            var iterParts = getDiagramGraphicalViewer().getRootEditPart().getChildren().iterator();
             while (iterParts.hasNext()) {
-                final EditPart editPart = iterParts.next();
+                final EditPart editPart = (EditPart) iterParts.next();
                 if (editPart.isActive() && editPart instanceof AbstractDDiagramEditPart) {
                     Optional<DSemanticDiagram> optionalSemanticElement = getDSemanticDiagram((GraphicalEditPart) editPart);
                     if (optionalSemanticElement.isPresent() && isSemanticDiagramOK(optionalSemanticElement.get())) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -74,10 +74,10 @@ public class DiagramEditorBrowser {
 
             @Override
             protected Iterator<? extends IGraphicalEditPart> getChildren(final Object object) {
-                if (object instanceof IGraphicalEditPart) {
-                    return ((IGraphicalEditPart) object).getChildren().iterator();
+                if (object instanceof IGraphicalEditPart gep) {
+                    return gep.getChildren().stream().filter(IGraphicalEditPart.class::isInstance).map(IGraphicalEditPart.class::cast).iterator();
                 }
-                return Collections.EMPTY_LIST.iterator();
+                return Collections.emptyIterator();
             }
         };
         return it;

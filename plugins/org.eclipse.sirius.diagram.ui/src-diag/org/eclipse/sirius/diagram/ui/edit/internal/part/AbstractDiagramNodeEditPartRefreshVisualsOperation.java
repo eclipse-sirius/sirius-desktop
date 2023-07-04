@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,13 +12,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.edit.internal.part;
 
-import java.util.Iterator;
-
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
@@ -148,12 +145,12 @@ public class AbstractDiagramNodeEditPartRefreshVisualsOperation {
     }
 
     private Dimension getWorkspaceImageFigureSize(final Dimension d) {
-        final Iterator<EditPart> it = editPart.getChildren().iterator();
+        var it = editPart.getChildren().iterator();
         while (it.hasNext()) {
-            final EditPart child = it.next();
-            if (child instanceof ShapeNodeEditPart && ((ShapeNodeEditPart) child).getContentPane() instanceof IWorkspaceImageFigure) {
-                ((ShapeNodeEditPart) child).getContentPane().setSize(d);
-                return ((ShapeNodeEditPart) child).getContentPane().getSize();
+            var child = it.next();
+            if (child instanceof ShapeNodeEditPart shape && shape.getContentPane() instanceof IWorkspaceImageFigure) {
+                shape.getContentPane().setSize(d);
+                return shape.getContentPane().getSize();
             }
         }
         return d;

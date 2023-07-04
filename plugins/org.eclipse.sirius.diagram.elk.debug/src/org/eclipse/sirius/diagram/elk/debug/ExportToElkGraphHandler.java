@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2021 Obeo
+ * Copyright (c) 2019, 2023 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,7 +13,6 @@
 package org.eclipse.sirius.diagram.elk.debug;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -131,11 +130,11 @@ public class ExportToElkGraphHandler extends AbstractHandler {
         hints.add(LayoutType.DEFAULT);
         hints.add(diagramEditPart);
         IAdaptable layoutHint = new ObjectAdapter(hints);
-        List<IGraphicalEditPart> editparts = diagramEditPart.getChildren();
+        var editparts = diagramEditPart.getChildren();
         List<LayoutNode> nodes = new ArrayList<>(editparts.size());
-        Iterator<IGraphicalEditPart> li = editparts.iterator();
+        var li = editparts.iterator();
         while (li.hasNext()) {
-            IGraphicalEditPart ep = li.next();
+            IGraphicalEditPart ep = (IGraphicalEditPart) li.next();
             View view = ep.getNotationView();
             if (ep.isActive() && view != null && view instanceof Node && ep != layoutHint.getAdapter(EditPart.class)) {
                 Rectangle bounds = ep.getFigure().getBounds();

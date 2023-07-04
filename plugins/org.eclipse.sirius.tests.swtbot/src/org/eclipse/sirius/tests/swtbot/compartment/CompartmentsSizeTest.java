@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2021 Obeo.
+ * Copyright (c) 2018, 2023 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -250,11 +251,10 @@ public class CompartmentsSizeTest extends AbstractCompartmentTest {
             DNodeContainer ddec = (DNodeContainer) ddiagramElement;
             DNodeContainerExperimentalQuery query = new DNodeContainerExperimentalQuery(ddec);
             if (query.isRegionContainer()) {
-                List<AbstractDiagramElementContainerEditPart> children = ((AbstractDNodeContainerCompartmentEditPart) ((AbstractDiagramContainerEditPart) part.part()).getChildren().get(1))
-                        .getChildren();
+                var children = ((AbstractDNodeContainerCompartmentEditPart) ((AbstractDiagramContainerEditPart) part.part()).getChildren().get(1)).getChildren();
                 Rectangle regionsContainerBounds = ((AbstractDiagramContainerEditPart) part.part()).getFigure().getBounds();
-                Rectangle lastRegionBounds = children.get(children.size() - 1).getFigure().getBounds().getCopy();
-                children.get(children.size() - 1).getFigure().translateToAbsolute(lastRegionBounds);
+                Rectangle lastRegionBounds = ((GraphicalEditPart) children.get(children.size() - 1)).getFigure().getBounds().getCopy();
+                ((GraphicalEditPart) children.get(children.size() - 1)).getFigure().translateToAbsolute(lastRegionBounds);
                 int approximativeBorderWidth = 6;
                 if (query.isHorizontaltackContainer()) {
                     // Check that the height of a region is the same of the regions container (with the delta of the
