@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -63,8 +63,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 
 import com.google.common.base.Function;
-import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
 import com.google.common.collect.ImmutableSortedSet;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -159,19 +157,15 @@ public class EditPartQuery {
      *            The side ({@link org.eclipse.draw2d.PositionConstants}) where the children must be
      * @return the list of {@link BorderItemEditPart}s that are on the expected side.
      */
-    @SuppressWarnings("unchecked")
     public List<IBorderItemEditPart> getBorderNodeEditParts(final int expectedSide) {
         if (part instanceof IBorderedShapeEditPart) {
-            Iterable<IBorderItemEditPart> bordersItemPart = Iterables.filter(part.getChildren(), Predicates.and(Predicates.instanceOf(IBorderItemEditPart.class), new Predicate<IBorderItemEditPart>() {
-                @Override
-                public boolean apply(IBorderItemEditPart input) {
-                    int currentSide = input.getBorderItemLocator().getCurrentSideOfParent();
-                    return expectedSide == currentSide;
-                }
-            }));
-            return Lists.newArrayList(bordersItemPart);
+            return part.getChildren().stream()
+                    .filter(child -> child instanceof IBorderItemEditPart borderItem &&  borderItem.getBorderItemLocator().getCurrentSideOfParent() == expectedSide)
+                    .filter(IBorderItemEditPart.class::isInstance)
+                    .map(IBorderItemEditPart.class::cast)
+                    .toList();
         }
-        return new ArrayList<IBorderItemEditPart>();
+        return new ArrayList<>();
     }
 
     /**

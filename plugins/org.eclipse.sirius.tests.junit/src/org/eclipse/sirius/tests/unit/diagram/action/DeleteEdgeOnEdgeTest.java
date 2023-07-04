@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.gef.EditPart;
+import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.business.api.helper.task.DeleteEObjectTask;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
@@ -650,8 +651,8 @@ public class DeleteEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
     }
 
     private IGraphicalEditPart getEdgeNameEditPart(final IGraphicalEditPart parent) {
-        List<EditPart> childrenEditParts = parent.getChildren();
-        for (final EditPart child : childrenEditParts) {
+        var childrenEditParts = parent.getChildren();
+        for (var child : childrenEditParts) {
             if (child instanceof DEdgeNameEditPart)
                 return (IGraphicalEditPart) child;
         }

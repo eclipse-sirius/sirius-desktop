@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2021, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
@@ -108,9 +109,9 @@ public class DeleteElementsLinkedToNoteTest extends AbstractSequenceSiriusDiagra
         Operand secondOperand = combinedFragment.getOperands().get(1);
 
         IGraphicalEditPart cfEditPart = getEditPart((DDiagramElement) combinedFragment.getNotationView().getElement());
-        List<IGraphicalEditPart> operandsEditPart = ((IGraphicalEditPart) cfEditPart.getChildren().get(1)).getChildren();
-        IGraphicalEditPart o1EditPart = operandsEditPart.get(0);
-        IGraphicalEditPart o2EditPart = operandsEditPart.get(1);
+        List<?> operandsEditPart = ((IGraphicalEditPart) cfEditPart.getChildren().get(1)).getChildren();
+        GraphicalEditPart o1EditPart = (GraphicalEditPart) operandsEditPart.get(0);
+        GraphicalEditPart o2EditPart = (GraphicalEditPart) operandsEditPart.get(1);
 
         assertNotNull("The diagram should own a note", note);
         assertEquals("There should be five gmf diagram elements", 5, diagramEditPart.getPrimaryEditParts().size());

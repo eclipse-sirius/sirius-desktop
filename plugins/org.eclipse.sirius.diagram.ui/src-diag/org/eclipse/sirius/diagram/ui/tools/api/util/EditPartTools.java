@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -11,8 +11,6 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.api.util;
-
-import java.util.Iterator;
 
 import org.eclipse.gef.EditPart;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
@@ -50,9 +48,9 @@ public final class EditPartTools {
             result = root;
         }
         if (result == null) {
-            final Iterator<EditPart> iterChildren = root.getChildren().iterator();
+            var iterChildren = root.getChildren().iterator();
             while (iterChildren.hasNext() && result == null) {
-                result = EditPartTools.getEditPartOfType(iterChildren.next(), editPartType);
+                result = EditPartTools.getEditPartOfType((EditPart) iterChildren.next(), editPartType);
             }
         }
         return result;

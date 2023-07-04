@@ -187,12 +187,12 @@ public class NoteAttachmentTest extends AbstractSiriusSwtBotGefTestCase {
      * @return Edit Part of all notes, texts and representation links in given parameter `editPart`
      */
     private List<String> getNotesTypes(EditPart editPart) {
-        List<EditPart> elements = editPart.getChildren();
+        List<?> elements = editPart.getChildren();
         return elements.stream().filter(element -> {
-            View gmfView = (View) element.getModel();
+            View gmfView = (View) ((EditPart) element).getModel();
             return ViewType.NOTE.equals(gmfView.getType()) || ViewType.TEXT.equals(gmfView.getType());
         }).map(note -> {
-            View gmfView = (View) note.getModel();
+            View gmfView = (View) ((EditPart) note).getModel();
             return gmfView.getType();
         }).toList();
     }

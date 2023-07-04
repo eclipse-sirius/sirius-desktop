@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ package org.eclipse.sirius.tests.sample.migration.design;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -32,6 +33,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.gef.EditPart;
+import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ResizableCompartmentEditPart;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.routers.FanRouter;
@@ -319,7 +321,7 @@ public class Draw2dToSiriusModelTransformer {
         }
         updateLayout(containerRepresentation, diagramListEditPart.getFigure());
 
-        List<?> children = new ArrayList<Object>(diagramListEditPart.getChildren());
+        List<GraphicalEditPart> children = new ArrayList<>(diagramListEditPart.getChildren());
         Iterator<ResizableCompartmentEditPart> compart = diagramListEditPart.getChildren().stream().filter(ResizableCompartmentEditPart.class::isInstance).map(ResizableCompartmentEditPart.class::cast)
                 .iterator();
         if (compart.hasNext()) {
@@ -329,17 +331,14 @@ public class Draw2dToSiriusModelTransformer {
         Iterable<IAbstractDiagramNodeEditPart> filter = () -> children.stream().filter(IAbstractDiagramNodeEditPart.class::isInstance).map(IAbstractDiagramNodeEditPart.class::cast).iterator();
         for (IAbstractDiagramNodeEditPart childEditPart : filter) {
             EObject targetSemanticElement = childEditPart.resolveTargetSemanticElement();
-            if (targetSemanticElement instanceof Node && childEditPart instanceof IDiagramNodeEditPart) {
-                Node subNode = (Node) targetSemanticElement;
+            if (targetSemanticElement instanceof Node subNode && childEditPart instanceof IDiagramNodeEditPart) {
                 IDiagramNodeEditPart childNodeEditPart = (IDiagramNodeEditPart) childEditPart;
                 NodeRepresentation nodeRepresentation = getMigrationNodeRepresentation(childNodeEditPart);
                 subNode.getNodeRepresentations().add(nodeRepresentation);
-            } else if (targetSemanticElement instanceof Bordered) {
-                Bordered subBordered = (Bordered) targetSemanticElement;
+            } else if (targetSemanticElement instanceof Bordered subBordered) {
                 BorderedRepresentation borderedRepresentation = getMigrationBorderedRepresentation(childEditPart);
                 subBordered.getBorderedRepresentations().add(borderedRepresentation);
-            } else if (targetSemanticElement instanceof Container) {
-                Container subContainer = (Container) targetSemanticElement;
+            } else if (targetSemanticElement instanceof Container subContainer) {
                 ContainerRepresentation subContainerRepresentation = null;
                 if (childEditPart instanceof IDiagramContainerEditPart) {
                     subContainerRepresentation = getMigrationContainerRepresentation((IDiagramContainerEditPart) childEditPart);
@@ -373,7 +372,7 @@ public class Draw2dToSiriusModelTransformer {
             }
         }
         updateLayout(containerRepresentation, diagramContainerEditPart.getFigure());
-        List<?> children = new ArrayList<Object>(diagramContainerEditPart.getChildren());
+        List<GraphicalEditPart> children = new ArrayList<>(diagramContainerEditPart.getChildren());
         Iterator<ResizableCompartmentEditPart> compart = Iterators.filter(diagramContainerEditPart.getChildren().iterator(), ResizableCompartmentEditPart.class);
         if (compart.hasNext()) {
             ResizableCompartmentEditPart compartmentEditPart = compart.next();

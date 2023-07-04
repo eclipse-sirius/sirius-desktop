@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.edit.internal.part;
 
-import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -197,29 +196,29 @@ public final class AbstractDiagramNodeEditPartOperation {
      *            the dimension.
      */
     public static void setChildrenSize(final IAbstractDiagramNodeEditPart self, final Dimension d) {
-        final Iterator<EditPart> it = self.getChildren().iterator();
+        var it = self.getChildren().iterator();
         while (it.hasNext()) {
-            final EditPart child = it.next();
-            if (child instanceof ShapeNodeEditPart && !AbstractDiagramNodeEditPartOperation.isBordered(child)) {
-                ((ShapeNodeEditPart) child).getContentPane().setSize(d.width, d.height);
-                ((ShapeNodeEditPart) child).getContentPane().setMinimumSize(d);
-                ((ShapeNodeEditPart) child).getContentPane().setMaximumSize(d);
-                ((ShapeNodeEditPart) child).getContentPane().setPreferredSize(d);
-                ((ShapeNodeEditPart) child).getFigure().setSize(d.width, d.height);
-                ((ShapeNodeEditPart) child).getFigure().setMinimumSize(d);
-                ((ShapeNodeEditPart) child).getFigure().setMaximumSize(d);
-                ((ShapeNodeEditPart) child).getFigure().setPreferredSize(d);
-                ((ShapeNodeEditPart) child).getContentPane().setBounds(new Rectangle(((ShapeNodeEditPart) child).getContentPane().getBounds().getLocation(), d));
+            var child = it.next();
+            if (child instanceof ShapeNodeEditPart shape && !AbstractDiagramNodeEditPartOperation.isBordered(shape)) {
+                shape.getContentPane().setSize(d.width, d.height);
+                shape.getContentPane().setMinimumSize(d);
+                shape.getContentPane().setMaximumSize(d);
+                shape.getContentPane().setPreferredSize(d);
+                shape.getFigure().setSize(d.width, d.height);
+                shape.getFigure().setMinimumSize(d);
+                shape.getFigure().setMaximumSize(d);
+                shape.getFigure().setPreferredSize(d);
+                shape.getContentPane().setBounds(new Rectangle(((ShapeNodeEditPart) child).getContentPane().getBounds().getLocation(), d));
 
                 // we should not set the layout on a ViewNode2EditPart
                 // or we'll get a classcast exception
-                self.setLayoutConstraint(child, ((ShapeNodeEditPart) child).getFigure(), new Rectangle(0, 0, d.width, d.height));
+                self.setLayoutConstraint(shape, shape.getFigure(), new Rectangle(0, 0, d.width, d.height));
             }
-            if (child instanceof NodePlateProvider && ((NodePlateProvider) child).getNodePlate() != null) {
-                ((NodePlateProvider) child).getNodePlate().setSize(d.width, d.height);
-                ((NodePlateProvider) child).getNodePlate().setMaximumSize(d);
-                ((NodePlateProvider) child).getNodePlate().setMinimumSize(d);
-                ((NodePlateProvider) child).getNodePlate().setPreferredSize(d);
+            if (child instanceof NodePlateProvider nodePlateProvider && nodePlateProvider.getNodePlate() != null) {
+                nodePlateProvider.getNodePlate().setSize(d.width, d.height);
+                nodePlateProvider.getNodePlate().setMaximumSize(d);
+                nodePlateProvider.getNodePlate().setMinimumSize(d);
+                nodePlateProvider.getNodePlate().setPreferredSize(d);
             }
         }
     }

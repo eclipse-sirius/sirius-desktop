@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -58,11 +58,6 @@ public class RefreshDiagramAction extends RetargetAction {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.actions.RetargetAction#run()
-     */
     @Override
     public void run() {
         this.selection = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getSelection();
@@ -89,11 +84,6 @@ public class RefreshDiagramAction extends RetargetAction {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.actions.RetargetAction#runWithEvent(org.eclipse.swt.widgets.Event)
-     */
     @Override
     public void runWithEvent(final Event event) {
         super.runWithEvent(event);
@@ -105,8 +95,7 @@ public class RefreshDiagramAction extends RetargetAction {
         final Iterator<?> iterSelection = new ArrayList<Object>(selection).iterator();
         while (iterSelection.hasNext()) {
             final Object next = iterSelection.next();
-            if (next instanceof EditPart) {
-                final EditPart editPart = (EditPart) next;
+            if (next instanceof EditPart editPart) {
                 if (RefreshDiagramAction.isNotAChild(editPart, selection)) {
                     result.add(editPart);
                 } else {
@@ -138,29 +127,19 @@ public class RefreshDiagramAction extends RetargetAction {
         if (editPart.getChildren().contains(mayBeChild)) {
             res = true;
         }
-        final Iterator<EditPart> iterChildren = editPart.getChildren().iterator();
+        var iterChildren = editPart.getChildren().iterator();
         while (iterChildren.hasNext() && !res) {
-            final EditPart currentEditPart = iterChildren.next();
+            final EditPart currentEditPart = (EditPart) iterChildren.next();
             res = RefreshDiagramAction.isAChild(mayBeChild, currentEditPart);
         }
         return res;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.action.Action#isEnabled()
-     */
     @Override
     public boolean isEnabled() {
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.actions.RetargetAction#dispose()
-     */
     @Override
     public void dispose() {
         super.dispose();

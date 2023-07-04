@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -127,9 +127,9 @@ public class LaunchBehaviorToolAction extends RetargetAction {
         if (editPart.getChildren().contains(mayBeChild)) {
             res = true;
         }
-        final Iterator<EditPart> iterChildren = editPart.getChildren().iterator();
+        var iterChildren = editPart.getChildren().iterator();
         while (iterChildren.hasNext() && !res) {
-            final EditPart currentEditPart = iterChildren.next();
+            final EditPart currentEditPart = (EditPart) iterChildren.next();
             res = LaunchBehaviorToolAction.isAChild(mayBeChild, currentEditPart);
         }
         return res;
