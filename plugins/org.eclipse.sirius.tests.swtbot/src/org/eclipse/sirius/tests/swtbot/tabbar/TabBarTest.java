@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.tabbar;
 
+import static org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable.syncExec;
+
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -58,6 +60,7 @@ import org.eclipse.swtbot.swt.finder.results.Result;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 import org.eclipse.swtbot.swt.finder.utils.SWTUtils;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarDropDownButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarToggleButton;
@@ -74,6 +77,7 @@ import com.google.common.base.Predicates;
  * 
  * @author smonnier
  */
+@SuppressWarnings("nls")
 public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
 
     // We don't need a specific diagram so we reuse an existing one.
@@ -533,5 +537,64 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
             checkButtonNotPresent(TABBAR_EXTENSION_ON_DIAGRAM);
         }
         checkButtonNotPresent(TABBAR_EXTENSION_ON_DIAGRAM_ELEMENT);
+    }
+
+    /**
+     * This test check that all tool of toolbar still visible even with small size (tools that cannot be displayed are
+     * moved to new second line, third line, etc...), this test is disabled because this feature works differently under
+     * linux (so, this test work on windows only).
+     */
+    public void _testToolBarWrap() throws Exception {
+        SWTBotUtils.waitAllUiEvents();
+        SWTBotShell window = bot.shell();
+        syncExec(() -> {
+            // resize the window so there's not enough space for all the tools in the toolbar (in width)
+            window.widget.setSize(640, 480);
+        });
+
+        // diagram tools
+        // get all tool of toolbar
+        var toolbarDiagramItems = new ArrayList<SWTBotToolbarButton>();
+        for (int i = 0; i < DIAGRAM_TOOLBARBUTTONS_TOOLTIPS.length; ++i) {
+            toolbarDiagramItems.add(editor.bot().toolbarButton(i));
+        }
+        for (int i = 0; i < DIAGRAM_TOOLBARDROPDOWNBUTTONS_TOOLTIPS.length; ++i) {
+            toolbarDiagramItems.add(editor.bot().toolbarDropDownButton(i));
+        }
+
+        // we check that no tools are outside the visible part of the toolbar
+        for (SWTBotToolbarButton item : toolbarDiagramItems) {
+            boolean itemIsInside = syncExec(() -> {
+                int parentWidth = item.widget.getParent().getSize().x;
+                int rightPos = item.widget.getBounds().x + item.widget.getBounds().width;
+                return rightPos <= parentWidth;
+            });
+            assertTrue("ToolButton `" + item.getToolTipText() + "` is outside the visible part of the toolbar.", itemIsInside);
+        }
+
+        selectDiagramElement0();
+
+        // elements tools
+        // get all tool of toolbar
+        var toolbarElementItems = new ArrayList<SWTBotToolbarButton>();
+        for (int i = 0; i < CONTAINER_TOOLBARBUTTONS_TOOLTIPS.length; ++i) {
+            toolbarElementItems.add(editor.bot().toolbarButton(i));
+        }
+        for (int i = 0; i < CONTAINER_TOOLBARDROPDOWNBUTTONS_TOOLTIPS.length; ++i) {
+            toolbarElementItems.add(editor.bot().toolbarDropDownButton(i));
+        }
+        for (int i = 0; i < CONTAINER_TOOLBARTOGGLEBUTTONS_TOOLTIPS.length; ++i) {
+            toolbarElementItems.add(editor.bot().toolbarToggleButton(i));
+        }
+
+        // we check that no tools are outside the visible part of the toolbar
+        for (SWTBotToolbarButton item : toolbarElementItems) {
+            boolean itemIsInside = syncExec(() -> {
+                int parentWidth = item.widget.getParent().getSize().x;
+                int rightPos = item.widget.getBounds().x + item.widget.getBounds().width;
+                return rightPos <= parentWidth;
+            });
+            assertTrue("Tool button `" + item.getToolTipText() + "` is outside the visible part of the toolbar.", itemIsInside);
+        }
     }
 }
