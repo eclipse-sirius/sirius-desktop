@@ -1,0 +1,35 @@
+name: Sirius Desktop verification build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        test-suite: [ gerrit-junit, gerrit-swtbot, gerrit-swtbot-sequence ]
+    runs-on: ubuntu-latest
+    name: Test suite ${{ matrix.test-suite }}
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Java
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: 17
+        cache: 'maven'
+    - name: Build with Maven
+      uses: coactions/setup-xvfb@v1
+      with:
+       run: >-
+        mvn -V -B -fae -ntp -Dplatform-version-name=2023-03 -f packaging/org.eclipse.sirius.parent/pom.xml -P headless,full,${{ matrix.test-suite }} clean verify
+    - name: Upload Test Results for Test suite ${{ matrix.test-suite }}
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results-${{ matrix.test-suite }}
+        if-no-files-found: error
+        path: |
+          ${{ github.workspace }}/**/target/surefire-reports/*.xml
