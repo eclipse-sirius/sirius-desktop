@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2014, 2022 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2014, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
@@ -46,6 +47,8 @@ public class TabbarToolBarManager extends ToolBarManager {
 
     private Image fGradientBackground;
 
+    private Listener onResize;
+
     /**
      * Constructor.
      * 
@@ -57,6 +60,8 @@ public class TabbarToolBarManager extends ToolBarManager {
     public TabbarToolBarManager(ToolBar toolBar, IWorkbenchPart part) {
         super(toolBar);
         this.tabbarPart = part;
+        this.onResize = event -> updateGradientBackground();
+        getControl().addListener(SWT.Resize, onResize);
 
     }
 
@@ -93,7 +98,6 @@ public class TabbarToolBarManager extends ToolBarManager {
             }
         }
         super.update(force);
-        updateGradientBackground();
     }
 
     /**
@@ -210,11 +214,12 @@ public class TabbarToolBarManager extends ToolBarManager {
 
     @Override
     public void dispose() {
-        super.dispose();
+        getControl().removeListener(SWT.Resize, onResize);
         tabbarPart = null;
         if (fGradientBackground != null) {
             fGradientBackground.dispose();
             fGradientBackground = null;
         }
+        super.dispose();
     }
 }

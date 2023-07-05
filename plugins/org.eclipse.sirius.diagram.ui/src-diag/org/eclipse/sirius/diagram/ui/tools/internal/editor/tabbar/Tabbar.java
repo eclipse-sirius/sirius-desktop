@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2020, 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -103,7 +103,7 @@ public class Tabbar extends Composite implements ISelectionListener, IAuthorityL
     }
 
     private void createToolBar() {
-        toolBar = new ToolBar(this, SWT.FLAT);
+        toolBar = new ToolBar(this, SWT.FLAT | SWT.WRAP);
         toolBar.setBackgroundMode(SWT.INHERIT_DEFAULT);
         toolBar.setLayoutData(new org.eclipse.swt.layout.GridData(org.eclipse.swt.layout.GridData.FILL_HORIZONTAL));
 
