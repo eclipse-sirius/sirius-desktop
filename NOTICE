@@ -27,7 +27,7 @@ SPDX-License-Identifier: EPL-2.0
 The project maintains the following source code repositories:
 
 * https://github.com/eclipse/sirius-components
-* http://git.eclipse.org/c/sirius/org.eclipse.sirius.git
+* https://github.com/eclipse-sirius/sirius-desktop.git
 * http://git.eclipse.org/c/sirius/org.eclipse.sirius.legacy.git
 
 ## Third-party Content
