@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2014, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -105,13 +105,13 @@ public final class RectilinearEdgeUtil {
         Point pointToInsert = null;
         int segmentOrientation = line.getFirstPoint().x == line.getLastPoint().x ? PositionConstants.VERTICAL : PositionConstants.HORIZONTAL;
         if (segmentOrientation == PositionConstants.VERTICAL) {
-            int xValue = line.getFirstPoint().x;
-            int delta = (line.getFirstPoint().y - line.getLastPoint().y) / 2;
-            pointToInsert = new Point(xValue, line.getFirstPoint().y - delta);
+            double xValue = line.getFirstPoint().preciseX();
+            double delta = (line.getFirstPoint().preciseY() - line.getLastPoint().preciseY()) / 2;
+            pointToInsert = new PrecisionPoint(xValue, line.getFirstPoint().preciseY() - delta);
         } else {
-            int yValue = line.getFirstPoint().y;
-            int delta = (line.getFirstPoint().x - line.getLastPoint().x) / 2;
-            pointToInsert = new Point(line.getFirstPoint().x - delta, yValue);
+            double yValue = line.getFirstPoint().preciseY();
+            double delta = (line.getFirstPoint().preciseX() - line.getLastPoint().preciseX()) / 2;
+            pointToInsert = new PrecisionPoint(line.getFirstPoint().preciseX() - delta, yValue);
         }
         line.insertPoint(pointToInsert, 1);
         line.insertPoint(pointToInsert.getCopy(), 1);
@@ -414,7 +414,6 @@ public final class RectilinearEdgeUtil {
         }
         return pointList;
     }
-
 
     /**
      * Align point of figure's bound toward anchor.
