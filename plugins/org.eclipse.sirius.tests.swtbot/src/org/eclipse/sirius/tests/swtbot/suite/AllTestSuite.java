@@ -181,7 +181,6 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(CustomClipboardSupportTest.class);
         suite.addTestSuite(KeyboardDeletionFromLabelTests.class);
         suite.addTestSuite(DragAndDropDifferentElementsTest.class);
-        suite.addTestSuite(EdgeReconnectionTests.class);
         suite.addTestSuite(ShowTypeActionButtonTest.class);
         suite.addTestSuite(LineStyleTest.class);
         suite.addTestSuite(CompartmentsDragAndDropTest.class);
@@ -280,6 +279,7 @@ public class AllTestSuite extends TestCase {
 
         addGerritPart1(suite);
 
+        suite.addTestSuite(EdgeReconnectionTests.class);
         suite.addTestSuite(ServiceNavigationTest.class);
         // suite.addTest(PseudoClearcaseSwtbotTestSuite.suite());
         STDSwtbotTestSuite.addPart1(suite);
