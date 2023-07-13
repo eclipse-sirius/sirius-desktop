@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,8 +12,18 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
-import java.io.File;
+import static org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable.syncExec;
 
+import java.io.File;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
@@ -21,6 +31,7 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.ui.business.api.image.GallerySelectable;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
@@ -51,7 +62,13 @@ import org.eclipse.sirius.tests.swtbot.support.api.condition.WidgetIsDisabledCon
 import org.eclipse.sirius.tests.swtbot.support.api.dialog.ImageSelectionGalleryHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.dnd.Clipboard;
+import org.eclipse.swt.dnd.ImageTransfer;
+import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.ImageData;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Widget;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.SWTBot;
@@ -60,6 +77,8 @@ import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.widgets.AbstractSWTBot;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarButton;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarDropDownButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.osgi.framework.Version;
@@ -69,6 +88,7 @@ import org.osgi.framework.Version;
  * 
  * @author mporhel
  */
+@SuppressWarnings("nls")
 public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String MODEL = "tc2225.ecore";
@@ -471,6 +491,154 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
     }
 
     /**
+     * Test "past workspace image from clipboard" functionality. TODO: test with many selection
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testSetWkpImageFromClipboard() throws Exception {
+        IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(getProjectName());
+
+        // send image to clipboard
+        IFile imageFile = project.getFile(IMG_FILE);
+        copyImageToClipboard(imageFile);
+
+        // select element
+        SWTBotGefEditPart botPart = selectAndCheckEditPart(C1_CONTAINER, AbstractDiagramContainerEditPart.class);
+        IAbstractDiagramNodeEditPart part = (IAbstractDiagramNodeEditPart) botPart.part();
+        checkCustom(part, false); // check initial style
+
+        // paste image on element
+        SWTBotToolbarButton pasteImageButton = bot.toolbarDropDownButtonWithTooltip(Messages.PasteImageAction_toolTipText);
+        pasteImageButton.click();
+
+        // check
+        checkCustom(part, true);
+        if (part.resolveDiagramElement().getStyle() instanceof WorkspaceImage style) {
+            IFile wspImgFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(style.getWorkspacePath()));
+            IFolder imagesFolder = project.getFolder("images");
+            assertTrue("Image file of workspace image style doesn't exist", wspImgFile.exists());
+            assertEquals("The image pasted from clipboard is not in `" + getProjectName() + "` project", getProjectName(), wspImgFile.getProject().getName());
+            assertEquals("Workspace image file must be in wrong directory", imagesFolder, wspImgFile.getParent());
+            assertTrue("Workspace image filename has the wrong format, expected yyyymmdd_hhmmss_xxxxxx.png, found: " + wspImgFile.getName(),
+                    wspImgFile.getName().matches("^[0-9]{8}_[0-9]{6}_[0-9]{6}\\.png$"));
+        } else {
+            fail("The workspace image style is expected on the selected element after pasting image from clipboard");
+        }
+    }
+
+    /**
+     * Test "past workspace image from clipboard" functionality with multiple selection.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testSetWkpImageFromClipboardToManyElement() throws Exception {
+        IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(getProjectName());
+
+        // send image to clipboard
+        IFile imageFile = project.getFile(IMG_FILE);
+        copyImageToClipboard(imageFile);
+
+        // select elements
+        var selectionNames = new ArrayList<String>();
+        var selectionTypes = new ArrayList<Class<? extends IGraphicalEditPart>>();
+        
+        selectionNames.add(C1_CONTAINER);
+        selectionTypes.add(AbstractDiagramContainerEditPart.class);
+        selectionNames.add(C1_LIST);
+        selectionTypes.add(AbstractDiagramListEditPart.class);
+
+        List<SWTBotGefEditPart> botParts = selectAndCheckManyEditPart(selectionNames, selectionTypes);
+        List<IAbstractDiagramNodeEditPart> parts = botParts.stream().map(botPart -> {
+            return (IAbstractDiagramNodeEditPart) botPart.part();
+        }).toList();
+        // check initial style
+        for (IAbstractDiagramNodeEditPart part : parts) {
+            checkCustom(part, false);
+        }
+
+        // paste image on element
+        SWTBotToolbarButton pasteImageButton = bot.toolbarDropDownButtonWithTooltip(Messages.PasteImageAction_toolTipText);
+        pasteImageButton.click();
+
+        // check
+        var wkpImagePath = new ArrayList<String>();
+        for (IAbstractDiagramNodeEditPart part : parts) {
+            checkCustom(part, true);
+            if (part.resolveDiagramElement().getStyle() instanceof WorkspaceImage style) {
+                wkpImagePath.add(style.getWorkspacePath());
+            } else {
+                fail("The workspace image style is expected on the selected element after pasting image from clipboard");
+            }
+        }
+
+        // check that path is the same for all selected element
+        wkpImagePath.stream().allMatch(path -> path.equals(wkpImagePath.get(0)));
+
+        // check this path
+        IFile wspImgFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(wkpImagePath.get(0)));
+        IFolder imagesFolder = project.getFolder("images");
+        assertTrue("Image file of workspace image style doesn't exist", wspImgFile.exists());
+        assertEquals("The image pasted from clipboard is not in `" + getProjectName() + "` project", getProjectName(), wspImgFile.getProject().getName());
+        assertEquals("Workspace image file must be in wrong directory", imagesFolder, wspImgFile.getParent());
+        assertTrue("Workspace image filename has the wrong format, expected yyyymmdd_hhmmss_xxxxxx.png, found: " + wspImgFile.getName(),
+                wspImgFile.getName().matches("^[0-9]{8}_[0-9]{6}_[0-9]{6}\\.png$"));
+    }
+
+    /**
+     * Test the button "past workspace image from clipboard" in toolbar and menu.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testSetWkpImageFromClipboardButton() throws Exception {
+        IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(getProjectName());
+        // clear clipboard
+        clearClipboard();
+        // paste format is default action
+        SWTBotToolbarDropDownButton pasteFormatMenu;
+
+        // check init state
+        pasteFormatMenu = bot.toolbarDropDownButtonWithTooltip(Messages.PasteFormatAction_toolTipText_diagram);
+        assertFalse("paste format menu must be disabled in toolbar without selection and without clipboard image", //
+                pasteFormatMenu.isEnabled());
+        assertFalse("paste format menu must be disabled in menu without selection and without clipboard image", //
+                bot.menu("Edit").menu(Messages.PasteImageAction_text).isEnabled());
+
+        // select element
+        selectAndCheckEditPart(C1_CONTAINER, AbstractDiagramContainerEditPart.class);
+
+        // check with selection but no image in clipboard
+        pasteFormatMenu = bot.toolbarDropDownButtonWithTooltip(Messages.PasteFormatAction_toolTipText_diagramElements);
+        assertFalse("paste format menu must be disabled in toolbar without clipboard image", //
+                pasteFormatMenu.isEnabled());
+        assertFalse("paste format menu must be disabled in menu without clipboard image", //
+                bot.menu("Edit").menu(Messages.PasteImageAction_text).isEnabled());
+
+        // copy image to Clipboard
+        IFile imageFile = project.getFile(IMG_FILE);
+        this.copyImageToClipboard(imageFile);
+
+        // check with selection and image in clipboard
+        pasteFormatMenu = bot.toolbarDropDownButtonWithTooltip(Messages.PasteImageAction_toolTipText);
+        assertTrue("paste format menu must be enabled in toolbar with selection and clipboard image", //
+                pasteFormatMenu.isEnabled());
+        assertTrue("paste format menu must be enabled in menu with selection and clipboard image", //
+                bot.menu("Edit").menu(Messages.PasteImageAction_text).isEnabled());
+
+        // selection of an element that cannot have workspace image style
+        selectAndCheckEditPart(A1C1_LIST, AbstractDiagramNameEditPart.class);
+
+        // check with image in clipboard but not valid selection for worspace image
+        pasteFormatMenu = bot.toolbarDropDownButtonWithTooltip(Messages.PasteFormatAction_toolTipText_diagramElements);
+        assertFalse("paste format menu must be disabled in toolbar when selection cannot have workspace image style", //
+                pasteFormatMenu.isEnabled());
+        assertFalse("paste format menu must be disabled in menu when selection cannot have workspace image style", //
+                bot.menu("Edit").menu(Messages.PasteImageAction_text).isEnabled());
+    }
+
+    /**
      * Test the filter function of the workspace selection dialog (VP-3520).
      */
     public void testTheFilterArea() {
@@ -735,6 +903,31 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
         return botPart;
     }
 
+    private List<SWTBotGefEditPart> selectAndCheckManyEditPart(List<String> names, List<Class<? extends IGraphicalEditPart>> types) throws IllegalArgumentException {
+        // precondition
+        if (names.size() != types.size()) {
+            throw new IllegalArgumentException("Size of names and types must be equals");
+        }
+
+        var selectedEditPart = new ArrayList<SWTBotGefEditPart>();
+        editor.setFocus();
+        int selectionSize = names.size();
+        for (int i = 0; i < selectionSize; ++i) {
+            String name = names.get(i);
+            Class<? extends IGraphicalEditPart> type = types.get(i);
+
+            SWTBotGefEditPart botPart = editor.getEditPart(name, type);
+            assertNotNull("The requested edit part should not be null", botPart);
+
+            CheckSelectedCondition cs = new CheckSelectedCondition(editor, name, type);
+            editor.clickWithKeys(name, SWT.SHIFT);
+            bot.waitUntil(cs);
+
+            selectedEditPart.add(botPart);
+        }
+        return selectedEditPart;
+    }
+
     private void openSelectImageDialog() {
         bot.waitUntil(Conditions.shellIsActive(DIALOG_TITLE));
 
@@ -746,5 +939,26 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
         AbstractDNode node = (AbstractDNode) part.resolveDiagramElement();
         boolean isCustom = new DDiagramElementQuery(node).isCustomized();
         assertEquals(custom, isCustom);
+    }
+
+    private void copyImageToClipboard(IFile imageFile) throws Exception {
+        ImageData[] data;
+        try (InputStream imageStream = imageFile.getContents()) {
+            data = new ImageData[] { new ImageData(imageStream) };
+        }
+        syncExec(() -> {
+            Transfer[] imgTransfer = new Transfer[] { ImageTransfer.getInstance() };
+            Clipboard clipboard = new Clipboard(Display.getCurrent());
+            clipboard.setContents(data, imgTransfer);
+            clipboard.dispose();
+        });
+    }
+
+    private void clearClipboard() throws Exception {
+        syncExec(() -> {
+            Clipboard clipboard = new Clipboard(Display.getCurrent());
+            clipboard.clearContents();
+            clipboard.dispose();
+        });
     }
 }

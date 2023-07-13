@@ -14,15 +14,25 @@ package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 import org.eclipse.gmf.runtime.common.ui.action.IDisposableAction;
 import org.eclipse.gmf.runtime.diagram.ui.actions.DiagramAction;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
+import org.eclipse.jface.util.IPropertyChangeListener;
+import org.eclipse.jface.util.PropertyChangeEvent;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteFormatAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteImageAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteLayoutAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteStyleAction;
 import org.eclipse.ui.IWorkbenchPage;
@@ -34,6 +44,8 @@ import org.eclipse.ui.IWorkbenchPage;
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
 public class TabbarPasteFormatMenuManager extends PasteFormatMenuManager {
+
+    ArrayList<IAction> actionHistory = new ArrayList<IAction>();
 
     @Override
     public void add(IAction action) {
@@ -60,23 +72,17 @@ public class TabbarPasteFormatMenuManager extends PasteFormatMenuManager {
         super.dispose();
     }
 
-    /**
-     * Set the default action id for this menu manager.
-     * 
-     * @param actionId
-     *            the action id to set
-     */
-    public void setDefaultAction(String actionId) {
-        for (final IContributionItem item : getItems()) {
-            if (item instanceof ActionContributionItem) {
-                if (actionId.equals(((ActionContributionItem) item).getAction().getId())) {
-                    final IAction defaultAction = ((ActionContributionItem) item).getAction();
-                    setHandler(defaultAction);
-                    super.setDefaultAction(defaultAction);
-                    return;
-                }
-            }
-        }
+    @Override
+    protected void setDefaultAction(IAction defaultAction) {
+        actionHistory.removeIf(candidate -> candidate.getId().equals(defaultAction.getId())); // remove by action id
+        actionHistory.add(0, defaultAction);
+        setHandler(defaultAction);
+        super.setDefaultAction(defaultAction);
+    }
+
+    private void setDefaultActionWithoutRegister(IAction defaultAction) {
+        setHandler(defaultAction);
+        super.setDefaultAction(defaultAction);
     }
 
     /**
@@ -104,16 +110,99 @@ public class TabbarPasteFormatMenuManager extends PasteFormatMenuManager {
         }
     }
 
+    private Stream<IAction> getActions() {
+        return Arrays.stream(getItems()) //
+                .filter(ActionContributionItem.class::isInstance) //
+                .map(ActionContributionItem.class::cast) //
+                .map(ActionContributionItem::getAction);
+    }
+
+    private Optional<IAction> getAction(String actionId) {
+        return getActions() //
+                .filter(candidateAction -> actionId.equals(candidateAction.getId())) //
+                .findAny();
+    }
+
+    private void safeAdd(String actionId, IWorkbenchPage page) {
+        if (getAction(actionId).isEmpty()) { // add action only if it not already present
+            IAction action;
+            if (ActionIds.PASTE_FORMAT.equals(actionId)) {
+                add(new PasteFormatAction(page));
+            } else if (ActionIds.PASTE_STYLE.equals(actionId)) {
+                add(new PasteStyleAction(page));
+            } else if (ActionIds.PASTE_LAYOUT.equals(actionId)) {
+                add(new PasteLayoutAction(page));
+            } else if (ActionIds.PASTE_IMAGE.equals(actionId)) {
+                action = new PasteImageAction();
+                action.addPropertyChangeListener(new IPropertyChangeListener() {
+                    @Override
+                    public void propertyChange(PropertyChangeEvent event) {
+                        update();
+                    }
+                });
+                add(action);
+            } else {
+                throw new IllegalArgumentException(String.format("Unexpected action id '%s'", actionId)); //$NON-NLS-1$
+            }
+        }
+    }
+
+    private void updateActions(IWorkbenchPage page) {
+        safeAdd(ActionIds.PASTE_FORMAT, page);
+        safeAdd(ActionIds.PASTE_LAYOUT, page);
+        safeAdd(ActionIds.PASTE_STYLE, page);
+        if (elementIsSelected(page)) {
+            safeAdd(ActionIds.PASTE_IMAGE, page);
+        }
+    }
+
+    private boolean elementIsSelected(IWorkbenchPage page) {
+        ISelection basicSelection = page.getSelection();
+        if (basicSelection instanceof IStructuredSelection selection) {
+            Object firstElement = selection.getFirstElement();
+            return !(firstElement instanceof AbstractDDiagramEditPart);
+        } else {
+            return false;
+        }
+    }
+
+    private Stream<IAction> getMenuActionCandidate() {
+        // Menu default action, order of candidates:
+        // - enabled in history
+        // - enabled in all
+        // - disabled in history
+        // - disabled in all
+        // - nothing/null
+
+        // enabled in history
+        Stream<IAction> actionHistoryEnabledStream = actionHistory.stream() //
+                .filter(action -> action.isEnabled());
+        // enabled in all action
+        Stream<IAction> allActionEnabledStream = getActions() //
+                .filter(action -> action.isEnabled());
+
+        Stream<IAction> enabledActions = Stream.concat(actionHistoryEnabledStream, allActionEnabledStream);
+        Stream<IAction> allActions = Stream.concat(actionHistory.stream(), getActions());
+
+        return Stream.concat(enabledActions, allActions);
+    }
+
+    private void updateDefaultAction() {
+        Optional<IAction> firstEnabledAction = getMenuActionCandidate().findFirst();
+
+        firstEnabledAction.ifPresent(newDefaultAction -> {
+            setDefaultActionWithoutRegister(newDefaultAction);
+        });
+    }
+
     @Override
     public void setVisible(boolean visible) {
         super.setVisible(visible);
-        if (isEmpty() && visible) {
+        if (visible) {
             IWorkbenchPage page = EclipseUIUtil.getActivePage();
             if (page != null) {
-                add(new PasteFormatAction(page));
-                add(new PasteLayoutAction(page));
-                add(new PasteStyleAction(page));
-                setDefaultAction(ActionIds.PASTE_FORMAT);
+                updateActions(page);
+                updateDefaultAction();
             }
         }
     }
@@ -139,7 +228,9 @@ public class TabbarPasteFormatMenuManager extends PasteFormatMenuManager {
                 }
             }
         }
-        DiagramAction diagramAction = (DiagramAction) getDefaultAction();
+
+        updateDefaultAction();
+        IAction diagramAction = getDefaultAction();
         if (diagramAction != null) {
             // This action has already been refreshed because it is one of the "contribution items actions".
             action.setEnabled(diagramAction.isEnabled());

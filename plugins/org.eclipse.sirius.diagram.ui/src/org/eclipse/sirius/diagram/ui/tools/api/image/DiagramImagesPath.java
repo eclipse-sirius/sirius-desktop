@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -96,6 +96,9 @@ public interface DiagramImagesPath {
 
     /** paste format disabled icon. */
     String PASTE_FORMAT_DISABLED_ICON = "icons/pasteFormatDisabled.gif"; //$NON-NLS-1$
+
+    /** paste image icon. */
+    String PASTE_IMAGE_ICON = "icons/pasteImage.gif"; //$NON-NLS-1$
 
     /** paste layout icon. */
     String PASTE_LAYOUT_ICON = "icons/pasteLayout.gif"; //$NON-NLS-1$

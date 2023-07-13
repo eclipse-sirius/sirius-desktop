@@ -141,6 +141,10 @@
            <partAction menubarPath="/edit/copyFormatGroup" id="pasteFormatAction" />
            <partAction menubarPath="/edit/copyFormatGroup" id="pasteLayoutAction" />
            <partAction menubarPath="/edit/copyFormatGroup" id="pasteStyleAction" />
+           <partAction
+                 id="pasteImageAction"
+                 menubarPath="/edit/copyFormatGroup">
+           </partAction>
            <partAction menubarPath="/diagramMenu/arrangeMenu/arrangeGroup" id="arrangeBorderNodesAction"/>
            <partAction menubarPath="/diagramMenu/routerMenu/routerGroup" id="treeRoutingStyleAction"/>
            <partAction menubarPath="/diagramMenu/routerMenu/routerGroup" id="obliqueRoutingStyleAction"/>
@@ -240,6 +244,10 @@
             <popupAction path="/editMenu/copyFormatGroup" id="pasteFormatAction" />
             <popupAction path="/editMenu/copyFormatGroup" id="pasteLayoutAction" />
             <popupAction path="/editMenu/copyFormatGroup" id="pasteStyleAction" />
+            <popupAction
+                  id="pasteImageAction"
+                  path="/editMenu/copyFormatGroup">
+            </popupAction>
 
             <popupMenuGroup path="/formatMenu/arrangeMenu/" id="pinGroup" />
             <popupAction path="/formatMenu/arrangeMenu/pinGroup" id="pinElementsAction" />

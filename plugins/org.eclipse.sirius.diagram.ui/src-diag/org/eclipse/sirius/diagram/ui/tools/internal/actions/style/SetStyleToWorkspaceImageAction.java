@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -83,7 +83,12 @@ public class SetStyleToWorkspaceImageAction extends Action {
         }
     }
 
-    private List<BasicLabelStyle> getStyles() {
+    /**
+     * Return the style of all selected nodes.
+     * 
+     * @return the list of style of all selected nodes
+     */
+    public static List<BasicLabelStyle> getStyles() {
         List<BasicLabelStyle> styles = new ArrayList<BasicLabelStyle>();
         ISelection selection = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getSelection();
         if (selection instanceof IStructuredSelection) {
@@ -105,10 +110,11 @@ public class SetStyleToWorkspaceImageAction extends Action {
     }
 
     /**
-     * {@inheritDoc}
+     * Return if all selected can have workspace image style.
+     * 
+     * @return true if all selected can have workspace image style
      */
-    @Override
-    public final boolean isEnabled() {
+    public static boolean selectionCanHaveWorkspaceImage() {
         boolean result = false;
 
         IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
@@ -137,5 +143,13 @@ public class SetStyleToWorkspaceImageAction extends Action {
         }
 
         return result;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public final boolean isEnabled() {
+        return selectionCanHaveWorkspaceImage();
     }
 }

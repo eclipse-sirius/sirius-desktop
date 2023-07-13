@@ -39,6 +39,7 @@ public class PasteFormatMenuManager extends ActionMenuManager {
             ImageDescriptor imageDesc = DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.PASTE_FORMAT_ICON);
             setImageDescriptor(imageDesc);
             setHoverImageDescriptor(imageDesc);
+            setEnabled(false);
         }
     }
 

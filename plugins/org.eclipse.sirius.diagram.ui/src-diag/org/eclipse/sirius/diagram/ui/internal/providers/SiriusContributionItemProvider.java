@@ -35,6 +35,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.actions.distribute.SiriusAli
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.ArrangeBorderNodesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.CopyFormatAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteFormatAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteImageAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteLayoutAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteStyleAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.PinElementsEclipseAction;
@@ -66,6 +67,8 @@ public class SiriusContributionItemProvider extends AbstractContributionItemProv
             result = new PasteStyleAction(workbenchPage);
         } else if (ActionIds.PASTE_LAYOUT.equals(actionId)) {
             result = new PasteLayoutAction(workbenchPage);
+        } else if (ActionIds.PASTE_IMAGE.equals(actionId)) {
+            result = new PasteImageAction();
         } else if (ActionIds.PIN_ELEMENTS.equals(actionId)) {
             result = new PinElementsEclipseAction();
         } else if (ActionIds.UNPIN_ELEMENTS.equals(actionId)) {
