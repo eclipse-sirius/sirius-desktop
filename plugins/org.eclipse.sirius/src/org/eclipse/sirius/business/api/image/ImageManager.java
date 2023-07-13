@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021, 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2021, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,10 +12,23 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.image;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.text.MessageFormat;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
+import java.util.Optional;
+import java.util.function.Supplier;
 
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.tools.api.Messages;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 
 /**
  * This API is used to manage the image used by Sirius.<br/>
@@ -36,7 +49,89 @@ public interface ImageManager {
     String HTML_IMAGE_PATH_PATTERN = "<img.*?src=\"(.*?)\".*?/>"; //$NON-NLS-1$
 
     /**
-     * Create and serialize a file from a Base64 encoding image. It returns the path that will be used to get this file.
+     * Timestamp format for image filenames generated.
+     */
+    String IMAGE_NAME_FORMAT = "yyyyMMdd_HHmmss_SSSSSS"; //$NON-NLS-1$
+
+    /**
+     * This class store the function that creates the file and its file name. Result of {@link #getCreateFileFunc}
+     * 
+     * @author scosta
+     *
+     */
+    final class CreateImageFileProvider {
+
+        private Supplier<Optional<CoreException>> createFileFunc;
+
+        private String filename;
+
+        /**
+         * Default constructor.
+         * 
+         * @param createFileFunc
+         *            The function to create file
+         * @param filename
+         *            The name of the file
+         */
+        public CreateImageFileProvider(Supplier<Optional<CoreException>> createFileFunc, String filename) {
+            this.createFileFunc = createFileFunc;
+            this.filename = filename;
+        }
+
+        public String getFileName() {
+            return filename;
+        }
+
+        /**
+         * Execute createFileFunc and throw error if any.
+         * 
+         * @throws CoreException
+         *             Exception of createFileFunc
+         */
+        public void exec() throws CoreException {
+            Optional<CoreException> error = createFileFunc.get();
+            if (error.isPresent()) {
+                throw error.get();
+            }
+        }
+
+        /**
+         * Convert this function as recording command. If any error, the error is logged in SiriusPlugin.
+         * 
+         * @param domain
+         *            the transactional editing domain for the command
+         * @return the command version of this function
+         */
+        public RecordingCommand asRecordingCommand(TransactionalEditingDomain domain) {
+            return new RecordingCommand(domain) {
+                @Override
+                protected void doExecute() {
+                    try {
+                        exec();
+                    } catch (CoreException error) {
+                        SiriusPlugin.getDefault().error(MessageFormat.format(Messages.ImageManager_imageCreationFailure, filename), error);
+                    }
+                }
+            };
+        }
+    }
+    
+    /**
+     * Generate file name for image using timestamp.
+     * 
+     * @param extension
+     *            The extension of the image file without the dot character
+     * @return A file name for image
+     */
+    static String generateName(String extension) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(IMAGE_NAME_FORMAT).withZone(ZoneId.systemDefault());
+        String strDate = formatter.format(Instant.now());
+        return strDate + '.' + extension;
+    }
+
+    /**
+     * Returns function that create and serialize a file from a Base64 encoding image and the path that will be used to
+     * get this file.
      * 
      * @param contextObject
      *            eObject used as context. According to the context the image file may be created at a different
@@ -45,9 +140,24 @@ public interface ImageManager {
      *            the non qualified name of the image
      * @param base64
      *            the base64 encoding
-     * @return the path used to reach the created file.
+     * @return the function to create file and the path used to reach the created file.
      */
-    String createFile(EObject contextObject, String simpleImageName, String base64);
+    CreateImageFileProvider getCreateFileFunc(EObject contextObject, String simpleImageName, String base64) throws IOException, CoreException;
+
+    /**
+     * Return function that create an image file from an input stream and it the path that will be used to get this
+     * file.
+     * 
+     * @param contextObject
+     *            eObject used as context. According to the context the image file may be created at a different
+     *            location (fore example in the workspace or in a database).
+     * @param simpleImageName
+     *            the non qualified name of the image.
+     * @param stream
+     *            the stream of the image data.
+     * @return the function to create file and the path used to reach the created file.
+     */
+    CreateImageFileProvider getCreateFileFunc(EObject contextObject, String simpleImageName, InputStream stream) throws CoreException, IOException;
 
     /**
      * Undo the creation of the file done with createFile(String ) method.<br/>
@@ -68,6 +178,7 @@ public interface ImageManager {
      *            location(for example in the workspace or in a database).
      * @param createdFiles
      *            the base64 string associated to the path to the file that must be recreated.
+     * @throws Exception
      */
     void redoCreateFiles(Session session, Map<String, String> createdFiles);
 

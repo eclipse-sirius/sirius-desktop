@@ -950,6 +950,12 @@ public final class Messages {
     public static String PasteFormatDataCommand_label;
 
     @TranslatableMessage
+    public static String PasteImageAction_text;
+
+    @TranslatableMessage
+    public static String PasteImageAction_toolTipText;
+
+    @TranslatableMessage
     public static String PasteLayoutAction_commandLabel;
 
     @TranslatableMessage

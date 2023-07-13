@@ -47,6 +47,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromDia
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromModelAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.CopyFormatAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteFormatAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteImageAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteLayoutAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteStyleAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.refresh.RefreshDiagramAction;
@@ -183,6 +184,9 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
 
         final IAction pasteStyleAction = new PasteStyleAction(getPage());
         addAction(pasteStyleAction);
+
+        final IAction pasteImageAction = new PasteImageAction();
+        addAction(pasteImageAction);
 
         final IAction selectHiddenElementsAction = new SelectHiddenElementsAction(getPage());
         addAction(selectHiddenElementsAction);

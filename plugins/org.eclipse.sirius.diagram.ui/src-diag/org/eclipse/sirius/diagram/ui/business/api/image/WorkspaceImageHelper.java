@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2021, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,8 +13,10 @@
 package org.eclipse.sirius.diagram.ui.business.api.image;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -77,43 +79,76 @@ public class WorkspaceImageHelper {
      *            the new image path to use
      */
     public void updateStyle(BasicLabelStyle basicLabelStyle, String imagePath) {
-        updateWorkspacePath(basicLabelStyle, imagePath);
+        TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(basicLabelStyle);
+        if (domain != null) {
+            Command command = getWorkspacePathChangeCommand(domain, basicLabelStyle, imagePath);
+            domain.getCommandStack().execute(command);
+            refreshStyle();
+        }
+    }
+
+    /**
+     * Update the specified styles or replace it according to the specified imagePath.
+     * 
+     * @param basicLabelStyles
+     *            the list of styles to update or replace
+     * @param imagePath
+     *            the new image path to use
+     */
+    public void updateManyStyles(List<BasicLabelStyle> basicLabelStyles, String imagePath) {
+        TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(basicLabelStyles);
+        if (domain != null) {
+            CompoundCommand command = new CompoundCommand();
+            for (BasicLabelStyle basicLabelStyle : basicLabelStyles) {
+                command.append(getWorkspacePathChangeCommand(domain, basicLabelStyle, imagePath));
+            }
+            domain.getCommandStack().execute(command);
+            refreshStyle();
+        }
+    }
+
+    /**
+     * Refreshes style after workspace image update.
+     * 
+     * This method refresh the style of workspace image, this method must be executed after one or many execution of
+     * command returned by getWorkspacePathChangeCommand.
+     */
+    public void refreshStyle() {
         IEditorPart activeEditor = EclipseUIUtil.getActiveEditor();
-        if (activeEditor instanceof DiagramEditor) {
-            DiagramEditor diagramEditor = (DiagramEditor) activeEditor;
+        if (activeEditor instanceof DiagramEditor diagramEditor) {
             WorkspaceImageFigureRefresher.refreshAllEditPart(diagramEditor.getDiagramEditPart());
         }
     }
 
     /**
-     * Update the style according to a new image in the workspace.
+     * Build command to update the style according to a new image in the workspace.
      * 
+     * @param domain
+     *            the editing domain for command, must be non-null
      * @param basicLabelStyle
      *            the style to update or replace
      * @param workspacePath
      *            the new path of a image in the workspace
+     * @return the command to execute to update specified workspace image style.
      */
-    protected void updateWorkspacePath(BasicLabelStyle basicLabelStyle, String workspacePath) {
+    public Command getWorkspacePathChangeCommand(TransactionalEditingDomain domain, BasicLabelStyle basicLabelStyle, String workspacePath) {
         Command updateWorkspacePathCmd = null;
-        TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(basicLabelStyle);
-        if (domain != null) {
-            if (basicLabelStyle instanceof WorkspaceImage) {
-                updateWorkspacePathCmd = SetCommand.create(domain, basicLabelStyle, DiagramPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH, workspacePath);
-                if (!basicLabelStyle.getCustomFeatures().contains(DiagramPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH.getName())) {
-                    updateWorkspacePathCmd = updateWorkspacePathCmd.chain(
-                            AddCommand.create(domain, basicLabelStyle, ViewpointPackage.Literals.CUSTOMIZABLE__CUSTOM_FEATURES, DiagramPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH.getName()));
-                }
-            } else {
-                Object feature = getFeature(basicLabelStyle);
-                Object newWorkspaceImageStyle = getNewWorkspaceImageStyle(basicLabelStyle, workspacePath);
-                updateWorkspacePathCmd = SetCommand.create(domain, basicLabelStyle.eContainer(), feature, newWorkspaceImageStyle);
+        if (basicLabelStyle instanceof WorkspaceImage) {
+            updateWorkspacePathCmd = SetCommand.create(domain, basicLabelStyle, DiagramPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH, workspacePath);
+            if (!basicLabelStyle.getCustomFeatures().contains(DiagramPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH.getName())) {
+                updateWorkspacePathCmd = updateWorkspacePathCmd
+                        .chain(AddCommand.create(domain, basicLabelStyle, ViewpointPackage.Literals.CUSTOMIZABLE__CUSTOM_FEATURES, DiagramPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH.getName()));
             }
-            Command updateHeightCmd = getUpdateHeightCommand(domain, basicLabelStyle);
-            if (updateHeightCmd != null) {
-                updateWorkspacePathCmd = updateWorkspacePathCmd.chain(updateHeightCmd);
-            }
-            domain.getCommandStack().execute(updateWorkspacePathCmd);
+        } else {
+            Object feature = getFeature(basicLabelStyle);
+            Object newWorkspaceImageStyle = getNewWorkspaceImageStyle(basicLabelStyle, workspacePath);
+            updateWorkspacePathCmd = SetCommand.create(domain, basicLabelStyle.eContainer(), feature, newWorkspaceImageStyle);
         }
+        Command updateHeightCmd = getUpdateHeightCommand(domain, basicLabelStyle);
+        if (updateHeightCmd != null) {
+            updateWorkspacePathCmd = updateWorkspacePathCmd.chain(updateHeightCmd);
+        }
+        return updateWorkspacePathCmd;
     }
 
     private Command getUpdateHeightCommand(TransactionalEditingDomain domain, BasicLabelStyle basicLabelStyle) {

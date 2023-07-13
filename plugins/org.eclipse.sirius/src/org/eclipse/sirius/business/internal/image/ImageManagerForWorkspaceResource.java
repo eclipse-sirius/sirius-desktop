@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021, 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2021, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,10 +14,13 @@ package org.eclipse.sirius.business.internal.image;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.MessageFormat;
 import java.util.Base64;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Optional;
+import java.util.function.Supplier;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -74,42 +77,38 @@ public class ImageManagerForWorkspaceResource implements ImageManager {
     protected Map<String, String> htmlToOriginalImagePath = new LinkedHashMap<>();
 
     @Override
-    public String createFile(EObject contextObject, String simpleImageName, String base64) {
-        String pathToImage = null;
-
-        // Create an image file in the images folder of the project with the extension found in the
-        // Base64 encoding string
-        String platformString = contextObject.eResource().getURI().toPlatformString(true);
-
-        IFile airdFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(platformString));
-
-        IFolder imageFolder = airdFile.getProject().getFolder(ImageManager.IMAGE_FOLDER_NAME);
-        String wsImageName = ImageManager.IMAGE_FOLDER_NAME + SLASH + simpleImageName;
-        if (!imageFolder.exists()) {
-            try {
-                imageFolder.create(true, true, null);
-            } catch (CoreException e) {
-                SiriusPlugin.getDefault().error(MessageFormat.format(Messages.UpdateBase64ImageEncodingPreCommitListener_imageCreationFailure, wsImageName), e);
-            }
+    public CreateImageFileProvider getCreateFileFunc(EObject contextObject, String simpleImageName, String base64) throws CoreException, IOException {
+        byte[] decodedBytes = Base64.getDecoder().decode(base64);
+        try (var dataStream = new ByteArrayInputStream(decodedBytes)) {
+            return getCreateFileFunc(contextObject, simpleImageName, dataStream);
         }
-        IFile imageFile = airdFile.getProject().getFile(wsImageName);
-
-        if (createIFile(base64, imageFile)) {
-            String imageFullPath = imageFile.getFullPath().toString().replaceFirst("^" + SLASH, ""); //$NON-NLS-1$//$NON-NLS-2$
-            pathToImage = imageFullPath;
-        }
-        return pathToImage;
     }
 
-    private boolean createIFile(String base64, IFile imageFile) {
-        byte[] decodedBytes = Base64.getDecoder().decode(base64);
-        try (ByteArrayInputStream input = new ByteArrayInputStream(decodedBytes)) {
-            imageFile.create(input, true, null);
-        } catch (IOException | CoreException e) {
-            SiriusPlugin.getDefault().error(MessageFormat.format(Messages.UpdateBase64ImageEncodingPreCommitListener_imageCreationFailure, imageFile.getFullPath()), e);
-            return false;
+    @Override
+    public CreateImageFileProvider getCreateFileFunc(EObject contextObject, String simpleImageName, InputStream data) throws CoreException, IOException {
+        // Create an image file in the images folder of the project
+        String platformString = contextObject.eResource().getURI().toPlatformString(true);
+        IFile airdFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(platformString));
+        IFolder imageFolder = airdFile.getProject().getFolder(ImageManager.IMAGE_FOLDER_NAME);
+
+        if (!imageFolder.exists()) {
+            imageFolder.create(true, true, null);
         }
-        return true;
+
+        IFile imageFile = imageFolder.getFile(simpleImageName);
+        String filename = imageFile.getFullPath().toString().replaceFirst("^" + SLASH, ""); //$NON-NLS-1$//$NON-NLS-2$
+
+        // in the lambda we return exception because we can throw it
+        Supplier<Optional<CoreException>> createFileFunction = () -> {
+            try {
+                imageFile.create(data, true, null);
+                return Optional.empty();
+            } catch (CoreException e) {
+                return Optional.of(e);
+            }
+        };
+        // we return function because we need to execute image creation in command while keeping filename.
+        return new CreateImageFileProvider(createFileFunction, filename);
     }
 
     @Override
@@ -120,7 +119,7 @@ public class ImageManagerForWorkspaceResource implements ImageManager {
                 try {
                     file.delete(true, null);
                 } catch (CoreException e) {
-                    SiriusPlugin.getDefault().error(MessageFormat.format(Messages.UpdateBase64ImageEncodingPreCommitListener_imageCreationFailure, file.getFullPath()), e);
+                    SiriusPlugin.getDefault().error(MessageFormat.format(Messages.ImageManager_imageCreationFailure, file.getFullPath()), e);
                 }
             }
         }
@@ -134,7 +133,13 @@ public class ImageManagerForWorkspaceResource implements ImageManager {
                 String createFileName = createdFiles.get(base64String);
 
                 IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(createFileName));
-                createIFile(base64String, file);
+
+                byte[] decodedBytes = Base64.getDecoder().decode(base64String);
+                try (var dataStream = new ByteArrayInputStream(decodedBytes)) {
+                    file.create(dataStream, true, null);
+                } catch (CoreException | IOException e) {
+                    SiriusPlugin.getDefault().error(MessageFormat.format(Messages.ImageManager_imageCreationFailure, file.getFullPath()), e);
+                }
             }
         }
     }

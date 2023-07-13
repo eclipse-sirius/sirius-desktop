@@ -45,6 +45,9 @@ public interface ActionIds {
     /** Action contribution id for the copy style. */
     String PASTE_STYLE = "pasteStyleAction"; //$NON-NLS-1$
 
+    /** Action contribution id for the past image. */
+    String PASTE_IMAGE = "pasteImageAction"; //$NON-NLS-1$
+
     /** Action id for pin elements action. */
     String PIN_ELEMENTS = "pinElementsAction"; //$NON-NLS-1$
 
