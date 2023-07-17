@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.sirius.server.ui.autostart.feature"
       label="%featureName"
-      version="6.6.1.qualifier"
+      version="6.6.2.qualifier"
       provider-name="%providerName"
       license-feature="org.eclipse.license"
       license-feature-version="0.0.0">

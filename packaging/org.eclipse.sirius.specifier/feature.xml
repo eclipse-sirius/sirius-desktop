@@ -14,7 +14,7 @@
 <feature
       id="org.eclipse.sirius.specifier"
       label="%featureName"
-      version="6.6.1.qualifier"
+      version="6.6.2.qualifier"
       provider-name="%providerName"
       plugin="org.eclipse.sirius.editor"
       license-feature="org.eclipse.license"

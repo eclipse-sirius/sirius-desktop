@@ -18,13 +18,13 @@
   <parent>
     <groupId>org.eclipse.sirius</groupId>
     <artifactId>sirius-parent</artifactId>
-    <version>6.6.1-SNAPSHOT</version>
+    <version>6.6.2-SNAPSHOT</version>
     <relativePath>../../packaging/org.eclipse.sirius.parent</relativePath>
   </parent>
 
   <artifactId>org.eclipse.sirius.tests.product</artifactId>
   <packaging>eclipse-repository</packaging>
-  <version>6.6.1-SNAPSHOT</version>
+  <version>6.6.2-SNAPSHOT</version>
 
   <properties>
     <product-id>org.eclipse.sirius.tests.product</product-id>

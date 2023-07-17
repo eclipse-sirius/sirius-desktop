@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.services.diagram;singleton:=true
-Bundle-Version: 6.6.1.qualifier
+Bundle-Version: 6.6.2.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Localization: plugin
@@ -13,9 +13,9 @@ Export-Package: org.eclipse.sirius.services.diagram.api,
  org.eclipse.sirius.services.diagram.internal.actions;x-internal:=true,
  org.eclipse.sirius.services.diagram.internal.converter;x-internal:=true
 Require-Bundle: org.eclipse.emf.transaction;bundle-version="1.8.0",
- org.eclipse.sirius;bundle-version="6.6.1",
- org.eclipse.sirius.diagram;bundle-version="6.6.1",
- org.eclipse.sirius.ext.ide;bundle-version="6.6.1"
+ org.eclipse.sirius;bundle-version="6.6.2",
+ org.eclipse.sirius.diagram;bundle-version="6.6.2",
+ org.eclipse.sirius.ext.ide;bundle-version="6.6.2"
 Automatic-Module-Name: org.eclipse.sirius.services.diagram
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.eclipse.sirius.services.diagram.internal.SiriusDiagramPlugin$Implementation

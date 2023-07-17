@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
 Bundle-SymbolicName: org.eclipse.sirius.sample.properties;singleton:=true
-Bundle-Version: 6.6.1.qualifier
+Bundle-Version: 6.6.2.qualifier
 Bundle-Activator: org.eclipse.sirius.sample.properties.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
