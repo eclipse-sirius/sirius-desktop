@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="sirius-server" uid="org.eclipse.sirius.server.product" application="org.eclipse.sirius.server.application.SiriusServerApplication" version="6.6.1" useFeatures="true" includeLaunchers="true">
+<product name="sirius-server" uid="org.eclipse.sirius.server.product" application="org.eclipse.sirius.server.application.SiriusServerApplication" version="6.6.2" useFeatures="true" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>

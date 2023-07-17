@@ -2,18 +2,18 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.services.graphql.workspace;singleton:=true
-Bundle-Version: 6.6.1.qualifier
+Bundle-Version: 6.6.2.qualifier
 Bundle-Vendor: %providerName
 Automatic-Module-Name: org.eclipse.sirius.services.graphql.workspace
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Localization: plugin
-Export-Package: org.eclipse.sirius.services.graphql.workspace.api;version="6.6.1",
- org.eclipse.sirius.services.graphql.workspace.internal;version="6.6.1";x-internal:=true,
- org.eclipse.sirius.services.graphql.workspace.internal.schema;version="6.6.1";x-internal:=true
+Export-Package: org.eclipse.sirius.services.graphql.workspace.api;version="6.6.2",
+ org.eclipse.sirius.services.graphql.workspace.internal;version="6.6.2";x-internal:=true,
+ org.eclipse.sirius.services.graphql.workspace.internal.schema;version="6.6.2";x-internal:=true
 Require-Bundle: org.eclipse.core.runtime;bundle-version="3.0.0",
  org.eclipse.core.resources;bundle-version="3.0.0",
  org.eclipse.emf.common;bundle-version="2.8.0",
- org.eclipse.sirius.services.graphql.common;bundle-version="6.6.1"
+ org.eclipse.sirius.services.graphql.common;bundle-version="6.6.2"
 Import-Package: graphql;version="[11.0.0,11.0.1)",
  graphql.schema;version="[11.0.0,11.0.1)"
 Bundle-ActivationPolicy: lazy

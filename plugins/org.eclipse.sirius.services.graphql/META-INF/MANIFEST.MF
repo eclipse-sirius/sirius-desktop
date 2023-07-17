@@ -2,30 +2,30 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.services.graphql
-Bundle-Version: 6.6.1.qualifier
+Bundle-Version: 6.6.2.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Localization: plugin
-Export-Package: org.eclipse.sirius.services.graphql.api;version="6.6.1",
- org.eclipse.sirius.services.graphql.internal;version="6.6.1";x-internal:=true,
- org.eclipse.sirius.services.graphql.internal.entities;version="6.6.1";x-internal:=true,
- org.eclipse.sirius.services.graphql.internal.schema;version="6.6.1";x-friends:="org.eclipse.sirius.tests.services.graphql",
- org.eclipse.sirius.services.graphql.internal.schema.mutation;version="6.6.1";x-internal:=true,
- org.eclipse.sirius.services.graphql.internal.schema.query;version="6.6.1";x-internal:=true,
- org.eclipse.sirius.services.graphql.internal.schema.query.user;version="6.6.1";x-internal:=true,
- org.eclipse.sirius.services.graphql.internal.schema.mutation;version="6.6.1";x-internal:=true
+Export-Package: org.eclipse.sirius.services.graphql.api;version="6.6.2",
+ org.eclipse.sirius.services.graphql.internal;version="6.6.2";x-internal:=true,
+ org.eclipse.sirius.services.graphql.internal.entities;version="6.6.2";x-internal:=true,
+ org.eclipse.sirius.services.graphql.internal.schema;version="6.6.2";x-friends:="org.eclipse.sirius.tests.services.graphql",
+ org.eclipse.sirius.services.graphql.internal.schema.mutation;version="6.6.2";x-internal:=true,
+ org.eclipse.sirius.services.graphql.internal.schema.query;version="6.6.2";x-internal:=true,
+ org.eclipse.sirius.services.graphql.internal.schema.query.user;version="6.6.2";x-internal:=true,
+ org.eclipse.sirius.services.graphql.internal.schema.mutation;version="6.6.2";x-internal:=true
 Require-Bundle: org.eclipse.core.runtime;bundle-version="3.8.0",
  org.eclipse.core.resources;bundle-version="3.8.0",
  org.eclipse.emf.common;bundle-version="2.8.0",
  org.eclipse.emf.ecore;bundle-version="2.8.0",
  org.eclipse.emf.transaction;bundle-version="1.5.0",
- org.eclipse.sirius;bundle-version="6.6.1",
- org.eclipse.sirius.ext.base;bundle-version="6.6.1",
- org.eclipse.sirius.services.common;bundle-version="6.6.1",
- org.eclipse.sirius.services.graphql.common;bundle-version="6.6.1",
- org.eclipse.sirius.services.graphql.core;bundle-version="6.6.1",
- org.eclipse.sirius.services.graphql.emf;bundle-version="6.6.1",
- org.eclipse.sirius.services.graphql.workspace;bundle-version="6.6.1"
+ org.eclipse.sirius;bundle-version="6.6.2",
+ org.eclipse.sirius.ext.base;bundle-version="6.6.2",
+ org.eclipse.sirius.services.common;bundle-version="6.6.2",
+ org.eclipse.sirius.services.graphql.common;bundle-version="6.6.2",
+ org.eclipse.sirius.services.graphql.core;bundle-version="6.6.2",
+ org.eclipse.sirius.services.graphql.emf;bundle-version="6.6.2",
+ org.eclipse.sirius.services.graphql.workspace;bundle-version="6.6.2"
 Automatic-Module-Name: org.eclipse.sirius.services.graphql
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.eclipse.sirius.services.graphql.internal.SiriusGraphQLPlugin$Implementation

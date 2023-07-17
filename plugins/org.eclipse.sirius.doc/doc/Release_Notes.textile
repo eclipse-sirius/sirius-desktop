@@ -4,6 +4,12 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for recent major releases of Sirius. See also "the release notes from previous versions":Release_Notes_Previous.html for details about older releases.
 
+h2(#sirius6.6.1). Changes in Sirius 6.6.1
+
+h3. User-Visible Changes
+
+* <span class="label label-info">Modified</span> Optimize performance of diagram filters.
+
 h2(#sirius6.6.0). Changes in Sirius 6.6.0
 
 h3. User-Visible Changes
