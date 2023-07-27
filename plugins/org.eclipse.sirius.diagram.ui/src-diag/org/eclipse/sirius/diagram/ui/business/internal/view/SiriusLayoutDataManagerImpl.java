@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -30,20 +30,16 @@ import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.draw2d.FigureCanvas;
-import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Point;
-import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
-import org.eclipse.gef.SnapToHelper;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gef.commands.UnexecutableCommand;
-import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.common.core.util.ObjectAdapter;
 import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
@@ -190,9 +186,6 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      * part of its container.
      */
     private Map<Diagram, Set<View>> createdViewWithCenterLayout = new HashMap<Diagram, Set<View>>();
-
-    /** layout helper used to help locate shape created with undefined points */
-    private SiriusLayoutHelper layoutHelper;
 
     /**
      * Avoid instantiation.
@@ -567,25 +560,17 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
         Rectangle rect = new Rectangle();
         rect.setSize(LayoutHelper.UNDEFINED.getSize());
         Point centerLocation;
+        IGraphicalEditPart part = (IGraphicalEditPart) host.getViewer().getEditPartRegistry().get(iAdaptable.getAdapter(View.class));
         if (previousCenterLocation == null) {
             // Get center (reference point)
-            Point referencePoint = getLayoutHelper().getReferencePosition(host.getContentPane(), ((FigureCanvas) host.getViewer().getControl()).getViewport(), host);
+            SiriusLayoutHelper layoutHelper = new SiriusLayoutHelper(host);
+            Point referencePoint = layoutHelper.getReferencePosition(host.getContentPane(), ((FigureCanvas) host.getViewer().getControl()).getViewport(), host);
             rect.setLocation(referencePoint);
+            rect.setSize(part.getFigure().getSize());
             // Get the first free location
-            Point point = getLayoutHelper().validatePosition(host.getContentPane(), rect);
-            // Snap the first free location
-            PrecisionPoint result = new PrecisionPoint(point);
-            // We must apply the zoom to be compatible with what SnapToHelper expects
-            GraphicalHelper.logical2screen(result, host);
-            SnapToHelper helper = host.getAdapter(SnapToHelper.class);
-            if (helper != null) {
-                PrecisionPoint preciseLocation = new PrecisionPoint(result);
-                helper.snapPoint(new CreateRequest(), PositionConstants.HORIZONTAL | PositionConstants.VERTICAL, preciseLocation, result);
-            }
-            // Inverse zoom to retrieve expected coordinates here
-            GraphicalHelper.screen2logical(result, host);
-            rect.setLocation(result);
-            centerLocation = result.getCopy();
+            Point point = layoutHelper.validatePosition(host.getContentPane(), rect);
+            rect.setLocation(point);
+            centerLocation = point.getCopy();
         } else {
             int padding = SiriusLayoutDataManager.PADDING;
             if (GraphicalHelper.isSnapToGridEnabled(host)) {
@@ -593,21 +578,8 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
             }
             centerLocation = new Point(previousCenterLocation).getTranslated(padding, padding);
         }
-        IGraphicalEditPart part = (IGraphicalEditPart) host.getViewer().getEditPartRegistry().get(iAdaptable.getAdapter(View.class));
         cc.add(new ICommandProxy(new SetBoundsCommand(host.getEditingDomain(), DiagramUIMessages.SetLocationCommand_Label_Resize, part, centerLocation)));
         return centerLocation.getCopy();
-    }
-
-    /**
-     * Return this layout helper.
-     * 
-     * @return this layout helper
-     */
-    private SiriusLayoutHelper getLayoutHelper() {
-        if (layoutHelper == null) {
-            layoutHelper = new SiriusLayoutHelper();
-        }
-        return layoutHelper;
     }
 
     /**
