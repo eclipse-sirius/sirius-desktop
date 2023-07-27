@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,40 +16,47 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Viewport;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
 import org.eclipse.sirius.ext.draw2d.figure.FigureUtilities;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
 /**
- * Override GMF LayoutHelper to use the center of the visible part of the
- * container (and not just the center of the part of the container) for
- * reference position.
+ * Override GMF LayoutHelper to use the center of the visible part of the container (and not just the center of the part
+ * of the container) for reference position.
  * 
  * @author lredor
  */
 public class SiriusLayoutHelper extends org.eclipse.gmf.runtime.diagram.ui.figures.LayoutHelper {
 
     /**
-     * Default constructor.
-     * 
+     * The container edit part.
      */
-    public SiriusLayoutHelper() {
-        super();
+    private IGraphicalEditPart containerEditPart;
+
+    /**
+     * Creates a new instance of {@link SiriusLayoutHelper}.
+     * 
+     * @param editPart
+     *            the container edit part.
+     */
+    public SiriusLayoutHelper(IGraphicalEditPart editPart) {
+        this.containerEditPart = editPart;
     }
 
     /**
-     * Override to use the center of the visible part of the container and not
-     * just the center of the part of the container.
+     * Override to use the center of the visible part of the container and not just the center of the part of the
+     * container.
      * 
      * @param parent
-     *            the containing figure (typically <tt>layout()</tt>'s input
-     *            parameter)
+     *            the containing figure (typically <tt>layout()</tt>'s input parameter)
      * @param viewport
      *            The {@link Viewport} of the current diagram
      * @param part
      *            a part from the diagram.
-     * @return the nearest free point of the center of the visible part of the
-     *         container (in logical coordinates, not in screen coordinates).
+     * @return the nearest free point of the center of the visible part of the container (in logical coordinates, not in
+     *         screen coordinates).
      */
     public Point getReferencePosition(IFigure parent, Viewport viewport, IGraphicalEditPart part) {
         Point result;
@@ -80,6 +87,14 @@ public class SiriusLayoutHelper extends org.eclipse.gmf.runtime.diagram.ui.figur
             result = parentVisibleArea.getCenter();
             FigureUtilities.translateToRelativeByIgnoringScrollbar(parent, result);
         }
-        return result;
+        EditPartQuery editPartQuery = new EditPartQuery(this.containerEditPart);
+        return editPartQuery.getSnapLocation(new CreateRequest(), result);
+    }
+
+    @Override
+    public Point updateClobberedPosition(IFigure clobbered, IFigure newlyAddedChild) {
+        Point clobberedPosition = super.updateClobberedPosition(clobbered, newlyAddedChild);
+        EditPartQuery editPartQuery = new EditPartQuery(this.containerEditPart);
+        return editPartQuery.getSnapLocation(new CreateRequest(), clobberedPosition);
     }
 }

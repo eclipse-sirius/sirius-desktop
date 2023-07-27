@@ -668,16 +668,15 @@ public class EditPartQuery {
      * @return the corrected location.
      */
     public Point getSnapLocation(Request request, Point proposedLocation) {
+        PrecisionPoint result = new PrecisionPoint(proposedLocation);
         if (isSnapToGridEnabled()) {
             Object helper = part.getAdapter(SnapToHelper.class);
-            if (helper instanceof SnapToHelper) {
+            if (helper instanceof SnapToHelper snapToHelper) {
                 PrecisionPoint preciseLocation = new PrecisionPoint(proposedLocation);
-                PrecisionPoint result = new PrecisionPoint(proposedLocation);
-                ((SnapToHelper) helper).snapPoint(request, PositionConstants.HORIZONTAL | PositionConstants.VERTICAL, preciseLocation, result);
-                return result.getCopy();
+                snapToHelper.snapPoint(request, PositionConstants.HORIZONTAL | PositionConstants.VERTICAL, preciseLocation, result);
             }
         }
-        return proposedLocation;
+        return result.getCopy();
     }
 
     /**
