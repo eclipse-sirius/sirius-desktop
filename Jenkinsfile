@@ -10,6 +10,11 @@ pipeline {
 
     stages {
         stage('Parallel Tests') {
+            when {
+                not {
+                    branch 'master'
+                }
+            }
             parallel {
                 stage('JUnit') {
                     agent {
