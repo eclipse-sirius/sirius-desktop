@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interactions:Interaction xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:interactions="http://www.eclipse.org/sirius/sample/interactions" name="rootInteraction">
+  <participants name="newParticipant1"/>
+</interactions:Interaction>

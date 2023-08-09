@@ -1,27 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:table="http://www.eclipse.org/sirius/table/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/table/description/1.1.0 http://www.eclipse.org/sirius/table/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_4wLwoGu3EeuuXbLvG4gakA" selectedViews="_8nfZYGu3EeuuXbLvG4gakA" version="15.0.0.202201261500">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:interactions="http://www.eclipse.org/sirius/sample/interactions" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:sequence="http://www.eclipse.org/sirius/diagram/sequence/2.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:table="http://www.eclipse.org/sirius/table/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/table/description/1.1.0 http://www.eclipse.org/sirius/table/1.1.0#//description http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0 http://www.eclipse.org/sirius/diagram/sequence/2.0.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis uid="_4wLwoGu3EeuuXbLvG4gakA" selectedViews="_8nfZYGu3EeuuXbLvG4gakA _2PNgwDagEe6u54Qv7g9TQA" version="15.2.0.202303281325">
     <semanticResources>My.ecore</semanticResources>
+    <semanticResources>My.interactions</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_8nfZYGu3EeuuXbLvG4gakA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_8t7_oGu3EeuuXbLvG4gakA" name="root package entities" repPath="#_8tukQGu3EeuuXbLvG4gakA" changeId="8ef0879d-3539-4b60-a155-007d52a1514e">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_8t7_oGu3EeuuXbLvG4gakA" name="root package entities" repPath="#_8tukQGu3EeuuXbLvG4gakA" changeId="1691577482639">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_KjzRUGu6EeucgZBzLx9xaw" name="Classes in root package" repPath="#_Kh3-sGu6EeucgZBzLx9xaw" changeId="296e4f9d-2135-4113-b1f6-0e24ec65d399">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_KjzRUGu6EeucgZBzLx9xaw" name="Classes in root package" repPath="#_Kh3-sGu6EeucgZBzLx9xaw" changeId="1691577482639">
         <description xmi:type="description_2:EditionTableDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Classes']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_XlP0gAj6Ee2OwOZgulCHPg" name="no target package entities BROKEN NoTarget" repPath="#_XlNYQAj6Ee2OwOZgulCHPg" changeId="4effe867-8579-4177-b1b2-a462a907f4b3">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_XlP0gAj6Ee2OwOZgulCHPg" name="no target package entities BROKEN NoTarget" repPath="#_XlNYQAj6Ee2OwOZgulCHPg" changeId="1691577482639">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_TMvtwAj7Ee2OwOZgulCHPg" name="root package entities BROKEN NoRepPath">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_TMvtwAj7Ee2OwOZgulCHPg" name="root package entities BROKEN NoRepPath" changeId="1691577482639">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Uf3ihgj7Ee2OwOZgulCHPg" name="root package entities BROKEN NoRep" repPath="#_Uf2UYAj7Ee2OwOZgulCHPg">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Uf3ihgj7Ee2OwOZgulCHPg" name="root package entities BROKEN NoRep" repPath="#_Uf2UYAj7Ee2OwOZgulCHPg" changeId="1691577482639">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+    <ownedViews xmi:type="viewpoint:DView" uid="_2PNgwDagEe6u54Qv7g9TQA">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_3xGxUDagEe6u54Qv7g9TQA" name="Sequence Diagram on rootInteraction" repPath="#_3xFjMDagEe6u54Qv7g9TQA" changeId="1691577506303">
+        <description xmi:type="description_3:SequenceDiagramDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']"/>
+        <target xmi:type="interactions:Interaction" href="My.interactions#/"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
   </viewpoint:DAnalysis>
@@ -364,4 +372,77 @@
     </columns>
     <description xmi:type="description_2:EditionTableDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Classes']"/>
   </table:DTable>
+  <sequence:SequenceDDiagram uid="_3xFjMDagEe6u54Qv7g9TQA">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_3xLCwDagEe6u54Qv7g9TQA" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_3xLCwTagEe6u54Qv7g9TQA" type="Sirius" element="_3xFjMDagEe6u54Qv7g9TQA" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_3xRJYDagEe6u54Qv7g9TQA" type="2001" element="_3xM38DagEe6u54Qv7g9TQA">
+          <children xmi:type="notation:Node" xmi:id="_3xS-kDagEe6u54Qv7g9TQA" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_3xS-kTagEe6u54Qv7g9TQA" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_3xTloDagEe6u54Qv7g9TQA" type="3001" element="_3xOtIDagEe6u54Qv7g9TQA">
+            <children xmi:type="notation:Node" xmi:id="_3xTlozagEe6u54Qv7g9TQA" type="5001">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_3xTlpDagEe6u54Qv7g9TQA" x="-44"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_3xVa0DagEe6u54Qv7g9TQA" type="3003" element="_3xOtITagEe6u54Qv7g9TQA">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_3xVa0TagEe6u54Qv7g9TQA" fontName=".AppleSystemUIFont"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3xVa0jagEe6u54Qv7g9TQA"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_3xVa0zagEe6u54Qv7g9TQA" type="3001" element="_3xPUMDagEe6u54Qv7g9TQA">
+              <children xmi:type="notation:Node" xmi:id="_3xVa1jagEe6u54Qv7g9TQA" type="5001">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_3xVa1zagEe6u54Qv7g9TQA" x="-1"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_3xVa2DagEe6u54Qv7g9TQA" type="3002" element="_3xPUMTagEe6u54Qv7g9TQA">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_3xVa2TagEe6u54Qv7g9TQA" fontName=".AppleSystemUIFont"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3xVa2jagEe6u54Qv7g9TQA"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_3xVa1DagEe6u54Qv7g9TQA" fontName=".AppleSystemUIFont" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3xVa1TagEe6u54Qv7g9TQA" x="-53" y="395" width="10" height="10"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_3xTloTagEe6u54Qv7g9TQA" fontName=".AppleSystemUIFont" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3xTlojagEe6u54Qv7g9TQA" y="42" width="10" height="395"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_3xUzwDagEe6u54Qv7g9TQA" type="3003" element="_3xNfADagEe6u54Qv7g9TQA">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_3xUzwTagEe6u54Qv7g9TQA" fontName=".AppleSystemUIFont"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3xUzwjagEe6u54Qv7g9TQA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_3xRJYTagEe6u54Qv7g9TQA" fontName=".AppleSystemUIFont" fontHeight="12" bold="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3xRJYjagEe6u54Qv7g9TQA" x="50" y="50" width="120" height="50"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_3xLCwjagEe6u54Qv7g9TQA"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_3xP7QDagEe6u54Qv7g9TQA" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_3xP7QTagEe6u54Qv7g9TQA"/>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_3xM38DagEe6u54Qv7g9TQA" name="newParticipant1 : " width="12" height="5" resizeKind="NSEW">
+      <target xmi:type="interactions:Participant" href="My.interactions#//@participants.0"/>
+      <semanticElements xmi:type="interactions:Participant" href="My.interactions#//@participants.0"/>
+      <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_3yKhQDagEe6u54Qv7g9TQA" x="50" y="50" height="50" width="120"/>
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_3xOtIDagEe6u54Qv7g9TQA" width="1" height="40" resizeKind="NSEW">
+        <target xmi:type="interactions:Participant" href="My.interactions#//@participants.0"/>
+        <semanticElements xmi:type="interactions:Participant" href="My.interactions#//@participants.0"/>
+        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_3xPUMDagEe6u54Qv7g9TQA" width="1" height="1">
+          <target xmi:type="interactions:Participant" href="My.interactions#//@participants.0"/>
+          <semanticElements xmi:type="interactions:Participant" href="My.interactions#//@participants.0"/>
+          <ownedStyle xmi:type="diagram:Dot" uid="_3xPUMTagEe6u54Qv7g9TQA" strokeSizeComputationExpression="1">
+            <description xmi:type="style:DotDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='redimEOL']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_3:EndOfLifeMapping" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='redimEOL']"/>
+        </ownedBorderedNodes>
+        <ownedStyle xmi:type="diagram:Square" uid="_3xOtITagEe6u54Qv7g9TQA" showIcon="false" borderSize="3" borderSizeComputationExpression="3" borderColor="114,159,207" width="1" height="40" color="255,255,255">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_3:ExecutionMapping" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']"/>
+      </ownedBorderedNodes>
+      <ownedStyle xmi:type="diagram:Square" uid="_3xNfADagEe6u54Qv7g9TQA" labelSize="12" showIcon="false" labelPosition="node" width="12" height="5" color="114,159,207">
+        <labelFormat>bold</labelFormat>
+        <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_3:InstanceRoleMapping" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_3:SequenceDiagramDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_3xGKQDagEe6u54Qv7g9TQA"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer"/>
+    <target xmi:type="interactions:Interaction" href="My.interactions#/"/>
+  </sequence:SequenceDDiagram>
 </xmi:XMI>
