@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2020, 2022 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -373,13 +373,14 @@ public final class DAnalysisSessionHelper {
             // proxy
             if (rootContainerInSameResource != null) {
                 boolean isMainModelOfReferencedAnalysis = false;
-                for (DAnalysis referencedAnalysis : new DAnalysisQuery(analysis).getAllReferencedAnalyses()) {
+                Collection<DAnalysis> allReferencedAnalyses = new DAnalysisQuery(analysis).getAllReferencedAnalyses();
+                for (DAnalysis referencedAnalysis : allReferencedAnalyses) {
                     Option<EObject> optionalMainModel = new DAnalysisQuery(referencedAnalysis).getMainModel();
                     if (optionalMainModel.some() && optionalMainModel.get().equals(rootContainerInSameResource)) {
                         isMainModelOfReferencedAnalysis = true;
                     }
                 }
-                if (!isMainModelOfReferencedAnalysis) {
+                if (!isMainModelOfReferencedAnalysis && !(rootContainerInSameResource instanceof DAnalysis)) {
                     analysis.getSemanticResources().add(new ResourceDescriptor(rootContainerInSameResource.eResource().getURI()));
                 }
             }
