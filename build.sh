@@ -2,7 +2,7 @@
 
 set -e
 
-readonly PLATFORM=${1:-2021-06}
+readonly PLATFORM=${1:-2023-03}
 readonly GOAL=${2:-package}
 readonly TESTS_SUITES=${3:-junit,swtbot-sequence,swtbot}
 readonly BUILD_POM="packaging/org.eclipse.sirius.parent/pom.xml"
