@@ -204,7 +204,10 @@ public final class SessionDetailsReport {
             }
             String simpleNameForDescription = dRepresentationDescriptor.getDescription().getClass().getSimpleName();
             simpleNameForDescription = simpleNameForDescription.replace("Description", ""); //$NON-NLS-1$//$NON-NLS-2$
-            if (simpleNameForDescription.contains("Diagram")) { //$NON-NLS-1$
+            if (simpleNameForDescription.contains("Sequence")) { //$NON-NLS-1$
+                nbSequence++;
+                tags.append(BRACKET_IN + Messages.SessionQuery_Sequence + BRACKET_OUT);
+            } else if (simpleNameForDescription.contains("Diagram")) { //$NON-NLS-1$
                 nbDiagram++;
                 tags.append(BRACKET_IN + Messages.SessionQuery_Diagram + BRACKET_OUT);
             } else if (simpleNameForDescription.contains("EditionTable")) { //$NON-NLS-1$
@@ -216,9 +219,6 @@ public final class SessionDetailsReport {
             } else if (simpleNameForDescription.contains("Tree")) { //$NON-NLS-1$
                 nbTree++;
                 tags.append(BRACKET_IN + Messages.SessionQuery_Tree + BRACKET_OUT);
-            } else if (simpleNameForDescription.contains("Sequence")) { //$NON-NLS-1$
-                nbSequence++;
-                tags.append(BRACKET_IN + Messages.SessionQuery_Sequence + BRACKET_OUT);
             } else {
                 tags.append(BRACKET_IN + simpleNameForDescription + BRACKET_OUT);
             }
