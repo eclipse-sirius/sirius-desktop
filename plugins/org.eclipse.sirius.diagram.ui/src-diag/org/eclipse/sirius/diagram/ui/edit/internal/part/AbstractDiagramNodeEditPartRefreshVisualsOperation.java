@@ -76,8 +76,7 @@ public class AbstractDiagramNodeEditPartRefreshVisualsOperation {
     /**
      * Check if refresh can occur.
      * 
-     * @return <code>true</code> if refresh methods could be called safely,
-     *         <code>false</code> otherwise
+     * @return <code>true</code> if refresh methods could be called safely, <code>false</code> otherwise
      */
     public boolean canRefresh() {
         return node != null;
@@ -180,8 +179,10 @@ public class AbstractDiagramNodeEditPartRefreshVisualsOperation {
 
         final int tmpWidth = ((Integer) getStructuralFeatureValue(NotationPackage.eINSTANCE.getSize_Width())).intValue();
         DDiagramElementQuery query = new DDiagramElementQuery(node);
-        if (tmpWidth > 0 && (new DNodeQuery(node).allowsHorizontalResize() || query.isCollapsed())) {
+        if (new DNodeQuery(node).allowsHorizontalResize() || query.isCollapsed() && tmpWidth > 0) {
             width = tmpWidth;
+        } else if (tmpWidth <= 0) {
+            width = -1;
         }
 
         // style
@@ -210,8 +211,10 @@ public class AbstractDiagramNodeEditPartRefreshVisualsOperation {
         }
 
         final int tmpHeight = ((Integer) getStructuralFeatureValue(NotationPackage.eINSTANCE.getSize_Height())).intValue();
-         if (tmpHeight > 0) {
+        if (tmpHeight > 0) {
             height = tmpHeight;
+        } else {
+            height = -1;
         }
 
         // workspace image ? keep ratio
@@ -223,10 +226,8 @@ public class AbstractDiagramNodeEditPartRefreshVisualsOperation {
     }
 
     /**
-     * Convenience method to retreive the value for the supplied value from the
-     * editpart's associated view element. Same as calling
-     * <code> ViewUtil.getStructuralFeatureValue(getNotationView(),feature)</code>
-     * .
+     * Convenience method to retreive the value for the supplied value from the editpart's associated view element. Same
+     * as calling <code> ViewUtil.getStructuralFeatureValue(getNotationView(),feature)</code> .
      * 
      * @param feature
      *            the feature

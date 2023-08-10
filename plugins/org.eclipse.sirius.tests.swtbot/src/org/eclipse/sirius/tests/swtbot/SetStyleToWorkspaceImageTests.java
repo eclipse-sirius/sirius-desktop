@@ -795,7 +795,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
         Dimension newGMFSize = getSize((Node) part.getNotationView());
         Dimension newD2DSize = getSize(part.getFigure());
 
-        assertEquals("The GMF height should be set to -1.", -1, newGMFSize.height);
+        assertEquals("The GMF height should be kept.", oldGMFSize.height, newGMFSize.height);
         assertEquals("The GMF width should be kept.", oldGMFSize.width, newGMFSize.width);
 
         if (part instanceof IDiagramContainerEditPart || part instanceof IDiagramListEditPart) {

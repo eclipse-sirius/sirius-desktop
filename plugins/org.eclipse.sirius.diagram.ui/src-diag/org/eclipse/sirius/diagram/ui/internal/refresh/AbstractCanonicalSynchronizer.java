@@ -55,6 +55,7 @@ import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer;
+import org.eclipse.sirius.diagram.description.style.SquareDescription;
 import org.eclipse.sirius.diagram.model.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.model.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
@@ -763,8 +764,15 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
 
     private Dimension getDefaultSize(AbstractDNode abstractDNode) {
         Dimension defaultSize = new Dimension(-1, -1);
-        if (abstractDNode instanceof DNode) {
-            defaultSize = new DNodeQuery((DNode) abstractDNode).getDefaultDimension();
+        if (abstractDNode instanceof DNode viewNode) {
+            boolean isSquareDescription = false;
+            if (viewNode.getStyle() != null) {
+                isSquareDescription = viewNode.getStyle().getDescription() instanceof SquareDescription;
+            }
+            boolean isAutoSizeStyle = new DNodeQuery(viewNode).isAutoSizeStyle();
+            if (!isSquareDescription || (isSquareDescription && !isAutoSizeStyle)) {
+                defaultSize = new DNodeQuery(viewNode).getDefaultDimension();
+            }
         }
         return defaultSize;
     }
