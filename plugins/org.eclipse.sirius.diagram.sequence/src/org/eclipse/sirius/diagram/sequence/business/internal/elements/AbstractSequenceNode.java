@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.elements;
 
+import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.notation.Bounds;
@@ -19,6 +20,8 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeQuery;
 import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
@@ -61,9 +64,14 @@ abstract class AbstractSequenceNode extends AbstractSequenceElement implements I
         if (!(node.getElement() instanceof DDiagramElement)) {
             return null;
         } else {
-            Point absLoc = GMFNotationHelper.getAbsoluteLocation(node);
             int width = GMFNotationHelper.getWidth(node);
             int height = GMFNotationHelper.getHeight(node);
+            Point absLoc = GMFNotationHelper.getAbsoluteLocation(node);
+            if (node.getElement() instanceof DNode dnode) {
+                Dimension dimension = new DNodeQuery(dnode).getDefaultDimension();
+                width = Math.max(dimension.width, width);
+                height = Math.max(dimension.height, height);
+            }
             return new Rectangle(absLoc.x, absLoc.y, width, height);
         }
     }

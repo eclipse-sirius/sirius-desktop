@@ -537,7 +537,7 @@ Most styles give you some control on the size of the graphical elements. The pro
 
 * _Allow resizing_: You can decide if end-users are allowed to resize graphical elements _Horizontally_ and/or _Vertically_. Most styles allow resizing on both directions by default.
 * Initial _Width_ and _Height_ can be specified explicitly. A value of 0 indicates no explicit width or height. The initial value will be taken from the style's default or from the _Size Computation Expression_ if specified.
-* _Size Computation Expression_: An expression used to dynamically compute the size of a graphical element. It is evaluated in the context of the target element, and should return an integer.
+* _Size Computation Expression_: An expression used to dynamically compute the size of a graphical element. It is evaluated in the context of the target element, and should return an integer. By default, the value 3 is used to define a size of 30 pixels for the graphic element. The -1 value can be used to use the "auto size" mode, which works for all styles applicable to Containers, and the Square style applicable to Nodes. For WorkspaceImage style, set -1 as Size Computation Expression to use the size of the image as the size of the graphic element.
 * _Border Size Computation Expression_: An expression which is used to dynamically compute the size of the border of graphical element. It is evaluated in the context of the target element, and should return the border size _in pixels_.
 
 h3(#colors). Colors

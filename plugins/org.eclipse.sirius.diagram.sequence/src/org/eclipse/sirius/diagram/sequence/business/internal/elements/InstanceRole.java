@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.elements;
 
+import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.Bounds;
@@ -24,6 +25,7 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.business.api.query.NodeStyleQuery;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.tool.internal.Messages;
+import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
@@ -135,7 +137,14 @@ public class InstanceRole extends AbstractSequenceNode {
     public Rectangle getProperLogicalBounds() {
         if (getNotationNode().getLayoutConstraint() instanceof Bounds) {
             Bounds bounds = (Bounds) getNotationNode().getLayoutConstraint();
-            return new Rectangle(bounds.getX(), bounds.getY(), bounds.getWidth(), bounds.getHeight());
+            int width = bounds.getWidth();
+            int height = bounds.getHeight();
+            if (view.getElement() instanceof DNode dnode) {
+                Dimension dimension = new DNodeQuery(dnode).getDefaultDimension();
+                width = Math.max(dimension.width, width);
+                height = Math.max(dimension.height, height);
+            }
+            return new Rectangle(bounds.getX(), bounds.getY(), width, height);
         } else {
             throw new RuntimeException();
         }

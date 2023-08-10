@@ -25,10 +25,6 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
-import org.eclipse.gmf.runtime.notation.LayoutConstraint;
-import org.eclipse.gmf.runtime.notation.Node;
-import org.eclipse.gmf.runtime.notation.NotationPackage;
-import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
@@ -41,7 +37,6 @@ import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.WorkspaceImage;
-import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.StyleHelper;
 import org.eclipse.sirius.diagram.description.style.BorderedStyleDescription;
 import org.eclipse.sirius.diagram.description.style.StyleFactory;
@@ -144,31 +139,7 @@ public class WorkspaceImageHelper {
             Object newWorkspaceImageStyle = getNewWorkspaceImageStyle(basicLabelStyle, workspacePath);
             updateWorkspacePathCmd = SetCommand.create(domain, basicLabelStyle.eContainer(), feature, newWorkspaceImageStyle);
         }
-        Command updateHeightCmd = getUpdateHeightCommand(domain, basicLabelStyle);
-        if (updateHeightCmd != null) {
-            updateWorkspacePathCmd = updateWorkspacePathCmd.chain(updateHeightCmd);
-        }
         return updateWorkspacePathCmd;
-    }
-
-    private Command getUpdateHeightCommand(TransactionalEditingDomain domain, BasicLabelStyle basicLabelStyle) {
-        Command updateHeightCommand = null;
-        EObjectQuery eObjectQuery = new EObjectQuery(basicLabelStyle.eContainer());
-        Collection<EObject> inverseReferences = eObjectQuery.getInverseReferences(NotationPackage.Literals.VIEW__ELEMENT);
-        if (!inverseReferences.isEmpty()) {
-            EObject next = inverseReferences.iterator().next();
-            if (next instanceof Node) {
-                Node node = (Node) next;
-                LayoutConstraint layoutConstraint = node.getLayoutConstraint();
-                if (layoutConstraint instanceof Size) {
-                    Size size = (Size) layoutConstraint;
-                    if (size.getHeight() != -1) {
-                        updateHeightCommand = SetCommand.create(domain, size, NotationPackage.Literals.SIZE__HEIGHT, -1);
-                    }
-                }
-            }
-        }
-        return updateHeightCommand;
     }
 
     private Object getFeature(BasicLabelStyle basicLabelStyle) {

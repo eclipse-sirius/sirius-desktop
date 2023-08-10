@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -31,14 +31,14 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
+import org.eclipse.sirius.diagram.description.style.SquareDescription;
 import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeQuery;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 
 /**
- * Abstract view factory to gather the creation of the different type of view
- * created from DNode.
+ * Abstract view factory to gather the creation of the different type of view created from DNode.
  * 
  * @author mporhel
  * 
@@ -126,9 +126,16 @@ public abstract class AbstractDNodeViewFactory extends AbstractDesignerNodeFacto
             Size size = (Size) ((Node) view).getLayoutConstraint();
             DNode viewNode = semanticAdapter.getAdapter(DNode.class);
             if (viewNode != null) {
-                Dimension defaultDimension = new DNodeQuery(viewNode).getDefaultDimension();
-                size.setHeight(defaultDimension.height);
-                size.setWidth(defaultDimension.width);
+                boolean isSquareDescription = false;
+                if (viewNode.getStyle() != null) {
+                    isSquareDescription = viewNode.getStyle().getDescription() instanceof SquareDescription;
+                }
+                boolean isAutoSizeStyle = new DNodeQuery(viewNode).isAutoSizeStyle();
+                if (!isSquareDescription || (isSquareDescription && !isAutoSizeStyle)) {
+                    Dimension defaultDimension = new DNodeQuery(viewNode).getDefaultDimension();
+                    size.setHeight(defaultDimension.height);
+                    size.setWidth(defaultDimension.width);
+                }
             }
         }
     }
