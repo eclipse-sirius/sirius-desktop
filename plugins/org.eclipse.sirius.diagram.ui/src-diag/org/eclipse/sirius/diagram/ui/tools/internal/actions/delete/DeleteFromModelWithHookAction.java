@@ -344,7 +344,7 @@ public class DeleteFromModelWithHookAction extends DeleteFromModelAction {
             if ((command instanceof CompoundCommand) && (((CompoundCommand) command).getChildren().length > 0)) {
                 final CompositeTransactionalCommand compositeModelActionCommand = new CompositeTransactionalCommand(getEditingDomain(), getCommandLabel());
                 final CompoundCommand compoundCommand = (CompoundCommand) command;
-                final Iterator<Command> iterator = compoundCommand.getCommands().iterator();
+                final Iterator<? extends Command> iterator = compoundCommand.getCommands().iterator();
                 while (iterator.hasNext()) {
                     compositeModelActionCommand.compose(new CommandProxy(iterator.next()));
                 }
