@@ -195,6 +195,20 @@ For vertical centered distribution:
 * the first element is the highest one (with its center at the minimum y coordinate). If several elements are aligned on middle, the leftmost one is the first.
 * the last element is the lowest one (with the bottom side with the maximum y coordinate). If several elements are aligned by middle, the rightmost one is the last.
 
+h4(#new_elements_arrangement). Newly created elements arrangement.
+
+When elements in a diagram are not directly positioned by the user. By default, they are sequentially positioned in the center of the editor, diagonally. They can also be positioned vertically or horizontally by changing the preference in Sirius > Sirius Diagram > Newly created elements layout.
+!images/new_elements_arrangement_preferences.png!
+
+* Diagonal arrangement:
+!images/new_elements_arrangement_diagonal.png!
+
+* Vertical arrangement:
+!images/new_elements_arrangement_vertical.png!
+
+* Horizontal arrangement:
+!images/new_elements_arrangement_horizontal.png!
+
 h4(#reset_origin). Reset Diagram or Container Origin
 
 This action is available within the diagram or containers contextual menu ("Reset Origin") or via "M1" + "HOME" shortcut.

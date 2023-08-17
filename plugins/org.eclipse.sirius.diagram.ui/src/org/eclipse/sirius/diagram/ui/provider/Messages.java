@@ -461,6 +461,9 @@ public final class Messages {
     public static String DiagramGeneralPreferencePage_moveUnlinkedNodeLabel;
 
     @TranslatableMessage
+    public static String DiagramGeneralPreferencePage_newlyCreatedElementsGroupLabel;
+
+    @TranslatableMessage
     public static String DiagramGeneralPreferencePage_pasteLayoutModeGroupLabel;
 
     @TranslatableMessage
@@ -897,6 +900,24 @@ public final class Messages {
 
     @TranslatableMessage
     public static String NavigatorGroupName_DNodeList_3009_outgoinglinks;
+
+    @TranslatableMessage
+    public static String NewlyCreatedElements_diagonalLabel;
+
+    @TranslatableMessage
+    public static String NewlyCreatedElements_diagonalTooltip;
+
+    @TranslatableMessage
+    public static String NewlyCreatedElements_horizontalLabel;
+
+    @TranslatableMessage
+    public static String NewlyCreatedElements_horizontalTooltip;
+
+    @TranslatableMessage
+    public static String NewlyCreatedElements_verticalLabel;
+
+    @TranslatableMessage
+    public static String NewlyCreatedElements_verticalTooltip;
 
     @TranslatableMessage
     public static String NodeDeletionEditPolicy_deleteElementCommandLabel;

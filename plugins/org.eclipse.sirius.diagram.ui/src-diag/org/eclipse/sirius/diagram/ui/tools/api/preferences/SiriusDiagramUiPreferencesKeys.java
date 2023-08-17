@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2012 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,8 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.api.preferences;
+
+import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 
 /**
  * Sirius preferences keys dedicated to diagrams.
@@ -110,7 +112,21 @@ public enum SiriusDiagramUiPreferencesKeys {
      * This preference is changed as soon as the user changes the selection in the dialog asking the mode. Thereby, at
      * the next dialog, the last choice is pre-selected.
      */
-    PREF_PASTE_MODE_ABSOLUTE(boolean.class);
+    PREF_PASTE_MODE_ABSOLUTE(boolean.class),
+
+    /**
+     * Used to define the arrangement of elements created on a diagram when they are not directly positioned by the
+     * user.
+     * <ul>
+     * <li>Using {@link SiriusLayoutDataManager#DIAGONAL_ARRANGEMENT}, elements created one after the other will by
+     * default be arranged diagonally one after the other on the diagram.</li>
+     * <li>Using {@link SiriusLayoutDataManager#VERTICAL_ARRANGEMENT}, elements created one after the other will by
+     * default be arranged vertically one after the other on the diagram.</li>
+     * <li>Using {@link SiriusLayoutDataManager#HORIZONTAL_ARRANGEMENT}, elements created one after the other will by
+     * default be arranged horizontally one after the other on the diagram.</li> By default, the value used is
+     * {@link SiriusLayoutDataManager#DIAGONAL_ARRANGEMENT}.
+     */
+    PREF_NEWLY_CREATED_ELEMENTS_LAYOUT(int.class);
 
     /** The type of the preference. */
     private Class<?> type;

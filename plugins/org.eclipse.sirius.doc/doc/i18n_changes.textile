@@ -2,6 +2,18 @@ h1. Translation Keys Changes
 
 This document lists the changes in @TranslatableMessage@ used for Sirius internationalization in each Sirius version.
 
+h2(#siriusnext). Translation Keys Changes in Sirius Next (from Sirius 7.2.1)
+
+h3. Message Keys Added
+
+* @org.eclipse.sirius.diagram.ui.provider.Messages.DiagramGeneralPreferencePage_newlyCreatedElementsGroupLabel@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.NewlyCreatedElements_diagonalLabel@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.NewlyCreatedElements_diagonalTooltip@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.NewlyCreatedElements_horizontalLabel@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.NewlyCreatedElements_horizontalTooltip@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.NewlyCreatedElements_verticalLabel@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.NewlyCreatedElements_verticalTooltip@
+
 h2(#sirius707). Translation Keys Changes in Sirius 7.0.7 (from Sirius 7.0.6)
 
 h3. Message Keys Added
