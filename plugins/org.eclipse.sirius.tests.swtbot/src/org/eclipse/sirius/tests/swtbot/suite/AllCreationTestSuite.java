@@ -32,6 +32,7 @@ import org.eclipse.sirius.tests.swtbot.EdgeWithBorderNodeCreationPositionTest;
 import org.eclipse.sirius.tests.swtbot.EdgeWithBorderNodeCreationPositionWithSnapToGridTest;
 import org.eclipse.sirius.tests.swtbot.LinkNoteFragmentModelCreationTest;
 import org.eclipse.sirius.tests.swtbot.NodeCreationPositionTest;
+import org.eclipse.sirius.tests.swtbot.CreatedElementsLayoutTests;
 import org.eclipse.sirius.tests.swtbot.NodeCreationTest;
 import org.eclipse.sirius.tests.swtbot.NodeCreationWithSnapToGridTest;
 import org.eclipse.sirius.tests.swtbot.NoteCreationTest;
@@ -92,6 +93,7 @@ public class AllCreationTestSuite extends TestCase {
         suite.addTestSuite(EdgeCreationPositionWithSnapToGridTest.class);
         suite.addTestSuite(EdgeWithBorderNodeCreationPositionTest.class);
         suite.addTestSuite(EdgeWithBorderNodeCreationPositionWithSnapToGridTest.class);
+        suite.addTestSuite(CreatedElementsLayoutTests.class);
 		if (!(System.getProperty("os.name").contains("Linux") && TestsUtil.is202003Platform())) {
 			suite.addTestSuite(BorderNodeSideTest.class);
 		}

@@ -30,6 +30,7 @@ import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.draw2d.FigureCanvas;
+import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.notify.Adapter;
@@ -69,7 +70,6 @@ import org.eclipse.sirius.diagram.ui.graphical.figures.SiriusLayoutHelper;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
-import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
@@ -561,22 +561,20 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
         rect.setSize(LayoutHelper.UNDEFINED.getSize());
         Point centerLocation;
         IGraphicalEditPart part = (IGraphicalEditPart) host.getViewer().getEditPartRegistry().get(iAdaptable.getAdapter(View.class));
+        SiriusLayoutHelper layoutHelper = new SiriusLayoutHelper(host);
+        IFigure figure = part.getFigure();
         if (previousCenterLocation == null) {
             // Get center (reference point)
-            SiriusLayoutHelper layoutHelper = new SiriusLayoutHelper(host);
             Point referencePoint = layoutHelper.getReferencePosition(host.getContentPane(), ((FigureCanvas) host.getViewer().getControl()).getViewport(), host);
             rect.setLocation(referencePoint);
-            rect.setSize(part.getFigure().getSize());
+            rect.setSize(figure.getSize());
             // Get the first free location
             Point point = layoutHelper.validatePosition(host.getContentPane(), rect);
-            rect.setLocation(point);
             centerLocation = point.getCopy();
         } else {
-            int padding = SiriusLayoutDataManager.PADDING;
-            if (GraphicalHelper.isSnapToGridEnabled(host)) {
-                padding = GraphicalHelper.getGridSpacing(host);
-            }
-            centerLocation = new Point(previousCenterLocation).getTranslated(padding, padding);
+            Point figureReferencePoint = layoutHelper.determineReferencePoint(figure);
+            figureReferencePoint.translate(previousCenterLocation);
+            centerLocation = layoutHelper.computeTranslatedPoint(figureReferencePoint, figure, false);
         }
         cc.add(new ICommandProxy(new SetBoundsCommand(host.getEditingDomain(), DiagramUIMessages.SetLocationCommand_Label_Resize, part, centerLocation)));
         return centerLocation.getCopy();

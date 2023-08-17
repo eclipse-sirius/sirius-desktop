@@ -352,6 +352,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(BorderNodeSidePropertySectionTest.class);
         suite.addTestSuite(EditPartSelectionTest.class);
         suite.addTestSuite(LabelFontModificationsTest.class);
+        suite.addTestSuite(CreatedElementsLayoutTests.class);
     }
 
     /**

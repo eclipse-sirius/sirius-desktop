@@ -20,9 +20,11 @@ import java.util.Set;
 
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.Viewport;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.EditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
@@ -113,17 +115,22 @@ public class GroupElementsInOneOtherTests extends AbstractSiriusSwtBotGefTestCas
      * there is no overlap of all the figure.
      */
     public void testGroupActionInDiagramEditPartWithoutScroll() {
-        // WARNING : This test need to be ran in a specific resolution (@see
-        // Xephyr conf)
+        // WARNING : This test need to be ran in a specific resolution (@see Xephyr conf)
+        editor.setSnapToGrid(false);
 
         // Select Class1 & Class3
         editor.select(class1ChildOfDiagramBot, class3ChildOfDiagramBot);
         // Get the center of the visible part of the editor before the group
         // action (in logical coordinates, not in screen coordinates)
-        GraphicalEditPart centeredEPackageEP = (GraphicalEditPart) editor.getEditPart("centeredEPackage", AbstractDiagramContainerEditPart.class).part();
+        GraphicalEditPart centeredEPackageEP = (GraphicalEditPart) editor.getEditPart("centeredEPackage", AbstractDiagramContainerEditPart.class).part(); //$NON-NLS-1$
         Point expectedPosition = centeredEPackageEP.getFigure().getBounds().getRight().getCopy().translate(30, 0);
         if (GraphicalHelper.getZoom(centeredEPackageEP) == ZoomLevel.ZOOM_50.getAmount()) {
-            expectedPosition = new Point(943, 468);
+            DiagramEditPart diagramEditPart = editor.getDiagramEditPart();
+            Viewport viewport = ((FigureCanvas) diagramEditPart.getViewer().getControl()).getViewport();
+            Rectangle visibleAreainLogicalRef = viewport.getBounds().getCopy();
+            GraphicalHelper.screen2logical(visibleAreainLogicalRef, diagramEditPart);
+            Point center = visibleAreainLogicalRef.getCenter().getCopy();
+            expectedPosition = center;
         }
         // Launch the group action
         editor.clickContextMenu(GROUP_TOOL_NAME);
@@ -142,10 +149,8 @@ public class GroupElementsInOneOtherTests extends AbstractSiriusSwtBotGefTestCas
         if (GraphicalHelper.getZoom(package5Bot.part()) != ZoomLevel.ZOOM_200.getAmount()) {
             GraphicTestsSupportHelp.assertEquals("The newly created Package5 should be at the center of the visible part of the diagram", expectedPosition, package5AbsoluteLocation, 5, 5); //$NON-NLS-1$
         } else {
-            // We don't make the same test with zoom at 200% because the middle
-            // of the visible
-            // part of the diagram is on another container so the new container
-            // is shifted.
+            // We don't make the same test with zoom at 200% because the middle of the visible
+            // part of the diagram is on another container so the new container is shifted.
             Point expectedPoint = new Point(300, 125);
             if (!package5AbsoluteLocation.equals(expectedPoint)) {
                 // Check the screen resolution to fail only when it is as expected
@@ -164,7 +169,8 @@ public class GroupElementsInOneOtherTests extends AbstractSiriusSwtBotGefTestCas
      * there is no overlap of all the figure.
      */
     public void testMultiCreationOutsideCurrentSelection() {
-        testMultiCreationOutsideCurrentSelection(false);
+        testMultiCreationOutsideCurrentSelection(false, "Package5", "Package6");
+        testMultiCreationOutsideCurrentSelection(false, "Package7", "Package8");
     }
 
     /**
@@ -174,7 +180,8 @@ public class GroupElementsInOneOtherTests extends AbstractSiriusSwtBotGefTestCas
      * there is no overlap of all the figure.
      */
     public void testMultiCreationOutsideCurrentSelectionWithSnapToGridEnabled() {
-        testMultiCreationOutsideCurrentSelection(true);
+        testMultiCreationOutsideCurrentSelection(true, "Package5", "Package6");
+        testMultiCreationOutsideCurrentSelection(true, "Package7", "Package8");
     }
 
     /**
@@ -182,39 +189,41 @@ public class GroupElementsInOneOtherTests extends AbstractSiriusSwtBotGefTestCas
      * new packages (VP-2609).<BR>
      * Currently there is no overlapping for the top-left corner. A specific issue VP-2399 must be fix to check that
      * there is no overlap of all the figure.
+     * 
+     * @param nameNewPackage1
+     *            TODO
+     * @param nameNewPackage2
+     *            TODO
      */
-    private void testMultiCreationOutsideCurrentSelection(boolean isSnapToGridEnabled) {
+    private void testMultiCreationOutsideCurrentSelection(boolean isSnapToGridEnabled, String nameNewPackage1, String nameNewPackage2) {
+        int gridSpacing = 50;
         if (isSnapToGridEnabled) {
-            editor.setSnapToGrid(true, 50, 2);
+            editor.setSnapToGrid(true, gridSpacing, 2);
         }
         try {
             // Select Class1 & Class3
             editor.select(class1ChildOfDiagramBot, class3ChildOfDiagramBot);
-            // Launch the action that create 2 packages outside the current
-            // selected
-            // element
+            // Launch the action that create 2 packages outside the current selected element
             editor.clickContextMenu(CREATION_TOOL_NAME);
 
-            // Check that the two new packages top-left corner does not overlap
-            // each
-            // other.
-            Point package5AbsoluteLocation = editor.getAbsoluteLocation("Package5", AbstractDiagramContainerEditPart.class); //$NON-NLS-1$
-            Point package6AbsoluteLocation = editor.getAbsoluteLocation("Package6", AbstractDiagramContainerEditPart.class); //$NON-NLS-1$
+            // Check that the two new packages top-left corner does not overlap each other.
+            Point newPackage1AbsoluteLocation = editor.getAbsoluteLocation(nameNewPackage1, AbstractDiagramContainerEditPart.class);
+            Point newPackage2AbsoluteLocation = editor.getAbsoluteLocation(nameNewPackage2, AbstractDiagramContainerEditPart.class);
+            GraphicalEditPart p1EP = (GraphicalEditPart) editor.getEditPart(nameNewPackage1, AbstractDiagramContainerEditPart.class).part();
+            Rectangle p1Rect = p1EP.getFigure().getBounds();
 
             assertFalse("The location (top-left corner) of the first created figure should not overlaped the location (top-left corner) of the second created figure.", //$NON-NLS-1$
-                    package5AbsoluteLocation.equals(package6AbsoluteLocation));
+                    newPackage1AbsoluteLocation.equals(newPackage2AbsoluteLocation));
             int padding = SiriusLayoutDataManager.PADDING;
             if (isSnapToGridEnabled) {
-                padding = 50;
-
+                padding = gridSpacing;
             }
-            assertEquals("The x coordinate of Package6 should have a delta of " + padding + " pixels with the x coordinate of the Package5.", package5AbsoluteLocation.x + padding, //$NON-NLS-1$ //$NON-NLS-2$
-                    package6AbsoluteLocation.x);
-            assertEquals("The y coordinate of Package6 should have a delta of " + padding + " pixels with the y coordinate of the Package5.", package5AbsoluteLocation.y + padding, //$NON-NLS-1$ //$NON-NLS-2$
-                    package6AbsoluteLocation.y);
+            assertEquals("The x coordinate of " + nameNewPackage2 + " should have a delta of " + SiriusLayoutDataManager.PADDING + " pixels with the x coordinate of the" + nameNewPackage1, //$NON-NLS-1$ //$NON-NLS-2$
+                    newPackage1AbsoluteLocation.x + SiriusLayoutDataManager.PADDING + p1Rect.width, newPackage2AbsoluteLocation.x);
+            assertEquals("The y coordinate of " + nameNewPackage2 + " should have a delta of " + SiriusLayoutDataManager.PADDING + " pixels with the y coordinate of the" + nameNewPackage1, //$NON-NLS-1$ //$NON-NLS-2$
+                    p1Rect.getRight().y, newPackage2AbsoluteLocation.y);
             if (isSnapToGridEnabled) {
-                checkLocationAlignOnGrid(package5AbsoluteLocation, "Package5", padding); //$NON-NLS-1$
-                checkLocationAlignOnGrid(package6AbsoluteLocation, "Package6", padding); //$NON-NLS-1$
+                checkLocationAlignOnGrid(newPackage1AbsoluteLocation, nameNewPackage1, padding);
             }
         } finally {
             editor.setSnapToGrid(false);

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="newCreatedElementsLayout" version="12.0.0.2017041100">
+  <ownedViewpoints name="MyViewpoint">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="GrayElements" domainClass="EPackage" enablePopupBars="true">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="eClass" semanticCandidatesExpression="aql:self.eContents()" domainClass="EClass">
+          <style xsi:type="style:SquareDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <containerMappings name="ePackage" semanticCandidatesExpression="aql:self.eContents()" domainClass="EPackage" dropDescriptions="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='GrayElements']/@defaultLayer/@toolSections.0/@ownedTools[name='EPackageDrop'] //@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='GrayElements']/@defaultLayer/@toolSections.0/@ownedTools[name='EClassDrop']" reusedNodeMappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='GrayElements']/@defaultLayer/@nodeMappings[name='eClass']" reusedContainerMappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='GrayElements']/@defaultLayer/@containerMappings[name='ePackage']">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="CreationTools">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="EPackage" containerMappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='GrayElements']/@defaultLayer/@containerMappings[name='ePackage']" extraMappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='GrayElements']/@defaultLayer/@containerMappings[name='ePackage']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EPackage" referenceName="eSubpackages">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'EPackage'+self.eSuperPackage.eSubpackages->filter(ecore::EPackage)->size()"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="EClass" nodeMappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='GrayElements']/@defaultLayer/@nodeMappings[name='eClass']" extraMappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='GrayElements']/@defaultLayer/@containerMappings[name='ePackage']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EClass" referenceName="eClassifiers">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'EClass'+self.ePackage.eClassifiers->filter(ecore::EClass)->size()"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="MultipleEPackages" containerMappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='GrayElements']/@defaultLayer/@containerMappings[name='ePackage']" extraMappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='GrayElements']/@defaultLayer/@containerMappings[name='ePackage']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EPackage" referenceName="eSubpackages">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'EPackage'+self.eSuperPackage.eSubpackages->filter(ecore::EPackage)->size()"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EPackage" referenceName="eSubpackages" variableName="instance2">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'EPackage'+self.eSuperPackage.eSubpackages->filter(ecore::EPackage)->size()"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EPackage" referenceName="eSubpackages" variableName="instance3">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'EPackage'+self.eSuperPackage.eSubpackages->filter(ecore::EPackage)->size()"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:instance">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EClass" referenceName="eClassifiers" variableName="instance5">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'internalEClass'+self.ePackage.eClassifiers->filter(ecore::EClass)->size()"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EClass" referenceName="eClassifiers">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'internalEClass'+self.ePackage.eClassifiers->filter(ecore::EClass)->size()"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EClass" referenceName="eClassifiers" variableName="instance6">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'internalEClass'+self.ePackage.eClassifiers->filter(ecore::EClass)->size()"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:instance2">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EClass" referenceName="eClassifiers" variableName="instance5">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'internalEClass'+self.ePackage.eClassifiers->filter(ecore::EClass)->size()"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EClass" referenceName="eClassifiers">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'internalEClass'+self.ePackage.eClassifiers->filter(ecore::EClass)->size()"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EClass" referenceName="eClassifiers" variableName="instance6">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'internalEClass'+self.ePackage.eClassifiers->filter(ecore::EClass)->size()"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:instance3">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EClass" referenceName="eClassifiers" variableName="instance5">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'internalEClass'+self.ePackage.eClassifiers->filter(ecore::EClass)->size()"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EClass" referenceName="eClassifiers">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'internalEClass'+self.ePackage.eClassifiers->filter(ecore::EClass)->size()"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EClass" referenceName="eClassifiers" variableName="instance6">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'internalEClass'+self.ePackage.eClassifiers->filter(ecore::EClass)->size()"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="MultipleEClasses" nodeMappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='GrayElements']/@defaultLayer/@nodeMappings[name='eClass']" extraMappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='GrayElements']/@defaultLayer/@containerMappings[name='ePackage']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EClass" referenceName="eClassifiers" variableName="instance5">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'EClass'+self.ePackage.eClassifiers->filter(ecore::EClass)->size()"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EClass" referenceName="eClassifiers">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'EClass'+self.ePackage.eClassifiers->filter(ecore::EClass)->size()"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EClass" referenceName="eClassifiers" variableName="instance6">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'EClass'+self.ePackage.eClassifiers->filter(ecore::EClass)->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="EPackageDrop" mappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='GrayElements']/@defaultLayer/@containerMappings[name='ePackage']" dragSource="BOTH">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newSemanticContainer">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="eSubpackages" valueExpression="var:element"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="EClassDrop" mappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='GrayElements']/@defaultLayer/@nodeMappings[name='eClass']" dragSource="BOTH">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newSemanticContainer">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="eClassifiers" valueExpression="var:element"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="ColoredElements" domainClass="EPackage" enablePopupBars="true">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="eClass" semanticCandidatesExpression="aql:self.eContents()" synchronizationLock="true" domainClass="EClass">
+          <style xsi:type="style:SquareDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+          </style>
+        </nodeMappings>
+        <containerMappings name="ePackage" semanticCandidatesExpression="aql:self.eContents()" domainClass="EPackage" reusedNodeMappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='ColoredElements']/@defaultLayer/@nodeMappings[name='eClass']" reusedContainerMappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='ColoredElements']/@defaultLayer/@containerMappings[name='ePackage']">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>
