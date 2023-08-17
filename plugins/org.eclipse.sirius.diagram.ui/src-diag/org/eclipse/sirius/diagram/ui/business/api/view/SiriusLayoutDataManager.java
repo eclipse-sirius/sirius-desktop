@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -35,6 +35,7 @@ import org.eclipse.sirius.diagram.ui.business.internal.view.EdgeLabelLayoutData;
 import org.eclipse.sirius.diagram.ui.business.internal.view.EdgeLayoutData;
 import org.eclipse.sirius.diagram.ui.business.internal.view.LayoutData;
 import org.eclipse.sirius.diagram.ui.business.internal.view.SiriusLayoutDataManagerImpl;
+import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.ext.base.Option;
 
 /**
@@ -62,6 +63,25 @@ public interface SiriusLayoutDataManager {
      * IGraphicalEditPart, boolean))..
      */
     String LAYOUT_TYPE_ARRANGE_AT_OPENING = "OPENING"; //$NON-NLS-1$
+
+    /**
+     * Default value for the {@link SiriusDiagramUiPreferencesKeys#PREF_NEWLY_CREATED_ELEMENTS_LAYOUT} preference. When
+     * elements are not directly positioned by the user on the diagram, they will be arranged diagonally with this
+     * value.
+     */
+    int DIAGONAL_ARRANGEMENT = 0;
+
+    /**
+     * When elements are not directly positioned by the user on the diagram, they will be arranged vertically with this
+     * value.
+     */
+    int VERTICAL_ARRANGEMENT = 1;
+
+    /**
+     * When elements are not directly positioned by the user on the diagram, they will be arranged horizontally with
+     * this value.
+     */
+    int HORIZONTAL_ARRANGEMENT = 2;
 
     /**
      * Add a new AbstractLayoutData of this SiriusLayoutDataManagerImpl.

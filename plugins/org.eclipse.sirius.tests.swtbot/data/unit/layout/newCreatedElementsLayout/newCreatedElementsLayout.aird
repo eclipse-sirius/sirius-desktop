@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description">
+  <viewpoint:DAnalysis uid="_QDwi4EAjEe601J6KMDTgag" selectedViews="_QmrCsEAjEe601J6KMDTgag" version="15.2.0.202303281325">
+    <semanticResources>newCreatedElementsLayout.ecore</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" uid="_QmrCsEAjEe601J6KMDTgag">
+      <viewpoint xmi:type="description:Viewpoint" href="newCreatedElementsLayout.odesign#//@ownedViewpoints[name='MyViewpoint']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_SY_U4EAjEe601J6KMDTgag" name="new GrayElements" repPath="#_SY-GwEAjEe601J6KMDTgag" changeId="1692623079741">
+        <description xmi:type="description_1:DiagramDescription" href="newCreatedElementsLayout.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='GrayElements']"/>
+        <target xmi:type="ecore:EPackage" href="newCreatedElementsLayout.ecore#/"/>
+      </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_XYgi4EAjEe601J6KMDTgag" name="new ColoredElements" repPath="#_XYf70EAjEe601J6KMDTgag" changeId="1692623113233">
+        <description xmi:type="description_1:DiagramDescription" href="newCreatedElementsLayout.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='ColoredElements']"/>
+        <target xmi:type="ecore:EPackage" href="newCreatedElementsLayout.ecore#/"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <diagram:DSemanticDiagram uid="_SY-GwEAjEe601J6KMDTgag">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_SZHQsEAjEe601J6KMDTgag" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_SZHQsUAjEe601J6KMDTgag" type="Sirius" element="_SY-GwEAjEe601J6KMDTgag" measurementUnit="Pixel">
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_SZHQskAjEe601J6KMDTgag"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_SZH3wEAjEe601J6KMDTgag" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_SZH3wUAjEe601J6KMDTgag"/>
+    </ownedAnnotationEntries>
+    <description xmi:type="description_1:DiagramDescription" href="newCreatedElementsLayout.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='GrayElements']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_SY-t0EAjEe601J6KMDTgag"/>
+    <activatedLayers xmi:type="description_1:Layer" href="newCreatedElementsLayout.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='GrayElements']/@defaultLayer"/>
+    <target xmi:type="ecore:EPackage" href="newCreatedElementsLayout.ecore#/"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram uid="_XYf70EAjEe601J6KMDTgag">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_XYgi4kAjEe601J6KMDTgag" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_XYgi40AjEe601J6KMDTgag" type="Sirius" element="_XYf70EAjEe601J6KMDTgag" measurementUnit="Pixel">
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_XYgi5EAjEe601J6KMDTgag"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_XYgi5UAjEe601J6KMDTgag" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_XYhJ8EAjEe601J6KMDTgag"/>
+    </ownedAnnotationEntries>
+    <description xmi:type="description_1:DiagramDescription" href="newCreatedElementsLayout.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='ColoredElements']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_XYf70UAjEe601J6KMDTgag"/>
+    <activatedLayers xmi:type="description_1:Layer" href="newCreatedElementsLayout.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='ColoredElements']/@defaultLayer"/>
+    <target xmi:type="ecore:EPackage" href="newCreatedElementsLayout.ecore#/"/>
+  </diagram:DSemanticDiagram>
+</xmi:XMI>

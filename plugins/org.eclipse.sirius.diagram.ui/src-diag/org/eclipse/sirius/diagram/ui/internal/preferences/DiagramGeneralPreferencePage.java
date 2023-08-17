@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2022 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.tools.internal.preferences.SiriusDiagramInternalPreferencesKeys;
+import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
@@ -74,6 +75,8 @@ public class DiagramGeneralPreferencePage extends DiagramsPreferencePage {
 
         addPasteModeFields(getFieldEditorParent());
 
+        addNewCreatedElementsFields(getFieldEditorParent());
+
         addQualityExportField(getFieldEditorParent());
 
         addBooleanPreference(SiriusDiagramUiInternalPreferencesKeys.PREF_AUTOSIZE_ON_ARRANGE.name(), Messages.DiagramGeneralPreferencePage_arrangeAndAutoSizeContainersLabel);
@@ -121,12 +124,13 @@ public class DiagramGeneralPreferencePage extends DiagramsPreferencePage {
         preferenceStore.setDefault(SiriusDiagramUiPreferencesKeys.PREF_MAXIMUM_EXPORT_BUFFER_SIZE_WINDOWS.name(), 50000000);
         preferenceStore.setDefault(SiriusDiagramUiPreferencesKeys.PREF_PROMPT_PASTE_MODE.name(), true);
         preferenceStore.setDefault(SiriusDiagramUiPreferencesKeys.PREF_PASTE_MODE_ABSOLUTE.name(), true);
+        preferenceStore.setDefault(SiriusDiagramUiPreferencesKeys.PREF_NEWLY_CREATED_ELEMENTS_LAYOUT.name(), SiriusLayoutDataManager.DIAGONAL_ARRANGEMENT);
     }
 
     private void addPasteModeFields(Composite parent) {
 
         Group pasteModeGroup = new Group(parent, SWT.NONE);
-        GridLayout gridLayout = new GridLayout(2, false);
+        GridLayout gridLayout = new GridLayout(1, true);
         gridLayout.horizontalSpacing = 5;
         gridLayout.verticalSpacing = 8;
         pasteModeGroup.setLayout(gridLayout);
@@ -168,6 +172,16 @@ public class DiagramGeneralPreferencePage extends DiagramsPreferencePage {
                 control.setLayoutData(gd);
             }
         });
+    }
+
+    private void addNewCreatedElementsFields(Composite parent) {
+        RadioGroupFieldEditorWithHelp radioGroup = new RadioGroupFieldEditorWithHelp(SiriusDiagramUiPreferencesKeys.PREF_NEWLY_CREATED_ELEMENTS_LAYOUT.name(),
+                Messages.DiagramGeneralPreferencePage_newlyCreatedElementsGroupLabel, 1,
+                new String[][] { { Messages.NewlyCreatedElements_diagonalLabel, Integer.toString(SiriusLayoutDataManager.DIAGONAL_ARRANGEMENT) },
+                        { Messages.NewlyCreatedElements_verticalLabel, Integer.toString(SiriusLayoutDataManager.VERTICAL_ARRANGEMENT) },
+                        { Messages.NewlyCreatedElements_horizontalLabel, Integer.toString(SiriusLayoutDataManager.HORIZONTAL_ARRANGEMENT) }, },
+                new String[] { Messages.NewlyCreatedElements_diagonalTooltip, Messages.NewlyCreatedElements_verticalTooltip, Messages.NewlyCreatedElements_horizontalTooltip }, parent, true);
+        addField(radioGroup);
     }
 
     private void addQualityExportField(Composite parent) {
