@@ -8,6 +8,10 @@ pipeline {
 		jdk 'openjdk-jdk17-latest'
 	}
 
+    options {
+      timeout(time: 1, unit: 'HOURS') 
+    }
+
     stages {
         stage('Parallel Tests') {
             when {
