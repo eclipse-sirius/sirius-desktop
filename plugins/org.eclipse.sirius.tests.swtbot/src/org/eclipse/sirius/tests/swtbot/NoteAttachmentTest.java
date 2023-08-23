@@ -39,6 +39,7 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEdit
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart.ViewEdgeFigure;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusNoteEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusTextEditPart;
@@ -164,6 +165,10 @@ public class NoteAttachmentTest extends AbstractSiriusSwtBotGefTestCase {
             "ScenarioK-diagramWithCompartmentDnDAndSameMapping", //
             "DiagramWithCompartmentDnDAndSameMapping");
 
+    private static final TestDataInfo SCENARIO_NOREFRESH = new TestDataInfo( //
+            "ghostCase2", //
+            "Entities");
+
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_DIR, MODEL_FILE, VP_FILE, REPR_FILE);
@@ -184,9 +189,31 @@ public class NoteAttachmentTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * @return Edit Part of all notes, texts and representation links in given parameter `editPart`
+     * @return Edit Part of all notes/representation links (but not texts) in given parameter `editPart`
      */
-    private List<String> getNotesTypes(EditPart editPart) {
+    private List<GraphicalEditPart> getNoteEditParts(EditPart editPart) {
+        List<?> elements = editPart.getChildren();
+        return elements.stream().map(GraphicalEditPart.class::cast).filter(element -> {
+            View gmfView = (View) element.getModel();
+            return ViewType.NOTE.equals(gmfView.getType());
+        }).toList();
+    }
+
+    /**
+     * @return Edit Part of all texts (but not notes/representation links) in given parameter `editPart`
+     */
+    private List<GraphicalEditPart> getTextEditParts(EditPart editPart) {
+        List<?> elements = editPart.getChildren();
+        return elements.stream().map(GraphicalEditPart.class::cast).filter(element -> {
+            View gmfView = (View) element.getModel();
+            return ViewType.TEXT.equals(gmfView.getType());
+        }).toList();
+    }
+
+    /**
+     * @return View type of all PGE (ViewType.NOTE or ViewType.TEXT) in given parameter `editPart`
+     */
+    private List<String> getPGETypes(EditPart editPart) {
         List<?> elements = editPart.getChildren();
         return elements.stream().filter(element -> {
             View gmfView = (View) ((EditPart) element).getModel();
@@ -261,6 +288,26 @@ public class NoteAttachmentTest extends AbstractSiriusSwtBotGefTestCase {
     private void moveOut(String sourceName, Class<? extends EditPart> sourceType) {
         SWTBotGefEditPart editPart = editor.getEditPart(sourceName, sourceType);
         editor.drag(editPart, new Point(2, 2));
+    }
+
+    /**
+     * Delete element from diagram
+     */
+    private void delete(String elementName, Class<? extends EditPart> elementType) {
+        SWTBotGefEditPart editPart = editor.getEditPart(elementName, elementType);
+        editor.reveal(editPart.part());
+        editor.select(editPart);
+        deleteSelectedElement();
+    }
+
+    /**
+     * Hide element from diagram
+     */
+    private void hide(String elementName, Class<? extends EditPart> elementType) {
+        SWTBotGefEditPart editPart = editor.getEditPart(elementName, elementType);
+        editor.reveal(editPart.part());
+        editor.select(editPart);
+        editor.clickContextMenu("Hide element");
     }
 
     /**
@@ -389,7 +436,7 @@ public class NoteAttachmentTest extends AbstractSiriusSwtBotGefTestCase {
         DiagramEditPart diagram = editor.getDiagramEditPart();
 
         // elements before
-        List<String> oldNotes = getNotesTypes(diagram);
+        List<String> oldNotes = getPGETypes(diagram);
         List<ConnectionEditPart> oldEdges = getNotesAttachmentsEditPart();
 
         assertEquals("Wrong number of notes/representation links (in the initial data)", //
@@ -403,7 +450,7 @@ public class NoteAttachmentTest extends AbstractSiriusSwtBotGefTestCase {
         SWTBotUtils.waitAllUiEvents();
 
         // elements after
-        List<String> newNotes = getNotesTypes(diagram);
+        List<String> newNotes = getPGETypes(diagram);
         List<ConnectionEditPart> newEdges = getNotesAttachmentsEditPart();
         if (prefRmNote) {
             assertEquals("Wrong number of notes/representation links after moving `ClassA` (with pref remove note enabled)", //
@@ -634,7 +681,7 @@ public class NoteAttachmentTest extends AbstractSiriusSwtBotGefTestCase {
 
         // elements before
         SWTBotGefEditPart p2 = editor.getEditPart("p2", AbstractDiagramContainerEditPart.class);
-        List<String> notesTypesBefore = getNotesTypes(p2.part());
+        List<String> notesTypesBefore = getPGETypes(p2.part());
         assertEquals("Wrong number of notes/representation links in p2 (in the initial data)", //
                 2, notesTypesBefore.stream().filter(noteType -> ViewType.NOTE.equals(noteType)).count());
         assertEquals("Wrong number of texts (in the initial data)", //
@@ -645,7 +692,7 @@ public class NoteAttachmentTest extends AbstractSiriusSwtBotGefTestCase {
 
         // elements after
         SWTBotGefEditPart p2new = editor.getEditPart("p2", AbstractDiagramContainerEditPart.class);
-        List<String> notesTypesAfter = getNotesTypes(p2new.part());
+        List<String> notesTypesAfter = getPGETypes(p2new.part());
         assertEquals("Wrong number of notes/representation links in p2 after move", //
                 2, notesTypesAfter.stream().filter(noteType -> ViewType.NOTE.equals(noteType)).count());
         assertEquals("Wrong number of texts in p2 after move", //
@@ -783,5 +830,111 @@ public class NoteAttachmentTest extends AbstractSiriusSwtBotGefTestCase {
             SWTBotGefConnectionEditPart swtBotConnectionEditPart = sourcePart.sourceConnections().get(i);
             assertTrue("The connection from " + sourceName + ", at index " + i + " is not a note attachment.", swtBotConnectionEditPart.part() instanceof NoteAttachmentEditPart);
         }
+    }
+
+    /**
+     * Test if a note attachment and note is hidden when the edge to which they are attached is hidden and preference
+     * "remove/hide note when annoted element is hidden or remove" is enabled
+     * 
+     * @see "https://github.com/eclipse-sirius/sirius-desktop/issues/82"
+     */
+    public void testHideEdgeWithAttachmentHideNote() {
+        changeDiagramUIPreference(SiriusDiagramUiInternalPreferencesKeys.PREF_REMOVE_HIDE_NOTE_WHEN_ANNOTED_ELEMENT_HIDDEN_OR_REMOVE.name(), true);
+
+        init(SCENARIO_NOREFRESH);
+
+        hide("[0..1] Ref", DEdgeEditPart.class);
+
+        List<GraphicalEditPart> noteEditParts = getNoteEditParts(editor.getDiagramEditPart());
+        assertTrue("All notes should be hidden", //
+                noteEditParts.stream().allMatch(note -> !note.getFigure().isVisible()));
+
+        List<GraphicalEditPart> textEditParts = getTextEditParts(editor.getDiagramEditPart());
+        assertTrue("All texts should be hidden", //
+                textEditParts.stream().allMatch(text -> !text.getFigure().isVisible()));
+
+        List<ConnectionEditPart> noteAttachments = getNotesAttachmentsEditPart();
+        assertTrue("All note attachments should be hidden", //
+                noteAttachments.stream().allMatch(noteAttachment -> !noteAttachment.getFigure().isVisible()));
+    }
+
+    /**
+     * Test if a note attachment is hidden when the edge to which they are attached is hidden and preference
+     * "remove/hide note when annotated element is hidden or remove" is disabled
+     * 
+     * @see "https://github.com/eclipse-sirius/sirius-desktop/issues/82"
+     */
+    public void testHideEdgeWithAttachmentKeepNote() {
+        changeDiagramUIPreference(SiriusDiagramUiInternalPreferencesKeys.PREF_REMOVE_HIDE_NOTE_WHEN_ANNOTED_ELEMENT_HIDDEN_OR_REMOVE.name(), false);
+
+        init(SCENARIO_NOREFRESH);
+
+        hide("[0..1] Ref", DEdgeEditPart.class);
+
+        List<GraphicalEditPart> noteEditParts = getNoteEditParts(editor.getDiagramEditPart());
+        assertEquals("All notes should be visible", 4, noteEditParts.size());
+        assertTrue("All notes should be visible", //
+                noteEditParts.stream().allMatch(note -> note.getFigure().isVisible()));
+
+        List<GraphicalEditPart> textEditParts = getTextEditParts(editor.getDiagramEditPart());
+        assertEquals("All texts should be visible", 4, textEditParts.size());
+        assertTrue("All texts should be visible", //
+                textEditParts.stream().allMatch(text -> text.getFigure().isVisible()));
+
+        List<ConnectionEditPart> noteAttachments = getNotesAttachmentsEditPart();
+        assertTrue("All note attachments should be hidden", //
+                noteAttachments.stream().allMatch(noteAttachment -> !noteAttachment.getFigure().isVisible()));
+    }
+
+    /**
+     * Test if a note attachment is removed when the other note attachment to which they are attached is indirectly
+     * remove by a purely graphical element.
+     * 
+     * @see "https://github.com/eclipse-sirius/sirius-desktop/issues/82"
+     */
+    public void testRemoveNoteWithAttachmentOnAttachmentKeepNote() {
+        changeDiagramUIPreference(SiriusDiagramUiInternalPreferencesKeys.PREF_REMOVE_HIDE_NOTE_WHEN_ANNOTED_ELEMENT_HIDDEN_OR_REMOVE.name(), false);
+
+        init(SCENARIO_NOREFRESH);
+
+        delete("SourceNote", SiriusNoteEditPart.class);
+        delete("TargetNote", SiriusNoteEditPart.class);
+        delete("SourceText", SiriusTextEditPart.class);
+        delete("TargetText", SiriusTextEditPart.class);
+
+        List<String> pgeTypes = getPGETypes(editor.getDiagramEditPart());
+        long noteCount = pgeTypes.stream().filter(noteType -> ViewType.NOTE.equals(noteType)).count();
+        long textCount = pgeTypes.stream().filter(noteType -> ViewType.TEXT.equals(noteType)).count();
+        List<ConnectionEditPart> noteAttachments = getNotesAttachmentsEditPart();
+
+        assertEquals("Wrong number of notes", 2, noteCount);
+        assertEquals("Wrong number of texts", 2, textCount);
+        assertTrue("All note attachments should be removed", noteAttachments.isEmpty());
+    }
+
+    /**
+     * Test if a note attachment is removed when the other note attachment to which they are attached is indirectly
+     * remove by a purely graphical element.
+     * 
+     * @see "https://github.com/eclipse-sirius/sirius-desktop/issues/82"
+     */
+    public void testRemoveNoteWithAttachmentOnAttachmentRmNote() {
+        changeDiagramUIPreference(SiriusDiagramUiInternalPreferencesKeys.PREF_REMOVE_HIDE_NOTE_WHEN_ANNOTED_ELEMENT_HIDDEN_OR_REMOVE.name(), true);
+
+        init(SCENARIO_NOREFRESH);
+
+        delete("SourceNote", SiriusNoteEditPart.class);
+        delete("TargetNote", SiriusNoteEditPart.class);
+        delete("SourceText", SiriusTextEditPart.class);
+        delete("TargetText", SiriusTextEditPart.class);
+
+        List<String> pgeTypes = getPGETypes(editor.getDiagramEditPart());
+        long noteCount = pgeTypes.stream().filter(noteType -> ViewType.NOTE.equals(noteType)).count();
+        long textCount = pgeTypes.stream().filter(noteType -> ViewType.TEXT.equals(noteType)).count();
+        List<ConnectionEditPart> noteAttachments = getNotesAttachmentsEditPart();
+
+        assertEquals("Wrong number of notes", 0, noteCount);
+        assertEquals("Wrong number of texts", 0, textCount);
+        assertTrue("All note attachments should be removed", noteAttachments.isEmpty());
     }
 }
