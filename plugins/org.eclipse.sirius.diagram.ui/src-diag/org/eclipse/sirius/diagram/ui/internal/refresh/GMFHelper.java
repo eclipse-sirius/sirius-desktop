@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,9 +15,11 @@ package org.eclipse.sirius.diagram.ui.internal.refresh;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
 
 import org.eclipse.core.runtime.Path;
 import org.eclipse.draw2d.Connection;
@@ -30,6 +32,7 @@ import org.eclipse.draw2d.geometry.PrecisionRectangle;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.gef.ConnectionEditPart;
@@ -78,6 +81,7 @@ import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
+import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.AlphaDropShadowBorder;
@@ -985,5 +989,161 @@ public final class GMFHelper {
         }
         Image icon = DiagramUIPlugin.getPlugin().getImage(descriptor);
         return new Dimension(icon.getBounds().width, icon.getBounds().height);
+    }
+
+    /**
+     * Get all incoming and outgoing edges of this <code>view</code> or of all of its children.
+     * 
+     * @param view
+     *            the concern view
+     * @return list of edges
+     */
+    private static List<Edge> getIncomingOutgoingEdges(View view) {
+        List<Edge> edgesToDelete = new ArrayList<>();
+        edgesToDelete.addAll(view.getSourceEdges());
+        edgesToDelete.addAll(view.getTargetEdges());
+
+        List<View> children = view.getChildren();
+        for (View child : children) {
+            edgesToDelete.addAll(getIncomingOutgoingEdges(child));
+        }
+        return edgesToDelete;
+    }
+
+    /**
+     * Get all incoming and outgoing edges of all <code>views</code> or of all of their children.
+     * 
+     * @param view
+     *            the concern views
+     * @return list of edges
+     */
+    public static List<Edge> getAttachedEdges(Collection<View> views) {
+        return views.stream().flatMap(view -> getIncomingOutgoingEdges(view).stream()).toList();
+    }
+
+    /**
+     * Return all incoming and outgoing edges of all edges recursively
+     * 
+     * @param edges
+     *            collection of edges for which we want all incoming and outgoing edges
+     * @return all incoming and outgoing edges of all edges recursively
+     */
+    public static List<Edge> getAttachedEdgesRecursively(Collection<? extends View> edges) {
+        var resursivlyAttachedEdges = new ArrayList<Edge>();
+        var remainingEdges = new ArrayList<View>(edges);
+        while (!remainingEdges.isEmpty()) {
+            // Here we take view (take = remove from list), we put it aside (in removed).
+            // Then, if the view has not already been processed:
+            // we collect incoming and outgoing edges and we add these edges to the orphan edges list.
+            View view = remainingEdges.stream().findAny().orElseThrow(); // get an element
+
+            // Before removing this view, we must identify incoming or outgoing
+            // edges of this view or of one of its children to delete them just
+            // after. Indeed, an Edge without source (or target) must not exist.
+            List<Edge> attachedEdges = getIncomingOutgoingEdges(view);
+            // remove edges already present
+            attachedEdges.removeAll(resursivlyAttachedEdges);
+            attachedEdges.removeAll(remainingEdges);
+
+            remainingEdges.addAll(attachedEdges);
+            resursivlyAttachedEdges.addAll(attachedEdges);
+
+            remainingEdges.removeIf(v -> view == v);
+        }
+        return resursivlyAttachedEdges;
+    }
+
+    /**
+     * Return all attached notes/texts/representation links (i.e. PGE: pure graphical elements) of a view.
+     * 
+     * @return The list of attached PGE
+     */
+    public static List<Node> getAttachedPGE(View view) {
+        // get all attached notes
+        List<Edge> noteAttachments = getIncomingOutgoingEdges(view).stream() //
+                .filter(GMFNotationHelper::isNoteAttachment).toList();
+
+        return noteAttachments.stream().flatMap(edge -> {
+            return Stream.of(edge.getSource(), edge.getTarget());
+        }).filter(attachedView -> { // all nodes linked to note attachment: filter notes/texts
+            if (attachedView instanceof Node attachedNode) {
+                return GMFNotationHelper.isNote(attachedNode) || GMFNotationHelper.isTextNote(attachedNode);
+            } else {
+                return false;
+            }
+        }).map(Node.class::cast).toList();
+    }
+
+    /**
+     * Return all attached notes/texts/representation links (i.e. PGE: pure graphical elements) of all views.
+     * 
+     * @return The list of attached PGE
+     */
+    public static List<Node> getAttachedPGE(Collection<? extends View> views) {
+        return views.stream().flatMap(view -> GMFHelper.getAttachedPGE(view).stream()).toList();
+    }
+
+    /**
+     * Remove all notes/texts/representation links (i.e. PGE: pure graphical elements) attached to removed nodes and
+     * without other attachment.
+     * 
+     * The PGE is removed if all attached element are removed. The PGE is hidden if all visible attached element are
+     * removed. If the PGE has at least one remaining attached element, the PGE is not removed and note hidden.
+     * 
+     * @param candidatesPGE
+     *            Collection of all candidate PGE
+     */
+    public static void deleteDetachedPGE(Collection<Node> candidatesPGE) {
+        for (Node pureGraphicalElement : candidatesPGE) {
+            List<Edge> sourceEdges = pureGraphicalElement.getSourceEdges();
+            List<Edge> targetEdges = pureGraphicalElement.getTargetEdges();
+
+            List<Edge> validEdges = Stream.concat(sourceEdges.stream(), targetEdges.stream()) //
+                    .filter(edge -> edge.eContainer() != null).toList();
+
+            // remove unattached notes/texts
+            if (validEdges.size() == 0) {
+                EcoreUtil.remove(pureGraphicalElement);
+            } else {
+                Stream<Edge> visibleEdges = validEdges.stream().filter(edge -> edge.isVisible());
+
+                // hide notes/texts attached to invisible element
+                if (visibleEdges.count() == 0) {
+                    pureGraphicalElement.setVisible(false);
+                }
+            }
+        }
+    }
+
+    /**
+     * Return the list of elements filtered by visible connection.
+     * 
+     * This method take the collection of node <code>elements</code> and return a filtered list this collection. The
+     * condition to keep an element are as follows:
+     * <ul>
+     * <li>there are no edges attached to element,</li>
+     * <li>or all edges attached to element are hidden or blacklisted (in <code>excludedEdges</code>)</li>
+     * </ul>
+     * 
+     * @param elements
+     *            the initial collection to be filtered
+     * @param excludedEdges
+     *            the black list for edges we want to exclude
+     * @return the filtered list
+     */
+    public static List<Node> getElementWithoutVisibleConnection(Collection<Node> elements, Collection<Edge> excludedEdges) {
+        return elements.stream().filter(element -> {
+            List<Edge> sourceEdges = element.getSourceEdges();
+            List<Edge> targetEdges = element.getTargetEdges();
+
+            // All incoming and outgoing edges of element
+            Stream<Edge> edges = Stream.concat(sourceEdges.stream(), targetEdges.stream());
+
+            // Filter on edges by visibility attribute and excluded edges
+            // Return node with none attached edges (except excluded edges or hidden edges)
+            return edges.noneMatch(edge -> {
+                return edge.isVisible() && !excludedEdges.contains(edge);
+            });
+        }).toList();
     }
 }

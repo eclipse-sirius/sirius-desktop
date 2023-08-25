@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.Notification;
@@ -44,14 +45,12 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.HideLabelFilter;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
+import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
 import org.eclipse.sirius.diagram.ui.tools.internal.preferences.SiriusDiagramUiInternalPreferencesKeys;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Iterators;
 
 /**
  * This class update the notation model views visibility attribute when it
@@ -100,18 +99,32 @@ public class NotationVisibilityUpdater extends ResourceSetListenerImpl {
                 View referencingView = getReferencingView(dDiagramElement);
                 if (referencingView != null) {
                     if (notification.getFeature() == DiagramPackage.eINSTANCE.getDDiagramElement_Visible()) {
-                        viewsToUpdate.put(referencingView, Boolean.valueOf(notification.getNewBooleanValue()));
+                        boolean isVisible = notification.getNewBooleanValue();
+                        
+                        // hide incoming or outgoing NoteAttachment links
+                        List<Edge> attachedEdge = GMFHelper.getAttachedEdgesRecursively(Collections.singleton(referencingView));
+                        attachedEdge = attachedEdge.stream().filter(GMFNotationHelper::isNoteAttachment).toList();
+
+                        viewsToUpdate.put(referencingView, isVisible);
+                        for (Edge view : attachedEdge) {
+                            viewsToUpdate.put(view, isVisible);
+                        }
+
                         if (removeHideNote) {
-                            Set<View> allViewsToHide = new HashSet<View>();
-                            allContentsViewsVisibilityScope(referencingView, allViewsToHide, viewsToUpdate);
-                            Iterators.filter(referencingView.eAllContents(), View.class);
-                            final Iterator<View> allContents = Iterators.filter(referencingView.eAllContents(), View.class);
-                            while (allContents.hasNext()) {
-                                final Object next = allContents.next();
-                                allContentsViewsVisibilityScope((View) next, allViewsToHide, viewsToUpdate);
+                            // PGE = Pure Graphical Element
+                            // Get PGE attached to all element that are about to change visibility
+                            List<Node> attachedPGE = Stream.concat(GMFHelper.getAttachedPGE(referencingView).stream(), GMFHelper.getAttachedPGE(attachedEdge).stream()).toList();
+                            List<Node> needChangePGE;
+                            if (isVisible) {
+                                // all attached PGE need to be visible
+                                needChangePGE = attachedPGE;
+                            } else {
+                                // only PGE attached only to hidden elements must be hidden
+                                needChangePGE = GMFHelper.getElementWithoutVisibleConnection(attachedPGE, attachedEdge);
                             }
-                            for (View view : allViewsToHide) {
-                                viewsToUpdate.put(view, notification.getNewBooleanValue());
+
+                            for (Node node : needChangePGE) {
+                                viewsToUpdate.put(node, isVisible);
                             }
                         }
                     } else if (notification.getFeature() == DiagramPackage.eINSTANCE.getDEdge_IsFold()) {
@@ -164,100 +177,6 @@ public class NotationVisibilityUpdater extends ResourceSetListenerImpl {
             }
         }
         return viewToHide;
-    }
-
-    private Set<View> getAllRelatedNotesVisibilityScope(View viewToDelete, Map<View, Boolean> viewsToUpdate) {
-        Set<View> linkedViews = new HashSet<>();
-
-        for (Edge sourceEdge : Iterables.filter(viewToDelete.getSourceEdges(), Edge.class)) {
-            View target = sourceEdge.getTarget();
-            if (GMFNotationHelper.isNoteAttachment(sourceEdge)) {
-                Set<View> linked = new HashSet<>();
-                linked.add(viewToDelete);
-                collectLinkedViews(target, linked, viewsToUpdate);
-                linked.remove(viewToDelete);
-
-                linkedViews.addAll(getSafe(linked));
-
-            }
-        }
-
-        for (Edge targetEdge : Iterables.filter(viewToDelete.getTargetEdges(), Edge.class)) {
-            View source = targetEdge.getSource();
-            if (GMFNotationHelper.isNoteAttachment(targetEdge)) {
-                Set<View> linked = new HashSet<>();
-                linked.add(viewToDelete);
-                collectLinkedViews(source, linked, viewsToUpdate);
-                linked.remove(viewToDelete);
-
-                linkedViews.addAll(getSafe(linked));
-
-            }
-        }
-
-        return linkedViews;
-
-    }
-
-    /**
-     * Remove all contains set if the set contains an element that is not a note
-     * 
-     * @param linked
-     *            set of notes to delete.
-     * @return a collection of notes
-     */
-    private Collection<? extends View> getSafe(Set<View> linked) {
-        for (View linkedView : linked) {
-            if (!(linkedView instanceof Node && GMFNotationHelper.isNote((Node) linkedView))) {
-                return Collections.emptySet();
-            }
-        }
-
-        return linked;
-    }
-
-    private void collectLinkedViews(final View v, Set<View> linkedViews, Map<View, Boolean> viewsToUpdate) {
-        linkedViews.add(v);
-        for (Edge sourceEdge : Iterables.filter(v.getSourceEdges(), Edge.class)) {
-            View target = sourceEdge.getTarget();
-            boolean sourceIsNotViewToUpdate = true;
-            if (viewsToUpdate.get(target) != null) {
-                sourceIsNotViewToUpdate = viewsToUpdate.get(target);
-            }
-            if (GMFNotationHelper.isNoteAttachment(sourceEdge)) {
-                if (!linkedViews.contains(target) && target instanceof Node && GMFNotationHelper.isNote((Node) target)) {
-                    collectLinkedViews(target, linkedViews, viewsToUpdate);
-                } else if (target.isVisible() && sourceIsNotViewToUpdate) {
-                    linkedViews.add(target);
-                }
-            }
-        }
-
-        for (Edge targetEdge : Iterables.filter(v.getTargetEdges(), Edge.class)) {
-            View source = targetEdge.getSource();
-            boolean sourceIsNotViewToUpdate = true;
-            if (viewsToUpdate.get(source) != null) {
-                sourceIsNotViewToUpdate = viewsToUpdate.get(source);
-            }
-            if (GMFNotationHelper.isNoteAttachment(targetEdge)) {
-                if (!linkedViews.contains(source) && source instanceof Node && GMFNotationHelper.isNote((Node) source)) {
-                    collectLinkedViews(source, linkedViews, viewsToUpdate);
-                } else if (source.isVisible() && sourceIsNotViewToUpdate) {
-                    linkedViews.add(source);
-                }
-            }
-        }
-    }
-
-    @SuppressWarnings("unchecked")
-    private void allContentsViewsVisibilityScope(View viewToDelete, Set<View> allViewsToDelete, Map<View, Boolean> viewsToUpdate) {
-        allViewsToDelete.addAll(getAllRelatedNotesVisibilityScope(viewToDelete, viewsToUpdate));
-
-        for (Edge edge : Iterables.filter(Iterables.concat(viewToDelete.getSourceEdges(), viewToDelete.getTargetEdges()), Edge.class)) {
-            if (GMFNotationHelper.isNoteAttachment(edge)) {
-                allViewsToDelete.add(edge);
-            }
-        }
     }
 
     private View getReferencingView(DDiagramElement dDiagramElement) {

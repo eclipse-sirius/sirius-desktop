@@ -13,13 +13,11 @@
 package org.eclipse.sirius.diagram.ui.internal.refresh;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Stream;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -431,85 +429,14 @@ public class CanonicalSynchronizerResult {
      * Compute all edges adjacent to the nodes to be deleted and adds them to the list.
      */
     public void collectAttachedEdgeToNodes() {
-        collectAttachedEdges(orphanNodes);
+        this.addOrphanEdges(GMFHelper.getAttachedEdges(orphanNodes));
     }
 
     /**
      * Compute all edges adjacent to the edges to be deleted and adds them to the list (and compute attached edge).
      */
     public void collectAttachedEdgeToEdges() {
-        collectAttachedEdges(orphanEdges);
-    }
-
-    /**
-     * Add all incoming and outgoing edges of all views to orphan edges list :
-     * <ul>
-     * <li>If view is container collect also edge of all children recursively</li>
-     * <li>If view is edge collect recursively attached edges</li>
-     * </ul>
-     * 
-     * @param <T>
-     *            type of collection (View, Edge or Node in general)
-     * @param views
-     *            collection of views for which we want all incoming and outgoing edges
-     */
-    private <T extends View> void collectAttachedEdges(Collection<T> views) {
-        var removed = new HashSet<T>();
-        while (!views.isEmpty()) {
-            // Here we take view (take = remove from list), we put it aside (in removed).
-            // Then, if the view has not already been processed:
-            // we collect incoming and outgoing edges and we add these edges to the orphan edges list.
-            T view = views.stream().findAny().orElseThrow(); // get an element
-            if (removed.add(view)) {
-                // Before removing this view, we must identify incoming or outgoing
-                // edges of this view or of one of its children to delete them just
-                // after. Indeed, an Edge without source (or target) must not exist.
-                List<Edge> edgesToDelete = getIncomingOutgoingEdges(view);
-                this.addOrphanEdges(edgesToDelete);
-            }
-            views.removeIf(v -> view == v);
-        }
-        views.addAll(removed);
-    }
-
-    /**
-     * Get all incoming and outgoing edges of this <code>view</code> or of all of its children.
-     * 
-     * @param view
-     *            the concern view
-     * @return list of edges
-     */
-    private List<Edge> getIncomingOutgoingEdges(View view) {
-        List<Edge> edgesToDelete = new ArrayList<>();
-        edgesToDelete.addAll(view.getSourceEdges());
-        edgesToDelete.addAll(view.getTargetEdges());
-
-        List<View> children = view.getChildren();
-        for (View child : children) {
-            edgesToDelete.addAll(getIncomingOutgoingEdges(child));
-        }
-        return edgesToDelete;
-    }
-
-    /**
-     * Collect all attached notes/texts/representation links (i.e. PGE: pure graphical elements).
-     */
-    private void collectAttachedPGE(View view) {
-        // get all attached notes
-        List<Edge> noteAttachments = getIncomingOutgoingEdges(view).stream() //
-                .filter(GMFNotationHelper::isNoteAttachment).toList();
-
-        noteAttachments.stream().flatMap(edge -> {
-            return Stream.of(edge.getSource(), edge.getTarget());
-        }).filter(attachedView -> { // all nodes linked to note attachment: filter notes/texts
-            if (attachedView instanceof Node attachedNode) {
-                return GMFNotationHelper.isNote(attachedNode) || GMFNotationHelper.isTextNote(attachedNode);
-            } else {
-                return false;
-            }
-        }).map(Node.class::cast).forEach(attachedNote -> { // for each note
-            partialOrphanPGE.add(attachedNote);
-        });
+        this.addOrphanEdges(GMFHelper.getAttachedEdgesRecursively(orphanEdges));
     }
 
     /**
@@ -530,7 +457,7 @@ public class CanonicalSynchronizerResult {
         if (prefRemoveAttachedPGE) {
             // collect possibly detached PGE <=> collect PGE attached to orphan view
             for (View orphanNode : orphanNodes) {
-                collectAttachedPGE(orphanNode);
+                partialOrphanPGE.addAll(GMFHelper.getAttachedPGE(orphanNode));
             }
         }
     }
@@ -553,14 +480,17 @@ public class CanonicalSynchronizerResult {
         if (prefRemoveAttachedPGE) {
             // collect possibly detached PGE <=> collect PGE attached to orphan view
             for (Edge orphanEdge : orphanEdges) {
-                collectAttachedPGE(orphanEdge);
+                partialOrphanPGE.addAll(GMFHelper.getAttachedPGE(orphanEdge));
             }
         }
     }
 
     /**
-     * Mark to remove all notes/texts/representation links (i.e. PGE: pure graphical elements) attached to nodes that
-     * will be removed.
+     * Remove all notes/texts/representation links (i.e. PGE: pure graphical elements) attached to removed nodes and
+     * without other attachment.
+     * 
+     * The PGE is removed if all attached element are removed. The PGE is hidden if all visible attached element are
+     * removed. If the PGE has at least one remaining attached element, the PGE is not removed and note hidden.
      * 
      * Before calling this function, you need to collect all PGE attached to view that will be removed (using method
      * collectDetachedPGEFromNode and collectDetachedPGEFromEdge)
@@ -570,25 +500,7 @@ public class CanonicalSynchronizerResult {
      */
     public void deleteDetachedPGE() {
         if (prefRemoveAttachedPGE) {
-            for (Node pureGraphicalElement : partialOrphanPGE) {
-                List<Edge> sourceEdges = pureGraphicalElement.getSourceEdges();
-                List<Edge> targetEdges = pureGraphicalElement.getTargetEdges();
-
-                List<Edge> validEdges = Stream.concat(sourceEdges.stream(), targetEdges.stream()) //
-                        .filter(edge -> edge.eContainer() != null).toList();
-
-                // remove unattached notes/texts
-                if (validEdges.size() == 0) {
-                    EcoreUtil.remove(pureGraphicalElement);
-                } else {
-                    Stream<Edge> visibleEdges = validEdges.stream().filter(edge -> edge.isVisible());
-
-                    // hide notes/texts attached to invisible element
-                    if (visibleEdges.count() == 0) {
-                        pureGraphicalElement.setVisible(false);
-                    }
-                }
-            }
+            GMFHelper.deleteDetachedPGE(partialOrphanPGE);
             partialOrphanPGE.clear();
         }
     }
