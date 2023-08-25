@@ -211,7 +211,8 @@ public class NoteAttachmentTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * @return View type of all PGE (ViewType.NOTE or ViewType.TEXT) in given parameter `editPart`
+     * @return View type of all purely graphical elements (PGE: ViewType.NOTE or ViewType.TEXT) in given parameter
+     *         `editPart`
      */
     private List<String> getPGETypes(EditPart editPart) {
         List<?> elements = editPart.getChildren();
