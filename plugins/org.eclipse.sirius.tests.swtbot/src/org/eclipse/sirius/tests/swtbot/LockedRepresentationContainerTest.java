@@ -34,9 +34,8 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
 /**
- * Ensure that some actions on representation are disabled when the
- * {@link DView} is locked by using the permission authority
- * {@link ReadOnlyPermissionAuthority}
+ * Ensure that some actions on representation are disabled when the {@link DView} is locked by using the permission
+ * authority {@link ReadOnlyPermissionAuthority}
  * 
  * @author <a href="mailto:mickael.lanoe@obeo.fr">Mickael LANOE</a>
  */
@@ -116,8 +115,8 @@ public class LockedRepresentationContainerTest extends AbstractSiriusSwtBotGefTe
     }
 
     /**
-     * Ensure that the creation of a new representation is forbidden when the
-     * representation container is locked by using permission authority.
+     * Ensure that the creation of a new representation is forbidden when the representation container is locked by
+     * using permission authority.
      */
     public void testCreateRepresentation() {
         SWTBotTreeItem semanticPackageNode = getSelectedSemanticPackageNode();
@@ -134,9 +133,8 @@ public class LockedRepresentationContainerTest extends AbstractSiriusSwtBotGefTe
     }
 
     /**
-     * Ensure that the creation of a new representation from the session is
-     * forbidden when the representation container is locked by using permission
-     * authority.
+     * Ensure that the creation of a new representation from the session is forbidden when the representation container
+     * is locked by using permission authority.
      */
     public void testCreateRepresentationFromSession() {
         SWTBotTreeItem sessionTreeItem = localSession.getRootSessionTreeItem();
@@ -167,9 +165,8 @@ public class LockedRepresentationContainerTest extends AbstractSiriusSwtBotGefTe
     }
 
     /**
-     * Ensure that the creation of a new representation from the session is
-     * forbidden when the representation container is locked by using permission
-     * authority.
+     * Ensure that the creation of a new representation from the session is forbidden when the representation container
+     * is locked by using permission authority.
      */
     public void testControlSemanticModel() {
         SWTBotTreeItem semanticPackageNode = getSelectedSemanticSubPackageNode();
@@ -210,32 +207,32 @@ public class LockedRepresentationContainerTest extends AbstractSiriusSwtBotGefTe
     }
 
     /**
-     * Ensure that the deletion of a representation is forbidden when the
-     * representation container is locked by using permission authority.
+     * Ensure that the deletion of a representation is forbidden when the representation container is locked by using
+     * permission authority.
      */
     public void testDeleteRepresentation() {
         doTestRepresentationAction(DELETE_ACTION);
     }
 
     /**
-     * Ensure that the copy of a representation is forbidden when the
-     * representation container is locked by using permission authority.
+     * Ensure that the copy of a representation is forbidden when the representation container is locked by using
+     * permission authority.
      */
     public void testCopyRepresentation() {
         doTestRepresentationAction(COPY_ACTION);
     }
 
     /**
-     * Ensure that the extract of a representation is forbidden when the
-     * representation container is locked by using permission authority.
+     * Ensure that the extract of a representation is forbidden when the representation container is locked by using
+     * permission authority.
      */
     public void testExtractRepresentation() {
         doTestRepresentationAction(EXTRACT_TO_AIRD_FILE);
     }
 
     /**
-     * Ensure that the move of a representation is forbidden when the
-     * representation container is locked by using permission authority.
+     * Ensure that the move of a representation is forbidden when the representation container is locked by using
+     * permission authority.
      */
     public void testMoveRepresentation() {
         // First create a new ".aird" file to have the "Move" action
@@ -258,8 +255,8 @@ public class LockedRepresentationContainerTest extends AbstractSiriusSwtBotGefTe
     }
 
     /**
-     * Ensure that an action on a representation is forbidden when the
-     * representation container is locked by using permission authority.
+     * Ensure that an action on a representation is forbidden when the representation container is locked by using
+     * permission authority.
      * 
      * @param action
      *            the action to check

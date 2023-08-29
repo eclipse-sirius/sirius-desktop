@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -84,7 +84,8 @@ public class SiriusControlHandler extends AbstractHandler {
                     protected void execute(IProgressMonitor monitor) throws CoreException, InvocationTargetException, InterruptedException {
                         try {
                             monitor.beginTask(Messages.SiriusControlHandler_controlTask, 1);
-                            performControl(HandlerUtil.getActiveShell(event), semanticRoot, new SubProgressMonitor(monitor, 1));
+                            Shell activeShell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
+                            performControl(activeShell, semanticRoot, new SubProgressMonitor(monitor, 1));
                         } finally {
                             monitor.done();
                         }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2015, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -93,10 +93,9 @@ public class ControlUncontrolWithOpenedRepresentationTest extends AbstractSirius
     }
 
     /**
-     * Open a diagram located under a semantic element to control. Once
-     * controlled, we validate that the diagram is still editable. Next the
-     * semantic element is uncontrolled and we validate again that the diagram
-     * is still editable.
+     * Open a diagram located under a semantic element to control. Once controlled, we validate that the diagram is
+     * still editable. Next the semantic element is uncontrolled and we validate again that the diagram is still
+     * editable.
      * 
      * @throws Exception
      *             Test error.
@@ -106,10 +105,9 @@ public class ControlUncontrolWithOpenedRepresentationTest extends AbstractSirius
     }
 
     /**
-     * Open a diagram located under a sub element of a semantic element to
-     * control. Once controlled, we validate that the diagram is still editable.
-     * Next the semantic element is uncontrolled and we validate again that the
-     * diagram is still editable.
+     * Open a diagram located under a sub element of a semantic element to control. Once controlled, we validate that
+     * the diagram is still editable. Next the semantic element is uncontrolled and we validate again that the diagram
+     * is still editable.
      * 
      * @throws Exception
      *             Test error.
@@ -119,10 +117,8 @@ public class ControlUncontrolWithOpenedRepresentationTest extends AbstractSirius
     }
 
     /**
-     * Open a table located under a semantic element to control. Once
-     * controlled, we validate that the table is still editable. Next the
-     * semantic element is uncontrolled and we validate again that the table is
-     * still editable.
+     * Open a table located under a semantic element to control. Once controlled, we validate that the table is still
+     * editable. Next the semantic element is uncontrolled and we validate again that the table is still editable.
      * 
      * @throws Exception
      *             Test error.
@@ -132,10 +128,9 @@ public class ControlUncontrolWithOpenedRepresentationTest extends AbstractSirius
     }
 
     /**
-     * Open a table located under a sub element of a semantic element to
-     * control. Once controlled, we validate that the table is still editable.
-     * Next the semantic element is uncontrolled and we validate again that the
-     * table is still editable.
+     * Open a table located under a sub element of a semantic element to control. Once controlled, we validate that the
+     * table is still editable. Next the semantic element is uncontrolled and we validate again that the table is still
+     * editable.
      * 
      * @throws Exception
      *             Test error.
@@ -145,9 +140,8 @@ public class ControlUncontrolWithOpenedRepresentationTest extends AbstractSirius
     }
 
     /**
-     * Open a tree located under a semantic element to control. Once controlled,
-     * we validate that the tree is still editable. Next the semantic element is
-     * uncontrolled and we validate again that the tree is still editable.
+     * Open a tree located under a semantic element to control. Once controlled, we validate that the tree is still
+     * editable. Next the semantic element is uncontrolled and we validate again that the tree is still editable.
      * 
      * @throws Exception
      *             Test error.
@@ -157,10 +151,9 @@ public class ControlUncontrolWithOpenedRepresentationTest extends AbstractSirius
     }
 
     /**
-     * Open a tree located under a sub element of a semantic element to control.
-     * Once controlled, we validate that the tree is still editable. Next the
-     * semantic element is uncontrolled and we validate again that the tree is
-     * still editable.
+     * Open a tree located under a sub element of a semantic element to control. Once controlled, we validate that the
+     * tree is still editable. Next the semantic element is uncontrolled and we validate again that the tree is still
+     * editable.
      * 
      * @throws Exception
      *             Test error.
@@ -224,11 +217,9 @@ public class ControlUncontrolWithOpenedRepresentationTest extends AbstractSirius
     }
 
     /**
-     * This method is used to bypass a current issue where the "Control" or
-     * "Uncontrol" actions are unexpectedly disabled. Therefore
-     * SWTBotUtils.clickContextMenu can't be used. <br/>
-     * Note that the first step is to access the package p1 and then to
-     * control/uncontrol it.
+     * This method is used to bypass a current issue where the "Control" or "Uncontrol" actions are unexpectedly
+     * disabled. Therefore SWTBotUtils.clickContextMenu can't be used. <br/>
+     * Note that the first step is to access the package p1 and then to control/uncontrol it.
      * 
      * @param shouldControl
      *            true if we should control, false if we should uncontrol
@@ -251,11 +242,11 @@ public class ControlUncontrolWithOpenedRepresentationTest extends AbstractSirius
             @Override
             public void run() {
                 try {
-                    final Shell activeShell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
-                    new ProgressMonitorDialog(activeShell).run(false, false, new WorkspaceModifyOperation() {
+                    new ProgressMonitorDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell()).run(false, false, new WorkspaceModifyOperation() {
 
                         @Override
                         protected void execute(IProgressMonitor monitor) throws CoreException, InvocationTargetException, InterruptedException {
+                            Shell activeShell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
                             if (shouldControl) {
                                 new SiriusControlHandler().performControl(activeShell, p1, new NullProgressMonitor());
                             } else {
