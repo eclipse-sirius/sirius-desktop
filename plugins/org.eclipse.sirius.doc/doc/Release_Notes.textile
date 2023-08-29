@@ -13,6 +13,15 @@ h3. User-Visible Changes
 
 h3. Specifier-Visible Changes
 
+* <span class="label label-info">Modified</span> Three system properties have been added to allow the enablement of layout customizations for Regions (containers whose parent has a Children Presentation attribute set to Horizontal Stack or Vertical Stack): 
+** @-Dorg.eclipse.sirius.diagram.ui.internal.region.autosize.figure.optimized=true@
+*** When this system property is set to true, the auto-size layout of Regions is based on model constraints. It reduces the layout changes for such Regions after reopening of a diagram.
+** @-Dorg.eclipse.sirius.diagram.ui.internal.region.autosize.action.optimized=true@ 
+*** When this system property is set to true, individual auto-size actions and status are enabled for Regions. Otherwise the auto-size actions and status are delegated and managed by the RegionContainer.
+** @-Dorg.eclipse.sirius.diagram.ui.internal.region.content.canonical.layout.standard=true@
+*** When this system property is set to true, the centered layout will not be applied on the Regions content at RegionContainer creation time.
+
+
 h3. Developer-Visible Changes
 
 h2(#sirius7.2.0). Changes in Sirius 7.2.0

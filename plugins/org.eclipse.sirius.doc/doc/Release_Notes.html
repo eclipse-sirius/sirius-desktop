@@ -145,6 +145,30 @@
 			<li><span class="label label-info">Modified</span> Sequence diagrams are now correctly identified in the Sirius Session Details report (accessible with the &#8220;Properties&#8221; dialog on an aird file).</li>
 		</ul>
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
+		<ul>
+			<li><span class="label label-info">Modified</span> Three system properties have been added to allow the enablement of layout customizations for Regions (containers whose parent has a Children Presentation attribute set to Horizontal Stack or Vertical Stack): 
+				<ul>
+					<li>
+						<code>-Dorg.eclipse.sirius.diagram.ui.internal.region.autosize.figure.optimized=true</code>
+						<ul>
+							<li>When this system property is set to true, the auto-size layout of Regions is based on model constraints. It reduces the layout changes for such Regions after reopening of a diagram.</li>
+						</ul>
+					</li>
+					<li>
+						<code>-Dorg.eclipse.sirius.diagram.ui.internal.region.autosize.action.optimized=true</code> 
+						<ul>
+							<li>When this system property is set to true, individual auto-size actions and status are enabled for Regions. Otherwise the auto-size actions and status are delegated and managed by the RegionContainer.</li>
+						</ul>
+					</li>
+					<li>
+						<code>-Dorg.eclipse.sirius.diagram.ui.internal.region.content.canonical.layout.standard=true</code>
+						<ul>
+							<li>When this system property is set to true, the centered layout will not be applied on the Regions content at RegionContainer creation time.</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<h2 id="sirius7.2.0">Changes in Sirius 7.2.0</h2>
 		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
