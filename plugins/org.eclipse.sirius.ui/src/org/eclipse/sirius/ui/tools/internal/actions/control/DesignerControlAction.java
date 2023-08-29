@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -55,7 +55,6 @@ public class DesignerControlAction extends ControlAction {
     @Override
     public void run() {
         final boolean controlling = this.command == null;
-        final Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
         int choice = ISaveablePart2.YES;
         final Session session = SessionManager.INSTANCE.getSession(this.eObject);
         if (session != null) {
@@ -77,10 +76,11 @@ public class DesignerControlAction extends ControlAction {
                                     monitor.subTask(Messages.DesignerControlAction_savingTask);
                                     session.save(new SubProgressMonitor(monitor, 1));
                                 }
+                                Shell activeShell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
                                 if (controlling) {
-                                    new SiriusControlHandler().performControl(shell, eObject, new SubProgressMonitor(monitor, 1));
+                                    new SiriusControlHandler().performControl(activeShell, eObject, new SubProgressMonitor(monitor, 1));
                                 } else {
-                                    new SiriusUncontrolHandler().performUncontrol(shell, eObject, new SubProgressMonitor(monitor, 1));
+                                    new SiriusUncontrolHandler().performUncontrol(activeShell, eObject, new SubProgressMonitor(monitor, 1));
                                 }
                             } finally {
                                 monitor.done();
