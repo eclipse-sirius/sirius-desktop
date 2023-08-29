@@ -8,6 +8,9 @@ h2(#sirius7.2.1). Changes in Sirius 7.2.1
 
 h3. User-Visible Changes
 
+* <span class="label label-info">Modified</span> Sequence diagrams are now correctly identified in the Sirius Session Details report (accessible with the "Properties" dialog on an aird file).
+
+
 h3. Specifier-Visible Changes
 
 h3. Developer-Visible Changes
