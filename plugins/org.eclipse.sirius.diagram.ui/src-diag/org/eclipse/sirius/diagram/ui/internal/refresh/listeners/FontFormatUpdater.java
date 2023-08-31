@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -24,8 +24,10 @@ import java.util.Set;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
@@ -45,10 +47,11 @@ import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
 
 /**
- * This class update the notation and viewpoint models font style attributes when it receives a notification about a
- * Node font style changes.
+ * This class update the notation and viewpoint models font style attributes
+ * when it receives a notification about a Node font style changes.
  * 
  * Make sure to attach and detach the updater to the editing domain.
  * 
@@ -70,7 +73,7 @@ public class FontFormatUpdater extends ResourceSetListenerImpl {
      * Default constructor.
      * 
      * @param domain
-     *                   the current editing domain.
+     *            the current editing domain.
      */
     public FontFormatUpdater(final TransactionalEditingDomain domain) {
         super(FEATURES_TO_REFACTOR_FILTER);
@@ -115,7 +118,41 @@ public class FontFormatUpdater extends ResourceSetListenerImpl {
                 Style style = dDiagramElement.getStyle();
                 if (isViewFontStylePropertiesDifferentOfGMFOne(style, fontStyle, features)) {
                     Set<String> featureNames = getFeatureNames(features);
-                    if (!(style instanceof EdgeStyle)) {
+                    if (style instanceof EdgeStyle) {
+                        EdgeStyle edgeStyle = (EdgeStyle) style;
+                        String labelFormat = ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT.getName();
+                        EAttribute customFeatureAttr = ViewpointPackage.Literals.CUSTOMIZABLE__CUSTOM_FEATURES;
+                        // Here we only process the custom feature 'LabelFormat' because the other
+                        // custom features are processed by a different mechanism. However, this
+                        // code is wrong when the three label have different LabelFormat, the reset
+                        // style button make the same LabelFormat on three label. So, this
+                        // implementation is temporary pending implementation with the same
+                        // mechanism as the others custom features.
+                        if (featureNames.contains(labelFormat)) {
+                            if (edgeStyle.getBeginLabelStyle() != null) {
+                                BasicLabelStyleDescription description = edgeStyle.getBeginLabelStyle().getDescription();
+                                // if format is different between default (Sirius Description/odesign) and GMF
+                                if (!isSameLabelFormat(fontStyle, description.getLabelFormat())) {
+                                    cc.append(AddCommand.create(getTarget(), edgeStyle.getBeginLabelStyle(), customFeatureAttr, labelFormat));
+                                }
+                            }
+                            if (edgeStyle.getCenterLabelStyle() != null) {
+                                BasicLabelStyleDescription description = edgeStyle.getCenterLabelStyle().getDescription();
+                                // if format is different between default (Sirius Description/odesign) and GMF
+                                if (!isSameLabelFormat(fontStyle, description.getLabelFormat())) {
+                                    cc.append(AddCommand.create(getTarget(), edgeStyle.getCenterLabelStyle(), customFeatureAttr, labelFormat));
+                                }
+                            }
+                            if (edgeStyle.getEndLabelStyle() != null) {
+                                BasicLabelStyleDescription description = edgeStyle.getEndLabelStyle().getDescription();
+                                // if format is different between default (Sirius Description/odesign) and GMF
+                                if (!isSameLabelFormat(fontStyle, description.getLabelFormat())) {
+                                    cc.append(AddCommand.create(getTarget(), edgeStyle.getEndLabelStyle(), customFeatureAttr, labelFormat));
+                                }
+                            }
+                        }
+
+                    } else {
                         featureNames.addAll(style.getCustomFeatures());
                         Command addCustomFeaturesCmd = SetCommand.create(getTarget(), style, ViewpointPackage.Literals.CUSTOMIZABLE__CUSTOM_FEATURES, featureNames);
                         cc.append(addCustomFeaturesCmd);
@@ -131,6 +168,14 @@ public class FontFormatUpdater extends ResourceSetListenerImpl {
             return cc;
         }
 
+    }
+
+    private boolean isSameLabelFormat(FontStyle gmfStyle, EList<FontFormat> siriusStyle) {
+        boolean sameBold = (gmfStyle.isBold() == siriusStyle.contains(FontFormat.BOLD_LITERAL));
+        boolean sameItalic = (gmfStyle.isItalic() == siriusStyle.contains(FontFormat.ITALIC_LITERAL));
+        boolean sameUnderline = (gmfStyle.isUnderline() == siriusStyle.contains(FontFormat.UNDERLINE_LITERAL));
+        boolean sameStrike = (gmfStyle.isStrikeThrough() == siriusStyle.contains(FontFormat.STRIKE_THROUGH_LITERAL));
+        return sameBold && sameItalic && sameUnderline && sameStrike;
     }
 
     private boolean isViewFontStylePropertiesDifferentOfGMFOne(Customizable viewpointStyle, FontStyle gmfFontStyle, Set<EStructuralFeature> gmfStyleFeatures) {
