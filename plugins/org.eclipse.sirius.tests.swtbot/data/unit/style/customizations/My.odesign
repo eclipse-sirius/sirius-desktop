@@ -17,7 +17,6 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_orange']"/>
             </beginLabelStyleDescription>
             <centerLabelStyleDescription labelSize="12" labelExpression="CENTER">
-              <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
             </centerLabelStyleDescription>
             <endLabelStyleDescription labelSize="12" labelExpression="END">
