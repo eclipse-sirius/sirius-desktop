@@ -13,15 +13,16 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.layout.provider;
 
 import java.text.MessageFormat;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -81,6 +82,8 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.model.business.internal.query.DNodeContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.tools.api.layout.PinHelper;
+import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
@@ -105,7 +108,6 @@ import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Iterables;
@@ -422,14 +424,6 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      */
     private boolean recursive;
 
-    private Predicate<Object> validateAllElementInArrayListAreIDiagramElementEditPart = new Predicate<Object>() {
-
-        @Override
-        public boolean apply(Object input) {
-            return input instanceof IDiagramElementEditPart;
-        }
-    };
-
     /**
      * The default constructor.
      * 
@@ -519,10 +513,22 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
 
         // Finds if there are unpinned diagram elements to keep fixed stored in
         // the LayoutHint as a Collection
-        ArrayList<IDiagramElementEditPart> elementsToKeepFixed = new ArrayList<>();
-        if (layoutHint.getAdapter(Collection.class) instanceof ArrayList<?>
-                && Iterables.all((ArrayList<?>) layoutHint.getAdapter(Collection.class), validateAllElementInArrayListAreIDiagramElementEditPart)) {
-            elementsToKeepFixed = (ArrayList<IDiagramElementEditPart>) layoutHint.getAdapter(Collection.class);
+        Set<IGraphicalEditPart> elementsToKeepFixed = new HashSet<>();
+        Collection<EditPart> adaptedCollection = layoutHint.getAdapter(Collection.class);
+        if (adaptedCollection != null && adaptedCollection.stream().allMatch(IDiagramElementEditPart.class::isInstance)) {
+            elementsToKeepFixed.addAll(adaptedCollection.stream().map(IDiagramElementEditPart.class::cast).toList());
+        }
+        if (SiriusLayoutDataManager.KEEP_FIXED.equals(layoutHint.getAdapter(String.class))) {
+            elementsToKeepFixed.addAll(selectedObjects.stream().filter(IGraphicalEditPart.class::isInstance).toList());
+        }
+
+        Set<DDiagramElement> temporaryPinnedElements = new HashSet<>();
+        PinHelper pinHelper = new PinHelper();
+        for (IGraphicalEditPart elementEP : elementsToKeepFixed) {
+            if (elementEP.resolveSemanticElement() instanceof DDiagramElement dDiagramElement && !pinHelper.isPinned(dDiagramElement)) {
+                pinHelper.markAsPinned(dDiagramElement);
+                temporaryPinnedElements.add(dDiagramElement);
+            }
         }
 
         // Create the specific command to layout the border items.
@@ -536,6 +542,9 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
 
         if (result.size() == 0) {
             result = null; // removeCommandsForPinnedElements(result);
+        }
+        for (DDiagramElement dDiagramElement : temporaryPinnedElements) {
+            pinHelper.markAsUnpinned(dDiagramElement);
         }
         return result;
     }
@@ -592,7 +601,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      *            IDiagramElementEditPart which are not actually pinned but have to stay fixed
      */
     @SuppressWarnings("rawtypes")
-    private void resetBoundsOfPinnedElements(final List selectedObjects, final CompoundCommand compoundCommand, ArrayList<IDiagramElementEditPart> elementsToKeepFixed) {
+    private void resetBoundsOfPinnedElements(final List selectedObjects, final CompoundCommand compoundCommand, Set<IGraphicalEditPart> elementsToKeepFixed) {
         for (IGraphicalEditPart graphicalEditPart : Iterables.filter(selectedObjects, IGraphicalEditPart.class)) {
             EObject semanticElement = graphicalEditPart.resolveSemanticElement();
             if (semanticElement instanceof DDiagramElement) {
@@ -682,7 +691,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      *            IDiagramElementEditPart which are not actually pinned but have to stay fixed
      * @return The command to execute to layout the border items.
      */
-    private Command layoutBorderItems(final List<?> selectedObjects, final int nbIterations, ArrayList<IDiagramElementEditPart> elementsToKeepFixed) {
+    private Command layoutBorderItems(final List<?> selectedObjects, final int nbIterations, Set<IGraphicalEditPart> elementsToKeepFixed) {
         CompoundCommand cc = new CompoundCommand();
         for (Object object : selectedObjects) {
             if (object instanceof GraphicalEditPart) {
@@ -865,7 +874,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      *            IDiagramElementEditPart which are not actually pinned but have to stay fixed
      * @return The command to execute to layout the border items of this graphical edit part.
      */
-    private Command layoutBorderItems(final GraphicalEditPart graphicalEditPart, ArrayList<IDiagramElementEditPart> elementsToKeepFixed) {
+    private Command layoutBorderItems(final GraphicalEditPart graphicalEditPart, Set<IGraphicalEditPart> elementsToKeepFixed) {
         final CompoundCommand result = new CompoundCommand();
         if (graphicalEditPart instanceof IBorderedShapeEditPart) {
             final IBorderedShapeEditPart borderedEditPart = (IBorderedShapeEditPart) graphicalEditPart;
@@ -899,7 +908,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      *            IDiagramElementEditPart which are not actually pinned but have to stay fixed
      * @return The command to execute to layout the border items of this graphical edit part.
      */
-    private Command layoutBorderItems(final IBorderedShapeEditPart borderedShapeEditPart, ArrayList<IDiagramElementEditPart> elementsToKeepFixed) {
+    private Command layoutBorderItems(final IBorderedShapeEditPart borderedShapeEditPart, Set<IGraphicalEditPart> elementsToKeepFixed) {
         CompoundCommand resCommand = null;
         if (borderedShapeEditPart instanceof IGraphicalEditPart) {
 
@@ -1587,11 +1596,11 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
     @SuppressWarnings("unchecked")
     private int getRightSizeXCoordinateOfRightMostChild(final IGraphicalEditPart part, final double scale, final Dimension moveDelta) {
         int result = 0;
-        Collection<IGraphicalEditPart> children = Collections2.filter(part.getChildren(), Predicates.and(Predicates.instanceOf(IGraphicalEditPart.class),
-                Predicates.not(Predicates.instanceOf(AbstractDiagramBorderNodeEditPart.class)), Predicates.not(Predicates.instanceOf(AbstractDiagramNameEditPart.class))))
-                .stream()
-                .filter(IGraphicalEditPart.class::isInstance)
-                .map(IGraphicalEditPart.class::cast)
+        Collection<IGraphicalEditPart> children = Collections2.filter(part.getChildren(), Predicates.and(Predicates.instanceOf(IGraphicalEditPart.class), //
+                Predicates.not(Predicates.instanceOf(AbstractDiagramBorderNodeEditPart.class)), Predicates.not(Predicates.instanceOf(AbstractDiagramNameEditPart.class)))) //
+                .stream() //
+                .filter(IGraphicalEditPart.class::isInstance) //
+                .map(IGraphicalEditPart.class::cast) //
                 .toList();
         for (var child : children) {
             if (child instanceof ShapeCompartmentEditPart) {
@@ -1629,11 +1638,11 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      */
     private int getBottomSizeYCoordinateOfLowestChild(final IGraphicalEditPart part, final double scale, final Dimension moveDelta) {
         int result = 0;
-        Collection<IGraphicalEditPart> children = Collections2.filter(part.getChildren(), Predicates.and(Predicates.instanceOf(IGraphicalEditPart.class),
-                Predicates.not(Predicates.instanceOf(AbstractDiagramBorderNodeEditPart.class)), Predicates.not(Predicates.instanceOf(AbstractDiagramNameEditPart.class))))
-                .stream()
-                .filter(IGraphicalEditPart.class::isInstance)
-                .map(IGraphicalEditPart.class::cast)
+        Collection<IGraphicalEditPart> children = Collections2.filter(part.getChildren(), Predicates.and(Predicates.instanceOf(IGraphicalEditPart.class), //
+                Predicates.not(Predicates.instanceOf(AbstractDiagramBorderNodeEditPart.class)), Predicates.not(Predicates.instanceOf(AbstractDiagramNameEditPart.class)))) //
+                .stream() //
+                .filter(IGraphicalEditPart.class::isInstance) //
+                .map(IGraphicalEditPart.class::cast) //
                 .toList();
         for (var child : children) {
             if (child instanceof ShapeCompartmentEditPart) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -78,6 +78,9 @@ public class DOperationHistoryListener implements IOperationHistoryListener {
                 result = false;
             } else if (Messages.SiriusContainerEditPolicy_arrangeCommandLabel.equals(originalCommand.getLabel())) {
                 // The operation is already an arrange command. No need to launch another one.
+                result = false;
+            } else if (Messages.PasteStyleDataCommand_label.equals(originalCommand.getLabel())) {
+                // Paste style operation doesn't need to launch an arrange command. 
                 result = false;
             }
         } else if (event.getOperation() instanceof EMFCommandOperation) {

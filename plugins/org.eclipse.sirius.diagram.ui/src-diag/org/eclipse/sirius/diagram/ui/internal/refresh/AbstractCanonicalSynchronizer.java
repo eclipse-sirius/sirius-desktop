@@ -715,6 +715,8 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
                     }
                 }
             }
+            // If the DNodeContainer has BorderNodes, it should be marked as "to layout", to layout its BorderNodes.
+            isAlreadylayouted = isAlreadylayouted && abstractDNode.getOwnedBorderedNodes().isEmpty();
 
             if (createdView instanceof Node) {
                 Node createdNode = (Node) createdView;
