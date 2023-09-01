@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="EPackageRoot">
+  <eSubpackages name="EPackage1"/>
+  <eSubpackages name="EPackage2">
+    <eClassifiers xsi:type="ecore:EClass" name="EClass2_1"/>
+  </eSubpackages>
+  <eSubpackages name="EPackage3">
+    <eClassifiers xsi:type="ecore:EClass" name="EClass3_2"/>
+  </eSubpackages>
+  <eSubpackages name="EPackage4">
+    <eClassifiers xsi:type="ecore:EClass" name="EClass4_3"/>
+  </eSubpackages>
+  <eSubpackages name="EPackage5">
+    <eClassifiers xsi:type="ecore:EClass" name="EClass5_4"/>
+  </eSubpackages>
+  <eSubpackages name="EPackage6">
+    <eSubpackages name="SubEPackage1">
+      <eClassifiers xsi:type="ecore:EClass" name="EClass1_1">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="ERef1" eType="#//EPackage2/EClass2_1"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="EClass1_2">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="ERef2" eType="#//EPackage3/EClass3_2"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="EClass1_3">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="ERef3" eType="#//EPackage4/EClass4_3"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="EClass1_4">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="ERef4" eType="#//EPackage5/EClass5_4"/>
+      </eClassifiers>
+    </eSubpackages>
+  </eSubpackages>
+  <eSubpackages name="EPackage7"/>
+  <eSubpackages name="EPackage8"/>
+  <eSubpackages name="EPackage9"/>
+</ecore:EPackage>

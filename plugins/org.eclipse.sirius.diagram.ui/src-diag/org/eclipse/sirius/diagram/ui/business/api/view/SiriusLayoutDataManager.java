@@ -59,8 +59,7 @@ public interface SiriusLayoutDataManager {
     /**
      * Replace the {@link LayoutType#DEFAULT} during the opening of the diagram, if the layout used handle this kind of
      * type (see
-     * org.eclipse.sirius.diagram.ui.business.internal.view.SiriusLayoutDataManagerImpl.arrangeSeveralCreatedViews(List<IAdaptable>,
-     * IGraphicalEditPart, boolean))..
+     * {@link org.eclipse.sirius.diagram.ui.business.internal.view.SiriusLayoutDataManagerImpl#getArrangeCreatedViewsCommand(List, List, IGraphicalEditPart, String)})...
      */
     String LAYOUT_TYPE_ARRANGE_AT_OPENING = "OPENING"; //$NON-NLS-1$
 
@@ -82,6 +81,13 @@ public interface SiriusLayoutDataManager {
      * this value.
      */
     int HORIZONTAL_ARRANGEMENT = 2;
+
+    /**
+     * Replace the {@link LayoutType#DEFAULT} to tag an element and avoid moving it during layout, if the layout used
+     * handle this kind of type (see
+     * {@link org.eclipse.sirius.diagram.ui.business.internal.view.SiriusLayoutDataManagerImpl#getArrangeCreatedViewsCommand(List, List, IGraphicalEditPart, String)})...
+     */
+    String KEEP_FIXED = "KEEP FIXED"; //$NON-NLS-1$
 
     /**
      * Add a new AbstractLayoutData of this SiriusLayoutDataManagerImpl.
@@ -231,6 +237,23 @@ public interface SiriusLayoutDataManager {
      * @return the layout command
      */
     Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> centeredCreatedViews, IGraphicalEditPart host, boolean useSpecificLayoutType);
+
+    /**
+     * Layout the new created views.
+     * 
+     * @param createdViews
+     *            the new created views
+     * @param centeredCreatedViews
+     *            the new created views which must be layouted in the center of their containers
+     * @param host
+     *            container edit part
+     * @param specificLayoutType
+     *            the layout type (see {@link LayoutType#DEFAULT},
+     *            {@link SiriusLayoutDataManager#LAYOUT_TYPE_ARRANGE_AT_OPENING},
+     *            {@link SiriusLayoutDataManager#KEEP_FIXED})
+     * @return the layout command
+     */
+    Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> centeredCreatedViews, IGraphicalEditPart host, String specificLayoutType);
 
     /**
      * layout the new created views after opening the editor.

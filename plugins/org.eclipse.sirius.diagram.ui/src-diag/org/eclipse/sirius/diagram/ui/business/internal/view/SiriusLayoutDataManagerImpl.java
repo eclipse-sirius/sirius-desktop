@@ -509,6 +509,12 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
 
     @Override
     public Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> centeredCreatedViews, IGraphicalEditPart host, boolean useSpecificLayoutType) {
+        String layoutType = useSpecificLayoutType ? LAYOUT_TYPE_ARRANGE_AT_OPENING : LayoutType.DEFAULT;
+        return getArrangeCreatedViewsCommand(createdViews, centeredCreatedViews, host, layoutType);
+    }
+
+    @Override
+    public Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> centeredCreatedViews, IGraphicalEditPart host, String specificLayoutType) {
         // Layout only the views that are not
         // already layout (by a drag'n'drop for example)
         // if (createdViewsToLayout.size() == 1) {
@@ -520,18 +526,25 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
             removeAlreadyArrangeMarker(createdViews.get(0));
             return UnexecutableCommand.INSTANCE;
         }
-        return getCreatedViewsCommandFromLayoutType(createdViews, centeredCreatedViews, host, useSpecificLayoutType);
+        return getCreatedViewsCommandFromLayoutType(createdViews, centeredCreatedViews, host, specificLayoutType);
     }
 
     /**
-     * Get the arrange command
+     * Get the arrange command depending the layout type.
      * 
      * @param createdViews
+     *            the new created views
      * @param centeredCreatedViews
+     *            the new created views which must be layouted in the center of their containers
      * @param host
-     * @return the arrange command
+     *            container edit part
+     * @param specificLayoutType
+     *            the layout type (see {@link LayoutType#DEFAULT},
+     *            {@link SiriusLayoutDataManager#LAYOUT_TYPE_ARRANGE_AT_OPENING},
+     *            {@link SiriusLayoutDataManager#KEEP_FIXED})
+     * @return the layout command
      */
-    private Command getCreatedViewsCommandFromLayoutType(List<IAdaptable> createdViews, List<IAdaptable> centeredCreatedViews, IGraphicalEditPart host, boolean useSpecificLayoutType) {
+    private Command getCreatedViewsCommandFromLayoutType(List<IAdaptable> createdViews, List<IAdaptable> centeredCreatedViews, IGraphicalEditPart host, String specificLayoutType) {
         CompoundCommand cc = new CompoundCommand();
         // Center Layout case
         if (centeredCreatedViews != null) {
@@ -545,7 +558,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
         }
 
         // "normal" layout case
-        return arrangeSeveralCreatedViews(createdViews, host, useSpecificLayoutType);
+        return arrangeSeveralCreatedViews(createdViews, host, specificLayoutType);
     }
 
     /**
@@ -584,10 +597,16 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      * Arrange views.
      * 
      * @param createdViewsAdapters
+     *            the new created views
      * @param host
-     * @return arrange command
+     *            the container edit part
+     * @param specificLayoutType
+     *            the layout type (see {@link LayoutType#DEFAULT},
+     *            {@link SiriusLayoutDataManager#LAYOUT_TYPE_ARRANGE_AT_OPENING},
+     *            {@link SiriusLayoutDataManager#KEEP_FIXED})
+     * @return the arrange command
      */
-    private Command arrangeSeveralCreatedViews(List<IAdaptable> createdViewsAdapters, IGraphicalEditPart host, boolean useSpecificLayoutType) {
+    private Command arrangeSeveralCreatedViews(List<IAdaptable> createdViewsAdapters, IGraphicalEditPart host, String specificLayoutType) {
         if (createdViewsAdapters != null) {
             int size = createdViewsAdapters.size();
             CompoundCommand cc = new CompoundCommand();
@@ -603,12 +622,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
                 }
 
                 if (createdViewsToLayoutAdapters.size() > 0) {
-                    DeferredLayoutCommand layoutCmd;
-                    if (useSpecificLayoutType) {
-                        layoutCmd = new DeferredLayoutCommand(host.getEditingDomain(), createdViewsToLayoutAdapters, host, LAYOUT_TYPE_ARRANGE_AT_OPENING);
-                    } else {
-                        layoutCmd = new DeferredLayoutCommand(host.getEditingDomain(), createdViewsToLayoutAdapters, host);
-                    }
+                    DeferredLayoutCommand layoutCmd = new DeferredLayoutCommand(host.getEditingDomain(), createdViewsToLayoutAdapters, host, specificLayoutType);
                     cc.add(new ICommandProxy(layoutCmd));
                     return cc;
                 }

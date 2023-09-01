@@ -496,6 +496,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(RectilinearNoteAttachmentWithTextTest.class);
         suite.addTestSuite(RemoveBendpointsRectilinearNoteAttachmentTest.class);
         suite.addTestSuite(RectilinearNoteAttachmentWithOneBendpointTest.class);
+        suite.addTestSuite(LinkedBorderNodeLocationTest.class);
     }
 
     /**

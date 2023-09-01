@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2008, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -58,7 +58,9 @@ public class DefaultLayoutProvider extends AbstractLayoutProvider {
             ILayoutNodeOperation layoutNodeOperation = (ILayoutNodeOperation) operation;
             IAdaptable layoutHint = layoutNodeOperation.getLayoutHint();
             String layoutType = layoutHint.getAdapter(String.class);
-            return (LayoutType.DEFAULT.equals(layoutType) || SiriusLayoutDataManager.LAYOUT_TYPE_ARRANGE_AT_OPENING.equals(layoutType)) && isLayoutForSiriusDiagram(layoutNodeOperation);
+            boolean canHandleLayoutType = LayoutType.DEFAULT.equals(layoutType) || SiriusLayoutDataManager.LAYOUT_TYPE_ARRANGE_AT_OPENING.equals(layoutType)
+                    || SiriusLayoutDataManager.KEEP_FIXED.equals(layoutType);
+            return canHandleLayoutType && isLayoutForSiriusDiagram(layoutNodeOperation);
         }
         return false;
     }
