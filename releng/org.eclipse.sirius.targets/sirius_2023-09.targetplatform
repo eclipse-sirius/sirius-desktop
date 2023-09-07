@@ -26,7 +26,7 @@ location GEF-Classic "https://download.eclipse.org/tools/gef/classic/releases/3.
     org.eclipse.draw2d.sdk.feature.group lazy
 }
 
-location Sirius-7.2.0 "https://download.eclipse.org/sirius/updates/releases/7.2.0/2023-03/" {
+location Sirius-7.3.0 "https://download.eclipse.org/sirius/updates/releases/7.3.0/2023-03/" {
 	org.eclipse.sirius.common.interpreter lazy
 }
 
