@@ -7,19 +7,19 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-17
-Export-Package: org.eclipse.sirius.tree;version="7.2.0",
- org.eclipse.sirius.tree.description;version="7.2.0",
- org.eclipse.sirius.tree.description.impl;version="7.2.0",
- org.eclipse.sirius.tree.description.util;version="7.2.0",
- org.eclipse.sirius.tree.impl;version="7.2.0",
- org.eclipse.sirius.tree.model.business.internal.color;version="7.2.0";x-internal:=true,
- org.eclipse.sirius.tree.model.business.internal.helper;version="7.2.0";x-internal:=true,
- org.eclipse.sirius.tree.model.business.internal.spec;version="7.2.0";x-internal:=true,
+Export-Package: org.eclipse.sirius.tree;version="7.3.0",
+ org.eclipse.sirius.tree.description;version="7.3.0",
+ org.eclipse.sirius.tree.description.impl;version="7.3.0",
+ org.eclipse.sirius.tree.description.util;version="7.3.0",
+ org.eclipse.sirius.tree.impl;version="7.3.0",
+ org.eclipse.sirius.tree.model.business.internal.color;version="7.3.0";x-internal:=true,
+ org.eclipse.sirius.tree.model.business.internal.helper;version="7.3.0";x-internal:=true,
+ org.eclipse.sirius.tree.model.business.internal.spec;version="7.3.0";x-internal:=true,
  org.eclipse.sirius.tree.model.internal;x-internal:=true,
- org.eclipse.sirius.tree.util;version="7.2.0"
+ org.eclipse.sirius.tree.util;version="7.3.0"
 Require-Bundle: org.eclipse.core.runtime;bundle-version="3.8.0",
  org.eclipse.emf.ecore;bundle-version="2.8.3";visibility:=reexport,
- org.eclipse.sirius.model;bundle-version="7.2.0";visibility:=reexport,
+ org.eclipse.sirius.model;bundle-version="7.3.0";visibility:=reexport,
  com.google.guava;bundle-version="[21.0,32)"
 Eclipse-LazyStart: true
 Bundle-ActivationPolicy: lazy
