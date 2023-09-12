@@ -241,15 +241,15 @@ public class MappingBasedSiriusFormatDataManagerExistingTargetSequenceDiagramTes
 
                 Configuration configuration = ConfigurationFactory.buildConfiguration();
 
-                applyPredefinedFormatDataOnRawDiagrams(diagramToCopyFormat, diagramToPasteFormat, configuration, differences);
+                differences.append(applyPredefinedFormatDataOnRawDiagrams(diagramToCopyFormat, diagramToPasteFormat, configuration));
             }
         }
 
         assertTrue("Found differences : \n" + differences, differences.length() == 0);
     }
 
-    protected void applyPredefinedFormatDataOnRawDiagrams(Diagram diagramToCopyFormat, Diagram diagramToPasteFormat, Configuration configuration, StringBuilder differences) throws Exception {
-
+    protected StringBuilder applyPredefinedFormatDataOnRawDiagrams(Diagram diagramToCopyFormat, Diagram diagramToPasteFormat, Configuration configuration) throws Exception {
+        StringBuilder differences = new StringBuilder();
         List<DRepresentationDescriptor> allDDiagramDescriptors = getRepresentationDescriptors(representationToCopyFormat.name, session).stream().collect(Collectors.toList());
         DRepresentationDescriptor dRepresentationDescriptorToFind = ViewpointFactory.eINSTANCE.createDRepresentationDescriptor();
 
@@ -309,7 +309,7 @@ public class MappingBasedSiriusFormatDataManagerExistingTargetSequenceDiagramTes
 
                         // Update diagram, but transaction will be rollbacked
                         DDiagram newDiagram = MappingBasedSiriusFormatManagerFactory.getInstance().applyFormatOnDiagram(session, (DDiagram) getDRepresentation(sourceDiagramEditPart), map, session,
-                                (DDiagram) getDRepresentation(targetDiagramEditPart), false);
+                                (DDiagram) getDRepresentation(targetDiagramEditPart), true);
 
                         if (MB_SEQ_GENERATE_IMAGES_TEST_DATA) {
                             exportDiagramToTempFolder(diagramMappingName + "_from", dDiagram);
@@ -324,6 +324,12 @@ public class MappingBasedSiriusFormatDataManagerExistingTargetSequenceDiagramTes
                 EclipseUIUtil.synchronizeWithUIThread();
                 // Store the format data
                 newManager.storeFormatData(targetDiagramEditPart);
+
+                // "Hard coded" checks for Notes, Texts and Representation links, that are not handled by
+                // MappingBasedSiriusFormatDataManager so associated location and style are not stored in file to
+                // compare with.
+                differences.append(checkPureGraphicalElements(sourceDiagramEditPart, targetDiagramEditPart, map));
+
                 // undo the command to let raw diagram unchanged
                 targetDiagramEditPart.getEditingDomain().getCommandStack().undo();
 
@@ -336,13 +342,11 @@ public class MappingBasedSiriusFormatDataManagerExistingTargetSequenceDiagramTes
                 }
 
                 String fullPath = getPlatformRelatedFullXmiDataPath() + RAW_FOLDER + partialPath;
-                String message = "between diagram ";
-                message += diagramToCopyFormat.name;
-                message += " and raw diagram " + diagramToPasteFormat.name;
                 FormatDifference<?> foundDifference = loadAndCompareFiltered(fullPath, newManager, configuration, semanticTargetFullTestConfiguration);
                 if (foundDifference != null) {
-                    differences.append("\n. " + message + foundDifference);
+                    differences.append("\n     ." + foundDifference); //$NON-NLS-1$
                 }
+
                 TestsUtil.synchronizationWithUIThread();
 
             } finally {
@@ -351,6 +355,10 @@ public class MappingBasedSiriusFormatDataManagerExistingTargetSequenceDiagramTes
                 closeRawDiagram(diagramToPasteFormat);
             }
         }
+        if (!differences.isEmpty()) {
+            differences.insert(0, String.format("\n. between diagram %s and raw diagram %s", diagramToCopyFormat.name, diagramToPasteFormat.name)); //$NON-NLS-1$
+        }
+        return differences;
     }
 
     @Override

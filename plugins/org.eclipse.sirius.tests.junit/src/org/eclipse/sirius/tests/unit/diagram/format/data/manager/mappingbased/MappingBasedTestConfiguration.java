@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020 Obeo.
+ * Copyright (c) 2020, 2023 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import java.util.Map;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.diagram.ui.tools.api.format.semantic.MappingBasedSiriusFormatDataManager;
 import org.eclipse.sirius.tests.unit.diagram.format.data.MappingBasedSiriusFormatDataManagerExistingTargetDiagramTest;
@@ -104,19 +105,26 @@ public class MappingBasedTestConfiguration {
      * Compute the {@code objectsMap} mapping function based on the {@code idsMap}.
      */
     private void computeEObjectsFilteredMap() {
-        TreeIterator<EObject> srcContentIterator = this.srcModel.eAllContents();
         this.objectsMap = new HashMap<EObject, EObject>();
+        Resource targetResource = this.targetModel.eResource();
+        // Check if root of the model is in the "mapped" element
+        addMappedElementsIfExist(targetResource, this.srcModel);
+        // Check all descendants
+        TreeIterator<EObject> srcContentIterator = this.srcModel.eAllContents();
         while (srcContentIterator.hasNext()) {
             EObject srcObj = srcContentIterator.next();
-            String srcID = getID(srcObj);
-            String destID = this.idsMap.get(srcID);
-            if (destID != null) {
-                EObject destObj = this.targetModel.eResource().getEObject(destID);
-                if (targetRootId.equals(getID(destObj))) {
-                    targetRoot = destObj;
-                }
-                this.objectsMap.put(srcObj, destObj);
+            addMappedElementsIfExist(targetResource, srcObj);
+        }
+    }
+
+    private void addMappedElementsIfExist(Resource targetResource, EObject srcObj) {
+        String destID = this.idsMap.get(getID(srcObj));
+        if (destID != null) {
+            EObject destObj = targetResource.getEObject(destID);
+            if (targetRootId.equals(getID(destObj))) {
+                targetRoot = destObj;
             }
+            this.objectsMap.put(srcObj, destObj);
         }
     }
 
