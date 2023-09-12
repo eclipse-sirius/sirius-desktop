@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_g3D3YM4UEd6bS_KBCUv05A" selectedViews="_hQXvQM4UEd6bS_KBCUv05A" version="14.3.1.202003261200">
+  <viewpoint:DAnalysis uid="_g3D3YM4UEd6bS_KBCUv05A" selectedViews="_hQXvQM4UEd6bS_KBCUv05A" version="15.2.0.202303281325">
     <semanticResources>My.ecore</semanticResources>
     <semanticResources>MyTarget.ecore</semanticResources>
     <semanticResources>srcWithExternal.ecore</semanticResources>
@@ -8,115 +8,115 @@
     <semanticResources>targetWithExternal.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_hQXvQM4UEd6bS_KBCUv05A">
       <viewpoint xmi:type="description:Viewpoint" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiELDFEeanMtzDRncztA" name="DiagType1 of MyPackage" repPath="#_5zhU8M4UEd6bS_KBCUv05A" changeId="e2a7a4c4-b107-43fb-84d6-89921cb77fbf">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiELDFEeanMtzDRncztA" name="DiagType1 of MyPackage" repPath="#_5zhU8M4UEd6bS_KBCUv05A" changeId="1694530458442">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType1']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiEbDFEeanMtzDRncztA" name="DiagType2 of MyPackage" repPath="#_R0qkUM4WEd6bS_KBCUv05A" changeId="95121487-34ea-4511-97c2-4a698f02ad3b">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiEbDFEeanMtzDRncztA" name="DiagType2 of MyPackage" repPath="#_R0qkUM4WEd6bS_KBCUv05A" changeId="1694530458442">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiErDFEeanMtzDRncztA" name="DiagType3 of MyPackage" repPath="#_yQmosM9qEd6bdqQ-rTRGJg" changeId="e42b1246-e373-4f24-bbd7-d07443acf42a">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiErDFEeanMtzDRncztA" name="DiagType3 of MyPackage" repPath="#_yQmosM9qEd6bdqQ-rTRGJg" changeId="1694530458442">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType3']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiE7DFEeanMtzDRncztA" name="DiagType5 of MyPackage" repPath="#_8IynYN8kEd6puriA092P2A" changeId="6b28f023-98d4-4807-84c5-012a490796c2">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiE7DFEeanMtzDRncztA" name="DiagType5 of MyPackage" repPath="#_8IynYN8kEd6puriA092P2A" changeId="1694530458442">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType5']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiFLDFEeanMtzDRncztA" name="DiagType4 of MyPackage" repPath="#_QFauEN9KEd62yq234upbUg" changeId="a2a4b28b-99fb-4fb8-bcc8-77b7b24a0ba5">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiFLDFEeanMtzDRncztA" name="DiagType4 of MyPackage" repPath="#_QFauEN9KEd62yq234upbUg" changeId="1694530458442">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType4']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiFbDFEeanMtzDRncztA" name="DiagType6 of MyPackage" repPath="#_RLK_wd9LEd62yq234upbUg" changeId="a93da2ff-3b0e-4c14-a6f2-c34b90111750">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiFbDFEeanMtzDRncztA" name="DiagType6 of MyPackage" repPath="#_RLK_wd9LEd62yq234upbUg" changeId="1694530458442">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType6']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiFrDFEeanMtzDRncztA" name="DiagType7 of MyPackage" repPath="#_XI_pEd9LEd62yq234upbUg" changeId="98949a61-f148-4dbe-8822-201c8c2aea96">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiFrDFEeanMtzDRncztA" name="DiagType7 of MyPackage" repPath="#_XI_pEd9LEd62yq234upbUg" changeId="1694530458442">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType7']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiF7DFEeanMtzDRncztA" name="DiagType8 of MyPackage" repPath="#_UJ_2cN9NEd69CIe_kfq8uw" changeId="5c960794-4467-428f-a073-c47949e04be2">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiF7DFEeanMtzDRncztA" name="DiagType8 of MyPackage" repPath="#_UJ_2cN9NEd69CIe_kfq8uw" changeId="1694530458442">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiGLDFEeanMtzDRncztA" name="DiagType9 of MyPackage" repPath="#_BXkP4OWoEd6JMo4lxOczEg" changeId="97eda397-25e5-4013-abdc-a5645f9d58af">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiGLDFEeanMtzDRncztA" name="DiagType9 of MyPackage" repPath="#_BXkP4OWoEd6JMo4lxOczEg" changeId="1694530458442">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType9']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiGbDFEeanMtzDRncztA" name="DiagType8 of p2" repPath="#_E26kAOi7Ed6VHqj_dPYIrw" changeId="bdf7a690-1a02-4441-8eb7-2b0bda064b5c">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiGbDFEeanMtzDRncztA" name="DiagType8 of p2" repPath="#_E26kAOi7Ed6VHqj_dPYIrw" changeId="1694530458442">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#//p2"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiGrDFEeanMtzDRncztA" name="Type1 Raw Diagram" repPath="#_JnbuIPlNEd6Y1bDJsdKxyg" changeId="82b69b5d-9083-44f3-a547-cd2be5949e70">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiGrDFEeanMtzDRncztA" name="Type1 Raw Diagram" repPath="#_JnbuIPlNEd6Y1bDJsdKxyg" changeId="1694530458442">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType1']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiG7DFEeanMtzDRncztA" name="Type7 Raw Diagram" repPath="#_AE9PEfoNEd6aXOd_1RF62g" changeId="671c7b1b-90d3-460b-997f-3ecf5af84806">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiG7DFEeanMtzDRncztA" name="Type7 Raw Diagram" repPath="#_AE9PEfoNEd6aXOd_1RF62g" changeId="1694530458442">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType7']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiHbDFEeanMtzDRncztA" name="Type9 Raw Diagram" repPath="#_Zf70oPoNEd6aXOd_1RF62g" changeId="227880ed-71f4-4e97-bdb7-9be208b4e79a">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiHbDFEeanMtzDRncztA" name="Type9 Raw Diagram" repPath="#_Zf70oPoNEd6aXOd_1RF62g" changeId="1694530458442">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType9']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_ILG-0LDOEeaJB9-B3hmsRw" name="DiagType10 of MyPackage" repPath="#_ILG-0bDOEeaJB9-B3hmsRw" changeId="85acc43f-826b-4d14-b835-029dd80f540d">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_ILG-0LDOEeaJB9-B3hmsRw" name="DiagType10 of MyPackage" repPath="#_ILG-0bDOEeaJB9-B3hmsRw" changeId="1694530458442">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType10']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_123vUZaOEeq4T6-2msJ3qg" name="DiagType2_unsync of MyPackage" repPath="#_121TEJaOEeq4T6-2msJ3qg" changeId="ae1d5d21-f0d1-4784-8f09-2a1486ea1733">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_123vUZaOEeq4T6-2msJ3qg" name="DiagType2_unsync of MyPackage" repPath="#_121TEJaOEeq4T6-2msJ3qg" changeId="1694530458442">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_SX7NAZbnEeqmVr1aflqdRg" name="DiagType8_unsync of MyPackage" repPath="#_SXquUJbnEeqmVr1aflqdRg" changeId="40ad8d06-1e98-4cb9-baa3-5da96a7a465a">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_SX7NAZbnEeqmVr1aflqdRg" name="DiagType8_unsync of MyPackage" repPath="#_SXquUJbnEeqmVr1aflqdRg" changeId="1694530458442">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sti4EJmiEeqnUYf-_wecXA" name="DiagType8_unsync Raw of targetMyPackage" repPath="#_StTngJmiEeqnUYf-_wecXA" changeId="a57a32db-fdac-4afd-81cc-5ed66fd5e619">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sti4EJmiEeqnUYf-_wecXA" name="DiagType8_unsync Raw of targetMyPackage" repPath="#_StTngJmiEeqnUYf-_wecXA" changeId="1694530458442">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']"/>
         <target xmi:type="ecore:EPackage" href="MyTarget.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_kQFhwJmiEeqnUYf-_wecXA" name="DiagType8 Raw of targetMyPackage" repPath="#_kQApQJmiEeqnUYf-_wecXA" changeId="a53f3239-aa45-4f12-9061-75db21ea5053">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_kQFhwJmiEeqnUYf-_wecXA" name="DiagType8 Raw of targetMyPackage" repPath="#_kQApQJmiEeqnUYf-_wecXA" changeId="1694530458442">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']"/>
         <target xmi:type="ecore:EPackage" href="MyTarget.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_ODsioJmjEeqnUYf-_wecXA" name="DiagType10 Raw of targetMyPackage" repPath="#_ODjYsJmjEeqnUYf-_wecXA" changeId="2f909d12-8760-407c-8a60-01f70811661e">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_ODsioJmjEeqnUYf-_wecXA" name="DiagType10 Raw of targetMyPackage" repPath="#_ODjYsJmjEeqnUYf-_wecXA" changeId="1694530458442">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType10']"/>
         <target xmi:type="ecore:EPackage" href="MyTarget.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_CUnpYLIuEeqzE_y12kFg8Q" name="DiagType2_unsync_edge of MyPackage" repPath="#_CUY_4LIuEeqzE_y12kFg8Q" changeId="21a3eaf0-1ae8-406f-8719-192a69ebf9be">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_CUnpYLIuEeqzE_y12kFg8Q" name="DiagType2_unsync_edge of MyPackage" repPath="#_CUY_4LIuEeqzE_y12kFg8Q" changeId="1694530458442">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync_edge']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_m33CsNMxEeqvXqHJhM0T5Q" name="DiagType2 with notes of MyPackage" repPath="#_m3wVANMxEeqvXqHJhM0T5Q" changeId="f0dba24f-fd52-40e1-a9c1-0cb638c62e39">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_m33CsNMxEeqvXqHJhM0T5Q" name="DiagType2 with notes of MyPackage" repPath="#_m3wVANMxEeqvXqHJhM0T5Q" changeId="1694530458442">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_yhHpYOfAEeq3AOgvALrX2w" name="DiagType2 filters and layers of MyPackage" repPath="#_yg-fYOfAEeq3AOgvALrX2w" changeId="cf7630f5-d17d-445f-9d75-9deb511fbd15">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_yhHpYOfAEeq3AOgvALrX2w" name="DiagType2 filters and layers of MyPackage" repPath="#_yg-fYOfAEeq3AOgvALrX2w" changeId="1694530458442">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_qpPrgDZLEeuF1uPwoI8MtQ" name="DiagType11 of MyPackage" repPath="#_qoSpQDZLEeuF1uPwoI8MtQ" changeId="918a4faa-8378-4f72-82d9-a37c2229b65b">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_qpPrgDZLEeuF1uPwoI8MtQ" name="DiagType11 of MyPackage" repPath="#_qoSpQDZLEeuF1uPwoI8MtQ" changeId="1694530458442">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType11']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_1TLnkDuOEeuhG5MHStv3hA" name="DiagType12 of MyPackage" repPath="#_1TKZcDuOEeuhG5MHStv3hA" changeId="fa2b2407-a161-4fed-8468-d20d3456e598">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_1TLnkDuOEeuhG5MHStv3hA" name="DiagType12 of MyPackage" repPath="#_1TKZcDuOEeuhG5MHStv3hA" changeId="1694530458442">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType12']"/>
         <target xmi:type="ecore:EPackage" href="srcWithExternal.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="__W6YsDvCEeuhG5MHStv3hA" name="DiagType13 of MyPackage" repPath="#__W38cDvCEeuhG5MHStv3hA" changeId="5760827c-c286-4447-93a9-0bf46a1605db">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="__W6YsDvCEeuhG5MHStv3hA" name="DiagType13 of MyPackage" repPath="#__W38cDvCEeuhG5MHStv3hA" changeId="1694530458442">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType13']"/>
         <target xmi:type="ecore:EPackage" href="srcWithExternal.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_VkB14Gr8Eeud3aCUsm-5zQ" name="DiagType8_unsyncBN of MyPackage" repPath="#_Vj-ykGr8Eeud3aCUsm-5zQ" changeId="9bd96177-a6b3-42a1-819b-0ace1f26d10a">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_VkB14Gr8Eeud3aCUsm-5zQ" name="DiagType8_unsyncBN of MyPackage" repPath="#_Vj-ykGr8Eeud3aCUsm-5zQ" changeId="1694530458442">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_pENQ8Wr8Eeud3aCUsm-5zQ" name="DiagType8_unsyncBN Raw of targetMyPackage" repPath="#_pEMp4Gr8Eeud3aCUsm-5zQ" changeId="ced91854-6adc-48b6-82c4-5fcae2ff013f">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_pENQ8Wr8Eeud3aCUsm-5zQ" name="DiagType8_unsyncBN Raw of targetMyPackage" repPath="#_pEMp4Gr8Eeud3aCUsm-5zQ" changeId="1694530458442">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']"/>
         <target xmi:type="ecore:EPackage" href="MyTarget.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_oobVQHKOEeu5xZikdim1pw" name="DiagType2 Raw of targetMyPackage" repPath="#_ooRkQHKOEeu5xZikdim1pw" changeId="b9c9e584-5b56-4619-b824-feb8ca16c7b2">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_oobVQHKOEeu5xZikdim1pw" name="DiagType2 Raw of targetMyPackage" repPath="#_ooRkQHKOEeu5xZikdim1pw" changeId="1694530458442">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2']"/>
         <target xmi:type="ecore:EPackage" href="MyTarget.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -5315,6 +5315,19 @@
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_m31OEdMxEeqvXqHJhM0T5Q" id="(0.0,0.0)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_m31OEtMxEeqvXqHJhM0T5Q" id="(0.41935483870967744,0.0)"/>
         </edges>
+        <edges xmi:type="notation:Connector" xmi:id="_zcwDkOeeEeqsb8qxl1FMVQ" type="NoteAttachment" source="_10kdINMyEeqvXqHJhM0T5Q" target="_m31NnNMxEeqvXqHJhM0T5Q" lineWidth="1">
+          <styles xmi:type="notation:ArrowStyle" xmi:id="_zcwDkeeeEeqsb8qxl1FMVQ"/>
+          <styles xmi:type="notation:LineTypeStyle" xmi:id="_zcwDkueeEeqsb8qxl1FMVQ"/>
+          <element xsi:nil="true"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_zcwDk-eeEeqsb8qxl1FMVQ" points="[22, -7, -119, 39]$[124, -72, -17, -26]"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_zdCXcOeeEeqsb8qxl1FMVQ" id="(0.125,0.06896551724137931)"/>
+        </edges>
+        <edges xmi:type="notation:Connector" xmi:id="_xJY84NMxEeqvXqHJhM0T5Q" type="NoteAttachment" source="_qA-IsNMxEeqvXqHJhM0T5Q" target="_ot4wMNMxEeqvXqHJhM0T5Q" lineWidth="1">
+          <styles xmi:type="notation:ArrowStyle" xmi:id="_xJY84dMxEeqvXqHJhM0T5Q"/>
+          <styles xmi:type="notation:LineTypeStyle" xmi:id="_xJY84tMxEeqvXqHJhM0T5Q"/>
+          <element xsi:nil="true"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_xJY849MxEeqvXqHJhM0T5Q" points="[70, 22, -123, -113]$[100, 32, -93, -103]$[114, 125, -79, -10]$[150, 129, -43, -6]"/>
+        </edges>
         <edges xmi:type="notation:Connector" xmi:id="_t68q8NMxEeqvXqHJhM0T5Q" type="NoteAttachment" source="_pGh5sNMxEeqvXqHJhM0T5Q" target="_m31N09MxEeqvXqHJhM0T5Q" lineWidth="1">
           <styles xmi:type="notation:ArrowStyle" xmi:id="_t68q8dMxEeqvXqHJhM0T5Q"/>
           <styles xmi:type="notation:LineTypeStyle" xmi:id="_t68q8tMxEeqvXqHJhM0T5Q"/>
@@ -5330,13 +5343,6 @@
           <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_upZFU9MxEeqvXqHJhM0T5Q" points="[-3, 38, 3, -74]$[-5, 84, 1, -28]"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_upcIoNMxEeqvXqHJhM0T5Q" id="(0.22140221402214022,0.2916666666666667)"/>
         </edges>
-        <edges xmi:type="notation:Connector" xmi:id="_vXndQNMxEeqvXqHJhM0T5Q" type="NoteAttachment" source="_ot4wMNMxEeqvXqHJhM0T5Q" target="_m31N-9MxEeqvXqHJhM0T5Q" lineWidth="1">
-          <styles xmi:type="notation:ArrowStyle" xmi:id="_vXndQdMxEeqvXqHJhM0T5Q"/>
-          <styles xmi:type="notation:LineTypeStyle" xmi:id="_vXndQtMxEeqvXqHJhM0T5Q"/>
-          <element xsi:nil="true"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_vXndQ9MxEeqvXqHJhM0T5Q" points="[32, -56, -30, 56]$[60, -99, -2, 13]"/>
-          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_vXqgkNMxEeqvXqHJhM0T5Q" id="(0.4292682926829268,0.8418803418803419)"/>
-        </edges>
         <edges xmi:type="notation:Connector" xmi:id="_wYAjQNMxEeqvXqHJhM0T5Q" type="NoteAttachment" source="_oNsNMNMxEeqvXqHJhM0T5Q" target="_m31OB9MxEeqvXqHJhM0T5Q" lineWidth="1">
           <styles xmi:type="notation:ArrowStyle" xmi:id="_wYBKUNMxEeqvXqHJhM0T5Q"/>
           <styles xmi:type="notation:LineTypeStyle" xmi:id="_wYBKUdMxEeqvXqHJhM0T5Q"/>
@@ -5344,18 +5350,12 @@
           <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wYBKUtMxEeqvXqHJhM0T5Q" points="[-43, 2, 351, -23]$[-389, 24, 5, -1]"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wYENoNMxEeqvXqHJhM0T5Q" id="(0.6417112299465241,0.43859649122807015)"/>
         </edges>
-        <edges xmi:type="notation:Connector" xmi:id="_xJY84NMxEeqvXqHJhM0T5Q" type="NoteAttachment" source="_qA-IsNMxEeqvXqHJhM0T5Q" target="_ot4wMNMxEeqvXqHJhM0T5Q" lineWidth="1">
-          <styles xmi:type="notation:ArrowStyle" xmi:id="_xJY84dMxEeqvXqHJhM0T5Q"/>
-          <styles xmi:type="notation:LineTypeStyle" xmi:id="_xJY84tMxEeqvXqHJhM0T5Q"/>
+        <edges xmi:type="notation:Connector" xmi:id="_vXndQNMxEeqvXqHJhM0T5Q" type="NoteAttachment" source="_ot4wMNMxEeqvXqHJhM0T5Q" target="_m31N-9MxEeqvXqHJhM0T5Q" lineWidth="1">
+          <styles xmi:type="notation:ArrowStyle" xmi:id="_vXndQdMxEeqvXqHJhM0T5Q"/>
+          <styles xmi:type="notation:LineTypeStyle" xmi:id="_vXndQtMxEeqvXqHJhM0T5Q"/>
           <element xsi:nil="true"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_xJY849MxEeqvXqHJhM0T5Q" points="[70, 22, -123, -113]$[100, 32, -93, -103]$[114, 125, -79, -10]$[150, 129, -43, -6]"/>
-        </edges>
-        <edges xmi:type="notation:Connector" xmi:id="_zcwDkOeeEeqsb8qxl1FMVQ" type="NoteAttachment" source="_10kdINMyEeqvXqHJhM0T5Q" target="_m31NnNMxEeqvXqHJhM0T5Q" lineWidth="1">
-          <styles xmi:type="notation:ArrowStyle" xmi:id="_zcwDkeeeEeqsb8qxl1FMVQ"/>
-          <styles xmi:type="notation:LineTypeStyle" xmi:id="_zcwDkueeEeqsb8qxl1FMVQ"/>
-          <element xsi:nil="true"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_zcwDk-eeEeqsb8qxl1FMVQ" points="[22, -7, -119, 39]$[124, -72, -17, -26]"/>
-          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_zdCXcOeeEeqsb8qxl1FMVQ" id="(0.125,0.06896551724137931)"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_vXndQ9MxEeqvXqHJhM0T5Q" points="[32, -56, -30, 56]$[60, -99, -2, 13]"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_vXqgkNMxEeqvXqHJhM0T5Q" id="(0.4292682926829268,0.8418803418803419)"/>
         </edges>
       </data>
     </ownedAnnotationEntries>
@@ -5705,22 +5705,6 @@
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yhHpe-fAEeq3AOgvALrX2w" x="450" y="205" width="158" height="73"/>
         </children>
         <styles xmi:type="notation:DiagramStyle" xmi:id="_yhHpY-fAEeq3AOgvALrX2w"/>
-        <edges xmi:type="notation:Edge" xmi:id="_2XDjoOfBEeq3AOgvALrX2w" visible="false" type="4001" element="_2TfSQOfBEeq3AOgvALrX2w" source="_2WZcUOfBEeq3AOgvALrX2w" target="_2WZcV-fBEeq3AOgvALrX2w">
-          <children xmi:type="notation:Node" xmi:id="_2XDjpOfBEeq3AOgvALrX2w" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2XDjpefBEeq3AOgvALrX2w" x="-122" y="21"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_2XDjpufBEeq3AOgvALrX2w" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2XDjp-fBEeq3AOgvALrX2w" x="-10"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_2XDjqOfBEeq3AOgvALrX2w" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2XDjqefBEeq3AOgvALrX2w" y="10"/>
-          </children>
-          <styles xmi:type="notation:ConnectorStyle" xmi:id="_2XDjoefBEeq3AOgvALrX2w"/>
-          <styles xmi:type="notation:FontStyle" xmi:id="_2XDjoufBEeq3AOgvALrX2w" fontName="Segoe UI" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_2XDjo-fBEeq3AOgvALrX2w" points="[0, 0, -255, 40]$[-43, -23, -298, 17]$[-43, -94, -298, -54]$[255, -94, 0, -54]$[255, -79, 0, -39]"/>
-          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_2XDjqufBEeq3AOgvALrX2w" id="(0.40275707898658714,0.0)"/>
-          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_2XDjq-fBEeq3AOgvALrX2w" id="(0.5227272727272727,1.0)"/>
-        </edges>
         <edges xmi:type="notation:Edge" xmi:id="_8u9g4OfBEeq3AOgvALrX2w" visible="false" type="4001" element="_8rHitOfBEeq3AOgvALrX2w" source="_2WZcUOfBEeq3AOgvALrX2w" target="_8u4BXufBEeq3AOgvALrX2w">
           <children xmi:type="notation:Node" xmi:id="_8u9g5OfBEeq3AOgvALrX2w" type="6001">
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8u9g5efBEeq3AOgvALrX2w" x="-30" y="-13"/>
@@ -5736,6 +5720,22 @@
           <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_8u9g4-fBEeq3AOgvALrX2w" points="[22, 2, -343, 47]$[213, 21, -152, 66]$[365, 21, 0, 66]$[365, -22, 0, 23]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_8u-vAOfBEeq3AOgvALrX2w" id="(0.38524590163934425,0.375)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_8u-vAefBEeq3AOgvALrX2w" id="(0.4393939393939394,0.4411764705882353)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_2XDjoOfBEeq3AOgvALrX2w" visible="false" type="4001" element="_2TfSQOfBEeq3AOgvALrX2w" source="_2WZcUOfBEeq3AOgvALrX2w" target="_2WZcV-fBEeq3AOgvALrX2w">
+          <children xmi:type="notation:Node" xmi:id="_2XDjpOfBEeq3AOgvALrX2w" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2XDjpefBEeq3AOgvALrX2w" x="-122" y="21"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_2XDjpufBEeq3AOgvALrX2w" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2XDjp-fBEeq3AOgvALrX2w" x="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_2XDjqOfBEeq3AOgvALrX2w" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2XDjqefBEeq3AOgvALrX2w" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_2XDjoefBEeq3AOgvALrX2w"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_2XDjoufBEeq3AOgvALrX2w" fontName="Segoe UI" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_2XDjo-fBEeq3AOgvALrX2w" points="[0, 0, -255, 40]$[-43, -23, -298, 17]$[-43, -94, -298, -54]$[255, -94, 0, -54]$[255, -79, 0, -39]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_2XDjqufBEeq3AOgvALrX2w" id="(0.40275707898658714,0.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_2XDjq-fBEeq3AOgvALrX2w" id="(0.5227272727272727,1.0)"/>
         </edges>
       </data>
     </ownedAnnotationEntries>
@@ -8133,6 +8133,19 @@
           <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_oppdQ3KOEeu5xZikdim1pw" points="[60, -4, -348, 96]$[160, -11, -248, 89]$[408, -100, 0, 0]"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_opqEUXKOEeu5xZikdim1pw" id="(0.0,0.0)"/>
         </edges>
+        <edges xmi:type="notation:Connector" xmi:id="_orRN7nKOEeu5xZikdim1pw" type="NoteAttachment" source="_orP_wHKOEeu5xZikdim1pw" target="_opaMsHKOEeu5xZikdim1pw" lineWidth="1">
+          <styles xmi:type="notation:ArrowStyle" xmi:id="_orRN73KOEeu5xZikdim1pw"/>
+          <styles xmi:type="notation:LineTypeStyle" xmi:id="_orRN8HKOEeu5xZikdim1pw"/>
+          <element xsi:nil="true"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_orRN8XKOEeu5xZikdim1pw" points="[-22, -7, 425, 137]$[-153, -50, 294, 94]"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_orR08HKOEeu5xZikdim1pw" id="(0.125,0.06896551724137931)"/>
+        </edges>
+        <edges xmi:type="notation:Connector" xmi:id="_orRN6nKOEeu5xZikdim1pw" type="NoteAttachment" source="_orNjgHKOEeu5xZikdim1pw" target="_orOKnHKOEeu5xZikdim1pw" lineWidth="1">
+          <styles xmi:type="notation:ArrowStyle" xmi:id="_orRN63KOEeu5xZikdim1pw"/>
+          <styles xmi:type="notation:LineTypeStyle" xmi:id="_orRN7HKOEeu5xZikdim1pw"/>
+          <element xsi:nil="true"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_orRN7XKOEeu5xZikdim1pw" points="[68, -33, -186, -59]$[107, -51, -147, -77]$[145, 1, -109, -25]$[211, 16, -43, -10]"/>
+        </edges>
         <edges xmi:type="notation:Connector" xmi:id="_orQm0HKOEeu5xZikdim1pw" type="NoteAttachment" source="_orOxo3KOEeu5xZikdim1pw" target="_opeeLnKOEeu5xZikdim1pw" lineWidth="1">
           <styles xmi:type="notation:ArrowStyle" xmi:id="_orQm0XKOEeu5xZikdim1pw"/>
           <styles xmi:type="notation:LineTypeStyle" xmi:id="_orQm0nKOEeu5xZikdim1pw"/>
@@ -8148,13 +8161,6 @@
           <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_orQm2XKOEeu5xZikdim1pw" points="[-7, 34, 155, -92]$[-7, 41, 155, -85]$[-111, 98, 51, -28]"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_orQm2nKOEeu5xZikdim1pw" id="(0.22140221402214022,0.2916666666666667)"/>
         </edges>
-        <edges xmi:type="notation:Connector" xmi:id="_orRN4HKOEeu5xZikdim1pw" type="NoteAttachment" source="_orOKnHKOEeu5xZikdim1pw" target="_opiIgHKOEeu5xZikdim1pw" lineWidth="1">
-          <styles xmi:type="notation:ArrowStyle" xmi:id="_orRN4XKOEeu5xZikdim1pw"/>
-          <styles xmi:type="notation:LineTypeStyle" xmi:id="_orRN4nKOEeu5xZikdim1pw"/>
-          <element xsi:nil="true"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_orRN43KOEeu5xZikdim1pw" points="[-37, -58, 98, 154]$[-116, -181, 19, 31]"/>
-          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_orRN5HKOEeu5xZikdim1pw" id="(0.4292682926829268,0.8418803418803419)"/>
-        </edges>
         <edges xmi:type="notation:Connector" xmi:id="_orRN5XKOEeu5xZikdim1pw" type="NoteAttachment" source="_orOKk3KOEeu5xZikdim1pw" target="_oppdQHKOEeu5xZikdim1pw" lineWidth="1">
           <styles xmi:type="notation:ArrowStyle" xmi:id="_orRN5nKOEeu5xZikdim1pw"/>
           <styles xmi:type="notation:LineTypeStyle" xmi:id="_orRN53KOEeu5xZikdim1pw"/>
@@ -8162,18 +8168,12 @@
           <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_orRN6HKOEeu5xZikdim1pw" points="[-38, -53, 39, 55]$[-45, -63, 32, 45]"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_orRN6XKOEeu5xZikdim1pw" id="(0.6417112299465241,0.43859649122807015)"/>
         </edges>
-        <edges xmi:type="notation:Connector" xmi:id="_orRN6nKOEeu5xZikdim1pw" type="NoteAttachment" source="_orNjgHKOEeu5xZikdim1pw" target="_orOKnHKOEeu5xZikdim1pw" lineWidth="1">
-          <styles xmi:type="notation:ArrowStyle" xmi:id="_orRN63KOEeu5xZikdim1pw"/>
-          <styles xmi:type="notation:LineTypeStyle" xmi:id="_orRN7HKOEeu5xZikdim1pw"/>
+        <edges xmi:type="notation:Connector" xmi:id="_orRN4HKOEeu5xZikdim1pw" type="NoteAttachment" source="_orOKnHKOEeu5xZikdim1pw" target="_opiIgHKOEeu5xZikdim1pw" lineWidth="1">
+          <styles xmi:type="notation:ArrowStyle" xmi:id="_orRN4XKOEeu5xZikdim1pw"/>
+          <styles xmi:type="notation:LineTypeStyle" xmi:id="_orRN4nKOEeu5xZikdim1pw"/>
           <element xsi:nil="true"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_orRN7XKOEeu5xZikdim1pw" points="[68, -33, -186, -59]$[107, -51, -147, -77]$[145, 1, -109, -25]$[211, 16, -43, -10]"/>
-        </edges>
-        <edges xmi:type="notation:Connector" xmi:id="_orRN7nKOEeu5xZikdim1pw" type="NoteAttachment" source="_orP_wHKOEeu5xZikdim1pw" target="_opaMsHKOEeu5xZikdim1pw" lineWidth="1">
-          <styles xmi:type="notation:ArrowStyle" xmi:id="_orRN73KOEeu5xZikdim1pw"/>
-          <styles xmi:type="notation:LineTypeStyle" xmi:id="_orRN8HKOEeu5xZikdim1pw"/>
-          <element xsi:nil="true"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_orRN8XKOEeu5xZikdim1pw" points="[-22, -7, 425, 137]$[-153, -50, 294, 94]"/>
-          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_orR08HKOEeu5xZikdim1pw" id="(0.125,0.06896551724137931)"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_orRN43KOEeu5xZikdim1pw" points="[-37, -58, 98, 154]$[-116, -181, 19, 31]"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_orRN5HKOEeu5xZikdim1pw" id="(0.4292682926829268,0.8418803418803419)"/>
         </edges>
       </data>
     </ownedAnnotationEntries>
