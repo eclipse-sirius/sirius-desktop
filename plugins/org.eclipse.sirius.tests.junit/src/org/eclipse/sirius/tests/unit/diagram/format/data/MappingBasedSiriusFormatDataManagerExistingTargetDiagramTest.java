@@ -23,7 +23,6 @@ import java.util.stream.Collectors;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
-import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Shape;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -144,7 +143,7 @@ public class MappingBasedSiriusFormatDataManagerExistingTargetDiagramTest extend
 
                 Configuration configuration = ConfigurationFactory.buildConfiguration();
 
-                applyPredefinedFormatDataOnRawDiagrams(diagramToCopyFormat, diagramToPasteFormat, configuration, differences, semanticTargetFullTestConfiguration);
+                differences.append(applyPredefinedFormatDataOnRawDiagrams(diagramToCopyFormat, diagramToPasteFormat, configuration, semanticTargetFullTestConfiguration));
             }
         }
 
@@ -169,16 +168,16 @@ public class MappingBasedSiriusFormatDataManagerExistingTargetDiagramTest extend
 
                 Configuration configuration = ConfigurationFactory.buildConfiguration();
 
-                applyPredefinedFormatDataOnRawDiagrams(diagramToCopyFormat, diagramToPasteFormat, configuration, differences, semanticTargetSubsetMapConfiguration);
+                differences.append(applyPredefinedFormatDataOnRawDiagrams(diagramToCopyFormat, diagramToPasteFormat, configuration, semanticTargetSubsetMapConfiguration));
             }
         }
 
         assertTrue("Found differences : \n" + differences, differences.length() == 0);
     }
 
-    protected void applyPredefinedFormatDataOnRawDiagrams(Diagram diagramToCopyFormat, Diagram diagramToPasteFormat, Configuration configuration, StringBuilder differences,
+    protected StringBuilder applyPredefinedFormatDataOnRawDiagrams(Diagram diagramToCopyFormat, Diagram diagramToPasteFormat, Configuration configuration,
             MappingBasedTestConfiguration mapTestConfiguration) throws Exception {
-
+        StringBuilder differences = new StringBuilder();
         List<DRepresentationDescriptor> allDDiagramDescriptors = getRepresentationDescriptors(representationToCopyFormat.name, session).stream().collect(Collectors.toList());
         DRepresentationDescriptor dRepresentationDescriptorToFind = ViewpointFactory.eINSTANCE.createDRepresentationDescriptor();
         dRepresentationDescriptorToFind.setName(diagramToCopyFormat.name);
@@ -238,29 +237,20 @@ public class MappingBasedSiriusFormatDataManagerExistingTargetDiagramTest extend
                 newManager.storeFormatData(targetDiagramEditPart);
 
                 if (MB_DIAG_TYPE2_NOTES_MYPACKAGE.name.equals(diagramToCopyFormat.name)) {
-                    // Specific checks about notes and texts that are not tested by "FormatData"
+                    // "Hard coded" checks for Notes, Texts and Representation links, that are not handled by
+                    // MappingBasedSiriusFormatDataManager so associated location and style are not stored in file to
+                    // compare with.
+                    differences.append(checkPureGraphicalElements(sourceDiagramEditPart, targetDiagramEditPart, map));
+                    // Additional checks (not really mandatory)
                     Collection<Shape> sourceNotes = GMFNotationHelper.getNotes(sourceDiagramEditPart.getDiagramView());
                     Collection<Shape> targetNotes = GMFNotationHelper.getNotes(targetDiagramEditPart.getDiagramView());
-                    // There is 1 additional notes in target diagram
-                    assertEquals("The number of Notes is wrong.", sourceNotes.size() + 1, targetNotes.size());
+                    // There are 2 additional notes in target diagram (Two notes named "Nice" without note attachment)
+                    assertEquals("The number of Notes is wrong.", sourceNotes.size() + 2, targetNotes.size());
                     Collection<Shape> sourceTexts = GMFNotationHelper.getTextNotes(sourceDiagramEditPart.getDiagramView());
                     Collection<Shape> targetTexts = GMFNotationHelper.getTextNotes(targetDiagramEditPart.getDiagramView());
-                    // 2 Texts in source and target diagrams
-                    assertEquals("The number of Texts in source diagram is wrong.", 2, sourceTexts.size());
+                    // 4 Texts in source and target diagrams
+                    assertEquals("The number of Texts in source diagram is wrong.", 4, sourceTexts.size());
                     assertEquals("The number of Texts is wrong.", sourceTexts.size(), targetTexts.size());
-                    // Check the location of Texts (it is not done for Notes because there are several Notes
-                    // with the same description
-                    for (Shape sourceText : sourceTexts) {
-                        String sourceDescription = sourceText.getDescription();
-                        for (Shape targetText : targetTexts) {
-                            if (sourceDescription.equals(targetText.getDescription())) {
-                                Location sourceLocation = (Location) sourceText.getLayoutConstraint();
-                                Location targetLocation = (Location) sourceText.getLayoutConstraint();
-                                assertEquals("The location of the Text \"" + sourceDescription + "\" is wrong (X coordinate).", sourceLocation.getX(), targetLocation.getX());
-                                assertEquals("The location of the Text \"" + sourceDescription + "\" is wrong (Y coordinate).", sourceLocation.getY(), targetLocation.getY());
-                            }
-                        }
-                    }
                 }
                 // undo the command to let raw diagram unchanged
                 targetDiagramEditPart.getEditingDomain().getCommandStack().undo();
@@ -274,12 +264,9 @@ public class MappingBasedSiriusFormatDataManagerExistingTargetDiagramTest extend
                 }
 
                 String fullPath = getPlatformRelatedFullXmiDataPath() + RAW_FOLDER + partialPath;
-                String message = "between diagram ";
-                message += diagramToCopyFormat.name;
-                message += " and raw diagram " + diagramToPasteFormat.name;
                 FormatDifference<?> foundDifference = loadAndCompareFiltered(fullPath, newManager, configuration, mapTestConfiguration);
                 if (foundDifference != null) {
-                    differences.append("\n. " + message + foundDifference);
+                    differences.append("\n     ." + foundDifference);
                 }
                 TestsUtil.synchronizationWithUIThread();
 
@@ -289,5 +276,9 @@ public class MappingBasedSiriusFormatDataManagerExistingTargetDiagramTest extend
                 closeRawDiagram(diagramToPasteFormat);
             }
         }
+        if (!differences.isEmpty()) {
+            differences.insert(0, String.format("\n. between diagram %s and raw diagram %s", diagramToCopyFormat.name, diagramToPasteFormat.name)); //$NON-NLS-1$
+        }
+        return differences;
     }
 }

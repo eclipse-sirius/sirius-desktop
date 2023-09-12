@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2021 Obeo.
+ * Copyright (c) 2020, 2023 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -39,9 +39,13 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint;
+import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditDomain;
 import org.eclipse.gmf.runtime.diagram.ui.preferences.IPreferenceConstants;
+import org.eclipse.gmf.runtime.notation.Bounds;
+import org.eclipse.gmf.runtime.notation.Shape;
+import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferenceConverter;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
@@ -58,6 +62,7 @@ import org.eclipse.sirius.diagram.formatdata.tools.api.util.configuration.Config
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.format.semantic.MappingBasedSiriusFormatDataManager;
 import org.eclipse.sirius.diagram.ui.tools.api.part.DiagramEditPartService;
+import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.tests.unit.diagram.format.data.manager.mappingbased.MappingBasedTestConfiguration;
 import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
@@ -67,6 +72,7 @@ import org.eclipse.sirius.ui.business.api.dialect.ExportFormat;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat.ExportDocumentFormat;
 import org.eclipse.sirius.ui.tools.api.actions.export.SizeTooLargeException;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
@@ -119,6 +125,7 @@ public class AbstractMappingBasedSiriusFormatDataManagerTest extends AbstractSir
      */
     protected MappingBasedTestConfiguration getFullTestConfiguration() {
         Map<String, String> full_map = new HashMap<String, String>();
+        full_map.put("/", "/");
         full_map.put("//p1", "//targetp1");
         full_map.put("//p1/C1-1", "//targetp1/targetC1-1");
         full_map.put("//p1/C1-1/aC1-2", "//targetp1/targetC1-1/targetaC1-2");
@@ -153,6 +160,7 @@ public class AbstractMappingBasedSiriusFormatDataManagerTest extends AbstractSir
      */
     protected MappingBasedTestConfiguration getSubsetTestConfiguration() {
         Map<String, String> subset_map = new HashMap<String, String>();
+        subset_map.put("/", "/");
         subset_map.put("//p1", "//targetp1");
         subset_map.put("//p1/C1-1", "//targetp1/targetC1-1");
         subset_map.put("//p1/C1-1/aC1-1-1", "//targetp1/targetC1-1/targetaC1-1-1");
@@ -622,4 +630,103 @@ public class AbstractMappingBasedSiriusFormatDataManagerTest extends AbstractSir
             ((DiagramEditDomain) diagramEditPart.getViewer().getEditDomain()).removeViewer(diagramEditPart.getViewer());
         }
     }
+
+    /**
+     * Compare bounds, container and style of Notes, Texts and RepresentationLinks (that are Notes in reality).
+     * 
+     * @param sourceDiagramEditPart
+     *            The source diagram edit part.
+     * @param targetDiagramEditPart
+     *            The source diagram edit part.
+     * @param correspondenceMap
+     *            The mapping function between source diagram elements and target diagram elements Must not be null. In
+     *            the case where {@code sourceDiagram} is a Sequence diagram, must provide a mapping for each semantic
+     *            element of {@code sourceDiagram}.
+     * @return The error messages if any or empty string builder
+     */
+    protected StringBuilder checkPureGraphicalElements(DiagramEditPart sourceDiagramEditPart, DiagramEditPart targetDiagramEditPart, Map<EObject, EObject> correspondenceMap) {
+        StringBuilder differences = new StringBuilder();
+        Collection<Shape> sourceNotes = GMFNotationHelper.getNotes(sourceDiagramEditPart.getDiagramView());
+        Collection<Shape> targetNotes = GMFNotationHelper.getNotes(targetDiagramEditPart.getDiagramView());
+        differences.append(checkPureGraphicalElements("Note", sourceNotes, targetNotes, correspondenceMap)); //$NON-NLS-1$
+        Collection<Shape> sourceTexts = GMFNotationHelper.getTextNotes(sourceDiagramEditPart.getDiagramView());
+        Collection<Shape> targetTexts = GMFNotationHelper.getTextNotes(targetDiagramEditPart.getDiagramView());
+        differences.append(checkPureGraphicalElements("Text", sourceTexts, targetTexts, correspondenceMap)); //$NON-NLS-1$
+        return differences;
+    }
+
+    /**
+     * Compare bounds, container and style.
+     * 
+     * @param kindLabel
+     *            "Note" or "Text" to display in error message.
+     * @param sourceElements
+     *            List of the source elements to compare
+     * @param targetElements
+     *            List of the source elements to compare
+     * @param correspondenceMap
+     *            The mapping function between source diagram elements and target diagram elements Must not be null. In
+     *            the case where {@code sourceDiagram} is a Sequence diagram, must provide a mapping for each semantic
+     *            element of {@code sourceDiagram}.
+     * @return The error messages if any or empty string builder
+     */
+    private StringBuilder checkPureGraphicalElements(String kindLabel, Collection<Shape> sourceElements, Collection<Shape> targetElements, Map<EObject, EObject> correspondenceMap) {
+        StringBuilder differences = new StringBuilder();
+        for (Shape sourceNote : sourceElements) {
+            Optional<Shape> targetNote = getCorrespondingNote(sourceNote, targetElements);
+            if (targetNote.isEmpty()) {
+                differences.append(String.format("\n     .No target %s found with label %s", kindLabel, sourceNote.getDescription())); //$NON-NLS-1$
+            } else {
+                // Compare GMF bounds
+                Bounds sourceBounds = (Bounds) sourceNote.getLayoutConstraint();
+                Bounds targetBounds = (Bounds) targetNote.get().getLayoutConstraint();
+                if (sourceBounds.getX() != targetBounds.getX() || sourceBounds.getY() != targetBounds.getY() || sourceBounds.getWidth() != targetBounds.getWidth()
+                        || sourceBounds.getHeight() != targetBounds.getHeight()) {
+                    differences
+                            .append(String.format("\n     .The location of the %s \"%s\" is wrong, expected %s but was %s", kindLabel, sourceNote.getDescription(), getBoundsToString(sourceBounds), //$NON-NLS-1$
+                                    getBoundsToString(targetBounds)));
+                }
+                // Compare container
+                EObject siriusTargetObject = ViewUtil.resolveSemanticElement((View) targetNote.get().eContainer());
+                EObject siriusSourceObject = ViewUtil.resolveSemanticElement((View) sourceNote.eContainer());
+                if (siriusTargetObject instanceof DSemanticDecorator && siriusSourceObject instanceof DSemanticDecorator) {
+                    EObject expectedTarget = correspondenceMap.get(((DSemanticDecorator) siriusSourceObject).getTarget());
+                    if (expectedTarget == null || !expectedTarget.equals(((DSemanticDecorator) siriusTargetObject).getTarget())) {
+                        differences.append(String.format("\n     .The semantic element of the container of the %s \"%s\" is wrong, expected %s but was %s", kindLabel, sourceNote.getDescription(), //$NON-NLS-1$
+                                expectedTarget, ((DSemanticDecorator) siriusTargetObject).getTarget()));
+                    }
+                }
+                // Compare style (only foreground color is compared, we supposed that other style is copied too).
+                if (sourceNote.getFontColor() != targetNote.get().getFontColor()) {
+                    differences.append(String.format("\n     .The font color of the %s \"%s\" is wrong, expected %s but was %s" + targetNote.get().getFontColor(), kindLabel, //$NON-NLS-1$
+                            sourceNote.getDescription(), sourceNote.getFontColor(), targetNote.get().getFontColor()));
+                }
+            }
+        }
+        return differences;
+    }
+
+    private String getBoundsToString(Bounds bounds) {
+        StringBuffer result = new StringBuffer();
+        result.append("[x: "); //$NON-NLS-1$
+        result.append(bounds.getX());
+        result.append(", y: "); //$NON-NLS-1$
+        result.append(bounds.getY());
+        result.append(", width: "); //$NON-NLS-1$
+        result.append(bounds.getWidth());
+        result.append(", height: "); //$NON-NLS-1$
+        result.append(bounds.getHeight());
+        result.append(']');
+        return result.toString();
+    }
+
+    private Optional<Shape> getCorrespondingNote(Shape sourceNote, Collection<Shape> targetNotes) {
+        for (Shape targetNote : targetNotes) {
+            if (targetNote.getDescription() != null && targetNote.getDescription().equals(sourceNote.getDescription())) {
+                return Optional.of(targetNote);
+            }
+        }
+        return Optional.empty();
+    }
+
 }
