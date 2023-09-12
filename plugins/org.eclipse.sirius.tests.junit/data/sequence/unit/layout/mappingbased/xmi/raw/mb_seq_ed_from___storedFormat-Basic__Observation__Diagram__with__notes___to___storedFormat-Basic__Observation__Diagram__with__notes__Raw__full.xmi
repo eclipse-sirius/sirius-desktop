@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="ASCII"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:formatdata="http://www.eclipse.org/sirius/dsl/formatdata/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0">
-  <formatdata:NodeFormatData id="//@ownedInteractions.7/@combinedFragments.0" width="270" height="150">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_gEIQbVIYEe60XfO1sLSb-w" showIcon="false" labelColor="11,16,140" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" borderColor="22,147,165" backgroundColor="166,227,187" foregroundColor="166,227,187">
+  <formatdata:NodeFormatData id="//@ownedInteractions.7/@combinedFragments.0" width="250" height="341">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_sQncolIyEe6c8J442g3GIQ" showIcon="false" labelColor="11,16,140" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" borderColor="22,147,165" backgroundColor="166,227,187" foregroundColor="166,227,187">
+      <customFeatures>labelColor</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@containerMappings[name='Combined%20Fragment']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2002">
@@ -10,66 +11,120 @@
         <children type="3008">
           <children type="5005"/>
           <children type="7002">
+            <children xsi:type="notation:Shape" type="Note" fontColor="12560536" fontName="Segoe UI" description="RepresentationLinkInContainer" fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+              <eAnnotations source="specificStyles">
+                <details key="verticalAlignment" value="8"/>
+                <details key="representationlink"/>
+              </eAnnotations>
+              <children xsi:type="notation:BasicDecorationNode" type="DiagramName"/>
+              <children xsi:type="notation:BasicDecorationNode" type="Description"/>
+              <styles xsi:type="notation:TextStyle" textAlignment="Center"/>
+              <styles xsi:type="notation:LineTypeStyle"/>
+              <layoutConstraint xsi:type="notation:Bounds" x="15" y="118" width="211" height="88"/>
+            </children>
+            <children xsi:type="notation:Shape" type="Text" fontColor="10011046" fontName="Segoe UI" description="TextInContainer" lineColor="8905185">
+              <children xsi:type="notation:BasicDecorationNode" type="DiagramName"/>
+              <children xsi:type="notation:BasicDecorationNode" type="Description"/>
+              <layoutConstraint xsi:type="notation:Bounds" x="113" y="90"/>
+            </children>
             <styles xsi:type="notation:SortingStyle"/>
             <styles xsi:type="notation:FilteringStyle"/>
           </children>
           <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-          <layoutConstraint xsi:type="notation:Bounds" y="30" width="270" height="60"/>
+          <layoutConstraint xsi:type="notation:Bounds" y="30" width="250" height="242"/>
         </children>
         <children type="3008">
           <children type="5005"/>
           <children type="7002">
+            <children xsi:type="notation:Shape" type="Text" fontColor="8047085" fontName="Segoe UI" description="TextInContainerNotExistInTarget" fillColor="8047085">
+              <children xsi:type="notation:BasicDecorationNode" type="DiagramName"/>
+              <children xsi:type="notation:BasicDecorationNode" type="Description"/>
+              <layoutConstraint xsi:type="notation:Bounds" x="124" y="11" width="100"/>
+            </children>
             <styles xsi:type="notation:SortingStyle"/>
             <styles xsi:type="notation:FilteringStyle"/>
           </children>
           <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-          <layoutConstraint xsi:type="notation:Bounds" y="90" width="270" height="60"/>
+          <layoutConstraint xsi:type="notation:Bounds" y="272" width="250" height="69"/>
+        </children>
+        <children xsi:type="notation:Shape" type="Note" fontColor="10265827" fontName="Segoe UI" description="NoteInContainer" fillColor="12632256" transparency="0" lineColor="6737151" lineWidth="1">
+          <eAnnotations source="specificStyles">
+            <details key="verticalAlignment" value="8"/>
+          </eAnnotations>
+          <children xsi:type="notation:BasicDecorationNode" type="DiagramName"/>
+          <children xsi:type="notation:BasicDecorationNode" type="Description"/>
+          <styles xsi:type="notation:TextStyle" textAlignment="Center"/>
+          <styles xsi:type="notation:LineTypeStyle"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="24" y="68" width="124" height="35"/>
         </children>
         <styles xsi:type="notation:SortingStyle"/>
         <styles xsi:type="notation:FilteringStyle"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="50" y="515" width="270" height="150"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="86" y="515" width="250" height="341"/>
     </gmfView>
-    <location x="50" y="515"/>
+    <location x="86" y="515"/>
   </formatdata:NodeFormatData>
-  <formatdata:NodeFormatData id="//@ownedInteractions.7/@combinedFragments.0/@ownedOperands.0" width="270" height="60">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_gEIQcFIYEe60XfO1sLSb-w" showIcon="false" labelColor="11,16,140" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" borderColor="22,147,165" backgroundStyle="GradientTopToBottom" backgroundColor="160,222,214" foregroundColor="160,222,214">
+  <formatdata:NodeFormatData id="//@ownedInteractions.7/@combinedFragments.0/@ownedOperands.0" width="250" height="242">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_sQoDklIyEe6c8J442g3GIQ" showIcon="false" labelColor="11,16,140" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" borderColor="22,147,165" backgroundStyle="GradientTopToBottom" backgroundColor="160,222,214" foregroundColor="160,222,214">
+      <customFeatures>labelColor</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@containerMappings[name='Combined%20Fragment']/@subContainerMappings[name='Operand']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="3008">
       <children type="5005"/>
       <children type="7002">
+        <children xsi:type="notation:Shape" type="Note" fontColor="12560536" fontName="Segoe UI" description="RepresentationLinkInContainer" fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+          <eAnnotations source="specificStyles">
+            <details key="verticalAlignment" value="8"/>
+            <details key="representationlink"/>
+          </eAnnotations>
+          <children xsi:type="notation:BasicDecorationNode" type="DiagramName"/>
+          <children xsi:type="notation:BasicDecorationNode" type="Description"/>
+          <styles xsi:type="notation:TextStyle" textAlignment="Center"/>
+          <styles xsi:type="notation:LineTypeStyle"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="15" y="118" width="211" height="88"/>
+        </children>
+        <children xsi:type="notation:Shape" type="Text" fontColor="10011046" fontName="Segoe UI" description="TextInContainer" lineColor="8905185">
+          <children xsi:type="notation:BasicDecorationNode" type="DiagramName"/>
+          <children xsi:type="notation:BasicDecorationNode" type="Description"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="113" y="90"/>
+        </children>
         <styles xsi:type="notation:SortingStyle"/>
         <styles xsi:type="notation:FilteringStyle"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" y="30" width="270" height="60"/>
+      <layoutConstraint xsi:type="notation:Bounds" y="30" width="250" height="242"/>
     </gmfView>
     <location y="30"/>
   </formatdata:NodeFormatData>
-  <formatdata:NodeFormatData id="//@ownedInteractions.7/@combinedFragments.0/@ownedOperands.1" width="270" height="60">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_gEIQcVIYEe60XfO1sLSb-w" showIcon="false" labelColor="11,16,140" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" borderColor="22,147,165" backgroundStyle="GradientTopToBottom" backgroundColor="160,222,214" foregroundColor="160,222,214">
+  <formatdata:NodeFormatData id="//@ownedInteractions.7/@combinedFragments.0/@ownedOperands.1" width="250" height="69">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_sQoDk1IyEe6c8J442g3GIQ" showIcon="false" labelColor="11,16,140" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" borderColor="22,147,165" backgroundStyle="GradientTopToBottom" backgroundColor="160,222,214" foregroundColor="160,222,214">
+      <customFeatures>labelColor</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@containerMappings[name='Combined%20Fragment']/@subContainerMappings[name='Operand']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="3008">
       <children type="5005"/>
       <children type="7002">
+        <children xsi:type="notation:Shape" type="Text" fontColor="8047085" fontName="Segoe UI" description="TextInContainerNotExistInTarget" fillColor="8047085">
+          <children xsi:type="notation:BasicDecorationNode" type="DiagramName"/>
+          <children xsi:type="notation:BasicDecorationNode" type="Description"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="124" y="11" width="100"/>
+        </children>
         <styles xsi:type="notation:SortingStyle"/>
         <styles xsi:type="notation:FilteringStyle"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" y="90" width="270" height="60"/>
+      <layoutConstraint xsi:type="notation:Bounds" y="272" width="250" height="69"/>
     </gmfView>
-    <location y="90"/>
+    <location y="272"/>
   </formatdata:NodeFormatData>
   <formatdata:EdgeFormatData id="//@ownedInteractions.7/@constraints.0" sourceTerminal="(0.5,0.5)" targetTerminal="(0.5,0.5)">
     <label id="//@ownedInteractions.7/@constraints.0" width="-1" height="-1">
       <location y="-10"/>
     </label>
-    <siriusStyle xsi:type="diagram:BracketEdgeStyle" uid="_gEJeelIYEe60XfO1sLSb-w" sourceArrow="InputArrow">
+    <siriusStyle xsi:type="diagram:BracketEdgeStyle" uid="_sQoqsFIyEe6c8J442g3GIQ" sourceArrow="InputArrow">
       <description xsi:type="style:BracketEdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@edgeMappings[name='constraint']/@style"/>
-      <centerLabelStyle uid="_gEJee1IYEe60XfO1sLSb-w" showIcon="false" labelColor="136,136,136"/>
+      <centerLabelStyle uid="_sQoqsVIyEe6c8J442g3GIQ" showIcon="false" labelColor="136,136,136"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Edge" type="4002">
       <children type="6001">
@@ -87,22 +142,22 @@
       <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
       <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
     </gmfView>
-    <pointList x="107" y="185"/>
-    <pointList x="49" y="185"/>
-    <pointList x="57" y="185"/>
-    <pointList x="57" y="130"/>
-    <pointList x="49" y="130"/>
-    <pointList x="107" y="130"/>
-    <sourceRefPoint x="110" y="185"/>
-    <targetRefPoint x="110" y="130"/>
+    <pointList x="143" y="185"/>
+    <pointList x="85" y="185"/>
+    <pointList x="93" y="185"/>
+    <pointList x="93" y="130"/>
+    <pointList x="85" y="130"/>
+    <pointList x="143" y="130"/>
+    <sourceRefPoint x="146" y="185"/>
+    <targetRefPoint x="146" y="130"/>
   </formatdata:EdgeFormatData>
   <formatdata:EdgeFormatData id="//@ownedInteractions.7/@constraints.1" sourceTerminal="(0.5,0.5)" targetTerminal="(0.5,0.5)">
     <label id="//@ownedInteractions.7/@constraints.1" width="-1" height="-1">
       <location y="-10"/>
     </label>
-    <siriusStyle xsi:type="diagram:BracketEdgeStyle" uid="_gEIQglIYEe60XfO1sLSb-w" sourceArrow="InputArrow">
+    <siriusStyle xsi:type="diagram:BracketEdgeStyle" uid="_sQoqolIyEe6c8J442g3GIQ" sourceArrow="InputArrow">
       <description xsi:type="style:BracketEdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@edgeMappings[name='constraint']/@style"/>
-      <centerLabelStyle uid="_gEIQg1IYEe60XfO1sLSb-w" showIcon="false" labelColor="136,136,136"/>
+      <centerLabelStyle uid="_sQoqo1IyEe6c8J442g3GIQ" showIcon="false" labelColor="136,136,136"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Edge" type="4002">
       <children type="6001">
@@ -120,22 +175,22 @@
       <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
       <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
     </gmfView>
-    <pointList x="257" y="690"/>
-    <pointList x="199" y="690"/>
-    <pointList x="207" y="690"/>
-    <pointList x="207" y="740"/>
-    <pointList x="215" y="740"/>
-    <pointList x="113" y="740"/>
-    <sourceRefPoint x="260" y="690"/>
-    <targetRefPoint x="110" y="740"/>
+    <pointList x="273" y="881"/>
+    <pointList x="215" y="881"/>
+    <pointList x="223" y="881"/>
+    <pointList x="223" y="931"/>
+    <pointList x="231" y="931"/>
+    <pointList x="149" y="931"/>
+    <sourceRefPoint x="276" y="881"/>
+    <targetRefPoint x="146" y="931"/>
   </formatdata:EdgeFormatData>
   <formatdata:EdgeFormatData id="//@ownedInteractions.7/@constraints.2" sourceTerminal="(0.5,0.5)" targetTerminal="(0.5,0.5)">
     <label id="//@ownedInteractions.7/@constraints.2" width="-1" height="-1">
       <location y="-10"/>
     </label>
-    <siriusStyle xsi:type="diagram:BracketEdgeStyle" uid="_gEIQgFIYEe60XfO1sLSb-w" sourceArrow="InputArrow">
+    <siriusStyle xsi:type="diagram:BracketEdgeStyle" uid="_sQoqoFIyEe6c8J442g3GIQ" sourceArrow="InputArrow">
       <description xsi:type="style:BracketEdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@edgeMappings[name='constraint']/@style"/>
-      <centerLabelStyle uid="_gEIQgVIYEe60XfO1sLSb-w" showIcon="false" labelColor="136,136,136"/>
+      <centerLabelStyle uid="_sQoqoVIyEe6c8J442g3GIQ" showIcon="false" labelColor="136,136,136"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Edge" type="4002">
       <children type="6001">
@@ -153,22 +208,22 @@
       <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
       <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
     </gmfView>
-    <pointList x="257" y="255"/>
-    <pointList x="199" y="255"/>
-    <pointList x="207" y="255"/>
-    <pointList x="207" y="285"/>
-    <pointList x="199" y="285"/>
-    <pointList x="257" y="285"/>
-    <sourceRefPoint x="260" y="255"/>
-    <targetRefPoint x="260" y="285"/>
+    <pointList x="273" y="255"/>
+    <pointList x="215" y="255"/>
+    <pointList x="223" y="255"/>
+    <pointList x="223" y="285"/>
+    <pointList x="215" y="285"/>
+    <pointList x="273" y="285"/>
+    <sourceRefPoint x="276" y="255"/>
+    <targetRefPoint x="276" y="285"/>
   </formatdata:EdgeFormatData>
   <formatdata:EdgeFormatData id="//@ownedInteractions.7/@constraints.3" sourceTerminal="(0.5,0.5)" targetTerminal="(0.5,0.5)">
     <label id="//@ownedInteractions.7/@constraints.3" width="-1" height="-1">
       <location y="-10"/>
     </label>
-    <siriusStyle xsi:type="diagram:BracketEdgeStyle" uid="_gEIQflIYEe60XfO1sLSb-w" sourceArrow="InputArrow">
+    <siriusStyle xsi:type="diagram:BracketEdgeStyle" uid="_sQoDoFIyEe6c8J442g3GIQ" sourceArrow="InputArrow">
       <description xsi:type="style:BracketEdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@edgeMappings[name='constraint']/@style"/>
-      <centerLabelStyle uid="_gEIQf1IYEe60XfO1sLSb-w" showIcon="false" labelColor="136,136,136"/>
+      <centerLabelStyle uid="_sQoDoVIyEe6c8J442g3GIQ" showIcon="false" labelColor="136,136,136"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Edge" type="4002">
       <children type="6001">
@@ -186,22 +241,22 @@
       <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
       <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
     </gmfView>
-    <pointList x="257" y="355"/>
-    <pointList x="199" y="355"/>
-    <pointList x="207" y="355"/>
-    <pointList x="207" y="405"/>
-    <pointList x="199" y="405"/>
-    <pointList x="257" y="405"/>
-    <sourceRefPoint x="260" y="355"/>
-    <targetRefPoint x="260" y="405"/>
+    <pointList x="273" y="355"/>
+    <pointList x="215" y="355"/>
+    <pointList x="223" y="355"/>
+    <pointList x="223" y="405"/>
+    <pointList x="215" y="405"/>
+    <pointList x="273" y="405"/>
+    <sourceRefPoint x="276" y="355"/>
+    <targetRefPoint x="276" y="405"/>
   </formatdata:EdgeFormatData>
   <formatdata:EdgeFormatData id="//@ownedInteractions.7/@constraints.4" sourceTerminal="(0.5,0.5)" targetTerminal="(0.5,0.5)">
     <label id="//@ownedInteractions.7/@constraints.4" width="-1" height="-1">
       <location y="-10"/>
     </label>
-    <siriusStyle xsi:type="diagram:BracketEdgeStyle" uid="_gEIQfFIYEe60XfO1sLSb-w" sourceArrow="InputArrow">
+    <siriusStyle xsi:type="diagram:BracketEdgeStyle" uid="_sQoDnlIyEe6c8J442g3GIQ" sourceArrow="InputArrow">
       <description xsi:type="style:BracketEdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@edgeMappings[name='constraint']/@style"/>
-      <centerLabelStyle uid="_gEIQfVIYEe60XfO1sLSb-w" showIcon="false" labelColor="136,136,136"/>
+      <centerLabelStyle uid="_sQoDn1IyEe6c8J442g3GIQ" showIcon="false" labelColor="136,136,136"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Edge" type="4002">
       <children type="6001">
@@ -219,20 +274,20 @@
       <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
       <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
     </gmfView>
-    <pointList x="257" y="285"/>
-    <pointList x="199" y="285"/>
-    <pointList x="207" y="285"/>
-    <pointList x="207" y="320"/>
-    <pointList x="215" y="320"/>
-    <pointList x="203" y="320"/>
-    <sourceRefPoint x="260" y="285"/>
-    <targetRefPoint x="200" y="320"/>
+    <pointList x="273" y="285"/>
+    <pointList x="215" y="285"/>
+    <pointList x="223" y="285"/>
+    <pointList x="223" y="320"/>
+    <pointList x="231" y="320"/>
+    <pointList x="219" y="320"/>
+    <sourceRefPoint x="276" y="285"/>
+    <targetRefPoint x="216" y="320"/>
   </formatdata:EdgeFormatData>
   <formatdata:NodeFormatData id="//@ownedInteractions.7/@ends.0" width="6" height="6">
     <label id="//@ownedInteractions.7/@ends.0">
       <location x="-1"/>
     </label>
-    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_gEHCMFIYEe60XfO1sLSb-w" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
+    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_sQmOYVIyEe6c8J442g3GIQ" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
       <description xsi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@nodeMappings[name='endObsPoint']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2001">
@@ -244,15 +299,15 @@
         <layoutConstraint xsi:type="notation:Bounds"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="107" y="127" width="6" height="6"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="143" y="127" width="6" height="6"/>
     </gmfView>
-    <location x="107" y="127"/>
+    <location x="143" y="127"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//@ownedInteractions.7/@ends.1" width="6" height="6">
     <label id="//@ownedInteractions.7/@ends.1">
       <location x="-1"/>
     </label>
-    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_gEHCMlIYEe60XfO1sLSb-w" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
+    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_sQmOY1IyEe6c8J442g3GIQ" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
       <description xsi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@nodeMappings[name='endObsPoint']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2001">
@@ -264,15 +319,15 @@
         <layoutConstraint xsi:type="notation:Bounds"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="197" y="127" width="6" height="6"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="213" y="127" width="6" height="6"/>
     </gmfView>
-    <location x="197" y="127"/>
+    <location x="213" y="127"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//@ownedInteractions.7/@ends.10" width="6" height="6">
     <label id="//@ownedInteractions.7/@ends.10">
       <location x="-1"/>
     </label>
-    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_gEHCQ1IYEe60XfO1sLSb-w" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
+    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_sQm1eFIyEe6c8J442g3GIQ" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
       <description xsi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@nodeMappings[name='endObsPoint']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2001">
@@ -284,15 +339,15 @@
         <layoutConstraint xsi:type="notation:Bounds"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="257" y="402" width="6" height="6"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="273" y="402" width="6" height="6"/>
     </gmfView>
-    <location x="257" y="402"/>
+    <location x="273" y="402"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//@ownedInteractions.7/@ends.11" width="6" height="6">
     <label id="//@ownedInteractions.7/@ends.11">
       <location x="-1"/>
     </label>
-    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_gEHCRFIYEe60XfO1sLSb-w" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
+    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_sQm1eVIyEe6c8J442g3GIQ" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
       <description xsi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@nodeMappings[name='endObsPoint']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2001">
@@ -304,15 +359,15 @@
         <layoutConstraint xsi:type="notation:Bounds"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="47" y="422" width="6" height="6"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="83" y="422" width="6" height="6"/>
     </gmfView>
-    <location x="47" y="422"/>
+    <location x="83" y="422"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//@ownedInteractions.7/@ends.12" width="6" height="6">
     <label id="//@ownedInteractions.7/@ends.12">
       <location x="-1"/>
     </label>
-    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_gEHCRVIYEe60XfO1sLSb-w" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
+    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_sQm1elIyEe6c8J442g3GIQ" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
       <description xsi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@nodeMappings[name='endObsPoint']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2001">
@@ -324,15 +379,15 @@
         <layoutConstraint xsi:type="notation:Bounds"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="47" y="472" width="6" height="6"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="83" y="472" width="6" height="6"/>
     </gmfView>
-    <location x="47" y="472"/>
+    <location x="83" y="472"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//@ownedInteractions.7/@ends.13" width="6" height="6">
     <label id="//@ownedInteractions.7/@ends.13">
       <location x="-1"/>
     </label>
-    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_gEHCRlIYEe60XfO1sLSb-w" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
+    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_sQm1e1IyEe6c8J442g3GIQ" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
       <description xsi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@nodeMappings[name='endObsPoint']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2001">
@@ -344,15 +399,15 @@
         <layoutConstraint xsi:type="notation:Bounds"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="107" y="492" width="6" height="6"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="143" y="492" width="6" height="6"/>
     </gmfView>
-    <location x="107" y="492"/>
+    <location x="143" y="492"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//@ownedInteractions.7/@ends.14" width="6" height="6">
     <label id="//@ownedInteractions.7/@ends.14">
       <location x="-1"/>
     </label>
-    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_gEF0EFIYEe60XfO1sLSb-w" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
+    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_sQmOYFIyEe6c8J442g3GIQ" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
       <description xsi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@nodeMappings[name='endObsPoint']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2001">
@@ -364,15 +419,15 @@
         <layoutConstraint xsi:type="notation:Bounds"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="257" y="492" width="6" height="6"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="273" y="492" width="6" height="6"/>
     </gmfView>
-    <location x="257" y="492"/>
+    <location x="273" y="492"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//@ownedInteractions.7/@ends.15" width="6" height="6">
     <label id="//@ownedInteractions.7/@ends.15">
       <location x="-1"/>
     </label>
-    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_gEHCMVIYEe60XfO1sLSb-w" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
+    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_sQmOYlIyEe6c8J442g3GIQ" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
       <description xsi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@nodeMappings[name='endObsPoint']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2001">
@@ -384,15 +439,15 @@
         <layoutConstraint xsi:type="notation:Bounds"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="47" y="512" width="6" height="6"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="83" y="512" width="6" height="6"/>
     </gmfView>
-    <location x="47" y="512"/>
+    <location x="83" y="512"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//@ownedInteractions.7/@ends.16" width="6" height="6">
     <label id="//@ownedInteractions.7/@ends.16">
       <location x="-1"/>
     </label>
-    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_gEHCM1IYEe60XfO1sLSb-w" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
+    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_sQmOZFIyEe6c8J442g3GIQ" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
       <description xsi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@nodeMappings[name='endObsPoint']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2001">
@@ -404,15 +459,15 @@
         <layoutConstraint xsi:type="notation:Bounds"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="47" y="542" width="6" height="6"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="83" y="542" width="6" height="6"/>
     </gmfView>
-    <location x="47" y="542"/>
+    <location x="83" y="542"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//@ownedInteractions.7/@ends.17" width="6" height="6">
     <label id="//@ownedInteractions.7/@ends.17">
       <location x="-1"/>
     </label>
-    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_gEHCN1IYEe60XfO1sLSb-w" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
+    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_sQmOaFIyEe6c8J442g3GIQ" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
       <description xsi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@nodeMappings[name='endObsPoint']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2001">
@@ -424,15 +479,15 @@
         <layoutConstraint xsi:type="notation:Bounds"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="47" y="602" width="6" height="6"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="83" y="784" width="6" height="6"/>
     </gmfView>
-    <location x="47" y="602"/>
+    <location x="83" y="784"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//@ownedInteractions.7/@ends.18" width="6" height="6">
     <label id="//@ownedInteractions.7/@ends.18">
       <location x="-1"/>
     </label>
-    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_gEHCOlIYEe60XfO1sLSb-w" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
+    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_sQmOa1IyEe6c8J442g3GIQ" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
       <description xsi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@nodeMappings[name='endObsPoint']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2001">
@@ -444,15 +499,15 @@
         <layoutConstraint xsi:type="notation:Bounds"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="47" y="662" width="6" height="6"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="83" y="853" width="6" height="6"/>
     </gmfView>
-    <location x="47" y="662"/>
+    <location x="83" y="853"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//@ownedInteractions.7/@ends.19" width="6" height="6">
     <label id="//@ownedInteractions.7/@ends.19">
       <location x="-1"/>
     </label>
-    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_gEHCPFIYEe60XfO1sLSb-w" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
+    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_sQm1cVIyEe6c8J442g3GIQ" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
       <description xsi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@nodeMappings[name='endObsPoint']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2001">
@@ -464,15 +519,15 @@
         <layoutConstraint xsi:type="notation:Bounds"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="257" y="687" width="6" height="6"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="273" y="878" width="6" height="6"/>
     </gmfView>
     <outgoingEdges id="//@ownedInteractions.7/@constraints.1" sourceTerminal="(0.5,0.5)" targetTerminal="(0.5,0.5)">
       <label id="//@ownedInteractions.7/@constraints.1" width="-1" height="-1">
         <location y="-10"/>
       </label>
-      <siriusStyle xsi:type="diagram:BracketEdgeStyle" uid="_gEHCPVIYEe60XfO1sLSb-w" sourceArrow="InputArrow">
+      <siriusStyle xsi:type="diagram:BracketEdgeStyle" uid="_sQm1clIyEe6c8J442g3GIQ" sourceArrow="InputArrow">
         <description xsi:type="style:BracketEdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@edgeMappings[name='constraint']/@style"/>
-        <centerLabelStyle uid="_gEHCPlIYEe60XfO1sLSb-w" showIcon="false" labelColor="136,136,136"/>
+        <centerLabelStyle uid="_sQm1c1IyEe6c8J442g3GIQ" showIcon="false" labelColor="136,136,136"/>
       </siriusStyle>
       <gmfView xsi:type="notation:Edge" type="4002">
         <children type="6001">
@@ -490,22 +545,22 @@
         <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
         <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
       </gmfView>
-      <pointList x="257" y="690"/>
-      <pointList x="199" y="690"/>
-      <pointList x="207" y="690"/>
-      <pointList x="207" y="740"/>
-      <pointList x="215" y="740"/>
-      <pointList x="113" y="740"/>
-      <sourceRefPoint x="260" y="690"/>
-      <targetRefPoint x="110" y="740"/>
+      <pointList x="273" y="881"/>
+      <pointList x="215" y="881"/>
+      <pointList x="223" y="881"/>
+      <pointList x="223" y="931"/>
+      <pointList x="231" y="931"/>
+      <pointList x="149" y="931"/>
+      <sourceRefPoint x="276" y="881"/>
+      <targetRefPoint x="146" y="931"/>
     </outgoingEdges>
-    <location x="257" y="687"/>
+    <location x="273" y="878"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//@ownedInteractions.7/@ends.2" width="6" height="6">
     <label id="//@ownedInteractions.7/@ends.2">
       <location x="-1"/>
     </label>
-    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_gEHCNFIYEe60XfO1sLSb-w" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
+    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_sQmOZVIyEe6c8J442g3GIQ" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
       <description xsi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@nodeMappings[name='endObsPoint']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2001">
@@ -517,15 +572,15 @@
         <layoutConstraint xsi:type="notation:Bounds"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="107" y="182" width="6" height="6"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="143" y="182" width="6" height="6"/>
     </gmfView>
     <outgoingEdges id="//@ownedInteractions.7/@constraints.0" sourceTerminal="(0.5,0.5)" targetTerminal="(0.5,0.5)">
       <label id="//@ownedInteractions.7/@constraints.0" width="-1" height="-1">
         <location y="-10"/>
       </label>
-      <siriusStyle xsi:type="diagram:BracketEdgeStyle" uid="_gEHCNVIYEe60XfO1sLSb-w" sourceArrow="InputArrow">
+      <siriusStyle xsi:type="diagram:BracketEdgeStyle" uid="_sQmOZlIyEe6c8J442g3GIQ" sourceArrow="InputArrow">
         <description xsi:type="style:BracketEdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@edgeMappings[name='constraint']/@style"/>
-        <centerLabelStyle uid="_gEHCNlIYEe60XfO1sLSb-w" showIcon="false" labelColor="136,136,136"/>
+        <centerLabelStyle uid="_sQmOZ1IyEe6c8J442g3GIQ" showIcon="false" labelColor="136,136,136"/>
       </siriusStyle>
       <gmfView xsi:type="notation:Edge" type="4002">
         <children type="6001">
@@ -543,22 +598,22 @@
         <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
         <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
       </gmfView>
-      <pointList x="107" y="185"/>
-      <pointList x="49" y="185"/>
-      <pointList x="57" y="185"/>
-      <pointList x="57" y="130"/>
-      <pointList x="49" y="130"/>
-      <pointList x="107" y="130"/>
-      <sourceRefPoint x="110" y="185"/>
-      <targetRefPoint x="110" y="130"/>
+      <pointList x="143" y="185"/>
+      <pointList x="85" y="185"/>
+      <pointList x="93" y="185"/>
+      <pointList x="93" y="130"/>
+      <pointList x="85" y="130"/>
+      <pointList x="143" y="130"/>
+      <sourceRefPoint x="146" y="185"/>
+      <targetRefPoint x="146" y="130"/>
     </outgoingEdges>
-    <location x="107" y="182"/>
+    <location x="143" y="182"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//@ownedInteractions.7/@ends.20" width="6" height="6">
     <label id="//@ownedInteractions.7/@ends.20">
       <location x="-1"/>
     </label>
-    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_gEIQc1IYEe60XfO1sLSb-w" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
+    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_sQoDlVIyEe6c8J442g3GIQ" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
       <description xsi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@nodeMappings[name='endObsPoint']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2001">
@@ -570,15 +625,15 @@
         <layoutConstraint xsi:type="notation:Bounds"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="107" y="737" width="6" height="6"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="143" y="928" width="6" height="6"/>
     </gmfView>
-    <location x="107" y="737"/>
+    <location x="143" y="928"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//@ownedInteractions.7/@ends.21" width="6" height="6">
     <label id="//@ownedInteractions.7/@ends.21">
       <location x="-1"/>
     </label>
-    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_gEIQdFIYEe60XfO1sLSb-w" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
+    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_sQoDllIyEe6c8J442g3GIQ" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
       <description xsi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@nodeMappings[name='endObsPoint']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2001">
@@ -590,15 +645,15 @@
         <layoutConstraint xsi:type="notation:Bounds"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="232" y="737" width="6" height="6"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="248" y="928" width="6" height="6"/>
     </gmfView>
-    <location x="232" y="737"/>
+    <location x="248" y="928"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//@ownedInteractions.7/@ends.3" width="6" height="6">
     <label id="//@ownedInteractions.7/@ends.3">
       <location x="-1"/>
     </label>
-    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_gEHCOVIYEe60XfO1sLSb-w" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
+    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_sQmOalIyEe6c8J442g3GIQ" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
       <description xsi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@nodeMappings[name='endObsPoint']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2001">
@@ -610,15 +665,15 @@
         <layoutConstraint xsi:type="notation:Bounds"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="257" y="182" width="6" height="6"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="273" y="182" width="6" height="6"/>
     </gmfView>
-    <location x="257" y="182"/>
+    <location x="273" y="182"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//@ownedInteractions.7/@ends.4" width="6" height="6">
     <label id="//@ownedInteractions.7/@ends.4">
       <location x="-1"/>
     </label>
-    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_gEHCO1IYEe60XfO1sLSb-w" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
+    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_sQm1cFIyEe6c8J442g3GIQ" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
       <description xsi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@nodeMappings[name='endObsPoint']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2001">
@@ -630,15 +685,15 @@
         <layoutConstraint xsi:type="notation:Bounds"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="257" y="232" width="6" height="6"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="273" y="232" width="6" height="6"/>
     </gmfView>
-    <location x="257" y="232"/>
+    <location x="273" y="232"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//@ownedInteractions.7/@ends.5" width="6" height="6">
     <label id="//@ownedInteractions.7/@ends.5">
       <location x="-1"/>
     </label>
-    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_gEHCP1IYEe60XfO1sLSb-w" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
+    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_sQm1dFIyEe6c8J442g3GIQ" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
       <description xsi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@nodeMappings[name='endObsPoint']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2001">
@@ -650,15 +705,15 @@
         <layoutConstraint xsi:type="notation:Bounds"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="107" y="232" width="6" height="6"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="143" y="232" width="6" height="6"/>
     </gmfView>
-    <location x="107" y="232"/>
+    <location x="143" y="232"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//@ownedInteractions.7/@ends.6" width="6" height="6">
     <label id="//@ownedInteractions.7/@ends.6">
       <location x="-1"/>
     </label>
-    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_gEHCQFIYEe60XfO1sLSb-w" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
+    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_sQm1dVIyEe6c8J442g3GIQ" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
       <description xsi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@nodeMappings[name='endObsPoint']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2001">
@@ -670,15 +725,15 @@
         <layoutConstraint xsi:type="notation:Bounds"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="257" y="252" width="6" height="6"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="273" y="252" width="6" height="6"/>
     </gmfView>
     <outgoingEdges id="//@ownedInteractions.7/@constraints.2" sourceTerminal="(0.5,0.5)" targetTerminal="(0.5,0.5)">
       <label id="//@ownedInteractions.7/@constraints.2" width="-1" height="-1">
         <location y="-10"/>
       </label>
-      <siriusStyle xsi:type="diagram:BracketEdgeStyle" uid="_gEHCQVIYEe60XfO1sLSb-w" sourceArrow="InputArrow">
+      <siriusStyle xsi:type="diagram:BracketEdgeStyle" uid="_sQm1dlIyEe6c8J442g3GIQ" sourceArrow="InputArrow">
         <description xsi:type="style:BracketEdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@edgeMappings[name='constraint']/@style"/>
-        <centerLabelStyle uid="_gEHCQlIYEe60XfO1sLSb-w" showIcon="false" labelColor="136,136,136"/>
+        <centerLabelStyle uid="_sQm1d1IyEe6c8J442g3GIQ" showIcon="false" labelColor="136,136,136"/>
       </siriusStyle>
       <gmfView xsi:type="notation:Edge" type="4002">
         <children type="6001">
@@ -696,22 +751,22 @@
         <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
         <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
       </gmfView>
-      <pointList x="257" y="255"/>
-      <pointList x="199" y="255"/>
-      <pointList x="207" y="255"/>
-      <pointList x="207" y="285"/>
-      <pointList x="199" y="285"/>
-      <pointList x="257" y="285"/>
-      <sourceRefPoint x="260" y="255"/>
-      <targetRefPoint x="260" y="285"/>
+      <pointList x="273" y="255"/>
+      <pointList x="215" y="255"/>
+      <pointList x="223" y="255"/>
+      <pointList x="223" y="285"/>
+      <pointList x="215" y="285"/>
+      <pointList x="273" y="285"/>
+      <sourceRefPoint x="276" y="255"/>
+      <targetRefPoint x="276" y="285"/>
     </outgoingEdges>
-    <location x="257" y="252"/>
+    <location x="273" y="252"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//@ownedInteractions.7/@ends.7" width="6" height="6">
     <label id="//@ownedInteractions.7/@ends.7">
       <location x="-1"/>
     </label>
-    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_gEIQdVIYEe60XfO1sLSb-w" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
+    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_sQoDl1IyEe6c8J442g3GIQ" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
       <description xsi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@nodeMappings[name='endObsPoint']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2001">
@@ -723,15 +778,15 @@
         <layoutConstraint xsi:type="notation:Bounds"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="257" y="282" width="6" height="6"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="273" y="282" width="6" height="6"/>
     </gmfView>
     <outgoingEdges id="//@ownedInteractions.7/@constraints.4" sourceTerminal="(0.5,0.5)" targetTerminal="(0.5,0.5)">
       <label id="//@ownedInteractions.7/@constraints.4" width="-1" height="-1">
         <location y="-10"/>
       </label>
-      <siriusStyle xsi:type="diagram:BracketEdgeStyle" uid="_gEIQdlIYEe60XfO1sLSb-w" sourceArrow="InputArrow">
+      <siriusStyle xsi:type="diagram:BracketEdgeStyle" uid="_sQoDmFIyEe6c8J442g3GIQ" sourceArrow="InputArrow">
         <description xsi:type="style:BracketEdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@edgeMappings[name='constraint']/@style"/>
-        <centerLabelStyle uid="_gEIQd1IYEe60XfO1sLSb-w" showIcon="false" labelColor="136,136,136"/>
+        <centerLabelStyle uid="_sQoDmVIyEe6c8J442g3GIQ" showIcon="false" labelColor="136,136,136"/>
       </siriusStyle>
       <gmfView xsi:type="notation:Edge" type="4002">
         <children type="6001">
@@ -749,22 +804,22 @@
         <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
         <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
       </gmfView>
-      <pointList x="257" y="285"/>
-      <pointList x="199" y="285"/>
-      <pointList x="207" y="285"/>
-      <pointList x="207" y="320"/>
-      <pointList x="215" y="320"/>
-      <pointList x="203" y="320"/>
-      <sourceRefPoint x="260" y="285"/>
-      <targetRefPoint x="200" y="320"/>
+      <pointList x="273" y="285"/>
+      <pointList x="215" y="285"/>
+      <pointList x="223" y="285"/>
+      <pointList x="223" y="320"/>
+      <pointList x="231" y="320"/>
+      <pointList x="219" y="320"/>
+      <sourceRefPoint x="276" y="285"/>
+      <targetRefPoint x="216" y="320"/>
     </outgoingEdges>
-    <location x="257" y="282"/>
+    <location x="273" y="282"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//@ownedInteractions.7/@ends.8" width="6" height="6">
     <label id="//@ownedInteractions.7/@ends.8">
       <location x="-1"/>
     </label>
-    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_gEIQeFIYEe60XfO1sLSb-w" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
+    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_sQoDmlIyEe6c8J442g3GIQ" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
       <description xsi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@nodeMappings[name='endObsPoint']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2001">
@@ -776,15 +831,15 @@
         <layoutConstraint xsi:type="notation:Bounds"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="197" y="317" width="6" height="6"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="213" y="317" width="6" height="6"/>
     </gmfView>
-    <location x="197" y="317"/>
+    <location x="213" y="317"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//@ownedInteractions.7/@ends.9" width="6" height="6">
     <label id="//@ownedInteractions.7/@ends.9">
       <location x="-1"/>
     </label>
-    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_gEIQeVIYEe60XfO1sLSb-w" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
+    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_sQoDm1IyEe6c8J442g3GIQ" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/observation.svg">
       <description xsi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@nodeMappings[name='endObsPoint']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2001">
@@ -796,15 +851,15 @@
         <layoutConstraint xsi:type="notation:Bounds"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="257" y="352" width="6" height="6"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="273" y="352" width="6" height="6"/>
     </gmfView>
     <outgoingEdges id="//@ownedInteractions.7/@constraints.3" sourceTerminal="(0.5,0.5)" targetTerminal="(0.5,0.5)">
       <label id="//@ownedInteractions.7/@constraints.3" width="-1" height="-1">
         <location y="-10"/>
       </label>
-      <siriusStyle xsi:type="diagram:BracketEdgeStyle" uid="_gEIQelIYEe60XfO1sLSb-w" sourceArrow="InputArrow">
+      <siriusStyle xsi:type="diagram:BracketEdgeStyle" uid="_sQoDnFIyEe6c8J442g3GIQ" sourceArrow="InputArrow">
         <description xsi:type="style:BracketEdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@additionalLayers[name='duration']/@edgeMappings[name='constraint']/@style"/>
-        <centerLabelStyle uid="_gEIQe1IYEe60XfO1sLSb-w" showIcon="false" labelColor="136,136,136"/>
+        <centerLabelStyle uid="_sQoDnVIyEe6c8J442g3GIQ" showIcon="false" labelColor="136,136,136"/>
       </siriusStyle>
       <gmfView xsi:type="notation:Edge" type="4002">
         <children type="6001">
@@ -822,22 +877,22 @@
         <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
         <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
       </gmfView>
-      <pointList x="257" y="355"/>
-      <pointList x="199" y="355"/>
-      <pointList x="207" y="355"/>
-      <pointList x="207" y="405"/>
-      <pointList x="199" y="405"/>
-      <pointList x="257" y="405"/>
-      <sourceRefPoint x="260" y="355"/>
-      <targetRefPoint x="260" y="405"/>
+      <pointList x="273" y="355"/>
+      <pointList x="215" y="355"/>
+      <pointList x="223" y="355"/>
+      <pointList x="223" y="405"/>
+      <pointList x="215" y="405"/>
+      <pointList x="273" y="405"/>
+      <sourceRefPoint x="276" y="355"/>
+      <targetRefPoint x="276" y="405"/>
     </outgoingEdges>
-    <location x="257" y="352"/>
+    <location x="273" y="352"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//@ownedInteractions.7/@executions.0" width="20" height="50">
     <label id="//@ownedInteractions.7/@executions.0">
       <location x="-34"/>
     </label>
-    <siriusStyle xsi:type="diagram:Square" uid="_gEIQUFIYEe60XfO1sLSb-w" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="39,76,114" width="2" height="5" color="199,237,232">
+    <siriusStyle xsi:type="diagram:Square" uid="_sQnchVIyEe6c8J442g3GIQ" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="39,76,114" width="2" height="5" color="199,237,232">
       <description xsi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="3001">
@@ -855,9 +910,9 @@
       <label id="//@ownedInteractions.7/@messages.2" width="-1" height="-1">
         <location y="-10"/>
       </label>
-      <siriusStyle xsi:type="diagram:EdgeStyle" uid="_gEIQUVIYEe60XfO1sLSb-w" lineStyle="dot" size="0" strokeColor="114,159,207">
+      <siriusStyle xsi:type="diagram:EdgeStyle" uid="_sQnchlIyEe6c8J442g3GIQ" lineStyle="dot" size="0" strokeColor="114,159,207">
         <description xsi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@edgeMappings[name='Return%20Message']/@style"/>
-        <centerLabelStyle uid="_gEIQUlIYEe60XfO1sLSb-w" showIcon="false"/>
+        <centerLabelStyle uid="_sQnch1IyEe6c8J442g3GIQ" showIcon="false"/>
       </siriusStyle>
       <gmfView xsi:type="notation:Edge" type="4001">
         <children type="6001">
@@ -871,14 +926,14 @@
         </children>
         <styles xsi:type="notation:FontStyle" fontName="Arial"/>
         <styles xsi:type="notation:ConnectorStyle"/>
-        <bendpoints xsi:type="notation:RelativeBendpoints" points="[-33, 25, -33, -210]$[0, 25, 0, -210]"/>
+        <bendpoints xsi:type="notation:RelativeBendpoints" points="[-33, 25, -33, -306]$[0, 25, 0, -306]"/>
         <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
         <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
       </gmfView>
-      <pointList x="250" y="235"/>
-      <pointList x="112" y="235"/>
-      <sourceRefPoint x="260" y="210"/>
-      <targetRefPoint x="110" y="445"/>
+      <pointList x="266" y="235"/>
+      <pointList x="148" y="235"/>
+      <sourceRefPoint x="276" y="210"/>
+      <targetRefPoint x="146" y="540"/>
     </outgoingEdges>
     <location x="-5" y="30"/>
   </formatdata:NodeFormatData>
@@ -886,7 +941,7 @@
     <label id="//@ownedInteractions.7/@executions.1">
       <location x="-34"/>
     </label>
-    <siriusStyle xsi:type="diagram:Square" uid="_gEIQU1IYEe60XfO1sLSb-w" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="39,76,114" width="2" height="5" color="199,237,232">
+    <siriusStyle xsi:type="diagram:Square" uid="_sQnciFIyEe6c8J442g3GIQ" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="39,76,114" width="2" height="5" color="199,237,232">
       <description xsi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="3001">
@@ -902,8 +957,8 @@
     </gmfView>
     <location x="-5" y="200"/>
   </formatdata:NodeFormatData>
-  <formatdata:NodeFormatData id="//@ownedInteractions.7/@interactionUses.0" width="270" height="50">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_gEIQclIYEe60XfO1sLSb-w" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1">
+  <formatdata:NodeFormatData id="//@ownedInteractions.7/@interactionUses.0" width="250" height="50">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_sQoDlFIyEe6c8J442g3GIQ" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1">
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@containerMappings[name='Interaction%20Use']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2002">
@@ -913,17 +968,17 @@
         <styles xsi:type="notation:FilteringStyle"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="50" y="425" width="270" height="50"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="86" y="425" width="250" height="50"/>
     </gmfView>
-    <location x="50" y="425"/>
+    <location x="86" y="425"/>
   </formatdata:NodeFormatData>
   <formatdata:EdgeFormatData id="//@ownedInteractions.7/@messages.0" sourceTerminal="(0.5,0.5)" targetTerminal="(0.5,0.5)">
     <label id="//@ownedInteractions.7/@messages.0" width="-1" height="-1">
       <location y="-10"/>
     </label>
-    <siriusStyle xsi:type="diagram:EdgeStyle" uid="_gEJedFIYEe60XfO1sLSb-w" lineStyle="dash" targetArrow="InputFillClosedArrow" size="2" strokeColor="138,226,52">
+    <siriusStyle xsi:type="diagram:EdgeStyle" uid="_sQoqqlIyEe6c8J442g3GIQ" lineStyle="dash" targetArrow="InputFillClosedArrow" size="2" strokeColor="138,226,52">
       <description xsi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@edgeMappings[name='Create%20Participant%20Message']/@style"/>
-      <centerLabelStyle uid="_gEJedVIYEe60XfO1sLSb-w" showIcon="false"/>
+      <centerLabelStyle uid="_sQoqq1IyEe6c8J442g3GIQ" showIcon="false"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Edge" type="4001">
       <children type="6001">
@@ -937,22 +992,22 @@
       </children>
       <styles xsi:type="notation:FontStyle" fontName="Arial"/>
       <styles xsi:type="notation:ConnectorStyle"/>
-      <bendpoints xsi:type="notation:RelativeBendpoints" points="[0, -315, 0, 0]$[0, -315, 0, 0]"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[0, -411, 0, 0]$[0, -411, 0, 0]"/>
       <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
       <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
     </gmfView>
-    <pointList x="112" y="130"/>
-    <pointList x="200" y="130"/>
-    <sourceRefPoint x="110" y="445"/>
-    <targetRefPoint x="260" y="130"/>
+    <pointList x="148" y="130"/>
+    <pointList x="216" y="130"/>
+    <sourceRefPoint x="146" y="540"/>
+    <targetRefPoint x="276" y="130"/>
   </formatdata:EdgeFormatData>
   <formatdata:EdgeFormatData id="//@ownedInteractions.7/@messages.1" sourceTerminal="(0.5,0.5)" targetTerminal="(0.5,0.5)">
     <label id="//@ownedInteractions.7/@messages.1" width="-1" height="-1">
       <location y="-10"/>
     </label>
-    <siriusStyle xsi:type="diagram:EdgeStyle" uid="_gEJeeFIYEe60XfO1sLSb-w" size="2" strokeColor="114,159,207">
+    <siriusStyle xsi:type="diagram:EdgeStyle" uid="_sQoqrlIyEe6c8J442g3GIQ" size="2" strokeColor="114,159,207">
       <description xsi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@edgeMappings[name='Call%20Message']/@style"/>
-      <centerLabelStyle uid="_gEJeeVIYEe60XfO1sLSb-w" showIcon="false"/>
+      <centerLabelStyle uid="_sQoqr1IyEe6c8J442g3GIQ" showIcon="false"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Edge" type="4001">
       <children type="6001">
@@ -966,22 +1021,22 @@
       </children>
       <styles xsi:type="notation:FontStyle" fontName="Arial"/>
       <styles xsi:type="notation:ConnectorStyle"/>
-      <bendpoints xsi:type="notation:RelativeBendpoints" points="[0, -260, 0, -25]$[-33, -260, -33, -25]"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[0, -356, 0, -25]$[-33, -356, -33, -25]"/>
       <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
       <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
     </gmfView>
-    <pointList x="112" y="185"/>
-    <pointList x="250" y="185"/>
-    <sourceRefPoint x="110" y="445"/>
-    <targetRefPoint x="260" y="210"/>
+    <pointList x="148" y="184"/>
+    <pointList x="266" y="184"/>
+    <sourceRefPoint x="146" y="540"/>
+    <targetRefPoint x="276" y="210"/>
   </formatdata:EdgeFormatData>
   <formatdata:EdgeFormatData id="//@ownedInteractions.7/@messages.2" sourceTerminal="(0.5,0.5)" targetTerminal="(0.5,0.5)">
     <label id="//@ownedInteractions.7/@messages.2" width="-1" height="-1">
       <location y="-10"/>
     </label>
-    <siriusStyle xsi:type="diagram:EdgeStyle" uid="_gEJedlIYEe60XfO1sLSb-w" lineStyle="dot" size="0" strokeColor="114,159,207">
+    <siriusStyle xsi:type="diagram:EdgeStyle" uid="_sQoqrFIyEe6c8J442g3GIQ" lineStyle="dot" size="0" strokeColor="114,159,207">
       <description xsi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@edgeMappings[name='Return%20Message']/@style"/>
-      <centerLabelStyle uid="_gEJed1IYEe60XfO1sLSb-w" showIcon="false"/>
+      <centerLabelStyle uid="_sQoqrVIyEe6c8J442g3GIQ" showIcon="false"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Edge" type="4001">
       <children type="6001">
@@ -995,22 +1050,22 @@
       </children>
       <styles xsi:type="notation:FontStyle" fontName="Arial"/>
       <styles xsi:type="notation:ConnectorStyle"/>
-      <bendpoints xsi:type="notation:RelativeBendpoints" points="[-33, 25, -33, -210]$[0, 25, 0, -210]"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[-33, 25, -33, -306]$[0, 25, 0, -306]"/>
       <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
       <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
     </gmfView>
-    <pointList x="250" y="235"/>
-    <pointList x="112" y="235"/>
-    <sourceRefPoint x="260" y="210"/>
-    <targetRefPoint x="110" y="445"/>
+    <pointList x="266" y="235"/>
+    <pointList x="148" y="235"/>
+    <sourceRefPoint x="276" y="210"/>
+    <targetRefPoint x="146" y="540"/>
   </formatdata:EdgeFormatData>
   <formatdata:EdgeFormatData id="//@ownedInteractions.7/@messages.3" sourceTerminal="(0.5,0.5)" targetTerminal="(0.5,0.5)">
     <label id="//@ownedInteractions.7/@messages.3" width="-1" height="-1">
       <location y="-10"/>
     </label>
-    <siriusStyle xsi:type="diagram:EdgeStyle" uid="_gEJecFIYEe60XfO1sLSb-w" size="2" strokeColor="77,137,20">
+    <siriusStyle xsi:type="diagram:EdgeStyle" uid="_sQoqplIyEe6c8J442g3GIQ" size="2" strokeColor="77,137,20">
       <description xsi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@edgeMappings[name='Feature%20Access%20Message']/@style"/>
-      <centerLabelStyle uid="_gEJecVIYEe60XfO1sLSb-w" showIcon="false"/>
+      <centerLabelStyle uid="_sQoqp1IyEe6c8J442g3GIQ" showIcon="false"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Edge" type="4001">
       <children type="6001">
@@ -1024,22 +1079,22 @@
       </children>
       <styles xsi:type="notation:FontStyle" fontName="Arial"/>
       <styles xsi:type="notation:ConnectorStyle"/>
-      <bendpoints xsi:type="notation:RelativeBendpoints" points="[0, 50, 0, 60]$[0, 50, 0, 60]"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[0, -46, 0, -36]$[0, -46, 0, -36]"/>
       <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
       <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
     </gmfView>
-    <pointList x="112" y="495"/>
-    <pointList x="258" y="495"/>
-    <sourceRefPoint x="110" y="445"/>
-    <targetRefPoint x="260" y="435"/>
+    <pointList x="148" y="494"/>
+    <pointList x="274" y="494"/>
+    <sourceRefPoint x="146" y="540"/>
+    <targetRefPoint x="276" y="530"/>
   </formatdata:EdgeFormatData>
   <formatdata:EdgeFormatData id="//@ownedInteractions.7/@messages.4" sourceTerminal="(0.5,0.5)" targetTerminal="(0.5,0.5)">
     <label id="//@ownedInteractions.7/@messages.4" width="-1" height="-1">
       <location y="-10"/>
     </label>
-    <siriusStyle xsi:type="diagram:EdgeStyle" uid="_gEIQhFIYEe60XfO1sLSb-w" size="2" strokeColor="114,159,207">
+    <siriusStyle xsi:type="diagram:EdgeStyle" uid="_sQoqpFIyEe6c8J442g3GIQ" size="2" strokeColor="114,159,207">
       <description xsi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@edgeMappings[name='Call%20Message']/@style"/>
-      <centerLabelStyle uid="_gEIQhVIYEe60XfO1sLSb-w" showIcon="false"/>
+      <centerLabelStyle uid="_sQoqpVIyEe6c8J442g3GIQ" showIcon="false"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Edge" type="4001">
       <children type="6001">
@@ -1053,20 +1108,20 @@
       </children>
       <styles xsi:type="notation:FontStyle" fontName="Arial"/>
       <styles xsi:type="notation:ConnectorStyle"/>
-      <bendpoints xsi:type="notation:RelativeBendpoints" points="[0, 255, 0, 0]$[0, 255, 0, 0]"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[0, 350, 0, 0]$[0, 350, 0, 0]"/>
       <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
       <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
     </gmfView>
-    <pointList x="262" y="690"/>
-    <pointList x="325" y="690"/>
-    <sourceRefPoint x="260" y="435"/>
-    <targetRefPoint x="330" y="690"/>
+    <pointList x="278" y="880"/>
+    <pointList x="341" y="880"/>
+    <sourceRefPoint x="276" y="530"/>
+    <targetRefPoint x="346" y="881"/>
   </formatdata:EdgeFormatData>
   <formatdata:NodeFormatData id="//@ownedInteractions.7/@messages.4" width="10" height="10">
     <label id="//@ownedInteractions.7/@messages.4">
       <location x="-1"/>
     </label>
-    <siriusStyle xsi:type="diagram:Dot" uid="_gEHCOFIYEe60XfO1sLSb-w" strokeSizeComputationExpression="1" backgroundColor="0,0,0">
+    <siriusStyle xsi:type="diagram:Dot" uid="_sQmOaVIyEe6c8J442g3GIQ" strokeSizeComputationExpression="1" backgroundColor="0,0,0">
       <description xsi:type="style:DotDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Lost%20Message%20End']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2001">
@@ -1078,17 +1133,17 @@
         <layoutConstraint xsi:type="notation:Bounds"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="325" y="685" width="10" height="10"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="341" y="876" width="10" height="10"/>
     </gmfView>
-    <location x="325" y="685"/>
+    <location x="341" y="876"/>
   </formatdata:NodeFormatData>
   <formatdata:EdgeFormatData id="//@ownedInteractions.7/@messages.5" sourceTerminal="(0.5,0.5)" targetTerminal="(0.5,0.5)">
     <label id="//@ownedInteractions.7/@messages.5" width="-1" height="-1">
       <location y="-10"/>
     </label>
-    <siriusStyle xsi:type="diagram:EdgeStyle" uid="_gEJeclIYEe60XfO1sLSb-w" lineStyle="dash" targetArrow="InputFillClosedArrow" size="2" strokeColor="246,139,139">
+    <siriusStyle xsi:type="diagram:EdgeStyle" uid="_sQoqqFIyEe6c8J442g3GIQ" lineStyle="dash" targetArrow="InputFillClosedArrow" size="2" strokeColor="246,139,139">
       <description xsi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@edgeMappings[name='Destroy%20Participant%20Message']/@style"/>
-      <centerLabelStyle uid="_gEJec1IYEe60XfO1sLSb-w" showIcon="false"/>
+      <centerLabelStyle uid="_sQoqqVIyEe6c8J442g3GIQ" showIcon="false"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Edge" type="4001">
       <children type="6001">
@@ -1102,20 +1157,20 @@
       </children>
       <styles xsi:type="notation:FontStyle" fontName="Arial"/>
       <styles xsi:type="notation:ConnectorStyle"/>
-      <bendpoints xsi:type="notation:RelativeBendpoints" points="[0, 295, 0, 0]$[-3, 295, -3, 0]"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[0, 390, 0, 0]$[-3, 390, -3, 0]"/>
       <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
       <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
     </gmfView>
-    <pointList x="112" y="740"/>
-    <pointList x="235" y="740"/>
-    <sourceRefPoint x="110" y="445"/>
-    <targetRefPoint x="260" y="740"/>
+    <pointList x="148" y="931"/>
+    <pointList x="251" y="931"/>
+    <sourceRefPoint x="146" y="540"/>
+    <targetRefPoint x="276" y="931"/>
   </formatdata:EdgeFormatData>
   <formatdata:NodeFormatData id="//@ownedInteractions.7/@participants.0" width="10" height="10">
     <label id="//@ownedInteractions.7/@participants.0">
       <location x="-44"/>
     </label>
-    <siriusStyle xsi:type="diagram:Dot" uid="_gEIQbFIYEe60XfO1sLSb-w" strokeSizeComputationExpression="1">
+    <siriusStyle xsi:type="diagram:Dot" uid="_sQncoVIyEe6c8J442g3GIQ" strokeSizeComputationExpression="1">
       <description xsi:type="style:DotDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='redimEOL']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="3001">
@@ -1127,15 +1182,162 @@
         <layoutConstraint xsi:type="notation:Bounds"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="-53" y="690" width="10" height="10"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="-53" y="881" width="10" height="10"/>
     </gmfView>
-    <location y="690"/>
+    <location y="881"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//@ownedInteractions.7/@participants.0" width="10" height="881">
+    <label id="//@ownedInteractions.7/@participants.0">
+      <location x="-44"/>
+    </label>
+    <siriusStyle xsi:type="diagram:Square" uid="_sQncl1IyEe6c8J442g3GIQ" showIcon="false" borderSize="3" borderSizeComputationExpression="3" borderColor="114,159,207" width="1" height="40" color="255,255,255">
+      <description xsi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@style"/>
+    </siriusStyle>
+    <gmfView xsi:type="notation:Node" type="3001">
+      <children type="3001">
+        <children type="5001">
+          <layoutConstraint xsi:type="notation:Location" x="-44"/>
+        </children>
+        <children type="3002">
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+          <layoutConstraint xsi:type="notation:Bounds"/>
+        </children>
+        <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
+        <layoutConstraint xsi:type="notation:Bounds" x="-53" y="881" width="10" height="10"/>
+      </children>
+      <children type="5001">
+        <layoutConstraint xsi:type="notation:Location" x="-44"/>
+      </children>
+      <children type="3003">
+        <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+        <layoutConstraint xsi:type="notation:Bounds"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
+      <layoutConstraint xsi:type="notation:Bounds" y="42" width="10" height="881"/>
+    </gmfView>
+    <outgoingEdges id="//@ownedInteractions.7/@messages.3" sourceTerminal="(0.5,0.5)" targetTerminal="(0.5,0.5)">
+      <label id="//@ownedInteractions.7/@messages.3" width="-1" height="-1">
+        <location y="-10"/>
+      </label>
+      <siriusStyle xsi:type="diagram:EdgeStyle" uid="_sQncmVIyEe6c8J442g3GIQ" size="2" strokeColor="77,137,20">
+        <description xsi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@edgeMappings[name='Feature%20Access%20Message']/@style"/>
+        <centerLabelStyle uid="_sQncmlIyEe6c8J442g3GIQ" showIcon="false"/>
+      </siriusStyle>
+      <gmfView xsi:type="notation:Edge" type="4001">
+        <children type="6001">
+          <layoutConstraint xsi:type="notation:Bounds" y="-10"/>
+        </children>
+        <children type="6002">
+          <layoutConstraint xsi:type="notation:Bounds" y="10"/>
+        </children>
+        <children type="6003">
+          <layoutConstraint xsi:type="notation:Bounds" y="10"/>
+        </children>
+        <styles xsi:type="notation:FontStyle" fontName="Arial"/>
+        <styles xsi:type="notation:ConnectorStyle"/>
+        <bendpoints xsi:type="notation:RelativeBendpoints" points="[0, -46, 0, -36]$[0, -46, 0, -36]"/>
+        <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
+        <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
+      </gmfView>
+      <pointList x="148" y="494"/>
+      <pointList x="274" y="494"/>
+      <sourceRefPoint x="146" y="540"/>
+      <targetRefPoint x="276" y="530"/>
+    </outgoingEdges>
+    <outgoingEdges id="//@ownedInteractions.7/@messages.1" sourceTerminal="(0.5,0.5)" targetTerminal="(0.5,0.5)">
+      <label id="//@ownedInteractions.7/@messages.1" width="-1" height="-1">
+        <location y="-10"/>
+      </label>
+      <siriusStyle xsi:type="diagram:EdgeStyle" uid="_sQncm1IyEe6c8J442g3GIQ" size="2" strokeColor="114,159,207">
+        <description xsi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@edgeMappings[name='Call%20Message']/@style"/>
+        <centerLabelStyle uid="_sQncnFIyEe6c8J442g3GIQ" showIcon="false"/>
+      </siriusStyle>
+      <gmfView xsi:type="notation:Edge" type="4001">
+        <children type="6001">
+          <layoutConstraint xsi:type="notation:Bounds" y="-10"/>
+        </children>
+        <children type="6002">
+          <layoutConstraint xsi:type="notation:Bounds" y="10"/>
+        </children>
+        <children type="6003">
+          <layoutConstraint xsi:type="notation:Bounds" y="10"/>
+        </children>
+        <styles xsi:type="notation:FontStyle" fontName="Arial"/>
+        <styles xsi:type="notation:ConnectorStyle"/>
+        <bendpoints xsi:type="notation:RelativeBendpoints" points="[0, -356, 0, -25]$[-33, -356, -33, -25]"/>
+        <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
+        <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
+      </gmfView>
+      <pointList x="148" y="184"/>
+      <pointList x="266" y="184"/>
+      <sourceRefPoint x="146" y="540"/>
+      <targetRefPoint x="276" y="210"/>
+    </outgoingEdges>
+    <outgoingEdges id="//@ownedInteractions.7/@messages.0" sourceTerminal="(0.5,0.5)" targetTerminal="(0.5,0.5)">
+      <label id="//@ownedInteractions.7/@messages.0" width="-1" height="-1">
+        <location y="-10"/>
+      </label>
+      <siriusStyle xsi:type="diagram:EdgeStyle" uid="_sQncnVIyEe6c8J442g3GIQ" lineStyle="dash" targetArrow="InputFillClosedArrow" size="2" strokeColor="138,226,52">
+        <description xsi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@edgeMappings[name='Create%20Participant%20Message']/@style"/>
+        <centerLabelStyle uid="_sQncnlIyEe6c8J442g3GIQ" showIcon="false"/>
+      </siriusStyle>
+      <gmfView xsi:type="notation:Edge" type="4001">
+        <children type="6001">
+          <layoutConstraint xsi:type="notation:Bounds" y="-10"/>
+        </children>
+        <children type="6002">
+          <layoutConstraint xsi:type="notation:Bounds" y="10"/>
+        </children>
+        <children type="6003">
+          <layoutConstraint xsi:type="notation:Bounds" y="10"/>
+        </children>
+        <styles xsi:type="notation:FontStyle" fontName="Arial"/>
+        <styles xsi:type="notation:ConnectorStyle"/>
+        <bendpoints xsi:type="notation:RelativeBendpoints" points="[0, -411, 0, 0]$[0, -411, 0, 0]"/>
+        <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
+        <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
+      </gmfView>
+      <pointList x="148" y="130"/>
+      <pointList x="216" y="130"/>
+      <sourceRefPoint x="146" y="540"/>
+      <targetRefPoint x="276" y="130"/>
+    </outgoingEdges>
+    <outgoingEdges id="//@ownedInteractions.7/@messages.5" sourceTerminal="(0.5,0.5)" targetTerminal="(0.5,0.5)">
+      <label id="//@ownedInteractions.7/@messages.5" width="-1" height="-1">
+        <location y="-10"/>
+      </label>
+      <siriusStyle xsi:type="diagram:EdgeStyle" uid="_sQncn1IyEe6c8J442g3GIQ" lineStyle="dash" targetArrow="InputFillClosedArrow" size="2" strokeColor="246,139,139">
+        <description xsi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@edgeMappings[name='Destroy%20Participant%20Message']/@style"/>
+        <centerLabelStyle uid="_sQncoFIyEe6c8J442g3GIQ" showIcon="false"/>
+      </siriusStyle>
+      <gmfView xsi:type="notation:Edge" type="4001">
+        <children type="6001">
+          <layoutConstraint xsi:type="notation:Bounds" y="-10"/>
+        </children>
+        <children type="6002">
+          <layoutConstraint xsi:type="notation:Bounds" y="10"/>
+        </children>
+        <children type="6003">
+          <layoutConstraint xsi:type="notation:Bounds" y="10"/>
+        </children>
+        <styles xsi:type="notation:FontStyle" fontName="Arial"/>
+        <styles xsi:type="notation:ConnectorStyle"/>
+        <bendpoints xsi:type="notation:RelativeBendpoints" points="[0, 390, 0, 0]$[-3, 390, -3, 0]"/>
+        <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
+        <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
+      </gmfView>
+      <pointList x="148" y="931"/>
+      <pointList x="251" y="931"/>
+      <sourceRefPoint x="146" y="540"/>
+      <targetRefPoint x="276" y="931"/>
+    </outgoingEdges>
+    <location x="55" y="50"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//@ownedInteractions.7/@participants.0" width="120" height="50">
     <label id="//@ownedInteractions.7/@participants.0">
       <location y="5"/>
     </label>
-    <siriusStyle xsi:type="diagram:Square" uid="_gEIQV1IYEe60XfO1sLSb-w" labelSize="12" showIcon="false" labelPosition="node" width="12" height="5" color="114,159,207">
+    <siriusStyle xsi:type="diagram:Square" uid="_sQncjFIyEe6c8J442g3GIQ" labelSize="12" showIcon="false" labelPosition="node" width="12" height="5" color="114,159,207">
       <labelFormat>bold</labelFormat>
       <description xsi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@style"/>
     </siriusStyle>
@@ -1150,7 +1352,7 @@
             <layoutConstraint xsi:type="notation:Bounds"/>
           </children>
           <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-          <layoutConstraint xsi:type="notation:Bounds" x="-53" y="690" width="10" height="10"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="-53" y="881" width="10" height="10"/>
         </children>
         <children type="5001">
           <layoutConstraint xsi:type="notation:Location" x="-44"/>
@@ -1160,7 +1362,7 @@
           <layoutConstraint xsi:type="notation:Bounds"/>
         </children>
         <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-        <layoutConstraint xsi:type="notation:Bounds" y="42" width="10" height="690"/>
+        <layoutConstraint xsi:type="notation:Bounds" y="42" width="10" height="881"/>
       </children>
       <children type="5002">
         <layoutConstraint xsi:type="notation:Location" y="5"/>
@@ -1170,162 +1372,15 @@
         <layoutConstraint xsi:type="notation:Bounds"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="12" bold="true"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="50" y="50" width="120" height="50"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="86" y="50" width="120" height="50"/>
     </gmfView>
-    <location x="50" y="50"/>
-  </formatdata:NodeFormatData>
-  <formatdata:NodeFormatData id="//@ownedInteractions.7/@participants.0" width="10" height="690">
-    <label id="//@ownedInteractions.7/@participants.0">
-      <location x="-44"/>
-    </label>
-    <siriusStyle xsi:type="diagram:Square" uid="_gEIQYlIYEe60XfO1sLSb-w" showIcon="false" borderSize="3" borderSizeComputationExpression="3" borderColor="114,159,207" width="1" height="40" color="255,255,255">
-      <description xsi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@style"/>
-    </siriusStyle>
-    <gmfView xsi:type="notation:Node" type="3001">
-      <children type="3001">
-        <children type="5001">
-          <layoutConstraint xsi:type="notation:Location" x="-44"/>
-        </children>
-        <children type="3002">
-          <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
-          <layoutConstraint xsi:type="notation:Bounds"/>
-        </children>
-        <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-        <layoutConstraint xsi:type="notation:Bounds" x="-53" y="690" width="10" height="10"/>
-      </children>
-      <children type="5001">
-        <layoutConstraint xsi:type="notation:Location" x="-44"/>
-      </children>
-      <children type="3003">
-        <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
-        <layoutConstraint xsi:type="notation:Bounds"/>
-      </children>
-      <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" y="42" width="10" height="690"/>
-    </gmfView>
-    <outgoingEdges id="//@ownedInteractions.7/@messages.3" sourceTerminal="(0.5,0.5)" targetTerminal="(0.5,0.5)">
-      <label id="//@ownedInteractions.7/@messages.3" width="-1" height="-1">
-        <location y="-10"/>
-      </label>
-      <siriusStyle xsi:type="diagram:EdgeStyle" uid="_gEIQZFIYEe60XfO1sLSb-w" size="2" strokeColor="77,137,20">
-        <description xsi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@edgeMappings[name='Feature%20Access%20Message']/@style"/>
-        <centerLabelStyle uid="_gEIQZVIYEe60XfO1sLSb-w" showIcon="false"/>
-      </siriusStyle>
-      <gmfView xsi:type="notation:Edge" type="4001">
-        <children type="6001">
-          <layoutConstraint xsi:type="notation:Bounds" y="-10"/>
-        </children>
-        <children type="6002">
-          <layoutConstraint xsi:type="notation:Bounds" y="10"/>
-        </children>
-        <children type="6003">
-          <layoutConstraint xsi:type="notation:Bounds" y="10"/>
-        </children>
-        <styles xsi:type="notation:FontStyle" fontName="Arial"/>
-        <styles xsi:type="notation:ConnectorStyle"/>
-        <bendpoints xsi:type="notation:RelativeBendpoints" points="[0, 50, 0, 60]$[0, 50, 0, 60]"/>
-        <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
-        <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
-      </gmfView>
-      <pointList x="112" y="495"/>
-      <pointList x="258" y="495"/>
-      <sourceRefPoint x="110" y="445"/>
-      <targetRefPoint x="260" y="435"/>
-    </outgoingEdges>
-    <outgoingEdges id="//@ownedInteractions.7/@messages.1" sourceTerminal="(0.5,0.5)" targetTerminal="(0.5,0.5)">
-      <label id="//@ownedInteractions.7/@messages.1" width="-1" height="-1">
-        <location y="-10"/>
-      </label>
-      <siriusStyle xsi:type="diagram:EdgeStyle" uid="_gEIQZlIYEe60XfO1sLSb-w" size="2" strokeColor="114,159,207">
-        <description xsi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@edgeMappings[name='Call%20Message']/@style"/>
-        <centerLabelStyle uid="_gEIQZ1IYEe60XfO1sLSb-w" showIcon="false"/>
-      </siriusStyle>
-      <gmfView xsi:type="notation:Edge" type="4001">
-        <children type="6001">
-          <layoutConstraint xsi:type="notation:Bounds" y="-10"/>
-        </children>
-        <children type="6002">
-          <layoutConstraint xsi:type="notation:Bounds" y="10"/>
-        </children>
-        <children type="6003">
-          <layoutConstraint xsi:type="notation:Bounds" y="10"/>
-        </children>
-        <styles xsi:type="notation:FontStyle" fontName="Arial"/>
-        <styles xsi:type="notation:ConnectorStyle"/>
-        <bendpoints xsi:type="notation:RelativeBendpoints" points="[0, -260, 0, -25]$[-33, -260, -33, -25]"/>
-        <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
-        <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
-      </gmfView>
-      <pointList x="112" y="185"/>
-      <pointList x="250" y="185"/>
-      <sourceRefPoint x="110" y="445"/>
-      <targetRefPoint x="260" y="210"/>
-    </outgoingEdges>
-    <outgoingEdges id="//@ownedInteractions.7/@messages.0" sourceTerminal="(0.5,0.5)" targetTerminal="(0.5,0.5)">
-      <label id="//@ownedInteractions.7/@messages.0" width="-1" height="-1">
-        <location y="-10"/>
-      </label>
-      <siriusStyle xsi:type="diagram:EdgeStyle" uid="_gEIQaFIYEe60XfO1sLSb-w" lineStyle="dash" targetArrow="InputFillClosedArrow" size="2" strokeColor="138,226,52">
-        <description xsi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@edgeMappings[name='Create%20Participant%20Message']/@style"/>
-        <centerLabelStyle uid="_gEIQaVIYEe60XfO1sLSb-w" showIcon="false"/>
-      </siriusStyle>
-      <gmfView xsi:type="notation:Edge" type="4001">
-        <children type="6001">
-          <layoutConstraint xsi:type="notation:Bounds" y="-10"/>
-        </children>
-        <children type="6002">
-          <layoutConstraint xsi:type="notation:Bounds" y="10"/>
-        </children>
-        <children type="6003">
-          <layoutConstraint xsi:type="notation:Bounds" y="10"/>
-        </children>
-        <styles xsi:type="notation:FontStyle" fontName="Arial"/>
-        <styles xsi:type="notation:ConnectorStyle"/>
-        <bendpoints xsi:type="notation:RelativeBendpoints" points="[0, -315, 0, 0]$[0, -315, 0, 0]"/>
-        <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
-        <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
-      </gmfView>
-      <pointList x="112" y="130"/>
-      <pointList x="200" y="130"/>
-      <sourceRefPoint x="110" y="445"/>
-      <targetRefPoint x="260" y="130"/>
-    </outgoingEdges>
-    <outgoingEdges id="//@ownedInteractions.7/@messages.5" sourceTerminal="(0.5,0.5)" targetTerminal="(0.5,0.5)">
-      <label id="//@ownedInteractions.7/@messages.5" width="-1" height="-1">
-        <location y="-10"/>
-      </label>
-      <siriusStyle xsi:type="diagram:EdgeStyle" uid="_gEIQalIYEe60XfO1sLSb-w" lineStyle="dash" targetArrow="InputFillClosedArrow" size="2" strokeColor="246,139,139">
-        <description xsi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@edgeMappings[name='Destroy%20Participant%20Message']/@style"/>
-        <centerLabelStyle uid="_gEIQa1IYEe60XfO1sLSb-w" showIcon="false"/>
-      </siriusStyle>
-      <gmfView xsi:type="notation:Edge" type="4001">
-        <children type="6001">
-          <layoutConstraint xsi:type="notation:Bounds" y="-10"/>
-        </children>
-        <children type="6002">
-          <layoutConstraint xsi:type="notation:Bounds" y="10"/>
-        </children>
-        <children type="6003">
-          <layoutConstraint xsi:type="notation:Bounds" y="10"/>
-        </children>
-        <styles xsi:type="notation:FontStyle" fontName="Arial"/>
-        <styles xsi:type="notation:ConnectorStyle"/>
-        <bendpoints xsi:type="notation:RelativeBendpoints" points="[0, 295, 0, 0]$[-3, 295, -3, 0]"/>
-        <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
-        <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
-      </gmfView>
-      <pointList x="112" y="740"/>
-      <pointList x="235" y="740"/>
-      <sourceRefPoint x="110" y="445"/>
-      <targetRefPoint x="260" y="740"/>
-    </outgoingEdges>
-    <location x="55" y="50"/>
+    <location x="86" y="50"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//@ownedInteractions.7/@participants.1" width="50" height="50">
     <label id="//@ownedInteractions.7/@participants.1">
       <location x="-4"/>
     </label>
-    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_gEIQVlIYEe60XfO1sLSb-w" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/eol.png">
+    <siriusStyle xsi:type="diagram:WorkspaceImage" uid="_sQnci1IyEe6c8J442g3GIQ" showIcon="false" workspacePath="/org.eclipse.sirius.sample.interactions.design/description/eol.png">
       <description xsi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='EOL']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="3001">
@@ -1337,15 +1392,15 @@
         <layoutConstraint xsi:type="notation:Bounds"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="-53" y="560" width="50" height="50"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="-53" y="751" width="50" height="50"/>
     </gmfView>
-    <location x="-20" y="560"/>
+    <location x="-20" y="751"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//@ownedInteractions.7/@participants.1" width="120" height="50">
     <label id="//@ownedInteractions.7/@participants.1">
       <location y="5"/>
     </label>
-    <siriusStyle xsi:type="diagram:Square" uid="_gEHpQFIYEe60XfO1sLSb-w" labelSize="12" showIcon="false" labelPosition="node" width="12" height="5" color="114,159,207">
+    <siriusStyle xsi:type="diagram:Square" uid="_sQm1fFIyEe6c8J442g3GIQ" labelSize="12" showIcon="false" labelPosition="node" width="12" height="5" color="114,159,207">
       <labelFormat>bold</labelFormat>
       <description xsi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@style"/>
     </siriusStyle>
@@ -1404,7 +1459,7 @@
             <layoutConstraint xsi:type="notation:Bounds"/>
           </children>
           <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-          <layoutConstraint xsi:type="notation:Bounds" x="-53" y="560" width="50" height="50"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="-53" y="751" width="50" height="50"/>
         </children>
         <children type="5001">
           <layoutConstraint xsi:type="notation:Location" x="-44"/>
@@ -1414,7 +1469,7 @@
           <layoutConstraint xsi:type="notation:Bounds"/>
         </children>
         <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-        <layoutConstraint xsi:type="notation:Bounds" y="42" width="10" height="560"/>
+        <layoutConstraint xsi:type="notation:Bounds" y="42" width="10" height="751"/>
       </children>
       <children type="5002">
         <layoutConstraint xsi:type="notation:Location" y="5"/>
@@ -1424,15 +1479,15 @@
         <layoutConstraint xsi:type="notation:Bounds"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="12" bold="true"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="200" y="105" width="120" height="50"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="216" y="105" width="120" height="50"/>
     </gmfView>
-    <location x="200" y="105"/>
+    <location x="216" y="105"/>
   </formatdata:NodeFormatData>
-  <formatdata:NodeFormatData id="//@ownedInteractions.7/@participants.1" width="10" height="560">
+  <formatdata:NodeFormatData id="//@ownedInteractions.7/@participants.1" width="10" height="751">
     <label id="//@ownedInteractions.7/@participants.1">
       <location x="-44"/>
     </label>
-    <siriusStyle xsi:type="diagram:Square" uid="_gEHpS1IYEe60XfO1sLSb-w" showIcon="false" borderSize="3" borderSizeComputationExpression="3" borderColor="114,159,207" width="1" height="40" color="255,255,255">
+    <siriusStyle xsi:type="diagram:Square" uid="_sQm1h1IyEe6c8J442g3GIQ" showIcon="false" borderSize="3" borderSizeComputationExpression="3" borderColor="114,159,207" width="1" height="40" color="255,255,255">
       <description xsi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="3001">
@@ -1489,7 +1544,7 @@
           <layoutConstraint xsi:type="notation:Bounds"/>
         </children>
         <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-        <layoutConstraint xsi:type="notation:Bounds" x="-53" y="560" width="50" height="50"/>
+        <layoutConstraint xsi:type="notation:Bounds" x="-53" y="751" width="50" height="50"/>
       </children>
       <children type="5001">
         <layoutConstraint xsi:type="notation:Location" x="-44"/>
@@ -1499,15 +1554,15 @@
         <layoutConstraint xsi:type="notation:Bounds"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" y="42" width="10" height="560"/>
+      <layoutConstraint xsi:type="notation:Bounds" y="42" width="10" height="751"/>
     </gmfView>
     <outgoingEdges id="//@ownedInteractions.7/@messages.4" sourceTerminal="(0.5,0.5)" targetTerminal="(0.5,0.5)">
       <label id="//@ownedInteractions.7/@messages.4" width="-1" height="-1">
         <location y="-10"/>
       </label>
-      <siriusStyle xsi:type="diagram:EdgeStyle" uid="_gEHpU1IYEe60XfO1sLSb-w" size="2" strokeColor="114,159,207">
+      <siriusStyle xsi:type="diagram:EdgeStyle" uid="_sQncg1IyEe6c8J442g3GIQ" size="2" strokeColor="114,159,207">
         <description xsi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@edgeMappings[name='Call%20Message']/@style"/>
-        <centerLabelStyle uid="_gEHpVFIYEe60XfO1sLSb-w" showIcon="false"/>
+        <centerLabelStyle uid="_sQnchFIyEe6c8J442g3GIQ" showIcon="false"/>
       </siriusStyle>
       <gmfView xsi:type="notation:Edge" type="4001">
         <children type="6001">
@@ -1521,14 +1576,14 @@
         </children>
         <styles xsi:type="notation:FontStyle" fontName="Arial"/>
         <styles xsi:type="notation:ConnectorStyle"/>
-        <bendpoints xsi:type="notation:RelativeBendpoints" points="[0, 255, 0, 0]$[0, 255, 0, 0]"/>
+        <bendpoints xsi:type="notation:RelativeBendpoints" points="[0, 350, 0, 0]$[0, 350, 0, 0]"/>
         <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
         <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
       </gmfView>
-      <pointList x="262" y="690"/>
-      <pointList x="325" y="690"/>
-      <sourceRefPoint x="260" y="435"/>
-      <targetRefPoint x="330" y="690"/>
+      <pointList x="278" y="880"/>
+      <pointList x="341" y="880"/>
+      <sourceRefPoint x="276" y="530"/>
+      <targetRefPoint x="346" y="881"/>
     </outgoingEdges>
     <location x="55" y="50"/>
   </formatdata:NodeFormatData>
@@ -1536,7 +1591,7 @@
     <label id="//@ownedInteractions.7/@states.0">
       <location y="5"/>
     </label>
-    <siriusStyle xsi:type="diagram:Ellipse" uid="_gEIQVFIYEe60XfO1sLSb-w" labelSize="15" showIcon="false" labelColor="166,227,187" borderColor="4,14,61" labelPosition="node" horizontalDiameter="12" verticalDiameter="3" color="16,127,201">
+    <siriusStyle xsi:type="diagram:Ellipse" uid="_sQnciVIyEe6c8J442g3GIQ" labelSize="15" showIcon="false" labelColor="166,227,187" borderColor="4,14,61" labelPosition="node" horizontalDiameter="12" verticalDiameter="3" color="16,127,201">
       <description xsi:type="style:EllipseNodeDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='State']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="3001">
@@ -1556,7 +1611,7 @@
     <label id="//@ownedInteractions.7/@states.1">
       <location y="5"/>
     </label>
-    <siriusStyle xsi:type="diagram:Ellipse" uid="_gEIQVVIYEe60XfO1sLSb-w" labelSize="15" showIcon="false" labelColor="16,120,103" borderColor="4,14,61" labelPosition="node" horizontalDiameter="12" verticalDiameter="3" color="69,181,196">
+    <siriusStyle xsi:type="diagram:Ellipse" uid="_sQncilIyEe6c8J442g3GIQ" labelSize="15" showIcon="false" labelColor="16,120,103" borderColor="4,14,61" labelPosition="node" horizontalDiameter="12" verticalDiameter="3" color="69,181,196">
       <description xsi:type="style:EllipseNodeDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='State']/@conditionnalStyles.0/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="3001">

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:formatdata="http://www.eclipse.org/sirius/dsl/formatdata/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0">
   <formatdata:NodeFormatData id="//targetp1" width="203" height="78">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_CKlwEYC1EeutkuroUGaDfg" borderSize="1" borderSizeComputationExpression="1">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_w3G98VIbEe6_zPyp9Bfofg" borderSize="1" borderSizeComputationExpression="1">
       <customFeatures>uid</customFeatures>
       <customFeatures>backgroundColor</customFeatures>
       <customFeatures>foregroundColor</customFeatures>
@@ -19,7 +19,7 @@
     <location/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//targetp1/targetp1-1" width="203" height="78">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_CKlwF4C1EeutkuroUGaDfg" borderSize="1" borderSizeComputationExpression="1">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_w3HlAlIbEe6_zPyp9Bfofg" borderSize="1" borderSizeComputationExpression="1">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']/@style"/>
     </siriusStyle>
@@ -49,7 +49,7 @@
     <label id="//targetp1/targetp1-1/targetC1-1-1">
       <location x="31" y="7"/>
     </label>
-    <siriusStyle xsi:type="diagram:Dot" uid="_CKlwGYC1EeutkuroUGaDfg">
+    <siriusStyle xsi:type="diagram:Dot" uid="_w3HlBFIbEe6_zPyp9Bfofg">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:DotDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']/@borderedNodeMappings[name='DT8_unsync_Class']/@style"/>
     </siriusStyle>
@@ -67,7 +67,7 @@
     <location x="115" y="68"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//targetp1/targetp1-2" width="203" height="78">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_CKlwFoC1EeutkuroUGaDfg" borderSize="1" borderSizeComputationExpression="1">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_w3HlAVIbEe6_zPyp9Bfofg" borderSize="1" borderSizeComputationExpression="1">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']/@style"/>
     </siriusStyle>
@@ -83,7 +83,7 @@
     <location x="490"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//targetp1/targetp1-3" width="203" height="78">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_CKlwGoC1EeutkuroUGaDfg" borderSize="1" borderSizeComputationExpression="1">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_w3HlBVIbEe6_zPyp9Bfofg" borderSize="1" borderSizeComputationExpression="1">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']/@style"/>
     </siriusStyle>
@@ -99,7 +99,7 @@
     <location x="735"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//targetp2" width="203" height="78">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_CKlwEoC1EeutkuroUGaDfg" borderSize="1" borderSizeComputationExpression="1">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_w3G98lIbEe6_zPyp9Bfofg" borderSize="1" borderSizeComputationExpression="1">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']/@style"/>
     </siriusStyle>
@@ -115,7 +115,7 @@
     <location x="985"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//targetp2/targetp2-1" width="203" height="78">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_CKlwFIC1EeutkuroUGaDfg" borderSize="1" borderSizeComputationExpression="1">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_w3G99FIbEe6_zPyp9Bfofg" borderSize="1" borderSizeComputationExpression="1">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']/@style"/>
     </siriusStyle>
@@ -131,7 +131,7 @@
     <location x="1225"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//targetp2/targetp2-2" width="203" height="78">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_CKlwFYC1EeutkuroUGaDfg" borderSize="1" borderSizeComputationExpression="1">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_w3HlAFIbEe6_zPyp9Bfofg" borderSize="1" borderSizeComputationExpression="1">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']/@style"/>
     </siriusStyle>
@@ -147,7 +147,7 @@
     <location x="1475"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//targetp3" width="203" height="78">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_CKlwE4C1EeutkuroUGaDfg" borderSize="1" borderSizeComputationExpression="1">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_w3G981IbEe6_zPyp9Bfofg" borderSize="1" borderSizeComputationExpression="1">
       <customFeatures>uid</customFeatures>
       <customFeatures>backgroundColor</customFeatures>
       <customFeatures>foregroundColor</customFeatures>
@@ -165,7 +165,7 @@
     <location x="1725"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//targetp4" width="203" height="78">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_CKlwEIC1EeutkuroUGaDfg" borderSize="1" borderSizeComputationExpression="1">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_w3G98FIbEe6_zPyp9Bfofg" borderSize="1" borderSizeComputationExpression="1">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']/@style"/>
     </siriusStyle>
