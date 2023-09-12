@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="ASCII"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:formatdata="http://www.eclipse.org/sirius/dsl/formatdata/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0">
   <formatdata:NodeFormatData id="//targetp1" width="212" height="213">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_96tPQYC0EeutkuroUGaDfg" borderSize="1" borderSizeComputationExpression="1" backgroundColor="224,133,3" foregroundColor="224,133,3">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_wnTAUVIbEe6_zPyp9Bfofg" borderSize="1" borderSizeComputationExpression="1" backgroundColor="224,133,3" foregroundColor="224,133,3">
       <customFeatures>backgroundColor</customFeatures>
       <customFeatures>foregroundColor</customFeatures>
-      <customFeatures>uid</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2002">
@@ -22,7 +21,7 @@
           <layoutConstraint xsi:type="notation:Bounds"/>
         </children>
         <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
-        <layoutConstraint xsi:type="notation:Bounds" x="202" y="30" width="30" height="30"/>
+        <layoutConstraint xsi:type="notation:Bounds" x="225" y="30" width="30" height="30"/>
       </children>
       <children type="3012">
         <children type="5010">
@@ -55,8 +54,7 @@
     <label id="//targetp1/targetC1-1">
       <location x="31" y="7"/>
     </label>
-    <siriusStyle xsi:type="diagram:Dot" uid="_96tPRYC0EeutkuroUGaDfg">
-      <customFeatures>uid</customFeatures>
+    <siriusStyle xsi:type="diagram:Dot" uid="_wnTAVVIbEe6_zPyp9Bfofg">
       <description xsi:type="style:DotDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@borderedNodeMappings[name='DT8_Class']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="3012">
@@ -68,7 +66,7 @@
         <layoutConstraint xsi:type="notation:Bounds"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="202" y="30" width="30" height="30"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="225" y="30" width="30" height="30"/>
     </gmfView>
     <location x="202" y="30"/>
   </formatdata:NodeFormatData>
@@ -76,8 +74,7 @@
     <label id="//targetp1/targetC1-2">
       <location x="31" y="7"/>
     </label>
-    <siriusStyle xsi:type="diagram:Dot" uid="_96tPRoC0EeutkuroUGaDfg">
-      <customFeatures>uid</customFeatures>
+    <siriusStyle xsi:type="diagram:Dot" uid="_wnTAVlIbEe6_zPyp9Bfofg">
       <description xsi:type="style:DotDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@borderedNodeMappings[name='DT8_Class']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="3012">
@@ -97,8 +94,7 @@
     <label id="//targetp1/targetC1-3">
       <location x="31" y="7"/>
     </label>
-    <siriusStyle xsi:type="diagram:Dot" uid="_96tPR4C0EeutkuroUGaDfg">
-      <customFeatures>uid</customFeatures>
+    <siriusStyle xsi:type="diagram:Dot" uid="_wnTAV1IbEe6_zPyp9Bfofg">
       <description xsi:type="style:DotDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@borderedNodeMappings[name='DT8_Class']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="3012">
@@ -115,8 +111,7 @@
     <location x="10" y="203"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//targetp1/targetp1-1" width="245" height="183">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_96tPUYC0EeutkuroUGaDfg" borderSize="1" borderSizeComputationExpression="1">
-      <customFeatures>uid</customFeatures>
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_wnTnZVIbEe6_zPyp9Bfofg" borderSize="1" borderSizeComputationExpression="1">
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2002">
@@ -145,7 +140,7 @@
           <layoutConstraint xsi:type="notation:Bounds"/>
         </children>
         <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
-        <layoutConstraint xsi:type="notation:Bounds" x="235" y="88" width="30" height="30"/>
+        <layoutConstraint xsi:type="notation:Bounds" x="259" y="88" width="30" height="30"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
       <layoutConstraint xsi:type="notation:Bounds" x="505" y="247" width="245" height="183"/>
@@ -156,8 +151,7 @@
     <label id="//targetp1/targetp1-1/targetC1-1-1">
       <location x="31" y="7"/>
     </label>
-    <siriusStyle xsi:type="diagram:Dot" uid="_96tPVIC0EeutkuroUGaDfg">
-      <customFeatures>uid</customFeatures>
+    <siriusStyle xsi:type="diagram:Dot" uid="_wnTnaFIbEe6_zPyp9Bfofg">
       <description xsi:type="style:DotDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@borderedNodeMappings[name='DT8_Class']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="3012">
@@ -177,8 +171,7 @@
     <label id="//targetp1/targetp1-1/targetC1-1-2">
       <location x="-26" y="31"/>
     </label>
-    <siriusStyle xsi:type="diagram:Dot" uid="_96tPVYC0EeutkuroUGaDfg">
-      <customFeatures>uid</customFeatures>
+    <siriusStyle xsi:type="diagram:Dot" uid="_wnTnaVIbEe6_zPyp9Bfofg">
       <description xsi:type="style:DotDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@borderedNodeMappings[name='DT8_Class']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="3012">
@@ -190,13 +183,12 @@
         <layoutConstraint xsi:type="notation:Bounds"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="235" y="88" width="30" height="30"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="259" y="88" width="30" height="30"/>
     </gmfView>
     <location x="235" y="88"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//targetp1/targetp1-2" width="227" height="70">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_96tPToC0EeutkuroUGaDfg" borderSize="1" borderSizeComputationExpression="1">
-      <customFeatures>uid</customFeatures>
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_wnTnYlIbEe6_zPyp9Bfofg" borderSize="1" borderSizeComputationExpression="1">
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2002">
@@ -217,7 +209,7 @@
         <layoutConstraint xsi:type="notation:Bounds" x="90" y="60" width="30" height="30"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="250" y="310" width="227" height="70"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="250" y="310" width="227"/>
     </gmfView>
     <location x="250" y="310"/>
   </formatdata:NodeFormatData>
@@ -225,8 +217,7 @@
     <label id="//targetp1/targetp1-2/targetC1-2-1">
       <location x="31" y="7"/>
     </label>
-    <siriusStyle xsi:type="diagram:Dot" uid="_96tPUIC0EeutkuroUGaDfg">
-      <customFeatures>uid</customFeatures>
+    <siriusStyle xsi:type="diagram:Dot" uid="_wnTnZFIbEe6_zPyp9Bfofg">
       <description xsi:type="style:DotDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@borderedNodeMappings[name='DT8_Class']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="3012">
@@ -243,8 +234,7 @@
     <location x="90" y="60"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//targetp1/targetp1-3" width="223" height="70">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_96tPVoC0EeutkuroUGaDfg" borderSize="1" borderSizeComputationExpression="1">
-      <customFeatures>uid</customFeatures>
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_wnTnalIbEe6_zPyp9Bfofg" borderSize="1" borderSizeComputationExpression="1">
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2002">
@@ -254,15 +244,14 @@
         <styles xsi:type="notation:FilteringStyle"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="635" y="140" width="223" height="70"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="635" y="140" width="223"/>
     </gmfView>
     <location x="635" y="140"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//targetp2" width="229" height="188">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_96tPSIC0EeutkuroUGaDfg" borderSize="1" borderSizeComputationExpression="1" backgroundColor="224,133,3" foregroundColor="224,133,3">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_wnTAWFIbEe6_zPyp9Bfofg" borderSize="1" borderSizeComputationExpression="1" backgroundColor="224,133,3" foregroundColor="224,133,3">
       <customFeatures>backgroundColor</customFeatures>
       <customFeatures>foregroundColor</customFeatures>
-      <customFeatures>uid</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2002">
@@ -277,7 +266,7 @@
     <location x="242" y="165"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//targetp2/targetp2-1" width="309" height="79">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_96tPSoC0EeutkuroUGaDfg" borderSize="1" borderSizeComputationExpression="1">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_wnTAWlIbEe6_zPyp9Bfofg" borderSize="1" borderSizeComputationExpression="1">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@style"/>
     </siriusStyle>
@@ -307,7 +296,7 @@
     <label id="//targetp2/targetp2-1/targetnew%20EClass%201">
       <location y="5"/>
     </label>
-    <siriusStyle xsi:type="diagram:Dot" uid="_96tPTIC0EeutkuroUGaDfg">
+    <siriusStyle xsi:type="diagram:Dot" uid="_wnTnYFIbEe6_zPyp9Bfofg">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:DotDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@borderedNodeMappings[name='DT8_Class']/@style"/>
     </siriusStyle>
@@ -325,7 +314,7 @@
     <location x="-22"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//targetp2/targetp2-2" width="309" height="78">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_96tPTYC0EeutkuroUGaDfg" borderSize="1" borderSizeComputationExpression="1">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_wnTnYVIbEe6_zPyp9Bfofg" borderSize="1" borderSizeComputationExpression="1">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@style"/>
     </siriusStyle>
@@ -341,10 +330,9 @@
     <location x="200" y="200"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//targetp3" width="245" height="88">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_96tPSYC0EeutkuroUGaDfg" borderSize="1" borderSizeComputationExpression="1" backgroundColor="77,137,20" foregroundColor="77,137,20">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_wnTAWVIbEe6_zPyp9Bfofg" borderSize="1" borderSizeComputationExpression="1" backgroundColor="77,137,20" foregroundColor="77,137,20">
       <customFeatures>backgroundColor</customFeatures>
       <customFeatures>foregroundColor</customFeatures>
-      <customFeatures>uid</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2002">
@@ -359,8 +347,7 @@
     <location x="125" y="175"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//targetp4" width="226" height="70">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_96tPQIC0EeutkuroUGaDfg" borderSize="1" borderSizeComputationExpression="1">
-      <customFeatures>uid</customFeatures>
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_wnTAUFIbEe6_zPyp9Bfofg" borderSize="1" borderSizeComputationExpression="1">
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2002">
@@ -370,7 +357,7 @@
         <styles xsi:type="notation:FilteringStyle"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="640" y="30" width="226" height="70"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="640" y="30" width="226"/>
     </gmfView>
     <location x="640" y="30"/>
   </formatdata:NodeFormatData>

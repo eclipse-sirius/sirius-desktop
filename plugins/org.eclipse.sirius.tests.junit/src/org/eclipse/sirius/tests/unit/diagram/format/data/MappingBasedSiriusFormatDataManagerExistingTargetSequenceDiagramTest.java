@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2021 Obeo.
+ * Copyright (c) 2020, 2023 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -152,6 +152,13 @@ public class MappingBasedSiriusFormatDataManagerExistingTargetSequenceDiagramTes
 
     protected static final Representation MB_SEQ_REPRES_BASIC_OBSERVATION = new Representation("Sequence Diagram on Interaction", MB_SEQ_BASIC_OBSERVATION, MB_SEQ_BASIC_OBSERVATION_RAW);
 
+    protected static final Diagram MB_SEQ_BASIC_OBSERVATION_WITH_NOTES = new Diagram("Basic Observation Diagram with notes", 0, 0);
+
+    protected static final Diagram MB_SEQ_BASIC_OBSERVATION_WITH_NOTES_RAW = new Diagram("Basic Observation Diagram with notes Raw", 0, 0, true);
+
+    protected static final Representation MB_SEQ_REPRES_BASIC_OBSERVATION_WITH_NOTES = new Representation("Sequence Diagram on Interaction", MB_SEQ_BASIC_OBSERVATION_WITH_NOTES,
+            MB_SEQ_BASIC_OBSERVATION_WITH_NOTES_RAW);
+
     protected static final Diagram MB_SEQ_COMPLEX = new Diagram("Complex", 0, 0);
 
     protected static final Diagram MB_SEQ_COMPLEX_RAW = new Diagram("Complex Raw", 0, 0, true);
@@ -165,7 +172,8 @@ public class MappingBasedSiriusFormatDataManagerExistingTargetSequenceDiagramTes
     protected static final Representation MB_SEQ_REPRES_COMPLEX_WITH_CF = new Representation("Sequence Diagram on Interaction", MB_SEQ_COMPLEX_WITH_CF, MB_SEQ_COMPLEX_WITH_CF_RAW);
 
     protected static final Representation[] MB_SEQ_ALL_REPRESENTATIONS = { MB_SEQ_REPRES_BASIC_COMBINED, MB_SEQ_REPRES_BASIC_EXECUTION, MB_SEQ_REPRES_BASIC_INTERACTION_USE,
-            MB_SEQ_REPRES_BASIC_LOST_MESSAGE_END, MB_SEQ_REPRES_BASIC_MESSAGES, MB_SEQ_REPRES_BASIC_OBSERVATION, MB_SEQ_REPRES_COMPLEX, MB_SEQ_REPRES_COMPLEX_WITH_CF };
+            MB_SEQ_REPRES_BASIC_LOST_MESSAGE_END, MB_SEQ_REPRES_BASIC_MESSAGES, MB_SEQ_REPRES_BASIC_OBSERVATION, MB_SEQ_REPRES_BASIC_OBSERVATION_WITH_NOTES, MB_SEQ_REPRES_COMPLEX,
+            MB_SEQ_REPRES_COMPLEX_WITH_CF };
 
     @Parameters
     public static Collection<Object[]> data() {
