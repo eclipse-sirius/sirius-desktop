@@ -279,7 +279,7 @@ public final class GMFNotationHelper {
      *            the content of the note.
      * @return the newly created note.
      */
-    public static Node createNote(final Diagram container, final String noteText) {
+    public static Node createNote(final View container, final String noteText) {
         final Node note = ViewService.createNode(container, ViewType.NOTE, PreferencesHint.USE_DEFAULTS);
         final Iterator<?> it = note.getStyles().iterator();
         while (it.hasNext()) {
