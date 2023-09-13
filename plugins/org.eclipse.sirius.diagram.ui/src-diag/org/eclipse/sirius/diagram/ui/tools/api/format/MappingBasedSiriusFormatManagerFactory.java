@@ -588,6 +588,16 @@ public class MappingBasedSiriusFormatManagerFactory {
 
         // Duplicate notes into target diagram and apply source note style
         sourceNotes.forEach(sourceNote -> {
+            View targetParentNode = null;
+            if (sourceNote.eContainer().equals(sourceGMFDiagram)) {
+                targetParentNode = targetGMFDiagram;
+            } else {
+                targetParentNode = MappingBasedSiriusFormatManagerFactoryHelper.getTargetDiagramTextNoteContainer(sourceNote, diagramContentDuplicationSwitch);
+            }
+            if (targetParentNode == null) {
+                DiagramPlugin.getDefault().logInfo(MessageFormat.format(Messages.MappingBasedSiriusFormatManagerFactory_ImpossibleToFindTargetTextNoteContainer, sourceNote));
+                return;
+            }
             if (sourceNote.getDescription() != null) {
                 String labelOfNote = sourceNote.getDescription();
                 Optional<Shape> existingTargetNote = search(targetNotes, sourceNote, labelOfNote);
@@ -595,7 +605,7 @@ public class MappingBasedSiriusFormatManagerFactory {
                 if (existingTargetNote.isPresent()) {
                     targetNote = existingTargetNote.get();
                 } else {
-                    targetNote = GMFNotationHelper.createNote(targetGMFDiagram, GMFNotationHelper.getNoteDescription(sourceNote));
+                    targetNote = GMFNotationHelper.createNote(targetParentNode, labelOfNote);
                 }
                 targetNote.setLayoutConstraint(EcoreUtil.copy(sourceNote.getLayoutConstraint()));
                 if (sourceNote.isSetElement()) {
