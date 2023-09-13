@@ -157,6 +157,17 @@
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
+			<code>org.eclipse.sirius.diagram.ui</code>
+		</h4>
+		<ul>
+			<li><span class="label label-info">Modified</span> The methods 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper.getNotes(Diagram)</code> and 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper.getTextNotes(Diagram)</code> now return a list of 
+				<code>org.eclipse.gmf.runtime.notation.Shape</code> instead of a list of 
+				<code>org.eclipse.gmf.runtime.notation.Node</code>. This type is more precise and avoids multiple cast when using the returned list.
+			</li>
+		</ul>
 		<h2 id="sirius7.2.1">Changes in Sirius 7.2.1</h2>
 		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
 		<ul>
@@ -190,7 +201,7 @@
 			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges2">Developer-Visible Changes</h3>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui2">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<p><span class="label label-success">Added</span> 
@@ -301,7 +312,7 @@
 				<code>org.eclipse.sirius.business.api.session.Session.getSharedMainDAnalysis()</code> is added to get the DAnalysis that holds data and can be shared in some context such as CDO.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui3">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -628,7 +639,7 @@
 				<code>org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContentHelper.getAllEdgeMappings(diagramDescription, false)</code> alongside with the getAllNodeMappings and getAllContainerMappings methods.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui4">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -820,7 +831,7 @@
 				</ul>
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui5">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -942,7 +953,7 @@
 				<code>new DRepresentationQuery(DRpresentation).isAutoRefresh()</code> instead.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui5">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui6">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>

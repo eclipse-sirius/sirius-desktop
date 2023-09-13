@@ -12,6 +12,10 @@ h3. Specifier-Visible Changes
 
 h3. Developer-Visible Changes
 
+h4. Changes in @org.eclipse.sirius.diagram.ui@
+
+* <span class="label label-info">Modified</span> The methods @org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper.getNotes(Diagram)@ and @org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper.getTextNotes(Diagram)@ now return a list of @org.eclipse.gmf.runtime.notation.Shape@ instead of a list of @org.eclipse.gmf.runtime.notation.Node@. This type is more precise and avoids multiple cast when using the returned list.
+
 h2(#sirius7.2.1). Changes in Sirius 7.2.1
 
 h3. User-Visible Changes

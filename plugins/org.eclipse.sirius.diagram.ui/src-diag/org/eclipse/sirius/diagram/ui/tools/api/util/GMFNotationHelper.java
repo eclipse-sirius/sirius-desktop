@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -133,45 +133,46 @@ public final class GMFNotationHelper {
     }
 
     /**
-     * return a list of nodes corresponding to notes.
+     * Return a list of shapes corresponding to notes (Notes contained in the diagram or one of its descendants).
      * 
      * @param gmfDiagram
      *            any GMF Diagram
-     * @return a list of nodes corresponding to notes.
+     * @return a list of shapes corresponding to notes.
      */
-    public static Collection<Node> getNotes(final Diagram gmfDiagram) {
-        final Collection<Node> result = new ArrayList<Node>();
+    public static Collection<Shape> getNotes(final Diagram gmfDiagram) {
+        final Collection<Shape> result = new ArrayList<Shape>();
         final Iterator<EObject> it = gmfDiagram.eAllContents();
         while (it.hasNext()) {
             final EObject obj = it.next();
-            if (obj instanceof Node && GMFNotationHelper.isNote((Node) obj)) {
-                result.add((Node) obj);
+            if (obj instanceof Shape && GMFNotationHelper.isNote((Shape) obj)) {
+                result.add((Shape) obj);
             }
         }
         return result;
     }
 
     /**
-     * return a list of nodes corresponding to text notes.
+     * Return a list of shapes corresponding to text notes (Text notes contained in the diagram or one of its
+     * descendants).
      * 
      * @param gmfDiagram
      *            any GMF Diagram
-     * @return a list of nodes corresponding to text notes.
+     * @return a list of shapes corresponding to text notes.
      */
-    public static Collection<Node> getTextNotes(final Diagram gmfDiagram) {
-        final Collection<Node> result = new ArrayList<Node>();
+    public static Collection<Shape> getTextNotes(final Diagram gmfDiagram) {
+        final Collection<Shape> result = new ArrayList<Shape>();
         final Iterator<EObject> it = gmfDiagram.eAllContents();
         while (it.hasNext()) {
             final EObject obj = it.next();
-            if (obj instanceof Node && GMFNotationHelper.isTextNote((Node) obj)) {
-                result.add((Node) obj);
+            if (obj instanceof Shape && GMFNotationHelper.isTextNote((Shape) obj)) {
+                result.add((Shape) obj);
             }
         }
         return result;
     }
 
     /**
-     * Usefull to get all the note attachments of a GMF diagram.
+     * Useful to get all the note attachments of a GMF diagram.
      * 
      * @param gmfDiagram
      *            any GMF diagram.
