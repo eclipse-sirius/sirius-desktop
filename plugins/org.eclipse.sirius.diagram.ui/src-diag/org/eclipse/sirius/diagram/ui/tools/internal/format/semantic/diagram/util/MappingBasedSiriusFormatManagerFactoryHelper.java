@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2021 Obeo.
+ * Copyright (c) 2020, 2023 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -36,6 +36,7 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.RoutingStyle;
+import org.eclipse.gmf.runtime.notation.Shape;
 import org.eclipse.gmf.runtime.notation.Style;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.session.Session;
@@ -397,7 +398,7 @@ public final class MappingBasedSiriusFormatManagerFactoryHelper {
                 MappingBasedSiriusFormatManagerFactoryHelper.addParentViewContainersToMap(sourceNote, targetNote, allSourceToTargetView);
             });
             // Get text note views
-            Collection<Node> diagramTextNotes = GMFNotationHelper.getTextNotes(sourceGMFDiagram);
+            Collection<Shape> diagramTextNotes = GMFNotationHelper.getTextNotes(sourceGMFDiagram);
             diagramTextNotes.stream().filter(sourceTextNote -> sourceGMFDiagram.getChildren().contains(sourceTextNote)).forEach(sourceTextNote -> {
                 Node targetTextNote = sourceToTargetNoteMap.get(sourceTextNote);
                 allSourceViews.add(sourceTextNote);

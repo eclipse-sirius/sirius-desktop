@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2021 Obeo.
+ * Copyright (c) 2020, 2023 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -24,7 +24,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.notation.Location;
-import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Shape;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -33,6 +32,7 @@ import org.eclipse.sirius.diagram.formatdata.tools.api.util.configuration.Config
 import org.eclipse.sirius.diagram.formatdata.tools.api.util.configuration.ConfigurationFactory;
 import org.eclipse.sirius.diagram.ui.tools.api.format.MappingBasedSiriusFormatManagerFactory;
 import org.eclipse.sirius.diagram.ui.tools.api.format.semantic.MappingBasedSiriusFormatDataManager;
+import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.unit.diagram.format.data.manager.mappingbased.MappingBasedTestConfiguration;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
@@ -239,21 +239,21 @@ public class MappingBasedSiriusFormatDataManagerExistingTargetDiagramTest extend
 
                 if (MB_DIAG_TYPE2_NOTES_MYPACKAGE.name.equals(diagramToCopyFormat.name)) {
                     // Specific checks about notes and texts that are not tested by "FormatData"
-                    Collection<Node> sourceNotes = org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper.getNotes(sourceDiagramEditPart.getDiagramView());
-                    Collection<Node> targetNotes = org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper.getNotes(targetDiagramEditPart.getDiagramView());
+                    Collection<Shape> sourceNotes = GMFNotationHelper.getNotes(sourceDiagramEditPart.getDiagramView());
+                    Collection<Shape> targetNotes = GMFNotationHelper.getNotes(targetDiagramEditPart.getDiagramView());
                     // There is 1 additional notes in target diagram
                     assertEquals("The number of Notes is wrong.", sourceNotes.size() + 1, targetNotes.size());
-                    Collection<Node> sourceTexts = org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper.getTextNotes(sourceDiagramEditPart.getDiagramView());
-                    Collection<Node> targetTexts = org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper.getTextNotes(targetDiagramEditPart.getDiagramView());
+                    Collection<Shape> sourceTexts = GMFNotationHelper.getTextNotes(sourceDiagramEditPart.getDiagramView());
+                    Collection<Shape> targetTexts = GMFNotationHelper.getTextNotes(targetDiagramEditPart.getDiagramView());
                     // 2 Texts in source and target diagrams
                     assertEquals("The number of Texts in source diagram is wrong.", 2, sourceTexts.size());
                     assertEquals("The number of Texts is wrong.", sourceTexts.size(), targetTexts.size());
                     // Check the location of Texts (it is not done for Notes because there are several Notes
                     // with the same description
-                    for (Node sourceText : sourceTexts) {
-                        String sourceDescription = ((Shape) sourceText).getDescription();
-                        for (Node targetText : targetTexts) {
-                            if (sourceDescription.equals(((Shape) targetText).getDescription())) {
+                    for (Shape sourceText : sourceTexts) {
+                        String sourceDescription = sourceText.getDescription();
+                        for (Shape targetText : targetTexts) {
+                            if (sourceDescription.equals(targetText.getDescription())) {
                                 Location sourceLocation = (Location) sourceText.getLayoutConstraint();
                                 Location targetLocation = (Location) sourceText.getLayoutConstraint();
                                 assertEquals("The location of the Text \"" + sourceDescription + "\" is wrong (X coordinate).", sourceLocation.getX(), targetLocation.getX());

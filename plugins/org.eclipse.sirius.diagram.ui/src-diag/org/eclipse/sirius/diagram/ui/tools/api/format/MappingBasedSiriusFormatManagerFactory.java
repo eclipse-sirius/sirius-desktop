@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2021 Obeo.
+ * Copyright (c) 2020, 2023 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -583,14 +583,14 @@ public class MappingBasedSiriusFormatManagerFactory {
         sourceToTargetNoteMap.clear();
 
         // Get all notes
-        Collection<Node> sourceNotes = GMFNotationHelper.getNotes(sourceGMFDiagram);
-        Collection<Node> targetNotes = GMFNotationHelper.getNotes(targetGMFDiagram);
+        Collection<Shape> sourceNotes = GMFNotationHelper.getNotes(sourceGMFDiagram);
+        Collection<Shape> targetNotes = GMFNotationHelper.getNotes(targetGMFDiagram);
 
         // Duplicate notes into target diagram and apply source note style
         sourceNotes.forEach(sourceNote -> {
-            if (sourceNote instanceof Shape && ((Shape) sourceNote).getDescription() != null) {
-                String labelOfNote = ((Shape) sourceNote).getDescription();
-                Optional<Node> existingTargetNote = search(targetNotes, (Shape) sourceNote, labelOfNote);
+            if (sourceNote.getDescription() != null) {
+                String labelOfNote = sourceNote.getDescription();
+                Optional<Shape> existingTargetNote = search(targetNotes, sourceNote, labelOfNote);
                 Node targetNote;
                 if (existingTargetNote.isPresent()) {
                     targetNote = existingTargetNote.get();
@@ -607,8 +607,8 @@ public class MappingBasedSiriusFormatManagerFactory {
         });
 
         // Get all texts
-        Collection<Node> sourceTexts = GMFNotationHelper.getTextNotes(sourceGMFDiagram);
-        Collection<Node> targetTexts = GMFNotationHelper.getTextNotes(targetGMFDiagram);
+        Collection<Shape> sourceTexts = GMFNotationHelper.getTextNotes(sourceGMFDiagram);
+        Collection<Shape> targetTexts = GMFNotationHelper.getTextNotes(targetGMFDiagram);
 
         // Duplicate texts into target diagram and apply source text style
         sourceTexts.forEach(sourceText -> {
@@ -622,9 +622,9 @@ public class MappingBasedSiriusFormatManagerFactory {
                 DiagramPlugin.getDefault().logInfo(MessageFormat.format(Messages.MappingBasedSiriusFormatManagerFactory_ImpossibleToFindTargetTextNoteContainer, sourceText));
                 return;
             }
-            if (sourceText instanceof Shape && ((Shape) sourceText).getDescription() != null) {
-                String labelOfText = ((Shape) sourceText).getDescription();
-                Optional<Node> existingTargetText = search(targetTexts, (Shape) sourceText, labelOfText);
+            if (sourceText.getDescription() != null) {
+                String labelOfText = sourceText.getDescription();
+                Optional<Shape> existingTargetText = search(targetTexts, sourceText, labelOfText);
                 Node targetText;
                 if (existingTargetText.isPresent()) {
                     targetText = existingTargetText.get();
@@ -662,64 +662,62 @@ public class MappingBasedSiriusFormatManagerFactory {
      * Search in <code>nodes</code> a Node (Text or Note) with the same label (<code>searchedLabel</code>) and the same
      * attachments than the <code>sourceNode</code>.
      * 
-     * @param nodes
+     * @param shapes
      *            List in which to search
-     * @param sourceNode
-     *            The node to compare attachments with.
+     * @param sourceShape
+     *            The shape to compare attachments with.
      * @param searchedLabel
      *            The searched label
      * @return An optional with the corresponding node if any.
      */
-    private Optional<Node> search(Collection<Node> nodes, Shape sourceNode, String searchedLabel) {
-        List<Node> matchingNodes = new ArrayList<Node>();
-        // Get the nodes with same description (same label) as the <code>searchedLabel</code>
-        for (Node node : nodes) {
-            if (node instanceof Shape) {
-                if (searchedLabel.equals(((Shape) node).getDescription())) {
-                    matchingNodes.add(node);
-                }
+    private Optional<Shape> search(Collection<Shape> shapes, Shape sourceShape, String searchedLabel) {
+        List<Shape> matchingShapes = new ArrayList<Shape>();
+        // Get the shapes with same description (same label) as the <code>searchedLabel</code>
+        for (Shape shape : shapes) {
+            if (searchedLabel.equals(shape.getDescription())) {
+                matchingShapes.add(shape);
             }
         }
         // Remove elements that have not the same attachment on source side
-        matchingNodes = removeNotSameAttachment(sourceNode, matchingNodes, true);
+        matchingShapes = removeNotSameAttachment(sourceShape, matchingShapes, true);
         // Remove elements that have not the same attachment on target side
-        matchingNodes = removeNotSameAttachment(sourceNode, matchingNodes, false);
+        matchingShapes = removeNotSameAttachment(sourceShape, matchingShapes, false);
         // Only the first is considered. At this step, if several nodes remain, we are in a case not handled by the
         // Copy/Paste format API.
-        return matchingNodes.stream().findFirst();
+        return matchingShapes.stream().findFirst();
     }
 
     /**
-     * Search in <code>nodesCandidates</code> which candidate has the same source/target attachments.
+     * Search in <code>shapesCandidates</code> which candidate has the same source/target attachments.
      * 
-     * @param nodeToCompareWith
-     *            the node to use as comparator
-     * @param nodesCandidates
-     *            list of nodes
+     * @param shapeToCompareWith
+     *            the shape to use as comparator
+     * @param shapesCandidates
+     *            list of shapes
      * @param testSource
-     *            true if the attachment on source side must bu tested, false if the attachment on target side must be
+     *            true if the attachment on source side must be tested, false if the attachment on target side must be
      *            tested.
-     * @return a sub list of nodesCandidates
+     * @return a sub list of shapesCandidates
      */
-    protected List<Node> removeNotSameAttachment(Shape nodeToCompareWith, List<Node> nodesCandidates, boolean testSource) {
-        List<Node> matchingNodes;
-        boolean hasAttachment = testSource ? nodeToCompareWith.getSourceEdges().size() != 0 : nodeToCompareWith.getTargetEdges().size() != 0;
+    protected List<Shape> removeNotSameAttachment(Shape shapeToCompareWith, List<Shape> shapesCandidates, boolean testSource) {
+        List<Shape> matchingShapes;
+        boolean hasAttachment = testSource ? shapeToCompareWith.getSourceEdges().size() != 0 : shapeToCompareWith.getTargetEdges().size() != 0;
         if (!hasAttachment) {
             // Select only nodes without source/target attachment
             if (testSource) {
-                matchingNodes = nodesCandidates.stream().filter(node -> node.getSourceEdges().size() == 0).collect(Collectors.toList());
+                matchingShapes = shapesCandidates.stream().filter(shape -> shape.getSourceEdges().size() == 0).collect(Collectors.toList());
             } else {
-                matchingNodes = nodesCandidates.stream().filter(node -> node.getTargetEdges().size() == 0).collect(Collectors.toList());
+                matchingShapes = shapesCandidates.stream().filter(node -> node.getTargetEdges().size() == 0).collect(Collectors.toList());
             }
         } else {
-            // Select nodes that have the same source/target attachments
-            matchingNodes = new ArrayList<Node>(nodesCandidates);
-            for (Iterator<Node> iterator = matchingNodes.iterator(); iterator.hasNext(); /* */) {
-                Node node = iterator.next();
+            // Select shapes that have the same source/target attachments
+            matchingShapes = new ArrayList<Shape>(shapesCandidates);
+            for (Iterator<Shape> iterator = matchingShapes.iterator(); iterator.hasNext(); /* */) {
+                Shape shape = iterator.next();
                 boolean sameAttachments = true;
 
-                for (Iterator<Edge> edgesIterators = testSource ? ((List<Edge>) nodeToCompareWith.getSourceEdges()).iterator()
-                        : ((List<Edge>) nodeToCompareWith.getTargetEdges()).iterator(); edgesIterators.hasNext(); /* */ ) {
+                for (Iterator<Edge> edgesIterators = testSource ? ((List<Edge>) shapeToCompareWith.getSourceEdges()).iterator()
+                        : ((List<Edge>) shapeToCompareWith.getTargetEdges()).iterator(); edgesIterators.hasNext(); /* */ ) {
                     Edge e = edgesIterators.next();
                     // Get the target DDiagramElement corresponding to the copy of the other extremity of the
                     // NoteAttachment.
@@ -727,9 +725,9 @@ public class MappingBasedSiriusFormatManagerFactory {
                     DDiagramElement targetDiagramElement = diagramContentDuplicationSwitch.getSourceDDiagramElementToTargetDDiagramElementMap().get(otherExtremityElement);
                     if (targetDiagramElement != null && targetDiagramElement.eResource() != null) {
                         if (testSource) {
-                            sameAttachments = sameAttachments && node.getSourceEdges().stream().anyMatch(edge -> ((Edge) edge).getTarget().getElement().equals(targetDiagramElement));
+                            sameAttachments = sameAttachments && shape.getSourceEdges().stream().anyMatch(edge -> ((Edge) edge).getTarget().getElement().equals(targetDiagramElement));
                         } else {
-                            sameAttachments = sameAttachments && node.getTargetEdges().stream().anyMatch(edge -> ((Edge) edge).getSource().getElement().equals(targetDiagramElement));
+                            sameAttachments = sameAttachments && shape.getTargetEdges().stream().anyMatch(edge -> ((Edge) edge).getSource().getElement().equals(targetDiagramElement));
                         }
                     } else {
                         // Here, either the target of the note attachment is not present in the target diagram or
@@ -743,7 +741,7 @@ public class MappingBasedSiriusFormatManagerFactory {
                 }
             }
         }
-        return matchingNodes;
+        return matchingShapes;
     }
 
     /**
