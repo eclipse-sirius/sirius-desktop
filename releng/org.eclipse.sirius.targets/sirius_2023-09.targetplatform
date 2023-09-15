@@ -8,25 +8,11 @@ include "modules/acceleo-3.7.tpd"
 include "modules/eef-1.5.tpd"
 include "modules/eef-2.1.tpd"
 include "modules/elk-0.7.tpd"
+include "modules/gmf-runtime-1.16.tpd"
 
 with source, requirements
 
-location GMF-Notation-1.13.1 "https://download.eclipse.org/modeling/gmp/gmf-notation/updates/releases/R202211151334" {
-    org.eclipse.gmf.runtime.notation.sdk.feature.group lazy
-}
-
-location GMF-Runtime-1.16.1rc1 "https://download.eclipse.org/modeling/gmp/gmf-runtime/updates/milestones/S202308051729/" {
-    org.eclipse.gmf.runtime.sdk.feature.group lazy
-    org.eclipse.gmf.runtime.thirdparty.feature.group lazy
-}
-
-location GEF-Classic "https://download.eclipse.org/tools/gef/classic/releases/3.17.0M2/" {
-    org.eclipse.gef.feature.group lazy
-    org.eclipse.gef.sdk.feature.group lazy
-    org.eclipse.draw2d.sdk.feature.group lazy
-}
-
-location Sirius-7.3.0 "https://download.eclipse.org/sirius/updates/releases/7.3.0/2023-03/" {
+location Sirius-7.2.1 "https://download.eclipse.org/sirius/updates/releases/7.2.1/2023-03/" {
 	org.eclipse.sirius.common.interpreter lazy
 }
 
