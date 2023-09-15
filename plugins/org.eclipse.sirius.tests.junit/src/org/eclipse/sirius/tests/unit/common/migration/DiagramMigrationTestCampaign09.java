@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -86,10 +86,10 @@ public class DiagramMigrationTestCampaign09 extends AbstractMigrationTestCase {
     public void setUp() throws Exception {
         super.setUp();
 
-        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, GENERAL_TEST_CASE_PATH + "/" + SESSION_RESOURCE_FILENAME, "/" + TEMPORARY_PROJECT_NAME + "/"
-                + SESSION_RESOURCE_FILENAME);
-        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, GENERAL_TEST_CASE_PATH + "/" + SEMANTIC_RESOURCE_FILENAME, "/" + TEMPORARY_PROJECT_NAME + "/"
-                + SEMANTIC_RESOURCE_FILENAME);
+        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, GENERAL_TEST_CASE_PATH + "/" + SESSION_RESOURCE_FILENAME,
+                "/" + TEMPORARY_PROJECT_NAME + "/" + SESSION_RESOURCE_FILENAME);
+        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, GENERAL_TEST_CASE_PATH + "/" + SEMANTIC_RESOURCE_FILENAME,
+                "/" + TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_RESOURCE_FILENAME);
         genericSetUp(SEMANTIC_MODEL_PATH, MODELER_PATH, SESSION_PATH);
     }
 
@@ -114,7 +114,13 @@ public class DiagramMigrationTestCampaign09 extends AbstractMigrationTestCase {
         openEditorOnDiagram("" + diagramID);
         assertTrue("", semanticModel instanceof TestCase);
         Representation representation = ((TestCase) semanticModel).getRepresentations().get(diagramID - 1);
-        checkEdgeLayout(representation);
+        if (diagramID == 1 || diagramID == 2 || diagramID == 3 || diagramID == 4 || diagramID == 7) {
+            // This particular diagram can has a difference of 2 pixel in the bendpoints position depending on the
+            // graphical context (Linux native vs Linux Xvfb vs Linux Xvnc).
+            checkEdgeLayout(representation, 2);
+        } else {
+            checkEdgeLayout(representation, 0);
+        }
     }
 
 }

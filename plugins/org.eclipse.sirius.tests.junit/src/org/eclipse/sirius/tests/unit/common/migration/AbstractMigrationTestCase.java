@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -281,8 +281,10 @@ public abstract class AbstractMigrationTestCase extends SiriusDiagramTestCase {
         for (int i = 0; i < expectedBendpoints.size(); i++) {
             Point expectedPoint = expectedBendpoints.get(i);
             org.eclipse.draw2d.geometry.Point actualPoint = actualPointList.getPoint(i);
-            assertTrue("Edge " + graphicalEdge.getId() + ": wrong x bendpoint position for point " + i, Math.abs(expectedPoint.getX() - actualPoint.x) <= delta);
-            assertTrue("Edge " + graphicalEdge.getId() + ": wrong y bendpoint position for point " + i, Math.abs(expectedPoint.getY() - actualPoint.y) <= delta);
+            assertTrue("Edge " + graphicalEdge.getId() + ": wrong x bendpoint position for point " + i + " expected x:" + expectedPoint.getX() + " current x:" + actualPoint.x,
+                    Math.abs(expectedPoint.getX() - actualPoint.x) <= delta);
+            assertTrue("Edge " + graphicalEdge.getId() + ": wrong y bendpoint position for point " + i + " expected y:" + expectedPoint.getY() + " current y:" + actualPoint.y,
+                    Math.abs(expectedPoint.getY() - actualPoint.y) <= delta);
         }
     }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -114,12 +114,12 @@ public class DiagramMigrationTestCampaign02 extends AbstractMigrationTestCase {
         openEditorOnDiagram("" + diagramID);
         assertTrue("", semanticModel instanceof TestCase);
         Representation representation = ((TestCase) semanticModel).getRepresentations().get(diagramID - 1);
-        if (diagramID == 13) {
+        if (diagramID == 13 || diagramID == 8 || diagramID == 9) {
             // This particular diagram can has a difference of 1 pixel in the bendpoints position depending on the
             // graphical context (Linux native vs Linux Xvfb vs Linux Xvnc).
             checkEdgeLayout(representation, 1);
         } else {
-            checkEdgeLayout(representation);
+            checkEdgeLayout(representation, 0);
         }
     }
 
