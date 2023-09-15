@@ -15,7 +15,6 @@ package org.eclipse.sirius.tests.swtbot.support.api.matcher.geometry;
 import org.eclipse.draw2d.geometry.Point;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
-import org.hamcrest.Factory;
 import org.hamcrest.Matcher;
 
 /**
@@ -61,7 +60,7 @@ public class PointAround extends BaseMatcher<Point> {
      * @param expected
      *            Expected point.
      * @param actual
-     *            ctual point
+     *            Actual point
      * @param distance
      *            Distance to check.
      * @return <code>true</code> if actual point is around expected point.
@@ -89,7 +88,6 @@ public class PointAround extends BaseMatcher<Point> {
      *            Distance between.
      * @return Matcher.
      */
-    @Factory
     public static Matcher<Point> around(Point expected, int distance) {
         return new PointAround(expected, distance);
     }
