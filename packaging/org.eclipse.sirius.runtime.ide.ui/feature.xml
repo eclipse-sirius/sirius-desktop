@@ -39,7 +39,6 @@ Install this if you need to use Sirius-based modelers or create new ones.
 
    <requires>
       <import feature="org.eclipse.gmf" version="1.4.2"/>
-      <import plugin="org.apache.xalan"/>
    </requires>
 
    <plugin

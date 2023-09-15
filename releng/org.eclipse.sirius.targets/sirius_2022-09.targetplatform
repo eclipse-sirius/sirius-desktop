@@ -11,7 +11,7 @@ include "modules/gmf-runtime-1.16.tpd"
 
 with source, requirements
 
-location Sirius-7.0.0 "https://download.eclipse.org/sirius/updates/releases/7.0.0/2021-06/" {
+location Sirius-7.2.1 "https://download.eclipse.org/sirius/updates/releases/7.2.1/2023-03/" {
 	org.eclipse.sirius.common.interpreter lazy
 }
 
