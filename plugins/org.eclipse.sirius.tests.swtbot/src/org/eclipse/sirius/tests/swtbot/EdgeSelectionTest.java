@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -631,7 +631,7 @@ public class EdgeSelectionTest extends AbstractSiriusSwtBotGefTestCase {
         Rectangle targetNodePartLocation = editor.getBounds(targetNodePart);
 
         CheckSelectedCondition checkc1Selected = new CheckSelectedCondition(editor, edgePart);
-        editor.click(new Point(targetNodePartLocation.x + targetNodePartLocation.width + LENGTH_TO_REACH_FIRST_EDGE_PIXEL_AFTER_EXPANDED_NODE, targetNodePartLocation.y - 1));
+        editor.click(new Point(targetNodePartLocation.x + targetNodePartLocation.width + LENGTH_TO_REACH_FIRST_EDGE_PIXEL_AFTER_EXPANDED_NODE, targetNodePartLocation.y));
         bot.waitUntil(checkc1Selected);
 
     }
