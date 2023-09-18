@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2015, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -617,7 +617,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
     public void testLabelStabilityWhenMovingNodeOfObliqueEdgeSeveralTimes() {
         String diagramName = "EdgeWithObliqueSegments";
         Map<String, Dimension> edgeLabelExpectedPosition = new LinkedHashMap<>();
-        edgeLabelExpectedPosition.put("refToBBegin", new Dimension(0, 0));
+        edgeLabelExpectedPosition.put("refToBBegin", new Dimension(0, 1));
         Point moveDelta = new Point(10, 10);
 
         // Step 1: Open the corresponding diagram
@@ -707,7 +707,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
         // is not impacted by the move --> The label does not move.
         edgeLabelExpectedPosition.clear();
         edgeLabelExpectedPosition.put("refToBEnd", DELTA_TO_COMPUTE_FROM_RATIO);
-        doTestMovePointOnEdge(diagramName, Arrays.asList(new Point(0, 22)), edgeLabelExpectedPosition, ZoomLevel.ZOOM_100, "A", "B", 3);
+        doTestMovePointOnEdge(diagramName, Arrays.asList(new Point(0, 22)), edgeLabelExpectedPosition, ZoomLevel.ZOOM_100, "A", "B", 3, true);
 
         // Case Oblique F of the spec - The reference point is on a segment that
         // is removed --> The label is reset to standard location.
@@ -721,7 +721,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
         // location.
         edgeLabelExpectedPosition.clear();
         edgeLabelExpectedPosition.put("refToBEnd", DELTA_TO_COMPUTE_FROM_STANDARD);
-        edgeLabelExpectedPosition.put("refToBBegin", new Dimension(0, 0));
+        edgeLabelExpectedPosition.put("refToBBegin", new Dimension(1, 0));
         edgeLabelExpectedPosition.put("refToBCenter", new Dimension(0, 0));
         doTestMoveSegment(DIAGRAM_DESCRIPTION_NAME, diagramName, Arrays.asList(new Point(0, -100)), edgeLabelExpectedPosition, ZoomLevel.ZOOM_100, "A", "B", 2, false);
 

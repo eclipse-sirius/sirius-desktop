@@ -8,7 +8,7 @@
         <description xmi:type="description_1:DiagramDescription" href="VSMForEdgeLabelsMoveTest.odesign#//@ownedViewpoints[name='VSMForEdgeLabelsMoveTest']/@ownedRepresentations[name='Diagram']"/>
         <target xmi:type="ecore:EPackage" href="edgeLabelsMoveTest.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_DzzcgVVqEeaFcNS-NDRImw" name="EdgeWithObliqueSegments" repPath="#_cc4l8EW5EeWfqPjg73IDww" changeId="1695113917745">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_DzzcgVVqEeaFcNS-NDRImw" name="EdgeWithObliqueSegments" repPath="#_cc4l8EW5EeWfqPjg73IDww" changeId="1695128334192">
         <description xmi:type="description_1:DiagramDescription" href="VSMForEdgeLabelsMoveTest.odesign#//@ownedViewpoints[name='VSMForEdgeLabelsMoveTest']/@ownedRepresentations[name='Diagram']"/>
         <target xmi:type="ecore:EPackage" href="edgeLabelsMoveTest.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -3637,14 +3637,14 @@
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ihInYEW5EeWfqPjg73IDww" x="12" y="-26"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_cdS1oEW5EeWfqPjg73IDww" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cdS1oUW5EeWfqPjg73IDww" x="-22" y="-23"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cdS1oUW5EeWfqPjg73IDww" x="-22" y="-22"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_cdTcsEW5EeWfqPjg73IDww" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cdTcsUW5EeWfqPjg73IDww" x="10" y="21"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cdTcsUW5EeWfqPjg73IDww" x="7" y="15"/>
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_cdRAcUW5EeWfqPjg73IDww"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_cdRAckW5EeWfqPjg73IDww" fontName="Ubuntu" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ihIAUEW5EeWfqPjg73IDww" points="[8, -5, -219, -97]$[85, -51, -142, -143]$[129, 118, -98, 26]$[212, 96, -15, 4]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ihIAUEW5EeWfqPjg73IDww" points="[8, -4, -219, -96]$[85, -51, -142, -143]$[129, 118, -98, 26]$[212, 95, -15, 3]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_cdV48EW5EeWfqPjg73IDww" id="(0.9333333333333333,0.32)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_cdWgAEW5EeWfqPjg73IDww" id="(0.13333333333333333,0.59)"/>
         </edges>

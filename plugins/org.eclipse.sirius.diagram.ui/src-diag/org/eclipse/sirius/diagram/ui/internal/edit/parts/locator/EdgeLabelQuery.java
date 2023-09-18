@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2020 THALES GLOBAL SERVICES and others
+ * Copyright (c) 2015, 2023 THALES GLOBAL SERVICES and others
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -509,7 +509,7 @@ public class EdgeLabelQuery {
                 }
             } else {
                 double angle = referenceVector.getAngle(vector);
-                if (angle == 0 || angle == 180) {
+                if (vector.equals(referenceVector) || angle == 0 || angle == 180) {
                     Straight straight = new Straight(new PrecisionPoint(segment.getOrigin()), new PrecisionPoint(segment.getTerminus()));
                     double distToInfiniteLine = straight.getDistance(new Vector(referenceSegment.getOrigin().x, referenceSegment.getOrigin().y));
                     if (distToInfiniteLine < DISTANCE_TOLERANCE) {
