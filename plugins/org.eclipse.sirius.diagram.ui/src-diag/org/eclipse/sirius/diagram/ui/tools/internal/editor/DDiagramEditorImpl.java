@@ -1091,7 +1091,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             super.setFocus();
             var iterParts = getDiagramGraphicalViewer().getRootEditPart().getChildren().iterator();
             while (iterParts.hasNext()) {
-                final EditPart editPart = (EditPart) iterParts.next();
+                final EditPart editPart = iterParts.next();
                 if (editPart.isActive() && editPart instanceof AbstractDDiagramEditPart) {
                     Optional<DSemanticDiagram> optionalSemanticElement = getDSemanticDiagram((GraphicalEditPart) editPart);
                     if (optionalSemanticElement.isPresent() && isSemanticDiagramOK(optionalSemanticElement.get())) {
@@ -1203,7 +1203,9 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
                                 // offline mode will be supported
                                 String elementID = EMFCoreUtil.getProxyID((EObject) object);
                                 final List<IGraphicalEditPart> concernedEditParts = viewer.findEditPartsForElement(elementID, IGraphicalEditPart.class);
-                                result.add(concernedEditParts.get(0));
+                                if (!concernedEditParts.isEmpty()) {
+                                    result.add(concernedEditParts.get(0));
+                                }
                             } catch (IllegalStateException e) {
                                 // An issue has been encountered while connecting to
                                 // remote CDO server
