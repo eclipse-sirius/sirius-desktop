@@ -183,6 +183,11 @@ public class SiriusBaseItemSemanticEditPolicy extends SemanticEditPolicy {
                     if (!permissionAuthority.canEditInstance(viewPointElement.getTarget())) {
                         return UnexecutableCommand.INSTANCE;
                     }
+                    if (this.getHost().getViewer() == null) {
+                        // Case seen in automatic test
+                        // (org.eclipse.sirius.tests.swtbot.EdgeReconnectionTests.testSimpleEdgeSourceReconnectionWithObliqueStyleRouting())
+                        return null;
+                    }
                     DDiagramEditor diagramEditor = (DDiagramEditor) this.getHost().getViewer().getProperty(DDiagramEditor.EDITOR_ID);
                     Object adapter = diagramEditor.getAdapter(IDiagramCommandFactoryProvider.class);
                     IDiagramCommandFactoryProvider cmdFactoryProvider = (IDiagramCommandFactoryProvider) (adapter);
