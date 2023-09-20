@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2016, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -147,14 +147,18 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
         super(edgeEditPart.getEditingDomain(), StraightenToAction.getLabel(straightenType), null);
         this.straightenType = straightenType;
         for (AbstractDiagramEdgeEditPart selectedEdgeEditPart : selectedEdgeEditParts) {
-            StraightenToCommandData straightenToCommandData = new StraightenToCommandData();
-            if (selectedEdgeEditPart.getSource() instanceof IGraphicalEditPart) {
-                straightenToCommandData.sourceEditPart = (IGraphicalEditPart) selectedEdgeEditPart.getSource();
+            if (!(selectedEdgeEditPart.getSource() == null && selectedEdgeEditPart.getTarget() == null)) {
+                // Edge without source nor target is ignored. This case was seen in an automatic test (but not in "real
+                // life").
+                StraightenToCommandData straightenToCommandData = new StraightenToCommandData();
+                if (selectedEdgeEditPart.getSource() instanceof IGraphicalEditPart) {
+                    straightenToCommandData.sourceEditPart = (IGraphicalEditPart) selectedEdgeEditPart.getSource();
+                }
+                if (selectedEdgeEditPart.getTarget() instanceof IGraphicalEditPart) {
+                    straightenToCommandData.targetEditPart = (IGraphicalEditPart) selectedEdgeEditPart.getTarget();
+                }
+                edgeEditParts.put(selectedEdgeEditPart, straightenToCommandData);
             }
-            if (selectedEdgeEditPart.getTarget() instanceof IGraphicalEditPart) {
-                straightenToCommandData.targetEditPart = (IGraphicalEditPart) selectedEdgeEditPart.getTarget();
-            }
-            edgeEditParts.put(selectedEdgeEditPart, straightenToCommandData);
         }
     }
 
