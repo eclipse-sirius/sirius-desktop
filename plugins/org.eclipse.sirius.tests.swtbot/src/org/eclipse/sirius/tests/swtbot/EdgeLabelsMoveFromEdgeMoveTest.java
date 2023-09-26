@@ -721,7 +721,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
         // location.
         edgeLabelExpectedPosition.clear();
         edgeLabelExpectedPosition.put("refToBEnd", DELTA_TO_COMPUTE_FROM_STANDARD);
-        edgeLabelExpectedPosition.put("refToBBegin", new Dimension(1, 0));
+        edgeLabelExpectedPosition.put("refToBBegin", new Dimension(0, 0));
         edgeLabelExpectedPosition.put("refToBCenter", new Dimension(0, 0));
         doTestMoveSegment(DIAGRAM_DESCRIPTION_NAME, diagramName, Arrays.asList(new Point(0, -100)), edgeLabelExpectedPosition, ZoomLevel.ZOOM_100, "A", "B", 2, false);
 
