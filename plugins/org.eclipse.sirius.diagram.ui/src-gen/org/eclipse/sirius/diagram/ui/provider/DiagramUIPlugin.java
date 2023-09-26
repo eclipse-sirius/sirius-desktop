@@ -641,7 +641,13 @@ public final class DiagramUIPlugin extends EMFPlugin {
         }
 
         private boolean removeCacheImage(ImageWithDimensionDescriptor realDesc) {
-            return descriptorsToImages.remove(realDesc) != null;
+            Image image = descriptorsToImages.remove(realDesc);
+            if (image == null) {
+                return false;
+            } else {
+                image.dispose();
+                return true;
+            }
         }
 
         /**
