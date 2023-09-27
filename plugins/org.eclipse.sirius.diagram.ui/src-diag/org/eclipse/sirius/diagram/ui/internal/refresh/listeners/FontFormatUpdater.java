@@ -27,9 +27,9 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.NotificationFilter;
+import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.RollbackException;
@@ -42,6 +42,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.ui.internal.refresh.SynchronizeDDiagramElementStylePropertiesCommand;
 import org.eclipse.sirius.diagram.ui.internal.refresh.diagram.ViewPropertiesSynchronizer;
+import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.Customizable;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.RGBValues;
@@ -90,6 +91,36 @@ public class FontFormatUpdater extends ResourceSetListenerImpl {
         return true;
     }
 
+    class AddLabelFormatAsCustomFeatureCommand extends RecordingCommand {
+        BasicLabelStyle style;
+
+        public AddLabelFormatAsCustomFeatureCommand(TransactionalEditingDomain domain, BasicLabelStyle style) {
+            super(domain);
+            this.style = style;
+        }
+
+        @Override
+        protected void doExecute() {
+            String labelFormat = ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT.getName();
+            this.style.getCustomFeatures().add(labelFormat);
+        }
+    }
+
+    class RemoveLabelFormatFromCustomFeatureCommand extends RecordingCommand {
+        BasicLabelStyle style;
+
+        public RemoveLabelFormatFromCustomFeatureCommand(TransactionalEditingDomain domain, BasicLabelStyle style) {
+            super(domain);
+            this.style = style;
+        }
+
+        @Override
+        protected void doExecute() {
+            String labelFormat = ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT.getName();
+            this.style.getCustomFeatures().remove(labelFormat);
+        }
+    }
+
     /**
      * {@inheritDoc}
      */
@@ -121,7 +152,6 @@ public class FontFormatUpdater extends ResourceSetListenerImpl {
                     if (style instanceof EdgeStyle) {
                         EdgeStyle edgeStyle = (EdgeStyle) style;
                         String labelFormat = ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT.getName();
-                        EAttribute customFeatureAttr = ViewpointPackage.Literals.CUSTOMIZABLE__CUSTOM_FEATURES;
                         // Here we only process the custom feature 'LabelFormat' because the other
                         // custom features are processed by a different mechanism. However, this
                         // code is wrong when the three label have different LabelFormat, the reset
@@ -133,21 +163,27 @@ public class FontFormatUpdater extends ResourceSetListenerImpl {
                                 BasicLabelStyleDescription description = edgeStyle.getBeginLabelStyle().getDescription();
                                 // if format is different between default (Sirius Description/odesign) and GMF
                                 if (!isSameLabelFormat(fontStyle, description.getLabelFormat())) {
-                                    cc.append(AddCommand.create(getTarget(), edgeStyle.getBeginLabelStyle(), customFeatureAttr, labelFormat));
+                                    cc.append(new AddLabelFormatAsCustomFeatureCommand(getTarget(), edgeStyle.getBeginLabelStyle()));
+                                } else {
+                                    cc.append(new RemoveLabelFormatFromCustomFeatureCommand(getTarget(), edgeStyle.getBeginLabelStyle()));
                                 }
                             }
                             if (edgeStyle.getCenterLabelStyle() != null) {
                                 BasicLabelStyleDescription description = edgeStyle.getCenterLabelStyle().getDescription();
                                 // if format is different between default (Sirius Description/odesign) and GMF
                                 if (!isSameLabelFormat(fontStyle, description.getLabelFormat())) {
-                                    cc.append(AddCommand.create(getTarget(), edgeStyle.getCenterLabelStyle(), customFeatureAttr, labelFormat));
+                                    cc.append(new AddLabelFormatAsCustomFeatureCommand(getTarget(), edgeStyle.getCenterLabelStyle()));
+                                } else {
+                                    cc.append(new RemoveLabelFormatFromCustomFeatureCommand(getTarget(), edgeStyle.getCenterLabelStyle()));
                                 }
                             }
                             if (edgeStyle.getEndLabelStyle() != null) {
                                 BasicLabelStyleDescription description = edgeStyle.getEndLabelStyle().getDescription();
                                 // if format is different between default (Sirius Description/odesign) and GMF
                                 if (!isSameLabelFormat(fontStyle, description.getLabelFormat())) {
-                                    cc.append(AddCommand.create(getTarget(), edgeStyle.getEndLabelStyle(), customFeatureAttr, labelFormat));
+                                    cc.append(new AddLabelFormatAsCustomFeatureCommand(getTarget(), edgeStyle.getEndLabelStyle()));
+                                } else {
+                                    cc.append(new RemoveLabelFormatFromCustomFeatureCommand(getTarget(), edgeStyle.getEndLabelStyle()));
                                 }
                             }
                         }

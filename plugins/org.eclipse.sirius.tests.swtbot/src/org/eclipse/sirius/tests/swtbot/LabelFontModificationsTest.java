@@ -58,6 +58,7 @@ import com.google.common.base.Predicates;
  *
  * @author mporhel
  */
+@SuppressWarnings("nls")
 public class LabelFontModificationsTest extends AbstractFontModificationTest {
     private static final String BOLD_FONT_STYLE = "Bold Font Style";
 
@@ -254,7 +255,11 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
      */
     public void doTestBoldFromToolbar(String name, Class<? extends EditPart> type) {
         SWTBotGefEditPart selectedEditPart = selectAndCheckEditPart(name, type);
-        doTestStyleCustomizationThroughTabbar(selectedEditPart, BOLD_FONT_STYLE, NORMAL_FONT_STATE_PREDICATE, BOLD_FONT_STATE_PREDICATE);
+        if (type == DEdgeEditPart.class || type == DEdgeNameEditPart.class) {
+            doTestStyleCustomizationThroughTabbar(selectedEditPart, BOLD_FONT_STYLE, NORMAL_FONT_STATE_PREDICATE, BOLD_FONT_STATE_PREDICATE, true);
+        } else {
+            doTestStyleCustomizationThroughTabbar(selectedEditPart, BOLD_FONT_STYLE, NORMAL_FONT_STATE_PREDICATE, BOLD_FONT_STATE_PREDICATE, false);
+        }
     }
 
     /**
@@ -282,7 +287,11 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
      */
     public void doTestItalicFromToolbar(String name, Class<? extends EditPart> type) {
         SWTBotGefEditPart selectedEditPart = selectAndCheckEditPart(name, type);
-        doTestStyleCustomizationThroughTabbar(selectedEditPart, ITALIC_FONT_STYLE, NORMAL_FONT_STATE_PREDICATE, ITALIC_FONT_STATE_PREDICATE);
+        if (type == DEdgeEditPart.class || type == DEdgeNameEditPart.class) {
+            doTestStyleCustomizationThroughTabbar(selectedEditPart, ITALIC_FONT_STYLE, NORMAL_FONT_STATE_PREDICATE, ITALIC_FONT_STATE_PREDICATE, true);
+        } else {
+            doTestStyleCustomizationThroughTabbar(selectedEditPart, ITALIC_FONT_STYLE, NORMAL_FONT_STATE_PREDICATE, ITALIC_FONT_STATE_PREDICATE, false);
+        }
     }
 
     /**
@@ -386,7 +395,11 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         italicButton = getTabbarItalicButton();
         italicButton.click();
         checkNormalFontStyle(selectedEditPart);
-        checkButtonTabbarChecked(Arrays.asList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButton, Arrays.asList(false, false), true);
+        if (type == DEdgeEditPart.class) {
+            checkButtonTabbarChecked(Arrays.asList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButton, Arrays.asList(false, false), false);
+        } else {
+            checkButtonTabbarChecked(Arrays.asList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButton, Arrays.asList(false, false), true);
+        }
 
         // Enable bold and check result
         boldButton = getTabbarBoldButton();
@@ -431,7 +444,11 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
      */
     public void doTestBoldFromAppearanceSection(String name, Class<? extends EditPart> type) {
         SWTBotGefEditPart selectedEditPart = selectAndCheckEditPart(name, type);
-        doTestStyleCustomizationThroughToggleButtonFromAppearanceSection(selectedEditPart, FONTS_COLORS_GROUP, 0, NORMAL_FONT_STATE_PREDICATE, BOLD_FONT_STATE_PREDICATE, false);
+        if (type == DEdgeEditPart.class || type == DEdgeNameEditPart.class) {
+            doTestStyleCustomizationThroughToggleButtonFromAppearanceSection(selectedEditPart, FONTS_COLORS_GROUP, 0, NORMAL_FONT_STATE_PREDICATE, BOLD_FONT_STATE_PREDICATE, true);
+        } else {
+            doTestStyleCustomizationThroughToggleButtonFromAppearanceSection(selectedEditPart, FONTS_COLORS_GROUP, 0, NORMAL_FONT_STATE_PREDICATE, BOLD_FONT_STATE_PREDICATE, false);
+        }
     }
 
     /**
@@ -459,7 +476,11 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
      */
     public void doTestItalicFromAppearanceSection(String name, Class<? extends EditPart> type) {
         SWTBotGefEditPart selectedEditPart = selectAndCheckEditPart(name, type);
-        doTestStyleCustomizationThroughToggleButtonFromAppearanceSection(selectedEditPart, FONTS_COLORS_GROUP, 1, NORMAL_FONT_STATE_PREDICATE, ITALIC_FONT_STATE_PREDICATE, false);
+        if (type == DEdgeEditPart.class || type == DEdgeNameEditPart.class) {
+            doTestStyleCustomizationThroughToggleButtonFromAppearanceSection(selectedEditPart, FONTS_COLORS_GROUP, 1, NORMAL_FONT_STATE_PREDICATE, ITALIC_FONT_STATE_PREDICATE, true);
+        } else {
+            doTestStyleCustomizationThroughToggleButtonFromAppearanceSection(selectedEditPart, FONTS_COLORS_GROUP, 1, NORMAL_FONT_STATE_PREDICATE, ITALIC_FONT_STATE_PREDICATE, false);
+        }
     }
 
     /**
@@ -485,7 +506,11 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
      */
     public void doTestStrikeFromAppearanceSection(String name, Class<? extends EditPart> type) {
         SWTBotGefEditPart selectedEditPart = selectAndCheckEditPart(name, type);
-        doTestStyleCustomizationThroughToggleButtonFromAppearanceSection(selectedEditPart, FONTS_COLORS_GROUP, 3, NORMAL_FONT_STATE_PREDICATE, STRIKE_FONT_STATE_PREDICATE, false);
+        if (type == DEdgeEditPart.class) {
+            doTestStyleCustomizationThroughToggleButtonFromAppearanceSection(selectedEditPart, FONTS_COLORS_GROUP, 3, NORMAL_FONT_STATE_PREDICATE, STRIKE_FONT_STATE_PREDICATE, true);
+        } else {
+            doTestStyleCustomizationThroughToggleButtonFromAppearanceSection(selectedEditPart, FONTS_COLORS_GROUP, 3, NORMAL_FONT_STATE_PREDICATE, STRIKE_FONT_STATE_PREDICATE, false);
+        }
     }
 
     /**
@@ -581,7 +606,11 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
      */
     public void doTestUnderlineFromAppearanceSection(String name, Class<? extends EditPart> type) {
         SWTBotGefEditPart selectedEditPart = selectAndCheckEditPart(name, type);
-        doTestStyleCustomizationThroughToggleButtonFromAppearanceSection(selectedEditPart, FONTS_COLORS_GROUP, 2, NORMAL_FONT_STATE_PREDICATE, UNDERLINE_FONT_STATE_PREDICATE, false);
+        if (type == DEdgeEditPart.class) {
+            doTestStyleCustomizationThroughToggleButtonFromAppearanceSection(selectedEditPart, FONTS_COLORS_GROUP, 2, NORMAL_FONT_STATE_PREDICATE, UNDERLINE_FONT_STATE_PREDICATE, true);
+        } else {
+            doTestStyleCustomizationThroughToggleButtonFromAppearanceSection(selectedEditPart, FONTS_COLORS_GROUP, 2, NORMAL_FONT_STATE_PREDICATE, UNDERLINE_FONT_STATE_PREDICATE, false);
+        }
     }
 
     /**
@@ -634,7 +663,11 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         // Disable italic and check result
         italicButton.click();
         checkNormalFontStyle(selectedEditPart);
-        checkButtonAppearanceChecked(Arrays.asList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButtonFromAppearanceTab, Arrays.asList(false, false), true);
+        if (type == DEdgeEditPart.class || type == DEdgeNameEditPart.class) {
+            checkButtonAppearanceChecked(Arrays.asList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButtonFromAppearanceTab, Arrays.asList(false, false), false);
+        } else {
+            checkButtonAppearanceChecked(Arrays.asList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButtonFromAppearanceTab, Arrays.asList(false, false), true);
+        }
 
         // Enable bold and check result
         boldButton.click();
