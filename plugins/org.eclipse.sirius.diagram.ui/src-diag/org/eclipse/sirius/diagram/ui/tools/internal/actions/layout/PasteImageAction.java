@@ -13,7 +13,6 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.actions.layout;
 
 import java.awt.Toolkit;
-import java.awt.datatransfer.FlavorEvent;
 import java.awt.datatransfer.FlavorListener;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -21,12 +20,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.MessageFormat;
 import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.eclipse.gmf.runtime.common.ui.action.IDisposableAction;
 import org.eclipse.jface.action.Action;
+import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.sirius.business.api.image.ImageManager;
 import org.eclipse.sirius.business.api.image.ImageManager.CreateImageFileProvider;
 import org.eclipse.sirius.business.api.image.ImageManagerProvider;
@@ -51,21 +53,16 @@ import org.eclipse.swt.widgets.Display;
  * 
  * @author Séraphin Costa
  */
-public class PasteImageAction extends Action {
+public class PasteImageAction extends Action implements IDisposableAction {
 
     // There are no clipboard listener in SWT, so we need to use the AWT clipboard listener.
-    java.awt.datatransfer.Clipboard awtClipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+    private java.awt.datatransfer.Clipboard awtClipboard;
 
-    class ClipboardListener implements FlavorListener {
-        @Override
-        public void flavorsChanged(FlavorEvent e) {
-            // This is an AWT event, not an SWT event,
-            // so we are not in the thread UI and we need to execute this code in thread UI.
-            Display.getDefault().syncExec(() -> {
-                updateState();
-            });
-        }
-    }
+    private FlavorListener clipboardListener;
+
+    private boolean isDisposed = true;
+
+    private Optional<IPropertyChangeListener> changeListenerOpt = Optional.empty();
 
     /**
      * Default constructor.
@@ -84,11 +81,53 @@ public class PasteImageAction extends Action {
         }
 
         setImageDescriptor(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.PASTE_IMAGE_ICON));
+    }
+
+    @Override
+    public void init() {
+        awtClipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 
         updateState();
 
         // listen clipboard for update state
-        awtClipboard.addFlavorListener(new ClipboardListener());
+        clipboardListener = e -> Display.getDefault().syncExec(() -> updateState());
+        awtClipboard.addFlavorListener(clipboardListener);
+        changeListenerOpt.ifPresent(changeListener -> {
+            this.addPropertyChangeListener(changeListener);
+        });
+        isDisposed = false;
+    }
+
+    @Override
+    public void dispose() {
+        awtClipboard.removeFlavorListener(clipboardListener);
+        clipboardListener = null;
+        awtClipboard = null;
+        changeListenerOpt.ifPresent(changeListener -> {
+            this.removePropertyChangeListener(changeListener);
+        });
+        isDisposed = true;
+    }
+
+    @Override
+    public boolean isDisposed() {
+        return isDisposed;
+    }
+
+    /**
+     * Set the listener for the changes of the paste image action state. This listener is called after a property (text,
+     * tooltip, enabled, checked...) has changed. This method must called <strong>before</strong> <code>init()</code>:
+     * the listener will be effective from <code>init()</code> to <code>dispose()</code>. The listener will be removed
+     * when action is disposed.
+     * 
+     * @param listener
+     *            the optional property change listener
+     */
+    public void onChangeState(Optional<IPropertyChangeListener> listener) {
+        if (!isDisposed()) {
+            throw new IllegalStateException("onChangeState must be called before action is initialized"); //$NON-NLS-1$
+        }
+        changeListenerOpt = listener;
     }
 
     /**
