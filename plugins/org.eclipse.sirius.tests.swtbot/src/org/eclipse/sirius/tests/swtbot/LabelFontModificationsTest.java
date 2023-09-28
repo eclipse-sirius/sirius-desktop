@@ -46,6 +46,7 @@ import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.results.VoidResult;
 import org.eclipse.swtbot.swt.finder.utils.SWTUtils;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToggleButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarToggleButton;
@@ -729,7 +730,11 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         }
 
         // Undo the change
-        bot.menu("Edit").menu("Undo ").click();
+        if (TestsUtil.is202309Platform()) {
+            bot.menu("Edit").menu("Undo").click();
+        } else {
+            bot.menu("Edit").menu("Undo ").click();
+        }
         // Wait all UI events to ensure that the tabbar is correctly refreshed.
         SWTBotUtils.waitAllUiEvents();
 
@@ -739,7 +744,11 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         }
 
         // Redo the change
-        bot.menu("Edit").menu("Redo ").click();
+        if (TestsUtil.is202309Platform()) {
+            bot.menu("Edit").menu("Redo").click();
+        } else {
+            bot.menu("Edit").menu("Redo ").click();
+        }
         // Wait all UI events to ensure that the tabbar is correctly refreshed.
         SWTBotUtils.waitAllUiEvents();
 
