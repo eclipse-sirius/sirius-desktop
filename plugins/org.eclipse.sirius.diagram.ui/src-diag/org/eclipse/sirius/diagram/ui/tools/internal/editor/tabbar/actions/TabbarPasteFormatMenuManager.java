@@ -24,8 +24,6 @@ import org.eclipse.gmf.runtime.diagram.ui.actions.DiagramAction;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
-import org.eclipse.jface.util.IPropertyChangeListener;
-import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
@@ -69,7 +67,7 @@ public class TabbarPasteFormatMenuManager extends PasteFormatMenuManager {
     @Override
     public void dispose() {
         removeAll();
-        actionHistory = null;
+        actionHistory.clear();
         super.dispose();
     }
 
@@ -126,7 +124,6 @@ public class TabbarPasteFormatMenuManager extends PasteFormatMenuManager {
 
     private void safeAdd(String actionId, IWorkbenchPage page) {
         if (getAction(actionId).isEmpty()) { // add action only if it not already present
-            IAction action;
             if (ActionIds.PASTE_FORMAT.equals(actionId)) {
                 add(new PasteFormatAction(page));
             } else if (ActionIds.PASTE_STYLE.equals(actionId)) {
@@ -134,13 +131,8 @@ public class TabbarPasteFormatMenuManager extends PasteFormatMenuManager {
             } else if (ActionIds.PASTE_LAYOUT.equals(actionId)) {
                 add(new PasteLayoutAction(page));
             } else if (ActionIds.PASTE_IMAGE.equals(actionId)) {
-                action = new PasteImageAction();
-                action.addPropertyChangeListener(new IPropertyChangeListener() {
-                    @Override
-                    public void propertyChange(PropertyChangeEvent event) {
-                        update();
-                    }
-                });
+                var action = new PasteImageAction();
+                action.onChangeState(Optional.of(e -> update()));
                 add(action);
             } else {
                 throw new IllegalArgumentException(String.format("Unexpected action id '%s'", actionId)); //$NON-NLS-1$
