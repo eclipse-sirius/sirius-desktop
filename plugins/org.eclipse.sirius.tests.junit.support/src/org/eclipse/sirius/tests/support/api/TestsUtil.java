@@ -61,6 +61,8 @@ public final class TestsUtil {
 
     private static final String UI_WORKBENCH_202303_START = "3.128";
 
+    private static final String UI_WORKBENCH_202309_START = "3.130";
+
     private static final String CREATE_REPRESENTATATION_IN_SEPARATE_RESOURCE = "createLocalRepresentationInSeparateResource";
 
     /**
@@ -338,6 +340,15 @@ public final class TestsUtil {
      */
     public static boolean is202303Platform() {
         return checkUiWorkbenchVersion(Version.parseVersion(UI_WORKBENCH_202303_START), null);
+    }
+
+    /**
+     * Tells if the current platform corresponds to 2023-09 or later.
+     *
+     * @return true if the current platform corresponds to 2023-09 or later, false otherwise.
+     */
+    public static boolean is202309Platform() {
+        return checkUiWorkbenchVersion(Version.parseVersion(UI_WORKBENCH_202309_START), null);
     }
 
     /**
