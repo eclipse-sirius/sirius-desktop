@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -39,14 +39,11 @@ import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.SWTBot;
-import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotCCombo;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotCheckBox;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotRadio;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToggleButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarToggleButton;
@@ -67,6 +64,7 @@ import com.google.common.collect.Lists;
  * 
  * @author alagarde
  */
+@SuppressWarnings("nls")
 public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSiriusSwtBotGefTestCase {
     /**
      * 
@@ -312,8 +310,8 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
      * @param modifiedComboValue
      *            the value that should be selected in the combobox
      * @param customizationRevertable
-     *            true for underline and strikeThrough and not for bold and italic because for these two last the
-     *            de-selection of buttons doesn't remove the customization flag (See VP-3625)
+     *            <code>true</code> for edges because for node these two last the de-selection of buttons doesn't remove
+     *            the customization flag (See VP-3625)
      */
     protected void doTestStyleCustomizationThroughComboBoxInAppearanceSection(SWTBotGefEditPart selectedEditPart, Predicate<SWTBotGefEditPart> initialStatePredicate,
             Predicate<SWTBotGefEditPart> stateWhenComboIsModifiedPredicate, int comboBoxIdIngroup, String modifiedComboValue, boolean customizationRevertable) {
@@ -709,9 +707,11 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
      *            the initial state predicate
      * @param stateWhenButtonIsCheckedPredicate
      *            the predicate that should be checked when the button is toggled
+     * @param customizationRevertable
+     *            <code>true</code> if the de-selection of buttons remove the customization flag
      */
     protected void doTestStyleCustomizationThroughTabbar(SWTBotGefEditPart selectedEditPart, String tabbarButtonTooltip, Predicate<SWTBotGefEditPart> initialStatePredicate,
-            Predicate<SWTBotGefEditPart> stateWhenButtonIsCheckedPredicate) {
+            Predicate<SWTBotGefEditPart> stateWhenButtonIsCheckedPredicate, boolean customizationRevertable) {
         SWTBotToolbarButton resetStyleCustomizationButton = getResetStylePropertiesToDefaultValuesButtonFromTabbar();
         DDiagram parentDiagram = ((DDiagramElement) ((View) selectedEditPart.part().getModel()).getElement()).getParentDiagram();
         final String representationName = new DRepresentationQuery(parentDiagram).getRepresentationDescriptor().getName();
@@ -732,7 +732,11 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
         // Step 3: Disable button and check result
         buttonFromTabbarToTest.click();
         assertTrue("The button " + buttonFromTabbarToTest.getToolTipText() + " has been disabled, so the initial state should be checked again", initialStatePredicate.apply(selectedEditPart));
-        checkButtonTabbarChecked(Arrays.asList(buttonFromTabbarToTest), resetStyleCustomizationButton, Arrays.asList(false), true);
+        if (customizationRevertable) {
+            checkButtonTabbarChecked(Arrays.asList(buttonFromTabbarToTest), resetStyleCustomizationButton, Arrays.asList(false), false);
+        } else {
+            checkButtonTabbarChecked(Arrays.asList(buttonFromTabbarToTest), resetStyleCustomizationButton, Arrays.asList(false), true);
+        }
 
         // Step 4: re-enable button and check result
         buttonFromTabbarToTest.click();
