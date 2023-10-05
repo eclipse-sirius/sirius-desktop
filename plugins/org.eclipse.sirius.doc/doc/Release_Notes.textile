@@ -4,24 +4,6 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for recent major releases of Sirius. See also "the release notes from previous versions":Release_Notes_Previous.html for details about older releases.
 
-h2(#siriusnext). Changes in Sirius Next
-
-h3. User-Visible Changes
-
-
-h3. Developer-Visible Changes
-
-h4. Changes in @org.eclipse.sirius.diagram.ui@
-
-
-
-
-
-
-
-
-
-
 h2(#sirius7.3.0). Changes in Sirius 7.3.0
 
 h3. User-Visible Changes
@@ -35,6 +17,16 @@ h3. Developer-Visible Changes
 h4. Changes in @org.eclipse.sirius.diagram.ui@
 
 * <span class="label label-info">Modified</span> The methods @org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper.getNotes(Diagram)@ and @org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper.getTextNotes(Diagram)@ now return a list of @org.eclipse.gmf.runtime.notation.Shape@ instead of a list of @org.eclipse.gmf.runtime.notation.Node@. This type is more precise and avoids multiple cast when using the returned list.
+* <span class="label label-success">Added</span> A new preference have been added in  @org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys@:
+** @PREF_NEWLY_CREATED_ELEMENTS_LAYOUT@: An integer preference used to define the arrangement of elements created on a diagram when they are not directly positioned by the user. When created successively, elements can be positioned diagonally, vertically or horizontally. Elements can be positioned diagonally with the value 0, vertically with the value 1, horizontally with the value 2. By default, elements are positioned diagonally with the value 0.
+
+The Sirius default values for these preferences can be overridden for a specific product. For example:
+
+bc. 
+    // Preference customization for plugin "org.eclipse.sirius.diagram.ui"
+    IEclipsePreferences diagramPreferences = DefaultScope.INSTANCE.getNode(org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin.ID);
+    // By default override the @PREF_NEWLY_CREATED_ELEMENTS_LAYOUT@ default value
+    diagramPreferences.putBoolean(SiriusDiagramUiPreferencesKeys.@PREF_NEWLY_CREATED_ELEMENTS_LAYOUT@, 2);
 
 h2(#sirius7.2.1). Changes in Sirius 7.2.1
 
@@ -65,16 +57,6 @@ h4. Changes in @org.eclipse.sirius.diagram.ui@
 * <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery.isFreeFormCompartment()@ is added to test if a GMF node is compartment of node corresponding to a Sirius container free form.
 <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery.isNode()@ is added to test if a GMF node is associated to DNode Sirius diagram element.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery.isNodeLabel()@ is added to test if a GMF node is associated to label of DNode Sirius diagram element.
-* <span class="label label-success">Added</span> A new preference have been added in  @org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys@:
-** @PREF_NEWLY_CREATED_ELEMENTS_LAYOUT@: An integer preference used to define the arrangement of elements created on a diagram when they are not directly positioned by the user. When created successively, elements can be positioned diagonally, vertically or horizontally. Elements can be positioned diagonally with the value 0, vertically with the value 1, horizontally with the value 2. By default, elements are positioned diagonally with the value 0.
-
-The Sirius default values for these preferences can be overridden for a specific product. For example:
-
-bc. 
-    // Preference customization for plugin "org.eclipse.sirius.diagram.ui"
-    IEclipsePreferences diagramPreferences = DefaultScope.INSTANCE.getNode(org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin.ID);
-    // By default override the @PREF_NEWLY_CREATED_ELEMENTS_LAYOUT@ default value
-    diagramPreferences.putBoolean(SiriusDiagramUiPreferencesKeys.@PREF_NEWLY_CREATED_ELEMENTS_LAYOUT@, 2);
 
 h2(#sirius7.2.0). Changes in Sirius 7.2.0
 
