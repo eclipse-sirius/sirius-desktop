@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010, 2022, 2023 THALES GLOBAL SERVICES
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -474,5 +474,17 @@ public class SWTBotSiriusGefViewer extends SWTBotGefViewer {
         } else {
             canvas.mouseMoveLeftClick(xPosition, yPosition);
         }
+    }
+
+    /**
+     * Duplicated method from {@link SWTBotGefViewer} to have a fix directly in Sirius by waiting a fix in SwtBot.
+     * 
+     * @param text
+     * @param syncExec
+     */
+    @Override
+    public SWTBotGefViewer clickContextMenu(String text) {
+        new SWTBotSiriusGefContextMenu(getControl(), text).click();
+        return this;
     }
 }
