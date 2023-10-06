@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_3PfQ8ZjCEd-ejLPU7ErA2Q" selectedViews="_3skOgJjCEd-ejLPU7ErA2Q _Gl7kQKF3Ee2lyPXDo8ZA_w" version="15.1.0.202303281325">
+  <viewpoint:DAnalysis uid="_3PfQ8ZjCEd-ejLPU7ErA2Q" selectedViews="_3skOgJjCEd-ejLPU7ErA2Q _Gl7kQKF3Ee2lyPXDo8ZA_w" version="15.2.0.202303281325">
     <semanticResources>tc2250.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_3skOgJjCEd-ejLPU7ErA2Q">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_6dw7kKFVEe2KevXKo0kOYw" name="2250" repPath="#_QBbgkJjDEd-ejLPU7ErA2Q" changeId="1680529064546">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_6dw7kKFVEe2KevXKo0kOYw" name="2250" repPath="#_QBbgkJjDEd-ejLPU7ErA2Q" changeId="1696862471792">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="tc2250.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -38,7 +38,7 @@
                 <styles xmi:type="notation:SortingStyle" xmi:id="_y8XrAYasEeSx3c6yRmWkoA"/>
                 <styles xmi:type="notation:FilteringStyle" xmi:id="_y8XrAoasEeSx3c6yRmWkoA"/>
               </children>
-              <styles xmi:type="notation:ShapeStyle" xmi:id="_y8V10YasEeSx3c6yRmWkoA" fontName="Times New Roman" fontHeight="10"/>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_y8V10YasEeSx3c6yRmWkoA" fontName="DejaVu Sans" fontHeight="10"/>
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_y8V10oasEeSx3c6yRmWkoA" x="8" y="7"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_y8YSEIasEeSx3c6yRmWkoA" type="3009" element="_y3RIkIasEeSx3c6yRmWkoA">
@@ -50,7 +50,7 @@
                 <styles xmi:type="notation:SortingStyle" xmi:id="_y8aHQYasEeSx3c6yRmWkoA"/>
                 <styles xmi:type="notation:FilteringStyle" xmi:id="_y8aHQoasEeSx3c6yRmWkoA"/>
               </children>
-              <styles xmi:type="notation:ShapeStyle" xmi:id="_y8YSEYasEeSx3c6yRmWkoA" fontName="Times New Roman" fontHeight="8"/>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_y8YSEYasEeSx3c6yRmWkoA" fontName="DejaVu Sans" fontHeight="8"/>
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_y8YSEoasEeSx3c6yRmWkoA" x="320" y="33"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_y8auUIasEeSx3c6yRmWkoA" type="3009" element="_y3tNcIasEeSx3c6yRmWkoA">
@@ -60,13 +60,13 @@
               </children>
               <children xmi:type="notation:Node" xmi:id="_y8cjgIasEeSx3c6yRmWkoA" type="7003">
                 <children xmi:type="notation:Node" xmi:id="_y8fm0IasEeSx3c6yRmWkoA" type="3010" element="_y4a_IIasEeSx3c6yRmWkoA">
-                  <styles xmi:type="notation:FontStyle" xmi:id="_y8fm0YasEeSx3c6yRmWkoA" fontName="Times New Roman" fontHeight="8"/>
+                  <styles xmi:type="notation:FontStyle" xmi:id="_y8fm0YasEeSx3c6yRmWkoA" fontName="DejaVu Sans" fontHeight="8"/>
                   <layoutConstraint xmi:type="notation:Location" xmi:id="_y8fm0oasEeSx3c6yRmWkoA"/>
                 </children>
                 <styles xmi:type="notation:SortingStyle" xmi:id="_y8cjgYasEeSx3c6yRmWkoA"/>
                 <styles xmi:type="notation:FilteringStyle" xmi:id="_y8cjgoasEeSx3c6yRmWkoA"/>
               </children>
-              <styles xmi:type="notation:ShapeStyle" xmi:id="_y8auUYasEeSx3c6yRmWkoA" fontName="Times New Roman" fontHeight="8"/>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_y8auUYasEeSx3c6yRmWkoA" fontName="DejaVu Sans" fontHeight="8"/>
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_y8auUoasEeSx3c6yRmWkoA" x="463" y="176"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_y8dKkIasEeSx3c6yRmWkoA" type="3009" element="_y3vCoIasEeSx3c6yRmWkoA">
@@ -76,19 +76,19 @@
               </children>
               <children xmi:type="notation:Node" xmi:id="_y8eYsIasEeSx3c6yRmWkoA" type="7003">
                 <children xmi:type="notation:Node" xmi:id="_y8g08IasEeSx3c6yRmWkoA" type="3010" element="_y4hFwIasEeSx3c6yRmWkoA">
-                  <styles xmi:type="notation:FontStyle" xmi:id="_y8g08YasEeSx3c6yRmWkoA" fontName="Times New Roman" fontHeight="8"/>
+                  <styles xmi:type="notation:FontStyle" xmi:id="_y8g08YasEeSx3c6yRmWkoA" fontName="DejaVu Sans" fontHeight="8"/>
                   <layoutConstraint xmi:type="notation:Location" xmi:id="_y8g08oasEeSx3c6yRmWkoA"/>
                 </children>
                 <styles xmi:type="notation:SortingStyle" xmi:id="_y8eYsYasEeSx3c6yRmWkoA"/>
                 <styles xmi:type="notation:FilteringStyle" xmi:id="_y8eYsoasEeSx3c6yRmWkoA"/>
               </children>
-              <styles xmi:type="notation:ShapeStyle" xmi:id="_y8dKkYasEeSx3c6yRmWkoA" fontName="Times New Roman" fontHeight="8"/>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_y8dKkYasEeSx3c6yRmWkoA" fontName="DejaVu Sans" fontHeight="8"/>
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_y8dKkoasEeSx3c6yRmWkoA" x="164" y="176"/>
             </children>
             <styles xmi:type="notation:SortingStyle" xmi:id="_y8OhEYasEeSx3c6yRmWkoA"/>
             <styles xmi:type="notation:FilteringStyle" xmi:id="_y8OhEoasEeSx3c6yRmWkoA"/>
           </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_y8GlQYasEeSx3c6yRmWkoA" fontName="Times New Roman" fontHeight="10"/>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_y8GlQYasEeSx3c6yRmWkoA" fontName="DejaVu Sans" fontHeight="10"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_y8GlQoasEeSx3c6yRmWkoA" x="52" y="26" width="692" height="289"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_y8SLcIasEeSx3c6yRmWkoA" type="2003" element="_y4oagIasEeSx3c6yRmWkoA">
@@ -98,7 +98,7 @@
           </children>
           <children xmi:type="notation:Node" xmi:id="_y8UAoIasEeSx3c6yRmWkoA" type="7004">
             <children xmi:type="notation:Node" xmi:id="_y8iDEIasEeSx3c6yRmWkoA" type="3010" element="_y4q2wIasEeSx3c6yRmWkoA">
-              <styles xmi:type="notation:FontStyle" xmi:id="_y8iDEYasEeSx3c6yRmWkoA" fontName="Times New Roman" fontHeight="8"/>
+              <styles xmi:type="notation:FontStyle" xmi:id="_y8iDEYasEeSx3c6yRmWkoA" fontName="DejaVu Sans" fontHeight="8"/>
               <layoutConstraint xmi:type="notation:Location" xmi:id="_y8iDEoasEeSx3c6yRmWkoA"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_tsWQ0NIkEe2w0ZbQlejGEQ" type="3010" element="_trricdIkEe2w0ZbQlejGEQ">
@@ -108,7 +108,7 @@
             <styles xmi:type="notation:SortingStyle" xmi:id="_y8UAoYasEeSx3c6yRmWkoA"/>
             <styles xmi:type="notation:FilteringStyle" xmi:id="_y8UAooasEeSx3c6yRmWkoA"/>
           </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_y8SLcYasEeSx3c6yRmWkoA" fontName="Times New Roman" fontHeight="8"/>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_y8SLcYasEeSx3c6yRmWkoA" fontName="DejaVu Sans" fontHeight="8"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_y8SLcoasEeSx3c6yRmWkoA" x="364" y="325"/>
         </children>
         <styles xmi:type="notation:DiagramStyle" xmi:id="_QBkqgpjDEd-ejLPU7ErA2Q"/>
@@ -126,7 +126,7 @@
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_y85PdIasEeSx3c6yRmWkoA" y="10"/>
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_y84BUYasEeSx3c6yRmWkoA" routing="Tree"/>
-          <styles xmi:type="notation:FontStyle" xmi:id="_y84BUoasEeSx3c6yRmWkoA" fontName="Times New Roman" fontHeight="8"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_y84BUoasEeSx3c6yRmWkoA" fontName="DejaVu Sans" fontHeight="8"/>
           <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_y84BU4asEeSx3c6yRmWkoA" points="[0, 0, 0, 167]$[0, -167, 0, 0]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_y87EoIasEeSx3c6yRmWkoA" id="(0.5,0.0)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_y87EoYasEeSx3c6yRmWkoA" id="(0.4943820224719101,1.0)"/>
@@ -145,14 +145,14 @@
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_y8850YasEeSx3c6yRmWkoA" y="10"/>
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_y87Eo4asEeSx3c6yRmWkoA" routing="Tree"/>
-          <styles xmi:type="notation:FontStyle" xmi:id="_y87EpIasEeSx3c6yRmWkoA" fontName="Times New Roman" fontHeight="8"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_y87EpIasEeSx3c6yRmWkoA" fontName="DejaVu Sans" fontHeight="8"/>
           <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_y87EpYasEeSx3c6yRmWkoA" points="[0, 0, -89, 60]$[89, -60, 0, 0]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_y89g4IasEeSx3c6yRmWkoA" id="(0.5,0.0)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_y8-H8IasEeSx3c6yRmWkoA" id="(0.4943820224719101,1.0)"/>
         </edges>
         <edges xmi:type="notation:Edge" xmi:id="_y8oJsIasEeSx3c6yRmWkoA" type="4001" element="_y5PegIasEeSx3c6yRmWkoA" source="_y8auUIasEeSx3c6yRmWkoA" target="_y8dKkIasEeSx3c6yRmWkoA">
           <children xmi:type="notation:Node" xmi:id="_y8p-4IasEeSx3c6yRmWkoA" type="6001">
-            <styles xmi:type="notation:FontStyle" xmi:id="_y8p-4oasEeSx3c6yRmWkoA" fontName="Times New Roman" fontHeight="8"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_y8p-4oasEeSx3c6yRmWkoA" fontName="DejaVu Sans" fontHeight="8"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_y8p-4YasEeSx3c6yRmWkoA" y="-10"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_y8rNAIasEeSx3c6yRmWkoA" type="6002">
@@ -164,7 +164,7 @@
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_y8r0EYasEeSx3c6yRmWkoA" y="10"/>
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_y8oJsYasEeSx3c6yRmWkoA"/>
-          <styles xmi:type="notation:FontStyle" xmi:id="_y8oJsoasEeSx3c6yRmWkoA" fontName="Times New Roman" fontHeight="8"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_y8oJsoasEeSx3c6yRmWkoA" fontName="DejaVu Sans" fontHeight="8"/>
           <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_y8oJs4asEeSx3c6yRmWkoA" points="[0, 0, 214, -7]$[-213, 7, 1, 0]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_y83aQIasEeSx3c6yRmWkoA" id="(0.0,0.2765957446808511)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_y83aQYasEeSx3c6yRmWkoA" id="(0.9886363636363636,0.425531914893617)"/>
