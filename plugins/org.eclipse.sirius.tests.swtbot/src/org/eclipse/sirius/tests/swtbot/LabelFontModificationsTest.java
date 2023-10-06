@@ -13,6 +13,7 @@
 package org.eclipse.sirius.tests.swtbot;
 
 import java.awt.AWTException;
+import java.awt.GraphicsEnvironment;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -46,7 +47,6 @@ import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.results.VoidResult;
 import org.eclipse.swtbot.swt.finder.utils.SWTUtils;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToggleButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarToggleButton;
@@ -170,10 +170,25 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         }
     };
 
+    private String oldDefaultFontName;
+
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         super.onSetUpBeforeClosingWelcomePage();
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, "testLabelProperties.odesign"); //$NON-NLS-1$
+    }
+
+    @Override
+    protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
+        oldDefaultFontName = changeDefaultFontName("DejaVu Sans");
+        super.onSetUpAfterOpeningDesignerPerspective();
+    }
+
+    @Override
+    protected void tearDown() throws Exception {
+        // Reset the default fontName
+        changeDefaultFontName(oldDefaultFontName);
+        super.tearDown();
     }
 
     /**
@@ -833,13 +848,14 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
          * Last found common fonts : Arial, Arial Black, Comic Sans MS, Courier New, DejaVu Sans, DejaVu Sans Mono,
          * DejaVu Serif, Georgia, Impact, Times New Roma, Trebuchet MS, Verdana , Webdings.
          */
-        final String modifiedFont = "Comic Sans MS";
+        // Use the first available font to test the change
+        String fonts[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
         Predicate<SWTBotGefEditPart> stateWhenButtonIsCheckedPredicate = new Predicate<SWTBotGefEditPart>() {
 
             @Override
             public boolean apply(SWTBotGefEditPart input) {
                 try {
-                    checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, new ArrayList<FontFormat>(), false, false, modifiedFont, -1, -1);
+                    checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, new ArrayList<FontFormat>(), false, false, fonts[0], -1, -1);
                     return true;
                 } catch (AssertionError e) {
                     return false;
@@ -848,6 +864,6 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
 
         };
 
-        doTestStyleCustomizationThroughComboBoxInAppearanceSection(selectedEditPart, NORMAL_FONT_STATE_PREDICATE, stateWhenButtonIsCheckedPredicate, 0, modifiedFont, true);
+        doTestStyleCustomizationThroughComboBoxInAppearanceSection(selectedEditPart, NORMAL_FONT_STATE_PREDICATE, stateWhenButtonIsCheckedPredicate, 0, fonts[0], true);
     }
 }
