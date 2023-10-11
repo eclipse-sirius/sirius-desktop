@@ -26,7 +26,6 @@ import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
@@ -47,8 +46,6 @@ public class TabbarToolBarManager extends ToolBarManager {
 
     private Image fGradientBackground;
 
-    private Listener onResize;
-
     /**
      * Constructor.
      * 
@@ -60,8 +57,8 @@ public class TabbarToolBarManager extends ToolBarManager {
     public TabbarToolBarManager(ToolBar toolBar, IWorkbenchPart part) {
         super(toolBar);
         this.tabbarPart = part;
-        this.onResize = event -> updateGradientBackground();
-        getControl().addListener(SWT.Resize, onResize);
+        // This listener will be automatically "removed/clean" during the release of the toolbar.
+        getControl().addListener(SWT.Resize, event -> updateGradientBackground());
 
     }
 
@@ -214,12 +211,11 @@ public class TabbarToolBarManager extends ToolBarManager {
 
     @Override
     public void dispose() {
-        getControl().removeListener(SWT.Resize, onResize);
+        super.dispose();
         tabbarPart = null;
         if (fGradientBackground != null) {
             fGradientBackground.dispose();
             fGradientBackground = null;
         }
-        super.dispose();
     }
 }
