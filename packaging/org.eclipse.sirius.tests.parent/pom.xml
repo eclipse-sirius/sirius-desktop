@@ -148,7 +148,7 @@
         <tests.swtbot.skip>false</tests.swtbot.skip>
         <tests.timeout>${tests.timeout.swtbot}</tests.timeout>
         <tests.swtbot.include>org/eclipse/sirius/tests/swtbot/suite/SWTBotPart2Suite.java</tests.swtbot.include>
-        <tests.vmargs>${jacoco.agent.ut.arg} ${tests.vmargs.mac} -Xmx2048m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
+        <tests.vmargs>${jacoco.agent.ut.arg} ${tests.vmargs.mac} -Xmx3072m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
       </properties>
     </profile>
     <profile>
