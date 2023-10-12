@@ -211,11 +211,11 @@ public class TabbarToolBarManager extends ToolBarManager {
 
     @Override
     public void dispose() {
-        super.dispose();
         tabbarPart = null;
         if (fGradientBackground != null) {
             fGradientBackground.dispose();
             fGradientBackground = null;
         }
+        super.dispose();
     }
 }
