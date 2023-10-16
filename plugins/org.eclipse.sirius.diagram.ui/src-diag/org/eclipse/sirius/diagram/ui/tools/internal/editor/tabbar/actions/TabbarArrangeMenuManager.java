@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010-2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010-2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -164,12 +164,15 @@ public class TabbarArrangeMenuManager extends ArrangeMenuManager implements ISel
         }
 
         if (arrangeSelection) {
-            if (!isArrangeSelection()) {
+            if (!isArrangeSelectionAndBorderNodes()) {
                 // change to Arrange Selection
                 removeArrangeActions();
 
                 ArrangeAction toolbarArrangeSelectionAction = ArrangeAction.createToolbarArrangeSelectionAction(page);
                 add(toolbarArrangeSelectionAction);
+
+                ArrangeBorderNodesAction toolBarArrangeBorderNodesAction = ArrangeBorderNodesAction.createToolBarArrangeBorderNodesAction(page);
+                add(toolBarArrangeBorderNodesAction);
 
                 disableArrangeSelectionIfNotSupported(toolbarArrangeSelectionAction, (IStructuredSelection) selection);
                 setDefaultAction(toolbarArrangeSelectionAction.getId());
@@ -223,18 +226,18 @@ public class TabbarArrangeMenuManager extends ArrangeMenuManager implements ISel
     }
 
     /**
-     * Check that the only available arrange action is "Arrange Selection"
+     * Check that there are only two arrange actions when the diagram element is selected.
      * 
-     * @return true if the only available action is "Arrange Selection"
+     * @return true if there are only two arrange actions when the diagram element is selected
      */
-    private boolean isArrangeSelection() {
-        return find(ActionIds.ACTION_TOOLBAR_ARRANGE_SELECTION) != null;
+    private boolean isArrangeSelectionAndBorderNodes() {
+        return find(ActionIds.ACTION_TOOLBAR_ARRANGE_SELECTION) != null && find(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDER_NODES_TOOLBAR) != null;
     }
 
     /**
      * Check that there are only two arrange actions when the diagram is selected.
      * 
-     * @return true id there are only two arrange actions when the diagram is selected
+     * @return true if there are only two arrange actions when the diagram is selected
      */
     private boolean isArrangeAllAndBorderNodes() {
         return find(ActionIds.ACTION_TOOLBAR_ARRANGE_ALL) != null && find(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDER_NODES_TOOLBAR) != null;

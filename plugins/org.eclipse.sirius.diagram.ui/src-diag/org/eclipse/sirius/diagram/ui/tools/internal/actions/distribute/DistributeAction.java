@@ -380,8 +380,7 @@ public class DistributeAction extends DiagramAction {
         // The Distribute request gets sent to the common parent for nodes and to the diagram for labels of edges.
         EditPart firstEditPart = (EditPart) editparts.get(0);
         if (firstEditPart instanceof AbstractDEdgeNameEditPart) {
-            // As in ArrangeBorderNodesAction.getCommand(), avoid NPE in getDiagramEditPart when diagramGraphialViewer
-            // is not ready.
+            // avoid NPE in getDiagramEditPart when diagramGraphialViewer is not ready.
             if (getDiagramGraphicalViewer() != null) {
                 final IEditorPart activeEditor = getWorkbenchPage().getActiveEditor();
                 if (activeEditor instanceof SiriusDiagramEditor) {
