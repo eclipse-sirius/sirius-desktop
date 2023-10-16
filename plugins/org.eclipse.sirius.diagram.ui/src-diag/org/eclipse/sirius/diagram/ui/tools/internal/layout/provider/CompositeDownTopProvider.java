@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -34,6 +34,7 @@ public class CompositeDownTopProvider implements LayoutProvider {
      * 
      * @see org.eclipse.sirius.diagram.ui.tools.api.layout.provider.LayoutProvider#getLayoutNodeProvider(org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)
      */
+    @Override
     public AbstractLayoutEditPartProvider getLayoutNodeProvider(final IGraphicalEditPart container) {
         if (this.layoutNodeProvider == null) {
             final CompoundLayoutProvider clp = new CompoundLayoutProvider();
@@ -44,7 +45,7 @@ public class CompositeDownTopProvider implements LayoutProvider {
             if (ENABLE_BORDERED_NODES_ARRANGE_ALL) {
                 // ArrangeSelectionLayoutProvider wrap all providers to manage
                 // the selected diagram element on diagram "Arrange all"
-                AbstractLayoutProvider abstractLayoutProvider = new BorderItemAwareLayoutProvider(clp);
+                AbstractLayoutProvider abstractLayoutProvider = new BorderItemAwareLayoutProvider(clp, true);
                 this.layoutNodeProvider = new ArrangeSelectionLayoutProvider(abstractLayoutProvider);
             } else {
                 this.layoutNodeProvider = new ArrangeSelectionLayoutProvider(clp);
@@ -58,6 +59,7 @@ public class CompositeDownTopProvider implements LayoutProvider {
      * 
      * @see org.eclipse.sirius.diagram.ui.tools.api.layout.provider.LayoutProvider#provides(org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)
      */
+    @Override
     public boolean provides(final IGraphicalEditPart container) {
         /*
          * we should always provide even if container is not the diagram, to
@@ -67,6 +69,7 @@ public class CompositeDownTopProvider implements LayoutProvider {
         return true;
     }
 
+    @Override
     public boolean isDiagramLayoutProvider() {
         return true;
     }

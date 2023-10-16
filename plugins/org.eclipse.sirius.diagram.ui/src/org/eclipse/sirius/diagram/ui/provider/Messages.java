@@ -98,10 +98,19 @@ public final class Messages {
     public static String ArrangeBorderNodesAction_actionText;
 
     @TranslatableMessage
+    public static String ArrangeBorderNodesAction_actionDiagramText;
+
+    @TranslatableMessage
     public static String ArrangeBorderNodesAction_commandLabel;
 
     @TranslatableMessage
     public static String ArrangeBorderNodesAction_toolbarActionText;
+
+    @TranslatableMessage
+    public static String ArrangeBorderNodesAction_toolbarActionDiagramText;
+
+    @TranslatableMessage
+    public static String ArrangeBorderNodesAction_toolTipDiagramText;
 
     @TranslatableMessage
     public static String ArrangeBorderNodesAction_toolTipText;

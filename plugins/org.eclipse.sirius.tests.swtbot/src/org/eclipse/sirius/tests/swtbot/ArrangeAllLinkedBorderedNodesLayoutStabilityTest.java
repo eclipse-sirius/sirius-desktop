@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@
 package org.eclipse.sirius.tests.swtbot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -33,7 +34,6 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
-import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
@@ -44,6 +44,7 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 /**
  * @author smonnier
  */
+@SuppressWarnings("nls")
 public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractArrangeAllTest
         implements PositionConstants {
 
@@ -133,6 +134,13 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
     }
 
     private void arrangeLinkedBorderedNodes() {
+        if (snapToGrid) {
+            editor.setSnapToGrid(true, GRID_STEP, 2);
+        }
+        editor.clickContextMenu("All Linked Border Nodes");
+    }
+
+    private void arrangeLinkedBorderedNodesOfSelection() {
         if (snapToGrid) {
             editor.setSnapToGrid(true, GRID_STEP, 2);
         }
@@ -519,13 +527,168 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
     }
 
     /**
+     * Test the <code>Arrange Linked Border Node</code> for selection, with a model that contains no child
+     * nodes/containers (except for border nodes and the diagram itself).
+     */
+    public void testArrangeLinkedBorderNodesSelection() throws Exception {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC1, REPRESENTATION_INSTANCE_NAME_UC1, DDiagram.class, true, true);
+
+        // select P1, p3 and p4
+        editor.select(editor.getEditPart("P1").parent(), editor.getEditPart("p3").parent(), editor.getEditPart("p4").parent());
+
+        // save initial position of the unselected border node
+        HashMap<String, Rectangle> initialPosition = new HashMap<String, Rectangle>();
+        initialPosition.put("C21", getInitialPosition("p2", "C21"));
+        initialPosition.put("C22", getInitialPosition("p2", "C22"));
+
+        initialPosition.put("C51", getInitialPosition("p5", "C51"));
+        initialPosition.put("C52", getInitialPosition("p5", "C52"));
+        initialPosition.put("C53", getInitialPosition("p5", "C53"));
+        initialPosition.put("C54", getInitialPosition("p5", "C54"));
+
+        initialPosition.put("C61", getInitialPosition("p6", "C61"));
+        initialPosition.put("C62", getInitialPosition("p6", "C62"));
+        initialPosition.put("C63", getInitialPosition("p6", "C63"));
+        initialPosition.put("C64", getInitialPosition("p6", "C64"));
+
+        initialPosition.put("C71", getInitialPosition("p7", "C71"));
+        initialPosition.put("C72", getInitialPosition("p7", "C72"));
+        initialPosition.put("C73", getInitialPosition("p7", "C73"));
+
+        initialPosition.put("C101", getInitialPosition("p10", "C101"));
+
+        // activate the "Arrange Linked Border Nodes" action
+        arrangeLinkedBorderedNodesOfSelection();
+
+        // Validate the positions of all bordered nodes
+        validatePositionOfPortOnContainer("P1", "C11");
+        validatePositionOfPortOnContainer("P1", "C12");
+
+        validateInitialPosition("p2", "C21", initialPosition.get("C21"));
+        validateInitialPosition("p2", "C22", initialPosition.get("C22"));
+
+        // Due to a label, grid alignment is not possible for this node.
+        // So we force the internal method call to bypass the call to
+        // a child method that overrides the behavior by adding the grid check.
+        internalValidatePositionOfPortOnContainer("p3", "C31", false);
+        validatePositionOfPortOnContainer("p3", "C32");
+        validatePositionOfPortOnContainer("p3", "C33");
+
+        validatePositionOfPortOnContainer("p4", "C41");
+        validatePositionOfPortOnContainer("p4", "C42");
+        validatePositionOfPortOnContainer("p4", "C43");
+
+        validateInitialPosition("p5", "C51", initialPosition.get("C51"));
+        validateInitialPosition("p5", "C52", initialPosition.get("C52"));
+        validateInitialPosition("p5", "C53", initialPosition.get("C53"));
+        validateInitialPosition("p5", "C54", initialPosition.get("C54"));
+
+        validateInitialPosition("p6", "C61", initialPosition.get("C61"));
+        validateInitialPosition("p6", "C62", initialPosition.get("C62"));
+        validateInitialPosition("p6", "C63", initialPosition.get("C63"));
+        validateInitialPosition("p6", "C64", initialPosition.get("C64"));
+
+        validateInitialPosition("p7", "C71", initialPosition.get("C71"));
+        validateInitialPosition("p7", "C72", initialPosition.get("C72"));
+        validateInitialPosition("p7", "C73", initialPosition.get("C73"));
+
+        validateInitialPosition("p10", "C101", initialPosition.get("C101"));
+    }
+
+    /**
+     * Test the <code>Arrange Linked Border Node</code> for selection, with a model that contains children/sub-children.
+     */
+    public void testArrangeLinkedBorderNodesSelectionWithChildren() throws Exception {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC3, REPRESENTATION_INSTANCE_NAME_UC6, DDiagram.class, true, true);
+
+        // select P1, p3, p4, p8 and p17
+        editor.select(//
+                editor.getEditPart("P1").parent(), //
+                editor.getEditPart("p3").parent(), //
+                editor.getEditPart("p4").parent(), //
+                editor.getEditPart("p8").parent(), //
+                editor.getEditPart("p17").parent() //
+        );
+
+        // save initial position of the unselected border node
+        HashMap<String, Rectangle> initialPosition = new HashMap<String, Rectangle>();
+        initialPosition.put("C21", getInitialPosition("p2", "C21"));
+        initialPosition.put("C22", getInitialPosition("p2", "C22"));
+
+        initialPosition.put("C51", getInitialPosition("p5", "C51"));
+        initialPosition.put("C52", getInitialPosition("p5", "C52"));
+        initialPosition.put("C53", getInitialPosition("p5", "C53"));
+        initialPosition.put("C54", getInitialPosition("p5", "C54"));
+
+        initialPosition.put("C61", getInitialPosition("p6", "C61"));
+        initialPosition.put("C62", getInitialPosition("p6", "C62"));
+        initialPosition.put("C63", getInitialPosition("p6", "C63"));
+        initialPosition.put("C64", getInitialPosition("p6", "C64"));
+
+        initialPosition.put("C71", getInitialPosition("p7", "C71"));
+        initialPosition.put("C72", getInitialPosition("p7", "C72"));
+        initialPosition.put("C73", getInitialPosition("p7", "C73"));
+
+        initialPosition.put("C91", getInitialPosition("p9", "C91"));
+        initialPosition.put("C92", getInitialPosition("p9", "C92"));
+        initialPosition.put("C93", getInitialPosition("p9", "C93"));
+
+        initialPosition.put("C101", getInitialPosition("p10", "C101"));
+        initialPosition.put("C111", getInitialPosition("p11", "C111"));
+        initialPosition.put("C121", getInitialPosition("p12", "C121"));
+
+        // activate the "Arrange Linked Border Nodes" action
+        arrangeLinkedBorderedNodesOfSelection();
+
+        // Validate the positions of all bordered nodes
+        validatePositionOfPortOnContainer("P1", "C11");
+        validatePositionOfPortOnContainer("P1", "C12");
+
+        validateInitialPosition("p2", "C21", initialPosition.get("C21"));
+        validateInitialPosition("p2", "C22", initialPosition.get("C22"));
+
+        validatePositionOfPortOnContainer("p3", "C31");
+        validatePositionOfPortOnContainer("p3", "C32");
+        validatePositionOfPortOnContainer("p3", "C33");
+
+        validatePositionOfPortOnContainer("p4", "C41");
+        validatePositionOfPortOnContainer("p4", "C42");
+        validatePositionOfPortOnContainer("p4", "C43");
+
+        validateInitialPosition("p5", "C51", initialPosition.get("C51"));
+        validateInitialPosition("p5", "C52", initialPosition.get("C52"));
+        validateInitialPosition("p5", "C53", initialPosition.get("C53"));
+        validateInitialPosition("p5", "C54", initialPosition.get("C54"));
+
+        validateInitialPosition("p6", "C61", initialPosition.get("C61"));
+        validateInitialPosition("p6", "C62", initialPosition.get("C62"));
+        validateInitialPosition("p6", "C63", initialPosition.get("C63"));
+        validateInitialPosition("p6", "C64", initialPosition.get("C64"));
+
+        validateInitialPosition("p7", "C71", initialPosition.get("C71"));
+        validateInitialPosition("p7", "C72", initialPosition.get("C72"));
+        validateInitialPosition("p7", "C73", initialPosition.get("C73"));
+
+        validatePositionOfPortOnContainer("p8", "C81");
+
+        validateInitialPosition("p9", "C91", initialPosition.get("C91"));
+        validateInitialPosition("p9", "C92", initialPosition.get("C92"));
+        validateInitialPosition("p9", "C93", initialPosition.get("C93"));
+
+        validateInitialPosition("p10", "C101", initialPosition.get("C101"));
+
+        validateInitialPosition("p11", "C111", initialPosition.get("C111"));
+
+        validateInitialPosition("p12", "C121", initialPosition.get("C121"));
+    }
+
+    /**
      * Validate the positions of all bordered nodes.
      * 
      * @param isDiagramWithRecursivePackage
      *            true if the diagram to validate is with recursive package
      * @param validateEdgeCrossing
-     *            true if this method must check the edge crossing, false
-     *            otherwise
+     *            true if this method must check the edge crossing, false otherwise
      */
     private void validatePositions(boolean isDiagramWithRecursivePackage, boolean validateEdgeCrossing) {
         validatePositionOfPortOnContainer("P1", "C11");
@@ -687,6 +850,44 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
     }
 
     /**
+     * If the absolute rectangle (absolute position and size) of the port <code>portName</code> contained in container
+     * <code>containerName</code> is same as <code>initialRectangle</code> (same x, y, width and height), does nothing,
+     * otherwise, fail with message.
+     */
+    private void validateInitialPosition(String containerName, String portName, Rectangle initialRectangle) {
+        SWTBotGefEditPart swtbotContainerEditPart = editor.getEditPart(containerName);
+
+        assertNotNull("No container edit part found with this name", swtbotContainerEditPart);
+
+        EditPart containerSquareEP = swtbotContainerEditPart.part();
+
+        assertTrue("The parent edit part of the container label is not a AbstractBorderedShapeEditPart", containerSquareEP.getParent() instanceof AbstractBorderedShapeEditPart);
+        final AbstractBorderedShapeEditPart containerEP = (AbstractBorderedShapeEditPart) containerSquareEP.getParent();
+
+        AbstractDiagramBorderNodeEditPart part = findPortInContainer(containerEP, portName);
+        Rectangle after = part.getFigure().getBounds();
+        assertEquals("The port " + portName + " (container " + containerName + ") has been moved even though it is not in the selection", initialRectangle, after);
+    }
+
+    /**
+     * Return the absolute rectangle (absolute position and size) of the port <code>portName</code> contained in
+     * container <code>containerName</code>.
+     */
+    private Rectangle getInitialPosition(String containerName, String portName) {
+        SWTBotGefEditPart swtbotContainerEditPart = editor.getEditPart(containerName);
+
+        assertNotNull("No container edit part found with this name", swtbotContainerEditPart);
+
+        EditPart containerSquareEP = swtbotContainerEditPart.part();
+
+        assertTrue("The parent edit part of the container label is not a AbstractBorderedShapeEditPart", containerSquareEP.getParent() instanceof AbstractBorderedShapeEditPart);
+        final AbstractBorderedShapeEditPart containerEP = (AbstractBorderedShapeEditPart) containerSquareEP.getParent();
+
+        AbstractDiagramBorderNodeEditPart part = findPortInContainer(containerEP, portName);
+        return part.getFigure().getBounds();
+    }
+
+    /**
      * Check that the port is arranged correctly.
      * 
      * @param containerName
@@ -696,10 +897,14 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      * @param pinBorderedNodes
      *            true if the port must be pin during the validation of it
      */
-    protected void validatePositionOfPortOnContainer(String containerName, String portName, boolean pinBorderedNodes) { // ,
-        // int
-        // position){
+    protected void validatePositionOfPortOnContainer(String containerName, String portName, boolean pinBorderedNodes) {
+        internalValidatePositionOfPortOnContainer(containerName, portName, pinBorderedNodes);
+    }
 
+    /**
+     * See {@link #validatePositionOfPortOnContainer(String, String, boolean)}
+     */
+    private void internalValidatePositionOfPortOnContainer(String containerName, String portName, boolean pinBorderedNodes) {
         SWTBotGefEditPart swtbotContainerEditPart = editor.getEditPart(containerName);
 
         assertNotNull("No container edit part found with this name", swtbotContainerEditPart);
@@ -727,50 +932,6 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
         boolean validateEdgeFromPortHaveBendpointsReset = validateEdgeFromPortHaveBendpointsReset(containerEP, portEP);
         assertTrue("The port " + portName + " has an edge that don't have its bendpoints reset " + containerName,
                 validateEdgeFromPortHaveBendpointsReset);
-
-        // boolean validatePositionOfPortOnContainer =
-        // validatePositionOfPortOnContainer(containerEP, portEP, position);
-        //
-        // assertTrue("The port "+portName+" is not in the expected position
-        // relatively to the container "+containerName,
-        // validatePositionOfPortOnContainer);
-    }
-
-    /**
-     * Check that the port is on the expected side.
-     * 
-     * @param containerName
-     *            The container name
-     * @param portName
-     *            The port name
-     * @param position
-     *            The expected side.
-     * @param pinPorts
-     *            true is the port must be pin during the validation
-     */
-    private void validatePositionOfPortOnContainer(String containerName, String portName, int position,
-            boolean pinPorts) {
-
-        SWTBotGefEditPart swtbotContainerEditPart = editor.getEditPart(containerName);
-
-        assertNotNull("No container edit part found with this name", swtbotContainerEditPart);
-
-        EditPart containerSquareEP = swtbotContainerEditPart.part();
-
-        assertTrue("The parent edit part of the container label is not a AbstractBorderedShapeEditPart",
-                containerSquareEP.getParent() instanceof AbstractBorderedShapeEditPart);
-        final AbstractBorderedShapeEditPart containerEP = (AbstractBorderedShapeEditPart) containerSquareEP.getParent();
-        final AbstractDiagramBorderNodeEditPart portEP = findPortInContainer(containerEP, portName);
-
-        assertNotNull("No port edit part found with this name", portEP);
-
-        if (pinPorts) {
-            pinDiagramElement((DDiagramElement) ((Node) portEP.getModel()).getElement());
-        }
-
-        boolean validatePositionOfPortOnContainer = validatePositionOfPortOnContainer(containerEP, portEP, position);
-        assertTrue("The port " + portName + " is not in the expected position relatively to the container "
-            + containerName, validatePositionOfPortOnContainer);
     }
 
     private boolean validateEdgeFromPortCrossParentContainer(final AbstractBorderedShapeEditPart containerEP,
@@ -876,32 +1037,6 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
         }
 
         return linkedPorts;
-    }
-
-    private boolean validatePositionOfPortOnContainer(AbstractBorderedShapeEditPart containerEP,
-            AbstractDiagramBorderNodeEditPart portEP, int position) {
-        Rectangle boundsPort = portEP.getFigure().getBounds();
-        Rectangle boundsContainer = containerEP.getFigure().getBounds();
-        switch (position) {
-            case NORTH:
-                return Math.abs(boundsContainer.y - boundsPort.y) < IBorderItemOffsets.DEFAULT_OFFSET.height;
-
-            case EAST:
-                return Math.abs(boundsContainer.x + boundsContainer.width - boundsPort.x
-                    - boundsPort.width) < IBorderItemOffsets.DEFAULT_OFFSET.width;
-
-            case SOUTH:
-                return Math.abs(boundsContainer.y + boundsContainer.height - boundsPort.y
-                    - boundsPort.height) < IBorderItemOffsets.DEFAULT_OFFSET.height;
-
-            case WEST:
-                return Math.abs(boundsContainer.x - boundsPort.x) < IBorderItemOffsets.DEFAULT_OFFSET.width;
-
-            default:
-                fail("The position should be one among North/East/South/West.");
-                break;
-        }
-        return false;
     }
 
     /**

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -51,6 +51,7 @@ public class OrderedTreeLayoutProvider implements LayoutProvider {
     /**
      * {@inheritDoc}
      */
+    @Override
     public AbstractLayoutEditPartProvider getLayoutNodeProvider(final IGraphicalEditPart container) {
         AbstractLayoutProvider layoutProvider = null;
         if (isDDiagramWithConfiguredOrderedTreeLayout(container)) {
@@ -62,7 +63,7 @@ public class OrderedTreeLayoutProvider implements LayoutProvider {
                 // We return an ArrangeAllOnlyLayoutProvider as no
                 // "Arrange Selection" should be done on such layout.
                 if (ENABLE_BORDERED_NODES_ARRANGE_ALL) {
-                    AbstractLayoutProvider abstractLayoutProvider = new BorderItemAwareLayoutProvider(clp);
+                    AbstractLayoutProvider abstractLayoutProvider = new BorderItemAwareLayoutProvider(clp, true);
                     layoutProvider = new ArrangeAllOnlyLayoutProvider(abstractLayoutProvider);
                 } else {
                     layoutProvider = new ArrangeAllOnlyLayoutProvider(clp);
@@ -77,6 +78,7 @@ public class OrderedTreeLayoutProvider implements LayoutProvider {
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean provides(final IGraphicalEditPart container) {
         return isDDiagramWithConfiguredOrderedTreeLayout(container);
     }
@@ -84,6 +86,7 @@ public class OrderedTreeLayoutProvider implements LayoutProvider {
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean isDiagramLayoutProvider() {
         return false;
     }

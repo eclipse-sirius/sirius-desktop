@@ -418,6 +418,11 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      */
     Map<IBorderItemEditPart, BorderItemLayoutData> previousIterationDatasbyEditPart = new HashMap<IBorderItemEditPart, BorderItemLayoutData>();
 
+    /**
+     * Determines whether the border item layout should be call recursively.
+     */
+    private boolean recursive;
+
     private Predicate<Object> validateAllElementInArrayListAreIDiagramElementEditPart = new Predicate<Object>() {
 
         @Override
@@ -431,9 +436,12 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      * 
      * @param clp
      *            The layout provider to call before calling the layout of the border items.
+     * @param recursive
+     *            <code>true</code> if children must be arranged recursively, <code>false</code> otherwise.
      */
-    public BorderItemAwareLayoutProvider(final AbstractLayoutProvider clp) {
+    public BorderItemAwareLayoutProvider(final AbstractLayoutProvider clp, boolean recursive) {
         initialLayoutProvider = clp;
+        this.recursive = recursive;
     }
 
     /**
@@ -870,11 +878,13 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
             }
 
         }
-        for (Object editPart : graphicalEditPart.getChildren()) {
-            if (editPart instanceof GraphicalEditPart) {
-                final Command layoutBorderItems = layoutBorderItems((GraphicalEditPart) editPart, elementsToKeepFixed);
-                if (layoutBorderItems != null && layoutBorderItems.canExecute()) {
-                    result.add(layoutBorderItems);
+        if (recursive) {
+            for (Object editPart : graphicalEditPart.getChildren()) {
+                if (editPart instanceof GraphicalEditPart) {
+                    final Command layoutBorderItems = layoutBorderItems((GraphicalEditPart) editPart, elementsToKeepFixed);
+                    if (layoutBorderItems != null && layoutBorderItems.canExecute()) {
+                        result.add(layoutBorderItems);
+                    }
                 }
             }
         }
@@ -1597,7 +1607,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
                     }
                 }
             } else {
-                final Rectangle bounds = getBounds((IGraphicalEditPart) child, scale, moveDelta, true, false);
+                final Rectangle bounds = getBounds(child, scale, moveDelta, true, false);
                 final int rightSizeXCoordinate = bounds.x + bounds.width;
                 if (result < rightSizeXCoordinate) {
                     result = rightSizeXCoordinate;
@@ -1639,7 +1649,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
                     }
                 }
             } else {
-                final Rectangle bounds = getBounds((IGraphicalEditPart) child);
+                final Rectangle bounds = getBounds(child);
                 final int bottomSizeYCoordinate = bounds.y + bounds.height;
                 if (result < bottomSizeYCoordinate) {
                     result = bottomSizeYCoordinate;
