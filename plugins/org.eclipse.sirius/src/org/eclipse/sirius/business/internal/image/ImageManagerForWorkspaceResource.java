@@ -16,6 +16,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.MessageFormat;
+import java.util.Arrays;
 import java.util.Base64;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -26,6 +27,7 @@ import java.util.regex.Pattern;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -89,7 +91,8 @@ public class ImageManagerForWorkspaceResource implements ImageManager {
         // Create an image file in the images folder of the project
         String platformString = contextObject.eResource().getURI().toPlatformString(true);
         IFile airdFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(platformString));
-        IFolder imageFolder = airdFile.getProject().getFolder(ImageManager.IMAGE_FOLDER_NAME);
+        String imagesFolderName = getImagesFolderName(airdFile);
+        IFolder imageFolder = airdFile.getProject().getFolder(imagesFolderName);
 
         if (!imageFolder.exists()) {
             imageFolder.create(true, true, null);
@@ -109,6 +112,35 @@ public class ImageManagerForWorkspaceResource implements ImageManager {
         };
         // we return function because we need to execute image creation in command while keeping filename.
         return new CreateImageFileProvider(createFileFunction, filename);
+    }
+
+    /**
+     * Get the name of the existing images folder name if it exists; {@link #IMAGE_FOLDER_NAME} otherwise.
+     * 
+     * @param airdFile
+     *            the file used to retrieve an existing images folder in the project
+     * @return the name of the existing images folder name if it exists; {@link #IMAGE_FOLDER_NAME} otherwise.
+     */
+    private String getImagesFolderName(IResource airdFile) {
+        String imageFolderName = ImageManager.IMAGE_FOLDER_NAME;
+        IProject project = airdFile.getProject();
+        Optional<IFolder> optImageFolder;
+        try {
+            optImageFolder = Arrays.stream(project.members()) //
+                    .filter(IFolder.class::isInstance) //
+                    .map(IFolder.class::cast) //
+                    .filter(folder -> ImageManager.IMAGE_FOLDER_NAME.equals(folder.getName().toLowerCase())) //
+                    .findFirst();
+        } catch (CoreException e) {
+            optImageFolder = Optional.empty();
+            SiriusPlugin.getDefault().error(MessageFormat.format(Messages.ImageManager_projectMembersFailure, project.getName()), e);
+        }
+        if (optImageFolder.isEmpty()) {
+            imageFolderName = ImageManager.IMAGE_FOLDER_NAME;
+        } else {
+            imageFolderName = optImageFolder.get().getName();
+        }
+        return imageFolderName;
     }
 
     @Override

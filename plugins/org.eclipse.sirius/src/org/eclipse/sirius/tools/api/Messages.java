@@ -967,6 +967,9 @@ public final class Messages {
 
     @TranslatableMessage
     public static String ImageManager_imageCreationFailure;
+    
+    @TranslatableMessage
+    public static String ImageManager_projectMembersFailure;
 
     @TranslatableMessage
     public static String PastImage_TransactionalEditingDomainIsNull;
