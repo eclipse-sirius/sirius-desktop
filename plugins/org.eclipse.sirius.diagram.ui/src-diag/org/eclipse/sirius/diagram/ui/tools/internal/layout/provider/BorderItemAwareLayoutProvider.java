@@ -81,7 +81,6 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.model.business.internal.query.DNodeContainerExperimentalQuery;
-import org.eclipse.sirius.diagram.tools.api.layout.PinHelper;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
@@ -504,7 +503,6 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
         }
 
         CompoundCommand result = new CompoundCommand();
-
         if (launchNormalArrange) {
             // Create a request recorder to record all ChangeBounds requests by
             // editparts.
@@ -535,6 +533,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
 
         resetBoundsOfPinnedElements(selectedObjects, result, elementsToKeepFixed);
         this.getViewsToChangeBoundsRequest().clear();
+
         if (result.size() == 0) {
             result = null; // removeCommandsForPinnedElements(result);
         }
@@ -598,7 +597,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
             EObject semanticElement = graphicalEditPart.resolveSemanticElement();
             if (semanticElement instanceof DDiagramElement) {
                 DDiagramElement dDiagramElement = (DDiagramElement) semanticElement;
-                if (new PinHelper().isPinned(dDiagramElement) || (elementsToKeepFixed != null && elementsToKeepFixed.contains(graphicalEditPart))) {
+                if (isPinned(graphicalEditPart) || (elementsToKeepFixed != null && elementsToKeepFixed.contains(graphicalEditPart))) {
                     final TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(semanticElement);
                     View notationView = graphicalEditPart.getNotationView();
                     if (notationView instanceof Node) {
@@ -1442,7 +1441,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
         Dimension parentBorderSize = getBorder(graphicalEditPart).getSize();
         if (graphicalEditPart.resolveSemanticElement() instanceof DDiagramElement) {
             DDiagramElement dDiagramElement = (DDiagramElement) graphicalEditPart.resolveSemanticElement();
-            isPinned = new PinHelper().isPinned(dDiagramElement);
+            isPinned = isPinned(graphicalEditPart);
             if (isPinned) {
                 bounds = graphicalEditPart.getFigure().getBounds().getCopy();
             }

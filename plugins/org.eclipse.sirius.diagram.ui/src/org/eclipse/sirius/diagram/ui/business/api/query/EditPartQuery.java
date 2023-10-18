@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2021 Obeo
+ * Copyright (c) 2018, 2023 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -19,8 +19,11 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.ArrangeConstraint;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.layout.PinHelper;
@@ -104,7 +107,9 @@ public final class EditPartQuery {
         if (!(editPart instanceof SiriusNoteEditPart)) {
             if (editPart.resolveSemanticElement() instanceof DDiagramElement) {
                 DDiagramElement dDiagramElement = (DDiagramElement) editPart.resolveSemanticElement();
-                isMovableByAutomaticLayout = !(new PinHelper().isPinned(dDiagramElement) || (elementsToNotMove != null && elementsToNotMove.contains(editPart)));
+                String prefKey = SiriusDiagramPreferencesKeys.PREF_MOVE_PINNED_ELEMENTS.name();
+                boolean ignorePin = Platform.getPreferencesService().getBoolean(DiagramPlugin.ID, prefKey, false, null);
+                isMovableByAutomaticLayout = ignorePin || !(new PinHelper().isPinned(dDiagramElement) || (elementsToNotMove != null && elementsToNotMove.contains(editPart)));
             }
         } else {
             if (!Platform.getPreferencesService().getBoolean(DiagramPlugin.ID, SiriusDiagramPreferencesKeys.PREF_MOVE_NOTES_DURING_LATOUT.name(), false, null)) {
@@ -164,5 +169,35 @@ public final class EditPartQuery {
             result = getDiagramEditPart(parent);
         }
         return result;
+    }
+
+    /**
+     * Get the pinned status of the associated semantic element {@link DDiagramElement} of the given
+     * {@link IGraphicalEditPart}. The pinned status is defined by having the following {@link ArrangeConstraint}
+     * through {@link AbstractDNode#getArrangeConstraints()} or {@link DEdge#getArrangeConstraints()} :
+     * 
+     * <ol>
+     * <li>{@link ArrangeConstraint#KEEP_LOCATION}</li>
+     * <li>{@link ArrangeConstraint#KEEP_SIZE}</li>
+     * <li>{@link ArrangeConstraint#KEEP_RATIO}</li>
+     * </ol>
+     * 
+     * The pinned status can be masked by the Move Pinned Elements preference. If this configuration is enabled, this
+     * method always returns unpinned.
+     * 
+     * @return <code>true</code> if the associated {@link DDiagramElement} is pinned, false else.
+     */
+    public boolean isPinned() {
+        String prefKey = SiriusDiagramPreferencesKeys.PREF_MOVE_PINNED_ELEMENTS.name();
+        boolean ignorePin = Platform.getPreferencesService().getBoolean(DiagramPlugin.ID, prefKey, false, null);
+        if (ignorePin) {
+            return false;
+        } else {
+            boolean isPinned = false;
+            if (editPart.resolveSemanticElement() instanceof DDiagramElement dDiagramElement) {
+                isPinned = new PinHelper().isPinned(dDiagramElement);
+            }
+            return isPinned;
+        }
     }
 }
