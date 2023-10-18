@@ -42,8 +42,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.profiler.ProfilerTask;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
-import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.tools.api.layout.PinHelper;
+import org.eclipse.sirius.diagram.ui.business.api.query.EditPartQuery;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.LayoutService;
 
@@ -311,12 +310,7 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
      *         pinned.
      */
     protected boolean isPinned(final IGraphicalEditPart part) {
-        boolean isPinned = false;
-        if (part.resolveSemanticElement() instanceof DDiagramElement) {
-            DDiagramElement dDiagramElement = (DDiagramElement) part.resolveSemanticElement();
-            isPinned = new PinHelper().isPinned(dDiagramElement);
-        }
-        return isPinned;
+        return new EditPartQuery(part).isPinned();
     }
 
     /**
@@ -521,7 +515,7 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
         }
         var iterChildren = root.getChildren().iterator();
         while (iterChildren.hasNext()) {
-            final EditPart next = (EditPart) iterChildren.next();
+            final EditPart next = iterChildren.next();
             editParts.addAll(getAllEditParts(next));
         }
         return new ArrayList<>(editParts);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -42,7 +42,7 @@ import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.model.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.model.business.internal.query.DNodeContainerExperimentalQuery;
-import org.eclipse.sirius.diagram.tools.api.layout.PinHelper;
+import org.eclipse.sirius.diagram.ui.business.api.query.EditPartQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
@@ -77,26 +77,17 @@ public class ArrangeAllWithAutoSize {
      * @return Return true if this part should be auto-size
      */
     public static boolean shouldBeAutosized(final IGraphicalEditPart part) {
-        boolean enabled = ArrangeAllWithAutoSize.isEnabled() && (ArrangeAllWithAutoSize.isContainer(part) || ArrangeAllWithAutoSize.isList(part)) && !ArrangeAllWithAutoSize.isPinned(part);
+        boolean enabled = ArrangeAllWithAutoSize.isEnabled() && (ArrangeAllWithAutoSize.isContainer(part) || ArrangeAllWithAutoSize.isList(part)) && !new EditPartQuery(part).isPinned();
         enabled = enabled && !ArrangeAllWithAutoSize.isDefaultSizeHasJustBeenSet(part);
         if (enabled && ArrangeAllWithAutoSize.isRegion(part)) {
             EditPart regionContainerCompartment = part.getParent();
             if (regionContainerCompartment != null) {
                 EditPart regionContainer = regionContainerCompartment.getParent();
-                enabled = regionContainer instanceof IGraphicalEditPart && !ArrangeAllWithAutoSize.isPinned((IGraphicalEditPart) regionContainer);
+                enabled = regionContainer instanceof IGraphicalEditPart && !new EditPartQuery((IGraphicalEditPart) regionContainer).isPinned();
             }
         }
         return enabled;
 
-    }
-
-    private static boolean isPinned(final IGraphicalEditPart part) {
-        if (part instanceof IDiagramElementEditPart) {
-            IDiagramElementEditPart diagramElementEditPart = (IDiagramElementEditPart) part;
-            DDiagramElement dDiagramElement = diagramElementEditPart.resolveDiagramElement();
-            return new PinHelper().isPinned(dDiagramElement);
-        }
-        return false;
     }
 
     /**

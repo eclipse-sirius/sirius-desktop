@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2002, 2021 IBM Corporation and others.
+ * Copyright (c) 2002, 2023 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -55,8 +55,7 @@ import org.eclipse.gmf.runtime.draw2d.ui.mapmode.MapModeUtil;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.tools.api.layout.PinHelper;
+import org.eclipse.sirius.diagram.ui.business.api.query.EditPartQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutExtender;
@@ -89,6 +88,7 @@ public abstract class AbstractCompositeLayoutProvider extends CompositeLayoutPro
 
     private Predicate<Object> validateAllElementInArrayListAreIDiagramElementEditPart = new Predicate<Object>() {
 
+        @Override
         public boolean apply(Object input) {
             return input instanceof IDiagramElementEditPart;
         }
@@ -123,6 +123,7 @@ public abstract class AbstractCompositeLayoutProvider extends CompositeLayoutPro
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean handleConnectableListItems() {
         return shouldHandleConnectableListItems();
     }
@@ -130,6 +131,7 @@ public abstract class AbstractCompositeLayoutProvider extends CompositeLayoutPro
     /**
      * {@inheritDoc}
      */
+    @Override
     public Rectangle provideNodeMetrics(final Node node) {
         return getNodeMetrics(node);
     }
@@ -137,6 +139,7 @@ public abstract class AbstractCompositeLayoutProvider extends CompositeLayoutPro
     /**
      * {@inheritDoc}
      */
+    @Override
     public LayoutExtender getExtender() {
         return extender;
     }
@@ -447,11 +450,6 @@ public abstract class AbstractCompositeLayoutProvider extends CompositeLayoutPro
      *         pinned.
      */
     protected boolean isPinned(final IGraphicalEditPart part) {
-        boolean isPinned = false;
-        if (part.resolveSemanticElement() instanceof DDiagramElement) {
-            DDiagramElement dDiagramElement = (DDiagramElement) part.resolveSemanticElement();
-            isPinned = new PinHelper().isPinned(dDiagramElement);
-        }
-        return isPinned;
+        return new EditPartQuery(part).isPinned();
     }
 }

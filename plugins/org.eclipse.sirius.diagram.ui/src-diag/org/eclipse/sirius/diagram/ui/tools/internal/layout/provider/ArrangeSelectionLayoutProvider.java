@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,7 +18,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.RootEditPart;
 import org.eclipse.gef.commands.Command;
@@ -27,8 +26,6 @@ import org.eclipse.gef.commands.UnexecutableCommand;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
-import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.tools.api.layout.PinHelper;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.AbstractLayoutProvider;
@@ -72,16 +69,8 @@ public class ArrangeSelectionLayoutProvider extends AbstractLayoutProvider {
     /**
      * Predicate to check if a IDiagramElementEditPart is unpinned
      */
-    private Predicate<IDiagramElementEditPart> diagramElementEditPartIsUnpinned = new Predicate<IDiagramElementEditPart>() {
-
-        @Override
-        public boolean apply(IDiagramElementEditPart input) {
-            EObject diagramElement = input.resolveDiagramElement();
-            if (diagramElement instanceof DDiagramElement) {
-                return !new PinHelper().isPinned((DDiagramElement) diagramElement);
-            }
-            return false;
-        }
+    private Predicate<IDiagramElementEditPart> diagramElementEditPartIsUnpinned = input -> {
+        return !isPinned(input);
     };
 
     /**
