@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -101,66 +101,60 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
     @Override
     public void buildContextMenu(final IMenuManager menu) {
         getViewer().flush();
-        // CHECKSTYLE:OFF
         try {
-            TransactionUtil.getEditingDomain((EObject) getViewer().getContents().getModel()).runExclusive(new Runnable() {
-
-                @Override
-                public void run() {
-                    ContributionItemService.getInstance().contributeToPopupMenu(DiagramEditorContextMenuProvider.this, part);
-                    menu.remove(ActionIds.ACTION_DELETE_FROM_MODEL);
-                    updateSelectMenu(menu);
-                    updateFormatMenu(menu);
-                    final IMenuManager manager = menu.findMenuUsingPath(ActionIds.MENU_EDIT);
-                    IContributionItem find = manager.find(DELETE_FROM_GROUP);
-                    if (find != null) {
-                        IContributionItem deleteFromDiagram = menu.find(ActionIds.ACTION_DELETE_FROM_DIAGRAM);
-                        if (deleteFromDiagram != null) {
-                            menu.remove(ActionIds.ACTION_DELETE_FROM_DIAGRAM);
-                            manager.appendToGroup(DELETE_FROM_GROUP, deleteFromDiagram);
-                        }
-                        manager.appendToGroup(DELETE_FROM_GROUP, deleteAction);
-                    } else {
-                        manager.add(deleteAction);
+            TransactionUtil.getEditingDomain((EObject) getViewer().getContents().getModel()).runExclusive(() -> {
+                ContributionItemService.getInstance().contributeToPopupMenu(this, part);
+                menu.remove(ActionIds.ACTION_DELETE_FROM_MODEL);
+                updateSelectMenu(menu);
+                updateFormatMenu(menu);
+                final IMenuManager editMenu = menu.findMenuUsingPath(ActionIds.MENU_EDIT);
+                IContributionItem find = editMenu.find(DELETE_FROM_GROUP);
+                if (find != null) {
+                    IContributionItem deleteFromDiagram = menu.find(ActionIds.ACTION_DELETE_FROM_DIAGRAM);
+                    if (deleteFromDiagram != null) {
+                        menu.remove(ActionIds.ACTION_DELETE_FROM_DIAGRAM);
+                        editMenu.appendToGroup(DELETE_FROM_GROUP, deleteFromDiagram);
                     }
+                    editMenu.appendToGroup(DELETE_FROM_GROUP, deleteAction);
+                } else {
+                    editMenu.add(deleteAction);
+                }
 
-                    if (clipboardSupportOnlyOnNote() && hasViewOfDDiagramElementSelected()) {
-                        manager.remove(GlobalActionId.CUT);
-                        manager.remove(GlobalActionId.COPY);
-                        manager.remove(GlobalActionId.PASTE);
-                    }
+                if (clipboardSupportOnlyOnNote() && hasViewOfDDiagramElementSelected()) {
+                    editMenu.remove(GlobalActionId.CUT);
+                    editMenu.remove(GlobalActionId.COPY);
+                    editMenu.remove(GlobalActionId.PASTE);
+                }
 
-                    // Add the arrangeBorderNodesActionToolBar just after the
-                    // toolbarArrangeAllAction (Arrange All action of GMF)
-                    // This is needed just in case of diagram selection.
-                    final IContributionItem item1 = menu.find(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDER_NODES);
-                    if (item1 != null) {
-                        menu.remove(item1);
-                        final IMenuManager arrangeMenu = menu.findMenuUsingPath(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.MENU_ARRANGE);
-                        if (PLUGIN_MENU_MANAGER_CLASS_NAME.equals(arrangeMenu.getClass().getSimpleName())) { // $NON-NLS-1$
-                            // We move the arrangeMenu only if it is contributed through plugin contribution. In case of
-                            // VSM contribution, we ignore it.
-                            updateArrangeMenuName(arrangeMenu);
-                            arrangeMenu.insertAfter(ActionIds.ACTION_TOOLBAR_ARRANGE_ALL, item1);
-                        }
-                    }
-
-                    // Move arrange menu for diagram element
-                    moveArrangeMenuForDiagramElements(menu);
-
-                    // move Show/Hide and Export diagram as image after refresh
-                    final IContributionItem item3 = menu.find(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.SELECT_HIDDEN_ELEMENTS);
-                    if (item3 != null) {
-                        menu.remove(item3);
-                        menu.insertAfter(FILTER_FORMAT_GROUP, item3);
-                    }
-                    final IContributionItem item2 = menu.find(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.COPY_TO_IMAGE);
-                    if (item2 != null) {
-                        menu.remove(item2);
-                        menu.insertAfter(FILTER_FORMAT_GROUP, item2);
+                // Add the arrangeBorderNodesActionToolBar just after the
+                // toolbarArrangeAllAction (Arrange All action of GMF)
+                // This is needed just in case of diagram selection.
+                final IContributionItem arrangeBorderNodesItem = menu.find(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDER_NODES);
+                if (arrangeBorderNodesItem != null) {
+                    menu.remove(arrangeBorderNodesItem);
+                    final IMenuManager arrangeMenu = menu.findMenuUsingPath(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.MENU_ARRANGE);
+                    if (PLUGIN_MENU_MANAGER_CLASS_NAME.equals(arrangeMenu.getClass().getSimpleName())) { // $NON-NLS-1$
+                        // We move the arrangeMenu only if it is contributed through plugin contribution. In case of
+                        // VSM contribution, we ignore it.
+                        updateArrangeMenuName(arrangeMenu);
+                        arrangeMenu.insertAfter(ActionIds.ACTION_TOOLBAR_ARRANGE_ALL, arrangeBorderNodesItem);
                     }
                 }
 
+                // Move arrange menu for diagram element
+                moveArrangeMenuForDiagramElements(menu);
+
+                // move Show/Hide and Export diagram as image after refresh
+                final IContributionItem selectHiddenElementsItem = menu.find(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.SELECT_HIDDEN_ELEMENTS);
+                if (selectHiddenElementsItem != null) {
+                    menu.remove(selectHiddenElementsItem);
+                    menu.insertAfter(FILTER_FORMAT_GROUP, selectHiddenElementsItem);
+                }
+                final IContributionItem copyToImageItem = menu.find(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.COPY_TO_IMAGE);
+                if (copyToImageItem != null) {
+                    menu.remove(copyToImageItem);
+                    menu.insertAfter(FILTER_FORMAT_GROUP, copyToImageItem);
+                }
             });
         } catch (final InterruptedException e) {
             // do nothing
@@ -234,7 +228,6 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
         }
     }
 
-    // CHECKSTYLE:ON
     /**
      * Rename the Arrange menu (new name=Layout menu), move it and reorganize it.
      * 
