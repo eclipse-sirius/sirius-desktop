@@ -31,6 +31,7 @@ import org.eclipse.gmf.runtime.diagram.ui.services.layout.AbstractLayoutEditPart
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -57,6 +58,8 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
     private static final String FILTER_FORMAT_GROUP = "filterFormatGroup"; //$NON-NLS-1$
 
     private static final String PLUGIN_MENU_MANAGER_CLASS_NAME = "PluginMenuManager"; //$NON-NLS-1$
+
+    private static final String PIN_GROUP = "pinGroup"; //$NON-NLS-1$
 
     /** the workbench part */
     private IWorkbenchPart part;
@@ -139,6 +142,14 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
                         updateArrangeMenuName(arrangeMenu);
                         arrangeMenu.insertAfter(ActionIds.ACTION_TOOLBAR_ARRANGE_ALL, arrangeBorderNodesItem);
                     }
+                }
+
+                final IContributionItem movePinnedElementsItem = menu.find(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.MOVE_PINNED_ELEMENTS);
+                if (movePinnedElementsItem != null) {
+                    menu.remove(movePinnedElementsItem);
+                    final IMenuManager arrangeMenu = menu.findMenuUsingPath(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.MENU_ARRANGE);
+                    arrangeMenu.add(new Separator(PIN_GROUP));
+                    arrangeMenu.appendToGroup(PIN_GROUP, movePinnedElementsItem);
                 }
 
                 // Move arrange menu for diagram element

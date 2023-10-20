@@ -842,6 +842,12 @@ public final class Messages {
     public static String ModelElementSelectionPageMessage;
 
     @TranslatableMessage
+    public static String MovePinnedElementsAction_text;
+
+    @TranslatableMessage
+    public static String MovePinnedElementsAction_toolTipText;
+
+    @TranslatableMessage
     public static String MoveViewOperation_nullMoveDeltaError;
 
     @TranslatableMessage

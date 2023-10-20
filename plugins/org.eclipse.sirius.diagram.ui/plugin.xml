@@ -146,6 +146,8 @@
                  menubarPath="/edit/copyFormatGroup">
            </partAction>
            <partAction menubarPath="/diagramMenu/arrangeMenu/arrangeGroup" id="arrangeBorderNodesAction"/>
+           <partMenuGroup menubarPath="/diagramMenu/arrangeMenu/" id="pinGroup" separator="true" />
+           <partAction menubarPath="/diagramMenu/arrangeMenu/pinGroup" id="movePinnedElements"/>
            <partAction menubarPath="/diagramMenu/routerMenu/routerGroup" id="treeRoutingStyleAction"/>
            <partAction menubarPath="/diagramMenu/routerMenu/routerGroup" id="obliqueRoutingStyleAction"/>
            <partAction menubarPath="/diagramMenu/routerMenu/routerGroup" id="rectilinearRoutingStyleAction"/>
@@ -250,6 +252,7 @@
             </popupAction>
 
             <popupMenuGroup path="/formatMenu/arrangeMenu/" id="pinGroup" />
+            <popupAction path="/formatMenu/arrangeMenu/pinGroup" id="movePinnedElements"/>
             <popupAction path="/formatMenu/arrangeMenu/pinGroup" id="pinElementsAction" />
             <popupAction path="/formatMenu/arrangeMenu/pinGroup" id="unpinElementsAction" />
             <popupAction path="/formatMenu/arrangeMenu/arrangeGroup" id="arrangeBorderNodesAction"/>
@@ -381,6 +384,8 @@
             </popupMenu>    
             <popupMenuGroup path="/formatMenu/arrangeMenu/" id="arrangeGroup">
             </popupMenuGroup>  
+            <popupMenuGroup path="/formatMenu/arrangeMenu/" id="pinGroup">
+            </popupMenuGroup>  
           </popupContribution>             
        </contributionItemProvider>
        
@@ -499,6 +504,9 @@
         </popupStructuredContributionCriteria>
         <popupAction
               id="arrangeBorderNodesAction">
+        </popupAction>
+        <popupAction
+              id="movePinnedElements">
         </popupAction>
      </popupContribution>
   </contributionItemProvider>

@@ -76,6 +76,9 @@ public interface ActionIds {
     @Deprecated
     String ARRANGE_BORDERED_NODES_TOOLBAR = "arrangeBorderNodesActionToolBar"; //$NON-NLS-1$
 
+    /** Action id for move pinned elements action. */
+    String MOVE_PINNED_ELEMENTS = "movePinnedElements"; //$NON-NLS-1$
+
     /** Action for copy (export) to an image action. */
     String COPY_TO_IMAGE = "newCopyToImageAction"; //$NON-NLS-1$
 
