@@ -137,7 +137,13 @@ public class DragAndDropFromControlledResourceTest extends AbstractSiriusSwtBotG
     public void tearDown() throws Exception {
         // Reopen outline
         new DesignerViews(bot).openOutlineView();
+        editor.close();
 
         super.tearDown();
+        
+        editor = null;
+        
+        ecoreEcoreResource = null;
+        semanticResourceNode = null;
     }
 }

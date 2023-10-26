@@ -596,4 +596,11 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
             fail("The action actionMenu4 of the menu myMenu4 should be restored");
         }
     }
+    
+    @Override
+    protected void tearDown() throws Exception {
+        editor.close();
+        super.tearDown();
+        editor = null;
+    }
 }

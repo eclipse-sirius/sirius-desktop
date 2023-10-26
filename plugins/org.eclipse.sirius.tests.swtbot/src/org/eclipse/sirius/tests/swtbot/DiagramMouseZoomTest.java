@@ -135,7 +135,9 @@ public class DiagramMouseZoomTest extends AbstractSiriusSwtBotGefTestCase {
         // Go to the origin to avoid scroll bar
         editor.scrollTo(0, 0);
         SWTBotUtils.waitAllUiEvents();
+        editor.close();
         super.tearDown();
+        editor = null;
     }
 
     private void openDiagram(String descriptionName, String instanceName, ZoomLevel zoomLevel) {

@@ -1933,6 +1933,9 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         // org.eclipse.ui.internal.statushandlers.StatusHandlerRegistry.<init>
         // on close.
         ResourcesPlugin.getWorkspace().save(true, null);
+        
+        if (editor!=null) editor.close();
+        editor = null;
     }
 
     // CHECKSTYLE:OFF

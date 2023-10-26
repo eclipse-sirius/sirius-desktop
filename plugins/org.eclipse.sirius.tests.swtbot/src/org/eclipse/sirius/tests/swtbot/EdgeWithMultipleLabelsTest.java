@@ -1364,4 +1364,11 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
             deleteMenu.click();
         }
     }
+    
+    @Override
+    protected void tearDown() throws Exception {
+        editor.close();
+        super.tearDown();
+        editor = null;
+    }
 }

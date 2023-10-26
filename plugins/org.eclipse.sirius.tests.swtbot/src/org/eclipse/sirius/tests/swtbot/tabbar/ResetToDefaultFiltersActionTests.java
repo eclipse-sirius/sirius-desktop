@@ -212,4 +212,12 @@ public class ResetToDefaultFiltersActionTests extends AbstractSiriusSwtBotGefTes
             }
         }));
     }
+    
+    @Override
+    protected void tearDown() throws Exception {
+        editor.close();
+        super.tearDown();
+        editor = null;
+        modelElementItem = null;
+    }
 }

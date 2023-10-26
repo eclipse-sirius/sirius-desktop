@@ -191,5 +191,12 @@ public class NodeBorderLabelPositionStabilityTest extends AbstractSiriusSwtBotGe
         assertEquals("The label is not at the expected X position", labelUpperLeftLocation.x, dnepUpperLeftLocation.x + dnepDimension.width, 5);
         assertEquals("The label is not at the expected Y position", labelCenterLocation.y, dnepUpperLeftLocation.y + dnepDimension.height / 2, 5);
     }
+    
+    @Override
+    protected void tearDown() throws Exception {
+        editor.close();
+        super.tearDown();
+        editor = null;
+    }
 
 }

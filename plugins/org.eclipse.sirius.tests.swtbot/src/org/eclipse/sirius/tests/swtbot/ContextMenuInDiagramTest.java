@@ -141,4 +141,11 @@ public class ContextMenuInDiagramTest extends AbstractSiriusSwtBotGefTestCase {
         EditPart selectedEditPart = (EditPart) ((IStructuredSelection) editor.getSelection()).getFirstElement();
         assertEquals("Wrong selected object after right clicking on it", expectedSelectedEditPart, selectedEditPart);
     }
+    
+    @Override
+    protected void tearDown() throws Exception {
+        editor.close();
+        super.tearDown();
+        editor = null;
+    }
 }

@@ -597,4 +597,11 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
             assertTrue("Tool button `" + item.getToolTipText() + "` is outside the visible part of the toolbar.", itemIsInside);
         }
     }
+    
+    @Override
+    protected void tearDown() throws Exception {
+        editor.close();
+        super.tearDown();
+        editor = null;
+    }
 }

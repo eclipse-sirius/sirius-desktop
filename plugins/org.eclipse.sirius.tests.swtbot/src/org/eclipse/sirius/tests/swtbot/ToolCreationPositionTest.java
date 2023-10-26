@@ -314,5 +314,12 @@ public class ToolCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
         assertEquals(creationPosition.x + position * SiriusLayoutDataManager.PADDING, ep.getFigure().getBounds().x, 1);
         assertEquals(creationPosition.y + position * SiriusLayoutDataManager.PADDING, ep.getFigure().getBounds().y, 1);
     }
+    
+    @Override
+    protected void tearDown() throws Exception {
+        editor.close();
+        super.tearDown();
+        editor = null;
+    }
 
 }

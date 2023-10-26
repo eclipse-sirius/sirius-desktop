@@ -75,7 +75,7 @@ public class LockedAppearanceTabTest extends AbstractSiriusSwtBotGefTestCase {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        // Open the editor
+        // Open the editor1
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "Entities", "aaaa package entities", DDiagram.class);
     }
 
@@ -226,5 +226,12 @@ public class LockedAppearanceTabTest extends AbstractSiriusSwtBotGefTestCase {
             SWTBotCCombo combo = propertiesBot.ccomboBoxInGroup(FONTS_AND_COLORS, i);
             assertEnabled(combo, enabled);
         }
+    }
+    
+    @Override
+    protected void tearDown() throws Exception {
+        editor.close();
+        super.tearDown();
+        editor = null;
     }
 }

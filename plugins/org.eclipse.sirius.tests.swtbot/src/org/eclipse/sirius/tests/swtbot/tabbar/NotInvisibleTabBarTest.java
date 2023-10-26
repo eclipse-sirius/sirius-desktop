@@ -224,4 +224,11 @@ public class NotInvisibleTabBarTest extends AbstractSiriusSwtBotGefTestCase {
         checkEnabledDropDownButton(SELECT_ALL);
         checkEnabledDropDownButton(ALIGN_LEFT);
     }
+    
+    @Override
+    protected void tearDown() throws Exception {
+        editor.close();
+        super.tearDown();
+        editor = null;
+    }
 }

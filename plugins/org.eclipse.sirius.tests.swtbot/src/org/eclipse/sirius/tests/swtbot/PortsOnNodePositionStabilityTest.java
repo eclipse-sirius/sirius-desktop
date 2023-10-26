@@ -1310,7 +1310,9 @@ public class PortsOnNodePositionStabilityTest extends AbstractSiriusSwtBotGefTes
     @Override
     protected void tearDown() throws Exception {
         editor.restore();
+        editor.close();
         super.tearDown();
+        editor = null;
     }
 
 }

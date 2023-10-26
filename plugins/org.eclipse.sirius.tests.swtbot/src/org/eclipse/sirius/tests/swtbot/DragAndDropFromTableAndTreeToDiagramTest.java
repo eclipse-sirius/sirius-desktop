@@ -184,6 +184,8 @@ public class DragAndDropFromTableAndTreeToDiagramTest extends AbstractSiriusSwtB
     protected void tearDown() throws Exception {
         // Reopen outline
         designerViews.openOutlineView();
+        editor.close();
         super.tearDown();
+        editor = null;
     }
 }

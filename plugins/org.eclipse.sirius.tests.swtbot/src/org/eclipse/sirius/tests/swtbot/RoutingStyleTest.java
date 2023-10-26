@@ -112,6 +112,13 @@ public class RoutingStyleTest extends AbstractSiriusSwtBotGefTestCase {
         // Use "All" contextual menu to select all elements of the diagram.
         changeRoutingStyle("All", false);
     }
+    
+    @Override
+    protected void tearDown() throws Exception {
+        editor.close();
+        super.tearDown();
+        editor = null;
+    }
 
     private void changeRoutingStyle(String contextualMenuName, boolean checkPropertiesView) {
         // Reveal the edge named "ref"

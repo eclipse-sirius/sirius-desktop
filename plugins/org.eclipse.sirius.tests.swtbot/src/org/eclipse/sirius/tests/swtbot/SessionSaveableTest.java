@@ -107,7 +107,9 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
     protected void tearDown() throws Exception {
         // Restore original Call back
         SiriusEditPlugin.getPlugin().setUiCallback(uiCallBack);
+        editor.close();
         super.tearDown();
+        editor = null;
     }
 
     /**

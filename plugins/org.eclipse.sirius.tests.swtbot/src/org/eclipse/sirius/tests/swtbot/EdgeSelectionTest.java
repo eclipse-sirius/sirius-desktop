@@ -94,9 +94,11 @@ public class EdgeSelectionTest extends AbstractSiriusSwtBotGefTestCase {
         if (editor != null) {
             editor.zoom(ZoomLevel.ZOOM_100);
         }
+        editor.close();
         super.tearDown();
+        editor = null;
     }
-
+    
     private void openDiagram(String descriptionName, String instanceName, ZoomLevel zoomLevel) {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), descriptionName, instanceName, DDiagram.class);
         editor.zoom(zoomLevel);

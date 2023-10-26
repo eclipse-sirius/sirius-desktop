@@ -158,4 +158,11 @@ public class EdgeCreationTest extends AbstractSiriusSwtBotGefTestCase {
         result.translate(new Dimension((int) xOffest, (int) yOffset));
         return result;
     }
+    
+    @Override
+    protected void tearDown() throws Exception {
+        editor.close();
+        super.tearDown();
+        editor = null;
+    }
 }

@@ -406,5 +406,12 @@ public class SpecificClosedOrNotClosedEditorTest extends AbstractSiriusSwtBotGef
         }
 
     }
+    
+    @Override
+    protected void tearDown() throws Exception {
+        editor.close();
+        super.tearDown();
+        editor = null;
+    }
 
 }
