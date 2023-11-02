@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.edit.commands;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -289,7 +290,8 @@ public class ChildrenAdjustmentCommand extends AbstractTransactionalCommand {
                 } else {
                     // The edges linked to border nodes of the west and east
                     // sides must be adapted to only move the last segment.
-                    childrenWithEdgesToMove = resizedPartQuery.getBorderNodeEditParts(PositionConstants.WEST);
+                    childrenWithEdgesToMove = new ArrayList<>();
+                    childrenWithEdgesToMove.addAll(resizedPartQuery.getBorderNodeEditParts(PositionConstants.WEST));
                     childrenWithEdgesToMove.addAll(resizedPartQuery.getBorderNodeEditParts(PositionConstants.EAST));
                     childrenWithEdgesToMove.removeAll(childrenToMoveWithDelta.keySet());
                     if (cbr.isCenteredResize()) {

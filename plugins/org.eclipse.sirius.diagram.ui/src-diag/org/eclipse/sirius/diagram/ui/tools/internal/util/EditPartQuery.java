@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.IFigure;
@@ -158,14 +159,15 @@ public class EditPartQuery {
      * @return the list of {@link BorderItemEditPart}s that are on the expected side.
      */
     public List<IBorderItemEditPart> getBorderNodeEditParts(final int expectedSide) {
+        List<IBorderItemEditPart> result = new ArrayList<>();
         if (part instanceof IBorderedShapeEditPart) {
-            return part.getChildren().stream()
-                    .filter(child -> child instanceof IBorderItemEditPart borderItem &&  borderItem.getBorderItemLocator().getCurrentSideOfParent() == expectedSide)
-                    .filter(IBorderItemEditPart.class::isInstance)
-                    .map(IBorderItemEditPart.class::cast)
-                    .toList();
+            part.getChildren().stream()
+                .filter(child -> child instanceof IBorderItemEditPart borderItem &&  borderItem.getBorderItemLocator().getCurrentSideOfParent() == expectedSide)
+                .filter(IBorderItemEditPart.class::isInstance)
+                .map(IBorderItemEditPart.class::cast)
+                .forEach(result::add);
         }
-        return new ArrayList<>();
+        return result;
     }
 
     /**
