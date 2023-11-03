@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="TableVariable" version="12.0.0.2017041100">
+  <ownedViewpoints name="TableVariableVp" modelFileExtension="uml">
+    <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="VirtualTable" domainClass="uml::Namespace">
+      <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
+      <metamodel href="http://www.eclipse.org/sirius/1.1.0#//description"/>
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <ownedLineMappings name="InitialGroup" domainClass="description::DAnnotation" semanticCandidatesExpression="aql:self.getClassGroupsByInitial(table)" headerLabelExpression="aql:self.getClassGroupsName()">
+        <ownedSubLines name="VT_GroupedClasses" domainClass="uml::Class" semanticCandidatesExpression="aql:self.references" headerLabelExpression="aql:self.name"/>
+      </ownedLineMappings>
+      <ownedCreateLine name="VT_EnableEdition" label="Set Editable" precondition="aql:not(table.isVirtualTableEditable())" mapping="//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@ownedLineMappings[name='InitialGroup']">
+        <variables name="table" documentation="The current DTable."/>
+        <variables name="root" documentation="The semantic root element of the table."/>
+        <variables name="containerView" documentation="The DSemanticDecorator containing the current element: a DTable, a DLine or a DColumn."/>
+        <variables name="container" documentation="The semantic element corresponding to the view container."/>
+        <variables name="view" documentation="The DSemanticDecorator of the current element: a DTable, a DLine or a DColumn."/>
+        <variables name="element" documentation="The semantic currently edited element."/>
+        <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="aql:table.setVirtualTableEditable(true)"/>
+      </ownedCreateLine>
+      <ownedCreateLine name="VT_EnableEdition" label="Set Read-only" precondition="aql:table.isVirtualTableEditable()" mapping="//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@ownedLineMappings[name='InitialGroup']">
+        <variables name="table" documentation="The current DTable."/>
+        <variables name="root" documentation="The semantic root element of the table."/>
+        <variables name="containerView" documentation="The DSemanticDecorator containing the current element: a DTable, a DLine or a DColumn."/>
+        <variables name="container" documentation="The semantic element corresponding to the view container."/>
+        <variables name="view" documentation="The DSemanticDecorator of the current element: a DTable, a DLine or a DColumn."/>
+        <variables name="element" documentation="The semantic currently edited element."/>
+        <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="aql:table.setVirtualTableEditable(false)"/>
+      </ownedCreateLine>
+      <ownedColumnMappings name="VT_Path" headerLabelExpression="aql:'Path'" domainClass="uml::Namespace" semanticCandidatesExpression="aql:container"/>
+      <ownedColumnMappings name="VT_FeatureColumns" headerLabelExpression="aql:self.name" domainClass="ecore::EStructuralFeature" semanticCandidatesExpression="aql: table.getFeatureColumnsAnnotation().references">
+        <delete name="VT_FeatureColumns_Delete" label="Remove Feature Column">
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="root" documentation="The semantic root element of the table."/>
+          <variables name="containerView" documentation="The DSemanticDecorator containing the current element: a DTable, a DLine or a DColumn."/>
+          <variables name="container" documentation="The semantic element corresponding to the view container."/>
+          <variables name="view" documentation="The DSemanticDecorator of the current element: a DTable, a DLine or a DColumn."/>
+          <variables name="element" documentation="The semantic currently edited element."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="aql:table.getFeatureColumnsAnnotation()">
+            <subModelOperations xsi:type="tool:Unset" featureName="references" elementExpression="aql:element"/>
+          </firstModelOperation>
+        </delete>
+      </ownedColumnMappings>
+      <intersection name="VT_PathCell" lineMapping="//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@ownedLineMappings[name='InitialGroup']/@ownedSubLines[name='VT_GroupedClasses']" columnMapping="//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@ownedColumnMappings.0" labelExpression="aql:self.qualifiedName" useDomainClass="true" columnFinderExpression="aql:root" lineFinderExpression="aql:self.eContents(uml::Class)" semanticCandidatesExpression="aql:root.eAllContents(uml::Namespace)->including(root)" domainClass="uml::Namespace"/>
+      <intersection name="VT_FeatureCell" canEdit="aql:table.isVirtualTableEditable()" lineMapping="//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@ownedLineMappings[name='InitialGroup']/@ownedSubLines[name='VT_GroupedClasses']" columnMapping="//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@ownedColumnMappings.1" labelExpression="aql:line.target.eGet(column.target.name)" columnFinderExpression="aql:table.columns.target">
+        <directEdit>
+          <variables name="element" documentation="The semantic currently edited element."/>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>
+          <variables name="root" documentation="The semantic root element of the table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="aql:line.target">
+            <subModelOperations xsi:type="tool:SetValue" featureName="aql:columnSemantic.name" valueExpression="aql:arg0"/>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </directEdit>
+      </intersection>
+      <createColumn name="VT_ColumnAdd" label="Add Feature" precondition="aql: table.getFeatureColumnsAnnotation().references->size() &lt; table.getVtClassAttributesColumns()->size()" mapping="//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@ownedColumnMappings.1">
+        <variables name="table" documentation="The current DTable."/>
+        <variables name="root" documentation="The semantic root element of the table."/>
+        <variables name="containerView" documentation="The DSemanticDecorator containing the current element: a DTable, a DLine or a DColumn."/>
+        <variables name="container" documentation="The semantic element corresponding to the view container."/>
+        <variables name="view" documentation="The DSemanticDecorator of the current element: a DTable, a DLine or a DColumn."/>
+        <variables name="element" documentation="The semantic currently edited element."/>
+        <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="aql:table.getFeatureColumnsAnnotation()">
+          <subModelOperations xsi:type="tool:SetValue" featureName="references" valueExpression="aql:self.references->including( (table.getVtClassAttributesColumns() - self.references) ->first())"/>
+        </firstModelOperation>
+      </createColumn>
+    </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.tests.unit.table.unit.variables.VirtualTableService"/>
+  </ownedViewpoints>
+</description:Group>

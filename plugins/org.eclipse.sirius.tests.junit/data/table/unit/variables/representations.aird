@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:table="http://www.eclipse.org/sirius/table/1.1.0" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/table/description/1.1.0 http://www.eclipse.org/sirius/table/1.1.0#//description">
+  <viewpoint:DAnalysis uid="_FTriwHgOEe6rD5fQQ7Bt2g" selectedViews="_9589wIFxEe6xd-Q7RlBIIg" version="15.2.0.202303281325">
+    <semanticResources>tables.uml</semanticResources>
+    <semanticResources>http://www.eclipse.org/uml2/5.0.0/UML</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" uid="_9589wIFxEe6xd-Q7RlBIIg">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Ic91QHo6Ee6ETIhZTHMFhQ" name="VirtualTable" repPath="#_IcQDkHo6Ee6ETIhZTHMFhQ" changeId="1699729940810">
+        <description xmi:type="description_1:CrossTableDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']"/>
+        <target xmi:type="uml:Model" href="tables.uml#_jLo-cXnPEd2hNdpX8IgW8Q"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <table:DTable uid="_IcQDkHo6Ee6ETIhZTHMFhQ" headerColumnWidth="274">
+    <eAnnotations xmi:type="description:DAnnotation" uid="_pbwBIHpTEe6cPaTemA8LLw" source="VirtualTableService#ClassGroup">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pbwoMHpTEe6cPaTemA8LLw" key="key" value="C"/>
+      <references xmi:type="uml:Class" href="tables.uml#_lS3JoHnPEd2hNdpX8IgW8Q"/>
+      <references xmi:type="uml:Class" href="tables.uml#_mgqZgHnPEd2hNdpX8IgW8Q"/>
+      <references xmi:type="uml:Class" href="tables.uml#_nWM6YHnPEd2hNdpX8IgW8Q"/>
+      <references xmi:type="uml:Class" href="tables.uml#_AcFPgfacEd2HLIeEtWNPCg"/>
+    </eAnnotations>
+    <eAnnotations xmi:type="description:DAnnotation" uid="_pbxPQHpTEe6cPaTemA8LLw" source="VirtualTableService#ClassGroup">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pbxPQXpTEe6cPaTemA8LLw" key="key" value="A"/>
+      <references xmi:type="uml:Class" href="tables.uml#_oD2qkHnPEd2hNdpX8IgW8Q"/>
+      <references xmi:type="uml:Class" href="tables.uml#_po8ZEHnPEd2hNdpX8IgW8Q"/>
+    </eAnnotations>
+    <eAnnotations xmi:type="description:DAnnotation" uid="_JGo3wH2EEe6n-p8gQeBK4w" source="VirtualTableService#Features">
+      <references xmi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+      <references xmi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/visibility"/>
+      <references xmi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//Classifier/isAbstract"/>
+      <references xmi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//RedefinableElement/isLeaf"/>
+    </eAnnotations>
+    <target xmi:type="uml:Model" href="tables.uml#_jLo-cXnPEd2hNdpX8IgW8Q"/>
+    <lines xmi:type="table:DLine" uid="_QF_xQnytEe6kZ-uE5I5fzw" target="_pbxPQHpTEe6cPaTemA8LLw" semanticElements="_pbxPQHpTEe6cPaTemA8LLw" label="A">
+      <lines xmi:type="table:DLine" uid="_QGAYUXytEe6kZ-uE5I5fzw" label="AbstractClass1">
+        <target xmi:type="uml:Class" href="tables.uml#_oD2qkHnPEd2hNdpX8IgW8Q"/>
+        <semanticElements xmi:type="uml:Class" href="tables.uml#_oD2qkHnPEd2hNdpX8IgW8Q"/>
+        <originMapping xmi:type="description_1:LineMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@ownedLineMappings[name='InitialGroup']/@ownedSubLines[name='VT_GroupedClasses']"/>
+        <cells xmi:type="table:DCell" uid="_CoT3gX_3Ee67h6jd61laxA" label="MyModel" column="_xGWWQH19Ee6URclxfXrY1A">
+          <target xmi:type="uml:Model" href="tables.uml#_jLo-cXnPEd2hNdpX8IgW8Q"/>
+          <semanticElements xmi:type="uml:Model" href="tables.uml#_jLo-cXnPEd2hNdpX8IgW8Q"/>
+          <intersectionMapping xmi:type="description_1:IntersectionMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@intersection.0"/>
+        </cells>
+        <cells xmi:type="table:DCell" uid="_ACBDVX_6Ee67h6jd61laxA" label="AbstractClass1" column="_ACAcSX_6Ee67h6jd61laxA">
+          <target xmi:type="uml:Class" href="tables.uml#_oD2qkHnPEd2hNdpX8IgW8Q"/>
+          <semanticElements xmi:type="uml:Class" href="tables.uml#_oD2qkHnPEd2hNdpX8IgW8Q"/>
+          <intersectionMapping xmi:type="description_1:IntersectionMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@intersection.1"/>
+        </cells>
+        <cells xmi:type="table:DCell" uid="_Amj62n_6Ee67h6jd61laxA" label="public" column="_AmjTyn_6Ee67h6jd61laxA">
+          <target xmi:type="uml:Class" href="tables.uml#_oD2qkHnPEd2hNdpX8IgW8Q"/>
+          <semanticElements xmi:type="uml:Class" href="tables.uml#_oD2qkHnPEd2hNdpX8IgW8Q"/>
+          <intersectionMapping xmi:type="description_1:IntersectionMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@intersection.1"/>
+        </cells>
+        <cells xmi:type="table:DCell" uid="_A7Y7VH_6Ee67h6jd61laxA" label="false" column="_A7YUS3_6Ee67h6jd61laxA">
+          <target xmi:type="uml:Class" href="tables.uml#_oD2qkHnPEd2hNdpX8IgW8Q"/>
+          <semanticElements xmi:type="uml:Class" href="tables.uml#_oD2qkHnPEd2hNdpX8IgW8Q"/>
+          <intersectionMapping xmi:type="description_1:IntersectionMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@intersection.1"/>
+        </cells>
+        <cells xmi:type="table:DCell" uid="_BKlN63_6Ee67h6jd61laxA" label="false" column="_BKlN43_6Ee67h6jd61laxA">
+          <target xmi:type="uml:Class" href="tables.uml#_oD2qkHnPEd2hNdpX8IgW8Q"/>
+          <semanticElements xmi:type="uml:Class" href="tables.uml#_oD2qkHnPEd2hNdpX8IgW8Q"/>
+          <intersectionMapping xmi:type="description_1:IntersectionMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@intersection.1"/>
+        </cells>
+      </lines>
+      <lines xmi:type="table:DLine" uid="_QGAYU3ytEe6kZ-uE5I5fzw" label="AbstractClass2">
+        <target xmi:type="uml:Class" href="tables.uml#_po8ZEHnPEd2hNdpX8IgW8Q"/>
+        <semanticElements xmi:type="uml:Class" href="tables.uml#_po8ZEHnPEd2hNdpX8IgW8Q"/>
+        <originMapping xmi:type="description_1:LineMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@ownedLineMappings[name='InitialGroup']/@ownedSubLines[name='VT_GroupedClasses']"/>
+        <cells xmi:type="table:DCell" uid="_CoT3g3_3Ee67h6jd61laxA" label="MyModel" column="_xGWWQH19Ee6URclxfXrY1A">
+          <target xmi:type="uml:Model" href="tables.uml#_jLo-cXnPEd2hNdpX8IgW8Q"/>
+          <semanticElements xmi:type="uml:Model" href="tables.uml#_jLo-cXnPEd2hNdpX8IgW8Q"/>
+          <intersectionMapping xmi:type="description_1:IntersectionMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@intersection.0"/>
+        </cells>
+        <cells xmi:type="table:DCell" uid="_ACBDV3_6Ee67h6jd61laxA" label="AbstractClass2" column="_ACAcSX_6Ee67h6jd61laxA">
+          <target xmi:type="uml:Class" href="tables.uml#_po8ZEHnPEd2hNdpX8IgW8Q"/>
+          <semanticElements xmi:type="uml:Class" href="tables.uml#_po8ZEHnPEd2hNdpX8IgW8Q"/>
+          <intersectionMapping xmi:type="description_1:IntersectionMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@intersection.1"/>
+        </cells>
+        <cells xmi:type="table:DCell" uid="_Amj63H_6Ee67h6jd61laxA" label="public" column="_AmjTyn_6Ee67h6jd61laxA">
+          <target xmi:type="uml:Class" href="tables.uml#_po8ZEHnPEd2hNdpX8IgW8Q"/>
+          <semanticElements xmi:type="uml:Class" href="tables.uml#_po8ZEHnPEd2hNdpX8IgW8Q"/>
+          <intersectionMapping xmi:type="description_1:IntersectionMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@intersection.1"/>
+        </cells>
+        <cells xmi:type="table:DCell" uid="_A7Y7Vn_6Ee67h6jd61laxA" label="false" column="_A7YUS3_6Ee67h6jd61laxA">
+          <target xmi:type="uml:Class" href="tables.uml#_po8ZEHnPEd2hNdpX8IgW8Q"/>
+          <semanticElements xmi:type="uml:Class" href="tables.uml#_po8ZEHnPEd2hNdpX8IgW8Q"/>
+          <intersectionMapping xmi:type="description_1:IntersectionMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@intersection.1"/>
+        </cells>
+        <cells xmi:type="table:DCell" uid="_BKl08X_6Ee67h6jd61laxA" label="false" column="_BKlN43_6Ee67h6jd61laxA">
+          <target xmi:type="uml:Class" href="tables.uml#_po8ZEHnPEd2hNdpX8IgW8Q"/>
+          <semanticElements xmi:type="uml:Class" href="tables.uml#_po8ZEHnPEd2hNdpX8IgW8Q"/>
+          <intersectionMapping xmi:type="description_1:IntersectionMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@intersection.1"/>
+        </cells>
+      </lines>
+      <originMapping xmi:type="description_1:LineMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@ownedLineMappings[name='InitialGroup']"/>
+    </lines>
+    <lines xmi:type="table:DLine" uid="_QF_xRHytEe6kZ-uE5I5fzw" target="_pbwBIHpTEe6cPaTemA8LLw" semanticElements="_pbwBIHpTEe6cPaTemA8LLw" label="C">
+      <lines xmi:type="table:DLine" uid="_QGAYVXytEe6kZ-uE5I5fzw" label="Class1">
+        <target xmi:type="uml:Class" href="tables.uml#_lS3JoHnPEd2hNdpX8IgW8Q"/>
+        <semanticElements xmi:type="uml:Class" href="tables.uml#_lS3JoHnPEd2hNdpX8IgW8Q"/>
+        <originMapping xmi:type="description_1:LineMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@ownedLineMappings[name='InitialGroup']/@ownedSubLines[name='VT_GroupedClasses']"/>
+        <cells xmi:type="table:DCell" uid="_CoSCUH_3Ee67h6jd61laxA" label="MyModel" column="_xGWWQH19Ee6URclxfXrY1A">
+          <target xmi:type="uml:Model" href="tables.uml#_jLo-cXnPEd2hNdpX8IgW8Q"/>
+          <semanticElements xmi:type="uml:Model" href="tables.uml#_jLo-cXnPEd2hNdpX8IgW8Q"/>
+          <intersectionMapping xmi:type="description_1:IntersectionMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@intersection.0"/>
+        </cells>
+        <cells xmi:type="table:DCell" uid="_ACBDWX_6Ee67h6jd61laxA" label="Class1" column="_ACAcSX_6Ee67h6jd61laxA">
+          <target xmi:type="uml:Class" href="tables.uml#_lS3JoHnPEd2hNdpX8IgW8Q"/>
+          <semanticElements xmi:type="uml:Class" href="tables.uml#_lS3JoHnPEd2hNdpX8IgW8Q"/>
+          <intersectionMapping xmi:type="description_1:IntersectionMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@intersection.1"/>
+        </cells>
+        <cells xmi:type="table:DCell" uid="_Amj63n_6Ee67h6jd61laxA" label="public" column="_AmjTyn_6Ee67h6jd61laxA">
+          <target xmi:type="uml:Class" href="tables.uml#_lS3JoHnPEd2hNdpX8IgW8Q"/>
+          <semanticElements xmi:type="uml:Class" href="tables.uml#_lS3JoHnPEd2hNdpX8IgW8Q"/>
+          <intersectionMapping xmi:type="description_1:IntersectionMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@intersection.1"/>
+        </cells>
+        <cells xmi:type="table:DCell" uid="_A7Y7WH_6Ee67h6jd61laxA" label="false" column="_A7YUS3_6Ee67h6jd61laxA">
+          <target xmi:type="uml:Class" href="tables.uml#_lS3JoHnPEd2hNdpX8IgW8Q"/>
+          <semanticElements xmi:type="uml:Class" href="tables.uml#_lS3JoHnPEd2hNdpX8IgW8Q"/>
+          <intersectionMapping xmi:type="description_1:IntersectionMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@intersection.1"/>
+        </cells>
+        <cells xmi:type="table:DCell" uid="_BKl083_6Ee67h6jd61laxA" label="false" column="_BKlN43_6Ee67h6jd61laxA">
+          <target xmi:type="uml:Class" href="tables.uml#_lS3JoHnPEd2hNdpX8IgW8Q"/>
+          <semanticElements xmi:type="uml:Class" href="tables.uml#_lS3JoHnPEd2hNdpX8IgW8Q"/>
+          <intersectionMapping xmi:type="description_1:IntersectionMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@intersection.1"/>
+        </cells>
+      </lines>
+      <lines xmi:type="table:DLine" uid="_QGAYV3ytEe6kZ-uE5I5fzw" label="Class2">
+        <target xmi:type="uml:Class" href="tables.uml#_mgqZgHnPEd2hNdpX8IgW8Q"/>
+        <semanticElements xmi:type="uml:Class" href="tables.uml#_mgqZgHnPEd2hNdpX8IgW8Q"/>
+        <originMapping xmi:type="description_1:LineMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@ownedLineMappings[name='InitialGroup']/@ownedSubLines[name='VT_GroupedClasses']"/>
+        <cells xmi:type="table:DCell" uid="_CoTQcH_3Ee67h6jd61laxA" label="MyModel" column="_xGWWQH19Ee6URclxfXrY1A">
+          <target xmi:type="uml:Model" href="tables.uml#_jLo-cXnPEd2hNdpX8IgW8Q"/>
+          <semanticElements xmi:type="uml:Model" href="tables.uml#_jLo-cXnPEd2hNdpX8IgW8Q"/>
+          <intersectionMapping xmi:type="description_1:IntersectionMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@intersection.0"/>
+        </cells>
+        <cells xmi:type="table:DCell" uid="_ACBDW3_6Ee67h6jd61laxA" label="Class2" column="_ACAcSX_6Ee67h6jd61laxA">
+          <target xmi:type="uml:Class" href="tables.uml#_mgqZgHnPEd2hNdpX8IgW8Q"/>
+          <semanticElements xmi:type="uml:Class" href="tables.uml#_mgqZgHnPEd2hNdpX8IgW8Q"/>
+          <intersectionMapping xmi:type="description_1:IntersectionMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@intersection.1"/>
+        </cells>
+        <cells xmi:type="table:DCell" uid="_Amkh4X_6Ee67h6jd61laxA" label="public" column="_AmjTyn_6Ee67h6jd61laxA">
+          <target xmi:type="uml:Class" href="tables.uml#_mgqZgHnPEd2hNdpX8IgW8Q"/>
+          <semanticElements xmi:type="uml:Class" href="tables.uml#_mgqZgHnPEd2hNdpX8IgW8Q"/>
+          <intersectionMapping xmi:type="description_1:IntersectionMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@intersection.1"/>
+        </cells>
+        <cells xmi:type="table:DCell" uid="_A7Y7Wn_6Ee67h6jd61laxA" label="false" column="_A7YUS3_6Ee67h6jd61laxA">
+          <target xmi:type="uml:Class" href="tables.uml#_mgqZgHnPEd2hNdpX8IgW8Q"/>
+          <semanticElements xmi:type="uml:Class" href="tables.uml#_mgqZgHnPEd2hNdpX8IgW8Q"/>
+          <intersectionMapping xmi:type="description_1:IntersectionMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@intersection.1"/>
+        </cells>
+        <cells xmi:type="table:DCell" uid="_BKl09X_6Ee67h6jd61laxA" label="false" column="_BKlN43_6Ee67h6jd61laxA">
+          <target xmi:type="uml:Class" href="tables.uml#_mgqZgHnPEd2hNdpX8IgW8Q"/>
+          <semanticElements xmi:type="uml:Class" href="tables.uml#_mgqZgHnPEd2hNdpX8IgW8Q"/>
+          <intersectionMapping xmi:type="description_1:IntersectionMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@intersection.1"/>
+        </cells>
+      </lines>
+      <lines xmi:type="table:DLine" uid="_QGAYWXytEe6kZ-uE5I5fzw" label="Class3">
+        <target xmi:type="uml:Class" href="tables.uml#_nWM6YHnPEd2hNdpX8IgW8Q"/>
+        <semanticElements xmi:type="uml:Class" href="tables.uml#_nWM6YHnPEd2hNdpX8IgW8Q"/>
+        <originMapping xmi:type="description_1:LineMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@ownedLineMappings[name='InitialGroup']/@ownedSubLines[name='VT_GroupedClasses']"/>
+        <cells xmi:type="table:DCell" uid="_CoTQcn_3Ee67h6jd61laxA" label="MyModel" column="_xGWWQH19Ee6URclxfXrY1A">
+          <target xmi:type="uml:Model" href="tables.uml#_jLo-cXnPEd2hNdpX8IgW8Q"/>
+          <semanticElements xmi:type="uml:Model" href="tables.uml#_jLo-cXnPEd2hNdpX8IgW8Q"/>
+          <intersectionMapping xmi:type="description_1:IntersectionMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@intersection.0"/>
+        </cells>
+        <cells xmi:type="table:DCell" uid="_ACBDXX_6Ee67h6jd61laxA" label="Class3" column="_ACAcSX_6Ee67h6jd61laxA">
+          <target xmi:type="uml:Class" href="tables.uml#_nWM6YHnPEd2hNdpX8IgW8Q"/>
+          <semanticElements xmi:type="uml:Class" href="tables.uml#_nWM6YHnPEd2hNdpX8IgW8Q"/>
+          <intersectionMapping xmi:type="description_1:IntersectionMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@intersection.1"/>
+        </cells>
+        <cells xmi:type="table:DCell" uid="_Amj61n_6Ee67h6jd61laxA" label="protected" column="_AmjTyn_6Ee67h6jd61laxA">
+          <target xmi:type="uml:Class" href="tables.uml#_nWM6YHnPEd2hNdpX8IgW8Q"/>
+          <semanticElements xmi:type="uml:Class" href="tables.uml#_nWM6YHnPEd2hNdpX8IgW8Q"/>
+          <intersectionMapping xmi:type="description_1:IntersectionMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@intersection.1"/>
+        </cells>
+        <cells xmi:type="table:DCell" uid="_A7Y7XH_6Ee67h6jd61laxA" label="false" column="_A7YUS3_6Ee67h6jd61laxA">
+          <target xmi:type="uml:Class" href="tables.uml#_nWM6YHnPEd2hNdpX8IgW8Q"/>
+          <semanticElements xmi:type="uml:Class" href="tables.uml#_nWM6YHnPEd2hNdpX8IgW8Q"/>
+          <intersectionMapping xmi:type="description_1:IntersectionMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@intersection.1"/>
+        </cells>
+        <cells xmi:type="table:DCell" uid="_BKl093_6Ee67h6jd61laxA" label="false" column="_BKlN43_6Ee67h6jd61laxA">
+          <target xmi:type="uml:Class" href="tables.uml#_nWM6YHnPEd2hNdpX8IgW8Q"/>
+          <semanticElements xmi:type="uml:Class" href="tables.uml#_nWM6YHnPEd2hNdpX8IgW8Q"/>
+          <intersectionMapping xmi:type="description_1:IntersectionMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@intersection.1"/>
+        </cells>
+      </lines>
+      <lines xmi:type="table:DLine" uid="_QGA_YXytEe6kZ-uE5I5fzw" label="Class4">
+        <target xmi:type="uml:Class" href="tables.uml#_AcFPgfacEd2HLIeEtWNPCg"/>
+        <semanticElements xmi:type="uml:Class" href="tables.uml#_AcFPgfacEd2HLIeEtWNPCg"/>
+        <originMapping xmi:type="description_1:LineMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@ownedLineMappings[name='InitialGroup']/@ownedSubLines[name='VT_GroupedClasses']"/>
+        <cells xmi:type="table:DCell" uid="_CoT3hX_3Ee67h6jd61laxA" label="MyModel" column="_xGWWQH19Ee6URclxfXrY1A">
+          <target xmi:type="uml:Model" href="tables.uml#_jLo-cXnPEd2hNdpX8IgW8Q"/>
+          <semanticElements xmi:type="uml:Model" href="tables.uml#_jLo-cXnPEd2hNdpX8IgW8Q"/>
+          <intersectionMapping xmi:type="description_1:IntersectionMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@intersection.0"/>
+        </cells>
+        <cells xmi:type="table:DCell" uid="_ACBDX3_6Ee67h6jd61laxA" label="Class4" column="_ACAcSX_6Ee67h6jd61laxA">
+          <target xmi:type="uml:Class" href="tables.uml#_AcFPgfacEd2HLIeEtWNPCg"/>
+          <semanticElements xmi:type="uml:Class" href="tables.uml#_AcFPgfacEd2HLIeEtWNPCg"/>
+          <intersectionMapping xmi:type="description_1:IntersectionMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@intersection.1"/>
+        </cells>
+        <cells xmi:type="table:DCell" uid="_Amj62H_6Ee67h6jd61laxA" label="public" column="_AmjTyn_6Ee67h6jd61laxA">
+          <target xmi:type="uml:Class" href="tables.uml#_AcFPgfacEd2HLIeEtWNPCg"/>
+          <semanticElements xmi:type="uml:Class" href="tables.uml#_AcFPgfacEd2HLIeEtWNPCg"/>
+          <intersectionMapping xmi:type="description_1:IntersectionMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@intersection.1"/>
+        </cells>
+        <cells xmi:type="table:DCell" uid="_A7Y7Xn_6Ee67h6jd61laxA" label="false" column="_A7YUS3_6Ee67h6jd61laxA">
+          <target xmi:type="uml:Class" href="tables.uml#_AcFPgfacEd2HLIeEtWNPCg"/>
+          <semanticElements xmi:type="uml:Class" href="tables.uml#_AcFPgfacEd2HLIeEtWNPCg"/>
+          <intersectionMapping xmi:type="description_1:IntersectionMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@intersection.1"/>
+        </cells>
+        <cells xmi:type="table:DCell" uid="_BKl0-X_6Ee67h6jd61laxA" label="false" column="_BKlN43_6Ee67h6jd61laxA">
+          <target xmi:type="uml:Class" href="tables.uml#_AcFPgfacEd2HLIeEtWNPCg"/>
+          <semanticElements xmi:type="uml:Class" href="tables.uml#_AcFPgfacEd2HLIeEtWNPCg"/>
+          <intersectionMapping xmi:type="description_1:IntersectionMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@intersection.1"/>
+        </cells>
+      </lines>
+      <originMapping xmi:type="description_1:LineMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@ownedLineMappings[name='InitialGroup']"/>
+    </lines>
+    <columns xmi:type="table:DTargetColumn" uid="_xGWWQH19Ee6URclxfXrY1A" label="Path" cells="_CoSCUH_3Ee67h6jd61laxA _CoTQcH_3Ee67h6jd61laxA _CoTQcn_3Ee67h6jd61laxA _CoT3gX_3Ee67h6jd61laxA _CoT3g3_3Ee67h6jd61laxA _CoT3hX_3Ee67h6jd61laxA" width="132">
+      <target xmi:type="uml:Model" href="tables.uml#_jLo-cXnPEd2hNdpX8IgW8Q"/>
+      <semanticElements xmi:type="uml:Model" href="tables.uml#_jLo-cXnPEd2hNdpX8IgW8Q"/>
+      <originMapping xmi:type="description_1:ElementColumnMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@ownedColumnMappings.0"/>
+    </columns>
+    <columns xmi:type="table:DTargetColumn" uid="_ACAcSX_6Ee67h6jd61laxA" label="name" cells="_ACBDVX_6Ee67h6jd61laxA _ACBDV3_6Ee67h6jd61laxA _ACBDWX_6Ee67h6jd61laxA _ACBDW3_6Ee67h6jd61laxA _ACBDXX_6Ee67h6jd61laxA _ACBDX3_6Ee67h6jd61laxA" width="125">
+      <target xmi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+      <semanticElements xmi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+      <originMapping xmi:type="description_1:ElementColumnMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@ownedColumnMappings.1"/>
+    </columns>
+    <columns xmi:type="table:DTargetColumn" uid="_AmjTyn_6Ee67h6jd61laxA" label="visibility" cells="_Amj61n_6Ee67h6jd61laxA _Amj62H_6Ee67h6jd61laxA _Amj62n_6Ee67h6jd61laxA _Amj63H_6Ee67h6jd61laxA _Amj63n_6Ee67h6jd61laxA _Amkh4X_6Ee67h6jd61laxA" width="106">
+      <target xmi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/visibility"/>
+      <semanticElements xmi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/visibility"/>
+      <originMapping xmi:type="description_1:ElementColumnMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@ownedColumnMappings.1"/>
+    </columns>
+    <columns xmi:type="table:DTargetColumn" uid="_A7YUS3_6Ee67h6jd61laxA" label="isAbstract" cells="_A7Y7VH_6Ee67h6jd61laxA _A7Y7Vn_6Ee67h6jd61laxA _A7Y7WH_6Ee67h6jd61laxA _A7Y7Wn_6Ee67h6jd61laxA _A7Y7XH_6Ee67h6jd61laxA _A7Y7Xn_6Ee67h6jd61laxA" width="121">
+      <target xmi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//Classifier/isAbstract"/>
+      <semanticElements xmi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//Classifier/isAbstract"/>
+      <originMapping xmi:type="description_1:ElementColumnMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@ownedColumnMappings.1"/>
+    </columns>
+    <columns xmi:type="table:DTargetColumn" uid="_BKlN43_6Ee67h6jd61laxA" label="isLeaf" cells="_BKlN63_6Ee67h6jd61laxA _BKl08X_6Ee67h6jd61laxA _BKl083_6Ee67h6jd61laxA _BKl09X_6Ee67h6jd61laxA _BKl093_6Ee67h6jd61laxA _BKl0-X_6Ee67h6jd61laxA" width="87">
+      <target xmi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//RedefinableElement/isLeaf"/>
+      <semanticElements xmi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//RedefinableElement/isLeaf"/>
+      <originMapping xmi:type="description_1:ElementColumnMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']/@ownedColumnMappings.1"/>
+    </columns>
+    <description xmi:type="description_1:CrossTableDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/variables/TableVariable.odesign#//@ownedViewpoints[name='TableVariableVp']/@ownedRepresentations[name='VirtualTable']"/>
+  </table:DTable>
+</xmi:XMI>
