@@ -293,11 +293,15 @@ public final class TableHelper {
 
     /**
      * Test if the cell can be edited. The cell can be edited if it has a CellUpdater which provides a LabelEditTool.
+     * <p>
+     * Deprecated: not used anymore. prefer {@link org.eclipse.sirius.table.business.api.helper.TableToolHelper#canEdit(DLine, DTargetColumn) TableToolHelper.canEdit}.
+     * </p>
      * 
      * @param cell
      *            The cell to test
      * @return true if this cell can be edited, false otherwise.
      */
+    @Deprecated
     public static boolean canEditCrossTableCell(final DCell cell) {
         boolean canEdit = false;
         CellUpdater updater = cell.getUpdater();
@@ -309,11 +313,18 @@ public final class TableHelper {
     }
 
     /**
-     * Test if the cell can be edited. The cell can be edited if :
+     * Evaluates if the cell location can be edited.
+     * <p>
+     * This method should be called when no cell location is attached to a DCell.
+     * It can be edited if :
      * <UL>
      * <LI>The cell is blank and it has a CellUpdater which provides a CellCreateTool</LI>
      * <LI>The cell is not blank and it has a CellUpdater which provides a LabelEditTool</LI>
      * </UL>
+     * </p>
+     * <p>
+     * Deprecated: not used anymore. prefer {@link org.eclipse.sirius.table.business.api.helper.TableToolHelper#canEdit(DLine, DTargetColumn) TableToolHelper.canEdit}.
+     * </p>
      * 
      * @param dLine
      *            The {@link DLine} of the {@link DCell} to test
@@ -321,32 +332,11 @@ public final class TableHelper {
      *            The {@link DTargetColumn} of the {@link DCell} to test
      * @return true if this cell can be edited, false otherwise.
      */
+    @Deprecated
     public static boolean canEditCrossTableCell(final DLine dLine, final DTargetColumn dTargetColumn) {
-        // To verify: this seem redundant with the only invocation:
-        // org.eclipse.sirius.table.ui.tools.internal.editor.provider.DTargetColumnEditingSupport.canEdit(Object)
-        Option<DCell> optionnalCell = TableHelper.getCell(dLine, dTargetColumn);
-        boolean canEdit = false;
-        if (optionnalCell.some()) {
-            canEdit = canEditCrossTableCell(optionnalCell.get());
-        } else if (TableHelper.canCreate(dLine, dTargetColumn)) {
-            canEdit = true;
-        }
-        return canEdit;
+        return getCreateCellTool(dLine, dTargetColumn).some();
     }
 
-    /**
-     * Search the associated createTool corresponding to the intersection of this line and column and return true if one
-     * is found.
-     * 
-     * @param line
-     *            The line for which we want to know if there is a create tool (associated with the column)
-     * @param column
-     *            The column for which we want to know if there is a create tool (associated with the line)
-     * @return true if a createTool exists for this intersection, false otherwise
-     */
-    private static boolean canCreate(final DLine line, final DTargetColumn column) {
-        return TableHelper.getCreateCellTool(line, column) != null;
-    }
 
     /**
      * Return the first CreateCellTool corresponding to the intersection of this line and column.
