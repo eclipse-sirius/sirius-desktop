@@ -146,6 +146,8 @@ public class TabbarPasteFormatMenuManager extends PasteFormatMenuManager {
         safeAdd(ActionIds.PASTE_STYLE, page);
         if (elementIsSelected(page)) {
             safeAdd(ActionIds.PASTE_IMAGE, page);
+        } else {
+            remove(ActionIds.PASTE_IMAGE);
         }
     }
 
