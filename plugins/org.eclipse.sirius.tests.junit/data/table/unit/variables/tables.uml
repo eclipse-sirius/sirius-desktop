@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_jLo-cXnPEd2hNdpX8IgW8Q" name="MyModel">
+  <packagedElement xmi:type="uml:Class" xmi:id="_lS3JoHnPEd2hNdpX8IgW8Q" name="Class1" representation="_EZYnUfLSEd2mb6OshoLeiQ">
+    <collaborationUse xmi:id="_EZYnUfLSEd2mb6OshoLeiQ" name="BColab2"/>
+    <generalization xmi:id="_4WEhsYvfEd2_v8q8ghMcDA" general="_oD2qkHnPEd2hNdpX8IgW8Q"/>
+    <ownedAttribute xmi:id="_y38pMM0nEd2-cpiBPRrWhw" name="P1"/>
+    <nestedClassifier xmi:type="uml:Collaboration" xmi:id="_ttkMIPLQEd2mb6OshoLeiQ" name="Test">
+      <collaborationUse xmi:id="_4mUB4PLREd2mb6OshoLeiQ" name="AColab"/>
+      <collaborationUse xmi:id="_613psPLREd2mb6OshoLeiQ" name="BColab"/>
+      <collaborationUse xmi:id="_CQXFUPLSEd2mb6OshoLeiQ" name="AColab2"/>
+      <collaborationUse xmi:id="_CQXFUfLSEd2mb6OshoLeiQ" name="CColab"/>
+      <collaborationUse xmi:id="_EZYnUPLSEd2mb6OshoLeiQ" name="AColab3"/>
+      <collaborationUse xmi:id="_EZZOYPLSEd2mb6OshoLeiQ" name="AColab4"/>
+      <collaborationUse xmi:id="_EZZOYfLSEd2mb6OshoLeiQ" name="CColab2"/>
+    </nestedClassifier>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_mgqZgHnPEd2hNdpX8IgW8Q" name="Class2">
+    <generalization xmi:id="_6cBhkIvfEd2_v8q8ghMcDA" general="_po8ZEHnPEd2hNdpX8IgW8Q"/>
+    <ownedAttribute xmi:id="_0F304M0nEd2-cpiBPRrWhw" name="P2"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_nWM6YHnPEd2hNdpX8IgW8Q" name="Class3" visibility="protected">
+    <ownedAttribute xmi:id="_00aV4M0nEd2-cpiBPRrWhw" name="P3"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_oD2qkHnPEd2hNdpX8IgW8Q" name="AbstractClass1"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_po8ZEHnPEd2hNdpX8IgW8Q" name="AbstractClass2"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_uO1S8Y4DEd2pEP5Dupn21Q" name="class 1 to class 2" memberEnd="_v8V9oI4DEd2pEP5Dupn21Q _wvlYcI4DEd2pEP5Dupn21Q" navigableOwnedEnd="_v8V9oI4DEd2pEP5Dupn21Q _wvlYcI4DEd2pEP5Dupn21Q">
+    <ownedEnd xmi:id="_v8V9oI4DEd2pEP5Dupn21Q" type="_lS3JoHnPEd2hNdpX8IgW8Q" association="_uO1S8Y4DEd2pEP5Dupn21Q"/>
+    <ownedEnd xmi:id="_wvlYcI4DEd2pEP5Dupn21Q" type="_mgqZgHnPEd2hNdpX8IgW8Q" association="_uO1S8Y4DEd2pEP5Dupn21Q"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_1Lwo0I4DEd2pEP5Dupn21Q" name="class 2 to class 3" isLeaf="true" memberEnd="_1Lwo0Y4DEd2pEP5Dupn21Q _1Lwo0o4DEd2pEP5Dupn21Q" navigableOwnedEnd="_1Lwo0Y4DEd2pEP5Dupn21Q _1Lwo0o4DEd2pEP5Dupn21Q">
+    <ownedEnd xmi:id="_1Lwo0Y4DEd2pEP5Dupn21Q" type="_mgqZgHnPEd2hNdpX8IgW8Q" association="_1Lwo0I4DEd2pEP5Dupn21Q"/>
+    <ownedEnd xmi:id="_1Lwo0o4DEd2pEP5Dupn21Q" type="_nWM6YHnPEd2hNdpX8IgW8Q" association="_1Lwo0I4DEd2pEP5Dupn21Q"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_AcFPgfacEd2HLIeEtWNPCg" name="Class4">
+    <generalization xmi:id="_AcF2kPacEd2HLIeEtWNPCg" general="_mgqZgHnPEd2hNdpX8IgW8Q"/>
+  </packagedElement>
+</uml:Model>

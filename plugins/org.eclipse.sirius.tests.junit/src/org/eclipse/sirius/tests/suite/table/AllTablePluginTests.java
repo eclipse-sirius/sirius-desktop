@@ -41,6 +41,7 @@ import org.eclipse.sirius.tests.unit.table.unit.tools.CreateTableWithToolWithPre
 import org.eclipse.sirius.tests.unit.table.unit.tools.NoVariableDuplicationTest;
 import org.eclipse.sirius.tests.unit.table.unit.tools.RefreshToolActionBarTest;
 import org.eclipse.sirius.tests.unit.table.unit.tools.TableToolPreconditionCompletionTest;
+import org.eclipse.sirius.tests.unit.table.unit.variables.TableVariableTests;
 import org.eclipse.sirius.tests.unit.table.unit.vsm.edit.TableAdapterFactoryRegistryTest;
 import org.eclipse.sirius.tests.unit.table.unit.vsm.editor.DefaultVariablesOnToolsTest;
 import org.eclipse.sirius.tests.unit.table.unit.vsm.editor.PopupMenuTest;
@@ -109,6 +110,7 @@ public class AllTablePluginTests extends TestCase {
         suite.addTestSuite(TableStyleRefreshTest.class);
         suite.addTestSuite(TableWithMultivaluedAttributeTest.class);
         suite.addTestSuite(TableWithHeaderColumnWidthTest.class);
+        suite.addTestSuite(TableVariableTests.class);
         return suite;
     }
 
