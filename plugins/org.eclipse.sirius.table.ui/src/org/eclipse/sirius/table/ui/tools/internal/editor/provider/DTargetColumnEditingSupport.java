@@ -20,9 +20,9 @@ import org.eclipse.jface.viewers.EditingSupport;
 import org.eclipse.jface.viewers.TextCellEditor;
 import org.eclipse.jface.viewers.ViewerCell;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
+import org.eclipse.sirius.table.business.api.helper.TableToolHelper;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.DTargetColumn;
@@ -81,20 +81,8 @@ public class DTargetColumnEditingSupport extends EditingSupport {
 
     @Override
     protected boolean canEdit(final Object element) {
-        boolean canEdit = false;
-        if (element instanceof DLine) {
-            final DLine line = (DLine) element;
-            final Option<DCell> optionalCell = TableHelper.getCell(line, getTargetColumn());
-            if (optionalCell.some()) {
-                canEdit = getAuthority().canEditInstance(optionalCell.get().getTarget()) 
-                        && TableHelper.canEditCrossTableCell(optionalCell.get());
-            } else {
-                canEdit = getAuthority().canEditInstance(line) 
-                        && getAuthority().canEditInstance(getTargetColumn()) 
-                        && TableHelper.canEditCrossTableCell(line, getTargetColumn());
-            }
-        }
-        return canEdit;
+        return element instanceof DLine // table selection is always line. See DTableContentProvider class.
+                && new TableToolHelper(accessor).canEdit((DLine) element, getTargetColumn());
     }
 
     @Override
@@ -141,29 +129,26 @@ public class DTargetColumnEditingSupport extends EditingSupport {
     protected void setValue(final Object element, final Object value) {
         if (element instanceof DLine && value instanceof String) {
             final DLine line = (DLine) element;
-            final Option<DCell> optionnalEditedCell = TableHelper.getCell(line, targetColumn);
+            final Option<DCell> optionalEditedCell = TableHelper.getCell(line, targetColumn);
 
-            // To increase performance, we do nothing if the new value is the
-            // same as the old one
-            if (optionnalEditedCell.some()) {
-                if (!value.equals(optionnalEditedCell.get().getLabel())) {
-                    tableEditor.enablePropertiesUpdate(false);
-                    Command command = tableCommandFactory.buildSetCellValueFromTool(optionnalEditedCell.get(), value);
-                    if (command.canExecute()) {
-                        getEditingDomain().getCommandStack().execute(command);
-                    }
-                    tableEditor.enablePropertiesUpdate(true);
-                    tableEditor.forceRefreshProperties();
-                }
-            } else {
+            Command command = null;
+            if (!optionalEditedCell.some()) {
+                command = tableCommandFactory.buildCreateCellFromTool(line, targetColumn, value);
+            } else if (!value.equals(optionalEditedCell.get().getLabel())) {
+                // To increase performance, we do nothing if the new value is the
+                // same as the old one
+                command = tableCommandFactory.buildSetCellValueFromTool(optionalEditedCell.get(), value);
+            }
+            
+            if (command != null) {
                 tableEditor.enablePropertiesUpdate(false);
-                Command command = tableCommandFactory.buildCreateCellFromTool(line, targetColumn, value);
                 if (command.canExecute()) {
                     getEditingDomain().getCommandStack().execute(command);
                 }
                 tableEditor.enablePropertiesUpdate(true);
                 tableEditor.forceRefreshProperties();
             }
+            
         }
     }
 
@@ -211,20 +196,6 @@ public class DTargetColumnEditingSupport extends EditingSupport {
      */
     public TransactionalEditingDomain getEditingDomain() {
         return editingDomain;
-    }
-
-    /**
-     * @return The permission authority
-     */
-    private IPermissionAuthority getAuthority() {
-        return getAccessor().getPermissionAuthority();
-    }
-
-    /**
-     * @return the accessor
-     */
-    private ModelAccessor getAccessor() {
-        return accessor;
     }
 
     @Override

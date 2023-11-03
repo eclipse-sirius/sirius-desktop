@@ -53,18 +53,17 @@ import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.TextCellEditor;
 import org.eclipse.jface.viewers.ViewerCell;
-import org.eclipse.sirius.business.api.logger.InterpretationContext;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
+import org.eclipse.sirius.table.business.api.helper.TableToolHelper;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DFeatureColumn;
 import org.eclipse.sirius.table.metamodel.table.DLine;
@@ -72,7 +71,6 @@ import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
 import org.eclipse.sirius.table.metamodel.table.description.CellEditorTool;
 import org.eclipse.sirius.table.metamodel.table.description.CellUpdater;
-import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.metamodel.table.provider.Messages;
 import org.eclipse.sirius.table.metamodel.table.provider.TableUIPlugin;
 import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
@@ -147,41 +145,8 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
     
     @Override
     protected boolean canEdit(final Object element) {
-        boolean result = false;
-        if (element instanceof DLine) {
-            final DLine line = (DLine) element;
-            boolean canEdit = true;
-            Option<DCell> optCell = TableHelper.getCell(line, featureColumn);
-            if (optCell.some()) {
-                DCell cell = optCell.get();
-                CellUpdater updater = cell.getUpdater();
-                if (updater != null && updater.getCanEdit() != null && !updater.getCanEdit().isEmpty()) {
-
-                    canEdit = InterpretationContext.with(cell.getTarget(), ctx -> {
-                        DTable table = TableHelper.getTable(line);
-                        
-                        ctx.setVariable(IInterpreterSiriusVariables.CONTAINER_VIEW, line);
-                        ctx.setVariable(IInterpreterSiriusTableVariables.LINE, line);                        
-                        ctx.setVariable(IInterpreterSiriusVariables.CONTAINER, line.getTarget());
-                        ctx.setVariable(IInterpreterSiriusTableVariables.LINE_SEMANTIC, line.getTarget());
-                        // For DFeatureColumn, no semantic for columns.
-                        ctx.setVariable(IInterpreterSiriusVariables.VIEWPOINT, table);
-                        ctx.setVariable(IInterpreterSiriusVariables.TABLE, table);
-                        
-                        ctx.setVariable(IInterpreterSiriusVariables.ELEMENT, cell.getTarget());
-                        
-                        return ctx.getInterpreter().evaluateBoolean(cell.getTarget(), updater, 
-                                DescriptionPackage.eINSTANCE.getCellUpdater_CanEdit());
-                    });
-                    
-
-                }
-                result = canEdit 
-                        && getAuthority().canEditFeature(cell.getTarget(), getFeatureName()) 
-                        && getAuthority().canEditInstance(line);
-            }
-        }
-        return result;
+        return element instanceof DLine // table selection is always line. See DTableContentProvider class.
+                && new TableToolHelper(accessor).canEdit((DLine) element, featureColumn);
     }
 
     @Override
