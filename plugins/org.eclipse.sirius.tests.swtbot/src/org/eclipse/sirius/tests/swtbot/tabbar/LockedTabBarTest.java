@@ -27,6 +27,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.ExtensionPointTabbarContributorProvider;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ExtenderConstants;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionProvider;
@@ -88,6 +89,8 @@ public class LockedTabBarTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String ARRANGE_SELECTION = "Arrange Selection";
 
     private static final String ARRANGE_LINKED_BORDER_NODES = "Arrange Linked Border Nodes";
+
+    private static final String MOVE_PINNED_ELEMENTS = Messages.MovePinnedElementsAction_text;
 
     private static final String PIN_SELECTION = "Pin selected elements";
 
@@ -296,10 +299,13 @@ public class LockedTabBarTest extends AbstractSiriusSwtBotGefTestCase {
 
         // "Arrange All" drop down button
         SWTBotToolbarDropDownButton arrangeAllMenu = bot.toolbarDropDownButtonWithTooltip(ARRANGE_ALL);
-        for (SWTBotMenu item : arrangeAllMenu.menuItems(new AllItemsExcept(ARRANGE_LINKED_BORDER_NODES))) {
-            assertEnabled(item, enabled);
+        try {
+            for (SWTBotMenu item : arrangeAllMenu.menuItems(new AllItemsExcept(ARRANGE_LINKED_BORDER_NODES, MOVE_PINNED_ELEMENTS))) {
+                assertEnabled(item, enabled);
+            }
+        } finally {
+            arrangeAllMenu.pressShortcut(Keystrokes.ESC);
         }
-        arrangeAllMenu.pressShortcut(Keystrokes.ESC);
     }
 
     /**
@@ -320,7 +326,7 @@ public class LockedTabBarTest extends AbstractSiriusSwtBotGefTestCase {
 
         // "Arrange Selection" drop down button
         SWTBotToolbarDropDownButton arrangeSelectionMenu = bot.toolbarDropDownButtonWithTooltip(ARRANGE_SELECTION);
-        for (SWTBotMenu item : arrangeSelectionMenu.menuItems(new AllItemsExcept())) {
+        for (SWTBotMenu item : arrangeSelectionMenu.menuItems(new AllItemsExcept(MOVE_PINNED_ELEMENTS))) {
             assertEnabled(item, enabled);
         }
         arrangeSelectionMenu.pressShortcut(Keystrokes.ESC);

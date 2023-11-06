@@ -148,7 +148,7 @@ import junit.framework.TestCase;
  *
  * @author dlecan
  */
-@SuppressWarnings("restriction")
+@SuppressWarnings({ "restriction", "nls" })
 public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase {
 
     static {
@@ -1018,6 +1018,17 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         SWTBotMenu arrangeAllMenutBot = SWTBotSiriusHelper.menu(bot, "Diagram").menu("Arrange").menu("All").click();
         SWTBotUtils.waitAllUiEvents();
         return arrangeAllMenutBot;
+    }
+
+    /**
+     * Toggle the Move Pinned Element action.
+     */
+    protected void movePinnedElements() {
+        // Give the focus to the editor
+        editor.setFocus();
+        // Launch the arrange via the menu bar
+        SWTBotSiriusHelper.menu(bot, "Diagram").menu("Arrange").menu("Move Pinned Elements").click();
+        SWTBotUtils.waitAllUiEvents();
     }
 
     /**

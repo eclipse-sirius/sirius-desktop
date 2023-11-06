@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
@@ -32,6 +33,8 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
+import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
@@ -40,6 +43,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
+import org.eclipse.swtbot.swt.finder.SWTBot;
 
 /**
  * @author smonnier
@@ -360,6 +364,35 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
     public void testArrangeLinkedBorderNodesCase6() throws Exception {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
                 REPRESENTATION_NAME_UC3, REPRESENTATION_INSTANCE_NAME_UC6, DDiagram.class, true, true);
+        // activate the "Arrange Linked Border Nodes" action
+        arrangeLinkedBorderedNodes();
+        // Validate the positions of the border nodes.
+        validatePositions(true);
+    }
+
+    private void pinAll() {
+        bot.toolbarButtonWithTooltip("Pin/Unpin").click();
+        SWTBot pinDialogBot = bot.shell("Diagram elements pinning").bot();
+        pinDialogBot.buttonWithTooltip("Check All").click();
+        pinDialogBot.button("OK").click();
+    }
+
+    /**
+     * Test "Arrange Linked Border Nodes" with the "Move Pinned Elements" option enabled and with all elements pinned
+     * (equivalent to an "Arrange Linked Border Nodes" without pinned elements).
+     */
+    public void testArrangeLinkedBorderNodesIgnorePin() throws Exception {
+        final String prefKey = SiriusDiagramPreferencesKeys.PREF_MOVE_PINNED_ELEMENTS.name();
+
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC3, REPRESENTATION_INSTANCE_NAME_UC6, DDiagram.class, true, true);
+
+        pinAll();
+
+        // enable "Move Pinned Elements" option
+        assertFalse("Wrong initial state for Move Pinned Elements", InstanceScope.INSTANCE.getNode(DiagramPlugin.ID).getBoolean(prefKey, false));
+        movePinnedElements();
+        assertTrue("Wrong state for Move Pinned Elements after enabled", InstanceScope.INSTANCE.getNode(DiagramPlugin.ID).getBoolean(prefKey, false));
+
         // activate the "Arrange Linked Border Nodes" action
         arrangeLinkedBorderedNodes();
         // Validate the positions of the border nodes.
