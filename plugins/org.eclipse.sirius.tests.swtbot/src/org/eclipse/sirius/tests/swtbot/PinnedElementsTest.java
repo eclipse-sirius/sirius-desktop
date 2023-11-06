@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,8 +17,11 @@ import static org.hamcrest.Matchers.not;
 
 import java.util.Map;
 
+import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
+import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.tools.internal.preferences.SiriusDiagramUiInternalPreferencesKeys;
 import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckNoOpenedSessionInModelContentView;
@@ -32,6 +35,7 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
  * 
  * @author pcdavid
  */
+@SuppressWarnings("nls")
 public class PinnedElementsTest extends AbstractPinnedElementsTest {
 
     private static final String VIEWPOINT_NAME = "Tests Cases for ticket #1825 (partial layout)";
@@ -62,6 +66,8 @@ public class PinnedElementsTest extends AbstractPinnedElementsTest {
 
     @Override
     protected void tearDown() throws Exception {
+        final String prefKey = SiriusDiagramPreferencesKeys.PREF_MOVE_PINNED_ELEMENTS.name();
+        InstanceScope.INSTANCE.getNode(DiagramPlugin.ID).putBoolean(prefKey, false);
         editor.close();
         SWTBotUtils.waitAllUiEvents();
         // Reopen outline
@@ -241,6 +247,26 @@ public class PinnedElementsTest extends AbstractPinnedElementsTest {
     public void testArrange_Recursive_Simple_All_Unpinned() throws Exception {
         openDiagram(VIEWPOINT_NAME, "Nodes and Containers (recursive)", "Recursive_Simple_All_Unpinned");
         final Map<IGraphicalEditPart, Rectangle> initialBounds = saveBounds();
+        arrangeAll();
+        final Map<IGraphicalEditPart, Rectangle> finalBounds = saveBounds();
+        assertSomeBoundsChanged(initialBounds, finalBounds);
+        assertNoOverlapsOnPinnedElements(finalBounds);
+    }
+
+    /**
+     * Test "Arrange All" with the "Move Pinned Elements" option enabled and with all elements pinned (equivalent to an
+     * "Arrange All" without pinned elements).
+     */
+    public void testArrange_Recursive_Simple_All_Pinned_IgnorePin() throws Exception {
+        final String prefKey = SiriusDiagramPreferencesKeys.PREF_MOVE_PINNED_ELEMENTS.name();
+
+        openDiagram(VIEWPOINT_NAME, "Nodes and Containers (recursive)", "Recursive_Simple_All_Pinned");
+        final Map<IGraphicalEditPart, Rectangle> initialBounds = saveBounds();
+
+        assertFalse("Wrong initial state for Move Pinned Elements", InstanceScope.INSTANCE.getNode(DiagramPlugin.ID).getBoolean(prefKey, false));
+        movePinnedElements();
+        assertTrue("Wrong state for Move Pinned Elements after enabled", InstanceScope.INSTANCE.getNode(DiagramPlugin.ID).getBoolean(prefKey, false));
+
         arrangeAll();
         final Map<IGraphicalEditPart, Rectangle> finalBounds = saveBounds();
         assertSomeBoundsChanged(initialBounds, finalBounds);
