@@ -95,6 +95,30 @@ public final class Messages {
     public static String AnonymousUserFixedColorName;
 
     @TranslatableMessage
+    public static String ArrangeAction_ArrangeAll_ActionLabelText;
+
+    @TranslatableMessage
+    public static String ArrangeAction_ArrangeAll_ActionToolTipText;
+
+    @TranslatableMessage
+    public static String ArrangeAction_toolbar_ArrangeAll_ActionLabelText;
+
+    @TranslatableMessage
+    public static String ArrangeAction_toolbar_ArrangeAll_ActionToolTipText;
+
+    @TranslatableMessage
+    public static String ArrangeAction_ArrangeSelection_ActionLabelText;
+
+    @TranslatableMessage
+    public static String ArrangeAction_ArrangeSelection_ActionToolTipText;
+
+    @TranslatableMessage
+    public static String ArrangeAction_toolbar_ArrangeSelection_ActionLabelText;
+
+    @TranslatableMessage
+    public static String ArrangeAction_toolbar_ArrangeSelection_ActionToolTipText;
+
+    @TranslatableMessage
     public static String ArrangeBorderNodesAction_actionText;
 
     @TranslatableMessage
@@ -114,6 +138,12 @@ public final class Messages {
 
     @TranslatableMessage
     public static String ArrangeBorderNodesAction_toolTipText;
+
+    @TranslatableMessage
+    public static String ArrangeMenuManager_Arrange_ActionLabelText;
+
+    @TranslatableMessage
+    public static String ArrangeMenuManager_Arrange_ActionToolTipText;
 
     @TranslatableMessage
     public static String BehaviorsPropertySection_activatedBehaviorsLabel;
