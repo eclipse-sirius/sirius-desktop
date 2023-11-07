@@ -41,7 +41,6 @@ import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckToolIsActivated;
@@ -118,12 +117,6 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String TABBAR_EXTENSION_ON_DIAGRAM_ELEMENT = "Action on DDiagramElement (F5)";
 
     private static final String TABBAR_EXTENSION_ON_DIAGRAM = "Action on DDiagram (F5)";
-
-    private UIResource sessionAirdResource;
-
-    private UILocalSession localSession;
-
-    private SWTBotSiriusDiagramEditor editor;
 
     /**
      * {@inheritDoc}

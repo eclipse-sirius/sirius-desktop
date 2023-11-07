@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -34,7 +34,6 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDiagramElementContainerNameEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckDiagramSelected;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
@@ -101,10 +100,6 @@ public class SelectAllAndDeselectionTest extends AbstractSiriusSwtBotGefTestCase
         LOCATIONS.put(CLASS_3_NAME, new Point(376, 172));
         LOCATIONS.put(CLASS_4_NAME, new Point(110, 195));
     }
-
-    UILocalSession localSession;
-
-    SWTBotSiriusDiagramEditor editor;
 
     private Map<Point, SWTBotGefEditPart> locationToEditParts = new HashMap<>();
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -114,8 +114,6 @@ public class SpecificClosedOrNotClosedEditorTest extends AbstractSiriusSwtBotGef
     private static final String DATA_UNIT_DIR = "data/unit/closeEditorSpecificTest/";
 
     private static final String FILE_DIR = "/";
-
-    private SWTBotSiriusDiagramEditor editor;
 
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {

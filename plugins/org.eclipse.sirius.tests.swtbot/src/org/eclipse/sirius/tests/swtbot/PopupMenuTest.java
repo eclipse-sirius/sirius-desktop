@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -29,7 +29,6 @@ import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.Tabbar;
 import org.eclipse.sirius.diagram.ui.tools.internal.menu.LocationURI;
 import org.eclipse.sirius.diagram.ui.tools.internal.menu.PopupMenuContribution;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.swt.widgets.ToolBar;
@@ -58,12 +57,6 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String DATA_UNIT_DIR = "data/unit/popupMenu/";
 
     private static final String FILE_DIR = "/";
-
-    private UIResource sessionAirdResource;
-
-    private UILocalSession localSession;
-
-    private SWTBotSiriusDiagramEditor editor;
 
     /**
      * {@inheritDoc}

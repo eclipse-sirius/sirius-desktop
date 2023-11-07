@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2019 Obeo.
+ * Copyright (c) 2014, 2023 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -58,12 +58,6 @@ public class LockedAppearanceTabTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String SELECTED_PACKAGE = "0";
 
     private static final String FONTS_AND_COLORS = "Fonts and Colors:";
-
-    private UIResource sessionAirdResource;
-
-    private UILocalSession localSession;
-
-    private SWTBotSiriusDiagramEditor editor;
 
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {

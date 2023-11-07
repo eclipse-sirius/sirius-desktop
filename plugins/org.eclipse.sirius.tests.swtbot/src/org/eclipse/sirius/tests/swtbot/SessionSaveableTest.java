@@ -83,10 +83,6 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
 
     private UICallBack uiCallBack;
 
-    private UILocalSession localSession;
-
-    private SWTBotSiriusDiagramEditor editor;
-
     private boolean oldValuePrefPromptWhenSaveableStillOpen;
 
     @Override

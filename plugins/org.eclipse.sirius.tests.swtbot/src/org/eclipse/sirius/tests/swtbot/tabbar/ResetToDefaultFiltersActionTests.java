@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2016, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -67,8 +67,6 @@ public class ResetToDefaultFiltersActionTests extends AbstractSiriusSwtBotGefTes
     private static final String DIAGRAM_DESCRIPTION_WITHOUT_CONCERN = "Bug490384_DiagWithoutConcern";
 
     private SWTBotTreeItem modelElementItem;
-
-    private SWTBotSiriusDiagramEditor editor;
 
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
