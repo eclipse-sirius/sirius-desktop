@@ -452,9 +452,6 @@ public final class Messages {
     public static String DiagramEditorContextMenuProvider_arrangeMenuRenameError;
 
     @TranslatableMessage
-    public static String DiagramEditorContextMenuProvider_arrangeMenuText;
-
-    @TranslatableMessage
     public static String DiagramEditPartService_imageExportException;
 
     @TranslatableMessage
