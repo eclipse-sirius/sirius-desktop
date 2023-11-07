@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.menu;
 
-import java.lang.reflect.Field;
 import java.util.Iterator;
 import java.util.List;
 
@@ -21,7 +20,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.RootEditPart;
-import org.eclipse.gmf.runtime.common.ui.action.ActionMenuManager;
 import org.eclipse.gmf.runtime.common.ui.action.global.GlobalActionId;
 import org.eclipse.gmf.runtime.common.ui.services.action.contributionitem.ContributionItemService;
 import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
@@ -37,12 +35,10 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
-import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromModelWithHookAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.ColorPropertyContributionItem;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.ArrangeAllOnlyLayoutProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.LayoutService;
-import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.actions.ActionFactory;
 
@@ -129,8 +125,8 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
                     editMenu.remove(GlobalActionId.PASTE);
                 }
 
-                // Add the arrangeBorderNodesActionToolBar just after the
-                // toolbarArrangeAllAction (Arrange All action of GMF)
+                // Add the arrangeBorderNodesAction just after the
+                // arrangeAllAction (Arrange All action of GMF)
                 // This is needed just in case of diagram selection.
                 final IContributionItem arrangeBorderNodesItem = menu.find(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDER_NODES);
                 if (arrangeBorderNodesItem != null) {
@@ -139,8 +135,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
                     if (PLUGIN_MENU_MANAGER_CLASS_NAME.equals(arrangeMenu.getClass().getSimpleName())) { // $NON-NLS-1$
                         // We move the arrangeMenu only if it is contributed through plugin contribution. In case of
                         // VSM contribution, we ignore it.
-                        updateArrangeMenuName(arrangeMenu);
-                        arrangeMenu.insertAfter(ActionIds.ACTION_TOOLBAR_ARRANGE_ALL, arrangeBorderNodesItem);
+                        arrangeMenu.insertAfter(ActionIds.ACTION_ARRANGE_ALL, arrangeBorderNodesItem);
                     }
                 }
 
@@ -256,8 +251,6 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
                 if (PLUGIN_MENU_MANAGER_CLASS_NAME.equals(arrangeMenu.getClass().getSimpleName())) {
                     // We move the arrangeMenu only if it is contributed through plugin contribution. In case of VSM
                     // contribution, we ignore it.
-                    // Rename of the menu Arrange into Layout
-                    updateArrangeMenuName(arrangeMenu);
                     // Remove Layout menu from format menu
                     formatMenu.remove(arrangeMenu);
                     // and add it just after FILTER_FORMAT_GROUP
@@ -326,33 +319,6 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
                     iContributionItem.getAction().setEnabled(false);
                 }
             }
-        }
-    }
-
-    /**
-     * Change the name of the menu Arrange -> Layout
-     * 
-     * @param arrangeMenu
-     *            arrange all menu
-     */
-    private void updateArrangeMenuName(final IMenuManager arrangeMenu) {
-        try {
-            Class<? extends IMenuManager> arrangeMenuClass = arrangeMenu.getClass();
-            Field field = arrangeMenuClass.getDeclaredField("realMenuManager"); //$NON-NLS-1$
-            field.setAccessible(true);
-            Object realMenuManager = field.get(arrangeMenu);
-            if (realMenuManager instanceof ActionMenuManager) {
-                ((ActionMenuManager) realMenuManager).getDefaultAction().setText(Messages.DiagramEditorContextMenuProvider_arrangeMenuText);
-            }
-
-        } catch (SecurityException e) {
-            SiriusPlugin.getDefault().error(Messages.DiagramEditorContextMenuProvider_arrangeMenuRenameError, e);
-        } catch (NoSuchFieldException e) {
-            SiriusPlugin.getDefault().error(Messages.DiagramEditorContextMenuProvider_arrangeMenuRenameError, e);
-        } catch (IllegalArgumentException e) {
-            SiriusPlugin.getDefault().error(Messages.DiagramEditorContextMenuProvider_arrangeMenuRenameError, e);
-        } catch (IllegalAccessException e) {
-            SiriusPlugin.getDefault().error(Messages.DiagramEditorContextMenuProvider_arrangeMenuRenameError, e);
         }
     }
 
