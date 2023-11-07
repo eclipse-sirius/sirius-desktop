@@ -44,6 +44,7 @@ import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.diagram.core.listener.DiagramEventBroker;
 import org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint;
+import org.eclipse.gmf.runtime.diagram.ui.actions.internal.l10n.DiagramUIActionsMessages;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
 import org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.Draw2dRenderPlugin;
 import org.eclipse.jface.preference.IPreferenceStore;
@@ -275,6 +276,24 @@ public final class DiagramUIPlugin extends EMFPlugin {
             Draw2dRenderPlugin.getInstance();
 
             DiagramEventBroker.registerDiagramEventBrokerFactory(new SiriusDiagramEventBrokerFactory());
+
+            updateArrangeText();
+        }
+
+        @SuppressWarnings("restriction")
+        private void updateArrangeText() {
+            DiagramUIActionsMessages.ArrangeAction_ArrangeAll_ActionLabelText = Messages.ArrangeAction_ArrangeAll_ActionLabelText;
+            DiagramUIActionsMessages.ArrangeAction_ArrangeAll_ActionToolTipText = Messages.ArrangeAction_ArrangeAll_ActionToolTipText;
+            DiagramUIActionsMessages.ArrangeAction_toolbar_ArrangeAll_ActionLabelText = Messages.ArrangeAction_toolbar_ArrangeAll_ActionLabelText;
+            DiagramUIActionsMessages.ArrangeAction_toolbar_ArrangeAll_ActionToolTipText = Messages.ArrangeAction_toolbar_ArrangeAll_ActionToolTipText;
+
+            DiagramUIActionsMessages.ArrangeAction_ArrangeSelection_ActionLabelText = Messages.ArrangeAction_ArrangeSelection_ActionLabelText;
+            DiagramUIActionsMessages.ArrangeAction_ArrangeSelection_ActionToolTipText = Messages.ArrangeAction_ArrangeSelection_ActionToolTipText;
+            DiagramUIActionsMessages.ArrangeAction_toolbar_ArrangeSelection_ActionLabelText = Messages.ArrangeAction_toolbar_ArrangeSelection_ActionLabelText;
+            DiagramUIActionsMessages.ArrangeAction_toolbar_ArrangeSelection_ActionToolTipText = Messages.ArrangeAction_toolbar_ArrangeSelection_ActionToolTipText;
+
+            DiagramUIActionsMessages.ArrangeMenuManager_Arrange_ActionLabelText = Messages.ArrangeMenuManager_Arrange_ActionLabelText;
+            DiagramUIActionsMessages.ArrangeMenuManager_Arrange_ActionToolTipText = Messages.ArrangeMenuManager_Arrange_ActionToolTipText;
         }
 
         private void registerCoreDecorationProviders() {
