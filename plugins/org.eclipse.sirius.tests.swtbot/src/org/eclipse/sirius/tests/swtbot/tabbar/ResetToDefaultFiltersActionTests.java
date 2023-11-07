@@ -29,7 +29,6 @@ import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
-import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.swt.widgets.MenuItem;
@@ -67,8 +66,6 @@ public class ResetToDefaultFiltersActionTests extends AbstractSiriusSwtBotGefTes
     private static final String DIAGRAM_DESCRIPTION_WITHOUT_CONCERN = "Bug490384_DiagWithoutConcern";
 
     private SWTBotTreeItem modelElementItem;
-
-    private SWTBotSiriusDiagramEditor editor;
 
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
@@ -215,9 +212,7 @@ public class ResetToDefaultFiltersActionTests extends AbstractSiriusSwtBotGefTes
     
     @Override
     protected void tearDown() throws Exception {
-        editor.close();
-        super.tearDown();
-        editor = null;
         modelElementItem = null;
+        super.tearDown();
     }
 }

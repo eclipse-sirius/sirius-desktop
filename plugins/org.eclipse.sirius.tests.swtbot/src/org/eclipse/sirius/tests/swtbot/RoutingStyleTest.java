@@ -16,7 +16,6 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
@@ -65,12 +64,6 @@ public class RoutingStyleTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String FILE_DIR = "/";
 
-    private UIResource sessionAirdResource;
-
-    private UILocalSession localSession;
-
-    private SWTBotSiriusDiagramEditor editor;
-
     /**
      * {@inheritDoc}
      */
@@ -111,13 +104,6 @@ public class RoutingStyleTest extends AbstractSiriusSwtBotGefTestCase {
     public void testRoutingStyleWithMultiSelection() throws Exception {
         // Use "All" contextual menu to select all elements of the diagram.
         changeRoutingStyle("All", false);
-    }
-    
-    @Override
-    protected void tearDown() throws Exception {
-        editor.close();
-        super.tearDown();
-        editor = null;
     }
 
     private void changeRoutingStyle(String contextualMenuName, boolean checkPropertiesView) {

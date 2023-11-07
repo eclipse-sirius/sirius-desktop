@@ -19,7 +19,6 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
@@ -49,12 +48,6 @@ public class ContextMenuInDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String VSM_FILE = "contextMenu.odesign";
 
     private static final String DATA_UNIT_DIR = "/data/unit/contextMenu/";
-
-    private SWTBotSiriusDiagramEditor editor;
-
-    private UIResource sessionAirdResource;
-
-    private UILocalSession localSession;
 
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
@@ -140,12 +133,5 @@ public class ContextMenuInDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     private void checkSelectedPart(EditPart expectedSelectedEditPart) {
         EditPart selectedEditPart = (EditPart) ((IStructuredSelection) editor.getSelection()).getFirstElement();
         assertEquals("Wrong selected object after right clicking on it", expectedSelectedEditPart, selectedEditPart);
-    }
-    
-    @Override
-    protected void tearDown() throws Exception {
-        editor.close();
-        super.tearDown();
-        editor = null;
     }
 }

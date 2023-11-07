@@ -21,7 +21,6 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
@@ -59,12 +58,6 @@ public class DragAndDropFromControlledResourceTest extends AbstractSiriusSwtBotG
     private static final String DATA_UNIT_DIR = "data/unit/vp-2692/";
 
     private static final String FILE_DIR = "/";
-
-    private SWTBotSiriusDiagramEditor editor;
-
-    private UIResource sessionAirdResource;
-
-    private UILocalSession localSession;
 
     private UIResource ecoreEcoreResource;
 
@@ -137,13 +130,8 @@ public class DragAndDropFromControlledResourceTest extends AbstractSiriusSwtBotG
     public void tearDown() throws Exception {
         // Reopen outline
         new DesignerViews(bot).openOutlineView();
-        editor.close();
-
-        super.tearDown();
-        
-        editor = null;
-        
         ecoreEcoreResource = null;
         semanticResourceNode = null;
+        super.tearDown();
     }
 }

@@ -20,7 +20,6 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusContainerDropPolicy;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
@@ -53,10 +52,6 @@ public class RefreshAfterUndoDragNDropTest extends AbstractSiriusSwtBotGefTestCa
     private static final String DROP_TARGET_NAME = "EClass3";
 
     private static final String REFRESH_CONTEXTUAL_MENU_NAME = "Refresh";
-
-    UILocalSession localSession;
-
-    SWTBotSiriusDiagramEditor editor;
 
     /**
      * {@inheritDoc}

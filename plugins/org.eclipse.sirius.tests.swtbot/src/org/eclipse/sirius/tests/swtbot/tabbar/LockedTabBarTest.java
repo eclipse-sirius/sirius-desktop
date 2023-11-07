@@ -38,7 +38,6 @@ import org.eclipse.sirius.ecore.extender.business.internal.permission.ReadOnlyPe
 import org.eclipse.sirius.ecore.extender.business.internal.permission.descriptors.StandalonePermissionProviderDescriptor;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
@@ -101,12 +100,6 @@ public class LockedTabBarTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String DELETE_FROM_MODEL = "Delete from Model";
 
     private static final String SELECTED_PACKAGE = "0";
-
-    private UIResource sessionAirdResource;
-
-    private UILocalSession localSession;
-
-    private SWTBotSiriusDiagramEditor editor;
 
     private PermissionProviderDescriptor permissionProviderDescriptor;
 

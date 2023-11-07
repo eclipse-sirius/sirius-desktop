@@ -59,12 +59,6 @@ public class LockedAppearanceTabTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String FONTS_AND_COLORS = "Fonts and Colors:";
 
-    private UIResource sessionAirdResource;
-
-    private UILocalSession localSession;
-
-    private SWTBotSiriusDiagramEditor editor;
-
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE, VSM_FILE);
@@ -226,12 +220,5 @@ public class LockedAppearanceTabTest extends AbstractSiriusSwtBotGefTestCase {
             SWTBotCCombo combo = propertiesBot.ccomboBoxInGroup(FONTS_AND_COLORS, i);
             assertEnabled(combo, enabled);
         }
-    }
-    
-    @Override
-    protected void tearDown() throws Exception {
-        editor.close();
-        super.tearDown();
-        editor = null;
     }
 }

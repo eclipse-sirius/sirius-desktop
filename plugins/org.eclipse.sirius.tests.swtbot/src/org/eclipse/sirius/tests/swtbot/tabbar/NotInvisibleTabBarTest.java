@@ -19,7 +19,6 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
@@ -67,12 +66,6 @@ public class NotInvisibleTabBarTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String SELECT_ALL = "Select &All";
 
     private static final String ALIGN_LEFT = "Align Left";
-
-    private UIResource sessionAirdResource;
-
-    private UILocalSession localSession;
-
-    private SWTBotSiriusDiagramEditor editor;
 
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
@@ -223,12 +216,5 @@ public class NotInvisibleTabBarTest extends AbstractSiriusSwtBotGefTestCase {
         selectDiagram();
         checkEnabledDropDownButton(SELECT_ALL);
         checkEnabledDropDownButton(ALIGN_LEFT);
-    }
-    
-    @Override
-    protected void tearDown() throws Exception {
-        editor.close();
-        super.tearDown();
-        editor = null;
     }
 }

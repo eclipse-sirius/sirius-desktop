@@ -29,7 +29,6 @@ import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.Tabbar;
 import org.eclipse.sirius.diagram.ui.tools.internal.menu.LocationURI;
 import org.eclipse.sirius.diagram.ui.tools.internal.menu.PopupMenuContribution;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.swt.widgets.ToolBar;
@@ -58,12 +57,6 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String DATA_UNIT_DIR = "data/unit/popupMenu/";
 
     private static final String FILE_DIR = "/";
-
-    private UIResource sessionAirdResource;
-
-    private UILocalSession localSession;
-
-    private SWTBotSiriusDiagramEditor editor;
 
     /**
      * {@inheritDoc}
@@ -595,12 +588,5 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
         } catch (WidgetNotFoundException e) {
             fail("The action actionMenu4 of the menu myMenu4 should be restored");
         }
-    }
-    
-    @Override
-    protected void tearDown() throws Exception {
-        editor.close();
-        super.tearDown();
-        editor = null;
     }
 }

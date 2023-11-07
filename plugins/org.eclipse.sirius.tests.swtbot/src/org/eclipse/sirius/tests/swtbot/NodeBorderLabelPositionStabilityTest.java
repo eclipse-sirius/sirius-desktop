@@ -20,7 +20,6 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEdit
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
@@ -47,12 +46,6 @@ public class NodeBorderLabelPositionStabilityTest extends AbstractSiriusSwtBotGe
     private static final String FILE_DIR = "/";
 
     private static final String LONG_LABEL = "loooooooooooong name is very long";
-
-    private UIResource sessionAirdResource;
-
-    private UILocalSession localSession;
-
-    private SWTBotSiriusDiagramEditor editor;
 
     /**
      * {@inheritDoc}
@@ -190,13 +183,6 @@ public class NodeBorderLabelPositionStabilityTest extends AbstractSiriusSwtBotGe
         labelCenterLocation = new Point(labelUpperLeftLocation.x + labelDimension.width / 2, labelUpperLeftLocation.y + labelDimension.height / 2);
         assertEquals("The label is not at the expected X position", labelUpperLeftLocation.x, dnepUpperLeftLocation.x + dnepDimension.width, 5);
         assertEquals("The label is not at the expected Y position", labelCenterLocation.y, dnepUpperLeftLocation.y + dnepDimension.height / 2, 5);
-    }
-    
-    @Override
-    protected void tearDown() throws Exception {
-        editor.close();
-        super.tearDown();
-        editor = null;
     }
 
 }

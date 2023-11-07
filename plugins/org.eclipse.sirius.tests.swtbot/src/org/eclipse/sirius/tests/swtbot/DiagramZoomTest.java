@@ -29,7 +29,6 @@ import org.eclipse.sirius.tests.support.api.ICondition;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckDiagramSelected;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
@@ -68,12 +67,6 @@ public class DiagramZoomTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String VSM_FILE = "VSMForMouseZoomTest.odesign";
 
     private static final String DATA_UNIT_DIR = "data/unit/mouseZoom/";
-
-    private SWTBotSiriusDiagramEditor editor;
-
-    private UIResource sessionAirdResource;
-
-    private UILocalSession localSession;
 
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
@@ -210,12 +203,5 @@ public class DiagramZoomTest extends AbstractSiriusSwtBotGefTestCase {
         assertTrue("The synchronization decorator is missing.", diagramSynchronizeStatusFigure.isPresent());
         SWTBotUtils.waitAllUiEvents();
         return diagramPart;
-    }
-    
-    @Override
-    protected void tearDown() throws Exception {
-        editor.close();
-        super.tearDown();
-        editor = null;
     }
 }

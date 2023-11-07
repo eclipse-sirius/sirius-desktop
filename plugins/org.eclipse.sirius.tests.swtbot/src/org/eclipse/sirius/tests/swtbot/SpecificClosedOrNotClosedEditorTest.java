@@ -115,8 +115,6 @@ public class SpecificClosedOrNotClosedEditorTest extends AbstractSiriusSwtBotGef
 
     private static final String FILE_DIR = "/";
 
-    private SWTBotSiriusDiagramEditor editor;
-
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, MODEL_1854, SESSION_FILE, SESSION_FILE_1854, VSM, VSM_1854);
@@ -405,13 +403,6 @@ public class SpecificClosedOrNotClosedEditorTest extends AbstractSiriusSwtBotGef
             return notifiedEditors;
         }
 
-    }
-    
-    @Override
-    protected void tearDown() throws Exception {
-        editor.close();
-        super.tearDown();
-        editor = null;
     }
 
 }

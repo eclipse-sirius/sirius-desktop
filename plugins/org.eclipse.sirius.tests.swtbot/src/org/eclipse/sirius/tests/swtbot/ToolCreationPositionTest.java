@@ -22,7 +22,6 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainer2EditPart
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
@@ -74,12 +73,6 @@ public class ToolCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String DATA_UNIT_DIR = "data/unit/nodeCreation/2444/";
 
     private static final String FILE_DIR = "/";
-
-    private SWTBotSiriusDiagramEditor editor;
-
-    private UIResource sessionAirdResource;
-
-    private UILocalSession localSession;
 
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
@@ -313,13 +306,6 @@ public class ToolCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
         ep.getFigure().translateToAbsolute(((GraphicalEditPart) editPart.part()).getFigure().getBounds());
         assertEquals(creationPosition.x + position * SiriusLayoutDataManager.PADDING, ep.getFigure().getBounds().x, 1);
         assertEquals(creationPosition.y + position * SiriusLayoutDataManager.PADDING, ep.getFigure().getBounds().y, 1);
-    }
-    
-    @Override
-    protected void tearDown() throws Exception {
-        editor.close();
-        super.tearDown();
-        editor = null;
     }
 
 }

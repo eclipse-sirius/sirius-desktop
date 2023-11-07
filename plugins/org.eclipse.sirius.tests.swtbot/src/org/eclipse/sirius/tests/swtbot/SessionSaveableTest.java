@@ -83,10 +83,6 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
 
     private UICallBack uiCallBack;
 
-    private UILocalSession localSession;
-
-    private SWTBotSiriusDiagramEditor editor;
-
     private boolean oldValuePrefPromptWhenSaveableStillOpen;
 
     @Override
@@ -107,9 +103,7 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
     protected void tearDown() throws Exception {
         // Restore original Call back
         SiriusEditPlugin.getPlugin().setUiCallback(uiCallBack);
-        editor.close();
         super.tearDown();
-        editor = null;
     }
 
     /**

@@ -1934,8 +1934,10 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         // on close.
         ResourcesPlugin.getWorkspace().save(true, null);
         
-        if (editor!=null) editor.close();
-        editor = null;
+        if (editor != null) {
+            editor.close();
+            editor = null;
+        }
     }
 
     // CHECKSTYLE:OFF

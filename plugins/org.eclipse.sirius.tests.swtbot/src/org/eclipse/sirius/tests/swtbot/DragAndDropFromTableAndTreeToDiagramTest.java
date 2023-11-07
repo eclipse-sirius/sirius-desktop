@@ -24,7 +24,6 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UITableRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UITreeRepresentation;
@@ -55,12 +54,6 @@ public class DragAndDropFromTableAndTreeToDiagramTest extends AbstractSiriusSwtB
     private static final String FILE_DIR = "/";
 
     private UITableRepresentation table;
-
-    private UIResource sessionAirdResource;
-
-    private UILocalSession localSession;
-
-    private SWTBotSiriusDiagramEditor editor;
 
     private UITreeRepresentation tree;
 
@@ -184,8 +177,6 @@ public class DragAndDropFromTableAndTreeToDiagramTest extends AbstractSiriusSwtB
     protected void tearDown() throws Exception {
         // Reopen outline
         designerViews.openOutlineView();
-        editor.close();
         super.tearDown();
-        editor = null;
     }
 }

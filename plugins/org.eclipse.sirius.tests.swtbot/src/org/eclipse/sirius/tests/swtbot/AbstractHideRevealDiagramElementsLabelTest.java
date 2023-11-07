@@ -21,7 +21,6 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotCommonHelper;
@@ -99,10 +98,6 @@ public class AbstractHideRevealDiagramElementsLabelTest extends AbstractSiriusSw
     private static final String DATA_UNIT_DIR = "data/unit/tools/hide-reveal/tc-2330/";
 
     protected String FILE_DIR = "/";
-
-    protected UIResource sessionAirdResource;
-
-    protected UILocalSession localSession;
 
     protected String previousPollDelay;
 

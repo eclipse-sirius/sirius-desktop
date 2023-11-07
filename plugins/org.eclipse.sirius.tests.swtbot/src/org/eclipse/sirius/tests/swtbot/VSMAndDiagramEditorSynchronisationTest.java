@@ -22,7 +22,6 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramListEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
@@ -88,12 +87,6 @@ public class VSMAndDiagramEditorSynchronisationTest extends AbstractSiriusSwtBot
 
     /** Current diagram. */
     protected UIDiagramRepresentation diagram;
-
-    /** Session. */
-    private UIResource sessionAirdResource;
-
-    /** Local Session. */
-    private UILocalSession localSession;
 
     /**
      * {@inheritDoc}
@@ -273,9 +266,6 @@ public class VSMAndDiagramEditorSynchronisationTest extends AbstractSiriusSwtBot
     @Override
     protected void tearDown() throws Exception {
         diagram = null;
-        editor = null;
-        sessionAirdResource = null;
-        localSession = null;
         super.tearDown();
     }
 
