@@ -55,6 +55,8 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 
     private static final String PLUGIN_MENU_MANAGER_CLASS_NAME = "PluginMenuManager"; //$NON-NLS-1$
 
+    private static final String ARRANGE_GROUP = "myArrangeGroup"; //$NON-NLS-1$
+
     private static final String PIN_GROUP = "pinGroup"; //$NON-NLS-1$
 
     /** the workbench part */
@@ -124,31 +126,9 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
                     editMenu.remove(GlobalActionId.COPY);
                     editMenu.remove(GlobalActionId.PASTE);
                 }
-
-                // Add the arrangeBorderNodesAction just after the
-                // arrangeAllAction (Arrange All action of GMF)
-                // This is needed just in case of diagram selection.
-                final IContributionItem arrangeBorderNodesItem = menu.find(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDER_NODES);
-                if (arrangeBorderNodesItem != null) {
-                    menu.remove(arrangeBorderNodesItem);
-                    final IMenuManager arrangeMenu = menu.findMenuUsingPath(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.MENU_ARRANGE);
-                    if (PLUGIN_MENU_MANAGER_CLASS_NAME.equals(arrangeMenu.getClass().getSimpleName())) { // $NON-NLS-1$
-                        // We move the arrangeMenu only if it is contributed through plugin contribution. In case of
-                        // VSM contribution, we ignore it.
-                        arrangeMenu.insertAfter(ActionIds.ACTION_ARRANGE_ALL, arrangeBorderNodesItem);
-                    }
-                }
-
-                final IContributionItem movePinnedElementsItem = menu.find(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.MOVE_PINNED_ELEMENTS);
-                if (movePinnedElementsItem != null) {
-                    menu.remove(movePinnedElementsItem);
-                    final IMenuManager arrangeMenu = menu.findMenuUsingPath(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.MENU_ARRANGE);
-                    arrangeMenu.add(new Separator(PIN_GROUP));
-                    arrangeMenu.appendToGroup(PIN_GROUP, movePinnedElementsItem);
-                }
-
+                
                 // Move arrange menu for diagram element
-                moveArrangeMenuForDiagramElements(menu);
+                reorganizeLayoutMenu(menu);
 
                 // move Show/Hide and Export diagram as image after refresh
                 final IContributionItem selectHiddenElementsItem = menu.find(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.SELECT_HIDDEN_ELEMENTS);
@@ -235,26 +215,56 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
     }
 
     /**
-     * Rename the Arrange menu (new name=Layout menu), move it and reorganize it.
+     * Move Layout menu and reorganize it.
      * 
      * @param menu
      *            The parent menu containing "Format" menu
      */
-    private void moveArrangeMenuForDiagramElements(IMenuManager menu) {
+    private void reorganizeLayoutMenu(IMenuManager menu) {
+        // By default, if the diagram background is selected (1):
+        //   Layout actions added by Sirius (layout children, layout border node, move pinned elements)
+        //   are at the root of contextual menu: we need to move it in layout menu.
+        // and if a diagram element is selection (2):
+        //   The layout menu is inside the format menu: we need to move it in root of contextual menu.
+        
+        IMenuManager layoutMenu = menu.findMenuUsingPath(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.MENU_ARRANGE);
         final IMenuManager formatMenu = menu.findMenuUsingPath(ActionIds.MENU_FORMAT);
-        if (formatMenu != null) {
-            final IMenuManager arrangeMenu = formatMenu.findMenuUsingPath(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.MENU_ARRANGE);
-            if (arrangeMenu != null) {
-                // We check the enablement of the arrange actions according to
-                // the current selected elements.
-                updateArrangeMenuEnableActions(arrangeMenu, this.getViewer().getSelection());
-                if (PLUGIN_MENU_MANAGER_CLASS_NAME.equals(arrangeMenu.getClass().getSimpleName())) {
+        if (layoutMenu != null) { // case (1)
+            if (PLUGIN_MENU_MANAGER_CLASS_NAME.equals(layoutMenu.getClass().getSimpleName())) {
+                // We move the actions only if it is contributed through plugin contribution. In case of VSM
+                // contribution, we ignore it.
+
+                // Move items in layout menu
+                final IContributionItem layoutChildrenItem = menu.find(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.LAYOUT_CHILDREN);
+                final IContributionItem arrangeBorderNodesItem = menu.find(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDER_NODES);
+                final IContributionItem movePinnedElementsItem = menu.find(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.MOVE_PINNED_ELEMENTS);
+                if (layoutChildrenItem != null) {
+                    menu.remove(layoutChildrenItem);
+                    layoutMenu.appendToGroup(ARRANGE_GROUP, layoutChildrenItem);
+                }
+                if (arrangeBorderNodesItem != null) {
+                    menu.remove(arrangeBorderNodesItem);
+                    layoutMenu.appendToGroup(ARRANGE_GROUP, arrangeBorderNodesItem);
+                }
+                layoutMenu.add(new Separator(PIN_GROUP));
+                if (movePinnedElementsItem != null) {
+                    menu.remove(movePinnedElementsItem);
+                    layoutMenu.appendToGroup(PIN_GROUP, movePinnedElementsItem);
+                }
+            }
+        } else if (formatMenu != null) { // case (2)
+            layoutMenu = formatMenu.findMenuUsingPath(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.MENU_ARRANGE);
+            // We check the enablement of the arrange actions according to
+            // the current selected elements.
+            updateArrangeMenuEnableActions(layoutMenu, this.getViewer().getSelection());
+
+            if (layoutMenu != null) {
+                if (PLUGIN_MENU_MANAGER_CLASS_NAME.equals(layoutMenu.getClass().getSimpleName())) {
                     // We move the arrangeMenu only if it is contributed through plugin contribution. In case of VSM
                     // contribution, we ignore it.
-                    // Remove Layout menu from format menu
-                    formatMenu.remove(arrangeMenu);
-                    // and add it just after FILTER_FORMAT_GROUP
-                    menu.insertAfter(FILTER_FORMAT_GROUP, arrangeMenu);
+
+                    formatMenu.remove(layoutMenu);
+                    menu.insertAfter(FILTER_FORMAT_GROUP, layoutMenu);
                 }
             }
         }

@@ -145,6 +145,7 @@
                  id="pasteImageAction"
                  menubarPath="/edit/copyFormatGroup">
            </partAction>
+           <partAction menubarPath="/diagramMenu/arrangeMenu/arrangeGroup" id="layoutChildrenAction"/>
            <partAction menubarPath="/diagramMenu/arrangeMenu/arrangeGroup" id="arrangeBorderNodesAction"/>
            <partMenuGroup menubarPath="/diagramMenu/arrangeMenu/" id="pinGroup" separator="true" />
            <partAction menubarPath="/diagramMenu/arrangeMenu/pinGroup" id="movePinnedElements"/>
@@ -255,6 +256,7 @@
             <popupAction path="/formatMenu/arrangeMenu/pinGroup" id="movePinnedElements"/>
             <popupAction path="/formatMenu/arrangeMenu/pinGroup" id="pinElementsAction" />
             <popupAction path="/formatMenu/arrangeMenu/pinGroup" id="unpinElementsAction" />
+            <popupAction path="/formatMenu/arrangeMenu/arrangeGroup" id="layoutChildrenAction"/>
             <popupAction path="/formatMenu/arrangeMenu/arrangeGroup" id="arrangeBorderNodesAction"/>
             <!-- Add distribute action in new distribute group -->
             <popupMenu path="/formatMenu/alignMenu" id="distributeMenu"/>
@@ -502,6 +504,9 @@
         <popupStructuredContributionCriteria
               objectClass="org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart">
         </popupStructuredContributionCriteria>
+        <popupAction
+              id="layoutChildrenAction">
+        </popupAction>
         <popupAction
               id="arrangeBorderNodesAction">
         </popupAction>

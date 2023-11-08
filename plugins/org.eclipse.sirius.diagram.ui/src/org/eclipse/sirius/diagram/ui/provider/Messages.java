@@ -809,6 +809,18 @@ public final class Messages {
     public static String LayersTableViewer_columnName;
 
     @TranslatableMessage
+    public static String LayoutChildrenAction_commandLabel;
+
+    @TranslatableMessage
+    public static String LayoutChildrenAction_menuText;
+
+    @TranslatableMessage
+    public static String LayoutChildrenAction_toolbarText;
+
+    @TranslatableMessage
+    public static String LayoutChildrenAction_tooltip;
+
+    @TranslatableMessage
     public static String LayoutData_illegalTarget;
 
     @TranslatableMessage

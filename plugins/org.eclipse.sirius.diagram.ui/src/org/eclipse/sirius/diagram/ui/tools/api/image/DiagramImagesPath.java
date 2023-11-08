@@ -121,6 +121,9 @@ public interface DiagramImagesPath {
     /** arrange bordered nodes icon. */
     String ARRANGE_BORDERED_NODES_ICON = "icons/arrangeBorderedNodes.gif"; //$NON-NLS-1$
 
+    /** layout children icon. */
+    String LAYOUT_BORDERED_NODES_ICON = "icons/layoutChildren.png"; //$NON-NLS-1$
+
     /** font wizard icon. */
     String FONT_WIZARD = "icons/fontWizard.gif"; //$NON-NLS-1$
 
