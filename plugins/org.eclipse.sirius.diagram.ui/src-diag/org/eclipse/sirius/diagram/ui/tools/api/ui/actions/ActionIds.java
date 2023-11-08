@@ -76,6 +76,12 @@ public interface ActionIds {
     @Deprecated
     String ARRANGE_BORDERED_NODES_TOOLBAR = "arrangeBorderNodesActionToolBar"; //$NON-NLS-1$
 
+    /** Action id for arrange children action in menu. */
+    String LAYOUT_CHILDREN = "layoutChildrenAction"; //$NON-NLS-1$
+
+    /** Action id for arrange children action in toolbar. */
+    String LAYOUT_CHILDREN_TOOLBAR = "layoutChildrenActionToolBar"; //$NON-NLS-1$
+
     /** Action id for move pinned elements action. */
     String MOVE_PINNED_ELEMENTS = "movePinnedElements"; //$NON-NLS-1$
 

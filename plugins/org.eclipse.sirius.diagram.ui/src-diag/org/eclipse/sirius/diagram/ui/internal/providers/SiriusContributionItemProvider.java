@@ -34,6 +34,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.actions.distribute.Distribut
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.distribute.SiriusAlignAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.ArrangeBorderNodesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.CopyFormatAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.LayoutChildrenAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.MovePinnedElementsAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteFormatAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteImageAction;
@@ -78,6 +79,10 @@ public class SiriusContributionItemProvider extends AbstractContributionItemProv
             result = ArrangeBorderNodesAction.createArrangeBorderNodesAction(workbenchPage);
         } else if (ActionIds.ARRANGE_BORDER_NODES_TOOLBAR.equals(actionId)) {
             result = ArrangeBorderNodesAction.createToolBarArrangeBorderNodesAction(workbenchPage);
+        } else if (ActionIds.LAYOUT_CHILDREN.equals(actionId)) {
+            result = LayoutChildrenAction.createMenuAction(workbenchPage);
+        } else if (ActionIds.LAYOUT_CHILDREN_TOOLBAR.equals(actionId)) {
+            result = LayoutChildrenAction.createToolbarAction(workbenchPage);
         } else if (ActionIds.MOVE_PINNED_ELEMENTS.equals(actionId)) {
             result = new MovePinnedElementsAction();
         } else if (ActionIds.COPY_TO_IMAGE.equals(actionId)) {
