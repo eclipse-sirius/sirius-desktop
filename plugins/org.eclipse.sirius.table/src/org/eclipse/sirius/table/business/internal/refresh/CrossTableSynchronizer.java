@@ -336,7 +336,13 @@ public class CrossTableSynchronizer extends AbstractTableSynchronizer<CrossTable
         if (StringUtil.isEmpty(iMapping.getSemanticCandidatesExpression())) {
             result = accessor.eAllContents(rootContent, iMapping.getDomainClass());
         } else {
-            result = interpreter.evaluateCollection(rootContent, iMapping, DescriptionPackage.eINSTANCE.getIntersectionMapping_SemanticCandidatesExpression());
+            result = InterpretationContext.with(interpreter, ctx -> {
+                ctx.setVariable(IInterpreterSiriusVariables.ROOT, rootContent);
+                ctx.setVariable(IInterpreterSiriusVariables.TABLE, table);
+
+                return interpreter.evaluateCollection(rootContent, iMapping, 
+                        DescriptionPackage.eINSTANCE.getIntersectionMapping_SemanticCandidatesExpression());
+            });
         }
         return result;
     }
@@ -396,7 +402,6 @@ public class CrossTableSynchronizer extends AbstractTableSynchronizer<CrossTable
             final DCell newCell = createCell(toCreate.getLine(), toCreate.getColumn(), toCreate.getSemantic(), (ElementColumnMapping) toCreate.getMapping());
             newCell.setIntersectionMapping(iMapping);
             sync.refresh(newCell);
-
         }
         for (final DCellCandidate toUpdate : cellsToUpdate.getKeptElements()) {
             final DCell cell = toUpdate.getOriginalElement();
