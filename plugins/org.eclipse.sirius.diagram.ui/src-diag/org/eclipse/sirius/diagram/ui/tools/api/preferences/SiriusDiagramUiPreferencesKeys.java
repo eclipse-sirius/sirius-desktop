@@ -113,6 +113,13 @@ public enum SiriusDiagramUiPreferencesKeys {
      * the next dialog, the last choice is pre-selected.
      */
     PREF_PASTE_MODE_ABSOLUTE(boolean.class),
+    
+    /**
+     * 
+     */
+    PREF_FAVORITE_CUSTOMIZED_COLORS(String.class),
+    PREF_FAVORITE_SUGGESTED_COLORS(String.class),
+    PREF_FAVORITE_DEFAULT_COLORS(String.class),
 
     /**
      * Used to define the arrangement of elements created on a diagram when they are not directly positioned by the
@@ -127,7 +134,7 @@ public enum SiriusDiagramUiPreferencesKeys {
      * {@link SiriusLayoutDataManager#DIAGONAL_ARRANGEMENT}.
      */
     PREF_NEWLY_CREATED_ELEMENTS_LAYOUT(int.class);
-
+    
     /** The type of the preference. */
     private Class<?> type;
 

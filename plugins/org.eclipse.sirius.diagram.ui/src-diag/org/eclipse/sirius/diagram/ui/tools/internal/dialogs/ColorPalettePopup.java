@@ -12,8 +12,10 @@
  ****************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.dialogs;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.gmf.runtime.common.ui.util.WindowUtil;
@@ -36,6 +38,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.ColorDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 
@@ -182,6 +185,12 @@ public class ColorPalettePopup {
         layout.verticalSpacing = 0;
         shell.setLayout(layout);
 
+        Label separatorText1 = new Label(shell, SWT.NONE);
+        separatorText1.setText("separator"); //$NON-NLS-1$
+        separatorText1.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, false, true, 1, 1));
+        Label separator1 = new Label(shell, SWT.SEPARATOR | SWT.HORIZONTAL | SWT.FILL);
+        separator1.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, true, 9, 1));
+        
         int count = 0;
         for (String colorName : defaultColors.keySet()) {
             count++;
@@ -214,10 +223,28 @@ public class ColorPalettePopup {
                 break;
             }
         }
+        Label separatorText = new Label(shell, SWT.NONE);
+        separatorText.setText("separator"); //$NON-NLS-1$
+        separatorText.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, true, true, 10, 1));
+        Label separator = new Label(shell, SWT.SEPARATOR | SWT.HORIZONTAL | SWT.FILL);
+        separator.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, true, 10, 1));
+        Button button = new Button(shell, SWT.PUSH);
+        GridData datatest = new GridData(SWT.BEGINNING, SWT.CENTER, true, true, 10, 1);
+        datatest.heightHint = rowHeight;
+        datatest.widthHint = rowHeight;
+        button.setLayoutData(datatest);
 
+        List<RGB> colorsList = new ArrayList<>();
+        colorsList.add(new RGB(255, 0, 0));
+        colorsList.add(new RGB(0, 255, 0));
+        colorsList.add(new RGB(0, 0, 255));
+        colorsList.add(new RGB(255, 0, 255));
+        ColorPaletteComposite cpc = ColorPaletteComposite.createColorPaletteComposite(shell, colorsList, 3);
+        
         Button moreColors = new Button(shell, SWT.PUSH);
         moreColors.setText(CUSTOM_COLOR_STRING);
-        GridData data = new GridData(GridData.HORIZONTAL_ALIGN_FILL);
+//        GridData data = new GridData(GridData.HORIZONTAL_ALIGN_FILL);
+        GridData data = new GridData(SWT.BEGINNING, SWT.CENTER, true, true, 10, 1);
         data.horizontalSpan = 4;
         data.heightHint = rowHeight;
         moreColors.setLayoutData(data);

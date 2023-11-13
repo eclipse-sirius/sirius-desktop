@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.api.color;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -19,11 +20,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.eclipse.core.runtime.preferences.DefaultScope;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.FigureUtilities;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.RGBValues;
@@ -126,6 +131,13 @@ public class ColorManager {
                         return rgb1;
                     }, () -> new LinkedHashMap<String, RGB>()));
         }
+        // Write the preference
+        IEclipsePreferences diagramUiPreferences = DefaultScope.INSTANCE.getNode(DiagramUIPlugin.ID);
+        diagramUiPreferences.put(SiriusDiagramUiPreferencesKeys.PREF_FAVORITE_CUSTOMIZED_COLORS.name(), "{255,255,0},{0,0,132},{12,200,51}"); //$NON-NLS-1$
+        //get the preference
+        String preferredCustomizedColors = DiagramUIPlugin.getPlugin().getPreferenceStore().getString(SiriusDiagramUiPreferencesKeys.PREF_FAVORITE_CUSTOMIZED_COLORS.name());
+        // transform the string to RGB list
+        List<RGB> favoriteColors = getFavoriteColors(preferredCustomizedColors);
 
         // get system colors
         Map<String, RGB> systemColors = VisualBindingManager.getDefault().getSystemPalette();
@@ -143,5 +155,21 @@ public class ColorManager {
         }
 
         return colors;
+    }
+    
+    public List<RGB> getFavoriteColors(String colors) {
+        List<RGB> colorsList = new ArrayList<>();
+        for (String s : colors.split("},")) { //$NON-NLS-1$
+            RGB color = stringToRGB(s);
+            colorsList.add(color);
+        }
+        return colorsList;
+    }
+
+    public RGB stringToRGB(String stringToConvert) {
+        String colorString = stringToConvert.replaceAll(" ", ""); //$NON-NLS-1$ //$NON-NLS-2$
+        String[] stringToParseArray = colorString.replaceAll("[{}]", "").split(","); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        RGB color = new RGB(Integer.parseInt(stringToParseArray[0]), Integer.parseInt(stringToParseArray[1]), Integer.parseInt(stringToParseArray[2]));
+        return color;
     }
 }

@@ -28,8 +28,12 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.properties.Properties;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.FigureUtilities;
 import org.eclipse.gmf.runtime.emf.core.util.PackageUtil;
+import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.resource.CompositeImageDescriptor;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.sirius.diagram.ui.tools.api.color.ColorManager;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.diagram.ui.tools.internal.dialogs.ColorPalettePopup;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
@@ -357,8 +361,11 @@ public class ColorPropertyContributionItem extends PropertyChangeContributionIte
      * Handles a widget selection event.
      */
     private void handleWidgetSelection(Event e) {
+        final ColorPalettePopup popup = new ColorPalettePopup(Display.getCurrent().getActiveShell(), IDialogConstants.BUTTON_BAR_HEIGHT,
+                ColorManager.getDefault().collectVsmAndDefaultColors(((DDiagramEditor) getWorkbenchPart()).getSession()));
+        popup.open(Display.getCurrent().getActiveShell().getLocation());
         if (e.detail == 4) { // on drop-down button
-            createMenu(getItem());
+//            createMenu(getItem());
         } else { // on icon button
             if (lastColor != null) {
                 runWithEvent(e);
@@ -386,6 +393,7 @@ public class ColorPropertyContributionItem extends PropertyChangeContributionIte
             menu = new Menu(menuItem.getParent());
             menuItem.setMenu(menu);
         }
+        
 
         assert null != menu : "falid to create menu"; //$NON-NLS-1$
         buildMenu(menu);
