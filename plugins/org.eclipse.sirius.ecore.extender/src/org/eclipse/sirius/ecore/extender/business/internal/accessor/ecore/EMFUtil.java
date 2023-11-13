@@ -232,7 +232,7 @@ public class EMFUtil {
      *            A function that takes a node and returns an iterator on all direct children
      * @return The stream of all elements of tree
      */
-    public static <T extends EObject> Stream<T> getTreeStream(T root, Function<T, Iterable<T>> childrenFunc) {
+    public static <T> Stream<T> getTreeStream(T root, Function<T, Iterable<T>> childrenFunc) {
         AbstractTreeIterator<T> iterator = new AbstractTreeIterator<T>(root, false) {
             private static final long serialVersionUID = 1L;
 

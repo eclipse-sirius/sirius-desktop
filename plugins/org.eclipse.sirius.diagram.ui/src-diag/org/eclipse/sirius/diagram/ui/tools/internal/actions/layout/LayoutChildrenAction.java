@@ -17,15 +17,24 @@ import java.util.List;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
-import org.eclipse.gef.commands.UnexecutableCommand;
+import org.eclipse.gmf.runtime.common.core.util.ObjectAdapter;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.services.layout.LayoutType;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.AbstractDiagramAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.LayoutChildrenProvider;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 
+/**
+ * Action to layout the children of a diagram selection.
+ * 
+ * @author Séraphin Costa <seraphin.costa@obeosoft.com>
+ *
+ */
 public class LayoutChildrenAction extends AbstractDiagramAction {
 
     /**
@@ -63,6 +72,19 @@ public class LayoutChildrenAction extends AbstractDiagramAction {
         return true;
     }
 
+    /**
+     * This function is overloaded because the parent function uses getCommand, which causes a bug.
+     */
+    @Override
+    protected boolean calculateEnabled() {
+        List<IGraphicalEditPart> selectedEditParts = getSelectedEditPart().stream() //
+                .filter(IGraphicalEditPart.class::isInstance) //
+                .map(IGraphicalEditPart.class::cast) //
+                .toList();
+        LayoutChildrenProvider provider = new LayoutChildrenProvider();
+        return provider.isAvailableFor(selectedEditParts) && super.canEditInstance();
+    }
+
     private List<EditPart> getSelectedEditPart() {
         List<?> selection = getSelectedObjects();
 
@@ -73,14 +95,13 @@ public class LayoutChildrenAction extends AbstractDiagramAction {
 
     @Override
     protected Command getCommand() {
-        List<EditPart> selectedEditPart = getSelectedEditPart();
+        List<IGraphicalEditPart> selectedEditParts = getSelectedEditPart().stream() //
+                .filter(IGraphicalEditPart.class::isInstance) //
+                .map(IGraphicalEditPart.class::cast) //
+                .toList();
 
-        if (selectedEditPart.isEmpty()) {
-            return UnexecutableCommand.INSTANCE;
-        } else {
-            // unimplemented
-            return UnexecutableCommand.INSTANCE;
-        }
+        LayoutChildrenProvider provider = new LayoutChildrenProvider();
+        return provider.layoutEditParts(selectedEditParts, new ObjectAdapter(LayoutType.DEFAULT));
     }
 
     @Override
