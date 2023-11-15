@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gef.EditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.tools.ToolUtilities;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
@@ -213,7 +214,7 @@ public abstract class AbstractCopyPasteFormatAction extends AbstractDiagramActio
      */
     protected Map<IGraphicalEditPart, List<IGraphicalEditPart>> sortSelection(List<?> selection) {
         // Remove child from selection if an ancestor is also in the selection.
-        List<?> selectionWithoutDependants = ToolUtilities.getSelectionWithoutDependants(selection);
+        List<?> selectionWithoutDependants = ToolUtilities.getSelectionWithoutDependants(selection.stream().filter(EditPart.class::isInstance).map(EditPart.class::cast).toList());
         Map<IGraphicalEditPart, List<IGraphicalEditPart>> result = new LinkedHashMap<>();
         for (Object object : selectionWithoutDependants) {
             if (object instanceof IGraphicalEditPart) {

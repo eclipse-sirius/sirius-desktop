@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2015, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -49,8 +49,6 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEdit
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator;
 
-import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 
 /**
@@ -125,10 +123,8 @@ public class MoveEdgeGroupManager {
             movedBorderNodes.add(cep.getSource());
             movedBorderNodes.add(cep.getTarget());
         }
-        ChangeBoundsRequest sourceChangeBoundsRequest = createChangeBoundsRequest(sourceEditPart);
-        sourceChangeBoundsRequest.getEditParts().addAll(movedBorderNodes);
-        ChangeBoundsRequest targetChangeBoundsRequest = createChangeBoundsRequest(targetEditPart);
-        targetChangeBoundsRequest.getEditParts().addAll(movedBorderNodes);
+        ChangeBoundsRequest sourceChangeBoundsRequest = createChangeBoundsRequest(sourceEditPart, movedBorderNodes);
+        ChangeBoundsRequest targetChangeBoundsRequest = createChangeBoundsRequest(targetEditPart, movedBorderNodes);
         sourceEditPart.showSourceFeedback(sourceChangeBoundsRequest);
         targetEditPart.showSourceFeedback(targetChangeBoundsRequest);
     }
@@ -230,47 +226,43 @@ public class MoveEdgeGroupManager {
      * @return true if the moved edges and border nodes can be activated,
      *         otherwise false.
      */
-    @SuppressWarnings("unchecked")
     private boolean accept() {
         if (request instanceof BendpointRequest) {
             ConnectionEditPart connectionEditPart = ((BendpointRequest) request).getSource();
-            // The selected diagram element should only contain edges otherwise
-            // the move is not valid
-            final Set<Integer> edgeDirections = new LinkedHashSet<>();
-            boolean result = Iterables.all(connectionEditPart.getViewer().getSelectedEditParts(), Predicates.and(Predicates.instanceOf(ConnectionEditPart.class), new Predicate<ConnectionEditPart>() {
-                /**
-                 * Determines if the given edge respects the following rules:
-                 * <ul>
-                 * <li>a border node as source</li>
-                 * <li>a border node as target</li>
-                 * <li>source node has only one connection: the moved edge.</li>
-                 * <li>target node has only one connection: the moved edge.</li>
-                 * <li>Both border nodes are on the same axe (Horizontal or
-                 * Vertical)</li>
-                 * </ul>
-                 */
-                @Override
-                public boolean apply(ConnectionEditPart input) {
-                    EditPart sourceEditPart = input.getSource();
-                    EditPart targetEditPart = input.getTarget();
-
-                    if (sourceEditPart instanceof AbstractDiagramBorderNodeEditPart && targetEditPart instanceof AbstractDiagramBorderNodeEditPart) {
-                        if (getAllConnections((AbstractDiagramBorderNodeEditPart) sourceEditPart).size() == 1 && getAllConnections((AbstractDiagramBorderNodeEditPart) targetEditPart).size() == 1) {
-                            int sourceDirection = getBorderNodeDirection((AbstractDiagramBorderNodeEditPart) sourceEditPart);
-                            int targetDirection = getBorderNodeDirection((AbstractDiagramBorderNodeEditPart) targetEditPart);
-                            if (sourceDirection == targetDirection) {
-                                direction = sourceDirection;
-                                edgeDirections.add(sourceDirection);
-                                return true;
-                            }
-                        }
-                    }
-                    return false;
-                }
-            }));
-            // There should be only one kind of direction for every edges to
-            // authorize the move
+            // The selected diagram element should only contain edges otherwise the move is not valid
+            Set<Integer> edgeDirections = new LinkedHashSet<>();
+            boolean result = connectionEditPart.getViewer().getSelectedEditParts().stream().allMatch(part -> part instanceof ConnectionEditPart selectedConnection && checkConnectionEditpart(selectedConnection, edgeDirections));
+            // There should be only one kind of direction for every edges to authorize the move
             return result && edgeDirections.size() == 1;
+        }
+        return false;
+    }
+    
+    /**
+     * Determines if the given edge respects the following rules:
+     * <ul>
+     * <li>a border node as source</li>
+     * <li>a border node as target</li>
+     * <li>source node has only one connection: the moved edge.</li>
+     * <li>target node has only one connection: the moved edge.</li>
+     * <li>Both border nodes are on the same axe (Horizontal or
+     * Vertical)</li>
+     * </ul>
+     */
+    private boolean checkConnectionEditpart(ConnectionEditPart input, final Set<Integer> edgeDirections) {
+        EditPart sourceEditPart = input.getSource();
+        EditPart targetEditPart = input.getTarget();
+        
+        if (sourceEditPart instanceof AbstractDiagramBorderNodeEditPart && targetEditPart instanceof AbstractDiagramBorderNodeEditPart) {
+            if (getAllConnections((AbstractDiagramBorderNodeEditPart) sourceEditPart).size() == 1 && getAllConnections((AbstractDiagramBorderNodeEditPart) targetEditPart).size() == 1) {
+                int sourceDirection = getBorderNodeDirection((AbstractDiagramBorderNodeEditPart) sourceEditPart);
+                int targetDirection = getBorderNodeDirection((AbstractDiagramBorderNodeEditPart) targetEditPart);
+                if (sourceDirection == targetDirection) {
+                    direction = sourceDirection;
+                    edgeDirections.add(sourceDirection);
+                    return true;
+                }
+            }
         }
         return false;
     }
@@ -336,10 +328,13 @@ public class MoveEdgeGroupManager {
         return 1d;
     }
 
-    private ChangeBoundsRequest createChangeBoundsRequest(AbstractDiagramBorderNodeEditPart editPart) {
+    private ChangeBoundsRequest createChangeBoundsRequest(AbstractDiagramBorderNodeEditPart editPart, Set<EditPart> additionalEditParts) {
 
         ChangeBoundsRequest changeBoundsRequest = new ChangeBoundsRequest(RequestConstants.REQ_MOVE);
-        changeBoundsRequest.setEditParts(editPart);
+        List<EditPart> allEditParts = new ArrayList<>(1 + additionalEditParts.size());
+        allEditParts.add(editPart);
+        allEditParts.addAll(additionalEditParts);
+        changeBoundsRequest.setEditParts(allEditParts);
         Point moveDelta = getDeltaFromRequest();
 
         changeBoundsRequest.setMoveDelta(moveDelta);

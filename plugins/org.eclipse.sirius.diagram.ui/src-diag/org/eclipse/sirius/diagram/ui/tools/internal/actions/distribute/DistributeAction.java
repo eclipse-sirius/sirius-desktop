@@ -281,7 +281,7 @@ public class DistributeAction extends DiagramAction {
             selection = Collections.EMPTY_LIST;
         } else {
             // Get the the top level selected edit parts
-            selection = ToolUtilities.getSelectionWithoutDependants(selection);
+            selection = ToolUtilities.getSelectionWithoutDependants(selection.stream().filter(EditPart.class::isInstance).map(EditPart.class::cast).toList());
             // Remove the connections
             selection = Lists.newArrayList(Iterables.filter(selection, Predicates.not(Predicates.instanceOf(ConnectionEditPart.class))));
             if (selection.size() < 3) {

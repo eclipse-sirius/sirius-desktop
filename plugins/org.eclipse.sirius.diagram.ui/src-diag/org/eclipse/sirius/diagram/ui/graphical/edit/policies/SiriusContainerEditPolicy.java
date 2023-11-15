@@ -216,7 +216,7 @@ public class SiriusContainerEditPolicy extends ContainerEditPolicy {
      * @return command
      */
     protected Command getDistributeCommand(DistributeRequest request) {
-        List<IGraphicalEditPart> editparts = request.getEditParts();
+        List<IGraphicalEditPart> editparts = request.getEditParts().stream().filter(IGraphicalEditPart.class::isInstance).map(IGraphicalEditPart.class::cast).toList();
         if (!editparts.isEmpty() && getHost() instanceof IGraphicalEditPart) {
             return new ICommandProxy(new DistributeCommand(((IGraphicalEditPart) getHost()).getEditingDomain(), editparts, request.getDistributeType()));
         }
