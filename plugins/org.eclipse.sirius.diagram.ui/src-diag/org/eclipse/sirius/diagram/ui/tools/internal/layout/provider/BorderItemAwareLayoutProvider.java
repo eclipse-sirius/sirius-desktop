@@ -558,7 +558,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
             final EditPart editPart = entry.getKey();
             if (editPart instanceof IGraphicalEditPart) {
                 ChangeBoundsRequest cbr = entry.getValue();
-                final List<EditPart> editParts = cbr.getEditParts();
+                final List<? extends EditPart> editParts = cbr.getEditParts();
                 if (editParts != null) {
                     for (EditPart ep : editParts) {
                         final View v = ((IGraphicalEditPart) ep).getNotationView();
