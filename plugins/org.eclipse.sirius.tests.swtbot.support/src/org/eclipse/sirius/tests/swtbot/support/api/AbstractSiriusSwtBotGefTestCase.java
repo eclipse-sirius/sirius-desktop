@@ -1708,6 +1708,9 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
             setErrorCatchActive(false);
             setWarningCatchActive(false);
 
+            // All tearDown tasks have been done, now all fields can be safely clear (before below final checks).
+            new TestCaseCleaner(this).clearAllFields();
+
             crossRefDetector.assertNoCrossReferenceAdapterFound();
             checkLogs();
         }
@@ -1923,8 +1926,6 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     @Override
     protected void tearDown() throws Exception {
         failureTearDown();
-
-        new TestCaseCleaner(this).clearAllFields();
 
         super.tearDown();
         setErrorCatchActive(false);
