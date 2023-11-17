@@ -38,8 +38,8 @@
   </licenses>
 
   <properties>
-    <tycho-version>2.7.1</tycho-version>
-    <tycho-extras-version>2.7.1</tycho-extras-version>
+    <tycho-version>4.0.4</tycho-version>
+    <tycho-extras-version>4.0.4</tycho-extras-version>
     <platform-version-name>2021-06</platform-version-name>
     <!-- This property is used to customize the maven build folder. Used for parallel builds -->
     <build-folder-name>target</build-folder-name>
@@ -113,7 +113,6 @@
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
         <artifactId>target-platform-configuration</artifactId>
-        <version>${tycho-version}</version>
         <configuration>
           <resolver>p2</resolver>
           <dependency-resolution>
@@ -132,7 +131,6 @@
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
         <artifactId>tycho-source-plugin</artifactId>
-        <version>${tycho-version}</version>
         <configuration>
           <archive>
             <addMavenDescriptor>false</addMavenDescriptor>
@@ -150,7 +148,6 @@
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
         <artifactId>tycho-packaging-plugin</artifactId>
-        <version>${tycho-version}</version>
         <configuration>
           <sourceReferences>
             <generate>true</generate>
@@ -163,25 +160,6 @@
             <version>${tycho-extras-version}</version>
           </dependency>
         </dependencies>
-      </plugin>
-      <plugin>
-        <groupId>org.eclipse.tycho.extras</groupId>
-        <artifactId>tycho-source-feature-plugin</artifactId>
-        <version>${tycho-extras-version}</version>
-        <configuration>
-          <archive>
-            <addMavenDescriptor>false</addMavenDescriptor>
-          </archive>
-        </configuration>
-        <executions>
-          <execution>
-            <id>source-feature</id>
-            <phase>package</phase>
-            <goals>
-              <goal>source-feature</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
       <plugin>
         <groupId>org.jacoco</groupId>
@@ -226,6 +204,11 @@
     </plugins>
     <pluginManagement>
       <plugins>
+	  	<plugin>	
+        	<groupId>org.eclipse.tycho</groupId>
+        	<artifactId>tycho-source-plugin</artifactId>
+	        <version>${tycho-version}</version>
+        </plugin>
         <plugin>
           <groupId>org.eclipse.tycho</groupId>
           <artifactId>target-platform-configuration</artifactId>
@@ -295,20 +278,20 @@
             <defaultP2Metadata>false</defaultP2Metadata>
           </configuration>
         </plugin>        
-            <plugin>
-                <groupId>org.eclipse.acceleo</groupId>
-                <artifactId>org.eclipse.acceleo.maven</artifactId>
-                <version>3.5.2</version>
-                <executions>
-                    <execution>
-                        <id>acceleo-compile</id>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>acceleo-compile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+        <plugin>
+            <groupId>org.eclipse.acceleo</groupId>
+            <artifactId>org.eclipse.acceleo.maven</artifactId>
+            <version>3.5.2</version>
+            <executions>
+                <execution>
+                    <id>acceleo-compile</id>
+                    <phase>compile</phase>
+                    <goals>
+                        <goal>acceleo-compile</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
         </plugins>
     </pluginManagement>
   </build>
