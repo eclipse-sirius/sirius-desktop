@@ -481,14 +481,7 @@ public abstract class AbstractSiriusFormatDataManagerForSemanticElementsTest ext
     }
 
     protected String getPlatformRelatedDataPath() {
-        String path = DATA_PATH;
-        String platformVersion = Platform.getBundle("org.eclipse.core.runtime").getHeaders().get("Bundle-Version");
-        if (platformVersion.startsWith("3.3") || platformVersion.startsWith("3.4") || platformVersion.startsWith("3.5")) {
-            path = DATA_PATH + "3.5/";
-        } else if (platformVersion.startsWith("3.6")) {
-            path = DATA_PATH + "3.6/";
-        }
-        return path;
+        return DATA_PATH;
     }
 
 }

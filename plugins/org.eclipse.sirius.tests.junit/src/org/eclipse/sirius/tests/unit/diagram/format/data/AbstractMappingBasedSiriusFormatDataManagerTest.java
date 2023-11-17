@@ -80,6 +80,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import org.osgi.framework.Version;
 
 /**
  * Test class for {@link MappingBasedSiriusFormatDataManager}. Inspired from
@@ -544,14 +545,7 @@ public class AbstractMappingBasedSiriusFormatDataManagerTest extends AbstractSir
 
     @Override
     protected String getPlatformRelatedDataPath() {
-        String path = getDataPath();
-        String platformVersion = Platform.getBundle("org.eclipse.core.runtime").getHeaders().get("Bundle-Version");
-        if (platformVersion.startsWith("3.3") || platformVersion.startsWith("3.4") || platformVersion.startsWith("3.5")) {
-            path = getDataPath() + "3.5/";
-        } else if (platformVersion.startsWith("3.6")) {
-            path = getDataPath() + "3.6/";
-        }
-        return path;
+        return getDataPath();
     }
 
     protected DRepresentation getDRepresentation(DiagramEditPart diagram) {
