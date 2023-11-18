@@ -127,6 +127,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.internal.ErrorEditorPart;
 import org.hamcrest.Matcher;
 import org.junit.Assert;
+import org.osgi.framework.Version;
 
 import com.google.common.base.Function;
 import com.google.common.base.Objects;
@@ -179,6 +180,8 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
 
     /** The logger. */
     private static Logger log = Logger.getLogger(SWTBotTestCase.class);
+    
+    private static final Version PLATFORM_VERSION = Platform.getBundle("org.eclipse.core.runtime").getVersion();
 
     /**
      * Designer perspective.
@@ -550,7 +553,11 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      *            the command to undo
      */
     protected void undo(String cmdName) {
-        SWTBotSiriusHelper.menu(bot, AbstractSiriusSwtBotGefTestCase.EDIT_MENU_NAME).menu("Undo " + cmdName).click();
+        String menuLabel = "Undo " + cmdName;
+        if (PLATFORM_VERSION.getMajor() == 3 && PLATFORM_VERSION.getMinor() >= 30) {
+            menuLabel = "Undo";
+        }
+        SWTBotSiriusHelper.menu(bot, AbstractSiriusSwtBotGefTestCase.EDIT_MENU_NAME).menu(menuLabel).click();
     }
 
     /**
@@ -580,7 +587,11 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      *            the command to redo
      */
     protected void redo(String cmdName) {
-        SWTBotSiriusHelper.menu(bot, AbstractSiriusSwtBotGefTestCase.EDIT_MENU_NAME).menu("Redo " + cmdName).click();
+        String menuLabel = "Redo " + cmdName;
+        if (PLATFORM_VERSION.getMajor() == 3 && PLATFORM_VERSION.getMinor() >= 30) {
+            menuLabel = "Redo";
+        }
+        SWTBotSiriusHelper.menu(bot, AbstractSiriusSwtBotGefTestCase.EDIT_MENU_NAME).menu(menuLabel).click();
     }
 
     /**
