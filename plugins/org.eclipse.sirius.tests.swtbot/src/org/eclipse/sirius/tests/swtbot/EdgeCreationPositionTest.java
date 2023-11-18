@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010-2019 THALES GLOBAL SERVICES and others..
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -324,7 +324,7 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
     /** */
     public void test_Node_then_Container() {
         test_Node();
-        bot.menu("Edit").menu("Undo " + getCreateEdgeToolName()).click();
+        undo(getCreateEdgeToolName());
         test_Container();
     }
 

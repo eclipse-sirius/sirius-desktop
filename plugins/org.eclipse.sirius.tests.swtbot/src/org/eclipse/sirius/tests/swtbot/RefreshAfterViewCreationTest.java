@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -289,7 +289,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
         assertEquals("Wrong number of edges", 1, connectionEditPart.size());
 
         // Undo the last insertion
-        bot.menu("Edit").menu("Undo " + CMD_INSERT_PACKAGE).click();
+        undo(CMD_INSERT_PACKAGE);
         try {
             editor.getEditPart("C2", AbstractDiagramBorderNodeEditPart.class);
             fail("The insertion was canceled so there shouldn't be an edit part for the class C2.");
@@ -297,7 +297,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
             // Do nothing : This exception is attempted
         }
         // Redo the last insertion
-        bot.menu("Edit").menu("Redo " + CMD_INSERT_PACKAGE).click();
+        redo(CMD_INSERT_PACKAGE);
         // Get the source of the edge
         source = editor.getEditPart("C2", AbstractDiagramBorderNodeEditPart.class);
         // Get the attempted connection
@@ -411,7 +411,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
         assertEquals("Wrong number of edges", 1, connectionEditPart.size());
 
         // Undo the last insertion
-        bot.menu("Edit").menu("Undo " + CMD_INSERT_PACKAGE).click();
+        undo(CMD_INSERT_PACKAGE);
         try {
             editor.getEditPart("C2", AbstractDiagramBorderNodeEditPart.class);
             fail("The insertion was canceled so there shouldn't be an edit part for the class C2.");
@@ -419,7 +419,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
             // Do nothing : This exception is attempted
         }
         // Redo the last insertion
-        bot.menu("Edit").menu("Redo " + CMD_INSERT_PACKAGE).click();
+        redo(CMD_INSERT_PACKAGE);
         // Get the source of the edge
         source = editor.getEditPart("C2", AbstractDiagramBorderNodeEditPart.class);
         // Get the attempted connection
@@ -571,7 +571,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
         assertEquals("Wrong number of edges", 1, connectionEditPart.size());
 
         // Undo the last insertion
-        bot.menu("Edit").menu("Undo " + CMD_INSERT_CLASS).click();
+        undo(CMD_INSERT_CLASS);
         try {
             editor.getEditPart("C2", AbstractDiagramNodeEditPart.class);
             fail("The insertion was canceled so there shouldn't be an edit part for the class C2.");
@@ -579,7 +579,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
             // Do nothing : This exception is attempted
         }
         // Redo the last insertion
-        bot.menu("Edit").menu("Redo " + CMD_INSERT_CLASS).click();
+        redo(CMD_INSERT_CLASS);
         // Get the source of the edge
         source = editor.getEditPart("C2", AbstractDiagramNodeEditPart.class);
         // Get the attempted connection
@@ -650,7 +650,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
         assertEquals("Wrong number of edges", 1, connectionEditPart.size());
 
         // Undo the last insertion
-        bot.menu("Edit").menu("Undo " + CMD_INSERT_CLASS).click();
+        undo(CMD_INSERT_CLASS);
         try {
             editor.getEditPart("C2", AbstractDiagramContainerEditPart.class);
             fail("The insertion was canceled so there shouldn't be an edit part for the class C2.");
@@ -658,7 +658,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
             // Do nothing : This exception is attempted
         }
         // Redo the last insertion
-        bot.menu("Edit").menu("Redo " + CMD_INSERT_CLASS).click();
+        redo(CMD_INSERT_CLASS);
         // Get the source of the edge
         source = editor.getEditPart("C2", AbstractDiagramContainerEditPart.class);
         // Get the attempted connection
@@ -717,7 +717,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
         assertEquals("Wrong number of edges", 1, connectionEditPart.size());
 
         // Undo the last insertion
-        bot.menu("Edit").menu("Undo " + CMD_INSERT_CLASS).click();
+        undo(CMD_INSERT_CLASS);
         try {
             editor.getEditPart("C2", AbstractDiagramListEditPart.class);
             fail("The insertion was canceled so there shouldn't be an edit part for the class C2.");
@@ -725,7 +725,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
             // Do nothing : This exception is attempted
         }
         // Redo the last insertion
-        bot.menu("Edit").menu("Redo " + CMD_INSERT_CLASS).click();
+        redo(CMD_INSERT_CLASS);
         // Get the source of the edge
         source = editor.getEditPart("C2", AbstractDiagramListEditPart.class);
         // Get the attempted connection
@@ -785,7 +785,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
         assertEquals("Wrong number of edges", 1, connectionEditPart.size());
 
         // Undo the last insertion
-        bot.menu("Edit").menu("Undo " + CMD_INSERT_CLASS).click();
+        undo(CMD_INSERT_CLASS);
         try {
             editor.getEditPart("C2", AbstractDiagramNodeEditPart.class);
             fail("The insertion was canceled so there shouldn't be an edit part for the class C2.");
@@ -793,7 +793,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
             // Do nothing : This exception is attempted
         }
         // Redo the last insertion
-        bot.menu("Edit").menu("Redo " + CMD_INSERT_CLASS).click();
+        redo(CMD_INSERT_CLASS);
         // Get the source of the edge
         source = editor.getEditPart("C2", AbstractDiagramNodeEditPart.class);
         // Get the attempted connection
@@ -987,7 +987,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
         assertEquals("Wrong number of edges", 1, connectionEditPart.size());
 
         // Undo the last insertion
-        bot.menu("Edit").menu("Undo " + CMD_INSERT_CLASS).click();
+        undo(CMD_INSERT_CLASS);
         try {
             editor.getEditPart("C2", AbstractDiagramContainerEditPart.class);
             fail("The insertion was canceled so there shouldn't be an edit part for the class C2.");
@@ -995,7 +995,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
             // Do nothing : This exception is attempted
         }
         // Redo the last insertion
-        bot.menu("Edit").menu("Redo " + CMD_INSERT_CLASS).click();
+        redo(CMD_INSERT_CLASS);
         // Get the source of the edge
         source = editor.getEditPart("C2", AbstractDiagramContainerEditPart.class);
         // Get the attempted connection
@@ -1190,7 +1190,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
         assertEquals("Wrong number of edges", 1, connectionEditPart.size());
 
         // Undo the last insertion
-        bot.menu("Edit").menu("Undo " + CMD_INSERT_CLASS).click();
+        undo(CMD_INSERT_CLASS);
         try {
             editor.getEditPart("C2", AbstractDiagramListEditPart.class);
             fail("The insertion was canceled so there shouldn't be an edit part for the class C2.");
@@ -1198,7 +1198,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
             // Do nothing : This exception is attempted
         }
         // Redo the last insertion
-        bot.menu("Edit").menu("Redo " + CMD_INSERT_CLASS).click();
+        redo(CMD_INSERT_CLASS);
         // Get the source of the edge
         source = editor.getEditPart("C2", AbstractDiagramListEditPart.class);
         // Get the attempted connection
@@ -1257,7 +1257,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
         assertEquals("Wrong number of edges", 1, connectionEditPart.size());
 
         // Undo the last insertion
-        bot.menu("Edit").menu("Undo " + CMD_INSERT_PACKAGE).click();
+        undo(CMD_INSERT_PACKAGE);
         try {
             editor.getEditPart("C2", AbstractDiagramBorderNodeEditPart.class);
             fail("The insertion was canceled so there shouldn't be an edit part for the class C2.");
@@ -1265,7 +1265,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
             // Do nothing : This exception is attempted
         }
         // Redo the last insertion
-        bot.menu("Edit").menu("Redo " + CMD_INSERT_PACKAGE).click();
+        redo(CMD_INSERT_PACKAGE);
         // Get the source of the edge
         source = editor.getEditPart("C2", AbstractDiagramBorderNodeEditPart.class);
         // Get the attempted connection
@@ -1377,7 +1377,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
         assertEquals("Wrong number of edges", 1, connectionEditPart.size());
 
         // Undo the last insertion
-        bot.menu("Edit").menu("Undo " + CMD_INSERT_PACKAGE).click();
+        undo(CMD_INSERT_PACKAGE);
         try {
             editor.getEditPart("C2", AbstractDiagramBorderNodeEditPart.class);
             fail("The insertion was canceled so there shouldn't be an edit part for the class C2.");
@@ -1385,7 +1385,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
             // Do nothing : This exception is attempted
         }
         // Redo the last insertion
-        bot.menu("Edit").menu("Redo " + CMD_INSERT_PACKAGE).click();
+        redo(CMD_INSERT_PACKAGE);
         // Get the source of the edge
         source = editor.getEditPart("C2", AbstractDiagramBorderNodeEditPart.class);
         // Get the attempted connection

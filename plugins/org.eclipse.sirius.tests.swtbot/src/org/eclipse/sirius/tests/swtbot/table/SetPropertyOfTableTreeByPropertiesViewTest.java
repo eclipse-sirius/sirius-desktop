@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -445,12 +445,12 @@ public class SetPropertyOfTableTreeByPropertiesViewTest extends AbstractSiriusSw
      */
     private void checkUndoRenameAction() {
         // There is 2 undo refresh because there is 2 manual refresh launched
-        bot.menu("Edit").menu("Undo Refresh representation").click();
-        bot.menu("Edit").menu("Undo Refresh representation").click();
-        bot.menu("Edit").menu("Undo Set Name").click();
+        undo("Refresh representation");
+        undo("Refresh representation");
+        undo("Set Name");
         try {
             // This is the old command that was call before correct VP-1896
-            bot.menu("Edit").menu("Undo Update value by properties view").click();
+            undo("Update value by properties view");
             fail("The Undo Update value by properties view should not be present");
         } catch (WidgetNotFoundException wnfe) {
             checkTreeRename(CLASS1);
@@ -462,10 +462,10 @@ public class SetPropertyOfTableTreeByPropertiesViewTest extends AbstractSiriusSw
      * Verify that the undo for abstract is present only one time
      */
     private void checkUndoAbstractAction() {
-        bot.menu("Edit").menu("Undo Refresh representation").click();
-        bot.menu("Edit").menu("Undo Set Abstract").click();
+        undo("Refresh representation");
+        undo("Set Abstract");
         try {
-            bot.menu("Edit").menu("Undo Update value by properties view").click();
+            undo("Update value by properties view");
             fail("The Undo Update value by properties view should not be present");
         } catch (WidgetNotFoundException wnfe) {
             checkElementIsAbstract(CLASS1, tree.getTree(), false);
