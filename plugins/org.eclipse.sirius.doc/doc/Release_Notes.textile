@@ -17,6 +17,8 @@ h3. User-Visible Changes
 * <span class="label label-info">Modified</span> Arrange actions have been renamed from "Arrange <...>" to "Layout <...>".
 * <span class="label label-info">Modified</span> The pin and unpin actions are now combined into a single checkbox action.
 * <span class="label label-info">Modified</span> The preference for marking moved items as pinned is now disabled by default. You can re-enable it via Window > Preferences > Sirius > Sirius Diagram
+* <span class="label label-info">Modified</span> In Sirius table, font type and default size are now based on Preferences Settings of **General > Appearance > Colors and Fonts**. Previously, cells font were always 'Arial' and of size '9' but column and line headers were based on Preferences Settings.
+* <span class="label label-info">Modified</span> In Sirius table, default colors has been changed to use Preferences Settings and selection coloring behaves like other Views and Editors. Previously, line headers were forced to gray, selected cell was using Menu color instead of Theme color and no color was indicating the row on mouse hover.
 
 h3. Specifier-Visible Changes
 
