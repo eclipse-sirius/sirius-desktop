@@ -145,16 +145,15 @@ public class DTableElementSynchronizer {
      * Refresh the given cell.
      * 
      * @param cell
-     *            cell to refresh.
+     *            cell to refresh. (may be null)
      */
     public void refresh(final DCell cell) {
-        if (accessor.getPermissionAuthority().canEditInstance(cell)) {
-            if (refreshTarget(cell)) {
-                if (refreshLabel(cell)) {
-                    refreshStyle(cell);
-                    refreshSemanticElements(cell);
-                }
-            }
+        if (cell != null // May happen in failed creation
+                && accessor.getPermissionAuthority().canEditInstance(cell) // order matters
+                && refreshTarget(cell) // modifiable -> target -> label
+                && refreshLabel(cell)) {
+        	refreshStyle(cell);
+            refreshSemanticElements(cell);            
         }
     }
 
@@ -179,14 +178,10 @@ public class DTableElementSynchronizer {
      *            column to refresh.
      */
     private void refresh(final DTargetColumn column) {
-        final ColumnMapping mapping = column.getOriginMapping();
         if (accessor.getPermissionAuthority().canEditInstance(column)) {
             final String label = getHeaderLabel(column, column.getOriginMapping(), 
                     DescriptionPackage.eINSTANCE.getColumnMapping_HeaderLabelExpression());
             setLabelOnUpdate(column, label);
-            if (mapping.getInitialWidth() != 0 && column.getWidth() == 0) {
-                column.setWidth(mapping.getInitialWidth());
-            }
             refreshStyle(column);
         }
     }
@@ -198,12 +193,8 @@ public class DTableElementSynchronizer {
      *            column to refresh.
      */
     public void refresh(final DFeatureColumn column) {
-        final ColumnMapping mapping = column.getOriginMapping();
         if (accessor.getPermissionAuthority().canEditInstance(column)) {
-            setLabelOnUpdate(column, mapping.getHeaderLabelExpression());
-            if (mapping.getInitialWidth() != 0 && column.getWidth() == 0) {
-                column.setWidth(mapping.getInitialWidth());
-            }
+            setLabelOnUpdate(column, column.getOriginMapping().getHeaderLabelExpression());
             refreshStyle(column);
         }
     }
@@ -756,6 +747,11 @@ public class DTableElementSynchronizer {
      *            column to refresh.
      */
     protected void refreshStyle(final DColumn column) {
+        final ColumnMapping mapping = column.getOriginMapping();
+    	if (mapping.getInitialWidth() != 0 && column.getWidth() == 0) {
+            column.setWidth(mapping.getInitialWidth());
+        }
+        
         DTableElementStyle style = column.getCurrentStyle();
         if (style == null) {
             style = TableFactory.eINSTANCE.createDTableElementStyle();
@@ -1140,13 +1136,13 @@ public class DTableElementSynchronizer {
         ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
         IItemLabelProvider itemLabelProvider = (IItemLabelProvider) adapterFactory.adapt(element, IItemLabelProvider.class);
         try {
+            IItemLabelProvider labelProvider;
             if (itemLabelProvider != null) {
-                AdapterFactoryItemDelegator adapterFactoryItemDelegator = new AdapterFactoryItemDelegator(adapterFactory);
-                text = adapterFactoryItemDelegator.getText(element);
+                labelProvider = new AdapterFactoryItemDelegator(adapterFactory);
             } else {
-                ReflectiveItemProvider reflectiveItemProvider = new ReflectiveItemProvider(adapterFactory);
-                text = reflectiveItemProvider.getText(element);
+                labelProvider = new ReflectiveItemProvider(adapterFactory);                
             }
+            text = labelProvider.getText(element);
         } finally {
             adapterFactory.dispose();
         }
