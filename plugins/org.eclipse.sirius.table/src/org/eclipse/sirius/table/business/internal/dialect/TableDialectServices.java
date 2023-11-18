@@ -265,7 +265,7 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
 
                 if (modelAccessor.eInstanceOf(semanticElement, tableDescription.getDomainClass())) {
                     boolean canCreate = true;
-                    if (tableDescription.getPreconditionExpression() != null && !StringUtil.isEmpty(tableDescription.getPreconditionExpression())) {
+                    if (!StringUtil.isEmpty(tableDescription.getPreconditionExpression())) {
                         try {
                             canCreate = InterpreterUtil.getInterpreter(semanticElement).evaluateBoolean(semanticElement, tableDescription.getPreconditionExpression());
                         } catch (final EvaluationException e) {

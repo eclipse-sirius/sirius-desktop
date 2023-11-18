@@ -1103,7 +1103,7 @@ public class DTableElementSynchronizer {
     public void refreshSemanticElements(final DTableElement tableElement, final TableMapping mapping) {
         Collection<EObject> elements;
         
-        if (mapping.getSemanticElements() != null && !StringUtil.isEmpty(mapping.getSemanticElements())) {
+        if (!StringUtil.isEmpty(mapping.getSemanticElements())) {
             elements = InterpretationContext.with(interpreter, it -> {
                 EObject container = tableElement.eContainer();
                 if (container != null) {
