@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -298,7 +298,7 @@ public class PunctualStateTests extends AbstractDefaultModelSequenceTests {
             validateOrdering(2);
 
             // Undo Arrange All
-            bot.menu("Edit").menu("Undo Arrange All").click();
+            undo("Arrange All");
 
         } finally {
             // Set zoom to default

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -541,14 +541,14 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
         // assertNotNull(pastedPartBot);
 
         // Test undo
-        SWTBotSiriusHelper.menu(copyEditor.bot(), "Edit").menu("Undo Paste").click();
+        undo("Paste");
         // Check DNode element is paste
         checkNumberOfDElementWithName(pasteDiagramBot, pastedName, numberElementCopy - 1);
         // Check DNode element is paste
         checkGMFCopy(pasteEditor, pastedName, numberElementCopy - 1);
 
         // Test Redo
-        SWTBotSiriusHelper.menu(copyEditor.bot(), "Edit").menu("Redo Paste").click();
+        redo("Paste");
         // check IdentifiedElement.uid unicity
         checkUidUnicity((DDiagramEditPart) copyEditor.mainEditPart().part(), (DDiagramEditPart) pasteDiagramBot.part());
         // Check DNode element is paste
@@ -636,7 +636,7 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
         checkGMFChildrenCopy(pasteEditor, "attributee2", pastedName.get("attributee2"));
 
         // Test undo
-        SWTBotSiriusHelper.menu(copyEditor.bot(), "Edit").menu("Undo Paste").click();
+        undo("Paste");
 
         // Check DNode element is paste
         checkNumberOfDChildrenElementWithName(pasteDiagramBot, "attributee1", pastedName.get("attributee1") - 1);
@@ -648,7 +648,7 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
         checkGMFChildrenCopy(pasteEditor, "attributee2", pastedName.get("attributee2") - 1);
 
         // Test Redo
-        SWTBotSiriusHelper.menu(copyEditor.bot(), "Edit").menu("Redo Paste").click();
+        redo("Paste");
 
         // Check DNode element is paste
         checkNumberOfDChildrenElementWithName(pasteDiagramBot, "attributee1", pastedName.get("attributee1"));
@@ -737,14 +737,14 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
         checkGMFChildrenCopy(pasteEditor, pastedName, numberElementCopy);
 
         // Test undo
-        SWTBotSiriusHelper.menu(copyEditor.bot(), "Edit").menu("Undo Paste").click();
+        undo("Paste");
         // Check DNode element is paste
         checkNumberOfDChildrenElementWithName(pasteTargetBot, pastedName, numberElementCopy - 3);
         // Check DNode element is paste
         checkGMFChildrenCopy(pasteEditor, pastedName, numberElementCopy - 3);
 
         // Test Redo
-        SWTBotSiriusHelper.menu(copyEditor.bot(), "Edit").menu("Redo Paste").click();
+        redo("Paste");
         // check IdentifiedElement.uid unicity
         checkUidUnicity(elementToCopy.part(), (DDiagramEditPart) pasteDiagramBot.part());
         // Check DNode element is paste

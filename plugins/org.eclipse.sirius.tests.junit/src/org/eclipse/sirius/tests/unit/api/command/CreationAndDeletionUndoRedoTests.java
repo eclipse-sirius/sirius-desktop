@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -37,6 +37,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.PlatformUI;
+import org.osgi.framework.Version;
 
 /**
  * Tests creation and deletion undo command based on entities diagram of ecore modeler.
@@ -194,12 +195,8 @@ public class CreationAndDeletionUndoRedoTests extends SiriusDiagramTestCase impl
     }
 
     private boolean isPlatformAtLeastEclipse36() {
-        String platformVersion = Platform.getBundle("org.eclipse.core.runtime").getHeaders().get("Bundle-Version");
-        if (platformVersion.startsWith("3.3") || platformVersion.startsWith("3.4") || platformVersion.startsWith("3.5")) {
-            return false;
-        } else {
-            return true;
-        }
+        Version platformVersion = Platform.getBundle("org.eclipse.core.runtime").getVersion();
+        return platformVersion.getMinor() >= 6;
     }
 
     private String getCommandLabel() throws Exception {

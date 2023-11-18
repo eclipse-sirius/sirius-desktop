@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -153,10 +153,10 @@ public class RefreshWithPropertiesViewTest extends AbstractTreeSiriusSWTBotGefTe
 
         // undo redo
         editor.setFocus();
-        bot.menu("Edit").menu("Undo Set Name").click();
+        undo("Set Name");
         bot.waitUntil(new TreeItemTextCondition(item, NEW_E_CLASS_1));
 
-        bot.menu("Edit").menu("Redo Set Name").click();
+        redo("Set Name");
         bot.waitUntil(new TreeItemTextCondition(item, NEW_E_CLASS_2));
 
         localSession.save();

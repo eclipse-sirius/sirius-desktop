@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -111,12 +111,8 @@ public class TreeItemStyleDescriptionTest extends AbstractTreeSiriusSWTBotGefTes
     /**
      * Contextual menu undo.
      */
-    private static final String UNDO = "Undo Refresh representation";
+    private static final String CMD_LABEL = "Refresh representation";
 
-    /**
-     * Contextual menu redo.
-     */
-    private static final String REDO = "Redo Refresh representation";
 
     /**
      * Constant value for 'new EClass 1'
@@ -378,7 +374,7 @@ public class TreeItemStyleDescriptionTest extends AbstractTreeSiriusSWTBotGefTes
         SWTBotUtils.waitAllUiEvents();
 
         // Undo
-        bot.menu("Edit").menu(UNDO).click();
+        undo(CMD_LABEL);
         SWTBotUtils.waitAllUiEvents();
         bot.waitUntil(new CheckTreeItemColor(widgetNewEclass1, lightGreen));
         labelColor = getLabelColor(widgetNewEclass1);
@@ -386,7 +382,7 @@ public class TreeItemStyleDescriptionTest extends AbstractTreeSiriusSWTBotGefTes
         assertThat(getWidgetLabelColor(widgetNewEclass1), equalTo(lightGreen));
 
         // ReDo
-        bot.menu("Edit").menu(REDO).click();
+        redo(CMD_LABEL);
         SWTBotUtils.waitAllUiEvents();
         bot.waitUntil(new CheckTreeItemColor(widgetNewEclass1, blue));
         labelColor = getLabelColor(widgetNewEclass1);

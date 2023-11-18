@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -35,8 +35,6 @@ import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
  * @author smonnier
  */
 public class TreeFoldingTest extends AbstractSiriusSwtBotGefTestCase {
-
-    private static final String REDO_FOLDING_LABEL = "Redo " + Messages.ToggleFoldingStateCommand_label;
 
     private static final String UNDO_FOLDING_LABEL = "Undo " + Messages.ToggleFoldingStateCommand_label;
 
@@ -123,38 +121,38 @@ public class TreeFoldingTest extends AbstractSiriusSwtBotGefTestCase {
             checkEditPartAreHidden(FIRST_TREE);
             checkEditPartAreVisible(SECOND_TREE);
 
-            bot.menu("Edit").menu(UNDO_FOLDING_LABEL).click();
+            undo(Messages.ToggleFoldingStateCommand_label);
             bot.sleep(500);
             checkEditPartAreHidden(FIRST_TREE);
             checkEditPartAreHidden(SECOND_TREE);
 
-            bot.menu("Edit").menu(UNDO_FOLDING_LABEL).click();
+            undo(Messages.ToggleFoldingStateCommand_label);
             bot.sleep(500);
             checkEditPartAreHidden(FIRST_TREE);
             checkEditPartAreVisible(SECOND_TREE);
 
-            bot.menu("Edit").menu(UNDO_FOLDING_LABEL).click();
+            undo(Messages.ToggleFoldingStateCommand_label);
             bot.sleep(500);
             checkEditPartAreVisible(FIRST_TREE);
             checkEditPartAreVisible(SECOND_TREE);
 
-            bot.menu("Edit").menu("Undo Set Location or Size").click();
+            undo("Set Location or Size");
             bot.sleep(500);
 
-            bot.menu("Edit").menu("Redo Set Location or Size").click();
+            redo("Set Location or Size");
             bot.sleep(500);
 
-            bot.menu("Edit").menu(REDO_FOLDING_LABEL).click();
+            redo(Messages.ToggleFoldingStateCommand_label);
             bot.sleep(500);
             checkEditPartAreHidden(FIRST_TREE);
             checkEditPartAreVisible(SECOND_TREE);
 
-            bot.menu("Edit").menu(REDO_FOLDING_LABEL).click();
+            redo(Messages.ToggleFoldingStateCommand_label);
             bot.sleep(500);
             checkEditPartAreHidden(FIRST_TREE);
             checkEditPartAreHidden(SECOND_TREE);
 
-            bot.menu("Edit").menu(REDO_FOLDING_LABEL).click();
+            redo(Messages.ToggleFoldingStateCommand_label);
             checkEditPartAreHidden(FIRST_TREE);
             checkEditPartAreVisible(SECOND_TREE);
         } finally {
@@ -196,43 +194,43 @@ public class TreeFoldingTest extends AbstractSiriusSwtBotGefTestCase {
             bot.sleep(500);
             checkEditPartAreHidden(FIRST_TREE);
 
-            bot.menu("Edit").menu(UNDO_FOLDING_LABEL).click();
+            undo(Messages.ToggleFoldingStateCommand_label);
             bot.sleep(500);
             checkEditPartAreVisible(FIRST_TREE_WITHOUT_LEAVES);
             checkEditPartAreHidden(FIRST_TREE_LEAVES);
 
-            bot.menu("Edit").menu(UNDO_FOLDING_LABEL).click();
+            undo(Messages.ToggleFoldingStateCommand_label);
             bot.sleep(500);
             checkEditPartAreVisible(FIRST_TREE);
 
-            bot.menu("Edit").menu(UNDO_FOLDING_LABEL).click();
+            undo(Messages.ToggleFoldingStateCommand_label);
             bot.sleep(500);
             checkEditPartAreHidden(FIRST_TREE);
 
-            bot.menu("Edit").menu(UNDO_FOLDING_LABEL).click();
+            undo(Messages.ToggleFoldingStateCommand_label);
             bot.sleep(500);
             checkEditPartAreVisible(FIRST_TREE);
 
-            bot.menu("Edit").menu("Undo Set Location or Size").click();
+            undo("Set Location or Size");
             bot.sleep(500);
 
-            bot.menu("Edit").menu("Redo Set Location or Size").click();
+            redo("Set Location or Size");
             bot.sleep(500);
 
-            bot.menu("Edit").menu(REDO_FOLDING_LABEL).click();
+            redo(Messages.ToggleFoldingStateCommand_label);
             bot.sleep(500);
             checkEditPartAreHidden(FIRST_TREE);
 
-            bot.menu("Edit").menu(REDO_FOLDING_LABEL).click();
+            redo(Messages.ToggleFoldingStateCommand_label);
             bot.sleep(500);
             checkEditPartAreVisible(FIRST_TREE);
 
-            bot.menu("Edit").menu(REDO_FOLDING_LABEL).click();
+            redo(Messages.ToggleFoldingStateCommand_label);
             bot.sleep(500);
             checkEditPartAreVisible(FIRST_TREE_WITHOUT_LEAVES);
             checkEditPartAreHidden(FIRST_TREE_LEAVES);
 
-            bot.menu("Edit").menu(REDO_FOLDING_LABEL).click();
+            redo(Messages.ToggleFoldingStateCommand_label);
             bot.sleep(500);
             checkEditPartAreHidden(FIRST_TREE);
         } finally {
@@ -275,45 +273,45 @@ public class TreeFoldingTest extends AbstractSiriusSwtBotGefTestCase {
             bot.sleep(500);
             checkEditPartAreVisible(FIRST_TREE);
 
-            bot.menu("Edit").menu(UNDO_FOLDING_LABEL).click();
+            undo(Messages.ToggleFoldingStateCommand_label);
             bot.sleep(500);
             checkEditPartAreVisible(FIRST_TREE_WITHOUT_LEAVES);
             checkEditPartAreHidden(FIRST_TREE_LEAVES);
 
-            bot.menu("Edit").menu(UNDO_FOLDING_LABEL).click();
+            undo(Messages.ToggleFoldingStateCommand_label);
             bot.sleep(500);
             checkEditPartAreHidden(FIRST_TREE);
 
-            bot.menu("Edit").menu(UNDO_FOLDING_LABEL).click();
+            undo(Messages.ToggleFoldingStateCommand_label);
             bot.sleep(500);
             checkEditPartAreVisible(FIRST_TREE_WITHOUT_LEAVES);
             checkEditPartAreHidden(FIRST_TREE_LEAVES);
 
-            bot.menu("Edit").menu(UNDO_FOLDING_LABEL).click();
+            undo(Messages.ToggleFoldingStateCommand_label);
             bot.sleep(500);
             checkEditPartAreVisible(FIRST_TREE);
 
-            bot.menu("Edit").menu("Undo Set Location or Size").click();
+            undo("Set Location or Size");
             bot.sleep(500);
 
-            bot.menu("Edit").menu("Redo Set Location or Size").click();
+            redo("Set Location or Size");
             bot.sleep(500);
 
-            bot.menu("Edit").menu(REDO_FOLDING_LABEL).click();
+            redo(Messages.ToggleFoldingStateCommand_label);
             bot.sleep(500);
             checkEditPartAreVisible(FIRST_TREE_WITHOUT_LEAVES);
             checkEditPartAreHidden(FIRST_TREE_LEAVES);
 
-            bot.menu("Edit").menu(REDO_FOLDING_LABEL).click();
+            redo(Messages.ToggleFoldingStateCommand_label);
             bot.sleep(500);
             checkEditPartAreHidden(FIRST_TREE);
 
-            bot.menu("Edit").menu(REDO_FOLDING_LABEL).click();
+            redo(Messages.ToggleFoldingStateCommand_label);
             bot.sleep(500);
             checkEditPartAreVisible(FIRST_TREE_WITHOUT_LEAVES);
             checkEditPartAreHidden(FIRST_TREE_LEAVES);
 
-            bot.menu("Edit").menu(REDO_FOLDING_LABEL).click();
+            redo(Messages.ToggleFoldingStateCommand_label);
             bot.sleep(500);
             checkEditPartAreVisible(FIRST_TREE);
         } finally {
