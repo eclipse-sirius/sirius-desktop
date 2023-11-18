@@ -144,11 +144,8 @@ public class EditionTableSynchronizer extends AbstractTableSynchronizer<EditionT
     private void createNewCellsInTable(final SetIntersection<DCellCandidate> status) {
         for (final DCellCandidate toCreate : status.getNewElements()) {
             final DCell newCell = createCell(toCreate.getLine(), toCreate.getColumn(), toCreate.getSemantic(), (FeatureColumnMapping) toCreate.getMapping());
-            if (newCell != null) {
-                if (refresh(newCell)) {
-                    this.sync.refreshSemanticElements(newCell);
-                }
-            }
+            
+            sync.refresh(newCell);
         }
     }
 
@@ -203,11 +200,7 @@ public class EditionTableSynchronizer extends AbstractTableSynchronizer<EditionT
     private void updateExistingCellsInTable(final SetIntersection<DCellCandidate> status) {
         for (final DCellCandidate toUpdate : status.getKeptElements()) {
             final DCell cell = toUpdate.getOriginalElement();
-            if (cell != null) {
-                if (refresh(cell)) {
-                    this.sync.refreshSemanticElements(cell);
-                }
-            }
+            sync.refresh(cell);
         }
     }
 
@@ -237,24 +230,6 @@ public class EditionTableSynchronizer extends AbstractTableSynchronizer<EditionT
     }
 
 
-
-    private boolean refresh(final DCell cell) {
-        boolean cellStillExists = true;
-        if (accessor.getPermissionAuthority().canEditInstance(cell)) {
-            if (this.sync.refreshTarget(cell)) {
-                if (this.sync.refreshLabel(cell)) {
-                    this.sync.refreshStyle(cell);
-                } else {
-                    cellStillExists = false;
-                }
-            } else {
-                cellStillExists = false;
-            }
-        }
-        return cellStillExists;
-    }
-
-
     @Override
     protected int refreshColumnMapping(final FeatureColumnMapping mapping, final Map<TableMapping, Collection<DTableElement>> mappingToElements, final int previousCurrentIndex) {
         int currentIndex = previousCurrentIndex;
@@ -276,14 +251,16 @@ public class EditionTableSynchronizer extends AbstractTableSynchronizer<EditionT
                 } else {
                     this.sync.refresh(featureColumnCandidate.getOriginalElement());
                     final DTable parentTable = featureColumnCandidate.getOriginalElement().getTable();
-                    if (parentTable.getColumns().size() >= currentIndex) {
-                        if (accessor.getPermissionAuthority().canEditInstance(parentTable) && !featureColumnCandidate.getOriginalElement().equals(parentTable.getColumns().get(currentIndex))) {
-                            parentTable.getColumns().move(currentIndex, featureColumnCandidate.getOriginalElement());
-                        }
-                    } else {
-                        if (accessor.getPermissionAuthority().canEditInstance(parentTable)) {
-                            parentTable.getColumns().move(parentTable.getColumns().size() - 1, featureColumnCandidate.getOriginalElement());
-                        }
+                    
+                    int newPosition = -1;  // No new position
+                    if (parentTable.getColumns().size() < currentIndex) {
+                        newPosition = parentTable.getColumns().size() - 1;
+                    } else if (!featureColumnCandidate.getOriginalElement().equals(parentTable.getColumns().get(currentIndex))) {
+                        newPosition = currentIndex;
+                    }
+                    
+                    if (newPosition != -1 && accessor.getPermissionAuthority().canEditInstance(parentTable)) {
+                        parentTable.getColumns().move(newPosition, featureColumnCandidate.getOriginalElement());
                     }
                 }
                 currentIndex++;
