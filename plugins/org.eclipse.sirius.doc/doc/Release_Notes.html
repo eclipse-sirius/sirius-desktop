@@ -196,6 +196,15 @@
 			<li><span class="label label-info">Modified</span> Upgraded ELK version from 0.7.1 to 0.9.0, see the 
 				<a href="https://eclipse.dev/elk/downloads/releasenotes/release-0.9.0.html">ELK documentation</a> for the list of changes in that version (and previous). Due to improvements or refactoring in ELK, some configuration option identifiers have been renamed or deleted. An automatic migration has been added in Sirius to migrate these identifiers used in VSM (see Migrations section for detail). In any case, if your modeler uses an ELK layout, you must be careful.
 			</li>
+			<li><span class="label label-info">Modified</span> In tables, expressions and tools are injected with more variables. &#8216;table&#8217;, &#8216;containerView&#8217; and &#8216;line&#8217; elements are now accessible. With those elements, Specifier can access, for example, to 
+				<code>AnnotationEntry</code> elements of 
+				<code>DTable</code> instances. This modification allows following use-cases: 
+				<ul>
+					<li>Create virtual lines: lines to group elements in tree with criteria based on attributes values or on user query.</li>
+					<li>Have columns unrelated to root element: for example, in Cross Table, columns targeting Ecore features to have a table with a dynamic number of columns.</li>
+					<li>Store states to alter tools: read/write mode driven by tools; default values to use in creation tools of current table.</li>
+				</ul>
+			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<ul>
@@ -203,6 +212,29 @@
 			<li><span class="label label-success">Added</span> The SiriusStyleClipboard singleton to store the style clipboard data for the diagram elements.</li>
 			<li><span class="label label-success">Added</span> The ISimpleAuthorityListener functional interface to listen for any lock change, like IAuthorityListener but with a single method.</li>
 			<li><span class="label label-info">Modified</span> ArrangeBorderNodesAction.initAction now has two parameters for its text: when there is no selection, when there is a selection.</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius">Changes in 
+			<code>org.eclipse.sirius</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.business.api.logger.InterpretationContext</code> is created to ease setting and clearing variables when interpreting expressions.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.table">Changes in 
+			<code>org.eclipse.sirius.table</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.table.business.api.helper.TableVariablesHelper</code> is added to initialize variable value according active table decorator.
+			</li>
+			<li><span class="label label-info">Modified</span> The 
+				<code>org.eclipse.sirius.table.business.api.query.DLineQuery</code> query has been deprecated for removal. It was only used once in a internal class.
+			</li>
+			<li><span class="label label-info">Modified</span> Methods 
+				<code>org.eclipse.sirius.table.tools.api.command.ITableCommandFactory.buildCreateLineCommandFromTool(LineContainer, EObject, CreateTool)</code> and 
+				<code>org.eclipse.sirius.table.tools.api.command.ITableCommandFactory.buildCreateColumnCommandFromTool(DTable, EObject, CreateTool)</code> have been deprecated for removal. They have been replaced by methods using applicable DSemanticDecorator in signature.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
@@ -389,7 +421,7 @@
 				<code>isFrozen(EObject)</code> method. This is a status handled by the collaborative plugins, but this new API makes this status available for queries from Sirius core plugins.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -502,7 +534,7 @@
 			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges7">Developer-Visible Changes</h3>
-		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -612,7 +644,7 @@
 				<code>org.eclipse.sirius.business.api.query.DRepresentationDescriptorQuery.DRepresentationDescriptorValidityAdapter.triggerRepresentationValidation(boolean)</code> were also created. These new methods (with a parameter value true) can be used in tests, but should not be used by the &#8220;Model explorer&#8221; view otherwise there would be no more lazy loading of representations.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius4">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -1020,7 +1052,7 @@
 				<a href="https://projects.eclipse.org/projects/modeling.elk/releases/0.7.1">ELK documentation</a> for the list of changes in that version (and previous).
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius5">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
