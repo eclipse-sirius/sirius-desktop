@@ -104,7 +104,7 @@ public class VariableOnTableCreationToolsTest extends TableTestCase {
             }
         });
         CreateTool createColumnTool = tableDescription.getOwnedColumnMappings().get(0).getCreate().get(0);
-        Command createColumnCommand = getCommandFactory().buildCreateColumnCommandFromTool(tableRepresentation, subPackage1.getEClassifiers().get(0), createColumnTool);
+        Command createColumnCommand = getCommandFactory().buildCreateColumnCommandFromTool(tableRepresentation, createColumnTool);
 
         doTestColumnCreationWithToolUsingVariables(createColumnCommand, (EPackage) subPackage1.eContainer(), "EClass2 of p1");
     }
