@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="Root">
+  <eSubpackages name="Main">
+    <eClassifiers xsi:type="ecore:EClass" name="LF1">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//Main/LF5">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="tttt"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="LF5"/>
+    <eSubpackages name="Others">
+      <eClassifiers xsi:type="ecore:EClass" name="LF3" eSuperTypes="#//Main/LF1">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//Main/Others/LF4"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="LF2" eSuperTypes="#//Main/LF1">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//Main/Others/LF3"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="LF4" eSuperTypes="#//Main/LF1">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="tetet"/>
+        </eAnnotations>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//Main/Others/LF2">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="sgfdfdsfdf"/>
+          </eAnnotations>
+        </eStructuralFeatures>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//Main/Others/LF3">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="sgfdfdsfdf"/>
+          </eAnnotations>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="LF6" eSuperTypes="#//Main/LF5">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="ett"/>
+        </eAnnotations>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//Main/Others/LF4"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//Main/LF1"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="LF7" eSuperTypes="#//Main/Others/LF6">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//Main/Others/LF4"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="LF7_1" eSuperTypes="#//Main/Others/LF7"/>
+      <eClassifiers xsi:type="ecore:EClass" name="LF7_2" eSuperTypes="#//Main/Others/LF7_1"/>
+      <eClassifiers xsi:type="ecore:EClass" name="LF8"/>
+      <eClassifiers xsi:type="ecore:EClass" name="LF9" eSuperTypes="#//Main/LF5"/>
+      <eClassifiers xsi:type="ecore:EClass" name="LF10" eSuperTypes="#//Main/Others/LF6"/>
+      <eClassifiers xsi:type="ecore:EClass" name="LF11" eSuperTypes="#//Main/Others/LF9"/>
+      <eClassifiers xsi:type="ecore:EClass" name="LF12" eSuperTypes="#//Main/Others/LF7_1"/>
+      <eClassifiers xsi:type="ecore:EClass" name="LF13" eSuperTypes="#//Main/Others/LF6"/>
+      <eClassifiers xsi:type="ecore:EClass" name="LF14" eSuperTypes="#//Main/Others/LF7"/>
+    </eSubpackages>
+  </eSubpackages>
+</ecore:EPackage>

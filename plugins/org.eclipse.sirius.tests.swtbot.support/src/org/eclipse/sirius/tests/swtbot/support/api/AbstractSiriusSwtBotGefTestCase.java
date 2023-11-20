@@ -1044,6 +1044,15 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         return arrangeAllMenutBot;
     }
 
+    /***
+     * Do a layout children on the selected elements.
+     */
+    protected void layoutChildren() {
+        // Launch the layout via the menu bar
+        SWTBotSiriusHelper.menu(bot, "Diagram").menu("Layout").menu("Children").click();
+        SWTBotUtils.waitAllUiEvents();
+    }
+
     /**
      * Toggle the Move Pinned Element action.
      */
