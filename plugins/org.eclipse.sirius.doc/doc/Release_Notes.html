@@ -232,6 +232,14 @@
 			<li><span class="label label-success">Added</span> 
 				<code>org.eclipse.sirius.table.business.api.helper.TableVariablesHelper</code> is added to initialize variable value according active table decorator.
 			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.table.business.api.helper.TableToolHelper</code> is added to handle common evaluations with table tools.
+			</li>
+			<li><span class="label label-info">Modified</span> The 
+				<code>org.eclipse.sirius.table.business.api.helper.TableHelper.canEditCrossTableCell(DCell)</code> and 
+				<code>org.eclipse.sirius.table.business.api.helper.TableHelper.canEditCrossTableCell(DCell)</code> have been deprecated for removal. 
+				<code>TableToolHelper</code> should be used to handle precondition evaluation.
+			</li>
 			<li><span class="label label-info">Modified</span> The 
 				<code>org.eclipse.sirius.table.business.api.query.DLineQuery</code> query has been deprecated for removal. It was only used once in a internal class.
 			</li>
