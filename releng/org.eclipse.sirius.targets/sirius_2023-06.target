@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="sirius_2023-06" sequenceNumber="1699958520">
+<target name="sirius_2023-06" sequenceNumber="1700510745">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.easymock" version="0.0.0"/>
@@ -40,7 +40,7 @@
       <unit id="org.eclipse.acceleo.query.ui.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.acceleo.query.ui.source.feature.group" version="0.0.0"/>
       <unit id="org.antlr.runtime" version="4.7.2.v20221112-0806"/>
-      <repository id="Acceleo-3.7" location="https://download.eclipse.org/acceleo/updates/releases/3.7/R202211151354/"/>
+      <repository id="Acceleo-3.7" location="https://download.eclipse.org/acceleo/updates/milestones/3.7/S202311201319"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.eef.runtime-feature.feature.group" version="1.5.1.201601141612"/>
@@ -86,9 +86,12 @@
       <repository id="Sirius-7.2.1" location="https://download.eclipse.org/sirius/updates/releases/7.2.1/2023-03/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.emf.compare.feature.group" version="3.3.23.202311200811"/>
+      <repository id="EMF-Compare" location="https://download.eclipse.org/modeling/emf/compare/updates/milestones/3.3/S202311200811/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="com.google.guava" version="0.0.0"/>
       <unit id="org.eclipse.emf.common.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.emf.compare.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.emf.ecore.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.emf.edit.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.emf.feature.group" version="0.0.0"/>
