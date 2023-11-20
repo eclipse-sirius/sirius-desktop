@@ -42,6 +42,8 @@ h4. Changes in @org.eclipse.sirius@
 h4. Changes in @org.eclipse.sirius.table@
 
 * <span class="label label-success">Added</span> @org.eclipse.sirius.table.business.api.helper.TableVariablesHelper@ is added to initialize variable value according active table decorator.
+* <span class="label label-success">Added</span> @org.eclipse.sirius.table.business.api.helper.TableToolHelper@ is added to handle common evaluations with table tools.
+* <span class="label label-info">Modified</span> The @org.eclipse.sirius.table.business.api.helper.TableHelper.canEditCrossTableCell(DCell)@ and @org.eclipse.sirius.table.business.api.helper.TableHelper.canEditCrossTableCell(DCell)@ have been deprecated for removal. @TableToolHelper@ should be used to handle precondition evaluation.
 * <span class="label label-info">Modified</span> The @org.eclipse.sirius.table.business.api.query.DLineQuery@ query has been deprecated for removal. It was only used once in a internal class.
 * <span class="label label-info">Modified</span> Methods @org.eclipse.sirius.table.tools.api.command.ITableCommandFactory.buildCreateLineCommandFromTool(LineContainer, EObject, CreateTool)@ and @org.eclipse.sirius.table.tools.api.command.ITableCommandFactory.buildCreateColumnCommandFromTool(DTable, EObject, CreateTool)@ have been deprecated for removal. They have been replaced by methods using applicable DSemanticDecorator in signature.
 
