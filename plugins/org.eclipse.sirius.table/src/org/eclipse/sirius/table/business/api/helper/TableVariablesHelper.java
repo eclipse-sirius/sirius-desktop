@@ -17,9 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.business.api.logger.InterpretationContext;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DColumn;
 import org.eclipse.sirius.table.metamodel.table.DLine;
@@ -31,8 +29,6 @@ import org.eclipse.sirius.table.metamodel.table.description.TableVariable;
 import org.eclipse.sirius.table.tools.api.interpreter.IInterpreterSiriusTableVariables;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.AbstractVariable;
-import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
  * Utility methods to handle Table variables.
@@ -211,35 +207,6 @@ public final class TableVariablesHelper {
         result.put(IInterpreterSiriusVariables.VIEW, cell);
         result.put(IInterpreterSiriusVariables.ELEMENT, cell.getTarget());        
         return result;
-    }
-    
-    
-    /**
-     * Evaluates if a tool is enable for the selection.
-     * <p>
-     * Selection may be line, column or whole table.
-     * </p>
-     * 
-     * @param <TT> tool with precondition
-     * @param tool to evaluate
-     * @param selection decorator
-     * @return true if valid and enable
-     */
-    public static <TT extends TableTool & AbstractToolDescription> boolean isAxisToolEnable(TT tool, DSemanticDecorator selection) {
-        // is properly set
-        boolean valid = tool != null && tool.getFirstModelOperation() != null;
-        if (valid && hasPrecondition(tool)) {
-            return InterpretationContext.with(selection.getTarget(), ctxt -> {
-                ctxt.setVariables(getVariables(selection));
-                return ctxt.getInterpreter().evaluateBoolean(selection.getTarget(), tool, 
-                        ToolPackage.eINSTANCE.getAbstractToolDescription_Precondition());
-            });
-        }
-        return valid;
-    }
-    
-    private static boolean hasPrecondition(AbstractToolDescription tool) {
-        return !StringUtil.isEmpty(tool.getPrecondition());
     }
 
 }

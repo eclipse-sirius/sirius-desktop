@@ -20,7 +20,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.action.Action;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
-import org.eclipse.sirius.table.business.api.helper.TableVariablesHelper;
+import org.eclipse.sirius.table.business.api.helper.TableToolHelper;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.description.DeleteTool;
 import org.eclipse.sirius.table.metamodel.table.description.LineMapping;
@@ -121,7 +121,7 @@ public class DeleteLinesAction extends Action {
     private boolean canExecute(DLine line) {
         DeleteTool tool = getDeleteTool(line);
         return tool == null // By default (no tool), element can be deleted
-                || TableVariablesHelper.isAxisToolEnable(tool, line);
+                || TableToolHelper.isAxisToolEnable(tool, line);
     }
 
     private DeleteTool getDeleteTool(DLine line) {
