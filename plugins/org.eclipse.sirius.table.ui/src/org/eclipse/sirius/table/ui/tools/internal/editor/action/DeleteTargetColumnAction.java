@@ -17,7 +17,7 @@ import org.eclipse.emf.common.command.CommandWrapper;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
-import org.eclipse.sirius.table.business.api.helper.TableVariablesHelper;
+import org.eclipse.sirius.table.business.api.helper.TableToolHelper;
 import org.eclipse.sirius.table.metamodel.table.description.DeleteTool;
 import org.eclipse.sirius.table.metamodel.table.provider.Messages;
 import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
@@ -62,7 +62,7 @@ public class DeleteTargetColumnAction extends AbstractTargetColumnAction<DeleteT
     @Override
     public boolean canExecute() {
         return tool == null // By default (no tool), element can be deleted
-                || TableVariablesHelper.isAxisToolEnable(tool, getColumn());
+                || TableToolHelper.isAxisToolEnable(tool, getColumn());
     }
 
 }

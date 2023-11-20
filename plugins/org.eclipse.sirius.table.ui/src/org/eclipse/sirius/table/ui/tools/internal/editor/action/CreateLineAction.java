@@ -17,7 +17,7 @@ import org.eclipse.emf.common.command.CommandWrapper;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
-import org.eclipse.sirius.table.business.api.helper.TableVariablesHelper;
+import org.eclipse.sirius.table.business.api.helper.TableToolHelper;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.LineContainer;
@@ -70,7 +70,7 @@ public class CreateLineAction extends AbstractLineAction<CreateTool> {
 
     @Override
     public boolean canExecute() {
-        return TableVariablesHelper.isAxisToolEnable(tool, getContainer());
+        return TableToolHelper.isAxisToolEnable(tool, getContainer());
     }
 
     /**
