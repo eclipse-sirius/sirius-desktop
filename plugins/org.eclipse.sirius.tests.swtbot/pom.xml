@@ -100,6 +100,7 @@
             <org.eclipse.sirius.tests.skipUnreliableTests>${tests.skipUnreliableTests}</org.eclipse.sirius.tests.skipUnreliableTests>
             <org.eclipse.swtbot.screenshots.dir>${project.build.directory}/screenshots</org.eclipse.swtbot.screenshots.dir>
             <createLocalRepresentationInSeparateResource>${createLocalRepresentationInSeparateResource}</createLocalRepresentationInSeparateResource>
+            <sun.awt.datatransfer.timeout>100</sun.awt.datatransfer.timeout>
           </systemProperties>
           <skipTests>${tests.swtbot.skip}</skipTests>
           <includes>

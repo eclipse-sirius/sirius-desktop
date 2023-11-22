@@ -109,6 +109,7 @@
           <systemProperties>
             <org.eclipse.sirius.tests.skipLongTests>${tests.skipLongTests}</org.eclipse.sirius.tests.skipLongTests>
             <org.eclipse.sirius.tests.skipUnreliableTests>${tests.skipUnreliableTests}</org.eclipse.sirius.tests.skipUnreliableTests>
+            <sun.awt.datatransfer.timeout>100</sun.awt.datatransfer.timeout>
           </systemProperties>
           <skipTests>${tests.junit.skip}</skipTests>
           <includes>

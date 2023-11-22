@@ -40,7 +40,7 @@
          default="true"
          class="org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl"
          matchingStrategy="org.eclipse.sirius.diagram.ui.part.SiriusMatchingStrategy"
-         contributorClass="org.eclipse.sirius.diagram.ui.part.SiriusDiagramActionBarContributor">
+         contributorClass="org.eclipse.sirius.diagram.ui.part.DDiagramEditorActionBarContributor">
       </editor>
    </extension>
 
