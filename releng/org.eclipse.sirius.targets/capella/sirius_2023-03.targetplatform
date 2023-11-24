@@ -14,7 +14,7 @@ location Sirius-7.2.1 "https://download.eclipse.org/sirius/updates/releases/7.2.
 	org.eclipse.sirius.common.interpreter lazy
 }
 
-location EMF-Compare "https://download.eclipse.org/modeling/emf/compare/updates/milestones/3.3/S202311200811/" {
+location EMF-Compare "https://download.eclipse.org/modeling/emf/compare/updates/releases/3.3/R202311200811/" {
 	org.eclipse.emf.compare.feature.group 3.3.23.202311200811
 }
 
