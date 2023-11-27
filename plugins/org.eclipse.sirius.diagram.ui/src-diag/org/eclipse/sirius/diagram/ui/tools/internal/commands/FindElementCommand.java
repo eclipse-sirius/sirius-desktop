@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -40,9 +40,11 @@ public class FindElementCommand extends AbstractHandler {
      * 
      * @see org.eclipse.core.commands.AbstractHandler#execute(org.eclipse.core.commands.ExecutionEvent)
      */
+    @Override
     public Object execute(final ExecutionEvent event) throws ExecutionException {
         action.selectionChanged(null, HandlerUtil.getCurrentSelection(event));
         action.run(null);
+        action.selectionChanged(null, null);
         return null;
     }
 
