@@ -48,11 +48,8 @@ public interface ActionIds {
     /** Action contribution id for the past image. */
     String PASTE_IMAGE = "pasteImageAction"; //$NON-NLS-1$
 
-    /** Action id for pin elements action. */
+    /** Action id for pin/unpin elements checkable action. */
     String PIN_ELEMENTS = "pinElementsAction"; //$NON-NLS-1$
-
-    /** Action id for unpin elements action. */
-    String UNPIN_ELEMENTS = "unpinElementsAction"; //$NON-NLS-1$
 
     /** Action id for arrange border nodes action. */
     String ARRANGE_BORDER_NODES = "arrangeBorderNodesAction"; //$NON-NLS-1$

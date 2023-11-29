@@ -92,9 +92,7 @@ public class LockedTabBarTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String MOVE_PINNED_ELEMENTS = Messages.MovePinnedElementsAction_text;
 
-    private static final String PIN_SELECTION = "Pin selected elements";
-
-    private static final String UNPIN_SELECTION = "Unpin selected elements";
+    private static final String PIN_SELECTION = Messages.PinElementsEclipseAction_text;
 
     private static final String HIDE_ELEMENT = "Hide element";
 
@@ -316,10 +314,7 @@ public class LockedTabBarTest extends AbstractSiriusSwtBotGefTestCase {
      *            true if widgets should be enabled
      */
     private void checkEnabledWithSelectedElement(boolean enabled) {
-        // "Unpin selected elements" is always disabled in this test
-        assertEnabled(bot.toolbarButtonWithTooltip(UNPIN_SELECTION), false);
-
-        assertEnabled(bot.toolbarButtonWithTooltip(PIN_SELECTION), enabled);
+        assertEnabled(bot.toolbarToggleButtonWithTooltip(PIN_SELECTION), enabled);
         assertEnabled(bot.toolbarButtonWithTooltip(HIDE_ELEMENT), enabled);
         assertEnabled(bot.toolbarButtonWithTooltip(DELETE_FROM_MODEL), enabled);
         assertEnabled(bot.toolbarButtonWithTooltip(SET_STYLE_TO_WORKSPACE_IMAGE), enabled);

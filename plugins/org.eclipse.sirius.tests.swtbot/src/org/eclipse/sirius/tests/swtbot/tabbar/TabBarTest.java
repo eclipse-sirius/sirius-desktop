@@ -15,6 +15,7 @@ package org.eclipse.sirius.tests.swtbot.tabbar;
 import static org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable.syncExec;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -107,14 +108,14 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
             DistributeAction.getTooltip(DistributeAction.GAPS_HORIZONTALLY), "Straighten to top",
             Messages.EditModeAction_Label, Messages.PasteFormatAction_toolTipText_diagramElements, "Font Color", "Fill &Color", "Li&ne Color", "Line Style" };
 
-    private static final String[] CONTAINER_TOOLBARBUTTONS_TOOLTIPS = { Messages.PinElementsEclipseAction_text, Messages.UnpinElementsEclipseAction_text,
+    private static final String[] CONTAINER_TOOLBARBUTTONS_TOOLTIPS = {
             Messages.CopyFormatAction_toolTipText_diagramElements,
             Messages.SiriusDiagramActionBarContributor_showElement, Messages.SiriusDiagramActionBarContributor_hideElement, Messages.RevealOutlineLabelsAction_label,
             Messages.SiriusDiagramActionBarContributor_hideLabel, Messages.SiriusDiagramActionBarContributor_deleteFromDiagram, Messages.SiriusDiagramActionBarContributor_deleteFromModel, "Font",
             Messages.SetStyleToWorkspaceImageAction_text, Messages.ResetStylePropertiesToDefaultValuesAction_text,
             "Apply the applicable appearance properties of the last selected shape to the other selected shapes.", "Make height and width same size", "Auto Size" };
 
-    private static final String[] CONTAINER_TOOLBARTOGGLEBUTTONS_TOOLTIPS = { "Bold Font Style", "Italic Font Style" };
+    private static final String[] CONTAINER_TOOLBARTOGGLEBUTTONS_TOOLTIPS = { Messages.PinElementsEclipseAction_text, "Bold Font Style", "Italic Font Style" };
 
     private static final String TABBAR_EXTENSION_ON_DIAGRAM_ELEMENT = "Action on DDiagramElement (F5)";
 
@@ -387,6 +388,8 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
         editor.close();
         SWTBotUtils.waitAllUiEvents();
 
+        Predicate<Field> staticFieldFilter = (Field input) -> Modifier.isStatic(input.getModifiers());
+
         // Check that all tabbar contributions are disposed.
         for (final IContributionItem item : items) {
             if (item instanceof ActionContributionItem) {
@@ -402,7 +405,7 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
                         return acceptedNonDisposedTypes.contains(input.getType());
                     }
                 };
-                assertFieldsAreDisposed(action, acceptedNonDisposedField);
+                assertFieldsAreDisposed(action, (input) -> acceptedNonDisposedField.apply(input) || staticFieldFilter.apply(input));
             }
             // Collection<Class<?>> acceptedNonDisposedTypes =
             // Arrays.asList(IAction.class, ImageDescriptor.class,
@@ -433,7 +436,8 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
                     return acceptedNonDisposedTypes.contains(input.getType());
                 }
             };
-            assertFieldsAreDisposed(item, Predicates.or(privateEnclosingClassAccessor, acceptedNonDisposedField));
+
+            assertFieldsAreDisposed(item, Predicates.or(privateEnclosingClassAccessor, acceptedNonDisposedField, staticFieldFilter));
         }
     }
 
@@ -449,7 +453,15 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
                 }
 
                 Optional<Object> fieldValue = ReflectionHelper.getFieldValueWithoutException(obj, field.getName());
-                assertFalse("The field " + field.getName() + " should be null for " + obj, fieldValue.isPresent());
+                fieldValue.ifPresent(value -> { // field non-null
+                    if (value instanceof Optional<?> optValue) {
+                        // if the field is optional, we allow it to be empty instead of null,
+                        assertTrue("The field " + field.getName() + " should be null or Optional.empty for " + obj, optValue.isEmpty());
+                    } else {
+                        // else, we don't accept it.
+                        fail("The field " + field.getName() + " should be null for " + obj);
+                    }
+                }); // else, field is null: ok
             }
         }
     }

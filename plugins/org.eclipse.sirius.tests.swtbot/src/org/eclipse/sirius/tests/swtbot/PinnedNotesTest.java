@@ -33,6 +33,7 @@ import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.preferences.SiriusDiagramUiInternalPreferencesKeys;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
@@ -120,7 +121,7 @@ public class PinnedNotesTest extends AbstractPinnedElementsTest {
 
         editor.getEditPart("p1", IDiagramContainerEditPart.class).select();
         SWTBotUtils.waitAllUiEvents();
-        editor.clickContextMenu("Pin selected elements");
+        editor.clickContextMenu(Messages.PinElementsEclipseAction_text);
         bot.waitUntil(waitForPinned(p1));
         assertThat(p1, isPinnedMatcher());
         assertThat(p2, not(isPinnedMatcher()));
@@ -177,7 +178,7 @@ public class PinnedNotesTest extends AbstractPinnedElementsTest {
 
         editor.getEditPart("p1", IDiagramContainerEditPart.class).select();
         SWTBotUtils.waitAllUiEvents();
-        editor.clickContextMenu("Pin selected elements");
+        editor.clickContextMenu(Messages.PinElementsEclipseAction_text);
         bot.waitUntil(waitForPinned(p1));
         assertThat(p1, isPinnedMatcher());
         assertThat(p2, not(isPinnedMatcher()));
@@ -232,7 +233,7 @@ public class PinnedNotesTest extends AbstractPinnedElementsTest {
 
         editor.getEditPart("p1", IDiagramContainerEditPart.class).select();
         SWTBotUtils.waitAllUiEvents();
-        editor.clickContextMenu("Pin selected elements");
+        editor.clickContextMenu(Messages.PinElementsEclipseAction_text);
         bot.waitUntil(waitForPinned(p1));
         assertThat(p1, isPinnedMatcher());
         assertThat(p2, not(isPinnedMatcher()));

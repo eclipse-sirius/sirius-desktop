@@ -1070,6 +1070,9 @@ public final class Messages {
     public static String PinElementsEclipseAction_text;
 
     @TranslatableMessage
+    public static String PinElementsEclipseAction_tooltip;
+
+    @TranslatableMessage
     public static String PinnedElementsHandler_notMovableMsg;
 
     @TranslatableMessage
@@ -1731,9 +1734,6 @@ public final class Messages {
 
     @TranslatableMessage
     public static String TreeLayoutSetConnectionAnchorsCommand_nullEdgeInSetConnectionAnchorsCommand;
-
-    @TranslatableMessage
-    public static String UnpinElementsEclipseAction_text;
 
     @TranslatableMessage
     public static String UpdateGMFEdgeStyleCommand_label;

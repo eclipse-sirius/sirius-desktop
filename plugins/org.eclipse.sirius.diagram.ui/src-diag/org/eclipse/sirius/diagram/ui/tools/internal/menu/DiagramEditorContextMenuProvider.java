@@ -29,7 +29,6 @@ import org.eclipse.gmf.runtime.diagram.ui.services.layout.AbstractLayoutEditPart
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.IMenuManager;
-import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -56,8 +55,6 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
     private static final String PLUGIN_MENU_MANAGER_CLASS_NAME = "PluginMenuManager"; //$NON-NLS-1$
 
     private static final String ARRANGE_GROUP = "myArrangeGroup"; //$NON-NLS-1$
-
-    private static final String PIN_GROUP = "pinGroup"; //$NON-NLS-1$
 
     /** the workbench part */
     private IWorkbenchPart part;
@@ -246,10 +243,9 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
                     menu.remove(arrangeBorderNodesItem);
                     layoutMenu.appendToGroup(ARRANGE_GROUP, arrangeBorderNodesItem);
                 }
-                layoutMenu.add(new Separator(PIN_GROUP));
                 if (movePinnedElementsItem != null) {
                     menu.remove(movePinnedElementsItem);
-                    layoutMenu.appendToGroup(PIN_GROUP, movePinnedElementsItem);
+                    layoutMenu.appendToGroup(ARRANGE_GROUP, movePinnedElementsItem);
                 }
             }
         } else if (formatMenu != null) { // case (2)

@@ -205,9 +205,11 @@ public class TabbarFillerWithContributions extends AbstractTabbarFiller {
         addContributionItem(diagramElementContributionItems, ARRANGE_SELECTION, contributionFactory.createAlignMenuManager());
         addContributionItem(diagramElementContributionItems, ARRANGE_SELECTION, contributionFactory.createArrangeMenuManager(part));
 
-        IContributionItem pinElementContributionItem = contributionFactory.createPinElementContribution(part);
-        addContributionItem(diagramElementContributionItems, HIDE_PIN, contributionFactory.createUnPinElementContribution(part, pinElementContributionItem));
-        addContributionItem(diagramElementContributionItems, HIDE_PIN, pinElementContributionItem);
+        // IContributionItem pinElementContributionItem = contributionFactory.createPinElementContribution(part);
+        addContributionItem(diagramElementContributionItems, HIDE_PIN, contributionFactory.createPinElementContribution(part));
+        // addContributionItem(diagramElementContributionItems, HIDE_PIN,
+        // contributionFactory.createUnPinElementContribution(part, pinElementContributionItem));
+        // addContributionItem(diagramElementContributionItems, HIDE_PIN, pinElementContributionItem);
         addContributionItem(diagramElementContributionItems, MODES, contributionFactory.createModesMenuManager((DDiagram) part.getDiagram().getElement()));
 
         addContributionItem(diagramElementContributionItems, PAST, contributionFactory.createPasteFormatContribution(part));

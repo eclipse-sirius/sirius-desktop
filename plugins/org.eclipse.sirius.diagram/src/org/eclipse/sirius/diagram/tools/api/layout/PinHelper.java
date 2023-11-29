@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,12 +17,17 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.NotificationFilter;
+import org.eclipse.emf.transaction.ResourceSetChangeEvent;
+import org.eclipse.emf.transaction.ResourceSetListener;
+import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.ArrangeConstraint;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptorRegistry;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
@@ -51,6 +56,8 @@ public final class PinHelper {
         PINNED_CONSTRAINTS.add(ArrangeConstraint.KEEP_RATIO);
     }
 
+    private static final NotificationFilter PIN_FILTER = NotificationFilter.createFeatureFilter(AbstractDNode.class, DiagramPackage.ABSTRACT_DNODE__ARRANGE_CONSTRAINTS);
+
     /**
      * Get the pinned status of the {@link DDiagramElement} <code>dDiagramElement</code>. The pinned status is defined
      * by having the following {@link ArrangeConstraint} through {@link AbstractDNode#getArrangeConstraints()} or
@@ -72,6 +79,29 @@ public final class PinHelper {
         List<ArrangeConstraint> constraints = getArrangeConstraints(dDiagramElement);
         isPinned = constraints != null && constraints.containsAll(PINNED_CONSTRAINTS);
         return isPinned;
+    }
+
+    /**
+     * Create post commit resource set listener that listen to the pin state of a diagram element.
+     * 
+     * @param target
+     *            the diagram element to listen
+     * @param onChange
+     *            the function executed when element is pined or unpined
+     * @return the resource set listener
+     */
+    public ResourceSetListener createPinListener(final DDiagramElement target, Runnable onChange) {
+        return new ResourceSetListenerImpl(NotificationFilter.createNotifierFilter(target).and(PIN_FILTER)) {
+            @Override
+            public boolean isPostcommitOnly() {
+                return true;
+            };
+
+            @Override
+            public void resourceSetChanged(ResourceSetChangeEvent event) {
+                onChange.run();
+            }
+        };
     }
 
     /**

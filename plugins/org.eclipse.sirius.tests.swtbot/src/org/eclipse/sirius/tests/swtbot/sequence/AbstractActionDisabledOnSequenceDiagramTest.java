@@ -77,15 +77,16 @@ public abstract class AbstractActionDisabledOnSequenceDiagramTest extends Abstra
      * messages and found messages.
      */
     public void testPinFromTabbarOnSequenceDiagramsComponents() {
-        testActionFromTabbarOnSequenceDiagramComponents("The pin action in tabbar should not be enabled", Messages.PinElementsEclipseAction_text);
-    }
 
-    /**
-     * Test Unpin action is disabled on tabbar for execution, states, messages, interactionUses, combinedFragments, Lost
-     * messages and found messages.
-     */
-    public void testUnpinFromTabbarOnSequenceDiagramsComponents() {
-        testActionFromTabbarOnSequenceDiagramComponents("The unPin action in tabbar should not be enabled", Messages.UnpinElementsEclipseAction_text);
+        Collection<SWTBotGefEditPart> partsToTest = getEditPartsToCheckDisabledActionsOn();
+
+        assertFalse("There should be some part to test.", partsToTest.isEmpty());
+
+        // Select and check actions.
+        for (SWTBotGefEditPart partToTest : partsToTest) {
+            selectAndWaitSelected(partToTest);
+            assertEquals("The pin action in tabbar should not be enabled", false, editor.bot().toolbarToggleButtonWithTooltip(Messages.PinElementsEclipseAction_text).isEnabled());
+        }
     }
 
     /**
