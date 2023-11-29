@@ -23,6 +23,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.preferences.SiriusDiagramUiInternalPreferencesKeys;
 import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckNoOpenedSessionInModelContentView;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
@@ -115,7 +116,8 @@ public class PinnedElementsTest extends AbstractPinnedElementsTest {
         final IDiagramElementEditPart class1 = (IDiagramElementEditPart) editor.getEditPart("Class1").part();
         assertThat(class1, not(isPinnedMatcher()));
         editor.getSelectableEditPart("Class1").select();
-        editor.clickContextMenu("Pin selected elements");
+        SWTBotUtils.waitAllUiEvents();
+        editor.clickContextMenu(Messages.PinElementsEclipseAction_text);
         bot.waitUntil(waitForPinned(class1));
         assertThat(class1, isPinnedMatcher());
     }
@@ -151,7 +153,8 @@ public class PinnedElementsTest extends AbstractPinnedElementsTest {
         IDiagramElementEditPart class1 = (IDiagramElementEditPart) editor.getEditPart("Class1").part();
         assertThat(class1, not(isPinnedMatcher()));
         editor.getSelectableEditPart("Class1").select();
-        editor.clickContextMenu("Pin selected elements");
+        SWTBotUtils.waitAllUiEvents();
+        editor.clickContextMenu(Messages.PinElementsEclipseAction_text);
         bot.waitUntil(waitForPinned(class1));
         assertThat(class1, isPinnedMatcher());
         localSession.close(true);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2019 Obeo.
+ * Copyright (c) 2015, 2023 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -104,9 +104,7 @@ public class TabbarContributorSample extends AbstractTabbarContributor {
             diagramElementContributionItems.add(createShowElementLabelContribution(part, hideLabelcontributionItem));
             diagramElementContributionItems.add(createDeleteFromDiagramContribution(part));
             diagramElementContributionItems.add(createDeleteFromModelContribution(part));
-            IContributionItem pinElementContributionItem = createPinElementContribution(part);
-            diagramElementContributionItems.add(pinElementContributionItem);
-            diagramElementContributionItems.add(createUnPinElementContribution(part, pinElementContributionItem));
+            diagramElementContributionItems.add(createPinElementContribution(part));
             diagramElementContributionItems.add(createFontColorContribution(part));
             diagramElementContributionItems.add(createPasteFormatContribution(part));
             diagramElementContributionItems.add(createBoldFontStyleContribution(part));

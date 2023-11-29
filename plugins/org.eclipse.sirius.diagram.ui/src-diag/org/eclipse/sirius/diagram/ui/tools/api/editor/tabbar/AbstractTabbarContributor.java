@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2019 Obeo.
+ * Copyright (c) 2015, 2023 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -193,7 +193,7 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
     }
 
     /**
-     * Creates the Pin element contribution item. Mark all the selected elements as pinned.
+     * Creates the Pin element contribution item. Toggle the pin state of the selected elements.
      * 
      * @param part
      *            the current IDiagramWorkbenchPart.
@@ -201,19 +201,6 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
      */
     protected IContributionItem createPinElementContribution(IDiagramWorkbenchPart part) {
         return contributorFactory.createPinElementContribution(part);
-    }
-
-    /**
-     * Creates the Unpin element contribution item. Mark all the selected elements as un-pinned.
-     * 
-     * @param part
-     *            the current IDiagramWorkbenchPart.
-     * @param pinElementContributionItem
-     *            the opposite pin contribution item. Can be null.
-     * @return the {@link IContributionItem}.
-     */
-    protected IContributionItem createUnPinElementContribution(IDiagramWorkbenchPart part, IContributionItem pinElementContributionItem) {
-        return contributorFactory.createUnPinElementContribution(part, pinElementContributionItem);
     }
 
     /**

@@ -91,7 +91,7 @@ public class TabbarContributorExtensionTest extends AbstractSiriusSwtBotGefTestC
         selectDiagramElement();
         SWTBotUtils.waitAllUiEvents();
         int count = getTabbarItemsCount();
-        assertEquals("Unexpected number of tabbar contribution items", 34, count);
+        assertEquals("Unexpected number of tabbar contribution items", 33, count);
         selectDiagram();
         SWTBotUtils.waitAllUiEvents();
         count = getTabbarItemsCount();
@@ -99,7 +99,7 @@ public class TabbarContributorExtensionTest extends AbstractSiriusSwtBotGefTestC
         selectEdge();
         SWTBotUtils.waitAllUiEvents();
         count = getTabbarItemsCount();
-        assertEquals("Unexpected number of tabbar contribution items", 34, count);
+        assertEquals("Unexpected number of tabbar contribution items", 33, count);
     }
 
     /**
@@ -112,7 +112,7 @@ public class TabbarContributorExtensionTest extends AbstractSiriusSwtBotGefTestC
         selectDiagramElement();
         SWTBotUtils.waitAllUiEvents();
         int count = getTabbarItemsCount();
-        assertEquals("The custom tabbar should be registered", 27, count);
+        assertEquals("The custom tabbar should be registered", 26, count);
         selectDiagram();
         SWTBotUtils.waitAllUiEvents();
         count = getTabbarItemsCount();

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2019 Obeo.
+ * Copyright (c) 2016, 2023 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -42,6 +42,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.actions.SizeBothAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromDiagramAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromModelWithHookAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.CopyFormatAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.PinElementsAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.refresh.RefreshDiagramAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.SetStyleToWorkspaceImageAction;
@@ -57,11 +58,9 @@ import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.Tabbar
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarColorPropertyContributionItem;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarDistributeMenuManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarPasteFormatMenuManager;
-import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarPinElementsEclipseAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarRouterMenuManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarSelectMenuManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarStraightenToMenuManager;
-import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarUnpinElementsEclipseAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarZoomAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarZoomInAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarZoomOutAction;
@@ -318,38 +317,17 @@ public class TabbarContributionFactory {
     }
 
     /**
-     * Creates the Pin element contribution item. Mark all the selected elements as pinned.
+     * Creates the Pin element contribution item. Toggle the pin state of the selected elements.
      * 
      * @param part
      *            the current IDiagramWorkbenchPart.
      * @return the {@link IContributionItem}.
      */
     public IContributionItem createPinElementContribution(IDiagramWorkbenchPart part) {
-        TabbarPinElementsEclipseAction pinAction = new TabbarPinElementsEclipseAction();
+        PinElementsAction pinAction = PinElementsAction.createForToolbar();
         return new TabbarActionContributionItem(pinAction, part);
     }
 
-    /**
-     * Creates the Unpin element contribution item. Mark all the selected elements as un-pinned.
-     * 
-     * @param part
-     *            the current IDiagramWorkbenchPart.
-     * @param pinElementContributionItem
-     *            the opposite pin contribution item. Can be null.
-     * @return the {@link IContributionItem}.
-     */
-    public IContributionItem createUnPinElementContribution(IDiagramWorkbenchPart part, IContributionItem pinElementContributionItem) {
-
-        TabbarUnpinElementsEclipseAction unpinAction = new TabbarUnpinElementsEclipseAction();
-        if (pinElementContributionItem instanceof TabbarActionContributionItem) {
-            IAction pinAction = ((TabbarActionContributionItem) pinElementContributionItem).getAction();
-            if (pinAction instanceof TabbarPinElementsEclipseAction) {
-                ((TabbarPinElementsEclipseAction) pinAction).setOppositePinAction(unpinAction);
-            }
-            unpinAction.setOppositePinAction(pinAction);
-        }
-        return new TabbarActionContributionItem(unpinAction, part);
-    }
 
     /**
      * Creates the Zoom combo contribution item.

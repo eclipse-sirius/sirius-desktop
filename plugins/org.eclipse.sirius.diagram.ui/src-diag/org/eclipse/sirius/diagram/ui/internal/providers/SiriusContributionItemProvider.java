@@ -40,8 +40,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteFormatAc
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteImageAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteLayoutAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteStyleAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.PinElementsEclipseAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.UnpinElementsEclipseAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.PinElementsAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.straighten.StraightenToAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.DistributeMenuManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.StraightenToMenuManager;
@@ -72,9 +71,7 @@ public class SiriusContributionItemProvider extends AbstractContributionItemProv
         } else if (ActionIds.PASTE_IMAGE.equals(actionId)) {
             result = new PasteImageAction();
         } else if (ActionIds.PIN_ELEMENTS.equals(actionId)) {
-            result = new PinElementsEclipseAction();
-        } else if (ActionIds.UNPIN_ELEMENTS.equals(actionId)) {
-            result = new UnpinElementsEclipseAction();
+            result = PinElementsAction.createForMenu();
         } else if (ActionIds.ARRANGE_BORDER_NODES.equals(actionId)) {
             result = ArrangeBorderNodesAction.createArrangeBorderNodesAction(workbenchPage);
         } else if (ActionIds.ARRANGE_BORDER_NODES_TOOLBAR.equals(actionId)) {
