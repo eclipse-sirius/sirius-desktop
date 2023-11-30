@@ -14,7 +14,6 @@ package org.eclipse.sirius.tests.swtbot;
 
 import static org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable.syncExec;
 
-import java.io.File;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -767,7 +766,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
             SWTBotTree tree = propertiesBot.tree();
             SWTBotTreeItem treeItem = tree.expandNode("General").select().getNode("Workspace Path");
             treeItem.doubleClick();
-            SWTBotText text = propertiesBot.text(defaultImage.replace('/', File.separatorChar));
+            SWTBotText text = propertiesBot.text(defaultImage);
             text.setText(imagePath);
             tree.select("General");
             SWTBotSiriusHelper.selectPropertyTabItem("Appearance", propertiesBot);
