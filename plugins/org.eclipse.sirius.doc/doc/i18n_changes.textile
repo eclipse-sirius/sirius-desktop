@@ -2,7 +2,9 @@ h1. Translation Keys Changes
 
 This document lists the changes in @TranslatableMessage@ used for Sirius internationalization in each Sirius version.
 
-h2(#siriusnext). Translation Keys Changes in Sirius Next (from Sirius 7.2.1)
+h2(#sirius740). Translation Keys Changes in Sirius 7.4.0 (from Sirius 7.3.0)
+
+h2(#sirius730). Translation Keys Changes in Sirius 7.3.0 (from Sirius 7.2.1)
 
 h3. Message Keys Added
 
