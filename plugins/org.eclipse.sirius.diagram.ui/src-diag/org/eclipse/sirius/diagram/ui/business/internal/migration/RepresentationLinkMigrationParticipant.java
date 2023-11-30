@@ -22,7 +22,6 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant;
 import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.business.api.query.DDiagramGraphicalQuery;
 import org.eclipse.sirius.diagram.ui.internal.view.factories.SiriusNoteViewFactory;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
@@ -80,7 +79,7 @@ public class RepresentationLinkMigrationParticipant extends AbstractRepresentati
             if (isModified) {
                 builder.insert(0, System.lineSeparator());
                 builder.insert(0, Messages.RepresentationLinkMigrationParticipant_title);
-                DiagramPlugin.getDefault().logInfo(builder.toString());
+                logMigrationInfo(builder.toString());
             }
         }
     }
