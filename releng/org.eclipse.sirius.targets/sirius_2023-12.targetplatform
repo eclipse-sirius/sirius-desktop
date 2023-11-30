@@ -25,7 +25,7 @@ location GMF-Runtime-1.16.2 "https://download.eclipse.org/modeling/gmp/gmf-runti
     org.eclipse.gmf.runtime.thirdparty.feature.group lazy
 }
 
-location GEF-Classic  "https://download.eclipse.org/tools/gef/classic/releases/3.18.0RC1" {
+location GEF-Classic  "https://download.eclipse.org/tools/gef/classic/releases/3.18.0" {
     org.eclipse.gef.feature.group lazy
     org.eclipse.gef.sdk.feature.group lazy
     org.eclipse.draw2d.sdk.feature.group lazy
