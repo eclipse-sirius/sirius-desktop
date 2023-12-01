@@ -5,7 +5,3 @@ This directory contains configuration files for Eclipse which should be installe
 * @CleanupProfile.xml@: the configuration file for Clean Up. Import it from __Preferences > Java > Code Style > Clean Up__.
 * @JavaFormatter.xml@: the configuration file to format the Java file. Import it from __Preferences > Java > Code Style > Formatter__. *Required for everyone*.
 * @sirius.importorder@: the configuration file to sort the imports. Import it from __Preferences > Java > Code Style > Organize Imports__. *Required for everyone*.
-
-It also contains configuration files to initialize a new development environment:
-* @sirius.psf@: A Team Project Set to initialize the working sets of the workspace.
-* @Sirius.setup@: Oomph configuration file (see <a href="https://wiki.eclipse.org/Sirius/Contributor_Guide#Environment_Configuration_with_Oomph" target="_blank">Contributor guide</a> for more details). WARNING: If you change the CleanupProfile.xml, JavaFormatter.xml or sirius.importorder, you must also change the corresponding field in Sirius.setup file. Indeed, the content of these files is copied in Sirius.setup file because there is currently nothing to address these "preferences" in Oomph.
