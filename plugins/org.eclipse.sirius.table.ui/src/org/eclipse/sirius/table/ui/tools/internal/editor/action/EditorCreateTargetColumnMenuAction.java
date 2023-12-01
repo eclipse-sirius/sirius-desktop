@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -43,7 +43,7 @@ public class EditorCreateTargetColumnMenuAction extends AbstractEditorCreateMenu
      * {@inheritDoc}
      */
     @Override
-    protected List<CreateTargetColumnAction> filter(List<AbstractToolAction> createActionsForTable) {
+    protected List<CreateTargetColumnAction> filter(List<AbstractToolAction<?>> createActionsForTable) {
         return Lists.newArrayList(Iterables.filter(createActionsForTable, CreateTargetColumnAction.class));
     }
 }

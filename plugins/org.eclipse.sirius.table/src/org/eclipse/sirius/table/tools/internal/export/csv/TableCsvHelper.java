@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -91,6 +91,7 @@ public final class TableCsvHelper {
      * @param filler
      * @param descriptors
      * @param line
+     * @param baseOffset
      */
     private static void addLineToDescriptor(final DLine line, final List<List<String>> descriptors, final TableFiller filler, final short baseOffset) {
         // If line is hidden, not added to CSV export

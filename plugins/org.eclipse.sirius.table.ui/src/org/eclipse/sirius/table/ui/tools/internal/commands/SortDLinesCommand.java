@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -65,9 +65,6 @@ public class SortDLinesCommand extends RecordingCommand {
      *
      * @param lineContainer
      *            The lineContainer (table or line)
-     * @param column
-     *            The column use to sort or null if the header column must be
-     *            use to sort
      */
     private void sortLinesBy(final LineContainer lineContainer) {
         if (!lineContainer.getLines().isEmpty()) {

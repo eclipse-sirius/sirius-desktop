@@ -12,7 +12,22 @@ h3. User-Visible Changes
 
 h3. Specifier-Visible Changes
 
+* <span class="label label-info">Modified</span> In tables, expressions and tools are injected with more variables. 'table', 'containerView' and 'line' elements are now accessible. With those elements, Specifier can access to @AnnotationEntry@ elements of @DTable@ instances. This modification allows following use-cases: 
+** Create virtual lines: lines to group elements in tree with criteria based on attributes values or on user query.
+** Have columns unrelated to root element: for example, columns targeting ECore features to have dynamic feature table.
+** Store states to alter tools: read/write mode driven by tools; default values to use in creation tools of current table.
+
 h3. Developer-Visible Changes
+
+h4. Changes in @org.eclipse.sirius@
+
+* <span class="label label-success">Added</span> @org.eclipse.sirius.business.api.logger.InterpretationContext@ is created to ease setting and clearing variables when interpreting expressions.
+
+h4. Changes in @org.eclipse.sirius.table@
+
+* <span class="label label-success">Added</span> @org.eclipse.sirius.table.business.api.helper.TableVariablesHelper@ is added to initialize variable value according active table decorator.
+* <span class="label label-info">Modified</span> The @org.eclipse.sirius.table.business.api.query.DLineQuery@ query has been deprecated for removal. It was only used once in a internal class.
+* <span class="label label-info">Modified</span> Methods @org.eclipse.sirius.table.tools.api.command.ITableCommandFactory.buildCreateLineCommandFromTool(LineContainer, EObject, CreateTool)@ and @org.eclipse.sirius.table.tools.api.command.ITableCommandFactory.buildCreateColumnCommandFromTool(DTable, EObject, CreateTool)@ have been deprecated for removal. They have been replaced by methods using applicable DSemanticDecorator in signature.
 
 h4. Changes in @org.eclipse.sirius.diagram.ui@
 

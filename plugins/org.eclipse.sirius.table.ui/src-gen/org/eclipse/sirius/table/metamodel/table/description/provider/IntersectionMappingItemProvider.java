@@ -359,12 +359,7 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
 
         LabelEditTool labelEditTool = DescriptionFactory.eINSTANCE.createLabelEditTool();
         labelEditTool.setMask(ToolFactory.eINSTANCE.createEditMaskVariables());
-        addVariableDescriptor(labelEditTool, IInterpreterSiriusVariables.ELEMENT, Messages.Table_CurrentSemanticElement);
-        addVariableDescriptor(labelEditTool, IInterpreterSiriusVariables.TABLE, Messages.Table_TableElement);
-        addVariableDescriptor(labelEditTool, IInterpreterSiriusTableVariables.LINE, Messages.Table_LineElement);
-        addVariableDescriptor(labelEditTool, IInterpreterSiriusTableVariables.LINE_SEMANTIC, Messages.Table_SemanticLineElement);
-        addVariableDescriptor(labelEditTool, IInterpreterSiriusTableVariables.COLUMN_SEMANTIC, Messages.Table_SemanticColumnElement);
-        addVariableDescriptor(labelEditTool, IInterpreterSiriusVariables.ROOT, Messages.Table_SemanticRootElement);
+        new TableToolVariables().doSwitch(labelEditTool);
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CELL_UPDATER__DIRECT_EDIT, labelEditTool));
 
@@ -380,24 +375,12 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
         backgroundConditionalStyle.setStyle(DescriptionFactory.eINSTANCE.createBackgroundStyleDescription());
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.STYLE_UPDATER__BACKGROUND_CONDITIONAL_STYLE, backgroundConditionalStyle));
 
-        collectCreateCellTool(newChildDescriptors);
-
-    }
-
-    private void collectCreateCellTool(Collection<Object> newChildDescriptors) {
-        final CreateCellTool createCellTool = DescriptionFactory.eINSTANCE.createCreateCellTool();
+        CreateCellTool createCellTool = DescriptionFactory.eINSTANCE.createCreateCellTool();
         createCellTool.setMask(ToolFactory.eINSTANCE.createEditMaskVariables());
         new TableToolVariables().doSwitch(createCellTool);
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.INTERSECTION_MAPPING__CREATE, createCellTool));
+
     }
 
-    private void addVariableDescriptor(final TableTool tool, final String name, final String documentation) {
-        if (TableHelper.getVariable(tool, name) == null) {
-            final TableVariable newVar = DescriptionFactory.eINSTANCE.createTableVariable();
-            newVar.setName(name);
-            newVar.setDocumentation(documentation);
-            tool.getVariables().add(newVar);
-        }
-    }
 
 }

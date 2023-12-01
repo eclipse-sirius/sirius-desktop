@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -19,10 +19,11 @@ import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.table.business.api.refresh.DTableSynchronizer;
-import org.eclipse.sirius.table.business.internal.refresh.DTableSynchronizerImpl;
+import org.eclipse.sirius.table.business.internal.dialect.TableDialectServices;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.TableFactory;
 import org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription;
+import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusTestCase;
@@ -78,6 +79,16 @@ public class TableContentTest extends SiriusTestCase {
         createNewTableAndCheckNbLinesAndNbColumns(2048, true);
     }
 
+    /**
+     * Creates a synchronizer.
+     * 
+     * @param descr of table
+     * @return synchronizer
+     */
+    protected DTableSynchronizer createTableSynchronizer(TableDescription descr) {
+    	return new TableDialectServices().createTableSynchronizer(descr, accessor, interpreter);
+    }
+    
     private void createNewTableAndCheckNbLinesAndNbColumns(final int nbClasses, boolean secondRefresh) {
         TransactionalEditingDomain ted = (TransactionalEditingDomain) session.getTransactionalEditingDomain();
         ted.getCommandStack().execute(new RecordingCommand(ted) {
@@ -94,7 +105,7 @@ public class TableContentTest extends SiriusTestCase {
 
         Viewpoint viewpoint = session.getSelectedViewpoints(false).iterator().next();
         CrossTableDescription desc = (CrossTableDescription) viewpoint.getOwnedRepresentations().iterator().next();
-        DTableSynchronizer sync = new DTableSynchronizerImpl(desc, accessor, interpreter);
+        DTableSynchronizer sync = createTableSynchronizer(desc);
         DTable newTable = TableFactory.eINSTANCE.createDTable();
         newTable.setDescription(desc);
         newTable.setTarget(semanticModel);
@@ -104,7 +115,7 @@ public class TableContentTest extends SiriusTestCase {
         assertEquals("Invalid number of columns in the table.", semanticModel.eContents().size(), newTable.getColumns().size());
 
         if (secondRefresh) {
-            sync = new DTableSynchronizerImpl(desc, accessor, interpreter);
+            sync = createTableSynchronizer(desc);
             sync.setTable(newTable);
             sync.refresh(new NullProgressMonitor());
 
