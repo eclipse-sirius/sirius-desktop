@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2020 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -81,15 +81,11 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.ByteArrayTransfer;
 import org.eclipse.swt.dnd.DND;
-import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.KeyListener;
-import org.eclipse.swt.events.MouseAdapter;
-import org.eclipse.swt.events.MouseEvent;
-import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.swt.widgets.TreeItem;
@@ -251,17 +247,23 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
         ColumnViewerToolTipSupport.enableFor(treeViewer);
         treeViewer.getTree().setLinesVisible(true);
         treeViewer.getTree().setHeaderVisible(true);
-        // Manage height of the lines, selected colors,
-        triggerCustomDrawingTreeItems();
+
+
         // Create a new CellFocusManager
-        final TreeViewerFocusCellManager focusCellManager = new TreeViewerFocusCellManager(treeViewer, new FocusCellOwnerDrawHighlighter(treeViewer));
+        final TreeViewerFocusCellManager focusCellManager = new TreeViewerFocusCellManager(treeViewer, 
+                new FocusCellOwnerDrawHighlighter(treeViewer));
         // Create a TreeViewerEditor with focusable cell
-        TreeViewerEditor.create(treeViewer, focusCellManager, new DTableColumnViewerEditorActivationStrategy(treeViewer),
-                ColumnViewerEditor.TABBING_HORIZONTAL | ColumnViewerEditor.TABBING_MOVE_TO_ROW_NEIGHBOR | ColumnViewerEditor.TABBING_VERTICAL | ColumnViewerEditor.KEYBOARD_ACTIVATION);
+        TreeViewerEditor.create(treeViewer, focusCellManager, 
+                new DTableColumnViewerEditorActivationStrategy(treeViewer),
+                ColumnViewerEditor.TABBING_HORIZONTAL 
+                    | ColumnViewerEditor.TABBING_MOVE_TO_ROW_NEIGHBOR 
+                    | ColumnViewerEditor.TABBING_VERTICAL 
+                    | ColumnViewerEditor.KEYBOARD_ACTIVATION);
         initializeKeyBindingSupport();
         triggerColumnSelectedColumn();
         initializeColumnsAndComponentsRelatedToDRepresentation(treeLayout);
     }
+
 
     /**
      * Initialize the columns and everything initialized according to DRepresentation.
@@ -321,19 +323,7 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
         DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.SET_COLUMN_NAME_KEY);
 
         ILabelDecorator decorator = PlatformUI.getWorkbench().getDecoratorManager().getLabelDecorator();
-        CellLabelProvider lineheaderColumnLabelProvider = new DTableLineLabelProvider(decorator) {
-            /* Display gray background for the OS other than GTK. */
-            @Override
-            public Color getBackground(final Object element) {
-                if (IS_GTK_OS) {
-                    // We could desactivate the gray background color for Linux
-                    // return super.getBackground(element);
-                    return Display.getCurrent().getSystemColor(SWT.COLOR_WIDGET_LIGHT_SHADOW);
-                } else {
-                    return Display.getCurrent().getSystemColor(SWT.COLOR_WIDGET_LIGHT_SHADOW);
-                }
-            }
-        };
+        CellLabelProvider lineheaderColumnLabelProvider = new DTableLineLabelProvider(decorator);
         headerTreeColumn.setLabelProvider(lineheaderColumnLabelProvider);
         int headerColumnWidth = ((DTable) dRepresentation).getHeaderColumnWidth();
         if (headerColumnWidth > 0) {
@@ -364,22 +354,15 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
     }
 
     private void initializeKeyBindingSupport() {
-        treeViewer.getTree().addKeyListener(new KeyListener() {
-            @Override
-            public void keyPressed(final KeyEvent e) {
-                if (e.keyCode == SWT.DEL) {
-                    DeleteLinesAction deleteLinesAction = new DeleteLinesAction(getEditingDomain(), getTableCommandFactory());
-                    deleteLinesAction.setLines(getSelectedLines());
-                    if (deleteLinesAction.canExecute()) {
-                        deleteLinesAction.run();
-                    }
+        treeViewer.getTree().addKeyListener(KeyListener.keyPressedAdapter(e -> {
+            if (e.keyCode == SWT.DEL) {
+                DeleteLinesAction deleteLinesAction = new DeleteLinesAction(getEditingDomain(), getTableCommandFactory());
+                deleteLinesAction.setLines(getSelectedLines());
+                if (deleteLinesAction.canExecute()) {
+                    deleteLinesAction.run();
                 }
             }
-
-            @Override
-            public void keyReleased(final KeyEvent e) {
-            };
-        });
+        }));
     }
 
     /**
@@ -403,8 +386,8 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
             descriptionFileChanged = false;
 
             final Map<TableMapping, DeleteTargetColumnAction> mappingToDeleteActions = new HashMap<>();
-            final Map<TableMapping, List<AbstractToolAction>> mappingToCreateActions = new HashMap<>();
-            final List<AbstractToolAction> createActionsForTable = new ArrayList<>();
+            final Map<TableMapping, List<AbstractToolAction<?>>> mappingToCreateActions = new HashMap<>();
+            final List<AbstractToolAction<?>> createActionsForTable = new ArrayList<>();
             calculateAvailableMenus(mappingToDeleteActions, mappingToCreateActions, createActionsForTable);
 
             mgr.setRemoveAllWhenShown(true);
@@ -443,8 +426,8 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
      * @param createActionsForTable
      *            A list of the actions for create lines under the table.
      */
-    private void calculateAvailableMenus(final Map<TableMapping, DeleteTargetColumnAction> mappingToDeleteActions, final Map<TableMapping, List<AbstractToolAction>> mappingToCreateActions,
-            final List<AbstractToolAction> createActionsForTable) {
+    private void calculateAvailableMenus(final Map<TableMapping, DeleteTargetColumnAction> mappingToDeleteActions, final Map<TableMapping, List<AbstractToolAction<?>>> mappingToCreateActions,
+            final List<AbstractToolAction<?>> createActionsForTable) {
 
         final TableDescription tableDescription = ((DTable) dRepresentation).getDescription();
 
@@ -465,9 +448,11 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
                 // Actions on table
                 final EList<? extends CreateTool> createColumnsTools = ((CrossTableDescription) tableDescription).getCreateColumn();
                 for (final CreateTool createTool : createColumnsTools) {
-                    final CreateTargetColumnAction createTargetColumnAction = new CreateTargetColumnAction(createTool, getEditingDomain(), getTableCommandFactory());
-                    createTargetColumnAction.setTable((DTable) dRepresentation);
-                    createActionsForTable.add(createTargetColumnAction);
+                    if (createTool.getFirstModelOperation() != null) {
+                        final CreateTargetColumnAction createTargetColumnAction = new CreateTargetColumnAction(createTool, getEditingDomain(), getTableCommandFactory());
+                        createTargetColumnAction.setTable((DTable) dRepresentation);
+                        createActionsForTable.add(createTargetColumnAction);
+                    }
                 }
             }
 
@@ -487,8 +472,9 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
      *            A map which associates {@link TableMapping} with the corresponding list of {@link AbstractToolAction}
      *            ( {@link CreateLineAction} or {@link CreateTargetColumnAction})
      */
-    private void calculateAvailableMenusForColumn(final EList<ElementColumnMapping> columnMappings, final Map<TableMapping, DeleteTargetColumnAction> mappingToDeleteActions,
-            final Map<TableMapping, List<AbstractToolAction>> mappingToCreateActions) {
+    private void calculateAvailableMenusForColumn(final EList<ElementColumnMapping> columnMappings, final Map<TableMapping, 
+            DeleteTargetColumnAction> mappingToDeleteActions,
+            final Map<TableMapping, List<AbstractToolAction<?>>> mappingToCreateActions) {
         for (final ElementColumnMapping mapping : columnMappings) {
             if (mapping != null && !mappingToDeleteActions.keySet().contains(mapping) && !mappingToCreateActions.keySet().contains(mapping)) {
                 final DeleteTool deleteTool = mapping.getDelete();
@@ -496,14 +482,16 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
                 // (it's an delete action without specific tasks)
                 mappingToDeleteActions.put(mapping, new DeleteTargetColumnAction(deleteTool, getEditingDomain(), tableCommandFactory));
                 final EList<? extends CreateTool> createTools = mapping.getCreate();
-                List<AbstractToolAction> existingCreateTools = mappingToCreateActions.get(mapping);
+                List<AbstractToolAction<?>> existingCreateTools = mappingToCreateActions.get(mapping);
                 if (existingCreateTools == null) {
-                    existingCreateTools = new ArrayList<AbstractToolAction>();
+                    existingCreateTools = new ArrayList<AbstractToolAction<?>>();
+                    mappingToCreateActions.put(mapping, existingCreateTools);
                 }
                 for (final CreateTool createTool : createTools) {
-                    existingCreateTools.add(new CreateTargetColumnAction(createTool, getEditingDomain(), tableCommandFactory));
+                    if (createTool.getFirstModelOperation() != null) {
+                        existingCreateTools.add(new CreateTargetColumnAction(createTool, getEditingDomain(), tableCommandFactory));
+                    }
                 }
-                mappingToCreateActions.put(mapping, existingCreateTools);
             }
         }
     }
@@ -517,20 +505,22 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
      * @param mappingToCreateActions
      *            A map which associates {@link TableMapping} with the corresponding list of {@link AbstractToolAction}
      *            ( {@link CreateLineAction} or {@link CreateTargetColumnAction})
+     * @param processedLineMappings
+     * 
      */
-    private void calculateAvailableMenusForLine(final EList<LineMapping> lineMappings, final Map<TableMapping, List<AbstractToolAction>> mappingToCreateActions,
+    private void calculateAvailableMenusForLine(final EList<LineMapping> lineMappings, final Map<TableMapping, List<AbstractToolAction<?>>> mappingToCreateActions,
             final List<LineMapping> processedLineMappings) {
         for (final LineMapping lineMapping : lineMappings) {
             if (lineMapping != null && !mappingToCreateActions.keySet().contains(lineMapping)) {
                 final EList<? extends CreateTool> createTools = lineMapping.getCreate();
-                List<AbstractToolAction> existingCreateTools = mappingToCreateActions.get(lineMapping);
+                List<AbstractToolAction<?>> existingCreateTools = mappingToCreateActions.get(lineMapping);
                 if (existingCreateTools == null) {
-                    existingCreateTools = new ArrayList<AbstractToolAction>();
+                    existingCreateTools = new ArrayList<>();
+                    mappingToCreateActions.put(lineMapping, existingCreateTools);
                 }
                 for (final CreateTool createTool : createTools) {
                     existingCreateTools.add(new CreateLineAction(createTool, getEditingDomain(), getTableCommandFactory()));
                 }
-                mappingToCreateActions.put(lineMapping, existingCreateTools);
             }
             if (lineMapping != null && !processedLineMappings.contains(lineMapping)) {
                 processedLineMappings.add(lineMapping);
@@ -540,48 +530,28 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
     }
 
     /**
-     * Manage height of the lines, selected colors.
-     */
-    protected void triggerCustomDrawingTreeItems() {
-        // Manage selected colors for cells
-        treeViewer.getTree().addListener(SWT.EraseItem, new DTableEraseItemListener(this, treeViewer));
-    }
-
-    /**
      * Add a listener on the tree to listen the mouseDouwn or the key left-right arrows and store the activeColumn.
      */
     protected void triggerColumnSelectedColumn() {
-        treeViewer.getTree().addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mouseDown(final MouseEvent event) {
-                int x = 0;
-                for (int i = 0; i < treeViewer.getTree().getColumnCount(); i++) {
-                    x += treeViewer.getTree().getColumn(i).getWidth();
-                    if (event.x <= x) {
-                        activeColumn = i;
-                        break;
-                    }
+        treeViewer.getTree().addMouseListener(MouseListener.mouseDownAdapter(event -> {
+            int x = 0;
+            for (int i = 0; i < treeViewer.getTree().getColumnCount(); i++) {
+                x += treeViewer.getTree().getColumn(i).getWidth();
+                if (event.x <= x) {
+                    activeColumn = i;
+                    break;
                 }
             }
-
-        });
-        treeViewer.getTree().addKeyListener(new KeyListener() {
-            @Override
-            public void keyPressed(final KeyEvent e) {
-                if (e.keyCode == SWT.ARROW_LEFT && activeColumn > 0) {
-                    activeColumn--;
-                    treeViewer.getTree().showColumn(treeViewer.getTree().getColumn(activeColumn));
-                } else if (e.keyCode == SWT.ARROW_RIGHT && activeColumn < treeViewer.getTree().getColumnCount() - 1) {
-                    activeColumn++;
-                    treeViewer.getTree().showColumn(treeViewer.getTree().getColumn(activeColumn));
-                }
+        }));
+        treeViewer.getTree().addKeyListener(KeyListener.keyPressedAdapter(e -> {
+            if (e.keyCode == SWT.ARROW_LEFT && activeColumn > 0) {
+                activeColumn--;
+                treeViewer.getTree().showColumn(treeViewer.getTree().getColumn(activeColumn));
+            } else if (e.keyCode == SWT.ARROW_RIGHT && activeColumn < treeViewer.getTree().getColumnCount() - 1) {
+                activeColumn++;
+                treeViewer.getTree().showColumn(treeViewer.getTree().getColumn(activeColumn));
             }
-
-            @Override
-            public void keyReleased(final KeyEvent e) {
-            };
-        });
+        }));
 
     }
 
@@ -656,6 +626,28 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
             }
         }
 
+        final TreeViewerColumn treeViewerColumn = createViewerColumn(newColumn, index);
+
+        // Add the LabelProvider with decorating feature
+        ILabelDecorator decorator = PlatformUI.getWorkbench().getDecoratorManager().getLabelDecorator();
+        DTableDecoratingLabelProvider labelProvider = new DTableDecoratingLabelProvider(newColumn, decorator);
+        labelProvider.setDefaultFont(treeViewer.getTree().getFont());
+        treeViewerColumn.setLabelProvider(new DelegatingStyledCellLabelProvider(labelProvider));
+
+        if (newColumn instanceof DFeatureColumn) {
+            treeViewerColumn.setEditingSupport(
+                    new DFeatureColumnEditingSupport(getViewer(), (DFeatureColumn) newColumn, getEditingDomain(), getAccessor(), getTableCommandFactory(), (AbstractDTableEditor) treeEditor));
+        } else if (newColumn instanceof DTargetColumn) {
+            treeViewerColumn.setEditingSupport(
+                    new DTargetColumnEditingSupport(getViewer(), (DTargetColumn) newColumn, getEditingDomain(), getAccessor(), tableCommandFactory, (AbstractDTableEditor) treeEditor));
+        }
+        treeViewerColumn.getColumn().setData(TABLE_COLUMN_DATA, newColumn);
+        treeViewerColumn.getColumn().addControlListener(tableViewerListener);
+        treeViewerColumn.getColumn().addListener(SWT.Selection, sortListener);
+        DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.ADD_SWT_COLUMN_KEY);
+    }
+
+    private TreeViewerColumn createViewerColumn(final DColumn newColumn, final int index) {
         final TreeViewerColumn treeViewerColumn = new TreeViewerColumn(treeViewer, SWT.LEFT, index);
         if (newColumn.getLabel() != null) {
             DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.SET_COLUMN_NAME_KEY);
@@ -672,14 +664,15 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
 
             DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.SET_COLUMN_NAME_KEY);
         }
+        TreeColumnLayout columnLayout = (TreeColumnLayout) treeViewer.getControl().getParent().getLayout();
         if (newColumn.isVisible()) {
             if (newColumn.getWidth() != 0) {
-                ((TreeColumnLayout) treeViewer.getControl().getParent().getLayout()).setColumnData(treeViewerColumn.getColumn(), new ColumnPixelData(newColumn.getWidth()));
+                columnLayout.setColumnData(treeViewerColumn.getColumn(), new ColumnPixelData(newColumn.getWidth()));
                 if (treeViewerColumn.getColumn().getWidth() != newColumn.getWidth()) {
                     treeViewerColumn.getColumn().setWidth(newColumn.getWidth());
                 }
             } else {
-                ((TreeColumnLayout) treeViewer.getControl().getParent().getLayout()).setColumnData(treeViewerColumn.getColumn(), new ColumnWeightData(1));
+                columnLayout.setColumnData(treeViewerColumn.getColumn(), new ColumnWeightData(1));
                 if (IS_GTK_OS) {
                     // Do not launch treeViewerColumn.getColumn().pack() here
                     // for windows because the size is computed only with the
@@ -692,25 +685,9 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
             }
         } else {
             // Set the size of the column to 0
-            ((TreeColumnLayout) treeViewer.getControl().getParent().getLayout()).setColumnData(treeViewerColumn.getColumn(), new ColumnPixelData(0));
+            columnLayout.setColumnData(treeViewerColumn.getColumn(), new ColumnPixelData(0));
         }
-
-        // Add the LabelProvider with decorating feature
-        ILabelDecorator decorator = PlatformUI.getWorkbench().getDecoratorManager().getLabelDecorator();
-        DTableDecoratingLabelProvider labelProvider = new DTableDecoratingLabelProvider(newColumn, decorator);
-        treeViewerColumn.setLabelProvider(new DelegatingStyledCellLabelProvider(labelProvider));
-
-        if (newColumn instanceof DFeatureColumn) {
-            treeViewerColumn.setEditingSupport(
-                    new DFeatureColumnEditingSupport(treeViewer, (DFeatureColumn) newColumn, getEditingDomain(), getAccessor(), getTableCommandFactory(), (AbstractDTableEditor) treeEditor));
-        } else if (newColumn instanceof DTargetColumn) {
-            treeViewerColumn.setEditingSupport(
-                    new DTargetColumnEditingSupport(treeViewer, (DTargetColumn) newColumn, getEditingDomain(), getAccessor(), tableCommandFactory, (AbstractDTableEditor) treeEditor));
-        }
-        treeViewerColumn.getColumn().setData(TABLE_COLUMN_DATA, newColumn);
-        treeViewerColumn.getColumn().addControlListener(tableViewerListener);
-        treeViewerColumn.getColumn().addListener(SWT.Selection, sortListener);
-        DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.ADD_SWT_COLUMN_KEY);
+        return treeViewerColumn;
     }
 
     /**
@@ -738,6 +715,10 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
     @Override
     public AbstractDTableEditor getEditor() {
         return (AbstractDTableEditor) treeEditor;
+    }
+    
+    public DTableTreeViewer getViewer() {
+        return (DTableTreeViewer) treeViewer;
     }
 
     /**

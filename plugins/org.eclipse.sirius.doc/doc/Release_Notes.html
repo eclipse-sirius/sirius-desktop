@@ -157,9 +157,55 @@
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> A new preference has been added in the Sirius Diagram preference page. This preference allows the user to choose the arrangement of elements created on a diagram when they are not directly positioned by the user. In the preference page, users can choose between a diagonal, vertical or horizontal arrangement.</li>
+			<li><span class="label label-info">Modified</span> In Sirius table, font type and default size are now based on Preferences Settings of 
+				<b>General &gt; Appearance &gt; Colors and Fonts</b>. Previously, cells font were always &#8216;Arial&#8217; and of size &#8216;9&#8217; but column and line headers were based on Preferences Settings.
+			</li>
+			<li><span class="label label-info">Modified</span> In Sirius table, default colors has been changed to use Preferences Settings and selection coloring behaves like other Views and Editors. Previously, line headers were forced to grey, selected cell was using Menu color instead of Theme color and no color was indicating the row on mouse hover.</li>
 		</ul>
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
+		<ul>
+			<li><span class="label label-info">Modified</span> In tables, expressions and tools are injected with more variables. &#8216;table&#8217;, &#8216;containerView&#8217; and &#8216;line&#8217; elements are now accessible. With those elements, Specifier can access to 
+				<code>AnnotationEntry</code> elements of 
+				<code>DTable</code> instances. This modification allows following use-cases: 
+				<ul>
+					<li>Create virtual lines: lines to group elements in tree with criteria based on attributes values or on user query.</li>
+					<li>Have columns unrelated to root element: for example, columns targeting ECore features to have dynamic feature table.</li>
+					<li>Store states to alter tools: read/write mode driven by tools; default values to use in creation tools of current table.</li>
+				</ul>
+			</li>
+		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
+		<h4 id="Changesinorg.eclipse.sirius">Changes in 
+			<code>org.eclipse.sirius</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.business.api.logger.InterpretationContext</code> is created to ease setting and clearing variables when interpreting expressions.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.table">Changes in 
+			<code>org.eclipse.sirius.table</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.table.business.api.helper.TableVariablesHelper</code> is added to initialize variable value according active table decorator.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.table.business.api.helper.TableToolHelper</code> is added to handle common evaluations with table tools.
+			</li>
+			<li><span class="label label-info">Modified</span> The 
+				<code>org.eclipse.sirius.table.business.api.helper.TableHelper.canEditCrossTableCell(DCell)</code> and 
+				<code>org.eclipse.sirius.table.business.api.helper.TableHelper.canEditCrossTableCell(DCell)</code> have been deprecated for removal. 
+				<code>TableToolHelper</code> should be used to handle precondition evaluation.
+			</li>
+			<li><span class="label label-info">Modified</span> The 
+				<code>org.eclipse.sirius.table.business.api.query.DLineQuery</code> query has been deprecated for removal. It was only used once in a internal class.
+			</li>
+			<li><span class="label label-info">Modified</span> Methods 
+				<code>org.eclipse.sirius.table.tools.api.command.ITableCommandFactory.buildCreateLineCommandFromTool(LineContainer, EObject, CreateTool)</code> and 
+				<code>org.eclipse.sirius.table.tools.api.command.ITableCommandFactory.buildCreateColumnCommandFromTool(DTable, EObject, CreateTool)</code> have been deprecated for removal. They have been replaced by methods using applicable DSemanticDecorator in signature.
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
@@ -316,7 +362,7 @@
 				<code>isFrozen(EObject)</code> method. This is a status handled by the collaborative plugins, but this new API makes this status available for queries from Sirius core plugins.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -429,7 +475,7 @@
 			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges6">Developer-Visible Changes</h3>
-		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -539,7 +585,7 @@
 				<code>org.eclipse.sirius.business.api.query.DRepresentationDescriptorQuery.DRepresentationDescriptorValidityAdapter.triggerRepresentationValidation(boolean)</code> were also created. These new methods (with a parameter value true) can be used in tests, but should not be used by the &#8220;Model explorer&#8221; view otherwise there would be no more lazy loading of representations.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius4">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -947,7 +993,7 @@
 				<a href="https://projects.eclipse.org/projects/modeling.elk/releases/0.7.1">ELK documentation</a> for the list of changes in that version (and previous).
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius5">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>

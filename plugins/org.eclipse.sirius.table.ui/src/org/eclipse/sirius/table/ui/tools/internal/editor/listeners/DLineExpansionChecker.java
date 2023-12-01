@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -90,6 +90,8 @@ public class DLineExpansionChecker implements Listener {
 
     /**
      * Handle the undo of the swt TreeItem collapse if the current {@link IPermissionAuthority} disallow it.
+     * 
+     * @param event
      */
     private void handleTreeCollapse(Event event) {
         if (!isEventForDLineExpandable(event)) {
@@ -101,6 +103,8 @@ public class DLineExpansionChecker implements Listener {
 
     /**
      * Handle the undo the swt TreeItem expansion if the current {@link IPermissionAuthority} disallow it.
+     * 
+     * @param event
      */
     private void handleTreeExpand(Event event) {
         if (!isEventForDLineExpandable(event)) {

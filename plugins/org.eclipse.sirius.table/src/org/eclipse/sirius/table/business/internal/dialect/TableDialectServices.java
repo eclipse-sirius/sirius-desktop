@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -37,14 +37,17 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.table.business.api.refresh.DTableSynchronizer;
 import org.eclipse.sirius.table.business.internal.dialect.description.TableInterpretedExpressionQuery;
+import org.eclipse.sirius.table.business.internal.refresh.CrossTableSynchronizer;
 import org.eclipse.sirius.table.business.internal.refresh.DTableElementSynchronizer;
-import org.eclipse.sirius.table.business.internal.refresh.DTableSynchronizerImpl;
+import org.eclipse.sirius.table.business.internal.refresh.EditionTableSynchronizer;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DColumn;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.DTableElement;
 import org.eclipse.sirius.table.metamodel.table.TableFactory;
+import org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription;
+import org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription;
 import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
 import org.eclipse.sirius.table.tools.internal.Messages;
 import org.eclipse.sirius.table.tools.internal.command.TableCommandFactory;
@@ -128,15 +131,43 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
             DTable table = (DTable) representation;
             IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(table.getTarget());
             ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(representation);
-            TableDescription description = table.getDescription();
-            DTableSynchronizer sync = new DTableSynchronizerImpl(description, accessor, interpreter);
-            sync.setTable(table);
-            sync.refresh(new SubProgressMonitor(monitor, 1));
+
+            DTableSynchronizer sync = createTableSynchronizer(table.getDescription(), accessor, interpreter);
+            if (sync != null) {
+                sync.setTable(table);
+                sync.refresh(new SubProgressMonitor(monitor, 1));
+            }
         } finally {
             monitor.done();
         }
     }
 
+    /**
+     * Creates a synchronizer for the provide table.
+     * 
+     * @param description of table to synchronize
+     * @param accessor of model
+     * @param interpreter of expressions
+     * @return synchronizer
+     */
+    public DTableSynchronizer createTableSynchronizer(TableDescription description, final ModelAccessor accessor, final IInterpreter interpreter) {
+        DTableElementSynchronizer elementSyn = createElementSynchronizer(accessor, interpreter);
+        DTableSynchronizer result;
+        if (description instanceof CrossTableDescription) {
+            result = new CrossTableSynchronizer((CrossTableDescription) description, elementSyn);
+        } else if (description instanceof EditionTableDescription) {
+            result = new EditionTableSynchronizer((EditionTableDescription) description, elementSyn);
+        } else {
+            result = null;
+        }
+        return result;
+    }
+    
+    
+    private DTableElementSynchronizer createElementSynchronizer(final ModelAccessor accessor, final IInterpreter interpreter) {
+        return new DTableElementSynchronizer(accessor, interpreter);
+    }
+    
     @Override
     public void refreshImpactedElements(DRepresentation representation, Collection<Notification> notifications, IProgressMonitor monitor) {
         try {
@@ -147,7 +178,7 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
 
             Set<DTableElement> dTableElements = getTableElementsToRefresh(notifications, table);
             monitor.worked(2);
-            DTableElementSynchronizer synchronizer = new DTableElementSynchronizer(accessor, interpreter);
+            DTableElementSynchronizer synchronizer = createElementSynchronizer(accessor, interpreter);
             IProgressMonitor subMonitor = new SubProgressMonitor(monitor, 8);
             try {
                 subMonitor.beginTask(Messages.TableDialectServices_RefreshImpactedElements, dTableElements.size());
@@ -234,7 +265,7 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
 
                 if (modelAccessor.eInstanceOf(semanticElement, tableDescription.getDomainClass())) {
                     boolean canCreate = true;
-                    if (tableDescription.getPreconditionExpression() != null && !StringUtil.isEmpty(tableDescription.getPreconditionExpression())) {
+                    if (!StringUtil.isEmpty(tableDescription.getPreconditionExpression())) {
                         try {
                             canCreate = InterpreterUtil.getInterpreter(semanticElement).evaluateBoolean(semanticElement, tableDescription.getPreconditionExpression());
                         } catch (final EvaluationException e) {

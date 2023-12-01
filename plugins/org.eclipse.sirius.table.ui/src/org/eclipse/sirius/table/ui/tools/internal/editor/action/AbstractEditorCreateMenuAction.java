@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -39,7 +39,7 @@ import org.eclipse.swt.widgets.MenuItem;
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
-public abstract class AbstractEditorCreateMenuAction<T extends AbstractToolAction> extends Action implements IMenuCreator {
+public abstract class AbstractEditorCreateMenuAction<T extends AbstractToolAction<?>> extends Action implements IMenuCreator {
 
     /** Menu manager for this action. */
     private final MenuManager menuManager = new MenuManager();
@@ -56,11 +56,14 @@ public abstract class AbstractEditorCreateMenuAction<T extends AbstractToolActio
 
     // menu item selection listener: listens to selection events
     private final Listener menuItemListener = new Listener() {
+        
         @Override
         public void handleEvent(final Event event) {
             if (SWT.Selection == event.type && !event.widget.isDisposed()) {
                 final ActionContributionItem item = (ActionContributionItem) event.widget.getData();
-                setLastAction((T) item.getAction());
+                @SuppressWarnings("unchecked")
+                T last = (T) item.getAction();
+                setLastAction(last);
             }
         }
     };
@@ -184,7 +187,7 @@ public abstract class AbstractEditorCreateMenuAction<T extends AbstractToolActio
      * @param actions
      *            List of <{@link AbstractToolAction}
      */
-    public void update(final List<AbstractToolAction> actions) {
+    public void update(final List<AbstractToolAction<?>> actions) {
         getCreateActionsForTable().clear();
         // Add all create line tool
         for (final T toolAction : filter(actions)) {
@@ -205,7 +208,7 @@ public abstract class AbstractEditorCreateMenuAction<T extends AbstractToolActio
      *            all the candidate actions.
      * @return the sub-set of actions to use.
      */
-    protected abstract List<T> filter(List<AbstractToolAction> createActionsForTable);
+    protected abstract List<T> filter(List<AbstractToolAction<?>> createActionsForTable);
 
     /**
      * The change is applied on the next getMenu.
