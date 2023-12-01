@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,10 +16,8 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.viewers.CellEditor;
-import org.eclipse.jface.viewers.ColumnViewer;
 import org.eclipse.jface.viewers.EditingSupport;
 import org.eclipse.jface.viewers.TextCellEditor;
-import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.ViewerCell;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
@@ -67,7 +65,7 @@ public class DTargetColumnEditingSupport extends EditingSupport {
      * @param tableEditor
      *            The associated editor
      */
-    public DTargetColumnEditingSupport(final ColumnViewer viewer, final DTargetColumn targetColumn, final TransactionalEditingDomain editingDomain, final ModelAccessor accessor,
+    public DTargetColumnEditingSupport(final DTableTreeViewer viewer, final DTargetColumn targetColumn, final TransactionalEditingDomain editingDomain, final ModelAccessor accessor,
             final ITableCommandFactory tableCommandFactory, final AbstractDTableEditor tableEditor) {
         super(viewer);
         this.targetColumn = targetColumn;
@@ -75,6 +73,10 @@ public class DTargetColumnEditingSupport extends EditingSupport {
         this.accessor = accessor;
         this.tableCommandFactory = tableCommandFactory;
         this.tableEditor = tableEditor;
+    }
+    
+    public DTableTreeViewer getViewer() {
+        return (DTableTreeViewer) super.getViewer();
     }
 
     @Override
@@ -84,9 +86,12 @@ public class DTargetColumnEditingSupport extends EditingSupport {
             final DLine line = (DLine) element;
             final Option<DCell> optionalCell = TableHelper.getCell(line, getTargetColumn());
             if (optionalCell.some()) {
-                canEdit = getAuthority().canEditInstance(optionalCell.get().getTarget()) && TableHelper.canEditCrossTableCell(optionalCell.get());
+                canEdit = getAuthority().canEditInstance(optionalCell.get().getTarget()) 
+                        && TableHelper.canEditCrossTableCell(optionalCell.get());
             } else {
-                canEdit = getAuthority().canEditInstance(line) && getAuthority().canEditInstance(getTargetColumn()) && TableHelper.canEditCrossTableCell(line, getTargetColumn());
+                canEdit = getAuthority().canEditInstance(line) 
+                        && getAuthority().canEditInstance(getTargetColumn()) 
+                        && TableHelper.canEditCrossTableCell(line, getTargetColumn());
             }
         }
         return canEdit;
@@ -94,6 +99,13 @@ public class DTargetColumnEditingSupport extends EditingSupport {
 
     @Override
     protected CellEditor getCellEditor(final Object element) {
+        // XXX Improvements: this method should be replaced by:
+        // org.eclipse.sirius.table.ui.tools.internal.editor.provider
+        //  .DFeatureColumnEditingSupport#getCellEditor(Object, DCell, CellUpdater)
+
+        // Using TableHelper.getCell, retrieve the IntersectionMapping
+        // when no intersection, search for a candidate with creationTool.
+        
         if (element instanceof DLine) {
             return getBestCellEditor(((DLine) element).getTarget());
         }
@@ -163,7 +175,7 @@ public class DTargetColumnEditingSupport extends EditingSupport {
      * @return An adapted cell Editor
      */
     private CellEditor getBestCellEditor(final EObject element) {
-        final Tree tree = ((TreeViewer) getViewer()).getTree();
+        final Tree tree = getViewer().getTree();
         final TextCellEditor textEditor = new TextCellEditor(tree) {
             /**
              * {@inheritDoc} We override the doSetFocus for clearing the
@@ -217,8 +229,8 @@ public class DTargetColumnEditingSupport extends EditingSupport {
 
     @Override
     protected void initializeCellEditorValue(final CellEditor cellEditor, final ViewerCell cell) {
-        if (((DTableTreeViewer) getViewer()).getFirstEditionCharacter() != null) {
-            cellEditor.setValue(((DTableTreeViewer) getViewer()).getFirstEditionCharacter().toString());
+        if (getViewer().getFirstEditionCharacter() != null) {
+            cellEditor.setValue(getViewer().getFirstEditionCharacter().toString());
         } else {
             super.initializeCellEditorValue(cellEditor, cell);
         }

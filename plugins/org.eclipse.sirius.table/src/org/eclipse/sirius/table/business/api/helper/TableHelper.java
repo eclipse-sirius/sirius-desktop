@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -301,6 +301,7 @@ public final class TableHelper {
     public static boolean canEditCrossTableCell(final DCell cell) {
         boolean canEdit = false;
         CellUpdater updater = cell.getUpdater();
+        // XXX-Better evaluate canEdit, getCellEditor from the DTargetColumn
         if (updater != null && updater.getDirectEdit() != null) {
             canEdit = true;
         }
@@ -321,6 +322,8 @@ public final class TableHelper {
      * @return true if this cell can be edited, false otherwise.
      */
     public static boolean canEditCrossTableCell(final DLine dLine, final DTargetColumn dTargetColumn) {
+        // To verify: this seem redundant with the only invocation:
+        // org.eclipse.sirius.table.ui.tools.internal.editor.provider.DTargetColumnEditingSupport.canEdit(Object)
         Option<DCell> optionnalCell = TableHelper.getCell(dLine, dTargetColumn);
         boolean canEdit = false;
         if (optionnalCell.some()) {
@@ -360,7 +363,9 @@ public final class TableHelper {
             final ColumnMapping columnMapping = column.getOriginMapping();
             final LineMapping lineMapping = line.getOriginMapping();
             for (IntersectionMapping intersectionMapping : ((CrossTableDescription) table.getDescription()).getIntersection()) {
-                if (intersectionMapping.getCreate() != null && columnMapping.equals(intersectionMapping.getColumnMapping()) && intersectionMapping.getLineMapping() != null
+                if (intersectionMapping.getCreate() != null 
+                        && columnMapping.equals(intersectionMapping.getColumnMapping()) 
+                        && intersectionMapping.getLineMapping() != null
                         && intersectionMapping.getLineMapping().contains(lineMapping)) {
                     return Options.newSome(intersectionMapping.getCreate());
                 }

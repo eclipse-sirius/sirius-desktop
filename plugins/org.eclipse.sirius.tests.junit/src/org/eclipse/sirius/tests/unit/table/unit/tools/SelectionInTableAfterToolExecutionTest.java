@@ -152,7 +152,7 @@ public class SelectionInTableAfterToolExecutionTest extends AbstractToolDescript
     void applyCreateLineTool(String toolName, final LineContainer lineContainer, final EObject semanticCurrentElement) {
         final CreateTool tool = (CreateTool) getTool(toolName);
 
-        Command cmd = ((ITableCommandFactory) getCommandFactory()).buildCreateLineCommandFromTool(lineContainer, semanticCurrentElement, tool);
+        Command cmd = ((ITableCommandFactory) getCommandFactory()).buildCreateLineCommandFromTool(lineContainer, tool);
         session.getTransactionalEditingDomain().getCommandStack().execute(cmd);
     }
 
