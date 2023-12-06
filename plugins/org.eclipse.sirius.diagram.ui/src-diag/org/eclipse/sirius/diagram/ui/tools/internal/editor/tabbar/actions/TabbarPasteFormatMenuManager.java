@@ -67,7 +67,7 @@ public class TabbarPasteFormatMenuManager extends PasteFormatMenuManager {
     @Override
     public void dispose() {
         removeAll();
-        actionHistory.clear();
+        actionHistory = null;
         super.dispose();
     }
 
