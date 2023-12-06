@@ -14,11 +14,11 @@ package org.eclipse.sirius.tests.swtbot.sequence;
 
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.CombinedFragmentEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.StateEditPart;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckNumberOfDescendants;
@@ -298,7 +298,7 @@ public class PunctualStateTests extends AbstractDefaultModelSequenceTests {
             validateOrdering(2);
 
             // Undo Arrange All
-            undo("Arrange All");
+            undo(Messages.ArrangeAction_toolbar_ArrangeAll_ActionLabelText);
 
         } finally {
             // Set zoom to default
@@ -353,7 +353,7 @@ public class PunctualStateTests extends AbstractDefaultModelSequenceTests {
         assertEquals(LayoutConstants.COMBINED_FRAGMENT_TITLE_HEIGHT + LayoutConstants.DEFAULT_OPERAND_HEIGHT, newCFBounds.height);
         assertEquals(LayoutConstants.DEFAULT_COMBINED_FRAGMENT_HEIGHT, newCFBounds.height);
 
-        ICondition cond = new CheckSelectedCondition(editor, (IGraphicalEditPart) stateS1Bot.part());
+        ICondition cond = new CheckSelectedCondition(editor, stateS1Bot.part());
         editor.drag(stateS1ScreenBounds.getCenter(), new Point(0, newCFBounds.y + LayoutConstants.COMBINED_FRAGMENT_TITLE_HEIGHT / 2));
         bot.waitUntil(cond);
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.eclipse.gmf.runtime.common.ui.action.ActionMenuManager;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
@@ -139,7 +140,7 @@ public class ArrangeSelectionOnBreakdownDiagramTest extends AbstractSiriusSwtBot
         // Wait all UI events to ensure that the tabbar is correctly refreshed.
         SWTBotUtils.waitAllUiEvents();
         // VP-1126 : we first check if the Arrange Selection action is enabled
-        final SWTBotToolbarDropDownButton arrangeSelectionDropDownButton = bot.toolbarDropDownButtonWithTooltip("Arrange Selection");
+        final SWTBotToolbarDropDownButton arrangeSelectionDropDownButton = bot.toolbarDropDownButtonWithTooltip(Messages.ArrangeAction_toolbar_ArrangeSelection_ActionToolTipText);
 
         // FIXME : we simply should call
         // arrangeSelectionDropDownButton.isEnable(), but
@@ -147,6 +148,7 @@ public class ArrangeSelectionOnBreakdownDiagramTest extends AbstractSiriusSwtBot
         // We access directly to the widget to fix this issue, but we should use
         // the standard way as soon as SWTBot will allow it
         arrangeSelectionDropDownButton.display.asyncExec(new Runnable() {
+            @Override
             public void run() {
                 ToolItem widget = arrangeSelectionDropDownButton.widget;
                 boolean widgetIsEnabled = !selectionShouldBeArrangeable;
@@ -163,7 +165,7 @@ public class ArrangeSelectionOnBreakdownDiagramTest extends AbstractSiriusSwtBot
         // successful
         if (selectionShouldBeArrangeable) {
             // Arrange Selection
-            bot.toolbarDropDownButtonWithTooltip("Arrange Selection").click();
+            bot.toolbarDropDownButtonWithTooltip(Messages.ArrangeAction_ArrangeSelection_ActionToolTipText).click();
 
             // Assert that nodes to stay fixed have not been moved
             for (int i = 0; i < NODE_TO_STAY_FIXED.length; i++) {

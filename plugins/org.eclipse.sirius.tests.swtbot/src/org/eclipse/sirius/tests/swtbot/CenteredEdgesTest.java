@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -747,7 +747,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
 
         SWTBotGefConnectionEditPart edge3BotGefConnectionEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge3", DEdgeEditPart.class);
         CheckEditPartMoved checkEditPartMoved = new CheckEditPartMoved(edge3BotGefConnectionEditPart);
-        editor.clickContextMenu("Arrange All");
+        arrangeAll();
         SWTBotUtils.waitAllUiEvents();
         bot.waitUntil(checkEditPartMoved);
         edge3BotGefConnectionEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge3", DEdgeEditPart.class);
@@ -821,7 +821,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     public void testArrangeAllOnRectilinearEdges() {
         openDiagram(REPRESENTATION_NAME_AUTO_SIZE);
 
-        editor.clickContextMenu("Arrange All");
+        arrangeAll();
         SWTBotUtils.waitAllUiEvents();
 
         SWTBotGefConnectionEditPart edge3BotGefConnectionEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge3", DEdgeEditPart.class);

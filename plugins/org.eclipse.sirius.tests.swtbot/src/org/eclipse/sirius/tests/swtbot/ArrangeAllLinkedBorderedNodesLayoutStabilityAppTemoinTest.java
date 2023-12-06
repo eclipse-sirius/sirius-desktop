@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -37,7 +37,6 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.view.DesignerViews;
-import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 
 /**
@@ -84,9 +83,8 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityAppTemoinTest extends A
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
         /*
-         * Force the addition of a dependency to the swtbot tests plugins
-         * otherwise the interpreter has no way to retrieve the service class
-         * hence any call to "getUniqueReferencesByName()" will fail.
+         * Force the addition of a dependency to the swtbot tests plugins otherwise the interpreter has no way to
+         * retrieve the service class hence any call to "getUniqueReferencesByName()" will fail.
          */
         localSession.getOpenedSession().getInterpreter().setProperty(IInterpreter.FILES, Collections.singleton("/org.eclipse.sirius.tests.swtbot/" + DATA_UNIT_DIR + VSM_FILE));
 
@@ -109,7 +107,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityAppTemoinTest extends A
      */
     public void testArrangeLinkedBorderNodesCase1() throws Exception {
         // activate the "Arrange Linked Border Nodes" action
-        editor.clickContextMenu("Arrange All");
+        arrangeAll();
 
         validatePositions();
     }
@@ -123,7 +121,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityAppTemoinTest extends A
     public void testArrangeLinkedBorderNodesCase1Zoom200() throws Exception {
         editor.zoom(ZoomLevel.ZOOM_200);
         // activate the "Arrange Linked Border Nodes" action
-        editor.clickContextMenu("Arrange All");
+        arrangeAll();
         validatePositions();
         editor.zoom(ZoomLevel.ZOOM_100);
     }
@@ -137,14 +135,13 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityAppTemoinTest extends A
     public void testArrangeLinkedBorderNodesCase1Zoom50() throws Exception {
         editor.zoom(ZoomLevel.ZOOM_50);
         // activate the "Arrange Linked Border Nodes" action
-        editor.clickContextMenu("Arrange All");
+        arrangeAll();
         validatePositions();
         editor.zoom(ZoomLevel.ZOOM_100);
     }
 
     /**
-     * Test arrange all with all bordered nodes pinned with diagram like in
-     * APP_TEMOIN model.
+     * Test arrange all with all bordered nodes pinned with diagram like in APP_TEMOIN model.
      * 
      * @throws Exception
      *             Test error.
@@ -154,11 +151,11 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityAppTemoinTest extends A
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_ENTITIES2, REPRESENTATION_INSTANCE_NAME_ENTITIES_PINNED, DDiagram.class);
         // validate position before Arrange
         validatePositions(false);
-        editor.clickContextMenu("Arrange All");
+        arrangeAll();
         // validate position after Arrange
         validatePositions(false);
         // activate the "Arrange Linked Border Nodes" action
-        // editor.clickContextMenu("Arrange All");
+        // arrangeAll();
     }
 
     /**
@@ -172,7 +169,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityAppTemoinTest extends A
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_ENTITIES, REPRESENTATION_INSTANCE_NAME_ENTITIES, DDiagram.class);
 
         // activate the "Arrange Linked Border Nodes" action
-        editor.clickContextMenu("Arrange All");
+        arrangeAll();
 
         validatePositions();
     }

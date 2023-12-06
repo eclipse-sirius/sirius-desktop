@@ -155,7 +155,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
         if (snapToGrid) {
             editor.setSnapToGrid(true, GRID_STEP, 2);
         }
-        editor.clickContextMenu("Arrange All");
+        arrangeAll();
     }
 
     @Override

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Size;
@@ -57,6 +58,7 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMe
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.StateEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.EditPartsHelper;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.ext.base.Option;
@@ -268,7 +270,7 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
 
     protected static final String UNDO_LAYOUT_COMMAND = "Undo " + LAYOUT_COMMAND;
 
-    protected static final String ARRANGE_ALL_COMMAND = "Arrange All";
+    protected static final String ARRANGE_ALL_COMMAND = Messages.ArrangeAction_toolbar_ArrangeAll_ActionLabelText;
 
     // protected static final String UNDO_MESSAGE_TO_SELF_SET_BENDPOINTS =
     // "Undo Set edge bendpoints";
@@ -404,7 +406,10 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
         // Select the diagram itself
         editor.select(editor.mainEditPart());
         // Launch the arrange via the menu bar
-        return SWTBotSiriusHelper.menu(editor.bot(), "Diagram").menu("Arrange").menu("All").click();
+        return SWTBotSiriusHelper.menu(bot, DiagramUIMessages.DiagramMainMenu_DiagramMainMenuText) //
+                .menu(Messages.ArrangeMenuManager_Arrange_ActionLabelText) //
+                .menu(Messages.ArrangeAction_ArrangeAll_ActionLabelText) //
+                .click();
     }
 
     protected void resizeLifeline(String lifelineLabel, int resizeValue) {
