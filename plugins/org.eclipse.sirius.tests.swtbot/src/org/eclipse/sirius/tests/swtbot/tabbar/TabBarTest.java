@@ -96,13 +96,15 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String FILE_DIR = "/";
 
-    private static final String[] DIAGRAM_TOOLBARDROPDOWNBUTTONS_TOOLTIPS = { "Arrange All", "Select &All", "Layers", "Filters", Messages.EditModeAction_Label,
+    private static final String[] DIAGRAM_TOOLBARDROPDOWNBUTTONS_TOOLTIPS = { Messages.ArrangeAction_toolbar_ArrangeAll_ActionToolTipText, "Select &All", "Layers", "Filters",
+            Messages.EditModeAction_Label,
             Messages.PasteFormatAction_toolTipText_diagram };
 
     private static final String[] DIAGRAM_TOOLBARBUTTONS_TOOLTIPS = { Messages.SiriusDiagramActionBarContributor_refreshDiagram, Messages.SelectHiddenElementsAction_tooltip,
             Messages.SelectPinnedElementsAction_tooltip, Messages.CopyFormatAction_toolTipText_diagram, "Zoom In (Ctrl+=)", "Zoom Out (Ctrl+-)", Messages.SaveAsImageFileAction_label };
 
-    private static final String[] CONTAINER_TOOLBARDROPDOWNBUTTONS_TOOLTIPS = { "Arrange Selection", "Align Left", DistributeAction.getTooltip(DistributeAction.GAPS_HORIZONTALLY), "Straighten to top",
+    private static final String[] CONTAINER_TOOLBARDROPDOWNBUTTONS_TOOLTIPS = { Messages.ArrangeAction_toolbar_ArrangeSelection_ActionToolTipText, "Align Left",
+            DistributeAction.getTooltip(DistributeAction.GAPS_HORIZONTALLY), "Straighten to top",
             Messages.EditModeAction_Label, Messages.PasteFormatAction_toolTipText_diagramElements, "Font Color", "Fill &Color", "Li&ne Color", "Line Style" };
 
     private static final String[] CONTAINER_TOOLBARBUTTONS_TOOLTIPS = { Messages.PinElementsEclipseAction_text, Messages.UnpinElementsEclipseAction_text,

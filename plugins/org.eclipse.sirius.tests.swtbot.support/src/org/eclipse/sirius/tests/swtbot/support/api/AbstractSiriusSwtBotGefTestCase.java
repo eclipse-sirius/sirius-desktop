@@ -46,6 +46,7 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DescriptionCompartmentEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.editparts.TextEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.gmf.runtime.diagram.ui.preferences.IPreferenceConstants;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.jface.preference.IPreferenceStore;
@@ -65,6 +66,7 @@ import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferences
 import org.eclipse.sirius.diagram.tools.internal.preferences.SiriusDiagramInternalPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.business.internal.dialect.DiagramDialectUIServices;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.preferences.SiriusDiagramUiInternalPreferencesKeys;
@@ -1005,17 +1007,39 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /***
-     * Do a arrange all of the current diagram.
+     * Do a arrange all of the current diagram using the Diagram menu.
      *
      * @return the menu of the ArrangeAll action
      */
     protected SWTBotMenu arrangeAll() {
-        // Give the focus to the editor
-        editor.setFocus();
-        // Select the diagram itself
-        editor.select(editor.mainEditPart());
+        if (editor != null) {
+            // Give the focus to the editor
+            editor.setFocus();
+            // Select the diagram itself
+            editor.select(editor.mainEditPart());
+        }
         // Launch the arrange via the menu bar
-        SWTBotMenu arrangeAllMenutBot = SWTBotSiriusHelper.menu(bot, "Diagram").menu("Arrange").menu("All").click();
+        SWTBotMenu arrangeAllMenutBot = SWTBotSiriusHelper.menu(bot, DiagramUIMessages.DiagramMainMenu_DiagramMainMenuText) //
+                .menu(Messages.ArrangeMenuManager_Arrange_ActionLabelText) //
+                .menu(Messages.ArrangeAction_ArrangeAll_ActionLabelText) //
+                .click();
+        SWTBotUtils.waitAllUiEvents();
+        return arrangeAllMenutBot;
+    }
+
+    /***
+     * Do a arrange all of the current diagram using the contextual menu.
+     *
+     * @return the menu of the ArrangeAll action
+     */
+    protected SWTBotMenu arrangeAllContextMenu() {
+        assertNotNull("Check your test: the field editor can't be null to perform arrangeAllContextMenu", editor);
+        // Launch the arrange via the contextual menu of the editor
+        SWTBotMenu arrangeAllMenutBot = editor.getCanvas() //
+                .contextMenu() //
+                .menu(Messages.ArrangeMenuManager_Arrange_ActionLabelText) //
+                .menu(Messages.ArrangeAction_ArrangeAll_ActionLabelText) //
+                .click();
         SWTBotUtils.waitAllUiEvents();
         return arrangeAllMenutBot;
     }
@@ -1027,7 +1051,10 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         // Give the focus to the editor
         editor.setFocus();
         // Launch the arrange via the menu bar
-        SWTBotSiriusHelper.menu(bot, "Diagram").menu("Arrange").menu("Move Pinned Elements").click();
+        SWTBotSiriusHelper.menu(bot, DiagramUIMessages.DiagramMainMenu_DiagramMainMenuText) //
+                .menu(Messages.ArrangeMenuManager_Arrange_ActionLabelText) //
+                .menu(Messages.MovePinnedElementsAction_text) //
+                .click();
         SWTBotUtils.waitAllUiEvents();
     }
 

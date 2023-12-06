@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -92,10 +92,6 @@ public class ArrangeAllTest extends AbstractSiriusSwtBotGefTestCase {
         }
     }
 
-    private void arrangeAll(final SWTBotSiriusDiagramEditor editor) {
-        editor.clickContextMenu("Arrange All");
-    }
-
     private void assertCenterAboveOf(final String message, final IGraphicalEditPart a, final IGraphicalEditPart b) {
 
         Point aAbsoluteCenter = a.getFigure().getBounds().getCenter().getCopy();
@@ -130,7 +126,7 @@ public class ArrangeAllTest extends AbstractSiriusSwtBotGefTestCase {
             iDiagramContainerEditPart.performRequest(req);
         }
 
-        arrangeAll(editor);
+        arrangeAll();
 
         final List<IDiagramContainerEditPart> afterArrangeAll = Lists
                 .newArrayList(Iterables.filter(getAllContainerEditParts(editor), Predicates
@@ -159,7 +155,7 @@ public class ArrangeAllTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     private Rectangle getDiagramBounds(final SWTBotSiriusDiagramEditor defaultPaddingEditor) {
-        arrangeAll(defaultPaddingEditor);
+        arrangeAll();
 
         return defaultPaddingEditor.getDiagramEditPart().getFigure().getBounds();
     }
@@ -313,7 +309,7 @@ public class ArrangeAllTest extends AbstractSiriusSwtBotGefTestCase {
                 .on(mainEPackage).withDefaultName().ok();
         final SWTBotSiriusDiagramEditor editor = diagramRepresentation.open().getEditor();
 
-        arrangeAll(editor);
+        arrangeAll();
 
         final IGraphicalEditPart LF1 = (IGraphicalEditPart) editor.getEditPart("LF1").part();
         final IGraphicalEditPart LF5 = (IGraphicalEditPart) editor.getEditPart("LF5").part();
@@ -341,7 +337,7 @@ public class ArrangeAllTest extends AbstractSiriusSwtBotGefTestCase {
                 .on(mainEPackage).withDefaultName().ok();
         final SWTBotSiriusDiagramEditor editor = diagramRepresentation.open().getEditor();
 
-        arrangeAll(editor);
+        arrangeAll();
 
         final IGraphicalEditPart LF1 = (IGraphicalEditPart) editor.getEditPart("LF1").part();
         final IGraphicalEditPart LF3 = (IGraphicalEditPart) editor.getEditPart("LF2").part();
@@ -426,7 +422,7 @@ public class ArrangeAllTest extends AbstractSiriusSwtBotGefTestCase {
                 .on(mainEPackage).withDefaultName().ok();
         final SWTBotSiriusDiagramEditor editor = diagramRepresentation.open().getEditor();
 
-        arrangeAll(editor);
+        arrangeAll();
 
         final IGraphicalEditPart LF1 = (IGraphicalEditPart) editor.getEditPart("LF1").part();
         final IGraphicalEditPart LF5 = (IGraphicalEditPart) editor.getEditPart("LF5").part();
@@ -452,7 +448,7 @@ public class ArrangeAllTest extends AbstractSiriusSwtBotGefTestCase {
                         "Top/Bottom Container Ports And Edges")
                 .on(mainEPackage).withDefaultName().ok();
         final SWTBotSiriusDiagramEditor editor = diagramRepresentation.open().getEditor();
-        arrangeAll(editor);
+        arrangeAll();
 
         final IGraphicalEditPart LF1 = (IGraphicalEditPart) editor.getEditPart("LF1").part();
         final IGraphicalEditPart LF2 = (IGraphicalEditPart) editor.getEditPart("LF2").part();
@@ -542,7 +538,7 @@ public class ArrangeAllTest extends AbstractSiriusSwtBotGefTestCase {
                 .on(mainEPackage).withDefaultName().ok();
         final SWTBotSiriusDiagramEditor editor = diagramRepresentation.open().getEditor();
 
-        arrangeAll(editor);
+        arrangeAll();
 
         final IGraphicalEditPart LF1 = (IGraphicalEditPart) editor.getEditPart("LF1").part();
         final IGraphicalEditPart LF5 = (IGraphicalEditPart) editor.getEditPart("LF5").part();
@@ -569,7 +565,7 @@ public class ArrangeAllTest extends AbstractSiriusSwtBotGefTestCase {
                         "Bottom/Top Container Ports And Edges")
                 .on(mainEPackage).withDefaultName().ok();
         final SWTBotSiriusDiagramEditor editor = diagramRepresentation.open().getEditor();
-        arrangeAll(editor);
+        arrangeAll();
 
         final IGraphicalEditPart LF1 = (IGraphicalEditPart) editor.getEditPart("LF1").part();
         final IGraphicalEditPart LF2 = (IGraphicalEditPart) editor.getEditPart("LF2").part();
@@ -602,7 +598,7 @@ public class ArrangeAllTest extends AbstractSiriusSwtBotGefTestCase {
                 .newDiagramRepresentation("new TreeOrdering", "TreeOrdering").on(mainEPackage).withDefaultName().ok();
         final SWTBotSiriusDiagramEditor editor = diagramRepresentation.open().getEditor();
 
-        arrangeAll(editor);
+        arrangeAll();
 
         final IGraphicalEditPart LF1 = (IGraphicalEditPart) editor.getEditPart("LF1").part();
         IGraphicalEditPart LF3 = (IGraphicalEditPart) editor.getEditPart("LF2").part();
@@ -640,7 +636,7 @@ public class ArrangeAllTest extends AbstractSiriusSwtBotGefTestCase {
          * Now LF4 should be at the left of everybody and the order should be
          * kept during the arrange all
          */
-        arrangeAll(editor);
+        arrangeAll();
 
         LF3 = (IGraphicalEditPart) editor.getEditPart("LF2").part();
         LF2 = (IGraphicalEditPart) editor.getEditPart("LF3").part();

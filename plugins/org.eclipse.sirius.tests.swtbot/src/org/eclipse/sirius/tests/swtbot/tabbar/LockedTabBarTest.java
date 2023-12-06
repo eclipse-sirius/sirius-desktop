@@ -84,11 +84,11 @@ public class LockedTabBarTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String SHOW_HIDE = "Show/Hide";
 
-    private static final String ARRANGE_ALL = "Arrange All";
+    private static final String ARRANGE_ALL = Messages.ArrangeAction_toolbar_ArrangeAll_ActionToolTipText;
 
-    private static final String ARRANGE_SELECTION = "Arrange Selection";
+    private static final String ARRANGE_SELECTION = Messages.ArrangeAction_toolbar_ArrangeSelection_ActionToolTipText;
 
-    private static final String ARRANGE_LINKED_BORDER_NODES = "Arrange Linked Border Nodes";
+    private static final String ARRANGE_LINKED_BORDER_NODES = Messages.ArrangeBorderNodesAction_toolTipDiagramText;
 
     private static final String MOVE_PINNED_ELEMENTS = Messages.MovePinnedElementsAction_text;
 

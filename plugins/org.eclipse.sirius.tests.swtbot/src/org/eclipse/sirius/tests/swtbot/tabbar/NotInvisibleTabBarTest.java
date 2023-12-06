@@ -16,6 +16,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
@@ -59,9 +60,11 @@ public class NotInvisibleTabBarTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String CHANGE_TO_RECTILINEAR_STYLE_ROUTING = "Change routing to rectilinear style for connectors";
 
-    private static final String ARRANGE_ALL = "Arrange All";
+    private static final String ARRANGE_ALL = Messages.ArrangeAction_toolbar_ArrangeAll_ActionToolTipText;
 
-    private static final String ARRANGE_SELECTION = "Arrange Selection";
+    private static final String ARRANGE_SELECTION_TOOLTIP = Messages.ArrangeAction_toolbar_ArrangeSelection_ActionToolTipText;
+
+    private static final String ARRANGE_SELECTION = Messages.ArrangeAction_toolbar_ArrangeSelection_ActionLabelText;
 
     private static final String SELECT_ALL = "Select &All";
 
@@ -196,10 +199,10 @@ public class NotInvisibleTabBarTest extends AbstractSiriusSwtBotGefTestCase {
 
         // arrange selection
         selectPackageElement();
-        checkEnabledDropDownButton(ARRANGE_SELECTION, ARRANGE_SELECTION);
+        checkEnabledDropDownButton(ARRANGE_SELECTION_TOOLTIP, ARRANGE_SELECTION);
         looseAndRetrieveTheFocus();
         selectPackageElement();
-        checkEnabledDropDownButton(ARRANGE_SELECTION, ARRANGE_SELECTION);
+        checkEnabledDropDownButton(ARRANGE_SELECTION_TOOLTIP, ARRANGE_SELECTION);
 
         // select all
         selectDiagram();
