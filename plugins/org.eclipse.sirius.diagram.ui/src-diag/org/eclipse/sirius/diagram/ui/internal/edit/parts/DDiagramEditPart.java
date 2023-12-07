@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2020 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,8 @@ import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.color.AbstractColorUpdater;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDDiagramEditPart;
@@ -42,6 +44,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.part.DDiagram
 import org.eclipse.sirius.diagram.ui.tools.internal.part.SiriusDiagramGraphicalViewer;
 import org.eclipse.sirius.diagram.ui.tools.internal.ruler.SiriusSnapToHelperUtil;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
+import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 import org.eclipse.swt.graphics.Color;
@@ -253,7 +256,20 @@ public class DDiagramEditPart extends AbstractDDiagramEditPart {
             ColorDescription colorDesc = dSemanticDiagram.getDescription().getBackgroundColor();
             RGBValues rgb = WHITE;
             if (colorDesc != null) {
-                rgb = new AbstractColorUpdater().getRGBValuesFromColorDescription(dSemanticDiagram.getTarget(), colorDesc);
+                // Save the diagram variable initial value to restore it after configuring the diagram background to
+                // avoid any side effect.
+                final IInterpreter interpreter = InterpreterUtil.getInterpreter(dSemanticDiagram);
+                Object diagramVariableInitialValue = interpreter.getVariable(IInterpreterSiriusVariables.DIAGRAM);
+                try {
+                    interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, dSemanticDiagram);
+                    rgb = new AbstractColorUpdater().getRGBValuesFromColorDescription(dSemanticDiagram.getTarget(), colorDesc);
+                } finally {
+                    if (diagramVariableInitialValue != null) {
+                        interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, diagramVariableInitialValue);
+                    } else {
+                        interpreter.unSetVariable(IInterpreterSiriusVariables.DIAGRAM);
+                    }
+                }
             }
 
             Color previousColor = fig.getBackgroundColor();
