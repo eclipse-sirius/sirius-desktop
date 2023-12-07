@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -39,7 +39,7 @@ public class EntitiesDiagramDirectEditToolOnOperationTests extends SiriusDiagram
     protected void setUp() throws Exception {
         super.setUp();
         genericSetUp(SEMANTIC_MODEL_PATH, MODELER_PATH, REPRESENTATIONS_PATH);
-        diagram = (DDiagram) getRepresentations(EcoreModeler.ENTITIES_DESC_NAME).toArray()[0];
+        diagram = (DDiagram) getRepresentations(EcoreModeler.ENTITIES_DESC_NAME, semanticModel).toArray()[0];
     }
 
     public void testDirectEditOnOperation() {

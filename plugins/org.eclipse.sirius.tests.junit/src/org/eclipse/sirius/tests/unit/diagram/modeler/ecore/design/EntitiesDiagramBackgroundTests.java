@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 Obeo.
+ * Copyright (c) 2018, 2023 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ package org.eclipse.sirius.tests.unit.diagram.modeler.ecore.design;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
@@ -63,11 +64,14 @@ public class EntitiesDiagramBackgroundTests extends SiriusDiagramTestCase implem
     /** Red color */
     private final Color RED_COLOR = new Color(null, 255, 0, 0);
 
+    /** Intense blue color */
+    private final Color INTENSE_BLUE_COLOR = new Color(null, 0, 255, 255);
+
     @Override
     protected void setUp() throws Exception {
         super.setUp();
         genericSetUp(SEMANTIC_MODEL_PATH, MODELER_PATH, REPRESENTATIONS_PATH);
-        diagram = (DDiagram) getRepresentations(ENTITIES_DESC_NAME).toArray()[0];
+        diagram = (DDiagram) getRepresentations(ENTITIES_DESC_NAME, semanticModel).toArray()[0];
         diagramEditor = DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
         TestsUtil.synchronizationWithUIThread();
         dDiagramEditPart = getDiagramEditPart();
@@ -125,6 +129,56 @@ public class EntitiesDiagramBackgroundTests extends SiriusDiagramTestCase implem
         dDiagramEditPart.refresh();
 
         checkBackgroundColor(GREEN_COLOR);
+    }
+
+    /**
+     * Tests that when the background color of the diagram description change with a computedColor using diagram color,
+     * the background color of the diagram is also changed. The background color changes according to the number of
+     * classes contained in the package (from white, 0 class, to intense blue, 16 classes or more).
+     */
+    public void testDiagramBackgroundColorWithComputedColorUsingDiagramVariable() {
+        // update background color
+        ComputedColor computedColor = createComputedColorUsingDiagramVariable();
+        setDescriptionBackground(computedColor);
+        DialectUIManager.INSTANCE.closeEditor(diagramEditor, false);
+        TestsUtil.synchronizationWithUIThread();
+        EPackage semanticRoot = ((EPackage) semanticModel).getESubpackages().get(0);
+        diagram = (DDiagram) getRepresentations(ENTITIES_DESC_NAME, semanticRoot).toArray()[0];
+        diagramEditor = DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
+        TestsUtil.synchronizationWithUIThread();
+        dDiagramEditPart = getDiagramEditPart();
+        // White color is expected as the package contains no class, so the computed color should be {255, 255, 255}.
+        checkBackgroundColor(WHITE_COLOR);
+
+        // Add 1 class in package
+        addClassesInPackage(semanticRoot, 1); // $NON-NLS-1$
+        refresh(diagram, true);
+        dDiagramEditPart.refresh();
+        // As soon as the package contains at least one class, the color should be different than White.
+        checkBackgroundNotColor(WHITE_COLOR);
+
+        // Add 15 classes in package
+        addClassesInPackage(semanticRoot, 15); // $NON-NLS-1$
+        refresh(diagram, true);
+        dDiagramEditPart.refresh();
+        // From 16 to more classes, the color is INTENSE_BLUE_COLOR
+        checkBackgroundColor(INTENSE_BLUE_COLOR);
+    }
+
+
+    /**
+     * Create {@link ComputedColor} with color depending on the number of classes contained in the package (from white,
+     * 0 class, to intense blue, 16 classes or more).
+     * 
+     * @return the new computed color.
+     */
+    private ComputedColor createComputedColorUsingDiagramVariable() {
+        ComputedColor color = DescriptionFactory.eINSTANCE.createComputedColor();
+        color.setName("myComputedColor"); //$NON-NLS-1$
+        color.setRed("aql:255-diagram.ownedDiagramElements->size()*16"); //$NON-NLS-1$
+        color.setGreen("aql:255"); //$NON-NLS-1$
+        color.setBlue("aql:255f"); //$NON-NLS-1$
+        return color;
     }
 
     /**
@@ -210,6 +264,19 @@ public class EntitiesDiagramBackgroundTests extends SiriusDiagramTestCase implem
         executeCommand(cmd);
     }
 
+    private void addClassesInPackage(EPackage myPackage, int nbClassesToAdd) {
+        Command cmd = new RecordingCommand(session.getTransactionalEditingDomain()) {
+
+            @Override
+            protected void doExecute() {
+                for (int i = 0; i < nbClassesToAdd; i++) {
+                    myPackage.getEClassifiers().add(EcoreFactory.eINSTANCE.createEClass());
+                }
+            }
+        };
+        executeCommand(cmd);
+    }
+
     /**
      * Check if the diagram color has been updated.
      * 
@@ -219,6 +286,19 @@ public class EntitiesDiagramBackgroundTests extends SiriusDiagramTestCase implem
     private void checkBackgroundColor(Color updateColor) {
         Color backgroundColorEditPart = dDiagramEditPart.getFigure().getBackgroundColor();
         assertEquals("The diagram background color has not been updated.", updateColor, backgroundColorEditPart); //$NON-NLS-1$
+    }
+
+    /**
+     * Check if the diagram color has been updated.
+     * 
+     * @param updateColor
+     *            the color that must not be the diagram background
+     */
+    private void checkBackgroundNotColor(Color updateColor) {
+        Color backgroundColorEditPart = dDiagramEditPart.getFigure().getBackgroundColor();
+        if (updateColor.equals(backgroundColorEditPart)) {
+            fail("The diagram background color has not been updated, expected something different than " + updateColor); //$NON-NLS-1$
+        }
     }
 
     @Override
