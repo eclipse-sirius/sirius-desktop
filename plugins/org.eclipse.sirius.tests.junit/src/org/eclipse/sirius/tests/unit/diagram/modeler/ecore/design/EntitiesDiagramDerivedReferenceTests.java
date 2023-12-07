@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -51,7 +51,7 @@ public class EntitiesDiagramDerivedReferenceTests extends SiriusDiagramTestCase 
 
         genericSetUp(SEMANTIC_MODEL_PATH, MODELER_PATH, REPRESENTATIONS_PATH);
 
-        diagram = (DDiagram) getRepresentations(ENTITIES_DESC_NAME).toArray()[0];
+        diagram = (DDiagram) getRepresentations(ENTITIES_DESC_NAME, semanticModel).toArray()[0];
         colorManager = new VisualBindingManager();
         colorManager.init(10, 10);
         colorFactory = new ColorFactory(colorManager);
