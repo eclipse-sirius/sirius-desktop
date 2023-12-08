@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -968,7 +968,7 @@ public final class StyleHelper {
                     node.setWidth(size);
                 }
             } else {
-                safeSetComputedSize(node, size);
+                setComputedSize(node, description);
             }
         }
     }
@@ -1113,15 +1113,15 @@ public final class StyleHelper {
         }
         if (style.eContainer() instanceof DNode) {
             final DNode node = (DNode) style.eContainer();
-            if (style.getWidth() != 0 && style.getHeight() != 0) {
-                if (node.getWidth() == null || node.getWidth().intValue() != style.getWidth().intValue()) {
-                    node.setWidth(style.getWidth());
-                }
-                if (node.getHeight() == null || node.getHeight().intValue() != style.getHeight().intValue()) {
-                    node.setHeight(style.getHeight());
-                }
-            } else {
-                setComputedSize(node, description);
+            if (style.getWidth() != 0 && (node.getWidth() == null || node.getWidth().intValue() != style.getWidth().intValue())) {
+                node.setWidth(style.getWidth());
+            } else if (style.getWidth() == 0) {
+                setComputedWidth(node, description);
+            }
+            if (style.getHeight() != 0 && (node.getHeight() == null || node.getHeight().intValue() != style.getHeight().intValue())) {
+                node.setHeight(style.getHeight());
+            } else if (style.getHeight() == 0) {
+                setComputedHeight(node, description);
             }
         }
     }
@@ -1551,19 +1551,36 @@ public final class StyleHelper {
      *            Node style. May be <code>null</code>
      */
     public void setComputedSize(DNode node, NodeStyleDescription style) {
+        setComputedHeight(node, style);
+        setComputedWidth(node, style);
+    }
+
+    private void setComputedHeight(DNode node, NodeStyleDescription style) {
         if (style != null && !StringUtil.isEmpty(style.getSizeComputationExpression())) {
             Integer computedSize = computeStyleSize(node.getTarget(), style);
-            safeSetComputedSize(node, computedSize);
+            safeSetComputedHeight(node, computedSize);
         }
     }
 
-    private void safeSetComputedSize(DNode node, Integer computedSize) {
+    private void setComputedWidth(DNode node, NodeStyleDescription style) {
+        if (style != null && !StringUtil.isEmpty(style.getSizeComputationExpression())) {
+            Integer computedSize = computeStyleSize(node.getTarget(), style);
+            safeSetComputedWidth(node, computedSize);
+        }
+    }
+
+    private void safeSetComputedHeight(DNode node, Integer computedSize) {
+        if (computedSize.intValue() >= 0) {
+            if (!computedSize.equals(node.getHeight())) {
+                node.setHeight(computedSize);
+            }
+        }
+    }
+
+    private void safeSetComputedWidth(DNode node, Integer computedSize) {
         if (computedSize.intValue() >= 0) {
             if (!computedSize.equals(node.getWidth())) {
                 node.setWidth(computedSize);
-            }
-            if (!computedSize.equals(node.getHeight())) {
-                node.setHeight(computedSize);
             }
         }
     }

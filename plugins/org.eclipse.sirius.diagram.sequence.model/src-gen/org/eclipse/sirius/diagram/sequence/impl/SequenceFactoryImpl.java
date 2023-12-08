@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.SequenceFactory;
 import org.eclipse.sirius.diagram.sequence.SequencePackage;
-import org.eclipse.sirius.diagram.sequence.model.business.internal.SequenceDDiagramSpec;
+import org.eclipse.sirius.diagram.sequence.model.business.internal.spec.SequenceDDiagramSpec;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEndsOrdering;
 import org.eclipse.sirius.diagram.sequence.ordering.InstanceRolesOrdering;
 import org.eclipse.sirius.diagram.sequence.ordering.OrderingFactory;

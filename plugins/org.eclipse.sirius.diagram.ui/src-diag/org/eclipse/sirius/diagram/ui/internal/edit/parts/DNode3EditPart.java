@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -34,6 +34,7 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
+import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
@@ -204,9 +205,11 @@ public class DNode3EditPart extends AbstractDiagramNodeEditPart {
      */
     @Override
     protected NodeFigure createNodeFigure() {
-        DBorderedNodeFigure nodeFigure = new SiriusDBorderedNodeFigure(createMainFigure(), this);
+        NodeFigure mainFigure = createMainFigure();
+        DBorderedNodeFigure nodeFigure = new SiriusDBorderedNodeFigure(mainFigure, this);
         nodeFigure.getBorderItemContainer().add(new FoldingToggleImageFigure(this));
         nodeFigure.getBorderItemContainer().setClippingStrategy(new FoldingToggleAwareClippingStrategy());
+        mainFigure.setLayoutManager(new AutoSizeNodeLayout(new FlowLayout(), (Node) getModel(), (DNode) resolveSemanticElement(), nodeFigure, getPrimaryShape().getNodeLabel()));
         return nodeFigure;
     }
 
@@ -285,7 +288,6 @@ public class DNode3EditPart extends AbstractDiagramNodeEditPart {
     protected NodeFigure createMainFigure() {
         final NodeFigure figure = createNodePlate();
         if (figure != null) {
-            figure.setLayoutManager(new FlowLayout());
             final IFigure shape = createNodeShape();
             figure.add(shape);
             contentPane = setupContentPane(shape);

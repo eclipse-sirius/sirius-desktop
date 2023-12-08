@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import java.util.Optional;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.notify.Notification;
@@ -47,6 +48,7 @@ import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest.ViewDescriptor;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
+import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -71,6 +73,7 @@ import org.eclipse.sirius.diagram.ui.edit.internal.part.PortLayoutHelper;
 import org.eclipse.sirius.diagram.ui.edit.internal.validators.ResizeValidator;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusDecoratorEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SpecificBorderItemSelectionEditPolicy;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AutoSizeNodeLayout;
 import org.eclipse.sirius.diagram.ui.internal.view.factories.ViewLocationHint;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleAwareClippingStrategy;
@@ -78,6 +81,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.diagram.ui.tools.api.permission.EditPartAuthorityListener;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.SiriusDBorderedNodeFigure;
+import org.eclipse.sirius.diagram.ui.tools.internal.figure.ViewNodeFigure;
 import org.eclipse.sirius.diagram.ui.tools.internal.ruler.SiriusSnapToHelperUtil;
 import org.eclipse.sirius.diagram.ui.tools.internal.ui.SiriusDragEditPartsTrackerEx;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
@@ -115,12 +119,21 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
 
     @Override
     protected NodeFigure createNodeFigure() {
-        DBorderedNodeFigure nodeFigure = new SiriusDBorderedNodeFigure(createMainFigure(), this);
+        NodeFigure mainFigure = createMainFigure();
+        DBorderedNodeFigure nodeFigure = new SiriusDBorderedNodeFigure(mainFigure, this);
         DiagramBorderNodeEditPartOperation.updateAuthorizedSide(nodeFigure, this);
         nodeFigure.getBorderItemContainer().add(new FoldingToggleImageFigure(this));
         nodeFigure.getBorderItemContainer().setClippingStrategy(new FoldingToggleAwareClippingStrategy());
+        mainFigure.setLayoutManager(new AutoSizeNodeLayout(new StackLayout(), (Node) getModel(), (DNode) resolveSemanticElement(), nodeFigure, getPrimaryShape().getNodeLabel()));
         return nodeFigure;
     }
+
+    /**
+     * Returns the primary shape.
+     * 
+     * @return the primary shape.
+     */
+    public abstract ViewNodeFigure getPrimaryShape();
 
     @Override
     protected void registerModel() {
