@@ -116,7 +116,7 @@ public class DiagramGeneralPreferencePage extends DiagramsPreferencePage {
         DiagramsPreferencePage.initDefaults(preferenceStore);
 
         preferenceStore.setDefault(SiriusDiagramUiInternalPreferencesKeys.PREF_AUTOSIZE_ON_ARRANGE.name(), true);
-        preferenceStore.setDefault(SiriusDiagramUiInternalPreferencesKeys.PREF_AUTO_PIN_ON_MOVE.name(), true);
+        preferenceStore.setDefault(SiriusDiagramUiInternalPreferencesKeys.PREF_AUTO_PIN_ON_MOVE.name(), false);
         preferenceStore.setDefault(SiriusDiagramUiInternalPreferencesKeys.PREF_REMOVE_HIDE_NOTE_WHEN_ANNOTED_ELEMENT_HIDDEN_OR_REMOVE.name(), true);
         preferenceStore.setDefault(SiriusDiagramUiPreferencesKeys.PREF_SHOW_SYNCHRONIZE_STATUS_DECORATOR.name(), false);
         preferenceStore.setDefault(SiriusDiagramUiPreferencesKeys.PREF_SCALE_DIAGRAMS_ON_EXPORT.name(), true);
