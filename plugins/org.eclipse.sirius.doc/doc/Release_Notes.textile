@@ -8,10 +8,18 @@ h2(#sirius7.4.0). Changes in Sirius  Desktop 7.4.0
 
 h3. User-Visible Changes
 
+* <span class="label label-success">Added</span> A checkbox to ignore the pinning of elements on the diagram for the layout actions.
+* <span class="label label-success">Added</span> A new layout action to layout the direct children of the selection on a diagram.
+* <span class="label label-info">Modified</span> The layout of border nodes is now available for the selection (in addition to the whole diagram).
+* <span class="label label-info">Modified</span> Arrange actions have been renamed from "Arrange <...>" to "Layout <...>".
+* <span class="label label-info">Modified</span> The pin and unpin actions are now combined into a single checkbox action.
+* <span class="label label-info">Modified</span> The preference for marking moved items as pinned is now disabled by default. You can re-enable it via Window > Preferences > Sirius > Sirius Diagram
 
 h3. Specifier-Visible Changes
 
 h3. Developer-Visible Changes
+
+* <span class="label label-info">Modified</span> ArrangeBorderNodesAction.initAction now has two parameters for its text: when there is no selection, when there is a selection.
 
 h2(#sirius7.3.0). Changes in Sirius 7.3.0
 

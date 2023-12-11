@@ -57,7 +57,7 @@
 										<a href="#distribute">Distribute elements</a>
 									</li>
 									<li>
-										<a href="#new_elements_arrangement">Newly created elements arrangement.</a>
+										<a href="#new_elements_layout">Newly created elements layout.</a>
 									</li>
 									<li>
 										<a href="#reset_origin">Reset Diagram or Container Origin</a>
@@ -174,7 +174,7 @@
 										<a href="#Standardmode">Standard mode</a>
 									</li>
 									<li>
-										<a href="#Layoutingmodearrangeyourdiagramswithoutmodifyingsemanticmodels">Layouting mode: arrange your diagrams without modifying semantic models</a>
+										<a href="#Layoutingmodelayoutyourdiagramswithoutmodifyingsemanticmodels">Layouting mode: layout your diagrams without modifying semantic models</a>
 									</li>
 									<li>
 										<a href="#Visibilitymodechangediagramelementvisibilitywithoutmodifyingsemanticmodels">Visibility mode: change diagram element visibility without modifying semantic models</a>
@@ -526,28 +526,28 @@
 			<li>the first element is the highest one (with its center at the minimum y coordinate). If several elements are aligned on middle, the leftmost one is the first.</li>
 			<li>the last element is the lowest one (with the bottom side with the maximum y coordinate). If several elements are aligned by middle, the rightmost one is the last.</li>
 		</ul>
-		<h4 id="new_elements_arrangement">Newly created elements arrangement.</h4>
+		<h4 id="new_elements_layout">Newly created elements layout.</h4>
 		<p>When elements in a diagram are not directly positioned by the user. By default, they are sequentially positioned in the center of the editor, diagonally. They can also be positioned vertically or horizontally by changing the preference in Sirius &gt; Sirius Diagram &gt; Newly created elements layout.
 			<br/>
-			<img border="0" src="images/new_elements_arrangement_preferences.png"/>
+			<img border="0" src="images/new_elements_layout_preferences.png"/>
 		</p>
 		<ul>
-			<li>Diagonal arrangement:</li>
+			<li>Diagonal layout:</li>
 		</ul>
 		<p>
-			<img border="0" src="images/new_elements_arrangement_diagonal.png"/>
+			<img border="0" src="images/new_elements_layout_diagonal.png"/>
 		</p>
 		<ul>
-			<li>Vertical arrangement:</li>
+			<li>Vertical layout:</li>
 		</ul>
 		<p>
-			<img border="0" src="images/new_elements_arrangement_vertical.png"/>
+			<img border="0" src="images/new_elements_layout_vertical.png"/>
 		</p>
 		<ul>
-			<li>Horizontal arrangement:</li>
+			<li>Horizontal layout:</li>
 		</ul>
 		<p>
-			<img border="0" src="images/new_elements_arrangement_horizontal.png"/>
+			<img border="0" src="images/new_elements_layout_horizontal.png"/>
 		</p>
 		<h4 id="reset_origin">Reset Diagram or Container Origin</h4>
 		<p>This action is available within the diagram or containers contextual menu (&#8220;Reset Origin&#8221;) or via &#8220;M1&#8221; + &#8220;HOME&#8221; shortcut.
@@ -1282,10 +1282,10 @@
 		<h3 id="diagram_element_pinning">Diagram element pinning</h3>
 		<h4 id="Introduction">Introduction</h4>
 		<p>It is possible to mark specific elements in a diagram as having a fixed location so that they are not moved by the 
-			<i>Arrange All</i> action.
+			<i>Layout All</i> action.
 		</p>
-		<p>Diagram element pinning allows you to combine both methods: manually arranging the position and size of elements when it is important while still being able to call 
-			<i>Arrange All</i> for the rest, without the risk of destroying your manual layouts.
+		<p>Diagram element pinning allows you to combine both methods: manually layouting the position and size of elements when it is important while still being able to call 
+			<i>Layout All</i> for the rest, without the risk of destroying your manual layouts.
 		</p>
 		<h4 id="Pinunpinactions">Pin/unpin actions</h4>
 		<p>The next picture shows a diagram with three persons.</p>
@@ -1293,7 +1293,7 @@
 			<img border="0" src="images/diagram_editor_pin01.png"/>
 		</p>
 		<p>
-			<i>Arrange All</i> action lays out all diagram elements in order to produce the &#8220;best&#8221; layout. As we can see on the next picture, all diagram elements are moved.
+			<i>Layout All</i> action lays out all diagram elements in order to produce the &#8220;best&#8221; layout. As we can see on the next picture, all diagram elements are moved.
 		</p>
 		<p>	
 			<img border="0" src="images/diagram_editor_pin02.png"/>
@@ -1308,7 +1308,7 @@
 		<p>Now 
 			<i>John Doe</i> and 
 			<i>Jane Smith</i> are pinned, a new 
-			<i>Arrange All</i> action will preserve their locations.
+			<i>Layout All</i> action will preserve their locations.
 		</p>
 		<p>	
 			<img border="0" src="images/diagram_editor_pin04.png"/>
@@ -1327,8 +1327,8 @@
 			<li>it is not possible to pin/unpin edges or compartments.</li>
 		</ul>
 		<h4 id="Configuration">Configuration</h4>
-		<p>Every diagram elements that you move will be pinned by default and will need an unpin operation to be &#8220;moveable&#8221; again.</p>
-		<p>This default behavior can be changed in Eclipse preferences, as can be seen in the next picture.</p>
+		<p>You have a configuration to ensure that any diagram element you move is automatically pinned and will require an unpinning operation to be movable again by a layout.</p>
+		<p>This behavior can be enabled or disabled in Eclipse preferences, as shown in the following image:</p>
 		<p>	
 			<img border="0" src="images/diagram_editor_pin_configuration01.png"/>
 		</p>
@@ -1370,8 +1370,8 @@
 		<p>
 			<img border="0" src="images/standardModeActivation.png"/>
 		</p>
-		<h4 id="Layoutingmodearrangeyourdiagramswithoutmodifyingsemanticmodels">Layouting mode: arrange your diagrams without modifying semantic models</h4>
-		<p>When you only want to do layout operations (e.g. arrange a diagram by moving nodes or edges), you may modify the semantic models without paying attention. For example, when organizing bordered nodes, you may change the container of the semantic element, without wanting do so.</p>
+		<h4 id="Layoutingmodelayoutyourdiagramswithoutmodifyingsemanticmodels">Layouting mode: layout your diagrams without modifying semantic models</h4>
+		<p>When you only want to do layout operations (e.g. layout a diagram by moving nodes or edges), you may modify the semantic models without paying attention. For example, when organizing bordered nodes, you may change the container of the semantic element, without wanting do so.</p>
 		<p>When this mode is enabled, the following operations are changed:</p>
 		<ul>
 			<li>direct edit is disabled on all elements;</li>
@@ -1399,7 +1399,7 @@
 		<p>In this example, as 
 			<em>Layouting mode</em> is activated, reconnecting the Edge from 
 			<em>Abstrat Customer</em> to 
-			<em>Company</em> is forbidden. You can arrange this edge (change start location, add bending points...) without risking to modify the underlying semantic model.
+			<em>Company</em> is forbidden. You can layout this edge (change start location, add bending points...) without risking to modify the underlying semantic model.
 		</p>
 		<p>When a diagram is closed, the 
 			<em>Layouting mode</em> is automatically disabled.
@@ -1712,7 +1712,7 @@
 		<p id="pinning">
 			<i>Pin/Unpin</i>. The final standard tools which are available in the top row of all the palette allow to mark or unmark diagram elements as 
 			<em>pinned</em>. Pinning an element on the diagram means that when an automatic layout of the diagram is requested (see the 
-			<i>Arrange All</i> action), the element will not be moved or resized: it will stay at the exact same position as you placed it. Pinned element can still be moved manually. To pin or unpin an element, simply select the appropriate tool (using the arrow right next to the icon to make the menu appear), and when the tool is active, click on the element to mark as pinned or un-pinned.
+			<i>Layout All</i> action), the element will not be moved or resized: it will stay at the exact same position as you placed it. Pinned element can still be moved manually. To pin or unpin an element, simply select the appropriate tool (using the arrow right next to the icon to make the menu appear), and when the tool is active, click on the element to mark as pinned or un-pinned.
 		</p>
 		<h4 id="PaletteContents">Palette Contents</h4>
 		<p>Below the palette&#8217;s header, which contains the general tools described above, you will find all the custom tools which have been configured for your modeler. Note that depending on which 
@@ -1770,16 +1770,24 @@
 		<p>When the diagram itself (and not a specific element) is selected, the tab-bar contains the following buttons:</p>
 		<p>
 			<img border="0" src="images/tabbar_automatic_layout_tools.png"/> 
-			<em>Automatic Layout Tools</em>. The first group of tools are used to trigger an automatic layout of the elements on the diagram. Automatic layout uses a generic algorithm which tries to arrange the position and sizes of the elements on the diagram in a nice, readable way. In particular it makes sure, unless specific constraints prevent it, that no elements overlap each other, and that elements which contain others (i.e. containers) are large enough to show all their contents. It also tries to minimize the crossing of edges. The two ways to invoke the automatic layout algorithms are available as a drop-down menu on the left-most icon in the tab-bar.
+			<em>Automatic Layout Tools</em>. The first group of tools are used to trigger an automatic layout of the elements on the diagram. Automatic layout uses a generic algorithm which tries to layout the position and sizes of the elements on the diagram in a nice, readable way. In particular it makes sure, unless specific constraints prevent it, that no elements overlap each other, and that elements which contain others (i.e. containers) are large enough to show all their contents. It also tries to minimize the crossing of edges. The two ways to invoke the automatic layout algorithms are available as a drop-down menu on the left-most icon in the tab-bar.
 		</p>
 		<ul>
 			<li>
-				<em>Arrange All</em>. This is the action available by default. It launches the layout algorithm on all the elements in the diagram. Note that elements which have been 
+				<em>Layout All</em>. This is the action available by default. It launches the layout algorithm on all the elements in the diagram. Note that elements which have been 
 				<em>pinned</em> to their position will 
 				<strong>not</strong> be moved by the algorithm.
 			</li>
 			<li>
-				<em>Arrange Linked Border Nodes</em> This special action will only concerns nodes which are on the border of another element and which are either the source or the target of at least one edge. When invoked, the action will try to move these bordered nodes on the border of their parent on the most &#8220;natural&#8221; side of their parent element depending on the direction of the edge. For example if a border node is on the top side of an element but has an edge which goes down to a target element below its parent, this action will move the border node to the bottom side so that the edge does not cross the parent element.
+				<em>Layout Children</em> This action layouts all diagram elements but not their children, i.e. only those elements that are directly in the diagram and not in a container. Note that elements which have been 
+				<em>pinned</em> to their position will 
+				<strong>not</strong> be moved by the algorithm.
+			</li>
+			<li>
+				<em>Layout All Linked Border Nodes</em> This special action will only concerns nodes which are on the border of another element and which are either the source or the target of at least one edge. When invoked, the action will try to move these bordered nodes on the border of their parent on the most &#8220;natural&#8221; side of their parent element depending on the direction of the edge. For example if a border node is on the top side of an element but has an edge which goes down to a target element below its parent, this action will move the border node to the bottom side so that the edge does not cross the parent element.
+			</li>
+			<li>
+				<em>Move Pinned Elements</em> When this option is activated, all elements are temporarily considered as unpinned by the layout algorithms. They will therefore move elements even if they are marked as pinned when this option is activated.
 			</li>
 		</ul>
 		<p>
@@ -1842,7 +1850,7 @@
 		<p>
 			<img border="0" src="images/tabbar_pin_unpin.png"/> 
 			<em>Pin/Unpin</em>. You can chose to pin (or unpin) elements on the diagram. Pinned elements are kept in their position by the automatic layout algorithms (see 
-			<em>Arrange All</em>), while unpinned elements can be moved and resized. You can pin/unpin elements from their context menu (using the 
+			<em>Layout All</em>), while unpinned elements can be moved and resized. You can pin/unpin elements from their context menu (using the 
 			<em>Layout</em> sub-menu) or more globally by using the 
 			<em>Pin/Unpin</em> button in the tab-bar. This button opens a dialog box which presents all the elements on the diagram, organised in a hierarchical way which corresponds to their graphical organization. Note that because a single semantic element may have multiple representations on the diagram, they may appear multiple times in the dialog box. Making one representation pinned will not pin the other graphical representations of the same element. You can chose which elements should be pinned (resp. unpinned) on the diagram by checking (resp. unchecking) them in the dialog. The top area of the dialog box contains various buttons to help you find the elements you want, by show only the checked (i.e. visible) or unchecked (i.e. hidden) elements, by expanding or collapsing the tree viewer, or by checking or un-checking all elements at once. You can also search for elements by their name using the search box. Note that pinning has currently no effect on edges.
 		</p>
@@ -1867,7 +1875,7 @@
 			<em>Export As Image</em>. This button can be used to export the current diagram as an image file stored on disk. When you select it, a dialog box appears 
 			<img border="0" src="images/diagram_export_one_image.png"/> 
 			<br/>in which you can chose the file&#8217;s destination and format. Note that not all formats are currently equally supported; they may not all produce the same result. For diagrams which are tool large to export as a single image, the 
-			<em>Export to HTML</em> check-box can be used: when it is checked, instead of exporting a single image Sirius will split it in a matrix of smaller images, and produce an HTML file while loads them all arranged in a table to reproduce the original image.
+			<em>Export to HTML</em> check-box can be used: when it is checked, instead of exporting a single image Sirius will split it in a matrix of smaller images, and produce an HTML file while loads them all layouted in a table to reproduce the original image.
 		</p>
 		<p>
 			<img border="0" src="images/tabbar_layouting_mode.png"/> 
@@ -1896,9 +1904,24 @@
 			<img border="0" src="images/tabbar02.png"/>
 		</p>
 		<p>
-			<img border="0" src="images/tabbar_arrange_selection.png"/> 
-			<em>Arrange Selection</em>. This action launches the layout algorithm only for the diagram elements which are selected (and not pinned). All the other elements on the diagram, whether pinned or not, will not be moved. Note that edges may be re-arranged if one of their ends is part of the selection.
+			<img border="0" src="images/tabbar_layout_selection.png"/>
 		</p>
+		<ul>
+			<li>
+				<em>Layout Selection</em>. This action launches the layout algorithm only for the diagram elements which are selected (and not pinned). All the other elements on the diagram, whether pinned or not, will not be moved. Note that edges may be re-layouted if one of their ends is part of the selection.
+			</li>
+			<li>
+				<em>Layout Children</em> This action layouts all child elements of the selected container, but not the grandchildren, i.e. only those elements which are directly inside the selected container and not in a sub-container of the selected container. Note that elements which have been 
+				<em>pinned</em> to their position will 
+				<strong>not</strong> be moved by the algorithm.
+			</li>
+			<li>
+				<em>Layout All Linked Border Nodes</em> This special action will only concerns nodes which are on the border of the selected element and which are either the source or the target of at least one edge. When invoked, the action will try to move these bordered nodes on the border of the selected element on the most &#8220;natural&#8221; side of the selected element depending on the direction of the edge. For example if a border node is on the top side of an element but has an edge which goes down to a target element below the selected element, this action will move the border node to the bottom side so that the edge does not cross the selected element.
+			</li>
+			<li>
+				<em>Move Pinned Elements</em> When this option is activated, all elements are temporarily considered as unpinned by the layout algorithms. They will therefore move elements even if they are marked as pinned when this option is activated.
+			</li>
+		</ul>
 		<p>
 			<img border="0" src="images/tabbar_alignment_control.png"/> 
 			<em>Alignment Control</em>. This menu contains several operations which can be used to align several graphical elements in various ways. The actions in this menu are only enabled when several elements are selected.
@@ -1909,7 +1932,7 @@
 		</p>
 		<p>
 			<img border="0" src="images/tabbar_pin_unpin_02.png"/> 
-			<em>Pin/Unpin</em>. These two buttons can be used to mark all the selected elements as pinned or not.
+			<em>Pinned</em>. This checkbox can be used to mark the selected elements as pinned or not.
 		</p>
 		<p>
 			<img border="0" src="images/tabbar_copy_layout.png"/> 
@@ -2053,7 +2076,7 @@
 		<ul>
 			<li>
 				<em>Enable animated layout:</em> If checked, then when you launch an automatic layout (
-				<em>Arrange all</em>), the shapes will move smoothly to their final location. This makes the arrangement operation take a little longer, but it is easier to follow where your elements have been moved.
+				<em>Layout all</em>), the shapes will move smoothly to their final location. This makes the layout operation take a little longer, but it is easier to follow where your elements have been moved.
 			</li>
 			<li>
 				<em>Enable animated zoom:</em> If checked, when you change the zoom value, Sirius will show intermediate steps to smooth the change.
@@ -2069,13 +2092,13 @@
 		</ul>
 		<ul>
 			<li>
-				<em>Auto-size containers during arrange-all action:</em> Container elements which have an explicit size are normally not resized during an 
-				<em>Arrange All</em>. This can be problematic if the elements they contain are re-arranged so that the container&#8217;s size is not appropriate anymore. When this preference is enabled, the arrange all action will treat all containers as if they are &#8220;auto-sized&#8221;, and adjust their size to the computed arrangement for their content. After the arrange all action is finished, the containers which had an explicit size before will still have an explicit size (although potentially different); they are only switched to auto-size mode during the arrange all action. 
+				<em>Auto-size containers during layout-all action:</em> Container elements which have an explicit size are normally not resized during an 
+				<em>Layout All</em>. This can be problematic if the elements they contain are re-layouted so that the container&#8217;s size is not appropriate anymore. When this preference is enabled, the layout all action will treat all containers as if they are &#8220;auto-sized&#8221;, and adjust their size to the computed layout for their content. After the layout all action is finished, the containers which had an explicit size before will still have an explicit size (although potentially different); they are only switched to auto-size mode during the layout all action.
 			</li>
 			<li>
 				<em>Move unlinked notes during layout:</em> If checked, then the 
-				<em>Arrange all</em> will consider all 
-				<a href="#notes">notes</a> on the diagram and arrange them. If unchecked, only the notes which are attached to non-note diagram elements are moved by the layout; the rest (which are considered just comments on the diagram itself), are not touched. 
+				<em>Layout all</em> will consider all 
+				<a href="#notes">notes</a> on the diagram and layout them. If unchecked, only the notes which are attached to non-note diagram elements are moved by the layout; the rest (which are considered just comments on the diagram itself), are not touched.
 			</li>
 			<li>
 				<em>Automatically mark moved elements as pinned:</em> If checked, then as soon as you explicitly move a element (node or container) on the diagram, Sirius will mark it as 

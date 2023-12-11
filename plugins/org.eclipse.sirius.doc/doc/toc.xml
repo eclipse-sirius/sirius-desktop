@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8' ?>
 <!--
-  Copyright (c) 2007, 2019 THALES GLOBAL SERVICES
+  Copyright (c) 2007, 2023 THALES GLOBAL SERVICES
   This program and the accompanying materials
   are made available under the terms of the Eclipse Public License 2.0
   which accompanies this distribution, and is available at
@@ -241,7 +241,7 @@
       <topic href="doc/developer/integration-plm.html" label="Integration with Product Life Cycle Management" />
       <topic href="doc/developer/integration-modeler_description_file_deployment.html" label="Deploy a Modeler Description File" />
       <topic href="doc/developer/extensions-provide_save_dialog.html" label="Provide custom save dialog" />
-      <topic href="doc/developer/extensions-provide_custom-arrange-all.html" label="Provide custom arrange-all" />
+      <topic href="doc/developer/extensions-provide_custom-arrange-all.html" label="Provide custom layout-all" />
       <topic href="doc/developer/extensions-provide_custom_style.html" label="Provide custom style" />
       <topic href="doc/developer/extensions-provide_tabbar_extensions.html" label="Provide tab-bar extensions" />
       <topic href="doc/developer/extensions-provide_migrate_contribution.html" label="Provide custom representation files migration" />
