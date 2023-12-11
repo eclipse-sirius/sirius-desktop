@@ -50,12 +50,12 @@ Additional layout algorithms can be available if you have installed the ELK inte
 
 When using one of the ELK layout algorithms, there are some specificities in comparison with the other "standard" Sirius layout:
 * The pinned status is not considered. All pinned elements are layouted as if they are not pinned. ELK does not manage this kind of property and Sirius does not add post treatement that could break the layout result.
-* Arrange all : All elements are layouted. The top left coordinates of the bounding box of all elements is {20, 20} (same coordinates as the result of "_Reset Origin_":../../user/diagrams/Diagrams.html#reset_origin action action).
-** Even in case of scroll bars before the starting point of arrange all
-* Arrange selection on one container: This action layouts all its content, resizes it to display its content but does not change its location.
-* Arrange selection on several elements on the same level: This action layouts elements in relation to each other but by ignoring other brothers. Overlap with other brothers, not selected ones, is possible. The top left coordinates of the bounding box of all elements remain the same.
+* Layout all : All elements are layouted. The top left coordinates of the bounding box of all elements is {20, 20} (same coordinates as the result of "_Reset Origin_":../../user/diagrams/Diagrams.html#reset_origin action action).
+** Even in case of scroll bars before the starting point of layout all
+* Layout selection on one container: This action layouts all its content, resizes it to display its content but does not change its location.
+* Layout selection on several elements on the same level: This action layouts elements in relation to each other but by ignoring other brothers. Overlap with other brothers, not selected ones, is possible. The top left coordinates of the bounding box of all elements remain the same.
 ** If elements are containers: In addition to above behavior, their contents are layouted and  they are resized.
-* Arrange selection on a container and some of its children: The result of this action is the same as launching an arrange selection only on the container.
+* Layout selection on a container and some of its children: The result of this action is the same as launching a layout selection only on the container.
 
 To use these algorithm, first install the feature: 
 

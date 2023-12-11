@@ -7,16 +7,16 @@
 		<link type="text/css" rel="stylesheet" href="../resources/custom.css"/>
 	</head>
 	<body>
-		<h1 id="ProvidingacustomdiagramlayoutalgorithmArrangeAll">Providing a custom diagram layout algorithm (&#8220;Arrange All&#8221;)</h1>
+		<h1 id="ProvidingacustomdiagramlayoutalgorithmLayoutAll">Providing a custom diagram layout algorithm (&#8220;Layout All&#8221;)</h1>
 		<ol class="toc" style="list-style: disc;">
 			<li>
-				<a href="#ProvidingacustomdiagramlayoutalgorithmArrangeAll">Providing a custom diagram layout algorithm ("Arrange All")</a>
+				<a href="#ProvidingacustomdiagramlayoutalgorithmLayoutAll">Providing a custom diagram layout algorithm ("Layout All")</a>
 				<ol style="list-style: disc;">
 					<li>
-						<a href="#TheArrangeAllfunctionalityinshort">The Arrange All functionality in short</a>
+						<a href="#TheLayoutAllfunctionalityinshort">The Layout All functionality in short</a>
 					</li>
 					<li>
-						<a href="#TheArrangeAllconceptasimplementedbyGMF">The Arrange All concept as implemented by GMF</a>
+						<a href="#TheLayoutAllconceptasimplementedbyGMF">The Layout All concept as implemented by GMF</a>
 						<ol style="list-style: disc;">
 							<li>
 								<a href="#Theviewsandeditparts">The views and edit parts</a>
@@ -43,8 +43,8 @@
 				</ol>
 			</li>
 		</ol>
-		<h2 id="TheArrangeAllfunctionalityinshort">The Arrange All functionality in short</h2>
-		<p>The arrange-all functionality is available in Sirius diagram editors in the form of a button and a context menu:</p>
+		<h2 id="TheLayoutAllfunctionalityinshort">The Layout All functionality in short</h2>
+		<p>The layout-all functionality is available in Sirius diagram editors in the form of a button and a context menu:</p>
 		<p>
 			<img border="0" src="images/arrange-all/arrange-all-ui.png"/>
 		</p>
@@ -63,13 +63,13 @@
 			<code>org.eclipse.sirius.diagram.ui.layoutProvider</code> and 
 			<code>org.eclipse.sirius.diagram.ui.viewOrderingProvider</code> as well as an API to ease the writing of your own layout algorithms and their usage in Sirius diagram editors.
 		</p>
-		<p>This API reuse the GMF &#8220;Arrange All&#8221; API and augments it with features needed by Sirius layout algorithms like:</p>
+		<p>This API reuse the GMF &#8220;Layout All&#8221; API and augments it with features needed by Sirius layout algorithms like:</p>
 		<ul>
 			<li>The need to take in consideration pinned diagram elements</li>
 			<li>The need to take in consideration bordered nodes connected to edges</li>
 		</ul>
-		<h2 id="TheArrangeAllconceptasimplementedbyGMF">The Arrange All concept as implemented by GMF</h2>
-		<p>GMF provides basic API and implementations to ease the customization of the &#8220;Arrange All&#8221; mechanism. It also implements a complete algorithm that is based on the graphical elements.</p>
+		<h2 id="TheLayoutAllconceptasimplementedbyGMF">The Layout All concept as implemented by GMF</h2>
+		<p>GMF provides basic API and implementations to ease the customization of the &#8220;Layout All&#8221; mechanism. It also implements a complete algorithm that is based on the graphical elements.</p>
 		<p>The top level type of this this API is 
 			<code>ILayoutNodeProvider</code> :
 		</p>
@@ -95,7 +95,7 @@
 			<code>provides</code> operation is meant to return true if the class can arrange the diagram for the specified operation. 
 		</p>
 		<p>The 
-			<code>layoutEditParts</code> operations will return the commands that will actually be in charge of arranging the diagrams' edit parts. The first one takes the main container that is to be arranged while the latter accepts a list of edit parts to arrange. 
+			<code>layoutEditParts</code> operations will return the commands that will actually be in charge of layouting the diagrams' edit parts. The first one takes the main container that is to be layouted while the latter accepts a list of edit parts to layout. 
 		</p>
 		<p>The implementation of those three methods forms your layout algorithm.</p>
 		<p>With this API comes an extension point 
@@ -123,7 +123,7 @@
 		<p>Sirius defines and already uses various different layout providers in different contexts.</p>
 		<p>Here is a list of all of those with a basic description of each:</p>
 		<h5 id="DefaultLayoutProvider">DefaultLayoutProvider</h5>
-		<p>It is used by Sirius as entry point to dispatch arrange requests on a Sirius diagram to registered layout providers. The dispatch takes in consideration layout algorithm specified in the VSM and layout providers provided from the Sirius extension point 
+		<p>It is used by Sirius as entry point to dispatch layout requests on a Sirius diagram to registered layout providers. The dispatch takes in consideration layout algorithm specified in the VSM and layout providers provided from the Sirius extension point 
 			<code>org.eclipse.sirius.diagram.ui.layoutProvider</code>.
 		</p>
 		<h5 id="LineLayoutProvider">LineLayoutProvider</h5>
@@ -133,12 +133,12 @@
 		<h5 id="InlineEdgeLayoutProvider">InlineEdgeLayoutProvider</h5>
 		<p>Lays out connections alongside their source and target nodes (useful on the sequence diagram for example).</p>
 		<h5 id="ArrangeSelectionLayoutProvider">ArrangeSelectionLayoutProvider</h5>
-		<p>This provider only purpose is to delegate arrangement to attached layout provider after having added information about not selected parts in the layout hint. </p>
+		<p>This provider only purpose is to delegate layout to attached layout provider after having added information about not selected parts in the layout hint. </p>
 		<p>It is used for example with our composite layout providers to keep fixed the not selected parts and to avoid putting other selected parts on it when layouting. </p>
-		<p>It is used primary by default provider whenever the arrange-all action is called because the arrangement can be done on a selection and not on all diagram elements.</p>
+		<p>It is used primary by default provider whenever the layout-all action is called because the layout can be done on a selection and not on all diagram elements.</p>
 		<h5 id="ArrangeAllOnlyLayoutProvider">ArrangeAllOnlyLayoutProvider</h5>
-		<p>This provider is used to delegate layouting to attached provider only when an arrange-all is done on a diagram and not an arrange selection. </p>
-		<p>When used as primary provider, the arrange selection action is not available in the menu of a Sirius editor using this provider. </p>
+		<p>This provider is used to delegate layouting to attached provider only when a layout-all is done on a diagram and not a layout selection.</p>
+		<p>When used as primary provider, the layout selection action is not available in the menu of a Sirius editor using this provider. </p>
 		<p>It is used for example in the 
 			<code>OrderedTreeLayoutProvider</code> where it does not make sense to make a tree of just some elements because the all concept is to have a complete tree representation.
 		</p>
@@ -151,7 +151,7 @@
 			<code>PinnedElementLayoutProvider</code> can be attached to a compound instance. Then those providers are called in their attach order one after another to do their layouting parts. It avoids the composite provider to duplicate code to handle pinned elements.
 		</p>
 		<h5 id="BorderedItemAwareLayoutProvider">BorderedItemAwareLayoutProvider</h5>
-		<p>This provider arranges all the bordered nodes which are connected to one edge. It reduces the path of the edge between each extremity. For example:</p>
+		<p>This provider layouts all the bordered nodes which are connected to one edge. It reduces the path of the edge between each extremity. For example:</p>
 		<img border="0" src="images/arrange-all/arrange-all-border1.png"/>
 		<p>Becomes </p>
 		<img border="0" src="images/arrange-all/arrange-all-border2.png"/>
@@ -717,7 +717,7 @@ public class ELKLayoutNodeProvider extends DefaultLayoutProvider {
 
 </code></pre>
 		<h5 id="DefaultLayoutProvider3">DefaultLayoutProvider</h5>
-		<p>This class contains the core layout algorithm. When a user calls an arrange-all on a diagram that will be configured to use your layout algorithm, an instance of this class is created. You will be given the parts to layout. Then it is your job to layout it as you want. </p>
+		<p>This class contains the core layout algorithm. When a user calls a layout-all on a diagram that will be configured to use your layout algorithm, an instance of this class is created. You will be given the parts to layout. Then it is your job to layout it as you want. </p>
 		<p>For example, the ELK integration have the following:</p>
 		<pre><code>public class ELKLayoutNodeProvider extends DefaultLayoutProvider {
 
@@ -773,7 +773,7 @@ public class ELKLayoutNodeProvider extends DefaultLayoutProvider {
             clp.addProvider(new PinnedElementsLayoutProvider(cdtp));
             if (ENABLE_BORDERED_NODES_ARRANGE_ALL) {
                 // ArrangeSelectionLayoutProvider wrap all providers to manage
-                // the selected diagram element on diagram "Arrange all"
+                // the selected diagram element on diagram "Layout all"
                 AbstractLayoutProvider abstractLayoutProvider = BorderItemAwareLayoutProviderHelper.createBorderItemAwareLayoutProvider(clp);
                 this.layoutNodeProvider = new ArrangeSelectionLayoutProvider(abstractLayoutProvider);
             } else {

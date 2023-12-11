@@ -228,21 +228,21 @@
 		<p>When using one of the ELK layout algorithms, there are some specificities in comparison with the other &#8220;standard&#8221; Sirius layout:</p>
 		<ul>
 			<li>The pinned status is not considered. All pinned elements are layouted as if they are not pinned. ELK does not manage this kind of property and Sirius does not add post treatement that could break the layout result.</li>
-			<li>Arrange all : All elements are layouted. The top left coordinates of the bounding box of all elements is {20, 20} (same coordinates as the result of 
+			<li>Layout all : All elements are layouted. The top left coordinates of the bounding box of all elements is {20, 20} (same coordinates as the result of 
 				<a href="../../user/diagrams/Diagrams.html#reset_origin">
 					<em>Reset Origin</em>
 				</a> action action).
 				<ul>
-					<li>Even in case of scroll bars before the starting point of arrange all</li>
+					<li>Even in case of scroll bars before the starting point of layout all</li>
 				</ul>
 			</li>
-			<li>Arrange selection on one container: This action layouts all its content, resizes it to display its content but does not change its location.</li>
-			<li>Arrange selection on several elements on the same level: This action layouts elements in relation to each other but by ignoring other brothers. Overlap with other brothers, not selected ones, is possible. The top left coordinates of the bounding box of all elements remain the same.
+			<li>Layout selection on one container: This action layouts all its content, resizes it to display its content but does not change its location.</li>
+			<li>Layout selection on several elements on the same level: This action layouts elements in relation to each other but by ignoring other brothers. Overlap with other brothers, not selected ones, is possible. The top left coordinates of the bounding box of all elements remain the same.
 				<ul>
 					<li>If elements are containers: In addition to above behavior, their contents are layouted and  they are resized.</li>
 				</ul>
 			</li>
-			<li>Arrange selection on a container and some of its children: The result of this action is the same as launching an arrange selection only on the container.</li>
+			<li>Layout selection on a container and some of its children: The result of this action is the same as launching a layout selection only on the container.</li>
 		</ul>
 		<p>To use these algorithm, first install the feature: </p>
 		<p>

@@ -7,7 +7,38 @@ h2(#sirius740). Translation Keys Changes in Sirius 7.4.0 (from Sirius 7.3.0)
 h3. Message Keys Added
 
 * @org.eclipse.sirius.tools.api.Messages.ImageManager_projectMembersFailure@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ArrangeAction_ArrangeAll_ActionLabelText@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ArrangeAction_ArrangeAll_ActionToolTipText@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ArrangeAction_toolbar_ArrangeAll_ActionLabelText@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ArrangeAction_toolbar_ArrangeAll_ActionToolTipText@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ArrangeAction_ArrangeSelection_ActionLabelText@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ArrangeAction_ArrangeSelection_ActionToolTipText@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ArrangeAction_toolbar_ArrangeSelection_ActionLabelText@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ArrangeAction_toolbar_ArrangeSelection_ActionToolTipText@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ArrangeBorderNodesAction_actionDiagramText@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ArrangeBorderNodesAction_toolTipText@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ArrangeBorderNodesAction_toolbarActionDiagramText@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ArrangeMenuManager_Arrange_ActionLabelText@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ArrangeMenuManager_Arrange_ActionToolTipText@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.LayoutChildrenAction_commandLabel@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.LayoutChildrenAction_menuText@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.LayoutChildrenAction_toolbarText@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.LayoutChildrenAction_tooltip@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.MovePinnedElementsAction_text@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.MovePinnedElementsAction_toolTipText@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.PinElementsEclipseAction_tooltip@
 
+h3. Message Values Changed
+
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ArrangeBorderNodesAction_commandLabel@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ArrangeBorderNodesAction_toolTipDiagramText@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ArrangeBorderNodesAction_toolbarActionText@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.PinElementsEclipseAction_text@
+
+h3. Message Keys Removed
+
+* @org.eclipse.sirius.diagram.ui.provider.Messages.DiagramEditorContextMenuProvider_arrangeMenuText@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.UnpinElementsEclipseAction_text@
 
 h2(#sirius730). Translation Keys Changes in Sirius 7.3.0 (from Sirius 7.2.1)
 

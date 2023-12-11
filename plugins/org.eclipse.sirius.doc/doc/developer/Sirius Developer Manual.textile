@@ -13,7 +13,7 @@ This document gives an overview of the internals of the _Sirius_ platform, and d
 ** "*Integration with Product Life Cycle Management*":integration-plm.html
 ** "*Deploy a Modeler Description File*":integration-modeler_description_file_deployment.html
 ** "*Provide custom save dialog*":extensions-provide_save_dialog.html
-** "*Provide custom arrange-all*":extensions-provide_custom-arrange-all.html
+** "*Provide custom layout-all*":extensions-provide_custom-arrange-all.html
 ** "*Provide custom style*":extensions-provide_custom_style.html
 ** "*Provide tab-bar extensions*":extensions-provide_tabbar_extensions.html
 ** "*Provide custom representation files migration*":extensions-provide_migrate_contribution.html
