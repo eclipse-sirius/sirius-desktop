@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -35,6 +35,7 @@ import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
 import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeNameEditPart;
 import org.eclipse.sirius.diagram.ui.tools.internal.dnd.DragAndDropWrapper;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -126,7 +127,7 @@ public class DragAndDropValidator {
             if (editPart instanceof DragAndDropWrapper) {
                 DragAndDropWrapper dragAndDropWrapperToDrop = (DragAndDropWrapper) editPart;
                 elementsFromEclipseViewToDrop.add(dragAndDropWrapperToDrop);
-            } else if (editPart instanceof IGraphicalEditPart) {
+            } else if (editPart instanceof IGraphicalEditPart && !(editPart instanceof DNodeNameEditPart)) {
                 IGraphicalEditPart graphicalEditPartToDrop = (IGraphicalEditPart) editPart;
 
                 /*
