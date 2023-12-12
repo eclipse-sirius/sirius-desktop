@@ -73,20 +73,20 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="TC1041 representation 3" domainClass="EPackage" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%203']/@defaultLayer/@toolSections.0/@ownedTools[name='Drag%20%26%20Drop%20R3']" name="TC1041 representation 3" domainClass="EPackage" enablePopupBars="true">
       <defaultLayer name="Default">
-        <nodeMappings name="Node EPackage R3" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EPackage)" domainClass="EPackage" dropDescriptions="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%203']/@defaultLayer/@toolSections.0/@ownedTools[name='Drag%20%26%20Drop%20R3']">
-          <borderedNodeMappings name="EClass as ports" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" domainClass="EClass">
-            <style xsi:type="style:DotDescription">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
-            </style>
-          </borderedNodeMappings>
+        <nodeMappings name="Node EPackage R3" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EPackage)" domainClass="EPackage" reusedBorderedNodeMappings="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%203']/@defaultLayer/@nodeMappings[name='EClass']" dropDescriptions="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%203']/@defaultLayer/@toolSections.0/@ownedTools[name='Drag%20%26%20Drop%20R3']">
           <style xsi:type="style:SquareDescription" sizeComputationExpression="7" labelPosition="node" resizeKind="NORTH_SOUTH">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="EClass" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" domainClass="EClass">
+          <style xsi:type="style:DotDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
           </style>
         </nodeMappings>
         <toolSections name="tools">
@@ -96,7 +96,7 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drag &amp; Drop R3" forceRefresh="true" mappings="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%203']/@defaultLayer/@nodeMappings[name='Node%20EPackage%20R3']/@borderedNodeMappings[name='EClass%20as%20ports']" dragSource="BOTH">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drag &amp; Drop R3" forceRefresh="true" mappings="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%203']/@defaultLayer/@nodeMappings[name='EClass']" dragSource="BOTH">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
