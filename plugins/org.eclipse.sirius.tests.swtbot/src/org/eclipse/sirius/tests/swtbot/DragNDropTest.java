@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -311,6 +311,49 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             }
             SWTBotUtils.waitAllUiEvents();
 
+        } finally {
+            setErrorCatchActive(errorCatchPreviouslyEnabled);
+        }
+
+    }
+
+    /**
+     * Test that a move of a label on border, when the cursor is on the border of the label, ie a cursor with four
+     * arrows, doesn't trigger a drag'n'drop of its parent.
+     * 
+     * @throws Exception
+     *             In case of problem
+     */
+    @Test
+    public void test_MoveLabelOnBorderWith4ArrowsIcon() throws Exception {
+
+        openRepresentation3();
+        boolean errorCatchPreviouslyEnabled = isErrorCatchActive();
+        try {
+            int nbDiagramChildrenBeforeMove = editor.mainEditPart().children().size();
+            // In the diagram, move label of C1(EClass) of 50 pixels
+            SWTBotGefEditPart labelEClassBorderNodeEditPart = editor.getEditPart(CLASS_TO_DRAG_C1);
+            Point sourceLocation = editor.getBounds(labelEClassBorderNodeEditPart).getLocation().getTranslated(10, 0);
+            Point endLocation = sourceLocation.getTranslated(0, 50);
+
+            // Activate the error catch to detect the potential NPE fixed by the
+            // previous commit
+            setErrorCatchActive(true);
+            labelEClassBorderNodeEditPart.click();
+            SWTBotUtils.waitAllUiEvents();
+            // Add a selection listener to detect wrong diagram selection during drag'n'drop
+            NoDiagramSelectionListener selectionListener = new NoDiagramSelectionListener();
+            EclipseUIUtil.getActivePage().addSelectionListener(selectionListener);
+            try {
+                editor.drag(sourceLocation, endLocation);
+            } finally {
+                removeSelectionListenerAndCheckIt(selectionListener);
+            }
+            SWTBotUtils.waitAllUiEvents();
+            // Asserts that C1 graphical element has not been created on the diagram (ie that a drag'n'drop does not
+            // occur)
+            assertEquals("It seems that a drag'n'drop wrongly occurs after a move of a label, wrong number of diagram children.", nbDiagramChildrenBeforeMove, editor.mainEditPart().children().size());
+            assertFalse("The label has not been moved.", sourceLocation.equals(editor.getBounds(labelEClassBorderNodeEditPart).getLocation().getTranslated(10, 0)));
         } finally {
             setErrorCatchActive(errorCatchPreviouslyEnabled);
         }
