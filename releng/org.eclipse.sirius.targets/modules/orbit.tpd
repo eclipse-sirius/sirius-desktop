@@ -1,9 +1,7 @@
 target "orbit" with source, requirements
 
-location Orbit-2022-03 "https://download.eclipse.org/tools/orbit/downloads/drops/R20220302172233/repository/" {
-    org.easymock lazy
-}
 location Orbit-2023-12 "https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2023-12" {
+    org.easymock lazy
     org.apache.log4j lazy
     org.hamcrest.core [2.2.0,3.0.0)
     org.hamcrest.library [2.2.0,3.0.0)
