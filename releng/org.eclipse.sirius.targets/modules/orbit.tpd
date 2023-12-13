@@ -5,8 +5,8 @@ location Orbit-2022-03 "https://download.eclipse.org/tools/orbit/downloads/drops
 }
 location Orbit-2023-12 "https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2023-12" {
     org.apache.log4j lazy
-    org.hamcrest.core [1.3.0,1.3.1)
-    org.hamcrest.library [1.3.0,1.3.1)
+    org.hamcrest.core [2.2.0,3.0.0)
+    org.hamcrest.library [2.2.0,3.0.0)
     org.junit lazy
     slf4j.api lazy
     ch.qos.logback.classic lazy
