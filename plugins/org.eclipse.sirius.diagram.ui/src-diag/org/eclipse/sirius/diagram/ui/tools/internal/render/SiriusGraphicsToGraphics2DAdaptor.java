@@ -301,7 +301,10 @@ public class SiriusGraphicsToGraphics2DAdaptor extends Graphics implements Drawa
         relativeClipRegion = new Rectangle(viewBox.x, viewBox.y, viewBox.width, viewBox.height);
 
         // Initialize the line style and width
-        stroke = new BasicStroke(swtGraphics.getLineWidth(), BasicStroke.CAP_SQUARE, BasicStroke.JOIN_ROUND, 0, null, 0);
+        // To be conform, miterlimit > 1. (even when not set)
+        // Acrobat Reader does not support invalid content.
+        // See https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-miterlimit#usage_context.
+        stroke = new BasicStroke(swtGraphics.getLineWidth(), BasicStroke.CAP_SQUARE, BasicStroke.JOIN_ROUND, 1f, null, 0);
         LineAttributes lineAttributes = new LineAttributes(1);
         swtGraphics.getLineAttributes(lineAttributes);
         setLineAttributes(lineAttributes);
@@ -1530,7 +1533,13 @@ public class SiriusGraphicsToGraphics2DAdaptor extends Graphics implements Drawa
          * SWT paints line width == 0 as if it is == 1, so AWT is synced up with
          * that below.
          */
-        stroke = new BasicStroke(currentState.lineAttributes.width != 0 ? currentState.lineAttributes.width : 1, awt_cap, awt_join, currentState.lineAttributes.miterLimit, awt_dash,
+        stroke = new BasicStroke(currentState.lineAttributes.width != 0 ? currentState.lineAttributes.width : 1, 
+                awt_cap, awt_join, 
+                // miterLimit must never be less than 1 but it only matters when join == miter
+                // Acrobat Reader does not support invalid content.
+                // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-miterlimit#usage_context
+                Math.max(currentState.lineAttributes.miterLimit, 1f), 
+                awt_dash,
                 currentState.lineAttributes.dashOffset);
         return stroke;
     }
