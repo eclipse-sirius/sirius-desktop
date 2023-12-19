@@ -7,6 +7,9 @@ h2(#sirius740). Translation Keys Changes in Sirius 7.4.0 (from Sirius 7.3.0)
 h3. Message Keys Added
 
 * @org.eclipse.sirius.tools.api.Messages.ImageManager_projectMembersFailure@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.PasteStylePureGraphicalAction_commandLabel@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.PasteStylePureGraphicalAction_text@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.PasteStylePureGraphicalAction_toolTipText@
 * @org.eclipse.sirius.diagram.ui.provider.Messages.ArrangeAction_ArrangeAll_ActionLabelText@
 * @org.eclipse.sirius.diagram.ui.provider.Messages.ArrangeAction_ArrangeAll_ActionToolTipText@
 * @org.eclipse.sirius.diagram.ui.provider.Messages.ArrangeAction_toolbar_ArrangeAll_ActionLabelText@
@@ -30,6 +33,12 @@ h3. Message Keys Added
 
 h3. Message Values Changed
 
+* @org.eclipse.sirius.diagram.ui.provider.Messages.PasteFormatAction_commandLabel@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.PasteFormatAction_text@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.PasteLayoutAction_commandLabel@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.PasteLayoutAction_text@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.PasteStyleAction_commandLabel@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.PasteStyleAction_text@
 * @org.eclipse.sirius.diagram.ui.provider.Messages.ArrangeBorderNodesAction_commandLabel@
 * @org.eclipse.sirius.diagram.ui.provider.Messages.ArrangeBorderNodesAction_toolTipDiagramText@
 * @org.eclipse.sirius.diagram.ui.provider.Messages.ArrangeBorderNodesAction_toolbarActionText@
@@ -37,6 +46,7 @@ h3. Message Values Changed
 
 h3. Message Keys Removed
 
+* @org.eclipse.sirius.diagram.ui.provider.Messages.SiriusCopyAppearancePropertiesAction_tooltipMessage@
 * @org.eclipse.sirius.diagram.ui.provider.Messages.DiagramEditorContextMenuProvider_arrangeMenuText@
 * @org.eclipse.sirius.diagram.ui.provider.Messages.UnpinElementsEclipseAction_text@
 

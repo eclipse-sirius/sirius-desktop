@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2023 Obeo.
+ * Copyright (c) 2015, 2024 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -86,7 +86,6 @@ public class TabbarContributorSample extends AbstractTabbarContributor {
             diagramContributionItems.add(createRefreshContribution());
             diagramContributionItems.add(createSaveAsImageContributionItem());
             diagramContributionItems.add(createModeMenuManagerContributionItem(part));
-            diagramContributionItems.add(createCopyAppearancePropertiesContribution(part));
             diagramContributionItems.add(createCopyFormatContribution(part));
         }
         return diagramContributionItems;
@@ -118,7 +117,6 @@ public class TabbarContributorSample extends AbstractTabbarContributor {
             diagramElementContributionItems.add(createDistributeContribution());
             diagramElementContributionItems.add(createModeMenuManagerContributionItem(part));
             diagramElementContributionItems.add(createRouterContribution());
-            diagramElementContributionItems.add(createCopyAppearancePropertiesContribution(part));
             diagramElementContributionItems.add(createCopyFormatContribution(part));
             diagramElementContributionItems.add(createSizeBothContribution(part));
             diagramElementContributionItems.add(createAutoSizeContribution(part));

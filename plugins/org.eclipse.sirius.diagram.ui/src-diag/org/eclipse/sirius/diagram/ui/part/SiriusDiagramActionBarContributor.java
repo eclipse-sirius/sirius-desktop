@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -255,10 +255,6 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
                 removeExistingItem(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ACTION_SIRIUS_AUTOSIZE, "/", bars.getToolBarManager(), false) //$NON-NLS-1$
                         .ifPresent(contributionItem -> disposeIfPossible(contributionItem));
                 removeExistingItem(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ACTION_SIRIUS_AUTOSIZE, "/diagramMenu", bars.getMenuManager(), true) //$NON-NLS-1$
-                        .ifPresent(contributionItem -> disposeIfPossible(contributionItem));
-                removeExistingItem(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ACTION_SIRIUS_COPY_APPEARANCE_PROPERTIES, "/", bars.getToolBarManager(), false) //$NON-NLS-1$
-                        .ifPresent(contributionItem -> disposeIfPossible(contributionItem));
-                removeExistingItem(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ACTION_SIRIUS_COPY_APPEARANCE_PROPERTIES, "/diagramMenu", bars.getMenuManager(), true) //$NON-NLS-1$
                         .ifPresent(contributionItem -> disposeIfPossible(contributionItem));
                 removeExistingItem(ActionIds.ACTION_TOOLBAR_SELECT_ALL_SHAPES, "/selectMenu", bars.getToolBarManager(), false).ifPresent(contributionItem -> disposeIfPossible(contributionItem)); //$NON-NLS-1$
                 removeExistingItem(ActionFactory.SELECT_ALL.getId(), "/diagramMenu/selectMenu", bars.getMenuManager(), true).ifPresent(contributionItem -> disposeIfPossible(contributionItem)); //$NON-NLS-1$

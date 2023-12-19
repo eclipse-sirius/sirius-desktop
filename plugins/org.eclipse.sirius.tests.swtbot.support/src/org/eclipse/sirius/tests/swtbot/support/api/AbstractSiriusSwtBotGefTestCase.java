@@ -99,6 +99,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.ToolItem;
 import org.eclipse.swt.widgets.Widget;
 import org.eclipse.swtbot.eclipse.finder.matchers.WidgetMatcherFactory;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
@@ -109,7 +110,7 @@ import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.SWTBotTestCase;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
-import org.eclipse.swtbot.swt.finder.results.VoidResult;
+import org.eclipse.swtbot.swt.finder.keyboard.Keystrokes;
 import org.eclipse.swtbot.swt.finder.utils.ClassUtils;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 import org.eclipse.swtbot.swt.finder.utils.SWTUtils;
@@ -119,6 +120,7 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarButton;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarDropDownButton;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.IWorkbenchPage;
@@ -1068,6 +1070,48 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
+     * Returns the bot for the DropDownButton, which contains all paste actions.
+     */
+    protected SWTBotToolbarDropDownButton getPasteMenu() {
+        String[] tooltips = { Messages.PasteStylePureGraphicalAction_toolTipText, Messages.PasteFormatAction_toolTipText_diagram, Messages.PasteFormatAction_toolTipText_diagramElements,
+                Messages.PasteLayoutAction_toolTipText_diagram, Messages.PasteLayoutAction_toolTipText_diagramElements, Messages.PasteStyleAction_toolTipText_diagram,
+                Messages.PasteStyleAction_toolTipText_diagramElements, Messages.PasteImageAction_toolTipText,
+        };
+        List<Matcher<? extends ToolItem>> tooltipMatchers = new ArrayList<>();
+        Arrays.stream(tooltips).forEach(tooltip -> tooltipMatchers.add(WidgetMatcherFactory.withTooltip(tooltip)));
+        Matcher<ToolItem> tooltipMatcher = WidgetMatcherFactory.anyOf(tooltipMatchers);
+        Matcher<ToolItem> typeMatcher = WidgetMatcherFactory.widgetOfType(ToolItem.class);
+        Matcher<ToolItem> styleMatcher = WidgetMatcherFactory.withStyle(SWT.DROP_DOWN, "SWT.DROP_DOWN");
+        Matcher<ToolItem> matcher = WidgetMatcherFactory.allOf(List.of(typeMatcher, tooltipMatcher, styleMatcher));
+        return new SWTBotToolbarDropDownButton(editor.bot().widget(matcher), matcher);
+    }
+
+    /**
+     * This method returns whether an item of a DropDownButton is enabled or not.
+     */
+    protected boolean dropDownButtonItemIsEnable(SWTBotToolbarDropDownButton dropDownButton, String itemText) {
+        if (dropDownButton.isEnabled()) {
+            SWTBotMenu item = dropDownButton.menuItem(itemText);
+            boolean isEnable = item.isEnabled();
+            dropDownButton.pressShortcut(Keystrokes.ESC);
+            return isEnable;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * This method clicks on an item of a DropDownButton (or on this DropDownButton if it's the active item).
+     */
+    protected void dropDownButtonItemClick(SWTBotToolbarDropDownButton dropDownButton, String itemText, String itemTooltip) {
+        if (itemTooltip.equals(dropDownButton.getToolTipText())) {
+            dropDownButton.click();
+        } else {
+            dropDownButton.menuItem(itemText).click();
+        }
+    }
+
+    /**
      * Get all the representation with the given representation description name.
      *
      * @param session
@@ -1409,15 +1453,10 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         };
         Platform.addLogListener(logListener);
 
-        exceptionHandler = new UncaughtExceptionHandler() {
-            private final String sourcePlugin = "Uncaught exception";
-
-            @Override
-            public void uncaughtException(Thread t, Throwable e) {
-
-                IStatus status = new Status(IStatus.ERROR, sourcePlugin, sourcePlugin, e);
-                errorOccurs(status, sourcePlugin);
-            }
+        final String sourcePlugin = "Uncaught exception";
+        exceptionHandler = (Thread t, Throwable e) -> {
+            IStatus status = new Status(IStatus.ERROR, sourcePlugin, sourcePlugin, e);
+            errorOccurs(status, sourcePlugin);
         };
 
         Thread.setDefaultUncaughtExceptionHandler(exceptionHandler);
@@ -1752,16 +1791,11 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
             // DiagramDocumentEditor$PropertyChangeListener.propertyChange(DiagramDocumentEditor.java:1661)
             SWTBotUtils.waitAllUiEvents();
 
-            UIThreadRunnable.syncExec(new VoidResult() {
-
-                @Override
-                public void run() {
-                    IPreferenceStore preferenceStore = DiagramUIPlugin.getPlugin().getPreferenceStore();
-                    preferenceStore.setValue(IPreferenceConstants.PREF_ENABLE_ANIMATED_ZOOM, defaultEnableAnimatedZoom);
-                    preferenceStore.setValue(IPreferenceConstants.PREF_ENABLE_ANIMATED_LAYOUT, defaultEnableAnimatedLayout);
-                    preferenceStore.setValue(SiriusDiagramUiPreferencesKeys.PREF_PROMPT_PASTE_MODE.name(), defaultPromptPasteMode);
-                }
-
+            UIThreadRunnable.syncExec(() -> {
+                IPreferenceStore preferenceStore = DiagramUIPlugin.getPlugin().getPreferenceStore();
+                preferenceStore.setValue(IPreferenceConstants.PREF_ENABLE_ANIMATED_ZOOM, defaultEnableAnimatedZoom);
+                preferenceStore.setValue(IPreferenceConstants.PREF_ENABLE_ANIMATED_LAYOUT, defaultEnableAnimatedLayout);
+                preferenceStore.setValue(SiriusDiagramUiPreferencesKeys.PREF_PROMPT_PASTE_MODE.name(), defaultPromptPasteMode);
             });
             setErrorCatchActive(false);
             setWarningCatchActive(false);

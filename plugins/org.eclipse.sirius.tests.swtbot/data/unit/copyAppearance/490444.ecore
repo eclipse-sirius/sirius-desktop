@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="root" nsPrefix="">
-  <eClassifiers xsi:type="ecore:EClass" name="NewEClass1"/>
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="root" nsURI="http://www.example.org" nsPrefix="">
+  <eClassifiers xsi:type="ecore:EClass" name="NewEClass1">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Reference1" eType="#//NewEClass2"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NewEClass2"/>
   <eClassifiers xsi:type="ecore:EClass" name="NewEClass3"/>
-  <eClassifiers xsi:type="ecore:EClass" name="NewEClass4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NewEClass4">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Reference2" eType="#//NewEClass5"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NewEClass5"/>
   <eClassifiers xsi:type="ecore:EClass" name="NewEClass6"/>
 </ecore:EPackage>

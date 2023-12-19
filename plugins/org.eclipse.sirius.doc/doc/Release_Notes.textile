@@ -8,6 +8,9 @@ h2(#sirius7.4.0). Changes in Sirius  Desktop 7.4.0
 
 h3. User-Visible Changes
 
+* <span class="label label-success">Added</span> Copy and paste style from one diagram element to another. The copied and pasted diagram elements may be of different types. The style properties are applied at best. You can refer to the "paste style documentation":user/diagrams/Diagrams.html#paste_style for more details.
+* <span class="label label-info">Modified</span> The 3 other existing pastes (@Paste Format@, @Paste Style@ and @Paste Layout@) are now called semantic paste (i.e. @Paste Format (Semantic)@, @Paste Style (Semantic)@ and @Paste Layout (Semantic)@), but their behavior remains unchanged.
+* <span class="label label-danger">Removed</span> Feature @Apply the applicable appearance properties of the last selected shape to the other selected shapes.@ has been removed. Use the new style copy-paste feature, which does the same thing.
 * <span class="label label-success">Added</span> A checkbox to ignore the pinning of elements on the diagram for the layout actions.
 * <span class="label label-success">Added</span> A new layout action to layout the direct children of the selection on a diagram.
 * <span class="label label-info">Modified</span> The layout of border nodes is now available for the selection (in addition to the whole diagram).
@@ -21,6 +24,9 @@ h3. Specifier-Visible Changes
 
 h3. Developer-Visible Changes
 
+* <span class="label label-danger">Removed</span> AbstractTabbarContributor.createCopyAppearancePropertiesContribution and TabbarContributionFactory.createCopyAppearancePropertiesContribution has been removed.
+* <span class="label label-success">Added</span> The SiriusStyleClipboard singleton to store the style clipboard data for the diagram elements.
+* <span class="label label-success">Added</span> The ISimpleAuthorityListener functional interface to listen for any lock change, like IAuthorityListener but with a single method.
 * <span class="label label-info">Modified</span> ArrangeBorderNodesAction.initAction now has two parameters for its text: when there is no selection, when there is a selection.
 
 h4. Changes in @org.eclipse.sirius.diagram.ui@

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2023 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -29,6 +29,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteStylePureGraphicalAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteFormatAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteImageAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteLayoutAction;
@@ -124,7 +125,11 @@ public class TabbarPasteFormatMenuManager extends PasteFormatMenuManager {
 
     private void safeAdd(String actionId, IWorkbenchPage page) {
         if (getAction(actionId).isEmpty()) { // add action only if it not already present
-            if (ActionIds.PASTE_FORMAT.equals(actionId)) {
+            if (ActionIds.PASTE_STYLE_PURE_GRAPHICAL.equals(actionId)) {
+                var action = new PasteStylePureGraphicalAction();
+                action.onChangeState(Optional.of(e -> update()));
+                add(action);
+            } else if (ActionIds.PASTE_FORMAT.equals(actionId)) {
                 add(new PasteFormatAction(page));
             } else if (ActionIds.PASTE_STYLE.equals(actionId)) {
                 add(new PasteStyleAction(page));
@@ -141,6 +146,7 @@ public class TabbarPasteFormatMenuManager extends PasteFormatMenuManager {
     }
 
     private void updateActions(IWorkbenchPage page) {
+        safeAdd(ActionIds.PASTE_STYLE_PURE_GRAPHICAL, page);
         safeAdd(ActionIds.PASTE_FORMAT, page);
         safeAdd(ActionIds.PASTE_LAYOUT, page);
         safeAdd(ActionIds.PASTE_STYLE, page);

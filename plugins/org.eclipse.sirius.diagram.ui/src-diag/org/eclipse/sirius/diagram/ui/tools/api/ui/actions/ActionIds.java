@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2023 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -44,6 +44,9 @@ public interface ActionIds {
 
     /** Action contribution id for the copy style. */
     String PASTE_STYLE = "pasteStyleAction"; //$NON-NLS-1$
+
+    /** Action contribution id for the paste style. */
+    String PASTE_STYLE_PURE_GRAPHICAL = "pasteStylePureGraphicalAction"; //$NON-NLS-1$
 
     /** Action contribution id for the past image. */
     String PASTE_IMAGE = "pasteImageAction"; //$NON-NLS-1$
@@ -130,11 +133,6 @@ public interface ActionIds {
 
     /** Action's id to distribute vertically with uniform gaps. */
     String DISTRIBUTE_GAPS_VERTICALLY = RequestConstants.REQ_DISTRIBUTE + "GapsVertically"; //$NON-NLS-1$
-
-    /**
-     * Action's id to the custom Sirius Copy Appearance Properties Action.
-     */
-    String ACTION_SIRIUS_COPY_APPEARANCE_PROPERTIES = "siriusCopyAppearancePropertiesAction"; //$NON-NLS-1$
 
     /** Id of menu that groups align actions for edge labels in contextual menu. **/
     String MENU_ALIGN = "alignMenu"; //$NON-NLS-1$

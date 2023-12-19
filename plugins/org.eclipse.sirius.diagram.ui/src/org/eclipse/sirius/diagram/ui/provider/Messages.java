@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2023 Obeo and THALES GLOBAL SERVICES.
+ * Copyright (c) 2015, 2024 Obeo and THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -84,6 +84,15 @@ public final class Messages {
 
     @TranslatableMessage
     public static String ActivateRulesCommand_label;
+
+    @TranslatableMessage
+    public static String PasteStylePureGraphicalAction_commandLabel;
+
+    @TranslatableMessage
+    public static String PasteStylePureGraphicalAction_text;
+
+    @TranslatableMessage
+    public static String PasteStylePureGraphicalAction_toolTipText;
 
     @TranslatableMessage
     public static String AddErrorCommand_label;
@@ -1320,9 +1329,6 @@ public final class Messages {
 
     @TranslatableMessage
     public static String SiriusContainerEditPolicy_arrangeCommandLabel;
-
-    @TranslatableMessage
-    public static String SiriusCopyAppearancePropertiesAction_tooltipMessage;
 
     @TranslatableMessage
     public static String SiriusCreationWizard_DiagramModelFilePageDescription;
