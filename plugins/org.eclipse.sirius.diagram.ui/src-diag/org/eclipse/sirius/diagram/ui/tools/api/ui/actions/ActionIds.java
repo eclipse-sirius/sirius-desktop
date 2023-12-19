@@ -45,6 +45,9 @@ public interface ActionIds {
     /** Action contribution id for the copy style. */
     String PASTE_STYLE = "pasteStyleAction"; //$NON-NLS-1$
 
+    /** Action contribution id for the adaptive paste style. */
+    String ADAPTIVE_PASTE_STYLE = "adaptivePasteStyleAction"; //$NON-NLS-1$
+
     /** Action contribution id for the past image. */
     String PASTE_IMAGE = "pasteImageAction"; //$NON-NLS-1$
 

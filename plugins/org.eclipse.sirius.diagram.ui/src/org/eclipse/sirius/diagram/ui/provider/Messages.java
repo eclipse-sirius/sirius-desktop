@@ -86,6 +86,15 @@ public final class Messages {
     public static String ActivateRulesCommand_label;
 
     @TranslatableMessage
+    public static String AdaptivePasteStyleAction_commandLabel;
+
+    @TranslatableMessage
+    public static String AdaptivePasteStyleAction_text;
+
+    @TranslatableMessage
+    public static String AdaptivePasteStyleAction_toolTipText;
+
+    @TranslatableMessage
     public static String AddErrorCommand_label;
 
     @TranslatableMessage

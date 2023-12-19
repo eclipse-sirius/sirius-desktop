@@ -32,6 +32,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.actions.SizeBothAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.TabbarRouterAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.distribute.DistributeAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.distribute.SiriusAlignAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.AdaptivePasteStyleAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.ArrangeBorderNodesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.CopyFormatAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.LayoutChildrenAction;
@@ -63,6 +64,8 @@ public class SiriusContributionItemProvider extends AbstractContributionItemProv
         final IWorkbenchPage workbenchPage = partDescriptor.getPartPage();
         if (ActionIds.COPY_FORMAT.equals(actionId)) {
             result = new CopyFormatAction(workbenchPage);
+        } else if (ActionIds.ADAPTIVE_PASTE_STYLE.equals(actionId)) {
+            result = new AdaptivePasteStyleAction();
         } else if (ActionIds.PASTE_FORMAT.equals(actionId)) {
             result = new PasteFormatAction(workbenchPage);
         } else if (ActionIds.PASTE_STYLE.equals(actionId)) {
