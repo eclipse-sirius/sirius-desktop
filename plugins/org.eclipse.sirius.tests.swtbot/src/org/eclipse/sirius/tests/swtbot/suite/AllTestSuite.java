@@ -52,9 +52,9 @@ import org.eclipse.sirius.tests.swtbot.layout.ContainerAndNodeCopyPasteFormatTes
 import org.eclipse.sirius.tests.swtbot.layout.ContainerDefaultSizeLayoutTest;
 import org.eclipse.sirius.tests.swtbot.layout.EdgeAndPortStabilityOnSemanticChangeTest;
 import org.eclipse.sirius.tests.swtbot.layout.EdgeCopyPasteFormatTest;
+import org.eclipse.sirius.tests.swtbot.layout.EdgeLabelsAlignAndDistributeTests;
 import org.eclipse.sirius.tests.swtbot.layout.EdgeLayoutStabilityWithToolWizardTest;
 import org.eclipse.sirius.tests.swtbot.layout.EdgeStabilityOnCopyPasteLayoutTest;
-import org.eclipse.sirius.tests.swtbot.layout.EdgeLabelsAlignAndDistributeTests;
 import org.eclipse.sirius.tests.swtbot.layout.LayoutStabilityOnManualRefreshTest;
 import org.eclipse.sirius.tests.swtbot.layout.ModifyEdgeLayoutAfterRefreshTest;
 import org.eclipse.sirius.tests.swtbot.layout.PackageLayoutStabilityOnManyViewsCreationToolTest;
@@ -74,6 +74,7 @@ import org.eclipse.sirius.tests.swtbot.modelexplorer.RepresentationVisibilityAft
 import org.eclipse.sirius.tests.swtbot.propertypage.SiriusPreferencesPropertyPageTest;
 import org.eclipse.sirius.tests.swtbot.propertypage.SiriusSessionDetailsPropertyPageTest;
 import org.eclipse.sirius.tests.swtbot.sessioneditor.SessionEditorOpeningTests;
+import org.eclipse.sirius.tests.swtbot.tabbar.PasteStylePureGraphicalTest;
 import org.eclipse.sirius.tests.swtbot.tabbar.LockedTabBarTest;
 import org.eclipse.sirius.tests.swtbot.tabbar.NotInvisibleTabBarTest;
 import org.eclipse.sirius.tests.swtbot.tabbar.ResetToDefaultFiltersActionTests;
@@ -198,6 +199,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(CompartmentsSizeTest.class);
         suite.addTestSuite(SiriusPreferencesPropertyPageTest.class);
         suite.addTestSuite(SiriusSessionDetailsPropertyPageTest.class);
+        suite.addTestSuite(PasteStylePureGraphicalTest.class);
     }
 
     /**

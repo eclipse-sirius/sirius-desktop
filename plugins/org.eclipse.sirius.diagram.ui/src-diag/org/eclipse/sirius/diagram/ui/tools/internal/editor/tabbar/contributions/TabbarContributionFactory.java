@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2023 Obeo.
+ * Copyright (c) 2016, 2024 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -37,7 +37,6 @@ import org.eclipse.sirius.diagram.ui.tools.internal.actions.SaveAsImageFileActio
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SelectHiddenElementsAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SelectPinnedElementsAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SiriusAutoSizeAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.actions.SiriusCopyAppearancePropertiesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SizeBothAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromDiagramAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromModelWithHookAction;
@@ -565,23 +564,6 @@ public class TabbarContributionFactory {
         TabbarRouterMenuManager routerMenu = new TabbarRouterMenuManager();
         routerMenu.setVisible(true);
         return routerMenu;
-    }
-
-    /**
-     * Creates the Apply Style contribution item. Use this button to reproduce the visual style of an element onto
-     * others.
-     * 
-     * @param part
-     *            the current IDiagramWorkbenchPart.
-     * @return the {@link IContributionItem} or null if the workbench part is being initialized.
-     */
-    public IContributionItem createCopyAppearancePropertiesContribution(IDiagramWorkbenchPart part) {
-        IWorkbenchPartSite site = part.getSite();
-        if (site != null) {
-            SiriusCopyAppearancePropertiesAction copyAppearancePropertiesAction = new SiriusCopyAppearancePropertiesAction(site.getPage());
-            return new ActionContributionItem(copyAppearancePropertiesAction);
-        }
-        return null;
     }
 
     /**

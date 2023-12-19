@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2023 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2016, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -34,9 +34,9 @@ public class PasteFormatMenuManager extends ActionMenuManager {
      */
     private static class PasteFormatMenuAction extends Action {
         PasteFormatMenuAction() {
-            setText(Messages.PasteFormatAction_text);
-            setToolTipText(Messages.PasteFormatAction_toolTipText_diagram);
-            ImageDescriptor imageDesc = DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.PASTE_FORMAT_ICON);
+            setText(Messages.PasteStylePureGraphicalAction_text);
+            setToolTipText(Messages.PasteStylePureGraphicalAction_toolTipText);
+            ImageDescriptor imageDesc = DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.PASTE_STYLE_ICON);
             setImageDescriptor(imageDesc);
             setHoverImageDescriptor(imageDesc);
             setEnabled(false);

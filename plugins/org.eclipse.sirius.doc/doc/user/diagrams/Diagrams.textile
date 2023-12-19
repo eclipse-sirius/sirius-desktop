@@ -613,7 +613,7 @@ If you want to drag and drop the port in a new container, just drag the port wit
 
 The port is dropped in the container above the mouse location and linked to its closest edge.
 
-h3(#copy_paste_format). Copy/paste of format
+h3(#copy_paste_format). Copy/paste of format (Semantic)
 
 It is possible to duplicate format of diagram elements, that is to say to replicate mutual organization and style of diagram elements from one diagram to another. This replication only applies to the same semantic elements between diagrams.
 By default, this copy/paste replicates the layout (x, y width and height) AND the style (colors, font, ...).
@@ -626,9 +626,9 @@ The next picture shows a partial view of a diagram. The tool to replicate the fo
 
 When an element format is copied, the format of all its children is also recursively copied (containers, nodes or border nodes). The format of the label and outgoing edges of all these elements, is also copied.
 
-h4(#paste_layout). Paste Layout
+h4(#paste_layout). Paste Layout (Semantic)
 
-The next picture shows the diagram where the layout will be replicated. The tool to paste layout is called "Paste Layout" and can be activated from the tab-bar or from the contextual menu (see _Edit_ section).
+The next picture shows the diagram where the layout will be replicated. The tool to paste layout is called "Paste Layout (Semantic)" and can be activated from the tab-bar or from the contextual menu (see _Edit_ section).
 	
 	!images/diagram_editor_paste_layout1.png!
 
@@ -640,7 +640,7 @@ The layout applies to John Doe and Earvin Johnson and is exactly the same as the
 
 h5. Two modes for paste layout
 
-Since Sirius 7.1.0, there are 2 modes to paste the layout. At each execution of the action "Paste format" or "Paste layout", a dialog is displayed to choose the mode.
+Since Sirius 7.1.0, there are 2 modes to paste the layout. At each execution of the action "Paste format (Semantic)" or "Paste layout (Semantic)", a dialog is displayed to choose the mode.
 
 	!images/pasteMode_dialog.png!
 	
@@ -668,7 +668,7 @@ From a Capella diagram, "system data flow blank" diagram, copy the layout contai
 
 	!images/copyLayout_absoluteMode_sample1-2.png!
 
-* Launch the action "Paste layout", expected result: The absolute coordinates of each element are preserved.
+* Launch the action "Paste layout (Semantic)", expected result: The absolute coordinates of each element are preserved.
 
 	!images/copyLayout_absoluteMode_sample1-3.png!
 
@@ -688,7 +688,7 @@ From a Capella diagram, "system data flow blank" diagram, copy the layout contai
 
 	!images/copyLayout_boundingBoxMode_sample1-2.png!
 
-* Launch the action "Paste layout", expected result: The origin of each group of brothers, in the target diagram,  are preserved (as you can see with guide on the horizontal and vertical rulers). And the layout of brothers, in the target diagram, is applied relative to each other.
+* Launch the action "Paste layout (Semantic)", expected result: The origin of each group of brothers, in the target diagram,  are preserved (as you can see with guide on the horizontal and vertical rulers). And the layout of brothers, in the target diagram, is applied relative to each other.
 
 	!images/copyLayout_boundingBoxMode_sample1-3.png!
 
@@ -702,7 +702,7 @@ In the same Capella diagram, "system data flow blank" diagram, copy the layout f
 	!images/copyLayout_boundingBoxMode_sample2-1.png!
 
 * Select the diagram
-* Launch the action "Paste layout", expected result: The layout of 4 functions are copied into RPL1 and RPL2. The origin of each group of functions is preserved.
+* Launch the action "Paste layout (Semantic)", expected result: The layout of 4 functions are copied into RPL1 and RPL2. The origin of each group of functions is preserved.
 
 	!images/copyLayout_boundingBoxMode_sample2-2.png!
 
@@ -711,7 +711,7 @@ In the same Capella diagram, "system data flow blank" diagram, copy the layout f
 
 	!images/copyLayout_boundingBoxMode_sample2-3.png!
 
-* Launch the action "Paste layout" successively with RPL1 and RPL2 selected, expected result: The result is slightly different. The layout of REC is applied to RPL1 (only its size is modified, the location remains the same) and the layout of their children are applied. The layout of REC is applied to RPL2 (only its size is modified, the location remains the same) and the layout of their children are applied.
+* Launch the action "Paste layout (Semantic)" successively with RPL1 and RPL2 selected, expected result: The result is slightly different. The layout of REC is applied to RPL1 (only its size is modified, the location remains the same) and the layout of their children are applied. The layout of REC is applied to RPL2 (only its size is modified, the location remains the same) and the layout of their children are applied.
 
 	!images/copyLayout_boundingBoxMode_sample2-4.png!
 
@@ -728,13 +728,13 @@ In the same Capella diagram, "system data flow blank" diagram, copy the layout f
 
 	!images/copyLayout_boundingBoxMode_sample3-2.png!
 
-* Launch the action "Paste layout"
+* Launch the action "Paste layout (Semantic)"
 
 	!images/copyLayout_boundingBoxMode_sample3-3.png!
 
-h4. Paste Style
+h4. Paste Style (Semantic)
 
-The next picture shows the diagram where the layout will be replicated. The tool to paste style is called "Paste Style" and can be activated from the tab-bar or from the contextual menu (see _Edit_ section).
+The next picture shows the diagram where the layout will be replicated. The tool to paste style is called "Paste Style (Semantic)" and can be activated from the tab-bar or from the contextual menu (see _Edit_ section).
 	
 	!images/diagram_editor_paste_style1.png!
 
@@ -742,15 +742,27 @@ The red font applies to John Doe.
 
 	!images/diagram_editor_paste_style2.png!
 
-h4. Paste Format
+h4. Paste Format (Semantic)
 
-The next picture shows the diagram where the layout will be replicated. The tool to paste format is called "Paste Format" and can be activated from the tab-bar when the diagram is selected, from the contextual menu (see _Edit_ section) or through the _Ctrl+Alt+Shift+V_ shortcut.
+The next picture shows the diagram where the layout will be replicated. The tool to paste format is called "Paste Format (Semantic)" and can be activated from the tab-bar when the diagram is selected, from the contextual menu (see _Edit_ section) or through the _Ctrl+Alt+Shift+V_ shortcut.
 
 	!images/diagram_editor_paste_format1.png!
 	
 The result is the same as applying _Paste Format_ and _Paste Style_.
 
 	!images/diagram_editor_paste_format2.png!
+
+h3(#paste_style). Paste style
+
+The Paste Style button is used to copy the style from one diagram element to another. Elements can be in different diagrams, have different semantic elements, or even be of different types (for example, you can copy the style of a node to an edge), in which case style properties will be applied at best (some style properties may not be applied).
+
+To copy a style from one element to another :
+1. select the element whose style you wish to copy,
+2. click on the Copy Style button in the toolbar or in the Edit submenu of the context menu,
+3. select the elements to which the style is to be applied,
+4. click on Paste Style in the toolbar or in the Edit submenu of the context menu.
+
+	!images/diagram_editor_paste_style.png!
 
 h3(#paste_image). Paste image from clipboard
 
@@ -1136,7 +1148,12 @@ p(#transientLayer). Transient layers are displayed, in the drop down menu, after
 
 !images/diagram_editor_pin_dialog2.png!
 
-!images/tabbar_paste_layout.png! _Paste Layout_. This button is only enabled if you have previously copied the layout of some elements in the clipboard, using the _Copy layout_ action (only visible in the tab-bar when elements are select). _Paste layout_ will apply the same size and positions which were copied in the clipboard to the corresponding elements in the current diagram. For the purpose of this command, the "corresponding elements" are the graphical elements which represent the same semantic objects.
+!images/tabbar_paste_layout.png! _Paste_. This button contains several paste actions, it is only enabled if you have previously copied data. The default action of this button is paste style, Other actions are available in the menu by clicking on the arrow next to the button:
+- _Paste Style_: paste the style of the element to another, it is only enabled if you have previously copied style.
+- _Paste Format (Semantic)_: _Paste Layout (Semantic)_ + _Paste Style (Semantic)_
+- _Paste Layout (Semantic)_: it is only enabled if you have previously copied the format of some elements in the clipboard, using the _Copy Format_ action (only visible in the tab-bar when elements are selected). _Paste Layout (Semantic)_ will apply the same size and positions which were copied in the clipboard to the corresponding elements in the current diagram. For the purpose of this command, the "corresponding elements" are the graphical elements which represent the same semantic objects.
+- _Paste Style (Semantic)_: it is only enabled if you have previously copied the format of some elements in the clipboard, using the _Copy format_ action (only visible in the tab-bar when elements are selected). _Paste Style  (Semantic)_ will apply the same style which were copied in the clipboard to the corresponding elements in the current diagram. For the purpose of this command, the "corresponding elements" are the graphical elements which represent the same semantic objects.
+- _Paste Image From Clipboard_: paste the image from clipboard to the selected diagram elements, it is only enabled if there is an image in your clipboard and if the selected element can have an image.
 
 !images/tabbar_zoom.png! _Zoom Controls_. Next in the tab-bar is a set of buttons to control the zoom level. The _Zoom in_ and _Zoom out_ buttons behave similarly to their equivalents in the palette. The combo-box shows the current zoom level and allows you to choose among some pre-defined levels. You can also manually enter a specific zoom level (e.g. "42") and hit _Return_ to apply it.
 
@@ -1174,7 +1191,9 @@ The tab-bar contains a different set of actions when at least one element is sel
 
 !images/tabbar_pin_unpin_02.png! _Pinned_. This checkbox can be used to mark the selected elements as pinned or not.
 
-!images/tabbar_copy_layout.png! _Copy Layout_. This tool can be used to duplicate the layout of some diagram elements from this diagram into another. This replication only applies to the same semantic elements between diagrams. First, select the set of elements of interest, and use this _Copy layout_ action. Then go to the target diagram, and choose the _Paste layout_ action from the tab-bar there.
+!images/tabbar_copy_layout.png! _Copy format_. This tool can be used
+- to duplicate the format of some diagram elements from this diagram into another. This replication only applies to the same semantic elements between diagrams. First, select the set of elements of interest, and use this _Copy Format_ action. Then go to the target diagram, and choose the _Paste Format (Semantic)_, _Paste Layout (Semantic)_ or _Paste Style (Semantic)_ action from the tab-bar there.
+- or to copy the style of a diagram element to any another diagram element.
 
 !images/tabbar_hide.png! _Hide_. This button hides all the selected elements from view. It can also be invoked with the _Ctrl+H_ keyboard shortcut. To reveal elements which have been hidden, you can for example deselect all element, and in the diagram's tab-bar, choose the _Show/Hide_ button, which opens a dialog box to control the elements' visibility.
 
@@ -1187,8 +1206,6 @@ The tab-bar contains a different set of actions when at least one element is sel
 !images/tabbar_font_controls.png! _Font Controls_. The next set of buttons can be used to control the font attributes (bold or italic), the font color, and the font to use itself, for the labels of the select elements. Note that all font-related attributes 
 
 !images/tabbar_color_style_controls.png! _Color and Visual Style Controls_. The next group of buttons can be used to control some graphical attributes of the selected elements: fill color, line color and line style. The _Workspace image_ button can be used to replace the graphical representation of an element by an image that you can select from anyware in your Eclipse workspace.
-
-!images/tabbar_cancel_custom_style.png! _Cancel Custom Style_. As soon as you modify manually any of the graphical properties of an element, the element's style is marked as _customized_, and is not refreshed if its definition changes. The _Cancel Custom Style_ button resets all the style attributes of an element to its default values and un-marks it as customized.
 
 !images/tabbar_apply_style.png! _Apply Style_. Use this button to reproduce the visual style of an element onto others. This action will apply the style of the last selected element to the others. When you click on this button, all the visual attributes from the last element which can are compatible with the other elements will be applied to them.
 

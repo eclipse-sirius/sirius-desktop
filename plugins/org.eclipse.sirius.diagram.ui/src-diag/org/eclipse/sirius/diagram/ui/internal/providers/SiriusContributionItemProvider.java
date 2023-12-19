@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -25,13 +25,13 @@ import org.eclipse.sirius.diagram.ui.tools.internal.actions.DeselectAllAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SaveAsImageFileAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SelectHiddenElementsAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SiriusAutoSizeAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.actions.SiriusCopyAppearancePropertiesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SiriusEdgeSnapBackAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SiriusSelectAllAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SizeBothAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.TabbarRouterAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.distribute.DistributeAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.distribute.SiriusAlignAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteStylePureGraphicalAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.ArrangeBorderNodesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.CopyFormatAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.LayoutChildrenAction;
@@ -62,6 +62,8 @@ public class SiriusContributionItemProvider extends AbstractContributionItemProv
         final IWorkbenchPage workbenchPage = partDescriptor.getPartPage();
         if (ActionIds.COPY_FORMAT.equals(actionId)) {
             result = new CopyFormatAction(workbenchPage);
+        } else if (ActionIds.PASTE_STYLE_PURE_GRAPHICAL.equals(actionId)) {
+            result = new PasteStylePureGraphicalAction();
         } else if (ActionIds.PASTE_FORMAT.equals(actionId)) {
             result = new PasteFormatAction(workbenchPage);
         } else if (ActionIds.PASTE_STYLE.equals(actionId)) {
@@ -108,8 +110,6 @@ public class SiriusContributionItemProvider extends AbstractContributionItemProv
             result = new SizeBothAction(workbenchPage);
         } else if (ActionIds.ACTION_SIRIUS_AUTOSIZE.equals(actionId)) {
             result = new SiriusAutoSizeAction(workbenchPage);
-        } else if (actionId.equals(ActionIds.ACTION_SIRIUS_COPY_APPEARANCE_PROPERTIES)) {
-            return new SiriusCopyAppearancePropertiesAction(workbenchPage);
         } else if (ActionIds.STRAIGHTEN_TO_TOP.equals(actionId)) {
             result = StraightenToAction.createStraightenToTopAction(workbenchPage);
         } else if (ActionIds.STRAIGHTEN_TO_BOTTOM.equals(actionId)) {

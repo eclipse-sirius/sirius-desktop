@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2023 Obeo.
+ * Copyright (c) 2015, 2024 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -91,7 +91,7 @@ public class TabbarContributorExtensionTest extends AbstractSiriusSwtBotGefTestC
         selectDiagramElement();
         SWTBotUtils.waitAllUiEvents();
         int count = getTabbarItemsCount();
-        assertEquals("Unexpected number of tabbar contribution items", 33, count);
+        assertEquals("Unexpected number of tabbar contribution items", 32, count);
         selectDiagram();
         SWTBotUtils.waitAllUiEvents();
         count = getTabbarItemsCount();
@@ -99,7 +99,7 @@ public class TabbarContributorExtensionTest extends AbstractSiriusSwtBotGefTestC
         selectEdge();
         SWTBotUtils.waitAllUiEvents();
         count = getTabbarItemsCount();
-        assertEquals("Unexpected number of tabbar contribution items", 33, count);
+        assertEquals("Unexpected number of tabbar contribution items", 32, count);
     }
 
     /**
@@ -112,11 +112,11 @@ public class TabbarContributorExtensionTest extends AbstractSiriusSwtBotGefTestC
         selectDiagramElement();
         SWTBotUtils.waitAllUiEvents();
         int count = getTabbarItemsCount();
-        assertEquals("The custom tabbar should be registered", 26, count);
+        assertEquals("The custom tabbar should be registered", 25, count);
         selectDiagram();
         SWTBotUtils.waitAllUiEvents();
         count = getTabbarItemsCount();
-        assertEquals("The custom tabbar should be registered", 15, count);
+        assertEquals("The custom tabbar should be registered", 14, count);
         selectEdge();
         SWTBotUtils.waitAllUiEvents();
         count = getTabbarItemsCount();

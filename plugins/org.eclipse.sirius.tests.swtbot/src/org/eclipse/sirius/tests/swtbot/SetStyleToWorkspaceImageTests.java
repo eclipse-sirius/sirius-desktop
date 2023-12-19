@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -58,12 +58,14 @@ import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckNbVisibleEleme
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckNbVisibleElementsInTree;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.WidgetIsDisabledCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.WidgetIsEnabledCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.dialog.ImageSelectionGalleryHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.Clipboard;
 import org.eclipse.swt.dnd.ImageTransfer;
+import org.eclipse.swt.dnd.TextTransfer;
 import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
@@ -76,7 +78,6 @@ import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.widgets.AbstractSWTBot;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarDropDownButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
@@ -490,7 +491,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
     }
 
     /**
-     * Test "past workspace image from clipboard" functionality. TODO: test with many selection
+     * Test "past workspace image from clipboard" functionality.
      * 
      * @throws Exception
      *             Test error.
@@ -508,8 +509,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
         checkCustom(part, false); // check initial style
 
         // paste image on element
-        SWTBotToolbarButton pasteImageButton = bot.toolbarDropDownButtonWithTooltip(Messages.PasteImageAction_toolTipText);
-        pasteImageButton.click();
+        dropDownButtonItemClick(getPasteMenu(), Messages.PasteImageAction_text, Messages.PasteImageAction_toolTipText);
 
         // check
         checkCustom(part, true);
@@ -558,8 +558,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
         }
 
         // paste image on element
-        SWTBotToolbarButton pasteImageButton = bot.toolbarDropDownButtonWithTooltip(Messages.PasteImageAction_toolTipText);
-        pasteImageButton.click();
+        dropDownButtonItemClick(getPasteMenu(), Messages.PasteImageAction_text, Messages.PasteImageAction_toolTipText);
 
         // check
         var wkpImagePath = new ArrayList<String>();
@@ -599,9 +598,9 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
         SWTBotToolbarDropDownButton pasteFormatMenu;
 
         // check init state
-        pasteFormatMenu = bot.toolbarDropDownButtonWithTooltip(Messages.PasteFormatAction_toolTipText_diagram);
+        pasteFormatMenu = getPasteMenu();
         assertFalse("paste format menu must be disabled in toolbar without selection and without clipboard image", //
-                pasteFormatMenu.isEnabled());
+                dropDownButtonItemIsEnable(pasteFormatMenu, Messages.PasteImageAction_text));
         assertFalse("paste format menu must be disabled in menu without selection and without clipboard image", //
                 bot.menu("Edit").menu(Messages.PasteImageAction_text).isEnabled());
 
@@ -609,20 +608,21 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
         selectAndCheckEditPart(C1_CONTAINER, AbstractDiagramContainerEditPart.class);
 
         // check with selection but no image in clipboard
-        pasteFormatMenu = bot.toolbarDropDownButtonWithTooltip(Messages.PasteFormatAction_toolTipText_diagramElements);
+        pasteFormatMenu = getPasteMenu();
         assertFalse("paste format menu must be disabled in toolbar without clipboard image", //
-                pasteFormatMenu.isEnabled());
+                dropDownButtonItemIsEnable(pasteFormatMenu, Messages.PasteImageAction_text));
         assertFalse("paste format menu must be disabled in menu without clipboard image", //
                 bot.menu("Edit").menu(Messages.PasteImageAction_text).isEnabled());
 
         // copy image to Clipboard
         IFile imageFile = project.getFile(IMG_FILE);
         this.copyImageToClipboard(imageFile);
+        bot.waitUntil(new WidgetIsEnabledCondition(getPasteMenu()));
 
         // check with selection and image in clipboard
-        pasteFormatMenu = bot.toolbarDropDownButtonWithTooltip(Messages.PasteImageAction_toolTipText);
+        pasteFormatMenu = getPasteMenu();
         assertTrue("paste format menu must be enabled in toolbar with selection and clipboard image", //
-                pasteFormatMenu.isEnabled());
+                dropDownButtonItemIsEnable(pasteFormatMenu, Messages.PasteImageAction_text));
         assertTrue("paste format menu must be enabled in menu with selection and clipboard image", //
                 bot.menu("Edit").menu(Messages.PasteImageAction_text).isEnabled());
 
@@ -630,9 +630,9 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
         selectAndCheckEditPart(A1C1_LIST, AbstractDiagramNameEditPart.class);
 
         // check with image in clipboard but not valid selection for worspace image
-        pasteFormatMenu = bot.toolbarDropDownButtonWithTooltip(Messages.PasteFormatAction_toolTipText_diagramElements);
+        pasteFormatMenu = getPasteMenu();
         assertFalse("paste format menu must be disabled in toolbar when selection cannot have workspace image style", //
-                pasteFormatMenu.isEnabled());
+                dropDownButtonItemIsEnable(pasteFormatMenu, Messages.PasteImageAction_text));
         assertFalse("paste format menu must be disabled in menu when selection cannot have workspace image style", //
                 bot.menu("Edit").menu(Messages.PasteImageAction_text).isEnabled());
     }
@@ -957,6 +957,8 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
         syncExec(() -> {
             Clipboard clipboard = new Clipboard(Display.getCurrent());
             clipboard.clearContents();
+            // We copy text to make sure the clipboard doesn't contain any images.
+            clipboard.setContents(new Object[] { "dummy" }, new Transfer[] { TextTransfer.getInstance() });
             clipboard.dispose();
         });
     }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
 <!--
-  Copyright (c) 2014, 2023 THALES GLOBAL SERVICES
+  Copyright (c) 2014, 2024 THALES GLOBAL SERVICES
   This program and the accompanying materials
   are made available under the terms of the Eclipse Public License 2.0
   which accompanies this distribution, and is available at
@@ -138,6 +138,7 @@
          <partContribution id="org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorID">
            <partMenuGroup menubarPath="/edit/" id="copyFormatGroup" separator="true" />
            <partAction menubarPath="/edit/copyFormatGroup" id="copyFormatAction" />
+           <partAction menubarPath="/edit/copyFormatGroup" id="pasteStylePureGraphicalAction" />
            <partAction menubarPath="/edit/copyFormatGroup" id="pasteFormatAction" />
            <partAction menubarPath="/edit/copyFormatGroup" id="pasteLayoutAction" />
            <partAction menubarPath="/edit/copyFormatGroup" id="pasteStyleAction" />
@@ -182,12 +183,6 @@
                  id="siriusAutoSizeAction"
                  menubarPath="/diagramMenu/sizeGroup"
                  toolbarPath="/toolbarFormatGroup">
-           </partAction>
-           <partAction
-                 global="false"
-                 id="siriusCopyAppearancePropertiesAction"
-                 menubarPath="/diagramMenu/copyAppearanceGroup"
-                 toolbarPath="/toolbarCopyAppearanceGroup">
            </partAction>
                        <partMenu menubarPath="/diagramMenu/formatGroup" id="selectMenu">
             </partMenu>
@@ -244,6 +239,7 @@
             <popupStructuredContributionCriteria objectClass="org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart" />
             <popupMenuGroup path="/editMenu/" id="copyFormatGroup" separator="true"/>
             <popupAction path="/editMenu/copyFormatGroup" id="copyFormatAction" />
+            <popupAction path="/editMenu/copyFormatGroup" id="pasteStylePureGraphicalAction" />
             <popupAction path="/editMenu/copyFormatGroup" id="pasteFormatAction" />
             <popupAction path="/editMenu/copyFormatGroup" id="pasteLayoutAction" />
             <popupAction path="/editMenu/copyFormatGroup" id="pasteStyleAction" />
@@ -272,10 +268,6 @@
             <popupAction
                   id="siriusAutoSizeAction"
                   path="/formatMenu/sizeGroup">
-            </popupAction>
-            <popupAction
-                  id="siriusCopyAppearancePropertiesAction"
-                  path="/formatMenu/applyAppearanceGroup">
             </popupAction>
          </popupContribution>
          <popupContribution class="org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramEditorContextMenuProvider"

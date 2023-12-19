@@ -131,18 +131,21 @@
 								</ol>
 							</li>
 							<li>
-								<a href="#copy_paste_format">Copy/paste of format</a>
+								<a href="#copy_paste_format">Copy/paste of format (Semantic)</a>
 								<ol style="list-style: disc;">
 									<li>
-										<a href="#paste_layout">Paste Layout</a>
+										<a href="#paste_layout">Paste Layout (Semantic)</a>
 									</li>
 									<li>
-										<a href="#PasteStyle">Paste Style</a>
+										<a href="#PasteStyleSemantic">Paste Style (Semantic)</a>
 									</li>
 									<li>
-										<a href="#PasteFormat">Paste Format</a>
+										<a href="#PasteFormatSemantic">Paste Format (Semantic)</a>
 									</li>
 								</ol>
+							</li>
+							<li>
+								<a href="#paste_style">Paste style</a>
 							</li>
 							<li>
 								<a href="#paste_image">Paste image from clipboard</a>
@@ -1093,7 +1096,7 @@
 			<img border="0" src="images/diagram_editor_dnd03b.png"/>
 		</p>
 		<p>The port is dropped in the container above the mouse location and linked to its closest edge.</p>
-		<h3 id="copy_paste_format">Copy/paste of format</h3>
+		<h3 id="copy_paste_format">Copy/paste of format (Semantic)</h3>
 		<p>It is possible to duplicate format of diagram elements, that is to say to replicate mutual organization and style of diagram elements from one diagram to another. This replication only applies to the same semantic elements between diagrams.
 			<br/>By default, this copy/paste replicates the layout (x, y width and height) AND the style (colors, font, ...).
 		</p>
@@ -1110,8 +1113,8 @@
 			<img border="0" src="images/diagram_editor_copy_format.png"/>
 		</p>
 		<p>When an element format is copied, the format of all its children is also recursively copied (containers, nodes or border nodes). The format of the label and outgoing edges of all these elements, is also copied.</p>
-		<h4 id="paste_layout">Paste Layout</h4>
-		<p>The next picture shows the diagram where the layout will be replicated. The tool to paste layout is called &#8220;Paste Layout&#8221; and can be activated from the tab-bar or from the contextual menu (see 
+		<h4 id="paste_layout">Paste Layout (Semantic)</h4>
+		<p>The next picture shows the diagram where the layout will be replicated. The tool to paste layout is called &#8220;Paste Layout (Semantic)&#8221; and can be activated from the tab-bar or from the contextual menu (see 
 			<em>Edit</em> section).
 		</p>
 		<p>	
@@ -1125,7 +1128,7 @@
 			<strong>Warning</strong> : This copy/paste operation copies exactly what you see on a diagram. When using low zoom level, some diagram elements can be twisted and the paste operation will duplicate theses twistings on the other diagram. Please, zoom in to reduce twistings.
 		</p>
 		<h5 id="Twomodesforpastelayout">Two modes for paste layout</h5>
-		<p>Since Sirius 7.1.0, there are 2 modes to paste the layout. At each execution of the action &#8220;Paste format&#8221; or &#8220;Paste layout&#8221;, a dialog is displayed to choose the mode.</p>
+		<p>Since Sirius 7.1.0, there are 2 modes to paste the layout. At each execution of the action &#8220;Paste format (Semantic)&#8221; or &#8220;Paste layout (Semantic)&#8221;, a dialog is displayed to choose the mode.</p>
 		<p>	
 			<img border="0" src="images/pasteMode_dialog.png"/>
 		</p>
@@ -1165,7 +1168,7 @@
 			<img border="0" src="images/copyLayout_absoluteMode_sample1-2.png"/>
 		</p>
 		<ul>
-			<li>Launch the action &#8220;Paste layout&#8221;, expected result: The absolute coordinates of each element are preserved.</li>
+			<li>Launch the action &#8220;Paste layout (Semantic)&#8221;, expected result: The absolute coordinates of each element are preserved.</li>
 		</ul>
 		<p>	
 			<img border="0" src="images/copyLayout_absoluteMode_sample1-3.png"/>
@@ -1189,7 +1192,7 @@
 			<img border="0" src="images/copyLayout_boundingBoxMode_sample1-2.png"/>
 		</p>
 		<ul>
-			<li>Launch the action &#8220;Paste layout&#8221;, expected result: The origin of each group of brothers, in the target diagram,  are preserved (as you can see with guide on the horizontal and vertical rulers). And the layout of brothers, in the target diagram, is applied relative to each other.</li>
+			<li>Launch the action &#8220;Paste layout (Semantic)&#8221;, expected result: The origin of each group of brothers, in the target diagram,  are preserved (as you can see with guide on the horizontal and vertical rulers). And the layout of brothers, in the target diagram, is applied relative to each other.</li>
 		</ul>
 		<p>	
 			<img border="0" src="images/copyLayout_boundingBoxMode_sample1-3.png"/>
@@ -1207,7 +1210,7 @@
 		</p>
 		<ul>
 			<li>Select the diagram</li>
-			<li>Launch the action &#8220;Paste layout&#8221;, expected result: The layout of 4 functions are copied into RPL1 and RPL2. The origin of each group of functions is preserved.</li>
+			<li>Launch the action &#8220;Paste layout (Semantic)&#8221;, expected result: The layout of 4 functions are copied into RPL1 and RPL2. The origin of each group of functions is preserved.</li>
 		</ul>
 		<p>	
 			<img border="0" src="images/copyLayout_boundingBoxMode_sample2-2.png"/>
@@ -1220,7 +1223,7 @@
 			<img border="0" src="images/copyLayout_boundingBoxMode_sample2-3.png"/>
 		</p>
 		<ul>
-			<li>Launch the action &#8220;Paste layout&#8221; successively with RPL1 and RPL2 selected, expected result: The result is slightly different. The layout of REC is applied to RPL1 (only its size is modified, the location remains the same) and the layout of their children are applied. The layout of REC is applied to RPL2 (only its size is modified, the location remains the same) and the layout of their children are applied.</li>
+			<li>Launch the action &#8220;Paste layout (Semantic)&#8221; successively with RPL1 and RPL2 selected, expected result: The result is slightly different. The layout of REC is applied to RPL1 (only its size is modified, the location remains the same) and the layout of their children are applied. The layout of REC is applied to RPL2 (only its size is modified, the location remains the same) and the layout of their children are applied.</li>
 		</ul>
 		<p>	
 			<img border="0" src="images/copyLayout_boundingBoxMode_sample2-4.png"/>
@@ -1243,13 +1246,13 @@
 			<img border="0" src="images/copyLayout_boundingBoxMode_sample3-2.png"/>
 		</p>
 		<ul>
-			<li>Launch the action "Paste layout"</li>
+			<li>Launch the action "Paste layout (Semantic)"</li>
 		</ul>
 		<p>	
 			<img border="0" src="images/copyLayout_boundingBoxMode_sample3-3.png"/>
 		</p>
-		<h4 id="PasteStyle">Paste Style</h4>
-		<p>The next picture shows the diagram where the layout will be replicated. The tool to paste style is called &#8220;Paste Style&#8221; and can be activated from the tab-bar or from the contextual menu (see 
+		<h4 id="PasteStyleSemantic">Paste Style (Semantic)</h4>
+		<p>The next picture shows the diagram where the layout will be replicated. The tool to paste style is called &#8220;Paste Style (Semantic)&#8221; and can be activated from the tab-bar or from the contextual menu (see 
 			<em>Edit</em> section).
 		</p>
 		<p>	
@@ -1259,8 +1262,8 @@
 		<p>	
 			<img border="0" src="images/diagram_editor_paste_style2.png"/>
 		</p>
-		<h4 id="PasteFormat">Paste Format</h4>
-		<p>The next picture shows the diagram where the layout will be replicated. The tool to paste format is called &#8220;Paste Format&#8221; and can be activated from the tab-bar when the diagram is selected, from the contextual menu (see 
+		<h4 id="PasteFormatSemantic">Paste Format (Semantic)</h4>
+		<p>The next picture shows the diagram where the layout will be replicated. The tool to paste format is called &#8220;Paste Format (Semantic)&#8221; and can be activated from the tab-bar when the diagram is selected, from the contextual menu (see 
 			<em>Edit</em> section) or through the 
 			<em>Ctrl+Alt+Shift+V</em> shortcut.
 		</p>
@@ -1273,6 +1276,17 @@
 		</p>
 		<p>	
 			<img border="0" src="images/diagram_editor_paste_format2.png"/>
+		</p>
+		<h3 id="paste_style">Paste style</h3>
+		<p>The Paste Style button is used to copy the style from one diagram element to another. Elements can be in different diagrams, have different semantic elements, or even be of different types (for example, you can copy the style of a node to an edge), in which case style properties will be applied at best (some style properties may not be applied).</p>
+		<p>To copy a style from one element to another :
+			<br/>1. select the element whose style you wish to copy,
+			<br/>2. click on the Copy Style button in the toolbar or in the Edit submenu of the context menu,
+			<br/>3. select the elements to which the style is to be applied,
+			<br/>4. click on Paste Style in the toolbar or in the Edit submenu of the context menu.
+		</p>
+		<p>	
+			<img border="0" src="images/diagram_editor_paste_style.png"/>
 		</p>
 		<h3 id="paste_image">Paste image from clipboard</h3>
 		<p>It is also possible to paste an image from the clipboard to a node or container. To do this, copy the image in your clipboard, select a node and click on the button &#8220;Paste image from clipboard&#8221; (see picture below). The image is saved as a PNG file in the workspace, in an &#8220;images&#8221; folder and the selected element has a workspace image style that references this image.</p>
@@ -1859,9 +1873,23 @@
 		</p>
 		<p>
 			<img border="0" src="images/tabbar_paste_layout.png"/> 
-			<em>Paste Layout</em>. This button is only enabled if you have previously copied the layout of some elements in the clipboard, using the 
-			<em>Copy layout</em> action (only visible in the tab-bar when elements are select). 
-			<em>Paste layout</em> will apply the same size and positions which were copied in the clipboard to the corresponding elements in the current diagram. For the purpose of this command, the &#8220;corresponding elements&#8221; are the graphical elements which represent the same semantic objects.
+			<em>Paste</em>. This button contains several paste actions, it is only enabled if you have previously copied data. The default action of this button is paste style, Other actions are available in the menu by clicking on the arrow next to the button:
+			<br/>- 
+			<em>Paste Style</em>: paste the style of the element to another, it is only enabled if you have previously copied style.
+			<br/>- 
+			<em>Paste Format (Semantic)</em>: 
+			<em>Paste Layout (Semantic)</em> + 
+			<em>Paste Style (Semantic)</em>
+			<br/>- 
+			<em>Paste Layout (Semantic)</em>: it is only enabled if you have previously copied the format of some elements in the clipboard, using the 
+			<em>Copy Format</em> action (only visible in the tab-bar when elements are selected). 
+			<em>Paste Layout (Semantic)</em> will apply the same size and positions which were copied in the clipboard to the corresponding elements in the current diagram. For the purpose of this command, the &#8220;corresponding elements&#8221; are the graphical elements which represent the same semantic objects.
+			<br/>- 
+			<em>Paste Style (Semantic)</em>: it is only enabled if you have previously copied the format of some elements in the clipboard, using the 
+			<em>Copy format</em> action (only visible in the tab-bar when elements are selected). 
+			<em>Paste Style  (Semantic)</em> will apply the same style which were copied in the clipboard to the corresponding elements in the current diagram. For the purpose of this command, the &#8220;corresponding elements&#8221; are the graphical elements which represent the same semantic objects.
+			<br/>- 
+			<em>Paste Image From Clipboard</em>: paste the image from clipboard to the selected diagram elements, it is only enabled if there is an image in your clipboard and if the selected element can have an image.
 		</p>
 		<p>
 			<img border="0" src="images/tabbar_zoom.png"/> 
@@ -1936,9 +1964,13 @@
 		</p>
 		<p>
 			<img border="0" src="images/tabbar_copy_layout.png"/> 
-			<em>Copy Layout</em>. This tool can be used to duplicate the layout of some diagram elements from this diagram into another. This replication only applies to the same semantic elements between diagrams. First, select the set of elements of interest, and use this 
-			<em>Copy layout</em> action. Then go to the target diagram, and choose the 
-			<em>Paste layout</em> action from the tab-bar there.
+			<em>Copy format</em>. This tool can be used
+			<br/>- to duplicate the format of some diagram elements from this diagram into another. This replication only applies to the same semantic elements between diagrams. First, select the set of elements of interest, and use this 
+			<em>Copy Format</em> action. Then go to the target diagram, and choose the 
+			<em>Paste Format (Semantic)</em>, 
+			<em>Paste Layout (Semantic)</em> or 
+			<em>Paste Style (Semantic)</em> action from the tab-bar there.
+			<br/>- or to copy the style of a diagram element to any another diagram element.
 		</p>
 		<p>
 			<img border="0" src="images/tabbar_hide.png"/> 
@@ -1969,12 +2001,6 @@
 			<img border="0" src="images/tabbar_color_style_controls.png"/> 
 			<em>Color and Visual Style Controls</em>. The next group of buttons can be used to control some graphical attributes of the selected elements: fill color, line color and line style. The 
 			<em>Workspace image</em> button can be used to replace the graphical representation of an element by an image that you can select from anyware in your Eclipse workspace.
-		</p>
-		<p>
-			<img border="0" src="images/tabbar_cancel_custom_style.png"/> 
-			<em>Cancel Custom Style</em>. As soon as you modify manually any of the graphical properties of an element, the element&#8217;s style is marked as 
-			<em>customized</em>, and is not refreshed if its definition changes. The 
-			<em>Cancel Custom Style</em> button resets all the style attributes of an element to its default values and un-marks it as customized.
 		</p>
 		<p>
 			<img border="0" src="images/tabbar_apply_style.png"/> 

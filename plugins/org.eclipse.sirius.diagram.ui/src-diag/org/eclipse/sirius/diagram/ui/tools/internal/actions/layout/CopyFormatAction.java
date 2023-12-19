@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2002, 2023 IBM Corporation and others.
+ * Copyright (c) 2002, 2024 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -39,6 +39,7 @@ import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
+import org.eclipse.sirius.diagram.ui.tools.internal.commands.CopyStyleCommand;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl;
 import org.eclipse.sirius.diagram.ui.tools.internal.format.data.extension.FormatDataManagerRegistry;
 import org.eclipse.sirius.ext.base.Option;
@@ -138,6 +139,7 @@ public class CopyFormatAction extends AbstractCopyPasteFormatAction {
                 }
             }
         }
+        doStoreFormatsCmd.add(new CopyStyleCommand(getSelectedObjects()));
         doStoreFormatsCmd.add(new Command(Messages.CopyFormatAction_notifyEditors) {
             @Override
             public boolean canUndo() {
