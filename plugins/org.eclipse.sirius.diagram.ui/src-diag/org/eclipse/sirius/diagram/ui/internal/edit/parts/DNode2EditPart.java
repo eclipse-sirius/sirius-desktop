@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.StackLayout;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
@@ -40,9 +41,9 @@ import org.eclipse.sirius.diagram.ui.internal.edit.policies.DNode2ItemSemanticEd
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
-import org.eclipse.sirius.diagram.ui.tools.internal.figure.ViewNodeFigure;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.AirDefaultSizeNodeFigure;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
+import org.eclipse.sirius.diagram.ui.tools.internal.figure.ViewNodeFigure;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.util.AnchorProvider;
 import org.eclipse.sirius.viewpoint.DStylizable;
 
@@ -139,7 +140,6 @@ public class DNode2EditPart extends AbstractDiagramBorderNodeEditPart {
     /**
      * @not-generated
      */
-    @Override
     public ViewNodeFigure getPrimaryShape() {
         return (ViewNodeFigure) primaryShape;
     }
@@ -188,7 +188,7 @@ public class DNode2EditPart extends AbstractDiagramBorderNodeEditPart {
      * @not-generated
      */
     protected NodeFigure createNodePlate() {
-        DefaultSizeNodeFigure result = new AirDefaultSizeNodeFigure(10, 10, null);
+        DefaultSizeNodeFigure result = null;
         final EObject eObj = resolveSemanticElement();
         if (eObj instanceof DStylizable && eObj instanceof DDiagramElement) {
             final DStylizable viewNode = (DStylizable) eObj;
@@ -246,11 +246,10 @@ public class DNode2EditPart extends AbstractDiagramBorderNodeEditPart {
     @Override
     protected NodeFigure createMainFigure() {
         final NodeFigure figure = createNodePlate();
-        if (figure != null) {
-            final IFigure shape = createNodeShape();
-            figure.add(shape);
-            contentPane = setupContentPane(shape);
-        }
+        figure.setLayoutManager(new StackLayout());
+        final IFigure shape = createNodeShape();
+        figure.add(shape);
+        contentPane = setupContentPane(shape);
         return figure;
     }
 

@@ -21,7 +21,6 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InstanceRo
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartMoved;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartResized;
-import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
@@ -146,14 +145,12 @@ public class InstanceRoleResizableEditPolicyTests extends AbstractDefaultModelSe
         // Create a fourteenth InstanceRoleEditPart's figure named D
         String LIFELINE_D = "d";
         SWTBotGefEditPart instanceRoleEditPartDBot = createParticipant(LIFELINE_D, instanceRoleEditPartCBounds.getRight().x, LayoutConstants.LIFELINES_START_Y);
-        SWTBotUtils.waitAllUiEvents();
         LIFELINE_D += " : ";
 
         // Create a fourteenth InstanceRoleEditPart's figure named E and dropped
         // between LIFELINE_B and LIFELINE_C
         String LIFELINE_E = "e";
         createParticipant("e", instanceRoleEditPartCBounds.x - LayoutConstants.LIFELINES_MIN_X_GAP / 2, LayoutConstants.LIFELINES_START_Y);
-        SWTBotUtils.waitAllUiEvents();
         LIFELINE_E += " : ";
 
         assertEquals(origin, editor.getLocation(LIFELINE_A, InstanceRoleEditPart.class));
@@ -175,7 +172,6 @@ public class InstanceRoleResizableEditPolicyTests extends AbstractDefaultModelSe
         // Create a fourteenth InstanceRoleEditPart's figure named D
         String LIFELINE_D = "d";
         SWTBotGefEditPart instanceRoleEditPartDBot = createParticipant(LIFELINE_D, instanceRoleEditPartCBounds.getRight().x, LayoutConstants.LIFELINES_START_Y);
-        SWTBotUtils.waitAllUiEvents();
         LIFELINE_D += " : ";
         Rectangle instanceRoleEditPartDBounds = editor.getBounds(instanceRoleEditPartDBot);
 
@@ -183,7 +179,6 @@ public class InstanceRoleResizableEditPolicyTests extends AbstractDefaultModelSe
         // between LIFELINE_B and LIFELINE_C
         String LIFELINE_E = "e";
         SWTBotGefEditPart instanceRoleEditPartEBot = createParticipant(LIFELINE_E, instanceRoleEditPartDBounds.getTopRight().x, LayoutConstants.LIFELINES_START_Y);
-        SWTBotUtils.waitAllUiEvents();
         LIFELINE_E += " : ";
         Rectangle instanceRoleEditPartEBounds = editor.getBounds(instanceRoleEditPartEBot);
 
@@ -208,14 +203,12 @@ public class InstanceRoleResizableEditPolicyTests extends AbstractDefaultModelSe
         // Create a fourteenth InstanceRoleEditPart's figure named D
         String LIFELINE_D = "d";
         SWTBotGefEditPart instanceRoleEditPartDBot = createParticipant(LIFELINE_D, instanceRoleEditPartCBounds.getRight().x, LayoutConstants.LIFELINES_START_Y);
-        SWTBotUtils.waitAllUiEvents();
         LIFELINE_D += " : ";
         Rectangle instanceRoleEditPartDBounds = editor.getBounds(instanceRoleEditPartDBot);
 
         // Create a fourteenth InstanceRoleEditPart's figure named E
         String LIFELINE_E = "e";
         SWTBotGefEditPart instanceRoleEditPartEBot = createParticipant("e", instanceRoleEditPartDBounds.getTopRight().x, LayoutConstants.LIFELINES_START_Y);
-        SWTBotUtils.waitAllUiEvents();
         LIFELINE_E += " : ";
         Rectangle instanceRoleEditPartEBounds = editor.getBounds(instanceRoleEditPartEBot);
 
@@ -224,7 +217,6 @@ public class InstanceRoleResizableEditPolicyTests extends AbstractDefaultModelSe
         int delta = 10;
         ICondition condition = new CheckEditPartMoved(instanceRoleEditPartDBot);
         createMessage(InteractionsConstants.CREATE_TOOL_ID, LIFELINE_B, instanceRoleEditPartBBounds.getBottom().y + delta, LIFELINE_D, instanceRoleEditPartDBounds.y + 10);
-        SWTBotUtils.waitAllUiEvents();
         bot.waitUntil(condition);
 
         assertEquals(instanceRoleEditPartABounds.getLocation(), editor.getLocation(LIFELINE_A, InstanceRoleEditPart.class));
@@ -278,21 +270,18 @@ public class InstanceRoleResizableEditPolicyTests extends AbstractDefaultModelSe
         // Create a fourteenth InstanceRoleEditPart's figure named D
         String LIFELINE_D = "d";
         SWTBotGefEditPart instanceRoleEditPartDBot = createParticipant(LIFELINE_D, instanceRoleEditPartCBounds.getRight().x, LayoutConstants.LIFELINES_START_Y);
-        SWTBotUtils.waitAllUiEvents();
         LIFELINE_D += " : ";
         Rectangle instanceRoleEditPartDBounds = editor.getBounds(instanceRoleEditPartDBot);
 
         // Create a fourteenth InstanceRoleEditPart's figure named E
         String LIFELINE_E = "e";
         createParticipant("e", instanceRoleEditPartDBounds.getTopRight().x, LayoutConstants.LIFELINES_START_Y);
-        SWTBotUtils.waitAllUiEvents();
         LIFELINE_E += " : ";
 
         // Multiple moving of LIFELINE_A and LIFELINE_C on LIFELINE_D to have :
         // LIFELINE_B, LIFELINE_A, LIFELINE_D, LIFELINE_E and LIFELINE_C order
         editor.select(instanceRoleEditPartABot.parent(), instanceRoleEditPartCBot.parent());
         editor.drag(instanceRoleEditPartABot.parent(), instanceRoleEditPartCBounds.getTopRight().x, origin.y);
-        SWTBotUtils.waitAllUiEvents();
 
         assertEquals(instanceRoleEditPartBBounds.getLocation(), editor.getLocation(LIFELINE_B, InstanceRoleEditPart.class));
         Point instanceRoleEditPartAFutureLocation = instanceRoleEditPartCBounds.getTopRight();
