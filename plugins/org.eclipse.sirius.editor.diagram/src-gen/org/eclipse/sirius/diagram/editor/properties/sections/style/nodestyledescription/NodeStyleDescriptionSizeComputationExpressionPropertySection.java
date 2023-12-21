@@ -16,6 +16,7 @@ package org.eclipse.sirius.diagram.editor.properties.sections.style.nodestyledes
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.sirius.diagram.description.style.SquareDescription;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
@@ -34,8 +35,6 @@ import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
-import com.google.common.collect.Iterables;
 
 // End of user code imports
 
@@ -164,13 +163,26 @@ public class NodeStyleDescriptionSizeComputationExpressionPropertySection extend
         String superTooltip = super.getToolTipText();
         String tooltip;
 
-        if (needsCustomTooltip()) {
+        if (needsWorkspaceImageCustomTooltip()) {
             StringBuilder sb = new StringBuilder();
             sb.append("-1 will force the node to have the real image size.");
+
             sb.append("\n");
             sb.append(superTooltip);
             tooltip = sb.toString();
-        } else {
+        } else if (needsSquareStyleCustomTooltip()) {
+            StringBuilder sb = new StringBuilder();
+            sb.append("Special cases:\n");
+            sb.append("  - size expression will not be computed if empty or if both width and height are greater than 0,\n");
+            sb.append("  - result lower than 0 will be corrected to 0,\n");
+            sb.append("  - if width and height are both set to -1, size expression result will be used as minimal/preferred size,"
+                    + " but concrete size will be auto-sized to the label content unless manually resized by the user.\n");
+            sb.append("\n");
+            sb.append(superTooltip);
+            tooltip = sb.toString();
+        } else
+
+        {
             tooltip = superTooltip;
         }
 
@@ -182,7 +194,7 @@ public class NodeStyleDescriptionSizeComputationExpressionPropertySection extend
         super.setInput(part, selection);
 
         // update tooltip and help
-        if (needsCustomTooltip()) {
+        if (needsWorkspaceImageCustomTooltip() || needsSquareStyleCustomTooltip()) {
             String toolTipText = getToolTipText();
 
             text.setToolTipText(toolTipText);
@@ -190,9 +202,15 @@ public class NodeStyleDescriptionSizeComputationExpressionPropertySection extend
         }
     }
 
-    private boolean needsCustomTooltip() {
+    private boolean needsWorkspaceImageCustomTooltip() {
         boolean customEObjectTooltip = eObject instanceof WorkspaceImageDescription;
-        boolean customEObjectListTooltip = eObjectList != null && !eObjectList.isEmpty() && !Iterables.isEmpty(Iterables.filter(eObjectList, WorkspaceImageDescription.class));
+        boolean customEObjectListTooltip = eObjectList != null && !eObjectList.isEmpty() && eObjectList.stream().anyMatch(WorkspaceImageDescription.class::isInstance);
+        return customEObjectTooltip || customEObjectListTooltip;
+    }
+
+    private boolean needsSquareStyleCustomTooltip() {
+        boolean customEObjectTooltip = eObject instanceof SquareDescription;
+        boolean customEObjectListTooltip = eObjectList != null && !eObjectList.isEmpty() && eObjectList.stream().anyMatch(SquareDescription.class::isInstance);
         return customEObjectTooltip || customEObjectListTooltip;
     }
 
