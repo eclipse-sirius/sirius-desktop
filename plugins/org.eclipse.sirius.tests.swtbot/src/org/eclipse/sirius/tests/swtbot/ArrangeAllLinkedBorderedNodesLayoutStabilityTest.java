@@ -383,20 +383,25 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      */
     public void testArrangeLinkedBorderNodesIgnorePin() throws Exception {
         final String prefKey = SiriusDiagramPreferencesKeys.PREF_MOVE_PINNED_ELEMENTS.name();
+        try {
+            editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC3, REPRESENTATION_INSTANCE_NAME_UC6, DDiagram.class, true, true);
 
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC3, REPRESENTATION_INSTANCE_NAME_UC6, DDiagram.class, true, true);
+            pinAll();
 
-        pinAll();
+            // enable "Move Pinned Elements" option
+            assertFalse("Wrong initial state for Move Pinned Elements", InstanceScope.INSTANCE.getNode(DiagramPlugin.ID).getBoolean(prefKey, false));
+            movePinnedElements();
+            assertTrue("Wrong state for Move Pinned Elements after enabled", InstanceScope.INSTANCE.getNode(DiagramPlugin.ID).getBoolean(prefKey, false));
 
-        // enable "Move Pinned Elements" option
-        assertFalse("Wrong initial state for Move Pinned Elements", InstanceScope.INSTANCE.getNode(DiagramPlugin.ID).getBoolean(prefKey, false));
-        movePinnedElements();
-        assertTrue("Wrong state for Move Pinned Elements after enabled", InstanceScope.INSTANCE.getNode(DiagramPlugin.ID).getBoolean(prefKey, false));
-
-        // activate the "Arrange Linked Border Nodes" action
-        arrangeLinkedBorderedNodes();
-        // Validate the positions of the border nodes.
-        validatePositions(true);
+            // activate the "Arrange Linked Border Nodes" action
+            arrangeLinkedBorderedNodes();
+            // Validate the positions of the border nodes.
+            validatePositions(true);
+        } finally {
+            if (InstanceScope.INSTANCE.getNode(DiagramPlugin.ID).getBoolean(prefKey, false)) {
+                InstanceScope.INSTANCE.getNode(DiagramPlugin.ID).remove(prefKey);
+            }
+        }
     }
 
     /**
