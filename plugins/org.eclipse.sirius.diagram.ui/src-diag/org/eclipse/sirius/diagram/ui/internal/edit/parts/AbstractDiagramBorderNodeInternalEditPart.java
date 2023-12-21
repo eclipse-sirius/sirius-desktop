@@ -105,7 +105,7 @@ public abstract class AbstractDiagramBorderNodeInternalEditPart extends Abstract
      * @not-generated
      */
     protected NodeFigure createNodePlate() {
-        DefaultSizeNodeFigure result = null;
+        DefaultSizeNodeFigure result = new AirDefaultSizeNodeFigure(10, 10, null);
         final EObject eObj = resolveSemanticElement();
         if (eObj instanceof DStylizable && eObj instanceof DDiagramElement) {
             final DStylizable viewNode = (DStylizable) eObj;
