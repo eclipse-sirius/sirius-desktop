@@ -52,9 +52,9 @@ import org.eclipse.sirius.tests.swtbot.layout.ContainerAndNodeCopyPasteFormatTes
 import org.eclipse.sirius.tests.swtbot.layout.ContainerDefaultSizeLayoutTest;
 import org.eclipse.sirius.tests.swtbot.layout.EdgeAndPortStabilityOnSemanticChangeTest;
 import org.eclipse.sirius.tests.swtbot.layout.EdgeCopyPasteFormatTest;
+import org.eclipse.sirius.tests.swtbot.layout.EdgeLabelsAlignAndDistributeTests;
 import org.eclipse.sirius.tests.swtbot.layout.EdgeLayoutStabilityWithToolWizardTest;
 import org.eclipse.sirius.tests.swtbot.layout.EdgeStabilityOnCopyPasteLayoutTest;
-import org.eclipse.sirius.tests.swtbot.layout.EdgeLabelsAlignAndDistributeTests;
 import org.eclipse.sirius.tests.swtbot.layout.LayoutStabilityOnManualRefreshTest;
 import org.eclipse.sirius.tests.swtbot.layout.ModifyEdgeLayoutAfterRefreshTest;
 import org.eclipse.sirius.tests.swtbot.layout.PackageLayoutStabilityOnManyViewsCreationToolTest;
@@ -353,6 +353,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(EditPartSelectionTest.class);
         suite.addTestSuite(LabelFontModificationsTest.class);
         suite.addTestSuite(CreatedElementsLayoutTests.class);
+        suite.addTestSuite(SizeComputationExpressionTest.class);
     }
 
     /**
