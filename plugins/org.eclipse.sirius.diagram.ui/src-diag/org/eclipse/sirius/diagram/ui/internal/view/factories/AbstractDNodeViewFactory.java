@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -37,8 +37,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 
 /**
- * Abstract view factory to gather the creation of the different type of view
- * created from DNode.
+ * Abstract view factory to gather the creation of the different type of view created from DNode.
  * 
  * @author mporhel
  * 
@@ -122,10 +121,9 @@ public abstract class AbstractDNodeViewFactory extends AbstractDesignerNodeFacto
     }
 
     private void updateLayoutConstraint(View view, IAdaptable semanticAdapter) {
-        if (view instanceof Node && ((Node) view).getLayoutConstraint() instanceof Size) {
-            Size size = (Size) ((Node) view).getLayoutConstraint();
+        if (view instanceof Node node && ((Node) view).getLayoutConstraint() instanceof Size size) {
             DNode viewNode = semanticAdapter.getAdapter(DNode.class);
-            if (viewNode != null) {
+            if (viewNode != null && !new org.eclipse.sirius.diagram.business.api.query.DNodeQuery(viewNode).isAutoSize()) {
                 Dimension defaultDimension = new DNodeQuery(viewNode).getDefaultDimension();
                 size.setHeight(defaultDimension.height);
                 size.setWidth(defaultDimension.width);

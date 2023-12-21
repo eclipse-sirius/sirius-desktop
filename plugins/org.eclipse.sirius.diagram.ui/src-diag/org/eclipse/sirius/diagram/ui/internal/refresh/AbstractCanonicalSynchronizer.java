@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2023 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -83,9 +83,9 @@ import com.google.common.collect.Sets;
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
  */
 public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchronizer {
-    
+
     private final static boolean STANDARD_LAYOUT_FOR_CREATED_REGION_CONTENT = Boolean.getBoolean("org.eclipse.sirius.diagram.ui.internal.region.content.canonical.layout.standard"); //$NON-NLS-1$
-    
+
     /**
      * Say if we should store created views to layout in SiriusLayoutDataManager.
      */
@@ -196,7 +196,6 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
             setRegionsContainerAsImpacted(gmfView, isRegionsContainer, isPartOfRegionsContainer);
         }
 
-
         // create a view for each remaining semantic element.
         Set<View> createdViews = createViews(semanticChildren, gmfView.getType(), gmfView);
 
@@ -237,7 +236,7 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
      * @param gmfView
      *            The concerned view (corresponding to the regions container itself or one of its sub-part)
      * @param isRegionsContainer
-     *                                     true is the current view represents the regions container, false otherwise
+     *            true is the current view represents the regions container, false otherwise
      * @param isPartOfRegionsContainer
      *            true is the current view represents the regions container or a sub-part of the regions container (as
      *            CompartmentView for example), false otherwise
@@ -694,9 +693,11 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
                     // which layout is managed with RegionContainerUpdateLayoutOperation.
                     if (layoutData == null && SiriusLayoutDataManager.INSTANCE.getData().some() && !(new DNodeContainerExperimentalQuery((DNodeContainer) parent).isRegionContainer())) {
 
-                        // Skip centered layout for region content when the region has been created by the user operation (it already has a
+                        // Skip centered layout for region content when the region has been created by the user
+                        // operation (it already has a
                         // layout marker).
-                        // TODO for future version: generalize this to content of created DNodeContainer elements to have only the first level
+                        // TODO for future version: generalize this to content of created DNodeContainer elements to
+                        // have only the first level
                         // of created view which will be centered but not their content.
                         boolean skip = false;
                         if (STANDARD_LAYOUT_FOR_CREATED_REGION_CONTENT && new DDiagramElementContainerExperimentalQuery((DNodeContainer) parent).isRegion()) {
@@ -765,8 +766,8 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
 
     private Dimension getDefaultSize(AbstractDNode abstractDNode) {
         Dimension defaultSize = new Dimension(-1, -1);
-        if (abstractDNode instanceof DNode) {
-            defaultSize = new DNodeQuery((DNode) abstractDNode).getDefaultDimension();
+        if (abstractDNode instanceof DNode viewNode && !new org.eclipse.sirius.diagram.business.api.query.DNodeQuery(viewNode).isAutoSize()) {
+            defaultSize = new DNodeQuery(viewNode).getDefaultDimension();
         }
         return defaultSize;
     }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2023 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -28,6 +28,7 @@ import org.eclipse.sirius.diagram.CollapseFilter;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
+import org.eclipse.sirius.diagram.business.api.query.DNodeQuery;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.PortLayoutHelper;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode4EditPart;
@@ -149,10 +150,14 @@ public class NodeQuery {
      */
     protected Dimension getDefaultDim(DDiagramElement element) {
         Dimension dim;
-        if (element instanceof DNode) {
-            int originalDNodeWidth = ((DNode) element).getWidth();
-            int originalDNodeHeight = ((DNode) element).getHeight();
-            dim = new Dimension(originalDNodeWidth * LayoutUtils.SCALE, originalDNodeHeight * LayoutUtils.SCALE);
+        if (element instanceof DNode viewNode) {
+            if (new DNodeQuery(viewNode).isAutoSize()) {
+                dim = new Dimension(-1, -1);
+            } else {
+                int originalDNodeWidth = ((DNode) element).getWidth();
+                int originalDNodeHeight = ((DNode) element).getHeight();
+                dim = new Dimension(originalDNodeWidth * LayoutUtils.SCALE, originalDNodeHeight * LayoutUtils.SCALE);
+            }
         } else {
             // TODO FBA: set default VSM dim if filter dim are
             // zero.

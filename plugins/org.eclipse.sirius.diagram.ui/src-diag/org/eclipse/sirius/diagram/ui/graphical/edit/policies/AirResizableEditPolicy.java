@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -43,6 +43,7 @@ import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.NodeStyle;
+import org.eclipse.sirius.diagram.business.api.query.DNodeQuery;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.validators.ResizeValidator;
@@ -66,9 +67,8 @@ public class AirResizableEditPolicy extends ResizableShapeEditPolicy {
     /**
      * {@inheritDoc}
      * 
-     * Use our own ResizeTracker to set the "flag"
-     * SiriusResizeTracker.FIX_CHILDREN_KEY when the corresponding shortcut is
-     * pressed.
+     * Use our own ResizeTracker to set the "flag" SiriusResizeTracker.FIX_CHILDREN_KEY when the corresponding shortcut
+     * is pressed.
      */
     @Override
     protected ResizeTracker getResizeTracker(int direction) {
@@ -84,9 +84,10 @@ public class AirResizableEditPolicy extends ResizableShapeEditPolicy {
     protected Command getAutoSizeCommand(final Request request) {
         if (this.getHost() instanceof IDiagramNodeEditPart) {
             final EObject eObject = ((IGraphicalEditPart) this.getHost()).resolveSemanticElement();
-            if (eObject instanceof DNode) {
-                final NodeStyle nodeStyle = (NodeStyle) ((DNode) eObject).getStyle();
-                if (nodeStyle != null && nodeStyle.getLabelPosition() == LabelPosition.NODE_LITERAL) {
+            if (eObject instanceof DNode node) {
+                final NodeStyle nodeStyle = (NodeStyle) node.getStyle();
+                // Keep standard auto-size command (setting GMF size to (-1,-1) for auto-sized nodes)
+                if (nodeStyle != null && nodeStyle.getLabelPosition() == LabelPosition.NODE_LITERAL && !new DNodeQuery(node).isAutoSize()) {
                     final DNode viewNode = (DNode) eObject;
                     final SiriusWrapLabel label = ((IDiagramNodeEditPart) getHost()).getNodeLabel();
                     final Style style = viewNode.getStyle();
@@ -194,10 +195,9 @@ public class AirResizableEditPolicy extends ResizableShapeEditPolicy {
     }
 
     /**
-     * Build a specific command from the request that resize the edit part as
-     * the normal command and call completeResizeCommand to add sub-commands to
-     * handle children/sibling/parent elements if required. Then add a command
-     * to keep the edges centered if needed.
+     * Build a specific command from the request that resize the edit part as the normal command and call
+     * completeResizeCommand to add sub-commands to handle children/sibling/parent elements if required. Then add a
+     * command to keep the edges centered if needed.
      * 
      * @param request
      *            the resize request
@@ -223,20 +223,17 @@ public class AirResizableEditPolicy extends ResizableShapeEditPolicy {
      * Add a command to change the location of children if needed:
      * <UL>
      * <LI>border nodes: to avoid an unexpected change of side</LI>
-     * <LI>children nodes (container or not): The GMF coordinates of these nodes
-     * are moved in order to keep these nodes at the same location graphically
-     * (on screen). The GMF coordinates of these nodes are relative to its
-     * parent.</LI>
+     * <LI>children nodes (container or not): The GMF coordinates of these nodes are moved in order to keep these nodes
+     * at the same location graphically (on screen). The GMF coordinates of these nodes are relative to its parent.</LI>
      * </UL>
      * 
-     * This method can be overridden to add specific resize task to affect
-     * children, parent or sibling elements.
+     * This method can be overridden to add specific resize task to affect children, parent or sibling elements.
      * 
      * @param ctc
      *            the {@link CompositeTransactionalCommand} to complete.
      * @param request
      *            the initial request.
-     * */
+     */
     protected void completeResizeCommand(CompositeTransactionalCommand ctc, ChangeBoundsRequest request) {
         ctc.add(new ChildrenAdjustmentCommand((IGraphicalEditPart) getHost(), request));
     }

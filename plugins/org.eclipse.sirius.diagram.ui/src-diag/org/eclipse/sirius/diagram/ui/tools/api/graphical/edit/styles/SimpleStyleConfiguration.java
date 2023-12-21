@@ -33,6 +33,7 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.common.tools.api.resource.FileProvider;
+import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.BorderedStyle;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -40,6 +41,7 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.ResizeKind;
+import org.eclipse.sirius.diagram.business.api.query.DNodeQuery;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
@@ -265,15 +267,34 @@ public class SimpleStyleConfiguration implements StyleConfiguration {
             final int hHeight = (int) (nbLines * charHeight);
             final int hWidth = (int) (nbCols * charWidth);
 
-            final Dimension size = nodeLabel.getPreferredSize(hWidth + nodeLabel.getIconBounds().width + nodeLabel.getIconTextGap(), hHeight).getCopy();
+            int wHint = hWidth + nodeLabel.getIconBounds().width + nodeLabel.getIconTextGap();
+            int hHint = hHeight;
+            final Insets borderDimension = this.getBorderDimension(node);
+            // 
+            if (new DNodeQuery(node).isAutoSize()) {
+                // In auto-size provide constraints from the computed size as preferred size.
+                Dimension size = defaultSizeNodeFigure.getSize();
+                //@formatter:off
+                Dimension maximumSize = ReflectionHelper.getFieldValueWithoutException(defaultSizeNodeFigure, "maxSize") //$NON-NLS-1$
+                        .filter(Dimension.class::isInstance)
+                        .map(Dimension.class::cast)
+                        .orElse(size);
+                //@formatter:on
+                if (maximumSize.width != -1) {
+                    wHint = size.width - 20 - borderDimension.left - borderDimension.right;
+                }
+                if (maximumSize.height != -1) {
+                    hHint = size.height - 20 - borderDimension.top - borderDimension.bottom;
+                }
+            }
+
+            final Dimension size = nodeLabel.getPreferredSize(wHint, hHint).getCopy();
 
             size.setWidth(size.width + 20);
             size.setHeight(size.height + 30);
 
-            final Insets borderDimension = this.getBorderDimension(node);
             size.setWidth(size.width + borderDimension.left + borderDimension.right);
             size.setHeight(size.height + borderDimension.top + borderDimension.bottom);
-
             return size;
         }
         return defaultSizeNodeFigure.getBounds().getSize().getCopy();
