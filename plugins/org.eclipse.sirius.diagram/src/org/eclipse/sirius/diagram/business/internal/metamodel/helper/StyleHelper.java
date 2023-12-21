@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -1121,7 +1121,7 @@ public final class StyleHelper {
         }
         if (style.eContainer() instanceof DNode) {
             final DNode node = (DNode) style.eContainer();
-            if (style.getWidth() != 0 && style.getHeight() != 0) {
+            if (style.getWidth() > 0 && style.getHeight() > 0) {
                 if (node.getWidth() == null || node.getWidth().intValue() != style.getWidth().intValue()) {
                     node.setWidth(style.getWidth());
                 }
@@ -1129,6 +1129,7 @@ public final class StyleHelper {
                     node.setHeight(style.getHeight());
                 }
             } else {
+                // SquareStyleDescription::width/height: -1 or 0
                 setComputedSize(node, description);
             }
         }
@@ -1557,12 +1558,12 @@ public final class StyleHelper {
      * 
      * @param node
      *            Node
-     * @param style
-     *            Node style. May be <code>null</code>
+     * @param description
+     *            Node style description. May be <code>null</code>
      */
-    public void setComputedSize(DNode node, NodeStyleDescription style) {
-        if (style != null && !StringUtil.isEmpty(style.getSizeComputationExpression())) {
-            Integer computedSize = computeStyleSize(node.getTarget(), style);
+    public void setComputedSize(DNode node, NodeStyleDescription description) {
+        if (description != null && !StringUtil.isEmpty(description.getSizeComputationExpression())) {
+            Integer computedSize = computeStyleSize(node.getTarget(), description);
             safeSetComputedSize(node, computedSize);
         }
     }
