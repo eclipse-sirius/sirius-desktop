@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -971,7 +971,7 @@ public final class StyleHelper {
                     node.setWidth(size);
                 }
             } else {
-                safeSetComputedSize(node, size);
+                safeSetComputedSize(node, size, description, image);
             }
         }
     }
@@ -1121,7 +1121,7 @@ public final class StyleHelper {
         }
         if (style.eContainer() instanceof DNode) {
             final DNode node = (DNode) style.eContainer();
-            if (style.getWidth() != 0 && style.getHeight() != 0) {
+            if (style.getWidth() > 0 && style.getHeight() > 0) {
                 if (node.getWidth() == null || node.getWidth().intValue() != style.getWidth().intValue()) {
                     node.setWidth(style.getWidth());
                 }
@@ -1129,7 +1129,8 @@ public final class StyleHelper {
                     node.setHeight(style.getHeight());
                 }
             } else {
-                setComputedSize(node, description);
+                // SquareStyleDescription::width/height: -1 or 0
+                setComputedSize(node, description, style);
             }
         }
     }
@@ -1217,10 +1218,10 @@ public final class StyleHelper {
                         }
                     }
                 } else {
-                    setComputedSize(node, description);
+                    setComputedSize(node, description, style);
                 }
             } else {
-                setComputedSize(node, description);
+                setComputedSize(node, description, style);
             }
         }
     }
@@ -1287,10 +1288,10 @@ public final class StyleHelper {
                         }
                     }
                 } else {
-                    setComputedSize(node, description);
+                    setComputedSize(node, description, style);
                 }
             } else {
-                setComputedSize(node, description);
+                setComputedSize(node, description, style);
             }
         }
     }
@@ -1560,14 +1561,26 @@ public final class StyleHelper {
      * @param style
      *            Node style. May be <code>null</code>
      */
-    public void setComputedSize(DNode node, NodeStyleDescription style) {
-        if (style != null && !StringUtil.isEmpty(style.getSizeComputationExpression())) {
-            Integer computedSize = computeStyleSize(node.getTarget(), style);
-            safeSetComputedSize(node, computedSize);
+    public void setComputedSize(DNode node, NodeStyleDescription description) {
+        setComputedSize(node, description, null);
+    }
+
+    /**
+     * Set width and height from "SizeComputationExpression".
+     * 
+     * @param node
+     *            Node
+     * @param style
+     *            Node style. May be <code>null</code>
+     */
+    private void setComputedSize(DNode node, NodeStyleDescription description, NodeStyle style) {
+        if (description != null && !StringUtil.isEmpty(description.getSizeComputationExpression())) {
+            Integer computedSize = computeStyleSize(node.getTarget(), description);
+            safeSetComputedSize(node, computedSize, description, style);
         }
     }
 
-    private void safeSetComputedSize(DNode node, Integer computedSize) {
+    private void safeSetComputedSize(DNode node, Integer computedSize, NodeStyleDescription description, NodeStyle style) {
         if (computedSize.intValue() >= 0) {
             if (!computedSize.equals(node.getWidth())) {
                 node.setWidth(computedSize);
