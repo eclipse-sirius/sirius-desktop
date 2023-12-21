@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -73,9 +73,14 @@ public class DNodeQuery {
                 result.setHeight(node.getHeight().intValue());
             }
 
-            // Adapt to draw2D
-            result.setWidth(result.width * LayoutUtils.SCALE);
-            result.setHeight(result.height * LayoutUtils.SCALE);
+            // Adapt to draw2D if not in auto-size
+            if (result.width != -1) {
+                result.setWidth(result.width * LayoutUtils.SCALE);
+            }
+
+            if (result.height != -1) {
+                result.setHeight(result.height * LayoutUtils.SCALE);
+            }
         }
 
         return result;
