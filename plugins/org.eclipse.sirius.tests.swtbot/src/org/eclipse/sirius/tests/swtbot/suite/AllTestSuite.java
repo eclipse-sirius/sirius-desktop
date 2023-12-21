@@ -355,6 +355,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(EditPartSelectionTest.class);
         suite.addTestSuite(LabelFontModificationsTest.class);
         suite.addTestSuite(CreatedElementsLayoutTests.class);
+        suite.addTestSuite(AutoSizeSquareStyleDescriptionTest.class);
     }
 
     /**
