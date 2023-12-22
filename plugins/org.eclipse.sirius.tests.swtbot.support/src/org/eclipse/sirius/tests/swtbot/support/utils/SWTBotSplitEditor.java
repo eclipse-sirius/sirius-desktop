@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,18 +12,11 @@
  */
 package org.eclipse.sirius.tests.swtbot.support.utils;
 
-import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import org.apache.log4j.Logger;
 import org.eclipse.sirius.tests.swtbot.support.internal.DesignerSWTBotTestsSupportPlugin;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swtbot.eclipse.gef.finder.SWTBotGefTestCase;
-import org.eclipse.swtbot.swt.finder.SWTBotTestCase;
-import org.eclipse.swtbot.swt.finder.utils.ClassUtils;
-import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
-import org.eclipse.swtbot.swt.finder.utils.SWTUtils;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
@@ -40,7 +33,7 @@ import org.eclipse.ui.internal.WorkbenchPage;
  * 
  */
 @SuppressWarnings("restriction")
-public final class SWTBotSplitEditor extends SWTBotGefTestCase {
+public final class SWTBotSplitEditor {
 
     /**
      * To test that the editor can be splits. With eclipse 4.2 this code not
@@ -48,29 +41,17 @@ public final class SWTBotSplitEditor extends SWTBotGefTestCase {
      */
     private static boolean editorSplit = true;
 
-    /** Counts the screenshots to determine if maximum number is reached. */
-    private static int screenshotCounter;
-
-    /** The logger. */
-    private static Logger log = Logger.getLogger(SWTBotTestCase.class);
-
     /**
      * Avoid instantiation.
      */
     private SWTBotSplitEditor() {
-
     }
 
     /**
      * Split the editor area if there is at least two editors in it.
      */
     public static void splitEditorArea() {
-        Display.getDefault().syncExec(new Runnable() {
-            @Override
-            public void run() {
-                doSplitEditorArea();
-            }
-        });
+        Display.getDefault().syncExec(SWTBotSplitEditor::doSplitEditorArea);
     }
 
     private static void doSplitEditorArea() {
@@ -130,13 +111,7 @@ public final class SWTBotSplitEditor extends SWTBotGefTestCase {
                     SWTBotSplitEditor.setEditor_split(false);
                 }
             }
-        } catch (IllegalAccessException iae) {
-            SWTBotSplitEditor.setEditor_split(false);
-        } catch (NoSuchMethodException nsme) {
-            SWTBotSplitEditor.setEditor_split(false);
-        } catch (InvocationTargetException iae) {
-            SWTBotSplitEditor.setEditor_split(false);
-        } catch (ClassNotFoundException cnfe) {
+        } catch (IllegalAccessException | NoSuchMethodException | InvocationTargetException | ClassNotFoundException iae) {
             SWTBotSplitEditor.setEditor_split(false);
         }
     }
@@ -161,13 +136,7 @@ public final class SWTBotSplitEditor extends SWTBotGefTestCase {
             paramTypes[1] = workbenchPage.getClass();
             Method newEditorWorkbook = editorStackClass.getMethod("newEditorWorkbook", paramTypes);
             newWorkbook = newEditorWorkbook.invoke(null, editorSashContainer, workbenchPage);
-        } catch (IllegalAccessException iae) {
-            return newWorkbook;
-        } catch (NoSuchMethodException nsme) {
-            return newWorkbook;
-        } catch (InvocationTargetException iae) {
-            return newWorkbook;
-        } catch (ClassNotFoundException cnfe) {
+        } catch (IllegalAccessException | NoSuchMethodException | InvocationTargetException | ClassNotFoundException iae) {
             return newWorkbook;
         }
         return newWorkbook;
@@ -187,48 +156,4 @@ public final class SWTBotSplitEditor extends SWTBotGefTestCase {
     public static void setEditor_split(boolean editor_split) {
         SWTBotSplitEditor.editorSplit = editor_split;
     }
-
-    // CHECKSTYLE:OFF
-    /**
-     * Method override to use a specific captureScreenshot() that uses the
-     * constant SWTBotPreferences.SCREENSHOTS_DIR instead of a hard coded folder
-     * name.
-     */
-    @Override
-    public void runBare() throws Throwable {
-        Throwable exception = null;
-        try {
-            super.runBare();
-        } catch (Throwable running) {
-            exception = running;
-            captureScreenshot();
-        }
-        if (exception != null)
-            throw exception;
-    }
-
-    /**
-     * Helper used by {@link #runBare()}. Duplicate from
-     * {@link SWTBotTestCase#captureScreenshot()} to use the constant
-     * SWTBotPreferences.SCREENSHOTS_DIR instead of a hard coded folder.
-     * 
-     * @see #runBare()
-     */
-    private void captureScreenshot() {
-        try {
-            int maximumScreenshots = SWTBotPreferences.MAX_ERROR_SCREENSHOT_COUNT;
-            String fileName = SWTBotPreferences.SCREENSHOTS_DIR + "/screenshot-" + ClassUtils.simpleClassName(getClass()) + "." + getName() + "." //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                    + SWTBotPreferences.SCREENSHOT_FORMAT.toLowerCase();
-            if (++screenshotCounter <= maximumScreenshots) {
-                new File(SWTBotPreferences.SCREENSHOTS_DIR).mkdirs(); //$NON-NLS-1$
-                SWTUtils.captureScreenshot(fileName);
-            } else {
-                log.info("No screenshot captured for '" + ClassUtils.simpleClassName(getClass()) + "." + getName() //$NON-NLS-1$ //$NON-NLS-2$
-                        + "' because maximum number of screenshots reached: " + maximumScreenshots); //$NON-NLS-1$
-            }
-        } catch (Exception e) {
-            log.warn("Could not capture screenshot", e); //$NON-NLS-1$
-        }
-    }
-    // CHECKSTYLE:ON
 }
