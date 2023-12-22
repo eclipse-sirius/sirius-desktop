@@ -29,7 +29,6 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.ILogListener;
@@ -177,9 +176,6 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
 
     /** Counts the screenshots to determine if maximum number is reached. */
     private static int screenshotCounter;
-
-    /** The logger. */
-    private static Logger log = Logger.getLogger(SWTBotTestCase.class);
     
     private static final Version PLATFORM_VERSION = Platform.getBundle("org.eclipse.core.runtime").getVersion();
 
@@ -1992,20 +1988,11 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
                 new File(SWTBotPreferences.SCREENSHOTS_DIR).mkdirs();
                 SWTUtils.captureScreenshot(fileName);
             } else {
-                if (log != null) {
-                    log.info("No screenshot captured for '" + ClassUtils.simpleClassName(getClass()) + POINT + getName() + "' because maximum number of screenshots reached: " + maximumScreenshots);
-                } else {
-                    System.err.println("ERR: No screenshot captured for '" + ClassUtils.simpleClassName(getClass()) + POINT + getName() + "' because maximum number of screenshots reached: "
-                            + maximumScreenshots);
-                }
+                System.err.println("ERR: No screenshot captured for '" + ClassUtils.simpleClassName(getClass()) + POINT + getName() + "' because maximum number of screenshots reached: " + maximumScreenshots);
             }
         } catch (Exception e) {
-            if (log != null) {
-                log.warn("Could not capture screenshot", e);
-            } else {
-                System.err.println("ERR: Could not capture screenshot:");
-                e.printStackTrace();
-            }
+            System.err.println("ERR: Could not capture screenshot:");
+            e.printStackTrace();
         }
     }
     // CHECKSTYLE:ON
