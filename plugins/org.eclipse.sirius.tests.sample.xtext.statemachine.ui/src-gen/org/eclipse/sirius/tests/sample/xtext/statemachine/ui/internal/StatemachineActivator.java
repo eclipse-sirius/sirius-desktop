@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Copyright (c) 2018 Obeo.
+* Copyright (c) 2018, 2023 Obeo.
 * This program and the accompanying materials
 * are made available under the terms of the Eclipse Public License 2.0
 * which accompanies this distribution, and is available at
@@ -16,7 +16,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
 import org.eclipse.sirius.tests.sample.xtext.StatemachineRuntimeModule;
 import org.eclipse.sirius.tests.sample.xtext.ui.StatemachineUiModule;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -35,8 +34,6 @@ import com.google.inject.Module;
 public class StatemachineActivator extends AbstractUIPlugin {
 
 	public static final String ORG_ECLIPSE_SIRIUS_TESTS_SAMPLE_XTEXT_STATEMACHINE = "org.eclipse.sirius.tests.sample.xtext.Statemachine";
-	
-	private static final Logger logger = Logger.getLogger(StatemachineActivator.class);
 	
 	private static StatemachineActivator INSTANCE;
 	
@@ -77,8 +74,8 @@ public class StatemachineActivator extends AbstractUIPlugin {
 			Module mergedModule = Modules2.mixin(runtimeModule, sharedStateModule, uiModule);
 			return Guice.createInjector(mergedModule);
 		} catch (Exception e) {
-			logger.error("Failed to create injector for " + language);
-			logger.error(e.getMessage(), e);
+			getLog().error("Failed to create injector for " + language);
+			getLog().error(e.getMessage(), e);
 			throw new RuntimeException("Failed to create injector for " + language, e);
 		}
 	}
