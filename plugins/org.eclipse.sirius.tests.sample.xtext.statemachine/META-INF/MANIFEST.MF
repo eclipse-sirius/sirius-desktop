@@ -26,5 +26,4 @@ Export-Package: org.eclipse.sirius.tests.sample.xtext.statemachine.util,
  org.eclipse.sirius.tests.sample.xtext.serializer,
  org.eclipse.sirius.tests.sample.xtext.parser.antlr,
  org.eclipse.sirius.tests.sample.xtext.validation
-Import-Package: org.apache.log4j
 Automatic-Module-Name: org.eclipse.sirius.tests.sample.xtext.statemachine
