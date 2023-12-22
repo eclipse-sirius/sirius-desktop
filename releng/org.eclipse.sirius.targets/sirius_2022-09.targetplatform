@@ -6,7 +6,7 @@ include "modules/shared-license.tpd"
 include "modules/aql-3.7.tpd"
 include "modules/acceleo-3.7.tpd"
 include "modules/eef-2.1.tpd"
-include "modules/elk-0.7.tpd"
+include "modules/elk-0.9.tpd"
 include "modules/gmf-runtime-1.16.tpd"
 
 with source, requirements
