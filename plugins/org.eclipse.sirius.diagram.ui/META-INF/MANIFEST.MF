@@ -7,7 +7,7 @@ Bundle-ClassPath: .
 Bundle-Activator: org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Require-Bundle: com.google.guava;bundle-version="[27.0,33)",
+Require-Bundle: com.google.guava;bundle-version="27.0",
  org.eclipse.core.databinding.property;bundle-version="1.4.100",
  org.eclipse.core.expressions;bundle-version="3.4.400",
  org.eclipse.emf.databinding;bundle-version="1.2.0",
