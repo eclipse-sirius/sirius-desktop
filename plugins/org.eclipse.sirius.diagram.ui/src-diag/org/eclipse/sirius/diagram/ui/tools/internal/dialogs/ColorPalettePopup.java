@@ -12,30 +12,29 @@
  ****************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.dialogs;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.gmf.runtime.common.ui.util.WindowUtil;
 import org.eclipse.gmf.runtime.diagram.ui.properties.internal.l10n.DiagramUIPropertiesMessages;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.FigureUtilities;
-import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.window.Window;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.SWTException;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.graphics.Device;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.graphics.ImageData;
-import org.eclipse.swt.graphics.PaletteData;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.ColorDialog;
+import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 
@@ -44,14 +43,9 @@ import org.eclipse.swt.widgets.Shell;
  */
 public class ColorPalettePopup {
 
-    private static final Integer MAXIMUM_BUTTON_NUMBER = 50;
-
-    private static final Integer BUTTON_COLUMN_NUMBER = 10;
-
     /**
      * A map associating a RGB color with the corresponding Image.
      */
-    private static Map<RGB, Image> rgbToImages = new HashMap<>();
 
     /** variable to store previous color */
     private int previousColor;
@@ -66,88 +60,6 @@ public class ColorPalettePopup {
      * this case, the dispose is done just after the click on "OK" or "Cancel" button of the "ColorDialog" dialog.
      */
     private boolean shouldBeDisposedOnDeactivation = true;
-
-    /**
-     * A descirptor for an inventory color
-     */
-    private static class InventoryColorDescriptor extends ImageDescriptor {
-
-        /** the default preference color */
-        private static final RGB OUTLINE_COLOR = new RGB(192, 192, 192);
-
-        private RGB rgb;
-
-        InventoryColorDescriptor(RGB colorValue) {
-            this.rgb = colorValue;
-        }
-
-        /**
-         * @see org.eclipse.jface.resource.ImageDescriptor#getImageData()
-         */
-        @Override
-        public ImageData getImageData() {
-            ImageData data = new ImageData(ICON_SIZE.x, ICON_SIZE.y, 1, new PaletteData(new RGB[] { rgb, OUTLINE_COLOR }));
-
-            for (int i = 0; i < ICON_SIZE.y; i++) {
-                data.setPixel(0, i, 1);
-            }
-            for (int i = 0; i < ICON_SIZE.y; i++) {
-                data.setPixel(ICON_SIZE.x - 1, i, 1);
-            }
-            for (int i = 0; i < ICON_SIZE.x; i++) {
-                data.setPixel(i, 0, 1);
-            }
-            for (int i = 0; i < ICON_SIZE.x; i++) {
-                data.setPixel(i, ICON_SIZE.y - 1, 1);
-            }
-            return data;
-        }
-
-        /**
-         * Creates and returns a new SWT image for this image descriptor. The returned image must be explicitly disposed
-         * using the image's dispose call. The image will not be automatically garbage collected. In the even of an
-         * error, a default image is returned if <code>returnMissingImageOnError</code> is true, otherwise
-         * <code>null</code> is returned.
-         * <p>
-         * Note: Even if <code>returnMissingImageOnError</code> is true, it is still possible for this method to return
-         * <code>null</code> in extreme cases, for example if SWT runs out of image handles.
-         * </p>
-         * 
-         * @return a new image or <code>null</code> if the image could not be created
-         * 
-         */
-        // CHECKSTYLE:OFF
-        @Override
-        public Image createImage() {
-
-            Device device = Display.getCurrent();
-            ImageData data = getImageData();
-            if (data == null) {
-                data = DEFAULT_IMAGE_DATA;
-            }
-
-            /*
-             * Try to create the supplied image. If there is an SWT Exception try and create the default image if that
-             * was requested. Return null if this fails.
-             */
-
-            try {
-                if (data.transparentPixel >= 0) {
-                    ImageData maskData = data.getTransparencyMask();
-                    return new Image(device, data, maskData);
-                }
-                return new Image(device, data);
-            } catch (SWTException exception) {
-
-                try {
-                    return new Image(device, DEFAULT_IMAGE_DATA);
-                } catch (SWTException nextException) {
-                    return null;
-                }
-
-            }
-        }
-    }
 
     private static final String CUSTOM_COLOR_STRING = DiagramUIPropertiesMessages.ColorPalettePopup_custom;
 
@@ -175,69 +87,42 @@ public class ColorPalettePopup {
      */
     public ColorPalettePopup(Shell parent, int rowHeight, Map<String, RGB> defaultColors) {
         shell = new Shell(parent, ColorPalettePopup.checkStyle(SWT.NONE));
-        GridLayout layout = new GridLayout(BUTTON_COLUMN_NUMBER, true);
+        GridLayout layout = new GridLayout(1, true);
         layout.horizontalSpacing = 0;
         layout.marginWidth = 0;
-        layout.marginHeight = 0;
+        layout.marginHeight = 5;
         layout.verticalSpacing = 0;
         shell.setLayout(layout);
 
-        int count = 0;
-        for (String colorName : defaultColors.keySet()) {
-            count++;
-            // CHECKSTYLE:ON
-            Button button = new Button(shell, SWT.PUSH);
-            GridData data = new GridData(GridData.HORIZONTAL_ALIGN_FILL);
-            data.heightHint = rowHeight;
-            data.widthHint = rowHeight;
-            button.setLayoutData(data);
+        createLastUsedCategory(shell);
+        createCustomizedCategory(shell);
+        createSuggestedCategory(shell);
+        createDefaultCategory(shell);
 
-            final RGB rgb = defaultColors.get(colorName);
-            if (!rgbToImages.containsKey(rgb)) {
-                InventoryColorDescriptor colorDesc = new InventoryColorDescriptor(rgb);
-                rgbToImages.put(rgb, colorDesc.createImage());
-            }
-            final Image image = rgbToImages.get(rgb);
-            button.setImage(image);
-            button.setToolTipText(colorName);
-            button.addSelectionListener(new SelectionAdapter() {
-
-                @Override
-                public void widgetSelected(SelectionEvent e1) {
-                    selectedColor = rgb;
-                    dispose();
-                }
-            });
-            buttonMap.put(rgb, button);
-
-            if (count == MAXIMUM_BUTTON_NUMBER) {
-                break;
-            }
-        }
-
-        Button moreColors = new Button(shell, SWT.PUSH);
-        moreColors.setText(CUSTOM_COLOR_STRING);
-        GridData data = new GridData(GridData.HORIZONTAL_ALIGN_FILL);
-        data.horizontalSpan = 4;
-        data.heightHint = rowHeight;
-        moreColors.setLayoutData(data);
-
-        moreColors.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent event) {
-                shouldBeDisposedOnDeactivation = false;
-                ColorDialog dialog = new ColorDialog(Display.getCurrent().getActiveShell());
-                dialog.setRGB(FigureUtilities.integerToRGB(getPreviousColor()));
-                WindowUtil.centerDialog(dialog.getParent(), Display.getCurrent().getActiveShell());
-                RGB returnedSelectedColor = dialog.open();
-                if (returnedSelectedColor != null) { // case of cancel
-                    selectedColor = dialog.getRGB();
-                }
-                dispose();
-
-            }
-        });
+        // Button moreColors = new Button(shell, SWT.PUSH);
+        // moreColors.setText(CUSTOM_COLOR_STRING);
+        // // GridData data = new GridData(GridData.HORIZONTAL_ALIGN_FILL);
+        // GridData data = new GridData(SWT.BEGINNING, SWT.CENTER, true, true, 10, 1);
+        // data.horizontalSpan = 4;
+        // data.heightHint = rowHeight;
+        // moreColors.setLayoutData(data);
+        //
+        // moreColors.addSelectionListener(new SelectionAdapter() {
+        //
+        // @Override
+        // public void widgetSelected(SelectionEvent event) {
+        // shouldBeDisposedOnDeactivation = false;
+        // ColorDialog dialog = new ColorDialog(Display.getCurrent().getActiveShell());
+        // dialog.setRGB(FigureUtilities.integerToRGB(getPreviousColor()));
+        // WindowUtil.centerDialog(dialog.getParent(), Display.getCurrent().getActiveShell());
+        // RGB returnedSelectedColor = dialog.open();
+        // if (returnedSelectedColor != null) { // case of cancel
+        // selectedColor = dialog.getRGB();
+        // }
+        // dispose();
+        //
+        // }
+        // });
         // Hide dialog if user clicks on "Custom..." button or dispose it if user selects outside of the shell (without
         // clicking on any button)
         shell.addListener(SWT.Deactivate, new Listener() {
@@ -245,14 +130,207 @@ public class ColorPalettePopup {
             @Override
             public void handleEvent(Event e) {
                 if (shouldBeDisposedOnDeactivation) {
-                    dispose();
+                    disposePalettePopup();
                 } else {
                     shell.setVisible(false);
                 }
             }
         });
-        customColorButton = moreColors;
+        // customColorButton = moreColors;
 
+    }
+
+    private void createLastUsedCategory(Composite parent) {
+        createSeparator(Messages.ColorPalettePopup_lastUsedCategoryLabel);
+        List<RGB> colorsList = new ArrayList<>();
+        colorsList.add(new RGB(255, 0, 0));
+        colorsList.add(new RGB(0, 255, 0));
+        colorsList.add(new RGB(0, 0, 255));
+        colorsList.add(new RGB(255, 0, 255));
+
+        Composite colorsAndButtonComposite = configureColorsAndButtonsComposite(parent, 1);
+
+        new ColorPaletteComposite(colorsAndButtonComposite, colorsList, 10, true) {
+            @Override
+            public void setPaletteSelectedColor(RGB colorToSet) {
+                super.setPaletteSelectedColor(colorToSet);
+                selectedColor = getPaletteSelectedColor();
+                disposePalettePopup();
+            }
+        };
+
+    }
+
+    private void createCustomizedCategory(Composite parent) {
+        createSeparator(Messages.ColorPalettePopup_customizedCategoryLabel);
+        List<RGB> colorsList2 = new ArrayList<>();
+        colorsList2.add(new RGB(255, 255, 255));
+        colorsList2.add(new RGB(0, 0, 0));
+        colorsList2.add(new RGB(255, 255, 0));
+        colorsList2.add(new RGB(0, 255, 255));
+
+        Composite colorsAndButtonComposite = configureColorsAndButtonsComposite(parent, 2);
+
+        new ColorPaletteComposite(colorsAndButtonComposite, colorsList2, 10, false) {
+            @Override
+            public void setPaletteSelectedColor(RGB colorToSet) {
+                super.setPaletteSelectedColor(colorToSet);
+                selectedColor = getPaletteSelectedColor();
+                disposePalettePopup();
+            }
+        };
+        Button moreColors = configureMoreButton(colorsAndButtonComposite);
+        moreColors.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                ColorSelectionDialog dialog = new ColorSelectionDialog((Shell) shell.getParent(), null, true, null, Messages.ColorSelectionDialog_dialogTitle, "", Messages.ColorSelectionDialog_groupAllCustomizedColorsLabel) { //$NON-NLS-1$
+                    @Override
+                    protected void configureDisplayedColorsButtons(Composite parent) {
+                        // TODO: oops, we should set the add and remove buttons for the "all colors" group, not the "displayed colors group.
+                        Composite buttonsComposite = new Composite(parent, SWT.NONE);
+                        GridLayout buttonsGridLayout = new GridLayout(2, false);
+                        buttonsComposite.setLayout(buttonsGridLayout);
+                        GridData buttonsGridData = new GridData(SWT.END, SWT.CENTER, true, true, 1, 1);
+                        buttonsComposite.setLayoutData(buttonsGridData);
+
+                        Button addButton = new Button(buttonsComposite, SWT.PUSH);
+                        addButton.setText(Messages.ColorSelectionDialog_addButtonLabel);
+                        addButton.setLayoutData(new GridData(SWT.END, SWT.CENTER, true, true, 1, 1));
+                        addButton.addSelectionListener(new SelectionAdapter() {
+                            @Override
+                            public void widgetSelected(SelectionEvent e) {
+                                ColorDialog dialog = new ColorDialog(Display.getCurrent().getActiveShell());
+                                // dialog.setRGB(FigureUtilities.integerToRGB(getPreviousColor()));
+                                WindowUtil.centerDialog(dialog.getParent(), Display.getCurrent().getActiveShell());
+                                RGB returnedSelectedColor = dialog.open();
+                                if (returnedSelectedColor != null) { // case of cancel
+                                    selectedColor = dialog.getRGB();
+                                    // TODO: we should add this color to "all colors", but a refactoring is required
+                                    // here: we should move the confioguration of the add button into the
+                                    // ColorSelectionDialog.
+                                }
+                            }
+                        });
+                        super.configureDisplayedColorsButtons(buttonsComposite);
+                    }
+                };
+                if (dialog.open() == Window.OK) {
+                    selectedColor = dialog.getSelectedColor();
+                }
+            }
+        });
+    }
+
+    private void createSuggestedCategory(Composite parent) {
+        createSeparator(Messages.ColorPalettePopup_suggestedCategoryLabel);
+        List<RGB> colorsList3 = new ArrayList<>();
+        colorsList3.add(new RGB(120, 120, 120));
+        colorsList3.add(new RGB(42, 63, 158));
+        colorsList3.add(new RGB(120, 120, 0));
+        colorsList3.add(new RGB(0, 120, 120));
+        colorsList3.add(new RGB(255, 0, 0));
+        colorsList3.add(new RGB(0, 255, 0));
+        colorsList3.add(new RGB(0, 0, 255));
+        colorsList3.add(new RGB(255, 0, 255));
+        colorsList3.add(new RGB(255, 255, 255));
+        colorsList3.add(new RGB(0, 0, 0));
+        colorsList3.add(new RGB(255, 255, 0));
+        colorsList3.add(new RGB(0, 255, 255));
+
+        Composite colorsAndButtonComposite = configureColorsAndButtonsComposite(parent, 2);
+
+        new ColorPaletteComposite(colorsAndButtonComposite, colorsList3, 10, false) {
+            @Override
+            public void setPaletteSelectedColor(RGB colorToSet) {
+                super.setPaletteSelectedColor(colorToSet);
+                selectedColor = getPaletteSelectedColor();
+                disposePalettePopup();
+            }
+        };
+        Button moreColors = configureMoreButton(colorsAndButtonComposite);
+        moreColors.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                ColorSelectionDialog dialog = new ColorSelectionDialog((Shell) shell.getParent(), null, true, null, Messages.ColorSelectionDialog_dialogTitle, Messages.ColorSelectionDialog_groupDisplayedSuggestedColorsLabel, Messages.ColorSelectionDialog_groupAllSuggestedColorsLabel);
+                if (dialog.open() == Window.OK) {
+                    selectedColor = dialog.getSelectedColor();
+                }
+            }
+        });
+    }
+
+    private void createDefaultCategory(Composite parent) {
+        createSeparator(Messages.ColorPalettePopup_defaultCategoryLabel);
+        List<RGB> colorsList4 = new ArrayList<>();
+        colorsList4.add(new RGB(120, 0, 0));
+        colorsList4.add(new RGB(0, 120, 0));
+        colorsList4.add(new RGB(0, 0, 120));
+        colorsList4.add(new RGB(120, 0, 120));
+
+//        Composite colorsAndButtonComposite = new Composite(parent, SWT.NONE);
+//        GridLayout colorsAndButtonLayout = new GridLayout(2, false);
+//        colorsAndButtonLayout.marginWidth = 2;
+//        colorsAndButtonLayout.marginRight = 5;
+//        colorsAndButtonLayout.marginHeight = 0;
+//        colorsAndButtonComposite.setLayout(colorsAndButtonLayout);
+//        GridData colorsAndButtonLayoutData = new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1);
+//        colorsAndButtonComposite.setLayoutData(colorsAndButtonLayoutData);
+        Composite colorsAndButtonComposite = configureColorsAndButtonsComposite(parent, 2);
+
+        new ColorPaletteComposite(colorsAndButtonComposite, colorsList4, 10, true) {
+            @Override
+            public void setPaletteSelectedColor(RGB colorToSet) {
+                super.setPaletteSelectedColor(colorToSet);
+                selectedColor = getPaletteSelectedColor();
+                disposePalettePopup();
+            }
+        };
+        Button moreColors = configureMoreButton(colorsAndButtonComposite);
+        moreColors.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                ColorSelectionDialog dialog = new ColorSelectionDialog((Shell) shell.getParent(), null, true, null, Messages.ColorSelectionDialog_dialogTitle, Messages.ColorSelectionDialog_groupDisplayedDefaultColorsLabel, Messages.ColorSelectionDialog_groupAllDefaultColorsLabel);
+                if (dialog.open() == Window.OK) {
+                    selectedColor = dialog.getSelectedColor();
+                }
+            }
+        });
+    }
+    
+    private Button configureMoreButton(Composite parent) {
+        Button moreColors = new Button(parent, SWT.PUSH);
+        moreColors.setText(Messages.ColorPalettePopup_moreButtonLabel);
+        moreColors.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, true, true, 1, 1));
+        
+        return moreColors;
+    }
+    
+    private Composite configureColorsAndButtonsComposite(Composite parent, int nbColumns) {
+        Composite colorsAndButtonComposite = new Composite(parent, SWT.NONE);
+        GridLayout colorsAndButtonLayout = new GridLayout(nbColumns, false);
+        colorsAndButtonLayout.marginWidth = 2;
+        colorsAndButtonLayout.marginRight = 5;
+        colorsAndButtonLayout.marginHeight = 0;
+        colorsAndButtonComposite.setLayout(colorsAndButtonLayout);
+        GridData colorsAndButtonLayoutData = new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1);
+        colorsAndButtonComposite.setLayoutData(colorsAndButtonLayoutData);
+        return colorsAndButtonComposite;
+    }
+
+    private Composite createSeparator(String separatorLabel) {
+        Composite separatorComposite = new Composite(shell, SWT.NONE);
+        GridLayout separatorLayout = new GridLayout(2, false);
+        separatorLayout.marginHeight = 2;
+        separatorComposite.setLayout(separatorLayout);
+        GridData separatorLayoutData = new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1);
+        separatorComposite.setLayoutData(separatorLayoutData);
+
+        Label separatorText = new Label(separatorComposite, SWT.NONE);
+        separatorText.setText(separatorLabel);
+        separatorText.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, false, true, 1, 1));
+        Label separator = new Label(separatorComposite, SWT.SEPARATOR | SWT.HORIZONTAL | SWT.FILL);
+        separator.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, true, 1, 1));
+        return separatorComposite;
     }
 
     /**
@@ -337,7 +415,7 @@ public class ColorPalettePopup {
     /**
      * Dispose the popup.
      */
-    public void dispose() {
+    public void disposePalettePopup() {
         // Dispose all SWT Buttons
         buttonMap.values().forEach(b -> b.dispose());
         // Clear the map

@@ -252,6 +252,45 @@ public final class Messages {
 
     @TranslatableMessage
     public static String ChildrenAdjustmentCommand_label;
+    
+    @TranslatableMessage
+    public static String ColorPalettePopup_customizedCategoryLabel;
+    
+    @TranslatableMessage
+    public static String ColorPalettePopup_defaultCategoryLabel;
+    
+    @TranslatableMessage
+    public static String ColorPalettePopup_lastUsedCategoryLabel;
+    
+    @TranslatableMessage
+    public static String ColorPalettePopup_moreButtonLabel;
+    
+    @TranslatableMessage
+    public static String ColorPalettePopup_suggestedCategoryLabel;
+    
+    @TranslatableMessage
+    public static String ColorSelectionDialog_addButtonLabel;
+    
+    @TranslatableMessage
+    public static String ColorSelectionDialog_dialogTitle;
+    
+    @TranslatableMessage
+    public static String ColorSelectionDialog_groupAllCustomizedColorsLabel;
+    
+    @TranslatableMessage
+    public static String ColorSelectionDialog_groupAllDefaultColorsLabel;
+    
+    @TranslatableMessage
+    public static String ColorSelectionDialog_groupAllSuggestedColorsLabel;
+    
+    @TranslatableMessage
+    public static String ColorSelectionDialog_groupDisplayedDefaultColorsLabel;
+    
+    @TranslatableMessage
+    public static String ColorSelectionDialog_groupDisplayedSuggestedColorsLabel;
+    
+    @TranslatableMessage
+    public static String ColorSelectionDialog_removeButtonLabel;
 
     @TranslatableMessage
     public static String Column_wrongColumnViewError;
