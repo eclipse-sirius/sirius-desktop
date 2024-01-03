@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -114,6 +114,7 @@ import org.eclipse.sirius.tests.unit.common.migration.DiagramMigrationTestCampai
 import org.eclipse.sirius.tests.unit.common.migration.DiagramMigrationTestCampaign08;
 import org.eclipse.sirius.tests.unit.common.migration.DiagramMigrationTestCampaign09;
 import org.eclipse.sirius.tests.unit.common.migration.DiagramMigrationTestCampaign10;
+import org.eclipse.sirius.tests.unit.common.migration.ELK090VSMMigrationTest;
 import org.eclipse.sirius.tests.unit.common.migration.GeneralMigrationMechanismTest;
 import org.eclipse.sirius.tests.unit.common.migration.LabelEditToolVariableMigrationTest;
 import org.eclipse.sirius.tests.unit.common.migration.MigrationFromSirius0_9Test;
@@ -263,6 +264,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(ViewWithNullElementMigrationParticipantTest.class);
         suite.addTestSuite(UnsetOriginalStyleFeatureMigrationParticipantTest.class);
         suite.addTestSuite(SetChangeIdMigrationParticipantTest.class);
+        suite.addTestSuite(ELK090VSMMigrationTest.class);
         // suite.addTestSuite(OrderingParticipantTest.class);
 
         suite.addTest(new JUnit4TestAdapter(CommonPreferencesTest.class));
