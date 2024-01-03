@@ -33,7 +33,7 @@
          point="org.eclipse.ui.editors">
       <editor
             class="org.eclipse.sirius.sample.ecore.design.editor.EcoreEntitiesReadOnlyEditor"
-            contributorClass="org.eclipse.sirius.diagram.ui.part.SiriusDiagramActionBarContributor"
+            contributorClass="org.eclipse.sirius.sample.ecore.design.editor.ui.part.EcoreEntitiesActionBarContributor"
             default="false"
             extensions="ecore"
             icon="icons/full/obj16/EcoreModelFile.gif"
