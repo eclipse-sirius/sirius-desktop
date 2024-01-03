@@ -56,6 +56,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.HideDDiag
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.HideDDiagramElementLabelAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.RevealAllElementsAction;
 import org.eclipse.ui.IActionBars;
+import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionFactory;
@@ -505,5 +506,10 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
             disposed = true;
             super.dispose();
         }
+    }
+
+    @Override
+    public IWorkbenchPage getPage() {
+        return super.getPage();
     }
 }
