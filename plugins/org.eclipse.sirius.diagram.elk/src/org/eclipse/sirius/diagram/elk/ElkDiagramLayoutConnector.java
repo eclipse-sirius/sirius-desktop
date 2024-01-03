@@ -43,8 +43,8 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.elk.alg.layered.options.CrossingMinimizationStrategy;
 import org.eclipse.elk.alg.layered.options.LayeredOptions;
+import org.eclipse.elk.alg.layered.options.OrderingStrategy;
 import org.eclipse.elk.core.IGraphLayoutEngine;
 import org.eclipse.elk.core.data.LayoutMetaDataService;
 import org.eclipse.elk.core.data.LayoutOptionData;
@@ -434,7 +434,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                         }
                         if (editPart instanceof ShapeNodeEditPart && editPartFilter.filter(editPart) && !selectedParts.contains(editPart)) {
                             if (editPart instanceof SiriusNoteEditPart) {
-                                if (new EditPartQuery((SiriusNoteEditPart) editPart).isMovableByAutomaticLayout(Collections.EMPTY_LIST)) {
+                                if (new EditPartQuery(editPart).isMovableByAutomaticLayout(Collections.EMPTY_LIST)) {
                                     selectedParts.add((ShapeNodeEditPart) editPart);
                                 }
                             } else {
@@ -1019,13 +1019,14 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                                 parentLayoutNode.setProperty(CoreOptions.SPACING_NODE_NODE, 0d);
                                 // no space around labels
                                 parentLayoutNode.setProperty(CoreOptions.NODE_LABELS_PADDING, new ElkPadding());
-                                // Strategy set to INTERACTIVE to keep order of children
-                                parentLayoutNode.setProperty(LayeredOptions.CROSSING_MINIMIZATION_STRATEGY, CrossingMinimizationStrategy.INTERACTIVE);
+                                // Before ELK 0.9.0, CROSSING_MINIMIZATION_STRATEGY is set to INTERACTIVE to keep order
+                                // of children, now we directly use the model order strategy.
+                                parentLayoutNode.setProperty(LayeredOptions.CONSIDER_MODEL_ORDER_STRATEGY, OrderingStrategy.NODES_AND_EDGES);
 
                                 if (dde instanceof DNodeContainer) {
                                     intermediateNode.setProperty(CoreOptions.PADDING, new ElkPadding(0, 0, 0, 0));
                                     intermediateNode.setProperty(CoreOptions.SPACING_NODE_NODE, 0d);
-                                    intermediateNode.setProperty(LayeredOptions.CROSSING_MINIMIZATION_STRATEGY, CrossingMinimizationStrategy.INTERACTIVE);
+                                    intermediateNode.setProperty(LayeredOptions.CONSIDER_MODEL_ORDER_STRATEGY, OrderingStrategy.NODES_AND_EDGES);
                                 }
                                 intermediateNode.setProperty(CoreOptions.NODE_LABELS_PADDING, new ElkPadding());
                             } else if (dde instanceof DNodeContainer) {
@@ -1038,8 +1039,9 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                                     parentLayoutNode.setProperty(CoreOptions.PADDING, padding);
                                     // no space around regions
                                     parentLayoutNode.setProperty(CoreOptions.SPACING_NODE_NODE, 0d);
-                                    // Strategy set to INTERACTIVE to keep order of children
-                                    parentLayoutNode.setProperty(LayeredOptions.CROSSING_MINIMIZATION_STRATEGY, CrossingMinimizationStrategy.INTERACTIVE);
+                                    // Before ELK 0.9.0, CROSSING_MINIMIZATION_STRATEGY is set to INTERACTIVE to keep
+                                    // order of children, now we directly use the model order strategy.
+                                    parentLayoutNode.setProperty(LayeredOptions.CONSIDER_MODEL_ORDER_STRATEGY, OrderingStrategy.NODES_AND_EDGES);
                                 }
                             }
                         }
@@ -1613,7 +1615,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             if (secondPartOfEdge != null) {
                 // This destination edge has been already split: this edge is used several times as source or target. In
                 // this case, we reuse the existing "virtual" node.
-                result = (ElkNode) ((ElkEdge) graphElement).getTargets().get(0);
+                result = ((ElkEdge) graphElement).getTargets().get(0);
             } else {
                 ElkNode edgeContainer = ((ElkEdge) graphElement).getContainingNode();
                 ElkNode newNode = ElkGraphUtil.createNode(edgeContainer);
