@@ -657,7 +657,6 @@ public final class StyleHelper {
             style = createLozenge((LozengeNodeDescription) description);
         }
         if (style != null) {
-            style.setLabelPosition(description.getLabelPosition());
             style.setHideLabelByDefault(description.isHideLabelByDefault());
             Option<Style> noPreviousStyle = Options.newNone();
             refreshColors(description, style, noPreviousStyle);
@@ -736,6 +735,7 @@ public final class StyleHelper {
             EObject copy = SiriusCopierHelper.copyWithNoUidDuplication(createNodeStyle(description));
             final NodeStyle newStyle = (NodeStyle) copy;
             affectStyle((AbstractDNode) style.eContainer(), newStyle);
+            updateLabelPosition(description, newStyle, previousStyle);
         }
 
         if (previousStyle.get() instanceof BorderedStyle) {
@@ -745,6 +745,10 @@ public final class StyleHelper {
             updateBorderedStyleFeatures(description, style, noPreviousBorderedStyle);
         }
 
+        updateHideLabelCapabilityFeature(description, style, previousStyle);
+    }
+
+    private void updateLabelPosition(final NodeStyleDescription description, final NodeStyle style, Option<? extends Style> previousStyle) {
         if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(DiagramPackage.Literals.NODE_STYLE__LABEL_POSITION.getName())) {
             if (previousStyle.get() instanceof NodeStyle) {
                 style.setLabelPosition(((NodeStyle) previousStyle.get()).getLabelPosition());
@@ -755,8 +759,6 @@ public final class StyleHelper {
                 style.setLabelPosition(description.getLabelPosition());
             }
         }
-
-        updateHideLabelCapabilityFeature(description, style, previousStyle);
     }
 
     /**
@@ -940,6 +942,7 @@ public final class StyleHelper {
     }
 
     private void updateWorkspaceImage(final WorkspaceImage image, final WorkspaceImageDescription description, Option<? extends Style> previousStyle) {
+        updateLabelPosition(description, image, previousStyle);
         if (!previousStyle.some() || (previousStyle.some() && previousStyle.get() instanceof LabelStyle)) {
             updateLabelStyleFeatures(description, image, (Option<LabelStyle>) previousStyle);
         }
@@ -982,6 +985,7 @@ public final class StyleHelper {
     }
 
     private void updateBundledImage(final BundledImage image, final BundledImageDescription description, Option<NodeStyle> previousStyle) {
+        updateLabelPosition(description, image, previousStyle);
         updateLabelStyleFeatures(description, image, previousStyle);
 
         if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(DiagramPackage.Literals.BUNDLED_IMAGE__SHAPE.getName()) && previousStyle.get() instanceof BundledImage) {
@@ -1007,6 +1011,7 @@ public final class StyleHelper {
     }
 
     private void updateNote(final Note style, final NoteDescription description, Option<NodeStyle> previousStyle) {
+        updateLabelPosition(description, style, previousStyle);
         updateLabelStyleFeatures(description, style, previousStyle);
     }
 
@@ -1019,6 +1024,7 @@ public final class StyleHelper {
     }
 
     private void updateGaugeCompositeStyle(final GaugeCompositeStyle style, final GaugeCompositeStyleDescription description, Option<NodeStyle> previousStyle) {
+        updateLabelPosition(description, style, previousStyle);
         updateLabelStyleFeatures(description, style, previousStyle);
 
         EList<GaugeSection> newGaugeSections = new BasicEList<GaugeSection>();
@@ -1082,6 +1088,7 @@ public final class StyleHelper {
     }
 
     private void updateDot(final Dot style, final DotDescription description, Option<NodeStyle> previousStyle) {
+        updateLabelPosition(description, style, previousStyle);
         updateLabelStyleFeatures(description, style, previousStyle);
 
         if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(DiagramPackage.Literals.DOT__STROKE_SIZE_COMPUTATION_EXPRESSION.getName()) && previousStyle.get() instanceof Dot) {
@@ -1104,6 +1111,7 @@ public final class StyleHelper {
     }
 
     private void updateSquare(final Square style, final SquareDescription description, Option<NodeStyle> previousStyle) {
+        updateLabelPosition(description, style, previousStyle);
         updateLabelStyleFeatures(description, style, previousStyle);
         if (style.getHeight().intValue() != description.getHeight().intValue() && !style.getCustomFeatures().contains(DiagramPackage.Literals.SQUARE__HEIGHT.getName())) {
             style.setHeight(description.getHeight());
@@ -1135,6 +1143,7 @@ public final class StyleHelper {
     }
 
     private void updateCustomStyle(final CustomStyle style, final CustomStyleDescription description, Option<NodeStyle> previousStyle) {
+        updateLabelPosition(description, style, previousStyle);
         updateLabelStyleFeatures(description, style, previousStyle);
 
         if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(DiagramPackage.Literals.CUSTOM_STYLE__ID.getName()) && previousStyle.get() instanceof CustomStyle) {
@@ -1156,6 +1165,7 @@ public final class StyleHelper {
     }
 
     private void updateLozenge(final Lozenge style, final LozengeNodeDescription description, Option<NodeStyle> previousStyle) {
+        updateLabelPosition(description, style, previousStyle);
         updateLabelStyleFeatures(description, style, previousStyle);
 
         if (style.eContainer() instanceof DNode) {
@@ -1227,7 +1237,7 @@ public final class StyleHelper {
         if (style.getDescription() != description) {
             style.setDescription(description);
         }
-
+        updateLabelPosition(description, style, previousStyle);
         updateLabelStyleFeatures(description, style, previousStyle);
 
         if (style.eContainer() instanceof DNode) {
