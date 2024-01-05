@@ -15,11 +15,15 @@ package org.eclipse.sirius.diagram.business.api.query;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.diagram.Square;
+import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptorRegistry;
+import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider;
+import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
 import org.eclipse.sirius.diagram.description.style.Side;
@@ -162,6 +166,19 @@ public class DNodeQuery {
     public boolean supportNodeStyleAutoSize(NodeStyle style, NodeStyleDescription description) {
         // Cannot use DNodeQuery : style might not be attached to the node yet.
         boolean supportAutoSizeStyle = true;
+        // If diagram is not null, we search for a possible
+        // DiagramDescriptionProvider handling this type of diagram
+        DDiagram parentDiagram = node.getParentDiagram();
+        if (parentDiagram != null) {
+            for (final IDiagramTypeDescriptor diagramTypeDescriptor : DiagramTypeDescriptorRegistry.getInstance().getAllDiagramTypeDescriptors()) {
+                if (diagramTypeDescriptor.getDiagramDescriptionProvider().handles(parentDiagram.getDescription().eClass().getEPackage())) {
+                    // This DiagramDescriptionProvider may forbid copy/paste format.
+                    final IDiagramDescriptionProvider provider = diagramTypeDescriptor.getDiagramDescriptionProvider();
+                    supportAutoSizeStyle = provider.allowsAutoSizeNodeStyle(node);
+                    break;
+                }
+            }
+        }
         if (style != null) {
             supportAutoSizeStyle = supportAutoSizeStyle && style instanceof Square && style.getLabelPosition().getValue() == LabelPosition.NODE;
         } else if (description != null) {
