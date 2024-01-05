@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES and others
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,8 @@ package org.eclipse.sirius.tests.support.api;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashSet;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EPackage;
@@ -22,9 +24,6 @@ import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory.Descriptor;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory.Descriptor.Registry;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
-
-import com.google.common.base.Function;
-import com.google.common.base.Predicate;
 
 import junit.framework.TestCase;
 
@@ -45,19 +44,9 @@ public abstract class AbstractItemProviderAdapterFactoryRegistryTestCase extends
 
     private EPackage basePackage;
 
-    private final Predicate<EPackage> shouldBeExposed = new Predicate<EPackage>() {
-        @Override
-        public boolean apply(EPackage input) {
-            return exposedItemProvidersAdapterFactories.contains(input);
-        }
-    };
+    private final Predicate<EPackage> shouldBeExposed = (EPackage input) -> exposedItemProvidersAdapterFactories.contains(input);
 
-    private final Predicate<EPackage> shouldNotBeExposed = new Predicate<EPackage>() {
-        @Override
-        public boolean apply(EPackage input) {
-            return nonExposedItemProvidersAdapterFactories.contains(input);
-        }
-    };
+    private final Predicate<EPackage> shouldNotBeExposed = (EPackage input) -> nonExposedItemProvidersAdapterFactories.contains(input);
 
     private final Function<EPackage, Collection<?>> getKey = new Function<EPackage, Collection<?>>() {
         @Override
@@ -124,7 +113,7 @@ public abstract class AbstractItemProviderAdapterFactoryRegistryTestCase extends
         Descriptor descriptor = registry.getDescriptor(getKey.apply(pkg));
         String label = pkg.getName() + " (" + pkg.getNsURI() + ") ";
 
-        boolean exposedExpected = shouldBeExposed.apply(pkg);
+        boolean exposedExpected = shouldBeExposed.test(pkg);
         if (exposedExpected) {
             TestCase.assertNotNull(AbstractItemProviderAdapterFactoryRegistryTestCase.THE_ITEM_PROVIDER_ADAPTER_FACTORY_OF_THE_PACKAGE + label + "should be exposed.", descriptor);
 
@@ -132,7 +121,7 @@ public abstract class AbstractItemProviderAdapterFactoryRegistryTestCase extends
             TestCase.assertNotNull("Error creating while creating the item provider adapter factory of the package " + label, adapterFactory);
         }
 
-        boolean notExposedExpected = shouldNotBeExposed.apply(pkg);
+        boolean notExposedExpected = shouldNotBeExposed.test(pkg);
         if (notExposedExpected) {
             TestCase.assertNull(AbstractItemProviderAdapterFactoryRegistryTestCase.THE_ITEM_PROVIDER_ADAPTER_FACTORY_OF_THE_PACKAGE + label + "should not be exposed.", descriptor);
         }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2015, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ package org.eclipse.sirius.tests.unit.common;
 
 import java.io.File;
 import java.util.Iterator;
+import java.util.List;
 
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IStatus;
@@ -93,10 +94,11 @@ public class SiriusCrossReferenceAdapterTests extends SiriusTestCase {
 
         // check that no warning "loading resource while unloading it" has been
         // dispatched
-        for (Iterator<IStatus> warning = warnings.values().iterator(); warning.hasNext();) {
-            IStatus status = warning.next();
-            if (status.getCode() == EMFTransactionStatusCodes.RELOAD_DURING_UNLOAD) {
-                fail("Resource is being reloaded during its unload.");
+        for (List<IStatus> allWarnings : warnings.values()) {
+            for (IStatus status : allWarnings) {
+                if (status.getCode() == EMFTransactionStatusCodes.RELOAD_DURING_UNLOAD) {
+                    fail("Resource is being reloaded during its unload.");
+                }
             }
         }
     }
@@ -122,10 +124,11 @@ public class SiriusCrossReferenceAdapterTests extends SiriusTestCase {
 
         // check that no warning "loading resource while unloading it" has been
         // dispatched
-        for (Iterator<IStatus> warning = warnings.values().iterator(); warning.hasNext();) {
-            IStatus status = warning.next();
-            if (status.getCode() == EMFTransactionStatusCodes.RELOAD_DURING_UNLOAD) {
-                fail("Resource is being reloaded during its unload.");
+        for (List<IStatus> allWarnings : warnings.values()) {
+            for (IStatus status : allWarnings) {
+                if (status.getCode() == EMFTransactionStatusCodes.RELOAD_DURING_UNLOAD) {
+                    fail("Resource is being reloaded during its unload.");
+                }
             }
         }
     }
