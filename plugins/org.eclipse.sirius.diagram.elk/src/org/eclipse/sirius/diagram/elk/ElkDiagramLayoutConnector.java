@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2021 Kiel University and others.
+ * Copyright (c) 2009, 2024 Kiel University and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -823,7 +823,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             addOffset(mapping.getLayoutGraph(), offset);
         }
 
-        if (DiagramElkPlugin.getDefault().isDebugging()) {
+        if (DiagramElkPlugin.getPlugin().isDebugging()) {
             ElkDiagramLayoutConnector.storeResult(mapping.getLayoutGraph(), mapping.getLayoutGraph().getIdentifier(), "5_afterAddingOffset", false);
         }
 
@@ -832,7 +832,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             // "reset").
             resetOrigin(mapping.getLayoutGraph());
 
-            if (DiagramElkPlugin.getDefault().isDebugging()) {
+            if (DiagramElkPlugin.getPlugin().isDebugging()) {
                 ElkDiagramLayoutConnector.storeResult(mapping.getLayoutGraph(), mapping.getLayoutGraph().getIdentifier(), "6_afterResetOrigin", false);
             }
         }
