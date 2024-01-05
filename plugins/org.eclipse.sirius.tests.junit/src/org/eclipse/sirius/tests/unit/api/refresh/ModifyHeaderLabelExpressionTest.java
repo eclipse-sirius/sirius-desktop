@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -94,8 +94,8 @@ public class ModifyHeaderLabelExpressionTest extends SiriusTestCase {
         TestsUtil.synchronizationWithUIThread();
 
         // VP-4466: clear the NPE error before the fix of this issue.
-        if (errors.values().size() == 1) {
-            if (errors.values().iterator().next().getException() instanceof NullPointerException) {
+        if (errors.values().size() == 1 && errors.values().iterator().next().size() == 1) {
+            if (errors.values().iterator().next().iterator().next().getException() instanceof NullPointerException) {
                 errors.clear();
             }
         }

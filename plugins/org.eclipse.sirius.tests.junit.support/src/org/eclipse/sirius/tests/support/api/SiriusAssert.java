@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2009, 2020 THALES GLOBAL SERVICES
+ * Copyright (c) 2009, 2024 THALES GLOBAL SERVICES and others
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ package org.eclipse.sirius.tests.support.api;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Objects;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
@@ -32,11 +33,6 @@ import org.eclipse.sirius.diagram.ui.tools.internal.preferences.SiriusDiagramUiI
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.junit.Assert;
 import org.junit.ComparisonFailure;
-
-import com.google.common.base.Function;
-import com.google.common.base.Objects;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 import junit.framework.TestCase;
 
@@ -58,7 +54,7 @@ public class SiriusAssert extends Assert {
      *            Actual objet
      */
     public static void assertNotEquals(final String message, final Object expected, final Object actual) {
-        if (Objects.equal(expected, actual)) {
+        if (Objects.equals(expected, actual)) {
             SiriusAssert.failEquals(message, expected, actual);
         }
     }
@@ -130,15 +126,8 @@ public class SiriusAssert extends Assert {
      *            The key of the preference to check
      */
     public static void assertNoSiriusCorePreferenceChangedinSiriusUIStore(String preferenceKey) {
-        Collection<SiriusPreferencesKeys> coreKeys = new ArrayList<SiriusPreferencesKeys>(Arrays.asList(SiriusPreferencesKeys.values()));
-        Function<SiriusPreferencesKeys, String> prefToName = new Function<SiriusPreferencesKeys, String>() {
-            @Override
-            public String apply(SiriusPreferencesKeys input) {
-                return input.name();
-            }
-        };
         TestCase.assertFalse("The DesignerPreferenceKey named " + preferenceKey + " should not be modified in the UI store.",
-                Lists.newArrayList(Iterables.transform(coreKeys, prefToName)).contains(preferenceKey));
+                Arrays.asList(SiriusPreferencesKeys.values()).stream().map(SiriusPreferencesKeys::name).anyMatch(name -> Objects.equals(preferenceKey, name)));
     }
 
     /**

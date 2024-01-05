@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,17 +17,17 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.junit.Assert;
-
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
 
 import junit.framework.TestCase;
 
@@ -47,12 +47,7 @@ public abstract class AbstractColorReferenceTestCase extends TestCase {
 
     private EPackage basePackage;
 
-    private final Predicate<EReference> isColorReference = new Predicate<EReference>() {
-        @Override
-        public boolean apply(EReference input) {
-            return !input.isContainment() && DescriptionPackage.eINSTANCE.getColorDescription().isSuperTypeOf(input.getEReferenceType());
-        }
-    };
+    private final Predicate<EReference> isColorReference = (EReference input) -> !input.isContainment() && DescriptionPackage.eINSTANCE.getColorDescription().isSuperTypeOf(input.getEReferenceType());
 
     public EPackage getBasePackage() {
         return basePackage;
@@ -69,13 +64,14 @@ public abstract class AbstractColorReferenceTestCase extends TestCase {
         classesWithColorReferences = new LinkedHashSet<>();
         Assert.assertNotNull("Base package should not be null.", basePackage);
         lookForColorReferences(basePackage);
-        specialColorRefs = Arrays.asList(org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE
-                .getDiagramDescription_BackgroundColor());
+        specialColorRefs = Arrays.asList(org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE.getDiagramDescription_BackgroundColor());
     }
 
     private void lookForColorReferences(EPackage pkg) {
-        for (EClass eclass : Iterables.filter(pkg.getEClassifiers(), EClass.class)) {
-            lookForColorReferences(eclass);
+        for (EClassifier classifier : pkg.getEClassifiers()) {
+            if (classifier instanceof EClass) {
+                lookForColorReferences((EClass) classifier);
+            }
         }
         for (EPackage subPkg : pkg.getESubpackages()) {
             lookForColorReferences(subPkg);
@@ -83,9 +79,9 @@ public abstract class AbstractColorReferenceTestCase extends TestCase {
     }
 
     private void lookForColorReferences(EClass eclass) {
-        Iterable<EReference> allColorReferences = Iterables.filter(eclass.getEAllReferences(), isColorReference);
-        Iterables.addAll(colorReferences, allColorReferences);
-        if (!Iterables.isEmpty(allColorReferences) && !eclass.isAbstract() && !eclass.isInterface()) {
+        List<EReference> allColorReferences = eclass.getEAllReferences().stream().filter(isColorReference).collect(Collectors.toList());
+        colorReferences.addAll(allColorReferences);
+        if (!allColorReferences.isEmpty() && !eclass.isAbstract() && !eclass.isInterface()) {
             classesWithColorReferences.add(eclass);
         }
     }
@@ -94,16 +90,8 @@ public abstract class AbstractColorReferenceTestCase extends TestCase {
      * Test that all color references are required.
      */
     public void testColorReferencesCardinality() {
-        List<EReference> referencesWithWrongCardinality = new ArrayList<>();
-
-        Predicate<EReference> shouldBeRequired = new Predicate<EReference>() {
-            @Override
-            public boolean apply(EReference input) {
-                return !input.isRequired() && !specialColorRefs.contains(input);
-            }
-        };
-
-        Iterables.addAll(referencesWithWrongCardinality, Iterables.filter(colorReferences, shouldBeRequired));
+        Predicate<EReference> shouldBeRequired = (EReference input) -> !input.isRequired() && !specialColorRefs.contains(input);
+        List<EReference> referencesWithWrongCardinality = colorReferences.stream().filter(shouldBeRequired).collect(Collectors.toList());
         Assert.assertTrue(getMessage(referencesWithWrongCardinality), referencesWithWrongCardinality.isEmpty());
     }
 
@@ -114,11 +102,11 @@ public abstract class AbstractColorReferenceTestCase extends TestCase {
         StringBuilder sb = new StringBuilder();
         for (EClass clazz : classesWithColorReferences) {
             EObject created = EcoreUtil.create(clazz);
-            for (EReference colorRef : Iterables.filter(clazz.getEAllReferences(), isColorReference)) {
+            clazz.getEAllReferences().stream().filter(isColorReference).forEach((EReference colorRef) -> {
                 if ((!created.eIsSet(colorRef) || created.eGet(colorRef) == null) && !specialColorRefs.contains(colorRef)) {
                     sb.append(" . " + clazz.getName() + "#" + colorRef.getName() + "\n");
                 }
-            }
+            });
         }
         TestCase.assertTrue("Some color references need initialization:\n" + sb.toString(), sb.length() == 0);
     }

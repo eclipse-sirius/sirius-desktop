@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2022 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -25,8 +25,10 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -117,10 +119,6 @@ import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.junit.Assert;
 import org.osgi.framework.Version;
 
-import com.google.common.collect.LinkedHashMultimap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.Sets;
-
 import junit.framework.TestCase;
 
 /**
@@ -171,13 +169,13 @@ public abstract class SiriusTestCase extends TestCase {
     protected Callback selectionCallback = new ViewpointSelectionCallback();
 
     /** The reported errors. */
-    protected final Multimap<String, IStatus> errors = LinkedHashMultimap.create();
+    protected final Map<String, List<IStatus>> errors = new LinkedHashMap<>();
 
     /** The reported warnings. */
-    protected final Multimap<String, IStatus> warnings = LinkedHashMultimap.create();
+    protected final Map<String, List<IStatus>> warnings = new LinkedHashMap<>();
 
     /** The reported infos. */
-    protected final Multimap<String, IStatus> infos = LinkedHashMultimap.create();
+    protected final Map<String, List<IStatus>> infos = new LinkedHashMap<>();
 
     /** A default progress monitor test code can use when one is needed. */
     protected IProgressMonitor defaultProgress = new NullProgressMonitor();
@@ -601,10 +599,7 @@ public abstract class SiriusTestCase extends TestCase {
      * @return true if an error occurs.
      */
     protected synchronized boolean doesAnErrorOccurs() {
-        if (errors != null) {
-            return errors.values().size() != 0;
-        }
-        return false;
+        return errors != null && !errors.values().isEmpty();
     }
 
     /**
@@ -613,10 +608,7 @@ public abstract class SiriusTestCase extends TestCase {
      * @return true if a warning occurs.
      */
     protected synchronized boolean doesAWarningOccurs() {
-        if (warnings != null) {
-            return warnings.values().size() != 0;
-        }
-        return false;
+        return warnings != null && !warnings.values().isEmpty();
     }
 
     /**
@@ -625,10 +617,7 @@ public abstract class SiriusTestCase extends TestCase {
      * @return true if an info occurs.
      */
     protected synchronized boolean doesAnInfoOccurs() {
-        if (infos != null) {
-            return infos.values().size() != 0;
-        }
-        return false;
+        return (infos != null) && !infos.values().isEmpty();
     }
 
     /**
@@ -660,18 +649,17 @@ public abstract class SiriusTestCase extends TestCase {
      * @param sourcePlugin
      *            source plugin in which the error occurred
      */
-    private synchronized void errorOccurs(IStatus status, String sourcePlugin) {
+    protected synchronized void errorOccurs(IStatus status, String sourcePlugin) {
         if (isErrorCatchActive()) {
             boolean ignoreMessage = false;
-            if ("org.eclipse.core.runtime".equals(sourcePlugin) && status != null) {
-                if ("Could not acquire INavigatorContentService: Project Explorer not found.".equals(status.getMessage())) {
-                    // Ignore error caused by bugzilla 489335 when tests are launched with product
-                    // "org.eclipse.platform.ide".
-                    ignoreMessage = true;
-                }
+            if ("org.eclipse.core.runtime".equals(sourcePlugin) && status != null && "Could not acquire INavigatorContentService: Project Explorer not found.".equals(status.getMessage())) {
+                // Ignore error caused by bugzilla 489335 when tests are launched with product
+                // "org.eclipse.platform.ide".
+                ignoreMessage = true;
             }
             if (!ignoreMessage) {
-                errors.put(sourcePlugin, status);
+                errors.putIfAbsent(sourcePlugin, new ArrayList<>());
+                errors.get(sourcePlugin).add(status);
             }
         }
     }
@@ -684,9 +672,10 @@ public abstract class SiriusTestCase extends TestCase {
      * @param sourcePlugin
      *            source plugin in which the warning occurred
      */
-    private synchronized void warningOccurs(IStatus status, String sourcePlugin) {
+    protected synchronized void warningOccurs(IStatus status, String sourcePlugin) {
         if (isWarningCatchActive()) {
-            warnings.put(sourcePlugin, status);
+            warnings.putIfAbsent(sourcePlugin, new ArrayList<>());
+            warnings.get(sourcePlugin).add(status);
         }
     }
 
@@ -698,9 +687,10 @@ public abstract class SiriusTestCase extends TestCase {
      * @param sourcePlugin
      *            source plugin in which the info occurred
      */
-    private synchronized void infoOccurs(IStatus status, String sourcePlugin) {
+    protected synchronized void infoOccurs(IStatus status, String sourcePlugin) {
         if (isInfoCatchActive()) {
-            infos.put(sourcePlugin, status);
+            infos.putIfAbsent(sourcePlugin, new ArrayList<>());
+            infos.get(sourcePlugin).add(status);
         }
     }
 
@@ -788,12 +778,12 @@ public abstract class SiriusTestCase extends TestCase {
      *            map with message reported and their status
      * @return the message
      */
-    protected synchronized String getLoggersMessage(String type, Multimap<String, IStatus> messages) {
+    private synchronized String getLoggersMessage(String type, Map<String, List<IStatus>> messages) {
         StringBuilder log1 = new StringBuilder();
         String br = "\n";
         String testName = getClass().getName();
         log1.append(type + "(s) raised during test : " + testName).append(br);
-        for (Entry<String, Collection<IStatus>> entry : messages.asMap().entrySet()) {
+        for (Entry<String, List<IStatus>> entry : messages.entrySet()) {
             String reporter = entry.getKey();
             log1.append(". Log Plugin : " + reporter).append(br);
 
@@ -1917,7 +1907,7 @@ public abstract class SiriusTestCase extends TestCase {
         TestsUtil.emptyEventsFromUIThread();
 
         if (domain != null) {
-            LinkedHashSet<Group> groups = Sets.<Group> newLinkedHashSet();
+            LinkedHashSet<Group> groups = new LinkedHashSet<>();
 
             for (Viewpoint vp : viewpoints) {
                 if (vp.eContainer() instanceof Group) {

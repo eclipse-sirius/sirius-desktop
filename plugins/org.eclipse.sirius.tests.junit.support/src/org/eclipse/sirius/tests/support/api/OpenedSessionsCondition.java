@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,13 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.support.api;
 
-import java.util.Collection;
-
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
 
 /**
  * A condition to wait until the {@link SessionManager} return the expected
@@ -40,26 +35,13 @@ public class OpenedSessionsCondition implements ICondition {
         this.expectedNumber = expectedNumber;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean test() throws Exception {
-        Collection<Session> knownSession = SessionManager.INSTANCE.getSessions();
-
-        // Sessions are added to the SessionManager during their opening,
-        // but they might not be completelty opened yet.
-        Iterable<Session> openedSessions = Iterables.filter(knownSession, new Predicate<Session>() {
-            @Override
-            public boolean apply(Session input) {
-                return input.isOpen();
-            }
-        });
-        return expectedNumber == Iterables.size(openedSessions);
+        return SessionManager.INSTANCE.getSessions().stream().filter(Session::isOpen).count() == expectedNumber;
     }
 
     @Override
     public String getFailureMessage() {
-        return "The expected number of session was not reached.";
+        return "The expected number of sessions (" + expectedNumber + ") was not reached.";
     }
 }

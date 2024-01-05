@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES and others
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,10 +14,13 @@ package org.eclipse.sirius.tests.support.api;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
@@ -31,14 +34,6 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.junit.Assert;
-
-import com.google.common.base.Function;
-import com.google.common.base.Predicate;
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.Collections2;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.Sets;
 
 import junit.framework.TestCase;
 
@@ -57,12 +52,7 @@ public abstract class AbstractInterpretedExpressionTestCase extends TestCase {
 
     private EPackage basePackage;
 
-    private final Predicate<EAttribute> isInterpretedExpression = new Predicate<EAttribute>() {
-        @Override
-        public boolean apply(EAttribute input) {
-            return DescriptionPackage.eINSTANCE.getInterpretedExpression().equals(input.getEAttributeType());
-        }
-    };
+    private final Predicate<EAttribute> isInterpretedExpression = (EAttribute input) -> DescriptionPackage.eINSTANCE.getInterpretedExpression().equals(input.getEAttributeType());
 
     public EPackage getBasePackage() {
         return basePackage;
@@ -81,8 +71,10 @@ public abstract class AbstractInterpretedExpressionTestCase extends TestCase {
     }
 
     private void handleEPackage(EPackage pkg) {
-        for (EClass eclass : Iterables.filter(pkg.getEClassifiers(), EClass.class)) {
-            handleEClass(eclass);
+        for (EClassifier classifier : pkg.getEClassifiers()) {
+            if (classifier instanceof EClass) {
+                handleEClass((EClass) classifier);
+            }
         }
         for (EPackage subPkg : pkg.getESubpackages()) {
             handleEPackage(subPkg);
@@ -90,14 +82,14 @@ public abstract class AbstractInterpretedExpressionTestCase extends TestCase {
     }
 
     private void handleEClass(EClass eclass) {
-        Iterables.addAll(interpretedExpressions, Iterables.filter(eclass.getEAttributes(), isInterpretedExpression));
+        eclass.getEAttributes().stream().filter(isInterpretedExpression).forEach(interpretedExpressions::add);
     }
 
     /**
      * Test that all interpreted expression has a variable documentation.
      */
     public void testVariableTypesInterpretedExpressionEAnnotation() {
-        Multimap<EAttribute, String> wrongTypes = ArrayListMultimap.create();
+        Map<EAttribute, List<String>> wrongTypes = new HashMap<>();
 
         for (EAttribute attr : interpretedExpressions) {
             EAnnotation varAnnotations = attr.getEAnnotation(AbstractInterpretedExpressionTestCase.VARIABLES);
@@ -108,7 +100,10 @@ public abstract class AbstractInterpretedExpressionTestCase extends TestCase {
                         String typeName = doc.substring(0, doc.indexOf("|")).trim();
                         String errorMessage = validateVariableType(typeName);
                         if (errorMessage != null) {
-                            wrongTypes.put(attr, varName + ":" + typeName + " > " + errorMessage);
+                            if (!wrongTypes.containsKey(attr)) {
+                                wrongTypes.put(attr, new ArrayList<>());
+                            }
+                            wrongTypes.get(attr).add(varName + ":" + typeName + " > " + errorMessage);
                         }
                     }
                 }
@@ -118,7 +113,7 @@ public abstract class AbstractInterpretedExpressionTestCase extends TestCase {
         Assert.assertTrue(getMessage(wrongTypes), wrongTypes.isEmpty());
     }
 
-    private String getMessage(Multimap<EAttribute, String> wrongTypes) {
+    private String getMessage(Map<EAttribute, List<String>> wrongTypes) {
         StringBuilder sb = new StringBuilder();
         sb.append(wrongTypes.size());
         sb.append(" variable(s) available in interpreted expressions need type correction:");
@@ -166,8 +161,7 @@ public abstract class AbstractInterpretedExpressionTestCase extends TestCase {
     }
 
     /**
-     * Allow to indicate which is the dialect package (in case of sur diagram
-     * types or dialect extension).
+     * Allow to indicate which is the dialect package (in case of sur diagram types or dialect extension).
      * 
      * @return the dialect package (or core base package)
      */
@@ -196,21 +190,10 @@ public abstract class AbstractInterpretedExpressionTestCase extends TestCase {
      * Test that all interpreted expression variables have a known type.
      */
     public void testVariablesInInterpretedExpressionEAnnotation() {
-        List<EAttribute> nonDocumented = new ArrayList<>();
-
-        Predicate<EAttribute> needsDocumentation = new Predicate<EAttribute>() {
-            @Override
-            public boolean apply(EAttribute input) {
-                EAnnotation eAnnotation = input.getEAnnotation(AbstractInterpretedExpressionTestCase.VARIABLES);
-                return eAnnotation == null;
-            }
-        };
-
-        Iterables.addAll(nonDocumented, Iterables.filter(interpretedExpressions, needsDocumentation));
-
+        Predicate<EAttribute> needsDocumentation = (EAttribute input) -> input.getEAnnotation(AbstractInterpretedExpressionTestCase.VARIABLES) == null;
+        List<EAttribute> nonDocumented = interpretedExpressions.stream().filter(needsDocumentation).collect(Collectors.toList());
         // Exceptions
         nonDocumented.remove(ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT);
-
         Assert.assertTrue(getMessage(nonDocumented, AbstractInterpretedExpressionTestCase.VARIABLES), nonDocumented.isEmpty());
     }
 
@@ -218,17 +201,11 @@ public abstract class AbstractInterpretedExpressionTestCase extends TestCase {
      * Test that all interpreted expression has a result type documentation.
      */
     public void testReturnTypeInterpretedExpressionEAnnotation() {
-        List<EAttribute> nonDocumented = new ArrayList<>();
-
-        Predicate<EAttribute> needsReturnType = new Predicate<EAttribute>() {
-            @Override
-            public boolean apply(EAttribute input) {
-                EAnnotation eAnnotation = input.getEAnnotation(AbstractInterpretedExpressionTestCase.RETURN_TYPE);
-                return eAnnotation == null || eAnnotation.getDetails().isEmpty();
-            }
+        Predicate<EAttribute> needsReturnType = (EAttribute input) -> {
+            EAnnotation eAnnotation = input.getEAnnotation(AbstractInterpretedExpressionTestCase.RETURN_TYPE);
+            return eAnnotation == null || eAnnotation.getDetails().isEmpty();
         };
-
-        Iterables.addAll(nonDocumented, Iterables.filter(interpretedExpressions, needsReturnType));
+        List<EAttribute> nonDocumented = interpretedExpressions.stream().filter(needsReturnType).collect(Collectors.toList());
         Assert.assertTrue(getMessage(nonDocumented, AbstractInterpretedExpressionTestCase.RETURN_TYPE), nonDocumented.isEmpty());
     }
 
@@ -299,16 +276,9 @@ public abstract class AbstractInterpretedExpressionTestCase extends TestCase {
      */
     protected void assertVariableExistenceAndType(AbstractToolDescription tool, String expectedVariable, VariableType expectedType, Set<String> variables, Map<String, VariableType> variablesToType) {
         assertVariableExistence(tool, expectedVariable, variables);
-        Function<TypeName, String> toStringFunction = new Function<TypeName, String>() {
-
-            @Override
-            public String apply(TypeName input) {
-                return input.toString();
-            }
-
-        };
-        boolean areSameSets = Sets.symmetricDifference(Sets.newLinkedHashSet(Collections2.transform(expectedType.getPossibleTypes(), toStringFunction)),
-                Sets.newLinkedHashSet(Collections2.transform(variablesToType.get(expectedVariable).getPossibleTypes(), toStringFunction))).size() == 0;
+        Set<String> acceptableTypesNames = expectedType.getPossibleTypes().stream().map(TypeName::toString).collect(Collectors.toSet());
+        Set<String> actualVariableTypesNames = variablesToType.get(expectedVariable).getPossibleTypes().stream().map(TypeName::toString).collect(Collectors.toSet());
+        boolean areSameSets = acceptableTypesNames.equals(actualVariableTypesNames);
         assertTrue("The interpreter context for " + tool.eClass().getName() + " has a bad variable type for variable expected:" + expectedVariable + " " + expectedType.toString() + " got instead: "
                 + variablesToType.get(expectedVariable).toString(), areSameSets);
     }
