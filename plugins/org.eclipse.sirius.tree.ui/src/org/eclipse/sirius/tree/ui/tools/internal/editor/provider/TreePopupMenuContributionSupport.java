@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -47,8 +47,6 @@ import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionCall;
 import org.eclipse.sirius.viewpoint.description.tool.MenuItemDescription;
 import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
-
-import com.google.common.collect.Iterators;
 
 /**
  * A Class that will populate a {@link DTreeItem}'s contextual menu using all the
@@ -299,10 +297,12 @@ public final class TreePopupMenuContributionSupport {
         ImageDescriptor descriptor = DTreeViewerManager.getImageRegistry().getDescriptor(DTreeViewerManager.CREATE_TREE_ITEM_IMG);
         EObject created = null;
 
-        Iterator<CreateInstance> createInstances = Iterators.filter(createTool.eAllContents(), CreateInstance.class);
-        while (created == null && createInstances.hasNext()) {
-            CreateInstance map = createInstances.next();
-            created = TreePopupMenuContributionSupport.tryToInstanciateType(createTool, created, map.getTypeName());
+        Iterator<EObject> iter = createTool.eAllContents();
+        while (created == null && iter.hasNext()) {
+            EObject current = iter.next();
+            if (current instanceof CreateInstance) {
+                created = TreePopupMenuContributionSupport.tryToInstanciateType(createTool, created, ((CreateInstance) current).getTypeName());
+            }
         }
 
         if (created != null) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2021 Obeo
+ * Copyright (c) 2017, 2024 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.SubMonitor;
@@ -37,9 +38,6 @@ import org.eclipse.sirius.tree.ui.provider.Messages;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeEditor;
 import org.eclipse.sirius.ui.business.api.action.RefreshActionListenerRegistry;
 import org.eclipse.swt.widgets.Shell;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * This class contains utility methods used to refresh table editors.
@@ -113,31 +111,29 @@ public final class TreeRefresherHelper {
      */
     private static IRunnableWithProgress getRunnable(DTreeEditor treeEditor, IStructuredSelection structuredSelection) {
         IRunnableWithProgress op = null;
-        LinkedList<Object> minimizedSelection = new LinkedList<Object>(Arrays.asList(structuredSelection.toArray()));
+        LinkedList<Object> minimizedSelection = new LinkedList<>(Arrays.asList(structuredSelection.toArray()));
         if (minimizedSelection.isEmpty()) {
-            op = new IRunnableWithProgress() {
-                @Override
-                public void run(final IProgressMonitor monitor) {
-                    TransactionalEditingDomain domain = treeEditor.getEditingDomain();
-                    domain.getCommandStack().execute(new RefreshRepresentationsCommand(domain, monitor, treeEditor.getTreeModel()));
-                }
+            op = monitor -> {
+                TransactionalEditingDomain domain = treeEditor.getEditingDomain();
+                domain.getCommandStack().execute(new RefreshRepresentationsCommand(domain, monitor, treeEditor.getTreeModel()));
             };
             RefreshActionListenerRegistry.INSTANCE.notifyRepresentationIsAboutToBeRefreshed(treeEditor.getTreeModel());
         } else {
-            Iterable<DTreeItem> elements = Iterables.filter(minimizedSelection, DTreeItem.class);
-            final Collection<DTreeItem> dTreeItems = Lists.newArrayList(elements);
+            // @formatter:off
+            Collection<DTreeItem> dTreeItems = minimizedSelection.stream()
+                                                                 .filter(DTreeItem.class::isInstance)
+                                                                 .map(DTreeItem.class::cast)
+                                                                 .collect(Collectors.toList());
+            // @formatter:on
             if (!dTreeItems.isEmpty()) {
-                op = new IRunnableWithProgress() {
-                    @Override
-                    public void run(final IProgressMonitor monitor) {
-                        Session session = new EObjectQuery(treeEditor.getRepresentation()).getSession();
-                        if (session != null) {
-                            GlobalContext globalContext = new TreeRefreshContext(session.getModelAccessor(), session.getInterpreter(), session.getSemanticResources(),
-                                    session.getTransactionalEditingDomain());
-                            TransactionalEditingDomain domain = treeEditor.getEditingDomain();
-                            Command localRefreshCmd = new DTreeItemLocalRefreshCommand(domain, globalContext, dTreeItems, false);
-                            domain.getCommandStack().execute(localRefreshCmd);
-                        }
+                op = monitor -> {
+                    Session session = new EObjectQuery(treeEditor.getRepresentation()).getSession();
+                    if (session != null) {
+                        GlobalContext globalContext = new TreeRefreshContext(session.getModelAccessor(), session.getInterpreter(), session.getSemanticResources(),
+                                session.getTransactionalEditingDomain());
+                        TransactionalEditingDomain domain = treeEditor.getEditingDomain();
+                        Command localRefreshCmd = new DTreeItemLocalRefreshCommand(domain, globalContext, dTreeItems, false);
+                        domain.getCommandStack().execute(localRefreshCmd);
                     }
                 };
             }
