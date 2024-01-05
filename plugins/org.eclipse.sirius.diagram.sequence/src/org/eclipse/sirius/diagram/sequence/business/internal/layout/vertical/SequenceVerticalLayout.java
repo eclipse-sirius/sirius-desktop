@@ -492,7 +492,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
                 if (instanceRole != null) {
                     int newLBound = getLifelineMinLowerBound(instanceRole);
                     if (newLBound != oldRange.getLowerBound()) {
-                        sequenceEventsToRange.put(event, new Range(newLBound, oldRange.getUpperBound()));
+                        sequenceEventsToRange.put(event, new Range(newLBound, Math.max(newLBound, oldRange.getUpperBound())));
                     }
                 }
             }

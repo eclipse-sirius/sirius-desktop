@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -170,6 +171,19 @@ public interface IDiagramDescriptionProvider {
      * @since 4.1.0
      */
     boolean allowsCopyPasteFormat(DSemanticDecorator element);
+
+    /**
+     * Indicates if this Diagram description provider allows node auto-size mode computed from the node style on the
+     * specified element.
+     * 
+     * @param element
+     *            the element to check.
+     * 
+     * @return true if this provider allows the node auto-size mode computed from the node style, false otherwise.
+     * 
+     * @since 7.4.0
+     */
+    boolean allowsAutoSizeNodeStyle(DNode element);
 
     /**
      * Indicates if the given Diagram description provider support the header section in diagram to display header
