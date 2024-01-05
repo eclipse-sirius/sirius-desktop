@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,12 +15,15 @@ package org.eclipse.sirius.tree.ui.tools.internal.editor.provider;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
@@ -53,9 +56,6 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.swt.dnd.DropTargetListener;
 import org.eclipse.swt.dnd.TransferData;
-
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
 
 /**
  * Drop Listener used to validate and perform Drag and Drop operations on DTreeItems.
@@ -237,16 +237,24 @@ public class DTreeItemDropListener extends ViewerDropAdapter implements DropTarg
         if (selection instanceof IStructuredSelection) {
             IStructuredSelection sel = (IStructuredSelection) selection;
 
-            Iterable<DSemanticDecorator> dSelection = Iterables.filter(sel.toList(), DSemanticDecorator.class);
-            if (!Iterables.isEmpty(dSelection)) {
-                for (DSemanticDecorator semDec : dSelection) {
+            List<?> selectedElements = sel.toList();
+            if (selectedElements.stream().anyMatch(DSemanticDecorator.class::isInstance)) {
+                // @formatter:off
+                selectedElements.stream()
+                                .filter(DSemanticDecorator.class::isInstance)
+                                .map(DSemanticDecorator.class::cast)
+                                .forEachOrdered(semDec -> {
                     droppedData.add(semDec);
                     semanticDroppedData.put(semDec.getTarget(), null);
-                }
+                });
+                // @formatter:on
             } else {
-                for (EObject eobject : Iterables.filter(sel.toList(), EObject.class)) {
-                    semanticDroppedData.put(eobject, null);
-                }
+                // @formatter:off
+                selectedElements.stream()
+                                .filter(EObject.class::isInstance)
+                                .map(EObject.class::cast)
+                                .forEach(eobject -> semanticDroppedData.put(eobject, null));
+                // @formatter:on
             }
         }
     }
@@ -487,21 +495,20 @@ public class DTreeItemDropListener extends ViewerDropAdapter implements DropTarg
     }
 
     private Iterable<TreeItemContainerDropTool> getDropTools(final TreeDragSource dragSource) {
-        Predicate<TreeItemContainerDropTool> checkedDragSource = new Predicate<TreeItemContainerDropTool>() {
-            @Override
-            public boolean apply(TreeItemContainerDropTool input) {
-                return input.getDragSource() == TreeDragSource.BOTH || input.getDragSource() == dragSource;
-            }
+        Predicate<TreeItemContainerDropTool> checkedDragSource = (TreeItemContainerDropTool input) -> {
+            return input.getDragSource() == TreeDragSource.BOTH || input.getDragSource() == dragSource;
         };
 
-        Collection<TreeItemContainerDropTool> availableTools = new ArrayList<>();
+        final Collection<TreeItemContainerDropTool> availableTools;
         if (dropTarget instanceof DTree) {
-            availableTools.addAll(((DTree) dropTarget).getDescription().getDropTools());
+            availableTools = ((DTree) dropTarget).getDescription().getDropTools();
         } else if (dropTarget instanceof DTreeItem) {
-            availableTools.addAll(((DTreeItem) dropTarget).getActualMapping().getDropTools());
+            availableTools = ((DTreeItem) dropTarget).getActualMapping().getDropTools();
+        } else {
+            availableTools = Collections.emptyList();
         }
 
-        return Iterables.filter(availableTools, checkedDragSource);
+        return availableTools.stream().filter(checkedDragSource).collect(Collectors.toList());
     }
 
 }

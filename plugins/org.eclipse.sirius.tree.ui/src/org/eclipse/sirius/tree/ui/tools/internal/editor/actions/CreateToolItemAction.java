@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -44,8 +44,6 @@ import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeViewerManager;
 import org.eclipse.sirius.viewpoint.description.tool.CreateInstance;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
-import com.google.common.collect.Iterators;
-
 /**
  * Action to launch the createTool of the treeItemContainer (tree or tree item).
  * 
@@ -75,10 +73,12 @@ public class CreateToolItemAction extends AbstractToolItemAction {
         ImageDescriptor descriptor = DTreeViewerManager.getImageRegistry().getDescriptor(DTreeViewerManager.CREATE_TREE_ITEM_IMG);
         EObject created = null;
 
-        Iterator<CreateInstance> createInstances = Iterators.filter(createTool.eAllContents(), CreateInstance.class);
-        while (created == null && createInstances.hasNext()) {
-            CreateInstance map = createInstances.next();
-            created = CreateToolItemAction.tryToInstanciateType(createTool, created, map.getTypeName());
+        Iterator<EObject> iter = createTool.eAllContents();
+        while (created == null && iter.hasNext()) {
+            EObject current = iter.next();
+            if (current instanceof CreateInstance) {
+                created = CreateToolItemAction.tryToInstanciateType(createTool, created, ((CreateInstance) current).getTypeName());
+            }
         }
 
         Iterator<TreeItemMapping> it = createTool.getMapping().iterator();
@@ -94,7 +94,6 @@ public class CreateToolItemAction extends AbstractToolItemAction {
                 if (semanticDescriptor != null) {
                     descriptor = semanticDescriptor;
                 }
-
             }
         }
 
@@ -149,11 +148,13 @@ public class CreateToolItemAction extends AbstractToolItemAction {
     @Override
     public boolean canExecute() {
         boolean canExecute = true;
-        if (getCreationTool() != null) {
-            if (getCreationTool().getFirstModelOperation() == null) {
+        TreeItemCreationTool creationTool = getCreationTool();
+        if (creationTool != null) {
+            if (creationTool.getFirstModelOperation() == null) {
                 canExecute = false;
             } else {
-                if (getCreationTool().getPrecondition() != null && !StringUtil.isEmpty(getCreationTool().getPrecondition().trim())) {
+                String precondition = creationTool.getPrecondition();
+                if (precondition != null && !StringUtil.isEmpty(precondition.trim())) {
                     IInterpreter interpreter = null;
                     try {
                         if (getTreeItem() != null) {
@@ -161,16 +162,16 @@ public class CreateToolItemAction extends AbstractToolItemAction {
                             interpreter.setVariable(IInterpreterSiriusVariables.ROOT, TreeHelper.getTree(getTreeItem()).getTarget());
                             interpreter.setVariable(IInterpreterSiriusVariables.ELEMENT, getTreeItem().getTarget());
                             interpreter.setVariable(IInterpreterSiriusVariables.CONTAINER, ((DTreeItemContainer) getTreeItem().eContainer()).getTarget());
-                            canExecute = interpreter.evaluateBoolean(getTreeItem().getTarget(), getCreationTool().getPrecondition());
+                            canExecute = interpreter.evaluateBoolean(getTreeItem().getTarget(), precondition);
                         } else {
                             interpreter = InterpreterUtil.getInterpreter(getTable().getTarget());
                             interpreter.setVariable(IInterpreterSiriusVariables.ROOT, getTable().getTarget());
                             interpreter.setVariable(IInterpreterSiriusVariables.ELEMENT, getTable().getTarget());
                             interpreter.setVariable(IInterpreterSiriusVariables.CONTAINER, null);
-                            canExecute = interpreter.evaluateBoolean(getTable().getTarget(), getCreationTool().getPrecondition());
+                            canExecute = interpreter.evaluateBoolean(getTable().getTarget(), precondition);
                         }
                     } catch (final EvaluationException e) {
-                        RuntimeLoggerManager.INSTANCE.error(getCreationTool(), ToolPackage.eINSTANCE.getAbstractToolDescription_Precondition(), e);
+                        RuntimeLoggerManager.INSTANCE.error(creationTool, ToolPackage.eINSTANCE.getAbstractToolDescription_Precondition(), e);
                     }
                     interpreter.unSetVariable(IInterpreterSiriusVariables.ROOT);
                     interpreter.unSetVariable(IInterpreterSiriusVariables.ELEMENT);
