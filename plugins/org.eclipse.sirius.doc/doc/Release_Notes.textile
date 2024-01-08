@@ -17,6 +17,8 @@ h3. User-Visible Changes
 
 h3. Specifier-Visible Changes
 
+* <span class="label label-info">Modified</span> Upgraded ELK version from 0.7.1 to 0.9.0, see the "ELK documentation":https://eclipse.dev/elk/downloads/releasenotes/release-0.9.0.html for the list of changes in that version (and previous). Due to improvements or refactoring in ELK, some configuration option identifiers have been renamed or deleted. An automatic migration has been added in Sirius to migrate these identifiers used in VSM (see Migrations section for detail). In any case, if your modeler uses an ELK layout, you must be careful.
+
 h3. Developer-Visible Changes
 
 * <span class="label label-info">Modified</span> ArrangeBorderNodesAction.initAction now has two parameters for its text: when there is no selection, when there is a selection.
@@ -25,6 +27,10 @@ h4. Changes in @org.eclipse.sirius.diagram.ui@
 
 * <span class="label label-success">Added</span> The constant @org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager.KEEP_FIXED@ has been added to tag elements to be laid out and indicate that their location should not be modified.
 * <span class="label label-success">Added</span> Method @org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager.getArrangeCreatedViewsCommand(List<IAdaptable>, List<IAdaptable>, IGraphicalEditPart, String)@ has been added to handle the new @KEEP_FIXED@ layout tag. There are now 3 types of tags that can be used for layout: @org.eclipse.gmf.runtime.diagram.ui.services.layout.LayoutType.DEFAULT@, @org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager.LAYOUT_TYPE_ARRANGE_AT_OPENING@ and @org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager.KEEP_FIXED@.
+
+h4. Migrations
+
+* <span class="label label-success">Added</span> A migration participant has been added to migrate ELK options used in VSM. Some have been renamed and some others have been removed. You should carefully read the information logged during this migration and the "ELK release notes":https://eclipse.dev/elk/downloads/releasenotes/release-0.9.0.html to check if any manual adjustments need to be made. The corresponding version, stored in attribute version of description:Group of the odesign file, is _15.4.0.202401051836_.
 
 h2(#sirius7.3.0). Changes in Sirius 7.3.0
 
