@@ -23,4 +23,11 @@
            class="org.eclipse.sirius.diagram.elk.ELKAlgorithmProvider">
      </customLayoutProvider>
   </extension>
+  <extension
+          point="org.eclipse.sirius.migrationParticipant">
+     <participant
+       class="org.eclipse.sirius.diagram.elk.migration.description.ELK090MigrationParticipant"
+       kind="VSM">
+     </participant>
+  </extension>
 </plugin>

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2021 Obeo
+ * Copyright (c) 2018, 2024 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -67,27 +67,27 @@ public class ELKLayoutNodeProvider extends DefaultLayoutProvider {
         boolean isArrangeAtOpening = SiriusLayoutDataManager.LAYOUT_TYPE_ARRANGE_AT_OPENING.equals(layoutHint.getAdapter(String.class));
         LayoutMapping layoutMapping = connector.buildLayoutGraph(diagramEditPart, selectedObjects, isArrangeAll, isArrangeAtOpening);
 
-        if (DiagramElkPlugin.getDefault().isDebugging()) {
+        if (DiagramElkPlugin.getPlugin().isDebugging()) {
             ElkDiagramLayoutConnector.storeResult(layoutMapping.getLayoutGraph(), layoutMapping.getLayoutGraph().getIdentifier(), "1_initialState", false);
         }
 
         // We perform "before" actions provided by extension point.
         elkLayoutExtensions.forEach(e -> e.beforeELKLayout(layoutMapping));
 
-        if (DiagramElkPlugin.getDefault().isDebugging()) {
+        if (DiagramElkPlugin.getPlugin().isDebugging()) {
             ElkDiagramLayoutConnector.storeResult(layoutMapping.getLayoutGraph(), layoutMapping.getLayoutGraph().getIdentifier(), "2_beforeELKLayout", false);
         }
 
         connector.layout(layoutMapping);
 
-        if (DiagramElkPlugin.getDefault().isDebugging()) {
+        if (DiagramElkPlugin.getPlugin().isDebugging()) {
             ElkDiagramLayoutConnector.storeResult(layoutMapping.getLayoutGraph(), layoutMapping.getLayoutGraph().getIdentifier(), "3_afterELKLayout", false);
         }
 
         // We perform "after" actions provided by extension point.
         elkLayoutExtensions.forEach(e -> e.afterELKLayout(layoutMapping));
 
-        if (DiagramElkPlugin.getDefault().isDebugging()) {
+        if (DiagramElkPlugin.getPlugin().isDebugging()) {
             ElkDiagramLayoutConnector.storeResult(layoutMapping.getLayoutGraph(), layoutMapping.getLayoutGraph().getIdentifier(), "4_afterExtensionUpdate", false);
         }
         connector.transferLayout(layoutMapping, isArrangeAll || (layoutOnDiagram && isArrangeAtOpening));
