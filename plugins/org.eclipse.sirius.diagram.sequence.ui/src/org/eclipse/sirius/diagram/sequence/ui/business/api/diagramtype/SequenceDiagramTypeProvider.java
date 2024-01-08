@@ -36,6 +36,7 @@ import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressio
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.business.api.diagramtype.HeaderData;
 import org.eclipse.sirius.diagram.business.api.diagramtype.ICollapseUpdater;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider;
@@ -241,6 +242,11 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
 
     @Override
     public boolean allowsCopyPasteFormat(DSemanticDecorator element) {
+        return !isSequenceSemanticDecorator.apply(element);
+    }
+
+    @Override
+    public boolean allowsAutoSizeNodeStyle(DNode element) {
         return !isSequenceSemanticDecorator.apply(element);
     }
 

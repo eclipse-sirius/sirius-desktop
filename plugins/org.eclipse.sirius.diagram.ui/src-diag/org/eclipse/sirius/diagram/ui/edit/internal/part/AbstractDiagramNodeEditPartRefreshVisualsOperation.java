@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2023 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -38,6 +38,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItem
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
+import org.eclipse.sirius.ext.draw2d.figure.StyledFigure;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
 import org.eclipse.swt.graphics.Image;
 
@@ -76,8 +77,7 @@ public class AbstractDiagramNodeEditPartRefreshVisualsOperation {
     /**
      * Check if refresh can occur.
      * 
-     * @return <code>true</code> if refresh methods could be called safely,
-     *         <code>false</code> otherwise
+     * @return <code>true</code> if refresh methods could be called safely, <code>false</code> otherwise
      */
     public boolean canRefresh() {
         return node != null;
@@ -95,27 +95,51 @@ public class AbstractDiagramNodeEditPartRefreshVisualsOperation {
         int height = computeHeight(width);
 
         Dimension d = new Dimension(width, height);
+        DefaultSizeNodeFigure nodePlate = getNodePlate();
 
-        AbstractDiagramNodeEditPartOperation.setChildrenSize(editPart, d);
+        final int w = ((Integer) getStructuralFeatureValue(NotationPackage.eINSTANCE.getSize_Width())).intValue();
+        final int h = ((Integer) getStructuralFeatureValue(NotationPackage.eINSTANCE.getSize_Height())).intValue();
 
-        if (DiagramElementEditPartOperation.getStyledFigure(editPart.getFigure()) != null) {
-            DiagramElementEditPartOperation.getStyledFigure(editPart.getFigure()).setSize(width, height);
+        // Store the (-1, -1) auto-size values in the maxSize (value never return see
+        // org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.AirDefaultSizeNodeFigure.getMaximumSize())
+        Dimension maxd = d.getCopy();
+        if (w == -1) {
+            maxd.width = -1;
         }
-        if (getNodePlate() != null) {
-            getNodePlate().setSize(width, height);
-            getNodePlate().setDefaultSize(width, height);
-            getNodePlate().getParent().setSize(width, height);
-            getNodePlate().setPreferredSize(width, height);
-            getNodePlate().setMinimumSize(d);
-            getNodePlate().setMaximumSize(d);
+        if (h == -1) {
+            maxd.height = -1;
         }
-        editPart.getFigure().setSize(d);
-        editPart.getFigure().setSize(d);
-        editPart.getFigure().setMinimumSize(d);
-        editPart.getFigure().setPreferredSize(d);
+        setSizes(d, maxd, nodePlate);
 
         final int x = ((Integer) getStructuralFeatureValue(NotationPackage.eINSTANCE.getLocation_X())).intValue();
         final int y = ((Integer) getStructuralFeatureValue(NotationPackage.eINSTANCE.getLocation_Y())).intValue();
+
+        // style
+        if (node.getStyle() != null && ((NodeStyle) node.getStyle()).getLabelPosition().getValue() == LabelPosition.NODE) {
+            // The label is in the graphical element. We must adapt the
+            // size.
+            final SiriusWrapLabel nodeLabel = editPart.getNodeLabel();
+            if (nodeLabel != null) {
+                final StyleConfiguration styleConfiguration = IStyleConfigurationRegistry.INSTANCE.getStyleConfiguration(node.getDiagramElementMapping(), node.getStyle());
+
+                if (new DNodeQuery(node).isAutoSize() && (w == -1 || h == -1)) {
+                    Dimension fitToText = styleConfiguration.fitToText(node, nodeLabel, nodePlate);
+
+                    // Keep the result coming from the size expression as default/minimum width
+                    if (w == -1 || w == 0) {
+                        width = Math.max(width, fitToText.width);
+                    }
+
+                    // Keep the result coming from the size expression as default/minimum height
+                    if (h == -1 || h == 0) {
+                        height = Math.max(height, fitToText.height);
+                    }
+                    d = new Dimension(width, height);
+                    setSizes(d, d, nodePlate);
+                }
+            }
+
+        }
 
         // we should not set the layout on a ViewNode2EditPart
         // or we'll get a classcast exception
@@ -124,6 +148,28 @@ public class AbstractDiagramNodeEditPartRefreshVisualsOperation {
         } else if (editPart instanceof IBorderItemEditPart) {
             borderRefreshSizeAndLocation(x, y, width, height);
         }
+    }
+
+    private void setSizes(Dimension d, Dimension maxd, DefaultSizeNodeFigure nodePlate) {
+        AbstractDiagramNodeEditPartOperation.setChildrenSize(editPart, d);
+
+        StyledFigure styledFigure = DiagramElementEditPartOperation.getStyledFigure(editPart.getFigure());
+        if (styledFigure != null) {
+            styledFigure.setSize(d.width, d.height);
+        }
+
+        if (nodePlate != null) {
+            nodePlate.setSize(d.width, d.height);
+            nodePlate.setDefaultSize(d.width, d.height);
+            nodePlate.getParent().setSize(d.width, d.height);
+            nodePlate.setPreferredSize(d.width, d.height);
+            nodePlate.setMinimumSize(d);
+            nodePlate.setMaximumSize(maxd);
+
+        }
+        editPart.getFigure().setSize(d);
+        editPart.getFigure().setMinimumSize(d);
+        editPart.getFigure().setPreferredSize(d);
     }
 
     private void borderRefreshSizeAndLocation(final int x, final int y, final int width, final int height) {
@@ -165,6 +211,7 @@ public class AbstractDiagramNodeEditPartRefreshVisualsOperation {
             width = node.getWidth().intValue();
         }
         if (width == 0) {
+            // avoid nodes with width = 0.
             width = 1;
         }
 
@@ -192,7 +239,9 @@ public class AbstractDiagramNodeEditPartRefreshVisualsOperation {
             if (nodeLabel != null) {
                 final StyleConfiguration styleConfiguration = IStyleConfigurationRegistry.INSTANCE.getStyleConfiguration(node.getDiagramElementMapping(), node.getStyle());
                 width = styleConfiguration.adaptViewNodeSizeWithLabel(node, nodeLabel, width);
+
             }
+
         }
         return width;
     }
@@ -210,7 +259,7 @@ public class AbstractDiagramNodeEditPartRefreshVisualsOperation {
         }
 
         final int tmpHeight = ((Integer) getStructuralFeatureValue(NotationPackage.eINSTANCE.getSize_Height())).intValue();
-         if (tmpHeight > 0) {
+        if (tmpHeight > 0) {
             height = tmpHeight;
         }
 
@@ -220,13 +269,12 @@ public class AbstractDiagramNodeEditPartRefreshVisualsOperation {
         }
 
         return height;
+
     }
 
     /**
-     * Convenience method to retreive the value for the supplied value from the
-     * editpart's associated view element. Same as calling
-     * <code> ViewUtil.getStructuralFeatureValue(getNotationView(),feature)</code>
-     * .
+     * Convenience method to retreive the value for the supplied value from the editpart's associated view element. Same
+     * as calling <code> ViewUtil.getStructuralFeatureValue(getNotationView(),feature)</code> .
      * 
      * @param feature
      *            the feature

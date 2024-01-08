@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis uid="_HXsPIGg6Ee6D6pL7xzqmfg" selectedViews="_HVxmwGg-Ee6D6pL7xzqmfg _A8nnIGhQEe61iIFaFaTqIQ" version="15.2.0.202303281325">
+    <semanticResources>github-issue-65.ecore</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" uid="_HVxmwGg-Ee6D6pL7xzqmfg">
+      <viewpoint xmi:type="description:Viewpoint" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_zVcRsWhNEe61iIFaFaTqIQ" name="new github-issue-65" repPath="#_zVbqoGhNEe61iIFaFaTqIQ" changeId="1697041455502">
+        <description xmi:type="description_1:DiagramDescription" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']"/>
+        <target xmi:type="ecore:EPackage" href="github-issue-65.ecore#/"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <diagram:DSemanticDiagram uid="_zVbqoGhNEe61iIFaFaTqIQ">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_zVf8EGhNEe61iIFaFaTqIQ" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_zVf8EWhNEe61iIFaFaTqIQ" type="Sirius" element="_zVbqoGhNEe61iIFaFaTqIQ" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_zVjmcGhNEe61iIFaFaTqIQ" type="2001" element="_zVf8E2hNEe61iIFaFaTqIQ">
+          <children xmi:type="notation:Node" xmi:id="_zVjmc2hNEe61iIFaFaTqIQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_zVjmdGhNEe61iIFaFaTqIQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_zVmp1mhNEe61iIFaFaTqIQ" type="3003" element="_zVhKMGhNEe61iIFaFaTqIQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zVmp12hNEe61iIFaFaTqIQ" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVmp2GhNEe61iIFaFaTqIQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_zVjmcWhNEe61iIFaFaTqIQ" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVjmcmhNEe61iIFaFaTqIQ"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_zVjmdWhNEe61iIFaFaTqIQ" type="2001" element="_zVhKMmhNEe61iIFaFaTqIQ">
+          <children xmi:type="notation:Node" xmi:id="_zVkNgGhNEe61iIFaFaTqIQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_zVkNgWhNEe61iIFaFaTqIQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_zVnQ0GhNEe61iIFaFaTqIQ" type="3003" element="_zVhxQGhNEe61iIFaFaTqIQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zVnQ0WhNEe61iIFaFaTqIQ" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVnQ0mhNEe61iIFaFaTqIQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_zVjmdmhNEe61iIFaFaTqIQ" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVjmd2hNEe61iIFaFaTqIQ" x="160"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_zVkNgmhNEe61iIFaFaTqIQ" type="2001" element="_zVhxQmhNEe61iIFaFaTqIQ">
+          <children xmi:type="notation:Node" xmi:id="_zVkNhWhNEe61iIFaFaTqIQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_zVkNhmhNEe61iIFaFaTqIQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_zVnQ02hNEe61iIFaFaTqIQ" type="3003" element="_zVhxQ2hNEe61iIFaFaTqIQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zVnQ1GhNEe61iIFaFaTqIQ" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVnQ1WhNEe61iIFaFaTqIQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_zVkNg2hNEe61iIFaFaTqIQ" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVkNhGhNEe61iIFaFaTqIQ" x="320"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_zVkNh2hNEe61iIFaFaTqIQ" type="2001" element="_zVhxRWhNEe61iIFaFaTqIQ">
+          <children xmi:type="notation:Node" xmi:id="_zVkNimhNEe61iIFaFaTqIQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_zVkNi2hNEe61iIFaFaTqIQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_zVnQ1mhNEe61iIFaFaTqIQ" type="3003" element="_zVhxRmhNEe61iIFaFaTqIQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zVnQ12hNEe61iIFaFaTqIQ" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVnQ2GhNEe61iIFaFaTqIQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_zVkNiGhNEe61iIFaFaTqIQ" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVkNiWhNEe61iIFaFaTqIQ" x="430"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_zVkNjGhNEe61iIFaFaTqIQ" type="2001" element="_zVhxSGhNEe61iIFaFaTqIQ">
+          <children xmi:type="notation:Node" xmi:id="_zVkNj2hNEe61iIFaFaTqIQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_zVkNkGhNEe61iIFaFaTqIQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_zVnQ2WhNEe61iIFaFaTqIQ" type="3003" element="_zVhxSWhNEe61iIFaFaTqIQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zVnQ2mhNEe61iIFaFaTqIQ" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVnQ22hNEe61iIFaFaTqIQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_zVkNjWhNEe61iIFaFaTqIQ" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVkNjmhNEe61iIFaFaTqIQ" x="590"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_zVkNkWhNEe61iIFaFaTqIQ" type="2001" element="_zVhxS2hNEe61iIFaFaTqIQ">
+          <children xmi:type="notation:Node" xmi:id="_zVkNlGhNEe61iIFaFaTqIQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_zVkNlWhNEe61iIFaFaTqIQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_zVnQ3GhNEe61iIFaFaTqIQ" type="3003" element="_zVhxTGhNEe61iIFaFaTqIQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zVnQ3WhNEe61iIFaFaTqIQ" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVnQ3mhNEe61iIFaFaTqIQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_zVkNkmhNEe61iIFaFaTqIQ" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVkNk2hNEe61iIFaFaTqIQ" x="750"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_zVkNlmhNEe61iIFaFaTqIQ" type="2001" element="_zVhxTmhNEe61iIFaFaTqIQ">
+          <children xmi:type="notation:Node" xmi:id="_zVkNmWhNEe61iIFaFaTqIQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_zVkNmmhNEe61iIFaFaTqIQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_zVnQ32hNEe61iIFaFaTqIQ" type="3003" element="_zVhxT2hNEe61iIFaFaTqIQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zVnQ4GhNEe61iIFaFaTqIQ" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVnQ4WhNEe61iIFaFaTqIQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_zVkNl2hNEe61iIFaFaTqIQ" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVkNmGhNEe61iIFaFaTqIQ" x="860"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_zVkNm2hNEe61iIFaFaTqIQ" type="2001" element="_zVhxUWhNEe61iIFaFaTqIQ">
+          <children xmi:type="notation:Node" xmi:id="_zVk0kGhNEe61iIFaFaTqIQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_zVk0kWhNEe61iIFaFaTqIQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_zVnQ4mhNEe61iIFaFaTqIQ" type="3003" element="_zVhxUmhNEe61iIFaFaTqIQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zVnQ42hNEe61iIFaFaTqIQ" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVnQ5GhNEe61iIFaFaTqIQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_zVkNnGhNEe61iIFaFaTqIQ" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVkNnWhNEe61iIFaFaTqIQ" y="90"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_zVk0kmhNEe61iIFaFaTqIQ" type="2001" element="_zVhxVGhNEe61iIFaFaTqIQ">
+          <children xmi:type="notation:Node" xmi:id="_zVk0lWhNEe61iIFaFaTqIQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_zVk0lmhNEe61iIFaFaTqIQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_zVnQ5WhNEe61iIFaFaTqIQ" type="3003" element="_zVhxVWhNEe61iIFaFaTqIQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zVnQ5mhNEe61iIFaFaTqIQ" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVnQ52hNEe61iIFaFaTqIQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_zVk0k2hNEe61iIFaFaTqIQ" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVk0lGhNEe61iIFaFaTqIQ" x="160" y="94"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_zVk0l2hNEe61iIFaFaTqIQ" type="2001" element="_zVhxV2hNEe61iIFaFaTqIQ">
+          <children xmi:type="notation:Node" xmi:id="_zVk0mmhNEe61iIFaFaTqIQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_zVk0m2hNEe61iIFaFaTqIQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_zVnQ6GhNEe61iIFaFaTqIQ" type="3003" element="_zVhxWGhNEe61iIFaFaTqIQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zVnQ6WhNEe61iIFaFaTqIQ" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVnQ6mhNEe61iIFaFaTqIQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_zVk0mGhNEe61iIFaFaTqIQ" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVk0mWhNEe61iIFaFaTqIQ" x="320" y="94"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_zVk0nGhNEe61iIFaFaTqIQ" type="2001" element="_zVhxWmhNEe61iIFaFaTqIQ">
+          <children xmi:type="notation:Node" xmi:id="_zVk0n2hNEe61iIFaFaTqIQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_zVk0oGhNEe61iIFaFaTqIQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_zVnQ62hNEe61iIFaFaTqIQ" type="3003" element="_zViYUGhNEe61iIFaFaTqIQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zVnQ7GhNEe61iIFaFaTqIQ" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVnQ7WhNEe61iIFaFaTqIQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_zVk0nWhNEe61iIFaFaTqIQ" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVk0nmhNEe61iIFaFaTqIQ" x="430" y="90"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_zVk0oWhNEe61iIFaFaTqIQ" type="2001" element="_zViYUmhNEe61iIFaFaTqIQ">
+          <children xmi:type="notation:Node" xmi:id="_zVk0pGhNEe61iIFaFaTqIQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_zVk0pWhNEe61iIFaFaTqIQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_zVn34GhNEe61iIFaFaTqIQ" type="3003" element="_zViYU2hNEe61iIFaFaTqIQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zVn34WhNEe61iIFaFaTqIQ" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVn34mhNEe61iIFaFaTqIQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_zVk0omhNEe61iIFaFaTqIQ" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVk0o2hNEe61iIFaFaTqIQ" x="590" y="90"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_zVk0pmhNEe61iIFaFaTqIQ" type="2001" element="_zViYVWhNEe61iIFaFaTqIQ">
+          <children xmi:type="notation:Node" xmi:id="_zVk0qWhNEe61iIFaFaTqIQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_zVk0qmhNEe61iIFaFaTqIQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_zVn342hNEe61iIFaFaTqIQ" type="3003" element="_zViYVmhNEe61iIFaFaTqIQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zVn35GhNEe61iIFaFaTqIQ" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVn35WhNEe61iIFaFaTqIQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_zVk0p2hNEe61iIFaFaTqIQ" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVk0qGhNEe61iIFaFaTqIQ" x="750" y="90"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_zVlboGhNEe61iIFaFaTqIQ" type="2001" element="_zViYWGhNEe61iIFaFaTqIQ">
+          <children xmi:type="notation:Node" xmi:id="_zVlbo2hNEe61iIFaFaTqIQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_zVlbpGhNEe61iIFaFaTqIQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_zVn35mhNEe61iIFaFaTqIQ" type="3003" element="_zViYWWhNEe61iIFaFaTqIQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zVn352hNEe61iIFaFaTqIQ" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVn36GhNEe61iIFaFaTqIQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_zVlboWhNEe61iIFaFaTqIQ" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVlbomhNEe61iIFaFaTqIQ" x="860" y="94"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_zVlbpWhNEe61iIFaFaTqIQ" type="2001" element="_zViYW2hNEe61iIFaFaTqIQ">
+          <children xmi:type="notation:Node" xmi:id="_zVlbqGhNEe61iIFaFaTqIQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_zVlbqWhNEe61iIFaFaTqIQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_zVn36WhNEe61iIFaFaTqIQ" type="3003" element="_zViYXGhNEe61iIFaFaTqIQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zVn36mhNEe61iIFaFaTqIQ" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVn362hNEe61iIFaFaTqIQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_zVlbpmhNEe61iIFaFaTqIQ" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVlbp2hNEe61iIFaFaTqIQ" y="170" width="120" height="120"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_zVlbqmhNEe61iIFaFaTqIQ" type="2001" element="_zViYXmhNEe61iIFaFaTqIQ">
+          <children xmi:type="notation:Node" xmi:id="_zVlbrWhNEe61iIFaFaTqIQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_zVlbrmhNEe61iIFaFaTqIQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_zVn37GhNEe61iIFaFaTqIQ" type="3003" element="_zViYX2hNEe61iIFaFaTqIQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zVn37WhNEe61iIFaFaTqIQ" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVn37mhNEe61iIFaFaTqIQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_zVlbq2hNEe61iIFaFaTqIQ" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVlbrGhNEe61iIFaFaTqIQ" x="180" y="170" width="120" height="50"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_zVlbr2hNEe61iIFaFaTqIQ" type="2001" element="_zViYYWhNEe61iIFaFaTqIQ">
+          <children xmi:type="notation:Node" xmi:id="_zVlbsmhNEe61iIFaFaTqIQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_zVlbs2hNEe61iIFaFaTqIQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_zVn372hNEe61iIFaFaTqIQ" type="3003" element="_zViYYmhNEe61iIFaFaTqIQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zVn38GhNEe61iIFaFaTqIQ" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVn38WhNEe61iIFaFaTqIQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_zVlbsGhNEe61iIFaFaTqIQ" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVlbsWhNEe61iIFaFaTqIQ" x="360" y="170" width="50" height="120"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_zVlbtGhNEe61iIFaFaTqIQ" type="2001" element="_zViYZGhNEe61iIFaFaTqIQ">
+          <children xmi:type="notation:Node" xmi:id="_zVlbt2hNEe61iIFaFaTqIQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_zVlbuGhNEe61iIFaFaTqIQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_zVn38mhNEe61iIFaFaTqIQ" type="3003" element="_zViYZWhNEe61iIFaFaTqIQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zVn382hNEe61iIFaFaTqIQ" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVn39GhNEe61iIFaFaTqIQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_zVlbtWhNEe61iIFaFaTqIQ" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVlbtmhNEe61iIFaFaTqIQ" x="470" y="170" width="120" height="120"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_zVlbuWhNEe61iIFaFaTqIQ" type="2001" element="_zViYZ2hNEe61iIFaFaTqIQ">
+          <children xmi:type="notation:Node" xmi:id="_zVmCsGhNEe61iIFaFaTqIQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_zVmCsWhNEe61iIFaFaTqIQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_zVn39WhNEe61iIFaFaTqIQ" type="3003" element="_zViYaGhNEe61iIFaFaTqIQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zVn39mhNEe61iIFaFaTqIQ" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVn392hNEe61iIFaFaTqIQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_zVlbumhNEe61iIFaFaTqIQ" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVlbu2hNEe61iIFaFaTqIQ" x="650" y="170" width="120" height="120"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_zVmCsmhNEe61iIFaFaTqIQ" type="2001" element="_zVi_YWhNEe61iIFaFaTqIQ">
+          <children xmi:type="notation:Node" xmi:id="_zVmCtWhNEe61iIFaFaTqIQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_zVmCtmhNEe61iIFaFaTqIQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_zVn3-GhNEe61iIFaFaTqIQ" type="3003" element="_zVi_YmhNEe61iIFaFaTqIQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zVn3-WhNEe61iIFaFaTqIQ" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVn3-mhNEe61iIFaFaTqIQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_zVmCs2hNEe61iIFaFaTqIQ" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVmCtGhNEe61iIFaFaTqIQ" x="830" y="170" width="50" height="50"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_zVmCt2hNEe61iIFaFaTqIQ" type="2001" element="_zVi_ZGhNEe61iIFaFaTqIQ">
+          <children xmi:type="notation:Node" xmi:id="_zVmCumhNEe61iIFaFaTqIQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_zVmCu2hNEe61iIFaFaTqIQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_zVn3-2hNEe61iIFaFaTqIQ" type="3003" element="_zVi_ZWhNEe61iIFaFaTqIQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zVn3_GhNEe61iIFaFaTqIQ" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVn3_WhNEe61iIFaFaTqIQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_zVmCuGhNEe61iIFaFaTqIQ" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVmCuWhNEe61iIFaFaTqIQ" x="940" y="170" width="120" height="50"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_zVmCvGhNEe61iIFaFaTqIQ" type="2001" element="_zVi_Z2hNEe61iIFaFaTqIQ">
+          <children xmi:type="notation:Node" xmi:id="_zVmCv2hNEe61iIFaFaTqIQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_zVmCwGhNEe61iIFaFaTqIQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_zVoe8GhNEe61iIFaFaTqIQ" type="3003" element="_zVi_aGhNEe61iIFaFaTqIQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zVoe8WhNEe61iIFaFaTqIQ" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVoe8mhNEe61iIFaFaTqIQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_zVmCvWhNEe61iIFaFaTqIQ" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVmCvmhNEe61iIFaFaTqIQ" y="340" width="120" height="50"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_zVmCwWhNEe61iIFaFaTqIQ" type="2001" element="_zVi_amhNEe61iIFaFaTqIQ">
+          <children xmi:type="notation:Node" xmi:id="_zVmCxGhNEe61iIFaFaTqIQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_zVmCxWhNEe61iIFaFaTqIQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_zVoe82hNEe61iIFaFaTqIQ" type="3003" element="_zVi_a2hNEe61iIFaFaTqIQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zVoe9GhNEe61iIFaFaTqIQ" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVoe9WhNEe61iIFaFaTqIQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_zVmCwmhNEe61iIFaFaTqIQ" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVmCw2hNEe61iIFaFaTqIQ" x="180" y="340" width="50" height="120"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_zVmCxmhNEe61iIFaFaTqIQ" type="2001" element="_zVi_bWhNEe61iIFaFaTqIQ">
+          <children xmi:type="notation:Node" xmi:id="_zVmpwGhNEe61iIFaFaTqIQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_zVmpwWhNEe61iIFaFaTqIQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_zVoe9mhNEe61iIFaFaTqIQ" type="3003" element="_zVi_bmhNEe61iIFaFaTqIQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zVoe92hNEe61iIFaFaTqIQ" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVoe-GhNEe61iIFaFaTqIQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_zVmCx2hNEe61iIFaFaTqIQ" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVmCyGhNEe61iIFaFaTqIQ" x="290" y="340" width="50" height="120"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_zVmpwmhNEe61iIFaFaTqIQ" type="2001" element="_zVi_cGhNEe61iIFaFaTqIQ">
+          <children xmi:type="notation:Node" xmi:id="_zVmpxWhNEe61iIFaFaTqIQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_zVmpxmhNEe61iIFaFaTqIQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_zVoe-WhNEe61iIFaFaTqIQ" type="3003" element="_zVi_cWhNEe61iIFaFaTqIQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zVoe-mhNEe61iIFaFaTqIQ" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVoe-2hNEe61iIFaFaTqIQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_zVmpw2hNEe61iIFaFaTqIQ" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVmpxGhNEe61iIFaFaTqIQ" x="400" y="340" width="50" height="50"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_zVmpx2hNEe61iIFaFaTqIQ" type="2001" element="_zVi_c2hNEe61iIFaFaTqIQ">
+          <children xmi:type="notation:Node" xmi:id="_zVmpymhNEe61iIFaFaTqIQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_zVmpy2hNEe61iIFaFaTqIQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_zVoe_GhNEe61iIFaFaTqIQ" type="3003" element="_zVi_dGhNEe61iIFaFaTqIQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zVoe_WhNEe61iIFaFaTqIQ" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVoe_mhNEe61iIFaFaTqIQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_zVmpyGhNEe61iIFaFaTqIQ" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVmpyWhNEe61iIFaFaTqIQ" x="510" y="340" width="50" height="50"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_zVmpzGhNEe61iIFaFaTqIQ" type="2001" element="_zVi_dmhNEe61iIFaFaTqIQ">
+          <children xmi:type="notation:Node" xmi:id="_zVmpz2hNEe61iIFaFaTqIQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_zVmp0GhNEe61iIFaFaTqIQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_zVoe_2hNEe61iIFaFaTqIQ" type="3003" element="_zVi_d2hNEe61iIFaFaTqIQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zVofAGhNEe61iIFaFaTqIQ" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVofAWhNEe61iIFaFaTqIQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_zVmpzWhNEe61iIFaFaTqIQ" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVmpzmhNEe61iIFaFaTqIQ" x="620" y="340" width="50" height="50"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_zVmp0WhNEe61iIFaFaTqIQ" type="2001" element="_zVi_eWhNEe61iIFaFaTqIQ">
+          <children xmi:type="notation:Node" xmi:id="_zVmp1GhNEe61iIFaFaTqIQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_zVmp1WhNEe61iIFaFaTqIQ" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_zVofAmhNEe61iIFaFaTqIQ" type="3003" element="_zVi_emhNEe61iIFaFaTqIQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zVofA2hNEe61iIFaFaTqIQ" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVofBGhNEe61iIFaFaTqIQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_zVmp0mhNEe61iIFaFaTqIQ" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zVmp02hNEe61iIFaFaTqIQ" x="730" y="340" width="120" height="120"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_zVf8EmhNEe61iIFaFaTqIQ"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_zVi_fGhNEe61iIFaFaTqIQ" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_zVi_fWhNEe61iIFaFaTqIQ"/>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_zVf8E2hNEe61iIFaFaTqIQ" name="EClass01" resizeKind="NSEW">
+      <target xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass01"/>
+      <semanticElements xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass01"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_zVhKMGhNEe61iIFaFaTqIQ" labelSize="12" labelPosition="node">
+        <description xmi:type="style:SquareDescription" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']/@conditionnalStyles.0/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_zVhKMmhNEe61iIFaFaTqIQ" name="EClass02" height="5" resizeKind="NSEW">
+      <target xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass02"/>
+      <semanticElements xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass02"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_zVhxQGhNEe61iIFaFaTqIQ" labelSize="12" labelPosition="node" height="5">
+        <description xmi:type="style:SquareDescription" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']/@conditionnalStyles.1/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_zVhxQmhNEe61iIFaFaTqIQ" name="EClass03" width="5" resizeKind="NSEW">
+      <target xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass03"/>
+      <semanticElements xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass03"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_zVhxQ2hNEe61iIFaFaTqIQ" labelSize="12" labelPosition="node" width="5">
+        <description xmi:type="style:SquareDescription" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']/@conditionnalStyles.2/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_zVhxRWhNEe61iIFaFaTqIQ" name="EClass04" resizeKind="NORTH_SOUTH">
+      <target xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass04"/>
+      <semanticElements xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass04"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_zVhxRmhNEe61iIFaFaTqIQ" labelSize="12" labelPosition="node">
+        <description xmi:type="style:SquareDescription" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']/@conditionnalStyles.3/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_zVhxSGhNEe61iIFaFaTqIQ" name="EClass05" resizeKind="EAST_WEST">
+      <target xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass05"/>
+      <semanticElements xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass05"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_zVhxSWhNEe61iIFaFaTqIQ" labelSize="12" labelPosition="node">
+        <description xmi:type="style:SquareDescription" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']/@conditionnalStyles.4/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_zVhxS2hNEe61iIFaFaTqIQ" name="EClass06" width="5" height="5" resizeKind="NSEW">
+      <target xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass06"/>
+      <semanticElements xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass06"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_zVhxTGhNEe61iIFaFaTqIQ" labelSize="12" labelPosition="node" width="5" height="5">
+        <description xmi:type="style:SquareDescription" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']/@conditionnalStyles.5/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_zVhxTmhNEe61iIFaFaTqIQ" name="EClass07" height="5" resizeKind="NORTH_SOUTH">
+      <target xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass07"/>
+      <semanticElements xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass07"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_zVhxT2hNEe61iIFaFaTqIQ" labelSize="12" labelPosition="node" height="5">
+        <description xmi:type="style:SquareDescription" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']/@conditionnalStyles.6/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_zVhxUWhNEe61iIFaFaTqIQ" name="EClass08" height="5" resizeKind="EAST_WEST">
+      <target xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass08"/>
+      <semanticElements xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass08"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" uid="_zVhxUmhNEe61iIFaFaTqIQ" labelSize="12" labelPosition="node" height="5">
+        <description xmi:type="style:SquareDescription" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']/@conditionnalStyles.7/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_zVhxVGhNEe61iIFaFaTqIQ" name="EClass09" width="5" resizeKind="NORTH_SOUTH">
+      <target xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass09"/>
+      <semanticElements xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass09"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" uid="_zVhxVWhNEe61iIFaFaTqIQ" labelSize="12" labelPosition="node" width="5">
+        <description xmi:type="style:SquareDescription" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']/@conditionnalStyles.8/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_zVhxV2hNEe61iIFaFaTqIQ" name="EClass10" width="5" resizeKind="EAST_WEST">
+      <target xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass10"/>
+      <semanticElements xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass10"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" uid="_zVhxWGhNEe61iIFaFaTqIQ" labelSize="12" labelPosition="node" width="5">
+        <description xmi:type="style:SquareDescription" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']/@conditionnalStyles.9/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_zVhxWmhNEe61iIFaFaTqIQ" name="EClass11" width="5" height="5" resizeKind="NORTH_SOUTH">
+      <target xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass11"/>
+      <semanticElements xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass11"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" uid="_zViYUGhNEe61iIFaFaTqIQ" labelSize="12" labelPosition="node" width="5" height="5">
+        <description xmi:type="style:SquareDescription" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']/@conditionnalStyles.10/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_zViYUmhNEe61iIFaFaTqIQ" name="EClass12" width="5" height="5" resizeKind="EAST_WEST">
+      <target xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass12"/>
+      <semanticElements xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass12"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" uid="_zViYU2hNEe61iIFaFaTqIQ" labelSize="12" labelPosition="node" width="5" height="5">
+        <description xmi:type="style:SquareDescription" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']/@conditionnalStyles.11/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_zViYVWhNEe61iIFaFaTqIQ" name="EClass13" width="5" height="5">
+      <target xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass13"/>
+      <semanticElements xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass13"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" uid="_zViYVmhNEe61iIFaFaTqIQ" labelSize="12" labelPosition="node" width="5" height="5">
+        <description xmi:type="style:SquareDescription" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']/@conditionnalStyles.12/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_zViYWGhNEe61iIFaFaTqIQ" name="EClass14">
+      <target xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass14"/>
+      <semanticElements xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass14"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" uid="_zViYWWhNEe61iIFaFaTqIQ" labelSize="12" labelPosition="node">
+        <description xmi:type="style:SquareDescription" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']/@conditionnalStyles.13/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_zViYW2hNEe61iIFaFaTqIQ" name="EClass15" width="12" height="12" resizeKind="NSEW">
+      <target xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass15"/>
+      <semanticElements xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass15"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" uid="_zViYXGhNEe61iIFaFaTqIQ" labelSize="12" labelPosition="node">
+        <description xmi:type="style:SquareDescription" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']/@conditionnalStyles.14/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_zViYXmhNEe61iIFaFaTqIQ" name="EClass16" width="12" height="5" resizeKind="NSEW">
+      <target xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass16"/>
+      <semanticElements xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass16"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" uid="_zViYX2hNEe61iIFaFaTqIQ" labelSize="12" labelPosition="node" height="5">
+        <description xmi:type="style:SquareDescription" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']/@conditionnalStyles.15/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_zViYYWhNEe61iIFaFaTqIQ" name="EClass17" width="5" height="12" resizeKind="NSEW">
+      <target xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass17"/>
+      <semanticElements xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass17"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" uid="_zViYYmhNEe61iIFaFaTqIQ" labelSize="12" labelPosition="node" width="5">
+        <description xmi:type="style:SquareDescription" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']/@conditionnalStyles.16/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_zViYZGhNEe61iIFaFaTqIQ" name="EClass18" width="12" height="12" resizeKind="NORTH_SOUTH">
+      <target xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass18"/>
+      <semanticElements xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass18"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" uid="_zViYZWhNEe61iIFaFaTqIQ" labelSize="12" labelPosition="node">
+        <description xmi:type="style:SquareDescription" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']/@conditionnalStyles.17/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_zViYZ2hNEe61iIFaFaTqIQ" name="EClass19" width="12" height="12" resizeKind="EAST_WEST">
+      <target xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass19"/>
+      <semanticElements xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass19"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" uid="_zViYaGhNEe61iIFaFaTqIQ" labelSize="12" labelPosition="node">
+        <description xmi:type="style:SquareDescription" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']/@conditionnalStyles.18/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_zVi_YWhNEe61iIFaFaTqIQ" name="EClass20" width="5" height="5" resizeKind="NSEW">
+      <target xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass20"/>
+      <semanticElements xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass20"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" uid="_zVi_YmhNEe61iIFaFaTqIQ" labelSize="12" labelPosition="node" width="5" height="5">
+        <description xmi:type="style:SquareDescription" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']/@conditionnalStyles.19/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_zVi_ZGhNEe61iIFaFaTqIQ" name="EClass21" width="12" height="5" resizeKind="NORTH_SOUTH">
+      <target xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass21"/>
+      <semanticElements xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass21"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" uid="_zVi_ZWhNEe61iIFaFaTqIQ" labelSize="12" labelPosition="node" height="5">
+        <description xmi:type="style:SquareDescription" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']/@conditionnalStyles.20/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_zVi_Z2hNEe61iIFaFaTqIQ" name="EClass22" width="12" height="5" resizeKind="EAST_WEST">
+      <target xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass22"/>
+      <semanticElements xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass22"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" uid="_zVi_aGhNEe61iIFaFaTqIQ" labelSize="12" labelPosition="node" height="5">
+        <description xmi:type="style:SquareDescription" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']/@conditionnalStyles.21/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_zVi_amhNEe61iIFaFaTqIQ" name="EClass23" width="5" height="12" resizeKind="NORTH_SOUTH">
+      <target xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass23"/>
+      <semanticElements xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass23"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" uid="_zVi_a2hNEe61iIFaFaTqIQ" labelSize="12" labelPosition="node" width="5">
+        <description xmi:type="style:SquareDescription" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']/@conditionnalStyles.22/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_zVi_bWhNEe61iIFaFaTqIQ" name="EClass24" width="5" height="12" resizeKind="EAST_WEST">
+      <target xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass24"/>
+      <semanticElements xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass24"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" uid="_zVi_bmhNEe61iIFaFaTqIQ" labelSize="12" labelPosition="node" width="5">
+        <description xmi:type="style:SquareDescription" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']/@conditionnalStyles.23/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_zVi_cGhNEe61iIFaFaTqIQ" name="EClass25" width="5" height="5" resizeKind="NORTH_SOUTH">
+      <target xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass25"/>
+      <semanticElements xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass25"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" uid="_zVi_cWhNEe61iIFaFaTqIQ" labelSize="12" labelPosition="node" width="5" height="5">
+        <description xmi:type="style:SquareDescription" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']/@conditionnalStyles.24/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_zVi_c2hNEe61iIFaFaTqIQ" name="EClass26" width="5" height="5" resizeKind="EAST_WEST">
+      <target xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass26"/>
+      <semanticElements xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass26"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" uid="_zVi_dGhNEe61iIFaFaTqIQ" labelSize="12" labelPosition="node" width="5" height="5">
+        <description xmi:type="style:SquareDescription" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']/@conditionnalStyles.25/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_zVi_dmhNEe61iIFaFaTqIQ" name="EClass27" width="5" height="5">
+      <target xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass27"/>
+      <semanticElements xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass27"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" uid="_zVi_d2hNEe61iIFaFaTqIQ" labelSize="12" labelPosition="node" width="5" height="5">
+        <description xmi:type="style:SquareDescription" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']/@conditionnalStyles.26/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_zVi_eWhNEe61iIFaFaTqIQ" name="EClass28" width="12" height="12">
+      <target xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass28"/>
+      <semanticElements xmi:type="ecore:EClass" href="github-issue-65.ecore#//EClass28"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" uid="_zVi_emhNEe61iIFaFaTqIQ" labelSize="12" labelPosition="node">
+        <description xmi:type="style:SquareDescription" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']/@conditionnalStyles.27/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer/@nodeMappings[name='eClass1']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_zVcRsGhNEe61iIFaFaTqIQ"/>
+    <activatedLayers xmi:type="description_1:Layer" href="github-issue-65.odesign#//@ownedViewpoints[name='github-issue-65']/@ownedRepresentations[name='github-issue-65']/@defaultLayer"/>
+    <target xmi:type="ecore:EPackage" href="github-issue-65.ecore#/"/>
+  </diagram:DSemanticDiagram>
+</xmi:XMI>

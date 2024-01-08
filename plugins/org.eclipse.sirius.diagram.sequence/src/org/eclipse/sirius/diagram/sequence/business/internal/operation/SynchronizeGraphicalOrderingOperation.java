@@ -19,6 +19,7 @@ import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.SequenceLayout;
 import org.eclipse.sirius.diagram.sequence.tool.internal.Messages;
+import org.eclipse.sirius.diagram.sequence.tool.internal.SequenceDiagramPlugin;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
 import org.eclipse.sirius.ext.base.Option;
 
@@ -57,30 +58,34 @@ public class SynchronizeGraphicalOrderingOperation extends AbstractModelChangeOp
         Objects.requireNonNull(sequenceDiagram);
         SequenceLayout sequenceLayout = new SequenceLayout(sequenceDiagram);
         Option<SequenceDiagram> sd = sequenceLayout.getSequenceDiagram();
+        try {
+            if (sd.some()) {
+                SequenceDDiagram diagram = (SequenceDDiagram) sd.get().getNotationDiagram().getElement();
 
-        if (sd.some()) {
-            SequenceDDiagram diagram = (SequenceDDiagram) sd.get().getNotationDiagram().getElement();
+                if (diagram != null && (diagram.getGraphicalOrdering().getEventEnds().size() == diagram.getSemanticOrdering().getEventEnds().size())) {
+                    boolean verticalLayout = sequenceLayout.verticalLayout(pack);
+                    if (verticalLayout) {
+                        sd.get().clearOrderedCaches();
+                    }
+                    boolean horizontalLayout = sequenceLayout.horizontalLayout(pack);
+                    if (horizontalLayout) {
+                        sd.get().clearOrderedCaches();
+                    }
+                    boolean observationLayout = sequenceLayout.observationLayout(pack);
+                    if (observationLayout) {
+                        sd.get().clearOrderedCaches();
+                    }
 
-            if (diagram != null && (diagram.getGraphicalOrdering().getEventEnds().size() == diagram.getSemanticOrdering().getEventEnds().size())) {
-                boolean verticalLayout = sequenceLayout.verticalLayout(pack);
-                if (verticalLayout) {
-                    sd.get().clearOrderedCaches();
-                }
-                boolean horizontalLayout = sequenceLayout.horizontalLayout(pack);
-                if (horizontalLayout) {
-                    sd.get().clearOrderedCaches();
-                }
-                boolean observationLayout = sequenceLayout.observationLayout(pack);
-                if (observationLayout) {
-                    sd.get().clearOrderedCaches();
-                }
-
-                // Refresh flags when a layout made modifications.
-                if (verticalLayout || horizontalLayout || observationLayout) {
-                    sequenceLayout.flagSequenceEvents();
-                    result = true;
+                    // Refresh flags when a layout made modifications.
+                    if (verticalLayout || horizontalLayout || observationLayout) {
+                        sequenceLayout.flagSequenceEvents();
+                        result = true;
+                    }
                 }
             }
+        } catch (IllegalArgumentException e) {
+            SequenceDiagramPlugin.getPlugin().getLog().error(Messages.SequenceDiagram_InternalError, e);
+            throw e;
         }
         return result;
     }

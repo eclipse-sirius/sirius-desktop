@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="EPackageRoot">
+  <eClassifiers xsi:type="ecore:EClass" name="EClass01"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EClass02"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EClass03"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EClass04"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EClass05"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EClass06"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EClass07"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EClass08"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EClass09"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EClass10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EClass11"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EClass12"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EClass13"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EClass14"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EClass15"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EClass16"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EClass17"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EClass18"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EClass19"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EClass20"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EClass21"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EClass22"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EClass23"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EClass24"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EClass25"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EClass26"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EClass27"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EClass28"/>
+</ecore:EPackage>
