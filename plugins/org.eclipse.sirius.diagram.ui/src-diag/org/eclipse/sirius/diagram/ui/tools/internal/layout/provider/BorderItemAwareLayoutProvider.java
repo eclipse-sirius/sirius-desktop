@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -82,7 +82,6 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.model.business.internal.query.DNodeContainerExperimentalQuery;
-import org.eclipse.sirius.diagram.tools.api.layout.PinHelper;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
@@ -424,6 +423,8 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      */
     private boolean recursive;
 
+    private Set<IGraphicalEditPart> elementsToKeepFixed;
+
     /**
      * The default constructor.
      * 
@@ -513,7 +514,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
 
         // Finds if there are unpinned diagram elements to keep fixed stored in
         // the LayoutHint as a Collection
-        Set<IGraphicalEditPart> elementsToKeepFixed = new HashSet<>();
+        elementsToKeepFixed = new HashSet<>();
         Collection<EditPart> adaptedCollection = layoutHint.getAdapter(Collection.class);
         if (adaptedCollection != null && adaptedCollection.stream().allMatch(IDiagramElementEditPart.class::isInstance)) {
             elementsToKeepFixed.addAll(adaptedCollection.stream().map(IDiagramElementEditPart.class::cast).toList());
@@ -522,30 +523,19 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
             elementsToKeepFixed.addAll(selectedObjects.stream().filter(IGraphicalEditPart.class::isInstance).toList());
         }
 
-        Set<DDiagramElement> temporaryPinnedElements = new HashSet<>();
-        PinHelper pinHelper = new PinHelper();
-        for (IGraphicalEditPart elementEP : elementsToKeepFixed) {
-            if (elementEP.resolveSemanticElement() instanceof DDiagramElement dDiagramElement && !pinHelper.isPinned(dDiagramElement)) {
-                pinHelper.markAsPinned(dDiagramElement);
-                temporaryPinnedElements.add(dDiagramElement);
-            }
-        }
-
         // Create the specific command to layout the border items.
-        final Command layoutBorderItems = layoutBorderItems(selectedObjects, 1, elementsToKeepFixed);
+        final Command layoutBorderItems = layoutBorderItems(selectedObjects, 1);
         if (layoutBorderItems != null && layoutBorderItems.canExecute()) {
             result.add(layoutBorderItems);
         }
 
-        resetBoundsOfPinnedElements(selectedObjects, result, elementsToKeepFixed);
+        resetBoundsOfPinnedElements(selectedObjects, result);
         this.getViewsToChangeBoundsRequest().clear();
 
         if (result.size() == 0) {
             result = null; // removeCommandsForPinnedElements(result);
         }
-        for (DDiagramElement dDiagramElement : temporaryPinnedElements) {
-            pinHelper.markAsUnpinned(dDiagramElement);
-        }
+
         return result;
     }
 
@@ -601,7 +591,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      *            IDiagramElementEditPart which are not actually pinned but have to stay fixed
      */
     @SuppressWarnings("rawtypes")
-    private void resetBoundsOfPinnedElements(final List selectedObjects, final CompoundCommand compoundCommand, Set<IGraphicalEditPart> elementsToKeepFixed) {
+    private void resetBoundsOfPinnedElements(final List selectedObjects, final CompoundCommand compoundCommand) {
         for (IGraphicalEditPart graphicalEditPart : Iterables.filter(selectedObjects, IGraphicalEditPart.class)) {
             EObject semanticElement = graphicalEditPart.resolveSemanticElement();
             if (semanticElement instanceof DDiagramElement) {
@@ -691,11 +681,11 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      *            IDiagramElementEditPart which are not actually pinned but have to stay fixed
      * @return The command to execute to layout the border items.
      */
-    private Command layoutBorderItems(final List<?> selectedObjects, final int nbIterations, Set<IGraphicalEditPart> elementsToKeepFixed) {
+    private Command layoutBorderItems(final List<?> selectedObjects, final int nbIterations) {
         CompoundCommand cc = new CompoundCommand();
         for (Object object : selectedObjects) {
             if (object instanceof GraphicalEditPart) {
-                final Command layoutBorderItems = layoutBorderItems((GraphicalEditPart) object, elementsToKeepFixed);
+                final Command layoutBorderItems = layoutBorderItems((GraphicalEditPart) object);
                 if (layoutBorderItems != null && layoutBorderItems.canExecute()) {
                     cc.add(layoutBorderItems);
                 }
@@ -707,7 +697,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
             removeRequestsOfThisCommand(cc);
             // We try to optimize the border items location with the previous
             // compute locations (record in
-            cc = (CompoundCommand) layoutBorderItems(selectedObjects, nbIterations + 1, elementsToKeepFixed);
+            cc = (CompoundCommand) layoutBorderItems(selectedObjects, nbIterations + 1);
         }
         // Keep only first and last points of edges linked to at least one of
         // moved border nodes.
@@ -874,12 +864,12 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      *            IDiagramElementEditPart which are not actually pinned but have to stay fixed
      * @return The command to execute to layout the border items of this graphical edit part.
      */
-    private Command layoutBorderItems(final GraphicalEditPart graphicalEditPart, Set<IGraphicalEditPart> elementsToKeepFixed) {
+    private Command layoutBorderItems(final GraphicalEditPart graphicalEditPart) {
         final CompoundCommand result = new CompoundCommand();
         if (graphicalEditPart instanceof IBorderedShapeEditPart) {
             final IBorderedShapeEditPart borderedEditPart = (IBorderedShapeEditPart) graphicalEditPart;
             if (borderedEditPart.getBorderedFigure() != null && !borderedEditPart.getBorderedFigure().getBorderItemContainer().getChildren().isEmpty()) {
-                final Command layoutBorderItems = layoutBorderItems(borderedEditPart, elementsToKeepFixed);
+                final Command layoutBorderItems = layoutBorderItems(borderedEditPart);
                 if (layoutBorderItems != null && layoutBorderItems.canExecute()) {
                     result.add(layoutBorderItems);
                 }
@@ -889,7 +879,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
         if (recursive) {
             for (Object editPart : graphicalEditPart.getChildren()) {
                 if (editPart instanceof GraphicalEditPart) {
-                    final Command layoutBorderItems = layoutBorderItems((GraphicalEditPart) editPart, elementsToKeepFixed);
+                    final Command layoutBorderItems = layoutBorderItems((GraphicalEditPart) editPart);
                     if (layoutBorderItems != null && layoutBorderItems.canExecute()) {
                         result.add(layoutBorderItems);
                     }
@@ -908,7 +898,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      *            IDiagramElementEditPart which are not actually pinned but have to stay fixed
      * @return The command to execute to layout the border items of this graphical edit part.
      */
-    private Command layoutBorderItems(final IBorderedShapeEditPart borderedShapeEditPart, Set<IGraphicalEditPart> elementsToKeepFixed) {
+    private Command layoutBorderItems(final IBorderedShapeEditPart borderedShapeEditPart) {
         CompoundCommand resCommand = null;
         if (borderedShapeEditPart instanceof IGraphicalEditPart) {
 
@@ -919,9 +909,8 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
                 // Get the zoom level
                 double scale = 1.0;
                 RootEditPart root = castedEditPart.getRoot();
-                if (root instanceof DiagramRootEditPart) {
-                    DiagramRootEditPart diagramRootEditPart = (DiagramRootEditPart) root;
-                    final ZoomManager zoomManager = ((DiagramRootEditPart) root).getZoomManager();
+                if (root instanceof DiagramRootEditPart diagramRootEditPart) {
+                    final ZoomManager zoomManager = diagramRootEditPart.getZoomManager();
                     scale = zoomManager.getZoom();
                 }
 
@@ -1450,7 +1439,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
         Dimension parentBorderSize = getBorder(graphicalEditPart).getSize();
         if (graphicalEditPart.resolveSemanticElement() instanceof DDiagramElement) {
             DDiagramElement dDiagramElement = (DDiagramElement) graphicalEditPart.resolveSemanticElement();
-            isPinned = isPinned(graphicalEditPart);
+            isPinned = isPinned(graphicalEditPart) || (elementsToKeepFixed != null && elementsToKeepFixed.contains(graphicalEditPart));
             if (isPinned) {
                 bounds = graphicalEditPart.getFigure().getBounds().getCopy();
             }
