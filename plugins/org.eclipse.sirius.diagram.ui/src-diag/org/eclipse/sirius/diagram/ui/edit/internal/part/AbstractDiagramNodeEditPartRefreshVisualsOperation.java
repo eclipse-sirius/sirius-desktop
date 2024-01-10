@@ -254,7 +254,7 @@ public class AbstractDiagramNodeEditPartRefreshVisualsOperation {
             height = node.getHeight().intValue() * LayoutUtils.SCALE;
         }
         DDiagramElementQuery query = new DDiagramElementQuery(node);
-        if (height == 0 && (new DNodeQuery(node).allowsVerticalResize() || query.isCollapsed())) {
+        if (height == 0 && (new DNodeQuery(node).allowsVerticalResize() || query.isCollapsed()) && !new DNodeQuery(node).isAutoSize()) {
             height = width;
         }
 
