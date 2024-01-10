@@ -209,6 +209,7 @@
 					<li>Store states to alter tools: read/write mode driven by tools; default values to use in creation tools of current table.</li>
 				</ul>
 			</li>
+			<li><span class="label label-info">Modified</span> The SquareDescription can now have -1 value for height and width. If the value -1 is used for both width and height enable the &#8220;auto-size&#8221; mode.</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<ul>
@@ -216,6 +217,15 @@
 			<li><span class="label label-success">Added</span> The SiriusStyleClipboard singleton to store the style clipboard data for the diagram elements.</li>
 			<li><span class="label label-success">Added</span> The ISimpleAuthorityListener functional interface to listen for any lock change, like IAuthorityListener but with a single method.</li>
 			<li><span class="label label-info">Modified</span> ArrangeBorderNodesAction.initAction now has two parameters for its text: when there is no selection, when there is a selection.</li>
+			<li><span class="label label-success">Added</span> Method 
+				<code>org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider.allowsAutoSizeNodeStyle(DNode)</code> has been added to indicates if a diagram description provider allows node auto-size mode computed from the node style on the specified element.
+			</li>
+			<li><span class="label label-success">Added</span> Method 
+				<code>org.eclipse.sirius.diagram.business.api.query.DNodeQuery.isAutoSize()</code> has been added to indicates if a node is in auto-size mode.
+			</li>
+			<li><span class="label label-success">Added</span> Method 
+				<code>org.eclipse.sirius.diagram.business.api.query.DNodeQuery.supportNodeStyleAutoSize(NodeStyle, NodeStyleDescription)</code> has been added to indicates if a DNode can support autosize mode defined from its style.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius">Changes in 
 			<code>org.eclipse.sirius</code>
