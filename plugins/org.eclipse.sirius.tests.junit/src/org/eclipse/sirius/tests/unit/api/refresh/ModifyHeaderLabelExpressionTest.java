@@ -94,7 +94,7 @@ public class ModifyHeaderLabelExpressionTest extends SiriusTestCase {
         TestsUtil.synchronizationWithUIThread();
 
         // VP-4466: clear the NPE error before the fix of this issue.
-        if (errors.values().size() == 1 && errors.values().iterator().next().size() == 1) {
+        if (errorsCount() == 1 && errors.values().iterator().next().size() == 1) {
             if (errors.values().iterator().next().iterator().next().getException() instanceof NullPointerException) {
                 errors.clear();
             }

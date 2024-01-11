@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -165,7 +165,7 @@ public class CellEditionTest extends AbstractSiriusSwtBotGefTestCase {
             assertEquals("One warning must be displayed in Error Log view when using double click on a column using a CellEditor with a wrong qualified name.", 1, warnings.size());
             String expectedMessage = MessageFormat.format(Messages.DFeatureColumnEditingSupport_notJavaQualifiedName,
                     "org.eclipse.sirius.tests.swtbot.table.celleditorfactory.WrongQualifiedName/CellEditorFactory");
-            String message = warnings.values().iterator().next().getMessage();
+            String message = warnings.values().stream().filter(status -> !status.isEmpty()).findFirst().get().iterator().next().getMessage();
             assertEquals("The displayed message in the Error Log view is not the expected one.", expectedMessage, message);
             // Check that the value has not been changed (in this case the Cell is not editable).
             assertEquals("The value must not be changed in case of a CellEditor with a wrong qualified name.", "false", items[lineIndexToTest].cell(columnIndexToTest));
@@ -466,7 +466,7 @@ public class CellEditionTest extends AbstractSiriusSwtBotGefTestCase {
             String qualifiedName = "org.eclipse.sirius.tests.swtbot.table.celleditorfactory.UnexistingCellEditorFactory";
             String expectedMessage = MessageFormat.format(Messages.DFeatureColumnEditingSupport_unusableCellEditor, qualifiedName,
                     MessageFormat.format(Messages.CelEditorFactoryManager_notFound, qualifiedName));
-            String message = warnings.values().iterator().next().getMessage();
+            String message = warnings.values().stream().filter(status -> !status.isEmpty()).findFirst().get().iterator().next().getMessage();
             assertEquals("The displayed message in the Error Log view is not the expected one.", expectedMessage, message);
             // Check that the value has not been changed (in this case the Cell is not editable).
             assertEquals("The value must not be changed in case of a CellEditor with an unexisting CellEditorFactory.", "false", items[lineIndexToTest].cell(columnIndexToTest));
@@ -509,7 +509,7 @@ public class CellEditionTest extends AbstractSiriusSwtBotGefTestCase {
             String qualifiedName = "org.eclipse.sirius.tests.swtbot.table.celleditorfactory.NotATableCellEditorFactory";
             String expectedMessage = MessageFormat.format(Messages.DFeatureColumnEditingSupport_unusableCellEditor, qualifiedName,
                     MessageFormat.format(Messages.CelEditorFactoryManager_wrongImplementation, qualifiedName));
-            String message = warnings.values().iterator().next().getMessage();
+            String message = warnings.values().stream().filter(status -> !status.isEmpty()).findFirst().get().iterator().next().getMessage();
             assertEquals("The displayed message in the Error Log view is not the expected one.", expectedMessage, message);
             // Check that the value has not been changed (in this case the Cell is not editable).
             assertEquals("The value must not be changed in case of a CellEditor that does not implement ITableCellEditorFactory.", "false", items[lineIndexToTest].cell(columnIndexToTest));

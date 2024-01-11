@@ -216,13 +216,10 @@ public abstract class SiriusTestCase extends TestCase {
         setErrorCatchActive(true);
         setWarningCatchActive(false);
         setInfoCatchActive(false);
-        Display.getCurrent().syncExec(new Runnable() {
-            @Override
-            public void run() {
-                IPreferenceStore preferenceStore = DiagramUIPlugin.getPlugin().getPreferenceStore();
-                preferenceStore.setValue(IPreferenceConstants.PREF_ENABLE_ANIMATED_ZOOM, false);
-                preferenceStore.setValue(IPreferenceConstants.PREF_ENABLE_ANIMATED_LAYOUT, false);
-            }
+        Display.getCurrent().syncExec(() -> {
+            IPreferenceStore preferenceStore = DiagramUIPlugin.getPlugin().getPreferenceStore();
+            preferenceStore.setValue(IPreferenceConstants.PREF_ENABLE_ANIMATED_ZOOM, false);
+            preferenceStore.setValue(IPreferenceConstants.PREF_ENABLE_ANIMATED_LAYOUT, false);
         });
         if (createModelingProject) {
             EclipseTestsSupportHelper.INSTANCE.createModelingProject(SiriusTestCase.TEMPORARY_PROJECT_NAME, false);
@@ -554,22 +551,19 @@ public abstract class SiriusTestCase extends TestCase {
 
     /** Initialize the log listener. */
     protected void initLoggers() {
-        logListener = new ILogListener() {
-            @Override
-            public void logging(IStatus status, String plugin) {
-                switch (status.getSeverity()) {
-                case IStatus.ERROR:
-                    errorOccurs(status, plugin);
-                    break;
-                case IStatus.WARNING:
-                    warningOccurs(status, plugin);
-                    break;
-                case IStatus.INFO:
-                    infoOccurs(status, plugin);
-                    break;
-                default:
-                    // nothing to do
-                }
+        logListener = (status, plugin) -> {
+            switch (status.getSeverity()) {
+            case IStatus.ERROR:
+                errorOccurs(status, plugin);
+                break;
+            case IStatus.WARNING:
+                warningOccurs(status, plugin);
+                break;
+            case IStatus.INFO:
+                infoOccurs(status, plugin);
+                break;
+            default:
+                // nothing to do
             }
         };
         Platform.addLogListener(logListener);
@@ -599,16 +593,34 @@ public abstract class SiriusTestCase extends TestCase {
      * @return true if an error occurs.
      */
     protected synchronized boolean doesAnErrorOccurs() {
-        return errors != null && !errors.values().isEmpty();
+        return errorsCount() > 0;
     }
-
+    
+    /**
+     * Returns the total number of errors recorded.
+     * 
+     * @return the total number of errors recorded.
+     */
+    protected int errorsCount() {
+        return errors.values().stream().mapToInt(List::size).sum();
+    }
+    
     /**
      * check if a warning occurs.
-     * 
+     *
      * @return true if a warning occurs.
      */
     protected synchronized boolean doesAWarningOccurs() {
-        return warnings != null && !warnings.values().isEmpty();
+        return warningsCount() > 0;
+    }
+
+    /**
+     * Returns the total number of warnings recorded.
+     * 
+     * @return the total number of warnings recorded.
+     */
+    protected int warningsCount() {
+        return warnings.values().stream().mapToInt(List::size).sum();
     }
 
     /**
@@ -617,7 +629,16 @@ public abstract class SiriusTestCase extends TestCase {
      * @return true if an info occurs.
      */
     protected synchronized boolean doesAnInfoOccurs() {
-        return (infos != null) && !infos.values().isEmpty();
+        return infosCount() > 0;
+    }
+    
+    /**
+     * Returns the total number of infos recorded.
+     * 
+     * @return the total number of infos recorded.
+     */
+    protected int infosCount() {
+        return infos.values().stream().mapToInt(List::size).sum();
     }
 
     /**
@@ -1029,7 +1050,6 @@ public abstract class SiriusTestCase extends TestCase {
                     Command changeSiriussSelection = new ChangeViewpointSelectionCommand(session, selectionCallback, Collections.<Viewpoint> emptySet(), Collections.singleton(viewpointFromName),
                             new NullProgressMonitor());
                     session.getTransactionalEditingDomain().getCommandStack().execute(changeSiriussSelection);
-                    deactivatedViewpoint = true;
                     waitSaveSessionJob();
                     break;
                 }
@@ -1334,7 +1354,6 @@ public abstract class SiriusTestCase extends TestCase {
      */
     protected final Collection<DRepresentation> getRepresentations(final String name, final EObject semantic, final Session alternateSession) {
         final Collection<DRepresentation> allRepresentations = DialectManager.INSTANCE.getRepresentations(semantic, alternateSession);
-
         final Collection<DRepresentation> representations = new HashSet<DRepresentation>();
         for (final DRepresentation representation : allRepresentations) {
             final RepresentationDescription desc = DialectManager.INSTANCE.getDescription(representation);
@@ -1356,9 +1375,7 @@ public abstract class SiriusTestCase extends TestCase {
      */
     protected final Collection<DRepresentation> getRepresentations(final String name, final EObject semantic) {
         final Collection<DRepresentation> allRepresentations = DialectManager.INSTANCE.getRepresentations(semantic, session);
-
         final Collection<DRepresentation> representations = new HashSet<DRepresentation>();
-
         for (final DRepresentation representation : allRepresentations) {
             final RepresentationDescription desc = DialectManager.INSTANCE.getDescription(representation);
             if (name.equals(desc.getName())) {
@@ -1528,7 +1545,6 @@ public abstract class SiriusTestCase extends TestCase {
     protected void copyAllFiles(String pluginID, String sourceProjecPathInPlugin, String projectName) {
         // It is needed because the platform URI of the aird can not be resolved.
         EclipseTestsSupportHelper.INSTANCE.createProject(projectName);
-
         final File sourceFile = FileProvider.getDefault().getFile(pluginID, new Path(sourceProjecPathInPlugin));
         String sourceAbsolutePath = sourceFile.getAbsolutePath();
         IPath destinationPath = ResourcesPlugin.getWorkspace().getRoot().getRawLocation().append(projectName);
@@ -1538,7 +1554,6 @@ public abstract class SiriusTestCase extends TestCase {
         } catch (IOException exception) {
             Assert.fail(exception.getMessage());
         }
-
         try {
             ResourcesPlugin.getWorkspace().getRoot().refreshLocal(org.eclipse.core.resources.IResource.DEPTH_INFINITE, null);
         } catch (CoreException e) {
@@ -1579,23 +1594,18 @@ public abstract class SiriusTestCase extends TestCase {
      */
     protected void closeAndReloadSession() throws Exception {
         final URI sessionResourceURI = session.getSessionResource().getURI();
-
         /* close session */
         TestsUtil.synchronizationWithUIThread();
         closeSession(session);
         TestsUtil.synchronizationWithUIThread();
-
         /* reload session */
         session = SessionManager.INSTANCE.getSession(sessionResourceURI, new NullProgressMonitor());
-
         if (!session.isOpen()) {
             session.open(new NullProgressMonitor());
         }
         SessionUIManager.INSTANCE.getOrCreateUISession(session).open();
         TestsUtil.synchronizationWithUIThread();
-
         Assert.assertNotNull(session);
-
         /* Set again the variables that have been lost during the unload. */
         interpreter = session.getInterpreter();
         if (!session.getSemanticResources().isEmpty()) {
@@ -1697,7 +1707,6 @@ public abstract class SiriusTestCase extends TestCase {
      */
     protected void changeDiagramUIPreference(String preferenceKey, Integer newValue) {
         SiriusAssert.assertNoDiagramCorePreferenceChangedinDiagramUIStore(preferenceKey);
-
         final IPreferenceStore prefs = DiagramUIPlugin.getPlugin().getPreferenceStore();
         oldValueDiagramUiPreferences.put(preferenceKey, prefs.getInt(preferenceKey));
         prefs.setValue(preferenceKey, newValue);
@@ -1715,7 +1724,6 @@ public abstract class SiriusTestCase extends TestCase {
      */
     protected void changeDiagramUIPreference(String preferenceKey, Boolean newValue) {
         SiriusAssert.assertNoDiagramCorePreferenceChangedinDiagramUIStore(preferenceKey);
-
         final IPreferenceStore prefs = DiagramUIPlugin.getPlugin().getPreferenceStore();
         oldValueDiagramUiPreferences.put(preferenceKey, prefs.getBoolean(preferenceKey));
         prefs.setValue(preferenceKey, newValue);
@@ -1915,9 +1923,7 @@ public abstract class SiriusTestCase extends TestCase {
                 }
             }
 
-            for (final Resource resource : new ArrayList<Resource>(domain.getResourceSet().getResources())) {
-                resource.unload();
-            }
+            List.copyOf(domain.getResourceSet().getResources()).forEach(Resource::unload);
 
             for (final Group modelerModele : groups) {
                 domain.getResourceSet().getResources().remove(modelerModele.eResource());

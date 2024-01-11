@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2022 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -104,8 +104,6 @@ import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.junit.Assert;
-
-import com.google.common.collect.Iterables;
 
 /**
  * Override some methods to GEF editor.
@@ -779,7 +777,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     public boolean directEdgeEditType(final String sourceEditPartLabel, final String targetEditPartLabel, final String text, final int index, Class<? extends EditPart> labelClass) {
         final List<SWTBotGefConnectionEditPart> connectionEditPart = getConnectionEditPart(getEditPart(sourceEditPartLabel).parent(), getEditPart(targetEditPartLabel).parent());
         final SWTBotGefConnectionEditPart swtBotGefConnectionEditPart = connectionEditPart.get(index);
-        return directEditType(text, Iterables.getOnlyElement(Iterables.filter(swtBotGefConnectionEditPart.part().getChildren(), labelClass)));
+        return directEditType(text, swtBotGefConnectionEditPart.part().getChildren().stream().filter(labelClass::isInstance).map(labelClass::cast).findFirst().get());
     }
 
     /**
