@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Iterator;
 
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.TreeViewer;
@@ -39,8 +38,6 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
-
-import com.google.common.collect.LinkedHashMultimap;
 
 /**
  * The main test case for tree unit tests.
@@ -69,11 +66,6 @@ public abstract class TreeTestCase extends SiriusTestCase {
      */
     private ITreeCommandFactory treeCommandFactory;
 
-    /**
-     * The reported errors.
-     */
-    private LinkedHashMultimap<String, IStatus> errors = LinkedHashMultimap.create();
-
     @Override
     protected void setUp() throws Exception {
         super.setUp();
@@ -90,16 +82,6 @@ public abstract class TreeTestCase extends SiriusTestCase {
             treeCommandFactory.setModelAccessor(accessor);
         }
         return treeCommandFactory;
-    }
-
-    /**
-     * check if an error occurs.
-     * 
-     * @return true if an error occurs.
-     */
-    @Override
-    protected synchronized boolean doesAnErrorOccurs() {
-        return errors.values().size() != 0;
     }
 
     /**
@@ -225,17 +207,9 @@ public abstract class TreeTestCase extends SiriusTestCase {
             }
             return false;
 
-        } catch (SecurityException e) {
+        } catch (SecurityException | NoSuchMethodException | IllegalArgumentException | IllegalAccessException | InvocationTargetException e) {
             throw new IllegalArgumentException("No Edition tool defined on TreeItem '" + element.getName() + "'");
-        } catch (NoSuchMethodException e) {
-            throw new IllegalArgumentException("No Edition tool defined on TreeItem '" + element.getName() + "'");
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("No Edition tool defined on TreeItem '" + element.getName() + "'");
-        } catch (IllegalAccessException e) {
-            throw new IllegalArgumentException("No Edition tool defined on TreeItem '" + element.getName() + "'");
-        } catch (InvocationTargetException e) {
-            throw new IllegalArgumentException("No Edition tool defined on TreeItem '" + element.getName() + "'");
-        }
+        }    
     }
 
     /**
@@ -260,11 +234,6 @@ public abstract class TreeTestCase extends SiriusTestCase {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#tearDown()
-     */
     @Override
     protected void tearDown() throws Exception {
         TestsUtil.synchronizationWithUIThread();

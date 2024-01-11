@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -495,7 +495,7 @@ public class StateBasicTests extends AbstractStatesSequenceTests {
         } catch (TimeoutException e) {
             boolean doesAnErrorOccurs = doesAnErrorOccurs();
             if (doesAnErrorOccurs) {
-                Throwable exception = errors.values().iterator().next().getException();
+                Throwable exception = errors.values().stream().filter(status -> !status.isEmpty()).findFirst().get().iterator().next().getException();
                 if (exception instanceof ClassCastException || (exception instanceof SWTException && exception.getCause() instanceof ClassCastException)) {
                     fail("The resize of the state next to the message m1 causes a ClassCastException");
                 }

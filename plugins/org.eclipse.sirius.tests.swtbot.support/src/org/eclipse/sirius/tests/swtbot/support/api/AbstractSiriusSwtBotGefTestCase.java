@@ -22,10 +22,13 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 
@@ -133,14 +136,6 @@ import org.hamcrest.Matcher;
 import org.junit.Assert;
 import org.osgi.framework.Version;
 
-import com.google.common.base.Function;
-import com.google.common.base.Objects;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.LinkedHashMultimap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.Sets;
-
 import junit.framework.TestCase;
 
 /**
@@ -154,14 +149,11 @@ import junit.framework.TestCase;
  */
 @SuppressWarnings({ "restriction", "nls" })
 public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase {
-
     static {
         SWTBotPreferences.TIMEOUT = 10000;
     }
 
-    /**
-     * Models dir.
-     */
+    /** Models dir. */
     protected static final String MODELS_DIR = "Models";
 
     /** Test project name. */
@@ -200,35 +192,23 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     /** . */
     protected DesignerViews designerViews = new DesignerViews(bot);
 
-    /**
-     * Designer project.
-     */
+    /** Designer project. */
     protected UIProject designerProject;
 
-    /**
-     * The Session Resource wrapper.
-     */
+    /** The Session Resource wrapper. */
     protected UIResource sessionAirdResource;
 
-    /**
-     * The Session Tree item wrapper.
-     */
+    /** The Session Tree item wrapper. */
     protected UILocalSession localSession;
 
-    /**
-     * The DialectEditor (opened on representation creation) wrapper.
-     */
+    /** The DialectEditor (opened on representation creation) wrapper. */
     protected SWTBotSiriusDiagramEditor editor;
 
-    /**
-     * The reported errors.
-     */
-    protected Multimap<String, IStatus> errors;
+    /** The reported errors. */
+    protected Map<String, List<IStatus>> errors = new LinkedHashMap<>();
 
-    /**
-     * The reported warnings.
-     */
-    protected Multimap<String, IStatus> warnings;
+    /** The reported warnings. */
+    protected Map<String, List<IStatus>> warnings = new LinkedHashMap<>();
 
     private boolean defaultEnableAnimatedZoom;
 
@@ -251,24 +231,16 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
 
     private final HashMap<String, Object> oldPlatformUIPreferences = new HashMap<String, Object>();
 
-    /**
-     * The unchaught exceptions handler.
-     */
+    /** The unchaught exceptions handler. */
     private UncaughtExceptionHandler exceptionHandler;
 
-    /**
-     * The platform log listener.
-     */
+    /** The platform log listener. */
     private ILogListener logListener;
 
-    /**
-     * Boolean to activate error catch.
-     */
+    /** Boolean to activate error catch. */
     private boolean errorCatchActive;
 
-    /**
-     * Boolean to activate warning catch.
-     */
+    /** Boolean to activate warning catch. */
     private boolean warningCatchActive;
 
     @Override
@@ -289,9 +261,6 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
             }
         });
 
-        // Init logger and uncauht exception handlers
-        errors = LinkedHashMultimap.create();
-        warnings = LinkedHashMultimap.create();
         initLoggers();
 
         closeAllSessions(true);
@@ -408,7 +377,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         final Set<String> sessionIDs = new HashSet<String>();
         PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
             Collection<Session> sessionsToClose = new LinkedHashSet<>();
-            for (final Session sess1 : Sets.newLinkedHashSet(SessionManager.INSTANCE.getSessions())) {
+            for (final Session sess1 : new LinkedHashSet<>(SessionManager.INSTANCE.getSessions())) {
                 if (sess1.isOpen()) {
                     sessionsToClose.add(sess1);
                 }
@@ -850,10 +819,9 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     private void assertNoSiriusCorePreferenceChangedinSiriusUIStore(String preferenceKey) {
-        Collection<SiriusPreferencesKeys> coreKeys = new ArrayList<>(Arrays.asList(SiriusPreferencesKeys.values()));
-        Function<SiriusPreferencesKeys, String> prefToName = SiriusPreferencesKeys::name;
+        Collection<SiriusPreferencesKeys> coreKeys = Arrays.asList(SiriusPreferencesKeys.values());
         TestCase.assertFalse("The DesignerPreferenceKey named " + preferenceKey + " should not be modified in the UI store.",
-                Lists.newArrayList(Iterables.transform(coreKeys, prefToName)).contains(preferenceKey));
+                coreKeys.stream().anyMatch(key -> java.util.Objects.equals(preferenceKey, key.name())));
     }
 
     private void assertNoDiagramCorePreferenceChangedinDiagramUIStore(String preferenceKey) {
@@ -1480,7 +1448,16 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      * @return true if an error occurs.
      */
     protected synchronized boolean doesAnErrorOccurs() {
-        return errors != null && !errors.isEmpty();
+        return errorsCount() > 0;
+    }
+    
+    /**
+     * Returns the total number of errors recorded.
+     * 
+     * @return the total number of errors recorded.
+     */
+    protected int errorsCount() {
+        return errors.values().stream().mapToInt(List::size).sum();
     }
 
     /**
@@ -1489,7 +1466,16 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      * @return true if a warning occurs.
      */
     protected synchronized boolean doesAWarningOccurs() {
-        return warnings != null && !warnings.isEmpty();
+        return warningsCount() > 0;
+    }
+
+    /**
+     * Returns the total number of warnings recorded.
+     * 
+     * @return the total number of warnings recorded.
+     */
+    protected int warningsCount() {
+        return warnings.values().stream().mapToInt(List::size).sum();
     }
 
     /**
@@ -1534,7 +1520,8 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
                 }
             }
             if (!ignoreMessage) {
-                errors.put(sourcePlugin, status);
+                errors.putIfAbsent(sourcePlugin, new ArrayList<>());
+                errors.get(sourcePlugin).add(status);
             }
         }
     }
@@ -1549,7 +1536,8 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      */
     private synchronized void warningOccurs(IStatus status, String sourcePlugin) {
         if (warningCatchActive) {
-            warnings.put(sourcePlugin, status);
+            warnings.putIfAbsent(sourcePlugin, new ArrayList<>());
+            warnings.get(sourcePlugin).add(status);
         }
     }
 
@@ -1626,7 +1614,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         String testName = getClass().getName();
 
         log1.append("Error(s) raised during test : " + testName).append(br);
-        for (Entry<String, Collection<IStatus>> entry : errors.asMap().entrySet()) {
+        for (Entry<String, List<IStatus>> entry : errors.entrySet()) {
             String reporter = entry.getKey();
             log1.append(". Log Plugin : " + reporter).append(br);
 
@@ -1652,7 +1640,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         String testName = getClass().getName();
 
         log1.append("Warning(s) raised during test : " + testName).append(br);
-        for (Entry<String, Collection<IStatus>> entry : warnings.asMap().entrySet()) {
+        for (Entry<String, List<IStatus>> entry : warnings.entrySet()) {
             String reporter = entry.getKey();
             log1.append(". Log Plugin : " + reporter).append(br);
 
@@ -1936,10 +1924,9 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      */
     public SWTBotGefEditPart findTextEditPart(SWTBotGefEditPart parent, String label) {
         SWTBotGefEditPart result = null;
-        if (parent.part() instanceof TextEditPart) {
-            TextEditPart textEditPart = (TextEditPart) parent.part();
-            DescriptionCompartmentEditPart descriptionCompartmentEditPart = Iterables.getOnlyElement(Iterables.filter(textEditPart.getChildren(), DescriptionCompartmentEditPart.class));
-            if (descriptionCompartmentEditPart.getFigure() instanceof WrappingLabel && label.equals(((WrappingLabel) descriptionCompartmentEditPart.getFigure()).getText())) {
+        if (parent.part() instanceof TextEditPart textEditPart) {
+            var descriptionCompartmentEditPart = textEditPart.getChildren().stream().filter(DescriptionCompartmentEditPart.class::isInstance).map(DescriptionCompartmentEditPart.class::cast).findFirst().get();
+            if (descriptionCompartmentEditPart.getFigure() instanceof WrappingLabel wrappingLabel && label.equals(wrappingLabel.getText())) {
                 result = parent;
             }
         } else {
@@ -2001,12 +1988,12 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      * @return the background color of the figure if found, null otherwise
      */
     protected Color getFigureBackgroundColor(IFigure parentFigure, Class<? extends Figure> figureClass) {
-        Iterable<? extends Figure> filter = Iterables.filter(parentFigure.getChildren(), figureClass);
-        if (Iterables.size(filter) == 1) {
-            return Iterables.getOnlyElement(filter).getBackgroundColor();
+        List<? extends IFigure> filteredChildren = parentFigure.getChildren().stream().filter(figureClass::isInstance).toList();
+        if (filteredChildren.size() == 1) {
+            return filteredChildren.get(0).getBackgroundColor();
         }
         Color backgroundColor = null;
-        for (IFigure childFigure : Iterables.filter(parentFigure.getChildren(), IFigure.class)) {
+        for (IFigure childFigure : parentFigure.getChildren()) {
             backgroundColor = getFigureBackgroundColor(childFigure, figureClass);
             if (backgroundColor != null) {
                 break;
@@ -2091,7 +2078,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
             IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
             IViewReference[] views = page.getViewReferences();
             for (IViewReference view : views) {
-                if (Objects.equal("org.eclipse.ui.views.ContentOutline", view.getId())) {
+                if (Objects.equals("org.eclipse.ui.views.ContentOutline", view.getId())) {
                     view.getPage().hideView(view);
                 }
             }

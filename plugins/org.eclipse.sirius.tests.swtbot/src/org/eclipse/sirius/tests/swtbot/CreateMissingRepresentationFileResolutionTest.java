@@ -54,10 +54,7 @@ public class CreateMissingRepresentationFileResolutionTest extends AbstractScena
      * @return true if one error occurred.
      */
     protected synchronized boolean doesAnErrorOccurs() {
-        if (errors != null) {
-            return errors.values().size() != 1;
-        }
-        return false;
+        return errorsCount() != 1;
     }
 
     /**

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -316,11 +316,11 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
                 String expectedMessage = MessageFormat.format(Messages.Group_Not_Displayed, "groupWithBlankLocationURI",
                         MessageFormat.format(Messages.LocationURI_ParsePb_Blank, LocationURI.MENU_SCHEME, LocationURI.TABBAR_SCHEME)) + ": ";
                 if (doesAWarningOccurs()) {
-                    if (warnings.values().size() == 1) {
-                        String message = warnings.values().iterator().next().getMessage();
+                    if (warningsCount() == 1) {
+                        String message = warnings.values().stream().filter(status -> !status.isEmpty()).findFirst().get().iterator().next().getMessage();
                         assertEquals("The warning concerning the group with blank locationUri should use a specific message.", expectedMessage, message);
                     } else {
-                        fail("One warning is expected concerning the group with blank locationUri, but was " + warnings.values().size() + ".");
+                        fail("One warning is expected concerning the group with blank locationUri, but was " + warningsCount() + ".");
                     }
                 } else {
                     fail("One warning is expected concerning the group with blank locationUri, but was 0.");
@@ -353,11 +353,11 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
                 String expectedMessage = MessageFormat.format(Messages.Group_Not_Displayed, "groupInPopupMenuWithLocationURI",
                         MessageFormat.format(org.eclipse.sirius.tools.api.Messages.Constraint_validNullLocationURIForGroupInPopupMenuConstraint_message, "aNotBlankLocationURI"));
                 if (doesAWarningOccurs()) {
-                    if (warnings.values().size() == 1) {
-                        String message = warnings.values().iterator().next().getMessage();
+                    if (warningsCount() == 1) {
+                        String message = warnings.values().stream().filter(status -> !status.isEmpty()).findFirst().get().iterator().next().getMessage();
                         assertEquals("The warning concerning the group with blank locationUri should use a specific message.", expectedMessage, message);
                     } else {
-                        fail("One warning is expected concerning the group with locationUri in a popup menu, but was " + warnings.values().size() + ".");
+                        fail("One warning is expected concerning the group with locationUri in a popup menu, but was " + warningsCount() + ".");
                     }
                 } else {
                     fail("One warning is expected concerning the group with locationUri in a popup menu, but was 0.");

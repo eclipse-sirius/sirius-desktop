@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2009, 2020 THALES GLOBAL SERVICES
+ * Copyright (c) 2009, 2024 THALES GLOBAL SERVICES and others
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -35,9 +35,6 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
-
-import com.google.common.base.Function;
-import com.google.common.collect.Lists;
 
 /**
  * Common helpers to simplify SWTBot.
@@ -184,25 +181,17 @@ public final class SWTBotCommonHelper {
      * @return All {@link EdgeData}.
      */
     public static List<EdgeData> getEdgeData(final SWTBotGefEditPart source, final SWTBotGefEditPart target, final SWTBotSiriusDiagramEditor editor) {
-        final List<SWTBotGefConnectionEditPart> connectionEditParts = editor.getConnectionEditPart(source, target);
-
-        return Lists.transform(connectionEditParts, new Function<SWTBotGefConnectionEditPart, EdgeData>() {
-
-            /**
-             * @{inheritDoc
-             */
-            @Override
-            public EdgeData apply(final SWTBotGefConnectionEditPart from) {
-                final ConnectionEditPart connectionEditPart = from.part();
-                final PolylineConnectionEx connection = (PolylineConnectionEx) connectionEditPart.getFigure();
-                final EdgeData result = new EdgeData();
-                result.swtBotEditPart = from;
-                result.source = connection.getSourceAnchor().getReferencePoint();
-                result.target = connection.getTargetAnchor().getReferencePoint();
-                result.points = connection.getPoints().getCopy();
-                return result;
-            }
-        });
+        List<SWTBotGefConnectionEditPart> connectionEditParts = editor.getConnectionEditPart(source, target);
+        return connectionEditParts.stream().map((SWTBotGefConnectionEditPart partBot) -> {
+            ConnectionEditPart connectionEditPart = partBot.part();
+            PolylineConnectionEx connection = (PolylineConnectionEx) connectionEditPart.getFigure();
+            EdgeData result = new EdgeData();
+            result.swtBotEditPart = partBot;
+            result.source = connection.getSourceAnchor().getReferencePoint();
+            result.target = connection.getTargetAnchor().getReferencePoint();
+            result.points = connection.getPoints().getCopy();
+            return result;
+        }).toList();
     }
 
     /**
