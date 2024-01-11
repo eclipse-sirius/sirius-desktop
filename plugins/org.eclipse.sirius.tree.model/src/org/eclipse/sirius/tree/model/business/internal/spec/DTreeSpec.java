@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.model.business.internal.spec;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
@@ -24,9 +25,6 @@ import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-
 /**
  * Implementation od DTree.
  *
@@ -38,14 +36,19 @@ public class DTreeSpec extends DTreeImpl {
     public EList<DRepresentationElement> getOwnedRepresentationElements() {
         EList<DTreeItem> result = getOwnedTreeItems();
         final EReference feature = ViewpointPackage.eINSTANCE.getDRepresentation_OwnedRepresentationElements();
-        return new EcoreEList.UnmodifiableEList<DRepresentationElement>(eInternalContainer(), feature, result.size(), result.toArray());
+        return new EcoreEList.UnmodifiableEList<>(eInternalContainer(), feature, result.size(), result.toArray());
     }
 
     @Override
     public EList<DRepresentationElement> getRepresentationElements() {
-        List<DRepresentationElement> result = Lists.newArrayList(Iterators.filter(eAllContents(), DRepresentationElement.class));
+        List<DRepresentationElement> representations = new ArrayList<>();
+        eAllContents().forEachRemaining(eObject -> {
+            if (eObject instanceof DRepresentationElement representation) {
+                representations.add(representation);
+            }
+        });
         final EReference feature = ViewpointPackage.eINSTANCE.getDRepresentation_RepresentationElements();
-        return new EcoreEList.UnmodifiableEList<DRepresentationElement>(eInternalContainer(), feature, result.size(), result.toArray());
+        return new EcoreEList.UnmodifiableEList<>(eInternalContainer(), feature, representations.size(), representations.toArray());
     }
 
     @Override
