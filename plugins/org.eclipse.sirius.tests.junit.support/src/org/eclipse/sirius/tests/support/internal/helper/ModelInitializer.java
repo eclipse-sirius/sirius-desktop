@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012 THALES GLOBAL SERVICES
+ * Copyright (c) 2012, 2024 THALES GLOBAL SERVICES and others
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,22 +15,21 @@ package org.eclipse.sirius.tests.support.internal.helper;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
-import com.google.common.base.Predicate;
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.Sets;
 
 //CHECKSTYLE:OFF
 
@@ -43,14 +42,9 @@ import com.google.common.collect.Sets;
 public class ModelInitializer {
     private final Scope scope;
 
-    private final Predicate<EClass> isInstanciable = new Predicate<EClass>() {
-        @Override
-        public boolean apply(EClass input) {
-            return !input.isAbstract() && !input.isInterface();
-        }
-    };
+    private final Predicate<EClass> isInstanciable = (EClass input) -> !input.isAbstract() && !input.isInterface();
 
-    private final Multimap<EReference, EClass> refToCandidatesMap = HashMultimap.create();
+    private final Map<EReference, List<EClass>> refToCandidatesMap = new HashMap<>();
 
     /**
      * Constructor.
@@ -120,20 +114,11 @@ public class ModelInitializer {
     }
 
     private void initializeContents(EObject root, EReference ref, List<EObject> acc) {
-
         Set<EClass> candidates = findCompatibleCandidates(root, ref);
-        Set<EClass> instanciableCandidates = Sets.newLinkedHashSet(Iterables.filter(candidates, isInstanciable));
-
-        final Collection<EClass> refToCandidates = refToCandidatesMap.get(ref);
-
-        Predicate<EClass> newCreationType = new Predicate<EClass>() {
-            @Override
-            public boolean apply(EClass input) {
-                return !refToCandidates.contains(input);
-            };
-        };
-
-        Set<EClass> neverCreatedCandidates = Sets.newLinkedHashSet(Iterables.filter(instanciableCandidates, newCreationType));
+        Set<EClass> instanciableCandidates = candidates.stream().filter(isInstanciable).collect(Collectors.toCollection(LinkedHashSet::new));
+        Collection<EClass> refToCandidates = refToCandidatesMap.get(ref);
+        Predicate<EClass> newCreationType = (EClass input) -> refToCandidates == null || !refToCandidates.contains(input);
+        Set<EClass> neverCreatedCandidates = instanciableCandidates.stream().filter(newCreationType).collect(Collectors.toCollection(LinkedHashSet::new));
         initializeContents(root, ref, neverCreatedCandidates, acc);
     }
 
@@ -152,7 +137,10 @@ public class ModelInitializer {
         // Step 2: fill reference with all created instances
         if (ref.isMany()) {
             acc.addAll(instances);
-            refToCandidatesMap.putAll(ref, instanciableCandidates);
+            if (!refToCandidatesMap.containsKey(ref)) {
+                refToCandidatesMap.put(ref, new ArrayList<>());
+            }
+            refToCandidatesMap.get(ref).addAll(instanciableCandidates);
             element.eSet(ref, instances);
         } else {
             EObject instance = instances.iterator().next();
@@ -162,7 +150,10 @@ public class ModelInitializer {
             }
 
             if (instance != null) {
-                refToCandidatesMap.put(ref, instance.eClass());
+                if (!refToCandidatesMap.containsKey(ref)) {
+                    refToCandidatesMap.put(ref, new ArrayList<>());
+                }
+                refToCandidatesMap.get(ref).add(instance.eClass());
                 element.eSet(ref, instance);
                 acc.add(instance);
 
@@ -264,10 +255,13 @@ public class ModelInitializer {
     protected Collection<? extends EClass> findCompatibleCandidates(EObject container, EReference reference, EPackage currentScope) {
         EClass type = reference.getEReferenceType();
         Set<EClass> result = new LinkedHashSet<>();
-        for (EClass klass : Iterables.filter(currentScope.getEClassifiers(), EClass.class)) {
-            boolean isCompatible = klass.equals(type) || klass.getEAllSuperTypes().contains(type);
-            if (isCompatible) {
-                result.add(klass);
+        for (EClassifier classifier : currentScope.getEClassifiers()) {
+            if (classifier instanceof EClass) {
+                EClass klass = (EClass) classifier;
+                boolean isCompatible = klass.equals(type) || klass.getEAllSuperTypes().contains(type);
+                if (isCompatible) {
+                    result.add(klass);
+                }
             }
         }
         return result;

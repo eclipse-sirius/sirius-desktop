@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2022 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -30,10 +30,12 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.WorkspaceImage;
+import org.eclipse.sirius.diagram.business.api.query.DNodeQuery;
 import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
 import org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
@@ -108,10 +110,12 @@ public class GMFBoundsUpdater extends ResourceSetListenerImpl {
     private boolean isStyleResize(Notification notification, DDiagramElement dDiagramElement) {
         boolean isStyleResize = false;
         if (notification.getNewValue() instanceof WorkspaceImage && notification.getOldValue() instanceof WorkspaceImage) {
+            // DNode::ownedStyle | DNode::originalStyle | DDiagramElementContainer::ownedStyle | DDiagramElementContainer::originalStyle
             WorkspaceImage workspaceImageNewValue = (WorkspaceImage) notification.getNewValue();
             WorkspaceImage workspaceImageOldValue = (WorkspaceImage) notification.getOldValue();
             isStyleResize = isWorkspaceImageStyleResized(workspaceImageNewValue, workspaceImageOldValue, dDiagramElement);
         } else if (notification.getNewValue() instanceof Integer && notification.getOldValue() instanceof Integer) {
+            // DNode::width | DNode::height | DDiagramElementContainer::width | DDiagramElementContainer::height
             isStyleResize = !notification.getNewValue().equals(notification.getOldValue());
         }
         return isStyleResize;
@@ -167,9 +171,16 @@ public class GMFBoundsUpdater extends ResourceSetListenerImpl {
                 StyleDescription styleDescription = element.getStyle().getDescription();
                 if (styleDescription instanceof WorkspaceImageDescription) {
                     double ratio = new WorkspaceImageQuery((WorkspaceImageDescription) styleDescription).getRatio();
-                    size.setWidth(((DNode) element).getWidth() * LayoutUtils.SCALE);
-                    size.setHeight((int) (((DNode) element).getWidth() / ratio * LayoutUtils.SCALE));
-                } else if (styleDescription instanceof NodeStyleDescription) {
+                    int width = 0;
+                    if (element instanceof DNode dNode) {
+                        width = dNode.getWidth();
+                    } else if (element instanceof DDiagramElementContainer ddec) {
+                        width = ddec.getWidth();
+                    }
+                    size.setWidth(width * LayoutUtils.SCALE);
+                    size.setHeight((int) (width / ratio * LayoutUtils.SCALE));
+                } else if (styleDescription instanceof NodeStyleDescription && element instanceof DNode dNode && !new DNodeQuery(dNode).isAutoSize()) {
+                    // No DNode::width/height -> GMF Notation Node layout constraint sync : keep manual resize info
                     size.setHeight(((DNode) element).getHeight() * LayoutUtils.SCALE);
                     size.setWidth(((DNode) element).getWidth() * LayoutUtils.SCALE);
                 }

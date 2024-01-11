@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -461,8 +461,10 @@ public class IInterpreterValidationExpressionTest extends SiriusDiagramTestCase 
     protected synchronized boolean doesAnErrorOccurs() {
         // Only validation errors should have been logged
         boolean onlyValidationErrors = true;
-        for (IStatus status : errors.values()) {
-            onlyValidationErrors = onlyValidationErrors && status.getMessage().startsWith("Compilation error");
+        for (List<IStatus> allErrors : errors.values()) {
+            for (IStatus status : allErrors) {
+                onlyValidationErrors = onlyValidationErrors && status.getMessage().startsWith("Compilation error");
+            }
         }
         return !onlyValidationErrors;
     }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -33,8 +33,6 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.tool.provider.AbstractToolDescriptionItemProvider;
 
-import com.google.common.collect.Lists;
-
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.tree.description.TreeItemTool} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
@@ -42,7 +40,7 @@ import com.google.common.collect.Lists;
  * @generated
  */
 public class TreeItemToolItemProvider extends AbstractToolDescriptionItemProvider {
-    private static final Collection<EClass> TYPES_TO_HIDE = Lists.newArrayList(ToolPackage.Literals.DELETE_VIEW);
+    private static final Collection<EClass> TYPES_TO_HIDE = List.of(ToolPackage.Literals.DELETE_VIEW);
 
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->

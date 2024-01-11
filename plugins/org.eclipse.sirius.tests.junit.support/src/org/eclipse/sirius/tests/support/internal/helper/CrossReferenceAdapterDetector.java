@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2024 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,8 @@ package org.eclipse.sirius.tests.support.internal.helper;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.URI;
@@ -24,9 +26,6 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.resource.AirdResource;
 import org.junit.Assert;
-
-import com.google.common.base.Predicates;
-import com.google.common.collect.Iterables;
 
 /**
  * Sirius specific test checks.
@@ -66,9 +65,14 @@ public final class CrossReferenceAdapterDetector {
     public void checkNoCrossReferenceAdapter(ResourceSet resourceSet) {
         if (hasCrossReferenceAdapter(resourceSet)) {
             // Add AirdResources
-            Iterable<AirdResource> airdResources = Iterables.filter(resourceSet.getResources(), AirdResource.class);
-            if (airdResources.iterator().hasNext()) {
-                for (AirdResource airdResource : Iterables.filter(resourceSet.getResources(), AirdResource.class)) {
+            // @formatter:off
+            List<AirdResource> airdResources = resourceSet.getResources().stream()
+                                                          .filter(AirdResource.class::isInstance)
+                                                          .map(AirdResource.class::cast)
+                                                          .collect(Collectors.toList());
+            // @formatter:on
+            if (!airdResources.isEmpty()) {
+                for (AirdResource airdResource : airdResources) {
                     resourcesWithDetectedCrossReferenceAdapter.add(airdResource.getURI());
                 }
             } else {
@@ -93,7 +97,7 @@ public final class CrossReferenceAdapterDetector {
      * @return true if a CrossReferencerAdapter has been found.
      */
     public static boolean hasCrossReferenceAdapter(Notifier notifier) {
-        return Iterables.any(notifier.eAdapters(), Predicates.instanceOf(org.eclipse.gmf.runtime.emf.core.util.CrossReferenceAdapter.class));
+        return notifier.eAdapters().stream().anyMatch(org.eclipse.gmf.runtime.emf.core.util.CrossReferenceAdapter.class::isInstance);
     }
 
     /**
