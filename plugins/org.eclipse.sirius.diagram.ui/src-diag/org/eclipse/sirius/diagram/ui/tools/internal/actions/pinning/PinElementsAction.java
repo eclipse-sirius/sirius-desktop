@@ -66,22 +66,22 @@ public final class PinElementsAction extends Action implements Disposable {
 
         @Override
         public void notifyIsReleased(Collection<EObject> instances) {
-            updateActionState(getCurrentSelection());
+            EclipseUIUtil.displayAsyncExec(() -> updateActionState(getCurrentSelection()));
         }
 
         @Override
         public void notifyIsReleased(EObject instance) {
-            updateActionState(getCurrentSelection());
+            EclipseUIUtil.displayAsyncExec(() -> updateActionState(getCurrentSelection()));
         }
 
         @Override
         public void notifyIsLocked(Collection<EObject> instances) {
-            updateActionState(getCurrentSelection());
+            EclipseUIUtil.displayAsyncExec(() -> updateActionState(getCurrentSelection()));
         }
 
         @Override
         public void notifyIsLocked(EObject instance) {
-            updateActionState(getCurrentSelection());
+            EclipseUIUtil.displayAsyncExec(() -> updateActionState(getCurrentSelection()));
         }
     };
 
@@ -218,7 +218,7 @@ public final class PinElementsAction extends Action implements Disposable {
             Resource resource = element.eResource();
             if (resource != null) {
                 var permissionAuthoriry = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(resource.getResourceSet());
-                permissionAuthoriry.addAuthorityListener(authorityListener);
+                permissionAuthoriry.removeAuthorityListener(authorityListener);
             }
         });
         selectionLastElement = Optional.empty();
