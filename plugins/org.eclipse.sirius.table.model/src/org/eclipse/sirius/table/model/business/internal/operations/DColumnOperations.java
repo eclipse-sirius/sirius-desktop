@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,7 +15,6 @@ package org.eclipse.sirius.table.model.business.internal.operations;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.sirius.table.metamodel.table.DCell;
@@ -24,8 +23,6 @@ import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.LineContainer;
 import org.eclipse.sirius.table.model.internal.Messages;
-
-import com.google.common.collect.Ordering;
 
 /**
  * Common operations for DColumn subclasses.
@@ -51,29 +48,25 @@ public final class DColumnOperations {
         if (table != null) {
             fillIndices(table, lineIndices, 0);
         }
-        Ordering<DCell> ordering = Ordering.from(new Comparator<DCell>() {
-            @Override
-            public int compare(DCell a, DCell b) {
-                int result = 0;
-                DLine lineA = a.getLine();
-                DLine lineB = b.getLine();
-                if (lineA == null) {
-                    result = -1;
-                } else if (lineB == null) {
-                    result = 1;
-                } else {
-                    Integer aIndex = lineIndices.get(lineA);
-                    Integer bIndex = lineIndices.get(lineB);
-                    if (aIndex == null || bIndex == null) {
-                        throw new RuntimeException(Messages.Table_UnexpectedExceptionMessage);
-                    }
-                    return aIndex - bIndex;
+        Comparator<DCell> comparator = (a, b) -> {
+            int result = 0;
+            DLine lineA = a.getLine();
+            DLine lineB = b.getLine();
+            if (lineA == null) {
+                result = -1;
+            } else if (lineB == null) {
+                result = 1;
+            } else {
+                Integer aIndex = lineIndices.get(lineA);
+                Integer bIndex = lineIndices.get(lineB);
+                if (aIndex == null || bIndex == null) {
+                    throw new RuntimeException(Messages.Table_UnexpectedExceptionMessage);
                 }
-                return result;
+                return aIndex - bIndex;
             }
-        });
-        List<DCell> result = ordering.sortedCopy(column.getCells());
-        return result;
+            return result;
+        };
+        return column.getCells().stream().sorted(comparator).toList();
     }
 
     private static int fillIndices(LineContainer container, final Map<DLine, Integer> lineIndices, int i) {

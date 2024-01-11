@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.model.business.internal.spec;
 
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
@@ -28,8 +27,6 @@ import org.eclipse.sirius.table.metamodel.table.impl.DLineImpl;
 import org.eclipse.sirius.table.model.internal.Messages;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
-import com.google.common.collect.Ordering;
-
 /**
  * Specialization of DLine.
  *
@@ -39,7 +36,7 @@ public class DLineSpec extends DLineImpl {
 
     @Override
     public EList<DCell> getOrderedCells() {
-        Ordering<DCell> ordering = Ordering.from(new Comparator<DCell>() {
+        Comparator<DCell> comparator = new Comparator<DCell>() {
             Map<DColumn, Integer> columnIndices;
 
             @Override
@@ -69,11 +66,9 @@ public class DLineSpec extends DLineImpl {
                 }
                 return result;
             }
-        });
-        DCell[] data = new DCell[getCells().size()];
-        getCells().toArray(data);
-        Arrays.sort(data, ordering);
-        return new EcoreEList.UnmodifiableEList<DCell>(eInternalContainer(), TablePackage.eINSTANCE.getDLine_OrderedCells(), data.length, data);
+        };
+        DCell[] data = getCells().stream().sorted(comparator).toArray(DCell[]::new);
+        return new EcoreEList.UnmodifiableEList<>(eInternalContainer(), TablePackage.eINSTANCE.getDLine_OrderedCells(), data.length, data);
     }
 
     @Override
