@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.model.business.internal.spec;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.emf.common.util.BasicEList;
@@ -32,9 +31,6 @@ import org.eclipse.sirius.diagram.impl.DNodeContainerImpl;
 import org.eclipse.sirius.diagram.model.business.internal.operations.DDiagramElementContainerOperations;
 import org.eclipse.sirius.diagram.model.business.internal.operations.DDiagramElementSpecOperations;
 import org.eclipse.sirius.viewpoint.Style;
-
-import com.google.common.base.Predicates;
-import com.google.common.collect.Collections2;
 
 /**
  * Implementation of DNodeContainerImpl.java.
@@ -73,10 +69,7 @@ public class DNodeContainerSpec extends DNodeContainerImpl {
     @Override
     public EList<DNode> getNodes() {
         final Collection<AbstractDNode> result = DDiagramElementContainerOperations.getNodes(this);
-        Collection<DNode> dNodeResult = new ArrayList<>();
-        for (AbstractDNode dNode : Collections2.filter(result, Predicates.instanceOf(DNode.class))) {
-            dNodeResult.add((DNode) dNode);
-        }
+        Collection<DNode> dNodeResult = result.stream().filter(DNode.class::isInstance).map(DNode.class::cast).toList();
         return new EcoreEList.UnmodifiableEList<>(eInternalContainer(), DiagramPackage.eINSTANCE.getDDiagramElementContainer_Nodes(), dNodeResult.size(), dNodeResult.toArray());
     }
 
