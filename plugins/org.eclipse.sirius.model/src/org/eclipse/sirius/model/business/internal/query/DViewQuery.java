@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,19 +12,18 @@
  *******************************************************************************/
 package org.eclipse.sirius.model.business.internal.query;
 
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
+import java.util.Spliterator;
+import java.util.Spliterators;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DView;
-
-import com.google.common.collect.Iterators;
-import com.google.common.collect.UnmodifiableIterator;
 
 /**
  * A class aggregating all the queries (read-only!) having a {@link DView} as a starting point.
@@ -32,12 +31,8 @@ import com.google.common.collect.UnmodifiableIterator;
  * @author lfasani
  */
 public final class DViewQuery {
-    private static boolean activateTrace;
-    static {
-        activateTrace = Boolean.parseBoolean(System.getProperty("activate_trace_getLoadedRepresentations", Boolean.FALSE.toString())); //$NON-NLS-1$
-    }
 
-    private DView dView;
+    private final DView dView;
 
     /**
      * Create a new query.
@@ -46,7 +41,7 @@ public final class DViewQuery {
      *            the {@link DView} to query.
      */
     public DViewQuery(DView dView) {
-        this.dView = dView;
+        this.dView = Objects.requireNonNull(dView);
     }
 
     /**
@@ -55,12 +50,7 @@ public final class DViewQuery {
      * @return an unmodifiable list with the loaded {@link DRepresentation}s
      */
     public List<DRepresentation> getLoadedRepresentations() {
-        if (activateTrace) {
-            Thread.dumpStack();
-        }
-        List<DRepresentation> representations = dView.getOwnedRepresentationDescriptors().stream().filter(DRepresentationDescriptor::isLoadedRepresentation)
-                .map(DRepresentationDescriptor::getRepresentation).collect(Collectors.toList());
-        return Collections.unmodifiableList(representations);
+        return dView.getOwnedRepresentationDescriptors().stream().filter(DRepresentationDescriptor::isLoadedRepresentation).map(DRepresentationDescriptor::getRepresentation).toList();
     }
 
     /**
@@ -70,12 +60,7 @@ public final class DViewQuery {
      * @return an unmodifiable list with the {@link DRepresentationDescriptor}s which have their representation loaded.
      */
     public List<DRepresentationDescriptor> getLoadedRepresentationsDescriptors() {
-        if (activateTrace) {
-            Thread.dumpStack();
-        }
-        List<DRepresentationDescriptor> representationDescriptors = dView.getOwnedRepresentationDescriptors().stream().filter(DRepresentationDescriptor::isLoadedRepresentation)
-                .collect(Collectors.toList());
-        return Collections.unmodifiableList(representationDescriptors);
+        return dView.getOwnedRepresentationDescriptors().stream().filter(DRepresentationDescriptor::isLoadedRepresentation).toList();
     }
 
     /**
@@ -87,13 +72,10 @@ public final class DViewQuery {
      * @return the result iterator
      */
     public Iterator<EObject> getAllContentInRepresentations(final Predicate<? super EObject> predicate) {
-        Iterator<EObject> iterator = Collections.emptyIterator();
-        List<DRepresentation> allRepresentations = this.getLoadedRepresentations();
-        for (DRepresentation dRepresentation : allRepresentations) {
-            UnmodifiableIterator<EObject> currentIterator = Iterators.filter(dRepresentation.eAllContents(), (t) -> predicate.test(t));
-            iterator = Iterators.concat(iterator, currentIterator);
-        }
-        return iterator;
+        return this.getLoadedRepresentations().stream().flatMap(representation -> {
+            Spliterator<EObject> allContentsSpliterator = Spliterators.spliteratorUnknownSize(representation.eAllContents(), Spliterator.DISTINCT | Spliterator.IMMUTABLE | Spliterator.ORDERED);
+            return StreamSupport.stream(allContentsSpliterator, false).filter(predicate);
+        }).iterator();
     }
 
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -26,6 +27,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -38,8 +40,6 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-
-import com.google.common.collect.Iterables;
 
 /**
  * A class aggregating all the queries (read-only!) having a {@link EObject} as a starting point.
@@ -163,14 +163,10 @@ public class EObjectQuery {
     }
 
     private void addResolvedDependencies(EObject eObj, Collection<URI> dependencies) {
-        for (EReference ref : Iterables.filter(new EClassQuery(eObj.eClass()).getAllNonContainmentFeatures(), EReference.class)) {
-            Object value = eObj.eGet(ref, false);
-            if (value instanceof Collection<?>) {
-                for (EObject atomicValue : Iterables.filter((Collection<?>) value, EObject.class)) {
-                    addNonProxyResourceURI(atomicValue, dependencies);
-                }
-            } else if (value instanceof EObject) {
-                addNonProxyResourceURI((EObject) value, dependencies);
+        for (EStructuralFeature feature : new EClassQuery(eObj.eClass()).getAllNonContainmentFeatures()) {
+            if (feature instanceof EReference ref) {
+                Object value = eObj.eGet(ref, false);
+                this.forEachEObject(value, instance -> addNonProxyResourceURI(instance, dependencies));
             }
         }
     }
@@ -235,15 +231,19 @@ public class EObjectQuery {
     }
 
     private void addUnresolvedDependencies(EObject eObj, Collection<URI> dependencies) {
-        for (EReference ref : Iterables.filter(new EClassQuery(eObj.eClass()).getAllNonContainmentFeatures(), EReference.class)) {
-            Object value = eObj.eGet(ref, false);
-            if (value instanceof Collection<?>) {
-                for (EObject atomicValue : Iterables.filter((Collection<?>) value, EObject.class)) {
-                    addProxyResourceURI(atomicValue, dependencies);
-                }
-            } else if (value instanceof EObject) {
-                addProxyResourceURI((EObject) value, dependencies);
+        for (EStructuralFeature feature : new EClassQuery(eObj.eClass()).getAllNonContainmentFeatures()) {
+            if (feature instanceof EReference ref) {
+                Object value = eObj.eGet(ref, false);
+                this.forEachEObject(value, instance -> addProxyResourceURI(instance, dependencies));
             }
+        }
+    }
+    
+    private void forEachEObject(Object value, Consumer<EObject> consumer) {
+        if (value instanceof Collection<?> coll) {
+            coll.stream().filter(EObject.class::isInstance).map(EObject.class::cast).forEach(consumer);
+        } else if (value instanceof EObject atomicEObject) {
+            consumer.accept(atomicEObject);
         }
     }
 
