@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ package org.eclipse.sirius.ecore.design.service;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClassifier;
@@ -22,10 +23,6 @@ import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EParameter;
 import org.eclipse.emf.ecore.ETypedElement;
 import org.eclipse.emf.ecore.EcoreFactory;
-
-import com.google.common.base.Function;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Ordering;
 
 /**
  * Services dealing with EOperations usable from a VSM.
@@ -250,14 +247,10 @@ public class EOperationServices {
     
     public List<ENamedElement> getAllAssociatedElements(EOperation op) {
     	// [eParameters->including(self)->asSequence()->sortedBy(name)/]
-    	List<ENamedElement> result = Lists.newArrayListWithExpectedSize(1 + op.getEParameters().size());
+    	List<ENamedElement> result = new ArrayList<>(1 + op.getEParameters().size());
     	result.add(op);
     	result.addAll(op.getEParameters());
-    	Collections.sort(result, Ordering.natural().onResultOf(new Function<ENamedElement, String>() {
-    		public String apply(ENamedElement input) {
-    			return input.getName();
-    		}
-		}));
+    	Collections.sort(result, Comparator.comparing(ENamedElement::getName));
     	return result;
     }
 
