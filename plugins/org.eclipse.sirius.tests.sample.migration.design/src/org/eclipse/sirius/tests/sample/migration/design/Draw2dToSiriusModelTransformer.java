@@ -15,11 +15,11 @@ package org.eclipse.sirius.tests.sample.migration.design;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.eclipse.core.runtime.Path;
 import org.eclipse.draw2d.Connection;
@@ -89,9 +89,6 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.Image;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Iterators;
 
 /**
  * Class to get a view model equivalent the draw2d model to check that migration preserve the draw2d infos.
@@ -373,33 +370,30 @@ public class Draw2dToSiriusModelTransformer {
         }
         updateLayout(containerRepresentation, diagramContainerEditPart.getFigure());
         List<GraphicalEditPart> children = new ArrayList<>(diagramContainerEditPart.getChildren());
-        Iterator<ResizableCompartmentEditPart> compart = Iterators.filter(diagramContainerEditPart.getChildren().iterator(), ResizableCompartmentEditPart.class);
-        if (compart.hasNext()) {
-            ResizableCompartmentEditPart compartmentEditPart = compart.next();
+        Optional<ResizableCompartmentEditPart> compart = diagramContainerEditPart.getChildren().stream().filter(ResizableCompartmentEditPart.class::isInstance).map(ResizableCompartmentEditPart.class::cast).findFirst();
+        if (compart.isPresent()) {
+            ResizableCompartmentEditPart compartmentEditPart = compart.get();
             children.addAll(compartmentEditPart.getChildren());
         }
-        Iterable<IAbstractDiagramNodeEditPart> filter = Iterables.filter(children, IAbstractDiagramNodeEditPart.class);
-        for (IAbstractDiagramNodeEditPart childEditPart : filter) {
-            EObject targetSemanticElement = childEditPart.resolveTargetSemanticElement();
-            if (targetSemanticElement instanceof Node && childEditPart instanceof IDiagramNodeEditPart) {
-                Node subNode = (Node) targetSemanticElement;
-                IDiagramNodeEditPart childNodeEditPart = (IDiagramNodeEditPart) childEditPart;
-                NodeRepresentation nodeRepresentation = getMigrationNodeRepresentation(childNodeEditPart);
-                subNode.getNodeRepresentations().add(nodeRepresentation);
-            } else if (targetSemanticElement instanceof Bordered) {
-                Bordered subBordered = (Bordered) targetSemanticElement;
-                BorderedRepresentation borderedRepresentation = getMigrationBorderedRepresentation(childEditPart);
-                subBordered.getBorderedRepresentations().add(borderedRepresentation);
-            } else if (targetSemanticElement instanceof Container) {
-                Container subContainer = (Container) targetSemanticElement;
-                ContainerRepresentation subContainerRepresentation = null;
-                if (childEditPart instanceof IDiagramContainerEditPart) {
-                    subContainerRepresentation = getMigrationContainerRepresentation((IDiagramContainerEditPart) childEditPart);
-                } else if (childEditPart instanceof IDiagramListEditPart) {
-                    subContainerRepresentation = getMigrationContainerRepresentation((IDiagramListEditPart) childEditPart);
-                }
-                if (subContainerRepresentation != null) {
-                    subContainer.getContainerRepresentations().add(subContainerRepresentation);
+        for (var child : children) {
+            if (child instanceof IAbstractDiagramNodeEditPart childEditPart) {
+                EObject targetSemanticElement = childEditPart.resolveTargetSemanticElement();
+                if (targetSemanticElement instanceof Node subNode && childEditPart instanceof IDiagramNodeEditPart childNodeEditPart) {
+                    NodeRepresentation nodeRepresentation = getMigrationNodeRepresentation(childNodeEditPart);
+                    subNode.getNodeRepresentations().add(nodeRepresentation);
+                } else if (targetSemanticElement instanceof Bordered subBordered) {
+                    BorderedRepresentation borderedRepresentation = getMigrationBorderedRepresentation(childEditPart);
+                    subBordered.getBorderedRepresentations().add(borderedRepresentation);
+                } else if (targetSemanticElement instanceof Container subContainer) {
+                    ContainerRepresentation subContainerRepresentation = null;
+                    if (childEditPart instanceof IDiagramContainerEditPart subDiagramContainerEditPart) {
+                        subContainerRepresentation = getMigrationContainerRepresentation(subDiagramContainerEditPart);
+                    } else if (childEditPart instanceof IDiagramListEditPart listEditPart) {
+                        subContainerRepresentation = getMigrationContainerRepresentation(listEditPart);
+                    }
+                    if (subContainerRepresentation != null) {
+                        subContainer.getContainerRepresentations().add(subContainerRepresentation);
+                    }
                 }
             }
         }
@@ -503,13 +497,13 @@ public class Draw2dToSiriusModelTransformer {
     }
 
     private void updateNodeStyle(org.eclipse.sirius.tests.sample.migration.migrationmodeler.NodeStyle nodeStyle, IDiagramElementEditPart abstractGraphicalEditPart) {
-        Iterator<DNodeNameEditPart> dNodeNameEditParts = Iterators.filter(abstractGraphicalEditPart.getChildren().iterator(), DNodeNameEditPart.class);
-        if (dNodeNameEditParts.hasNext()) {
-            DNodeNameEditPart dNodeNameEditPart = dNodeNameEditParts.next();
-            if (dNodeNameEditPart.getFigure().isVisible()) {
-                nodeStyle.setLabelPosition(LabelPosition.BORDER);
-            } else {
-                nodeStyle.setLabelPosition(LabelPosition.NODE);
+        for (var child : abstractGraphicalEditPart.getChildren()) {
+            if (child instanceof DNodeNameEditPart dNodeNameEditPart) {
+                if (dNodeNameEditPart.getFigure().isVisible()) {
+                    nodeStyle.setLabelPosition(LabelPosition.BORDER);
+                } else {
+                    nodeStyle.setLabelPosition(LabelPosition.NODE);
+                }
             }
         }
         updateLabelStyle(nodeStyle, abstractGraphicalEditPart);
@@ -517,8 +511,7 @@ public class Draw2dToSiriusModelTransformer {
     }
 
     private void updateLabelStyle(org.eclipse.sirius.tests.sample.migration.migrationmodeler.LabelStyle labelStyle, IDiagramElementEditPart abstractGraphicalEditPart) {
-        if (abstractGraphicalEditPart.getFigure() instanceof SiriusWrapLabel) {
-            SiriusWrapLabel viewpointWrapLabel = (SiriusWrapLabel) abstractGraphicalEditPart.getFigure();
+        if (abstractGraphicalEditPart.getFigure() instanceof SiriusWrapLabel viewpointWrapLabel) {
             LabelAlignment labelAlignment = null;
             switch (viewpointWrapLabel.getLabelAlignment2()) {
             case PositionConstants.CENTER:
@@ -536,11 +529,13 @@ public class Draw2dToSiriusModelTransformer {
             }
             labelStyle.setLabelAlignment(labelAlignment);
         }
-        Iterator<org.eclipse.sirius.viewpoint.BasicLabelStyle> filter = Iterators.filter(abstractGraphicalEditPart.resolveDiagramElement().eAllContents(),
-                org.eclipse.sirius.viewpoint.BasicLabelStyle.class);
-        if (filter.hasNext()) {
-            org.eclipse.sirius.viewpoint.BasicLabelStyle onlyElement = filter.next();
-            updateBasicLabelStyle(labelStyle, onlyElement, (AbstractGraphicalEditPart) abstractGraphicalEditPart);
+        
+        var iter = abstractGraphicalEditPart.resolveDiagramElement().eAllContents();
+        while (iter.hasNext()) {
+            if (iter.next() instanceof org.eclipse.sirius.viewpoint.BasicLabelStyle basicLabelStyle) {
+                updateBasicLabelStyle(labelStyle, basicLabelStyle, (AbstractGraphicalEditPart) abstractGraphicalEditPart);
+                break;
+            }
         }
     }
 
@@ -548,8 +543,7 @@ public class Draw2dToSiriusModelTransformer {
         IFigure figure = abstractGraphicalEditPart.getFigure();
         int borderSize = 0;
         Color borderColor = null;
-        if (figure.getBorder() instanceof LineBorder) {
-            LineBorder lineBorder = (LineBorder) figure.getBorder();
+        if (figure.getBorder() instanceof LineBorder lineBorder) {
             borderSize = lineBorder.getWidth();
             borderColor = lineBorder.getColor();
         }
@@ -636,8 +630,7 @@ public class Draw2dToSiriusModelTransformer {
         String iconPath = "";
         String modelIconPath = viewpointBasicLabelStyle.getIconPath();
         IFigure figure = abstractDiagramNameEditPart.getFigure();
-        if (figure instanceof SiriusWrapLabel) {
-            SiriusWrapLabel viewpointWrapLabel = (SiriusWrapLabel) figure;
+        if (figure instanceof SiriusWrapLabel viewpointWrapLabel) {
             Image icon = viewpointWrapLabel.getIcon();
             if (modelIconPath != null && modelIconPath.length() > 0) {
                 File imageFile = FileProvider.getDefault().getFile(new Path(modelIconPath));
