@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2020 Obeo
+ * Copyright (c) 2018, 2024 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -133,7 +133,7 @@ public class LayoutOptionsTests extends AbstractSiriusSwtBotGefTestCase {
         SWTBot optionOverrideBot = bot.activeShell().bot();
         SWTBotTable table = optionOverrideBot.table(0);
 
-        assertEquals("Not all layout options are available", 108, table.rowCount());
+        assertEquals("Not all layout options are available", 124, table.rowCount());
 
         SWTBotTableItem tableItem = table.getTableItem(1);
         tableItem.check();
