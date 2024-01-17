@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2023 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -179,14 +179,13 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
         if (manager2 != null) {
             IContributionItem item = manager2.findUsingPath(ActionIds.CUSTOM_FILL_COLOR);
             if (item != null) {
-                manager2.remove(ActionIds.CUSTOM_FILL_COLOR);
                 manager2.remove(ActionIds.CUSTOM_FONT_COLOR);
+                manager2.remove(ActionIds.CUSTOM_FILL_COLOR);
                 manager2.remove(ActionIds.CUSTOM_LINE_COLOR);
 
-                manager2.insertAfter(ActionIds.ACTION_FONT_DIALOG, ColorPropertyContributionItem.createFillColorContributionItem(part.getSite().getPage()));
-                ColorPropertyContributionItem fontColorContributionItem = ColorPropertyContributionItem.createFontColorContributionItem(part.getSite().getPage());
-                manager2.insertAfter(ActionIds.CUSTOM_FILL_COLOR, fontColorContributionItem);
-                manager2.insertAfter(ActionIds.CUSTOM_FONT_COLOR, ColorPropertyContributionItem.createLineColorContributionItem(part.getSite().getPage()));
+                manager2.insertAfter(ActionIds.ACTION_FONT_DIALOG, ColorPropertyContributionItem.createFontColorContributionItem(part.getSite().getPage()));
+                manager2.insertAfter(ActionIds.CUSTOM_FONT_COLOR, ColorPropertyContributionItem.createFillColorContributionItem(part.getSite().getPage()));
+                manager2.insertAfter(ActionIds.CUSTOM_FILL_COLOR, ColorPropertyContributionItem.createLineColorContributionItem(part.getSite().getPage()));
             } else {
                 item = manager2.findUsingPath(ActionIds.ACTION_FONT_DIALOG);
                 if (item != null) {

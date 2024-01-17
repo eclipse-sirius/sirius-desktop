@@ -202,6 +202,21 @@
             </partAction>
             <partAction toolbarPath="/selectMenu/selectGroup" id="siriusToolbarSelectAllConnectorsAction">
             </partAction>
+            <partPredefinedItem
+                  id="fillColorContributionItem"
+                  menubarPath="/diagramMenu/fontColorLineGroup"
+                  removeFromMenubar="true"
+                  removeFromToolbar="false">
+            </partPredefinedItem>
+            <partPredefinedItem
+                  id="lineColorContributionItem"
+                  menubarPath="/diagramMenu/fontColorLineGroup"
+                  removeFromMenubar="true"
+                  removeFromToolbar="false">
+            </partPredefinedItem>
+            <partCustom menubarPath="/diagramMenu/fontColorLineGroup" id="fontColorContributionItem"/>
+            <partCustom menubarPath="/diagramMenu/fontColorLineGroup" id="fillColorContributionItem"/>
+            <partCustom menubarPath="/diagramMenu/fontColorLineGroup" id="lineColorContributionItem"/>
          </partContribution>
 
          <popupContribution

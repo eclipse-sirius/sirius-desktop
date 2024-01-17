@@ -224,8 +224,8 @@ public class TabbarFillerWithContributions extends AbstractTabbarFiller {
         addContributionItem(diagramElementContributionItems, HIDE_DELETE, contributionFactory.createHideElementContribution(part));
         addContributionItem(diagramElementContributionItems, HIDE_DELETE, contributionFactory.createShowElementContribution(part));
 
-        addContributionItem(diagramElementContributionItems, FONT, contributionFactory.createFontDialogContribution(part));
         addContributionItem(diagramElementContributionItems, FONT, contributionFactory.createFontColorContribution(part));
+        addContributionItem(diagramElementContributionItems, FONT, contributionFactory.createFontDialogContribution(part));
         addContributionItem(diagramElementContributionItems, FONT, contributionFactory.createItalicFontStyleContribution(part));
         addContributionItem(diagramElementContributionItems, FONT, contributionFactory.createBoldFontStyleContribution(part));
 
