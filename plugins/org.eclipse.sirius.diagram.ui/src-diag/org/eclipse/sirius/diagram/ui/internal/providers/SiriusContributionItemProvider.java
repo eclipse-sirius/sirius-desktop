@@ -19,6 +19,7 @@ import org.eclipse.gmf.runtime.common.ui.util.IWorkbenchPartDescriptor;
 import org.eclipse.gmf.runtime.diagram.ui.actions.internal.AlignMenuManager;
 import org.eclipse.gmf.runtime.diagram.ui.actions.internal.RouterMenuManager;
 import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.DeselectAllAction;
@@ -31,7 +32,6 @@ import org.eclipse.sirius.diagram.ui.tools.internal.actions.SizeBothAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.TabbarRouterAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.distribute.DistributeAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.distribute.SiriusAlignAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteStylePureGraphicalAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.ArrangeBorderNodesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.CopyFormatAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.LayoutChildrenAction;
@@ -40,8 +40,10 @@ import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteFormatAc
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteImageAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteLayoutAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteStyleAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteStylePureGraphicalAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.PinElementsAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.straighten.StraightenToAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.ColorPropertyContributionItem;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.DistributeMenuManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.StraightenToMenuManager;
 import org.eclipse.ui.IWorkbenchPage;
@@ -166,6 +168,18 @@ public class SiriusContributionItemProvider extends AbstractContributionItemProv
             result = super.createAction(actionId, partDescriptor);
         }
         return result;
+    }
+
+    protected IContributionItem createCustomContributionItem(String customId, IWorkbenchPartDescriptor partDescriptor) {
+        IWorkbenchPage workbenchPage = partDescriptor.getPartPage();
+        if (customId.equals(org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds.CUSTOM_FILL_COLOR)) {
+            return ColorPropertyContributionItem.createFillColorContributionItem(workbenchPage);
+        } else if (customId.equals(org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds.CUSTOM_FONT_COLOR)) {
+            return ColorPropertyContributionItem.createFontColorContributionItem(workbenchPage);
+        } else if (customId.equals(org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds.CUSTOM_LINE_COLOR)) {
+            return ColorPropertyContributionItem.createLineColorContributionItem(workbenchPage);
+        }
+        return super.createCustomContributionItem(customId, partDescriptor);
     }
 
     @Override
