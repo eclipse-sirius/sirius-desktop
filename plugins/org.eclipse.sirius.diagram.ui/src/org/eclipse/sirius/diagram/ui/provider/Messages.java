@@ -261,6 +261,81 @@ public final class Messages {
 
     @TranslatableMessage
     public static String ChildrenAdjustmentCommand_label;
+    
+    @TranslatableMessage
+    public static String ColorManager_logErrorParsingRGB;
+
+    @TranslatableMessage
+    public static String ColorPalettePopup_customCategoryLabel;
+    
+    @TranslatableMessage
+    public static String ColorPalettePopup_customCategoryMoreButtonTooltip;
+
+    @TranslatableMessage
+    public static String ColorPalettePopup_customCategoryTooltip;
+
+    @TranslatableMessage
+    public static String ColorPalettePopup_basicCategoryLabel;
+
+    @TranslatableMessage
+    public static String ColorPalettePopup_basicCategoryTooltip;
+
+    @TranslatableMessage
+    public static String ColorPalettePopup_lastUsedCategoryLabel;
+
+    @TranslatableMessage
+    public static String ColorPalettePopup_lastUsedCategoryTooltip;
+
+    @TranslatableMessage
+    public static String ColorPalettePopup_moreButtonLabel;
+
+    @TranslatableMessage
+    public static String ColorPalettePopup_suggestedCategoryLabel;
+    
+    @TranslatableMessage
+    public static String ColorPalettePopup_suggestedCategoryMoreButtonTooltip;
+
+    @TranslatableMessage
+    public static String ColorPalettePopup_suggestedCategoryTooltip;
+    
+    @TranslatableMessage
+    public static String ColorPalettePopup_title;
+
+    @TranslatableMessage
+    public static String ColorSelectionDialog_addButtonLabel;
+
+    @TranslatableMessage
+    public static String ColorSelectionDialog_addButtonTooltip;
+
+    @TranslatableMessage
+    public static String ColorSelectionDialog_customAllColorsTooltip;
+
+    @TranslatableMessage
+    public static String ColorSelectionDialog_customColorsDialogTitle;
+
+    @TranslatableMessage
+    public static String ColorSelectionDialog_groupAllCustomColorsLabel;
+
+    @TranslatableMessage
+    public static String ColorSelectionDialog_groupAllSuggestedColorsLabel;
+
+    @TranslatableMessage
+    public static String ColorSelectionDialog_groupDisplayedSuggestedColorsLabel;
+
+    @TranslatableMessage
+    public static String ColorSelectionDialog_removeButtonLabel;
+
+    @TranslatableMessage
+    public static String ColorSelectionDialog_removeButtonTooltip;
+
+    @TranslatableMessage
+    public static String ColorSelectionDialog_suggestedAllColorsTooltip;
+
+    @TranslatableMessage
+    public static String ColorSelectionDialog_suggestedColorsDialogTitle;
+
+    @TranslatableMessage
+    public static String ColorSelectionDialog_suggestedDisplayedColorsTooltip;
 
     @TranslatableMessage
     public static String Column_wrongColumnViewError;

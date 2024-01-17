@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2015, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -29,10 +29,10 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.FigureUtilities;
 import org.eclipse.gmf.runtime.emf.core.util.PackageUtil;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
@@ -42,7 +42,6 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPa
 import org.eclipse.sirius.diagram.ui.internal.refresh.diagram.ViewPropertiesSynchronizer;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
-import org.eclipse.sirius.diagram.ui.tools.api.color.ColorManager;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.dialogs.ColorPalettePopup;
@@ -95,17 +94,20 @@ public class LabelColorAndFontPropertySection extends ColorsAndFontsPropertySect
         if (!Properties.ID_FILLCOLOR.equals(propertyId) && !Properties.ID_LINECOLOR.equals(propertyId) && !Properties.ID_FONTCOLOR.equals(propertyId)) {
             colorToReturn = super.changeColor(event, button, propertyId, commandName, imageDescriptor);
         } else {
-            final ColorPalettePopup popup = new ColorPalettePopup(button.getParent().getShell(), IDialogConstants.BUTTON_BAR_HEIGHT,
-                    ColorManager.getDefault().collectVsmAndDefaultColors(new EObjectQuery(eObject).getSession()));
+            Session session = new EObjectQuery(eObject).getSession();
+            List<IGraphicalEditPart> editParts = getInput().stream().filter(IGraphicalEditPart.class::isInstance).map(IGraphicalEditPart.class::cast).toList();
+            ColorPalettePopup popup = new ColorPalettePopup(button.getParent().getShell(), session, editParts, propertyId);
+            popup.init();
             final Rectangle r = button.getBounds();
             final Point location = button.getParent().toDisplay(r.x, r.y);
             popup.setPreviousColor(previousColor);
             popup.open(new Point(location.x, location.y + r.height));
-            if (popup.getSelectedColor() == null && !popup.useDefaultColor()) {
-                return null;
-            }
+
             // selectedColor should be null if we are to use the default color
             final RGB selectedColor = popup.getSelectedColor();
+            if (selectedColor == null) {
+                return null;
+            }
 
             final EStructuralFeature feature = (EStructuralFeature) PackageUtil.getElement(propertyId);
 
@@ -119,12 +121,6 @@ public class LabelColorAndFontPropertySection extends ColorsAndFontsPropertySect
             while (it.hasNext()) {
                 final IGraphicalEditPart ep = (IGraphicalEditPart) it.next();
                 color = selectedColor;
-                if (popup.useDefaultColor()) {
-                    final Object preferredValue = ep.getPreferredValue(feature);
-                    if (preferredValue instanceof Integer) {
-                        color = FigureUtilities.integerToRGB((Integer) preferredValue);
-                    }
-                }
 
                 // If we are using default colors, we want to return the color
                 // of the first selected element to be consistent

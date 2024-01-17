@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -113,6 +113,21 @@ public enum SiriusDiagramUiPreferencesKeys {
      * the next dialog, the last choice is pre-selected.
      */
     PREF_PASTE_MODE_ABSOLUTE(boolean.class),
+    
+    /**
+     * A String preference to store the last used font colors. For instance "{255, 255, 255},{0, 0, 0},".
+     */
+    PREF_FONT_LAST_USED_COLORS(String.class),
+    
+    /**
+     * A String preference to store the last used fill colors. For instance "{255, 255, 255},{0, 0, 0},".
+     */
+    PREF_FILL_LAST_USED_COLORS(String.class),
+    
+    /**
+     * A String preference to store the last used line colors. For instance "{255, 255, 255},{0, 0, 0},".
+     */
+    PREF_LINE_LAST_USED_COLORS(String.class),
 
     /**
      * Used to define the arrangement of elements created on a diagram when they are not directly positioned by the
@@ -127,7 +142,7 @@ public enum SiriusDiagramUiPreferencesKeys {
      * {@link SiriusLayoutDataManager#DIAGONAL_ARRANGEMENT}.
      */
     PREF_NEWLY_CREATED_ELEMENTS_LAYOUT(int.class);
-
+    
     /** The type of the preference. */
     private Class<?> type;
 
