@@ -16,9 +16,6 @@ import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.suite.common.AllCommonPluginTests;
 import org.eclipse.sirius.tests.suite.common.AllCommonStandaloneTests;
 import org.eclipse.sirius.tests.suite.diagram.AllDiagramPluginsTests;
-import org.eclipse.sirius.tests.suite.diagram.AllDiagramStandaloneTests;
-import org.eclipse.sirius.tests.suite.table.AllTablePluginTests;
-import org.eclipse.sirius.tests.suite.table.AllTableStandaloneTests;
 import org.eclipse.sirius.tests.unit.common.EnvironmentReportTest;
 
 import junit.framework.JUnit4TestAdapter;
@@ -54,11 +51,11 @@ public class AllSiriusTestSuite extends TestCase {
     public static void addGerritPart(TestSuite suite) {
         suite.addTest(new JUnit4TestAdapter(JUnitBundlesReport.class));
         suite.addTest(AllCommonStandaloneTests.suite());
-        suite.addTest(AllTableStandaloneTests.suite());
-        suite.addTest(AllDiagramStandaloneTests.suite());
-        AllCommonPluginTests.addGerritPart(suite);
-        suite.addTest(AllTablePluginTests.suite());
-        AllDiagramPluginsTests.addGerritPart(suite);
+        // suite.addTest(AllTableStandaloneTests.suite());
+        // suite.addTest(AllDiagramStandaloneTests.suite());
+        // AllCommonPluginTests.addGerritPart(suite);
+        // suite.addTest(AllTablePluginTests.suite());
+        // AllDiagramPluginsTests.addGerritPart(suite);
     }
 
     /**

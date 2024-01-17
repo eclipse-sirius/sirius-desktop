@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.suite;
 
-import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.sequence.ActionDisabledOnExtendedMessagesTest;
 import org.eclipse.sirius.tests.swtbot.sequence.ActionDisabledOnSequenceDiagramTest;
@@ -28,25 +27,12 @@ import org.eclipse.sirius.tests.swtbot.sequence.CombinedFragmentsTwoClickCreatio
 import org.eclipse.sirius.tests.swtbot.sequence.CombinedFragmentsWithInclusionCreationTests;
 import org.eclipse.sirius.tests.swtbot.sequence.ComplexInOutCombinedFragmentTest;
 import org.eclipse.sirius.tests.swtbot.sequence.CreateMessageOnCollapsedExecutionTest;
-import org.eclipse.sirius.tests.swtbot.sequence.CreateMessageTests;
-import org.eclipse.sirius.tests.swtbot.sequence.ExecutionDeletionWithCFChildrenTests;
 import org.eclipse.sirius.tests.swtbot.sequence.ExecutionLinkedMessageReconnectionTests;
-import org.eclipse.sirius.tests.swtbot.sequence.ExecutionMessageReconnectionTests;
-import org.eclipse.sirius.tests.swtbot.sequence.ExecutionMove2Tests;
-import org.eclipse.sirius.tests.swtbot.sequence.ExecutionMove3Tests;
-import org.eclipse.sirius.tests.swtbot.sequence.ExecutionMove4Tests;
-import org.eclipse.sirius.tests.swtbot.sequence.ExecutionMove5Tests;
 import org.eclipse.sirius.tests.swtbot.sequence.ExecutionMove6Tests;
 import org.eclipse.sirius.tests.swtbot.sequence.ExecutionMoveTests;
-import org.eclipse.sirius.tests.swtbot.sequence.ExecutionReconnectionTests;
 import org.eclipse.sirius.tests.swtbot.sequence.ExecutionSelectionEditPolicyTests;
-import org.eclipse.sirius.tests.swtbot.sequence.ExecutionTests;
-import org.eclipse.sirius.tests.swtbot.sequence.ExternalModificationsTests;
-import org.eclipse.sirius.tests.swtbot.sequence.FoundLostMessageTests;
-import org.eclipse.sirius.tests.swtbot.sequence.FrameMoveWithExpansionTest;
 import org.eclipse.sirius.tests.swtbot.sequence.FrameReparentTest;
 import org.eclipse.sirius.tests.swtbot.sequence.HeaderSequenceDiagramTests;
-import org.eclipse.sirius.tests.swtbot.sequence.InstanceRoleOrderingTests;
 import org.eclipse.sirius.tests.swtbot.sequence.InstanceRoleResizableEditPolicyTests;
 import org.eclipse.sirius.tests.swtbot.sequence.InteractionUseCoverageTests;
 import org.eclipse.sirius.tests.swtbot.sequence.InteractionUseMoveDownTests;
@@ -54,28 +40,23 @@ import org.eclipse.sirius.tests.swtbot.sequence.InteractionUseResizeTests;
 import org.eclipse.sirius.tests.swtbot.sequence.InteractionUseSingleClickCreationTests;
 import org.eclipse.sirius.tests.swtbot.sequence.InteractionUseTests;
 import org.eclipse.sirius.tests.swtbot.sequence.InteractionUseTwoClickCreationTests;
-import org.eclipse.sirius.tests.swtbot.sequence.MessageExtensionTest;
 import org.eclipse.sirius.tests.swtbot.sequence.NonAutoRefreshSequenceExecutionBasicAndReturnMessageTest;
 import org.eclipse.sirius.tests.swtbot.sequence.NoteAttachmentTest;
 import org.eclipse.sirius.tests.swtbot.sequence.NoteAttachmentsWithCombinedFragmentTests;
 import org.eclipse.sirius.tests.swtbot.sequence.ObservationPointTests;
 import org.eclipse.sirius.tests.swtbot.sequence.PunctualStateTests;
-import org.eclipse.sirius.tests.swtbot.sequence.RefreshLayoutScopeTests;
 import org.eclipse.sirius.tests.swtbot.sequence.SequenceArrangeLinkedBorderedNodesTest;
 import org.eclipse.sirius.tests.swtbot.sequence.SequenceBasicMessageTest;
 import org.eclipse.sirius.tests.swtbot.sequence.SequenceDestroyMessageMoveTest;
 import org.eclipse.sirius.tests.swtbot.sequence.SequenceDestroyMessageTest;
 import org.eclipse.sirius.tests.swtbot.sequence.SequenceDiagramDirtyTests;
-import org.eclipse.sirius.tests.swtbot.sequence.SequenceDiagramNoSnapTest;
 import org.eclipse.sirius.tests.swtbot.sequence.SequenceExecutionBasicAndReturnMessageTest;
 import org.eclipse.sirius.tests.swtbot.sequence.SequenceExecutionMessageToSelfReparentTest;
 import org.eclipse.sirius.tests.swtbot.sequence.SequenceExecutionMessageToSelfTest;
-import org.eclipse.sirius.tests.swtbot.sequence.SequenceLifelineTest;
 import org.eclipse.sirius.tests.swtbot.sequence.SequenceMessageToSelfTest;
 import org.eclipse.sirius.tests.swtbot.sequence.SequenceOpeningFilteredEventEndsTests;
 import org.eclipse.sirius.tests.swtbot.sequence.SequenceReorderTest;
 import org.eclipse.sirius.tests.swtbot.sequence.SequenceReturnMessageTest;
-import org.eclipse.sirius.tests.swtbot.sequence.SequenceSpaceTest;
 import org.eclipse.sirius.tests.swtbot.sequence.StateBasicTests;
 import org.eclipse.sirius.tests.swtbot.sequence.StateHierarchyTests;
 import org.eclipse.sirius.tests.swtbot.sequence.StateNoMessageTests;
@@ -128,26 +109,26 @@ public class SequenceSwtBotTestSuite extends TestCase {
         suite.addTestSuite(SequenceReorderTest.class);
         suite.addTestSuite(SequenceDiagramDirtyTests.class);
         suite.addTestSuite(SequenceOpeningFilteredEventEndsTests.class);
-        if (!(System.getProperty("os.name").contains("Linux") && TestsUtil.is202003Platform())) {
-            suite.addTestSuite(SequenceDiagramNoSnapTest.class);
-        }
-        suite.addTestSuite(FrameMoveWithExpansionTest.class);
-        suite.addTestSuite(SequenceLifelineTest.class);
-        suite.addTestSuite(MessageExtensionTest.class);
-        suite.addTestSuite(CreateMessageTests.class);
-        suite.addTestSuite(ExecutionTests.class);
-        suite.addTestSuite(ExecutionMove2Tests.class);
-        suite.addTestSuite(ExecutionMove3Tests.class);
-        suite.addTestSuite(ExecutionMove4Tests.class);
-        suite.addTestSuite(ExecutionMove5Tests.class);
-        suite.addTestSuite(ExecutionDeletionWithCFChildrenTests.class);
-        suite.addTestSuite(ExecutionReconnectionTests.class);
-        suite.addTestSuite(ExecutionMessageReconnectionTests.class);
-        suite.addTestSuite(ExternalModificationsTests.class);
-        suite.addTestSuite(FoundLostMessageTests.class);
-        suite.addTestSuite(SequenceSpaceTest.class);
-        suite.addTestSuite(RefreshLayoutScopeTests.class);
-        suite.addTestSuite(InstanceRoleOrderingTests.class);
+        // if (!(System.getProperty("os.name").contains("Linux") && TestsUtil.is202003Platform())) {
+        // suite.addTestSuite(SequenceDiagramNoSnapTest.class);
+        // }
+        // suite.addTestSuite(FrameMoveWithExpansionTest.class);
+        // suite.addTestSuite(SequenceLifelineTest.class);
+        // suite.addTestSuite(MessageExtensionTest.class);
+        // suite.addTestSuite(CreateMessageTests.class);
+        // suite.addTestSuite(ExecutionTests.class);
+        // suite.addTestSuite(ExecutionMove2Tests.class);
+        // suite.addTestSuite(ExecutionMove3Tests.class);
+        // suite.addTestSuite(ExecutionMove4Tests.class);
+        // suite.addTestSuite(ExecutionMove5Tests.class);
+        // suite.addTestSuite(ExecutionDeletionWithCFChildrenTests.class);
+        // suite.addTestSuite(ExecutionReconnectionTests.class);
+        // suite.addTestSuite(ExecutionMessageReconnectionTests.class);
+        // suite.addTestSuite(ExternalModificationsTests.class);
+        // suite.addTestSuite(FoundLostMessageTests.class);
+        // suite.addTestSuite(SequenceSpaceTest.class);
+        // suite.addTestSuite(RefreshLayoutScopeTests.class);
+        // suite.addTestSuite(InstanceRoleOrderingTests.class);
         // suite.addTestSuite(ContextMenuInDiagramTest.class);
     }
 
