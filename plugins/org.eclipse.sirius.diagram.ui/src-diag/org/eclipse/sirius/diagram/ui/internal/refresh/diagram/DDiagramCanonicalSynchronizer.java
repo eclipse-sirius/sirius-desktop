@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2023 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,13 +18,17 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
+import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.util.AbstractTreeIterator;
@@ -43,8 +47,10 @@ import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramGraphicalViewer;
 import org.eclipse.gmf.runtime.diagram.ui.util.MeasurementUnitHelper;
 import org.eclipse.gmf.runtime.draw2d.ui.mapmode.IMapMode;
+import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
+import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.preference.IPreferenceStore;
@@ -70,7 +76,6 @@ import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Display;
 
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
@@ -213,7 +218,7 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
             canonicalSynchronizerResult.deleteDetachedPGE();
 
             // 4. Manage views
-            manageCreatedViewsLayout(canonicalSynchronizerResult.getCreatedViews());
+            manageCreatedViewsLayout(canonicalSynchronizerResult.getCreatedViews(), canonicalSynchronizerResult.getMovedNodes());
             manageCollapse(canonicalSynchronizerResult.getCreatedNodes());
             manageRegions();
         }
@@ -236,22 +241,61 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
         regionsContainersToLayoutWithImpactStatus.clear();
     }
 
-    private void manageCreatedViewsLayout(Set<View> createdViews) {
-        // get view to layout "normally"
-        Set<View> filteredCreatedViewsToLayout = Sets.filter(createdViews, new Predicate<View>() {
-            @Override
-            public boolean apply(View input) {
-                return input.eAdapters().contains(SiriusLayoutDataManager.INSTANCE.getAdapterMarker());
+    private Optional<View> getFirstViewAncestorWithSemanticElement(View view) {
+        return Stream.<EObject> iterate(view, currentChild -> currentChild.eContainer() instanceof View, EObject::eContainer) //
+                .map(View.class::cast) //
+                .filter(candidateAncestor -> candidateAncestor.getElement() != null) //
+                .findFirst();
+    }
+
+    /**
+     * This method updates a moved view: the position and size of the old view are transferred to the new view.
+     * 
+     * @param movedViews
+     *            the map of all moved views
+     * @param movedView
+     *            the actual moved view
+     */
+    private void updateLayoutOfMovedView(Map<View, View> movedViews, Map.Entry<View, View> movedView) {
+        View oldView = movedView.getKey();
+        View newView = movedView.getValue();
+        
+        Optional<View> newAncestor = getFirstViewAncestorWithSemanticElement(oldView).map(movedViews::get);
+
+        if (oldView instanceof Node oldNode && newView instanceof Node newNode) {
+            LayoutConstraint oldLayoutConstraint = oldNode.getLayoutConstraint();
+            LayoutConstraint newLayoutConstraint = newNode.getLayoutConstraint();
+            if (oldLayoutConstraint instanceof Bounds oldBound && newLayoutConstraint instanceof Bounds newBound) {
+                if (newAncestor.isPresent()) {
+                    updateLocationConstraint(newBound, new org.eclipse.draw2d.geometry.Point(oldBound.getX(), oldBound.getY()));
+                }
+                updateSizeConstraint(newBound, new Dimension(oldBound.getWidth(), oldBound.getHeight()), newNode.getElement());
+                newView.eAdapters().remove(SiriusLayoutDataManager.INSTANCE.getAdapterMarker());
             }
-        });
+        }
+    }
+
+    private void manageCreatedViewsLayout(Set<View> createdViews, Map<View, View> movedViews) {
+        movedViews.entrySet().stream() //
+                .filter(moved -> this.createdViewIsMarkedAsToLayout(moved.getValue())) //
+                .forEach(movedView -> this.updateLayoutOfMovedView(movedViews, movedView));
+
+        var toOrderedSet = Collectors.toCollection(LinkedHashSet<View>::new);
+
+        // get view to layout "normally"
+        Set<View> filteredCreatedViewsToLayout = createdViews.stream() //
+                .filter(this::createdViewIsMarkedAsToLayout) //
+                .collect(toOrderedSet);
+
+        // get view to layout "border node"
+        Set<View> filteredCreatedViewsToBorderNodeLayout = createdViews.stream() //
+                .filter(view -> view.eAdapters().contains(SiriusLayoutDataManager.INSTANCE.getBorderNodeMarker())) //
+                .collect(toOrderedSet);
 
         // get view to center layout
-        Set<View> filteredCreatedViewsWithCenterLayout = Sets.filter(createdViews, new Predicate<View>() {
-            @Override
-            public boolean apply(View input) {
-                return input.eAdapters().contains(SiriusLayoutDataManager.INSTANCE.getCenterAdapterMarker());
-            }
-        });
+        Set<View> filteredCreatedViewsWithCenterLayout = createdViews.stream() //
+                .filter(this::createdViewIsMarkedAsToCenterLayout) //
+                .collect(toOrderedSet);
 
         Set<View> createdViewsWithCenterLayout = Sets.newLinkedHashSet(filteredCreatedViewsWithCenterLayout);
         Set<View> createdViewsToLayout = Sets.newLinkedHashSet(filteredCreatedViewsToLayout);
@@ -269,6 +313,11 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
 
         if (!createdViewsToLayout.isEmpty() && storeViews2Arrange) {
             SiriusLayoutDataManager.INSTANCE.addCreatedViewsToLayout(gmfDiagram, Sets.newLinkedHashSet(createdViewsToLayout));
+            removeAlreadyArrangeMarker(filteredCreatedViewsToLayout);
+        }
+
+        if (!filteredCreatedViewsToBorderNodeLayout.isEmpty() && storeViews2Arrange) {
+            SiriusLayoutDataManager.INSTANCE.addCreatedViewWithBorderNodeLayout(gmfDiagram, Sets.newLinkedHashSet(filteredCreatedViewsToBorderNodeLayout));
             removeAlreadyArrangeMarker(filteredCreatedViewsToLayout);
         }
     }

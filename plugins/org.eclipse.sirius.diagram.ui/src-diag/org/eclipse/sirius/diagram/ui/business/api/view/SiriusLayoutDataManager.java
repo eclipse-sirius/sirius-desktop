@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2023 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -165,6 +165,13 @@ public interface SiriusLayoutDataManager {
     Adapter getCenterAdapterMarker();
 
     /**
+     * Get the border node Adapter marker to mark GMF View as to arrange its border node.
+     * 
+     * @return the border node Adapter marker to mark GMF View as to arrange its border node
+     */
+    Adapter getBorderNodeMarker();
+
+    /**
      * Search recursively in all the LayoutData is there is one which have the edge for target.
      * 
      * @param edge
@@ -199,6 +206,18 @@ public interface SiriusLayoutDataManager {
 
     /**
      * Initializes a new transactional command with the editing domain in which the marker adapter is added to the GMF
+     * view. This marker is added to launch the arrange border node of the new view.
+     * 
+     * @param domain
+     *            my editing domain
+     * @param viewAdapter
+     *            A {@link IAdaptable} of a {@link View}
+     * @return A new transactional command.
+     */
+    AbstractTransactionalCommand getAddBorderNodeMakerCommand(TransactionalEditingDomain domain, IAdaptable viewAdapter);
+
+    /**
+     * Initializes a new transactional command with the editing domain in which the marker adapter is added to the GMF
      * view. This marker is added to launch the arrange of the new view when editor is opening.
      * 
      * @param domain
@@ -220,7 +239,7 @@ public interface SiriusLayoutDataManager {
      *            container edit part
      * @return the layout command
      */
-    Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> centeredCreatedViews, IGraphicalEditPart host);
+    Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> borderedCreatedViews, List<IAdaptable> centeredCreatedViews, IGraphicalEditPart host);
 
     /**
      * layout the new created views.
@@ -236,7 +255,8 @@ public interface SiriusLayoutDataManager {
      *            and an arrange from the opening and a refresh.
      * @return the layout command
      */
-    Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> centeredCreatedViews, IGraphicalEditPart host, boolean useSpecificLayoutType);
+    Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> borderedCreatedViews, List<IAdaptable> centeredCreatedViews, IGraphicalEditPart host,
+            boolean useSpecificLayoutType);
 
     /**
      * Layout the new created views.
@@ -253,7 +273,8 @@ public interface SiriusLayoutDataManager {
      *            {@link SiriusLayoutDataManager#KEEP_FIXED})
      * @return the layout command
      */
-    Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> centeredCreatedViews, IGraphicalEditPart host, String specificLayoutType);
+    Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> borderedCreatedViews, List<IAdaptable> centeredCreatedViews, IGraphicalEditPart host,
+            String specificLayoutType);
 
     /**
      * layout the new created views after opening the editor.
@@ -335,5 +356,22 @@ public interface SiriusLayoutDataManager {
      *            the view to set
      */
     void addCreatedViewWithCenterLayout(Diagram gmfDiagram, LinkedHashSet<View> view);
+
+    /**
+     * Get the list of created views with border nodes to layout.
+     * 
+     * @return the list of views
+     */
+    Map<Diagram, Set<View>> getCreatedViewWithBorderNodeLayout();
+
+    /**
+     * Add a view in the list.
+     * 
+     * @param gmfDiagram
+     *            the {@link Diagram} for which children views must be layouted as border node.
+     * @param view
+     *            the view to set
+     */
+    void addCreatedViewWithBorderNodeLayout(Diagram gmfDiagram, LinkedHashSet<View> view);
 
 }

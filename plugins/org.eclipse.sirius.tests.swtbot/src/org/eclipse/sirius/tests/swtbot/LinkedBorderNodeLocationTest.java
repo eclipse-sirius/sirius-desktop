@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2023 THALES GLOBAL SERVICES.
+ * Copyright (c) 2023, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,8 +17,7 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainer2EditPart;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
@@ -33,6 +32,7 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
  * @author gplouhinec
  *
  */
+@SuppressWarnings("nls")
 public class LinkedBorderNodeLocationTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final int OFFSET_BORDER_NORTH = 8;
@@ -83,6 +83,7 @@ public class LinkedBorderNodeLocationTest extends AbstractSiriusSwtBotGefTestCas
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME, DDiagram.class);
+        editor.maximize();
     }
 
     /**
@@ -90,11 +91,17 @@ public class LinkedBorderNodeLocationTest extends AbstractSiriusSwtBotGefTestCas
      * to the other border nodes to which they are linked.
      */
     public void testDnDSubContainerWithLinkedBorderNodes() {
-        SWTBotGefEditPart subPackageEP = editor.getEditPart(SUB_CONTAINER, DNodeContainer2EditPart.class);
+        SWTBotGefEditPart subPackageEP = editor.getEditPart(SUB_CONTAINER, AbstractDiagramContainerEditPart.class);
         editor.clickCentered(subPackageEP);
-        bot.waitUntil(new CheckSelectedCondition(editor, SUB_CONTAINER, DNodeContainer2EditPart.class));
+        bot.waitUntil(new CheckSelectedCondition(editor, SUB_CONTAINER, AbstractDiagramContainerEditPart.class));
 
         dragAndDropSubContainer("EPackage1"); //$NON-NLS-1$
+        checkBorderNodePosition(getSubContainerBounds(SUB_CONTAINER), getBorderNodeBounds(BORDER_NODE_1), PositionConstants.NORTH);
+        checkBorderNodePosition(getSubContainerBounds(SUB_CONTAINER), getBorderNodeBounds(BORDER_NODE_2), PositionConstants.EAST);
+        checkBorderNodePosition(getSubContainerBounds(SUB_CONTAINER), getBorderNodeBounds(BORDER_NODE_3), PositionConstants.SOUTH);
+        checkBorderNodePosition(getSubContainerBounds(SUB_CONTAINER), getBorderNodeBounds(BORDER_NODE_4), PositionConstants.WEST);
+
+        dragAndDropBetween("EPackage1", "EPackage2");
         checkBorderNodePosition(getSubContainerBounds(SUB_CONTAINER), getBorderNodeBounds(BORDER_NODE_1), PositionConstants.NORTH);
         checkBorderNodePosition(getSubContainerBounds(SUB_CONTAINER), getBorderNodeBounds(BORDER_NODE_2), PositionConstants.EAST);
         checkBorderNodePosition(getSubContainerBounds(SUB_CONTAINER), getBorderNodeBounds(BORDER_NODE_3), PositionConstants.SOUTH);
@@ -106,10 +113,22 @@ public class LinkedBorderNodeLocationTest extends AbstractSiriusSwtBotGefTestCas
         checkBorderNodePosition(getSubContainerBounds(SUB_CONTAINER), getBorderNodeBounds(BORDER_NODE_3), PositionConstants.SOUTH);
         checkBorderNodePosition(getSubContainerBounds(SUB_CONTAINER), getBorderNodeBounds(BORDER_NODE_4), PositionConstants.WEST);
 
+        dragAndDropBetween("EPackage1", "EPackage3");
+        checkBorderNodePosition(getSubContainerBounds(SUB_CONTAINER), getBorderNodeBounds(BORDER_NODE_1), PositionConstants.NORTH);
+        checkBorderNodePosition(getSubContainerBounds(SUB_CONTAINER), getBorderNodeBounds(BORDER_NODE_2), PositionConstants.EAST);
+        checkBorderNodePosition(getSubContainerBounds(SUB_CONTAINER), getBorderNodeBounds(BORDER_NODE_3), PositionConstants.SOUTH);
+        checkBorderNodePosition(getSubContainerBounds(SUB_CONTAINER), getBorderNodeBounds(BORDER_NODE_4), PositionConstants.WEST);
+
         dragAndDropSubContainer("EPackage7"); //$NON-NLS-1$
         checkBorderNodePosition(getSubContainerBounds(SUB_CONTAINER), getBorderNodeBounds(BORDER_NODE_1), PositionConstants.NORTH);
         checkBorderNodePosition(getSubContainerBounds(SUB_CONTAINER), getBorderNodeBounds(BORDER_NODE_2), PositionConstants.NORTH);
         checkBorderNodePosition(getSubContainerBounds(SUB_CONTAINER), getBorderNodeBounds(BORDER_NODE_3), PositionConstants.WEST);
+        checkBorderNodePosition(getSubContainerBounds(SUB_CONTAINER), getBorderNodeBounds(BORDER_NODE_4), PositionConstants.WEST);
+
+        dragAndDropBetween("EPackage1", "EPackage4");
+        checkBorderNodePosition(getSubContainerBounds(SUB_CONTAINER), getBorderNodeBounds(BORDER_NODE_1), PositionConstants.NORTH);
+        checkBorderNodePosition(getSubContainerBounds(SUB_CONTAINER), getBorderNodeBounds(BORDER_NODE_2), PositionConstants.EAST);
+        checkBorderNodePosition(getSubContainerBounds(SUB_CONTAINER), getBorderNodeBounds(BORDER_NODE_3), PositionConstants.SOUTH);
         checkBorderNodePosition(getSubContainerBounds(SUB_CONTAINER), getBorderNodeBounds(BORDER_NODE_4), PositionConstants.WEST);
 
         dragAndDropSubContainer("EPackage8"); //$NON-NLS-1$
@@ -118,18 +137,41 @@ public class LinkedBorderNodeLocationTest extends AbstractSiriusSwtBotGefTestCas
         checkBorderNodePosition(getSubContainerBounds(SUB_CONTAINER), getBorderNodeBounds(BORDER_NODE_3), PositionConstants.EAST);
         checkBorderNodePosition(getSubContainerBounds(SUB_CONTAINER), getBorderNodeBounds(BORDER_NODE_4), PositionConstants.NORTH);
 
+        dragAndDropBetween("EPackage1", "EPackage5");
+        checkBorderNodePosition(getSubContainerBounds(SUB_CONTAINER), getBorderNodeBounds(BORDER_NODE_1), PositionConstants.NORTH);
+        checkBorderNodePosition(getSubContainerBounds(SUB_CONTAINER), getBorderNodeBounds(BORDER_NODE_2), PositionConstants.EAST);
+        checkBorderNodePosition(getSubContainerBounds(SUB_CONTAINER), getBorderNodeBounds(BORDER_NODE_3), PositionConstants.SOUTH);
+        checkBorderNodePosition(getSubContainerBounds(SUB_CONTAINER), getBorderNodeBounds(BORDER_NODE_4), PositionConstants.WEST);
+
         dragAndDropSubContainer("EPackage9"); //$NON-NLS-1$
         checkBorderNodePosition(getSubContainerBounds(SUB_CONTAINER), getBorderNodeBounds(BORDER_NODE_1), PositionConstants.EAST);
         checkBorderNodePosition(getSubContainerBounds(SUB_CONTAINER), getBorderNodeBounds(BORDER_NODE_2), PositionConstants.EAST);
         checkBorderNodePosition(getSubContainerBounds(SUB_CONTAINER), getBorderNodeBounds(BORDER_NODE_3), PositionConstants.SOUTH);
         checkBorderNodePosition(getSubContainerBounds(SUB_CONTAINER), getBorderNodeBounds(BORDER_NODE_4), PositionConstants.SOUTH);
+
+        dragAndDropSubContainer("EPackage6"); //$NON-NLS-1$
+        checkBorderNodePosition(getSubContainerBounds(SUB_CONTAINER), getBorderNodeBounds(BORDER_NODE_1), PositionConstants.WEST);
+        checkBorderNodePosition(getSubContainerBounds(SUB_CONTAINER), getBorderNodeBounds(BORDER_NODE_2), PositionConstants.SOUTH);
+        checkBorderNodePosition(getSubContainerBounds(SUB_CONTAINER), getBorderNodeBounds(BORDER_NODE_3), PositionConstants.SOUTH);
+        checkBorderNodePosition(getSubContainerBounds(SUB_CONTAINER), getBorderNodeBounds(BORDER_NODE_4), PositionConstants.WEST);
     }
 
     private void dragAndDropSubContainer(String targetName) {
         Point subEPackage1Center = getSubContainerBounds(SUB_CONTAINER).getCenter().getCopy();
         Point targetCenter = getContainerBounds(targetName).getCenter().getCopy();
-        CheckEditPartMoved movedCondition = new CheckEditPartMoved(editor, SUB_CONTAINER, DNodeContainer2EditPart.class, getSubContainerBounds(SUB_CONTAINER).getLocation());
+        CheckEditPartMoved movedCondition = new CheckEditPartMoved(editor, SUB_CONTAINER, AbstractDiagramContainerEditPart.class, getSubContainerBounds(SUB_CONTAINER).getLocation());
         editor.drag(subEPackage1Center, targetCenter);
+        bot.waitUntil(movedCondition);
+    }
+
+    private void dragAndDropBetween(String firstName, String secondName) {
+        Point subEPackage1Center = getSubContainerBounds(SUB_CONTAINER).getCenter().getCopy();
+        Point target1Center = getContainerBounds(firstName).getCenter().getCopy();
+        Point target2Center = getContainerBounds(secondName).getCenter().getCopy();
+        int targetX = (target1Center.x + target2Center.x) / 2;
+        int targetY = (target1Center.y + target2Center.y) / 2;
+        CheckEditPartMoved movedCondition = new CheckEditPartMoved(editor, SUB_CONTAINER, AbstractDiagramContainerEditPart.class, getSubContainerBounds(SUB_CONTAINER).getLocation());
+        editor.drag(subEPackage1Center, new Point(targetX, targetY));
         bot.waitUntil(movedCondition);
     }
 
@@ -138,11 +180,11 @@ public class LinkedBorderNodeLocationTest extends AbstractSiriusSwtBotGefTestCas
     }
 
     private Rectangle getSubContainerBounds(String containerName) {
-        return editor.getBounds(editor.getEditPart(containerName, DNodeContainer2EditPart.class));
+        return editor.getBounds(editor.getEditPart(containerName, AbstractDiagramContainerEditPart.class));
     }
 
     private Rectangle getContainerBounds(String containerName) {
-        return editor.getBounds(editor.getEditPart(containerName, DNodeContainerEditPart.class));
+        return editor.getBounds(editor.getEditPart(containerName, AbstractDiagramContainerEditPart.class));
     }
 
     /**

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2023 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -39,6 +39,8 @@ public class SiriusCanonicalLayoutCommand extends RecordingCommand implements No
 
     private List<IAdaptable> childViewsAdapters;
 
+    private List<IAdaptable> borderedChildViewsAdapters;
+
     private List<IAdaptable> centeredChildViewsAdapters;
 
     private String specificLayoutType;
@@ -53,7 +55,7 @@ public class SiriusCanonicalLayoutCommand extends RecordingCommand implements No
      *            the {@link DiagramEditPart} on which do the layout
      */
     public SiriusCanonicalLayoutCommand(TransactionalEditingDomain domain, DiagramEditPart diagramEditPart) {
-        this(domain, diagramEditPart, null, null);
+        this(domain, diagramEditPart, null, null, null);
     }
 
     /**
@@ -70,16 +72,19 @@ public class SiriusCanonicalLayoutCommand extends RecordingCommand implements No
      *            list of {@link IAdaptable} for created Views to layout but which must be layouted in the center of
      *            their containers
      */
-    public SiriusCanonicalLayoutCommand(TransactionalEditingDomain domain, IGraphicalEditPart parentEditPart, List<IAdaptable> childViewsAdapters, List<IAdaptable> centeredChildViewsAdapters) {
-        this(domain, parentEditPart, childViewsAdapters, centeredChildViewsAdapters, LayoutType.DEFAULT);
+    public SiriusCanonicalLayoutCommand(TransactionalEditingDomain domain, IGraphicalEditPart parentEditPart, List<IAdaptable> childViewsAdapters, List<IAdaptable> borderedChildViewsAdapters,
+            List<IAdaptable> centeredChildViewsAdapters) {
+        this(domain, parentEditPart, childViewsAdapters, borderedChildViewsAdapters, centeredChildViewsAdapters, LayoutType.DEFAULT);
     }
 
-    public SiriusCanonicalLayoutCommand(TransactionalEditingDomain domain, IGraphicalEditPart parentEditPart, List<IAdaptable> childViewsAdapters, List<IAdaptable> centeredChildViewsAdapters,
+    public SiriusCanonicalLayoutCommand(TransactionalEditingDomain domain, IGraphicalEditPart parentEditPart, List<IAdaptable> childViewsAdapters, List<IAdaptable> borderedChildViewsAdapters,
+            List<IAdaptable> centeredChildViewsAdapters,
             String specificLayoutType) {
         super(domain, Messages.SiriusCanonicalLayoutCommand_label);
         this.parentEditPart = parentEditPart;
         this.childViewsAdapters = childViewsAdapters;
         this.centeredChildViewsAdapters = centeredChildViewsAdapters;
+        this.borderedChildViewsAdapters = borderedChildViewsAdapters;
         this.specificLayoutType = specificLayoutType;
     }
 
@@ -92,7 +97,7 @@ public class SiriusCanonicalLayoutCommand extends RecordingCommand implements No
 
             @Override
             public void run() {
-                if (childViewsAdapters == null && centeredChildViewsAdapters == null) {
+                if (childViewsAdapters == null && centeredChildViewsAdapters == null && borderedChildViewsAdapters == null) {
                     executeLayoutOnDiagramOpening();
                 } else {
                     executeLayoutDueToExternalChanges();
@@ -110,7 +115,8 @@ public class SiriusCanonicalLayoutCommand extends RecordingCommand implements No
     }
 
     private void executeLayoutDueToExternalChanges() {
-        org.eclipse.gef.commands.Command arrangeCmd = SiriusLayoutDataManager.INSTANCE.getArrangeCreatedViewsCommand(childViewsAdapters, centeredChildViewsAdapters, parentEditPart,
+        org.eclipse.gef.commands.Command arrangeCmd = SiriusLayoutDataManager.INSTANCE.getArrangeCreatedViewsCommand(childViewsAdapters, borderedChildViewsAdapters, centeredChildViewsAdapters,
+                parentEditPart,
                 specificLayoutType);
         if (arrangeCmd != null && arrangeCmd.canExecute() && parentEditPart != null && parentEditPart.getRoot() != null) {
             arrangeCmd.execute();
