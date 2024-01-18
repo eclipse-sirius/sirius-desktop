@@ -13,14 +13,10 @@
 package org.eclipse.sirius.diagram.ui.internal.refresh.layout;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -35,14 +31,9 @@ import org.eclipse.gmf.runtime.diagram.ui.services.layout.LayoutType;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.business.internal.dialect.NotYetOpenedDiagramAdapter;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
-import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
-import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartment2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
@@ -114,6 +105,8 @@ public final class SiriusCanonicalLayoutHandler {
 
             if (!specificArrangeAtFirstOpening) {
                 Map<IGraphicalEditPart, List<IAdaptable>> createdViewsToLayoutMap = getCreatedViewsToLayoutByContainerPart(diagramEditPart, SiriusLayoutDataManager.INSTANCE.getCreatedViewsToLayout());
+                Map<IGraphicalEditPart, List<IAdaptable>> createdViewsToBorderNodeLayoutMap = getCreatedViewsToLayoutByContainerPart(diagramEditPart,
+                        SiriusLayoutDataManager.INSTANCE.getCreatedViewWithBorderNodeLayout());
                 Map<IGraphicalEditPart, List<IAdaptable>> centeredCreatedViewsToLayoutMap = getCreatedViewsToLayoutByContainerPart(diagramEditPart,
                         SiriusLayoutDataManager.INSTANCE.getCreatedViewWithCenterLayout());
                 LayoutProvider layoutProvider = LayoutService.getProvider(diagramEditPart);
@@ -129,7 +122,7 @@ public final class SiriusCanonicalLayoutHandler {
                     createdViewsToLayoutMap = createdViewsToLayoutMap_reverse;
                     layoutType = SiriusLayoutDataManager.LAYOUT_TYPE_ARRANGE_AT_OPENING;
                 }
-                Command layoutCommand = getLayoutCommand(createdViewsToLayoutMap, centeredCreatedViewsToLayoutMap, editingDomain, layoutType);
+                Command layoutCommand = getLayoutCommand(createdViewsToLayoutMap, createdViewsToBorderNodeLayoutMap, centeredCreatedViewsToLayoutMap, editingDomain, layoutType);
                 if (layoutCommand.canExecute()) {
                     editingDomain.getCommandStack().execute(layoutCommand);
                 }
@@ -206,215 +199,8 @@ public final class SiriusCanonicalLayoutHandler {
         return viewAdapters;
     }
 
-    /**
-     * Gets BorderNodes of an adapted view.
-     * 
-     * @param viewAdapter
-     *            the adapted view
-     * @return the set of BorderNodes of the adapted view.
-     */
-    private static Set<DNode> getBorderNodes(IAdaptable viewAdapter) {
-        Set<DNode> borderNodes;
-        View createdView = viewAdapter.getAdapter(View.class);
-        if (createdView != null && createdView.getElement() instanceof AbstractDNode dnode) {
-            borderNodes = new HashSet<>(dnode.getOwnedBorderedNodes());
-        } else {
-            borderNodes = Collections.emptySet();
-        }
-        return borderNodes;
-    }
-
-    /**
-     * Gets BorderNodes of an EditPart.
-     * 
-     * @param elementEditPart
-     *            the EditPart
-     * @return the set of BorderNodes of the EditPart.
-     */
-    private static Set<DNode> getBorderNodes(IDiagramElementEditPart elementEditPart) {
-        Set<DNode> borderNodes;
-        if (elementEditPart.resolveDiagramElement() instanceof AbstractDNode dnode) {
-            borderNodes = new HashSet<>(dnode.getOwnedBorderedNodes());
-        } else {
-            borderNodes = Collections.emptySet();
-        }
-        return borderNodes;
-    }
-
-    /**
-     * Check if an EditPart has BorderNodes.
-     * 
-     * @param elementEditPart
-     *            the EditPart
-     * @return {@code true} if the EditPart has BorderNodes; {@code false} otherwise.
-     */
-    private static boolean hasBorderNodes(IDiagramElementEditPart elementEditPart) {
-        return !getBorderNodes(elementEditPart).isEmpty();
-    }
-
-    /**
-     * Check if an adapted view has BorderNodes.
-     * 
-     * @param viewAdapter
-     *            the adapted view
-     * @return {@code true} if the adapted view has BorderNodes; {@code false} otherwise.
-     */
-    private static boolean hasBorderNodes(IAdaptable viewAdapter) {
-        return !getBorderNodes(viewAdapter).isEmpty();
-    }
-
-    /**
-     * Used to get all adapted views which has border nodes and can be associated to the specified compartment.
-     * 
-     * @param compartmentEP
-     *            the compartment
-     * @param viewAdapters
-     *            all adapted views associated to the compartment
-     * @return the map of the Compartment EP which contains the BorderedNode EditPart associated to its adapted view
-     */
-    private static Map<IGraphicalEditPart, List<IAdaptable>> getBorderedNodesFromCompartment(AbstractDNodeContainerCompartmentEditPart compartmentEP, List<IAdaptable> viewAdapters) {
-        List<IAdaptable> existingList = new ArrayList<>();
-        for (IAdaptable viewAdapter : viewAdapters) {
-            if (hasBorderNodes(viewAdapter)) {
-                View createdView = viewAdapter.getAdapter(View.class);
-                if (createdView != null && createdView.getElement() instanceof AbstractDNode) {
-                    existingList.add(viewAdapter);
-                }
-            }
-        }
-
-        Map<IGraphicalEditPart, List<IAdaptable>> borderedNodesToLayoutMap = new LinkedHashMap<IGraphicalEditPart, List<IAdaptable>>();
-        borderedNodesToLayoutMap.put(compartmentEP, existingList);
-        return borderedNodesToLayoutMap;
-    }
-
-    private static List<View> getViews(Collection<IAdaptable> viewAdapters) {
-        return viewAdapters.stream().map(viewAdapter -> viewAdapter.getAdapter(View.class)).filter(Objects::nonNull).collect(Collectors.toList());
-    }
-
-    /**
-     * Used to get the BorderedNode from a BorderNode.
-     * 
-     * @param borderNodeEP
-     *            the border node
-     * @return the map of the BorderedNode EditPart associated to its adapted view
-     */
-    private static Map<IGraphicalEditPart, List<IAdaptable>> getBorderedNodesFromBorderNode(AbstractDiagramBorderNodeEditPart borderNodeEP) {
-        Map<IGraphicalEditPart, List<IAdaptable>> borderedNodesToLayoutMap = new LinkedHashMap<IGraphicalEditPart, List<IAdaptable>>();
-        if (borderNodeEP.getParent() instanceof IDiagramElementEditPart parentEP && hasBorderNodes(parentEP) && parentEP.getModel() instanceof View parentView) {
-            List<IAdaptable> viewAdapters = List.of(new EObjectAdapter(parentView));
-            borderedNodesToLayoutMap.put(parentEP, viewAdapters);
-        }
-        return borderedNodesToLayoutMap;
-    }
-
-    /**
-     * Used to perform an intelligible "borderedNodesToLayout.putAll(newBorderedNodesToLayout)". Since the value of the
-     * map is a {@code List<IAdaptable>}, we need to check that the adapted view we want to add is not present in the
-     * list.
-     * 
-     * @param borderedNodesToLayout
-     *            the map to complete
-     * @param newBorderedNodesToLayout
-     *            the Map for which we want to put all the elements in the other
-     */
-    private static void addBorderedNodeToLayout(Map<IGraphicalEditPart, List<IAdaptable>> borderedNodesToLayout, Map<IGraphicalEditPart, List<IAdaptable>> newBorderedNodesToLayout) {
-        List<View> existingViews = getViews(borderedNodesToLayout.values().stream().flatMap(List::stream).toList());
-        for (Entry<IGraphicalEditPart, List<IAdaptable>> entryToLayout : newBorderedNodesToLayout.entrySet()) {
-            IGraphicalEditPart newEditPart = entryToLayout.getKey();
-
-            List<IAdaptable> existingAdapters = borderedNodesToLayout.get(newEditPart);
-            List<View> potentialNewViews = getViews(entryToLayout.getValue());
-            for (View view : potentialNewViews) {
-                if (!existingViews.contains(view)) {
-                    if (existingAdapters == null) {
-                        existingAdapters = new ArrayList<>();
-                        borderedNodesToLayout.put(newEditPart, existingAdapters);
-                    }
-                    existingAdapters.add(new EObjectAdapter(view));
-                }
-            }
-        }
-    }
-
-    /**
-     * Make a copy of "allViewsToLayout" parameter without the elements whose layout is already managed. The
-     * allViewsToLayout parameter cannot be modified with a remove, as it is potentially being iterated over.
-     * 
-     * @param managedLayout
-     *            elements whose layout is already managed
-     * @param allViewsToLayout
-     *            all views to layout
-     * @return a copy of "allViewsToLayout" parameter without the elements whose layout is already managed
-     */
-    private static Map<IGraphicalEditPart, List<IAdaptable>> removeViewsAdaptersManagedLayout(Map<IGraphicalEditPart, List<IAdaptable>> managedLayout,
-            Map<IGraphicalEditPart, List<IAdaptable>> allViewsToLayout) {
-        Map<IGraphicalEditPart, List<IAdaptable>> remainingViewsToLayoutMap = new LinkedHashMap<IGraphicalEditPart, List<IAdaptable>>();
-        List<View> managedViews = getViews(managedLayout.values().stream().flatMap(List::stream).toList());
-        for (Entry<IGraphicalEditPart, List<IAdaptable>> entryToLayout : allViewsToLayout.entrySet()) {
-            List<IAdaptable> viewsNotManaged = new ArrayList<>();
-            for (IAdaptable viewAdapter : entryToLayout.getValue()) {
-                View view = viewAdapter.getAdapter(View.class);
-                if (!managedViews.contains(view)) {
-                    viewsNotManaged.add(viewAdapter);
-                }
-            }
-            if (!viewsNotManaged.isEmpty()) {
-                remainingViewsToLayoutMap.put(entryToLayout.getKey(), viewsNotManaged);
-            }
-        }
-        return remainingViewsToLayoutMap;
-    }
-
-    /**
-     * This method helps to layout bordered nodes with border nodes. Border nodes are not laid out, but their parent
-     * bordered node or the compartment containing their parent is laid out.
-     * 
-     * @param createdViewsToLayoutMap
-     *            the map of all adaptable GMF views associated to the edit part to layout
-     * @param editingDomain
-     *            the editing domain
-     * @param compoundCommand
-     *            the command
-     * @return the remaining views and edit part to lay out
-     */
-    private static Map<IGraphicalEditPart, List<IAdaptable>> layoutBorderAndBorderedNodes(Map<IGraphicalEditPart, List<IAdaptable>> createdViewsToLayoutMap, TransactionalEditingDomain editingDomain,
-            CompoundCommand compoundCommand) {
-        Map<IGraphicalEditPart, List<IAdaptable>> borderedNodesToLayout = new LinkedHashMap<IGraphicalEditPart, List<IAdaptable>>();
-        Map<IGraphicalEditPart, List<IAdaptable>> remainingViewsToLayoutMap = new LinkedHashMap<IGraphicalEditPart, List<IAdaptable>>(createdViewsToLayoutMap);
-        for (Entry<IGraphicalEditPart, List<IAdaptable>> entryToLayout : createdViewsToLayoutMap.entrySet()) {
-            IGraphicalEditPart editPart = entryToLayout.getKey();
-            List<IAdaptable> viewAdapters = entryToLayout.getValue();
-            if (editPart instanceof AbstractDNodeContainerCompartmentEditPart compartmentEP) {
-                // CompartmentEditPart case: we should only layout GMF Views with BorderNodes
-                Map<IGraphicalEditPart, List<IAdaptable>> borderedNodesFromCompartment = getBorderedNodesFromCompartment(compartmentEP, viewAdapters);
-                remainingViewsToLayoutMap = removeViewsAdaptersManagedLayout(borderedNodesFromCompartment, remainingViewsToLayoutMap);
-                addBorderedNodeToLayout(borderedNodesToLayout, borderedNodesFromCompartment);
-            } else if (editPart instanceof IDiagramElementEditPart elementEP && hasBorderNodes(elementEP)) {
-                // BorderedNode case: laid out if there is BorderNodes.
-                remainingViewsToLayoutMap = removeViewsAdaptersManagedLayout(Map.of(elementEP, viewAdapters), remainingViewsToLayoutMap);
-                addBorderedNodeToLayout(borderedNodesToLayout, Map.of(elementEP, viewAdapters));
-            } else if (editPart instanceof AbstractDiagramBorderNodeEditPart borderNodeEP) {
-                // BorderNode case: they are not laid out, but their parent may.
-                remainingViewsToLayoutMap = removeViewsAdaptersManagedLayout(Map.of(borderNodeEP, viewAdapters), remainingViewsToLayoutMap);
-                Map<IGraphicalEditPart, List<IAdaptable>> borderedNodesFromBorderNode = getBorderedNodesFromBorderNode(borderNodeEP);
-                remainingViewsToLayoutMap = removeViewsAdaptersManagedLayout(borderedNodesFromBorderNode, remainingViewsToLayoutMap);
-                addBorderedNodeToLayout(borderedNodesToLayout, borderedNodesFromBorderNode);
-            }
-        }
-        // Layout BorderedNodes or their Compartment.
-        for (Entry<IGraphicalEditPart, List<IAdaptable>> borderedNodeEntry : borderedNodesToLayout.entrySet()) {
-            IGraphicalEditPart editPart = borderedNodeEntry.getKey();
-            List<IAdaptable> childViewsAdapters = borderedNodeEntry.getValue();
-            // The KEEP_FIXED layout is used to avoid moving the BorderedNode, it should be located where the user
-            // clicked.
-            Command siriusCanonicalLayoutCommand = new SiriusCanonicalLayoutCommand(editingDomain, editPart, childViewsAdapters, null, SiriusLayoutDataManager.KEEP_FIXED);
-            compoundCommand.append(siriusCanonicalLayoutCommand);
-        }
-        return remainingViewsToLayoutMap;
-    }
-
-    private static Command getLayoutCommand(Map<IGraphicalEditPart, List<IAdaptable>> createdViewsToLayoutMap, Map<IGraphicalEditPart, List<IAdaptable>> centeredCreatedViewsToLayoutMap,
+    private static Command getLayoutCommand(Map<IGraphicalEditPart, List<IAdaptable>> createdViewsToLayoutMap, Map<IGraphicalEditPart, List<IAdaptable>> createdViewsToBorderNodeLayoutMap,
+            Map<IGraphicalEditPart, List<IAdaptable>> centeredCreatedViewsToLayoutMap,
             TransactionalEditingDomain editingDomain, String specificLayoutType) {
 
         final CompoundCommand compoundCommand = new CompoundCommand();
@@ -431,21 +217,26 @@ public final class SiriusCanonicalLayoutHandler {
                                 && !(input.getKey().getParent().getParent() instanceof DNodeContainerViewNodeContainerCompartment2EditPart));
             }
         };
-        Map<IGraphicalEditPart, List<IAdaptable>> filteredCreatedViewsToLayoutMap = createdViewsToLayoutMap.entrySet().stream() //
+        Map<IGraphicalEditPart, List<IAdaptable>> filteredCreatedViewsToBorderNodeLayoutMap = createdViewsToBorderNodeLayoutMap.entrySet().stream() //
                 .filter(typeOfElementToLayout) //
                 .collect(Collectors.toMap(Entry::getKey, Entry::getValue));
-        Map<IGraphicalEditPart, List<IAdaptable>> remainingViewsToLayoutMap = layoutBorderAndBorderedNodes(filteredCreatedViewsToLayoutMap, editingDomain, compoundCommand);
-        for (Entry<IGraphicalEditPart, List<IAdaptable>> entry : remainingViewsToLayoutMap.entrySet()) {
+        for (Entry<IGraphicalEditPart, List<IAdaptable>> borderedNodeEntry : filteredCreatedViewsToBorderNodeLayoutMap.entrySet()) {
+            IGraphicalEditPart parentEditPart = borderedNodeEntry.getKey();
+            List<IAdaptable> childViewsAdapters = borderedNodeEntry.getValue();
+            Command layoutCommand = new SiriusCanonicalLayoutCommand(editingDomain, parentEditPart, null, childViewsAdapters, null, SiriusLayoutDataManager.KEEP_FIXED);
+            compoundCommand.append(layoutCommand);
+        }
+        for (Entry<IGraphicalEditPart, List<IAdaptable>> entry : Iterables.filter(createdViewsToLayoutMap.entrySet(), typeOfElementToLayout)) {
             IGraphicalEditPart parentEditPart = entry.getKey();
             List<IAdaptable> childViewsAdapters = entry.getValue();
-            Command viewpointLayoutCanonicalSynchronizerCommand = new SiriusCanonicalLayoutCommand(editingDomain, parentEditPart, childViewsAdapters, null, specificLayoutType);
+            Command viewpointLayoutCanonicalSynchronizerCommand = new SiriusCanonicalLayoutCommand(editingDomain, parentEditPart, childViewsAdapters, null, null, specificLayoutType);
             compoundCommand.append(viewpointLayoutCanonicalSynchronizerCommand);
         }
 
         for (Entry<IGraphicalEditPart, List<IAdaptable>> entry : Iterables.filter(centeredCreatedViewsToLayoutMap.entrySet(), typeOfElementToLayout)) {
             IGraphicalEditPart parentEditPart = entry.getKey();
             List<IAdaptable> childViewsAdapters = entry.getValue();
-            Command viewpointLayoutCanonicalSynchronizerCommand = new SiriusCanonicalLayoutCommand(editingDomain, parentEditPart, null, childViewsAdapters, specificLayoutType);
+            Command viewpointLayoutCanonicalSynchronizerCommand = new SiriusCanonicalLayoutCommand(editingDomain, parentEditPart, null, null, childViewsAdapters, specificLayoutType);
             compoundCommand.append(viewpointLayoutCanonicalSynchronizerCommand);
         }
         return compoundCommand;
@@ -479,7 +270,7 @@ public final class SiriusCanonicalLayoutHandler {
             createdViewsToLayoutMap = createdViewsToLayoutMap_reverse;
             layoutType = SiriusLayoutDataManager.LAYOUT_TYPE_ARRANGE_AT_OPENING;
         }
-        Command layoutCommand = getLayoutCommand(createdViewsToLayoutMap, createdViewsWithSpecialLayoutMap, editingDomain, layoutType);
+        Command layoutCommand = getLayoutCommand(createdViewsToLayoutMap, Map.of(), createdViewsWithSpecialLayoutMap, editingDomain, layoutType);
         if (layoutCommand.canExecute()) {
             editingDomain.getCommandStack().execute(layoutCommand);
         }

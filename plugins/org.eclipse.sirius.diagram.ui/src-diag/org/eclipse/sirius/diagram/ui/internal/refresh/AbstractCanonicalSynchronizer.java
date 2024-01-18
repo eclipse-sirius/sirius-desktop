@@ -258,8 +258,22 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
         }
     }
 
+    protected boolean createdViewIsMarkedAsToLayout(View createdView) {
+        return createdView.eAdapters().contains(SiriusLayoutDataManager.INSTANCE.getAdapterMarker());
+    }
+
+    private void markCreatedViewsAsToLayoutBorderNode(Collection<View> createdViews) {
+        for (View createdView : createdViews) {
+            createdView.eAdapters().add(SiriusLayoutDataManager.INSTANCE.getBorderNodeMarker());
+        }
+    }
+
     private void markCreatedViewsWithCenterLayout(View createdView) {
         createdView.eAdapters().add(SiriusLayoutDataManager.INSTANCE.getCenterAdapterMarker());
+    }
+
+    protected boolean createdViewIsMarkedAsToCenterLayout(View createdView) {
+        return createdView.eAdapters().contains(SiriusLayoutDataManager.INSTANCE.getCenterAdapterMarker());
     }
 
     /**
@@ -451,6 +465,11 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
                 }
                 if (layoutData != null && layoutData.getLocation() != null) {
                     location = layoutData.getLocation();
+                }
+
+                // If the AbstractDNode has BorderNodes, it should be marked as to layout its BorderNodes.
+                if (!abstractDNode.getOwnedBorderedNodes().isEmpty()) { // if (has border nodes)
+                    markCreatedViewsAsToLayoutBorderNode(List.of(createdView));
                 }
             }
         } else {
@@ -716,12 +735,14 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
                     }
                 }
             }
-            // If the DNodeContainer has BorderNodes, it should be marked as "to layout", to layout its BorderNodes.
-            isAlreadylayouted = isAlreadylayouted && abstractDNode.getOwnedBorderedNodes().isEmpty();
+            // If the DNodeContainer has BorderNodes, it should be marked as to layout its BorderNodes.
+            if (!abstractDNode.getOwnedBorderedNodes().isEmpty()) { // if (has border nodes)
+                markCreatedViewsAsToLayoutBorderNode(List.of(createdView));
+            }
 
             if (createdView instanceof Node) {
                 Node createdNode = (Node) createdView;
-                updateLocationConstraint(createdNode, size, location, abstractDNode);
+                updateBoundsConstraint(createdNode, size, location, abstractDNode);
             }
         }
         return isAlreadylayouted;
@@ -735,16 +756,17 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
         return padding;
     }
 
-    private void updateLocationConstraint(Node createdNode, Dimension size, Point location, AbstractDNode abstractDNode) {
-        Bounds bounds = (Bounds) createdNode.getLayoutConstraint();
+    protected void updateLocationConstraint(Bounds bounds, Point location) {
         if (location != null) {
             bounds.setX(location.x);
             bounds.setY(location.y);
         }
+    }
 
+    protected void updateSizeConstraint(Bounds bounds, Dimension size, EObject abstractDNode) {
         ResizeKind resizeKind = ResizeKind.NSEW_LITERAL;
-        if (abstractDNode instanceof DNode) {
-            resizeKind = ((DNode) abstractDNode).getResizeKind();
+        if (abstractDNode instanceof DNode dNode) {
+            resizeKind = dNode.getResizeKind();
         }
         if (size != null) {
             if (size.width != -1 && canResizeWidth(resizeKind)) {
@@ -754,6 +776,12 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
                 bounds.setHeight(size.height);
             }
         }
+    }
+
+    private void updateBoundsConstraint(Node createdNode, Dimension size, Point location, AbstractDNode abstractDNode) {
+        Bounds bounds = (Bounds) createdNode.getLayoutConstraint();
+        updateLocationConstraint(bounds, location);
+        updateSizeConstraint(bounds, size, abstractDNode);
     }
 
     private boolean canResizeHeight(ResizeKind resizeKind) {

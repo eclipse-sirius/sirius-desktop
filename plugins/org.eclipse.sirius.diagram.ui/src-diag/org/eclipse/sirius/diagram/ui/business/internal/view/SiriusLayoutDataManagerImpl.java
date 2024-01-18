@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2023 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 import org.eclipse.core.commands.ExecutionException;
@@ -68,6 +69,7 @@ import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.graphical.figures.SiriusLayoutHelper;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
+import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.BorderItemAwareLayoutProvider;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
@@ -83,7 +85,7 @@ import com.google.common.collect.Collections2;
 public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManager {
 
     /**
-     * An adapter to mark the View as layout by the SiriusLayoutDataManager.
+     * An adapter to mark the View as layout to default normal by the SiriusLayoutDataManager.
      */
     private static final Adapter LAYOUT_MARKER_ADAPTER = new Adapter() {
 
@@ -158,6 +160,31 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
     };
 
     /**
+     * An adapter to mark the View as layout with border node algorithm by the SiriusLayoutDataManager.
+     */
+    private static final Adapter BORDER_NODE_LAYOUT_MARKER_ADAPTER = new Adapter() {
+
+        @Override
+        public void setTarget(final Notifier newTarget) {
+        }
+
+        @Override
+        public void notifyChanged(final Notification notification) {
+        }
+
+        @Override
+        public boolean isAdapterForType(final Object type) {
+            return type instanceof SiriusLayoutDataManager;
+        }
+
+        @Override
+        public Notifier getTarget() {
+            return null;
+        }
+
+    };
+
+    /**
      * A list of layout data (the root can be an AbstractDNode or a DDiagram). The layout data are removed from this
      * list when all the layout data in its are consumed.
      */
@@ -186,6 +213,8 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      * part of its container.
      */
     private Map<Diagram, Set<View>> createdViewWithCenterLayout = new HashMap<Diagram, Set<View>>();
+
+    private Map<Diagram, Set<View>> createdViewWithBorderNodeLayout = new HashMap<Diagram, Set<View>>();
 
     /**
      * Avoid instantiation.
@@ -435,6 +464,11 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
     }
 
     @Override
+    public Adapter getBorderNodeMarker() {
+        return BORDER_NODE_LAYOUT_MARKER_ADAPTER;
+    }
+
+    @Override
     public AbstractTransactionalCommand getAddAdapterMakerCommand(final TransactionalEditingDomain domain, final IAdaptable viewAdapter) {
         return new AbstractTransactionalCommand(domain, Messages.SiriusLayoutDataManagerImpl_addLayoutMarkerCommandLabel, null) {
             @Override
@@ -456,6 +490,20 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
                 final View view = viewAdapter.getAdapter(View.class);
                 if (view != null && !view.eAdapters().contains(CENTER_LAYOUT_MARKER_ADAPTER)) {
                     view.eAdapters().add(CENTER_LAYOUT_MARKER_ADAPTER);
+                }
+                return CommandResult.newOKCommandResult();
+            }
+        };
+    }
+
+    @Override
+    public AbstractTransactionalCommand getAddBorderNodeMakerCommand(final TransactionalEditingDomain domain, final IAdaptable viewAdapter) {
+        return new AbstractTransactionalCommand(domain, Messages.SiriusLayoutDataManagerImpl_addCenterLayoutMarkerCommandLabel, null) {
+            @Override
+            protected CommandResult doExecuteWithResult(final IProgressMonitor monitor, final IAdaptable info) throws ExecutionException {
+                final View view = viewAdapter.getAdapter(View.class);
+                if (view != null && !view.eAdapters().contains(BORDER_NODE_LAYOUT_MARKER_ADAPTER)) {
+                    view.eAdapters().add(BORDER_NODE_LAYOUT_MARKER_ADAPTER);
                 }
                 return CommandResult.newOKCommandResult();
             }
@@ -503,18 +551,20 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
     }
 
     @Override
-    public Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> centeredCreatedViews, IGraphicalEditPart host) {
-        return getArrangeCreatedViewsCommand(createdViews, centeredCreatedViews, host, false);
+    public Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> borderedCreatedViews, List<IAdaptable> centeredCreatedViews, IGraphicalEditPart host) {
+        return getArrangeCreatedViewsCommand(createdViews, borderedCreatedViews, centeredCreatedViews, host, false);
     }
 
     @Override
-    public Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> centeredCreatedViews, IGraphicalEditPart host, boolean useSpecificLayoutType) {
+    public Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> borderedCreatedViews, List<IAdaptable> centeredCreatedViews, IGraphicalEditPart host,
+            boolean useSpecificLayoutType) {
         String layoutType = useSpecificLayoutType ? LAYOUT_TYPE_ARRANGE_AT_OPENING : LayoutType.DEFAULT;
-        return getArrangeCreatedViewsCommand(createdViews, centeredCreatedViews, host, layoutType);
+        return getArrangeCreatedViewsCommand(createdViews, borderedCreatedViews, centeredCreatedViews, host, layoutType);
     }
 
     @Override
-    public Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> centeredCreatedViews, IGraphicalEditPart host, String specificLayoutType) {
+    public Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> borderedCreatedViews, List<IAdaptable> centeredCreatedViews, IGraphicalEditPart host,
+            String specificLayoutType) {
         // Layout only the views that are not
         // already layout (by a drag'n'drop for example)
         // if (createdViewsToLayout.size() == 1) {
@@ -526,7 +576,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
             removeAlreadyArrangeMarker(createdViews.get(0));
             return UnexecutableCommand.INSTANCE;
         }
-        return getCreatedViewsCommandFromLayoutType(createdViews, centeredCreatedViews, host, specificLayoutType);
+        return getCreatedViewsCommandFromLayoutType(createdViews, borderedCreatedViews, centeredCreatedViews, host, specificLayoutType);
     }
 
     /**
@@ -544,7 +594,8 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      *            {@link SiriusLayoutDataManager#KEEP_FIXED})
      * @return the layout command
      */
-    private Command getCreatedViewsCommandFromLayoutType(List<IAdaptable> createdViews, List<IAdaptable> centeredCreatedViews, IGraphicalEditPart host, String specificLayoutType) {
+    private Command getCreatedViewsCommandFromLayoutType(List<IAdaptable> createdViews, List<IAdaptable> borderedCreatedViews, List<IAdaptable> centeredCreatedViews, IGraphicalEditPart host,
+            String specificLayoutType) {
         CompoundCommand cc = new CompoundCommand();
         // Center Layout case
         if (centeredCreatedViews != null) {
@@ -558,7 +609,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
         }
 
         // "normal" layout case
-        return arrangeSeveralCreatedViews(createdViews, host, specificLayoutType);
+        return arrangeSeveralCreatedViews(createdViews, borderedCreatedViews, host, specificLayoutType);
     }
 
     /**
@@ -606,30 +657,42 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      *            {@link SiriusLayoutDataManager#KEEP_FIXED})
      * @return the arrange command
      */
-    private Command arrangeSeveralCreatedViews(List<IAdaptable> createdViewsAdapters, IGraphicalEditPart host, String specificLayoutType) {
-        if (createdViewsAdapters != null) {
-            int size = createdViewsAdapters.size();
-            CompoundCommand cc = new CompoundCommand();
-            if (size > 0) {
-                // perform a layout of the container
-                final List<IAdaptable> createdViewsToLayoutAdapters = new LinkedList<IAdaptable>();
-                for (IAdaptable viewAdapter : createdViewsAdapters) {
-                    if (!isAlreadyArrange(viewAdapter)) {
-                        createdViewsToLayoutAdapters.add(viewAdapter);
-                    } else {
-                        removeAlreadyArrangeMarker(viewAdapter);
-                    }
-                }
-
-                if (createdViewsToLayoutAdapters.size() > 0) {
-                    DeferredLayoutCommand layoutCmd = new DeferredLayoutCommand(host.getEditingDomain(), createdViewsToLayoutAdapters, host, specificLayoutType);
-                    cc.add(new ICommandProxy(layoutCmd));
-                    return cc;
+    private Command arrangeSeveralCreatedViews(List<IAdaptable> createdViewsAdapters, List<IAdaptable> borderedCreatedViews, IGraphicalEditPart host, String specificLayoutType) {
+        CompoundCommand cc = new CompoundCommand();
+        if (createdViewsAdapters != null && createdViewsAdapters.size() > 0) {
+            // perform a layout of the container
+            final List<IAdaptable> createdViewsToLayoutAdapters = new LinkedList<IAdaptable>();
+            for (IAdaptable viewAdapter : createdViewsAdapters) {
+                if (!isAlreadyArrange(viewAdapter)) {
+                    createdViewsToLayoutAdapters.add(viewAdapter);
+                } else {
+                    removeAlreadyArrangeMarker(viewAdapter);
                 }
             }
+
+            if (createdViewsToLayoutAdapters.size() > 0) {
+                DeferredLayoutCommand layoutCmd = new DeferredLayoutCommand(host.getEditingDomain(), createdViewsToLayoutAdapters, host, specificLayoutType);
+                cc.add(new ICommandProxy(layoutCmd));
+            }
+        }
+        if (borderedCreatedViews != null && borderedCreatedViews.size() > 0) {
+            Map<View, EditPart> editPartRegistry = host.getRoot().getViewer().getEditPartRegistry();
+
+            List<EditPart> editPartToLayout = borderedCreatedViews.stream() //
+                    .map(adaptable -> adaptable.getAdapter(View.class)) //
+                    .filter(Objects::nonNull) //
+                    .map(editPartRegistry::get) //
+                    .filter(Objects::nonNull) //
+                    .toList();
+            final BorderItemAwareLayoutProvider layoutProvider = new BorderItemAwareLayoutProvider(null, true);
+            cc.add(layoutProvider.layoutEditParts(editPartToLayout, new ObjectAdapter(specificLayoutType), false));
         }
 
-        return UnexecutableCommand.INSTANCE;
+        if (cc.isEmpty()) {
+            return UnexecutableCommand.INSTANCE;
+        } else {
+            return cc;
+        }
     }
 
     @Override
@@ -933,5 +996,15 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
     @Override
     public void addCreatedViewWithCenterLayout(Diagram gmfDiagram, LinkedHashSet<View> createdViewsToLayout) {
         this.createdViewWithCenterLayout.put(gmfDiagram, createdViewsToLayout);
+    }
+
+    @Override
+    public Map<Diagram, Set<View>> getCreatedViewWithBorderNodeLayout() {
+        return createdViewWithBorderNodeLayout;
+    }
+
+    @Override
+    public void addCreatedViewWithBorderNodeLayout(Diagram gmfDiagram, LinkedHashSet<View> views) {
+        createdViewWithBorderNodeLayout.put(gmfDiagram, views);
     }
 }

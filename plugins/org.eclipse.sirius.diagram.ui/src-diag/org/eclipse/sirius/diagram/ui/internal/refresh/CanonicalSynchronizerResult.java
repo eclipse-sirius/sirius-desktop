@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2023 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2023, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,9 +13,12 @@
 package org.eclipse.sirius.diagram.ui.internal.refresh;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.Set;
 
@@ -79,6 +82,12 @@ public class CanonicalSynchronizerResult {
     Set<Edge> orphanEdges;
 
     /**
+     * This collection contains the {@link View}s that have been moved or modified, i.e. those in both orphaned views in
+     * the key (the old version of the element) and created elements, in the value (the new version of the element).
+     */
+    Map<View, View> movedNodes;
+
+    /**
      * Purely graphic elements (PGE) attached to an orphan view
      */
     Set<Node> partialOrphanPGE;
@@ -100,6 +109,7 @@ public class CanonicalSynchronizerResult {
         createdEdges = new ArrayList<Edge>();
         orphanNodes = new ArrayList<View>();
         orphanEdges = new HashSet<Edge>();
+        movedNodes = new HashMap<View, View>();
         partialOrphanPGE = new HashSet<Node>();
         prefRemoveAttachedPGE = DiagramUIPlugin.getPlugin().getPreferenceStore().getBoolean(SiriusDiagramUiInternalPreferencesKeys.PREF_REMOVE_HIDE_NOTE_WHEN_ANNOTED_ELEMENT_HIDDEN_OR_REMOVE.name());
     }
@@ -172,6 +182,29 @@ public class CanonicalSynchronizerResult {
         allViews.addAll(createdNodes);
         allViews.addAll(createdEdges);
         return allViews;
+    }
+
+    /**
+     * Return all views of the created element, but not moved element (note: need computation).
+     * 
+     * @return all views of the created element, but not moved element
+     */
+    public Set<View> getNotMoveCreatedElementViews() {
+        var allViews = new LinkedHashSet<View>();
+        allViews.addAll(createdNodes);
+        allViews.removeAll(getMovedNodes().values());
+        allViews.addAll(createdEdges);
+        return allViews;
+    }
+
+    /**
+     * Returns the map of moved or modified views. The key corresponds to a deleted element and the value to the
+     * corresponding created element (i.e. with the same Sirius element or the same model element).
+     * 
+     * @return The map of the moved views
+     */
+    public Map<View, View> getMovedNodes() {
+        return movedNodes;
     }
 
     /**
@@ -295,19 +328,14 @@ public class CanonicalSynchronizerResult {
     }
 
     /**
-     * This method reconciles the orphan node. If a new node matches to <code>orphanNode</code>:
-     * <ul>
-     * <li>The note attachment linked to the orphan node are linked to the corresponding new node,</li>
-     * <li>The pure graphical elements contained in the orphan node are moved to the corresponding new node.</li>
-     * </ul>
+     * This method reconciles the orphan node. If a new node matches to <code>orphanNode</code>, it is associated with
+     * its corresponding created view in map <code>movedNodes</code>.
      */
     private void reconciliateOrphanNode(View orphanNode) {
         if (orphanNode.getElement() instanceof DSemanticDecorator dDiagramElement) {
             // Search for the corresponding new view if it has been moved
             getCorrespondingView(dDiagramElement).ifPresent(correspondingView -> {
-                // Change note attachments and contained notes from old view to new view
-                reconnectNoteAttachment(orphanNode, correspondingView);
-                moveNotesOfContainer(orphanNode, correspondingView);
+                movedNodes.put(orphanNode, correspondingView);
             });
         }
     }
@@ -335,6 +363,12 @@ public class CanonicalSynchronizerResult {
                 var query = new ViewQuery(view);
                 return query.isNode() || query.isContainer();
             }).forEach(this::reconciliateOrphanNode);
+        }
+
+        for (Entry<View, View> movedNode : movedNodes.entrySet()) {
+            // Change note attachments and contained notes from old view to new view
+            reconnectNoteAttachment(movedNode.getKey(), movedNode.getValue());
+            moveNotesOfContainer(movedNode.getKey(), movedNode.getValue());
         }
     }
 
