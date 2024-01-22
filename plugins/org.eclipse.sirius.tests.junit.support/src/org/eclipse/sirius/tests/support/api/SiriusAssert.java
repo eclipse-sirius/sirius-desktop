@@ -12,10 +12,16 @@
  */
 package org.eclipse.sirius.tests.support.api;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
@@ -25,6 +31,7 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.sirius.business.api.color.AbstractColorUpdater;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
+import org.eclipse.sirius.common.tools.api.resource.FileProvider;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramCorePreferences;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.tools.internal.preferences.SiriusDiagramInternalPreferencesKeys;
@@ -101,24 +108,80 @@ public class SiriusAssert extends Assert {
         }
     }
 
+    private static IFile getWorkspaceFile(final String wksPath) {
+        IFile result = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(wksPath));
+        // Refresh the file to synchronize the workspace.
+        try {
+            result.refreshLocal(IResource.DEPTH_ZERO, new NullProgressMonitor());
+        } catch (CoreException e) {
+            Assert.fail(e.getMessage());
+        }
+        return result;
+    }
+    
     /**
-     * Assert that the file with the given absolute Path exists in the
+     * Assert that a file with the given absolute workspace path exists in the
      * workspace.
      * 
      * @param wksPath
      *            the file's path
      */
     public static void assertFileExists(final String wksPath) {
-        IFile fileToTest = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(wksPath));
-        // Refresh the file to synchronize the workspace.
-        try {
-            fileToTest.refreshLocal(IResource.DEPTH_ZERO, new NullProgressMonitor());
-        } catch (CoreException e) {
-            Assert.fail(e.getMessage());
-        }
-        Assert.assertTrue("The file \"" + wksPath + "\" does not exist.", fileToTest.exists());
+        Assert.assertTrue("The file \"" + wksPath + "\" does not exist.", //$NON-NLS-1$
+                getWorkspaceFile(wksPath).exists());
     }
 
+    /**
+     * Assert that a file with the given absolute workspace path exists in the
+     * workspace and the content equals the expected file.
+     * <p>
+     * Line endings are ignored.
+     * </p>
+     * 
+     * @param expected 
+     *            reference file
+     * @param wksPath
+     *            workspace path of the file to test
+     * @param Charset
+     *            charset of files.
+     */
+    public static void assertFileContent(final String bundleID, final String expected, final String wksPath, Charset cs) {
+        IFile fileToTest = getWorkspaceFile(wksPath);
+        String message = "Tested file \"" + wksPath  //$NON-NLS-1$
+                + "\" does not match reference file \"" + expected + "\"."; //$NON-NLS-1$ //$NON-NLS-2$
+        File expectedFile = FileProvider.getDefault().getFile(bundleID, new Path(expected));
+        try {
+            assertEquals(message, 
+                    getFileContent(expectedFile.toPath(), cs), 
+                    getFileContent(fileToTest.getRawLocation().toFile().toPath(), cs)
+            );
+        } catch (IOException e) {
+            throw new AssertionError(message, e);
+        }
+    }
+    
+    private static String getFileContent(java.nio.file.Path file, Charset cs) throws IOException {
+        return Files.lines(file, cs).collect(Collectors.joining("\n")); //$NON-NLS-1$
+    }
+
+    /**
+     * Assert that a file with the given absolute workspace path exists in the
+     * workspace and the content equals the expected file.
+     * <p>
+     * Line endings are ignored. Bytes from the file are decoded into characters
+     * using the {@link StandardCharsets#UTF_8 UTF-8} {@link Charset charset}.
+     * </p>
+     * 
+     * @param expected 
+     *            reference file
+     * @param wksPath
+     *            workspace path of the file to test
+     */
+    public static void assertFileContent(final String bundleID, final String expected, final String wksPath) {
+        assertFileContent(bundleID, expected, wksPath, StandardCharsets.UTF_8);
+    }
+    
+    
     /**
      * Assert that there is no Sirius core preference changed in Sirius UI store.
      * 

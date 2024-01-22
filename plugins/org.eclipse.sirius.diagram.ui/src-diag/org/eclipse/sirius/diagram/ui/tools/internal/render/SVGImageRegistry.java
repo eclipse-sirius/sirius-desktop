@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2022, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,14 +12,16 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.render;
 
+
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
 import java.util.TreeMap;
 import java.util.UUID;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import org.apache.batik.anim.dom.SVGDOMImplementation;
 import org.apache.batik.anim.dom.SVGOMSVGElement;
@@ -37,8 +39,12 @@ import org.w3c.dom.Node;
 /**
  * Registers the SVG images referenced in a {@link Diagram} for later retrieval as \<symbol\> during SVG export.
  *
+ * @author Nathalie Lepine
  */
 public final class SVGImageRegistry {
+    
+    private static final String FILE_PROTOCOL = "file:"; //$NON-NLS-1$
+    
     /**
      * Px unit.
      */
@@ -50,20 +56,49 @@ public final class SVGImageRegistry {
     private static final String LINK_SYMBOL = "#"; //$NON-NLS-1$
 
     /**
-     * The prefix used for new ids.
+     * The prefix used for new ids of inlined imagess.
      */
+    // This avoid conflict with batik which uses regular names
+    // and imageURL associated id which use letters and digits.
     private static final String NEW_ID_PREFIX = "_"; //$NON-NLS-1$
 
     /**
      * Register a UUID for each image URL.
      */
-    private static final Map<String, UUID> UUID_REGISTRY = new HashMap<>();
+    private static final Map<String, String> UUID_REGISTRY = new HashMap<>();
+
+    // UUID_REGISTRY cannot be sorted by key as key may contains workspace segment.
+    private static final Comparator<Map.Entry<String, String>> UUID_SORTER = Comparator.comparing(Map.Entry::getValue);
 
     /**
      * Register a SVG Document for each image URL.
      */
     private static final Map<String, Element> SVG_DOCUMENT_REGISTRY = new HashMap<>();
 
+    // Using counter limits the need to perform a conflict search
+    private static final Map<String, Integer> GENERATED_IDS = new HashMap<>();
+
+    
+    // Create a UC name from a String.
+    private static final Function<String, String> UUID_CREATE = url -> {
+        String path = url;
+        if (url.startsWith(FILE_PROTOCOL)) {
+            // For workspace images, only canonical path is provided.
+            // Unfortunately, finding platform path may lead to several values 
+            // (Virtual container or sub-projects)
+            // But the name of the file never changes.
+            // So we can keep the name and add counter to ensure unicity.
+            // The value will be unique and constant for all hosts 
+            // as long as the order of elements stays the same (no modification).
+            int segmentPos = url.lastIndexOf('/'); // only separator for URL.
+            if (segmentPos != -1) {
+                path = FILE_PROTOCOL + url.substring(segmentPos) + '_' + UUID_REGISTRY.size();
+            } // else url whould be invalid, let use it.
+        }
+        return UUID.nameUUIDFromBytes(path.getBytes()).toString();
+    };
+    
+    
     /**
      * Constructor.
      */
@@ -77,13 +112,8 @@ public final class SVGImageRegistry {
      *            String
      * @return UUID corresponding to imageURL
      */
-    public static UUID registerUUID(String imageURL) {
-        UUID symbolId = UUID_REGISTRY.get(imageURL);
-        if (symbolId == null) {
-            symbolId = UUID.randomUUID();
-            UUID_REGISTRY.put(imageURL, symbolId);
-        }
-        return symbolId;
+    public static String registerUUID(String imageURL) {
+        return UUID_REGISTRY.computeIfAbsent(imageURL, UUID_CREATE);
     }
 
     /**
@@ -105,17 +135,9 @@ public final class SVGImageRegistry {
      * Clear registry.
      */
     public static void reset() {
+        GENERATED_IDS.clear();
         UUID_REGISTRY.clear();
         SVG_DOCUMENT_REGISTRY.clear();
-    }
-
-    /**
-     * Get all SVG images as symbol tags.
-     * 
-     * @return all SVG images as symbol tags
-     */
-    public static Collection<Element> getReferencedImageSymbols() {
-        return SVG_DOCUMENT_REGISTRY.values();
     }
 
     /**
@@ -140,11 +162,18 @@ public final class SVGImageRegistry {
 
     /**
      * Get all images URLs in ImageRegistry.
+     * <p>
+     * Order of the elements is not based on registration order but is predictable.<br />
+     * (Based on UUID sorting
+     * </p>
      * 
      * @return all images URLs in ImageRegistry.
      */
-    public static Set<String> getURLs() {
-        return UUID_REGISTRY.keySet();
+    public static Collection<String> getURLs() {
+        return UUID_REGISTRY.entrySet().stream() // Sorting is based on entry value (uuid)
+            .sorted(UUID_SORTER) //  as key may include canonical file path 
+            .map(Map.Entry::getKey) // and be different for a same model.
+            .collect(Collectors.toList());
     }
 
     /**
@@ -155,11 +184,7 @@ public final class SVGImageRegistry {
      * @return UUID corresponding to image URL if exists.
      */
     public static Optional<String> getUUID(String url) {
-        UUID uuid = UUID_REGISTRY.get(url);
-        if (uuid != null) {
-            return Optional.ofNullable(uuid.toString());
-        }
-        return Optional.empty();
+        return Optional.ofNullable(UUID_REGISTRY.get(url));
     }
 
     /**
@@ -311,6 +336,12 @@ public final class SVGImageRegistry {
         }
     }
 
+    private static int getGeneratedSuffixId(String base) {
+        Integer result = GENERATED_IDS.getOrDefault(base, 0);
+        GENERATED_IDS.put(base, result + 1);
+        return result;
+    }
+
     /**
      * Update all ids in node attributes.
      * 
@@ -325,7 +356,8 @@ public final class SVGImageRegistry {
             Node idItem = attr.getNamedItem(SVGConstants.SVG_ID_ATTRIBUTE);
             if (idItem != null) {
                 String idValue = idItem.getNodeValue();
-                String newValue = NEW_ID_PREFIX + idValue + "_" + UUID.randomUUID(); //$NON-NLS-1$
+                int suffix = getGeneratedSuffixId(idValue);
+                String newValue = NEW_ID_PREFIX + idValue + '_' + suffix;
                 ids.put(idValue, newValue);
                 idItem.setNodeValue(newValue);
             }

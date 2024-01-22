@@ -24,6 +24,8 @@ h3. User-Visible Changes
 ** Custom colors category displays the ten first colors defined by the user. These colors are persisted in aird file. The "More..." button opens a dialog for adding custom colors.
 ** Suggested colors category displays the ten "preferred colors" chosen by the user which are a subset of the colors defined in the VSM. These colors are persisted in the aird file. The "More..." button opens a dialog that lets the user choose the ten "preferred colors".
 ** Basic colors category displays ten useful colors.
+* <span class="label label-info">Modified</span> Diagram export as SVG image has been improved. It is now repeatable as long as resources are the same. Previously some XML ID were generated using random mechanism.
+
 
 h3. Specifier-Visible Changes
 
