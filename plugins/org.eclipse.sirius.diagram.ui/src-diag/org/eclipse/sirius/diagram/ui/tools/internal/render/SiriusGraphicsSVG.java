@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2004, 2022 IBM Corporation and others.
+ * Copyright (c) 2004, 2024 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,7 +21,6 @@ import java.awt.image.renderable.RenderableImage;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 import org.apache.batik.anim.dom.SVGDOMImplementation;
 import org.apache.batik.anim.dom.SVGOMDefsElement;
@@ -145,7 +144,7 @@ public class SiriusGraphicsSVG extends SiriusGraphicsToGraphics2DAdaptor impleme
          */
         public void drawSVGReference(String uri, int x, int y, int width, int height) {
             Element useElement = getDOMFactory().createElementNS(SVG_NAMESPACE_URI, SVGConstants.SVG_USE_TAG);
-            UUID uuid = SVGImageRegistry.registerUUID(uri);
+            String uuid = SVGImageRegistry.registerUUID(uri);
 
             // Ignore the currentState of the Graphics by setting default attributes
             // These attributes can be overloaded if they are defined in the embedded svg
@@ -157,7 +156,7 @@ public class SiriusGraphicsSVG extends SiriusGraphicsToGraphics2DAdaptor impleme
             useElement.setAttributeNS(null, SVG_Y_ATTRIBUTE, getGeneratorContext().doubleString(y));
             useElement.setAttributeNS(null, SVG_WIDTH_ATTRIBUTE, getGeneratorContext().doubleString(width));
             useElement.setAttributeNS(null, SVG_HEIGHT_ATTRIBUTE, getGeneratorContext().doubleString(height));
-            useElement.setAttributeNS(XMLConstants.XLINK_NAMESPACE_URI, XMLConstants.XLINK_HREF_QNAME, "#" + uuid.toString()); //$NON-NLS-1$
+            useElement.setAttributeNS(XMLConstants.XLINK_NAMESPACE_URI, XMLConstants.XLINK_HREF_QNAME, '#' + uuid);
             if (svgTraceability) {
                 useElement.setAttributeNS(DiagramPackage.eNS_URI, AnnotatedSVGShape.ATTR_NAME, currentId);
             }
