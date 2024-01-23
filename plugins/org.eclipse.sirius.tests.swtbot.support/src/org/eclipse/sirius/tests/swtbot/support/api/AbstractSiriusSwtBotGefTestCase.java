@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2023 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -1766,11 +1766,11 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
             setErrorCatchActive(false);
             setWarningCatchActive(false);
 
-            // All tearDown tasks have been done, now all fields can be safely clear (before below final checks).
-            new TestCaseCleaner(this).clearAllFields();
-
             crossRefDetector.assertNoCrossReferenceAdapterFound();
             checkLogs();
+
+            // All tearDown tasks have been done, now all fields can be safely clear.
+            new TestCaseCleaner(this).clearAllFields();
         }
 
     }
