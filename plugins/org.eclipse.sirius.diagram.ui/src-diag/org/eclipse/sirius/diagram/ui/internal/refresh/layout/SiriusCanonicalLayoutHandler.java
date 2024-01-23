@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2023 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -431,7 +431,10 @@ public final class SiriusCanonicalLayoutHandler {
                                 && !(input.getKey().getParent().getParent() instanceof DNodeContainerViewNodeContainerCompartment2EditPart));
             }
         };
-        Map<IGraphicalEditPart, List<IAdaptable>> remainingViewsToLayoutMap = layoutBorderAndBorderedNodes(createdViewsToLayoutMap, editingDomain, compoundCommand);
+        Map<IGraphicalEditPart, List<IAdaptable>> filteredCreatedViewsToLayoutMap = createdViewsToLayoutMap.entrySet().stream() //
+                .filter(typeOfElementToLayout) //
+                .collect(Collectors.toMap(Entry::getKey, Entry::getValue));
+        Map<IGraphicalEditPart, List<IAdaptable>> remainingViewsToLayoutMap = layoutBorderAndBorderedNodes(filteredCreatedViewsToLayoutMap, editingDomain, compoundCommand);
         for (Entry<IGraphicalEditPart, List<IAdaptable>> entry : remainingViewsToLayoutMap.entrySet()) {
             IGraphicalEditPart parentEditPart = entry.getKey();
             List<IAdaptable> childViewsAdapters = entry.getValue();
@@ -456,6 +459,7 @@ public final class SiriusCanonicalLayoutHandler {
      *            layout.
      * @deprecated Only here as security if user activates {@link LayoutUtil#isArrangeAtOpeningChangesDisabled()}.
      */
+    @Deprecated
     public static void oldLaunchArrangeCommand(DiagramEditPart diagramEditPart) {
         TransactionalEditingDomain editingDomain = diagramEditPart.getEditingDomain();
         Map<IGraphicalEditPart, List<IAdaptable>> createdViewsToLayoutMap = oldGetCreatedViewsToLayoutMap(diagramEditPart);
