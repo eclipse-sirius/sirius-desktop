@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2023 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2023, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,13 +13,19 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning;
 
 import java.util.Collection;
-import java.util.List;
+import java.util.HashMap;
+import java.util.LinkedHashSet;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.transaction.ResourceSetListener;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
@@ -39,7 +45,7 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
-import org.eclipse.sirius.ecore.extender.business.api.permission.IAuthorityListener;
+import org.eclipse.sirius.ecore.extender.business.api.permission.ISimpleAuthorityListener;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IWorkbenchPage;
@@ -54,35 +60,16 @@ public final class PinElementsAction extends Action implements Disposable {
 
     private static final Class<?>[] EXCEPTIONS = new Class<?>[] { IDiagramEdgeEditPart.class };
 
-    private Optional<DDiagramElement> selectionLastElement = Optional.empty();
+    private Map<DDiagramElement, ResourceSetListener> selectionElements;
 
-    private ResourceSetListener pinListener;
+    private Set<ResourceSet> selectionResourceSets;
 
     private ISelectionListener onChangeSelection = (IWorkbenchPart part, ISelection selection) -> {
-        EclipseUIUtil.displayAsyncExec(() -> updateActionState(selection));
+        EclipseUIUtil.displaySyncExec(() -> updateActionState(selection));
     };
 
-    private IAuthorityListener authorityListener = new IAuthorityListener() {
-
-        @Override
-        public void notifyIsReleased(Collection<EObject> instances) {
-            EclipseUIUtil.displayAsyncExec(() -> updateActionState(getCurrentSelection()));
-        }
-
-        @Override
-        public void notifyIsReleased(EObject instance) {
-            EclipseUIUtil.displayAsyncExec(() -> updateActionState(getCurrentSelection()));
-        }
-
-        @Override
-        public void notifyIsLocked(Collection<EObject> instances) {
-            EclipseUIUtil.displayAsyncExec(() -> updateActionState(getCurrentSelection()));
-        }
-
-        @Override
-        public void notifyIsLocked(EObject instance) {
-            EclipseUIUtil.displayAsyncExec(() -> updateActionState(getCurrentSelection()));
-        }
+    private ISimpleAuthorityListener authorityListener = () -> {
+        EclipseUIUtil.displaySyncExec(() -> updateActionState(getCurrentSelection()));
     };
 
     private boolean isDisposed;
@@ -125,7 +112,7 @@ public final class PinElementsAction extends Action implements Disposable {
 
     @Override
     public void run() {
-        final List<DDiagramElement> elements = getSelectedDiagramElements(getCurrentSelection());
+        final Set<DDiagramElement> elements = getSelectedDiagramElements(getCurrentSelection()).keySet();
         if (!elements.isEmpty()) {
             // Note: in this method, we are after the button has been pressed.
             // So, isChecked() == true means that the button has just been checked,
@@ -136,7 +123,7 @@ public final class PinElementsAction extends Action implements Disposable {
             } else {
                 cmd = new UnpinElementsCommand(elements);
             }
-            TransactionUtil.getEditingDomain(getFirst(elements).orElseThrow()).getCommandStack().execute(cmd);
+            TransactionUtil.getEditingDomain(getAny(elements).orElseThrow()).getCommandStack().execute(cmd);
         }
     }
 
@@ -177,7 +164,7 @@ public final class PinElementsAction extends Action implements Disposable {
         // remove the listener of old selection
         removePinListener();
         setEnabled(isAvailableFor(selection));
-        selectionLastElement = getLastElement(selection);
+        selectionElements = getSelectedDiagramElements(selection);
         updatePinState();
         // add listener of new selection
         addPinListener();
@@ -187,48 +174,60 @@ public final class PinElementsAction extends Action implements Disposable {
      * Add listener of the pin/unpin feature of the last selected element selection (selectionLastElement) if present.
      */
     private void addPinListener() {
-        selectionLastElement.ifPresent(elem -> {
-            TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(elem);
-            if (domain != null) {
-                pinListener = new PinHelper().createPinListener(elem, () -> {
-                    EclipseUIUtil.displayAsyncExec(this::updatePinState);
-                });
-                domain.addResourceSetListener(pinListener);
+        if (selectionElements != null) {
+            selectionResourceSets = new LinkedHashSet<ResourceSet>();
+            selectionElements = selectionElements.keySet().stream().collect(Collectors.toMap(Function.identity(), (elem) -> {
+                TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(elem);
+                if (domain != null) {
+                    ResourceSetListener pinListener = new PinHelper().createPinListener(elem, () -> {
+                        EclipseUIUtil.displayAsyncExec(this::updatePinState);
+                    });
+                    domain.addResourceSetListener(pinListener);
 
-                Resource resource = elem.eResource();
-                if (resource != null) {
-                    var permissionAuthoriry = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(resource.getResourceSet());
-                    permissionAuthoriry.addAuthorityListener(authorityListener);
+                    Resource resource = elem.eResource();
+                    if (resource != null) {
+                        selectionResourceSets.add(resource.getResourceSet());
+                    }
+
+                    return pinListener;
+                } else {
+                    return null;
                 }
+            }));
+            for (ResourceSet resourceSet : selectionResourceSets) {
+                var permissionAuthoriry = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(resourceSet);
+                permissionAuthoriry.addAuthorityListener(authorityListener);
             }
-        });
+        }
     }
     /**
      * Remove the listener of the pin/unpin feature of the last selected element selection (selectionLastElement) if
      * present.
      */
     private void removePinListener() {
-        selectionLastElement.ifPresent(element -> {
-            TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(element);
-            if (domain != null) {
-                domain.removeResourceSetListener(pinListener);
-            } // else, nothing: if domain has been deleted, the listener is no longer attached to it
-            pinListener = null;
-
-            Resource resource = element.eResource();
-            if (resource != null) {
-                var permissionAuthoriry = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(resource.getResourceSet());
+        if (selectionElements != null) {
+            for (ResourceSet resourceSet : selectionResourceSets) {
+                var permissionAuthoriry = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(resourceSet);
                 permissionAuthoriry.removeAuthorityListener(authorityListener);
             }
-        });
-        selectionLastElement = Optional.empty();
+            for (Entry<DDiagramElement, ResourceSetListener> entry : selectionElements.entrySet()) {
+                DDiagramElement element = entry.getKey();
+                ResourceSetListener pinListener = entry.getValue();
+                TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(element);
+                if (domain != null) {
+                    domain.removeResourceSetListener(pinListener);
+                } // else, nothing: if domain has been deleted, the listener is no longer attached to it
+            }
+            selectionResourceSets = null;
+            selectionElements = null;
+        }
     }
 
     /**
      * Update pin state (the check state of the action). Needs to be executed in thread UI.
      */
     private void updatePinState() {
-        boolean isPinned = selectionLastElement.map(elem -> new PinHelper().isPinned(elem)).orElse(false);
+        boolean isPinned = !selectionElements.isEmpty() && selectionElements.keySet().stream().allMatch(elem -> new PinHelper().isPinned(elem));
         setChecked(isPinned);
     }
 
@@ -240,7 +239,7 @@ public final class PinElementsAction extends Action implements Disposable {
      *            Selection
      * @return Selected elements.
      */
-    private List<DDiagramElement> getSelectedDiagramElements(final ISelection selection) {
+    private Map<DDiagramElement, ResourceSetListener> getSelectedDiagramElements(final ISelection selection) {
         if (selection instanceof IStructuredSelection structuredSelection) {
             Iterable<?> iterableSelection = structuredSelection;
             return StreamSupport.stream(iterableSelection.spliterator(), false) //
@@ -250,9 +249,10 @@ public final class PinElementsAction extends Action implements Disposable {
                     .map(IGraphicalEditPart::resolveSemanticElement) //
                     .filter(DDiagramElement.class::isInstance) //
                     .map(DDiagramElement.class::cast) //
-                    .toList();
+                    .collect(HashMap::new, (map, element) -> map.put(element, null), Map::putAll);
+        } else {
+            return Map.of();
         }
-        return List.of();
     }
 
     /**
@@ -273,7 +273,7 @@ public final class PinElementsAction extends Action implements Disposable {
      * Return if the pin/unpin is available for the given selection.
      */
     private boolean isAvailableFor(ISelection selection) {
-        List<DDiagramElement> selectedDiagramElements = getSelectedDiagramElements(selection);
+        Set<DDiagramElement> selectedDiagramElements = getSelectedDiagramElements(selection).keySet();
         if (!selectedDiagramElements.isEmpty()) {
             return selectedDiagramElements.stream().allMatch(this::canPinUnpin);
         } else {
@@ -312,17 +312,7 @@ public final class PinElementsAction extends Action implements Disposable {
 
 
     // utility
-    private Optional<DDiagramElement> getFirst(final List<DDiagramElement> elements) {
-        return elements.stream().findFirst();
-    }
-    private Optional<DDiagramElement> getLast(final List<DDiagramElement> elements) {
-        if (elements.isEmpty()) {
-            return Optional.empty();
-        } else {
-            return Optional.of(elements.get(elements.size() - 1));
-        }
-    }
-    private Optional<DDiagramElement> getLastElement(final ISelection selection) {
-        return getLast(getSelectedDiagramElements(selection));
+    private Optional<DDiagramElement> getAny(final Collection<DDiagramElement> elements) {
+        return elements.stream().findAny();
     }
 }
