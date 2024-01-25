@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ package org.eclipse.sirius.ecore.extender.business.internal.permission;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
@@ -88,7 +89,7 @@ public abstract class AbstractPermissionAuthority implements IPermissionAuthorit
     public void addAuthorityListener(final IAuthorityListener listener) {
         // The same listener cannot be added multiple times
         if (!listeners.contains(listener)) {
-            listeners.add(listener);
+            listeners.add(Objects.requireNonNull(listener));
         }
     }
 
