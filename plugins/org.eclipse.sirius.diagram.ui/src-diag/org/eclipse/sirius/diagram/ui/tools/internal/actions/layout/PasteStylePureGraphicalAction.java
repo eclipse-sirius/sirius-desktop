@@ -59,17 +59,17 @@ public class PasteStylePureGraphicalAction extends Action implements IDisposable
     // Listeners:
     // - Selection
     private ISelectionListener onChangeSelection = (part, selection) -> {
-        EclipseUIUtil.displayAsyncExec(() -> updateActionState(getTargetEditParts(selection)));
+        EclipseUIUtil.displaySyncExec(() -> updateActionState(getTargetEditParts(selection)));
     };
 
     // - Permission
     private ISimpleAuthorityListener onChangePermission = () -> {
-        EclipseUIUtil.displayAsyncExec(() -> updateActionState(getTargetEditParts()));
+        EclipseUIUtil.displaySyncExec(() -> updateActionState(getTargetEditParts()));
     };
 
     // - Style Clipboard
     private SiriusStyleClipboard.Listener onChangeClipboard = (gmfView, siriusStyle) -> {
-        EclipseUIUtil.displayAsyncExec(() -> updateActionState(getTargetEditParts()));
+        EclipseUIUtil.displaySyncExec(() -> updateActionState(getTargetEditParts()));
     };
 
     /**
@@ -102,6 +102,10 @@ public class PasteStylePureGraphicalAction extends Action implements IDisposable
     public void dispose() {
         if (!isDisposed) {
             isDisposed = true;
+            editingDomainOpt.ifPresent(editingDomain -> {
+                var permissionAuthoriry = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(editingDomain.getResourceSet());
+                permissionAuthoriry.removeAuthorityListener(onChangePermission);
+            });
             changeListenerOpt.ifPresent(changeListener -> {
                 this.removePropertyChangeListener(changeListener);
             });
