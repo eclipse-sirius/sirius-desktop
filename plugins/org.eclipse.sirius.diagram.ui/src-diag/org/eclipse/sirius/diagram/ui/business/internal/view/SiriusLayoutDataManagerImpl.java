@@ -48,6 +48,7 @@ import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
 import org.eclipse.gmf.runtime.diagram.ui.commands.DeferredLayoutCommand;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.figures.LayoutHelper;
 import org.eclipse.gmf.runtime.diagram.ui.internal.services.layout.IInternalLayoutRunnable;
@@ -160,6 +161,33 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
     };
 
     /**
+     * An adapter to mark the View as reference for center layout by the SiriusLayoutDataManager.
+     * 
+     * @see #getReferenceAdapterMarker()
+     */
+    private static final Adapter REFERENCE_LAYOUT_MARKER_ADAPTER = new Adapter() {
+
+        @Override
+        public void setTarget(final Notifier newTarget) {
+        }
+
+        @Override
+        public void notifyChanged(final Notification notification) {
+        }
+
+        @Override
+        public boolean isAdapterForType(final Object type) {
+            return type instanceof SiriusLayoutDataManager;
+        }
+
+        @Override
+        public Notifier getTarget() {
+            return null;
+        }
+
+    };
+
+    /**
      * An adapter to mark the View as layout with border node algorithm by the SiriusLayoutDataManager.
      */
     private static final Adapter BORDER_NODE_LAYOUT_MARKER_ADAPTER = new Adapter() {
@@ -201,7 +229,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
         }
     };
 
-    private Map<Diagram, Set<View>> createdViewToLayout = new HashMap<Diagram, Set<View>>();
+    private Map<Diagram, Set<View>> createdViewForLayoutAll = new HashMap<Diagram, Set<View>>();
 
     private IOperationHistoryListener viewPointLayoutDataFlusher;
 
@@ -212,9 +240,17 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      * has been registered in the layoutDataManager : the view must be created in the center location of the visible
      * part of its container.
      */
-    private Map<Diagram, Set<View>> createdViewWithCenterLayout = new HashMap<Diagram, Set<View>>();
+    private Map<Diagram, Set<View>> createdViewForInitPositionLayout = new HashMap<Diagram, Set<View>>();
 
-    private Map<Diagram, Set<View>> createdViewWithBorderNodeLayout = new HashMap<Diagram, Set<View>>();
+    /**
+     * Lists of views with defined coordinates, to be used as reference positions for the other views to layout in
+     * algorithm centerLayout.
+     * 
+     * @see #createdViewForInitPositionLayout
+     */
+    private Map<Diagram, Set<View>> createdViewAsReferenceLayout = new HashMap<Diagram, Set<View>>();
+
+    private Map<Diagram, Set<View>> createdViewForBorderNodeLayout = new HashMap<Diagram, Set<View>>();
 
     /**
      * Avoid instantiation.
@@ -464,6 +500,11 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
     }
 
     @Override
+    public Adapter getReferenceAdapterMarker() {
+        return REFERENCE_LAYOUT_MARKER_ADAPTER;
+    }
+
+    @Override
     public Adapter getBorderNodeMarker() {
         return BORDER_NODE_LAYOUT_MARKER_ADAPTER;
     }
@@ -551,32 +592,16 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
     }
 
     @Override
-    public Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> borderedCreatedViews, List<IAdaptable> centeredCreatedViews, IGraphicalEditPart host) {
-        return getArrangeCreatedViewsCommand(createdViews, borderedCreatedViews, centeredCreatedViews, host, false);
+    public Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> borderedCreatedViews, List<IAdaptable> centeredCreatedViews,
+            List<IAdaptable> referenceChildViewsAdapters, IGraphicalEditPart host) {
+        return getArrangeCreatedViewsCommand(createdViews, borderedCreatedViews, centeredCreatedViews, referenceChildViewsAdapters, host, false);
     }
 
     @Override
-    public Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> borderedCreatedViews, List<IAdaptable> centeredCreatedViews, IGraphicalEditPart host,
-            boolean useSpecificLayoutType) {
+    public Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> borderedCreatedViews, List<IAdaptable> centeredCreatedViews,
+            List<IAdaptable> referenceChildViewsAdapters, IGraphicalEditPart host, boolean useSpecificLayoutType) {
         String layoutType = useSpecificLayoutType ? LAYOUT_TYPE_ARRANGE_AT_OPENING : LayoutType.DEFAULT;
-        return getArrangeCreatedViewsCommand(createdViews, borderedCreatedViews, centeredCreatedViews, host, layoutType);
-    }
-
-    @Override
-    public Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> borderedCreatedViews, List<IAdaptable> centeredCreatedViews, IGraphicalEditPart host,
-            String specificLayoutType) {
-        // Layout only the views that are not
-        // already layout (by a drag'n'drop for example)
-        // if (createdViewsToLayout.size() == 1) {
-        // cc.add(new
-        // ICommandProxy(getAddAdapterMakerOnOpeningCommand(host.getEditingDomain(),
-        // (View) createdViewsToLayout.get(0))));
-        // }
-        if (createdViews != null && createdViews.size() == 1 && isAlreadyArrange(createdViews.get(0)) && !hasCenterLayout(createdViews.get(0))) {
-            removeAlreadyArrangeMarker(createdViews.get(0));
-            return UnexecutableCommand.INSTANCE;
-        }
-        return getCreatedViewsCommandFromLayoutType(createdViews, borderedCreatedViews, centeredCreatedViews, host, specificLayoutType);
+        return getArrangeCreatedViewsCommand(createdViews, borderedCreatedViews, centeredCreatedViews, referenceChildViewsAdapters, host, layoutType);
     }
 
     /**
@@ -594,22 +619,50 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      *            {@link SiriusLayoutDataManager#KEEP_FIXED})
      * @return the layout command
      */
-    private Command getCreatedViewsCommandFromLayoutType(List<IAdaptable> createdViews, List<IAdaptable> borderedCreatedViews, List<IAdaptable> centeredCreatedViews, IGraphicalEditPart host,
-            String specificLayoutType) {
+    @Override
+    public Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> borderedCreatedViews, List<IAdaptable> centeredCreatedViews,
+            List<IAdaptable> referenceChildViewsAdapters, IGraphicalEditPart host, String specificLayoutType) {
         CompoundCommand cc = new CompoundCommand();
         // Center Layout case
         if (centeredCreatedViews != null) {
-            Point previousCenterLocation = null;
+            Point previousCenterLocation = getReferencePosition(host, referenceChildViewsAdapters);
             // We compute the center location for the first view then we shift
             // the others
-            for (IAdaptable iAdaptable : centeredCreatedViews) {
-                previousCenterLocation = calculateCenterLocation(host, cc, iAdaptable, previousCenterLocation);
+            Collection<IGraphicalEditPart> partsToLayout = centeredCreatedViews.stream().map(adaptable -> {
+                View view = adaptable.getAdapter(View.class);
+                return (IGraphicalEditPart) host.getViewer().getEditPartRegistry().get(view);
+            }).filter(Objects::nonNull).toList();
+            Collection<IFigure> figuresToLayout = partsToLayout.stream().map(IGraphicalEditPart::getFigure).toList();
+            for (IGraphicalEditPart part : partsToLayout) {
+                previousCenterLocation = calculateCenterLocation(host, cc, part, previousCenterLocation, figuresToLayout);
             }
-            return cc;
         }
+        if (createdViews != null || borderedCreatedViews != null) {
+            // "normal" layout case
+            cc.add(arrangeSeveralCreatedViews(createdViews, borderedCreatedViews, host, specificLayoutType));
+        }
+        return cc;
+    }
 
-        // "normal" layout case
-        return arrangeSeveralCreatedViews(createdViews, borderedCreatedViews, host, specificLayoutType);
+    private IFigure adapterToFigure(IGraphicalEditPart host, IAdaptable iAdaptable) {
+        IGraphicalEditPart part = (IGraphicalEditPart) host.getViewer().getEditPartRegistry().get(iAdaptable.getAdapter(View.class));
+        return part.getFigure();
+    }
+
+    private Point getReferencePosition(IGraphicalEditPart host, List<IAdaptable> referenceViews) {
+        if (referenceViews == null) {
+            return null;
+        } else {
+            SiriusLayoutHelper layoutHelper = new SiriusLayoutHelper(host);
+            return referenceViews.stream() //
+                    // get all figures
+                    .map(adaptable -> adapterToFigure(host, adaptable))
+                    // get the rightmost figure
+                    .max((figure1, figure2) -> figure1.getBounds().right() - figure2.getBounds().right())
+                    // get coordinates for second view (i.e. the first unplaced view)
+                    .map(layoutHelper::calculateNextPoint)
+                    .orElse(null);
+        }
     }
 
     /**
@@ -620,29 +673,37 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      * @param cc
      * @param iAdaptable
      */
-    private Point calculateCenterLocation(IGraphicalEditPart host, CompoundCommand cc, IAdaptable iAdaptable, Point previousCenterLocation) {
+    private Point calculateCenterLocation(IGraphicalEditPart host, CompoundCommand cc, IGraphicalEditPart part, Point previousCenterLocation, Collection<IFigure> figuresToLayout) {
         Rectangle rect = new Rectangle();
         rect.setSize(LayoutHelper.UNDEFINED.getSize());
         Point centerLocation;
-        IGraphicalEditPart part = (IGraphicalEditPart) host.getViewer().getEditPartRegistry().get(iAdaptable.getAdapter(View.class));
         SiriusLayoutHelper layoutHelper = new SiriusLayoutHelper(host);
         IFigure figure = part.getFigure();
         if (previousCenterLocation == null) {
             // Get center (reference point)
-            Point referencePoint = layoutHelper.getReferencePosition(host.getContentPane(), ((FigureCanvas) host.getViewer().getControl()).getViewport(), host);
+            Point referencePoint;
+            if (host instanceof DiagramEditPart) {
+                // When the element is placed at the bottom of the diagram, it is placed in the centre
+                referencePoint = layoutHelper.getReferencePosition(host.getContentPane(), ((FigureCanvas) host.getViewer().getControl()).getViewport(), host);
+            } else {
+                // When the element is placed in a container, it is placed at (20, 20)
+                referencePoint = new Point(20, 20);
+            }
             rect.setLocation(referencePoint);
             rect.setSize(figure.getSize());
             // Get the first free location
-            Point point = layoutHelper.validatePosition(host.getContentPane(), rect);
+            Point point = layoutHelper.validatePosition(host.getContentPane(), rect, figuresToLayout);
             centerLocation = point.getCopy();
         } else {
-            Point figureReferencePoint = layoutHelper.determineReferencePoint(figure);
-            figureReferencePoint.translate(previousCenterLocation);
-            centerLocation = layoutHelper.computeTranslatedPoint(figureReferencePoint, figure, false);
+            centerLocation = previousCenterLocation;
         }
         cc.add(new ICommandProxy(new SetBoundsCommand(host.getEditingDomain(), DiagramUIMessages.SetLocationCommand_Label_Resize, part, centerLocation)));
+        Point figureReferencePoint = layoutHelper.determineReferencePoint(figure);
+        figureReferencePoint.translate(centerLocation);
+        centerLocation = layoutHelper.computeTranslatedPoint(figureReferencePoint, figure, false);
         return centerLocation.getCopy();
     }
+
 
     /**
      * Arrange views.
@@ -966,13 +1027,13 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
     }
 
     @Override
-    public void addCreatedViewsToLayout(Diagram gmfDiagram, LinkedHashSet<View> createdViewsToLayout) {
-        createdViewToLayout.put(gmfDiagram, createdViewsToLayout);
+    public void addCreatedViewForLayoutAll(Diagram gmfDiagram, LinkedHashSet<View> createdViewsToLayout) {
+        createdViewForLayoutAll.put(gmfDiagram, createdViewsToLayout);
     }
 
     @Override
-    public Map<Diagram, Set<View>> getCreatedViewsToLayout() {
-        return createdViewToLayout;
+    public Map<Diagram, Set<View>> getCreatedViewForLayoutAll() {
+        return createdViewForLayoutAll;
     }
 
     @Override
@@ -989,22 +1050,40 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
     }
 
     @Override
-    public Map<Diagram, Set<View>> getCreatedViewWithCenterLayout() {
-        return createdViewWithCenterLayout;
+    public void removeLayoutViews(Diagram diagram) {
+        createdViewForLayoutAll.remove(diagram);
+        createdViewForInitPositionLayout.remove(diagram);
+        createdViewAsReferenceLayout.remove(diagram);
+        createdViewForBorderNodeLayout.remove(diagram);
     }
 
     @Override
-    public void addCreatedViewWithCenterLayout(Diagram gmfDiagram, LinkedHashSet<View> createdViewsToLayout) {
-        this.createdViewWithCenterLayout.put(gmfDiagram, createdViewsToLayout);
+    public Map<Diagram, Set<View>> getCreatedViewForInitPositionLayout() {
+        return createdViewForInitPositionLayout;
     }
 
     @Override
-    public Map<Diagram, Set<View>> getCreatedViewWithBorderNodeLayout() {
-        return createdViewWithBorderNodeLayout;
+    public void addCreatedViewForInitPositionLayout(Diagram gmfDiagram, LinkedHashSet<View> createdViewsToLayout) {
+        this.createdViewForInitPositionLayout.put(gmfDiagram, createdViewsToLayout);
     }
 
     @Override
-    public void addCreatedViewWithBorderNodeLayout(Diagram gmfDiagram, LinkedHashSet<View> views) {
-        createdViewWithBorderNodeLayout.put(gmfDiagram, views);
+    public Map<Diagram, Set<View>> getCreatedViewReferenceLayout() {
+        return createdViewAsReferenceLayout;
+    }
+
+    @Override
+    public void addCreatedViewAsReferenceLayout(Diagram gmfDiagram, LinkedHashSet<View> views) {
+        createdViewAsReferenceLayout.put(gmfDiagram, views);
+    }
+
+    @Override
+    public Map<Diagram, Set<View>> getCreatedViewForBorderNodeLayout() {
+        return createdViewForBorderNodeLayout;
+    }
+
+    @Override
+    public void addCreatedViewForBorderNodeLayout(Diagram gmfDiagram, LinkedHashSet<View> views) {
+        createdViewForBorderNodeLayout.put(gmfDiagram, views);
     }
 }

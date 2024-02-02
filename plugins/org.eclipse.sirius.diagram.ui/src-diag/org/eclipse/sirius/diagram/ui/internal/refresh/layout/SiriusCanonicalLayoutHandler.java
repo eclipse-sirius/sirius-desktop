@@ -91,24 +91,18 @@ public final class SiriusCanonicalLayoutHandler {
                     resolvedSemanticElement.eAdapters().remove(NotYetOpenedDiagramAdapter.INSTANCE);
                     // Also clean the created views from SiriusLayoutDataManager as they are layouted with the global
                     // arrange all. Otherwise it could be arrange "again" in a next opening for example.
-                    Set<View> set = SiriusLayoutDataManager.INSTANCE.getCreatedViewsToLayout().get(diagramEditPart.getDiagramView());
-                    if (set != null) {
-                        set.clear();
-                    }
-                    Set<View> set2 = SiriusLayoutDataManager.INSTANCE.getCreatedViewWithCenterLayout().get(diagramEditPart.getDiagramView());
-                    if (set2 != null) {
-                        set2.clear();
-                    }
-
+                    SiriusLayoutDataManager.INSTANCE.removeLayoutViews(diagramEditPart.getDiagramView());
                 }
             }
 
             if (!specificArrangeAtFirstOpening) {
-                Map<IGraphicalEditPart, List<IAdaptable>> createdViewsToLayoutMap = getCreatedViewsToLayoutByContainerPart(diagramEditPart, SiriusLayoutDataManager.INSTANCE.getCreatedViewsToLayout());
+                Map<IGraphicalEditPart, List<IAdaptable>> createdViewsToLayoutMap = getCreatedViewsToLayoutByContainerPart(diagramEditPart, SiriusLayoutDataManager.INSTANCE.getCreatedViewForLayoutAll());
                 Map<IGraphicalEditPart, List<IAdaptable>> createdViewsToBorderNodeLayoutMap = getCreatedViewsToLayoutByContainerPart(diagramEditPart,
-                        SiriusLayoutDataManager.INSTANCE.getCreatedViewWithBorderNodeLayout());
+                        SiriusLayoutDataManager.INSTANCE.getCreatedViewForBorderNodeLayout());
                 Map<IGraphicalEditPart, List<IAdaptable>> centeredCreatedViewsToLayoutMap = getCreatedViewsToLayoutByContainerPart(diagramEditPart,
-                        SiriusLayoutDataManager.INSTANCE.getCreatedViewWithCenterLayout());
+                        SiriusLayoutDataManager.INSTANCE.getCreatedViewForInitPositionLayout());
+                Map<IGraphicalEditPart, List<IAdaptable>> createdViewsAsReferenceLayoutMap = getCreatedViewsToLayoutByContainerPart(diagramEditPart,
+                        SiriusLayoutDataManager.INSTANCE.getCreatedViewReferenceLayout());
                 LayoutProvider layoutProvider = LayoutService.getProvider(diagramEditPart);
                 String layoutType = LayoutType.DEFAULT;
                 if (layoutProvider instanceof GenericLayoutProvider && ((GenericLayoutProvider) layoutProvider).shouldReverseLayoutsOrder(diagramEditPart)) {
@@ -122,7 +116,8 @@ public final class SiriusCanonicalLayoutHandler {
                     createdViewsToLayoutMap = createdViewsToLayoutMap_reverse;
                     layoutType = SiriusLayoutDataManager.LAYOUT_TYPE_ARRANGE_AT_OPENING;
                 }
-                Command layoutCommand = getLayoutCommand(createdViewsToLayoutMap, createdViewsToBorderNodeLayoutMap, centeredCreatedViewsToLayoutMap, editingDomain, layoutType);
+                Command layoutCommand = getLayoutCommand(createdViewsToLayoutMap, createdViewsToBorderNodeLayoutMap, centeredCreatedViewsToLayoutMap, createdViewsAsReferenceLayoutMap, editingDomain,
+                        layoutType);
                 if (layoutCommand.canExecute()) {
                     editingDomain.getCommandStack().execute(layoutCommand);
                 }
@@ -200,7 +195,7 @@ public final class SiriusCanonicalLayoutHandler {
     }
 
     private static Command getLayoutCommand(Map<IGraphicalEditPart, List<IAdaptable>> createdViewsToLayoutMap, Map<IGraphicalEditPart, List<IAdaptable>> createdViewsToBorderNodeLayoutMap,
-            Map<IGraphicalEditPart, List<IAdaptable>> centeredCreatedViewsToLayoutMap,
+            Map<IGraphicalEditPart, List<IAdaptable>> centeredCreatedViewsToLayoutMap, Map<IGraphicalEditPart, List<IAdaptable>> createdViewsAsReferenceLayoutMap,
             TransactionalEditingDomain editingDomain, String specificLayoutType) {
 
         final CompoundCommand compoundCommand = new CompoundCommand();
@@ -217,28 +212,29 @@ public final class SiriusCanonicalLayoutHandler {
                                 && !(input.getKey().getParent().getParent() instanceof DNodeContainerViewNodeContainerCompartment2EditPart));
             }
         };
+        for (Entry<IGraphicalEditPart, List<IAdaptable>> entry : Iterables.filter(centeredCreatedViewsToLayoutMap.entrySet(), typeOfElementToLayout)) {
+            IGraphicalEditPart parentEditPart = entry.getKey();
+            List<IAdaptable> childViewsAdapters = entry.getValue();
+            List<IAdaptable> referenceViews = createdViewsAsReferenceLayoutMap.get(parentEditPart);
+            Command layoutCommand = SiriusCanonicalLayoutCommand.initial(editingDomain, parentEditPart, childViewsAdapters, referenceViews, specificLayoutType);
+            compoundCommand.append(layoutCommand);
+        }
+        for (Entry<IGraphicalEditPart, List<IAdaptable>> entry : Iterables.filter(createdViewsToLayoutMap.entrySet(), typeOfElementToLayout)) {
+            IGraphicalEditPart parentEditPart = entry.getKey();
+            List<IAdaptable> childViewsAdapters = entry.getValue();
+            Command layoutCommand = SiriusCanonicalLayoutCommand.normal(editingDomain, parentEditPart, childViewsAdapters, specificLayoutType);
+            compoundCommand.append(layoutCommand);
+        }
         Map<IGraphicalEditPart, List<IAdaptable>> filteredCreatedViewsToBorderNodeLayoutMap = createdViewsToBorderNodeLayoutMap.entrySet().stream() //
                 .filter(typeOfElementToLayout) //
                 .collect(Collectors.toMap(Entry::getKey, Entry::getValue));
         for (Entry<IGraphicalEditPart, List<IAdaptable>> borderedNodeEntry : filteredCreatedViewsToBorderNodeLayoutMap.entrySet()) {
             IGraphicalEditPart parentEditPart = borderedNodeEntry.getKey();
             List<IAdaptable> childViewsAdapters = borderedNodeEntry.getValue();
-            Command layoutCommand = new SiriusCanonicalLayoutCommand(editingDomain, parentEditPart, null, childViewsAdapters, null, SiriusLayoutDataManager.KEEP_FIXED);
+            Command layoutCommand = SiriusCanonicalLayoutCommand.border(editingDomain, parentEditPart, childViewsAdapters);
             compoundCommand.append(layoutCommand);
         }
-        for (Entry<IGraphicalEditPart, List<IAdaptable>> entry : Iterables.filter(createdViewsToLayoutMap.entrySet(), typeOfElementToLayout)) {
-            IGraphicalEditPart parentEditPart = entry.getKey();
-            List<IAdaptable> childViewsAdapters = entry.getValue();
-            Command viewpointLayoutCanonicalSynchronizerCommand = new SiriusCanonicalLayoutCommand(editingDomain, parentEditPart, childViewsAdapters, null, null, specificLayoutType);
-            compoundCommand.append(viewpointLayoutCanonicalSynchronizerCommand);
-        }
 
-        for (Entry<IGraphicalEditPart, List<IAdaptable>> entry : Iterables.filter(centeredCreatedViewsToLayoutMap.entrySet(), typeOfElementToLayout)) {
-            IGraphicalEditPart parentEditPart = entry.getKey();
-            List<IAdaptable> childViewsAdapters = entry.getValue();
-            Command viewpointLayoutCanonicalSynchronizerCommand = new SiriusCanonicalLayoutCommand(editingDomain, parentEditPart, null, null, childViewsAdapters, specificLayoutType);
-            compoundCommand.append(viewpointLayoutCanonicalSynchronizerCommand);
-        }
         return compoundCommand;
     }
 
@@ -270,7 +266,7 @@ public final class SiriusCanonicalLayoutHandler {
             createdViewsToLayoutMap = createdViewsToLayoutMap_reverse;
             layoutType = SiriusLayoutDataManager.LAYOUT_TYPE_ARRANGE_AT_OPENING;
         }
-        Command layoutCommand = getLayoutCommand(createdViewsToLayoutMap, Map.of(), createdViewsWithSpecialLayoutMap, editingDomain, layoutType);
+        Command layoutCommand = getLayoutCommand(createdViewsToLayoutMap, Map.of(), createdViewsWithSpecialLayoutMap, Map.of(), editingDomain, layoutType);
         if (layoutCommand.canExecute()) {
             editingDomain.getCommandStack().execute(layoutCommand);
         }
@@ -283,7 +279,7 @@ public final class SiriusCanonicalLayoutHandler {
         // container. The viewAdapters seems to be already sorted so we must
         // just keep this order by using a linked Hashmap.
         Map<IGraphicalEditPart, List<IAdaptable>> createdViewsToLayoutMap = new LinkedHashMap<IGraphicalEditPart, List<IAdaptable>>();
-        Map<Diagram, Set<View>> createdViewsToLayout = SiriusLayoutDataManager.INSTANCE.getCreatedViewsToLayout();
+        Map<Diagram, Set<View>> createdViewsToLayout = SiriusLayoutDataManager.INSTANCE.getCreatedViewForLayoutAll();
 
         oldGetCreatedViewToLayoutMap(diagramEditPart, createdViewsToLayoutMap, createdViewsToLayout);
         return createdViewsToLayoutMap;
@@ -296,7 +292,7 @@ public final class SiriusCanonicalLayoutHandler {
         // container. The viewAdapters seems to be already sorted so we must
         // just keep this order by using a linked Hashmap.
         Map<IGraphicalEditPart, List<IAdaptable>> createdViewsToLayoutMap = new LinkedHashMap<IGraphicalEditPart, List<IAdaptable>>();
-        Map<Diagram, Set<View>> createdViewsToLayout = SiriusLayoutDataManager.INSTANCE.getCreatedViewWithCenterLayout();
+        Map<Diagram, Set<View>> createdViewsToLayout = SiriusLayoutDataManager.INSTANCE.getCreatedViewForInitPositionLayout();
 
         oldGetCreatedViewToLayoutMap(diagramEditPart, createdViewsToLayoutMap, createdViewsToLayout);
         return createdViewsToLayoutMap;

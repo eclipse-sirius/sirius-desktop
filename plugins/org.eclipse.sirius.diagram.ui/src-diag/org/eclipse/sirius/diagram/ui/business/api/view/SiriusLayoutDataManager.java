@@ -160,9 +160,26 @@ public interface SiriusLayoutDataManager {
     /**
      * Get the center Adapter marker to mark GMF View as to arrange in the center of container.
      * 
+     * Note: if a view is marked as reference for the arrange center algorithm, the first view is not placed in the
+     * center and the others follow (default behavior), but the reference view is considered the first view and the
+     * others follow.
+     * 
+     * @see #getReferenceAdapterMarker()
+     * 
      * @return the center Adapter marker to mark GMF View as to arrange in the center of container
      */
     Adapter getCenterAdapterMarker();
+
+    /**
+     * Get the Adapter marker to mark GMF View as to reference for the arrange center algorithm. If a view is marked as
+     * reference for the arrange center algorithm, the first view is not placed in the center and the others follow
+     * (default behavior), but the reference view is considered the first view and the others follow.
+     * 
+     * @see #getCenterAdapterMarker()
+     * 
+     * @return the center Adapter marker to mark GMF View as to arrange in the center of container
+     */
+    Adapter getReferenceAdapterMarker();
 
     /**
      * Get the border node Adapter marker to mark GMF View as to arrange its border node.
@@ -233,21 +250,32 @@ public interface SiriusLayoutDataManager {
      * 
      * @param createdViews
      *            the new created views
+     * @param borderedCreatedViews
+     *            views whose border nodes are to be layouted
      * @param centeredCreatedViews
      *            the new created views which must be layouted in the center of their containers
+     * @param referenceChildViewsAdapters
+     *            Created views that already have a position and will serve as a reference for the layout of views that
+     *            don't have a position.
      * @param host
      *            container edit part
      * @return the layout command
      */
-    Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> borderedCreatedViews, List<IAdaptable> centeredCreatedViews, IGraphicalEditPart host);
+    Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> borderedCreatedViews, List<IAdaptable> centeredCreatedViews, List<IAdaptable> referenceChildViewsAdapters,
+            IGraphicalEditPart host);
 
     /**
      * layout the new created views.
      * 
      * @param createdViews
      *            the new created views
+     * @param borderedCreatedViews
+     *            views whose border nodes are to be layouted
      * @param centeredCreatedViews
      *            the new created views which must be layouted in the center of their containers
+     * @param referenceChildViewsAdapters
+     *            Created views that already have a position and will serve as a reference for the layout of views that
+     *            don't have a position.
      * @param host
      *            container edit part
      * @param useSpecificLayoutType
@@ -255,16 +283,21 @@ public interface SiriusLayoutDataManager {
      *            and an arrange from the opening and a refresh.
      * @return the layout command
      */
-    Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> borderedCreatedViews, List<IAdaptable> centeredCreatedViews, IGraphicalEditPart host,
-            boolean useSpecificLayoutType);
+    Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> borderedCreatedViews, List<IAdaptable> centeredCreatedViews, List<IAdaptable> referenceChildViewsAdapters,
+            IGraphicalEditPart host, boolean useSpecificLayoutType);
 
     /**
      * Layout the new created views.
      * 
      * @param createdViews
      *            the new created views
+     * @param borderedCreatedViews
+     *            views whose border nodes are to be layouted
      * @param centeredCreatedViews
      *            the new created views which must be layouted in the center of their containers
+     * @param referenceChildViewsAdapters
+     *            Created views that already have a position and will serve as a reference for the layout of views that
+     *            don't have a position.
      * @param host
      *            container edit part
      * @param specificLayoutType
@@ -273,8 +306,8 @@ public interface SiriusLayoutDataManager {
      *            {@link SiriusLayoutDataManager#KEEP_FIXED})
      * @return the layout command
      */
-    Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> borderedCreatedViews, List<IAdaptable> centeredCreatedViews, IGraphicalEditPart host,
-            String specificLayoutType);
+    Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> borderedCreatedViews, List<IAdaptable> centeredCreatedViews, List<IAdaptable> referenceChildViewsAdapters,
+            IGraphicalEditPart host, String specificLayoutType);
 
     /**
      * layout the new created views after opening the editor.
@@ -313,7 +346,7 @@ public interface SiriusLayoutDataManager {
      * @param createdViewsToLayout
      *            a set of views to layout
      */
-    void addCreatedViewsToLayout(Diagram gmfDiagram, LinkedHashSet<View> createdViewsToLayout);
+    void addCreatedViewForLayoutAll(Diagram gmfDiagram, LinkedHashSet<View> createdViewsToLayout);
 
     /**
      * Get the set of created views to layout per Diagram to be layouted. After use of this map the client must clear it
@@ -321,7 +354,7 @@ public interface SiriusLayoutDataManager {
      * 
      * @return the set of created views to layout per Diagram to be layouted
      */
-    Map<Diagram, Set<View>> getCreatedViewsToLayout();
+    Map<Diagram, Set<View>> getCreatedViewForLayoutAll();
 
     /**
      * Change the mode of the consumption. The data can be consume even if there is already consume. This can be useful,
@@ -345,7 +378,7 @@ public interface SiriusLayoutDataManager {
      * 
      * @return the list of views
      */
-    Map<Diagram, Set<View>> getCreatedViewWithCenterLayout();
+    Map<Diagram, Set<View>> getCreatedViewForInitPositionLayout();
 
     /**
      * Add a view in the list.
@@ -355,14 +388,31 @@ public interface SiriusLayoutDataManager {
      * @param view
      *            the view to set
      */
-    void addCreatedViewWithCenterLayout(Diagram gmfDiagram, LinkedHashSet<View> view);
+    void addCreatedViewForInitPositionLayout(Diagram gmfDiagram, LinkedHashSet<View> view);
+
+    /**
+     * Get the list of created views used to layout from reference position.
+     * 
+     * @return the list of views
+     */
+    Map<Diagram, Set<View>> getCreatedViewReferenceLayout();
+
+    /**
+     * Add a view in the list used to layout from reference position.
+     * 
+     * @param gmfDiagram
+     *            the {@link Diagram} for which children views must be layouted from a reference position
+     * @param view
+     *            the view to set
+     */
+    void addCreatedViewAsReferenceLayout(Diagram gmfDiagram, LinkedHashSet<View> view);
 
     /**
      * Get the list of created views with border nodes to layout.
      * 
      * @return the list of views
      */
-    Map<Diagram, Set<View>> getCreatedViewWithBorderNodeLayout();
+    Map<Diagram, Set<View>> getCreatedViewForBorderNodeLayout();
 
     /**
      * Add a view in the list.
@@ -372,6 +422,24 @@ public interface SiriusLayoutDataManager {
      * @param view
      *            the view to set
      */
-    void addCreatedViewWithBorderNodeLayout(Diagram gmfDiagram, LinkedHashSet<View> view);
+    void addCreatedViewForBorderNodeLayout(Diagram gmfDiagram, LinkedHashSet<View> view);
+
+    /**
+     * Remove all view stored to layout (normal layout, center layout, border node layout and reference layout).
+     * 
+     * @see #addCreatedViewForLayoutAll(Diagram, LinkedHashSet)
+     * @see #addCreatedViewForInitPositionLayout(Diagram, LinkedHashSet)
+     * @see #addCreatedViewAsReferenceLayout(Diagram, LinkedHashSet)
+     * @see #addCreatedViewForBorderNodeLayout(Diagram, LinkedHashSet)
+     * 
+     * @see #getCreatedViewForLayoutAll()
+     * @see #getCreatedViewForInitPositionLayout()
+     * @see #getCreatedViewReferenceLayout()
+     * @see #getCreatedViewForBorderNodeLayout()
+     * 
+     * @param diagram
+     *            The diagram affected
+     */
+    void removeLayoutViews(Diagram diagram);
 
 }

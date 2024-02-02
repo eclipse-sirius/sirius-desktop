@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
@@ -72,13 +71,11 @@ import org.eclipse.sirius.diagram.ui.part.SiriusDiagramUpdater;
 import org.eclipse.sirius.diagram.ui.part.SiriusLinkDescriptor;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.ext.base.Options;
-import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Display;
 
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
 
 /**
  * Synchronizer allowing to synchronize a DSemanticDiagram with its corresponding GMFDiagram.
@@ -218,7 +215,9 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
             canonicalSynchronizerResult.deleteDetachedPGE();
 
             // 4. Manage views
-            manageCreatedViewsLayout(canonicalSynchronizerResult.getCreatedViews(), canonicalSynchronizerResult.getMovedNodes());
+            if (storeViews2Arrange) {
+                manageCreatedViewsLayout(canonicalSynchronizerResult.getCreatedViews(), canonicalSynchronizerResult.getMovedNodes());
+            }
             manageCollapse(canonicalSynchronizerResult.getCreatedNodes());
             manageRegions();
         }
@@ -268,101 +267,63 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
             if (oldLayoutConstraint instanceof Bounds oldBound && newLayoutConstraint instanceof Bounds newBound) {
                 if (newAncestor.isPresent()) {
                     updateLocationConstraint(newBound, new org.eclipse.draw2d.geometry.Point(oldBound.getX(), oldBound.getY()));
+                    // If the position has been found, it is no longer necessary to perform a layout on this view.
+                    // It can be used as a reference for other views created with the centerLayout algorithm.
+                    newView.eAdapters().remove(SiriusLayoutDataManager.INSTANCE.getAdapterMarker());
+                    newView.eAdapters().remove(SiriusLayoutDataManager.INSTANCE.getCenterAdapterMarker());
+                    newView.eAdapters().add(SiriusLayoutDataManager.INSTANCE.getReferenceAdapterMarker());
                 }
                 updateSizeConstraint(newBound, new Dimension(oldBound.getWidth(), oldBound.getHeight()), newNode.getElement());
-                newView.eAdapters().remove(SiriusLayoutDataManager.INSTANCE.getAdapterMarker());
             }
         }
     }
 
     private void manageCreatedViewsLayout(Set<View> createdViews, Map<View, View> movedViews) {
         movedViews.entrySet().stream() //
-                .filter(moved -> this.createdViewIsMarkedAsToLayout(moved.getValue())) //
+                .filter(moved -> createdViewIsMarkedAsToLayout(moved.getValue()) || createdViewIsMarkedAsToCenterLayout(moved.getValue())) //
                 .forEach(movedView -> this.updateLayoutOfMovedView(movedViews, movedView));
 
         var toOrderedSet = Collectors.toCollection(LinkedHashSet<View>::new);
 
         // get view to layout "normally"
-        Set<View> filteredCreatedViewsToLayout = createdViews.stream() //
+        LinkedHashSet<View> filteredCreatedViewsToLayout = createdViews.stream() //
                 .filter(this::createdViewIsMarkedAsToLayout) //
                 .collect(toOrderedSet);
 
         // get view to layout "border node"
-        Set<View> filteredCreatedViewsToBorderNodeLayout = createdViews.stream() //
+        LinkedHashSet<View> filteredCreatedViewsToBorderNodeLayout = createdViews.stream() //
                 .filter(view -> view.eAdapters().contains(SiriusLayoutDataManager.INSTANCE.getBorderNodeMarker())) //
                 .collect(toOrderedSet);
 
         // get view to center layout
-        Set<View> filteredCreatedViewsWithCenterLayout = createdViews.stream() //
+        LinkedHashSet<View> filteredCreatedViewsWithCenterLayout = createdViews.stream() //
                 .filter(this::createdViewIsMarkedAsToCenterLayout) //
                 .collect(toOrderedSet);
 
-        Set<View> createdViewsWithCenterLayout = Sets.newLinkedHashSet(filteredCreatedViewsWithCenterLayout);
-        Set<View> createdViewsToLayout = Sets.newLinkedHashSet(filteredCreatedViewsToLayout);
+        // get view as reference for layout
+        LinkedHashSet<View> filteredCreatedViewsReferenceLayout = createdViews.stream() //
+                .filter(this::createdViewIsMarkedAsReferenceLayout) //
+                .collect(toOrderedSet);
 
-        // center layout must be only done on the super containers :
-        // filter the createdViewsWithCenterLayout : only the container(s)
-        // of all the new created views must have a center layout.
-        // the filtered views must have a "normal" layout.
-        calculateCenterLayout(createdViewsWithCenterLayout, createdViewsToLayout);
+        if (!filteredCreatedViewsReferenceLayout.isEmpty()) {
+            SiriusLayoutDataManager.INSTANCE.addCreatedViewAsReferenceLayout(gmfDiagram, filteredCreatedViewsReferenceLayout);
+            removeAlreadyArrangeMarker(filteredCreatedViewsReferenceLayout);
+        }
 
-        if (!createdViewsWithCenterLayout.isEmpty() && storeViews2Arrange) {
-            SiriusLayoutDataManager.INSTANCE.addCreatedViewWithCenterLayout(gmfDiagram, Sets.newLinkedHashSet(createdViewsWithCenterLayout));
+        if (!filteredCreatedViewsWithCenterLayout.isEmpty()) {
+            SiriusLayoutDataManager.INSTANCE.addCreatedViewForInitPositionLayout(gmfDiagram, filteredCreatedViewsWithCenterLayout);
             removeAlreadyArrangeMarker(filteredCreatedViewsWithCenterLayout);
         }
 
-        if (!createdViewsToLayout.isEmpty() && storeViews2Arrange) {
-            SiriusLayoutDataManager.INSTANCE.addCreatedViewsToLayout(gmfDiagram, Sets.newLinkedHashSet(createdViewsToLayout));
+        if (!filteredCreatedViewsToLayout.isEmpty()) {
+            SiriusLayoutDataManager.INSTANCE.addCreatedViewForLayoutAll(gmfDiagram, filteredCreatedViewsToLayout);
             removeAlreadyArrangeMarker(filteredCreatedViewsToLayout);
         }
 
-        if (!filteredCreatedViewsToBorderNodeLayout.isEmpty() && storeViews2Arrange) {
-            SiriusLayoutDataManager.INSTANCE.addCreatedViewWithBorderNodeLayout(gmfDiagram, Sets.newLinkedHashSet(filteredCreatedViewsToBorderNodeLayout));
-            removeAlreadyArrangeMarker(filteredCreatedViewsToLayout);
+        if (!filteredCreatedViewsToBorderNodeLayout.isEmpty()) {
+            SiriusLayoutDataManager.INSTANCE.addCreatedViewForBorderNodeLayout(gmfDiagram, filteredCreatedViewsToBorderNodeLayout);
+            removeAlreadyArrangeMarker(filteredCreatedViewsToBorderNodeLayout);
         }
-    }
-
-    /**
-     * center layout must be only done on the super containers : filter the createdViewsWithCenterLayout : only the
-     * container(s) of all the new created views must have a center layout. the filtered views must have a "normal"
-     * layout.
-     *
-     * @param createdViewsWithSpecialLayout
-     * @param createdViewsToLayout
-     */
-    private void calculateCenterLayout(Set<View> createdViewsWithSpecialLayout, Set<View> createdViewsToLayout) {
-        Set<View> toRemove = new HashSet<View>();
-        for (View view : createdViewsWithSpecialLayout) {
-            if (hasContainer(view, createdViewsWithSpecialLayout)) {
-                toRemove.add(view);
-            }
-        }
-        createdViewsToLayout.addAll(toRemove);
-        createdViewsWithSpecialLayout.removeAll(toRemove);
-    }
-
-    private boolean hasContainer(View view, Set<View> createdViewsToLayout) {
-        for (View aView : createdViewsToLayout) {
-            if (!view.equals(aView) && hasContainer(view, aView)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
-     * AnnotationEntries contains the GMF diagrams.
-     *
-     * @param view
-     * @param aView
-     * @return if view is contained by aView
-     */
-    private boolean hasContainer(View view, View aView) {
-        EObject eContainer = view;
-        while (eContainer != null && !(eContainer instanceof AnnotationEntry) && !eContainer.equals(aView)) {
-            eContainer = eContainer.eContainer();
-        }
-        return !(eContainer instanceof AnnotationEntry);
     }
 
     /**
@@ -377,7 +338,6 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
                 Adapter adapter = iterator.next();
                 if (adapter.isAdapterForType(SiriusLayoutDataManager.INSTANCE)) {
                     iterator.remove();
-                    break;
                 }
             }
         }

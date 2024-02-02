@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,7 +14,6 @@ package org.eclipse.sirius.diagram.sequence.business.internal.refresh;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -120,18 +119,7 @@ public class SequenceCanonicalSynchronizerAdapter implements ModelChangeTrigger 
     private void cancelArrangeNewNodeCommandforSequenceDiagram(Node newNode) {
         Diagram diagram = newNode.getDiagram();
         if (diagram != null && ISequenceElementAccessor.getSequenceDiagram(diagram).some()) {
-            Map<Diagram, Set<View>> viewToArrangeCenter = SiriusLayoutDataManager.INSTANCE.getCreatedViewWithCenterLayout();
-            Map<Diagram, Set<View>> viewToArrange = SiriusLayoutDataManager.INSTANCE.getCreatedViewsToLayout();
-
-            Set<View> set = viewToArrange.get(diagram);
-            if (set != null) {
-                set.clear();
-            }
-
-            Set<View> set2 = viewToArrangeCenter.get(diagram);
-            if (set2 != null) {
-                set2.clear();
-            }
+            SiriusLayoutDataManager.INSTANCE.removeLayoutViews(diagram);
         }
     }
 
