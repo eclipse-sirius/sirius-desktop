@@ -18,9 +18,7 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.common.command.AbstractCommand.NonDirtying;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.services.layout.LayoutType;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.swt.widgets.Display;
@@ -43,19 +41,75 @@ public class SiriusCanonicalLayoutCommand extends RecordingCommand implements No
 
     private List<IAdaptable> centeredChildViewsAdapters;
 
+    private List<IAdaptable> referenceChildViewsAdapters;
+
     private String specificLayoutType;
 
+    private boolean deferredExecution;
+
     /**
-     * Constructor used to do a layout on all created views child (directly or indirectly) of Diagram. </br>
-     * NOTE : to use at diagram representation opening.
+     * Construct a command to layout given views with the default algorithm.
      * 
      * @param domain
-     *            the {@link TransactionalEditingDomain} on which executes this command
-     * @param diagramEditPart
-     *            the {@link DiagramEditPart} on which do the layout
+     *            the transactional editing domain
+     * @param parent
+     *            the container or the diagram of all given views
+     * @param views
+     *            the views to layout, should be in the same container
+     * @param layoutType
+     *            the layout type, {@link org.eclipse.gmf.runtime.diagram.ui.services.layout.LayoutType}
+     * @return the layout command
      */
-    public SiriusCanonicalLayoutCommand(TransactionalEditingDomain domain, DiagramEditPart diagramEditPart) {
-        this(domain, diagramEditPart, null, null, null);
+    static SiriusCanonicalLayoutCommand normal(TransactionalEditingDomain domain, IGraphicalEditPart parent, List<IAdaptable> views, String layoutType) {
+        return new SiriusCanonicalLayoutCommand(domain, parent, views, null, null, null, layoutType, false);
+    }
+
+    /**
+     * Construct a command to layout given views with the creation algorithm: this is the layout applied to views when
+     * they are created.
+     * 
+     * <ul>
+     * <li>When view creation contains a specified position (tool click position, drag&drop release position...):<br>
+     * → We position the first element at its specified position and the others in succession (to the right, downwards
+     * or diagonally, depending on the setting).</li>
+     * <li>When there are no element coordinates, if the element is created on the diagram:<br>
+     * → position the first in the center and the others in succession (to the right, downwards or diagonally, depending
+     * on the setting).</li>
+     * <li>When there are no element coordinates, if the element is created in a container:<br>
+     * → position the first one at the top left of the container and the others in succession (to the right, downwards
+     * or diagonally, depending on the setting).</li>
+     * </ul>
+     * 
+     * @param domain
+     *            the transactional editing domain
+     * @param parent
+     *            the container or the diagram of all given views
+     * @param views
+     *            the views to layout, should be in the same container
+     * @param referenceViews
+     *            The first views are used as reference positions for placing the others. Without this, the first view
+     *            will be at the center of the diagram or at the top left of the container.
+     * @param layoutType
+     *            the layout type, {@link org.eclipse.gmf.runtime.diagram.ui.services.layout.LayoutType}
+     * @return the layout command
+     */
+    static SiriusCanonicalLayoutCommand initial(TransactionalEditingDomain domain, IGraphicalEditPart parent, List<IAdaptable> views, List<IAdaptable> referenceViews, String layoutType) {
+        return new SiriusCanonicalLayoutCommand(domain, parent, null, null, views, referenceViews, layoutType, false);
+    }
+
+    /**
+     * Construct a command to layout given views with the border node layout algorithm.
+     * 
+     * @param domain
+     *            the transactional editing domain
+     * @param parent
+     *            the container or the diagram of all given views
+     * @param views
+     *            the views to layout, should be in the same container
+     * @return the layout command
+     */
+    static SiriusCanonicalLayoutCommand border(TransactionalEditingDomain domain, IGraphicalEditPart parent, List<IAdaptable> views) {
+        return new SiriusCanonicalLayoutCommand(domain, parent, null, views, null, null, SiriusLayoutDataManager.KEEP_FIXED, true);
     }
 
     /**
@@ -72,20 +126,16 @@ public class SiriusCanonicalLayoutCommand extends RecordingCommand implements No
      *            list of {@link IAdaptable} for created Views to layout but which must be layouted in the center of
      *            their containers
      */
-    public SiriusCanonicalLayoutCommand(TransactionalEditingDomain domain, IGraphicalEditPart parentEditPart, List<IAdaptable> childViewsAdapters, List<IAdaptable> borderedChildViewsAdapters,
-            List<IAdaptable> centeredChildViewsAdapters) {
-        this(domain, parentEditPart, childViewsAdapters, borderedChildViewsAdapters, centeredChildViewsAdapters, LayoutType.DEFAULT);
-    }
-
-    public SiriusCanonicalLayoutCommand(TransactionalEditingDomain domain, IGraphicalEditPart parentEditPart, List<IAdaptable> childViewsAdapters, List<IAdaptable> borderedChildViewsAdapters,
-            List<IAdaptable> centeredChildViewsAdapters,
-            String specificLayoutType) {
+    private SiriusCanonicalLayoutCommand(TransactionalEditingDomain domain, IGraphicalEditPart parentEditPart, List<IAdaptable> childViewsAdapters, List<IAdaptable> borderedChildViewsAdapters,
+            List<IAdaptable> centeredChildViewsAdapters, List<IAdaptable> referenceChildViewsAdapters, String specificLayoutType, boolean deferredExecution) {
         super(domain, Messages.SiriusCanonicalLayoutCommand_label);
         this.parentEditPart = parentEditPart;
         this.childViewsAdapters = childViewsAdapters;
         this.centeredChildViewsAdapters = centeredChildViewsAdapters;
+        this.referenceChildViewsAdapters = referenceChildViewsAdapters;
         this.borderedChildViewsAdapters = borderedChildViewsAdapters;
         this.specificLayoutType = specificLayoutType;
+        this.deferredExecution = deferredExecution;
     }
 
     /**
@@ -93,17 +143,25 @@ public class SiriusCanonicalLayoutCommand extends RecordingCommand implements No
      */
     @Override
     protected void doExecute() {
-        Display.getDefault().asyncExec(new Runnable() {
-
-            @Override
-            public void run() {
-                if (childViewsAdapters == null && centeredChildViewsAdapters == null && borderedChildViewsAdapters == null) {
-                    executeLayoutOnDiagramOpening();
-                } else {
-                    executeLayoutDueToExternalChanges();
-                }
+        Display.getDefault().asyncExec(() -> {
+            if (deferredExecution) {
+                // Defer execution to the end of the async execution queue.
+                Display.getDefault().asyncExec(() -> {
+                    internalExecute();
+                });
+            } else {
+                internalExecute();
             }
         });
+
+    }
+
+    private void internalExecute() {
+        if (childViewsAdapters == null && centeredChildViewsAdapters == null && borderedChildViewsAdapters == null) {
+            executeLayoutOnDiagramOpening();
+        } else {
+            executeLayoutDueToExternalChanges();
+        }
 
     }
 
@@ -116,8 +174,7 @@ public class SiriusCanonicalLayoutCommand extends RecordingCommand implements No
 
     private void executeLayoutDueToExternalChanges() {
         org.eclipse.gef.commands.Command arrangeCmd = SiriusLayoutDataManager.INSTANCE.getArrangeCreatedViewsCommand(childViewsAdapters, borderedChildViewsAdapters, centeredChildViewsAdapters,
-                parentEditPart,
-                specificLayoutType);
+                referenceChildViewsAdapters, parentEditPart, specificLayoutType);
         if (arrangeCmd != null && arrangeCmd.canExecute() && parentEditPart != null && parentEditPart.getRoot() != null) {
             arrangeCmd.execute();
         }

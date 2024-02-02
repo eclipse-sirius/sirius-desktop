@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,9 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.graphical.figures;
+
+import java.util.Collection;
+import java.util.ListIterator;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Viewport;
@@ -49,6 +52,62 @@ public class SiriusLayoutHelper extends org.eclipse.gmf.runtime.diagram.ui.figur
      */
     public SiriusLayoutHelper(IGraphicalEditPart editPart) {
         this.containerEditPart = editPart;
+    }
+
+    /**
+     * Returns a location inside the supplied <tt>parent</tt> that is currently unoccupied by another figure (with the
+     * exception of the figures in list <code>exceptions</code>).
+     * 
+     * @param parent
+     *            containing figure.
+     * @param bounds
+     *            are being searched.
+     * @param exceptions
+     *            the exception figures
+     * @return an unoccupied position.
+     */
+    public Point validatePosition(IFigure parent, Rectangle bounds, Collection<IFigure> exceptions) {
+        Rectangle theBounds = bounds.getCopy();
+        IFigure clobber = findFigureInExcept(parent, bounds, exceptions);
+        if (clobber != null) {
+            theBounds.setLocation(updateClobberedPosition(clobber, null));
+            return validatePosition(parent, theBounds, exceptions);
+        }
+        return theBounds.getLocation();
+    }
+
+    /**
+     * Return a child figure (except figure in <code>exceptions</code>) that is already occupying the position within
+     * the supplied <code>bounds</code> figure.
+     * 
+     * @param parent
+     *            The parent figure of the newly added child.
+     * @param bounds
+     *            the area being tested.
+     * @return a child figure already occupying the supplied <code>bounds</code> or <code>null</code> if the bounds are
+     *         unoccupied or occupied by an <code>exceptions</code>-list figure.
+     */
+    public IFigure findFigureInExcept(IFigure parent, Rectangle bounds, Collection<IFigure> exceptions) {
+        ListIterator<? extends IFigure> listIterator = parent.getChildren().listIterator();
+        final boolean useContainCheck = UNDEFINED.getSize().equals(bounds.getSize());
+        IFigure found = null;
+        while (listIterator.hasNext() && found == null) {
+            IFigure child = listIterator.next();
+            if (exceptions.contains(child)) // skip the exception figure
+                continue;
+            Rectangle cBounds = child.getBounds();
+            if (UNDEFINED.getLocation().equals(cBounds.getLocation())) {
+                continue; // ignore this figure
+            }
+            if (useContainCheck) {
+                if (cBounds.contains(bounds.getLocation())) {
+                    found = child;
+                }
+            } else if (cBounds.intersects(bounds)) {
+                found = child;
+            }
+        }
+        return found;
     }
 
     /**
@@ -133,6 +192,21 @@ public class SiriusLayoutHelper extends org.eclipse.gmf.runtime.diagram.ui.figur
     }
 
     /**
+     * Computes the translated point based on user preferences and the previous view. The translation is determined by
+     * user preferences and applied to the specified reference point. Note that only the first created element should
+     * snap to grid (if enabled), if many elements are created simultaneously, the first element will snap and following
+     * elements will only be shifted by 30px.
+     * 
+     * @param figure
+     *            the actual figure
+     * @return the position for the next element
+     */
+    public Point calculateNextPoint(IFigure figure) {
+        Point referencePoint = determineReferencePoint(figure);
+        return computeTranslatedPoint(referencePoint, figure, false);
+    }
+
+    /**
      * Computes the translated point based on user preferences and a reference point. The translation is determined by
      * user preferences and applied to the specified reference point. Note that only the first created element should
      * snap to grid (if enabled), if many elements are created simultaneously, the first element will snap and following
@@ -148,7 +222,7 @@ public class SiriusLayoutHelper extends org.eclipse.gmf.runtime.diagram.ui.figur
      * @return the translated point based on user preferences
      */
     public Point computeTranslatedPoint(Point referencePoint, IFigure figure, boolean isFirstCreatedElement) {
-        int shiftingValue = 30;
+        int shiftingValue = SiriusLayoutDataManager.PADDING;
         if (isFirstCreatedElement && new EditPartQuery(this.containerEditPart).isSnapToGridEnabled()) {
             Dimension spacing = (Dimension) containerEditPart.getViewer().getProperty(SnapToGrid.PROPERTY_GRID_SPACING);
             shiftingValue = spacing.width;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2023 Obeo.
+ * Copyright (c) 2020, 2024 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,7 +21,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -422,18 +421,7 @@ public class MappingBasedSiriusFormatManagerFactory {
             canonicalSynchronizer.synchronize();
 
             // Prevent automatic layout
-            Map<Diagram, Set<View>> viewToArrangeCenter = SiriusLayoutDataManager.INSTANCE.getCreatedViewWithCenterLayout();
-            Map<Diagram, Set<View>> viewToArrange = SiriusLayoutDataManager.INSTANCE.getCreatedViewsToLayout();
-
-            Set<View> set = viewToArrange.get(targetGMFDiagram);
-            if (set != null) {
-                set.clear();
-            }
-
-            Set<View> set2 = viewToArrangeCenter.get(targetGMFDiagram);
-            if (set2 != null) {
-                set2.clear();
-            }
+            SiriusLayoutDataManager.INSTANCE.removeLayoutViews(targetGMFDiagram);
         }
     }
 

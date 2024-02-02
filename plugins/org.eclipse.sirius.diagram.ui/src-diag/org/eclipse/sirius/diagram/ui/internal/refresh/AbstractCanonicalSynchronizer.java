@@ -84,6 +84,15 @@ import com.google.common.collect.Sets;
  */
 public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchronizer {
 
+    private static record LayoutDataResult( //
+            boolean normalLayout, //
+            boolean centerLayout, //
+            boolean borderLayout, //
+            boolean isAlreadylayouted, //
+            boolean isLayoutReference
+    ) {
+    };
+
     private final static boolean STANDARD_LAYOUT_FOR_CREATED_REGION_CONTENT = Boolean.getBoolean("org.eclipse.sirius.diagram.ui.internal.region.content.canonical.layout.standard"); //$NON-NLS-1$
 
     /**
@@ -268,12 +277,23 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
         }
     }
 
-    private void markCreatedViewsWithCenterLayout(View createdView) {
-        createdView.eAdapters().add(SiriusLayoutDataManager.INSTANCE.getCenterAdapterMarker());
+    private void markCreatedViewsWithCenterLayout(Collection<View> createdViews) {
+        for (View createdView : createdViews) {
+            createdView.eAdapters().add(SiriusLayoutDataManager.INSTANCE.getCenterAdapterMarker());
+        }
     }
 
     protected boolean createdViewIsMarkedAsToCenterLayout(View createdView) {
         return createdView.eAdapters().contains(SiriusLayoutDataManager.INSTANCE.getCenterAdapterMarker());
+    }
+
+    private void markCreatedViewsAsReferenceLayout(Set<View> createdViews) {
+        for (View createdView : createdViews) {
+            createdView.eAdapters().add(SiriusLayoutDataManager.INSTANCE.getReferenceAdapterMarker());
+        }
+    }
+    protected boolean createdViewIsMarkedAsReferenceLayout(View createdView) {
+        return createdView.eAdapters().contains(SiriusLayoutDataManager.INSTANCE.getReferenceAdapterMarker());
     }
 
     /**
@@ -348,7 +368,9 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
 
         Set<View> createdViews = new LinkedHashSet<>();
         Set<View> createdViewsToLayout = new LinkedHashSet<>();
-        View previousCreatedView = null;
+        Set<View> createdCenteredViewsToLayout = new LinkedHashSet<>();
+        Set<View> createdBorderedViewsToLayout = new LinkedHashSet<>();
+        Set<View> createdLayoutRefernceViews = new LinkedHashSet<>();
         for (ViewDescriptor viewDescriptor : descriptors) {
 
             Class<?> viewKind = viewDescriptor.getViewKind();
@@ -369,9 +391,8 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
             }
             if (createdView != null) {
                 createdViews.add(createdView);
-                if (!updateLocationAndSize(createdView, previousCreatedView)) {
-                    createdViewsToLayout.add(createdView);
-                } else {
+                LayoutDataResult layoutDataResult = updateLocationAndSize(createdView);
+                if (layoutDataResult.isAlreadylayouted) {
                     // location and size will not be updated so we remove this
                     // marker to make sure that the next arrange all with auto
                     // size will layout this view "normally". see
@@ -380,14 +401,32 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
                     if (viewKind == Node.class) {
                         removeJustCreatedMarker(createdView);
                     }
-                    previousCreatedView = createdView;
+                }
+                if (layoutDataResult.normalLayout) {
+                    createdViewsToLayout.add(createdView);
+                }
+                if (layoutDataResult.centerLayout) {
+                    createdCenteredViewsToLayout.add(createdView);
+                }
+                if (layoutDataResult.borderLayout) {
+                    createdBorderedViewsToLayout.add(createdView);
+                }
+                if (layoutDataResult.isLayoutReference) {
+                    createdLayoutRefernceViews.add(createdView);
                 }
                 if (createdView instanceof Node) {
                     // Update the label location, with BorderItemLocator, if one
                     // exists and it is on border
                     for (Object view : createdView.getPersistedChildren()) {
                         if (view instanceof View && new ViewQuery((View) view).isForNameEditPartOnBorder()) {
-                            updateLocationAndSize((View) view, null);
+                            LayoutDataResult layoutNameDataResult = updateLocationAndSize((View) view);
+
+                            if (layoutNameDataResult.centerLayout) {
+                                createdCenteredViewsToLayout.add(createdView);
+                            }
+                            if (layoutNameDataResult.borderLayout) {
+                                createdBorderedViewsToLayout.add(createdView);
+                            }
                         }
                     }
                 }
@@ -398,6 +437,9 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
         // Manage layout for newly created elements
         if (storeViews2Arrange) {
             markCreatedViewsAsToLayout(createdViewsToLayout);
+            markCreatedViewsWithCenterLayout(createdCenteredViewsToLayout);
+            markCreatedViewsAsToLayoutBorderNode(createdBorderedViewsToLayout);
+            markCreatedViewsAsReferenceLayout(createdLayoutRefernceViews);
         }
 
         return createdViews;
@@ -422,24 +464,30 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
 
     }
 
-    private boolean updateLocationAndSize(View createdView, View previousCreatedView) {
-        boolean updateLocationAndSize = false;
+    private LayoutDataResult updateLocationAndSize(View createdView) {
+        LayoutDataResult updateLocationAndSize;
         EObject element = createdView.getElement();
         if (isBorderedNode(element) || new ViewQuery(createdView).isForNameEditPartOnBorder()) {
-            updateLocationAndSize = updateAbstractDNode_ownedBorderedNodes_Bounds(createdView, previousCreatedView);
+            updateLocationAndSize = updateAbstractDNode_ownedBorderedNodes_Bounds(createdView);
         } else if (isTopLevelNode(element)) {
-            updateLocationAndSize = updateDDiagramChildBounds(createdView, previousCreatedView);
+            updateLocationAndSize = updateDDiagramChildBounds(createdView);
         } else if (isChildNodeButNotBorderedNodeOfContainer(element)) {
-            updateLocationAndSize = updateDNodeContainerChildButNotBorderedNodeBounds(createdView, previousCreatedView);
+            updateLocationAndSize = updateDNodeContainerChildButNotBorderedNodeBounds(createdView);
+        } else {
+            updateLocationAndSize = new LayoutDataResult(true, false, false, false, false);
         }
         return updateLocationAndSize;
     }
 
-    private boolean updateDDiagramChildBounds(View createdView, View previousCreatedView) {
+    private LayoutDataResult updateDDiagramChildBounds(View createdView) {
         Dimension size = null;
         Point location = null;
 
-        boolean isAlreadylayouted = false;
+        boolean normalLayout = true;
+        boolean centerLayout = false;
+        boolean borderLayout = false;
+        boolean isAlreadyLayouted = false;
+        boolean isLayoutReference = false;
 
         EObject element = createdView.getElement();
         org.eclipse.sirius.diagram.business.api.query.DNodeQuery dNodeQuery = null;
@@ -465,11 +513,12 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
                 }
                 if (layoutData != null && layoutData.getLocation() != null) {
                     location = layoutData.getLocation();
+                    isLayoutReference = true;
                 }
 
                 // If the AbstractDNode has BorderNodes, it should be marked as to layout its BorderNodes.
                 if (!abstractDNode.getOwnedBorderedNodes().isEmpty()) { // if (has border nodes)
-                    markCreatedViewsAsToLayoutBorderNode(List.of(createdView));
+                    borderLayout = true;
                 }
             }
         } else {
@@ -480,35 +529,15 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
         }
         if (createdView instanceof Node && ((Node) createdView).getLayoutConstraint() instanceof Bounds) {
             Bounds bounds = (Bounds) ((Node) createdView).getLayoutConstraint();
-            if (location == null && previousCreatedView instanceof Node && ((Node) previousCreatedView).getLayoutConstraint() instanceof Bounds) {
-
-                // if a location has been registered in SiriusLayoutDataManager but we were not able to retrieve it
-                // before -> Set a center location for child DNode of DNodeContainer like in
-                // AirXYLayoutEditPolicy#getConstraintFor(request)
-                if (previousCreatedView.eAdapters().contains(SiriusLayoutDataManager.INSTANCE.getCenterAdapterMarker())) {
-                    markCreatedViewsWithCenterLayout(createdView);
-                } else {
-
-                    // If no location is found in the layoutDataManager we can use the previous created View coordinates
-                    // and translate it. This is the case for example in D'n'D or when several elements are created at
-                    // same time.
-                    Bounds previousBounds = (Bounds) ((Node) previousCreatedView).getLayoutConstraint();
-                    int padding = getPaddingForNextView();
-                    location = new Point(previousBounds.getX(), previousBounds.getY()).getTranslated(padding, padding);
-                }
-            }
-            // if a location has been registered in SiriusLayoutDataManager but we were not able to retrieve it before
-            // -> Set a center location for child DNode of DNodeContainer like in
-            // AirXYLayoutEditPolicy#getConstraintFor(request)
-            if (location == null && SiriusLayoutDataManager.INSTANCE.getData().some()) {
-                // mark with special layout
-                markCreatedViewsWithCenterLayout(createdView);
-                isAlreadylayouted = true;
-            }
-            if (location != null) {
+            if (location == null) {
+                normalLayout = false;
+                centerLayout = true;
+                isAlreadyLayouted = true;
+            } else {
                 bounds.setX(location.x);
                 bounds.setY(location.y);
-                isAlreadylayouted = true;
+                normalLayout = false;
+                isAlreadyLayouted = true;
             }
             if (size != null) {
                 if (size.width != -1) {
@@ -520,11 +549,10 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
             }
         }
 
-        return isAlreadylayouted;
+        return new LayoutDataResult(normalLayout, centerLayout, borderLayout, isAlreadyLayouted, isLayoutReference);
     }
 
-    // CHECKSTYLE:OFF
-    private boolean updateAbstractDNode_ownedBorderedNodes_Bounds(View createdView, View previousCreatedView) {
+    private LayoutDataResult updateAbstractDNode_ownedBorderedNodes_Bounds(View createdView) {
         Node createdNode = (Node) createdView;
         AbstractDNode portNode = (AbstractDNode) createdView.getElement();
         Node parentNode = (Node) createdView.eContainer();
@@ -663,15 +691,23 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
                 bounds.setHeight(size.height);
             }
         }
-        return laidOut;
+        if (laidOut) {
+            return new LayoutDataResult(false, false, false, true, false);
+        } else {
+            return new LayoutDataResult(true, false, false, false, false);
+        }
     }
 
-    // CHECKSTYLE:ON
-
-    private boolean updateDNodeContainerChildButNotBorderedNodeBounds(View createdView, View previousCreatedView) {
+    private LayoutDataResult updateDNodeContainerChildButNotBorderedNodeBounds(View createdView) {
         EObject element = createdView.getElement();
         EObject parent = element.eContainer();
+
+        boolean normalLayout = true;
+        boolean centerLayout = false;
+        boolean borderLayout = false;
         boolean isAlreadylayouted = false;
+        boolean isLayoutReference = false;
+
         if (element instanceof AbstractDNode && parent instanceof DNodeContainer) {
             Dimension size = null;
             Point location = null;
@@ -684,60 +720,34 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
             if (layoutData != null) {
                 location = layoutData.getLocation();
                 size = layoutData.getSize();
+                normalLayout = false;
                 isAlreadylayouted = true;
+                isLayoutReference = true;
             }
 
             if (size == null) {
                 size = getDefaultSize(abstractDNode);
             }
             if (location == null) {
-                if (previousCreatedView instanceof Node && ((Node) previousCreatedView).getLayoutConstraint() instanceof Bounds) {
+                boolean isInRegionContainer = new DNodeContainerExperimentalQuery((DNodeContainer) parent).isRegionContainer();
+                boolean skip = false;
+                if (STANDARD_LAYOUT_FOR_CREATED_REGION_CONTENT && new DDiagramElementContainerExperimentalQuery((DNodeContainer) parent).isRegion()) {
+                    // Get CompartmentView edit part
+                    EObject dnodeContainer2_3008 = createdView.eContainer();
+                    dnodeContainer2_3008 = dnodeContainer2_3008 != null ? dnodeContainer2_3008.eContainer() : null;
 
-                    // if a location has been registered in SiriusLayoutDataManager but we were not able to retrieve it
-                    // before -> Set a center location for child DNode of DNodeContainer like in
-                    // AirXYLayoutEditPolicy#getConstraintFor(request)
-                    if (previousCreatedView.eAdapters().contains(SiriusLayoutDataManager.INSTANCE.getCenterAdapterMarker())) {
-                        markCreatedViewsWithCenterLayout(createdView);
-                    } else {
-                        Bounds previousBounds = (Bounds) ((Node) previousCreatedView).getLayoutConstraint();
-                        int padding = getPaddingForNextView();
-                        location = new Point(previousBounds.getX(), previousBounds.getY()).getTranslated(padding, padding);
-                    }
-
+                    skip = dnodeContainer2_3008 != null && (dnodeContainer2_3008.eAdapters().contains(SiriusLayoutDataManager.INSTANCE.getCenterAdapterMarker())
+                            || dnodeContainer2_3008.eAdapters().contains(SiriusLayoutDataManager.INSTANCE.getAdapterMarker()));
+                }
+                if (!skip && !isInRegionContainer) {
+                    normalLayout = false;
+                    centerLayout = true;
                     isAlreadylayouted = true;
-                } else {
-                    // if a location has been registered in SiriusLayoutDataManager but we were not able to retrieve it
-                    // before -> Set a center location for child DNode of DNodeContainer like in
-                    // AirXYLayoutEditPolicy#getConstraintFor(request), except for children of regions container for
-                    // which layout is managed with RegionContainerUpdateLayoutOperation.
-                    if (layoutData == null && SiriusLayoutDataManager.INSTANCE.getData().some() && !(new DNodeContainerExperimentalQuery((DNodeContainer) parent).isRegionContainer())) {
-
-                        // Skip centered layout for region content when the region has been created by the user
-                        // operation (it already has a
-                        // layout marker).
-                        // TODO for future version: generalize this to content of created DNodeContainer elements to
-                        // have only the first level
-                        // of created view which will be centered but not their content.
-                        boolean skip = false;
-                        if (STANDARD_LAYOUT_FOR_CREATED_REGION_CONTENT && new DDiagramElementContainerExperimentalQuery((DNodeContainer) parent).isRegion()) {
-                            // Get CompartmentView edit part
-                            EObject dnodeContainer2_3008 = createdView.eContainer();
-                            dnodeContainer2_3008 = dnodeContainer2_3008 != null ? dnodeContainer2_3008.eContainer() : null;
-
-                            skip = dnodeContainer2_3008 != null && (dnodeContainer2_3008.eAdapters().contains(SiriusLayoutDataManager.INSTANCE.getCenterAdapterMarker())
-                                    || dnodeContainer2_3008.eAdapters().contains(SiriusLayoutDataManager.INSTANCE.getAdapterMarker()));
-                        }
-                        if (!skip) {
-                            // mark with special layout
-                            markCreatedViewsWithCenterLayout(createdView);
-                            isAlreadylayouted = true;
-                        }
-                    }
                 }
             }
             // If the DNodeContainer has BorderNodes, it should be marked as to layout its BorderNodes.
             if (!abstractDNode.getOwnedBorderedNodes().isEmpty()) { // if (has border nodes)
-                markCreatedViewsAsToLayoutBorderNode(List.of(createdView));
+                borderLayout = true;
             }
 
             if (createdView instanceof Node) {
@@ -745,15 +755,7 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
                 updateBoundsConstraint(createdNode, size, location, abstractDNode);
             }
         }
-        return isAlreadylayouted;
-    }
-
-    private int getPaddingForNextView() {
-        int padding = SiriusLayoutDataManager.PADDING;
-        if (isSnapToGrid()) {
-            padding = getGridSpacing();
-        }
-        return padding;
+        return new LayoutDataResult(normalLayout, centerLayout, borderLayout, isAlreadylayouted, isLayoutReference);
     }
 
     protected void updateLocationConstraint(Bounds bounds, Point location) {
