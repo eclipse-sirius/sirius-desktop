@@ -11,6 +11,7 @@ pipeline {
     options {
       timestamps ()
       disableConcurrentBuilds()
+	  lock(resource: 'sirius-desktop-tests')
     }
 
     stages {
