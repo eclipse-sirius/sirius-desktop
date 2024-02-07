@@ -17,7 +17,6 @@ import java.util.List;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
-import org.eclipse.sirius.viewpoint.description.DAnnotationEntry;
 import org.eclipse.swt.graphics.RGB;
 
 /**
@@ -26,18 +25,6 @@ import org.eclipse.swt.graphics.RGB;
  * @author <a href="mailto:glenn.plouhinec@obeo.fr">Glenn Plouhinec</a>
  */
 public class LineColorCategoryManager extends AbstractColorCategoryManager implements ColorCategoryManager {
-
-    /**
-     * The source value used to retrieve the {@link DAnnotationEntry} for the "Custom Colors" category of the "Line
-     * Color" property.
-     */
-    private static final String LINE_CUSTOM_COLORS_ANNOTATION_SOURCE_NAME = "LineCustomColors"; //$NON-NLS-1$
-
-    /**
-     * The source value used to retrieve the {@link DAnnotationEntry} for the "Suggested Colors" category of the "Line
-     * Color" property.
-     */
-    private static final String LINE_SUGGESTED_COLORS_ANNOTATION_SOURCE_NAME = "LineSuggestedColors"; //$NON-NLS-1$
 
     /**
      * Creates an instance of {@link LineColorCategoryManager}.

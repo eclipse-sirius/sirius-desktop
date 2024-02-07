@@ -15,6 +15,7 @@ package org.eclipse.sirius.diagram.ui.tools.internal.colors;
 import java.util.List;
 
 import org.eclipse.sirius.diagram.ui.tools.internal.dialogs.ColorPalettePopup;
+import org.eclipse.sirius.viewpoint.description.DAnnotationEntry;
 import org.eclipse.swt.graphics.RGB;
 
 /**
@@ -29,6 +30,42 @@ import org.eclipse.swt.graphics.RGB;
  * @author <a href="mailto:glenn.plouhinec@obeo.fr">Glenn Plouhinec</a>
  */
 public interface ColorCategoryManager {
+
+    /**
+     * The source value used to retrieve the {@link DAnnotationEntry} for the "Custom Colors" category of the "Fill
+     * Color" property.
+     */
+    String FILL_CUSTOM_COLORS_ANNOTATION_SOURCE_NAME = "FillCustomColors"; //$NON-NLS-1$
+
+    /**
+     * The source value used to retrieve the {@link DAnnotationEntry} for the "Suggested Colors" category of the "Fill
+     * Color" property.
+     */
+    String FILL_SUGGESTED_COLORS_ANNOTATION_SOURCE_NAME = "FillSuggestedColors"; //$NON-NLS-1$
+
+    /**
+     * The source value used to retrieve the {@link DAnnotationEntry} for the "Custom Colors" category of the "Font
+     * Color" property.
+     */
+    String FONT_CUSTOM_COLORS_ANNOTATION_SOURCE_NAME = "FontCustomColors"; //$NON-NLS-1$
+
+    /**
+     * The source value used to retrieve the {@link DAnnotationEntry} for the "Suggested Colors" category of the "Font
+     * Color" property.
+     */
+    String FONT_SUGGESTED_COLORS_ANNOTATION_SOURCE_NAME = "FontSuggestedColors"; //$NON-NLS-1$
+
+    /**
+     * The source value used to retrieve the {@link DAnnotationEntry} for the "Custom Colors" category of the "Line
+     * Color" property.
+     */
+    String LINE_CUSTOM_COLORS_ANNOTATION_SOURCE_NAME = "LineCustomColors"; //$NON-NLS-1$
+
+    /**
+     * The source value used to retrieve the {@link DAnnotationEntry} for the "Suggested Colors" category of the "Line
+     * Color" property.
+     */
+    String LINE_SUGGESTED_COLORS_ANNOTATION_SOURCE_NAME = "LineSuggestedColors"; //$NON-NLS-1$
 
     /**
      * Returns the list of last colors used by the user.
