@@ -59,6 +59,25 @@ public final class ColorsAnnotationHelper {
     }
 
     /**
+     * Used to initialize all color DAnnotationsEntries.
+     */
+    public void initializeAllColorsAnnotations() {
+        session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+            @Override
+            protected void doExecute() {
+                String[] annotationSources = { //
+                        ColorCategoryManager.FILL_CUSTOM_COLORS_ANNOTATION_SOURCE_NAME, ColorCategoryManager.FILL_SUGGESTED_COLORS_ANNOTATION_SOURCE_NAME,
+                        ColorCategoryManager.FONT_CUSTOM_COLORS_ANNOTATION_SOURCE_NAME, ColorCategoryManager.FONT_SUGGESTED_COLORS_ANNOTATION_SOURCE_NAME,
+                        ColorCategoryManager.LINE_CUSTOM_COLORS_ANNOTATION_SOURCE_NAME, ColorCategoryManager.LINE_SUGGESTED_COLORS_ANNOTATION_SOURCE_NAME };
+                for (String source : annotationSources) {
+                    DAnnotationEntry annotation = getOrCreateColorAnnotationEntry(source);
+                    addColorAnnotation(annotation);
+                }
+            }
+        });
+    }
+
+    /**
      * Gets the {@link DAnnotationEntry} for the specified source annotation or create it if not found.<br/>
      * It does not change the session model.
      * 
