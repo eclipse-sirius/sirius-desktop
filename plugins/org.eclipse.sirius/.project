@@ -42,11 +42,9 @@
 		</buildCommand>
 	</buildSpec>
 	<natures>
-		<nature>fr.obeo.baseliner.ui.BaselinerNature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.pde.PluginNature</nature>
 		<nature>org.eclipse.pde.api.tools.apiAnalysisNature</nature>
-		<nature>net.sourceforge.metrics.nature</nature>
 		<nature>net.sf.eclipsecs.core.CheckstyleNature</nature>
 	</natures>
 </projectDescription>
