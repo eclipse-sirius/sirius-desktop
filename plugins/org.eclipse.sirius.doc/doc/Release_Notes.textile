@@ -19,6 +19,11 @@ h3. User-Visible Changes
 * <span class="label label-info">Modified</span> The preference for marking moved items as pinned is now disabled by default. You can re-enable it via Window > Preferences > Sirius > Sirius Diagram
 * <span class="label label-info">Modified</span> In Sirius table, font type and default size are now based on Preferences Settings of **General > Appearance > Colors and Fonts**. Previously, cells font were always 'Arial' and of size '9' but column and line headers were based on Preferences Settings.
 * <span class="label label-info">Modified</span> In Sirius table, default colors has been changed to use Preferences Settings and selection coloring behaves like other Views and Editors. Previously, line headers were forced to gray, selected cell was using Menu color instead of Theme color and no color was indicating the row on mouse hover.
+* <span class="label label-success">Added</span> A new "color selection popup dialog":user/diagrams/Diagrams.html#edit_element_color has been defined to choose the color(label, fill and line) to use for the selected element. This popup dialog is opened from the diagram toolbar, the contextual menu, the Diagram navigation bar, or the Appearance tab in the Properties View. Four color categories has been defined in this popup:
+** Last Used colors category displays the ten last colors used by the user. These colors are persisted in preferences for the user workspace.
+** Custom colors category displays the ten first colors defined by the user. These colors are persisted in aird file. The "More..." button opens a dialog for adding custom colors.
+** Suggested colors category displays the ten "preferred colors" chosen by the user which are a subset of the colors defined in the VSM. These colors are persisted in the aird file. The "More..." button opens a dialog that lets the user choose the ten "preferred colors".
+** Basic colors category displays ten useful colors.
 
 h3. Specifier-Visible Changes
 
@@ -55,6 +60,14 @@ h4. Changes in @org.eclipse.sirius.diagram.ui@
 
 * <span class="label label-success">Added</span> The constant @org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager.KEEP_FIXED@ has been added to tag elements to be laid out and indicate that their location should not be modified.
 * <span class="label label-success">Added</span> Method @org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager.getArrangeCreatedViewsCommand(List<IAdaptable>, List<IAdaptable>, IGraphicalEditPart, String)@ has been added to handle the new @KEEP_FIXED@ layout tag. There are now 3 types of tags that can be used for layout: @org.eclipse.gmf.runtime.diagram.ui.services.layout.LayoutType.DEFAULT@, @org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager.LAYOUT_TYPE_ARRANGE_AT_OPENING@ and @org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager.KEEP_FIXED@.
+* <span class="label label-success">Added</span> New preferences have been added to store the last colors used by the user:
+** @org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys.PREF_FONT_LAST_USED_COLORS@ is used to store the last used font colors.
+** @org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys.PREF_FILL_LAST_USED_COLORS@ is used to store the last used fill colors.
+** @org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys.PREF_LINE_LAST_USED_COLORS@ is used to store the last used line colors.
+* <span class="label label-success">Added</span> The method @org.eclipse.sirius.diagram.ui.tools.api.color.ColorManager.collectVsmColors(Session)@ has been added to collect colors defined in the VSM.
+* <span class="label label-success">Added</span> The method @org.eclipse.sirius.diagram.ui.tools.api.color.ColorManager.rgbToString(RGB)@ has been added to convert an RGB color to a string.
+* <span class="label label-success">Added</span> The method @org.eclipse.sirius.diagram.ui.tools.api.color.ColorManager.stringToRGB(String)@ has been added to convert a string color to an RGB color.
+* <span class="label label-success">Added</span> The method @org.eclipse.sirius.diagram.ui.tools.api.color.ColorManager.sortColors(Collection<RGB>)@ has been added to sort a collection of RGB colors using their HSB (Hue, Saturation, Brightness). The specified collection isn't modified.
 
 h4. Migrations
 

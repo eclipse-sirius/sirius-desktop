@@ -45,6 +45,14 @@
 								</ol>
 							</li>
 							<li>
+								<a href="#Editingstyleofelements">Editing style of elements</a>
+								<ol style="list-style: disc;">
+									<li>
+										<a href="#edit_element_color">Edit element color</a>
+									</li>
+								</ol>
+							</li>
+							<li>
 								<a href="#Movingelements">Moving elements</a>
 								<ol style="list-style: disc;">
 									<li>
@@ -419,6 +427,95 @@
 			<em>experimental</em> structures of containers with compartmented compartments, the F3 shortcut also allows to disable the resize propagation to manually correct the computed layout and remove empty space (
 			<em>experimental</em>). This might occur when there are several levels of compartments without the same number of compartments on each level. The corrective resize can be done on the last compartments of each compartmented container (from bottom for vertical stacks and from right for horizontal stacks).
 		</p>
+		<h3 id="Editingstyleofelements">Editing style of elements</h3>
+		<p>Using the Appearance tab in the Properties view, the style of elements can be modified. For Nodes or Containers, for example, the font style can be modified, as can the color of the element. It is also possible to use an image to modify the overall appearance of the element.</p>
+		<p>
+			<img border="0" src="images/edit_node_style_appearance_tab.png"/>
+		</p>
+		<p>You can also access these options from different locations in the user interface:</p>
+		<ul>
+			<li>Via the diagram toolbar:
+				<img border="0" src="images/edit_node_style_toolbar.png"/>
+			</li>
+		</ul>
+		<ul>
+			<li>Via the contextual menu, in 
+				<em>Format</em>:
+				<img border="0" src="images/edit_node_style_contextual.png"/>
+			</li>
+		</ul>
+		<ul>
+			<li>Via the navigation bar, in 
+				<em>Diagram</em>:
+				<img border="0" src="images/edit_node_style_diagramMenu.png"/>
+			</li>
+		</ul>
+		<h4 id="edit_element_color">Edit element color</h4>
+		<p>There are 3 menu item that allow to change the color of an element:</p>
+		<ul>
+			<li>
+				<strong>Font Color</strong> menu allows you to change the font color of the label of the selected element(s).
+			</li>
+			<li>
+				<strong>Fill Color</strong> menu allows you to change the background color of the selected element(s).
+			</li>
+			<li>
+				<strong>Line Color</strong> menu allows you to change the border color of a Node or Container, or the color of the Edge for the selected element(s).
+			</li>
+		</ul>
+		<p>When one of the color-change menus is clicked, a popup dialog with color palettes appears, allowing you to choose which color to apply among four categories provided:
+			<br/>
+			<img border="0" src="images/color_palette_popup_4_categories.png"/>
+		</p>
+		<ul>
+			<li>
+				<strong>Last used</strong> colors category displays the ten last colors used by the user.
+			</li>
+			<li>
+				<strong>Custom</strong> colors category displays the ten first colors defined by the user. Additional colors can be created by clicking on the &#8220;More...&#8221; button. Users can also reorder the set of custom colors, choosing which colors to display in the popup dialog.
+			</li>
+			<li>
+				<strong>Suggested</strong> colors category displays the ten &#8220;preferred colors&#8221; defined by the user which are a subset of the colors defined in the Viewpoint Specification Model (odesign). This category is not displayed if no colors are defined in the VSM. Users can modify their ten &#8220;preferred colors&#8221; by clicking on the &#8220;More...&#8221; button. Here&#8217;s an example of colors defined in the VSM: 
+				<img border="0" src="images/VSM_user_fixed_colors.png"/>
+			</li>
+			<li>
+				<strong>Basic</strong> colors category displays ten application-defined colors for use in most contexts. This color palette cannot be modified by the user.
+			</li>
+		</ul>
+		<p>Note: The colors saved for &#8220;Custom&#8221; and &#8220;Suggested&#8221; categories are persisted 
+			<strong>separately</strong> for &#8220;Font Color&#8221;, &#8220;Fill Color&#8221; and &#8220;Line Color&#8221;. This is useful because you usually different colors for label and background for example.
+		</p>
+		<p>Note: 
+			<strong>Last used</strong> colors category is persisted in preferences, 
+			<strong>Custom</strong> and 
+			<strong>Suggested</strong> colors categories are persisted in the aird file.
+		</p>
+		<p>When clicking on the &#8220;More...&#8221; button of the 
+			<strong>Custom</strong> color category, the &#8220;Custom Colors&#8221; dialog appears.
+		</p>
+		<ul>
+			<li>The user can define new colors via the system dialog, by clicking on the Add button.</li>
+			<li>The Remove button is used to remove a color from the palette.</li>
+			<li>Colors can be reordered with drag-and-drop. The first ten colors in the palette will be displayed in the color selection popup dialog.</li>
+			<li>There&#8217;s no limit to the number of custom colors you can add but only ten are displayed in the popup dialog. </li>
+			<li>Clicking on the OK button will persist the changes in the color palette, and the selected color will be applied to the selected element(s).</li>
+			<li>Clicking on the Cancel button will cancel all changes made to the color palette.
+				<img border="0" src="images/custom_colors_dialog.png"/>
+			</li>
+		</ul>
+		<p>When clicking on the &#8220;More...&#8221; button of the 
+			<strong>Suggested</strong> color category, the &#8220;Suggested Colors&#8221; dialog appears.
+		</p>
+		<ul>
+			<li>The user can only edit the &#8220;Displayed suggestions&#8221; section to define the ten &#8220;Preferred colors&#8221; to be displayed in the color selection popup dialog.</li>
+			<li>Double-click on a color in the &#8220;All suggestions&#8221; section to add it to &#8220;Displayed suggestions&#8221;. Dragging and dropping a color from &#8220;All suggestions&#8221; to &#8220;Displayed suggestions&#8221; also adds a color.</li>
+			<li>Double click a color in the &#8220;Displayed suggestions&#8221; or drag it to &#8220;All suggestions&#8221; to remove from the &#8220;Displayed suggestions&#8221; section.</li>
+			<li>The &#8220;Displayed suggestions&#8221; color palette can be reordered using drag &amp; drop.</li>
+			<li>Clicking on the OK button will persist the changes in the &#8220;Displayed suggestions&#8221; color palette, and the selected color will be applied to the selected element(s).</li>
+			<li>Clicking on the Cancel button will cancel all changes made to the color palette.
+				<img border="0" src="images/suggested_colors_dialog.png"/>
+			</li>
+		</ul>
 		<h3 id="Movingelements">Moving elements</h3>
 		<p>There are specific shortcuts to change the move behavior:</p>
 		<ul>

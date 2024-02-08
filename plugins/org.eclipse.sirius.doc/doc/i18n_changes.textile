@@ -30,6 +30,31 @@ h3. Message Keys Added
 * @org.eclipse.sirius.diagram.ui.provider.Messages.MovePinnedElementsAction_text@
 * @org.eclipse.sirius.diagram.ui.provider.Messages.MovePinnedElementsAction_toolTipText@
 * @org.eclipse.sirius.diagram.ui.provider.Messages.PinElementsEclipseAction_tooltip@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ColorManager_logErrorParsingRGB@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ColorPalettePopup_customCategoryLabel@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ColorPalettePopup_customCategoryMoreButtonTooltip@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ColorPalettePopup_customCategoryTooltip@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ColorPalettePopup_basicCategoryLabel@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ColorPalettePopup_basicCategoryTooltip@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ColorPalettePopup_lastUsedCategoryLabel@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ColorPalettePopup_lastUsedCategoryTooltip@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ColorPalettePopup_moreButtonLabel@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ColorPalettePopup_suggestedCategoryLabel@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ColorPalettePopup_suggestedCategoryMoreButtonTooltip@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ColorPalettePopup_suggestedCategoryTooltip@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ColorPalettePopup_title@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ColorSelectionDialog_addButtonLabel@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ColorSelectionDialog_addButtonTooltip@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ColorSelectionDialog_customAllColorsTooltip@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ColorSelectionDialog_customColorsDialogTitle@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ColorSelectionDialog_groupAllCustomColorsLabel@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ColorSelectionDialog_groupAllSuggestedColorsLabel@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ColorSelectionDialog_groupDisplayedSuggestedColorsLabel@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ColorSelectionDialog_removeButtonLabel@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ColorSelectionDialog_removeButtonTooltip@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ColorSelectionDialog_suggestedAllColorsTooltip@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ColorSelectionDialog_suggestedColorsDialogTitle@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ColorSelectionDialog_suggestedDisplayedColorsTooltip@
 
 h3. Message Values Changed
 
