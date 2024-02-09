@@ -717,7 +717,7 @@
               <styles xmi:type="notation:FilteringStyle" xmi:id="_XXGTgsyWEeCZ_NKsnt30bg"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_XXFFYcyWEeCZ_NKsnt30bg" fontName="Ubuntu" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XXFFYsyWEeCZ_NKsnt30bg" x="460" y="235"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XXFFYsyWEeCZ_NKsnt30bg" x="466" y="277"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_ffZQUMyWEeCZ_NKsnt30bg" type="2001" element="_ffTwwMyWEeCZ_NKsnt30bg">
             <children xmi:type="notation:Node" xmi:id="_ffZ3YMyWEeCZ_NKsnt30bg" type="5002">
