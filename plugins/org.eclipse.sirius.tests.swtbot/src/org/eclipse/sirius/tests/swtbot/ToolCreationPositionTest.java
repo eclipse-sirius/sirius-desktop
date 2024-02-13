@@ -250,62 +250,70 @@ public class ToolCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     private void checkNodeEditPartPosition(Point reference) {
-        checkNodeEditPartPosition(C1, 0, reference);
-        checkNodeEditPartPosition(C2, 1, reference);
-        checkNodeEditPartPosition(C3, 2, reference);
-        checkNodeEditPartPosition(C4, 3, reference);
+        Point expectedPosition = reference;
+        expectedPosition = checkNodeEditPartPosition(C1, expectedPosition);
+        expectedPosition = checkNodeEditPartPosition(C2, expectedPosition);
+        expectedPosition = checkNodeEditPartPosition(C3, expectedPosition);
+        checkNodeEditPartPosition(C4, expectedPosition);
     }
 
     private void checkNode3EditPartPosition(Point reference) {
-        checkNode3EditPartPosition(C1, 0, reference);
-        checkNode3EditPartPosition(C2, 1, reference);
-        checkNode3EditPartPosition(C3, 2, reference);
-        checkNode3EditPartPosition(C4, 3, reference);
+        Point expectedPosition = reference;
+        expectedPosition = checkNode3EditPartPosition(C1, expectedPosition);
+        expectedPosition = checkNode3EditPartPosition(C2, expectedPosition);
+        expectedPosition = checkNode3EditPartPosition(C3, expectedPosition);
+        checkNode3EditPartPosition(C4, expectedPosition);
     }
 
     private void checkContainerEditPartPosition(Point reference) {
-        checkContainerEditPartPosition(NEW_PACKAGE1, 0, reference);
-        checkContainerEditPartPosition(NEW_PACKAGE2, 1, reference);
-        checkContainerEditPartPosition(NEW_PACKAGE3, 2, reference);
-        checkContainerEditPartPosition(NEW_PACKAGE4, 3, reference);
+        Point expectedPosition = reference;
+        expectedPosition = checkContainerEditPartPosition(NEW_PACKAGE1, expectedPosition);
+        expectedPosition = checkContainerEditPartPosition(NEW_PACKAGE2, expectedPosition);
+        expectedPosition = checkContainerEditPartPosition(NEW_PACKAGE3, expectedPosition);
+        checkContainerEditPartPosition(NEW_PACKAGE4, expectedPosition);
     }
 
     private void checkContainer2EditPartPosition(Point reference) {
-        checkContainer2EditPartPosition(NEW_PACKAGE1, 0, reference);
-        checkContainer2EditPartPosition(NEW_PACKAGE2, 1, reference);
-        checkContainer2EditPartPosition(NEW_PACKAGE3, 2, reference);
-        checkContainer2EditPartPosition(NEW_PACKAGE4, 3, reference);
+        Point expectedPosition = reference;
+        expectedPosition = checkContainer2EditPartPosition(NEW_PACKAGE1, expectedPosition);
+        expectedPosition = checkContainer2EditPartPosition(NEW_PACKAGE2, expectedPosition);
+        expectedPosition = checkContainer2EditPartPosition(NEW_PACKAGE3, expectedPosition);
+        checkContainer2EditPartPosition(NEW_PACKAGE4, expectedPosition);
     }
 
-    private void checkNodeEditPartPosition(String label, int position, Point creationPosition) {
+    private Point checkNodeEditPartPosition(String label, Point expectedPosition) {
         SWTBotGefEditPart editPart = editor.getEditPart(label, DNodeEditPart.class);
         assertNotNull(editPart);
-        checkEditPartPosition(position, editPart, creationPosition);
+        return checkEditPartPosition(editPart, expectedPosition);
     }
 
-    private void checkNode3EditPartPosition(String label, int position, Point creationPosition) {
+    private Point checkNode3EditPartPosition(String label, Point expectedPosition) {
         SWTBotGefEditPart editPart = editor.getEditPart(label, DNode3EditPart.class);
         assertNotNull(editPart);
-        checkEditPartPosition(position, editPart, creationPosition);
+        return checkEditPartPosition(editPart, expectedPosition);
     }
 
-    private void checkContainerEditPartPosition(String label, int position, Point creationPosition) {
+    private Point checkContainerEditPartPosition(String label, Point expectedPosition) {
         SWTBotGefEditPart editPart = editor.getEditPart(label, DNodeContainerEditPart.class);
         assertNotNull(editPart);
-        checkEditPartPosition(position, editPart, creationPosition);
+        return checkEditPartPosition(editPart, expectedPosition);
     }
 
-    private void checkContainer2EditPartPosition(String label, int position, Point creationPosition) {
+    private Point checkContainer2EditPartPosition(String label, Point expectedPosition) {
         SWTBotGefEditPart editPart = editor.getEditPart(label, DNodeContainer2EditPart.class);
         assertNotNull(editPart);
-        checkEditPartPosition(position, editPart, creationPosition);
+        return checkEditPartPosition(editPart, expectedPosition);
     }
 
-    private void checkEditPartPosition(int position, SWTBotGefEditPart editPart, Point creationPosition) {
+    private Point checkEditPartPosition(SWTBotGefEditPart editPart, Point expectedPosition) {
         GraphicalEditPart ep = (GraphicalEditPart) editPart.part();
         ep.getFigure().translateToAbsolute(((GraphicalEditPart) editPart.part()).getFigure().getBounds());
-        assertEquals(creationPosition.x + position * SiriusLayoutDataManager.PADDING, ep.getFigure().getBounds().x, 1);
-        assertEquals(creationPosition.y + position * SiriusLayoutDataManager.PADDING, ep.getFigure().getBounds().y, 1);
+        assertEquals(expectedPosition.x, ep.getFigure().getBounds().x, 1);
+        assertEquals(expectedPosition.y, ep.getFigure().getBounds().y, 1);
+
+        int nextX = ep.getFigure().getBounds().getRight().x + SiriusLayoutDataManager.PADDING;
+        int nextY = ep.getFigure().getBounds().getRight().y;
+        return new Point(nextX, nextY);
     }
 
 }

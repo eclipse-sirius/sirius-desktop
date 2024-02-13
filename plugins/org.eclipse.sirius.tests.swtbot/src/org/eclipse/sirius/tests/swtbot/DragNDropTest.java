@@ -585,7 +585,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
             // Get the location of P1
             SWTBotGefEditPart p1Bot = editor.getEditPart(CONTAINER_TO_DRAG_P1).parent();
-            Point targetLocation = editor.getBounds(p1Bot).getLeft().getTranslated(-200, 0);
+            Point targetLocation = editor.getBounds(p1Bot).getLeft().getTranslated(-250, 0);
 
             // DnD P2.1(EPackage) from the Model Content view to the diagram
             semanticResourceNode = localSession.getSemanticResourceNode(ecoreEcoreResource);

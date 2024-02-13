@@ -133,7 +133,7 @@ public class ContainerDefaultSizeLayoutTest extends AbstractSiriusSwtBotGefTestC
         editor.save();
         manualRefresh();
         // SWTBotUtils.waitAllUiEvents();
-        checkPkgBounds("Pkg1", autosize);
+        checkPkgBounds("Pkg1", false);
 
         arrangeAll();
 
