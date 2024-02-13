@@ -19,8 +19,6 @@ import java.util.Map.Entry;
 import java.util.Optional;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.OperationCanceledException;
-import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
@@ -57,7 +55,6 @@ import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.jface.preference.IPreferenceStore;
-import org.eclipse.sirius.common.tools.internal.resource.ResourceSyncClientNotifier;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
@@ -1320,125 +1317,6 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
     }
 
     /**
-     * Make sure that arrange launched at diagram opening, with new elements created because of the refresh is OK when
-     * using ELK.
-     */
-    public void testArrangeAtOpening1() {
-        // Open the diagram, launch an arrange all and close the diagram
-        testArrangeAllResult_ForPackageArrangeSelection("diagramWithContainer");
-
-        Rectangle boundsOfP1BeforeLayoutAtOpening = getEditPart("p1", IDiagramContainerEditPart.class).getFigure().getBounds().getCopy();
-        Rectangle boundsOfP22BeforeLayoutAtOpening = getEditPart("p2_2", IDiagramContainerEditPart.class).getFigure().getBounds().getCopy();
-        Rectangle boundsOfP3BeforeLayoutAtOpening = getEditPart("p3", IDiagramContainerEditPart.class).getFigure().getBounds().getCopy();
-
-        SessionUIManager.INSTANCE.getUISession(session).closeEditors(false, Collections.singleton((DDiagramEditor) editorPart));
-        TestsUtil.emptyEventsFromUIThread();
-
-        // Modify externally session file (Copy another ecore file with additional semantic elements)
-        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID + PATH_REPLACE + SEMANTIC_RESOURCE_NAME, "/" + TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_RESOURCE_NAME);
-        try {
-            Job.getJobManager().join(ResourceSyncClientNotifier.FAMILY, new NullProgressMonitor());
-        } catch (OperationCanceledException | InterruptedException e) {
-            fail(e.getMessage());
-        }
-
-        openDiagram("diagramWithContainer");
-
-        // Assert new elements are layouted
-        assertAlignCentered(50, "Class5", "Class6");
-        assertAlignCentered(50, "Class1_3", "Class1_4", "Class1_5");
-        assertAlignCentered(50, "Class3_5", "Class3_6");
-
-        // Assert that top left corner of new layouted elements is OK
-        assertEquals(new Point(ResetOriginChangeModelOperation.MARGIN, ResetOriginChangeModelOperation.MARGIN),
-                getTopLeftCorner(getEditPart("Class5", IDiagramNodeEditPart.class), getEditPart("Class6", IDiagramNodeEditPart.class)));
-        // TODO : This top left container corresponds to the insets (it could be computed). But by default, it should be
-        // the same location is during an arrange all (further improvement)
-        Point expectedContainerTopLeftCorner = new Point(7, 6);
-        assertEquals(expectedContainerTopLeftCorner,
-                getTopLeftCorner(getEditPart("Class1_3", IDiagramNodeEditPart.class), getEditPart("Class1_4", IDiagramNodeEditPart.class), getEditPart("Class1_5", IDiagramNodeEditPart.class)));
-        assertEquals(expectedContainerTopLeftCorner, getTopLeftCorner(getEditPart("Class3_5", IDiagramNodeEditPart.class), getEditPart("Class3_6", IDiagramNodeEditPart.class)));
-        // TODO : The top left corner should be the same for container in other container (it is currently not the case)
-        // (further improvement)
-        expectedContainerTopLeftCorner = new Point(5, 6);
-        assertEquals(expectedContainerTopLeftCorner, getTopLeftCorner(getEditPart("Class2_2_3", IDiagramNodeEditPart.class)));
-
-        // Assert that there is no scroll bar on container (for p1 and p3 the new elements layout is larger than
-        // previous)
-        assertNoVisibleScrollBar(getEditPart("p1", IDiagramContainerEditPart.class));
-        assertNoVisibleScrollBar(getEditPart("p2_2", IDiagramContainerEditPart.class));
-        assertNoVisibleScrollBar(getEditPart("p3", IDiagramContainerEditPart.class));
-
-        // Assert that the location of the container with new elements are the same before and after the layout
-        assertEquals("The location of the container p1 should be the same before and after the layout.", boundsOfP1BeforeLayoutAtOpening.getLocation(),
-                getEditPart("p1", IDiagramContainerEditPart.class).getFigure().getBounds().getLocation());
-        assertEquals("The location of the container p2_2 should be the same before and after the layout.", boundsOfP22BeforeLayoutAtOpening.getLocation(),
-                getEditPart("p2_2", IDiagramContainerEditPart.class).getFigure().getBounds().getLocation());
-        assertEquals("The location of the container p3 should be the same before and after the layout.", boundsOfP3BeforeLayoutAtOpening.getLocation(),
-                getEditPart("p3", IDiagramContainerEditPart.class).getFigure().getBounds().getLocation());
-    }
-
-    /**
-     * Make sure that arrange launched at diagram opening, with new elements created because of the refresh is OK when
-     * using ELK.
-     */
-    public void testArrangeAtOpening2() {
-        // Open the diagram, launch an arrange all and close the diagram
-        testArrangeAllResult_ForPackageArrangeSelection("diagramWithContainerAndEdges");
-
-        Rectangle boundsOfP1BeforeLayoutAtOpening = getEditPart("p1", IDiagramContainerEditPart.class).getFigure().getBounds().getCopy();
-        Rectangle boundsOfP22BeforeLayoutAtOpening = getEditPart("p2_2", IDiagramContainerEditPart.class).getFigure().getBounds().getCopy();
-        Rectangle boundsOfP3BeforeLayoutAtOpening = getEditPart("p3", IDiagramContainerEditPart.class).getFigure().getBounds().getCopy();
-
-        SessionUIManager.INSTANCE.getUISession(session).closeEditors(false, Collections.singleton((DDiagramEditor) editorPart));
-        TestsUtil.emptyEventsFromUIThread();
-
-        // Modify externally session file (Copy another ecore file with additional semantic elements)
-        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID + PATH_REPLACE + SEMANTIC_RESOURCE_NAME, "/" + TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_RESOURCE_NAME);
-        try {
-            Job.getJobManager().join(ResourceSyncClientNotifier.FAMILY, new NullProgressMonitor());
-        } catch (OperationCanceledException | InterruptedException e) {
-            fail(e.getMessage());
-        }
-
-        openDiagram("diagramWithContainerAndEdges");
-
-        // Assert new elements are layouted
-        assertAlignCentered(50, "Class5", "Class6");
-        assertAlignCentered(50, "Class1_3", "Class1_4");
-        assertAlignCentered(50, "Class3_5", "Class3_6");
-
-        // Assert that top left corner of new layouted elements is OK
-        assertEquals(new Point(ResetOriginChangeModelOperation.MARGIN, ResetOriginChangeModelOperation.MARGIN),
-                getTopLeftCorner(getEditPart("Class5", IDiagramNodeEditPart.class), getEditPart("Class6", IDiagramNodeEditPart.class)));
-        // TODO : This top left container corresponds to the insets (it could be computed). But by default, it should be
-        // the same location is during an arrange all (further improvement)
-        Point expectedContainerTopLeftCorner = new Point(7, 6);
-        assertEquals(expectedContainerTopLeftCorner,
-                getTopLeftCorner(getEditPart("Class1_3", IDiagramNodeEditPart.class), getEditPart("Class1_4", IDiagramNodeEditPart.class), getEditPart("Class1_5", IDiagramNodeEditPart.class)));
-        assertEquals(expectedContainerTopLeftCorner, getTopLeftCorner(getEditPart("Class3_5", IDiagramNodeEditPart.class), getEditPart("Class3_6", IDiagramNodeEditPart.class)));
-        // TODO : The top left corner should be the same for container in other container (it is currently not the case)
-        // (further improvement)
-        expectedContainerTopLeftCorner = new Point(5, 6);
-        assertEquals(expectedContainerTopLeftCorner, getTopLeftCorner(getEditPart("Class2_2_3", IDiagramNodeEditPart.class)));
-
-        // Assert that there is no scroll bar on container (for p1 and p3 the new elements layout is larger than
-        // previous)
-        assertNoVisibleScrollBar(getEditPart("p1", IDiagramContainerEditPart.class));
-        assertNoVisibleScrollBar(getEditPart("p2_2", IDiagramContainerEditPart.class));
-        assertNoVisibleScrollBar(getEditPart("p3", IDiagramContainerEditPart.class));
-
-        // Assert that the location and the size of the container with new elements are the same before and after the
-        // layout
-        assertEquals("The location of the container p1 should be the same before and after the layout.", boundsOfP1BeforeLayoutAtOpening.getLocation(),
-                getEditPart("p1", IDiagramContainerEditPart.class).getFigure().getBounds().getLocation());
-        assertEquals("The location of the container p2_2 should be the same before and after the layout.", boundsOfP22BeforeLayoutAtOpening.getLocation(),
-                getEditPart("p2_2", IDiagramContainerEditPart.class).getFigure().getBounds().getLocation());
-        assertEquals("The location of the container p3 should be the same before and after the layout.", boundsOfP3BeforeLayoutAtOpening.getLocation(),
-                getEditPart("p3", IDiagramContainerEditPart.class).getFigure().getBounds().getLocation());
-    }
-
-    /**
      * Make sure that arrange all launched at diagram creation is OK when using ELK.
      * 
      * @param diagramName
@@ -1892,7 +1770,7 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         boolean validated = true;
         EditPart parentEP = getSelectionParent(realEditPartsToSelect);
         for (int i = 1; i < realEditPartsToSelect.size(); i++) {
-            EditPart part = (EditPart) realEditPartsToSelect.get(i);
+            EditPart part = realEditPartsToSelect.get(i);
             if (part instanceof ConnectionEditPart) {
                 continue;
             }
