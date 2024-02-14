@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -94,7 +94,7 @@ public class ViewpointItemImpl implements ViewpointItem, Comparable<ViewpointIte
 
     @Override
     public int compareTo(final ViewpointItemImpl o) {
-        if (viewpoint.getName() != null) {
+        if (viewpoint != null && viewpoint.getName() != null && o.viewpoint != null && o.viewpoint.getName() != null) {
             return viewpoint.getName().compareTo(o.viewpoint.getName());
         }
         return 0;
@@ -117,7 +117,7 @@ public class ViewpointItemImpl implements ViewpointItem, Comparable<ViewpointIte
 
     @Override
     public int hashCode() {
-        return viewpoint.hashCode() + session.hashCode();
+        return (viewpoint != null ? viewpoint.hashCode() : 0) + session.hashCode();
     }
 
     @Override
@@ -148,7 +148,7 @@ public class ViewpointItemImpl implements ViewpointItem, Comparable<ViewpointIte
     }
 
     protected boolean isSafeViewpoint() {
-        return viewpoint.eResource() != null && !viewpoint.eIsProxy();
+        return viewpoint != null && viewpoint.eResource() != null && !viewpoint.eIsProxy();
     }
 
     @Override
