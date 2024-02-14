@@ -19,7 +19,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.Set;
-import java.util.function.Function;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -176,7 +176,7 @@ public final class PinElementsAction extends Action implements Disposable {
     private void addPinListener() {
         if (selectionElements != null) {
             selectionResourceSets = new LinkedHashSet<ResourceSet>();
-            selectionElements = selectionElements.keySet().stream().collect(Collectors.toMap(Function.identity(), (elem) -> {
+            selectionElements = selectionElements.keySet().stream().mapMulti((DDiagramElement elem, Consumer<Entry<DDiagramElement, ResourceSetListener>> consumer) -> {
                 TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(elem);
                 if (domain != null) {
                     ResourceSetListener pinListener = new PinHelper().createPinListener(elem, () -> {
@@ -188,12 +188,9 @@ public final class PinElementsAction extends Action implements Disposable {
                     if (resource != null) {
                         selectionResourceSets.add(resource.getResourceSet());
                     }
-
-                    return pinListener;
-                } else {
-                    return null;
+                    consumer.accept(Map.entry(elem, pinListener));
                 }
-            }));
+            }).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
             for (ResourceSet resourceSet : selectionResourceSets) {
                 var permissionAuthoriry = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(resourceSet);
                 permissionAuthoriry.addAuthorityListener(authorityListener);
