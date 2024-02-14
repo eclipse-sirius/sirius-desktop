@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -123,7 +123,7 @@ public class RepresentationDescriptionItemImpl implements org.eclipse.sirius.ui.
 
     @Override
     public int compareTo(final RepresentationDescriptionItemImpl o) {
-        if (representationDescription.getName() != null) {
+        if (representationDescription != null && representationDescription.getName() != null && o.representationDescription != null && o.representationDescription.getName() != null) {
             return representationDescription.getName().compareTo(o.representationDescription.getName());
         }
         return 0;
@@ -157,7 +157,7 @@ public class RepresentationDescriptionItemImpl implements org.eclipse.sirius.ui.
      */
     @Override
     public int hashCode() {
-        return representationDescription.hashCode() + parent.hashCode();
+        return (representationDescription != null ? representationDescription.hashCode() : 0) + parent.hashCode();
     }
 
     @Override

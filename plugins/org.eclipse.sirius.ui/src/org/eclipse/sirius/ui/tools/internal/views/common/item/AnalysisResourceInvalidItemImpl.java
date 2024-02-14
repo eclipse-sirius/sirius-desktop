@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -59,6 +59,7 @@ public class AnalysisResourceInvalidItemImpl extends AnalysisResourceItemImpl {
     public Collection<?> getChildren() {
 
         Map<RepresentationDescription, List<DRepresentationDescriptor>> descriptionToDescriptors = new LinkedHashMap<RepresentationDescription, List<DRepresentationDescriptor>>();
+        List<DRepresentationDescriptor> repDescriptorsWithoutDescription = new ArrayList<>();
         for (DRepresentationDescriptor repDesc : repDescriptors) {
             RepresentationDescription description = repDesc.getDescription();
             if (description != null) {
@@ -69,18 +70,25 @@ public class AnalysisResourceInvalidItemImpl extends AnalysisResourceItemImpl {
                     repDescs.add(repDesc);
                     descriptionToDescriptors.put(description, repDescs);
                 }
+            } else {
+                repDescriptorsWithoutDescription.add(repDesc);
             }
         }
 
         Set<RepresentationDescription> descriptions = descriptionToDescriptors.keySet();
+
         //@formatter:off
         List<ViewpointItemImpl> all = getSession().get().getSelectedViewpoints(false).stream()
             .filter(vp -> isVPToBeDisplayed(vp, descriptions))
             .map(vp -> new ViewpointInvalidItemImpl(getSession().get(), vp, this, descriptionToDescriptors))
             .collect(Collectors.toList());
         //@formatter:on
-
         Collections.sort(all);
+
+        List<RepresentationDescription> repDescriptionsInOtherViewpoints = descriptions.stream().filter(repDescription -> repDescription.eContainer() == null).toList();
+        if (!repDescriptionsInOtherViewpoints.isEmpty() || !repDescriptorsWithoutDescription.isEmpty()) {
+            all.add(new OtherViewpointInvalidItemImpl(getSession().get(), this, repDescriptionsInOtherViewpoints, descriptionToDescriptors, repDescriptorsWithoutDescription));
+        }
 
         return all;
     }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,7 @@ import org.eclipse.sirius.common.tools.api.query.IllegalStateExceptionQuery;
 import org.eclipse.sirius.tools.api.Messages;
 import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 
 /**
  * A class aggregating all the queries (read-only!) having a {@link DRepresentationDescriptor} as a starting point.
@@ -207,7 +208,8 @@ public class DRepresentationDescriptorQuery {
 
     /**
      * Check if the representation is valid that is, both not {@link isDangling} and {@link isRepresentationReachable}.
-     * In case the representation is loaded, it also checks if the representation target is a dangling reference.
+     * In case the representation is loaded, it also checks if the representation target is a dangling reference. If the
+     * {@link RepresentationDescription} is proxy, the representation is also considered as invalid.
      * 
      * @param forceLoadRepresentation
      *            true will force the loading of the representation EObject for further validation.
@@ -219,6 +221,7 @@ public class DRepresentationDescriptorQuery {
             if (isValid && repDescriptor.isLoadedRepresentation()) {
                 isValid = !(new DRepresentationQuery(repDescriptor.getRepresentation()).isDanglingRepresentation());
             }
+            isValid = isValid && (repDescriptor.getDescription() == null || !repDescriptor.getDescription().eIsProxy());
             return isValid;
         } catch (IllegalStateException e) {
             if (new IllegalStateExceptionQuery(e).isAConnectionLostException()) {
