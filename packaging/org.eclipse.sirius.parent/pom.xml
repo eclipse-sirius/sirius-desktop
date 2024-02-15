@@ -63,7 +63,7 @@
     <sonar.skipDesign>true</sonar.skipDesign>
     <sonar.jacoco.reportPath>${project.basedir}/../../packaging/org.eclipse.sirius.parent/target/jacoco.exec</sonar.jacoco.reportPath>
     <sonar.jacoco.itReportPath>${project.basedir}/../../packaging/org.eclipse.sirius.parent/target/jacoco-it.exec</sonar.jacoco.itReportPath>
-    <sonar.java.source>8</sonar.java.source>
+    <sonar.java.source>17</sonar.java.source>
     <sonar.exclusions>src-gen/**/*</sonar.exclusions>
     <sonar.coverage.exclusions>${project.basedir}/../../plugins/org.eclipse.sirius.sample*/**/*.java,${project.basedir}/../../plugins/org.eclipse.sirius.tests*/**/*.java,</sonar.coverage.exclusions>
   </properties>
