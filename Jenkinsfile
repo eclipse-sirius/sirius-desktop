@@ -1,3 +1,12 @@
+#!groovy
+
+script {
+    // Use BuildBlocker to wait for all 'sirius-pr-check' projects to finish building
+    properties([
+        [$class: 'BuildBlockerProperty', blockLevel: 'GLOBAL', blockingJobs: 'sirius-pr-check.*', scanQueueFor: 'ALL', useBuildBlocker: true]
+    ])
+}
+
 pipeline {
     agent {
         label 'centos-latest'
