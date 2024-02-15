@@ -307,6 +307,38 @@
 				<code>org.eclipse.sirius.diagram.ui.tools.api.color.ColorManager.sortColors(Collection&lt;RGB&gt;)</code> has been added to sort a collection of RGB colors using their HSB (Hue, Saturation, Brightness). The specified collection isn&#8217;t modified.
 			</li>
 		</ul>
+		<ul>
+			<li><span class="label label-success">Added</span> The class 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.color.ColorCategoryManager</code> has been added to manage color categories used in the new 
+				<code>ColorPalettePopup</code>. It includes the following methods:
+				<ul>
+					<li>
+						<code>org.eclipse.sirius.diagram.ui.tools.api.color.ColorCategoryManager.getLastUsedColors()</code> to get the list of last colors used by the user.
+					</li>
+					<li>
+						<code>org.eclipse.sirius.diagram.ui.tools.api.color.ColorCategoryManager.getCustomColors()</code> to get the list of custom colors defined by the user.
+					</li>
+					<li>
+						<code>org.eclipse.sirius.diagram.ui.tools.api.color.ColorCategoryManager.getSuggestedColors()</code> to get  the list of the ten preferred colors defined in the VSM.
+					</li>
+					<li>
+						<code>org.eclipse.sirius.diagram.ui.tools.api.color.ColorCategoryManager.getBasicColors()</code> to get ten useful colors.
+					</li>
+					<li>
+						<code>org.eclipse.sirius.diagram.ui.tools.api.color.ColorCategoryManager.addLastUsedColor(RGB)</code> to add a color to the list of last used colors.
+					</li>
+					<li>
+						<code>org.eclipse.sirius.diagram.ui.tools.api.color.ColorCategoryManager.setCustomColors(List&lt;RGB&gt;)</code> to set the list of custom colors defined by the user.
+					</li>
+					<li>
+						<code>org.eclipse.sirius.diagram.ui.tools.api.color.ColorCategoryManager.setSuggestedColors(List&lt;RGB&gt;)</code> to set the list of the preferred suggested colors.
+					</li>
+					<li>
+						<code>org.eclipse.sirius.diagram.ui.tools.api.color.ColorCategoryManager.getSelectedColorsByPropertyId()</code> to get the list of colors used for all objects selected in the representation for a specific propertyId.
+					</li>
+				</ul>
+			</li>
+		</ul>
 		<h4 id="Migrations">Migrations</h4>
 		<ul>
 			<li><span class="label label-success">Added</span> A migration participant has been added to migrate ELK options used in VSM. Some have been renamed and some others have been removed. You should carefully read the information logged during this migration and the 

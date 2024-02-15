@@ -55,6 +55,8 @@ public final class ColorsAnnotationHelper {
         this.session = session;
         if (session != null) {
             this.optDanalysis = this.session.getSharedMainDAnalysis();
+        } else {
+            this.optDanalysis = Optional.empty();
         }
     }
 
@@ -66,12 +68,14 @@ public final class ColorsAnnotationHelper {
             @Override
             protected void doExecute() {
                 String[] annotationSources = { //
-                        ColorCategoryManager.FILL_CUSTOM_COLORS_ANNOTATION_SOURCE_NAME, ColorCategoryManager.FILL_SUGGESTED_COLORS_ANNOTATION_SOURCE_NAME,
-                        ColorCategoryManager.FONT_CUSTOM_COLORS_ANNOTATION_SOURCE_NAME, ColorCategoryManager.FONT_SUGGESTED_COLORS_ANNOTATION_SOURCE_NAME,
-                        ColorCategoryManager.LINE_CUSTOM_COLORS_ANNOTATION_SOURCE_NAME, ColorCategoryManager.LINE_SUGGESTED_COLORS_ANNOTATION_SOURCE_NAME };
+                        AbstractColorCategoryManager.FILL_CUSTOM_COLORS_ANNOTATION_SOURCE_NAME, AbstractColorCategoryManager.FILL_SUGGESTED_COLORS_ANNOTATION_SOURCE_NAME,
+                        AbstractColorCategoryManager.FONT_CUSTOM_COLORS_ANNOTATION_SOURCE_NAME, AbstractColorCategoryManager.FONT_SUGGESTED_COLORS_ANNOTATION_SOURCE_NAME,
+                        AbstractColorCategoryManager.LINE_CUSTOM_COLORS_ANNOTATION_SOURCE_NAME, AbstractColorCategoryManager.LINE_SUGGESTED_COLORS_ANNOTATION_SOURCE_NAME };
                 for (String source : annotationSources) {
-                    DAnnotationEntry annotation = getOrCreateColorAnnotationEntry(source);
-                    addColorAnnotation(annotation);
+                    Optional<DAnnotationEntry> optAnnotation = getOrCreateColorAnnotationEntry(source);
+                    if (optAnnotation.isPresent()) {
+                        addColorAnnotation(optAnnotation.get());
+                    }
                 }
             }
         });
@@ -83,16 +87,16 @@ public final class ColorsAnnotationHelper {
      * 
      * @param colorsAnnotationSourceName
      *            the source annotation used to retrieve the associated {@link DAnnotationEntry}.
-     * @return the {@link DAnnotationEntry} associated to the specified color category.
+     * @return the optional {@link DAnnotationEntry} associated to the specified color category.
      */
-    private DAnnotationEntry getOrCreateColorAnnotationEntry(String colorsAnnotationSourceName) {
-        DAnnotationEntry dAnnotationEntry = null;
+    private Optional<DAnnotationEntry> getOrCreateColorAnnotationEntry(String colorsAnnotationSourceName) {
+        Optional<DAnnotationEntry> dAnnotationEntry = Optional.empty();
         if (this.optDanalysis.isPresent()) {
-            dAnnotationEntry = getColorAnnotationEntry(colorsAnnotationSourceName).orElseGet(() -> {
+            dAnnotationEntry = Optional.of(getColorAnnotationEntry(colorsAnnotationSourceName).orElseGet(() -> {
                 DAnnotationEntry annotationEntry = DescriptionFactory.eINSTANCE.createDAnnotationEntry();
                 annotationEntry.setSource(colorsAnnotationSourceName);
                 return annotationEntry;
-            });
+            }));
         }
         return dAnnotationEntry;
     }
@@ -128,14 +132,17 @@ public final class ColorsAnnotationHelper {
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
             @Override
             protected void doExecute() {
-                DAnnotationEntry colorsEntry = getOrCreateColorAnnotationEntry(colorsAnnotationSourceName);
-                List<String> stringColorsList = convertRGBToString(colorsList);
-                List<String> colorDetails = colorsEntry.getDetails();
-                colorDetails.clear();
-                colorDetails.addAll(stringColorsList);
+                Optional<DAnnotationEntry> optColorsEntry = getOrCreateColorAnnotationEntry(colorsAnnotationSourceName);
+                if (optColorsEntry.isPresent()) {
+                    DAnnotationEntry colorsEntry = optColorsEntry.get();
+                    List<String> stringColorsList = convertRGBToString(colorsList);
+                    List<String> colorDetails = colorsEntry.getDetails();
+                    colorDetails.clear();
+                    colorDetails.addAll(stringColorsList);
 
-                if (!colorDetails.isEmpty()) {
-                    addColorAnnotation(colorsEntry);
+                    if (!colorDetails.isEmpty()) {
+                        addColorAnnotation(colorsEntry);
+                    }
                 }
             }
         });

@@ -15,7 +15,10 @@ package org.eclipse.sirius.diagram.ui.tools.internal.colors;
 import java.util.List;
 
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.emf.core.util.PackageUtil;
+import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.diagram.ui.tools.api.color.ColorCategoryManager;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.swt.graphics.RGB;
 
@@ -33,12 +36,9 @@ public class LineColorCategoryManager extends AbstractColorCategoryManager imple
      *            the current sirius session.
      * @param editParts
      *            the list of selected edit parts.
-     * @param propertyId
-     *            the propertyID, "notation.LineStyle.lineColor", used to retrieve all "Line Colors" used for the
-     *            selected editParts.
      */
-    public LineColorCategoryManager(Session session, List<IGraphicalEditPart> editParts, String propertyId) {
-        super(session, editParts, propertyId);
+    public LineColorCategoryManager(Session session, List<IGraphicalEditPart> editParts) {
+        super(session, editParts);
     }
 
     @Override
@@ -68,7 +68,12 @@ public class LineColorCategoryManager extends AbstractColorCategoryManager imple
 
     @Override
     public void setSuggestedColors(List<RGB> suggestedColorsList) {
-        super.setColors(LINE_SUGGESTED_COLORS_ANNOTATION_SOURCE_NAME, suggestedColorsList);
+        super.setSuggestedColors(LINE_SUGGESTED_COLORS_ANNOTATION_SOURCE_NAME, suggestedColorsList);
+    }
+
+    @Override
+    public List<RGB> getSelectedColorsByPropertyId() {
+        return super.getSelectedColorsByPropertyId(PackageUtil.getID(NotationPackage.eINSTANCE.getLineStyle_LineColor()));
     }
 
 }

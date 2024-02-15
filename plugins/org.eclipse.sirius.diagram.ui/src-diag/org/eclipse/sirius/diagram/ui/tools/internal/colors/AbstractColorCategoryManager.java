@@ -12,7 +12,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.colors;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -24,8 +26,10 @@ import org.eclipse.gmf.runtime.emf.core.util.PackageUtil;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.color.ColorCategoryManager;
 import org.eclipse.sirius.diagram.ui.tools.api.color.ColorManager;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
+import org.eclipse.sirius.viewpoint.description.DAnnotationEntry;
 import org.eclipse.sirius.viewpoint.description.SystemColors;
 import org.eclipse.swt.graphics.RGB;
 
@@ -35,6 +39,42 @@ import org.eclipse.swt.graphics.RGB;
  * @author <a href="mailto:glenn.plouhinec@obeo.fr">Glenn Plouhinec</a>
  */
 public abstract class AbstractColorCategoryManager implements ColorCategoryManager {
+
+    /**
+     * The source value used to retrieve the {@link DAnnotationEntry} for the "Custom Colors" category of the "Fill
+     * Color" property.
+     */
+    public static final String FILL_CUSTOM_COLORS_ANNOTATION_SOURCE_NAME = "FillCustomColors"; //$NON-NLS-1$
+
+    /**
+     * The source value used to retrieve the {@link DAnnotationEntry} for the "Suggested Colors" category of the "Fill
+     * Color" property.
+     */
+    public static final String FILL_SUGGESTED_COLORS_ANNOTATION_SOURCE_NAME = "FillSuggestedColors"; //$NON-NLS-1$
+
+    /**
+     * The source value used to retrieve the {@link DAnnotationEntry} for the "Custom Colors" category of the "Font
+     * Color" property.
+     */
+    public static final String FONT_CUSTOM_COLORS_ANNOTATION_SOURCE_NAME = "FontCustomColors"; //$NON-NLS-1$
+
+    /**
+     * The source value used to retrieve the {@link DAnnotationEntry} for the "Suggested Colors" category of the "Font
+     * Color" property.
+     */
+    public static final String FONT_SUGGESTED_COLORS_ANNOTATION_SOURCE_NAME = "FontSuggestedColors"; //$NON-NLS-1$
+
+    /**
+     * The source value used to retrieve the {@link DAnnotationEntry} for the "Custom Colors" category of the "Line
+     * Color" property.
+     */
+    public static final String LINE_CUSTOM_COLORS_ANNOTATION_SOURCE_NAME = "LineCustomColors"; //$NON-NLS-1$
+
+    /**
+     * The source value used to retrieve the {@link DAnnotationEntry} for the "Suggested Colors" category of the "Line
+     * Color" property.
+     */
+    public static final String LINE_SUGGESTED_COLORS_ANNOTATION_SOURCE_NAME = "LineSuggestedColors"; //$NON-NLS-1$
 
     /**
      * A list of ten useful colors used for the "Basic" color category.
@@ -48,19 +88,24 @@ public abstract class AbstractColorCategoryManager implements ColorCategoryManag
     private static final int NB_MAX_LAST_USED_COLORS = 10;
 
     /**
+     * Maximum number of "Suggested" colors to store.
+     */
+    private static final int NB_MAX_SUGGESTED_COLORS = 10;
+
+    /**
      * The separator between each integer value of RGB color.
      */
     private static final String RGB_VALUES_SEPARATOR = ","; //$NON-NLS-1$
 
     /**
-     * The list of colors used for all objects selected in the representation for a specific propertyId.
-     */
-    protected List<RGB> selectedColorsByPropertyId;
-
-    /**
      * A helper used to retrieves or modify colors persisted in the aird file.
      */
     protected ColorsAnnotationHelper colorsAnnotationHelper;
+
+    /**
+     * The list of selected edit parts.
+     */
+    private List<IGraphicalEditPart> editParts;
 
     /**
      * Constructor which should be used by subclasses.
@@ -69,19 +114,9 @@ public abstract class AbstractColorCategoryManager implements ColorCategoryManag
      *            the current sirius session.
      * @param editParts
      *            the list of selected edit parts.
-     * @param propertyId
-     *            the propertyID, which could be "notation.FillStyle.fillColor", "notation.LineStyle.lineColor", or
-     *            "notation.FontStyle.fontColor".
      */
-    public AbstractColorCategoryManager(Session session, List<IGraphicalEditPart> editParts, String propertyId) {
-        final EStructuralFeature feature = (EStructuralFeature) PackageUtil.getElement(propertyId);
-        this.selectedColorsByPropertyId = editParts.stream() //
-                .map(ep -> ep.getStructuralFeatureValue(feature)) //
-                .filter(Integer.class::isInstance) //
-                .map(Integer.class::cast) //
-                .map(colorInteger -> FigureUtilities.integerToRGB(colorInteger)) //
-                .distinct() //
-                .toList();
+    public AbstractColorCategoryManager(Session session, List<IGraphicalEditPart> editParts) {
+        this.editParts = editParts;
         this.colorsAnnotationHelper = new ColorsAnnotationHelper(session);
     }
 
@@ -163,11 +198,52 @@ public abstract class AbstractColorCategoryManager implements ColorCategoryManag
      *            the list to set.
      */
     protected void setColors(String colorsAnnotationSourceName, List<RGB> colorsList) {
-        colorsAnnotationHelper.setColorsDetails(colorsAnnotationSourceName, colorsList);
+        if (colorsList != null) {
+            colorsAnnotationHelper.setColorsDetails(colorsAnnotationSourceName, colorsList);
+        }
     }
 
-    @Override
-    public List<RGB> getSelectedColorsByPropertyId() {
+    /**
+     * Used to set the list of suggested colors.
+     * 
+     * @param colorsAnnotationSourceName
+     *            the label used to store the annotation containing the colors.
+     * @param colorsList
+     *            the list to set.
+     */
+    protected void setSuggestedColors(String colorsAnnotationSourceName, List<RGB> colorsList) {
+        if (colorsList != null) {
+            List<RGB> newColorsList;
+            if (colorsList.size() > NB_MAX_SUGGESTED_COLORS) {
+                newColorsList = new ArrayList<>(colorsList.subList(0, NB_MAX_SUGGESTED_COLORS));
+            } else {
+                newColorsList = new ArrayList<>(colorsList);
+            }
+            setColors(colorsAnnotationSourceName, newColorsList);
+        }
+    }
+
+    /**
+     * Returns the list of colors used for all objects selected in the representation for a specific propertyId
+     * ("notation.FillStyle.fillColor", "notation.LineStyle.lineColor", or "notation.FontStyle.fontColor").
+     * 
+     * @param propertyId
+     *            the propertyID, which could be "notation.FillStyle.fillColor", "notation.LineStyle.lineColor", or
+     *            "notation.FontStyle.fontColor".
+     * @return the list of colors used for all objects selected in the representation for a specific propertyId.
+     */
+    protected List<RGB> getSelectedColorsByPropertyId(String propertyId) {
+        List<RGB> selectedColorsByPropertyId = Collections.EMPTY_LIST;
+        if (editParts != null) {
+            final EStructuralFeature feature = (EStructuralFeature) PackageUtil.getElement(propertyId);
+            selectedColorsByPropertyId = editParts.stream() //
+                    .map(ep -> ep.getStructuralFeatureValue(feature)) //
+                    .filter(Integer.class::isInstance) //
+                    .map(Integer.class::cast) //
+                    .map(colorInteger -> FigureUtilities.integerToRGB(colorInteger)) //
+                    .distinct() //
+                    .toList();
+        }
         return selectedColorsByPropertyId;
     }
 
