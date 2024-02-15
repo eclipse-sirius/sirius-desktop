@@ -86,7 +86,7 @@ public class DragDropWithUpdateNodeTest extends AbstractSiriusSwtBotGefTestCase 
         Point targetDropLocation = editor.getAbsoluteBounds(pkg2Part).getCenter();
 
         // start log listener
-        startToListenErrorLog(false, true);
+        platformProblemsListener.startToListenErrorLog(false, false, true);
 
         // perform drag cls2 to pkg2
         editor.drag(sourceDragLocation, targetDropLocation);

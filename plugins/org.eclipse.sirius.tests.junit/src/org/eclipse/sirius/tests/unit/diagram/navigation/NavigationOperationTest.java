@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -106,7 +106,7 @@ public class NavigationOperationTest extends SiriusDiagramTestCase {
         AbstractToolDescription tool = getTool(diagram, OPERATION_NAME);
         assertTrue(tool instanceof OperationAction);
         Command cmd = getCommand(diagram, tool, Arrays.asList((EObject) aDiagramElement));
-        setErrorCatchActive(true);
+        platformProblemsListener.setErrorCatchActive(true);
         // This will use the UiCallback (in the context of tests, a
         // NoUICallback) to ask for the new representation name. VP-1851
         // triggered an NPE here.

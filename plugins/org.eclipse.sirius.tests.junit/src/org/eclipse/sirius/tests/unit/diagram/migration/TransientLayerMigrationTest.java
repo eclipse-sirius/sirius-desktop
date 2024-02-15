@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -37,9 +37,8 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 /**
- * Test class to test that, in the case the layer is now considered as
- * transient, the removal of the layer activation and the removal of decorations
- * on DDiagramElements.
+ * Test class to test that, in the case the layer is now considered as transient, the removal of the layer activation
+ * and the removal of decorations on DDiagramElements.
  * 
  * @author lfasani
  */
@@ -61,8 +60,8 @@ public class TransientLayerMigrationTest extends SiriusTestCase {
     }
 
     /**
-     * Test that the data were not migrated on the repo. It allows to check the
-     * effect of the migration in the other test.
+     * Test that the data were not migrated on the repo. It allows to check the effect of the migration in the other
+     * test.
      */
     public void testMigrationIsNeededOnData() {
         Version dRepresentationContainerRemovalVersion = TransientLayerMigrationParticipant.MIGRATION_VERSION;
@@ -145,7 +144,7 @@ public class TransientLayerMigrationTest extends SiriusTestCase {
         version = analysis.getVersion();
         assertFalse("The version tag should now be set telling that the migration was done.", RepresentationsFileMigrationService.getInstance().isMigrationNeeded(Version.parseVersion(version)));
         checkTransientLayerMigration(analysis.eResource().getURI(), 1, 2);
-        assertFalse(getErrorLoggersMessage(), doesAnErrorOccurs());
+        assertFalse(platformProblemsListener.getErrorLoggersMessage(), platformProblemsListener.doesAnErrorOccurs());
     }
 
     @Override

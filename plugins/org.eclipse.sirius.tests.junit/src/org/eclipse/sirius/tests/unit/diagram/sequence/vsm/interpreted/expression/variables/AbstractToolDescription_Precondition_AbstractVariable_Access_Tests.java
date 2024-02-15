@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -154,7 +154,7 @@ public class AbstractToolDescription_Precondition_AbstractVariable_Access_Tests 
 
         // Disable catching of error log
         // TODO: This test must be fixed to avoid message in error log (VP-2365)
-        setErrorCatchActive(false);
+        platformProblemsListener.setErrorCatchActive(false);
 
         String modelPath = TEMPORARY_PROJECT_NAME + "/" + modelFileName;
         String metaModelPath = TEMPORARY_PROJECT_NAME + "/" + metaModelFileName;
@@ -208,8 +208,7 @@ public class AbstractToolDescription_Precondition_AbstractVariable_Access_Tests 
     }
 
     /**
-     * Test that sequence specific variables from
-     * {@link AbstractToolDescription} are accessibles (without renaming)
+     * Test that sequence specific variables from {@link AbstractToolDescription} are accessibles (without renaming)
      */
     @Test
     public void testSequenceSpecificsVariablesAccess() {
@@ -260,8 +259,7 @@ public class AbstractToolDescription_Precondition_AbstractVariable_Access_Tests 
     }
 
     /**
-     * Test that sequence specific variables from
-     * {@link AbstractToolDescription} are accessible (after renaming)
+     * Test that sequence specific variables from {@link AbstractToolDescription} are accessible (after renaming)
      */
     // FIXME : EDU
     @Test
@@ -300,7 +298,7 @@ public class AbstractToolDescription_Precondition_AbstractVariable_Access_Tests 
             if (!instanceRoleADNode.getOwnedBorderedNodes().isEmpty()) {
                 DNode lifelineADNode = instanceRoleADNode.getOwnedBorderedNodes().get(0);
                 if (lifelineADNode instanceof EdgeTarget) {
-                    edgeSourceA = (EdgeTarget) lifelineADNode;
+                    edgeSourceA = lifelineADNode;
                 }
             }
         }
@@ -310,7 +308,7 @@ public class AbstractToolDescription_Precondition_AbstractVariable_Access_Tests 
             if (!instanceRoleBDNode.getOwnedBorderedNodes().isEmpty()) {
                 DNode lifelineBDNode = instanceRoleBDNode.getOwnedBorderedNodes().get(0);
                 if (lifelineBDNode instanceof EdgeTarget) {
-                    edgeTargetB = (EdgeTarget) lifelineBDNode;
+                    edgeTargetB = lifelineBDNode;
                 }
             }
         }
@@ -445,8 +443,7 @@ public class AbstractToolDescription_Precondition_AbstractVariable_Access_Tests 
     }
 
     /**
-     * Compute a acceleo expression (always evaluated to true) with all sequence
-     * specific variables.
+     * Compute a acceleo expression (always evaluated to true) with all sequence specific variables.
      */
     private String getAcceleoPreconditionWithAllVariables(List<AbstractVariable> variables) {
         String precondition = "aql:";

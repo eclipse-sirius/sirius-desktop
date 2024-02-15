@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -27,10 +27,8 @@ import org.eclipse.sirius.tests.swtbot.support.api.matcher.geometry.PointAround;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotCommonHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotCommonHelper.EdgeData;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
-import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.results.Result;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
 import org.eclipse.ui.PlatformUI;
 import org.junit.Assert;
 
@@ -127,9 +125,8 @@ public class UmlClassDragAndDropTest extends AbstractUmlDragAndDropTest {
     }
 
     /**
-     * Validates that drag and dropping a node, from container to canvas, with
-     * snap to grid as false and scroll, will drop the node at the proper
-     * location.
+     * Validates that drag and dropping a node, from container to canvas, with snap to grid as false and scroll, will
+     * drop the node at the proper location.
      * 
      * @throws Exception
      *             Test error.
@@ -137,6 +134,7 @@ public class UmlClassDragAndDropTest extends AbstractUmlDragAndDropTest {
     public void testDragAndDropClassesWithEdgeFromContainerToCanvasWithScroll() throws Exception {
         // Save full screen status.
         final boolean fullScreenStatus = UIThreadRunnable.syncExec(new Result<Boolean>() {
+            @Override
             public Boolean run() {
                 return PlatformUI.getWorkbench().getWorkbenchWindows()[0].getShell().getFullScreen();
             }
@@ -145,6 +143,7 @@ public class UmlClassDragAndDropTest extends AbstractUmlDragAndDropTest {
             // Deactivate full screen to have scroll bars on diagram
             PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
 
+                @Override
                 public void run() {
                     PlatformUI.getWorkbench().getWorkbenchWindows()[0].getShell().setFullScreen(false);
                 }
@@ -170,6 +169,7 @@ public class UmlClassDragAndDropTest extends AbstractUmlDragAndDropTest {
             // Restore full screen as it was before this test case.
             PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
 
+                @Override
                 public void run() {
                     PlatformUI.getWorkbench().getWorkbenchWindows()[0].getShell().setFullScreen(fullScreenStatus);
                 }
@@ -184,21 +184,20 @@ public class UmlClassDragAndDropTest extends AbstractUmlDragAndDropTest {
      *             Test error.
      */
     public void testDragAndDropClassesWithEdgeFromContainerToContainer() throws Exception {
-        boolean oldWarningCatchActiveValue = isWarningCatchActive();
-        setWarningCatchActive(true);
+        boolean oldWarningCatchActiveValue = platformProblemsListener.isWarningCatchActive();
+        platformProblemsListener.setWarningCatchActive(true);
         try {
             dragAndDropClassesWithEdge(PT_IN_CONTAINER_TO_DROP);
-            if (doesAWarningOccurs()) {
+            if (platformProblemsListener.doesAWarningOccurs()) {
                 fail("This drag'n'drop should be done without warning in Error Log view.");
             }
         } finally {
-            setWarningCatchActive(oldWarningCatchActiveValue);
+            platformProblemsListener.setWarningCatchActive(oldWarningCatchActiveValue);
         }
     }
 
     /**
-     * Test classes with edge drag and drop from container to canvas, then undo
-     * operation.
+     * Test classes with edge drag and drop from container to canvas, then undo operation.
      * 
      * @throws Exception
      *             Test error.
@@ -210,8 +209,7 @@ public class UmlClassDragAndDropTest extends AbstractUmlDragAndDropTest {
     }
 
     /**
-     * Test classes with edge drag and drop from container to another container,
-     * then undo operation.
+     * Test classes with edge drag and drop from container to another container, then undo operation.
      * 
      * @throws Exception
      *             Test error.
@@ -223,8 +221,7 @@ public class UmlClassDragAndDropTest extends AbstractUmlDragAndDropTest {
     }
 
     /**
-     * Test classes with edge drag and drop from container to canvas, then go
-     * back to original position
+     * Test classes with edge drag and drop from container to canvas, then go back to original position
      * 
      * @throws Exception
      *             Test error.
@@ -238,9 +235,8 @@ public class UmlClassDragAndDropTest extends AbstractUmlDragAndDropTest {
     }
 
     /**
-     * Check that a specific drap'n'drop is done without error. VP-4078: NPE is
-     * thrown when doing a drag'n'drop of an element changes the mapping of its
-     * old container.
+     * Check that a specific drap'n'drop is done without error. VP-4078: NPE is thrown when doing a drag'n'drop of an
+     * element changes the mapping of its old container.
      * 
      * @throws Exception
      *             Test error.
@@ -252,7 +248,7 @@ public class UmlClassDragAndDropTest extends AbstractUmlDragAndDropTest {
         editor.drag(PT_IN_AACLASS_TO_DRAG, PT_IN_CANVAS_TO_DROP);
         SWTBotUtils.waitAllUiEvents();
         // Check if there is error in errorLog
-        if (doesAnErrorOccurs()) {
+        if (platformProblemsListener.doesAnErrorOccurs()) {
             fail("This drag'n'drop should be done without error in errorlog.");
         }
     }

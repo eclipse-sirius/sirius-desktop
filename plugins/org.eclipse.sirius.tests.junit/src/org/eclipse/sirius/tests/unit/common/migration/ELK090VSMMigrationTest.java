@@ -57,8 +57,7 @@ public class ELK090VSMMigrationTest extends SiriusTestCase {
     }
 
     /**
-     * Check that the instances of FilterVariableHistory.ownedValues are
-     * correctly converted into EObjectVariableValue
+     * Check that the instances of FilterVariableHistory.ownedValues are correctly converted into EObjectVariableValue
      * 
      * @throws IOException
      */
@@ -70,7 +69,7 @@ public class ELK090VSMMigrationTest extends SiriusTestCase {
         } catch (IOException e) {
             fail("Check the test data, we should not fail here."); //$NON-NLS-1$
         }
-        if (doesAnErrorOccurs()) {
+        if (platformProblemsListener.doesAnErrorOccurs()) {
             fail("An error occured during the loading of the VSM."); //$NON-NLS-1$
         }
         StringBuffer errors = new StringBuffer();

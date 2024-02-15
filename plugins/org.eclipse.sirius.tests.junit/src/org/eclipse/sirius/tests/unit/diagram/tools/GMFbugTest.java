@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -29,9 +29,8 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
 
 /**
- * Tests that GMF bug https://bugs.eclipse.org/bugs/show_bug.cgi?id=333856 is
- * correctly fixed in the version of GMF we use (forked or not). See VP-1500.
- * The test uses models from the related VP-1688.
+ * Tests that GMF bug https://bugs.eclipse.org/bugs/show_bug.cgi?id=333856 is correctly fixed in the version of GMF we
+ * use (forked or not). See VP-1500. The test uses models from the related VP-1688.
  * 
  * @author pcdavid
  */
@@ -82,10 +81,10 @@ public class GMFbugTest extends SiriusDiagramTestCase {
         AbstractToolDescription tool = getTool(diagram, "Group Classes");
         assertTrue(tool instanceof OperationAction);
         Command cmd = getCommand(diagram, tool, Arrays.asList((EObject) bDiagramElement, (EObject) cDiagramElement));
-        setErrorCatchActive(true);
+        platformProblemsListener.setErrorCatchActive(true);
         session.getTransactionalEditingDomain().getCommandStack().execute(cmd);
         refresh(diagram);
-        assertFalse("The 'Group Classes' action triggered an error.", doesAnErrorOccurs());
+        assertFalse("The 'Group Classes' action triggered an error.", platformProblemsListener.doesAnErrorOccurs());
         assertEquals(1, ((EPackage) semanticModel).getESubpackages().size());
         EPackage newPkg = ((EPackage) semanticModel).getESubpackages().get(0);
         assertNotNull(newPkg);
@@ -98,16 +97,15 @@ public class GMFbugTest extends SiriusDiagramTestCase {
     /**
      * Test for VP-1688.
      * 
-     * FIXME: The test does not fail even with the fix for VP-1688 disabled. It
-     * works as expected when doing the same operations manually: fails without
-     * the fix, passes with the fix.
+     * FIXME: The test does not fail even with the fix for VP-1688 disabled. It works as expected when doing the same
+     * operations manually: fails without the fix, passes with the fix.
      * 
      * @throws Exception
      *             in case of error
      */
     public void testNotErrorOnUndoRedoOfGroupingClasses() throws Exception {
         testNoErrorWhenGroupingClassesIntoPackage();
-        setErrorCatchActive(true);
+        platformProblemsListener.setErrorCatchActive(true);
         assertTrue(session.getTransactionalEditingDomain().getCommandStack().canUndo());
         session.getTransactionalEditingDomain().getCommandStack().undo();
         assertTrue(undo());
@@ -115,14 +113,14 @@ public class GMFbugTest extends SiriusDiagramTestCase {
         assertNotNull(((EPackage) semanticModel).getEClassifier("B"));
         assertNotNull(((EPackage) semanticModel).getEClassifier("C"));
         assertEquals(0, ((EPackage) semanticModel).getESubpackages().size());
-        assertFalse(doesAnErrorOccurs());
+        assertFalse(platformProblemsListener.doesAnErrorOccurs());
         assertTrue(session.getTransactionalEditingDomain().getCommandStack().canRedo());
         session.getTransactionalEditingDomain().getCommandStack().redo();
         refresh(diagram);
         assertNull(((EPackage) semanticModel).getEClassifier("B"));
         assertNull(((EPackage) semanticModel).getEClassifier("C"));
         assertEquals(1, ((EPackage) semanticModel).getESubpackages().size());
-        assertFalse(doesAnErrorOccurs());
+        assertFalse(platformProblemsListener.doesAnErrorOccurs());
     }
 
     /**

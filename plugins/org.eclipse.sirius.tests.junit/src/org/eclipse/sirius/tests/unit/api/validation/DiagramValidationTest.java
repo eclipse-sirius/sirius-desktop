@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -170,7 +170,7 @@ public class DiagramValidationTest extends SiriusDiagramTestCase {
      * https://bugs.eclipse.org/bugs/show_bug.cgi?id=441642
      * 
      * @throws CoreException
-     *             Test errors.
+     *             Test platformProblemsListener.getErrors().
      */
     public void testValidationOnlyOneErrorMessage() throws CoreException {
         diagram = (DDiagram) createRepresentation(REPRESENTATION_DESC_NAME_BREAKDOWN, rootEPackage);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -76,13 +76,12 @@ public class FoundLostMessageTests extends AbstractLostFoundModelSequenceTests {
         createMessage(InteractionsConstants.FOUND_READ_TOOL_ID, newPosition, newPosition);
 
         // Check if there is an error in errorLog
-        if (doesAnErrorOccurs()) {
+        if (platformProblemsListener.doesAnErrorOccurs()) {
             fail("This Found read message creation should be done without error in errorlog.");
         }
 
         // Validates the position
-        assertTrue("The m9 message must be moved of few points.",
-                getSequenceMessageScreenCenteredPosition(NINETH_MESSAGE).y < centerM9ScreenPos.y + 20);
+        assertTrue("The m9 message must be moved of few points.", getSequenceMessageScreenCenteredPosition(NINETH_MESSAGE).y < centerM9ScreenPos.y + 20);
 
     }
 

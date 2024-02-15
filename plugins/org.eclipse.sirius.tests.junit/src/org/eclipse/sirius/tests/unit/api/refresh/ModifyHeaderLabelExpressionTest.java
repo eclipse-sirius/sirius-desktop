@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.emf.common.util.URI;
@@ -44,8 +45,8 @@ import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.IEditorPart;
 
 /**
- * Test modification of header Label expression in VSM when table representation
- * is opened. Check there are no exceptions in Error log.
+ * Test modification of header Label expression in VSM when table representation is opened. Check there are no
+ * exceptions in Error log.
  * 
  * @author <a href="mailto:julien.dupont@obeo.fr">Julien DUPONT</a>
  * 
@@ -82,8 +83,8 @@ public class ModifyHeaderLabelExpressionTest extends SiriusTestCase {
     }
 
     /**
-     * Open table representation. Modify the label header expression in the vsm
-     * and save and check there are no error in error log.
+     * Open table representation. Modify the label header expression in the vsm and save and check there are no error in
+     * error log.
      * 
      * @throws Exception
      */
@@ -94,9 +95,10 @@ public class ModifyHeaderLabelExpressionTest extends SiriusTestCase {
         TestsUtil.synchronizationWithUIThread();
 
         // VP-4466: clear the NPE error before the fix of this issue.
-        if (errorsCount() == 1 && errors.values().iterator().next().size() == 1) {
-            if (errors.values().iterator().next().iterator().next().getException() instanceof NullPointerException) {
-                errors.clear();
+        if (platformProblemsListener.errorsCount() == 1) {
+            List<IStatus> errors = platformProblemsListener.getErrors().values().iterator().next();
+            if (errors.size() == 1 && errors.iterator().next().getException() instanceof NullPointerException) {
+                platformProblemsListener.clearErrors();
             }
         }
         // Verify that there is one representation corresponding to table
@@ -139,7 +141,7 @@ public class ModifyHeaderLabelExpressionTest extends SiriusTestCase {
             TestsUtil.synchronizationWithUIThread();
             // Verify Header label expression value
             assertEquals("HeaderLableExpression should be equals to 'NameModify'", "NameModify", featureColumnMapping.getHeaderLabelExpression());
-            assertFalse("At least one error occurs before the vsm modification: " + getErrorLoggersMessage(), doesAnErrorOccurs());
+            assertFalse("At least one error occurs before the vsm modification: " + platformProblemsListener.getErrorLoggersMessage(), platformProblemsListener.doesAnErrorOccurs());
             AbstractDTableEditor tableEditor = (AbstractDTableEditor) openedTableEditor;
             Tree tree = tableEditor.getTableViewer().getTreeViewer().getTree();
 

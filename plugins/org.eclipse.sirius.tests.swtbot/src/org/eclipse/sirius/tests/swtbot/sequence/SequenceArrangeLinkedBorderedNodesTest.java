@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -19,22 +19,20 @@ import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.widgets.TimeoutException;
 
 /**
- * Test class to validate "Arrange Linked Border Nodes" does not throw NPE
- * anymore. Validate ticket #2232
+ * Test class to validate "Arrange Linked Border Nodes" does not throw NPE anymore. Validate ticket #2232
  * 
  * @author smonnier
  */
 public class SequenceArrangeLinkedBorderedNodesTest extends AbstractDefaultModelSequenceTests {
 
     /**
-     * Test method to validate "Arrange Linked Border Nodes" does not throw NPE
-     * anymore. Validate ticket #2232
+     * Test method to validate "Arrange Linked Border Nodes" does not throw NPE anymore. Validate ticket #2232
      * 
      * @throws Exception
      *             Test error.
      */
     public void test_ArrangeLinkedBorderedNodes() throws Exception {
-        startToListenErrorLog(true, true);
+        platformProblemsListener.startToListenErrorLog(false, true, true);
         editor.show();
         editor.setFocus();
         bot.waitUntil(new EditorHasFocusCondition(editor));
@@ -67,6 +65,6 @@ public class SequenceArrangeLinkedBorderedNodesTest extends AbstractDefaultModel
             SWTBotPreferences.TIMEOUT = oldTimeout;
         }
 
-        assertFalse(doesAWarningOccurs() || doesAWarningOccurs());
+        assertFalse(platformProblemsListener.doesAWarningOccurs() || platformProblemsListener.doesAWarningOccurs());
     }
 }

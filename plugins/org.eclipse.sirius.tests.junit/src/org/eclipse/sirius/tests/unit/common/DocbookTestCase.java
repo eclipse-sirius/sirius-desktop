@@ -63,8 +63,7 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
 
 /**
- * Provides basic setUp and tearDown as well as utility methods for commands
- * testing.
+ * Provides basic setUp and tearDown as well as utility methods for commands testing.
  * 
  * @author <a href="mailto:laurent.goubet@obeo.fr">Laurent Goubet</a>
  */
@@ -126,20 +125,17 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
     protected static final String EXCEPTION_CAST = "Exception while trying to cast request result.";
 
     /**
-     * Used as a failure message when too many unmatched element are found in
-     * the model.
+     * Used as a failure message when too many unmatched element are found in the model.
      */
     protected static final String UNEXPECTED_UNMATCH_COUNT = "Unexpected count of unmatched elements in the model.";
 
     /**
-     * Used as a failure message when too many differences are detected in the
-     * model.
+     * Used as a failure message when too many differences are detected in the model.
      */
     protected static final String UNEXPECTED_DIFFERENCES_COUNT = "Unexpected differences count in the model.";
 
     /**
-     * Used as a failure message when a particular unmatched element isn't an
-     * instance of the expected type.
+     * Used as a failure message when a particular unmatched element isn't an instance of the expected type.
      */
     protected static final String UNEXPECTED_UNMATCH_ELEMENT = "Unexpected type of unmatched element.";
 
@@ -183,9 +179,8 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
     }
 
     /**
-     * Returns a command that can be used to create a chapter in the given
-     * DDiagram. Will lead to a failure if the required tool cannot be retrieved
-     * in <tt>diagram</tt>.
+     * Returns a command that can be used to create a chapter in the given DDiagram. Will lead to a failure if the
+     * required tool cannot be retrieved in <tt>diagram</tt>.
      * 
      * @param diagram
      *            in which the node shall be created
@@ -228,9 +223,8 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
     }
 
     /**
-     * Returns a command that can be used to create a big section in the given
-     * DDiagram. Will lead to a failure if the required tool cannot be retrieved
-     * in <tt>diagram</tt>.
+     * Returns a command that can be used to create a big section in the given DDiagram. Will lead to a failure if the
+     * required tool cannot be retrieved in <tt>diagram</tt>.
      * 
      * @param diagram
      *            in which the node shall be created
@@ -257,9 +251,8 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
     }
 
     /**
-     * Returns a command that can be used to create a medium section in the
-     * given DDiagram. Will lead to a failure if the required tool cannot be
-     * retrieved in <tt>diagram</tt>.
+     * Returns a command that can be used to create a medium section in the given DDiagram. Will lead to a failure if
+     * the required tool cannot be retrieved in <tt>diagram</tt>.
      * 
      * @param diagram
      *            in which the node shall be created
@@ -280,9 +273,8 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
     }
 
     /**
-     * Returns a command that can be used to create a tiny section in the given
-     * DDiagram. Will lead to a failure if the required tool cannot be retrieved
-     * in <tt>diagram</tt>.
+     * Returns a command that can be used to create a tiny section in the given DDiagram. Will lead to a failure if the
+     * required tool cannot be retrieved in <tt>diagram</tt>.
      * 
      * @param diagram
      *            in which the node shall be created
@@ -301,9 +293,8 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
     }
 
     /**
-     * Returns a command that can be used to create a tiny note in the given
-     * DDiagram. Will lead to a failure if the required tool cannot be retrieved
-     * in <tt>diagram</tt>.
+     * Returns a command that can be used to create a tiny note in the given DDiagram. Will lead to a failure if the
+     * required tool cannot be retrieved in <tt>diagram</tt>.
      * 
      * @param diagram
      *            in which the node shall be created
@@ -318,9 +309,8 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
     }
 
     /**
-     * Returns a command that can be used to create a chapter note in the given
-     * DDiagram. Will lead to a failure if the required tool cannot be retrieved
-     * in <tt>diagram</tt>.
+     * Returns a command that can be used to create a chapter note in the given DDiagram. Will lead to a failure if the
+     * required tool cannot be retrieved in <tt>diagram</tt>.
      * 
      * @param diagram
      *            in which the node shall be created
@@ -335,9 +325,8 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
     }
 
     /**
-     * Returns a command that can be used to create a note in the given
-     * DDiagram. Will lead to a failure if the required tool cannot be retrieved
-     * in <tt>diagram</tt>.
+     * Returns a command that can be used to create a note in the given DDiagram. Will lead to a failure if the required
+     * tool cannot be retrieved in <tt>diagram</tt>.
      * 
      * @param diagram
      *            diagram in which the node shall be created
@@ -350,19 +339,16 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
     }
 
     /**
-     * Returns a command that will create a link between the given
-     * <tt>parent</tt> and <tt>child</tt>. This will result in a test failure if
-     * the containment tool cannot be retrieved in the given viewpoint.
+     * Returns a command that will create a link between the given <tt>parent</tt> and <tt>child</tt>. This will result
+     * in a test failure if the containment tool cannot be retrieved in the given viewpoint.
      * 
      * @param diagram
-     *            The viewpoint containing the two function and in which we seek
-     *            to retrieve a containment tool.
+     *            The viewpoint containing the two function and in which we seek to retrieve a containment tool.
      * @param source
      *            The child function.
      * @param dest
      *            The parent function.
-     * @return A command that will create a containment link between the given
-     *         <tt>parent</tt> and <tt>child</tt>
+     * @return A command that will create a containment link between the given <tt>parent</tt> and <tt>child</tt>
      */
     protected Command createTinySectionEdgeCommand(final DDiagram diagram, final EdgeTarget source, final EdgeTarget dest) {
         final EdgeCreationDescription createTinySectionEdgeTool = (EdgeCreationDescription) getTool(diagram, "tiny section link");
@@ -377,9 +363,8 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
     }
 
     /**
-     * Used to create a navigation link. The navigation link appears in the
-     * diagram description only once the command to create the diagram throw the
-     * navigation link is executed.
+     * Used to create a navigation link. The navigation link appears in the diagram description only once the command to
+     * create the diagram throw the navigation link is executed.
      * 
      * @param diagram
      *            where the tool is defined.
@@ -394,9 +379,8 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
     }
 
     /**
-     * Used to create a navigation link. The navigation link appears in the
-     * diagram description only once the command to create the diagram throw the
-     * navigation link is executed.
+     * Used to create a navigation link. The navigation link appears in the diagram description only once the command to
+     * create the diagram throw the navigation link is executed.
      * 
      * @param diagram
      *            where the tool is defined.
@@ -411,9 +395,8 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
     }
 
     /**
-     * Used to create a navigation link. The navigation link appears in the
-     * diagram description only once the command to create the diagram throw the
-     * navigation link is executed.
+     * Used to create a navigation link. The navigation link appears in the diagram description only once the command to
+     * create the diagram throw the navigation link is executed.
      * 
      * @param diagram
      *            where the tool is defined.
@@ -428,8 +411,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
     }
 
     /**
-     * Used to create an edge target reconnection command from a node or
-     * container to a node.
+     * Used to create an edge target reconnection command from a node or container to a node.
      * 
      * @param diagram
      *            where the tool is defined.
@@ -448,8 +430,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
     }
 
     /**
-     * Used to create an edge target reconnection command from a node or
-     * container to a container.
+     * Used to create an edge target reconnection command from a node or container to a container.
      * 
      * @param diagram
      *            where the tool is defined.
@@ -468,8 +449,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
     }
 
     /**
-     * Used to create an edge source reconnection command from a node or
-     * container to a node.
+     * Used to create an edge source reconnection command from a node or container to a node.
      * 
      * @param diagram
      *            where the tool is defined.
@@ -488,8 +468,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
     }
 
     /**
-     * Used to create an edge source reconnection command from a node or
-     * container to a container.
+     * Used to create an edge source reconnection command from a node or container to a container.
      * 
      * @param diagram
      *            where the tool is defined.
@@ -508,8 +487,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
     }
 
     /**
-     * Used to create an edge source reconnection command from a bordered node
-     * to a node.
+     * Used to create an edge source reconnection command from a bordered node to a node.
      * 
      * @param diagram
      *            where the tool is defined.
@@ -528,8 +506,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
     }
 
     /**
-     * Used to create an edge source reconnection command from a bordered node
-     * to a container.
+     * Used to create an edge source reconnection command from a bordered node to a container.
      * 
      * @param diagram
      *            where the tool is defined.
@@ -548,8 +525,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
     }
 
     /**
-     * Used to create an edge target reconnection command from a bordered node
-     * to a node.
+     * Used to create an edge target reconnection command from a bordered node to a node.
      * 
      * @param diagram
      *            where the tool is defined.
@@ -568,8 +544,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
     }
 
     /**
-     * Used to create an edge target reconnection command from a bordered node
-     * to a container.
+     * Used to create an edge target reconnection command from a bordered node to a container.
      * 
      * @param diagram
      *            where the tool is defined.
@@ -774,9 +749,8 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
     }
 
     /**
-     * Browses the whole content of the given EObject (via
-     * {@link EObject#eAllContents()}) and tries to get the functionnal ID of
-     * each encountered object.
+     * Browses the whole content of the given EObject (via {@link EObject#eAllContents()}) and tries to get the
+     * functionnal ID of each encountered object.
      * 
      * @param model
      *            The model we which to generate functional IDs for.
@@ -792,13 +766,12 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
     }
 
     /**
-     * This will execute the given Command if possible and return
-     * <code>True</code> if it is, <code>False</code> otherwise.
+     * This will execute the given Command if possible and return <code>True</code> if it is, <code>False</code>
+     * otherwise.
      * 
      * @param command
      *            The command that needs be executed.
-     * @return <code>True</code> if the command was executable,
-     *         <code>False</code> otherwise.
+     * @return <code>True</code> if the command was executable, <code>False</code> otherwise.
      */
     protected boolean execute(final Command command) {
         boolean result = command.canExecute();
@@ -807,8 +780,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
     }
 
     /**
-     * creates a chapter container, a title bordered node on it and an edge
-     * between both elements.
+     * creates a chapter container, a title bordered node on it and an edge between both elements.
      * 
      * @return chapter container Node
      */
@@ -854,12 +826,11 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
     }
 
     /**
-     * creates a chapter container, a title bordered node on it and an edge
-     * between both elements. creates finally a note bordered node with two
-     * edges toward and from the chapter container.
+     * creates a chapter container, a title bordered node on it and an edge between both elements. creates finally a
+     * note bordered node with two edges toward and from the chapter container.
      * 
-     * @return the note bordered node, the edge going from the note to the
-     *         chapter and the edges going from the chapter to the note.
+     * @return the note bordered node, the edge going from the note to the chapter and the edges going from the chapter
+     *         to the note.
      */
     public List<EObject> createChapterNote() {
         final DNodeContainer chapter = createChapter();
@@ -904,10 +875,9 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
     }
 
     /**
-     * creates a chapter container, a title bordered node on it and an edge
-     * between both elements. creates a note bordered node with two edges toward
-     * and from the chapter container. creates a big section and a medium
-     * section in the chapter.
+     * creates a chapter container, a title bordered node on it and an edge between both elements. creates a note
+     * bordered node with two edges toward and from the chapter container. creates a big section and a medium section in
+     * the chapter.
      * 
      * @return the note bordered node
      */
@@ -938,8 +908,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
     }
 
     /**
-     * creates a chapter container, a title bordered node on it and an edge
-     * between both elements.
+     * creates a chapter container, a title bordered node on it and an edge between both elements.
      * 
      * @return title bordered Node
      */
@@ -963,9 +932,8 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
     }
 
     /**
-     * creates a chapter container, a title bordered node on it and an edge
-     * between both elements. creates finally a big section container inside the
-     * chapter container.
+     * creates a chapter container, a title bordered node on it and an edge between both elements. creates finally a big
+     * section container inside the chapter container.
      * 
      * @return big section container node
      */
@@ -990,10 +958,8 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
     }
 
     /**
-     * creates a chapter container, a title bordered node on it and an edge
-     * between both elements. creates a big section container inside the chapter
-     * container. creates finally a medium section node inside the big section
-     * container.
+     * creates a chapter container, a title bordered node on it and an edge between both elements. creates a big section
+     * container inside the chapter container. creates finally a medium section node inside the big section container.
      * 
      * @return medium section node
      */
@@ -1018,12 +984,10 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
     }
 
     /**
-     * creates a chapter container, a title bordered node on it and an edge
-     * between both elements. creates a big section container inside the chapter
-     * container. creates a medium section node inside the big section
-     * container. creates finally a tiny section node in the diagram, an edge
-     * between the tiny section node and the chapter container and an edge
-     * between the tiny section and the medium section node.
+     * creates a chapter container, a title bordered node on it and an edge between both elements. creates a big section
+     * container inside the chapter container. creates a medium section node inside the big section container. creates
+     * finally a tiny section node in the diagram, an edge between the tiny section node and the chapter container and
+     * an edge between the tiny section and the medium section node.
      * 
      * @return tiny section node
      */
@@ -1048,13 +1012,10 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
     }
 
     /**
-     * creates a chapter container, a title bordered node on it and an edge
-     * between both elements. creates a big section container inside the chapter
-     * container. creates a medium section node inside the big section
-     * container. creates a tiny section node in the diagram, an edge between
-     * the tiny section node and the chapter container and an edge between the
-     * tiny section and the medium section node. creates finally a second medium
-     * section.
+     * creates a chapter container, a title bordered node on it and an edge between both elements. creates a big section
+     * container inside the chapter container. creates a medium section node inside the big section container. creates a
+     * tiny section node in the diagram, an edge between the tiny section node and the chapter container and an edge
+     * between the tiny section and the medium section node. creates finally a second medium section.
      * 
      * @return second medium section node
      */
@@ -1092,13 +1053,10 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
     }
 
     /**
-     * creates a chapter container, a title bordered node on it and an edge
-     * between both elements. creates a big section container inside the chapter
-     * container. creates a medium section node inside the big section
-     * container. creates a tiny section node in the diagram, an edge between
-     * the tiny section node and the chapter container and an edge between the
-     * tiny section and the medium section node. creates finally a bordered node
-     * on the tiny section node.
+     * creates a chapter container, a title bordered node on it and an edge between both elements. creates a big section
+     * container inside the chapter container. creates a medium section node inside the big section container. creates a
+     * tiny section node in the diagram, an edge between the tiny section node and the chapter container and an edge
+     * between the tiny section and the medium section node. creates finally a bordered node on the tiny section node.
      * 
      * @return created tiny note.
      */
@@ -1123,9 +1081,8 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
     }
 
     /**
-     * creates a chapter container, a title bordered node on it and an edge
-     * between both elements. creates finally a note (node) in diagram and an
-     * edge between the note node and the title bordered node.
+     * creates a chapter container, a title bordered node on it and an edge between both elements. creates finally a
+     * note (node) in diagram and an edge between the note node and the title bordered node.
      */
     public void createNote() {
         createMediumSection();
@@ -1135,9 +1092,8 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
     }
 
     /**
-     * creates two chapters containers, two titles bordered nodes on them and
-     * two edges between titles and related chapters. creates finally an edge
-     * between both chapters containers.
+     * creates two chapters containers, two titles bordered nodes on them and two edges between titles and related
+     * chapters. creates finally an edge between both chapters containers.
      * 
      * @return the edge between both chapters
      */
@@ -1164,13 +1120,11 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
     }
 
     /**
-     * creates a chapter container, a title bordered node on it and an edge
-     * between both elements. creates a big section container inside the chapter
-     * container. creates a medium section node inside the big section
-     * container. creates a tiny section node in the diagram, an edge between
-     * the tiny section node and the chapter container and an edge between the
-     * tiny section and the medium section node. creates finally two bordered
-     * nodes on the tiny section node and an edge between both bordered nodes.
+     * creates a chapter container, a title bordered node on it and an edge between both elements. creates a big section
+     * container inside the chapter container. creates a medium section node inside the big section container. creates a
+     * tiny section node in the diagram, an edge between the tiny section node and the chapter container and an edge
+     * between the tiny section and the medium section node. creates finally two bordered nodes on the tiny section node
+     * and an edge between both bordered nodes.
      */
     public void createTwoTinyNotes() {
         final DNode tinySection = createTinySection();
@@ -1339,8 +1293,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
     }
 
     /*
-     * add a big (Sect1), a medium (Sect2) and a tiny section(Sect3) under the
-     * chapter.
+     * add a big (Sect1), a medium (Sect2) and a tiny section(Sect3) under the chapter.
      */
     public void addTinySection() {
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
@@ -1407,11 +1360,12 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
             }
         });
     }
+
     @Override
     protected void tearDown() throws Exception {
         DiagramEventBroker.stopListening(session.getTransactionalEditingDomain());
         obviousDiagram = null;
-        clearErrors();
+        platformProblemsListener.clearErrors();
         super.tearDown();
     }
 

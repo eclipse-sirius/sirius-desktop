@@ -14,18 +14,13 @@
 package org.eclipse.sirius.tests.swtbot.support.api;
 
 import java.io.File;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.lang.Thread.UncaughtExceptionHandler;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
 import java.util.NoSuchElementException;
 import java.util.Objects;
@@ -35,12 +30,9 @@ import java.util.Set;
 import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.ILogListener;
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.runtime.preferences.DefaultScope;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
@@ -77,6 +69,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPrefer
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.preferences.SiriusDiagramUiInternalPreferencesKeys;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
+import org.eclipse.sirius.tests.support.api.PlatformProblemsListener;
 import org.eclipse.sirius.tests.support.api.TestCaseCleaner;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.support.internal.helper.CrossReferenceAdapterDetector;
@@ -207,11 +200,8 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     /** The DialectEditor (opened on representation creation) wrapper. */
     protected SWTBotSiriusDiagramEditor editor;
 
-    /** The reported errors. */
-    protected Map<String, List<IStatus>> errors = new LinkedHashMap<>();
-
-    /** The reported warnings. */
-    protected Map<String, List<IStatus>> warnings = new LinkedHashMap<>();
+    /** The helper to detect and manage info, warnings, errors. */
+    protected PlatformProblemsListener platformProblemsListener = new PlatformProblemsListener(this);
 
     private boolean defaultEnableAnimatedZoom;
 
@@ -234,18 +224,6 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
 
     private final HashMap<String, Object> oldPlatformUIPreferences = new HashMap<String, Object>();
 
-    /** The unchaught exceptions handler. */
-    private UncaughtExceptionHandler exceptionHandler;
-
-    /** The platform log listener. */
-    private ILogListener logListener;
-
-    /** Boolean to activate error catch. */
-    private boolean errorCatchActive;
-
-    /** Boolean to activate warning catch. */
-    private boolean warningCatchActive;
-
     @Override
     protected void setUp() throws Exception {
         PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
@@ -264,7 +242,9 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
             }
         });
 
-        initLoggers();
+        platformProblemsListener.initLoggers();
+        platformProblemsListener.setErrorCatchActive(true);
+        platformProblemsListener.setWarningCatchActive(false);
 
         closeAllSessions(true);
 
@@ -1027,6 +1007,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     protected SWTBotToolbarDropDownButton getPasteMenu() {
         return getPasteMenu(editor.bot());
     }
+
     /**
      * Returns the bot for the DropDownButton, which contains all paste actions.
      */
@@ -1389,306 +1370,6 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         return button;
     }
 
-    /**
-     * Initialize the log listener
-     */
-    private void initLoggers() {
-        logListener = (status, plugin) -> {
-            switch (status.getSeverity()) {
-            case IStatus.ERROR:
-                if (!"org.eclipse.ui.views.properties.tabbed".equals(status.getPlugin()) && status.getMessage() != null && !status.getMessage().startsWith(
-                        "Contributor org.eclipse.ui.navigator.ProjectExplorer cannot be created., exception: org.eclipse.core.runtime.CoreException: Plug-in \"org.eclipse.ui.navigator.resources\" was unable to instantiate class \"org.eclipse.ui.internal.navigator.resources.workbench.TabbedPropertySheetTitleProvider\".")) {
-                    errorOccurs(status, plugin);
-                }
-                break;
-            case IStatus.WARNING:
-                warningOccurs(status, plugin);
-                break;
-            default:
-                // nothing to do
-            }
-        };
-        Platform.addLogListener(logListener);
-
-        final String sourcePlugin = "Uncaught exception";
-        exceptionHandler = (Thread t, Throwable e) -> {
-            IStatus status = new Status(IStatus.ERROR, sourcePlugin, sourcePlugin, e);
-            errorOccurs(status, sourcePlugin);
-        };
-
-        Thread.setDefaultUncaughtExceptionHandler(exceptionHandler);
-
-        setErrorCatchActive(true);
-        setWarningCatchActive(false);
-    }
-
-    /**
-     * Dispose the log listener.
-     */
-    private void disposeLoggers() {
-        if (logListener != null) {
-            Platform.removeLogListener(logListener);
-        }
-    }
-
-    /**
-     * check if an error occurs.
-     *
-     * @return true if an error occurs.
-     */
-    protected synchronized boolean doesAnErrorOccurs() {
-        return errorsCount() > 0;
-    }
-
-    /**
-     * Returns the total number of errors recorded.
-     * 
-     * @return the total number of errors recorded.
-     */
-    protected int errorsCount() {
-        return errors.values().stream().mapToInt(List::size).sum();
-    }
-
-    /**
-     * check if a warning occurs.
-     *
-     * @return true if a warning occurs.
-     */
-    protected synchronized boolean doesAWarningOccurs() {
-        return warningsCount() > 0;
-    }
-
-    /**
-     * Returns the total number of warnings recorded.
-     * 
-     * @return the total number of warnings recorded.
-     */
-    protected int warningsCount() {
-        return warnings.values().stream().mapToInt(List::size).sum();
-    }
-
-    /**
-     * check if an error catch is active.
-     *
-     * @return true if an error catch is active.
-     */
-    protected synchronized boolean isErrorCatchActive() {
-        return errorCatchActive;
-    }
-
-    /**
-     * check if a warning catch is active.
-     *
-     * @return true if a warning catch is active.
-     */
-    protected synchronized boolean isWarningCatchActive() {
-        return warningCatchActive;
-    }
-
-    /**
-     * Records the error.
-     *
-     * @param status
-     *            error status to record
-     * @param sourcePlugin
-     *            source plugin in which the error occurred
-     */
-    private synchronized void errorOccurs(IStatus status, String sourcePlugin) {
-        if (errorCatchActive) {
-            boolean ignoreMessage = false;
-            if ("org.eclipse.core.runtime".equals(sourcePlugin) && status != null) {
-                if ("Could not acquire INavigatorContentService: Project Explorer not found.".equals(status.getMessage())) {
-                    // Ignore error caused by bugzilla 489335 when tests are
-                    // launched with product "org.eclipse.platform.ide".
-                    ignoreMessage = true;
-                } else if (status.getMessage() != null && status.getMessage().startsWith("Resource '/.org.eclipse.jdt.core.external.folders/.link")
-                        && status.getMessage().endsWith("' already exists.")) {
-                    // Ignore errors that sometimes appears only with runtime
-                    // environment during VSP creation.
-                    ignoreMessage = true;
-                }
-            }
-            if (!ignoreMessage) {
-                errors.putIfAbsent(sourcePlugin, new ArrayList<>());
-                errors.get(sourcePlugin).add(status);
-            }
-        }
-    }
-
-    /**
-     * Records the warning.
-     *
-     * @param status
-     *            warning status to record
-     * @param sourcePlugin
-     *            source plugin in which the warning occurred
-     */
-    private synchronized void warningOccurs(IStatus status, String sourcePlugin) {
-        if (warningCatchActive) {
-            warnings.putIfAbsent(sourcePlugin, new ArrayList<>());
-            warnings.get(sourcePlugin).add(status);
-        }
-    }
-
-    /**
-     * Activate or deactivate the external error detection: the test will fail in an error is logged or uncaught.
-     *
-     * @param errorCatchActive
-     *            boolean to indicate if we activate or deactivate the external error detection
-     */
-    protected synchronized void setErrorCatchActive(boolean errorCatchActive) {
-        this.errorCatchActive = errorCatchActive;
-    }
-
-    /**
-     * Activate or deactivate the external warning detection: the test will fail in a warning is logged or uncaught.
-     *
-     * @param warningCatchActive
-     *            boolean to indicate if we activate or deactivate the external warning detection
-     */
-    protected synchronized void setWarningCatchActive(boolean warningCatchActive) {
-        this.warningCatchActive = warningCatchActive;
-    }
-
-    /**
-     * Enable warning and/or error catch and reset existing recorded warnings and/or errors.
-     *
-     * @param activateWarningCatch
-     *            True to activate warning catch and reset existing recorded warnings, false to not activate it.
-     * @param activateErrorCatch
-     *            True to activate error catch and reset existing recorded errors, false to not activate it.
-     */
-    protected void startToListenErrorLog(boolean activateWarningCatch, boolean activateErrorCatch) {
-        setWarningCatchActive(activateWarningCatch);
-        if (activateWarningCatch) {
-            warnings.clear();
-        }
-        setErrorCatchActive(activateErrorCatch);
-        if (activateErrorCatch) {
-            errors.clear();
-        }
-    }
-
-    /**
-     * Check that there is no existing error or warning.
-     */
-    private void checkLogs() {
-        /* an exception occurs in another thread */
-
-        /*
-         * TODO : skip checkErrors when we are in a shouldSkipUnreliableTests mode. We have some unwanted resource
-         * notifications during the teardown on jenkins.
-         */
-        if (!TestsUtil.shouldSkipUnreliableTests()) {
-            if (doesAnErrorOccurs()) {
-                Assert.fail(getErrorLoggersMessage());
-            }
-
-            if (doesAWarningOccurs()) {
-                Assert.fail(getWarningLoggersMessage());
-            }
-        }
-    }
-
-    /**
-     * Compute an error message from the detected errors.
-     *
-     * @return the error message.
-     */
-    protected synchronized String getErrorLoggersMessage() {
-
-        StringBuilder log1 = new StringBuilder();
-        String br = "\n";
-
-        String testName = getClass().getName();
-
-        log1.append("Error(s) raised during test : " + testName).append(br);
-        for (Entry<String, List<IStatus>> entry : errors.entrySet()) {
-            String reporter = entry.getKey();
-            log1.append(". Log Plugin : " + reporter).append(br);
-
-            for (IStatus status : entry.getValue()) {
-                log1.append("  . " + getSeverity(status) + " from plugin:" + status.getPlugin() + ", message: " + status.getMessage() + ", exception: " + status.getException()).append(br);
-                appendStackTrace(log1, br, status);
-            }
-            log1.append(br);
-        }
-        return log1.toString();
-    }
-
-    /**
-     * Compute an error message from the detected warnings.
-     *
-     * @return the error message.
-     */
-    protected synchronized String getWarningLoggersMessage() {
-
-        StringBuilder log1 = new StringBuilder();
-        String br = "\n";
-
-        String testName = getClass().getName();
-
-        log1.append("Warning(s) raised during test : " + testName).append(br);
-        for (Entry<String, List<IStatus>> entry : warnings.entrySet()) {
-            String reporter = entry.getKey();
-            log1.append(". Log Plugin : " + reporter).append(br);
-
-            for (IStatus status : entry.getValue()) {
-                log1.append("  . " + getSeverity(status) + " from plugin:" + status.getPlugin() + ", message: " + status.getMessage() + ", exception: " + status.getException()).append(br);
-                appendStackTrace(log1, br, status);
-            }
-            log1.append(br);
-        }
-        return log1.toString();
-    }
-
-    private void appendStackTrace(StringBuilder log1, String br, IStatus status) {
-        PrintWriter pw = null;
-        String stacktrace = null;
-        if (status.getException() != null) {
-            try {
-                StringWriter sw = new StringWriter();
-                pw = new PrintWriter(sw);
-                // CHECKSTYLE:OFF
-                status.getException().printStackTrace(pw);
-                // CHECKSTYLE:ON
-                stacktrace = sw.toString();
-            } finally {
-                if (pw != null) {
-                    pw.close();
-                }
-                if (stacktrace == null) {
-                    stacktrace = status.getException().toString();
-                }
-                log1.append("   . Stack trace: " + stacktrace).append(br);
-            }
-        }
-    }
-
-    private String getSeverity(IStatus status) {
-        String severity;
-        switch (status.getSeverity()) {
-        case IStatus.OK:
-            severity = "Ok";
-            break;
-        case IStatus.INFO:
-            severity = "Info";
-            break;
-        case IStatus.WARNING:
-            severity = "Warning";
-            break;
-        case IStatus.CANCEL:
-            severity = "Cancel";
-            break;
-        case IStatus.ERROR:
-            severity = "Error";
-            break;
-        default:
-            severity = "Unspecified";
-        }
-        return severity;
-    }
-
     // Cannot be overriden, we are trying to preserve and cleanup workspace for
     // next tests
     private void failureTearDown() throws Exception {
@@ -1755,7 +1436,9 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
                 EclipseTestsSupportHelper.INSTANCE.deleteProject(project.getName());
             }
 
-            disposeLoggers();
+            platformProblemsListener.setErrorCatchActive(false);
+            platformProblemsListener.setWarningCatchActive(false);
+            platformProblemsListener.disposeLoggers();
         } finally {
             // Reset the preferences changed during the test with the method
             // changePreference. This is done in the finally block in case of
@@ -1774,11 +1457,11 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
                 preferenceStore.setValue(IPreferenceConstants.PREF_ENABLE_ANIMATED_LAYOUT, defaultEnableAnimatedLayout);
                 preferenceStore.setValue(SiriusDiagramUiPreferencesKeys.PREF_PROMPT_PASTE_MODE.name(), defaultPromptPasteMode);
             });
-            setErrorCatchActive(false);
-            setWarningCatchActive(false);
+            platformProblemsListener.setErrorCatchActive(false);
+            platformProblemsListener.setWarningCatchActive(false);
 
             crossRefDetector.assertNoCrossReferenceAdapterFound();
-            checkLogs();
+            platformProblemsListener.checkLogs();
 
             // All tearDown tasks have been done, now all fields can be safely clear.
             new TestCaseCleaner(this).clearAllFields();
@@ -1997,8 +1680,6 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         failureTearDown();
 
         super.tearDown();
-        setErrorCatchActive(false);
-        setWarningCatchActive(false);
         // Avoid NPE in
         // org.eclipse.ui.internal.statushandlers.StatusHandlerRegistry.<init>
         // on close.

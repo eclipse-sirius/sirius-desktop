@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -38,8 +38,7 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.ui.IEditorPart;
 
 /**
- * A class to check the behavior when some semantic elements are deleted outside
- * of Sirius editors.
+ * A class to check the behavior when some semantic elements are deleted outside of Sirius editors.
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
@@ -74,9 +73,8 @@ public class EntitiesDiagramDeleteFromOutsideEditorTests extends SiriusDiagramTe
     }
 
     /**
-     * This test check that there is no message in the error log when we select
-     * an element in the diagram that have its target deleted outside the editor
-     * (in another resourceSet).
+     * This test check that there is no message in the error log when we select an element in the diagram that have its
+     * target deleted outside the editor (in another resourceSet).
      */
     public void testNoMsgInErrorLogWhenSelectedADNodeListWithProxyTarget() {
         // Check the entry data
@@ -110,7 +108,7 @@ public class EntitiesDiagramDeleteFromOutsideEditorTests extends SiriusDiagramTe
         TestsUtil.synchronizationWithUIThread();
 
         // Activate the error catching (to detect msg during selection)
-        setErrorCatchActive(true);
+        platformProblemsListener.setErrorCatchActive(true);
         // Select the corresponding element in the diagram
         final DDiagramElement diagramElement = getFirstDiagramElement(diagram, eClass);
         final IGraphicalEditPart editPart = getEditPart(diagramElement, editorPart);
@@ -118,6 +116,6 @@ public class EntitiesDiagramDeleteFromOutsideEditorTests extends SiriusDiagramTe
 
         // Deactivate the error catching (the error detection is done during the
         // super.tearDown)
-        setErrorCatchActive(false);
+        platformProblemsListener.setErrorCatchActive(false);
     }
 }

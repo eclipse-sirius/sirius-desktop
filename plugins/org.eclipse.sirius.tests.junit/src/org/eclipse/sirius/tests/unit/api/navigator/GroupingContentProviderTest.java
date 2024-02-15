@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -34,21 +34,17 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * This class tests the GroupingContentProvider. We take care about preference
- * context with: CommonPreferencesConstants.PREF_GROUP_ENABLE
- * CommonPreferencesConstants.PREF_GROUP_SIZE
+ * This class tests the GroupingContentProvider. We take care about preference context with:
+ * CommonPreferencesConstants.PREF_GROUP_ENABLE CommonPreferencesConstants.PREF_GROUP_SIZE
  * CommonPreferencesConstants.PREF_GROUP_TRIGGER
  * 
- * This test case does not deal with the grouping item by containing feature. In
- * fact, GROUP_BY_CONTAINING_FEATURE is only enable on instance of EObject and
- * this test class use only basic Objects. But we need to test that a
- * GROUP_BY_CONTAINING_FEATURE at true on Object doesn't throw any errors.
+ * This test case does not deal with the grouping item by containing feature. In fact, GROUP_BY_CONTAINING_FEATURE is
+ * only enable on instance of EObject and this test class use only basic Objects. But we need to test that a
+ * GROUP_BY_CONTAINING_FEATURE at true on Object doesn't throw any platformProblemsListener.getErrors().
  * <p>
- * We use a Parameterized annotation to launch this test with
- * GROUP_BY_CONTAINING_FEATURE at true and false.
+ * We use a Parameterized annotation to launch this test with GROUP_BY_CONTAINING_FEATURE at true and false.
  * 
- * The concrete PREF_GROUP_BY_CONTAINING_FEATURE feature has a specific Test
- * Class @see GroupingContentProviderPrefTest.
+ * The concrete PREF_GROUP_BY_CONTAINING_FEATURE feature has a specific Test Class @see GroupingContentProviderPrefTest.
  * 
  */
 @RunWith(value = Parameterized.class)
@@ -77,6 +73,7 @@ public class GroupingContentProviderTest extends CommonPreferencesHelper {
      * 
      * @see org.eclipse.sirius.tests.support.api.SiriusTestCase#setUp()
      */
+    @Override
     @Before
     public void setUp() {
         super.setUp();
@@ -92,10 +89,8 @@ public class GroupingContentProviderTest extends CommonPreferencesHelper {
     }
 
     /**
-     * Test method for
-     * {@link org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider#getTriggerSize()}
-     * {@link org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider#getGroupSize()}
-     * .
+     * Test method for {@link org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider#getTriggerSize()}
+     * {@link org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider#getGroupSize()} .
      */
     @Test
     public void coherenceBewteenTriggerSizeAndGroupSize2() {
@@ -109,8 +104,7 @@ public class GroupingContentProviderTest extends CommonPreferencesHelper {
 
     /**
      * The the getChildren delegation for the GroupingItem. Test method for
-     * {@link org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider#getElements(java.lang.Object)}
-     * .
+     * {@link org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider#getElements(java.lang.Object)} .
      */
     @Test
     public void getElements() {
@@ -134,8 +128,7 @@ public class GroupingContentProviderTest extends CommonPreferencesHelper {
 
     /**
      * Test method for
-     * {@link org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider#getElements(java.lang.Object)}
-     * .
+     * {@link org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider#getElements(java.lang.Object)} .
      */
     @Test
     public void getElementsWithGroupDisabled() {
@@ -156,8 +149,7 @@ public class GroupingContentProviderTest extends CommonPreferencesHelper {
 
     /**
      * Test method for
-     * {@link org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider#getElements(java.lang.Object)}
-     * .
+     * {@link org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider#getElements(java.lang.Object)} .
      */
     @Test
     public void getElementsWithGroupDisabled2() {
@@ -178,8 +170,7 @@ public class GroupingContentProviderTest extends CommonPreferencesHelper {
 
     /**
      * Test method for
-     * {@link org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider#getElements(java.lang.Object)}
-     * .
+     * {@link org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider#getElements(java.lang.Object)} .
      */
     @Test
     public void getElementsWithGroupEnable() {
@@ -228,8 +219,7 @@ public class GroupingContentProviderTest extends CommonPreferencesHelper {
 
     /**
      * Test method for
-     * {@link org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider#getElements(java.lang.Object)}
-     * .
+     * {@link org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider#getElements(java.lang.Object)} .
      */
     @Test
     public void getElementsWithGroupEnable2() {
@@ -276,8 +266,7 @@ public class GroupingContentProviderTest extends CommonPreferencesHelper {
 
     /**
      * The the getChildren delegation for the GroupingItem. Test method for
-     * {@link org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider#getChildren(java.lang.Object)}
-     * .
+     * {@link org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider#getChildren(java.lang.Object)} .
      */
     @Test
     public void getChildren() {
@@ -301,8 +290,7 @@ public class GroupingContentProviderTest extends CommonPreferencesHelper {
 
     /**
      * Test method for
-     * {@link org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider#getChildren(java.lang.Object)}
-     * .
+     * {@link org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider#getChildren(java.lang.Object)} .
      */
     @Test
     public void getChildrenWithGroupDisabled() {
@@ -323,8 +311,7 @@ public class GroupingContentProviderTest extends CommonPreferencesHelper {
 
     /**
      * Test method for
-     * {@link org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider#getChildren(java.lang.Object)}
-     * .
+     * {@link org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider#getChildren(java.lang.Object)} .
      */
     @Test
     public void getChildrenWithGroupDisabled2() {
@@ -345,8 +332,7 @@ public class GroupingContentProviderTest extends CommonPreferencesHelper {
 
     /**
      * Test method for
-     * {@link org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider#getChildren(java.lang.Object)}
-     * .
+     * {@link org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider#getChildren(java.lang.Object)} .
      */
     @Test
     public void getChildrenWithGroupEnable() {
@@ -395,8 +381,7 @@ public class GroupingContentProviderTest extends CommonPreferencesHelper {
 
     /**
      * Test method for
-     * {@link org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider#getParent(java.lang.Object)}
-     * .
+     * {@link org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider#getParent(java.lang.Object)} .
      */
     @Test
     public void getParent() {
@@ -420,8 +405,7 @@ public class GroupingContentProviderTest extends CommonPreferencesHelper {
 
     /**
      * The the getChildren delegation for the GroupingItem. Test method for
-     * {@link org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider#getParent(java.lang.Object)}
-     * .
+     * {@link org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider#getParent(java.lang.Object)} .
      */
     @Test
     public void getParent2() {
@@ -433,8 +417,7 @@ public class GroupingContentProviderTest extends CommonPreferencesHelper {
 
     /**
      * Test method for
-     * {@link org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider#hasChildren(java.lang.Object)}
-     * .
+     * {@link org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider#hasChildren(java.lang.Object)} .
      */
     @Test
     public void hasChildren() {
@@ -448,8 +431,7 @@ public class GroupingContentProviderTest extends CommonPreferencesHelper {
 
     /**
      * Test method for
-     * {@link org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider#hasChildren(java.lang.Object)}
-     * .
+     * {@link org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider#hasChildren(java.lang.Object)} .
      */
     @Test
     public void hasChildren2() {

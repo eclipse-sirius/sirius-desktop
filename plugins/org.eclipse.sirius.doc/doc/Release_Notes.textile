@@ -6,7 +6,17 @@ This document contains the release notes for recent major releases of Sirius. Se
 
 h2(#sirius7.4.5). Changes in Sirius  Desktop 7.4.5
 
-Nothing.
+h3. Developer-Visible Changes
+
+h4. Changes in @org.eclipse.sirius.tests.support@
+
+* <span class="label label-success">Added</span> The @org.eclipse.sirius.tests.support.api.PlatformProblemsListener@ class has been extracted from both @org.eclipse.sirius.tests.support.api.SiriusTestCase@ and @org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase@ to regroup common mechanisms used to manages info, warning, errors and uncaught exceptions.
+* <span class="label label-info">Modified</span>Info, warning, errors and uncaught exceptions management has been extracted from @org.eclipse.sirius.tests.support.api.SiriusTestCase@ and moved to @org.eclipse.sirius.tests.support.api.PlatformProblemsListener@.
+
+h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
+
+* <span class="label label-info">Modified</span> Info, warning, errors and uncaught exceptions management has been extracted from @org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase@ and moved to @org.eclipse.sirius.tests.support.api.PlatformProblemsListener@.
+
 
 h2(#sirius7.4.4). Changes in Sirius  Desktop 7.4.4
 

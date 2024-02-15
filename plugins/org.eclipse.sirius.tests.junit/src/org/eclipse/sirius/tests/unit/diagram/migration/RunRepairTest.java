@@ -18,6 +18,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.util.URI;
@@ -213,9 +214,9 @@ public class RunRepairTest extends AbstractRepairMigrateTest {
      *             Test error.
      */
     public void testDiagramElementWithUnexistingTarget() throws Exception {
-        setErrorCatchActive(true);
+        platformProblemsListener.setErrorCatchActive(true);
         runRepairProcess(TC_2316_AIRD_PB1_MAIN);
-        setErrorCatchActive(false);
+        platformProblemsListener.setErrorCatchActive(false);
         // Nothing to check
         // Just test that migration process can be run without error
     }
@@ -227,9 +228,9 @@ public class RunRepairTest extends AbstractRepairMigrateTest {
      *             Test error.
      */
     public void testAirdWithUnexistingModel() throws Exception {
-        setErrorCatchActive(true);
+        platformProblemsListener.setErrorCatchActive(true);
         runRepairProcess(TC_2316_AIRD_PB2_MAIN);
-        setErrorCatchActive(false);
+        platformProblemsListener.setErrorCatchActive(false);
         // Nothing to check
         // Just test that migration process can be run without error
     }
@@ -241,15 +242,18 @@ public class RunRepairTest extends AbstractRepairMigrateTest {
      *             Test error.
      */
     public void testBlankAird() throws Exception {
-        setErrorCatchActive(true);
+        platformProblemsListener.setErrorCatchActive(true);
         runRepairProcess(TC_2316_AIRD_PB4);
-        setErrorCatchActive(false);
+        platformProblemsListener.setErrorCatchActive(false);
         // Check that one error occurs (because the representation files
         // contains no DAnalysis).
-        assertTrue("One error should occur (because the representation files contains no DAnalysis)", errorsCount() == 1 && errors.values().iterator().next().size() == 1);
-        assertEquals("The error message is not the expected one.", SiriusRepairProcess.ERROR_MSG, errors.values().iterator().next().iterator().next().getMessage());
+
+        assertTrue("One error should occur (because the representation files contains no DAnalysis)", platformProblemsListener.errorsCount() == 1);
+        List<IStatus> errors = platformProblemsListener.getErrors().values().iterator().next();
+        assertTrue("One error should occur (because the representation files contains no DAnalysis)", platformProblemsListener.getErrors().size() == 1);
+        assertEquals("The error message is not the expected one.", SiriusRepairProcess.ERROR_MSG, errors.iterator().next().getMessage());
         // Clear the expected error
-        clearErrors();
+        platformProblemsListener.clearErrors();
     }
 
     /**
@@ -258,7 +262,7 @@ public class RunRepairTest extends AbstractRepairMigrateTest {
      * @throws Exception
      */
     public void testFragmentedMigration() throws Exception {
-        setErrorCatchActive(true);
+        platformProblemsListener.setErrorCatchActive(true);
         /* set refresh on representation opening */
         changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), false);
 
@@ -278,12 +282,12 @@ public class RunRepairTest extends AbstractRepairMigrateTest {
         assertLoadOK(TC_VP_2035_P2_AIRD, "after second migration");
         assertLoadOK(TC_VP_2035_P3_AIRD, "after second migration");
 
-        setErrorCatchActive(false);
+        platformProblemsListener.setErrorCatchActive(false);
     }
 
     /**
-     * Check that this use case is migrated a models references pointing to the
-     * root semantic element is not added to the fragmented aird.
+     * Check that this use case is migrated a models references pointing to the root semantic element is not added to
+     * the fragmented aird.
      * 
      * @throws Exception
      */
@@ -311,13 +315,12 @@ public class RunRepairTest extends AbstractRepairMigrateTest {
     }
 
     /**
-     * Check that the fragment has always two models references after the
-     * migration. VP-2738
+     * Check that the fragment has always two models references after the migration. VP-2738
      * 
      * @throws Exception
      */
     public void testFragmentedMigrationKeepModelsReferencesAfterMigration() throws Exception {
-        setErrorCatchActive(true);
+        platformProblemsListener.setErrorCatchActive(true);
         runRepairProcess(TC_VP_2738_ROOT_AIRD);
         TestsUtil.emptyEventsFromUIThread();
 
@@ -332,7 +335,7 @@ public class RunRepairTest extends AbstractRepairMigrateTest {
         assertEquals("Bad number of DAnalysis in " + TC_VP_2738_P1_AIRD, 1, rootData.size());
         assertEquals("Bad number of Models in " + TC_VP_2738_P1_AIRD, 2, rootData.get(0).getModels().size());
 
-        setErrorCatchActive(false);
+        platformProblemsListener.setErrorCatchActive(false);
     }
 
     private void assertLoadOK(String projectRelativePath, String endMessage) {
@@ -369,9 +372,9 @@ public class RunRepairTest extends AbstractRepairMigrateTest {
      */
     public void testMigrationOfBreakdownDiagram() throws Exception {
         // Launch migration
-        setErrorCatchActive(true);
+        platformProblemsListener.setErrorCatchActive(true);
         runRepairProcess(TC_2369_AIRD);
-        setErrorCatchActive(false);
+        platformProblemsListener.setErrorCatchActive(false);
 
         // Get the content of the migrated file
         String path = "/" + TEMPORARY_PROJECT_NAME + "/" + TC_2369_AIRD;
@@ -390,10 +393,9 @@ public class RunRepairTest extends AbstractRepairMigrateTest {
     }
 
     /**
-     * Check the problem of VP-2552. In this use case, the session is dirty
-     * after a repair/migrate.<BR>
-     * Use case precision : The label of the bordered node that will be filtered
-     * must be hide by default (property "Hide Label By Default" of the style).
+     * Check the problem of VP-2552. In this use case, the session is dirty after a repair/migrate.<BR>
+     * Use case precision : The label of the bordered node that will be filtered must be hide by default (property "Hide
+     * Label By Default" of the style).
      * 
      * @throws Exception
      *             Test error.

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -93,7 +93,7 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
      */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
-        setErrorCatchActive(false);
+        platformProblemsListener.setErrorCatchActive(false);
 
         // Load the target platform, if not already done, to allow compilation
         // of the java services

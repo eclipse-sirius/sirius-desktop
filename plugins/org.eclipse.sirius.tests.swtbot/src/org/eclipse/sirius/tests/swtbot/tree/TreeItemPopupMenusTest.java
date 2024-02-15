@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -22,8 +22,7 @@ import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
 /**
- * Tests for ensuring that pop-up menu associated to TreeItemMappings are
- * correctly integrated to the DTreeEditor.
+ * Tests for ensuring that pop-up menu associated to TreeItemMappings are correctly integrated to the DTreeEditor.
  * 
  * @author alagarde
  */
@@ -131,8 +130,7 @@ public class TreeItemPopupMenusTest extends AbstractTreeSiriusSWTBotGefTestCase 
     }
 
     /**
-     * Ensures that OperationActions with unchecked precondition are not
-     * displayed.
+     * Ensures that OperationActions with unchecked precondition are not displayed.
      */
     public void testPopupMenuWithOperationActionAndFalsePrecondition() {
         // When getting the contextual menu of
@@ -145,19 +143,18 @@ public class TreeItemPopupMenusTest extends AbstractTreeSiriusSWTBotGefTestCase 
         // The test must be passed in the exception, so we deactivated the catch
         // of
         // "error log" view
-        setErrorCatchActive(false);
+        platformProblemsListener.setErrorCatchActive(false);
         try {
             node.contextMenu(OPERATION_ACTION_NAME);
         } catch (WidgetNotFoundException e) {
             foundContextMenu = false;
         }
         assertFalse("Operation Action " + OPERATION_ACTION_NAME + " should not be displayed on TreeITem " + TREE_ITEM_WITH_JAVA_ACTION_CALL_NAME, foundContextMenu);
-        setErrorCatchActive(true);
+        platformProblemsListener.setErrorCatchActive(true);
     }
 
     /**
-     * Ensures that ExternalJavaActions with unchecked precondition are not
-     * displayed.
+     * Ensures that ExternalJavaActions with unchecked precondition are not displayed.
      */
     public void testPopupMenuWithExternalJavaActionAndFalsePrecondition() {
         // When getting the contextual menu of
@@ -169,19 +166,18 @@ public class TreeItemPopupMenusTest extends AbstractTreeSiriusSWTBotGefTestCase 
         // The test must be passed in the exception, so we deactivated the catch
         // of
         // "error log" view
-        setErrorCatchActive(false);
+        platformProblemsListener.setErrorCatchActive(false);
         try {
             node.contextMenu(JAVA_ACTION_NAME);
         } catch (WidgetNotFoundException e) {
             foundContextMenu = false;
         }
         assertFalse("Java Action " + JAVA_ACTION_NAME + " should not be displayed on TreeITem " + TREE_ITEM_WITH_JAVA_ACTION_CALL_NAME, foundContextMenu);
-        setErrorCatchActive(true);
+        platformProblemsListener.setErrorCatchActive(true);
     }
 
     /**
-     * Ensures that ExternalJavaActionCalls with unchecked precondition are not
-     * displayed.
+     * Ensures that ExternalJavaActionCalls with unchecked precondition are not displayed.
      */
     public void testPopupMenuWithExternalJavaActionCallAndFalsePrecondition() {
         // When getting the contextual menu of
@@ -194,14 +190,14 @@ public class TreeItemPopupMenusTest extends AbstractTreeSiriusSWTBotGefTestCase 
         // The test must be passed in the exception, so we deactivated the catch
         // of
         // "error log" view
-        setErrorCatchActive(false);
+        platformProblemsListener.setErrorCatchActive(false);
         try {
             node.contextMenu(JAVA_ACTION_CALL_NAME);
         } catch (WidgetNotFoundException e) {
             foundContextMenu = false;
         }
         assertFalse("Java Action Call  " + JAVA_ACTION_CALL_NAME + " should not be displayed on TreeITem " + TREE_ITEM_WITH_JAVA_ACTION_NAME, foundContextMenu);
-        setErrorCatchActive(true);
+        platformProblemsListener.setErrorCatchActive(true);
     }
 
 }

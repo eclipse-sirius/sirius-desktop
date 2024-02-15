@@ -13,7 +13,6 @@
 package org.eclipse.sirius.tests.unit.common;
 
 import java.io.File;
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -57,7 +56,7 @@ public class SiriusCrossReferenceAdapterTests extends SiriusTestCase {
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        setWarningCatchActive(true);
+        platformProblemsListener.setWarningCatchActive(true);
 
         // create session with empty aird
         genericSetUp();
@@ -94,7 +93,7 @@ public class SiriusCrossReferenceAdapterTests extends SiriusTestCase {
 
         // check that no warning "loading resource while unloading it" has been
         // dispatched
-        for (List<IStatus> allWarnings : warnings.values()) {
+        for (List<IStatus> allWarnings : platformProblemsListener.getWarnings().values()) {
             for (IStatus status : allWarnings) {
                 if (status.getCode() == EMFTransactionStatusCodes.RELOAD_DURING_UNLOAD) {
                     fail("Resource is being reloaded during its unload.");
@@ -124,7 +123,7 @@ public class SiriusCrossReferenceAdapterTests extends SiriusTestCase {
 
         // check that no warning "loading resource while unloading it" has been
         // dispatched
-        for (List<IStatus> allWarnings : warnings.values()) {
+        for (List<IStatus> allWarnings : platformProblemsListener.getWarnings().values()) {
             for (IStatus status : allWarnings) {
                 if (status.getCode() == EMFTransactionStatusCodes.RELOAD_DURING_UNLOAD) {
                     fail("Resource is being reloaded during its unload.");

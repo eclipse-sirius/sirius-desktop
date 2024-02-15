@@ -12,17 +12,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.clipboard;
 
-import java.lang.Thread.UncaughtExceptionHandler;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
-import org.eclipse.core.runtime.ILogListener;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -59,28 +54,12 @@ import org.eclipse.swtbot.swt.finder.waits.ICondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.LinkedHashMultimap;
 
 /**
  * 
  * @author jdupont
  */
 public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotGefTestCase {
-
-    /**
-     * The unchaught exceptions handler.
-     */
-    private UncaughtExceptionHandler exceptionHandler;
-
-    /**
-     * The platform error listener.
-     */
-    private ILogListener logListener;
-
-    /**
-     * The reported errors.
-     */
-    private LinkedHashMultimap<String, IStatus> errors;
 
     /**
      * Generic representation instance name.
@@ -212,88 +191,6 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
     @SuppressWarnings("unused")
     private String errorMessage;
 
-    private UncaughtExceptionHandler defaultUncaughtExceptionHandler;
-
-    private void initErrorLoggers() {
-        errors = LinkedHashMultimap.create();
-
-        logListener = new ILogListener() {
-
-            @Override
-            public void logging(IStatus status, String plugin) {
-                if (status.getSeverity() == IStatus.ERROR) {
-                    errorOccurs(status, plugin);
-                }
-            }
-
-        };
-        Platform.addLogListener(logListener);
-
-        exceptionHandler = new UncaughtExceptionHandler() {
-            private String sourcePlugin = "Uncaught exception";
-
-            @Override
-            public void uncaughtException(Thread t, Throwable e) {
-
-                IStatus status = new Status(IStatus.ERROR, sourcePlugin, sourcePlugin, e);
-                errorOccurs(status, sourcePlugin);
-            }
-        };
-
-        defaultUncaughtExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
-        Thread.setDefaultUncaughtExceptionHandler(exceptionHandler);
-    }
-
-    private void disposeErrorLoggers() {
-        if (logListener != null) {
-            Platform.removeLogListener(logListener);
-        }
-
-        if (defaultUncaughtExceptionHandler != null) {
-            Thread.setDefaultUncaughtExceptionHandler(defaultUncaughtExceptionHandler);
-        }
-
-        clearErrors();
-    }
-
-    /**
-     * @param errorCatchActive
-     *            error catch active
-     */
-    @Override
-    protected synchronized void setErrorCatchActive(boolean errorCatchActive) {
-        this.errorCatchActive = errorCatchActive;
-        this.errorMessage = "";
-    }
-
-    private synchronized void errorOccurs(IStatus status, String sourcePlugin) {
-        if (errorCatchActive) {
-            errors.put(sourcePlugin, status);
-        }
-    }
-
-    /**
-     * check if an error occurs.
-     * 
-     * @return true if an error occurs.
-     */
-    @Override
-    protected synchronized boolean doesAnErrorOccurs() {
-        if (errors != null) {
-            return errors.values().size() != 0;
-        }
-        return false;
-    }
-
-    /**
-     * Clear errors.
-     */
-    protected void clearErrors() {
-        if (errors != null) {
-            errors.clear();
-        }
-    }
-
     /**
      * {@inheritDoc}
      */
@@ -330,36 +227,35 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
 
         // now tests context menu
 
-        /* Init error log and uncauht exception handlers */
-        initErrorLoggers();
-
         // Check Contextual Menu
-        setErrorCatchActive(true);
+        boolean oldErrorCatchActive = platformProblemsListener.isErrorCatchActive();
+        platformProblemsListener.clearErrors();
+        platformProblemsListener.setErrorCatchActive(true);
 
         editor.clickContextMenu("Paste");
-        assertEquals(pasteState, !doesAnErrorOccurs());
+        assertEquals(pasteState, !platformProblemsListener.doesAnErrorOccurs());
 
-        setErrorCatchActive(false);
-        clearErrors();
-        setErrorCatchActive(true);
+        platformProblemsListener.setErrorCatchActive(false);
+        platformProblemsListener.clearErrors();
+        platformProblemsListener.setErrorCatchActive(true);
 
         editor.clickContextMenu("Copy");
-        assertEquals(copyState, !doesAnErrorOccurs());
+        assertEquals(copyState, !platformProblemsListener.doesAnErrorOccurs());
 
-        setErrorCatchActive(false);
-        clearErrors();
-        setErrorCatchActive(true);
+        platformProblemsListener.setErrorCatchActive(false);
+        platformProblemsListener.clearErrors();
+        platformProblemsListener.setErrorCatchActive(true);
 
         editor.clickContextMenu("Cut");
-        assertEquals(cutState, !doesAnErrorOccurs());
+        assertEquals(cutState, !platformProblemsListener.doesAnErrorOccurs());
 
-        setErrorCatchActive(false);
-        clearErrors();
-        setErrorCatchActive(true);
+        platformProblemsListener.setErrorCatchActive(false);
+        platformProblemsListener.clearErrors();
+        platformProblemsListener.setErrorCatchActive(true);
 
         // Disable error catching
-        setErrorCatchActive(false);
-        disposeErrorLoggers();
+        platformProblemsListener.setErrorCatchActive(oldErrorCatchActive);
+        platformProblemsListener.clearErrors();
     }
 
     /**
@@ -1082,7 +978,6 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
     @Override
     protected void tearDown() throws Exception {
         clearSiriusClipboard();
-        disposeErrorLoggers();
 
         if (editor != null) {
             editor.close();
@@ -1095,14 +990,6 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
         localSession = null;
         editor = null;
         editor2 = null;
-
-        exceptionHandler = null;
-        logListener = null;
-
-        if (errors != null) {
-            errors.clear();
-        }
-        errors = null;
 
         super.tearDown();
     }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2016, 2024 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -35,11 +35,11 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.MultiPageEditorPart;
 
 /**
- * Tests the Sirius editors behavior inside a {@link MultiPageEditorPart} that
- * is inside an IWorkbenchPartSite with empty id.
+ * Tests the Sirius editors behavior inside a {@link MultiPageEditorPart} that is inside an IWorkbenchPartSite with
+ * empty id.
  * 
- * This only test we don't have NPE when the VSM editor is included in a part
- * not providing id. But we don't officially support this kind of integration.
+ * This only test we don't have NPE when the VSM editor is included in a part not providing id. But we don't officially
+ * support this kind of integration.
  * 
  * See 502053
  * 
@@ -78,10 +78,9 @@ public class SiriusMultiPageEditorTest extends SiriusTestCase {
     }
 
     /**
-     * Tests that {@link DDiagramEditorImpl} opens correctly inside a
-     * {@link MultiPageEditorPart} without exceptions. This tests particularly
-     * the behavior of the Sirius editor opening in case it is embedded inside a
-     * part inside a IWorkbenchPartSite that provides empty id. See 502053.
+     * Tests that {@link DDiagramEditorImpl} opens correctly inside a {@link MultiPageEditorPart} without exceptions.
+     * This tests particularly the behavior of the Sirius editor opening in case it is embedded inside a part inside a
+     * IWorkbenchPartSite that provides empty id. See 502053.
      * 
      * @throws Exception
      */
@@ -94,7 +93,7 @@ public class SiriusMultiPageEditorTest extends SiriusTestCase {
         String editorName = DialectUIManager.INSTANCE.getEditorName(representation);
         final IEditorInput editorInput = new SessionEditorInput(uri, editorName, session);
         final IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-        assertFalse(doesAnErrorOccurs());
+        assertFalse(platformProblemsListener.doesAnErrorOccurs());
 
         RunnableWithResult<IEditorPart> result = new RunnableWithResult<IEditorPart>() {
             private IEditorPart resultEditor;
@@ -125,7 +124,7 @@ public class SiriusMultiPageEditorTest extends SiriusTestCase {
         };
         PlatformUI.getWorkbench().getDisplay().syncExec(result);
         openEditor = result.getResult();
-        assertFalse("No error should have occurs during opening of the Sirius Diagram editor inside a multi page editor.", doesAnErrorOccurs());
+        assertFalse("No error should have occurs during opening of the Sirius Diagram editor inside a multi page editor.", platformProblemsListener.doesAnErrorOccurs());
     }
 
     @Override

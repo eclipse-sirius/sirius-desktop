@@ -82,6 +82,6 @@ public class DeleteDiagramWithListeningPaletteToolTest extends AbstractSiriusSwt
         SWTBotUtils.waitAllUiEvents();
 
         // Result: no error occurs (no NPE)
-        assertFalse(getErrorLoggersMessage(), doesAnErrorOccurs());
+        assertFalse(platformProblemsListener.getErrorLoggersMessage(),platformProblemsListener.doesAnErrorOccurs());
     }
 }

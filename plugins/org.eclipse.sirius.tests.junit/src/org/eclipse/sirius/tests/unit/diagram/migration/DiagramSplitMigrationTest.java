@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -30,8 +30,8 @@ import org.eclipse.sirius.viewpoint.description.Group;
 import org.osgi.framework.Version;
 
 /**
- * Ensures that version attributes are set during save. Migration occurs during
- * load, not during resource simple creation.
+ * Ensures that version attributes are set during save. Migration occurs during load, not during resource simple
+ * creation.
  */
 public class DiagramSplitMigrationTest extends SiriusTestCase {
 
@@ -59,8 +59,8 @@ public class DiagramSplitMigrationTest extends SiriusTestCase {
     }
 
     /**
-     * Test that the data were not migrated on the repo. It allows to check the
-     * effect of the migration in the other test.
+     * Test that the data were not migrated on the repo. It allows to check the effect of the migration in the other
+     * test.
      */
     public void testMigrationIsNeededOnData() {
         Version diagramSplitVersion = new DiagramSplitMigrationParticipant().getMigrationVersion();
@@ -105,7 +105,7 @@ public class DiagramSplitMigrationTest extends SiriusTestCase {
         version = modeler.getVersion();
         assertFalse("The version tag should now be set telling that the migration was done.", VSMMigrationService.getInstance().isMigrationNeeded(Version.parseVersion(version)));
 
-        assertFalse(getErrorLoggersMessage(), doesAnErrorOccurs());
+        assertFalse(platformProblemsListener.getErrorLoggersMessage(), platformProblemsListener.doesAnErrorOccurs());
     }
 
     /**
@@ -139,7 +139,7 @@ public class DiagramSplitMigrationTest extends SiriusTestCase {
         version = analysis.getVersion();
         assertFalse("The version tag should now be set telling that the migration was done.", RepresentationsFileMigrationService.getInstance().isMigrationNeeded(Version.parseVersion(version)));
 
-        assertFalse(getErrorLoggersMessage(), doesAnErrorOccurs());
+        assertFalse(platformProblemsListener.getErrorLoggersMessage(), platformProblemsListener.doesAnErrorOccurs());
     }
 
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -48,9 +48,8 @@ import org.eclipse.emf.workspace.WorkspaceEditingDomainFactory;
 import junit.framework.TestCase;
 
 /**
- * This class contains tests for EMF transaction. It should not be added
- * directly to automated tests until they are corrected or target platform
- * contains fork to correct them.
+ * This class contains tests for EMF transaction. It should not be added directly to automated tests until they are
+ * corrected or target platform contains fork to correct them.
  * 
  * @author mchauvin
  */
@@ -76,6 +75,7 @@ public class EMFTransansactionTests extends TestCase {
     protected void setUp() throws Exception {
         super.setUp();
         exceptionHandler = new UncaughtExceptionHandler() {
+            @Override
             public void uncaughtException(Thread t, Throwable e) {
                 errorOccurs();
             }
@@ -83,8 +83,7 @@ public class EMFTransansactionTests extends TestCase {
     }
 
     /**
-     * Test IllegalArgumentException when collecting notifications
-     * https://bugs.eclipse.org/bugs/show_bug.cgi?id=285734
+     * Test IllegalArgumentException when collecting notifications https://bugs.eclipse.org/bugs/show_bug.cgi?id=285734
      */
     public void testBug285734() {
 
@@ -112,8 +111,7 @@ public class EMFTransansactionTests extends TestCase {
         });
 
         /*
-         * add a listener on remove operation, which launch a model read only
-         * transaction
+         * add a listener on remove operation, which launch a model read only transaction
          */
         addListenerToLaunchROTransactionOnAdd(ePackage);
 
@@ -153,6 +151,7 @@ public class EMFTransansactionTests extends TestCase {
     private void startReadOnlyTransaction() {
         try {
             editingDomain.runExclusive(new Runnable() {
+                @Override
                 public void run() {
                     // do nothing
                 }
@@ -177,9 +176,8 @@ public class EMFTransansactionTests extends TestCase {
     }
 
     /**
-     * Due to threads synchronization complexity, this test may succeed. It
-     * should be run several times (at least 4) to be sure than the bug is not
-     * present.
+     * Due to threads synchronization complexity, this test may succeed. It should be run several times (at least 4) to
+     * be sure than the bug is not present.
      * 
      * @see "https://bugs.eclipse.org/bugs/show_bug.cgi?id=288442"
      * 
@@ -242,6 +240,7 @@ public class EMFTransansactionTests extends TestCase {
 
         listener = new ILogListener() {
 
+            @Override
             public void logging(IStatus status, String plugin) {
                 if (status.getSeverity() == IStatus.ERROR)
                     errorOccurs();
@@ -263,8 +262,9 @@ public class EMFTransansactionTests extends TestCase {
         EMFTransactionPlugin.getPlugin().getLog().removeLogListener(listener);
 
         /* an exception occurs in another thread */
-        if (doesAnErrorOccurs())
+        if (doesAnErrorOccurs()) {
             fail();
+        }
     }
 
     private Thread launchNotificationInANewThread(final EReference ref1, final EReference ref2) throws Exception {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -53,8 +53,7 @@ import org.eclipse.ui.IEditorPart;
 import com.google.common.collect.Iterables;
 
 /**
- * Tests behaviors when model (semantic or session) is modified outside the
- * editor (in the same editingDomain or not).
+ * Tests behaviors when model (semantic or session) is modified outside the editor (in the same editingDomain or not).
  * 
  * @author lredor
  */
@@ -91,8 +90,8 @@ public class EntitiesDiagramModificationOutsideEditorTests extends SiriusDiagram
     }
 
     /**
-     * This test check that when we are in refresh manual mode, the node is only
-     * delete when a manual refresh is launch. <BR>
+     * This test check that when we are in refresh manual mode, the node is only delete when a manual refresh is launch.
+     * <BR>
      * It also check that the EditMode of the editPart is changed.<BR>
      * Corresponds to ticket #1639.
      * 
@@ -170,11 +169,11 @@ public class EntitiesDiagramModificationOutsideEditorTests extends SiriusDiagram
     }
 
     /**
-     * This test check that there is not an exception thrown when calling
-     * DDiagramHelper.findParentDDiagram on a diagram with error message.
+     * This test check that there is not an exception thrown when calling DDiagramHelper.findParentDDiagram on a diagram
+     * with error message.
      * 
-     * Use the loading of an old version of the aird file to get a diagram with
-     * error message like in the steps of issue VP-2198.
+     * Use the loading of an old version of the aird file to get a diagram with error message like in the steps of issue
+     * VP-2198.
      */
     public void testRevertAirdFileAfterDiagramCreation() {
         // Check the entry data
@@ -223,7 +222,7 @@ public class EntitiesDiagramModificationOutsideEditorTests extends SiriusDiagram
         }
         TestsUtil.synchronizationWithUIThread();
         // Activate the error catching (to detect msg during closing)
-        setErrorCatchActive(true);
+        platformProblemsListener.setErrorCatchActive(true);
 
         try {
             DDiagramHelper.findParentDDiagram(editor.getDiagramEditPart());
@@ -238,13 +237,12 @@ public class EntitiesDiagramModificationOutsideEditorTests extends SiriusDiagram
         TestsUtil.synchronizationWithUIThread();
         // Deactivate the error catching (the error detection is done during the
         // super.tearDown)
-        setErrorCatchActive(false);
+        platformProblemsListener.setErrorCatchActive(false);
     }
 
     /**
-     * This test check that there is no message in the error log when we select
-     * an element in the diagram that have its target deleted outside the editor
-     * (in another resourceSet).<BR>
+     * This test check that there is no message in the error log when we select an element in the diagram that have its
+     * target deleted outside the editor (in another resourceSet).<BR>
      * Issue VP-1948.
      */
     public void testNoMsgInErrorLogWhenSelectedADNodeListWithProxyTarget() {
@@ -286,7 +284,7 @@ public class EntitiesDiagramModificationOutsideEditorTests extends SiriusDiagram
         TestsUtil.synchronizationWithUIThread();
 
         // Activate the error catching (to detect msg during selection)
-        setErrorCatchActive(true);
+        platformProblemsListener.setErrorCatchActive(true);
         // Select the corresponding element in the diagram
         final DDiagramElement diagramElement = getFirstDiagramElement(diagram, eClass);
         final IGraphicalEditPart editPart = getEditPart(diagramElement, editorPart);
@@ -294,7 +292,7 @@ public class EntitiesDiagramModificationOutsideEditorTests extends SiriusDiagram
 
         // Deactivate the error catching (the error detection is done during the
         // super.tearDown)
-        setErrorCatchActive(false);
+        platformProblemsListener.setErrorCatchActive(false);
 
         DialectUIManager.INSTANCE.closeEditor(editorPart, false);
         TestsUtil.synchronizationWithUIThread();

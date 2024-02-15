@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -62,8 +62,8 @@ public class DRepresentationContainerRemovalMigrationTest extends SiriusTestCase
     }
 
     /**
-     * Test that the data were not migrated on the repo. It allows to check the
-     * effect of the migration in the other test.
+     * Test that the data were not migrated on the repo. It allows to check the effect of the migration in the other
+     * test.
      */
     public void testMigrationIsNeededOnData() {
         Version dRepresentationContainerRemovalVersion = DRepresentationContainerToDViewMigrationParticipant.MIGRATION_VERSION;
@@ -149,7 +149,7 @@ public class DRepresentationContainerRemovalMigrationTest extends SiriusTestCase
         version = analysis.getVersion();
         assertFalse("The version tag should now be set telling that the migration was done.", RepresentationsFileMigrationService.getInstance().isMigrationNeeded(Version.parseVersion(version)));
         checkFileContainsDRepresentationContainer(analysis.eResource().getURI(), false, "After migration, the resource should not contains any DRepresentationContainer.");
-        assertFalse(getErrorLoggersMessage(), doesAnErrorOccurs());
+        assertFalse(platformProblemsListener.getErrorLoggersMessage(), platformProblemsListener.doesAnErrorOccurs());
     }
 
     @Override

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -89,15 +89,15 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
 
         ctx = new GlobalContext(accessor, interpreter, null);
 
-        initLoggers();
-        setWarningCatchActive(true);
+        platformProblemsListener.initLoggers();
+        platformProblemsListener.setWarningCatchActive(true);
         repToName = new HashMap<>();
 
     }
 
     /**
-     * Tests that warnings occurring during semantic candidate expression
-     * evaluation on a TreeRefresh are logged in error log.
+     * Tests that warnings occurring during semantic candidate expression evaluation on a TreeRefresh are logged in
+     * error log.
      * 
      */
     public void testWarningLoggingWithIncorrectSemanticCandidateExpression() {
@@ -109,14 +109,14 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
         newTree.setDescription(odesign.group().design().epackagecontent().object());
         List<TreeItemMapping> mappings = Lists.newArrayList(Iterators.filter(odesign.group().design().epackagecontent().object().eAllContents(), TreeItemMapping.class));
 
-        Assert.assertFalse(doesAWarningOccurs());
+        Assert.assertFalse(platformProblemsListener.doesAWarningOccurs());
         mappings.get(0).setSemanticCandidatesExpression("aql:incorrectExpression");
 
         DTreeRefresh refresher = new DTreeRefresh(newTree, mappings, invalidator, ctx);
         refresher.refresh(true, new NullProgressMonitor());
-        Assert.assertEquals(1, warnings.size());
-        Assert.assertTrue(warnings.get("org.eclipse.core.runtime").iterator().next().getException() instanceof EvaluationException);
-        clearWarnings();
+        Assert.assertEquals(1, platformProblemsListener.warningsCount());
+        Assert.assertTrue(platformProblemsListener.getWarnings().get("org.eclipse.core.runtime").iterator().next().getException() instanceof EvaluationException);
+        platformProblemsListener.clearWarnings();
 
     }
 
@@ -350,8 +350,7 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
     }
 
     /**
-     * Tests that reordering semantic elements also reorders elements in the
-     * Sirius {@link DTree}. See 481433.
+     * Tests that reordering semantic elements also reorders elements in the Sirius {@link DTree}. See 481433.
      * 
      */
     public void testSynchronizationSemanticElementsMappgings() {
@@ -385,8 +384,7 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
     }
 
     /**
-     * This test works on my computer (LRE) but not on Hudson. TODO : Fix this
-     * test on Hudson.
+     * This test works on my computer (LRE) but not on Hudson. TODO : Fix this test on Hudson.
      * 
      * @throws Exception
      */

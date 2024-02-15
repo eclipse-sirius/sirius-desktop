@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -55,8 +55,7 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
 
 /**
- * Some tests about the unsyncrhonized mapping and semantic deletion made
- * outside Sirius : See VP-2351.
+ * Some tests about the unsyncrhonized mapping and semantic deletion made outside Sirius : See VP-2351.
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  * 
@@ -83,8 +82,8 @@ public class UnsynchronizedMappingAndDeleteFromOutsideEditorTests extends Sirius
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, MODELER_PROJECT_RELATIVE_PATH, "/" + TEMPORARY_PROJECT_NAME + "/" + MODELER_PROJECT_RELATIVE_PATH);
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, AIRD_PROJECT_RELATIVE_PATH, "/" + TEMPORARY_PROJECT_NAME + "/" + AIRD_PROJECT_RELATIVE_PATH);
         // Init the use case
-        genericSetUp("/" + TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_MODEL_PROJECT_RELATIVE_PATH, "/" + TEMPORARY_PROJECT_NAME + "/" + MODELER_PROJECT_RELATIVE_PATH, "/" + TEMPORARY_PROJECT_NAME + "/"
-                + AIRD_PROJECT_RELATIVE_PATH);
+        genericSetUp("/" + TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_MODEL_PROJECT_RELATIVE_PATH, "/" + TEMPORARY_PROJECT_NAME + "/" + MODELER_PROJECT_RELATIVE_PATH,
+                "/" + TEMPORARY_PROJECT_NAME + "/" + AIRD_PROJECT_RELATIVE_PATH);
         TestsUtil.emptyEventsFromUIThread();
         // Open the diagram
         diagram = (DDiagram) getRepresentations(DIAGRAM_DESCRIPTION_NAME).toArray()[0];
@@ -106,13 +105,11 @@ public class UnsynchronizedMappingAndDeleteFromOutsideEditorTests extends Sirius
     }
 
     /**
-     * Checks that the behavior is OK in automatic refresh for DDiagramElement
-     * with mapping unsynchronized and whose target is a semantic that was
-     * deleted outside of the diagram.
+     * Checks that the behavior is OK in automatic refresh for DDiagramElement with mapping unsynchronized and whose
+     * target is a semantic that was deleted outside of the diagram.
      * 
      * @throws Exception
-     *             In case of problem during semantic modification outside the
-     *             editor.
+     *             In case of problem during semantic modification outside the editor.
      */
     public void testRefreshOfNotSynchroMapping_AutoRefresh() throws Exception {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
@@ -126,13 +123,11 @@ public class UnsynchronizedMappingAndDeleteFromOutsideEditorTests extends Sirius
     }
 
     /**
-     * Checks that the behavior is OK in manual refresh for DDiagramElement with
-     * mapping unsynchronized and whose target is a semantic that was deleted
-     * outside of the diagram.
+     * Checks that the behavior is OK in manual refresh for DDiagramElement with mapping unsynchronized and whose target
+     * is a semantic that was deleted outside of the diagram.
      * 
      * @throws Exception
-     *             In case of problem during semantic modification outside the
-     *             editor.
+     *             In case of problem during semantic modification outside the editor.
      */
     public void testRefreshOfNotSynchroMapping_ManualRefresh() throws Exception {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false);
@@ -143,11 +138,11 @@ public class UnsynchronizedMappingAndDeleteFromOutsideEditorTests extends Sirius
         EClass testedClass = (EClass) ePackage.getESubpackages().get(2).getEClassifier("C1InSubRoot");
         EPackage testedPackage = ePackage.getESubpackages().get(2).getESubpackages().get(0);
 
-        assertFalse("At least one error occurs before the semantic modification.", doesAnErrorOccurs());
+        assertFalse("At least one error occurs before the semantic modification.", platformProblemsListener.doesAnErrorOccurs());
         modifySemanticModelOutsideDiagram();
         // Check there is no errorLog message during semantic modification and
         // diagram refresh
-        assertFalse("At least one error occurs during the semantic modification (and so diagram refresh).", doesAnErrorOccurs());
+        assertFalse("At least one error occurs during the semantic modification (and so diagram refresh).", platformProblemsListener.doesAnErrorOccurs());
         // Check the number of diagram elements
         assertEquals("The diagram should not be modify because we are in manual refresh mode.", 5, diagram.getOwnedDiagramElements().size());
         // Check edit part for a DNode
@@ -165,19 +160,17 @@ public class UnsynchronizedMappingAndDeleteFromOutsideEditorTests extends Sirius
             // Launch a manual refresh and check again the number of diagram
             // elements
             refresh(diagram);
-            assertFalse("At least one error occurs during the manual refresh.", doesAnErrorOccurs());
-            assertEquals("The diagram should only contain elements that are not deleted.", 2, diagram.getOwnedDiagramElements().size());            
+            assertFalse("At least one error occurs during the manual refresh.", platformProblemsListener.doesAnErrorOccurs());
+            assertEquals("The diagram should only contain elements that are not deleted.", 2, diagram.getOwnedDiagramElements().size());
         }
     }
 
     /**
-     * Checks that the behavior is OK in manual refresh for DDiagramElement with
-     * mapping unsynchronized and whose target is a semantic that was deleted
-     * outside of the diagram (in read only mode).
+     * Checks that the behavior is OK in manual refresh for DDiagramElement with mapping unsynchronized and whose target
+     * is a semantic that was deleted outside of the diagram (in read only mode).
      * 
      * @throws Exception
-     *             In case of problem during semantic modification outside the
-     *             editor.
+     *             In case of problem during semantic modification outside the editor.
      */
     public void testRefreshOfNotSynchroMapping_ManualRefresh_WithReadOnlyPermissionEnabled() throws Exception {
         // activate the ReadOnlyPermission Authority on the representation
@@ -188,12 +181,11 @@ public class UnsynchronizedMappingAndDeleteFromOutsideEditorTests extends Sirius
     }
 
     /**
-     * Checks that the "Delete from diagram" is not available for
-     * DDiagramElement that will be removed at the next manual refresh.
+     * Checks that the "Delete from diagram" is not available for DDiagramElement that will be removed at the next
+     * manual refresh.
      * 
      * @throws Exception
-     *             In case of problem during semantic modification outside the
-     *             editor.
+     *             In case of problem during semantic modification outside the editor.
      */
     public void testDeleteFromDiagramNotActivatedForDisableEditPart() throws Exception {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false);
@@ -204,11 +196,11 @@ public class UnsynchronizedMappingAndDeleteFromOutsideEditorTests extends Sirius
         EClass testedClass = (EClass) ePackage.getESubpackages().get(2).getEClassifier("C1InSubRoot");
         EPackage testedPackage = ePackage.getESubpackages().get(2).getESubpackages().get(0);
 
-        assertFalse("At least one error occurs before the semantic modification.", doesAnErrorOccurs());
+        assertFalse("At least one error occurs before the semantic modification.", platformProblemsListener.doesAnErrorOccurs());
         modifySemanticModelOutsideDiagram();
         // Check there is no errorLog message during semantic modification and
         // diagram refresh
-        assertFalse("At least one error occurs during the semantic modification (and so diagram refresh).", doesAnErrorOccurs());
+        assertFalse("At least one error occurs during the semantic modification (and so diagram refresh).", platformProblemsListener.doesAnErrorOccurs());
 
         // Check the number of diagram elements
         assertEquals("The diagram should not be modify because we are in manual refresh mode.", 5, diagram.getOwnedDiagramElements().size());
@@ -228,12 +220,10 @@ public class UnsynchronizedMappingAndDeleteFromOutsideEditorTests extends Sirius
     }
 
     /**
-     * Check that a drag'n'drop is not available in DDiagramElement that will be
-     * removed at the next manual refresh.
+     * Check that a drag'n'drop is not available in DDiagramElement that will be removed at the next manual refresh.
      * 
      * @throws Exception
-     *             In case of problem during semantic modification outside the
-     *             editor.
+     *             In case of problem during semantic modification outside the editor.
      */
     public void testDragNDropForDisableEditPart() throws Exception {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false);
@@ -243,11 +233,11 @@ public class UnsynchronizedMappingAndDeleteFromOutsideEditorTests extends Sirius
         EPackage ePackage = (EPackage) semanticModel;
         EPackage dropTargetPackage = ePackage.getESubpackages().get(2);
 
-        assertFalse("At least one error occurs before the semantic modification.", doesAnErrorOccurs());
+        assertFalse("At least one error occurs before the semantic modification.", platformProblemsListener.doesAnErrorOccurs());
         modifySemanticModelOutsideDiagram();
         // Check there is no errorLog message during semantic modification and
         // diagram refresh
-        assertFalse("At least one error occurs during the semantic modification (and so diagram refresh).", doesAnErrorOccurs());
+        assertFalse("At least one error occurs during the semantic modification (and so diagram refresh).", platformProblemsListener.doesAnErrorOccurs());
 
         // Get some semantic elements for future tests
         EPackage rootPackage = (EPackage) ((DSemanticDiagram) diagram).getTarget();
@@ -274,8 +264,8 @@ public class UnsynchronizedMappingAndDeleteFromOutsideEditorTests extends Sirius
                 dragAndDropToolInContainer);
         nbDiagElementsBeforeDnD = diagram.getOwnedDiagramElements().size();
         session.getTransactionalEditingDomain().getCommandStack().execute(command);
-        assertTrue("A message must be logged because during the build of the command the session of the deleted object can not be reached.", doesAnErrorOccurs());
-        clearErrors();
+        assertTrue("A message must be logged because during the build of the command the session of the deleted object can not be reached.", platformProblemsListener.doesAnErrorOccurs());
+        platformProblemsListener.clearErrors();
         // Check the number of diagram elements
         assertEquals("This drag'n'drop is not authorized, so the number of diagram element should be the same.", nbDiagElementsBeforeDnD, diagram.getOwnedDiagramElements().size());
     }
@@ -294,9 +284,8 @@ public class UnsynchronizedMappingAndDeleteFromOutsideEditorTests extends Sirius
     }
 
     /**
-     * Delete the "subRoot" package. The modification is not made in the same
-     * resourceSet, as if this modification is made in another editor not in
-     * Sirius.
+     * Delete the "subRoot" package. The modification is not made in the same resourceSet, as if this modification is
+     * made in another editor not in Sirius.
      */
     private void modifySemanticModelOutsideDiagram() throws Exception {
         EPackage ePackage = (EPackage) semanticModel;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2023 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2015, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -80,13 +80,11 @@ import junit.framework.AssertionFailedError;
  */
 public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestCase {
     /**
-     * This class customizes the test behavior of {@link CheckEditPartMoved}. It
-     * allows to fail instantly if an exception has been logged and the part has
-     * still not been moved. This should be used only if you know the test will
-     * fail if any exception occurs during its execution. This check must be
-     * combined with setErrorCatchActive(true) to fail with the exception
-     * information. If not the test will always be successful in case of
-     * exception.
+     * This class customizes the test behavior of {@link CheckEditPartMoved}. It allows to fail instantly if an
+     * exception has been logged and the part has still not been moved. This should be used only if you know the test
+     * will fail if any exception occurs during its execution. This check must be combined with
+     * setErrorCatchActive(true) to fail with the exception information. If not the test will always be successful in
+     * case of exception.
      * 
      * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
      *
@@ -105,14 +103,13 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
 
         /*
          * (non-Javadoc)
-         * @see org.eclipse.sirius.tests.swtbot.support.api.condition.
-         * CheckEditPartMoved#test()
+         * @see org.eclipse.sirius.tests.swtbot.support.api.condition. CheckEditPartMoved#test()
          */
         @Override
         public boolean test() throws Exception {
             boolean result = super.test();
             if (!result) {
-                result = doesAnErrorOccurs();
+                result = platformProblemsListener.doesAnErrorOccurs();
             }
             return result;
         }
@@ -125,33 +122,30 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
     private static final String DIAGRAM_WITH_NESTED_EDGES_REPRESENTATION_NAME = "DiagramWithNestedEdges";
 
     /**
-     * Constant use to indicate that the delta is not predictable and must be
-     * computed from the initial location with a ratio respect.
+     * Constant use to indicate that the delta is not predictable and must be computed from the initial location with a
+     * ratio respect.
      */
     private static final Dimension DELTA_TO_COMPUTE_FROM_RATIO = new Dimension(-1000, -1000);
 
     /**
-     * Constant use to indicate that the delta is not predictable and must be
-     * computed from the initial location with a ratio respect (the segment is
-     * inverted so the ratio must be applied specifically).
+     * Constant use to indicate that the delta is not predictable and must be computed from the initial location with a
+     * ratio respect (the segment is inverted so the ratio must be applied specifically).
      */
     private static final Dimension DELTA_TO_COMPUTE_FROM_INVERTED_RATIO = new Dimension(-2000, -2000);
 
     /**
-     * Constant use to indicate that the delta is not predictable and must be
-     * computed from the initial location with a ratio respect (the segment is
-     * rotated so the ratio must be applied specifically). This is possible only
-     * for bracket edge.<BR>
-     * WARNING: Only the case of rotation to the right (from horizontal to
-     * vertical is handle in this test). The other computation is to complicated
-     * and implied to do the same as in
+     * Constant use to indicate that the delta is not predictable and must be computed from the initial location with a
+     * ratio respect (the segment is rotated so the ratio must be applied specifically). This is possible only for
+     * bracket edge.<BR>
+     * WARNING: Only the case of rotation to the right (from horizontal to vertical is handle in this test). The other
+     * computation is to complicated and implied to do the same as in
      * EdgeLabelsComputationUtil.applyOldRatioOnNewOrthogonalSegment() method.
      */
     private static final Dimension DELTA_TO_COMPUTE_FROM_ROTATED_RATIO = new Dimension(-3000, -3000);
 
     /**
-     * Constant use to indicate that the delta is not predictable and must be
-     * computed from standard location of label locator.
+     * Constant use to indicate that the delta is not predictable and must be computed from standard location of label
+     * locator.
      */
     private static final Dimension DELTA_TO_COMPUTE_FROM_STANDARD = new Dimension(-4000, -4000);
 
@@ -276,9 +270,8 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
     }
 
     /**
-     * Ensures that when moving the source/target node of the edge, the labels
-     * of this edges are correctly located in various configuration (zoom level,
-     * scrollbars, initial position of the label, node move style, ...).
+     * Ensures that when moving the source/target node of the edge, the labels of this edges are correctly located in
+     * various configuration (zoom level, scrollbars, initial position of the label, node move style, ...).
      */
     public void testLabelStabilityWhenMovingNodeOfRectilinearEdge() {
 
@@ -291,8 +284,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
         // test when label anchor remains on 2nd segment
         Map<String, Dimension> edgeLabelExpectedPosition = new LinkedHashMap<>();
         edgeLabelExpectedPosition.put("refToBCenter", new Dimension(0, 0));
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(DIAGRAM_DESCRIPTION_NAME, diagramName, Arrays.asList(new Point(-10, 0), new Point(10, 0)), edgeLabelExpectedPosition, ZoomLevel.ZOOM_125,
-                "B");
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(DIAGRAM_DESCRIPTION_NAME, diagramName, Arrays.asList(new Point(-10, 0), new Point(10, 0)), edgeLabelExpectedPosition, ZoomLevel.ZOOM_125, "B");
 
         // test when label anchor moves from 2nd segment to 3rd segment
         // the label should not move
@@ -318,8 +310,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
         // the label should not be moved
         edgeLabelExpectedPosition.clear();
         edgeLabelExpectedPosition.put("refToDCenter", new Dimension(0, 0));
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(DIAGRAM_DESCRIPTION_NAME, diagramName, Arrays.asList(new Point(-10, 0), new Point(10, 0)), edgeLabelExpectedPosition, ZoomLevel.ZOOM_100,
-                "D");
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(DIAGRAM_DESCRIPTION_NAME, diagramName, Arrays.asList(new Point(-10, 0), new Point(10, 0)), edgeLabelExpectedPosition, ZoomLevel.ZOOM_100, "D");
 
         // test moving node up
         // the label should be moved with the same node move
@@ -379,9 +370,8 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
     }
 
     /**
-     * Ensures that moving the target node of the edge updates correctly the
-     * middle label in various configuration (zoom level, scrollbars, initial
-     * position of the label, node move).
+     * Ensures that moving the target node of the edge updates correctly the middle label in various configuration (zoom
+     * level, scrollbars, initial position of the label, node move).
      */
     public void testLabelStabilityWhenMovingSegmentOnRectilinearEdge() {
 
@@ -398,8 +388,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
         edgeLabelExpectedPosition.clear();
         edgeLabelExpectedPosition.put("refToBBegin", new Dimension(0, 0));
         edgeLabelExpectedPosition.put("refToBCenter", new Dimension(0, 0));
-        doTestMoveSegment(DIAGRAM_DESCRIPTION_NAME, diagramName, Arrays.asList(new Point(0, 20), new Point(0, -10), new Point(0, -40)), edgeLabelExpectedPosition, ZoomLevel.ZOOM_100, "A", "B",
-                2);
+        doTestMoveSegment(DIAGRAM_DESCRIPTION_NAME, diagramName, Arrays.asList(new Point(0, 20), new Point(0, -10), new Point(0, -40)), edgeLabelExpectedPosition, ZoomLevel.ZOOM_100, "A", "B", 2);
 
         // Case Rectilinear G of the spec - The reference point is on a segment
         // that is merged by the move of another segment --> The label does not
@@ -436,15 +425,14 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
 
         edgeLabelExpectedPosition.clear();
         edgeLabelExpectedPosition.put("refToC1BBegin", new Dimension(0, 0));
-        doTestMoveSegment(DIAGRAM_DESCRIPTION_NAME, diagramName, Arrays.asList(new Point(0, 20), new Point(0, -10), new Point(0, -40)), edgeLabelExpectedPosition, ZoomLevel.ZOOM_100, "C1A",
-                "C1B", 2);
+        doTestMoveSegment(DIAGRAM_DESCRIPTION_NAME, diagramName, Arrays.asList(new Point(0, 20), new Point(0, -10), new Point(0, -40)), edgeLabelExpectedPosition, ZoomLevel.ZOOM_100, "C1A", "C1B", 2);
 
         logFailures();
     }
 
     /**
-     * Tests that when a node that is attached to an edge with a length of 0 is
-     * moved, then no {@link ArithmeticException} occurs preventing it to move.
+     * Tests that when a node that is attached to an edge with a length of 0 is moved, then no
+     * {@link ArithmeticException} occurs preventing it to move.
      * 
      * See 485010.
      */
@@ -465,9 +453,8 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
     }
 
     /**
-     * Ensures that when moving a point of a rectilinear edge, the labels of
-     * this edges are correctly located in various configuration (zoom level,
-     * scrollbars, initial position of the label, node move style, ...).
+     * Ensures that when moving a point of a rectilinear edge, the labels of this edges are correctly located in various
+     * configuration (zoom level, scrollbars, initial position of the label, node move style, ...).
      */
     public void testLabelStabilityWhenMovingPointOnRectilinearEdge() {
         // There are two nodes connected by an edge with 3 segments with
@@ -510,9 +497,8 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
     }
 
     /**
-     * Ensures that when moving the source/target node of the edge, the labels
-     * of this edges are correctly located in various configuration (zoom level,
-     * scrollbars, initial position of the label, node move style, ...).
+     * Ensures that when moving the source/target node of the edge, the labels of this edges are correctly located in
+     * various configuration (zoom level, scrollbars, initial position of the label, node move style, ...).
      */
     public void testLabelStabilityWhenMovingNodeOfObliqueEdge() {
         // There are two nodes connected by an edge with 3 segments with
@@ -556,11 +542,10 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
     }
 
     /**
-     * Ensures that when moving the source/target node of the edge, the labels
-     * of this edges are correctly located in various configuration (zoom level,
-     * scroll bars, initial position of the label, node move style, ...). This
-     * method corresponds to a specific case where a bug has been detected
-     * (short path for the only one segment and a label outside of the segment).
+     * Ensures that when moving the source/target node of the edge, the labels of this edges are correctly located in
+     * various configuration (zoom level, scroll bars, initial position of the label, node move style, ...). This method
+     * corresponds to a specific case where a bug has been detected (short path for the only one segment and a label
+     * outside of the segment).
      */
     public void testLabelStabilityWhenMovingNodeOfObliqueEdgeWithShortSegmentPath() {
         // There are two nodes connected by an edge with 3 segments with
@@ -611,8 +596,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
     }
 
     /**
-     * Ensures that when moving a node several time of 10 by 10 pixels, the
-     * labels of this edges stays stable.
+     * Ensures that when moving a node several time of 10 by 10 pixels, the labels of this edges stays stable.
      */
     public void testLabelStabilityWhenMovingNodeOfObliqueEdgeSeveralTimes() {
         String diagramName = "EdgeWithObliqueSegments";
@@ -687,9 +671,8 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
     }
 
     /**
-     * Ensures that when moving a point of an oblique edge, the labels of this
-     * edges are correctly located in various configuration (zoom level,
-     * scrollbars, initial position of the label, node move style, ...).
+     * Ensures that when moving a point of an oblique edge, the labels of this edges are correctly located in various
+     * configuration (zoom level, scrollbars, initial position of the label, node move style, ...).
      */
     public void testLabelStabilityWhenMovingPointOnObliqueEdge() {
         // There are two nodes connected by an edge with 3 segments with
@@ -729,8 +712,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
     }
 
     /**
-     * Ensures that by dragging or arranging edit parts with the given names,
-     * bendpoints are moved as expected.
+     * Ensures that by dragging or arranging edit parts with the given names, bendpoints are moved as expected.
      *
      * @param diagramDescriptionName
      *            diagram description name
@@ -739,9 +721,8 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
      * @param moveDeltas
      *            all the move deltas to use for dragging elements.
      * @param edgeLabelDeltas
-     *            The expected move delta for each label. The constants
-     *            DELTA_TO* can be used instead of a precise mode delta. In this
-     *            case, the delta is computed dynamically.
+     *            The expected move delta for each label. The constants DELTA_TO* can be used instead of a precise mode
+     *            delta. In this case, the delta is computed dynamically.
      * @param zoomLevel
      *            the {@link ZoomLevel} to use for this test
      * @param nodesToMove
@@ -753,8 +734,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
     }
 
     /**
-     * Ensures that by dragging or arranging edit parts with the given names,
-     * bendpoints are moved as expected.
+     * Ensures that by dragging or arranging edit parts with the given names, bendpoints are moved as expected.
      *
      * @param diagramDescriptionName
      *            diagram description name
@@ -763,14 +743,12 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
      * @param moveDeltas
      *            all the move deltas to use for dragging elements.
      * @param edgeLabelDeltas
-     *            The expected move delta for each label. The constants
-     *            DELTA_TO* can be used instead of a precise mode delta. In this
-     *            case, the delta is computed dynamically.
+     *            The expected move delta for each label. The constants DELTA_TO* can be used instead of a precise mode
+     *            delta. In this case, the delta is computed dynamically.
      * @param zoomLevel
      *            the {@link ZoomLevel} to use for this test
      * @param isToleranceAccepted
-     *            true if the expected point can be imprecise (this is the case
-     *            for oblique edges)
+     *            true if the expected point can be imprecise (this is the case for oblique edges)
      * @param nodesToMove
      *            name of the Edit parts to move
      */
@@ -809,8 +787,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
     }
 
     /**
-     * Ensures that by moving a segment of on edge, the labels are moved as
-     * expected.
+     * Ensures that by moving a segment of on edge, the labels are moved as expected.
      *
      * @param diagramDescriptionName
      *            The diagram description name
@@ -823,8 +800,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
      * @param edgeLabelDeltas
      *            name of one of the label of the edge edit part to move
      * @param segmentIndex
-     *            The index of the segment of the edge to move (0 for the first
-     *            segment)
+     *            The index of the segment of the edge to move (0 for the first segment)
      */
     private void doTestMoveSegment(String diagramDescriptionName, String diagramName, Collection<Point> moveDeltas, Map<String, Dimension> edgeLabelDeltas, ZoomLevel zoomLevel, String sourceName,
             String targetName, int segmentIndex) {
@@ -832,8 +808,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
     }
 
     /**
-     * Ensures that by moving a segment of on edge, the labels are moved as
-     * expected.
+     * Ensures that by moving a segment of on edge, the labels are moved as expected.
      *
      * @param diagramDescriptionName
      *            The diagram description name
@@ -846,11 +821,9 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
      * @param edgeLabelDeltas
      *            name of one of the label of the edge edit part to move
      * @param segmentIndex
-     *            The index of the segment of the edge to move (0 for the first
-     *            segment)
+     *            The index of the segment of the edge to move (0 for the first segment)
      * @param isToleranceAccepted
-     *            true if the expected point can be imprecise (this is the case
-     *            for oblique edges)
+     *            true if the expected point can be imprecise (this is the case for oblique edges)
      */
     private void doTestMoveSegment(String diagramDescriptionName, String diagramName, Collection<Point> moveDeltas, Map<String, Dimension> edgeLabelDeltas, ZoomLevel zoomLevel, String sourceName,
             String targetName, int segmentIndex, boolean isToleranceAccepted) {
@@ -889,8 +862,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
     }
 
     /**
-     * Ensures that by moving a point of on edge, the labels are moved as
-     * expected.
+     * Ensures that by moving a point of on edge, the labels are moved as expected.
      *
      * @param diagramName
      *            diagram name
@@ -901,16 +873,14 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
      * @param labelOfTheEdgeToMove
      *            name of one of the label of the edge edit part to move
      * @param index
-     *            The index of the point of the edge to move (0 for the first
-     *            point)
+     *            The index of the point of the edge to move (0 for the first point)
      */
     private void doTestMovePointOnEdge(String diagramName, Collection<Point> moveDeltas, Map<String, Dimension> edgeLabelDeltas, ZoomLevel zoomLevel, String sourceName, String targetName, int index) {
         doTestMovePointOnEdge(diagramName, moveDeltas, edgeLabelDeltas, zoomLevel, sourceName, targetName, index, false);
     }
 
     /**
-     * Ensures that by moving a point of on edge, the labels are moved as
-     * expected.
+     * Ensures that by moving a point of on edge, the labels are moved as expected.
      *
      * @param diagramName
      *            diagram name
@@ -921,11 +891,9 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
      * @param labelOfTheEdgeToMove
      *            name of one of the label of the edge edit part to move
      * @param index
-     *            The index of the point of the edge to move (0 for the first
-     *            point)
+     *            The index of the point of the edge to move (0 for the first point)
      * @param isToleranceAccepted
-     *            true if the expected point can be imprecise (this is the case
-     *            for oblique edges)
+     *            true if the expected point can be imprecise (this is the case for oblique edges)
      */
     private void doTestMovePointOnEdge(String diagramName, Collection<Point> moveDeltas, Map<String, Dimension> edgeLabelDeltas, ZoomLevel zoomLevel, String sourceName, String targetName, int index,
             boolean isToleranceAccepted) {
@@ -1011,10 +979,9 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
      * Class containing data to retrieve label location. Either:
      * <UL>
      * <LI>directly the expected label position</LI>
-     * <LI>or the (ratio, vector and segmentIndex) that allows to retrieve the
-     * new location from the new edge figure</LI>
-     * <LI>or a boolean (standardLocationExpected) that is set to true to
-     * compute the default location</LI>
+     * <LI>or the (ratio, vector and segmentIndex) that allows to retrieve the new location from the new edge
+     * figure</LI>
+     * <LI>or a boolean (standardLocationExpected) that is set to true to compute the default location</LI>
      * </UL>
      *
      * @author lredor
@@ -1044,16 +1011,14 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
         }
 
         /**
-         * Constructor used when the expected label position depends on the new
-         * edge figure.
+         * Constructor used when the expected label position depends on the new edge figure.
          *
          * @param segmentIndex
          *            The index of the nearest segment.
          * @param ratio
          *            The ratio of the reference point on the segment
          * @param vector
-         *            The vector from this reference point to have the middle of
-         *            the label
+         *            The vector from this reference point to have the middle of the label
          */
         public LabelPositionData(int segmentIndex, float ratio, Vector vector) {
             this.segmentIndex = segmentIndex;
@@ -1062,12 +1027,10 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
         }
 
         /**
-         * Constructor used when the expected label position should be at its
-         * standard location.
+         * Constructor used when the expected label position should be at its standard location.
          *
          * @param standardLocationExpected
-         *            true if the standard location must be used, false
-         *            otherwise.
+         *            true if the standard location must be used, false otherwise.
          */
         public LabelPositionData(boolean standardLocationExpected) {
             this.standardLocationExpected = standardLocationExpected;
@@ -1075,9 +1038,8 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
     }
 
     /**
-     * Move specified <code>editParts</code> with the specified
-     * <code>moveDelta</code> and check that the labels have been correctly move
-     * according to <code>expectedLabelDeltas</code>.
+     * Move specified <code>editParts</code> with the specified <code>moveDelta</code> and check that the labels have
+     * been correctly move according to <code>expectedLabelDeltas</code>.
      *
      * @param diagramEditor
      *            the currently active {@link SWTBotSiriusDiagramEditor}
@@ -1090,8 +1052,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
      * @param errorMessagePrefix
      *            The prefix of the message in case of error.
      * @param isToleranceAccepted
-     *            true if the expected point can be imprecise (this is the case
-     *            for oblique edges)
+     *            true if the expected point can be imprecise (this is the case for oblique edges)
      */
     private void doPerformMoveAndCheckEdgeLabels(SWTBotSiriusDiagramEditor diagramEditor, Collection<SWTBotGefEditPart> editPartsToMove, Point moveDelta,
             Map<String, LabelPositionData> expectedLabelLocations, String errorMessagePrefix, boolean isToleranceAccepted) {
@@ -1103,9 +1064,8 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
     }
 
     /**
-     * Move the point <code>initialLocation</code> with the specified
-     * <code>moveDelta</code> and check that the labels have been correctly move
-     * according to <code>expectedLabelDeltas</code>.
+     * Move the point <code>initialLocation</code> with the specified <code>moveDelta</code> and check that the labels
+     * have been correctly move according to <code>expectedLabelDeltas</code>.
      *
      * @param diagramEditor
      *            the currently active {@link SWTBotSiriusDiagramEditor}
@@ -1118,8 +1078,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
      * @param errorMessagePrefix
      *            The prefix of the message in case of error.
      * @param isToleranceAccepted
-     *            true if the expected point can be imprecise (this is the case
-     *            for oblique edges)
+     *            true if the expected point can be imprecise (this is the case for oblique edges)
      */
     @SuppressWarnings("restriction")
     private void doPerformMoveAndCheckEdgeLabels(SWTBotSiriusDiagramEditor diagramEditor, Point initialLocation, Point moveDelta, Map<String, LabelPositionData> expectedLabelLocations,
@@ -1248,8 +1207,8 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
     }
 
     /**
-     * Tests that begin, end and center labels of an edge are snapped back when
-     * the action "Snap Back Label(s) is used on it.
+     * Tests that begin, end and center labels of an edge are snapped back when the action "Snap Back Label(s) is used
+     * on it.
      */
     public void testSingleSnapBackOnEdgeWithThreeLabels() {
         String diagramName = "EdgeWith3SegmentsHVH";
@@ -1271,8 +1230,8 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
     }
 
     /**
-     * Tests that begin and center labels of an edge are snapped back when the
-     * action "Snap Back Label(s) is used on it and no end label is specified.
+     * Tests that begin and center labels of an edge are snapped back when the action "Snap Back Label(s) is used on it
+     * and no end label is specified.
      */
     public void testSingleSnapBackOnEdgeWithTwoLabels() {
         String diagramName = "DiagramWithBeginAndCenterLabel";
@@ -1292,8 +1251,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
     }
 
     /**
-     * Tests that edge labels don't move when using snap back label action on an
-     * edge without labels defined.
+     * Tests that edge labels don't move when using snap back label action on an edge without labels defined.
      */
     public void testSingleSnapBackOnEdgeWithZeroLabels() {
         String diagramName = "DiagramWithZeroSpecifiedLabel";
@@ -1304,8 +1262,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
     }
 
     /**
-     * Tests that edge labels don't move when using snap back label action on an
-     * edge with empty labels.
+     * Tests that edge labels don't move when using snap back label action on an edge with empty labels.
      */
     public void testSingleSnapBackOnEdgeWithEmptyLabels() {
         String diagramName = "DiagramWithEmptyLabel";
@@ -1316,9 +1273,8 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
     }
 
     /**
-     * Ensures that when moving the source and the target node of the edge, the
-     * labels of this edges are correctly located in various configuration (zoom
-     * level, scrollbars, initial position of the label, node move style, ...).
+     * Ensures that when moving the source and the target node of the edge, the labels of this edges are correctly
+     * located in various configuration (zoom level, scrollbars, initial position of the label, node move style, ...).
      */
     public void testLabelStabilityWhenMovingNodeOfTreeEdge() {
         // There are two nodes connected by an edge with 3 segments with
@@ -1343,15 +1299,13 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
     }
 
     /**
-     * Verifies that all labels of the edge related to the given source and
-     * target part does not move when Snap back Label(s) action is run.
+     * Verifies that all labels of the edge related to the given source and target part does not move when Snap back
+     * Label(s) action is run.
      * 
      * @param targetEditPartName
-     *            the name of the edit part used as target of the edge from
-     *            which we test the snap back labels action.
+     *            the name of the edit part used as target of the edge from which we test the snap back labels action.
      * @param sourceEditPartName
-     *            the name of the edit part used as source of the edge from
-     *            which we test the snap back labels action.
+     *            the name of the edit part used as source of the edge from which we test the snap back labels action.
      * @param beginLabelName
      *            the name of the begin label of an edge.
      * @param centerLabelName
@@ -1389,16 +1343,13 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
     }
 
     /**
-     * Verifies that given label(s) are snapped back correctly by using the
-     * given original and expected distances between edge center and labels
-     * origin points.
+     * Verifies that given label(s) are snapped back correctly by using the given original and expected distances
+     * between edge center and labels origin points.
      * 
      * @param targetEditPartName
-     *            the name of the edit part used as target of the edge from
-     *            which we test the snap back labels action.
+     *            the name of the edit part used as target of the edge from which we test the snap back labels action.
      * @param sourceEditPartName
-     *            the name of the edit part used as source of the edge from
-     *            which we test the snap back labels action.
+     *            the name of the edit part used as source of the edge from which we test the snap back labels action.
      * @param beginLabelName
      *            the name of the begin label of an edge.
      * @param centerLabelName
@@ -1406,8 +1357,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
      * @param endLabelName
      *            the name of the end label of an edge.
      * @param expectedLabelToDistanceWithEdge
-     *            a map containing the original distance between edge center and
-     *            label origin point.
+     *            a map containing the original distance between edge center and label origin point.
      */
     private void checkLabelsSnapBack(String sourceEditPartName, String targetEditPartName, String beginLabelName, String centerLabelName, String endLabelName,
             Map<String, Long> expectedLabelToDistanceWithEdge) {

@@ -39,12 +39,10 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 
 /**
- * Copy Paste Layout manage specific custom style (Jump Links, Smoothness). This
- * test, test copy layout and style from representation with edge with JumpLinks
- * with 'Above' status and with 'Chamfered' Type, with smoothness set to normal
- * and paste this layout on representation with no custom style. Check that the
- * custom style was applied to new representation. Copy Paste Layout should not
- * set a Location during paste layout for edge labels with copied (-1,-1)
+ * Copy Paste Layout manage specific custom style (Jump Links, Smoothness). This test, test copy layout and style from
+ * representation with edge with JumpLinks with 'Above' status and with 'Chamfered' Type, with smoothness set to normal
+ * and paste this layout on representation with no custom style. Check that the custom style was applied to new
+ * representation. Copy Paste Layout should not set a Location during paste layout for edge labels with copied (-1,-1)
  * default size: resize label will be forbidden.
  * 
  * @author jdupont
@@ -115,15 +113,13 @@ public class EdgeCopyPasteFormatTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * Diagram on third representation using a specific copy/paste extension (
-     * {@link org.eclipse.sirius.tests.unit.diagram.format.data.manager.extension.SampleNameDataProvider}
-     * ).
+     * {@link org.eclipse.sirius.tests.unit.diagram.format.data.manager.extension.SampleNameDataProvider} ).
      */
     private SWTBotSiriusDiagramEditor diagram3;
 
     /**
      * Diagram on fourth representation using a specific copy/paste extension (
-     * {@link org.eclipse.sirius.tests.unit.diagram.format.data.manager.extension.SampleNameDataProvider}
-     * ).
+     * {@link org.eclipse.sirius.tests.unit.diagram.format.data.manager.extension.SampleNameDataProvider} ).
      */
     private SWTBotSiriusDiagramEditor diagram4;
 
@@ -190,8 +186,8 @@ public class EdgeCopyPasteFormatTest extends AbstractSiriusSwtBotGefTestCase {
      * label.
      */
     public void testNodeAndEdgeLabelCopyLayout() {
-        boolean oldIsErrorCatchActive = isErrorCatchActive();
-        setErrorCatchActive(true);
+        boolean oldIsErrorCatchActive = platformProblemsListener.isErrorCatchActive();
+        platformProblemsListener.setErrorCatchActive(true);
         try {
             // Open the required representation
             diagram1 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME1, DDiagram.class);
@@ -202,8 +198,8 @@ public class EdgeCopyPasteFormatTest extends AbstractSiriusSwtBotGefTestCase {
             diagram1.clickContextMenu(Messages.CopyFormatAction_text);
             SWTBotUtils.waitAllUiEvents();
         } finally {
-            setErrorCatchActive(oldIsErrorCatchActive);
-            assertFalse("The copy format action fails." + getErrorLoggersMessage(), doesAnErrorOccurs());
+            platformProblemsListener.setErrorCatchActive(oldIsErrorCatchActive);
+            assertFalse("The copy format action fails." + platformProblemsListener.getErrorLoggersMessage(), platformProblemsListener.doesAnErrorOccurs());
         }
     }
 
@@ -239,10 +235,8 @@ public class EdgeCopyPasteFormatTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that the paste style affect custom style for edges from and to
-     * diagrams using a specific copy/paste extension (
-     * {@link org.eclipse.sirius.tests.unit.diagram.format.data.manager.extension.SampleNameDataProvider}
-     * ).
+     * Test that the paste style affect custom style for edges from and to diagrams using a specific copy/paste
+     * extension ( {@link org.eclipse.sirius.tests.unit.diagram.format.data.manager.extension.SampleNameDataProvider} ).
      */
     public void testEdgeCopyPasteStyleUsingDiagramsWithExtension() {
         // Open the 2 required representations
@@ -274,10 +268,8 @@ public class EdgeCopyPasteFormatTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that the paste format affect custom style for edges from and to
-     * diagrams using a specific copy/paste extension (
-     * {@link org.eclipse.sirius.tests.unit.diagram.format.data.manager.extension.SampleNameDataProvider}
-     * ).
+     * Test that the paste format affect custom style for edges from and to diagrams using a specific copy/paste
+     * extension ( {@link org.eclipse.sirius.tests.unit.diagram.format.data.manager.extension.SampleNameDataProvider} ).
      */
     public void testEdgeCopyPasteFormatUsingDiagramsWithExtension() {
         // Open the 2 required representations

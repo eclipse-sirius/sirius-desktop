@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES, and others.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES, and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -111,8 +111,7 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
     }
 
     /**
-     * Test that there is a warning if meta-models are not declared on
-     * RepresentationDescription.
+     * Test that there is a warning if meta-models are not declared on RepresentationDescription.
      */
     public void testValidationMetaModelsVSM() {
         editingDomain = new TransactionalEditingDomainImpl(new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE), modeler.eResource().getResourceSet());
@@ -134,8 +133,7 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
     }
 
     /**
-     * Test VSM validation with diagram extension (see VP-3836). Test there in
-     * no error when validate VSM.
+     * Test VSM validation with diagram extension (see VP-3836). Test there in no error when validate VSM.
      */
     public void testValidationVSMWithDiagramExtension() {
         // Test that the modeler is valid. In this case the modeler is valid, so
@@ -146,8 +144,7 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
     }
 
     /**
-     * Test VSM validation with element mapping with no style. Element mapping
-     * must be have a style. Test VP-2475
+     * Test VSM validation with element mapping with no style. Element mapping must be have a style. Test VP-2475
      */
     public void testValidationVSMWithElementMappingNoStyle() {
         Diagnostician diagnostician = new Diagnostician();
@@ -167,8 +164,7 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
     }
 
     /**
-     * Test VSM validation with problems of each kind: INFO, WARNING, ERROR and
-     * check the severity.
+     * Test VSM validation with problems of each kind: INFO, WARNING, ERROR and check the severity.
      */
     public void testValidationVSMForEachKindOfProblem() {
         String infoMessage = "Empty collection: Nothing left after concat:\n Empty OrderedSet defined in extension\n Empty OrderedSet defined in extension";
@@ -195,8 +191,7 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
     }
 
     /**
-     * Test VSM validation when the domain class name contains white spaces
-     * after, before or both.
+     * Test VSM validation when the domain class name contains white spaces after, before or both.
      */
     public void testValidationWithWhiteSpaceAfterAndBeforeDomainClassName() {
         // Ensure that the domain class name contains white space (before, after
@@ -226,8 +221,7 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
     }
 
     /**
-     * Ensure that VSM validation check the Domain class name and fails when the
-     * domain class name is invalid.
+     * Ensure that VSM validation check the Domain class name and fails when the domain class name is invalid.
      */
     public void testValidationDomainClass() {
         // Ensure that the domain class name is invalid.
@@ -256,9 +250,8 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
     }
 
     /**
-     * Ensure that VSM validation valid with success the Domain class name when
-     * it uses the AQL syntax "::" and when the class referenced belongs to the
-     * metamodel declared from registry in the diagram description.
+     * Ensure that VSM validation valid with success the Domain class name when it uses the AQL syntax "::" and when the
+     * class referenced belongs to the metamodel declared from registry in the diagram description.
      */
     public void testValidationDomainClassWitAQLSyntaxANdhMetamodelReferencedFromRegistry() {
         Diagnostician diagnostician = new Diagnostician();
@@ -272,8 +265,7 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
     }
 
     /**
-     * Ensure that VSM validation do not detects errors on the use of newly
-     * defined variables with valid expression.
+     * Ensure that VSM validation do not detects errors on the use of newly defined variables with valid expression.
      */
     public void testVariableNameValidation() {
         // Test that the modeler is valid. In this case the modeler is valid, so
@@ -284,8 +276,7 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
     }
 
     /**
-     * Ensure that VSM validation detects blank (missing or empty) variable
-     * names as invalid.
+     * Ensure that VSM validation detects blank (missing or empty) variable names as invalid.
      */
     public void testBlankVariableNameValidation() {
         Diagnostician diagnostician = new Diagnostician();
@@ -305,8 +296,7 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
     }
 
     /**
-     * Test VSM validation with different paths for images (there are valid and
-     * invalid paths).
+     * Test VSM validation with different paths for images (there are valid and invalid paths).
      */
     public void testValidationImagePathVSM() {
         Diagnostician diagnostician = new Diagnostician();
@@ -320,7 +310,7 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
                 "^The image 'C:\\\\images\\\\image.png' does not exist.$", "^The image '/org.eclipse.sirius.tests.junit/images/notexisting.png' does not exist.$",
                 "^The required feature 'imageExpression' of 'org.eclipse.sirius.viewpoint.description.impl.SemanticBasedDecorationImpl@.*' must be set$" };
 
-        assertEquals("The diagnostic must contain " + expectedMessagesPatterns.length + " validation errors. Returned messages were :\n"
+        assertEquals("The diagnostic must contain " + expectedMessagesPatterns.length + " validation platformProblemsListener.getErrors(). Returned messages were :\n"
                 + Joiner.on('\n').join(Iterables.transform(children, new Function<Diagnostic, String>() {
 
                     @Override

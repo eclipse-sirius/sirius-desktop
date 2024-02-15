@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -121,7 +121,7 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
      */
     public void testExportBigRepresesntationAsJPGFromProjectExplorerView() throws Exception {
         try {
-            setErrorCatchActive(false);
+            platformProblemsListener.setErrorCatchActive(false);
             EclipseTestsSupportHelper.INSTANCE.copyFile(Activator.PLUGIN_ID, DATA_UNIT_DIR_FOR_BIG_MODEL + BIG_MODEL, getProjectName() + "/" + BIG_MODEL);
             EclipseTestsSupportHelper.INSTANCE.copyFile(Activator.PLUGIN_ID, DATA_UNIT_DIR_FOR_BIG_MODEL + BIG_SESSION, getProjectName() + "/" + BIG_SESSION);
             final UIResource sessionAirdResource = new UIResource(designerProject, FILE_DIR, BIG_SESSION);
@@ -129,7 +129,7 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
             exportBigAsImageFromProjectExplorerView("JPG");
             valideExportResult("jpg", REPRESENTATION_INSTANCE_BIG);
         } finally {
-            setErrorCatchActive(true);
+            platformProblemsListener.setErrorCatchActive(true);
         }
     }
 
@@ -141,7 +141,7 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
      */
     public void testExportBigRepresesntationAsPNGFromProjectExplorerView() throws Exception {
         try {
-            setErrorCatchActive(false);
+            platformProblemsListener.setErrorCatchActive(false);
             EclipseTestsSupportHelper.INSTANCE.copyFile(Activator.PLUGIN_ID, DATA_UNIT_DIR_FOR_BIG_MODEL + BIG_MODEL, getProjectName() + "/" + BIG_MODEL);
             EclipseTestsSupportHelper.INSTANCE.copyFile(Activator.PLUGIN_ID, DATA_UNIT_DIR_FOR_BIG_MODEL + BIG_SESSION, getProjectName() + "/" + BIG_SESSION);
             final UIResource sessionAirdResource = new UIResource(designerProject, FILE_DIR, BIG_SESSION);
@@ -149,7 +149,7 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
             exportBigAsImageFromProjectExplorerView("PNG");
             valideExportResult("png", REPRESENTATION_INSTANCE_BIG);
         } finally {
-            setErrorCatchActive(true);
+            platformProblemsListener.setErrorCatchActive(true);
         }
     }
 
@@ -162,7 +162,7 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
      */
     public void testExportBigRepresesntationAsSVGFromProjectExplorerView() throws Exception {
         try {
-            setErrorCatchActive(true);
+            platformProblemsListener.setErrorCatchActive(true);
             EclipseTestsSupportHelper.INSTANCE.copyFile(Activator.PLUGIN_ID, DATA_UNIT_DIR_FOR_BIG_MODEL + BIG_MODEL, getProjectName() + "/" + BIG_MODEL);
             EclipseTestsSupportHelper.INSTANCE.copyFile(Activator.PLUGIN_ID, DATA_UNIT_DIR_FOR_BIG_MODEL + BIG_SESSION, getProjectName() + "/" + BIG_SESSION);
             final UIResource sessionAirdResource = new UIResource(designerProject, FILE_DIR, BIG_SESSION);
@@ -170,7 +170,7 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
             exportBigAsImageFromProjectExplorerView("SVG");
             valideExportResult("svg", REPRESENTATION_INSTANCE_BIG);
         } finally {
-            setErrorCatchActive(true);
+            platformProblemsListener.setErrorCatchActive(true);
         }
     }
 
@@ -183,7 +183,7 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
      */
     public void testExportBigRepresesntationAsJPGFromTabbar() throws Exception {
         try {
-            setErrorCatchActive(false);
+            platformProblemsListener.setErrorCatchActive(false);
             EclipseTestsSupportHelper.INSTANCE.copyFile(Activator.PLUGIN_ID, DATA_UNIT_DIR_FOR_BIG_MODEL + BIG_MODEL, getProjectName() + "/" + BIG_MODEL);
             EclipseTestsSupportHelper.INSTANCE.copyFile(Activator.PLUGIN_ID, DATA_UNIT_DIR_FOR_BIG_MODEL + BIG_SESSION, getProjectName() + "/" + BIG_SESSION);
             final UIResource sessionAirdResource = new UIResource(designerProject, FILE_DIR, BIG_SESSION);
@@ -199,7 +199,7 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
             exportAsImageFromEditorTabBar("JPG");
             valideExportResult("jpg", REPRESENTATION_INSTANCE_BIG);
         } finally {
-            setErrorCatchActive(true);
+            platformProblemsListener.setErrorCatchActive(true);
         }
     }
 
@@ -212,7 +212,7 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
      */
     public void testExportBigRepresesntationAsPNGFromTabbar() throws Exception {
         try {
-            setErrorCatchActive(false);
+            platformProblemsListener.setErrorCatchActive(false);
             EclipseTestsSupportHelper.INSTANCE.copyFile(Activator.PLUGIN_ID, DATA_UNIT_DIR_FOR_BIG_MODEL + BIG_MODEL, getProjectName() + "/" + BIG_MODEL);
             EclipseTestsSupportHelper.INSTANCE.copyFile(Activator.PLUGIN_ID, DATA_UNIT_DIR_FOR_BIG_MODEL + BIG_SESSION, getProjectName() + "/" + BIG_SESSION);
             final UIResource sessionAirdResource = new UIResource(designerProject, FILE_DIR, BIG_SESSION);
@@ -221,7 +221,7 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
             exportAsImageFromEditorTabBar("PNG");
             valideExportResult("png", REPRESENTATION_INSTANCE_BIG);
         } finally {
-            setErrorCatchActive(true);
+            platformProblemsListener.setErrorCatchActive(true);
         }
     }
 
@@ -234,7 +234,7 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
      */
     public void testExportBigRepresesntationAsSVGFromTabbar() throws Exception {
         try {
-            setErrorCatchActive(true);
+            platformProblemsListener.setErrorCatchActive(true);
             EclipseTestsSupportHelper.INSTANCE.copyFile(Activator.PLUGIN_ID, DATA_UNIT_DIR_FOR_BIG_MODEL + BIG_MODEL, getProjectName() + "/" + BIG_MODEL);
             EclipseTestsSupportHelper.INSTANCE.copyFile(Activator.PLUGIN_ID, DATA_UNIT_DIR_FOR_BIG_MODEL + BIG_SESSION, getProjectName() + "/" + BIG_SESSION);
             final UIResource sessionAirdResource = new UIResource(designerProject, FILE_DIR, BIG_SESSION);
@@ -243,7 +243,7 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
             exportAsImageFromEditorTabBar("SVG");
             valideExportResult("svg", REPRESENTATION_INSTANCE_BIG);
         } finally {
-            setErrorCatchActive(true);
+            platformProblemsListener.setErrorCatchActive(true);
         }
     }
 

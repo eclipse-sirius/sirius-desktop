@@ -30,8 +30,7 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 
 /**
- * Tests that sourceView, targetView, view and diagram variables are vailables
- * for edge size computation.
+ * Tests that sourceView, targetView, view and diagram variables are vailables for edge size computation.
  * 
  * @author mporhel
  */
@@ -72,29 +71,28 @@ public class EdgeSizeComputationVariableTest extends SiriusDiagramTestCase {
     }
 
     /**
-     * Tests that sourceView, targetView, view and diagram variables are
-     * vailables for edge size computation.
+     * Tests that sourceView, targetView, view and diagram variables are vailables for edge size computation.
      * 
      */
     public void testEdgeSizeComputationWithVariables() {
         changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), true);
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
 
-        boolean errorCatchActive = isErrorCatchActive();
-        Map<String, List<IStatus>> prevError = new LinkedHashMap<>(errors);
-        clearErrors();
-        setErrorCatchActive(true);
+        boolean errorCatchActive = platformProblemsListener.isErrorCatchActive();
+        Map<String, List<IStatus>> prevError = new LinkedHashMap<>(platformProblemsListener.getErrors());
+        platformProblemsListener.clearErrors();
+        platformProblemsListener.setErrorCatchActive(true);
 
         diagram = (DDiagram) createRepresentation(REPRESENTATION_DESC_NAME);
         assertNotNull(diagram);
         editor = (DiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diagram, defaultProgress);
         TestsUtil.synchronizationWithUIThread();
 
-        assertFalse("No error should occurs during refresh: check the variable access.", doesAnErrorOccurs());
+        assertFalse("No error should occurs during refresh: check the variable access.", platformProblemsListener.doesAnErrorOccurs());
 
         // resetErrorCatchActive
-        setErrorCatchActive(errorCatchActive);
-        errors.putAll(prevError);
+        platformProblemsListener.setErrorCatchActive(errorCatchActive);
+        platformProblemsListener.getErrors().putAll(prevError);
 
         // Check the expected size.
         assertEquals("The diagram should contain 2 nodes and 4 edges.", 6, diagram.getRepresentationElements().size());

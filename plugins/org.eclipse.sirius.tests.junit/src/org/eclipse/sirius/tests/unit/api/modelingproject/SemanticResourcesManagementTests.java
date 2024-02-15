@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -46,18 +46,17 @@ public class SemanticResourcesManagementTests extends SiriusDiagramTestCase impl
     protected void setUp() throws Exception {
         super.createModelingProject = true;
         super.setUp();
-        
+
         changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), false);
         changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), false);
-        
+
         TestsUtil.emptyEventsFromUIThread();
         genericSetUp(TEST_SEMANTIC_MODEL_PATH, MODELER_PATH);
         initViewpoint(DESIGN_VIEWPOINT_NAME);
 
         TestsUtil.emptyEventsFromUIThread();
         /*
-         * the DefaultModelingProjectResourceListener is automatically
-         * instantiated by the viewpoint.ui plug-in
+         * the DefaultModelingProjectResourceListener is automatically instantiated by the viewpoint.ui plug-in
          */
     }
 
@@ -73,7 +72,7 @@ public class SemanticResourcesManagementTests extends SiriusDiagramTestCase impl
         assertEquals(1, session.getSemanticResources().size());
         // We disabled the error catch during this test because it throw an
         // error because this project became invalid.
-        setErrorCatchActive(false);
+        platformProblemsListener.setErrorCatchActive(false);
         TestsUtil.synchronizationWithUIThread();
         try {
             final Resource resource = EclipseTestsSupportHelper.INSTANCE.createResourceInProject(new ResourceSetImpl(), TEMPORARY_PROJECT_NAME, "anotherAird.aird");
@@ -87,7 +86,7 @@ public class SemanticResourcesManagementTests extends SiriusDiagramTestCase impl
             resource.save(new HashMap<Object, Object>());
         } finally {
             TestsUtil.synchronizationWithUIThread();
-            setErrorCatchActive(true);
+            platformProblemsListener.setErrorCatchActive(true);
         }
         TestsUtil.synchronizationWithUIThread();
         assertEquals(1, session.getSemanticResources().size());
@@ -120,14 +119,13 @@ public class SemanticResourcesManagementTests extends SiriusDiagramTestCase impl
     }
 
     /**
-     * This test check that when a semantic file is removed from a modeling
-     * project and then added again, this file is correctly managed. That means
-     * considered as semantic models, loaded and not empty. See VP-2789 for
-     * original issue.
+     * This test check that when a semantic file is removed from a modeling project and then added again, this file is
+     * correctly managed. That means considered as semantic models, loaded and not empty. See VP-2789 for original
+     * issue.
      * 
      * In this test, we call a resolveAll to simulate what is done by the
-     * {@link org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonContentProvider}
-     * in the real use case.
+     * {@link org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonContentProvider} in the real use
+     * case.
      * 
      * @throws Exception
      *             in case of problem

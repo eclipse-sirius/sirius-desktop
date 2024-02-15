@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -121,11 +121,10 @@ public class ProjectsConcurrentCloseTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * This test verifies that two projects can be closed 'concurrently': user
-     * select several projects and right click "Close Project".
+     * This test verifies that two projects can be closed 'concurrently': user select several projects and right click
+     * "Close Project".
      *
-     * No {@link ConcurrentModificationException} should occur (one was
-     * previously triggered in {@link EditingSession}).
+     * No {@link ConcurrentModificationException} should occur (one was previously triggered in {@link EditingSession}).
      */
     public void testProjectConcurrentClose() {
         assertEquals("Both modeling projects sessions should be opened.", 2, SessionManager.INSTANCE.getSessions().size());
@@ -157,16 +156,15 @@ public class ProjectsConcurrentCloseTest extends AbstractSiriusSwtBotGefTestCase
         SWTBotUtils.waitAllUiEvents();
 
         bot.waitUntil(new OpenedSessionCondition(0));
-        assertFalse(getErrorLoggersMessage(), doesAnErrorOccurs());
+        assertFalse(platformProblemsListener.getErrorLoggersMessage(), platformProblemsListener.doesAnErrorOccurs());
     }
 
     /**
-     * This test verifies that two projects with opened diagrams can be closed
-     * 'concurrently': user select several projects and right click
-     * "Close Project".
+     * This test verifies that two projects with opened diagrams can be closed 'concurrently': user select several
+     * projects and right click "Close Project".
      *
-     * No {@link ConcurrentModificationException} should occur (one was
-     * previously triggered in {@link CandidateMappingManager}).
+     * No {@link ConcurrentModificationException} should occur (one was previously triggered in
+     * {@link CandidateMappingManager}).
      */
     public void testProjectConcurrentCloseWithOpenedDiagrams() {
         // open a diagram per session.
