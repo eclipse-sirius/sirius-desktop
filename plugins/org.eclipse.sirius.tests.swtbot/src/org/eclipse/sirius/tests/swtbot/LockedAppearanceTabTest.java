@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2023 Obeo.
+ * Copyright (c) 2014, 2024 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,7 +18,6 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ecore.extender.business.internal.permission.ReadOnlyPermissionAuthority;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
@@ -32,6 +31,7 @@ import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.widgets.AbstractSWTBot;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotCCombo;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToggleButton;
 
 /**
@@ -84,7 +84,8 @@ public class LockedAppearanceTabTest extends AbstractSiriusSwtBotGefTestCase {
 
         // check that tested actions are enabled for the selected package
         selectPackageElement();
-        editor.clickContextMenu("White"); // Modify to test "Reset style"
+        SWTBotShell colorPaletteShell = SWTBotSiriusHelper.changeFillColorContextMenu(editor, bot);
+        colorPaletteShell.bot().buttonWithTooltip("{255, 255, 255}").click();
         checkSelectionActionEnabled(true);
 
         // activate the ReadOnlyPermission Authority on the representation

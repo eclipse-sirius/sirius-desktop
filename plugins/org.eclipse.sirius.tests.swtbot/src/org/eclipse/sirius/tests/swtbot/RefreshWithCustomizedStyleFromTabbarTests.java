@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -85,7 +85,7 @@ public class RefreshWithCustomizedStyleFromTabbarTests extends AbstractRefreshWi
         editor.reveal(eClass1WithSquareStyleBot.part());
         eClass1WithSquareStyleBot.select();
         SWTBotUtils.waitAllUiEvents();
-        doTestStyleCustomizationThroughColorSelectionFromTabbar(eClass1WithSquareStyleBot, "Li&ne Color", NOT_CUSTOMIZED_PREDICATE, CUSTOMIZED_PREDICATE, "Yellow");
+        doTestStyleCustomizationThroughColorSelectionFromTabbar(eClass1WithSquareStyleBot, "Li&ne Color", NOT_CUSTOMIZED_PREDICATE, CUSTOMIZED_PREDICATE, "{252, 233, 79}");
     }
 
     /**
@@ -100,7 +100,7 @@ public class RefreshWithCustomizedStyleFromTabbarTests extends AbstractRefreshWi
         editor.reveal(eClass1WithSquareStyleBot.part());
         eClass1WithSquareStyleBot.select();
         SWTBotUtils.waitAllUiEvents();
-        doTestStyleCustomizationThroughColorSelectionFromTabbar(eClass1WithSquareStyleBot, "Fill &Color", NOT_CUSTOMIZED_PREDICATE, CUSTOMIZED_PREDICATE, "Yellow");
+        doTestStyleCustomizationThroughColorSelectionFromTabbar(eClass1WithSquareStyleBot, "Fill &Color", NOT_CUSTOMIZED_PREDICATE, CUSTOMIZED_PREDICATE, "{252, 233, 79}");
     }
 
 }

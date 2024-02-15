@@ -74,9 +74,9 @@ import org.eclipse.sirius.tests.swtbot.modelexplorer.RepresentationVisibilityAft
 import org.eclipse.sirius.tests.swtbot.propertypage.SiriusPreferencesPropertyPageTest;
 import org.eclipse.sirius.tests.swtbot.propertypage.SiriusSessionDetailsPropertyPageTest;
 import org.eclipse.sirius.tests.swtbot.sessioneditor.SessionEditorOpeningTests;
-import org.eclipse.sirius.tests.swtbot.tabbar.PasteStylePureGraphicalTest;
 import org.eclipse.sirius.tests.swtbot.tabbar.LockedTabBarTest;
 import org.eclipse.sirius.tests.swtbot.tabbar.NotInvisibleTabBarTest;
+import org.eclipse.sirius.tests.swtbot.tabbar.PasteStylePureGraphicalTest;
 import org.eclipse.sirius.tests.swtbot.tabbar.ResetToDefaultFiltersActionTests;
 import org.eclipse.sirius.tests.swtbot.tabbar.TabBarTest;
 import org.eclipse.sirius.tests.swtbot.tabbar.TabbarContributorExtensionTest;
@@ -356,6 +356,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(LabelFontModificationsTest.class);
         suite.addTestSuite(CreatedElementsLayoutTests.class);
         suite.addTestSuite(AutoSizeSquareStyleDescriptionTest.class);
+        suite.addTestSuite(ChangeColorTest.class);
     }
 
     /**

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -242,7 +242,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
      */
     private void doTestChangeLabelColorFromAppearanceSection(String name, Class<? extends EditPart> type) {
         SWTBotGefEditPart selectedEditPart = selectAndCheckEditPart(name, type);
-        doTestStyleCustomizationThroughColorSelectionFromAppearanceSection(selectedEditPart, FONTS_COLORS_GROUP, new int[] { 0 }, new int[] { 0 }, STATE_WHEN_LABEL_COLOR_IS_UNCHANGED_PREDICATE,
+        doTestStyleCustomizationThroughColorSelectionFromAppearanceSection(selectedEditPart, FONTS_COLORS_GROUP, new int[] { 0 }, STATE_WHEN_LABEL_COLOR_IS_UNCHANGED_PREDICATE,
                 STATE_WHEN_LABEL_COLOR_IS_CHANGED_TO_GRAY_PREDICATE);
     }
 
@@ -350,7 +350,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         };
         Predicate<SWTBotGefEditPart> initialStatePredicate = Predicates.not(stateWhenButtonIsCheckedPredicate);
 
-        doTestStyleCustomizationThroughColorSelectionFromTabbar(selectedEditPart, "Font Color", initialStatePredicate, stateWhenButtonIsCheckedPredicate, "Yellow");
+        doTestStyleCustomizationThroughColorSelectionFromTabbar(selectedEditPart, "Font Color", initialStatePredicate, stateWhenButtonIsCheckedPredicate, "{252, 233, 79}");
     }
 
     /**

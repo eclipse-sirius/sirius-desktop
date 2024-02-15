@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -36,6 +36,7 @@ import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.SWTBot;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarToggleButton;
 
 import junit.framework.TestCase;
@@ -105,7 +106,8 @@ public class ResetStylePropertiesToDefaultValuesActionTests extends AbstractSiri
         // disabled
         getResetStylePropertiesToDefaultValuesButton(true, false);
         // Change the background color with the tabbar
-        editor.bot().toolbarDropDownButtonWithTooltip("Fill &Color").menuItem("Yellow").click();
+        SWTBotShell paletteShell = SWTBotSiriusHelper.changeFillColorToolbarMenu(bot);
+        paletteShell.bot().buttonWithTooltip("{252, 233, 79}").click();
         SWTBotUtils.waitAllUiEvents();
         // Check that the "Reset style properties to default values" button is
         // enabled and click on
@@ -117,7 +119,8 @@ public class ResetStylePropertiesToDefaultValuesActionTests extends AbstractSiri
     }
 
     /**
-     * Test refresh "Reset style properties to default values" button after click on Fill Color in tabbar for a Container.
+     * Test refresh "Reset style properties to default values" button after click on Fill Color in tabbar for a
+     * Container.
      */
     public void testRefreshActionCancelCustomStyleTabbarForContainer() {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
@@ -126,7 +129,8 @@ public class ResetStylePropertiesToDefaultValuesActionTests extends AbstractSiri
         // disabled
         getResetStylePropertiesToDefaultValuesButton(true, false);
         // Change the background color with the tabbar
-        editor.bot().toolbarDropDownButtonWithTooltip("Fill &Color").menuItem("Yellow").click();
+        SWTBotShell paletteShell = SWTBotSiriusHelper.changeFillColorToolbarMenu(bot);
+        paletteShell.bot().buttonWithTooltip("{252, 233, 79}").click();
         SWTBotUtils.waitAllUiEvents();
         // Check that the "Reset style properties to default values" button is
         // enabled and click on
@@ -171,7 +175,9 @@ public class ResetStylePropertiesToDefaultValuesActionTests extends AbstractSiri
         // disabled
         getResetStylePropertiesToDefaultValuesButton(true, false);
         // Change the line color with the tabbar
-        editor.bot().toolbarDropDownButtonWithTooltip("Li&ne Color").menuItem("Yellow").click();
+        SWTBotShell paletteShell = SWTBotSiriusHelper.changeLineColorToolbarMenu(bot);
+        paletteShell.bot().buttonWithTooltip("{252, 233, 79}").click();
+
         SWTBotUtils.waitAllUiEvents();
         // Check that the "Reset style properties to default values" button is
         // enabled and click on
@@ -183,8 +189,8 @@ public class ResetStylePropertiesToDefaultValuesActionTests extends AbstractSiri
     }
 
     /**
-     * Test refresh "Reset style properties to default values" button after click on Style in properties view Appearance for
-     * an edge.
+     * Test refresh "Reset style properties to default values" button after click on Style in properties view Appearance
+     * for an edge.
      */
     public void testRefreshActionCancelCustomStylePropertiesViewForEdge() {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
@@ -222,7 +228,8 @@ public class ResetStylePropertiesToDefaultValuesActionTests extends AbstractSiri
         // Check the equality of colors between model from editPart and figures
         TestCase.assertTrue(areSameFiguresAndModelsColorsFromEditPart(editPart));
         List<Integer> colors = extractLabelColors(edgeStyleImpl);
-        editor.bot().toolbarDropDownButtonWithTooltip("Font Color").menuItem("Cyan").click();
+        SWTBotShell paletteShell = SWTBotSiriusHelper.changeFontColorToolbarMenu(bot);
+        paletteShell.bot().buttonWithTooltip("{114, 159, 207}").click();
         // Check the equality of colors between model from editPart and figures
         TestCase.assertTrue(areSameFiguresAndModelsColorsFromEditPart(editPart));
         // Verify that colors have changed
@@ -246,7 +253,9 @@ public class ResetStylePropertiesToDefaultValuesActionTests extends AbstractSiri
 
     /**
      * Compare colors of the three labels (1 by 1) between model and figures gmf : BEGIN-CENTER-END
-     * @param editPart editPart from which we get model and figures
+     * 
+     * @param editPart
+     *            editPart from which we get model and figures
      * @return true if colors are the same
      */
     private boolean areSameFiguresAndModelsColorsFromEditPart(DEdgeBeginNameEditPart editPart) {
@@ -288,7 +297,8 @@ public class ResetStylePropertiesToDefaultValuesActionTests extends AbstractSiri
         // disabled
         getResetStylePropertiesToDefaultValuesButton(true, false);
         // Change the line color with the contextual menu
-        editor.clickContextMenu("Yellow");
+        SWTBotShell paletteShell = SWTBotSiriusHelper.changeLineColorContextMenu(editor, bot);
+        paletteShell.bot().buttonWithTooltip("{252, 233, 79}").click();
         // Check that the "Reset style properties to default values" button is
         // enabled and click on
         // it.

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2009-2019 THALES GLOBAL SERVICES
+ * Copyright (c) 2009, 2024 THALES GLOBAL SERVICES
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,21 +18,26 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.table.ui.tools.api.editor.DTableEditor;
+import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.tree.ui.tools.api.editor.DTreeEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Widget;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
 import org.eclipse.swtbot.eclipse.finder.waits.Conditions;
 import org.eclipse.swtbot.eclipse.finder.waits.WaitForEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
+import org.eclipse.swtbot.eclipse.gef.finder.SWTGefBot;
 import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
 import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
@@ -44,6 +49,7 @@ import org.eclipse.swtbot.swt.finder.utils.SWTUtils;
 import org.eclipse.swtbot.swt.finder.waits.WaitForObjectCondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarDropDownButton;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.internal.views.properties.tabbed.view.TabbedPropertyList;
@@ -502,6 +508,149 @@ public final class SWTBotSiriusHelper {
                 swtBotEditor.getReference().getPage().closeEditor(swtBotEditor.getReference().getEditor(false), save);
             }
         });
+    }
+
+    /**
+     * Returns the ColorPalettePopup shell.
+     * 
+     * @return the ColorPalettePopup shell.
+     */
+    public static SWTBotShell getColorPalettePopupShell(SWTGefBot bot) {
+        SWTBotUtils.waitAllUiEvents();
+        return bot.shell(Messages.ColorPalettePopup_title);
+    }
+
+    /**
+     * Click on "Fill Color" menu in navigation bar "Diagram".
+     * 
+     * @return the ColorPalettePopup shell.
+     */
+    public static SWTBotShell changeFillColorNavigationBar(SWTGefBot bot) {
+        return changeColorNavigationBar(bot, DiagramUIMessages.ColorChangeActionMenu_fillColor);
+    }
+
+    /**
+     * Click on "Font Color" menu in navigation bar "Diagram".
+     * 
+     * @return the ColorPalettePopup shell.
+     */
+    public static SWTBotShell changeFontColorNavigationBar(SWTGefBot bot) {
+        return changeColorNavigationBar(bot, DiagramUIMessages.ColorChangeActionMenu_fontColor);
+    }
+
+    /**
+     * Click on "Line Color" menu in navigation bar "Diagram".
+     * 
+     * @return the ColorPalettePopup shell.
+     */
+    public static SWTBotShell changeLineColorNavigationBar(SWTGefBot bot) {
+        return changeColorNavigationBar(bot, DiagramUIMessages.ColorChangeActionMenu_lineColor);
+    }
+
+    /**
+     * Click on a change color menu in navigation bar "Diagram".
+     * 
+     * @param menuText
+     *            text of the color menu to click.
+     * @return the ColorPalettePopup shell.
+     */
+    public static SWTBotShell changeColorNavigationBar(SWTGefBot bot, String menuText) {
+        SWTBotSiriusHelper.menu(bot, DiagramUIMessages.DiagramMainMenu_DiagramMainMenuText) //
+                .menu(menuText) //
+                .click();
+        return getColorPalettePopupShell(bot);
+    }
+
+    /**
+     * Click on "Fill Color" menu in context menu.
+     * 
+     * @return the ColorPalettePopup shell.
+     */
+    public static SWTBotShell changeFillColorContextMenu(SWTBotSiriusDiagramEditor editor, SWTGefBot bot) {
+        return changeColorContextMenu(editor, bot, DiagramUIMessages.ColorChangeActionMenu_fillColor);
+    }
+
+    /**
+     * Click on "Font Color" menu in context menu.
+     * 
+     * @return the ColorPalettePopup shell.
+     */
+    public static SWTBotShell changeFontColorContextMenu(SWTBotSiriusDiagramEditor editor, SWTGefBot bot) {
+        return changeColorContextMenu(editor, bot, DiagramUIMessages.ColorChangeActionMenu_fontColor);
+    }
+
+    /**
+     * Click on "Line Color" menu in context menu.
+     * 
+     * @return the ColorPalettePopup shell.
+     */
+    public static SWTBotShell changeLineColorContextMenu(SWTBotSiriusDiagramEditor editor, SWTGefBot bot) {
+        return changeColorContextMenu(editor, bot, DiagramUIMessages.ColorChangeActionMenu_lineColor);
+    }
+
+    /**
+     * Click on a change color menu in context menu.
+     * 
+     * @param menuText
+     *            text of the color menu to click.
+     * @return the ColorPalettePopup shell.
+     */
+    public static SWTBotShell changeColorContextMenu(SWTBotSiriusDiagramEditor editor, SWTGefBot bot, String menuText) {
+        editor.clickContextMenu(menuText);
+        return getColorPalettePopupShell(bot);
+    }
+
+    /**
+     * Click on "Fill Color" menu in toolbar.
+     * 
+     * @return the ColorPalettePopup shell.
+     */
+    public static SWTBotShell changeFillColorToolbarMenu(SWTGefBot bot) {
+        return changeColorToolbarMenu(bot, DiagramUIMessages.ColorChangeActionMenu_fillColor);
+    }
+
+    /**
+     * Click on "Font Color" menu in toolbar.
+     * 
+     * @return the ColorPalettePopup shell.
+     */
+    public static SWTBotShell changeFontColorToolbarMenu(SWTGefBot bot) {
+        return changeColorToolbarMenu(bot, DiagramUIMessages.ColorChangeActionMenu_fontColor);
+    }
+
+    /**
+     * Click on "Line Color" menu in toolbar.
+     * 
+     * @return the ColorPalettePopup shell.
+     */
+    public static SWTBotShell changeLineColorToolbarMenu(SWTGefBot bot) {
+        return changeColorToolbarMenu(bot, DiagramUIMessages.ColorChangeActionMenu_lineColor);
+    }
+
+    /**
+     * Click on a change color menu in toolbar.
+     * 
+     * @param menuToolTip
+     *            tooltip of the color menu to click.
+     * @return the ColorPalettePopup shell.
+     */
+    public static SWTBotShell changeColorToolbarMenu(SWTGefBot bot, String menuToolTip) {
+        SWTBotToolbarDropDownButton toolbarButton = bot.toolbarDropDownButtonWithTooltip(menuToolTip);
+        Display.getDefault().asyncExec(() -> {
+            int[] eventTypes = { SWT.MouseEnter, SWT.MouseMove, SWT.Activate, SWT.FocusIn, SWT.MouseDown, SWT.MouseUp, SWT.Selection, SWT.MouseHover, SWT.MouseMove, SWT.MouseExit, SWT.Deactivate,
+                    SWT.FocusOut };
+            for (int eventType : eventTypes) {
+                Event event = new Event();
+                event.time = (int) System.currentTimeMillis();
+                event.widget = toolbarButton.widget;
+                event.display = toolbarButton.display;
+                if (eventType == SWT.Selection) {
+                    event.detail = SWT.ARROW;
+                }
+                toolbarButton.widget.notifyListeners(eventType, event);
+            }
+        });
+        return getColorPalettePopupShell(bot);
     }
 
 }

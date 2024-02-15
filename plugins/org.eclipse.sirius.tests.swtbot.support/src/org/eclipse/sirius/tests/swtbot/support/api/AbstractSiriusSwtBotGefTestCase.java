@@ -176,7 +176,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
 
     /** The logger. */
     private static Logger log = Logger.getLogger(SWTBotTestCase.class);
-    
+
     private static final Version PLATFORM_VERSION = Platform.getBundle("org.eclipse.core.runtime").getVersion();
 
     /**
@@ -1043,8 +1043,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     protected SWTBotToolbarDropDownButton getPasteMenu() {
         String[] tooltips = { Messages.PasteStylePureGraphicalAction_toolTipText, Messages.PasteFormatAction_toolTipText_diagram, Messages.PasteFormatAction_toolTipText_diagramElements,
                 Messages.PasteLayoutAction_toolTipText_diagram, Messages.PasteLayoutAction_toolTipText_diagramElements, Messages.PasteStyleAction_toolTipText_diagram,
-                Messages.PasteStyleAction_toolTipText_diagramElements, Messages.PasteImageAction_toolTipText,
-        };
+                Messages.PasteStyleAction_toolTipText_diagramElements, Messages.PasteImageAction_toolTipText, };
         List<Matcher<? extends ToolItem>> tooltipMatchers = new ArrayList<>();
         Arrays.stream(tooltips).forEach(tooltip -> tooltipMatchers.add(WidgetMatcherFactory.withTooltip(tooltip)));
         Matcher<ToolItem> tooltipMatcher = WidgetMatcherFactory.anyOf(tooltipMatchers);
@@ -1450,7 +1449,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     protected synchronized boolean doesAnErrorOccurs() {
         return errorsCount() > 0;
     }
-    
+
     /**
      * Returns the total number of errors recorded.
      * 
@@ -1925,7 +1924,8 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     public SWTBotGefEditPart findTextEditPart(SWTBotGefEditPart parent, String label) {
         SWTBotGefEditPart result = null;
         if (parent.part() instanceof TextEditPart textEditPart) {
-            var descriptionCompartmentEditPart = textEditPart.getChildren().stream().filter(DescriptionCompartmentEditPart.class::isInstance).map(DescriptionCompartmentEditPart.class::cast).findFirst().get();
+            var descriptionCompartmentEditPart = textEditPart.getChildren().stream().filter(DescriptionCompartmentEditPart.class::isInstance).map(DescriptionCompartmentEditPart.class::cast)
+                    .findFirst().get();
             if (descriptionCompartmentEditPart.getFigure() instanceof WrappingLabel wrappingLabel && label.equals(wrappingLabel.getText())) {
                 result = parent;
             }

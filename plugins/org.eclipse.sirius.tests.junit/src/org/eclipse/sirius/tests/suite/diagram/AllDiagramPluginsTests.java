@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -230,6 +230,7 @@ import org.eclipse.sirius.tests.unit.diagram.session.MultiAirdResourcesSessionTe
 import org.eclipse.sirius.tests.unit.diagram.session.SessionServiceGMFDiagramTest;
 import org.eclipse.sirius.tests.unit.diagram.session.SessionTest;
 import org.eclipse.sirius.tests.unit.diagram.style.BorderSizeAndColorTest;
+import org.eclipse.sirius.tests.unit.diagram.style.ColorCategoryManagerTest;
 import org.eclipse.sirius.tests.unit.diagram.style.ColorManagerTest;
 import org.eclipse.sirius.tests.unit.diagram.style.ComputedColorTest;
 import org.eclipse.sirius.tests.unit.diagram.style.EdgeSizeComputationVariableTest;
@@ -415,6 +416,8 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(AttachmentBetweenEdgeAndItsLabelsTest.class);
         suite.addTestSuite(CollapseExpandFilterTest.class);
         suite.addTestSuite(CollapseFilterTest.class);
+        suite.addTestSuite(ColorCategoryManagerTest.class);
+
         // Folding
         suite.addTestSuite(FoldingPointsIdentificationTest.class);
         suite.addTestSuite(FoldingQueriesTest.class);
