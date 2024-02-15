@@ -9,6 +9,7 @@ pipeline {
 	}
 
     options {
+	  buildBlocker (useBuildBlocker: true, blockLevel: 'GLOBAL', scanQueueFor: 'ALL', blockingJobs: 'sirius-pr-check.*')
       timestamps ()
 	  lock(resource: 'sirius-desktop-tests')
     }
