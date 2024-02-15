@@ -59,11 +59,6 @@ public class ColorManager {
             SystemColors.LIGHT_PURPLE_LITERAL);
 
     /**
-     * Maximum number of "Last Used" colors to store.
-     */
-    private static final int NB_MAX_LAST_USED_COLORS = 10;
-
-    /**
      * The separator between each integer value of RGB color.
      */
     private static final String RGB_VALUES_SEPARATOR = ","; //$NON-NLS-1$

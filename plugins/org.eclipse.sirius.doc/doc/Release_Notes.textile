@@ -69,6 +69,16 @@ h4. Changes in @org.eclipse.sirius.diagram.ui@
 * <span class="label label-success">Added</span> The method @org.eclipse.sirius.diagram.ui.tools.api.color.ColorManager.stringToRGB(String)@ has been added to convert a string color to an RGB color.
 * <span class="label label-success">Added</span> The method @org.eclipse.sirius.diagram.ui.tools.api.color.ColorManager.sortColors(Collection<RGB>)@ has been added to sort a collection of RGB colors using their HSB (Hue, Saturation, Brightness). The specified collection isn't modified.
 
+* <span class="label label-success">Added</span> The class @org.eclipse.sirius.diagram.ui.tools.api.color.ColorCategoryManager@ has been added to manage color categories used in the new @ColorPalettePopup@. It includes the following methods:
+** @org.eclipse.sirius.diagram.ui.tools.api.color.ColorCategoryManager.getLastUsedColors()@ to get the list of last colors used by the user.
+** @org.eclipse.sirius.diagram.ui.tools.api.color.ColorCategoryManager.getCustomColors()@ to get the list of custom colors defined by the user.
+** @org.eclipse.sirius.diagram.ui.tools.api.color.ColorCategoryManager.getSuggestedColors()@ to get  the list of the ten preferred colors defined in the VSM.
+** @org.eclipse.sirius.diagram.ui.tools.api.color.ColorCategoryManager.getBasicColors()@ to get ten useful colors.
+** @org.eclipse.sirius.diagram.ui.tools.api.color.ColorCategoryManager.addLastUsedColor(RGB)@ to add a color to the list of last used colors.
+** @org.eclipse.sirius.diagram.ui.tools.api.color.ColorCategoryManager.setCustomColors(List<RGB>)@ to set the list of custom colors defined by the user.
+** @org.eclipse.sirius.diagram.ui.tools.api.color.ColorCategoryManager.setSuggestedColors(List<RGB>)@ to set the list of the preferred suggested colors.
+** @org.eclipse.sirius.diagram.ui.tools.api.color.ColorCategoryManager.getSelectedColorsByPropertyId()@ to get the list of colors used for all objects selected in the representation for a specific propertyId.
+
 h4. Migrations
 
 * <span class="label label-success">Added</span> A migration participant has been added to migrate ELK options used in VSM. Some have been renamed and some others have been removed. You should carefully read the information logged during this migration and the "ELK release notes":https://eclipse.dev/elk/downloads/releasenotes/release-0.9.0.html to check if any manual adjustments need to be made. The corresponding version, stored in attribute version of description:Group of the odesign file, is _15.4.0.202401051836_.

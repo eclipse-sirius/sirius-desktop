@@ -10,7 +10,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.ui.tools.internal.colors;
+package org.eclipse.sirius.diagram.ui.tools.api.color;
 
 import java.util.List;
 
@@ -18,6 +18,9 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.core.util.PackageUtil;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.diagram.ui.tools.internal.colors.FillColorCategoryManager;
+import org.eclipse.sirius.diagram.ui.tools.internal.colors.FontColorCategoryManager;
+import org.eclipse.sirius.diagram.ui.tools.internal.colors.LineColorCategoryManager;
 
 /**
  * This class is used to provides a {@link ColorCategoryManager}, such as {@link FillColorCategoryManager},
@@ -55,15 +58,15 @@ public class ColorCategoryManagerProvider {
      * @return the {@link ColorCategoryManager} to use with the specified propertyID.
      */
     public ColorCategoryManager getColorCategoryManager(Session session, List<IGraphicalEditPart> editParts, String propertyId) {
-        ColorCategoryManager colorCategoryManager;
-        if (FILL_COLOR_PROPERTY_ID.equals(propertyId)) {
-            colorCategoryManager = new FillColorCategoryManager(session, editParts, propertyId);
-        } else if (LINE_COLOR_PROPERTY_ID.equals(propertyId)) {
-            colorCategoryManager = new LineColorCategoryManager(session, editParts, propertyId);
-        } else if (FONT_COLOR_PROPERTY_ID.equals(propertyId)) {
-            colorCategoryManager = new FontColorCategoryManager(session, editParts, propertyId);
-        } else {
-            colorCategoryManager = null;
+        ColorCategoryManager colorCategoryManager = null;
+        if (session != null) {
+            if (FILL_COLOR_PROPERTY_ID.equals(propertyId)) {
+                colorCategoryManager = new FillColorCategoryManager(session, editParts);
+            } else if (LINE_COLOR_PROPERTY_ID.equals(propertyId)) {
+                colorCategoryManager = new LineColorCategoryManager(session, editParts);
+            } else if (FONT_COLOR_PROPERTY_ID.equals(propertyId)) {
+                colorCategoryManager = new FontColorCategoryManager(session, editParts);
+            }
         }
         return colorCategoryManager;
     }
