@@ -222,17 +222,15 @@ public class RefreshWithCustomizedStyleFromAppearanceTabTests extends AbstractRe
     }
 
     /**
-     * Ensures that changing the background color of a figure from the
-     * appearance page works as expected (and also tests that the style is
-     * considered as custom).
+     * Ensures that changing the background color of a figure from the appearance page works as expected (and also tests
+     * that the style is considered as custom).
      * 
      * @throws Exception
      *             Test error.
      */
     public void testChangeBackgroundColorFromAppearanceSection() throws Exception {
         eClass1WithSquareStyleBot.select();
-        doTestStyleCustomizationThroughColorSelectionFromAppearanceSection(eClass1WithSquareStyleBot, "Fonts and Colors:", new int[] { 0, 1, 2 }, new int[] { 0, 0, 2 }, NOT_CUSTOMIZED_PREDICATE,
-                CUSTOMIZED_PREDICATE);
+        doTestStyleCustomizationThroughColorSelectionFromAppearanceSection(eClass1WithSquareStyleBot, "Fonts and Colors:", new int[] { 0, 1, 2 }, NOT_CUSTOMIZED_PREDICATE, CUSTOMIZED_PREDICATE);
     }
 
 }

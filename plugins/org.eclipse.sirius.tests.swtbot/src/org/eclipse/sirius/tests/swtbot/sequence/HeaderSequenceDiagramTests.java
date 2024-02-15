@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.api.diagramtype.HeaderData;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InstanceRoleEditPart;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.header.DiagramHeaderComposite;
 import org.eclipse.sirius.ext.base.Option;
@@ -39,6 +40,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.ui.IWorkbenchPart;
 
 /**
@@ -160,8 +162,10 @@ public class HeaderSequenceDiagramTests extends AbstractDefaultModelSequenceTest
         SWTBotGefEditPart editPart = editor.getEditPart(LIFELINE_B, InstanceRoleEditPart.class);
         editPart.select();
         Rectangle bounds = editor.getBounds(editPart).getCopy();
-        editor.bot().toolbarDropDownButtonWithTooltip("Fill &Color").menuItem("Yellow").click();
-        RGBValues backgroundColor = createColor(225, 225, 135);
+        SWTBotSiriusHelper.changeFillColorNavigationBar(bot);
+        SWTBotShell colorPaletteShell = bot.shell(Messages.ColorPalettePopup_title);
+        colorPaletteShell.bot().buttonWithTooltip("{252, 233, 79}").click();
+        RGBValues backgroundColor = createColor(252, 233, 79);
         RGBValues foregroundColor = createDefaultFgColor();
 
         checkHeader(new HeaderData(LIFELINE_B, bounds.x, bounds.width, backgroundColor, foregroundColor), 1);
@@ -174,9 +178,11 @@ public class HeaderSequenceDiagramTests extends AbstractDefaultModelSequenceTest
         SWTBotGefEditPart editPart = editor.getEditPart(LIFELINE_B, InstanceRoleEditPart.class);
         editPart.select();
         Rectangle bounds = editor.getBounds(editPart).getCopy();
-        editor.bot().toolbarDropDownButtonWithTooltip("Font Color").menuItem("Cyan").click();
+        SWTBotSiriusHelper.changeFontColorNavigationBar(bot);
+        SWTBotShell colorPaletteShell = bot.shell(Messages.ColorPalettePopup_title);
+        colorPaletteShell.bot().buttonWithTooltip("{114, 159, 207}").click();
         RGBValues backgroundColor = createDefaultBgColor();
-        RGBValues foregroundColor = createColor(155, 199, 204);
+        RGBValues foregroundColor = createColor(114, 159, 207);
 
         checkHeader(new HeaderData(LIFELINE_B, bounds.x, bounds.width, backgroundColor, foregroundColor), 1);
     }

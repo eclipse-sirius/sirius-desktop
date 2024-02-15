@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and other.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES and other.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -149,6 +149,7 @@ import org.eclipse.swtbot.swt.finder.widgets.AbstractSWTBot;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotCCombo;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotCheckBox;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
@@ -417,7 +418,8 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
             if (gmfStyleEAttribute == NotationPackage.Literals.FILL_STYLE__FILL_COLOR) {
                 // FIXME : the fillColor doesn't works for TextEditPart
                 if (!(swtBotGefEditPart.part() instanceof TextEditPart)) {
-                    editor.bot().toolbarDropDownButtonWithTooltip("Fill &Color").menuItem("Magenta").click();
+                    SWTBotShell paletteShell = SWTBotSiriusHelper.changeFillColorToolbarMenu(bot);
+                    paletteShell.bot().buttonWithTooltip("{239, 41, 41}").click();
                     SWTBotUtils.waitAllUiEvents();
                     customized = true;
                 }
@@ -442,7 +444,8 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
                     customized = true;
                 }
             } else if (gmfStyleEAttribute == NotationPackage.Literals.LINE_STYLE__LINE_COLOR) {
-                editor.bot().toolbarDropDownButtonWithTooltip("Li&ne Color").menuItem("Magenta").click();
+                SWTBotShell paletteShell = SWTBotSiriusHelper.changeLineColorToolbarMenu(bot);
+                paletteShell.bot().buttonWithTooltip("{239, 41, 41}").click();
                 SWTBotUtils.waitAllUiEvents();
                 customized = true;
             } else if (gmfStyleEAttribute == NotationPackage.Literals.LINE_STYLE__LINE_WIDTH) {
@@ -461,7 +464,8 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
                     }
                 }
             } else if (gmfStyleEAttribute == NotationPackage.Literals.FONT_STYLE__FONT_COLOR) {
-                editor.bot().toolbarDropDownButtonWithTooltip("Font Color").menuItem("Magenta").click();
+                SWTBotShell paletteShell = SWTBotSiriusHelper.changeFontColorToolbarMenu(bot);
+            paletteShell.bot().buttonWithTooltip("{239, 41, 41}").click();
                 SWTBotUtils.waitAllUiEvents();
                 customized = true;
             } else if (gmfStyleEAttribute == NotationPackage.Literals.FONT_STYLE__FONT_NAME) {

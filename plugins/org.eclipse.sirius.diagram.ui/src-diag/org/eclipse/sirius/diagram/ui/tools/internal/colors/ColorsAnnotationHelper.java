@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.viewpoint.DAnalysis;
@@ -73,9 +74,7 @@ public final class ColorsAnnotationHelper {
                         AbstractColorCategoryManager.LINE_CUSTOM_COLORS_ANNOTATION_SOURCE_NAME, AbstractColorCategoryManager.LINE_SUGGESTED_COLORS_ANNOTATION_SOURCE_NAME };
                 for (String source : annotationSources) {
                     Optional<DAnnotationEntry> optAnnotation = getOrCreateColorAnnotationEntry(source);
-                    if (optAnnotation.isPresent()) {
-                        addColorAnnotation(optAnnotation.get());
-                    }
+                    optAnnotation.ifPresent(annotation -> addColorAnnotation(annotation));
                 }
             }
         });
@@ -133,8 +132,7 @@ public final class ColorsAnnotationHelper {
             @Override
             protected void doExecute() {
                 Optional<DAnnotationEntry> optColorsEntry = getOrCreateColorAnnotationEntry(colorsAnnotationSourceName);
-                if (optColorsEntry.isPresent()) {
-                    DAnnotationEntry colorsEntry = optColorsEntry.get();
+                optColorsEntry.ifPresent(colorsEntry -> {
                     List<String> stringColorsList = convertRGBToString(colorsList);
                     List<String> colorDetails = colorsEntry.getDetails();
                     colorDetails.clear();
@@ -143,7 +141,7 @@ public final class ColorsAnnotationHelper {
                     if (!colorDetails.isEmpty()) {
                         addColorAnnotation(colorsEntry);
                     }
-                }
+                });
             }
         });
     }
@@ -158,10 +156,10 @@ public final class ColorsAnnotationHelper {
     public List<RGB> getColorsDetails(String colorsAnnotationSourceName) {
         List<RGB> colors = new ArrayList<>();
         Optional<DAnnotationEntry> optAnnotationEntry = getColorAnnotationEntry(colorsAnnotationSourceName);
-        if (optAnnotationEntry.isPresent()) {
-            List<String> stringColors = optAnnotationEntry.get().getDetails();
-            colors.addAll(convertStringToRGB(stringColors));
-        }
+        optAnnotationEntry.ifPresent(annotationEntry -> {
+            EList<String> details = annotationEntry.getDetails();
+            colors.addAll(convertStringToRGB(details));
+        });
         return colors;
     }
 
@@ -210,8 +208,6 @@ public final class ColorsAnnotationHelper {
      *            the entry to add.
      */
     private void addColorAnnotation(DAnnotationEntry colorsEntry) {
-        if (this.optDanalysis.isPresent()) {
-            this.optDanalysis.get().getEAnnotations().add(colorsEntry);
-        }
+        this.optDanalysis.ifPresent(dAnalysis -> dAnalysis.getEAnnotations().add(colorsEntry));
     }
 }

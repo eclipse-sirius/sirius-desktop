@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="github-152" version="15.4.0.202401051836">
+  <ownedViewpoints name="github-152" label="github-152">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='github-152']/@ownedRepresentations[name='github-152']/@defaultLayer/@toolSections.1/@ownedTools[name='EPackageDrop']" name="github-152" domainClass="EPackage" enablePopupBars="true">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <defaultLayer name="Default">
+        <edgeMappings name="EReference Edge" semanticCandidatesExpression="aql:self.eAllContents()" sourceMapping="//@ownedViewpoints[name='github-152']/@ownedRepresentations[name='github-152']/@defaultLayer/@containerMappings[name='EPackage%20Container']/@borderedNodeMappings[name='EClass%20BorderNode']" targetMapping="//@ownedViewpoints[name='github-152']/@ownedRepresentations[name='github-152']/@defaultLayer/@containerMappings[name='EPackage%20Container']/@borderedNodeMappings[name='EClass%20BorderNode']" targetFinderExpression="aql:self.eReferenceType" sourceFinderExpression="aql:self.eContainer()" domainClass="EReference" useDomainElement="true">
+          <style targetArrow="InputClosedArrow">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.name">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="EPackage Container" semanticCandidatesExpression="aql:self.eSubpackages" createElements="false" domainClass="EPackage" dropDescriptions="//@ownedViewpoints[name='github-152']/@ownedRepresentations[name='github-152']/@defaultLayer/@toolSections.1/@ownedTools[name='EPackageDrop'] //@ownedViewpoints[name='github-152']/@ownedRepresentations[name='github-152']/@defaultLayer/@toolSections.1/@ownedTools[name='EClassDrop']" reusedContainerMappings="//@ownedViewpoints[name='github-152']/@ownedRepresentations[name='github-152']/@defaultLayer/@containerMappings[name='EPackage%20Container']">
+          <borderedNodeMappings name="EClass BorderNode" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" domainClass="EClass">
+            <style xsi:type="style:SquareDescription" showIcon="false" sizeComputationExpression="1" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" roundedCorner="true">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="CreationTools">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="EPackage" precondition="aql:container.oclIsTypeOf(ecore::EPackage)" containerMappings="//@ownedViewpoints[name='github-152']/@ownedRepresentations[name='github-152']/@defaultLayer/@containerMappings[name='EPackage%20Container']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EPackage" referenceName="eSubpackages">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'EPackage'+self.eSuperPackage.eSubpackages->size()"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="EClass" nodeMappings="//@ownedViewpoints[name='github-152']/@ownedRepresentations[name='github-152']/@defaultLayer/@containerMappings[name='EPackage%20Container']/@borderedNodeMappings[name='EClass%20BorderNode']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EClass" referenceName="eClassifiers">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'EClass'+self.ePackage.eClassifiers->filter(ecore::EClass)->size()"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="EReference" edgeMappings="//@ownedViewpoints[name='github-152']/@ownedRepresentations[name='github-152']/@defaultLayer/@edgeMappings[name='EReference%20Edge']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EReference" referenceName="eReferences">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="eType" valueExpression="var:target"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'ERef' + source.ePackage.eAllContents(ecore::EReference)->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="DragAndDropTools">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="EPackageDrop" precondition="aql:self.oclIsTypeOf(ecore::EPackage)" mappings="//@ownedViewpoints[name='github-152']/@ownedRepresentations[name='github-152']/@defaultLayer/@containerMappings[name='EPackage%20Container']" dragSource="BOTH">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newSemanticContainer">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="eSubpackages" valueExpression="var:element"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="EClassDrop" mappings="//@ownedViewpoints[name='github-152']/@ownedRepresentations[name='github-152']/@defaultLayer/@containerMappings[name='EPackage%20Container']/@borderedNodeMappings[name='EClass%20BorderNode']" dragSource="BOTH">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newSemanticContainer">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="eClassifiers" valueExpression="var:element"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+  <userColorsPalettes>
+    <entries xsi:type="description:UserFixedColor" red="252" green="82" blue="82" name="Red_1"/>
+    <entries xsi:type="description:UserFixedColor" red="47" green="198" blue="255" name="Blue_1"/>
+    <entries xsi:type="description:UserFixedColor" red="49" green="217" blue="0" name="Green_1"/>
+    <entries xsi:type="description:UserFixedColor" red="96" green="96" blue="96" name="DarkGray"/>
+    <entries xsi:type="description:UserFixedColor" red="180" green="180" blue="180" name="LightGray"/>
+    <entries xsi:type="description:UserFixedColor" red="255" green="134" blue="13" name="Orange"/>
+    <entries xsi:type="description:UserFixedColor" red="145" green="56" blue="241" name="Purple"/>
+    <entries xsi:type="description:UserFixedColor" red="60" green="255" blue="250" name="Blue_2"/>
+    <entries xsi:type="description:UserFixedColor" red="255" green="66" blue="255" name="Pink"/>
+    <entries xsi:type="description:UserFixedColor" red="255" green="255" blue="0" name="Yellow"/>
+    <entries xsi:type="description:UserFixedColor" red="128" green="64" blue="0" name="Brown"/>
+    <entries xsi:type="description:UserFixedColor" red="0" green="0" blue="0" name="Black"/>
+    <entries xsi:type="description:UserFixedColor" red="255" green="255" blue="255" name="White"/>
+    <entries xsi:type="description:UserFixedColor" red="247" green="51" blue="85" name="Red_2"/>
+    <entries xsi:type="description:UserFixedColor" red="0" green="202" blue="101" name="Green_2"/>
+  </userColorsPalettes>
+</description:Group>

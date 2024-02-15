@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -44,6 +44,7 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotCCombo;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotCheckBox;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotRadio;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToggleButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarToggleButton;
@@ -66,10 +67,6 @@ import com.google.common.collect.Lists;
  */
 @SuppressWarnings("nls")
 public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSiriusSwtBotGefTestCase {
-    /**
-     * 
-     */
-    private static final String BAD_CURRENT_COLOR_BUTTON = "The default button in the color palette does not corresponds to the current color";
 
     /**
      * Style Customized predicate
@@ -390,16 +387,13 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
      * @param buttonToToggleIndexInGroup
      *            the index of the button to toggle inside the group(It must corresponds to text, line or fill color for
      *            example)
-     * @param defaultButtonInColorPalette
-     *            the index of the button that should be toggled by default inside the color palette(each color in the
-     *            palette corresponds to a button)
      * @param initialStatePredicate
      *            the initial state predicate
      * @param stateWhenButtonIsCheckedPredicate
      *            the predicate that should be checked when the button is toggled
      */
     protected void doTestStyleCustomizationThroughColorSelectionFromAppearanceSection(SWTBotGefEditPart selectedEditPart, String buttonToToggleGroupName, int[] buttonToToggleIndexInGroup,
-            int[] defaultButtonInColorPalette, Predicate<SWTBotGefEditPart> initialStatePredicate, Predicate<SWTBotGefEditPart> stateWhenButtonIsCheckedPredicate) {
+            Predicate<SWTBotGefEditPart> initialStatePredicate, Predicate<SWTBotGefEditPart> stateWhenButtonIsCheckedPredicate) {
         SWTBot propertiesBot = selectAppearanceTab();
         SWTBotButton resetStyleCustomizationButton = getResetStylePropertiesToDefaultValuesButtonFromAppearanceTab();
         DDiagram parentDiagram = ((DDiagramElement) ((View) selectedEditPart.part().getModel()).getElement()).getParentDiagram();
@@ -415,14 +409,15 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
 
             // Step 2: Enable button and check result
             buttonFromAppearanceSectionToTest.click();
-            assertTrue(BAD_CURRENT_COLOR_BUTTON, bot.button(defaultButtonInColorPalette[i]).isActive());
+            SWTBotShell paletteShell = SWTBotSiriusHelper.getColorPalettePopupShell(bot);
+
             // Click on the GRAY button
-            bot.button(3).click();
+            paletteShell.bot().buttonWithTooltip("{209, 209, 209}").click();
             assertTrue("The button " + buttonFromAppearanceSectionToTest.getToolTipText() + " has been applied, so the initial state should not be checked anymore",
                     stateWhenButtonIsCheckedPredicate.apply(selectedEditPart));
             checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Arrays.asList(true), true);
             buttonFromAppearanceSectionToTest.click();
-            assertTrue(BAD_CURRENT_COLOR_BUTTON, bot.button(3).isActive());
+            paletteShell = SWTBotSiriusHelper.getColorPalettePopupShell(bot);
 
             // Step 3: "Reset style properties to default values" and check
             // result
@@ -433,9 +428,9 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
 
             // Step 4: re-enable button and check result
             buttonFromAppearanceSectionToTest.click();
-            assertTrue(BAD_CURRENT_COLOR_BUTTON, bot.button(defaultButtonInColorPalette[i]).isActive());
+            paletteShell = SWTBotSiriusHelper.getColorPalettePopupShell(bot);
             // Click on the GRAY button
-            bot.button(3).click();
+            paletteShell.bot().buttonWithTooltip("{209, 209, 209}").click();
             assertTrue("The button " + buttonFromAppearanceSectionToTest.getToolTipText() + " has been applied, so the initial state should not be checked anymore",
                     stateWhenButtonIsCheckedPredicate.apply(selectedEditPart));
             checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Arrays.asList(true), true);
@@ -800,7 +795,7 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
      *            the edit part to select
      * @param colorButtonName
      *            the name of the color selection button to click on
-     * @param newColorName
+     * @param newColor
      *            the new color name (e.g. "Yellow")
      * @param initialStatePredicate
      *            the initial state predicate
@@ -808,7 +803,7 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
      *            the predicate that should be checked when the button is toggled
      */
     protected void doTestStyleCustomizationThroughColorSelectionFromTabbar(SWTBotGefEditPart selectedEditPart, String colorButtonName, Predicate<SWTBotGefEditPart> initialStatePredicate,
-            final Predicate<SWTBotGefEditPart> stateWhenButtonIsCheckedPredicate, String newColorName) {
+            final Predicate<SWTBotGefEditPart> stateWhenButtonIsCheckedPredicate, String newColor) {
         editor.setFocus();
         selectedEditPart.select();
         SWTBotUtils.waitAllUiEvents();
@@ -822,8 +817,8 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
         checkButtonTabbarChecked(Lists.<SWTBotToolbarToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.<Boolean> newArrayList(), false);
 
         // Step 2: Enable button and check result
-        final SWTBotMenu menuItem = editor.bot().toolbarDropDownButtonWithTooltip(colorButtonName).menuItem(newColorName);
-        menuItem.click();
+        SWTBotShell paletteShell = SWTBotSiriusHelper.changeColorToolbarMenu(bot, colorButtonName);
+        paletteShell.bot().buttonWithTooltip(newColor).click();
         SWTBotUtils.waitAllUiEvents();
         assertTrue("The font color has been changed, so the initial state should not be checked anymore", stateWhenButtonIsCheckedPredicate.apply(selectedEditPart));
         checkButtonTabbarChecked(Lists.<SWTBotToolbarToggleButton> newArrayList(), resetStyleCustomizationButton, Arrays.asList(true), true);

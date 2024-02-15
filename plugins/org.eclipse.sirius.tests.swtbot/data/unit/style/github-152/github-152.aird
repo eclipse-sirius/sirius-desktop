@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis uid="_y44KYHPmEe6NVsJd--VKdg" selectedViews="_ZnO6cHP7Ee6NVsJd--VKdg _GtuD8K4pEe60h_scr5ys5Q" version="15.2.0.202303281325">
+    <semanticResources>github-152.ecore</semanticResources>
+    <eAnnotations xmi:type="description:DAnnotationEntry" uid="_x1ma8MnGEe6ttYO0lh63tw" source="FillCustomColors">
+      <details>255,0,0</details>
+    </eAnnotations>
+    <eAnnotations xmi:type="description:DAnnotationEntry" uid="_rH2wkMnGEe6ttYO0lh63tw" source="LineCustomColors">
+      <details>0,255,0</details>
+    </eAnnotations>
+    <eAnnotations xmi:type="description:DAnnotationEntry" uid="_tjvkMMnGEe6ttYO0lh63tw" source="FontCustomColors">
+      <details>0,0,255</details>
+    </eAnnotations>
+    <ownedViews xmi:type="viewpoint:DView" uid="_ZnO6cHP7Ee6NVsJd--VKdg">
+      <viewpoint xmi:type="description:Viewpoint" href="github-152.odesign#//@ownedViewpoints[name='github-152']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_a3ngEnQCEe6NVsJd--VKdg" name="github-152" repPath="#_a3ngEHQCEe6NVsJd--VKdg" changeId="1707745856838">
+        <description xmi:type="description_1:DiagramDescription" href="github-152.odesign#//@ownedViewpoints[name='github-152']/@ownedRepresentations[name='github-152']"/>
+        <target xmi:type="ecore:EPackage" href="github-152.ecore#/"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <diagram:DSemanticDiagram uid="_a3ngEHQCEe6NVsJd--VKdg">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_a3ngFHQCEe6NVsJd--VKdg" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_a3ngFXQCEe6NVsJd--VKdg" type="Sirius" element="_a3ngEHQCEe6NVsJd--VKdg" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_vyVFAMmtEe6rFY496RveYg" type="2002" element="_vyGbgMmtEe6rFY496RveYg">
+          <children xmi:type="notation:Node" xmi:id="_vyYIUMmtEe6rFY496RveYg" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_vyYvYMmtEe6rFY496RveYg" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_vyYvYcmtEe6rFY496RveYg"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_vyYvYsmtEe6rFY496RveYg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_vyVFAcmtEe6rFY496RveYg" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_vyVFAsmtEe6rFY496RveYg" x="360" y="100"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_a3ngFnQCEe6NVsJd--VKdg"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_a3ouMHQCEe6NVsJd--VKdg" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_a3ouMXQCEe6NVsJd--VKdg"/>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_vyGbgMmtEe6rFY496RveYg" name="EPackage1">
+      <target xmi:type="ecore:EPackage" href="github-152.ecore#//EPackage1"/>
+      <semanticElements xmi:type="ecore:EPackage" href="github-152.ecore#//EPackage1"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_vyKs8MmtEe6rFY496RveYg" labelSize="12" borderSize="1" borderSizeComputationExpression="1" backgroundColor="194,239,255" foregroundColor="255,255,255">
+        <description xmi:type="style:FlatContainerStyleDescription" href="github-152.odesign#//@ownedViewpoints[name='github-152']/@ownedRepresentations[name='github-152']/@defaultLayer/@containerMappings[name='EPackage%20Container']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="github-152.odesign#//@ownedViewpoints[name='github-152']/@ownedRepresentations[name='github-152']/@defaultLayer/@containerMappings[name='EPackage%20Container']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="github-152.odesign#//@ownedViewpoints[name='github-152']/@ownedRepresentations[name='github-152']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_a3ngEXQCEe6NVsJd--VKdg"/>
+    <activatedLayers xmi:type="description_1:Layer" href="github-152.odesign#//@ownedViewpoints[name='github-152']/@ownedRepresentations[name='github-152']/@defaultLayer"/>
+    <target xmi:type="ecore:EPackage" href="github-152.ecore#/"/>
+  </diagram:DSemanticDiagram>
+</xmi:XMI>
