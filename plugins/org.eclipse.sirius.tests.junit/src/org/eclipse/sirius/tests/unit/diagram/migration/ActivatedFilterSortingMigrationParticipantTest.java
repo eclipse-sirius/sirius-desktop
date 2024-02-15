@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -95,12 +95,12 @@ public class ActivatedFilterSortingMigrationParticipantTest extends SiriusTestCa
         // save should update the version.
         version = analysis.getVersion();
         assertFalse("The version tag should now be set telling that the migration was done.", RepresentationsFileMigrationService.getInstance().isMigrationNeeded(Version.parseVersion(version)));
-       
+
         DDiagram diagram = (DDiagram) analysis.getOwnedViews().get(0).getOwnedRepresentationDescriptors().get(0).getRepresentation();
         assertEquals("Activated filters have not been sorted.", "ClassFilter", diagram.getActivatedFilters().get(0).getName());
         assertEquals("Activated filters have not been sorted.", "ClassFilter2", diagram.getActivatedFilters().get(1).getName());
 
-        assertFalse(getErrorLoggersMessage(), doesAnErrorOccurs());
+        assertFalse(platformProblemsListener.getErrorLoggersMessage(), platformProblemsListener.doesAnErrorOccurs());
     }
 
     @Override

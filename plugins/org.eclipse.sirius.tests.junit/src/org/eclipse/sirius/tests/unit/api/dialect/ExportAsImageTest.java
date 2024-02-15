@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2022 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -238,8 +238,8 @@ public class ExportAsImageTest extends AbstractExportAsImageTest {
             String badMessageError = "Bad error message: " + e.getMessage();
             assertTrue(badMessageError, e.getMessage().contains(Messages.ExportAction_exportOtherError));
             assertTrue(badMessageError, e.getMessage().contains(representation.getName()));
-            assertTrue(doesAnErrorOccurs());
-            errors.clear();
+            assertTrue(platformProblemsListener.doesAnErrorOccurs());
+            platformProblemsListener.clearErrors();
         }
     }
 
@@ -278,8 +278,8 @@ public class ExportAsImageTest extends AbstractExportAsImageTest {
             String badMessageError = "Bad error message: " + e.getMessage();
             assertTrue(badMessageError, e.getMessage().contains(Messages.ExportAction_imagesTooLargeMessage));
             assertTrue(badMessageError, e.getMessage().contains(representationName));
-            assertTrue(doesAnErrorOccurs());
-            errors.clear();
+            assertTrue(platformProblemsListener.doesAnErrorOccurs());
+            platformProblemsListener.clearErrors();
         }
     }
 
@@ -291,12 +291,12 @@ public class ExportAsImageTest extends AbstractExportAsImageTest {
      * @throws Exception
      */
     public void testExportAsImageWithUnsynchronizedGMFModel() throws Exception {
-        setWarningCatchActive(true);
+        platformProblemsListener.setWarningCatchActive(true);
         try {
             DiagramExportResult exportResult = exportImage(getRepresentationFromDescriptors("unsyncGMFDiagExportAsImage"), ImageFileFormat.JPG, ExportFormat.ScalingPolicy.AUTO_SCALING);
             checkResultsWithAutoUpScale(exportResult);
         } finally {
-            setWarningCatchActive(false);
+            platformProblemsListener.setWarningCatchActive(false);
         }
     }
 
@@ -914,8 +914,7 @@ public class ExportAsImageTest extends AbstractExportAsImageTest {
         String outputPath = "/" + TEMPORARY_PROJECT_NAME + "/" + IMAGE_FILE_NAME + ImageFileFormat.PNG.getName().toLowerCase();
         String failureMessage = "The export should throw an IllegalArgumentException because the scale level is invalid.";
         try {
-            ExportAction exportAction = new ExportAction(session, Collections.singletonList(getRepresentation("new diagExportAsImage")), new Path(outputPath), ImageFileFormat.PNG, false,
-                    true);
+            ExportAction exportAction = new ExportAction(session, Collections.singletonList(getRepresentation("new diagExportAsImage")), new Path(outputPath), ImageFileFormat.PNG, false, true);
             exportAction.setDiagramScaleLevel(scaleLevel);
             fail(failureMessage);
         } catch (IllegalArgumentException iae) {

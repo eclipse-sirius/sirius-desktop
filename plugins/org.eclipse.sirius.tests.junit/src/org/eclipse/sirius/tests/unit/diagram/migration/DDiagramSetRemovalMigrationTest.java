@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -38,8 +38,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 /**
- * Test class to test removal of DDiagramSet during repair/migrate action of
- * aird file.
+ * Test class to test removal of DDiagramSet during repair/migrate action of aird file.
  * 
  * @author nlepine
  */
@@ -66,8 +65,8 @@ public class DDiagramSetRemovalMigrationTest extends SiriusTestCase {
     }
 
     /**
-     * Test that the data were not migrated on the repo. It allows to check the
-     * effect of the migration in the other test.
+     * Test that the data were not migrated on the repo. It allows to check the effect of the migration in the other
+     * test.
      */
     public void testMigrationIsNeededOnData() {
         Version diagramSplitVersion = DiagramRepresentationsFileMigrationParticipantV801.MIGRATION_VERSION;
@@ -153,7 +152,7 @@ public class DDiagramSetRemovalMigrationTest extends SiriusTestCase {
         version = analysis.getVersion();
         assertFalse("The version tag should now be set telling that the migration was done.", RepresentationsFileMigrationService.getInstance().isMigrationNeeded(Version.parseVersion(version)));
         checkFileContainDDiagramSet(analysis.eResource().getURI(), false, "After migration, the resource should not contains any DDiagramSet.");
-        assertFalse(getErrorLoggersMessage(), doesAnErrorOccurs());
+        assertFalse(platformProblemsListener.getErrorLoggersMessage(), platformProblemsListener.doesAnErrorOccurs());
     }
 
     @Override

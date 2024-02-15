@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2018 Obeo.
+ * Copyright (c) 2015, 2024 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -58,18 +58,15 @@ import com.google.common.collect.Lists;
 @RunWith(value = Parameterized.class)
 public class VSMVariableTypesValidationTest {
     /**
-     * This VSM is conform to some specific conventions to make it easy to test
-     * the type analysis of variables in a VSM.
+     * This VSM is conform to some specific conventions to make it easy to test the type analysis of variables in a VSM.
      * 
-     * Types are checked by having a ChangeContext operation with
-     * feature:someThing where someThing is specific to the expected type.
+     * Types are checked by having a ChangeContext operation with feature:someThing where someThing is specific to the
+     * expected type.
      * 
-     * feature:nonExistent is used through the VSM for expressions we expect to
-     * fail.
+     * feature:nonExistent is used through the VSM for expressions we expect to fail.
      * 
-     * There are two sections of tools : "ShouldBeValid" is supposed to have no
-     * validation error whatsoever "ShouldBeInvalid" is supposed to have *every
-     * feature:* expression in it failing with a validation error.
+     * There are two sections of tools : "ShouldBeValid" is supposed to have no validation error whatsoever
+     * "ShouldBeInvalid" is supposed to have *every feature:* expression in it failing with a validation error.
      * 
      */
     private static final String ORG_ECLIPSE_SIRIUS_TESTS_JUNIT_DATA_UNIT_VSM_VALIDATE_VARIABLE_TYPES_ODESIGN = "/org.eclipse.sirius.tests.junit/data/unit/vsm/validateVariableTypes.odesign";
@@ -109,8 +106,7 @@ public class VSMVariableTypesValidationTest {
     private static Group loadVSM(URI uri) {
         ResourceSet set = new ResourceSetImpl();
         /*
-         * we need an ECrossReferenceAdapter as some of the VSM implementation
-         * classes are needing it.
+         * we need an ECrossReferenceAdapter as some of the VSM implementation classes are needing it.
          */
         ECrossReferenceAdapter crossReferencer = new ECrossReferenceAdapter();
         set.eAdapters().add(crossReferencer);
@@ -124,15 +120,13 @@ public class VSMVariableTypesValidationTest {
     }
 
     /**
-     * This test triggers the validation on the current expression and checks
-     * the expectations regarding the reported statuses (there is an error, or
-     * not) are fulfilled. Such expectations are encoded by the use of
-     * 'nonExistent' in the expression when an error should be triggered or the
-     * fact that the englobing tool is in a section named 'ShouldBeInvalid'
-     * Otherwise we expects to have no validation error.
+     * This test triggers the validation on the current expression and checks the expectations regarding the reported
+     * statuses (there is an error, or not) are fulfilled. Such expectations are encoded by the use of 'nonExistent' in
+     * the expression when an error should be triggered or the fact that the englobing tool is in a section named
+     * 'ShouldBeInvalid' Otherwise we expects to have no validation error.
      * 
-     * Any expression which is a direct or indirect children of a tool section
-     * named 'Ignored' is not considered by this test.
+     * Any expression which is a direct or indirect children of a tool section named 'Ignored' is not considered by this
+     * test.
      */
     @Test
     public void matchesExpectationsRegardingValidation() {

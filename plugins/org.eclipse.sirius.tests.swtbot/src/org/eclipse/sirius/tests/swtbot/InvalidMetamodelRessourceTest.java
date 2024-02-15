@@ -105,7 +105,7 @@ public class InvalidMetamodelRessourceTest extends AbstractSiriusSwtBotGefTestCa
             logViewBot.close();
         } finally {
             // Reset to previous environment
-            errors.clear();
+            platformProblemsListener.clearErrors();
         }
     }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2022, 2023 THALES GLOBAL SERVICES.
+ * Copyright (c) 2022, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -93,7 +93,7 @@ public class IndirectDeleteEdgeWithLabelSelectedTest extends AbstractHideRevealD
 
         assertTrue("Edge label must be selected", editPartLabel.part() == ((IStructuredSelection) editor.getSelection()).iterator().next()); //$NON-NLS-1$
 
-        errors.clear();
+        platformProblemsListener.clearErrors();
 
         ICondition done = new OperationDoneCondition();
         DEdge edge = (DEdge) ((DEdgeNameEditPart) editPartLabel.part()).resolveDiagramElement();
@@ -116,7 +116,7 @@ public class IndirectDeleteEdgeWithLabelSelectedTest extends AbstractHideRevealD
         bot.waitUntil(done);
 
         Object selection = ((IStructuredSelection) editor.getSelection()).iterator().next(); // $NON-NLS-1$
-        assertFalse("Indirect edge deletion must not throw errors", doesAnErrorOccurs()); //$NON-NLS-1$
+        assertFalse("Indirect edge deletion must not throw errors", platformProblemsListener.doesAnErrorOccurs()); //$NON-NLS-1$
 
         assertNotSame("Edge label must not be selected", editPartLabel.part(), selection); //$NON-NLS-1$
         assertEquals("Diagram must be selected.", editor.getDiagramEditPart(), selection); //$NON-NLS-1$

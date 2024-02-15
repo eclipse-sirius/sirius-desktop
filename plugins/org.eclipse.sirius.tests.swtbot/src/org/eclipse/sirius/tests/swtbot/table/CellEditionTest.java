@@ -155,23 +155,24 @@ public class CellEditionTest extends AbstractSiriusSwtBotGefTestCase {
             assertEquals("MyClass1", items[lineIndexToTest].cell(0));
             assertEquals("false", items[lineIndexToTest].cell(columnIndexToTest));
 
-            setWarningCatchActive(true);
+            platformProblemsListener.setWarningCatchActive(true);
 
             items[lineIndexToTest].select();
             items[lineIndexToTest].doubleClick(columnIndexToTest);
             SWTBotUtils.waitAllUiEvents();
 
             // Check that the expected warning is displayed in the Error Log view
-            assertEquals("One warning must be displayed in Error Log view when using double click on a column using a CellEditor with a wrong qualified name.", 1, warnings.size());
+            assertEquals("One warning must be displayed in Error Log view when using double click on a column using a CellEditor with a wrong qualified name.", 1,
+                    platformProblemsListener.warningsCount());
             String expectedMessage = MessageFormat.format(Messages.DFeatureColumnEditingSupport_notJavaQualifiedName,
                     "org.eclipse.sirius.tests.swtbot.table.celleditorfactory.WrongQualifiedName/CellEditorFactory");
-            String message = warnings.values().stream().filter(status -> !status.isEmpty()).findFirst().get().iterator().next().getMessage();
+            String message = platformProblemsListener.getWarnings().values().stream().filter(status -> !status.isEmpty()).findFirst().get().iterator().next().getMessage();
             assertEquals("The displayed message in the Error Log view is not the expected one.", expectedMessage, message);
             // Check that the value has not been changed (in this case the Cell is not editable).
             assertEquals("The value must not be changed in case of a CellEditor with a wrong qualified name.", "false", items[lineIndexToTest].cell(columnIndexToTest));
         } finally {
-            setWarningCatchActive(false);
-            warnings.clear();
+            platformProblemsListener.setWarningCatchActive(false);
+            platformProblemsListener.clearWarnings();
             if (editor != null) {
                 editor.close();
             }
@@ -197,19 +198,20 @@ public class CellEditionTest extends AbstractSiriusSwtBotGefTestCase {
             assertEquals("NullMyClass4", items[lineIndexToTest].cell(0));
             assertEquals("false", items[lineIndexToTest].cell(columnIndexToTest));
 
-            setWarningCatchActive(true);
+            platformProblemsListener.setWarningCatchActive(true);
 
             items[lineIndexToTest].select();
             items[lineIndexToTest].doubleClick(columnIndexToTest);
             SWTBotUtils.waitAllUiEvents();
 
             // Check that there is no warning displayed in the Error Log view.
-            assertEquals("0 warning must be displayed in Error Log view when using double click on a column using a CellEditorFactory returning null as CellEditor.", 0, warnings.size());
+            assertEquals("0 warning must be displayed in Error Log view when using double click on a column using a CellEditorFactory returning null as CellEditor.", 0,
+                    platformProblemsListener.warningsCount());
             // Check that the value has not been changed (in this case the Cell is not editable).
             assertEquals("The value must not be changed in case of a null CellEditor returned by the CellEditorFactory.", "false", items[lineIndexToTest].cell(columnIndexToTest));
         } finally {
-            setWarningCatchActive(false);
-            warnings.clear();
+            platformProblemsListener.setWarningCatchActive(false);
+            platformProblemsListener.clearWarnings();
             if (editor != null) {
                 editor.close();
             }
@@ -235,7 +237,7 @@ public class CellEditionTest extends AbstractSiriusSwtBotGefTestCase {
             assertEquals("MyClass1", items[lineIndexToTest].cell(0));
             assertEquals("false", items[lineIndexToTest].cell(columnIndexToTest));
 
-            setWarningCatchActive(true);
+            platformProblemsListener.setWarningCatchActive(true);
 
             items[lineIndexToTest].select();
             items[lineIndexToTest].doubleClick(columnIndexToTest);
@@ -251,8 +253,8 @@ public class CellEditionTest extends AbstractSiriusSwtBotGefTestCase {
             // Check that the value has been changed (with the LabelEdit tool).
             assertEquals("true", items[lineIndexToTest].cell(columnIndexToTest));
         } finally {
-            setWarningCatchActive(false);
-            warnings.clear();
+            platformProblemsListener.setWarningCatchActive(false);
+            platformProblemsListener.clearWarnings();
             if (editor != null) {
                 editor.close();
             }
@@ -277,7 +279,7 @@ public class CellEditionTest extends AbstractSiriusSwtBotGefTestCase {
             assertEquals("MyClass1", items[lineIndexToTest].cell(0));
             assertEquals("false", items[lineIndexToTest].cell(columnIndexToTest));
 
-            setWarningCatchActive(true);
+            platformProblemsListener.setWarningCatchActive(true);
 
             items[lineIndexToTest].select();
             items[lineIndexToTest].doubleClick(columnIndexToTest);
@@ -293,8 +295,8 @@ public class CellEditionTest extends AbstractSiriusSwtBotGefTestCase {
             // Check that the value has been changed (with the combo box provided by the CellEditor tool).
             assertEquals("true", items[lineIndexToTest].cell(columnIndexToTest));
         } finally {
-            setWarningCatchActive(false);
-            warnings.clear();
+            platformProblemsListener.setWarningCatchActive(false);
+            platformProblemsListener.clearWarnings();
             if (editor != null) {
                 editor.close();
             }
@@ -362,7 +364,7 @@ public class CellEditionTest extends AbstractSiriusSwtBotGefTestCase {
             assertEquals("MyClass1", items[lineIndexToTest].cell(0));
             assertEquals("false", items[lineIndexToTest].cell(columnIndexToTest));
 
-            setWarningCatchActive(true);
+            platformProblemsListener.setWarningCatchActive(true);
 
             items[lineIndexToTest].select();
             items[lineIndexToTest].doubleClick(columnIndexToTest);
@@ -384,8 +386,8 @@ public class CellEditionTest extends AbstractSiriusSwtBotGefTestCase {
             // Check that the value has been changed (with the combo box provided by the CellEditor tool).
             assertEquals("true", items[lineIndexToTest].cell(columnIndexToTest));
         } finally {
-            setWarningCatchActive(false);
-            warnings.clear();
+            platformProblemsListener.setWarningCatchActive(false);
+            platformProblemsListener.clearWarnings();
             if (editor != null) {
                 editor.close();
             }
@@ -411,7 +413,7 @@ public class CellEditionTest extends AbstractSiriusSwtBotGefTestCase {
             assertEquals("SubstituteMyClass3", items[lineIndexToTest].cell(0));
             assertEquals("false", items[lineIndexToTest].cell(columnIndexToTest));
 
-            setWarningCatchActive(true);
+            platformProblemsListener.setWarningCatchActive(true);
 
             items[lineIndexToTest].select();
             items[lineIndexToTest].doubleClick(columnIndexToTest);
@@ -427,8 +429,8 @@ public class CellEditionTest extends AbstractSiriusSwtBotGefTestCase {
             // Check that the value has been changed (with the combo box provided by the CellEditor tool).
             assertEquals("true", items[lineIndexToTest].cell(columnIndexToTest));
         } finally {
-            setWarningCatchActive(false);
-            warnings.clear();
+            platformProblemsListener.setWarningCatchActive(false);
+            platformProblemsListener.clearWarnings();
             if (editor != null) {
                 editor.close();
             }
@@ -455,24 +457,25 @@ public class CellEditionTest extends AbstractSiriusSwtBotGefTestCase {
             assertEquals("MyClass1", items[lineIndexToTest].cell(0));
             assertEquals("false", items[lineIndexToTest].cell(columnIndexToTest));
 
-            setWarningCatchActive(true);
+            platformProblemsListener.setWarningCatchActive(true);
 
             items[lineIndexToTest].select();
             items[lineIndexToTest].doubleClick(columnIndexToTest);
             SWTBotUtils.waitAllUiEvents();
 
             // Check that the expected warning is displayed in the Error Log view
-            assertEquals("One warning must be displayed in Error Log view when using double click on a column using a CellEditor with an unexisting CellEditorFactory.", 1, warnings.size());
+            assertEquals("One warning must be displayed in Error Log view when using double click on a column using a CellEditor with an unexisting CellEditorFactory.", 1,
+                    platformProblemsListener.warningsCount());
             String qualifiedName = "org.eclipse.sirius.tests.swtbot.table.celleditorfactory.UnexistingCellEditorFactory";
             String expectedMessage = MessageFormat.format(Messages.DFeatureColumnEditingSupport_unusableCellEditor, qualifiedName,
                     MessageFormat.format(Messages.CelEditorFactoryManager_notFound, qualifiedName));
-            String message = warnings.values().stream().filter(status -> !status.isEmpty()).findFirst().get().iterator().next().getMessage();
+            String message = platformProblemsListener.getWarnings().values().stream().filter(status -> !status.isEmpty()).findFirst().get().iterator().next().getMessage();
             assertEquals("The displayed message in the Error Log view is not the expected one.", expectedMessage, message);
             // Check that the value has not been changed (in this case the Cell is not editable).
             assertEquals("The value must not be changed in case of a CellEditor with an unexisting CellEditorFactory.", "false", items[lineIndexToTest].cell(columnIndexToTest));
         } finally {
-            setWarningCatchActive(false);
-            warnings.clear();
+            platformProblemsListener.setWarningCatchActive(false);
+            platformProblemsListener.clearWarnings();
             if (editor != null) {
                 editor.close();
             }
@@ -499,23 +502,24 @@ public class CellEditionTest extends AbstractSiriusSwtBotGefTestCase {
             assertEquals("MyClass1", items[lineIndexToTest].cell(0));
             assertEquals("false", items[lineIndexToTest].cell(columnIndexToTest));
 
-            setWarningCatchActive(true);
+            platformProblemsListener.setWarningCatchActive(true);
             items[lineIndexToTest].select();
             items[lineIndexToTest].doubleClick(columnIndexToTest);
             SWTBotUtils.waitAllUiEvents();
 
             // Check that the expected warning is displayed in the Error Log view
-            assertEquals("One warning must be displayed in Error Log view when using double click on a column using a CellEditor that does not implement ITableCellEditorFactory.", 1, warnings.size());
+            assertEquals("One warning must be displayed in Error Log view when using double click on a column using a CellEditor that does not implement ITableCellEditorFactory.", 1,
+                    platformProblemsListener.warningsCount());
             String qualifiedName = "org.eclipse.sirius.tests.swtbot.table.celleditorfactory.NotATableCellEditorFactory";
             String expectedMessage = MessageFormat.format(Messages.DFeatureColumnEditingSupport_unusableCellEditor, qualifiedName,
                     MessageFormat.format(Messages.CelEditorFactoryManager_wrongImplementation, qualifiedName));
-            String message = warnings.values().stream().filter(status -> !status.isEmpty()).findFirst().get().iterator().next().getMessage();
+            String message = platformProblemsListener.getWarnings().values().stream().filter(status -> !status.isEmpty()).findFirst().get().iterator().next().getMessage();
             assertEquals("The displayed message in the Error Log view is not the expected one.", expectedMessage, message);
             // Check that the value has not been changed (in this case the Cell is not editable).
             assertEquals("The value must not be changed in case of a CellEditor that does not implement ITableCellEditorFactory.", "false", items[lineIndexToTest].cell(columnIndexToTest));
         } finally {
-            setWarningCatchActive(false);
-            warnings.clear();
+            platformProblemsListener.setWarningCatchActive(false);
+            platformProblemsListener.clearWarnings();
             if (editor != null) {
                 editor.close();
             }

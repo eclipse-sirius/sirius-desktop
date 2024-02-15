@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -57,8 +57,7 @@ import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 import org.junit.Assert;
 
 /**
- * Tests on different EditPart that label containing '\n' display text on
- * multilines.
+ * Tests on different EditPart that label containing '\n' display text on multilines.
  * 
  * @author edugueperoux
  */
@@ -114,8 +113,7 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that Label on Node with text containing '\n' are correctly displayed
-     * on representation opening.
+     * Test that Label on Node with text containing '\n' are correctly displayed on representation opening.
      * 
      * DNodeEditPart with label position : node
      */
@@ -124,8 +122,7 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that Label on Node with text containing '\n' are correctly displayed
-     * on representation opening.
+     * Test that Label on Node with text containing '\n' are correctly displayed on representation opening.
      * 
      * DNodeEditPart with label position : label
      */
@@ -134,8 +131,8 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that Label of a node border of an other node with text containing
-     * '\n' are correctly displayed on representation opening.
+     * Test that Label of a node border of an other node with text containing '\n' are correctly displayed on
+     * representation opening.
      * 
      * DNode2EditPart with label position : node
      */
@@ -144,8 +141,8 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that Label of a node border of an other node with text containing
-     * '\n' are correctly displayed on representation opening.
+     * Test that Label of a node border of an other node with text containing '\n' are correctly displayed on
+     * representation opening.
      * 
      * DNode2EditPart with label position : label
      */
@@ -154,8 +151,8 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that Label of a node in container with text containing '\n' are
-     * correctly displayed on representation opening.
+     * Test that Label of a node in container with text containing '\n' are correctly displayed on representation
+     * opening.
      * 
      * DNode3EditPart with label position : node
      */
@@ -164,8 +161,8 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that Label of a node in container with text containing '\n' are
-     * correctly displayed on representation opening.
+     * Test that Label of a node in container with text containing '\n' are correctly displayed on representation
+     * opening.
      * 
      * DNode3EditPart with label position : label
      */
@@ -174,8 +171,8 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that Label of a border node of a container with text containing '\n'
-     * are correctly displayed on representation opening.
+     * Test that Label of a border node of a container with text containing '\n' are correctly displayed on
+     * representation opening.
      * 
      * DNode4EditPart with label position : node
      */
@@ -184,8 +181,8 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that Label of a border node of a container with text containing '\n'
-     * are correctly displayed on representation opening.
+     * Test that Label of a border node of a container with text containing '\n' are correctly displayed on
+     * representation opening.
      * 
      * DNode4EditPart with label position : label
      */
@@ -231,8 +228,7 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that Label on ListContainer with text containing '\n' are correctly
-     * displayed on representation opening.
+     * Test that Label on ListContainer with text containing '\n' are correctly displayed on representation opening.
      */
     public void test_Label_Display_Multiple_Lines_With_ExistingLabel_OnListContainer() {
         openAndInitialiseForVP1810();
@@ -245,8 +241,7 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that Label on ListElement with text containing '\n' are correctly
-     * displayed on representation opening.
+     * Test that Label on ListElement with text containing '\n' are correctly displayed on representation opening.
      */
     public void test_Label_Display_Multiple_Lines_With_ExistingLabel_OnNodeListElement() {
         openAndInitialiseForVP1810();
@@ -258,8 +253,7 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that Label on Container with text containing '\n' are correctly
-     * displayed on representation opening.
+     * Test that Label on Container with text containing '\n' are correctly displayed on representation opening.
      */
     public void test_Label_Display_Multiple_Lines_With_ExistingLabel_OnContainer() {
         openAndInitialiseForVP1810();
@@ -272,8 +266,8 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that Label on Container in another container with text containing
-     * '\n' are correctly displayed on representation opening.
+     * Test that Label on Container in another container with text containing '\n' are correctly displayed on
+     * representation opening.
      */
     public void test_Label_Display_Multiple_Lines_With_ExistingLabel_OnContainerInContainer() {
         openAndInitialiseForVP1810();
@@ -286,8 +280,8 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that Label on List in another container with text containing '\n'
-     * are correctly displayed on representation opening.
+     * Test that Label on List in another container with text containing '\n' are correctly displayed on representation
+     * opening.
      */
     public void test_Label_Display_Multiple_Lines_With_ExistingLabel_OnListInContainer() {
         openAndInitialiseForVP1810();
@@ -300,8 +294,7 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that begin Label on edge with text containing '\n' are correctly
-     * displayed on representation opening.
+     * Test that begin Label on edge with text containing '\n' are correctly displayed on representation opening.
      */
     public void test_Label_Display_Multiple_Lines_With_Existing_Begin_Label_OnEdge() {
         openAndInitialiseForVP1810();
@@ -314,8 +307,7 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that center Label on edge with text containing '\n' are correctly
-     * displayed on representation opening.
+     * Test that center Label on edge with text containing '\n' are correctly displayed on representation opening.
      */
     public void test_Label_Display_Multiple_Lines_With_Existing_Center_Label_OnEdge() {
         openAndInitialiseForVP1810();
@@ -328,8 +320,7 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that end Label on edge with text containing '\n' are correctly
-     * displayed on representation opening.
+     * Test that end Label on edge with text containing '\n' are correctly displayed on representation opening.
      */
     public void test_Label_Display_Multiple_Lines_With_Existing_End_Label_OnEdge() {
         openAndInitialiseForVP1810();
@@ -352,8 +343,7 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that Label on Node with text containing '\n' are correctly displayed
-     * after direct edit.
+     * Test that Label on Node with text containing '\n' are correctly displayed after direct edit.
      * 
      * DNodeEditPart with label position : node
      */
@@ -362,8 +352,7 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that Label on Node with text containing '\n' are correctly displayed
-     * after direct edit.
+     * Test that Label on Node with text containing '\n' are correctly displayed after direct edit.
      * 
      * DNodeEditPart with label position : label
      */
@@ -372,8 +361,8 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that Label of a node border of an other node with text containing
-     * '\n' are correctly displayed after direct edit.
+     * Test that Label of a node border of an other node with text containing '\n' are correctly displayed after direct
+     * edit.
      * 
      * DNode2EditPart with label position : node
      */
@@ -382,8 +371,8 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that Label of a node border of an other node with text containing
-     * '\n' are correctly displayed after direct edit.
+     * Test that Label of a node border of an other node with text containing '\n' are correctly displayed after direct
+     * edit.
      * 
      * DNode2EditPart with label position : label
      */
@@ -392,8 +381,7 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that Label of a node in container with text containing '\n' are
-     * correctly displayed after direct edit.
+     * Test that Label of a node in container with text containing '\n' are correctly displayed after direct edit.
      * 
      * DNode3EditPart with label position : node
      */
@@ -402,8 +390,7 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that Label of a node in container with text containing '\n' are
-     * correctly displayed after direct edit.
+     * Test that Label of a node in container with text containing '\n' are correctly displayed after direct edit.
      * 
      * DNode3EditPart with label position : label
      */
@@ -412,8 +399,8 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that Label of a border node of a container with text containing '\n'
-     * are correctly displayed after direct edit.
+     * Test that Label of a border node of a container with text containing '\n' are correctly displayed after direct
+     * edit.
      * 
      * DNode4EditPart with label position : node
      */
@@ -422,8 +409,8 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that Label of a border node of a container with text containing '\n'
-     * are correctly displayed after direct edit.
+     * Test that Label of a border node of a container with text containing '\n' are correctly displayed after direct
+     * edit.
      * 
      * DNode4EditPart with label position : label
      */
@@ -476,8 +463,7 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that Label on ListContainer with text containing '\n' are correctly
-     * displayed after direct edit.
+     * Test that Label on ListContainer with text containing '\n' are correctly displayed after direct edit.
      */
     public void test_DirectEditSimpleToMultiline_OnListContainer() {
         openAndInitialiseForVP3382();
@@ -490,8 +476,7 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that Label on ListElement with text containing '\n' are correctly
-     * displayed after direct edit.
+     * Test that Label on ListElement with text containing '\n' are correctly displayed after direct edit.
      */
     public void test_DirectEditSimpleToMultiline_OnNodeListElement() {
         openAndInitialiseForVP3382();
@@ -503,8 +488,7 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that Label on Container with text containing '\n' are correctly
-     * displayed after direct edit.
+     * Test that Label on Container with text containing '\n' are correctly displayed after direct edit.
      */
     public void test_DirectEditSimpleToMultiline_OnContainer() {
         openAndInitialiseForVP3382();
@@ -517,8 +501,8 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that Label on Container in another container with text containing
-     * '\n' are correctly displayed after direct edit.
+     * Test that Label on Container in another container with text containing '\n' are correctly displayed after direct
+     * edit.
      */
     public void test_DirectEditSimpleToMultiline_OnContainerInContainer() {
         openAndInitialiseForVP3382();
@@ -531,8 +515,7 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that Label on List in another container with text containing '\n'
-     * are correctly displayed after direct edit.
+     * Test that Label on List in another container with text containing '\n' are correctly displayed after direct edit.
      */
     public void test_DirectEditSimpleToMultiline_OnListInContainer() {
         openAndInitialiseForVP3382();
@@ -545,8 +528,7 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that end Label on edge with text containing '\n' are correctly
-     * displayed after direct edit.
+     * Test that end Label on edge with text containing '\n' are correctly displayed after direct edit.
      */
     public void test_DirectEditSimpleToMultiline_Edge_Begin() {
         openAndInitialiseForVP3382();
@@ -566,8 +548,8 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
         String wrapText = viewpointWrapLabel.getText();
 
         final long oldTimeout = SWTBotPreferences.TIMEOUT;
-        boolean oldErrorCatchActive = isErrorCatchActive();
-        setErrorCatchActive(false);
+        boolean oldErrorCatchActive = platformProblemsListener.isErrorCatchActive();
+        platformProblemsListener.setErrorCatchActive(false);
         SWTBotPreferences.TIMEOUT = 1000;
         try {
             assertLabelMultiLines(nameFigure, 1);
@@ -579,15 +561,14 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
             assertEquals("DirectEdit should not be enabled on begin and end edge labels.", wrapText, viewpointWrapLabel.getText());
         } finally {
             SWTBotPreferences.TIMEOUT = oldTimeout;
-            setErrorCatchActive(oldErrorCatchActive);
+            platformProblemsListener.setErrorCatchActive(oldErrorCatchActive);
             editor.close();
             SWTBotUtils.waitAllUiEvents();
         }
     }
 
     /**
-     * Test that end Label on edge with text containing '\n' are correctly
-     * displayed after direct edit.
+     * Test that end Label on edge with text containing '\n' are correctly displayed after direct edit.
      */
     public void test_DirectEditSimpleToMultiline_Edge_Center() {
         openAndInitialiseForVP3382();
@@ -600,8 +581,7 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that end Label on edge with text containing '\n' are correctly
-     * displayed after direct edit.
+     * Test that end Label on edge with text containing '\n' are correctly displayed after direct edit.
      */
     public void test_DirectEditSimpleToMultiline_Edge_End() {
         openAndInitialiseForVP3382();
@@ -622,120 +602,110 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that the label of a node in the diagram already wrap in saved model
-     * will be wrap at the opening of the diagram.
+     * Test that the label of a node in the diagram already wrap in saved model will be wrap at the opening of the
+     * diagram.
      */
     public void testWrapNodeLabelAtOpenning() {
         testWrapLabelAtOpenning("Node", DNodeEditPart.class, 2);
     }
 
     /**
-     * Test that the label of a node in a container already wrap in saved model
-     * will be wrap at the opening of the diagram.
+     * Test that the label of a node in a container already wrap in saved model will be wrap at the opening of the
+     * diagram.
      */
     public void testWrapNodeInContainerLabelAtOpenning() {
         testWrapLabelAtOpenning("Node in container", DNode3EditPart.class, 2);
     }
 
     /**
-     * Test that the label of a container already wrap in saved model will be
-     * wrap at the opening of the diagram.
+     * Test that the label of a container already wrap in saved model will be wrap at the opening of the diagram.
      */
     public void testWrapContainerLabelAtOpenning() {
         testWrapLabelAtOpenning("Container", DNodeContainerEditPart.class, 2);
     }
 
     /**
-     * Test that the label of a container in a container already wrap in saved
-     * model will be wrap at the opening of the diagram.
+     * Test that the label of a container in a container already wrap in saved model will be wrap at the opening of the
+     * diagram.
      */
     public void testWrapContainerInContainerLabelAtOpenning() {
         testWrapLabelAtOpenning("Container in container", DNodeContainer2EditPart.class, 4);
     }
 
     /**
-     * Test that the label of a listContainer in the diagram already wrap in
-     * saved model will be wrap at the opening of the diagram.
+     * Test that the label of a listContainer in the diagram already wrap in saved model will be wrap at the opening of
+     * the diagram.
      */
     public void testWrapListContainerLabelAtOpenning() {
         testWrapLabelAtOpenning("ListContainer", DNodeListEditPart.class, 3);
     }
 
     /**
-     * Test that the label of a listContainer in a container already wrap in
-     * saved model will be wrap at the opening of the diagram.
+     * Test that the label of a listContainer in a container already wrap in saved model will be wrap at the opening of
+     * the diagram.
      */
     public void testWrapListContainerInContainerLabelAtOpenning() {
         testWrapLabelAtOpenning("ListContainer in container", DNodeList2EditPart.class, 4);
     }
 
     /**
-     * Test that the label of a list element already wrap in saved model will be
-     * wrap at the opening of the diagram.
+     * Test that the label of a list element already wrap in saved model will be wrap at the opening of the diagram.
      */
     public void testWrapElementListLabelAtOpenning() {
         testWrapLabelAtOpenning("Element List", DNodeListElementEditPart.class, 3);
     }
 
     /**
-     * Test that the label of a Node is correctly wrapped during a resize of a
-     * figure.
+     * Test that the label of a Node is correctly wrapped during a resize of a figure.
      */
     public void testWrapNodeLabelDuringResize() {
         testWrapLabelDuringResize("Node package with long name", DNodeEditPart.class, 2);
     }
 
     /**
-     * Test that the label of a Node in a container is correctly wrapped during
-     * a resize of a figure.
+     * Test that the label of a Node in a container is correctly wrapped during a resize of a figure.
      */
     public void testWrapNodeInContainerLabelDuringResize() {
         testWrapLabelDuringResize("Class With Very Very Long Name2", DNode3EditPart.class, 2);
     }
 
     /**
-     * Test that the label of a Container is correctly wrapped during a resize
-     * of a figure.
+     * Test that the label of a Container is correctly wrapped during a resize of a figure.
      */
     public void testWrapContainerLabelDuringResize() {
         testWrapLabelDuringResize("Container package with long name", DNodeContainerEditPart.class, 2);
     }
 
     /**
-     * Test that the label of a Container in a container is correctly wrapped
-     * during a resize of a figure.
+     * Test that the label of a Container in a container is correctly wrapped during a resize of a figure.
      */
     public void testWrapContainerInContainerLabelDuringResize() {
         testWrapLabelDuringResize("Container package with long name2", DNodeContainer2EditPart.class, 2);
     }
 
     /**
-     * Test that the label of a ListContainer is correctly wrapped during a
-     * resize of a figure.
+     * Test that the label of a ListContainer is correctly wrapped during a resize of a figure.
      */
     public void testWrapListContainerLabelDuringResize() {
         testWrapLabelDuringResize("ListContainer package with long name", DNodeListEditPart.class, 2);
     }
 
     /**
-     * Test that the label of a ListContainer in a container is correctly
-     * wrapped during a resize of a figure.
+     * Test that the label of a ListContainer in a container is correctly wrapped during a resize of a figure.
      */
     public void testWrapListContainerInContainerLabelDuringResize() {
         testWrapLabelDuringResize("ListContainer package with long name2", DNodeList2EditPart.class, 2);
     }
 
     /**
-     * Test that the label of a list element is correctly wrapped during a
-     * resize of a figure.
+     * Test that the label of a list element is correctly wrapped during a resize of a figure.
      */
     public void testWrapElementListLabelDuringResize() {
         testWrapLabelDuringResize("ListContainer package with long name", DNodeListEditPart.class, "NE Class With Very Very Long Name2", DNodeListElementEditPart.class, 2);
     }
 
     /**
-     * Test that the label of an element is correctly wrapped during a resize of
-     * a figure.
+     * Test that the label of an element is correctly wrapped during a resize of a figure.
      * 
      * @param label
      *            The label that is displayed.
@@ -749,8 +719,7 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that the label of an element is correctly wrapped during a resize of
-     * a figure.
+     * Test that the label of an element is correctly wrapped during a resize of a figure.
      * 
      * @param label
      *            The label that is displayed.
@@ -788,12 +757,10 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that the label of an element already wrap in saved model will be
-     * wrap at the opening of the diagram.
+     * Test that the label of an element already wrap in saved model will be wrap at the opening of the diagram.
      * 
      * @param middleLabel
-     *            The middle of the label that is displayed (with "Truncared "
-     *            as prefix and " At opening" as suffix).
+     *            The middle of the label that is displayed (with "Truncared " as prefix and " At opening" as suffix).
      * @param expectedEditPartType
      *            The type of the expected edit part
      * @param nbLinesExpected
@@ -816,8 +783,7 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
      *            the Label {@link IFigure} on which do the assertion
      * 
      * @param i
-     *            the number of lines that the labelFigure should splits the
-     *            text
+     *            the number of lines that the labelFigure should splits the text
      */
     private void assertLabelMultiLines(IFigure labelFigureOrParent, int nbLinesExpected) {
 

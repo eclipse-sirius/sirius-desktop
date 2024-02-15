@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019, 2023 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -164,7 +164,7 @@ public class EmptyPropertyViewAfterDeletionTest extends AbstractSiriusSwtBotGefT
         checkNotEmptyPropertyTabs();
 
         // Delete when VP-2014 will be resolved
-        setErrorCatchActive(false);
+        platformProblemsListener.setErrorCatchActive(false);
         // Redo
         redo();
 
@@ -245,7 +245,7 @@ public class EmptyPropertyViewAfterDeletionTest extends AbstractSiriusSwtBotGefT
         checkNotEmptyPropertyTabs();
 
         // Delete when VP-2014 will be resolved
-        setErrorCatchActive(false);
+        platformProblemsListener.setErrorCatchActive(false);
 
         // Redo
         redo();

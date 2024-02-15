@@ -717,7 +717,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
     }
 
     private void testSetWkpImageStyleCancel(String name, Class<? extends IGraphicalEditPart> type, boolean tabbar) throws Exception {
-        startToListenErrorLog(true, true);
+        platformProblemsListener.startToListenErrorLog(false, true, true);
 
         SWTBotGefEditPart botPart = selectAndCheckEditPart(name, type);
 
@@ -733,7 +733,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
         assertNotNull(cancelCustomButton);
         assertFalse(cancelCustomButton.isEnabled());
 
-        assertFalse("An error occurs during this test.", doesAWarningOccurs() || doesAnErrorOccurs());
+        assertFalse("An error occurs during this test.", platformProblemsListener.doesAWarningOccurs() || platformProblemsListener.doesAnErrorOccurs());
     }
 
     private void testSetWkpImageStyleDisabled(String name, Class<? extends IGraphicalEditPart> type, boolean tabbar) throws Exception {
@@ -875,7 +875,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
             wkpImageButton = getSetStyleToWorkspaceImageButton(tabbar, true);
         }
 
-        assertFalse("No message should be log in error log after a change of image:" + getErrorLoggersMessage(), doesAnErrorOccurs());
+        assertFalse("No message should be log in error log after a change of image:" + platformProblemsListener.getErrorLoggersMessage(), platformProblemsListener.doesAnErrorOccurs());
         checkCustom(part, true);
     }
 

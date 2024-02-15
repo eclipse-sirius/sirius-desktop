@@ -305,9 +305,9 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
 
         editor.click(editor.getEditPart("Class"));
         editor.select(editor.getEditPart("Class"));
-        boolean previousWarningCatchActiveStatus = isWarningCatchActive();
-        warnings.clear();
-        setWarningCatchActive(true);
+        boolean previousWarningCatchActiveStatus = platformProblemsListener.isWarningCatchActive();
+        platformProblemsListener.clearWarnings();
+        platformProblemsListener.setWarningCatchActive(true);
         try {
             try {
                 editor.clickContextMenu("myActionInGroupWithBlankLocationURI");
@@ -315,20 +315,20 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
                 // Expected, check that a warning has been displayed
                 String expectedMessage = MessageFormat.format(Messages.Group_Not_Displayed, "groupWithBlankLocationURI",
                         MessageFormat.format(Messages.LocationURI_ParsePb_Blank, LocationURI.MENU_SCHEME, LocationURI.TABBAR_SCHEME)) + ": ";
-                if (doesAWarningOccurs()) {
-                    if (warningsCount() == 1) {
-                        String message = warnings.values().stream().filter(status -> !status.isEmpty()).findFirst().get().iterator().next().getMessage();
+                if (platformProblemsListener.doesAWarningOccurs()) {
+                    if (platformProblemsListener.warningsCount() == 1) {
+                        String message = platformProblemsListener.getWarnings().values().stream().filter(status -> !status.isEmpty()).findFirst().get().iterator().next().getMessage();
                         assertEquals("The warning concerning the group with blank locationUri should use a specific message.", expectedMessage, message);
                     } else {
-                        fail("One warning is expected concerning the group with blank locationUri, but was " + warningsCount() + ".");
+                        fail("One warning is expected concerning the group with blank locationUri, but was " + platformProblemsListener.warningsCount() + ".");
                     }
                 } else {
                     fail("One warning is expected concerning the group with blank locationUri, but was 0.");
                 }
             }
         } finally {
-            setWarningCatchActive(previousWarningCatchActiveStatus);
-            warnings.clear();
+            platformProblemsListener.setWarningCatchActive(previousWarningCatchActiveStatus);
+            platformProblemsListener.clearWarnings();
         }
     }
 
@@ -342,9 +342,9 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
 
         editor.click(editor.getEditPart("sub package"));
         editor.select(editor.getSelectableEditPart("sub package"));
-        boolean previousWarningCatchActiveStatus = isWarningCatchActive();
-        warnings.clear();
-        setWarningCatchActive(true);
+        boolean previousWarningCatchActiveStatus = platformProblemsListener.isWarningCatchActive();
+        platformProblemsListener.clearWarnings();
+        platformProblemsListener.setWarningCatchActive(true);
         try {
             try {
                 editor.clickContextMenu("myActionInGroupInPopupMenuWithLocationURI");
@@ -352,20 +352,20 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
                 // Expected, check that a warning has been displayed
                 String expectedMessage = MessageFormat.format(Messages.Group_Not_Displayed, "groupInPopupMenuWithLocationURI",
                         MessageFormat.format(org.eclipse.sirius.tools.api.Messages.Constraint_validNullLocationURIForGroupInPopupMenuConstraint_message, "aNotBlankLocationURI"));
-                if (doesAWarningOccurs()) {
-                    if (warningsCount() == 1) {
-                        String message = warnings.values().stream().filter(status -> !status.isEmpty()).findFirst().get().iterator().next().getMessage();
+                if (platformProblemsListener.doesAWarningOccurs()) {
+                    if (platformProblemsListener.warningsCount() == 1) {
+                        String message = platformProblemsListener.getWarnings().values().stream().filter(status -> !status.isEmpty()).findFirst().get().iterator().next().getMessage();
                         assertEquals("The warning concerning the group with blank locationUri should use a specific message.", expectedMessage, message);
                     } else {
-                        fail("One warning is expected concerning the group with locationUri in a popup menu, but was " + warningsCount() + ".");
+                        fail("One warning is expected concerning the group with locationUri in a popup menu, but was " + platformProblemsListener.warningsCount() + ".");
                     }
                 } else {
                     fail("One warning is expected concerning the group with locationUri in a popup menu, but was 0.");
                 }
             }
         } finally {
-            setWarningCatchActive(previousWarningCatchActiveStatus);
-            warnings.clear();
+            platformProblemsListener.setWarningCatchActive(previousWarningCatchActiveStatus);
+            platformProblemsListener.clearWarnings();
         }
     }
 

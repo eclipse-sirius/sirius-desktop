@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -57,7 +57,7 @@ public class DeleteMultipleConnectorStyleMigrationParticipantTest extends Sirius
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        setInfoCatchActive(true);
+        platformProblemsListener.setInfoCatchActive(true);
         genericSetUp();
         copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, PATH, SEMANTIC_MODEL_FILENAME, SESSION_RESOURCE_NAME);
         URI sessionResourceURI = URI.createPlatformResourceURI(SiriusTestCase.TEMPORARY_PROJECT_NAME + "/" + SESSION_RESOURCE_NAME, true);
@@ -67,8 +67,8 @@ public class DeleteMultipleConnectorStyleMigrationParticipantTest extends Sirius
     }
 
     /**
-     * Test that the data were not migrated on the repository. It allows to
-     * check the effect of the migration in the other test.
+     * Test that the data were not migrated on the repository. It allows to check the effect of the migration in the
+     * other test.
      */
     public void testMigrationIsNeededOnData() {
         Version migrationVersion = new DeleteMultipleConnectorStyleMigrationParticipant().getMigrationVersion();
@@ -77,7 +77,7 @@ public class DeleteMultipleConnectorStyleMigrationParticipantTest extends Sirius
         Version loadedVersion = checkRepresentationFileMigrationStatus(URI.createPlatformResourceURI(SiriusTestCase.TEMPORARY_PROJECT_NAME + "/" + SESSION_RESOURCE_NAME, true), true);
         assertTrue("The migration must be required on test data.", migrationVersion.compareTo(loadedVersion) > 0);
 
-        String infoLoggersMessage = getInfoLoggersMessage();
+        String infoLoggersMessage = platformProblemsListener.getInfoLoggersMessage();
         assertTrue("The log does not contain information about this migration.", infoLoggersMessage.contains(Messages.DeleteMultipleConnectorMigrationParticipant_title));
         assertTrue("The log does not contain details about this migration.", infoLoggersMessage.contains("connectors style of some edges have been deleted because only one is required"));
     }
@@ -94,8 +94,8 @@ public class DeleteMultipleConnectorStyleMigrationParticipantTest extends Sirius
     }
 
     /**
-     * Check that edge have correct number of Connector Style which implies that
-     * multiple connector Style have been removed.
+     * Check that edge have correct number of Connector Style which implies that multiple connector Style have been
+     * removed.
      * 
      * @param diagram
      *            the migrated diagram to check

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018  THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2024  THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -87,7 +87,7 @@ public class DeleteTableColumnTest extends AbstractTreeSiriusSWTBotGefTestCase {
 
         // Press a key and check that it does not raise an exception
         SWTBotUtils.pressKeyboardKey(tree.widget, SWT.CTRL);
-        Assert.assertFalse("Pressing a key after a column deletion should not raise exceptions", doesAnErrorOccurs());
+        Assert.assertFalse("Pressing a key after a column deletion should not raise exceptions", platformProblemsListener.doesAnErrorOccurs());
     }
 
     @Override

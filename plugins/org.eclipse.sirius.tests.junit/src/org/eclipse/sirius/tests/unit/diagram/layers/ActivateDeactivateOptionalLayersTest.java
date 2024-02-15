@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -34,8 +34,7 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.ui.PlatformUI;
 
 /**
- * Test that the activation-deactivation of the optional layer does not generate
- * errors.
+ * Test that the activation-deactivation of the optional layer does not generate platformProblemsListener.getErrors().
  * 
  * @author jdupont
  * 
@@ -55,14 +54,14 @@ public class ActivateDeactivateOptionalLayersTest extends SiriusDiagramTestCase 
         super.setUp();
         genericSetUp(SEMANTIC_MODEL_PATH, MODELER_PATH);
         initViewpoint(VIEWPOINT_NAME);
-        setErrorCatchActive(true);
+        platformProblemsListener.setErrorCatchActive(true);
     }
 
     /**
      * Test that there is no error when activate-deactivate the layer.
      */
     public void testActivateDeactivateOptionalLayer() {
-        assertTrue("The error Catch should be activate", isErrorCatchActive());
+        assertTrue("The error Catch should be activate", platformProblemsListener.isErrorCatchActive());
         DDiagram diagram = (DDiagram) getRepresentations(TEST_CLASS_DIAGRAM).toArray()[0];
         refresh(diagram);
         // Open editor
@@ -80,13 +79,12 @@ public class ActivateDeactivateOptionalLayersTest extends SiriusDiagramTestCase 
         activateLayer(optionalLayer, diagram);
         deactivateLayer(optionalLayer, diagram);
 
-        //When the suite is called with the skipUnreliable option, the error catch is not checked.
-        assertFalse("There shoud be no error. " + getErrorLoggersMessage(), doesAnErrorOccurs());
+        // When the suite is called with the skipUnreliable option, the error catch is not checked.
+        assertFalse("There shoud be no error. " + platformProblemsListener.getErrorLoggersMessage(), platformProblemsListener.doesAnErrorOccurs());
     }
 
     /**
-     * Deactivate the layer and check that the edge is no visible after this
-     * action.
+     * Deactivate the layer and check that the edge is no visible after this action.
      * 
      * @param layer
      *            the Layer to deactivate
@@ -114,6 +112,7 @@ public class ActivateDeactivateOptionalLayersTest extends SiriusDiagramTestCase 
         // to launch the ActivateLayer command.
         if (layer != null && !diagram.getActivatedLayers().contains(layer)) {
             IRunnableWithProgress runnable = new IRunnableWithProgress() {
+                @Override
                 public void run(final IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
                     TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(diagram);
                     Command changeActivatedLayersCmd = new ChangeLayerActivationCommand(domain, diagram, layer, monitor);

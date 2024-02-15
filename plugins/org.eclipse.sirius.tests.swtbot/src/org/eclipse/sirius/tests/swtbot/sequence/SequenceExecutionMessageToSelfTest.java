@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -36,8 +36,8 @@ public class SequenceExecutionMessageToSelfTest extends AbstractDefaultModelSequ
     }
 
     /**
-     * Test of VP-1335. Create a sync call that contains a reflexive sync call.
-     * Validate that it is possible to select all and delete without NPE.
+     * Test of VP-1335. Create a sync call that contains a reflexive sync call. Validate that it is possible to select
+     * all and delete without NPE.
      * 
      * @throws Exception
      *             Test error.
@@ -46,7 +46,7 @@ public class SequenceExecutionMessageToSelfTest extends AbstractDefaultModelSequ
         if (TestsUtil.shouldSkipUnreliableTests()) {
             return;
         }
-        startToListenErrorLog(true, true);
+        platformProblemsListener.startToListenErrorLog(false, true, true);
 
         editor.setFocus();
         maximizeEditor(editor);
@@ -140,7 +140,7 @@ public class SequenceExecutionMessageToSelfTest extends AbstractDefaultModelSequ
             bot.waitUntil(checkDescendants);
         } finally {
             editor.restore();
-            assertFalse(doesAnErrorOccurs() || doesAWarningOccurs());
+            assertFalse(platformProblemsListener.doesAnErrorOccurs() || platformProblemsListener.doesAWarningOccurs());
         }
     }
 

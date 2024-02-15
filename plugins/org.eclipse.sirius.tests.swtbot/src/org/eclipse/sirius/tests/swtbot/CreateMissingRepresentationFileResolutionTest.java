@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 Obeo.
+ * Copyright (c) 2018, 2024 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -38,7 +38,6 @@ import com.google.common.collect.Sets;
  */
 public class CreateMissingRepresentationFileResolutionTest extends AbstractScenarioTestCase {
 
-
     private static final String DATA_UNIT_DIR = "/data/unit/editors/traceability/vp1038/";
 
     private static final String SEMANTIC_MODEL_PATH = "vp1038.ecore";
@@ -54,7 +53,7 @@ public class CreateMissingRepresentationFileResolutionTest extends AbstractScena
      * @return true if one error occurred.
      */
     protected synchronized boolean doesAnErrorOccurs() {
-        return errorsCount() != 1;
+        return platformProblemsListener.errorsCount() != 1;
     }
 
     /**

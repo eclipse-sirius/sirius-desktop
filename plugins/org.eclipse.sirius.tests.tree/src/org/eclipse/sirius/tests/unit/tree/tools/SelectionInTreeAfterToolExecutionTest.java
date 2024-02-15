@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2022 Obeo.
+ * Copyright (c) 2015, 2024 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -198,7 +198,7 @@ public class SelectionInTreeAfterToolExecutionTest extends AbstractToolDescripti
         changeSelectionExpression(tool, "[container->including(element)->including(root)/]", false);
         applyTreeItemCreationTool(tool_Name, dTreeItem, dTreeItem.getTarget());
 
-        assertFalse("An error occurred during runtime execution of ElementsToSelect expression", doesAnErrorOccurs());
+        assertFalse("An error occurred during runtime execution of ElementsToSelect expression", platformProblemsListener.doesAnErrorOccurs());
     }
 
     @Override

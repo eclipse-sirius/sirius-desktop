@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2019 Obeo
+ * Copyright (c) 2018, 2024 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -109,7 +109,7 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
 
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
-        setErrorCatchActive(false);
+        platformProblemsListener.setErrorCatchActive(false);
 
         // Load the target platform, if not already done, to allow compilation
         // of the java services

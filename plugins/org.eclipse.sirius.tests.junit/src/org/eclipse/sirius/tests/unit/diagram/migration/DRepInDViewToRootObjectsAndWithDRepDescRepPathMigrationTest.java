@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -173,7 +173,7 @@ public class DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationTest extends
         checkDRepresentationDescriptor(analysis);
         assertEquals("Bad DRepresentationDescriptor number", analysis.getOwnedViews().stream().flatMap(view -> view.getOwnedRepresentationDescriptors().stream()).count(), 3);
 
-        assertFalse(getErrorLoggersMessage(), doesAnErrorOccurs());
+        assertFalse(platformProblemsListener.getErrorLoggersMessage(), platformProblemsListener.doesAnErrorOccurs());
     }
 
     private void checkDRepresentationDescriptor(DAnalysis dAnalysis) {

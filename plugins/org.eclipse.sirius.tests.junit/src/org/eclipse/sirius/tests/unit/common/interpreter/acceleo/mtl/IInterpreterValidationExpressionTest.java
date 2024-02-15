@@ -20,7 +20,6 @@ import java.util.List;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.Diagnostic;
@@ -78,7 +77,7 @@ import com.google.common.collect.Iterables;
 
 /**
  * 
- * Ensures that Acceleo3 expressions validation raises the expected errors.
+ * Ensures that Acceleo3 expressions validation raises the expected platformProblemsListener.getErrors().
  * 
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
  * 
@@ -108,6 +107,10 @@ public class IInterpreterValidationExpressionTest extends SiriusDiagramTestCase 
     private SequenceDiagramDescription sequenceDiagramAcceleo3;
 
     private IWorkbenchPage page;
+
+    {
+        platformProblemsListener.addErrorExclusion(status -> status.getMessage().startsWith("Compilation error"));
+    }
 
     /**
      * 
@@ -165,7 +168,7 @@ public class IInterpreterValidationExpressionTest extends SiriusDiagramTestCase 
     }
 
     /**
-     * Ensures that Acceleo3 expressions validation raises the expected errors.
+     * Ensures that Acceleo3 expressions validation raises the expected platformProblemsListener.getErrors().
      */
     public void testValidationExpressionWithAcceleo3OnNodeMappings() {
         Layer acceleo3Layer = getLayer(diagramEntitiesAcceleo3, "Default");
@@ -179,7 +182,7 @@ public class IInterpreterValidationExpressionTest extends SiriusDiagramTestCase 
     }
 
     /**
-     * Ensures that Acceleo3 expressions validation raises the expected errors.
+     * Ensures that Acceleo3 expressions validation raises the expected platformProblemsListener.getErrors().
      */
     public void testValidationExpressionWithAcceleo3OnNodeMappingsWithinvalidFeatureDomainClass() {
         Layer acceleo3Layer = getLayer(diagramEntitiesAcceleo3, "Default");
@@ -197,7 +200,7 @@ public class IInterpreterValidationExpressionTest extends SiriusDiagramTestCase 
     }
 
     /**
-     * Ensures that Acceleo3 expressions validation raises the expected errors.
+     * Ensures that Acceleo3 expressions validation raises the expected platformProblemsListener.getErrors().
      */
     public void testValidationExpressionWithAcceleo3OnRelationBasedEdgeMapping() {
         Layer acceleo3Layer = getLayer(diagramEntitiesAcceleo3, "Default");
@@ -215,7 +218,7 @@ public class IInterpreterValidationExpressionTest extends SiriusDiagramTestCase 
     }
 
     /**
-     * Ensures that Acceleo3 expressions validation raises the expected errors.
+     * Ensures that Acceleo3 expressions validation raises the expected platformProblemsListener.getErrors().
      */
     public void testValidationExpressionWithAcceleo3OnConditionalStyle() {
         Layer acceleo3Layer = getLayer(diagramEntitiesAcceleo3, "Default");
@@ -226,7 +229,7 @@ public class IInterpreterValidationExpressionTest extends SiriusDiagramTestCase 
     }
 
     /**
-     * Ensures that Acceleo3 expressions validation raises the expected errors.
+     * Ensures that Acceleo3 expressions validation raises the expected platformProblemsListener.getErrors().
      */
     public void testValidationExpressionWithTool() {
         Layer acceleo3Layer = getLayer(diagramEntitiesAcceleo3, "Default");
@@ -236,7 +239,7 @@ public class IInterpreterValidationExpressionTest extends SiriusDiagramTestCase 
     }
 
     /**
-     * Ensures that Acceleo3 expressions validation raises the expected errors.
+     * Ensures that Acceleo3 expressions validation raises the expected platformProblemsListener.getErrors().
      */
     public void testValidationExpressionWithAcceleo3OnGoToInsideCreateTool() {
         Layer acceleo3Layer = getLayer(diagramEntitiesAcceleo3, "Default");
@@ -253,7 +256,7 @@ public class IInterpreterValidationExpressionTest extends SiriusDiagramTestCase 
     }
 
     /**
-     * Ensures that Acceleo3 expressions validation raises the expected errors.
+     * Ensures that Acceleo3 expressions validation raises the expected platformProblemsListener.getErrors().
      */
     public void testValidationExpressionWithAcceleo3AndVariables() {
         Layer acceleo3Layer = getLayer(diagramEntitiesAcceleo3, "Default");
@@ -264,7 +267,7 @@ public class IInterpreterValidationExpressionTest extends SiriusDiagramTestCase 
     }
 
     /**
-     * Ensures that Acceleo3 expressions validation raises the expected errors.
+     * Ensures that Acceleo3 expressions validation raises the expected platformProblemsListener.getErrors().
      */
     public void testValidationExpressionWithAcceleo3SetValueInsideGoto() {
         Layer acceleo3Layer = getLayer(diagramEntitiesAcceleo3, "Default");
@@ -277,7 +280,7 @@ public class IInterpreterValidationExpressionTest extends SiriusDiagramTestCase 
     }
 
     /**
-     * Ensures that Acceleo3 expressions validation raises the expected errors.
+     * Ensures that Acceleo3 expressions validation raises the expected platformProblemsListener.getErrors().
      */
     public void testValidationExpressionWithAcceleo3OnAudits() {
         SemanticValidationRule rule = Iterables.filter(diagramEntitiesAcceleo3.getValidationSet().getAllRules(), SemanticValidationRule.class).iterator().next();
@@ -288,7 +291,7 @@ public class IInterpreterValidationExpressionTest extends SiriusDiagramTestCase 
     }
 
     /**
-     * Ensures that Acceleo3 expressions validation raises the expected errors.
+     * Ensures that Acceleo3 expressions validation raises the expected platformProblemsListener.getErrors().
      */
     public void testValidationExpressionWithAcceleo3OnLineMapping() {
         LineMapping lineMapping = tableClassesAcceleo3.getOwnedLineMappings().iterator().next();
@@ -297,7 +300,7 @@ public class IInterpreterValidationExpressionTest extends SiriusDiagramTestCase 
     }
 
     /**
-     * Ensures that Acceleo3 expressions validation raises the expected errors.
+     * Ensures that Acceleo3 expressions validation raises the expected platformProblemsListener.getErrors().
      */
     public void testValidationExpressionWithAcceleo3OnFeatureColumnMapping() {
         FeatureColumnMapping featureColumnMapping = tableClassesAcceleo3.getOwnedColumnMappings().iterator().next();
@@ -306,7 +309,7 @@ public class IInterpreterValidationExpressionTest extends SiriusDiagramTestCase 
     }
 
     /**
-     * Ensures that Acceleo3 expressions validation raises the expected errors.
+     * Ensures that Acceleo3 expressions validation raises the expected platformProblemsListener.getErrors().
      */
     public void testValidationExpressionWithAcceleo3OnLineForegroundConditionalStyle() {
         ForegroundConditionalStyle foregroundStyle = tableClassesAcceleo3.getOwnedLineMappings().iterator().next().getForegroundConditionalStyle().iterator().next();
@@ -315,7 +318,7 @@ public class IInterpreterValidationExpressionTest extends SiriusDiagramTestCase 
     }
 
     /**
-     * Ensures that Acceleo3 expressions validation raises the expected errors.
+     * Ensures that Acceleo3 expressions validation raises the expected platformProblemsListener.getErrors().
      */
     public void testValidationExpressionWithAcceleo3OnTreeItemMapping() {
         TreeItemMapping treeItemMapping = treeClassesAcceleo3.getSubItemMappings().iterator().next();
@@ -324,7 +327,7 @@ public class IInterpreterValidationExpressionTest extends SiriusDiagramTestCase 
     }
 
     /**
-     * Ensures that Acceleo3 expressions validation raises the expected errors.
+     * Ensures that Acceleo3 expressions validation raises the expected platformProblemsListener.getErrors().
      */
     public void testValidationExpressionWithAcceleo3OnTreeItemConditionalStyle() {
         ConditionalTreeItemStyleDescription treeItemStyle = treeClassesAcceleo3.getSubItemMappings().iterator().next().getConditionalStyles().iterator().next();
@@ -333,7 +336,7 @@ public class IInterpreterValidationExpressionTest extends SiriusDiagramTestCase 
     }
 
     /**
-     * Ensures that Acceleo3 expressions validation raises the expected errors.
+     * Ensures that Acceleo3 expressions validation raises the expected platformProblemsListener.getErrors().
      */
     public void testValidationExpressionWithAcceleo3OnSequenceDiagramInstanceRole() {
         InstanceRoleMapping instanceRole = (InstanceRoleMapping) sequenceDiagramAcceleo3.getDefaultLayer().getNodeMappings().iterator().next();
@@ -345,7 +348,7 @@ public class IInterpreterValidationExpressionTest extends SiriusDiagramTestCase 
     }
 
     /**
-     * Ensures that Acceleo3 expressions validation raises the expected errors.
+     * Ensures that Acceleo3 expressions validation raises the expected platformProblemsListener.getErrors().
      */
     public void testValidationExpressionWithAcceleo3OnSequenceDiagramExecution() {
         InstanceRoleMapping instanceRole = (InstanceRoleMapping) sequenceDiagramAcceleo3.getDefaultLayer().getNodeMappings().iterator().next();
@@ -362,7 +365,7 @@ public class IInterpreterValidationExpressionTest extends SiriusDiagramTestCase 
     }
 
     /**
-     * Ensures that Acceleo3 expressions validation raises the expected errors.
+     * Ensures that Acceleo3 expressions validation raises the expected platformProblemsListener.getErrors().
      */
     public void testValidationExpressionWithAcceleo3OnSequenceDiagramMessageEnd() {
         MessageMapping messageMapping = (MessageMapping) sequenceDiagramAcceleo3.getDefaultLayer().getEdgeMappings().iterator().next();
@@ -451,21 +454,4 @@ public class IInterpreterValidationExpressionTest extends SiriusDiagramTestCase 
         return layers.iterator().next();
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tests.support.api.SiriusTestCase#doesAnErrorOccurs()
-     */
-    @Override
-    protected synchronized boolean doesAnErrorOccurs() {
-        // Only validation errors should have been logged
-        boolean onlyValidationErrors = true;
-        for (List<IStatus> allErrors : errors.values()) {
-            for (IStatus status : allErrors) {
-                onlyValidationErrors = onlyValidationErrors && status.getMessage().startsWith("Compilation error");
-            }
-        }
-        return !onlyValidationErrors;
-    }
 }

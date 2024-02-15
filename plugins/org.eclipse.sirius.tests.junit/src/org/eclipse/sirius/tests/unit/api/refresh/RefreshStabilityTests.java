@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -57,8 +57,8 @@ public class RefreshStabilityTests extends SiriusDiagramTestCase {
     public void setUp() throws Exception {
         super.setUp();
 
-        clearErrors();
-        clearWarnings();
+        platformProblemsListener.clearErrors();
+        platformProblemsListener.clearWarnings();
 
         // register a custom RefreshExtensionProviderDescriptor so that the beforeRefresh method throw a NPE or CCE
         refreshExtensionProviderDescriptor = new RefreshExtensionProviderDescriptor(new ConfigurationElementHandle(null, 0) {
@@ -143,40 +143,40 @@ public class RefreshStabilityTests extends SiriusDiagramTestCase {
         changeSiriusPreference(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), true);
         copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, PATH2, AIRD_MODEL_FILENAME, SEMANTIC_MODEL_FILENAME);
 
-        setWarningCatchActive(true);
-        setErrorCatchActive(true);
+        platformProblemsListener.setWarningCatchActive(true);
+        platformProblemsListener.setErrorCatchActive(true);
 
         genericSetUp(Collections.singleton(TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_MODEL_FILENAME), Collections.emptyList(), TEMPORARY_PROJECT_NAME + "/" + AIRD_MODEL_FILENAME);
 
         // Open a representation that refreshes without error
         IEditorPart editor = openRepresentation("RefreshTest package entities");
-        assertFalse("A warning occur", doesAWarningOccurs());
+        assertFalse("A warning occur", platformProblemsListener.doesAWarningOccurs());
         DialectUIManager.INSTANCE.closeEditor(editor, false);
         TestsUtil.synchronizationWithUIThread();
 
         // Open a representation that raises a NPE in the refresh part
         editor = openRepresentation("RefreshTest package entitiesNPE");
-        assertTrue("A warning should have occurred. The NPE in the refresh should have been catched and logged", doesAWarningOccurs());
+        assertTrue("A warning should have occurred. The NPE in the refresh should have been catched and logged", platformProblemsListener.doesAWarningOccurs());
         DialectUIManager.INSTANCE.closeEditor(editor, false);
         TestsUtil.synchronizationWithUIThread();
 
         // Open a representation that raises a CCE in the refresh part
         editor = openRepresentation("RefreshTest package entitiesCCE");
-        assertTrue("A warning should have occurred. The CCE in the refresh should have been catched and logged", doesAWarningOccurs());
+        assertTrue("A warning should have occurred. The CCE in the refresh should have been catched and logged", platformProblemsListener.doesAWarningOccurs());
         DialectUIManager.INSTANCE.closeEditor(editor, false);
         TestsUtil.synchronizationWithUIThread();
 
         closeSession(session);
         TestsUtil.synchronizationWithUIThread();
 
-        clearWarnings();
+        platformProblemsListener.clearWarnings();
     }
 
     private IEditorPart openRepresentation(String name) {
         DRepresentation dRepresentation = getRepresentationsByName(name).get(0);
         IEditorPart editor = DialectUIManager.INSTANCE.openEditor(session, dRepresentation, new NullProgressMonitor());
         assertEquals("Bad session status", SessionStatus.SYNC, session.getStatus());
-        assertFalse("An error occurred", doesAnErrorOccurs());
+        assertFalse("An error occurred", platformProblemsListener.doesAnErrorOccurs());
         TestsUtil.synchronizationWithUIThread();
         return editor;
     }

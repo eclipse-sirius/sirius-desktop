@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -23,8 +23,7 @@ import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 
 /**
- * A test ensuring that the Acceleo MTL interpreter is able to compile
- * expressions using packages listed in the
+ * A test ensuring that the Acceleo MTL interpreter is able to compile expressions using packages listed in the
  * {@link DiagramDescription#getMetamodel()} feature.
  * 
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
@@ -54,16 +53,15 @@ public class AcceleoMTInterpreterOnPackageImportTests extends SiriusDiagramTestC
     protected void setUp() throws Exception {
         super.setUp();
         copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, TEST_FOLDER_PATH, VSM_PATH, SEMANTIC_MODEL_PATH, REPRESENTATION_FILE_PATH);
-        genericSetUp(Collections.singleton(TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_MODEL_PATH), Collections.singleton(TEMPORARY_PROJECT_NAME + "/" + VSM_PATH), TEMPORARY_PROJECT_NAME + "/"
-                + REPRESENTATION_FILE_PATH);
+        genericSetUp(Collections.singleton(TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_MODEL_PATH), Collections.singleton(TEMPORARY_PROJECT_NAME + "/" + VSM_PATH),
+                TEMPORARY_PROJECT_NAME + "/" + REPRESENTATION_FILE_PATH);
     }
 
     /**
-     * A test ensuring that the Acceleo MTL interpreter is able to compile
-     * expressions referencing the prefix of packages listed in the
-     * {@link DiagramDescription#getMetamodel()} feature.
+     * A test ensuring that the Acceleo MTL interpreter is able to compile expressions referencing the prefix of
+     * packages listed in the {@link DiagramDescription#getMetamodel()} feature.
      * 
-     * It also checks that not found packages will not leverage errors.
+     * It also checks that not found packages will not leverage platformProblemsListener.getErrors().
      */
     public void testPackageImportWithPrefix() {
         String descName = "DiagramReferencingMetamodels";
@@ -77,24 +75,25 @@ public class AcceleoMTInterpreterOnPackageImportTests extends SiriusDiagramTestC
     }
 
     /**
-     * A test ensuring that the Acceleo MTL interpreter is able to compile
-     * expressions referencing EClasses (without prefix) of packages listed in
-     * the {@link DiagramDescription#getMetamodel()} feature.
+     * A test ensuring that the Acceleo MTL interpreter is able to compile expressions referencing EClasses (without
+     * prefix) of packages listed in the {@link DiagramDescription#getMetamodel()} feature.
      */
     public void testPackageImportWithoutPrefix() {
         if (TestsUtil.shouldSkipUnreliableTests()) {
             /*
-    junit.framework.AssertionFailedError: No compilation error should have been raised by the diagram creation. Error(s) raised during test : org.eclipse.sirius.tests.unit.common.interpreter.acceleo.mtl.AcceleoMTInterpreterOnPackageImportTests
-    . Log Plugin : org.eclipse.core.runtime
-    . Error from plugin:org.eclipse.acceleo.parser, message: Compilation error for expression [self.eClassifiers->filter(Book)/] : Unrecognized variable: (Book), exception: null
-    . Error from plugin:org.eclipse.acceleo.parser, message: Compilation error for expression [self.eClassifiers->filter(Book)/] : Unrecognized variable: (Book), exception: null
-
-    at junit.framework.Assert.fail(Assert.java:57)
-    at junit.framework.Assert.assertTrue(Assert.java:22)
-    at junit.framework.Assert.assertFalse(Assert.java:39)
-    at junit.framework.TestCase.assertFalse(TestCase.java:210)
-    at org.eclipse.sirius.tests.unit.common.interpreter.acceleo.mtl.AcceleoMTInterpreterOnPackageImportTests.doCreateRepresentationAndCheckThatNoErrorOccur(AcceleoMTInterpreterOnPackageImportTests.java:101)
-                 */
+             * junit.framework.AssertionFailedError: No compilation error should have been raised by the diagram
+             * creation. Error(s) raised during test :
+             * org.eclipse.sirius.tests.unit.common.interpreter.acceleo.mtl.AcceleoMTInterpreterOnPackageImportTests .
+             * Log Plugin : org.eclipse.core.runtime . Error from plugin:org.eclipse.acceleo.parser, message:
+             * Compilation error for expression [self.eClassifiers->filter(Book)/] : Unrecognized variable: (Book),
+             * exception: null . Error from plugin:org.eclipse.acceleo.parser, message: Compilation error for expression
+             * [self.eClassifiers->filter(Book)/] : Unrecognized variable: (Book), exception: null at
+             * junit.framework.Assert.fail(Assert.java:57) at junit.framework.Assert.assertTrue(Assert.java:22) at
+             * junit.framework.Assert.assertFalse(Assert.java:39) at
+             * junit.framework.TestCase.assertFalse(TestCase.java:210) at
+             * org.eclipse.sirius.tests.unit.common.interpreter.acceleo.mtl.AcceleoMTInterpreterOnPackageImportTests.
+             * doCreateRepresentationAndCheckThatNoErrorOccur(AcceleoMTInterpreterOnPackageImportTests.java:101)
+             */
             return;
         }
         String descName = "DiagramReferencingMetamodelsWithoutPrefix";
@@ -106,19 +105,17 @@ public class AcceleoMTInterpreterOnPackageImportTests extends SiriusDiagramTestC
     }
 
     /**
-     * Creates a representation from the {@link RepresentationDescription} with
-     * the given name, and checks that no compilation issue is raised during
-     * refresh.
+     * Creates a representation from the {@link RepresentationDescription} with the given name, and checks that no
+     * compilation issue is raised during refresh.
      * 
      * @param representationDescriptionName
-     *            name of the {@link RepresentationDescription} from which the
-     *            representation must be created
+     *            name of the {@link RepresentationDescription} from which the representation must be created
      */
     protected void doCreateRepresentationAndCheckThatNoErrorOccur(String representationDescriptionName) {
-        boolean oldIsErrorCatchActive = isErrorCatchActive();
-        setErrorCatchActive(true);
+        boolean oldIsErrorCatchActive = platformProblemsListener.isErrorCatchActive();
+        platformProblemsListener.setErrorCatchActive(true);
         createRepresentation(representationDescriptionName, session.getSemanticResources().iterator().next().getContents().get(0));
-        assertFalse("No compilation error should have been raised by the diagram creation. " + getErrorLoggersMessage(), doesAnErrorOccurs());
-        setErrorCatchActive(oldIsErrorCatchActive);
+        assertFalse("No compilation error should have been raised by the diagram creation. " + platformProblemsListener.getErrorLoggersMessage(), platformProblemsListener.doesAnErrorOccurs());
+        platformProblemsListener.setErrorCatchActive(oldIsErrorCatchActive);
     }
 }

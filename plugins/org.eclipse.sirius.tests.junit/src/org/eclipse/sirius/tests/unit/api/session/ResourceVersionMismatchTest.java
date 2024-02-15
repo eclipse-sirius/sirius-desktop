@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2016, 2024 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -42,8 +42,7 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.osgi.framework.Version;
 
 /**
- * Test class for Bug 481846 about preventing loading of Sirius resource coming
- * from a newer Sirius release.
+ * Test class for Bug 481846 about preventing loading of Sirius resource coming from a newer Sirius release.
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
@@ -72,8 +71,7 @@ public class ResourceVersionMismatchTest extends SiriusTestCase {
     private URI sessionResourceURI;
 
     /**
-     * If true, indicates that the session must be opened even if there a
-     * version mismatch.
+     * If true, indicates that the session must be opened even if there a version mismatch.
      */
     private boolean forceOpeningSession = true;
 
@@ -104,8 +102,7 @@ public class ResourceVersionMismatchTest extends SiriusTestCase {
     }
 
     /**
-     * Test session opening when the main aird has a version from a more recent
-     * Sirius release </br>
+     * Test session opening when the main aird has a version from a more recent Sirius release </br>
      * Test also session opening ignoring this version mismatch.
      */
     public void testMainAirdResourceVersionMismatch() {
@@ -117,8 +114,7 @@ public class ResourceVersionMismatchTest extends SiriusTestCase {
     }
 
     /**
-     * Test session opening when an referenced aird has a version from a more
-     * recent Sirius release </br>
+     * Test session opening when an referenced aird has a version from a more recent Sirius release </br>
      * Test also session opening ignoring this version mismatch.
      */
     public void testReferencedAirdResourceVersionMismatch() {
@@ -139,7 +135,7 @@ public class ResourceVersionMismatchTest extends SiriusTestCase {
         // check stopping session opening
         try {
             forceOpeningSession = false;
-            clearErrors();
+            platformProblemsListener.clearErrors();
             session = SessionManager.INSTANCE.openSession(sessionResourceURI, new NullProgressMonitor(), SiriusEditPlugin.getPlugin().getUiCallback());
             String[] args = { AirdResourceVersionMismatchException.class.getName(), "aird" };
             fail(Messages.format(THROWN_EXCEPTION, args));
@@ -150,21 +146,21 @@ public class ResourceVersionMismatchTest extends SiriusTestCase {
     }
 
     /**
-     * Test that the ViewpointRegistry does not register a VSM which has a
-     * version from a more recent Sirius release </br>
+     * Test that the ViewpointRegistry does not register a VSM which has a version from a more recent Sirius release
+     * </br>
      */
     public void testViewRegistryWithVSMResourceVersionMismatch() {
         // Initialize error/warning log and uncaught exception handlers
-        initLoggers();
-        setWarningCatchActive(true);
-        clearWarnings();
+        platformProblemsListener.initLoggers();
+        platformProblemsListener.setWarningCatchActive(true);
+        platformProblemsListener.clearWarnings();
 
         // Setup a session with invalid VSM and valid aird
         setupFileVersionMismatch(true, false, false);
 
         // check that the viewpoint Registry has logged a warning
-        assertTrue(WARNING_LOGGED, doesAWarningOccurs());
-        clearWarnings();
+        assertTrue(WARNING_LOGGED, platformProblemsListener.doesAWarningOccurs());
+        platformProblemsListener.clearWarnings();
 
         Set<Viewpoint> viewpoints = ViewpointRegistry.getInstance().getViewpoints();
         for (Viewpoint viewpoint : viewpoints) {
@@ -173,8 +169,7 @@ public class ResourceVersionMismatchTest extends SiriusTestCase {
     }
 
     /**
-     * Test session opening when a selected VSM aird has a version from a more
-     * recent Sirius release </br>
+     * Test session opening when a selected VSM aird has a version from a more recent Sirius release </br>
      * Test also session opening ignoring this version mismatch.
      */
     public void testVSMResourceVersionMismatch() {
@@ -183,7 +178,7 @@ public class ResourceVersionMismatchTest extends SiriusTestCase {
 
         // Test
         try {
-            clearErrors();
+            platformProblemsListener.clearErrors();
             SessionManager.INSTANCE.openSession(sessionResourceURI, new NullProgressMonitor(), SiriusEditPlugin.getPlugin().getUiCallback());
             fail(Messages.format(THROWN_EXCEPTION, new String[] { RuntimeException.class.getName(), "VSM" }));
         } catch (RuntimeException e) {
@@ -192,8 +187,7 @@ public class ResourceVersionMismatchTest extends SiriusTestCase {
     }
 
     /**
-     * Test session opening when a selected VSM and an aird have a version from
-     * a more recent Sirius release </br>
+     * Test session opening when a selected VSM and an aird have a version from a more recent Sirius release </br>
      * Test also session opening ignoring this version mismatch.
      */
     public void testVSMAndAirdResourceVersionMismatch() {

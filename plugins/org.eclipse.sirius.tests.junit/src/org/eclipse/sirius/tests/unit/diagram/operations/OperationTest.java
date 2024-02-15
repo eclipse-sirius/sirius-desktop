@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -103,8 +103,7 @@ public class OperationTest extends DocbookTestCase {
     }
 
     /**
-     * Check that createInstance operation creates the wanted instance in the
-     * semantic model.
+     * Check that createInstance operation creates the wanted instance in the semantic model.
      * 
      * @throws Exception
      * @throws FeatureNotFoundException
@@ -160,8 +159,7 @@ public class OperationTest extends DocbookTestCase {
     }
 
     /**
-     * Check that the changeContextOperation effectively push the wanted element
-     * into the current context.
+     * Check that the changeContextOperation effectively push the wanted element into the current context.
      */
     public void testChangeContextOperation() {
         final ChangeContext op = ToolFactory.eINSTANCE.createChangeContext();
@@ -210,8 +208,7 @@ public class OperationTest extends DocbookTestCase {
     }
 
     /**
-     * Check that the SetValue operation set the selected feature of the current
-     * semantic element to the wanted value.
+     * Check that the SetValue operation set the selected feature of the current semantic element to the wanted value.
      */
     public void testSetValueOperation() {
         final SetValue op = ToolFactory.eINSTANCE.createSetValue();
@@ -269,8 +266,7 @@ public class OperationTest extends DocbookTestCase {
     }
 
     /**
-     * Check that the SetObject operation adds an instance of wanted element in
-     * the current semantic element.
+     * Check that the SetObject operation adds an instance of wanted element in the current semantic element.
      */
     public void testSetObjectOperation() {
         final SetObject op = ToolFactory.eINSTANCE.createSetObject();
@@ -325,8 +321,7 @@ public class OperationTest extends DocbookTestCase {
     }
 
     /**
-     * Check that the Unset operation remove the the wanted reference from the
-     * selected element.
+     * Check that the Unset operation remove the the wanted reference from the selected element.
      */
     public void testUnsetOperation() {
         final Unset op = ToolFactory.eINSTANCE.createUnset();
@@ -380,8 +375,7 @@ public class OperationTest extends DocbookTestCase {
     }
 
     /**
-     * Check that the remove operation remove the the wanted reference from the
-     * model.
+     * Check that the remove operation remove the the wanted reference from the model.
      */
     public void testRemoveOperation() {
         final RemoveElement op = ToolFactory.eINSTANCE.createRemoveElement();
@@ -433,8 +427,7 @@ public class OperationTest extends DocbookTestCase {
     }
 
     /**
-     * Check that the move operation move effectively an element from a
-     * reference to another reference.
+     * Check that the move operation move effectively an element from a reference to another reference.
      */
     public void testMoveOperation() {
         int instanceCount = -1;
@@ -551,8 +544,7 @@ public class OperationTest extends DocbookTestCase {
     }
 
     /**
-     * Check that createView operation is able to create a DEdge view based on
-     * the wanted mapping in a diagram.
+     * Check that createView operation is able to create a DEdge view based on the wanted mapping in a diagram.
      */
     public void testCreateEdgeView() {
         EObject chapter = null;
@@ -624,56 +616,50 @@ public class OperationTest extends DocbookTestCase {
     }
 
     /**
-     * Check that a task under an if operation is executed if and only if the
-     * condition of the if is true.
+     * Check that a task under an if operation is executed if and only if the condition of the if is true.
      */
     public void testIFOperation() {
         testIf("aql:self.eClass().name = 'Chapter'", 0, 1);
     }
 
     /**
-     * Check that an if condition expression is wrong an error is raised in
-     * Error Log view.
+     * Check that an if condition expression is wrong an error is raised in Error Log view.
      */
     public void testIFOperationConditionError() {
-        setErrorCatchActive(true);
+        platformProblemsListener.setErrorCatchActive(true);
         testIf("var:ifConditionWithError", 0, 0);
-        assertTrue(doesAnErrorOccurs());
+        assertTrue(platformProblemsListener.doesAnErrorOccurs());
     }
 
     /**
-     * Check that a case under an switch operation is executed if and only if
-     * the condition of the case is true. Check too, if there is 2 task with
-     * true condition expression, only the first check true is executed.
+     * Check that a case under an switch operation is executed if and only if the condition of the case is true. Check
+     * too, if there is 2 task with true condition expression, only the first check true is executed.
      */
     public void testSwitchOperation() {
         testSwitch("aql:self.eClass().name = 'Chapter'", 0, 1, 0, 0);
     }
 
     /**
-     * Check that if never case match true condition, it's the default case that
-     * is executed.
+     * Check that if never case match true condition, it's the default case that is executed.
      */
     public void testSwitchOperationDefault() {
         testSwitch("aql:self.eClass().name = 'UnexistingClassName'", 0, 0, 0, 1);
     }
 
     /**
-     * Check that a condition expression in case is wrong, an error is raised in
-     * Error Log view.
+     * Check that a condition expression in case is wrong, an error is raised in Error Log view.
      */
     public void testSwitchOperationConditionError() {
-        setErrorCatchActive(true);
+        platformProblemsListener.setErrorCatchActive(true);
         testSwitch("var:switchConditionWithError", 0, 0, 0, 1);
-        assertTrue(doesAnErrorOccurs());
+        assertTrue(platformProblemsListener.doesAnErrorOccurs());
     }
 
     /**
-     * Check that a condtion expression in case is null, it's default case that
-     * is executed.
+     * Check that a condtion expression in case is null, it's default case that is executed.
      */
     public void testSwitchOperationConditionNull() {
-        setErrorCatchActive(true);
+        platformProblemsListener.setErrorCatchActive(true);
         testSwitch(null, 0, 0, 0, 1);
     }
 
@@ -734,8 +720,7 @@ public class OperationTest extends DocbookTestCase {
     }
 
     /**
-     * Check that an existing variable (in this case, self) can be overridden by
-     * the Let operation.
+     * Check that an existing variable (in this case, self) can be overridden by the Let operation.
      */
     public void testLetOperationOverrideSelf() {
         final Let let = ToolFactory.eINSTANCE.createLet();

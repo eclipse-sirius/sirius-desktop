@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2015, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -188,7 +188,7 @@ public class DiagramListenersTests extends SiriusDiagramTestCase {
         }
 
         public void removeSpecificFiltenerListeners(Session session) {
-         // Remove the added SpecificFilterListener for each diagram.
+            // Remove the added SpecificFilterListener for each diagram.
             for (Iterator<Map.Entry<DDiagram, SpecificFilterListener>> it = specificFilterListeners.entrySet().iterator(); it.hasNext();) {
                 Map.Entry<DDiagram, SpecificFilterListener> entry = it.next();
                 session.getEventBroker().removeLocalTrigger(entry.getValue());
@@ -246,8 +246,8 @@ public class DiagramListenersTests extends SiriusDiagramTestCase {
         final DDiagram diag1 = (DDiagram) getRepresentationsByName("newDiagram1").toArray()[0]; //$NON-NLS-1$
         IEditorPart editor = DialectUIManager.INSTANCE.openEditor(session, diag1, new NullProgressMonitor());
         TestsUtil.synchronizationWithUIThread();
-        errorCatchActiveOldState = isErrorCatchActive();
-        setErrorCatchActive(true);
+        errorCatchActiveOldState = platformProblemsListener.isErrorCatchActive();
+        platformProblemsListener.setErrorCatchActive(true);
         try {
             final DRepresentationDescriptor diag1Descriptor = new DRepresentationQuery(diag1).getRepresentationDescriptor();
             final EObject semanticElement = diag1Descriptor.getTarget();
@@ -290,14 +290,14 @@ public class DiagramListenersTests extends SiriusDiagramTestCase {
 
             // Check if there is problem about "not found interpreter" in error
             // log
-            if (doesAnErrorOccurs()) {
-                String errors = getErrorLoggersMessage();
+            if (platformProblemsListener.doesAnErrorOccurs()) {
+                String errors = platformProblemsListener.getErrorLoggersMessage();
                 if (errors.contains("Impossible to find an interpreter")) { //$NON-NLS-1$
                     fail("This test logs error of kind \"Impossible to find an interpreter\": " + errors); //$NON-NLS-1$
                 }
             }
         } finally {
-            setErrorCatchActive(errorCatchActiveOldState);
+            platformProblemsListener.setErrorCatchActive(errorCatchActiveOldState);
             DialectUIManager.INSTANCE.closeEditor(editor, false);
             TestsUtil.synchronizationWithUIThread();
         }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010-2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -42,15 +42,14 @@ import org.junit.Assert;
 import org.osgi.framework.Version;
 
 /**
- * This abstract class is for migration test from an x.x version of Sirius to
- * the current version. Basically, it only checks that:
+ * This abstract class is for migration test from an x.x version of Sirius to the current version. Basically, it only
+ * checks that:
  * <UL>
  * <LI>the version of the data is the expected one</LI>
  * <LI>and the session is correctly opened without error or warning.</LI>
  * </UL>
- * It is possible to make specific tests on representations file or VSM data by
- * overriding the methods {@link #checkRepresentationsFile(DAnalysis)} and
- * {@link #checkVSM(Group)}.
+ * It is possible to make specific tests on representations file or VSM data by overriding the methods
+ * {@link #checkRepresentationsFile(DAnalysis)} and {@link #checkVSM(Group)}.
  * 
  * @author lredor
  */
@@ -85,10 +84,9 @@ public abstract class AbstractMigrationFromTest extends SiriusTestCase {
     }
 
     /**
-     * Return the folder name containing data. This folder should be in
-     * "data/unit/migration/do_not_migrate/" folder and should contain the
-     * project "my.project.sample". Otherwise, it is possible to directly
-     * override {@link #getDataUnitPath()}.
+     * Return the folder name containing data. This folder should be in "data/unit/migration/do_not_migrate/" folder and
+     * should contain the project "my.project.sample". Otherwise, it is possible to directly override
+     * {@link #getDataUnitPath()}.
      * 
      * @return the folder name containing data
      */
@@ -102,8 +100,7 @@ public abstract class AbstractMigrationFromTest extends SiriusTestCase {
     abstract protected Version getExpectedVersion();
 
     /**
-     * Return the expected version of the data in readable format (used for
-     * message).
+     * Return the expected version of the data in readable format (used for message).
      * 
      * @return the expected version of the data in readable format.
      */
@@ -119,8 +116,8 @@ public abstract class AbstractMigrationFromTest extends SiriusTestCase {
     }
 
     /**
-     * Test that the data were not migrated on the repo. It allows to check the
-     * effect of the migration in the other test.
+     * Test that the data were not migrated on the repo. It allows to check the effect of the migration in the other
+     * test.
      */
     public void testMigrationIsNeededOnData() {
         IPath projectPath = initializeProject();
@@ -139,7 +136,7 @@ public abstract class AbstractMigrationFromTest extends SiriusTestCase {
      */
     public void testMigration() {
         // Initialize the warning logger just before importing the project
-        setWarningCatchActive(true);
+        platformProblemsListener.setWarningCatchActive(true);
 
         initializeProject();
 
@@ -160,8 +157,8 @@ public abstract class AbstractMigrationFromTest extends SiriusTestCase {
         checkVSM(group);
 
         // Check warnings
-        if (doesAWarningOccurs()) {
-            Assert.fail(getWarningLoggersMessage());
+        if (platformProblemsListener.doesAWarningOccurs()) {
+            Assert.fail(platformProblemsListener.getWarningLoggersMessage());
         }
     }
 
@@ -211,7 +208,7 @@ public abstract class AbstractMigrationFromTest extends SiriusTestCase {
         // Import the existing project into the workspace
         IProject project = null;
         try {
-            IProjectDescription description = ResourcesPlugin.getWorkspace().loadProjectDescription(targetProjectPath.append(PROJECT_DESCRIPTION_FILE)); //$NON-NLS-1$ 
+            IProjectDescription description = ResourcesPlugin.getWorkspace().loadProjectDescription(targetProjectPath.append(PROJECT_DESCRIPTION_FILE)); // $NON-NLS-1$
             project = ResourcesPlugin.getWorkspace().getRoot().getProject(description.getName());
             project.create(description, null);
             project.open(null);

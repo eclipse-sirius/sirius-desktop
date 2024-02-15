@@ -262,7 +262,7 @@ public class SampleSessionTest extends SiriusDiagramTestCase {
 
         TestsUtil.emptyEventsFromUIThread();
 
-        assertTrue("This test requires the error detection", isErrorCatchActive());
+        assertTrue("This test requires the error detection", platformProblemsListener.isErrorCatchActive());
 
         assertNotNull("Session should still been there.", session);
         assertTrue("Session should still been opened.", session.isOpen());
@@ -284,7 +284,7 @@ public class SampleSessionTest extends SiriusDiagramTestCase {
             }
         }
 
-        // Check that a second session.close() call does not trigger errors.
+        // Check that a second session.close() call does not trigger platformProblemsListener.getErrors().
         session.close(new NullProgressMonitor());
         TestsUtil.emptyEventsFromUIThread();
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2015, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -146,9 +146,9 @@ public class SelectionAfterToolExecutionTest extends SiriusDiagramTestCase {
         // behavior according to system property set to false and used in SelectDRepresentationElementsListener.
         checkExpectedElementsInSelection(editorForSelection, Arrays.asList(nodeB.getName()), 1);
     }
+
     /**
-     * Test selection after container creation for expression containing
-     * semantic elements
+     * Test selection after container creation for expression containing semantic elements
      */
     public void testSelectionFromSemanticElementAfterContainerCreation() {
         endSetUp(true);
@@ -262,9 +262,8 @@ public class SelectionAfterToolExecutionTest extends SiriusDiagramTestCase {
     }
 
     /**
-     * Test selection when no objects have been notified according to
-     * SelectDRepresentationElementsListener filter. In that case the selected
-     * elements are
+     * Test selection when no objects have been notified according to SelectDRepresentationElementsListener filter. In
+     * that case the selected elements are
      * <ul>
      * <li>the result of interpreted query if provided.</li>
      * <li>not changed if query expression is empty</li>
@@ -295,8 +294,7 @@ public class SelectionAfterToolExecutionTest extends SiriusDiagramTestCase {
     }
 
     /**
-     * Check that variables are recognized during expression run time
-     * computation for NodeCreation
+     * Check that variables are recognized during expression run time computation for NodeCreation
      */
     public void testRunTimeVariableAfterNodeCreation() {
         endSetUp(true);
@@ -307,12 +305,11 @@ public class SelectionAfterToolExecutionTest extends SiriusDiagramTestCase {
         changeSelectionExpression(tool, "[container->including(containerView)/]", false);
         applyNodeCreationTool(tool_Name, diagramForSelection, nodeP1);
 
-        assertFalse("An error occurred during runtime execution of ElementsToSelect expression", doesAnErrorOccurs());
+        assertFalse("An error occurred during runtime execution of ElementsToSelect expression", platformProblemsListener.doesAnErrorOccurs());
     }
 
     /**
-     * Check that variables are recognized during expression run time
-     * computation for ContainerCreation
+     * Check that variables are recognized during expression run time computation for ContainerCreation
      */
     public void testRunTimeVariableAfterContainerCreation() {
         endSetUp(true);
@@ -322,12 +319,11 @@ public class SelectionAfterToolExecutionTest extends SiriusDiagramTestCase {
         changeSelectionExpression(tool, "[container->including(containerView)/]", false);
         applyContainerCreationTool(CONTAINER_CREATION_TOOL, diagramForSelection, nodeA);
 
-        assertFalse("An error occurred during runtime execution of ElementsToSelect expression", doesAnErrorOccurs());
+        assertFalse("An error occurred during runtime execution of ElementsToSelect expression", platformProblemsListener.doesAnErrorOccurs());
     }
 
     /**
-     * Check that variables are recognized during expression run time
-     * computation for EdgeCreation
+     * Check that variables are recognized during expression run time computation for EdgeCreation
      */
     public void testRunTimeVariableAfterEdgeCreation() {
         endSetUp(true);
@@ -339,12 +335,11 @@ public class SelectionAfterToolExecutionTest extends SiriusDiagramTestCase {
         changeSelectionExpression(tool, "[source->including(target)->including(sourceView)->including(targetView)/]", false);
         applyEdgeCreationTool(EDGE_CREATION_TOOL, diagramForSelection, ((EdgeTarget) nodeA), ((EdgeTarget) nodeB));
 
-        assertFalse("An error occurred during runtime execution of ElementsToSelect expression", doesAnErrorOccurs());
+        assertFalse("An error occurred during runtime execution of ElementsToSelect expression", platformProblemsListener.doesAnErrorOccurs());
     }
 
     /**
-     * Check that variables are recognized during expression run time
-     * computation for Reconnect
+     * Check that variables are recognized during expression run time computation for Reconnect
      */
     public void testRunTimeVariableAfterReconnect() {
         endSetUp(true);
@@ -358,12 +353,11 @@ public class SelectionAfterToolExecutionTest extends SiriusDiagramTestCase {
         changeSelectionExpression(tool, "[edgeView->including(element)->including(otherEnd)->including(source)->including(target)->including(sourceView)->including(targetView)/]", false);
         applyEdgeReconnectionTool(tool_Name, diagramForSelection, (DEdge) edgeAB, (EdgeTarget) nodeB, (EdgeTarget) nodeC);
 
-        assertFalse("An error occurred during runtime execution of ElementsToSelect expression", doesAnErrorOccurs());
+        assertFalse("An error occurred during runtime execution of ElementsToSelect expression", platformProblemsListener.doesAnErrorOccurs());
     }
 
     /**
-     * Check that variables are recognized during expression run time
-     * computation for ContainerDrop
+     * Check that variables are recognized during expression run time computation for ContainerDrop
      */
     public void testRunTimeVariableAfterContainerDrop() {
         endSetUp(true);
@@ -376,12 +370,11 @@ public class SelectionAfterToolExecutionTest extends SiriusDiagramTestCase {
         changeSelectionExpression(tool, "[oldSemanticContainer->including(newSemanticContainer)->including(element)->including(newContainerView)/]", false);
         applyContainerDropDescriptionTool(diagramForSelection, tool_Name, (DragAndDropTarget) p1, nodeA);
 
-        assertFalse("An error occurred during runtime execution of ElementsToSelect expression", doesAnErrorOccurs());
+        assertFalse("An error occurred during runtime execution of ElementsToSelect expression", platformProblemsListener.doesAnErrorOccurs());
     }
 
     /**
-     * Check that variables are recognized during expression run time
-     * computation for Deletion
+     * Check that variables are recognized during expression run time computation for Deletion
      */
     public void testRunTimeVariableAfterDeletion() {
         endSetUp(true);
@@ -393,12 +386,11 @@ public class SelectionAfterToolExecutionTest extends SiriusDiagramTestCase {
         changeSelectionExpression(tool, "[element->including(elementView)->including(containerView)/]", false);
         applyDeletionTool(nodeA);
 
-        assertFalse("An error occurred during runtime execution of ElementsToSelect expression", doesAnErrorOccurs());
+        assertFalse("An error occurred during runtime execution of ElementsToSelect expression", platformProblemsListener.doesAnErrorOccurs());
     }
 
     /**
-     * Check that variables are recognized during expression run time
-     * computation for DirectEdit
+     * Check that variables are recognized during expression run time computation for DirectEdit
      */
     public void testRunTimeVariableAfterDirectEdit() {
         endSetUp(true);
@@ -410,12 +402,11 @@ public class SelectionAfterToolExecutionTest extends SiriusDiagramTestCase {
         changeSelectionExpression(tool, "[arg0/]", false);
         applyDirectEditTool(tool_Name, diagramForSelection, nodeA, "");
 
-        assertFalse("An error occurred during runtime execution of ElementsToSelect expression", doesAnErrorOccurs());
+        assertFalse("An error occurred during runtime execution of ElementsToSelect expression", platformProblemsListener.doesAnErrorOccurs());
     }
 
     /**
-     * Check that variables are recognized during expression run time
-     * computation for DoubleClick
+     * Check that variables are recognized during expression run time computation for DoubleClick
      */
     public void testRunTimeVariableAfterDoubleClick() {
         endSetUp(true);
@@ -427,7 +418,7 @@ public class SelectionAfterToolExecutionTest extends SiriusDiagramTestCase {
         changeSelectionExpression(tool, "[[element->including(elementView)/]", false);
         applyDirectEditTool(tool_Name, diagramForSelection, nodeA, "");
 
-        assertFalse("An error occurred during runtime execution of ElementsToSelect expression", doesAnErrorOccurs());
+        assertFalse("An error occurred during runtime execution of ElementsToSelect expression", platformProblemsListener.doesAnErrorOccurs());
     }
 
 }

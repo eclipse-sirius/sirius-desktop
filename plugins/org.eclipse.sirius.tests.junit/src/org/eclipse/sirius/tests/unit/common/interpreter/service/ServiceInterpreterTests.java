@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -266,47 +266,45 @@ public class ServiceInterpreterTests extends SiriusTestCase {
     }
 
     /**
-     * Test that when an invalid path of javaExtension is used for mtl file,
-     * this path is ignored (not considered as import). The invalid path is a
-     * path with ".mtl". It does not respect the documentation
-     * (http://www.eclipse.org/sirius/doc/specifier/general/Writing_Queries.html
-     * #acceleo).
+     * Test that when an invalid path of javaExtension is used for mtl file, this path is ignored (not considered as
+     * import). The invalid path is a path with ".mtl". It does not respect the documentation
+     * (http://www.eclipse.org/sirius/doc/specifier/general/Writing_Queries.html #acceleo).
      */
     public void testAddImportWithInvalidPathContainintPoint() {
         // Initialize error/warning log and uncaught exception handlers
-        initLoggers();
-        boolean oldIsWarningCatchActive = isWarningCatchActive();
-        setWarningCatchActive(true);
+        platformProblemsListener.initLoggers();
+        boolean oldIsWarningCatchActive = platformProblemsListener.isWarningCatchActive();
+        platformProblemsListener.setWarningCatchActive(true);
         try {
             // Add an invalid mlt path containing a point
             interpreter.addImport("org::eclipse::sirius::test::a3Querries.mtl");
             // Test
             checkServiceInterpreterEvaluationWithSpecificServiceExpression(false);
-            assertFalse("Problem concerning Java extension path: " + getWarningLoggersMessage(), doesAWarningOccurs());
+            assertFalse("Problem concerning Java extension path: " + platformProblemsListener.getWarningLoggersMessage(), platformProblemsListener.doesAWarningOccurs());
         } finally {
-            setWarningCatchActive(oldIsWarningCatchActive);
-            disposeLoggers();
+            platformProblemsListener.setWarningCatchActive(oldIsWarningCatchActive);
+            platformProblemsListener.disposeLoggers();
         }
     }
 
     /**
-     * Test that when a path of javaExtension corresonds to an mtl file, this
-     * path is ignored, not considered as import by interpreter.
+     * Test that when a path of javaExtension corresonds to an mtl file, this path is ignored, not considered as import
+     * by interpreter.
      */
     public void testAddImportWithPathOfMtlFile() {
         // Initialize error/warning log and uncaught exception handlers
-        initLoggers();
-        boolean oldIsWarningCatchActive = isWarningCatchActive();
-        setWarningCatchActive(true);
+        platformProblemsListener.initLoggers();
+        boolean oldIsWarningCatchActive = platformProblemsListener.isWarningCatchActive();
+        platformProblemsListener.setWarningCatchActive(true);
         try {
             // Add a path corresponding to an mtl file
             interpreter.addImport("org::eclipse::sirius::test::a3Querries");
             // Test
             checkServiceInterpreterEvaluationWithSpecificServiceExpression(false);
-            assertFalse("Problem concerning Java extension path: " + getWarningLoggersMessage(), doesAWarningOccurs());
+            assertFalse("Problem concerning Java extension path: " + platformProblemsListener.getWarningLoggersMessage(), platformProblemsListener.doesAWarningOccurs());
         } finally {
-            setWarningCatchActive(oldIsWarningCatchActive);
-            disposeLoggers();
+            platformProblemsListener.setWarningCatchActive(oldIsWarningCatchActive);
+            platformProblemsListener.disposeLoggers();
         }
     }
 

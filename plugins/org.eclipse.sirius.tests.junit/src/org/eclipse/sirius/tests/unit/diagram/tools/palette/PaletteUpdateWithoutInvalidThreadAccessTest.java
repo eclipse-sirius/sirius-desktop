@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -46,9 +46,8 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 
 /**
- * A test ensuring that when the palette gets updated (e.g. when a filter has
- * been installed and enables/disables tools), there is no
- * "invalid thread access" problem.
+ * A test ensuring that when the palette gets updated (e.g. when a filter has been installed and enables/disables
+ * tools), there is no "invalid thread access" problem.
  * 
  * @author lredor</a>
  * 
@@ -72,8 +71,7 @@ public class PaletteUpdateWithoutInvalidThreadAccessTest extends AbstractPalette
     private PaletteRoot paletteRoot;
 
     /**
-     * Ensures that tools are changed when the result of a filter is changed
-     * (caused by a layer deactivation).
+     * Ensures that tools are changed when the result of a filter is changed (caused by a layer deactivation).
      */
     public void testPaletteUpdateOnLayerActivationWithToolFilter() {
         doOpenEditorOnRepresentation(getRepresentationDescriptionName());
@@ -100,8 +98,8 @@ public class PaletteUpdateWithoutInvalidThreadAccessTest extends AbstractPalette
         } catch (final InterruptedException e) {
             throw new RuntimeException(e);
         }
-        if (doesAnErrorOccurs()) {
-            fail("There is problem after layer deactivation:" + getErrorLoggersMessage());
+        if (platformProblemsListener.doesAnErrorOccurs()) {
+            fail("There is problem after layer deactivation:" + platformProblemsListener.getErrorLoggersMessage());
         }
 
         Set<PaletteEntry> paletteEntriesAfterFilterDisablement = getAllVisiblePaletteEntries(paletteRoot);
@@ -137,12 +135,11 @@ public class PaletteUpdateWithoutInvalidThreadAccessTest extends AbstractPalette
     }
 
     /**
-     * Opens a {@link DDiagramEditor} on the representation which description is
-     * equal to the given representationDescriptionName.
+     * Opens a {@link DDiagramEditor} on the representation which description is equal to the given
+     * representationDescriptionName.
      * 
      * @param representationDescriptionName
-     *            the name of the {@link RepresentationDescription} of the
-     *            representation to open
+     *            the name of the {@link RepresentationDescription} of the representation to open
      */
     protected void doOpenEditorOnRepresentation(String representationDescriptionName) {
         // Open an editor on the tested diagram
