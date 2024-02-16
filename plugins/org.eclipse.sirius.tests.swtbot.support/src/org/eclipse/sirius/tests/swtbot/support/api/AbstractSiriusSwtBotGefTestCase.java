@@ -147,7 +147,7 @@ import junit.framework.TestCase;
  *
  * @author dlecan
  */
-@SuppressWarnings({ "restriction", "nls" })
+@SuppressWarnings({ "restriction" })
 public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase {
     static {
         SWTBotPreferences.TIMEOUT = 10000;
@@ -1037,10 +1037,13 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         SWTBotUtils.waitAllUiEvents();
     }
 
+    protected SWTBotToolbarDropDownButton getPasteMenu() {
+        return getPasteMenu(editor.bot());
+    }
     /**
      * Returns the bot for the DropDownButton, which contains all paste actions.
      */
-    protected SWTBotToolbarDropDownButton getPasteMenu() {
+    protected SWTBotToolbarDropDownButton getPasteMenu(SWTBot bot) {
         String[] tooltips = { Messages.PasteStylePureGraphicalAction_toolTipText, Messages.PasteFormatAction_toolTipText_diagram, Messages.PasteFormatAction_toolTipText_diagramElements,
                 Messages.PasteLayoutAction_toolTipText_diagram, Messages.PasteLayoutAction_toolTipText_diagramElements, Messages.PasteStyleAction_toolTipText_diagram,
                 Messages.PasteStyleAction_toolTipText_diagramElements, Messages.PasteImageAction_toolTipText, };
@@ -1050,7 +1053,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         Matcher<ToolItem> typeMatcher = WidgetMatcherFactory.widgetOfType(ToolItem.class);
         Matcher<ToolItem> styleMatcher = WidgetMatcherFactory.withStyle(SWT.DROP_DOWN, "SWT.DROP_DOWN");
         Matcher<ToolItem> matcher = WidgetMatcherFactory.allOf(List.of(typeMatcher, tooltipMatcher, styleMatcher));
-        return new SWTBotToolbarDropDownButton(editor.bot().widget(matcher), matcher);
+        return new SWTBotToolbarDropDownButton(bot.widget(matcher), matcher);
     }
 
     /**
