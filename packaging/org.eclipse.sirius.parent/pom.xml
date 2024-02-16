@@ -61,10 +61,9 @@
     <sonar.language>java</sonar.language>
     <sonar.skipPackageDesign>true</sonar.skipPackageDesign>
     <sonar.skipDesign>true</sonar.skipDesign>
-    <sonar.jacoco.reportPath>${project.basedir}/../../packaging/org.eclipse.sirius.parent/target/jacoco.exec</sonar.jacoco.reportPath>
-    <sonar.jacoco.itReportPath>${project.basedir}/../../packaging/org.eclipse.sirius.parent/target/jacoco-it.exec</sonar.jacoco.itReportPath>
+    <sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/../../plugins/org.eclipse.sirius.tests.junit/target/jacoco.xml,${project.basedir}/../../plugins/org.eclipse.sirius.tests.tree/target/jacoco.xml,${project.basedir}/../../plugins/org.eclipse.sirius.tests.swtbot/target/jacoco.xml,${project.basedir}/../../plugins/org.eclipse.sirius.tests.ui.properties/target/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
     <sonar.java.source>17</sonar.java.source>
-    <sonar.exclusions>plugins/*/src-gen/**/*</sonar.exclusions>
+    <sonar.exclusions>plugins/*/src-gen/**/*, **/*.css,**/*.html,**/*.js</sonar.exclusions>
     <sonar.coverage.exclusions>${project.basedir}/../../plugins/org.eclipse.sirius.sample*/**/*.java,${project.basedir}/../../plugins/org.eclipse.sirius.tests*/**/*.java,</sonar.coverage.exclusions>
   </properties>
 
@@ -174,21 +173,8 @@
             </goals>
             <configuration>
               <append>true</append>
-              <destFile>${sonar.jacoco.reportPath}</destFile>
+              <destFile>${project.basedir}/../../packaging/org.eclipse.sirius.parent/target/jacoco.exec</destFile>
               <propertyName>jacoco.agent.ut.arg</propertyName>
-            </configuration>
-          </execution>
-          <!-- Prepares a variable, jacoco.agent.it.arg, that contains the info 
-               to be passed to the JVM hosting the code being tested. -->
-          <execution>
-            <id>agent-for-it</id>
-            <goals>
-              <goal>prepare-agent-integration</goal>
-            </goals>
-            <configuration>
-              <append>true</append>
-              <destFile>${sonar.jacoco.itReportPath}</destFile>
-              <propertyName>jacoco.agent.it.arg</propertyName>
             </configuration>
           </execution>
           <execution>
@@ -197,6 +183,12 @@
             <goals>
               <goal>report</goal>
             </goals>
+            <configuration>
+              <dataFile>${project.basedir}/../../packaging/org.eclipse.sirius.parent/target/jacoco.exec</dataFile>
+              <!-- Define the output format -->
+              <output>file</output>
+              <append>true</append>
+            </configuration>
           </execution>
         </executions>
       </plugin>
