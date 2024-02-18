@@ -23,6 +23,10 @@
     <relativePath>../../packaging/org.eclipse.sirius.parent</relativePath>
   </parent>
 
+  <properties>
+    <sonar.coverage.exclusions>src-gen/**/*</sonar.coverage.exclusions>
+  </properties>
+
   <artifactId>org.eclipse.sirius.tests.sample.xtext.statemachine.ide</artifactId>
   <packaging>eclipse-plugin</packaging>
   <version>7.4.0-SNAPSHOT</version>
