@@ -63,7 +63,7 @@
     <sonar.skipDesign>true</sonar.skipDesign>
     <sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
     <sonar.java.source>17</sonar.java.source>
-    <sonar.exclusions>plugins/*/src-gen/**/*, **/*.css,**/*.html,**/*.js</sonar.exclusions>
+    <sonar.exclusions>plugins/*/src-gen/**/*, plugins/*/xtend-gen/**/*,**/*.css,**/*.html,**/*.js</sonar.exclusions>
     <sonar.coverage.exclusions>${project.basedir}/../../plugins/org.eclipse.sirius.sample*/**/*.java,${project.basedir}/../../plugins/org.eclipse.sirius.tests*/**/*.java,</sonar.coverage.exclusions>
   </properties>
 
