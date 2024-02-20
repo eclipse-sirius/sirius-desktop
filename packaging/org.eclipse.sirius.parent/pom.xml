@@ -57,13 +57,19 @@
     <tests.ignoreFailures>true</tests.ignoreFailures>
     <!-- Sonar properties -->
     <jacoco-version>0.8.7</jacoco-version>
+    <jacoco-binary-file-path>${project.basedir}/../../packaging/org.eclipse.sirius.parent/target/jacoco.exec</jacoco-binary-file-path>
     <sonar-version>3.3.0.603</sonar-version>
     <sonar.language>java</sonar.language>
     <sonar.skipPackageDesign>true</sonar.skipPackageDesign>
     <sonar.skipDesign>true</sonar.skipDesign>
+    <!-- The path where the xml coverage reports are generated (during the goal "report" of the phase "verify" of the build). -->
     <sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
     <sonar.java.source>17</sonar.java.source>
+    <!-- Path to exclude from the sonar analysis: quality, security, reliability... Use project relative paths (project in the Sonar sense), and not module relative paths -->
+    <!-- Generated code is not supposed to be analysed, neither html&js code (problem on Eclipse side) -->
     <sonar.exclusions>plugins/*/src-gen/**/*, plugins/*/xtend-gen/**/*,**/*.css,**/*.html,**/*.js</sonar.exclusions>
+    <!-- This parameter is overridden. Indeed, it is used to exclude specific files or directories from coverage analysis, not entire modules like here.
+         It will probably be removed later. -->
     <sonar.coverage.exclusions>${project.basedir}/../../plugins/org.eclipse.sirius.sample*/**/*.java,${project.basedir}/../../plugins/org.eclipse.sirius.tests*/**/*.java,</sonar.coverage.exclusions>
   </properties>
 
@@ -172,8 +178,11 @@
               <goal>prepare-agent</goal>
             </goals>
             <configuration>
+              <!-- append = true to aggregate the coverage results of all tests of several modules : org.eclipse.sirius.tests.junit, org.eclipse.sirius.tests.swtbot...--> 
               <append>true</append>
-              <destFile>${project.basedir}/../../packaging/org.eclipse.sirius.parent/target/jacoco.exec</destFile>
+              <!-- destFile = The path where the binary file with the coverage result is stored. It is amended for each tests suite launched. -->
+              <destFile>${jacoco-binary-file-path}</destFile>
+              <!-- The propertyName is used to amend "tests.vmargs", used later as argLine in pom.xml of tests modules. -->
               <propertyName>jacoco.agent.ut.arg</propertyName>
             </configuration>
           </execution>
@@ -184,9 +193,16 @@
               <goal>report</goal>
             </goals>
             <configuration>
-              <dataFile>${project.basedir}/../../packaging/org.eclipse.sirius.parent/target/jacoco.exec</dataFile>
-              <!-- Define the output format -->
+              <!-- The file used as imput to generate the site and an xml file version of the code coverage. 
+                   One site (in target/site/jacoco/index.html) and one xml file (target/site/jacoco/jacoco.xml) are generated per module
+                   (even for modules excluded later by Sonar because of parameter "sonar.coverage.exclusions" or because of default rules). --> 
+              <dataFile>${jacoco-binary-file-path}</dataFile>
+              <!-- Define the output format 
+                   I think that this parameter is not necessary here. It is not documented (https://www.jacoco.org/jacoco/trunk/doc/report-mojo.html).
+                   It will probably be removed later. -->
               <output>file</output>
+              <!-- I think that this parameter is not necessary here. It is not documented (https://www.jacoco.org/jacoco/trunk/doc/report-mojo.html).
+                   It will probably be removed later. -->
               <append>true</append>
             </configuration>
           </execution>
