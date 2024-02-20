@@ -249,11 +249,12 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
             }
         } else if (formatMenu != null) { // case (2)
             layoutMenu = formatMenu.findMenuUsingPath(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.MENU_ARRANGE);
-            // We check the enablement of the arrange actions according to
-            // the current selected elements.
-            updateArrangeMenuEnableActions(layoutMenu, this.getViewer().getSelection());
 
             if (layoutMenu != null) {
+                // We check the enablement of the arrange actions according to
+                // the current selected elements.
+                updateArrangeMenuEnableActions(layoutMenu, this.getViewer().getSelection());
+
                 if (PLUGIN_MENU_MANAGER_CLASS_NAME.equals(layoutMenu.getClass().getSimpleName())) {
                     // We move the arrangeMenu only if it is contributed through plugin contribution. In case of VSM
                     // contribution, we ignore it.
