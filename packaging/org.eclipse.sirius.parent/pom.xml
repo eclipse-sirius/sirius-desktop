@@ -197,13 +197,9 @@
                    One site (in target/site/jacoco/index.html) and one xml file (target/site/jacoco/jacoco.xml) are generated per module
                    (even for modules excluded later by Sonar because of parameter "sonar.coverage.exclusions" or because of default rules). --> 
               <dataFile>${jacoco-binary-file-path}</dataFile>
-              <!-- Define the output format 
-                   I think that this parameter is not necessary here. It is not documented (https://www.jacoco.org/jacoco/trunk/doc/report-mojo.html).
-                   It will probably be removed later. -->
-              <output>file</output>
-              <!-- I think that this parameter is not necessary here. It is not documented (https://www.jacoco.org/jacoco/trunk/doc/report-mojo.html).
-                   It will probably be removed later. -->
-              <append>true</append>
+              <!-- Only generate an XML report by module (used by Sonar after). 
+                   The path is defined with the parameter "sonar.coverage.jacoco.xmlReportPaths". --> 
+              <formats>XML</formats>
             </configuration>
           </execution>
         </executions>
