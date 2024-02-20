@@ -68,9 +68,6 @@
     <!-- Path to exclude from the sonar analysis: quality, security, reliability... Use project relative paths (project in the Sonar sense), and not module relative paths -->
     <!-- Generated code is not supposed to be analysed, neither html&js code (problem on Eclipse side) -->
     <sonar.exclusions>plugins/*/src-gen/**/*, plugins/*/xtend-gen/**/*,**/*.css,**/*.html,**/*.js</sonar.exclusions>
-    <!-- This parameter is overridden. Indeed, it is used to exclude specific files or directories from coverage analysis, not entire modules like here.
-         It will probably be removed later. -->
-    <sonar.coverage.exclusions>${project.basedir}/../../plugins/org.eclipse.sirius.sample*/**/*.java,${project.basedir}/../../plugins/org.eclipse.sirius.tests*/**/*.java,</sonar.coverage.exclusions>
   </properties>
 
   <!--Add specific repositories, pluginRepositories and dependencies for Acceleo3 compilation. See http://wiki.eclipse.org/Acceleo/Maven for more details. -->
