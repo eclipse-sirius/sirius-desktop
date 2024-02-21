@@ -24,7 +24,8 @@
   </parent>
 
   <properties>
-    <sonar.coverage.exclusions>src-gen/**/*</sonar.coverage.exclusions>
+    <sonar.sources>pom.xml</sonar.sources>
+    <sonar.tests>src-gen</sonar.tests>
   </properties>
 
   <artifactId>org.eclipse.sirius.tests.sample.xtext.statemachine.ide</artifactId>

@@ -24,7 +24,8 @@
   </parent>
 
   <properties>
-    <sonar.coverage.exclusions>src/**/*</sonar.coverage.exclusions>
+    <sonar.sources>pom.xml</sonar.sources>
+    <sonar.tests>src</sonar.tests>
   </properties>
 
   <artifactId>org.eclipse.sirius.tests.sample.migration.design</artifactId>

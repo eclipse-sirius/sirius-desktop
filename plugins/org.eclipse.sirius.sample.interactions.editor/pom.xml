@@ -24,7 +24,8 @@
   </parent>
 
   <properties>
-    <sonar.skip>true</sonar.skip>
+    <sonar.sources>pom.xml</sonar.sources>
+    <sonar.tests>src</sonar.tests>
   </properties>
 
   <artifactId>org.eclipse.sirius.sample.interactions.editor</artifactId>
