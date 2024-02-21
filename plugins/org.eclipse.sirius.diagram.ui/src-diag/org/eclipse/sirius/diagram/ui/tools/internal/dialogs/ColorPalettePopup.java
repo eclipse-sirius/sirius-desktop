@@ -32,6 +32,7 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.RGB;
+import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -41,7 +42,9 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.ToolItem;
 
 /**
  * This class define the popup invoked when a button to change the colors is clicked. This {@link ColorPalettePopup}
@@ -62,6 +65,16 @@ import org.eclipse.swt.widgets.Shell;
  * @author <a href="mailto:glenn.plouhinec@obeo.fr">Glenn Plouhinec</a>
  */
 public class ColorPalettePopup {
+
+    /**
+     * The height of the popup used to compute its location to open it.
+     */
+    private static final int POPUP_HEIGHT = 192;
+
+    /**
+     * The width of the popup used to compute its location to open it.
+     */
+    private static final int POPUP_WIDTH = 343;
 
     /**
      * The maximum number of colors to display for each category.
@@ -416,6 +429,78 @@ public class ColorPalettePopup {
             }
             colorCategoryManager.setSuggestedColors(suggestedCategoryDialog.getDisplayedColors());
         }
+    }
+
+    /**
+     * Used to get a valid location to open the {@link ColorPalettePopup} using a {@link MenuItem}.
+     * 
+     * @param menuItem
+     *            the clicked {@link MenuItem}.
+     * @return the top-left location to open the {@link ColorPalettePopup}.
+     */
+    public static Point getValidPopupLocation(MenuItem menuItem) {
+        Point location = new Point(0, 0);
+        location = Display.getCurrent().getCursorLocation();
+        Rectangle screenBounds = Display.getCurrent().getBounds();
+        if (!screenBounds.contains(location.x + POPUP_WIDTH, location.y + POPUP_HEIGHT)) {
+            location = new Point(location.x - POPUP_WIDTH, location.y - POPUP_HEIGHT);
+        }
+        return location;
+    }
+
+    /**
+     * Used to get a valid location to open the {@link ColorPalettePopup} using a {@link ToolItem}.
+     * 
+     * @param toolItem
+     *            the clicked {@link ToolItem}.
+     * @return the top-left location to open the {@link ColorPalettePopup}.
+     */
+    public static Point getValidPopupLocation(ToolItem toolItem) {
+        Rectangle itemBounds = toolItem.getBounds();
+        Point itemLocation = toolItem.getParent().toDisplay(itemBounds.x, itemBounds.y);
+        return getValidPopupLocation(itemBounds, itemLocation);
+    }
+
+    /**
+     * Used to get a valid location to open the {@link ColorPalettePopup} using a {@link Button}.
+     * 
+     * @param button
+     *            the clicked {@link Button}.
+     * @return the top-left location to open the {@link ColorPalettePopup}.
+     */
+    public static Point getValidPopupLocation(Button button) {
+        Rectangle buttonBounds = button.getBounds();
+        Point buttonLocation = button.getParent().toDisplay(buttonBounds.x, buttonBounds.y);
+        return getValidPopupLocation(buttonBounds, buttonLocation);
+    }
+
+    /**
+     * Used to get a valid location to open the {@link ColorPalettePopup} basing on the location of the clicked button.
+     * 
+     * @param buttonBounds
+     *            the bounds of the clicked button.
+     * @param buttonLocation
+     *            the location of the button
+     * @return the top-left location to open the {@link ColorPalettePopup}.
+     */
+    public static Point getValidPopupLocation(Rectangle buttonBounds, Point buttonLocation) {
+        Point location = new Point(0, 0);
+        Rectangle eclipseShellBounds = Display.getCurrent().getActiveShell().getBounds();
+        int locationX = buttonLocation.x;
+        int locationY = buttonLocation.y + buttonBounds.height;
+        int shellMargin = 7;
+        Point expectedRightBottomPopup = new Point(buttonLocation.x + POPUP_WIDTH, buttonLocation.y + POPUP_HEIGHT);
+        if (!eclipseShellBounds.contains(expectedRightBottomPopup)) {
+            Point rightBottomShell = new Point(eclipseShellBounds.x + eclipseShellBounds.width, eclipseShellBounds.y + eclipseShellBounds.height);
+            if (expectedRightBottomPopup.x > rightBottomShell.x) {
+                locationX = rightBottomShell.x - POPUP_WIDTH - shellMargin;
+            }
+            if (expectedRightBottomPopup.y > rightBottomShell.y) {
+                locationY = rightBottomShell.y - POPUP_HEIGHT - shellMargin;
+            }
+        }
+        location = new Point(locationX, locationY);
+        return location;
     }
 
     /**
