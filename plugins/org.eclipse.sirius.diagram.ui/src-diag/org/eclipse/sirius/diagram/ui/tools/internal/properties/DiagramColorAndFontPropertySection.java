@@ -66,9 +66,7 @@ import org.eclipse.swt.accessibility.AccessibleEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.RGB;
-import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
@@ -123,10 +121,8 @@ public class DiagramColorAndFontPropertySection extends DiagramColorsAndFontsPro
             List<IGraphicalEditPart> editParts = getInput().stream().filter(IGraphicalEditPart.class::isInstance).map(IGraphicalEditPart.class::cast).toList();
             ColorPalettePopup popup = new ColorPalettePopup(button.getParent().getShell(), session, editParts, propertyId);
             popup.init();
-            final Rectangle r = button.getBounds();
-            final Point location = button.getParent().toDisplay(r.x, r.y);
             popup.setPreviousColor(previousColor);
-            popup.open(new Point(location.x, location.y + r.height));
+            popup.open(ColorPalettePopup.getValidPopupLocation(button));
 
             // selectedColor should be null if we are to use the default color
             final RGB selectedColor = popup.getSelectedColor();

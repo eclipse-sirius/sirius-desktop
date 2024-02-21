@@ -27,7 +27,6 @@ import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.PaletteData;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.RGB;
-import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Item;
@@ -261,23 +260,9 @@ public class ColorPropertyContributionItem extends PropertyChangeContributionIte
      *            the item clicked on the tabbar.
      */
     private void invokeColorPalettePopup(Item item) {
-        Point location = new Point(0, 0);
-        if (item instanceof ToolItem toolItem) {
-            Rectangle r = toolItem.getBounds();
-            location = toolItem.getParent().toDisplay(r.x, r.y);
-            location = new Point(location.x, location.y + r.height);
-        } else if (item instanceof MenuItem menuItem) {
-            location = Display.getCurrent().getCursorLocation();
-            Rectangle screenBounds = Display.getCurrent().getBounds();
-            int popupWidth = 343;
-            int popupHeight = 192;
-            if (!screenBounds.contains(location.x + popupWidth, location.y + popupHeight)) {
-                location = new Point(location.x - popupWidth, location.y - popupHeight);
-            }
-        }
         final ColorPalettePopup popup = new ColorPalettePopup(Display.getCurrent().getActiveShell(), ((DDiagramEditor) getWorkbenchPart()).getSession(), getOperationSet(), getPropertyId());
         popup.init();
-        popup.open(location);
+        popup.open(computePopupLocation(item));
 
         final RGB rgb = popup.getSelectedColor();
         if (rgb != null) {
@@ -293,6 +278,16 @@ public class ColorPropertyContributionItem extends PropertyChangeContributionIte
             lastColor = FigureUtilities.RGBToInteger(rgb);
             runWithEvent(null);
         }
+    }
+
+    private Point computePopupLocation(Item item) {
+        Point location = new Point(0, 0);
+        if (item instanceof ToolItem toolItem) {
+            location = ColorPalettePopup.getValidPopupLocation(toolItem);
+        } else if (item instanceof MenuItem menuItem) {
+            location =  ColorPalettePopup.getValidPopupLocation(menuItem);
+        }
+        return location;
     }
 
     /**

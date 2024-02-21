@@ -196,9 +196,11 @@ public class ColorPaletteComposite extends Composite {
      */
     private void refreshColorButtons() {
         if (colors.isEmpty()) {
-            ((GridLayout) getLayout()).marginBottom = 25;
+            ((GridLayout) getLayout()).marginBottom = BUTTON_SIZE;
+            ((GridLayout) getLayout()).marginRight = BUTTON_SIZE * numberOfColumns + BUTTONS_HORIZONTAL_SPACING * (numberOfColumns - 1);
         } else {
             ((GridLayout) getLayout()).marginBottom = 0;
+            ((GridLayout) getLayout()).marginRight = 0;
         }
         if (colors.size() < buttonMap.size()) {
             // If some colors have been removed, we should removed all buttons to recreate them after.
