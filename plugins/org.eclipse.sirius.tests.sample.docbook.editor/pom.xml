@@ -24,7 +24,9 @@
   </parent>
 
   <properties>
-    <sonar.skip>true</sonar.skip>
+  <properties>
+    <sonar.sources>pom.xml</sonar.sources>
+    <sonar.tests>src-gen</sonar.tests>
   </properties>
 
   <artifactId>org.eclipse.sirius.tests.sample.docbook.editor</artifactId>
