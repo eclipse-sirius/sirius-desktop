@@ -24,7 +24,6 @@
   </parent>
 
   <properties>
-  <properties>
     <sonar.sources>pom.xml</sonar.sources>
     <sonar.tests>src-gen</sonar.tests>
   </properties>
