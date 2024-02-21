@@ -24,7 +24,7 @@
   </parent>
 
   <properties>
-    <sonar.coverage.exclusions>src/**/*</sonar.coverage.exclusions>
+    <sonar.tests>src</sonar.tests>
   </properties>
 
   <artifactId>org.eclipse.sirius.tests.junit.support</artifactId>

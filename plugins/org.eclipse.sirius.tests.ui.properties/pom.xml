@@ -21,6 +21,10 @@
     <relativePath>../../packaging/org.eclipse.sirius.parent</relativePath>
   </parent>
 
+  <properties>
+    <sonar.tests>src</sonar.tests>
+  </properties>
+
   <artifactId>org.eclipse.sirius.tests.ui.properties</artifactId>
   <packaging>eclipse-test-plugin</packaging>
   <version>7.4.0-SNAPSHOT</version>
