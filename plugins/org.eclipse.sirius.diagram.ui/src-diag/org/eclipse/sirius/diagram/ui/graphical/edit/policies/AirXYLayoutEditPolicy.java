@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -132,67 +132,68 @@ public class AirXYLayoutEditPolicy extends XYLayoutEditPolicy {
         IGraphicalEditPart host = (IGraphicalEditPart) getHost();
         final TransactionalEditingDomain editingDomain = host.getEditingDomain();
         final CompositeTransactionalCommand cc = new CompositeTransactionalCommand(editingDomain, DiagramUIMessages.AddCommand_Label);
-        List<? extends ViewDescriptor> viewDescriptors = ((CreateViewRequest) request).getViewDescriptors();
+        if (request instanceof CreateViewRequest) {
+            List<? extends ViewDescriptor> viewDescriptors = ((CreateViewRequest) request).getViewDescriptors();
 
-        Point locationReference = null;
-        for (int i = 0; i < viewDescriptors.size(); i++) {
-            final CreateViewRequest.ViewDescriptor viewDescriptor = viewDescriptors.get(i);
+            Point locationReference = null;
+            for (int i = 0; i < viewDescriptors.size(); i++) {
+                final CreateViewRequest.ViewDescriptor viewDescriptor = viewDescriptors.get(i);
 
-            viewDescriptor.setPersisted(true);
-            final Object object = getRealObject(viewDescriptor);
-            Dimension size = null;
-            Point location = null;
-            boolean hasLayoutData = false;
-            if (object instanceof DDiagramElement) {
-                if (object instanceof AbstractDNode) {
-                    LayoutData layoutData = SiriusLayoutDataManager.INSTANCE.getData((AbstractDNode) object);
-                    if (layoutData == null) {
-                        layoutData = SiriusLayoutDataManager.INSTANCE.getData((AbstractDNode) object, true);
+                viewDescriptor.setPersisted(true);
+                final Object object = getRealObject(viewDescriptor);
+                Dimension size = null;
+                Point location = null;
+                boolean hasLayoutData = false;
+                if (object instanceof DDiagramElement) {
+                    if (object instanceof AbstractDNode) {
+                        LayoutData layoutData = SiriusLayoutDataManager.INSTANCE.getData((AbstractDNode) object);
+                        if (layoutData == null) {
+                            layoutData = SiriusLayoutDataManager.INSTANCE.getData((AbstractDNode) object, true);
+                        }
+                        if (layoutData != null) {
+                            size = layoutData.getSize();
+                            location = layoutData.getLocation();
+                            hasLayoutData = true;
+                        }
                     }
-                    if (layoutData != null) {
-                        size = layoutData.getSize();
-                        location = layoutData.getLocation();
-                        hasLayoutData = true;
+                } else {
+                    size = ViewSizeHint.getInstance().consumeSize();
+                }
+                if (size == null) {
+                    size = LayoutUtils.getDefaultDimension(viewDescriptor);
+                }
+
+                // handle unknown location as default createview command
+                if (location == null) {
+                    Object constraintFor = getConstraintFor(request);
+                    if (constraintFor instanceof Rectangle) {
+                        location = ((Rectangle) constraintFor).getLocation().getCopy();
                     }
                 }
-            } else {
-                size = ViewSizeHint.getInstance().consumeSize();
-            }
-            if (size == null) {
-                size = LayoutUtils.getDefaultDimension(viewDescriptor);
-            }
 
-            // handle unknown location as default createview command
-            if (location == null) {
-                Object constraintFor = getConstraintFor(request);
-                if (constraintFor instanceof Rectangle) {
-                    location = ((Rectangle) constraintFor).getLocation().getCopy();
-                }
-            }
-
-            if (location != null) {
-                Point centerLocation = location.getCopy();
-                if (locationReference != null && !hasLayoutData) {
-                    int padding = SiriusLayoutDataManager.PADDING;
-                    if (GraphicalHelper.isSnapToGridEnabled(host)) {
-                        padding = GraphicalHelper.getGridSpacing(host);
+                if (location != null) {
+                    Point centerLocation = location.getCopy();
+                    if (locationReference != null && !hasLayoutData) {
+                        int padding = SiriusLayoutDataManager.PADDING;
+                        if (GraphicalHelper.isSnapToGridEnabled(host)) {
+                            padding = GraphicalHelper.getGridSpacing(host);
+                        }
+                        locationReference.translate(padding, padding);
+                        centerLocation = locationReference.getCopy();
                     }
-                    locationReference.translate(padding, padding);
-                    centerLocation = locationReference.getCopy();
+
+                    final Rectangle rect = new Rectangle(centerLocation, size);
+                    cc.compose(new SetBoundsCommand(editingDomain, DiagramUIMessages.SetLocationCommand_Label_Resize, viewDescriptor, rect));
+                    if (hasLayoutData || (locationReference != null && viewDescriptors.size() > 1)) {
+                        cc.compose(SiriusLayoutDataManager.INSTANCE.getAddAdapterMakerCommand(editingDomain, viewDescriptor));
+                    }
+                    if (hasLayoutData && i == 0) {
+                        locationReference = location.getCopy();
+                    }
                 }
 
-                final Rectangle rect = new Rectangle(centerLocation, size);
-                cc.compose(new SetBoundsCommand(editingDomain, DiagramUIMessages.SetLocationCommand_Label_Resize, viewDescriptor, rect));
-                if (hasLayoutData || (locationReference != null && viewDescriptors.size() > 1)) {
-                    cc.compose(SiriusLayoutDataManager.INSTANCE.getAddAdapterMakerCommand(editingDomain, viewDescriptor));
-                }
-                if (hasLayoutData && i == 0) {
-                    locationReference = location.getCopy();
-                }
             }
-
         }
-
         // If no SetBoundsCommand is added return null
         if (cc.reduce() == null || cc.size() == 0) {
             return null;

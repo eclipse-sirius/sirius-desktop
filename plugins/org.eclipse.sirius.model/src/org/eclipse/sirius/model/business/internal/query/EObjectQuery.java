@@ -218,7 +218,7 @@ public class EObjectQuery {
                 // throw new RuntimeException(MessageFormat.format(Messages.EObjectQuery_valuesErrorMsg, ref.getName(),
                 // rawValue.getClass()));
             }
-            if (rawValue != null) {
+            if (rawValue != null && (!((EList<?>) rawValue).isEmpty() && ((EList<?>) rawValue).get(0) instanceof EObject)) {
                 result = new ArrayList<EObject>((EList<EObject>) rawValue);
             }
         } else {

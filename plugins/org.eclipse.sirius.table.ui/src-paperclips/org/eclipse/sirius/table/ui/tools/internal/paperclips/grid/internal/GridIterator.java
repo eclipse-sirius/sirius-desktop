@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2007 Matthew Hall and others.
+ * Copyright (c) 2007, 2024 Matthew Hall and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -589,7 +589,10 @@ public class GridIterator implements PrintIterator {
 			int columnIndex = weightedCols[weightedColIndex];
 
 			int columnWeight = columns[columnIndex].weight;
-			int addWidth = (int) ((long) extraWidth * columnWeight / totalWeight);
+			int addWidth = 0;
+			if (totalWeight != 0) {
+			    addWidth = (int) ((long) extraWidth * columnWeight / totalWeight);
+			}
 
 			colSizes[columnIndex] += addWidth;
 

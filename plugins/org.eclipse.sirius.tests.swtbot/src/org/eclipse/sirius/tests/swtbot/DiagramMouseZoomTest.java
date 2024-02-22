@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2023 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -192,7 +192,7 @@ public class DiagramMouseZoomTest extends AbstractSiriusSwtBotGefTestCase {
         Point mouseZoomAbsoluteLocationBeforeZoom = zoomTargetPart.getFigure().getBounds().getCopy().getLocation();
         zoomTargetPart.getFigure().translateToAbsolute(mouseZoomAbsoluteLocationBeforeZoom);
 
-        assertNotEquals(new Rectangle(0, 0, 0, 0), zoomTargetPart);
+        assertNotEquals(new Rectangle(0, 0, 0, 0), zoomTargetPart.getFigure().getBounds());
 
         // We do the zoom algorithm part that computes the expected viewport
         // location after zoom to have the expected viewport location that we
