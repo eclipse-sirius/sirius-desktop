@@ -25,7 +25,7 @@
 
   <properties>
     <sonar.sources>pom.xml</sonar.sources>
-    <sonar.tests>src, src-gen, xtend-gen</sonar.tests>
+    <sonar.tests>src,src-gen,xtend-gen</sonar.tests>
   </properties>
 
   <artifactId>org.eclipse.sirius.tests.sample.xtext.statemachine</artifactId>
