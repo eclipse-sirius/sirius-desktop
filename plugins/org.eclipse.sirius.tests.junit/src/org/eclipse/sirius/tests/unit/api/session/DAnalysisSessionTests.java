@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -395,20 +395,23 @@ public class DAnalysisSessionTests extends SiriusDiagramTestCase {
     }
 
     public void testCreateWrongSession() throws Exception {
+        int beforeSize = 0;
+        int afterSize = 0;
         try {
-            final int beforeSize = SessionManager.INSTANCE.getSessions().size();
+            beforeSize = SessionManager.INSTANCE.getSessions().size();
             URI sessionResourceURI = session.getSessionResource().getURI();
             URI semanticResourceURI = session.getSemanticResources().iterator().next().getURI();
             session = SessionFactory.INSTANCE.createSession(sessionResourceURI, new NullProgressMonitor());
             session.addSemanticResource(semanticResourceURI, new NullProgressMonitor());
-            final int afterSize = SessionManager.INSTANCE.getSessions().size();
-            Assert.assertEquals(beforeSize, afterSize);
+            afterSize = SessionManager.INSTANCE.getSessions().size();
         } catch (final Exception e) {
             // Wanted behavior : Session initialization is not possible with
             // null analysis.
         } catch (AssertionError ae) {
             // We may also fail with an assertion error if they are enabled.
         }
+        Assert.assertEquals(beforeSize, afterSize);
+
     }
 
     public void testCreateSessionFromEcoreResource() throws Exception {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -275,7 +275,7 @@ public class CombinedFragmentsDisabledTests extends AbstractCombinedFragmentSequ
 
         // Undo
         undo();
-        Assert.assertEquals(2, firstCombinedFragment.getOwnedOperands());
+        Assert.assertEquals(2, firstCombinedFragment.getOwnedOperands().size());
 
         Assert.assertEquals(e1Bounds, editor.getBounds(e1Bot));
         Assert.assertEquals(e2Bounds, editor.getBounds(e2Bot));
@@ -290,7 +290,7 @@ public class CombinedFragmentsDisabledTests extends AbstractCombinedFragmentSequ
 
         // Redo
         redo();
-        Assert.assertEquals(3, firstCombinedFragment.getOwnedOperands());
+        Assert.assertEquals(3, firstCombinedFragment.getOwnedOperands().size());
 
         Assert.assertEquals(e1Bounds, editor.getBounds(e1Bot));
         Assert.assertEquals(e2Bounds, editor.getBounds(e2Bot));
