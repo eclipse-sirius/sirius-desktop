@@ -340,7 +340,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
             @Override
             public boolean apply(SWTBotGefEditPart input) {
                 try {
-                    checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, new ArrayList<FontFormat>(), false, false, null, -1, 8905185);
+                    checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, new ArrayList<FontFormat>(), false, false, null, -1, 5237244);
                     return true;
                 } catch (AssertionError e) {
                     return false;
