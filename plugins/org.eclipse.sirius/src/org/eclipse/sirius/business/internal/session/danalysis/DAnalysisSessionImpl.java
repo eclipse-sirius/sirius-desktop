@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2023 THALES GLOBAL SERVICES and others,
+ * Copyright (c) 2013, 2024 THALES GLOBAL SERVICES and others,
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -867,9 +867,11 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
             Collection<Resource> savedResources = save.getResult();
             if (savedResources != null) {
-                CommandStack commandStack = transactionalEditingDomain.getCommandStack();
-                if (commandStack instanceof BasicCommandStack) {
-                    ((BasicCommandStack) commandStack).saveIsDone();
+                if (transactionalEditingDomain != null) {
+                    CommandStack commandStack = transactionalEditingDomain.getCommandStack();
+                    if (commandStack instanceof BasicCommandStack) {
+                        ((BasicCommandStack) commandStack).saveIsDone();
+                    }
                 }
                 if (allResourcesAreInSync()) {
                     notifyListeners(SessionListener.SYNC);
