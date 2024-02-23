@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -187,7 +187,10 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
                 // Synchronizes the GMF diagram model according to the viewpoint
                 // DSemanticDiagram model.
                 CanonicalSynchronizer canonicalSynchronizer = CanonicalSynchronizerFactory.INSTANCE.createCanonicalSynchronizer(gmfDiag);
-                canonicalSynchronizer.storeViewsToArrange(true);
+                // No reason to store views to arrange as the flag NotYetOpenedDiagramAdapter has just been added above
+                // and in this case the stored data is ignored in
+                // SiriusCanonicalLayoutHandler.launchArrangeCommand(DiagramEditPart).
+                canonicalSynchronizer.storeViewsToArrange(false);
                 canonicalSynchronizer.synchronize();
                 canonicalSynchronizer.postCreation();
                 monitor.worked(10);
