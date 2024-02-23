@@ -75,7 +75,7 @@ public class TextEditorAppearedCondition implements ICondition {
                 errorMessage = "The selected element is expected to be in direct edit mode but was not: " + e.getMessage();
             } else {
                 if (!("[false/]".equals(precondition))) {
-                    errorMessage = "The direct edit mode is not accessible while there is no precondition.";
+                    errorMessage = "The direct edit mode is not accessible while there is no precondition: " + e.getMessage();
                 } else {
                     result = true;
                 }
