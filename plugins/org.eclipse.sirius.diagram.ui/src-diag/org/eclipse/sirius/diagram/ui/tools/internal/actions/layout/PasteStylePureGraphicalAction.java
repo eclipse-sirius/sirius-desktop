@@ -41,7 +41,6 @@ import org.eclipse.sirius.ecore.extender.business.api.permission.ISimpleAuthorit
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.PlatformUI;
 
 /**
  * Pastes the style of the copied element. Also works for semantically and graphically different element types.
@@ -88,7 +87,9 @@ public class PasteStylePureGraphicalAction extends Action implements IDisposable
     public void init() {
         if (isDisposed) {
             IWorkbenchPage page = EclipseUIUtil.getActivePage();
-            page.addSelectionListener(this.onChangeSelection);
+            if (page != null) {
+                page.addSelectionListener(this.onChangeSelection);
+            }
             updateActionState(getTargetEditParts());
             SiriusStyleClipboard.getInstance().addListener(onChangeClipboard);
             changeListenerOpt.ifPresent(changeListener -> {
@@ -193,8 +194,13 @@ public class PasteStylePureGraphicalAction extends Action implements IDisposable
     }
 
     private List<IGraphicalEditPart> getTargetEditParts() {
-        ISelection selection = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getSelection();
-        return getTargetEditParts(selection);
+        IWorkbenchPage page = EclipseUIUtil.getActivePage();
+        if (page != null) {
+            return getTargetEditParts(page.getSelection());
+        } else {
+            return List.of();
+        }
+
     }
 
     private List<IGraphicalEditPart> getTargetEditParts(ISelection selection) {
