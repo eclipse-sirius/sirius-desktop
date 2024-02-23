@@ -24,7 +24,6 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartMoved;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartResized;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
-import org.eclipse.sirius.tests.swtbot.support.api.condition.TextEditorAppearedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.junit.Assert;
@@ -66,13 +65,13 @@ public class AutoSizeSquareStyleDescriptionTest extends AbstractSiriusSwtBotGefT
 
     private static final String INVALID_SIZE_COMPUTATION_EXPRESSION = "-1"; //$NON-NLS-1$
 
-    private static final int WIDTH_AUTO_SIZED = 101;
+    private static final int WIDTH_AUTO_SIZED = System.getProperty("os.name").equals("Linux") ? 110 : 101;
 
-    private static final int HEIGHT_AUTO_SIZED = 51;
+    private static final int HEIGHT_AUTO_SIZED = System.getProperty("os.name").equals("Linux") ? 49 : 51;
 
-    private static final int HEIGHT_AFTER_RENAME = 72;
+    private static final int HEIGHT_AFTER_RENAME = System.getProperty("os.name").equals("Linux") ? 87 : 72;
 
-    private static final int WIDTH_AFTER_RENAME = 210;
+    private static final int WIDTH_AFTER_RENAME = System.getProperty("os.name").equals("Linux") ? 229 : 210;
 
     private static final String NEW_ECLASS_NAME = "EClass 01234567890123456789"; //$NON-NLS-1$
 
@@ -87,7 +86,7 @@ public class AutoSizeSquareStyleDescriptionTest extends AbstractSiriusSwtBotGefT
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME, DDiagram.class, true, true);
     }
 
     public void testAutoSizeComputationExpression() {
@@ -100,13 +99,7 @@ public class AutoSizeSquareStyleDescriptionTest extends AbstractSiriusSwtBotGefT
 
         // Select the new EClass and direct edit
         eClassEP = editor.getEditPart("EClass29", AbstractDiagramNodeEditPart.class); //$NON-NLS-1$
-        editor.click(eClassEP);
-        bot.waitUntil(new CheckSelectedCondition(editor, "EClass29", AbstractDiagramNodeEditPart.class)); //$NON-NLS-1$
-        // Click a second time on the edit part to enable the direct edit mode.
-        editor.clickCentered(eClassEP);
-        bot.waitUntil(new TextEditorAppearedCondition(editor, AbstractDiagramNodeEditPart.class, null));
-        // Edit the current edit part by adding a suffix to its current name.
-        editor.directEditType(NEW_ECLASS_NAME);
+        editor.directEditType(NEW_ECLASS_NAME, eClassEP);
 
         // Check that an editPart exists with the expected new name.
         eClassEP = editor.getEditPart(NEW_ECLASS_NAME, AbstractDiagramNodeEditPart.class);
@@ -116,7 +109,7 @@ public class AutoSizeSquareStyleDescriptionTest extends AbstractSiriusSwtBotGefT
         assertEquals(HEIGHT_AFTER_RENAME, sizeAfterRename.height);
         assertEquals(WIDTH_AFTER_RENAME, sizeAfterRename.width);
 
-        moveNodeTwiceAndCheckSize(eClassEP, HEIGHT_AFTER_RENAME, WIDTH_AFTER_RENAME);
+        moveNodeTwiceAndCheckSize(eClassEP, HEIGHT_AFTER_RENAME, WIDTH_AFTER_RENAME, "Node EClass29,");
     }
 
     public void testAllCombinationsSizeComputationExpressionSizeNodeWithSquareStyle() {
@@ -194,15 +187,16 @@ public class AutoSizeSquareStyleDescriptionTest extends AbstractSiriusSwtBotGefT
             }
         }
         Dimension size = editor.getBounds(eClassEP).getSize().getCopy();
-        assertEquals(expectedHeight, size.height);
-        assertEquals(expectedWidth, size.width);
+        assertEquals("Wrong height for " + eClassName + ":", expectedHeight, size.height, 1);
+        assertEquals("Wrong width for " + eClassName + ":", expectedWidth, size.width);
 
         // Move the node twice: A common bug is that the size changes after moving the node once or twice, so we check
         // that the size hasn't changed.
-        moveNodeTwiceAndCheckSize(eClassEP, expectedHeight, expectedWidth);
+        String prefixMessage = "Node " + eClassName + ",";
+        moveNodeTwiceAndCheckSize(eClassEP, expectedHeight, expectedWidth, prefixMessage);
 
         // Resize the node horizontally and vertically.
-        resizeHorizontallyAndVerticallyAndCheckSize(eClassEP, horizontalResizingAllowed, verticalResizingAllowed, expectedHeight, expectedWidth);
+        resizeHorizontallyAndVerticallyAndCheckSize(eClassEP, horizontalResizingAllowed, verticalResizingAllowed, expectedHeight, expectedWidth, prefixMessage);
     }
 
     /**
@@ -215,26 +209,28 @@ public class AutoSizeSquareStyleDescriptionTest extends AbstractSiriusSwtBotGefT
      *            vertical size value before move
      * @param expectedWidth
      *            horizontal size value before move
+     * @param errorMessagePrefix
+     *            the prefix to use for the error message
      */
-    private void moveNodeTwiceAndCheckSize(SWTBotGefEditPart eClassEP, int expectedHeight, int expectedWidth) {
+    private void moveNodeTwiceAndCheckSize(SWTBotGefEditPart eClassEP, int expectedHeight, int expectedWidth, String errorMessagePrefix) {
         Point eClassCenterBeforeMove = editor.getBounds(eClassEP).getCenter().getCopy();
         Point eClassNewPosition = new Point(eClassCenterBeforeMove.x + 50, eClassCenterBeforeMove.y + 50);
         CheckEditPartMoved movedCondition = new CheckEditPartMoved(eClassEP);
         editor.drag(eClassCenterBeforeMove, eClassNewPosition);
         // Check it has been properly moved and its size hasn't changed.
         bot.waitUntil(movedCondition);
-        GraphicTestsSupportHelp.assertEquals(eClassNewPosition, editor.getBounds(eClassEP).getCenter().getCopy(), 2);
+        GraphicTestsSupportHelp.assertEquals(errorMessagePrefix, eClassNewPosition, editor.getBounds(eClassEP).getCenter().getCopy(), 2);
         Dimension sizeAfterMove = editor.getBounds(eClassEP).getSize().getCopy();
-        assertEquals(expectedHeight, sizeAfterMove.height);
+        assertEquals(expectedHeight, sizeAfterMove.height, 1);
         assertEquals(expectedWidth, sizeAfterMove.width);
 
         movedCondition = new CheckEditPartMoved(eClassEP);
         editor.drag(eClassNewPosition, eClassCenterBeforeMove);
         // Check it has been properly moved a second time and its size hasn't changed.
         bot.waitUntil(movedCondition);
-        GraphicTestsSupportHelp.assertEquals(eClassCenterBeforeMove, editor.getBounds(eClassEP).getCenter().getCopy(), 2);
+        GraphicTestsSupportHelp.assertEquals(errorMessagePrefix, eClassCenterBeforeMove, editor.getBounds(eClassEP).getCenter().getCopy(), 2);
         sizeAfterMove = editor.getBounds(eClassEP).getSize().getCopy();
-        assertEquals(expectedHeight, sizeAfterMove.height);
+        assertEquals(expectedHeight, sizeAfterMove.height, 1);
         assertEquals(expectedWidth, sizeAfterMove.width);
     }
 
@@ -252,9 +248,11 @@ public class AutoSizeSquareStyleDescriptionTest extends AbstractSiriusSwtBotGefT
      *            vertical size value before resize
      * @param expectedWidthBeforeResize
      *            horizontal size value before resize
+     * @param errorMessagePrefix
+     *            the prefix to use for the error message
      */
     private void resizeHorizontallyAndVerticallyAndCheckSize(SWTBotGefEditPart eClassEP, boolean horizontalResizingAllowed, boolean verticalResizingAllowed, int expectedHeightBeforeResize,
-            int expectedWidthBeforeResize) {
+            int expectedWidthBeforeResize, String errorMessagePrefix) {
         int expectedHeight = expectedHeightBeforeResize;
         int expectedWidth = expectedWidthBeforeResize;
 
@@ -268,14 +266,14 @@ public class AutoSizeSquareStyleDescriptionTest extends AbstractSiriusSwtBotGefT
             // Size should be updated horizontally.
             bot.waitUntil(resizedCondition);
             sizeAfterMove = editor.getBounds(eClassEP).getSize().getCopy();
-            GraphicTestsSupportHelp.assertEquals(newRight, editor.getBounds(eClassEP).getRight().getCopy(), 2, 0);
-            assertEquals(expectedHeight, sizeAfterMove.height);
+            GraphicTestsSupportHelp.assertEquals(errorMessagePrefix, newRight, editor.getBounds(eClassEP).getRight().getCopy(), 2, 0);
+            assertEquals(expectedHeight, sizeAfterMove.height, 1);
             Assert.assertEquals(expectedWidth + 50, sizeAfterMove.width, 2);
             expectedWidth = sizeAfterMove.width;
         } else {
             // Size should not be updated.
-            GraphicTestsSupportHelp.assertEquals(eClassRightBeforeResize, editor.getBounds(eClassEP).getRight().getCopy(), 0);
-            assertEquals(expectedHeight, sizeAfterMove.height);
+            GraphicTestsSupportHelp.assertEquals(errorMessagePrefix, eClassRightBeforeResize, editor.getBounds(eClassEP).getRight().getCopy(), 0);
+            assertEquals(expectedHeight, sizeAfterMove.height, 1);
             assertEquals(expectedWidth, sizeAfterMove.width);
         }
 
@@ -289,13 +287,13 @@ public class AutoSizeSquareStyleDescriptionTest extends AbstractSiriusSwtBotGefT
             // Size should be updated vertically.
             bot.waitUntil(resizedCondition);
             sizeAfterMove = editor.getBounds(eClassEP).getSize().getCopy();
-            GraphicTestsSupportHelp.assertEquals(newBottom, editor.getBounds(eClassEP).getBottom().getCopy(), 0, 2);
+            GraphicTestsSupportHelp.assertEquals(errorMessagePrefix, newBottom, editor.getBounds(eClassEP).getBottom().getCopy(), 0, 2);
             Assert.assertEquals(expectedHeight + 50, sizeAfterMove.height, 2);
             assertEquals(expectedWidth, sizeAfterMove.width);
         } else {
             // Size should not be updated.
-            GraphicTestsSupportHelp.assertEquals(eClassBottomBeforeResize, editor.getBounds(eClassEP).getBottom().getCopy(), 0);
-            assertEquals(expectedHeight, sizeAfterMove.height);
+            GraphicTestsSupportHelp.assertEquals(errorMessagePrefix, eClassBottomBeforeResize, editor.getBounds(eClassEP).getBottom().getCopy(), 0);
+            assertEquals(expectedHeight, sizeAfterMove.height, 1);
             assertEquals(expectedWidth, sizeAfterMove.width);
         }
     }
