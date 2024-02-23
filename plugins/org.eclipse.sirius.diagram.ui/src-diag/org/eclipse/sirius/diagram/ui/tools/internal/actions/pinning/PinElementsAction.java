@@ -82,11 +82,14 @@ public final class PinElementsAction extends Action implements Disposable {
         setId(ActionIds.PIN_ELEMENTS);
 
         IWorkbenchPage page = EclipseUIUtil.getActivePage();
-        page.addSelectionListener(this.onChangeSelection);
+        if (page != null) {
+            page.addSelectionListener(this.onChangeSelection);
+        }
         updateActionState(getCurrentSelection());
 
         isDisposed = false;
     }
+
     // factories
     /**
      * Create the pin elements action for toolbar (with image and tooltip).
@@ -99,6 +102,7 @@ public final class PinElementsAction extends Action implements Disposable {
         action.setImageDescriptor(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.PIN_ELEMENTS_ICON));
         return action;
     }
+
     /**
      * Create the pin elements action for menu (without image and tooltip).
      * 
@@ -197,6 +201,7 @@ public final class PinElementsAction extends Action implements Disposable {
             }
         }
     }
+
     /**
      * Remove the listener of the pin/unpin feature of the last selected element selection (selectionLastElement) if
      * present.
@@ -306,7 +311,6 @@ public final class PinElementsAction extends Action implements Disposable {
         }
         return result;
     }
-
 
     // utility
     private Optional<DDiagramElement> getAny(final Collection<DDiagramElement> elements) {
