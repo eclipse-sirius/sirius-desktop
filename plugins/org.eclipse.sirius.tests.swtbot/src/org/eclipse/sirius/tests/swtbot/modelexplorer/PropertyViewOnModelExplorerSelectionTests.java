@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -80,7 +80,7 @@ public class PropertyViewOnModelExplorerSelectionTests extends AbstractSiriusSwt
         SWTBotTreeItem representationsResourceTreeItemBot = projectTreeItemBot.getNode(REPRESENTATIONS_RESOURCE_NAME);
         representationsResourceTreeItemBot.select();
         assertEmptyPropertiesView(true);
-        SWTBotTreeItem viewpointTreeItemBot = representationsResourceTreeItemBot.getNode(0).getNode(EcoreModeler.DESIGN_VIEWPOINT_NAME);
+        SWTBotTreeItem viewpointTreeItemBot = representationsResourceTreeItemBot.getNode(1).getNode(EcoreModeler.DESIGN_VIEWPOINT_NAME);
         viewpointTreeItemBot.select();
         assertEmptyPropertiesView(true);
         SWTBotTreeItem representationDescriptionTreeItemBot = viewpointTreeItemBot.getNode(0);
@@ -92,7 +92,7 @@ public class PropertyViewOnModelExplorerSelectionTests extends AbstractSiriusSwt
 
         // Check that properties view display something on treeItem selection of
         // semantic resource treeItem
-        SWTBotTreeItem semanticResourceTreeItemBot = representationsResourceTreeItemBot.getNode(1);
+        SWTBotTreeItem semanticResourceTreeItemBot = representationsResourceTreeItemBot.getNode(2);
         semanticResourceTreeItemBot.select();
         assertEmptyPropertiesView(true);
         SWTBotTreeItem rootEPackageTreeItemBot = semanticResourceTreeItemBot.getNode(0);

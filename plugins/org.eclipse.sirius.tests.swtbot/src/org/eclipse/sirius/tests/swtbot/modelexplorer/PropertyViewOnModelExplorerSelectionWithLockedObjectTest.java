@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2024 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -93,7 +93,7 @@ public class PropertyViewOnModelExplorerSelectionWithLockedObjectTest extends Ab
         // semantic resource treeItem
         SWTBotTreeItem projectTreeItemBot = modelExplorerViewBot.tree().expandNode(getProjectName(), true);
         SWTBotTreeItem representationsResourceTreeItemBot = projectTreeItemBot.getNode(REPRESENTATIONS_RESOURCE_NAME);
-        SWTBotTreeItem semanticResourceTreeItemBot = representationsResourceTreeItemBot.getNode(1);
+        SWTBotTreeItem semanticResourceTreeItemBot = representationsResourceTreeItemBot.getNode(2);
         semanticResourceTreeItemBot.select();
         assertEmptyPropertiesView(true);
         SWTBotTreeItem rootEPackageTreeItemBot = semanticResourceTreeItemBot.getNode(0);
