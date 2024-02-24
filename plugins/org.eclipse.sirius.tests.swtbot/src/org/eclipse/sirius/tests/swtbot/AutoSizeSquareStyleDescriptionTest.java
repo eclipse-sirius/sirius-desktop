@@ -69,10 +69,6 @@ public class AutoSizeSquareStyleDescriptionTest extends AbstractSiriusSwtBotGefT
 
     private static final int HEIGHT_AUTO_SIZED = System.getProperty("os.name").equals("Linux") ? 49 : 51;
 
-    private static final int HEIGHT_AFTER_RENAME = System.getProperty("os.name").equals("Linux") ? 87 : 72;
-
-    private static final int WIDTH_AFTER_RENAME = System.getProperty("os.name").equals("Linux") ? 229 : 210;
-
     private static final String NEW_ECLASS_NAME = "EClass 01234567890123456789"; //$NON-NLS-1$
 
     private static final String EMPTY_STRING = ""; //$NON-NLS-1$
@@ -96,7 +92,7 @@ public class AutoSizeSquareStyleDescriptionTest extends AbstractSiriusSwtBotGefT
         point.x = point.x + 10;
         editor.activateTool("EClass"); //$NON-NLS-1$
         editor.click(point);
-
+        Dimension sizeBeforeRename = editor.getBounds(eClassEP).getSize().getCopy();
         // Select the new EClass and direct edit
         eClassEP = editor.getEditPart("EClass29", AbstractDiagramNodeEditPart.class); //$NON-NLS-1$
         editor.directEditType(NEW_ECLASS_NAME, eClassEP);
@@ -104,12 +100,13 @@ public class AutoSizeSquareStyleDescriptionTest extends AbstractSiriusSwtBotGefT
         // Check that an editPart exists with the expected new name.
         eClassEP = editor.getEditPart(NEW_ECLASS_NAME, AbstractDiagramNodeEditPart.class);
 
-        // Check its new size
+        // Check its new size: larger and higher than before. The real size is not checked because it depends on the OS
+        // and the installed fonts.
         Dimension sizeAfterRename = editor.getBounds(eClassEP).getSize().getCopy();
-        assertEquals(HEIGHT_AFTER_RENAME, sizeAfterRename.height);
-        assertEquals(WIDTH_AFTER_RENAME, sizeAfterRename.width);
+        assertTrue("The height after rename should be higher.", sizeAfterRename.height > sizeBeforeRename.height);
+        assertTrue("The width after rename should be larger.", sizeAfterRename.width > sizeBeforeRename.width);
 
-        moveNodeTwiceAndCheckSize(eClassEP, HEIGHT_AFTER_RENAME, WIDTH_AFTER_RENAME, "Node EClass29,");
+        moveNodeTwiceAndCheckSize(eClassEP, sizeAfterRename.height, sizeAfterRename.width, "Node EClass29,");
     }
 
     public void testAllCombinationsSizeComputationExpressionSizeNodeWithSquareStyle() {
