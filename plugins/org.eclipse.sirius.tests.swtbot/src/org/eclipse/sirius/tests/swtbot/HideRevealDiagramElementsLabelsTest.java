@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -499,8 +499,8 @@ public class HideRevealDiagramElementsLabelsTest extends AbstractHideRevealDiagr
 
         // Step 1.2 : open the context menu the element to hide and select the
         // hide element action
-        SWTBotTreeItem labelItem = view.bot().tree().getTreeItem("p").getNode(EDGE_WITH_LABEL_NAME + " : B").getNode(LABEL_SUFFIX_IN_OUTLINE).click();
-        view.bot().tree().getTreeItem("p").getNode(EDGE_WITH_LABEL_NAME + " : B").getNode(LABEL_SUFFIX_IN_OUTLINE).select();
+        SWTBotTreeItem labelItem = view.bot().tree().getTreeItem("p").getNode(EDGE_WITH_LABEL_NAME + " : B").getNode(EDGE_WITH_LABEL_NAME + " " + LABEL_SUFFIX_IN_OUTLINE).click();
+        view.bot().tree().getTreeItem("p").getNode(EDGE_WITH_LABEL_NAME + " : B").getNode(EDGE_WITH_LABEL_NAME + " " + LABEL_SUFFIX_IN_OUTLINE).select();
         SWTBotUtils.waitAllUiEvents();
         bot.waitUntil(new TreeItemSelected(labelItem));
         setShownImage(labelItem);
