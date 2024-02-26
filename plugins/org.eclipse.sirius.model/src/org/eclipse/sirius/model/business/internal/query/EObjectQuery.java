@@ -214,12 +214,13 @@ public class EObjectQuery {
         List<EObject> result = Collections.emptyList();
         if (ref.isMany()) {
             Object rawValue = eObject.eGet(ref);
-            if (rawValue != null && !(rawValue instanceof EList<?>)) {
-                // throw new RuntimeException(MessageFormat.format(Messages.EObjectQuery_valuesErrorMsg, ref.getName(),
-                // rawValue.getClass()));
-            }
-            if (rawValue != null && (!((EList<?>) rawValue).isEmpty() && ((EList<?>) rawValue).get(0) instanceof EObject)) {
-                result = new ArrayList<EObject>((EList<EObject>) rawValue);
+            if (rawValue != null) {
+                if (!(rawValue instanceof EList<?>)) {
+                    // throw new RuntimeException(MessageFormat.format(Messages.EObjectQuery_valuesErrorMsg,
+                    // ref.getName(), rawValue.getClass()));
+                } else if (!((EList<?>) rawValue).isEmpty() && ((EList<?>) rawValue).get(0) instanceof EObject) {
+                    result = new ArrayList<EObject>((EList<EObject>) rawValue);
+                }
             }
         } else {
             EObject rawValue = (EObject) eObject.eGet(ref);
