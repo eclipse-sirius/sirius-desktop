@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2019 Obeo.
+ * Copyright (c) 2014, 2024 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCa
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotVSMEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
+import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
@@ -88,7 +89,19 @@ public class InvalidMetamodelRessourceTest extends AbstractSiriusSwtBotGefTestCa
         try {
             openErrorLogViewByAPI();
             SWTBotView logViewBot = bot.viewByPartName("Error Log");
-            assertTrue("Invalid Metamodel URI does not appear in the error log.", isMessageInErrorLog(logViewBot));
+            logViewBot.show();
+            bot.waitUntil(new DefaultCondition() {
+
+                @Override
+                public boolean test() throws Exception {
+                    return isMessageInErrorLog(logViewBot);
+                }
+
+                @Override
+                public String getFailureMessage() {
+                    return "Invalid Metamodel URI does not appear in the error log.";
+                }
+            });
             logViewBot.close();
         } finally {
             // Reset to previous environment
@@ -103,7 +116,6 @@ public class InvalidMetamodelRessourceTest extends AbstractSiriusSwtBotGefTestCa
      *            the view to check
      */
     private Boolean isMessageInErrorLog(SWTBotView logViewBot) {
-        logViewBot.show();
         SWTBotTree treeError = logViewBot.bot().tree();
         String errorMessage = "Invalid ressource access for the metamodel file:/C:/Users/Stephan%20Kranz/workspace/basicfamily/model/basicfamily.ecore";
         for (SWTBotTreeItem treeItem : treeError.getAllItems()) {
