@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -171,9 +171,9 @@ public class RefreshWithPropertiesViewTest extends AbstractTreeSiriusSWTBotGefTe
         assertNotNull("The tree item for the class is null", widgetEnum);
 
         SWTBotView propertiesView = bot.viewByTitle("Properties");
+        propertiesView.setFocus();
         SWTBot propertiesViewBot = propertiesView.bot();
         SWTBotTree tree2 = propertiesViewBot.tree();
-        propertiesView.setFocus();
 
         /* Change the name of the package by properties */
         SWTBotTreeItem packageName = tree2.getTreeItem(NEW_E_CLASS_1).getNode(NAME);
