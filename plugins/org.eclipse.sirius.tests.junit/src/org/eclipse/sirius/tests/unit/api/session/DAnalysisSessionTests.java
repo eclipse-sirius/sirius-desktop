@@ -395,6 +395,7 @@ public class DAnalysisSessionTests extends SiriusDiagramTestCase {
     }
 
     public void testCreateWrongSession() throws Exception {
+        boolean compareBeforeAndAfterSize = false;
         int beforeSize = 0;
         int afterSize = 0;
         try {
@@ -404,14 +405,16 @@ public class DAnalysisSessionTests extends SiriusDiagramTestCase {
             session = SessionFactory.INSTANCE.createSession(sessionResourceURI, new NullProgressMonitor());
             session.addSemanticResource(semanticResourceURI, new NullProgressMonitor());
             afterSize = SessionManager.INSTANCE.getSessions().size();
+            compareBeforeAndAfterSize = true;
         } catch (final Exception e) {
             // Wanted behavior : Session initialization is not possible with
             // null analysis.
         } catch (AssertionError ae) {
             // We may also fail with an assertion error if they are enabled.
         }
-        Assert.assertEquals(beforeSize, afterSize);
-
+        if (compareBeforeAndAfterSize) {
+            Assert.assertEquals(beforeSize, afterSize);
+        }
     }
 
     public void testCreateSessionFromEcoreResource() throws Exception {
