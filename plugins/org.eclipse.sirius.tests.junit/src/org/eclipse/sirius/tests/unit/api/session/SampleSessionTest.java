@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -246,6 +246,58 @@ public class SampleSessionTest extends SiriusDiagramTestCase {
 
         TestsUtil.emptyEventsFromUIThread();
 
+    }
+
+    /**
+     * Test the session closing.
+     * 
+     * @throws Exception
+     *             if exception thrown
+     */
+    public void testCloseSession() throws Exception {
+        // Activate error log
+        genericSetUp();
+        // Create the session and open the representation
+        testOpenDiagram();
+
+        TestsUtil.emptyEventsFromUIThread();
+
+        assertTrue("This test requires the error detection", isErrorCatchActive());
+
+        assertNotNull("Session should still been there.", session);
+        assertTrue("Session should still been opened.", session.isOpen());
+        IEditingSession sessionUI = SessionUIManager.INSTANCE.getUISession(session);
+        assertNotNull("UI Session should still exists.", sessionUI);
+        assertTrue("UI Session should still been opened.", sessionUI.isOpen());
+
+        session.close(new NullProgressMonitor());
+        TestsUtil.emptyEventsFromUIThread();
+
+        assertFalse("Session should no more be opened.", session.isOpen());
+        assertFalse("UI Session should no more be opened.", sessionUI.isOpen());
+        sessionUI = SessionUIManager.INSTANCE.getUISession(session);
+        assertNull("UI Session should no more exists.", sessionUI);
+
+        for (final Session managerSession : new ArrayList<Session>(SessionManager.INSTANCE.getSessions())) {
+            if (managerSession == session) {
+                fail("Session should have been removed from manager on close.");
+            }
+        }
+
+        // Check that a second session.close() call does not trigger errors.
+        session.close(new NullProgressMonitor());
+        TestsUtil.emptyEventsFromUIThread();
+
+        // Re-check that session is closed, ui session has not been recreated.
+        assertFalse("Session should no more be opened.", session.isOpen());
+        sessionUI = SessionUIManager.INSTANCE.getUISession(session);
+        assertNull("UI Session should no more exists.", sessionUI);
+
+        for (final Session managerSession : new ArrayList<Session>(SessionManager.INSTANCE.getSessions())) {
+            if (managerSession == session) {
+                fail("Session should have been removed from manager on close.");
+            }
+        }
     }
 
     /**
