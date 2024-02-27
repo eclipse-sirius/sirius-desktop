@@ -312,7 +312,15 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      * Disable & Remove all ECrossReferencerAdapter adapters.
      */
     protected void disableAndRemoveECrossReferenceAdapters() {
-        ResourceSet resourceSet = getTransactionalEditingDomain().getResourceSet();
+        TransactionalEditingDomain ted = getTransactionalEditingDomain();
+        if (ted == null) {
+            return;
+        }
+
+        ResourceSet resourceSet = ted.getResourceSet();
+        if (resourceSet == null) {
+            return;
+        }
 
         // Disable resolution of proxy for SiriusCrossReferenceAdapter of
         // resourceSet
@@ -1313,15 +1321,20 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
                 removeListener(getRefreshEditorsListener());
             }
         }
-        getTransactionalEditingDomain().removeResourceSetListener(dRepresentationChangeListener);
-        dRepresentationChangeListener = null;
-        getTransactionalEditingDomain().removeResourceSetListener(changeIdUpdaterListener);
-        changeIdUpdaterListener = null;
-        getTransactionalEditingDomain().removeResourceSetListener(updateBase64ImageEncodingPreCommitListener);
-        updateBase64ImageEncodingPreCommitListener = null;
-        getTransactionalEditingDomain().removeResourceSetListener(updateImageDependenciesPreCommitListener);
-        updateImageDependenciesPreCommitListener = null;
         refreshEditorsListeners = null;
+
+        TransactionalEditingDomain ted = getTransactionalEditingDomain();
+        if (ted != null) {
+            ted.removeResourceSetListener(dRepresentationChangeListener);
+            dRepresentationChangeListener = null;
+            ted.removeResourceSetListener(changeIdUpdaterListener);
+            changeIdUpdaterListener = null;
+            ted.removeResourceSetListener(updateBase64ImageEncodingPreCommitListener);
+            updateBase64ImageEncodingPreCommitListener = null;
+            ted.removeResourceSetListener(updateImageDependenciesPreCommitListener);
+            updateImageDependenciesPreCommitListener = null;
+        }
+
         reloadingPolicy = null;
         savingPolicy = null;
         if (interpreter != null) {
@@ -1336,11 +1349,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             ResourceSetSync.uninstallResourceSetSync(transactionalEditingDomain);
             super.setOpen(false);
         }
-        /*
-         * Let's clear the cross referencer of the VSM resource if it's still there (added by the
-         * updateSelectedViewpointsData).
-         */
-        ResourceSet resourceSet = getTransactionalEditingDomain().getResourceSet();
 
         if (currentResourceCollector != null) {
             currentResourceCollector.dispose();
@@ -1360,9 +1368,11 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             broker = null;
         }
 
-        CommandStackUtil.flushOperations(transactionalEditingDomain.getCommandStack());
-        // Unload all referenced resources
-        unloadAllResources(monitor);
+        if (transactionalEditingDomain != null) {
+            CommandStackUtil.flushOperations(transactionalEditingDomain.getCommandStack());
+            // Unload all referenced resources
+            unloadAllResources(monitor);
+        }
 
         if (isOpened) {
             // Notify that the session is closed.
@@ -1376,9 +1386,13 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         crossReferencer = null;
         saver.dispose();
 
-        transactionalEditingDomain.dispose();
-        doDisposePermissionAuthority(resourceSet);
-        ModelAccessorAdapter.disposeModelAccessor(resourceSet);
+        if (transactionalEditingDomain != null) {
+            ResourceSet resourceSet = transactionalEditingDomain.getResourceSet();
+
+            transactionalEditingDomain.dispose();
+            doDisposePermissionAuthority(resourceSet);
+            ModelAccessorAdapter.disposeModelAccessor(resourceSet);
+        }
         transactionalEditingDomain = null;
         getActivatedViewpoints().clear();
         services = null;
