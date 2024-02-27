@@ -233,6 +233,9 @@ public class ColorPropertyContributionItem extends PropertyChangeContributionIte
             } else { // on icon button
                 if (lastColor != null) {
                     runWithEvent(e);
+                } else {
+                    // No previous color? Open the popup.
+                    invokeColorPalettePopup(toolItem);
                 }
             }
         }
