@@ -249,7 +249,10 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
         treeViewer.getTree().setHeaderVisible(true);
 
         // Create a new CellFocusManager
-        final TreeViewerFocusCellManager focusCellManager = new TreeViewerFocusCellManager(treeViewer, new FocusCellOwnerDrawHighlighter(treeViewer));
+        final TreeViewerFocusCellManager focusCellManager = new TreeViewerFocusCellManager(treeViewer, 
+                // The behavior of focus highlight is really different between Windows and Linux/GTK.
+                // Windows has several focus colors for Foreground and background, GTK doesn't.
+                new FocusCellOwnerDrawHighlighter(treeViewer, !IS_GTK_OS));
         // Create a TreeViewerEditor with focusable cell
         TreeViewerEditor.create(treeViewer, focusCellManager, new DTableColumnViewerEditorActivationStrategy(treeViewer),
                 ColumnViewerEditor.TABBING_HORIZONTAL | ColumnViewerEditor.TABBING_MOVE_TO_ROW_NEIGHBOR | ColumnViewerEditor.TABBING_VERTICAL | ColumnViewerEditor.KEYBOARD_ACTIVATION);
