@@ -138,20 +138,12 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
         this.storeViews2Arrange = storeViewsToArrange;
     }
 
-    /**
-     * Refreshes a view.
-     * 
-     * @param view
-     *            the view to refresh.
-     * @param canonicalSynchronizerResult
-     *            List of created {@link View}s and detected orphan {@link View}s during the canonical refresh of the
-     *            diagram.
-     * @return the {@link CanonicalSynchronizerResult} for convenience
-     */
     protected void refreshSemantic(final View view, CanonicalSynchronizerResult canonicalSynchronizerResult) {
         refreshSemanticChildren(view, ViewUtil.resolveSemanticElement(view), canonicalSynchronizerResult);
         for (View childView : Iterables.filter(view.getChildren(), View.class)) {
-            refreshSemantic(childView, canonicalSynchronizerResult);
+            if (!canonicalSynchronizerResult.getOrphanNodes().contains(childView)) {
+                refreshSemantic(childView, canonicalSynchronizerResult);
+            }
         }
     }
 
