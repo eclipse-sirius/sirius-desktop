@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis uid="_q9vFsN-HEe66rJsMoPrhFw" selectedViews="_OGGrsN-KEe66rJsMoPrhFw" version="15.2.0.202303281325">
+    <semanticResources>My.ecore</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" uid="_OGGrsN-KEe66rJsMoPrhFw">
+      <viewpoint xmi:type="description:Viewpoint" href="My.odesign#//@ownedViewpoints[name='VPBugDnDRefresh']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_OZOcAd-KEe66rJsMoPrhFw" name="new DBugDnDRefresh" repPath="#_OZMm0N-KEe66rJsMoPrhFw" changeId="1710152970470">
+        <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='VPBugDnDRefresh']/@ownedRepresentations[name='DBugDnDRefresh']"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <diagram:DSemanticDiagram uid="_OZMm0N-KEe66rJsMoPrhFw">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_OZapQN-KEe66rJsMoPrhFw" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_OZapQd-KEe66rJsMoPrhFw" type="Sirius" element="_OZMm0N-KEe66rJsMoPrhFw" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_g-H6l9-KEe66rJsMoPrhFw" type="2002" element="_g-DpId-KEe66rJsMoPrhFw">
+          <children xmi:type="notation:Node" xmi:id="_g-H6mt-KEe66rJsMoPrhFw" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_g-H6m9-KEe66rJsMoPrhFw" type="7001">
+            <children xmi:type="notation:Node" xmi:id="_oOlMQN-REe66rJsMoPrhFw" visible="false" type="3008" element="_oOjXGt-REe66rJsMoPrhFw">
+              <children xmi:type="notation:Node" xmi:id="_oOlMQ9-REe66rJsMoPrhFw" type="5005"/>
+              <children xmi:type="notation:Node" xmi:id="_oOlMRN-REe66rJsMoPrhFw" type="7002">
+                <styles xmi:type="notation:SortingStyle" xmi:id="_oOlMRd-REe66rJsMoPrhFw"/>
+                <styles xmi:type="notation:FilteringStyle" xmi:id="_oOlMRt-REe66rJsMoPrhFw"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_oOlMQd-REe66rJsMoPrhFw" fontName="Segoe UI" fontHeight="12"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_oOlMQt-REe66rJsMoPrhFw" x="95" y="34"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_g-H6nN-KEe66rJsMoPrhFw"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_g-H6nd-KEe66rJsMoPrhFw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_g-H6mN-KEe66rJsMoPrhFw" fontName="Segoe UI"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_g-H6md-KEe66rJsMoPrhFw" x="295" y="70" width="313" height="178"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_zY4-It-QEe66rJsMoPrhFw" type="2001" element="_9Bc7Et-NEe66rJsMoPrhFw">
+          <children xmi:type="notation:Node" xmi:id="_zY5lEN-QEe66rJsMoPrhFw" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_zY5lEd-QEe66rJsMoPrhFw" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_zY6MLt-QEe66rJsMoPrhFw" type="3001" element="_zY4-Ct-QEe66rJsMoPrhFw">
+            <children xmi:type="notation:Node" xmi:id="_zY6zMN-QEe66rJsMoPrhFw" type="5001">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_zY6zMd-QEe66rJsMoPrhFw" x="21" y="-1"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_zY6zPd-QEe66rJsMoPrhFw" type="3016" element="_zY4-C9-QEe66rJsMoPrhFw">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_zY6zPt-QEe66rJsMoPrhFw" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zY6zP9-QEe66rJsMoPrhFw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zY6ML9-QEe66rJsMoPrhFw" fontName="Segoe UI" fontHeight="12"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zY6MMN-QEe66rJsMoPrhFw" x="-12" y="25" width="20" height="20"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_zY6zN9-QEe66rJsMoPrhFw" type="3003" element="_9Bc7E9-NEe66rJsMoPrhFw">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zY6zON-QEe66rJsMoPrhFw" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zY6zOd-QEe66rJsMoPrhFw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_zY4-I9-QEe66rJsMoPrhFw" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zY4-JN-QEe66rJsMoPrhFw" x="70" y="95" width="131" height="111"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_OZapQt-KEe66rJsMoPrhFw"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_OZapQ9-KEe66rJsMoPrhFw" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_OZapRN-KEe66rJsMoPrhFw"/>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_g-DpId-KEe66rJsMoPrhFw" name="pkg2">
+      <target xmi:type="ecore:EPackage" href="My.ecore#//pkg2"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//pkg2"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_kGuDMN-KEe66rJsMoPrhFw" labelSize="12" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='VPBugDnDRefresh']/@ownedRepresentations[name='DBugDnDRefresh']/@defaultLayer/@containerMappings[name='MContainer']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='VPBugDnDRefresh']/@ownedRepresentations[name='DBugDnDRefresh']/@defaultLayer/@containerMappings[name='MContainer']"/>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_oOjXGt-REe66rJsMoPrhFw" name="subPkg2.1" visible="false">
+        <target xmi:type="ecore:EPackage" href="My.ecore#//pkg2/subPkg2.1"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//pkg2/subPkg2.1"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_oOjXG9-REe66rJsMoPrhFw" labelSize="12" borderSize="1" borderSizeComputationExpression="1">
+          <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='VPBugDnDRefresh']/@ownedRepresentations[name='DBugDnDRefresh']/@defaultLayer/@containerMappings[name='MContainer']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='VPBugDnDRefresh']/@ownedRepresentations[name='DBugDnDRefresh']/@defaultLayer/@containerMappings[name='MContainer']"/>
+      </ownedDiagramElements>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_9Bc7Et-NEe66rJsMoPrhFw" name="cls2" width="3" height="3" resizeKind="NSEW">
+      <target xmi:type="ecore:EClass" href="My.ecore#//cls2"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//cls2"/>
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_zY4-Ct-QEe66rJsMoPrhFw" name="pkg2" width="2" height="2" resizeKind="NSEW">
+        <target xmi:type="ecore:EPackage" href="My.ecore#//pkg2"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//pkg2"/>
+        <ownedStyle xmi:type="diagram:Ellipse" uid="_zY4-C9-QEe66rJsMoPrhFw" labelSize="12">
+          <description xmi:type="style:EllipseNodeDescription" href="My.odesign#//@ownedViewpoints[name='VPBugDnDRefresh']/@ownedRepresentations[name='DBugDnDRefresh']/@defaultLayer/@nodeMappings[name='MNode']/@borderedNodeMappings[name='DBorderNode']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='VPBugDnDRefresh']/@ownedRepresentations[name='DBugDnDRefresh']/@defaultLayer/@nodeMappings[name='MNode']/@borderedNodeMappings[name='DBorderNode']"/>
+      </ownedBorderedNodes>
+      <ownedStyle xmi:type="diagram:Square" uid="_9Bc7E9-NEe66rJsMoPrhFw" labelSize="12" labelPosition="node" width="-1" height="-1">
+        <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='VPBugDnDRefresh']/@ownedRepresentations[name='DBugDnDRefresh']/@defaultLayer/@nodeMappings[name='MNode']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='VPBugDnDRefresh']/@ownedRepresentations[name='DBugDnDRefresh']/@defaultLayer/@nodeMappings[name='MNode']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='VPBugDnDRefresh']/@ownedRepresentations[name='DBugDnDRefresh']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_OZOcAN-KEe66rJsMoPrhFw"/>
+    <activatedLayers xmi:type="description_1:Layer" href="My.odesign#//@ownedViewpoints[name='VPBugDnDRefresh']/@ownedRepresentations[name='DBugDnDRefresh']/@defaultLayer"/>
+    <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+  </diagram:DSemanticDiagram>
+</xmi:XMI>

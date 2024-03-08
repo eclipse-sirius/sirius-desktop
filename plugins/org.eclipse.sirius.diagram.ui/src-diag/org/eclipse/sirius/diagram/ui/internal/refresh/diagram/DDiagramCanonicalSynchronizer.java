@@ -195,7 +195,9 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
             refreshSemanticChildren(gmfDiagram, gmfDiagram.getElement(), canonicalSynchronizerResult);
             List<View> children = gmfDiagram.getChildren();
             for (final View view : children) {
-                refreshSemantic(view, canonicalSynchronizerResult);
+                if (!canonicalSynchronizerResult.getOrphanNodes().contains(view)) {
+                    refreshSemantic(view, canonicalSynchronizerResult);
+                }
             }
             // reconciliation delete/create, compute deletion dependencies and confirm deletion
             canonicalSynchronizerResult.reconciliateOrphanNodes();
