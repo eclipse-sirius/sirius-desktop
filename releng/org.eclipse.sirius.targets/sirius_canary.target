@@ -77,9 +77,8 @@
       <repository id="UML2-LastSuccessful" location="https://download.eclipse.org/modeling/mdt/uml2/updates/interim/latest"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.ocl.all.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.ocl.core.sdk.feature.group" version="0.0.0"/>
-      <repository id="OCL-LastSuccessful" location="https://download.eclipse.org/modeling/mdt/ocl/updates/nightly/"/>
+      <unit id="org.eclipse.ocl.all.sdk.feature.group" version="0.0.0"/>
+      <repository id="OCL-LastSuccessful" location="https://download.eclipse.org/modeling/mdt/ocl/builds/nightly/latest"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.validation.sdk.feature.group" version="0.0.0"/>
