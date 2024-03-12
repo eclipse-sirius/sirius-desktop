@@ -28,15 +28,9 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.ContainerStyle;
-import org.eclipse.sirius.diagram.DDiagramElementContainer;
-import org.eclipse.sirius.diagram.DEdge;
-import org.eclipse.sirius.diagram.DNode;
-import org.eclipse.sirius.diagram.EdgeStyle;
-import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
-import org.eclipse.sirius.tools.internal.SiriusCopierHelper;
-import org.eclipse.sirius.viewpoint.DStylizable;
+import org.eclipse.sirius.diagram.ui.tools.api.format.BasicSiriusStyleApplicator;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.Style;
 
 /**
@@ -97,49 +91,15 @@ public final class PasteStyleCommandProvider {
      * @return The command that updates the style of the target element, or <code>null</code> if the style is not
      *         compatible with the element.
      */
-    public static Command createSiriusCommand(TransactionalEditingDomain domain, DStylizable targetElement, Style sourceStyle) {
-        Style copiedStyle = SiriusCopierHelper.copyWithNoUidDuplication(sourceStyle);
-        
-        ICommand viewStyleCommand = null;
-        if (targetElement instanceof DEdge && copiedStyle instanceof EdgeStyle) {
-            final DEdge edge = (DEdge) targetElement;
-            final EdgeStyle edgeStyle = (EdgeStyle) copiedStyle;
+    public static Command createSiriusCommand(TransactionalEditingDomain domain, DSemanticDecorator targetElement, Style sourceStyle) {
+        ICommand viewStyleCommand = new AbstractTransactionalCommand(domain, getCommandLabel(), null) {
+            @Override
+            protected CommandResult doExecuteWithResult(final IProgressMonitor progressMonitor, final IAdaptable info) throws ExecutionException {
+                BasicSiriusStyleApplicator.INSTANCE.applySiriusStyle(targetElement, sourceStyle);
+                return CommandResult.newOKCommandResult();
+            }
+        };
 
-            viewStyleCommand = new AbstractTransactionalCommand(domain, getCommandLabel(), null) {
-                @Override
-                protected CommandResult doExecuteWithResult(final IProgressMonitor progressMonitor, final IAdaptable info) throws ExecutionException {
-                    edge.setOwnedStyle(edgeStyle);
-                    return CommandResult.newOKCommandResult();
-                }
-            };
-        } else if (targetElement instanceof DNode && copiedStyle instanceof NodeStyle) {
-            final DNode node = (DNode) targetElement;
-            final NodeStyle nodeStyle = (NodeStyle) copiedStyle;
-
-            viewStyleCommand = new AbstractTransactionalCommand(domain, getCommandLabel(), null) {
-                @Override
-                protected CommandResult doExecuteWithResult(final IProgressMonitor progressMonitor, final IAdaptable info) throws ExecutionException {
-                    node.setOwnedStyle(nodeStyle);
-                    return CommandResult.newOKCommandResult();
-                }
-            };
-        } else if (targetElement instanceof DDiagramElementContainer && copiedStyle instanceof ContainerStyle) {
-            final DDiagramElementContainer container = (DDiagramElementContainer) targetElement;
-            final ContainerStyle containerStyle = (ContainerStyle) copiedStyle;
-
-            viewStyleCommand = new AbstractTransactionalCommand(domain, getCommandLabel(), null) {
-                @Override
-                protected CommandResult doExecuteWithResult(final IProgressMonitor progressMonitor, final IAdaptable info) throws ExecutionException {
-                    container.setOwnedStyle(containerStyle);
-                    return CommandResult.newOKCommandResult();
-                }
-            };
-
-        }
-
-        if (viewStyleCommand == null) {
-            return null;
-        }
         return new ICommandProxy(viewStyleCommand);
     }
 }
