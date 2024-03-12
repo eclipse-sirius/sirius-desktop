@@ -24,12 +24,14 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.EdgeStyle;
+import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.Square;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeNameEditPart;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.format.SiriusStyleClipboard;
@@ -54,7 +56,6 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
  * @author Séraphin Costa <seraphin.costa@obeosoft.com>
  *
  */
-@SuppressWarnings({ "nls" })
 public class PasteStylePureGraphicalTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String MODEL = "490444.ecore";
@@ -285,22 +286,36 @@ public class PasteStylePureGraphicalTest extends AbstractSiriusSwtBotGefTestCase
         assertPasteStyleDisable("With data in clipboard and a selection, Paste Style must be disabled when the diagram locks.");
     }
 
-    private static final RGBValues GREY = RGBValues.create(136, 136, 136);
-
-    private static final RGBValues RED = RGBValues.create(227, 164, 156);
+    private static final RGBValues BLACK = RGBValues.create(0, 0, 0);
 
     private static final RGBValues WHITE = RGBValues.create(255, 255, 255);
 
-    private static final RGBValues BLACK = RGBValues.create(0, 0, 0);
+    private static final RGBValues GREY = RGBValues.create(136, 136, 136);
+
+    private static final RGBValues LIGHT_GREY = RGBValues.create(209, 209, 209);
+
+    private static final RGBValues RED = RGBValues.create(227, 164, 156);
+
+    private static final RGBValues BLUE = RGBValues.create(194, 239, 255);
+
+    private static final RGBValues YELLOW = RGBValues.create(255, 245, 181);
 
     private static final RGBValues LIGHT_BLUE = RGBValues.create(194, 239, 255);
 
     private static final RGBValues DARK_ORANGE = RGBValues.create(224, 133, 3);
 
+    private static final ExpectedFontStyle DEFAULT_FONT = new ExpectedFontStyle(false, false, false, false, BLACK);
+
     /**
      * This record contains style data for node.
      */
     record ExpectedNodeStyle(ExpectedFontStyle font, RGBValues backgroundColor) {
+    };
+
+    /**
+     * This record contains style data for container.
+     */
+    record ExpectedContainerStyle(ExpectedFontStyle font, RGBValues backgroundColor, RGBValues foregroundColor) {
     };
 
     /**
@@ -357,6 +372,40 @@ public class PasteStylePureGraphicalTest extends AbstractSiriusSwtBotGefTestCase
         Square siriusStyle = (Square) ((DDiagramElement) editPart.resolveSemanticElement()).getStyle();
         assertSiriusFontStyle(name + "(" + type.getSimpleName() + ")", siriusStyle, expected.font);
         assertEquals(name + "(" + type.getSimpleName() + "): wrong expected background color.", expected.backgroundColor, siriusStyle.getColor());
+    }
+
+    /**
+     * Check if the container style match to the expected style (Sirius and GMF verification).
+     * 
+     * @param name
+     *            The name (see the label) of the EditPart to check.
+     * @param type
+     *            The type of the EditPart to check.
+     * @param expected
+     *            The expected container style.
+     */
+    private void assertContainerStyle(String name, Class<? extends EditPart> type, ExpectedContainerStyle expected) {
+        SWTBotGefEditPart botGefEditPart = editor.getEditPart(name, type);
+        IGraphicalEditPart editPart = (IGraphicalEditPart) botGefEditPart.part();
+        View model = (View) editPart.getModel();
+        List<?> gmfStyles = model.getStyles();
+
+        // GMF Style
+        ShapeStyle shapeStyle = gmfStyles.stream() //
+                .filter(ShapeStyle.class::isInstance) //
+                .map(ShapeStyle.class::cast) //
+                .findAny() //
+                .orElseThrow();
+        assertEquals(name + "(" + type.getSimpleName() + "): wrong expected bold status.", expected.font.isBold, shapeStyle.isBold());
+        assertEquals(name + "(" + type.getSimpleName() + "): wrong expected italic status.", expected.font.isItalic, shapeStyle.isItalic());
+        assertEquals(name + "(" + type.getSimpleName() + "): wrong expected strike through status.", expected.font.isStrikeThrough, shapeStyle.isStrikeThrough());
+        assertEquals(name + "(" + type.getSimpleName() + "): wrong expected underline status.", expected.font.isUnderline, shapeStyle.isUnderline());
+        assertEquals(name + "(" + type.getSimpleName() + "): wrong expected gmf font color.", expected.font.color.toInteger(), shapeStyle.getFontColor());
+
+        FlatContainerStyle siriusStyle = (FlatContainerStyle) ((DDiagramElement) editPart.resolveSemanticElement()).getStyle();
+        assertSiriusFontStyle(name + "(" + type.getSimpleName() + ")", siriusStyle, expected.font);
+        assertEquals(name + "(" + type.getSimpleName() + "): wrong expected background color.", expected.backgroundColor, siriusStyle.getBackgroundColor());
+        assertEquals(name + "(" + type.getSimpleName() + "): wrong expected foreground color.", expected.foregroundColor, siriusStyle.getForegroundColor());
     }
 
     /**
@@ -647,5 +696,72 @@ public class PasteStylePureGraphicalTest extends AbstractSiriusSwtBotGefTestCase
         assertEdgeStyle("Reference1- CENTER", DEdgeEditPart.class, new ExpectedEdgeStyle(new ExpectedFontStyle(true, false, false, false, BLACK),
                 new ExpectedFontStyle(true, false, false, false, DARK_ORANGE), new ExpectedFontStyle(true, false, false, false, LIGHT_BLUE), new ExpectedFontStyle(true, false, false, false, BLACK)));
         assertNodeStyle("NewEClass2", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, false, false, false, BLACK), WHITE));
+    }
+
+    private void testCopyDefaultStyleRefresh(String sourceContainer, String targetContainer, ExpectedContainerStyle sourceStyle, ExpectedContainerStyle targetStyle) {
+        openDiagramSimple();
+
+        assertContainerStyle(sourceContainer, DNodeListEditPart.class, sourceStyle);
+        assertContainerStyle(targetContainer, DNodeListEditPart.class, targetStyle);
+
+        performCopy(sourceContainer, DNodeListEditPart.class);
+        SWTBotUtils.waitAllUiEvents();
+        performPaste(targetContainer, DNodeListEditPart.class);
+        SWTBotUtils.waitAllUiEvents();
+
+        assertContainerStyle(sourceContainer, DNodeListEditPart.class, sourceStyle);
+        assertContainerStyle(targetContainer, DNodeListEditPart.class, sourceStyle);
+
+        editor.click(4, 4); // select diagram background
+        SWTBotUtils.waitAllUiEvents();
+        editor.refresh();
+        SWTBotUtils.waitAllUiEvents();
+
+        assertContainerStyle(sourceContainer, DNodeListEditPart.class, sourceStyle);
+        assertContainerStyle(targetContainer, DNodeListEditPart.class, sourceStyle);
+
+        editor.saveAndClose();
+        SWTBotUtils.waitAllUiEvents();
+
+        openDiagramSimple();
+
+        assertContainerStyle(sourceContainer, DNodeListEditPart.class, sourceStyle);
+        assertContainerStyle(targetContainer, DNodeListEditPart.class, sourceStyle);
+    }
+
+    public void testCopyDefaultStyleToDefaultAndRefresh1() {
+        testCopyDefaultStyleRefresh("NewEnum1", "NewEClass2", new ExpectedContainerStyle(DEFAULT_FONT, YELLOW, WHITE), new ExpectedContainerStyle(DEFAULT_FONT, WHITE, LIGHT_GREY));
+    }
+
+    public void testCopyDefaultStyleToDefaultAndRefresh2() {
+        testCopyDefaultStyleRefresh("NewDataType2", "NewEClass2", new ExpectedContainerStyle(DEFAULT_FONT, LIGHT_BLUE, WHITE), new ExpectedContainerStyle(DEFAULT_FONT, WHITE, LIGHT_GREY));
+    }
+
+    public void testCopyBoldToDefaultAndRefresh() {
+        var boldItalic = new ExpectedFontStyle(true, true, false, false, BLACK);
+        testCopyDefaultStyleRefresh("NewEnum2", "NewEClass2", new ExpectedContainerStyle(boldItalic, YELLOW, WHITE), new ExpectedContainerStyle(DEFAULT_FONT, WHITE, LIGHT_GREY));
+    }
+
+    public void testCopyGreyBGToDefaultAndRefresh() {
+        testCopyDefaultStyleRefresh("NewDataType3", "NewEClass2", new ExpectedContainerStyle(DEFAULT_FONT, LIGHT_GREY, LIGHT_GREY), new ExpectedContainerStyle(DEFAULT_FONT, WHITE, LIGHT_GREY));
+    }
+
+    public void testCopyDefaultStyleToBoldAndRefresh() {
+        var boldItalic = new ExpectedFontStyle(true, true, false, false, BLACK);
+        testCopyDefaultStyleRefresh("NewDataType2", "NewEnum2", new ExpectedContainerStyle(DEFAULT_FONT, LIGHT_BLUE, WHITE), new ExpectedContainerStyle(boldItalic, YELLOW, WHITE));
+    }
+
+    public void testCopyDefaultStyleToGreyBGAndRefresh() {
+        testCopyDefaultStyleRefresh("NewDataType2", "NewDataType3", new ExpectedContainerStyle(DEFAULT_FONT, LIGHT_BLUE, WHITE), new ExpectedContainerStyle(DEFAULT_FONT, LIGHT_GREY, LIGHT_GREY));
+    }
+
+    public void testCopyBoldToGreyBGAndRefresh() {
+        var boldItalic = new ExpectedFontStyle(true, true, false, false, BLACK);
+        testCopyDefaultStyleRefresh("NewEnum2", "NewDataType3", new ExpectedContainerStyle(boldItalic, YELLOW, WHITE), new ExpectedContainerStyle(DEFAULT_FONT, LIGHT_GREY, LIGHT_GREY));
+    }
+
+    public void testCopyGreyBGToBoldAndRefresh() {
+        var boldItalic = new ExpectedFontStyle(true, true, false, false, BLACK);
+        testCopyDefaultStyleRefresh("NewDataType3", "NewEnum2", new ExpectedContainerStyle(DEFAULT_FONT, LIGHT_GREY, LIGHT_GREY), new ExpectedContainerStyle(boldItalic, YELLOW, WHITE));
     }
 }

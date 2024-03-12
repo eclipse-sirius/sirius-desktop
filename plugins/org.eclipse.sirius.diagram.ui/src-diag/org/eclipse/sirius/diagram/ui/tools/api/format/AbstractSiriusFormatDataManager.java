@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2022 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -30,9 +30,7 @@ import org.eclipse.draw2d.geometry.PrecisionDimension;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.GraphicalEditPart;
@@ -58,18 +56,14 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.AbstractDNode;
-import org.eclipse.sirius.diagram.ContainerStyle;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
-import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.EdgeTarget;
-import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.formatdata.AbstractFormatData;
 import org.eclipse.sirius.diagram.formatdata.EdgeFormatData;
@@ -88,11 +82,8 @@ import org.eclipse.sirius.diagram.ui.internal.refresh.borderednode.CanonicalDBor
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.eclipse.sirius.ext.draw2d.figure.FigureUtilities;
-import org.eclipse.sirius.tools.internal.SiriusCopierHelper;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.Style;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 import com.google.common.collect.Iterables;
 
@@ -106,7 +97,7 @@ import com.google.common.collect.Iterables;
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  *
  */
-public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDataManager {
+public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDataManager, SiriusStyleApplicator {
 
     private static final Class<?>[] CLASS_EXCEPTIONS = new Class[] { DNodeListElement.class };
 
@@ -782,25 +773,7 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
      *            The format data containing the sirius style
      */
     protected void applySiriusStyle(DSemanticDecorator semanticDecorator, AbstractFormatData formatData) {
-        // Make a copy of the style to allow several Paste with the same FormatData.
-        Style copyOfSiriusStyle = SiriusCopierHelper.copyWithNoUidDuplication(formatData.getSiriusStyle());
-        if ((semanticDecorator instanceof DNode || semanticDecorator instanceof DNodeListElement) && copyOfSiriusStyle instanceof NodeStyle) {
-            if (semanticDecorator instanceof DNode) {
-                computeCustomFeatures(((DNode) semanticDecorator).getOwnedStyle(), copyOfSiriusStyle);
-                ((DNode) semanticDecorator).setOwnedStyle((NodeStyle) copyOfSiriusStyle);
-            } else {
-                computeCustomFeatures(((DNodeListElement) semanticDecorator).getOwnedStyle(), copyOfSiriusStyle);
-                ((DNodeListElement) semanticDecorator).setOwnedStyle((NodeStyle) copyOfSiriusStyle);
-            }
-        } else if (semanticDecorator instanceof DDiagramElementContainer && copyOfSiriusStyle instanceof ContainerStyle) {
-            if (((DDiagramElementContainer) semanticDecorator).getOwnedStyle() != null) {
-                computeCustomFeatures(((DDiagramElementContainer) semanticDecorator).getOwnedStyle(), copyOfSiriusStyle);
-            }
-            ((DDiagramElementContainer) semanticDecorator).setOwnedStyle((ContainerStyle) copyOfSiriusStyle);
-        } else if (semanticDecorator instanceof DEdge && copyOfSiriusStyle instanceof EdgeStyle) {
-            computeCustomFeatures(((DEdge) semanticDecorator).getOwnedStyle(), copyOfSiriusStyle);
-            ((DEdge) semanticDecorator).setOwnedStyle((EdgeStyle) copyOfSiriusStyle);
-        }
+        applySiriusStyle(semanticDecorator, formatData.getSiriusStyle());
     }
 
     /**
@@ -1332,76 +1305,5 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
             }
             parentFormatData.setLabel(labelFormatData);
         }
-    }
-
-    /**
-     * Check for each attribute of newStyle if it is the same in oldStyle. On the other hand, this attribute is added to
-     * the custom features of the newStyle.
-     * 
-     * @param oldStyle
-     *            The old style to compare with
-     * @param newStyle
-     *            The new style in which to add custom features.
-     */
-    protected void computeCustomFeatures(Style oldStyle, Style newStyle) {
-        for (EAttribute attribute : newStyle.eClass().getEAllAttributes()) {
-            if (!ViewpointPackage.Literals.CUSTOMIZABLE__CUSTOM_FEATURES.equals(attribute)) {
-                EAttribute attributeOfOldStyle = getCorrespondingEAttribute(attribute, oldStyle);
-                if (attributeOfOldStyle != null) {
-                    if (newStyle.eIsSet(attribute)) {
-                        if (!newStyle.eGet(attribute).equals(oldStyle.eGet(attributeOfOldStyle))) {
-                            newStyle.getCustomFeatures().add(attributeOfOldStyle.getName());
-                        }
-                    } else if (oldStyle.eIsSet(attributeOfOldStyle)) {
-                        newStyle.getCustomFeatures().add(attributeOfOldStyle.getName());
-                    }
-                }
-            }
-        }
-    }
-
-    private EAttribute getCorrespondingEAttribute(EAttribute attribute, Style style) {
-        EAttribute result = null;
-        if (style.eClass().getFeatureID(attribute) != -1) {
-            result = attribute;
-        } else {
-            // This attribute does not exist in the style. Check specific
-            // mapping cases.
-            EStructuralFeature structuralFeature = style.eClass().getEStructuralFeature(attribute.getName());
-            if (structuralFeature instanceof EAttribute) {
-                result = (EAttribute) structuralFeature;
-            } else if ("color".equals(attribute.getName())) { //$NON-NLS-1$
-                structuralFeature = style.eClass().getEStructuralFeature("backgroundColor"); //$NON-NLS-1$
-                if (structuralFeature instanceof EAttribute) {
-                    result = (EAttribute) structuralFeature;
-                }
-            } else if ("backgroundColor".equals(attribute.getName())) { //$NON-NLS-1$
-                structuralFeature = style.eClass().getEStructuralFeature("color"); //$NON-NLS-1$
-                if (structuralFeature instanceof EAttribute) {
-                    result = (EAttribute) structuralFeature;
-                }
-            } else if ("width".equals(attribute.getName())) { //$NON-NLS-1$
-                structuralFeature = style.eClass().getEStructuralFeature("horizontalDiameter"); //$NON-NLS-1$
-                if (structuralFeature instanceof EAttribute) {
-                    result = (EAttribute) structuralFeature;
-                }
-            } else if ("horizontalDiameter".equals(attribute.getName())) { //$NON-NLS-1$
-                structuralFeature = style.eClass().getEStructuralFeature("width"); //$NON-NLS-1$
-                if (structuralFeature instanceof EAttribute) {
-                    result = (EAttribute) structuralFeature;
-                }
-            } else if ("height".equals(attribute.getName())) { //$NON-NLS-1$
-                structuralFeature = style.eClass().getEStructuralFeature("verticalDiameter"); //$NON-NLS-1$
-                if (structuralFeature instanceof EAttribute) {
-                    result = (EAttribute) structuralFeature;
-                }
-            } else if ("verticalDiameter".equals(attribute.getName())) { //$NON-NLS-1$
-                structuralFeature = style.eClass().getEStructuralFeature("height"); //$NON-NLS-1$
-                if (structuralFeature instanceof EAttribute) {
-                    result = (EAttribute) structuralFeature;
-                }
-            }
-        }
-        return result;
     }
 }

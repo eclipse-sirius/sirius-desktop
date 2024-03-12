@@ -11,4 +11,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NewEClass5"/>
   <eClassifiers xsi:type="ecore:EClass" name="NewEClass6"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="NewEnum1"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="NewDataType2" instanceTypeName="newDataType2"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="NewDataType3" instanceTypeName="newDataType3"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="NewEnum2"/>
 </ecore:EPackage>
