@@ -29,8 +29,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
-import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.RGBValues;
@@ -217,7 +215,8 @@ public class ColorManager {
             try {
                 color = new RGB(Integer.parseInt(stringToParseArray[0]), Integer.parseInt(stringToParseArray[1]), Integer.parseInt(stringToParseArray[2]));
             } catch (IllegalArgumentException e) {
-                DiagramUIPlugin.getPlugin().log(String.format(Messages.ColorManager_logErrorParsingRGB, stringToConvert));
+                // ignore exception because if RGB or parseInt throws,
+                // we return the color variable below, which is null.
             }
         }
         return color;
