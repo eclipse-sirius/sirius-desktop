@@ -266,7 +266,7 @@ public class ColorPalettePopup {
         } else {
             colorsAndButtonComposite = configureColorsAndButtonsComposite(parent, 1);
         }
-        ColorPaletteComposite colorPaletteComposite = new ColorPaletteComposite(colorsAndButtonComposite, colorsDisplayed, POPUP_MAX_NB_COLORS, false) {
+        ColorPaletteComposite colorPaletteComposite = new ColorPaletteComposite(colorsAndButtonComposite, colorsDisplayed, POPUP_MAX_NB_COLORS, false, false) {
             /**
              * {@inheritDoc} Overridden to dispose the popup when a color is selected.
              */

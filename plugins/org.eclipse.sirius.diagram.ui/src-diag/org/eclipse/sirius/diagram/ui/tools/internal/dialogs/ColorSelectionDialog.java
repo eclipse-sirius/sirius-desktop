@@ -21,6 +21,7 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.color.ColorManager;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.DragSourceEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -192,7 +193,7 @@ public class ColorSelectionDialog extends Dialog {
 
     private ColorPaletteComposite createDisplayedColorsPalette(Composite compositeToRefresh, Composite parent) {
         // CHECKSTYLE:OFF
-        ColorPaletteComposite displayedColorsPalette = new ColorPaletteComposite(parent, this.displayedColors, NB_COLORS_PER_LINE, true) {
+        ColorPaletteComposite displayedColorsPalette = new ColorPaletteComposite(parent, this.displayedColors, NB_COLORS_PER_LINE, true, true) {
             // CHECKSTYLE:ON
             /**
              * {@inheritDoc} Overridden to enable or disable the remove button of the "Displayed Colors" group.
@@ -219,10 +220,9 @@ public class ColorSelectionDialog extends Dialog {
              * the RGB string value is valid and if the color doesn't already exist or the palette is not full.
              */
             @Override
-            protected void dropColorOnButton(Button targetButton, String droppedColorString) {
-                if (!INVALID_COLOR_SUBSTITUTE.equals(droppedColorString)
-                        && (getColors().size() < getNumberOfColumns() || getColors().contains(ColorManager.getDefault().stringToRGB(droppedColorString)))) {
-                    super.dropColorOnButton(targetButton, droppedColorString);
+            protected void dropColorOnButton(Button targetButton, RGB sourceDroppedColor) {
+                if (getColors().size() < getNumberOfColumns() || getColors().contains(sourceDroppedColor)) {
+                    super.dropColorOnButton(targetButton, sourceDroppedColor);
                     Button displayedColorsRemoveButton = getDisplayedColorsWrapper().getColorPaletteRemoveButton();
                     if (displayedColorsRemoveButton != null) {
                         displayedColorsRemoveButton.setEnabled(false);
@@ -231,15 +231,38 @@ public class ColorSelectionDialog extends Dialog {
             }
 
             @Override
-            protected void dropColorOnPalette(String droppedColorString) {
-                if (!INVALID_COLOR_SUBSTITUTE.equals(droppedColorString)
-                        && (getColors().size() < getNumberOfColumns() || getColors().contains(ColorManager.getDefault().stringToRGB(droppedColorString)))) {
-                    super.dropColorOnPalette(droppedColorString);
+            protected void dropColorOnPalette(RGB droppedColor) {
+                if (getColors().size() < getNumberOfColumns() || getColors().contains(droppedColor)) {
+                    super.dropColorOnPalette(droppedColor);
                     Button displayedColorsRemoveButton = getDisplayedColorsWrapper().getColorPaletteRemoveButton();
                     if (displayedColorsRemoveButton != null) {
                         displayedColorsRemoveButton.setEnabled(false);
                     }
                 }
+            }
+
+            @Override
+            protected int getDropOperationOnPalette(RGB sourceDroppedColor) {
+                if (!getColors().contains(sourceDroppedColor) && getColors().size() < getNumberOfColumns()) {
+                    return DND.DROP_COPY;
+                } else {
+                    return DND.DROP_NONE;
+                }
+            }
+
+            @Override
+            protected int getDropOperationOnButton(Button targetButton, RGB sourceDroppedColor) {
+                final int result;
+                if (getColors().contains(sourceDroppedColor)) {
+                    result = DND.DROP_MOVE;
+                } else {
+                    if (getColors().size() < getNumberOfColumns()) {
+                        result = DND.DROP_COPY;
+                    } else {
+                        result = DND.DROP_NONE;
+                    }
+                }
+                return result;
             }
         };
         return displayedColorsPalette;
@@ -280,7 +303,7 @@ public class ColorSelectionDialog extends Dialog {
 
     // CHECKSTYLE:OFF
     private ColorPaletteComposite createAllColorsPalette(Composite compositeToRefresh, Composite parent) {
-        ColorPaletteComposite allColorsPalette = new ColorPaletteComposite(parent, allColors, NB_COLORS_PER_LINE, true) {
+        ColorPaletteComposite allColorsPalette = new ColorPaletteComposite(parent, allColors, NB_COLORS_PER_LINE, true, true) {
             // CHECKSTYLE:ON
             /**
              * {@inheritDoc} Overridden to enable or disable the remove button of the "Displayed Colors" group and the
@@ -370,14 +393,13 @@ public class ColorSelectionDialog extends Dialog {
              * </ul>
              */
             @Override
-            protected void dropColorOnButton(Button targetButton, String droppedColorString) {
+            protected void dropColorOnButton(Button targetButton, RGB sourceDroppedColor) {
                 ColorPaletteComposite displayedColorPalette = getDisplayedColorsWrapper().getColorPaletteComposite();
                 if (displayedColorPalette != null) {
-                    final RGB sourceDroppedColor = ColorManager.getDefault().stringToRGB(droppedColorString);
                     displayedColorPalette.basicRemoveColor(sourceDroppedColor);
                 } else {
                     if (allColorsReorderAllowed) {
-                        super.dropColorOnButton(targetButton, droppedColorString);
+                        super.dropColorOnButton(targetButton, sourceDroppedColor);
                     }
                 }
             }
@@ -387,12 +409,46 @@ public class ColorSelectionDialog extends Dialog {
              * "Displayed"colors.
              */
             @Override
-            protected void dropColorOnPalette(String droppedColorString) {
+            protected void dropColorOnPalette(RGB sourceDroppedColor) {
                 ColorPaletteComposite displayedColorPalette = getDisplayedColorsWrapper().getColorPaletteComposite();
                 if (displayedColorPalette != null) {
-                    final RGB sourceDroppedColor = ColorManager.getDefault().stringToRGB(droppedColorString);
                     displayedColorPalette.basicRemoveColor(sourceDroppedColor);
                 }
+            }
+
+            @Override
+            protected int getDropOperationOnPalette(RGB sourceDroppedColor) {
+                ColorPaletteComposite displayedColorPalette = getDisplayedColorsWrapper().getColorPaletteComposite();
+                if (displayedColorPalette != null && displayedColorPalette.getColors().contains(sourceDroppedColor)) {
+                    return DND.DROP_MOVE;
+                } else {
+                    return DND.DROP_NONE;
+                }
+            }
+
+            @Override
+            protected int getDropOperationOnButton(Button targetButton, RGB sourceDroppedColor) {
+                final int result;
+                ColorPaletteComposite displayedColorPalette = getDisplayedColorsWrapper().getColorPaletteComposite();
+                if (displayedColorPalette != null && displayedColorPalette.getColors().contains(sourceDroppedColor)) {
+                    result = DND.DROP_MOVE;
+                } else {
+                    if (allColorsReorderAllowed && getColors().contains(sourceDroppedColor)) {
+                        result = DND.DROP_MOVE;
+                    } else {
+                        result = DND.DROP_NONE;
+                    }
+                }
+                return result;
+            }
+            
+            @Override
+            protected void refreshAllPalettes() {
+                ColorPaletteComposite colorPaletteComposite = getDisplayedColorsWrapper().getColorPaletteComposite();
+                if (colorPaletteComposite != null) {
+                    colorPaletteComposite.refreshColorButtons();
+                }
+                super.refreshAllPalettes();
             }
         };
         return allColorsPalette;
