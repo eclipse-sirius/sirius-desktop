@@ -48,8 +48,8 @@ public class ColorCategoryManagerTest extends SiriusDiagramTestCase {
 
     private static final String FONT_COLOR_PROPERTY_ID = PackageUtil.getID(NotationPackage.eINSTANCE.getFontStyle_FontColor());
 
-    private static final RGB[] BASIC_COLORS = { new RGB(0, 0, 0), new RGB(69, 69, 69), new RGB(209, 209, 209), new RGB(255, 255, 255), new RGB(239, 41, 41), new RGB(252, 175, 62),
-            new RGB(252, 233, 79), new RGB(138, 226, 52), new RGB(114, 159, 207), new RGB(173, 127, 168) };
+    private static final RGB[] BASIC_COLORS = { new RGB(0, 0, 0), new RGB(209, 209, 209), new RGB(255, 255, 255), new RGB(239, 41, 41), new RGB(252, 175, 62), new RGB(252, 233, 79),
+            new RGB(138, 226, 52), new RGB(102, 204, 255), new RGB(0, 51, 128), new RGB(128, 0, 128) };
 
     private static final RGB[] RAINBOW = { new RGB(156, 12, 12), new RGB(239, 41, 41), new RGB(246, 139, 139), new RGB(154, 103, 23), new RGB(233, 185, 110), new RGB(238, 201, 142),
             new RGB(224, 133, 3), new RGB(252, 175, 62), new RGB(253, 206, 137), new RGB(214, 197, 66), new RGB(252, 233, 79), new RGB(255, 245, 181), new RGB(77, 137, 20), new RGB(138, 226, 52),

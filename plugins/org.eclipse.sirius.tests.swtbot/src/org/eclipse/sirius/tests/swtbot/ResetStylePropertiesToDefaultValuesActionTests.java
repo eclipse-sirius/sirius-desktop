@@ -229,7 +229,7 @@ public class ResetStylePropertiesToDefaultValuesActionTests extends AbstractSiri
         TestCase.assertTrue(areSameFiguresAndModelsColorsFromEditPart(editPart));
         List<Integer> colors = extractLabelColors(edgeStyleImpl);
         SWTBotShell paletteShell = SWTBotSiriusHelper.changeFontColorToolbarMenu(bot);
-        paletteShell.bot().buttonWithTooltip("{114, 159, 207}").click();
+        paletteShell.bot().buttonWithTooltip("{0, 51, 128}").click();
         // Check the equality of colors between model from editPart and figures
         TestCase.assertTrue(areSameFiguresAndModelsColorsFromEditPart(editPart));
         // Verify that colors have changed

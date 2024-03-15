@@ -13,7 +13,6 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.colors;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -79,9 +78,7 @@ public abstract class AbstractColorCategoryManager implements ColorCategoryManag
     /**
      * A list of ten useful colors used for the "Basic" color category.
      */
-    private static final List<SystemColors> BASIC_COLORS = Arrays.asList(SystemColors.BLACK_LITERAL, SystemColors.DARK_GRAY_LITERAL, SystemColors.LIGHT_GRAY_LITERAL, SystemColors.WHITE_LITERAL,
-            SystemColors.RED_LITERAL, SystemColors.ORANGE_LITERAL, SystemColors.YELLOW_LITERAL, SystemColors.GREEN_LITERAL, SystemColors.BLUE_LITERAL, SystemColors.PURPLE_LITERAL);
-
+    private static final List<RGB> BASIC_COLORS = initBasicColors();
     /**
      * Maximum number of "Last Used" colors to store.
      */
@@ -120,14 +117,27 @@ public abstract class AbstractColorCategoryManager implements ColorCategoryManag
         this.colorsAnnotationHelper = new ColorsAnnotationHelper(session);
     }
 
-    @Override
-    public List<RGB> getBasicColors() {
+    private static List<RGB> initBasicColors() {
         List<RGB> basicColors = new LinkedList<>();
         Map<String, RGB> systemColors = VisualBindingManager.getDefault().getSystemPalette();
-        for (SystemColors color : BASIC_COLORS) {
-            basicColors.add(systemColors.get(color.getName()));
-        }
+
+        basicColors.add(systemColors.get(SystemColors.BLACK_LITERAL.getName()));
+        basicColors.add(systemColors.get(SystemColors.LIGHT_GRAY_LITERAL.getName()));
+        basicColors.add(systemColors.get(SystemColors.WHITE_LITERAL.getName()));
+        basicColors.add(systemColors.get(SystemColors.RED_LITERAL.getName()));
+        basicColors.add(systemColors.get(SystemColors.ORANGE_LITERAL.getName()));
+        basicColors.add(systemColors.get(SystemColors.YELLOW_LITERAL.getName()));
+        basicColors.add(systemColors.get(SystemColors.GREEN_LITERAL.getName()));
+        basicColors.add(new RGB(102, 204, 255)); // light blue
+        basicColors.add(new RGB(0, 51, 128)); // dark blue
+        basicColors.add(new RGB(128, 0, 128)); // drak purple
+
         return basicColors;
+    }
+
+    @Override
+    public List<RGB> getBasicColors() {
+        return BASIC_COLORS;
     }
 
     /**

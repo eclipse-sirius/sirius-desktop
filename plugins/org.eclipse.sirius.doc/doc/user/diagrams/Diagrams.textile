@@ -1347,9 +1347,8 @@ The _Appearance_ preferences page (see below) gives you two preferences to contr
   !images/preferences_sirius_diagram_appearance.png!
 
 
-The _Display viewpoint colors_ preference allows, if checked, to display, in the color Palette, the fixed colors that are defined in the activated viewpoints.
-The viewpoint colors are displayed after the grayed colors and before the colors of the rainbow.
-  !images/PropertiesView_Appearance_ColorPalette_ViewpointColors.png!
+The _Display suggested colors in color palette_ preference allows, if checked, to display, in the color Palette, the suggested colors that are defined in the Palette of the activated viewpoints.
+  !images/PropertiesView_Appearance_ColorPalette_SuggestedColors.png!
 
 The _Authorize decoration overlapping_ preference lets, if checked, the decorations of different positions overlapping each other or displaying outside the diagram element bounding. If unchecked, decorations may be grouped in a _list decorator_ to avoid overlapping.
 
