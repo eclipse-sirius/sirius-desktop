@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2021 Kiel University and others.
+ * Copyright (c) 2009, 2024 Kiel University and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -129,27 +129,6 @@ public class GmfLayoutEditPolicy extends AbstractEditPolicy {
                         addEdgeLayout(command, (ElkEdge) layoutPair.getFirst(), (ConnectionEditPart) layoutPair.getSecond(), scale);
                     } else if (layoutPair.getFirst() instanceof ElkLabel) {
                         addLabelLayout(command, (ElkLabel) layoutPair.getFirst(), layoutPair.getSecond(), scale);
-                    }
-                }
-
-                // TODO In ELK example, oblique routing is handled globally for all command. We can imagine to have
-                // several kind of routing. Currently in ELK, the routing style is on the parent and not on each
-                // edges... For the time being, we set the routing style according to the property value of the root
-                // element.
-                if (layoutRequest.getElements().size() > 0) {
-                    ElkGraphElement graphElement = layoutRequest.getElements().get(0).getFirst();
-                    ElkNode rootElement = ElkGraphUtil.containingGraph(graphElement);
-                    if (rootElement == null && graphElement instanceof ElkNode) {
-                        // The first item of the list elements to layout is the root.
-                        rootElement = (ElkNode) graphElement;
-                    }
-                    if (rootElement != null) {
-                        EdgeRouting edgeRouting = rootElement.getProperty(CoreOptions.EDGE_ROUTING);
-                        if (edgeRouting.equals(EdgeRouting.ORTHOGONAL)) {
-                            command.setRoutingToForce(Routing.RECTILINEAR_LITERAL);
-                        } else {
-                            command.setRoutingToForce(Routing.MANUAL_LITERAL);
-                        }
                     }
                 }
 
@@ -423,7 +402,12 @@ public class GmfLayoutEditPolicy extends AbstractEditPolicy {
                 serializedJP = junctionPoints.toString();
             }
 
-            command.addEdgeLayout((Edge) connectionEditPart.getModel(), currentEdgeBendpoints, sourceTerminal, targetTerminal, serializedJP);
+            EdgeRouting edgeRouting = elkEdge.getContainingNode().getProperty(CoreOptions.EDGE_ROUTING);
+            Routing routingToSet = Routing.MANUAL_LITERAL;
+            if (edgeRouting.equals(EdgeRouting.ORTHOGONAL)) {
+                routingToSet = Routing.RECTILINEAR_LITERAL;
+            }
+            command.addEdgeLayout((Edge) connectionEditPart.getModel(), currentEdgeBendpoints, sourceTerminal, targetTerminal, serializedJP, routingToSet);
         }
     }
 

@@ -263,6 +263,19 @@
 		<p>To get an overview of what is possible with ELK you can read this 
 			<a href="https://blog.obeosoft.com/a-picture-is-worth-a-thousand-words">article</a>.
 		</p>
+		<h5 id="elkRoutingStyleRules">Specific rules for routing style of edges</h5>
+		<p>Since Sirius 7.4.1, the routing styles used in Sirius diagrams are considered. They are ignored before and default ELK value was used.
+			<br/>In ELK, all the edges of a same container must have the same routing style. So the default translation rules between Sirius and ELK are the following:
+		</p>
+		<ul>
+			<li>If all edges have the same routing style, this routing style is used for all edges.</li>
+			<li>If there is a mix between different routing styles, the most used routing style is used for all edges.</li>
+			<li>If there is a mix between different routing styles and they are used the same number of times, the Oblique rotuing style has priority over Rectilinear routing style, which itself has priority over Tree routing style.</li>
+		</ul>
+		<p>&#8220;Tree routing style&#8221; does not exist on ELK, so currently it is considered as &#8220;Rectilinear&#8221; for ELK. The result with a diagram using &#8220;Tree routing style&#8221; is not guarantee.</p>
+		<p>If the parameter 
+			<a href="https://eclipse.dev/elk/reference/options/org-eclipse-elk-edgeRouting.html">Edge Routing</a> is set in the VSM, it has the priority on the routing styles used in the diagram.
+		</p>
 		<h4 id="Useacustomlayoutalgorithm">Use a custom layout algorithm</h4>
 		<p>If you need to go beyond what already exists, you can provide your own layout algorithm programmatically (see the 
 			<a href="../../developer/Sirius%20Developer%20Manual.html">developer documentation</a> for details).

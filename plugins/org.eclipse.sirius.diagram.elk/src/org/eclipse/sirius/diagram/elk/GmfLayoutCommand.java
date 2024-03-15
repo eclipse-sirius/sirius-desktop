@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 Kiel University and others.
+ * Copyright (c) 2009, 2024 Kiel University and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -81,6 +81,8 @@ public class GmfLayoutCommand extends AbstractTransactionalCommand {
 
         public String targetTerminal;
 
+        public Routing routingToApply;
+
         public EdgeLayoutData() {
         }
     }
@@ -93,9 +95,6 @@ public class GmfLayoutCommand extends AbstractTransactionalCommand {
 
     /** list of edge layouts to be applied to edges. */
     private List<EdgeLayoutData> edgeLayouts = new LinkedList<EdgeLayoutData>();
-
-    /** indicates which style shall be enforced. */
-    private Routing routingToForce = Routing.RECTILINEAR_LITERAL;
 
     /**
      * Creates a command to apply layout.
@@ -145,8 +144,10 @@ public class GmfLayoutCommand extends AbstractTransactionalCommand {
      *            new source terminal, encoded as string, or {@code null} if the source terminal shall not be changed
      * @param targetTerminal
      *            new target terminal, encoded as string, or {@code null} if the target terminal shall not be changed
+     * @param routingToApply
+     *            the routing to apply on the DEdge
      */
-    public void addEdgeLayout(final Edge edge, final PointList bends, final String sourceTerminal, final String targetTerminal, final String junctionPoints) {
+    public void addEdgeLayout(final Edge edge, final PointList bends, final String sourceTerminal, final String targetTerminal, final String junctionPoints, final Routing routingToApply) {
         assert edge != null;
         EdgeLayoutData layout = new EdgeLayoutData();
         layout.edge = edge;
@@ -154,17 +155,8 @@ public class GmfLayoutCommand extends AbstractTransactionalCommand {
         layout.junctionPoints = junctionPoints;
         layout.sourceTerminal = sourceTerminal;
         layout.targetTerminal = targetTerminal;
+        layout.routingToApply = routingToApply;
         edgeLayouts.add(layout);
-    }
-
-    /**
-     * Enforces all edges to be drawn with the current routing style.
-     * 
-     * @param routingStyle
-     *            which routing stlye shall be used
-     */
-    public void setRoutingToForce(final Routing routingStyle) {
-        this.routingToForce = routingStyle;
     }
 
     /**
@@ -238,10 +230,10 @@ public class GmfLayoutCommand extends AbstractTransactionalCommand {
                 style.setStringValue(edgeLayout.junctionPoints);
             }
 
-            // set routing style to oblique
+            // Set routing style retrieved in ELK parent of edges
             RoutingStyle routingStyle = (RoutingStyle) edgeLayout.edge.getStyle(NotationPackage.eINSTANCE.getRoutingStyle());
-            if (routingStyle != null) {
-                routingStyle.setRouting(routingToForce);
+            if (routingStyle != null && edgeLayout.routingToApply != null) {
+                routingStyle.setRouting(edgeLayout.routingToApply);
                 routingStyle.setSmoothness(Smoothness.NONE_LITERAL);
             }
         }

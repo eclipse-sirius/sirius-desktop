@@ -4,6 +4,16 @@ h1. Release Notes for Sirius Desktop
 
 This document contains the release notes for recent major releases of Sirius. See also "the release notes from previous versions":Release_Notes_Previous.html for details about older releases.
 
+h2(#sirius7.4.3). Changes in Sirius  Desktop 7.4.3
+
+h3. User-Visible Changes
+
+h3. Specifier-Visible Changes
+
+* <span class="label label-info">Modified</span> When using ELK, the routing style of edges is now considered. It was ignored before. You can refer to the "Use an ELK layout algorithm/Specific rules for routing style of edges":specifier/diagrams/Diagrams.html#elkRoutingStyleRules for more details.
+
+h3. Developer-Visible Changes
+
 h2(#sirius7.4.2). Changes in Sirius Desktop 7.4.2
 
 h3. User-Visible Changes
