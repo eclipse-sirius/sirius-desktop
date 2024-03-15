@@ -7,6 +7,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.layout;
 
+import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,9 +28,17 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.impl.TransactionalEditingDomainImpl;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.RequestConstants;
@@ -72,7 +81,14 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.EdgeRouting;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
+import org.eclipse.sirius.diagram.description.CustomLayoutConfiguration;
+import org.eclipse.sirius.diagram.description.DescriptionFactory;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.EnumLayoutOption;
+import org.eclipse.sirius.diagram.description.EnumLayoutValue;
+import org.eclipse.sirius.diagram.description.LayoutOptionTarget;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.tools.internal.commands.PinElementsCommand;
 import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
@@ -102,6 +118,8 @@ import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.description.Group;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.ui.IEditorPart;
 
 import com.google.common.collect.Iterables;
@@ -1426,7 +1444,15 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      *            The name of the diagram to use
      */
     public void testArrangeAllResultWithEdgeOutsideOfBoundingBox() {
-        testArrangeAllResult_ForPackageResetOrigin("resetOrigin3", true, false);
+        testArrangeAllResult_ForPackageResetOrigin("resetOrigin3", true, false, false);
+    }
+
+    public void testArrangeAll_edgeOnEdge_Simple_EdgeAsTarget() {
+        testArrangeAll_edgeOnEdge_Simple_EdgeAsTarget(false);
+    }
+
+    public void testArrangeAll_edgeOnEdge_Simple_EdgeAsTarget_forceRectilinear() {
+        testArrangeAll_edgeOnEdge_Simple_EdgeAsTarget(true);
     }
 
     /**
@@ -1437,11 +1463,19 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      * <LI>The edge on edge has 2 sections, and its end point is the only point on the main edge</LI>
      * <UL>
      */
-    public void testArrangeAll_edgeOnEdge_Simple_EdgeAsTarget() {
-        testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_subClasses for simpleEdgeOnEdge");
+    private void testArrangeAll_edgeOnEdge_Simple_EdgeAsTarget(boolean forceRectilinear) {
+        testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_subClasses for simpleEdgeOnEdge", forceRectilinear);
         DEdgeEditPart targetEdgeEditPart = checkEdge("C1", "C2", true);
         Connection targetConnection = targetEdgeEditPart.getConnectionFigure();
-        checkEdgeWithEdgeAsTarget("op1", targetConnection, 3);
+        checkEdgeWithEdgeAsTarget("op1", targetConnection, forceRectilinear ? 3 : 2, forceRectilinear);
+    }
+
+    public void testArrangeAll_edgeOnEdge_Simple_EdgeAsSource() {
+        testArrangeAll_edgeOnEdge_Simple_EdgeAsSource(false);
+    }
+
+    public void testArrangeAll_edgeOnEdge_Simple_EdgeAsSource_forceRectilinear() {
+        testArrangeAll_edgeOnEdge_Simple_EdgeAsSource(true);
     }
 
     /**
@@ -1453,11 +1487,19 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      * edge</LI>
      * <UL>
      */
-    public void testArrangeAll_edgeOnEdge_Simple_EdgeAsSource() {
-        testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_subClassesReverse for simpleEdgeOnEdge");
+    private void testArrangeAll_edgeOnEdge_Simple_EdgeAsSource(boolean forceRectilinear) {
+        testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_subClassesReverse for simpleEdgeOnEdge", forceRectilinear);
         DEdgeEditPart sourceEdgeEditPart = checkEdge("C1", "C2", true);
         Connection sourceConnection = sourceEdgeEditPart.getConnectionFigure();
-        checkEdgeWithEdgeAsSource("op1", sourceConnection, 3);
+        checkEdgeWithEdgeAsSource("op1", sourceConnection, forceRectilinear ? 3 : 2, forceRectilinear);
+    }
+
+    public void testArrangeAll_edgeOnEdge_Complexe_EdgeAsTarget() {
+        testArrangeAll_edgeOnEdge_Complexe_EdgeAsTarget(false);
+    }
+
+    public void testArrangeAll_edgeOnEdge_Complexe_EdgeAsTarget_forceRectilinear() {
+        testArrangeAll_edgeOnEdge_Complexe_EdgeAsTarget(true);
     }
 
     /**
@@ -1474,15 +1516,23 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      * edge</LI>
      * <UL>
      */
-    public void testArrangeAll_edgeOnEdge_Complexe_EdgeAsTarget() {
-        testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_subClasses for complexeEdgeOnEdge");
+    private void testArrangeAll_edgeOnEdge_Complexe_EdgeAsTarget(boolean forceRectilinear) {
+        testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_subClasses for complexeEdgeOnEdge", forceRectilinear);
         DEdgeEditPart targetEdgeEditPart = checkEdge("C1", "C2", true);
         Connection targetConnection = targetEdgeEditPart.getConnectionFigure();
-        checkEdgeWithEdgeAsTarget("op1", targetConnection, 3);
-        checkEdgeWithEdgeAsTarget("op3", targetConnection, 3);
+        checkEdgeWithEdgeAsTarget("op1", targetConnection, forceRectilinear ? 3 : 2, forceRectilinear);
+        checkEdgeWithEdgeAsTarget("op3", targetConnection, forceRectilinear ? 3 : 2, forceRectilinear);
         targetEdgeEditPart = checkEdge("C3", "C4", true);
         targetConnection = targetEdgeEditPart.getConnectionFigure();
-        checkEdgeWithEdgeAsTarget("op2", targetConnection, 3);
+        checkEdgeWithEdgeAsTarget("op2", targetConnection, forceRectilinear ? 3 : 2, forceRectilinear);
+    }
+
+    public void testArrangeAll_edgeOnEdge_Complexe_EdgeAsSource() {
+        testArrangeAll_edgeOnEdge_Complexe_EdgeAsSource(false);
+    }
+
+    public void testArrangeAll_edgeOnEdge_Complexe_EdgeAsSource_forceRectilinear() {
+        testArrangeAll_edgeOnEdge_Complexe_EdgeAsSource(true);
     }
 
     /**
@@ -1499,36 +1549,23 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      * edge</LI>
      * <UL>
      */
-    public void testArrangeAll_edgeOnEdge_Complexe_EdgeAsSource() {
-        testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_subClassesReverse for complexeEdgeOnEdge");
+    private void testArrangeAll_edgeOnEdge_Complexe_EdgeAsSource(boolean forceRectilinear) {
+        testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_subClassesReverse for complexeEdgeOnEdge", forceRectilinear);
         DEdgeEditPart sourceEdgeEditPart = checkEdge("C1", "C2", true);
         Connection sourceConnection = sourceEdgeEditPart.getConnectionFigure();
-        checkEdgeWithEdgeAsSource("op1", sourceConnection, 3);
-        checkEdgeWithEdgeAsSource("op3", sourceConnection, 3);
+        checkEdgeWithEdgeAsSource("op1", sourceConnection, forceRectilinear ? 3 : 2, forceRectilinear);
+        checkEdgeWithEdgeAsSource("op3", sourceConnection, forceRectilinear ? 3 : 2, forceRectilinear);
         sourceEdgeEditPart = checkEdge("C3", "C4", true);
         sourceConnection = sourceEdgeEditPart.getConnectionFigure();
-        checkEdgeWithEdgeAsSource("op2", sourceConnection, 3);
+        checkEdgeWithEdgeAsSource("op2", sourceConnection, forceRectilinear ? 3 : 2, forceRectilinear);
     }
 
-    /**
-     * Makes sure that the result of an arrange containing an edge on edge and with edges with different containing
-     * levels respect the following rules:
-     * <UL>
-     * <LI>The top left corner of the bounding box is {20, 20}</LI>
-     * <LI>The main edge from C1 to C2 is a straight line (2 points on the same y axis)</LI>
-     * <LI>The other edges, pointing to it, are "rectilinear" with expected number of bendpoints, and their end points
-     * are the only points on the main edge</LI>
-     * <UL>
-     */
     public void testArrangeAll_edgeOnEdge_DifferentLevel1_EdgeAsTarget() {
-        testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_withPackage for levels1EdgeOnEdge", true, false);
-        DEdgeEditPart targetEdgeEditPart = checkEdge("C1", "C2", true);
-        Connection targetConnection = targetEdgeEditPart.getConnectionFigure();
-        checkEdgeWithEdgeAsTarget("op1", targetConnection, 3);
-        checkEdgeWithEdgeAsTarget("op2", targetConnection, 5);
-        checkEdgeWithEdgeAsTarget("op3", targetConnection, 5);
-        checkEdgeWithEdgeAsTarget("op4", targetConnection, 5);
-        checkEdgeWithEdgeAsTarget("op5", targetConnection, 5);
+        testArrangeAll_edgeOnEdge_DifferentLevel1_EdgeAsTarget(false);
+    }
+
+    public void testArrangeAll_edgeOnEdge_DifferentLevel1_EdgeAsTarget_forceRectilinear() {
+        testArrangeAll_edgeOnEdge_DifferentLevel1_EdgeAsTarget(true);
     }
 
     /**
@@ -1541,15 +1578,23 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      * are the only points on the main edge</LI>
      * <UL>
      */
+    private void testArrangeAll_edgeOnEdge_DifferentLevel1_EdgeAsTarget(boolean forceRectilinear) {
+        testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_withPackage for levels1EdgeOnEdge", true, false, forceRectilinear);
+        DEdgeEditPart targetEdgeEditPart = checkEdge("C1", "C2", true);
+        Connection targetConnection = targetEdgeEditPart.getConnectionFigure();
+        checkEdgeWithEdgeAsTarget("op1", targetConnection, forceRectilinear ? 3 : 2, forceRectilinear);
+        checkEdgeWithEdgeAsTarget("op2", targetConnection, forceRectilinear ? 5 : 6, forceRectilinear);
+        checkEdgeWithEdgeAsTarget("op3", targetConnection, forceRectilinear ? 5 : 6, forceRectilinear);
+        checkEdgeWithEdgeAsTarget("op4", targetConnection, forceRectilinear ? 5 : 6, forceRectilinear);
+        checkEdgeWithEdgeAsTarget("op5", targetConnection, forceRectilinear ? 5 : 6, forceRectilinear);
+    }
+
     public void testArrangeAll_edgeOnEdge_DifferentLevel2_EdgeAsTarget() {
-        testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_withPackageWithOpAtRoot for levels1EdgeOnEdge");
-        DEdgeEditPart targetEdgeEditPart = checkEdge("C1", "C2", true);
-        Connection targetConnection = targetEdgeEditPart.getConnectionFigure();
-        checkEdgeWithEdgeAsTarget("op1", targetConnection, 3);
-        checkEdgeWithEdgeAsTarget("op2", targetConnection, 3);
-        checkEdgeWithEdgeAsTarget("op3", targetConnection, 3);
-        checkEdgeWithEdgeAsTarget("op4", targetConnection, 3);
-        checkEdgeWithEdgeAsTarget("op5", targetConnection, 3);
+        testArrangeAll_edgeOnEdge_DifferentLevel2_EdgeAsTarget(false);
+    }
+
+    public void testArrangeAll_edgeOnEdge_DifferentLevel2_EdgeAsTarget_forceRectilinear() {
+        testArrangeAll_edgeOnEdge_DifferentLevel2_EdgeAsTarget(true);
     }
 
     /**
@@ -1562,15 +1607,23 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      * are the only points on the main edge</LI>
      * <UL>
      */
+    private void testArrangeAll_edgeOnEdge_DifferentLevel2_EdgeAsTarget(boolean forceRectilinear) {
+        testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_withPackageWithOpAtRoot for levels1EdgeOnEdge", forceRectilinear);
+        DEdgeEditPart targetEdgeEditPart = checkEdge("C1", "C2", true);
+        Connection targetConnection = targetEdgeEditPart.getConnectionFigure();
+        checkEdgeWithEdgeAsTarget("op1", targetConnection, forceRectilinear ? 3 : 2, forceRectilinear);
+        checkEdgeWithEdgeAsTarget("op2", targetConnection, forceRectilinear ? 3 : 2, forceRectilinear);
+        checkEdgeWithEdgeAsTarget("op3", targetConnection, forceRectilinear ? 3 : 2, forceRectilinear);
+        checkEdgeWithEdgeAsTarget("op4", targetConnection, forceRectilinear ? 3 : 2, forceRectilinear);
+        checkEdgeWithEdgeAsTarget("op5", targetConnection, forceRectilinear ? 3 : 2, forceRectilinear);
+    }
+
     public void testArrangeAll_edgeOnEdge_DifferentLevel3_EdgeAsTarget() {
-        testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_withPackageWithOpAtRoot for levels2EdgeOnEdge");
-        DEdgeEditPart targetEdgeEditPart = checkEdge("C2", "C1", true);
-        Connection targetConnection = targetEdgeEditPart.getConnectionFigure();
-        checkEdgeWithEdgeAsTarget("op1", targetConnection, 5);
-        checkEdgeWithEdgeAsTarget("op2", targetConnection, 5);
-        checkEdgeWithEdgeAsTarget("op3", targetConnection, 5);
-        checkEdgeWithEdgeAsTarget("op4", targetConnection, 3);
-        checkEdgeWithEdgeAsTarget("op5", targetConnection, 5);
+        testArrangeAll_edgeOnEdge_DifferentLevel3_EdgeAsTarget(false);
+    }
+
+    public void testArrangeAll_edgeOnEdge_DifferentLevel3_EdgeAsTarget_forceRectilinear() {
+        testArrangeAll_edgeOnEdge_DifferentLevel3_EdgeAsTarget(true);
     }
 
     /**
@@ -1579,19 +1632,27 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      * <UL>
      * <LI>The top left corner of the bounding box is {20, 20}</LI>
      * <LI>The main edge from C1 to C2 is a straight line (2 points on the same y axis)</LI>
-     * <LI>The other edges, starting from it, are "rectilinear" with expected number of bendpoints, and their start
-     * points are the only points on the main edge</LI>
+     * <LI>The other edges, pointing to it, are "rectilinear" with expected number of bendpoints, and their end points
+     * are the only points on the main edge</LI>
      * <UL>
      */
+    private void testArrangeAll_edgeOnEdge_DifferentLevel3_EdgeAsTarget(boolean forceRectilinear) {
+        testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_withPackageWithOpAtRoot for levels2EdgeOnEdge", forceRectilinear);
+        DEdgeEditPart targetEdgeEditPart = checkEdge("C2", "C1", true);
+        Connection targetConnection = targetEdgeEditPart.getConnectionFigure();
+        checkEdgeWithEdgeAsTarget("op1", targetConnection, forceRectilinear ? 5 : 4, forceRectilinear);
+        checkEdgeWithEdgeAsTarget("op2", targetConnection, forceRectilinear ? 5 : 4, forceRectilinear);
+        checkEdgeWithEdgeAsTarget("op3", targetConnection, forceRectilinear ? 5 : 4, forceRectilinear);
+        checkEdgeWithEdgeAsTarget("op4", targetConnection, 3, forceRectilinear);
+        checkEdgeWithEdgeAsTarget("op5", targetConnection, forceRectilinear ? 5 : 4, forceRectilinear);
+    }
+
     public void testArrangeAll_edgeOnEdge_DifferentLevel1_EdgeAsSource() {
-        testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_withPackageReverse for levels1EdgeOnEdge");
-        DEdgeEditPart targetEdgeEditPart = checkEdge("C1", "C2", true);
-        Connection targetConnection = targetEdgeEditPart.getConnectionFigure();
-        checkEdgeWithEdgeAsSource("op1", targetConnection, 3);
-        checkEdgeWithEdgeAsSource("op2", targetConnection, 3);
-        checkEdgeWithEdgeAsSource("op3", targetConnection, 3);
-        checkEdgeWithEdgeAsSource("op4", targetConnection, 3);
-        checkEdgeWithEdgeAsSource("op5", targetConnection, 3);
+        testArrangeAll_edgeOnEdge_DifferentLevel1_EdgeAsSource(false);
+    }
+
+    public void testArrangeAll_edgeOnEdge_DifferentLevel1_EdgeAsSource_forceRectilinear() {
+        testArrangeAll_edgeOnEdge_DifferentLevel1_EdgeAsSource(true);
     }
 
     /**
@@ -1604,15 +1665,23 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      * points are the only points on the main edge</LI>
      * <UL>
      */
+    private void testArrangeAll_edgeOnEdge_DifferentLevel1_EdgeAsSource(boolean forceRectilinear) {
+        testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_withPackageReverse for levels1EdgeOnEdge", forceRectilinear);
+        DEdgeEditPart targetEdgeEditPart = checkEdge("C1", "C2", true);
+        Connection targetConnection = targetEdgeEditPart.getConnectionFigure();
+        checkEdgeWithEdgeAsSource("op1", targetConnection, 3, forceRectilinear);
+        checkEdgeWithEdgeAsSource("op2", targetConnection, 3, forceRectilinear);
+        checkEdgeWithEdgeAsSource("op3", targetConnection, 3, forceRectilinear);
+        checkEdgeWithEdgeAsSource("op4", targetConnection, 3, forceRectilinear);
+        checkEdgeWithEdgeAsSource("op5", targetConnection, 3, forceRectilinear);
+    }
+
     public void testArrangeAll_edgeOnEdge_DifferentLevel2_EdgeAsSource() {
-        testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_withPackageWithOpAtRootReverse for levels1EdgeOnEdge");
-        DEdgeEditPart targetEdgeEditPart = checkEdge("C1", "C2", true);
-        Connection targetConnection = targetEdgeEditPart.getConnectionFigure();
-        checkEdgeWithEdgeAsSource("op1", targetConnection, 3);
-        checkEdgeWithEdgeAsSource("op2", targetConnection, 3);
-        checkEdgeWithEdgeAsSource("op3", targetConnection, 3);
-        checkEdgeWithEdgeAsSource("op4", targetConnection, 3);
-        checkEdgeWithEdgeAsSource("op5", targetConnection, 3);
+        testArrangeAll_edgeOnEdge_DifferentLevel2_EdgeAsSource(false);
+    }
+
+    public void testArrangeAll_edgeOnEdge_DifferentLevel2_EdgeAsSource_forceRectilinear() {
+        testArrangeAll_edgeOnEdge_DifferentLevel2_EdgeAsSource(true);
     }
 
     /**
@@ -1625,15 +1694,52 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      * points are the only points on the main edge</LI>
      * <UL>
      */
+    private void testArrangeAll_edgeOnEdge_DifferentLevel2_EdgeAsSource(boolean forceRectilinear) {
+        testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_withPackageWithOpAtRootReverse for levels1EdgeOnEdge", forceRectilinear);
+        DEdgeEditPart targetEdgeEditPart = checkEdge("C1", "C2", true);
+        Connection targetConnection = targetEdgeEditPart.getConnectionFigure();
+        checkEdgeWithEdgeAsSource("op1", targetConnection, 3, forceRectilinear);
+        checkEdgeWithEdgeAsSource("op2", targetConnection, 3, forceRectilinear);
+        checkEdgeWithEdgeAsSource("op3", targetConnection, 3, forceRectilinear);
+        checkEdgeWithEdgeAsSource("op4", targetConnection, 3, forceRectilinear);
+        checkEdgeWithEdgeAsSource("op5", targetConnection, 3, forceRectilinear);
+    }
+
     public void testArrangeAll_edgeOnEdge_DifferentLevel3_EdgeAsSource() {
-        testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_withPackageWithOpAtRootReverse for levels2EdgeOnEdge");
+        testArrangeAll_edgeOnEdge_DifferentLevel3_EdgeAsSource(false);
+    }
+
+    public void testArrangeAll_edgeOnEdge_DifferentLevel3_EdgeAsSource_forceRectilinear() {
+        testArrangeAll_edgeOnEdge_DifferentLevel3_EdgeAsSource(true);
+    }
+
+    /**
+     * Makes sure that the result of an arrange containing an edge on edge and with edges with different containing
+     * levels respect the following rules:
+     * <UL>
+     * <LI>The top left corner of the bounding box is {20, 20}</LI>
+     * <LI>The main edge from C1 to C2 is a straight line (2 points on the same y axis)</LI>
+     * <LI>The other edges, starting from it, are "rectilinear" with expected number of bendpoints, and their start
+     * points are the only points on the main edge</LI>
+     * <UL>
+     */
+    private void testArrangeAll_edgeOnEdge_DifferentLevel3_EdgeAsSource(boolean forceRectilinear) {
+        testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_withPackageWithOpAtRootReverse for levels2EdgeOnEdge", forceRectilinear);
         DEdgeEditPart targetEdgeEditPart = checkEdge("C2", "C1", true);
         Connection targetConnection = targetEdgeEditPart.getConnectionFigure();
-        checkEdgeWithEdgeAsSource("op1", targetConnection, 3);
-        checkEdgeWithEdgeAsSource("op2", targetConnection, 5);
-        checkEdgeWithEdgeAsSource("op3", targetConnection, 5);
-        checkEdgeWithEdgeAsSource("op4", targetConnection, 5);
-        checkEdgeWithEdgeAsSource("op5", targetConnection, 5);
+        checkEdgeWithEdgeAsSource("op1", targetConnection, 3, forceRectilinear);
+        checkEdgeWithEdgeAsSource("op2", targetConnection, forceRectilinear ? 5 : 4, forceRectilinear);
+        checkEdgeWithEdgeAsSource("op3", targetConnection, forceRectilinear ? 5 : 4, forceRectilinear);
+        checkEdgeWithEdgeAsSource("op4", targetConnection, forceRectilinear ? 5 : 4, forceRectilinear);
+        checkEdgeWithEdgeAsSource("op5", targetConnection, forceRectilinear ? 5 : 4, forceRectilinear);
+    }
+
+    public void testArrangeAll_edgeOnEdge_nodeMappingOrderReversed() {
+        testArrangeAll_edgeOnEdge_nodeMappingOrderReversed(false);
+    }
+
+    public void testArrangeAll_edgeOnEdge_nodeMappingOrderReversed_forceRectilinear() {
+        testArrangeAll_edgeOnEdge_nodeMappingOrderReversed(true);
     }
 
     /**
@@ -1645,11 +1751,11 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      * edge</LI>
      * <UL>
      */
-    public void testArrangeAll_edgeOnEdge_nodeMappingOrderReversed() {
-        testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_subClassesReverse_nodeOrderReverse for simpleEdgeOnEdge");
+    private void testArrangeAll_edgeOnEdge_nodeMappingOrderReversed(boolean forceRectilinear) {
+        testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_subClassesReverse_nodeOrderReverse for simpleEdgeOnEdge", forceRectilinear);
         DEdgeEditPart sourceEdgeEditPart = checkEdge("C1", "C2", true);
         Connection sourceConnection = sourceEdgeEditPart.getConnectionFigure();
-        checkEdgeWithEdgeAsSource("op1", sourceConnection, 3);
+        checkEdgeWithEdgeAsSource("op1", sourceConnection, forceRectilinear ? 3 : 2, forceRectilinear);
     }
 
     /**
@@ -1660,7 +1766,21 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      *            The name of the diagram to use
      */
     protected void testArrangeAllResult_ForPackageResetOrigin(String diagramName) {
-        testArrangeAllResult_ForPackageResetOrigin(diagramName, false, false);
+        testArrangeAllResult_ForPackageResetOrigin(diagramName, false, false, false);
+    }
+
+    /**
+     * Makes sure that no diagram element are not in the margin area of {20x20}.<BR/>
+     * This method should be used for diagram on the package "resetOriginCases".
+     * 
+     * @param diagramName
+     *            The name of the diagram to use
+     * @param forceRectilinear
+     *            true to modify the VSM and add the property EdgeRouting.ORTHOGONAL, false to use the current VSM
+     *            without modification
+     */
+    protected void testArrangeAllResult_ForPackageResetOrigin(String diagramName, boolean forceRectilinear) {
+        testArrangeAllResult_ForPackageResetOrigin(diagramName, false, false, forceRectilinear);
     }
 
     /**
@@ -1675,8 +1795,15 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      * @param withVerticalEdgeCase
      *            true if the diagram contains at least one edge outside of the bounding box of nodes on the vertical
      *            axis, false otherwise.
+     * @param forceRectilinear
+     *            true to modify the VSM and add the property EdgeRouting.ORTHOGONAL, false to use the current VSM
+     *            without modification
      */
-    protected void testArrangeAllResult_ForPackageResetOrigin(String diagramName, boolean withHorizontalEdgeCase, boolean withVerticalEdgeCase) {
+    protected void testArrangeAllResult_ForPackageResetOrigin(String diagramName, boolean withHorizontalEdgeCase, boolean withVerticalEdgeCase, boolean forceRectilinear) {
+        if (forceRectilinear) {
+            DDiagram currentDiagram = (DDiagram) getRepresentationsByName(diagramName).toArray()[0];
+            setDefaultRoutingStyle(currentDiagram.getDescription().getName(), org.eclipse.elk.core.options.EdgeRouting.ORTHOGONAL);
+        }
         openDiagram(diagramName);
 
         // Launch an arrange all
@@ -1782,7 +1909,7 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
                 // The routing is the same, so the edge should not appear as customized.
                 if (checkGMFCusto) {
                     assertTrue("This edge \"" + edgeName + "\" must not appear as customized.",
-                        (!(new DDiagramElementQuery(dde).isCustomized() || new ViewQueryWithoutFontNameCheck(notationView).isCustomized())));
+                            (!(new DDiagramElementQuery(dde).isCustomized() || new ViewQueryWithoutFontNameCheck(notationView).isCustomized())));
                 } else {
                     assertTrue("This edge \"" + edgeName + "\" must not appear as customized.", (!(new DDiagramElementQuery(dde).isCustomized())));
                 }
@@ -2027,7 +2154,7 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         TestsUtil.synchronizationWithUIThread();
     }
 
-    private void checkEdgeWithEdgeAsTarget(String sourceNodeName, Connection targetConnection, int expectedNumberOfPoints) {
+    private void checkEdgeWithEdgeAsTarget(String sourceNodeName, Connection targetConnection, int expectedNumberOfPoints, boolean forceRectilinearRouting) {
         DEdgeEditPart edgePointingToAnotherEdge = getEdgeWithNodeAsSource(sourceNodeName);
         Connection connectionFigure = edgePointingToAnotherEdge.getConnectionFigure();
         PointList points = connectionFigure.getPoints();
@@ -2039,22 +2166,24 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
             assertFalse("Only the last point of the egde between \"" + sourceNodeName + "\" and another edge should be on the target edge. The point " + pointToTest + " is also on the target edge.",
                     containsPoint(targetLineSegments, pointToTest));
         }
-        if (expectedNumberOfPoints == 2) {
-            assertTrue("The edge between \"" + sourceNodeName + "\" and another edge is not horizontal.",
-                    new LineSeg(connectionFigure.getPoints().getFirstPoint(), connectionFigure.getPoints().getLastPoint()).isHorizontal());
-        } else if (expectedNumberOfPoints == 3 || expectedNumberOfPoints == 5) {
-            for (int i = 0; i < points.size() - 2; i++) {
-                LineSeg aSegment = new LineSeg(points.getPoint(i), points.getPoint(i + 1));
-                LineSeg aFollowingSegment = new LineSeg(points.getPoint(i + 1), points.getPoint(i + 2));
-                assertTrue("A segment of the egde between \"" + sourceNodeName + "\" and another edge should make a right angle with its following segment.",
-                        (aSegment.isHorizontal() && aFollowingSegment.isVertical()) || (aSegment.isVertical() && aFollowingSegment.isHorizontal()));
+        if (forceRectilinearRouting) {
+            if (expectedNumberOfPoints == 2) {
+                assertTrue("The edge between \"" + sourceNodeName + "\" and another edge is not horizontal.",
+                        new LineSeg(connectionFigure.getPoints().getFirstPoint(), connectionFigure.getPoints().getLastPoint()).isHorizontal());
+            } else if (expectedNumberOfPoints == 3 || expectedNumberOfPoints == 5) {
+                for (int i = 0; i < points.size() - 2; i++) {
+                    LineSeg aSegment = new LineSeg(points.getPoint(i), points.getPoint(i + 1));
+                    LineSeg aFollowingSegment = new LineSeg(points.getPoint(i + 1), points.getPoint(i + 2));
+                    assertTrue("A segment of the egde between \"" + sourceNodeName + "\" and another edge should make a right angle with its following segment.",
+                            (aSegment.isHorizontal() && aFollowingSegment.isVertical()) || (aSegment.isVertical() && aFollowingSegment.isHorizontal()));
+                }
+            } else {
+                fail(expectedNumberOfPoints + " is not an handled value for the expectedNumberOfPoints parameters.");
             }
-        } else {
-            fail(expectedNumberOfPoints + " is not an handled value for the expectedNumberOfPoints parameters.");
         }
     }
 
-    private void checkEdgeWithEdgeAsSource(String targetNodeName, Connection sourceConnection, int expectedNumberOfPoints) {
+    private void checkEdgeWithEdgeAsSource(String targetNodeName, Connection sourceConnection, int expectedNumberOfPoints, boolean forceRectilinearRouting) {
         DEdgeEditPart edgeStartingFormAnotherEdge = getEdgeWithNodeAsTarget(targetNodeName);
         Connection connectionFigure = edgeStartingFormAnotherEdge.getConnectionFigure();
         PointList points = connectionFigure.getPoints();
@@ -2066,18 +2195,20 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
             assertFalse("Only the first point of the egde between another edge and \"" + targetNodeName + "\" should be on the source edge. The point " + pointToTest + " is also on the source edge.",
                     containsPoint(sourceLineSegments, pointToTest));
         }
-        if (expectedNumberOfPoints == 2) {
-            assertTrue("The edge between another edge and \"" + targetNodeName + "\" is not horizontal.",
-                    new LineSeg(connectionFigure.getPoints().getFirstPoint(), connectionFigure.getPoints().getLastPoint()).isHorizontal());
-        } else if (expectedNumberOfPoints == 3 || expectedNumberOfPoints == 4 || expectedNumberOfPoints == 5) {
-            for (int i = 0; i < points.size() - 2; i++) {
-                LineSeg aSegment = new LineSeg(points.getPoint(i), points.getPoint(i + 1));
-                LineSeg aFollowingSegment = new LineSeg(points.getPoint(i + 1), points.getPoint(i + 2));
-                assertTrue("The first segment of the egde between another edge and \"" + targetNodeName + "\" should make a right angle with the second segment.",
-                        (aSegment.isHorizontal() && aFollowingSegment.isVertical()) || (aSegment.isVertical() && aFollowingSegment.isHorizontal()));
+        if (forceRectilinearRouting) {
+            if (expectedNumberOfPoints == 2) {
+                assertTrue("The edge between another edge and \"" + targetNodeName + "\" is not horizontal.",
+                        new LineSeg(connectionFigure.getPoints().getFirstPoint(), connectionFigure.getPoints().getLastPoint()).isHorizontal());
+            } else if (expectedNumberOfPoints == 3 || expectedNumberOfPoints == 4 || expectedNumberOfPoints == 5) {
+                for (int i = 0; i < points.size() - 2; i++) {
+                    LineSeg aSegment = new LineSeg(points.getPoint(i), points.getPoint(i + 1));
+                    LineSeg aFollowingSegment = new LineSeg(points.getPoint(i + 1), points.getPoint(i + 2));
+                    assertTrue("The first segment of the egde between another edge and \"" + targetNodeName + "\" should make a right angle with the second segment.",
+                            (aSegment.isHorizontal() && aFollowingSegment.isVertical()) || (aSegment.isVertical() && aFollowingSegment.isHorizontal()));
+                }
+            } else {
+                fail(expectedNumberOfPoints + " is not an handled value for the expectedNumberOfPoints parameters.");
             }
-        } else {
-            fail(expectedNumberOfPoints + " is not an handled value for the expectedNumberOfPoints parameters.");
         }
     }
 
@@ -2223,5 +2354,44 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         Optional<DEdgeEditPart> edgeEditPart = targetNodeEditPart.getTargetConnections().stream().filter(DEdgeEditPart.class::isInstance).map(DEdgeEditPart.class::cast).findFirst();
         assertTrue("The diagram should have an edge ending to \"" + targetNodeName + "\".", edgeEditPart.isPresent());
         return edgeEditPart.get();
+    }
+
+    /**
+     * Set a default routing style on the description named "representationDescriptionName".
+     * 
+     * @param representationDescriptionName
+     *            name of the description to modify
+     * @param edgeRouting
+     *            the routing style to use
+     */
+    private void setDefaultRoutingStyle(String representationDescriptionName, org.eclipse.elk.core.options.EdgeRouting edgeRouting) {
+        try {
+            // Get Table description
+            ResourceSet set = new ResourceSetImpl();
+            Resource vsm = set.getResource(URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/" + VSM_RESOURCE_NAME, true), true);
+            Group group = (Group) vsm.getContents().get(0);
+            Optional<RepresentationDescription> description = group.getOwnedViewpoints().stream().flatMap(vp -> vp.getOwnedRepresentations().stream())
+                    .filter(d -> d.getName().equals(representationDescriptionName)).findFirst();
+
+            if (description.isPresent()) {
+                final DiagramDescription desc = (DiagramDescription) description.get();
+                CustomLayoutConfiguration layout = (CustomLayoutConfiguration) desc.getLayout();
+                // Modify header column width value
+                TransactionalEditingDomain domain = new TransactionalEditingDomainImpl(new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE));
+                DescriptionFactory layoutDescriptionFactory = DescriptionFactory.eINSTANCE;
+                EnumLayoutOption enumLayoutOption = layoutDescriptionFactory.createEnumLayoutOption();
+                enumLayoutOption.setId("org.eclipse.elk.edgeRouting");
+                enumLayoutOption.getTargets().add(LayoutOptionTarget.PARENT);
+                EnumLayoutValue enumLayoutValue = layoutDescriptionFactory.createEnumLayoutValue();
+                enumLayoutValue.setName(edgeRouting.name());
+                enumLayoutOption.setValue(enumLayoutValue);
+                domain.getCommandStack().execute(new AddCommand(domain, layout, DescriptionPackage.eINSTANCE.getCustomLayoutConfiguration_LayoutOptions(), enumLayoutOption));
+
+                // Save modification
+                vsm.save(Collections.emptyMap());
+            }
+        } catch (IOException e) {
+            fail(e.getMessage());
+        }
     }
 }

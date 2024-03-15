@@ -52,6 +52,7 @@ import org.eclipse.elk.core.math.ElkPadding;
 import org.eclipse.elk.core.math.KVector;
 import org.eclipse.elk.core.options.CoreOptions;
 import org.eclipse.elk.core.options.EdgeLabelPlacement;
+import org.eclipse.elk.core.options.EdgeRouting;
 import org.eclipse.elk.core.options.NodeLabelPlacement;
 import org.eclipse.elk.core.options.PortConstraints;
 import org.eclipse.elk.core.options.PortLabelPlacement;
@@ -99,11 +100,13 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.draw2d.ui.geometry.LineSeg;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.gmf.runtime.notation.Routing;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
@@ -127,6 +130,7 @@ import org.eclipse.sirius.diagram.description.style.Side;
 import org.eclipse.sirius.diagram.model.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.model.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.EditPartQuery;
+import org.eclipse.sirius.diagram.ui.business.internal.query.DEdgeQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
@@ -1515,6 +1519,8 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
         Map<EReference, ElkEdge> reference2EdgeMap = new HashMap<>();
 
         List<ConnectionEditPart> connections = mapping.getProperty(CONNECTIONS).stream().sorted(CONNECTION_COMPARATOR).collect(toList());
+        Map<ElkNode, Integer> edgeContainerToNbObliqueEdges = new HashMap<>();
+        Map<ElkNode, Integer> edgeContainerToNbRectilinearEdges = new HashMap<>();
         for (ConnectionEditPart connection : connections) {
             boolean isOppositeEdge = false;
             Optional<EdgeLabelPlacement> edgeLabelPlacement = Optional.empty();
@@ -1567,8 +1573,70 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                 edge.getTargets().add(targetShape);
             }
 
+            // Store the routing of edge in a map to determine later the best routing style to kept. Indeed, in ELK, the
+            // routing style is stored in the parent (so all edges with the same parent will have the same routing style
+            // after the layout).
+            if (connection instanceof IDiagramElementEditPart) {
+                IDiagramElementEditPart ideep = (IDiagramElementEditPart) connection;
+                DDiagramElement dde = ideep.resolveDiagramElement();
+                if (dde instanceof DEdge) {
+                    DEdgeQuery dEdgeQuery = new DEdgeQuery((DEdge) dde);
+                    Routing routing = dEdgeQuery.getRouting();
+                    if (routing.getValue() == Routing.RECTILINEAR || routing.getValue() == Routing.TREE) {
+                        // Tree routing is count as rectilinear because Tree routing does not exist on ELK Side (see
+                        // EdgeRouting).
+                        addOneEdges(edgeContainer, edgeContainerToNbRectilinearEdges);
+                    } else if (routing.getValue() == Routing.MANUAL) {
+                        addOneEdges(edgeContainer, edgeContainerToNbObliqueEdges);
+                    }
+                }
+            }
+
             // process edge labels
             processEdgeLabels(mapping, connection, edge, edgeLabelPlacement, offset, elkTargetToOptionsOverrideMap);
+        }
+
+        // Store the routing style of edges for each parent property according to the number of edges (in case of
+        // equality, the priority is given to Oblique edges).
+        for (ElkNode edgeContainer : edgeContainerToNbObliqueEdges.keySet()) {
+            int nbObliques = edgeContainerToNbObliqueEdges.get(edgeContainer).intValue();
+            Integer nbRectilinears = edgeContainerToNbRectilinearEdges.get(edgeContainer);
+            if (nbRectilinears == null || nbRectilinears.intValue() <= nbObliques) {
+                setEgdeRoutingPropertyIfNotDefined(edgeContainer, EdgeRouting.POLYLINE);
+            } else {
+                setEgdeRoutingPropertyIfNotDefined(edgeContainer, EdgeRouting.ORTHOGONAL);
+            }
+            if (nbRectilinears != null) {
+                edgeContainerToNbRectilinearEdges.remove(edgeContainer);
+            }
+        }
+        for (ElkNode edgeContainer : edgeContainerToNbRectilinearEdges.keySet()) {
+            setEgdeRoutingPropertyIfNotDefined(edgeContainer, EdgeRouting.ORTHOGONAL);
+        }
+    }
+
+    /**
+     * Set the routing style of the <code>edgeContainer</code>, if it is not already set (for example in the VSM
+     * configuration).
+     * 
+     * @param edgesContainer
+     *            the edges container to change the property
+     * @param routingStyleToSet
+     *            the new value to set
+     */
+    private void setEgdeRoutingPropertyIfNotDefined(ElkNode edgeContainer, EdgeRouting routingStyleToSet) {
+        EdgeRouting currentEdgeRouting = edgeContainer.getProperty(CoreOptions.EDGE_ROUTING);
+        if (currentEdgeRouting == null || EdgeRouting.UNDEFINED.equals(currentEdgeRouting)) {
+            edgeContainer.setProperty(CoreOptions.EDGE_ROUTING, routingStyleToSet);
+        }
+    }
+
+    private void addOneEdges(ElkNode edgeContainer, Map<ElkNode, Integer> edgeContainerToNbEdges) {
+        Integer currentNbOfEdges = edgeContainerToNbEdges.get(edgeContainer);
+        if (currentNbOfEdges == null) {
+            edgeContainerToNbEdges.put(edgeContainer, 1);
+        } else {
+            edgeContainerToNbEdges.put(edgeContainer, currentNbOfEdges + 1);
         }
     }
 
