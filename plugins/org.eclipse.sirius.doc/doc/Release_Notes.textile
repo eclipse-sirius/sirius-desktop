@@ -4,6 +4,10 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for recent major releases of Sirius. See also "the release notes from previous versions":Release_Notes_Previous.html for details about older releases.
 
+h2(#sirius7.1.1). Changes in Sirius 7.1.2
+
+This release contains a single fix for [a small bug on diagrams](https://github.com/eclipse-sirius/sirius-desktop/issues/193) and no other visible change.
+
 h2(#sirius7.1.1). Changes in Sirius 7.1.1
 
 h3. User-Visible Changes
