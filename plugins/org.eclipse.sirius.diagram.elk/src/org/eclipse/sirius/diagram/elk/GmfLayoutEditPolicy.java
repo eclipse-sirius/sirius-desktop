@@ -395,7 +395,7 @@ public class GmfLayoutEditPolicy extends AbstractEditPolicy {
             // coordinates
             KVectorChain junctionPoints = elkEdge.getProperty(CoreOptions.JUNCTION_POINTS);
             String serializedJP = null;
-            if (junctionPoints != null) {
+            if (junctionPoints != null && !junctionPoints.isEmpty()) {
                 for (KVector point : junctionPoints) {
                     ElkUtil.toAbsolute(point, elkEdge.getContainingNode());
                 }
