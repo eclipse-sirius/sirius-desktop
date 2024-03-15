@@ -18,6 +18,7 @@ import java.util.List;
 
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.FigureUtilities;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.business.api.session.Session;
@@ -26,6 +27,8 @@ import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.color.ColorCategoryManager;
 import org.eclipse.sirius.diagram.ui.tools.api.color.ColorCategoryManagerProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.color.ColorManager;
+import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -179,7 +182,10 @@ public class ColorPalettePopup {
 
         createLastUsedCategory(this.shell);
         createCustomCategory(this.shell);
-        createSuggestedCategory(this.shell);
+        final IPreferenceStore preferenceStore = SiriusEditPlugin.getPlugin().getPreferenceStore();
+        if (preferenceStore != null && preferenceStore.getBoolean(SiriusUIPreferencesKeys.PREF_DISPLAY_VSM_USER_FIXED_COLOR_IN_PALETTE.name())) {
+            createSuggestedCategory(this.shell);
+        }
         createBasicCategory(this.shell);
     }
 
