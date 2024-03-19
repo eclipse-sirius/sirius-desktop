@@ -14,7 +14,13 @@ h3. Specifier-Visible Changes
 
 h3. Developer-Visible Changes
 
+h4. Changes in @org.eclipse.sirius.diagram.ui@
+
 * <span class="label label-info">Modified</span> The method @org.eclipse.sirius.diagram.ui.tools.api.color.ColorManager.collectVsmColors(Session)@ has replaced @Map<String, RGB> collectVsmAndDefaultColors(Session session)@.
+
+h4. Migrations
+
+* <span class="label label-success">Added</span> The migration participant WorkspaceImageGMFBoundsMigrationParticipant has been updated to handle the missed case of the image style of nodes contained in a container (and not directly in diagram). As reminder, this migration participant has been introduced in Sirius 7.0.0. The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _15.4.1.202403191723_.
 
 
 h2(#sirius7.4.0). Changes in Sirius  Desktop 7.4.0
