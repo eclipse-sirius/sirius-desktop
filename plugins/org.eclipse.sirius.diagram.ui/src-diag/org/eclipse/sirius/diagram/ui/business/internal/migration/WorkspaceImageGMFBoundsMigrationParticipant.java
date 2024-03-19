@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2022, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,8 @@ import java.util.Optional;
 
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Node;
@@ -59,7 +61,7 @@ public class WorkspaceImageGMFBoundsMigrationParticipant extends AbstractReprese
     /**
      * Migration version.
      */
-    public static final Version MIGRATION_VERSION = new Version("15.0.0.202209061200"); //$NON-NLS-1$
+    public static final Version MIGRATION_VERSION = new Version("15.4.1.202403191723"); //$NON-NLS-1$
 
     /**
      * The previous migration version of this participant. This one introduced a wrong size migration for collapsed
@@ -89,20 +91,10 @@ public class WorkspaceImageGMFBoundsMigrationParticipant extends AbstractReprese
                     if (descriptor.getRepresentation() instanceof DDiagram) {
                         DDiagram dDiagram = (DDiagram) descriptor.getRepresentation();
                         DDiagramGraphicalQuery query = new DDiagramGraphicalQuery(dDiagram);
-                        Option<Diagram> gmfDiagram = query.getAssociatedGMFDiagram();
-                        if (gmfDiagram.some()) {
-                            boolean migrationOccurredInCurrentDiag = false;
-                            String representationName = StringUtil.EMPTY_STRING;
-                            for (Object child : gmfDiagram.get().getChildren()) {
-                                if (resizeWorkspaceImageGMFBounds(child, previousMigrationApplied)) {
-                                    migrationOccurred = true;
-                                    migrationOccurredInCurrentDiag = true;
-                                    representationName = dDiagram.getName();
-                                }
-                            }
-                            if (migrationOccurredInCurrentDiag) {
-                                sb.append(MessageFormat.format(Messages.WorkspaceImageGMFBoundsMigrationParticipant_GMFBoundsResized, representationName));
-                            }
+                        Option<Diagram> optionalGmfDiagram = query.getAssociatedGMFDiagram();
+                        if (optionalGmfDiagram.some()) {
+                            boolean migrationOccurredInCurrentDiag = resizeWorkspaceImageGmfBoundsOfDiagram(previousMigrationApplied, sb, dDiagram, optionalGmfDiagram.get());
+                            migrationOccurred = migrationOccurredInCurrentDiag || migrationOccurred;
                         }
                     }
                 }
@@ -114,25 +106,39 @@ public class WorkspaceImageGMFBoundsMigrationParticipant extends AbstractReprese
         }
     }
 
-    private boolean resizeWorkspaceImageGMFBounds(Object child, boolean previousMigrationApplied) {
+    private boolean resizeWorkspaceImageGmfBoundsOfDiagram(boolean previousMigrationApplied, StringBuilder sb, DDiagram dDiagram, Diagram gmfDiagram) {
+        boolean migrationOccurredInCurrentDiag = false;
+        String representationName = StringUtil.EMPTY_STRING;
+        TreeIterator<EObject> childIterator = gmfDiagram.eAllContents();
+        while (childIterator.hasNext()) {
+            EObject eObject = childIterator.next();
+            if (eObject instanceof Node && ((Node) eObject).getLayoutConstraint() instanceof Size) {
+                Node node = (Node) eObject;
+                if (resizeWorkspaceImageGMFBounds(node, previousMigrationApplied)) {
+                    migrationOccurredInCurrentDiag = true;
+                    representationName = dDiagram.getName();
+                }
+            }
+        }
+        if (migrationOccurredInCurrentDiag) {
+            sb.append(MessageFormat.format(Messages.WorkspaceImageGMFBoundsMigrationParticipant_GMFBoundsResized, representationName));
+        }
+        return migrationOccurredInCurrentDiag;
+    }
+
+    private boolean resizeWorkspaceImageGMFBounds(Node node, boolean previousMigrationApplied) {
         boolean resized = false;
-        if (child instanceof Node && ((Node) child).getLayoutConstraint() instanceof Size) {
-            Node node = (Node) child;
-            if (node.getElement() instanceof DNode) {
-                DNode dnode = (DNode) node.getElement();
-                if (dnode.getStyle() != null) {
-                    StyleDescription description = dnode.getStyle().getDescription();
-                    resized = resizeGMFNode(previousMigrationApplied, node, description, dnode.getWidth(), dnode.getHeight());
-                }
-            } else if (node.getElement() instanceof DDiagramElementContainer) {
-                DDiagramElementContainer dDiagramElementContainer = (DDiagramElementContainer) node.getElement();
-                if (dDiagramElementContainer.getStyle() != null) {
-                    StyleDescription description = dDiagramElementContainer.getStyle().getDescription();
-                    resized = resizeGMFNode(previousMigrationApplied, node, description, dDiagramElementContainer.getWidth(), dDiagramElementContainer.getHeight());
-                    for (Object o : node.getChildren()) {
-                        resized = resizeWorkspaceImageGMFBounds(o, previousMigrationApplied);
-                    }
-                }
+        if (node.getElement() instanceof DNode) {
+            DNode dnode = (DNode) node.getElement();
+            if (dnode.getStyle() != null) {
+                StyleDescription description = dnode.getStyle().getDescription();
+                resized = resizeGMFNode(previousMigrationApplied, node, description, dnode.getWidth(), dnode.getHeight());
+            }
+        } else if (node.getElement() instanceof DDiagramElementContainer) {
+            DDiagramElementContainer dDiagramElementContainer = (DDiagramElementContainer) node.getElement();
+            if (dDiagramElementContainer.getStyle() != null) {
+                StyleDescription description = dDiagramElementContainer.getStyle().getDescription();
+                resized = resizeGMFNode(previousMigrationApplied, node, description, dDiagramElementContainer.getWidth(), dDiagramElementContainer.getHeight());
             }
         }
         return resized;
