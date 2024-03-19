@@ -5,5 +5,12 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="att"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="enum"/>
-  <eSubpackages name="P1"/>
+  <eSubpackages name="p1">
+    <eSubpackages name="p2">
+      <eClassifiers xsi:type="ecore:EClass" name="Class2"/>
+      <eClassifiers xsi:type="ecore:EClass" name="Class3"/>
+      <eClassifiers xsi:type="ecore:EClass" name="Class4"/>
+      <eClassifiers xsi:type="ecore:EClass" name="Class5"/>
+    </eSubpackages>
+  </eSubpackages>
 </ecore:EPackage>
