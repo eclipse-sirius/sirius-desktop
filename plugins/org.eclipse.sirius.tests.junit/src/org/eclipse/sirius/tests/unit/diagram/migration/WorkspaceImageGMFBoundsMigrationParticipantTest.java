@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2022, 2023 THALES GLOBAL SERVICES.
+ * Copyright (c) 2022, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -89,11 +89,13 @@ public class WorkspaceImageGMFBoundsMigrationParticipantTest extends SiriusDiagr
         validateNodeSize("enum", DNode.class, 50, 50, false); //$NON-NLS-1$
         validateNodeSize("att", DNode.class, 1, 1, false); //$NON-NLS-1$
         validateCollapseSize("att", DNode.class, 10, 10); //$NON-NLS-1$
-        validateNodeSize("P1", DNode.class, 100, 70, false); //$NON-NLS-1$
+        validateNodeSize("p1", DNode.class, 100, 70, false); //$NON-NLS-1$
         validateNodeSize("container_image", DNodeContainer.class, 160, 48, true); //$NON-NLS-1$
         validateNodeSize("list_image", DNodeList.class, 160, 48, true); //$NON-NLS-1$
         validateNodeSize("cont_not_found", DNodeContainer.class, 100, 70, true); // Container default size //$NON-NLS-1$
         validateNodeSize("list_not_found", DNodeList.class, 100, 70, true); // Container default size //$NON-NLS-1$
+        validateNodeSize("p2", DNode.class, 40, 12, false); // width = 40 as the number of EClass and //$NON-NLS-1$
+                                                           // height = 12 to keep ratio of original image size
     }
 
     private void validateCollapseSize(String nodeName, Class<? extends DDiagramElement> clazz, int width, int height) {

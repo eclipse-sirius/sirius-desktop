@@ -4,7 +4,7 @@
     <semanticResources>workspaceImageGMFBounds.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_CFDiQJ7XEd-_KuSX82kl6A">
       <viewpoint xmi:type="description:Viewpoint" href="workspaceImageGMFBounds.odesign#//@ownedViewpoints[name='bug.test']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_ntW8ATcOEeyL_94R6_bb6g" name="workspaceImageGMFBounds" repPath="#_YjaB0J7bEd-_KuSX82kl6A" changeId="bb62cea0-6a4f-4e5e-8ce0-9b3e5b201ee0">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_ntW8ATcOEeyL_94R6_bb6g" name="workspaceImageGMFBounds" repPath="#_YjaB0J7bEd-_KuSX82kl6A" changeId="9d2013df-83f0-4675-b453-d41e46965ecf">
         <description xmi:type="description_1:DiagramDescription" href="workspaceImageGMFBounds.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='workspaceImageGMFBounds']"/>
         <target xmi:type="ecore:EPackage" href="workspaceImageGMFBounds.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -82,15 +82,35 @@
           <styles xmi:type="notation:ShapeStyle" xmi:id="_gGqBoTcUEeyW4p8o1xwqIA" fontName="Segoe UI" fontHeight="12"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gGqBojcUEeyW4p8o1xwqIA" x="19" y="316" width="50" height="50"/>
         </children>
+        <children xmi:type="notation:Node" xmi:id="_J7K7MOX_Ee64OYUBMaR3Sw" type="2002" element="_J6RjUOX_Ee64OYUBMaR3Sw">
+          <children xmi:type="notation:Node" xmi:id="_J7K7M-X_Ee64OYUBMaR3Sw" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_J7K7NOX_Ee64OYUBMaR3Sw" type="7001">
+            <children xmi:type="notation:Node" xmi:id="_J7MJUOX_Ee64OYUBMaR3Sw" type="3007" element="_J6RjU-X_Ee64OYUBMaR3Sw">
+              <children xmi:type="notation:Node" xmi:id="_J7MJU-X_Ee64OYUBMaR3Sw" type="5003">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_J7MJVOX_Ee64OYUBMaR3Sw" x="-8" y="7"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_J7MwYOX_Ee64OYUBMaR3Sw" type="3005" element="_J6RjVOX_Ee64OYUBMaR3Sw">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_J7MwYeX_Ee64OYUBMaR3Sw" fontName="Segoe UI"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_J7MwYuX_Ee64OYUBMaR3Sw"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_J7MJUeX_Ee64OYUBMaR3Sw" fontName="Segoe UI" fontHeight="12"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_J7MJUuX_Ee64OYUBMaR3Sw" x="109" y="49" width="160" height="48"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_J7K7NeX_Ee64OYUBMaR3Sw"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_J7K7NuX_Ee64OYUBMaR3Sw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_J7K7MeX_Ee64OYUBMaR3Sw" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_J7K7MuX_Ee64OYUBMaR3Sw" x="360" y="100" width="313" height="143"/>
+        </children>
         <styles xmi:type="notation:DiagramStyle" xmi:id="_Yjao4p7bEd-_KuSX82kl6A"/>
       </data>
     </ownedAnnotationEntries>
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_ntpP4DcOEeyL_94R6_bb6g" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_ntpP4TcOEeyL_94R6_bb6g"/>
     </ownedAnnotationEntries>
-    <ownedDiagramElements xmi:type="diagram:DNode" uid="_HoLhkHzNEeKdyPf9rHMGEw" name="P1" width="-1" height="-1" resizeKind="NSEW">
-      <target xmi:type="ecore:EPackage" href="workspaceImageGMFBounds.ecore#//P1"/>
-      <semanticElements xmi:type="ecore:EPackage" href="workspaceImageGMFBounds.ecore#//P1"/>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_HoLhkHzNEeKdyPf9rHMGEw" name="p1" width="-1" height="-1" resizeKind="NSEW">
+      <target xmi:type="ecore:EPackage" href="workspaceImageGMFBounds.ecore#//p1"/>
+      <semanticElements xmi:type="ecore:EPackage" href="workspaceImageGMFBounds.ecore#//p1"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -165,6 +185,28 @@
         <description xmi:type="style:WorkspaceImageDescription" href="workspaceImageGMFBounds.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='workspaceImageGMFBounds']/@defaultLayer/@nodeMappings[name='EEnumMapping']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="workspaceImageGMFBounds.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='workspaceImageGMFBounds']/@defaultLayer/@nodeMappings[name='EEnumMapping']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_J6RjUOX_Ee64OYUBMaR3Sw" name="p1">
+      <target xmi:type="ecore:EPackage" href="workspaceImageGMFBounds.ecore#//p1"/>
+      <semanticElements xmi:type="ecore:EPackage" href="workspaceImageGMFBounds.ecore#//p1"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_J6RjUeX_Ee64OYUBMaR3Sw" labelSize="12" borderSize="1" borderSizeComputationExpression="1" backgroundColor="194,239,255" foregroundColor="194,239,255">
+        <description xmi:type="style:FlatContainerStyleDescription" href="workspaceImageGMFBounds.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='workspaceImageGMFBounds']/@defaultLayer/@containerMappings[name='EPackageContainerMapping']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="workspaceImageGMFBounds.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='workspaceImageGMFBounds']/@defaultLayer/@containerMappings[name='EPackageContainerMapping']"/>
+      <ownedDiagramElements xmi:type="diagram:DNode" uid="_J6RjU-X_Ee64OYUBMaR3Sw" name="p2" width="4" height="4">
+        <target xmi:type="ecore:EPackage" href="workspaceImageGMFBounds.ecore#//p1/p2"/>
+        <semanticElements xmi:type="ecore:EPackage" href="workspaceImageGMFBounds.ecore#//p1/p2"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_J6RjVOX_Ee64OYUBMaR3Sw" labelSize="12" workspacePath="/org.eclipse.sirius.tests.junit/images/UseCase.png">
+          <description xmi:type="style:WorkspaceImageDescription" href="workspaceImageGMFBounds.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='workspaceImageGMFBounds']/@defaultLayer/@containerMappings[name='EPackageContainerMapping']/@subNodeMappings[name='EPackageNodeMapping']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="workspaceImageGMFBounds.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='workspaceImageGMFBounds']/@defaultLayer/@containerMappings[name='EPackageContainerMapping']/@subNodeMappings[name='EPackageNodeMapping']"/>
+      </ownedDiagramElements>
     </ownedDiagramElements>
     <description xmi:type="description_1:DiagramDescription" href="workspaceImageGMFBounds.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='workspaceImageGMFBounds']"/>
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="workspaceImageGMFBounds.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='workspaceImageGMFBounds']/@filters[name='filters']"/>
