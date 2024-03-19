@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_BjGrwJ7XEd-_KuSX82kl6A" selectedViews="_CFDiQJ7XEd-_KuSX82kl6A" version="14.6.0.202109231100">
+  <viewpoint:DAnalysis uid="_BjGrwJ7XEd-_KuSX82kl6A" selectedViews="_CFDiQJ7XEd-_KuSX82kl6A" version="14.6.0.202110251100">
     <semanticResources>workspaceImageGMFBounds.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_CFDiQJ7XEd-_KuSX82kl6A">
       <viewpoint xmi:type="description:Viewpoint" href="workspaceImageGMFBounds.odesign#//@ownedViewpoints[name='bug.test']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_ntW8ATcOEeyL_94R6_bb6g" name="workspaceImageGMFBounds" repPath="#_YjaB0J7bEd-_KuSX82kl6A" changeId="11700a3e-6f98-4b82-9785-f87ebeca9fad">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_ntW8ATcOEeyL_94R6_bb6g" name="workspaceImageGMFBounds" repPath="#_YjaB0J7bEd-_KuSX82kl6A" changeId="bb62cea0-6a4f-4e5e-8ce0-9b3e5b201ee0">
         <description xmi:type="description_1:DiagramDescription" href="workspaceImageGMFBounds.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='workspaceImageGMFBounds']"/>
         <target xmi:type="ecore:EPackage" href="workspaceImageGMFBounds.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -113,7 +113,7 @@
     <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_D_mlsLKjEeSI84JZFmnEHw" name="list_image">
       <target xmi:type="ecore:EClass" href="workspaceImageGMFBounds.ecore#//Class1"/>
       <semanticElements xmi:type="ecore:EClass" href="workspaceImageGMFBounds.ecore#//Class1"/>
-      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_xPShYC64Ee2eLK7Gct5Djw" name="att" width="1" height="1" resizeKind="NSEW">
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_xPShYC64Ee2eLK7Gct5Djw" name="att" width="1" height="1">
         <target xmi:type="ecore:EAttribute" href="workspaceImageGMFBounds.ecore#//Class1/att"/>
         <semanticElements xmi:type="ecore:EAttribute" href="workspaceImageGMFBounds.ecore#//Class1/att"/>
         <graphicalFilters xmi:type="diagram:CollapseFilter" uid="_IOa90DTTEe2tOa_UJsEsJA" width="56" height="20"/>
@@ -139,7 +139,7 @@
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_CqILEbKkEeSI84JZFmnEHw" borderSize="1" borderSizeComputationExpression="1" workspacePath="/org.eclipse.sirius.tests.junit/images/nonexistingimage.png">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_CqILEbKkEeSI84JZFmnEHw" showIcon="false" borderSize="1" borderSizeComputationExpression="1" workspacePath="/org.eclipse.sirius.tests.junit/images/nonexistingimage.png">
         <description xmi:type="style:WorkspaceImageDescription" href="workspaceImageGMFBounds.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='workspaceImageGMFBounds']/@defaultLayer/@containerMappings[name='EClassContainerMapping_img_not_found']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="workspaceImageGMFBounds.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='workspaceImageGMFBounds']/@defaultLayer/@containerMappings[name='EClassContainerMapping_img_not_found']"/>
@@ -150,7 +150,7 @@
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_CqJZMbKkEeSI84JZFmnEHw" borderSize="1" borderSizeComputationExpression="1" workspacePath="/org.eclipse.sirius.tests.junit/nonexistingimage.png">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_CqJZMbKkEeSI84JZFmnEHw" showIcon="false" borderSize="1" borderSizeComputationExpression="1" workspacePath="/org.eclipse.sirius.tests.junit/nonexistingimage.png">
         <description xmi:type="style:WorkspaceImageDescription" href="workspaceImageGMFBounds.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='workspaceImageGMFBounds']/@defaultLayer/@containerMappings[name='EClassContainerMapping_list_img_not_found']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="workspaceImageGMFBounds.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='workspaceImageGMFBounds']/@defaultLayer/@containerMappings[name='EClassContainerMapping_list_img_not_found']"/>
