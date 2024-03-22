@@ -161,4 +161,24 @@
       </eSubpackages>
     </eSubpackages>
   </eSubpackages>
+  <eSubpackages name="routingStyleCases">
+    <eClassifiers xsi:type="ecore:EClass" name="MyClass1">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="to2" eType="#//routingStyleCases/MyClass2"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="to3" eType="#//routingStyleCases/MyClass3"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="MyClass2"/>
+    <eClassifiers xsi:type="ecore:EClass" name="MyClass3">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="to4" eType="#//routingStyleCases/MyClass4"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="MyClass4"/>
+    <eClassifiers xsi:type="ecore:EClass" name="MyClassA1">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="toA2" eType="#//routingStyleCases/MyClassA2"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="toA3" eType="#//routingStyleCases/MyClassA3"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="MyClassA2"/>
+    <eClassifiers xsi:type="ecore:EClass" name="MyClassA3">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="toA4" eType="#//routingStyleCases/MyClassA4"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="MyClassA4"/>
+  </eSubpackages>
 </ecore:EPackage>

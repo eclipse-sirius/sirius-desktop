@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2021 Obeo.
+ * Copyright (c) 2020, 2024 Obeo.
  * All rights reserved.
  *
  * Contributors:
@@ -7,6 +7,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.layout;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -26,6 +27,7 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.gef.ConnectionEditPart;
@@ -51,20 +53,33 @@ import org.eclipse.gmf.runtime.draw2d.ui.geometry.PointListUtilities;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.figures.AnimatableScrollPane;
 import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Diagram;
+import org.eclipse.gmf.runtime.notation.FontStyle;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.gmf.runtime.notation.NotationPackage;
+import org.eclipse.gmf.runtime.notation.Routing;
+import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
+import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.EdgeRouting;
+import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
+import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.tools.internal.commands.PinElementsCommand;
+import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
+import org.eclipse.sirius.diagram.ui.business.internal.query.DEdgeQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramListEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramContainerEditPart;
@@ -77,6 +92,7 @@ import org.eclipse.sirius.diagram.ui.internal.operation.ResetOriginChangeModelOp
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.IContainerLabelOffsets;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
@@ -98,6 +114,35 @@ import com.google.common.collect.Lists;
  */
 @SuppressWarnings("restriction")
 public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
+    /**
+     * A customized ViewQuery to ignore FontStyle, because the default Font Style depends on the OS where the test is
+     * launched. In reality, it is not ignored but the current font style is returned as default.
+     * 
+     * @author Laurent Redor
+     */
+    public class ViewQueryWithoutFontNameCheck extends ViewQuery {
+
+        public ViewQueryWithoutFontNameCheck(View view) {
+            super(view);
+        }
+
+        @Override
+        public Object getDefaultValue(EAttribute eAttribute) {
+            Object result = super.getDefaultValue(eAttribute);
+            if (NotationPackage.Literals.FONT_STYLE__FONT_NAME.equals(eAttribute)) {
+                FontStyle fontStyle = (FontStyle) view.getStyle(NotationPackage.Literals.FONT_STYLE);
+                if (fontStyle != null) {
+                    result = fontStyle.eGet(NotationPackage.Literals.FONT_STYLE__FONT_NAME);
+                }
+            }
+            return result;
+        }
+    }
+
+    private static final String WRONG_INITIAL_ROUTING_MESSAGE = "The edge \"{0}\" has a wrong initial routing style.";
+
+    private static final String WRONG_ROUTING_AFTER_LAYOUT_MESSAGE = "The edge \"{0}\" has a wrong routing style after the arrange.";
+
     private static final String PATH = "/data/unit/layout/withELK/";
 
     private static final String PATH_REPLACE = "/data/unit/layout/withELK/replace/";
@@ -1658,6 +1703,96 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         assertEquals("Wrong y coordinate for the bounding box of all diagram elements.", ResetOriginChangeModelOperation.MARGIN, boundingbox.y());
     }
 
+    /**
+     * Makes sure that the oblique routing style is kept after an arrange all with ELK (for a diagram containing only
+     * edges with oblique routing style).
+     */
+    public void testArrangeAllResultForObliqueEdges() {
+        testArrangeAllResultForEdgesRoutingStyle("simpleDiagramWithObliqueEdges", "to2", Routing.MANUAL, "toA2", Routing.MANUAL, Routing.MANUAL);
+    }
+
+    /**
+     * Makes sure that the rectilinear routing style is kept after an arrange all with ELK (for a diagram containing
+     * only edges with oblique routing style).
+     */
+    public void testArrangeAllResultForRectilinearEdges() {
+        testArrangeAllResultForEdgesRoutingStyle("simpleDiagramWithRectilinearEdges", "to2", Routing.RECTILINEAR, "toA2", Routing.RECTILINEAR, Routing.RECTILINEAR);
+    }
+
+    /**
+     * Makes sure that when a diagram contains a mix of rectilinear and oblique routing style, the priority rule is
+     * respect after an arrange all with ELK (Oblique > Rectilinear > Tree).
+     */
+    public void testArrangeAllResultForEdgesWithMixRoutingStyle_AndSameNumberOfBoth() {
+        testArrangeAllResultForEdgesRoutingStyle("simpleDiagramWithMixRoutingEdges_SameNumber", "to2", Routing.RECTILINEAR, "toA2", Routing.MANUAL, Routing.MANUAL);
+    }
+
+    /**
+     * Makes sure that when a diagram contains a mix of rectilinear and oblique routing style, if there are more
+     * rectilinear edges, the rectilinear routing style is applied to all edges after the layout with ELK.
+     */
+    public void testArrangeAllResultForEdgesWithMixRoutingStyle_AndMoreRectilinear() {
+        testArrangeAllResultForEdgesRoutingStyle("simpleDiagramWithMixRoutingEdges_MoreRectilinear", "to2", Routing.RECTILINEAR, "toA4", Routing.MANUAL, Routing.RECTILINEAR);
+    }
+
+    /**
+     * Makes sure that when a diagram contains a mix of rectilinear and oblique routing style, if there are more oblique
+     * edges, the oblique routing style is applied to all edges after the layout with ELK.
+     */
+    public void testArrangeAllResultForEdgesWithMixRoutingStyle_AndMoreOblique() {
+        testArrangeAllResultForEdgesRoutingStyle("simpleDiagramWithMixRoutingEdges_MoreOblique", "to4", Routing.RECTILINEAR, "toA2", Routing.MANUAL, Routing.MANUAL);
+    }
+
+    private void testArrangeAllResultForEdgesRoutingStyle(String diagramName, String firstEdgeNameToCheck, int initialExpectedFirstEdgeRouting, String secondEdgeNameToCheck,
+            int initialExpectedSecondEdgeRouting, int afterLayoutExpectedEdgeRouting) {
+        openDiagram(diagramName);
+
+        // Check the initial routing style
+        AbstractDiagramEdgeEditPart edgeEditPartWithRightAngle = getEdgeEditPart(firstEdgeNameToCheck, AbstractDiagramEdgeEditPart.class);
+        checkRoutingStyle(edgeEditPartWithRightAngle, WRONG_INITIAL_ROUTING_MESSAGE, firstEdgeNameToCheck, initialExpectedFirstEdgeRouting);
+        AbstractDiagramEdgeEditPart edgeEditPartWithoutRightAngle = getEdgeEditPart(secondEdgeNameToCheck, AbstractDiagramEdgeEditPart.class);
+        checkRoutingStyle(edgeEditPartWithoutRightAngle, WRONG_INITIAL_ROUTING_MESSAGE, secondEdgeNameToCheck, initialExpectedSecondEdgeRouting);
+
+        // Launch an arrange all
+        arrangeAll((DiagramEditor) editorPart);
+
+        // Check the routing style after the arrange
+        checkRoutingStyle(edgeEditPartWithRightAngle, WRONG_ROUTING_AFTER_LAYOUT_MESSAGE, firstEdgeNameToCheck, afterLayoutExpectedEdgeRouting);
+        checkRoutingStyle(edgeEditPartWithoutRightAngle, WRONG_ROUTING_AFTER_LAYOUT_MESSAGE, secondEdgeNameToCheck, afterLayoutExpectedEdgeRouting);
+    }
+
+    private void checkRoutingStyle(AbstractDiagramEdgeEditPart edgeEditPart, String message, String edgeName, int expectedRoutingStyle) {
+        checkRoutingStyle(edgeEditPart, message, edgeName, expectedRoutingStyle, false);
+    }
+
+    private void checkRoutingStyle(AbstractDiagramEdgeEditPart edgeEditPart, String message, String edgeName, int expectedRoutingStyle, boolean checkGMFCusto) {
+        // TODO : checkGMFCusto is a temporary parameter to dissociate the problem concerning StringValueStyle.
+        String fullMessage = MessageFormat.format(message, edgeName);
+        View notationView = edgeEditPart.getNotationView();
+        DDiagramElement dde = edgeEditPart.resolveDiagramElement();
+        assertTrue("The diagram element of the AbstractDiagramEdgeEditPart must be a DEdge.", dde instanceof DEdge);
+        DEdgeQuery dEdgeQuery = new DEdgeQuery((DEdge) dde);
+        Routing routing = dEdgeQuery.getRouting();
+        assertEquals(fullMessage, expectedRoutingStyle, routing.getValue());
+        // Check that custom features list contains the routingStyle (if necessary)
+        Option<EdgeMapping> optionalEdgeMapping = new IEdgeMappingQuery(((DEdge) dde).getActualMapping()).getEdgeMapping();
+        if (optionalEdgeMapping.some()) {
+            EdgeRouting originalEdgeRouting = optionalEdgeMapping.get().getStyle().getRoutingStyle();
+            if (EdgeRouting.get(expectedRoutingStyle).equals(originalEdgeRouting)) {
+                // The routing is the same, so the edge should not appear as customized.
+                if (checkGMFCusto) {
+                    assertTrue("This edge \"" + edgeName + "\" must not appear as customized.",
+                        (!(new DDiagramElementQuery(dde).isCustomized() || new ViewQueryWithoutFontNameCheck(notationView).isCustomized())));
+                } else {
+                    assertTrue("This edge \"" + edgeName + "\" must not appear as customized.", (!(new DDiagramElementQuery(dde).isCustomized())));
+                }
+            } else {
+                assertTrue("The custom features list of the style of DEdge \"" + edgeName + "\" must contain the routingStyle.",
+                        dde.getStyle().getCustomFeatures().contains(DiagramPackage.Literals.DEDGE__ROUTING_STYLE.getName()));
+            }
+        }
+    }
+
     protected void openDiagram(String diagramName) {
         diagram = (DDiagram) getRepresentationsByName(diagramName).toArray()[0];
         editorPart = (IDiagramWorkbenchPart) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
@@ -1993,7 +2128,7 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      * Get the diagramElement with the current name.
      * 
      * @param nodeName
-     *            The node of the diagram element
+     *            The name of the diagram element
      * @return the corresponding diagramElement.
      */
     protected DDiagramElement getDDiagramElement(String nodeName) {
@@ -2006,7 +2141,7 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      * Get the edit part with the current name.
      * 
      * @param nodeName
-     *            The node of the diagram element
+     *            The name of the diagram element
      * @param expectedClassType
      *            the expected type of representation element
      * @return the corresponding diagramElement.
@@ -2031,6 +2166,33 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         assertTrue("The node for \"" + dDiagramElement.getName() + "\" should be a " + expectedClassType.getSimpleName() + " but was a " + editPart.getClass().getSimpleName(),
                 expectedClassType.isInstance(editPart));
         return (T) editPart;
+    }
+
+    /**
+     * Get the DEdge with the current name.
+     * 
+     * @param edgeName
+     *            The name of the edge
+     * @return the corresponding edge.
+     */
+    protected DEdge getDEdge(String edgeName) {
+        Optional<DEdge> optionalDEdge = diagram.getEdges().stream().filter(dEdge -> edgeName.equals(dEdge.getName())).findFirst();
+        assertTrue("The diagram should have an edge named \"" + edgeName + "\".", optionalDEdge.isPresent());
+        return optionalDEdge.get();
+    }
+
+    /**
+     * Get the edit part with the current name.
+     * 
+     * @param edgeName
+     *            The name of the edge
+     * @param expectedClassType
+     *            the expected type of the edge
+     * @return the corresponding edge EditPart.
+     */
+    protected <T> T getEdgeEditPart(String edgeName, Class<T> expectedClassType) {
+        DEdge dEdge = getDEdge(edgeName);
+        return getEditPart(dEdge, expectedClassType);
     }
 
     /**
