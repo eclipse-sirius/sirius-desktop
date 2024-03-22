@@ -1276,5 +1276,109 @@
         </containerMappings>
       </defaultLayer>
     </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="SimpleDiagramWithMixRoutingEdges" domainClass="ecore::EPackage" enablePopupBars="true">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <layout xsi:type="description_1:CustomLayoutConfiguration" id="org.eclipse.elk.layered" label="ELK Layered" description="Layer-based algorithm provided by the Eclipse Layout Kernel. Arranges as many edges as possible into one direction by placing nodes into subsequent layers. This implementation supports different routing styles (straight, orthogonal, splines); if orthogonal routing is selected, arbitrary port constraints are respected, thus enabling the layout of block diagrams such as actor-oriented models or circuit schematics. Furthermore, full layout of compound graphs with cross-hierarchy edges is supported when the respective option is activated on the top level.">
+        <layoutOptions xsi:type="description_1:EnumLayoutOption" id="org.eclipse.elk.hierarchyHandling">
+          <targets>NODE</targets>
+          <targets>PARENT</targets>
+          <value name="INCLUDE_CHILDREN"/>
+        </layoutOptions>
+        <layoutOptions xsi:type="description_1:EnumSetLayoutOption" id="org.eclipse.elk.nodeSize.constraints">
+          <targets>NODE</targets>
+          <values name="NODE_LABELS"/>
+          <values name="MINIMUM_SIZE"/>
+        </layoutOptions>
+      </layout>
+      <defaultLayer name="Default">
+        <nodeMappings name="Classes" semanticCandidatesExpression="feature:eClassifiers" domainClass="ecore::EClass">
+          <style xsi:type="style:SquareDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="straightRedReferences" semanticCandidatesExpression="aql:self.eAllContents()->filter(ecore::EReference)->&#xD;select(s | s.name.startsWith('toA'))" sourceMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='SimpleDiagramWithMixRoutingEdges']/@defaultLayer/@nodeMappings[name='Classes']" targetMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='SimpleDiagramWithMixRoutingEdges']/@defaultLayer/@nodeMappings[name='Classes']" targetFinderExpression="aql:self.eReferenceType" sourceFinderExpression="aql:self.eContainer()" domainClass="ecore::EReference" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            <centerLabelStyleDescription labelSize="12" labelExpression="aql:self.name">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="rectilinearBlueReferences" semanticCandidatesExpression="aql:self.eAllContents()->filter(ecore::EReference)->select(s | not(s.name.startsWith('toA')))" sourceMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='SimpleDiagramWithMixRoutingEdges']/@defaultLayer/@nodeMappings[name='Classes']" targetMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='SimpleDiagramWithMixRoutingEdges']/@defaultLayer/@nodeMappings[name='Classes']" targetFinderExpression="aql:self.eReferenceType" sourceFinderExpression="aql:self.eContainer()" domainClass="ecore::EReference" useDomainElement="true">
+          <style sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <centerLabelStyleDescription labelSize="12" labelExpression="aql:self.name">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="SimpleDiagramWithObliqueEdges" domainClass="ecore::EPackage" enablePopupBars="true">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <layout xsi:type="description_1:CustomLayoutConfiguration" id="org.eclipse.elk.layered" label="ELK Layered" description="Layer-based algorithm provided by the Eclipse Layout Kernel. Arranges as many edges as possible into one direction by placing nodes into subsequent layers. This implementation supports different routing styles (straight, orthogonal, splines); if orthogonal routing is selected, arbitrary port constraints are respected, thus enabling the layout of block diagrams such as actor-oriented models or circuit schematics. Furthermore, full layout of compound graphs with cross-hierarchy edges is supported when the respective option is activated on the top level.">
+        <layoutOptions xsi:type="description_1:EnumLayoutOption" id="org.eclipse.elk.hierarchyHandling">
+          <targets>NODE</targets>
+          <targets>PARENT</targets>
+          <value name="INCLUDE_CHILDREN"/>
+        </layoutOptions>
+        <layoutOptions xsi:type="description_1:EnumSetLayoutOption" id="org.eclipse.elk.nodeSize.constraints">
+          <targets>NODE</targets>
+          <values name="NODE_LABELS"/>
+          <values name="MINIMUM_SIZE"/>
+        </layoutOptions>
+      </layout>
+      <defaultLayer name="Default">
+        <nodeMappings name="Classes" semanticCandidatesExpression="feature:eClassifiers" domainClass="ecore::EClass">
+          <style xsi:type="style:SquareDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="straightRedReferences" sourceMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='SimpleDiagramWithObliqueEdges']/@defaultLayer/@nodeMappings[name='Classes']" targetMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='SimpleDiagramWithObliqueEdges']/@defaultLayer/@nodeMappings[name='Classes']" targetFinderExpression="aql:self.eReferenceType" sourceFinderExpression="aql:self.eContainer()" domainClass="ecore::EReference" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            <centerLabelStyleDescription labelSize="12" labelExpression="aql:self.name">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="SimpleDiagramWithRectilinearEdges" domainClass="ecore::EPackage" enablePopupBars="true">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <layout xsi:type="description_1:CustomLayoutConfiguration" id="org.eclipse.elk.layered" label="ELK Layered" description="Layer-based algorithm provided by the Eclipse Layout Kernel. Arranges as many edges as possible into one direction by placing nodes into subsequent layers. This implementation supports different routing styles (straight, orthogonal, splines); if orthogonal routing is selected, arbitrary port constraints are respected, thus enabling the layout of block diagrams such as actor-oriented models or circuit schematics. Furthermore, full layout of compound graphs with cross-hierarchy edges is supported when the respective option is activated on the top level.">
+        <layoutOptions xsi:type="description_1:EnumLayoutOption" id="org.eclipse.elk.hierarchyHandling">
+          <targets>NODE</targets>
+          <targets>PARENT</targets>
+          <value name="INCLUDE_CHILDREN"/>
+        </layoutOptions>
+        <layoutOptions xsi:type="description_1:EnumSetLayoutOption" id="org.eclipse.elk.nodeSize.constraints">
+          <targets>NODE</targets>
+          <values name="NODE_LABELS"/>
+          <values name="MINIMUM_SIZE"/>
+        </layoutOptions>
+      </layout>
+      <defaultLayer name="Default">
+        <nodeMappings name="Classes" semanticCandidatesExpression="feature:eClassifiers" domainClass="ecore::EClass">
+          <style xsi:type="style:SquareDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="rectilinearBlueReferences" sourceMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='SimpleDiagramWithRectilinearEdges']/@defaultLayer/@nodeMappings[name='Classes']" targetMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='SimpleDiagramWithRectilinearEdges']/@defaultLayer/@nodeMappings[name='Classes']" targetFinderExpression="aql:self.eReferenceType" sourceFinderExpression="aql:self.eContainer()" domainClass="ecore::EReference" useDomainElement="true">
+          <style sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <centerLabelStyleDescription labelSize="12" labelExpression="aql:self.name">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+      </defaultLayer>
+    </ownedRepresentations>
   </ownedViewpoints>
 </description:Group>
