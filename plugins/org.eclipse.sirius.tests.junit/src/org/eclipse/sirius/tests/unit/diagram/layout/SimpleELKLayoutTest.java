@@ -28,6 +28,7 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
@@ -62,12 +63,14 @@ import org.eclipse.gmf.runtime.draw2d.ui.geometry.PointListUtilities;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.figures.AnimatableScrollPane;
 import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Diagram;
+import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.FontStyle;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.Routing;
+import org.eclipse.gmf.runtime.notation.StringValueStyle;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -89,6 +92,8 @@ import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.EnumLayoutOption;
 import org.eclipse.sirius.diagram.description.EnumLayoutValue;
 import org.eclipse.sirius.diagram.description.LayoutOptionTarget;
+import org.eclipse.sirius.diagram.elk.GmfLayoutCommand;
+import org.eclipse.sirius.diagram.elk.migration.EmptyJunctionPointsStringValueStyleMigrationParticipant;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.tools.internal.commands.PinElementsCommand;
 import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
@@ -121,6 +126,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.ui.IEditorPart;
+import org.osgi.framework.Version;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -1888,6 +1894,18 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         checkRoutingStyle(edgeEditPartWithoutRightAngle, WRONG_ROUTING_AFTER_LAYOUT_MESSAGE, secondEdgeNameToCheck, afterLayoutExpectedEdgeRouting);
     }
 
+    /**
+     * Test that the data were not migrated on the repository. It allows to check the effect of the migration of
+     * EmptyJunctionPointsStringValueStyleMigrationParticipant in other tests.
+     */
+    public void testMigrationIsNeededOnData() {
+        Version migrationVersion = new EmptyJunctionPointsStringValueStyleMigrationParticipant().getMigrationVersion();
+
+        // Check that the migration of the session resource is needed.
+        Version loadedVersion = checkRepresentationFileMigrationStatus(URI.createPlatformPluginURI("/" + TEMPORARY_PROJECT_NAME + "/" + REPRESENTATIONS_RESOURCE_NAME, true), true);
+        assertTrue("The migration must be required on test data.", migrationVersion.compareTo(loadedVersion) > 0); //$NON-NLS-1$
+    }
+
     private void checkRoutingStyle(AbstractDiagramEdgeEditPart edgeEditPart, String message, String edgeName, int expectedRoutingStyle) {
         String fullMessage = MessageFormat.format(message, edgeName);
         View notationView = edgeEditPart.getNotationView();
@@ -1915,8 +1933,24 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         diagram = (DDiagram) getRepresentationsByName(diagramName).toArray()[0];
         editorPart = (IDiagramWorkbenchPart) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
         TestsUtil.synchronizationWithUIThread();
+        checkStringValueStyle();
     }
 
+    protected void checkStringValueStyle() {
+        Diagram gmfDiag = getGmfDiagram(diagram);
+        if (gmfDiag != null) {
+            TreeIterator<EObject> childIterator = gmfDiag.eAllContents();
+            while (childIterator.hasNext()) {
+                EObject eObject = childIterator.next();
+                if (eObject instanceof Edge edge) {
+                    StringValueStyle stringValueStyle = (StringValueStyle) edge.getStyle(NotationPackage.Literals.STRING_VALUE_STYLE);
+                    if (stringValueStyle != null && GmfLayoutCommand.JUNCTION_POINTS_STYLE_NAME.equals(stringValueStyle.getName()) && "()".equals(stringValueStyle.getStringValue())) {
+                        fail("At least one edge contains an empty junctionPoints StringValueStyle.");
+                    }
+                }
+            }
+        }
+    }
     /**
      * Check that the Note is moved or not moved with an arrange using ELK, according to the value of the preference
      * "Move unlinked notes during layout".

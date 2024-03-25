@@ -14,6 +14,10 @@ h3. Specifier-Visible Changes
 
 h3. Developer-Visible Changes
 
+h4. Migrations
+
+* <span class="label label-success">Added</span> A migration participant, EmptyJunctionPointsStringValueStyleMigrationParticipant,  has been added to fix the GMF edges that contain an empty "junctionPoints" StringValueStyle. These empty "junctionPoints" StringValueStyle were created due to a bug in ELK./Sirius integration. This migration participant simply removes the empty "junctionPoints" StringValueStyle. As reminder, this migration participant has been introduced in Sirius 7.4.3. The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _15.4.3.202406261640_.
+
 h2(#sirius7.4.2). Changes in Sirius Desktop 7.4.2
 
 h3. User-Visible Changes
@@ -25,9 +29,6 @@ h3. Specifier-Visible Changes
 h3. Developer-Visible Changes
 
 h4. Migrations
-
-_None_.
-
 
 h2(#sirius7.4.1). Changes in Sirius  Desktop 7.4.1
 
