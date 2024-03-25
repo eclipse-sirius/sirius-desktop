@@ -1889,11 +1889,6 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
     }
 
     private void checkRoutingStyle(AbstractDiagramEdgeEditPart edgeEditPart, String message, String edgeName, int expectedRoutingStyle) {
-        checkRoutingStyle(edgeEditPart, message, edgeName, expectedRoutingStyle, false);
-    }
-
-    private void checkRoutingStyle(AbstractDiagramEdgeEditPart edgeEditPart, String message, String edgeName, int expectedRoutingStyle, boolean checkGMFCusto) {
-        // TODO : checkGMFCusto is a temporary parameter to dissociate the problem concerning StringValueStyle.
         String fullMessage = MessageFormat.format(message, edgeName);
         View notationView = edgeEditPart.getNotationView();
         DDiagramElement dde = edgeEditPart.resolveDiagramElement();
@@ -1907,12 +1902,8 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
             EdgeRouting originalEdgeRouting = optionalEdgeMapping.get().getStyle().getRoutingStyle();
             if (EdgeRouting.get(expectedRoutingStyle).equals(originalEdgeRouting)) {
                 // The routing is the same, so the edge should not appear as customized.
-                if (checkGMFCusto) {
-                    assertTrue("This edge \"" + edgeName + "\" must not appear as customized.",
-                            (!(new DDiagramElementQuery(dde).isCustomized() || new ViewQueryWithoutFontNameCheck(notationView).isCustomized())));
-                } else {
-                    assertTrue("This edge \"" + edgeName + "\" must not appear as customized.", (!(new DDiagramElementQuery(dde).isCustomized())));
-                }
+                assertTrue("This edge \"" + edgeName + "\" must not appear as customized.",
+                        (!(new DDiagramElementQuery(dde).isCustomized() || new ViewQueryWithoutFontNameCheck(notationView).isCustomized())));
             } else {
                 assertTrue("The custom features list of the style of DEdge \"" + edgeName + "\" must contain the routingStyle.",
                         dde.getStyle().getCustomFeatures().contains(DiagramPackage.Literals.DEDGE__ROUTING_STYLE.getName()));
