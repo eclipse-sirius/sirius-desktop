@@ -74,6 +74,18 @@ Also you can filter the options by using the text field. The filtering applies t
 
 To get an overview of what is possible with ELK you can read this "article":https://blog.obeosoft.com/a-picture-is-worth-a-thousand-words.
 
+h5(#elkRoutingStyleRules). Specific rules for routing style of edges
+
+Since Sirius 7.4.1, the routing styles used in Sirius diagrams are considered. They are ignored before and default ELK value was used.
+In ELK, all the edges of a same container must have the same routing style. So the default translation rules between Sirius and ELK are the following:
+* If all edges have the same routing style, this routing style is used for all edges.
+* If there is a mix between different routing styles, the most used routing style is used for all edges.
+* If there is a mix between different routing styles and they are used the same number of times, the Oblique rotuing style has priority over Rectilinear routing style, which itself has priority over Tree routing style.
+
+"Tree routing style" does not exist on ELK, so currently it is considered as "Rectilinear" for ELK. The result with a diagram using "Tree routing style" is not guarantee.
+
+If the parameter "Edge Routing":https://eclipse.dev/elk/reference/options/org-eclipse-elk-edgeRouting.html is set in the VSM, it has the priority on the routing styles used in the diagram.
+
 h4. Use a custom layout algorithm
 
 If you need to go beyond what already exists, you can provide your own layout algorithm programmatically (see the "developer documentation":../../developer/Sirius%20Developer%20Manual.html for details).

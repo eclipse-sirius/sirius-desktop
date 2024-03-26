@@ -29,5 +29,9 @@
        class="org.eclipse.sirius.diagram.elk.migration.description.ELK090MigrationParticipant"
        kind="VSM">
      </participant>
+     <participant
+           class="org.eclipse.sirius.diagram.elk.migration.EmptyJunctionPointsStringValueStyleMigrationParticipant"
+           kind="RepresentationsFile">
+     </participant>
   </extension>
 </plugin>

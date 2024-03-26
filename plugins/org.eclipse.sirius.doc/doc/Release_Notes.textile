@@ -12,6 +12,8 @@ h3. User-Visible Changes
 
 h3. Specifier-Visible Changes
 
+* <span class="label label-info">Modified</span> When using ELK, the routing style of edges is now considered. It was ignored before.  You can refer to the "Use an ELK layout algorithm/Specific rules for routing style of edges":specifier/diagrams/Diagrams.html#elkRoutingStyleRules for more details.
+
 h3. Developer-Visible Changes
 
 h4. Changes in @org.eclipse.sirius.diagram.ui@
