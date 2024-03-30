@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008, 2023 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -220,12 +220,12 @@ public class DefaultLayoutProvider extends AbstractLayoutProvider {
      *            a class which implements {@link EditPart}
      */
     protected <T extends EditPart> Map<View, T> getViews(final List<T> editParts) {
-        final Map<View, T> result = new HashMap<View, T>();
+        final Map<View, T> result = new HashMap<>();
         final Iterator<T> iterEditParts = editParts.iterator();
         while (iterEditParts.hasNext()) {
             final T next = iterEditParts.next();
-            if (next.getModel() instanceof View) {
-                result.put((View) next.getModel(), next);
+            if (next.getModel() instanceof View model) {
+                result.put(model, next);
             }
         }
         return result;
