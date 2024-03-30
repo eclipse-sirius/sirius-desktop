@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -292,7 +292,7 @@ public class InlineEdgeLayoutProvider extends DefaultLayoutProvider {
 
         while (iterNodes.hasNext()) {
             final IGraphicalEditPart currentEditPart = (IGraphicalEditPart) iterNodes.next();
-            final List<ConnectionEditPart> connectionsToInit = new ArrayList<ConnectionEditPart>(currentEditPart.getSourceConnections().size() + currentEditPart.getTargetConnections().size());
+            final List<org.eclipse.gef.ConnectionEditPart> connectionsToInit = new ArrayList<>(currentEditPart.getSourceConnections().size() + currentEditPart.getTargetConnections().size());
             connectionsToInit.addAll(currentEditPart.getSourceConnections());
             connectionsToInit.addAll(currentEditPart.getTargetConnections());
             DefaultLayoutProvider.retainType(connections, ConnectionEditPart.class);
@@ -351,8 +351,12 @@ public class InlineEdgeLayoutProvider extends DefaultLayoutProvider {
      *            the connections to layout for this connector (instances of
      *            {@link ConnectionEditPart}).
      */
-    protected void initEdgesStep(final IGraphicalEditPart connector, final AbstractEdgeViewOrdering ordering, final List<ConnectionEditPart> connections) {
-        final Map<View, ConnectionEditPart> viewsToConnections = this.getViews(connections);
+    protected void initEdgesStep(final IGraphicalEditPart connector, final AbstractEdgeViewOrdering ordering, final List<? extends org.eclipse.gef.ConnectionEditPart> connections) {
+        List<ConnectionEditPart> gmfConnections = connections.stream()
+                .filter(ConnectionEditPart.class::isInstance)
+                .map(ConnectionEditPart.class::cast)
+                .toList();
+        final Map<View, ConnectionEditPart> viewsToConnections = this.getViews(gmfConnections);
         ordering.setConnector(connector.getNotationView());
         ordering.setViews(viewsToConnections.keySet());
         final Iterator<View> iterViews = ordering.getSortedViews().iterator();
@@ -879,7 +883,7 @@ public class InlineEdgeLayoutProvider extends DefaultLayoutProvider {
 
     private int rearrangeConnector(final IGraphicalEditPart connector, final int connectorStart, final AbstractEdgeViewOrdering viewOrdering) {
         int result = connectorStart;
-        final List<EditPart> connections = new ArrayList<EditPart>(connector.getSourceConnections().size() + connector.getTargetConnections().size());
+        final List<EditPart> connections = new ArrayList<>(connector.getSourceConnections().size() + connector.getTargetConnections().size());
         Iterables.addAll(connections, Iterables.filter(connector.getSourceConnections(), EditPart.class));
         Iterables.addAll(connections, Iterables.filter(connector.getTargetConnections(), EditPart.class));
 

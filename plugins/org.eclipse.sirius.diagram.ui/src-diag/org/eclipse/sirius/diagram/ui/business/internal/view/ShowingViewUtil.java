@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2017, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -204,11 +204,11 @@ public final class ShowingViewUtil {
      *            the new visibility to set.
      */
     public static void setConnectionsVisibility(AbstractGraphicalEditPart editPart, View view, int selectionStatus, boolean isVisible) {
-        List<Object> srcConnections = editPart.getSourceConnections();
+        var srcConnections = editPart.getSourceConnections();
         ViewQuery viewQuery = new ViewQuery(view);
         boolean isInShowingMode = viewQuery.isInShowingMode();
         updateVisibility(editPart, selectionStatus, isVisible, srcConnections, isInShowingMode);
-        List<Object> targetConnections = editPart.getTargetConnections();
+        var targetConnections = editPart.getTargetConnections();
         updateVisibility(editPart, selectionStatus, isVisible, targetConnections, isInShowingMode);
     }
 
@@ -227,8 +227,8 @@ public final class ShowingViewUtil {
      * @param isInShowingMode
      *            true if the diagram is in showing mode. False otherwise.
      */
-    private static void updateVisibility(AbstractGraphicalEditPart editPart, int selectionStatus, boolean isVisible, List<Object> connections, boolean isInShowingMode) {
-        Iterator<Object> connexionsIte = connections.iterator();
+    private static void updateVisibility(AbstractGraphicalEditPart editPart, int selectionStatus, boolean isVisible, List<? extends org.eclipse.gef.ConnectionEditPart> connections, boolean isInShowingMode) {
+        Iterator<? extends org.eclipse.gef.ConnectionEditPart> connexionsIte = connections.iterator();
         while (connexionsIte.hasNext()) {
             ConnectionEditPart connection = (ConnectionEditPart) connexionsIte.next();
             if (connection.getFigure().isVisible() != isVisible || isInShowingMode) {
