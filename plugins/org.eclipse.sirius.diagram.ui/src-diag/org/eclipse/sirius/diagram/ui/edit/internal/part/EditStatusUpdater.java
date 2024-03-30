@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES adn others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -145,16 +145,14 @@ public class EditStatusUpdater implements NotificationListener {
             decorationEditPolicy.refresh();
         }
         // Disable his connections
-        final List<Object> sourceConnections = self.getSourceConnections();
-        for (Object connection : sourceConnections) {
-            if (connection instanceof ConnectionEditPart) {
-                EditStatusUpdater.setEnability((ConnectionEditPart) connection, enability);
+        for (var gefConnection : self.getSourceConnections()) {
+            if (gefConnection instanceof ConnectionEditPart gmfConnection) {
+                EditStatusUpdater.setEnability(gmfConnection, enability);
             }
         }
-        final List<Object> targetConnections = self.getTargetConnections();
-        for (Object connection : targetConnections) {
-            if (connection instanceof ConnectionEditPart) {
-                EditStatusUpdater.setEnability((ConnectionEditPart) connection, enability);
+        for (var gefConnection : self.getTargetConnections()) {
+            if (gefConnection instanceof ConnectionEditPart gmfConnection) {
+                EditStatusUpdater.setEnability(gmfConnection, enability);
             }
         }
     }
