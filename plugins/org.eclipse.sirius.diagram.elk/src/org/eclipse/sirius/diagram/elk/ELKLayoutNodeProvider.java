@@ -12,12 +12,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.elk;
 
-import java.util.List;
-import java.util.Optional;
+import com.google.inject.Injector;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.elk.core.service.LayoutConnectorsService;
 import org.eclipse.elk.core.service.LayoutMapping;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.UnexecutableCommand;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
@@ -28,7 +28,8 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.DefaultLayoutProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
 
-import com.google.inject.Injector;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * Layout node provider allowing to apply an ELK layout algorithm while arranging diagram elements.
@@ -63,33 +64,28 @@ public class ELKLayoutNodeProvider extends DefaultLayoutProvider {
         Injector injector = LayoutConnectorsService.getInstance().getInjector(null, selectedObjects);
         ElkDiagramLayoutConnector connector = injector.getInstance(ElkDiagramLayoutConnector.class);
 
+        
         connector.setLayoutConfiguration(layoutConfiguration);
         boolean isArrangeAtOpening = SiriusLayoutDataManager.LAYOUT_TYPE_ARRANGE_AT_OPENING.equals(layoutHint.getAdapter(String.class));
         LayoutMapping layoutMapping = connector.buildLayoutGraph(diagramEditPart, selectedObjects, isArrangeAll, isArrangeAtOpening);
 
-        if (DiagramElkPlugin.getPlugin().isDebugging()) {
-            ElkDiagramLayoutConnector.storeResult(layoutMapping.getLayoutGraph(), layoutMapping.getLayoutGraph().getIdentifier(), "1_initialState", false);
-        }
+        URI sessionUri = ElkDiagramLayoutConnector.getSessionUri(layoutMapping);
+        DiagramElkPlugin.getPlugin().traceForDebug(sessionUri, layoutMapping.getLayoutGraph(), "1_initialState");
 
         // We perform "before" actions provided by extension point.
         elkLayoutExtensions.forEach(e -> e.beforeELKLayout(layoutMapping));
 
-        if (DiagramElkPlugin.getPlugin().isDebugging()) {
-            ElkDiagramLayoutConnector.storeResult(layoutMapping.getLayoutGraph(), layoutMapping.getLayoutGraph().getIdentifier(), "2_beforeELKLayout", false);
-        }
+        DiagramElkPlugin.getPlugin().traceForDebug(sessionUri, layoutMapping.getLayoutGraph(), "2_beforeELKLayout");
 
         connector.layout(layoutMapping);
 
-        if (DiagramElkPlugin.getPlugin().isDebugging()) {
-            ElkDiagramLayoutConnector.storeResult(layoutMapping.getLayoutGraph(), layoutMapping.getLayoutGraph().getIdentifier(), "3_afterELKLayout", false);
-        }
+        DiagramElkPlugin.getPlugin().traceForDebug(sessionUri, layoutMapping.getLayoutGraph(), "3_afterELKLayout");
 
         // We perform "after" actions provided by extension point.
         elkLayoutExtensions.forEach(e -> e.afterELKLayout(layoutMapping));
 
-        if (DiagramElkPlugin.getPlugin().isDebugging()) {
-            ElkDiagramLayoutConnector.storeResult(layoutMapping.getLayoutGraph(), layoutMapping.getLayoutGraph().getIdentifier(), "4_afterExtensionUpdate", false);
-        }
+        DiagramElkPlugin.getPlugin().traceForDebug(sessionUri, layoutMapping.getLayoutGraph(), "4_afterExtensionUpdate");
+
         connector.transferLayout(layoutMapping, isArrangeAll || (layoutOnDiagram && isArrangeAtOpening));
         Command gmfLayoutCommand = connector.getApplyCommand(layoutMapping);
         Optional<GmfLayoutCommand> concreteGmfLayoutCommand = getConcreteGMFLayoutCommand(gmfLayoutCommand);

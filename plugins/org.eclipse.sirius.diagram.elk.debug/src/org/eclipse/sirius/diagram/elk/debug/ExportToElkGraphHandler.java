@@ -15,6 +15,7 @@ package org.eclipse.sirius.diagram.elk.debug;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import com.google.inject.Injector;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -24,6 +25,8 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.elk.core.options.HierarchyHandling;
 import org.eclipse.elk.core.service.LayoutConnectorsService;
 import org.eclipse.elk.core.service.LayoutMapping;
+import org.eclipse.elk.graph.ElkNode;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
@@ -41,23 +44,30 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.description.CustomLayoutConfiguration;
 import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.EnumLayoutOption;
 import org.eclipse.sirius.diagram.description.EnumLayoutValue;
 import org.eclipse.sirius.diagram.description.LayoutOptionTarget;
+import org.eclipse.sirius.diagram.elk.DiagramElkPlugin;
 import org.eclipse.sirius.diagram.elk.ElkDiagramLayoutConnector;
+import org.eclipse.sirius.diagram.elk.ElkDiagramLayoutTracer;
 import org.eclipse.sirius.diagram.elk.IELKLayoutExtension;
 import org.eclipse.sirius.diagram.ui.internal.layout.GenericLayoutProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.AbstractLayoutProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.LayoutProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
 
-import com.google.inject.Injector;
+import java.nio.file.Path;
+import java.text.MessageFormat;
+import java.util.Iterator;
 
 /**
  * The Export To Elk Graph command handler.
@@ -65,7 +75,27 @@ import com.google.inject.Injector;
  * @author Laurent Redor
  * 
  */
-public class ExportToElkGraphHandler extends AbstractHandler {
+public abstract class ExportToElkGraphHandler extends AbstractHandler {
+
+    private static ElkDiagramLayoutTracer getTracer() {
+        return DiagramElkPlugin.getPlugin().getTracer();
+    }
+    
+    /** Implementation to save as text format. */
+    public static class AsText extends ExportToElkGraphHandler {
+        @Override
+        protected Path saveToFile(final URI sessionUri, final ElkNode graph, final String diagramName) {
+            return getTracer().saveAsText(sessionUri, graph, diagramName, "");
+        }
+    }
+
+    /** Implementation to save as XMI format. */
+    public static class AsXmi extends ExportToElkGraphHandler {
+        @Override
+        protected Path saveToFile(final URI sessionUri, final ElkNode graph, final String diagramName) {
+            return getTracer().saveAsGraph(sessionUri, graph, diagramName, "");
+        }
+    }
 
     @Override
     public Object execute(ExecutionEvent event) throws ExecutionException {
@@ -75,25 +105,14 @@ public class ExportToElkGraphHandler extends AbstractHandler {
             StructuredSelection structuredSelection = (StructuredSelection) selection;
             if (structuredSelection.getFirstElement() instanceof DiagramEditPart) {
                 DiagramEditPart diagramEditPart = (DiagramEditPart) structuredSelection.getFirstElement();
-                CustomLayoutConfiguration customLayoutConfiguration;
-                Optional<CustomLayoutConfiguration> optionnalCustomLayoutConfiguration = getAssociatedElkLayoutConfiguration(diagramEditPart);
-                if (optionnalCustomLayoutConfiguration.isPresent()) {
-                    customLayoutConfiguration = optionnalCustomLayoutConfiguration.get();
-                } else {
-                    MessageDialog.openWarning(PlatformUI.getWorkbench().getDisplay().getActiveShell(), Messages.ExportToElkGraphHandler_elkExportDialogTitle,
-                            Messages.ExportToElkGraphHandler_elkExportDialogNoAssociatedLayoutMessage);
-                    DescriptionFactory layoutDescriptionFactory = DescriptionFactory.eINSTANCE;
-                    customLayoutConfiguration = layoutDescriptionFactory.createCustomLayoutConfiguration();
-                    customLayoutConfiguration.setId("org.eclipse.elk.layered");
-                    EnumLayoutOption enumLayoutOption = layoutDescriptionFactory.createEnumLayoutOption();
-                    enumLayoutOption.setId("org.eclipse.elk.hierarchyHandling");
-                    EnumLayoutValue enumLayoutValue = layoutDescriptionFactory.createEnumLayoutValue();
-                    enumLayoutValue.setName(HierarchyHandling.INCLUDE_CHILDREN.name());
-                    enumLayoutOption.setValue(enumLayoutValue);
-                    enumLayoutOption.getTargets().add(LayoutOptionTarget.PARENT);
-                    enumLayoutOption.getTargets().add(LayoutOptionTarget.NODE);
-                    customLayoutConfiguration.getLayoutOptions().add(enumLayoutOption);
-                }
+                
+                String[] warning = { null }; // Warning is postponed to avoid popup hell.
+                CustomLayoutConfiguration customLayoutConfiguration = getAssociatedElkLayoutConfiguration(diagramEditPart)
+                        .orElseGet(() -> {
+                            warning[0] = Messages.ExportToElkGraphHandler_elkExportDialogNoAssociatedLayoutMessage;
+                            return createLayoutConfigurationStub();
+                        });
+
 
                 // Temporarily reset home and set coordinates to 0,0 (to have better result)
                 Command command = diagramEditPart.getCommand(new Request(RequestConstants.REQ_RESET_ORIGIN));
@@ -107,13 +126,31 @@ public class ExportToElkGraphHandler extends AbstractHandler {
                 connector.setLayoutConfiguration(customLayoutConfiguration);
 
                 LayoutMapping layoutMapping = connector.buildLayoutGraph(diagramEditPart, diagramEditPart.getChildren(), true, false);
+
                 // Perform "before" actions provided by extension point.
                 List<IELKLayoutExtension> elkLayoutExtensions = IELKLayoutExtension.getLayoutExtensions();
                 elkLayoutExtensions.forEach(e -> e.beforeELKLayout(layoutMapping));
+                
+                View gmfDiagram = (View) diagramEditPart.getModel();
+                String diagramName = ((DRepresentation) gmfDiagram.getElement()).getName();
+                
+                URI session = ElkDiagramLayoutConnector.getSessionUri(layoutMapping);
+                
                 // Store the result in ELKG file
-                ElkDiagramLayoutConnector.storeResult(layoutMapping.getLayoutGraph(),
-                        ((org.eclipse.sirius.viewpoint.DRepresentation) ((org.eclipse.gmf.runtime.notation.Diagram) diagramEditPart.getModel()).getElement()).getName(), "", true);
+                Path result = saveToFile(session, layoutMapping.getLayoutGraph(), diagramName);
 
+                if (result != null) {
+                    Shell shell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
+                    String success = MessageFormat.format(Messages.ExportToElkGraphHandler_elkExportDialogMessage, result);
+                    if (warning[0] != null) {
+                        MessageDialog.openInformation(shell, Messages.ExportToElkGraphHandler_elkExportDialogTitle, success);
+                        
+                    } else {
+                        MessageDialog.openWarning(shell, Messages.ExportToElkGraphHandler_elkExportDialogTitle, 
+                                success + '\n' + warning[0]);
+                    }
+                }
+                
                 if (commandStack != null) {
                     // Undo the reset home
                     commandStack.undo();
@@ -121,6 +158,24 @@ public class ExportToElkGraphHandler extends AbstractHandler {
             }
         }
         return null;
+    }
+
+    protected abstract Path saveToFile(URI sessionUri, ElkNode graph, String diagramName);
+    
+    private CustomLayoutConfiguration createLayoutConfigurationStub() {
+        CustomLayoutConfiguration customLayoutConfiguration;
+        DescriptionFactory layoutDescriptionFactory = DescriptionFactory.eINSTANCE;
+        customLayoutConfiguration = layoutDescriptionFactory.createCustomLayoutConfiguration();
+        customLayoutConfiguration.setId("org.eclipse.elk.layered");
+        EnumLayoutOption enumLayoutOption = layoutDescriptionFactory.createEnumLayoutOption();
+        enumLayoutOption.setId("org.eclipse.elk.hierarchyHandling");
+        EnumLayoutValue enumLayoutValue = layoutDescriptionFactory.createEnumLayoutValue();
+        enumLayoutValue.setName(HierarchyHandling.INCLUDE_CHILDREN.name());
+        enumLayoutOption.setValue(enumLayoutValue);
+        enumLayoutOption.getTargets().add(LayoutOptionTarget.PARENT);
+        enumLayoutOption.getTargets().add(LayoutOptionTarget.NODE);
+        customLayoutConfiguration.getLayoutOptions().add(enumLayoutOption);
+        return customLayoutConfiguration;
     }
 
     public Optional<CustomLayoutConfiguration> getAssociatedElkLayoutConfiguration(DiagramEditPart diagramEditPart) {

@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.elk;
 
+import org.eclipse.elk.graph.ElkNode;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.ui.EclipseUIPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
@@ -61,11 +63,41 @@ public class DiagramElkPlugin extends EMFPlugin {
      * The actual implementation of the Eclipse <b>Plugin</b>.
      */
     public static class Implementation extends EclipseUIPlugin {
+
+        // Lazy 
+        private ElkDiagramLayoutTracer tracer = null;
+
         /**
          * Creates an instance.
          */
         public Implementation() {
             plugin = this;
         }
+        
+        /** 
+         * Traces the ELK graph into a local file.
+         * <p>
+         * Access is limited to package.
+         * </p>
+         * @param location URI of session
+         * @param diagramNode main ELK node
+         * @param suffix hint on layout phase
+         */
+        void traceForDebug(final URI location, final ElkNode diagramNode, String suffix) {
+            getTracer().debug(location, diagramNode, suffix);
+        }
+        
+        /**
+         * Gets a tracer to save ELK models.
+         * 
+         * @return tracer of graph
+         */
+        public ElkDiagramLayoutTracer getTracer() {
+            if (tracer == null) {
+                tracer = new ElkDiagramLayoutTracer(plugin.isDebugging());
+            }
+            return tracer;
+        }
+
     }
 }
