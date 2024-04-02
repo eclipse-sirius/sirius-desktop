@@ -180,7 +180,7 @@ public class HeaderSequenceDiagramTests extends AbstractDefaultModelSequenceTest
         Rectangle bounds = editor.getBounds(editPart).getCopy();
         SWTBotSiriusHelper.changeFontColorNavigationBar(bot);
         SWTBotShell colorPaletteShell = bot.shell(Messages.ColorPalettePopup_title);
-        colorPaletteShell.bot().buttonWithTooltip("{114, 159, 207}").click();
+        colorPaletteShell.bot().buttonWithTooltip("{102, 204, 255}").click();
         RGBValues backgroundColor = createDefaultBgColor();
         RGBValues foregroundColor = createColor(114, 159, 207);
 

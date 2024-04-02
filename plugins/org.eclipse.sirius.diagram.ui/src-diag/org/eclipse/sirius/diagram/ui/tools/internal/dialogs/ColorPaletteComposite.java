@@ -143,20 +143,27 @@ public class ColorPaletteComposite extends Composite {
 
     private Optional<RGB> getEventColor(DropTargetEvent event) {
         final TextTransfer textTransfer = TextTransfer.getInstance();
-        if (textTransfer.isSupportedType(event.currentDataType)) {
-            String textData = (String) textTransfer.nativeToJava(event.currentDataType);
-            return Optional.ofNullable(ColorManager.getDefault().stringToRGB(textData));
-        } else {
-            return Optional.empty();
+        String colorData = null;
+        if (event.data instanceof String data) {
+            colorData = data;
         }
+        if (colorData == null && textTransfer.isSupportedType(event.currentDataType)) {
+            colorData = (String) textTransfer.nativeToJava(event.currentDataType);
+        }
+        if (colorData == null && event.item instanceof Button dropButton && dropButton.getData(BUTTON_COLOR_DATA_KEY) instanceof String droppedColorString) {
+            colorData = droppedColorString;
+        }
+        return Optional.ofNullable(ColorManager.getDefault().stringToRGB(colorData));
     }
 
     /**
      * Set the drop operation on the event if allowed by the source.
      * 
      * <ul>
-     * <li>If the <code>operation</code> to set is in the allowed <code>event.operations</code>, set the current operation <code>event.detail</code> to <code>operation</code>.</li>
-     * <li>If the <code>operation</code> to set is not in the allowed <code>event.operations</code>, set the current operation <code>event.detail</code> to <code>DND.DROP_NONE</code>(no drop allowed).</li> 
+     * <li>If the <code>operation</code> to set is in the allowed <code>event.operations</code>, set the current
+     * operation <code>event.detail</code> to <code>operation</code>.</li>
+     * <li>If the <code>operation</code> to set is not in the allowed <code>event.operations</code>, set the current
+     * operation <code>event.detail</code> to <code>DND.DROP_NONE</code>(no drop allowed).</li>
      */
     private void updateOperationIfAvailable(DropTargetEvent event, int operation) {
         if ((event.operations & operation) != 0) {
@@ -192,7 +199,6 @@ public class ColorPaletteComposite extends Composite {
                             break;
                         }
                     }
-
                     int operation = getEventColor(event) //
                             .map(ColorPaletteComposite.this::getDropOperationOnPalette) //
                             .orElse(DND.DROP_NONE);
@@ -248,7 +254,7 @@ public class ColorPaletteComposite extends Composite {
      * Refresh all color buttons of the palette. Creates new buttons if there are new colors. Remove all buttons and
      * recreates them if a color has been removed.
      */
-    public void refreshColorButtons() {
+    private void refreshColorButtons() {
         if (colors.isEmpty()) {
             ((GridLayout) getLayout()).marginBottom = BUTTON_SIZE;
             ((GridLayout) getLayout()).marginRight = BUTTON_SIZE * numberOfColumns + BUTTONS_HORIZONTAL_SPACING * (numberOfColumns - 1);
@@ -286,13 +292,6 @@ public class ColorPaletteComposite extends Composite {
             buttonMap.put(button, color);
         }
         layout();
-    }
-
-    /**
-     * Refresh the current Palette and possibly other impacted palettes.
-     */
-    protected void refreshAllPalettes() {
-        refreshColorButtons();
     }
 
     /**
@@ -344,7 +343,7 @@ public class ColorPaletteComposite extends Composite {
                         event.image.dispose();
                         event.image = null;
                     }
-                    refreshAllPalettes();
+                    refreshColorButtons();
                 }
             });
         }
@@ -363,7 +362,6 @@ public class ColorPaletteComposite extends Composite {
                             break;
                         }
                     }
-
                     int operation = getEventColor(event) //
                             .map(color -> getDropOperationOnButton(button, color)) //
                             .orElse(DND.DROP_NONE);

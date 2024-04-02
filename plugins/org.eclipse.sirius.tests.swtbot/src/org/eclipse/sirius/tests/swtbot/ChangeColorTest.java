@@ -52,8 +52,8 @@ public class ChangeColorTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String ELEMENT_NAME = "EPackage1";
 
-    private static final RGB[] BASIC_COLORS = { new RGB(0, 0, 0), new RGB(69, 69, 69), new RGB(209, 209, 209), new RGB(255, 255, 255), new RGB(239, 41, 41), new RGB(252, 175, 62),
-            new RGB(252, 233, 79), new RGB(138, 226, 52), new RGB(114, 159, 207), new RGB(173, 127, 168) };
+    private static final RGB[] BASIC_COLORS = { new RGB(0, 0, 0), new RGB(209, 209, 209), new RGB(255, 255, 255), new RGB(239, 41, 41), new RGB(252, 175, 62), new RGB(252, 233, 79),
+            new RGB(138, 226, 52), new RGB(102, 204, 255), new RGB(0, 51, 128), new RGB(128, 0, 128)};
 
     private static final RGB[] ALL_SUGGESTED_COLORS = { new RGB(0, 0, 0), new RGB(96, 96, 96), new RGB(180, 180, 180), new RGB(255, 255, 255), new RGB(252, 82, 82), new RGB(128, 64, 0),
             new RGB(255, 134, 13), new RGB(255, 255, 0), new RGB(49, 217, 0), new RGB(0, 202, 101), new RGB(60, 255, 250), new RGB(47, 198, 255), new RGB(145, 56, 241), new RGB(255, 66, 255),
