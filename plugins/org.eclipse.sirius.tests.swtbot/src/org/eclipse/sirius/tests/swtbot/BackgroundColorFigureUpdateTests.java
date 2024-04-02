@@ -38,8 +38,8 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
  */
 public class BackgroundColorFigureUpdateTests extends AbstractSiriusSwtBotGefTestCase {
 
-    private static final RGB[] BASIC_COLORS = { new RGB(0, 0, 0), new RGB(69, 69, 69), new RGB(209, 209, 209), new RGB(255, 255, 255), new RGB(239, 41, 41), new RGB(252, 175, 62),
-        new RGB(252, 233, 79), new RGB(138, 226, 52), new RGB(114, 159, 207), new RGB(173, 127, 168) };
+    private static final RGB[] BASIC_COLORS = { new RGB(0, 0, 0), new RGB(209, 209, 209), new RGB(255, 255, 255), new RGB(239, 41, 41), new RGB(252, 175, 62), new RGB(252, 233, 79),
+            new RGB(138, 226, 52), new RGB(102, 204, 255), new RGB(0, 51, 128), new RGB(128, 0, 128)};
 
     private static final String MODEL = "My.ecore";
 

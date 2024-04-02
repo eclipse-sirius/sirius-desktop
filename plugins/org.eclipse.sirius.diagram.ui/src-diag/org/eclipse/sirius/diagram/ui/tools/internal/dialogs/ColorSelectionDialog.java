@@ -441,15 +441,6 @@ public class ColorSelectionDialog extends Dialog {
                 }
                 return result;
             }
-            
-            @Override
-            protected void refreshAllPalettes() {
-                ColorPaletteComposite colorPaletteComposite = getDisplayedColorsWrapper().getColorPaletteComposite();
-                if (colorPaletteComposite != null) {
-                    colorPaletteComposite.refreshColorButtons();
-                }
-                super.refreshAllPalettes();
-            }
         };
         return allColorsPalette;
     }
