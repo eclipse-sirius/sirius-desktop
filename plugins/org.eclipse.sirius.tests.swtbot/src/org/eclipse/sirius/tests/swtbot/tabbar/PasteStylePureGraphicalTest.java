@@ -30,6 +30,7 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContain
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeNameEditPart;
@@ -294,9 +295,11 @@ public class PasteStylePureGraphicalTest extends AbstractSiriusSwtBotGefTestCase
 
     private static final RGBValues LIGHT_GREY = RGBValues.create(209, 209, 209);
 
-    private static final RGBValues RED = RGBValues.create(227, 164, 156);
+    private static final RGBValues RED = RGBValues.create(239, 41, 41);
 
-    private static final RGBValues BLUE = RGBValues.create(194, 239, 255);
+    private static final RGBValues RED_LEGACY = RGBValues.create(227, 164, 156);
+
+    private static final RGBValues BLUE = RGBValues.create(114, 159, 207);
 
     private static final RGBValues YELLOW = RGBValues.create(255, 245, 181);
 
@@ -444,7 +447,7 @@ public class PasteStylePureGraphicalTest extends AbstractSiriusSwtBotGefTestCase
     public void testCopyBoldLabelToNodeLabel() {
         openDiagramComplex();
 
-        assertNodeStyle("NewEClass5", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, true, false, false, BLACK), RED));
+        assertNodeStyle("NewEClass5", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, true, false, false, BLACK), RED_LEGACY));
         assertNodeStyle("NewEClass2", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(false, true, false, false, BLACK), WHITE));
 
         performCopy("NewEClass5", DNodeNameEditPart.class);
@@ -452,14 +455,14 @@ public class PasteStylePureGraphicalTest extends AbstractSiriusSwtBotGefTestCase
         performPaste("NewEClass2", DNodeNameEditPart.class);
         SWTBotUtils.waitAllUiEvents();
 
-        assertNodeStyle("NewEClass5", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, true, false, false, BLACK), RED));
-        assertNodeStyle("NewEClass2", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, true, false, false, BLACK), RED));
+        assertNodeStyle("NewEClass5", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, true, false, false, BLACK), RED_LEGACY));
+        assertNodeStyle("NewEClass2", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, true, false, false, BLACK), RED_LEGACY));
     }
 
     public void testCopyBoldNodeLabelToNode() {
         openDiagramComplex();
 
-        assertNodeStyle("NewEClass5", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, true, false, false, BLACK), RED));
+        assertNodeStyle("NewEClass5", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, true, false, false, BLACK), RED_LEGACY));
         assertNodeStyle("NewEClass2", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(false, true, false, false, BLACK), WHITE));
 
         performCopy("NewEClass5", DNodeNameEditPart.class);
@@ -467,14 +470,14 @@ public class PasteStylePureGraphicalTest extends AbstractSiriusSwtBotGefTestCase
         performPaste("NewEClass2", DNodeEditPart.class);
         SWTBotUtils.waitAllUiEvents();
 
-        assertNodeStyle("NewEClass5", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, true, false, false, BLACK), RED));
-        assertNodeStyle("NewEClass2", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, true, false, false, BLACK), RED));
+        assertNodeStyle("NewEClass5", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, true, false, false, BLACK), RED_LEGACY));
+        assertNodeStyle("NewEClass2", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, true, false, false, BLACK), RED_LEGACY));
     }
 
     public void testCopyBoldNodeToNodeLabel() {
         openDiagramComplex();
 
-        assertNodeStyle("NewEClass5", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, true, false, false, BLACK), RED));
+        assertNodeStyle("NewEClass5", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, true, false, false, BLACK), RED_LEGACY));
         assertNodeStyle("NewEClass2", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(false, true, false, false, BLACK), WHITE));
 
         performCopy("NewEClass5", DNodeEditPart.class);
@@ -482,14 +485,14 @@ public class PasteStylePureGraphicalTest extends AbstractSiriusSwtBotGefTestCase
         performPaste("NewEClass2", DNodeNameEditPart.class);
         SWTBotUtils.waitAllUiEvents();
 
-        assertNodeStyle("NewEClass5", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, true, false, false, BLACK), RED));
-        assertNodeStyle("NewEClass2", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, true, false, false, BLACK), RED));
+        assertNodeStyle("NewEClass5", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, true, false, false, BLACK), RED_LEGACY));
+        assertNodeStyle("NewEClass2", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, true, false, false, BLACK), RED_LEGACY));
     }
 
     public void testCopyBoldNodeToNode() {
         openDiagramComplex();
 
-        assertNodeStyle("NewEClass5", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, true, false, false, BLACK), RED));
+        assertNodeStyle("NewEClass5", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, true, false, false, BLACK), RED_LEGACY));
         assertNodeStyle("NewEClass2", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(false, true, false, false, BLACK), WHITE));
 
         performCopy("NewEClass5", DNodeEditPart.class);
@@ -497,8 +500,8 @@ public class PasteStylePureGraphicalTest extends AbstractSiriusSwtBotGefTestCase
         performPaste("NewEClass2", DNodeEditPart.class);
         SWTBotUtils.waitAllUiEvents();
 
-        assertNodeStyle("NewEClass5", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, true, false, false, BLACK), RED));
-        assertNodeStyle("NewEClass2", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, true, false, false, BLACK), RED));
+        assertNodeStyle("NewEClass5", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, true, false, false, BLACK), RED_LEGACY));
+        assertNodeStyle("NewEClass2", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, true, false, false, BLACK), RED_LEGACY));
     }
 
     public void testCopyDefaultNodeLabelToNodeLabel() {
@@ -561,6 +564,7 @@ public class PasteStylePureGraphicalTest extends AbstractSiriusSwtBotGefTestCase
         assertNodeStyle("NewEClass2", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(false, true, false, false, BLACK), GREY));
     }
 
+    // Note: Copy Paste Style from edge to node or from edge to container doen't work for the moment
     public void testCopyDefaultEdgeToNode() {
         openDiagramComplex();
 
@@ -575,9 +579,10 @@ public class PasteStylePureGraphicalTest extends AbstractSiriusSwtBotGefTestCase
 
         assertEdgeStyle("Reference2- CENTER", DEdgeEditPart.class, new ExpectedEdgeStyle(new ExpectedFontStyle(false, false, false, false, BLACK),
                 new ExpectedFontStyle(false, false, true, false, DARK_ORANGE), new ExpectedFontStyle(true, true, true, true, LIGHT_BLUE), new ExpectedFontStyle(false, false, false, false, BLACK)));
-        assertNodeStyle("NewEClass2", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(false, false, false, false, BLACK), WHITE));
+        assertNodeStyle("NewEClass2", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(false, true, false, false, BLACK), WHITE));
     }
 
+    // Note: Copy Paste Style from edge to node or from edge to container doen't work for the moment
     public void testCopyDefaultLabelEdgeToNode() {
         openDiagramComplex();
 
@@ -592,9 +597,10 @@ public class PasteStylePureGraphicalTest extends AbstractSiriusSwtBotGefTestCase
 
         assertEdgeStyle("Reference2- CENTER", DEdgeEditPart.class, new ExpectedEdgeStyle(new ExpectedFontStyle(false, false, false, false, BLACK),
                 new ExpectedFontStyle(false, false, true, false, DARK_ORANGE), new ExpectedFontStyle(true, true, true, true, LIGHT_BLUE), new ExpectedFontStyle(false, false, false, false, BLACK)));
-        assertNodeStyle("NewEClass2", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(false, false, false, false, BLACK), WHITE));
+        assertNodeStyle("NewEClass2", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(false, true, false, false, BLACK), WHITE));
     }
 
+    // Note: Copy Paste Style from edge to node or from edge to container doen't work for the moment
     public void testCopyDefaultLabelEdgeToLabelNode() {
         openDiagramComplex();
 
@@ -609,9 +615,10 @@ public class PasteStylePureGraphicalTest extends AbstractSiriusSwtBotGefTestCase
 
         assertEdgeStyle("Reference2- CENTER", DEdgeEditPart.class, new ExpectedEdgeStyle(new ExpectedFontStyle(false, false, false, false, BLACK),
                 new ExpectedFontStyle(false, false, true, false, DARK_ORANGE), new ExpectedFontStyle(true, true, true, true, LIGHT_BLUE), new ExpectedFontStyle(false, false, false, false, BLACK)));
-        assertNodeStyle("NewEClass2", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(false, false, false, false, BLACK), WHITE));
+        assertNodeStyle("NewEClass2", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(false, true, false, false, BLACK), WHITE));
     }
 
+    // Note: Copy Paste Style from edge to node or from edge to container doen't work for the moment
     public void testCopyDefaultEdgeToLabelNode() {
         openDiagramComplex();
 
@@ -626,9 +633,10 @@ public class PasteStylePureGraphicalTest extends AbstractSiriusSwtBotGefTestCase
 
         assertEdgeStyle("Reference2- CENTER", DEdgeEditPart.class, new ExpectedEdgeStyle(new ExpectedFontStyle(false, false, false, false, BLACK),
                 new ExpectedFontStyle(false, false, true, false, DARK_ORANGE), new ExpectedFontStyle(true, true, true, true, LIGHT_BLUE), new ExpectedFontStyle(false, false, false, false, BLACK)));
-        assertNodeStyle("NewEClass2", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(false, false, false, false, BLACK), WHITE));
+        assertNodeStyle("NewEClass2", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(false, true, false, false, BLACK), WHITE));
     }
 
+    // Note: Copy Paste Style from edge to node or from edge to container doen't work for the moment
     public void testCopyBoldEdgeToNode() {
         openDiagramComplex();
 
@@ -643,10 +651,11 @@ public class PasteStylePureGraphicalTest extends AbstractSiriusSwtBotGefTestCase
 
         assertEdgeStyle("Reference1- CENTER", DEdgeEditPart.class, new ExpectedEdgeStyle(new ExpectedFontStyle(true, false, false, false, BLACK),
                 new ExpectedFontStyle(true, false, false, false, DARK_ORANGE), new ExpectedFontStyle(true, false, false, false, LIGHT_BLUE), new ExpectedFontStyle(true, false, false, false, BLACK)));
-        assertNodeStyle("NewEClass2", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, false, false, false, BLACK), WHITE));
+        assertNodeStyle("NewEClass2", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(false, true, false, false, BLACK), WHITE));
     }
 
 
+    // Note: Copy Paste Style from edge to node or from edge to container doen't work for the moment
     public void testCopyBoldLabelEdgeToNode() {
         openDiagramComplex();
 
@@ -661,9 +670,10 @@ public class PasteStylePureGraphicalTest extends AbstractSiriusSwtBotGefTestCase
 
         assertEdgeStyle("Reference1- CENTER", DEdgeEditPart.class, new ExpectedEdgeStyle(new ExpectedFontStyle(true, false, false, false, BLACK),
                 new ExpectedFontStyle(true, false, false, false, DARK_ORANGE), new ExpectedFontStyle(true, false, false, false, LIGHT_BLUE), new ExpectedFontStyle(true, false, false, false, BLACK)));
-        assertNodeStyle("NewEClass2", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, false, false, false, BLACK), WHITE));
+        assertNodeStyle("NewEClass2", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(false, true, false, false, BLACK), WHITE));
     }
 
+    // Note: Copy Paste Style from edge to node or from edge to container doen't work for the moment
     public void testCopyBoldEdgeToLabelNode() {
         openDiagramComplex();
 
@@ -678,9 +688,10 @@ public class PasteStylePureGraphicalTest extends AbstractSiriusSwtBotGefTestCase
 
         assertEdgeStyle("Reference1- CENTER", DEdgeEditPart.class, new ExpectedEdgeStyle(new ExpectedFontStyle(true, false, false, false, BLACK),
                 new ExpectedFontStyle(true, false, false, false, DARK_ORANGE), new ExpectedFontStyle(true, false, false, false, LIGHT_BLUE), new ExpectedFontStyle(true, false, false, false, BLACK)));
-        assertNodeStyle("NewEClass2", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, false, false, false, BLACK), WHITE));
+        assertNodeStyle("NewEClass2", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(false, true, false, false, BLACK), WHITE));
     }
 
+    // Note: Copy Paste Style from edge to node or from edge to container doen't work for the moment
     public void testCopyBoldLabelEdgeToLabelNode() {
         openDiagramComplex();
 
@@ -695,7 +706,7 @@ public class PasteStylePureGraphicalTest extends AbstractSiriusSwtBotGefTestCase
 
         assertEdgeStyle("Reference1- CENTER", DEdgeEditPart.class, new ExpectedEdgeStyle(new ExpectedFontStyle(true, false, false, false, BLACK),
                 new ExpectedFontStyle(true, false, false, false, DARK_ORANGE), new ExpectedFontStyle(true, false, false, false, LIGHT_BLUE), new ExpectedFontStyle(true, false, false, false, BLACK)));
-        assertNodeStyle("NewEClass2", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, false, false, false, BLACK), WHITE));
+        assertNodeStyle("NewEClass2", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(false, true, false, false, BLACK), WHITE));
     }
 
     private void testCopyDefaultStyleRefresh(String sourceContainer, String targetContainer, ExpectedContainerStyle sourceStyle, ExpectedContainerStyle targetStyle) {
@@ -763,5 +774,127 @@ public class PasteStylePureGraphicalTest extends AbstractSiriusSwtBotGefTestCase
     public void testCopyGreyBGToBoldAndRefresh() {
         var boldItalic = new ExpectedFontStyle(true, true, false, false, BLACK);
         testCopyDefaultStyleRefresh("NewDataType3", "NewEnum2", new ExpectedContainerStyle(DEFAULT_FONT, LIGHT_GREY, LIGHT_GREY), new ExpectedContainerStyle(boldItalic, YELLOW, WHITE));
+    }
+
+    // Node -> Container
+    public void testCopyDefaultNodeToDefaultContainer() {
+        openDiagramComplex();
+
+        assertNodeStyle("NewEClass6", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(false, true, false, false, BLACK), GREY));
+        assertContainerStyle("newPackage2", DNodeContainerEditPart.class, new ExpectedContainerStyle(new ExpectedFontStyle(false, false, true, false, BLACK), BLUE, LIGHT_GREY));
+
+        performCopy("NewEClass6", DNodeEditPart.class);
+        SWTBotUtils.waitAllUiEvents();
+        performPaste("newPackage2", DNodeContainerEditPart.class);
+        SWTBotUtils.waitAllUiEvents();
+
+        assertNodeStyle("NewEClass6", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(false, true, false, false, BLACK), GREY));
+        assertContainerStyle("newPackage2", DNodeContainerEditPart.class, new ExpectedContainerStyle(new ExpectedFontStyle(false, true, false, false, BLACK), GREY, LIGHT_GREY));
+    }
+
+    public void testCopyStylishNodeToDefaultContainer() {
+        openDiagramComplex();
+
+        assertNodeStyle("NewEClass3", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, true, false, false, BLACK), GREY));
+        assertContainerStyle("newPackage2", DNodeContainerEditPart.class, new ExpectedContainerStyle(new ExpectedFontStyle(false, false, true, false, BLACK), BLUE, LIGHT_GREY));
+
+        performCopy("NewEClass3", DNodeEditPart.class);
+        SWTBotUtils.waitAllUiEvents();
+        performPaste("newPackage2", DNodeContainerEditPart.class);
+        SWTBotUtils.waitAllUiEvents();
+
+        assertNodeStyle("NewEClass3", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, true, false, false, BLACK), GREY));
+        assertContainerStyle("newPackage2", DNodeContainerEditPart.class, new ExpectedContainerStyle(new ExpectedFontStyle(true, true, false, false, BLACK), GREY, LIGHT_GREY));
+    }
+
+    public void testCopyStylishNodeToStylishContainer() {
+        openDiagramComplex();
+
+        assertNodeStyle("NewEClass3", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, true, false, false, BLACK), GREY));
+        assertContainerStyle("newPackage1", DNodeContainerEditPart.class, new ExpectedContainerStyle(new ExpectedFontStyle(true, false, true, false, RED), BLUE, LIGHT_GREY));
+
+        performCopy("NewEClass3", DNodeEditPart.class);
+        SWTBotUtils.waitAllUiEvents();
+        performPaste("newPackage1", DNodeContainerEditPart.class);
+        SWTBotUtils.waitAllUiEvents();
+
+        assertNodeStyle("NewEClass3", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, true, false, false, BLACK), GREY));
+        assertContainerStyle("newPackage1", DNodeContainerEditPart.class, new ExpectedContainerStyle(new ExpectedFontStyle(true, true, false, false, BLACK), GREY, LIGHT_GREY));
+    }
+
+    public void testCopyDefaultNodeToStylishContainer() {
+        openDiagramComplex();
+
+        assertNodeStyle("NewEClass6", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(false, true, false, false, BLACK), GREY));
+        assertContainerStyle("newPackage1", DNodeContainerEditPart.class, new ExpectedContainerStyle(new ExpectedFontStyle(true, false, true, false, RED), BLUE, LIGHT_GREY));
+
+        performCopy("NewEClass6", DNodeEditPart.class);
+        SWTBotUtils.waitAllUiEvents();
+        performPaste("newPackage1", DNodeContainerEditPart.class);
+        SWTBotUtils.waitAllUiEvents();
+
+        assertNodeStyle("NewEClass6", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(false, true, false, false, BLACK), GREY));
+        assertContainerStyle("newPackage1", DNodeContainerEditPart.class, new ExpectedContainerStyle(new ExpectedFontStyle(false, true, false, false, BLACK), GREY, LIGHT_GREY));
+    }
+
+    // Container -> Node
+    public void testCopyDefaultContainerToDefaultNode() {
+        openDiagramComplex();
+
+        assertContainerStyle("newPackage2", DNodeContainerEditPart.class, new ExpectedContainerStyle(new ExpectedFontStyle(false, false, true, false, BLACK), BLUE, LIGHT_GREY));
+        assertNodeStyle("NewEClass6", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(false, true, false, false, BLACK), GREY));
+
+        performCopy("newPackage2", DNodeContainerEditPart.class);
+        SWTBotUtils.waitAllUiEvents();
+        performPaste("NewEClass6", DNodeEditPart.class);
+        SWTBotUtils.waitAllUiEvents();
+
+        assertContainerStyle("newPackage2", DNodeContainerEditPart.class, new ExpectedContainerStyle(new ExpectedFontStyle(false, false, true, false, BLACK), BLUE, LIGHT_GREY));
+        assertNodeStyle("NewEClass6", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(false, false, true, false, BLACK), BLUE));
+    }
+
+    public void testCopyDefaultContainerToStylishNode() {
+        openDiagramComplex();
+
+        assertContainerStyle("newPackage2", DNodeContainerEditPart.class, new ExpectedContainerStyle(new ExpectedFontStyle(false, false, true, false, BLACK), BLUE, LIGHT_GREY));
+        assertNodeStyle("NewEClass3", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, true, false, false, BLACK), GREY));
+
+        performCopy("newPackage2", DNodeContainerEditPart.class);
+        SWTBotUtils.waitAllUiEvents();
+        performPaste("NewEClass3", DNodeEditPart.class);
+        SWTBotUtils.waitAllUiEvents();
+
+        assertContainerStyle("newPackage2", DNodeContainerEditPart.class, new ExpectedContainerStyle(new ExpectedFontStyle(false, false, true, false, BLACK), BLUE, LIGHT_GREY));
+        assertNodeStyle("NewEClass3", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(false, false, true, false, BLACK), BLUE));
+    }
+
+    public void testCopyStylishContainerToStylishNode() {
+        openDiagramComplex();
+
+        assertContainerStyle("newPackage1", DNodeContainerEditPart.class, new ExpectedContainerStyle(new ExpectedFontStyle(true, false, true, false, RED), BLUE, LIGHT_GREY));
+        assertNodeStyle("NewEClass3", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, true, false, false, BLACK), GREY));
+
+        performCopy("newPackage1", DNodeContainerEditPart.class);
+        SWTBotUtils.waitAllUiEvents();
+        performPaste("NewEClass3", DNodeEditPart.class);
+        SWTBotUtils.waitAllUiEvents();
+
+        assertContainerStyle("newPackage1", DNodeContainerEditPart.class, new ExpectedContainerStyle(new ExpectedFontStyle(true, false, true, false, RED), BLUE, LIGHT_GREY));
+        assertNodeStyle("NewEClass3", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, false, true, false, RED), BLUE));
+    }
+
+    public void testCopyStylishContainerToDefaultNode() {
+        openDiagramComplex();
+
+        assertContainerStyle("newPackage1", DNodeContainerEditPart.class, new ExpectedContainerStyle(new ExpectedFontStyle(true, false, true, false, RED), BLUE, LIGHT_GREY));
+        assertNodeStyle("NewEClass6", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(false, true, false, false, BLACK), GREY));
+
+        performCopy("newPackage1", DNodeContainerEditPart.class);
+        SWTBotUtils.waitAllUiEvents();
+        performPaste("NewEClass6", DNodeEditPart.class);
+        SWTBotUtils.waitAllUiEvents();
+
+        assertContainerStyle("newPackage1", DNodeContainerEditPart.class, new ExpectedContainerStyle(new ExpectedFontStyle(true, false, true, false, RED), BLUE, LIGHT_GREY));
+        assertNodeStyle("NewEClass6", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, false, true, false, RED), BLUE));
     }
 }

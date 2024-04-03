@@ -31,6 +31,8 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.format.SiriusStyleClipboard;
@@ -233,12 +235,15 @@ public class PasteStylePureGraphicalAction extends Action implements IDisposable
 
             for (IGraphicalEditPart targetEditPart : targetEditParts) {
                 if (targetEditPart.resolveSemanticElement() instanceof DDiagramElement targetElement && canEditElement(targetElement)) {
-                    // create command
-                    clipboard.getGmfView().ifPresent(gmfView -> {
-                        command.add(PasteStyleCommandProvider.createGMFCommand(domain, targetEditPart, gmfView));
-                    });
                     clipboard.getSiriusStyle().ifPresent(siriusStyle -> {
-                        command.add(PasteStyleCommandProvider.createSiriusCommand(domain, targetElement, siriusStyle));
+                        clipboard.getGmfView().ifPresent(gmfView -> {
+                            // exclude copy-paste from Edge to Node/Container
+                            if (!(siriusStyle instanceof EdgeStyle) || targetElement instanceof DEdge) {
+                                // create command
+                                command.add(PasteStyleCommandProvider.createGMFCommand(domain, targetEditPart, gmfView));
+                                command.add(PasteStyleCommandProvider.createSiriusCommand(domain, targetElement, siriusStyle));
+                            }
+                        });
                     });
                 }
             }

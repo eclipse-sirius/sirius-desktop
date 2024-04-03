@@ -63,6 +63,7 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
+import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.formatdata.AbstractFormatData;
@@ -788,15 +789,17 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
     @SuppressWarnings("unchecked")
     protected void applyGMFStyle(View newView, AbstractFormatData formatData) {
         if (newView != null && formatData.getGmfView() != null) {
-            @SuppressWarnings("rawtypes")
-            List excludedStyles = new ArrayList<>();
-            if (newView instanceof Edge) {
-                // The style of RoutingStyle class is considered as format
-                // properties. So they have already been pasted during paste
-                // format.
-                excludedStyles.add(NotationPackage.eINSTANCE.getRoutingStyle());
+            if (!(formatData.getSiriusStyle() instanceof EdgeStyle) || newView.getElement() instanceof DEdge) {
+                @SuppressWarnings("rawtypes")
+                List excludedStyles = new ArrayList<>();
+                if (newView instanceof Edge) {
+                    // The style of RoutingStyle class is considered as format
+                    // properties. So they have already been pasted during paste
+                    // format.
+                    excludedStyles.add(NotationPackage.eINSTANCE.getRoutingStyle());
+                }
+                new ViewRefactorHelper().copyViewAppearance(formatData.getGmfView(), newView, excludedStyles);
             }
-            new ViewRefactorHelper().copyViewAppearance(formatData.getGmfView(), newView, excludedStyles);
         }
     }
 

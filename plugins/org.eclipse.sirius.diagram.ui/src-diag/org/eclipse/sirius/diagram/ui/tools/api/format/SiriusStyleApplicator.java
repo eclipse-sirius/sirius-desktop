@@ -12,6 +12,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.api.format;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.diagram.ContainerStyle;
@@ -22,6 +27,7 @@ import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.tools.internal.SiriusCopierHelper;
+import org.eclipse.sirius.viewpoint.Customizable;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
@@ -69,7 +75,66 @@ public interface SiriusStyleApplicator {
         } else if (semanticDecorator instanceof DEdge && copyOfSiriusStyle instanceof EdgeStyle) {
             computeCustomFeatures(((DEdge) semanticDecorator).getOwnedStyle(), copyOfSiriusStyle);
             ((DEdge) semanticDecorator).setOwnedStyle((EdgeStyle) copyOfSiriusStyle);
+        } else {
+            // try to apply style if the Diagram elements are different
+            applySiriusStyleAtBest(semanticDecorator, siriusStyle);
         }
+    }
+
+    private void applySiriusStyleAtBest(DSemanticDecorator targetSemanticDecorator, Style siriusSourceStyle) {
+        if (!(siriusSourceStyle instanceof EdgeStyle)) {
+            for (Customizable targetStyle : getStyle(targetSemanticDecorator)) {
+                addNewValueAndSetCustomFeaturesAtBest(siriusSourceStyle, targetStyle);
+            }
+        }
+    }
+
+    /**
+     * Check for each attribute of targetStyleToChange if it is the same or equivalent in sourceStyle.</br>
+     * Then it changes the value and add a custom feature.
+     * 
+     * @param sourceStyle
+     *            The style to compare with
+     * @param targetStyleToChange
+     *            The style to update.
+     */
+    private void addNewValueAndSetCustomFeaturesAtBest(Customizable sourceStyle, Customizable targetStyleToChange) {
+        final EAttribute[] exceptionAttributes = { //
+                ViewpointPackage.Literals.IDENTIFIED_ELEMENT__UID, //
+                ViewpointPackage.Literals.CUSTOMIZABLE__CUSTOM_FEATURES, //
+                ViewpointPackage.Literals.BASIC_LABEL_STYLE__SHOW_ICON, //
+                ViewpointPackage.Literals.BASIC_LABEL_STYLE__ICON_PATH, //
+        };
+        for (EAttribute targetStyleAttribute : targetStyleToChange.eClass().getEAllAttributes()) {
+            if (!Arrays.asList(exceptionAttributes).contains(targetStyleAttribute)) {
+                EAttribute sourceStyleAttribute = getCorrespondingEAttribute(targetStyleAttribute, sourceStyle);
+                if (sourceStyleAttribute != null) {
+                    if (!targetStyleToChange.eGet(targetStyleAttribute).equals(sourceStyle.eGet(sourceStyleAttribute))) {
+                        targetStyleToChange.getCustomFeatures().add(targetStyleAttribute.getName());
+                        targetStyleToChange.eSet(targetStyleAttribute, sourceStyle.eGet(sourceStyleAttribute));
+                    }
+                }
+            }
+        }
+    }
+
+    private List<Customizable> getStyle(DSemanticDecorator semanticDecorator) {
+        List<Customizable> styles = new ArrayList<>();
+        if (semanticDecorator instanceof DNode node) {
+            styles.add(node.getOwnedStyle());
+        } else if (semanticDecorator instanceof DNodeListElement listElement) {
+            styles.add(listElement.getOwnedStyle());
+        } else if (semanticDecorator instanceof DDiagramElementContainer container) {
+            styles.add(container.getOwnedStyle());
+        } else if (semanticDecorator instanceof DEdge edge) {
+            Style ownedStyle = edge.getOwnedStyle();
+            if (ownedStyle instanceof EdgeStyle edgeStyle) {
+                Arrays.asList(edgeStyle.getCenterLabelStyle(), edgeStyle.getBeginLabelStyle(), edgeStyle.getEndLabelStyle()).stream()//
+                        .filter(Objects::nonNull) //
+                        .forEach(styles::add); //
+            }
+        }
+        return styles;
     }
 
     /**
@@ -81,9 +146,13 @@ public interface SiriusStyleApplicator {
      * @param newStyle
      *            The new style in which to add custom features.
      */
-    default void computeCustomFeatures(Style oldStyle, Style newStyle) {
+    private void computeCustomFeatures(Style oldStyle, Style newStyle) {
+        final EAttribute[] exceptionAttributes = { //
+                ViewpointPackage.Literals.IDENTIFIED_ELEMENT__UID, //
+                ViewpointPackage.Literals.CUSTOMIZABLE__CUSTOM_FEATURES, //
+        };
         for (EAttribute attribute : newStyle.eClass().getEAllAttributes()) {
-            if (!ViewpointPackage.Literals.CUSTOMIZABLE__CUSTOM_FEATURES.equals(attribute)) {
+            if (!Arrays.asList(exceptionAttributes).contains(attribute)) {
                 EAttribute attributeOfOldStyle = getCorrespondingEAttribute(attribute, oldStyle);
                 if (attributeOfOldStyle != null) {
                     if (newStyle.eIsSet(attribute)) {
@@ -98,7 +167,7 @@ public interface SiriusStyleApplicator {
         }
     }
 
-    private EAttribute getCorrespondingEAttribute(EAttribute attribute, Style style) {
+    private EAttribute getCorrespondingEAttribute(EAttribute attribute, Customizable style) {
         EAttribute result = null;
         if (style.eClass().getFeatureID(attribute) != -1) {
             result = attribute;
