@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.api.profiler;
 
-import com.google.common.base.Objects;
+import java.util.Objects;
 
 /**
  * Represents a task.
@@ -142,10 +142,9 @@ public class ProfilerTask {
         boolean result = false;
         if (this == obj) {
             result = true;
-        } else if (obj instanceof ProfilerTask) {
-            ProfilerTask that = (ProfilerTask) obj;
-            result = Objects.equal(this.name, that.name) && Objects.equal(this.category, that.category) && Objects.equal(this.categoryImage, that.categoryImage)
-                    && Objects.equal(this.taskImage, that.taskImage);
+        } else if (obj instanceof ProfilerTask that) {
+            result = Objects.equals(this.name, that.name) && Objects.equals(this.category, that.category) && Objects.equals(this.categoryImage, that.categoryImage)
+                    && Objects.equals(this.taskImage, that.taskImage);
         }
         return result;
     }

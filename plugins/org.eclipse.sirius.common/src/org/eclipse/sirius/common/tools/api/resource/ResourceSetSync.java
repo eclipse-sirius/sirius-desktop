@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -49,10 +48,6 @@ import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.query.NotificationQuery;
 import org.eclipse.sirius.common.tools.internal.resource.WorkspaceBackend;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
 
 /**
  * A new implementation of a common synchronizer for the EMF Resource with
@@ -148,19 +143,16 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
         fileModificationValidators = FileModificationValidatorProvider.INSTANCE.getFileModificationValidator();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void resourceSetChanged(final ResourceSetChangeEvent event) {
         Collection<ResourceStatusChange> changes = new ArrayList<>();
-        for (Notification notif : Iterables.filter(event.getNotifications(), Notification.class)) {
+        for (Notification notif : event.getNotifications()) {
             if (!isCustom(notif)) {
                 notifyChanged(notif, changes);
             }
             if (notif.getNotifier() instanceof ResourceSet) {
-                if (notif.getEventType() == Notification.ADD && notif.getNewValue() instanceof Resource) {
-                    newResourceOnTheResourceSet((Resource) notif.getNewValue(), changes);
+                if (notif.getEventType() == Notification.ADD && notif.getNewValue() instanceof Resource resource) {
+                    newResourceOnTheResourceSet(resource, changes);
                 } else if (notif.getEventType() == Notification.REMOVE && notif.getOldValue() instanceof Resource) {
                     removeResource((Resource) notif.getNewValue());
                 }
@@ -211,13 +203,13 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
     }
 
     private static ResourceSetSync getResourceSetSync(final ResourceSet resourceSet) {
-        if (resourceSet != null) {
-            Iterator<MarkerAdapter> it = Iterators.filter(resourceSet.eAdapters().iterator(), MarkerAdapter.class);
-            if (it.hasNext()) {
-                return it.next().getSync();
-            }
-        }
-        return null;
+        return Optional.ofNullable(resourceSet).stream()
+                .flatMap(rs -> rs.eAdapters().stream())
+                .filter(MarkerAdapter.class::isInstance)
+                .map(MarkerAdapter.class::cast)
+                .findFirst()
+                .map(MarkerAdapter::getSync)
+                .orElse(null);
     }
 
     /**
@@ -288,9 +280,8 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
         final ResourceSetSync sync = ResourceSetSync.getResourceSetSync(domain.getResourceSet());
         if (sync != null) {
             sync.uninstall();
-            for (MarkerAdapter adapter : Lists.newArrayList(Iterables.filter(domain.getResourceSet().eAdapters(), MarkerAdapter.class))) {
-                domain.getResourceSet().eAdapters().remove(adapter);
-            }
+            List<MarkerAdapter> markerAdapters = domain.getResourceSet().eAdapters().stream().filter(MarkerAdapter.class::isInstance).map(MarkerAdapter.class::cast).toList();
+            domain.getResourceSet().eAdapters().removeAll(markerAdapters);
             domain.removeResourceSetListener(sync);
         }
     }
@@ -341,13 +332,12 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
      */
     public void notifyChanged(final Notification notification, Collection<ResourceStatusChange> changes) {
         final Object notifier = notification.getNotifier();
-        if (notifier instanceof EObject && !notification.isTouch() && !new NotificationQuery(notification).isTransientNotification()) {
-            final Resource resource = ((EObject) notifier).eResource();
+        if (notifier instanceof EObject eObject && !notification.isTouch() && !new NotificationQuery(notification).isTransientNotification()) {
+            final Resource resource = eObject.eResource();
             if (resource != null) {
                 handleResourceChange(resource, changes);
             }
-        } else if (notifier instanceof Resource) {
-            final Resource res = (Resource) notifier;
+        } else if (notifier instanceof Resource res) {
             if (notification.getFeatureID(null) == Resource.RESOURCE__IS_MODIFIED && !res.isModified()) {
                 resourceNewStatus(res, ResourceStatus.SYNC, changes);
             } else if (res.isModified() && notification.getFeatureID(null) == Resource.RESOURCE__CONTENTS) {

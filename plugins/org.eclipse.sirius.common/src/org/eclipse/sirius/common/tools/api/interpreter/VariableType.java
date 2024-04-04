@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2022 Obeo.
+ * Copyright (c) 2015, 2024 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.api.interpreter;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -21,11 +23,6 @@ import java.util.Set;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
-
-import com.google.common.base.Joiner;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * A class representing the type of a variable in a Viewpoint Specification
@@ -43,7 +40,7 @@ public final class VariableType {
      */
     public static final VariableType ANY_EOBJECT = fromString(TypeName.EOBJECT_TYPENAME.getCompleteName());
 
-    private List<TypeName> types = Lists.newArrayListWithExpectedSize(2);
+    private List<TypeName> types = new ArrayList<>();
 
     private VariableType() {
 
@@ -192,7 +189,8 @@ public final class VariableType {
             while (typeNameIt.hasNext() && commonSuperTypes.size() > 0) {
                 TypeName type = typeNameIt.next();
                 Set<EClass> nextTypeSuperTypes = getAllSuperTypes(type, availableEPackages);
-                commonSuperTypes = Sets.intersection(commonSuperTypes, nextTypeSuperTypes);
+                commonSuperTypes = new HashSet<>(commonSuperTypes);
+                commonSuperTypes.retainAll(nextTypeSuperTypes);
             }
 
             if (commonSuperTypes.size() > 0) {
@@ -207,11 +205,11 @@ public final class VariableType {
 
     private Set<EClass> getAllSuperTypes(TypeName type, Collection<EPackage> collection) {
         Set<EClass> allSuperTypes = new LinkedHashSet<>();
-        Iterator<EClass> it = Iterators.filter(type.search(collection).iterator(), EClass.class);
-        while (it.hasNext()) {
-            EClass curEClass = it.next();
-            allSuperTypes.add(curEClass);
-            allSuperTypes.addAll(curEClass.getEAllSuperTypes());
+        for (EClassifier eClassifier : type.search(collection)) {
+            if (eClassifier instanceof EClass curEClass) {
+                allSuperTypes.add(curEClass);
+                allSuperTypes.addAll(curEClass.getEAllSuperTypes());
+            }
         }
         return allSuperTypes;
     }
@@ -223,7 +221,7 @@ public final class VariableType {
      * @return true if the type has an actual definition.
      */
     public boolean hasDefinition() {
-        return types.size() > 0;
+        return !types.isEmpty();
     }
 
     /**
@@ -237,6 +235,6 @@ public final class VariableType {
 
     @Override
     public String toString() {
-        return "[" + Joiner.on(',').join(this.types) + "]"; //$NON-NLS-1$ //$NON-NLS-2$
+        return "[" + String.join(",", this.types.stream().map(TypeName::toString).toList()) + "]"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 }
