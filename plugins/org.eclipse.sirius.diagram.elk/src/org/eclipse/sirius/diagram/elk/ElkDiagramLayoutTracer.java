@@ -25,6 +25,8 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.variables.VariablesPlugin;
 import org.eclipse.elk.core.options.CoreOptions;
 import org.eclipse.elk.graph.ElkNode;
+import org.eclipse.elk.graph.properties.IProperty;
+import org.eclipse.elk.graph.util.GraphIdentifierGenerator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -65,6 +67,8 @@ public class ElkDiagramLayoutTracer {
     private static String JAVA_TEMP_DIR_PROPERTY_NAME = "java.io.tmpdir"; //$NON-NLS-1$
 
     private static String XMI_EXTENSION = ".elkg"; //$NON-NLS-1$
+
+    private static String TEXT_EXTENSION = ".elkt"; //$NON-NLS-1$
 
     private static ILog LOGGER = Platform.getLog(ElkDiagramLayoutTracer.class);
 
@@ -150,7 +154,26 @@ public class ElkDiagramLayoutTracer {
     }
 
     /**
-     * Exports the given layout graph in a file. The file will be saved in the provided directory.
+     * Exports the given layout graph in a file using ELK text format. The file will be saved in the provided directory.
+     * <p>
+     * If the folder does not exist, it may be created even if the export fails.
+     * </p>
+     * 
+     * @param graph
+     *            the layout graph to store.
+     * @param diagramName
+     *            the name if the diagram used as file name.
+     * @param suffix
+     *            a suffix that can be used in the file name.
+     */
+    public Path saveAsText(final ElkNode graph, final String diagramName, String suffix) {
+        Path file = getTargetFile(diagramName, suffix, TEXT_EXTENSION);
+
+        return saveTo(cleanContentBeforeExport(graph, TEXT_EXTENSION), file);
+    }
+
+    /**
+     * Exports the given layout graph in a file using ELK XMI format. The file will be saved in the provided directory.
      * <p>
      * If the folder does not exist, it may be created even if the export fails.
      * </p>
@@ -165,7 +188,7 @@ public class ElkDiagramLayoutTracer {
     public Path saveAsGraph(final ElkNode graph, final String diagramName, String suffix) {
         Path file = getTargetFile(diagramName, suffix, XMI_EXTENSION);
 
-        return saveTo(cleanContentBeforeExport(graph), file);
+        return saveTo(cleanContentBeforeExport(graph, XMI_EXTENSION), file);
     }
 
     /**
@@ -174,14 +197,29 @@ public class ElkDiagramLayoutTracer {
      * 
      * @param inputGraph
      *            The graph to copy and cleanup.
+     * @param extension
+     *            The extension used to store the file (some cleanups are specific to extension of file to store)
      * @return A clean graph ready to be serialized.
      */
-    private ElkNode cleanContentBeforeExport(ElkNode inputGraph) {
+    private ElkNode cleanContentBeforeExport(ElkNode inputGraph, String extension) {
         ElkNode copy = EcoreUtil.copy(inputGraph);
         // Disable the layout stored in this graph to avoid an automatic layout during the opening in "Layout Graph"
         // view of in interactive web editor (https://rtsys.informatik.uni-kiel.de/elklive/).
         copy.setProperty(CoreOptions.NO_LAYOUT, true);
+        if (TEXT_EXTENSION.equals(extension)) {
+            // Inspired from org.eclipse.elk.graph.text.ui.ConvertGraphHandler
+            // Unsupported by rendering
+            removeProperty(copy, CoreOptions.RESOLVED_ALGORITHM);
+
+            // Write missing/fix identifiers into the graph.
+            GraphIdentifierGenerator.forGraph(copy).assertValid().assertExists().assertUnique().execute();
+        }
         return copy;
+    }
+
+    private static void removeProperty(ElkNode it, IProperty<?> key) {
+        it.setProperty(key, null);
+        it.getChildren().forEach(child -> removeProperty(child, key));
     }
 
     /**

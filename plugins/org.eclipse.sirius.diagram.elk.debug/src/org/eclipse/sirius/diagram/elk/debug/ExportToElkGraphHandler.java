@@ -28,6 +28,7 @@ import org.eclipse.elk.core.options.CoreOptions;
 import org.eclipse.elk.core.options.HierarchyHandling;
 import org.eclipse.elk.core.service.LayoutConnectorsService;
 import org.eclipse.elk.core.service.LayoutMapping;
+import org.eclipse.elk.graph.ElkNode;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
@@ -73,7 +74,23 @@ import com.google.inject.Injector;
  * @author Laurent Redor
  * 
  */
-public class ExportToElkGraphHandler extends AbstractHandler {
+public abstract class ExportToElkGraphHandler extends AbstractHandler {
+    
+    /** Implementation to save as text format (elkt file). */
+    public static class AsText extends ExportToElkGraphHandler {
+        @Override
+        protected Path saveToFile(final ElkNode graph, final String diagramName) {
+            return getTracer().saveAsText(graph, diagramName, ""); //$NON-NLS-1$
+        }
+    }
+
+    /** Implementation to save as XMI format (elkg file). */
+    public static class AsXmi extends ExportToElkGraphHandler {
+        @Override
+        protected Path saveToFile(final ElkNode graph, final String diagramName) {
+            return getTracer().saveAsGraph(graph, diagramName, ""); //$NON-NLS-1$
+        }
+    }
     private static ElkDiagramLayoutTracer getTracer() {
         return DiagramElkPlugin.getPlugin().getTracer();
     }
@@ -114,7 +131,7 @@ public class ExportToElkGraphHandler extends AbstractHandler {
                 View gmfDiagram = (View) diagramEditPart.getModel();
                 String diagramName = ((DRepresentation) gmfDiagram.getElement()).getName();
 
-                Path result = getTracer().saveAsGraph(layoutMapping.getLayoutGraph(), diagramName, "");
+                Path result = saveToFile(layoutMapping.getLayoutGraph(), diagramName);
 
                 if (result != null) {
                     Shell shell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
@@ -134,6 +151,8 @@ public class ExportToElkGraphHandler extends AbstractHandler {
         }
         return null;
     }
+
+    protected abstract Path saveToFile(ElkNode graph, String diagramName);
 
     private CustomLayoutConfiguration createLayoutConfigurationStub() {
         DescriptionFactory layoutDescriptionFactory = DescriptionFactory.eINSTANCE;
