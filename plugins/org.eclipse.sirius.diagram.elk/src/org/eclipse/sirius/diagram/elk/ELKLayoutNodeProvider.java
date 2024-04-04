@@ -67,29 +67,21 @@ public class ELKLayoutNodeProvider extends DefaultLayoutProvider {
         boolean isArrangeAtOpening = SiriusLayoutDataManager.LAYOUT_TYPE_ARRANGE_AT_OPENING.equals(layoutHint.getAdapter(String.class));
         LayoutMapping layoutMapping = connector.buildLayoutGraph(diagramEditPart, selectedObjects, isArrangeAll, isArrangeAtOpening);
 
-        if (DiagramElkPlugin.getPlugin().isDebugging()) {
-            ElkDiagramLayoutConnector.storeResult(layoutMapping.getLayoutGraph(), layoutMapping.getLayoutGraph().getIdentifier(), "1_initialState", false);
-        }
+        DiagramElkPlugin.getPlugin().traceForDebug(layoutMapping.getLayoutGraph(), "1_initialState");
 
         // We perform "before" actions provided by extension point.
         elkLayoutExtensions.forEach(e -> e.beforeELKLayout(layoutMapping));
 
-        if (DiagramElkPlugin.getPlugin().isDebugging()) {
-            ElkDiagramLayoutConnector.storeResult(layoutMapping.getLayoutGraph(), layoutMapping.getLayoutGraph().getIdentifier(), "2_beforeELKLayout", false);
-        }
+        DiagramElkPlugin.getPlugin().traceForDebug(layoutMapping.getLayoutGraph(), "2_beforeELKLayout");
 
         connector.layout(layoutMapping);
 
-        if (DiagramElkPlugin.getPlugin().isDebugging()) {
-            ElkDiagramLayoutConnector.storeResult(layoutMapping.getLayoutGraph(), layoutMapping.getLayoutGraph().getIdentifier(), "3_afterELKLayout", false);
-        }
+        DiagramElkPlugin.getPlugin().traceForDebug(layoutMapping.getLayoutGraph(), "3_afterELKLayout");
 
         // We perform "after" actions provided by extension point.
         elkLayoutExtensions.forEach(e -> e.afterELKLayout(layoutMapping));
 
-        if (DiagramElkPlugin.getPlugin().isDebugging()) {
-            ElkDiagramLayoutConnector.storeResult(layoutMapping.getLayoutGraph(), layoutMapping.getLayoutGraph().getIdentifier(), "4_afterExtensionUpdate", false);
-        }
+        DiagramElkPlugin.getPlugin().traceForDebug(layoutMapping.getLayoutGraph(), "4_afterExtensionUpdate");
         connector.transferLayout(layoutMapping, isArrangeAll || (layoutOnDiagram && isArrangeAtOpening));
         Command gmfLayoutCommand = connector.getApplyCommand(layoutMapping);
         Optional<GmfLayoutCommand> concreteGmfLayoutCommand = getConcreteGMFLayoutCommand(gmfLayoutCommand);

@@ -64,10 +64,8 @@ public final class Messages {
     @TranslatableMessage
     public static String ELK090MigrationParticipant_title;
 
-
-
-
-
+    @TranslatableMessage
+    public static String ElkDiagramLayoutTracer_saveNotPossible;
 
     // CHECKSTYLE:ON
     private Messages() {
