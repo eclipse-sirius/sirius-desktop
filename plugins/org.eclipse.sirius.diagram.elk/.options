@@ -1,4 +1,8 @@
 # Tracing options for the org.eclipse.sirius.diagram.elk plug-in
 
-# Activate the export of elk diagram in the directory set by JVM option -Djava.io.tmpdir=PATH
+# Turn on debugging for the org.eclipse.sirius.diagram.elk
 org.eclipse.sirius.diagram.elk/debug=false
+# Export diagram as ELK graph format, elkg file, during each steps of the layout process (ignored if "debug/export_as_text" is enabled)
+org.eclipse.sirius.diagram.elk/debug/export_as_xmi=false
+# Export diagram as ELK text format, elkt file, during each steps of the layout process
+org.eclipse.sirius.diagram.elk/debug/export_as_text=true

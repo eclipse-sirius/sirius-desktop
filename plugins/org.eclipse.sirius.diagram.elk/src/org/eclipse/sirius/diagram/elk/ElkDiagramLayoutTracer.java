@@ -72,6 +72,12 @@ public class ElkDiagramLayoutTracer {
 
     private static ILog LOGGER = Platform.getLog(ElkDiagramLayoutTracer.class);
 
+    /** Flag to trace as xmi. */
+    public static String EXPORT_AS_XMI_PROPERTY = DiagramElkPlugin.PLUGIN_ID + "/debug/export_as_xmi"; //$NON-NLS-1$
+
+    /** Flag to trace as text. */
+    public static String EXPORT_AS_TEXT_PROPERTY = DiagramElkPlugin.PLUGIN_ID + "/debug/export_as_text"; //$NON-NLS-1$
+
     /**
      * The target folder path used to store the trace files (exported files for example). It can contains variables
      * names such as:
@@ -87,6 +93,10 @@ public class ElkDiagramLayoutTracer {
 
     private final boolean inDebug;
 
+    private final boolean exportAsText;
+
+    private final boolean exportAsXmi;
+
     /**
      * Constructor.
      * 
@@ -95,6 +105,8 @@ public class ElkDiagramLayoutTracer {
      */
     public ElkDiagramLayoutTracer(boolean debug) {
         this.inDebug = debug;
+        exportAsText = Boolean.parseBoolean(Platform.getDebugOption(EXPORT_AS_TEXT_PROPERTY));
+        exportAsXmi = Boolean.parseBoolean(Platform.getDebugOption(EXPORT_AS_XMI_PROPERTY));
 
         // Get export folder path (through specific system property or by using Java temporary folder)
         String value = System.getProperty(TARGET_FOLDER_PATH_SYSTEM_PROPERTY_KEY);
@@ -125,7 +137,12 @@ public class ElkDiagramLayoutTracer {
      */
     void debug(final ElkNode diagramNode, String suffix) {
         if (inDebug) {
-            saveAsGraph(diagramNode, diagramNode.getIdentifier(), suffix);
+            if (exportAsText) {
+                // If both exportAsText and exportAsXmi are enabled in configuration, the export as text has priority.
+                saveAsText(diagramNode, diagramNode.getIdentifier(), suffix);
+            } else if (exportAsXmi) {
+                saveAsGraph(diagramNode, diagramNode.getIdentifier(), suffix);
+            }
         }
     }
 
