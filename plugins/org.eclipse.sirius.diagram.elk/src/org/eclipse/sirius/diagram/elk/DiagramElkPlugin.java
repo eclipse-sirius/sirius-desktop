@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.elk;
 
+import org.eclipse.elk.graph.ElkNode;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.ui.EclipseUIPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
@@ -26,12 +27,12 @@ public class DiagramElkPlugin extends EMFPlugin {
      * Keep track of the singleton.
      */
     public static final DiagramElkPlugin INSTANCE = new DiagramElkPlugin();
-    
+
     /**
      * Keep track of the shared singleton instance.
      */
     private static Implementation plugin;
-    
+
     // The plug-in ID
     public static final String PLUGIN_ID = "org.eclipse.sirius.diagram.elk"; //$NON-NLS-1$
 
@@ -41,7 +42,6 @@ public class DiagramElkPlugin extends EMFPlugin {
     public DiagramElkPlugin() {
         super(new ResourceLocator[0]);
     }
-    
 
     @Override
     public ResourceLocator getPluginResourceLocator() {
@@ -61,11 +61,43 @@ public class DiagramElkPlugin extends EMFPlugin {
      * The actual implementation of the Eclipse <b>Plugin</b>.
      */
     public static class Implementation extends EclipseUIPlugin {
+
+        // Lazy
+        private ElkDiagramLayoutTracer tracer = null;
+
         /**
          * Creates an instance.
          */
         public Implementation() {
             plugin = this;
         }
+
+        /**
+         * Traces the ELK graph into a local file.
+         * <p>
+         * Access is limited to package.
+         * </p>
+         * 
+         * @param diagramNode
+         *            main ELK node
+         * @param suffix
+         *            hint on layout phase
+         */
+        void traceForDebug(final ElkNode diagramNode, String suffix) {
+            getTracer().debug(diagramNode, suffix);
+        }
+
+        /**
+         * Gets a tracer to save ELK models.
+         * 
+         * @return tracer of graph
+         */
+        public ElkDiagramLayoutTracer getTracer() {
+            if (tracer == null) {
+                tracer = new ElkDiagramLayoutTracer(plugin.isDebugging());
+            }
+            return tracer;
+        }
+
     }
 }

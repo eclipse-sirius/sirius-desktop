@@ -15,8 +15,6 @@ package org.eclipse.sirius.diagram.elk;
 
 import static java.util.stream.Collectors.toList;
 
-import java.io.IOException;
-import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -75,12 +73,8 @@ import org.eclipse.elk.graph.properties.IPropertyHolder;
 import org.eclipse.elk.graph.properties.Property;
 import org.eclipse.elk.graph.util.ElkGraphUtil;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.transaction.impl.InternalTransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.RootEditPart;
@@ -102,7 +96,6 @@ import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Routing;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
@@ -152,7 +145,6 @@ import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.swt.SWTException;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.PlatformUI;
 
 import com.google.common.collect.BiMap;
 import com.google.inject.Inject;
@@ -246,48 +238,6 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
 
     @Inject
     private IGraphLayoutEngine graphLayoutEngine;
-
-    /**
-     * Export the given layout graph in a file. The file will be saved in the directory specified in java.io.tmpdir vm
-     * argument.
-     * 
-     * @param graphToStore
-     *            the layout graph to store.
-     * @param diagramName
-     *            the name if the diagram used as file name.
-     * @param prefix
-     *            a prefix that can be used in the file name.
-     * @param openDialog
-     *            whether we should indicate by a dialog that the diagram as been saved as file.
-     * 
-     */
-    public static void storeResult(final ElkNode graphToStore, final String diagramName, String suffix, boolean openDialog) {
-        String fileName;
-        if (StringUtil.isEmpty(suffix)) {
-            fileName = diagramName + ".elkg";
-        } else {
-            fileName = diagramName + "_" + suffix + ".elkg";
-        }
-        URI exportUri = URI.createFileURI(System.getProperty("java.io.tmpdir") + fileName);
-        ResourceSet resourceSet = new ResourceSetImpl();
-        Resource resource = resourceSet.createResource(exportUri);
-        // Disable the layout stored in this graph to avoid an automatic layout during the opening in "Layout Graph"
-        // view
-        graphToStore.setProperty(CoreOptions.NO_LAYOUT, true);
-        resource.getContents().add(graphToStore);
-
-        try {
-            resource.save(Collections.emptyMap());
-            if (openDialog) {
-                MessageDialog.openInformation(PlatformUI.getWorkbench().getDisplay().getActiveShell(), "Export diagram as ELK Graph",
-                        MessageFormat.format("Current diagram has been successfully exported into {0}", URI.decode(exportUri.toString())));
-            }
-        } catch (IOException e) {
-            System.out.println(e);
-            // ignore the exception
-        }
-        graphToStore.setProperty(CoreOptions.NO_LAYOUT, false);
-    }
 
     /**
      * Calculates the absolute bounds of the given figure.
@@ -827,18 +777,14 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             addOffset(mapping.getLayoutGraph(), offset);
         }
 
-        if (DiagramElkPlugin.getPlugin().isDebugging()) {
-            ElkDiagramLayoutConnector.storeResult(mapping.getLayoutGraph(), mapping.getLayoutGraph().getIdentifier(), "5_afterAddingOffset", false);
-        }
+        DiagramElkPlugin.getPlugin().traceForDebug(mapping.getLayoutGraph(), "5_afterAddingOffset");
 
         if (isArrangeAllOrArrangeAtOpeningOnDiagram) {
             // Reset origin (for edges and border nodes as the origin of the children bound is, in theory, already
             // "reset").
             resetOrigin(mapping.getLayoutGraph());
 
-            if (DiagramElkPlugin.getPlugin().isDebugging()) {
-                ElkDiagramLayoutConnector.storeResult(mapping.getLayoutGraph(), mapping.getLayoutGraph().getIdentifier(), "6_afterResetOrigin", false);
-            }
+            DiagramElkPlugin.getPlugin().traceForDebug(mapping.getLayoutGraph(), "6_afterResetOrigin");
         }
 
         // check the validity of the editing domain to catch cases where it is
