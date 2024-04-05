@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007 - 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,8 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.diagram.editor.properties.sections.tool.reconnectedgedescription;
+
+import java.util.ArrayList;
 
 // Start of user code imports
 
@@ -26,6 +28,7 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
@@ -36,10 +39,6 @@ import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-import com.google.common.collect.UnmodifiableIterator;
 
 // End of user code imports
 
@@ -108,8 +107,13 @@ public class ReconnectEdgeDescriptionMappingsPropertySection extends AbstractEdi
      */
     @Override
     protected List getChoiceOfValues() {
-        UnmodifiableIterator<EdgeMapping> filter = Iterators.filter(eObject.eResource().getResourceSet().getAllContents(), EdgeMapping.class);
-        return Lists.newArrayList(filter);
+        List<Object> result = new ArrayList<>();
+        eObject.eResource().getResourceSet().getAllContents().forEachRemaining(notifier -> {
+            if (notifier instanceof EdgeMapping mapping) {
+                result.add(mapping);
+            }
+        });
+        return result;
     }
 
     /**
