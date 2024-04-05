@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2023 Obeo.
+ * Copyright (c) 2019, 2024 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -63,6 +63,9 @@ public final class Messages {
 
     @TranslatableMessage
     public static String ELK090MigrationParticipant_title;
+
+    @TranslatableMessage
+    public static String ElkDiagramLayoutTracer_defaultJavaFolderWillBeUsedMsg;
 
     @TranslatableMessage
     public static String ElkDiagramLayoutTracer_saveNotPossible;
