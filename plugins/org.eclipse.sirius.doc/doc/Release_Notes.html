@@ -218,6 +218,32 @@
 			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
+		<h4 id="Changesinorg.eclipse.sirius.diagram.elk">Changes in 
+			<code>org.eclipse.sirius.diagram.elk</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> A system property 
+				<code>org.eclipse.sirius.diagram.elk.targetFolderPath</code> is now available to set the folder path where the diagram will be exported in &#8220;ELK Graph&#8221; format. Previously, this path was hard-coded to the Java temporary folder path 
+				<code>java.io.tmpdir</code> (for example under Windows: 
+				<code>%USER%\AppData\Local\Temp</code>). If this property is not set (or is invalid), the Java temporary folder is used. The value of this system property can contains variables names, like in the definition of the workspace data folder in a launch configuration. For example:
+				<ul>
+					<li>
+						<code>${container_loc}</code>: Returns the absolute file system path of the session&#8217;s container (container of the AIRD * file),
+					</li>
+					<li>
+						<code>${project_loc}</code>: Returns the absolute file system path of a session&#8217;s project,
+					</li>
+					<li>or 
+						<code>${workspace_loc}</code>: Returns the absolute file system path of the workspace root.
+					</li>
+					<li>
+						<b>Warning:</b> If you use a the &#8220;VM arguments&#8221; field in the launch configuration, you must replace the 
+						<code>"$"</code> by a 
+						<code>"%"</code> to avoid a replacement of the variables during the launch (and not by ElkDiagramLayoutTracer during export).
+					</li>
+				</ul>
+			</li>
+		</ul>
 		<h4 id="Migrations">Migrations</h4>
 		<ul>
 			<li><span class="label label-success">Added</span> A migration participant, EmptyJunctionPointsStringValueStyleMigrationParticipant,  has been added to fix the GMF edges that contain an empty &#8220;junctionPoints&#8221; StringValueStyle. These empty &#8220;junctionPoints&#8221; StringValueStyle were created due to a bug in ELK./Sirius integration. This migration participant simply removes the empty &#8220;junctionPoints&#8221; StringValueStyle. As reminder, this migration participant has been introduced in Sirius 7.4.3. The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is 
