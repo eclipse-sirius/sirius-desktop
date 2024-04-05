@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2011 Obeo.
+ * Copyright (c) 2006, 2024 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -48,8 +48,6 @@ import org.eclipse.sirius.ecore.extender.business.internal.ExtenderPlugin;
 import org.eclipse.sirius.ecore.extender.business.internal.Messages;
 import org.eclipse.sirius.ecore.extender.tool.internal.ReferencesResolver;
 import org.eclipse.sirius.ext.emf.EReferencePredicate;
-
-import com.google.common.collect.Iterators;
 
 /**
  * Utility class for model loading/saving and serialization.
@@ -506,12 +504,12 @@ public final class ModelUtils {
         if (res != null && res.getResourceSet() != null) {
             cachedIDsResources = ModelUtils.cachedEObjectIDs(res.getResourceSet());
         }
-        List<Resource> resourcesBeforeResolveAll = new ArrayList<Resource>(res.getResourceSet().getResources());
+        List<Resource> resourcesBeforeResolveAll = new ArrayList<>(res.getResourceSet().getResources());
         EcoreUtil.resolveAll(res);
         if (recursive) {
-            List<Resource> resourcesAfterResolveAll = new ArrayList<Resource>(res.getResourceSet().getResources());
+            List<Resource> resourcesAfterResolveAll = new ArrayList<>(res.getResourceSet().getResources());
             // Remove the known resources
-            Iterators.removeAll(resourcesAfterResolveAll.iterator(), resourcesBeforeResolveAll);
+            resourcesAfterResolveAll.removeAll(resourcesBeforeResolveAll);
             for (Resource resource : resourcesAfterResolveAll) {
                 resolveAll(resource, recursive);
             }
