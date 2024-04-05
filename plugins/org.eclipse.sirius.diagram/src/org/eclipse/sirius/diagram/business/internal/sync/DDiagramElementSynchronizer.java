@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.BasicEList;
@@ -93,7 +94,6 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
 
-import com.google.common.base.Objects;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
 
@@ -596,7 +596,7 @@ public class DDiagramElementSynchronizer {
         if (!StringUtil.isEmpty(style.getTooltipExpression())) {
             final String oldValue = elt.getTooltipText();
             final String newValue = computeTooltip(elt, style);
-            if (!Objects.equal(newValue, oldValue)) {
+            if (!Objects.equals(newValue, oldValue)) {
                 elt.setTooltipText(newValue);
             }
         }
