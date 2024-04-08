@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.elk.debug;
 
+import java.lang.reflect.InvocationTargetException;
 import java.nio.file.Path;
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -22,7 +23,12 @@ import java.util.Optional;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.elk.alg.layered.options.LayeredOptions;
 import org.eclipse.elk.core.options.CoreOptions;
@@ -66,6 +72,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 import com.google.inject.Injector;
@@ -77,6 +84,46 @@ import com.google.inject.Injector;
  * 
  */
 public abstract class ExportToElkGraphHandler extends AbstractHandler {
+
+    /**
+     * A workspace modify operation to save the <code>graph</code> in a file of the workspace and refresh it (to be
+     * visible in the workspace).
+     * 
+     * @author Laurent Redor
+     */
+    public class SaveToFileWorkspaceModifyOperation extends WorkspaceModifyOperation {
+
+        ElkNode graph;
+
+        String diagramName;
+
+        Path exportedPath;
+
+        IFile targetFolder;
+
+        public SaveToFileWorkspaceModifyOperation(ElkNode graph, String diagramName, IFile targetFolder) {
+            super(ResourcesPlugin.getWorkspace().getRuleFactory().refreshRule(targetFolder));
+            this.graph = graph;
+            this.diagramName = diagramName;
+            this.targetFolder = targetFolder;
+        }
+
+        @Override
+        protected void execute(IProgressMonitor monitor) throws CoreException, InvocationTargetException, InterruptedException {
+            exportedPath = saveToFile(graph, diagramName);
+            targetFolder.refreshLocal(IResource.DEPTH_ONE, monitor);
+        }
+
+        /**
+         * Return the path of the exported file. It can be null if this method is called before the execution of the
+         * operation or if the operation fails.
+         * 
+         * @return the path of the exported file, or null if not operation is executed or has problems.
+         */
+        public Path getPathOfExportedFile() {
+            return exportedPath;
+        }
+    }
 
     /** Implementation to save as text format (elkt file). */
     public static class AsText extends ExportToElkGraphHandler {
@@ -129,13 +176,34 @@ public abstract class ExportToElkGraphHandler extends AbstractHandler {
         LayoutMapping layoutMapping = createElkMapping(diagramEditPart, layoutConfiguration);
 
         // Store the ELK graph result in a file
-        Path result = saveToFile(layoutMapping.getLayoutGraph(), getDiagramName(diagramEditPart));
+        Path result = null;
+        Optional<IFile> optionalTargetFolder = getTracer().getTargetFolderIfInWorkspace();
+        if (optionalTargetFolder.isEmpty()) {
+            result = saveToFile(layoutMapping.getLayoutGraph(), getDiagramName(diagramEditPart));
+        } else {
+            // This action modifies the workspace resource. So it must be launched in a WorkspaceModifyOperation.
+            try {
+                SaveToFileWorkspaceModifyOperation saveToFileRunnable = new SaveToFileWorkspaceModifyOperation(layoutMapping.getLayoutGraph(), getDiagramName(diagramEditPart),
+                        optionalTargetFolder.get());
+                PlatformUI.getWorkbench().getProgressService().run(true, false, saveToFileRunnable);
+                result = saveToFileRunnable.getPathOfExportedFile();
+            } catch (final InvocationTargetException e) {
+                if (e.getCause() instanceof RuntimeException) {
+                    throw (RuntimeException) e.getCause();
+                }
+                throw new RuntimeException(e);
+            } catch (final InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
         if (commandStack != null) {
             // Undo the reset home
             commandStack.undo();
         }
 
-        showResultMessage(result, warning[0]);
+        if (result != null) {
+            showResultMessage(result, warning[0]);
+        }
     }
 
     private void showResultMessage(Path result, String warning) {

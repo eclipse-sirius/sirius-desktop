@@ -18,7 +18,11 @@ import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.text.MessageFormat;
 import java.util.Collections;
+import java.util.Optional;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IWorkspaceRoot;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.Platform;
@@ -78,6 +82,9 @@ public class ElkDiagramLayoutTracer {
     /** Flag to trace as text. */
     public static String EXPORT_AS_TEXT_PROPERTY = DiagramElkPlugin.PLUGIN_ID + "/debug/export_as_text"; //$NON-NLS-1$
 
+    /** The current workspace root. */
+    private final IWorkspaceRoot workspaceRoot;
+
     /**
      * The target folder path used to store the trace files (exported files for example). It can contains variables
      * names such as:
@@ -107,6 +114,8 @@ public class ElkDiagramLayoutTracer {
         this.inDebug = debug;
         exportAsText = Boolean.parseBoolean(Platform.getDebugOption(EXPORT_AS_TEXT_PROPERTY));
         exportAsXmi = Boolean.parseBoolean(Platform.getDebugOption(EXPORT_AS_XMI_PROPERTY));
+
+        workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
 
         // Get export folder path (through specific system property or by using Java temporary folder)
         String value = System.getProperty(TARGET_FOLDER_PATH_SYSTEM_PROPERTY_KEY);
@@ -168,6 +177,21 @@ public class ElkDiagramLayoutTracer {
             LOGGER.warn(MessageFormat.format(Messages.ElkDiagramLayoutTracer_defaultJavaFolderWillBeUsedMsg, TARGET_FOLDER_PATH_SYSTEM_PROPERTY_KEY, JAVA_TEMP_DIR_PROPERTY_NAME), exceptionThrown);
         }
         return parentPath.resolve(getFilename(diagramName, suffix, extension));
+    }
+
+    /**
+     * Returns the target folder if it is contained in the workspace or empty optional otherwise.
+     * 
+     * @return the target folder if it is contained in the workspace, empty optional otherwise.
+     */
+    public Optional<IFile> getTargetFolderIfInWorkspace() {
+        try {
+            String abosluteTargetFolderPath = VariablesPlugin.getDefault().getStringVariableManager().performStringSubstitution(targetFolderPath);
+            return Optional.ofNullable(workspaceRoot.getFileForLocation(org.eclipse.core.runtime.Path.fromOSString(abosluteTargetFolderPath)));
+        } catch (CoreException e) {
+            // Default location will be used (nothing is displayed, it will be done later) in getTargetFile method.
+            return Optional.empty();
+        }
     }
 
     /**
