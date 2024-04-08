@@ -15,6 +15,7 @@ package org.eclipse.sirius.diagram.elk.debug;
 import java.nio.file.Path;
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,6 +56,7 @@ import org.eclipse.sirius.diagram.elk.DiagramElkPlugin;
 import org.eclipse.sirius.diagram.elk.ElkDiagramLayoutConnector;
 import org.eclipse.sirius.diagram.elk.ElkDiagramLayoutTracer;
 import org.eclipse.sirius.diagram.elk.IELKLayoutExtension;
+import org.eclipse.sirius.diagram.elk.debug.gmf.layout.LayoutService;
 import org.eclipse.sirius.diagram.ui.internal.layout.GenericLayoutProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.AbstractLayoutProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.LayoutProvider;
@@ -75,7 +77,7 @@ import com.google.inject.Injector;
  * 
  */
 public abstract class ExportToElkGraphHandler extends AbstractHandler {
-    
+
     /** Implementation to save as text format (elkt file). */
     public static class AsText extends ExportToElkGraphHandler {
         @Override
@@ -91,6 +93,7 @@ public abstract class ExportToElkGraphHandler extends AbstractHandler {
             return getTracer().saveAsGraph(graph, diagramName, ""); //$NON-NLS-1$
         }
     }
+
     private static ElkDiagramLayoutTracer getTracer() {
         return DiagramElkPlugin.getPlugin().getTracer();
     }
@@ -101,55 +104,69 @@ public abstract class ExportToElkGraphHandler extends AbstractHandler {
         IWorkbenchPart workbenchPart = HandlerUtil.getActivePart(event);
         if (selection instanceof StructuredSelection) {
             StructuredSelection structuredSelection = (StructuredSelection) selection;
-            if (structuredSelection.getFirstElement() instanceof DiagramEditPart) {
-                DiagramEditPart diagramEditPart = (DiagramEditPart) structuredSelection.getFirstElement();
-
-                String[] warning = { null }; // Warning is postponed to avoid popup hell.
-                CustomLayoutConfiguration customLayoutConfiguration = getAssociatedElkLayoutConfiguration(diagramEditPart).orElseGet(() -> {
-                    warning[0] = Messages.ExportToElkGraphHandler_elkExportDialogNoAssociatedLayoutMessage;
-                    return createLayoutConfigurationStub();
-                });
-
-                // Temporarily reset home and set coordinates to 0,0 (to have better result)
-                Command command = diagramEditPart.getCommand(new Request(RequestConstants.REQ_RESET_ORIGIN));
-                DiagramCommandStack commandStack = getDiagramCommandStack(workbenchPart);
-                if (commandStack != null) {
-                    commandStack.execute(command);
-                }
-
-                Injector injector = LayoutConnectorsService.getInstance().getInjector(null, diagramEditPart.getChildren());
-                ElkDiagramLayoutConnector connector = injector.getInstance(ElkDiagramLayoutConnector.class);
-                connector.setLayoutConfiguration(customLayoutConfiguration);
-
-                LayoutMapping layoutMapping = connector.buildLayoutGraph(diagramEditPart, diagramEditPart.getChildren(), true, false);
-
-                // Perform "before" actions provided by extension point.
-                List<IELKLayoutExtension> elkLayoutExtensions = IELKLayoutExtension.getLayoutExtensions();
-                elkLayoutExtensions.forEach(e -> e.beforeELKLayout(layoutMapping));
-
-                // Store the ELK graph result in a file
-                View gmfDiagram = (View) diagramEditPart.getModel();
-                String diagramName = ((DRepresentation) gmfDiagram.getElement()).getName();
-
-                Path result = saveToFile(layoutMapping.getLayoutGraph(), diagramName);
-
-                if (result != null) {
-                    Shell shell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
-                    String success = MessageFormat.format(Messages.ExportToElkGraphHandler_elkExportDialogMessage, result);
-                    if (warning[0] == null) {
-                        MessageDialog.openInformation(shell, Messages.ExportToElkGraphHandler_elkExportDialogTitle, success);
-                    } else {
-                        MessageDialog.openWarning(shell, Messages.ExportToElkGraphHandler_elkExportDialogTitle, success + '\n' + warning[0]);
-                    }
-                }
-
-                if (commandStack != null) {
-                    // Undo the reset home
-                    commandStack.undo();
-                }
+            Object first = structuredSelection.getFirstElement();
+            if (first instanceof DiagramEditPart) {
+                exportToElkGraph(workbenchPart, (DiagramEditPart) first);
             }
         }
         return null;
+    }
+
+    private void exportToElkGraph(IWorkbenchPart workbenchPart, DiagramEditPart diagramEditPart) {
+        String[] warning = { null }; // Warning is postponed to avoid popup hell.
+        CustomLayoutConfiguration layoutConfiguration = getAssociatedElkLayoutConfiguration(diagramEditPart).orElseGet(() -> {
+            warning[0] = Messages.ExportToElkGraphHandler_elkExportDialogNoAssociatedLayoutMessage;
+            return createLayoutConfigurationStub();
+        });
+
+        // Temporarily reset home and set coordinates to 0,0 (to have better result)
+        Command command = diagramEditPart.getCommand(new Request(RequestConstants.REQ_RESET_ORIGIN));
+        DiagramCommandStack commandStack = getDiagramCommandStack(workbenchPart);
+        if (commandStack != null) {
+            commandStack.execute(command);
+        }
+
+        LayoutMapping layoutMapping = createElkMapping(diagramEditPart, layoutConfiguration);
+
+        // Store the ELK graph result in a file
+        Path result = saveToFile(layoutMapping.getLayoutGraph(), getDiagramName(diagramEditPart));
+        if (commandStack != null) {
+            // Undo the reset home
+            commandStack.undo();
+        }
+
+        showResultMessage(result, warning[0]);
+    }
+
+    private void showResultMessage(Path result, String warning) {
+        if (result != null) {
+            Shell shell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
+            String message = MessageFormat.format(Messages.ExportToElkGraphHandler_elkExportDialogMessage, result);
+            if (warning == null) {
+                MessageDialog.openInformation(shell, Messages.ExportToElkGraphHandler_elkExportDialogTitle, message);
+            } else {
+                MessageDialog.openWarning(shell, Messages.ExportToElkGraphHandler_elkExportDialogTitle, message + '\n' + warning);
+            }
+        }
+    }
+
+    private LayoutMapping createElkMapping(DiagramEditPart diagramEditPart, CustomLayoutConfiguration layoutConfiguration) {
+        Injector injector = LayoutConnectorsService.getInstance().getInjector(null, diagramEditPart.getChildren());
+        ElkDiagramLayoutConnector connector = injector.getInstance(ElkDiagramLayoutConnector.class);
+        connector.setLayoutConfiguration(layoutConfiguration);
+
+        LayoutMapping layoutMapping = connector.buildLayoutGraph(diagramEditPart, diagramEditPart.getChildren(), true, false);
+
+        // Perform "before" actions provided by extension point.
+        List<IELKLayoutExtension> elkLayoutExtensions = IELKLayoutExtension.getLayoutExtensions();
+        elkLayoutExtensions.forEach(e -> e.beforeELKLayout(layoutMapping));
+        return layoutMapping;
+    }
+
+    private String getDiagramName(DiagramEditPart diagramEditPart) {
+        View gmfDiagram = (View) diagramEditPart.getModel();
+        String diagramName = ((DRepresentation) gmfDiagram.getElement()).getName();
+        return diagramName;
     }
 
     protected abstract Path saveToFile(ElkNode graph, String diagramName);
@@ -158,45 +175,41 @@ public abstract class ExportToElkGraphHandler extends AbstractHandler {
         DescriptionFactory layoutDescriptionFactory = DescriptionFactory.eINSTANCE;
         CustomLayoutConfiguration customLayoutConfiguration = layoutDescriptionFactory.createCustomLayoutConfiguration();
         customLayoutConfiguration.setId(LayeredOptions.ALGORITHM_ID);
-        EnumLayoutOption enumLayoutOption = layoutDescriptionFactory.createEnumLayoutOption();
-        enumLayoutOption.setId(CoreOptions.HIERARCHY_HANDLING.getId());
-        EnumLayoutValue enumLayoutValue = layoutDescriptionFactory.createEnumLayoutValue();
-        enumLayoutValue.setName(HierarchyHandling.INCLUDE_CHILDREN.name());
-        enumLayoutOption.setValue(enumLayoutValue);
-        enumLayoutOption.getTargets().add(LayoutOptionTarget.PARENT);
-        enumLayoutOption.getTargets().add(LayoutOptionTarget.NODE);
-        customLayoutConfiguration.getLayoutOptions().add(enumLayoutOption);
+        EnumLayoutOption hierarchyHld = layoutDescriptionFactory.createEnumLayoutOption();
+        hierarchyHld.setId(CoreOptions.HIERARCHY_HANDLING.getId());
+        EnumLayoutValue includeChildren = layoutDescriptionFactory.createEnumLayoutValue();
+        includeChildren.setName(HierarchyHandling.INCLUDE_CHILDREN.name());
+        hierarchyHld.setValue(includeChildren);
+        hierarchyHld.getTargets().add(LayoutOptionTarget.PARENT);
+        hierarchyHld.getTargets().add(LayoutOptionTarget.NODE);
+        customLayoutConfiguration.getLayoutOptions().add(hierarchyHld);
         return customLayoutConfiguration;
     }
 
     public Optional<CustomLayoutConfiguration> getAssociatedElkLayoutConfiguration(DiagramEditPart diagramEditPart) {
-        Optional<CustomLayoutConfiguration> result = Optional.empty();
-        org.eclipse.sirius.diagram.elk.debug.gmf.layout.LayoutService layoutService = org.eclipse.sirius.diagram.elk.debug.gmf.layout.LayoutService.getInstance();
-        List<Object> hints = new ArrayList<>(2);
-        hints.add(LayoutType.DEFAULT);
-        hints.add(diagramEditPart);
-        IAdaptable layoutHint = new ObjectAdapter(hints);
-        var editparts = diagramEditPart.getChildren();
-        List<LayoutNode> nodes = new ArrayList<>(editparts.size());
-        var li = editparts.iterator();
-        while (li.hasNext()) {
-            IGraphicalEditPart ep = (IGraphicalEditPart) li.next();
-            View view = ep.getNotationView();
-            if (ep.isActive() && view != null && view instanceof Node && ep != layoutHint.getAdapter(EditPart.class)) {
-                Rectangle bounds = ep.getFigure().getBounds();
-                nodes.add(new LayoutNode((Node) view, bounds.width, bounds.height));
-            }
-        }
-        Option<IProvider> optionalProvider = layoutService.getMainProvider(new CanLayoutNodesOperation(nodes, true, layoutHint));
-        if (optionalProvider.some()) {
-            if (optionalProvider.get() instanceof AbstractLayoutProvider) {
-                LayoutProvider layoutProvider = ((AbstractLayoutProvider) optionalProvider.get()).getDiagramLayoutProvider(diagramEditPart, layoutHint);
-                if (layoutProvider instanceof GenericLayoutProvider) {
-                    result = ((GenericLayoutProvider) layoutProvider).getLayoutConfiguration(diagramEditPart);
+        LayoutService layoutService = LayoutService.getInstance();
+        IAdaptable layoutHint = new ObjectAdapter(Arrays.asList(LayoutType.DEFAULT, diagramEditPart));
+
+        List<?> gefEditparts = diagramEditPart.getChildren();
+        List<LayoutNode> nodes = new ArrayList<>(gefEditparts.size());
+        for (Object ep : gefEditparts) {
+            if (ep instanceof IGraphicalEditPart ep_) {
+                View view = ep_.getNotationView();
+                if (ep_.isActive() && view != null && view instanceof Node && ep_ != layoutHint.getAdapter(EditPart.class)) {
+                    Rectangle bounds = ep_.getFigure().getBounds();
+                    nodes.add(new LayoutNode((Node) view, bounds.width, bounds.height));
                 }
             }
         }
-        return result;
+        Option<IProvider> optionalProvider = layoutService.getMainProvider(new CanLayoutNodesOperation(nodes, true, layoutHint));
+        if (optionalProvider.some() && optionalProvider.get() instanceof AbstractLayoutProvider) {
+            LayoutProvider layoutProvider = ((AbstractLayoutProvider) optionalProvider.get()).getDiagramLayoutProvider(diagramEditPart, layoutHint);
+            if (layoutProvider instanceof GenericLayoutProvider lp) {
+                return lp.getLayoutConfiguration(diagramEditPart);
+            }
+
+        }
+        return Optional.empty();
     }
 
     private DiagramCommandStack getDiagramCommandStack(IWorkbenchPart workbenchPart) {
