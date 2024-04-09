@@ -84,7 +84,14 @@
     </topic>
     <topic href="doc/specifier/diagrams/Diagrams.html" label="Diagrams">
       <topic href="doc/specifier/diagrams/Diagrams.html#introduction" label="Introduction" />
-      <topic href="doc/specifier/diagrams/Diagrams.html#diagram_description" label="Diagram Description" />
+      <topic href="doc/specifier/diagrams/Diagrams.html#diagram_description" label="Diagram Description">
+         <topic href="doc/specifier/diagrams/Diagrams.html#layout" label="Layout Configuration">
+            <topic href="doc/specifier/diagrams/Diagrams.html#useElk" label="Use an ELK layout algorithm">
+            </topic>
+            <topic href="doc/specifier/diagrams/Diagrams.html#custumLayout" label="Use a custom layout algorithm">
+            </topic>
+         </topic>
+      </topic>
       <topic href="doc/specifier/diagrams/Diagrams.html#layers_graphical_elements" label="Layers and Graphical Elements">
         <topic href="doc/specifier/diagrams/Diagrams.html#layers" label="Layers" />
         <topic href="doc/specifier/diagrams/Diagrams.html#graphical_elements" label="Graphical Elements and Mappings" />
