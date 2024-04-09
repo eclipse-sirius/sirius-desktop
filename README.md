@@ -1,10 +1,8 @@
 ## Eclipse Sirius
 
-[![Build Status](https://travis-ci.org/pcdavid/org.eclipse.sirius.svg?branch=master)](https://travis-ci.org/pcdavid/org.eclipse.sirius)
-
 Sirius enables the specification of a modeling workbench in terms of graphical, table or tree editors with validation rules and actions using declarative descriptions.
 
-For more details see [the project page](http://www.eclipse.org/sirius) and [the main wiki page](http://wiki.eclipse.org/Sirius).
+For more details see [the project page](https://www.eclipse.dev/sirius) and [the main wiki page](https://wiki.eclipse.org/Sirius).
 
 ### Building
 
