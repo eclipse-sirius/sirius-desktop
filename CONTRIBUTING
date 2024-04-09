@@ -8,9 +8,9 @@ Eclipse Sirius enables the specification of a modeling workbench in terms of
 graphical, table or tree editors with validation rules and actions using
 declarative descriptions.
 
-* http://www.eclipse.org/sirius
+* https://www.eclipse.dev/sirius
 * https://projects.eclipse.org/projects/modeling.sirius
-* http://wiki.eclipse.org/Sirius
+* https://wiki.eclipse.org/Sirius
 
 ## Developer resources
 
@@ -22,8 +22,6 @@ more.
 The project maintains the following source code repositories
 
 * https://github.com/eclipse-sirius/sirius-desktop.git
-* https://git.eclipse.org/c/sirius/org.eclipse.sirius.legacy.git
-* https://github.com/eclipse/sirius-components
 
 This project uses Bugzilla to track ongoing development and issues.
 

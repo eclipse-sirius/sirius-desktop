@@ -20,7 +20,7 @@ The features which are deprecated starting from 6.4.0 are:
 * **Exporting diagrams as GIF, BMP or PDF**. We will focus on PNG and JPG support for raster formats, and SVG for vector formats. If you need another image format, use an external tool to do the conversion.
 * **OCL expressions in VSMs (@odesign@ files)**, as supported by the @org.eclipse.sirius.common.ocl@ plug-in. Use AQL expressions instead.
 * **The "Workflow" feature**. Workflow was experimental and to our knowledge not used in practice. This corresponds to the @org.eclipse.sirius.workflow.*@ and @org.eclipse.sirius.editor.workflow@ plug-ins.
-* **The server parts which supported the Workflow feature**. It was our first experiment in moving Sirius to the web, but this is now replaced by the newly published "Sirius Web":https://www.eclipse.org/sirius/sirius-web.html. This corresponds to all the @org.eclipse.sirius.server.*@ plug-ins.
+* **The server parts which supported the Workflow feature**. It was our first experiment in moving Sirius to the web, but this is now replaced by the newly published "Sirius Web":https://www.eclipse.dev/sirius/sirius-web.html. This corresponds to all the @org.eclipse.sirius.server.*@ plug-ins.
 
 Also note that Sirius 6.4 is still compatible with Java 8, but we may move to Java 11 (LTS) in 2021. Eclipse 2020-09 already requires Java 11 to start, and Java 8 is quite old at this point. When we move to Java 11 we will drop support for Eclipse versions older than 2020-09. Again, if that is an issue for you, please open a ticket so we can discuss it.
 
