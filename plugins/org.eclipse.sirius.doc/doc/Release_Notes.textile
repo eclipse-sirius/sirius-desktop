@@ -21,6 +21,7 @@ h4. Changes in @org.eclipse.sirius.diagram.elk@
 ** @${project_loc}@: Returns the absolute file system path of a session's project,
 ** or @${workspace_loc}@: Returns the absolute file system path of the workspace root.
 ** **Warning:** If you use a the "VM arguments" field in the launch configuration, you must replace the @"$"@ by a @"%"@ to avoid a replacement of the variables during the launch (and not by ElkDiagramLayoutTracer during export).
+* <span class="label label-info">Modified</span> The ELK debug capabilities have been improved and documented, see "ELK Debug capabilities":specifier/diagrams/Diagrams.html#elkDebug section for details.
 
 h4. Migrations
 

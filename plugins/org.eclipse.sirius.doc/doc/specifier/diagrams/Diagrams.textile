@@ -86,7 +86,42 @@ In ELK, all the edges of a same container must have the same routing style. So t
 
 If the parameter "Edge Routing":https://eclipse.dev/elk/reference/options/org-eclipse-elk-edgeRouting.html is set in the VSM, it has the priority on the routing styles used in the diagram.
 
-h4. Use a custom layout algorithm
+h5(#elkDebug). ELK Debug capabilities
+
+**A- Specific actions to export diagram as ELK file**
+
+The Sirius ELK bridge offers some debug capabilities.
+A first step to setting up an ELK layout is, quite often, to do so in a "pure ELK world" without the Sirius bridge. For that, with the plug-in @org.eclipse.sirius.diagram.elk.debug@ installed, it is possible to export a Sirius diagram in ELK Graph file (elkg or elkt):
+!images/elkExportActionsContextualMenu.png!
+* "Export diagram as ELK Graph" creates an elkg file (with XMI format). This format is no longer used on ELK side.
+* "Export diagram as ELK Text" creates an elkt file (with ELK Text format). This format is used, for example, by the "ELKLive editor":https://rtsys.informatik.uni-kiel.de/elklive/elkgraph.html. With this file, you can then check the effect of parameters directly on ELK side.
+
+By default, these files are created in the Java temporary folder (@java.io.tmpdir@, for example under Windows: @%USER%\AppData\Local\Temp@). But since Sirius 7.4.2, you can configure the folder path with the system property @org.eclipse.sirius.diagram.elk.targetFolderPath@. If this property is not set (or is invalid), the Java temporary folder is used. The value of this system property can contains variables names, like in the definition of the workspace data folder in a launch configuration. For example:
+* @${container_loc}@: Returns the absolute file system path of the session's container (container of the AIRD * file),
+* @${project_loc}@: Returns the absolute file system path of a session's project,
+* or @${workspace_loc}@: Returns the absolute file system path of the workspace root.
+**Warning:** If you use a the "VM arguments" field in the launch configuration, you must replace the @"$"@ by a @"%"@ to avoid a replacement of the variables during the launch (and not by ElkDiagramLayoutTracer during export).
+
+**B- Debug trace**
+
+It is possible to activate the debug trace for plug-in "org.eclipse.sirius.diagram.elk":
+!images/elkTracing.png!
+* @debug@: Turn on debugging for the org.eclipse.sirius.diagram.elk
+* @debug/export_as_text@: Export diagram as ELK text format, elkt file, during each steps of the layout process
+* @debug/export_as_xmi@: Export diagram as ELK graph format, elkg file, during each steps of the layout process (ignored if @debug/export_as_text@ is enabled)
+
+If enabled, this creates multiple ELK files at each step of the Sirius's internal layout process (in @org.eclipse.sirius.diagram.elk.ElkDiagramLayoutConnector@ and in @org.eclipse.sirius.diagram.elk.ELKLayoutNodeProvider@. This makes it easier, for example, to debug when an activated ELK option does not have the expected result.
+
+6 files are generated:
+!images/elkFilesGeneratedDuringArrangeWithELK.png!
+1- "initialState": The result of the conversion made by Sirius.
+2- "beforeELKLayout": The result once we have applied the specific processing added via the @beforeELKLayout(LayoutMapping)@ method by the @org.eclipse.sirius.diagram.elk.layout.extension@ extension point.
+3- "afterELKLayout": The result once ELK has done its layout work.
+4- "afterExtensionUpdate": The result once we have applied the specific processing added via the @afterELKLayout(LayoutMapping)@ method by the @org.eclipse.sirius.diagram.elk.layout.extension@ extension point.
+5- "afterAddingOffset": The result once ELK has shifted the root nodes.
+6- "afterResetOrigin": The result once Sirius has applied the equivalent of the "Reset Origin" action.
+
+h4(#custumLayout). Use a custom layout algorithm
 
 If you need to go beyond what already exists, you can provide your own layout algorithm programmatically (see the "developer documentation":../../developer/Sirius%20Developer%20Manual.html for details).
 

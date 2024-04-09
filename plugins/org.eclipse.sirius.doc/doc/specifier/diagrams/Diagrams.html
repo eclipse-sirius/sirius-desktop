@@ -276,7 +276,81 @@
 		<p>If the parameter 
 			<a href="https://eclipse.dev/elk/reference/options/org-eclipse-elk-edgeRouting.html">Edge Routing</a> is set in the VSM, it has the priority on the routing styles used in the diagram.
 		</p>
-		<h4 id="Useacustomlayoutalgorithm">Use a custom layout algorithm</h4>
+		<h5 id="elkDebug">ELK Debug capabilities</h5>
+		<p>
+			<b>A- Specific actions to export diagram as ELK file</b>
+		</p>
+		<p>The Sirius ELK bridge offers some debug capabilities.
+			<br/>A first step to setting up an ELK layout is, quite often, to do so in a &#8220;pure ELK world&#8221; without the Sirius bridge. For that, with the plug-in 
+			<code>org.eclipse.sirius.diagram.elk.debug</code> installed, it is possible to export a Sirius diagram in ELK Graph file (elkg or elkt):
+			<br/>
+			<img border="0" src="images/elkExportActionsContextualMenu.png"/>
+		</p>
+		<ul>
+			<li>&#8220;Export diagram as ELK Graph&#8221; creates an elkg file (with XMI format). This format is no longer used on ELK side.</li>
+			<li>&#8220;Export diagram as ELK Text&#8221; creates an elkt file (with ELK Text format). This format is used, for example, by the 
+				<a href="https://rtsys.informatik.uni-kiel.de/elklive/elkgraph.html">ELKLive editor</a>. With this file, you can then check the effect of parameters directly on ELK side.
+			</li>
+		</ul>
+		<p>By default, these files are created in the Java temporary folder (
+			<code>java.io.tmpdir</code>, for example under Windows: 
+			<code>%USER%\AppData\Local\Temp</code>). But since Sirius 7.4.2, you can configure the folder path with the system property 
+			<code>org.eclipse.sirius.diagram.elk.targetFolderPath</code>. If this property is not set (or is invalid), the Java temporary folder is used. The value of this system property can contains variables names, like in the definition of the workspace data folder in a launch configuration. For example:
+		</p>
+		<ul>
+			<li>
+				<code>${container_loc}</code>: Returns the absolute file system path of the session&#8217;s container (container of the AIRD * file),
+			</li>
+			<li>
+				<code>${project_loc}</code>: Returns the absolute file system path of a session&#8217;s project,
+			</li>
+			<li>or 
+				<code>${workspace_loc}</code>: Returns the absolute file system path of the workspace root.
+			</li>
+		</ul>
+		<p>
+			<b>Warning:</b> If you use a the &#8220;VM arguments&#8221; field in the launch configuration, you must replace the 
+			<code>"$"</code> by a 
+			<code>"%"</code> to avoid a replacement of the variables during the launch (and not by ElkDiagramLayoutTracer during export).
+		</p>
+		<p>
+			<b>B- Debug trace</b>
+		</p>
+		<p>It is possible to activate the debug trace for plug-in &#8220;org.eclipse.sirius.diagram.elk&#8221;:
+			<br/>
+			<img border="0" src="images/elkTracing.png"/>
+		</p>
+		<ul>
+			<li>
+				<code>debug</code>: Turn on debugging for the org.eclipse.sirius.diagram.elk
+			</li>
+			<li>
+				<code>debug/export_as_text</code>: Export diagram as ELK text format, elkt file, during each steps of the layout process
+			</li>
+			<li>
+				<code>debug/export_as_xmi</code>: Export diagram as ELK graph format, elkg file, during each steps of the layout process (ignored if 
+				<code>debug/export_as_text</code> is enabled)
+			</li>
+		</ul>
+		<p>If enabled, this creates multiple ELK files at each step of the Sirius&#8217;s internal layout process (in 
+			<code>org.eclipse.sirius.diagram.elk.ElkDiagramLayoutConnector</code> and in 
+			<code>org.eclipse.sirius.diagram.elk.ELKLayoutNodeProvider</code>. This makes it easier, for example, to debug when an activated ELK option does not have the expected result.
+		</p>
+		<p>6 files are generated:
+			<br/>
+			<img border="0" src="images/elkFilesGeneratedDuringArrangeWithELK.png"/>
+			<br/>1- &#8220;initialState&#8221;: The result of the conversion made by Sirius.
+			<br/>2- &#8220;beforeELKLayout&#8221;: The result once we have applied the specific processing added via the 
+			<code>beforeELKLayout(LayoutMapping)</code> method by the 
+			<code>org.eclipse.sirius.diagram.elk.layout.extension</code> extension point.
+			<br/>3- &#8220;afterELKLayout&#8221;: The result once ELK has done its layout work.
+			<br/>4- &#8220;afterExtensionUpdate&#8221;: The result once we have applied the specific processing added via the 
+			<code>afterELKLayout(LayoutMapping)</code> method by the 
+			<code>org.eclipse.sirius.diagram.elk.layout.extension</code> extension point.
+			<br/>5- &#8220;afterAddingOffset&#8221;: The result once ELK has shifted the root nodes.
+			<br/>6- &#8220;afterResetOrigin&#8221;: The result once Sirius has applied the equivalent of the &#8220;Reset Origin&#8221; action.
+		</p>
+		<h4 id="custumLayout">Use a custom layout algorithm</h4>
 		<p>If you need to go beyond what already exists, you can provide your own layout algorithm programmatically (see the 
 			<a href="../../developer/Sirius%20Developer%20Manual.html">developer documentation</a> for details).
 		</p>
