@@ -812,6 +812,8 @@ To copy a style from one element to another :
 
 	!images/diagram_editor_paste_style.png!
 
+Note: an edge style cannot be applied to a container or node but a container or node style can be applied to a edge.
+
 h3(#paste_image). Paste image from clipboard
 
 It is also possible to paste an image from the clipboard to a node or container. To do this, copy the image in your clipboard, select a node and click on the button "Paste image from clipboard" (see picture below). The image is saved as a PNG file in the workspace, in an "images" folder and the selected element has a workspace image style that references this image.
