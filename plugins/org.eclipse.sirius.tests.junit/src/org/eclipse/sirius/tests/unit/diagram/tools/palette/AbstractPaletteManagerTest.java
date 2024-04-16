@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -222,7 +222,7 @@ public abstract class AbstractPaletteManagerTest extends SiriusDiagramTestCase {
     private SortedSet<Entry> getVisiblePaletteEntries(PaletteRoot root) {
         SortedSet<Entry> result = new TreeSet<>();
 
-        Iterable<PaletteEntry> filtered = Iterables.filter(root.getChildren(), VISIBLE_ENTRY);
+        Iterable<? extends PaletteEntry> filtered = Iterables.filter(root.getChildren(), VISIBLE_ENTRY);
         for (PaletteEntry paletteEntry : filtered) {
 
             String[] allLabelEntries;
@@ -271,7 +271,7 @@ public abstract class AbstractPaletteManagerTest extends SiriusDiagramTestCase {
         Set<PaletteEntry> paletteEntries = new LinkedHashSet<>();
 
         @SuppressWarnings("unchecked")
-        Iterable<PaletteEntry> allVisibleChildren = Iterables.<PaletteEntry> filter(root.getChildren(), VISIBLE_ENTRY);
+        Iterable<? extends PaletteEntry> allVisibleChildren = Iterables.filter(root.getChildren(), VISIBLE_ENTRY);
         for (PaletteEntry paletteEntry : allVisibleChildren) {
             if (paletteEntry instanceof PaletteContainer) {
                 paletteEntries.addAll(getAllVisiblePaletteEntries(paletteEntry));

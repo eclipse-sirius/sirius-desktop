@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2015, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -102,7 +102,7 @@ public class PaletteManagerAfterVSMSelectionChange extends AbstractSiriusSwtBotG
                 SectionPaletteDrawer.class);
         TreeSet<String> result = new TreeSet<>();
         for (PaletteEntry paletteEntry : filtered) {
-            Iterable<PaletteEntry> visibleEntries = Iterables.filter(((SectionPaletteDrawer) paletteEntry).getChildren(), VISIBLE_ENTRY);
+            Iterable<? extends PaletteEntry> visibleEntries = Iterables.filter(((SectionPaletteDrawer) paletteEntry).getChildren(), VISIBLE_ENTRY);
             for (PaletteEntry visiblePaletteEntry : visibleEntries) {
                 result.add(visiblePaletteEntry.getLabel());
             }
