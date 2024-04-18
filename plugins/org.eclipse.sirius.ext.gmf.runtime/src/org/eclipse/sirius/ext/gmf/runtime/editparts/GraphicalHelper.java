@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -184,7 +184,7 @@ public final class GraphicalHelper {
      *            an edit part on the view
      * @return the scroll size
      */
-    protected static Point getContainerScrollSize(GraphicalEditPart part) {
+    protected static PrecisionPoint getContainerScrollSize(GraphicalEditPart part) {
         Objects.requireNonNull(part);
         Point result = new Point(0, 0);
         Point diagramScrollSize = new Point(0, 0);
@@ -200,7 +200,7 @@ public final class GraphicalHelper {
             current = current.getParent();
         }
         result.translate(diagramScrollSize.negate());
-        return result;
+        return new PrecisionPoint(result);
     }
 
     /**
