@@ -182,7 +182,7 @@ public class HeaderSequenceDiagramTests extends AbstractDefaultModelSequenceTest
         SWTBotShell colorPaletteShell = bot.shell(Messages.ColorPalettePopup_title);
         colorPaletteShell.bot().buttonWithTooltip("{102, 204, 255}").click();
         RGBValues backgroundColor = createDefaultBgColor();
-        RGBValues foregroundColor = createColor(114, 159, 207);
+        RGBValues foregroundColor = createColor(102, 204, 255);
 
         checkHeader(new HeaderData(LIFELINE_B, bounds.x, bounds.width, backgroundColor, foregroundColor), 1);
     }
