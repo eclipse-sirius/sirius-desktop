@@ -4,7 +4,7 @@
     <semanticResources>My.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_LWb4wBWdEeW7GcqVYwuCiQ">
       <viewpoint xmi:type="description:Viewpoint" href="snapToAll.odesign#//@ownedViewpoints[name='snapToAll']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_CNv7IP4qEe6XQqkN-okjiQ" name="snapToAllDiagram" repPath="#_M0HXsBWdEeW7GcqVYwuCiQ" changeId="1713516705233">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_CNv7IP4qEe6XQqkN-okjiQ" name="snapToAllDiagram" repPath="#_M0HXsBWdEeW7GcqVYwuCiQ" changeId="1713517009683">
         <description xmi:type="description_1:DiagramDescription" href="snapToAll.odesign#//@ownedViewpoints[name='snapToAll']/@ownedRepresentations[name='snapToAllDiagram']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -114,7 +114,7 @@
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OrqdYhaIEeWQ3O79R6E3Ug" x="-92" y="1" width="40" height="32"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_OrmL8RaIEeWQ3O79R6E3Ug" fontName="Ubuntu" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OrmL8haIEeWQ3O79R6E3Ug" x="169" y="-55" width="168" height="69"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OrmL8haIEeWQ3O79R6E3Ug" x="146" y="-55" width="168" height="69"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_OroBIBaIEeWQ3O79R6E3Ug" type="3007" element="_OqG-MBaIEeWQ3O79R6E3Ug">
               <children xmi:type="notation:Node" xmi:id="_OrooMBaIEeWQ3O79R6E3Ug" type="5003">
@@ -136,7 +136,7 @@
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Orv88haIEeWQ3O79R6E3Ug"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_OroBIRaIEeWQ3O79R6E3Ug" fontName="Ubuntu" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OroBIhaIEeWQ3O79R6E3Ug" x="128" y="33" width="100" height="100"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OroBIhaIEeWQ3O79R6E3Ug" x="128" y="33" width="100" height="136"/>
             </children>
             <styles xmi:type="notation:SortingStyle" xmi:id="_OrPmoRaIEeWQ3O79R6E3Ug"/>
             <styles xmi:type="notation:FilteringStyle" xmi:id="_OrPmohaIEeWQ3O79R6E3Ug"/>
@@ -211,7 +211,7 @@
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Or9_YhaIEeWQ3O79R6E3Ug"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_Or8xQRaIEeWQ3O79R6E3Ug" fontName="Ubuntu" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Or8xQhaIEeWQ3O79R6E3Ug" x="-175" y="28" width="176" height="26"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Or8xQhaIEeWQ3O79R6E3Ug" x="-168" y="49" width="176" height="26"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_Or1cgRaIEeWQ3O79R6E3Ug" fontName="Ubuntu" fontHeight="8"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Or1cghaIEeWQ3O79R6E3Ug" x="448" y="9" width="100" height="104"/>
@@ -258,7 +258,7 @@
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_UTFY4RaIEeWQ3O79R6E3Ug"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_UTFY4haIEeWQ3O79R6E3Ug" fontName="Ubuntu" fontHeight="8"/>
           <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_UTFY4xaIEeWQ3O79R6E3Ug" points="[8, -11, -475, -100]$[221, -298, -262, -387]$[348, 180, -135, 91]$[470, 98, -13, 9]"/>
-          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_UTNUsBaIEeWQ3O79R6E3Ug" id="(0.92,0.71)"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_UTNUsBaIEeWQ3O79R6E3Ug" id="(0.92,0.5220588235294118)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_UTNUsRaIEeWQ3O79R6E3Ug" id="(0.05179282868525897,0.36)"/>
         </edges>
       </data>
