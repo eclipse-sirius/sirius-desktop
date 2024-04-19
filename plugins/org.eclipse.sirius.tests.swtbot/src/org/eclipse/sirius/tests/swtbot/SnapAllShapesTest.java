@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2015, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -264,7 +264,7 @@ public class SnapAllShapesTest extends AbstractSiriusSwtBotGefTestCase {
      * expected one (snap to another figure).<BR>
      */
     public void testMoveBorderNodeOnNodeInContainer() {
-        moveCenterOfElementNearCenterOfAnotherVertically("BNBNC_att1", AbstractDiagramBorderNodeEditPart.class, "BNNC_att2", AbstractDiagramBorderNodeEditPart.class);
+        moveCenterOfElementNearCenterOfAnotherVertically("BNNC_att1", AbstractDiagramBorderNodeEditPart.class, "BNBNC_att2", AbstractDiagramBorderNodeEditPart.class);
     }
 
     /**
