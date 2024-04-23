@@ -789,7 +789,7 @@ public class PasteStylePureGraphicalTest extends AbstractSiriusSwtBotGefTestCase
         SWTBotUtils.waitAllUiEvents();
 
         assertNodeStyle("NewEClass6", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(false, true, false, false, BLACK), GREY));
-        assertContainerStyle("newPackage2", DNodeContainerEditPart.class, new ExpectedContainerStyle(new ExpectedFontStyle(false, true, false, false, BLACK), GREY, LIGHT_GREY));
+        assertContainerStyle("newPackage2", DNodeContainerEditPart.class, new ExpectedContainerStyle(new ExpectedFontStyle(false, true, false, false, BLACK), GREY, GREY));
     }
 
     public void testCopyStylishNodeToDefaultContainer() {
@@ -804,7 +804,7 @@ public class PasteStylePureGraphicalTest extends AbstractSiriusSwtBotGefTestCase
         SWTBotUtils.waitAllUiEvents();
 
         assertNodeStyle("NewEClass3", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, true, false, false, BLACK), GREY));
-        assertContainerStyle("newPackage2", DNodeContainerEditPart.class, new ExpectedContainerStyle(new ExpectedFontStyle(true, true, false, false, BLACK), GREY, LIGHT_GREY));
+        assertContainerStyle("newPackage2", DNodeContainerEditPart.class, new ExpectedContainerStyle(new ExpectedFontStyle(true, true, false, false, BLACK), GREY, GREY));
     }
 
     public void testCopyStylishNodeToStylishContainer() {
@@ -819,7 +819,7 @@ public class PasteStylePureGraphicalTest extends AbstractSiriusSwtBotGefTestCase
         SWTBotUtils.waitAllUiEvents();
 
         assertNodeStyle("NewEClass3", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(true, true, false, false, BLACK), GREY));
-        assertContainerStyle("newPackage1", DNodeContainerEditPart.class, new ExpectedContainerStyle(new ExpectedFontStyle(true, true, false, false, BLACK), GREY, LIGHT_GREY));
+        assertContainerStyle("newPackage1", DNodeContainerEditPart.class, new ExpectedContainerStyle(new ExpectedFontStyle(true, true, false, false, BLACK), GREY, GREY));
     }
 
     public void testCopyDefaultNodeToStylishContainer() {
@@ -834,7 +834,7 @@ public class PasteStylePureGraphicalTest extends AbstractSiriusSwtBotGefTestCase
         SWTBotUtils.waitAllUiEvents();
 
         assertNodeStyle("NewEClass6", DNodeEditPart.class, new ExpectedNodeStyle(new ExpectedFontStyle(false, true, false, false, BLACK), GREY));
-        assertContainerStyle("newPackage1", DNodeContainerEditPart.class, new ExpectedContainerStyle(new ExpectedFontStyle(false, true, false, false, BLACK), GREY, LIGHT_GREY));
+        assertContainerStyle("newPackage1", DNodeContainerEditPart.class, new ExpectedContainerStyle(new ExpectedFontStyle(false, true, false, false, BLACK), GREY, GREY));
     }
 
     // Container -> Node
