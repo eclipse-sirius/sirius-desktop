@@ -182,7 +182,7 @@ public interface SiriusStyleApplicator {
                 if (structuralFeature instanceof EAttribute) {
                     result = (EAttribute) structuralFeature;
                 }
-            } else if ("backgroundColor".equals(attribute.getName())) { //$NON-NLS-1$
+            } else if ("backgroundColor".equals(attribute.getName()) || "foregroundColor".equals(attribute.getName())) { //$NON-NLS-1$ //$NON-NLS-2$
                 structuralFeature = style.eClass().getEStructuralFeature("color"); //$NON-NLS-1$
                 if (structuralFeature instanceof EAttribute) {
                     result = (EAttribute) structuralFeature;
