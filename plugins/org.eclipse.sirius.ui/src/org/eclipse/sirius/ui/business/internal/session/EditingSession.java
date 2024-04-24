@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -271,7 +271,8 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
     @Override
     public int promptToSaveOnClose() {
         int choice = ISaveablePart2.DEFAULT;
-        if (saveable != null) {
+        // Do not prompt if restoreToSavePointListener is null (close with save in progress)
+        if (saveable != null && restoreToSavePointListener != null) {
             boolean stillOpenElsewhere = getSiriusEditors().size() > 1 && !closeAllDetected();
             boolean promptStandardDialog = !restoreToSavePointListener.isAllowedToReturnToSyncState();
 
