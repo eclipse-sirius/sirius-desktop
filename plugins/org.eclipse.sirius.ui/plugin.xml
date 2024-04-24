@@ -298,7 +298,6 @@
         point="org.eclipse.ui.navigator.navigatorContent">
      <navigatorContent
            activeByDefault="true"
-           appearsBefore="org.eclipse.jdt.java.ui.javaContent"
            contentProvider="org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonContentProvider"
            icon="icons/obj16/SessionResourceFile.gif"
            id="org.eclipse.sirius.ui.resource.content.session"
