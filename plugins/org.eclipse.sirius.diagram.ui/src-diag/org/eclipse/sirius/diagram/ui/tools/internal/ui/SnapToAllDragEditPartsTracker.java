@@ -12,8 +12,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.ui;
 
-import java.util.Date;
-
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.PositionConstants;
@@ -190,24 +188,24 @@ public class SnapToAllDragEditPartsTracker extends DragEditPartsTrackerEx implem
 
             // Reproduce the "acceleration behavior" of
             // org.eclipse.gef.tools.DragEditPartsTracker.handleKeyDown(KeyEvent) to get the increment to use.
-            siriusAccStepIncrement();
+            accStepIncrement();
             PrecisionPoint moveDelta;
             switch (event.keyCode) {
             case SWT.ARROW_DOWN:
-                moveDelta = new PrecisionPoint(0, siriusAccGetStep());
+                moveDelta = new PrecisionPoint(0, accGetStep());
                 break;
             case SWT.ARROW_UP:
-                moveDelta = new PrecisionPoint(0, -siriusAccGetStep());
+                moveDelta = new PrecisionPoint(0, -accGetStep());
                 break;
             case SWT.ARROW_RIGHT:
-                int stepping = siriusAccGetStep();
+                int stepping = accGetStep();
                 if (isCurrentViewerMirrored2()) {
                     stepping = -stepping;
                 }
                 moveDelta = new PrecisionPoint(stepping, 0);
                 break;
             case SWT.ARROW_LEFT:
-                int step = -siriusAccGetStep();
+                int step = -accGetStep();
                 if (isCurrentViewerMirrored2()) {
                     step = -step;
                 }
@@ -260,7 +258,7 @@ public class SnapToAllDragEditPartsTracker extends DragEditPartsTrackerEx implem
         }
         if (acceptArrowKey(event)) {
             moveWithArrowKeysSiriusMode = false;
-            siriusAccStepReset();
+            accStepReset();
         }
         return super.handleKeyUp(event);
     }
@@ -348,72 +346,5 @@ public class SnapToAllDragEditPartsTracker extends DragEditPartsTrackerEx implem
             return false;
         }
         return super.updateTargetUnderMouse();
-    }
-
-    /**
-     * Return true if a move is currently in progress with arrow key, false otherwise.
-     * 
-     * @return true if a move is currently in progress with arrow key, false otherwise.
-     */
-    public boolean isMoveWithArrowKeysSiriusMode() {
-        return moveWithArrowKeysSiriusMode;
-    }
-
-    /**
-     * Set the moveWithArrowKeysSiriusMode.
-     * 
-     * @param moveWithArrowKeysSiriusMode
-     *            The new mode status
-     */
-    protected void setMoveWithArrowKeysSiriusMode(boolean moveWithArrowKeysSiriusMode) {
-        this.moveWithArrowKeysSiriusMode = moveWithArrowKeysSiriusMode;
-    }
-
-    /**
-     * Method overridden to initialize the cloned field {@link #accessibleBegin}. No longer necessary as soon as GEF
-     * issue https://github.com/eclipse/gef-classic/issues/426 will be done.
-     * 
-     * @see org.eclipse.gef.tools.AbstractTool#activate()
-     */
-    @Override
-    public void activate() {
-        super.activate();
-        siriusAccStepReset();
-    }
-
-    /**
-     * Method cloned from {@link org.eclipse.gef.tools.AbstractTool#.accGetStep()} to have the same behavior here. No
-     * longer necessary as soon as GEF issue https://github.com/eclipse/gef-classic/issues/426 will be done.
-     * 
-     * @return the current computed step.
-     */
-    int siriusAccGetStep() {
-        return accessibleStep;
-    }
-
-    /**
-     * Method cloned from {@link org.eclipse.gef.tools.AbstractTool#accStepIncrement()} to have the same behavior here.
-     * No longer necessary as soon as GEF issue https://github.com/eclipse/gef-classic/issues/426 will be done.
-     * 
-     * @return the current computed step.
-     */
-    void siriusAccStepIncrement() {
-        if (accessibleBegin == -1) {
-            accessibleBegin = new Date().getTime();
-            accessibleStep = 1;
-        } else {
-            accessibleStep = 4;
-            long elapsed = new Date().getTime() - accessibleBegin;
-            if (elapsed > 1000)
-                accessibleStep = Math.min(16, (int) (elapsed / 150));
-        }
-    }
-
-    /**
-     * Method cloned from {@link org.eclipse.gef.tools.AbstractTool#accStepReset()} to have the same behavior here. No
-     * longer necessary as soon as GEF issue https://github.com/eclipse/gef-classic/issues/426 will be done.
-     */
-    void siriusAccStepReset() {
-        accessibleBegin = -1;
     }
 }
