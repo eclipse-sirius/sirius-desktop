@@ -133,8 +133,7 @@ public class SnapToAllDragEditPartsTracker extends DragEditPartsTrackerEx implem
         } else {
             // Copied from
             // org.eclipse.gmf.runtime.diagram.ui.tools.DragEditPartsTrackerEx.snapPoint(ChangeBoundsRequest)
-            // Adapted to force the snap in the expected initial direction but also to allow the snap in other
-            // perpendicular directions.
+            // Adapted to use precise coordinates for move delta (in case of zoom of 50% for example).
             Point moveDelta = request.getMoveDelta();
             if (getState() == STATE_ACCESSIBLE_DRAG_IN_PROGRESS) {
                 int restrictedDirection = 0;
@@ -143,16 +142,12 @@ public class SnapToAllDragEditPartsTracker extends DragEditPartsTrackerEx implem
                     restrictedDirection = restrictedDirection | PositionConstants.EAST;
                 } else if (moveDelta.preciseX() < 0) {
                     restrictedDirection = restrictedDirection | PositionConstants.WEST;
-                } else {
-                    restrictedDirection = restrictedDirection | PositionConstants.EAST_WEST;
                 }
 
                 if (moveDelta.preciseY() > 0) {
                     restrictedDirection = restrictedDirection | PositionConstants.SOUTH;
                 } else if (moveDelta.preciseY() < 0) {
                     restrictedDirection = restrictedDirection | PositionConstants.NORTH;
-                } else {
-                    restrictedDirection = restrictedDirection | PositionConstants.NORTH_SOUTH;
                 }
 
                 request.getExtendedData().put(SnapToHelperUtil.RESTRICTED_DIRECTIONS, restrictedDirection);

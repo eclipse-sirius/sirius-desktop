@@ -118,7 +118,7 @@ public class MoveAllShapesWithArrowKeysTest extends AbstractSiriusSwtBotGefTestC
      * expected one (snap to the grid).<BR>
      */
     public void testMoveContainer() {
-        moveInDirection("Container_p1", AbstractDiagramContainerEditPart.class, SWT.ARROW_RIGHT, false);
+        moveInDirection("Container_p1", AbstractDiagramContainerEditPart.class, SWT.ARROW_RIGHT, false, false, true);
     }
 
     /**
@@ -128,7 +128,7 @@ public class MoveAllShapesWithArrowKeysTest extends AbstractSiriusSwtBotGefTestC
      * one (snap to the grid).<BR>
      */
     public void testMoveNode() {
-        moveInDirection("Node_p1", AbstractDiagramNodeEditPart.class, SWT.ARROW_DOWN, true);
+        moveInDirection("Node_p1", AbstractDiagramNodeEditPart.class, SWT.ARROW_DOWN, true, true, false);
     }
 
     /**
@@ -140,7 +140,7 @@ public class MoveAllShapesWithArrowKeysTest extends AbstractSiriusSwtBotGefTestC
      * the expected one (snap to the brother).<BR>
      */
     protected void testMoveNodeInContainer(ZoomLevel zoomLevel) {
-        moveInDirection("NC_C1", AbstractDiagramNodeEditPart.class, SWT.ARROW_RIGHT, true, false, false, zoomLevel);
+        moveInDirection("NC_C1", AbstractDiagramNodeEditPart.class, SWT.ARROW_RIGHT, true, false, true, zoomLevel);
 
         // Third move with snap to shape (as a brother is near)
         SWTBotGefEditPart elementToMove = editor.getEditPart("NC_C1", AbstractDiagramNodeEditPart.class);
