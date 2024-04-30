@@ -40,7 +40,6 @@ import org.eclipse.sirius.tests.swtbot.std.STD006;
 import org.eclipse.sirius.tests.swtbot.std.STD007;
 import org.eclipse.sirius.tests.swtbot.std.STD008;
 import org.eclipse.sirius.tests.swtbot.std.STD010;
-import org.eclipse.sirius.tests.swtbot.tabbar.TabBarTest;
 import org.eclipse.sirius.tests.swtbot.table.HideRevealTableColumnsTest;
 import org.eclipse.sirius.tests.swtbot.table.HideRevealTableLinesTest;
 import org.eclipse.sirius.tests.swtbot.table.TableUIRefreshTests;
@@ -129,7 +128,6 @@ public class AllUnreliableTestSuite extends TestCase {
                     suite.addTestSuite(STD008.class);
                     suite.addTestSuite(STD010.class);
                 }
-                suite.addTestSuite(TabBarTest.class);
                 suite.addTestSuite(TableUIRefreshTests.class);
                 suite.addTestSuite(ViewpointSpecificationProjectCreationTest.class);
                 suite.addTestSuite(VSMFieldTest.class);
