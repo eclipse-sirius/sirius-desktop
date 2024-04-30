@@ -121,6 +121,9 @@ import org.eclipse.sirius.tests.support.api.ImageEquality;
 import org.eclipse.sirius.tests.support.api.SiriusAssert;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.TreeItemSelected;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.widget.BackgroundColorFigureGetter;
@@ -143,7 +146,11 @@ import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.SWTBot;
+import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.keyboard.Keystrokes;
+import org.eclipse.swtbot.swt.finder.results.VoidResult;
+import org.eclipse.swtbot.swt.finder.utils.SWTUtils;
+import org.eclipse.swtbot.swt.finder.utils.Traverse;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
 import org.eclipse.swtbot.swt.finder.widgets.AbstractSWTBot;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
@@ -153,6 +160,9 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
+import org.eclipse.ui.IViewReference;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.PlatformUI;
 
 /**
  * An abstract class providing set-up and facilities for testing the style customization features.
@@ -320,78 +330,105 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
                 choiceOfValues = propertyDescriptor.getChoiceOfValues(style);
                 value = propertyValueWrapper.getEditableValue(style);
             }
-            SWTBotTree tree = propertiesBot.bot().tree();
-            SWTBotTreeItem treeItem = tree.expandNode(category).select().getNode(displayName);
-            treeItem.doubleClick();
-            if (feature instanceof EAttribute) {
-                if (feature.getEType() instanceof EEnum && value instanceof List && ((List) value).isEmpty()) {
-                    // For label format, we make the change from tabbar (more
-                    // simple)...
-                    editor.setFocus();
-                    editor.bot().toolbarToggleButtonWithTooltip("Bold Font Style").click();
-                    SWTBotUtils.waitAllUiEvents();
-                } else if (feature.getEType() instanceof EEnum && value instanceof Enumerator) {
-                    SWTBotCCombo ccomboBox = propertiesBot.bot().ccomboBox();
-                    Enumerator newValueLiteral = getNewValueLiteral(value, choiceOfValues);
-                    String text = propertyDescriptor.getLabelProvider(style).getText(newValueLiteral);
-                    ccomboBox.setSelection(text);
-                    // In photon we need to press ENTER to leave the combo
-                    if (TestsUtil.isPhotonPlatformOrLater()) {
-                        ccomboBox.pressShortcut(Keystrokes.CR);
-                    }
-                } else if (feature.getEType() == EcorePackage.Literals.EBOOLEAN) {
-
-                    // In photon, the feature widget is not a combo anymore.
-                    if (TestsUtil.isPhotonPlatformOrLater()) {
-                        SWTBotCheckBox botCheckBox = propertiesBot.bot().checkBox();
-                        if (value == Boolean.TRUE) {
-                            botCheckBox.deselect();
-                        } else {
-                            botCheckBox.select();
-                        }
-                    } else {
+            maximize(propertiesBot.getViewReference());
+            ICondition done = new OperationDoneCondition("Change value of " + feature.getName());
+            try {
+                SWTBotTree tree = propertiesBot.bot().tree();
+                SWTBotTreeItem treeItem = tree.expandNode(category).select().getNode(displayName);
+                treeItem.doubleClick();
+                bot.waitUntil(new TreeItemSelected(treeItem));
+                SWTBotUtils.waitAllUiEvents();
+                if (feature instanceof EAttribute) {
+                    if (feature.getEType() instanceof EEnum && value instanceof List && ((List) value).isEmpty()) {
+                        // For label format, we make the change from tabbar (more
+                        // simple)...
+                        restore(propertiesBot.getViewReference());
+                        editor.setFocus();
+                        editor.bot().toolbarToggleButtonWithTooltip("Bold Font Style").click();
+                        SWTBotUtils.waitAllUiEvents();
+                    } else if (feature.getEType() instanceof EEnum && value instanceof Enumerator) {
                         SWTBotCCombo ccomboBox = propertiesBot.bot().ccomboBox();
-                        String newSelection = Boolean.TRUE.toString();
-                        if (value == Boolean.TRUE) {
-                            newSelection = Boolean.FALSE.toString();
+                        Enumerator newValueLiteral = getNewValueLiteral(value, choiceOfValues);
+                        String text = propertyDescriptor.getLabelProvider(style).getText(newValueLiteral);
+                        ccomboBox.setSelection(text);
+                        SWTBotUtils.waitAllUiEvents();
+                        // In photon we need to press ENTER to leave the combo
+                        if (TestsUtil.isPhotonPlatformOrLater()) {
+                            ccomboBox.pressShortcut(Keystrokes.CR);
+                            SWTBotUtils.waitAllUiEvents();
+                            // To be sure to leave the combo, "executes a tab key event"
+                            propertiesBot.bot().tree().traverse(Traverse.TAB_NEXT);
+                            SWTBotUtils.waitAllUiEvents();
                         }
-                        ccomboBox.setSelection(newSelection);
+                    } else if (feature.getEType() == EcorePackage.Literals.EBOOLEAN) {
+                        // In photon, the feature widget is not a combo anymore.
+                        if (TestsUtil.isPhotonPlatformOrLater()) {
+                            SWTBotCheckBox botCheckBox = propertiesBot.bot().checkBox();
+                            if (value == Boolean.TRUE) {
+                                botCheckBox.deselect();
+                            } else {
+                                botCheckBox.select();
+                            }
+                        } else {
+                            SWTBotCCombo ccomboBox = propertiesBot.bot().ccomboBox();
+                            String newSelection = Boolean.TRUE.toString();
+                            if (value == Boolean.TRUE) {
+                                newSelection = Boolean.FALSE.toString();
+                            }
+                            ccomboBox.setSelection(newSelection);
+                        }
+                        SWTBotUtils.waitAllUiEvents();
+                    } else if (feature == ViewpointPackage.Literals.BASIC_LABEL_STYLE__ICON_PATH) {
+                        propertiesBot.bot().text().setText("/" + getProjectName() + "/" + NEW_IMAGE_NAME);
+                        SWTBotUtils.waitAllUiEvents();
+                        propertiesBot.bot().text().traverse(Traverse.TAB_NEXT);
+                    } else if (feature == ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR || feature == DiagramPackage.Literals.BORDERED_STYLE__BORDER_COLOR
+                            || feature == DiagramPackage.Literals.SHAPE_CONTAINER_STYLE__BACKGROUND_COLOR || feature == DiagramPackage.Literals.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR
+                            || feature == DiagramPackage.Literals.FLAT_CONTAINER_STYLE__FOREGROUND_COLOR || feature == DiagramPackage.Literals.ELLIPSE__COLOR
+                            || feature == DiagramPackage.Literals.SQUARE__COLOR || feature == DiagramPackage.Literals.DOT__BACKGROUND_COLOR || feature == DiagramPackage.Literals.EDGE_STYLE__STROKE_COLOR
+                            || feature == DiagramPackage.Literals.NOTE__COLOR || feature == DiagramPackage.Literals.BUNDLED_IMAGE__COLOR || feature == DiagramPackage.Literals.LOZENGE__COLOR) {
+                        propertiesBot.bot().text().setText("100,100,100");
+                        SWTBotUtils.waitAllUiEvents();
+                        propertiesBot.bot().text().traverse(Traverse.TAB_NEXT);
+                    } else if (feature == DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION) {
+                        // FIXME VP-3559 : the customization of borderSize
+                        // doesn't works because the
+                        // borderSizeComputationExpression change doesn't
+                        // update the borderSize attribute
+                        propertiesBot.bot().text().setText("20");
+                        SWTBotUtils.waitAllUiEvents();
+                        propertiesBot.bot().text().traverse(Traverse.TAB_NEXT);
+                    } else if (feature.getEType() == EcorePackage.Literals.EINTEGER_OBJECT || feature.getEType() == EcorePackage.Literals.EINT) {
+                        propertiesBot.bot().text().setText("20");
+                        SWTBotUtils.waitAllUiEvents();
+                        propertiesBot.bot().text().traverse(Traverse.TAB_NEXT);
+                    } else if (feature == DiagramPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH) {
+                        propertiesBot.bot().text().setText("/" + getProjectName() + "/" + NEW_IMAGE_NAME);
+                        SWTBotUtils.waitAllUiEvents();
+                        propertiesBot.bot().text().traverse(Traverse.TAB_NEXT);
                     }
-                } else if (feature == ViewpointPackage.Literals.BASIC_LABEL_STYLE__ICON_PATH) {
-                    propertiesBot.bot().text().setText("/" + getProjectName() + "/" + NEW_IMAGE_NAME);
-                } else if (feature == ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR || feature == DiagramPackage.Literals.BORDERED_STYLE__BORDER_COLOR
-                        || feature == DiagramPackage.Literals.SHAPE_CONTAINER_STYLE__BACKGROUND_COLOR || feature == DiagramPackage.Literals.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR
-                        || feature == DiagramPackage.Literals.FLAT_CONTAINER_STYLE__FOREGROUND_COLOR || feature == DiagramPackage.Literals.ELLIPSE__COLOR
-                        || feature == DiagramPackage.Literals.SQUARE__COLOR || feature == DiagramPackage.Literals.DOT__BACKGROUND_COLOR || feature == DiagramPackage.Literals.EDGE_STYLE__STROKE_COLOR
-                        || feature == DiagramPackage.Literals.NOTE__COLOR || feature == DiagramPackage.Literals.BUNDLED_IMAGE__COLOR || feature == DiagramPackage.Literals.LOZENGE__COLOR) {
-                    propertiesBot.bot().text().setText("100,100,100");
-                } else if (feature == DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION) {
-                    // FIXME VP-3559 : the customization of borderSize
-                    // doesn't works because the
-                    // borderSizeComputationExpression change doesn't
-                    // update the borderSize attribute
-                    propertiesBot.bot().text().setText("20");
-                } else if (feature.getEType() == EcorePackage.Literals.EINTEGER_OBJECT || feature.getEType() == EcorePackage.Literals.EINT) {
-                    propertiesBot.bot().text().setText("20");
-                } else if (feature == DiagramPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH) {
-                    propertiesBot.bot().text().setText("/" + getProjectName() + "/" + NEW_IMAGE_NAME);
+                } else if (feature instanceof EReference) {
+                    EReference eReference = (EReference) feature;
+                    // FIXME : color of BundledImage : the proposed color have
+                    // duplicates
+                    if (eReference.isContainment()) {
+                        SWTBotCCombo ccomboBox = propertiesBot.bot().ccomboBox();
+                        ccomboBox.setSelection(2);
+                        SWTBotUtils.waitAllUiEvents();
+                    } else {
+                        propertiesBot.bot().ccomboBox().setSelection(1);
+                        SWTBotUtils.waitAllUiEvents();
+                    }
                 }
-            } else if (feature instanceof EReference) {
-                EReference eReference = (EReference) feature;
-                // FIXME : color of BundledImage : the proposed color have
-                // duplicates
-                if (eReference.isContainment()) {
-                    SWTBotCCombo ccomboBox = propertiesBot.bot().ccomboBox();
-                    ccomboBox.setSelection(2);
-                } else {
-                    propertiesBot.bot().ccomboBox().setSelection(1);
-                }
+            } finally {
+                restore(propertiesBot.getViewReference());
             }
             editor.scrollTo(0, 0);
             editor.click(5, 5);
             editor.setFocus();
             editor.reveal(swtBotGefEditPart.part());
             SWTBotUtils.waitAllUiEvents();
+            bot.waitUntil(done);
         }
         return customized;
     }
@@ -465,7 +502,7 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
                 }
             } else if (gmfStyleEAttribute == NotationPackage.Literals.FONT_STYLE__FONT_COLOR) {
                 SWTBotShell paletteShell = SWTBotSiriusHelper.changeFontColorToolbarMenu(bot);
-            paletteShell.bot().buttonWithTooltip("{239, 41, 41}").click();
+                paletteShell.bot().buttonWithTooltip("{239, 41, 41}").click();
                 SWTBotUtils.waitAllUiEvents();
                 customized = true;
             } else if (gmfStyleEAttribute == NotationPackage.Literals.FONT_STYLE__FONT_NAME) {
@@ -809,6 +846,7 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
     protected void selectAndRefreshDiagram() {
         package1WithWorkspaceImageStyleBot.click();
         package1WithWorkspaceImageStyleBot.parent().click();
+        bot.waitUntil(new CheckSelectedCondition(editor, package1WithWorkspaceImageStyleBot.parent().part()));
         SWTBotUtils.waitAllUiEvents();
         manualRefresh();
     }
@@ -1405,5 +1443,35 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
         referenceEditPartBot = null;
         propertiesBot = null;
         super.tearDown();
+    }
+
+    /**
+     * Maximize this <code>viewReference</code>.
+     * 
+     * @param viewReference
+     *            The view to maximize.
+     */
+    public void maximize(IViewReference viewReference) {
+        UIThreadRunnable.syncExec(SWTUtils.display(), new VoidResult() {
+            @Override
+            public void run() {
+                PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().setPartState(viewReference, IWorkbenchPage.STATE_MAXIMIZED);
+            }
+        });
+    }
+
+    /**
+     * Restore this <code>viewReference</code> to its default size (if it was maximized).
+     * 
+     * @param viewReference
+     *            The view to restore.
+     */
+    public void restore(IViewReference viewReference) {
+        UIThreadRunnable.syncExec(SWTUtils.display(), new VoidResult() {
+            @Override
+            public void run() {
+                PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().setPartState(viewReference, IWorkbenchPage.STATE_RESTORED);
+            }
+        });
     }
 }
