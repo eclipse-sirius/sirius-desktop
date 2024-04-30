@@ -38,7 +38,6 @@ import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.distribute.DistributeAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl;
-import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
@@ -148,10 +147,6 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
      *             Test error.
      */
     public void testToolBarButtonInitialization() throws Exception {
-        if (TestsUtil.shouldSkipUnreliableTests()) {
-            return;
-        }
-
         SWTBotUtils.waitAllUiEvents();
         doTestToolbarButtonInitialization(false);
 
@@ -164,9 +159,6 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
      *             Test error.
      */
     public void testToolBarButtonInitializationWithExtension() throws Exception {
-        if (TestsUtil.shouldSkipUnreliableTests()) {
-            return;
-        }
         ActivateTestTabbarExtensionPropertyTester.enableTestTabbarExtensions(true);
         selectDiagramElement0();
         selectDiagram();
@@ -186,10 +178,6 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
      *             Test error.
      */
     public void testTabbarButtonStabilityOnEditorFocusOut() throws Exception {
-        if (TestsUtil.shouldSkipUnreliableTests()) {
-            return;
-        }
-
         // Select an element on diagram and validate Tabbar tools
         selectDiagramElement0();
         checkDiagramElementTabbarButtons(false);
@@ -473,9 +461,6 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
      * visible but not enabled.
      */
     public void testTabbarDiagramActionsEnablement() {
-        if (TestsUtil.shouldSkipUnreliableTests()) {
-            return;
-        }
         // close the current editor
         editor.close();
 
