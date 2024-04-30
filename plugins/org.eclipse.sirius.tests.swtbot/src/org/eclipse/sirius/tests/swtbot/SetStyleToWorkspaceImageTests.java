@@ -499,30 +499,35 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
     public void testSetWkpImageFromClipboard() throws Exception {
         IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(getProjectName());
 
-        // send image to clipboard
-        IFile imageFile = project.getFile(IMG_FILE);
-        copyImageToClipboard(imageFile);
+        try {
+            // send image to clipboard
+            IFile imageFile = project.getFile(IMG_FILE);
+            copyImageToClipboard(imageFile);
 
-        // select element
-        SWTBotGefEditPart botPart = selectAndCheckEditPart(C1_CONTAINER, AbstractDiagramContainerEditPart.class);
-        IAbstractDiagramNodeEditPart part = (IAbstractDiagramNodeEditPart) botPart.part();
-        checkCustom(part, false); // check initial style
+            // select element
+            SWTBotGefEditPart botPart = selectAndCheckEditPart(C1_CONTAINER, AbstractDiagramContainerEditPart.class);
+            IAbstractDiagramNodeEditPart part = (IAbstractDiagramNodeEditPart) botPart.part();
+            checkCustom(part, false); // check initial style
 
-        // paste image on element
-        dropDownButtonItemClick(getPasteMenu(), Messages.PasteImageAction_text, Messages.PasteImageAction_toolTipText);
+            // paste image on element
+            dropDownButtonItemClick(getPasteMenu(), Messages.PasteImageAction_text, Messages.PasteImageAction_toolTipText);
 
-        // check
-        checkCustom(part, true);
-        if (part.resolveDiagramElement().getStyle() instanceof WorkspaceImage style) {
-            IFile wspImgFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(style.getWorkspacePath()));
-            IFolder imagesFolder = project.getFolder("images");
-            assertTrue("Image file of workspace image style doesn't exist", wspImgFile.exists());
-            assertEquals("The image pasted from clipboard is not in `" + getProjectName() + "` project", getProjectName(), wspImgFile.getProject().getName());
-            assertEquals("Workspace image file must be in wrong directory", imagesFolder, wspImgFile.getParent());
-            assertTrue("Workspace image filename has the wrong format, expected yyyymmdd_hhmmss_xxxxxx.png, found: " + wspImgFile.getName(),
-                    wspImgFile.getName().matches("^[0-9]{8}_[0-9]{6}_[0-9]{6}\\.png$"));
-        } else {
-            fail("The workspace image style is expected on the selected element after pasting image from clipboard");
+            // check
+            checkCustom(part, true);
+            if (part.resolveDiagramElement().getStyle() instanceof WorkspaceImage style) {
+                IFile wspImgFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(style.getWorkspacePath()));
+                IFolder imagesFolder = project.getFolder("images");
+                assertTrue("Image file of workspace image style doesn't exist", wspImgFile.exists());
+                assertEquals("The image pasted from clipboard is not in `" + getProjectName() + "` project", getProjectName(), wspImgFile.getProject().getName());
+                assertEquals("Workspace image file must be in wrong directory", imagesFolder, wspImgFile.getParent());
+                assertTrue("Workspace image filename has the wrong format, expected yyyymmdd_hhmmss_xxxxxx.png, found: " + wspImgFile.getName(),
+                        wspImgFile.getName().matches("^[0-9]{8}_[0-9]{6}_[0-9]{6}\\.png$"));
+            } else {
+                fail("The workspace image style is expected on the selected element after pasting image from clipboard");
+            }
+        } finally {
+            // Clear the clipboard to avoid side effect on following tests
+            clearClipboard();
         }
     }
 
@@ -535,53 +540,58 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
     public void testSetWkpImageFromClipboardToManyElement() throws Exception {
         IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(getProjectName());
 
-        // send image to clipboard
-        IFile imageFile = project.getFile(IMG_FILE);
-        copyImageToClipboard(imageFile);
+        try {
+            // send image to clipboard
+            IFile imageFile = project.getFile(IMG_FILE);
+            copyImageToClipboard(imageFile);
 
-        // select elements
-        var selectionNames = new ArrayList<String>();
-        var selectionTypes = new ArrayList<Class<? extends IGraphicalEditPart>>();
-        
-        selectionNames.add(C1_CONTAINER);
-        selectionTypes.add(AbstractDiagramContainerEditPart.class);
-        selectionNames.add(C1_LIST);
-        selectionTypes.add(AbstractDiagramListEditPart.class);
+            // select elements
+            var selectionNames = new ArrayList<String>();
+            var selectionTypes = new ArrayList<Class<? extends IGraphicalEditPart>>();
 
-        List<SWTBotGefEditPart> botParts = selectAndCheckManyEditPart(selectionNames, selectionTypes);
-        List<IAbstractDiagramNodeEditPart> parts = botParts.stream().map(botPart -> {
-            return (IAbstractDiagramNodeEditPart) botPart.part();
-        }).toList();
-        // check initial style
-        for (IAbstractDiagramNodeEditPart part : parts) {
-            checkCustom(part, false);
-        }
+            selectionNames.add(C1_CONTAINER);
+            selectionTypes.add(AbstractDiagramContainerEditPart.class);
+            selectionNames.add(C1_LIST);
+            selectionTypes.add(AbstractDiagramListEditPart.class);
 
-        // paste image on element
-        dropDownButtonItemClick(getPasteMenu(), Messages.PasteImageAction_text, Messages.PasteImageAction_toolTipText);
-
-        // check
-        var wkpImagePath = new ArrayList<String>();
-        for (IAbstractDiagramNodeEditPart part : parts) {
-            checkCustom(part, true);
-            if (part.resolveDiagramElement().getStyle() instanceof WorkspaceImage style) {
-                wkpImagePath.add(style.getWorkspacePath());
-            } else {
-                fail("The workspace image style is expected on the selected element after pasting image from clipboard");
+            List<SWTBotGefEditPart> botParts = selectAndCheckManyEditPart(selectionNames, selectionTypes);
+            List<IAbstractDiagramNodeEditPart> parts = botParts.stream().map(botPart -> {
+                return (IAbstractDiagramNodeEditPart) botPart.part();
+            }).toList();
+            // check initial style
+            for (IAbstractDiagramNodeEditPart part : parts) {
+                checkCustom(part, false);
             }
+
+            // paste image on element
+            dropDownButtonItemClick(getPasteMenu(), Messages.PasteImageAction_text, Messages.PasteImageAction_toolTipText);
+
+            // check
+            var wkpImagePath = new ArrayList<String>();
+            for (IAbstractDiagramNodeEditPart part : parts) {
+                checkCustom(part, true);
+                if (part.resolveDiagramElement().getStyle() instanceof WorkspaceImage style) {
+                    wkpImagePath.add(style.getWorkspacePath());
+                } else {
+                    fail("The workspace image style is expected on the selected element after pasting image from clipboard");
+                }
+            }
+
+            // check that path is the same for all selected element
+            wkpImagePath.stream().allMatch(path -> path.equals(wkpImagePath.get(0)));
+
+            // check this path
+            IFile wspImgFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(wkpImagePath.get(0)));
+            IFolder imagesFolder = project.getFolder("images");
+            assertTrue("Image file of workspace image style doesn't exist", wspImgFile.exists());
+            assertEquals("The image pasted from clipboard is not in `" + getProjectName() + "` project", getProjectName(), wspImgFile.getProject().getName());
+            assertEquals("Workspace image file must be in wrong directory", imagesFolder, wspImgFile.getParent());
+            assertTrue("Workspace image filename has the wrong format, expected yyyymmdd_hhmmss_xxxxxx.png, found: " + wspImgFile.getName(),
+                    wspImgFile.getName().matches("^[0-9]{8}_[0-9]{6}_[0-9]{6}\\.png$"));
+        } finally {
+            // Clear the clipboard to avoid side effect on following tests
+            clearClipboard();
         }
-
-        // check that path is the same for all selected element
-        wkpImagePath.stream().allMatch(path -> path.equals(wkpImagePath.get(0)));
-
-        // check this path
-        IFile wspImgFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(wkpImagePath.get(0)));
-        IFolder imagesFolder = project.getFolder("images");
-        assertTrue("Image file of workspace image style doesn't exist", wspImgFile.exists());
-        assertEquals("The image pasted from clipboard is not in `" + getProjectName() + "` project", getProjectName(), wspImgFile.getProject().getName());
-        assertEquals("Workspace image file must be in wrong directory", imagesFolder, wspImgFile.getParent());
-        assertTrue("Workspace image filename has the wrong format, expected yyyymmdd_hhmmss_xxxxxx.png, found: " + wspImgFile.getName(),
-                wspImgFile.getName().matches("^[0-9]{8}_[0-9]{6}_[0-9]{6}\\.png$"));
     }
 
     /**
@@ -592,8 +602,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
      */
     public void testSetWkpImageFromClipboardButton() throws Exception {
         IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(getProjectName());
-        // clear clipboard
-        clearClipboard();
+
         // paste format is default action
         SWTBotToolbarDropDownButton pasteFormatMenu;
 
@@ -614,27 +623,32 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
         assertFalse("paste format menu must be disabled in menu without clipboard image", //
                 bot.menu("Edit").menu(Messages.PasteImageAction_text).isEnabled());
 
-        // copy image to Clipboard
-        IFile imageFile = project.getFile(IMG_FILE);
-        this.copyImageToClipboard(imageFile);
-        bot.waitUntil(new WidgetIsEnabledCondition(getPasteMenu()));
+        try {
+            // copy image to Clipboard
+            IFile imageFile = project.getFile(IMG_FILE);
+            this.copyImageToClipboard(imageFile);
+            bot.waitUntil(new WidgetIsEnabledCondition(getPasteMenu()));
 
-        // check with selection and image in clipboard
-        pasteFormatMenu = getPasteMenu();
-        assertTrue("paste format menu must be enabled in toolbar with selection and clipboard image", //
-                dropDownButtonItemIsEnable(pasteFormatMenu, Messages.PasteImageAction_text));
-        assertTrue("paste format menu must be enabled in menu with selection and clipboard image", //
-                bot.menu("Edit").menu(Messages.PasteImageAction_text).isEnabled());
+            // check with selection and image in clipboard
+            pasteFormatMenu = getPasteMenu();
+            assertTrue("paste format menu must be enabled in toolbar with selection and clipboard image", //
+                    dropDownButtonItemIsEnable(pasteFormatMenu, Messages.PasteImageAction_text));
+            assertTrue("paste format menu must be enabled in menu with selection and clipboard image", //
+                    bot.menu("Edit").menu(Messages.PasteImageAction_text).isEnabled());
 
-        // selection of an element that cannot have workspace image style
-        selectAndCheckEditPart(A1C1_LIST, AbstractDiagramNameEditPart.class);
+            // selection of an element that cannot have workspace image style
+            selectAndCheckEditPart(A1C1_LIST, AbstractDiagramNameEditPart.class);
 
-        // check with image in clipboard but not valid selection for worspace image
-        pasteFormatMenu = getPasteMenu();
-        assertFalse("paste format menu must be disabled in toolbar when selection cannot have workspace image style", //
-                dropDownButtonItemIsEnable(pasteFormatMenu, Messages.PasteImageAction_text));
-        assertFalse("paste format menu must be disabled in menu when selection cannot have workspace image style", //
-                bot.menu("Edit").menu(Messages.PasteImageAction_text).isEnabled());
+            // check with image in clipboard but not valid selection for worspace image
+            pasteFormatMenu = getPasteMenu();
+            assertFalse("paste format menu must be disabled in toolbar when selection cannot have workspace image style", //
+                    dropDownButtonItemIsEnable(pasteFormatMenu, Messages.PasteImageAction_text));
+            assertFalse("paste format menu must be disabled in menu when selection cannot have workspace image style", //
+                    bot.menu("Edit").menu(Messages.PasteImageAction_text).isEnabled());
+        } finally {
+            // Clear the clipboard to avoid side effect on following tests
+            clearClipboard();
+        }
     }
 
     /**
