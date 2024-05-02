@@ -502,6 +502,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(RemoveBendpointsRectilinearNoteAttachmentTest.class);
         suite.addTestSuite(RectilinearNoteAttachmentWithOneBendpointTest.class);
         suite.addTestSuite(LinkedBorderNodeLocationTest.class);
+        suite.addTestSuite(EdgeLabelLocationZoomTest.class);
     }
 
     /**
