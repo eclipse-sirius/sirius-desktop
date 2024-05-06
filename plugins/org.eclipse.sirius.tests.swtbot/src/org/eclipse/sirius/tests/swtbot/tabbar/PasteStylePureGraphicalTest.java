@@ -95,6 +95,12 @@ public class PasteStylePureGraphicalTest extends AbstractSiriusSwtBotGefTestCase
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
     }
 
+    @Override
+    protected void tearDown() throws Exception {
+        clearFormatDataManager();
+        super.tearDown();
+    }
+
     void openDiagramSimple() {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "Entities", " package entities", DDiagram.class);
     }

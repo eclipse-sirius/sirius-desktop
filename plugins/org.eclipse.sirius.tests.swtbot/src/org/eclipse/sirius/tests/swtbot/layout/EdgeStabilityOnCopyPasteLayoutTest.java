@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2014, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -75,6 +75,12 @@ public class EdgeStabilityOnCopyPasteLayoutTest extends AbstractSiriusSwtBotGefT
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         sessionAirdResource = new UIResource(designerProject, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource, true);
+    }
+
+    @Override
+    protected void tearDown() throws Exception {
+        clearFormatDataManager();
+        super.tearDown();
     }
 
     /**

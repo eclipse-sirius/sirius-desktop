@@ -70,6 +70,7 @@ import org.eclipse.sirius.diagram.tools.internal.preferences.SiriusDiagramIntern
 import org.eclipse.sirius.diagram.ui.business.internal.dialect.DiagramDialectUIServices;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
+import org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManagerForSemanticElementsFactory;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.preferences.SiriusDiagramUiInternalPreferencesKeys;
@@ -2086,5 +2087,12 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
                 }
             }
         });
+    }
+
+    /**
+     * Clear the FormatDataManager cache, to avoid side effects on following tests.
+     */
+    protected void clearFormatDataManager() {
+        SiriusFormatDataManagerForSemanticElementsFactory.getInstance().getSiriusFormatDataManager().clearFormatData();
     }
 }
