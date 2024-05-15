@@ -10,10 +10,24 @@ pipeline {
 
     options {
       timestamps ()
-	  lock(resource: 'sirius-desktop-tests')
     }
 
     stages {
+        stage('Check Resource Lock') {
+            steps {
+                script {
+                    def isLockedByOther = true
+                    def resourceName = 'sirius-desktop-tests'
+                    lock(resource: resourceName, skipIfLocked : true) {
+                        isLockedByOther = false
+                    }
+
+                    if (isLockedByOther) {
+                        error "ABORTING because the ressource '${resourceName}' is locked."
+                    }
+                }
+            }
+        }
         stage('Parallel Tests') {
             when {
                 not {
