@@ -227,6 +227,12 @@ public final class Messages {
     public static String ImagePathConstraint_workspaceImagePathError;
 
     @TranslatableMessage
+    public static String InitGlobalDirectEditVariablesTask_setLabel;
+
+    @TranslatableMessage
+    public static String InitGlobalDirectEditVariablesTask_unsetLabel;
+
+    @TranslatableMessage
     public static String NodeFilter_notNullErrorMsg;
 
     @TranslatableMessage
