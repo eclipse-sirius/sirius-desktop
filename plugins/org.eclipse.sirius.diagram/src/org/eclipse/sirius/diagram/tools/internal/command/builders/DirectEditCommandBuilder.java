@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
+import org.eclipse.sirius.diagram.business.internal.helper.task.InitGlobalDirectEditVariablesTask;
 import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
 import org.eclipse.sirius.diagram.tools.api.Messages;
 import org.eclipse.sirius.ext.base.Option;
@@ -64,14 +65,16 @@ public class DirectEditCommandBuilder extends AbstractDiagramCommandBuilder {
                 messageFormat = directEditTool.getMask().getMask();
             }
             IInterpreter interpreter = InterpreterUtil.getInterpreter(repElement);
-            result.getTasks().add(new InitInterpreterFromParsedVariableTask(interpreter, messageFormat, newValue));
-
             Option<DDiagram> parentDiagram = getDDiagram();
             if (parentDiagram.some() && repElement.getTarget() != null && directEditTool.getInitialOperation() != null) {
+                result.getTasks().add(new InitInterpreterFromParsedVariableTask(interpreter, messageFormat, newValue));
+                result.getTasks().add(new InitGlobalDirectEditVariablesTask(interpreter, parentDiagram.get(), repElement));
+
                 final ICommandTask operations = taskHelper.buildTaskFromModelOperation(parentDiagram.get(), repElement.getTarget(), directEditTool.getInitialOperation().getFirstModelOperations());
                 result.getTasks().add(operations);
             }
             addPostOperationTasks(result, interpreter);
+            result.getTasks().add(new InitGlobalDirectEditVariablesTask(interpreter));
             return result;
         }
         return UnexecutableCommand.INSTANCE;
