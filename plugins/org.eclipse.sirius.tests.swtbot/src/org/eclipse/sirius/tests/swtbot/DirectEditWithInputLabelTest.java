@@ -15,6 +15,7 @@ package org.eclipse.sirius.tests.swtbot;
 import java.util.List;
 
 import org.eclipse.gef.EditPart;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
@@ -94,7 +95,12 @@ public class DirectEditWithInputLabelTest extends AbstractSiriusSwtBotGefTestCas
      *             Test error.
      */
     public void testDirectEditWithInputLabelExpressionOnNode() throws Exception {
+        IInterpreter interpreter = localSession.getOpenedSession().getInterpreter();
+        assertNull("The variable named \"0\" should not be set before the direct edit.", interpreter.getVariable("0"));
+        assertNull("The variable named \"0\" should not be set before the direct edit.", interpreter.getVariable("arg0"));
         checkDirectEditWithInputLabelExpression("<<node>> ", AbstractDiagramNodeEditPart.class);
+        assertNull("The variable named \"0\" should not be set after the direct edit.", interpreter.getVariable("0"));
+        assertNull("The variable named \"0\" should not be set after the direct edit.", interpreter.getVariable("arg0"));
     }
 
     /**

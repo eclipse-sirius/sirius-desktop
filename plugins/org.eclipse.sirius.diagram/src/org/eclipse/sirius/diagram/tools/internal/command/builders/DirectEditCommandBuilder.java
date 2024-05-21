@@ -75,6 +75,7 @@ public class DirectEditCommandBuilder extends AbstractDiagramCommandBuilder {
             }
             addPostOperationTasks(result, interpreter);
             result.getTasks().add(new InitGlobalDirectEditVariablesTask(interpreter));
+            result.getTasks().add(new InitInterpreterFromParsedVariableTask(interpreter, messageFormat, newValue, true));
             return result;
         }
         return UnexecutableCommand.INSTANCE;
