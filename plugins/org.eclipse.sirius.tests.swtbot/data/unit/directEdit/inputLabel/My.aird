@@ -4,7 +4,7 @@
     <semanticResources>My.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_M7Vx0OdzEeG5cKtHzU7rxQ">
       <viewpoint xmi:type="description:Viewpoint" href="My.odesign#//@ownedViewpoints[name='NewInputLabelForDirectEdit']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_4GBhUBdQEe-7h-MUWfie_g" name="new ClassDiag" repPath="#_OpyQoOdzEeG5cKtHzU7rxQ" changeId="1716282160147">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_4GBhUBdQEe-7h-MUWfie_g" name="new ClassDiag" repPath="#_OpyQoOdzEeG5cKtHzU7rxQ" changeId="1716282710283">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='NewInputLabelForDirectEdit']/@ownedRepresentations[name='ClassDiag']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -64,6 +64,57 @@
           <styles xmi:type="notation:ShapeStyle" xmi:id="_OsKPMedzEeG5cKtHzU7rxQ" fontColor="15736992" fontName="Ubuntu" fontHeight="8"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OsKPMudzEeG5cKtHzU7rxQ" x="300" y="30" width="228" height="158"/>
         </children>
+        <children xmi:type="notation:Node" xmi:id="_TfnvsBdREe-7h-MUWfie_g" type="2001" element="_TfZtQhdREe-7h-MUWfie_g">
+          <children xmi:type="notation:Node" xmi:id="_TfoWwBdREe-7h-MUWfie_g" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_TfoWwRdREe-7h-MUWfie_g" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_TfqzABdREe-7h-MUWfie_g" type="3001" element="_TfaUUhdREe-7h-MUWfie_g">
+            <children xmi:type="notation:Node" xmi:id="_TfqzAxdREe-7h-MUWfie_g" type="5001">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_TfqzBBdREe-7h-MUWfie_g" x="-84" y="-17"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_TfsBIBdREe-7h-MUWfie_g" type="3003" element="_Tfa7YBdREe-7h-MUWfie_g">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_TfsBIRdREe-7h-MUWfie_g" fontName="DejaVu Sans" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_TfsBIhdREe-7h-MUWfie_g"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_TfqzARdREe-7h-MUWfie_g" fontName="DejaVu Sans" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_TfqzAhdREe-7h-MUWfie_g" x="145" y="-2" width="10" height="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_TfraEBdREe-7h-MUWfie_g" type="3003" element="_TfaUUBdREe-7h-MUWfie_g">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_TfraERdREe-7h-MUWfie_g" fontName="DejaVu Sans" fontHeight="10"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_TfraEhdREe-7h-MUWfie_g"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_TfnvsRdREe-7h-MUWfie_g" fontName="DejaVu Sans" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_TfnvshdREe-7h-MUWfie_g" x="302" y="330" width="221" height="51"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_Tfo90BdREe-7h-MUWfie_g" type="2003" element="_TfcwkRdREe-7h-MUWfie_g">
+          <children xmi:type="notation:Node" xmi:id="_Tfo90xdREe-7h-MUWfie_g" type="5007"/>
+          <children xmi:type="notation:Node" xmi:id="_Tfo91BdREe-7h-MUWfie_g" type="7004">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_Tfo91RdREe-7h-MUWfie_g"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_Tfo91hdREe-7h-MUWfie_g"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_Tfo90RdREe-7h-MUWfie_g" fontName="DejaVu Sans" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Tfo90hdREe-7h-MUWfie_g" x="400" y="223" width="128" height="58"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_Tfpk4BdREe-7h-MUWfie_g" type="2002" element="_TffM0RdREe-7h-MUWfie_g">
+          <children xmi:type="notation:Node" xmi:id="_TfqL8BdREe-7h-MUWfie_g" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_TfqL8RdREe-7h-MUWfie_g" type="7001">
+            <children xmi:type="notation:Node" xmi:id="_TfsBIxdREe-7h-MUWfie_g" type="3007" element="_Tffz4RdREe-7h-MUWfie_g">
+              <children xmi:type="notation:Node" xmi:id="_TfsoMBdREe-7h-MUWfie_g" type="5003">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_TfsoMRdREe-7h-MUWfie_g" y="5"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_TfsoMhdREe-7h-MUWfie_g" type="3003" element="_Tfga8BdREe-7h-MUWfie_g">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_TfsoMxdREe-7h-MUWfie_g" fontName="DejaVu Sans" fontHeight="10"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_TfsoNBdREe-7h-MUWfie_g"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_TfsBJBdREe-7h-MUWfie_g" fontName="DejaVu Sans" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_TfsBJRdREe-7h-MUWfie_g" x="20" y="39" width="186" height="55"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_TfqL8hdREe-7h-MUWfie_g"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_TfqL8xdREe-7h-MUWfie_g"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_Tfpk4RdREe-7h-MUWfie_g" fontName="DejaVu Sans" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Tfpk4hdREe-7h-MUWfie_g" x="40" y="300" width="228" height="158"/>
+        </children>
         <styles xmi:type="notation:DiagramStyle" xmi:id="_OrDb8udzEeG5cKtHzU7rxQ"/>
       </data>
     </ownedAnnotationEntries>
@@ -82,6 +133,22 @@
         <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='NewInputLabelForDirectEdit']/@ownedRepresentations[name='ClassDiag']/@defaultLayer/@nodeMappings[name='ClassNode']/@borderedNodeMappings[name='ClassBNOnNode']"/>
       </ownedBorderedNodes>
       <ownedStyle xmi:type="diagram:Square" uid="_Opy3tudzEeG5cKtHzU7rxQ" labelPosition="node" color="114,159,207">
+        <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='NewInputLabelForDirectEdit']/@ownedRepresentations[name='ClassDiag']/@defaultLayer/@nodeMappings[name='ClassNode']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='NewInputLabelForDirectEdit']/@ownedRepresentations[name='ClassDiag']/@defaultLayer/@nodeMappings[name='ClassNode']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_TfZtQhdREe-7h-MUWfie_g" name="&lt;&lt;node>> ClassA" tooltipText="ClassA" width="3" height="3" resizeKind="NSEW">
+      <target xmi:type="ecore:EClass" href="My.ecore#//ClassA"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//ClassA"/>
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_TfaUUhdREe-7h-MUWfie_g" name="&lt;&lt;borderedNode>> ClassA" width="1" height="1" resizeKind="NSEW">
+        <target xmi:type="ecore:EClass" href="My.ecore#//ClassA"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//ClassA"/>
+        <ownedStyle xmi:type="diagram:Square" uid="_Tfa7YBdREe-7h-MUWfie_g">
+          <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='NewInputLabelForDirectEdit']/@ownedRepresentations[name='ClassDiag']/@defaultLayer/@nodeMappings[name='ClassNode']/@borderedNodeMappings[name='ClassBNOnNode']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='NewInputLabelForDirectEdit']/@ownedRepresentations[name='ClassDiag']/@defaultLayer/@nodeMappings[name='ClassNode']/@borderedNodeMappings[name='ClassBNOnNode']"/>
+      </ownedBorderedNodes>
+      <ownedStyle xmi:type="diagram:Square" uid="_TfaUUBdREe-7h-MUWfie_g" labelPosition="node" color="114,159,207">
         <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='NewInputLabelForDirectEdit']/@ownedRepresentations[name='ClassDiag']/@defaultLayer/@nodeMappings[name='ClassNode']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='NewInputLabelForDirectEdit']/@ownedRepresentations[name='ClassDiag']/@defaultLayer/@nodeMappings[name='ClassNode']"/>
@@ -105,6 +172,30 @@
         <target xmi:type="ecore:EClass" href="My.ecore#//MyClass"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//MyClass"/>
         <ownedStyle xmi:type="diagram:Square" uid="_Opy3x-dzEeG5cKtHzU7rxQ" labelPosition="node" color="114,159,207">
+          <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='NewInputLabelForDirectEdit']/@ownedRepresentations[name='ClassDiag']/@defaultLayer/@containerMappings[name='ClassContainer']/@subNodeMappings[name='ClassNodeInContainer']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='NewInputLabelForDirectEdit']/@ownedRepresentations[name='ClassDiag']/@defaultLayer/@containerMappings[name='ClassContainer']/@subNodeMappings[name='ClassNodeInContainer']"/>
+      </ownedDiagramElements>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_TfcwkRdREe-7h-MUWfie_g" name="&lt;&lt;list>> ClassA">
+      <target xmi:type="ecore:EClass" href="My.ecore#//ClassA"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//ClassA"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_TfdXoBdREe-7h-MUWfie_g" borderSize="1" borderSizeComputationExpression="1" backgroundColor="114,159,207" foregroundColor="255,255,255">
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='NewInputLabelForDirectEdit']/@ownedRepresentations[name='ClassDiag']/@defaultLayer/@containerMappings[name='ClassList']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='NewInputLabelForDirectEdit']/@ownedRepresentations[name='ClassDiag']/@defaultLayer/@containerMappings[name='ClassList']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_TffM0RdREe-7h-MUWfie_g" name="&lt;&lt;container>> ClassA">
+      <target xmi:type="ecore:EClass" href="My.ecore#//ClassA"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//ClassA"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_TffM0hdREe-7h-MUWfie_g" borderSize="1" borderSizeComputationExpression="1" foregroundColor="204,242,166">
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='NewInputLabelForDirectEdit']/@ownedRepresentations[name='ClassDiag']/@defaultLayer/@containerMappings[name='ClassContainer']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='NewInputLabelForDirectEdit']/@ownedRepresentations[name='ClassDiag']/@defaultLayer/@containerMappings[name='ClassContainer']"/>
+      <ownedDiagramElements xmi:type="diagram:DNode" uid="_Tffz4RdREe-7h-MUWfie_g" name="&lt;&lt;nodeInContainer>> ClassA" tooltipText="ClassA" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="ecore:EClass" href="My.ecore#//ClassA"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//ClassA"/>
+        <ownedStyle xmi:type="diagram:Square" uid="_Tfga8BdREe-7h-MUWfie_g" labelPosition="node" color="114,159,207">
           <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='NewInputLabelForDirectEdit']/@ownedRepresentations[name='ClassDiag']/@defaultLayer/@containerMappings[name='ClassContainer']/@subNodeMappings[name='ClassNodeInContainer']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='NewInputLabelForDirectEdit']/@ownedRepresentations[name='ClassDiag']/@defaultLayer/@containerMappings[name='ClassContainer']/@subNodeMappings[name='ClassNodeInContainer']"/>
