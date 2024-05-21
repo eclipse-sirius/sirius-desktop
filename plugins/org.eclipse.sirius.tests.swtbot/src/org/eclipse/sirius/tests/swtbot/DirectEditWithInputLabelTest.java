@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -54,6 +54,16 @@ public class DirectEditWithInputLabelTest extends AbstractSiriusSwtBotGefTestCas
     private static final String CLASS_NAME = "MyClass";
 
     /**
+     * The name of the class to edit with a specific behavior using "new" variables.
+     */
+    private static final String SPECIFIC_CLASS_NAME = "ClassA";
+
+    /**
+     * The expected name for the class to edit with a specific behavior using "new" variables.
+     */
+    private static final String SPECIFIC_CLASS_EXPECTED_NEW_NAME = "new ClassDiag ClassA";
+
+    /**
      * The suffix to add at the end of the name.
      */
     private static final String SUFFIX = "Suffix";
@@ -90,9 +100,23 @@ public class DirectEditWithInputLabelTest extends AbstractSiriusSwtBotGefTestCas
     /**
      * This method checks
      * <UL>
-     * <LI>that the display label during a direct edit of a Container
-     * corresponds to the expected one (specified in inputLabelExpression of
-     * directEditTool)</LI>
+     * <LI>that the display label during a direct edit of a Node corresponds to the expected one (specified in
+     * inputLabelExpression of directEditTool using diagram and view variables)</LI>
+     * <LI>and that the application of the tool is OK (using diagram and view variables).</LI>
+     * </UL>
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testDirectEditWithInputLabelExpressionOnNodeUsingVariables() throws Exception {
+        checkDirectEditWithInputLabelExpression("<<node>> ", SPECIFIC_CLASS_NAME, AbstractDiagramNodeEditPart.class);
+    }
+
+    /**
+     * This method checks
+     * <UL>
+     * <LI>that the display label during a direct edit of a Container corresponds to the expected one (specified in
+     * inputLabelExpression of directEditTool)</LI>
      * <LI>and that the application of the tool is OK.</LI>
      * </UL>
      * 
@@ -189,10 +213,31 @@ public class DirectEditWithInputLabelTest extends AbstractSiriusSwtBotGefTestCas
      *             Test error.
      */
     public void checkDirectEditWithInputLabelExpression(final String prefix, final Class<? extends EditPart> expectedEditPartType) throws Exception {
+        checkDirectEditWithInputLabelExpression(prefix, CLASS_NAME, expectedEditPartType);
+    }
+
+    /**
+     * This method checks
+     * <UL>
+     * <LI>that the display label during a direct edit of a diagram element corresponds to the expected one (specified
+     * in inputLabelExpression of directEditTool)</LI>
+     * <LI>and that the application of the tool is OK.</LI>
+     * </UL>
+     * 
+     * @param prefix
+     *            The prefix used to search the editPart to rename (by direct edit tool).
+     * @param className
+     *            The name of the class to rename
+     * @param expectedEditPartType
+     *            the type of the editPart to rename
+     * @throws Exception
+     *             Test error.
+     */
+    public void checkDirectEditWithInputLabelExpression(final String prefix, final String className, final Class<? extends EditPart> expectedEditPartType) throws Exception {
         // Click a first time on the edit part to select it.
-        editor.click(prefix + CLASS_NAME, expectedEditPartType);
+        editor.click(prefix + className, expectedEditPartType);
         // Click a second time on the edit part to enable the direct edit mode.
-        editor.clickCentered(prefix + CLASS_NAME, expectedEditPartType);
+        editor.clickCentered(prefix + className, expectedEditPartType);
 
         // editor.getEditPart(prefix + CLASS_NAME,
         // expectedEditPartType).activateDirectEdit();
@@ -206,7 +251,11 @@ public class DirectEditWithInputLabelTest extends AbstractSiriusSwtBotGefTestCas
             UIThreadRunnable.syncExec(new VoidResult() {
                 @Override
                 public void run() {
-                    assertEquals(CLASS_NAME, textControl.getText());
+                    if (CLASS_NAME.equals(className)) {
+                        assertEquals(CLASS_NAME, textControl.getText());
+                    } else {
+                        assertEquals(SPECIFIC_CLASS_EXPECTED_NEW_NAME, textControl.getText());
+                    }
                 }
             });
         } else {
@@ -215,7 +264,11 @@ public class DirectEditWithInputLabelTest extends AbstractSiriusSwtBotGefTestCas
         // Edit the current edit part by adding a suffix to its current name.
         editor.directEditTypeSuffix(SUFFIX);
         // Check that an editPart exists with the expected new name.
-        editor.getEditPart(prefix + CLASS_NAME + SUFFIX, expectedEditPartType);
+        if (CLASS_NAME.equals(className)) {
+            editor.getEditPart(prefix + CLASS_NAME + SUFFIX, expectedEditPartType);
+        } else {
+            editor.getEditPart(prefix + SPECIFIC_CLASS_EXPECTED_NEW_NAME, expectedEditPartType);
+        }
     }
 
 }
