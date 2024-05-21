@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,7 +20,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.tools.api.Messages;
 
 /**
- * Task to init interpeter variables. This task is like InitInterpreterFromParsedVariableTask but if the message is not
+ * Task to init interpreter variables. This task is like InitInterpreterFromParsedVariableTask but if the message is not
  * a String and the message mask is {0}, it just initializes the variable $0 with the message (without passed through
  * MessageFormat).
  * 
@@ -35,8 +35,10 @@ public class InitInterpreterFromParsedVariableTask2 extends AbstractCommandTask 
 
     private Object message;
 
+    private boolean unset;
+
     /**
-     * Default constructor.
+     * Constructor to set variables according to the mask.
      * 
      * @param inter
      *            the interpreter
@@ -52,6 +54,25 @@ public class InitInterpreterFromParsedVariableTask2 extends AbstractCommandTask 
     }
 
     /**
+     * Constructor to unset variables according to the mask.
+     * 
+     * @param inter
+     *            the interpreter
+     * @param messageFormat
+     *            the message mask
+     * @param message
+     *            the message
+     * @param unset 
+     *            true to unset the variables
+     */
+    public InitInterpreterFromParsedVariableTask2(final IInterpreter inter, final String messageFormat, final Object message, final boolean unset) {
+        this.interpreter = inter;
+        this.messageMask = messageFormat;
+        this.message = message;
+        this.unset = unset;
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#execute()
@@ -59,16 +80,28 @@ public class InitInterpreterFromParsedVariableTask2 extends AbstractCommandTask 
     @Override
     public void execute() {
         if (message == null || (message instanceof String && ((String) message).length() == 0)) {
-            setVariable(Integer.valueOf(0), ""); //$NON-NLS-1$
+            if (unset) {
+                unSetVariable(Integer.valueOf(0));
+            } else {
+                setVariable(Integer.valueOf(0), ""); //$NON-NLS-1$
+            }
         } else if (DEFAULT_MESSAGE_MASK.equals(messageMask) && !(message instanceof String)) {
-            setVariable(Integer.valueOf(0), message);
+            if (unset) {
+                unSetVariable(Integer.valueOf(0));
+            } else {
+                setVariable(Integer.valueOf(0), message);
+            }
         } else {
             final String strMsg = message.toString();
             final MessageFormat parser = new MessageFormat(messageMask);
             try {
                 final Object[] values = parser.parse(strMsg);
                 for (int i = 0; i < values.length; i++) {
-                    setVariable(Integer.valueOf(i), values[i]);
+                    if (unset) {
+                        unSetVariable(Integer.valueOf(i));
+                    } else {
+                        setVariable(Integer.valueOf(i), values[i]);
+                    }
                 }
             } catch (final ParseException e) {
                 /*
@@ -76,6 +109,14 @@ public class InitInterpreterFromParsedVariableTask2 extends AbstractCommandTask 
                  */
             }
         }
+    }
+
+    /*
+     * Unset two variables, one with the X as key, the other with "argX" as key.
+     */
+    private void unSetVariable(Integer i) {
+        interpreter.unSetVariable(i.toString());
+        interpreter.unSetVariable("arg" + i.toString()); //$NON-NLS-1$
     }
 
     /*
@@ -117,6 +158,10 @@ public class InitInterpreterFromParsedVariableTask2 extends AbstractCommandTask 
      */
     @Override
     public String getLabel() {
-        return Messages.InitInterpreterFromParsedVariableTask_label;
+        if (unset) {
+            return Messages.InitInterpreterFromParsedVariableTask_unsetLabel;
+        } else {
+            return Messages.InitInterpreterFromParsedVariableTask_label;
+        }
     }
 }
