@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2015, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@
 package org.eclipse.sirius.tests.swtbot.modelexplorer;
 
 import java.util.Collections;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
@@ -40,6 +41,7 @@ import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.IModelExplorerVie
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
+import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 
 /**
  * Verify that ModelExplorer view is refreshed on notifications about lock
@@ -63,7 +65,7 @@ public class LockedModelExplorerTest extends AbstractSiriusSwtBotGefTestCase {
 
     IJobChangeListener jobChangeListener;
 
-    boolean refreshJobScheduled;
+    AtomicBoolean refreshJobScheduled = new AtomicBoolean(false);
 
     StandalonePermissionProviderDescriptor permissionProviderDescriptor;
 
@@ -100,7 +102,7 @@ public class LockedModelExplorerTest extends AbstractSiriusSwtBotGefTestCase {
         jobChangeListener = new JobChangeAdapter() {
             @Override
             public void scheduled(IJobChangeEvent event) {
-                refreshJobScheduled = event.getJob().belongsTo(RefreshLabelImageJob.FAMILY);
+                refreshJobScheduled.set(event.getJob().belongsTo(RefreshLabelImageJob.FAMILY));
             }
         };
         Job.getJobManager().addJobChangeListener(jobChangeListener);
@@ -127,9 +129,19 @@ public class LockedModelExplorerTest extends AbstractSiriusSwtBotGefTestCase {
      */
     public void testRefreshJobForModelExplorerView() {
 
-        assertFalse("The job should not be scheduled as no notification has been send.", refreshJobScheduled);
+        assertFalse("The job should not be scheduled as no notification has been send.", refreshJobScheduled.get());
         lockRepresentation(true);
-        assertTrue("The job should be scheduled as one lock notification has been send and ModelExplorer view is opened.", refreshJobScheduled);
+        bot.waitUntil(new DefaultCondition() {
+            @Override
+            public boolean test() throws Exception {
+                return refreshJobScheduled.get();
+            }
+
+            @Override
+            public String getFailureMessage() {
+                return "The job should be scheduled as one lock notification has been send and ModelExplorer view is opened.";
+            }
+        });
         try {
             Job.getJobManager().join(RefreshLabelImageJob.FAMILY, new NullProgressMonitor());
         } catch (OperationCanceledException e) {
@@ -137,14 +149,15 @@ public class LockedModelExplorerTest extends AbstractSiriusSwtBotGefTestCase {
         } catch (InterruptedException e) {
             fail("Problem during waiting of RefreshLabelImageJob: " + e.getMessage());
         }
-        refreshJobScheduled = false;
+        refreshJobScheduled.set(false);
         modelExplorerView.setFocus();
         SWTBotUtils.waitAllUiEvents();
         modelExplorerView.close();
         try {
             SWTBotUtils.waitAllUiEvents();
             lockRepresentation(false);
-            assertFalse("The job should not be scheduled as one unlock notification has been send and ModelExplorer view is not opened.", refreshJobScheduled);
+            SWTBotUtils.waitAllUiEvents();
+            assertFalse("The job should not be scheduled as one unlock notification has been send and ModelExplorer view is not opened.", refreshJobScheduled.get());
         } finally {
             // Reopen the model explorer view (for following tests in suite)
             Display.getDefault().syncExec(new Runnable() {
