@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2015, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -40,6 +40,7 @@ import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.IModelExplorerVie
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
+import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 
 /**
  * Verify that ModelExplorer view is refreshed on notifications about lock
@@ -129,7 +130,17 @@ public class LockedModelExplorerTest extends AbstractSiriusSwtBotGefTestCase {
 
         assertFalse("The job should not be scheduled as no notification has been send.", refreshJobScheduled);
         lockRepresentation(true);
-        assertTrue("The job should be scheduled as one lock notification has been send and ModelExplorer view is opened.", refreshJobScheduled);
+        bot.waitUntil(new DefaultCondition() {
+            @Override
+            public boolean test() throws Exception {
+                return refreshJobScheduled;
+            }
+
+            @Override
+            public String getFailureMessage() {
+                return "The job should be scheduled as one lock notification has been send and ModelExplorer view is opened.";
+            }
+        });
         try {
             Job.getJobManager().join(RefreshLabelImageJob.FAMILY, new NullProgressMonitor());
         } catch (OperationCanceledException e) {
@@ -144,6 +155,7 @@ public class LockedModelExplorerTest extends AbstractSiriusSwtBotGefTestCase {
         try {
             SWTBotUtils.waitAllUiEvents();
             lockRepresentation(false);
+            SWTBotUtils.waitAllUiEvents();
             assertFalse("The job should not be scheduled as one unlock notification has been send and ModelExplorer view is not opened.", refreshJobScheduled);
         } finally {
             // Reopen the model explorer view (for following tests in suite)
