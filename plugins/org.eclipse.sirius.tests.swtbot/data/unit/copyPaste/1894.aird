@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis xmi:id="_fgqNYIIgEeC0_YxSx7KaSQ" selectedViews="_gbrrMIIgEeC0_YxSx7KaSQ _CFtq8IIjEeC0_YxSx7KaSQ" version="12.1.0.201708031200">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis uid="_fgqNYIIgEeC0_YxSx7KaSQ" selectedViews="_gbrrMIIgEeC0_YxSx7KaSQ _CFtq8IIjEeC0_YxSx7KaSQ" version="15.4.1.202403191723">
     <semanticResources>1894.ecore</semanticResources>
-    <ownedViews xmi:type="viewpoint:DView" xmi:id="_gbrrMIIgEeC0_YxSx7KaSQ">
+    <ownedViews xmi:type="viewpoint:DView" uid="_gbrrMIIgEeC0_YxSx7KaSQ">
       <viewpoint xmi:type="description:Viewpoint" href="vp-1894.odesign#//@ownedViewpoints[name='vp-1894']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_X0fDA8VVEeeLR5C8pFZ_lg" name="CustomClipboard" repPath="#_X0XuQMVVEeeLR5C8pFZ_lg">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_X0fDA8VVEeeLR5C8pFZ_lg" name="CustomClipboard" repPath="#_LVBIkIIiEeC0_YxSx7KaSQ" changeId="1716470444391">
         <description xmi:type="description_1:DiagramDescription" href="vp-1894.odesign#//@ownedViewpoints[name='vp-1894']/@ownedRepresentations[name='diagramWithCustomClipboard']"/>
         <target xmi:type="ecore:EPackage" href="1894.ecore#/"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
-    <ownedViews xmi:type="viewpoint:DView" xmi:id="_CFtq8IIjEeC0_YxSx7KaSQ">
+    <ownedViews xmi:type="viewpoint:DView" uid="_CFtq8IIjEeC0_YxSx7KaSQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_X0fDAcVVEeeLR5C8pFZ_lg" name="GenericClipboard" repPath="#_X0cmwMVVEeeLR5C8pFZ_lg">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_X0fDAcVVEeeLR5C8pFZ_lg" name="GenericClipboard" repPath="#_E6ijAIIjEeC0_YxSx7KaSQ" changeId="1716470444391">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="1894.ecore#/"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_E6ijAIIjEeC0_YxSx7KaSQ" name="GenericClipboard" uid="_X0cmwMVVEeeLR5C8pFZ_lg">
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_E6jKEIIjEeC0_YxSx7KaSQ" source="GMF_DIAGRAMS">
+  <diagram:DSemanticDiagram uid="_E6ijAIIjEeC0_YxSx7KaSQ">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_E6jKEIIjEeC0_YxSx7KaSQ" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_E6jKEYIjEeC0_YxSx7KaSQ" type="Sirius" element="_E6ijAIIjEeC0_YxSx7KaSQ" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_E7nhEIIjEeC0_YxSx7KaSQ" type="2003" element="_DqVuwGwoEeGf4vaMnd1X5A">
           <children xmi:type="notation:Node" xmi:id="_E7oIIIIjEeC0_YxSx7KaSQ" type="5007"/>
@@ -120,129 +120,129 @@
         </edges>
       </data>
     </ownedAnnotationEntries>
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_X0fqEsVVEeeLR5C8pFZ_lg" source="DANNOTATION_CUSTOMIZATION_KEY">
-      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_X0fqE8VVEeeLR5C8pFZ_lg"/>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_X0fqEsVVEeeLR5C8pFZ_lg" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_X0fqE8VVEeeLR5C8pFZ_lg"/>
     </ownedAnnotationEntries>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_DqVuwGwoEeGf4vaMnd1X5A" name="Class1" tooltipText="package.Class1" outgoingEdges="_DquJQGwoEeGf4vaMnd1X5A _DqyasGwoEeGf4vaMnd1X5A">
+    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_DqVuwGwoEeGf4vaMnd1X5A" name="Class1" tooltipText="package.Class1" outgoingEdges="_DquJQGwoEeGf4vaMnd1X5A _DqyasGwoEeGf4vaMnd1X5A">
       <target xmi:type="ecore:EClass" href="1894.ecore#//Class1"/>
       <semanticElements xmi:type="ecore:EClass" href="1894.ecore#//Class1"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_DqWV0GwoEeGf4vaMnd1X5A" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_DqWV0GwoEeGf4vaMnd1X5A" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DqkYQGwoEeGf4vaMnd1X5A" name="attributee1">
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_DqkYQGwoEeGf4vaMnd1X5A" name="attributee1">
         <target xmi:type="ecore:EAttribute" href="1894.ecore#//Class1/attributee1"/>
         <semanticElements xmi:type="ecore:EAttribute" href="1894.ecore#//Class1/attributee1"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_DqkYQWwoEeGf4vaMnd1X5A" labelAlignment="LEFT">
+        <ownedStyle xmi:type="diagram:BundledImage" uid="_DqkYQWwoEeGf4vaMnd1X5A" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
       </ownedElements>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_DqW84GwoEeGf4vaMnd1X5A" name="Class2" tooltipText="package.Class2" incomingEdges="_DquJQGwoEeGf4vaMnd1X5A _DqyasGwoEeGf4vaMnd1X5A">
+    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_DqW84GwoEeGf4vaMnd1X5A" name="Class2" tooltipText="package.Class2" incomingEdges="_DquJQGwoEeGf4vaMnd1X5A _DqyasGwoEeGf4vaMnd1X5A">
       <target xmi:type="ecore:EClass" href="1894.ecore#//Class2"/>
       <semanticElements xmi:type="ecore:EClass" href="1894.ecore#//Class2"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_DqYLAGwoEeGf4vaMnd1X5A" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_DqYLAGwoEeGf4vaMnd1X5A" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DqlmYGwoEeGf4vaMnd1X5A" name="attributee2">
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_DqlmYGwoEeGf4vaMnd1X5A" name="attributee2">
         <target xmi:type="ecore:EAttribute" href="1894.ecore#//Class2/attributee2"/>
         <semanticElements xmi:type="ecore:EAttribute" href="1894.ecore#//Class2/attributee2"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_DqmNcGwoEeGf4vaMnd1X5A" labelAlignment="LEFT">
+        <ownedStyle xmi:type="diagram:BundledImage" uid="_DqmNcGwoEeGf4vaMnd1X5A" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
       </ownedElements>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_DqYLBWwoEeGf4vaMnd1X5A" name="nodelete_Class" tooltipText="package.nodelete_Class">
+    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_DqYLBWwoEeGf4vaMnd1X5A" name="nodelete_Class" tooltipText="package.nodelete_Class">
       <target xmi:type="ecore:EClass" href="1894.ecore#//nodelete_Class"/>
       <semanticElements xmi:type="ecore:EClass" href="1894.ecore#//nodelete_Class"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_Dqgt4GwoEeGf4vaMnd1X5A" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_Dqgt4GwoEeGf4vaMnd1X5A" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DqnbkGwoEeGf4vaMnd1X5A" name="attributee2">
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_DqnbkGwoEeGf4vaMnd1X5A" name="attributee2">
         <target xmi:type="ecore:EAttribute" href="1894.ecore#//nodelete_Class/attributee2"/>
         <semanticElements xmi:type="ecore:EAttribute" href="1894.ecore#//nodelete_Class/attributee2"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_DqnbkWwoEeGf4vaMnd1X5A" labelAlignment="LEFT">
+        <ownedStyle xmi:type="diagram:BundledImage" uid="_DqnbkWwoEeGf4vaMnd1X5A" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
       </ownedElements>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_DqhU8GwoEeGf4vaMnd1X5A" name="pastable_Class" tooltipText="package.pastable_Class">
+    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_DqhU8GwoEeGf4vaMnd1X5A" name="pastable_Class" tooltipText="package.pastable_Class">
       <target xmi:type="ecore:EClass" href="1894.ecore#//pastable_Class"/>
       <semanticElements xmi:type="ecore:EClass" href="1894.ecore#//pastable_Class"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_Dqh8AGwoEeGf4vaMnd1X5A" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_Dqh8AGwoEeGf4vaMnd1X5A" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DqopsGwoEeGf4vaMnd1X5A" name="attributee2">
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_DqopsGwoEeGf4vaMnd1X5A" name="attributee2">
         <target xmi:type="ecore:EAttribute" href="1894.ecore#//pastable_Class/attributee2"/>
         <semanticElements xmi:type="ecore:EAttribute" href="1894.ecore#//pastable_Class/attributee2"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_DqopsWwoEeGf4vaMnd1X5A" labelAlignment="LEFT">
+        <ownedStyle xmi:type="diagram:BundledImage" uid="_DqopsWwoEeGf4vaMnd1X5A" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
       </ownedElements>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_DquJQGwoEeGf4vaMnd1X5A" name="[0..1] ref1" sourceNode="_DqVuwGwoEeGf4vaMnd1X5A" targetNode="_DqW84GwoEeGf4vaMnd1X5A">
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_DquJQGwoEeGf4vaMnd1X5A" name="[0..1] ref1" sourceNode="_DqVuwGwoEeGf4vaMnd1X5A" targetNode="_DqW84GwoEeGf4vaMnd1X5A">
       <target xmi:type="ecore:EReference" href="1894.ecore#//Class1/ref1"/>
       <semanticElements xmi:type="ecore:EReference" href="1894.ecore#//Class1/ref1"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_E7jPoYIjEeC0_YxSx7KaSQ">
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_E7jPoYIjEeC0_YxSx7KaSQ">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_E7jPo4IjEeC0_YxSx7KaSQ" showIcon="false"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_E7jPo4IjEeC0_YxSx7KaSQ" showIcon="false"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_DqyasGwoEeGf4vaMnd1X5A" sourceNode="_DqVuwGwoEeGf4vaMnd1X5A" targetNode="_DqW84GwoEeGf4vaMnd1X5A">
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_DqyasGwoEeGf4vaMnd1X5A" sourceNode="_DqVuwGwoEeGf4vaMnd1X5A" targetNode="_DqW84GwoEeGf4vaMnd1X5A">
       <target xmi:type="ecore:EClass" href="1894.ecore#//Class1"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_1LxKwYInEeCOpoH1PGlTZA" targetArrow="InputClosedArrow" routingStyle="tree">
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_1LxKwYInEeCOpoH1PGlTZA" targetArrow="InputClosedArrow" routingStyle="tree">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_1LxKw4InEeCOpoH1PGlTZA" showIcon="false"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_1LxKw4InEeCOpoH1PGlTZA" showIcon="false"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_7sKP8MVgEee3J_qkXKkjhA" name="pastable2_Class" tooltipText="package.pastable2_Class">
+    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_7sKP8MVgEee3J_qkXKkjhA" name="pastable2_Class" tooltipText="package.pastable2_Class">
       <target xmi:type="ecore:EClass" href="1894.ecore#//pastable2_Class"/>
       <semanticElements xmi:type="ecore:EClass" href="1894.ecore#//pastable2_Class"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_7sOhYMVgEee3J_qkXKkjhA" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_7sOhYMVgEee3J_qkXKkjhA" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_7sRksMVgEee3J_qkXKkjhA" name="attributee2">
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_7sRksMVgEee3J_qkXKkjhA" name="attributee2">
         <target xmi:type="ecore:EAttribute" href="1894.ecore#//pastable2_Class/attributee2"/>
         <semanticElements xmi:type="ecore:EAttribute" href="1894.ecore#//pastable2_Class/attributee2"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_7sgOMMVgEee3J_qkXKkjhA" labelAlignment="LEFT">
+        <ownedStyle xmi:type="diagram:BundledImage" uid="_7sgOMMVgEee3J_qkXKkjhA" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
       </ownedElements>
     </ownedDiagramElements>
     <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
-    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_E6ijAYIjEeC0_YxSx7KaSQ"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_E6ijAYIjEeC0_YxSx7KaSQ"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer"/>
     <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Package']"/>
     <target xmi:type="ecore:EPackage" href="1894.ecore#/"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram xmi:id="_LVBIkIIiEeC0_YxSx7KaSQ" name="CustomClipboard" uid="_X0XuQMVVEeeLR5C8pFZ_lg">
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_LVBvoIIiEeC0_YxSx7KaSQ" source="GMF_DIAGRAMS">
+  <diagram:DSemanticDiagram uid="_LVBIkIIiEeC0_YxSx7KaSQ">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_LVBvoIIiEeC0_YxSx7KaSQ" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_LVBvoYIiEeC0_YxSx7KaSQ" type="Sirius" element="_LVBIkIIiEeC0_YxSx7KaSQ" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_LVuTMIIiEeC0_YxSx7KaSQ" type="2003" element="_DkQ78GwoEeGf4vaMnd1X5A">
           <children xmi:type="notation:Node" xmi:id="_LVuTM4IiEeC0_YxSx7KaSQ" type="5007"/>
@@ -405,124 +405,124 @@
         </edges>
       </data>
     </ownedAnnotationEntries>
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_X0fqEMVVEeeLR5C8pFZ_lg" source="DANNOTATION_CUSTOMIZATION_KEY">
-      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_X0fqEcVVEeeLR5C8pFZ_lg"/>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_X0fqEMVVEeeLR5C8pFZ_lg" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_X0fqEcVVEeeLR5C8pFZ_lg"/>
     </ownedAnnotationEntries>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_DkQ78GwoEeGf4vaMnd1X5A" name="Class1" outgoingEdges="_DmESwGwoEeGf4vaMnd1X5A _DmNcsGwoEeGf4vaMnd1X5A">
+    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_DkQ78GwoEeGf4vaMnd1X5A" name="Class1" outgoingEdges="_DmESwGwoEeGf4vaMnd1X5A _DmNcsGwoEeGf4vaMnd1X5A">
       <target xmi:type="ecore:EClass" href="1894.ecore#//Class1"/>
       <semanticElements xmi:type="ecore:EClass" href="1894.ecore#//Class1"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_Dl4skGwoEeGf4vaMnd1X5A" borderSize="1" borderSizeComputationExpression="1">
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_Dl4skGwoEeGf4vaMnd1X5A" borderSize="1" borderSizeComputationExpression="1">
         <description xmi:type="style:FlatContainerStyleDescription" href="vp-1894.odesign#//@ownedViewpoints[name='vp-1894']/@ownedRepresentations[name='diagramWithCustomClipboard']/@defaultLayer/@containerMappings[name='Class']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="vp-1894.odesign#//@ownedViewpoints[name='vp-1894']/@ownedRepresentations[name='diagramWithCustomClipboard']/@defaultLayer/@containerMappings[name='Class']"/>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DmABUGwoEeGf4vaMnd1X5A" name="attributee1">
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_DmABUGwoEeGf4vaMnd1X5A" name="attributee1">
         <target xmi:type="ecore:EAttribute" href="1894.ecore#//Class1/attributee1"/>
         <semanticElements xmi:type="ecore:EAttribute" href="1894.ecore#//Class1/attributee1"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_DmAoYGwoEeGf4vaMnd1X5A" labelAlignment="LEFT">
+        <ownedStyle xmi:type="diagram:BundledImage" uid="_DmAoYGwoEeGf4vaMnd1X5A" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="vp-1894.odesign#//@ownedViewpoints[name='vp-1894']/@ownedRepresentations[name='diagramWithCustomClipboard']/@defaultLayer/@containerMappings[name='Class']/@subNodeMappings[name='Attribute']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="vp-1894.odesign#//@ownedViewpoints[name='vp-1894']/@ownedRepresentations[name='diagramWithCustomClipboard']/@defaultLayer/@containerMappings[name='Class']/@subNodeMappings[name='Attribute']"/>
       </ownedElements>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_Dl4slWwoEeGf4vaMnd1X5A" name="Class2" incomingEdges="_DmESwGwoEeGf4vaMnd1X5A _DmNcsGwoEeGf4vaMnd1X5A">
+    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_Dl4slWwoEeGf4vaMnd1X5A" name="Class2" incomingEdges="_DmESwGwoEeGf4vaMnd1X5A _DmNcsGwoEeGf4vaMnd1X5A">
       <target xmi:type="ecore:EClass" href="1894.ecore#//Class2"/>
       <semanticElements xmi:type="ecore:EClass" href="1894.ecore#//Class2"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_Dl5ToGwoEeGf4vaMnd1X5A" borderSize="1" borderSizeComputationExpression="1">
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_Dl5ToGwoEeGf4vaMnd1X5A" borderSize="1" borderSizeComputationExpression="1">
         <description xmi:type="style:FlatContainerStyleDescription" href="vp-1894.odesign#//@ownedViewpoints[name='vp-1894']/@ownedRepresentations[name='diagramWithCustomClipboard']/@defaultLayer/@containerMappings[name='Class']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="vp-1894.odesign#//@ownedViewpoints[name='vp-1894']/@ownedRepresentations[name='diagramWithCustomClipboard']/@defaultLayer/@containerMappings[name='Class']"/>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DmBPcGwoEeGf4vaMnd1X5A" name="attributee2">
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_DmBPcGwoEeGf4vaMnd1X5A" name="attributee2">
         <target xmi:type="ecore:EAttribute" href="1894.ecore#//Class2/attributee2"/>
         <semanticElements xmi:type="ecore:EAttribute" href="1894.ecore#//Class2/attributee2"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_DmBPcWwoEeGf4vaMnd1X5A" labelAlignment="LEFT">
+        <ownedStyle xmi:type="diagram:BundledImage" uid="_DmBPcWwoEeGf4vaMnd1X5A" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="vp-1894.odesign#//@ownedViewpoints[name='vp-1894']/@ownedRepresentations[name='diagramWithCustomClipboard']/@defaultLayer/@containerMappings[name='Class']/@subNodeMappings[name='Attribute']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="vp-1894.odesign#//@ownedViewpoints[name='vp-1894']/@ownedRepresentations[name='diagramWithCustomClipboard']/@defaultLayer/@containerMappings[name='Class']/@subNodeMappings[name='Attribute']"/>
       </ownedElements>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_Dl56sGwoEeGf4vaMnd1X5A" name="nodelete_Class">
+    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_Dl56sGwoEeGf4vaMnd1X5A" name="nodelete_Class">
       <target xmi:type="ecore:EClass" href="1894.ecore#//nodelete_Class"/>
       <semanticElements xmi:type="ecore:EClass" href="1894.ecore#//nodelete_Class"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_Dl56sWwoEeGf4vaMnd1X5A" borderSize="1" borderSizeComputationExpression="1">
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_Dl56sWwoEeGf4vaMnd1X5A" borderSize="1" borderSizeComputationExpression="1">
         <description xmi:type="style:FlatContainerStyleDescription" href="vp-1894.odesign#//@ownedViewpoints[name='vp-1894']/@ownedRepresentations[name='diagramWithCustomClipboard']/@defaultLayer/@containerMappings[name='Class']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="vp-1894.odesign#//@ownedViewpoints[name='vp-1894']/@ownedRepresentations[name='diagramWithCustomClipboard']/@defaultLayer/@containerMappings[name='Class']"/>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DmB2gGwoEeGf4vaMnd1X5A" name="attributee2">
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_DmB2gGwoEeGf4vaMnd1X5A" name="attributee2">
         <target xmi:type="ecore:EAttribute" href="1894.ecore#//nodelete_Class/attributee2"/>
         <semanticElements xmi:type="ecore:EAttribute" href="1894.ecore#//nodelete_Class/attributee2"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_DmB2gWwoEeGf4vaMnd1X5A" labelAlignment="LEFT">
+        <ownedStyle xmi:type="diagram:BundledImage" uid="_DmB2gWwoEeGf4vaMnd1X5A" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="vp-1894.odesign#//@ownedViewpoints[name='vp-1894']/@ownedRepresentations[name='diagramWithCustomClipboard']/@defaultLayer/@containerMappings[name='Class']/@subNodeMappings[name='Attribute']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="vp-1894.odesign#//@ownedViewpoints[name='vp-1894']/@ownedRepresentations[name='diagramWithCustomClipboard']/@defaultLayer/@containerMappings[name='Class']/@subNodeMappings[name='Attribute']"/>
       </ownedElements>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_Dl6hwGwoEeGf4vaMnd1X5A" name="pastable_Class">
+    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_Dl6hwGwoEeGf4vaMnd1X5A" name="pastable_Class">
       <target xmi:type="ecore:EClass" href="1894.ecore#//pastable_Class"/>
       <semanticElements xmi:type="ecore:EClass" href="1894.ecore#//pastable_Class"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_Dl6hwWwoEeGf4vaMnd1X5A" borderSize="1" borderSizeComputationExpression="1">
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_Dl6hwWwoEeGf4vaMnd1X5A" borderSize="1" borderSizeComputationExpression="1">
         <description xmi:type="style:FlatContainerStyleDescription" href="vp-1894.odesign#//@ownedViewpoints[name='vp-1894']/@ownedRepresentations[name='diagramWithCustomClipboard']/@defaultLayer/@containerMappings[name='Class']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="vp-1894.odesign#//@ownedViewpoints[name='vp-1894']/@ownedRepresentations[name='diagramWithCustomClipboard']/@defaultLayer/@containerMappings[name='Class']"/>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DmCdkGwoEeGf4vaMnd1X5A" name="attributee2">
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_DmCdkGwoEeGf4vaMnd1X5A" name="attributee2">
         <target xmi:type="ecore:EAttribute" href="1894.ecore#//pastable_Class/attributee2"/>
         <semanticElements xmi:type="ecore:EAttribute" href="1894.ecore#//pastable_Class/attributee2"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_DmDEoGwoEeGf4vaMnd1X5A" labelAlignment="LEFT">
+        <ownedStyle xmi:type="diagram:BundledImage" uid="_DmDEoGwoEeGf4vaMnd1X5A" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="vp-1894.odesign#//@ownedViewpoints[name='vp-1894']/@ownedRepresentations[name='diagramWithCustomClipboard']/@defaultLayer/@containerMappings[name='Class']/@subNodeMappings[name='Attribute']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="vp-1894.odesign#//@ownedViewpoints[name='vp-1894']/@ownedRepresentations[name='diagramWithCustomClipboard']/@defaultLayer/@containerMappings[name='Class']/@subNodeMappings[name='Attribute']"/>
       </ownedElements>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_DmESwGwoEeGf4vaMnd1X5A" name="ref1" sourceNode="_DkQ78GwoEeGf4vaMnd1X5A" targetNode="_Dl4slWwoEeGf4vaMnd1X5A">
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_DmESwGwoEeGf4vaMnd1X5A" name="ref1" sourceNode="_DkQ78GwoEeGf4vaMnd1X5A" targetNode="_Dl4slWwoEeGf4vaMnd1X5A">
       <target xmi:type="ecore:EReference" href="1894.ecore#//Class1/ref1"/>
       <semanticElements xmi:type="ecore:EReference" href="1894.ecore#//Class1/ref1"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_LVozoYIiEeC0_YxSx7KaSQ" sourceArrow="FillDiamond">
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_LVozoYIiEeC0_YxSx7KaSQ" sourceArrow="FillDiamond">
         <description xmi:type="style:EdgeStyleDescription" href="vp-1894.odesign#//@ownedViewpoints[name='vp-1894']/@ownedRepresentations[name='diagramWithCustomClipboard']/@defaultLayer/@edgeMappings[name='Reference']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_LVozo4IiEeC0_YxSx7KaSQ" showIcon="false"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_LVozo4IiEeC0_YxSx7KaSQ" showIcon="false"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="vp-1894.odesign#//@ownedViewpoints[name='vp-1894']/@ownedRepresentations[name='diagramWithCustomClipboard']/@defaultLayer/@edgeMappings[name='Reference']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_DmNcsGwoEeGf4vaMnd1X5A" name="super type of Class1" sourceNode="_DkQ78GwoEeGf4vaMnd1X5A" targetNode="_Dl4slWwoEeGf4vaMnd1X5A">
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_DmNcsGwoEeGf4vaMnd1X5A" name="super type of Class1" sourceNode="_DkQ78GwoEeGf4vaMnd1X5A" targetNode="_Dl4slWwoEeGf4vaMnd1X5A">
       <target xmi:type="ecore:EClass" href="1894.ecore#//Class1"/>
       <semanticElements xmi:type="ecore:EClass" href="1894.ecore#//Class1"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_9QyKEYInEeCOpoH1PGlTZA" lineStyle="dash" targetArrow="InputClosedArrow">
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_9QyKEYInEeCOpoH1PGlTZA" lineStyle="dash" targetArrow="InputClosedArrow">
         <description xmi:type="style:EdgeStyleDescription" href="vp-1894.odesign#//@ownedViewpoints[name='vp-1894']/@ownedRepresentations[name='diagramWithCustomClipboard']/@defaultLayer/@edgeMappings[name='SuperType']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_9QyKE4InEeCOpoH1PGlTZA" showIcon="false"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_9QyKE4InEeCOpoH1PGlTZA" showIcon="false"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="vp-1894.odesign#//@ownedViewpoints[name='vp-1894']/@ownedRepresentations[name='diagramWithCustomClipboard']/@defaultLayer/@edgeMappings[name='SuperType']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_b5a4EMVVEeeLR5C8pFZ_lg" name="pastable2_Class">
+    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_b5a4EMVVEeeLR5C8pFZ_lg" name="pastable2_Class">
       <target xmi:type="ecore:EClass" href="1894.ecore#//pastable2_Class"/>
       <semanticElements xmi:type="ecore:EClass" href="1894.ecore#//pastable2_Class"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_b5a4EcVVEeeLR5C8pFZ_lg" borderSize="1" borderSizeComputationExpression="1">
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_b5a4EcVVEeeLR5C8pFZ_lg" borderSize="1" borderSizeComputationExpression="1">
         <description xmi:type="style:FlatContainerStyleDescription" href="vp-1894.odesign#//@ownedViewpoints[name='vp-1894']/@ownedRepresentations[name='diagramWithCustomClipboard']/@defaultLayer/@containerMappings[name='Class']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="vp-1894.odesign#//@ownedViewpoints[name='vp-1894']/@ownedRepresentations[name='diagramWithCustomClipboard']/@defaultLayer/@containerMappings[name='Class']"/>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_b5bfIMVVEeeLR5C8pFZ_lg" name="attributee2">
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_b5bfIMVVEeeLR5C8pFZ_lg" name="attributee2">
         <target xmi:type="ecore:EAttribute" href="1894.ecore#//pastable2_Class/attributee2"/>
         <semanticElements xmi:type="ecore:EAttribute" href="1894.ecore#//pastable2_Class/attributee2"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_b5cGMMVVEeeLR5C8pFZ_lg" labelAlignment="LEFT">
+        <ownedStyle xmi:type="diagram:BundledImage" uid="_b5cGMMVVEeeLR5C8pFZ_lg" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="vp-1894.odesign#//@ownedViewpoints[name='vp-1894']/@ownedRepresentations[name='diagramWithCustomClipboard']/@defaultLayer/@containerMappings[name='Class']/@subNodeMappings[name='Attribute']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="vp-1894.odesign#//@ownedViewpoints[name='vp-1894']/@ownedRepresentations[name='diagramWithCustomClipboard']/@defaultLayer/@containerMappings[name='Class']/@subNodeMappings[name='Attribute']"/>
       </ownedElements>
     </ownedDiagramElements>
     <description xmi:type="description_1:DiagramDescription" href="vp-1894.odesign#//@ownedViewpoints[name='vp-1894']/@ownedRepresentations[name='diagramWithCustomClipboard']"/>
-    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_LVBIkYIiEeC0_YxSx7KaSQ"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_LVBIkYIiEeC0_YxSx7KaSQ"/>
     <activatedLayers xmi:type="description_1:Layer" href="vp-1894.odesign#//@ownedViewpoints[name='vp-1894']/@ownedRepresentations[name='diagramWithCustomClipboard']/@defaultLayer"/>
     <target xmi:type="ecore:EPackage" href="1894.ecore#/"/>
   </diagram:DSemanticDiagram>
