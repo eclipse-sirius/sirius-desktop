@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Ticket #1041" version="12.0.0.2017041100">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Ticket #1041" version="15.4.0.202401051836">
   <ownedViewpoints name="Test case for ticket #1041" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%201']/@defaultLayer/@toolSections.0/@ownedTools[name='Drag%20%26%20Drop%20R1']" name="TC1041 representation 1" domainClass="EPackage" enablePopupBars="true">
       <defaultLayer name="Default">
@@ -39,9 +39,9 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%202%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Drag%20%26%20Drop%20R2']" name="TC1041 representation 2 Blank" domainClass="EPackage" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%202%20Blank']/@additionalLayers[name='DropLayout']/@toolSections.0/@ownedTools[name='Drag%20%26%20Drop%20R2']" name="TC1041 representation 2 Blank" domainClass="EPackage" enablePopupBars="true">
       <defaultLayer name="Default">
-        <containerMappings name="Container EPackage R2" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EPackage)" createElements="false" domainClass="EPackage" dropDescriptions="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%202%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Drag%20%26%20Drop%20R2']">
+        <containerMappings name="Container EPackage R2" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EPackage)" createElements="false" domainClass="EPackage" dropDescriptions="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%202%20Blank']/@additionalLayers[name='DropLayout']/@toolSections.0/@ownedTools[name='Drag%20%26%20Drop%20R2']">
           <subNodeMappings name="Node EPackage R2" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EPackage)" createElements="false" domainClass="EPackage">
             <style xsi:type="style:SquareDescription">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -56,8 +56,10 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
           </style>
         </containerMappings>
+      </defaultLayer>
+      <additionalLayers name="DropLayout" activeByDefault="true">
         <toolSections name="tools">
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drag &amp; Drop R2" forceRefresh="true" mappings="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%202%20Blank']/@defaultLayer/@containerMappings[name='Container%20EPackage%20R2']/@subNodeMappings[name='Node%20EPackage%20R2'] //@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%202%20Blank']/@defaultLayer/@containerMappings[name='Container%20EPackage%20R2']" dragSource="BOTH">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drag &amp; Drop R2" forceRefresh="true" mappings="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%202%20Blank']/@defaultLayer/@containerMappings[name='Container%20EPackage%20R2']/@subNodeMappings[name='Node%20EPackage%20R2'] //@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%202%20Blank']/@defaultLayer/@containerMappings[name='Container%20EPackage%20R2'] //@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%202%20BlankBis']/@defaultLayer/@containerMappings[name='Container%20EPackage%20R2Bis'] //@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%202%20BlankTer']/@defaultLayer/@containerMappings[name='Container%20EPackage%20R2Ter'] //@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%202%20BlankQuater']/@additionalLayers[name='LayerReusingDropTool']/@containerMappings[name='Container%20EPackage%20R2Quater']" dragSource="BOTH">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -71,7 +73,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-      </defaultLayer>
+      </additionalLayers>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%203']/@defaultLayer/@toolSections.0/@ownedTools[name='Drag%20%26%20Drop%20R3']" name="TC1041 representation 3" domainClass="EPackage" enablePopupBars="true">
       <defaultLayer name="Default">
@@ -299,6 +301,43 @@
           </ownedTools>
         </toolSections>
       </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%202%20Blank']/@additionalLayers[name='DropLayout']/@toolSections.0/@ownedTools[name='Drag%20%26%20Drop%20R2']" name="TC1041 representation 2 BlankBis" domainClass="EPackage" enablePopupBars="true">
+      <defaultLayer name="Default">
+        <containerMappings name="Container EPackage R2Bis" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EPackage)" createElements="false" domainClass="EPackage">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%202%20Blank']/@additionalLayers[name='DropLayout']/@toolSections.0/@ownedTools[name='Drag%20%26%20Drop%20R2']" name="TC1041 representation 2 BlankTer" domainClass="EPackage" enablePopupBars="true">
+      <defaultLayer name="Default" reusedTools="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%202%20Blank']/@additionalLayers[name='DropLayout']/@toolSections.0/@ownedTools[name='Drag%20%26%20Drop%20R2']">
+        <containerMappings name="Container EPackage R2Ter" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EPackage)" createElements="false" domainClass="EPackage">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%202%20Blank']/@additionalLayers[name='DropLayout']/@toolSections.0/@ownedTools[name='Drag%20%26%20Drop%20R2']" name="TC1041 representation 2 BlankQuater" domainClass="EPackage" enablePopupBars="true">
+      <defaultLayer name="Default"/>
+      <additionalLayers name="LayerReusingDropTool" reusedTools="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%202%20Blank']/@additionalLayers[name='DropLayout']/@toolSections.0/@ownedTools[name='Drag%20%26%20Drop%20R2']">
+        <containerMappings name="Container EPackage R2Quater" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EPackage)" createElements="false" domainClass="EPackage">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          </style>
+        </containerMappings>
+      </additionalLayers>
     </ownedRepresentations>
   </ownedViewpoints>
 </description:Group>
