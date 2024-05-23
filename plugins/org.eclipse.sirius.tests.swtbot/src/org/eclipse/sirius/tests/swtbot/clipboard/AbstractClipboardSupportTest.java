@@ -93,6 +93,21 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
     protected static final String REPRESENTATION_WITH_CUSTOM_PASTE = "CustomClipboard";
 
     /**
+     * Custom representation using PasteTool of another diagram instance name.
+     */
+    protected static final String REPRESENTATION_WITH_CUSTOM_PASTE_2 = "CustomClipboard2";
+
+    /**
+     * Instance name of a custom representation importing PasteTool of another diagram in the default layer.
+     */
+    protected static final String REPRESENTATION_WITH_CUSTOM_PASTE_3 = "CustomClipboard3";
+
+    /**
+     * Instance name of a custom representation importing PasteTool of another diagram in an additional layer.
+     */
+    protected static final String REPRESENTATION_WITH_CUSTOM_PASTE_4 = "CustomClipboard4";
+
+    /**
      * Generic representation instance name bis.
      */
     protected static final String REPRESENTATION_WITH_GENERIC_PASTE_BIS = "GenericClipboardBis";
@@ -128,9 +143,24 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
     protected static final String GENERIC_DESCRIPTION = "Entities";
 
     /**
-     * Sirius name.
+     * Name of the diagram description.
      */
     protected static final String CUSTOM_DESCRIPTION = "diagramWithCustomClipboard";
+
+    /**
+     * Name of the diagram description using a PasteDescription of another diagram.
+     */
+    protected static final String CUSTOM_DESCRIPTION_2 = "diagramWithCustomClipboard2";
+
+    /**
+     * Name of the diagram description importing a PasteDescription of another diagram in the default layer.
+     */
+    protected static final String CUSTOM_DESCRIPTION_3 = "diagramWithCustomClipboard3";
+
+    /**
+     * Name of the diagram description importing a PasteDescription of another diagram in an additional layer.
+     */
+    protected static final String CUSTOM_DESCRIPTION_4 = "diagramWithCustomClipboard4";
 
     /**
      * Sirius specific model.
