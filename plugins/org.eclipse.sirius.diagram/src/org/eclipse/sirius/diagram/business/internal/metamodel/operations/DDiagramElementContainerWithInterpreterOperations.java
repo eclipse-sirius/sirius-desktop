@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,9 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -32,13 +35,13 @@ import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramQuery;
 import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContainerMappingWithInterpreterHelper;
+import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
 import org.eclipse.sirius.diagram.tools.api.Messages;
 import org.eclipse.sirius.tools.api.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.DragSource;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
@@ -112,7 +115,7 @@ public final class DDiagramElementContainerWithInterpreterOperations {
 
         /* find valid candidates */
         final Collection<ContainerDropDescription> candidates = new ArrayList<>();
-        for (final ContainerDropDescription dropTool : DDiagramElementContainerWithInterpreterOperations.getDropToolsOnActivatedLayers(diagram, description)) {
+        for (final ContainerDropDescription dropTool : DDiagramElementContainerWithInterpreterOperations.getActivatedDropTools(diagram, description)) {
             if (DDiagramElementContainerWithInterpreterOperations.checkDragSource(dropTool, dragSource)
                     && DDiagramElementContainerWithInterpreterOperations.checkDroppedDiagramElement(dropTool, droppedDiagramElement, newViewContainer)) {
                 if (DDiagramElementContainerWithInterpreterOperations.checkPrecondition(dropTool, safeInterpreter, droppedElement)) {
@@ -169,20 +172,6 @@ public final class DDiagramElementContainerWithInterpreterOperations {
         return true;
     }
 
-    private static Collection<ContainerDropDescription> getDropToolsOnActivatedLayers(final DDiagram diagram, final DragAndDropTargetDescription mapping) {
-        if (diagram.getDescription().getDefaultLayer() != null) {
-            final Collection<AbstractToolDescription> allActivatedTools = new HashSet<>();
-            allActivatedTools.addAll(diagram.getDescription().getDefaultLayer().getAllTools());
-            for (Layer layer : new DDiagramQuery(diagram).getAllActivatedLayers()) {
-                allActivatedTools.addAll(layer.getAllTools());
-            }
-            Collection<ContainerDropDescription> dropTools = DDiagramElementContainerWithInterpreterOperations.getDropTools(mapping);
-            dropTools.retainAll(allActivatedTools);
-            return dropTools;
-        }
-        return DDiagramElementContainerWithInterpreterOperations.getDropTools(mapping);
-    }
-
     /**
      * Returns the drop tools of the mapping.
      * 
@@ -197,5 +186,63 @@ public final class DDiagramElementContainerWithInterpreterOperations {
             dropTools = Sets.newHashSet(mapping.getDropDescriptions());
         }
         return dropTools;
+    }
+
+    /**
+     * Returns the list of the activated drop tools for the <code>mapping</code>. An activated drop tool is:
+     * <UL>
+     * <LI>in a default layer of any diagram,</LI>
+     * <LI>or in an activated layer of the current diagram (contained in or reused by).</LI>
+     * </UL>
+     * 
+     * @param diagram
+     *            The current diagram
+     * @param mapping
+     *            The mapping of the current drag'n'droped element
+     * @return the list of the activated drop tools.
+     */
+    private static Collection<ContainerDropDescription> getActivatedDropTools(final DDiagram diagram, final DragAndDropTargetDescription mapping) {
+        Collection<ContainerDropDescription> dropTools = DDiagramElementContainerWithInterpreterOperations.getDropTools(mapping);
+        return dropTools.stream().filter(desc -> isActive(desc, diagram)).collect(Collectors.toCollection(HashSet<ContainerDropDescription>::new));
+    }
+
+    /**
+     * Tests whether a {@link ContainerDropDescription} belongs to a default layer or to an activated layer of the
+     * current diagram.
+     * 
+     * @param dropDesc
+     *            the current {@link ContainerDropDescription} of the drag'n'dropped element.
+     * @param diagram
+     *            the current diagram
+     * @return <code>true</code> if the ContainerDropDescription is active, false otherwise.
+     */
+    private static boolean isActive(final ContainerDropDescription dropDesc, final DDiagram diagram) {
+        boolean result = false;
+        Optional<Layer> optionalParentLayer = getLayer(dropDesc);
+        if (optionalParentLayer.isPresent()) {
+            if (!(optionalParentLayer.get() instanceof AdditionalLayer)) {
+                // This layer is a default layer.
+                result = true;
+            } else {
+                List<Layer> activatedLayers = new DDiagramQuery(diagram).getAllActivatedLayers();
+                if (activatedLayers.contains(optionalParentLayer.get()) || activatedLayers.stream().anyMatch(layer -> layer.getReusedTools().contains(dropDesc))) {
+                    // The dropDesc is in an activated layer of the current diagram or it is reused by an activated
+                    // layer of the current diagram.
+                    result = true;
+                }
+            }
+        }
+        return result;
+    }
+
+    private static Optional<Layer> getLayer(ContainerDropDescription containerDropDescription) {
+        EObject current = containerDropDescription;
+        while (current != null) {
+            if (current instanceof Layer) {
+                return Optional.of((Layer) current);
+            }
+            current = current.eContainer();
+        }
+        return Optional.empty();
     }
 }
