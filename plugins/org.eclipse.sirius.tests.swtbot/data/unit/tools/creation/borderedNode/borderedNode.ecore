@@ -51,4 +51,7 @@
     </eSubpackages>
     <eSubpackages name="P5-3"/>
   </eSubpackages>
+  <eSubpackages name="P6ForVStack">
+    <eClassifiers xsi:type="ecore:EClass" name="P6ForVStackcollapse"/>
+  </eSubpackages>
 </ecore:EPackage>
