@@ -10,7 +10,8 @@ pipeline {
 
     options {
       timestamps ()
-	  lock(resource: 'sirius-desktop-tests')
+      lock(resource: 'sirius-desktop-tests')
+      timeout(time: 360, unit: 'MINUTES')
     }
 
     stages {
