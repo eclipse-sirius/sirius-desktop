@@ -1,0 +1,44 @@
+Sirius 2.0.7 is a minor release.
+
+== Availability ==
+
+Sirius 2.0.7 was released on 2017-01-04 (tag [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/tag/?id=v2.0.7 v2.0.7], commit [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/commit/?id=109a36762de9cae10295d713ae4b6d940323f1a9 109a36762de9cae10295d713ae4b6d940323f1a9]). It is available from the following update sites:
+* <code>http://download.eclipse.org/sirius/updates/releases/2.0.7/juno</code> ([http://download.eclipse.org/sirius/updates/releases/2.0.7/org.eclipse.sirius-2.0.7-juno.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/2.0.7/kepler</code> ([http://download.eclipse.org/sirius/updates/releases/2.0.7/org.eclipse.sirius-2.0.7-kepler.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/2.0.7/luna</code> ([http://download.eclipse.org/sirius/updates/releases/2.0.7/org.eclipse.sirius-2.0.7-luna.zip Archive])
+
+It is recommended you use the update-site matching the version of Eclipse you use to avoid potential issues at runtime.
+
+This version includes the complete JUnit and SWTBot test suites used to validate Sirius. They are published along with all their dependencies in separate update-sites from the core, available at:
+* <code>http://download.eclipse.org/sirius/updates/releases/2.0.7/juno/tests</code> ([http://download.eclipse.org/sirius/updates/releases/2.0.7/org.eclipse.sirius.tests-2.0.7-juno.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/2.0.7/kepler/tests</code> ([http://download.eclipse.org/sirius/updates/releases/2.0.7/org.eclipse.sirius.tests-2.0.7-kepler.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/2.0.7/luna/tests</code> ([http://download.eclipse.org/sirius/updates/releases/2.0.7/org.eclipse.sirius.tests-2.0.7-luna.zip Archive])
+
+If you want to install the org.eclipse.sirius.tests.support feature, which provides APIs to help create automated tests of Sirius-based modelers, you will need to add the following update-site:
+* SWTBot 2.1.1: <code>http://download.eclipse.org/technology/swtbot/releases/2.1.1/</code>
+
+If you want to install and run the test suites themselves, you will also need the following additional update-site:
+* Sirius Support for Legacy Queries: <code>http://download.eclipse.org/sirius/updates/legacy</code>
+
+It is needed to run the tests which use an old query language (which is now superseded by Acceleo 3 and the core feature:/var:/service: interpreters).
+
+''Juno users'': Sirius depends on more recent versions of some components that what is available by default from a Juno install. You need to add the following update-sites if you want to install Sirius 2.0.7 on Juno:
+* Orbit: <code>http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/</code>
+* Acceleo 3.4 (or 3.5): <code>http://download.eclipse.org/acceleo/updates/releases/3.4/</code> (resp. <code>http://download.eclipse.org/acceleo/updates/releases/3.5/</code>)
+* EEF 1.2 (or 1.3): <code>http://download.eclipse.org/modeling/emft/eef/updates/releases/1.2</code> (resp. <code>http://download.eclipse.org/modeling/emft/eef/updates/releases/1.3</code>)
+
+== Compatibility ==
+
+Sirius 2.0.7 is compatible with the following versions of Eclipse:
+* Eclipse 3.8/4.2 (Juno)
+* Eclipse 4.3 (Kepler)
+* Eclipse 4.4 (Luna)
+
+It should also be compatible with milestone builds for Eclipse 4.5 (Mars), although this has not been thoroughly tested.
+
+== New & Noteworthy ==
+
+The complete list of (2) tickets fixed in Sirius 2.0.7 can be found [https://bugs.eclipse.org/bugs/buglist.cgi?classification=Modeling&product=Sirius&query_format=advanced&target_milestone=2.0.7 here on the Bugzilla].
+
+
+[[Category:Sirius]]

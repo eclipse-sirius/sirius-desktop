@@ -1,0 +1,24 @@
+We use the following convention in order to isolate and control the dependencies we have to external libraries and frameworks. For each such external dependencies, we will create an ''extension bundle'' named <code>org.eclipse.sirius.ext.*</code>. Such a bundle can only depend on the library it extends and optionally Google Guava. It should not provide any extension point, OSGi service, or any kind of singleton or global state. Basically, <code>org.eclipse.sirius.ext.xxx</code> corresponds to ''the things we wish would exist in <code>xxx</code> to make our life easier in Sirius'' (in the same way that Guava is ''things we wish would exist in the Java standard library''). For example, <code>org.eclipse.sirius.ext.draw2d</code> would contain most of the custom figures and various geometry helpers which are currently scattered in the Sirius Diagrams code base. The expected benefits of this:
+* it will force us to write the corresponding code in a more generic, configurable, and testable way (it can not depend on Sirius);
+* it will avoid mixing Sirius-specific business logic with "technical" code (e.g. currently we have cases of figures that know way too much about the context they are in and contain important policy code what has nothing to do inside a piece of code whose role is to put pixels on the screen);
+* related to the previous points, it will make more of the Sirius-specific code independent on specific implementation technologies (by itself this convention is not enough for this, but see below for more about this);
+* finally, some of these extensions may be candidates for contributions to the corresponding library (e.g. if we extract some cool figure we created for Sirius in a way that it only depends on Draw2D, maybe we can try to contribute to Draw2D itself).
+
+As a first step towards a better modularization, and later towards a nicer architecture, we started (for 1.0M5) to move all the purely technical code into separate extension libraries. This should help reduce the volume of code which can be considered to be Sirius itself, and make it much easier to understand, reorganize and evolve it.
+
+As of Sirius 1.0M5, the following extension plug-ins have been created (some of them are currently empty, a few contain some easily moved code):
+* <code>org.eclipse.sirius.ext.base</code>
+* <code>org.eclipse.sirius.ext.draw2d</code>
+* <code>org.eclipse.sirius.ext.e3</code>
+* <code>org.eclipse.sirius.ext.e3.ui</code>
+* <code>org.eclipse.sirius.ext.emf</code>
+* <code>org.eclipse.sirius.ext.emf.edit</code>
+* <code>org.eclipse.sirius.ext.emf.tx</code>
+* <code>org.eclipse.sirius.ext.emf.ui</code>
+* <code>org.eclipse.sirius.ext.gef</code>
+* <code>org.eclipse.sirius.ext.gmf.notation</code>
+* <code>org.eclipse.sirius.ext.gmf.runtime</code>
+* <code>org.eclipse.sirius.ext.jface</code>
+* <code>org.eclipse.sirius.ext.swt</code>
+
+[[Category:Sirius]]

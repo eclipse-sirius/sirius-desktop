@@ -1,0 +1,44 @@
+[https://projects.eclipse.org/projects/modeling.sirius/releases/6.1.2 Sirius 6.1.2] is a maintenance release. It contain both bugfixes and improvements.
+
+== Availability ==
+
+Sirius 6.1.2 was released on 2019-02-15 (tag [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/tag/?id=v6.1.2 v6.1.2], commit [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/commit/?id=48b1eaf193ee573e6f6365e08fea60edbe87fa24 48b1eaf193ee573e6f6365e08fea60edbe87fa24]). It is available from the following update sites:
+* <code>http://download.eclipse.org/sirius/updates/releases/6.1.2/oxygen</code> ([http://download.eclipse.org/sirius/updates/releases/6.1.2/org.eclipse.sirius-6.1.2-oxygen.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/6.1.2/photon</code> ([http://download.eclipse.org/sirius/updates/releases/6.1.2/org.eclipse.sirius-6.1.2-photon.zip Archive])
+
+It is recommended you use the update-site matching the version of Eclipse you use to avoid potential issues at runtime.
+
+The complete JUnit and SWTBot test suites used to validate Sirius are published along with all their dependencies in separate update-sites from the core, available at:
+* <code>http://download.eclipse.org/sirius/updates/releases/6.1.2/oxygen/tests</code> ([http://download.eclipse.org/sirius/updates/releases/6.1.2/org.eclipse.sirius.tests-6.1.2-oxygen.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/6.1.2/photon/tests</code> ([http://download.eclipse.org/sirius/updates/releases/6.1.2/org.eclipse.sirius.tests-6.1.2-photon.zip Archive])
+
+== Compatibility & Requirements ==
+
+Sirius 6.1.2 is compatible with the following versions of Eclipse:
+* Eclipse 4.7 (Oxygen).
+* Eclipse 4.8 (Photon). Photon is the reference platform.
+* Eclipse 4.9 (SimRel 2018-09).
+
+== New & Noteworthy ==
+
+The complete list of (27) tickets fixed in Sirius 6.1.2 can be found [https://projects.eclipse.org/projects/modeling.sirius/releases/6.1.2/bugs here].
+
+'''Enhancements'''
+
+* Bug 543906 - The tool to insert vertical spaces should also allow to remove vertical spaces: in sequence diagrams, Ctrl+Shift+Mouse drag done from bottom to top can now be used to remove blank vertical space.
+* Bug 543909 - Group Menu Tool: unable to insert menu in "New" menu: the mechanism introduced in Sirius 6.1 to contribute actions at specific locations in the context menus has been extended to also support the "New" context menu.
+* Bug 543900 - Improve the bundle image provided shape extension point: the extension point which allows to contribute custom SVG images is now more configurable in how it interprets the SVG files to support a wider range of SVG files.
+* Bug 538877 - Allow double-click to finish wizard tools: in the "Select Element Model Variable", "Selection Wizard" and "Pane Based Selection Wizard", double-clicking on the element to select will now both select it and immediatly finish/close the wizard.
+* Bug 541734 - Provide better feedback in Model Explorer for Invalid representation: Invalid representations, that are either representations which semantic target does not exist anymore or representations that can not be retrieved anymore, are grayed in the Model Explorer and the only available action is "Delete". It was previously the case only for representations which semantic target does not exist anymore.
+* Bug 540918 - Diagram element decoration: enable to hide decoration at export/print in some cases: When a diagram is exported as an image, the permission authority decorations used to always appear on the image. It is now possible to configure the export action to remove them.
+
+'''Important bug fixes'''
+
+* Bug 538498 - [ELK] Some diagram elements (node) grow bigger on every arrange all invocation
+* Bug 538373 - [ELK] NullPointerException in ElkGraphImporter when Use Sirius 6.0
+* Bug 521937 - Wrong drop location from model explorer to diagram with negative origin
+* Bug 498260 - Note style: left alignment doesn't work 
+
+The release notes can be found [https://www.eclipse.org/sirius/doc/Release_Notes.html here].
+
+[[Category:Sirius]]

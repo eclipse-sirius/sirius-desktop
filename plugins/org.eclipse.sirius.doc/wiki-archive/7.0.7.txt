@@ -1,0 +1,19 @@
+[https://projects.eclipse.org/projects/modeling.sirius/releases/7.0.7 Sirius 7.0.7] is a maintenance release with a few bugfixes.
+
+This version is part or Eclipse 2023-03.
+
+The complete list of (2) tickets fixed in Sirius 7.0.7 can be found [https://projects.eclipse.org/projects/modeling.sirius/releases/7.0.7/bugs here].
+
+The release notes can be found [https://www.eclipse.org/sirius/doc/Release_Notes.html].
+
+== Availability ==
+
+Sirius 7.0.7 was released on 2022-01-19 (tag [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/tag/?id=v7.0.7 v7.0.7], commit [https://git.eclipse.org/c/sirius/org.eclipse.sirius.git/commit/?id=afc6669afe17b3e5d12b5f70e9e34e8e80942ae1 afc6669afe17b3e5d12b5f70e9e34e8e80942ae1]). It is available from the following update sites:
+* <code>https://download.eclipse.org/sirius/updates/releases/7.0.7/2021-06</code>
+
+It is recommended you use the update-site closest matching the version of Eclipse you use to avoid potential issues at runtime.
+
+The complete JUnit and SWTBot test suites used to validate Sirius are published along with all their dependencies in separate update-sites from the core, available at:
+* <code>https://download.eclipse.org/sirius/updates/releases/7.0.7/2021-06/tests</code>
+
+[[Category:Sirius]]

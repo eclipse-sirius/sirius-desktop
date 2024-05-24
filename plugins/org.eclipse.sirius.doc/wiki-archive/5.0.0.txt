@@ -1,0 +1,50 @@
+Sirius 5.0.0 is a major release, part of the Eclipse Oxygen Simultaneous Release.
+
+Sirius 5.0 focuses on streamlining the end-user experience.
+
+In particular, it features:
+* direct support for wizards and dialogs in modelers definition, using the same vocabulary as for properties views support (introduced in version 4.0), which allows for better UX in modelers;
+* a new form-based editor for Sirius (<code>.aird</code>) files which provides end-users complete overview of their models and representations, and direct access to the most common operations, avoiding reliance on hard-to-discover context menus;
+* on diagrams, a new decorator mechanism has been introduced which composes better in complex modelers with many extensions;
+* improved image resolution of exported diagrams;
+* the ability for end-users to force the use of the standard Eclipse font for Sirius trees, when the values defined in the modeler definition are not adapted.
+
+For ''specifiers'', in addition to the aforementioned support for wizards & dialogs definition, this version also features:
+* improved static validation and completion in the VSM editor;
+* support for partial/incremental (re-)definition of properties views and wizards/dialogs;
+* automatic creation of "canonical" properties views based on the target type's features;
+* a new 'Let' operation to define local variables and avoid repeated evaluation of common sub-expressions;
+* support for OCL/AQL syntax in the VSM editor when specifying target types.
+
+On the technical/internal side:
+* this version now requires Java 8 and drops support for Eclipse Mars: it is now only compatible with Neon and Oxygen. It is also compatible with Guava 21.
+* preparatory work has been merged that will lead in future versions to better scalability in cases where there are many representations, most of which are not used at a given time. This should have no visible effect on this version, but the mechanisms put in place will be exploited in future versions.
+    
+== Availability ==
+
+Sirius 5.0.0 was released on 2017-07-28 (tag [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/tag/?id=v5.0.0 v5.0.0], commit [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/commit/?id=f734f7c5b56caa9b03f237ba247d708619c49cc1 f734f7c5b56caa9b03f237ba247d708619c49cc1]). It is available from the following update sites:
+* <code>http://download.eclipse.org/sirius/updates/releases/5.0.0/neon</code> ([http://download.eclipse.org/sirius/updates/releases/5.0.0/org.eclipse.sirius-5.0.0-neon.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/5.0.0/oxygen</code> ([http://download.eclipse.org/sirius/updates/releases/5.0.0/org.eclipse.sirius-5.0.0-oxygen.zip Archive])
+
+It is recommended you use the update-site matching the version of Eclipse you use to avoid potential issues at runtime.
+
+The complete JUnit and SWTBot test suites used to validate Sirius are published along with all their dependencies in separate update-sites from the core, available at:
+* <code>http://download.eclipse.org/sirius/updates/releases/5.0.0/neon/tests</code> ([http://download.eclipse.org/sirius/updates/releases/5.0.0/org.eclipse.sirius.tests-5.0.0-neon.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/5.0.0/oxygen/tests</code> ([http://download.eclipse.org/sirius/updates/releases/5.0.0/org.eclipse.sirius.tests-5.0.0-oxygen.zip Archive])
+
+== Compatibility & Requirements ==
+
+Sirius 5.0.0 is compatible with the following versions of Eclipse:
+* Eclipse 4.6 (Neon).
+* Eclipse 4.7 (Oxygen). Oxygen is the reference platform.
+
+If you want to install the org.eclipse.sirius.tests.support feature, which provides APIs to help create automated tests of Sirius-based modelers, you will need to add the following update-site:
+* SWTBot 2.1.1: <code>http://download.eclipse.org/technology/swtbot/releases/2.1.1/</code>
+
+== New & Noteworthy ==
+
+The complete list of (101) tickets fixed in Sirius 5.0.0 can be found [https://projects.eclipse.org/projects/modeling.sirius/releases/5.0.0/bugs here].
+
+The release notes with highlights can be found [https://www.eclipse.org/sirius/doc/Release_Notes.html#sirius5.0.0 here].
+
+[[Category:Sirius]]

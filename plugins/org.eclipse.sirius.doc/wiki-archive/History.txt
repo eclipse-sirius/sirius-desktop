@@ -1,0 +1,76 @@
+Older history items for the Sirius project.
+* 2018-10-27: [[Sirius/6.1.1|Sirius 6.1.1]] released.
+* 2018-10-19: [[Sirius/6.1.0|Sirius 6.1.0]] released.
+* 2018-09-25: [[Sirius/6.0.2|Sirius 6.0.2]] released.
+* 2018-08-24: [[Sirius/6.0.1|Sirius 6.0.1]] released.
+* 2018-08-01: [[Sirius/5.1.3|Sirius 5.1.3]] released.
+* 2018-06-27: [[Sirius/6.0.0|Sirius 6.0.0]] released.
+* 2018-06-26: [[Sirius/5.1.2|Sirius 5.1.2]] released.
+* 2018-03-21: [[Sirius/4.1.9|Sirius 4.1.9]] released.
+* 2018-01-31: [[Sirius/5.1.1|Sirius 5.1.1]] released.
+* 2017-12-07: [[Sirius/4.1.8|Sirius 4.1.8]] released.
+* 2017-11-13: [[Sirius/4.1.7|Sirius 4.1.7]] released.
+* 2017-11-07: [[Sirius/5.1.0|Sirius 5.1.0]] released.
+* 2017-09-11: [[Sirius/5.0.2|Sirius 5.0.2]] released.
+* 2017-07-07: [[Sirius/3.1.9|Sirius 3.1.9]] and [[Sirius/4.1.6|Sirius 4.1.6]] released.
+* 2017-06-30: [[Sirius/5.0.1|Sirius 5.0.1]] released.
+* 2017-06-28: [[Sirius/5.0.0|Sirius 5.0.0]] released.
+* 2017-06-15: [[Sirius/4.1.5|Sirius 4.1.5]] released.
+* 2017-04-12: [[Sirius/4.1.4|Sirius 4.1.4]] released.
+* 2017-04-12: [[Sirius/3.1.8|Sirius 3.1.8]] released.
+* 2017-01-31: [[Sirius/2.0.8|Sirius 2.0.8]] released.
+* 2017-01-31: [[Sirius/4.1.3|Sirius 4.1.3]] released.
+* 2016-12-05: [[Sirius/4.1.2|Sirius 4.1.2]] released.
+* 2016-11-04: [[Sirius/3.1.7|Sirius 3.1.7]] released.
+* 2016-10-25: [[Sirius/4.1.1|Sirius 4.1.1]] released.
+* 2016-10-11: [[Sirius/3.1.6|Sirius 3.1.6]] released.
+* 2016-10-07: [[Sirius/4.1.0|Sirius 4.1.0]] released.
+* 2016-09-06: [[Sirius/4.0.1|Sirius 4.0.1]] released.
+* 2016-06-22: [[Sirius/4.0.0|Sirius 4.0.0]] released, as part of Eclipse Neon (4.6).
+* 2016-04-18: [[Sirius/3.1.5|Sirius 3.1.5]] released.
+* 2016-02-09: [[Sirius/3.1.4|Sirius 3.1.4]] released.
+* 2015-12-08: [[Sirius/3.1.3|Sirius 3.1.3]] released.
+* 2015-11-06: [[Sirius/3.1.2|Sirius 3.1.2]] released.
+* 2015-10-29: [[Sirius/3.1.1|Sirius 3.1.1]] released.
+* 2015-10-15: [[Sirius/3.1.0|Sirius 3.1.0]] released.
+* 2015-09-15: [[Sirius/3.0.2|Sirius 3.0.2]] released, as part of Eclipse Mars.1 (4.5.1).
+* 2015-09-10: [[Sirius/3.0.1|Sirius 3.0.1]] released.
+* 2015-06-24: [[Sirius/3.0.0|Sirius 3.0.0]] released, as part of Eclipse Mars (4.5).
+* 2015-06-16: [[Sirius/2.0.6|Sirius 2.0.6]] released.
+* 2015-05-06: [[Sirius/3.0.0M7|Sirius 3.0.0M7]] released (as part of Eclipse Mars M7).
+* 2015-03-31: [[Sirius/2.0.5|Sirius 2.0.5]] released.
+* 2015-03-24: [[Sirius/3.0.0M6|Sirius 3.0.0M6]] released (as part of Eclipse Mars M6).
+* 2015-02-12: [[Sirius/2.0.4|Sirius 2.0.4]] released.
+* 2015-01-28: [[Sirius/1.0.2|Sirius 1.0.2]] released.
+* 2015-01-22: [[Sirius/2.0.3|Sirius 2.0.3]] released.
+* 2014-12-16: [[Sirius/2.0.2|Sirius 2.0.2]] released.
+* 2014-11-06: [[Sirius/2.0.1|Sirius 2.0.1]] released.
+* 2014-10-24: [[Sirius/2.0.0|Sirius 2.0.0]] released.
+* 2014-08-22: [[Sirius/1.0.1|Sirius 1.0.1]] released.
+* 2014-06-25: [[Sirius/1.0.0|Sirius 1.0.0]] released.
+* 2014-05-24: [http://alain-bernard.developpez.com/tutoriels/eclipse/sirius-intro/ Sirius Tutorial] published on French-speaking developer site http://www.developpez.net/
+* 2014-05-07: [[Sirius/1.0.0M7|Sirius 1.0.0M7]] released.
+* 2014-03-12: [[Sirius/1.0.0M6|Sirius 1.0.0M6]] released.
+* 2014-01-27: [[Sirius/1.0.0M5|Sirius 1.0.0M5]] released.
+* 2013-12-16: [[Sirius/1.0.0M4|Sirius 1.0.0M4]] released.
+* 2013-12-11: [[Sirius/0.9.0|Sirius 0.9.0]] released.
+* 2013-11-19: '''IMPORTANT NOTICE''': A major bug is present in the version of Sirius bundled with Luna M3: if you install it on Luna the resulting Eclipse will fail to restart. See [http://dev.eclipse.org/mhonarc/lists/sirius-dev/msg00004.html this message] for more details. The bug is now fixed and the version in [http://download.eclipse.org/sirius/updates/nightly/0.9 our nightly repo] and in [http://download.eclipse.org/releases/staging/ the Luna staging repo] are safe to install.
+* 2013-10-28: Part of the Sirius team was present at [http://www.eclipsecon.org/europe2013/ EclipseCon Europe 2013], with a booth, several talks, and a BoF session:
+** [http://www.eclipsecon.org/europe2013/turning-eclipse-arduino-programming-platform-kids Turning Eclipse into an Arduino programming platform for kids] (Tuesday 15:00-15:35)
+** [http://www.eclipsecon.org/europe2013/sirius-changing-game-systems-architecture-presented-obeo Sirius: Changing the Game of Systems Architecture] (Wednesday 14:30-15:05)
+** [http://www.eclipsecon.org/europe2013/sirius-example-build-your-own-diagram-table-and-tree-editors-20-minutes Sirius By Example: Build Your Own Diagram, Table and Tree Editors in 20 Minutes] (Wednesday 16:15-16:50 )
+** [http://www.eclipsecon.org/europe2013/ecoretools-20-making EcoreTools 2.0: The Making-Of] (Wednesday 17:00-17:35)
+* 2013-10-25: Sirius 0.9 [http://download.eclipse.org/sirius/updates/nightly/0.9 nightly builds] are [http://git.eclipse.org/c/simrel/org.eclipse.simrel.build.git/commit/?id=28c56fb97754af56c75a5f3753a5971ca50fd32d now] part of the [https://hudson.eclipse.org/hudson/view/Repository%20Aggregation/job/simrel.luna.runaggregator/161/ Luna aggregation].
+* 2013-10-24: Officially [http://dev.eclipse.org/mhonarc/lists/cross-project-issues-dev/msg09991.html announced] Sirius's participation in Eclipse Luna.
+* 2013-10-15: Bumped version number to 0.9.0. The new nightlies are available at http://download.eclipse.org/sirius/updates/nightly/0.9. The old update-site still exists but will not be updated. 
+* 2013-09-30: An update-site with the result of our nighly builds is available at http://download.eclipse.org/sirius/updates/nightly/0.1
+* 2013-09-11: First job in our private Hudson instance at https://hudson.eclipse.org/sirius/.
+* 2013-09-11: Published the documentation at http://www.eclipse.org/sirius/doc/.
+* 2013-09-06: Source code available in the Git repository at http://git.eclipse.org/c/sirius/org.eclipse.sirius.git.
+* 2013-07-04: Preliminary review completed (successfuly) by the IP team.
+* 2013-06-28: Submission of the initial contribution.
+* 2013-06-13: Project officially created.
+* 2013-06-06: Sirius demoed at [http://www.eclipsecon.org/france2013 EclipseCon France 2013] in Toulouse ([https://github.com/alagarde/org.eclipse.sirius.econfrance2013 slides]).
+* 2013-03-06: Submission of [http://www.eclipse.org/proposals/modeling.sirius/ the proposal].
+
+[[Category:Sirius]]

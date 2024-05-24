@@ -1,0 +1,24 @@
+This page documents how the Sirius team handles their Bugzilla issues.
+
+== Useful Queries ==
+
+* [https://bugs.eclipse.org/bugs/buglist.cgi?classification=Modeling&product=Sirius&query_format=advanced All Sirius-related issues]
+* [https://bugs.eclipse.org/bugs/buglist.cgi?bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&classification=Modeling&product=Sirius&query_format=advanced All opened Sirius issues]
+* [https://bugs.eclipse.org/bugs/buglist.cgi?bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&keywords=triaged%2C%20&keywords_type=nowords&product=Sirius&query_format=advanced Issues waiting to be triaged]
+* [https://bugs.eclipse.org/bugs/buglist.cgi?bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&classification=Modeling&product=Sirius&query_format=advanced&target_milestone=--- Unplanned issues], i.e. open issues which are not yet planned for a specific release.
+* [https://bugs.eclipse.org/bugs/buglist.cgi?bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&classification=Modeling&keywords=performance%2C%20&keywords_type=allwords&product=Sirius&query_format=advanced Performance-related issues], marked with the <code>performance</code> keyword.
+* [https://bugs.eclipse.org/bugs/buglist.cgi?bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&columnlist=resolution%2Cshort_desc%2Copendate%2Cassigned_to%2Ckeywords%2Cstatus_whiteboard%2Clongdescs.count&component=Error%20Reports&f1=short_desc&known_name=Sirius%3A%20automatic%20error%20reports&list_id=10356080&o1=regexp&product=Recommenders.Incubator&query_based_on=Sirius%3A%20automatic%20error%20reports&query_format=advanced&v1=%5C%5B.%2Asirius.%2A%5C%5D Automatic bug reports] which may concern Sirius. This is only available to Eclipse Commiters. See also [https://dev.eclipse.org/recommenders/committers/confess/#/problems/search?projects=sirius&kinds=NORMAL&kinds=FREEZE&categories=UNCONFIRMED this version].
+* [https://bugs.eclipse.org/bugs/buglist.cgi?bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&classification=Modeling&email1=%40obeo.fr&emailreporter1=1&emailtype1=notsubstring&product=Sirius&query_format=advanced Community issues]: issues reported by people outside of the Sirius development team.
+* [https://bugs.eclipse.org/bugs/buglist.cgi?classification=Modeling&product=Sirius&query_format=advanced&status_whiteboard=backport&status_whiteboard_type=allwordssubstr Backport candidates]: issues we may want to backport to maintenance branches.
+
+== Performance Issues ==
+
+''Reporters'': When reporting a performance issue, add the <code>performance</code> keyword to the issue, and include actual measures (even approximate) of both the resource usage (time, memory...) you experienced and the amount of data in your use case. Even better, attach a representative use case. These information are critical for the Sirius team to properly prioritize the issue and reproduce it.
+
+''Contributors'': When ''working'' on such a performance issue, make sure you have a repeatable use case attached in the bug (created one if the reporter did not provide one), and ''always'' provide before/after measures with and without your proposed patches. A performance patch which does not include any repeatable proof that it actually improved the system's performance in a measurable and significant way will not be considered for merging.
+
+== Backport Candidates ==
+
+''Contributors'': If you fix an issue on <code>master</code> for the next release and you believe it should be backported to maintenance version(s), add the <code>backport</code> tag in the ''Whiteboard'' field in the issue. The ''Backport candidates'' query above can be used to identify and review all such candidates. Once a decision has been taken to backport the fix or not, the tag should be removed (if the decision is to backport, a clone issue targetting the appropriate maintenance branche(s) will be created). Remember that only fixes for important issues, with no API changes, and for which we are absolutely sure there is no risk of regression can be candidates.
+
+[[Category:Sirius]]

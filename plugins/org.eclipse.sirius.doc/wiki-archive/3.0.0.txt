@@ -1,0 +1,49 @@
+Sirius 3.0.0 is a major release, part of the Eclipse 4.5 (Mars) release train.
+
+See also [https://dev.eclipse.org/mhonarc/lists/sirius-dev/msg00111.html the announce on the mailing list].
+
+== Availability ==
+
+Sirius 3.0.0 was released on 2015-06-24 (tag [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/tag/?id=v3.0.0 v3.0.0], commit [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/commit/?id=2dd683676c4882d7d9741d43f98a7676910a3fc5 2dd683676c4882d7d9741d43f98a7676910a3fc5]). It is available from the following update sites:
+* <code>http://download.eclipse.org/sirius/updates/releases/3.0.0/juno</code> ([http://download.eclipse.org/sirius/updates/releases/3.0.0/org.eclipse.sirius-3.0.0-juno.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/3.0.0/kepler</code> ([http://download.eclipse.org/sirius/updates/releases/3.0.0/org.eclipse.sirius-3.0.0-kepler.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/3.0.0/luna</code> ([http://download.eclipse.org/sirius/updates/releases/3.0.0/org.eclipse.sirius-3.0.0-luna.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/3.0.0/mars</code> ([http://download.eclipse.org/sirius/updates/releases/3.0.0/org.eclipse.sirius-3.0.0-mars.zip Archive])
+
+It is recommended you use the update-site matching the version of Eclipse you use to avoid potential issues at runtime.
+
+This version includes the complete JUnit and SWTBot test suites used to validate Sirius. They are published along with all their dependencies in separate update-sites from the core, available at:
+* <code>http://download.eclipse.org/sirius/updates/releases/3.0.0/juno/tests</code> ([http://download.eclipse.org/sirius/updates/releases/3.0.0/org.eclipse.sirius.tests-3.0.0-juno.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/3.0.0/kepler/tests</code> ([http://download.eclipse.org/sirius/updates/releases/3.0.0/org.eclipse.sirius.tests-3.0.0-kepler.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/3.0.0/luna/tests</code> ([http://download.eclipse.org/sirius/updates/releases/3.0.0/org.eclipse.sirius.tests-3.0.0-luna.zip Archive])
+
+If you want to install the org.eclipse.sirius.tests.support feature, which provides APIs to help create automated tests of Sirius-based modelers, you will need to add the following update-site:
+* SWTBot 2.1.1: <code>http://download.eclipse.org/technology/swtbot/releases/2.1.1/</code>
+
+If you want to install and run the test suites themselves, you will also need the following additional update-site:
+* Sirius Support for Legacy Queries: <code>http://download.eclipse.org/sirius/updates/legacy</code>
+
+It is needed to run the tests which use an old query language (which is now superseded by Acceleo 3, AQL and the core feature:/var:/service: interpreters).
+
+''Juno users'': Sirius depends on more recent versions of some components that what is available by default from a Juno install. You need to add the following update-sites if you want to install Sirius 3.0.0 on Juno:
+* Orbit: <code>http://download.eclipse.org/tools/orbit/downloads/drops/R20150519210750/repository/</code>
+* Acceleo 3.6: <code>http://download.eclipse.org/acceleo/updates/releases/3.6/</code>
+* EEF 1.5: <code>http://download.eclipse.org/modeling/emft/eef/updates/milestones/1.5/S201505291308/</code>
+
+== Compatibility ==
+
+Sirius 3.0.0 is compatible with the following versions of Eclipse:
+* Eclipse 3.8/4.2 (Juno)
+* Eclipse 4.3 (Kepler)
+* Eclipse 4.4 (Luna)
+* Eclipse 4.5 (Mars)
+
+Eclipse 4.5 (Mars) is the reference platform.
+
+== New & Noteworthy ==
+
+The complete list of (215) tickets fixed in Sirius 3.0.0 can be found [https://bugs.eclipse.org/bugs/buglist.cgi?classification=Modeling&list_id=12094503&product=Sirius&query_format=advanced&target_milestone=3.0.0&target_milestone=3.0.0M4&target_milestone=3.0.0M5&target_milestone=3.0.0M6&target_milestone=3.0.0M7 here on the Bugzilla].
+
+The release notes with highlights can be found [https://www.eclipse.org/sirius/doc/Release_Notes.html#sirius3.0.0 here].
+
+[[Category:Sirius]]

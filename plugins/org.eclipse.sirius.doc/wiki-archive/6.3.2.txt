@@ -1,0 +1,21 @@
+[https://projects.eclipse.org/projects/modeling.sirius/releases/6.3.2 Sirius 6.3.2] is a maintenance release with only bugfixes important to Capella 1.4.1 which could not be finalized on time for the Sirius 6.3.1 release that is part of Eclipse 2020-06. It also contains a small evolution to improve support for XSD-based metamodels (e.g. AUTOSAR).
+
+The complete list of (35) tickets fixed in Sirius 6.3.2 can be found [https://projects.eclipse.org/projects/modeling.sirius/releases/6.3.2/bugs here].
+
+The release notes can be found [https://www.eclipse.org/sirius/doc/Release_Notes.html].
+
+== Availability ==
+
+Sirius 6.3.2 was released on 2020-06-24 (tag [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/tag/?id=v6.3.2 v6.3.2], commit [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/commit/?id=919810e5f78c7f92de456960df5cc28d34f899ce 919810e5f78c7f92de456960df5cc28d34f899ce]). It is available from the following update sites:
+* <code>http://download.eclipse.org/sirius/updates/releases/6.3.2/photon</code>
+* <code>http://download.eclipse.org/sirius/updates/releases/6.3.2/2019-06</code>
+* <code>http://download.eclipse.org/sirius/updates/releases/6.3.2/2019-12</code>
+
+It is recommended you use the update-site closest matching the version of Eclipse you use to avoid potential issues at runtime.
+
+The complete JUnit and SWTBot test suites used to validate Sirius are published along with all their dependencies in separate update-sites from the core, available at:
+* <code>http://download.eclipse.org/sirius/updates/releases/6.3.2/photon/tests</code>
+* <code>http://download.eclipse.org/sirius/updates/releases/6.3.2/2019-06/tests</code>
+* <code>http://download.eclipse.org/sirius/updates/releases/6.3.2/2019-12/tests</code>
+
+[[Category:Sirius]]

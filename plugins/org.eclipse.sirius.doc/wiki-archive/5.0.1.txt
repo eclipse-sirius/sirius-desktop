@@ -1,0 +1,30 @@
+Sirius 5.0.1 is a service release with only bugfixes compared to 5.0.0.
+
+== Availability ==
+
+Sirius 5.0.1 was released on 2017-07-30 (tag [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/tag/?id=v5.0.1 v5.0.1], commit [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/commit/?id=3ec6e7387324d225068d0a6df6b65a5253bf7c54 3ec6e7387324d225068d0a6df6b65a5253bf7c54]). It is available from the following update sites:
+* <code>http://download.eclipse.org/sirius/updates/releases/5.0.1/neon</code> ([http://download.eclipse.org/sirius/updates/releases/5.0.1/org.eclipse.sirius-5.0.1-neon.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/5.0.1/oxygen</code> ([http://download.eclipse.org/sirius/updates/releases/5.0.1/org.eclipse.sirius-5.0.1-oxygen.zip Archive])
+
+It is recommended you use the update-site matching the version of Eclipse you use to avoid potential issues at runtime.
+
+The complete JUnit and SWTBot test suites used to validate Sirius are published along with all their dependencies in separate update-sites from the core, available at:
+* <code>http://download.eclipse.org/sirius/updates/releases/5.0.1/neon/tests</code> ([http://download.eclipse.org/sirius/updates/releases/5.0.1/org.eclipse.sirius.tests-5.0.1-neon.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/5.0.1/oxygen/tests</code> ([http://download.eclipse.org/sirius/updates/releases/5.0.1/org.eclipse.sirius.tests-5.0.1-oxygen.zip Archive])
+
+== Compatibility & Requirements ==
+
+Sirius 5.0.1 is compatible with the following versions of Eclipse:
+* Eclipse 4.6 (Neon).
+* Eclipse 4.7 (Oxygen). Oxygen is the reference platform.
+
+If you want to install the org.eclipse.sirius.tests.support feature, which provides APIs to help create automated tests of Sirius-based modelers, you will need to add the following update-site:
+* SWTBot 2.1.1: <code>http://download.eclipse.org/technology/swtbot/releases/2.1.1/</code>
+
+== New & Noteworthy ==
+
+The complete list of (13) tickets fixed in Sirius 5.0.1 can be found [https://projects.eclipse.org/projects/modeling.sirius/releases/5.0.1/bugs here].
+
+The release notes with highlights can be found [https://www.eclipse.org/sirius/doc/Release_Notes.html#sirius5.0.1 here].
+
+[[Category:Sirius]]

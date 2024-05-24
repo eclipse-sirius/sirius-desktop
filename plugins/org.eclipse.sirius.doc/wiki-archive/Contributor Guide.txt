@@ -1,0 +1,88 @@
+= Development Environment =
+
+== Environment Configuration with Oomph ==
+
+The steps "Development Environment" and "Getting the Sources" have been replaced by an Oomph configuration file. You need to install the [https://wiki.eclipse.org/Eclipse_Oomph_Installer Oomph installer].
+
+* On the Product page, choose "Eclipse IDE for Eclipse Committers" and your desired Product Version.
+
+[[File:Sirius_Oomph_ProductPage_Oxygen.png|Product page]] 
+
+* On the Projects page, select tick Sirius from the catalog.
+
+[[File:Sirius_Oomph_ProjectsPage_Oxygen.png|Projects page]] 
+
+* On the Variables page fill all the fiels.
+
+[[File:Sirius_Oomph_VariablesPage_Oxygen.png|Variables page]] 
+
+* On the confirmation page just click Finish.
+
+[[File:Sirius_Oomph_ConfirmationPage_Oxygen.png|Confirmation page]]
+
+
+Then, Oomph creates a new Eclipse installation, clones the Sirius git repository (if necessary), launches the new Eclipse install and terminates the process for the current workspace (add the repository in EGit, imports the Sirius projects in corresponding working sets, ...).
+
+If you have trouble by using Oomph installer for Sirius, you can report the problem to the corresponging bugzilla ([https://bugs.eclipse.org/bugs/show_bug.cgi?id=455965 455965]).
+
+== Configure environment manually ==
+
+The standard environment to develop Sirius itself is currently:
+* ''Java 1.8''. Mandatory since Eclipse Neon version.
+* ''Eclipse 4.7.3 (Oxygen.3a) SDK'', with the following additional plug-ins:
+** ''EMF SDK 2.13.0'', available from the Oxygen update-site: required to manage our meta-models and generate the corresponding code.
+** ''Eclipse CheckStyle Plug-in 7.6.0'', available from https://dl.bintray.com/eclipse-cs/eclipse-cs/7.6.0/: required to make sure new code follows the CheckStyle-enforced rules.
+** ''Mylyn WikiText'', available from the Oxygen update-site: required to re-generated the HTML documentation from the Textile sources.
+** ''EGit'': required to get the Sirius sources (not strictly required actually, if you prefer to use the command-line exclusively).
+* ''Maven 3.3 or later'', available from http://maven.apache.org/: required to build from the command-line (and make sure your changes will not break the build).
+* Optional: ''Git 1.8'' or later, available from http://git-scm.com/downloads, if you need/want to use the command-line for commit/push/merge/rebase/etc.
+* Optional: ''Target Platform Definition DSL and Generator 2.0 or later'', available from http://mbarbero.github.io/fr.obeo.releng.targetplatform/p2/latest/ (Note: on Kepler you also need to add http://download.eclipse.org/modeling/tmf/xtext/updates/releases/ to get Xtext 2.5 which is not available by default on Kepler). This tools is needed only if you need to change the Target Platform definition files (<code>*.targetplatform</code> and <code>*.tpd</code>) and re-generate the <code>*.target</code> files. In normal development you do not need this and can simply use the generated <code>*.target</code> themselves.
+
+Of course you are free to use any additional tools you want to make your development experience more pleasant for you. However, do not commit anything which adds new requirements without getting approval from the development team.
+
+= Getting the Sources =
+
+The source code for Sirius is visible at https://git.eclipse.org/r/#/admin/projects/sirius/org.eclipse.sirius. Note that this is a web page, not a Git repository. Do not try to clone using this URL, use the link given in the Gerrit interface. To be able to push reviews on the gerrit, a hook used to add IDs to the commit must be installed. This can be done by clicking on the link "Clone with commit-msg hook" that create an command line allowing to clone the Sirius repository and install the hook.
+
+A Team Project Set (<code>*.psf</code>) file which is normally kept up-to-date can be obtained from http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/plain/releng/org.eclipse.sirius.settings/sirius.psf.
+
+Once you have all the sources in your workspace:
+* Make sure the "Missing API Baseline" does not cause compilation errors: Window > Preferences > Plug-in Development > API Baselines : Set "Missing API Baseline" to "Warning" (or "Ignore").
+* Open one of the <code>.target</code> files from the <code>org.eclipse.sirius.targets</code> project in the target editor and (once it is loaded) set it as the current target.
+
+= Git Usage =
+
+Development is done on <code>master</code>, but all but the most trivial patches must first go through a Gerrit review. Feature branches are created for disruptive changes which may or may not be completely stabilized by the time of the next milestone or release.
+
+Obviously, each contributor is free to do whatever he/she wants on his/her local clone(s), the rules above only apply to commits and branches pushed into the official repo at Eclipse.
+
+== Commit Messages Formatting ==
+
+<pre>
+[bugid] Short description
+
+Longer description if needed, explaining the reasons of the change and its
+impact, not paraphrasing the patch. The description should use wrapped line.
+
+Bug: bugid
+Change-Id: I00000000000000000000
+Signed-off-by: author name
+</pre>
+
+* Always mention the numeric bug id at the start of the first line (e.g. <code>[432432]</code>). For the few cases where a commit is not directly related to a bugzilla, use a tag like <code>[build]</code>, <code>[version]</code>, <code>[cleanup]</code>...
+* The first line should be '''short''', this is not the place to give details.
+* The <code>Bug: 432432</code> footer line is not strictly required, but Gerrit recognizes it and creates a direct hyperlink to the bugzilla if it is present, which is very convenient.
+* The <code>Change-Id:</code> footer line is mandatory for all changes which go through Gerrit (which should be the vast majority of commits).
+* The <code>Signed-of-by:</code> footer line is not mandatory but recommended.
+* The <code>Cherry-picked-from: 421359</code> footer should be included if the commit is a backport from a cloned issue.
+
+== Gerrit configuration == 
+
+You will need to configure your Sirius Git repository to be able to push your modifications on Gerrit, see:
+* https://wiki.eclipse.org/Gerrit#User_Account
+* https://git.eclipse.org/r/#/settings/
+
+= See also =
+[[Sirius/Build]]
+
+[[Category:Sirius]]
