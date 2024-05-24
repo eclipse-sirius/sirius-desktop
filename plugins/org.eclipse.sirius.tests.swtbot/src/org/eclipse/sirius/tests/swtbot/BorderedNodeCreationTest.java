@@ -113,6 +113,8 @@ public class BorderedNodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
     /** Name of the fourth package */
     protected static final String PACKAGE_4_NAME = "P4";
 
+    private static final String PACKAGE_1_V_NAME = "P1_V";
+
     private static final String CLASS_1_NAME = "Class1";
 
     private static final String CLASS_2_NAME = "Class2";
@@ -134,6 +136,11 @@ public class BorderedNodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
      * tool to create "normal" bordered node is used.
      */
     protected boolean createCollapsedBorderedNode;
+
+    /**
+     * If true the tool to create the border node is named "Border Class on VStack".
+     */
+    protected boolean createBorderedNodeOnVStack;
 
     /**
      * {@inheritDoc}
@@ -498,6 +505,10 @@ public class BorderedNodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
             // Try to locate the bordered node at 8 pixels to the top-left
             // corner of the package
             Point delta = new Point(8, 0);
+            if (createBorderedNodeOnVStack) {
+                Rectangle packageBounds = editor.getBounds(editPart);
+                delta = new Point(packageBounds.width - 5, packageBounds.height - 35);
+            }
             // We compute the location according the the package location, the
             // zoom factor and an insets to be sure to be in the package and not
             // just above.
@@ -657,6 +668,18 @@ public class BorderedNodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
+     * Ensures that a bordered node created on a vertical stack region (zoom level: 100%) has the expected location.
+     */
+    public void testBNC_OnVStackContainer() {
+        createBorderedNodeOnVStack = true;
+        try {
+            testBNC_OnContainer(ZoomLevel.ZOOM_100, PACKAGE_1_V_NAME);
+        } finally {
+            createBorderedNodeOnVStack = false;
+        }
+    }
+
+    /**
      * Ensures that a bordered node created on a Node in Container (zoom level :
      * 100%) has the expected location.
      */
@@ -729,6 +752,8 @@ public class BorderedNodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
     protected String getBorderedNodeCreationOnPackageToolName() {
         if (createCollapsedBorderedNode) {
             return COLLASPED_BORDERED_NODE_CREATION_ON_PACKAGE_TOOL_NAME;
+        } else if (createBorderedNodeOnVStack) {
+            return "Border Class on VStack";
         } else {
             return BORDERED_NODE_CREATION_ON_PACKAGE_TOOL_NAME;
         }
@@ -757,6 +782,8 @@ public class BorderedNodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
     protected String getNewBorderedNodeOnPackageName() {
         if (createCollapsedBorderedNode) {
             return NEW_COLLAPSED_BORDERED_NODE_NAME;
+        } else if (createBorderedNodeOnVStack) { 
+            return NEW_BORDERED_NODE_ON_PACKAGE_NAME + "_V";
         } else {
             return NEW_BORDERED_NODE_ON_PACKAGE_NAME;
         }
