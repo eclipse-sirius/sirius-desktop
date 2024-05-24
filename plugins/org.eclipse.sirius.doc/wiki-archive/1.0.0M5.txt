@@ -1,0 +1,34 @@
+Sirius 1.0.0M5 is a milestone release which has been included in Luna M5. The project is still in incubation at this time.
+
+See also [http://dev.eclipse.org/mhonarc/lists/sirius-dev/msg00012.html the announce on the mailing list].
+
+== Availability ==
+
+Sirius 1.0.0M5 was released on 2014-01-27 (tag [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/tag/?id=v1.0.0M5 v1.0.0M5], commit [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/commit/?id=08cef0cf45e5af83f3fdc353f03cb52a0e602eeb 08cef0cf45e5af83f3fdc353f03cb52a0e602eeb]). It is available from the following update sites:
+* <code>http://download.eclipse.org/sirius/updates/milestones/1.0.0M5/juno</code>
+* <code>http://download.eclipse.org/sirius/updates/milestones/1.0.0M5/kepler</code>
+* <code>http://download.eclipse.org/sirius/updates/milestones/1.0.0M5/luna</code>
+
+It is recommended you use the update-site matching the version of Eclipse you use to avoid potential issues at runtime.
+
+''Juno users'': Sirius depends on more recent versions of some components that what is available by default from a Juno install. You need to add the following update-sites if you want to install Sirius 1.0.0M5 on Juno:
+* Orbit: http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository/
+* Acceleo 3.4: http://download.eclipse.org/acceleo/updates/releases/3.4/
+* EEF 1.2: http://download.eclipse.org/modeling/emft/eef/updates/nightly/1.2/
+
+== Compatibility ==
+
+Sirius 1.0.0M5 is compatible with the following versions of Eclipse:
+* Eclipse 3.8/4.2 (Juno)
+* Eclipse 4.3 (Kepler)
+* Eclipse 4.4M5 (Luna)
+
+== New & Noteworthy ==
+
+Apart from a few bug fixes related to tables, most of the changes in this release only impact the internal structure of the code.
+* [https://bugs.eclipse.org/bugs/show_bug.cgi?id=423037 #423037] is the first phase of a larger-scale work to separate the code implementing the "diagrams" dialect from the Sirius core. It involved moving diagram-related types from the metamodel into their own Ecore packages. Existing models will be transparently migrated when loaded and continue to work as before. If you have Java code which referenced the corresponding types, you will need to make some adjustments; see [http://eclipse.org/sirius/doc/Release%20Notes.html#sirius1.0M5 the release notes] for details.
+* [https://bugs.eclipse.org/bugs/show_bug.cgi?id=423051 #423051] moved some generic code out of the main Sirius plug-ins and into [[Sirius/Library_Extensions|library extensions]], which are separate plug-ins. If you had Java code which used the corresponding types, you will need to update it by possibly adding new dependencies (to the library extensions) and changing the <code>import</code> declarations in your code; see [http://eclipse.org/sirius/doc/Release%20Notes.html#sirius1.0M5 the release notes] for details.
+
+The complete list of bugs fixed in this version can be seen [https://bugs.eclipse.org/bugs/buglist.cgi?list_id=7809578&classification=Modeling&query_format=advanced&product=Sirius&target_milestone=1.0.0M5 on Bugzilla].
+
+[[Category:Sirius]]
