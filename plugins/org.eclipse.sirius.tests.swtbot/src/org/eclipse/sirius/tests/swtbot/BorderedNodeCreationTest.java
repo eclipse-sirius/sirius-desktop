@@ -113,6 +113,8 @@ public class BorderedNodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
     /** Name of the fourth package */
     protected static final String PACKAGE_4_NAME = "P4";
 
+    private static final String PACKAGE_6_NAME = "P6ForVStack";
+
     private static final String CLASS_1_NAME = "Class1";
 
     private static final String CLASS_2_NAME = "Class2";
@@ -134,6 +136,11 @@ public class BorderedNodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
      * tool to create "normal" bordered node is used.
      */
     protected boolean createCollapsedBorderedNode;
+
+    /**
+     * If true the tool to create the border node is named "BorderClassOnVStack".
+     */
+    protected boolean createBorderedNodeOnVStack;
 
     /**
      * {@inheritDoc}
@@ -276,7 +283,7 @@ public class BorderedNodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
         // Get the location of the class (relative the part visible on the
         // screen)
         Point classLocation = editor.getLocation(classEditPart);
-        // Get the absolute location of p2 package from origin (0, 0)
+        // Get the absolute location of the class from origin (0, 0)
         Point classAbsoluteLocation = editor.getAbsoluteLocation((GraphicalEditPart) classEditPart.part());
         // Get the insertion location for the bordered node (use the relative
         // coordinate, that's what is send to the request in reality)
@@ -495,18 +502,23 @@ public class BorderedNodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
                 fail("Problem during getting expanded bounds of the collapse bordered node.");
             }
         } else {
-            // Try to locate the bordered node at 8 pixels to the top-left
+            // Try to locate the bordered node on the left border, at 8 pixels from the top-left
             // corner of the package
-            Point delta = new Point(8, 0);
+            Point delta = new Point(0, 8);
+            if (createBorderedNodeOnVStack) {
+                // For a VStack container try to locate the bordered node a little bit lower to be under the "title"
+                // area.
+                delta = delta.getTranslated(0, 22);
+            }
             // We compute the location according the the package location, the
             // zoom factor and an insets to be sure to be in the package and not
-            // just above.
-            location = packageLocation.getTranslated(delta.getScaled(zoomLevel.getAmount()).translate(0, 1));
+            // just nearby.
+            location = packageLocation.getTranslated(delta.getScaled(zoomLevel.getAmount()).translate(1, 0));
             // The expected location is in absolute coordinate the delta is
             // translate with -2 in y axis corresponding to the shift of the
             // bordered node make by BorderItemLocator
             // (IBorderItemOffsets.DEFAULT_OFFSET - size of the node).
-            expectedLocation = packageAbsoluteLocation.getTranslated(delta.translate(0, -2));
+            expectedLocation = packageAbsoluteLocation.getTranslated(delta.translate(-2, 0));
         }
         expectedLocation = adaptExpectedLocation(((GraphicalEditPart) editPart.part()).getFigure(), packageAbsoluteLocation, expectedLocation);
 
@@ -657,6 +669,18 @@ public class BorderedNodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
+     * Ensures that a bordered node created on a vertical stack region (zoom level: 100%) has the expected location.
+     */
+    public void testBNC_OnVStackContainer() {
+        createBorderedNodeOnVStack = true;
+        try {
+            testBNC_OnContainer(ZoomLevel.ZOOM_100, PACKAGE_6_NAME);
+        } finally {
+            createBorderedNodeOnVStack = false;
+        }
+    }
+
+    /**
      * Ensures that a bordered node created on a Node in Container (zoom level :
      * 100%) has the expected location.
      */
@@ -727,10 +751,18 @@ public class BorderedNodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
      * @return the name of the tool to use.
      */
     protected String getBorderedNodeCreationOnPackageToolName() {
-        if (createCollapsedBorderedNode) {
-            return COLLASPED_BORDERED_NODE_CREATION_ON_PACKAGE_TOOL_NAME;
+        if (createBorderedNodeOnVStack) {
+            if (createCollapsedBorderedNode) {
+                return "CollapsedBorderClassOnVStack";
+            } else {
+                return "BorderClassOnVStack";
+            }
         } else {
-            return BORDERED_NODE_CREATION_ON_PACKAGE_TOOL_NAME;
+            if (createCollapsedBorderedNode) {
+                return COLLASPED_BORDERED_NODE_CREATION_ON_PACKAGE_TOOL_NAME;
+            } else {
+                return BORDERED_NODE_CREATION_ON_PACKAGE_TOOL_NAME;
+            }
         }
     }
 
