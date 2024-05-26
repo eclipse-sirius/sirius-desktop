@@ -1,4 +1,4 @@
-# Contributing to Sirius
+# Contributing to Sirius Desktop
 
 Thanks for your interest in this project.
 
@@ -8,9 +8,11 @@ Eclipse Sirius enables the specification of a modeling workbench in terms of
 graphical, table or tree editors with validation rules and actions using
 declarative descriptions.
 
-* https://www.eclipse.dev/sirius
+* https://eclipse.dev/sirius
 * https://projects.eclipse.org/projects/modeling.sirius
-* https://wiki.eclipse.org/Sirius
+
+This document focuses on Sirius Desktop, which is based on the Eclipse platform.
+For information about Sirius Web, see https://github.com/eclipse-sirius/sirius-web instead.
 
 ## Developer resources
 
@@ -19,29 +21,91 @@ more.
 
 * https://projects.eclipse.org/projects/modeling.sirius/developer
 
-The project maintains the following source code repositories
+The official source code for Sirius Desktop is at:
 
-* https://github.com/eclipse-sirius/sirius-desktop.git
+* https://github.com/eclipse-sirius/sirius-desktop
 
-This project uses Bugzilla to track ongoing development and issues.
+This project uses GitHub to track ongoing development and issues.
 
-* Search for issues: https://eclipse.org/bugs/buglist.cgi?product=Sirius
-* Create a new report: https://eclipse.org/bugs/enter_bug.cgi?product=Sirius
+* Search for issues: https://github.com/eclipse-sirius/sirius-desktop/issues
+* Create a new issue: https://github.com/eclipse-sirius/sirius-desktop/issues/new/choose
 
 Be sure to search for existing bugs before you create another one.
 Remember that contributions are always welcome! There are many ways to
 contribute, from entering high quality bug reports, to contributing
-code or documentation changes. For a complete guide, see the [How to
-Contribute](http://wiki.eclipse.org/Sirius/Contributor_Guide) page on
-the team wiki. For further questions about contributing to Sirius,
-please send a mail to sirius-dev@eclipse.org.
+code or documentation changes.
+
+## Development Environment
+
+The standard environment to develop Sirius Desktop itself is currently:
+
+* _Java 17_. Mandatory since Eclipse 2023-09 and Sirius Desktop 7.2.0.
+* _Maven 3.9_ to build.
+* _Eclipse 2023-03_ is the reference target platform and the oldest supported version. For the actual development environment, it is recommended to use the most recent Eclipse release to benefit from the latest features and improvements.
+* You will need the _EMF SDK_ installed in your IDE. If you use the _Eclipse Modeling Tools_ [package](https://www.eclipse.org/downloads/packages/) or [_Obeo Designer_](https://www.obeodesigner.com/), this come pre-installed. If you use another package (for example _Eclipse for Committers_) you will need to install it explicitly.
+* Also make sure you have _Eclipse CheckStyle Plug-in 10.4_ installed from [here](https://checkstyle.org/eclipse-cs-update-site/releases/10.4.0.202211151918): required to make sure new code follows the CheckStyle-enforced rules, which are defined in [`releng/org.eclipse.sirius.settings/CheckstyleConfiguration.xml`](https://github.com/eclipse-sirius/sirius-desktop/blob/master/releng/org.eclipse.sirius.settings/CheckstyleConfiguration.xml).
+
+Of course you are free to use any additional tools you want to make your development experience more pleasant for you.
+However, do not commit anything which adds new requirements without getting approval from the development team.
+
+## Getting the sources
+
+1. Clone the source code for Sirius Desktop from <https://github.com/eclipse-sirius/sirius-desktop>.
+2. Import all the Eclipse projects inside the clone in you Eclipse workspace.
+3. Load one of the target platforms available in the `org.eclipse.sirius.targets` project to set it as the current target.
+
+## Git and GitHub Usage
+
+Development is done on the `master`, but all but the most trivial patches must first go through a pull request and review.
+
+Obviously, each contributor is free to do whatever he/she wants on his/her local clone(s), the rules above only apply to commits and branches pushed into the official repository.
+
+## Commit Messages Formatting
+
+All commit messages *must* follow the following pattern:
+
+```
+[ISSUE_ID] Short description
+
+Longer description if needed, explaining the reasons of the change and its
+impact, not paraphrasing the patch. The description should use wrapped line.
+
+Bug: https://github.com/eclipse-sirius/sirius-desktop/issues/ISSUE_ID
+Signed-off-by: author name
+```
+
+* Always mention the numeric bug id at the start of the first line (e.g. `[432]`). For the few cases where a commit is not directly related to a bugzilla, use a tag like `[build]`, `[version]`, `[cleanup]`... See the history for the list of acceptable tags.
+* The first line should be _short_, this is not the place to give details.
+* It should describe what the commit does, not reproduce the issue title. Not "Error when a drag&drop involves updating the content of this element" but "Disable refresh for removed children in CanonicalSynchronizer".
+* It should be written in imperative form, i.e. "Improve the color palette DnD feedback", not "Improved the color palette DnD feedback".
+* The `Bug: https://github.com/eclipse-sirius/sirius-desktop/issues/432` footer line is should include the full URL to the issue, not just its number (this avoids ambiguity with older bugzilla issues).
+* The `Signed-of-by:` is mandatory.
+
+## Documentation Updates
+
+All the documentation is inside the `org.eclipse.sirius.doc` plugin, inside the `doc` directory.
+This is what gets deployed at https://eclipse.dev/sirius/doc on each new release.
+
+The source files for the documentation are currently written in [Textile](https://textile-lang.com/), though this will change in the future for AsciiDoc.
+To edit Textile files conveniently inside Eclipse you can install [Mylyn WikiText](https://marketplace.eclipse.org/content/mylyn-wikitext).
+
+All commits that change the behavior of the system in a visible way should be mentioned in the `Release Notes.textile` in the section corresponding to the version the change will appear.
+This includes API changes/breaks that adopters need to be aware of when upgrading to that version.
+
+Non trivial changes must also be documented in the actual manual, either:
+* in the _developer_ section for important new APIs and extension points;
+* in the _specifier_ section for changes that concern the way Sirius modeler are specified (the `odesign` files);
+* on in the _user_ section for changes visible to end-users of Sirius-based modelers.
+
+Commits that change the documentation sources (`*.textile`) *must* also include the corresponding updated HTML files (and any new images referenced of course).
+To re-generated the HTML files from the Textile sources, invoke the _Sirius - Generate HTML Documentation_ launch configuration.
 
 ## Eclipse Contributor Agreement
 
 Before your contribution can be accepted by the project team contributors must
 electronically sign the Eclipse Contributor Agreement (ECA).
 
-* http://www.eclipse.org/legal/ECA.php
+* https://www.eclipse.org/legal/ECA.php
 
 Commits that are provided by non-committers must have a Signed-off-by field in
 the footer indicating that the author is aware of the terms by which the
