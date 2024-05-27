@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -148,7 +148,7 @@ public class SequenceNodeCreationPolicy extends NodeCreationEditPolicy {
      * {@inheritDoc}
      */
     @Override
-    protected Command getCreateNodeOnNodeCommand(CreateRequest request, NodeCreationDescription tool, DNode viewnode) {
+    protected Command getCreateNodeOnNodeCommand(CreateRequest request, NodeCreationDescription tool, DNode viewnode, EditPart parentEditPartToUse) {
         if (tool instanceof ExecutionCreationTool || tool instanceof StateCreationTool || tool instanceof ObservationPointCreationTool) {
             SequenceDiagram sequenceDiagram = EditPartsHelper.getSequenceDiagram(getHost());
             SequenceDDiagram diagram = sequenceDiagram.getSequenceDDiagram();
@@ -163,11 +163,11 @@ public class SequenceNodeCreationPolicy extends NodeCreationEditPolicy {
                 GraphicalHelper.logical2screen(bottomRight, (IGraphicalEditPart) getHost());
                 request.setSize(new Dimension(LayoutConstants.DEFAULT_EXECUTION_WIDTH, LayoutConstants.DEFAULT_EXECUTION_HEIGHT));
             }
-            CreationUtil creationUtil = new CreationUtil(request, getDiagramCommandFactory(startingEndPredecessor, startingEndPredecessor, location), getRealLocation(request), request.getSize(),
-                    getHost());
+            CreationUtil creationUtil = new CreationUtil(getDiagramCommandFactory(startingEndPredecessor, startingEndPredecessor, location), getRealLocation(request, parentEditPartToUse),
+                    request.getSize(), getHost());
             return creationUtil.getNodeCreationCommand(viewnode, tool);
         } else {
-            return super.getCreateNodeOnNodeCommand(request, tool, viewnode);
+            return super.getCreateNodeOnNodeCommand(request, tool, viewnode, parentEditPartToUse);
         }
     }
 
@@ -190,7 +190,8 @@ public class SequenceNodeCreationPolicy extends NodeCreationEditPolicy {
                 Point location = request.getLocation().getCopy();
                 GraphicalHelper.screen2logical(location, (IGraphicalEditPart) getHost());
 
-                CreationUtil creationUtil = new CreationUtil(request, getDiagramCommandFactory(startingEndPredecessor, startingEndPredecessor, location), getRealLocation(request), getHost());
+                CreationUtil creationUtil = new CreationUtil(request, getDiagramCommandFactory(startingEndPredecessor, startingEndPredecessor, location), getRealLocation(request, getHost()),
+                        getHost());
                 result = creationUtil.getContainerCreationDescription((DDiagramElementContainer) viewNodeContainer.eContainer(), tool);
             } else {
                 result = UnexecutableCommand.INSTANCE;
