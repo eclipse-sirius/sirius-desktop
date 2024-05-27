@@ -66,19 +66,13 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  */
 public class CreationUtil {
 
-    /** The location of the clicked point. */
-    private final Point realLocation;
-
-    /** The computed size of the element to create. */
-    private final Dimension realSize;
+    /** The location of the clicked point, the size and the parent edit part of the element to create. */
+    private final RootLayoutData rootLayoutData;
 
     /** The EMF Command Factory. */
     private final IDiagramCommandFactory emfCommandFactory;
 
-    /** The request. */
-    private final CreateRequest request;
-
-    /** The edit part. */
+    /** The edit part on which the calling policy is installed. */
     private final EditPart editPart;
 
     /**
@@ -91,18 +85,17 @@ public class CreationUtil {
      * @param realLocation
      *            the location of the clicked point.
      * @param editPart
-     *            the edit part
+     *            the edit part on which the calling policy is installed.
      * @since 0.9.0
      */
     public CreationUtil(final CreateRequest request, final IDiagramCommandFactory commandFactory, final Point realLocation, final EditPart editPart) {
-        this(request, commandFactory, realLocation, null, editPart);
+        // The size of the request take into account the zoom (got the size in 100%)
+        this(commandFactory, new RootLayoutData(editPart, realLocation.getCopy(), CreationUtil.adaptRequestSizeToZoomFactor(request, editPart)), editPart);
     }
 
     /**
      * Creates a new <code>CreationUtil</code> with the specified request and location.
      * 
-     * @param request
-     *            the request.
      * @param commandFactory
      *            the emf command factory.
      * @param realLocation
@@ -110,14 +103,27 @@ public class CreationUtil {
      * @param realSize
      *            the computed size of the element to create, null if the default size must be used
      * @param editPart
-     *            the edit part
+     *            the edit part on which the calling policy is installed.
      * @since 0.9.0
      */
-    public CreationUtil(final CreateRequest request, final IDiagramCommandFactory commandFactory, final Point realLocation, final Dimension realSize, final EditPart editPart) {
-        this.realLocation = realLocation;
-        this.realSize = realSize;
-        this.request = request;
+    public CreationUtil(final IDiagramCommandFactory commandFactory, final Point realLocation, final Dimension realSize, final EditPart editPart) {
+        this(commandFactory, new RootLayoutData(editPart, realLocation.getCopy(), realSize == null ? null : realSize.getCopy()), editPart);
+    }
+
+    /**
+     * Creates a new <code>CreationUtil</code> with the specified request and location.
+     * 
+     * @param commandFactory
+     *            the emf command factory.
+     * @param rootLayoutData
+     *            the layout data for the created element (clicked point, size and parent edit part).
+     * @param editPart
+     *            the edit part on which the calling policy is installed.
+     * @since 0.9.0
+     */
+    public CreationUtil(final IDiagramCommandFactory commandFactory, final RootLayoutData rootLayoutData, final EditPart editPart) {
         this.emfCommandFactory = commandFactory;
+        this.rootLayoutData = rootLayoutData;
         this.editPart = editPart;
     }
 
@@ -314,15 +320,7 @@ public class CreationUtil {
         return new Command() {
             @Override
             public void execute() {
-                // The size of the request take into account the zoom (got
-                // the size in 100%)
-                Dimension size = null;
-                if (realSize != null) {
-                    size = realSize.getCopy();
-                } else {
-                    size = adaptRequestSizeToZoomFactor();
-                }
-                SiriusLayoutDataManager.INSTANCE.addData(new RootLayoutData(editPart, realLocation.getCopy(), size));
+                SiriusLayoutDataManager.INSTANCE.addData(rootLayoutData);
             }
         };
     }
@@ -332,7 +330,7 @@ public class CreationUtil {
      * 
      * @return A new dimension
      */
-    private Dimension adaptRequestSizeToZoomFactor() {
+    public static Dimension adaptRequestSizeToZoomFactor(CreateRequest request, EditPart editPart) {
         if (request.getSize() == null) {
             return null;
         }
