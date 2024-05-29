@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2023 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -274,7 +274,7 @@ public final class GMFHelper {
      */
     private static void translateWithInsets(Point locationToTranslate, Node currentNode) {
         NodeQuery nodeQuery = new NodeQuery(currentNode);
-        // bordered node are not concerned by those insets.
+        // Border nodes are not concerned by those insets.
         if (!nodeQuery.isBorderedNode()) {
             locationToTranslate.translate(getContainerTopLeftInsets(currentNode, false));
         }
@@ -789,8 +789,8 @@ public final class GMFHelper {
         int bottom = 0;
         for (Iterator<Node> children = Iterators.filter(node.getChildren().iterator(), Node.class); children.hasNext(); /* */) {
             Node child = children.next();
-            // The bordered nodes is ignored
-            if (!(new NodeQuery(node).isBorderedNode())) {
+            // The border nodes are ignored
+            if (!(new NodeQuery(child).isBorderedNode())) {
                 Rectangle bounds = getBounds(child);
                 Point bottomRight = bounds.getBottomRight();
                 if (bottomRight.x > right) {
