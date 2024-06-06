@@ -8,6 +8,16 @@ h2(#sirius7.4.3). Changes in Sirius  Desktop 7.4.3
 
 h3. User-Visible Changes
 
+* <span class="label label-info">Modified</span> The pin behavior has been changed for edges.
+** Before Sirius 7.4.3, the documentation stated that @it is not possible to pin/unpin edges or compartments.@. Nevertheless, it was possible to pin/unpin edges through the corresponding wizard (using the @Pin/Unpin@ button provided by the tab bar when there is no element selected on the diagram). The default layout considered this status with different results according to the pinned status of source/target:
+*** The edge, the source and the target are pinned: nothing moves during arrange all.
+*** The edge is not pinned and, the source and the target are pinned: the edge is arranged to keep only a minimum number of bendpoints.
+*** The edge is pinned and, source or/and target is not pinned: the source or the target is moved, so the corresponding extremity of the edge is also arranged (but the number of bendpoints is preserved). This combination can have strange results and is not recommended.
+** Since Sirius 7.4.3:
+*** The @Pin status@ button is enabled on edges.
+*** The preference @Automatically mark moved elements as pinned@ also affects edges.
+*** The effect on the layout remains the same as before (see above description).
+
 h3. Specifier-Visible Changes
 
 * <span class="label label-info">Modified</span> When using ELK, the routing style of edges is now considered. It was ignored before. You can refer to the "Use an ELK layout algorithm/Specific rules for routing style of edges":specifier/diagrams/Diagrams.html#elkRoutingStyleRules for more details.

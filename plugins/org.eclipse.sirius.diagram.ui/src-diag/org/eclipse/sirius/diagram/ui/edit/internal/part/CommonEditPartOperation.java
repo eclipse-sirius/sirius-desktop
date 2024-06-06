@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@
 package org.eclipse.sirius.diagram.ui.edit.internal.part;
 
 import java.util.Collections;
+import java.util.Optional;
 import java.util.function.Supplier;
 
 import org.eclipse.draw2d.Graphics;
@@ -22,7 +23,11 @@ import org.eclipse.gef.Request;
 import org.eclipse.gef.RequestConstants;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CompoundCommand;
+import org.eclipse.gef.requests.ReconnectRequest;
+import org.eclipse.gef.tools.ConnectionEndpointTracker;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.gef.ui.internal.tools.SelectConnectionEditPartTracker;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.tools.api.layout.PinHelper;
 import org.eclipse.sirius.diagram.tools.internal.commands.PinElementsCommand;
@@ -73,10 +78,10 @@ public final class CommonEditPartOperation {
      */
     public static Command handleAutoPinOnInteractiveMove(final IDiagramElementEditPart self, final Request request, final Command cmd) {
         Command result = cmd;
-        EObject semanticElement = self.resolveSemanticElement();
-        if (semanticElement instanceof DDiagramElement) {
-            DDiagramElement dDiagramElement = (DDiagramElement) semanticElement;
-            if (RequestConstants.REQ_MOVE.equals(request.getType()) && !new PinHelper().isPinned(dDiagramElement) && CommonEditPartOperation.autoPinOnMoveEnabled()
+        Optional<DDiagramElement> optionaldDiagramElement = getAffectedDDiagramElement(self, request);
+        if (optionaldDiagramElement.isPresent()) {
+            DDiagramElement dDiagramElement = optionaldDiagramElement.get();
+            if (CommonEditPartOperation.autoPinOnMoveEnabled()
                     && CommonEditPartOperation.isInteractiveMove()) {
 
                 if (PinHelper.allowsPinUnpin(dDiagramElement)) {
@@ -93,6 +98,36 @@ public final class CommonEditPartOperation {
             }
         }
         return result;
+    }
+
+    /**
+     * Return the {@link DDiagramElement} concerned by this request if the pinned status should be set to true, empty
+     * {@link Optional} otherwise.
+     * 
+     * @param editPart
+     *            The corresponding edit part.
+     * @param request
+     *            The corresponding request.
+     * @return an optional DDiagramElement
+     */
+    private static Optional<DDiagramElement> getAffectedDDiagramElement(final IDiagramElementEditPart editPart, final Request request) {
+        Optional<DDiagramElement> result = Optional.empty();
+        EObject semanticElement = editPart.resolveSemanticElement();
+        if (semanticElement instanceof DDiagramElement) {
+            DDiagramElement dDiagramElement = (DDiagramElement) semanticElement;
+            if ((RequestConstants.REQ_MOVE.equals(request.getType()) || RequestConstants.REQ_CREATE_BENDPOINT.equals(request.getType())
+                    || RequestConstants.REQ_MOVE_BENDPOINT.equals(request.getType())) && !new PinHelper().isPinned(dDiagramElement)) {
+                result = Optional.of(dDiagramElement);
+            } else if (request instanceof ReconnectRequest reconnectRequest && reconnectRequest.getConnectionEditPart() instanceof IGraphicalEditPart connectionEditPart) {
+                EObject edgeSemanticElement = connectionEditPart.resolveSemanticElement();
+                if (edgeSemanticElement instanceof DDiagramElement) {
+                    if (!new PinHelper().isPinned((DDiagramElement) edgeSemanticElement)) {
+                        result = Optional.of((DDiagramElement) edgeSemanticElement);
+                    }
+                }
+            }
+        }
+    return result;
     }
 
     private static boolean autoPinOnMoveEnabled() {
@@ -112,7 +147,8 @@ public final class CommonEditPartOperation {
         // code more resilient to changes.
         for (int i = 3; i < 6 && i < stack.length; i++) {
             try {
-                if (DragTracker.class.isAssignableFrom(Class.forName(stack[i].getClassName()))) {
+                if (DragTracker.class.isAssignableFrom(Class.forName(stack[i].getClassName())) || SelectConnectionEditPartTracker.class.isAssignableFrom(Class.forName(stack[i].getClassName()))
+                        || ConnectionEndpointTracker.class.isAssignableFrom(Class.forName(stack[i].getClassName()))) {
                     return true;
                 }
             } catch (final ClassNotFoundException e) {

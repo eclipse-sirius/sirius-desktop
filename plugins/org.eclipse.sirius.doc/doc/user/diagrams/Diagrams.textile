@@ -853,7 +853,11 @@ It is also possible to pin/unpin diagram elements thanks to the palette. Multipl
 Notes:
 
 * Pin/unpin information are persistent and saved in __.aird__ session file.
-* it is not possible to pin/unpin edges or compartments.
+* It is not possible to pin/unpin compartments.
+* For edges, the default layout behavior can be different according to the source/target pinned status:
+** The edge, the source and the target are pinned: nothing moves during arrange all.
+** The edge is not pinned and, the source and the target are pinned: the edge is arranged to keep only a minimum number of bendpoints.
+** The edge is pinned and, source or/and target is not pinned: the source or the target is moved, so the corresponding extremity of the edge is also arranged (but the number of bendpoints is preserved). This combination can have strange results and is not recommended.
 
 h4. Configuration
 

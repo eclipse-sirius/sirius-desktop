@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,10 +18,12 @@ import static org.hamcrest.Matchers.not;
 import java.util.Map;
 
 import org.eclipse.core.runtime.preferences.InstanceScope;
+import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.preferences.SiriusDiagramUiInternalPreferencesKeys;
@@ -90,6 +92,12 @@ public class PinnedElementsTest extends AbstractPinnedElementsTest {
         editor.drag(250, 115, 260, 130);
         bot.waitUntil(waitForPinned(class1));
         assertThat("Moved element should pinned if AUTO_PIN_ON_MOVE is enabled.", class1, isPinnedMatcher());
+
+        final IDiagramEdgeEditPart edgeClass1ToClass2 = (IDiagramEdgeEditPart) editor.getEditPart("Class1ToClass2", IDiagramEdgeEditPart.class).part();
+        assertThat(edgeClass1ToClass2, not(isPinnedMatcher()));
+        editor.drag(616, 222, 700, 222);
+        bot.waitUntil(waitForPinned(edgeClass1ToClass2));
+        assertThat("Moved element should pinned if AUTO_PIN_ON_MOVE is enabled.", edgeClass1ToClass2, isPinnedMatcher());
     }
 
     /**
@@ -105,6 +113,12 @@ public class PinnedElementsTest extends AbstractPinnedElementsTest {
         editor.drag(250, 115, 260, 130);
         bot.waitUntil(waitForNotPinned(class1));
         assertThat("Moved element should not be pinned if AUTO_PIN_ON_MOVE is disabled.", class1, not(isPinnedMatcher()));
+
+        final IDiagramEdgeEditPart edgeClass1ToClass2 = (IDiagramEdgeEditPart) editor.getEditPart("Class1ToClass2", IDiagramEdgeEditPart.class).part();
+        assertThat(edgeClass1ToClass2, not(isPinnedMatcher()));
+        editor.drag(616, 222, 700, 222);
+        bot.waitUntil(waitForNotPinned(edgeClass1ToClass2));
+        assertThat("Moved element should not be pinned if AUTO_PIN_ON_MOVE is disabled.", edgeClass1ToClass2, not(isPinnedMatcher()));
     }
 
     /**
@@ -131,17 +145,31 @@ public class PinnedElementsTest extends AbstractPinnedElementsTest {
         IDiagramElementEditPart class1 = (IDiagramElementEditPart) editor.getEditPart("Class1").part();
         assertThat(class1, not(isPinnedMatcher()));
         SWTBotGefEditPart class1EditPartBot = editor.getSelectableEditPart("Class1");
-        // Test Pin
+        // Test Pin on Node
         editor.activateTool("Pin");
         class1EditPartBot.click();
         bot.waitUntil(waitForPinned(class1));
         assertThat(class1, isPinnedMatcher());
 
-        // Test Unpin
+        // Test Unpin on Node
         editor.activateTool("Unpin");
         class1EditPartBot.click();
         bot.waitUntil(waitForNotPinned(class1));
         assertThat(class1, not(isPinnedMatcher()));
+
+        final IDiagramEdgeEditPart edgeClass1ToClass2 = (IDiagramEdgeEditPart) editor.getEditPart("Class1ToClass2", IDiagramEdgeEditPart.class).part();
+        // Test Pin on Edge
+        editor.activateTool("Pin");
+        Point pointOnEdge = new Point(616, 222);
+        editor.click(pointOnEdge);
+        bot.waitUntil(waitForPinned(edgeClass1ToClass2));
+        assertThat(edgeClass1ToClass2, isPinnedMatcher());
+
+        // Test Unpin on Edge
+        editor.activateTool("Unpin");
+        editor.click(pointOnEdge);
+        bot.waitUntil(waitForNotPinned(edgeClass1ToClass2));
+        assertThat(edgeClass1ToClass2, not(isPinnedMatcher()));
     }
 
     /**

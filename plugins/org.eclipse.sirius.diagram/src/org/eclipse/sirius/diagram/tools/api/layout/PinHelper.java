@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2023 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -56,7 +56,8 @@ public final class PinHelper {
         PINNED_CONSTRAINTS.add(ArrangeConstraint.KEEP_RATIO);
     }
 
-    private static final NotificationFilter PIN_FILTER = NotificationFilter.createFeatureFilter(AbstractDNode.class, DiagramPackage.ABSTRACT_DNODE__ARRANGE_CONSTRAINTS);
+    private static final NotificationFilter PIN_FILTER = NotificationFilter.createFeatureFilter(AbstractDNode.class, DiagramPackage.ABSTRACT_DNODE__ARRANGE_CONSTRAINTS)
+            .or(NotificationFilter.createFeatureFilter(DEdge.class, DiagramPackage.DEDGE__ARRANGE_CONSTRAINTS));
 
     /**
      * Get the pinned status of the {@link DDiagramElement} <code>dDiagramElement</code>. The pinned status is defined
