@@ -40,7 +40,6 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.tools.api.layout.PinHelper;
 import org.eclipse.sirius.diagram.tools.internal.commands.PinElementsCommand;
 import org.eclipse.sirius.diagram.tools.internal.commands.UnpinElementsCommand;
-import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
@@ -57,8 +56,6 @@ import org.eclipse.ui.IWorkbenchPart;
  * @author scosta
  */
 public final class PinElementsAction extends Action implements Disposable {
-
-    private static final Class<?>[] EXCEPTIONS = new Class<?>[] { IDiagramEdgeEditPart.class };
 
     private Map<DDiagramElement, ResourceSetListener> selectionElements;
 
@@ -247,7 +244,6 @@ public final class PinElementsAction extends Action implements Disposable {
             return StreamSupport.stream(iterableSelection.spliterator(), false) //
                     .filter(IGraphicalEditPart.class::isInstance) //
                     .map(IGraphicalEditPart.class::cast) //
-                    .filter(this::keepElement) //
                     .map(IGraphicalEditPart::resolveSemanticElement) //
                     .filter(DDiagramElement.class::isInstance) //
                     .map(DDiagramElement.class::cast) //
@@ -301,15 +297,6 @@ public final class PinElementsAction extends Action implements Disposable {
      */
     private boolean canPinUnpin(DDiagramElement dDiagramElement) {
         return PinHelper.allowsPinUnpin(dDiagramElement) && canEditElement(dDiagramElement);
-    }
-
-    private boolean keepElement(final IGraphicalEditPart editPart) {
-        boolean result = true;
-
-        for (int i = 0; i < EXCEPTIONS.length && result; i++) {
-            result = !EXCEPTIONS[i].isAssignableFrom(editPart.getClass());
-        }
-        return result;
     }
 
     // utility

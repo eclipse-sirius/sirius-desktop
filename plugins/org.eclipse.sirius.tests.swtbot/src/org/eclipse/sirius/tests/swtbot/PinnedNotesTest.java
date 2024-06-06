@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.gmf.runtime.notation.Diagram;
+import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.resource.JFaceResources;
@@ -32,6 +33,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramContainerEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.preferences.SiriusDiagramUiInternalPreferencesKeys;
@@ -94,48 +96,65 @@ public class PinnedNotesTest extends AbstractPinnedElementsTest {
         final DiagramEditPart gmfDiagramEditPart = getGmfEditor().getDiagramEditPart();
         final IDiagramElementEditPart p1 = (IDiagramElementEditPart) editor.getEditPart("p1", IDiagramContainerEditPart.class).part();
         final IDiagramElementEditPart p2 = (IDiagramElementEditPart) editor.getEditPart("p2", IDiagramContainerEditPart.class).part();
+        final IDiagramEdgeEditPart edgeC1ToC2 = (IDiagramEdgeEditPart) editor.getEditPart("c1ToC2", IDiagramEdgeEditPart.class).part();
         final Rectangle boundsP1 = p1.getFigure().getBounds().getCopy();
         final Rectangle boundsP2 = p2.getFigure().getBounds().getCopy();
         EList<Node> notes = new BasicEList<Node>();
-        Node noteLink = null;
+        Node noteLinkToNode = null;
+        Node noteLinkToEdge = null;
         Node noteUnLink = null;
 
         notes = getNotes();
 
         for (Node note : notes) {
             if (note.getSourceEdges().size() > 0) {
-                noteLink = note;
+                if (((Edge) note.getSourceEdges().get(0)).getTarget() instanceof Edge) {
+                    noteLinkToEdge = note;
+                } else {
+                    noteLinkToNode = note;
+                }
             } else {
                 noteUnLink = note;
             }
         }
 
-        final IGraphicalEditPart editPartNoteLink = (IGraphicalEditPart) gmfDiagramEditPart.getRoot().getViewer().getEditPartRegistry().get(noteLink);
+        final IGraphicalEditPart editPartNoteLinkToNode = (IGraphicalEditPart) gmfDiagramEditPart.getRoot().getViewer().getEditPartRegistry().get(noteLinkToNode);
+        final IGraphicalEditPart editPartNoteLinkToEdge = (IGraphicalEditPart) gmfDiagramEditPart.getRoot().getViewer().getEditPartRegistry().get(noteLinkToEdge);
         final IGraphicalEditPart editPartNoteUnLink = (IGraphicalEditPart) gmfDiagramEditPart.getRoot().getViewer().getEditPartRegistry().get(noteUnLink);
 
-        Rectangle boundsNoteLink = editPartNoteLink.getFigure().getBounds();
+        Rectangle boundsNoteLinkToNode = editPartNoteLinkToNode.getFigure().getBounds();
+        Rectangle boundsNoteLinkToEdge = editPartNoteLinkToEdge.getFigure().getBounds();
         Rectangle boundsNoteUnLink = editPartNoteUnLink.getFigure().getBounds();
 
         assertThat(p1, not(isPinnedMatcher()));
         assertThat(p2, not(isPinnedMatcher()));
+        assertThat(edgeC1ToC2, not(isPinnedMatcher()));
 
         editor.getEditPart("p1", IDiagramContainerEditPart.class).select();
         SWTBotUtils.waitAllUiEvents();
         editor.clickContextMenu(Messages.PinElementsEclipseAction_text);
         bot.waitUntil(waitForPinned(p1));
+        editor.getEditPart("c1ToC2", IDiagramEdgeEditPart.class).select();
+        SWTBotUtils.waitAllUiEvents();
+        editor.clickContextMenu(Messages.PinElementsEclipseAction_text);
+        bot.waitUntil(waitForPinned(p1));
         assertThat(p1, isPinnedMatcher());
         assertThat(p2, not(isPinnedMatcher()));
+        assertThat(edgeC1ToC2, isPinnedMatcher());
         editor.click(200, 200);
         arrangeAll();
         final Rectangle boundsP1AfterLayout = p1.getFigure().getBounds().getCopy();
         final Rectangle boundsP2AfterLayout = p2.getFigure().getBounds().getCopy();
-        final Rectangle boundsNoteLinkAfterLayout = editPartNoteLink.getFigure().getBounds().getCopy();
+        final Rectangle boundsNoteLinkToNodeAfterLayout = editPartNoteLinkToNode.getFigure().getBounds().getCopy();
+        final Rectangle boundsNoteLinkToEdgeAfterLayout = editPartNoteLinkToEdge.getFigure().getBounds().getCopy();
         final Rectangle boundsNoteUnLinkAfterLayout = editPartNoteUnLink.getFigure().getBounds().getCopy();
 
-        assertTrue("Le node P1 ont bouge alors qu'il etait epingle", boundsP1.equals(boundsP1AfterLayout));
-        assertFalse("Le node P2 aurait du bouge", boundsP2.equals(boundsP2AfterLayout));
-        assertTrue("La note associe n'aurait pas du se deplacer", boundsNoteLink.equals(boundsNoteLinkAfterLayout));
-        assertTrue("La note associe n'aurait pas du se deplacer", boundsNoteUnLink.equals(boundsNoteUnLinkAfterLayout));
+        assertTrue("The node P1 has been moved despite it was pinned.", boundsP1.equals(boundsP1AfterLayout));
+        assertFalse("The node P2 should have been moved.", boundsP2.equals(boundsP2AfterLayout));
+        // The edge bounds is not checked because the source has been moved, so edge too.
+        assertTrue("The linked note should not have been moved.", boundsNoteLinkToNode.equals(boundsNoteLinkToNodeAfterLayout));
+        assertTrue("The linked note should not have been moved.", boundsNoteLinkToEdge.equals(boundsNoteLinkToEdgeAfterLayout));
+        assertTrue("The linked note should not have been moved.", boundsNoteUnLink.equals(boundsNoteUnLinkAfterLayout));
 
     }
 
@@ -151,48 +170,66 @@ public class PinnedNotesTest extends AbstractPinnedElementsTest {
         final DiagramEditPart gmfDiagramEditPart = getGmfEditor().getDiagramEditPart();
         final IDiagramElementEditPart p1 = (IDiagramElementEditPart) editor.getEditPart("p1", IDiagramContainerEditPart.class).part();
         final IDiagramElementEditPart p2 = (IDiagramElementEditPart) editor.getEditPart("p2", IDiagramContainerEditPart.class).part();
+        final IDiagramEdgeEditPart edgeC1ToC2 = (IDiagramEdgeEditPart) editor.getEditPart("c1ToC2", IDiagramEdgeEditPart.class).part();
         final Rectangle boundsP1 = p1.getFigure().getBounds().getCopy();
         final Rectangle boundsP2 = p2.getFigure().getBounds().getCopy();
         EList<Node> notes = new BasicEList<Node>();
-        Node noteLink = null;
+        Node noteLinkToNode = null;
+        Node noteLinkToEdge = null;
         Node noteUnLink = null;
 
         notes = getNotes();
 
         for (Node note : notes) {
             if (note.getSourceEdges().size() > 0) {
-                noteLink = note;
+                if (((Edge) note.getSourceEdges().get(0)).getTarget() instanceof Edge) {
+                    noteLinkToEdge = note;
+                } else {
+                    noteLinkToNode = note;
+                }
             } else {
                 noteUnLink = note;
             }
         }
 
-        final IGraphicalEditPart editPartNoteLink = (IGraphicalEditPart) gmfDiagramEditPart.getRoot().getViewer().getEditPartRegistry().get(noteLink);
+        final IGraphicalEditPart editPartNoteLinkToNode = (IGraphicalEditPart) gmfDiagramEditPart.getRoot().getViewer().getEditPartRegistry().get(noteLinkToNode);
+        final IGraphicalEditPart editPartNoteLinkToEdge = (IGraphicalEditPart) gmfDiagramEditPart.getRoot().getViewer().getEditPartRegistry().get(noteLinkToEdge);
         final IGraphicalEditPart editPartNoteUnLink = (IGraphicalEditPart) gmfDiagramEditPart.getRoot().getViewer().getEditPartRegistry().get(noteUnLink);
 
-        final Rectangle boundsNoteLink = editPartNoteLink.getFigure().getBounds().getCopy();
+        Rectangle boundsNoteLinkToNode = editPartNoteLinkToNode.getFigure().getBounds();
+        Rectangle boundsNoteLinkToEdge = editPartNoteLinkToEdge.getFigure().getBounds();
+
         final Rectangle boundsNoteUnLink = editPartNoteUnLink.getFigure().getBounds().getCopy();
 
         assertThat(p1, not(isPinnedMatcher()));
         assertThat(p2, not(isPinnedMatcher()));
+        assertThat(edgeC1ToC2, not(isPinnedMatcher()));
 
         editor.getEditPart("p1", IDiagramContainerEditPart.class).select();
         SWTBotUtils.waitAllUiEvents();
         editor.clickContextMenu(Messages.PinElementsEclipseAction_text);
         bot.waitUntil(waitForPinned(p1));
+        editor.getEditPart("c1ToC2", IDiagramEdgeEditPart.class).select();
+        SWTBotUtils.waitAllUiEvents();
+        editor.clickContextMenu(Messages.PinElementsEclipseAction_text);
+        bot.waitUntil(waitForPinned(p1));
         assertThat(p1, isPinnedMatcher());
         assertThat(p2, not(isPinnedMatcher()));
+        assertThat(edgeC1ToC2, isPinnedMatcher());
         editor.click(200, 200);
         arrangeAll();
         final Rectangle boundsP1AfterLayout = p1.getFigure().getBounds().getCopy();
         final Rectangle boundsP2AfterLayout = p2.getFigure().getBounds().getCopy();
-        final Rectangle boundsNoteLinkAfterLayout = editPartNoteLink.getFigure().getBounds().getCopy();
+        final Rectangle boundsNoteLinkToNodeAfterLayout = editPartNoteLinkToNode.getFigure().getBounds().getCopy();
+        final Rectangle boundsNoteLinkToEdgeAfterLayout = editPartNoteLinkToEdge.getFigure().getBounds().getCopy();
         final Rectangle boundsNoteUnLinkAfterLayout = editPartNoteUnLink.getFigure().getBounds().getCopy();
 
-        assertTrue("Le node P1 a bouge alors qu'il etait epingle", boundsP1.equals(boundsP1AfterLayout));
-        assertFalse("Le node P2 aurait du bouge", boundsP2.equals(boundsP2AfterLayout));
-        assertTrue("La note associe n'aurait pas du se deplacer", boundsNoteLink.equals(boundsNoteLinkAfterLayout));
-        assertFalse("La note associe aurait du se deplacer", boundsNoteUnLink.equals(boundsNoteUnLinkAfterLayout));
+        assertTrue("The node P1 has been moved despite it was pinned.", boundsP1.equals(boundsP1AfterLayout));
+        assertFalse("The node P2 should have been moved.", boundsP2.equals(boundsP2AfterLayout));
+        // The edge bounds is not checked because the source has been moved, so edge too.
+        assertTrue("The linked note should not have been moved.", boundsNoteLinkToNode.equals(boundsNoteLinkToNodeAfterLayout));
+        assertTrue("The linked note should not have been moved.", boundsNoteLinkToEdge.equals(boundsNoteLinkToEdgeAfterLayout));
+        assertFalse("The linked note should have been moved.", boundsNoteUnLink.equals(boundsNoteUnLinkAfterLayout));
     }
 
     /**
@@ -206,41 +243,55 @@ public class PinnedNotesTest extends AbstractPinnedElementsTest {
         final DiagramEditPart gmfDiagramEditPart = getGmfEditor().getDiagramEditPart();
         final IDiagramElementEditPart p1 = (IDiagramElementEditPart) editor.getEditPart("p1", IDiagramContainerEditPart.class).part();
         final IDiagramElementEditPart p2 = (IDiagramElementEditPart) editor.getEditPart("p2", IDiagramContainerEditPart.class).part();
+        final IDiagramEdgeEditPart edgeC1ToC2 = (IDiagramEdgeEditPart) editor.getEditPart("c1ToC2", IDiagramEdgeEditPart.class).part();
         final Rectangle boundsP1 = p1.getFigure().getBounds().getCopy();
         final Rectangle boundsP2 = p2.getFigure().getBounds().getCopy();
         EList<Node> notes = new BasicEList<Node>();
-        Node noteLink = null;
+        Node noteLinkToNode = null;
+        Node noteLinkToEdge = null;
         Node noteUnLink = null;
 
         notes = getNotes();
 
         for (Node note : notes) {
             if (note.getSourceEdges().size() > 0) {
-                noteLink = note;
+                if (((Edge) note.getSourceEdges().get(0)).getTarget() instanceof Edge) {
+                    noteLinkToEdge = note;
+                } else {
+                    noteLinkToNode = note;
+                }
             } else {
                 noteUnLink = note;
             }
         }
 
-        final IGraphicalEditPart editPartNoteLink = (IGraphicalEditPart) gmfDiagramEditPart.getRoot().getViewer().getEditPartRegistry().get(noteLink);
+        final IGraphicalEditPart editPartNoteLinkToNode = (IGraphicalEditPart) gmfDiagramEditPart.getRoot().getViewer().getEditPartRegistry().get(noteLinkToNode);
+        final IGraphicalEditPart editPartNoteLinkToEdge = (IGraphicalEditPart) gmfDiagramEditPart.getRoot().getViewer().getEditPartRegistry().get(noteLinkToEdge);
         final IGraphicalEditPart editPartNoteUnLink = (IGraphicalEditPart) gmfDiagramEditPart.getRoot().getViewer().getEditPartRegistry().get(noteUnLink);
 
-        final Rectangle boundsNoteLink = editPartNoteLink.getFigure().getBounds().getCopy();
+        final Rectangle boundsNoteLinkToNode = editPartNoteLinkToNode.getFigure().getBounds();
+        final Rectangle boundsNoteLinkToEdge = editPartNoteLinkToEdge.getFigure().getBounds();
         final Rectangle boundsNoteUnLink = editPartNoteUnLink.getFigure().getBounds().getCopy();
 
         assertThat(p1, not(isPinnedMatcher()));
         assertThat(p2, not(isPinnedMatcher()));
+        assertThat(edgeC1ToC2, not(isPinnedMatcher()));
 
         editor.getEditPart("p1", IDiagramContainerEditPart.class).select();
         SWTBotUtils.waitAllUiEvents();
         editor.clickContextMenu(Messages.PinElementsEclipseAction_text);
         bot.waitUntil(waitForPinned(p1));
+        editor.getEditPart("c1ToC2", IDiagramEdgeEditPart.class).select();
+        SWTBotUtils.waitAllUiEvents();
+        editor.clickContextMenu(Messages.PinElementsEclipseAction_text);
+        bot.waitUntil(waitForPinned(p1));
         assertThat(p1, isPinnedMatcher());
         assertThat(p2, not(isPinnedMatcher()));
+        assertThat(edgeC1ToC2, isPinnedMatcher());
 
         editor.activateTool("Note Attachment");
 
-        editor.click(boundsNoteLink.getCenter());
+        editor.click(boundsNoteLinkToNode.getCenter());
         editor.click(boundsP2.getCenter());
 
         editor.click(200, 200);
@@ -248,13 +299,16 @@ public class PinnedNotesTest extends AbstractPinnedElementsTest {
         arrangeAll();
         final Rectangle boundsP1AfterLayout = p1.getFigure().getBounds().getCopy();
         final Rectangle boundsP2AfterLayout = p2.getFigure().getBounds().getCopy();
-        final Rectangle boundsNoteLinkAfterLayout = editPartNoteLink.getFigure().getBounds().getCopy();
+        final Rectangle boundsNoteLinkToNodeAfterLayout = editPartNoteLinkToNode.getFigure().getBounds().getCopy();
+        final Rectangle boundsNoteLinkToEdgeAfterLayout = editPartNoteLinkToEdge.getFigure().getBounds().getCopy();
         final Rectangle boundsNoteUnLinkAfterLayout = editPartNoteUnLink.getFigure().getBounds().getCopy();
 
-        assertTrue("Le node P1 a bouge alors qu'il etait epingle", boundsP1.equals(boundsP1AfterLayout));
-        assertFalse("Le node P2 aurait du bouge", boundsP2.equals(boundsP2AfterLayout));
-        assertTrue("La note associe n'aurait pas du se deplacer", boundsNoteLink.equals(boundsNoteLinkAfterLayout));
-        assertFalse("La note associe aurait du se deplacer", boundsNoteUnLink.equals(boundsNoteUnLinkAfterLayout));
+        assertTrue("The node P1 has been moved despite it was pinned.", boundsP1.equals(boundsP1AfterLayout));
+        assertFalse("The node P2 should have been moved.", boundsP2.equals(boundsP2AfterLayout));
+        // The edge bounds is not check because the source has been moved, so edge too.
+        assertTrue("The linked note should not have been moved.", boundsNoteLinkToNode.equals(boundsNoteLinkToNodeAfterLayout));
+        assertTrue("The linked note should not have been moved.", boundsNoteLinkToEdge.equals(boundsNoteLinkToEdgeAfterLayout));
+        assertFalse("The linked note should have been moved.", boundsNoteUnLink.equals(boundsNoteUnLinkAfterLayout));
     }
 
     /**

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -65,11 +65,7 @@ public class PinnedElementsTest extends SiriusDiagramTestCase {
 
     private static final String REPRESENTATION_DESC_NAME = "Nodes, Containers and Lists (flat)";
 
-    /*
-     * Do not consider DEdges as pinnable for now, even though they can have the
-     * attribute, because it is not handled by the layout algorithms.
-     */
-    private static final Predicate<Object> isPinnable = Predicates.instanceOf(AbstractDNode.class);
+    private static final Predicate<Object> isPinnable = Predicates.or(Predicates.instanceOf(AbstractDNode.class), Predicates.instanceOf(DEdge.class));
 
     private DDiagram diagram;
 
