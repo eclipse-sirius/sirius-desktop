@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.runtime.Adapters;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -116,60 +117,35 @@ public class SiriusCommonLabelProvider extends ColumnLabelProvider implements IC
         Image img = null;
         if (!(element instanceof IResource) && sessionLabelProvider != null) {
             try {
+                IProject adaptedProject = Adapters.adapt(element, IProject.class);
+                // IProject image is not handled here: element is not an IResource but can be adapted to IProject.
+                // Do not look for elements adapted as IProject in calls to sessionLabelProvider.
+                // PossibleChildren / TriggerPoint expressions evaluation change with 2023-03
+                // See result of
+                // org.eclipse.ui.internal.navigator.extensions.NavigatorContentDescriptorManager.findDescriptors(Object,
+                // Map<VisibilityAssistant, EvaluationCache>, VisibilityAssistant, boolean, boolean)
+                // for org.eclipse.jdt.internal.core.PackageFragmentRoot or
+                // org.eclipse.jdt.internal.core.JrtPackageFragmentRoot which are now adaptable into IProject
+                // displayed in a EcoreModelingProject for example: src folder, JRE System library modules.
+                if (adaptedProject == null) {
 
-                // Let eclipse look for file and project icons + nature
-                // decoration
-                img = sessionLabelProvider.getImage(element);
-                if (img == null)
-                    return img;
-                
-                // If the current element is a dangling representation, its icon
-                // is grayed. The grayed image is computed only once for each
-                // type of representation.
-                DRepresentationDescriptor descRep = getRepresentationDescriptor(element);
-                if (descRep != null && isInvalidRepresentation(descRep)) {
-                    StringBuilder sB = new StringBuilder();
-                    sB.append(descRep.getClass().getName());
-                    RepresentationDescription description = descRep.getDescription();
-                    if (description != null) {
-                        sB.append('_');
-                        sB.append(description.getClass().getName());
-                    }
-                    sB.append(DISABLED_REPRESENTATION_SUFFIX);
-                    String key = sB.toString();
-                    Image disabledImage = SiriusEditPlugin.getPlugin().getImageRegistry().get(key);
-                    if (disabledImage == null) {
-                        ImageDescriptor desc = ImageDescriptor.createFromImage(img);
-                        ImageDescriptor disabledDesc = ImageDescriptor.createWithFlags(desc, SWT.IMAGE_DISABLE);
-                        SiriusEditPlugin.getPlugin().getImageRegistry().put(key, disabledDesc);
-                        disabledImage = SiriusEditPlugin.getPlugin().getImageRegistry().get(key);
-                    }
-                    img = disabledImage;
-                }
-                if (element instanceof RepresentationDescriptionItem) {
-                    Object wrapped = ((RepresentationDescriptionItem) element).getWrappedObject();
-                    if (wrapped instanceof RepresentationDescription) {
-                        // Decorate representation descriptions with a small overlay to distinguish them from the
-                        // instances.
-                        String key = ((RepresentationDescription) wrapped).eClass().getName() + "_decorated"; //$NON-NLS-1$
-                        Image baseImg = img;
-                        img = SiriusEditPlugin.getPlugin().getImageRegistry().get(key);
-                        if (img == null) {
-                            ImageDescriptor[] imageDescriptors = new ImageDescriptor[5];
-                            imageDescriptors[IDecoration.BOTTOM_RIGHT] = SiriusCommonLabelProvider.REPRESENTATION_DESCRIPTION_OVERLAY_DESC;
-                            img = new DecorationOverlayIcon(baseImg, imageDescriptors).createImage();
-                            SiriusEditPlugin.getPlugin().getImageRegistry().put(key, img);
-                        }
+                    // Let eclipse look for file and project icons + nature decoration.
+                    img = sessionLabelProvider.getImage(element);
+                    if (img != null) {
+                        // If the current element is a dangling representation, its icon is grayed. The grayed image is
+                        // computed only once for each type of representation.
+                        img = getDisabledRepresentationImage(element, img);
+                        // If the current element is a RepresentationDescriptionItem, its icon is decorated with a small
+                        // overlay to distinguish them from the instances.
+                        img = getDecoratedRepresentationDescriptionImage(element, img);
                     }
                 }
             } catch (IllegalStateException | NullPointerException e) {
-                // This can happen when trying to get the label of a CDOObject
-                // which transaction has just been closed
+                // This can happen when trying to get the label of a CDOObject which transaction has just been closed
                 // Nothing to do, null will returned
             }
         } else if (element instanceof IFile) {
-            // This file is not in a ModelingProject (check in
-            // <possibleChildren> and <triggerPoints> of
+            // This file is not in a ModelingProject (check in <possibleChildren> and <triggerPoints> of
             // "org.eclipse.ui.navigator.navigatorContent" of plugin.xml)
             IFile file = (IFile) element;
 
@@ -208,6 +184,72 @@ public class SiriusCommonLabelProvider extends ColumnLabelProvider implements IC
             }
         }
         return img;
+    }
+
+    /***
+     * Returns a disabled (grayed out) representation image if the given element is an invalid representation. The
+     * grayed image is computed only once for each type of representation.
+     * 
+     * @param element
+     *            the element whose representation image needs to be checked.
+     * @param image
+     *            the current image of the element.
+     * @return the disabled representation image if the element is invalid; otherwise, the original image.
+     */
+    private Image getDisabledRepresentationImage(Object element, Image image) {
+        Image disabledRepresentationImage = image;
+        DRepresentationDescriptor descRep = getRepresentationDescriptor(element);
+        if (descRep != null && isInvalidRepresentation(descRep)) {
+            StringBuilder sB = new StringBuilder();
+            sB.append(descRep.getClass().getName());
+            RepresentationDescription description = descRep.getDescription();
+            if (description != null) {
+                sB.append('_');
+                sB.append(description.getClass().getName());
+            }
+            sB.append(DISABLED_REPRESENTATION_SUFFIX);
+            String key = sB.toString();
+            Image disabledImage = SiriusEditPlugin.getPlugin().getImageRegistry().get(key);
+            if (disabledImage == null) {
+                ImageDescriptor desc = ImageDescriptor.createFromImage(disabledRepresentationImage);
+                ImageDescriptor disabledDesc = ImageDescriptor.createWithFlags(desc, SWT.IMAGE_DISABLE);
+                SiriusEditPlugin.getPlugin().getImageRegistry().put(key, disabledDesc);
+                disabledImage = SiriusEditPlugin.getPlugin().getImageRegistry().get(key);
+            }
+            disabledRepresentationImage = disabledImage;
+        }
+        return disabledRepresentationImage;
+    }
+
+    /**
+     * Returns a decorated representation description image if the given element is a RepresentationDescriptionItem. The
+     * decorated image is computed only once for each representation description.
+     * 
+     * @param element
+     *            the element whose representation description needs to be decorated.
+     * @param image
+     *            the current image of the element.
+     * @return the decorated representation description image if the element is a RepresentationDescriptionItem;
+     *         otherwise, the original image.
+     */
+    private Image getDecoratedRepresentationDescriptionImage(Object element, Image image) {
+        Image decoratedRepresentationDescriptionImage = image;
+        if (element instanceof RepresentationDescriptionItem) {
+            Object wrapped = ((RepresentationDescriptionItem) element).getWrappedObject();
+            if (wrapped instanceof RepresentationDescription) {
+                // Decorate representation descriptions with a small overlay to distinguish them from the instances.
+                String key = ((RepresentationDescription) wrapped).eClass().getName() + "_decorated"; //$NON-NLS-1$
+                Image baseImg = decoratedRepresentationDescriptionImage;
+                decoratedRepresentationDescriptionImage = SiriusEditPlugin.getPlugin().getImageRegistry().get(key);
+                if (decoratedRepresentationDescriptionImage == null) {
+                    ImageDescriptor[] imageDescriptors = new ImageDescriptor[5];
+                    imageDescriptors[IDecoration.BOTTOM_RIGHT] = SiriusCommonLabelProvider.REPRESENTATION_DESCRIPTION_OVERLAY_DESC;
+                    decoratedRepresentationDescriptionImage = new DecorationOverlayIcon(baseImg, imageDescriptors).createImage();
+                    SiriusEditPlugin.getPlugin().getImageRegistry().put(key, decoratedRepresentationDescriptionImage);
+                }
+            }
+        }
+        return decoratedRepresentationDescriptionImage;
     }
 
     private Image addIFileDecorators(int severity, ImageDescriptor imageDescriptor) {
@@ -261,12 +303,23 @@ public class SiriusCommonLabelProvider extends ColumnLabelProvider implements IC
             text = doGetFileText((IFile) element);
         } else if (!(element instanceof IResource) && sessionLabelProvider != null) {
             try {
-                // Let eclipse look for file and project icons + nature
-                // decoration
-                text = sessionLabelProvider.getText(element);
+                IProject adaptedProject = Adapters.adapt(element, IProject.class);
+                // IProject text is already handled for IProject case.
+                // Do not look for elements adapted as IProject in calls to sessionLabelProvider.
+                // PossibleChildren / TriggerPoint expressions evaluation change with 2023-03
+                // See result of
+                // org.eclipse.ui.internal.navigator.extensions.NavigatorContentDescriptorManager.findDescriptors(Object,
+                // Map<VisibilityAssistant, EvaluationCache>, VisibilityAssistant, boolean, boolean)
+                // for org.eclipse.jdt.internal.core.PackageFragmentRoot or
+                // org.eclipse.jdt.internal.core.JrtPackageFragmentRoot which are now adaptable into IProject
+                // displayed in a EcoreModelingProject for example: src folder, JRE System library modules.
+                if (adaptedProject == null) {
+                    // Let eclipse look for file and project icons + nature
+                    // decoration
+                    text = sessionLabelProvider.getText(element);
+                }
             } catch (IllegalStateException | NullPointerException e) {
-                // This can happen when trying to get the label of a CDOObject
-                // which transaction has just been closed
+                // This can happen when trying to get the label of a CDOObject which transaction has just been closed
                 // Nothing to do, null will returned
             }
         }
