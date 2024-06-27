@@ -2050,7 +2050,7 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         ArrangeRequest arrangeRequest = new ArrangeRequest(ActionIds.ACTION_ARRANGE_SELECTION);
         // Filter the list as it is done in
         // org.eclipse.gmf.runtime.diagram.ui.actions.internal.ArrangeAction.createOperationSet()
-        List<IGraphicalEditPart> realEditPartsToSelect = ToolUtilities.getSelectionWithoutDependants(editPartsToSelect);
+        List<? extends EditPart> realEditPartsToSelect = ToolUtilities.getSelectionWithoutDependants(editPartsToSelect);
         arrangeRequest.setPartsToArrange(realEditPartsToSelect);
         // Validate that there is a common parent (as in
         // org.eclipse.gmf.runtime.diagram.ui.actions.internal.ArrangeAction.getTargetEditPartForArrangeSelection(List)).
