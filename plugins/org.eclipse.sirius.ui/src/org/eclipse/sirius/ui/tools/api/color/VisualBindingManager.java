@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
@@ -47,8 +48,6 @@ import org.eclipse.swt.graphics.Pattern;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.graphics.Resource;
 import org.eclipse.swt.widgets.Display;
-
-import com.google.common.base.Objects;
 
 /**
  * Take care of computing colors, font or size from integer values. Avoid memory leaks by properly caching and disposing
@@ -511,7 +510,7 @@ public class VisualBindingManager {
          * @param backgroundColor
          *            the background color
          * @param foregrounColor
-         *            the forground color
+         *            the foreground color
          */
         PatternDescriptor(final int x, final int y, final int w, final int h, final Color backgroundColor, final Color foregrounColor) {
             this.x = x;
@@ -527,10 +526,9 @@ public class VisualBindingManager {
             final boolean result;
             if (this == obj) {
                 result = true;
-            } else if (obj instanceof PatternDescriptor) {
-                final PatternDescriptor that = (PatternDescriptor) obj;
+            } else if (obj instanceof PatternDescriptor that) {
                 final boolean sameCoordinates = this.x == that.x && this.y == that.y && this.h == that.h && this.w == that.w;
-                result = sameCoordinates && Objects.equal(this.backgroundColor, that.backgroundColor) && Objects.equal(this.foregroundColor, that.foregroundColor);
+                result = sameCoordinates && Objects.equals(this.backgroundColor, that.backgroundColor) && Objects.equals(this.foregroundColor, that.foregroundColor);
             } else {
                 result = false;
             }
@@ -539,7 +537,7 @@ public class VisualBindingManager {
 
         @Override
         public int hashCode() {
-            return Objects.hashCode(this.x, this.y, this.w, this.h, this.foregroundColor, this.backgroundColor);
+            return Objects.hash(this.x, this.y, this.w, this.h, this.foregroundColor, this.backgroundColor);
         }
 
         public Pattern createPattern() {
@@ -799,7 +797,7 @@ public class VisualBindingManager {
 
         @Override
         public int hashCode() {
-            return Objects.hashCode(name, format, size);
+            return Objects.hash(name, format, size);
         }
 
         @Override
@@ -809,7 +807,7 @@ public class VisualBindingManager {
                 result = true;
             } else if (obj instanceof FontStyleDescriptor) {
                 final FontStyleDescriptor that = (FontStyleDescriptor) obj;
-                result = Objects.equal(this.name, that.name) && Objects.equal(this.format, that.format) && this.size == that.size;
+                result = Objects.equals(this.name, that.name) && Objects.equals(this.format, that.format) && this.size == that.size;
             } else {
                 result = false;
             }
