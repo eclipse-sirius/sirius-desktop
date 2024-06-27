@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,7 +20,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.tools.api.Messages;
 
 /**
- * Task to init interreter variables.
+ * Task to init interpreter variables.
  * 
  * @author mchauvin
  */
@@ -32,8 +32,10 @@ public class InitInterpreterFromParsedVariableTask extends AbstractCommandTask {
 
     private String message;
 
+    private boolean unset;
+
     /**
-     * Default constructor.
+     * Constructor to set variables according to the mask.
      * 
      * @param inter
      *            the interpreter
@@ -49,6 +51,25 @@ public class InitInterpreterFromParsedVariableTask extends AbstractCommandTask {
     }
 
     /**
+     * Constructor to unset variables according to the mask.
+     * 
+     * @param inter
+     *            the interpreter
+     * @param messageFormat
+     *            the message mask
+     * @param message
+     *            the message
+     * @param unset 
+     *            true to unset the variables
+     */
+    public InitInterpreterFromParsedVariableTask(final IInterpreter inter, final String messageFormat, final String message, final boolean unset) {
+        this.interpreter = inter;
+        this.messageMask = messageFormat;
+        this.message = message;
+        this.unset = unset;
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#execute()
@@ -56,13 +77,21 @@ public class InitInterpreterFromParsedVariableTask extends AbstractCommandTask {
     @Override
     public void execute() {
         if (message != null && message.length() == 0) {
-            setVariable(Integer.valueOf(0), ""); //$NON-NLS-1$
+            if (unset) {
+                unSetVariable(Integer.valueOf(0));
+            } else {
+                setVariable(Integer.valueOf(0), ""); //$NON-NLS-1$
+            }
         } else {
             final MessageFormat parser = new MessageFormat(messageMask);
             try {
                 final Object[] values = parser.parse(message);
                 for (int i = 0; i < values.length; i++) {
-                    setVariable(Integer.valueOf(i), values[i]);
+                    if (unset) {
+                        unSetVariable(Integer.valueOf(i));
+                    } else {
+                        setVariable(Integer.valueOf(i), values[i]);
+                    }
                 }
             } catch (final ParseException e) {
                 /*
@@ -70,6 +99,14 @@ public class InitInterpreterFromParsedVariableTask extends AbstractCommandTask {
                  */
             }
         }
+    }
+
+    /*
+     * Unset two variables, one with the X as key, the other with "argX" as key.
+     */
+    private void unSetVariable(Integer i) {
+        interpreter.unSetVariable(i.toString());
+        interpreter.unSetVariable("arg" + i.toString()); //$NON-NLS-1$
     }
 
     /*
@@ -108,6 +145,10 @@ public class InitInterpreterFromParsedVariableTask extends AbstractCommandTask {
      */
     @Override
     public String getLabel() {
-        return Messages.InitInterpreterFromParsedVariableTask_label;
+        if (unset) {
+            return Messages.InitInterpreterFromParsedVariableTask_unsetLabel;
+        } else {
+            return Messages.InitInterpreterFromParsedVariableTask_label;
+        }
     }
 }

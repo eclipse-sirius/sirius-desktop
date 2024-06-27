@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -23,19 +23,17 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import junit.framework.TestCase;
 
 /**
- * Test the parsing of mask variables and the variable duplication for integer
- * variables names.
+ * Test the parsing of mask variables and the variable duplication for integer variables names.
  * 
- * This is done by two tasks : InitInterpreterFromParsedVariableTask and
- * InitInterpreterFromParsedVariableTask2.
+ * This is done by two tasks : InitInterpreterFromParsedVariableTask and InitInterpreterFromParsedVariableTask2.
  * 
- * This test checks the parsing and the int name variable duplication for
- * different masks and values.
+ * This test checks the parsing and the int name variable duplication for different masks and values.
  * 
- * The duplication consists in creating an argX named variable for each X
- * variable: 0 and arg0 for example. It is required by some interpreters which
- * cannot have int variables like Acceleo3. Acceleo2 was supporting it thanks to
- * its prefix $.
+ * The duplication consists in creating an argX named variable for each X variable: 0 and arg0 for example. It is
+ * required by some interpreters which cannot have int variables like Acceleo3. Acceleo2 was supporting it thanks to its
+ * prefix $.
+ * 
+ * This test also checks that the dedicated task correctly cleans the interpreter.
  * 
  * @author mporhel
  * 
@@ -205,6 +203,10 @@ public class InitInterpreterFromParsedVariableTaskTest extends TestCase {
         new InitInterpreterFromParsedVariableTask(interpreter, mask, message).execute();
 
         doTestVariables(expectedVariableValues);
+
+        // Call the task that should clean the interpreter
+        new InitInterpreterFromParsedVariableTask(interpreter, mask, message, true).execute();
+        doTestVariables(expectedVariableValues, true);
     }
 
     private void doTestParsedVariableTask2(String mask, String message, Map<Integer, String> expectedVariableValues) {
@@ -214,30 +216,41 @@ public class InitInterpreterFromParsedVariableTaskTest extends TestCase {
         new InitInterpreterFromParsedVariableTask2(interpreter, mask, message).execute();
 
         doTestVariables(expectedVariableValues);
+
+        // Call the task that should clean the interpreter
+        new InitInterpreterFromParsedVariableTask2(interpreter, mask, message, true).execute();
+        doTestVariables(expectedVariableValues, true);
     }
 
     private void doTestVariables(Map<Integer, String> expectedVariableValues) {
+        doTestVariables(expectedVariableValues, false);
+    }
+
+    private void doTestVariables(Map<Integer, String> expectedVariableValues, boolean clean) {
 
         // Check the global variable number, we should have duplication for all
         // int named variables.
-        assertEquals("The int named variables should be duplicated, example : 0 and arg0.", expectedVariableValues.size() * 2, interpreter.getVariables().size());
+        if (clean) {
+            assertEquals("No variable should be contains in the interpreter after direct edit.", 0, interpreter.getVariables().size());
+        } else {
+            assertEquals("The int named variables should be duplicated, example : 0 and arg0.", expectedVariableValues.size() * 2, interpreter.getVariables().size());
 
-        for (Integer varIntName : expectedVariableValues.keySet()) {
-            String intKey = varIntName.toString();
-            String argKey = "arg" + intKey;
+            for (Integer varIntName : expectedVariableValues.keySet()) {
+                String intKey = varIntName.toString();
+                String argKey = "arg" + intKey;
 
-            assertTrue("The variable named " + intKey + " is not present in the variable list.", interpreter.getVariables().containsKey(intKey));
-            assertTrue("The variable named " + argKey + " is not present in the variable list.", interpreter.getVariables().containsKey(argKey));
+                assertTrue("The variable named " + intKey + " is not present in the variable list.", interpreter.getVariables().containsKey(intKey));
+                assertTrue("The variable named " + argKey + " is not present in the variable list.", interpreter.getVariables().containsKey(argKey));
 
-            // The test deals with String value.
-            String intKeyValue = (String) interpreter.getVariable(intKey);
-            String argKeyValue = (String) interpreter.getVariable(argKey);
+                // The test deals with String value.
+                String intKeyValue = (String) interpreter.getVariable(intKey);
+                String argKeyValue = (String) interpreter.getVariable(argKey);
 
-            String expectedValue = expectedVariableValues.get(varIntName);
-            assertEquals("The variable named " + intKey + " does not have the expected value.", intKeyValue, expectedValue);
-            assertEquals("The variable named " + argKeyValue + " does not have the expected value.", argKeyValue, expectedValue);
+                String expectedValue = expectedVariableValues.get(varIntName);
+                assertEquals("The variable named " + intKey + " does not have the expected value.", intKeyValue, expectedValue);
+                assertEquals("The variable named " + argKeyValue + " does not have the expected value.", argKeyValue, expectedValue);
+            }
         }
-
     }
 
     @Override

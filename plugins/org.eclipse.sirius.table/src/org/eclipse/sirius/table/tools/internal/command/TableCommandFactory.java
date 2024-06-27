@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
@@ -306,6 +306,8 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
         addMaskInitTask(result, interpreterContext, mask, newValue);
         // Creation of the tasks to execute the tool
         addOperationTask(result, currentCell, interpreterContext, tool.getFirstModelOperation());
+        // Clear mask variables
+        addMaskResetTask(result, interpreterContext, mask, newValue);
     
         return result;
     }
@@ -338,6 +340,9 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
         // Creation of the tasks to execute the tool
         addOperationTask(result, currentLine, interpreterContext, tool.getFirstModelOperation());
         
+        // Clear mask variables
+        addMaskResetTask(result, interpreterContext, tool.getMask(), newValue);
+
         return result;
     }
 
@@ -570,6 +575,13 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
         }
     }
     
+    private void addMaskResetTask(SiriusCommand result, EObject context, EditMaskVariables mask, final Object newValue) {
+        if (mask != null && mask.getMask() != null) {
+            // Reset all mask variables initialized before
+            result.getTasks().add(new InitInterpreterFromParsedVariableTask2(InterpreterUtil.getInterpreter(context), mask.getMask(), newValue, true));
+        }
+    }
+
     private void addOperationTask(SiriusCommand result, DSemanticDecorator tableElement, EObject context, ModelOperation operation) {
         DTable table = TableHelper.getTable(tableElement);
         result.getTasks().add(commandTaskHelper.buildTaskFromModelOperation(table, context, operation));

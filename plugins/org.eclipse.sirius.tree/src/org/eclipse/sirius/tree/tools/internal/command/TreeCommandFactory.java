@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -359,6 +359,14 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
                     // on direct edit even in REFRESH_AUTO mode at false
                     ICommandTask refreshTreeElementTask = new RefreshTreeElementTask(editedTreeItem);
                     result.getTasks().add(refreshTreeElementTask);
+
+                    if (directEditTool.getMask() != null) {
+                        /*
+                         * Finally we need to clean the mask variables.
+                         */
+                        final String messageFormat = directEditTool.getMask().getMask();
+                        result.getTasks().add(new InitInterpreterFromParsedVariableTask2(InterpreterUtil.getInterpreter(interpreterContext), messageFormat, newValue, true));
+                    }
                 }
             }
         }
