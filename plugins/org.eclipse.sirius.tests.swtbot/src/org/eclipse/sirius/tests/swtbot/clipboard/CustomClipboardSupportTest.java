@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -61,13 +61,65 @@ public class CustomClipboardSupportTest extends AbstractClipboardSupportTest {
     }
 
     /**
+     * Test copy and paste for menu on Edit Part without Clipboard that uses the PasteDescription of another diagram.
+     */
+    public void testCopyPasteFromEditMenuWithAlwaysPasteClassTool_Reuse() {
+        editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), CUSTOM_DESCRIPTION_2, REPRESENTATION_WITH_CUSTOM_PASTE_2, DDiagram.class);
+        checkCopyPaste(editor2, editor2.getSelectableEditPart("pastable_Class"), editor2, true, (SWTBotGefEditPart) null, "pasted_pastable_Class", 1);
+    }
+
+    /**
+     * Test copy and paste for menu on Edit Part without Clipboard that imports the PasteDescription of another diagram
+     * in the default layer.
+     */
+    public void testCopyPasteFromEditMenuWithAlwaysPasteClassTool_ImportDefault() {
+        editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), CUSTOM_DESCRIPTION_3, REPRESENTATION_WITH_CUSTOM_PASTE_3, DDiagram.class);
+        checkCopyPaste(editor2, editor2.getSelectableEditPart("pastable_Class"), editor2, true, (SWTBotGefEditPart) null, "pasted_pastable_Class", 1);
+    }
+
+    /**
+     * Test copy and paste for menu on Edit Part without Clipboard that imports the PasteDescription of another diagram
+     * in an additional layer.
+     */
+    public void testCopyPasteFromEditMenuWithAlwaysPasteClassTool_ImportAdditional() {
+        editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), CUSTOM_DESCRIPTION_4, REPRESENTATION_WITH_CUSTOM_PASTE_4, DDiagram.class);
+        checkCopyPaste(editor2, editor2.getSelectableEditPart("pastable_Class"), editor2, true, (SWTBotGefEditPart) null, "pasted_pastable_Class", 1);
+    }
+
+    /**
+     * Test copy and paste for menu on Edit Part that uses the PasteDescription from a transient layer of another
+     * diagram without importing it (Paste is not possible).
+     */
+    public void testCopyPasteFromEditMenuWithAlwaysPasteClassToolFromTransientLayer_Reuse() {
+        editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), CUSTOM_DESCRIPTION_2, REPRESENTATION_WITH_CUSTOM_PASTE_2, DDiagram.class);
+        checkCopyPaste(editor2, editor2.getSelectableEditPart("pastable2_Class"), editor2, false, (SWTBotGefEditPart) null, "pasted_pastable2_Class", 1);
+    }
+
+    /**
+     * Test copy and paste for menu on Edit Part that imports the PasteDescription, from a transient layer of another
+     * diagram, in the default layer.
+     */
+    public void testCopyPasteFromEditMenuWithAlwaysPasteClassToolFromTransientLayer_ImportDefault() {
+        editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), CUSTOM_DESCRIPTION_3, REPRESENTATION_WITH_CUSTOM_PASTE_3, DDiagram.class);
+        checkCopyPaste(editor2, editor2.getSelectableEditPart("pastable2_Class"), editor2, true, (SWTBotGefEditPart) null, "pasted_pastable2_Class", 1);
+    }
+
+    /**
+     * Test copy and paste for menu on Edit Part that imports the PasteDescription, from a transient layer of another
+     * diagram, in an additional layer.
+     */
+    public void testCopyPasteFromEditMenuWithAlwaysPasteClassToolFromTransientLayer_ImportAdditional() {
+        editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), CUSTOM_DESCRIPTION_4, REPRESENTATION_WITH_CUSTOM_PASTE_4, DDiagram.class);
+        checkCopyPaste(editor2, editor2.getSelectableEditPart("pastable2_Class"), editor2, true, (SWTBotGefEditPart) null, "pasted_pastable2_Class", 1);
+    }
+
+    /**
      * Test copy and paste for menu on Edit Part from a transient layer.
      */
     public void testCopyPasteFromEditMenuWithAlwaysPasteClassToolFromTransientLayer() {
         editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), CUSTOM_DESCRIPTION, REPRESENTATION_WITH_CUSTOM_PASTE, DDiagram.class);
         checkCopyPaste(editor2, editor2.getSelectableEditPart("pastable2_Class"), editor2, true, (SWTBotGefEditPart) null, "pasted_pastable2_Class", 1);
     }
-
     /**
      * Test copy and paste for menu on Edit Part without Clipboard.
      */

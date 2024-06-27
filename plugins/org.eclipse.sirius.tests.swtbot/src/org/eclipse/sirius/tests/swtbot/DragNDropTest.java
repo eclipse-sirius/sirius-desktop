@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -69,6 +69,12 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String REPRESENTATION_INSTANCE_2BLANK = "new TC1041 representation 2 Blank";
 
+    private static final String REPRESENTATION_INSTANCE_2BLANK_BIS = "new TC1041 representation 2 BlankBis";
+
+    private static final String REPRESENTATION_INSTANCE_2BLANK_TER = "new TC1041 representation 2 BlankTer";
+
+    private static final String REPRESENTATION_INSTANCE_2BLANK_QUATER = "new TC1041 representation 2 BlankQuater";
+
     private static final String REPRESENTATION_INSTANCE_5BLANK = "new TC1041 representation 5 Blank";
 
     private static final String TEST_NO_NPE_RAISED_DURING_DND = "Test no NPE raised during DND";
@@ -78,6 +84,12 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String REPRESENTATION_INSTANCE_7BLANK = "new TC1041 representation 7 Blank";
 
     private static final String REPRESENTATION_NAME_2 = "TC1041 representation 2 Blank";
+
+    private static final String REPRESENTATION_NAME_2_BIS = "TC1041 representation 2 BlankBis";
+
+    private static final String REPRESENTATION_NAME_2_TER = "TC1041 representation 2 BlankTer";
+
+    private static final String REPRESENTATION_NAME_2_QUATER = "TC1041 representation 2 BlankQuater";
 
     private static final String REPRESENTATION_NAME_3 = "TC1041 representation 3";
 
@@ -184,11 +196,8 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
         semanticResourceNode = localSession.getSemanticResourceNode(ecoreEcoreResource);
     }
 
-    /**
-     * Open "TC1041 representation 2 Blank" diagram.
-     */
-    private void openRepresentation2() {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_2, REPRESENTATION_INSTANCE_2BLANK, DDiagram.class);
+    private void openRepresentation(String representationDescriptionName, final String representationName) {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), representationDescriptionName, representationName, DDiagram.class);
         if (snapToGrid) {
             editor.setSnapToGrid(true, GRID_STEP, 2);
         } else {
@@ -200,12 +209,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
      * Open "TC1041 representation 5 Blank" diagram.
      */
     private void openRepresentation5() {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_5, REPRESENTATION_INSTANCE_5BLANK, DDiagram.class);
-        if (snapToGrid) {
-            editor.setSnapToGrid(true, GRID_STEP, 2);
-        } else {
-            editor.setSnapToGrid(false);
-        }
+        openRepresentation(REPRESENTATION_NAME_5, REPRESENTATION_INSTANCE_5BLANK);
     }
 
     /**
@@ -219,36 +223,20 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
      * Open "TC1041 representation 6 Blank" diagram.
      */
     private void openRepresentation6() {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_6, REPRESENTATION_INSTANCE_6BLANK, DDiagram.class);
-        if (snapToGrid) {
-            editor.setSnapToGrid(true, GRID_STEP, 2);
-        } else {
-            editor.setSnapToGrid(false);
-        }
+        openRepresentation(REPRESENTATION_NAME_6, REPRESENTATION_INSTANCE_6BLANK);
     }
 
     /**
      * Open "TC1041 representation 7 Blank" diagram.
      */
     private void openRepresentation7() {
+        openRepresentation(REPRESENTATION_NAME_7, REPRESENTATION_INSTANCE_7BLANK);
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_7, REPRESENTATION_INSTANCE_7BLANK, DDiagram.class);
-        if (snapToGrid) {
-            editor.setSnapToGrid(true, GRID_STEP, 2);
-        } else {
-            editor.setSnapToGrid(false);
-        }
     }
 
-    /**
-     * @throws Exception
-     *             Test the drag&drop of P1(EPackage) from the Model Content
-     *             view to the diagram. This test is done on a "TC1041
-     *             representation 2 Blank" diagram.
-     */
-    @Test
-    public void test_DnDPackageFromMC2DiagramBlank2() throws Exception {
+    private void test_DnDPackageFromMC2DiagramBlank2X(String representationDescriptionName, final String representationName, final boolean dropAllowed) throws Exception {
 
-        openRepresentation2();
+        openRepresentation(representationDescriptionName, representationName);
 
         startToListenErrorLog(true, true);
 
@@ -257,11 +245,72 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
         final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME).getNode(CONTAINER_TO_DRAG_P1);
         ecoreTreeItem.dragAndDrop(editor.getCanvas());
 
-        bot.waitUntil(new DiagramWithChildrensCondition(editor, 1));
+        if (dropAllowed) {
+            bot.waitUntil(new DiagramWithChildrensCondition(editor, 1));
+        } else {
+            bot.waitUntil(new DiagramWithChildrensCondition(editor, 0));
+        }
         assertFalse("An error message was generated !", doesAWarningOccurs() || doesAnErrorOccurs());
 
-        IGraphicalEditPart p1EditPart = (IGraphicalEditPart) editor.getEditPart(CONTAINER_TO_DRAG_P1, DNodeContainerEditPart.class).part();
-        checkEditPartLocation(p1EditPart);
+        try {
+            IGraphicalEditPart p1EditPart = (IGraphicalEditPart) editor.getEditPart(CONTAINER_TO_DRAG_P1, DNodeContainerEditPart.class).part();
+            if (dropAllowed) {
+                checkEditPartLocation(p1EditPart);
+            } else {
+                fail("The drop should not be allowed in this case.");
+            }
+        } catch (WidgetNotFoundException e) {
+            if (dropAllowed) {
+                // If drop is not allowed the exception is expected.
+                throw e;
+            }
+        }
+    }
+
+    /**
+     * @throws Exception
+     *             Test the drag&drop of P1(EPackage) from the Model Content view to the diagram. This test is done on a
+     *             "TC1041 representation 2 Blank" diagram.
+     */
+    @Test
+    public void test_DnDPackageFromMC2DiagramBlank2() throws Exception {
+        test_DnDPackageFromMC2DiagramBlank2X(REPRESENTATION_NAME_2, REPRESENTATION_INSTANCE_2BLANK, true);
+    }
+
+    /**
+     * Test the drag&drop of P1(EPackage) from the Model Content view to the diagram. This test is done on a "TC1041
+     * representation 2 BlankBis" diagram and uses a drop tool of an additional layer of another diagram (and not
+     * imported).
+     * 
+     * @throws Exception
+     */
+    @Test
+    public void test_DnDPackageFromMC2DiagramBlank2Bis() throws Exception {
+        test_DnDPackageFromMC2DiagramBlank2X(REPRESENTATION_NAME_2_BIS, REPRESENTATION_INSTANCE_2BLANK_BIS, false);
+    }
+
+    /**
+     * Test the drag&drop of P1(EPackage) from the Model Content view to the diagram. This test is done on a "TC1041
+     * representation 2 BlankTer" diagram and imports a drop tool of an additional layer of another diagram in the
+     * default layer.
+     * 
+     * @throws Exception
+     */
+    @Test
+    public void test_DnDPackageFromMC2DiagramBlank2Ter() throws Exception {
+        test_DnDPackageFromMC2DiagramBlank2X(REPRESENTATION_NAME_2_TER, REPRESENTATION_INSTANCE_2BLANK_TER, true);
+    }
+
+    /**
+     * Test the drag&drop of P1(EPackage) from the Model Content view to the diagram. This test is done on a "TC1041
+     * representation 2 BlankQuater" diagram and imports a drop tool of an additional layer of another diagram in an
+     * additional layer.
+     * 
+     * @throws Exception
+     */
+    @Test
+    public void test_DnDPackageFromMC2DiagramBlank2Quater() throws Exception {
+        test_DnDPackageFromMC2DiagramBlank2X(REPRESENTATION_NAME_2_QUATER, REPRESENTATION_INSTANCE_2BLANK_QUATER, true);
     }
 
     /**
@@ -654,7 +703,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
     @Test
     public void test_DnDEClassFromMC2DiagramBlank2() throws Exception {
 
-        openRepresentation2();
+        openRepresentation(REPRESENTATION_NAME_2, REPRESENTATION_INSTANCE_2BLANK);
 
         startToListenErrorLog(true, true);
 
