@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2020 Obeo
+ * Copyright (c) 2018, 2024 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -65,7 +65,7 @@ public class GenericLayoutProvider implements LayoutProvider {
     @Override
     public AbstractLayoutEditPartProvider getLayoutNodeProvider(final IGraphicalEditPart partToLayout) {
         AbstractLayoutEditPartProvider result = null;
-        LayoutProviderData layoutProviderData = Optional.ofNullable(editPartToLayoutProviderCache.get(partToLayout)).orElseGet(() -> getLayoutProviderData(partToLayout).orElseGet(null));
+        LayoutProviderData layoutProviderData = Optional.ofNullable(editPartToLayoutProviderCache.get(partToLayout)).orElseGet(() -> getLayoutProviderData(partToLayout).orElse(null));
         if (layoutProviderData != null) {
             final CompoundLayoutProvider clp = new CompoundLayoutProvider();
             clp.addProvider(layoutProviderData.defaultLayoutProvider);
