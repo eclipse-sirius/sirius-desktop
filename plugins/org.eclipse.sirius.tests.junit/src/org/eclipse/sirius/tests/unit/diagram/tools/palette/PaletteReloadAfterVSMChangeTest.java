@@ -15,8 +15,6 @@ package org.eclipse.sirius.tests.unit.diagram.tools.palette;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
@@ -203,7 +201,7 @@ public class PaletteReloadAfterVSMChangeTest extends AbstractPaletteManagerTest 
         List<SectionPaletteDrawer> sectionPaletteDrawers = paletteRoot.getChildren().stream()
                 .filter(SectionPaletteDrawer.class::isInstance)
                 .map(SectionPaletteDrawer.class::cast)
-                .filter(entry -> sectionToModify != null && sectionToModify.getName().equals(((SectionPaletteDrawer) entry).getId()))
+                .filter(entry -> sectionToModify != null && sectionToModify.getName().equals(((SectionPaletteDrawer) entry).getLabel()))
                 .toList();
 
         if (sectionPaletteDrawers.size() != 1) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2021 Obeo
+ * Copyright (c) 2019, 2024 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,11 +12,14 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.tools.api.management;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.HexFormat;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -46,6 +49,7 @@ import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.tool.ToolGroup;
 import org.eclipse.sirius.diagram.description.tool.ToolGroupExtension;
 import org.eclipse.sirius.diagram.description.tool.ToolSection;
+import org.eclipse.sirius.diagram.tools.api.Messages;
 import org.eclipse.sirius.diagram.tools.internal.management.ToolFilterDescriptionListenersManager;
 import org.eclipse.sirius.diagram.tools.internal.management.ToolManagementRegistry;
 import org.eclipse.sirius.model.business.api.helper.ViewpointUtil;
@@ -71,6 +75,8 @@ import com.google.common.collect.Sets;
  *
  */
 public class ToolManagement {
+
+    private static final String SHA_256 = "SHA-256"; //$NON-NLS-1$
 
     /**
      * Tool filters installed for the specific diagram managed by this instance.
@@ -359,7 +365,43 @@ public class ToolManagement {
      * @return the id of a {@link ToolEntry}.
      */
     public static String getId(final EObject entry) {
-        return EcoreUtil.getURI(entry).toString();
+        String entryUri = EcoreUtil.getURI(entry).toString();
+        return hash(entryUri.getBytes());
+    }
+
+    /**
+     * Generates a hash for the given byte array using SHA-256 and encodes it in hexadecimal format. If the resulting
+     * hash starts with a digit, it prefixes the hash with an underscore.
+     *
+     * @param uriBytes
+     *            the byte array to hash
+     * @return the hexadecimal representation of the SHA-256 hash, possibly prefixed with an underscore
+     */
+    public static String hash(byte[] uriBytes) {
+        String encodedId = HexFormat.of().formatHex(sha256hash(uriBytes));
+        char ch = encodedId.charAt(0);
+        if (ch >= '0' && ch <= '9') {
+            encodedId = '_' + encodedId;
+        }
+        return encodedId;
+    }
+
+    /**
+     * Computes the SHA-256 hash of the given byte array.
+     *
+     * @param bytes
+     *            the byte array to hash
+     * @return the SHA-256 hash as a byte array
+     * @throws IllegalStateException
+     *             if the SHA-256 MessageDigest instance cannot be instantiated
+     */
+    private static byte[] sha256hash(byte[] bytes) {
+        try {
+            MessageDigest md = MessageDigest.getInstance(SHA_256);
+            return md.digest(bytes);
+        } catch (NoSuchAlgorithmException e) {
+            throw new IllegalStateException(Messages.ToolManagement_sha256_instanciation, e);
+        }
     }
 
     /**
