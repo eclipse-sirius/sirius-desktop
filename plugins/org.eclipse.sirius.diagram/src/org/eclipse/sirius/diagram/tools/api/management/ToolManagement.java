@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2021 Obeo
+ * Copyright (c) 2019, 2024 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.tools.api.management;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -359,7 +361,34 @@ public class ToolManagement {
      * @return the id of a {@link ToolEntry}.
      */
     public static String getId(final EObject entry) {
-        return EcoreUtil.getURI(entry).toString();
+        byte[] uriBytes = EcoreUtil.getURI(entry).toString().getBytes();
+        String encodedId = bytesToHex(sha256hash(uriBytes));
+        char ch = encodedId.charAt(0);
+        if (ch >= '0' && ch <= '9') {
+            encodedId = new StringBuilder().append('_').append(encodedId).toString();
+        }
+        return encodedId;
+    }
+    
+    private static String bytesToHex(byte[] hash) {
+        StringBuilder hex = new StringBuilder();
+        for (int i = 0; i < hash.length; i++) {
+            String hs = Integer.toHexString(0xff & hash[i]);
+            if (hs.length() == 1) {
+                hex.append('0');
+            }
+            hex.append(hs);
+        }
+        return hex.toString();
+    }
+
+    private static byte[] sha256hash(byte[] bytes) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256"); //$NON-NLS-1$
+            return md.digest(bytes);
+        } catch (NoSuchAlgorithmException e) {
+            throw new IllegalStateException("Could not instantiate SHA-256 MessageDigest.", e); //$NON-NLS-1$
+        }
     }
 
     /**
