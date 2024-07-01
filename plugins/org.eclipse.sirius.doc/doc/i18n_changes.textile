@@ -2,6 +2,12 @@ h1. Translation Keys Changes
 
 This document lists the changes in @TranslatableMessage@ used for Sirius internationalization in each Sirius version.
 
+h2(#sirius743). Translation Keys Changes in Sirius 7.4.3 (from Sirius 7.4.0)
+
+h3. Message Keys Added
+
+* @org.eclipse.sirius.diagram.tools.api.Messages.ToolManagement_sha256_instanciation@
+
 h2(#sirius740). Translation Keys Changes in Sirius 7.4.0 (from Sirius 7.3.0)
 
 h3. Message Keys Added

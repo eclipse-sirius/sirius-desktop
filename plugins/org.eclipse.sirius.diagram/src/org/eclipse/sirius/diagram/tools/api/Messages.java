@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2022 Obeo.
+ * Copyright (c) 2015, 2024 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -297,6 +297,9 @@ public final class Messages {
 
     @TranslatableMessage
     public static String SetEdgeActualMappingCommand_commandLabel;
+
+    @TranslatableMessage
+    public static String ToolManagement_sha256_instanciation;
 
     @TranslatableMessage
     public static String UndoRedoCapableEMFCommandFactory_addDiagramVariableLabel;

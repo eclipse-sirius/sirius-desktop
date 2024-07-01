@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -70,6 +70,7 @@ import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.ToolGroupInstance;
 import org.eclipse.sirius.viewpoint.ToolInstance;
 import org.eclipse.sirius.viewpoint.ToolSectionInstance;
+import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
@@ -280,14 +281,19 @@ public class PaletteManagerImpl implements PaletteManager {
         /*
          * if no layers => compatibility mode create a single palette group
          */
-        final String name = new IdentifiedElementQuery(description).getLabel();
-        Option<PaletteGroup> descGroup = getPaletteEntry(paletteRoot, name, PaletteGroup.class);
+        final String name = getLabel(description);
+        final String id = getHashLabel(description);
+        Option<PaletteGroup> descGroup = getPaletteEntry(paletteRoot, id, PaletteGroup.class);
         if (!descGroup.some()) {
-            descGroup = Options.newSome(new PaletteGroup(name, name));
+            descGroup = Options.newSome(new PaletteGroup(id, name));
             paletteRoot.add(descGroup.get());
         }
         // Update the root of the palette with only VSM tools
         updateContainer(session, dDiagram, descGroup.get(), dDiagram.getUiState().getToolSections().stream().flatMap(section -> section.getTools().stream()).collect(Collectors.toList()));
+    }
+    
+    private static String getLabel(IdentifiedElement element) {
+        return new IdentifiedElementQuery(element).getLabel();
     }
 
     /**
@@ -303,7 +309,7 @@ public class PaletteManagerImpl implements PaletteManager {
     private void updatePaletteForDiagramWithLayer(DiagramDescription description, Session session, DDiagram dDiagram) {
         for (final ToolSectionInstance sectionInstance : dDiagram.getUiState().getToolSections()) {
             if (!ToolConstants.DEFAULT_SECTION_ID.equals(sectionInstance.getId())) {
-                Option<SectionPaletteDrawer> paletteEntry = getPaletteEntry(paletteRoot, PaletteManagerImpl.getToolSectionId((ToolSection) sectionInstance.getSection()), SectionPaletteDrawer.class);
+                Option<SectionPaletteDrawer> paletteEntry = getPaletteEntry(paletteRoot, PaletteManagerImpl.getHashLabel((ToolSection) sectionInstance.getSection()), SectionPaletteDrawer.class);
                 List<ToolInstance> toolInstances = sectionInstance.getTools();
                 if (!paletteEntry.some()) {
                     final PaletteContainer container = PaletteManagerImpl.createPaletteDrawner((ToolSection) sectionInstance.getSection());
@@ -465,7 +471,7 @@ public class PaletteManagerImpl implements PaletteManager {
 
     private void setToolSectionsVisibility(final Layer layer, final SectionPaletteDrawer drawer, final Collection<ToolSection> sections, final boolean visibility) {
         for (final ToolSection section : sections) {
-            if (drawer.getId().equals(PaletteManagerImpl.getToolSectionId(section))) {
+            if (drawer.getId().equals(PaletteManagerImpl.getHashLabel(section))) {
                 if (visibility && PaletteManagerImpl.isSectionNotEmpty(section)) {
                     drawer.addLayer(layer);
                 } else {
@@ -544,8 +550,9 @@ public class PaletteManagerImpl implements PaletteManager {
         }
     }
 
-    private static String getToolSectionId(final ToolSection toolSection) {
-        return new IdentifiedElementQuery(toolSection).getLabel();
+    private static String getHashLabel(final IdentifiedElement element) {
+        String toolSectionLabel = getLabel(element);
+        return ToolManagement.hash(toolSectionLabel.getBytes());
     }
 
     /**
@@ -581,10 +588,10 @@ public class PaletteManagerImpl implements PaletteManager {
     }
 
     private static PaletteContainer createPaletteDrawner(final ToolSection section) {
-        final String name = MessageTranslator.INSTANCE.getMessage(section, new IdentifiedElementQuery(section).getLabel());
+        final String name = MessageTranslator.INSTANCE.getMessage(section, getLabel(section));
         String iconPath = section.getIcon();
         final PaletteContainer paletteDrawner = new SectionPaletteDrawer(name);
-        paletteDrawner.setId(PaletteManagerImpl.getToolSectionId(section));
+        paletteDrawner.setId(PaletteManagerImpl.getHashLabel(section));
         if (StringUtil.isEmpty(iconPath)) {
             iconPath = "icons/obj16/ToolSection.gif"; //$NON-NLS-1$
         }
@@ -610,26 +617,26 @@ public class PaletteManagerImpl implements PaletteManager {
      */
     protected void updateContainer(final Session session, DDiagram dDiagram, final PaletteContainer container, final List<? extends ToolInstance> toolEntries) {
 
-        for (final ToolInstance toolInstances : toolEntries) {
-            ToolEntry toolEntry = toolInstances.getToolEntry();
+        for (final ToolInstance toolInstance : toolEntries) {
+            ToolEntry toolEntry = toolInstance.getToolEntry();
             if (toolEntry instanceof AbstractToolDescription) {
                 /*
                  * do not create a new entry for the tool if it should not be displayed
                  */
-                Option<PaletteEntry> paletteEntry = getPaletteEntry(container, toolInstances.getId(), PaletteEntry.class);
-                if (!toolInstances.isFiltered()) {
+                Option<PaletteEntry> paletteEntry = getPaletteEntry(container, toolInstance.getId(), PaletteEntry.class);
+                if (!toolInstance.isFiltered()) {
                     addElementToContainer(container, toolEntry, paletteEntry);
                 } else {
                     container.remove(paletteEntry.get());
                 }
-            } else if (toolInstances instanceof ToolGroupInstance) {
-                Option<ToolGroupPaletteStack> paletteStack = getPaletteEntry(container, toolInstances.getId(), ToolGroupPaletteStack.class);
+            } else if (toolInstance instanceof ToolGroupInstance) {
+                Option<ToolGroupPaletteStack> paletteStack = getPaletteEntry(container, toolInstance.getId(), ToolGroupPaletteStack.class);
                 boolean paletteWasCreated = false;
                 if (!paletteStack.some()) {
                     paletteStack = Options.newSome(new ToolGroupPaletteStack(((ToolGroup) toolEntry).getName()));
                     paletteWasCreated = true;
                 }
-                for (ToolInstance siriusToolChild : ((ToolGroupInstance) toolInstances).getTools()) {
+                for (ToolInstance siriusToolChild : ((ToolGroupInstance) toolInstance).getTools()) {
                     /*
                      * do not create a new entry for the tool if it should not be displayed
                      */
@@ -654,7 +661,7 @@ public class PaletteManagerImpl implements PaletteManager {
                     // avoid creating empty palette stack to avoid being
                     // displayed as first when a diagram palette is emptied and
                     // refilled
-                    paletteStack.get().setId(toolInstances.getId());
+                    paletteStack.get().setId(toolInstance.getId());
                     container.add(paletteStack.get());
                 }
             }
@@ -689,9 +696,9 @@ public class PaletteManagerImpl implements PaletteManager {
             PaletteStack paletteStack;
             String newName;
             if (isFromDiagramEnvironment(toolEntry)) {
-                newName = MessageTranslator.INSTANCE.getMessage(DiagramPlugin.getPlugin().getBundle(), new IdentifiedElementQuery(toolEntry).getLabel());
+                newName = MessageTranslator.INSTANCE.getMessage(DiagramPlugin.getPlugin().getBundle(), getLabel(toolEntry));
             } else {
-                newName = MessageTranslator.INSTANCE.getMessage(toolEntry, new IdentifiedElementQuery(toolEntry).getLabel());
+                newName = MessageTranslator.INSTANCE.getMessage(toolEntry, getLabel(toolEntry));
             }
             if (!existingPaletteEntry.some()) {
                 paletteStack = new ToolGroupPaletteStack(newName);
@@ -703,7 +710,7 @@ public class PaletteManagerImpl implements PaletteManager {
                 throw new IllegalArgumentException(MessageFormat.format(Messages.PaletteManagerImpl_alreadyExistingEntry, newName));
             }
             for (final AbstractToolDescription tool : ((ToolGroup) toolEntry).getTools()) {
-                Option<PaletteEntry> paletteEntry = getPaletteEntry(paletteStack, new IdentifiedElementQuery(tool).getLabel(), PaletteEntry.class);
+                Option<PaletteEntry> paletteEntry = getPaletteEntry(paletteStack, ToolManagement.getId(tool), PaletteEntry.class);
                 addElementToContainer(paletteStack, tool, paletteEntry);
             }
         } else if (toolEntry instanceof AbstractToolDescription) {
@@ -713,10 +720,10 @@ public class PaletteManagerImpl implements PaletteManager {
                 final String nameEntry;
                 final String descriptionEntry;
                 if (isFromDiagramEnvironment(toolDescription)) {
-                    nameEntry = MessageTranslator.INSTANCE.getMessage(DiagramPlugin.getPlugin().getBundle(), new IdentifiedElementQuery(toolDescription).getLabel());
+                    nameEntry = MessageTranslator.INSTANCE.getMessage(DiagramPlugin.getPlugin().getBundle(), getLabel(toolDescription));
                     descriptionEntry = MessageTranslator.INSTANCE.getMessage(DiagramPlugin.getPlugin().getBundle(), toolDescription.getDocumentation());
                 } else {
-                    nameEntry = MessageTranslator.INSTANCE.getMessage(toolDescription, new IdentifiedElementQuery(toolDescription).getLabel());
+                    nameEntry = MessageTranslator.INSTANCE.getMessage(toolDescription, getLabel(toolDescription));
                     descriptionEntry = MessageTranslator.INSTANCE.getMessage(toolDescription, toolDescription.getDocumentation());
                 }
                 final CreationFactory creationFactory = new PaletteToolBasedCreationFactory(toolDescription);
@@ -724,7 +731,6 @@ public class PaletteManagerImpl implements PaletteManager {
                 if (toolDescription instanceof EdgeCreationDescription) {
                     paletteEntry = new ConnectionCreationToolEntry(nameEntry, descriptionEntry, creationFactory, imageEntry, imageEntry);
                     paletteEntry.setToolClass(ConnectionCreationTool.class);
-                    paletteEntry.setId(nameEntry);
                 } else if (requiresPaletteToolEntry(toolDescription)) {
                     paletteEntry = createPaletteToolEntry(nameEntry, descriptionEntry, creationFactory, imageEntry);
                 }
