@@ -38,6 +38,7 @@ import org.eclipse.gef.tools.CreationTool;
 import org.eclipse.gef.ui.palette.PaletteViewer;
 import org.eclipse.gmf.runtime.diagram.ui.internal.services.palette.PaletteToolEntry;
 import org.eclipse.gmf.runtime.diagram.ui.services.palette.PaletteFactory;
+import org.eclipse.gmf.runtime.gef.ui.palette.customize.PaletteCustomizerEx;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.Session;
@@ -234,6 +235,11 @@ public class PaletteManagerImpl implements PaletteManager {
             replaceNoteAttachmentCreationToolIfNeeded();
             if (session != null && description != null && description.eResource() != null && !description.eIsProxy()) {
                 updatePalette(description, session, dDiagram);
+
+                // Apply existing customizations to the palette 
+                final PaletteViewer paletteViewer = editDomain.getPaletteViewer();
+                Optional.ofNullable((PaletteCustomizerEx) paletteViewer.getCustomizer())
+                        .ifPresent(custo -> custo.applyCustomizationsToPalette(paletteRoot));
             }
         }
     }

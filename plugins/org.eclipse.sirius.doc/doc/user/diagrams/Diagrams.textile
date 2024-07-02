@@ -1097,6 +1097,12 @@ __Folding__. You can also fold the palette to hide it almost completely by click
 __Moving__. If you prefer, you can move the palette to the left side of the diagram editor by dragging the palette's header with the mouse, or right-clicking on the header and choosing _Dock On > Left_ or _Dock On > Right_.
 
 	!images/palette_moving.png!
+	
+__Customize__. You can locally customize your palette by editing name, description or hiding tools and tools sections. Tools sections can also be opened or pinned at start-up.
+
+	!images/palette_customize_popup.png!
+
+	!images/palette_customize_dialog.png!
 
 h4(#standardToolId). Standard Tools
 
