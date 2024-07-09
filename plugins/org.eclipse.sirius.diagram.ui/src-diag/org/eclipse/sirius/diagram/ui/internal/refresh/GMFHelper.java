@@ -27,6 +27,7 @@ import org.eclipse.draw2d.FigureUtilities;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
+import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PrecisionRectangle;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -111,9 +112,11 @@ public final class GMFHelper {
 
     /**
      * see org.eclipse.sirius.diagram.ui.internal.edit.parts. AbstractDNodeContainerCompartmentEditPart.DEFAULT_MARGIN
-     * the Y value is the DEFAULT_MARGIN + the InvisibleResizableCompartmentFigure top Inset (1px)
+     * the top value is the DEFAULT_MARGIN + the InvisibleResizableCompartmentFigure top Inset (1px), also corresponding
+     * to IContainerLabelOffsets.LABEL_OFFSET.
      */
-    private static Point CONTAINER_INSETS = new Point(AbstractDNodeContainerCompartmentEditPart.DEFAULT_MARGIN, IContainerLabelOffsets.LABEL_OFFSET);
+    private static Insets CONTAINER_INSETS = new Insets(IContainerLabelOffsets.LABEL_OFFSET, AbstractDNodeContainerCompartmentEditPart.DEFAULT_MARGIN,
+            AbstractDNodeContainerCompartmentEditPart.DEFAULT_MARGIN, AbstractDNodeContainerCompartmentEditPart.DEFAULT_MARGIN);
 
     /**
      * The gap in pixels between the Label's icon and its text
@@ -180,10 +183,10 @@ public final class GMFHelper {
                 // RegionContainer do not have containers insets
                 if (ddec instanceof DNodeContainer) {
                     if (new DNodeContainerExperimentalQuery((DNodeContainer) ddec).isRegionContainer() || hasFullLabelBorder(ddec)) {
-                        result.setHeight(CONTAINER_INSETS.y + getLabelSize(container) + AbstractDiagramElementContainerEditPart.DEFAULT_SPACING);
+                        result.setHeight(CONTAINER_INSETS.top + getLabelSize(container) + AbstractDiagramElementContainerEditPart.DEFAULT_SPACING);
                     } else {
-                        result.setWidth(CONTAINER_INSETS.x);
-                        result.setHeight(CONTAINER_INSETS.y);
+                        result.setWidth(CONTAINER_INSETS.left);
+                        result.setHeight(CONTAINER_INSETS.top);
                     }
                 }
                 Dimension borderSize = getBorderSize(ddec);
@@ -220,6 +223,40 @@ public final class GMFHelper {
     }
 
     /**
+     * Return the bottom-right insets of the container of this <code>node</code>. The insets also considers its border.
+     * 
+     * @param container
+     *            The container for which we wish to have the insets. This {@link Node} must correspond to a container,
+     *            otherwise, {0,0} is returned
+     * @return the bottom-right insets of this <code>container</code>
+     */
+    private static Dimension getBottomRightInsets(Node container) {
+        Dimension result = new Dimension(0, 0);
+        NodeQuery nodeQuery = new NodeQuery(container);
+        if (nodeQuery.isContainer()) {
+            EObject element = container.getElement();
+            if (element instanceof DDiagramElementContainer) {
+                DDiagramElementContainer ddec = (DDiagramElementContainer) element;
+                // RegionContainer do not have containers insets
+                if (ddec instanceof DNodeContainer) {
+                    if (new DNodeContainerExperimentalQuery((DNodeContainer) ddec).isRegionContainer() || hasFullLabelBorder(ddec)) {
+                        // TODO : Not sure about that, to verify
+                        result.setHeight(CONTAINER_INSETS.bottom);
+                    } else {
+                        result.setWidth(CONTAINER_INSETS.right);
+                        result.setHeight(CONTAINER_INSETS.bottom);
+                    }
+                }
+                Dimension borderSize = getBorderSize(ddec);
+                // Added twice as this insets is used to compute the "global" size including the border
+                result.setWidth(result.width() + (borderSize.width() * 2));
+                result.setHeight(result.height() + (borderSize.height() * 2));
+            }
+        }
+        return result;
+    }
+
+    /**
      * Return the top-left insets of the container of this <code>node</code> that is after the label. The insets also
      * considers its border.
      * 
@@ -239,8 +276,8 @@ public final class GMFHelper {
             if (nodeQuery.isContainer()) {
                 EObject element = parentNode.getElement();
                 if (element instanceof DDiagramElementContainer) {
-                    result.setWidth(CONTAINER_INSETS.x);
-                    result.setHeight(CONTAINER_INSETS.y);
+                    result.setWidth(CONTAINER_INSETS.left);
+                    result.setHeight(CONTAINER_INSETS.top);
 
                     Dimension borderSize = getBorderSize((DDiagramElementContainer) element);
                     result.setWidth(result.width() + borderSize.width());
@@ -436,7 +473,7 @@ public final class GMFHelper {
      */
     public static Rectangle getAbsoluteBounds(Node node, boolean insetsAware, boolean boxForConnection) {
         Node currentNode = node;
-        Rectangle absoluteNodeBounds = getBounds(currentNode, false, false, boxForConnection);
+        Rectangle absoluteNodeBounds = getBounds(currentNode, false, false, boxForConnection, false);
         if (currentNode.eContainer() instanceof Node) {
             currentNode = (Node) currentNode.eContainer();
             Point parentNodeLocation = getAbsoluteLocation(currentNode, insetsAware);
@@ -572,7 +609,7 @@ public final class GMFHelper {
      * @return the bounds of the node.
      */
     public static Rectangle getBounds(Node node, boolean useFigureForAutoSizeConstraint, boolean forceFigureAutoSize) {
-        return getBounds(node, useFigureForAutoSizeConstraint, forceFigureAutoSize, false);
+        return getBounds(node, useFigureForAutoSizeConstraint, forceFigureAutoSize, false, false);
     }
 
     /**
@@ -588,9 +625,12 @@ public final class GMFHelper {
      * @param boxForConnection
      *            true if we want to have the bounds used to compute connection anchor from source or target, false
      *            otherwise
+     * @param recursiveGetBounds
+     *            true if this method is called from a parent "getBounds" call, false otherwise.
+     * 
      * @return the bounds of the node.
      */
-    public static Rectangle getBounds(Node node, boolean useFigureForAutoSizeConstraint, boolean forceFigureAutoSize, boolean boxForConnection) {
+    public static Rectangle getBounds(Node node, boolean useFigureForAutoSizeConstraint, boolean forceFigureAutoSize, boolean boxForConnection, boolean recursiveGetBounds) {
         PrecisionRectangle bounds = new PrecisionRectangle(0, 0, 0, 0);
         LayoutConstraint layoutConstraint = node.getLayoutConstraint();
         EObject element = node.getElement();
@@ -619,10 +659,10 @@ public final class GMFHelper {
                 } else {
 
                     // Make a default size for label (this size is purely an average estimate)
-                    replaceAutoSize(node, bounds, useFigureForAutoSizeConstraint, getLabelDimension(node, new Dimension(50, 20)));
+                    replaceAutoSize(node, bounds, useFigureForAutoSizeConstraint, getLabelDimension(node, new Dimension(50, 20)), recursiveGetBounds);
                 }
             } else {
-                replaceAutoSize(node, bounds, useFigureForAutoSizeConstraint, null);
+                replaceAutoSize(node, bounds, useFigureForAutoSizeConstraint, null, recursiveGetBounds);
             }
 
             if (boxForConnection) {
@@ -684,8 +724,10 @@ public final class GMFHelper {
      *            true to use draw2d figure to get size
      * @param providedDefaultSize
      *            The size used for creation for this kind of <code>node</code>. It is the minimum size.
+     * @param recursive
+     *            true if this method is called from a "parent" call, false otherwise.
      */
-    private static void replaceAutoSize(Node node, Rectangle bounds, boolean useFigureForAutoSizeConstraint, Dimension providedDefaultSize) {
+    private static void replaceAutoSize(Node node, Rectangle bounds, boolean useFigureForAutoSizeConstraint, Dimension providedDefaultSize, boolean recursive) {
         if (bounds.width == -1 || bounds.height == -1) {
             Dimension defaultSize = providedDefaultSize;
             if (providedDefaultSize == null) {
@@ -727,8 +769,15 @@ public final class GMFHelper {
             } else {
                 // Compute the bounds of all children and use the lowest
                 // one (y+height) for height and the rightmost one
-                // (x+width) for width.
-                Point bottomRight = getBottomRight(node);
+                // (x+width) for width plus the margin.
+                Point bottomRight = getBottomRight(node, recursive);
+                double shadowBorderSize = getShadowBorderSize(node);
+                Dimension topLeftInsets = getTopLeftInsets(node);
+                Dimension bottomRightInsets = getBottomRightInsets(node);
+                if (!recursive) {
+                    bottomRight.setX(bottomRight.x + Double.valueOf(shadowBorderSize).intValue() + topLeftInsets.width() + bottomRightInsets.width());
+                    bottomRight.setY(bottomRight.y + Double.valueOf(shadowBorderSize).intValue() + topLeftInsets.height() + bottomRightInsets.height());
+                }
                 if (bounds.width == -1) {
                     if (bottomRight.x > defaultSize.width) {
                         bounds.setWidth(bottomRight.x);
@@ -798,17 +847,20 @@ public final class GMFHelper {
      * 
      * @param node
      *            the node whose bottom right corner is to compute.
+     * @param considerBorderNode
+     *            true to consider border nodes when computing the bottom right corner point, false otherwise.
      * 
      * @return Point at the bottom right of the rectangle
      */
-    public static Point getBottomRight(Node node) {
+    private static Point getBottomRight(Node node, boolean considerBorderNodes) {
         int right = 0;
         int bottom = 0;
         for (Iterator<Node> children = Iterators.filter(node.getChildren().iterator(), Node.class); children.hasNext(); /* */) {
             Node child = children.next();
-            // The border nodes are ignored
-            if (!(new NodeQuery(child).isBorderedNode())) {
-                Rectangle bounds = getBounds(child);
+            // The border nodes are ignored, except if it is expected to consider it (auto-size of a container with
+            // children having border nodes)
+            if (considerBorderNodes || !(new NodeQuery(child).isBorderedNode())) {
+                Rectangle bounds = getBounds(child, false, false, false, true);
                 Point bottomRight = bounds.getBottomRight();
                 if (bottomRight.x > right) {
                     right = bottomRight.x;
