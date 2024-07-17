@@ -56,6 +56,7 @@ import org.eclipse.sirius.tests.swtbot.layout.EdgeCopyPasteFormatTest;
 import org.eclipse.sirius.tests.swtbot.layout.EdgeLabelsAlignAndDistributeTests;
 import org.eclipse.sirius.tests.swtbot.layout.EdgeLayoutStabilityWithToolWizardTest;
 import org.eclipse.sirius.tests.swtbot.layout.EdgeStabilityOnCopyPasteLayoutTest;
+import org.eclipse.sirius.tests.swtbot.layout.GMFHelperTest;
 import org.eclipse.sirius.tests.swtbot.layout.LayoutStabilityOnManualRefreshTest;
 import org.eclipse.sirius.tests.swtbot.layout.ModifyEdgeLayoutAfterRefreshTest;
 import org.eclipse.sirius.tests.swtbot.layout.PackageLayoutStabilityOnManyViewsCreationToolTest;
@@ -442,6 +443,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(PackageLayoutStabilityOnManyViewsCreationToolTest.class);
         suite.addTestSuite(ResetOriginTest.class);
         suite.addTestSuite(LayoutStabilityOnManualRefreshTest.class);
+        suite.addTestSuite(GMFHelperTest.class);
         suite.addTestSuite(EdgeAndPortStabilityOnSemanticChangeTest.class);
         suite.addTestSuite(SessionSaveableTest.class);
         suite.addTest(new JUnit4TestAdapter(DragAndDropFromControlledResourceTest.class));
