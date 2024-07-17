@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="root">
+  <eSubpackages name="p1"/>
+  <eSubpackages name="p2">
+    <eSubpackages name="p21"/>
+    <eSubpackages name="p22"/>
+  </eSubpackages>
+  <eSubpackages name="p3">
+    <eClassifiers xsi:type="ecore:EClass" name="Class1" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Class2" abstract="true"/>
+  </eSubpackages>
+  <eSubpackages name="p4">
+    <eSubpackages name="p41">
+      <eClassifiers xsi:type="ecore:EClass" name="Class3"/>
+      <eClassifiers xsi:type="ecore:EClass" name="Class4"/>
+    </eSubpackages>
+    <eSubpackages name="p42"/>
+  </eSubpackages>
+  <eSubpackages name="p5">
+    <eSubpackages name="p51">
+      <eClassifiers xsi:type="ecore:EClass" name="Class5"/>
+      <eClassifiers xsi:type="ecore:EClass" name="Class6"/>
+    </eSubpackages>
+    <eSubpackages name="p52"/>
+    <eSubpackages name="p53">
+      <eClassifiers xsi:type="ecore:EClass" name="Class7"/>
+      <eClassifiers xsi:type="ecore:EClass" name="Class8"/>
+    </eSubpackages>
+  </eSubpackages>
+</ecore:EPackage>
