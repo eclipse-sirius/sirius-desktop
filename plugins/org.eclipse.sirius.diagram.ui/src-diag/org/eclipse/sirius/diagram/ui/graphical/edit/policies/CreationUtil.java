@@ -56,9 +56,6 @@ import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
-import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
-
 /**
  * Useful operations for {@link NodeCreationEditPolicy} and {@link ContainerCreationEditPolicy}.
  * 
@@ -139,7 +136,7 @@ public class CreationUtil {
             final org.eclipse.emf.common.command.Command command = emfCommandFactory.buildCreateNodeCommandFromTool(container, tool);
             final CompoundCommand compoundCommand = new CompoundCommand(tool.getName());
 
-            compoundCommand.add(createLayoutDataCommand(Predicates.<EditPart> alwaysTrue()));
+            compoundCommand.add(createLayoutDataCommand());
             compoundCommand.add(new ICommandProxy(new GMFCommandWrapper(getEditingDomain(), command)));
             return compoundCommand;
         }
@@ -158,7 +155,7 @@ public class CreationUtil {
     public Command getNodeCreationCommand(final DNode node, final NodeCreationDescription tool) {
         if (new NodeCreationDescriptionQuery(tool).canCreateIn(node)) {
             final CompoundCommand compoundCommand = new CompoundCommand(tool.getName());
-            compoundCommand.add(createLayoutDataCommand(Predicates.<EditPart> alwaysTrue()));
+            compoundCommand.add(createLayoutDataCommand());
             final org.eclipse.emf.common.command.Command command = emfCommandFactory.buildCreateNodeCommandFromTool(node, tool);
             compoundCommand.add(new ICommandProxy(new GMFCommandWrapper(getEditingDomain(), command)));
             return compoundCommand;
@@ -180,7 +177,7 @@ public class CreationUtil {
         if (new NodeCreationDescriptionQuery(tool).canCreateIn(diagram)) {
             final org.eclipse.emf.common.command.Command command = emfCommandFactory.buildCreateNodeCommandFromTool(diagram, tool);
             final CompoundCommand compoundCommand = new CompoundCommand(tool.getName());
-            compoundCommand.add(createLayoutDataCommand(Predicates.<EditPart> alwaysTrue()));
+            compoundCommand.add(createLayoutDataCommand());
             compoundCommand.add(new ICommandProxy(new GMFCommandWrapper(getEditingDomain(), command)));
             return compoundCommand;
         }
@@ -200,7 +197,7 @@ public class CreationUtil {
         if (new ContainerCreationDescriptionQuery(ccdTool).canCreateIn(viewNodeContainer)) {
             final org.eclipse.emf.common.command.Command command = emfCommandFactory.buildCreateContainerCommandFromTool(viewNodeContainer, ccdTool);
             final CompoundCommand compoundCommand = new CompoundCommand(ccdTool.getName());
-            compoundCommand.add(createLayoutDataCommand(Predicates.<EditPart> alwaysTrue()));
+            compoundCommand.add(createLayoutDataCommand());
             compoundCommand.add(new ICommandProxy(new GMFCommandWrapper(getEditingDomain(), command)));
             return compoundCommand;
         }
@@ -221,7 +218,7 @@ public class CreationUtil {
         if (new ContainerCreationDescriptionQuery(ccdTool).canCreateIn(diagram)) {
             final org.eclipse.emf.common.command.Command command = emfCommandFactory.buildCreateContainerCommandFromTool(diagram, ccdTool);
             final CompoundCommand compoundCommand = new CompoundCommand(ccdTool.getName());
-            compoundCommand.add(createLayoutDataCommand(Predicates.<EditPart> alwaysTrue()));
+            compoundCommand.add(createLayoutDataCommand());
             compoundCommand.add(new ICommandProxy(new GMFCommandWrapper(getEditingDomain(), command)));
             return compoundCommand;
         }
@@ -243,7 +240,7 @@ public class CreationUtil {
             final CompoundCommand compoundCommand = new CompoundCommand(selectionTool.getName());
             final TreeItemWrapper input = new TreeItemWrapper(null, null);
             if (AbstractSelectionWizardCommand.canCreateCommand(selectionTool, containerView, input)) {
-                compoundCommand.add(createLayoutDataCommand(Predicates.<EditPart> alwaysTrue()));
+                compoundCommand.add(createLayoutDataCommand());
                 compoundCommand
                         .add(new ICommandProxy(new GMFCommandWrapper(getEditingDomain(), new SelectionWizardCommand(emfCommandFactory, selectionTool, input, (DSemanticDecorator) containerView))));
                 cmd = compoundCommand;
@@ -268,7 +265,7 @@ public class CreationUtil {
             final CompoundCommand compoundCommand = new CompoundCommand(selectionTool.getName());
             final TreeItemWrapper input = new TreeItemWrapper(null, null);
             if (AbstractSelectionWizardCommand.canCreateCommand(selectionTool, containerView, input)) {
-                compoundCommand.add(createLayoutDataCommand(Predicates.<EditPart> alwaysTrue()));
+                compoundCommand.add(createLayoutDataCommand());
                 compoundCommand.add(
                         new ICommandProxy(new GMFCommandWrapper(getEditingDomain(), new PaneBasedSelectionWizardCommand(emfCommandFactory, selectionTool, input, (DSemanticDecorator) containerView))));
                 cmd = compoundCommand;
@@ -339,26 +336,24 @@ public class CreationUtil {
     public Command getGenericToolCommand(final EObject containerView, final ToolDescription toolDesc) {
         final CompoundCommand compoundCommand = new CompoundCommand(toolDesc.getName());
         final org.eclipse.emf.common.command.Command command = emfCommandFactory.buildGenericToolCommandFromTool(containerView, toolDesc);
-        compoundCommand.add(createLayoutDataCommand(Predicates.<EditPart> alwaysTrue()));
+        compoundCommand.add(createLayoutDataCommand());
         compoundCommand.add(new ICommandProxy(new GMFCommandWrapper(getEditingDomain(), command)));
         return compoundCommand;
     }
 
-    private Command createLayoutDataCommand(final Predicate<EditPart> pred) {
+    private Command createLayoutDataCommand() {
         return new Command() {
             @Override
             public void execute() {
-                if (pred != null && pred.apply(editPart)) {
-                    // The size of the request take into account the zoom (got
-                    // the size in 100%)
-                    Dimension size = null;
-                    if (realSize != null) {
-                        size = realSize.getCopy();
-                    } else {
-                        size = adaptRequestSizeToZoomFactor();
-                    }
-                    SiriusLayoutDataManager.INSTANCE.addData(new RootLayoutData(editPart, realLocation.getCopy(), size));
+                // The size of the request take into account the zoom (got
+                // the size in 100%)
+                Dimension size = null;
+                if (realSize != null) {
+                    size = realSize.getCopy();
+                } else {
+                    size = adaptRequestSizeToZoomFactor();
                 }
+                SiriusLayoutDataManager.INSTANCE.addData(new RootLayoutData(editPart, realLocation.getCopy(), size));
             }
         };
     }
