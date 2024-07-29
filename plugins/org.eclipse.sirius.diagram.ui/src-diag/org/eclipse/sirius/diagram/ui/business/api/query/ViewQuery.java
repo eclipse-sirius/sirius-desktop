@@ -32,6 +32,7 @@ import org.eclipse.gmf.runtime.notation.Connector;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.JumpLinkStatus;
 import org.eclipse.gmf.runtime.notation.JumpLinkType;
+import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.Shape;
 import org.eclipse.gmf.runtime.notation.Style;
@@ -40,10 +41,12 @@ import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferenceConverter;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.business.api.query.ContainerMappingQuery;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.model.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramCorePreferences;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
@@ -409,12 +412,62 @@ public class ViewQuery {
     }
 
     /**
+     * Return if this GMF node is a region.
+     */
+    public boolean isRegion() {
+        return this.view.getElement() instanceof DDiagramElementContainer ddec //
+                && new DDiagramElementContainerExperimentalQuery(ddec).isRegion();
+    }
+
+    /**
+     * Return if this GMF node is contained in a vertical stack layout container.
+     */
+    public boolean isVerticalRegion() {
+        return view.eContainer() instanceof View container && new ViewQuery(container).isVerticalRegionContainerCompartment();
+    }
+
+    /**
      * Return if this GMF node have vertical/horizontal stack layout.
      */
     public boolean isRegionContainer() {
         return this.view.getElement() instanceof DDiagramElement element //
                 && element.getDiagramElementMapping() instanceof ContainerMapping mapping //
                 && new ContainerMappingQuery(mapping).isRegionContainer();
+    }
+
+    /**
+     * Return if this GMF node have vertical stack layout.
+     */
+    public boolean isVerticalRegionContainer() {
+        return this.view.getElement() instanceof DDiagramElement element //
+                && element.getDiagramElementMapping() instanceof ContainerMapping mapping //
+                && new ContainerMappingQuery(mapping).isVerticalStackContainer();
+    }
+
+    /**
+     * Return if this GMF node is a compartment of a container having vertical stack layout.
+     */
+    public boolean isVerticalRegionContainerCompartment() {
+        if (isFreeFormCompartment()) {
+            if (view.eContainer() instanceof Node container) {
+                return new ViewQuery(container).isVerticalRegionContainer();
+            }
+
+        }
+        return false;
+    }
+
+    /**
+     * Return if this GMF node is a compartment of a container having an horizontal or a vertical stack layout.
+     */
+    public boolean isRegionContainerCompartment() {
+        if (isFreeFormCompartment()) {
+            if (view.eContainer() instanceof Node container) {
+                return new ViewQuery(container).isRegionContainer();
+            }
+
+        }
+        return false;
     }
 
     /**
