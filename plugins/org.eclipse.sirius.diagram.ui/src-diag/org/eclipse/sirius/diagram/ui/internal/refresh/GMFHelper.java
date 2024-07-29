@@ -19,6 +19,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 import org.eclipse.core.runtime.Path;
@@ -44,12 +45,14 @@ import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
+import org.eclipse.gmf.runtime.notation.FontStyle;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.Size;
+import org.eclipse.gmf.runtime.notation.Style;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -73,6 +76,7 @@ import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeContainerQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainer2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeList2EditPart;
@@ -183,7 +187,7 @@ public final class GMFHelper {
                 // RegionContainer do not have containers insets
                 if (ddec instanceof DNodeContainer) {
                     if (new DNodeContainerExperimentalQuery((DNodeContainer) ddec).isRegionContainer() || hasFullLabelBorder(ddec)) {
-                        result.setHeight(CONTAINER_INSETS.top + getLabelSize(container) + AbstractDiagramElementContainerEditPart.DEFAULT_SPACING);
+                        result.setHeight(CONTAINER_INSETS.top + getLabelDimension(container, new Dimension(50, 20)).width() + AbstractDiagramElementContainerEditPart.DEFAULT_SPACING);
                     } else {
                         result.setWidth(CONTAINER_INSETS.left);
                         result.setHeight(CONTAINER_INSETS.top);
@@ -337,23 +341,6 @@ public final class GMFHelper {
     private static boolean hasFullLabelBorder(DDiagramElementContainer ddec) {
         Option<LabelBorderStyleDescription> labelBorderStyle = new DDiagramElementContainerExperimentalQuery(ddec).getLabelBorderStyle();
         return labelBorderStyle.some() && LabelBorderStyleIds.LABEL_FULL_BORDER_STYLE_FOR_CONTAINER_ID.equals(labelBorderStyle.get().getId());
-    }
-
-    private static int getLabelSize(Node parentNode) {
-        int labelSize = 0;
-        for (Node child : Iterables.filter(parentNode.getVisibleChildren(), Node.class)) {
-            if (new ViewQuery(child).isForNameEditPart()) {
-                // TODO Compute the real label height
-                // It depends on the font size
-                // It might require to set the layout constraint of the label
-                // GMF node which will not be used by the
-                // ConstrainedToolbarLayout to locate the label but might be
-                // usefull to store the value in the model.
-                labelSize = 16;
-                break;
-            }
-        }
-        return labelSize;
     }
 
     private static boolean isFirstRegion(DDiagramElementContainer ddec) {
@@ -1013,7 +1000,16 @@ public final class GMFHelper {
             if (!new DDiagramElementQuery(dDiagramElement).isLabelHidden()) {
                 if (siriusStyle instanceof BasicLabelStyle) {
                     BasicLabelStyle bls = (BasicLabelStyle) siriusStyle;
-                    Font defaultFont = VisualBindingManager.getDefault().getFontFromLabelStyle(bls, (String) viewQuery.getDefaultValue(NotationPackage.Literals.FONT_STYLE__FONT_NAME));
+                    String fontName = (String) viewQuery.getDefaultValue(NotationPackage.Literals.FONT_STYLE__FONT_NAME);
+                    Optional<Style> optionalStyle = getFontStyleOf(node);
+                    if (optionalStyle.isPresent() && optionalStyle.get() instanceof FontStyle) {
+                        String currentFontName = ((FontStyle) optionalStyle.get()).getFontName();
+                        if (currentFontName != null && !currentFontName.isEmpty()) {
+                            // Use the defined font name in the node if it is defined.
+                            fontName = currentFontName;
+                        }
+                    }
+                    Font defaultFont = VisualBindingManager.getDefault().getFontFromLabelStyle(bls, fontName);
                     try {
                         labelSize = FigureUtilities.getStringExtents(dDiagramElement.getName(), defaultFont);
                         if (bls.isShowIcon()) {
@@ -1031,6 +1027,23 @@ public final class GMFHelper {
             }
         }
         return labelSize;
+    }
+
+    /**
+     * Get the font style to use for this node. As in
+     * {@link org.eclipse.sirius.diagram.ui.edit.api.part.DiagramNameEditPartOperation#getFontStyle(IDiagramNameEditPart)},
+     * the parent style is used if no one is defined for the node.
+     * 
+     * @param node
+     *            The node to use
+     * @return The font style to use for this node
+     */
+    private static Optional<Style> getFontStyleOf(Node node) {
+        Style style = node.getStyle(NotationPackage.eINSTANCE.getFontStyle());
+        if (style == null && node.eContainer() instanceof View container) {
+            style = container.getStyle(NotationPackage.eINSTANCE.getFontStyle());
+        }
+        return Optional.ofNullable(style);
     }
 
     private static Dimension getIconDimension(DSemanticDecorator dSemanticDecorator, BasicLabelStyle bls) {
