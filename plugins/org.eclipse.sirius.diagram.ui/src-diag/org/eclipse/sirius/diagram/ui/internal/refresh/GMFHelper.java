@@ -120,8 +120,10 @@ public final class GMFHelper {
      * the top value is the DEFAULT_MARGIN + the InvisibleResizableCompartmentFigure top Inset (1px), also corresponding
      * to IContainerLabelOffsets.LABEL_OFFSET.
      */
-    private static Insets CONTAINER_INSETS = new Insets(IContainerLabelOffsets.LABEL_OFFSET, AbstractDNodeContainerCompartmentEditPart.DEFAULT_MARGIN,
+    private static final Insets FREEFORM_CONTAINER_INSETS = new Insets(IContainerLabelOffsets.LABEL_OFFSET, AbstractDNodeContainerCompartmentEditPart.DEFAULT_MARGIN,
             AbstractDNodeContainerCompartmentEditPart.DEFAULT_MARGIN, AbstractDNodeContainerCompartmentEditPart.DEFAULT_MARGIN);
+
+    private static final Insets LIST_CONTAINER_INSETS = new Insets(4, 0, 0, 0);
 
     /**
      * The gap in pixels between the Label's icon and its text
@@ -176,8 +178,29 @@ public final class GMFHelper {
                 }
             }
         }
-
-        if (node.eContainer() instanceof Node container) {
+        ViewQuery viewQuery = new ViewQuery(node);
+        if (viewQuery.isListCompartment()) {
+            // Translate the compartment to be just below the the title, the x coordinate is also the same (same parent
+            // insets)
+            Rectangle titleBounds = getAbsoluteBounds(getPreviousChild(node), true);
+            location.translate(titleBounds.preciseX(), titleBounds.preciseY() + titleBounds.preciseHeight());
+            // Translate from the spacing (5 pixels)
+            location.translate(0, IContainerLabelOffsets.LABEL_OFFSET);
+        } else if (viewQuery.isListItem()) {
+            if (node.eContainer() instanceof Node container) {
+                if (container.getChildren().get(0) == node) {
+                    Point parentNodeLocation = getAbsoluteLocation(container, insetsAware);
+                    location.translate(parentNodeLocation);
+                    if (insetsAware) {
+                        translateWithInsets(location, node);
+                    }
+                } else {
+                    // Translate from the previous children
+                    Rectangle previousChildBounds = getAbsoluteBounds(getPreviousChild(node), true);
+                    location.translate(previousChildBounds.preciseX(), previousChildBounds.preciseY() + previousChildBounds.preciseHeight());
+                }
+            }
+        } else if (node.eContainer() instanceof Node container) {
             Point parentNodeLocation = getAbsoluteLocation(container, insetsAware);
             location.translate(parentNodeLocation);
             if (insetsAware) {
@@ -185,6 +208,26 @@ public final class GMFHelper {
             }
         }
         return location;
+    }
+
+    private static Node getPreviousChild(Node node) {
+        Node previousChild = null;
+        boolean found = false;
+        if (node.eContainer() instanceof Node container) {
+            for (Iterator<Node> children = Iterators.filter(container.getChildren().iterator(), Node.class); children.hasNext() && !found; /* */) {
+                Node child = children.next();
+                if (node == child) {
+                    found = true;
+                } else {
+                    previousChild = child;
+                }
+            }
+        }
+        if (found) {
+            return previousChild;
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -205,16 +248,26 @@ public final class GMFHelper {
                 // RegionContainer do not have containers insets
                 if (ddec instanceof DNodeContainer) {
                     if (new DNodeContainerExperimentalQuery((DNodeContainer) ddec).isRegionContainer() || hasFullLabelBorder(ddec)) {
-                        result.setHeight(CONTAINER_INSETS.top + getLabelDimension(container, new Dimension(50, 20)).width() + AbstractDiagramElementContainerEditPart.DEFAULT_SPACING);
+                        result.setHeight(FREEFORM_CONTAINER_INSETS.top + getLabelDimension(container, new Dimension(50, 20)).width() + AbstractDiagramElementContainerEditPart.DEFAULT_SPACING);
                     } else {
-                        result.setWidth(CONTAINER_INSETS.left);
-                        result.setHeight(CONTAINER_INSETS.top);
+                        result.setWidth(FREEFORM_CONTAINER_INSETS.left);
+                        result.setHeight(FREEFORM_CONTAINER_INSETS.top);
                     }
+                } else if (element instanceof DNodeList) {
+                    result.setWidth(LIST_CONTAINER_INSETS.left);
+                    result.setHeight(LIST_CONTAINER_INSETS.top);
                 }
                 Dimension borderSize = getBorderSize(ddec);
                 result.setWidth(result.width() + borderSize.width());
                 result.setHeight(result.height() + borderSize.height());
             }
+        } else if (nodeQuery.isListCompartment()) {
+            // Add the corresponding margin of {1, 4, 0, 4} of
+            // org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeListCompartmentEditPart.createFigure(),
+            // more precisely at the end of the method, the margin is the evaluation of
+            // "result.getContentPane().getBorder()".
+            result.setWidth(4);
+            result.setHeight(1);
         }
         return result;
     }
@@ -236,7 +289,7 @@ public final class GMFHelper {
         if (nodeContainer instanceof Node) {
             Node parentNode = (Node) nodeContainer;
             NodeQuery nodeQuery = new NodeQuery(parentNode);
-            if (nodeQuery.isContainer()) {
+            if (nodeQuery.isContainer() || nodeQuery.isListCompartment()) {
                 result = getTopLeftInsets(parentNode);
             } else if (searchFirstParentContainer) {
                 result = getContainerTopLeftInsets(parentNode, searchFirstParentContainer);
@@ -264,17 +317,31 @@ public final class GMFHelper {
                 if (ddec instanceof DNodeContainer) {
                     if (new DNodeContainerExperimentalQuery((DNodeContainer) ddec).isRegionContainer() || hasFullLabelBorder(ddec)) {
                         // TODO : Not sure about that, to verify
-                        result.setHeight(CONTAINER_INSETS.bottom);
+                        result.setHeight(FREEFORM_CONTAINER_INSETS.bottom);
                     } else {
-                        result.setWidth(CONTAINER_INSETS.right);
-                        result.setHeight(CONTAINER_INSETS.bottom);
+                        result.setWidth(FREEFORM_CONTAINER_INSETS.right);
+                        result.setHeight(FREEFORM_CONTAINER_INSETS.bottom);
                     }
+                    Dimension borderSize = getBorderSize(ddec);
+                    // Added twice as this insets is used to compute the "global" size including the border
+                    result.setWidth(result.width() + (borderSize.width() * 2));
+                    result.setHeight(result.height() + (borderSize.height() * 2));
+                } else if (ddec instanceof DNodeList) {
+                    result.setWidth(LIST_CONTAINER_INSETS.right);
+                    result.setHeight(LIST_CONTAINER_INSETS.bottom);
+                    // TODO: to verify
+                    Dimension borderSize = getBorderSize(ddec);
+                    result.setWidth(result.width() + borderSize.width());
+                    result.setHeight(result.height() + borderSize.height());
                 }
-                Dimension borderSize = getBorderSize(ddec);
-                // Added twice as this insets is used to compute the "global" size including the border
-                result.setWidth(result.width() + (borderSize.width() * 2));
-                result.setHeight(result.height() + (borderSize.height() * 2));
             }
+        } else if (nodeQuery.isListCompartment()) {
+            // Add the corresponding margin of {1, 4, 0, 4} of
+            // org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeListCompartmentEditPart.createFigure(),
+            // more precisely at the end of the method, the margin is the evaluation of
+            // "result.getContentPane().getBorder()".
+            result.setWidth(4);
+            result.setHeight(0);
         }
         return result;
     }
@@ -299,8 +366,8 @@ public final class GMFHelper {
             if (nodeQuery.isContainer()) {
                 EObject element = parentNode.getElement();
                 if (element instanceof DDiagramElementContainer) {
-                    result.setWidth(CONTAINER_INSETS.left);
-                    result.setHeight(CONTAINER_INSETS.top);
+                    result.setWidth(FREEFORM_CONTAINER_INSETS.left);
+                    result.setHeight(FREEFORM_CONTAINER_INSETS.top);
 
                     Dimension borderSize = getBorderSize((DDiagramElementContainer) element);
                     result.setWidth(result.width() + borderSize.width());
@@ -354,6 +421,12 @@ public final class GMFHelper {
         // Border nodes are not concerned by those insets.
         if (!nodeQuery.isBorderedNode()) {
             locationToTranslate.translate(getContainerTopLeftInsets(currentNode, false));
+            if (currentNode.eContainer() instanceof Node container) {
+                if (new ViewQuery(currentNode).isListItem() && container.getChildren().get(0) == currentNode) {
+                    // This is the first list item, add a one margin border over it.
+                    locationToTranslate.translate(0, 1);
+                }
+            }
         }
     }
 
@@ -643,8 +716,8 @@ public final class GMFHelper {
                 bounds.setWidth(-1);
                 bounds.setHeight(-1);
             }
-
-            if (new ViewQuery(node).isForNameEditPart()) {
+            ViewQuery viewQuery = new ViewQuery(node);
+            if (viewQuery.isForNameEditPart() || viewQuery.isListItem()) {
                 if (abstractDNode.getName() == null || abstractDNode.getName().length() == 0) {
                     if (bounds.width == -1) {
                         bounds.setWidth(0);
@@ -702,7 +775,7 @@ public final class GMFHelper {
         boolean needShadowBorder = false;
         EObject element = node.getElement();
         ViewQuery viewQuery = new ViewQuery(node);
-        if (!viewQuery.isFreeFormCompartment() && element instanceof DDiagramElementContainer) {
+        if (!viewQuery.isFreeFormCompartment() && !viewQuery.isListCompartment() && !viewQuery.isForNameEditPart() && element instanceof DDiagramElementContainer) {
             DDiagramElementContainer ddec = (DDiagramElementContainer) element;
             needShadowBorder = !(new DDiagramElementContainerExperimentalQuery(ddec).isRegion() || ddec.getOwnedStyle() instanceof WorkspaceImage);
         }
@@ -731,8 +804,15 @@ public final class GMFHelper {
                 // if there is no default size, we compute it from the given
                 // node.
                 EObject element = node.getElement();
-                if (new ViewQuery(node).isFreeFormCompartment()) {
+                ViewQuery nodeQuery = new ViewQuery(node);
+                if (nodeQuery.isFreeFormCompartment() || nodeQuery.isListCompartment()) {
                     defaultSize = new Dimension(ResizableCompartmentFigure.MIN_CLIENT_DP, ResizableCompartmentFigure.MIN_CLIENT_DP);
+                    if (node.getChildren().isEmpty()) {
+                        if (nodeQuery.isListCompartment()) {
+                            // Add one margin border (even if empty)
+                            defaultSize.expand(0, 1);
+                        }
+                    }
                 } else if (element instanceof AbstractDNode) {
                     defaultSize = getDefaultSize((AbstractDNode) element);
                 }
@@ -882,21 +962,39 @@ public final class GMFHelper {
         if (container.getChildren().isEmpty()) {
             result = new PrecisionRectangle();
         }
-        for (Iterator<Node> children = Iterators.filter(container.getChildren().iterator(), Node.class); children.hasNext(); /* */) {
-            Node child = children.next();
-            // The border nodes are ignored, except if it is expected to consider it (auto-size of a container with
-            // children having border nodes)
-            if (considerBorderNodes || !(new NodeQuery(child).isBorderedNode())) {
-                Rectangle childAbsoluteBounds = getAbsoluteBounds(child, true, false, true);
-                if (result == null) {
-                    result = childAbsoluteBounds.getCopy();
-                } else {
-                    // Make union of the child bounds and its parent bounds
-                    result.union(childAbsoluteBounds);
+        ViewQuery containerViewQuery = new ViewQuery(container);
+        if (containerViewQuery.isListContainer() || containerViewQuery.isListCompartment()) {
+            if (!container.getChildren().isEmpty()) {
+                Node lastChild = getLastChild(container, considerBorderNodes);
+                result = getAbsoluteBounds(lastChild, true, false, true);
+            }
+        } else {
+            for (Iterator<Node> children = Iterators.filter(container.getChildren().iterator(), Node.class); children.hasNext(); /* */) {
+                Node child = children.next();
+                // The border nodes are ignored, except if it is expected to consider it (auto-size of a container with
+                // children having border nodes)
+                if (considerBorderNodes || !(new NodeQuery(child).isBorderedNode())) {
+                    Rectangle childAbsoluteBounds = getAbsoluteBounds(child, true, false, true);
+                    if (result == null) {
+                        result = childAbsoluteBounds.getCopy();
+                    } else {
+                        // Make union of the child bounds and its parent bounds
+                        result.union(childAbsoluteBounds);
+                    }
                 }
             }
         }
         return result;
+    }
+
+    private static Node getLastChild(Node container, boolean considerBorderNodes) {
+        for (int i = container.getChildren().size() - 1; i >= 0; i--) {
+            Node currentNode = (Node) container.getChildren().get(i);
+            if (considerBorderNodes || !new NodeQuery(currentNode).isBorderedNode()) {
+                return currentNode;
+            }
+        }
+        return null;
     }
 
     private static Dimension getDefaultSize(AbstractDNode abstractDNode) {
