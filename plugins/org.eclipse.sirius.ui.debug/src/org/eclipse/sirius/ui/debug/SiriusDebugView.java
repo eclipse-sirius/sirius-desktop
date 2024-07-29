@@ -28,6 +28,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -264,23 +265,25 @@ public class SiriusDebugView extends AbstractDebugView {
                     appendBoundsDetails(child, sb);
                 });
             } else if (part instanceof AbstractDiagramContainerEditPart && ((AbstractDiagramContainerEditPart) part).isRegionContainer()) {
-                IGraphicalEditPart compartment = null;
-                for (IGraphicalEditPart child : Iterables.filter(part.getChildren(), IGraphicalEditPart.class)) {
-                    sb.append("Children bounds:\n");
+                AtomicReference<IGraphicalEditPart> compartment = new AtomicReference<>();
+                part.getChildren().stream().filter(IGraphicalEditPart.class::isInstance).map(IGraphicalEditPart.class::cast).forEach(child -> {
+                    sb.append("Children bounds (" + child.getClass().getSimpleName() + "):\n");
                     appendBoundsDetails(child, sb);
-                    compartment = child;
-                }
+                    compartment.set(child);
+                });
 
-                for (IGraphicalEditPart child2 : Iterables.filter(compartment.getChildren(), IGraphicalEditPart.class)) {
-                    sb.append("Region bounds:\n");
-                    appendBoundsDetails(child2, sb);
+                if (compartment.get() != null) {
+                    compartment.get().getChildren().stream().filter(IGraphicalEditPart.class::isInstance).map(IGraphicalEditPart.class::cast).forEach(child2 -> {
+                        sb.append("Region bounds (" + child2.getClass().getSimpleName() + "):\n");
+                        appendBoundsDetails(child2, sb);
+                    });
                 }
             } else if (part instanceof AbstractDiagramElementContainerEditPart && ((AbstractDiagramElementContainerEditPart) part).isRegion()) {
                 IGraphicalEditPart parent = (IGraphicalEditPart) part.getParent();
-                sb.append("Compartment bounds:\n");
+                sb.append("Compartment bounds (" + parent.getClass().getSimpleName() + "):\n");
                 appendBoundsDetails(parent, sb);
                 parent = (IGraphicalEditPart) parent.getParent();
-                sb.append("Region Container bounds:\n");
+                sb.append("Region Container bounds (" + parent.getClass().getSimpleName() + "):\n");
                 appendBoundsDetails(parent, sb);
             } else if (part instanceof InstanceRoleEditPart) {
                 LifelineEditPart lep = Iterables.filter(part.getChildren(), LifelineEditPart.class).iterator().next();
