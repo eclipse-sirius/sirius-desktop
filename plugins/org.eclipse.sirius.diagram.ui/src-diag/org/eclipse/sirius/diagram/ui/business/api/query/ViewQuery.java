@@ -458,6 +458,34 @@ public class ViewQuery {
     }
 
     /**
+     * Return if this GMF node is contained in an horizontal stack layout container.
+     */
+    public boolean isHorizontalRegion() {
+        return view.eContainer() instanceof View container && new ViewQuery(container).isHorizontalRegionContainerCompartment();
+    }
+
+    /**
+     * Return if this GMF node have horizontal stack layout.
+     */
+    public boolean isHorizontalRegionContainer() {
+        return this.view.getElement() instanceof DDiagramElement element //
+                && element.getDiagramElementMapping() instanceof ContainerMapping mapping //
+                && new ContainerMappingQuery(mapping).isHorizontalStackContainer();
+    }
+
+    /**
+     * Return if this GMF node is a compartment of a container having horizontal stack layout.
+     */
+    public boolean isHorizontalRegionContainerCompartment() {
+        if (isFreeFormCompartment()) {
+            if (view.eContainer() instanceof Node container) {
+                return new ViewQuery(container).isHorizontalRegionContainer();
+            }
+        }
+        return false;
+    }
+    
+    /**
      * Return if this GMF node is a compartment of a container having an horizontal or a vertical stack layout.
      */
     public boolean isRegionContainerCompartment() {
