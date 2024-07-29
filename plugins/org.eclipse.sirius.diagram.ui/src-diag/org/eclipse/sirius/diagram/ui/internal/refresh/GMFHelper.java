@@ -229,6 +229,20 @@ public final class GMFHelper {
                     location.translate(previousChildBounds.preciseX(), previousChildBounds.preciseY() + previousChildBounds.preciseHeight());
                 }
             }
+        } else if (viewQuery.isHorizontalRegion()) {
+            if (node.eContainer() instanceof Node container) {
+                if (container.getChildren().get(0) == node) {
+                    Point parentNodeLocation = getAbsoluteLocation(container, insetsAware);
+                    location.translate(parentNodeLocation);
+                    if (insetsAware) {
+                        translateWithInsets(location, node);
+                    }
+                } else {
+                    // Translate from the previous children
+                    Rectangle previousChildBounds = getAbsoluteBounds(getPreviousChild(node), true);
+                    location.translate(previousChildBounds.preciseX() + previousChildBounds.preciseWidth(), previousChildBounds.preciseY());
+                }
+            } 
         } else if (node.eContainer() instanceof Node container) {
             Point parentNodeLocation = getAbsoluteLocation(container, insetsAware);
             location.translate(parentNodeLocation);
@@ -363,6 +377,7 @@ public final class GMFHelper {
                         result.setWidth(result.width() + borderSize.width());
                         result.setHeight(result.height() + borderSize.height());
                     } else if (new DDiagramElementContainerExperimentalQuery(ddec).isRegion()) {
+                     // No margin, except the border size
                         Dimension borderSize = getBorderSize(ddec);
                         result.setWidth(result.width() + borderSize.width());
                         result.setHeight(result.height() + borderSize.height());
@@ -859,7 +874,7 @@ public final class GMFHelper {
                 if (nodeQuery.isFreeFormCompartment() || nodeQuery.isListCompartment()) {
                     defaultSize = new Dimension(ResizableCompartmentFigure.MIN_CLIENT_DP, ResizableCompartmentFigure.MIN_CLIENT_DP);
                     if (node.getChildren().isEmpty()) {
-                        if (nodeQuery.isListCompartment() || nodeQuery.isVerticalRegionContainerCompartment()) {
+                        if (nodeQuery.isListCompartment() || nodeQuery.isVerticalRegionContainerCompartment() || nodeQuery.isHorizontalRegionContainerCompartment()) {
                             // Add one margin border (even if empty)
                             defaultSize.expand(0, 1);
                         }
