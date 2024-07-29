@@ -264,21 +264,21 @@ public class SiriusDebugView extends AbstractDebugView {
             } else if (part instanceof AbstractDiagramContainerEditPart && ((AbstractDiagramContainerEditPart) part).isRegionContainer()) {
                 IGraphicalEditPart compartment = null;
                 for (IGraphicalEditPart child : Iterables.filter(part.getChildren(), IGraphicalEditPart.class)) {
-                    sb.append("Children bounds:\n");
+                    sb.append("Children bounds (" + child.getClass().getSimpleName() + "):\n");
                     appendBoundsDetails(child, sb);
                     compartment = child;
                 }
 
                 for (IGraphicalEditPart child2 : Iterables.filter(compartment.getChildren(), IGraphicalEditPart.class)) {
-                    sb.append("Region bounds:\n");
+                    sb.append("Region bounds (" + child2.getClass().getSimpleName() + "):\n");
                     appendBoundsDetails(child2, sb);
                 }
             } else if (part instanceof AbstractDiagramElementContainerEditPart && ((AbstractDiagramElementContainerEditPart) part).isRegion()) {
                 IGraphicalEditPart parent = (IGraphicalEditPart) part.getParent();
-                sb.append("Compartment bounds:\n");
+                sb.append("Compartment bounds (" + parent.getClass().getSimpleName() + "):\n");
                 appendBoundsDetails(parent, sb);
                 parent = (IGraphicalEditPart) parent.getParent();
-                sb.append("Region Container bounds:\n");
+                sb.append("Region Container bounds (" + parent.getClass().getSimpleName() + "):\n");
                 appendBoundsDetails(parent, sb);
             } else if (part instanceof InstanceRoleEditPart) {
                 LifelineEditPart lep = Iterables.filter(part.getChildren(), LifelineEditPart.class).iterator().next();
