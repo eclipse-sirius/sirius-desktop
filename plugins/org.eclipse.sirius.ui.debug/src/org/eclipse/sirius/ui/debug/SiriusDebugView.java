@@ -122,6 +122,7 @@ import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.query.EdgeTargetQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramListEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
@@ -255,7 +256,12 @@ public class SiriusDebugView extends AbstractDebugView {
             appendSequenceEventInfo(part, sb);
             appendBoundsDetails(part, sb);
 
-            if (part instanceof AbstractDiagramContainerEditPart && ((AbstractDiagramContainerEditPart) part).isRegionContainer()) {
+            if (part instanceof AbstractDiagramListEditPart) {
+                for (IGraphicalEditPart child : Iterables.filter(part.getChildren(), IGraphicalEditPart.class)) {
+                    sb.append("Children bounds (" + child.getClass().getSimpleName() + "):\n");
+                    appendBoundsDetails(child, sb);
+                }
+            } else if (part instanceof AbstractDiagramContainerEditPart && ((AbstractDiagramContainerEditPart) part).isRegionContainer()) {
                 IGraphicalEditPart compartment = null;
                 for (IGraphicalEditPart child : Iterables.filter(part.getChildren(), IGraphicalEditPart.class)) {
                     sb.append("Children bounds:\n");
