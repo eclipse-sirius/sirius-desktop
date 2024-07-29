@@ -40,6 +40,7 @@ import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.figures.ResizableCompartmentFigure;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.Bounds;
@@ -700,7 +701,8 @@ public final class GMFHelper {
     private static boolean isShadowBorderNeeded(Node node) {
         boolean needShadowBorder = false;
         EObject element = node.getElement();
-        if (element instanceof DDiagramElementContainer) {
+        ViewQuery viewQuery = new ViewQuery(node);
+        if (!viewQuery.isFreeFormCompartment() && element instanceof DDiagramElementContainer) {
             DDiagramElementContainer ddec = (DDiagramElementContainer) element;
             needShadowBorder = !(new DDiagramElementContainerExperimentalQuery(ddec).isRegion() || ddec.getOwnedStyle() instanceof WorkspaceImage);
         }
@@ -729,7 +731,9 @@ public final class GMFHelper {
                 // if there is no default size, we compute it from the given
                 // node.
                 EObject element = node.getElement();
-                if (element instanceof AbstractDNode) {
+                if (new ViewQuery(node).isFreeFormCompartment()) {
+                    defaultSize = new Dimension(ResizableCompartmentFigure.MIN_CLIENT_DP, ResizableCompartmentFigure.MIN_CLIENT_DP);
+                } else if (element instanceof AbstractDNode) {
                     defaultSize = getDefaultSize((AbstractDNode) element);
                 }
             }
