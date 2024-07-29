@@ -30,14 +30,7 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.api.query.DNodeQuery;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.PortLayoutHelper;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode2EditPart;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode4EditPart;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainer2EditPart;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeList2EditPart;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
-import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
@@ -51,7 +44,7 @@ import com.google.common.collect.Iterables;
  * 
  * @author lredor
  */
-public class NodeQuery {
+public class NodeQuery extends ViewQuery {
 
     private Node node;
 
@@ -62,6 +55,7 @@ public class NodeQuery {
      *            the starting point.
      */
     public NodeQuery(Node node) {
+        super(node);
         this.node = node;
     }
 
@@ -167,32 +161,11 @@ public class NodeQuery {
     }
 
     /**
-     * Tests whether the queried Node corresponds to a bordered node.
-     * 
-     * @return <code>true</code> if the queried View corresponds to a bordered node.
-     */
-    public boolean isBorderedNode() {
-        int type = SiriusVisualIDRegistry.getVisualID(this.node.getType());
-        boolean result = type == DNode2EditPart.VISUAL_ID || type == DNode4EditPart.VISUAL_ID;
-        return result;
-    }
-
-    /**
-     * Tests whether the queried Node corresponds to a container (list or not).
-     * 
-     * @return <code>true</code> if the queried View corresponds to a container node.
-     */
-    public boolean isContainer() {
-        int type = SiriusVisualIDRegistry.getVisualID(this.node.getType());
-        boolean result = type == DNodeContainer2EditPart.VISUAL_ID || type == DNodeContainerEditPart.VISUAL_ID || type == DNodeList2EditPart.VISUAL_ID || type == DNodeListEditPart.VISUAL_ID;
-        return result;
-    }
-
-    /**
      * Return the compartment of the GMF node container with "free form" layout.
      * 
      * @return the compartment or Optional.empty if view is not container or compartment not found
      */
+    @Override
     public Optional<Node> getFreeFormContainerCompartment() {
         if (new ViewQuery(this.node).isFreeFormContainer()) {
             List<View> children = this.node.getChildren();

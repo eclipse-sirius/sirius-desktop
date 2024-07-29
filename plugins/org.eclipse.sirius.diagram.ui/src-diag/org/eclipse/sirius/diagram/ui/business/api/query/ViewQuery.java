@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -61,8 +61,11 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeC
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeList2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListName2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListViewNodeListCompartment2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListViewNodeListCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.NotationViewIDs;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
@@ -381,6 +384,31 @@ public class ViewQuery {
     }
 
     /**
+     * Return if this GMF node is associated to DNodeList Sirius diagram element.
+     */
+    public boolean isListContainer() {
+        int type = SiriusVisualIDRegistry.getVisualID(this.view.getType());
+        return type == DNodeListEditPart.VISUAL_ID || type == DNodeList2EditPart.VISUAL_ID;
+    }
+
+    /**
+     * Return if this GMF node is compartment of node corresponding to a Sirius list container.
+     */
+    public boolean isListCompartment() {
+        int type = SiriusVisualIDRegistry.getVisualID(this.view.getType());
+        return type == DNodeListViewNodeListCompartmentEditPart.VISUAL_ID //
+                || type == DNodeListViewNodeListCompartment2EditPart.VISUAL_ID;
+    }
+
+    /**
+     * Return if this GMF node is a list item.
+     */
+    public boolean isListItem() {
+        int type = SiriusVisualIDRegistry.getVisualID(this.view.getType());
+        return type == DNodeListElementEditPart.VISUAL_ID;
+    }
+
+    /**
      * Return if this GMF node have vertical/horizontal stack layout.
      */
     public boolean isRegionContainer() {
@@ -416,7 +444,7 @@ public class ViewQuery {
      * 
      * @return the compartment or Optional.empty if view is not container or compartment not found
      */
-    public Optional<View> getFreeFormContainerCompartment() {
+    public Optional<? extends View> getFreeFormContainerCompartment() {
         if (this.isFreeFormContainer()) {
             List<View> children = this.view.getChildren();
             return children.stream() //
