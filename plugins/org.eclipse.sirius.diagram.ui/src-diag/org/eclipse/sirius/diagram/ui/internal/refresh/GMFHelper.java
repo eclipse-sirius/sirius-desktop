@@ -165,7 +165,6 @@ public final class GMFHelper {
         LayoutConstraint layoutConstraint = node.getLayoutConstraint();
         if (layoutConstraint instanceof Bounds gmfBounds && !(new ViewQuery(node).isRegion())) {
             // The bounds is computed for horizontal or vertical regions, even if it is stored in GMF data
-            // Bounds gmfBounds = (Bounds) layoutConstraint;
             location.setX(gmfBounds.getX());
             location.setY(gmfBounds.getY());
         }
