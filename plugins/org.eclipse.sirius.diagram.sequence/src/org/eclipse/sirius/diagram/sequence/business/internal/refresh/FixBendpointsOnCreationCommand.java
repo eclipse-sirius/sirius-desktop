@@ -152,7 +152,7 @@ public class FixBendpointsOnCreationCommand extends RecordingCommand {
 
     private void computeEdgeDataWithoutEdgeLayoutData() {
         Point firstClick = new Point(0, 0);
-        Rectangle sourceBounds = GMFHelper.getAbsoluteBounds((Node) source);
+        Rectangle sourceBounds = GMFHelper.getAbsoluteBounds((Node) source, false, false, false, true);
         if (source.getElement() instanceof AbstractDNode) {
             AbstractDNode sourceDNode = (AbstractDNode) source.getElement();
             if (sourceDNode.eContainer() instanceof AbstractDNode) {
@@ -181,7 +181,7 @@ public class FixBendpointsOnCreationCommand extends RecordingCommand {
         sourceTerminal = "(" + sourceRelativeLocation.preciseX() + "," + sourceRelativeLocation.preciseY() + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 
         Point secondClick = new Point(0, 0);
-        Rectangle targetBounds = GMFHelper.getAbsoluteBounds((Node) target);
+        Rectangle targetBounds = GMFHelper.getAbsoluteBounds((Node) target, false, false, false, true);
 
         if (target.getElement() instanceof AbstractDNode) {
             AbstractDNode targetDNode = (AbstractDNode) target.getElement();

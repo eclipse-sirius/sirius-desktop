@@ -311,10 +311,10 @@ public class SiriusDebugView extends AbstractDebugView {
             sb.append("Location (GMF):                    Location(" + location.getX() + ", " + location.getY() + ")\n");
         }
 
-        Rectangle absoluteBounds = GMFHelper.getAbsoluteBounds(node, true);
+        Rectangle absoluteBounds = GMFHelper.getAbsoluteBounds(node, true, false, false, false);
         sb.append("Bounds (GMF absolute - insets):    " + absoluteBounds + "\n");
 
-        absoluteBounds = GMFHelper.getAbsoluteBounds(node, false);
+        absoluteBounds = GMFHelper.getAbsoluteBounds(node, false, false, false, false);
         sb.append("Bounds (GMF absolute - no insets): " + absoluteBounds + "\n");
 
         Option<ISequenceElement> elt = ISequenceElementAccessor.getISequenceElement(part.getNotationView());
