@@ -682,7 +682,7 @@ public class CanonicalDBorderItemLocator {
                     if (borderItemLayoutConstraint instanceof Bounds) {
                         Dimension extendedDimension = getExtendedDimension(borderItem);
 
-                        Rectangle borderItemBounds = GMFHelper.getAbsoluteBounds(borderItem, true);
+                        Rectangle borderItemBounds = GMFHelper.getAbsoluteBounds(borderItem, true, false, false, false);
 
                         if (extendedDimension != null) {
                             borderItemBounds = PortLayoutHelper.getUncollapseCandidateLocation(extendedDimension, borderItemBounds, getParentBorder());

@@ -274,7 +274,7 @@ public class NodeQuery extends ViewQuery {
      * @return The rectangle used for handles
      */
     public Rectangle getHandleBounds() {
-        return GMFHelper.getAbsoluteBounds(node, true, true);
+        return GMFHelper.getAbsoluteBounds(node, true, true, false, false);
     }
 
     /**
