@@ -89,7 +89,7 @@ public class CanonicalDBorderItemLocatorTest extends SiriusDiagramTestCase {
                 Node node = (Node) iterator.next();
                 CanonicalDBorderItemLocator locator = new CanonicalDBorderItemLocator((Node) node.eContainer(), PositionConstants.NSEW);
                 locator.setBorderItemOffset(IBorderItemOffsets.DEFAULT_OFFSET);
-                Rectangle expectedBounds = GMFHelper.getAbsoluteBounds(node);
+                Rectangle expectedBounds = GMFHelper.getAbsoluteBounds(node, false, false, false, true);
                 Point location = locator.getValidLocation(expectedBounds, node, Collections.singletonList(node));
                 assertEquals("The border node should not be in conflict", expectedBounds.getLocation(), location);
             }

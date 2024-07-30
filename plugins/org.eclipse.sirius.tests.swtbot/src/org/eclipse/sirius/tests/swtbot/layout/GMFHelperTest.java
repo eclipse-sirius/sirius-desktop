@@ -273,7 +273,7 @@ public class GMFHelperTest extends AbstractSiriusSwtBotGefTestCase {
         // It's strange, the above method does not return absolute bounds. To check in another commit. And the method
         // GraphicalHelper.getAbsoluteBoundsIn100Percent consider handleBounds and this is not what is expected here.
         ((GraphicalEditPart) swtBotEditPart.part()).getFigure().translateToAbsolute(draw2DAbsoluteBounds);
-        Rectangle gmfAbsoluteBounds = GMFHelper.getAbsoluteBounds((Node) swtBotEditPart.part().getModel(), true);
+        Rectangle gmfAbsoluteBounds = GMFHelper.getAbsoluteBounds((Node) swtBotEditPart.part().getModel(), true, false, false, false);
         assertEquals("The GMF width of " + elementToCheckName + " in " + representationName + " does not correspond to the Draw2D one.", draw2DAbsoluteBounds.preciseWidth(),
                 gmfAbsoluteBounds.preciseWidth());
         assertEquals("The GMF height of " + elementToCheckName + " in " + representationName + " does not correspond to the Draw2D one.", draw2DAbsoluteBounds.preciseHeight(),
