@@ -166,11 +166,13 @@ public final class GMFHelper {
 
         Point location = new Point(0, 0);
         LayoutConstraint layoutConstraint = node.getLayoutConstraint();
-        if (layoutConstraint instanceof Bounds && !(new ViewQuery(node).isRegion())) {
+        if (layoutConstraint instanceof Bounds gmfBounds && !(new ViewQuery(node).isRegion())) {
             // The bounds is computed for horizontal or vertical regions, even if it is stored in GMF data
-            Bounds gmfBounds = (Bounds) layoutConstraint;
             location.setX(gmfBounds.getX());
             location.setY(gmfBounds.getY());
+        }
+        ViewQuery viewQuery = new ViewQuery(node);
+        if (viewQuery.isBorderedNode() && layoutConstraint instanceof Bounds gmfBounds) {
             // manage location of bordered node with closest side
             if (node.getElement() instanceof DNode dNode && dNode.eContainer() instanceof AbstractDNode parentAbstractDNode && parentAbstractDNode.getOwnedBorderedNodes().contains(dNode)) {
                 Node parentNode = (Node) node.eContainer();
@@ -181,7 +183,6 @@ public final class GMFHelper {
                 }
             }
         }
-        ViewQuery viewQuery = new ViewQuery(node);
         if (viewQuery.isListCompartment()) {
             // Translate the compartment to be just below the the title, the x coordinate is also the same (same parent
             // insets)
@@ -237,7 +238,7 @@ public final class GMFHelper {
                     Rectangle previousChildBounds = getAbsoluteBounds(getPreviousChild(node), true);
                     location.translate(previousChildBounds.preciseX() + previousChildBounds.preciseWidth(), previousChildBounds.preciseY());
                 }
-            } 
+            }
         } else if (node.eContainer() instanceof Node container) {
             Point parentNodeLocation = getAbsoluteLocation(container, insetsAware);
             location.translate(parentNodeLocation);
@@ -374,7 +375,7 @@ public final class GMFHelper {
                         result.setWidth(result.width() + borderSize.width());
                         result.setHeight(result.height() + borderSize.height());
                     } else if (new DDiagramElementContainerExperimentalQuery(ddec).isRegion()) {
-                     // No margin, except the border size
+                        // No margin, except the border size
                         Dimension borderSize = getBorderSize(ddec);
                         result.setWidth(result.width() + borderSize.width());
                         result.setHeight(result.height() + borderSize.height());
@@ -920,9 +921,12 @@ public final class GMFHelper {
                 Dimension bottomRightInsets = getBottomRightInsets(node);
                 // Do not add bottom right insets and shadow if there is at least one border node on the corresponding
                 // side
-                int borderNodesSides = getBorderNodesSides(node, childrenBounds);
-                boolean isBorderNodeOnRightSide = recursive && (PositionConstants.RIGHT & borderNodesSides) == PositionConstants.RIGHT;
-                boolean isBorderNodeOnBottomSide = recursive && (PositionConstants.BOTTOM & borderNodesSides) == PositionConstants.BOTTOM;
+                int borderNodesSides = PositionConstants.NONE;
+                if (recursive) {
+                    borderNodesSides = getBorderNodesSides(node, childrenBounds);
+                }
+                boolean isBorderNodeOnRightSide = (PositionConstants.RIGHT & borderNodesSides) == PositionConstants.RIGHT;
+                boolean isBorderNodeOnBottomSide = (PositionConstants.BOTTOM & borderNodesSides) == PositionConstants.BOTTOM;
                 childrenBounds.resize(isBorderNodeOnRightSide ? 0 : bottomRightInsets.width() + shadowBorderSize, isBorderNodeOnBottomSide ? 0 : bottomRightInsets.height() + shadowBorderSize);
                 // Replace -1 by the new computed values
                 if (bounds.width == -1) {
