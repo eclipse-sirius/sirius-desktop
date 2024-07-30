@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -669,26 +669,28 @@ public class CanonicalDBorderItemLocator {
         final ListIterator<?> iterator = borderItems.listIterator();
         while (iterator.hasNext()) {
             final Node borderItem = (Node) iterator.next();
-            boolean takeIntoAccount = true;
-            // Does not consider label that is not on border.
-            ViewQuery viewQuery = new ViewQuery(borderItem);
-            NodeQuery nodeQuery = new NodeQuery(borderItem);
-            if (!nodeQuery.isBorderedNode() && !viewQuery.isForNameEditPartOnBorder()) {
-                takeIntoAccount = false;
-            }
-            if (isVisible(borderItem) && takeIntoAccount) {
-                LayoutConstraint borderItemLayoutConstraint = borderItem.getLayoutConstraint();
-                if (borderItemLayoutConstraint instanceof Bounds) {
-                    Dimension extendedDimension = getExtendedDimension(borderItem);
+            if (!portsNodesToIgnore.contains(borderItem)) {
+                boolean takeIntoAccount = true;
+                // Does not consider label that is not on border.
+                ViewQuery viewQuery = new ViewQuery(borderItem);
+                NodeQuery nodeQuery = new NodeQuery(borderItem);
+                if (!nodeQuery.isBorderedNode() && !viewQuery.isForNameEditPartOnBorder()) {
+                    takeIntoAccount = false;
+                }
+                if (isVisible(borderItem) && takeIntoAccount) {
+                    LayoutConstraint borderItemLayoutConstraint = borderItem.getLayoutConstraint();
+                    if (borderItemLayoutConstraint instanceof Bounds) {
+                        Dimension extendedDimension = getExtendedDimension(borderItem);
 
-                    Rectangle borderItemBounds = GMFHelper.getAbsoluteBounds(borderItem, true);
+                        Rectangle borderItemBounds = GMFHelper.getAbsoluteBounds(borderItem, true);
 
-                    if (extendedDimension != null) {
-                        borderItemBounds = PortLayoutHelper.getUncollapseCandidateLocation(extendedDimension, borderItemBounds, getParentBorder());
-                    }
+                        if (extendedDimension != null) {
+                            borderItemBounds = PortLayoutHelper.getUncollapseCandidateLocation(extendedDimension, borderItemBounds, getParentBorder());
+                        }
 
-                    if (!(portsNodesToIgnore.contains(borderItem)) && borderItemBounds.intersects(recommendedRect)) {
-                        return Options.newSome(borderItemBounds);
+                        if (borderItemBounds.intersects(recommendedRect)) {
+                            return Options.newSome(borderItemBounds);
+                        }
                     }
                 }
             }
