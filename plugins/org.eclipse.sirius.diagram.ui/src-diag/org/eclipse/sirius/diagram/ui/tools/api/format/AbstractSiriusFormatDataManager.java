@@ -1021,7 +1021,7 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
                 final org.eclipse.draw2d.geometry.Point realLocation = locator.getValidLocation(rect, toRestoreView, portsNodesToIgnore);
 
                 // Compute the new relative position to the parent
-                final org.eclipse.draw2d.geometry.Point parentAbsoluteLocation = GMFHelper.getAbsoluteBounds(parentNode, true).getTopLeft();
+                final org.eclipse.draw2d.geometry.Point parentAbsoluteLocation = GMFHelper.getAbsoluteBounds(parentNode, true, false, false, false).getTopLeft();
                 locationToApply.setX(realLocation.x);
                 locationToApply.setY(realLocation.y);
                 locationToApply = FormatDataHelper.INSTANCE.getTranslated(locationToApply, parentAbsoluteLocation.negate());

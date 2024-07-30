@@ -144,25 +144,16 @@ public final class GMFHelper {
      * 
      * @param node
      *            the GMF Node
-     * 
-     * @return the absolute location of the node relative to the origin (Diagram)
-     */
-    public static Point getAbsoluteLocation(Node node) {
-        return getAbsoluteLocation(node, false);
-    }
-
-    /**
-     * Get the absolute location relative to the origin (Diagram).
-     * 
-     * @param node
-     *            the GMF Node
      * @param insetsAware
      *            true to consider the draw2D figures insets. <strong>Warning:</strong> Those insets are based on the
      *            current Sirius editParts and could become wrong if a developer customizes them.
+     * @param adaptBorderNodeLocation
+     *            Useful for specific border nodes, like in sequence diagrams, to center the border nodes if the
+     *            coordinate is 0 (x for EAST or WEST side, y for NORTH or SOUTH side)
      * 
      * @return the absolute location of the node relative to the origin (Diagram)
      */
-    public static Point getAbsoluteLocation(Node node, boolean insetsAware) {
+    public static Point getAbsoluteLocation(Node node, boolean insetsAware, boolean adaptBorderNodeLocation) {
         // TODO: Location of title "DNode*NameEditPart", x coordinate, can be wrong according to label alignment. This
         // problem is not yet handled.
 
@@ -174,7 +165,7 @@ public final class GMFHelper {
             location.setY(gmfBounds.getY());
         }
         ViewQuery viewQuery = new ViewQuery(node);
-        if (viewQuery.isBorderedNode() && layoutConstraint instanceof Bounds gmfBounds) {
+        if (adaptBorderNodeLocation && viewQuery.isBorderedNode() && layoutConstraint instanceof Bounds gmfBounds) {
             // manage location of bordered node with closest side
             if (node.getElement() instanceof DNode && node.getElement().eContainer() instanceof AbstractDNode) {
                 DNode dNode = (DNode) node.getElement();
@@ -186,7 +177,7 @@ public final class GMFHelper {
                         Bounds parentBounds = (Bounds) parentLayoutConstraint;
                         int position = CanonicalDBorderItemLocator.findClosestSideOfParent(new Rectangle(gmfBounds.getX(), gmfBounds.getY(), gmfBounds.getWidth(), gmfBounds.getHeight()),
                                 new Rectangle(parentBounds.getX(), parentBounds.getY(), parentBounds.getWidth(), parentBounds.getHeight()));
-                        updateLocation(location, position, parentBounds, gmfBounds);
+                        centerLocationIfZero(location, position, parentBounds, gmfBounds);
                     }
                 }
             }
@@ -194,61 +185,61 @@ public final class GMFHelper {
         if (viewQuery.isListCompartment()) {
             // Translate the compartment to be just below the the title, the x coordinate is also the same (same parent
             // insets)
-            Rectangle titleBounds = getAbsoluteBounds(getPreviousChild(node), true);
+            Rectangle titleBounds = getAbsoluteBounds(getPreviousChild(node), true, false, false, false);
             location.translate(titleBounds.preciseX(), titleBounds.preciseY() + titleBounds.preciseHeight());
             // Translate from the spacing (5 pixels)
             location.translate(0, IContainerLabelOffsets.LABEL_OFFSET);
         } else if (viewQuery.isListItem()) {
             if (node.eContainer() instanceof Node container) {
                 if (container.getChildren().get(0) == node) {
-                    Point parentNodeLocation = getAbsoluteLocation(container, insetsAware);
+                    Point parentNodeLocation = getAbsoluteLocation(container, insetsAware, false);
                     location.translate(parentNodeLocation);
                     if (insetsAware) {
                         translateWithInsets(location, node);
                     }
                 } else {
                     // Translate from the previous children
-                    Rectangle previousChildBounds = getAbsoluteBounds(getPreviousChild(node), true);
+                    Rectangle previousChildBounds = getAbsoluteBounds(getPreviousChild(node), true, false, false, false);
                     location.translate(previousChildBounds.preciseX(), previousChildBounds.preciseY() + previousChildBounds.preciseHeight());
                 }
             }
         } else if (viewQuery.isRegionContainerCompartment()) {
             // Translate the compartment to be just below the the title, the x coordinate is also the same (same parent
             // insets)
-            Rectangle titleBounds = getAbsoluteBounds(getPreviousChild(node), true);
+            Rectangle titleBounds = getAbsoluteBounds(getPreviousChild(node), true, false, false, false);
             location.translate(titleBounds.preciseX(), titleBounds.preciseY() + titleBounds.preciseHeight());
             // Translate from the spacing (5 pixels)
             location.translate(0, IContainerLabelOffsets.LABEL_OFFSET);
         } else if (viewQuery.isVerticalRegion()) {
             if (node.eContainer() instanceof Node container) {
                 if (container.getChildren().get(0) == node) {
-                    Point parentNodeLocation = getAbsoluteLocation(container, insetsAware);
+                    Point parentNodeLocation = getAbsoluteLocation(container, insetsAware, false);
                     location.translate(parentNodeLocation);
                     if (insetsAware) {
                         translateWithInsets(location, node);
                     }
                 } else {
                     // Translate from the previous children
-                    Rectangle previousChildBounds = getAbsoluteBounds(getPreviousChild(node), true);
+                    Rectangle previousChildBounds = getAbsoluteBounds(getPreviousChild(node), true, false, false, false);
                     location.translate(previousChildBounds.preciseX(), previousChildBounds.preciseY() + previousChildBounds.preciseHeight());
                 }
             }
         } else if (viewQuery.isHorizontalRegion()) {
             if (node.eContainer() instanceof Node container) {
                 if (container.getChildren().get(0) == node) {
-                    Point parentNodeLocation = getAbsoluteLocation(container, insetsAware);
+                    Point parentNodeLocation = getAbsoluteLocation(container, insetsAware, false);
                     location.translate(parentNodeLocation);
                     if (insetsAware) {
                         translateWithInsets(location, node);
                     }
                 } else {
                     // Translate from the previous children
-                    Rectangle previousChildBounds = getAbsoluteBounds(getPreviousChild(node), true);
+                    Rectangle previousChildBounds = getAbsoluteBounds(getPreviousChild(node), true, false, false, false);
                     location.translate(previousChildBounds.preciseX() + previousChildBounds.preciseWidth(), previousChildBounds.preciseY());
                 }
             }
         } else if (node.eContainer() instanceof Node container) {
-            Point parentNodeLocation = getAbsoluteLocation(container, insetsAware);
+            Point parentNodeLocation = getAbsoluteLocation(container, insetsAware, true);
             location.translate(parentNodeLocation);
             if (insetsAware) {
                 translateWithInsets(location, node);
@@ -538,10 +529,10 @@ public final class GMFHelper {
      */
     @Deprecated
     public static Point getLocation(Node node) {
-        return getAbsoluteLocation(node, true);
+        return getAbsoluteLocation(node, true, true);
     }
 
-    private static void updateLocation(Point location, int position, Bounds parentBounds, Bounds gmfBounds) {
+    private static void centerLocationIfZero(Point location, int position, Bounds parentBounds, Bounds gmfBounds) {
         switch (position) {
         case PositionConstants.NORTH:
         case PositionConstants.SOUTH:
@@ -559,50 +550,56 @@ public final class GMFHelper {
             break;
         }
     }
-
-    /**
-     * Get the absolute bounds relative to the origin (Diagram).
-     * 
-     * @param node
-     *            the GMF Node
-     * 
-     * @return the absolute bounds of the node relative to the origin (Diagram)
-     */
-    public static Rectangle getAbsoluteBounds(Node node) {
-        return getAbsoluteBounds(node, false);
-    }
-
-    /**
-     * Get the absolute bounds relative to the origin (Diagram).
-     * 
-     * @param node
-     *            the GMF Node
-     * @param insetsAware
-     *            true to consider the draw2D figures insets. <strong>Warning:</strong> Those insets are based on the
-     *            current Sirius editParts and could become wrong if a developer customizes them.
-     * 
-     * @return the absolute bounds of the node relative to the origin (Diagram)
-     */
-    public static Rectangle getAbsoluteBounds(Node node, boolean insetsAware) {
-        return getAbsoluteBounds(node, insetsAware, false, false);
-    }
-
-    /**
-     * Get the absolute bounds relative to the origin (Diagram).
-     * 
-     * @param node
-     *            the GMF Node
-     * @param insetsAware
-     *            true to consider the draw2D figures insets. <strong>Warning:</strong> Those insets are based on the
-     *            current Sirius editParts and could become wrong if a developer customizes them.
-     * @param boxForConnection
-     *            true if we want to have the bounds used to compute connection anchor from source or target, false
-     *            otherwise
-     * @return the absolute bounds of the node relative to the origin (Diagram)
-     */
-    public static Rectangle getAbsoluteBounds(Node node, boolean insetsAware, boolean boxForConnection) {
-        return getAbsoluteBounds(node, insetsAware, boxForConnection, false);
-    }
+    //
+    // /**
+    // * Get the absolute bounds relative to the origin (Diagram).
+    // *
+    // * @param node
+    // * the GMF Node
+    // * @param adaptBorderNodeLocation
+    // * Useful for specific border nodes, like in sequence diagrams, to center the border nodes if the
+    // * coordinate is 0 (x for EAST or WEST side, y for NORTH or SOUTH side)
+    // *
+    // * @return the absolute bounds of the node relative to the origin (Diagram)
+    // */
+    // public static Rectangle getAbsoluteBounds(Node node, boolean adaptBorderNodeLocation) {
+    // return getAbsoluteBounds(node, false, false, false, adaptBorderNodeLocation);
+    // }
+    // /**
+    // * Get the absolute bounds relative to the origin (Diagram).
+    // *
+    // * @param node
+    // * the GMF Node
+    // * @param insetsAware
+    // * true to consider the draw2D figures insets. <strong>Warning:</strong> Those insets are based on the
+    // * current Sirius editParts and could become wrong if a developer customizes them.
+    // * @param adaptBorderNodeLocation
+    // * Useful for specific border nodes, like in sequence diagrams, to center the border nodes if the
+    // * coordinate is 0 (x for EAST or WEST side, y for NORTH or SOUTH side)
+    // *
+    // * @return the absolute bounds of the node relative to the origin (Diagram)
+    // */
+    // public static Rectangle getAbsoluteBounds2(Node node, boolean insetsAware, boolean adaptBorderNodeLocation) {
+    // return getAbsoluteBounds(node, insetsAware, false, false, adaptBorderNodeLocation);
+    // }
+    //
+    // /**
+    // * Get the absolute bounds relative to the origin (Diagram).
+    // *
+    // * @param node
+    // * the GMF Node
+    // * @param insetsAware
+    // * true to consider the draw2D figures insets. <strong>Warning:</strong> Those insets are based on the
+    // * current Sirius editParts and could become wrong if a developer customizes them.
+    // * @param boxForConnection
+    // * true if we want to have the bounds used to compute connection anchor from source or target, false
+    // * otherwise
+    // * @return the absolute bounds of the node relative to the origin (Diagram)
+    // */
+    // public static Rectangle getAbsoluteBounds(Node node, boolean insetsAware, boolean boxForConnection, boolean
+    // adaptBorderNodeLocation) {
+    // return getAbsoluteBounds(node, insetsAware, boxForConnection, false, adaptBorderNodeLocation);
+    // }
 
     /**
      * Get the absolute bounds relative to the origin (Diagram).
@@ -617,9 +614,13 @@ public final class GMFHelper {
      *            otherwise
      * @param recursiveGetBounds
      *            true if this method is called from a parent "getBounds" call, false otherwise.
+     * @param adaptBorderNodeLocation
+     *            Useful for specific border nodes, like in sequence diagrams, to center the border nodes if the
+     *            coordinate is 0 (x for EAST or WEST side, y for NORTH or SOUTH side)
+     * 
      * @return the absolute bounds of the node relative to the origin (Diagram)
      */
-    public static Rectangle getAbsoluteBounds(Node node, boolean insetsAware, boolean boxForConnection, boolean recursiveGetBounds) {
+    public static Rectangle getAbsoluteBounds(Node node, boolean insetsAware, boolean boxForConnection, boolean recursiveGetBounds, boolean adaptBorderNodeLocation) {
         if (!recursiveGetBounds) {
             boundsCache.clear();
         }
@@ -627,7 +628,7 @@ public final class GMFHelper {
         if (boundsCache.containsKey(node)) {
             result = boundsCache.get(node);
         } else {
-            Point location = getAbsoluteLocation(node, insetsAware);
+            Point location = getAbsoluteLocation(node, insetsAware, adaptBorderNodeLocation);
             Rectangle bounds = getBounds(node, false, false, boxForConnection, recursiveGetBounds, location);
             result = new PrecisionRectangle(location.preciseX(), location.preciseY(), bounds.preciseWidth(), bounds.preciseHeight());
             if (recursiveGetBounds) {
@@ -717,7 +718,7 @@ public final class GMFHelper {
     public static Option<Rectangle> getAbsoluteBounds(View view, boolean insetsAware, boolean boxForConnection) {
         Option<Rectangle> result = Options.newNone();
         if (view instanceof Node) {
-            result = Options.newSome(getAbsoluteBounds((Node) view, insetsAware, boxForConnection, false));
+            result = Options.newSome(getAbsoluteBounds((Node) view, insetsAware, boxForConnection, false, true));
         } else if (view instanceof Edge) {
             result = getAbsoluteBounds((Edge) view, insetsAware, boxForConnection);
         }
@@ -975,7 +976,7 @@ public final class GMFHelper {
         for (Iterator<Node> children = Iterators.filter(container.getChildren().iterator(), Node.class); children.hasNext(); /* */) {
             Node child = children.next();
             if (new NodeQuery(child).isBorderedNode()) {
-                Rectangle borderNodeBounds = getAbsoluteBounds(child, true);
+                Rectangle borderNodeBounds = getAbsoluteBounds(child, true, false, false, false);
                 if (borderNodeBounds.preciseX() == containerChildrenBounds.preciseX()) {
                     result = result | PositionConstants.LEFT;
                 }
@@ -1051,7 +1052,7 @@ public final class GMFHelper {
         if (containerViewQuery.isListContainer() || containerViewQuery.isListCompartment() || containerViewQuery.isVerticalRegionContainerCompartment()) {
             if (!container.getChildren().isEmpty()) {
                 Node lastChild = getLastChild(container, considerBorderNodes);
-                result = getAbsoluteBounds(lastChild, true, false, true);
+                result = getAbsoluteBounds(lastChild, true, false, true, false);
             }
         } else {
             for (Iterator<Node> children = Iterators.filter(container.getChildren().iterator(), Node.class); children.hasNext(); /* */) {
@@ -1059,7 +1060,7 @@ public final class GMFHelper {
                 // The border nodes are ignored, except if it is expected to consider it (auto-size of a container with
                 // children having border nodes)
                 if (considerBorderNodes || !(new NodeQuery(child).isBorderedNode())) {
-                    Rectangle childAbsoluteBounds = getAbsoluteBounds(child, true, false, true);
+                    Rectangle childAbsoluteBounds = getAbsoluteBounds(child, true, false, true, false);
                     if (result == null) {
                         result = childAbsoluteBounds.getCopy();
                     } else {

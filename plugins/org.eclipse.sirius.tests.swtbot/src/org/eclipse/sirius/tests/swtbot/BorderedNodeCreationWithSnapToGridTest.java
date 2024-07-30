@@ -89,8 +89,8 @@ public class BorderedNodeCreationWithSnapToGridTest extends BorderedNodeCreation
 
         assertFalse("Second border node should not overlap the first one (draw2d).", firstNewNodeAbsoluteBounds.intersects(secondNewNodeAbsoluteLocation));
 
-        Rectangle firstNewNodeGMFBounds = GMFHelper.getAbsoluteBounds((Node) firstNewNode.part().getModel());
-        Rectangle secondNewNodeGMFBounds = GMFHelper.getAbsoluteBounds((Node) secondNewNode.part().getModel());
+        Rectangle firstNewNodeGMFBounds = GMFHelper.getAbsoluteBounds((Node) firstNewNode.part().getModel(), false, false, false, true);
+        Rectangle secondNewNodeGMFBounds = GMFHelper.getAbsoluteBounds((Node) secondNewNode.part().getModel(), false, false, false, true);
 
         assertFalse("Second border node should not overlap the first one (GMF).", firstNewNodeGMFBounds.intersects(secondNewNodeGMFBounds));
 
