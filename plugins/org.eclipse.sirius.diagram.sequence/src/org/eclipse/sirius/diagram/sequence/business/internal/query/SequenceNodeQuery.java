@@ -64,7 +64,7 @@ public class SequenceNodeQuery {
                 result = CacheHelper.getViewToRangeCache().get(node);
             }
             if (result == null) {
-                Rectangle absoluteBounds = GMFHelper.getAbsoluteBounds(node);
+                Rectangle absoluteBounds = GMFHelper.getAbsoluteBounds(node, false, false, false, true);
                 int y = absoluteBounds.y;
                 int height = absoluteBounds.height;
                 // GMFHelper.getAbsoluteBounds() use default
