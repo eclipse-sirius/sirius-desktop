@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
+import java.util.function.Function;
+
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.ecore.EObject;
@@ -51,6 +53,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.commands.emf.PaneBasedSelect
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.emf.SelectionWizardCommand;
 import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
@@ -92,11 +95,7 @@ public class CreationUtil {
      * @since 0.9.0
      */
     public CreationUtil(final CreateRequest request, final IDiagramCommandFactory commandFactory, final Point realLocation, final EditPart editPart) {
-        this.realLocation = realLocation;
-        this.realSize = null;
-        this.request = request;
-        this.emfCommandFactory = commandFactory;
-        this.editPart = editPart;
+        this(request, commandFactory, realLocation, null, editPart);
     }
 
     /**
@@ -122,6 +121,14 @@ public class CreationUtil {
         this.editPart = editPart;
     }
 
+    private CompoundCommand wrapCommandWithLayout(AbstractToolDescription tool, final org.eclipse.emf.common.command.Command emfCommand) {
+        final CompoundCommand compoundCommand = new CompoundCommand(tool.getName());
+
+        compoundCommand.add(createLayoutDataCommand());
+        compoundCommand.add(new ICommandProxy(new GMFCommandWrapper(getEditingDomain(), emfCommand)));
+        return compoundCommand;
+    }
+    
     /**
      * Returns a command that is able to create a node in the specified container with the specified tool.
      * 
@@ -133,12 +140,7 @@ public class CreationUtil {
      */
     public Command getNodeCreationCommand(final DDiagramElementContainer container, final NodeCreationDescription tool) {
         if (new NodeCreationDescriptionQuery(tool).canCreateIn(container)) {
-            final org.eclipse.emf.common.command.Command command = emfCommandFactory.buildCreateNodeCommandFromTool(container, tool);
-            final CompoundCommand compoundCommand = new CompoundCommand(tool.getName());
-
-            compoundCommand.add(createLayoutDataCommand());
-            compoundCommand.add(new ICommandProxy(new GMFCommandWrapper(getEditingDomain(), command)));
-            return compoundCommand;
+            return wrapCommandWithLayout(tool, emfCommandFactory.buildCreateNodeCommandFromTool(container, tool));
         }
         return null;
     }
@@ -154,11 +156,7 @@ public class CreationUtil {
      */
     public Command getNodeCreationCommand(final DNode node, final NodeCreationDescription tool) {
         if (new NodeCreationDescriptionQuery(tool).canCreateIn(node)) {
-            final CompoundCommand compoundCommand = new CompoundCommand(tool.getName());
-            compoundCommand.add(createLayoutDataCommand());
-            final org.eclipse.emf.common.command.Command command = emfCommandFactory.buildCreateNodeCommandFromTool(node, tool);
-            compoundCommand.add(new ICommandProxy(new GMFCommandWrapper(getEditingDomain(), command)));
-            return compoundCommand;
+            return wrapCommandWithLayout(tool, emfCommandFactory.buildCreateNodeCommandFromTool(node, tool));
         }
         return null;
     }
@@ -173,13 +171,8 @@ public class CreationUtil {
      * @return a command that is able to create a node in the specified viewpoint with the specified tool.
      */
     public Command getNodeCreationCommand(final DDiagram diagram, final NodeCreationDescription tool) {
-
         if (new NodeCreationDescriptionQuery(tool).canCreateIn(diagram)) {
-            final org.eclipse.emf.common.command.Command command = emfCommandFactory.buildCreateNodeCommandFromTool(diagram, tool);
-            final CompoundCommand compoundCommand = new CompoundCommand(tool.getName());
-            compoundCommand.add(createLayoutDataCommand());
-            compoundCommand.add(new ICommandProxy(new GMFCommandWrapper(getEditingDomain(), command)));
-            return compoundCommand;
+            return wrapCommandWithLayout(tool, emfCommandFactory.buildCreateNodeCommandFromTool(diagram, tool));
         }
         return null;
     }
@@ -195,11 +188,7 @@ public class CreationUtil {
      */
     public Command getContainerCreationDescription(final DDiagramElementContainer viewNodeContainer, final ContainerCreationDescription ccdTool) {
         if (new ContainerCreationDescriptionQuery(ccdTool).canCreateIn(viewNodeContainer)) {
-            final org.eclipse.emf.common.command.Command command = emfCommandFactory.buildCreateContainerCommandFromTool(viewNodeContainer, ccdTool);
-            final CompoundCommand compoundCommand = new CompoundCommand(ccdTool.getName());
-            compoundCommand.add(createLayoutDataCommand());
-            compoundCommand.add(new ICommandProxy(new GMFCommandWrapper(getEditingDomain(), command)));
-            return compoundCommand;
+            return wrapCommandWithLayout(ccdTool, emfCommandFactory.buildCreateContainerCommandFromTool(viewNodeContainer, ccdTool));
         }
         return null;
     }
@@ -214,13 +203,8 @@ public class CreationUtil {
      * @return a command that is able to create a container in the specified viewpoint with the specified tool.
      */
     public Command getContainerCreationDescription(final DDiagram diagram, final ContainerCreationDescription ccdTool) {
-        // if (container instanceof DiagramDescription) {
         if (new ContainerCreationDescriptionQuery(ccdTool).canCreateIn(diagram)) {
-            final org.eclipse.emf.common.command.Command command = emfCommandFactory.buildCreateContainerCommandFromTool(diagram, ccdTool);
-            final CompoundCommand compoundCommand = new CompoundCommand(ccdTool.getName());
-            compoundCommand.add(createLayoutDataCommand());
-            compoundCommand.add(new ICommandProxy(new GMFCommandWrapper(getEditingDomain(), command)));
-            return compoundCommand;
+            return wrapCommandWithLayout(ccdTool, emfCommandFactory.buildCreateContainerCommandFromTool(diagram, ccdTool));
         }
         return null;
     }
@@ -235,19 +219,8 @@ public class CreationUtil {
      * @return a command that is able to launch a wizard tool.
      */
     public Command getSelectionWizardCommand(final SelectionWizardDescription selectionTool, final EObject containerView) {
-        Command cmd = UnexecutableCommand.INSTANCE;
-        if (containerView != null) {
-            final CompoundCommand compoundCommand = new CompoundCommand(selectionTool.getName());
-            final TreeItemWrapper input = new TreeItemWrapper(null, null);
-            if (AbstractSelectionWizardCommand.canCreateCommand(selectionTool, containerView, input)) {
-                compoundCommand.add(createLayoutDataCommand());
-                compoundCommand
-                        .add(new ICommandProxy(new GMFCommandWrapper(getEditingDomain(), new SelectionWizardCommand(emfCommandFactory, selectionTool, input, (DSemanticDecorator) containerView))));
-                cmd = compoundCommand;
-                cmd.setLabel(selectionTool.getName());
-            }
-        }
-        return cmd;
+        return getSelectionWizardCommand(selectionTool, containerView, input ->
+            new SelectionWizardCommand(emfCommandFactory, selectionTool, input, (DSemanticDecorator) containerView));
     }
 
     /**
@@ -260,21 +233,21 @@ public class CreationUtil {
      * @return a command that is able to launch a wizard tool.
      */
     public Command getPaneBasedSelectionWizardCommand(final PaneBasedSelectionWizardDescription selectionTool, final EObject containerView) {
-        Command cmd = UnexecutableCommand.INSTANCE;
-        if (containerView != null) {
-            final CompoundCommand compoundCommand = new CompoundCommand(selectionTool.getName());
-            final TreeItemWrapper input = new TreeItemWrapper(null, null);
-            if (AbstractSelectionWizardCommand.canCreateCommand(selectionTool, containerView, input)) {
-                compoundCommand.add(createLayoutDataCommand());
-                compoundCommand.add(
-                        new ICommandProxy(new GMFCommandWrapper(getEditingDomain(), new PaneBasedSelectionWizardCommand(emfCommandFactory, selectionTool, input, (DSemanticDecorator) containerView))));
-                cmd = compoundCommand;
-                cmd.setLabel(selectionTool.getName());
-            }
-        }
-        return cmd;
+        return getSelectionWizardCommand(selectionTool, containerView, input ->
+            new PaneBasedSelectionWizardCommand(emfCommandFactory, selectionTool, input, (DSemanticDecorator) containerView));
     }
 
+    private Command getSelectionWizardCommand(final AbstractToolDescription selectionTool, final EObject containerView, 
+            final Function<TreeItemWrapper, AbstractSelectionWizardCommand> commandFactory) {
+        if (containerView != null) {
+            final TreeItemWrapper input = new TreeItemWrapper(null, null);
+            if (AbstractSelectionWizardCommand.canCreateCommand(selectionTool, containerView, input)) {
+                return wrapCommandWithLayout(selectionTool, commandFactory.apply(input));
+            }
+        }
+        return UnexecutableCommand.INSTANCE;   
+    }
+    
     private TransactionalEditingDomain getEditingDomain() {
         if (editPart instanceof IGraphicalEditPart) {
             return ((IGraphicalEditPart) editPart).getEditingDomain();
@@ -334,11 +307,7 @@ public class CreationUtil {
      * @return a command which executes the specified {@link ToolDescription} in the context of the view element.
      */
     public Command getGenericToolCommand(final EObject containerView, final ToolDescription toolDesc) {
-        final CompoundCommand compoundCommand = new CompoundCommand(toolDesc.getName());
-        final org.eclipse.emf.common.command.Command command = emfCommandFactory.buildGenericToolCommandFromTool(containerView, toolDesc);
-        compoundCommand.add(createLayoutDataCommand());
-        compoundCommand.add(new ICommandProxy(new GMFCommandWrapper(getEditingDomain(), command)));
-        return compoundCommand;
+        return wrapCommandWithLayout(toolDesc, emfCommandFactory.buildGenericToolCommandFromTool(containerView, toolDesc));
     }
 
     private Command createLayoutDataCommand() {
