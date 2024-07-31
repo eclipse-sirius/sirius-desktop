@@ -16,6 +16,7 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -132,6 +133,8 @@ public final class GMFHelper {
      * (org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel.getIconTextGap()).
      */
     private static final int ICON_TEXT_GAP = 3;
+
+    private static Map<Node, Rectangle> boundsCache = new HashMap<>();
 
     private GMFHelper() {
         // Helper to not instantiate
@@ -616,9 +619,21 @@ public final class GMFHelper {
      * @return the absolute bounds of the node relative to the origin (Diagram)
      */
     public static Rectangle getAbsoluteBounds(Node node, boolean insetsAware, boolean boxForConnection, boolean recursiveGetBounds) {
-        Point location = getAbsoluteLocation(node, insetsAware);
-        Rectangle bounds = getBounds(node, false, false, boxForConnection, recursiveGetBounds, location);
-        return new PrecisionRectangle(location.preciseX(), location.preciseY(), bounds.preciseWidth(), bounds.preciseHeight());
+        if (!recursiveGetBounds) {
+            boundsCache.clear();
+        }
+        Rectangle result;
+        if (boundsCache.containsKey(node)) {
+            result = boundsCache.get(node);
+        } else {
+            Point location = getAbsoluteLocation(node, insetsAware);
+            Rectangle bounds = getBounds(node, false, false, boxForConnection, recursiveGetBounds, location);
+            result = new PrecisionRectangle(location.preciseX(), location.preciseY(), bounds.preciseWidth(), bounds.preciseHeight());
+            if (recursiveGetBounds) {
+                boundsCache.put(node, result);
+            }
+        }
+        return result.getCopy();
     }
 
     /**
