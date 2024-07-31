@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
+import java.util.Objects;
 import java.util.function.Function;
 
 import org.eclipse.draw2d.geometry.Dimension;
@@ -80,6 +81,12 @@ public class CreationUtil {
 
     /** The edit part. */
     private final EditPart editPart;
+    
+    /** The real container for stack composition. */
+    private EditPart stackContainer;
+    
+    /** The location in stack container. */
+    private Point locationInContainer;
 
     /**
      * Creates a new <code>CreationUtil</code> with the specified request and location.
@@ -114,6 +121,8 @@ public class CreationUtil {
      * @since 0.9.0
      */
     public CreationUtil(final CreateRequest request, final IDiagramCommandFactory commandFactory, final Point realLocation, final Dimension realSize, final EditPart editPart) {
+        // Reminder: realSize is used in Sequence Diagram.
+        // It should be a sub-case in this plugin.
         this.realLocation = realLocation;
         this.realSize = realSize;
         this.request = request;
@@ -121,6 +130,17 @@ public class CreationUtil {
         this.editPart = editPart;
     }
 
+    /**
+     * Sets the stackContainer context for part in stack list.
+     * 
+     * @param location of creation based on container.
+     * @param stackContainer context for creation.
+     */
+    public void setStackContainer(final Point location, EditPart container) {
+        this.stackContainer = Objects.requireNonNull(container);
+        this.locationInContainer = Objects.requireNonNull(location);
+    }
+    
     private CompoundCommand wrapCommandWithLayout(AbstractToolDescription tool, final org.eclipse.emf.common.command.Command emfCommand) {
         final CompoundCommand compoundCommand = new CompoundCommand(tool.getName());
 
@@ -323,6 +343,9 @@ public class CreationUtil {
                     size = adaptRequestSizeToZoomFactor();
                 }
                 SiriusLayoutDataManager.INSTANCE.addData(new RootLayoutData(editPart, realLocation.getCopy(), size));
+                if (stackContainer != null) {
+                    SiriusLayoutDataManager.INSTANCE.addData(new RootLayoutData(stackContainer, locationInContainer.getCopy(), size));                    
+                }
             }
         };
     }
@@ -457,4 +480,5 @@ public class CreationUtil {
             }
         }
     }
+
 }
