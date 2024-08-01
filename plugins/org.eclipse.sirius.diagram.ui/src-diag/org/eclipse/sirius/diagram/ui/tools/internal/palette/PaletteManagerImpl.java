@@ -232,8 +232,10 @@ public class PaletteManagerImpl implements PaletteManager {
 
                 // Apply existing customizations to the palette
                 final PaletteViewer paletteViewer = editDomain.getPaletteViewer();
-                Optional.ofNullable((PaletteCustomizerEx) paletteViewer.getCustomizer()) //
-                        .ifPresent(custo -> custo.applyCustomizationsToPalette(paletteRoot));
+                if (paletteViewer != null) {
+                    Optional.ofNullable((PaletteCustomizerEx) paletteViewer.getCustomizer()) //
+                            .ifPresent(custo -> custo.applyCustomizationsToPalette(paletteRoot));
+                }
             }
         }
     }
