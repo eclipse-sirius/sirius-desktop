@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2017 Obeo.
+ * Copyright (c) 2013, 2024 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,14 +12,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.api.interpreter;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -46,10 +45,6 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.tools.internal.interpreter.BundleClassLoading;
 import org.eclipse.sirius.common.tools.internal.interpreter.ClassLoadingService;
 
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Multimap;
-
 /**
  * The {@link JavaExtensionsManager} load and maintains {@link Class} instances
  * based on the current search scope (of projects and/or plugins) and the
@@ -75,14 +70,14 @@ public final class JavaExtensionsManager {
      */
     private Set<String> viewpointProjects = new LinkedHashSet<>();
 
-    private final Set<String> imports = new LinkedHashSet<String>();
+    private final Set<String> imports = new LinkedHashSet<>();
 
     /**
      * These are the imports which are registered as
      * "not having been loaded so far", waiting for a change of scope or a
      * recompilation which would make them loadable.
      */
-    private final Set<String> couldNotBeLoaded = new LinkedHashSet<String>();
+    private final Set<String> couldNotBeLoaded = new LinkedHashSet<>();
 
     private final Map<String, Class<?>> loadedClasses = new LinkedHashMap<>();
 
@@ -96,21 +91,17 @@ public final class JavaExtensionsManager {
 
     private boolean shouldLoadEPackages = true;
 
-    private ClasspathChangeCallback onWorkspaceChange = new ClasspathChangeCallback() {
-
-        @Override
-        public void classpathChanged(Set<String> updatedProjects) {
-            /*
-             * we get a notification if something in the classpath we used so
-             * far has changed.
-             */
-            if (viewpointPlugins.size() > 0 || viewpointProjects.size() > 0) {
-                reload();
-            }
+    private ClasspathChangeCallback onWorkspaceChange = updatedProjects -> {
+        /*
+         * we get a notification if something in the classpath we used so
+         * far has changed.
+         */
+        if (viewpointPlugins.size() > 0 || viewpointProjects.size() > 0) {
+            reload();
         }
     };
 
-    private Multimap<String, EPackage> lastDeclarerIDsToEPackages = HashMultimap.create();
+    private Map<String, List<EPackage>> lastDeclarerIDsToEPackages = new HashMap<>();
 
     /**
      * through this field we keep track fo the EPackage declarers which were
@@ -250,7 +241,7 @@ public final class JavaExtensionsManager {
     }
 
     private void reloadEPackages() {
-        Multimap<String, EPackage> newDeclarations = HashMultimap.create();
+        Map<String, List<EPackage>> newDeclarations = new HashMap<>();
         Set<String> newDeclarersAsBundles = new LinkedHashSet<>();
         Collection<EPackageDeclarationSource> ecoreDeclarationSources = this.classLoading.findEcoreDeclarations(this.viewpointProjects, this.viewpointPlugins);
         Collection<EPackageDeclarationSource> workspaceDeclarations = new ArrayList<>();
@@ -265,10 +256,10 @@ public final class JavaExtensionsManager {
                      */
                     EPackage pak = EPackage.Registry.INSTANCE.getEPackage(ePackageDeclaration.getNsURI());
                     if (pak != null) {
-                        newDeclarations.put(declarer.getSymbolicName(), pak);
+                        newDeclarations.putIfAbsent(declarer.getSymbolicName(), new ArrayList<>());
+                        newDeclarations.get(declarer.getSymbolicName()).add(pak);
                     }
                 }
-
             } else {
                 /*
                  * we keep that for later as we need to initialize a specific
@@ -278,7 +269,7 @@ public final class JavaExtensionsManager {
                 workspaceDeclarations.add(declarer);
             }
         }
-        if (workspaceDeclarations.size() > 0) {
+        if (!workspaceDeclarations.isEmpty()) {
             /*
              * this resourceset is being used to load the genmodel instances
              * from the workspace. It is setup with uri mappings so that other
@@ -286,9 +277,7 @@ public final class JavaExtensionsManager {
              * targetplatform.
              */
             ResourceSetImpl set = new ResourceSetImpl();
-
             computePlatformURIMap(set);
-
             /*
              * the EPackage definition comes from a workspace project, right now
              * we don't explicitely and fully support this use case where the
@@ -312,31 +301,35 @@ public final class JavaExtensionsManager {
                     if (!StringUtil.isEmpty(nsURI)) {
                         EPackage loaded = ecorePackages.get(nsURI);
                         if (loaded != null) {
-                            newDeclarations.put(nsURI, loaded);
+                            newDeclarations.putIfAbsent(nsURI, new ArrayList<>());
+                            newDeclarations.get(nsURI).add(loaded);
                         }
                     }
                 }
             }
 
         }
-
         /*
          * cleaning up previously registered EPackage which are not accessible
          * any more.
          */
         boolean firstRun = lastDeclarerIDsInBundles == null;
         if (!firstRun) {
-            for (Entry<String, EPackage> entry : lastDeclarerIDsToEPackages.entries()) {
-                boolean changedType = lastDeclarerIDsInBundles.contains(entry.getKey()) != newDeclarersAsBundles.contains(entry.getKey());
-                if (changedType) {
-                    unloadedEPackage(entry.getValue());
+            for (Entry<String, List<EPackage>> entry : lastDeclarerIDsToEPackages.entrySet()) {
+                for (EPackage ePackage : entry.getValue()) {
+                    boolean changedType = lastDeclarerIDsInBundles.contains(entry.getKey()) != newDeclarersAsBundles.contains(entry.getKey());
+                    if (changedType) {
+                        unloadedEPackage(ePackage);
+                    }
                 }
             }
         }
-        for (Entry<String, EPackage> entry : newDeclarations.entries()) {
-            boolean changedType = firstRun || lastDeclarerIDsInBundles.contains(entry.getKey()) != newDeclarersAsBundles.contains(entry.getKey());
-            if (changedType) {
-                loadedEPackage(entry.getValue());
+        for (Entry<String, List<EPackage>> entry : newDeclarations.entrySet()) {
+            for (EPackage ePackage : entry.getValue()) {
+                boolean changedType = firstRun || lastDeclarerIDsInBundles.contains(entry.getKey()) != newDeclarersAsBundles.contains(entry.getKey());
+                if (changedType) {
+                    loadedEPackage(ePackage);
+                }
             }
         }
 
@@ -346,37 +339,9 @@ public final class JavaExtensionsManager {
     }
 
     private void computePlatformURIMap(ResourceSetImpl set) {
-        Map<URI, URI> result = null;
-        /*
-         * We invoke computePlatformURIMap by reflection to keep being
-         * compatible with EMF 2.8 and still leverage the new capabilities
-         * regarding target platforms introduced in EMF 2.9.
-         */
-        try {
-            Method computePlatformURIMap = EcorePlugin.class.getMethod("computePlatformURIMap", Boolean.TYPE); //$NON-NLS-1$
-            result = (Map<URI, URI>) computePlatformURIMap.invoke(null, true);
-        } catch (NoSuchMethodException e) {
-            /*
-             * result is still null, we'll call the old method.
-             */
-        } catch (IllegalAccessException e) {
-            /*
-             * result is still null, we'll call the old method.
-             */
-        } catch (IllegalArgumentException e) {
-            /*
-             * result is still null, we'll call the old method.
-             */
-        } catch (InvocationTargetException e) {
-            /*
-             * result is still null, we'll call the old method.
-             */
-        }
-        if (result == null) {
-            result = EcorePlugin.computePlatformURIMap();
-        }
-        if (result != null) {
-            set.getURIConverter().getURIMap().putAll(result);
+        Map<URI, URI> uriMap = EcorePlugin.computePlatformURIMap(true);
+        if (uriMap != null) {
+            set.getURIConverter().getURIMap().putAll(uriMap);
         }
     }
 
@@ -489,7 +454,7 @@ public final class JavaExtensionsManager {
      * @return the current list of class qualified name used as Java Extensions.
      */
     public synchronized Collection<String> getImports() {
-        return ImmutableList.copyOf(this.imports);
+        return List.copyOf(this.imports);
     }
 
     /**
