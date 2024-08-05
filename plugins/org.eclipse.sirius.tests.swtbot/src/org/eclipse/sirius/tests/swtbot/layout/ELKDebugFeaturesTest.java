@@ -78,14 +78,34 @@ public class ELKDebugFeaturesTest extends AbstractSiriusSwtBotGefTestCase {
      * Check that the export ELKG action creates an elkg file.
      */
     public void testExportElkgFile() {
-        testExportAction("Export diagram as ELK Graph", ".elkg");
+        String previousValue = System.getProperty(ElkDiagramLayoutTracer.TARGET_FOLDER_PATH_SYSTEM_PROPERTY_KEY);
+        try {
+            System.setProperty(ElkDiagramLayoutTracer.TARGET_FOLDER_PATH_SYSTEM_PROPERTY_KEY, getDefaultTemporaryFolderToUse().toFile().toString());
+            testExportAction("Export diagram as ELK Graph", ".elkg");
+        } finally {
+            if (previousValue == null) {
+                System.clearProperty(ElkDiagramLayoutTracer.TARGET_FOLDER_PATH_SYSTEM_PROPERTY_KEY);
+            } else {
+                System.setProperty(ElkDiagramLayoutTracer.TARGET_FOLDER_PATH_SYSTEM_PROPERTY_KEY, previousValue);
+            }
+        }
     }
 
     /**
      * Check that the export as text action creates an elkt file.
      */
     public void testExportElktFile() {
-        testExportAction("Export diagram as ELK Text", ".elkt");
+        String previousValue = System.getProperty(ElkDiagramLayoutTracer.TARGET_FOLDER_PATH_SYSTEM_PROPERTY_KEY);
+        try {
+            System.setProperty(ElkDiagramLayoutTracer.TARGET_FOLDER_PATH_SYSTEM_PROPERTY_KEY, getDefaultTemporaryFolderToUse().toFile().toString());
+            testExportAction("Export diagram as ELK Text", ".elkt");
+        } finally {
+            if (previousValue == null) {
+                System.clearProperty(ElkDiagramLayoutTracer.TARGET_FOLDER_PATH_SYSTEM_PROPERTY_KEY);
+            } else {
+                System.setProperty(ElkDiagramLayoutTracer.TARGET_FOLDER_PATH_SYSTEM_PROPERTY_KEY, previousValue);
+            }
+        }
     }
 
     /**
@@ -113,11 +133,31 @@ public class ELKDebugFeaturesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     public void testExportDuringArrangeAll_withDebugEnabledOnElkt() {
-        testExportDuringArrangeAll(true, false);
+        String previousValue = System.getProperty(ElkDiagramLayoutTracer.TARGET_FOLDER_PATH_SYSTEM_PROPERTY_KEY);
+        try {
+            System.setProperty(ElkDiagramLayoutTracer.TARGET_FOLDER_PATH_SYSTEM_PROPERTY_KEY, getDefaultTemporaryFolderToUse().toFile().toString());
+            testExportDuringArrangeAll(true, false);
+        } finally {
+            if (previousValue == null) {
+                System.clearProperty(ElkDiagramLayoutTracer.TARGET_FOLDER_PATH_SYSTEM_PROPERTY_KEY);
+            } else {
+                System.setProperty(ElkDiagramLayoutTracer.TARGET_FOLDER_PATH_SYSTEM_PROPERTY_KEY, previousValue);
+            }
+        }
     }
 
     public void testExportDuringArrangeAll_withDebugEnabledOnElkg() {
-        testExportDuringArrangeAll(true, true);
+        String previousValue = System.getProperty(ElkDiagramLayoutTracer.TARGET_FOLDER_PATH_SYSTEM_PROPERTY_KEY);
+        try {
+            System.setProperty(ElkDiagramLayoutTracer.TARGET_FOLDER_PATH_SYSTEM_PROPERTY_KEY, getDefaultTemporaryFolderToUse().toFile().toString());
+            testExportDuringArrangeAll(true, true);
+        } finally {
+            if (previousValue == null) {
+                System.clearProperty(ElkDiagramLayoutTracer.TARGET_FOLDER_PATH_SYSTEM_PROPERTY_KEY);
+            } else {
+                System.setProperty(ElkDiagramLayoutTracer.TARGET_FOLDER_PATH_SYSTEM_PROPERTY_KEY, previousValue);
+            }
+        }
     }
 
     protected void testExportDuringArrangeAll(boolean debug, boolean exportAsElkg) {
@@ -138,16 +178,16 @@ public class ELKDebugFeaturesTest extends AbstractSiriusSwtBotGefTestCase {
         }
         try {
             // Delete already existing files (from previous tests for example)
-            Arrays.stream(getJavaTemporaryFolder().toFile().listFiles((f, p) -> p.endsWith(expectedExtension))).forEach(File::delete);
+            Arrays.stream(getDefaultTemporaryFolderToUse().toFile().listFiles((f, p) -> p.endsWith(expectedExtension))).forEach(File::delete);
 
             // Launch an arrange all
             arrangeAll();
 
             int expectedNbFiles = debug ? 6 : 0;
-            assertEquals("Wrong number of \"" + expectedExtension + "\" files exported during the arrange all in \"" + getJavaTemporaryFolder().toString() + "\".", expectedNbFiles,
-                    findFiles(getJavaTemporaryFolder(), expectedExtension).size());
+            assertEquals("Wrong number of \"" + expectedExtension + "\" files exported during the arrange all in \"" + getDefaultTemporaryFolderToUse().toString() + "\".", expectedNbFiles,
+                    findFiles(getDefaultTemporaryFolderToUse(), expectedExtension).size());
         } catch (IOException e) {
-            fail("Impossible to get the \"" + expectedExtension + "\" files exported during the arrange all in \"" + getJavaTemporaryFolder().toString() + "\": " + e.getMessage());
+            fail("Impossible to get the \"" + expectedExtension + "\" files exported during the arrange all in \"" + getDefaultTemporaryFolderToUse().toString() + "\": " + e.getMessage());
         } finally {
             DiagramElkPlugin.getPlugin().setDebugging(false);
             forceDisposeTracer();
@@ -167,7 +207,7 @@ public class ELKDebugFeaturesTest extends AbstractSiriusSwtBotGefTestCase {
      * Check that export action creates a file with the expected extension.
      */
     protected void testExportAction(String actionLabel, String expectedExtension) {
-        testExportAction(actionLabel, expectedExtension, getJavaTemporaryFolder());
+        testExportAction(actionLabel, expectedExtension, getDefaultTemporaryFolderToUse());
     }
 
     /**
@@ -191,6 +231,17 @@ public class ELKDebugFeaturesTest extends AbstractSiriusSwtBotGefTestCase {
 
         Path exportedFilePath = targetFolderPath.resolve(REPRESENTATION_FOR_DIAGRAM_NAME + expectedExtension);
         assertTrue("A file with name \"" + REPRESENTATION_FOR_DIAGRAM_NAME + expectedExtension + "\" must be created in \"" + targetFolderPath.toString() + "\".", exportedFilePath.toFile().exists());
+    }
+
+    private Path getDefaultTemporaryFolderToUse() {
+        if (System.getProperty("os.name").contains("Linux")) {
+            // The java temporary folder is not used in Linux because some java.nio.file.AccessDeniedException are
+            // encountered
+            return Path.of(ResourcesPlugin.getWorkspace().getRoot().getProject(getProjectName()).getLocation().toOSString());
+        } else {
+            // Otherwise, the default directory used in Sirius code is used.
+            return getJavaTemporaryFolder();
+        }
     }
 
     private Path getJavaTemporaryFolder() {

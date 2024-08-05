@@ -268,6 +268,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(SessionEditorPageProvidingTest.class);
         suite.addTestSuite(SessionEditorProjectRemovalTest.class);
         suite.addTest(new JUnit4TestAdapter(RefreshAfterViewCreationTest.class));
+        suite.addTestSuite(ELKDebugFeaturesTest.class);
     }
 
     /**
@@ -442,7 +443,6 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(ResetOriginTest.class);
         suite.addTestSuite(LayoutStabilityOnManualRefreshTest.class);
         suite.addTestSuite(EdgeAndPortStabilityOnSemanticChangeTest.class);
-        suite.addTestSuite(ELKDebugFeaturesTest.class);
         suite.addTestSuite(SessionSaveableTest.class);
         suite.addTest(new JUnit4TestAdapter(DragAndDropFromControlledResourceTest.class));
         suite.addTestSuite(RoundedCornerRefreshTest.class);
