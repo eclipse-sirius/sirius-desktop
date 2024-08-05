@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2022 Obeo.
+ * Copyright (c) 2016, 2024 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -98,11 +98,11 @@ public class ContainerDropPropertySectionsTests extends AbstractContentAssistTes
         SWTBotShell appliedOnSelectorShell = bot.shell("Containers -- Ticket #1041 > Test case for ticket #1041 > TC1041 representation 1 > Default > tools > Drag & Drop R1");
         SWTBot appliedOnSelectorShellBot = appliedOnSelectorShell.bot();
         SWTBotTable table1 = appliedOnSelectorShellBot.table(0);
-        assertEquals("The left containers selection table does not contains all elements it should.", 19, table1.rowCount());
+        assertEquals("The left containers selection table does not contains all elements it should.", 25, table1.rowCount());
         SWTBotTable table2 = appliedOnSelectorShellBot.table(1);
         assertEquals("The right containers selection table does not contains all elements it should.", 2, table2.rowCount());
         assertEquals(GROUP_NAME + QUALIFIED_NAME_SEPARATOR + VIEWPOINT_NAME + QUALIFIED_NAME_SEPARATOR + DIAGRAM_DESCRIPTION_NAME1, table1.getTableItem(1).getText());
-        assertEquals(GROUP_NAME + QUALIFIED_NAME_SEPARATOR + VIEWPOINT_NAME + QUALIFIED_NAME_SEPARATOR + DIAGRAM_DESCRIPTION_NAME2, table1.getTableItem(4).getText());
+        assertEquals(GROUP_NAME + QUALIFIED_NAME_SEPARATOR + VIEWPOINT_NAME + QUALIFIED_NAME_SEPARATOR + DIAGRAM_DESCRIPTION_NAME2, table1.getTableItem(10).getText());
         assertEquals(GROUP_NAME + QUALIFIED_NAME_SEPARATOR + VIEWPOINT_NAME + QUALIFIED_NAME_SEPARATOR + DIAGRAM_DESCRIPTION_NAME3, table2.getTableItem(0).getText());
         assertEquals(GROUP_NAME + QUALIFIED_NAME_SEPARATOR + VIEWPOINT_NAME + QUALIFIED_NAME_SEPARATOR + DIAGRAM_DESCRIPTION_NAME3 + QUALIFIED_NAME_SEPARATOR + DEFAULT_LAYER_NAME
                 + QUALIFIED_NAME_SEPARATOR + FIRST_REPRESENTATION_CONTAINER_NAME, table2.getTableItem(1).getText());
