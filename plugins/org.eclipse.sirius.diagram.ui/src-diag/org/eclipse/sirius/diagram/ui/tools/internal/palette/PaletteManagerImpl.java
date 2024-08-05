@@ -348,19 +348,19 @@ public class PaletteManagerImpl implements PaletteManager {
      */
     private <T extends PaletteEntry> Optional<T> getPaletteEntry(PaletteContainer container, final String id, Class<T> type) {
         Optional<T> matchingPaletteEntry = Optional.empty();
-        List<PaletteEntry> children = container.getChildren();
+        List<? extends PaletteEntry> children = container.getChildren();
         List<T> matchingPaletteEntries = children.stream() //
                 .filter(type::isInstance) //
                 .map(type::cast) //
                 .filter(paletteEntry -> id.equals(paletteEntry.getId())) //
-                .collect(Collectors.toList());
+                .toList();
 
         if (!matchingPaletteEntries.isEmpty()) {
             if (matchingPaletteEntries.size() > 1) {
                 // Here several matching candidates have been found, we will return one of them
                 List<String> labelEntries = matchingPaletteEntries.stream() //
                         .map(PaletteEntry::getLabel) //
-                        .collect(Collectors.toList());
+                        .toList();
                 String formatedEntries = String.join(", ", labelEntries); //$NON-NLS-1$
                 DiagramPlugin.getDefault().logWarning(MessageFormat.format(Messages.PaletteManagerImpl_severalCandidatesInPalette, type.getName(), formatedEntries));
             }
@@ -401,12 +401,9 @@ public class PaletteManagerImpl implements PaletteManager {
 
     private CreationToolEntry getNoteAttachementToolEntry(final PaletteContainer container) {
         String noteAttachmentToolLabel = Platform.getResourceString(org.eclipse.gmf.runtime.diagram.ui.internal.DiagramUIPlugin.getInstance().getBundle(), "%NoteAttachmentTool.Label"); //$NON-NLS-1$
-        for (Object child : container.getChildren()) {
-            if (child instanceof CreationToolEntry) {
-                CreationToolEntry paletteToolEntry = (CreationToolEntry) child;
-                if (noteAttachmentToolLabel.equals(paletteToolEntry.getLabel())) {
+        for (var child : container.getChildren()) {
+            if (child instanceof CreationToolEntry paletteToolEntry && noteAttachmentToolLabel.equals(paletteToolEntry.getLabel())) {
                     return paletteToolEntry;
-                }
             }
         }
         return null;
@@ -424,12 +421,12 @@ public class PaletteManagerImpl implements PaletteManager {
     private PaletteContainer getPaletteContainer(PaletteContainer container, String searchedLabel) {
         PaletteContainer result = null;
         if (container != null) {
-            for (Object child : container.getChildren()) {
-                if (child instanceof PaletteContainer) {
-                    if (searchedLabel.equals(((PaletteContainer) child).getLabel())) {
+            for (var child : container.getChildren()) {
+                if (child instanceof PaletteContainer paletteContainer) {
+                    if (searchedLabel.equals(paletteContainer.getLabel())) {
                         result = (PaletteContainer) child;
                     } else {
-                        result = getPaletteContainer((PaletteContainer) child, searchedLabel);
+                        result = getPaletteContainer(paletteContainer, searchedLabel);
                     }
                 }
                 if (result != null) {
@@ -462,7 +459,7 @@ public class PaletteManagerImpl implements PaletteManager {
 
     private void setLayerVisibility(final Layer layer, final boolean visibility) {
         final List<ToolSection> sections = layer.getToolSections();
-        List<PaletteEntry> children = paletteRoot.getChildren();
+        List<? extends PaletteEntry> children = paletteRoot.getChildren();
         List<SectionPaletteDrawer> sectionDrawers = children.stream().filter(SectionPaletteDrawer.class::isInstance).map(SectionPaletteDrawer.class::cast).collect(Collectors.toList());
 
         for (final SectionPaletteDrawer sectionDrawer : sectionDrawers) {
@@ -507,9 +504,8 @@ public class PaletteManagerImpl implements PaletteManager {
     }
 
     private static void setToolsVisibility(final PaletteDrawer drawner, final Layer layer, final ToolSection section, final boolean visibility) {
-        for (final PaletteEntry entry : (List<PaletteEntry>) drawner.getChildren()) {
-            if (entry instanceof ToolGroupPaletteStack) {
-                final ToolGroupPaletteStack stack = (ToolGroupPaletteStack) entry;
+        for (final PaletteEntry entry : (List<? extends PaletteEntry>) drawner.getChildren()) {
+            if (entry instanceof ToolGroupPaletteStack stack) {
                 PaletteManagerImpl.setPaletteStackVisibility(stack, layer, section.getOwnedTools(), visibility);
                 PaletteManagerImpl.setPaletteStackVisibility(stack, layer, section.getReusedTools(), visibility);
                 for (final ToolGroupExtension groupExtension : section.getGroupExtensions()) {
@@ -519,7 +515,7 @@ public class PaletteManagerImpl implements PaletteManager {
                         } else {
                             stack.removeLayer(layer);
                         }
-                        for (final PaletteEntry subEntry : (List<PaletteEntry>) stack.getChildren()) {
+                        for (final PaletteEntry subEntry : (List<? extends PaletteEntry>) stack.getChildren()) {
                             PaletteManagerImpl.setPaletteEntryVisibility(subEntry, groupExtension.getTools(), visibility);
                         }
                     }
