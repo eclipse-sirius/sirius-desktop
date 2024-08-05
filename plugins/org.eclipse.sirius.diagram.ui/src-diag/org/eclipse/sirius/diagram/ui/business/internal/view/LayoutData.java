@@ -215,7 +215,7 @@ public class LayoutData extends AbstractLayoutData {
     }
 
     /**
-     * Search recursively in in all the LayoutData is there is one which have
+     * Search recursively in in all the LayoutData if there is one which have
      * the element for target.
      * 
      * @param node

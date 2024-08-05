@@ -17,6 +17,7 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.eclipse.gef.EditPart;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
@@ -29,6 +30,11 @@ import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
 import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainer2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartment2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeList2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListViewNodeListCompartment2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListViewNodeListCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.draw2d.ui.figures.FigureUtilities;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
@@ -116,7 +122,44 @@ public class NodeCreationEditPolicy extends SiriusContainerEditPolicy {
      */
     protected Command getCreateNodeInContainerCommand(CreateRequest request, NodeCreationDescription tool, DDiagramElementContainer viewNodeContainer) {
         CreationUtil creationUtil = new CreationUtil(request, getDiagramCommandFactory(), getRealLocation(request), getHost());
+        if (!tool.getExtraMappings().isEmpty()) {
+            // BorderNode requires extra mapping when in Stack Container.
+            // If it is in a stack container, we need to provide more layout Data.
+            EditPart stackContainer = getStackContainer(getHost());
+            if (stackContainer != getHost() && stackContainer != null) { // Host is not the main container.
+                creationUtil.setStackContainer(getRealLocation(request, stackContainer), stackContainer);
+            }
+        }
         return creationUtil.getNodeCreationCommand(viewNodeContainer, tool);
+    }
+    
+    private EditPart getStackContainer(EditPart part) {
+        // Note:
+        // Model won't help much as it is always 
+        // DNodeContainerSpec or DNodeListSpec for the different cases.
+        boolean regionOfList = part instanceof DNodeList2EditPart // Head of region
+                || part instanceof DNodeListViewNodeListCompartmentEditPart; // List with label
+        boolean regionOfFreeForm = part instanceof DNodeContainerViewNodeContainerCompartment2EditPart // Free Region
+                || part instanceof DNodeContainer2EditPart // inner header
+                || part instanceof DNodeListViewNodeListCompartment2EditPart; // List region
+                
+        if (regionOfList || regionOfFreeForm) {
+            EditPart parent = part.getParent(); 
+            while (parent != null  && !isMappedPart(parent)) {
+                parent = parent.getParent(); 
+            }
+            
+            return getStackContainer(parent);
+        } 
+            
+        // Not a part of stack container, part is already the last container.
+        return part;
+    }
+    
+    private static boolean isMappedPart(EditPart part) {
+        // Some parts are only boilerplate.
+        return part.getModel() instanceof Node
+                && ((Node) part.getModel()).getElement() != null;
     }
 
     /**
@@ -134,19 +177,34 @@ public class NodeCreationEditPolicy extends SiriusContainerEditPolicy {
         }
     }
 
+
     /**
      * Computes the real location where the element must be created from the raw
-     * information passed in the request.
+     * information passed in the request on host edit part.
      * 
      * @param request
      *            the creation request.
      * @return the real location where the element must be created.
      */
     protected Point getRealLocation(final CreateRequest request) {
+        return getRealLocation(request, getHost());
+    }
+    
+    /**
+     * Computes the real location where the element must be created from the raw
+     * information passed in the request.
+     * 
+     * @param request
+     *            the creation request.
+     * @param host
+     *            the edit part to get the location from
+     * @return the real location where the element must be created.
+     */
+    protected Point getRealLocation(final CreateRequest request, EditPart host) {
         Point location = request.getLocation().getCopy();
         final Point realLocation;
-        if (location != null && getHost() instanceof GraphicalEditPart) {
-            final IFigure fig = ((GraphicalEditPart) getHost()).getFigure();
+        if (location != null && host instanceof GraphicalEditPart) {
+            final IFigure fig = ((GraphicalEditPart) host).getFigure();
             fig.translateToRelative(location);
             final Point containerLocation = fig.getBounds().getLocation();
             location = new Point(location.x - containerLocation.x, location.y - containerLocation.y);
@@ -160,7 +218,7 @@ public class NodeCreationEditPolicy extends SiriusContainerEditPolicy {
                 } else {
                     scrollOffset = ((ResizableCompartmentFigure) fig).getScrollPane().getViewport().getViewLocation();
                 }
-                final Point shiftFromMarginOffset = FigureUtilities.getShiftFromMarginOffset((ResizableCompartmentFigure) fig, isBorderNodeCreationRequest, getHost());
+                final Point shiftFromMarginOffset = FigureUtilities.getShiftFromMarginOffset((ResizableCompartmentFigure) fig, isBorderNodeCreationRequest, host);
                 realLocation = new Point(location.x + scrollOffset.x - shiftFromMarginOffset.x, location.y + scrollOffset.y - shiftFromMarginOffset.y);
 
             } else {
