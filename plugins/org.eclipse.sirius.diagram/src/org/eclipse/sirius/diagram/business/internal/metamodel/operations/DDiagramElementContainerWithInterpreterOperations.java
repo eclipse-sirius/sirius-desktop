@@ -231,6 +231,9 @@ public final class DDiagramElementContainerWithInterpreterOperations {
                     result = true;
                 }
             }
+        } else {
+            // If the tool is directly contained in the diagram description, it is considered as active.
+            result = true;
         }
         return result;
     }
