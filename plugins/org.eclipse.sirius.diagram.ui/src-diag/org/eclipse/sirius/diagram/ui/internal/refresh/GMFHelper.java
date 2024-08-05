@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2023 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,9 +16,11 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 import org.eclipse.core.runtime.Path;
@@ -27,6 +29,7 @@ import org.eclipse.draw2d.FigureUtilities;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
+import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PrecisionRectangle;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -38,17 +41,20 @@ import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.figures.ResizableCompartmentFigure;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
+import org.eclipse.gmf.runtime.notation.FontStyle;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.Size;
+import org.eclipse.gmf.runtime.notation.Style;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -72,6 +78,7 @@ import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeContainerQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainer2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeList2EditPart;
@@ -111,15 +118,20 @@ public final class GMFHelper {
 
     /**
      * see org.eclipse.sirius.diagram.ui.internal.edit.parts. AbstractDNodeContainerCompartmentEditPart.DEFAULT_MARGIN
-     * the Y value is the DEFAULT_MARGIN + the InvisibleResizableCompartmentFigure top Inset (1px)
+     * the top value is the DEFAULT_MARGIN + the InvisibleResizableCompartmentFigure top Inset (1px)
      */
-    private static Point CONTAINER_INSETS = new Point(AbstractDNodeContainerCompartmentEditPart.DEFAULT_MARGIN, IContainerLabelOffsets.LABEL_OFFSET);
+    private static Insets FREEFORM_CONTAINER_INSETS = new Insets(IContainerLabelOffsets.LABEL_OFFSET, AbstractDNodeContainerCompartmentEditPart.DEFAULT_MARGIN,
+            AbstractDNodeContainerCompartmentEditPart.DEFAULT_MARGIN, AbstractDNodeContainerCompartmentEditPart.DEFAULT_MARGIN);
+
+    private static Insets LIST_CONTAINER_INSETS = new Insets(4, 0, 0, 0);
 
     /**
      * The gap in pixels between the Label's icon and its text
      * (org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel.getIconTextGap()).
      */
     private static final int ICON_TEXT_GAP = 3;
+
+    private static Map<Node, Rectangle> boundsCache = new HashMap<>();
 
     private GMFHelper() {
         // Helper to not instantiate
@@ -130,40 +142,187 @@ public final class GMFHelper {
      * 
      * @param node
      *            the GMF Node
-     * 
-     * @return the absolute location of the node relative to the origin (Diagram)
-     */
-    public static Point getAbsoluteLocation(Node node) {
-        return getAbsoluteLocation(node, false);
-    }
-
-    /**
-     * Get the absolute location relative to the origin (Diagram).
-     * 
-     * @param node
-     *            the GMF Node
      * @param insetsAware
      *            true to consider the draw2D figures insets. <strong>Warning:</strong> Those insets are based on the
      *            current Sirius editParts and could become wrong if a developer customizes them.
+     * @param adaptBorderNodeLocation
+     *            Useful for specific border nodes, like in sequence diagrams, to center the border nodes if the
+     *            coordinate is 0 (x for EAST or WEST side, y for NORTH or SOUTH side)
      * 
      * @return the absolute location of the node relative to the origin (Diagram)
      */
-    public static Point getAbsoluteLocation(Node node, boolean insetsAware) {
-        Node currentNode = node;
-        Point absoluteNodeLocation = getLocation(currentNode);
-        if (currentNode.eContainer() instanceof Node) {
-            currentNode = (Node) currentNode.eContainer();
-            Point parentNodeLocation = getAbsoluteLocation(currentNode, insetsAware);
-            absoluteNodeLocation.translate(parentNodeLocation);
-            if (insetsAware) {
-                translateWithInsets(absoluteNodeLocation, node);
+    public static Point getAbsoluteLocation(Node node, boolean insetsAware, boolean adaptBorderNodeLocation) {
+        // TODO: Location of title "DNode*NameEditPart", x coordinate, can be wrong according to label alignment. This
+        // problem is not yet handled.
+
+        Point location = new Point(0, 0);
+        LayoutConstraint layoutConstraint = node.getLayoutConstraint();
+        if (layoutConstraint instanceof Bounds gmfBounds && !(new ViewQuery(node).isRegion())) {
+            // The bounds is computed for horizontal or vertical regions, even if it is stored in GMF data
+            location.setX(gmfBounds.getX());
+            location.setY(gmfBounds.getY());
+        }
+        ViewQuery viewQuery = new ViewQuery(node);
+        if (adaptBorderNodeLocation && viewQuery.isBorderedNode() && layoutConstraint instanceof Bounds gmfBounds) {
+            // manage location of bordered node with closest side
+            if (node.getElement() instanceof DNode && node.getElement().eContainer() instanceof AbstractDNode) {
+                DNode dNode = (DNode) node.getElement();
+                AbstractDNode parentAbstractDNode = (AbstractDNode) dNode.eContainer();
+                if (parentAbstractDNode.getOwnedBorderedNodes().contains(dNode)) {
+                    Node parentNode = (Node) node.eContainer();
+                    LayoutConstraint parentLayoutConstraint = parentNode.getLayoutConstraint();
+                    if (parentLayoutConstraint instanceof Bounds) {
+                        Bounds parentBounds = (Bounds) parentLayoutConstraint;
+                        int position = CanonicalDBorderItemLocator.findClosestSideOfParent(new Rectangle(gmfBounds.getX(), gmfBounds.getY(), gmfBounds.getWidth(), gmfBounds.getHeight()),
+                                new Rectangle(parentBounds.getX(), parentBounds.getY(), parentBounds.getWidth(), parentBounds.getHeight()));
+                        centerLocationIfZero(location, position, parentBounds, gmfBounds);
+                    }
+                }
             }
         }
-        return absoluteNodeLocation;
+        if (viewQuery.isListCompartment()) {
+            // Translate the compartment to be just below the the title, the x coordinate is also the same (same parent
+            // insets)
+            Rectangle titleBounds = getAbsoluteBounds(getPreviousChild(node), false, false, true, false);
+            location.translate(titleBounds.preciseX(), titleBounds.preciseY() + titleBounds.preciseHeight());
+            // Translate from the spacing (5 pixels)
+            location.translate(0, IContainerLabelOffsets.LABEL_OFFSET);
+        } else if (viewQuery.isListItem()) {
+            if (node.eContainer() instanceof Node container) {
+                if (container.getChildren().get(0) == node) {
+                    Point parentNodeLocation = getAbsoluteLocation(container, insetsAware, false);
+                    location.translate(parentNodeLocation);
+                    if (insetsAware) {
+                        translateWithInsets(location, node);
+                    }
+                } else {
+                    // Translate from the previous children
+                    Rectangle previousChildBounds = getAbsoluteBounds(getPreviousChild(node), false, false, true, false);
+                    location.translate(previousChildBounds.preciseX(), previousChildBounds.preciseY() + previousChildBounds.preciseHeight());
+                }
+            }
+        } else if (viewQuery.isRegionContainerCompartment()) {
+            // Translate the compartment to be just below the the title, the x coordinate is also the same (same parent
+            // insets)
+            Rectangle titleBounds = getAbsoluteBounds(getPreviousChild(node), false, false, false, false);
+            location.translate(titleBounds.preciseX(), titleBounds.preciseY() + titleBounds.preciseHeight());
+            // Translate from the spacing (5 pixels)
+            location.translate(0, IContainerLabelOffsets.LABEL_OFFSET);
+        } else if (viewQuery.isVerticalRegion()) {
+            if (node.eContainer() instanceof Node container) {
+                if (container.getChildren().get(0) == node) {
+                    Point parentNodeLocation = getAbsoluteLocation(container, insetsAware, false);
+                    location.translate(parentNodeLocation);
+                    if (insetsAware) {
+                        translateWithInsets(location, node);
+                    }
+                } else {
+                    // Translate from the previous children
+                    Rectangle previousChildBounds = getAbsoluteBounds(getPreviousChild(node), false, false, false, false);
+                    location.translate(previousChildBounds.preciseX(), previousChildBounds.preciseY() + previousChildBounds.preciseHeight());
+                }
+            }
+        } else if (viewQuery.isHorizontalRegion()) {
+            if (node.eContainer() instanceof Node container) {
+                if (container.getChildren().get(0) == node) {
+                    Point parentNodeLocation = getAbsoluteLocation(container, insetsAware, false);
+                    location.translate(parentNodeLocation);
+                    if (insetsAware) {
+                        translateWithInsets(location, node);
+                    }
+                } else {
+                    // Translate from the previous children
+                    Rectangle previousChildBounds = getAbsoluteBounds(getPreviousChild(node), false, false, false, false);
+                    location.translate(previousChildBounds.preciseX() + previousChildBounds.preciseWidth(), previousChildBounds.preciseY());
+                }
+            }
+        } else if (node.eContainer() instanceof Node container) {
+            Point parentNodeLocation = getAbsoluteLocation(container, insetsAware, true);
+            location.translate(parentNodeLocation);
+            if (insetsAware) {
+                translateWithInsets(location, node);
+            }
+        }
+        return location;
+    }
+
+    private static Node getPreviousChild(Node node) {
+        Node previousChild = null;
+        boolean found = false;
+        if (node.eContainer() instanceof Node container) {
+            for (Iterator<Node> children = Iterators.filter(container.getChildren().iterator(), Node.class); children.hasNext() && !found; /* */) {
+                Node child = children.next();
+                if (node == child) {
+                    found = true;
+                } else {
+                    previousChild = child;
+                }
+            }
+        }
+        if (found) {
+            return previousChild;
+        } else {
+            return null;
+        }
     }
 
     /**
-     * Return the top-left insets of the container of this <code>node</code>. The insets also considers its border.
+     * Return the top-left insets of this <code>container</code>. The insets also considers its border.
+     * 
+     * @param container
+     *            The container for which we wish to have the insets. This {@link Node} must correspond to a container,
+     *            otherwise, {0,0} is returned
+     * @return the top-left insets of this <code>container</code>
+     */
+    public static Dimension getTopLeftInsets(Node container) {
+        Dimension result = new Dimension(0, 0);
+        NodeQuery nodeQuery = new NodeQuery(container);
+        if (nodeQuery.isContainer()) {
+            EObject element = container.getElement();
+            if (element instanceof DDiagramElementContainer) {
+                DDiagramElementContainer ddec = (DDiagramElementContainer) element;
+                // RegionContainer do not have containers insets
+                if (ddec instanceof DNodeContainer) {
+                    if (new DNodeContainerExperimentalQuery((DNodeContainer) ddec).isRegionContainer()) {
+                        // TODO Replace by VStack INSETS
+                        result.setHeight(LIST_CONTAINER_INSETS.top);
+                    } else if (hasFullLabelBorder(ddec)) {
+                        result.setHeight(FREEFORM_CONTAINER_INSETS.top);
+                    } else if (new DDiagramElementContainerExperimentalQuery(ddec).isRegion()) {
+                        // No margin
+                    } else {
+                        result.setWidth(FREEFORM_CONTAINER_INSETS.left);
+                        result.setHeight(FREEFORM_CONTAINER_INSETS.top);
+                    }
+                } else if (element instanceof DNodeList) {
+                    result.setWidth(LIST_CONTAINER_INSETS.left);
+                    result.setHeight(LIST_CONTAINER_INSETS.top);
+                }
+                if (!new DDiagramElementContainerExperimentalQuery(ddec).isRegion()) {
+                    Dimension borderSize = getBorderSize(ddec);
+                    result.setWidth(result.width() + borderSize.width());
+                    result.setHeight(result.height() + borderSize.height());
+                }
+            }
+        } else if (nodeQuery.isListCompartment()) {
+            // Add the corresponding margin of {1, 4, 0, 4} of
+            // org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeListCompartmentEditPart.createFigure()
+            result.setWidth(4);
+            result.setHeight(1);
+        } else if (nodeQuery.isRegionContainerCompartment()) {
+            // Add the corresponding OneLineMarginBorder of {1, 0, 0, 0} corresponding to
+            // org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramContainerEditPartOperation.refreshBorder(AbstractDiagramElementContainerEditPart,
+            // ViewNodeContainerFigureDesc, ContainerStyle)
+            // TODO : 1 should be replace by borderSize (style.getBorderSize().intValue())
+            result.setWidth(0);
+            result.setHeight(1);
+        }
+        return result;
+    }
+
+    /**
+     * Return the top-left insets of the container of this <code>node</code>. The insets also considers its border (the
+     * size of the border).
      * 
      * @param node
      *            The current node
@@ -178,26 +337,71 @@ public final class GMFHelper {
         if (nodeContainer instanceof Node) {
             Node parentNode = (Node) nodeContainer;
             NodeQuery nodeQuery = new NodeQuery(parentNode);
-            if (nodeQuery.isContainer()) {
-                EObject element = parentNode.getElement();
-                if (element instanceof DDiagramElementContainer) {
-                    DDiagramElementContainer ddec = (DDiagramElementContainer) element;
-                    // RegionContainer do not have containers insets
-                    if (ddec instanceof DNodeContainer) {
-                        if (new DNodeContainerExperimentalQuery((DNodeContainer) ddec).isRegionContainer() || hasFullLabelBorder(ddec)) {
-                            result.setHeight(CONTAINER_INSETS.y + getLabelSize(parentNode) + AbstractDiagramElementContainerEditPart.DEFAULT_SPACING);
+            if (nodeQuery.isContainer() || nodeQuery.isListCompartment() || nodeQuery.isRegionContainerCompartment()) {
+                result = getTopLeftInsets(parentNode);
+            } else if (searchFirstParentContainer) {
+                result = getContainerTopLeftInsets(parentNode, searchFirstParentContainer);
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Return the bottom-right insets of the container of this <code>node</code>. The insets also considers its border.
+     * 
+     * @param container
+     *            The container for which we wish to have the insets. This {@link Node} must correspond to a container,
+     *            otherwise, {0,0} is returned
+     * @return the bottom-right insets of this <code>container</code>
+     */
+    private static Dimension getBottomRightInsets(Node container) {
+        Dimension result = new Dimension(0, 0);
+        NodeQuery nodeQuery = new NodeQuery(container);
+        if (nodeQuery.isContainer()) {
+            EObject element = container.getElement();
+            if (element instanceof DDiagramElementContainer) {
+                DDiagramElementContainer ddec = (DDiagramElementContainer) element;
+                // RegionContainer do not have containers insets
+                if (ddec instanceof DNodeContainer) {
+                    if (new DNodeContainerExperimentalQuery((DNodeContainer) ddec).isRegionContainer()) {
+                        result.setWidth(LIST_CONTAINER_INSETS.right);
+                        result.setHeight(LIST_CONTAINER_INSETS.bottom);
+                        // TODO: to verify
+                        Dimension borderSize = getBorderSize(ddec);
+                        result.setWidth(result.width() + borderSize.width());
+                        result.setHeight(result.height() + borderSize.height());
+                    } else if (new DDiagramElementContainerExperimentalQuery(ddec).isRegion()) {
+                        // No margin, except the border size
+                        Dimension borderSize = getBorderSize(ddec);
+                        result.setWidth(result.width() + borderSize.width());
+                        result.setHeight(result.height() + borderSize.height());
+                    } else {
+                        if (hasFullLabelBorder(ddec)) {
+                            // TODO : Not sure about that, to verify
+                            result.setHeight(FREEFORM_CONTAINER_INSETS.bottom);
                         } else {
-                            result.setWidth(CONTAINER_INSETS.x);
-                            result.setHeight(CONTAINER_INSETS.y);
+                            result.setWidth(FREEFORM_CONTAINER_INSETS.right);
+                            result.setHeight(FREEFORM_CONTAINER_INSETS.bottom);
                         }
+                        Dimension borderSize = getBorderSize(ddec);
+                        // Added twice as this insets is used to compute the "global" size including the border
+                        result.setWidth(result.width() + (borderSize.width() * 2));
+                        result.setHeight(result.height() + (borderSize.height() * 2));
                     }
+                } else if (ddec instanceof DNodeList) {
+                    result.setWidth(LIST_CONTAINER_INSETS.right);
+                    result.setHeight(LIST_CONTAINER_INSETS.bottom);
+                    // TODO: to verify
                     Dimension borderSize = getBorderSize(ddec);
                     result.setWidth(result.width() + borderSize.width());
                     result.setHeight(result.height() + borderSize.height());
                 }
-            } else if (searchFirstParentContainer) {
-                result = getContainerTopLeftInsets(parentNode, searchFirstParentContainer);
             }
+        } else if (nodeQuery.isListCompartment()) {
+            // Add the corresponding margin of {1, 4, 0, 4} of
+            // org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeListCompartmentEditPart.createFigure()
+            result.setWidth(4);
+            result.setHeight(0);
         }
         return result;
     }
@@ -222,8 +426,8 @@ public final class GMFHelper {
             if (nodeQuery.isContainer()) {
                 EObject element = parentNode.getElement();
                 if (element instanceof DDiagramElementContainer) {
-                    result.setWidth(CONTAINER_INSETS.x);
-                    result.setHeight(CONTAINER_INSETS.y);
+                    result.setWidth(FREEFORM_CONTAINER_INSETS.left);
+                    result.setHeight(FREEFORM_CONTAINER_INSETS.top);
 
                     Dimension borderSize = getBorderSize((DDiagramElementContainer) element);
                     result.setWidth(result.width() + borderSize.width());
@@ -255,7 +459,7 @@ public final class GMFHelper {
             result.setWidth(isFirstRegion(ddec) ? 0 : borderSize);
             result.setHeight(1);
         } else if (regionQuery.isRegionInVerticalStack()) {
-            result.setWidth(1);
+            result.setWidth(0);
             result.setHeight(isFirstRegion(ddec) ? 1 : borderSize);
         } else {
             result.setWidth(borderSize);
@@ -274,32 +478,21 @@ public final class GMFHelper {
      */
     private static void translateWithInsets(Point locationToTranslate, Node currentNode) {
         NodeQuery nodeQuery = new NodeQuery(currentNode);
-        // bordered node are not concerned by those insets.
+        // Border nodes are not concerned by those insets.
         if (!nodeQuery.isBorderedNode()) {
             locationToTranslate.translate(getContainerTopLeftInsets(currentNode, false));
+            if (currentNode.eContainer() instanceof Node container) {
+                if (new ViewQuery(currentNode).isListItem() && container.getChildren().get(0) == currentNode) {
+                    // This is the first list item, add a one margin border over it.
+                    locationToTranslate.translate(0, 1);
+                }
+            }
         }
     }
 
     private static boolean hasFullLabelBorder(DDiagramElementContainer ddec) {
         Option<LabelBorderStyleDescription> labelBorderStyle = new DDiagramElementContainerExperimentalQuery(ddec).getLabelBorderStyle();
         return labelBorderStyle.some() && LabelBorderStyleIds.LABEL_FULL_BORDER_STYLE_FOR_CONTAINER_ID.equals(labelBorderStyle.get().getId());
-    }
-
-    private static int getLabelSize(Node parentNode) {
-        int labelSize = 0;
-        for (Node child : Iterables.filter(parentNode.getVisibleChildren(), Node.class)) {
-            if (new ViewQuery(child).isForNameEditPart()) {
-                // TODO Compute the real label height
-                // It depends on the font size
-                // It might require to set the layout constraint of the label
-                // GMF node which will not be used by the
-                // ConstrainedToolbarLayout to locate the label but might be
-                // usefull to store the value in the model.
-                labelSize = 16;
-                break;
-            }
-        }
-        return labelSize;
     }
 
     private static boolean isFirstRegion(DDiagramElementContainer ddec) {
@@ -331,34 +524,14 @@ public final class GMFHelper {
      * @param node
      *            the node whose location to compute.
      * @return the location of the node.
+     * @deprecated Use getAbsoluteLocation instead. This method will be removed in future.
      */
+    @Deprecated
     public static Point getLocation(Node node) {
-        Point location = new Point(0, 0);
-        LayoutConstraint layoutConstraint = node.getLayoutConstraint();
-        if (layoutConstraint instanceof Bounds) {
-            Bounds gmfBounds = (Bounds) layoutConstraint;
-            location.setX(gmfBounds.getX());
-            location.setY(gmfBounds.getY());
-            // manage location of bordered node with closest side
-            if (node.getElement() instanceof DNode && node.getElement().eContainer() instanceof AbstractDNode) {
-                DNode dNode = (DNode) node.getElement();
-                AbstractDNode parentAbstractDNode = (AbstractDNode) dNode.eContainer();
-                if (parentAbstractDNode.getOwnedBorderedNodes().contains(dNode)) {
-                    Node parentNode = (Node) node.eContainer();
-                    LayoutConstraint parentLayoutConstraint = parentNode.getLayoutConstraint();
-                    if (parentLayoutConstraint instanceof Bounds) {
-                        Bounds parentBounds = (Bounds) parentLayoutConstraint;
-                        int position = CanonicalDBorderItemLocator.findClosestSideOfParent(new Rectangle(gmfBounds.getX(), gmfBounds.getY(), gmfBounds.getWidth(), gmfBounds.getHeight()),
-                                new Rectangle(parentBounds.getX(), parentBounds.getY(), parentBounds.getWidth(), parentBounds.getHeight()));
-                        updateLocation(location, position, parentBounds, gmfBounds);
-                    }
-                }
-            }
-        }
-        return location;
+        return getAbsoluteLocation(node, true, true);
     }
 
-    private static void updateLocation(Point location, int position, Bounds parentBounds, Bounds gmfBounds) {
+    private static void centerLocationIfZero(Point location, int position, Bounds parentBounds, Bounds gmfBounds) {
         switch (position) {
         case PositionConstants.NORTH:
         case PositionConstants.SOUTH:
@@ -376,33 +549,56 @@ public final class GMFHelper {
             break;
         }
     }
-
-    /**
-     * Get the absolute bounds relative to the origin (Diagram).
-     * 
-     * @param node
-     *            the GMF Node
-     * 
-     * @return the absolute bounds of the node relative to the origin (Diagram)
-     */
-    public static Rectangle getAbsoluteBounds(Node node) {
-        return getAbsoluteBounds(node, false, false);
-    }
-
-    /**
-     * Get the absolute bounds relative to the origin (Diagram).
-     * 
-     * @param node
-     *            the GMF Node
-     * @param insetsAware
-     *            true to consider the draw2D figures insets. <strong>Warning:</strong> Those insets are based on the
-     *            current Sirius editParts and could become wrong if a developer customizes them.
-     * 
-     * @return the absolute bounds of the node relative to the origin (Diagram)
-     */
-    public static Rectangle getAbsoluteBounds(Node node, boolean insetsAware) {
-        return getAbsoluteBounds(node, insetsAware, false);
-    }
+    //
+    // /**
+    // * Get the absolute bounds relative to the origin (Diagram).
+    // *
+    // * @param node
+    // * the GMF Node
+    // * @param adaptBorderNodeLocation
+    // * Useful for specific border nodes, like in sequence diagrams, to center the border nodes if the
+    // * coordinate is 0 (x for EAST or WEST side, y for NORTH or SOUTH side)
+    // *
+    // * @return the absolute bounds of the node relative to the origin (Diagram)
+    // */
+    // public static Rectangle getAbsoluteBounds(Node node, boolean adaptBorderNodeLocation) {
+    // return getAbsoluteBounds(node, false, false, false, adaptBorderNodeLocation);
+    // }
+    // /**
+    // * Get the absolute bounds relative to the origin (Diagram).
+    // *
+    // * @param node
+    // * the GMF Node
+    // * @param insetsAware
+    // * true to consider the draw2D figures insets. <strong>Warning:</strong> Those insets are based on the
+    // * current Sirius editParts and could become wrong if a developer customizes them.
+    // * @param adaptBorderNodeLocation
+    // * Useful for specific border nodes, like in sequence diagrams, to center the border nodes if the
+    // * coordinate is 0 (x for EAST or WEST side, y for NORTH or SOUTH side)
+    // *
+    // * @return the absolute bounds of the node relative to the origin (Diagram)
+    // */
+    // public static Rectangle getAbsoluteBounds2(Node node, boolean insetsAware, boolean adaptBorderNodeLocation) {
+    // return getAbsoluteBounds(node, insetsAware, false, false, adaptBorderNodeLocation);
+    // }
+    //
+    // /**
+    // * Get the absolute bounds relative to the origin (Diagram).
+    // *
+    // * @param node
+    // * the GMF Node
+    // * @param insetsAware
+    // * true to consider the draw2D figures insets. <strong>Warning:</strong> Those insets are based on the
+    // * current Sirius editParts and could become wrong if a developer customizes them.
+    // * @param boxForConnection
+    // * true if we want to have the bounds used to compute connection anchor from source or target, false
+    // * otherwise
+    // * @return the absolute bounds of the node relative to the origin (Diagram)
+    // */
+    // public static Rectangle getAbsoluteBounds(Node node, boolean insetsAware, boolean boxForConnection, boolean
+    // adaptBorderNodeLocation) {
+    // return getAbsoluteBounds(node, insetsAware, boxForConnection, false, adaptBorderNodeLocation);
+    // }
 
     /**
      * Get the absolute bounds relative to the origin (Diagram).
@@ -415,20 +611,32 @@ public final class GMFHelper {
      * @param boxForConnection
      *            true if we want to have the bounds used to compute connection anchor from source or target, false
      *            otherwise
+     * @param recursiveGetBounds
+     *            true if this method is called from a parent "getBounds" call, false otherwise.
+     * @param adaptBorderNodeLocation
+     *            Useful for specific border nodes, like in sequence diagrams, to center the border nodes if the
+     *            coordinate is 0 (x for EAST or WEST side, y for NORTH or SOUTH side)
+     * 
      * @return the absolute bounds of the node relative to the origin (Diagram)
      */
-    public static Rectangle getAbsoluteBounds(Node node, boolean insetsAware, boolean boxForConnection) {
-        Node currentNode = node;
-        Rectangle absoluteNodeBounds = getBounds(currentNode, false, false, boxForConnection);
-        if (currentNode.eContainer() instanceof Node) {
-            currentNode = (Node) currentNode.eContainer();
-            Point parentNodeLocation = getAbsoluteLocation(currentNode, insetsAware);
-            absoluteNodeBounds = absoluteNodeBounds.getTranslated(parentNodeLocation);
-            if (insetsAware) {
-                translateWithInsets(absoluteNodeBounds, node);
+    public static Rectangle getAbsoluteBounds(Node node, boolean insetsAware, boolean boxForConnection, boolean recursiveGetBounds, boolean adaptBorderNodeLocation) {
+        if (!recursiveGetBounds) {
+            boundsCache.clear();
+        }
+        Rectangle result;
+        if (boundsCache.containsKey(node)) {
+            result = boundsCache.get(node);
+        } else {
+            Point location = getAbsoluteLocation(node, insetsAware, adaptBorderNodeLocation);
+            Rectangle bounds = getBounds(node, false, false, boxForConnection, recursiveGetBounds, location);
+            result = new PrecisionRectangle(location.preciseX(), location.preciseY(), bounds.preciseWidth(), bounds.preciseHeight());
+            if (!recursiveGetBounds) {
+                boundsCache.clear();
+            } else {
+                boundsCache.put(node, result);
             }
         }
-        return absoluteNodeBounds;
+        return result;
     }
 
     /**
@@ -511,7 +719,7 @@ public final class GMFHelper {
     public static Option<Rectangle> getAbsoluteBounds(View view, boolean insetsAware, boolean boxForConnection) {
         Option<Rectangle> result = Options.newNone();
         if (view instanceof Node) {
-            result = Options.newSome(getAbsoluteBounds((Node) view, insetsAware, boxForConnection));
+            result = Options.newSome(getAbsoluteBounds((Node) view, insetsAware, boxForConnection, false, true));
         } else if (view instanceof Edge) {
             result = getAbsoluteBounds((Edge) view, insetsAware, boxForConnection);
         }
@@ -555,7 +763,7 @@ public final class GMFHelper {
      * @return the bounds of the node.
      */
     public static Rectangle getBounds(Node node, boolean useFigureForAutoSizeConstraint, boolean forceFigureAutoSize) {
-        return getBounds(node, useFigureForAutoSizeConstraint, forceFigureAutoSize, false);
+        return getBounds(node, useFigureForAutoSizeConstraint, forceFigureAutoSize, false, false, new Point());
     }
 
     /**
@@ -571,18 +779,20 @@ public final class GMFHelper {
      * @param boxForConnection
      *            true if we want to have the bounds used to compute connection anchor from source or target, false
      *            otherwise
+     * @param recursiveGetBounds
+     *            true if this method is called from a parent "getBounds" call, false otherwise
+     * @param computedAbsoluteLocation
+     *            The absolute location of the <code>node</code>
+     * 
      * @return the bounds of the node.
      */
-    public static Rectangle getBounds(Node node, boolean useFigureForAutoSizeConstraint, boolean forceFigureAutoSize, boolean boxForConnection) {
-        PrecisionRectangle bounds = new PrecisionRectangle(0, 0, 0, 0);
+    public static Rectangle getBounds(Node node, boolean useFigureForAutoSizeConstraint, boolean forceFigureAutoSize, boolean boxForConnection, boolean recursiveGetBounds,
+            Point computedAbsoluteLocation) {
+        PrecisionRectangle bounds = new PrecisionRectangle(computedAbsoluteLocation.preciseX(), computedAbsoluteLocation.preciseY(), 0, 0);
         LayoutConstraint layoutConstraint = node.getLayoutConstraint();
         EObject element = node.getElement();
         if (element instanceof AbstractDNode) {
             AbstractDNode abstractDNode = (AbstractDNode) element;
-            if (layoutConstraint instanceof Location) {
-                bounds.setX(((Location) layoutConstraint).getX());
-                bounds.setY(((Location) layoutConstraint).getY());
-            }
             if (layoutConstraint instanceof Size) {
                 bounds.setWidth(((Size) layoutConstraint).getWidth());
                 bounds.setHeight(((Size) layoutConstraint).getHeight());
@@ -590,8 +800,8 @@ public final class GMFHelper {
                 bounds.setWidth(-1);
                 bounds.setHeight(-1);
             }
-
-            if (new ViewQuery(node).isForNameEditPart()) {
+            ViewQuery viewQuery = new ViewQuery(node);
+            if (viewQuery.isForNameEditPart() || viewQuery.isListItem()) {
                 if (abstractDNode.getName() == null || abstractDNode.getName().length() == 0) {
                     if (bounds.width == -1) {
                         bounds.setWidth(0);
@@ -602,10 +812,10 @@ public final class GMFHelper {
                 } else {
 
                     // Make a default size for label (this size is purely an average estimate)
-                    replaceAutoSize(node, bounds, useFigureForAutoSizeConstraint, getLabelDimension(node, new Dimension(50, 20)));
+                    replaceAutoSize(node, bounds, useFigureForAutoSizeConstraint, getLabelDimension(node, new Dimension(50, 20)), recursiveGetBounds);
                 }
             } else {
-                replaceAutoSize(node, bounds, useFigureForAutoSizeConstraint, null);
+                replaceAutoSize(node, bounds, useFigureForAutoSizeConstraint, null, recursiveGetBounds);
             }
 
             if (boxForConnection) {
@@ -615,8 +825,8 @@ public final class GMFHelper {
                 // This insets corresponds to insets of {@link
                 // org.eclipse.sirius.diagram.ui.tools.api.figure.AlphaDropShadowBorder#getTransparentInsets()}.
                 double shadowBorderSize = getShadowBorderSize(node);
-                bounds.setWidth(bounds.width - shadowBorderSize);
-                bounds.setHeight(bounds.height - shadowBorderSize);
+                bounds.setPreciseWidth(bounds.preciseWidth() - shadowBorderSize);
+                bounds.setPreciseHeight(bounds.preciseHeight() - shadowBorderSize);
             }
         }
         return bounds;
@@ -645,10 +855,11 @@ public final class GMFHelper {
      * 
      * @return false for regions and workspace images, true otherwise.
      */
-    public static boolean isShadowBorderNeeded(Node node) {
+    private static boolean isShadowBorderNeeded(Node node) {
         boolean needShadowBorder = false;
         EObject element = node.getElement();
-        if (element instanceof DDiagramElementContainer) {
+        ViewQuery viewQuery = new ViewQuery(node);
+        if (!viewQuery.isFreeFormCompartment() && !viewQuery.isListCompartment() && !viewQuery.isForNameEditPart() && element instanceof DDiagramElementContainer) {
             DDiagramElementContainer ddec = (DDiagramElementContainer) element;
             needShadowBorder = !(new DDiagramElementContainerExperimentalQuery(ddec).isRegion() || ddec.getOwnedStyle() instanceof WorkspaceImage);
         }
@@ -667,15 +878,26 @@ public final class GMFHelper {
      *            true to use draw2d figure to get size
      * @param providedDefaultSize
      *            The size used for creation for this kind of <code>node</code>. It is the minimum size.
+     * @param recursive
+     *            true if this method is called from a "parent" call, false otherwise.
      */
-    private static void replaceAutoSize(Node node, Rectangle bounds, boolean useFigureForAutoSizeConstraint, Dimension providedDefaultSize) {
+    private static void replaceAutoSize(Node node, PrecisionRectangle bounds, boolean useFigureForAutoSizeConstraint, Dimension providedDefaultSize, boolean recursive) {
         if (bounds.width == -1 || bounds.height == -1) {
             Dimension defaultSize = providedDefaultSize;
             if (providedDefaultSize == null) {
                 // if there is no default size, we compute it from the given
                 // node.
                 EObject element = node.getElement();
-                if (element instanceof AbstractDNode) {
+                ViewQuery nodeQuery = new ViewQuery(node);
+                if (nodeQuery.isFreeFormCompartment() || nodeQuery.isListCompartment()) {
+                    defaultSize = new Dimension(ResizableCompartmentFigure.MIN_CLIENT_DP, ResizableCompartmentFigure.MIN_CLIENT_DP);
+                    if (node.getChildren().isEmpty()) {
+                        if (nodeQuery.isListCompartment() || nodeQuery.isVerticalRegionContainerCompartment() || nodeQuery.isHorizontalRegionContainerCompartment()) {
+                            // Add one margin border (even if empty)
+                            defaultSize.expand(0, 1);
+                        }
+                    }
+                } else if (element instanceof AbstractDNode) {
                     defaultSize = getDefaultSize((AbstractDNode) element);
                 }
             }
@@ -710,20 +932,33 @@ public final class GMFHelper {
             } else {
                 // Compute the bounds of all children and use the lowest
                 // one (y+height) for height and the rightmost one
-                // (x+width) for width.
-                Point bottomRight = getBottomRight(node);
+                // (x+width) for width plus the margin.
+                Rectangle childrenBounds = getChildrenBounds(node, recursive);
+                // Add the potential shadow border size and the bottom right insets of the node (i.e. container)
+                double shadowBorderSize = getShadowBorderSize(node);
+                Dimension bottomRightInsets = getBottomRightInsets(node);
+                // Do not add bottom right insets and shadow if there is at least one border node on the corresponding
+                // side
+                int borderNodesSides = PositionConstants.NONE;
+                if (recursive) {
+                    borderNodesSides = getBorderNodesSides(node, childrenBounds);
+                }
+                boolean isBorderNodeOnRightSide = (PositionConstants.RIGHT & borderNodesSides) == PositionConstants.RIGHT;
+                boolean isBorderNodeOnBottomSide = (PositionConstants.BOTTOM & borderNodesSides) == PositionConstants.BOTTOM;
+                childrenBounds.resize(isBorderNodeOnRightSide ? 0 : bottomRightInsets.width() + shadowBorderSize, isBorderNodeOnBottomSide ? 0 : bottomRightInsets.height() + shadowBorderSize);
+                // Replace -1 by the new computed values
                 if (bounds.width == -1) {
-                    if (bottomRight.x > defaultSize.width) {
-                        bounds.setWidth(bottomRight.x);
-                    } else {
-                        bounds.setWidth(defaultSize.width);
+                    bounds.setPreciseWidth(defaultSize.preciseWidth());
+                    double deltaWidth = childrenBounds.getRight().preciseX() - bounds.getRight().preciseX();
+                    if (deltaWidth > 0) {
+                        bounds.resize(deltaWidth, 0);
                     }
                 }
                 if (bounds.height == -1) {
-                    if (bottomRight.y > defaultSize.height) {
-                        bounds.setHeight(bottomRight.y);
-                    } else {
-                        bounds.setHeight(defaultSize.height);
+                    bounds.setPreciseHeight(defaultSize.preciseHeight());
+                    double deltaHeight = childrenBounds.getBottom().preciseY() - bounds.getBottom().preciseY();
+                    if (deltaHeight > 0) {
+                        bounds.resize(0, deltaHeight);
                     }
                 }
             }
@@ -735,6 +970,29 @@ public final class GMFHelper {
                 bounds.setHeight(defaultSize.height);
             }
         }
+    }
+
+    private static int getBorderNodesSides(Node container, Rectangle containerChildrenBounds) {
+        int result = PositionConstants.NONE;
+        for (Iterator<Node> children = Iterators.filter(container.getChildren().iterator(), Node.class); children.hasNext(); /* */) {
+            Node child = children.next();
+            if (new NodeQuery(child).isBorderedNode()) {
+                Rectangle borderNodeBounds = getAbsoluteBounds(child, false, false, false, false);
+                if (borderNodeBounds.preciseX() == containerChildrenBounds.preciseX()) {
+                    result = result | PositionConstants.LEFT;
+                }
+                if (borderNodeBounds.preciseY() == containerChildrenBounds.preciseY()) {
+                    result = result | PositionConstants.TOP;
+                }
+                if (borderNodeBounds.preciseX() + borderNodeBounds.preciseWidth() == containerChildrenBounds.preciseX() + containerChildrenBounds.preciseWidth()) {
+                    result = result | PositionConstants.RIGHT;
+                }
+                if (borderNodeBounds.preciseY() + borderNodeBounds.preciseHeight() == containerChildrenBounds.preciseY() + containerChildrenBounds.preciseHeight()) {
+                    result = result | PositionConstants.BOTTOM;
+                }
+            }
+        }
+        return result;
     }
 
     private static void lookForNextRegionLocation(Rectangle bounds, Node node) {
@@ -779,29 +1037,68 @@ public final class GMFHelper {
      * Returns a new Point representing the bottom right point of all bounds of children of this Node. Useful for Node
      * with size of -1x-1 to be more accurate (but it is still not necessarily the same size that draw2d).
      * 
-     * @param node
+     * @param container
      *            the node whose bottom right corner is to compute.
+     * @param considerBorderNode
+     *            true to consider border nodes when computing the bottom right corner point, false otherwise.
      * 
      * @return Point at the bottom right of the rectangle
      */
-    public static Point getBottomRight(Node node) {
-        int right = 0;
-        int bottom = 0;
-        for (Iterator<Node> children = Iterators.filter(node.getChildren().iterator(), Node.class); children.hasNext(); /* */) {
-            Node child = children.next();
-            // The bordered nodes is ignored
-            if (!(new NodeQuery(node).isBorderedNode())) {
-                Rectangle bounds = getBounds(child);
-                Point bottomRight = bounds.getBottomRight();
-                if (bottomRight.x > right) {
-                    right = bottomRight.x;
-                }
-                if (bottomRight.y > bottom) {
-                    bottom = bottomRight.y;
+    private static Rectangle getChildrenBounds(Node container, boolean considerBorderNodes) {
+        Rectangle result = null;
+        if (container.getChildren().isEmpty()) {
+            result = new PrecisionRectangle();
+        }
+        ViewQuery containerViewQuery = new ViewQuery(container);
+        if (containerViewQuery.isListContainer() || containerViewQuery.isListCompartment() || containerViewQuery.isVerticalRegionContainerCompartment()) {
+            if (!container.getChildren().isEmpty()) {
+                Node lastChild = getLastChild(container, considerBorderNodes);
+                result = getAbsoluteBounds(lastChild, true, false, false, false);
+            }
+        } else {
+            for (Iterator<Node> children = Iterators.filter(container.getChildren().iterator(), Node.class); children.hasNext(); /* */) {
+                Node child = children.next();
+                // The border nodes are ignored, except if it is expected to consider it (auto-size of a container with
+                // children having border nodes)
+                if (considerBorderNodes || !(new NodeQuery(child).isBorderedNode())) {
+                    Rectangle childAbsoluteBounds = getAbsoluteBounds(child, true, false, false, false);
+                    // TODO : Use intersection here ?
+                    if (result == null) {
+                        result = childAbsoluteBounds.getCopy();
+                    } else {
+                        double deltaX = result.preciseX() - childAbsoluteBounds.preciseX();
+                        if (deltaX > 0) {
+                            result.translate(-deltaX, 0);
+                            result.resize(deltaX, 0);
+                        }
+                        double deltaY = result.preciseY() - childAbsoluteBounds.preciseY();
+                        if (deltaY > 0) {
+                            result.translate(0, -deltaY);
+                            result.resize(0, deltaY);
+                        }
+                        double deltaWidth = childAbsoluteBounds.getRight().preciseX() - result.getRight().preciseX();
+                        if (deltaWidth > 0) {
+                            result.resize(deltaWidth, 0);
+                        }
+                        double deltaHeight = childAbsoluteBounds.getBottom().preciseY() - result.getBottom().preciseY();
+                        if (deltaHeight > 0) {
+                            result.resize(0, deltaHeight);
+                        }
+                    }
                 }
             }
         }
-        return new Point(right, bottom);
+        return result;
+    }
+
+    private static Node getLastChild(Node container, boolean considerBorderNodes) {
+        for (int i = container.getChildren().size() - 1; i >= 0; i--) {
+            Node currentNode = (Node) container.getChildren().get(i);
+            if (considerBorderNodes || !new NodeQuery(currentNode).isBorderedNode()) {
+                return currentNode;
+            }
+        }
+        return null;
     }
 
     private static Dimension getDefaultSize(AbstractDNode abstractDNode) {
@@ -944,7 +1241,16 @@ public final class GMFHelper {
             if (!new DDiagramElementQuery(dDiagramElement).isLabelHidden()) {
                 if (siriusStyle instanceof BasicLabelStyle) {
                     BasicLabelStyle bls = (BasicLabelStyle) siriusStyle;
-                    Font defaultFont = VisualBindingManager.getDefault().getFontFromLabelStyle(bls, (String) viewQuery.getDefaultValue(NotationPackage.Literals.FONT_STYLE__FONT_NAME));
+                    String fontName = (String) viewQuery.getDefaultValue(NotationPackage.Literals.FONT_STYLE__FONT_NAME);
+                    Optional<Style> optionalStyle = getFontStyleOf(node);
+                    if (optionalStyle.isPresent() && optionalStyle.get() instanceof FontStyle) {
+                        String currentFontName = ((FontStyle) optionalStyle.get()).getFontName();
+                        if (currentFontName != null && !currentFontName.isEmpty()) {
+                            // Use the defined font name in the node if it is defined.
+                            fontName = currentFontName;
+                        }
+                    }
+                    Font defaultFont = VisualBindingManager.getDefault().getFontFromLabelStyle(bls, fontName);
                     try {
                         labelSize = FigureUtilities.getStringExtents(dDiagramElement.getName(), defaultFont);
                         if (bls.isShowIcon()) {
@@ -962,6 +1268,23 @@ public final class GMFHelper {
             }
         }
         return labelSize;
+    }
+
+    /**
+     * Get the font style to use for this node. As in
+     * {@link org.eclipse.sirius.diagram.ui.edit.api.part.DiagramNameEditPartOperation#getFontStyle(IDiagramNameEditPart)},
+     * the parent style is used if no one is defined for the node.
+     * 
+     * @param node
+     *            The node to use
+     * @return The font style to use for this node
+     */
+    private static Optional<Style> getFontStyleOf(Node node) {
+        Style style = node.getStyle(NotationPackage.eINSTANCE.getFontStyle());
+        if (style == null && node.eContainer() instanceof View container) {
+            style = container.getStyle(NotationPackage.eINSTANCE.getFontStyle());
+        }
+        return Optional.ofNullable(style);
     }
 
     private static Dimension getIconDimension(DSemanticDecorator dSemanticDecorator, BasicLabelStyle bls) {
