@@ -12,6 +12,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.ocl.business.internal.interpreter;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -26,6 +29,7 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
+import org.eclipse.ocl.EnvironmentFactory;
 import org.eclipse.ocl.OCL;
 import org.eclipse.ocl.ParserException;
 import org.eclipse.ocl.Query;
@@ -278,9 +282,37 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
 
     private OCL<?, EClassifier, ?, ?, ?, ?, ?, ?, ?, Constraint, EClass, EObject> getOCL() {
         if (ocl == null) {
-            ocl = OCL.newInstance(EcoreEnvironmentFactory.INSTANCE);
+            ocl = safeCreateOCL(EcoreEnvironmentFactory.INSTANCE);
         }
         return ocl;
+    }
+    
+    @SuppressWarnings("unchecked")
+    private OCL<?, EClassifier, ?, ?, ?, ?, ?, ?, ?, Constraint, EClass, EObject> safeCreateOCL(EnvironmentFactory<?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?> environmentFactory) {
+        Method newInstanceMethod = null;
+        try {
+            newInstanceMethod = OCL.class.getDeclaredMethod("newInstance", new Class<?>[] { EnvironmentFactory.class }); //$NON-NLS-1$
+        } catch (NoSuchMethodException nsme) {
+            try {
+                newInstanceMethod = OCL.class.getDeclaredMethod("newInstanceAbstract", new Class<?>[] { EnvironmentFactory.class }); //$NON-NLS-1$
+            } catch (NoSuchMethodException nsme2) {
+                // No more alternatives
+            }
+        } catch (SecurityException | IllegalArgumentException e) {
+            throw new RuntimeException("No valid static factory method found for OCL", e); //$NON-NLS-1$
+        }
+
+        if (newInstanceMethod != null && Modifier.isStatic(newInstanceMethod.getModifiers())) {
+            try {
+                var oclInstance = newInstanceMethod.invoke(null, new Object[] { environmentFactory });
+                if (oclInstance instanceof OCL) {
+                    return (OCL<?, EClassifier, ?, ?, ?, ?, ?, ?, ?, Constraint, EClass, EObject>) oclInstance;
+                }
+            } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+
+            }
+        }
+        throw new RuntimeException("No valid static factory method found for OCL"); //$NON-NLS-1$
     }
 
     @Override
