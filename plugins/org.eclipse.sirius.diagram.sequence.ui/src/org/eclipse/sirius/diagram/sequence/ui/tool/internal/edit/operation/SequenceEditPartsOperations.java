@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -200,7 +200,7 @@ public final class SequenceEditPartsOperations {
      *            the key of the registry entry to remove.
      */
     public static void unregisterDiagramElement(IGraphicalEditPart self, EObject element) {
-        Map<Object, Object> registry = self.getViewer().getEditPartRegistry();
+        Map<?, ?> registry = self.getViewer().getEditPartRegistry();
         if (registry.get(element) == self) {
             registry.remove(element);
         }

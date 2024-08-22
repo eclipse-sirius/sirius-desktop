@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2018, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -36,7 +36,15 @@ public class SiriusRulerEditPartFactory extends RulerEditPartFactory {
     }
 
     @Override
-    protected EditPart createRulerEditPart(EditPart parentEditPart, Object model) {
-        return new SiriusRulerEditPart(model);
+    public EditPart createEditPart(EditPart parentEditPart, Object model) {
+        // the model can be null when the contents of the root edit part are set
+        // to null
+        EditPart part = null;
+        if (isRuler(model)) {
+            part = new SiriusRulerEditPart(model);
+        } else if (model != null) {
+            part = new GuideEditPart(model);
+        }
+        return part;
     }
 }

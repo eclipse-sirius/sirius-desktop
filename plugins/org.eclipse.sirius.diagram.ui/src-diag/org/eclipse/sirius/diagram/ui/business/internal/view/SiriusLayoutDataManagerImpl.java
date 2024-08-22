@@ -737,7 +737,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
             }
         }
         if (borderedCreatedViews != null && borderedCreatedViews.size() > 0) {
-            Map<View, EditPart> editPartRegistry = host.getRoot().getViewer().getEditPartRegistry();
+            Map<Object, EditPart> editPartRegistry = host.getRoot().getViewer().getEditPartRegistry();
 
             List<EditPart> editPartToLayout = borderedCreatedViews.stream() //
                     .map(adaptable -> adaptable.getAdapter(View.class)) //
