@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2021, 2023 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -413,7 +413,7 @@ public final class DiagramEdgeEditPartOperation {
     private static Point getPointFor(final EdgeTarget edgeTarget, final IDiagramEdgeEditPart self) {
         // Retrieve the view.
         View view = null;
-        final Map<View, EditPart> editPartRegistry = self.getRoot().getViewer().getEditPartRegistry();
+        final Map<Object, EditPart> editPartRegistry = self.getRoot().getViewer().getEditPartRegistry();
 
         for (final View currentView : DiagramEdgeEditPartOperation.getViews(edgeTarget, self)) {
             if (currentView.isVisible()) {
