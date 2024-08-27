@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2009, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -62,7 +62,7 @@ public final class EclipseUIUtil {
             };
             if (null == Display.getCurrent()) {
                 // Getting the active workbench window through UI thread
-                workbench.getDisplay().syncExec(getActiveWorkbenchWindowRunnable);
+                workbench.getDisplay().asyncExec(getActiveWorkbenchWindowRunnable);
             } else {
                 // Already in the UI thread.
                 getActiveWorkbenchWindowRunnable.run();
