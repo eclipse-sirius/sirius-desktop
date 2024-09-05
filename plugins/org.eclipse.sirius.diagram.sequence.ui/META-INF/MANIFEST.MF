@@ -2,41 +2,41 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.diagram.sequence.ui;singleton:=true
-Bundle-Version: 7.4.3.qualifier
+Bundle-Version: 7.4.4.qualifier
 Bundle-Activator: org.eclipse.sirius.diagram.sequence.ui.SequenceDiagramUIPlugin$Implementation
 Bundle-Vendor: %providerName
 Require-Bundle: com.google.guava;bundle-version="27.0",
- org.eclipse.sirius.common;bundle-version="7.4.3",
- org.eclipse.sirius.diagram.sequence.edit;bundle-version="7.4.3",
+ org.eclipse.sirius.common;bundle-version="7.4.4",
+ org.eclipse.sirius.diagram.sequence.edit;bundle-version="7.4.4",
  org.eclipse.gmf.runtime.diagram.ui;bundle-version="1.9.0",
  org.eclipse.ui.ide;bundle-version="3.8.2",
- org.eclipse.sirius.diagram.ui;bundle-version="7.4.3",
- org.eclipse.sirius.common.ui;bundle-version="7.4.3",
- org.eclipse.sirius.diagram.ui.ext;bundle-version="7.4.3",
+ org.eclipse.sirius.diagram.ui;bundle-version="7.4.4",
+ org.eclipse.sirius.common.ui;bundle-version="7.4.4",
+ org.eclipse.sirius.diagram.ui.ext;bundle-version="7.4.4",
  org.eclipse.emf.common.ui;bundle-version="2.7.0",
- org.eclipse.sirius.diagram.formatdata;bundle-version="7.4.3",
- org.eclipse.sirius.ecore.extender;bundle-version="7.4.3"
+ org.eclipse.sirius.diagram.formatdata;bundle-version="7.4.4",
+ org.eclipse.sirius.ecore.extender;bundle-version="7.4.4"
 Bundle-Localization: plugin
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-17
-Export-Package: org.eclipse.sirius.diagram.sequence.ui;version="7.4.3",
- org.eclipse.sirius.diagram.sequence.ui.business.api.diagramtype;version="7.4.3",
- org.eclipse.sirius.diagram.sequence.ui.business.internal;version="7.4.3";x-internal:=true,
- org.eclipse.sirius.diagram.sequence.ui.business.internal.diagramtype;version="7.4.3";x-internal:=true,
- org.eclipse.sirius.diagram.sequence.ui.business.internal.migration;version="7.4.3";x-internal:=true,
- org.eclipse.sirius.diagram.sequence.ui.business.internal.refresh;version="7.4.3";x-internal:=true,
- org.eclipse.sirius.diagram.sequence.ui.tool.api;version="7.4.3",
- org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.command;version="7.4.3";x-internal:=true,
- org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation;version="7.4.3";x-internal:=true,
- org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part;version="7.4.3";x-internal:=true,
- org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy;version="7.4.3";x-internal:=true,
- org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.tools;version="7.4.3";x-internal:=true,
- org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator;version="7.4.3";x-internal:=true,
- org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure;version="7.4.3";x-internal:=true,
- org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout;version="7.4.3";x-internal:=true,
- org.eclipse.sirius.diagram.sequence.ui.tool.internal.provider;version="7.4.3";x-internal:=true,
- org.eclipse.sirius.diagram.sequence.ui.tool.internal.ui;version="7.4.3";x-internal:=true,
- org.eclipse.sirius.diagram.sequence.ui.tool.internal.util;version="7.4.3";x-internal:=true
+Export-Package: org.eclipse.sirius.diagram.sequence.ui;version="7.4.4",
+ org.eclipse.sirius.diagram.sequence.ui.business.api.diagramtype;version="7.4.4",
+ org.eclipse.sirius.diagram.sequence.ui.business.internal;version="7.4.4";x-internal:=true,
+ org.eclipse.sirius.diagram.sequence.ui.business.internal.diagramtype;version="7.4.4";x-internal:=true,
+ org.eclipse.sirius.diagram.sequence.ui.business.internal.migration;version="7.4.4";x-internal:=true,
+ org.eclipse.sirius.diagram.sequence.ui.business.internal.refresh;version="7.4.4";x-internal:=true,
+ org.eclipse.sirius.diagram.sequence.ui.tool.api;version="7.4.4",
+ org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.command;version="7.4.4";x-internal:=true,
+ org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation;version="7.4.4";x-internal:=true,
+ org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part;version="7.4.4";x-internal:=true,
+ org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy;version="7.4.4";x-internal:=true,
+ org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.tools;version="7.4.4";x-internal:=true,
+ org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator;version="7.4.4";x-internal:=true,
+ org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure;version="7.4.4";x-internal:=true,
+ org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout;version="7.4.4";x-internal:=true,
+ org.eclipse.sirius.diagram.sequence.ui.tool.internal.provider;version="7.4.4";x-internal:=true,
+ org.eclipse.sirius.diagram.sequence.ui.tool.internal.ui;version="7.4.4";x-internal:=true,
+ org.eclipse.sirius.diagram.sequence.ui.tool.internal.util;version="7.4.4";x-internal:=true
 Import-Package: org.eclipse.sirius.ext.base;version="2.1.0",
  org.eclipse.sirius.ext.draw2d.figure;version="2.0.0",
  org.eclipse.sirius.ext.gmf.runtime.editparts;version="2.0.0"
