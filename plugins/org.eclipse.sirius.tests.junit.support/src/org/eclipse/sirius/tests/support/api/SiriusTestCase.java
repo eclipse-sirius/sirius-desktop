@@ -1620,8 +1620,6 @@ public abstract class SiriusTestCase extends TestCase {
     /**
      * Change a preference and store the old value. It will be automatically reset during tear down.
      * 
-     * TO CALL ONLY ONCE PER TEST (set up + test)
-     * 
      * @param preferenceKey
      *            The key of the preference.
      * @param newValue
@@ -1631,7 +1629,7 @@ public abstract class SiriusTestCase extends TestCase {
         SiriusAssert.assertNoDiagramUIPreferenceChangedinDiagramCoreStore(preferenceKey);
 
         int oldValue = Platform.getPreferencesService().getInt(DiagramPlugin.ID, preferenceKey, 0, null);
-        oldValueDiagramPreferences.put(preferenceKey, oldValue);
+        oldValueDiagramPreferences.putIfAbsent(preferenceKey, oldValue);
 
         IEclipsePreferences diagramCorePreferences = InstanceScope.INSTANCE.getNode(DiagramPlugin.ID);
         diagramCorePreferences.putInt(preferenceKey, newValue);
@@ -1643,8 +1641,6 @@ public abstract class SiriusTestCase extends TestCase {
     /**
      * Change a boolean preference and store the old value. It will be automatically reset during tear down.
      * 
-     * TO CALL ONLY ONCE PER TEST (set up + test)
-     * 
      * @param preferenceKey
      *            The key of the preference.
      * @param newValue
@@ -1654,7 +1650,7 @@ public abstract class SiriusTestCase extends TestCase {
         SiriusAssert.assertNoDiagramUIPreferenceChangedinDiagramCoreStore(preferenceKey);
 
         boolean oldValue = Platform.getPreferencesService().getBoolean(DiagramPlugin.ID, preferenceKey, false, null);
-        oldValueDiagramPreferences.put(preferenceKey, oldValue);
+        oldValueDiagramPreferences.putIfAbsent(preferenceKey, oldValue);
 
         IEclipsePreferences diagramCorePreferences = InstanceScope.INSTANCE.getNode(DiagramPlugin.ID);
         diagramCorePreferences.putBoolean(preferenceKey, newValue);
@@ -1698,8 +1694,6 @@ public abstract class SiriusTestCase extends TestCase {
     /**
      * Change a preference and store the old value. It will be automatically reset during tear down.
      * 
-     * TO CALL ONLY ONCE PER TEST (set up + test)
-     * 
      * @param preferenceKey
      *            The key of the preference.
      * @param newValue
@@ -1707,15 +1701,14 @@ public abstract class SiriusTestCase extends TestCase {
      */
     protected void changeDiagramUIPreference(String preferenceKey, Integer newValue) {
         SiriusAssert.assertNoDiagramCorePreferenceChangedinDiagramUIStore(preferenceKey);
+
         final IPreferenceStore prefs = DiagramUIPlugin.getPlugin().getPreferenceStore();
-        oldValueDiagramUiPreferences.put(preferenceKey, prefs.getInt(preferenceKey));
+        oldValueDiagramUiPreferences.putIfAbsent(preferenceKey, prefs.getInt(preferenceKey));
         prefs.setValue(preferenceKey, newValue);
     }
 
     /**
      * Change a boolean preference and store the old value. It will be automatically reset during tear down.
-     * 
-     * TO CALL ONLY ONCE PER TEST (set up + test)
      * 
      * @param preferenceKey
      *            The key of the preference.
@@ -1724,8 +1717,9 @@ public abstract class SiriusTestCase extends TestCase {
      */
     protected void changeDiagramUIPreference(String preferenceKey, Boolean newValue) {
         SiriusAssert.assertNoDiagramCorePreferenceChangedinDiagramUIStore(preferenceKey);
+
         final IPreferenceStore prefs = DiagramUIPlugin.getPlugin().getPreferenceStore();
-        oldValueDiagramUiPreferences.put(preferenceKey, prefs.getBoolean(preferenceKey));
+        oldValueDiagramUiPreferences.putIfAbsent(preferenceKey, prefs.getBoolean(preferenceKey));
         prefs.setValue(preferenceKey, newValue);
     }
 
@@ -1778,8 +1772,6 @@ public abstract class SiriusTestCase extends TestCase {
     /**
      * Change a boolean preference and store the old value. It will be automatically reset during tear down.
      * 
-     * TO CALL ONLY ONCE PER TEST (set up + test)
-     * 
      * @param preferenceKey
      *            The key of the preference.
      * @param newValue
@@ -1787,7 +1779,8 @@ public abstract class SiriusTestCase extends TestCase {
      */
     protected void changeSiriusPreference(String preferenceKey, Boolean newValue) {
         boolean oldValue = Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, preferenceKey, false, null);
-        oldValueSiriusPreferences.put(preferenceKey, oldValue);
+
+        oldValueSiriusPreferences.putIfAbsent(preferenceKey, oldValue);
 
         IEclipsePreferences corePreferences = InstanceScope.INSTANCE.getNode(SiriusPlugin.ID);
         corePreferences.putBoolean(preferenceKey, newValue);
@@ -1799,8 +1792,6 @@ public abstract class SiriusTestCase extends TestCase {
     /**
      * Change a boolean preference and store the old value. It will be automatically reset during tear down.
      * 
-     * TO CALL ONLY ONCE PER TEST (set up + test)
-     * 
      * @param preferenceKey
      *            The key of the preference.
      * @param newValue
@@ -1810,7 +1801,7 @@ public abstract class SiriusTestCase extends TestCase {
         SiriusAssert.assertNoSiriusCorePreferenceChangedinSiriusUIStore(preferenceKey);
 
         IPreferenceStore viewpointUIPrefs = SiriusEditPlugin.getPlugin().getPreferenceStore();
-        oldValueSiriusUIPreferences.put(preferenceKey, viewpointUIPrefs.getBoolean(preferenceKey));
+        oldValueSiriusUIPreferences.putIfAbsent(preferenceKey, viewpointUIPrefs.getBoolean(preferenceKey));
         viewpointUIPrefs.setValue(preferenceKey, newValue);
     }
 

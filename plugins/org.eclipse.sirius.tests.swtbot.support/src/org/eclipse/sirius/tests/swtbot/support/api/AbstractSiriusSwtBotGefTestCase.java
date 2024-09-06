@@ -588,8 +588,6 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     /**
      * Change a preference and store the old value. It will be automatically reset during tear down.
      *
-     * TO CALL ONLY ONCE PER TEST (set up + test)
-     *
      * @param preferenceKey
      *            The key of the preference.
      * @param newValue
@@ -599,7 +597,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         assertNoDiagramUIPreferenceChangedinDiagramCoreStore(preferenceKey);
 
         int oldValue = Platform.getPreferencesService().getInt(DiagramPlugin.ID, preferenceKey, 0, null);
-        oldValueDiagramPreferences.put(preferenceKey, oldValue);
+        oldValueDiagramPreferences.putIfAbsent(preferenceKey, oldValue);
 
         IEclipsePreferences diagramCorePreferences = InstanceScope.INSTANCE.getNode(DiagramPlugin.ID);
         diagramCorePreferences.putInt(preferenceKey, newValue);
@@ -611,8 +609,6 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     /**
      * Change a boolean preference and store the old value. It will be automatically reset during tear down.
      *
-     * TO CALL ONLY ONCE PER TEST (set up + test)
-     *
      * @param preferenceKey
      *            The key of the preference.
      * @param newValue
@@ -622,7 +618,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         assertNoDiagramUIPreferenceChangedinDiagramCoreStore(preferenceKey);
 
         boolean oldValue = Platform.getPreferencesService().getBoolean(DiagramPlugin.ID, preferenceKey, false, null);
-        oldValueDiagramPreferences.put(preferenceKey, oldValue);
+        oldValueDiagramPreferences.putIfAbsent(preferenceKey, oldValue);
 
         IEclipsePreferences diagramCorePreferences = InstanceScope.INSTANCE.getNode(DiagramPlugin.ID);
         diagramCorePreferences.putBoolean(preferenceKey, newValue);
@@ -664,8 +660,6 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     /**
      * Change a boolean preference and store the old value. It will be automatically reset during tear down.
      *
-     * TO CALL ONLY ONCE PER TEST (set up + test)
-     *
      * @param preferenceKey
      *            The key of the preference.
      * @param newValue
@@ -675,14 +669,12 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         assertNoDiagramCorePreferenceChangedinDiagramUIStore(preferenceKey);
 
         final IPreferenceStore prefs = DiagramUIPlugin.getPlugin().getPreferenceStore();
-        oldValueDiagramUIPreferences.put(preferenceKey, prefs.getBoolean(preferenceKey));
+        oldValueDiagramUIPreferences.putIfAbsent(preferenceKey, prefs.getBoolean(preferenceKey));
         UIThreadRunnable.syncExec(() -> prefs.setValue(preferenceKey, newValue));
     }
 
     /**
      * Change an int preference and store the old value. It will be automatically reset during tear down.
-     *
-     * TO CALL ONLY ONCE PER TEST (set up + test)
      *
      * @param preferenceKey
      *            The key of the preference.
@@ -693,14 +685,12 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         assertNoDiagramCorePreferenceChangedinDiagramUIStore(preferenceKey);
 
         final IPreferenceStore prefs = DiagramUIPlugin.getPlugin().getPreferenceStore();
-        oldValueDiagramUIPreferences.put(preferenceKey, prefs.getInt(preferenceKey));
+        oldValueDiagramUIPreferences.putIfAbsent(preferenceKey, prefs.getInt(preferenceKey));
         UIThreadRunnable.syncExec(() -> prefs.setValue(preferenceKey, newValue));
     }
 
     /**
      * Change a double preference and store the old value. It will be automatically reset during tear down.
-     *
-     * TO CALL ONLY ONCE PER TEST (set up + test)
      *
      * @param preferenceKey
      *            The key of the preference.
@@ -711,7 +701,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         assertNoDiagramCorePreferenceChangedinDiagramUIStore(preferenceKey);
 
         final IPreferenceStore prefs = DiagramUIPlugin.getPlugin().getPreferenceStore();
-        oldValueDiagramUIPreferences.put(preferenceKey, prefs.getDouble(preferenceKey));
+        oldValueDiagramUIPreferences.putIfAbsent(preferenceKey, prefs.getDouble(preferenceKey));
         UIThreadRunnable.syncExec(() -> prefs.setValue(preferenceKey, newValue));
     }
 
@@ -748,8 +738,6 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     /**
      * Change a boolean preference and store the old value. It will be automatically reset during tear down.
      *
-     * TO CALL ONLY ONCE PER TEST (set up + test)
-     *
      * @param preferenceKey
      *            The key of the preference.
      * @param newValue
@@ -757,7 +745,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      */
     protected void changeSiriusPreference(String preferenceKey, Boolean newValue) {
         boolean oldValue = Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, preferenceKey, false, null);
-        oldValueSiriusPreferences.put(preferenceKey, oldValue);
+        oldValueSiriusPreferences.putIfAbsent(preferenceKey, oldValue);
 
         IEclipsePreferences corePreferences = InstanceScope.INSTANCE.getNode(SiriusPlugin.ID);
         corePreferences.putBoolean(preferenceKey, newValue);
@@ -769,8 +757,6 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     /**
      * Change a boolean preference and store the old value. It will be automatically reset during tear down.
      *
-     * TO CALL ONLY ONCE PER TEST (set up + test)
-     *
      * @param preferenceKey
      *            The key of the preference.
      * @param newValue
@@ -778,7 +764,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      */
     protected void changeSiriusCommonPreference(String preferenceKey, Boolean newValue) {
         boolean oldValue = Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, preferenceKey, false, null);
-        oldValueCommonPreferences.put(preferenceKey, oldValue);
+        oldValueCommonPreferences.putIfAbsent(preferenceKey, oldValue);
 
         IEclipsePreferences corePreferences = InstanceScope.INSTANCE.getNode(SiriusTransPlugin.PLUGIN_ID);
         corePreferences.putBoolean(preferenceKey, newValue);
@@ -790,8 +776,6 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     /**
      * Change a boolean preference and store the old value. It will be automatically reset during tear down.
      *
-     * TO CALL ONLY ONCE PER TEST (set up + test)
-     *
      * @param preferenceKey
      *            The key of the preference.
      * @param newValue
@@ -801,7 +785,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         assertNoSiriusCorePreferenceChangedinSiriusUIStore(preferenceKey);
 
         IPreferenceStore viewpointUIPrefs = SiriusEditPlugin.getPlugin().getPreferenceStore();
-        oldValueSiriusUIPreferences.put(preferenceKey, viewpointUIPrefs.getBoolean(preferenceKey));
+        oldValueSiriusUIPreferences.putIfAbsent(preferenceKey, viewpointUIPrefs.getBoolean(preferenceKey));
         viewpointUIPrefs.setValue(preferenceKey, newValue);
     }
 
@@ -815,7 +799,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      */
     protected void changePlatformUIPreference(String preferenceKey, Boolean newValue) {
         IPreferenceStore viewpointUIPrefs = PlatformUI.getPreferenceStore();
-        oldPlatformUIPreferences.put(preferenceKey, viewpointUIPrefs.getBoolean(preferenceKey));
+        oldPlatformUIPreferences.putIfAbsent(preferenceKey, viewpointUIPrefs.getBoolean(preferenceKey));
         viewpointUIPrefs.setValue(preferenceKey, newValue);
     }
 
