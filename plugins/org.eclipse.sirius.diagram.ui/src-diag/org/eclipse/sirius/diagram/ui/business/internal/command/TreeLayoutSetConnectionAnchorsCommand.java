@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,8 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.business.internal.command;
+
+import java.util.Optional;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
@@ -33,7 +35,6 @@ import org.eclipse.gmf.runtime.notation.NotationFactory;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.GMFNotationUtilities;
-import org.eclipse.sirius.ext.base.Option;
 
 /**
  * Controls the movement of source and target edge anchor. Use to move vertical
@@ -92,8 +93,8 @@ public class TreeLayoutSetConnectionAnchorsCommand extends SetConnectionAnchorsC
                 } else {
                     // We are in reconnection (compute the sourceRefPoint using
                     // GMF model data)
-                    Option<Rectangle> optionalSourceBounds = GMFHelper.getAbsoluteBounds(edge.getSource());
-                    if (optionalSourceBounds.some()) {
+                    Optional<Rectangle> optionalSourceBounds = GMFHelper.getAbsoluteBounds(edge.getSource());
+                    if (optionalSourceBounds.isPresent()) {
                         sourceBounds = optionalSourceBounds.get();
                     }
                 }
@@ -117,8 +118,8 @@ public class TreeLayoutSetConnectionAnchorsCommand extends SetConnectionAnchorsC
                 } else {
                     // We are in reconnection (compute the sourceRefPoint using
                     // GMF model data)
-                    Option<Rectangle> optionalTargetBounds = GMFHelper.getAbsoluteBounds(edge.getTarget());
-                    if (optionalTargetBounds.some()) {
+                    Optional<Rectangle> optionalTargetBounds = GMFHelper.getAbsoluteBounds(edge.getTarget());
+                    if (optionalTargetBounds.isPresent()) {
                         targetBounds = optionalTargetBounds.get();
                     }
                 }

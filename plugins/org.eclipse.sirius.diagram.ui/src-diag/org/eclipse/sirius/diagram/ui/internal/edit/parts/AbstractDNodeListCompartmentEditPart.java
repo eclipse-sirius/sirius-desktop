@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -68,7 +68,6 @@ import org.eclipse.sirius.diagram.ui.internal.edit.policies.DNodeListViewNodeLis
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.RegionCollapseAwarePropertyHandlerEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.operation.ComparisonHelper;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
-import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.LabelBorderStyleIds;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
@@ -214,8 +213,8 @@ public abstract class AbstractDNodeListCompartmentEditPart extends ListCompartme
     private boolean hasLabelBorderStyle() {
         EObject element = resolveSemanticElement();
         if (element instanceof DDiagramElementContainer) {
-            Option<LabelBorderStyleDescription> labelBorderStyle = new DDiagramElementContainerExperimentalQuery((DDiagramElementContainer) element).getLabelBorderStyle();
-            return labelBorderStyle.some() && !LabelBorderStyleIds.LABEL_FULL_BORDER_STYLE_FOR_CONTAINER_ID.equals(labelBorderStyle.get().getId());
+            Optional<LabelBorderStyleDescription> labelBorderStyle = new DDiagramElementContainerExperimentalQuery((DDiagramElementContainer) element).getLabelBorderStyle();
+            return labelBorderStyle.isPresent() && !LabelBorderStyleIds.LABEL_FULL_BORDER_STYLE_FOR_CONTAINER_ID.equals(labelBorderStyle.get().getId());
         }
         return false;
     }
