@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -230,7 +230,7 @@ public class ConnectionsFactory {
                         getAttributesForSourceOrTargetMove(edgeLayoutData, edge, source, target);
                     }
                 } else {
-                    Option<Rectangle> optionalSourceBounds = GMFHelper.getAbsoluteBounds(source);
+                    Optional<Rectangle> optionalSourceBounds = GMFHelper.getAbsoluteBounds(source);
                     LayoutData sourceLayoutData = null;
                     if (sourceEdgeTarget instanceof AbstractDNode) {
                         AbstractDNode sourceDNode = (AbstractDNode) sourceEdgeTarget;
@@ -238,14 +238,14 @@ public class ConnectionsFactory {
                     }
                     Point firstClick = getFirstClick(sourceLayoutData, optionalSourceBounds);
 
-                    if (optionalSourceBounds.some()) {
+                    if (optionalSourceBounds.isPresent()) {
                         PrecisionPoint sourceRelativeLocation = BaseSlidableAnchor.getAnchorRelativeLocation(firstClick, optionalSourceBounds.get());
                         sourceTerminal = GMFNotationUtilities.getTerminalString(sourceRelativeLocation.preciseX(), sourceRelativeLocation.preciseY());
                     } else {
                         sourceTerminal = GMFNotationUtilities.getTerminalString(0.5d, 0.5d);
                     }
 
-                    Option<Rectangle> optionaltargetBounds = GMFHelper.getAbsoluteBounds(target);
+                    Optional<Rectangle> optionaltargetBounds = GMFHelper.getAbsoluteBounds(target);
                     LayoutData targetLayoutData = null;
                     if (targetEdgeTarget instanceof AbstractDNode) {
                         AbstractDNode targetDNode = (AbstractDNode) targetEdgeTarget;
@@ -253,7 +253,7 @@ public class ConnectionsFactory {
                     }
                     Point secondClick = getSecondClick(targetLayoutData, optionaltargetBounds);
 
-                    if (optionaltargetBounds.some()) {
+                    if (optionaltargetBounds.isPresent()) {
                         PrecisionPoint targetRelativeLocation = BaseSlidableAnchor.getAnchorRelativeLocation(secondClick, optionaltargetBounds.get());
                         targetTerminal = GMFNotationUtilities.getTerminalString(targetRelativeLocation.preciseX(), targetRelativeLocation.preciseY());
                     } else {
@@ -323,10 +323,12 @@ public class ConnectionsFactory {
         }
 
         if (edgeLayoutData.getPointList() != null) {
-            GraphicalEditPart srceEditPart = GMFHelper.getGraphicalEditPart(source).get();
-            GraphicalEditPart tgtEditPart = GMFHelper.getGraphicalEditPart(target).get();
+            Optional<GraphicalEditPart> optionalSrceEditPart = GMFHelper.getGraphicalEditPart(source);
+            Optional<GraphicalEditPart> optionalTgtEditPart = GMFHelper.getGraphicalEditPart(target);
 
-            if (srceEditPart != null && tgtEditPart != null) {
+            if (optionalSrceEditPart.isPresent() && optionalTgtEditPart.isPresent()) {
+                GraphicalEditPart srceEditPart = optionalSrceEditPart.get();
+                GraphicalEditPart tgtEditPart = optionalTgtEditPart.get();
                 GraphicalHelper.screen2logical(sourceRefPoint, srceEditPart);
                 GraphicalHelper.screen2logical(targetRefPoint, tgtEditPart);
 
@@ -422,10 +424,10 @@ public class ConnectionsFactory {
         }
     }
 
-    private Point getFirstClick(LayoutData sourceLayoutData, Option<Rectangle> optionalSourceBounds) {
+    private Point getFirstClick(LayoutData sourceLayoutData, Optional<Rectangle> optionalSourceBounds) {
         Point firstClick = new Point(0, 0);
         if (sourceLayoutData == null) {
-            if (optionalSourceBounds.some()) {
+            if (optionalSourceBounds.isPresent()) {
                 firstClick = optionalSourceBounds.get().getCenter();
             }
         } else {
@@ -435,10 +437,10 @@ public class ConnectionsFactory {
         return firstClick;
     }
 
-    private Point getSecondClick(LayoutData targetLayoutData, Option<Rectangle> optionaltargetBounds) {
+    private Point getSecondClick(LayoutData targetLayoutData, Optional<Rectangle> optionaltargetBounds) {
         Point secondClick = new Point(0, 0);
         if (targetLayoutData == null) {
-            if (optionaltargetBounds.some()) {
+            if (optionaltargetBounds.isPresent()) {
                 secondClick = optionaltargetBounds.get().getCenter();
             }
         } else {

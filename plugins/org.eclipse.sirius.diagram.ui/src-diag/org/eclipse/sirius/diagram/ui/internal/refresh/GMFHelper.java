@@ -89,8 +89,6 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
-import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.AlphaDropShadowBorder;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.IContainerLabelOffsets;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.LabelBorderStyleIds;
@@ -484,8 +482,8 @@ public final class GMFHelper {
     }
 
     private static boolean hasFullLabelBorder(DDiagramElementContainer ddec) {
-        Option<LabelBorderStyleDescription> labelBorderStyle = new DDiagramElementContainerExperimentalQuery(ddec).getLabelBorderStyle();
-        return labelBorderStyle.some() && LabelBorderStyleIds.LABEL_FULL_BORDER_STYLE_FOR_CONTAINER_ID.equals(labelBorderStyle.get().getId());
+        Optional<LabelBorderStyleDescription> labelBorderStyle = new DDiagramElementContainerExperimentalQuery(ddec).getLabelBorderStyle();
+        return labelBorderStyle.isPresent() && LabelBorderStyleIds.LABEL_FULL_BORDER_STYLE_FOR_CONTAINER_ID.equals(labelBorderStyle.get().getId());
     }
 
     private static boolean isFirstRegion(DDiagramElementContainer ddec) {
@@ -586,7 +584,7 @@ public final class GMFHelper {
      * 
      * @return the absolute bounds of the edge relative to the origin (Diagram)
      */
-    public static Option<Rectangle> getAbsoluteBounds(Edge edge) {
+    public static Optional<Rectangle> getAbsoluteBounds(Edge edge) {
         return getAbsoluteBounds(edge, false, false);
     }
 
@@ -604,14 +602,14 @@ public final class GMFHelper {
      * 
      * @return the absolute bounds of the edge relative to the origin (Diagram)
      */
-    public static Option<Rectangle> getAbsoluteBounds(Edge edge, boolean insetsAware, boolean boxForConnection) {
+    public static Optional<Rectangle> getAbsoluteBounds(Edge edge, boolean insetsAware, boolean boxForConnection) {
         // Workaround for canonical refresh about edge on edge
-        Option<Rectangle> optionalSourceBounds = getAbsoluteBounds(edge.getSource(), insetsAware, boxForConnection);
-        Option<Rectangle> optionalTargetBounds = getAbsoluteBounds(edge.getTarget(), insetsAware, boxForConnection);
-        if (optionalSourceBounds.some() && optionalTargetBounds.some()) {
-            return Options.newSome(optionalSourceBounds.get().union(optionalTargetBounds.get()));
+        Optional<Rectangle> optionalSourceBounds = getAbsoluteBounds(edge.getSource(), insetsAware, boxForConnection);
+        Optional<Rectangle> optionalTargetBounds = getAbsoluteBounds(edge.getTarget(), insetsAware, boxForConnection);
+        if (optionalSourceBounds.isPresent() && optionalTargetBounds.isPresent()) {
+            return Optional.ofNullable(optionalSourceBounds.get().union(optionalTargetBounds.get()));
         }
-        return Options.newNone();
+        return Optional.empty();
     }
 
     /**
@@ -622,7 +620,7 @@ public final class GMFHelper {
      * 
      * @return an optional absolute bounds of the node or edge relative to the origin (Diagram)
      */
-    public static Option<Rectangle> getAbsoluteBounds(View view) {
+    public static Optional<Rectangle> getAbsoluteBounds(View view) {
         return getAbsoluteBounds(view, false);
     }
 
@@ -637,7 +635,7 @@ public final class GMFHelper {
      * 
      * @return an optional absolute bounds of the node or edge relative to the origin (Diagram)
      */
-    public static Option<Rectangle> getAbsoluteBounds(View view, boolean insetsAware) {
+    public static Optional<Rectangle> getAbsoluteBounds(View view, boolean insetsAware) {
         return getAbsoluteBounds(view, insetsAware, false);
     }
 
@@ -655,10 +653,10 @@ public final class GMFHelper {
      * 
      * @return an optional absolute bounds of the node or edge relative to the origin (Diagram)
      */
-    public static Option<Rectangle> getAbsoluteBounds(View view, boolean insetsAware, boolean boxForConnection) {
-        Option<Rectangle> result = Options.newNone();
+    public static Optional<Rectangle> getAbsoluteBounds(View view, boolean insetsAware, boolean boxForConnection) {
+        Optional<Rectangle> result = Optional.empty();
         if (view instanceof Node) {
-            result = Options.newSome(getAbsoluteBounds((Node) view, insetsAware, boxForConnection, false, true));
+            result = Optional.ofNullable(getAbsoluteBounds((Node) view, insetsAware, boxForConnection, false, true));
         } else if (view instanceof Edge) {
             result = getAbsoluteBounds((Edge) view, insetsAware, boxForConnection);
         }
@@ -839,9 +837,9 @@ public final class GMFHelper {
             if (useFigureForAutoSizeConstraint) {
                 // Use the figure (if founded) to set width and height
                 // instead of (-1, -1)
-                Option<GraphicalEditPart> optionalTargetEditPart = getGraphicalEditPart(node);
+                Optional<GraphicalEditPart> optionalTargetEditPart = getGraphicalEditPart(node);
                 // CHECKSTYLE:OFF
-                if (optionalTargetEditPart.some()) {
+                if (optionalTargetEditPart.isPresent()) {
                     GraphicalEditPart graphicalEditPart = optionalTargetEditPart.get();
                     if (graphicalEditPart instanceof AbstractDiagramElementContainerEditPart abstractDiagramElementContainerEditPart) {
                         abstractDiagramElementContainerEditPart.forceFigureAutosize();
@@ -989,11 +987,11 @@ public final class GMFHelper {
             }
         } else {
             for (Iterator<Node> children = Iterators.filter(container.getChildren().iterator(), Node.class); children.hasNext(); /* */) {
-                Node child = children.next();
+                Node nodeChild = children.next();
                 // The border nodes are ignored, except if it is expected to consider it (auto-size of a container with
                 // children having border nodes)
-                if (considerBorderNodes || !(new NodeQuery(child).isBorderedNode())) {
-                    Rectangle childAbsoluteBounds = getAbsoluteBounds(child, true, false, true, false);
+                if (considerBorderNodes || !(new NodeQuery(nodeChild).isBorderedNode())) {
+                    Rectangle childAbsoluteBounds = getAbsoluteBounds(nodeChild, true, false, true, false);
                     if (result == null) {
                         result = childAbsoluteBounds.getCopy();
                     } else {
@@ -1036,7 +1034,7 @@ public final class GMFHelper {
      *            The view element that is searched
      * @return The optional corresponding edit part.
      */
-    public static Option<GraphicalEditPart> getGraphicalEditPart(View view) {
+    public static Optional<GraphicalEditPart> getGraphicalEditPart(View view) {
         if (view != null) {
             Diagram gmfDiagram = view.getDiagram();
             // Try the active editor first (most likely case in practice)
@@ -1053,7 +1051,7 @@ public final class GMFHelper {
                 }
             }
         }
-        return Options.<GraphicalEditPart> newNone();
+        return Optional.empty();
     }
 
     private static boolean isEditorFor(IEditorPart editor, Diagram diagram) {
@@ -1070,12 +1068,12 @@ public final class GMFHelper {
      *            the editor where looking for the edit part.
      * @return The optional corresponding edit part.
      */
-    public static Option<GraphicalEditPart> getGraphicalEditPart(View view, DiagramEditor editor) {
-        Option<GraphicalEditPart> result = Options.newNone();
+    public static Optional<GraphicalEditPart> getGraphicalEditPart(View view, DiagramEditor editor) {
+        Optional<GraphicalEditPart> result = Optional.empty();
         final Map<?, ?> editPartRegistry = editor.getDiagramGraphicalViewer().getEditPartRegistry();
         final EditPart targetEditPart = (EditPart) editPartRegistry.get(view);
         if (targetEditPart instanceof GraphicalEditPart graphicalEditPart) {
-            result = Options.newSome(graphicalEditPart);
+            result = Optional.of(graphicalEditPart);
         }
         return result;
     }
@@ -1293,14 +1291,9 @@ public final class GMFHelper {
         List<Edge> noteAttachments = getIncomingOutgoingEdges(view).stream() //
                 .filter(GMFNotationHelper::isNoteAttachment).toList();
 
-        return noteAttachments.stream().flatMap(edge -> Stream.of(edge.getSource(), edge.getTarget())).filter(attachedView -> { // all
-                                                                                                                                // nodes
-                                                                                                                                // linked
-                                                                                                                                // to
-                                                                                                                                // note
-                                                                                                                                // attachment:
-                                                                                                                                // filter
-                                                                                                                                // notes/texts
+        return noteAttachments.stream().flatMap(edge -> {
+            return Stream.of(edge.getSource(), edge.getTarget());
+        }).filter(attachedView -> { // all nodes linked to note attachment: filter notes/texts
             if (attachedView instanceof Node attachedNode) {
                 return GMFNotationHelper.isNote(attachedNode) || GMFNotationHelper.isTextNote(attachedNode);
             } else {

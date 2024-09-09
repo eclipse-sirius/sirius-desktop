@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,8 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.refresh.edge;
+
+import java.util.Optional;
 
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Point;
@@ -27,7 +29,6 @@ import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
-import org.eclipse.sirius.ext.base.Option;
 
 /**
  * Provides the GMF implementation of Slidable anchor.
@@ -115,8 +116,8 @@ public class SlidableAnchor {
                 }
             }
         } else if (owner instanceof Edge) {
-            Option<Rectangle> optionalRect = GMFHelper.getAbsoluteBounds((Edge) owner);
-            if (optionalRect.some()) {
+            Optional<Rectangle> optionalRect = GMFHelper.getAbsoluteBounds((Edge) owner);
+            if (optionalRect.isPresent()) {
                 box = optionalRect.get();
             }
         }

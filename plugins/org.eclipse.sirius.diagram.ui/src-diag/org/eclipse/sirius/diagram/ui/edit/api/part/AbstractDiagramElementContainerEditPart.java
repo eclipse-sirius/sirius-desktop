@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2022 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ package org.eclipse.sirius.diagram.ui.edit.api.part;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -95,8 +96,6 @@ import org.eclipse.sirius.diagram.ui.tools.internal.figure.RegionRoundedGradient
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.LayoutUtil;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.NotificationQuery;
-import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.AlphaDropShadowBorder;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusDefaultSizeNodeFigure;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
@@ -183,7 +182,7 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
         EditPart editPart = this;
         //@formatter:off
             @SuppressWarnings("unchecked")
-            List<AbstractDiagramElementContainerEditPart> regionParts = (List<AbstractDiagramElementContainerEditPart>) getParent().getChildren().stream()
+            List<AbstractDiagramElementContainerEditPart> regionParts = getParent().getChildren().stream()
                     .filter(ed -> ed instanceof AbstractDiagramElementContainerEditPart && !ed.equals(editPart))
                     .map(AbstractDiagramElementContainerEditPart.class::cast)
                     .collect(Collectors.toList());
@@ -491,6 +490,7 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
      * @return the default figure dimension of this edit part
      * @deprecated Only here as security if user activates {@link LayoutUtil#isArrangeAtOpeningChangesDisabled()}.
      */
+    @Deprecated
     public Dimension oldGetDefaultDimension() {
         DDiagramElement dde = resolveDiagramElement();
         Dimension defaultSize = LayoutUtils.NEW_DEFAULT_CONTAINER_DIMENSION;
@@ -513,8 +513,8 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
         NodeFigure result;
         DDiagramElement dde = resolveDiagramElement();
         Dimension defaultSize = getDefaultDimension();
-        Option<LabelBorderStyleDescription> getLabelBorderStyle = getLabelBorderStyle(dde);
-        if (getLabelBorderStyle.some()) {
+        Optional<LabelBorderStyleDescription> getLabelBorderStyle = getLabelBorderStyle(dde);
+        if (getLabelBorderStyle.isPresent()) {
             result = new ContainerWithTitleBlockFigure(getMapMode().DPtoLP(defaultSize.width), getMapMode().DPtoLP(defaultSize.height), dde, getLabelBorderStyle.get());
         } else {
             result = new SiriusDefaultSizeNodeFigure(getMapMode().DPtoLP(defaultSize.width), getMapMode().DPtoLP(defaultSize.height));
@@ -523,11 +523,11 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
         return result;
     }
 
-    private Option<LabelBorderStyleDescription> getLabelBorderStyle(DStylizable viewNode) {
+    private Optional<LabelBorderStyleDescription> getLabelBorderStyle(DStylizable viewNode) {
         if (viewNode instanceof DDiagramElementContainer) {
             return new DDiagramElementContainerExperimentalQuery((DDiagramElementContainer) viewNode).getLabelBorderStyle();
         }
-        return Options.newNone();
+        return Optional.empty();
     }
 
     /**

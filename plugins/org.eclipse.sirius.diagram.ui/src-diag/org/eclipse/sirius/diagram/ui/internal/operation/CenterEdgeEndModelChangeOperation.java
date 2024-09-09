@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2020 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2014, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -58,8 +58,6 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.diagram.ui.tools.internal.routers.RectilinearEdgeUtil;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.GMFNotationUtilities;
-import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.ui.IEditorPart;
 
@@ -207,10 +205,10 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
 
                 // We get the edge source and target nodes absolute bounds to
                 // compute absolute anchors coordinates
-                Option<Rectangle> sourceBounds = getAbsoluteSourceBounds(edgeSourceView);
-                Option<Rectangle> targetBounds = getAbsoluteTargetBounds(edgeTargetView);
+                Optional<Rectangle> sourceBounds = getAbsoluteSourceBounds(edgeSourceView);
+                Optional<Rectangle> targetBounds = getAbsoluteTargetBounds(edgeTargetView);
 
-                if (sourceBounds.some() && targetBounds.some()) {
+                if (sourceBounds.isPresent() && targetBounds.isPresent()) {
 
                     // Calculate the existing anchors absolute location
                     retrieveAndSetExistingAnchorsAbsoluteLocation(sourceBounds.get(), targetBounds.get());
@@ -249,7 +247,7 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
      *            true if it represents the edge source, false otherwise.
      * @return the absolute bounds.
      */
-    private Option<Rectangle> getAbsoluteBounds(View gmfView, boolean isSource) {
+    private Optional<Rectangle> getAbsoluteBounds(View gmfView, boolean isSource) {
         if (connectionEditPart != null) {
             EditPart editPart = null;
             if (isSource) {
@@ -258,24 +256,24 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
                 editPart = connectionEditPart.getTarget();
             }
             if (editPart instanceof GraphicalEditPart) {
-                return Options.newSome(GraphicalHelper.getAbsoluteBoundsIn100Percent((GraphicalEditPart) editPart));
+                return Optional.ofNullable(GraphicalHelper.getAbsoluteBoundsIn100Percent((GraphicalEditPart) editPart));
             }
         }
         return GMFHelper.getAbsoluteBounds(gmfView, true, true);
     }
 
-    private Option<Rectangle> getAbsoluteSourceBounds(View edgeSourceView) {
-        Option<Rectangle> option = getAbsoluteBounds(edgeSourceView, true);
-        if (sourceFigureSize != null && option.some()) {
+    private Optional<Rectangle> getAbsoluteSourceBounds(View edgeSourceView) {
+        Optional<Rectangle> option = getAbsoluteBounds(edgeSourceView, true);
+        if (sourceFigureSize != null && option.isPresent()) {
             Rectangle rectangle = option.get();
             rectangle.setSize(sourceFigureSize);
         }
         return option;
     }
 
-    private Option<Rectangle> getAbsoluteTargetBounds(View edgeTargetView) {
-        Option<Rectangle> option = getAbsoluteBounds(edgeTargetView, false);
-        if (targetFigureSize != null && option.some()) {
+    private Optional<Rectangle> getAbsoluteTargetBounds(View edgeTargetView) {
+        Optional<Rectangle> option = getAbsoluteBounds(edgeTargetView, false);
+        if (targetFigureSize != null && option.isPresent()) {
             Rectangle rectangle = option.get();
             rectangle.setSize(targetFigureSize);
         }
@@ -517,7 +515,7 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
         if (connection != null || !useFigure) {
             return;
         }
-        Option<GraphicalEditPart> option = Options.newNone();
+        Optional<GraphicalEditPart> option = Optional.empty();
         final IEditorPart editorPart = EclipseUIUtil.getActiveEditor();
         if (editorPart instanceof DiagramEditor) {
             option = GMFHelper.getGraphicalEditPart(edge, (DiagramEditor) editorPart);
@@ -533,14 +531,14 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
                 if (object instanceof DiagramEditor) {
                     option = GMFHelper.getGraphicalEditPart(edge, (DiagramEditor) object);
                 }
-                if (option.some()) {
+                if (option.isPresent()) {
                     break;
                 }
             }
 
         }
 
-        if (option.some()) {
+        if (option.isPresent()) {
             GraphicalEditPart editPart = option.get();
             if (editPart instanceof DEdgeEditPart) {
                 connectionEditPart = (DEdgeEditPart) editPart;
