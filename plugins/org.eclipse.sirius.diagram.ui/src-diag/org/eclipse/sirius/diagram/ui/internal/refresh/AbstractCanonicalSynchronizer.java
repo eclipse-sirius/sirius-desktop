@@ -22,6 +22,7 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IAdaptable;
@@ -576,8 +577,8 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
 
                 if (size == null) {
                     if (new ViewQuery(createdView).isForNameEditPart()) {
-                        Option<Rectangle> optionalRect = GMFHelper.getAbsoluteBounds(createdView);
-                        if (optionalRect.some()) {
+                        Optional<Rectangle> optionalRect = GMFHelper.getAbsoluteBounds(createdView);
+                        if (optionalRect.isPresent()) {
                             size = optionalRect.get().getSize();
                         }
                     }
