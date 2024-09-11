@@ -19,6 +19,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Stream;
@@ -103,9 +104,6 @@ import org.eclipse.swt.SWTException;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.IEditorPart;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Iterators;
 
 /**
  * GMF Helper.
@@ -244,16 +242,18 @@ public final class GMFHelper {
         return location;
     }
 
-    private static Node getPreviousChild(Node node) {
+    private static Node getPreviousChild(Node searchedNode) {
         Node previousChild = null;
         boolean found = false;
-        if (node.eContainer() instanceof Node container) {
-            for (Iterator<Node> children = Iterators.filter(container.getChildren().iterator(), Node.class); children.hasNext() && !found; /* */) {
-                Node child = children.next();
-                if (node == child) {
-                    found = true;
-                } else {
-                    previousChild = child;
+        if (searchedNode.eContainer() instanceof Node container) {
+            for (Iterator<View> children = container.getChildren().iterator(); children.hasNext() && !found; /* */) {
+                View child = children.next();
+                if (child instanceof Node nodeChild) {
+                    if (searchedNode == nodeChild) {
+                        found = true;
+                    } else {
+                        previousChild = nodeChild;
+                    }
                 }
             }
         }
@@ -489,8 +489,8 @@ public final class GMFHelper {
     private static boolean isFirstRegion(DDiagramElementContainer ddec) {
         EObject potentialRegionContainer = ddec.eContainer();
         if (potentialRegionContainer instanceof DNodeContainer dNodeContainer) {
-            Iterable<DDiagramElementContainer> regions = Iterables.filter((dNodeContainer).getOwnedDiagramElements(), DDiagramElementContainer.class);
-            return !Iterables.isEmpty(regions) && ddec == Iterables.getFirst(regions, null);
+            Optional<DDiagramElement> optionalDDiagramElement = dNodeContainer.getOwnedDiagramElements().stream().filter(DDiagramElementContainer.class::isInstance).findFirst();
+            return optionalDDiagramElement.isPresent() && ddec == optionalDDiagramElement.get();
         }
         return false;
     }
@@ -907,10 +907,10 @@ public final class GMFHelper {
 
     private static int getBorderNodesSides(Node container, Rectangle containerChildrenBounds) {
         int result = PositionConstants.NONE;
-        for (Iterator<Node> children = Iterators.filter(container.getChildren().iterator(), Node.class); children.hasNext(); /* */) {
-            Node child = children.next();
-            if (new NodeQuery(child).isBorderedNode()) {
-                Rectangle borderNodeBounds = getAbsoluteBounds(child, true, false, false, false);
+        for (ListIterator<View> children = container.getChildren().listIterator(); children.hasNext(); /* */) {
+            View child = children.next();
+            if (child instanceof Node nodeChild && new NodeQuery(nodeChild).isBorderedNode()) {
+                Rectangle borderNodeBounds = getAbsoluteBounds(nodeChild, true, false, false, false);
                 if (borderNodeBounds.preciseX() == containerChildrenBounds.preciseX()) {
                     result = result | PositionConstants.LEFT;
                 }
@@ -986,11 +986,11 @@ public final class GMFHelper {
                 result = getAbsoluteBounds(lastChild, true, false, true, false);
             }
         } else {
-            for (Iterator<Node> children = Iterators.filter(container.getChildren().iterator(), Node.class); children.hasNext(); /* */) {
-                Node nodeChild = children.next();
+            for (ListIterator<View> children = container.getChildren().listIterator(); children.hasNext(); /* */) {
+                View child = children.next();
                 // The border nodes are ignored, except if it is expected to consider it (auto-size of a container with
                 // children having border nodes)
-                if (considerBorderNodes || !(new NodeQuery(nodeChild).isBorderedNode())) {
+                if (child instanceof Node nodeChild && (considerBorderNodes || !(new NodeQuery(nodeChild).isBorderedNode()))) {
                     Rectangle childAbsoluteBounds = getAbsoluteBounds(nodeChild, true, false, true, false);
                     if (result == null) {
                         result = childAbsoluteBounds.getCopy();
