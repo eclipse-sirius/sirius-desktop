@@ -94,6 +94,7 @@ import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotCommonHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
+import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.OpenRepresentationsFileJob;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
@@ -261,13 +262,12 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
                 PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell().forceActive();
             }
         });
-
         initLoggers();
-
         closeAllSessions(true);
-
         // CHECKSTYLE:OFF
         System.out.println("Setup of " + this.getClass().getName() + AbstractSiriusSwtBotGefTestCase.POINT + getName() + "()");
+        System.out.println("For debug only, refreshOnOpening preference value is: "
+                + Platform.getPreferencesService().getBoolean(SiriusEditPlugin.ID, SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), false, null));
         // CHECKSTYLE:ON
         try {
             super.setUp();
