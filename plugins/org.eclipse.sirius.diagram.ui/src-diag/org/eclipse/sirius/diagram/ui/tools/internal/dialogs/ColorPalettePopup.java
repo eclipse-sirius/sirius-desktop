@@ -27,6 +27,7 @@ import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.color.ColorCategoryManager;
 import org.eclipse.sirius.diagram.ui.tools.api.color.ColorCategoryManagerProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.color.ColorManager;
+import org.eclipse.sirius.diagram.ui.tools.api.color.IColorPalettePopup;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
@@ -67,7 +68,7 @@ import org.eclipse.swt.widgets.ToolItem;
  * 
  * @author <a href="mailto:glenn.plouhinec@obeo.fr">Glenn Plouhinec</a>
  */
-public class ColorPalettePopup {
+public class ColorPalettePopup implements IColorPalettePopup {
 
     /**
      * The height of the popup used to compute its location to open it.
@@ -159,6 +160,7 @@ public class ColorPalettePopup {
     /**
      * Initializes the layout of the popup, creates and configure the four color palette categories.
      */
+    @Override
     public void init() {
         shell.setText(Messages.ColorPalettePopup_title);
         GridLayout layout = new GridLayout(1, true);
@@ -510,14 +512,9 @@ public class ColorPalettePopup {
     }
 
     /**
-     * Opens the popup, waits for an item to be selected and then closes popup.
-     * 
-     * @param location
-     *            the initial size and location of the PopupList; the dialog will be positioned so that it does not run
-     *            off the screen and the largest number of items are visible
-     * 
-     * @return the selected color or null if none selected
+     * {@inheritDoc}
      */
+    @Override
     public RGB open(Point location) {
         Point listSize = shell.computeSize(SWT.DEFAULT, SWT.DEFAULT, false);
         shell.setBounds(location.x, location.y, listSize.x, listSize.y);
@@ -537,30 +534,25 @@ public class ColorPalettePopup {
     }
 
     /**
-     * Gets the color the user selected. Could be null as the user may have cancelled the gesture or they may have
-     * selected the default color button.
-     * 
-     * @return selectedColor
+     * {@inheritDoc}
      */
+    @Override
     public RGB getSelectedColor() {
         return selectedColor;
     }
 
     /**
-     * Returns the previous color.
-     * 
-     * @return previousColor
+     * {@inheritDoc}
      */
+    @Override
     public int getPreviousColor() {
         return previousColor;
     }
 
     /**
-     * Sets the previous color.
-     * 
-     * @param previousColor
-     *            the previous color.
+     * {@inheritDoc}
      */
+    @Override
     public void setPreviousColor(int previousColor) {
         this.previousColor = previousColor;
     }

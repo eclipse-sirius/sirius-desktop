@@ -19,6 +19,8 @@ import org.eclipse.gmf.runtime.diagram.ui.actions.internal.l10n.DiagramUIActions
 import org.eclipse.gmf.runtime.diagram.ui.internal.properties.Properties;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.FigureUtilities;
 import org.eclipse.jface.resource.CompositeImageDescriptor;
+import org.eclipse.sirius.diagram.ui.tools.api.color.ColorPalettePopupService;
+import org.eclipse.sirius.diagram.ui.tools.api.color.IColorPalettePopup;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.internal.dialogs.ColorPalettePopup;
 import org.eclipse.swt.SWT;
@@ -263,7 +265,7 @@ public class ColorPropertyContributionItem extends PropertyChangeContributionIte
      *            the item clicked on the tabbar.
      */
     private void invokeColorPalettePopup(Item item) {
-        final ColorPalettePopup popup = new ColorPalettePopup(Display.getCurrent().getActiveShell(), ((DDiagramEditor) getWorkbenchPart()).getSession(), getOperationSet(), getPropertyId());
+        final IColorPalettePopup popup = ColorPalettePopupService.getColorPalettePopup(Display.getCurrent().getActiveShell(), ((DDiagramEditor) getWorkbenchPart()).getSession(), getOperationSet(), getPropertyId());
         popup.init();
         popup.open(computePopupLocation(item));
 
