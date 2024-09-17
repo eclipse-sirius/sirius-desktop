@@ -52,6 +52,8 @@ import org.eclipse.sirius.diagram.ui.business.internal.query.ColorStyleQuery;
 import org.eclipse.sirius.diagram.ui.internal.refresh.diagram.ViewPropertiesSynchronizer;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
+import org.eclipse.sirius.diagram.ui.tools.api.color.ColorPalettePopupService;
+import org.eclipse.sirius.diagram.ui.tools.api.color.IColorPalettePopup;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.SetStyleToWorkspaceImageAction;
@@ -119,7 +121,7 @@ public class DiagramColorAndFontPropertySection extends DiagramColorsAndFontsPro
         } else {
             Session session = new EObjectQuery(eObject).getSession();
             List<IGraphicalEditPart> editParts = getInput().stream().filter(IGraphicalEditPart.class::isInstance).map(IGraphicalEditPart.class::cast).toList();
-            ColorPalettePopup popup = new ColorPalettePopup(button.getParent().getShell(), session, editParts, propertyId);
+            IColorPalettePopup popup = ColorPalettePopupService.getColorPalettePopup(button.getParent().getShell(), session, editParts, propertyId);
             popup.init();
             popup.setPreviousColor(previousColor);
             popup.open(ColorPalettePopup.getValidPopupLocation(button));
