@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo. 
+ * Copyright (c) 2015, 2024 Obeo. 
  * All rights reserved. This program
  * and the accompanying materials are made available under the terms of the
  * Eclipse Public License 2.0 which accompanies this distribution, and is
@@ -35,16 +35,17 @@ import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.business.api.session.factory.SessionFactory;
 import org.eclipse.sirius.business.internal.resource.AirDResourceFactory;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
+import org.eclipse.sirius.tests.support.api.SiriusTestCase;
+import org.eclipse.sirius.tools.api.command.ICommandFactory;
+import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.viewpoint.DAnalysis;
-
-import junit.framework.TestCase;
 
 /**
  * Test for Bugzilla 445603.
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
-public class SaverTest extends TestCase {
+public class SaverTest extends SiriusTestCase {
 
     private File tempFile;
 
@@ -55,6 +56,9 @@ public class SaverTest extends TestCase {
     @Override
     protected void setUp() throws Exception {
         super.setUp();
+        changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), false);
+        changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), false);
+
         previousAirdFactory = Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().get(SiriusUtil.SESSION_RESOURCE_EXTENSION);
         Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put(SiriusUtil.SESSION_RESOURCE_EXTENSION, new AirDResourceFactory());
         tempFile = File.createTempFile("test", "." + SiriusUtil.SESSION_RESOURCE_EXTENSION);
@@ -187,5 +191,10 @@ public class SaverTest extends TestCase {
         } else {
             Registry.INSTANCE.getExtensionToFactoryMap().put(SiriusUtil.SESSION_RESOURCE_EXTENSION, factory);
         }
+    }
+
+    @Override
+    protected ICommandFactory getCommandFactory() {
+        return null;
     }
 }

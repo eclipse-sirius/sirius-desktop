@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -34,6 +34,7 @@ import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
+import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.ui.IEditorPart;
 
 public class SynchronizationLockTest extends SiriusDiagramTestCase {
@@ -59,6 +60,8 @@ public class SynchronizationLockTest extends SiriusDiagramTestCase {
     @Override
     protected void setUp() throws Exception {
         super.setUp();
+        changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), false);
+        changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), false);
         genericSetUp(SEMANTIC_MODEL_PATH, MODELER_PATH);
         initViewpoint(VIEWPOINT_NAME);
         TestsUtil.emptyEventsFromUIThread();
