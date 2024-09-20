@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -435,6 +435,8 @@ public class SynchronizationLockTest extends SiriusDiagramTestCase {
         switchSynchronizationLockOnAllKindsMappings2Sub(true, REPRESENTATION_DESC_NAME2);
 
         changeDiagramPreference(SiriusDiagramInternalPreferencesKeys.PREF_SYNCHRONIZE_DIAGRAM_ON_CREATION.name(), false);
+
+        TestsUtil.synchronizationWithUIThread();
 
         diagram = createDiagram(REPRESENTATION_DESC_NAME2);
 
