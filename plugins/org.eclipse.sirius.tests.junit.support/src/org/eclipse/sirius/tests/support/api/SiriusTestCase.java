@@ -413,6 +413,8 @@ public abstract class SiriusTestCase extends TestCase {
 
         // Initialize error/warning log and uncaught exception handlers
         initLoggers();
+
+        waitSaveSessionJob();
     }
 
     private void createOrLoadAndOpenSession(final boolean createSession, final URI sessionResourceURI) {
