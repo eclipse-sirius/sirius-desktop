@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -123,7 +123,7 @@ public class CreateDEdgeTask extends AbstractCommandTask implements ICreationTas
             EdgeMapping bestEdgeMapping = bestMappingGetter.getBestEdgeMapping(tool.getEdgeMappings());
             if (bestEdgeMapping != null) {
                 Option<DEdge> createdDEdgeOption = dDiagramSynchronizer.createEdgeMapping(mappingManager, mappingsToEdgeTargets, bestEdgeMapping, edgeToMappingBasedDecoration,
-                        edgeToSemanticBasedDecoration);
+                        edgeToSemanticBasedDecoration, sourceView, targetView);
                 if (createdDEdgeOption.some()) {
                     createdDEdges.add(createdDEdgeOption.get());
                 }

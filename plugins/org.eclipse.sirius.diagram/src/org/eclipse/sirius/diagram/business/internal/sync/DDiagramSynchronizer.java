@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -1176,13 +1176,18 @@ public class DDiagramSynchronizer {
      *            mapping based decorations.
      * @param edgeToSemanticBasedDecoration
      *            semantic based decorations
+     * @param sourceView
+     *            the source view of the edge
+     * @param targetView
+     *            the target view of the edge
      * @return an Option on DEdge
      */
     public Option<DEdge> createEdgeMapping(DiagramMappingsManager mappingManager, final Map<DiagramElementMapping, Collection<EdgeTarget>> mappingsToEdgeTargets, final EdgeMapping mapping,
-            final Map<EdgeMapping, Collection<MappingBasedDecoration>> edgeToMappingBasedDecoration, final Map<String, Collection<SemanticBasedDecoration>> edgeToSemanticBasedDecoration) {
+            final Map<EdgeMapping, Collection<MappingBasedDecoration>> edgeToMappingBasedDecoration, final Map<String, Collection<SemanticBasedDecoration>> edgeToSemanticBasedDecoration,
+            EdgeTarget sourceView, EdgeTarget targetView) {
 
         edgesDones = new HashSet<DDiagramElement>();
-        Collection<DEdge> newEdges = createDEdgeOnMapping(mappingManager, mappingsToEdgeTargets, mapping, edgeToMappingBasedDecoration, edgeToSemanticBasedDecoration);
+        Collection<DEdge> newEdges = createDEdgeOnMapping(mappingManager, mappingsToEdgeTargets, mapping, edgeToMappingBasedDecoration, edgeToSemanticBasedDecoration, sourceView, targetView);
         edgesDones.clear();
         if (!newEdges.isEmpty()) {
             return Options.newSome(newEdges.iterator().next());
@@ -1191,13 +1196,22 @@ public class DDiagramSynchronizer {
     }
 
     private Collection<DEdge> createDEdgeOnMapping(DiagramMappingsManager mappingManager, final Map<DiagramElementMapping, Collection<EdgeTarget>> mappingsToEdgeTargets, final EdgeMapping mapping,
-            final Map<EdgeMapping, Collection<MappingBasedDecoration>> edgeToMappingBasedDecoration, final Map<String, Collection<SemanticBasedDecoration>> edgeToSemanticBasedDecoration) {
+            final Map<EdgeMapping, Collection<MappingBasedDecoration>> edgeToMappingBasedDecoration, final Map<String, Collection<SemanticBasedDecoration>> edgeToSemanticBasedDecoration,
+            EdgeTarget sourceView, EdgeTarget targetView) {
         Collection<DEdge> newEdges = new HashSet<DEdge>();
         if (this.accessor.getPermissionAuthority().canEditInstance(this.diagram)) {
             final SetIntersection<DEdgeCandidate> status = createEdgeCandidates(mappingsToEdgeTargets, mapping, edgeToMappingBasedDecoration, edgeToSemanticBasedDecoration);
 
             for (final DEdgeCandidate candidate : status.getNewElements()) {
-                newEdges.add(this.sync.createNewEdge(mappingManager, candidate, mappingsToEdgeTargets, edgeToMappingBasedDecoration, edgeToSemanticBasedDecoration));
+                boolean candidateIsSync = new DiagramElementMappingQuery(mapping).isSynchronizedAndCreateElement(diagram);
+                boolean candidateMatch = candidate.getSourceView() == sourceView && candidate.getTargetView() == targetView;
+                boolean candidateMatchInv = candidate.getSourceView() == targetView && candidate.getTargetView() == sourceView;
+                // an edge is created either:
+                // - if the mapping is synchronized,
+                // - or if this edge candidate has the expected mapping/source/target associated to the tool.
+                if (candidateIsSync || candidateMatch || candidateMatchInv) {
+                    newEdges.add(this.sync.createNewEdge(mappingManager, candidate, mappingsToEdgeTargets, edgeToMappingBasedDecoration, edgeToSemanticBasedDecoration));
+                }
             }
         }
         return newEdges;
