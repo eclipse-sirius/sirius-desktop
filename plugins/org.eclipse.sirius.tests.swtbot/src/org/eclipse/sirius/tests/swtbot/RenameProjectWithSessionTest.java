@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
-import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.swtbot.swt.finder.SWTBot;
@@ -102,15 +101,14 @@ public class RenameProjectWithSessionTest extends AbstractSiriusSwtBotGefTestCas
      * Rename the project with close session
      */
     public void testRenameProjectWithCloseSession() {
-        if (TestsUtil.shouldSkipUnreliableTests()) {
-            return;
-        }
         // rename the project
         renameProject(designerProject.getName(), RENAMED_PROJECT);
+        waitSaveSessionJob();
         bot.waitUntil(new ProjectExistCondition(RENAMED_PROJECT));
 
         // Rename the new rename project with default project name
         renameProject(RENAMED_PROJECT, getProjectName());
+        waitSaveSessionJob();
         bot.waitUntil(new ProjectExistCondition(getProjectName()));
     }
 

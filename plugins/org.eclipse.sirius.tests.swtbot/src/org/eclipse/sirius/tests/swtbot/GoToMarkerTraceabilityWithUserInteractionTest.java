@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,8 +17,6 @@ import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.OperationCanceledException;
-import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -37,7 +35,6 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITreeSelection;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.internal.session.danalysis.SaveSessionJob;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
@@ -347,13 +344,7 @@ public class GoToMarkerTraceabilityWithUserInteractionTest extends AbstractScena
         SWTBotUtils.waitAllUiEvents();
         if (closeEditor) {
             // The save will be done automatically as there is no opened editor.
-            try {
-                Job.getJobManager().join(SaveSessionJob.FAMILY, new NullProgressMonitor());
-            } catch (OperationCanceledException e) {
-                fail("Failure during the join on \"SaveSessionJob.FAMILY\": " + e.getMessage());
-            } catch (InterruptedException e) {
-                fail("Failure during the join on \"SaveSessionJob.FAMILY\": " + e.getMessage());
-            }
+            waitSaveSessionJob();
         } else {
             localSession.getOpenedSession().save(new NullProgressMonitor());
             bot.waitUntil(new SessionSavedCondition(localSession.getOpenedSession()));
