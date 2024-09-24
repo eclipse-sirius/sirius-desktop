@@ -38,6 +38,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.ILogListener;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
@@ -58,6 +59,7 @@ import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.business.internal.session.danalysis.SaveSessionJob;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.tools.internal.resource.ResourceSyncClientNotifier;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
@@ -2078,5 +2080,18 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      */
     protected void clearFormatDataManager() {
         SiriusFormatDataManagerForSemanticElementsFactory.getInstance().getSiriusFormatDataManager().clearFormatData();
+    }
+
+    /**
+     * Ensure that the SaveSessionJob potentially triggered by
+     * org.eclipse.sirius.ui.business.internal.session.SaveSessionWhenNoDialectEditorsListener.statusChangedInternal(Collection<ResourceStatusChange>)
+     * is finished before continue.
+     */
+    protected void waitSaveSessionJob() {
+        try {
+            Job.getJobManager().join(SaveSessionJob.FAMILY, new NullProgressMonitor());
+        } catch (OperationCanceledException | InterruptedException e) {
+            fail(e.getMessage());
+        }
     }
 }
