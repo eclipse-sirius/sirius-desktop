@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="project" version="15.4.0.202401051836">
+  <ownedViewpoints name="EdgeTest">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagEdgeUnsync" domainClass="ecore::EPackage" enablePopupBars="true">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="Class1" synchronizationLock="true" domainClass="ecore::EClassifier">
+          <style xsi:type="style:SquareDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="Relation1" createElements="false" sourceMapping="//@ownedViewpoints[name='EdgeTest']/@ownedRepresentations[name='DiagEdgeUnsync']/@defaultLayer/@nodeMappings[name='Class1']" targetMapping="//@ownedViewpoints[name='EdgeTest']/@ownedRepresentations[name='DiagEdgeUnsync']/@defaultLayer/@nodeMappings[name='Class1']" targetFinderExpression="aql:self.eType" sourceFinderExpression="aql:self.eContainer()" domainClass="ecore::EReference" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12" labelExpression="aql:self.name">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <toolSections name="Section1">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="CreateEdge1" precondition="aql:true" edgeMappings="//@ownedViewpoints[name='EdgeTest']/@ownedRepresentations[name='DiagEdgeUnsync']/@defaultLayer/@edgeMappings[name='Relation1']" connectionStartPrecondition="aql:true">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="source">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EReference" referenceName="eStructuralFeatures">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="eType" valueExpression="var:target"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="newRef"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagInvEdge" domainClass="ecore::EPackage" enablePopupBars="true">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="Class2" synchronizationLock="true" domainClass="ecore::EClassifier">
+          <style xsi:type="style:SquareDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="Relation2" createElements="false" sourceMapping="//@ownedViewpoints[name='EdgeTest']/@ownedRepresentations[name='DiagInvEdge']/@defaultLayer/@nodeMappings[name='Class2']" targetMapping="//@ownedViewpoints[name='EdgeTest']/@ownedRepresentations[name='DiagInvEdge']/@defaultLayer/@nodeMappings[name='Class2']" targetFinderExpression="aql:if self.changeable then self.eType else self.eContainer() endif" sourceFinderExpression="aql:if self.changeable then self.eContainer() else self.eType endif" domainClass="ecore::EReference" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12" labelExpression="aql:self.name">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+          <conditionnalStyles predicateExpression="aql:self.changeable">
+            <style sourceArrow="InputArrow" sizeComputationExpression="2">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              <centerLabelStyleDescription labelSize="12" labelExpression="aql:self.name">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+        </edgeMappings>
+        <toolSections name="Section2">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="CreateEdge2" precondition="aql:true" edgeMappings="//@ownedViewpoints[name='EdgeTest']/@ownedRepresentations[name='DiagInvEdge']/@defaultLayer/@edgeMappings[name='Relation2']" connectionStartPrecondition="aql:true">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="source">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EReference" referenceName="eStructuralFeatures">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="eType" valueExpression="var:target"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="newRef"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagEdgeDepEdge" domainClass="ecore::EPackage" enablePopupBars="true">
+      <defaultLayer name="Default">
+        <nodeMappings name="Class3" synchronizationLock="true" domainClass="ecore::EClassifier">
+          <style xsi:type="style:SquareDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Reference" semanticCandidatesExpression="aql:self.eClassifiers->filter(ecore::EClass).eReferences" synchronizationLock="true" domainClass="ecore::EReference">
+          <style xsi:type="style:SquareDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="Relation3" createElements="false" sourceMapping="//@ownedViewpoints[name='EdgeTest']/@ownedRepresentations[name='DiagEdgeDepEdge']/@defaultLayer/@nodeMappings[name='Class3']" targetMapping="//@ownedViewpoints[name='EdgeTest']/@ownedRepresentations[name='DiagEdgeDepEdge']/@defaultLayer/@nodeMappings[name='Class3']" targetFinderExpression="aql:self.eType" sourceFinderExpression="aql:self.eContainer()" domainClass="ecore::EReference" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12" labelExpression="aql:self.name">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Relation4" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='EdgeTest']/@ownedRepresentations[name='DiagEdgeDepEdge']/@defaultLayer/@nodeMappings[name='Class3']" targetMapping="//@ownedViewpoints[name='EdgeTest']/@ownedRepresentations[name='DiagEdgeDepEdge']/@defaultLayer/@nodeMappings[name='Reference']" targetFinderExpression="aql:self" sourceFinderExpression="aql:self.eContainer()" domainClass="ecore::EReference" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12" labelExpression="aql:self.name">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Relation5" sourceMapping="//@ownedViewpoints[name='EdgeTest']/@ownedRepresentations[name='DiagEdgeDepEdge']/@defaultLayer/@nodeMappings[name='Reference']" targetMapping="//@ownedViewpoints[name='EdgeTest']/@ownedRepresentations[name='DiagEdgeDepEdge']/@defaultLayer/@nodeMappings[name='Class3']" targetFinderExpression="aql:self.eType" sourceFinderExpression="aql:self" domainClass="ecore::EReference" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12" labelExpression="aql:self.name">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <toolSections name="Section3">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="CreateEdge3" precondition="aql:true" edgeMappings="//@ownedViewpoints[name='EdgeTest']/@ownedRepresentations[name='DiagEdgeDepEdge']/@defaultLayer/@edgeMappings[name='Relation3']" connectionStartPrecondition="aql:true">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="source">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EReference" referenceName="eStructuralFeatures">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="eType" valueExpression="var:target"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="newRef"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="my.project.design.Services"/>
+  </ownedViewpoints>
+</description:Group>
