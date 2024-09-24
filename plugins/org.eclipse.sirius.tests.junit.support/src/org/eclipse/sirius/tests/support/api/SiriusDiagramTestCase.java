@@ -870,6 +870,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
         if (layer != null && !dDiagram.getActivatedLayers().contains(layer)) {
             Command changeLayersActivationCmd = new ChangeLayerActivationCommand(session.getTransactionalEditingDomain(), dDiagram, layer, new NullProgressMonitor());
             session.getTransactionalEditingDomain().getCommandStack().execute(changeLayersActivationCmd);
+            waitSaveSessionJob();
             return true;
         }
         return false;
@@ -889,6 +890,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
         if (layer != null && (dDiagram.getActivatedLayers().contains(layer) || dDiagram.getActivatedTransientLayers().contains(layer))) {
             Command changeLayersActivationCmd = new ChangeLayerActivationCommand(session.getTransactionalEditingDomain(), dDiagram, layer, new NullProgressMonitor());
             session.getTransactionalEditingDomain().getCommandStack().execute(changeLayersActivationCmd);
+            waitSaveSessionJob();
             return true;
         }
         return false;
@@ -931,6 +933,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
     private boolean setFilterActivation(final DDiagram diagram, final FilterDescription filter, final boolean visible) {
         final Runnable change = new ChangeFilterActivation((IDiagramWorkbenchPart) EclipseUIUtil.getActiveEditor(), diagram, filter, visible);
         change.run();
+        waitSaveSessionJob();
         return true;
     }
 
