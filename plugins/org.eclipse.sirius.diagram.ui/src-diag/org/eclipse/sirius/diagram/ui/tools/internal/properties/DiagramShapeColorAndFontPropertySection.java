@@ -54,6 +54,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
+import org.eclipse.sirius.diagram.ui.business.api.image.ImageSelectionDialog;
 import org.eclipse.sirius.diagram.ui.business.api.image.ImageSelector;
 import org.eclipse.sirius.diagram.ui.business.api.image.ImageSelectorService;
 import org.eclipse.sirius.diagram.ui.business.api.image.WorkspaceImageHelper;
@@ -418,7 +419,11 @@ public class DiagramShapeColorAndFontPropertySection extends ShapeColorsAndFonts
         for (BasicLabelStyle basicLabelStyle : styles) {
             List<String> imagePaths = imageSelector.selectImages(basicLabelStyle, ImageSelector.SelectionMode.MONO_SELECTION);
             if (imagePaths.size() == 1) {
-                WorkspaceImageHelper.INSTANCE.updateStyle(basicLabelStyle, imagePaths.get(0));
+                if (imagePaths.get(0).equals(ImageSelectionDialog.NO_IMAGE_PATH_TEXT)) {
+                    WorkspaceImageHelper.INSTANCE.resetStyle(basicLabelStyle);
+                } else {
+                    WorkspaceImageHelper.INSTANCE.updateStyle(basicLabelStyle, imagePaths.get(0));
+                }
             }
         }
     }

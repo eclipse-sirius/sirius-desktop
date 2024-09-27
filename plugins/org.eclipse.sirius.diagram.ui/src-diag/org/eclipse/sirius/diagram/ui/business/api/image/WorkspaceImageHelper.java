@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021, 2023 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2021, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,7 +13,10 @@
 package org.eclipse.sirius.diagram.ui.business.api.image;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
@@ -22,6 +25,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.SetCommand;
+import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
@@ -31,6 +35,7 @@ import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.BorderedStyle;
 import org.eclipse.sirius.diagram.ContainerStyle;
@@ -42,6 +47,7 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingWithInterpreterHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.StyleHelper;
 import org.eclipse.sirius.diagram.description.style.BorderedStyleDescription;
 import org.eclipse.sirius.diagram.description.style.StyleFactory;
@@ -50,6 +56,7 @@ import org.eclipse.sirius.diagram.model.business.internal.query.DDiagramElementC
 import org.eclipse.sirius.diagram.model.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.image.refresh.WorkspaceImageFigureRefresher;
 import org.eclipse.sirius.diagram.ui.business.internal.query.CustomizableQuery;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.Customizable;
 import org.eclipse.sirius.viewpoint.LabelStyle;
@@ -103,6 +110,50 @@ public class WorkspaceImageHelper {
                 command.append(getWorkspacePathChangeCommand(domain, basicLabelStyle, imagePath));
             }
             domain.getCommandStack().execute(command);
+            refreshStyle();
+        }
+    }
+
+    /**
+     * Resets the WorkspaceImage style currently assigned to a DDiagramElement, and retains all other style
+     * modifications.
+     * 
+     * @param basicLabelStyle the style of the DDiagramElement.
+     */
+    public void resetStyle(BasicLabelStyle basicLabelStyle) {
+        TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(basicLabelStyle);
+        if (domain != null) {
+            domain.getCommandStack().execute(new RecordingCommand(domain) {
+
+                @Override
+                protected void doExecute() {
+                    if (basicLabelStyle instanceof WorkspaceImage wi) {
+                        wi.getCustomFeatures().remove(DiagramPackage.eINSTANCE.getWorkspaceImage_WorkspacePath().getName());
+                        Map<EStructuralFeature, Object> modifiedStyle = new HashMap<>();
+                        for (String feature : wi.getCustomFeatures()) {
+                            EStructuralFeature modifiedFeature = wi.eClass().getEStructuralFeature(feature);
+                            Object modifiedValue = wi.eGet(modifiedFeature);
+                            modifiedStyle.put(modifiedFeature, modifiedValue);
+                        }
+
+                        IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(wi);
+                        MappingWithInterpreterHelper mappingHelper = new MappingWithInterpreterHelper(interpreter);
+                        DDiagramElement dDiagramElement = (DDiagramElement) wi.eContainer();
+                        Style bestStyle = mappingHelper.getBestStyle(dDiagramElement.getDiagramElementMapping(), dDiagramElement.getTarget(), dDiagramElement, dDiagramElement.getTarget(),
+                                dDiagramElement.getParentDiagram());
+                        if (bestStyle instanceof BasicLabelStyle newStyle) {
+                            for (Entry<EStructuralFeature, Object> styleEntry : modifiedStyle.entrySet()) {
+                                newStyle.eSet(styleEntry.getKey(), styleEntry.getValue());
+                                newStyle.getCustomFeatures().add(styleEntry.getKey().getName());
+                            }
+                            // Avoid many cases and cast to DNode, DNodeListElement, DDiagramElementContainer, ... by
+                            // using the name of the feature "ownedStyle".
+                            EStructuralFeature ownedStyleFeature = dDiagramElement.eClass().getEStructuralFeature("ownedStyle"); //$NON-NLS-1$
+                            dDiagramElement.eSet(ownedStyleFeature, newStyle);
+                        }
+                    }
+                }
+            });
             refreshStyle();
         }
     }

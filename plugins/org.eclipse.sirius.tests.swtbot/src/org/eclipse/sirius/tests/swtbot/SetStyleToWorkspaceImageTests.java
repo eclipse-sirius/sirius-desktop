@@ -30,6 +30,10 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.ui.business.api.image.GallerySelectable;
@@ -76,6 +80,7 @@ import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.widgets.AbstractSWTBot;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarDropDownButton;
@@ -287,6 +292,46 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
      */
     public void testSetWkpImageStyleOnContainedNodeFromTabbar() throws Exception {
         testSetWkpImageStyleApplicationAndCancel(A1C1_CONTAINER, AbstractDiagramNodeEditPart.class, true, getJpgImagePath(), false);
+    }
+
+    public void testResetWkpImgeStyleOnNodeFromTabbar() {
+        testResetWkpImgeStyle(C1_NODE, AbstractDiagramNodeEditPart.class, true, getJpgImagePath());
+    }
+
+    public void testResetWkpImgeStyleOnListFromTabbar() {
+        testResetWkpImgeStyle(C1_LIST, AbstractDiagramListEditPart.class, true, getJpgImagePath());
+    }
+
+    public void testResetWkpImgeStyleOnContainerFromTabbar() {
+        testResetWkpImgeStyle(C1_CONTAINER, AbstractDiagramContainerEditPart.class, true, getJpgImagePath());
+    }
+
+    public void testResetWkpImgeStyleOnBorderedNodeFromTabbar() {
+        testResetWkpImgeStyle(A1C1_NODE, AbstractDiagramBorderNodeEditPart.class, true, getJpgImagePath());
+    }
+
+    public void testResetWkpImgeStyleOnContainedNodeFromTabbar() {
+        testResetWkpImgeStyle(A1C1_CONTAINER, AbstractDiagramNodeEditPart.class, true, getJpgImagePath());
+    }
+
+    public void testResetWkpImgeStyleOnNodeFromAppearanceSection() {
+        testResetWkpImgeStyle(C1_NODE, AbstractDiagramNodeEditPart.class, false, getJpgImagePath());
+    }
+
+    public void testResetWkpImgeStyleOnListFromAppearanceSection() {
+        testResetWkpImgeStyle(C1_LIST, AbstractDiagramListEditPart.class, false, getJpgImagePath());
+    }
+
+    public void testResetWkpImgeStyleOnContainerFromAppearanceSection() {
+        testResetWkpImgeStyle(C1_CONTAINER, AbstractDiagramContainerEditPart.class, false, getJpgImagePath());
+    }
+
+    public void testResetWkpImgeStyleOnBorderedNodeFromAppearanceSection() {
+        testResetWkpImgeStyle(A1C1_NODE, AbstractDiagramBorderNodeEditPart.class, false, getJpgImagePath());
+    }
+
+    public void testResetWkpImgeStyleOnContainedNodeFromAppearanceSection() {
+        testResetWkpImgeStyle(A1C1_CONTAINER, AbstractDiagramNodeEditPart.class, false, getJpgImagePath());
     }
 
     /**
@@ -670,19 +715,19 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
         openSelectImageDialog();
         // Check that the filter area is here.
         try {
-            bot.text();
+            ImageSelectionGalleryHelper.getFilterTextArea(bot);
         } catch (WidgetNotFoundException e) {
             fail("A text area should be displayed in the dialog to browse the workspace to select image.");
         }
         bot.waitUntil(new CheckNbVisibleElementsInTree(bot.tree(), 1, "The dialog should display only the project at starting."));
         // Check that nothing is displayed if there is no match
         expandIfNeeded(!afterEclipse3_5);
-        bot.text().setText("noMatch");
+        ImageSelectionGalleryHelper.getFilterTextArea(bot).setText("noMatch");
         bot.waitUntil(new CheckNbVisibleElementsInTree(bot.tree(), 0, "The dialog should display nothing if the filter does not match with anything."));
         // Check that the contents of the representations file is filtered
         expandIfNeeded(!afterEclipse3_5);
         String fileName = "air*";
-        bot.text().setText(fileName);
+        ImageSelectionGalleryHelper.getFilterTextArea(bot).setText(fileName);
         // 1 element in tree and 2 in the gallery
         bot.waitUntil(new CheckNbVisibleElementsInTree(bot.tree(), 1, "The dialog should display all elements needed to access the file \"" + fileName + "\" (project/file)."));
         bot.tree().select(designerProject.getName());
@@ -690,7 +735,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
         bot.waitUntil(new CheckNbVisibleElementsInGallery(gallery, 2, "There should be 2 visible elements in the gallery"));
         // Check that nothing is filtered if there is no filter
         expandIfNeeded(true);
-        bot.text().setText("");
+        ImageSelectionGalleryHelper.getFilterTextArea(bot).setText("");
         // 1 element in tree and 3 in the gallery
         bot.waitUntil(new CheckNbVisibleElementsInTree(bot.tree(), 1, "The dialog should display a normal view if there is no filter."));
         bot.tree().select(designerProject.getName());
@@ -708,7 +753,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
     protected void expandIfNeeded(boolean expandNeeded) {
         if (expandNeeded) {
             // Check that nothing is filtered if there is no filter
-            bot.text().setText("");
+            ImageSelectionGalleryHelper.getFilterTextArea(bot).setText("");
             bot.waitUntil(new CheckNbVisibleElementsInTree(bot.tree(), 1, "The dialog should display a normal view if there is no filter."));
             // Expand all (because in Eclipse 3.5, the filter only applied on
             // expand elements
@@ -730,8 +775,8 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
 
         cancel(botPart);
 
-        assertNotNull(cancelCustomButton);
-        assertFalse(cancelCustomButton.isEnabled());
+        assertNotNull("Reset Style button should be present in Tabbar.");
+        assertFalse("Reset Style button should not be enabled.", cancelCustomButton.isEnabled());
 
         assertFalse("An error occurs during this test.", platformProblemsListener.doesAWarningOccurs() || platformProblemsListener.doesAnErrorOccurs());
     }
@@ -756,11 +801,11 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
         Dimension oldD2DSize = getSize(part.getFigure());
 
         if (oldGMFSize.height != -1) {
-            assertEquals(oldGMFSize.width, oldD2DSize.width);
+            assertEquals("GMF and Draw2D widths should be equals.", oldGMFSize.width, oldD2DSize.width);
         }
 
         if (oldGMFSize.height != -1) {
-            assertEquals(oldGMFSize.height, oldD2DSize.height);
+            assertEquals("GMF and Draw2D heights should be equals.", oldGMFSize.height, oldD2DSize.height);
         }
 
         AbstractSWTBot<? extends Widget> wkpImageButton = getSetStyleToWorkspaceImageButton(tabbar, true);
@@ -796,7 +841,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
             resetStylePropertiesToDefaultValuesButton = getResetStylePropertiesToDefaultValuesButton(tabbar, true);
         }
 
-        assertNotNull(resetStylePropertiesToDefaultValuesButton);
+        assertNotNull("Reset style button should not be null.", resetStylePropertiesToDefaultValuesButton);
         assertTrue("Reset style button should be enabled.", resetStylePropertiesToDefaultValuesButton.isEnabled());
 
         checkCustom(part, true);
@@ -879,6 +924,50 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
         checkCustom(part, true);
     }
 
+    private void testResetWkpImgeStyle(String name, Class<? extends IGraphicalEditPart> type, boolean tabbar, String imagePath) {
+        SWTBotGefEditPart botPart = selectAndCheckEditPart(name, type);
+        IAbstractDiagramNodeEditPart part = (IAbstractDiagramNodeEditPart) botPart.part();
+
+        assertTrue("The style of the selected element shoud not have no custom features.", getCustomFeatures(part).isEmpty());
+
+        AbstractSWTBot<? extends Widget> boldFontStyleButton = getBoldFontStyleButton(tabbar, true);
+        click(boldFontStyleButton);
+        assertEquals("Only one style feature should be detected as customized.", 1, getCustomFeatures(part).size());
+
+        AbstractSWTBot<? extends Widget> wkpImageButton = getSetStyleToWorkspaceImageButton(tabbar, true);
+        click(wkpImageButton);
+        openSelectImageDialog();
+
+        SWTBotButton resetImageStyleButton = ImageSelectionGalleryHelper.getResetImageStyleButton(bot);
+        assertTrue("Image path text should be empty.", ImageSelectionGalleryHelper.getImagePathText(bot).getText().isEmpty());
+        assertFalse("Unset Custom Image button should not be enabled.", resetImageStyleButton.isEnabled());
+
+        ImageSelectionGalleryHelper.selectWorkspaceImage(bot, imagePath, false);
+        assertEquals("Image path should correspnd to selected image.", imagePath, ImageSelectionGalleryHelper.getImagePathText(bot).getText());
+        assertFalse("Unset Custom Image button should not be enabled.", resetImageStyleButton.isEnabled());
+
+        ImageSelectionGalleryHelper.clickButton(bot, "OK", true);
+        assertEquals(2, getCustomFeatures(part).size());
+
+        wkpImageButton = getSetStyleToWorkspaceImageButton(tabbar, true);
+        click(wkpImageButton);
+        openSelectImageDialog();
+
+        resetImageStyleButton = ImageSelectionGalleryHelper.getResetImageStyleButton(bot);
+
+        assertEquals(imagePath, ImageSelectionGalleryHelper.getImagePathText(bot).getText());
+        assertTrue("Unset Custom Image button should be enabled.", resetImageStyleButton.isEnabled());
+        assertEquals("Two style features should be detected as customized.", 2, getCustomFeatures(part).size());
+
+        resetImageStyleButton.click();
+
+        assertTrue("Image path text should be empty.", ImageSelectionGalleryHelper.getImagePathText(bot).getText().isEmpty());
+        assertFalse("Unset Custom Image button should not be enabled.", resetImageStyleButton.isEnabled());
+
+        ImageSelectionGalleryHelper.clickButton(bot, "OK", true);
+        assertEquals("Only one style feature should be detected as customized.", 1, getCustomFeatures(part).size());
+    }
+
     private Dimension getSize(Node gmfNode) {
         Size size = (Size) gmfNode.getLayoutConstraint();
         return new Dimension(size.getWidth(), size.getHeight());
@@ -897,7 +986,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
     }
 
     private void cancel(SWTBotGefEditPart botPart) {
-        bot.button("Cancel").click();
+        ImageSelectionGalleryHelper.clickButton(bot, "Cancel", true);
         checkCustom((IAbstractDiagramNodeEditPart) botPart.part(), false);
     }
 
@@ -951,7 +1040,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
     private void checkCustom(IAbstractDiagramNodeEditPart part, boolean custom) {
         AbstractDNode node = (AbstractDNode) part.resolveDiagramElement();
         boolean isCustom = new DDiagramElementQuery(node).isCustomized();
-        assertEquals(custom, isCustom);
+        assertEquals("DDiagram ement custom style status should correspond to the expected value.", custom, isCustom);
     }
 
     private void copyImageToClipboard(IFile imageFile) throws Exception {
@@ -975,5 +1064,24 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
             clipboard.setContents(new Object[] { "dummy" }, new Transfer[] { TextTransfer.getInstance() });
             clipboard.dispose();
         });
+    }
+
+    private List<String> getCustomFeatures(IAbstractDiagramNodeEditPart part) {
+        List<String> customFeatures = new ArrayList<>();
+        DDiagramElement diagramElement = part.resolveDiagramElement();
+        if (diagramElement instanceof DNode dNode) {
+            if (dNode.getOwnedStyle() != null) {
+                customFeatures.addAll(dNode.getOwnedStyle().getCustomFeatures());
+            }
+        } else if (diagramElement instanceof DDiagramElementContainer dDiagramElementContainer) {
+            if (dDiagramElementContainer.getOwnedStyle() != null) {
+                customFeatures.addAll(dDiagramElementContainer.getOwnedStyle().getCustomFeatures());
+            }
+        } else if (diagramElement instanceof DNodeListElement dNodeElementElement) {
+            if (dNodeElementElement.getOwnedStyle() != null) {
+                customFeatures.addAll(dNodeElementElement.getOwnedStyle().getCustomFeatures());
+            }
+        }
+        return customFeatures;
     }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021, 2022 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2021, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -290,9 +291,9 @@ public class TreeImagesGalleryComposite extends FilteredTree {
      * Do the selection in the tree viewer and in the gallery according to the image path.
      * 
      * @param treeViewerSelectionData
-     *            the item to select in the tree viewer
+     *            the item to select in the tree viewer, no selection change if null.
      * @param gallerySelectionData
-     *            the item to select in the gallery
+     *            the item to select in the gallery, unset gallery selection if null.
      * @return
      */
     public Optional<String> setSelection(Object treeViewerSelectionData, Object gallerySelectionData) {
@@ -301,14 +302,19 @@ public class TreeImagesGalleryComposite extends FilteredTree {
             treeViewer.setSelection(new StructuredSelection(treeViewerSelectionData), true);
         }
 
-        if (gallerySelectionData != null && usedGallery.getItems().length > 0) {
-            GalleryItem[] items = usedGallery.getItems()[0].getItems();
-            for (GalleryItem galleryItem : items) {
-                String text = galleryItem.getText();
-                if (text.equals(labelProvider.getText(gallerySelectionData))) {
-                    usedGallery.selectItem(galleryItem, true);
+        if (gallerySelectionData != null) {
+            if (usedGallery.getItems().length > 0) {
+                GalleryItem[] items = usedGallery.getItems()[0].getItems();
+                for (GalleryItem galleryItem : items) {
+                    String text = galleryItem.getText();
+                    if (text.equals(labelProvider.getText(gallerySelectionData))) {
+                        usedGallery.selectItem(galleryItem, true);
+                    }
                 }
             }
+        } else {
+            // Unset selection in gallery
+            usedGallery.selectItem(null, true);
         }
 
         return selectedPath;
@@ -399,18 +405,20 @@ public class TreeImagesGalleryComposite extends FilteredTree {
      * 
      * @param okButton
      *            reference to the OK button
+     * @param resetImage
+     *            indicates whether the image has been reset or not
      */
-    public void createListenerForOKButton(Button okButton) {
+    public void createListenerForOKButton(Button okButton, AtomicBoolean resetImage) {
         usedGallery.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent e) {
-                okButton.setEnabled(e.item != null);
+                okButton.setEnabled(e.item != null || resetImage.get());
             }
         });
         treeViewer.addSelectionChangedListener(new ISelectionChangedListener() {
             @Override
             public void selectionChanged(SelectionChangedEvent event) {
-                okButton.setEnabled(getSelectedImagePath() != null);
+                okButton.setEnabled(getSelectedImagePath() != null || resetImage.get());
             }
         });
     }

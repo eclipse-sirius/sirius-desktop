@@ -2,6 +2,17 @@ h1. Translation Keys Changes
 
 This document lists the changes in @TranslatableMessage@ used for Sirius internationalization in each Sirius version.
 
+h2(#sirius745). Translation Keys Changes in Sirius 7.4.5 (from Sirius 7.4.4)
+
+h3. Message Keys Added
+
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ImageSelectionDialog_resetImageStyle_buttonLabel@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ImageSelectionDialog_resetImageStyle_label@
+
+h2(#sirius744). Translation Keys Changes in Sirius 7.4.4 (from Sirius 7.4.3)
+
+No changes.
+
 h2(#sirius743). Translation Keys Changes in Sirius 7.4.3 (from Sirius 7.4.0)
 
 h3. Message Keys Added
