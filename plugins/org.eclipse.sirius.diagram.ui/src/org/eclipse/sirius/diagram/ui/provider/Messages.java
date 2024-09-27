@@ -851,6 +851,12 @@ public final class Messages {
     public static String ImageSelectionDialog_imageNotFound_folderFound;
 
     @TranslatableMessage
+    public static String ImageSelectionDialog_resetImageStyle_buttonLabel;
+
+    @TranslatableMessage
+    public static String ImageSelectionDialog_resetImageStyle_label;
+
+    @TranslatableMessage
     public static String ImageSelectionDialog_title;
 
     @TranslatableMessage
