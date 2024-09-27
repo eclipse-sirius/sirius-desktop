@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021, 2022 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2021, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -26,11 +26,13 @@ import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.dialogs.ImageWorkspaceContentProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.dialogs.ImageWorkspaceLabelProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.dialogs.TreeImagesGalleryComposite;
 import org.eclipse.sirius.ext.emf.edit.EditingDomainServices;
+import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -53,6 +55,16 @@ import org.eclipse.swt.widgets.Tree;
 public class ImageSelectionDialog extends Dialog {
 
     /**
+     * The String to return when an image path has been reset.
+     */
+    public static final String RESET_IMAGE_PATH_RESULT = ""; //$NON-NLS-1$
+
+    /**
+     * The String displayed when no image is selected or when it has just been reset.
+     */
+    public static final String NO_IMAGE_PATH_TEXT = ""; //$NON-NLS-1$
+
+    /**
      * Width of the tree viewer.
      */
     static final int TREE_WIDTH = 270;
@@ -63,6 +75,11 @@ public class ImageSelectionDialog extends Dialog {
     static final int TREE_HEIGHT = 210;
 
     private static final String SLASH = "/"; //$NON-NLS-1$
+
+    /**
+     * The id of "Reset Image Style" button.
+     */
+    private static final int RESET_BUTTON_ID = Messages.ImageSelectionDialog_resetImageStyle_buttonLabel.hashCode();
 
     /**
      * The composite that displays widgets.
@@ -103,6 +120,16 @@ public class ImageSelectionDialog extends Dialog {
     private Text newPathText;
 
     /**
+     * A boolean array for passing by reference the value indicating whether the image has been reset or not.
+     */
+    private boolean[] resetImage = new boolean[1];
+
+    /**
+     * The text that displays the value of the selected workspace path in read-only mode.
+     */
+    private Text imagePathText;
+
+    /**
      * Create a new instance of {@link ImageSelectionDialog}.
      * 
      * @param parentShell
@@ -136,6 +163,8 @@ public class ImageSelectionDialog extends Dialog {
         container.setLayout(getLayout());
         container.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
+        createResetImagePathComposite(container);
+
         Object folderToSelect = null;
         Object imageToSelect = null;
         if (currentImagePath != null) {
@@ -163,6 +192,8 @@ public class ImageSelectionDialog extends Dialog {
 
         treeGalleryComposite = TreeImagesGalleryComposite.createTreeImagesGalleryComposite(container, getLabelProvider(), getContentProvider(), getFilters(), getRoot());
 
+        configureListenersForResetImagePathComposite();
+
         Tree treeWidget = treeGalleryComposite.getViewer().getTree();
         GridData data = (GridData) treeWidget.getLayoutData();
         data.widthHint = TREE_WIDTH;
@@ -175,6 +206,87 @@ public class ImageSelectionDialog extends Dialog {
         treeGalleryComposite.setSelection(folderToSelect, imageToSelect);
 
         return mainContainer;
+    }
+
+    /**
+     * Creates additional listeners for the tree viewer and the image gallery to manage the displayed image path text
+     * and the reset button. The reset button is only enabled when the context is a WorkspaceImage style. The image path
+     * displayed corresponds to the selected image, or an empty path if a reset is active or nothing is selected.
+     */
+    private void configureListenersForResetImagePathComposite() {
+        if (contextObject instanceof BasicLabelStyle style) {
+            treeGalleryComposite.getGallery().addSelectionListener(new SelectionAdapter() {
+                @Override
+                public void widgetSelected(SelectionEvent e) {
+                    String selectedImagePath = treeGalleryComposite.getSelectedImagePath();
+                    if (selectedImagePath == null) {
+                        selectedImagePath = getActualWorkspaceImagePath();
+                        if (contextObject instanceof WorkspaceImage workspaceImage && isResetImage()) {
+                            selectedImagePath = NO_IMAGE_PATH_TEXT;
+                        }
+                    } else if (selectedImagePath != null && contextObject instanceof WorkspaceImage) {
+                        getButton(RESET_BUTTON_ID).setEnabled(true);
+                        setResetImage(false);
+                    }
+                    imagePathText.setText(URI.decode(selectedImagePath));
+                }
+            });
+            treeGalleryComposite.getViewer().addSelectionChangedListener(new ISelectionChangedListener() {
+                @Override
+                public void selectionChanged(SelectionChangedEvent event) {
+                    String selectedImagePath = treeGalleryComposite.getSelectedImagePath();
+                    if (selectedImagePath == null) {
+                        selectedImagePath = getActualWorkspaceImagePath();
+                        if (contextObject instanceof WorkspaceImage workspaceImage && isResetImage()) {
+                            selectedImagePath = NO_IMAGE_PATH_TEXT;
+                        }
+                    }
+                    imagePathText.setText(URI.decode(selectedImagePath));
+                }
+            });
+        }
+    }
+
+    private String getActualWorkspaceImagePath() {
+        String actualWorkspaceImagePath = NO_IMAGE_PATH_TEXT;
+        if (contextObject instanceof WorkspaceImage workspaceImage) {
+            actualWorkspaceImagePath = workspaceImage.getWorkspacePath();
+        }
+        return actualWorkspaceImagePath;
+    }
+
+    /**
+     * Creates the Composite with the label "Image path: ", the path of the selected image or actual WorkspaceImage, and the "Reset Image Style" button.
+     * @param container
+     */
+    private void createResetImagePathComposite(Composite container) {
+        if (contextObject instanceof BasicLabelStyle style) {
+            Composite workspaceImagePathComposite = new Composite(container, SWT.NONE);
+            workspaceImagePathComposite.setLayoutData(new GridData(SWT.FILL, SWT.NONE, true, false));
+            GridLayout gridLayout = new GridLayout(3, false);
+            gridLayout.marginWidth = 12;
+            gridLayout.marginHeight = 0;
+            workspaceImagePathComposite.setLayout(gridLayout);
+
+            Label imagePathLabel = new Label(workspaceImagePathComposite, SWT.NONE);
+            imagePathLabel.setText(Messages.ImageSelectionDialog_resetImageStyle_label);
+
+            imagePathText = new Text(workspaceImagePathComposite, SWT.READ_ONLY | SWT.BORDER);
+            imagePathText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, true, 1, 1));
+            imagePathText.setText(URI.decode(getActualWorkspaceImagePath()));
+
+            Button resetButton = createButton(workspaceImagePathComposite, RESET_BUTTON_ID, Messages.ImageSelectionDialog_resetImageStyle_buttonLabel, false);
+            resetButton.setEnabled(style instanceof WorkspaceImage);
+            resetButton.addSelectionListener(new SelectionAdapter() {
+                @Override
+                public void widgetSelected(SelectionEvent e) {
+                    imagePathText.setText(NO_IMAGE_PATH_TEXT);
+                    setResetImage(true);
+                    getButton(RESET_BUTTON_ID).setEnabled(false);
+                    getButton(IDialogConstants.OK_ID).setEnabled(true);
+                }
+            });
+        }
     }
 
     /**
@@ -309,7 +421,7 @@ public class ImageSelectionDialog extends Dialog {
             // create OK and Cancel buttons by default
             Button okButton = createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL, true);
             okButton.setEnabled(treeGalleryComposite.getSelectedImagePath() != null);
-            treeGalleryComposite.createListenerForOKButton(okButton);
+            treeGalleryComposite.createListenerForOKButton(okButton, resetImage);
 
             createButton(parent, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, false);
         }
@@ -375,7 +487,15 @@ public class ImageSelectionDialog extends Dialog {
         this.labelProvider = labelProvider;
     }
 
+    public boolean isResetImage() {
+        return resetImage[0];
+    }
+
+    public void setResetImage(boolean resetImage) {
+        this.resetImage[0] = resetImage;
+    }
+
     public String getImagePath() {
-        return treeGalleryComposite.getSelectedImagePath();
+        return isResetImage() ? RESET_IMAGE_PATH_RESULT : treeGalleryComposite.getSelectedImagePath();
     }
 }

@@ -125,6 +125,7 @@ import org.eclipse.swtbot.swt.finder.widgets.AbstractSWTBot;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotToggleButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarDropDownButton;
 import org.eclipse.ui.IEditorPart;
@@ -152,6 +153,7 @@ import junit.framework.TestCase;
  */
 @SuppressWarnings({ "restriction" })
 public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase {
+
     static {
         SWTBotPreferences.TIMEOUT = 10000;
     }
@@ -161,6 +163,16 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
 
     /** Test project name. */
     protected static final String TEMP_PROJECT_NAME = "DesignerTestProject";
+
+    private static final String PROPERTIES_MESSAGE = "Properties";
+
+    private static final String DISABLED_MESSAGE = "disabled";
+
+    private static final String ENABLED_MESSAGE = "enabled";
+
+    private static final String APPEARANCE_TAB_MESSAGE = "Appearance tab";
+
+    private static final String TABBAR_MESSAGE = "tabbar";
 
     private static final String EN_US = "EN_US";
 
@@ -1027,6 +1039,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     protected SWTBotToolbarDropDownButton getPasteMenu() {
         return getPasteMenu(editor.bot());
     }
+
     /**
      * Returns the bot for the DropDownButton, which contains all paste actions.
      */
@@ -1266,6 +1279,47 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
+     * Get the widget bot corresponding to the button to apply font style on a selected node. If tabbar parameter is
+     * set to true, get the button of the tabbar, else get the button of the Appearance tab on the properties view.
+     *
+     * @param tabbar
+     *            if tabbar parameter is set to true, get the button of the tabbar, else get the button of the
+     *            Appearance tab on the properties view
+     * @param enabled
+     *            true to check if the button must be enable, false to check if it shouldn't be enabled
+     * @return the widget bot corresponding to the button to apply font style on a selected node
+     */
+    protected AbstractSWTBot<? extends Widget> getBoldFontStyleButton(boolean tabbar, boolean enabled) {
+        AbstractSWTBot<? extends Widget> boldFontButton = null;
+        if (tabbar) {
+            boldFontButton = getBoldFontStyleButtonFromTabbar();
+        } else {
+            boldFontButton = getBoldFontStyleButtonFromAppearanceTab();
+        }
+        TestCase.assertNotNull("Can't find the BoldFontStyle button in the " + (tabbar ? TABBAR_MESSAGE : APPEARANCE_TAB_MESSAGE), boldFontButton);
+        TestCase.assertEquals("The BoldFontStyle button should be " + (enabled ? ENABLED_MESSAGE : DISABLED_MESSAGE), enabled, boldFontButton.isEnabled());
+        return boldFontButton;
+    }
+
+    protected AbstractSWTBot<? extends Widget> getBoldFontStyleButtonFromTabbar() {
+        return getTabbarToggleButton("Bold Font Style");
+    }
+
+    private AbstractSWTBot<? extends Widget> getTabbarToggleButton(String tooltip) {
+        editor.show();
+        SWTBot tabbarBot = editor.bot();
+        AbstractSWTBot<ToolItem> button = tabbarBot.toolbarToggleButtonWithTooltip(tooltip);
+
+        TestCase.assertNotNull("No button found with tooltip \"" + tooltip + "\"", button);
+
+        return button;
+    }
+
+    private AbstractSWTBot<? extends Widget> getBoldFontStyleButtonFromAppearanceTab() {
+        return getSectionToggleButton(0);
+    }
+
+    /**
      * Get the widget bot corresponding to the button to set a workspace image on a selected node. If tabbar parameter
      * at true, get the button of the tabbar, else get the button of the Appearance tab on the properties view.
      *
@@ -1283,8 +1337,8 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         } else {
             wkpImageButton = getSetStyleToWorkspaceImageButtonFromAppearanceTab();
         }
-        TestCase.assertNotNull("Can't find the SetStyleToWorkspaceImage button in the " + (tabbar ? "tabbar" : "Appearance tab"), wkpImageButton);
-        TestCase.assertEquals("The SetStyleToWorkspaceImage button should be " + (enabled ? "enabled" : "disabled"), enabled, wkpImageButton.isEnabled());
+        TestCase.assertNotNull("Can't find the SetStyleToWorkspaceImage button in the " + (tabbar ? TABBAR_MESSAGE : APPEARANCE_TAB_MESSAGE), wkpImageButton);
+        TestCase.assertEquals("The SetStyleToWorkspaceImage button should be " + (enabled ? ENABLED_MESSAGE : DISABLED_MESSAGE), enabled, wkpImageButton.isEnabled());
         return wkpImageButton;
     }
 
@@ -1307,9 +1361,9 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         } else {
             resetStylePropertiesToDefaultValuesButton = getResetStylePropertiesToDefaultValuesButtonFromTabbar();
         }
-        TestCase.assertNotNull("Can't find the \"" + ResetStylePropertiesToDefaultValuesAction.ACTION_NAME + "\" button in the " + (tabbar ? "tabbar" : "Appearance tab"),
+        TestCase.assertNotNull("Can't find the \"" + ResetStylePropertiesToDefaultValuesAction.ACTION_NAME + "\" button in the " + (tabbar ? TABBAR_MESSAGE : APPEARANCE_TAB_MESSAGE),
                 resetStylePropertiesToDefaultValuesButton);
-        TestCase.assertEquals("The \"" + ResetStylePropertiesToDefaultValuesAction.ACTION_NAME + "\" button should be " + (enabled ? "enabled" : "disabled"), enabled,
+        TestCase.assertEquals("The \"" + ResetStylePropertiesToDefaultValuesAction.ACTION_NAME + "\" button should be " + (enabled ? ENABLED_MESSAGE : DISABLED_MESSAGE), enabled,
                 resetStylePropertiesToDefaultValuesButton.isEnabled());
         return resetStylePropertiesToDefaultValuesButton;
     }
@@ -1338,10 +1392,12 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      *            the specified button
      */
     protected void click(AbstractSWTBot<? extends Widget> button) {
-        if (button instanceof SWTBotToolbarButton) {
-            ((SWTBotToolbarButton) button).click();
-        } else if (button instanceof SWTBotButton) {
-            ((SWTBotButton) button).click();
+        if (button instanceof SWTBotToolbarButton toolbarButton) {
+            toolbarButton.click();
+        } else if (button instanceof SWTBotButton commonButton) {
+            commonButton.click();
+        } else if (button instanceof SWTBotToggleButton toggleButton) {
+            toggleButton.click();
         }
     }
 
@@ -1366,8 +1422,8 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      * @return the button from the 'Appearance' section at the given index, that should have the given tooltip
      */
     protected SWTBotButton getSectionButton(String tooltip) {
-        SWTBot propertiesBot = bot.viewByTitle("Properties").bot();
-        bot.viewByTitle("Properties").setFocus();
+        SWTBot propertiesBot = bot.viewByTitle(PROPERTIES_MESSAGE).bot();
+        bot.viewByTitle(PROPERTIES_MESSAGE).setFocus();
         SWTBotSiriusHelper.selectPropertyTabItem("Appearance", propertiesBot);
         SWTBotButton button = propertiesBot.buttonWithTooltipInGroup(tooltip, "Fonts and Colors:");
 
@@ -1375,6 +1431,17 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         // get button from index and check requested tool-tip allows to check
         // position
         TestCase.assertEquals(tooltip, button.getToolTipText());
+
+        return button;
+    }
+
+    private AbstractSWTBot<? extends Widget> getSectionToggleButton(int index) {
+        SWTBot propertiesBot = bot.viewByTitle(PROPERTIES_MESSAGE).bot();
+        bot.viewByTitle(PROPERTIES_MESSAGE).setFocus();
+        SWTBotSiriusHelper.selectPropertyTabItem("Appearance", propertiesBot);
+        AbstractSWTBot<? extends Widget> button = propertiesBot.toggleButtonInGroup("Fonts and Colors:", 0);
+
+        TestCase.assertNotNull(button);
 
         return button;
     }

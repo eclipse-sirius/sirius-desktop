@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021, 2022 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2021, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -399,18 +399,20 @@ public class TreeImagesGalleryComposite extends FilteredTree {
      * 
      * @param okButton
      *            reference to the OK button
+     * @param resetImage
+     *            indicates whether the image has been reset or not
      */
-    public void createListenerForOKButton(Button okButton) {
+    public void createListenerForOKButton(Button okButton, boolean[] resetImage) {
         usedGallery.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent e) {
-                okButton.setEnabled(e.item != null);
+                okButton.setEnabled(e.item != null || resetImage[0]);
             }
         });
         treeViewer.addSelectionChangedListener(new ISelectionChangedListener() {
             @Override
             public void selectionChanged(SelectionChangedEvent event) {
-                okButton.setEnabled(getSelectedImagePath() != null);
+                okButton.setEnabled(getSelectedImagePath() != null || resetImage[0]);
             }
         });
     }

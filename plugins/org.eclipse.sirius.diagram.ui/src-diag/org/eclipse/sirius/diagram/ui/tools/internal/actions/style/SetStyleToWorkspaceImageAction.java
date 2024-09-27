@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
+import org.eclipse.sirius.diagram.ui.business.api.image.ImageSelectionDialog;
 import org.eclipse.sirius.diagram.ui.business.api.image.ImageSelector;
 import org.eclipse.sirius.diagram.ui.business.api.image.ImageSelectorService;
 import org.eclipse.sirius.diagram.ui.business.api.image.WorkspaceImageHelper;
@@ -78,7 +79,11 @@ public class SetStyleToWorkspaceImageAction extends Action {
         for (BasicLabelStyle basicLabelStyle : styles) {
             List<String> imagePaths = imageSelector.selectImages(basicLabelStyle, ImageSelector.SelectionMode.MONO_SELECTION);
             if (imagePaths.size() == 1) {
-                WorkspaceImageHelper.INSTANCE.updateStyle(basicLabelStyle, imagePaths.get(0));
+                if (imagePaths.get(0).equals(ImageSelectionDialog.RESET_IMAGE_PATH_RESULT)) {
+                    WorkspaceImageHelper.INSTANCE.resetStyle(basicLabelStyle);
+                } else {
+                    WorkspaceImageHelper.INSTANCE.updateStyle(basicLabelStyle, imagePaths.get(0));
+                }
             }
         }
     }
