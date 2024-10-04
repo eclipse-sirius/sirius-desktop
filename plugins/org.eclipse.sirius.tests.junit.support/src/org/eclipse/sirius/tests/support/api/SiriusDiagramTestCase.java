@@ -34,6 +34,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gef.EditPart;
@@ -59,7 +60,6 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
-import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsManager;
@@ -1300,8 +1300,13 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
     protected void unsynchronizeDiagram(final DDiagram diagram) {
         // Unsynchronized the diagram
         TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
-        Command setUnsynschronizedCmd = SetCommand.create(domain, diagram, DiagramPackage.Literals.DDIAGRAM__SYNCHRONIZED, false);
-        domain.getCommandStack().execute(setUnsynschronizedCmd);
+        domain.getCommandStack().execute(new RecordingCommand(domain) {
+
+            @Override
+            protected void doExecute() {
+                diagram.setSynchronized(false);
+            }
+        });
     }
 
     /**
