@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@
 package org.eclipse.sirius.diagram.ui.edit.internal.part.listener;
 
 import java.util.Iterator;
+import java.util.Objects;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
@@ -25,8 +26,6 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.SynchronizeStatusFigure;
 import org.eclipse.ui.PlatformUI;
-
-import com.google.common.base.Objects;
 
 /**
  * When the DDiagram synchronize state changes, this ResourceSet listener will update </br>
@@ -74,7 +73,7 @@ public class SynchronizedStatusPostCommitListener extends ResourceSetListenerImp
                 while (notifs.hasNext()) {
                     Notification notif = notifs.next();
 
-                    if (Objects.equal(resolveSemanticElement, notif.getNotifier())) {
+                    if (Objects.equals(resolveSemanticElement, notif.getNotifier())) {
                         SynchronizeStatusFigure.updateNotification((DiagramRootEditPart) diagramEditor.getDiagramEditPart().getRoot());
                         break;
                     }
