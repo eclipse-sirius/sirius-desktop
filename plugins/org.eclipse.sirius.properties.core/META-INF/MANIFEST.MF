@@ -2,32 +2,32 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.properties.core;singleton:=true
-Bundle-Version: 7.4.4.qualifier
+Bundle-Version: 7.4.5.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Localization: plugin
 Bundle-ActivationPolicy: lazy
-Export-Package: org.eclipse.sirius.properties.core.api;version="7.4.4",
- org.eclipse.sirius.properties.core.api.preferences;version="7.4.4",
- org.eclipse.sirius.properties.core.internal;version="7.4.4";x-internal:=true,
- org.eclipse.sirius.properties.core.internal.converter;version="7.4.4";x-internal:=true,
- org.eclipse.sirius.properties.core.internal.expressions;version="7.4.4";x-internal:=true,
- org.eclipse.sirius.properties.core.internal.migration;version="7.4.4";x-internal:=true,
- org.eclipse.sirius.properties.core.internal.preferences;version="7.4.4";x-internal:=true,
- org.eclipse.sirius.properties.core.internal.preprocessor;version="7.4.4";x-internal:=true
+Export-Package: org.eclipse.sirius.properties.core.api;version="7.4.5",
+ org.eclipse.sirius.properties.core.api.preferences;version="7.4.5",
+ org.eclipse.sirius.properties.core.internal;version="7.4.5";x-internal:=true,
+ org.eclipse.sirius.properties.core.internal.converter;version="7.4.5";x-internal:=true,
+ org.eclipse.sirius.properties.core.internal.expressions;version="7.4.5";x-internal:=true,
+ org.eclipse.sirius.properties.core.internal.migration;version="7.4.5";x-internal:=true,
+ org.eclipse.sirius.properties.core.internal.preferences;version="7.4.5";x-internal:=true,
+ org.eclipse.sirius.properties.core.internal.preprocessor;version="7.4.5";x-internal:=true
 Require-Bundle: org.eclipse.core.runtime;bundle-version="3.0.0",
- org.eclipse.sirius;bundle-version="7.4.4",
- org.eclipse.sirius.common;bundle-version="7.4.4",
+ org.eclipse.sirius;bundle-version="7.4.5",
+ org.eclipse.sirius.common;bundle-version="7.4.5",
  org.eclipse.sirius.common.interpreter;bundle-version="5.0.0",
- org.eclipse.sirius.ecore.extender;bundle-version="7.4.4",
- org.eclipse.sirius.ext.base;bundle-version="7.4.4",
- org.eclipse.sirius.properties;bundle-version="7.4.4",
+ org.eclipse.sirius.ecore.extender;bundle-version="7.4.5",
+ org.eclipse.sirius.ext.base;bundle-version="7.4.5",
+ org.eclipse.sirius.properties;bundle-version="7.4.5",
  org.eclipse.eef;bundle-version="2.0.0",
  org.eclipse.eef.common;bundle-version="2.0.0",
  org.eclipse.eef.core;bundle-version="2.0.0",
  org.eclipse.emf.transaction;bundle-version="1.8.0",
  org.eclipse.sirius.ext.emf.edit;bundle-version="5.0.0",
  org.eclipse.sirius.ext.ide;bundle-version="6.0.0",
- org.eclipse.sirius.properties.defaultrules;bundle-version="7.4.4"
+ org.eclipse.sirius.properties.defaultrules;bundle-version="7.4.5"
 Bundle-Activator: org.eclipse.sirius.properties.core.internal.SiriusPropertiesCorePlugin$Implementation
 Automatic-Module-Name: org.eclipse.sirius.properties.core
