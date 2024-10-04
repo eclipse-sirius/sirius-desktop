@@ -19,7 +19,7 @@
   <parent>
     <groupId>org.eclipse.sirius</groupId>
     <artifactId>sirius-parent</artifactId>
-    <version>7.4.4-SNAPSHOT</version>
+    <version>7.4.5-SNAPSHOT</version>
     <relativePath>../../packaging/org.eclipse.sirius.parent</relativePath>
   </parent>
 
@@ -30,6 +30,6 @@
 
   <artifactId>org.eclipse.sirius.tests.sample.xtext.statemachine</artifactId>
   <packaging>eclipse-plugin</packaging>
-  <version>7.4.4-SNAPSHOT</version>
+  <version>7.4.5-SNAPSHOT</version>
 
 </project>
