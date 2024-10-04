@@ -6,7 +6,11 @@ This document contains the release notes for recent major releases of Sirius. Se
 
 h2(#sirius7.4.4). Changes in Sirius  Desktop 7.4.4
 
-Nothing.
+h3. Developer-Visible Changes
+
+h4. Changes in @org.eclipse.sirius.diagram.ui@
+
+* <span class="label label-success">Added</span> A new extension point @org.eclipse.sirius.diagram.ui.colorPalettePopupProvider@ has been introduced. It allows to provide a custom color palette popup by registering a custom implementation of the new @org.eclipse.sirius.diagram.ui.tools.api.color.ColorPalettePopupProvider@ interface. See the @exsd@ file for the extension point for more information and an example.
 
 h2(#sirius7.4.3). Changes in Sirius  Desktop 7.4.3
 
