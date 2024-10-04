@@ -1,0 +1,48 @@
+Sirius 1.0.0M7 is a milestone release which has been included in Luna M7. The project is still in incubation at this time.
+
+See also [https://dev.eclipse.org/mhonarc/lists/sirius-dev/msg00035.html the announce on the mailing list].
+
+== Availability ==
+
+Sirius 1.0.0M7 was released on 2014-05-07 (tag [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/tag/?id=v1.0.0M7 v1.0.0M7], commit [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/commit/?id=281deb8170a587634ba8aa1416d267775b52e88c 281deb8170a587634ba8aa1416d267775b52e88c]). It is available from the following update sites:
+* <code>http://download.eclipse.org/sirius/updates/milestones/1.0.0M7/juno</code>
+* <code>http://download.eclipse.org/sirius/updates/milestones/1.0.0M7/kepler</code>
+* <code>http://download.eclipse.org/sirius/updates/milestones/1.0.0M7/luna</code>
+
+It is recommended you use the update-site matching the version of Eclipse you use to avoid potential issues at runtime.
+
+If you want to install the new <code>org.eclipse.sirius.tests</code> feature, which provides APIs to help create automated tests of Sirius-based modelers, you will need to add the following update-site:
+* SWTBot 2.1.1: http://download.eclipse.org/technology/swtbot/releases/2.1.1/
+
+''Juno users'': Sirius depends on more recent versions of some components that what is available by default from a Juno install. You need to add the following update-sites if you want to install Sirius 1.0.0M7 on Juno:
+* Orbit: http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository/
+* Acceleo 3.4: http://download.eclipse.org/acceleo/updates/releases/3.4/
+* EEF 1.2: http://download.eclipse.org/modeling/emft/eef/updates/nightly/1.2/
+
+== Compatibility ==
+
+Sirius 1.0.0M7 is compatible with the following versions of Eclipse:
+* Eclipse 3.8/4.2 (Juno)
+* Eclipse 4.3 (Kepler)
+* Eclipse 4.4M7 (Luna)
+
+== New & Noteworthy ==
+
+The most important changes in this milestone are:
+* [https://bugs.eclipse.org/bugs/show_bug.cgi?id=428322 #428322], [https://bugs.eclipse.org/bugs/show_bug.cgi?id=431634 #431634]: The dynamic tabbar work, which was disabled by mistake in M6, are finally visible in M7. This allowed us to find (and fix) a memory leak in the platform, which will also by released in M7.
+* [https://bugs.eclipse.org/bugs/show_bug.cgi?id=427803 #427803]: The metamodel and associated code for the diagram dialect has now been completely moved out of the core of Sirius itself.
+* [https://bugs.eclipse.org/bugs/show_bug.cgi?id=429682 #429682]: We had to change some of our APIs (with no loss of functionality) to avoid exposing Guava-specific types. See the bugzilla (and the related #428976) for the technical details, but the end result is better compatibility with the other components of the release train (and ecosystem at large).
+* [https://bugs.eclipse.org/bugs/show_bug.cgi?id=430263 #430263]: Starting with M7, Sirius no longer automatically starts and loads itself as soon as Eclipse is launched, but instead is loaded only when it starts to be used. This improves the startup time of the Eclipse Modeling Package (among others).
+* [https://bugs.eclipse.org/bugs/show_bug.cgi?id=430527 #430527]: We fixed all packaging issues identified by the automated reports which were launched on M6. In particular our update-sites now include pack200 versions of our JARs.
+* [https://bugs.eclipse.org/bugs/show_bug.cgi?id=431132 #431132], [https://bugs.eclipse.org/bugs/show_bug.cgi?id=431133 #431133], [https://bugs.eclipse.org/bugs/show_bug.cgi?id=430536 #430536]: Various improvements in the way we manage the target platforms used to build Sirius. They should enable a better control on what we depend on and better/earlier visibility on potential integration issues.
+* [https://bugs.eclipse.org/bugs/show_bug.cgi?id=427247 #427247]: Cleanup of our metamodels by removing very old and unsupported parts. While each of these are technically API changes, they should have very little impact on most users. If you rely heavily on the Sirius meta-models in your code, please see the details in the bugzilla about the actual changes, and the release notes which explain how to adapt your code when relevant. Note that this is actually a rather large task, only parts of which will are included in M7.
+* [https://bugs.eclipse.org/bugs/show_bug.cgi?id=431359 #431359]: For historical reasons, the definition of the Sirius session resources (the aird files) was done in the diagram-specific plug-ins. This can cause issues when only the core of Sirius but not the diagram-specific parts are installed. The resource definitions and implementations have moved into the core org.eclipse.sirius plug-in itself to ensure they are always available. Note that at the moment this means org.eclipse.sirius depends on parts of GMF; we will try to remove this dependency for 1.0.
+* [https://bugs.eclipse.org/bugs/show_bug.cgi?id=432021 #432021]: Sirius installs some of its (layout) providers too broadly, which causes issues when using other GMF-based tools (e.g. Papyrus) if Sirius is installed. We are now more careful about this and do not interfere with other GMF-based modelers.
+* [https://bugs.eclipse.org/bugs/show_bug.cgi?id=430495 #430495], [https://bugs.eclipse.org/bugs/show_bug.cgi?id=432931 #432931]: better support for XText-based models, in particular when it comes to XText DSLs which integrate with Java.
+* [https://bugs.eclipse.org/bugs/show_bug.cgi?id=430579 #430579]: better defaults in Tree dialect to avoid performance issues.
+
+See [http://eclipse.org/sirius/doc/Release%20Notes.html#sirius1.0M7 the release notes] for details about API changes.
+
+The complete list of bugs fixed in this version can be seen [https://bugs.eclipse.org/bugs/buglist.cgi?list_id=7809578&classification=Modeling&query_format=advanced&product=Sirius&target_milestone=1.0.0M7 on Bugzilla].
+
+[[Category:Sirius]]

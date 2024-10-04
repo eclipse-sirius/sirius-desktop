@@ -1,0 +1,33 @@
+Sirius 4.1.0 is a major release.
+
+== Availability ==
+
+Sirius 4.1.0 was released on 2016-10-07 (tag [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/tag/?id=v4.1.0 v4.1.0], commit [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/commit/?id=5b1077e34e01521d6fb87d2434014c1411ebf526 5b1077e34e01521d6fb87d2434014c1411ebf526]). It is available from the following update sites:
+* <code>http://download.eclipse.org/sirius/updates/releases/4.1.0/mars</code> ([http://download.eclipse.org/sirius/updates/releases/4.1.0/org.eclipse.sirius-4.1.0-mars.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/4.1.0/neon</code> ([http://download.eclipse.org/sirius/updates/releases/4.1.0/org.eclipse.sirius-4.1.0-neon.zip Archive])
+
+It is recommended you use the update-site matching the version of Eclipse you use to avoid potential issues at runtime.
+
+The complete JUnit and SWTBot test suites used to validate Sirius are published along with all their dependencies in separate update-sites from the core, available at:
+* <code>http://download.eclipse.org/sirius/updates/releases/4.1.0/mars/tests</code> ([http://download.eclipse.org/sirius/updates/releases/4.1.0/org.eclipse.sirius.tests-4.1.0-mars.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/4.1.0/neon/tests</code> ([http://download.eclipse.org/sirius/updates/releases/4.1.0/org.eclipse.sirius.tests-4.1.0-neon.zip Archive])
+
+== Compatibility & Requirements ==
+
+Sirius 4.1.0 is compatible with the following versions of Eclipse:
+* Eclipse 4.5 (Mars).
+* Eclipse 4.6 (Neon). Neon is the reference platform.
+
+In addition, Sirius 4.1.0 requires:
+* AQL version 5.0.2 (or later), available at <code>http://download.eclipse.org/acceleo/updates/releases/3.6/R201610060831</code>
+* EEF 1.7.0  (or later), available at <code>http://download.eclipse.org/modeling/emft/eef/updates/releases/1.7/R20161005043727</code>
+
+If you want to install the org.eclipse.sirius.tests.support feature, which provides APIs to help create automated tests of Sirius-based modelers, you will need to add the following update-site:
+* SWTBot 2.1.1: <code>http://download.eclipse.org/technology/swtbot/releases/2.1.1/</code>
+
+== New & Noteworthy ==
+
+The complete list of (84) tickets fixed in Sirius 4.1.0 can be found [https://bugs.eclipse.org/bugs/buglist.cgi?classification=Modeling&product=Sirius&query_format=advanced&target_milestone=4.1.0 here on the Bugzilla].
+
+The release notes with highlights can be found [https://www.eclipse.org/sirius/doc/Release_Notes.html#sirius4.1.0 here].
+[[Category:Sirius]]

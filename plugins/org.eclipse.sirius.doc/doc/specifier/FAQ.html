@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>FAQ</title>
+		<link type="text/css" rel="stylesheet" href="../resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="../resources/custom.css"/>
+	</head>
+	<body>
+		<h1 id="SiriusDesktopFAQ">Sirius Desktop FAQ</h1>
+		<p>This document answers some common questions that specifiers can have when creating advanced Sirius modelers.</p>
+		<h3 id="WhenIselectaelementinSiriusdiagramitreturnsainstanceofDDiagrambutiwanttogetinstancesofEObject.IsthereanywaytogetEObjectfromselectioninSiriusDiagram">When I select a element in Sirius diagram, it returns a instance of DDiagram, but i want to get instances of EObject. Is there any way to get EObject from selection in Sirius Diagram?</h3>
+		<p>All Sirius model elements which represent a semantic/domain element implement the 
+			<code>org.eclipse.sirius.viewpoint.DSemanticDecorator</code> interface, which provides the 
+			<code>getTarget()</code> method (actually an EMF EReference) to access the underlying 
+			<code>EObject</code>.
+		</p>
+		<p>This is the case for:</p>
+		<ul>
+			<li>all &#8220;top-level&#8221; representations (diagrams, which in practice are instances of 
+				<code>DSemanticDiagram</code> that inherit from 
+				<code>DDiagram</code>; tables, instances of 
+				<code>DTable</code>; and trees, instances of 
+				<code>DTree</code>@);
+			</li>
+			<li>all the individual elements (
+				<code>DRepresentationElement</code>) inside these representations: 
+				<code>DNodes</code> /@DContainer@ /@DEdges@ /etc. in diagrams, 
+				<code>DLine</code> /@DColumn@  in tables, and 
+				<code>DTreeItem</code>  in tree representations. 
+				<code>DRepresentationElement</code>  also provides 
+				<code>getSemanticElements()</code>  to access the &#8220;secondary&#8221; associated semantic elements, if any (the ones specified via &#8220;Associated Elements Expressions&#8221; in the mapping definitions).
+			</li>
+		</ul>
+		<h3 id="RetrieveaDNodeoranotherSiriusrepresentationelementfromgivensemanticelement">Retrieve a DNode (or another Sirius representation element) from given semantic element</h3>
+		<p>This is the opposite operation of the previous section.</p>
+		<p>Sirius maintains an session-scoped inverse cross-referencer which can be used to find &#8220;who references who&#8221; even in the absence of explicit navigable references in the model.
+			<br/>Sirius representation elements have a reference to the semantic model they represents, so you can use it for this kind of task.
+			<br/>The most convenient way is to use the 
+			<code>org.eclipse.sirius.business.api.query.EObjectQuery</code> :
+		</p>
+		<pre><code> Collection&lt;EObject&gt; result = new EObjectQuery(mySemanticElement).getInverseReferences(ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET);
+</code></pre>
+		<p>Note that this will find all the 
+			<code>DSemanticDecorators</code>  which represent 
+			<code>mySemanticElement</code>  in the whole session (all representations included), which may or may not be what you want.
+			<br/>If you need more precision, you will have to filter the result (using 
+			<code>EObjectQuery#getRepresentation(DRepresentation)</code>  for example to restrict to a specific diagram).
+		</p>
+		<h3 id="Haveeditorpropertiesviewinreadonly">Have editor/properties view in read-only</h3>
+		<p>To control the permission on object edition, Sirius use an implementation of 
+			<code>IPermissionAuthority</code> .
+			<br/>A default one named 
+			<code>ReadOnlyPermissionAuthority</code>  is used by Sirius, to enable the read-only mode you can the following code snippet:
+		</p>
+		<pre><code>IPermissionAuthority permissionAuthority = IPermissionAuthorityRegistry.getPermissionAuthority(session.getTransactionalEditingDomain().getResourceSet());
+if (permissionAuthority instanceof ReadOnlyPermissionAuthority) {
+   ((ReadOnlyPermissionAuthority) permissionAuthority).activate();
+}
+</code></pre>
+		<p>To better control permissions, you can provide your own 
+			<code>IPermissionAuthority</code>  implementation using the 
+			<code>PermissionProvider</code>  extension point.
+		</p>
+		<h3 id="Enabledirecteditonbeginendlabels">Enable direct edit on begin/end labels</h3>
+		<p>In addition to its &#8220;main&#8221; label, an edge on a diagram can also have optional labels at the beginning (source-side) and/or end (target-side).
+			<br/>However direct edit tools associate with the edge only allow to edit the main label, not the begin/end ones.
+			<br/>Currently the only way to overcome this limitation is to programmatically contribute additional edit policies on the corresponding GMF Edit Parts.
+			<br/>
+			<a href="https://github.com/ObeoNetwork/UML-Designer/">UML Designer</a> does this for UML associations: see the code 
+			<a href="https://github.com/ObeoNetwork/UML-Designer/blob/master/plugins%2Forg.obeonetwork.dsl.uml2.design%2Fsrc%2Forg%2Fobeonetwork%2Fdsl%2Fuml2%2Fdesign%2Finternal%2Feditpart%2FUMLEditPartProvider.java">here</a> for how this can be implemented.
+		</p>
+		<h3 id="SetCoordinatesPositionatnodecreationusingaNodeCreationTool">Set Coordinates/Position at node creation using a Node Creation Tool</h3>
+		<p>You can define the location and size of additional created nodes/edges by using the &#8220;CreateView/CreateEdgeView&#8221; operation in the creation tool and calling a Java service to use 
+			<code>org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager</code>  API.
+			<br/>Sirius will use this singleton to know the location and size with which to create the nodes/edges.
+			<br/>After having called 
+			<code>CreateView</code>  operation to get the 
+			<code>DDiagramElement</code>  created, you can call a Java service as sub operation (a 
+			<code>ChangeContext</code>  for example), and in this Java service call:
+		</p>
+		<pre><code>LayoutData layoutData = SiriusLayoutDataManager.INSTANCE.getData(createdView, true);
+// Update the layout data
+</code></pre>
+		<p>
+			<em>Warning</em>: The getData() method does not always return layout data as it does not always exist. See next section for another way of doing this.
+		</p>
+		<h3 id="SetCoordinatesPositionatnodecreationusinganexistingnode">Set Coordinates/Position at node creation using an existing node</h3>
+		<p>Inside a tool which creates a new node one can use an existing node to set the location and size of the node.
+			<br/>The tip is to inject a new 
+			<code>RootLayoutData</code>  into the 
+			<code>SiriusLayoutDataManager</code> .
+			<br/>This layout data must concern the graphical container of the new node.
+			<br/>When Sirius creates the new node, it looks into the 
+			<code>LayoutDataManager</code>  if hints exist.
+		</p>
+		<p>The following method use an existing node to retrieve its location and size and use them to define the location and size of the next created node.
+			<br/>One could also modify the coordinates before putting them into the layout data manager.
+			<br/>The code uses the 
+			<code>getEditPart()</code>  method defined in the next section.
+		</p>
+		<pre><code>private void setGraphicalHintsFromExistingNode(DDiagramElement existingNode) {
+  // Give hints about location and size
+  IGraphicalEditPart editPart = getEditPart(existingNode);
+  if (editPart instanceof ShapeEditPart) {
+    ShapeEditPart part = (ShapeEditPart)editPart;
+    SiriusLayoutDataManager.INSTANCE.addData(new RootLayoutData(existingNode.eContainer(), part.getLocation(), part.getSize()));
+  }
+}
+</code></pre>
+		<h3 id="HowtogettheEditPartcorrespondingtoaDDiagramElement">How to get the EditPart corresponding to a DDiagramElement?</h3>
+		<pre><code>    private IGraphicalEditPart getEditPart(DDiagramElement diagramElement) {
+        IEditorPart editor = EclipseUIUtil.getActiveEditor();
+         if (editor instanceof DiagramEditor) {
+             Session session = new EObjectQuery(diagramElement).getSession();
+             View gmfView = SiriusGMFHelper.getGmfView(diagramElement, session);
+</code></pre>		            IGraphicalEditPart result = null;
+		             if (gmfView != null &amp;&amp; editor instanceof DiagramEditor) {
+		                 final Map&lt;?, ?&gt; editPartRegistry = ((DiagramEditor) editor).getDiagramGraphicalViewer().getEditPartRegistry();
+		                 final Object editPart = editPartRegistry.get(gmfView);
+		                 if (editPart instanceof IGraphicalEditPart) {
+		                     result = (IGraphicalEditPart) editPart;
+		                     return result;
+		                 }
+		             }
+		         }
+		         return null;
+		     }
+		<h3 id="HowtogetallDiagramsinasession">How to get all Diagrams in a session?</h3>
+		<p>Use the 
+			<code>DialectManager</code> singleton:
+		</p>
+		<pre><code>DialectManager.INSTANCE.getAllRepresentations(session);
+</code></pre>
+		<p>Also, if you only need the Name/Description of all diagrams, it might be better to use</p>
+		<pre><code>DialectManager.INSTANCE.getAllRepresentationDescriptors(session);
+</code></pre>
+	</body>
+</html>

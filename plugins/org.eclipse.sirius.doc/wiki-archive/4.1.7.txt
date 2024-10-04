@@ -1,0 +1,28 @@
+Sirius 4.1.7 is a service release with only bugfixes.
+
+== Availability ==
+
+Sirius 4.1.7 was released on 2017-11-13 (tag [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/tag/?id=v4.1.7 v4.1.7], commit [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/commit/?id=df4bc0f8639cbeeda231a148c8838c1518e8f500 df4bc0f8639cbeeda231a148c8838c1518e8f500]). It is available from the following update sites:
+* <code>http://download.eclipse.org/sirius/updates/releases/4.1.7/mars</code> ([http://download.eclipse.org/sirius/updates/releases/4.1.7/org.eclipse.sirius-4.1.7-mars.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/4.1.7/neon</code> ([http://download.eclipse.org/sirius/updates/releases/4.1.7/org.eclipse.sirius-4.1.7-neon.zip Archive])
+
+It is recommended you use the update-site matching the version of Eclipse you use to avoid potential issues at runtime.
+
+The complete JUnit and SWTBot test suites used to validate Sirius are published along with all their dependencies in separate update-sites from the core, available at:
+* <code>http://download.eclipse.org/sirius/updates/releases/4.1.7/mars/tests</code> ([http://download.eclipse.org/sirius/updates/releases/4.1.7/org.eclipse.sirius.tests-4.1.7-mars.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/4.1.7/neon/tests</code> ([http://download.eclipse.org/sirius/updates/releases/4.1.7/org.eclipse.sirius.tests-4.1.7-neon.zip Archive])
+
+== Compatibility & Requirements ==
+
+Sirius 4.1.7 is compatible with the following versions of Eclipse:
+* Eclipse 4.5 (Mars).
+* Eclipse 4.6 (Neon). Neon is the reference platform.
+
+If you want to install the org.eclipse.sirius.tests.support feature, which provides APIs to help create automated tests of Sirius-based modelers, you will need to add the following update-site:
+* SWTBot 2.1.1: <code>http://download.eclipse.org/technology/swtbot/releases/2.1.1/</code>
+
+== New & Noteworthy ==
+
+The complete list of (2) tickets fixed in Sirius 4.1.7 can be found [https://projects.eclipse.org/projects/modeling.sirius/releases/4.1.7/bugs here].
+
+[[Category:Sirius]]

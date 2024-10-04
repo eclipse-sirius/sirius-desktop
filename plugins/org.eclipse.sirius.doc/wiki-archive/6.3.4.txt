@@ -1,0 +1,27 @@
+[https://projects.eclipse.org/projects/modeling.sirius/releases/6.3.4 Sirius 6.3.4] is a maintenance release with a few bugfixes, notably to ensure compatibility with Eclipse 2020-09.
+
+This version is part or Eclipse 2020-09.
+
+The complete list of (6) tickets fixed in Sirius 6.3.4 can be found [https://projects.eclipse.org/projects/modeling.sirius/releases/6.3.4/bugs here].
+
+The release notes can be found [https://www.eclipse.org/sirius/doc/Release_Notes.html].
+
+== Availability ==
+
+Sirius 6.3.4 was released on 2020-06-24 (tag [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/tag/?id=v6.3.4 v6.3.4], commit [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/commit/?id=111e1d611780b79b8b69a120a8fd2b0a0269850e 111e1d611780b79b8b69a120a8fd2b0a0269850e]). It is available from the following update sites:
+* <code>http://download.eclipse.org/sirius/updates/releases/6.3.4/photon</code>
+* <code>http://download.eclipse.org/sirius/updates/releases/6.3.4/2019-06</code>
+* <code>http://download.eclipse.org/sirius/updates/releases/6.3.4/2019-12</code>
+* <code>http://download.eclipse.org/sirius/updates/releases/6.3.4/2020-06</code>
+* <code>http://download.eclipse.org/sirius/updates/releases/6.3.4/2020-09</code>
+
+It is recommended you use the update-site closest matching the version of Eclipse you use to avoid potential issues at runtime.
+
+The complete JUnit and SWTBot test suites used to validate Sirius are published along with all their dependencies in separate update-sites from the core, available at:
+* <code>http://download.eclipse.org/sirius/updates/releases/6.3.4/photon/tests</code>
+* <code>http://download.eclipse.org/sirius/updates/releases/6.3.4/2019-06/tests</code>
+* <code>http://download.eclipse.org/sirius/updates/releases/6.3.4/2019-12/tests</code>
+* <code>http://download.eclipse.org/sirius/updates/releases/6.3.4/2020-06/tests</code>
+* <code>http://download.eclipse.org/sirius/updates/releases/6.3.4/2020-09/tests</code>
+
+[[Category:Sirius]]

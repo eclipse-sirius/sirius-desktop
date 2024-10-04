@@ -1,0 +1,88 @@
+This page documents the compatiblity policy for Sirius releases, both for users of the Viewpoint technology (the previous name of Sirius) who want to switch to Sirius and from new adopters of Sirius itself.
+
+''Note'': this is a draft. See the discussion at https://bugs.eclipse.org/bugs/show_bug.cgi?id=422449. Feedback welcome.
+
+== Background ==
+
+Sirius is new as an official Eclipse project, but the code is already mature and has been deployed for many years (under the name Viewpoint) by Thales and Obeo. This means that even though we are still in incubation, we have an existing user base. We must:
+# ensure these existing users can safely and easily migrate from Viewpoint to Sirius;
+# be careful about any change we make as it can have an impact on these users.
+
+At the same time, we recognize that the time between now and 1.0 is a unique window of opportunity for changes we can not usualy make, even in a major release: things ''will'' break for existing users anyway because of the name change, so now is a good time to implement some changes we need to improve the architecture of the system and ensure it can be maintained and evolved in the future.
+
+The constraints we have to balance:
+* existing users who have invested in the Viewpoint technology;
+* technical debt accumulated over the years, and also lots of experience accumulated with ideas on how to do certain things better with hindsight;
+* we expect a much larger user base now that Sirius is open source, with expectations and more varied use cases and requirements we have not imagined yet. This means we must be able to innovate and react quickly to the community needs. The technical debt in the current code base does not allow us to be as agile as we will need.
+
+
+we consider these changes necessary for the future of the project. the current state of the code would not allow us to implement important new features and improvements in a fast enough and in a maintainable way.
+
+time until 1.0 will not be enough to implement all the changes we would want, we may need to break API also in Luna+1 but hopefully with less structurally impacting changes.
+
+easy migration with no data or major functionality loss of paramount importance.
+
+loss of minor functionalities and corner-behaviors acceptable on a case-by-case basis (to be discussed with users and stakeholders) if (i) the change is clearly documented, and (ii) an equivalent or better feature is already planned for a future release.
+
+some functionalities may exist but in a different way in Sirius than in Viewpoint (beside the API changes), in which case a migration path must be provided and documented. an example (just for the sake of illustration, I am not saying this will happen for 1.0): we currently distinguish node mappings from container mappings, with inconsistencies in which styles, tools etc. can apply to each. we could decide to have a single unified type of mapping, with nodes just being a special case of a container with no sub-mapping.
+
+== Overview of the Sirius Releases Roadmap Until 1.0 ==
+
+Sirius is currently in incubation. The goal is to get get out of incubation status with a 1.0.0 release to be included in the Luna release train in June 2014. We will follow the Luna calendar and the corresponding milestones, starting from M4 (M3 has already passed). Before that we will do a first official release named 0.9.0 in the next few weeks (having at least one official release is a requirement of the Eclipse process to be allowed out of incubation).
+
+The scope of this version 0.9.0 is to be as close as possible to the current version of the previous code base (Viewpoint), except for the "rebranding". This is to facilitate the migration of users who previously used Viewpoint to Sirius by providing a baseline version in which the only changes to be concerned about are related to the rebranding, with no new features or API changes. In practice there might be a few incompatible changes beyond just the rebranding but they will be very small and documented in the release notes for Sirius 0.9.0 (see [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/plain/plugins/org.eclipse.sirius.doc/doc/Release%20Notes.html the actual release notes document]).
+
+The 0.9.x branch will not be maintained, it is purely transitional. We ''may'' do 0.9.x maintenance releases if major issues are detected on the 0.9.0 release which prevent people to migrate to it with functionalities equivalent to what they add in Viewpoint, but bugs which already existed in Viewpoint will not be fixed in the 0.9.x branch. Even "normal" (i.e. neither blocker or major) bugs specific to Sirius 0.9.0 may not trigger a 0.9.x maintenance release by themselves. Note that according to the EDP, maintenance/service releases do not need the full paperwork of normal Eclipse releases, so the decision to not maintain 0.9 is purely so that we can focus our developement time solely on providing a high quality 1.0 release and not disperse the team on maintaining more branches.
+
+Between 0.9.0 and 1.0.0, we will provide milestone releases synchronized with the [http://wiki.eclipse.org/Luna/Simultaneous_Release_Plan#Milestones_and_Release_Candidates Luna calendar]. Again, milestone releases are not official Eclipse releases with paperwork associated. Milestone releases do not result in a separate branch, so they will not be maintained (i.e. no M4.x releases); any issue on a milestone will only be addressed on the master branch.
+
+This gives is the following calendar:
+* '''2013-11-30''': Sirius 0.9.0 released (more likely early December given the current state).
+* '''2013-12-20''': Sirius 1.0.0M4 released with Luna M4.
+* '''2014-01-31''': Sirius 1.0.0M5 released with Luna M5.
+* '''2014-03-14''': Sirius 1.0.0M6 released with Luna M6.
+* '''2014-05-07''': Sirius 1.0.0M7 released with Luna M7.
+* '''2014-06-25''': Sirius 1.0.0 released with [http://wiki.eclipse.org/Luna/Simultaneous_Release_Plan#Schedule Luna].
+
+== Objective and General Rules ==
+
+In general incompatible changes between two versions should be the exception and not the general rule. Any incompatible change should be clearly justified and its impacts minimized. The window between Sirius 0.9 and 1.0 is special in that large-scale incompatible changes are planned for each milestone, but the rule about justifying each change still apply. The goal is to concentrate as much as possible of these large-scale changes (many of which we have wanted to do for a long time but could not because of their impact) in this time window.
+
+The rules:
+# whenever possible, allow seamless and transparent migration;
+# if that is not possible, provide automated or semi-automated tools to assist in the migration. These tools should be usable programmatically (no just by UI actions) to allow users with lots of existing data to automate the migration.
+# if automation is not possible or considered too costly, provide complete documentation of the manual steps to perform to migrate existing projects.
+
+In all cases (even when the migration can be handled transparently), all changes should be clearly documented in the release notes of the release or milestone in which they appear first.
+
+== Supported Platforms ==
+
+The versions of Eclipse Sirius (0.9 & 1.0) will support are:
+* Eclipse 3.8, as the last of the 3.x, as we expect many users to stay on 3.x as long as they can to avoid the changes implied by moving to 4.x. Note that this is not really an official Eclipse release, but corresponds to a subset of Eclipse Juno (4.2) without the 4.x platform and features which depend on it.
+* Kepler (4.3), at least until we ship Sirius 1.0, as this is the stable version early adopters of Sirius milestones will most likely be using unless they fell very adventurous and try Luna milestones.
+* Luna (4.4) as our main target, as we are part of the train.
+
+== Types of Compatibility Issues ==
+
+* VSM
+** Note that Sirius itself, as available from Eclipse.org, will not support the old Acceleo 2.x language for expressions in VSMs. Many existing users used Acceleo 2 extensively.
+* Representations Files
+* Modeling Projects
+** Nature "fr.obeo.dsl.viewpoint.nature.modelingproject" no longer exists. It should be replaced by "org.eclipse.sirius.nature.modelingproject".
+* Plug-in dependencies
+* Extension points and other ids
+* Java namespaces
+* Java APIs
+
+== Migration Rules ==
+
+* Stepwise migration: first to the latest version of Viewpoint available, then to Sirius 0.9.0, then each milestone in turn up to 1.0.0 final.
+* For a given project, document in which order to migration the VSMs, APIs, aird etc.
+* For projects which depend on each other (e.f. modeler B which extends modeler A and user projects with representation data for A and/or B): only start to migrate the representation data once all the relevant modelers have been migrated.
+
+== Migration Path from Obeo Designer or Viewpoint to Sirius ==
+
+# First: migrate to the latest version of Viewpoint available to you. If you are an Obeo Designer user, this means migrating to Obeo Designer 6.2.x, which corresponds to Viewpoint 6.8.x. Some users (Thales) have access to more recent versions of Viewpoint which were not released as part of Obeo Designer. In that case, migrate to the most recent version first (Viewpoint 6.10 as of this writing). *Migrating to Sirius from versions of Viewpoint older that 6.8 will not be supported.*
+# Then, the safest way is to migrate stepwise through all the milestone releases. If at all possible, users should migrate to Sirius milestone as they are released instead of waiting for the final 1.0 release to start the migration. The more users we have trying the milestone *and giving us feedback* the better the 1.0 release will be, in all respects.
+
+[[Category:Sirius]]

@@ -1,0 +1,30 @@
+Sirius 4.1.3 is a service release with only bugfixes.
+
+== Availability ==
+
+Sirius 4.1.3 was released on 2017-01-31 (tag [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/tag/?id=v4.1.3 v4.1.3], commit [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/commit/?id=dabed5af630e30f8c7eedd246643131eee76b6b2 dabed5af630e30f8c7eedd246643131eee76b6b2]). It is available from the following update sites:
+* <code>http://download.eclipse.org/sirius/updates/releases/4.1.3/mars</code> ([http://download.eclipse.org/sirius/updates/releases/4.1.3/org.eclipse.sirius-4.1.3-mars.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/4.1.3/neon</code> ([http://download.eclipse.org/sirius/updates/releases/4.1.3/org.eclipse.sirius-4.1.3-neon.zip Archive])
+
+It is recommended you use the update-site matching the version of Eclipse you use to avoid potential issues at runtime.
+
+The complete JUnit and SWTBot test suites used to validate Sirius are published along with all their dependencies in separate update-sites from the core, available at:
+* <code>http://download.eclipse.org/sirius/updates/releases/4.1.3/mars/tests</code> ([http://download.eclipse.org/sirius/updates/releases/4.1.3/org.eclipse.sirius.tests-4.1.3-mars.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/4.1.3/neon/tests</code> ([http://download.eclipse.org/sirius/updates/releases/4.1.3/org.eclipse.sirius.tests-4.1.3-neon.zip Archive])
+
+== Compatibility & Requirements ==
+
+Sirius 4.1.3 is compatible with the following versions of Eclipse:
+* Eclipse 4.5 (Mars).
+* Eclipse 4.6 (Neon). Neon is the reference platform.
+
+If you want to install the org.eclipse.sirius.tests.support feature, which provides APIs to help create automated tests of Sirius-based modelers, you will need to add the following update-site:
+* SWTBot 2.1.1: <code>http://download.eclipse.org/technology/swtbot/releases/2.1.1/</code>
+
+== New & Noteworthy ==
+
+The complete list of (17) tickets fixed in Sirius 4.1.3 can be found [https://bugs.eclipse.org/bugs/buglist.cgi?classification=Modeling&product=Sirius&query_format=advanced&target_milestone=4.1.3 here on the Bugzilla]. See also the 10 bugs fixed in the corresponding version of EEF (1.9.0) [https://bugs.eclipse.org/bugs/buglist.cgi?classification=Modeling&product=EEF&query_format=advanced&target_milestone=1.9.0 here].
+
+The release notes with highlights can be found [https://www.eclipse.org/sirius/doc/Release_Notes.html here].
+
+[[Category:Sirius]]
