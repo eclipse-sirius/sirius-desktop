@@ -1,0 +1,48 @@
+Sirius 3.1.3 is a service release with only bugfixes.
+
+== Availability ==
+
+Sirius 3.1.3 was released on 2015-12-08 (tag [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/tag/?id=v3.1.3 v3.1.3], commit [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/commit/?id=ec52fd1e759e82878d123974095ca0f0faf9c483 ec52fd1e759e82878d123974095ca0f0faf9c483]). It is available from the following update sites:
+* <code>http://download.eclipse.org/sirius/updates/releases/3.1.3/juno</code> ([http://download.eclipse.org/sirius/updates/releases/3.1.3/org.eclipse.sirius-3.1.3-juno.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/3.1.3/kepler</code> ([http://download.eclipse.org/sirius/updates/releases/3.1.3/org.eclipse.sirius-3.1.3-kepler.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/3.1.3/luna</code> ([http://download.eclipse.org/sirius/updates/releases/3.1.3/org.eclipse.sirius-3.1.3-luna.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/3.1.3/mars</code> ([http://download.eclipse.org/sirius/updates/releases/3.1.3/org.eclipse.sirius-3.1.3-mars.zip Archive])
+
+It is recommended you use the update-site matching the version of Eclipse you use to avoid potential issues at runtime.
+
+'''IMPORTANT''': To enable the support for AQL expressions in VSMs (which is now the recommended query language to use), you will need the latest version of AQL, available from <code>http://download.eclipse.org/acceleo/updates/releases/3.6/</code>.
+
+This version includes the complete JUnit and SWTBot test suites used to validate Sirius. They are published along with all their dependencies in separate update-sites from the core, available at:
+* <code>http://download.eclipse.org/sirius/updates/releases/3.1.3/juno/tests</code> ([http://download.eclipse.org/sirius/updates/releases/3.1.3/org.eclipse.sirius.tests-3.1.3-juno.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/3.1.3/kepler/tests</code> ([http://download.eclipse.org/sirius/updates/releases/3.1.3/org.eclipse.sirius.tests-3.1.3-kepler.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/3.1.3/luna/tests</code> ([http://download.eclipse.org/sirius/updates/releases/3.1.3/org.eclipse.sirius.tests-3.1.3-luna.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/3.1.3/mars/tests</code> ([http://download.eclipse.org/sirius/updates/releases/3.1.3/org.eclipse.sirius.tests-3.1.3-mars.zip Archive])
+
+If you want to install the org.eclipse.sirius.tests.support feature, which provides APIs to help create automated tests of Sirius-based modelers, you will need to add the following update-site:
+* SWTBot 2.1.1: <code>http://download.eclipse.org/technology/swtbot/releases/2.1.1/</code>
+
+If you want to install and run the test suites themselves, you will also need the following additional update-site:
+* Sirius Support for Legacy Queries: <code>http://download.eclipse.org/sirius/updates/legacy</code>
+
+It is needed to run the tests which use an old query language (which is now superseded by AQL, the core feature:/var:/service: interpreters, and Acceleo 3/MTL).
+
+''Juno users'': Sirius depends on more recent versions of some components that what is available by default from a Juno install. You need to add the following update-sites if you want to install Sirius 3.1.3 on Juno:
+* Orbit: <code>http://download.eclipse.org/tools/orbit/downloads/drops/R20150519210750/repository/</code>
+* Acceleo 3.6: <code>http://download.eclipse.org/acceleo/updates/releases/3.6/</code>
+* EEF 1.5: <code>http://download.eclipse.org/modeling/emft/eef/updates/milestones/1.5/S201505291308/</code>
+
+== Compatibility ==
+
+Sirius 3.1.3 is compatible with the following versions of Eclipse:
+* Eclipse 3.8/4.2 (Juno)
+* Eclipse 4.3 (Kepler)
+* Eclipse 4.4 (Luna)
+* Eclipse 4.5 (Mars)
+
+Eclipse 4.5 (Mars) is the reference platform.
+
+== New & Noteworthy ==
+
+The complete list of (11) tickets fixed in Sirius 3.1.3 can be found [https://bugs.eclipse.org/bugs/buglist.cgi?classification=Modeling&product=Sirius&query_format=advanced&target_milestone=3.1.3 here on the Bugzilla].
+
+[[Category:Sirius]]

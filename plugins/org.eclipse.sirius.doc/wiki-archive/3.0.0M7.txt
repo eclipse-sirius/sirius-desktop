@@ -1,0 +1,44 @@
+Sirius 3.0.0M7 is a milestone release.
+
+== Availability ==
+
+Sirius 3.0.0M7 was released on 2015-05-06 (tag [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/tag/?id=v3.0.0M7 v3.0.0M7], commit [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/commit/?id=3f322ccac28aebf630c0b4a0953e39ed2c66b22f 3f322ccac28aebf630c0b4a0953e39ed2c66b22f]). It is available from the following update sites:
+* <code>http://download.eclipse.org/sirius/updates/milestones/3.0.0M7/juno</code>
+* <code>http://download.eclipse.org/sirius/updates/milestones/3.0.0M7/kepler</code>
+* <code>http://download.eclipse.org/sirius/updates/milestones/3.0.0M7/luna</code>
+* <code>http://download.eclipse.org/sirius/updates/milestones/3.0.0M7/mars</code>
+
+It is recommended you use the update-site matching the version of Eclipse you use to avoid potential issues at runtime.
+
+This version includes the complete JUnit and SWTBot test suites used to validate Sirius. They are published along with all their dependencies in separate update-sites from the core, available at:
+* <code>http://download.eclipse.org/sirius/updates/milestones/3.0.0M7/juno/tests</code>
+* <code>http://download.eclipse.org/sirius/updates/milestones/3.0.0M7/kepler/tests</code>
+* <code>http://download.eclipse.org/sirius/updates/milestones/3.0.0M7/luna/tests</code>
+* <code>http://download.eclipse.org/sirius/updates/milestones/3.0.0M7/mars/tests</code>
+
+If you want to install the org.eclipse.sirius.tests.support feature, which provides APIs to help create automated tests of Sirius-based modelers, you will need to add the following update-site:
+* SWTBot 2.1.1: <code>http://download.eclipse.org/technology/swtbot/releases/2.1.1/</code>
+
+If you want to install and run the test suites themselves, you will also need the following additional update-site:
+* Sirius Support for Legacy Queries: <code>http://download.eclipse.org/sirius/updates/legacy</code>
+
+It is needed to run the tests which use an old query language (which is now superseded by AQL, Acceleo 3 and the core feature:/var:/service: interpreters).
+
+''Juno users'': Sirius depends on more recent versions of some components that what is available by default from a Juno install. You need to add the following update-sites if you want to install Sirius 3.0.x on Juno:
+* Orbit: <code>http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/</code>
+* Acceleo 3.4 (or 3.5): <code>http://download.eclipse.org/acceleo/updates/releases/3.4/</code> (resp. <code>http://download.eclipse.org/acceleo/updates/releases/3.5/</code>)
+* EEF 1.2 (or 1.3): <code>http://download.eclipse.org/modeling/emft/eef/updates/releases/1.2</code> (resp. <code>http://download.eclipse.org/modeling/emft/eef/updates/releases/1.3</code>)
+
+== Compatibility ==
+
+Sirius 3.0.0M7 is compatible with the following versions of Eclipse:
+* Eclipse 3.8/4.2 (Juno)
+* Eclipse 4.3 (Kepler)
+* Eclipse 4.4 (Luna)
+* Eclipse 4.5M7 (Mars)
+
+== New & Noteworthy ==
+
+The complete list of (53) tickets fixed in Sirius 3.0.0M7 can be found [https://bugs.eclipse.org/bugs/buglist.cgi?classification=Modeling&product=Sirius&query_format=advanced&target_milestone=3.0.0M7 here on the Bugzilla].
+
+[[Category:Sirius]]

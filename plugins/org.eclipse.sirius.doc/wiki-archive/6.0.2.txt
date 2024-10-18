@@ -1,0 +1,22 @@
+[https://projects.eclipse.org/projects/modeling.sirius/releases/6.0.2 Sirius 6.0.2] is a maintenance release. It contains a single fix for [https://bugs.eclipse.org/bugs/show_bug.cgi?id=539333 an important issue] that appears when using Sirius (all versions) with Eclipse SimRel 2018-09 or later under Windows.
+
+== Availability ==
+
+Sirius 6.0.2 was released on 2018-09-25 (tag [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/tag/?id=v6.0.2 v6.0.2], commit [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/commit/?id=15b4d163768790378157f76dc6b96cb2742ee464 15b4d163768790378157f76dc6b96cb2742ee464]). It is available from the following update sites:
+* <code>http://download.eclipse.org/sirius/updates/releases/6.0.2/oxygen</code> ([http://download.eclipse.org/sirius/updates/releases/6.0.2/org.eclipse.sirius-6.0.2-oxygen.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/6.0.2/photon</code> ([http://download.eclipse.org/sirius/updates/releases/6.0.2/org.eclipse.sirius-6.0.2-photon.zip Archive])
+
+It is recommended you use the update-site matching the version of Eclipse you use to avoid potential issues at runtime.
+
+The complete JUnit and SWTBot test suites used to validate Sirius are published along with all their dependencies in separate update-sites from the core, available at:
+* <code>http://download.eclipse.org/sirius/updates/releases/6.0.2/oxygen/tests</code> ([http://download.eclipse.org/sirius/updates/releases/6.0.2/org.eclipse.sirius.tests-6.0.2-oxygen.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/6.0.2/photon/tests</code> ([http://download.eclipse.org/sirius/updates/releases/6.0.2/org.eclipse.sirius.tests-6.0.2-photon.zip Archive])
+
+== Compatibility & Requirements ==
+
+Sirius 6.0.2 is compatible with the following versions of Eclipse:
+* Eclipse 4.7 (Oxygen).
+* Eclipse 4.8 (Photon). Photon is the reference platform.
+* Eclipse 4.9 (SimRel 2018-09).
+
+[[Category:Sirius]]
