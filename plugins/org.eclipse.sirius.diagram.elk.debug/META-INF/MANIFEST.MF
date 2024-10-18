@@ -7,6 +7,8 @@ Bundle-Version: 7.4.4.qualifier
 Bundle-Activator: org.eclipse.sirius.diagram.elk.debug.DiagramElkDebugPlugin$Implementation
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
+ com.google.inject,
+ org.eclipse.elk.core,
  org.eclipse.elk.core.service,
  org.eclipse.elk.graph,
  org.eclipse.emf.common,
