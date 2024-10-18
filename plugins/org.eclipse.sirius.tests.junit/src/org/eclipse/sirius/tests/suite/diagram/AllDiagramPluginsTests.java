@@ -56,6 +56,7 @@ import org.eclipse.sirius.tests.unit.api.session.TablesAndEntitiesDirtyTest;
 import org.eclipse.sirius.tests.unit.api.startup.StartupRepresentationsTests;
 import org.eclipse.sirius.tests.unit.api.tools.CreateEdgeOnEdgeTest;
 import org.eclipse.sirius.tests.unit.api.tools.CreateEdgeTest;
+import org.eclipse.sirius.tests.unit.api.tools.CreateEdgeUnsyncBugTest;
 import org.eclipse.sirius.tests.unit.api.tools.CreateEdgeViewTest;
 import org.eclipse.sirius.tests.unit.api.tools.CreateNodeViewTest;
 import org.eclipse.sirius.tests.unit.api.tools.DeleteTest;
@@ -530,6 +531,7 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(ForToolTests.class);
         suite.addTestSuite(ExtensionPaletteToolTest.class);
         suite.addTestSuite(CreateEdgeTest.class);
+        suite.addTest(new JUnit4TestAdapter(CreateEdgeUnsyncBugTest.class));
         suite.addTestSuite(SiriusControlAndDeleteRepresentationTest.class);
         suite.addTestSuite(ToolFilterDescriptionListenerTests.class);
         suite.addTestSuite(CreateNodeViewTest.class);
