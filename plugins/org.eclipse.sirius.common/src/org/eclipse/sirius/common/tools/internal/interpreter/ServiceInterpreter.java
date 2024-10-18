@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013-2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2013, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,9 +15,11 @@ package org.eclipse.sirius.common.tools.internal.interpreter;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.regex.Pattern;
@@ -33,9 +35,6 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.IJavaAwareInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.JavaExtensionsManager;
 import org.eclipse.sirius.common.tools.api.interpreter.ValidationResult;
-
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
 
 /**
  * A specialized interpreter which can only directly invoke Java service methods.
@@ -63,7 +62,7 @@ public class ServiceInterpreter extends VariableInterpreter implements IJavaAwar
     /**
      * Used to retrieve the services instances we create so that we can un-register those.
      */
-    private final Multimap<String, PolymorphicService> qualifiedNameToServices = HashMultimap.create();
+    private final Map<String, List<PolymorphicService>> qualifiedNameToServices = new HashMap<>();
 
     private final JavaExtensionsManager javaExtensions = JavaExtensionsManager.createManagerWithOverride();
 
@@ -74,7 +73,7 @@ public class ServiceInterpreter extends VariableInterpreter implements IJavaAwar
             for (PolymorphicService service : qualifiedNameToServices.get(qualifiedName)) {
                 services.remove(service.getName());
             }
-            qualifiedNameToServices.removeAll(qualifiedName);
+            qualifiedNameToServices.remove(qualifiedName);
         }
 
         @Override
@@ -129,7 +128,6 @@ public class ServiceInterpreter extends VariableInterpreter implements IJavaAwar
             String serviceCall = expression.substring(PREFIX.length()).trim();
             Optional<String> receiverVariableName = getReceiverVariableName(serviceCall);
             EObject receiver = target;
-            String serviceName = serviceCall;
             if (receiverVariableName.isPresent()) {
                 serviceCall = serviceCall.substring(receiverVariableName.get().length() + 1);
                 Object objectReceiver = evaluateVariable(target, receiverVariableName.get().trim());
@@ -141,7 +139,7 @@ public class ServiceInterpreter extends VariableInterpreter implements IJavaAwar
                 }
             }
             int indexOfParenthesis = serviceCall.indexOf("("); //$NON-NLS-1$
-            serviceName = serviceCall.substring(0, indexOfParenthesis == -1 ? serviceCall.length() : indexOfParenthesis);
+            String serviceName = serviceCall.substring(0, indexOfParenthesis == -1 ? serviceCall.length() : indexOfParenthesis);
 
             Object[] parameters = new Object[] { receiver };
 
@@ -211,7 +209,8 @@ public class ServiceInterpreter extends VariableInterpreter implements IJavaAwar
         if (!services.containsKey(name)) {
             PolymorphicService newService = new PolymorphicService(name);
             services.put(name, newService);
-            qualifiedNameToServices.put(qualifiedName, newService);
+            qualifiedNameToServices.putIfAbsent(qualifiedName, new ArrayList<>());
+            qualifiedNameToServices.get(qualifiedName).add(newService);
         }
         services.get(name).addImplementer(service);
     }
@@ -280,7 +279,7 @@ public class ServiceInterpreter extends VariableInterpreter implements IJavaAwar
          */
         javaExtensions.reloadIfNeeded();
 
-        return new HashMap<String, IService>(services);
+        return new HashMap<>(services);
     }
 
     @Override
