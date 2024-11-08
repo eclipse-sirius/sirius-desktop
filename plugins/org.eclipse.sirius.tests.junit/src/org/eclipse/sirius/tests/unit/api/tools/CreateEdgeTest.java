@@ -44,13 +44,13 @@ import org.eclipse.uml2.uml.OpaqueAction;
  */
 public class CreateEdgeTest extends SiriusDiagramTestCase {
 
-    private static final String PATH = "/" + SiriusTestsPlugin.PLUGIN_ID + "/data/unit/tool/tc931/";
+    private static final String PATH = "/data/unit/tool/tc931/";
 
-    private static final String SEMANTIC_MODEL_PATH = PATH + "TestActivity.uml";
+    private static final String SEMANTIC_MODEL_NAME = "TestActivity.uml";
 
-    private static final String REPRESENTATION_MODEL_PATH = PATH + "TestActivity.aird";
+    private static final String REPRESENTATION_MODEL_NAME = "TestActivity.aird";
 
-    private static final String MODELER_PATH = PATH + "uml2.odesign";
+    private static final String MODELER_NAME = "uml2.odesign";
 
     private static final String REPRESENTATION_DESC_NAME = "Activity Diagram";
 
@@ -64,7 +64,8 @@ public class CreateEdgeTest extends SiriusDiagramTestCase {
     protected void setUp() throws Exception {
         super.setUp();
 
-        genericSetUp(SEMANTIC_MODEL_PATH, MODELER_PATH, REPRESENTATION_MODEL_PATH);
+        copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, PATH, SEMANTIC_MODEL_NAME, MODELER_NAME, REPRESENTATION_MODEL_NAME);
+        genericSetUp(TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_MODEL_NAME, TEMPORARY_PROJECT_NAME + "/" + MODELER_NAME, TEMPORARY_PROJECT_NAME + "/" + REPRESENTATION_MODEL_NAME);
         initViewpoint(VIEWPOINT_NAME);
         diagram = (DDiagram) getRepresentations(REPRESENTATION_DESC_NAME).toArray()[0];
         assertNotNull(diagram);
@@ -353,7 +354,7 @@ public class CreateEdgeTest extends SiriusDiagramTestCase {
     }
 
     private List<ActivityNode> getActivityOwnedNodes(Activity activity) {
-        List<ActivityNode> ownedNodes = (List<ActivityNode>) activity.getNodes();
+        List<ActivityNode> ownedNodes = activity.getNodes();
         if (!isOlderThanUML2_4_0()) {
             ownedNodes = (List<ActivityNode>) ReflectionHelper.invokeMethodWithoutExceptionWithReturn(activity, "getOwnedNodes", new Class[] {}, new Object[] {});
         }
@@ -361,7 +362,7 @@ public class CreateEdgeTest extends SiriusDiagramTestCase {
     }
 
     protected boolean isOlderThanUML2_4_0() {
-        String umlVersion = (String) Platform.getBundle("org.eclipse.uml2.uml").getHeaders().get("Bundle-Version");
+        String umlVersion = Platform.getBundle("org.eclipse.uml2.uml").getHeaders().get("Bundle-Version");
         int umlMajor = Integer.parseInt(umlVersion.substring(0, 1));
         return umlMajor < 4;
     }
