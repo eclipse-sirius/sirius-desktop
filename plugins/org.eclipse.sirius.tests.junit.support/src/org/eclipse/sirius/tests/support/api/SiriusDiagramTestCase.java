@@ -1302,6 +1302,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
         TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
         Command setUnsynschronizedCmd = SetCommand.create(domain, diagram, DiagramPackage.Literals.DDIAGRAM__SYNCHRONIZED, false);
         domain.getCommandStack().execute(setUnsynschronizedCmd);
+        assertFalse("unsynchronizeDiagram execution has failed (possible cause: read-only diagram)", diagram.isSynchronized());
     }
 
     /**
