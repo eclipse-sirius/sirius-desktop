@@ -98,7 +98,6 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
 import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.base.cache.KeyCache;
 import org.eclipse.sirius.ext.base.collect.GSetIntersection;
 import org.eclipse.sirius.ext.base.collect.MultipleCollection;
@@ -1176,27 +1175,23 @@ public class DDiagramSynchronizer {
      *            mapping based decorations.
      * @param edgeToSemanticBasedDecoration
      *            semantic based decorations
-     * @param expectedSemantic
-     *            the expected semantic target of the created DEdge elements
+     * @param expectedSemantics
+     *            the expected semantic targets of the created DEdge elements
      * @return an Option on DEdge
      */
-    public Option<DEdge> createEdgeMapping(DiagramMappingsManager mappingManager, final Map<DiagramElementMapping, Collection<EdgeTarget>> mappingsToEdgeTargets, final EdgeMapping mapping,
+    public Collection<DEdge> createEdgeMapping(DiagramMappingsManager mappingManager, final Map<DiagramElementMapping, Collection<EdgeTarget>> mappingsToEdgeTargets, final EdgeMapping mapping,
             final Map<EdgeMapping, Collection<MappingBasedDecoration>> edgeToMappingBasedDecoration, final Map<String, Collection<SemanticBasedDecoration>> edgeToSemanticBasedDecoration,
-            EObject expectedSemantic) {
-
-        edgesDones = new HashSet<DDiagramElement>();
-        Collection<DEdge> newEdges = createDEdgeOnMapping(mappingManager, mappingsToEdgeTargets, mapping, edgeToMappingBasedDecoration, edgeToSemanticBasedDecoration, expectedSemantic);
+            Collection<EObject> expectedSemantics) {
+        edgesDones = new LinkedHashSet<DDiagramElement>();
+        Collection<DEdge> newEdges = createDEdgeOnMapping(mappingManager, mappingsToEdgeTargets, mapping, edgeToMappingBasedDecoration, edgeToSemanticBasedDecoration, expectedSemantics);
         edgesDones.clear();
-        if (!newEdges.isEmpty()) {
-            return Options.newSome(newEdges.iterator().next());
-        }
-        return Options.newNone();
+        return newEdges;
     }
 
     private Collection<DEdge> createDEdgeOnMapping(DiagramMappingsManager mappingManager, final Map<DiagramElementMapping, Collection<EdgeTarget>> mappingsToEdgeTargets, final EdgeMapping mapping,
             final Map<EdgeMapping, Collection<MappingBasedDecoration>> edgeToMappingBasedDecoration, final Map<String, Collection<SemanticBasedDecoration>> edgeToSemanticBasedDecoration,
-            EObject expectedSemantic) {
-        Collection<DEdge> newEdges = new HashSet<DEdge>();
+            Collection<EObject> expectedSemantics) {
+        Collection<DEdge> newEdges = new LinkedHashSet<DEdge>();
         if (this.accessor.getPermissionAuthority().canEditInstance(this.diagram)) {
             final SetIntersection<DEdgeCandidate> status = createEdgeCandidates(mappingsToEdgeTargets, mapping, edgeToMappingBasedDecoration, edgeToSemanticBasedDecoration);
 
@@ -1213,7 +1208,7 @@ public class DDiagramSynchronizer {
                 // created or affected by the model operation,
                 // specifier has to use on CreateEdgeView model operations instead of relying on automatic creation by
                 // the EdgeCreationTool (automatic refresh will not create such element either).
-                if (candidateIsSync || candidate.getSemantic() == expectedSemantic) {
+                if (candidateIsSync || expectedSemantics.contains(candidate.getSemantic())) {
                     newEdges.add(this.sync.createNewEdge(mappingManager, candidate, mappingsToEdgeTargets, edgeToMappingBasedDecoration, edgeToSemanticBasedDecoration));
                 }
 
