@@ -16,8 +16,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
@@ -40,7 +42,6 @@ import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.diagram.tools.api.Messages;
 import org.eclipse.sirius.diagram.tools.api.refresh.BestMappingGetter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
@@ -118,17 +119,30 @@ public class CreateDEdgeTask extends AbstractCommandTask implements ICreationTas
         Map<DiagramElementMapping, Collection<EdgeTarget>> mappingsToEdgeTargets = dDiagramElementSynchronizer.computeMappingsToEdgeTargets(session.getSelectedViewpoints(false));
         new DecorationHelperInternal(dSemanticDiagram, interpreter, modelAccessor).computeDecorations(mappingsToEdgeTargets, edgeToSemanticBasedDecoration, edgeToMappingBasedDecoration);
 
+        // Difference with CreateDNodeTask/CreateContainerTask: candidate creation is not explicitly done by the
+        // CreateDEdgeTask but delegated to DDiagramSynchronizer created for that.
+        Map<EdgeMapping, Collection<EObject>> map = new LinkedHashMap<>();
         for (EObject semanticElt : getAllSemantics()) {
             BestMappingGetter bestMappingGetter = new BestMappingGetter(sourceView, targetView, semanticElt);
             EdgeMapping bestEdgeMapping = bestMappingGetter.getBestEdgeMapping(tool.getEdgeMappings());
 
             if (bestEdgeMapping != null) {
-
-                Option<DEdge> createdDEdgeOption = dDiagramSynchronizer.createEdgeMapping(mappingManager, mappingsToEdgeTargets, bestEdgeMapping, edgeToMappingBasedDecoration,
-                        edgeToSemanticBasedDecoration, semanticElt);
-                if (createdDEdgeOption.some()) {
-                    createdDEdges.add(createdDEdgeOption.get());
+                Collection<EObject> collection = map.get(bestEdgeMapping);
+                if (collection == null) {
+                    collection = new LinkedHashSet<>();
+                    map.put(bestEdgeMapping, collection);
                 }
+                collection.add(semanticElt);
+            }
+        }
+
+        for (Entry<EdgeMapping, Collection<EObject>> entry : map.entrySet()) {
+            EdgeMapping mapping = entry.getKey();
+            Collection<EObject> expectedSemanticElements = entry.getValue();
+            Collection<DEdge> createdDEdgeOption = dDiagramSynchronizer.createEdgeMapping(mappingManager, mappingsToEdgeTargets, mapping, edgeToMappingBasedDecoration, edgeToSemanticBasedDecoration,
+                    expectedSemanticElements);
+            if (!createdDEdgeOption.isEmpty()) {
+                createdDEdges.addAll(createdDEdgeOption);
             }
         }
     }
