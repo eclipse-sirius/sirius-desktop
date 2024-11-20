@@ -1176,18 +1176,16 @@ public class DDiagramSynchronizer {
      *            mapping based decorations.
      * @param edgeToSemanticBasedDecoration
      *            semantic based decorations
-     * @param sourceView
-     *            the source view of the edge
-     * @param targetView
-     *            the target view of the edge
+     * @param expectedSemantic
+     *            the expected semantic target of the created DEdge elements
      * @return an Option on DEdge
      */
     public Option<DEdge> createEdgeMapping(DiagramMappingsManager mappingManager, final Map<DiagramElementMapping, Collection<EdgeTarget>> mappingsToEdgeTargets, final EdgeMapping mapping,
             final Map<EdgeMapping, Collection<MappingBasedDecoration>> edgeToMappingBasedDecoration, final Map<String, Collection<SemanticBasedDecoration>> edgeToSemanticBasedDecoration,
-            EdgeTarget sourceView, EdgeTarget targetView) {
+            EObject expectedSemantic) {
 
         edgesDones = new HashSet<DDiagramElement>();
-        Collection<DEdge> newEdges = createDEdgeOnMapping(mappingManager, mappingsToEdgeTargets, mapping, edgeToMappingBasedDecoration, edgeToSemanticBasedDecoration, sourceView, targetView);
+        Collection<DEdge> newEdges = createDEdgeOnMapping(mappingManager, mappingsToEdgeTargets, mapping, edgeToMappingBasedDecoration, edgeToSemanticBasedDecoration, expectedSemantic);
         edgesDones.clear();
         if (!newEdges.isEmpty()) {
             return Options.newSome(newEdges.iterator().next());
@@ -1197,21 +1195,28 @@ public class DDiagramSynchronizer {
 
     private Collection<DEdge> createDEdgeOnMapping(DiagramMappingsManager mappingManager, final Map<DiagramElementMapping, Collection<EdgeTarget>> mappingsToEdgeTargets, final EdgeMapping mapping,
             final Map<EdgeMapping, Collection<MappingBasedDecoration>> edgeToMappingBasedDecoration, final Map<String, Collection<SemanticBasedDecoration>> edgeToSemanticBasedDecoration,
-            EdgeTarget sourceView, EdgeTarget targetView) {
+            EObject expectedSemantic) {
         Collection<DEdge> newEdges = new HashSet<DEdge>();
         if (this.accessor.getPermissionAuthority().canEditInstance(this.diagram)) {
             final SetIntersection<DEdgeCandidate> status = createEdgeCandidates(mappingsToEdgeTargets, mapping, edgeToMappingBasedDecoration, edgeToSemanticBasedDecoration);
 
             for (final DEdgeCandidate candidate : status.getNewElements()) {
                 boolean candidateIsSync = new DiagramElementMappingQuery(mapping).isSynchronizedAndCreateElement(diagram);
-                boolean candidateMatch = candidate.getSourceView() == sourceView && candidate.getTargetView() == targetView;
-                boolean candidateMatchInv = candidate.getSourceView() == targetView && candidate.getTargetView() == sourceView;
-                // an edge is created either:
-                // - if the mapping is synchronized,
-                // - or if this edge candidate has the expected mapping/source/target associated to the tool.
-                if (candidateIsSync || candidateMatch || candidateMatchInv) {
+
+                // CreateDEdgeTask has found an EdgeMapping corresponding to the executed Edge creation tool
+                // configuration and its model operations execution.
+                // An edge is created in the following excluding cases:
+                // - the mapping is synchronized,
+                // - this edge candidate has the expected semantic element
+                // Compared to DnDTasksOperations::addCandidate there is no filter on mapping.isUseDomainElement()
+                // For more complex cases like creation of unsynchronized edges whose semantic target would not be
+                // created or affected by the model operation,
+                // specifier has to use on CreateEdgeView model operations instead of relying on automatic creation by
+                // the EdgeCreationTool (automatic refresh will not create such element either).
+                if (candidateIsSync || candidate.getSemantic() == expectedSemantic) {
                     newEdges.add(this.sync.createNewEdge(mappingManager, candidate, mappingsToEdgeTargets, edgeToMappingBasedDecoration, edgeToSemanticBasedDecoration));
                 }
+
             }
         }
         return newEdges;
