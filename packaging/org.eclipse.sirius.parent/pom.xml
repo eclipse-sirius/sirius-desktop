@@ -371,6 +371,7 @@
         <module>../../plugins/org.eclipse.sirius.common.ui</module>
         <module>../../plugins/org.eclipse.sirius.common.ui.ext</module>
         <module>../../plugins/org.eclipse.sirius.common.xtext</module>
+        <module>../../plugins/org.eclipse.sirius.debug</module>
         <module>../../plugins/org.eclipse.sirius.diagram.elk</module>
         <module>../../plugins/org.eclipse.sirius.diagram.elk.debug</module>
         <module>../../plugins/org.eclipse.sirius.diagram.sequence.edit</module>
@@ -443,6 +444,8 @@
         <module>../../packaging/org.eclipse.sirius.diagram.elk.feature</module>
 		    <module>../../packaging/org.eclipse.sirius.diagram.elk.sdk.feature</module>
         <module>../../packaging/org.eclipse.sirius.sample.basicfamily.feature</module>
+
+        <module>../../packaging/org.eclipse.sirius.debug.feature</module>
 
         <!-- update sites -->
         <module>../../packaging/org.eclipse.sirius.update</module>
