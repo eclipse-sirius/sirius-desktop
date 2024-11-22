@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -90,6 +90,8 @@ import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.sirius.api.debug.AbstractDebugView;
+import org.eclipse.sirius.api.debug.TabularReport;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.SiriusReferenceFinder;
@@ -166,7 +168,7 @@ import com.google.common.collect.Ordering;
  * 
  * @author pcdavid
  */
-@SuppressWarnings({ "restriction", "unused" })
+@SuppressWarnings({ "restriction", "unused", "nls" })
 public class SiriusDebugView extends AbstractDebugView {
     /**
      * The global ID for the Eclipse View.
@@ -200,7 +202,7 @@ public class SiriusDebugView extends AbstractDebugView {
 
     private String getEObjectDetails(EObject obj) {
         StringBuilder sb = new StringBuilder();
-        sb.append("Proxy: ").append(((InternalEObject) obj).eIsProxy()).append("\n");
+        sb.append("Proxy: ").append(obj.eIsProxy()).append("\n");
         sb.append("Proxy URI: ").append(((InternalEObject) obj).eProxyURI()).append("\n");
         return sb.toString();
     }
@@ -711,7 +713,7 @@ public class SiriusDebugView extends AbstractDebugView {
     }
 
     private void addShowResourceInformationAction() {
-        addAction("Show resource information", "Show general information on the selected resource or the resource of the selected object\n * number of contained objects", new Runnable() {
+        addAction("Show resource information", new Runnable() {
             @Override
             public void run() {
                 EObject current = getCurrentEObject();
@@ -732,42 +734,40 @@ public class SiriusDebugView extends AbstractDebugView {
     }
 
     private void addShowSiriusInverseReferences() {
-        addAction("Show Sirius inverse references",
-                "Show, starting from a semantic object:\n * all DRep or DRepElem that reference the semantic object with DSEMANTIC_DECORATOR__TARGET and DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS\n * The corresponding DrepresentationDescriptor\nThe search scope is loaded and not loaded representations. Not loaded representations may be loaded after this action.",
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        Session.of(getCurrentEObject()).map(DAnalysisSessionImpl.class::cast).ifPresent(session -> {
-                            List<DRepresentationDescriptor> repDescriptors = session.getSiriusReferenceFinder()
-                                    .getImpactedRepresentationDescriptors(Collections.singletonList(getCurrentEObject()), SiriusReferenceFinder.SearchScope.ALL_REPRESENTATIONS_SCOPE).values().stream()
-                                    .flatMap(coll -> coll.stream()).collect(Collectors.toList());
+        addAction("Show Sirius inverse references", new Runnable() {
+            @Override
+            public void run() {
+                Session.of(getCurrentEObject()).map(DAnalysisSessionImpl.class::cast).ifPresent(session -> {
+                    List<DRepresentationDescriptor> repDescriptors = session.getSiriusReferenceFinder()
+                            .getImpactedRepresentationDescriptors(Collections.singletonList(getCurrentEObject()), SiriusReferenceFinder.SearchScope.ALL_REPRESENTATIONS_SCOPE).values().stream()
+                            .flatMap(coll -> coll.stream()).collect(Collectors.toList());
 
-                            List<EObject> siriusElements = session.getSiriusReferenceFinder()
-                                    .getReferencingSiriusElements(Collections.singletonList(getCurrentEObject()), SiriusReferenceFinder.SearchScope.ALL_REPRESENTATIONS_SCOPE).values().stream()
-                                    .flatMap(coll -> coll.stream()).collect(Collectors.toList());
+                    List<EObject> siriusElements = session.getSiriusReferenceFinder()
+                            .getReferencingSiriusElements(Collections.singletonList(getCurrentEObject()), SiriusReferenceFinder.SearchScope.ALL_REPRESENTATIONS_SCOPE).values().stream()
+                            .flatMap(coll -> coll.stream()).collect(Collectors.toList());
 
-                            setText(appendImpactedRepDesc(repDescriptors) + "\n" + appendImpactedSiriusElements(siriusElements));
-                        });
-                    }
-
-                    private String appendImpactedRepDesc(List<DRepresentationDescriptor> repDescriptors) {
-                        StringBuilder sb = new StringBuilder();
-                        sb.append("Impacted DRepresentationDescriptors (SiriusReferenceFinder.getImpactedRepresentationDescriptors):\n");
-                        repDescriptors.stream().forEach(repDesc -> {
-                            sb.append(repDesc.getName() + "\n");
-                        });
-                        return sb.toString();
-                    }
-
-                    private String appendImpactedSiriusElements(List<EObject> siriusElements) {
-                        StringBuilder sb = new StringBuilder();
-                        sb.append("Impacted DRepresentation and DRepresentationElement (SiriusReferenceFinder.getReferencingSiriusElements):\n");
-                        siriusElements.stream().forEach(elem -> {
-                            sb.append(elem + "\n");
-                        });
-                        return sb.toString();
-                    }
+                    setText(appendImpactedRepDesc(repDescriptors) + "\n" + appendImpactedSiriusElements(siriusElements));
                 });
+            }
+
+            private String appendImpactedRepDesc(List<DRepresentationDescriptor> repDescriptors) {
+                StringBuilder sb = new StringBuilder();
+                sb.append("Impacted DRepresentationDescriptors (SiriusReferenceFinder.getImpactedRepresentationDescriptors):\n");
+                repDescriptors.stream().forEach(repDesc -> {
+                    sb.append(repDesc.getName() + "\n");
+                });
+                return sb.toString();
+            }
+
+            private String appendImpactedSiriusElements(List<EObject> siriusElements) {
+                StringBuilder sb = new StringBuilder();
+                sb.append("Impacted DRepresentation and DRepresentationElement (SiriusReferenceFinder.getReferencingSiriusElements):\n");
+                siriusElements.stream().forEach(elem -> {
+                    sb.append(elem + "\n");
+                });
+                return sb.toString();
+            }
+        });
     }
 
     private void addShowSessionStructureAction() {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -10,25 +10,26 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.ui.debug;
+package org.eclipse.sirius.api.debug;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 /**
- * A helper class to build and print a table-formatter report in text mode.
- * Useful only to present debugging information.
+ * A helper class to build and print a table-formatter report in text mode. Useful only to present debugging
+ * information.
  * 
  * @author pcdavid
  */
+@SuppressWarnings("nls")
 public class TabularReport {
     private final List<String> headers;
 
     private final List<List<String>> lines;
 
     public TabularReport(String... headers) {
-        this.headers = new ArrayList<String>(Arrays.asList(headers));
+        this.headers = new ArrayList<>(Arrays.asList(headers));
         this.lines = new ArrayList<>();
     }
 
@@ -37,7 +38,7 @@ public class TabularReport {
     }
 
     public void addLine(String... data) {
-        addLine(new ArrayList<String>(Arrays.asList(data)));
+        addLine(new ArrayList<>(Arrays.asList(data)));
     }
 
     public String print() {

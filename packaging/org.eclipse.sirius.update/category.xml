@@ -139,6 +139,12 @@
    <feature id="org.eclipse.sirius.tests.source" version="0.0.0">
       <category name="Sirius.SDK"/>
    </feature>
+   <feature id="org.eclipse.sirius.debug.feature" version="0.0.0">
+      <category name="Sirius.SDK"/>
+   </feature>
+   <feature id="org.eclipse.sirius.debug.feature.source" version="0.0.0">
+      <category name="Sirius.SDK"/>
+   </feature>
    <feature id="org.eclipse.sirius.diagram.elk.feature.source" version="0.0.0">
       <category name="Sirius.SDK"/>
    </feature>

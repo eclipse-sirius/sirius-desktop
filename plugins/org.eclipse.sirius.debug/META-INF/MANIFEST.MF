@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.eclipse.sirius.debug;singleton:=true
+Bundle-Version: 7.4.5.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Bundle-Localization: plugin
+Bundle-ActivationPolicy: lazy
+Eclipse-LazyStart: true
+Bundle-Vendor: %providerName
+Export-Package: org.eclipse.sirius.api.debug
+Automatic-Module-Name: org.eclipse.sirius.ui.debug
+Require-Bundle: org.eclipse.emf.common,
+ org.eclipse.ui.workbench,
+ org.eclipse.jface,
+ org.eclipse.sirius.ui,
+ org.eclipse.ui,
+ org.eclipse.core.runtime
+

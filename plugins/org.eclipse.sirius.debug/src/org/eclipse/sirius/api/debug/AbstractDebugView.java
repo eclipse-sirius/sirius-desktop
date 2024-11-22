@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -10,10 +10,11 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.ui.debug;
+package org.eclipse.sirius.api.debug;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.provider.EcoreItemProviderAdapterFactory;
@@ -25,8 +26,6 @@ import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.window.Window;
-import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.provider.ViewpointItemProviderAdapterFactory;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionListener;
@@ -49,18 +48,16 @@ import org.eclipse.ui.part.ViewPart;
  * 
  * @author pcdavid
  */
+@SuppressWarnings("nls")
 public abstract class AbstractDebugView extends ViewPart implements ISelectionListener {
 
     private static class Action {
         final String label;
 
-        final String description;
-
         final Runnable body;
 
-        public Action(String label, String description, Runnable body) {
+        public Action(String label, Runnable body) {
             this.label = label;
-            this.description = description;
             this.body = body;
         }
     }
@@ -77,7 +74,7 @@ public abstract class AbstractDebugView extends ViewPart implements ISelectionLi
     /**
      * The currently selection object.
      */
-    protected Object selection;
+    public Object selection;
 
     @Override
     public void createPartControl(Composite parent) {
@@ -107,14 +104,7 @@ public abstract class AbstractDebugView extends ViewPart implements ISelectionLi
      * Helper method to add an action button to the view.
      */
     protected void addAction(String name, final Runnable body) {
-        addAction(name, null, body);
-    }
-
-    /**
-     * Helper method to add an action button to the view.
-     */
-    protected void addAction(String name, String description, final Runnable body) {
-        Action action = new Action(name, description, body);
+        Action action = new Action(name, body);
         actions.add(action);
         actionSelector.add(action.label);
     }
@@ -135,8 +125,8 @@ public abstract class AbstractDebugView extends ViewPart implements ISelectionLi
      */
     @Override
     public void selectionChanged(IWorkbenchPart part, ISelection selection) {
-        Option<Object> selected = getSelectedElement(selection);
-        if (selected.some()) {
+        Optional<Object> selected = getSelectedElement(selection);
+        if (selected.isPresent()) {
             this.selection = selected.get();
             this.info.setText(getTextFor(this.selection));
         }
@@ -145,12 +135,12 @@ public abstract class AbstractDebugView extends ViewPart implements ISelectionLi
     /**
      * Get the main object selected from the Eclipse ISelection.
      */
-    private Option<Object> getSelectedElement(ISelection selection) {
+    private Optional<Object> getSelectedElement(ISelection selection) {
         if (selection instanceof IStructuredSelection) {
             IStructuredSelection iss = (IStructuredSelection) selection;
-            return Options.newSome(iss.getFirstElement());
+            return Optional.of(iss.getFirstElement());
         }
-        return Options.newNone();
+        return Optional.empty();
     }
 
     /**
@@ -180,7 +170,7 @@ public abstract class AbstractDebugView extends ViewPart implements ISelectionLi
      * @param text
      *            the text to show in the view's text area.
      */
-    protected void setText(String text) {
+    public void setText(String text) {
         info.setText(text);
     }
 
