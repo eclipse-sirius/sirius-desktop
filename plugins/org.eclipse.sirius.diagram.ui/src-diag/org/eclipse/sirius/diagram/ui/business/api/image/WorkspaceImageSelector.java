@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2022 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -28,11 +28,11 @@ import org.eclipse.ui.PlatformUI;
 public class WorkspaceImageSelector implements ImageSelector {
 
     @Override
-    public List<String> selectImages(EObject eObject, ImageSelector.SelectionMode selectionMode, String currentImagePath) {
+    public List<String> selectImages(EObject eObject, ImageSelector.SelectionMode selectionMode, String currentImagePath, boolean displayImagePaths) {
         String imagePath = null;
         Shell activeShell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
 
-        ImageSelectionDialog dialog = new ImageSelectionDialog(activeShell, eObject, false, currentImagePath);
+        ImageSelectionDialog dialog = new ImageSelectionDialog(activeShell, eObject, false, currentImagePath, displayImagePaths);
         if (dialog.open() == Window.OK) {
             imagePath = dialog.getImagePath();
         }
@@ -41,11 +41,6 @@ public class WorkspaceImageSelector implements ImageSelector {
         } else {
             return Collections.<String> singletonList(imagePath);
         }
-    }
-
-    @Override
-    public List<String> selectImages(EObject eObject, SelectionMode selectionMode) {
-        return selectImages(eObject, selectionMode, null);
     }
 
 }

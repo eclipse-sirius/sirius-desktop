@@ -10,12 +10,16 @@ h3. User-Visible Changes
 
 * <span class="label label-success">Added</span> In the @ImageSelectionDialog@, a new feature has been added to reset the WorkspaceImage assigned to a DDiagramElement. Before this improvement, it was necessary to use the “Reset style properties to default values” button, but this also affected all other style modifications. This new button in the dialog resets only the WorkspaceImage style to the style of the element as defined in the Viewpoint Specification Model. </br> !{width: 500px}user/diagrams/images/selectImageDialog_resetImage.png!
 
+
 h3. Developer-Visible Changes
 
 h4. Changes in @org.eclipse.sirius.diagram.ui@
 
 * <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.business.api.image.WorkspaceImageHelper.resetStyle(BasicLabelStyle)@ has been added to reset the WorkspaceImage style assigned to a DDiagramElement, while preserving all other style modifications. In other words, the workspacePath feature is reset.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.business.api.image.ImageSelectionDialog.isResetImage()@ and @org.eclipse.sirius.diagram.ui.business.api.image.ImageSelectionDialog.setResetImage(boolean)@ have been added to handle the new "Reset Image Style" feature in the related dialog.
+* <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.business.api.image.WorkspaceImageHelper.resetStyle(BasicLabelStyle)@ has been added to reset the WorkspaceImage style assigned to a DDiagramElement, while preserving all other style modifications. In other words, the workspacePath feature is reset.
+* <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.business.api.image.ImageSelectionDialog.isResetImage()@ and @org.eclipse.sirius.diagram.ui.business.api.image.ImageSelectionDialog.setResetImage(boolean)@ have been added to handle the new "Reset Image Style" feature in the related dialog.
+* <span class="label label-success">Added</span> The method @org.eclipse.sirius.diagram.ui.business.api.image.ImageSelector.selectImages(EObject, SelectionMode, String, boolean)@ has been added to de-corelate the display of current/new image path field from the present of a value to the @currentSelection@ parameter. Default implementations of the other @ImageSelector.selectImages@ methods have been added in the interface to match previous behavior for callers of those methods. The @org.eclipse.sirius.diagram.ui.business.api.image.WorkspaceImageSelector.selectImages(EObject, SelectionMode, String, boolean)@ has been removed in favor of the default implementation of the method in @ImageSelector@.
 
 h4. Changes in @org.eclipse.sirius.tests.support@
 

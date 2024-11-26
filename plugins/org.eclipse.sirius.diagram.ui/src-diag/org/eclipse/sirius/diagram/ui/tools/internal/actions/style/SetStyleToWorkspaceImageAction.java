@@ -82,7 +82,7 @@ public class SetStyleToWorkspaceImageAction extends Action {
             if (basicLabelStyle instanceof WorkspaceImage img) {
                 workspacePath = img.getWorkspacePath();
             }
-            List<String> imagePaths = imageSelector.selectImages(basicLabelStyle, ImageSelector.SelectionMode.MONO_SELECTION, workspacePath);
+            List<String> imagePaths = imageSelector.selectImages(basicLabelStyle, ImageSelector.SelectionMode.MONO_SELECTION, workspacePath, false);
             if (imagePaths.size() == 1) {
                 if (imagePaths.get(0).equals(ImageSelectionDialog.NO_IMAGE_PATH_TEXT)) {
                     WorkspaceImageHelper.INSTANCE.resetStyle(basicLabelStyle);
