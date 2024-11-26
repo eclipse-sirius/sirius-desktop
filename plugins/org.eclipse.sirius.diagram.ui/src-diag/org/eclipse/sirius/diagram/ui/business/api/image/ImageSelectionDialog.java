@@ -119,6 +119,8 @@ public class ImageSelectionDialog extends Dialog {
      */
     private Text imagePathText;
 
+    private boolean displayImagePaths;
+
     /**
      * Create a new instance of {@link ImageSelectionDialog}.
      * 
@@ -130,8 +132,10 @@ public class ImageSelectionDialog extends Dialog {
      *            if true there is only the close button instead of OK/Cancel
      * @param currentImagePath
      *            the path to the image as it is serialized in the model
+     * @param displayImagePaths
+     *            if true, display the current and new selected image path and a message if the image is not found.
      */
-    public ImageSelectionDialog(Shell parentShell, EObject contextObject, boolean onlyCloseButton, String currentImagePath) {
+    public ImageSelectionDialog(Shell parentShell, EObject contextObject, boolean onlyCloseButton, String currentImagePath, boolean displayImagePaths) {
         super(parentShell);
         this.title = Messages.ImageSelectionDialog_title;
         this.root = ResourcesPlugin.getWorkspace().getRoot();
@@ -143,6 +147,7 @@ public class ImageSelectionDialog extends Dialog {
         if (currentImagePath != null) {
             this.currentImagePath = URI.decode(currentImagePath.replace("\\", SLASH)); //$NON-NLS-1$
         }
+        this.displayImagePaths = displayImagePaths;
         this.contextObject = contextObject;
     }
 
@@ -352,7 +357,7 @@ public class ImageSelectionDialog extends Dialog {
     }
 
     private void createImagePathComposite(Composite parent) {
-        if (currentImagePath != null) {
+        if (currentImagePath != null && displayImagePaths) {
             Composite imagePathContainer = new Composite(parent, SWT.NONE);
             GridLayout gridLayout = new GridLayout(2, false);
             imagePathContainer.setLayout(gridLayout);

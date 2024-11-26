@@ -52,6 +52,7 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.ui.business.api.image.ImageSelectionDialog;
@@ -417,7 +418,11 @@ public class DiagramShapeColorAndFontPropertySection extends ShapeColorsAndFonts
         ImageSelector imageSelector = ImageSelectorService.INSTANCE.getImageSelector();
         List<BasicLabelStyle> styles = getStyles();
         for (BasicLabelStyle basicLabelStyle : styles) {
-            List<String> imagePaths = imageSelector.selectImages(basicLabelStyle, ImageSelector.SelectionMode.MONO_SELECTION);
+            String workspacePath = null;
+            if (basicLabelStyle instanceof WorkspaceImage img) {
+                workspacePath = img.getWorkspacePath();
+            }
+            List<String> imagePaths = imageSelector.selectImages(basicLabelStyle, ImageSelector.SelectionMode.MONO_SELECTION, workspacePath, false);
             if (imagePaths.size() == 1) {
                 if (imagePaths.get(0).equals(ImageSelectionDialog.NO_IMAGE_PATH_TEXT)) {
                     WorkspaceImageHelper.INSTANCE.resetStyle(basicLabelStyle);
