@@ -266,6 +266,22 @@ h4. Lost and Found Messages
 Standard node mappings, direct children of a layer of the current sequence diagram description, can be used to represent the unknown message end. Lost and found messages should be created using a generic tool.
 
 
+h3. Interaction Container
+
+The Interaction Container mapping is used for displaying a background container wrapping around the entire sequence diagram. This container is only for display, the user can't interact with it (no selection, no drag and drop).
+
+We will define the interaction container mapping:
+
+  !images/new_interaction_container_mapping.png!
+
+It is defined exactly like a container mapping in a non-sequence diagram. The difference is the limited user interaction. To have this interaction container display the name of the interaction, choose the same candidate element as the diagram.
+
+  !images/interaction_container_mapping_properties.png!
+  
+As this interaction container semantic element is the same as the diagram semantic root, the tools creating element directly on the diagram (like creating a new instance role) will only need to add this interaction container mapping as an extra mapping. The tool model operation stays the same as the semantic element is the same (the container variable in the tool model operation). Note that the containerView will be different though.
+
+  !images/interaction_container_mapping_example.png!
+
 h2(#tools). Tools
 
 h3. Java Services
