@@ -306,6 +306,11 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
         super.refreshChildren();
         refreshConnectionsBendpoints();
         new SequenceZOrderingRefresher(this).run();
+        Optional<InteractionContainerEditPart> optionalInteractionContainerEditPart = this.getChildren().stream().filter(InteractionContainerEditPart.class::isInstance)
+                .map(InteractionContainerEditPart.class::cast).findFirst();
+        if (optionalInteractionContainerEditPart.isPresent()) {
+            optionalInteractionContainerEditPart.get().refresh();
+        }
     }
 
     @Override

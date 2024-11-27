@@ -40,6 +40,7 @@ public class DNodeContainerEditPart extends AbstractDiagramContainerEditPart {
     /**
      * @not-generated
      */
+    @Override
     protected void createDefaultEditPolicies() {
 
         super.createDefaultEditPolicies();
@@ -49,6 +50,7 @@ public class DNodeContainerEditPart extends AbstractDiagramContainerEditPart {
     /**
      * @was-generated
      */
+    @Override
     public EditPart getPrimaryChildEditPart() {
         return getChildBySemanticHint(SiriusVisualIDRegistry.getType(DNodeContainerNameEditPart.VISUAL_ID));
     }
@@ -72,4 +74,5 @@ public class DNodeContainerEditPart extends AbstractDiagramContainerEditPart {
     public int getParentStackDirection() {
         return PositionConstants.NONE;
     }
+
 }
