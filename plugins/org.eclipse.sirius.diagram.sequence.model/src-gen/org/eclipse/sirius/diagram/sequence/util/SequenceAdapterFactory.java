@@ -77,7 +77,7 @@ public class SequenceAdapterFactory extends AdapterFactoryImpl {
      *
      * @generated
      */
-    protected SequenceSwitch<Adapter> modelSwitch = new SequenceSwitch<Adapter>() {
+    protected SequenceSwitch<Adapter> modelSwitch = new SequenceSwitch<>() {
         @Override
         public Adapter caseSequenceDDiagram(SequenceDDiagram object) {
             return createSequenceDDiagramAdapter();

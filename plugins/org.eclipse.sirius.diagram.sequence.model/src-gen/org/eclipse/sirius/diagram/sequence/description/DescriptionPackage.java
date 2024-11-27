@@ -3903,6 +3903,246 @@ public interface DescriptionPackage extends EPackage {
     int OBSERVATION_POINT_MAPPING_FEATURE_COUNT = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING_FEATURE_COUNT + 0;
 
     /**
+     * The meta object id for the
+     * '{@link org.eclipse.sirius.diagram.sequence.description.impl.InteractionContainerMappingImpl <em>Interaction
+     * Container Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see org.eclipse.sirius.diagram.sequence.description.impl.InteractionContainerMappingImpl
+     * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getInteractionContainerMapping()
+     * @generated
+     */
+    int INTERACTION_CONTAINER_MAPPING = 19;
+
+    /**
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int INTERACTION_CONTAINER_MAPPING__NAME = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__NAME;
+
+    /**
+     * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int INTERACTION_CONTAINER_MAPPING__LABEL = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__LABEL;
+
+    /**
+     * The feature id for the '<em><b>Detail Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int INTERACTION_CONTAINER_MAPPING__DETAIL_DESCRIPTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__DETAIL_DESCRIPTIONS;
+
+    /**
+     * The feature id for the '<em><b>Navigation Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int INTERACTION_CONTAINER_MAPPING__NAVIGATION_DESCRIPTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__NAVIGATION_DESCRIPTIONS;
+
+    /**
+     * The feature id for the '<em><b>Paste Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int INTERACTION_CONTAINER_MAPPING__PASTE_DESCRIPTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__PASTE_DESCRIPTIONS;
+
+    /**
+     * The feature id for the '<em><b>Precondition Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int INTERACTION_CONTAINER_MAPPING__PRECONDITION_EXPRESSION = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__PRECONDITION_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Deletion Description</b></em>' reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int INTERACTION_CONTAINER_MAPPING__DELETION_DESCRIPTION = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__DELETION_DESCRIPTION;
+
+    /**
+     * The feature id for the '<em><b>Label Direct Edit</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @generated
+     * @ordered
+     */
+    int INTERACTION_CONTAINER_MAPPING__LABEL_DIRECT_EDIT = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__LABEL_DIRECT_EDIT;
+
+    /**
+     * The feature id for the '<em><b>Semantic Candidates Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int INTERACTION_CONTAINER_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int INTERACTION_CONTAINER_MAPPING__CREATE_ELEMENTS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__CREATE_ELEMENTS;
+
+    /**
+     * The feature id for the '<em><b>Semantic Elements</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @generated
+     * @ordered
+     */
+    int INTERACTION_CONTAINER_MAPPING__SEMANTIC_ELEMENTS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__SEMANTIC_ELEMENTS;
+
+    /**
+     * The feature id for the '<em><b>Double Click Description</b></em>' reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int INTERACTION_CONTAINER_MAPPING__DOUBLE_CLICK_DESCRIPTION = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__DOUBLE_CLICK_DESCRIPTION;
+
+    /**
+     * The feature id for the '<em><b>Synchronization Lock</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int INTERACTION_CONTAINER_MAPPING__SYNCHRONIZATION_LOCK = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__SYNCHRONIZATION_LOCK;
+
+    /**
+     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int INTERACTION_CONTAINER_MAPPING__DOCUMENTATION = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__DOCUMENTATION;
+
+    /**
+     * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int INTERACTION_CONTAINER_MAPPING__DOMAIN_CLASS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__DOMAIN_CLASS;
+
+    /**
+     * The feature id for the '<em><b>Bordered Node Mappings</b></em>' containment reference list. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int INTERACTION_CONTAINER_MAPPING__BORDERED_NODE_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__BORDERED_NODE_MAPPINGS;
+
+    /**
+     * The feature id for the '<em><b>Reused Bordered Node Mappings</b></em>' reference list. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int INTERACTION_CONTAINER_MAPPING__REUSED_BORDERED_NODE_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__REUSED_BORDERED_NODE_MAPPINGS;
+
+    /**
+     * The feature id for the '<em><b>Drop Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int INTERACTION_CONTAINER_MAPPING__DROP_DESCRIPTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__DROP_DESCRIPTIONS;
+
+    /**
+     * The feature id for the '<em><b>Sub Node Mappings</b></em>' containment reference list. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int INTERACTION_CONTAINER_MAPPING__SUB_NODE_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__SUB_NODE_MAPPINGS;
+
+    /**
+     * The feature id for the '<em><b>Reused Node Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int INTERACTION_CONTAINER_MAPPING__REUSED_NODE_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__REUSED_NODE_MAPPINGS;
+
+    /**
+     * The feature id for the '<em><b>Sub Container Mappings</b></em>' containment reference list. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int INTERACTION_CONTAINER_MAPPING__SUB_CONTAINER_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__SUB_CONTAINER_MAPPINGS;
+
+    /**
+     * The feature id for the '<em><b>Reused Container Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int INTERACTION_CONTAINER_MAPPING__REUSED_CONTAINER_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__REUSED_CONTAINER_MAPPINGS;
+
+    /**
+     * The feature id for the '<em><b>Style</b></em>' containment reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @generated
+     * @ordered
+     */
+    int INTERACTION_CONTAINER_MAPPING__STYLE = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__STYLE;
+
+    /**
+     * The feature id for the '<em><b>Conditionnal Styles</b></em>' containment reference list. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int INTERACTION_CONTAINER_MAPPING__CONDITIONNAL_STYLES = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__CONDITIONNAL_STYLES;
+
+    /**
+     * The feature id for the '<em><b>Children Presentation</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int INTERACTION_CONTAINER_MAPPING__CHILDREN_PRESENTATION = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__CHILDREN_PRESENTATION;
+
+    /**
+     * The number of structural features of the '<em>Interaction Container Mapping</em>' class. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int INTERACTION_CONTAINER_MAPPING_FEATURE_COUNT = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING_FEATURE_COUNT + 0;
+
+    /**
      * Returns the meta object for class
      * '{@link org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription <em>Sequence Diagram
      * Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -4204,6 +4444,17 @@ public interface DescriptionPackage extends EPackage {
     EClass getObservationPointMapping();
 
     /**
+     * Returns the meta object for class
+     * '{@link org.eclipse.sirius.diagram.sequence.description.InteractionContainerMapping <em>Interaction Container
+     * Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for class '<em>Interaction Container Mapping</em>'.
+     * @see org.eclipse.sirius.diagram.sequence.description.InteractionContainerMapping
+     * @generated
+     */
+    EClass getInteractionContainerMapping();
+
+    /**
      * Returns the factory that creates the instances of the model. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the factory that creates the instances of the model.
@@ -4501,6 +4752,17 @@ public interface DescriptionPackage extends EPackage {
          * @generated
          */
         EClass OBSERVATION_POINT_MAPPING = DescriptionPackage.eINSTANCE.getObservationPointMapping();
+
+        /**
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.diagram.sequence.description.impl.InteractionContainerMappingImpl <em>Interaction
+         * Container Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @see org.eclipse.sirius.diagram.sequence.description.impl.InteractionContainerMappingImpl
+         * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getInteractionContainerMapping()
+         * @generated
+         */
+        EClass INTERACTION_CONTAINER_MAPPING = DescriptionPackage.eINSTANCE.getInteractionContainerMapping();
 
     }
 

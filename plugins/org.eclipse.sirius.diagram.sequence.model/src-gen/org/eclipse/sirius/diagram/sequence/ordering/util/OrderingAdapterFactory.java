@@ -73,7 +73,7 @@ public class OrderingAdapterFactory extends AdapterFactoryImpl {
      *
      * @generated
      */
-    protected OrderingSwitch<Adapter> modelSwitch = new OrderingSwitch<Adapter>() {
+    protected OrderingSwitch<Adapter> modelSwitch = new OrderingSwitch<>() {
         @Override
         public Adapter caseEventEndsOrdering(EventEndsOrdering object) {
             return createEventEndsOrderingAdapter();

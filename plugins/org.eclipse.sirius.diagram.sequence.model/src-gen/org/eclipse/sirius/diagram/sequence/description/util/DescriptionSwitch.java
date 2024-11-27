@@ -36,6 +36,7 @@ import org.eclipse.sirius.diagram.sequence.description.EventMapping;
 import org.eclipse.sirius.diagram.sequence.description.ExecutionMapping;
 import org.eclipse.sirius.diagram.sequence.description.FrameMapping;
 import org.eclipse.sirius.diagram.sequence.description.InstanceRoleMapping;
+import org.eclipse.sirius.diagram.sequence.description.InteractionContainerMapping;
 import org.eclipse.sirius.diagram.sequence.description.InteractionUseMapping;
 import org.eclipse.sirius.diagram.sequence.description.MessageEndVariable;
 import org.eclipse.sirius.diagram.sequence.description.MessageMapping;
@@ -688,6 +689,38 @@ public class DescriptionSwitch<T> {
             }
             return result;
         }
+        case DescriptionPackage.INTERACTION_CONTAINER_MAPPING: {
+            InteractionContainerMapping interactionContainerMapping = (InteractionContainerMapping) theEObject;
+            T result = caseInteractionContainerMapping(interactionContainerMapping);
+            if (result == null) {
+                result = caseContainerMapping(interactionContainerMapping);
+            }
+            if (result == null) {
+                result = caseAbstractNodeMapping(interactionContainerMapping);
+            }
+            if (result == null) {
+                result = caseDragAndDropTargetDescription(interactionContainerMapping);
+            }
+            if (result == null) {
+                result = caseDiagramElementMapping(interactionContainerMapping);
+            }
+            if (result == null) {
+                result = caseDocumentedElement(interactionContainerMapping);
+            }
+            if (result == null) {
+                result = caseRepresentationElementMapping(interactionContainerMapping);
+            }
+            if (result == null) {
+                result = casePasteTargetDescription(interactionContainerMapping);
+            }
+            if (result == null) {
+                result = caseIdentifiedElement(interactionContainerMapping);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
         default:
             return defaultCase(theEObject);
         }
@@ -972,6 +1005,21 @@ public class DescriptionSwitch<T> {
      * @generated
      */
     public T caseObservationPointMapping(ObservationPointMapping object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Interaction Container Mapping</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Interaction Container Mapping</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseInteractionContainerMapping(InteractionContainerMapping object) {
         return null;
     }
 

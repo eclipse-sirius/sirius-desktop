@@ -212,6 +212,9 @@ public class FrameMappingItemProvider extends ContainerMappingItemProvider {
 
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_CONTAINER_MAPPINGS,
                 DescriptionFactory.eINSTANCE.createOperandMapping()));
+
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_CONTAINER_MAPPINGS,
+                DescriptionFactory.eINSTANCE.createInteractionContainerMapping()));
     }
 
     /**

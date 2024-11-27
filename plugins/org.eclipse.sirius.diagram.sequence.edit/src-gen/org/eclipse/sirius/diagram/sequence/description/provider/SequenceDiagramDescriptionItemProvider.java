@@ -174,6 +174,9 @@ public class SequenceDiagramDescriptionItemProvider extends DiagramDescriptionIt
 
         newChildDescriptors.add(
                 createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__CONTAINER_MAPPINGS, DescriptionFactory.eINSTANCE.createOperandMapping()));
+
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__CONTAINER_MAPPINGS,
+                DescriptionFactory.eINSTANCE.createInteractionContainerMapping()));
     }
 
     /**
