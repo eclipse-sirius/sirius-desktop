@@ -153,6 +153,15 @@ public interface DescriptionFactory extends EFactory {
     ObservationPointMapping createObservationPointMapping();
 
     /**
+     * Returns a new object of class '<em>Interaction Container Mapping</em>'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return a new object of class '<em>Interaction Container Mapping</em>'.
+     * @generated
+     */
+    InteractionContainerMapping createInteractionContainerMapping();
+
+    /**
      * Returns the package supported by this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the package supported by this factory.

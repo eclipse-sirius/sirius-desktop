@@ -90,7 +90,7 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
      *
      * @generated
      */
-    protected ToolSwitch<Adapter> modelSwitch = new ToolSwitch<Adapter>() {
+    protected ToolSwitch<Adapter> modelSwitch = new ToolSwitch<>() {
         @Override
         public Adapter caseSequenceDiagramToolDescription(SequenceDiagramToolDescription object) {
             return createSequenceDiagramToolDescriptionAdapter();
