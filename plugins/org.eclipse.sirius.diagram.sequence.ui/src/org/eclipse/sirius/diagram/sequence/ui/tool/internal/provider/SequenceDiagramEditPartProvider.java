@@ -27,6 +27,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFr
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.EndOfLife;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Execution;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.InteractionContainer;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InteractionUse;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.LostMessageEnd;
@@ -40,6 +41,8 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.CombinedFr
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.EndOfLifeEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InstanceRoleEditPart;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InteractionContainerEditPart;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InteractionContainerViewNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InteractionUseEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.LifelineEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.LostMessageEndEditPart;
@@ -51,6 +54,7 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceDi
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageNameEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.StateEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 
 /**
@@ -108,6 +112,11 @@ public class SequenceDiagramEditPartProvider extends AbstractEditPartProvider {
                     return OperandEditPart.class;
                 } else if (Operand.compartmentNotationPredicate().apply(view)) {
                     return OperandCompartmentEditPart.class;
+                } else if (InteractionContainer.notationPredicate().apply(view)) {
+                    return InteractionContainerEditPart.class;
+                } else if (view.eContainer() instanceof View && SiriusVisualIDRegistry.getVisualID(view) == DNodeContainerViewNodeContainerCompartmentEditPart.VISUAL_ID
+                        && InteractionContainer.notationPredicate().apply((View) view.eContainer())) {
+                    return InteractionContainerViewNodeContainerCompartmentEditPart.class;
                 }
             } else if (DiagramPackage.eINSTANCE.getDEdge().isInstance(semanticElement)) {
                 DEdge edge = (DEdge) semanticElement;

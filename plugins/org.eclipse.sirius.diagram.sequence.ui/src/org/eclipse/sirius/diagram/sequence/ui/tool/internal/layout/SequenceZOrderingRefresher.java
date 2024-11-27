@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,12 +15,17 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import java.util.function.Predicate;
 
+import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.CombinedFragmentEditPart;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InteractionContainerEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InteractionUseEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ObservationPointEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
@@ -51,9 +56,11 @@ public class SequenceZOrderingRefresher implements Runnable {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void run() {
         moveInteractionUsesToFront();
         moveCombinedFragmentsToBack();
+        moveInteractionContainerToBack();
         moveObservationPointToFront();
     }
 
@@ -79,6 +86,34 @@ public class SequenceZOrderingRefresher implements Runnable {
      */
     private void moveCombinedFragmentsToBack() {
         moveParts(CombinedFragmentEditPart.class, false, new CombinedFragmentVerticalPositionFunction());
+
+    }
+
+    /**
+     * Shift the container, representing the interaction, if it exists, before every other children so they appear
+     * visually behind the rest.
+     */
+    private void moveInteractionContainerToBack() {
+        Optional<DNodeContainerEditPart> optionalInteractionContainer = getInteractionContainer(sequenceDiagramPart.getChildren());
+        if (optionalInteractionContainer.isPresent()) {
+            sequenceDiagramPart.reorderChild(optionalInteractionContainer.get(), 0);
+        }
+    }
+
+    /**
+     * Return the container representing the interaction if it exists.<BR>
+     * 
+     * @param children
+     *            List of GraphicalEditPart (at the root of a sequence diagram).
+     * @return The container representing the interaction if it exists.
+     */
+    public Optional<DNodeContainerEditPart> getInteractionContainer(List<? extends GraphicalEditPart> children) {
+        return (Optional<DNodeContainerEditPart>) children.stream().filter(new Predicate<GraphicalEditPart>() {
+            @Override
+            public boolean test(GraphicalEditPart editPart) {
+                return editPart instanceof InteractionContainerEditPart;
+            }
+        }).findFirst();
     }
 
     /**
