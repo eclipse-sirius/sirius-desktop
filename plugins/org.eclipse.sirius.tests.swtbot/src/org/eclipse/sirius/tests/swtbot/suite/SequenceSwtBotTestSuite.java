@@ -148,6 +148,7 @@ public class SequenceSwtBotTestSuite extends TestCase {
         suite.addTestSuite(SequenceSpaceTest.class);
         suite.addTestSuite(RefreshLayoutScopeTests.class);
         suite.addTestSuite(InstanceRoleOrderingTests.class);
+        //        suite.addTestSuite(InteractionContainerTests.class);
         // suite.addTestSuite(ContextMenuInDiagramTest.class);
     }
 
