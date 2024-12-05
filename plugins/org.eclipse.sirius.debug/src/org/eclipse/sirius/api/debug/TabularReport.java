@@ -28,19 +28,42 @@ public class TabularReport {
 
     private final List<List<String>> lines;
 
+    /**
+     * Default constructor.
+     * 
+     * @param headers
+     *            List of header names.
+     */
     public TabularReport(String... headers) {
         this.headers = new ArrayList<>(Arrays.asList(headers));
         this.lines = new ArrayList<>();
     }
 
+    /**
+     * Add one line for each {@link String} of data list.
+     * 
+     * @param data
+     *            The list of lines to add.
+     */
     public void addLine(List<String> data) {
         this.lines.add(data);
     }
 
+    /**
+     * Add one line for each {@link String} of data list.
+     * 
+     * @param data
+     *            The list of lines to add.
+     */
     public void addLine(String... data) {
         addLine(new ArrayList<>(Arrays.asList(data)));
     }
 
+    /**
+     * Return a string representation of the {@link TabularReport}.
+     *
+     * @return a string representation of the {@link TabularReport}.
+     */
     public String print() {
         StringBuilder sb = new StringBuilder();
         int[] width = computeColumnsWidth();

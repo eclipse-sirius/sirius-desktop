@@ -53,8 +53,7 @@ final class ShowEditPartsHierarchy implements Runnable {
 
     @Override
     public void run() {
-        if (view.selection instanceof EditPart) {
-            EditPart part = (EditPart) view.selection;
+        if (view.getSelection() instanceof EditPart part) {
             StringBuilder sb = new StringBuilder();
             showEditParts(part, 0, sb);
             view.setText(sb.toString());
