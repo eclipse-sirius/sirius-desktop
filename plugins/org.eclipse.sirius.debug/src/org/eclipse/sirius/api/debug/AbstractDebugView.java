@@ -56,7 +56,7 @@ public abstract class AbstractDebugView extends ViewPart implements ISelectionLi
 
         final Runnable body;
 
-        public Action(String label, Runnable body) {
+        Action(String label, Runnable body) {
             this.label = label;
             this.body = body;
         }
@@ -74,7 +74,16 @@ public abstract class AbstractDebugView extends ViewPart implements ISelectionLi
     /**
      * The currently selection object.
      */
-    public Object selection;
+    private Object selection;
+
+    /**
+     * Get the selection currently associated to this view.
+     * 
+     * @return the selection currently associated to this view.
+     */
+    public Object getSelection() {
+        return selection;
+    }
 
     @Override
     public void createPartControl(Composite parent) {
@@ -82,7 +91,9 @@ public abstract class AbstractDebugView extends ViewPart implements ISelectionLi
         GridLayout layout = new GridLayout(1, false);
         parent.setLayout(layout);
 
+        // CHECKSTYLE:OFF
         info = new Text(parent, SWT.MULTI | SWT.READ_ONLY | SWT.WRAP | SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
+        // CHECKSTYLE:ON
         info.setText("Sirius Debug View");
         info.setLayoutData(new GridData(GridData.FILL_BOTH));
         info.setFont(JFaceResources.getFont("org.eclipse.debug.ui.consoleFont"));
@@ -124,8 +135,8 @@ public abstract class AbstractDebugView extends ViewPart implements ISelectionLi
      * Update the <code>selection</code> field and fill the info area with the corresponding details.
      */
     @Override
-    public void selectionChanged(IWorkbenchPart part, ISelection selection) {
-        Optional<Object> selected = getSelectedElement(selection);
+    public void selectionChanged(IWorkbenchPart part, ISelection newSelection) {
+        Optional<Object> selected = getSelectedElement(newSelection);
         if (selected.isPresent()) {
             this.selection = selected.get();
             this.info.setText(getTextFor(this.selection));
@@ -135,10 +146,9 @@ public abstract class AbstractDebugView extends ViewPart implements ISelectionLi
     /**
      * Get the main object selected from the Eclipse ISelection.
      */
-    private Optional<Object> getSelectedElement(ISelection selection) {
-        if (selection instanceof IStructuredSelection) {
-            IStructuredSelection iss = (IStructuredSelection) selection;
-            return Optional.of(iss.getFirstElement());
+    private Optional<Object> getSelectedElement(ISelection newSelection) {
+        if (newSelection instanceof IStructuredSelection structuredSelection) {
+            return Optional.of(structuredSelection.getFirstElement());
         }
         return Optional.empty();
     }
@@ -155,6 +165,11 @@ public abstract class AbstractDebugView extends ViewPart implements ISelectionLi
         }
     }
 
+    /**
+     * Return the adapter factory specific for the given view.
+     * 
+     * @return the adapter factory specific for the given view.
+     */
     protected AdapterFactory getAdapterFactory() {
         List<AdapterFactory> factories = new ArrayList<>();
         factories.add(new ViewpointItemProviderAdapterFactory());

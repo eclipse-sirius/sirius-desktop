@@ -530,7 +530,7 @@ public class SiriusDebugView extends AbstractDebugView {
 
     private void addEMFResourcesStatisticsAction() {
         addAction("EMF Resource Statistics", () -> {
-            IFile input = Adapters.adapt(selection, IFile.class);
+            IFile input = Adapters.adapt(getSelection(), IFile.class);
             if (input != null) {
                 URI uri = URI.createPlatformResourceURI(input.getFullPath().toString(), true);
                 ResourceSet rs = new ResourceSetImpl();
@@ -594,7 +594,7 @@ public class SiriusDebugView extends AbstractDebugView {
 
     private void addLoadResourceAction() {
         addAction("Load EMF resource", () -> {
-            IFile input = Adapters.adapt(selection, IFile.class);
+            IFile input = Adapters.adapt(getSelection(), IFile.class);
             if (input != null) {
                 URI uri = URI.createPlatformResourceURI(input.getFullPath().toString(), true);
                 ResourceSet rs = new ResourceSetImpl();
@@ -925,10 +925,10 @@ public class SiriusDebugView extends AbstractDebugView {
     }
 
     EObject getCurrentEObject() {
-        if (selection instanceof IGraphicalEditPart) {
-            return ((IGraphicalEditPart) selection).resolveSemanticElement();
-        } else if (selection instanceof EObject) {
-            return (EObject) selection;
+        if (getSelection() instanceof IGraphicalEditPart graphicalEditPart) {
+            return graphicalEditPart.resolveSemanticElement();
+        } else if (getSelection() instanceof EObject eObject) {
+            return eObject;
         } else {
             return null;
         }
@@ -1068,7 +1068,7 @@ public class SiriusDebugView extends AbstractDebugView {
         addAction("Show CommandStack", new Runnable() {
             @Override
             public void run() {
-                IUndoContext undoContext = getUndoContext(selection);
+                IUndoContext undoContext = getUndoContext(getSelection());
                 if (undoContext != null) {
                     TabularReport report = new TabularReport("IUndoableOperation's name");
                     IUndoableOperation[] redoableOperations = OperationHistoryFactory.getOperationHistory().getRedoHistory(undoContext);
@@ -1117,11 +1117,11 @@ public class SiriusDebugView extends AbstractDebugView {
 
     private void addSelectReusedSiriussAction() {
         addAction("Viewpoint - Select reused", () -> {
-            if (selection instanceof Viewpoint) {
-                final Option<Set<URI>> sel = new ViewpoitnDependenciesSelectionDialog((Viewpoint) selection).selectReusedViewpoints(getSite().getShell());
+            if (getSelection() instanceof Viewpoint viewpoint) {
+                final Option<Set<URI>> sel = new ViewpoitnDependenciesSelectionDialog(viewpoint).selectReusedViewpoints(getSite().getShell());
                 if (sel.some()) {
-                    ((Viewpoint) selection).getReuses().clear();
-                    Iterables.addAll(((Viewpoint) selection).getReuses(), sel.get());
+                    viewpoint.getReuses().clear();
+                    Iterables.addAll(viewpoint.getReuses(), sel.get());
                 }
             }
         });
@@ -1129,8 +1129,7 @@ public class SiriusDebugView extends AbstractDebugView {
 
     private void addRefreshDiagramAction() {
         addAction("Refresh diagram", () -> {
-            if (selection instanceof DiagramEditPart) {
-                DiagramEditPart diag = (DiagramEditPart) selection;
+            if (getSelection() instanceof DiagramEditPart diag) {
                 diag.refresh();
                 for (IGraphicalEditPart child : Iterables.filter(diag.getChildren(), IGraphicalEditPart.class)) {
                     child.refresh();
@@ -1141,8 +1140,7 @@ public class SiriusDebugView extends AbstractDebugView {
 
     private void addRefreshCoverageAction() {
         addAction("Sequence Diagram - Refresh Coverage", () -> {
-            if (selection instanceof SequenceDiagramEditPart) {
-                final SequenceDiagramEditPart sdep = (SequenceDiagramEditPart) selection;
+            if (getSelection() instanceof SequenceDiagramEditPart sdep) {
                 TransactionalEditingDomain ted = sdep.getEditingDomain();
                 RefreshGraphicalCoverage refreshGraphicalCoverage = new RefreshGraphicalCoverage(ted, sdep);
                 sdep.getEditingDomain().getCommandStack().execute(refreshGraphicalCoverage);
@@ -1152,10 +1150,9 @@ public class SiriusDebugView extends AbstractDebugView {
 
     private void addExpandAction() {
         addAction("Sequence Diagram - Expand", () -> {
-            if (selection instanceof SequenceDiagramEditPart) {
+            if (getSelection() instanceof SequenceDiagramEditPart sdep) {
                 final int start = Integer.parseInt(askStringFromUser("Expansion", "Start y", "0"));
                 final int size = Integer.parseInt(askStringFromUser("Expansion", "Size", "0"));
-                final SequenceDiagramEditPart sdep = (SequenceDiagramEditPart) selection;
                 TransactionalEditingDomain ted = sdep.getEditingDomain();
                 RecordingCommand verticalSpaceExpansion = CommandFactory.createRecordingCommand(ted,
                         new VerticalSpaceExpansionOrReduction(sdep.getSequenceDiagram(), new Range(start, start + size), 0, Collections.<ISequenceEvent> emptyList()));
@@ -1166,13 +1163,12 @@ public class SiriusDebugView extends AbstractDebugView {
 
     private void addRefreshBenpointsAction() {
         addAction("Refresh bendpoints", () -> {
-            if (selection instanceof SequenceMessageEditPart) {
-                final SequenceMessageEditPart smep = (SequenceMessageEditPart) selection;
+            if (getSelection() instanceof SequenceMessageEditPart smep) {
                 TransactionalEditingDomain ted = smep.getEditingDomain();
                 RefreshBendpoints refreshBendpoints = new RefreshBendpoints(ted, smep);
                 smep.getEditingDomain().getCommandStack().execute(refreshBendpoints);
-            } else if (selection instanceof SequenceDiagramEditPart) {
-                for (final SequenceMessageEditPart smep : Iterables.filter(((SequenceDiagramEditPart) selection).getChildren(), SequenceMessageEditPart.class)) {
+            } else if (getSelection() instanceof SequenceDiagramEditPart sequenceDiagramEditPart) {
+                for (final SequenceMessageEditPart smep : Iterables.filter(sequenceDiagramEditPart.getChildren(), SequenceMessageEditPart.class)) {
                     TransactionalEditingDomain ted = smep.getEditingDomain();
                     RefreshBendpoints refreshBendpoints = new RefreshBendpoints(ted, smep);
                     smep.getEditingDomain().getCommandStack().execute(refreshBendpoints);
@@ -1183,8 +1179,7 @@ public class SiriusDebugView extends AbstractDebugView {
 
     private void addResetBendpointsAction() {
         addAction("Sequence Diagram - Reset Bendpoints", () -> {
-            if (selection instanceof SequenceDiagramEditPart) {
-                final SequenceDiagramEditPart sdep = (SequenceDiagramEditPart) selection;
+            if (getSelection() instanceof SequenceDiagramEditPart sdep) {
                 TransactionalEditingDomain ted = sdep.getEditingDomain();
                 RecordingCommand verticalSpaceExpansion = CommandFactory.createRecordingCommand(ted,
                         new VerticalSpaceExpansionOrReduction(sdep.getSequenceDiagram(), new Range(0, 0), 0, Lists.<ISequenceEvent> newArrayList()));
@@ -1199,8 +1194,7 @@ public class SiriusDebugView extends AbstractDebugView {
      */
     private void addStorePositionsAction() {
         addAction("Sequence Diagram - Store positions", () -> {
-            if (selection instanceof SequenceDiagramEditPart) {
-                SequenceDiagramEditPart sdep = (SequenceDiagramEditPart) selection;
+            if (getSelection() instanceof SequenceDiagramEditPart sdep) {
                 storedPositions = readVerticalPositions(sdep);
             }
         });
@@ -1212,8 +1206,7 @@ public class SiriusDebugView extends AbstractDebugView {
      */
     private void addShowPositionChangesAction() {
         addAction("Sequence Diagram - Show Position Changes", () -> {
-            if (selection instanceof SequenceDiagramEditPart) {
-                SequenceDiagramEditPart sdep = (SequenceDiagramEditPart) selection;
+            if (getSelection() instanceof SequenceDiagramEditPart sdep) {
                 if (storedPositions != null) {
                     Map<EObject, Integer> newPositions = readVerticalPositions(sdep);
                     List<EObject> elements = new ArrayList<EObject>(newPositions.keySet());
@@ -1253,9 +1246,8 @@ public class SiriusDebugView extends AbstractDebugView {
      */
     private void addShowOrderingsAction() {
         addAction("Sequence Diagram - Orderings", () -> {
-            if (selection instanceof SequenceDiagramEditPart) {
+            if (getSelection() instanceof SequenceDiagramEditPart sdep) {
                 AdapterFactoryLabelProvider lp = new AdapterFactoryLabelProvider(getAdapterFactory());
-                SequenceDiagramEditPart sdep = (SequenceDiagramEditPart) selection;
                 SequenceDDiagram diag = (SequenceDDiagram) sdep.resolveSemanticElement();
                 VerticalPositionFunction vpf = new VerticalPositionFunction(diag);
                 Iterator<EventEnd> go = diag.getGraphicalOrdering().getEventEnds().iterator();
@@ -1302,8 +1294,7 @@ public class SiriusDebugView extends AbstractDebugView {
 
     private void addFoldingToggleAction() {
         addAction("Toggle folding", () -> {
-            if (selection instanceof IAbstractDiagramNodeEditPart) {
-                IAbstractDiagramNodeEditPart part = (IAbstractDiagramNodeEditPart) selection;
+            if (getSelection() instanceof IAbstractDiagramNodeEditPart part) {
                 EdgeTargetQuery query = new EdgeTargetQuery((EdgeTarget) part.resolveDiagramElement());
                 boolean isFoldingPoint = query.isFoldingPoint();
                 if (isFoldingPoint) {
@@ -1326,8 +1317,7 @@ public class SiriusDebugView extends AbstractDebugView {
      */
     private void addShowFiguresHierarchyAction() {
         addAction("Show figures", () -> {
-            if (selection instanceof IGraphicalEditPart) {
-                IGraphicalEditPart part = (IGraphicalEditPart) selection;
+            if (getSelection() instanceof IGraphicalEditPart part) {
                 StringBuilder sb = new StringBuilder();
                 showFigures(part.getFigure(), 0, sb);
                 setText(sb.toString());
