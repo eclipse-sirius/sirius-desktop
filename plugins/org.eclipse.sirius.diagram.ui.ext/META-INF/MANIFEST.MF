@@ -2,13 +2,13 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.diagram.ui.ext;singleton:=true
-Bundle-Version: 7.4.5.qualifier
+Bundle-Version: 7.4.6.qualifier
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Require-Bundle: org.eclipse.sirius.diagram.ui;bundle-version="7.4.5",
+Require-Bundle: org.eclipse.sirius.diagram.ui;bundle-version="7.4.6",
  org.eclipse.osgi;bundle-version="0.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.eclipse.sirius.diagram.ui.ext.Activator
 Bundle-RequiredExecutionEnvironment: JavaSE-17
-Export-Package: org.eclipse.sirius.diagram.ui.ext;version="7.4.5"
+Export-Package: org.eclipse.sirius.diagram.ui.ext;version="7.4.6"
 Automatic-Module-Name: org.eclipse.sirius.diagram.ui.ext
