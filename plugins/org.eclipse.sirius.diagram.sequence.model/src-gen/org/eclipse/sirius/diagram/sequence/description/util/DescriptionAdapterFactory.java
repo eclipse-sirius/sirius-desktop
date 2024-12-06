@@ -36,6 +36,7 @@ import org.eclipse.sirius.diagram.sequence.description.EventMapping;
 import org.eclipse.sirius.diagram.sequence.description.ExecutionMapping;
 import org.eclipse.sirius.diagram.sequence.description.FrameMapping;
 import org.eclipse.sirius.diagram.sequence.description.InstanceRoleMapping;
+import org.eclipse.sirius.diagram.sequence.description.InteractionContainerMapping;
 import org.eclipse.sirius.diagram.sequence.description.InteractionUseMapping;
 import org.eclipse.sirius.diagram.sequence.description.MessageEndVariable;
 import org.eclipse.sirius.diagram.sequence.description.MessageMapping;
@@ -102,7 +103,7 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      *
      * @generated
      */
-    protected DescriptionSwitch<Adapter> modelSwitch = new DescriptionSwitch<Adapter>() {
+    protected DescriptionSwitch<Adapter> modelSwitch = new DescriptionSwitch<>() {
         @Override
         public Adapter caseSequenceDiagramDescription(SequenceDiagramDescription object) {
             return createSequenceDiagramDescriptionAdapter();
@@ -196,6 +197,11 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseObservationPointMapping(ObservationPointMapping object) {
             return createObservationPointMappingAdapter();
+        }
+
+        @Override
+        public Adapter caseInteractionContainerMapping(InteractionContainerMapping object) {
+            return createInteractionContainerMappingAdapter();
         }
 
         @Override
@@ -555,6 +561,20 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createObservationPointMappingAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class
+     * '{@link org.eclipse.sirius.diagram.sequence.description.InteractionContainerMapping <em>Interaction Container
+     * Mapping</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.diagram.sequence.description.InteractionContainerMapping
+     * @generated
+     */
+    public Adapter createInteractionContainerMappingAdapter() {
         return null;
     }
 

@@ -27,6 +27,7 @@ import org.eclipse.sirius.diagram.sequence.description.DestructionMessageMapping
 import org.eclipse.sirius.diagram.sequence.description.EndOfLifeMapping;
 import org.eclipse.sirius.diagram.sequence.description.ExecutionMapping;
 import org.eclipse.sirius.diagram.sequence.description.InstanceRoleMapping;
+import org.eclipse.sirius.diagram.sequence.description.InteractionContainerMapping;
 import org.eclipse.sirius.diagram.sequence.description.InteractionUseMapping;
 import org.eclipse.sirius.diagram.sequence.description.MessageEndVariable;
 import org.eclipse.sirius.diagram.sequence.description.ObservationPointMapping;
@@ -114,6 +115,8 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
             return createOperandMapping();
         case DescriptionPackage.OBSERVATION_POINT_MAPPING:
             return createObservationPointMapping();
+        case DescriptionPackage.INTERACTION_CONTAINER_MAPPING:
+            return createInteractionContainerMapping();
         default:
             throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
@@ -282,6 +285,17 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
     public ObservationPointMapping createObservationPointMapping() {
         ObservationPointMappingImpl observationPointMapping = new ObservationPointMappingSpec();
         return observationPointMapping;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public InteractionContainerMapping createInteractionContainerMapping() {
+        InteractionContainerMappingImpl interactionContainerMapping = new InteractionContainerMappingImpl();
+        return interactionContainerMapping;
     }
 
     /**

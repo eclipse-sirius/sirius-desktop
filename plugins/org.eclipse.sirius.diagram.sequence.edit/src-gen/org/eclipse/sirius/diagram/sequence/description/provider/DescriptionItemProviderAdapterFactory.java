@@ -439,6 +439,31 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     }
 
     /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.diagram.sequence.description.InteractionContainerMapping} instances. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected InteractionContainerMappingItemProvider interactionContainerMappingItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.diagram.sequence.description.InteractionContainerMapping}. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createInteractionContainerMappingAdapter() {
+        if (interactionContainerMappingItemProvider == null) {
+            interactionContainerMappingItemProvider = new InteractionContainerMappingItemProvider(this);
+        }
+
+        return interactionContainerMappingItemProvider;
+    }
+
+    /**
      * This returns the root adapter factory that contains this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
@@ -582,6 +607,9 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
         }
         if (observationPointMappingItemProvider != null) {
             observationPointMappingItemProvider.dispose();
+        }
+        if (interactionContainerMappingItemProvider != null) {
+            interactionContainerMappingItemProvider.dispose();
         }
     }
 

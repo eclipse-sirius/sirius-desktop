@@ -87,7 +87,7 @@ public class TemplateAdapterFactory extends AdapterFactoryImpl {
      *
      * @generated
      */
-    protected TemplateSwitch<Adapter> modelSwitch = new TemplateSwitch<Adapter>() {
+    protected TemplateSwitch<Adapter> modelSwitch = new TemplateSwitch<>() {
         @Override
         public Adapter caseTTransformer(TTransformer object) {
             return createTTransformerAdapter();

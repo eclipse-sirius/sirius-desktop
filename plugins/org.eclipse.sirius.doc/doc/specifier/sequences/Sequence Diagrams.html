@@ -62,6 +62,9 @@
 							<li>
 								<a href="#BasicMessages">Basic Messages</a>
 							</li>
+							<li>
+								<a href="#InteractionContainer">Interaction Container</a>
+							</li>
 						</ol>
 					</li>
 					<li>
@@ -494,6 +497,14 @@
 		<img border="0" src="images/basic_message_mapping_visual3.png"/>
 		<h4 id="LostandFoundMessages">Lost and Found Messages</h4>
 		<p>Standard node mappings, direct children of a layer of the current sequence diagram description, can be used to represent the unknown message end. Lost and found messages should be created using a generic tool.</p>
+		<h3 id="InteractionContainer">Interaction Container</h3>
+		<p>The Interaction Container mapping is used for displaying a background container wrapping around the entire sequence diagram. This container is only for display, the user can&#8217;t interact with it (no selection, no drag and drop).</p>
+		<p>We will define the interaction container mapping:</p> 
+		<img border="0" src="images/new_interaction_container_mapping.png"/>
+		<p>It is defined exactly like a container mapping in a non-sequence diagram. The difference is the limited user interaction. To have this interaction container display the name of the interaction, choose the same candidate element as the diagram.</p> 
+		<img border="0" src="images/interaction_container_mapping_properties.png"/>
+		<p>As this interaction container semantic element is the same as the diagram semantic root, the tools creating element directly on the diagram (like creating a new instance role) will only need to add this interaction container mapping as an extra mapping. The tool model operation stays the same as the semantic element is the same (the container variable in the tool model operation). Note that the containerView will be different though.</p> 
+		<img border="0" src="images/interaction_container_mapping_example.png"/>
 		<h2 id="tools">Tools</h2>
 		<h3 id="JavaServices">Java Services</h3>
 		<p>To use a java service in an Acceleo expression, service must be define like this in odesign:</p> 

@@ -164,6 +164,9 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
         result.add(
                 new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__CONTAINER_MAPPINGS, DescriptionFactory.eINSTANCE.createCombinedFragmentMapping()));
         result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__CONTAINER_MAPPINGS, DescriptionFactory.eINSTANCE.createOperandMapping()));
+         result.add(new CommandParameter(null,
+         org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__CONTAINER_MAPPINGS,
+         DescriptionFactory.eINSTANCE.createInteractionContainerMapping()));
         // Edges
         result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__EDGE_MAPPINGS, DescriptionFactory.eINSTANCE.createBasicMessageMapping()));
         result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__EDGE_MAPPINGS, DescriptionFactory.eINSTANCE.createReturnMessageMapping()));
