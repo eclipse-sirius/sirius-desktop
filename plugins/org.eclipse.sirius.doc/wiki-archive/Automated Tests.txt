@@ -1,0 +1,22 @@
+Sirius comes with a huge set of legacy tests (JUnit and SWTBot) that need to passe the eclipse IP and License clean.
+Besides, the move to Eclipse gives the opportunity to think back automated tests.
+
+Note: the rules defined below are not yet finalized and implemented. See the discussions at https://bugs.eclipse.org/bugs/show_bug.cgi?id=423663. Feedback welcome.
+
+== General Rules ==
+
+* Automated Tests will be physically stored in a dedicated folder called "tests"
+* A test can be:
+** a unit test
+** an integration test
+** a UI test
+* Each plugins can have its releated test plugin <code>${plugin-name}.tests</code>
+** All '''unit tests''' follow the package of the class under and are stored in <code>/unit</code>
+** All '''integration tests''' are stored in <code>/integ</code>
+* Each UI plugins can have an additional UI test plugin <code>${plugin-name}.tests.swtbot</code>
+
+== Samples ==
+
+[[File:SiriusSampleOfTestDependencies.png]]
+
+[[Category:Sirius]]

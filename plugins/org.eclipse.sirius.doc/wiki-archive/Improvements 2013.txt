@@ -1,0 +1,128 @@
+Sirius is a new 2013 project, but it is a fairly large initial contribution as it comes from a proprietary technology:
+* It has been developed by Thales as an internal component and is deployed within the whole Group. 
+* It is also deployed in other organizations as part of the Obeo Designer product. 
+This page explains the main contributions for 2013 of the two main actors of Sirius project, Thales and Obeo.
+
+=Sirius/Improvements for Thales 2013=
+This work is developed by [http://www.obeo.fr Obeo] and sponsored by [http://www.thalesgroup.com Thales] in the context of Polarsys [http://wiki.eclipse.org/Polarsys]<br />
+
+==New expression interpreters to boost performances==
+
+Expressions are used by Sirius to retrieve information from the model (to populate a representation, to dynamically compute graphical properties or to define the behavior of a tool). Before Sirius 0.9, expressions had to be written in Acceleo or standard OCL, even for retrieving very simple information.
+
+Three new interpreters have been added to simply retrieve the value of features (attributes and relations), to evaluate services and to get variables.
+
+To use these interpreters, just start the expression with the tags feature:, service: or var: followed by the name of the feature, service or variable.
+
+[[Image:sirius1.0-featurecontents.png]]
+
+[[Image:sirius1.0-servicegetfamiliescontainingparents.png]]
+
+[[Image:sirius1.0-varsource.png]]
+
+By using these interpreters, you can improve the performance of your modeler up to 30 %, as Sirius can directly evaluate simple expressions without having to delegate this work to Acceleo or OCL engines (which implies more controls).
+
+== Fixed diagram header ==
+On a sequence diagram, you can now choose to display a fixed lifeline header.
+
+This header contains the objects corresponding to each lifeline. It is always visible, even when you scroll to the bottom of the sequence diagram.
+
+[[Image:sirius1.0-fixed-header.png]]
+
+An extension point is now available if you want to contribute this kind of header to your own diagrams.
+
+
+== Resize of lifeline header in sequence diagrams ==
+The lifeline header of the Sequence Diagram can be resized by the user to display the full label of the object corresponding to each lifeline. 
+
+[[Image:sirius1.0-headersequencediagramresize.png]]
+
+== Large models management with the Model Explorer view ==
+The Model Explorer view has been improved to facilitate the management of large models, (containing objects with several hundreds of sub-objects).
+Now, the sub-objects are displayed in groups to facilitate and to accelerate the navigation through large models.
+
+== Conditional graphical properties ==
+Graphical styles can now be customized property-by-property (label size, icon path, border color, etc). It means that you can link only some properties to a condition, the other properties will be automatically inherited from the default style.
+
+For example, a condition can be defined in order to change only the color and the size of a label.
+
+[[Image:sirius1.0-customization.png]]
+
+Here is the result of this customization: the size and the color have changed only on persons with children.
+
+[[Image:sirius1.0-customization2-web.png]]
+
+With this new feature, you can more easily combine conditional styles and reuse them on different objects.
+
+== Style Customization scalability ==
+You can use regular expression in Viewpoint URI and Representation Name fields. This allows to extend several diagrams with one single diagram extension, which simplify the application of customizations on a set of elements.
+These fields are considered as regular expressions if they contain at least one of these characters : "*", "[", "]", "(", ")" or "?".  
+
+== Bracket Edge style ==
+
+Bracket Edge is a new style for relations.
+
+It allows you to represent relations like a measure: a vertical arrow between two segments.
+
+[[Image:sirius1.0-bracket1-web.png]]
+
+measure-like edge's style
+
+It can be used on any edge of your diagrams. You can customize, the color, the style, the thickness and the ends of the bracket.
+
+[[Image:sirius1.0-bracket2-web.png]]
+
+== Additional layers ==
+Additional layers (formerly Optional layer) cannot be disabled by end-user if the specifier unchecked the "optional" option. In this case, the layers become mandatory. The end-user do not see the mandatory layers in the layer activation menu.
+ 
+
+== Others improvements == 
+* Drag & drop of an element drops it at the mouse position in a container
+* « Hide label by default » now works on Bordered nodes
+* Fixes for Bugs and performance issues 
+* Select a default routing style for all new edges in end user's preferences, and set rectilinear style as default
+* The property view is now synchronized with the Model Explorer view on semantic element selection
+* Better layout engine
+
+
+=Sirius/Improvements for Obeo 2013=
+
+This work is developed and sponsored by [http://www.obeo.fr Obeo] in the context of [http://wiki.eclipse.org/Polarsys Polarsys] and Sys2Soft (R&D project co-founded by [http://www.dgcis.gouv.fr DGCIS]).<br />
+
+==Refactoring for initial contribution==
+*Rebranding
+*IP cleaning
+*Refactoring of package names, API, ... 
+*Remove Acceleo 2 dependencies
+*Build modification to use Eclipse Foundation infrastructure
+
+== Default size of containers ==
+Now, with Sirius, you can set the default size of the containers.
+
+[[Image:sirius1.0-containersizebydefault.png]]
+
+It is very useful to directly create new containers with a more appropriate size, thus avoiding users to systematically resize them after their creation.
+
+
+== More progress bars to improve the user experience ==
+
+Many progress bars have been added for potentially long lasting actions (for example, opening large models).
+
+==Modularization==
+Specification: 
+* http://wiki.eclipse.org/Sirius/Modularization
+
+==New Branding==
+* New icon
+* Website
+* Communication materials
+
+== Others improvements == 
+* Add tool variables definitions in the documentation
+* Tools can't be created outside a layer anymore
+* All tools now refresh the tree
+* Better support of tabbar in Eclipse 4.x
+* Fixes for Bugs and performance issues 
+
+
+[[Category:Sirius]]

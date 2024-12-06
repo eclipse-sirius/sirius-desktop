@@ -1,0 +1,40 @@
+Sirius 6.2.0 contains mostly internal changes, which are needed to enable moving Sirius to the web, but require API breaks. The APIs breakage which are in this version should not impact most users, thus the 6.2.0 version number instead of 7.0.0.
+
+== Availability ==
+
+Sirius 6.2.0 was released on 2019-04-01 (tag [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/tag/?id=v6.2.0 v6.2.0], commit [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/commit/?id=7f3a84a511a17ef856c769519b751591168ec4f8 7f3a84a511a17ef856c769519b751591168ec4f8]). It is available from the following update sites:
+* <code>http://download.eclipse.org/sirius/updates/releases/6.2.0/oxygen</code> ([http://download.eclipse.org/sirius/updates/releases/6.2.0/org.eclipse.sirius-6.2.0-oxygen.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/6.2.0/photon</code> ([http://download.eclipse.org/sirius/updates/releases/6.2.0/org.eclipse.sirius-6.2.0-photon.zip Archive])
+
+It is recommended you use the update-site matching the version of Eclipse you use to avoid potential issues at runtime.
+
+The complete JUnit and SWTBot test suites used to validate Sirius are published along with all their dependencies in separate update-sites from the core, available at:
+* <code>http://download.eclipse.org/sirius/updates/releases/6.2.0/oxygen/tests</code> ([http://download.eclipse.org/sirius/updates/releases/6.2.0/org.eclipse.sirius.tests-6.2.0-oxygen.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/6.2.0/photon/tests</code> ([http://download.eclipse.org/sirius/updates/releases/6.2.0/org.eclipse.sirius.tests-6.2.0-photon.zip Archive])
+
+== Compatibility & Requirements ==
+
+Sirius 6.2.0 is compatible with the following versions of Eclipse:
+* Eclipse 4.7 (Oxygen).
+* Eclipse 4.8 (Photon). Photon is the reference platform.
+* Eclipse 4.9 (SimRel 2018-09).
+
+''Note:'' The new (and still experimental) 'Workflow' and 'Server' features only work under Photon.
+
+== New & Noteworthy ==
+
+The complete list of (22) tickets fixed in Sirius 6.2.0 can be found [https://projects.eclipse.org/projects/modeling.sirius/releases/6.2.0/bugs here].
+
+Highlights:
+* [https://eclip.se/542678 #542678] Improve the degree of customization of the bundle image provided shape extension point to be compatible with more SVG tags.
+* [https://eclip.se/542805 #542805] Remove the org.eclipse.sirius.diagram.layoutdata plug-in. It was deprecated and already been replaced in previous versions by the more powerful org.eclipse.sirius.diagram.formatdata.
+* [https://eclip.se/538853 #538853] Reduce the amount of custom code in the diagrams metamodel. This brings the `diagram.ecore` metamodel closer to a "pure" EMF model, with no custom "hidden" behavior or code dependencies.
+* [https://eclip.se/543177 #543177] Allow vertical spaces removal for sequence diagram. 
+* [https://eclip.se/543252 #543252] Have show/hide actions available in visibility mode.
+* More uses of our own <code>Option</code> type have been converted to use the standard <code>java.util.Optional</code>. The effort is far from finished and will probably continue over several versions (see [http://eclip.se/529526 #529526]).
+* Various improvements on the GraphQL backend ([http://eclip.se/540871 #540871], [http://eclip.se/541348 #541348], [http://eclip.se/541389 #541389])
+* Several improvements have been made to the <code>IInterepter</code> API as part of [http://eclip.se/542839 #542839]. This effort is still ongoing but the patches which have been merged in 6.2.0 include some API breaks. Refer to the release notes for the details.
+
+The release notes with highlights will soon be published at [https://www.eclipse.org/sirius/doc/Release_Notes.html#sirius6.2.0 here].
+
+[[Category:Sirius]]

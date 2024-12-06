@@ -1,0 +1,59 @@
+Sirius 0.9.0 is the first release of Sirius as an official Eclipse project. The project is still in incubation at this time.
+
+See also [http://dev.eclipse.org/mhonarc/lists/sirius-dev/msg00010.html the announce on the mailing list].
+
+== Availability ==
+
+Sirius 0.9.0 was released on 2013-12-11 (tag [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/tag/?id=v0.9.0 v0.9.0], commit [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/commit/?id=ac2881b95e6063728e79fd9c362900764145fa65 ac2881b95e6063728e79fd9c362900764145fa65]). It is available from the following update sites:
+* <code>http://download.eclipse.org/sirius/updates/releases/0.9.0/juno</code> ([http://download.eclipse.org/sirius/updates/releases/0.9.0/org.eclipse.sirius-0.9.0-juno.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/0.9.0/kepler</code> ([http://download.eclipse.org/sirius/updates/releases/0.9.0/org.eclipse.sirius-0.9.0-kepler.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/0.9.0/luna</code> ([http://download.eclipse.org/sirius/updates/releases/0.9.0/org.eclipse.sirius-0.9.0-luna.zip Archive]) 
+
+It is recommended you use the update-site matching the version of Eclipse you use to avoid potential issues at runtime.
+
+''Juno users'': Sirius depends on more recent versions of some components that what is available by default from a Juno install. You need to add the following update-sites if you want to install Sirius on Juno:
+* Orbit: http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository/
+* Acceleo 3.4: http://download.eclipse.org/acceleo/updates/releases/3.4/
+* EEF 1.2: http://download.eclipse.org/modeling/emft/eef/updates/nightly/1.2/
+
+== Compatibility ==
+
+Sirius 0.9.0 is compatible with the following versions of Eclipse:
+* Eclipse 3.8/4.2 (Juno)
+* Eclipse 4.3 (Kepler)
+
+A version of Sirius built against the current milestone for the unreleased Eclipse 4.4 (Luna) is also available.
+
+== New & Noteworthy ==
+
+See [[Sirius/Improvements 2013]] for an overview of the changes in 2013.
+
+=== Migration from Previous Versions ===
+
+Sirius 0.9 supports automatic migration of modeler definitions (<code>*.odesign</code>) and representation files (<code>*.aird</code>) created using previous versions before the project was called Sirius, in particular versions available from Obeo Designer. See the release notes included in the documentation for more details on how to migrate existing projects from Obeo Designer to Sirius.
+
+=== Diagram Definition ===
+
+Sirius 0.9 allows the definition of Diagram representation including: nodes, containers, edges, edge on edges, layers, filters and many much more.
+
+=== Table Definition ===
+
+Sirius 0.9 enables the definition of Table representation: Edition table having instances as lines and attributes as colums, and matrices having instances on both sides.
+
+=== Tree Definition ===
+
+This release enables the definition of arbitrary tree-like representations not bound to the model structure.
+
+=== Viewpoint based definition and customization ===
+
+Sirius 0.9 provides the ability to define Viewpoints. Viewpoints can either define new editors and/or customize existing ones. They can be enabled or disabled by the end-user on a per-project basis.
+
+=== Common Infrastructure ===
+
+Sirius 0.9 provides a common infrastructure for managing models through the modeling project, handling the lifecycle of the files regarding to the Eclipse Workspace.
+
+=== Adopt the Eclipse.org infrastructure ===
+
+The 0.9 release also saw the ramping up of the team on the Eclipse.org infrastructure. CBI based builds and continuous integration, git and gerrit, bugzilla, setting up the website, filling the wiki.
+
+[[Category:Sirius]]

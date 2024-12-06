@@ -1,0 +1,28 @@
+[https://projects.eclipse.org/projects/modeling.sirius/releases/6.1.1 Sirius 6.1.1] is a maintenance release. It contain only a few bugfixes needed for Capella 1.3.0 that could not make it into Sirius 6.1.0.
+
+== Availability ==
+
+Sirius 6.1.1 was released on 2018-11-27 (tag [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/tag/?id=v6.1.1 v6.1.1], commit [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/commit/?id=3b34d9675900249586bed92be85ac0bf8ed55403 3b34d9675900249586bed92be85ac0bf8ed55403]). It is available from the following update sites:
+* <code>http://download.eclipse.org/sirius/updates/releases/6.1.1/oxygen</code> ([http://download.eclipse.org/sirius/updates/releases/6.1.1/org.eclipse.sirius-6.1.1-oxygen.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/6.1.1/photon</code> ([http://download.eclipse.org/sirius/updates/releases/6.1.1/org.eclipse.sirius-6.1.1-photon.zip Archive])
+
+It is recommended you use the update-site matching the version of Eclipse you use to avoid potential issues at runtime.
+
+The complete JUnit and SWTBot test suites used to validate Sirius are published along with all their dependencies in separate update-sites from the core, available at:
+* <code>http://download.eclipse.org/sirius/updates/releases/6.1.1/oxygen/tests</code> ([http://download.eclipse.org/sirius/updates/releases/6.1.1/org.eclipse.sirius.tests-6.1.1-oxygen.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/6.1.1/photon/tests</code> ([http://download.eclipse.org/sirius/updates/releases/6.1.1/org.eclipse.sirius.tests-6.1.1-photon.zip Archive])
+
+== Compatibility & Requirements ==
+
+Sirius 6.1.1 is compatible with the following versions of Eclipse:
+* Eclipse 4.7 (Oxygen).
+* Eclipse 4.8 (Photon). Photon is the reference platform.
+* Eclipse 4.9 (SimRel 2018-09).
+
+== New & Noteworthy ==
+
+The complete list of (5) tickets fixed in Sirius 6.1.1 can be found [https://projects.eclipse.org/projects/modeling.sirius/releases/6.1.1/bugs here].
+
+The release notes can be found [https://www.eclipse.org/sirius/doc/Release_Notes.html].
+
+[[Category:Sirius]]
