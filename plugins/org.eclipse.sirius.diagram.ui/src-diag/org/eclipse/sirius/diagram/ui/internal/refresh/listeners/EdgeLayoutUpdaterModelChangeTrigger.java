@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2014, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -446,7 +446,7 @@ public class EdgeLayoutUpdaterModelChangeTrigger implements ModelChangeTrigger {
      */
     private DEdgeEditPart getEdgeEditPart(Edge edge) {
         DEdgeEditPart edgeEditPart = null;
-        Option<GraphicalEditPart> option = Options.newNone();
+        Optional<GraphicalEditPart> option = Optional.empty();
         final IEditorPart editorPart = EclipseUIUtil.getActiveEditor();
         if (editorPart instanceof DiagramEditor) {
             option = GMFHelper.getGraphicalEditPart(edge, (DiagramEditor) editorPart);
@@ -460,12 +460,12 @@ public class EdgeLayoutUpdaterModelChangeTrigger implements ModelChangeTrigger {
                 if (object instanceof DiagramEditor) {
                     option = GMFHelper.getGraphicalEditPart(edge, (DiagramEditor) object);
                 }
-                if (option.some()) {
+                if (option.isPresent()) {
                     break;
                 }
             }
         }
-        if (option.some()) {
+        if (option.isPresent()) {
             GraphicalEditPart editPart = option.get();
             if (editPart instanceof DEdgeEditPart) {
                 edgeEditPart = ((DEdgeEditPart) editPart);
