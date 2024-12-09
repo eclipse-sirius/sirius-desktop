@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -179,7 +179,7 @@ public class ObservationPointEditPart extends DNodeEditPart {
         super.refreshVisuals();
 
         DDiagramElement node = resolveDiagramElement();
-        if (new DDiagramElementQuery(node).isCollapsed()) {
+        if (node != null && new DDiagramElementQuery(node).isCollapsed()) {
             final int x = ((Integer) getStructuralFeatureValue(NotationPackage.eINSTANCE.getLocation_X())).intValue();
             final int y = ((Integer) getStructuralFeatureValue(NotationPackage.eINSTANCE.getLocation_Y())).intValue();
             final int width = ((Integer) getStructuralFeatureValue(NotationPackage.eINSTANCE.getSize_Width())).intValue();

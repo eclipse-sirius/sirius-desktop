@@ -427,6 +427,9 @@ public class CanonicalSynchronizerResult {
      * returned if no corresponding view is found.
      */
     private Optional<View> getUniqueCreatedViewForSemanticElement(EObject semanticElement) {
+        if (semanticElement == null) {
+            return Optional.empty();
+        }
         List<View> candidates = new ArrayList<>();
         for (View view : this.getCreatedViews()) {
             if (view.getElement() instanceof DSemanticDecorator dDiagramElement && semanticElement.equals(dDiagramElement.getTarget())) {
