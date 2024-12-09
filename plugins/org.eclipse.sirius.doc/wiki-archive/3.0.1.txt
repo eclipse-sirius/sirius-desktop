@@ -1,0 +1,51 @@
+Sirius 3.0.1 is a service release, containing only bugfixes.
+
+See also [https://dev.eclipse.org/mhonarc/lists/sirius-dev/msg00123.html the announce on the mailing list].
+
+== Availability ==
+
+Sirius 3.0.1 was released on 2015-09-10 (tag [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/tag/?id=v3.0.1 v3.0.1], commit [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/commit/?id=04dd82129dc30d43e05d4a3d4062b06f56148457 04dd82129dc30d43e05d4a3d4062b06f56148457]). It is available from the following update sites:
+* <code>http://download.eclipse.org/sirius/updates/releases/3.0.1/juno</code> ([http://download.eclipse.org/sirius/updates/releases/3.0.1/org.eclipse.sirius-3.0.1-juno.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/3.0.1/kepler</code> ([http://download.eclipse.org/sirius/updates/releases/3.0.1/org.eclipse.sirius-3.0.1-kepler.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/3.0.1/luna</code> ([http://download.eclipse.org/sirius/updates/releases/3.0.1/org.eclipse.sirius-3.0.1-luna.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/3.0.1/mars</code> ([http://download.eclipse.org/sirius/updates/releases/3.0.1/org.eclipse.sirius-3.0.1-mars.zip Archive])
+
+It is recommended you use the update-site matching the version of Eclipse you use to avoid potential issues at runtime.
+
+This version includes the complete JUnit and SWTBot test suites used to validate Sirius. They are published along with all their dependencies in separate update-sites from the core, available at:
+* <code>http://download.eclipse.org/sirius/updates/releases/3.0.1/juno/tests</code> ([http://download.eclipse.org/sirius/updates/releases/3.0.1/org.eclipse.sirius.tests-3.0.1-juno.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/3.0.1/kepler/tests</code> ([http://download.eclipse.org/sirius/updates/releases/3.0.1/org.eclipse.sirius.tests-3.0.1-kepler.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/3.0.1/luna/tests</code> ([http://download.eclipse.org/sirius/updates/releases/3.0.1/org.eclipse.sirius.tests-3.0.1-luna.zip Archive])
+
+If you want to install the org.eclipse.sirius.tests.support feature, which provides APIs to help create automated tests of Sirius-based modelers, you will need to add the following update-site:
+* SWTBot 2.1.1: <code>http://download.eclipse.org/technology/swtbot/releases/2.1.1/</code>
+
+If you want to install and run the test suites themselves, you will also need the following additional update-site:
+* Sirius Support for Legacy Queries: <code>http://download.eclipse.org/sirius/updates/legacy</code>
+
+It is needed to run the tests which use an old query language (which is now superseded by Acceleo 3, AQL and the core feature:/var:/service: interpreters).
+
+''Juno users'': Sirius depends on more recent versions of some components that what is available by default from a Juno install. You need to add the following update-sites if you want to install Sirius 3.0.0 on Juno:
+* Orbit: <code>http://download.eclipse.org/tools/orbit/downloads/drops/R20150519210750/repository/</code>
+* Acceleo 3.6: <code>http://download.eclipse.org/acceleo/updates/releases/3.6/</code>
+* EEF 1.5: <code>http://download.eclipse.org/modeling/emft/eef/updates/milestones/1.5/S201505291308/</code>
+
+== Compatibility ==
+
+Sirius 3.0.1 is compatible with the following versions of Eclipse:
+* Eclipse 3.8/4.2 (Juno)
+* Eclipse 4.3 (Kepler)
+* Eclipse 4.4 (Luna)
+* Eclipse 4.5 (Mars)
+
+Eclipse 4.5 (Mars) is the reference platform.
+
+== New & Noteworthy ==
+
+The complete list of (14) tickets fixed in Sirius 3.0.1 can be found [https://bugs.eclipse.org/bugs/buglist.cgi?classification=Modeling&list_id=12593933&product=Sirius&query_format=advanced&target_milestone=3.0.1 here on the Bugzilla]. Most notable are:
+* [https://bugs.eclipse.org/bugs/show_bug.cgi?id=475821 Bug 475821] - Selected DTreeItem is not visible on Mac OS X
+* [https://bugs.eclipse.org/bugs/show_bug.cgi?id=476107 Bug 476107] - Session loading with big models (1M elements)
+* [https://bugs.eclipse.org/bugs/show_bug.cgi?id=475817 Bug 475817] - Sirius preferences are not persisted over eclipse restarts.
+* [https://bugs.eclipse.org/bugs/show_bug.cgi?id=473943 Bug 473943] - Table/Tree editor are not able to resolve their proxy input after reload
+
+[[Category:Sirius]]

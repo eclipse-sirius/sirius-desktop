@@ -1,0 +1,70 @@
+Notes, rules and recipes related to Sirius release engineering.
+
+== Promoting a Milestone or Release ==
+
+The jobs on [https://hudson.eclipse.org/sirius/ our HIPP] only publish "nightly" builds (using the script in <code>releng/org.eclipse.sirius.releng/publish-nightly.sh</code>), which end up in <code>/home/data/httpd/download.eclipse.org/sirius/updates/nightly</code> under names like <code>1.0.0-N20140605-075527</code>. Promotion of such a build as a milestone is currently a manual (but simple) process:
+* Login on <code>build.eclipse.org</code> using your Eclipse commiter credentials: <code>ssh $commiter_id@build.eclipse.org</code>
+* Go into the root folder for Sirius update sites: <code>cd /home/data/httpd/download.eclipse.org/sirius/updates</code> or <code>cd downloads/sirius/updates</code>
+* Copy the whole update-site you want to promote from <code>nightly</code> into <code>milestones</code>, under the final name. For example: <code>cp -a nightly/3.0.0-N20150503-075527 milestones/3.0.0M7</code>
+* Create the archived versions of the repos. A script to automatically do this is available in the Sirius repo, and can be obtained by <code>curl http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/plain/releng/org.eclipse.sirius.releng/make_archives.sh</code>. Assuming you put it in your <code>$HOME</code> on <code>build.eclipse.org</code>:
+    cd milestones/3.0.0M7  # Go to the new version's root directory
+    sh ~/make_archives.sh  # Invoke the script
+* For '''S'''table snapshots, '''M'''ilestones and '''R'''elease '''C'''andidates, rename the zip files containing the archived repositories with the proper qualifier. The zip files should have names of the form <code>org.eclipse.sirius-3.0.0M7-mars.zip</code>, <code>org.eclipse.sirius.tests-2.0.6rc1-luna.zip</code>, etc.
+* For actual releases (and optionaly for milestones), copy and adapt the <code>index.html</code> file from another release to the root of the milestone/release so that users who go to e.g. <code>http://download.eclipse.org/sirius/updates/releases/1.0.0/</code> instead of the platform-specific repo URL get pointers to the URLs they are looking for instead of a "Not Found" error message. Don't forget to edit the configuration section of the <code>index.html</code> to match the version begin promoted (note: both <code>vi</code> and <code>emacs</code> are available on <code>build.eclipse.org</code>).
+* '''WARNING''': For versions following the release train, the current platform must be deleted and replaced by <code>staging</code> (for zip files and for update site folders). In other words, if the nightly has built variants for <code>kepler</code>, <code>luna</code>, <code>mars</code> and <code>staging</code>, the <code>mars</code> variant must be deleted and <code>staging</code> renamed into <code>mars</code>. This ensures what we publish under <code>mars</code> (in this example) matches as closely as possible the state of the latest SimRel build (ont was not build against a previous ''M''iletsone).
+* Update [[Sirius/Update_Sites|the list of available update sites]] on the wiki to mention the where the <code>nightly</code> for the <code>milestones</code> will be published.
+
+Promoting a release follows the same principles, except that it goes from <code>milestones</code> into <code>releases</code>. Nothing should be promoted as a final release that has not been promoted first as a milestone (preferably with a "release candidate" status), and thouroughly tested.
+
+Also remember that this recipe only deals with the "copying the bytes" parts of the process: an actual release involves much more than that!
+
+== Cutting a maintenance branch ==
+
+There are several steps needed to create a new maintenance branch for a release. Assuming <code>master</code> is at version 1.0.0, which is released, and that the next version will be 2.0.0, we must:
+# Create a new Git branch named <code>v1.0.x</code>, starting from the exact commit containing the final released 1.0.0 version: <code> git branch v1.0.0x v1.0.0</code> (assuming the tag for <code>v1.0.0</code> has been created).
+# In the new <code>v1.0.x</code>, bump the version number to 1.0.1 to be ready for the next service release on that branch.
+# On the [https://hudson.eclipse.org/sirius/ Sirius HIPP], create a new job named <code>sirius-1.0.x</code>, starting from a copy of <code>sirius-master</code>. Adjust the job description and the name of the branch to build. Normally that is all that is needed, the publication script knows were to publish the build if the version bump was done correctly.
+# On the <code>master</code> branch, bump the version number to the next planned version, e.g. 2.0.0.
+# Update [[Sirius/Update_Sites|the list of available update sites]] on the wiki to mention the where the nightlies for the maintenance branch will be published.
+# Announce the new branch and update-site on the <code>sirius-dev</code> mailing-list.
+
+== Version bump ==
+
+To bump the Sirius version, for example from 2.0.0 to 2.0.1, most of the changes required can be performed automatically. From a clean state, first issue the following commands:
+
+    mvn org.eclipse.tycho:tycho-versions-plugin:0.21.0:set-version -DnewVersion=2.0.1-SNAPSHOT
+    mvn -f packaging/org.eclipse.sirius.parent/pom.xml org.eclipse.tycho:tycho-versions-plugin:0.21.0:set-version -DnewVersion=2.0.1-SNAPSHOT
+
+These use the Tycho <code>set-version</code> goal to update the versions in all <code>pom.xml</code>, <code>feature.xml</code>, and <code>MANIFEST.MF</code>. For <code>MANIFEST.MF</code>, the version of all exported packages is udpated, but not the <code>Require-Bundle</code> and <code>Import-Package</code> clauses (which is normal).
+
+The Tycho plug-in does not handle everything, so after that you need to manually update the coordinates of the Target Platform artifact as referenced in <code>packaging/org.eclipse.sirius.parent/pom.xml</code> and <code>packaging/org.eclipse.sirius.tests.parent/pom.xml</code>.
+
+Next, manually edit the version number of the parent POM for <code>packaging/org.eclipse.sirius.tests.parent/pom.xml</code>, and issue:
+
+    mvn -f packaging/org.eclipse.sirius.tests.parent/pom.xml org.eclipse.tycho:tycho-versions-plugin:0.21.0:set-version -DnewVersion=2.0.1-SNAPSHOT
+
+This takes care of the test plug-ins and feature, which are not part of the "main" build.
+
+The version number also appears in <code>about.ini</code> files, which are not handled by Tycho. The following command takes care of them:
+
+    git ls-files '**/about.ini' | while read f; do sed -i -e 's/Version 2\.0\.0/Version 2.0.1/g' $f; done
+
+You can then perform a full build, which should be successful:
+
+    ./build-all.sh
+
+and check that all plug-ins and features (except some tests and samples) have the correct version:
+
+    find . -path '*/target/repository/**/*.jar' | grep -v '2\.0\.1'
+
+See if any reference was forgotten with
+
+    git grep -l "2\.0\.0"
+
+It is normal to have references to the old version in <code>@since</code> annotations in the Java code, in the metamodels nsURIs, and in the release notes.
+
+Once you are confident in the result, commit (and then push) using a message of this form:
+
+   git commit -s -m "[version] Bump version to 2.0.1"
+
+[[Category:Sirius]]

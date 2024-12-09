@@ -1,0 +1,30 @@
+Sirius 4.1.5 is a service release with only bugfixes.
+
+== Availability ==
+
+Sirius 4.1.5 was released on 2017-06-15 (tag [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/tag/?id=v4.1.5 v4.1.5], commit [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/commit/?id=19ab716f523ef574caef56eb794837f49864b82a 19ab716f523ef574caef56eb794837f49864b82a]). It is available from the following update sites:
+* <code>http://download.eclipse.org/sirius/updates/releases/4.1.5/mars</code> ([http://download.eclipse.org/sirius/updates/releases/4.1.5/org.eclipse.sirius-4.1.5-mars.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/4.1.5/neon</code> ([http://download.eclipse.org/sirius/updates/releases/4.1.5/org.eclipse.sirius-4.1.5-neon.zip Archive])
+
+It is recommended you use the update-site matching the version of Eclipse you use to avoid potential issues at runtime.
+
+The complete JUnit and SWTBot test suites used to validate Sirius are published along with all their dependencies in separate update-sites from the core, available at:
+* <code>http://download.eclipse.org/sirius/updates/releases/4.1.5/mars/tests</code> ([http://download.eclipse.org/sirius/updates/releases/4.1.5/org.eclipse.sirius.tests-4.1.5-mars.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/4.1.5/neon/tests</code> ([http://download.eclipse.org/sirius/updates/releases/4.1.5/org.eclipse.sirius.tests-4.1.5-neon.zip Archive])
+
+== Compatibility & Requirements ==
+
+Sirius 4.1.5 is compatible with the following versions of Eclipse:
+* Eclipse 4.5 (Mars).
+* Eclipse 4.6 (Neon). Neon is the reference platform.
+
+If you want to install the org.eclipse.sirius.tests.support feature, which provides APIs to help create automated tests of Sirius-based modelers, you will need to add the following update-site:
+* SWTBot 2.1.1: <code>http://download.eclipse.org/technology/swtbot/releases/2.1.1/</code>
+
+== New & Noteworthy ==
+
+The complete list of (9) tickets fixed in Sirius 4.1.5 can be found [https://bugs.eclipse.org/bugs/buglist.cgi?classification=Modeling&product=Sirius&query_format=advanced&target_milestone=4.1.5 here on the Bugzilla].
+
+The release notes with highlights can be found [https://www.eclipse.org/sirius/doc/Release_Notes.html here].
+
+[[Category:Sirius]]

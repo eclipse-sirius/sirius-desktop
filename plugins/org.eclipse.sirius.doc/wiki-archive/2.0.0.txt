@@ -1,0 +1,75 @@
+Sirius 2.0.0 is a major release which focuses on better usability of diagrams, performance improvements, and better modularity. It also includes extensive automated test suites.
+
+See also [https://dev.eclipse.org/mhonarc/lists/sirius-dev/msg00068.html the announce on the mailing list].
+
+== Availability ==
+
+Sirius 2.0.0 was released on 2014-10-24 (tag [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/tag/?id=v2.0.0 v2.0.0], commit [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/commit/?id=8d6bc1807872a40e3e2a6e37e280067e07265072 8d6bc1807872a40e3e2a6e37e280067e07265072]). It is available from the following update sites:
+* <code>http://download.eclipse.org/sirius/updates/releases/2.0.0/juno</code> ([http://download.eclipse.org/sirius/updates/releases/2.0.0/org.eclipse.sirius-2.0.0-juno.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/2.0.0/kepler</code> ([http://download.eclipse.org/sirius/updates/releases/2.0.0/org.eclipse.sirius-2.0.0-kepler.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/2.0.0/luna</code> ([http://download.eclipse.org/sirius/updates/releases/2.0.0/org.eclipse.sirius-2.0.0-luna.zip Archive])
+
+It is recommended you use the update-site matching the version of Eclipse you use to avoid potential issues at runtime.
+
+This version includes the complete JUnit and SWTBot test suites used to validate Sirius. They are published along with all their dependencies in separate update-sites from the core, available at:
+* <code>http://download.eclipse.org/sirius/updates/releases/2.0.0/juno/tests</code> ([http://download.eclipse.org/sirius/updates/releases/2.0.0/org.eclipse.sirius.tests-2.0.0-juno.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/2.0.0/kepler/tests</code> ([http://download.eclipse.org/sirius/updates/releases/2.0.0/org.eclipse.sirius.tests-2.0.0-kepler.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/2.0.0/luna/tests</code> ([http://download.eclipse.org/sirius/updates/releases/2.0.0/org.eclipse.sirius.tests-2.0.0-luna.zip Archive])
+
+If you want to install the org.eclipse.sirius.tests.support feature, which provides APIs to help create automated tests of Sirius-based modelers, you will need to add the following update-site:
+* SWTBot 2.1.1: <code>http://download.eclipse.org/technology/swtbot/releases/2.1.1/</code>
+
+If you want to install and run the test suites themselves, you will also need the following additional update-site:
+* Sirius Support for Legacy Queries: <code>http://download.eclipse.org/sirius/updates/legacy</code>
+
+It is needed to run the tests which use an old query language (which is now superseded by Acceleo 3 and the core feature:/var:/service: interpreters).
+
+''Juno users'': Sirius depends on more recent versions of some components that what is available by default from a Juno install. You need to add the following update-sites if you want to install Sirius 2.0.0 on Juno:
+* Orbit: <code>http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/</code>
+* Acceleo 3.4 (or 3.5): <code>http://download.eclipse.org/acceleo/updates/releases/3.4/</code> (resp. <code>http://download.eclipse.org/acceleo/updates/releases/3.5/</code>)
+* EEF 1.2 (or 1.3): <code>http://download.eclipse.org/modeling/emft/eef/updates/releases/1.2</code> (resp. <code>http://download.eclipse.org/modeling/emft/eef/updates/releases/1.3</code>)
+
+== Compatibility ==
+
+Sirius 2.0.0 is compatible with the following versions of Eclipse:
+* Eclipse 3.8/4.2 (Juno)
+* Eclipse 4.3 (Kepler)
+* Eclipse 4.4 (Luna)
+
+It should also be compatible with milestone builds for Eclipse 4.5 (Mars), although this has not been thoroughly tested.
+
+== New & Noteworthy ==
+
+The complete list of (109) tickets fixed in Sirius 2.0.0 can be found [https://bugs.eclipse.org/bugs/buglist.cgi?classification=Modeling&product=Sirius&query_format=advanced&target_milestone=2.0.0 here on the Bugzilla].
+
+The major themes for this version were:
+* Ergonomic Improvements on Diagrams: see below.
+* Better Performance and Scalability: see [http://cedric.brun.io/sirius-20-under-hood/ this blog post] for additional information and [https://bugs.eclipse.org/bugs/buglist.cgi?classification=Modeling&keywords=performance%2C%20&keywords_type=allwords&list_id=10179300&product=Sirius&query_format=advanced&target_milestone=2.0.0 the list of corresponding tickets] for the raw details.
+* Contribution of the Automated Test Suites (JUnit and SWTbot) with more than 4500 automated tests.
+
+See also [https://www.eclipse.org/sirius/whatsnew2.html the main website] for a more user-centered overview of what's new in 2.0.
+
+=== Ergonomic Improvements on Diagrams ===
+
+* It is now possible to select element that intersects the selection rectangle and not that is completely contained by the selection rectangle. This new behavior is enabled when user selects elements from right to left. The normal mode (previous mode) remains when the user selects elements from left to right.
+* The edges appearance is now kept, as much as possible, when one of its extremity is moved. A move of an extremity should move only the closest segment of the edge.
+* The edges appearance is kept as much as possible when a node (container or not) is moved. A move of a node now impacts only the closest segment of the linked edges.
+* When a node, container or not, is resized to the left, upwards, or both, the location of its children (elements inside a container and border nodes) is not changed. It is possible to retrieve the previous behavior by pressing the F3 function key during the resize.
+* The "snap to shapes" is now enabled by default (see  _Sirius > Sirius Diagram > Rulers and Grid_ preference page). This is true only for new diagrams. The existing diagrams are not impacted.
+* The "Navigate" top-level contextual menu entry with mixed actions for creating new representations and opening existing ones has been changed by two top-level menus:
+** One named "New", which lists only the available actions to create new representations on the selected element.
+** One named "Open", which lists only the existing representations on the selected element. 
+* When a shape is resized (no matter the direction), the edge(s) connection location (toward or from this one) is kept. Before that, edges connections moved according to the ratio of the resizing.
+* There is now the possibility to distribute the selected shapes (see "Sirius User Manual/Diagrams/Features Overview/Distribute elements":user/diagrams/Diagrams.html#distribute for more details): Distribute gaps horizontally or vertically, Distribute centers horizontally or vertically
+* The end user can now remove all bend-points between the two edge ends. This action is available on edge context menu "Remove Bend-points" or by using the shortcut "Ctrl" + "Shift" + "-".
+* Reconnection of an edge will only now move the minimum necessary bendpoints instead of reseting it to default.
+* A new action has been added to reset the diagram (or container) origin: the diagram (or container) bounds (the rectangle formed by the highest, the leftmost, the lowest and the rightmost children elements) can have a negative origin or can be shifted toward the bottom-right with a blank zone at the top-left. This action aims to move all diagram (or container) elements so that the it retrieves its origin while keeping elements layout.
+
+== Known Issues ==
+
+The following important issues are present in the 2.0.0 release. They were identified after the code freeze and could not be fixed in time. If possible (i.e. no API break needed), they will be fixed in 2.0.x maintenance releases.
+
+* [https://bugs.eclipse.org/bugs/show_bug.cgi?id=445179 #445179]: issue in a corner case scenario related to [https://bugs.eclipse.org/bugs/show_bug.cgi?id=445195 #445195]
+* [https://bugs.eclipse.org/bugs/show_bug.cgi?id=448739 #448739]: issue in a corner case scenario related to [https://bugs.eclipse.org/bugs/show_bug.cgi?id=437528 #437528]
+
+[[Category:Sirius]]

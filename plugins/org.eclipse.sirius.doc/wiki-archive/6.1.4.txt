@@ -1,0 +1,27 @@
+[https://projects.eclipse.org/projects/modeling.sirius/releases/6.1.4 Sirius 6.1.4] is a maintenance release. It contain both bugfixes and improvements.
+
+== Availability ==
+
+Sirius 6.1.4 was released on 2020-03-09 (tag [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/tag/?id=v6.1.4 v6.1.4], commit [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/commit/?id=41b78071411be6bda6b87badb1e24749c31b5a3b 41b78071411be6bda6b87badb1e24749c31b5a3b]). It is available from the following update sites:
+* <code>http://download.eclipse.org/sirius/updates/releases/6.1.4/oxygen</code> ([http://download.eclipse.org/sirius/updates/releases/6.1.4/org.eclipse.sirius-6.1.4-oxygen.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/6.1.4/photon</code> ([http://download.eclipse.org/sirius/updates/releases/6.1.4/org.eclipse.sirius-6.1.4-photon.zip Archive])
+
+It is recommended you use the update-site matching the version of Eclipse you use to avoid potential issues at runtime.
+
+The complete JUnit and SWTBot test suites used to validate Sirius are published along with all their dependencies in separate update-sites from the core, available at:
+* <code>http://download.eclipse.org/sirius/updates/releases/6.1.4/oxygen/tests</code> ([http://download.eclipse.org/sirius/updates/releases/6.1.4/org.eclipse.sirius.tests-6.1.4-oxygen.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/6.1.4/photon/tests</code> ([http://download.eclipse.org/sirius/updates/releases/6.1.4/org.eclipse.sirius.tests-6.1.4-photon.zip Archive])
+
+== Compatibility & Requirements ==
+
+Sirius 6.1.4 is compatible with the following versions of Eclipse:
+* Eclipse 4.7 (Oxygen).
+* Eclipse 4.8 (Photon). Photon is the reference platform.
+
+== New & Noteworthy ==
+
+The complete list of (18) tickets fixed in Sirius 6.1.4 can be found [https://projects.eclipse.org/projects/modeling.sirius/releases/6.1.4/bugs here].
+
+The release notes can be found [https://www.eclipse.org/sirius/doc/6.1.x/Release_Notes.html here].
+
+[[Category:Sirius]]
