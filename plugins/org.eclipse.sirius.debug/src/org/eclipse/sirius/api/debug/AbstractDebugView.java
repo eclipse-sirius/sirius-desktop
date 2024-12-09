@@ -106,7 +106,9 @@ public abstract class AbstractDebugView extends ViewPart implements ISelectionLi
         actionLauncher.setText("Run");
         actionLauncher.addSelectionListener(SelectionListener.widgetSelectedAdapter(evt -> {
             int idx = actionSelector.getSelectionIndex();
-            actions.get(idx).body.run();
+            if (idx != -1) {
+                actions.get(idx).body.run();
+            }
         }));
         createActionButtons();
     }
@@ -148,7 +150,7 @@ public abstract class AbstractDebugView extends ViewPart implements ISelectionLi
      */
     private Optional<Object> getSelectedElement(ISelection newSelection) {
         if (newSelection instanceof IStructuredSelection structuredSelection) {
-            return Optional.of(structuredSelection.getFirstElement());
+            return Optional.ofNullable(structuredSelection.getFirstElement());
         }
         return Optional.empty();
     }
