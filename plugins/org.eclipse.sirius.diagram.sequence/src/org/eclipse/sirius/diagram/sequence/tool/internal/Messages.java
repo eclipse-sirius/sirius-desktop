@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2021 Obeo.
+ * Copyright (c) 2015, 2024 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -66,6 +66,9 @@ public final class Messages {
 
     @TranslatableMessage
     public static String InteractionUse_nonInsteractionUseNode;
+
+    @TranslatableMessage
+    public static String InteractionContainer_multipleElementDetected;
 
     @TranslatableMessage
     public static String InverseRelativeNodePositionOperation_operationName;

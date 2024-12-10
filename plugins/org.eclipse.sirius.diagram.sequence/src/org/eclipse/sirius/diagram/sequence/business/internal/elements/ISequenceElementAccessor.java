@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -80,7 +80,7 @@ public final class ISequenceElementAccessor {
             view = (View) view.eContainer();
         }
         Option<ISequenceElement> sequenceElementOption = ISequenceElementAccessor.getISequenceElement(view);
-        isPartOfSequenceElement = sequenceElementOption.some() && !(sequenceElementOption.get() instanceof InteractionContainer);
+        isPartOfSequenceElement = sequenceElementOption.some();
         return isPartOfSequenceElement;
     }
 

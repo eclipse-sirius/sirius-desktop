@@ -503,8 +503,9 @@
 		<img border="0" src="images/new_interaction_container_mapping.png"/>
 		<p>It is defined exactly like a container mapping in a non-sequence diagram. The difference is the limited user interaction. To have this interaction container display the name of the interaction, choose the same candidate element as the diagram.</p> 
 		<img border="0" src="images/interaction_container_mapping_properties.png"/>
-		<p>As this interaction container semantic element is the same as the diagram semantic root, the tools creating element directly on the diagram (like creating a new instance role) will only need to add this interaction container mapping as an extra mapping. The tool model operation stays the same as the semantic element is the same (the container variable in the tool model operation). Note that the containerView will be different though.</p> 
+		<p>As the interaction container edit part forwards command requests to the sequence diagram edit part, tools that applies on the diagram (like instance role creation) will keep working. Note that in the model operations, the containerView variable will be different though.</p> 
 		<img border="0" src="images/interaction_container_mapping_example.png"/>
+		<p>Only one interaction container mapping can be created.</p>
 		<h2 id="tools">Tools</h2>
 		<h3 id="JavaServices">Java Services</h3>
 		<p>To use a java service in an Acceleo expression, service must be define like this in odesign:</p> 
