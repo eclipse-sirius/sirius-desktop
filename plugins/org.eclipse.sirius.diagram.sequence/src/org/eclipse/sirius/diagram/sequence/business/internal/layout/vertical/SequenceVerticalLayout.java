@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,12 +21,15 @@ import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Location;
+import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
@@ -41,6 +44,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceE
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceNode;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.InteractionContainer;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InteractionUse;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.LostMessageEnd;
@@ -281,6 +285,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
         }
 
         applied = layoutUnconnectedLostMessageEnd() || applied;
+        applied = layoutInteractionContainer() || applied;
 
         return applied;
     }
@@ -761,6 +766,48 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
             }
         }
         return applied;
+    }
+
+    private boolean layoutInteractionContainer() {
+        boolean applied = false;
+        Set<InteractionContainer> allInteractionContainers = this.sequenceDiagram.getAllInteractionContainers();
+        if (!allInteractionContainers.isEmpty() && getInteractionContainerBounds() != null) {
+            // Reset height of the interaction container
+            Bounds interactionContainerBounds = getInteractionContainerBounds();
+            interactionContainerBounds.setHeight(InteractionContainer.DEFAULT_HEIGHT);
+            for (InstanceRole instanceRole : this.sequenceDiagram.getAllInstanceRoles()) {
+                // Gather instance role bounds
+                final Node instanceRoleNode = instanceRole.getNotationNode();
+                LayoutConstraint layoutConstraint = instanceRoleNode.getLayoutConstraint();
+                // Check that the lifeline is within bounds of the interaction container, resize it otherwise
+                if (layoutConstraint instanceof Bounds instanceRoleBounds && instanceRole.getLifeline().some()) {
+                    Lifeline lifeline = instanceRole.getLifeline().get();
+                    Node lifelineNode = lifeline.getNotationNode();
+                    // lifeline position is relative to the parent instance role position
+                    if (lifelineNode.getLayoutConstraint() instanceof Bounds lifelineBounds
+                            && instanceRoleBounds.getY() + lifelineBounds.getY() + lifelineBounds.getHeight() + InteractionContainer.MARGIN > interactionContainerBounds.getHeight()) {
+                        interactionContainerBounds.setHeight(instanceRoleBounds.getY() + lifelineBounds.getY() + lifelineBounds.getHeight() + InteractionContainer.MARGIN);
+                    }
+                }
+                applied = true;
+                // All lifeline have the same length, no need to compute this for each lifeline
+                break;
+            }
+        }
+        return applied;
+
+    }
+
+    private Bounds getInteractionContainerBounds() {
+        Set<InteractionContainer> allInteractionContainers = this.sequenceDiagram.getAllInteractionContainers();
+        if (!allInteractionContainers.isEmpty()) {
+            InteractionContainer interactionContainer = allInteractionContainers.iterator().next();
+            LayoutConstraint interactionContainerLayoutConstraint = interactionContainer.getNotationNode().getLayoutConstraint();
+            if (interactionContainerLayoutConstraint instanceof Bounds) {
+                return (Bounds) interactionContainerLayoutConstraint;
+            }
+        }
+        return null;
     }
 
     private void initSortedEventEnds(boolean pack) {
