@@ -20,8 +20,6 @@ import org.eclipse.gef.Request;
 import org.eclipse.gef.requests.SelectionRequest;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
-import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.SequenceEditPartsOperations;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceLaunchToolEditPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.ui.SequenceDragEditPartsTrackerEx;
@@ -34,7 +32,7 @@ import org.eclipse.sirius.ext.gmf.runtime.diagram.ui.tools.RubberbandDragTracker
  * 
  * @author smonnier
  */
-public class InteractionContainerEditPart extends DNodeContainerEditPart implements ISequenceEventEditPart {
+public class InteractionContainerEditPart extends DNodeContainerEditPart {
 
     /**
      * Default margin of the Interaction Container.
@@ -100,11 +98,6 @@ public class InteractionContainerEditPart extends DNodeContainerEditPart impleme
     protected void addDropShadow(NodeFigure figure, IFigure shape) {
         // Remove the shadow border to avoid unwanted spacing
         figure.setBorder(null);
-    }
-
-    @Override
-    public ISequenceEvent getISequenceEvent() {
-        return ISequenceElementAccessor.getInteractionContainer(getNotationView()).get();
     }
 
     @Override

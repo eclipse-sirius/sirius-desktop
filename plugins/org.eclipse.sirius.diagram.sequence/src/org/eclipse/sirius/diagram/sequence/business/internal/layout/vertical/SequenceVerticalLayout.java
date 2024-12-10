@@ -21,7 +21,7 @@ import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
+import java.util.Optional;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
@@ -770,44 +770,46 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
 
     private boolean layoutInteractionContainer() {
         boolean applied = false;
-        Set<InteractionContainer> allInteractionContainers = this.sequenceDiagram.getAllInteractionContainers();
-        if (!allInteractionContainers.isEmpty() && getInteractionContainerBounds() != null) {
+        Optional<InteractionContainer> optionalInteractionContainer = this.sequenceDiagram.getInteractionContainer();
+        if (optionalInteractionContainer.isPresent()) {
             // Reset height of the interaction container
-            Bounds interactionContainerBounds = getInteractionContainerBounds();
-            interactionContainerBounds.setHeight(InteractionContainer.DEFAULT_HEIGHT);
-            for (InstanceRole instanceRole : this.sequenceDiagram.getAllInstanceRoles()) {
-                // Gather instance role bounds
-                final Node instanceRoleNode = instanceRole.getNotationNode();
-                LayoutConstraint layoutConstraint = instanceRoleNode.getLayoutConstraint();
-                // Check that the lifeline is within bounds of the interaction container, resize it otherwise
-                if (layoutConstraint instanceof Bounds instanceRoleBounds && instanceRole.getLifeline().some()) {
-                    Lifeline lifeline = instanceRole.getLifeline().get();
-                    Node lifelineNode = lifeline.getNotationNode();
-                    // lifeline position is relative to the parent instance role position
-                    if (lifelineNode.getLayoutConstraint() instanceof Bounds lifelineBounds
-                            && instanceRoleBounds.getY() + lifelineBounds.getY() + lifelineBounds.getHeight() + InteractionContainer.MARGIN > interactionContainerBounds.getHeight()) {
-                        interactionContainerBounds.setHeight(instanceRoleBounds.getY() + lifelineBounds.getY() + lifelineBounds.getHeight() + InteractionContainer.MARGIN);
+            InteractionContainer interactionContainer = optionalInteractionContainer.get();
+            Node node = interactionContainer.getNotationNode();
+            LayoutConstraint interactionContainerLayoutConstraint = node.getLayoutConstraint();
+            if (interactionContainerLayoutConstraint instanceof Bounds interactionContainerBounds) {
+                Rectangle rectangle = new Rectangle(0, 0, InteractionContainer.DEFAULT_WIDTH, InteractionContainer.DEFAULT_HEIGHT);
+                for (InstanceRole instanceRole : this.sequenceDiagram.getAllInstanceRoles()) {
+                    // Gather instance role bounds
+                    final Node instanceRoleNode = instanceRole.getNotationNode();
+                    LayoutConstraint layoutConstraint = instanceRoleNode.getLayoutConstraint();
+                    // Check that the lifeline is within bounds of the interaction container, resize it otherwise
+                    if (layoutConstraint instanceof Bounds instanceRoleBounds && instanceRole.getLifeline().some()) {
+                        Lifeline lifeline = instanceRole.getLifeline().get();
+                        Option<EndOfLife> endOfLife = lifeline.getEndOfLife();
+                        Node lifelineNode = lifeline.getNotationNode();
+
+                        int top = instanceRoleBounds.getY();
+                        if (top - InteractionContainer.MARGIN < rectangle.y()) {
+                            rectangle.setY(top - InteractionContainer.MARGIN);
+                        }
+
+                        int bottom = lifeline.getVerticalRange().getUpperBound();
+                        if (endOfLife.some()) {
+                            bottom = bottom + endOfLife.get().getProperLogicalBounds().height;
+                        }
+                        // lifeline position is relative to the parent instance role position
+                        if (bottom + InteractionContainer.MARGIN > rectangle.bottom()) {
+                            rectangle.setBottom(bottom + InteractionContainer.MARGIN);
+                        }
                     }
                 }
+                interactionContainerBounds.setY(rectangle.y);
+                interactionContainerBounds.setHeight(rectangle.height);
                 applied = true;
-                // All lifeline have the same length, no need to compute this for each lifeline
-                break;
             }
         }
         return applied;
 
-    }
-
-    private Bounds getInteractionContainerBounds() {
-        Set<InteractionContainer> allInteractionContainers = this.sequenceDiagram.getAllInteractionContainers();
-        if (!allInteractionContainers.isEmpty()) {
-            InteractionContainer interactionContainer = allInteractionContainers.iterator().next();
-            LayoutConstraint interactionContainerLayoutConstraint = interactionContainer.getNotationNode().getLayoutConstraint();
-            if (interactionContainerLayoutConstraint instanceof Bounds) {
-                return (Bounds) interactionContainerLayoutConstraint;
-            }
-        }
-        return null;
     }
 
     private void initSortedEventEnds(boolean pack) {

@@ -12,13 +12,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.elements;
 
-import java.util.List;
-
+import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 
 import com.google.common.base.Predicate;
@@ -28,7 +27,8 @@ import com.google.common.base.Predicate;
  * 
  * @author smonnier
  */
-public class InteractionContainer extends AbstractFrame {
+public class InteractionContainer extends AbstractSequenceNode {
+
     /**
      * The visual ID. Same as a normal container
      * 
@@ -53,23 +53,6 @@ public class InteractionContainer extends AbstractFrame {
 
     InteractionContainer(Node node) {
         super(node);
-    }
-
-    @Override
-    public Range getVerticalRange() {
-        // Not used
-        return null;
-    }
-
-    @Override
-    public void setVerticalRange(Range range) throws IllegalStateException {
-        // Not used
-    }
-
-    @Override
-    public List<ISequenceEvent> getSubEvents() {
-        // Not used
-        return null;
     }
 
     /**
@@ -99,6 +82,16 @@ public class InteractionContainer extends AbstractFrame {
         @Override
         public boolean apply(DDiagramElement input) {
             return AbstractSequenceElement.isSequenceDiagramElement(input, DescriptionPackage.eINSTANCE.getInteractionContainerMapping());
+        }
+    }
+
+    @Override
+    public Rectangle getProperLogicalBounds() {
+        if (getNotationNode().getLayoutConstraint() instanceof Bounds) {
+            Bounds bounds = (Bounds) getNotationNode().getLayoutConstraint();
+            return new Rectangle(bounds.getX(), bounds.getY(), bounds.getWidth(), bounds.getHeight());
+        } else {
+            throw new RuntimeException();
         }
     }
 

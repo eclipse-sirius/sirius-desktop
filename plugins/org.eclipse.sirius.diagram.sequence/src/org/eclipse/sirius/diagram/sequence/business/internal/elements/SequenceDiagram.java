@@ -16,8 +16,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -97,8 +99,6 @@ public class SequenceDiagram extends AbstractSequenceElement {
 
     private List<CombinedFragment> allCombinedFragmentsCache;
 
-    private List<InteractionContainer> allInteractionContainersCache;
-
     private Set<EndOfLife> allEndOfLifesCache;
 
     private List<Execution> allExecutionsCache;
@@ -125,8 +125,6 @@ public class SequenceDiagram extends AbstractSequenceElement {
 
     private LinkedHashSet<CombinedFragment> allOrderedCombinedFragmentsCache;
 
-    private LinkedHashSet<InteractionContainer> allOrderedInteractionContainersCache;
-
     private Set<ISequenceEvent> allOrderedDelimitedSequenceEventsCache;
 
     private LinkedHashSet<Execution> allOrderedExecutionsCache;
@@ -144,6 +142,8 @@ public class SequenceDiagram extends AbstractSequenceElement {
     private LinkedHashSet<State> allOrderedStatesCache;
 
     private List<ISequenceEvent> allDelimitedEventsCache;
+
+    private Optional<InteractionContainer> interactionContainerCache;
 
     /**
      * Constructor.
@@ -742,38 +742,25 @@ public class SequenceDiagram extends AbstractSequenceElement {
      * 
      * @return all Interaction containers on the given diagram.
      */
-    public Set<InteractionContainer> getAllInteractionContainers() {
-        List<InteractionContainer> allInteractionContainers = null;
-        LinkedHashSet<InteractionContainer> allOrderedInteractionContainers = null;
+    public Optional<InteractionContainer> getInteractionContainer() {
+        Optional<InteractionContainer> optionalInteractionContainer = null;
         if (useCache) {
             // Initialize from cache
-            if (allInteractionContainersCache != null) {
-                allInteractionContainers = new ArrayList<InteractionContainer>(allInteractionContainersCache);
-            }
-            allOrderedInteractionContainers = allOrderedInteractionContainersCache;
+            optionalInteractionContainer = interactionContainerCache;
         }
-        if (allOrderedInteractionContainers == null) {
-            if (allInteractionContainers == null) {
-                allInteractionContainers = new ArrayList<>();
+        if (interactionContainerCache == null) {
+            Iterator<Node> interactionContainerIterator = Iterables.filter(Iterables.filter(getNotationDiagram().getChildren(), Node.class), InteractionContainer.notationPredicate()).iterator();
+            if (interactionContainerIterator.hasNext()) {
+                Option<InteractionContainer> ic = ISequenceElementAccessor.getInteractionContainer(interactionContainerIterator.next());
+                assert !interactionContainerIterator.hasNext() : Messages.InteractionContainer_multipleElementDetected;
+                optionalInteractionContainer = Optional.of(ic.get());
+            } else {
+                optionalInteractionContainer = Optional.empty();
+            }
+            interactionContainerCache = optionalInteractionContainer;
+        }
 
-                for (Node node : Iterables.filter(Iterables.filter(getNotationDiagram().getChildren(), Node.class), InteractionContainer.notationPredicate())) {
-                    Option<InteractionContainer> exec = ISequenceElementAccessor.getInteractionContainer(node);
-                    assert exec.some() : Messages.SequenceDiagram_InternalError;
-                    allInteractionContainers.add(exec.get());
-                }
-                if (useCache) {
-                    // Store the result
-                    allInteractionContainersCache = allInteractionContainers;
-                }
-            }
-            Collections.sort(allInteractionContainers, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
-            allOrderedInteractionContainers = Sets.newLinkedHashSet(allInteractionContainers);
-            if (useCache) {
-                // Store the result
-                allOrderedInteractionContainersCache = allOrderedInteractionContainers;
-            }
-        }
-        return allOrderedInteractionContainers;
+        return optionalInteractionContainer;
     }
 
     /**
@@ -835,6 +822,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
         this.allOperandsCache = null;
         this.allStatesCache = null;
         this.allDelimitedEventsCache = null;
+        this.interactionContainerCache = null;
         clearOrderedCaches();
     }
 
