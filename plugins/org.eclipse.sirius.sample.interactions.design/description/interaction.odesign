@@ -833,7 +833,7 @@
             <finishingEndPredecessor name="finishingEndPredecessor"/>
             <coveredLifelines name="coverage"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:CombinedFragmentCreationTool" name="Combined Fragment" containerMappings="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@containerMappings[name='Combined%20Fragment']" extraMappings="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@containerMappings[name='Combined%20Fragment']/@subContainerMappings[name='Operand']">
+          <ownedTools xsi:type="tool:CombinedFragmentCreationTool" name="Combined Fragment" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@containerMappings[name='Combined%20Fragment']" extraMappings="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@containerMappings[name='Combined%20Fragment']/@subContainerMappings[name='Operand']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
