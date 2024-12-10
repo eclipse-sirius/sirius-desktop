@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -97,6 +97,8 @@ public class SequenceDiagram extends AbstractSequenceElement {
 
     private List<CombinedFragment> allCombinedFragmentsCache;
 
+    private List<InteractionContainer> allInteractionContainersCache;
+
     private Set<EndOfLife> allEndOfLifesCache;
 
     private List<Execution> allExecutionsCache;
@@ -122,6 +124,8 @@ public class SequenceDiagram extends AbstractSequenceElement {
     private LinkedHashSet<AbstractNodeEvent> allOrderedAbstractNodeEventsCache;
 
     private LinkedHashSet<CombinedFragment> allOrderedCombinedFragmentsCache;
+
+    private LinkedHashSet<InteractionContainer> allOrderedInteractionContainersCache;
 
     private Set<ISequenceEvent> allOrderedDelimitedSequenceEventsCache;
 
@@ -731,6 +735,45 @@ public class SequenceDiagram extends AbstractSequenceElement {
             }
         }
         return allDelimitedEvents;
+    }
+
+    /**
+     * Returns all Interaction containers in the given diagram.
+     * 
+     * @return all Interaction containers on the given diagram.
+     */
+    public Set<InteractionContainer> getAllInteractionContainers() {
+        List<InteractionContainer> allInteractionContainers = null;
+        LinkedHashSet<InteractionContainer> allOrderedInteractionContainers = null;
+        if (useCache) {
+            // Initialize from cache
+            if (allInteractionContainersCache != null) {
+                allInteractionContainers = new ArrayList<InteractionContainer>(allInteractionContainersCache);
+            }
+            allOrderedInteractionContainers = allOrderedInteractionContainersCache;
+        }
+        if (allOrderedInteractionContainers == null) {
+            if (allInteractionContainers == null) {
+                allInteractionContainers = new ArrayList<>();
+
+                for (Node node : Iterables.filter(Iterables.filter(getNotationDiagram().getChildren(), Node.class), InteractionContainer.notationPredicate())) {
+                    Option<InteractionContainer> exec = ISequenceElementAccessor.getInteractionContainer(node);
+                    assert exec.some() : Messages.SequenceDiagram_InternalError;
+                    allInteractionContainers.add(exec.get());
+                }
+                if (useCache) {
+                    // Store the result
+                    allInteractionContainersCache = allInteractionContainers;
+                }
+            }
+            Collections.sort(allInteractionContainers, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
+            allOrderedInteractionContainers = Sets.newLinkedHashSet(allInteractionContainers);
+            if (useCache) {
+                // Store the result
+                allOrderedInteractionContainersCache = allOrderedInteractionContainers;
+            }
+        }
+        return allOrderedInteractionContainers;
     }
 
     /**

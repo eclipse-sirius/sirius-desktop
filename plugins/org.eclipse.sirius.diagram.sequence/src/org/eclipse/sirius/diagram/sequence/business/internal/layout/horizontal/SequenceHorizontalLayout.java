@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -39,6 +40,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFr
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.InteractionContainer;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.LostMessageEnd;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
@@ -160,6 +162,7 @@ public class SequenceHorizontalLayout extends AbstractSequenceOrderingLayout<ISe
         applied = layoutFrames(bounds, pack) || applied;
         applied = layoutLostMessageEnds(bounds, pack) || applied;
         applied = layoutReflexiveMessages(bounds, pack) || applied;
+        applied = layoutInteractionContainer(bounds, pack) || applied;
 
         // if (pack) {
         // correctGmfLocations();
@@ -631,6 +634,51 @@ public class SequenceHorizontalLayout extends AbstractSequenceOrderingLayout<ISe
             }
         }
         return applied;
+    }
+
+    private boolean layoutInteractionContainer(Map<? extends ISequenceElement, Rectangle> bounds, boolean pack) {
+        boolean applied = false;
+        Set<InteractionContainer> allInteractionContainers = this.sequenceDiagram.getAllInteractionContainers();
+        if (!allInteractionContainers.isEmpty() && getInteractionContainerBounds() != null) {
+            // Reset width of the interaction container
+            Bounds interactionContainerBounds = getInteractionContainerBounds();
+            interactionContainerBounds.setWidth(InteractionContainer.DEFAULT_WIDTH);
+            // Check that all instance role are within bounds of the interaction container, resize it otherwise
+            for (InstanceRole instanceRole : Iterables.filter(bounds.keySet(), InstanceRole.class)) {
+                final Node instanceRoleNode = instanceRole.getNotationNode();
+                LayoutConstraint layoutConstraint = instanceRoleNode.getLayoutConstraint();
+                if (layoutConstraint instanceof Bounds instanceRoleBounds
+                        && instanceRoleBounds.getX() + instanceRoleBounds.getWidth() + InteractionContainer.MARGIN > interactionContainerBounds.getWidth()) {
+                    // The instance role east bound + margin is further away than the interaction container east bounds
+                    interactionContainerBounds.setWidth(instanceRoleBounds.getX() + instanceRoleBounds.getWidth() + InteractionContainer.MARGIN);
+                }
+                applied = true;
+            }
+
+            // Check that all lost message are within bounds of the interaction container, resize it otherwise
+            for (LostMessageEnd lostMessageEnd : Iterables.filter(bounds.keySet(), LostMessageEnd.class)) {
+                final Node lostMessageEndNode = lostMessageEnd.getNotationNode();
+                LayoutConstraint layoutConstraint = lostMessageEndNode.getLayoutConstraint();
+                if (layoutConstraint instanceof Bounds lostMessageEndBounds
+                        && lostMessageEndBounds.getX() + lostMessageEndBounds.getWidth() + InteractionContainer.MARGIN > interactionContainerBounds.getWidth()) {
+                    // The lost message east bound + margin is further away than the interaction container east bounds
+                    interactionContainerBounds.setWidth(lostMessageEndBounds.getX() + lostMessageEndBounds.getWidth() + InteractionContainer.MARGIN);
+                }
+            }
+        }
+        return applied;
+    }
+
+    private Bounds getInteractionContainerBounds() {
+        Set<InteractionContainer> allInteractionContainers = this.sequenceDiagram.getAllInteractionContainers();
+        if (!allInteractionContainers.isEmpty()) {
+            InteractionContainer interactionContainer = allInteractionContainers.iterator().next();
+            LayoutConstraint interactionContainerLayoutConstraint = interactionContainer.getNotationNode().getLayoutConstraint();
+            if (interactionContainerLayoutConstraint instanceof Bounds) {
+                return (Bounds) interactionContainerLayoutConstraint;
+            }
+        }
+        return null;
     }
 
     @Override

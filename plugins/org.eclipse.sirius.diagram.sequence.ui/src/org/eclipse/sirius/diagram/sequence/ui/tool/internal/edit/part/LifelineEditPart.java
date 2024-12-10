@@ -13,14 +13,10 @@
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.LineBorder;
 import org.eclipse.draw2d.PositionConstants;
-import org.eclipse.draw2d.geometry.Dimension;
-import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.DragTracker;
 import org.eclipse.gef.EditPart;
@@ -34,7 +30,6 @@ import org.eclipse.gmf.runtime.diagram.ui.tools.DragEditPartsTrackerEx;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
-import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.BorderedStyle;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -52,7 +47,6 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.ui.SequenceDragEditP
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramBorderNodeEditPartOperation;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
-import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.LifelineNodeFigure;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.util.AnchorProvider;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
@@ -207,36 +201,6 @@ public class LifelineEditPart extends AbstractSequenceBorderedEditPart {
     @Override
     public ISequenceEvent getISequenceEvent() {
         return ISequenceElementAccessor.getLifeline(getNotationView()).get();
-    }
-
-    @Override
-    protected void handleNotificationEvent(Notification notification) {
-        super.handleNotificationEvent(notification);
-        if (notification.getFeature().equals(NotationPackage.eINSTANCE.getSize_Height())) {
-            // Get lifeline resize from notification
-            int newHeight = notification.getNewIntValue();
-            // Get lifeline location/dimension
-            Rectangle lifelineBounds = GraphicalHelper.getAbsoluteBounds(this);
-            // Add End of life handle height
-            int endOfLifeHeight = 0;
-            Optional<EndOfLifeEditPart> optionalEndOfLifeEditPart = getChildren().stream().filter(EndOfLifeEditPart.class::isInstance).map(EndOfLifeEditPart.class::cast).findFirst();
-            if (optionalEndOfLifeEditPart.isPresent()) {
-                endOfLifeHeight = GraphicalHelper.getAbsoluteBounds(optionalEndOfLifeEditPart.get()).height;
-            }
-            // Add margin
-            int margin = InteractionContainerEditPart.MARGIN;
-            // Compute new bottom location for interaction container
-            int newBottomLocation = lifelineBounds.y + newHeight + endOfLifeHeight + margin;
-            // Get interaction container edit part (child of the diagram edit part)
-            Optional<InteractionContainerEditPart> findFirst = this.getParent().getParent().getChildren().stream().filter(InteractionContainerEditPart.class::isInstance)
-                    .map(InteractionContainerEditPart.class::cast).findFirst();
-            if (findFirst.isPresent()) {
-                InteractionContainerEditPart interactionContainerEditPart = findFirst.get();
-                Rectangle interactionContainerBounds = GraphicalHelper.getAbsoluteBounds(findFirst.get());
-                // Change Interaction Container size along with the end of lifeline resize
-                interactionContainerEditPart.setSize(new Dimension(interactionContainerBounds.width, newBottomLocation));
-            }
-        }
     }
 
     /**
