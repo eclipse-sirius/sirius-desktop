@@ -102,6 +102,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="CombinedFragmentMapping" eSuperTypes="#//description/FrameMapping"/>
     <eClassifiers xsi:type="ecore:EClass" name="OperandMapping" eSuperTypes="../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//description/ContainerMapping #//description/DelimitedEventMapping"/>
     <eClassifiers xsi:type="ecore:EClass" name="ObservationPointMapping" eSuperTypes="../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//description/NodeMapping"/>
+    <eClassifiers xsi:type="ecore:EClass" name="InteractionContainerMapping" eSuperTypes="../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//description/ContainerMapping"/>
     <eSubpackages name="tool" nsURI="http://www.eclipse.org/sirius/diagram/sequence/description/tool/2.0.0"
         nsPrefix="tool">
       <eClassifiers xsi:type="ecore:EClass" name="SequenceDiagramToolDescription"/>

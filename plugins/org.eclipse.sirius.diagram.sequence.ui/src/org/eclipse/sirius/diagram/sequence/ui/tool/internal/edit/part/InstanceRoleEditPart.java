@@ -40,6 +40,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
  * @author pcdavid, smonnier
  */
 public class InstanceRoleEditPart extends DNodeEditPart {
+
     /**
      * Constructor.
      * 
