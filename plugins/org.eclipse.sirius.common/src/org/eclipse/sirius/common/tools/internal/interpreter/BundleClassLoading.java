@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2024 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,8 +15,11 @@ package org.eclipse.sirius.common.tools.internal.interpreter;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -35,10 +38,6 @@ import org.osgi.framework.Bundle;
 import org.osgi.framework.wiring.BundleRevision;
 import org.osgi.framework.wiring.BundleWire;
 import org.osgi.framework.wiring.BundleWiring;
-
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Multimap;
 
 /**
  * A {@link ClassLoading} implementation which look for a class in a list of
@@ -114,7 +113,10 @@ public class BundleClassLoading implements ClassLoading {
         Set<String> analyzed = new LinkedHashSet<>();
         Set<String> bundlesIDependOn = new LinkedHashSet<>();
 
-        for (String currentBundle : Iterables.concat(plugins, projects)) {
+        for (String currentBundle : plugins) {
+            addDependencies(currentBundle, analyzed, bundlesIDependOn);
+        }
+        for (String currentBundle : projects) {
             addDependencies(currentBundle, analyzed, bundlesIDependOn);
         }
 
@@ -133,7 +135,7 @@ public class BundleClassLoading implements ClassLoading {
         Collection<EPackageLoadingCallback.EPackageDeclarationSource> result = new ArrayList<>();
         if (EMFPlugin.IS_ECLIPSE_RUNNING) {
             final IExtensionRegistry reg = Platform.getExtensionRegistry();
-            Multimap<String, EPackageDeclaration> contributions = HashMultimap.create();
+            Map<String, List<EPackageDeclaration>> contributions = new HashMap<>();
             final IExtensionPoint ep = reg.getExtensionPoint(EMF_GENERATED_PACKAGE_EXTENSIONPOINT);
             for (final IExtension ext : ep.getExtensions()) {
                 final IConfigurationElement[] ce = ext.getConfigurationElements();
@@ -146,7 +148,8 @@ public class BundleClassLoading implements ClassLoading {
                         String genModel = element.getAttribute("genModel"); //$NON-NLS-1$
 
                         if (nsURI != null && className != null) {
-                            contributions.put(contributorName, new EPackageDeclaration(nsURI, className, genModel));
+                            contributions.putIfAbsent(contributorName, new ArrayList<>());
+                            contributions.get(contributorName).add(new EPackageDeclaration(nsURI, className, genModel));
                         } else {
                             DslCommonPlugin.getDefault().warning(MessageFormat.format(Messages.BundleClassLoading_ignoredEPackageDeclaration, contributorName), new IllegalArgumentException());
                         }
@@ -157,7 +160,7 @@ public class BundleClassLoading implements ClassLoading {
 
             for (String contributor : contributions.keySet()) {
                 Collection<EPackageDeclaration> declarations = contributions.get(contributor);
-                if (declarations.size() > 0) {
+                if (!declarations.isEmpty()) {
                     result.add(new EPackageLoadingCallback.EPackageDeclarationSource(contributor, declarations, true));
                 }
             }
