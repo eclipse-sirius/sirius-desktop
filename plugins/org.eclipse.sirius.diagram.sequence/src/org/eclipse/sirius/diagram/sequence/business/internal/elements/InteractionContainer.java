@@ -36,6 +36,21 @@ public class InteractionContainer extends AbstractFrame {
      */
     public static final int VISUAL_ID = 2002;
 
+    /**
+     * Default margin of the Interaction Container.
+     */
+    public static final int MARGIN = 50;
+
+    /**
+     * Default width of the Interaction Container.
+     */
+    public static final int DEFAULT_WIDTH = 80 + MARGIN * 2;
+
+    /**
+     * Default height of the Interaction Container.
+     */
+    public static final int DEFAULT_HEIGHT = 500;
+
     InteractionContainer(Node node) {
         super(node);
     }

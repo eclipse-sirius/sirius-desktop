@@ -80,7 +80,7 @@ public final class ISequenceElementAccessor {
             view = (View) view.eContainer();
         }
         Option<ISequenceElement> sequenceElementOption = ISequenceElementAccessor.getISequenceElement(view);
-        isPartOfSequenceElement = sequenceElementOption.some();
+        isPartOfSequenceElement = sequenceElementOption.some() && !(sequenceElementOption.get() instanceof InteractionContainer);
         return isPartOfSequenceElement;
     }
 
@@ -234,6 +234,17 @@ public final class ISequenceElementAccessor {
      *            .
      * @return .
      */
+    public static Option<InteractionContainer> getInteractionContainer(View view) {
+        return ISequenceElementAccessor.getOrCreate(view, InteractionContainer.class);
+    }
+
+    /**
+     * .
+     * 
+     * @param view
+     *            .
+     * @return .
+     */
     public static Option<LostMessageEnd> getLostMessageEnd(View view) {
         return ISequenceElementAccessor.getOrCreate(view, LostMessageEnd.class);
     }
@@ -303,6 +314,8 @@ public final class ISequenceElementAccessor {
             created = new LostMessageEnd((Node) notationView);
         } else if (ObservationPoint.notationPredicate().apply(notationView)) {
             created = new ObservationPoint((Node) notationView);
+        } else if (InteractionContainer.notationPredicate().apply(notationView)) {
+            created = new InteractionContainer((Node) notationView);
         }
 
         if (created != null) {
