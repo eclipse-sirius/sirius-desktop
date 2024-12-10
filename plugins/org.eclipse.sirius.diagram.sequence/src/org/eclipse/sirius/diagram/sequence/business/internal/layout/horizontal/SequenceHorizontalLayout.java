@@ -20,7 +20,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
+import java.util.Optional;
 
 import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -638,47 +638,27 @@ public class SequenceHorizontalLayout extends AbstractSequenceOrderingLayout<ISe
 
     private boolean layoutInteractionContainer(Map<? extends ISequenceElement, Rectangle> bounds, boolean pack) {
         boolean applied = false;
-        Set<InteractionContainer> allInteractionContainers = this.sequenceDiagram.getAllInteractionContainers();
-        if (!allInteractionContainers.isEmpty() && getInteractionContainerBounds() != null) {
+        Optional<InteractionContainer> optionalInteractionContainer = this.sequenceDiagram.getInteractionContainer();
+        if (optionalInteractionContainer.isPresent()) {
             // Reset width of the interaction container
-            Bounds interactionContainerBounds = getInteractionContainerBounds();
-            interactionContainerBounds.setWidth(InteractionContainer.DEFAULT_WIDTH);
-            // Check that all instance role are within bounds of the interaction container, resize it otherwise
-            for (InstanceRole instanceRole : Iterables.filter(bounds.keySet(), InstanceRole.class)) {
-                final Node instanceRoleNode = instanceRole.getNotationNode();
-                LayoutConstraint layoutConstraint = instanceRoleNode.getLayoutConstraint();
-                if (layoutConstraint instanceof Bounds instanceRoleBounds
-                        && instanceRoleBounds.getX() + instanceRoleBounds.getWidth() + InteractionContainer.MARGIN > interactionContainerBounds.getWidth()) {
-                    // The instance role east bound + margin is further away than the interaction container east bounds
-                    interactionContainerBounds.setWidth(instanceRoleBounds.getX() + instanceRoleBounds.getWidth() + InteractionContainer.MARGIN);
+            InteractionContainer interactionContainer = optionalInteractionContainer.get();
+            Node node = interactionContainer.getNotationNode();
+            LayoutConstraint interactionContainerLayoutConstraint = node.getLayoutConstraint();
+            if (interactionContainerLayoutConstraint instanceof Bounds interactionContainerBounds) {
+                Rectangle rectangle = new Rectangle(0, 0, InteractionContainer.DEFAULT_WIDTH, InteractionContainer.DEFAULT_HEIGHT);
+                // Scan all rectangle in bounds to locate the east bound for the interaction container
+                for (Rectangle sequenceElementRectangle : bounds.values()) {
+                    if (sequenceElementRectangle.right() + InteractionContainer.MARGIN > rectangle.right()) {
+                        // This sequence element east bound + margin is further away than the interaction container east
+                        // bounds
+                        rectangle.setRight(sequenceElementRectangle.right() + InteractionContainer.MARGIN);
+                    }
                 }
+                interactionContainerBounds.setWidth(rectangle.width);
                 applied = true;
-            }
-
-            // Check that all lost message are within bounds of the interaction container, resize it otherwise
-            for (LostMessageEnd lostMessageEnd : Iterables.filter(bounds.keySet(), LostMessageEnd.class)) {
-                final Node lostMessageEndNode = lostMessageEnd.getNotationNode();
-                LayoutConstraint layoutConstraint = lostMessageEndNode.getLayoutConstraint();
-                if (layoutConstraint instanceof Bounds lostMessageEndBounds
-                        && lostMessageEndBounds.getX() + lostMessageEndBounds.getWidth() + InteractionContainer.MARGIN > interactionContainerBounds.getWidth()) {
-                    // The lost message east bound + margin is further away than the interaction container east bounds
-                    interactionContainerBounds.setWidth(lostMessageEndBounds.getX() + lostMessageEndBounds.getWidth() + InteractionContainer.MARGIN);
-                }
             }
         }
         return applied;
-    }
-
-    private Bounds getInteractionContainerBounds() {
-        Set<InteractionContainer> allInteractionContainers = this.sequenceDiagram.getAllInteractionContainers();
-        if (!allInteractionContainers.isEmpty()) {
-            InteractionContainer interactionContainer = allInteractionContainers.iterator().next();
-            LayoutConstraint interactionContainerLayoutConstraint = interactionContainer.getNotationNode().getLayoutConstraint();
-            if (interactionContainerLayoutConstraint instanceof Bounds) {
-                return (Bounds) interactionContainerLayoutConstraint;
-            }
-        }
-        return null;
     }
 
     @Override

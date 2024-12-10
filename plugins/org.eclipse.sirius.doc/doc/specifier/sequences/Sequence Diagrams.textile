@@ -278,9 +278,11 @@ It is defined exactly like a container mapping in a non-sequence diagram. The di
 
   !images/interaction_container_mapping_properties.png!
   
-As this interaction container semantic element is the same as the diagram semantic root, the tools creating element directly on the diagram (like creating a new instance role) will only need to add this interaction container mapping as an extra mapping. The tool model operation stays the same as the semantic element is the same (the container variable in the tool model operation). Note that the containerView will be different though.
+As the interaction container edit part forwards command requests to the sequence diagram edit part, tools that applies on the diagram (like instance role creation) will keep working. Note that in the model operations, the containerView variable will be different though.
 
   !images/interaction_container_mapping_example.png!
+  
+Only one interaction container mapping can be created.
 
 h2(#tools). Tools
 
