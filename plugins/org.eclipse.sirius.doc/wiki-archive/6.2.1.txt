@@ -1,0 +1,27 @@
+[https://projects.eclipse.org/projects/modeling.sirius/releases/6.2.1 Sirius 6.2.1] is a maintenance release. It contain only reports of fixes made for Sirius 6.1.3 and compatibiliy work for Eclipse 2019-06.
+
+== Availability ==
+
+Sirius 6.2.1 was released on 2019-06-19 (tag [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/tag/?id=v6.2.1 v6.2.1], commit [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/commit/?id=864496bca0e8ff03d498ec2d9ea582db4d79afe4 864496bca0e8ff03d498ec2d9ea582db4d79afe4]). It is available from the following update sites:
+* <code>http://download.eclipse.org/sirius/updates/releases/6.2.1/photon</code> ([http://download.eclipse.org/sirius/updates/releases/6.2.1/org.eclipse.sirius-6.2.1-photon.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/6.2.1/2019-06</code> ([http://download.eclipse.org/sirius/updates/releases/6.2.1/org.eclipse.sirius-6.2.1-2019-06.zip Archive])
+
+It is recommended you use the update-site matching the version of Eclipse you use to avoid potential issues at runtime.
+
+The complete JUnit and SWTBot test suites used to validate Sirius are published along with all their dependencies in separate update-sites from the core, available at:
+* <code>http://download.eclipse.org/sirius/updates/releases/6.2.1/photon/tests</code> ([http://download.eclipse.org/sirius/updates/releases/6.2.1/org.eclipse.sirius.tests-6.2.1-photon.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/6.2.1/2019-06/tests</code> ([http://download.eclipse.org/sirius/updates/releases/6.2.1/org.eclipse.sirius.tests-6.2.1-2019-06.zip Archive])
+
+== Compatibility & Requirements ==
+
+Sirius 6.2.1 is compatible with the following versions of Eclipse:
+* Eclipse 4.8 (Photon).
+* Eclipse 4.12 (2019-06). Eclipse 2019-06 is the reference platform, and Sirius 6.2.1 is part of this release train.
+
+== New & Noteworthy ==
+
+The complete list of (19) tickets fixed in Sirius 6.2.1 can be found [https://projects.eclipse.org/projects/modeling.sirius/releases/6.2.1/bugs here].
+
+The release notes can be found [https://www.eclipse.org/sirius/doc/Release_Notes.html].
+
+[[Category:Sirius]]

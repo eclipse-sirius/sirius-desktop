@@ -13,6 +13,7 @@ You will find the following sections:
 * "*Model Operations*":general/Model_Operations.html describes the small language which can be used throughout "_Viewpoint Specification Models_":../Glossary.html#VSM to describe behavior (for example for tools).
 * "*Colors*":general/Colors.html explains how colors can be specified for all kinds of representations.
 * "*Queries and Interpreted Expressions*":general/Writing_Queries.html explains the general rules to follow to write the expressions used inside "_Viewpoint Specification Models_":../Glossary.html#VSM, and the various languages supported.
+* "*Frequently Asked Questions*:FAQ.html answers some common questions that specifiers can have when creating advanced Sirius modelers.
 
 For more information on Sirius, please refer to the "*Sirius User Manual*":../user/Sirius%20User%20Manual.html, which describes how end-users can use the designers you created.
 

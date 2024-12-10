@@ -1,0 +1,30 @@
+Sirius 5.1.0's main theme is stabilization of the features introduced in version 5.0, in particular the new aird file editor (which also gains support for extensibility). It also includes several ergonomic enhancements for diagrams (mostly about shape alignment and fine control of layout), and infrastructure work which should allow future versions to provide better scalability for projects with many representations.
+
+== Availability ==
+
+Sirius 5.1.0 was released on 2017-11-07 (tag [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/tag/?id=v5.1.0 v5.1.0], commit [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/commit/?id=28b4cad89aaaae46dae34adcfc17373ff924e344 28b4cad89aaaae46dae34adcfc17373ff924e344]). It is available from the following update sites:
+* <code>http://download.eclipse.org/sirius/updates/releases/5.1.0/neon</code> ([http://download.eclipse.org/sirius/updates/releases/5.1.0/org.eclipse.sirius-5.1.0-neon.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/5.1.0/oxygen</code> ([http://download.eclipse.org/sirius/updates/releases/5.1.0/org.eclipse.sirius-5.1.0-oxygen.zip Archive])
+
+It is recommended you use the update-site matching the version of Eclipse you use to avoid potential issues at runtime.
+
+The complete JUnit and SWTBot test suites used to validate Sirius are published along with all their dependencies in separate update-sites from the core, available at:
+* <code>http://download.eclipse.org/sirius/updates/releases/5.1.0/neon/tests</code> ([http://download.eclipse.org/sirius/updates/releases/5.1.0/org.eclipse.sirius.tests-5.1.0-neon.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/5.1.0/oxygen/tests</code> ([http://download.eclipse.org/sirius/updates/releases/5.1.0/org.eclipse.sirius.tests-5.1.0-oxygen.zip Archive])
+
+== Compatibility & Requirements ==
+
+Sirius 5.1.0 is compatible with the following versions of Eclipse:
+* Eclipse 4.6 (Neon).
+* Eclipse 4.7 (Oxygen). Oxygen is the reference platform.
+
+If you want to install the org.eclipse.sirius.tests.support feature, which provides APIs to help create automated tests of Sirius-based modelers, you will need to add the following update-site:
+* SWTBot 2.1.1: <code>http://download.eclipse.org/technology/swtbot/releases/2.1.1/</code>
+
+== New & Noteworthy ==
+
+The complete list of (79) tickets fixed in Sirius 5.1.0 can be found [https://projects.eclipse.org/projects/modeling.sirius/releases/5.1.0/bugs here].
+
+The release notes with highlights will soon be published at [https://www.eclipse.org/sirius/doc/Release_Notes.html#sirius5.1.0 here].
+
+[[Category:Sirius]]
