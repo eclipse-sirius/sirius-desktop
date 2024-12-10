@@ -174,7 +174,7 @@ public class DiagramRepresentationsFileMigrationParticipantV670 {
                     Location location = (Location) layoutConstraint;
                     constraint = new Rectangle(location.getX(), location.getY(), -1, -1);
                 }
-                Point parentAbsoluteLocation = GMFHelper.getAbsoluteLocation(parentNode);
+                Point parentAbsoluteLocation = GMFHelper.getAbsoluteLocation(parentNode, false, false);
                 constraint.translate(parentAbsoluteLocation.x, parentAbsoluteLocation.y);
                 final Point realLocation = borderItemLocator.getValidLocation(constraint, node, otherBorderedNodesToIgnore);
                 final Dimension d = realLocation.getDifference(parentAbsoluteLocation);
@@ -215,7 +215,7 @@ public class DiagramRepresentationsFileMigrationParticipantV670 {
                     LayoutConstraint layoutConstraint = node.getLayoutConstraint();
                     if (layoutConstraint instanceof Bounds) {
                         Bounds bounds = (Bounds) layoutConstraint;
-                        Rectangle rectBounds = GMFHelper.getAbsoluteBounds(node);
+                        Rectangle rectBounds = GMFHelper.getAbsoluteBounds(node, false, false, false, true);
                         // The GMF node size must be stored in collapse
                         // filter (to can set this size
                         // when this node is expanded).
@@ -287,6 +287,7 @@ public class DiagramRepresentationsFileMigrationParticipantV670 {
      * </UL>
      */
     private static class IsStandardDiagramPredicate implements Predicate<Diagram> {
+        @Override
         public boolean apply(Diagram input) {
             boolean apply = false;
             if (input.getElement() instanceof DDiagram) {
@@ -311,6 +312,7 @@ public class DiagramRepresentationsFileMigrationParticipantV670 {
      */
     private static class IsBorderedNodePredicate implements Predicate<Node> {
 
+        @Override
         public boolean apply(Node input) {
             // Is this node the main view of a DNode and a border
             // node ?
@@ -327,6 +329,7 @@ public class DiagramRepresentationsFileMigrationParticipantV670 {
      */
 
     private static class IsDirectlyCollapsedNodePredicate implements Predicate<Node> {
+        @Override
         public boolean apply(Node input) {
             boolean apply = false;
 
