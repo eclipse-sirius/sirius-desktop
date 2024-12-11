@@ -5,27 +5,27 @@
     <semanticResources>types.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_9W1N8N2zEd-ZhcM4sDvRBQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_9ig6hLm3Ee-UXMFld_STMg" name="Basic Messages Diagram" repPath="#_-pfIoN2zEd-ZhcM4sDvRBQ" changeId="1734138523195">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_9ig6hLm3Ee-UXMFld_STMg" name="Basic Messages Diagram" repPath="#_-pfIoN2zEd-ZhcM4sDvRBQ" changeId="1734139269208">
         <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']"/>
         <target xmi:type="interactions:Interaction" href="fixture.interactions#//@ownedInteractions.0"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_9ioPRLm3Ee-UXMFld_STMg" name="Basic Executions Diagram" repPath="#_OHyPgN6tEd-_dMn5_cB9Xw" changeId="1734138523195">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_9ioPRLm3Ee-UXMFld_STMg" name="Basic Executions Diagram" repPath="#_OHyPgN6tEd-_dMn5_cB9Xw" changeId="1734139267545">
         <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']"/>
         <target xmi:type="interactions:Interaction" href="fixture.interactions#//@ownedInteractions.1"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_9ioPSbm3Ee-UXMFld_STMg" name="Complex" repPath="#_Fni5MOUCEd-BEJhxHErs5g" changeId="1734138523195">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_9ioPSbm3Ee-UXMFld_STMg" name="Complex" repPath="#_Fni5MOUCEd-BEJhxHErs5g" changeId="1734139270405">
         <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']"/>
         <target xmi:type="interactions:Interaction" href="fixture.interactions#//@ownedInteractions.2"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_9io2VLm3Ee-UXMFld_STMg" name="Basic Interaction Use Diagram" repPath="#_3c2zYOc2Ed-ci9l1AsdpKw" changeId="1734138523195">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_9io2VLm3Ee-UXMFld_STMg" name="Basic Interaction Use Diagram" repPath="#_3c2zYOc2Ed-ci9l1AsdpKw" changeId="1734139268342">
         <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']"/>
         <target xmi:type="interactions:Interaction" href="fixture.interactions#//@ownedInteractions.3"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_9io2Wbm3Ee-UXMFld_STMg" name="Complex with CF" repPath="#_48qywOdWEd-EjZA2qI8iFQ" changeId="1734138523195">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_9io2Wbm3Ee-UXMFld_STMg" name="Complex with CF" repPath="#_48qywOdWEd-EjZA2qI8iFQ" changeId="1734139271242">
         <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']"/>
         <target xmi:type="interactions:Interaction" href="fixture.interactions#//@ownedInteractions.5"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_9io2Xrm3Ee-UXMFld_STMg" name="Basic Combined Fragment Diagram" repPath="#_W42gYOdcEd-EjZA2qI8iFQ" changeId="1734138523195">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_9io2Xrm3Ee-UXMFld_STMg" name="Basic Combined Fragment Diagram" repPath="#_W42gYOdcEd-EjZA2qI8iFQ" changeId="1734139265891">
         <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']"/>
         <target xmi:type="interactions:Interaction" href="fixture.interactions#//@ownedInteractions.4"/>
       </ownedRepresentationDescriptors>
@@ -55,7 +55,7 @@
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nIsIck5cEeCHObKOrZ_h3Q"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_nIqTQU5cEeCHObKOrZ_h3Q" fontName="Segoe UI" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nIqTQk5cEeCHObKOrZ_h3Q" x="2" width="10" height="10"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nIqTQk5cEeCHObKOrZ_h3Q" x="2" y="510" width="10" height="10"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_-8Rhwd2zEd-ZhcM4sDvRBQ" fontName="Sans" fontHeight="8"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-8Rhwt2zEd-ZhcM4sDvRBQ" y="42" width="10" height="510"/>
@@ -88,7 +88,7 @@
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nIxA8k5cEeCHObKOrZ_h3Q"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_nIvy0U5cEeCHObKOrZ_h3Q" fontName="Segoe UI" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nIvy0k5cEeCHObKOrZ_h3Q" x="2" width="10" height="10"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nIvy0k5cEeCHObKOrZ_h3Q" x="2" y="510" width="10" height="10"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_-9Bvsd2zEd-ZhcM4sDvRBQ" fontName="Sans" fontHeight="8"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-9Bvst2zEd-ZhcM4sDvRBQ" y="42" width="10" height="510"/>
@@ -121,7 +121,7 @@
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nI2ggk5cEeCHObKOrZ_h3Q"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_nI0rUU5cEeCHObKOrZ_h3Q" fontName="Segoe UI" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nI0rUk5cEeCHObKOrZ_h3Q" x="2" width="10" height="10"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nI0rUk5cEeCHObKOrZ_h3Q" x="2" y="510" width="10" height="10"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_-9RnUN2zEd-ZhcM4sDvRBQ" fontName="Sans" fontHeight="8"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-9RnUd2zEd-ZhcM4sDvRBQ" x="52" y="42" width="10" height="510"/>
@@ -557,7 +557,7 @@
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_msJWYk5cEeCHObKOrZ_h3Q"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_msHhMU5cEeCHObKOrZ_h3Q" fontName="Segoe UI" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_msHhMk5cEeCHObKOrZ_h3Q" x="2" width="10" height="10"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_msHhMk5cEeCHObKOrZ_h3Q" x="2" y="548" width="10" height="10"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_OI638d6tEd-_dMn5_cB9Xw" fontName="DejaVu Sans" fontHeight="8"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OI638t6tEd-_dMn5_cB9Xw" y="42" width="10" height="548"/>
@@ -667,7 +667,7 @@
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_msQEEk5cEeCHObKOrZ_h3Q"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_msOO4U5cEeCHObKOrZ_h3Q" fontName="Segoe UI" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_msOO4k5cEeCHObKOrZ_h3Q" x="2" width="10" height="10"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_msOO4k5cEeCHObKOrZ_h3Q" x="2" y="548" width="10" height="10"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_OJEB4d6tEd-_dMn5_cB9Xw" fontName="DejaVu Sans" fontHeight="8"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OJEB4t6tEd-_dMn5_cB9Xw" y="42" width="10" height="548"/>
@@ -909,7 +909,7 @@
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bdYX4k5cEeCHObKOrZ_h3Q"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_bdRqMU5cEeCHObKOrZ_h3Q" fontName="Segoe UI" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bdRqMk5cEeCHObKOrZ_h3Q" x="2" width="10" height="10"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bdRqMk5cEeCHObKOrZ_h3Q" x="2" y="650" width="10" height="10"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_GwPmoeUCEd-BEJhxHErs5g" fontName="DejaVu Sans" fontHeight="8"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GwPmouUCEd-BEJhxHErs5g" y="42" width="10" height="650"/>
@@ -975,7 +975,7 @@
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bdklIk5cEeCHObKOrZ_h3Q"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_bdiI4U5cEeCHObKOrZ_h3Q" fontName="Segoe UI" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bdiI4k5cEeCHObKOrZ_h3Q" x="2" width="10" height="10"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bdiI4k5cEeCHObKOrZ_h3Q" x="2" y="650" width="10" height="10"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_H8BdQeUCEd-BEJhxHErs5g" fontName="DejaVu Sans" fontHeight="8"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_H8BdQuUCEd-BEJhxHErs5g" y="42" width="10" height="650"/>
@@ -1030,7 +1030,7 @@
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bdsg8k5cEeCHObKOrZ_h3Q"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_bdqEsU5cEeCHObKOrZ_h3Q" fontName="Segoe UI" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bdqEsk5cEeCHObKOrZ_h3Q" x="2" width="10" height="10"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bdqEsk5cEeCHObKOrZ_h3Q" x="2" y="650" width="10" height="10"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_IzTDgeUCEd-BEJhxHErs5g" fontName="DejaVu Sans" fontHeight="8"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_IzTDguUCEd-BEJhxHErs5g" y="42" width="10" height="650"/>
@@ -1085,7 +1085,7 @@
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bd0cwk5cEeCHObKOrZ_h3Q"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_bdyAgU5cEeCHObKOrZ_h3Q" fontName="Segoe UI" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bdyAgk5cEeCHObKOrZ_h3Q" x="2" width="10" height="10"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bdyAgk5cEeCHObKOrZ_h3Q" x="2" y="650" width="10" height="10"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_KCI1MeUCEd-BEJhxHErs5g" fontName="DejaVu Sans" fontHeight="8"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KCI1MuUCEd-BEJhxHErs5g" y="42" width="10" height="650"/>
@@ -1981,7 +1981,7 @@
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_m3PzIk5cEeCHObKOrZ_h3Q"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_m3N98U5cEeCHObKOrZ_h3Q" fontName="Segoe UI" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_m3N98k5cEeCHObKOrZ_h3Q" x="2" width="10" height="10"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_m3N98k5cEeCHObKOrZ_h3Q" x="2" y="400" width="10" height="10"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_3jCT4ec2Ed-ci9l1AsdpKw" fontName="Segoe UI" fontHeight="8"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3jCT4uc2Ed-ci9l1AsdpKw" y="42" width="10" height="400"/>
@@ -2014,7 +2014,7 @@
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_m3V5wk5cEeCHObKOrZ_h3Q"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_m3UEkU5cEeCHObKOrZ_h3Q" fontName="Segoe UI" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_m3UEkk5cEeCHObKOrZ_h3Q" x="2" width="10" height="10"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_m3UEkk5cEeCHObKOrZ_h3Q" x="2" y="400" width="10" height="10"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_3jvegec2Ed-ci9l1AsdpKw" fontName="Segoe UI" fontHeight="8"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3jveguc2Ed-ci9l1AsdpKw" y="42" width="10" height="400"/>
@@ -2105,7 +2105,6 @@
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_TraF8PWhEeG4Wag4JBRK3A" name="ref1">
       <target xmi:type="interactions:InteractionUse" href="fixture.interactions#//@ownedInteractions.3/@interactionUses.0"/>
       <semanticElements xmi:type="interactions:InteractionUse" href="fixture.interactions#//@ownedInteractions.3/@interactionUses.0"/>
-      <semanticElements xmi:type="interactions:Interaction" href="fixture.interactions#//@ownedInteractions.4"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_MQEa8hl8EeCKOMpCHXRNLw" x="50" y="130" height="50" width="120"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_TrciMPWhEeG4Wag4JBRK3A" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@containerMappings[name='Interaction%20Use']/@style"/>
@@ -2115,7 +2114,6 @@
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_TrjP4PWhEeG4Wag4JBRK3A" name="ref2">
       <target xmi:type="interactions:InteractionUse" href="fixture.interactions#//@ownedInteractions.3/@interactionUses.1"/>
       <semanticElements xmi:type="interactions:InteractionUse" href="fixture.interactions#//@ownedInteractions.3/@interactionUses.1"/>
-      <semanticElements xmi:type="interactions:Interaction" href="fixture.interactions#//@ownedInteractions.4"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_MQEa8xl8EeCKOMpCHXRNLw" x="220" y="200" height="50" width="120"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_TrjP4fWhEeG4Wag4JBRK3A" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@containerMappings[name='Interaction%20Use']/@style"/>
@@ -2184,7 +2182,7 @@
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nyCAYk5cEeCHObKOrZ_h3Q"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_nyALMU5cEeCHObKOrZ_h3Q" fontName="Segoe UI" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nyALMk5cEeCHObKOrZ_h3Q" x="2" width="10" height="10"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nyALMk5cEeCHObKOrZ_h3Q" x="2" y="773" width="10" height="10"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_5AHIUedWEd-EjZA2qI8iFQ" fontName="Segoe UI" fontHeight="8"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5AHIUudWEd-EjZA2qI8iFQ" y="42" width="10" height="773"/>
@@ -2250,7 +2248,7 @@
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nyIHAk5cEeCHObKOrZ_h3Q"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_nyGR0U5cEeCHObKOrZ_h3Q" fontName="Segoe UI" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nyGR0k5cEeCHObKOrZ_h3Q" x="2" width="10" height="10"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nyGR0k5cEeCHObKOrZ_h3Q" x="2" y="773" width="10" height="10"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_5AaDQedWEd-EjZA2qI8iFQ" fontName="Segoe UI" fontHeight="8"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5AaDQudWEd-EjZA2qI8iFQ" y="42" width="10" height="773"/>
@@ -2490,7 +2488,6 @@
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_TsxX4PWhEeG4Wag4JBRK3A" name="ref1">
       <target xmi:type="interactions:InteractionUse" href="fixture.interactions#//@ownedInteractions.5/@interactionUses.0"/>
       <semanticElements xmi:type="interactions:InteractionUse" href="fixture.interactions#//@ownedInteractions.5/@interactionUses.0"/>
-      <semanticElements xmi:type="interactions:Interaction" href="fixture.interactions#//@ownedInteractions.4"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_MQFpExl8EeCKOMpCHXRNLw" x="60" y="150" height="50" width="310"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_Tsx-8PWhEeG4Wag4JBRK3A" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@containerMappings[name='Interaction%20Use']/@style"/>
@@ -2500,7 +2497,6 @@
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_Tsz0IPWhEeG4Wag4JBRK3A" name="ref2">
       <target xmi:type="interactions:InteractionUse" href="fixture.interactions#//@ownedInteractions.5/@interactionUses.1"/>
       <semanticElements xmi:type="interactions:InteractionUse" href="fixture.interactions#//@ownedInteractions.5/@interactionUses.1"/>
-      <semanticElements xmi:type="interactions:Interaction" href="fixture.interactions#//@ownedInteractions.4"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_MQFpFBl8EeCKOMpCHXRNLw" x="60" y="520" height="50" width="310"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_Tsz0IfWhEeG4Wag4JBRK3A" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@containerMappings[name='Interaction%20Use']/@style"/>
@@ -2510,7 +2506,6 @@
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_Ts0bMPWhEeG4Wag4JBRK3A" name="ref.3">
       <target xmi:type="interactions:InteractionUse" href="fixture.interactions#//@ownedInteractions.5/@interactionUses.2"/>
       <semanticElements xmi:type="interactions:InteractionUse" href="fixture.interactions#//@ownedInteractions.5/@interactionUses.2"/>
-      <semanticElements xmi:type="interactions:Interaction" href="fixture.interactions#//@ownedInteractions.5"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_MQGQIxl8EeCKOMpCHXRNLw" x="250" y="704" height="84" width="120"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_Ts0bMfWhEeG4Wag4JBRK3A" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@containerMappings[name='Interaction%20Use']/@style"/>
@@ -2609,7 +2604,7 @@
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_mfBgYk5cEeCHObKOrZ_h3Q"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_me_rMU5cEeCHObKOrZ_h3Q" fontName="Segoe UI" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_me_rMk5cEeCHObKOrZ_h3Q" x="2" width="10" height="10"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_me_rMk5cEeCHObKOrZ_h3Q" x="2" y="400" width="10" height="10"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_W6LWEedcEd-EjZA2qI8iFQ" fontName="Segoe UI" fontHeight="8"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W6LWEudcEd-EjZA2qI8iFQ" y="42" width="10" height="400"/>
@@ -2642,7 +2637,7 @@
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_mfHnAk5cEeCHObKOrZ_h3Q"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_mfFKwU5cEeCHObKOrZ_h3Q" fontName="Segoe UI" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_mfFKwk5cEeCHObKOrZ_h3Q" x="2" width="10" height="10"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_mfFKwk5cEeCHObKOrZ_h3Q" x="2" y="400" width="10" height="10"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_W6SDwedcEd-EjZA2qI8iFQ" fontName="Segoe UI" fontHeight="8"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W6SDwudcEd-EjZA2qI8iFQ" y="42" width="10" height="400"/>
