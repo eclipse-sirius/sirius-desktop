@@ -148,6 +148,13 @@ public class SequenceHorizontalLayout extends AbstractSequenceOrderingLayout<ISe
         allMoves.putAll(frameMoves);
         allMoves.putAll(lostMessageEndMoves);
         allMoves.putAll(reflexiveMessagesMoves);
+
+        Optional<InteractionContainer> optionalInteractionContainer = this.sequenceDiagram.getInteractionContainer();
+        if (optionalInteractionContainer.isPresent()) {
+            Rectangle interactionContainerMove = computeInteractionContainerLayout(optionalInteractionContainer.get(), allMoves, lostEndsDelta);
+            allMoves.put(optionalInteractionContainer.get(), interactionContainerMove);
+        }
+
         return allMoves;
     }
 
@@ -543,6 +550,32 @@ public class SequenceHorizontalLayout extends AbstractSequenceOrderingLayout<ISe
         return leftGap;
     }
 
+    private Rectangle computeInteractionContainerLayout(InteractionContainer interactionContainer, Map<? extends ISequenceElement, Rectangle> bounds, Map<LostMessageEnd, Integer> lostEndsDelta) {
+        // Reset width of the interaction container
+        Rectangle rectangle = new Rectangle(0, 0, InteractionContainer.DEFAULT_WIDTH, InteractionContainer.DEFAULT_HEIGHT);
+
+        // Scan all rectangle in bounds to locate the east bound for the interaction container
+        for (Entry<? extends ISequenceElement, Rectangle> entry : bounds.entrySet()) {
+            ISequenceElement elt = entry.getKey();
+            Rectangle sequenceElementRectangle = entry.getValue();
+
+            int right = sequenceElementRectangle.right() + InteractionContainer.MARGIN;
+            if (elt instanceof InstanceRole && elt.getLifeline().some()) {
+                int executionOrMessageDepthRightGap = getLifelineRightGap(elt.getLifeline().get(), null, sequenceElementRectangle.width, lostEndsDelta);
+                if (executionOrMessageDepthRightGap > LayoutConstants.UNIT) {
+                    right += executionOrMessageDepthRightGap - LayoutConstants.UNIT;
+                }
+            }
+
+            if (right > rectangle.right()) {
+                // This sequence element east bound + margin is further away than the interaction container east
+                // bounds
+                rectangle.setRight(right);
+            }
+        }
+        return rectangle;
+    }
+
     private boolean layoutInstanceRoles(Map<? extends ISequenceElement, Rectangle> bounds, boolean pack) {
         boolean applied = false;
         for (InstanceRole instanceRole : Iterables.filter(bounds.keySet(), InstanceRole.class)) {
@@ -638,22 +671,13 @@ public class SequenceHorizontalLayout extends AbstractSequenceOrderingLayout<ISe
 
     private boolean layoutInteractionContainer(Map<? extends ISequenceElement, Rectangle> bounds, boolean pack) {
         boolean applied = false;
-        Optional<InteractionContainer> optionalInteractionContainer = this.sequenceDiagram.getInteractionContainer();
-        if (optionalInteractionContainer.isPresent()) {
-            // Reset width of the interaction container
-            InteractionContainer interactionContainer = optionalInteractionContainer.get();
+        for (InteractionContainer interactionContainer : Iterables.filter(bounds.keySet(), InteractionContainer.class)) {
+            Rectangle rectangle = bounds.get(interactionContainer);
+
             Node node = interactionContainer.getNotationNode();
             LayoutConstraint interactionContainerLayoutConstraint = node.getLayoutConstraint();
-            if (interactionContainerLayoutConstraint instanceof Bounds interactionContainerBounds) {
-                Rectangle rectangle = new Rectangle(0, 0, InteractionContainer.DEFAULT_WIDTH, InteractionContainer.DEFAULT_HEIGHT);
-                // Scan all rectangle in bounds to locate the east bound for the interaction container
-                for (Rectangle sequenceElementRectangle : bounds.values()) {
-                    if (sequenceElementRectangle.right() + InteractionContainer.MARGIN > rectangle.right()) {
-                        // This sequence element east bound + margin is further away than the interaction container east
-                        // bounds
-                        rectangle.setRight(sequenceElementRectangle.right() + InteractionContainer.MARGIN);
-                    }
-                }
+            if (interactionContainerLayoutConstraint instanceof Bounds interactionContainerBounds && rectangle != null) {
+                interactionContainerBounds.setX(rectangle.x);
                 interactionContainerBounds.setWidth(rectangle.width);
                 applied = true;
             }

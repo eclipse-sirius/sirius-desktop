@@ -773,36 +773,37 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
         Optional<InteractionContainer> optionalInteractionContainer = this.sequenceDiagram.getInteractionContainer();
         if (optionalInteractionContainer.isPresent()) {
             // Reset height of the interaction container
+            Rectangle rectangle = new Rectangle(0, 0, InteractionContainer.DEFAULT_WIDTH, InteractionContainer.DEFAULT_HEIGHT);
+            for (InstanceRole instanceRole : this.sequenceDiagram.getAllInstanceRoles()) {
+                // Gather instance role bounds
+                final Node instanceRoleNode = instanceRole.getNotationNode();
+                LayoutConstraint layoutConstraint = instanceRoleNode.getLayoutConstraint();
+                // Check that the lifeline is within bounds of the interaction container, resize it otherwise
+                if (layoutConstraint instanceof Bounds instanceRoleBounds && instanceRole.getLifeline().some()) {
+                    Lifeline lifeline = instanceRole.getLifeline().get();
+                    Option<EndOfLife> endOfLife = lifeline.getEndOfLife();
+                    Node lifelineNode = lifeline.getNotationNode();
+
+                    int top = instanceRoleBounds.getY();
+                    if (top - InteractionContainer.MARGIN < rectangle.y()) {
+                        rectangle.setY(top - InteractionContainer.MARGIN);
+                    }
+
+                    int bottom = lifeline.getVerticalRange().getUpperBound();
+                    if (endOfLife.some()) {
+                        bottom = bottom + endOfLife.get().getProperLogicalBounds().height;
+                    }
+                    // lifeline position is relative to the parent instance role position
+                    if (bottom + InteractionContainer.MARGIN > rectangle.bottom()) {
+                        rectangle.setBottom(bottom + InteractionContainer.MARGIN);
+                    }
+                }
+            }
+
             InteractionContainer interactionContainer = optionalInteractionContainer.get();
             Node node = interactionContainer.getNotationNode();
             LayoutConstraint interactionContainerLayoutConstraint = node.getLayoutConstraint();
             if (interactionContainerLayoutConstraint instanceof Bounds interactionContainerBounds) {
-                Rectangle rectangle = new Rectangle(0, 0, InteractionContainer.DEFAULT_WIDTH, InteractionContainer.DEFAULT_HEIGHT);
-                for (InstanceRole instanceRole : this.sequenceDiagram.getAllInstanceRoles()) {
-                    // Gather instance role bounds
-                    final Node instanceRoleNode = instanceRole.getNotationNode();
-                    LayoutConstraint layoutConstraint = instanceRoleNode.getLayoutConstraint();
-                    // Check that the lifeline is within bounds of the interaction container, resize it otherwise
-                    if (layoutConstraint instanceof Bounds instanceRoleBounds && instanceRole.getLifeline().some()) {
-                        Lifeline lifeline = instanceRole.getLifeline().get();
-                        Option<EndOfLife> endOfLife = lifeline.getEndOfLife();
-                        Node lifelineNode = lifeline.getNotationNode();
-
-                        int top = instanceRoleBounds.getY();
-                        if (top - InteractionContainer.MARGIN < rectangle.y()) {
-                            rectangle.setY(top - InteractionContainer.MARGIN);
-                        }
-
-                        int bottom = lifeline.getVerticalRange().getUpperBound();
-                        if (endOfLife.some()) {
-                            bottom = bottom + endOfLife.get().getProperLogicalBounds().height;
-                        }
-                        // lifeline position is relative to the parent instance role position
-                        if (bottom + InteractionContainer.MARGIN > rectangle.bottom()) {
-                            rectangle.setBottom(bottom + InteractionContainer.MARGIN);
-                        }
-                    }
-                }
                 interactionContainerBounds.setY(rectangle.y);
                 interactionContainerBounds.setHeight(rectangle.height);
                 applied = true;
