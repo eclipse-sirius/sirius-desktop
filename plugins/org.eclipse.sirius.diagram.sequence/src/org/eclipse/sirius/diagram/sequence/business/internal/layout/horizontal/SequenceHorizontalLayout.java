@@ -68,6 +68,13 @@ import com.google.common.collect.Ordering;
  */
 public class SequenceHorizontalLayout extends AbstractSequenceOrderingLayout<ISequenceElement, Rectangle, InstanceRole> {
 
+    /**
+     * Use -Dorg.eclipse.sirius.diagram.sequence.layout.interaction.container.dynamic.left=true to have the left border
+     * of the interaction container not on x=0, but positioned to the left of the first interaction container (with
+     * margin).
+     */
+    private static final boolean INTERACTION_CONTAINER_DYNAMIC_LEFT = Boolean.getBoolean("org.eclipse.sirius.diagram.sequence.layout.interaction.container.dynamic.left"); //$NON-NLS-1$
+
     private static final Function<Rectangle, Integer> RECT_TO_X = new Function<Rectangle, Integer>() {
         @Override
         public Integer apply(Rectangle input) {
@@ -552,7 +559,10 @@ public class SequenceHorizontalLayout extends AbstractSequenceOrderingLayout<ISe
 
     private Rectangle computeInteractionContainerLayout(InteractionContainer interactionContainer, Map<? extends ISequenceElement, Rectangle> bounds, Map<LostMessageEnd, Integer> lostEndsDelta) {
         // Reset width of the interaction container
-        Rectangle rectangle = new Rectangle(0, 0, InteractionContainer.DEFAULT_WIDTH, InteractionContainer.DEFAULT_HEIGHT);
+        Rectangle rectangle = new Rectangle(-1, 0, InteractionContainer.DEFAULT_WIDTH, InteractionContainer.DEFAULT_HEIGHT);
+        if (INTERACTION_CONTAINER_DYNAMIC_LEFT) {
+            rectangle.setX(-1);
+        }
 
         // Scan all rectangle in bounds to locate the east bound for the interaction container
         for (Entry<? extends ISequenceElement, Rectangle> entry : bounds.entrySet()) {
@@ -571,6 +581,21 @@ public class SequenceHorizontalLayout extends AbstractSequenceOrderingLayout<ISe
                 // This sequence element east bound + margin is further away than the interaction container east
                 // bounds
                 rectangle.setRight(right);
+            }
+
+            if (INTERACTION_CONTAINER_DYNAMIC_LEFT) {
+                int left = sequenceElementRectangle.x() - InteractionContainer.MARGIN;
+                if (left < rectangle.x() || rectangle.x() == -1) {
+                    if (rectangle.x() == -1) {
+                        rectangle.setX(0);
+                    }
+
+                    // Modify x and width to keep current right.
+                    // This sequence element west bound - margin is further away than the interaction container west
+                    // bounds
+
+                    rectangle.shrinkLeft(left - rectangle.x());
+                }
             }
         }
         return rectangle;
