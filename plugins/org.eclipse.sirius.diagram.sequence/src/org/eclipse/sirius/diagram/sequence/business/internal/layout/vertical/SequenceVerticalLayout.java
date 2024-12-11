@@ -21,6 +21,7 @@ import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Optional;
 
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -285,7 +286,10 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
         }
 
         applied = layoutUnconnectedLostMessageEnd() || applied;
-        applied = layoutInteractionContainer() || applied;
+
+        for (InteractionContainer interactionContainer : Iterables.filter(finalRanges.keySet(), InteractionContainer.class)) {
+            applied = layoutInteractionContainer(interactionContainer, finalRanges.get(interactionContainer)) || applied;
+        }
 
         return applied;
     }
@@ -295,7 +299,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
      */
     @Override
     protected Map<? extends ISequenceElement, Range> computeLayout(boolean pack) {
-        LinkedHashMap<ISequenceEvent, Range> sequenceEventRanges = new LinkedHashMap<ISequenceEvent, Range>();
+        LinkedHashMap<ISequenceElement, Range> sequenceEventRanges = new LinkedHashMap<ISequenceElement, Range>();
 
         // Compute the position of each event end.
         Map<EventEnd, Integer> endLocations = computeEndBounds(pack);
@@ -312,6 +316,13 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
         sequenceEventRanges.putAll(lifelinesRanges);
         sequenceEventRanges.putAll(basicRanges);
         sequenceEventRanges.putAll(punctualEventRanges);
+
+        // Update InteractionContainer size
+        Optional<InteractionContainer> optionalInteractionContainer = this.sequenceDiagram.getInteractionContainer();
+        if (optionalInteractionContainer.isPresent()) {
+            Range interactionContainerRange = computeInteractionContainerLayout(optionalInteractionContainer.get(), lifelinesRanges);
+            sequenceEventRanges.put(optionalInteractionContainer.get(), interactionContainerRange);
+        }
 
         return sequenceEventRanges;
     }
@@ -496,9 +507,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
                 InstanceRole instanceRole = parentLifeline.get().getInstanceRole();
                 if (instanceRole != null) {
                     int newLBound = getLifelineMinLowerBound(instanceRole);
-                    if (newLBound != oldRange.getLowerBound()) {
-                        sequenceEventsToRange.put(event, new Range(newLBound, Math.max(newLBound, oldRange.getUpperBound())));
-                    }
+                    sequenceEventsToRange.put(event, new Range(newLBound, Math.max(newLBound, oldRange.getUpperBound())));
                 }
             }
         }
@@ -541,9 +550,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
         // update lifeline ranges
         for (ISequenceEvent event : getLifeLinesWithoutDestruction()) {
             Range currentRange = sequenceEventsToRange.containsKey(event) ? sequenceEventsToRange.get(event) : oldLayoutData.get(event);
-            if (currentRange.getUpperBound() != endOfLife) {
-                sequenceEventsToRange.put(event, new Range(currentRange.getLowerBound(), endOfLife));
-            }
+            sequenceEventsToRange.put(event, new Range(currentRange.getLowerBound(), endOfLife));
         }
     }
 
@@ -768,46 +775,49 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
         return applied;
     }
 
-    private boolean layoutInteractionContainer() {
-        boolean applied = false;
-        Optional<InteractionContainer> optionalInteractionContainer = this.sequenceDiagram.getInteractionContainer();
-        if (optionalInteractionContainer.isPresent()) {
-            // Reset height of the interaction container
-            Rectangle rectangle = new Rectangle(0, 0, InteractionContainer.DEFAULT_WIDTH, InteractionContainer.DEFAULT_HEIGHT);
-            for (InstanceRole instanceRole : this.sequenceDiagram.getAllInstanceRoles()) {
+    private Range computeInteractionContainerLayout(InteractionContainer interactionContainer, Map<ISequenceEvent, Range> lifelinesRanges) {
+        Range range = new Range(0, InteractionContainer.DEFAULT_HEIGHT);
+        for (Entry<ISequenceEvent, Range> entry : lifelinesRanges.entrySet()) {
+            ISequenceEvent key = entry.getKey();
+            if (key instanceof Lifeline lifeline && lifeline.getInstanceRole() instanceof InstanceRole instanceRole) {
+                Range lifelineComputedRange = entry.getValue();
                 // Gather instance role bounds
-                final Node instanceRoleNode = instanceRole.getNotationNode();
-                LayoutConstraint layoutConstraint = instanceRoleNode.getLayoutConstraint();
+                Rectangle irBounds = instanceRole.getBounds();
                 // Check that the lifeline is within bounds of the interaction container, resize it otherwise
-                if (layoutConstraint instanceof Bounds instanceRoleBounds && instanceRole.getLifeline().some()) {
-                    Lifeline lifeline = instanceRole.getLifeline().get();
-                    Option<EndOfLife> endOfLife = lifeline.getEndOfLife();
-                    Node lifelineNode = lifeline.getNotationNode();
 
-                    int top = instanceRoleBounds.getY();
-                    if (top - InteractionContainer.MARGIN < rectangle.y()) {
-                        rectangle.setY(top - InteractionContainer.MARGIN);
-                    }
+                Option<EndOfLife> endOfLife = lifeline.getEndOfLife();
+                Node lifelineNode = lifeline.getNotationNode();
 
-                    int bottom = lifeline.getVerticalRange().getUpperBound();
-                    if (endOfLife.some()) {
-                        bottom = bottom + endOfLife.get().getProperLogicalBounds().height;
-                    }
-                    // lifeline position is relative to the parent instance role position
-                    if (bottom + InteractionContainer.MARGIN > rectangle.bottom()) {
-                        rectangle.setBottom(bottom + InteractionContainer.MARGIN);
-                    }
+                // compute post layout InteractionContainer y from lifeline computed vertical range.
+
+                int start = lifelineComputedRange.getLowerBound() - irBounds.height - InteractionContainer.MARGIN;
+                if (start < range.getLowerBound()) {
+                    range = new Range(start, range.getUpperBound());
+                }
+
+                // compute post layout InteractionContainer y from lifeline computed vertical range.
+                int end = lifelineComputedRange.getUpperBound() + InteractionContainer.MARGIN;
+                if (endOfLife.some()) {
+                    end = end + endOfLife.get().getProperLogicalBounds().height;
+                }
+                // lifeline position is relative to the parent instance role position
+                if (end > range.getUpperBound()) {
+                    range = new Range(range.getLowerBound(), end);
                 }
             }
+        }
+        return range;
+    }
 
-            InteractionContainer interactionContainer = optionalInteractionContainer.get();
-            Node node = interactionContainer.getNotationNode();
-            LayoutConstraint interactionContainerLayoutConstraint = node.getLayoutConstraint();
-            if (interactionContainerLayoutConstraint instanceof Bounds interactionContainerBounds) {
-                interactionContainerBounds.setY(rectangle.y);
-                interactionContainerBounds.setHeight(rectangle.height);
-                applied = true;
-            }
+    private boolean layoutInteractionContainer(InteractionContainer interactionContainer, Range range) {
+        boolean applied = false;
+        // Apply computed layout
+        Node node = interactionContainer.getNotationNode();
+        LayoutConstraint interactionContainerLayoutConstraint = node.getLayoutConstraint();
+        if (interactionContainerLayoutConstraint instanceof Bounds interactionContainerBounds) {
+            interactionContainerBounds.setY(range.getLowerBound());
+            interactionContainerBounds.setHeight(range.width());
+            applied = true;
         }
         return applied;
 
