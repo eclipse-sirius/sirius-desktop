@@ -1861,7 +1861,7 @@
         </toolSections>
       </additionalLayers>
       <additionalLayers name="Interaction Container">
-        <containerMappings xsi:type="description_1:InteractionContainerMapping" name="Interaction Container mapping" semanticCandidatesExpression="aql:self" domainClass="interactions.Interaction">
+        <containerMappings xsi:type="description_1:InteractionContainerMapping" name="interactionContainer" semanticCandidatesExpression="aql:self" domainClass="interactions.Interaction">
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelAlignment="LEFT" backgroundColor="//@userColorsPalettes[name='Complementary%20Colors']/@entries[name='Sand%20(Complementary%20to%20blue)']" foregroundColor="//@userColorsPalettes[name='Complementary%20Colors']/@entries[name='Sand%20(Complementary%20to%20blue)']">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
