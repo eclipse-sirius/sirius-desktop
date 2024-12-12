@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,7 +17,6 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
-import org.eclipse.sirius.business.api.helper.task.TaskHelper;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -28,10 +27,8 @@ import org.eclipse.sirius.diagram.sequence.description.tool.OrderedElementCreati
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.tools.internal.command.builders.EdgeCreationCommandBuilder;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.emf.EMFCommandFactoryUI;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
-import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.description.AbstractVariable;
@@ -87,8 +84,6 @@ public class MessageCreationCommandBuilder extends EdgeCreationCommandBuilder {
      */
     @Override
     protected DCommand buildCreateEdgeCommandFromTool(EObject semanticSource, EObject semanticTarget) {
-        final ModelAccessor modelAccessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(startingEndPredecessor);
-
         final DCommand result = createEnclosingCommand();
 
         final Map<AbstractVariable, Object> variables = new HashMap<AbstractVariable, Object>();
@@ -102,7 +97,6 @@ public class MessageCreationCommandBuilder extends EdgeCreationCommandBuilder {
             variables.put(orderedElementCreationTool.getFinishingEndPredecessor(), finishingEndPredecessor);
         }
         result.getTasks().add(new InitInterpreterVariablesTask(variables, InterpreterUtil.getInterpreter(source), new EMFCommandFactoryUI()));
-        TaskHelper taskHelper = new TaskHelper(modelAccessor, new EMFCommandFactoryUI());
         result.getTasks().add(taskHelper.buildTaskFromModelOperation(diagram, source, tool.getInitialOperation().getFirstModelOperations()));
         return result;
     }
