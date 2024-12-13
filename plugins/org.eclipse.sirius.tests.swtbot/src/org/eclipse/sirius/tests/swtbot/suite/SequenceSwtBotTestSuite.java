@@ -48,6 +48,9 @@ import org.eclipse.sirius.tests.swtbot.sequence.FrameReparentTest;
 import org.eclipse.sirius.tests.swtbot.sequence.HeaderSequenceDiagramTests;
 import org.eclipse.sirius.tests.swtbot.sequence.InstanceRoleOrderingTests;
 import org.eclipse.sirius.tests.swtbot.sequence.InstanceRoleResizableEditPolicyTests;
+import org.eclipse.sirius.tests.swtbot.sequence.InteractionContainerAdditionalLayerTests;
+import org.eclipse.sirius.tests.swtbot.sequence.InteractionContainerDefaultLayerTests;
+import org.eclipse.sirius.tests.swtbot.sequence.InteractionContainerFromSampleTests;
 import org.eclipse.sirius.tests.swtbot.sequence.InteractionUseCoverageTests;
 import org.eclipse.sirius.tests.swtbot.sequence.InteractionUseMoveDownTests;
 import org.eclipse.sirius.tests.swtbot.sequence.InteractionUseResizeTests;
@@ -150,7 +153,9 @@ public class SequenceSwtBotTestSuite extends TestCase {
         suite.addTestSuite(SequenceSpaceTest.class);
         suite.addTestSuite(RefreshLayoutScopeTests.class);
         suite.addTestSuite(InstanceRoleOrderingTests.class);
-        // suite.addTestSuite(InteractionContainerTests.class);
+        suite.addTestSuite(InteractionContainerDefaultLayerTests.class);
+        suite.addTestSuite(InteractionContainerAdditionalLayerTests.class);
+        suite.addTestSuite(InteractionContainerFromSampleTests.class);
         // suite.addTestSuite(ContextMenuInDiagramTest.class);
     }
 
