@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -84,6 +84,7 @@ import org.eclipse.sirius.tests.swtbot.sequence.SyncCall3Test;
 import org.eclipse.sirius.tests.swtbot.sequence.SyncCallInOperandReorderTest;
 import org.eclipse.sirius.tests.swtbot.sequence.SyncCallMoveTest;
 import org.eclipse.sirius.tests.swtbot.sequence.SyncCallTest;
+import org.eclipse.sirius.tests.swtbot.sequence.TwoSessionsTests;
 import org.eclipse.sirius.tests.unit.common.EnvironmentReportTest;
 
 import junit.framework.JUnit4TestAdapter;
@@ -216,6 +217,7 @@ public class SequenceSwtBotTestSuite extends TestCase {
             suite.addTestSuite(HeaderSequenceDiagramTests.class);
             suite.addTestSuite(SequenceExecutionBasicAndReturnMessageTest.class);
             suite.addTestSuite(ExecutionMoveTests.class);
+            suite.addTestSuite(TwoSessionsTests.class);
         }
         return suite;
     }
