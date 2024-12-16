@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -202,6 +202,7 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
             populateMoves();
             populateMessageToResize();
             categorizeMoves();
+            computeMovedRange();
             initialized = true;
         }
 
@@ -248,7 +249,9 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
         move.addAll(otherEntryPoints);
         Iterables.retainAll(move, sequenceNodesToMove);
         Iterables.addAll(topLevelElements, move);
+    }
 
+    private void computeMovedRange() {
         Rectangle movedRange = new Rectangle(0, globalInitialRange.getLowerBound(), 0, globalInitialRange.width());
         globalMovedRange = RangeHelper.verticalRange(request.getLogicalTransformedRectangle(movedRange));
     }
@@ -656,14 +659,18 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
 
     private void reInit(RequestQuery requestQuery) {
         validationDone = false;
+
         request = requestQuery;
         vMove = request.getLogicalDelta().y;
         valid = true;
+
         expansionZone = Range.emptyRange();
         eventInError = new HashSet<ISequenceEvent>();
         invalidPositions = new HashSet<Integer>();
         invalidRanges = new HashSet<Range>();
         createdElements = new ArrayList<Range>();
+
+        computeMovedRange();
     }
 
     private static boolean validateSameSelection(ISEComplexMoveValidator validator, ChangeBoundsRequest cbr, RequestQuery requestQuery, ISequenceEvent host) {
