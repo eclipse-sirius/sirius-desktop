@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -90,8 +90,7 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
- * Abstract base class for SWTbot tests on Sequence Diagram, with helper
- * methods.
+ * Abstract base class for SWTbot tests on Sequence Diagram, with helper methods.
  * 
  * @author pcdavid
  */
@@ -121,7 +120,7 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
     protected static final String LIFELINE_D = "d : D";
 
     protected static final String LIFELINE_E = "e : E";
-    
+
     protected static final String LIFELINE_1 = "newParticipant1 : ";
 
     protected static final String NEW_LIFELINE = "newParticipant4 : ";
@@ -324,19 +323,16 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
     protected abstract String getRepresentationId();
 
     /**
-     * Get the full name of the representation id displayed in the category
-     * subtree of the model content view.
+     * Get the full name of the representation id displayed in the category subtree of the model content view.
      * 
-     * @return the full name of the representation id displayed in the category
-     *         subtree of the model content view
+     * @return the full name of the representation id displayed in the category subtree of the model content view
      */
     protected String getRepresentationIdNameFromCategoryView() {
         return REPRESENTATION_DESCRIPTION_NAME + " " + getRepresentationId();
     }
 
     /**
-     * Get the representation (diagram.DDiagram) name as defined in the .aird
-     * model.
+     * Get the representation (diagram.DDiagram) name as defined in the .aird model.
      * 
      * @return the representation name as defined in the .aird model
      */
@@ -454,8 +450,7 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
     }
 
     /**
-     * Create a message of type toolName from (sourceX, sourceY) to (targetX,
-     * targetY)
+     * Create a message of type toolName from (sourceX, sourceY) to (targetX, targetY)
      * 
      * @param toolName
      *            id of the tool
@@ -477,8 +472,7 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
     }
 
     /**
-     * Create a message of type toolName from (sourceX, sourceY) to (targetX,
-     * targetY)
+     * Create a message of type toolName from (sourceX, sourceY) to (targetX, targetY)
      * 
      * @param toolName
      *            id of the tool
@@ -492,8 +486,7 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
     }
 
     /**
-     * Create a new InteractionUse where its top left corner is start is its
-     * bottom right corner is finish
+     * Create a new InteractionUse where its top left corner is start is its bottom right corner is finish
      * 
      * @param start
      *            {@link Point} of the first click
@@ -554,8 +547,7 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
     }
 
     /**
-     * Create a new InteractionUse where its top left corner is start is its
-     * bottom right corner is finish
+     * Create a new InteractionUse where its top left corner is start is its bottom right corner is finish
      * 
      * @param start
      *            {@link Point} of the first click
@@ -595,8 +587,7 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
     }
 
     /**
-     * Create a new CombinedFragment where its top left corner is start is its
-     * bottom right corner is finish
+     * Create a new CombinedFragment where its top left corner is start is its bottom right corner is finish
      * 
      * @param start
      *            {@link Point} of the first click
@@ -618,8 +609,7 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
     }
 
     /**
-     * Create a new CombinedFragment where its top left corner is start is its
-     * bottom right corner is finish
+     * Create a new CombinedFragment where its top left corner is start is its bottom right corner is finish
      * 
      * @param start
      *            {@link Point} of the first click
@@ -669,8 +659,7 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
     }
 
     /**
-     * Create a new CombinedFragment's Operand where its top left corner is
-     * start is its bottom right corner is finish
+     * Create a new CombinedFragment's Operand where its top left corner is start is its bottom right corner is finish
      * 
      * @param start
      *            {@link Point} of the first click
@@ -693,8 +682,7 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
     }
 
     /**
-     * Create a new CombinedFragment's Operand where its top left corner is
-     * start is its bottom right corner is finish
+     * Create a new CombinedFragment's Operand where its top left corner is start is its bottom right corner is finish
      * 
      * @param start
      *            {@link Point} of the first click
@@ -815,8 +803,7 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
     }
 
     /**
-     * Create a new {@link InstanceRoleEditPart}'s figure named name and drop it
-     * to the specified location
+     * Create a new {@link InstanceRoleEditPart}'s figure named name and drop it to the specified location
      * 
      * @param name
      *            name of the newly created InstanceRole
@@ -1146,8 +1133,7 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
     }
 
     /**
-     * Get the {@link SequenceDiagram} associated to the current editor. Asserts
-     * checks thaht it is not null.
+     * Get the {@link SequenceDiagram} associated to the current editor. Asserts checks thaht it is not null.
      * 
      * @return the {@link SequenceDiagram} associated to the current editor.
      */
@@ -1484,8 +1470,8 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
     }
 
     /**
-     * Returns the bounds of the first edit part with requested name, relative
-     * to screen or logical regarding the screen parameter.
+     * Returns the bounds of the first edit part with requested name, relative to screen or logical regarding the screen
+     * parameter.
      * 
      * @param name
      *            name of the edit part.
@@ -1591,7 +1577,7 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
         filterTable.click(0, 0);
         bot.waitUntil(done);
     }
-    
+
     @Override
     protected void manualRefresh() {
         // Do nothing, sequence diagrams only work in auto-refresh mode anyway.

@@ -67,6 +67,7 @@ import org.eclipse.sirius.tests.swtbot.sequence.SequenceDestroyMessageMoveTest;
 import org.eclipse.sirius.tests.swtbot.sequence.SequenceDestroyMessageTest;
 import org.eclipse.sirius.tests.swtbot.sequence.SequenceDiagramDirtyTests;
 import org.eclipse.sirius.tests.swtbot.sequence.SequenceDiagramNoSnapTest;
+import org.eclipse.sirius.tests.swtbot.sequence.SequenceExecutionBasicAndReturnMessageObervationPointDisplayedTest;
 import org.eclipse.sirius.tests.swtbot.sequence.SequenceExecutionBasicAndReturnMessageTest;
 import org.eclipse.sirius.tests.swtbot.sequence.SequenceExecutionMessageToSelfReparentTest;
 import org.eclipse.sirius.tests.swtbot.sequence.SequenceExecutionMessageToSelfTest;
@@ -178,6 +179,7 @@ public class SequenceSwtBotTestSuite extends TestCase {
             addGerritPart(suite);
 
             suite.addTestSuite(SequenceBasicMessageTest.class);
+            suite.addTestSuite(SequenceExecutionBasicAndReturnMessageObervationPointDisplayedTest.class);
             suite.addTestSuite(SequenceMessageToSelfTest.class);
             suite.addTestSuite(ExecutionLinkedMessageReconnectionTests.class);
             suite.addTestSuite(SequenceReturnMessageTest.class);

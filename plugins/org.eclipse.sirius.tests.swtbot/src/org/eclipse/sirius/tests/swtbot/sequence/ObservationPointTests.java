@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -47,8 +47,6 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentat
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckToolIsActivated;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
-import org.eclipse.sirius.tests.swtbot.support.api.view.SiriusOutlineView;
-import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
@@ -66,9 +64,8 @@ import com.google.common.collect.Lists;
 /**
  * This class tests the ObservationPoint concept of Sequence dagrams.
  * 
- * An observation point is a node with an ObservationPointMapping and a semantic
- * target which belongs to the semantic global ordering. On the interaction
- * sample, it is displayed when the "Constraint" layer is active. It allows to
+ * An observation point is a node with an ObservationPointMapping and a semantic target which belongs to the semantic
+ * global ordering. On the interaction sample, it is displayed when the "Constraint" layer is active. It allows to
  * create/display constraints as edges with a bracket style.
  * 
  * @author mporhel
@@ -76,6 +73,7 @@ import com.google.common.collect.Lists;
 public class ObservationPointTests extends AbstractDefaultModelSequenceTests {
 
     private final Predicate<DDiagramElement> isVisible = new Predicate<DDiagramElement>() {
+        @Override
         public boolean apply(DDiagramElement input) {
             return input.isVisible();
         }
@@ -86,18 +84,16 @@ public class ObservationPointTests extends AbstractDefaultModelSequenceTests {
     private final Predicate<DDiagramElement> isNonVisibleObsPoint = Predicates.and(ObservationPoint.viewpointElementPredicate(), Predicates.not(isVisible));
 
     /**
-     * Test the activation of the observation layer. It should trigger the
-     * creation of observation points. They should be placed by the sequence
-     * layout.
+     * Test the activation of the observation layer. It should trigger the creation of observation points. They should
+     * be placed by the sequence layout.
      */
     public void test_ObservationPointLayer_Activation() {
         doTest_ObservationPoint_Layer_Activation(ZoomLevel.ZOOM_100.getAmount());
     }
 
     /**
-     * Test the activation of the observation layer. It should trigger the
-     * creation of observation points. They should be placed by the sequence
-     * layout.
+     * Test the activation of the observation layer. It should trigger the creation of observation points. They should
+     * be placed by the sequence layout.
      */
     public void test_ObservationPointLayer_Activation_Zoom50() {
         try {
@@ -142,8 +138,8 @@ public class ObservationPointTests extends AbstractDefaultModelSequenceTests {
         bot.waitUntil(done);
 
         // Validates the position of the execution
-        Rectangle execA0ScreenBounds = assertExecutionHasValidScreenBounds(LIFELINE_A, 0, new Rectangle(0, yScreenExecA0, LayoutConstants.DEFAULT_EXECUTION_WIDTH,
-                (int) (LayoutConstants.DEFAULT_EXECUTION_HEIGHT * zoom)), false);
+        Rectangle execA0ScreenBounds = assertExecutionHasValidScreenBounds(LIFELINE_A, 0,
+                new Rectangle(0, yScreenExecA0, LayoutConstants.DEFAULT_EXECUTION_WIDTH, (int) (LayoutConstants.DEFAULT_EXECUTION_HEIGHT * zoom)), false);
 
         // Creation of an execution
         int yExecA1 = execA0ScreenBounds.getCenter().y;
@@ -174,9 +170,8 @@ public class ObservationPointTests extends AbstractDefaultModelSequenceTests {
     }
 
     /**
-     * Test the creation of events once when the observation layer is active.
-     * Each creation should trigger the creation of observation points. They
-     * should be placed by the sequence layout.
+     * Test the creation of events once when the observation layer is active. Each creation should trigger the creation
+     * of observation points. They should be placed by the sequence layout.
      */
     public void test_Creation_With_Activated_Layer() {
         // Activate Observation layer
@@ -207,7 +202,7 @@ public class ObservationPointTests extends AbstractDefaultModelSequenceTests {
         // try to move the first observation point.
         SWTBotGefEditPart observationPoint = getObservationPoints().get(0);
         Rectangle beforeDrag = getBounds((IGraphicalEditPart) observationPoint.part());
-        ICondition selected = new CheckSelectedCondition(editor, (IGraphicalEditPart) observationPoint.part());
+        ICondition selected = new CheckSelectedCondition(editor, observationPoint.part());
         editor.drag(observationPoint, new Point(getLifelineScreenX(LIFELINE_B), 250));
         bot.waitUntil(selected);
 
@@ -566,19 +561,17 @@ public class ObservationPointTests extends AbstractDefaultModelSequenceTests {
      * Try to change the observation layer status.
      * 
      * @param activationExpected
-     *            true if the method should activate the observation layer,
-     *            false otherwise
+     *            true if the method should activate the observation layer, false otherwise
      * @param expectedObservationPoints
-     *            the number of expected observation points, if true, they
-     *            should be visible, if false they should exists on the
-     *            viewpoint side, but the should be no edit part.
+     *            the number of expected observation points, if true, they should be visible, if false they should
+     *            exists on the viewpoint side, but the should be no edit part.
      * 
      */
     private void changeAndCheckObservationLayerActivation(boolean activationExpected, int expectedObservationPoints) {
         DDiagram diagram = (DDiagram) ((DialectEditor) editor.getReference().getEditor(false)).getRepresentation();
         int prevActivatedLayers = diagram.getActivatedLayers().size();
 
-        changeLostMessagesLayerActivation();
+        changeDurationLayerActivation();
 
         // Check activation/deactivation
         int postActivatedLayers = diagram.getActivatedLayers().size();
@@ -597,20 +590,9 @@ public class ObservationPointTests extends AbstractDefaultModelSequenceTests {
         }
     }
 
-    private void changeLostMessagesLayerActivation() {
-        ICondition done = new OperationDoneCondition();
-        final SiriusOutlineView outlineView = designerViews.openOutlineView();
-        outlineView.layers().activateLayer("Duration Constraints");
-        bot.waitUntil(done);
-        SWTBotUtils.waitAllUiEvents();
-    }
-
-    private List<SWTBotGefEditPart> getObservationPoints() {
-        return editor.mainEditPart().descendants(IsInstanceOf.instanceOf(ObservationPointEditPart.class));
-    }
-
     private List<ObservationPointEditPart> getSortedObservationParts() {
         Function<SWTBotGefEditPart, EditPart> getPart = new Function<SWTBotGefEditPart, EditPart>() {
+            @Override
             public EditPart apply(SWTBotGefEditPart input) {
                 return input.part();
             }
@@ -623,6 +605,7 @@ public class ObservationPointTests extends AbstractDefaultModelSequenceTests {
             /**
              * {@inheritDoc}
              */
+            @Override
             public int compare(ObservationPointEditPart o1, ObservationPointEditPart o2) {
                 int y1 = o1.getFigure().getBounds().y;
                 int y2 = o2.getFigure().getBounds().y;
