@@ -216,7 +216,8 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
             Collection<ISequenceEvent> eventToIgnore = Collections.singletonList((ISequenceEvent) self);
             ctc.compose(CommandFactory.createICommand(editingDomain, new VerticalSpaceExpansionOrReduction(diagram.getSequenceDiagram(), validator.getExpansionZone(), 0, eventToIgnore)));
         }
-        if (validator.getFinalHierarchicalParent().equals(self.getHierarchicalParentEvent())) {
+        ISequenceEvent finalHierarchicalParent = validator.getFinalHierarchicalParent();
+        if (finalHierarchicalParent.equals(self.getHierarchicalParentEvent())) {
             Command cmd = DiagramBorderNodeEditPartOperation.getResizeBorderItemCommand((ExecutionEditPart) getHost(), request, false);
             ctc.add(new CommandProxy(cmd));
             ctc.setLabel(cmd.getLabel());
@@ -224,7 +225,6 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
             if (self instanceof Execution exec) {
                 addChildrenAdjustmentCommands(exec, ctc, request, validator);
 
-                ISequenceEvent finalHierarchicalParent = validator.getFinalHierarchicalParent();
                 reconnectMessages(validator, editingDomain, exec, requestQuery, ctc, finalHierarchicalParent);
                 reparentSubExecutions(validator, editingDomain, exec, requestQuery, ctc, finalHierarchicalParent);
             }
@@ -243,7 +243,8 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
         Stream<Message> messagesToReconnect = self.getDiagram().getAllMessages().stream() //
                 .filter(Message.class::isInstance).map(Message.class::cast) //
                 .filter(ise -> !self.getVerticalRange().intersects(ise.getVerticalRange())) //
-                .filter(ise -> movedRange.includes(ise.getVerticalRange()));
+                .filter(ise -> movedRange.includes(ise.getVerticalRange())) //
+                .filter(ise -> validator.getExpansionZone() == null || !validator.getExpansionZone().intersects(ise.getVerticalRange()));
 
         messagesToReconnect.forEach(msg -> {
             boolean needsReconnect = false;
@@ -284,7 +285,8 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
                 .filter(AbstractNodeEvent.class::isInstance).map(AbstractNodeEvent.class::cast) //
                 .filter(ise -> !self.getVerticalRange().intersects(ise.getVerticalRange())) //
                 .filter(ise -> newParentFinalRange.includes(ise.getVerticalRange())) //
-                .filter(ise -> self != ise && finalHierarchicalParent == ise.getHierarchicalParentEvent());
+                .filter(ise -> self != ise && finalHierarchicalParent == ise.getHierarchicalParentEvent()) //
+                .filter(ise -> validator.getExpansionZone() == null || !validator.getExpansionZone().intersects(ise.getVerticalRange()));
 
         eventToReparent.forEach(event -> {
             ctc.compose(CommandFactory.createICommand(editingDomain, new ReparentExecutionOperation(event, self)));
