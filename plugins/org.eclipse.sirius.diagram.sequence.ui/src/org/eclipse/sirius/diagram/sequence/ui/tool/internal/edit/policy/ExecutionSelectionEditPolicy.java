@@ -41,9 +41,12 @@ import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.common.core.command.IdentityCommand;
 import org.eclipse.gmf.runtime.diagram.ui.commands.CommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
+import org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
+import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
@@ -55,6 +58,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceN
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
+import org.eclipse.sirius.diagram.sequence.business.internal.operation.ReparentExecutionOperation;
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.SetMessageRangeOperation;
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.SetVerticalRangeOperation;
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.ShiftDirectSubExecutionsOperation;
@@ -221,13 +225,14 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
                 addChildrenAdjustmentCommands(exec, ctc, request, validator);
 
                 reconnectMessages(validator, editingDomain, exec, requestQuery, ctc);
+                reparentSubExecutions(validator, editingDomain, exec, requestQuery, ctc);
             }
             solution = postProcessCommand(ctc, hostPart, requestQuery);
         }
         return solution;
     }
 
-    private void reconnectMessages(AbstractNodeEventResizeSelectionValidator validator, TransactionalEditingDomain editingDomain, AbstractNodeEvent self, RequestQuery requestQuery,
+    private void reconnectMessages(AbstractNodeEventResizeSelectionValidator validator, TransactionalEditingDomain editingDomain, Execution self, RequestQuery requestQuery,
             CompositeTransactionalCommand ctc) {
 
         Range verticalRange = self.getVerticalRange();
@@ -235,7 +240,7 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
         Range movedRange = RangeHelper.verticalRange(movedBounds);
 
         Stream<Message> messagesToReconnect = validator.getFinalHierarchicalParent().getSubEvents().stream() //
-                .filter(Message.class::isInstance).map(Message.class::cast)//
+                .filter(Message.class::isInstance).map(Message.class::cast) //
                 .filter(ise -> movedRange.includes(ise.getVerticalRange()));
 
         messagesToReconnect.forEach(msg -> {
@@ -261,6 +266,42 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
             smrc.setTarget(targetElement.getNotationNode(), tgtBounds);
             ctc.compose(CommandFactory.createICommand(editingDomain, smrc));
         });
+    }
+
+    private void reparentSubExecutions(AbstractNodeEventResizeSelectionValidator validator, TransactionalEditingDomain editingDomain, Execution self, RequestQuery requestQuery,
+            CompositeTransactionalCommand ctc) {
+        Rectangle newParentFinalBounds = requestQuery.getLogicalTransformedRectangle(self.getProperLogicalBounds());
+        Range newParentFinalRange = RangeHelper.verticalRange(newParentFinalBounds);
+
+        Stream<AbstractNodeEvent> eventToReparent = validator.getFinalHierarchicalParent().getSubEvents().stream() //
+                .filter(AbstractNodeEvent.class::isInstance).map(AbstractNodeEvent.class::cast) //
+                .filter(ise -> newParentFinalRange.includes(ise.getVerticalRange()));
+
+        eventToReparent.forEach(event -> {
+            if (event == self) {
+                return;
+            }
+
+            ctc.compose(CommandFactory.createICommand(editingDomain, new ReparentExecutionOperation(event, self)));
+
+            // Compute the absolute bounds implied by the requested move.
+            Rectangle realLocation = event.getProperLogicalBounds();
+
+            // event should stay at a stable location
+            Range futureRange = event.getVerticalRange();
+            realLocation.setY(futureRange.getLowerBound());
+
+            // Make the coordinates relative to the final parent's figure.
+            final Point parentOrigin = newParentFinalBounds.getLocation();
+            final Dimension d = realLocation.getTopLeft().getDifference(parentOrigin);
+            Point locationOnFinalParent = new Point(realLocation.x, d.height);
+
+            // Create the command to apply the change.
+            final ICommand moveCommand = new SetBoundsCommand(ctc.getEditingDomain(), DiagramUIMessages.Commands_MoveElement, new EObjectAdapter(event.getNotationNode()), locationOnFinalParent);
+            ctc.compose(moveCommand);
+
+        });
+
     }
 
     /**
