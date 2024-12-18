@@ -467,6 +467,7 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
         ICondition done = new CheckToolIsActivated(editor, toolName);
         editor.activateTool(toolName);
         bot.waitUntil(done);
+
         editor.click(sourceX, sourceY);
         editor.click(targetX, targetY);
     }
