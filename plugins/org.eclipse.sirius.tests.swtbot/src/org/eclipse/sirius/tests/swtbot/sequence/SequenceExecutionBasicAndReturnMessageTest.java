@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,7 +18,9 @@ import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConsta
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageEditPart;
 import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckNotEmptySelection;
 import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckReturnMessageNumber;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
 import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
+import org.eclipse.swtbot.swt.finder.waits.ICondition;
 
 /**
  * Test class for creation message management
@@ -142,7 +144,7 @@ public class SequenceExecutionBasicAndReturnMessageTest extends AbstractDefaultM
         return2yClic = execA1.y + LayoutConstants.MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP;
         createMessage(InteractionsConstants.RETURN_TOOL_ID, execA1.x, return2yClic, lifelineBPosition, 300);
         bot.waitUntil(checker);
-        editor.click(execA1.x + 25, return2yClic);
+        editor.click(execA1.x + 35, return2yClic);
         bot.waitUntil(new CheckNotEmptySelection(editor, SequenceMessageEditPart.class));
         secondReturnMessage = getSelectedMessage();
         editor.click(0, 0);
@@ -161,7 +163,7 @@ public class SequenceExecutionBasicAndReturnMessageTest extends AbstractDefaultM
         return3yClic = execA1.y + LayoutConstants.MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP * 2;
         createMessage(InteractionsConstants.RETURN_TOOL_ID, lifelineBPosition, return3yClic, execA1.x, return3yClic);
         bot.waitUntil(checker);
-        editor.click(execA1.x + 25, return3yClic);
+        editor.click(execA1.x + 35, return3yClic);
         bot.waitUntil(new CheckNotEmptySelection(editor, SequenceMessageEditPart.class));
         thirdReturnMessage = getSelectedMessage();
         editor.click(0, 0);
@@ -179,6 +181,7 @@ public class SequenceExecutionBasicAndReturnMessageTest extends AbstractDefaultM
         assertMessageVerticalPosition(thirdReturnMessage, return3yClic);
 
         validateOrdering(16);
+
     }
 
     /**
@@ -367,6 +370,53 @@ public class SequenceExecutionBasicAndReturnMessageTest extends AbstractDefaultM
         assertMessageVerticalPosition(firstReturnMessage, return1yClic);
 
         validateOrdering();
+
+        ICondition done = new OperationDoneCondition();
+        editor.drag(e1Bounds.getLocation(), e1Bounds.getLocation().getTranslated(0, -20));
+        bot.waitUntil(done);
+        done = new OperationDoneCondition();
+        editor.drag(e1Bounds.getLocation().getTranslated(0, -20), e1Bounds.getLocation().getTranslated(0, +20));
+        bot.waitUntil(done);
+        done = new OperationDoneCondition();
+        editor.drag(e1Bounds.getLocation().getTranslated(0, +20), e1Bounds.getLocation());
+        bot.waitUntil(done);
+
+        m1.y = m1.y + 20;
+        int returnMessageNewPosition = return1yClic - 20;
+
+        // Check stability
+        assertExecutionHasValidScreenBounds(LIFELINE_A, 0, e1Bounds);
+        assertExecutionHasValidScreenBounds(LIFELINE_A, 1, e2Bounds);
+
+        assertMessageVerticalPosition(FIRST_MESSAGE, m1.y);
+        assertMessageVerticalPosition(THIRD_MESSAGE, m3.y);
+        assertMessageVerticalPosition(FOURTH_MESSAGE, m4.y);
+        assertMessageVerticalPosition(secondReturnMessage, return2yClic);
+        assertMessageVerticalPosition(thirdReturnMessage, return3yClic);
+        assertMessageVerticalPosition(firstReturnMessage, returnMessageNewPosition);
+
+        validateOrdering();
+
+        // Move m1 / return to previous positions
+        editor.drag(m1.getTranslated(50, 0), m1.getTranslated(0, -20));
+        m1.y = m1.y - 20;
+
+        editor.drag(new Point(m1.x, returnMessageNewPosition).getTranslated(100, 0), new Point(m1.x, return1yClic));
+        returnMessageNewPosition = return1yClic;
+
+        // Check stability
+        assertExecutionHasValidScreenBounds(LIFELINE_A, 0, e1Bounds);
+        assertExecutionHasValidScreenBounds(LIFELINE_A, 1, e2Bounds);
+
+        assertMessageVerticalPosition(FIRST_MESSAGE, m1.y);
+        assertMessageVerticalPosition(THIRD_MESSAGE, m3.y);
+        assertMessageVerticalPosition(FOURTH_MESSAGE, m4.y);
+        assertMessageVerticalPosition(secondReturnMessage, return2yClic);
+        assertMessageVerticalPosition(thirdReturnMessage, return3yClic);
+        assertMessageVerticalPosition(firstReturnMessage, returnMessageNewPosition);
+
+        validateOrdering();
+
     }
 
     /**
