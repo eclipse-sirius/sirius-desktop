@@ -224,8 +224,9 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
             if (self instanceof Execution exec) {
                 addChildrenAdjustmentCommands(exec, ctc, request, validator);
 
-                reconnectMessages(validator, editingDomain, exec, requestQuery, ctc);
-                reparentSubExecutions(validator, editingDomain, exec, requestQuery, ctc);
+                ISequenceEvent finalHierarchicalParent = validator.getFinalHierarchicalParent();
+                reconnectMessages(validator, editingDomain, exec, requestQuery, ctc, finalHierarchicalParent);
+                reparentSubExecutions(validator, editingDomain, exec, requestQuery, ctc, finalHierarchicalParent);
             }
             solution = postProcessCommand(ctc, hostPart, requestQuery);
         }
@@ -233,17 +234,19 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
     }
 
     private void reconnectMessages(AbstractNodeEventResizeSelectionValidator validator, TransactionalEditingDomain editingDomain, Execution self, RequestQuery requestQuery,
-            CompositeTransactionalCommand ctc) {
+            CompositeTransactionalCommand ctc, ISequenceEvent finalHierarchicalParent) {
 
         Range verticalRange = self.getVerticalRange();
         Rectangle movedBounds = requestQuery.getLogicalTransformedRectangle(new Rectangle(0, verticalRange.getLowerBound(), 0, verticalRange.width()));
         Range movedRange = RangeHelper.verticalRange(movedBounds);
 
-        Stream<Message> messagesToReconnect = validator.getFinalHierarchicalParent().getSubEvents().stream() //
+        Stream<Message> messagesToReconnect = self.getDiagram().getAllMessages().stream() //
                 .filter(Message.class::isInstance).map(Message.class::cast) //
+                .filter(ise -> !self.getVerticalRange().intersects(ise.getVerticalRange())) //
                 .filter(ise -> movedRange.includes(ise.getVerticalRange()));
 
         messagesToReconnect.forEach(msg -> {
+            boolean needsReconnect = false;
 
             ISequenceNode sourceElement = msg.getSourceElement();
             ISequenceNode targetElement = msg.getTargetElement();
@@ -251,37 +254,39 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
             Rectangle srcBounds = sourceElement.getProperLogicalBounds();
             Rectangle tgtBounds = targetElement.getProperLogicalBounds();
 
-            if (sourceElement.getLifeline().get() == self.getLifeline().get()) {
+            if (sourceElement == finalHierarchicalParent) {
                 sourceElement = self;
                 srcBounds = movedBounds;
+                needsReconnect = true;
             }
 
-            if (targetElement.getLifeline().get() == self.getLifeline().get()) {
+            if (targetElement == finalHierarchicalParent) {
                 targetElement = self;
                 tgtBounds = movedBounds;
+                needsReconnect = true;
             }
 
-            SetMessageRangeOperation smrc = new SetMessageRangeOperation((Edge) msg.getNotationView(), msg.getVerticalRange());
-            smrc.setSource(sourceElement.getNotationNode(), srcBounds);
-            smrc.setTarget(targetElement.getNotationNode(), tgtBounds);
-            ctc.compose(CommandFactory.createICommand(editingDomain, smrc));
+            if (needsReconnect) {
+                SetMessageRangeOperation smrc = new SetMessageRangeOperation((Edge) msg.getNotationView(), msg.getVerticalRange());
+                smrc.setSource(sourceElement.getNotationNode(), srcBounds);
+                smrc.setTarget(targetElement.getNotationNode(), tgtBounds);
+                ctc.compose(CommandFactory.createICommand(editingDomain, smrc));
+            }
         });
     }
 
     private void reparentSubExecutions(AbstractNodeEventResizeSelectionValidator validator, TransactionalEditingDomain editingDomain, Execution self, RequestQuery requestQuery,
-            CompositeTransactionalCommand ctc) {
+            CompositeTransactionalCommand ctc, ISequenceEvent finalHierarchicalParent) {
         Rectangle newParentFinalBounds = requestQuery.getLogicalTransformedRectangle(self.getProperLogicalBounds());
         Range newParentFinalRange = RangeHelper.verticalRange(newParentFinalBounds);
 
-        Stream<AbstractNodeEvent> eventToReparent = validator.getFinalHierarchicalParent().getSubEvents().stream() //
+        Stream<AbstractNodeEvent> eventToReparent = self.getDiagram().getAllAbstractNodeEvents().stream() //
                 .filter(AbstractNodeEvent.class::isInstance).map(AbstractNodeEvent.class::cast) //
-                .filter(ise -> newParentFinalRange.includes(ise.getVerticalRange()));
+                .filter(ise -> !self.getVerticalRange().intersects(ise.getVerticalRange())) //
+                .filter(ise -> newParentFinalRange.includes(ise.getVerticalRange())) //
+                .filter(ise -> self != ise && finalHierarchicalParent == ise.getHierarchicalParentEvent());
 
         eventToReparent.forEach(event -> {
-            if (event == self) {
-                return;
-            }
-
             ctc.compose(CommandFactory.createICommand(editingDomain, new ReparentExecutionOperation(event, self)));
 
             // Compute the absolute bounds implied by the requested move.
