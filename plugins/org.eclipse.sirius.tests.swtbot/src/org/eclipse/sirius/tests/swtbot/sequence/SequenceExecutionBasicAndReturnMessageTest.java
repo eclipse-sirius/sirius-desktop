@@ -417,6 +417,68 @@ public class SequenceExecutionBasicAndReturnMessageTest extends AbstractDefaultM
 
         validateOrdering();
 
+        // Create two sync call to test redirect of basic message while resizing executions
+        // Sync call are needed to resize executions via their messages as observation points will prevent SWT Bot to be
+        // able to resize the execution from its edit part.
+        Point m1Right = getSequenceMessageLastBendpointScreenPosition(FIRST_MESSAGE);
+        Point syncCall1ExecStart = m1.getTranslated(0, -80);
+        Point syncCall2ExecStart = new Point(getLifelineScreenX(LIFELINE_A), returnMessageNewPosition + 20);
+
+        createSyncCall(m1Right.getTranslated(0, -80), syncCall1ExecStart);
+        createSyncCall(new Point(getLifelineScreenX(LIFELINE_B), returnMessageNewPosition + 20), syncCall2ExecStart);
+
+        Rectangle sync1Bounds = getExecutionScreenBounds(LIFELINE_A, 0);
+        sync1Bounds.y = syncCall1ExecStart.y;
+        sync1Bounds.height = 50;
+        Rectangle sync2Bounds = getExecutionScreenBounds(LIFELINE_A, 3);
+        sync2Bounds.y = syncCall2ExecStart.y;
+        sync2Bounds.height = 50;
+
+        // Check stability
+        assertExecutionHasValidScreenBounds(LIFELINE_A, 2, sync1Bounds);
+        assertExecutionHasValidScreenBounds(LIFELINE_A, 0, e1Bounds);
+        assertExecutionHasValidScreenBounds(LIFELINE_A, 1, e2Bounds);
+        assertExecutionHasValidScreenBounds(LIFELINE_A, 3, sync2Bounds);
+
+        assertMessageVerticalPosition(FIRST_MESSAGE, m1.y);
+        assertMessageVerticalPosition(THIRD_MESSAGE, m3.y);
+        assertMessageVerticalPosition(FOURTH_MESSAGE, m4.y);
+        assertMessageVerticalPosition(secondReturnMessage, return2yClic);
+        assertMessageVerticalPosition(thirdReturnMessage, return3yClic);
+        assertMessageVerticalPosition(firstReturnMessage, returnMessageNewPosition);
+
+        validateOrdering();
+
+        done = new OperationDoneCondition();
+        editor.drag(syncCall1ExecStart.getTranslated(50, 50), syncCall2ExecStart.getTranslated(50, 60));
+        bot.waitUntil(done);
+        done = new OperationDoneCondition();
+        editor.drag(syncCall2ExecStart.getTranslated(50, 0), syncCall1ExecStart.getTranslated(50, 10));
+        bot.waitUntil(done);
+        done = new OperationDoneCondition();
+
+        sync1Bounds.setBottom(sync2Bounds.bottom() + 10);
+        sync2Bounds.shrinkTop(sync1Bounds.y + 10 - sync2Bounds.y);
+
+        sync2Bounds.setX(sync1Bounds.right() - 5);
+        e1Bounds.setX(sync2Bounds.right() - 5);
+        e2Bounds.setX(e1Bounds.right() - 5);
+
+        // Check stability
+        assertExecutionHasValidScreenBounds(LIFELINE_A, 0, sync1Bounds);
+        assertExecutionHasValidScreenBounds(LIFELINE_A, 1, sync2Bounds);
+        assertExecutionHasValidScreenBounds(LIFELINE_A, 2, e1Bounds);
+        assertExecutionHasValidScreenBounds(LIFELINE_A, 3, e2Bounds);
+
+        assertMessageVerticalPosition(FIRST_MESSAGE, m1.y);
+        assertMessageVerticalPosition(THIRD_MESSAGE, m3.y);
+        assertMessageVerticalPosition(FOURTH_MESSAGE, m4.y);
+        assertMessageVerticalPosition(secondReturnMessage, return2yClic);
+        assertMessageVerticalPosition(thirdReturnMessage, return3yClic);
+        assertMessageVerticalPosition(firstReturnMessage, returnMessageNewPosition);
+
+        validateOrdering();
+
     }
 
     /**
