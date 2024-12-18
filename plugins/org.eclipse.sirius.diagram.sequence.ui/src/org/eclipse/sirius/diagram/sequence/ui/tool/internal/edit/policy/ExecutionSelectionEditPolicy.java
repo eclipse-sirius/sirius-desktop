@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.FreeformViewport;
@@ -216,12 +217,50 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
             ctc.add(new CommandProxy(cmd));
             ctc.setLabel(cmd.getLabel());
 
-            if (self instanceof Execution) {
-                addChildrenAdjustmentCommands((Execution) self, ctc, request, validator);
+            if (self instanceof Execution exec) {
+                addChildrenAdjustmentCommands(exec, ctc, request, validator);
+
+                reconnectMessages(validator, editingDomain, exec, requestQuery, ctc);
             }
             solution = postProcessCommand(ctc, hostPart, requestQuery);
         }
         return solution;
+    }
+
+    private void reconnectMessages(AbstractNodeEventResizeSelectionValidator validator, TransactionalEditingDomain editingDomain, AbstractNodeEvent self, RequestQuery requestQuery,
+            CompositeTransactionalCommand ctc) {
+
+        Range verticalRange = self.getVerticalRange();
+        Rectangle movedBounds = requestQuery.getLogicalTransformedRectangle(new Rectangle(0, verticalRange.getLowerBound(), 0, verticalRange.width()));
+        Range movedRange = RangeHelper.verticalRange(movedBounds);
+
+        Stream<Message> messagesToReconnect = validator.getFinalHierarchicalParent().getSubEvents().stream() //
+                .filter(Message.class::isInstance).map(Message.class::cast)//
+                .filter(ise -> movedRange.includes(ise.getVerticalRange()));
+
+        messagesToReconnect.forEach(msg -> {
+
+            ISequenceNode sourceElement = msg.getSourceElement();
+            ISequenceNode targetElement = msg.getTargetElement();
+
+            Rectangle srcBounds = sourceElement.getProperLogicalBounds();
+            Rectangle tgtBounds = targetElement.getProperLogicalBounds();
+
+            if (sourceElement.getLifeline().get() == self.getLifeline().get()) {
+                sourceElement = self;
+                srcBounds = movedBounds;
+            }
+
+            if (targetElement.getLifeline().get() == self.getLifeline().get()) {
+                targetElement = self;
+                tgtBounds = movedBounds;
+            }
+
+            SetMessageRangeOperation smrc = new SetMessageRangeOperation((Edge) msg.getNotationView(), msg.getVerticalRange());
+            smrc.setSource(sourceElement.getNotationNode(), srcBounds);
+            smrc.setTarget(targetElement.getNotationNode(), tgtBounds);
+            ctc.compose(CommandFactory.createICommand(editingDomain, smrc));
+        });
     }
 
     /**

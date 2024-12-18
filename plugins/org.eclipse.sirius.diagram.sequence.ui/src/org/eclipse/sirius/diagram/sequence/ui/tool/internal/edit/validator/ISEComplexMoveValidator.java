@@ -467,6 +467,13 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
         toIgnore.addAll(endReflexiveMessageToResize);
 
         boolean canChildOccupy = movedElements.contains(insertionParent) || insertionParent.canChildOccupy(ise, futureExtRange, toIgnore, lifelines);
+
+        if (insertionParent.getLifeline().some() //
+                && insertionParent.getLifeline().get().getCreationMessage().some() //
+                && (insertionParent.getLifeline().get().getDestructionMessage().some())) {
+            canChildOccupy = canChildOccupy || movedElements.contains(insertionParent.getLifeline().get().getCreationMessage().get())
+                    && movedElements.contains(insertionParent.getLifeline().get().getDestructionMessage().get());
+        }
         if (!canChildOccupy) {
             if (topLevel && !expansionZone.isEmpty()) {
                 expansionZone = globalMovedRange;
