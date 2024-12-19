@@ -1,0 +1,22 @@
+= Prerequisite =
+Sirius uses Maven/Tycho to build.
+# Install Maven 3 if if do not have it already.
+# Get a Git clone of http://git.eclipse.org/gitroot/sirius/org.eclipse.sirius.git.
+
+
+= Build =
+== Zipped update-site ==
+To build zipped update-site yourself:
+# From the top-level directory of the clone, issue a simple <code>mvn clean package</code>.
+
+The resulting update-site is then available in <code>packaging/org.eclipse.sirius.update/target/repository</code>.
+
+== Javadoc ==
+To build the Javadoc of Sirius:
+# From the top-level directory of the clone, issue a simple <code>mvn clean install javadoc:aggregate</code>.
+The resulting is then available in <code>target/site/apidocs</code>.
+
+To build the JAR-packaged Javadoc of Sirius:
+# From the top-level directory of the clone, issue a simple <code>mvn clean install javadoc:aggregate-jar</code>.
+
+[[Category:Sirius]]

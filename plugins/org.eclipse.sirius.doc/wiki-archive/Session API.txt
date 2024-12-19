@@ -1,0 +1,36 @@
+This page will be used to discuss the design of a new, improved Session API. See https://bugs.eclipse.org/bugs/show_bug.cgi?id=427799
+
+== Problems with the current API and its implementation ==
+
+Non-exhaustive list of problems with the current implementation that the new version should fix:
+* The Session interface provides both too much and too little. Too much in the sense that it exposes implementation details (like the notion of DView) and too little in that many operations which should be simple (like enabling a viewpoint) are actually so complex that they require the use of non-obvious helpers scattered across the code base (e.g. ViewpointSelectionCallback, UserSession).
+* "The Session API" is actually much more than just the <code>org.eclipse.sirius.business.api.session.Session</code> interface, it includes many auxilliary interfaces and classes scattered in many places. Because they are not well organized, there is a lot of duplication and inconsistencies between those.
+* The actual contract of these APIs, in most cases, are not well defined and documented. The existing documentation is silent on many important aspects like concurrency and thread-safety and performance characteristics.
+* The lifecycle of a session is not clearly defined, and the vocabulary used is not consistent (created vs loaded vs opened vs added (to the SessionManager)).
+* The de-facto contract of the Session (not always explicit in the documentation but lots of code actually relies on this) implies that all the resources used directly or indirectly by a session are fully loaded as soon as it is started. This makes it impossible to perform any kind of lazy loading to defer costly operations only when really needed.
+* The session's behavior is not very configurable. There are a few ad-hoc configuration points (like setting the SavingPolicy) but many other behaviors are not configurable. This can be very problematic when some behaviors impose some overhead (in time or memory): everybody pays them even when they do not need it, because they simply have no possibility to opt-out. See for example DAnalysisSessionImpl.notifyNewMetamodels(Resource) which imposes a complete walk over the contents of newly added semantic resources; it is only needed to support very specific -- and rare -- scenarios, but the cost is paid every time, by everybody.
+* The current session supports a mode of operation where it shared its <code>EditingDomain</code> and <code>ResourceSet</code> with all the other Sirius sessions. Technically this is configurable, although not in a very obvious way (see <code>DAnalysisSessionImpl.setDisposeEditingDomainOnClose(boolean)</code>), but in practice a lot of the current code tries to support both modes at all times. This is the root cause of a lot of the complexity of the current implementation and of a lot of runtime and memory overhead (to manage the <code>DAnalysis.models</code> reference properly). The future implementation will '''NOT''' support the "shared editing domain" mode at all. We expect this single change will allow for a much simpler and more efficient implementation.
+* The current implementation (DAnalysisSessionImpl) inherits from an EObject, DAnalysisSessionEObjectImpl, which provides some of its state. This implementation choice was made to benefit "freely" from many interesting EMF features, like support for adapters, instead of having to manually design and implement various listeners schemes. However this has several drawbacks: it exposes what is essentially (or should be) internal data structures in a way that enables almost undetectable action-at-a-distance. See for example <code>/org.eclipse.sirius/src/org/eclipse/sirius/tools/api/command/semantic/RemoveSemanticResourceCommand.java</code>, which despite being in a completely different package, modifies the state of a session in a difficult to identify way (it calls <code>getControlledResources()</code>, which looks innocent, except that it is an EMF EList and it calls <code>remove()</code> on the result, which changes the state of the session.
+* The various events and listeners associated to the Session APIs make it difficult, if not completely impossible, to detect some events which should be easy to identify. For example <code>SessionListener</code> can detect that "a resource content is about to be replaced" (<code>ABOUT_TO_BE_REPLACED</code>), but with no way to tell which resource...
+
+== What constitutes "the Session API"? ==
+
+* All the content of <code>org.eclipse.sirius.business.internal.session</code> and sub-packages.
+* <code>org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallback</code> and related classes: needed to enable/disable viewpoints reliably, but in a completely different part of the code (and in the UI plug-in).
+* <code>org.eclipse.sirius.ui.business.api.session.UserSession</code>, described as "An API to manipulate user session easily". Should not exist, it is an admission that the normal APIs are too complex for several common tasks.
+
+== Plan of attack ==
+
+# '''Isolate''' the current API and implementation.
+# '''Enable the co-existence''' of different APIs and/or implementations.
+# '''Provide the new implementation''', disabled by default.
+# '''Make the new implementation the default''' and mark the old one deprecated.
+# '''Remove the old implementation'''.
+
+=== Isolation of the current API and implementation ===
+
+The goal here is to clearly ''identify'' the "API surface" of the current session mechanism, and to ''reduce'' it to the maximum extent. In particular, a lot of code depend on the Session API for no good reasons, simply because it is "convenient" to pass around a Session instance in case someone needs one of the services it provides. For example, we suspect a lot of classes depend on Session when in the end what they actually need is simply a ResourceSet, a TransactionalEditingDomain or an IInterpreter. These kinds of users should be rewritten to only depend on what they actually need.
+
+One approach for this would be to extract narrower interfaces from the existing Session interface (e.f. <code>interface InterpreterProvider { IInterpterter getInterpreter(); }</code>) and update users of Session to depend explicitly on the "service" interface(s) they actually need.
+
+[[Category:Sirius]]

@@ -1,0 +1,30 @@
+Sirius 1.0.0M4 is a milestone release which has been included in Luna M4. The project is still in incubation at this time.
+
+See also [http://dev.eclipse.org/mhonarc/lists/sirius-dev/msg00011.html the announce on the mailing list].
+
+== Availability ==
+
+Sirius 1.0.0M4 was released on 2013-12-16 (tag [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/tag/?id=v1.0.0M4 v1.0.0M4], commit [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/commit/?id=679983850e861e2584b90dc90a150e5621ca7c7d 679983850e861e2584b90dc90a150e5621ca7c7d]). It is available from the following update sites:
+* <code>http://download.eclipse.org/sirius/updates/milestones/1.0.0M4/juno</code>
+* <code>http://download.eclipse.org/sirius/updates/milestones/1.0.0M4/kepler</code>
+* <code>http://download.eclipse.org/sirius/updates/milestones/1.0.0M4/luna</code>
+
+It is recommended you use the update-site matching the version of Eclipse you use to avoid potential issues at runtime.
+
+''Juno users'': Sirius depends on more recent versions of some components that what is available by default from a Juno install. You need to add the following update-sites if you want to install Sirius on Juno:
+* Orbit: http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository/
+* Acceleo 3.4: http://download.eclipse.org/acceleo/updates/releases/3.4/
+* EEF 1.2: http://download.eclipse.org/modeling/emft/eef/updates/nightly/1.2/
+
+== Compatibility ==
+
+Sirius 1.0.0M4 is compatible with the following versions of Eclipse:
+* Eclipse 3.8/4.2 (Juno)
+* Eclipse 4.3 (Kepler)
+* Eclipse 4.4M4 (Luna)
+
+== New & Noteworthy ==
+
+The main difference between 0.9.0 and 1.0.0M4 is the removal of most deprecated APIs in Sirius (except in the few cases where we could not provide a better replacement). The list of bugs fixed in this version can be seen [https://bugs.eclipse.org/bugs/buglist.cgi?list_id=7809578&classification=Modeling&query_format=advanced&product=Sirius&target_milestone=1.0.0M4 on Bugzilla].
+
+[[Category:Sirius]]

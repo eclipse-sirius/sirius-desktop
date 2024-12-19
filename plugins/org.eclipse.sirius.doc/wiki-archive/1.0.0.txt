@@ -1,0 +1,50 @@
+Sirius 1.0.0 is a major release, part of Eclipse Luna. With this release, Sirius is moving out of incubation status.
+
+See also [https://dev.eclipse.org/mhonarc/lists/sirius-dev/msg00052.html the announce on the mailing list].
+
+== Availability ==
+
+Sirius 1.0.0 was released on 2014-06-25 (tag [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/tag/?id=v1.0.0 v1.0.0], commit [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/commit/?id=12564ce0a3a0ec4322d7ebe4aedda49992aa271b 12564ce0a3a0ec4322d7ebe4aedda49992aa271b]). It is available from the following update sites:
+* <code>http://download.eclipse.org/sirius/updates/releases/1.0.0/juno</code> ([http://download.eclipse.org/sirius/updates/releases/1.0.0/org.eclipse.sirius-1.0.0-juno.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/1.0.0/kepler</code> ([http://download.eclipse.org/sirius/updates/releases/1.0.0/org.eclipse.sirius-1.0.0-kepler.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/1.0.0/luna</code> ([http://download.eclipse.org/sirius/updates/releases/1.0.0/org.eclipse.sirius-1.0.0-luna.zip Archive])
+
+It is recommended you use the update-site matching the version of Eclipse you use to avoid potential issues at runtime.
+
+If you want to install the new <code>org.eclipse.sirius.tests</code> feature, which provides APIs to help create automated tests of Sirius-based modelers, you will need to add the following update-site:
+* SWTBot 2.1.1: http://download.eclipse.org/technology/swtbot/releases/2.1.1/
+
+''Juno users'': Sirius depends on more recent versions of some components that what is available by default from a Juno install. You need to add the following update-sites if you want to install Sirius 1.0.0 on Juno:
+* Orbit: http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/
+* Acceleo 3.4 (or 3.5): http://download.eclipse.org/acceleo/updates/releases/3.4/ (resp. http://download.eclipse.org/acceleo/updates/releases/3.5/)
+* EEF 1.2 (or 1.3): http://download.eclipse.org/modeling/emft/eef/updates/releases/1.2 (resp. http://download.eclipse.org/modeling/emft/eef/updates/releases/1.3)
+
+== Compatibility ==
+
+Sirius 1.0.0 is compatible with the following versions of Eclipse:
+* Eclipse 3.8/4.2 (Juno)
+* Eclipse 4.3 (Kepler)
+* Eclipse 4.4 (Luna)
+
+== New & Noteworthy ==
+
+* [https://bugs.eclipse.org/bugs/show_bug.cgi?id=434474 #434474]: A significant effort has been made to ensure that Sirius plays well with other GMF-based modelers that share the same extension mechanisms. In particular, when having both Sirius and Papyrus installed together they should no longer interfere with each other (with actions from one visible in the other).
+* [https://bugs.eclipse.org/bugs/show_bug.cgi?id=435204 #435204]: As was the case for Sirius 0.9.0, we had to disable the table printing feature from the final 1.0.0 release, as the Eclipse Paperclips component we use for this has not been officially released yet.
+* [https://bugs.eclipse.org/bugs/show_bug.cgi?id=435604 #435604], [https://bugs.eclipse.org/bugs/show_bug.cgi?id=435753 #435753], [https://bugs.eclipse.org/bugs/show_bug.cgi?id=435911 #435911], [https://bugs.eclipse.org/bugs/show_bug.cgi?id=435879 #435879], [https://bugs.eclipse.org/bugs/show_bug.cgi?id=436427 #436427]: Many usability improvements in the VSM editor: better and more consistent menu labels, more logical order or elements in the context menus and in the property views.
+* [https://bugs.eclipse.org/bugs/show_bug.cgi?id=426687 #426687]: Optimized session modification tracking, part of an ongoing effort to improve session opening time.
+* [https://bugs.eclipse.org/bugs/show_bug.cgi?id=430724 #430724]: A new experimental Session saving policy is available (<code>org.eclipse.sirius.business.internal.session.IsModifiedSavingPolicy</code>). It has the potential to greatly improve the saving time of sessions with large resources, but is not considered well-tested enough yet to be the default. It can however be enabled explictly using <code>session.setSavingPolicy(new IsModifiedSavingPolicy(session.getTansactionalEditingDomain()))</code>.  If you try it, please report any bug or behavior change.
+
+See also [https://bugs.eclipse.org/bugs/buglist.cgi?classification=Modeling&list_id=9414659&product=Sirius&query_format=advanced&target_milestone=1.0.0&target_milestone=1.0.0M4&target_milestone=1.0.0M5&target_milestone=1.0.0M6&target_milestone=1.0.0M7 the complete list of (95) tickets fixed since Sirius 0.9.0] and the N&N sections of the intermediate milestones between Sirius 0.9.0 and 1.0.0:
+* [[Sirius/1.0.0M7|Sirius 1.0.0M7]]
+* [[Sirius/1.0.0M6|Sirius 1.0.0M6]]
+* [[Sirius/1.0.0M5|Sirius 1.0.0M5]]
+* [[Sirius/1.0.0M4|Sirius 1.0.0M4]]
+
+== Known Issues ==
+
+The following important issues are present in the 1.0.0 release. They were identified after the code freeze and could not be fixed in time. If possible (i.e. no API break needed), they will be fixed in 1.0.x maintenance releases.
+* A formatting issue prevents the "Release Notes" from opening from "Help > Contents > Sirius > Release Notes". You can read them from https://www.eclipse.org/sirius/doc/Release%20Notes.html instead. This will be fixed as part of Sirius 1.0.1.
+* [https://bugs.eclipse.org/bugs/show_bug.cgi?id=436375 #436375] - Semantic models not automatically detected when converting into a Modeling Project. A workaround is to add them manually to the session using the [https://www.eclipse.org/sirius/doc/user/general/Modeling%20Project.html#ProjectDependencies Project Dependencies] of the modeling project.
+* [https://bugs.eclipse.org/bugs/show_bug.cgi?id=437251 #437251] - Trying to create a representation while Sirius is not yet initiliazed causes a NullPointerException. A simple (but not obvious) workaround is to switch to the "Modeling" or "Sirius" perspective at least once (which forces the initialization of the required parts of Sirius) before trying to create a representation.
+
+[[Category:Sirius]]
