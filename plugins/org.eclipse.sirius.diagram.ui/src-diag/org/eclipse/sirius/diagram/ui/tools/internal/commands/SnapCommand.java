@@ -183,7 +183,7 @@ public class SnapCommand extends AbstractTransactionalCommand {
                 figure.translateToAbsolute(figureBounds);
 
                 // We compute the new GMF Absolute Location. The SnapToHelper works with absolute coordinates.
-                Point newGMFAbsoluteLocation = GMFHelper.getAbsoluteLocation((Node) newEditPart.getModel(), true);
+                Point newGMFAbsoluteLocation = GMFHelper.getAbsoluteLocation((Node) newEditPart.getModel(), true, true);
 
                 // We convert in screen coordinate as it is expected by the SnapToHelper
                 GraphicalHelper.logical2screen(newGMFAbsoluteLocation, newEditPart);
@@ -220,11 +220,11 @@ public class SnapCommand extends AbstractTransactionalCommand {
             // We use the CanonicalDBorderItemLocator to compute the new border node location in absolute coordinates
             Dimension spacing = (Dimension) newEditPart.getViewer().getProperty(SnapToGrid.PROPERTY_GRID_SPACING);
             CanonicalDBorderItemLocator itemLocator = initCDBIL(node, parentNode, spacing);
-            Rectangle newGMFAbsoluteBounds = GMFHelper.getAbsoluteBounds(node, true);
+            Rectangle newGMFAbsoluteBounds = GMFHelper.getAbsoluteBounds(node, true, false, false, false);
             Point newValidLocation = itemLocator.getValidLocation(newGMFAbsoluteBounds, node, Collections.singleton(node));
 
             // We compute the new relative coordinates
-            Point parentAbsoluteLocation = GMFHelper.getAbsoluteLocation(parentNode, true);
+            Point parentAbsoluteLocation = GMFHelper.getAbsoluteLocation(parentNode, true, false);
             Point newValidRelativeLocation = newValidLocation.getTranslated(parentAbsoluteLocation.getNegated());
 
             // We compute the move delta by calculating the difference between the current figure relative location and

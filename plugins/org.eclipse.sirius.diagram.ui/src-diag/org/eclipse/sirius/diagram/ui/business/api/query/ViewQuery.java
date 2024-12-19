@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -32,6 +32,7 @@ import org.eclipse.gmf.runtime.notation.Connector;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.JumpLinkStatus;
 import org.eclipse.gmf.runtime.notation.JumpLinkType;
+import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.Shape;
 import org.eclipse.gmf.runtime.notation.Style;
@@ -40,10 +41,12 @@ import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferenceConverter;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.business.api.query.ContainerMappingQuery;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.model.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramCorePreferences;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
@@ -61,8 +64,11 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeC
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeList2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListName2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListViewNodeListCompartment2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListViewNodeListCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.NotationViewIDs;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
@@ -381,12 +387,115 @@ public class ViewQuery {
     }
 
     /**
+     * Return if this GMF node is associated to DNodeList Sirius diagram element.
+     */
+    public boolean isListContainer() {
+        int type = SiriusVisualIDRegistry.getVisualID(this.view.getType());
+        return type == DNodeListEditPart.VISUAL_ID || type == DNodeList2EditPart.VISUAL_ID;
+    }
+
+    /**
+     * Return if this GMF node is compartment of node corresponding to a Sirius list container.
+     */
+    public boolean isListCompartment() {
+        int type = SiriusVisualIDRegistry.getVisualID(this.view.getType());
+        return type == DNodeListViewNodeListCompartmentEditPart.VISUAL_ID //
+                || type == DNodeListViewNodeListCompartment2EditPart.VISUAL_ID;
+    }
+
+    /**
+     * Return if this GMF node is a list item.
+     */
+    public boolean isListItem() {
+        int type = SiriusVisualIDRegistry.getVisualID(this.view.getType());
+        return type == DNodeListElementEditPart.VISUAL_ID;
+    }
+
+    /**
+     * Return if this GMF node is a region.
+     */
+    public boolean isRegion() {
+        return this.view.getElement() instanceof DDiagramElementContainer ddec //
+                && new DDiagramElementContainerExperimentalQuery(ddec).isRegion();
+    }
+
+    /**
+     * Return if this GMF node is contained in a vertical stack layout container.
+     */
+    public boolean isVerticalRegion() {
+        return view.eContainer() instanceof View container && new ViewQuery(container).isVerticalRegionContainerCompartment();
+    }
+
+    /**
      * Return if this GMF node have vertical/horizontal stack layout.
      */
     public boolean isRegionContainer() {
         return this.view.getElement() instanceof DDiagramElement element //
                 && element.getDiagramElementMapping() instanceof ContainerMapping mapping //
                 && new ContainerMappingQuery(mapping).isRegionContainer();
+    }
+
+    /**
+     * Return if this GMF node have vertical stack layout.
+     */
+    public boolean isVerticalRegionContainer() {
+        return this.view.getElement() instanceof DDiagramElement element //
+                && element.getDiagramElementMapping() instanceof ContainerMapping mapping //
+                && new ContainerMappingQuery(mapping).isVerticalStackContainer();
+    }
+
+    /**
+     * Return if this GMF node is a compartment of a container having vertical stack layout.
+     */
+    public boolean isVerticalRegionContainerCompartment() {
+        if (isFreeFormCompartment()) {
+            if (view.eContainer() instanceof Node container) {
+                return new ViewQuery(container).isVerticalRegionContainer();
+            }
+
+        }
+        return false;
+    }
+
+    /**
+     * Return if this GMF node is contained in an horizontal stack layout container.
+     */
+    public boolean isHorizontalRegion() {
+        return view.eContainer() instanceof View container && new ViewQuery(container).isHorizontalRegionContainerCompartment();
+    }
+
+    /**
+     * Return if this GMF node have horizontal stack layout.
+     */
+    public boolean isHorizontalRegionContainer() {
+        return this.view.getElement() instanceof DDiagramElement element //
+                && element.getDiagramElementMapping() instanceof ContainerMapping mapping //
+                && new ContainerMappingQuery(mapping).isHorizontalStackContainer();
+    }
+
+    /**
+     * Return if this GMF node is a compartment of a container having horizontal stack layout.
+     */
+    public boolean isHorizontalRegionContainerCompartment() {
+        if (isFreeFormCompartment()) {
+            if (view.eContainer() instanceof Node container) {
+                return new ViewQuery(container).isHorizontalRegionContainer();
+            }
+        }
+        return false;
+    }
+    
+    /**
+     * Return if this GMF node is a compartment of a container having an horizontal or a vertical stack layout.
+     */
+    public boolean isRegionContainerCompartment() {
+        if (isFreeFormCompartment()) {
+            if (view.eContainer() instanceof Node container) {
+                return new ViewQuery(container).isRegionContainer();
+            }
+
+        }
+        return false;
     }
 
     /**
@@ -416,7 +525,7 @@ public class ViewQuery {
      * 
      * @return the compartment or Optional.empty if view is not container or compartment not found
      */
-    public Optional<View> getFreeFormContainerCompartment() {
+    public Optional<? extends View> getFreeFormContainerCompartment() {
         if (this.isFreeFormContainer()) {
             List<View> children = this.view.getChildren();
             return children.stream() //

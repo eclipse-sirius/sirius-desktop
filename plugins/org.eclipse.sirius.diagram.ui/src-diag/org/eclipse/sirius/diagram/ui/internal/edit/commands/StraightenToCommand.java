@@ -667,7 +667,7 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
             // the move. It should be the same as the one stored in GMF but
             // sometimes, probably caused by some bugs, it could be wrong in
             // GMF.
-            Point parentAbsoluteLocation = GMFHelper.getAbsoluteLocation(parentNode);
+            Point parentAbsoluteLocation = GMFHelper.getAbsoluteLocation(parentNode, false, true);
             Rectangle initialAsboluteConstraint = initialRelativeConstraint.getTranslated(parentAbsoluteLocation);
             Point validInitialAbsoluteLocation = borderItemLocator.getValidLocation(initialAsboluteConstraint, node, new ArrayList<Node>(Arrays.asList(node)));
             Rectangle validInitialAbsoluteConstraint = initialAsboluteConstraint.getCopy();
