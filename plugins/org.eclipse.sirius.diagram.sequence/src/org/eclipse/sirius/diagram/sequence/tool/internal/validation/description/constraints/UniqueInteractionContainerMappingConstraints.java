@@ -51,7 +51,10 @@ public class UniqueInteractionContainerMappingConstraints extends AbstractModelC
         Collection<Layer> layersToInspect = new LinkedHashSet<>();
 
         if (eObj instanceof SequenceDiagramDescription sequenceDiagramDescription) {
-            layersToInspect.add(sequenceDiagramDescription.getDefaultLayer());
+            Layer defaultLayer = sequenceDiagramDescription.getDefaultLayer();
+            if (defaultLayer != null) {
+                layersToInspect.add(defaultLayer);
+            }
             layersToInspect.addAll(sequenceDiagramDescription.getAdditionalLayers());
         } else if (eObj instanceof Layer layer) {
             layersToInspect.add(layer);
