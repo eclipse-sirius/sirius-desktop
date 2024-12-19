@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) CEA.
+ * Copyright 2024 (c) CEA.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -19,14 +19,18 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InteractionContainer;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.EndOfLifeEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InteractionContainerEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.LifelineEditPart;
+import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
+import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
+import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
@@ -67,13 +71,29 @@ public class InteractionContainerAdditionalLayerTests extends AbstractSequenceDi
 
     private UIDiagramRepresentation diagram;
 
+
     /**
      * {@inheritDoc}
      */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
-        super.onSetUpAfterOpeningDesignerPerspective();
+        changeDiagramUIPreference(SiriusDiagramUiPreferencesKeys.PREF_OLD_UI.name(), true);
+        changeDiagramPreference(SiriusDiagramPreferencesKeys.PREF_DISPLAY_HEADER_SECTION.name(), false);
+    }
 
+    public void initDiagram() {
+        if (getSessionModel() == null) {
+
+        } else {
+            sessionAirdResource = new UIResource(designerProject, FILE_DIR, getSessionModel());
+            localSession = designerPerspective.openSessionFromFile(sessionAirdResource, true);
+            Option<String> dRepresentationName = getDRepresentationName();
+            if (dRepresentationName.some()) {
+                editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), getRepresentationId(), dRepresentationName.get(), DDiagram.class, true, true);
+            }
+        }
+
+        initEditor();
         diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(getRepresentationId())
                 .selectRepresentationInstance(getDRepresentationName().get(), UIDiagramRepresentation.class);
 
@@ -87,9 +107,54 @@ public class InteractionContainerAdditionalLayerTests extends AbstractSequenceDi
     }
 
     /**
-     * Check that on lifeline move and change position, the interaction container bounds also move accordingly.
+     * Check that on lifeline move and change position, the interaction container bounds also move accordingly.In this
+     * version of the test, the property to have a left margin dynamic is true. This test needs to be run on its own because
+     * the property is initialized for the whole VM and can't be changed.
      */
-    public void testInteractionResizeOnInstanceRolePositionChange() {
+    public void _testInteractionResizeOnInstanceRolePositionChangeWithLeftMargin() {
+        String oldPreferenceValue = System.getProperty("org.eclipse.sirius.diagram.sequence.layout.interaction.container.dynamic.left");
+        try {
+            System.setProperty("org.eclipse.sirius.diagram.sequence.layout.interaction.container.dynamic.left", String.valueOf(true));
+            initDiagram();
+            // Activate the extension layer.
+            ICondition done = new OperationDoneCondition();
+            diagram.changeLayerActivation(INTERACTION_CONTAINER_LAYER);
+            bot.waitUntil(done);
+
+            // Check that the Interaction Container east bound correspond to the Instance Role C east bound + margin
+            SWTBotGefEditPart interactionContainereditPart = editor.getEditPart("Lifelines", InteractionContainerEditPart.class);
+            Rectangle interactionContainerBounds = editor.getBounds(interactionContainereditPart);
+            assertEquals("Interaction Container east bound is not where expected", instanceRoleEditPartCBounds.getRight().x + InteractionContainer.MARGIN, interactionContainerBounds.getRight().x, 1);
+
+            /*
+             * Move lifelines to graphically change their order.
+             */
+            // drag LIFELINE_C to (250,0) delta
+            editor.drag(instanceRoleEditPartCBot, instanceRoleEditPartCBounds.x + 250, origin.y);
+            // Drag LIFELINE_A to (300,0) delta, Lifeline A forth between Lifeline B
+            // and Lifeline C
+            editor.drag(instanceRoleEditPartABot, instanceRoleEditPartABounds.x + 300, origin.y);
+
+            // Check that the Interaction Container east bound still correspond to the Instance Role C east bound + margin
+            instanceRoleEditPartCBot = editor.getEditPart(LIFELINE_C);
+            instanceRoleEditPartCBounds = editor.getBounds(instanceRoleEditPartCBot);
+            instanceRoleEditPartBBot = editor.getEditPart(LIFELINE_B);
+            instanceRoleEditPartBBounds = editor.getBounds(instanceRoleEditPartBBot);
+            interactionContainereditPart = editor.getEditPart("Lifelines", InteractionContainerEditPart.class);
+            interactionContainerBounds = editor.getBounds(interactionContainereditPart);
+            assertEquals("Interaction Container east bound is not where expected", instanceRoleEditPartCBounds.getRight().x + InteractionContainer.MARGIN, interactionContainerBounds.getRight().x, 1);
+            assertEquals("Interaction Container west bound is not where expected", instanceRoleEditPartBBounds.getLeft().x - InteractionContainer.MARGIN, interactionContainerBounds.getLeft().x, 1);
+        } finally {
+            System.setProperty("org.eclipse.sirius.diagram.sequence.layout.interaction.container.dynamic.left", oldPreferenceValue != null ? oldPreferenceValue : String.valueOf(false));
+        }
+    }
+
+    /**
+     * Check that on lifeline move and change position, the interaction container bounds also move accordingly.In this
+     * version of the test, the property to have a left margin dynamic is true.
+     */
+    public void testInteractionResizeOnInstanceRolePositionChangeWithoutLeftMargin() {
+        initDiagram();
         // Activate the extension layer.
         ICondition done = new OperationDoneCondition();
         diagram.changeLayerActivation(INTERACTION_CONTAINER_LAYER);
@@ -117,13 +182,14 @@ public class InteractionContainerAdditionalLayerTests extends AbstractSequenceDi
         interactionContainereditPart = editor.getEditPart("Lifelines", InteractionContainerEditPart.class);
         interactionContainerBounds = editor.getBounds(interactionContainereditPart);
         assertEquals("Interaction Container east bound is not where expected", instanceRoleEditPartCBounds.getRight().x + InteractionContainer.MARGIN, interactionContainerBounds.getRight().x, 1);
-        assertEquals("Interaction Container west bound is not where expected", instanceRoleEditPartBBounds.getLeft().x - InteractionContainer.MARGIN, interactionContainerBounds.getLeft().x, 1);
+        assertEquals("Interaction Container west bound is not where expected", -1, interactionContainerBounds.getLeft().x, 1);
     }
 
     /**
      * Check that when the last lifeline move back and forth, the interaction container bounds also move accordingly.
      */
     public void testInteractionResizeOnInstanceRoleMoveBackAndForth() {
+        initDiagram();
         // Activate the extension layer.
         ICondition done = new OperationDoneCondition();
         diagram.changeLayerActivation(INTERACTION_CONTAINER_LAYER);
@@ -164,6 +230,7 @@ public class InteractionContainerAdditionalLayerTests extends AbstractSequenceDi
      * accordingly.
      */
     public void testInteractionResizeOnExecutionMove() {
+        initDiagram();
         // Activate the extension layer.
         ICondition done = new OperationDoneCondition();
         diagram.changeLayerActivation(INTERACTION_CONTAINER_LAYER);
