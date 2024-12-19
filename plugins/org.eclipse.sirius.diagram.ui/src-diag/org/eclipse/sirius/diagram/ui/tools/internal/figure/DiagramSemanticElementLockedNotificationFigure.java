@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -247,24 +247,6 @@ public class DiagramSemanticElementLockedNotificationFigure extends Ellipse impl
         final IFigure notificationFigure = new DiagramSemanticElementLockedNotificationFigure(rootEditPart, message, tooltip, lockStatus);
         removeNotification(rootEditPart);
         pane.add(notificationFigure);
-    }
-
-    /**
-     * Create a new notification figure and display it to the diagram.
-     * 
-     * @param rootEditPart
-     *            the diagram root edit part
-     * @param message
-     *            the message
-     * @param lockStatus
-     *            the {@link LockStatus} to display in the notification
-     * @param height
-     *            notification figure height
-     * @param width
-     *            notification figure width
-     */
-    public static void createNotification(DiagramRootEditPart rootEditPart, String message, LockStatus lockStatus, int height, int width) {
-        createNotification(rootEditPart, message, lockStatus, height, width);
     }
 
     /**
