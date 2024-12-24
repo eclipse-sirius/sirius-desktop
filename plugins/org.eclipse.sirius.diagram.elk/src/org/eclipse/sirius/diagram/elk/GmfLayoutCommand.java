@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2024 Kiel University and others.
+ * Copyright (c) 2009, 2025 Kiel University and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -170,13 +170,13 @@ public class GmfLayoutCommand extends AbstractTransactionalCommand {
         for (ShapeLayoutData shapeLayout : shapeLayouts) {
             // set new location of the element
             if (shapeLayout.location != null) {
-                ViewUtil.setStructuralFeatureValue(shapeLayout.view, NotationPackage.eINSTANCE.getLocation_X(), Integer.valueOf(shapeLayout.location.x));
-                ViewUtil.setStructuralFeatureValue(shapeLayout.view, NotationPackage.eINSTANCE.getLocation_Y(), Integer.valueOf(shapeLayout.location.y));
+                ViewUtil.setStructuralFeatureValue(shapeLayout.view, NotationPackage.eINSTANCE.getLocation_X(), Math.toIntExact(Math.round(shapeLayout.location.preciseX())));
+                ViewUtil.setStructuralFeatureValue(shapeLayout.view, NotationPackage.eINSTANCE.getLocation_Y(), Math.toIntExact(Math.round(shapeLayout.location.preciseY())));
             }
             // set new size of the element
             if (shapeLayout.size != null) {
-                ViewUtil.setStructuralFeatureValue(shapeLayout.view, NotationPackage.eINSTANCE.getSize_Width(), Integer.valueOf(shapeLayout.size.width));
-                ViewUtil.setStructuralFeatureValue(shapeLayout.view, NotationPackage.eINSTANCE.getSize_Height(), Integer.valueOf(shapeLayout.size.height));
+                ViewUtil.setStructuralFeatureValue(shapeLayout.view, NotationPackage.eINSTANCE.getSize_Width(), Math.toIntExact(Math.round(shapeLayout.size.preciseWidth())));
+                ViewUtil.setStructuralFeatureValue(shapeLayout.view, NotationPackage.eINSTANCE.getSize_Height(), Math.toIntExact(Math.round(shapeLayout.size.preciseHeight())));
             }
         }
         shapeLayouts.clear();
