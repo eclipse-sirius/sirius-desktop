@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -86,9 +86,11 @@ public class SequenceExecutionBasicAndReturnMessageTest extends AbstractDefaultM
         CheckReturnMessageNumber checker = CheckReturnMessageNumber.createIncrementChecker(editor);
         createMessage(InteractionsConstants.RETURN_TOOL_ID, lifelineAPosition, return1yClic, lifelineBPosition, 300);
         bot.waitUntil(checker);
+
+        CheckNotEmptySelection condition = new CheckNotEmptySelection(editor, SequenceMessageEditPart.class);
         editor.click(lifelineAPosition + 25, return1yClic);
-        bot.waitUntil(new CheckNotEmptySelection(editor, SequenceMessageEditPart.class));
-        firstReturnMessage = getSelectedMessage();
+        bot.waitUntil(condition);
+        firstReturnMessage = (SequenceMessageEditPart) condition.getFoundPart();
         editor.scrollTo(0, 0);
         editor.click(0, 0);
 
@@ -144,9 +146,11 @@ public class SequenceExecutionBasicAndReturnMessageTest extends AbstractDefaultM
         return2yClic = execA1.y + LayoutConstants.MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP;
         createMessage(InteractionsConstants.RETURN_TOOL_ID, execA1.x, return2yClic, lifelineBPosition, 300);
         bot.waitUntil(checker);
+
+        condition = new CheckNotEmptySelection(editor, SequenceMessageEditPart.class);
         editor.click(execA1.x + 35, return2yClic);
-        bot.waitUntil(new CheckNotEmptySelection(editor, SequenceMessageEditPart.class));
-        secondReturnMessage = getSelectedMessage();
+        bot.waitUntil(condition);
+        secondReturnMessage = (SequenceMessageEditPart) condition.getFoundPart();
         editor.click(0, 0);
 
         // Validates the position
@@ -163,9 +167,11 @@ public class SequenceExecutionBasicAndReturnMessageTest extends AbstractDefaultM
         return3yClic = execA1.y + LayoutConstants.MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP * 2;
         createMessage(InteractionsConstants.RETURN_TOOL_ID, lifelineBPosition, return3yClic, execA1.x, return3yClic);
         bot.waitUntil(checker);
+
+        condition = new CheckNotEmptySelection(editor, SequenceMessageEditPart.class);
         editor.click(execA1.x + 35, return3yClic);
-        bot.waitUntil(new CheckNotEmptySelection(editor, SequenceMessageEditPart.class));
-        thirdReturnMessage = getSelectedMessage();
+        bot.waitUntil(condition);
+        thirdReturnMessage = (SequenceMessageEditPart) condition.getFoundPart();
         editor.click(0, 0);
 
         // Validates the position of the executions
@@ -370,6 +376,8 @@ public class SequenceExecutionBasicAndReturnMessageTest extends AbstractDefaultM
         assertMessageVerticalPosition(firstReturnMessage, return1yClic);
 
         validateOrdering();
+        
+        // State for the undo/redo test in test_Undo_Redo_Move
 
         ICondition done = new OperationDoneCondition();
         editor.drag(e1Bounds.getLocation(), e1Bounds.getLocation().getTranslated(0, -20));
@@ -548,6 +556,17 @@ public class SequenceExecutionBasicAndReturnMessageTest extends AbstractDefaultM
      */
     public void test_Undo_Redo_Move() throws Exception {
         test_Move();
+
+        // Undo sync call related actions
+        undo(localSession.getOpenedSession());
+        undo(localSession.getOpenedSession());
+        undo(localSession.getOpenedSession());
+        undo(localSession.getOpenedSession());
+        undo(localSession.getOpenedSession());
+        undo(localSession.getOpenedSession());
+        undo(localSession.getOpenedSession());
+        undo(localSession.getOpenedSession());
+        undo(localSession.getOpenedSession());
 
         Rectangle e1Bounds = getExecutionScreenBounds(LIFELINE_A, 0);
         Rectangle e2Bounds = getExecutionScreenBounds(LIFELINE_A, 1);

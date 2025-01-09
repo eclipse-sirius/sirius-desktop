@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2022 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,8 +12,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
@@ -27,6 +29,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.EditPolicy;
+import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gmf.runtime.common.ui.util.DisplayUtils;
 import org.eclipse.gmf.runtime.diagram.core.listener.DiagramEventBroker;
 import org.eclipse.gmf.runtime.diagram.ui.DiagramEventBrokerThreadSafe;
@@ -377,7 +380,8 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
 
             Runnable instanceRoleRefreshRunnable = () -> {
                 // @formatter:off
-                Stream<InstanceRoleEditPart> instanceRoleEditParts = SequenceDiagramEditPart.this.getChildren().stream()
+                List<? extends GraphicalEditPart> children = new ArrayList<>(SequenceDiagramEditPart.this.getChildren());
+                Stream<InstanceRoleEditPart> instanceRoleEditParts = children.stream()
                                                                               .filter(InstanceRoleEditPart.class::isInstance)
                                                                               .map(InstanceRoleEditPart.class::cast);
                 // @formatter:on

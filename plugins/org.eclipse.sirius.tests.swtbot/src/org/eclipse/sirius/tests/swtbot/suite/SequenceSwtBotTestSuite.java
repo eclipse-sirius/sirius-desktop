@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -150,7 +150,7 @@ public class SequenceSwtBotTestSuite extends TestCase {
         suite.addTestSuite(SequenceSpaceTest.class);
         suite.addTestSuite(RefreshLayoutScopeTests.class);
         suite.addTestSuite(InstanceRoleOrderingTests.class);
-        //        suite.addTestSuite(InteractionContainerTests.class);
+        // suite.addTestSuite(InteractionContainerTests.class);
         // suite.addTestSuite(ContextMenuInDiagramTest.class);
     }
 
@@ -179,7 +179,6 @@ public class SequenceSwtBotTestSuite extends TestCase {
             addGerritPart(suite);
 
             suite.addTestSuite(SequenceBasicMessageTest.class);
-            suite.addTestSuite(SequenceExecutionBasicAndReturnMessageObervationPointDisplayedTest.class);
             suite.addTestSuite(SequenceMessageToSelfTest.class);
             suite.addTestSuite(ExecutionLinkedMessageReconnectionTests.class);
             suite.addTestSuite(SequenceReturnMessageTest.class);
@@ -218,6 +217,7 @@ public class SequenceSwtBotTestSuite extends TestCase {
             suite.addTestSuite(FrameReparentTest.class);
             suite.addTestSuite(HeaderSequenceDiagramTests.class);
             suite.addTestSuite(SequenceExecutionBasicAndReturnMessageTest.class);
+            suite.addTestSuite(SequenceExecutionBasicAndReturnMessageObervationPointDisplayedTest.class);
             suite.addTestSuite(ExecutionMoveTests.class);
             suite.addTestSuite(TwoSessionsTests.class);
         }
