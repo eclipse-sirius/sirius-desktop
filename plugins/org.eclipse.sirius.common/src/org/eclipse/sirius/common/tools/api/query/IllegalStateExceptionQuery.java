@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2020, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@
 package org.eclipse.sirius.common.tools.api.query;
 
 import org.eclipse.core.runtime.Assert;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 
 /**
  * Queries on IllegalStateException.
@@ -28,8 +29,9 @@ public class IllegalStateExceptionQuery {
      */
     private static final String LIFECYCLE_EXCEPTION_NAME = "org.eclipse.net4j.util.lifecycle.LifecycleException"; //$NON-NLS-1$
 
-    /** The message of a LifeCycleExpcetion when the server is not reachable. */
-    private static final String NOT_ACTIVE_CDOTRANSACTION_MESSAGE = "Not active: CDOTransactionImpl"; //$NON-NLS-1$
+    private static final String NOT_ACTIVE_CDOTRANSACTION_MESSAGE = "Not active: Transaction"; //$NON-NLS-1$
+
+    private static final String NOT_ACTIVE_CDOVIEW_MESSAGE = "Not active: View"; //$NON-NLS-1$
 
     private final IllegalStateException exception;
 
@@ -43,7 +45,7 @@ public class IllegalStateExceptionQuery {
         Assert.isNotNull(exception);
         this.exception = exception;
     }
-    
+
     /**
      * In Sirius, used in a team environment, the resource, and all "contained" EObject, can be unreachable, most of the
      * time because the connection with the server has been lost. In this case a
@@ -54,6 +56,8 @@ public class IllegalStateExceptionQuery {
      *         otherwise.
      */
     public boolean isAConnectionLostException() {
-        return exception.getClass().getName().equals(LIFECYCLE_EXCEPTION_NAME) && NOT_ACTIVE_CDOTRANSACTION_MESSAGE.equals(exception.getMessage());
+        String message = exception.getMessage();
+        return exception.getClass().getName().equals(LIFECYCLE_EXCEPTION_NAME) && !StringUtil.isEmpty(message)
+                && (message.startsWith(NOT_ACTIVE_CDOTRANSACTION_MESSAGE) || message.startsWith(NOT_ACTIVE_CDOVIEW_MESSAGE));
     }
 }
