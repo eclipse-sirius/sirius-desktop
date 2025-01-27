@@ -1,0 +1,29 @@
+This page contains Frequently Asked Questions and other "How To" recipes about Sirius. See also [http://www.eclipse.org/sirius/doc the documentation] or the [https://wiki.eclipse.org/Sirius/Cookbook Cookbook].
+
+== General Questions about Sirius ==
+
+=== How do I migrate an existing project from Obeo Designer 6.2 to Sirius 1.0? ===
+
+The recommended approach is to switch first to Sirius 0.9, which uses the exact same code as Obeo Designer 6.2 except for bundles and package names (i.e. <code>fr.obeo.dsl.viewpoint</code> has become <code>org.eclipse.sirius</code>), and then to migrate to Sirius 1.0, possibly moving to each milestone release in turn, depending on the complexity of the modelers. The release notes available at https://www.eclipse.org/sirius/doc/Release%20Notes.html give complete details of all changes between each version. Do not be alarmed by the volume of changes in the release notes, in practice unless you have a lot of custom Java code which calls into the Viewpoint/Sirius APIs, very few of the changes described there impact you.
+
+In general, a strategy which will work fine in 90% of the cases is to update the MANIFEST.MF of your plug-ins to to match the new names as listed in the table at https://www.eclipse.org/sirius/doc/Release%20Notes.html#sirius0.9, and then right-click on each of your plug-ins and select Source > Organize imports. Except in the relatively rare cases of name clashes, this should update the imports in your source to use the <code>org.eclipse.sirius.*</code> classes. You may still have a few compilation errors after that, but if that's the case simply lookup for the problematic classes in the release notes to see what changed about it.
+
+Be aware that the table mentioned above with the bundle names mappings is for Sirius 0.9. If you want to switch directly to Sirius 1.0 you must be aware that 1.0.0M4 and 1.0.0M7 introduced new bundles and moved some code around. If your own code refered to the moved classes, you may need more adjustments to your MANIFEST.MF files for the Sirius 1.0.0 classes to be visible.
+
+If you had workspaces with Modeling Projects created using Obeo Designer 6.2, they will not be recognized as such by Sirius (the nature's id has changed). Simply right-click on them and select "Configure > Convert to Modeling Project".
+
+Finally, for the <code>*.odesign</code> and <code>*.aird</code> files, you do not need to do anything. They are transparently converted into Sirius 1.0-compatible format in memory when loaded. If you do not change them, they will be converted every time they are loaded. This should not normally be an issue, but you can force a save (by making a trivial change) to ensure they are serialized as Sirius 1.0.0 models on disk.
+
+== Questions About Specifying Modelers with Sirius ==
+
+=== When I select a element in Sirius diagram, it returns a instance of DDiagramElement, but i want to get instances of EObject. Is there any way to get EObject from selection in Sirius Diagram? ===
+
+All Sirius model elements which represent a semantic/domain element implement the <code>org.eclipse.sirius.viewpoint.DSemanticDecorator</code> interface, which provides the <code>getTarget()</code> method (actually an EMF EReference) to access the underlying <code>EObject</code>.
+
+This is the case for:
+* all "top-level" representations (diagrams, which in practice are instances of <code>DSemanticDiagram</code> that inherit from <code>DDiagram</code>; tables, instances of <code>DTable</code>; and trees, instances of <code>DTree</code>);
+* all the individual elements (<code>DRepresentationElement</code>) inside these representations: <code>DNodes</code>/<code>DContainer</code>/<code>DEdges</code>/etc. in diagrams, <code>DLine</code>/<code>DColumn</code> in tables, and <code>DTreeItem</code> in tree representations. <code>DRepresentationElement</code> also provides <code>getSemanticElements()</code> to access the "secondary" associated semantic elements, if any (the ones specified via "Associated Elements Expressions" in the mapping definitions).
+
+== Questions About Using Sirius-Based Modelers ==
+
+[[Category:Sirius]]

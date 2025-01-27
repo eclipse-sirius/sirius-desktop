@@ -1,0 +1,199 @@
+The move to Eclipse, which implies a complete renaming of the existing Viewpoint code base, implies by definition a major API break. We want to take this opportunity to improve the code modularization. This page describes the target organisation and the actions needed on the current code base to get there.
+
+''Note'': The page may sometimes refer to the structure of the source code before the conversion to Eclipse, which is not publicly visible.
+
+== Git Repository Layout ==
+
+The source code will be in a single Git repository, organized in the following directories:
+* <code>plugins</code>: source code for all the plug-ins of Sirius itself;
+* <code>doc</code>: the documentation plug-ins;
+* <code>examples</code>: example Sirius modelers and sample metamodel definitions used by the examples and/or the tests;
+* <code>tests</code>: automated tests (JUnit and SWTbot);
+* <code>features</code>: feature definitions (including doc, examples and test features);
+* <code>releng</code>: parent project (for the root POM and shared files), target platform definitions, update-sites definitions;
+* <code>tools</code>: source code for development tools that contributors must install in their development environment (e.g. Acceleo generators used to generate parts of the source code). These are not part of Sirius but are required to develop Sirius.
+
+== Legacy Cleanups ==
+
+The codebase which will be initially committed for Sirius already has a long history as Viewpoint (developed by Obeo and Thales as a proprietary product for close to 7 years). Some of the code only makes sense for historical reasons and compatibility with existing users/clients. Because the Sirius code, once renamed, will by definition break compatibility with the the old code in an irrecoverable manner, all this legacy support code becomes irrelevant in Sirius, and should be removed. A non-exhaustive list of the possible cleanups:
+* Remove all sections of commented-out code (this has not much to do with the switch to Sirius, and such sections should not exist, but they do and should be removed).
+* Review all elements which are marked as ''deprecated'':
+** If a better alternative already exists (which should be the more common case), remove the legacy version and make sure all Sirius code use the new version.
+** If no better alternative exists (sometimes we marked stuff as deprecated to remind us that we should find a better solution but never got the time to do it), either create one if it is not too costly (and migrate to it as above), or remove the deprecation and create a bugzilla to remember that some sub-optimal mechanism should be replaced.
+* Remove parts of the documentation which only make sense in the context of legacy versions (e.g. release notes for versions before Sirius).
+* Remove support for automatic model migration from old versions of Viewpoint.
+
+== General Rules About Code Organization ==
+
+=== Modularity Criteria ===
+
+The general criteria used to define the plug-ins boundaries are:
+* Common ''vs'' Runtime ''vs'' Tooling
+** ''Runtime'' code is needed to execute a deployed Sirius modeler;
+** ''Tooling'' code is needed to develop a Sirius modeler;
+** ''Common'' code is shared by both runtime and tooling;
+** Both runtime and tooling plug-ins can depend on common plug-ins (that is their purpose). Tooling plug-ins may depend on common and runtime plug-ins (for example to make sure the tooling knows exactly how something will be interpreted by the runtime), as long as the runtime plug-in is not more dialect or technology-specific than the tooling plug-in (for example, a generic tooling plug-in can not depend on a diagram-specific runtime plug-in).
+* Generic ''vs'' Dialect-Specific ''vs'' Technology-Specific
+** ''Generic'' means dialect-agnostic, it corresponds to code which is common to all kinds of representations supported by Sirius (diagrams, tables, etc.)
+** ''Dialect-Specific'' corresponds to the core semantics of a kind of representation (e.g. diagrams), independently of the concrete technology used to implement it;
+** ''Technology-Specific'' corresponds to the concrete implementation of a dialect on top of a specific technology (e.g. GMF Runtime for diagrams).
+* Core ''vs'' Eclipse-specific ''vs'' UI
+** ''Core'' code is pure library code with no dependency on any runtime framework (or maybe juste OSGi), and can be run headless and outside of an Eclipse runtime;
+** ''Eclipse-Specific'' code depends on the Eclipse framework, but not on the UI; it can still be run headless;
+** ''UI'' code requires a complete Eclipse Workbench (and provides the integration inside of it).
+* API ''vs'' internal API ''vs'' SPI ''vs'' internal (this is more for package boundaries than plug-in boundaries)
+** ''API'' is the official API that can be used by non-Sirius code;
+** ''internal API'' is technically API (i.e. exported by the OSGi bundles) but reserved for internal usages inside of Sirius itself. It ''can'' be used by non-Sirius code but it does not have the same kind of guarantees in terms of backward compatibility;
+** ''SPI'' (Service Provider Interface) is specifically targeted for systems which want to extend Sirius. This typically includes extension points and interface definitions that extender must implement. These may be used by Sirius itself, for example to provide default implementations.
+** ''internal'' is all the rest, and is not accessible outside of Sirius.
+
+Note that these criteria should not ''dictate'' the final architecture, but simply allow a better control and understanding of the dependencies. Simply creating a bundle for each combination of these criterion and put each existing piece of code in the correct plug-in ''bucket'' would not result in any kind of meaningful architecture. However, the existing code base is more or less organized along such semi-technical boundaries and a good first step would be to ensure this structure is actually correctly enforced (this is not the case currently).
+
+=== Library Extensions ===
+
+In addition, we will use the following convention in order to isolate and control the dependencies we have to external libraries and frameworks. For each such external dependencies, we will create an ''extension bundle'' named <code>org.eclipse.sirius.ext.*</code>. Such a bundle can only depend on the library it extends and optionally Google Guava. It should not provide any extension point, OSGi service, or any kind of singleton or global state. Basically, <code>org.eclipse.sirius.ext.xxx</code> corresponds to ''the things we wish would exist in <code>xxx</code> to make our life easier in Sirius'' (in the same way that Guava is ''things we wish would exist in the Java standard library''). For example, <code>org.eclipse.sirius.ext.draw2d</code> would contain most of the custom figures and various geometry helpers which are currently scattered in the Sirius Diagrams code base. The expected benefits of this:
+* it will force us to write the corresponding code in a more generic, configurable, and testable way (it can not depend on Sirius);
+* it will avoid mixing Sirius-specific business logic with "technical" code (e.g. currently we have cases of figures that know way too much about the context they are in and contain important policy code what has nothing to do inside a piece of code whose role is to put pixels on the screen);
+* related to the previous points, it will make more of the Sirius-specific code independent on specific implementation technologies (by itself this convention is not enough for this, but see below for more about this);
+* finally, some of these extensions may be candidates for contributions to the corresponding library (e.g. if we extract some cool figure we created for Sirius in a way that it only depends on Draw2D, maybe we can try to contribute to Draw2D itself).
+
+=== External Dependencies ===
+
+In addition to other Eclipse projects, Sirius depends on the following:
+* Java-SE 1.6. Currently we are compatible with Java 1.5, but we are considering the move.
+* Google Guava. Guava 11.0.2 is the version we requested in our CQs, but if we move to Java 1.6+, we can go with at least Guava 14.
+* OSGi R4. Note that 99.9% of the code should be independent on OSGi APIs, but the plug-ins should be well-behaved OSGi bundles and some APIs will probably be exposed as OSGi service.
+
+And for the automated tests:
+* JUnit 4 (the latest version included in Eclipse).
+* SWTBot (the latest version compatible with all the Eclipse releases we support).
+
+=== Automated Tests ===
+
+The code for automated tests will be isolated in separate plug-ins, one or two for each Sirius plug-in. For example, say we have a Sirius plug-in named <code>org.eclipse.sirius.session.core</code>. Its automated JUnit tests would be in <code>org.eclipse.sirius.session.core.tests</code>. Sirius plug-ins which implement UI-level functionality should also have automated UI tests (using SWTbot); the UI tests for the hypothetical <code>org.eclipse.sirius.session.ui</code> would be in <code>org.eclipse.sirius.session.ui.tests.swtbot</code>.
+
+* A Sirius plug-in should export its internal packages with its own test plug-in(s) marked as <code>x-friend</code>.
+* Test plug-ins can share common code (custom asserts, setup helpers etc.) in plug-ins named <code>*.tests.support</code> and <code>*.tests.swtbot.support</code>. Such test support plug-ins should be organized using the same modularity critera as the rest of the code, so that a test for a core feature does not depend on the UI through its dependency * A test plug-in can depend on:
+** the plug-in it tests (obviously);
+** JUnit (including <code>org.hamcrest.*</code>), EasyMock and/or SWTbot;
+** any test support plug-in which does not add another dependency;
+** the dependencies of the plug-in it tests and their own test plug-ins;
+** example projects (in the <code>examples</code> directory of the Git repo) or even external projects like UML for its test fixtures.
+
+''Note'': There may be limitations in the way Maven/Surefire/Tycho handle unit and integration tests which impact the way we organize test code.
+
+== Modules ==
+
+''Note'': This is meant to be a relatively high-level view of the different modules and services. In practice, the implementation of some of these will be split into more fine-grained separate OSGi bundles using the modularity criteria described above.
+
+=== Library Extensions ===
+
+As a first step towards a better modularization, and later towards a nicer architecture, we should move all the purely technical code into separate extension libraries. This would probably reduce ''a lot'' the volume of code which can be considered to be Sirius itself, and make it much easier to understand, reorganize and evolve it.
+
+At a first glance, the library extensions which could probably be extracted:
+* <code>org.eclipse.sirius.ext.base</code> (generic Java utilities, data structures and algorithms)
+* <code>org.eclipse.sirius.ext.emf</code>
+* <code>org.eclipse.sirius.ext.emf.edit</code>
+* <code>org.eclipse.sirius.ext.emf.ui</code>
+* <code>org.eclipse.sirius.ext.emf.tx</code>
+* <code>org.eclipse.sirius.ext.swt</code>
+* <code>org.eclipse.sirius.ext.jface</code>
+* <code>org.eclipse.sirius.ext.e3</code>
+* <code>org.eclipse.sirius.ext.e3.wks</code>
+* <code>org.eclipse.sirius.ext.e3.ui</code>
+* <code>org.eclipse.sirius.ext.draw2d</code>
+* <code>org.eclipse.sirius.ext.gef</code>
+* <code>org.eclipse.sirius.ext.gmf</code>
+* <code>org.eclipse.sirius.ext.junit</code>
+* <code>org.eclipse.sirius.ext.swtbot</code>
+
+=== Sirius Core Platform and Services ===
+
+Generic and mostly independent services.
+
+* <code>org.eclipse.sirius.permissions</code>
+** API for generic permissions checks on EMF model access
+** basic pass-through implementation, extensible
+* <code>org.eclipse.sirius.query</code>
+** generic API and basic runtime for model query
+** supports multiple query engines/languages
+** basic lightweight implementations (var:, feature:, maybe service: deserves its own bundle)
+** corresponds to the existing <code>org.eclipse.sirius.common.tools.api.interpreter</code> and associated code.
+* <code>org.eclipse.sirius.query.mtl</code>
+** support for Acceleo 3/MTL as query language
+* <code>org.eclipse.sirius.tx</code>
+** infrastructure for model changes definition and (transactional) application
+** support for declarative changes
+** integrates with scope to support (best effort) before/after impact analysis
+** (scalable) support for triggers: immediate, pre-commit, post-commit
+** uses EMF Tx underneath but does not expose it
+** separate bundles to integrate with the various Eclipse, EMF, EMF Tx, GEF, GMF notions of Action/Command
+* <code>org.eclipse.sirius.sync</code>
+** detects changes in external (to a model) sources of interest (incl. discovery of new models/resources)
+** provides different policies (extensible) to integrate these changes
+* <code>org.eclipse.sirius.migration</code>
+** generic framework for transparent model migratio across meta-model versions
+** extensible: other sirius modules which define their own meta-model should contribute
+* <code>org.eclipse.sirius.session</code>
+* <code>org.eclipse.sirius.viewpoint</code> and <code>org.eclipse.sirius.viewpoint.tooling</code>
+* <code>org.eclipse.sirius.validation</code> and <code>org.eclipse.sirius.validation.tooling</code>
+* <code>org.eclipse.sirius.model-operations</code> and <code>org.eclipse.sirius.model-operations.tooling</code>
+* <code>org.eclipse.sirius.modeling-project</code> and <code>org.eclipse.sirius.modeling-project.ui</code>
+
+=== Sirius Diagrams ===
+
+* <code>org.eclipse.sirius.diagram.model</code>
+* <code>org.eclipse.sirius.diagram.tooling</code>
+* <code>org.eclipse.sirius.diagram.runtime</code>
+** refresh (semantic model to dialect model via description model)
+** behavior (binding between user actions and tool application, tool execution and side-effect handling)
+* <code>org.eclipse.sirius.diagram.runtime.ui</code>
+** integration with the Eclipse workbench (menus, toolbars, actions etc.)
+* <code>org.eclipse.sirius.diagram.runtime.gmf</code>
+** rendering and behavior parts on top of GMF with edit parts, figures and policies
+
+=== Sirius Sequence Diagrams ===
+
+* <code>org.eclipse.sirius.diagram.sequence.model</code>
+* <code>org.eclipse.sirius.diagram.sequence.tooling</code>
+* <code>org.eclipse.sirius.diagram.sequence.runtime</code>
+* <code>org.eclipse.sirius.diagram.sequence.runtime.gmf</code>
+
+=== Sirius Tables ===
+
+* <code>org.eclipse.sirius.table.model</code>
+* <code>org.eclipse.sirius.table.tooling</code>
+* <code>org.eclipse.sirius.table.runtime</code>
+* <code>org.eclipse.sirius.table.runtime.swt</code>
+
+=== Sirius Trees ===
+
+* <code>org.eclipse.sirius.tree.model</code>
+* <code>org.eclipse.sirius.tree.tooling</code>
+* <code>org.eclipse.sirius.tree.runtime</code>
+* <code>org.eclipse.sirius.tree.runtime.swt</code>
+
+== Work Plan ==
+
+The complete modularization/re-architecture is a huge undertaking which will need to happen in several phases.
+
+=== Phase 1 (2013-09) ===
+
+This phase starts right at the submission of the code, ends with the first official Sirius release (probably named 0.9.0). It will be timeboxed, so not all steps will be complete, but the most important is to do the most impacting changes before too many client code depends on the old structure, and to validate the new code organization.
+
+This phase will include:
+* Commit of the existing (rebranded) code organised as described in the [[#Git Repository Layout|Git repository layout]] section.
+* Make sure Sirius can build (using Tycho) on the Eclipse infrastructure, including the appropriate Hudson jobs.
+* Initialize some of the [[#Library Extensions|library extensions]] projects so that they are ready to accept candidate code we find when re-structuring the project.
+* Create the structure of the new projects/bundles, as described in the [[#Modules|modules]] section.
+* Create the structure of ''some'' test projects, as described in the [[#Automated Tests|automated tests]] section to validate this organization (in particular w.r.t. Tycho).
+* Go over the existing code, and move it into the most appropriate module in the new organization. The priority is on re-dispatching the existing code, '''not''' on rewriting it. Obviously ''some'' form of rewriting will be necessary, for example to break unwanted dependencies, but it should be kept to a minimum (see below) and it should absolutely not change the behavior.
+* While going over the existing code, and only as time permits (i.e. only in easy cases), remove [[#Legacy Cleanups|legacy code]] and move technical helpers into the appropriate [[#Library Extensions|library extensions]].
+
+By the end we should have a version of Sirius that:
+* builds on the Eclipse infrastructure;
+* can run automated tests (JUnit and SWTBot) on the Eclipse infrastructure;
+* works almost exactly as the last Viewpoint version used for the initial commit;
+* ...
+
+[[Category:Sirius]]

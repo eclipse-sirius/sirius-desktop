@@ -1,0 +1,30 @@
+Sirius 6.1.0 is a major release. See [https://projects.eclipse.org/projects/modeling.sirius/releases/6.1.0 the release record] for an overview of the major features and important bug fixes.
+
+== Availability ==
+
+Sirius 6.1.0 was released on 2018-10-19 (tag [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/tag/?id=v6.1.0 v6.1.0], commit [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/commit/?id=6b84a740310876c410b3a9bfb6f5365945b5d79f 6b84a740310876c410b3a9bfb6f5365945b5d79f]). It is available from the following update sites:
+* <code>http://download.eclipse.org/sirius/updates/releases/6.1.0/oxygen</code> ([http://download.eclipse.org/sirius/updates/releases/6.1.0/org.eclipse.sirius-6.1.0-oxygen.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/6.1.0/photon</code> ([http://download.eclipse.org/sirius/updates/releases/6.1.0/org.eclipse.sirius-6.1.0-photon.zip Archive])
+
+It is recommended you use the update-site matching the version of Eclipse you use to avoid potential issues at runtime.
+
+The complete JUnit and SWTBot test suites used to validate Sirius are published along with all their dependencies in separate update-sites from the core, available at:
+* <code>http://download.eclipse.org/sirius/updates/releases/6.1.0/oxygen/tests</code> ([http://download.eclipse.org/sirius/updates/releases/6.1.0/org.eclipse.sirius.tests-6.1.0-oxygen.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/6.1.0/photon/tests</code> ([http://download.eclipse.org/sirius/updates/releases/6.1.0/org.eclipse.sirius.tests-6.1.0-photon.zip Archive])
+
+== Compatibility & Requirements ==
+
+Sirius 6.1.0 is compatible with the following versions of Eclipse:
+* Eclipse 4.7 (Oxygen).
+* Eclipse 4.8 (Photon). Photon is the reference platform.
+* Eclipse 4.9 (SimRel 2018-09).
+
+''Note:'' The new (and still experimental) 'Workflow' and 'Server' features only work under Photon.
+
+== New & Noteworthy ==
+
+The complete list of (72) tickets fixed in Sirius 6.1.0 can be found [https://projects.eclipse.org/projects/modeling.sirius/releases/6.1.0/bugs here].
+
+The release notes with highlights will soon be published at [https://www.eclipse.org/sirius/doc/Release_Notes.html#sirius6.1.0 here].
+
+[[Category:Sirius]]

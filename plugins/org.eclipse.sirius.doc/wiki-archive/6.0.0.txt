@@ -1,0 +1,35 @@
+Sirius 6.0.0 is a major release and part of Eclipse Photon. See [https://projects.eclipse.org/projects/modeling.sirius/releases/6.0.0 the release record] for an overview of the major features and important bug fixes.
+
+Note that two new optional features introduced in this version are considered experimental at the moment:
+* The ''Sirius ELK Integration'' feature (<code>org.eclipse.sirius.diagram.elk.feature</code>).
+* The ''Sirius Support for Modeling Workflows'' feature (<code>org.eclipse.sirius.workflow.feature</code>). ''Note'': the version of this feature in Sirius 6.0.0 is broken under Windows. This will be fixed in 6.0.1.
+
+Adopters are welcome to test them and [http://www.eclipse.org/forums/index.php?t=thread&frm_id=262 feedback] is very welcome, but they should not be used on production modelers at the moment.
+
+== Availability ==
+
+Sirius 6.0.0 was released on 2018-06-27 as part of Eclipse Photon (tag [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/tag/?id=v6.0.0 v6.0.0], commit [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/commit/?id=a2a0e97e2b99d7d497dcde96531c06d1decda263 a2a0e97e2b99d7d497dcde96531c06d1decda263]). It is available from the following update sites:
+* <code>http://download.eclipse.org/sirius/updates/releases/6.0.0/oxygen</code> ([http://download.eclipse.org/sirius/updates/releases/6.0.0/org.eclipse.sirius-6.0.0-oxygen.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/6.0.0/photon</code> ([http://download.eclipse.org/sirius/updates/releases/6.0.0/org.eclipse.sirius-6.0.0-photon.zip Archive])
+
+It is recommended you use the update-site matching the version of Eclipse you use to avoid potential issues at runtime.
+
+The complete JUnit and SWTBot test suites used to validate Sirius are published along with all their dependencies in separate update-sites from the core, available at:
+* <code>http://download.eclipse.org/sirius/updates/releases/6.0.0/oxygen/tests</code> ([http://download.eclipse.org/sirius/updates/releases/6.0.0/org.eclipse.sirius.tests-6.0.0-oxygen.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/6.0.0/photon/tests</code> ([http://download.eclipse.org/sirius/updates/releases/6.0.0/org.eclipse.sirius.tests-6.0.0-photon.zip Archive])
+
+== Compatibility & Requirements ==
+
+Sirius 6.0.0 is compatible with the following versions of Eclipse:
+* Eclipse 4.7 (Oxygen).
+* Eclipse 4.8 (Photon). Photon is the reference platform.
+
+''Note:'' The new (and still experimental) 'Workflow' and 'Server' features only work under Photon.
+
+== New & Noteworthy ==
+
+The complete list of (54) tickets fixed in Sirius 6.0.0 can be found [https://projects.eclipse.org/projects/modeling.sirius/releases/6.0.0/bugs here].
+
+The release notes with highlights will soon be published at [https://www.eclipse.org/sirius/doc/Release_Notes.html#sirius6.0.0 here].
+
+[[Category:Sirius]]

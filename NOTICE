@@ -26,39 +26,28 @@ SPDX-License-Identifier: EPL-2.0
 
 The project maintains the following source code repositories:
 
-* https://github.com/eclipse/sirius-components
-* https://github.com/eclipse-sirius/sirius-desktop.git
-* http://git.eclipse.org/c/sirius/org.eclipse.sirius.legacy.git
+* https://github.com/eclipse-sirius/sirius-web
+* https://github.com/eclipse-sirius/sirius-desktop
+* https://github.com/eclipse-sirius/sirius-emf-json
+* https://github.com/eclipse-sirius/sirius-legacy
 
 ## Third-party Content
 
-Apache Batik DOM Level 3 implementation library (1.9)
+### Apache Batik (1.17)
 
-* License: Apache-2.0 
-
-Batik AWT utility library (1.9)
-
-* License: Apache-2.0 
-
-Batik Bridge Library (1.9)
-
-* License: Apache-2.0 
+* License: Apache-2.0
 * Project: https://xmlgraphics.apache.org/batik/
-* Source:
-   https://svn.apache.org/repos/asf/xmlgraphics/batik/trunk/batik-bridge/
+* Source: https://svn.apache.org/repos/asf/xmlgraphics/batik/trunk
 
-Batik SVG DOM implementation (1.9)
-
-* License: Apache License, 2.0, W3C License, Historical Permission Notice
-   (without Disclaimer)
-
-Google Guava (21.0)
+### Google Guava (31.1)
 
 * License: Apache License, 2.0
+* Project: https://github.com/google/guava
 
-twitter bootstrap (2.0.1)
+### Twitter bootstrap (2.0.1)
 
 * License: Apache License, 2.0
+* Project: https://getbootstrap.com/2.0.1/
 
 ## Cryptography
 

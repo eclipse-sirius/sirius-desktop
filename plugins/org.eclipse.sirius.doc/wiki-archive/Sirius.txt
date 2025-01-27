@@ -1,0 +1,64 @@
+__NOTOC__
+
+[[File:Sirius.png|400px|right|Sirius logo]]
+
+Welcome to the [http://www.eclipse.org/sirius Sirius project]'s community wiki.
+
+<blockquote>Sirius enables the specification of a modeling workbench in terms of '''graphical''', '''table''' or '''tree editors''' with validation rules and actions using declarative descriptions. All shape characteristics and behaviors can be easily '''configured with a minimum technical knowledge'''. This description is '''dynamically interpreted''' to materialize the workbench within the Eclipse IDE. '''No code generation''' is involved, the specifier of the workbench can have '''instant feedback''' while adapting the description. Once completed, the modeling workbench can be '''deployed as a standard Eclipse plugin'''. Thanks to this short feedback loop a workbench or its specialization can be created in a matter of hours.</blockquote>
+
+Sirius was demoed at EclipseCon France 2013. You can see the slides of the presentation we made there [https://github.com/alagarde/org.eclipse.sirius.econfrance2013 here].
+
+You can install Sirius using any of the update-sites listed [[Sirius/Update_Sites|here]].
+
+== News ==
+
+* 2023-03-29: [https://projects.eclipse.org/projects/modeling.sirius/releases/7.1.0 Sirius 7.1.0] released.
+* 2023-01-19: [https://projects.eclipse.org/projects/modeling.sirius/releases/7.0.7 Sirius 7.0.7] released.
+* 2022-11-25: [https://projects.eclipse.org/projects/modeling.sirius/releases/7.0.6 Sirius 7.0.6] released.
+* 2022-09-23: [https://projects.eclipse.org/projects/modeling.sirius/releases/7.0.5 Sirius 7.0.5] released.
+* 2022-08-23: [https://projects.eclipse.org/projects/modeling.sirius/releases/7.0.4 Sirius 7.0.4] released.
+* 2022-08-18: [https://projects.eclipse.org/projects/modeling.sirius/releases/7.0.3 Sirius 7.0.3] released.
+* 2022-08-01: [https://projects.eclipse.org/projects/modeling.sirius/releases/7.0.2 Sirius 7.0.2] released.
+* 2022-06-14: [https://projects.eclipse.org/projects/modeling.sirius/releases/7.0.1 Sirius 7.0.1] released.
+* 2022-02-28: [https://projects.eclipse.org/projects/modeling.sirius/releases/7.0.0 Sirius 7.0.0] released.
+* 2021-12-10: [https://projects.eclipse.org/projects/modeling.sirius/releases/6.6.0 Sirius 6.6.0] released.
+* 2021-06-11: [https://projects.eclipse.org/projects/modeling.sirius/releases/6.5.1 Sirius 6.5.1] released.
+* 2021-06-01: [https://projects.eclipse.org/projects/modeling.sirius/releases/6.5.0 Sirius 6.5.0] released.
+* 2021-03-18: [https://projects.eclipse.org/projects/modeling.sirius/releases/6.4.2 Sirius 6.4.2] released.
+* 2020-12-21: [https://projects.eclipse.org/projects/modeling.sirius/releases/6.4.1 Sirius 6.4.1] released.
+* 2020-12-02: [https://projects.eclipse.org/projects/modeling.sirius/releases/6.4.0 Sirius 6.4.0] released.
+* 2020-11-07: [https://projects.eclipse.org/projects/modeling.sirius/releases/6.3.5 Sirius 6.3.5] released.
+* 2020-09-16: [[Sirius/6.3.4|Sirius 6.3.4]] released.
+* 2020-08-24: [[Sirius/6.3.3|Sirius 6.3.3]] released.
+* 2020-06-24: [[Sirius/6.3.2|Sirius 6.3.2]] released.
+* 2020-06-17: [[Sirius/6.3.1|Sirius 6.3.1]] released.
+* 2020-03-09: [[Sirius/6.1.4|Sirius 6.1.4]] released.
+* 2019-12-04: [[Sirius/6.3.0|Sirius 6.3.0]] released.
+* 2019-07-10: [[Sirius/6.2.2|Sirius 6.2.2]] released.
+* 2019-06-19: [[Sirius/6.2.1|Sirius 6.2.1]] released.
+* 2019-06-17: [[Sirius/6.1.3|Sirius 6.1.3]] released.
+* 2019-04-01: [[Sirius/6.2.0|Sirius 6.2.0]] released.
+* 2019-02-15: [[Sirius/6.1.2|Sirius 6.1.2]] released.
+* 2019-01-24: [[Sirius/5.1.4|Sirius 5.1.4]] released.
+
+See also [[Sirius/History]] for older news.
+
+== Wiki Sections ==
+
+* [[Sirius/Modularization]]
+* [[Sirius/Automated Tests]]
+* [[Sirius/Improvements 2013]]
+* [[Sirius/Cookbook]] which gathers useful code snippets.
+
+== Links ==
+
+* The initial [http://www.eclipse.org/proposals/modeling.sirius/ proposal].
+* The main [http://www.eclipse.org/sirius project page].
+* The [http://www.eclipse.org/forums/eclipse.sirius forum] (also available via NNTP as news://news.eclipse.org:119/eclipse.sirius).
+* The [http://dev.eclipse.org/mailman/listinfo/sirius-dev sirius-dev@eclipse.org mailing list].
+* The [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git source code].
+* The [http://www.eclipse.org/sirius/doc/ documentation].
+* The [https://bugs.eclipse.org/bugs/buglist.cgi?list_id=6776579&classification=Modeling&query_format=advanced&product=Sirius Bugzilla].
+
+[[Category:Sirius]]
+[[Category:Modeling]]

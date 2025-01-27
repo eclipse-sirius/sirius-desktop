@@ -1,0 +1,69 @@
+Sirius 3.0.0M6 is a milestone release.
+
+== Availability ==
+
+Sirius 3.0.0M6 was released on 2015-03-24 (tag [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/tag/?id=v3.0.0M6 v3.0.0M6], commit [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/commit/?id=b5db7d12d19686374a316f6da830ab7b96c032d2 b5db7d12d19686374a316f6da830ab7b96c032d2]). It is available from the following update sites:
+* <code>http://download.eclipse.org/sirius/updates/milestones/3.0.0M6/juno</code>
+* <code>http://download.eclipse.org/sirius/updates/milestones/3.0.0M6/kepler</code>
+* <code>http://download.eclipse.org/sirius/updates/milestones/3.0.0M6/luna</code>
+* <code>http://download.eclipse.org/sirius/updates/milestones/3.0.0M6/mars</code>
+
+It is recommended you use the update-site matching the version of Eclipse you use to avoid potential issues at runtime.
+
+This version includes the complete JUnit and SWTBot test suites used to validate Sirius. They are published along with all their dependencies in separate update-sites from the core, available at:
+* <code>http://download.eclipse.org/sirius/updates/milestones/3.0.0M6/juno/tests</code>
+* <code>http://download.eclipse.org/sirius/updates/milestones/3.0.0M6/kepler/tests</code>
+* <code>http://download.eclipse.org/sirius/updates/milestones/3.0.0M6/luna/tests</code>
+* <code>http://download.eclipse.org/sirius/updates/milestones/3.0.0M6/mars/tests</code>
+
+If you want to install the org.eclipse.sirius.tests.support feature, which provides APIs to help create automated tests of Sirius-based modelers, you will need to add the following update-site:
+* SWTBot 2.1.1: <code>http://download.eclipse.org/technology/swtbot/releases/2.1.1/</code>
+
+If you want to install and run the test suites themselves, you will also need the following additional update-site:
+* Sirius Support for Legacy Queries: <code>http://download.eclipse.org/sirius/updates/legacy</code>
+
+It is needed to run the tests which use an old query language (which is now superseded by Acceleo 3 and the core feature:/var:/service: interpreters).
+
+''Juno users'': Sirius depends on more recent versions of some components that what is available by default from a Juno install. You need to add the following update-sites if you want to install Sirius 2.0.3 on Juno:
+* Orbit: <code>http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/</code>
+* Acceleo 3.4 (or 3.5): <code>http://download.eclipse.org/acceleo/updates/releases/3.4/</code> (resp. <code>http://download.eclipse.org/acceleo/updates/releases/3.5/</code>)
+* EEF 1.2 (or 1.3): <code>http://download.eclipse.org/modeling/emft/eef/updates/releases/1.2</code> (resp. <code>http://download.eclipse.org/modeling/emft/eef/updates/releases/1.3</code>)
+
+== Compatibility ==
+
+Sirius 3.0.0M6 is compatible with the following versions of Eclipse:
+* Eclipse 3.8/4.2 (Juno)
+* Eclipse 4.3 (Kepler)
+* Eclipse 4.4 (Luna)
+* Eclipse 4.5M6 (Mars)
+
+== New & Noteworthy ==
+
+Notable areas of improvements in this milestone:
+* ''Performance''
+** [https://bugs.eclipse.org/bugs/show_bug.cgi?id=443950 Bug #443950] - ExportRepresentationsAction is too costly to initialize
+** [https://bugs.eclipse.org/bugs/show_bug.cgi?id=460000 Bug #460000] - Improve tree dialect performance for large trees
+** [https://bugs.eclipse.org/bugs/show_bug.cgi?id=458024 Bug #458024] - Introduce support for an alternative implementation of the Acceleo Query Language
+** [https://bugs.eclipse.org/bugs/show_bug.cgi?id=457481 Bug #457481] - Optimize the StyleCustomization storage
+** [https://bugs.eclipse.org/bugs/show_bug.cgi?id=458973 Bug #458973] - Improve RefreshLayoutCommand
+** [https://bugs.eclipse.org/bugs/show_bug.cgi?id=427017 Bug #427017] - Investigate the removal of AirDCrossReferenceAdapterImpl
+** [https://bugs.eclipse.org/bugs/show_bug.cgi?id=457125 Bug #457125] - Refactor RGBValues from EClass to EDatatype
+* ''User Interface''
+** [https://bugs.eclipse.org/bugs/show_bug.cgi?id=460603 Bug #460603] - Do not decorate the viewpoint icons for viewpoints loaded from plugins
+** [https://bugs.eclipse.org/bugs/show_bug.cgi?id=451364 Bug #451364] - It should be possible to customize property cell editors in Sirius
+** [https://bugs.eclipse.org/bugs/show_bug.cgi?id=431075 Bug #431075] - Add support for svgz images
+** [https://bugs.eclipse.org/bugs/show_bug.cgi?id=441554 Bug #441554] - Re-enable table printing feature and the Paperclips dependency for Sirius 3.0
+** [https://bugs.eclipse.org/bugs/show_bug.cgi?id=452294 Bug #452294] - Locating anchors on the borders of the image instead of using the bounding box
+** [https://bugs.eclipse.org/bugs/show_bug.cgi?id=459635 Bug #459635] - DNodeList does not support WorkspaceImageFigure
+* ''Viewpoint Specification Environment''
+** [https://bugs.eclipse.org/bugs/show_bug.cgi?id=460014 Bug #460014] - Validate the static image paths mentioned in VSMs
+** [https://bugs.eclipse.org/bugs/show_bug.cgi?id=460712 Bug #460712] - Support "quick-outline" style navigation in the VSM editor
+** [https://bugs.eclipse.org/bugs/show_bug.cgi?id=458024 Bug #458024] - Introduce support for an alternative implementation of the Acceleo Query Language
+* ''Other''
+** [https://bugs.eclipse.org/bugs/show_bug.cgi?id=455965 Bug #455965] - Use Oomph to initialize a Sirius environment
+** [https://bugs.eclipse.org/bugs/show_bug.cgi?id=449357 Bug #449357] - AirdResourceImpl (and org.eclipse.sirius) should not depend on GMF
+** [https://bugs.eclipse.org/bugs/show_bug.cgi?id=432133 Bug #432133] - Semantic model based on XML schema generated ecore and handling of DocumentRoot class
+
+The complete list of (44) tickets fixed in Sirius 3.0.0M6 can be found [https://bugs.eclipse.org/bugs/buglist.cgi?classification=Modeling&product=Sirius&query_format=advanced&target_milestone=3.0.0M6 here on the Bugzilla].
+
+[[Category:Sirius]]

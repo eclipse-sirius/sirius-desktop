@@ -1,0 +1,31 @@
+Sirius 4.0.0 is a major release, and is part of Eclipse Neon (4.6)
+
+== Availability ==
+
+Sirius 4.0.0 was released on 2016-06-22 (tag [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/tag/?id=v4.0.0 v4.0.0], commit [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/commit/?id=c58ff14f93bc10fc015471ed66db0db6490a818b c58ff14f93bc10fc015471ed66db0db6490a818b]). It is available from the following update sites:
+* <code>http://download.eclipse.org/sirius/updates/releases/4.0.0/mars</code> ([http://download.eclipse.org/sirius/updates/releases/4.0.0/org.eclipse.sirius-4.0.0-mars.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/4.0.0/neon</code> ([http://download.eclipse.org/sirius/updates/releases/4.0.0/org.eclipse.sirius-4.0.0-neon.zip Archive])
+
+It is recommended you use the update-site matching the version of Eclipse you use to avoid potential issues at runtime.
+
+The complete JUnit and SWTBot test suites used to validate Sirius are published along with all their dependencies in separate update-sites from the core, available at:
+* <code>http://download.eclipse.org/sirius/updates/releases/4.0.0/mars/tests</code> ([http://download.eclipse.org/sirius/updates/releases/4.0.0/org.eclipse.sirius.tests-3.1.0-mars.zip Archive])
+* <code>http://download.eclipse.org/sirius/updates/releases/4.0.0/neon/tests</code> ([http://download.eclipse.org/sirius/updates/releases/4.0.0/org.eclipse.sirius.tests-4.0.0-neon.zip Archive])
+
+If you want to install the org.eclipse.sirius.tests.support feature, which provides APIs to help create automated tests of Sirius-based modelers, you will need to add the following update-site:
+* SWTBot 2.1.1: <code>http://download.eclipse.org/technology/swtbot/releases/2.1.1/</code>
+
+== Compatibility ==
+
+Sirius 4.0.0 is compatible with the following versions of Eclipse:
+* Eclipse 4.5 (Mars)
+* Eclipse 4.6 (Neon)
+
+Eclipse 4.6 (Neon) is the reference platform.
+
+== New & Noteworthy ==
+
+The complete list of (84) tickets fixed in Sirius 4.0.0 can be found [https://bugs.eclipse.org/bugs/buglist.cgi?classification=Modeling&product=Sirius&query_format=advanced&target_milestone=4.0.0&target_milestone=4.0.0M4&target_milestone=4.0.0M5&target_milestone=4.0.0M6&target_milestone=4.0.0M7 here on the Bugzilla].
+
+The release notes with highlights can be found [https://www.eclipse.org/sirius/whatsnew/whatsnew4.html here] and with more details in the [https://www.eclipse.org/sirius/doc/Release_Notes.html#sirius4.0.0 release notes].
+[[Category:Sirius]]

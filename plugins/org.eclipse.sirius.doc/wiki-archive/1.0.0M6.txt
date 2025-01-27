@@ -1,0 +1,41 @@
+
+Sirius 1.0.0M6 is a milestone release which has been included in Luna M6. The project is still in incubation at this time.
+
+See also [https://dev.eclipse.org/mhonarc/lists/sirius-dev/msg00017.html the announce on the mailing list].
+
+== Availability ==
+
+Sirius 1.0.0M6 was released on 2014-03-12 (tag [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/tag/?id=v1.0.0M6 v1.0.0M6], commit [http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/commit/?id=c0961643b1874d65d2b1f304b3e42aa02af85424 c0961643b1874d65d2b1f304b3e42aa02af85424]). It is available from the following update sites:
+* <code>http://download.eclipse.org/sirius/updates/milestones/1.0.0M6/juno</code>
+* <code>http://download.eclipse.org/sirius/updates/milestones/1.0.0M6/kepler</code>
+* <code>http://download.eclipse.org/sirius/updates/milestones/1.0.0M6/luna</code>
+
+It is recommended you use the update-site matching the version of Eclipse you use to avoid potential issues at runtime.
+
+If you want to install the new <code>org.eclipse.sirius.tests</code> feature, which provides APIs to help create automated tests of Sirius-based modelers, you will need to add the following update-site:
+* SWTBot 2.1.1: http://download.eclipse.org/technology/swtbot/releases/2.1.1/
+
+''Juno users'': Sirius depends on more recent versions of some components that what is available by default from a Juno install. You need to add the following update-sites if you want to install Sirius 1.0.0M6 on Juno:
+* Orbit: http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository/
+* Acceleo 3.4: http://download.eclipse.org/acceleo/updates/releases/3.4/
+* EEF 1.2: http://download.eclipse.org/modeling/emft/eef/updates/nightly/1.2/
+
+== Compatibility ==
+
+Sirius 1.0.0M6 is compatible with the following versions of Eclipse:
+* Eclipse 3.8/4.2 (Juno)
+* Eclipse 4.3 (Kepler)
+* Eclipse 4.4M6 (Luna)
+
+== New & Noteworthy ==
+
+Once again, this milestone was essentially about changes in the internal structure of the code and bug fixes.
+* [https://bugs.eclipse.org/bugs/show_bug.cgi?id=423052 #423052] is the second phase of a larger-scale work to separate the code implementing the "diagrams" dialect from the Sirius core. It involved physically extracting the diagram-specific packages out from <code>viewpoint.ecore</code> into the new <code>diagram.ecore</code>. The third phase of this work ([https://bugs.eclipse.org/bugs/show_bug.cgi?id=427803 #427803] which moves all diagram-specific code outside of the core plug-ins) is almost done but was not completely stabilized for the M6 release. That work will be merged on master soon and will be released with M7.
+* [https://bugs.eclipse.org/bugs/show_bug.cgi?id=428434 #428434] introduces two new plug-ins, <code>org.eclipse.sirius.tests.support</code> and <code>org.eclipse.sirius.tests.swtbot.support</code>. They provide high-level APIs to help in the creation of automated tests for Sirius and Sirius-based modelers, using either plain JUnit or [http://eclipse.org/swtbot/ SWTbot] for UI interactions (including manipulations on diagrams). These two plug-ins are available in a separate feature, <code>org.eclipse.sirius.tests</code>, which can be found in the _Sirius SDK_ category of the update-site. Note that this feature is not part of Luna M6; if you want to install it you will need to get it directly from the Sirius update-site. You will also need the SWTBot update-site at http://download.eclipse.org/technology/swtbot/releases/2.1.1/ to get the dependencies.
+* [https://bugs.eclipse.org/bugs/show_bug.cgi?id=428322 #428322] re-enables the dynamic and context-sensitive tabbar for Sirius diagrams when running on Luna (after [https://bugs.eclipse.org/bugs/show_bug.cgi?id=410426 the corresponding platform bug] was fixed in Luna M6). The static tabbar used as workaround is still used when running on Juno or Kepler where the platform bug is present.
+
+See [http://eclipse.org/sirius/doc/Release%20Notes.html#sirius1.0M6 the release notes] for details about API changes.
+
+The complete list of bugs fixed in this version can be seen [https://bugs.eclipse.org/bugs/buglist.cgi?list_id=7809578&classification=Modeling&query_format=advanced&product=Sirius&target_milestone=1.0.0M6 on Bugzilla].
+
+[[Category:Sirius]]
