@@ -31,8 +31,8 @@ location GEF-Classic  "https://download.eclipse.org/tools/gef/classic/releases/3
     org.eclipse.draw2d.sdk.feature.group lazy
 }
 
-location EMF-Compare "https://download.eclipse.org/modeling/emf/compare/updates/releases/3.3/R202311200811/" {
-	org.eclipse.emf.compare.feature.group 3.3.23.202311200811
+location EMF-Compare "https://download.eclipse.org/modeling/emf/compare/updates/releases/3.3/R202406060900/" {
+    org.eclipse.emf.compare.feature.group lazy
 }
 
 location Eclipse-2024-09 "https://download.eclipse.org/releases/2024-09/" {
