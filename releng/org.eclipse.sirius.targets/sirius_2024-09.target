@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="sirius_2024-09" sequenceNumber="1722514968">
+<target name="sirius_2024-09" sequenceNumber="1738050536">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.easymock" version="0.0.0"/>
@@ -83,8 +83,8 @@
       <repository id="GEF-Classic" location="https://download.eclipse.org/tools/gef/classic/releases/3.18.0"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.emf.compare.feature.group" version="3.3.23.202311200811"/>
-      <repository id="EMF-Compare" location="https://download.eclipse.org/modeling/emf/compare/updates/releases/3.3/R202311200811/"/>
+      <unit id="org.eclipse.emf.compare.feature.group" version="0.0.0"/>
+      <repository id="EMF-Compare" location="https://download.eclipse.org/modeling/emf/compare/updates/releases/3.3/R202406060900/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="com.google.guava" version="0.0.0"/>
