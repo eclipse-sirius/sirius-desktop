@@ -87,14 +87,14 @@ public class EdgeWithBorderNodeCreationPositionWithSnapToGridTest extends EdgeWi
         Point draw2DSourceBNLocation = GraphicalHelper.getAbsoluteBoundsIn100Percent(source, true).getTopLeft();
         assertTrue("For starting point (" + draw2DSourceBNLocation.preciseX() + ", " + draw2DSourceBNLocation.preciseY() + "), the x or y coordinate should be on the grid (step=" + gridStep
                 + ") or at least one should be the same as parent: " + parentSourceBounds + ".", checkLocation(draw2DSourceBNLocation, parentSourceBounds));
-        Point gmfSourceBNLocation = GMFHelper.getAbsoluteLocation((Node) source.getModel(), true);
+        Point gmfSourceBNLocation = GMFHelper.getAbsoluteLocation((Node) source.getModel(), true, true);
         assertEquals("The computing starting point from GMF data should be the same than draw2D", draw2DSourceBNLocation, gmfSourceBNLocation);
 
         Rectangle parentTargetBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent(target, true);
         Point draw2DTargetBNLocation = GraphicalHelper.getAbsoluteBoundsIn100Percent(target, true).getTopLeft();
         assertTrue("For ending point (" + draw2DTargetBNLocation.preciseX() + ", " + draw2DTargetBNLocation.preciseY() + "), the x or y coordinate should be on the grid (step=" + gridStep
                 + ") or at least one should be the same as parent: " + parentTargetBounds + ".", checkLocation(draw2DTargetBNLocation, parentTargetBounds));
-        Point gmfTargetBNLocation = GMFHelper.getAbsoluteLocation((Node) target.getModel(), true);
+        Point gmfTargetBNLocation = GMFHelper.getAbsoluteLocation((Node) target.getModel(), true, true);
         assertEquals("The computing starting point from GMF data should be the same than draw2D", draw2DTargetBNLocation, gmfTargetBNLocation);
         // Contrary to super class, the checkSide are not done because
         // snapToGrid is enabled and has effect on the side.

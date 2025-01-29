@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -82,10 +82,10 @@ public class EdgeStabilityOnPortCollapsingTest extends SiriusDiagramTestCase {
         pointsToE.add(new Point(612, 250));
         CONNECTION_EDITPART_POINTS.put("toE", pointsToE);
         ArrayList<Point> pointsToF = new ArrayList<Point>();
-        pointsToF.add(new Point(244, 195));
-        pointsToF.add(new Point(377, 195));
-        pointsToF.add(new Point(377, 85));
-        pointsToF.add(new Point(618, 85));
+        pointsToF.add(new Point(244, 194));
+        pointsToF.add(new Point(377, 194));
+        pointsToF.add(new Point(377, 87));
+        pointsToF.add(new Point(618, 87));
         CONNECTION_EDITPART_POINTS.put("toF", pointsToF);
     }
 
