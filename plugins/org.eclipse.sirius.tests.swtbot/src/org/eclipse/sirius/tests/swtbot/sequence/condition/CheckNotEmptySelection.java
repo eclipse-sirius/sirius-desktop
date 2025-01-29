@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,7 +14,7 @@ package org.eclipse.sirius.tests.swtbot.sequence.condition;
 
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 
@@ -22,9 +22,11 @@ public class CheckNotEmptySelection extends DefaultCondition {
 
     private SWTBotSiriusDiagramEditor editor;
 
-    private Class<SequenceMessageEditPart> expectedType;
+    private Class<? extends ISiriusEditPart> expectedType;
 
-    public CheckNotEmptySelection(SWTBotSiriusDiagramEditor editor, Class<SequenceMessageEditPart> expectedType) {
+    private ISiriusEditPart foundPart = null;
+
+    public CheckNotEmptySelection(SWTBotSiriusDiagramEditor editor, Class<? extends ISiriusEditPart> expectedType) {
         this.editor = editor;
         this.expectedType = expectedType;
     }
@@ -36,7 +38,11 @@ public class CheckNotEmptySelection extends DefaultCondition {
             return !selection.isEmpty();
         } else if (selection instanceof StructuredSelection) {
             StructuredSelection sel = (StructuredSelection) selection;
-            return expectedType.isInstance(sel.getFirstElement());
+            Object firstElement = sel.getFirstElement();
+            if (expectedType.isInstance(firstElement)) {
+                foundPart = (ISiriusEditPart) firstElement;
+                return true;
+            }
         }
         return false;
     }
@@ -44,6 +50,13 @@ public class CheckNotEmptySelection extends DefaultCondition {
     @Override
     public String getFailureMessage() {
         return null;
+    }
+
+    /**
+     * @return the foundPart
+     */
+    public ISiriusEditPart getFoundPart() {
+        return foundPart;
     }
 
 }
