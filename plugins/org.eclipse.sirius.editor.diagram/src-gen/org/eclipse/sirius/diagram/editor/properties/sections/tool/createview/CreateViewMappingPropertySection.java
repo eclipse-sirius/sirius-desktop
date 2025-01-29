@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ package org.eclipse.sirius.diagram.editor.properties.sections.tool.createview;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -34,11 +35,6 @@ import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
-import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 // End of user code imports
 
@@ -129,11 +125,11 @@ public class CreateViewMappingPropertySection extends AbstractComboPropertySecti
 
         // Start of user code choice of values
         if (!values.isEmpty()) {
-            Predicate<Object> predicate = Predicates.or(Predicates.instanceOf(EdgeMapping.class), Predicates.instanceOf(EdgeMappingImport.class));
+            Predicate<Object> predicate = object -> object instanceof EdgeMapping || object instanceof EdgeMappingImport;
             if (eObject instanceof CreateEdgeView) {
-                values = Lists.newArrayList(Iterables.filter(values, predicate));
+                values = values.stream().filter(predicate).toList();
             } else if (eObject instanceof CreateView) {
-                values = Lists.newArrayList(Iterables.filter(values, Predicates.not(predicate)));
+                values = values.stream().filter(Predicate.not(predicate)).toList();
             }
         }
         // End of user code choice of values

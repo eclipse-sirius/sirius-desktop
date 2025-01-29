@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ package org.eclipse.sirius.common.tools.internal.interpreter;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
@@ -28,8 +29,6 @@ import org.eclipse.sirius.common.tools.api.interpreter.TypedValidation;
 import org.eclipse.sirius.common.tools.api.interpreter.ValidationResult;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-
-import com.google.common.collect.Sets;
 
 /**
  * A minimal implementation of {@link IInterpreter} which only handles litteral integers, booleans and strings. It is
@@ -113,8 +112,8 @@ public class DefaultInterpreterProvider implements IInterpreterProvider, IInterp
     @Override
     public Integer evaluateInteger(final EObject context, final String expression) throws EvaluationException {
         try {
-            return new Integer(expression);
-        } catch (final NumberFormatException nfe) {
+            return Integer.valueOf(expression);
+        } catch (NumberFormatException nfe) {
             return null;
         }
     }
@@ -181,7 +180,7 @@ public class DefaultInterpreterProvider implements IInterpreterProvider, IInterp
 
     @Override
     public Collection<IInterpreterStatus> validateExpression(IInterpreterContext context, String expression) {
-        return Sets.newLinkedHashSet();
+        return new LinkedHashSet<>();
     }
 
     @Override
