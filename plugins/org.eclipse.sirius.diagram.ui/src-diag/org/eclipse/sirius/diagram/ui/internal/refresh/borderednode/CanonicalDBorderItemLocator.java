@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2024 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -181,7 +181,16 @@ public class CanonicalDBorderItemLocator {
     }
 
     /**
-     * Find the closest side when x,y is inside parent.
+     * Find the closest side when x, y is inside parent.
+     * <p>
+     * Possible results are:
+     * <ul>
+     * <li> {@link PositionConstants.NORTH}, </li>
+     * <li> {@link PositionConstants.SOUTH}, </li>
+     * <li> {@link PositionConstants.EAST}, </li>
+     * <li> {@link PositionConstants.WEST}. </li>
+     * </ul>
+     * </p>
      * 
      * @param proposedBounds
      *            the proposed bounds
