@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2024 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -39,11 +39,12 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gef.rulers.RulerProvider;
 import org.eclipse.gmf.runtime.common.ui.services.editor.EditorService;
 import org.eclipse.gmf.runtime.common.ui.util.DisplayUtils;
+import org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint;
 import org.eclipse.gmf.runtime.diagram.core.util.ViewType;
 import org.eclipse.gmf.runtime.diagram.ui.internal.properties.WorkspaceViewerProperties;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer;
-import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramGraphicalViewer;
+import org.eclipse.gmf.runtime.diagram.ui.preferences.IPreferenceConstants;
 import org.eclipse.gmf.runtime.diagram.ui.util.MeasurementUnitHelper;
 import org.eclipse.gmf.runtime.draw2d.ui.mapmode.IMapMode;
 import org.eclipse.gmf.runtime.notation.Bounds;
@@ -70,6 +71,7 @@ import org.eclipse.sirius.diagram.ui.internal.refresh.CanonicalSynchronizerResul
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramUpdater;
 import org.eclipse.sirius.diagram.ui.part.SiriusLinkDescriptor;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Display;
@@ -108,31 +110,46 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
         this.gmfDiagram = gmfDiagram;
         this.connectionsFactory = new ConnectionsFactory(gmfDiagram, viewpointViewProvider);
         // Search if it possible to get snapToGrid and gridSpacing values from the store associated to an opened editor.
-        loadPreferencesFromOpenedDiagram();
+        loadPreferences();
     }
 
     /**
-     * Load the preferences from an opened diagram on the same GMF {@link Diagram}.<BR>
+     * Load the preferences from an opened diagram on the same GMF {@link Diagram}, or from the default preferences when
+     * no diagram is opened.<BR>
      * Inspired from
      * {@link org.eclipse.sirius.diagram.ui.tools.internal.print.SiriusDiagramPrintPreviewHelper#loadPreferencesFromOpenDiagram(String)}.
      */
-    private void loadPreferencesFromOpenedDiagram() {
+    private void loadPreferences() {
         List<? extends Object> diagramEditors = EditorService.getInstance().getRegisteredEditorParts();
         @SuppressWarnings("unchecked")
         Optional<DiagramEditor> diagramEditor = (Optional<DiagramEditor>) diagramEditors.stream()
                 .filter(de -> de instanceof DiagramEditor && ((DiagramEditor) de).getDiagramEditPart() != null && gmfDiagram.equals(((DiagramEditor) de).getDiagramEditPart().getDiagramView()))
                 .findFirst();
+
+        double gridSpaceValue = 0;
+        int rulerUnit = RulerProvider.UNIT_PIXELS;
+        
         if (diagramEditor.isPresent()) {
-            IDiagramGraphicalViewer viewer = diagramEditor.get().getDiagramGraphicalViewer();
-            if (viewer instanceof DiagramGraphicalViewer) {
-                DiagramGraphicalViewer diagramGraphicalViewer = (DiagramGraphicalViewer) viewer;
+            if (diagramEditor.get().getDiagramGraphicalViewer() instanceof DiagramGraphicalViewer viewer) {
                 // Load preferences
-                IPreferenceStore store = diagramGraphicalViewer.getWorkspaceViewerPreferenceStore();
+                IPreferenceStore store = viewer.getWorkspaceViewerPreferenceStore();
                 setSnapToGrid(store.getBoolean(WorkspaceViewerProperties.SNAPTOGRID));
-                setGridSpacing(convertGridSpacingInPixels(store.getDouble(WorkspaceViewerProperties.GRIDSPACING), store.getInt(WorkspaceViewerProperties.RULERUNIT),
-                        MeasurementUnitHelper.getMapMode(gmfDiagram.getMeasurementUnit())));
+                gridSpaceValue = store.getDouble(WorkspaceViewerProperties.GRIDSPACING);
+                rulerUnit = store.getInt(WorkspaceViewerProperties.RULERUNIT);
             }
+        } else {
+            // Synchronization is related to creation when no editor is provided.
+            IPreferenceStore store = (IPreferenceStore) DiagramUIPlugin.DIAGRAM_PREFERENCES_HINT.getPreferenceStore();
+            setSnapToGrid(store.getBoolean(IPreferenceConstants.PREF_SNAP_TO_GRID));
+            gridSpaceValue = store.getDouble(IPreferenceConstants.PREF_GRID_SPACING);
+            rulerUnit = store.getInt(IPreferenceConstants.PREF_RULER_UNITS);
         }
+        
+        if (isSnapToGrid()) {
+            setGridSpacing(convertGridSpacingInPixels(gridSpaceValue, rulerUnit,
+                    MeasurementUnitHelper.getMapMode(gmfDiagram.getMeasurementUnit())));
+        }
+
     }
 
     /**
@@ -275,7 +292,7 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
                     newView.eAdapters().remove(SiriusLayoutDataManager.INSTANCE.getCenterAdapterMarker());
                     newView.eAdapters().add(SiriusLayoutDataManager.INSTANCE.getReferenceAdapterMarker());
                 }
-                updateSizeConstraint(newBound, new Dimension(oldBound.getWidth(), oldBound.getHeight()), newNode.getElement());
+                updateSizeConstraint(newNode, newBound, new Dimension(oldBound.getWidth(), oldBound.getHeight()));
             }
         }
     }
