@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2024 Kiel University and others.
+ * Copyright (c) 2009, 2025 Kiel University and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import java.util.Map;
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.ConnectionLocator;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.PrecisionDimension;
@@ -158,11 +159,18 @@ public class GmfLayoutEditPolicy extends AbstractEditPolicy {
 
         View view = (View) editPart.getModel();
 
+        // The ELK coordinates use floating point, but GMF uses Integer coordinates. The accumulation of rounding could
+        // have side effects (switch of one pixel). To avoid the problem, we try to find the more appropriated rounding,
+        // above or below, according to parents coordinates.
+        PrecisionPoint roundedCoordinates = SiriusElkUtil.getRoundedCoordinatesAccordingToParents(elkShape);
         // Compute the new location
-        Point newLocation = new PrecisionPoint(elkShape.getX() * scale, elkShape.getY() * scale);
+        Point newLocation = new PrecisionPoint(roundedCoordinates.preciseX() * scale, roundedCoordinates.preciseY() * scale);
+        Point locationComputedFromOriginalElkShapeLocation = new PrecisionPoint(elkShape.getX() * scale, elkShape.getY() * scale);
         // Border nodes are not concerned by insets.
         if (view instanceof Node && !(elkShape instanceof ElkPort) && !(isRegion(editPart))) {
-            newLocation.translate(GMFHelper.getContainerTopLeftInsets((Node) view, true).getNegated());
+            Dimension containerTopLeftNegated = GMFHelper.getContainerTopLeftInsets((Node) view, true).getNegated();
+            newLocation.translate(containerTopLeftNegated);
+            locationComputedFromOriginalElkShapeLocation.translate(containerTopLeftNegated);
         }
 
         // Compute the new size
@@ -189,7 +197,12 @@ public class GmfLayoutEditPolicy extends AbstractEditPolicy {
                     if (style instanceof LabelStyle) {
                         LabelAlignment labelAlignment = ((LabelStyle) style).getLabelAlignment();
                         if (labelAlignment.equals(LabelAlignment.LEFT) || labelAlignment.equals(LabelAlignment.RIGHT)) {
-                            newSize.setPreciseWidth(newSize.preciseWidth() + (newLocation.preciseX() * 2));
+                            if ((locationComputedFromOriginalElkShapeLocation.preciseX() * 2 % 1) == 0) {
+                                // Use directly the original, instead of the rounded value * 2, as it is an integer.
+                                newSize.setPreciseWidth(newSize.preciseWidth() + (locationComputedFromOriginalElkShapeLocation.preciseX() * 2));
+                            } else {
+                                newSize.setPreciseWidth(newSize.preciseWidth() + (newLocation.preciseX() * 2));
+                            }
                             newLocation.setX(0);
                         }
                     }

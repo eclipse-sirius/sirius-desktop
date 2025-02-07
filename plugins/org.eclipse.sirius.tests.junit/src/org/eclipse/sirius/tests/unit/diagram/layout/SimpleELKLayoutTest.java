@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2024 Obeo.
+ * Copyright (c) 2020, 2025 Obeo.
  * All rights reserved.
  *
  * Contributors:
@@ -27,7 +27,10 @@ import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
+import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.elk.graph.ElkNode;
+import org.eclipse.elk.graph.util.ElkGraphUtil;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
@@ -93,6 +96,7 @@ import org.eclipse.sirius.diagram.description.EnumLayoutOption;
 import org.eclipse.sirius.diagram.description.EnumLayoutValue;
 import org.eclipse.sirius.diagram.description.LayoutOptionTarget;
 import org.eclipse.sirius.diagram.elk.GmfLayoutCommand;
+import org.eclipse.sirius.diagram.elk.SiriusElkUtil;
 import org.eclipse.sirius.diagram.elk.migration.EmptyJunctionPointsStringValueStyleMigrationParticipant;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.tools.internal.commands.PinElementsCommand;
@@ -1904,6 +1908,46 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         // Check that the migration of the session resource is needed.
         Version loadedVersion = checkRepresentationFileMigrationStatus(URI.createPlatformPluginURI("/" + TEMPORARY_PROJECT_NAME + "/" + REPRESENTATIONS_RESOURCE_NAME, true), true);
         assertTrue("The migration must be required on test data.", migrationVersion.compareTo(loadedVersion) > 0); //$NON-NLS-1$
+    }
+
+    /**
+     * Check that when floating coordinates are returned by ELK, the rounded conversion is OK and that the delta of
+     * absolute location is never higher than 0.5.
+     */
+    public void testRoundedCoordinates() {
+        PrecisionPoint location = new PrecisionPoint(10.5, 10.5);
+        ElkNode parent = createNode(null, "parent", location);
+        ElkNode child1 = createNode(parent, "child1", location);
+        ElkNode child2 = createNode(child1, "child2", location);
+        ElkNode child3 = createNode(child2, "child3", location);
+        PrecisionPoint parentLocation = SiriusElkUtil.getRoundedCoordinatesAccordingToParents(parent);
+        assertEquals("The rounded coordinates are not the expected ones for " + parent.getIdentifier(), new PrecisionPoint(11, 11), parentLocation);
+        PrecisionPoint child1Location = SiriusElkUtil.getRoundedCoordinatesAccordingToParents(child1);
+        assertEquals("The rounded coordinates are not the expected ones for " + child1.getIdentifier(), new PrecisionPoint(10, 10), child1Location);
+        assertEquals("The absolute coordinates are not the expected ones for " + child1.getIdentifier(), new PrecisionPoint(21, 21), (PrecisionPoint) child1Location.translate(parentLocation), 0.5);
+        PrecisionPoint child2Location = SiriusElkUtil.getRoundedCoordinatesAccordingToParents(child2);
+        assertEquals("The rounded coordinates are not the expected ones for " + child2.getIdentifier(), new PrecisionPoint(11, 11), child2Location);
+        assertEquals("The absolute coordinates are not the expected ones for " + child1.getIdentifier(), new PrecisionPoint(31.5, 31.5), (PrecisionPoint) child2Location.translate(child1Location),
+                0.5);
+        PrecisionPoint child3Location = SiriusElkUtil.getRoundedCoordinatesAccordingToParents(child3);
+        assertEquals("The rounded coordinates are not the expected ones for " + child3.getIdentifier(), new PrecisionPoint(10, 10), child3Location);
+        assertEquals("The absolute coordinates are not the expected ones for " + child3.getIdentifier(), new PrecisionPoint(42, 42), (PrecisionPoint) child3Location.translate(child2Location), 0.5);
+    }
+
+    private ElkNode createNode(ElkNode parent, String identifier, PrecisionPoint location) {
+        ElkNode node = ElkGraphUtil.createNode(parent);
+        node.setIdentifier(identifier);
+        node.setLocation(location.preciseX(), location.preciseY());
+        return node;
+    }
+
+    /**
+     * Asserts that two precision points are equal concerning a delta. If they are not an AssertionFailedError is thrown
+     * with the given message. If the expected value, x or y, is infinity then the delta value is ignored.
+     */
+    private void assertEquals(String message, PrecisionPoint expected, PrecisionPoint actual, double delta) {
+        assertEquals(message, expected.preciseX(), actual.preciseX(), delta);
+        assertEquals(message, expected.preciseY(), actual.preciseY(), delta);
     }
 
     private void checkRoutingStyle(AbstractDiagramEdgeEditPart edgeEditPart, String message, String edgeName, int expectedRoutingStyle) {
