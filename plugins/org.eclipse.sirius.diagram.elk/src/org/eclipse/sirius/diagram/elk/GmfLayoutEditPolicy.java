@@ -158,8 +158,13 @@ public class GmfLayoutEditPolicy extends AbstractEditPolicy {
 
         View view = (View) editPart.getModel();
 
+        // The ELK coordinates use floating point, but GMF uses Integer coordinates. The accumulation of rounding could
+        // have side effects (switch of one pixel). To avoid the problem, we try to find the more appropriated rounding,
+        // above or below, according to parents coordinates.
+
+        PrecisionPoint roundedCoordinates = SiriusElkUtil.getRoundedCoordinatesAccordingToParents(elkShape);
         // Compute the new location
-        Point newLocation = new PrecisionPoint(elkShape.getX() * scale, elkShape.getY() * scale);
+        Point newLocation = new PrecisionPoint(roundedCoordinates.preciseX() * scale, roundedCoordinates.preciseY() * scale);
         // Border nodes are not concerned by insets.
         if (view instanceof Node && !(elkShape instanceof ElkPort) && !(isRegion(editPart))) {
             newLocation.translate(GMFHelper.getContainerTopLeftInsets((Node) view, true).getNegated());
