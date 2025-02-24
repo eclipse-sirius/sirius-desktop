@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_jLo-cXnPEd2hNdpX8IgW8Q">
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_jLo-cXnPEd2hNdpX8IgW8Q" name="MyUMLModel">
   <packagedElement xmi:type="uml:Class" xmi:id="_lS3JoHnPEd2hNdpX8IgW8Q" name="Class1" isAbstract="true" representation="_EZYnUfLSEd2mb6OshoLeiQ">
-    <generalization xmi:id="_4WEhsYvfEd2_v8q8ghMcDA" general="_oD2qkHnPEd2hNdpX8IgW8Q"/>
     <collaborationUse xmi:id="_EZYnUfLSEd2mb6OshoLeiQ" name="BColab2"/>
+    <generalization xmi:id="_4WEhsYvfEd2_v8q8ghMcDA" general="_oD2qkHnPEd2hNdpX8IgW8Q"/>
     <ownedAttribute xmi:id="_y38pMM0nEd2-cpiBPRrWhw" name="P1"/>
     <nestedClassifier xmi:type="uml:Collaboration" xmi:id="_ttkMIPLQEd2mb6OshoLeiQ" name="Test">
       <collaborationUse xmi:id="_4mUB4PLREd2mb6OshoLeiQ" name="AColab"/>

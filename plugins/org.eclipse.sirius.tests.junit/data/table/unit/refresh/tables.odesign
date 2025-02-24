@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="UML2 Tables tests" version="12.0.0.201702091400">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="UML2 Tables tests" version="15.4.0.202401051836">
   <ownedViewpoints documentation="Sample of some UML tables " name="UML2 tables for tests" modelFileExtension="uml">
     <ownedRepresentations xsi:type="description_1:EditionTableDescription" name="Colored Classes Table" domainClass="Model">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
@@ -123,6 +123,8 @@
       </ownedColumnMappings>
       <intersection name="Generalization" lineMapping="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Model%20Generalization%20Cross%20Table']/@ownedLineMappings[name='CT%20Generalization%20Classes']" columnMapping="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Model%20Generalization%20Cross%20Table']/@ownedColumnMappings.0" labelExpression="X" columnFinderExpression="aql:self.generalization.general" lineFinderExpression="" semanticCandidatesExpression="">
         <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
@@ -273,6 +275,8 @@
       <ownedColumnMappings name="OwnedUseCase" headerLabelExpression="OwnedUseCase" featureName="ownedUseCase" labelExpression=""/>
       <ownedColumnMappings name="BehaviorDirectEdit" headerLabelExpression="BehaviorDirectEdit" featureName="classifierBehavior" labelExpression="aql:self.classifierBehavior.name">
         <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="root" documentation="The semantic element of the table."/>
@@ -287,6 +291,8 @@
       </ownedColumnMappings>
       <ownedColumnMappings name="UseCaseDirectEdit" headerLabelExpression="UseCaseDirectEdit" featureName="useCase" labelExpression="aql:if self.useCase->size() > 0  then '(' + self.useCase.name.sep(',') + ')' else '' endif">
         <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="root" documentation="The semantic element of the table."/>
@@ -301,6 +307,8 @@
       </ownedColumnMappings>
       <ownedColumnMappings name="Commentaire" headerLabelExpression="Comment" featureName="body" labelExpression="aql:self.body" featureParentExpression="aql:self.ownedComment">
         <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="root" documentation="The semantic element of the table."/>
@@ -353,6 +361,8 @@
       <ownedColumnMappings name="Column Classes" headerLabelExpression="aql:self.name" domainClass="Class"/>
       <intersection name="Associations" lineMapping="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Model%20all%20associations']/@ownedLineMappings[name='Line%20Classes']/@ownedSubLines[name='Associations']" columnMapping="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Model%20all%20associations']/@ownedColumnMappings.0" labelExpression="aql:self.name" columnFinderExpression="aql: self.memberEnd->first().type" lineFinderExpression="" semanticCandidatesExpression="" domainClass="" preconditionExpression="">
         <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
@@ -512,11 +522,11 @@
       <ownedLineMappings name="Model Classes" detailDescriptions="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Class%20and%20subClass%20with%20some%20attributes']/@ownedRepresentationCreationDescriptions[name='To%20Class%20and%20subClass%20with%20some%20attributes']" domainClass="Class" semanticCandidatesExpression="" headerLabelExpression="feature:name"/>
       <ownedColumnMappings name="name" headerLabelExpression="name" featureName="name"/>
       <ownedColumnMappings name="computedColumn" headerLabelExpression="ComputedLabel_featureName*" featureName="*" labelExpression="ComputedLabel"/>
-      <ownedColumnMappings name="colWithInvalidFeatureName" headerLabelExpression="NonExistingFeature" featureName="invalidFeatureName" labelExpression="ComputedLabel"/>
+      <ownedColumnMappings name="colWithInvalidFeatureName" headerLabelExpression="aql:self.name + '_NonExistingFeature'" featureName="invalidFeatureName" labelExpression="ComputedLabel"/>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:EditionTableDescription" name="SimpleTableVariables" domainClass="Model">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
-        <ownedLineMappings name="Class lines" domainClass="Class" semanticCandidatesExpression="aql:self.eAllContents(uml::Class)->select( e | e.name='Class3')->first()" headerLabelExpression="aql:'&lt;Class> '+self.name"/>
+      <ownedLineMappings name="Class lines" domainClass="Class" semanticCandidatesExpression="aql:self.eAllContents(uml::Class)->select( e | e.name='Class3')->first()" headerLabelExpression="aql:'&lt;Class> '+self.name"/>
       <ownedColumnMappings name="Class name" headerLabelExpression="Name" initialWidth="200" featureName="name" labelExpression="aql:self.name" featureParentExpression="aql:if table&lt;>null then line.target else line.target endif">
         <directEdit>
           <variables name="element" documentation="The semantic currently edited element."/>
