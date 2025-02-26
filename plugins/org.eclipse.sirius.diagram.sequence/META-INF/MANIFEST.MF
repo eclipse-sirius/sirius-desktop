@@ -2,43 +2,43 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.diagram.sequence;singleton:=true
-Bundle-Version: 7.4.7.qualifier
+Bundle-Version: 7.4.8.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Export-Package: org.eclipse.sirius.diagram.sequence.business.api.util;version="7.4.7";x-internal:=true,
- org.eclipse.sirius.diagram.sequence.business.internal;version="7.4.7";x-internal:=true,
- org.eclipse.sirius.diagram.sequence.business.internal.dialect;version="7.4.7";x-internal:=true,
- org.eclipse.sirius.diagram.sequence.business.internal.elements;version="7.4.7";x-internal:=true,
- org.eclipse.sirius.diagram.sequence.business.internal.layout;version="7.4.7";x-internal:=true,
- org.eclipse.sirius.diagram.sequence.business.internal.layout.flag;version="7.4.7";x-internal:=true,
- org.eclipse.sirius.diagram.sequence.business.internal.layout.horizontal;version="7.4.7";x-internal:=true,
- org.eclipse.sirius.diagram.sequence.business.internal.layout.observation;version="7.4.7";x-internal:=true,
- org.eclipse.sirius.diagram.sequence.business.internal.layout.vertical;version="7.4.7";x-internal:=true,
- org.eclipse.sirius.diagram.sequence.business.internal.operation;version="7.4.7";x-internal:=true,
- org.eclipse.sirius.diagram.sequence.business.internal.ordering;version="7.4.7";x-internal:=true,
- org.eclipse.sirius.diagram.sequence.business.internal.query;version="7.4.7";x-internal:=true,
- org.eclipse.sirius.diagram.sequence.business.internal.refresh;version="7.4.7";x-internal:=true,
- org.eclipse.sirius.diagram.sequence.business.internal.tool;version="7.4.7";x-internal:=true,
- org.eclipse.sirius.diagram.sequence.business.internal.util;version="7.4.7";x-internal:=true,
- org.eclipse.sirius.diagram.sequence.internal.tool.command.builders;version="7.4.7";x-internal:=true,
- org.eclipse.sirius.diagram.sequence.tool.internal;version="7.4.7",
- org.eclipse.sirius.diagram.sequence.tool.internal.action.repair;version="7.4.7";x-internal:=true,
- org.eclipse.sirius.diagram.sequence.tool.internal.template;version="7.4.7";x-internal:=true,
- org.eclipse.sirius.diagram.sequence.tool.internal.validation.description.constraints;version="7.4.7";x-internal:=true
-Require-Bundle: org.eclipse.sirius.common;bundle-version="7.4.7",
- org.eclipse.sirius.ecore.extender;bundle-version="7.4.7",
+Export-Package: org.eclipse.sirius.diagram.sequence.business.api.util;version="7.4.8";x-internal:=true,
+ org.eclipse.sirius.diagram.sequence.business.internal;version="7.4.8";x-internal:=true,
+ org.eclipse.sirius.diagram.sequence.business.internal.dialect;version="7.4.8";x-internal:=true,
+ org.eclipse.sirius.diagram.sequence.business.internal.elements;version="7.4.8";x-internal:=true,
+ org.eclipse.sirius.diagram.sequence.business.internal.layout;version="7.4.8";x-internal:=true,
+ org.eclipse.sirius.diagram.sequence.business.internal.layout.flag;version="7.4.8";x-internal:=true,
+ org.eclipse.sirius.diagram.sequence.business.internal.layout.horizontal;version="7.4.8";x-internal:=true,
+ org.eclipse.sirius.diagram.sequence.business.internal.layout.observation;version="7.4.8";x-internal:=true,
+ org.eclipse.sirius.diagram.sequence.business.internal.layout.vertical;version="7.4.8";x-internal:=true,
+ org.eclipse.sirius.diagram.sequence.business.internal.operation;version="7.4.8";x-internal:=true,
+ org.eclipse.sirius.diagram.sequence.business.internal.ordering;version="7.4.8";x-internal:=true,
+ org.eclipse.sirius.diagram.sequence.business.internal.query;version="7.4.8";x-internal:=true,
+ org.eclipse.sirius.diagram.sequence.business.internal.refresh;version="7.4.8";x-internal:=true,
+ org.eclipse.sirius.diagram.sequence.business.internal.tool;version="7.4.8";x-internal:=true,
+ org.eclipse.sirius.diagram.sequence.business.internal.util;version="7.4.8";x-internal:=true,
+ org.eclipse.sirius.diagram.sequence.internal.tool.command.builders;version="7.4.8";x-internal:=true,
+ org.eclipse.sirius.diagram.sequence.tool.internal;version="7.4.8",
+ org.eclipse.sirius.diagram.sequence.tool.internal.action.repair;version="7.4.8";x-internal:=true,
+ org.eclipse.sirius.diagram.sequence.tool.internal.template;version="7.4.8";x-internal:=true,
+ org.eclipse.sirius.diagram.sequence.tool.internal.validation.description.constraints;version="7.4.8";x-internal:=true
+Require-Bundle: org.eclipse.sirius.common;bundle-version="7.4.8",
+ org.eclipse.sirius.ecore.extender;bundle-version="7.4.8",
  com.google.guava;bundle-version="27.0",
  org.eclipse.gmf.runtime.notation;bundle-version="1.10.0",
  org.eclipse.draw2d;bundle-version="3.13.0",
- org.eclipse.sirius.diagram;bundle-version="7.4.7";visibility:=reexport,
+ org.eclipse.sirius.diagram;bundle-version="7.4.8";visibility:=reexport,
  org.eclipse.emf.transaction;bundle-version="1.1.2",
  org.eclipse.core.runtime;bundle-version="3.8.0",
  org.eclipse.emf.ecore;bundle-version="2.8.3";visibility:=reexport,
- org.eclipse.sirius;bundle-version="7.4.7";visibility:=reexport,
- org.eclipse.sirius.diagram.ui;bundle-version="7.4.7",
- org.eclipse.sirius.diagram.ui.ext;bundle-version="7.4.7",
- org.eclipse.sirius.diagram.sequence.model;bundle-version="7.4.7";visibility:=reexport
+ org.eclipse.sirius;bundle-version="7.4.8";visibility:=reexport,
+ org.eclipse.sirius.diagram.ui;bundle-version="7.4.8",
+ org.eclipse.sirius.diagram.ui.ext;bundle-version="7.4.8",
+ org.eclipse.sirius.diagram.sequence.model;bundle-version="7.4.8";visibility:=reexport
 Eclipse-LazyStart: true
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-17
