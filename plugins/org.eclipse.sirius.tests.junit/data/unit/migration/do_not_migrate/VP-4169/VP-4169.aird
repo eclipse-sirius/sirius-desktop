@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.obeo.fr/dsl/viewpoint/description/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.obeo.fr/dsl/viewpoint/description/style/1.1.0" xmlns:viewpoint="http://www.obeo.fr/dsl/viewpoint/1.1.0" xsi:schemaLocation="http://www.obeo.fr/dsl/viewpoint/description/1.1.0 http://www.obeo.fr/dsl/viewpoint/1.1.0#//description http://www.obeo.fr/dsl/viewpoint/description/style/1.1.0 http://www.obeo.fr/dsl/viewpoint/1.1.0#//description/style" xmi:id="_1kUcIdjlEeKwr8b8blvstQ" selectedViews="_4BuSsNjlEeKwr8b8blvstQ" version="6.7.0.201302181200">
-  <models xmi:type="ecore:EPackage" href="My.ecore#/"/>
+  <models xmi:type="ecore:EPackage" href="VP-4169.ecore#/"/>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_4BuSsNjlEeKwr8b8blvstQ" initialized="true">
     <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_RPeUkNjmEeKwr8b8blvstQ" name="root package entities">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_RPj0INjmEeKwr8b8blvstQ" source="GMF_DIAGRAMS">
