@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -215,7 +215,7 @@ public class LayoutData extends AbstractLayoutData {
     }
 
     /**
-     * Search recursively in in all the LayoutData is there is one which have
+     * Search recursively in in all the LayoutData if there is one which have
      * the element for target.
      * 
      * @param node
