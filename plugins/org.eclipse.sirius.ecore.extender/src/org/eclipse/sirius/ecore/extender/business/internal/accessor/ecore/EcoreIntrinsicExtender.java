@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,12 +15,17 @@ package org.eclipse.sirius.ecore.extender.business.internal.accessor.ecore;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Stream;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
@@ -39,13 +44,6 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ExtensionFeatureD
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.ext.emf.EReferencePredicate;
 
-import com.google.common.base.Predicates;
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.Sets;
-
 /**
  * This metamodel Extender accesses the intrinsic data of an EObject.
  * 
@@ -58,9 +56,9 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
 
     private static final String AQL_SEPARATOR = "::"; //$NON-NLS-1$
 
-    private static PackageRegistryIndex platformIndex = new PackageRegistryIndex(EPackage.Registry.INSTANCE, Predicates.<EPackage> alwaysTrue());
+    private static PackageRegistryIndex platformIndex = new PackageRegistryIndex(EPackage.Registry.INSTANCE, p -> true);
 
-    private Multimap<String, EClass> viewpointIndex = HashMultimap.create();
+    private Map<String, List<EClass>> viewpointIndex = new HashMap<>();
 
     private Collection<? extends MetamodelDescriptor> lastDescriptors;
 
@@ -377,11 +375,18 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
     }
 
     private void addTypesToSiriusIndex(final EPackage value) {
-        for (EClass cur : Iterables.filter(value.getEClassifiers(), EClass.class)) {
-            viewpointIndex.put(cur.getName(), cur);
-            viewpointIndex.put(value.getName() + EcoreIntrinsicExtender.SEPARATOR + cur.getName(), cur);
-            viewpointIndex.put(value.getName() + EcoreIntrinsicExtender.AQL_SEPARATOR + cur.getName(), cur);
+        for (EClassifier eClassifier : value.getEClassifiers()) {
+            if (eClassifier instanceof EClass cur) {
+                addToIndex(cur.getName(), cur);
+                addToIndex(value.getName() + EcoreIntrinsicExtender.SEPARATOR + cur.getName(), cur);
+                addToIndex(value.getName() + EcoreIntrinsicExtender.AQL_SEPARATOR + cur.getName(), cur);
+            }
         }
+    }
+    
+    private void addToIndex(String key, EClass eClass) {
+        viewpointIndex.putIfAbsent(key, new ArrayList<>());
+        viewpointIndex.get(key).add(eClass);
     }
 
     @Override
@@ -390,7 +395,7 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
     }
 
     private Iterator<EClass> getEClassesFromName(final String name) {
-        return Iterators.concat(viewpointIndex.get(name).iterator(), platformIndex.getEClassesFromName(name).iterator());
+        return Stream.concat(viewpointIndex.getOrDefault(name, List.of()).stream(), platformIndex.getEClassesFromName(name).stream()).iterator();
     }
 
     private EClass findFirstEClassFromName(final String name) {
@@ -400,7 +405,7 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
         }
         return null;
     }
-
+    
     /**
      * Create a new instance.
      * 
@@ -439,21 +444,22 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
 
     @Override
     public void updateMetamodels(final Collection<? extends MetamodelDescriptor> metamodelDescriptors) {
-        final Collection<? extends MetamodelDescriptor> metamodelDescriptorsCopy = Sets.newLinkedHashSet(metamodelDescriptors);
+        final Collection<? extends MetamodelDescriptor> metamodelDescriptorsCopy = new LinkedHashSet<>(metamodelDescriptors);
         if (lastDescriptors != null) {
             metamodelDescriptorsCopy.removeAll(lastDescriptors);
         }
         final Iterator<? extends MetamodelDescriptor> it = metamodelDescriptorsCopy.iterator();
         while (it.hasNext()) {
             final Object obj = it.next();
-            if (obj instanceof EcoreMetamodelDescriptor) {
-                final EPackage pak = ((EcoreMetamodelDescriptor) obj).resolve();
+            if (obj instanceof EcoreMetamodelDescriptor descriptor) {
+                final EPackage pak = descriptor.resolve();
                 if (pak != null) {
                     addTypesToSiriusIndex(pak);
-                    Iterator<EPackage> subPack = Iterators.filter(pak.eAllContents(), EPackage.class);
-                    while (subPack.hasNext()) {
-                        addTypesToSiriusIndex(subPack.next());
-                    }
+                    pak.eAllContents().forEachRemaining(eObject -> {
+                        if (eObject instanceof EPackage subPack) {
+                            addTypesToSiriusIndex(subPack);
+                        }
+                    });
                 }
             }
 
