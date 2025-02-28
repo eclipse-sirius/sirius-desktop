@@ -458,7 +458,7 @@
                class="org.eclipse.sirius.diagram.editor.properties.sections.style.edgestyledescription.EdgeStyleDescriptionStrokeColorPropertySection"
                id="style.section.edgeStyleDescription.StrokeColor"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.style.edgestyledescription.EdgeStyleDescriptionStrokeColorFilter"
-               afterSection="style.section.labelStyleDescription.LabelColor"
+               afterSection="style.section.basicLabelStyleDescription.LabelColor"
                 tab="viewpoint.tab.color">
         <input type="org.eclipse.sirius.diagram.description.style.EdgeStyleDescription"/>
       </propertySection>
