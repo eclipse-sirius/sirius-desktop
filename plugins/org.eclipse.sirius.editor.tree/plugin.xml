@@ -95,7 +95,7 @@
                class="org.eclipse.sirius.tree.editor.properties.sections.description.treeitemstyledescription.TreeItemStyleDescriptionBackgroundColorPropertySection"
                id="description.section.treeItemStyleDescription.BackgroundColor"
                filter="org.eclipse.sirius.tree.editor.properties.filters.description.treeitemstyledescription.TreeItemStyleDescriptionBackgroundColorFilter"
-               afterSection="style.section.labelStyleDescription.LabelColor"
+               afterSection="style.section.basicLabelStyleDescription.LabelColor"
                 tab="viewpoint.tab.color">
         <input type="org.eclipse.sirius.tree.description.TreeItemStyleDescription"/>
       </propertySection>
