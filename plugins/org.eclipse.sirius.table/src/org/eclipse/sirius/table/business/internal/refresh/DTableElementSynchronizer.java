@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -83,7 +83,7 @@ public class DTableElementSynchronizer {
         this.accessor = accessor;
     }
 
-    private String getHeaderLabel(DTableElement header, TableMapping mapping, EStructuralFeature labelExpression) {
+    private String getHeaderLabel(DSemanticDecorator header, TableMapping mapping, EStructuralFeature labelExpression) {
         if (!StringUtil.isEmpty((String) mapping.eGet(labelExpression))) {
             return InterpretationContext.with(interpreter, it -> {
                 it.setLogError(false);
@@ -170,7 +170,15 @@ public class DTableElementSynchronizer {
      */
     public void refresh(final DFeatureColumn column) {
         if (accessor.getPermissionAuthority().canEditInstance(column)) {
-            setLabelOnUpdate(column, column.getOriginMapping().getHeaderLabelExpression());
+            DTable dTable = TableHelper.getTable(column);
+            String label;
+            if (dTable != null) {
+                label = getHeaderLabel(dTable, column.getOriginMapping(), DescriptionPackage.eINSTANCE.getColumnMapping_HeaderLabelExpression());
+            } else {
+                // Fallback case to retrieve previous behavior. Not expected to happen.
+                label = column.getOriginMapping().getHeaderLabelExpression();
+            }
+            setLabelOnUpdate(column, label);
             new DTableStyleHelper(interpreter).refresh(column);
         }
     }

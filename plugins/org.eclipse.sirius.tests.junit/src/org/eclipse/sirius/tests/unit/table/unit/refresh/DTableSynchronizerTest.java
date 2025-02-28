@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -80,6 +80,12 @@ public class DTableSynchronizerTest extends TableTestCase {
         }
     }
 
+    /**
+     * This test checks the behavior of a virtual feature column. It also checks the evaluation of the header label
+     * expression of a feature column.
+     * 
+     * @throws Exception
+     */
     public void testVirtualFeatureColumns() throws Exception {
         final TableDescription desc = find("Virtual columns");
         assertNotNull("Unit test data is not correct", desc);
@@ -93,7 +99,7 @@ public class DTableSynchronizerTest extends TableTestCase {
         sync.refresh(new NullProgressMonitor());
 
         final List<List<String>> expected = new ArrayList<List<String>>();
-        TableUIHelper.addLineToTable(expected, new String[] { "", "name", "ComputedLabel_featureName*", "NonExistingFeature" });
+        TableUIHelper.addLineToTable(expected, new String[] { "", "name", "ComputedLabel_featureName*", "MyUMLModel_NonExistingFeature" });
         TableUIHelper.addLineToTable(expected, new String[] { "Class1", "Class1", "ComputedLabel", "_" });
         TableUIHelper.addLineToTable(expected, new String[] { "Class2", "Class2", "ComputedLabel", "_" });
         TableUIHelper.addLineToTable(expected, new String[] { "Class3", "Class3", "ComputedLabel", "_" });
