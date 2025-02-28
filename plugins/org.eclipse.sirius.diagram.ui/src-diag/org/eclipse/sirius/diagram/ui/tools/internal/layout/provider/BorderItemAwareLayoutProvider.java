@@ -22,6 +22,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -102,8 +103,6 @@ import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies.ChangeBoundRequestRecorder;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.ArrangeAllWithAutoSize;
 import org.eclipse.sirius.diagram.ui.tools.internal.part.SiriusDiagramGraphicalViewer;
-import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
@@ -704,8 +703,8 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
         for (Entry<View, List<Request>> requestByView : getViewsToChangeBoundsRequest().entrySet()) {
             View view = requestByView.getKey();
             // Get corresponding edit part
-            Option<IBorderItemEditPart> optionalPart = getCorrespondingEditPart(view);
-            if (optionalPart.some()) {
+            Optional<IBorderItemEditPart> optionalPart = getCorrespondingEditPart(view);
+            if (optionalPart.isPresent()) {
                 // In theory we are always in this case...
                 IBorderItemEditPart borderItemEditPart = optionalPart.get();
                 List<Request> requests = requestByView.getValue();
@@ -766,11 +765,11 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
         } else {
             edgeOtherExtremityView = edge.getSource();
         }
-        Option<? extends GraphicalEditPart> optionalOtherExtremityPart = getCorrespondingEditPart(edgeOtherExtremityView);
-        if (!(optionalOtherExtremityPart.some())) {
+        Optional<? extends GraphicalEditPart> optionalOtherExtremityPart = getCorrespondingEditPart(edgeOtherExtremityView);
+        if (optionalOtherExtremityPart.isEmpty()) {
             optionalOtherExtremityPart = GMFHelper.getGraphicalEditPart(edgeOtherExtremityView);
         }
-        if (optionalOtherExtremityPart.some()) {
+        if (optionalOtherExtremityPart.isPresent()) {
             Point secondAnchorLocation;
             if (sourceEdge) {
                 secondAnchorLocation = GraphicalHelper.getAnchorPoint(optionalOtherExtremityPart.get(), edge.getTargetAnchor());
@@ -846,13 +845,13 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
         previousIterationDatasbyEditPart.clear();
     }
 
-    private Option<IBorderItemEditPart> getCorrespondingEditPart(View view) {
+    private Optional<IBorderItemEditPart> getCorrespondingEditPart(View view) {
         for (IBorderItemEditPart borderItemEditPart : previousIterationDatasbyEditPart.keySet()) {
             if (view.equals(borderItemEditPart.getModel())) {
-                return Options.newSome(borderItemEditPart);
+                return Optional.of(borderItemEditPart);
             }
         }
-        return Options.newNone();
+        return Optional.empty();
     }
 
     /**
