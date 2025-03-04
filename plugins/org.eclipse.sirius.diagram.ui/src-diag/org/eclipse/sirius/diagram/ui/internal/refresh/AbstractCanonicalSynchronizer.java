@@ -22,6 +22,7 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IAdaptable;
@@ -576,8 +577,8 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
 
                 if (size == null) {
                     if (new ViewQuery(createdView).isForNameEditPart()) {
-                        Option<Rectangle> optionalRect = GMFHelper.getAbsoluteBounds(createdView);
-                        if (optionalRect.some()) {
+                        Optional<Rectangle> optionalRect = GMFHelper.getAbsoluteBounds(createdView);
+                        if (optionalRect.isPresent()) {
                             size = optionalRect.get().getSize();
                         }
                     }
@@ -607,7 +608,7 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
             locator.setConstraint(constraint);
             dummyFigure.setVisible(true);
             final Rectangle rect = new Rectangle(constraint);
-            Point parentAbsoluteLocation = GMFHelper.getAbsoluteLocation(parentNode, true);
+            Point parentAbsoluteLocation = GMFHelper.getAbsoluteLocation(parentNode, true, false);
             rect.translate(parentAbsoluteLocation.x, parentAbsoluteLocation.y);
             dummyFigure.setBounds(rect);
             final Point realLocation = locator.getValidLocation(rect, createdNode, new ArrayList<Node>(Arrays.asList(createdNode)));
@@ -666,7 +667,7 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
 
             // CanonicalDBorderItemLocator works with absolute GMF parent
             // location so we need to translate BorderedNode absolute location.
-            final org.eclipse.draw2d.geometry.Point parentAbsoluteLocation = GMFHelper.getAbsoluteBounds(parentNode).getTopLeft();
+            final org.eclipse.draw2d.geometry.Point parentAbsoluteLocation = GMFHelper.getAbsoluteBounds(parentNode, false, false, false, false).getTopLeft();
             final Point realLocation = locator.getValidLocation(new Rectangle(location.getTranslated(parentAbsoluteLocation), size), createdNode, Collections.singleton(createdNode));
 
             // Compute the new relative position to the parent
