@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -24,11 +24,6 @@ import java.util.Set;
 import org.eclipse.sirius.common.tools.Messages;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 
-import com.google.common.base.Preconditions;
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-
 /**
  * A service which corresponds to more than one Java method. Which of the methods will actually be invoked will depend
  * on the target object.
@@ -51,33 +46,25 @@ class PolymorphicService implements IPolymorphicService {
 
     public void addImplementer(MonomorphicService svc) {
         Objects.requireNonNull(svc);
-        Preconditions.checkArgument(name.equals(svc.getName()));
+        if (!name.equals(svc.getName())) {
+            throw new IllegalArgumentException();
+        }
         implementers.add(svc);
     }
 
     @Override
     public boolean appliesTo(Object[] target) {
-        return Iterables.any(implementers, getCompatibilityChecker(target));
+        return implementers.stream().anyMatch(svc -> svc.appliesTo(target));
     }
 
     @Override
     public Object call(Object[] target) throws EvaluationException {
-        List<IMonomorphicService> candidates = Lists.newArrayList(Iterables.filter(implementers, getCompatibilityChecker(target)));
+        List<IMonomorphicService> candidates = implementers.stream().filter(svc -> svc.appliesTo(target)).toList();
         if (!candidates.isEmpty()) {
             return candidates.get(0).call(target);
         } else {
             throw new EvaluationException(MessageFormat.format(Messages.PolymorphicService_noCompatibleImplem, getName(), String.valueOf(target)));
         }
-    }
-
-    private Predicate<IMonomorphicService> getCompatibilityChecker(final Object[] target) {
-        Predicate<IMonomorphicService> isCompatible = new Predicate<IMonomorphicService>() {
-            @Override
-            public boolean apply(IMonomorphicService svc) {
-                return svc.appliesTo(target);
-            }
-        };
-        return isCompatible;
     }
 
     @Override
@@ -92,7 +79,7 @@ class PolymorphicService implements IPolymorphicService {
 
     @Override
     public Collection<Method> getImplementations() {
-        Collection<Method> result = new ArrayList<Method>();
+        Collection<Method> result = new ArrayList<>();
         for (IMonomorphicService svc : this.implementers) {
             result.addAll(svc.getImplementations());
         }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2013, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -24,8 +24,6 @@ import java.util.Objects;
 import org.eclipse.sirius.common.tools.Messages;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 
-import com.google.common.base.Preconditions;
-
 /**
  * A service which correspond exactly to a single Java method.
  * 
@@ -46,7 +44,9 @@ class MonomorphicService implements IMonomorphicService {
     MonomorphicService(Object serviceInstance, Method serviceMethod) {
         this.serviceInstance = Objects.requireNonNull(serviceInstance);
         this.serviceMethod = Objects.requireNonNull(serviceMethod);
-        Preconditions.checkArgument(ServiceInterpreter.isValidServiceMethod(serviceMethod));
+        if (!ServiceInterpreter.isValidServiceMethod(serviceMethod)) {
+            throw new IllegalArgumentException();
+        }
     }
 
     @Override
@@ -80,7 +80,7 @@ class MonomorphicService implements IMonomorphicService {
             /*
              * These exceptions indicate problems in the method invocation
              * itself, i.e. our service invocation logic is broken and tries to
-             * call inaccesible or incompatible methods.
+             * call inaccessible or incompatible methods.
              */
             fail(e);
         } catch (InvocationTargetException e) {
