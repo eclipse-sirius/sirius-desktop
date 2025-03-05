@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,7 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swtbot.swt.finder.SWTBot;
+import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.results.Result;
 import org.eclipse.swtbot.swt.finder.results.VoidResult;
@@ -94,21 +95,29 @@ public abstract class AbstractContentAssistTest extends AbstractSiriusSwtBotGefT
         setCursorPosition(text, cursorPosition);
 
         return UIThreadRunnable.syncExec(new Result<Collection<String>>() {
+            @SuppressWarnings("finally")
             @Override
             public Collection<String> run() {
 
                 SWTBotShell contentAssistShell = openContentAssist(text);
 
                 // Get the displayed proposals.
-                SWTBotTable contentAssistTable = contentAssistShell.bot().table();
                 List<String> proposals = new ArrayList<>();
-                for (TableItem item : contentAssistTable.widget.getItems()) {
-                    proposals.add(item.getText());
+                try {
+                    SWTBotTable contentAssistTable = contentAssistShell.bot().table();
+                    for (TableItem item : contentAssistTable.widget.getItems()) {
+                        proposals.add(item.getText());
+                    }
+
+                    closeContentAssist(text);
+                } catch (WidgetNotFoundException e) {
+                    // Display this exception in the console otherwise it is not visible. Only a
+                    // "java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0" is visible for method
+                    // "AbstractContentAssistTest.getContentAssistProposal(AbstractContentAssistTest.java:97)"
+                    System.out.println("The table of the content assist shell has not been found.");
+                } finally {
+                    return proposals;
                 }
-
-                closeContentAssist(text);
-
-                return proposals;
             }
         });
     }

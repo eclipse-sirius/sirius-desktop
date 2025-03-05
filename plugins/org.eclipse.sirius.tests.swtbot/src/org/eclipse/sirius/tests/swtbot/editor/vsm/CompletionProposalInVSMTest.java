@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -30,9 +30,11 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.sirius.common.tools.internal.assist.ProposalProviderRegistry;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.description.provider.DescriptionItemProviderAdapterFactory;
 import org.eclipse.sirius.sample.interactions.InteractionsPackage;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -73,6 +75,16 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
     private static final String VSM_PROJECT_NAME = "org.eclipse.sirius.test.design";
 
     private static final String VSM = "test.odesign";
+
+    private static final ItemProviderAdapter ipa = (ItemProviderAdapter) new DescriptionItemProviderAdapterFactory().createDiagramDescriptionAdapter();
+
+    private static final String DOMAIN_CLASS_FIELD_TOOLTIP = ipa.getString("_UI_DiagramDescription_domainClass_description");
+
+    private static final String DOMAIN_CLASS_NODE_FIELD_TOOLTIP = ipa.getString("_UI_AbstractNodeMapping_domainClass_description");
+
+    private static final String PRECONDITION_FIELD_TOOLTIP = "The precondition is an expression preventing the creation of a diagram.\n If the precondition is set and the expression returns false on the root diagram\n element, then the diagram won't be created.\n\nExpected return type: a boolean.\n";
+
+    private static final String SEMANTIC_FIELD_TOOLTIP = "Restrict the list of elements to consider before creating the graphical elements. If it is not set,\nthen all semantic models in session will be browsed and any element of the given type validating\nthe precondition expression will cause the creation of a graphical element. If you set this\nattribute then only the elements returned by the expression evaluation will be considered.\n\nExpected return type: a Collection<EObject> or an EObject.\n\nAvailable variables:\n . viewPoint: diagram.DSemanticDiagram | (deprecated) the current DDiagram.\n . containerView: diagram.DSemanticDiagram | the parent view of potential candidates.\n . diagram: diagram.DSemanticDiagram | the current DDiagram.\n . viewpoint: diagram.DSemanticDiagram | (deprecated) the current DDiagram.";
 
     private boolean previousAutoBuildValue = true;
 
@@ -216,11 +228,11 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
         initContext(Arrays.asList("test", "VP", "Diag"));
 
         // Set the domain class
-        SWTBotText domainClass = propertiesBot.bot().text(2);
+        SWTBotText domainClass = propertiesBot.bot().textWithTooltip(DOMAIN_CLASS_FIELD_TOOLTIP);
         domainClass.setFocus();
 
         // Init the Precondition Expression
-        SWTBotText precondition = propertiesBot.bot().text(3);
+        SWTBotText precondition = propertiesBot.bot().textWithTooltip(PRECONDITION_FIELD_TOOLTIP);
         precondition.setFocus();
         precondition.setText("[thisEObject./]");
 
@@ -250,16 +262,16 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
         initContext(Arrays.asList("test", "VP", "Diag", "Default", "C1"));
 
         // Set the domain class
-        SWTBotText domainClass = propertiesBot.bot().text(2);
+        SWTBotText domainClass = propertiesBot.bot().textWithTooltip(DOMAIN_CLASS_NODE_FIELD_TOOLTIP);
         domainClass.setFocus();
 
-        // Init the Precondition Expression
-        SWTBotText precondition = propertiesBot.bot().text(3);
-        precondition.setFocus();
-        precondition.setText("[self./]");
+        // Init the Semantic Candidate Expression
+        SWTBotText semanticCandidateField = propertiesBot.bot().textWithTooltip(SEMANTIC_FIELD_TOOLTIP);
+        semanticCandidateField.setFocus();
+        semanticCandidateField.setText("[self./]");
 
         // Get proposals
-        Collection<String> contentAssistProposal = getContentAssistProposal(precondition, 6);
+        Collection<String> contentAssistProposal = getContentAssistProposal(semanticCandidateField, 6);
         assertTrue("Proposals should be present.", contentAssistProposal.contains("testInteractionsService() : CallMessage"));
         assertTrue("Proposals on EClass should contain service for EClass.", contentAssistProposal.contains("sampleService() : String"));
         assertTrue("Proposals on EClass should contain service for EClass.", contentAssistProposal.contains("sampleServiceOnEClass() : String"));
@@ -284,16 +296,16 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
         initContext(Arrays.asList("test", "VP", "Diag", "Default", "C1"));
 
         // Set the domain class
-        SWTBotText domainClass = propertiesBot.bot().text(2);
+        SWTBotText domainClass = propertiesBot.bot().textWithTooltip(DOMAIN_CLASS_NODE_FIELD_TOOLTIP);
         domainClass.setFocus();
 
-        // Init the Precondition Expression
-        SWTBotText precondition = propertiesBot.bot().text(3);
-        precondition.setFocus();
-        precondition.setText("service:");
+        // Init the Semantic Candidate Expression
+        SWTBotText semanticCandidateField = propertiesBot.bot().textWithTooltip(SEMANTIC_FIELD_TOOLTIP);
+        semanticCandidateField.setFocus();
+        semanticCandidateField.setText("service:");
 
         // Get proposals
-        Collection<String> contentAssistProposal = getContentAssistProposal(precondition, 8);
+        Collection<String> contentAssistProposal = getContentAssistProposal(semanticCandidateField, 8);
         assertTrue("Proposals should be present.", contentAssistProposal.contains("testInteractionsService()"));
         assertTrue("Proposals on EClass should contain service for EClass.", contentAssistProposal.contains("sampleService()"));
         assertTrue("Proposals on EClass should contain service for EClass.", contentAssistProposal.contains("sampleServiceOnEClass()"));
@@ -320,16 +332,16 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
         initContext(Arrays.asList("test", "VP", "Diag", "Default", "C1"));
 
         // Set the domain class
-        SWTBotText domainClass = propertiesBot.bot().text(2);
+        SWTBotText domainClass = propertiesBot.bot().textWithTooltip(DOMAIN_CLASS_NODE_FIELD_TOOLTIP);
         domainClass.setFocus();
 
-        // Init the Precondition Expression
-        SWTBotText precondition = propertiesBot.bot().text(3);
-        precondition.setFocus();
-        precondition.setText("aql:self.");
+        // Init the Semantic Candidate Expression
+        SWTBotText semanticCandidateField = propertiesBot.bot().textWithTooltip(SEMANTIC_FIELD_TOOLTIP);
+        semanticCandidateField.setFocus();
+        semanticCandidateField.setText("aql:self.");
 
         // Get proposals
-        Collection<String> contentAssistProposal = getContentAssistProposal(precondition, 9);
+        Collection<String> contentAssistProposal = getContentAssistProposal(semanticCandidateField, 9);
         assertTrue("Proposals should be present.", contentAssistProposal.contains("testInteractionsService()"));
         assertTrue("Proposals on EClass should contain service for EClass.", contentAssistProposal.contains("sampleService()"));
         assertTrue("Proposals on EClass should contain service for EClass.", contentAssistProposal.contains("sampleServiceOnEClass()"));
@@ -351,11 +363,11 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
         initContext(Arrays.asList("test", "VP", "Diag"));
 
         // Set the domain class
-        SWTBotText domainClass = propertiesBot.bot().text(2);
+        SWTBotText domainClass = propertiesBot.bot().textWithTooltip(DOMAIN_CLASS_FIELD_TOOLTIP);
         domainClass.setFocus();
 
         // Init the Precondition Expression
-        SWTBotText precondition = propertiesBot.bot().text(3);
+        SWTBotText precondition = propertiesBot.bot().textWithTooltip(PRECONDITION_FIELD_TOOLTIP);
         precondition.setFocus();
         precondition.setText("[thisEObject./]");
 
@@ -391,7 +403,7 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
         initContext(Arrays.asList("test", "VP", "Diag"));
 
         // Get proposals for domain class.
-        SWTBotText domainClass = propertiesBot.bot().text(2);
+        SWTBotText domainClass = propertiesBot.bot().textWithTooltip(DOMAIN_CLASS_FIELD_TOOLTIP);
         domainClass.setFocus();
 
         // Get proposals
@@ -422,7 +434,7 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
         propertiesBot = bot.viewByTitle("Properties");
         propertiesBot.setFocus();
         SWTBotSiriusHelper.selectPropertyTabItem("General", propertiesBot.bot());
-        SWTBotText domainClass = propertiesBot.bot().text(2);
+        SWTBotText domainClass = propertiesBot.bot().textWithTooltip(DOMAIN_CLASS_FIELD_TOOLTIP);
         domainClass.setFocus();
 
         // Get proposals
