@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021 Obeo.
+ * Copyright (c) 2021, 2025 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,8 @@ package org.eclipse.sirius.tests.swtbot.suite;
 
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.Activator;
+import org.eclipse.sirius.tests.swtbot.ArrangeAllTest;
+import org.eclipse.sirius.tests.swtbot.ArrangeAllWithSnapToGridTest;
 import org.eclipse.sirius.tests.swtbot.DeleteHookTests;
 import org.eclipse.sirius.tests.swtbot.DiagramCreationDescriptionTest;
 import org.eclipse.sirius.tests.swtbot.DndWorkspaceToAirdEditorTest;
@@ -131,6 +133,9 @@ public class AllUnreliableTestSuite extends TestCase {
                 suite.addTestSuite(TableUIRefreshTests.class);
                 suite.addTestSuite(ViewpointSpecificationProjectCreationTest.class);
                 suite.addTestSuite(VSMFieldTest.class);
+                // These tests fail regularly on CI server caused by "pango error"
+                suite.addTestSuite(ArrangeAllTest.class);
+                suite.addTestSuite(ArrangeAllWithSnapToGridTest.class);
             }
         }
         return suite;
