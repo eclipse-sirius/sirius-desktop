@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,9 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Spliterator;
+import java.util.Spliterators;
+import java.util.stream.StreamSupport;
 
 import org.eclipse.emf.common.util.AbstractTreeIterator;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -26,10 +29,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.sirius.ecore.extender.business.internal.common.ExtenderDescriptor;
 import org.eclipse.sirius.ext.emf.EReferencePredicate;
-
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Iterators;
 
 /**
  * Aggregate more {@link IMetamodelExtender}'s using a priority system.
@@ -185,6 +184,7 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
         return null;
     }
 
+
     @Override
     public Iterator<EObject> eContents(final EObject root) {
         final List<Iterator<EObject>> iterators = new ArrayList<>();
@@ -195,11 +195,12 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
             }
         }
         if (!iterators.isEmpty()) {
-            return Iterators.concat(iterators.iterator());
+            return iterators.stream()
+                    .flatMap(iterator -> StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator, Spliterator.ORDERED), false))
+                    .iterator();
         }
         return Collections.<EObject> emptyList().iterator();
     }
-
     /**
      * Check whether the given instance should block the eAllContent browsing or
      * not.
@@ -238,7 +239,7 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
 
     @Override
     public Collection<EObject> eRemoveInverseCrossReferences(EObject eObject, ECrossReferenceAdapter xref, EReferencePredicate isReferencesToIgnorePredicate) {
-        Collection<EObject> impactedEObjects = new LinkedHashSet<EObject>();
+        Collection<EObject> impactedEObjects = new LinkedHashSet<>();
         for (final IMetamodelExtender extender : getActivatedExtenders()) {
             impactedEObjects.addAll(extender.eRemoveInverseCrossReferences(eObject, xref, isReferencesToIgnorePredicate));
         }
@@ -336,7 +337,9 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
         for (final IMetamodelExtender extender : getActivatedExtenders()) {
             iterators.add(extender.getContributedAttributeNames(next));
         }
-        return Iterators.concat(iterators.iterator());
+        return iterators.stream()
+                .flatMap(iterator -> StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator, Spliterator.ORDERED), false))
+                .iterator();
     }
 
     @Override
@@ -345,8 +348,9 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
         for (final IMetamodelExtender extender : getActivatedExtenders()) {
             iterators.add(extender.getContributedReferenceNames(instance));
         }
-        return Iterators.concat(iterators.iterator());
-
+        return iterators.stream()
+                .flatMap(iterator -> StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator, Spliterator.ORDERED), false))
+                .iterator();
     }
 
     @Override
@@ -477,12 +481,7 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
      */
     protected synchronized Iterable<IMetamodelExtender> getActivatedExtenders() {
         if (activeExtenders == null) {
-            activeExtenders = Iterables.filter(extenders, new Predicate<IMetamodelExtender>() {
-                @Override
-                public boolean apply(IMetamodelExtender extender) {
-                    return extender.isActive();
-                }
-            });
+            activeExtenders = () -> extenders.stream().filter(IMetamodelExtender::isActive).iterator();
         }
         return activeExtenders;
     }

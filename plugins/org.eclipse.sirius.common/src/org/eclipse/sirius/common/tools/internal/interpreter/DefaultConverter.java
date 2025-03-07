@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019 Obeo.
+ * Copyright (c) 2019, 2024 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,16 +13,15 @@
 
 package org.eclipse.sirius.common.tools.internal.interpreter;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 import java.util.OptionalInt;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.common.tools.api.interpreter.IConverter;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * The default implementation of type conversion for interpreters. It should be the one used for all implementations
@@ -87,12 +86,13 @@ public class DefaultConverter implements IConverter {
     @Override
     public Optional<Collection<EObject>> toEObjectCollection(Object rawValue) {
         final Collection<EObject> result;
-        if (rawValue instanceof Collection<?>) {
-            result = Lists.newArrayList(Iterables.filter((Collection<?>) rawValue, EObject.class));
+        if (rawValue instanceof Collection<?> values) {
+            result = values.stream().filter(EObject.class::isInstance).map(EObject.class::cast).toList();
         } else if (rawValue instanceof EObject) {
             result = Collections.singleton((EObject) rawValue);
         } else if (rawValue != null && rawValue.getClass().isArray()) {
-            result = Lists.newArrayList(Iterables.filter(Lists.newArrayList((Object[]) rawValue), EObject.class));
+            List<Object> values = Arrays.asList((Object[]) rawValue);
+            result = values.stream().filter(EObject.class::isInstance).map(EObject.class::cast).toList();
         } else {
             result = Collections.emptySet();
         }
