@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -101,7 +101,7 @@ public class SequenceContainerCreationPolicy extends ContainerCreationEditPolicy
                 finishingEndEndPredecessor = SequenceGraphicalHelper.getEndBefore(diag, location.y + size.height);
             }
 
-            CreationUtil creationUtil = new CreationUtil(request, getDiagramCommandFactory(startingEndPredecessor, finishingEndEndPredecessor, location), getRealLocation(request), request.getSize(),
+            CreationUtil creationUtil = new CreationUtil(getDiagramCommandFactory(startingEndPredecessor, finishingEndEndPredecessor, location), getRealLocation(request), request.getSize(),
                     getHost());
             result = creationUtil.getNodeCreationCommand(diagram, tool);
         } else if (tool instanceof InstanceRoleCreationTool && diagram instanceof SequenceDDiagram) {
@@ -110,7 +110,7 @@ public class SequenceContainerCreationPolicy extends ContainerCreationEditPolicy
             GraphicalHelper.screen2logical(location, (IGraphicalEditPart) getHost());
 
             EObject predecessor = SequenceGraphicalHelper.getInstanceRoleBefore(diag, location.x);
-            CreationUtil creationUtil = new CreationUtil(request, getDiagramCommandFactory(predecessor, location), getRealLocation(request), request.getSize(), getHost());
+            CreationUtil creationUtil = new CreationUtil(getDiagramCommandFactory(predecessor, location), getRealLocation(request), request.getSize(), getHost());
             result = creationUtil.getNodeCreationCommand(diagram, tool);
         } else {
             result = super.getCreateNodeOnDiagramCommand(request, tool, diagram);
@@ -140,7 +140,7 @@ public class SequenceContainerCreationPolicy extends ContainerCreationEditPolicy
                 List<EObject> coverage = creationValidator.getCoverage();
                 Range expansionZone = creationValidator.getExpansionZone();
 
-                CreationUtil creationUtil = new CreationUtil(request, getDiagramCommandFactory(startingEndPredecessor, finishingEndPredecessor, coverage, getCreationRange(request)),
+                CreationUtil creationUtil = new CreationUtil(getDiagramCommandFactory(startingEndPredecessor, finishingEndPredecessor, coverage, getCreationRange(request)),
                         getRealLocation(request), getRealSize(ccdTool, request), getHost());
                 result = creationUtil.getContainerCreationDescription(diagram, ccdTool);
 

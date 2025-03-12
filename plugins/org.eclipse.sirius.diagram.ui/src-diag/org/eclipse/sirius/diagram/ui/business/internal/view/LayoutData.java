@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -215,14 +215,12 @@ public class LayoutData extends AbstractLayoutData {
     }
 
     /**
-     * Search recursively in in all the LayoutData is there is one which have
-     * the element for target.
+     * Search recursively in all the LayoutData if there is one which have the element for target.
      * 
      * @param node
      *            The search element
      * @param ignoreConsumeState
-     *            true to ignore the consume state and to authorize to consume
-     *            an already consumed data, false otherwise
+     *            true to ignore the consume state and to authorize to consume an already consumed data, false otherwise
      * @return the corresponding LayoutData or null if not found.
      */
     public LayoutData getData(final AbstractDNode node, boolean ignoreConsumeState) {
@@ -241,14 +239,12 @@ public class LayoutData extends AbstractLayoutData {
     }
 
     /**
-     * Search recursively in in all the LayoutData is there is one which have
-     * the element for target.
+     * Search recursively in all the LayoutData if there is one which have the element for target.
      * 
      * @param edge
      *            The search element
      * @param ignoreConsumeState
-     *            true to ignore the consume state and to authorize to consume
-     *            an already consumed data, false otherwise
+     *            true to ignore the consume state and to authorize to consume an already consumed data, false otherwise
      * @return the corresponding LayoutData or null if not found.
      */
     public EdgeLayoutData getData(final DEdge edge, boolean ignoreConsumeState) {
