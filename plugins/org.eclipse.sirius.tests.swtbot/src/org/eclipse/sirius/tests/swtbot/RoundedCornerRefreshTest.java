@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -34,6 +34,7 @@ import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.GradientRoundedRectangle;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.matcher.WithDRepresentationElementType;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
@@ -42,6 +43,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import org.eclipse.swt.SWT;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
+import org.eclipse.swtbot.swt.finder.waits.ICondition;
 
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
@@ -226,9 +228,9 @@ public class RoundedCornerRefreshTest extends AbstractSiriusSwtBotGefTestCase {
         IGraphicalEditPart graphicalEditPart = (IGraphicalEditPart) editPart;
         IFigure figure = graphicalEditPart.getFigure();
         if (!figure.getChildren().isEmpty()) {
-            IFigure firstChild = (IFigure) figure.getChildren().get(0);
+            IFigure firstChild = figure.getChildren().get(0);
             if (!firstChild.getChildren().isEmpty()) {
-                IFigure secondChild = (IFigure) firstChild.getChildren().get(0);
+                IFigure secondChild = firstChild.getChildren().get(0);
                 if (secondChild instanceof GradientRoundedRectangle) {
                     GradientRoundedRectangle roundedCornderFigure = (GradientRoundedRectangle) secondChild;
                     arcWidth = roundedCornderFigure.getCornerWidth();
@@ -260,9 +262,9 @@ public class RoundedCornerRefreshTest extends AbstractSiriusSwtBotGefTestCase {
         IGraphicalEditPart graphicalEditPart = (IGraphicalEditPart) editPart;
         IFigure figure = graphicalEditPart.getFigure();
         if (!figure.getChildren().isEmpty()) {
-            IFigure firstChild = (IFigure) figure.getChildren().get(0);
+            IFigure firstChild = figure.getChildren().get(0);
             if (!firstChild.getChildren().isEmpty()) {
-                IFigure secondChild = (IFigure) firstChild.getChildren().get(0);
+                IFigure secondChild = firstChild.getChildren().get(0);
                 if (secondChild instanceof GradientRoundedRectangle) {
                     GradientRoundedRectangle roundedCornerFigure = (GradientRoundedRectangle) secondChild;
                     arcHeight = roundedCornerFigure.getCornerHeight();
@@ -300,11 +302,14 @@ public class RoundedCornerRefreshTest extends AbstractSiriusSwtBotGefTestCase {
         ContainerStyleDescription containerStyleDescription = containerMapping.getStyle();
         containerStyleDescription = getInstanceFromModeler(containerStyleDescription);
         containerStyleDescription.setRoundedCorner(roundedCorner);
+
+        ICondition done = new OperationDoneCondition();
         try {
             modelerResource.save(Collections.emptyMap());
         } catch (IOException e) {
             fail(e.getLocalizedMessage());
         } finally {
+            bot.waitUntil(done);
             SWTBotUtils.waitAllUiEvents();
             bot.sleep(1000);
             SWTBotUtils.waitAllUiEvents();
