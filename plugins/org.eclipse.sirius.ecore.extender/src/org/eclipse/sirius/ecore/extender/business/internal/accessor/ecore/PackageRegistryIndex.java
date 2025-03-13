@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,14 +14,14 @@ package org.eclipse.sirius.ecore.extender.business.internal.accessor.ecore;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
-
-import com.google.common.base.Predicate;
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Multimap;
 
 /**
  * Index for all EClasses defined in a package registry.
@@ -37,7 +37,7 @@ public class PackageRegistryIndex {
 
     private final Predicate<EPackage> packageFilter;
 
-    private final Multimap<String, EClass> index = HashMultimap.create();
+    private final Map<String, List<EClass>> index = new HashMap<>();
 
     private boolean initializedDescriptors;
 
@@ -99,22 +99,30 @@ public class PackageRegistryIndex {
      * @return all the indexed classes with a matching name.
      */
     public Collection<EClass> getEClassesFromName(String name) {
-        Collection<EClass> result = index.get(name);
+        Collection<EClass> result = index.getOrDefault(name, List.of());
         if (Boolean.valueOf(System.getProperty("org.eclipse.sirius.enableUnsafeOptimisations", "false")) && result.isEmpty() && !initializedDescriptors) { //$NON-NLS-1$ //$NON-NLS-2$
             indexTypesFromRegistry(true);
             initializedDescriptors = true;
-            result = index.get(name);
+            result = index.getOrDefault(name, List.of());
         }
         return result;
     }
 
     private void indexTypesFrom(EPackage value) {
-        if (packageFilter.apply(value)) {
-            for (EClass cur : Iterables.filter(value.getEClassifiers(), EClass.class)) {
-                index.put(cur.getName(), cur);
-                index.put(value.getName() + SEPARATOR + cur.getName(), cur);
-                index.put(value.getName() + AQL_SEPARATOR + cur.getName(), cur);
+        if (packageFilter.test(value)) {
+            for (EClassifier classifier : value.getEClassifiers()) {
+                if (classifier instanceof EClass cur) {
+                    addToIndex(cur.getName(), cur);
+                    addToIndex(value.getName() + SEPARATOR + cur.getName(), cur);
+                    addToIndex(value.getName() + AQL_SEPARATOR + cur.getName(), cur);
+                }
             }
         }
     }
+    
+    private void addToIndex(String key, EClass eClass) {
+        index.putIfAbsent(key, new ArrayList<>());
+        index.get(key).add(eClass);
+    }
+
 }
