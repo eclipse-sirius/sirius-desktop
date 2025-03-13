@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2024 Kiel University and others.
+ * Copyright (c) 2009, 2025 Kiel University and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -93,6 +93,8 @@ import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.draw2d.ui.geometry.LineSeg;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
+import org.eclipse.gmf.runtime.notation.LayoutConstraint;
+import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Routing;
 import org.eclipse.gmf.runtime.notation.View;
@@ -1257,8 +1259,17 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
 
         // set the port label
         for (Object portChildObj : portEditPart.getChildren()) {
-            if (portChildObj instanceof IGraphicalEditPart) {
-                IFigure labelFigure = ((IGraphicalEditPart) portChildObj).getFigure();
+            if (portChildObj instanceof IGraphicalEditPart portEditPartLabel) {
+                Node node = (Node) portEditPartLabel.getNotationView();
+                // Get the original layout constraint to avoid a side effect of the rounded value of the parent, later
+                // in GmfLayoutCommand.doExecuteWithResult(IProgressMonitor, IAdaptable). It is used to determine the x
+                // location to set for the port label.
+                LayoutConstraint layoutConstraint = node.getLayoutConstraint();
+                int originalXLabelLocation = Integer.MIN_VALUE;
+                if (layoutConstraint instanceof Location location) {
+                    originalXLabelLocation = location.getX();
+                }
+                IFigure labelFigure = portEditPartLabel.getFigure();
                 String text = null;
                 if (labelFigure instanceof WrappingLabel) {
                     text = ((WrappingLabel) labelFigure).getText();
@@ -1277,7 +1288,12 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
 
                     // Set the port label's layout (centered below the port)
                     Rectangle labelBounds = getAbsoluteBounds(labelFigure);
-                    portLabel.setLocation((portBounds.preciseWidth() / 2) - (labelBounds.preciseWidth() / 2), portBounds.height + 1);
+                    if (originalXLabelLocation != Integer.MIN_VALUE && originalXLabelLocation == (int) ((portBounds.preciseWidth() / 2) - (labelBounds.preciseWidth() / 2))) {
+                        // Avoid to introduce a decimal location if it was not the case in the original GMF location.
+                        portLabel.setLocation(originalXLabelLocation, portBounds.height + 1);
+                    } else {
+                        portLabel.setLocation((portBounds.preciseWidth() / 2) - (labelBounds.preciseWidth() / 2), portBounds.height + 1);
+                    }
                     try {
                         Dimension size = labelFigure.getPreferredSize();
                         portLabel.setDimensions(size.width, size.height);
