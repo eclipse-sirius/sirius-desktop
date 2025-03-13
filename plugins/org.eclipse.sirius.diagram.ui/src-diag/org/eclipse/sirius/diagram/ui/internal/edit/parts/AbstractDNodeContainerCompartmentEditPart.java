@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2023 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -221,8 +221,8 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
      */
     protected void configureBorder(ResizableCompartmentFigure rcf) {
         boolean shouldHaveBorder = isRegionContainerCompartment();
-        Option<LabelBorderStyleDescription> labelBorderStyle = getLabelBorderStyle();
-        if (labelBorderStyle.some()) {
+        Optional<LabelBorderStyleDescription> labelBorderStyle = getLabelBorderStyle();
+        if (labelBorderStyle.isPresent()) {
             shouldHaveBorder = shouldHaveBorder || LabelBorderStyleIds.LABEL_FULL_BORDER_STYLE_FOR_CONTAINER_ID.equals(labelBorderStyle.get().getId());
         }
 
@@ -266,8 +266,8 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
         }
 
         boolean fullLabelBorder = false;
-        Option<LabelBorderStyleDescription> labelBorderStyle = getLabelBorderStyle();
-        if (labelBorderStyle.some()) {
+        Optional<LabelBorderStyleDescription> labelBorderStyle = getLabelBorderStyle();
+        if (labelBorderStyle.isPresent()) {
             fullLabelBorder = LabelBorderStyleIds.LABEL_FULL_BORDER_STYLE_FOR_CONTAINER_ID.equals(labelBorderStyle.get().getId());
         }
 
@@ -319,12 +319,12 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
         return style == null ? false : style.isCollapsed();
     }
 
-    private Option<LabelBorderStyleDescription> getLabelBorderStyle() {
+    private Optional<LabelBorderStyleDescription> getLabelBorderStyle() {
         EObject element = resolveSemanticElement();
         if (element instanceof DDiagramElementContainer) {
             return new DDiagramElementContainerExperimentalQuery((DDiagramElementContainer) element).getLabelBorderStyle();
         }
-        return Options.newNone();
+        return Optional.empty();
     }
 
     @Override
