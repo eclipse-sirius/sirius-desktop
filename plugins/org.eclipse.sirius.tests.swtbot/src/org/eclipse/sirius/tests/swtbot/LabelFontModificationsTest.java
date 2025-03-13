@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,13 +13,14 @@
 package org.eclipse.sirius.tests.swtbot;
 
 import java.awt.AWTException;
-import java.awt.GraphicsEnvironment;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.FigureUtilities;
 import org.eclipse.sirius.business.api.metamodel.helper.FontFormatHelper;
@@ -848,14 +849,18 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
          * Last found common fonts : Arial, Arial Black, Comic Sans MS, Courier New, DejaVu Sans, DejaVu Sans Mono,
          * DejaVu Serif, Georgia, Impact, Times New Roma, Trebuchet MS, Verdana , Webdings.
          */
-        // Use the first available font to test the change
-        String fonts[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
+        AtomicReference<String> newFontNameToUse = new AtomicReference<>();
+        if (Platform.OS_MACOSX.equals(Platform.getOS())) {
+            newFontNameToUse.set("DejaVu Sans Mono for Powerline");
+        } else {
+            newFontNameToUse.set("DejaVu Sans Mono");
+        }
         Predicate<SWTBotGefEditPart> stateWhenButtonIsCheckedPredicate = new Predicate<SWTBotGefEditPart>() {
 
             @Override
             public boolean apply(SWTBotGefEditPart input) {
                 try {
-                    checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, new ArrayList<FontFormat>(), false, false, fonts[0], -1, -1);
+                    checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, new ArrayList<FontFormat>(), false, false, newFontNameToUse.get(), -1, -1);
                     return true;
                 } catch (AssertionError e) {
                     return false;
@@ -864,6 +869,6 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
 
         };
 
-        doTestStyleCustomizationThroughComboBoxInAppearanceSection(selectedEditPart, NORMAL_FONT_STATE_PREDICATE, stateWhenButtonIsCheckedPredicate, 0, fonts[0], true);
+        doTestStyleCustomizationThroughComboBoxInAppearanceSection(selectedEditPart, NORMAL_FONT_STATE_PREDICATE, stateWhenButtonIsCheckedPredicate, 0, newFontNameToUse.get(), true);
     }
 }
