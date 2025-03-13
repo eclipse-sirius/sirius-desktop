@@ -57,16 +57,7 @@ public class RootLayoutData extends LayoutData {
      *            the future size
      */
     public RootLayoutData(final EditPart editPart, final Point location, final Dimension size) {
-        final Object adaptObject = EditPartTools.getParentOfType(editPart, IGraphicalEditPart.class).resolveSemanticElement();
-        if (adaptObject instanceof AbstractDNode) {
-            init((AbstractDNode) adaptObject, location, size);
-        } else if (adaptObject instanceof DDiagram) {
-            init((DDiagram) adaptObject, location, size);
-        } else if (adaptObject instanceof DEdge) {
-            init((DEdge) adaptObject, location, size);
-        } else {
-            AbstractSiriusFormatDataManager.logUnhandledDiagramElementKindMessage(adaptObject);
-        }
+        this(EditPartTools.getParentOfType(editPart, IGraphicalEditPart.class).resolveSemanticElement(), location, size);
     }
 
     /**
@@ -107,12 +98,10 @@ public class RootLayoutData extends LayoutData {
      */
     public RootLayoutData(final Object adaptObject, final Point location, final Dimension size) {
         super();
-        if (adaptObject instanceof AbstractDNode) {
-            init((AbstractDNode) adaptObject, location, size);
-        } else if (adaptObject instanceof DDiagram) {
-            init((DDiagram) adaptObject, location, size);
-        } else if (adaptObject instanceof DEdge) {
-            init((DEdge) adaptObject, location, size);
+        if (adaptObject instanceof DDiagram // for root
+                || adaptObject instanceof AbstractDNode // container or simple node
+                || adaptObject instanceof DEdge) {
+            init((EObject) adaptObject, location, size);
         } else {
             AbstractSiriusFormatDataManager.logUnhandledDiagramElementKindMessage(adaptObject);
         }
@@ -170,8 +159,10 @@ public class RootLayoutData extends LayoutData {
     }
 
     /**
-     * Search recursively in in all the DiagramLayoutData is there is one which
-     * have the diagram for target.
+     * Search if there is data which have the diagram for target.
+     * <p>
+     * Default implementation does not perform a recursive search.
+     * </p>
      * 
      * @param diagram
      *            The search diagram
