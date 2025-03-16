@@ -106,7 +106,7 @@ public abstract class AbstractRegistryEventListener implements IRegistryEventLis
      * @param configurationElement
      *            The configuration element.
      * @param action
-     *            Indicates wether we have an addition or a removal of the
+     *            Indicates whether we have an addition or a removal of the
      *            configuration element
      * @return <code>true</code> if the configuration element has been read
      *         properly

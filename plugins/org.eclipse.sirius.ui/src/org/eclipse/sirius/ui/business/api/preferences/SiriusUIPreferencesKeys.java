@@ -55,7 +55,7 @@ public enum SiriusUIPreferencesKeys {
 
     /**
      * <b>Not considered if {@link DesignerUIPreferencesKeys#PREF_REACT_TO_PERMISSION_ISSUES_BY_GRAPHICAL_DISPLAY} is
-     * false</b>. When a a permission issue should be displayed graphically, specifies wether it should be displayed
+     * false</b>. When a a permission issue should be displayed graphically, specifies whether it should be displayed
      * through the Dialect (e.g. a NotificationFigure inside a DDiagram) or through a standard pop-up.
      */
     PREF_DISPLAY_PERMISSION_ISSUES_THROUGH_DIALOG,

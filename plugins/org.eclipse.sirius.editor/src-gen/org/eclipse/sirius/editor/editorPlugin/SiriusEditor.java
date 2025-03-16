@@ -1115,7 +1115,7 @@ implements IAdapterFactoryProvider, IEditingDomainProvider, ISelectionProvider, 
     }
 
     /**
-     * This returns wether something has been persisted to the URI of the specified resource. The implementation uses
+     * This returns whether something has been persisted to the URI of the specified resource. The implementation uses
      * the URI converter from the editor's resource set to try to open an input stream.
      */
     protected boolean isPersisted(Resource resource) {

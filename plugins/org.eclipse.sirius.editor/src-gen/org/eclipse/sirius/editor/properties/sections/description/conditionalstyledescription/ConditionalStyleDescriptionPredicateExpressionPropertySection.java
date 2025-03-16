@@ -150,7 +150,7 @@ public class ConditionalStyleDescriptionPredicateExpressionPropertySection exten
      */
     @Override
     protected String getPropertyDescription() {
-        return "Checked predicate to determine wether the conditional style is valid or not. If the predicate returns true, the style is taken.";
+        return "Checked predicate to determine whether the conditional style is valid or not. If the predicate returns true, the style is taken.";
     }
 
     // Start of user code user operations

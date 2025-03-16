@@ -444,7 +444,7 @@ public final class ModelUtils {
      * @param set
      *            the resource set to resolve.
      * @param filter
-     *            predicate responsible to say wether the reference should be
+     *            predicate responsible to say whether the reference should be
      *            resolved or not.
      */
     public static void resolveAll(final ResourceSet set, EReferencePredicate filter) {
