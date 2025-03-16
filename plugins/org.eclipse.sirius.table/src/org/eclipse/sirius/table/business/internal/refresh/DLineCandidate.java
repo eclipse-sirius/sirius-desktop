@@ -76,7 +76,7 @@ public class DLineCandidate {
     }
 
     /**
-     * Tells wether this candidate has been created from an existing element or
+     * Tells whether this candidate has been created from an existing element or
      * not.
      * 
      * @return true if the candidate has been created from an existing element.
