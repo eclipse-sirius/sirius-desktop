@@ -14,6 +14,11 @@
 				<ol style="list-style: disc;">
 					<li>
 						<a href="#sirius7.4.8">Changes in Sirius  Desktop 7.4.8</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="#SpecifiersVisibleChanges">Specifiers-Visible Changes</a>
+							</li>
+						</ol>
 					</li>
 					<li>
 						<a href="#sirius7.4.7">Changes in Sirius  Desktop 7.4.7</a>
@@ -22,7 +27,7 @@
 						<a href="#sirius7.4.6">Changes in Sirius  Desktop 7.4.6</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#SpecifiersVisibleChanges">Specifiers-Visible Changes</a>
+								<a href="#SpecifiersVisibleChanges2">Specifiers-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#DeveloperVisibleChanges">Developer-Visible Changes</a>
@@ -246,11 +251,14 @@
 			<a href="Release_Notes_Previous.html">the release notes from previous versions</a> for details about older releases.
 		</p>
 		<h2 id="sirius7.4.8">Changes in Sirius  Desktop 7.4.8</h2>
-		<p>Nothing.</p>
+		<h3 id="SpecifiersVisibleChanges">Specifiers-Visible Changes</h3>
+		<ul>
+			<li><span class="label label-info">Modified</span> In tables, the header label expression configured for Feature columns are now correctly evaluated as actual expressions.</li>
+		</ul>
 		<h2 id="sirius7.4.7">Changes in Sirius  Desktop 7.4.7</h2>
 		<p>Nothing.</p>
 		<h2 id="sirius7.4.6">Changes in Sirius  Desktop 7.4.6</h2>
-		<h3 id="SpecifiersVisibleChanges">Specifiers-Visible Changes</h3>
+		<h3 id="SpecifiersVisibleChanges2">Specifiers-Visible Changes</h3>
 		<ul>
 			<li>The &#8216;interaction container mapping&#8217; has been added to the sequence diagram metamodel. It is configured like a container mapping. Its edit part deactivate user interaction. Its goal is to have a background container that graphically wraps around all sequence diagram element.</li>
 		</ul>
@@ -309,7 +317,7 @@
 				<code>org.eclipse.sirius.tests.support.api.SiriusTestCase</code> and 
 				<code>org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase</code> to regroup common mechanisms used to manages info, warning, errors and uncaught exceptions.
 			</li>
-			<li><span class="label label-info">Modified</span>Info, warning, errors and uncaught exceptions management has been extracted from 
+			<li><span class="label label-info">Modified</span> Info, warning, errors and uncaught exceptions management has been extracted from 
 				<code>org.eclipse.sirius.tests.support.api.SiriusTestCase</code> and moved to 
 				<code>org.eclipse.sirius.tests.support.api.PlatformProblemsListener</code>.
 			</li>
