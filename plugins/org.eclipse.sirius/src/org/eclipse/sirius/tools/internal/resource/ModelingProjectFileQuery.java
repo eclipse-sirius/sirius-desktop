@@ -42,7 +42,7 @@ public class ModelingProjectFileQuery {
     }
 
     /**
-     * Indicates wether the given file contains a DAnalysis model.
+     * Indicates whether the given file contains a DAnalysis model.
      * 
      * @param aFile
      *            the file to test
@@ -53,7 +53,7 @@ public class ModelingProjectFileQuery {
     }
 
     /**
-     * Indicates wether the given file contains a VSM model.
+     * Indicates whether the given file contains a VSM model.
      * 
      * @param aFile
      *            the file to test

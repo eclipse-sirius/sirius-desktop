@@ -303,7 +303,7 @@
             ecoreFeature="ecore:EReference viewpoint.ecore#//description/DAnnotation/references"/>
       </genClasses>
       <genClasses image="false" ecoreClass="viewpoint.ecore#//description/ConditionalStyleDescription">
-        <genFeatures createChild="false" propertyCategory="General" propertyDescription="Checked predicate to determine wether the conditional style is valid or not. If the predicate returns true, the style is taken."
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="Checked predicate to determine whether the conditional style is valid or not. If the predicate returns true, the style is taken."
             ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/ConditionalStyleDescription/predicateExpression"/>
         <genOperations ecoreOperation="viewpoint.ecore#//description/ConditionalStyleDescription/checkPredicate">
           <genParameters ecoreParameter="viewpoint.ecore#//description/ConditionalStyleDescription/checkPredicate/modelElement"/>

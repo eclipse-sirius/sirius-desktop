@@ -1413,7 +1413,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
      * Sets whether the label text should be underlined
      * 
      * @param b
-     *            Wether the label text should be underlined
+     *            Whether the label text should be underlined
      */
     public void setTextUnderline(boolean b) {
         if (isTextUnderlined() == b)
@@ -1433,7 +1433,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
      * Sets whether the label text should be striked-through
      * 
      * @param b
-     *            Wether the label text should be stricked-through
+     *            Whether the label text should be stricked-through
      */
     public void setTextStrikeThrough(boolean b) {
         if (isTextStrikedThrough() == b)
@@ -1443,7 +1443,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
     }
 
     /**
-     * @return wether the label text is stricked-through
+     * @return whether the label text is stricked-through
      */
     public boolean isTextStrikedThrough() {
         return (flags & FLAG_STRIKEDTHROUGH) != 0;
@@ -1464,7 +1464,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
     }
 
     /**
-     * @return wether the label text wrap is on
+     * @return whether the label text wrap is on
      */
     public boolean isTextWrapped() {
         return (flags & FLAG_WRAP) != 0;
