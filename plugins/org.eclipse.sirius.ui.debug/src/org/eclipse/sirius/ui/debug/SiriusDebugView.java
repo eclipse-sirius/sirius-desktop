@@ -28,6 +28,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -124,6 +125,7 @@ import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.query.EdgeTargetQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramListEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
@@ -257,24 +259,31 @@ public class SiriusDebugView extends AbstractDebugView {
             appendSequenceEventInfo(part, sb);
             appendBoundsDetails(part, sb);
 
-            if (part instanceof AbstractDiagramContainerEditPart && ((AbstractDiagramContainerEditPart) part).isRegionContainer()) {
-                IGraphicalEditPart compartment = null;
-                for (IGraphicalEditPart child : Iterables.filter(part.getChildren(), IGraphicalEditPart.class)) {
-                    sb.append("Children bounds:\n");
+            if (part instanceof AbstractDiagramListEditPart) {
+                part.getChildren().stream().filter(IGraphicalEditPart.class::isInstance).map(IGraphicalEditPart.class::cast).forEach(child -> {
+                    sb.append("Children bounds (" + child.getClass().getSimpleName() + "):\n");
                     appendBoundsDetails(child, sb);
-                    compartment = child;
-                }
+                });
+            } else if (part instanceof AbstractDiagramContainerEditPart && ((AbstractDiagramContainerEditPart) part).isRegionContainer()) {
+                AtomicReference<IGraphicalEditPart> compartment = new AtomicReference<>();
+                part.getChildren().stream().filter(IGraphicalEditPart.class::isInstance).map(IGraphicalEditPart.class::cast).forEach(child -> {
+                    sb.append("Children bounds (" + child.getClass().getSimpleName() + "):\n");
+                    appendBoundsDetails(child, sb);
+                    compartment.set(child);
+                });
 
-                for (IGraphicalEditPart child2 : Iterables.filter(compartment.getChildren(), IGraphicalEditPart.class)) {
-                    sb.append("Region bounds:\n");
-                    appendBoundsDetails(child2, sb);
+                if (compartment.get() != null) {
+                    compartment.get().getChildren().stream().filter(IGraphicalEditPart.class::isInstance).map(IGraphicalEditPart.class::cast).forEach(child2 -> {
+                        sb.append("Region bounds (" + child2.getClass().getSimpleName() + "):\n");
+                        appendBoundsDetails(child2, sb);
+                    });
                 }
             } else if (part instanceof AbstractDiagramElementContainerEditPart && ((AbstractDiagramElementContainerEditPart) part).isRegion()) {
                 IGraphicalEditPart parent = (IGraphicalEditPart) part.getParent();
-                sb.append("Compartment bounds:\n");
+                sb.append("Compartment bounds (" + parent.getClass().getSimpleName() + "):\n");
                 appendBoundsDetails(parent, sb);
                 parent = (IGraphicalEditPart) parent.getParent();
-                sb.append("Region Container bounds:\n");
+                sb.append("Region Container bounds (" + parent.getClass().getSimpleName() + "):\n");
                 appendBoundsDetails(parent, sb);
             } else if (part instanceof InstanceRoleEditPart) {
                 LifelineEditPart lep = Iterables.filter(part.getChildren(), LifelineEditPart.class).iterator().next();
@@ -302,10 +311,10 @@ public class SiriusDebugView extends AbstractDebugView {
             sb.append("Location (GMF):                    Location(" + location.getX() + ", " + location.getY() + ")\n");
         }
 
-        Rectangle absoluteBounds = GMFHelper.getAbsoluteBounds(node, true);
+        Rectangle absoluteBounds = GMFHelper.getAbsoluteBounds(node, true, false, false, false);
         sb.append("Bounds (GMF absolute - insets):    " + absoluteBounds + "\n");
 
-        absoluteBounds = GMFHelper.getAbsoluteBounds(node, false);
+        absoluteBounds = GMFHelper.getAbsoluteBounds(node, false, false, false, false);
         sb.append("Bounds (GMF absolute - no insets): " + absoluteBounds + "\n");
 
         Option<ISequenceElement> elt = ISequenceElementAccessor.getISequenceElement(part.getNotationView());
