@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -779,10 +779,10 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
         Range range = new Range(0, InteractionContainer.DEFAULT_HEIGHT);
         for (Entry<ISequenceEvent, Range> entry : lifelinesRanges.entrySet()) {
             ISequenceEvent key = entry.getKey();
-            if (key instanceof Lifeline lifeline && lifeline.getInstanceRole() instanceof InstanceRole instanceRole) {
+            if (key instanceof Lifeline lifeline && lifeline.getInstanceRole() != null) {
                 Range lifelineComputedRange = entry.getValue();
                 // Gather instance role bounds
-                Rectangle irBounds = instanceRole.getBounds();
+                Rectangle irBounds = lifeline.getInstanceRole().getBounds();
                 // Check that the lifeline is within bounds of the interaction container, resize it otherwise
 
                 Option<EndOfLife> endOfLife = lifeline.getEndOfLife();
