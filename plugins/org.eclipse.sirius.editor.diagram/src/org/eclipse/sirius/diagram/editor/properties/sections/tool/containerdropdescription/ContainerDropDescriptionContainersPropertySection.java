@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007 - 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,8 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.diagram.editor.properties.sections.tool.containerdropdescription;
+
+import java.util.ArrayList;
 
 // Start of user code imports
 
@@ -34,10 +36,6 @@ import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-import com.google.common.collect.UnmodifiableIterator;
 
 // End of user code imports
 
@@ -106,9 +104,13 @@ public class ContainerDropDescriptionContainersPropertySection extends AbstractE
      */
     @Override
     protected List getChoiceOfValues() {
-        UnmodifiableIterator<org.eclipse.sirius.diagram.description.DragAndDropTargetDescription> filter = Iterators.filter(eObject.eResource().getResourceSet().getAllContents(),
-                DragAndDropTargetDescription.class);
-        return Lists.newArrayList(filter);
+        List<Object> result = new ArrayList<>();
+        eObject.eResource().getResourceSet().getAllContents().forEachRemaining(notifier -> {
+            if (notifier instanceof DragAndDropTargetDescription dndTarget) {
+                result.add(dndTarget);
+            }
+        });
+        return result;
     }
 
     /**
