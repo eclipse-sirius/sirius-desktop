@@ -63,7 +63,8 @@ public class NodeCreationEditPolicy extends SiriusContainerEditPolicy {
             if (tool instanceof NodeCreationDescription nodeCreationDescriptionTool && isBorderNodeCreationRequest) {
                 // Search the correct edit part for this tool. It can be different than the host in case of "extra
                 // mappings" defined in the tool.
-                Optional<GraphicalEditPart> optionalEditPartToUse = getParentEditPartWithExpectedMapping((GraphicalEditPart) getHost(), nodeCreationDescriptionTool.getNodeMappings());
+                Optional<GraphicalEditPart> optionalEditPartToUse = getParentEditPartWithExpectedMapping((GraphicalEditPart) getHost(), nodeCreationDescriptionTool.getExtraMappings(),
+                        nodeCreationDescriptionTool.getNodeMappings());
                 if (optionalEditPartToUse.isPresent()) {
                     hostEditPartToUse = optionalEditPartToUse.get();
                 }
@@ -215,25 +216,29 @@ public class NodeCreationEditPolicy extends SiriusContainerEditPolicy {
         return new RootLayoutData(parentEditPartToUse, realLocation.getCopy(), CreationUtil.adaptRequestSizeToZoomFactor(request, parentEditPartToUse));
     }
 
-    private Optional<GraphicalEditPart> getParentEditPartWithExpectedMapping(GraphicalEditPart editPart, EList<NodeMapping> nodeMappings) {
+    private Optional<GraphicalEditPart> getParentEditPartWithExpectedMapping(GraphicalEditPart editPart, EList<AbstractNodeMapping> extraMappings, EList<NodeMapping> nodeMappings) {
         Optional<GraphicalEditPart> result = Optional.empty();
+        AbstractNodeMapping currentEditPartMapping = null;
+        if (editPart != null && editPart.getModel() instanceof Node node && node.getElement() instanceof AbstractDNode abstractDNode
+                && abstractDNode.getMapping() instanceof AbstractNodeMapping abstractNodeMapping) {
+            currentEditPartMapping = abstractNodeMapping;
+        }
         if (editPart instanceof AbstractDNodeListCompartmentEditPart) {
-            result = getParentEditPartWithExpectedMapping((GraphicalEditPart) editPart.getParent(), nodeMappings);
+            result = getParentEditPartWithExpectedMapping((GraphicalEditPart) editPart.getParent(), extraMappings, nodeMappings);
         } else if (editPart.getParent() instanceof AbstractDiagramContainerEditPart && ((AbstractDiagramContainerEditPart) editPart.getParent()).isRegionContainer()) {
-            result = getParentEditPartWithExpectedMapping((AbstractDiagramContainerEditPart) editPart.getParent(), nodeMappings);
+            result = getParentEditPartWithExpectedMapping((AbstractDiagramContainerEditPart) editPart.getParent(), extraMappings, nodeMappings);
         } else {
-            for (NodeMapping nodeMapping : nodeMappings) {
-                if (editPart != null && editPart.getModel() instanceof Node node && node.getElement() instanceof AbstractDNode abstractDNode
-                        && abstractDNode.getMapping() instanceof AbstractNodeMapping abstractNodegetMapping) {
-                    if (MappingHelper.getAllBorderedNodeMappings(abstractNodegetMapping).contains(nodeMapping)) {
+            if (currentEditPartMapping != null) {
+                for (NodeMapping nodeMapping : nodeMappings) {
+                    if (MappingHelper.getAllBorderedNodeMappings(currentEditPartMapping).contains(nodeMapping)) {
                         result = Optional.of(editPart);
                         break;
                     }
                 }
             }
         }
-        if (result.isEmpty() && editPart.getParent() instanceof GraphicalEditPart graphicalEditPart) {
-            result = getParentEditPartWithExpectedMapping(graphicalEditPart, nodeMappings);
+        if (result.isEmpty() && extraMappings.contains(currentEditPartMapping) && editPart.getParent() instanceof GraphicalEditPart graphicalEditPart) {
+            result = getParentEditPartWithExpectedMapping(graphicalEditPart, extraMappings, nodeMappings);
         }
         return result;
     }
