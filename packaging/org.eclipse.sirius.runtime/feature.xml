@@ -14,7 +14,7 @@
 <feature
       id="org.eclipse.sirius.runtime"
       label="%featureName"
-      version="7.4.8.qualifier"
+      version="7.4.9.qualifier"
       provider-name="%providerName"
       plugin="org.eclipse.sirius"
       license-feature="org.eclipse.license"

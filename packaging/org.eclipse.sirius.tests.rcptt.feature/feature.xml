@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.sirius.tests.rcptt.feature"
       label="%featureName"
-      version="7.4.8.qualifier"
+      version="7.4.9.qualifier"
       provider-name="%providerName"
       license-feature="org.eclipse.license"
       license-feature-version="0.0.0">
