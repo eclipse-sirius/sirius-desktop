@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" version="15.4.0.202401051836">
+  <ownedViewpoints name="UML2" modelFileExtension="uml">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Node Class and Package Diagram with Ports" domainClass="Package">
+      <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
+      <filters xsi:type="filter:CompositeFilterDescription" name="FilterPropertyStartingWithA">
+        <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Node%20Class%20and%20Package%20Diagram%20with%20Ports']/@defaultLayer/@nodeMappings[name='CPDP%20Class']/@borderedNodeMappings[name='CPDP%20Property']" semanticConditionExpression="aql:not (self.name.startsWith('a'))"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="FilterClassAndPackageStartingWithA">
+        <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Node%20Class%20and%20Package%20Diagram%20with%20Ports']/@defaultLayer/@nodeMappings[name='CPDP%20Class']" semanticConditionExpression="aql:not (self.name.startsWith('a'))"/>
+      </filters>
+      <defaultLayer name="Default">
+        <nodeMappings name="CPDP Class" semanticCandidatesExpression="aql:self.eContents()" synchronizationLock="true" domainClass="uml::Class">
+          <borderedNodeMappings name="CPDP Property" semanticCandidatesExpression="aql:self.eContents()" domainClass="uml::Property">
+            <style xsi:type="style:BundledImageDescription" showIcon="false" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <forbiddenSides>WEST</forbiddenSides>
+              <forbiddenSides>EAST</forbiddenSides>
+              <forbiddenSides>NORTH</forbiddenSides>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            </style>
+          </borderedNodeMappings>
+          <borderedNodeMappings name="CPDP Association" semanticCandidatesExpression="aql:self.eContents()->select( e | not e.toString().startsWith('a'))" domainClass="uml::Association">
+            <style xsi:type="style:SquareDescription" showIcon="false" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <forbiddenSides>WEST</forbiddenSides>
+              <forbiddenSides>SOUTH</forbiddenSides>
+              <forbiddenSides>NORTH</forbiddenSides>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:BundledImageDescription" sizeComputationExpression="18" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+          <conditionnalStyles predicateExpression="aql:self.isAbstract">
+            <style xsi:type="style:BundledImageDescription" sizeComputationExpression="18">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            </style>
+          </conditionnalStyles>
+        </nodeMappings>
+        <containerMappings name="CPDP Package" detailDescriptions="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Node%20Class%20and%20Package%20Diagram%20with%20Ports']/@toolSection/@ownedTools[name='New%20diagram']" semanticCandidatesExpression="aql:self.eContents()" synchronizationLock="true" domainClass="uml::Package" reusedNodeMappings="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Node%20Class%20and%20Package%20Diagram%20with%20Ports']/@defaultLayer/@nodeMappings[name='CPDP%20Class']" reusedContainerMappings="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Node%20Class%20and%20Package%20Diagram%20with%20Ports']/@defaultLayer/@containerMappings[name='CPDP%20Package']">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" widthComputationExpression="18" heightComputationExpression="18">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+      <toolSection name="navigation">
+        <ownedTools xsi:type="tool:DiagramCreationDescription" name="New diagram" diagramDescription="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Node%20Class%20and%20Package%20Diagram%20with%20Ports']">
+          <initialOperation/>
+          <containerViewVariable name="containerView"/>
+          <representationNameVariable name="diagramName"/>
+        </ownedTools>
+      </toolSection>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>
