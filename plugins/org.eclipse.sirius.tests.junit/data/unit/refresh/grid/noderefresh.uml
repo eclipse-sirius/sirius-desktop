@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_Wh_KkEjgEd2dA-w4B9F6fQ">
+  <packagedElement xmi:type="uml:Class" xmi:id="_Zfig0EjgEd2dA-w4B9F6fQ" name="Class1">
+    <ownedAttribute xmi:id="_tReeYUmdEd2kFfZE5plhWg" name="Prop1to2" type="_bZr5UEjgEd2dA-w4B9F6fQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_bZr5UEjgEd2dA-w4B9F6fQ" name="Class2">
+    <ownedAttribute xmi:id="_rDAP8FNGEd2swLTvVm1NKg" name="Prop2to2" type="_bZr5UEjgEd2dA-w4B9F6fQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_cPW9EEjgEd2dA-w4B9F6fQ" name="Class3">
+    <ownedAttribute xmi:id="_u8vGUEmdEd2kFfZE5plhWg" name="Prop3to2" type="_bZr5UEjgEd2dA-w4B9F6fQ"/>
+    <ownedAttribute xmi:id="_k5sIUFNGEd2swLTvVm1NKg" name="OtherProp3to2" type="_bZr5UEjgEd2dA-w4B9F6fQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_6o6RMEmrEd2kFfZE5plhWg" name="SubPackage">
+    <packagedElement xmi:type="uml:Package" xmi:id="_nhLckAM9EfCYdNmG1JniBQ" name="Sub2">
+      <packagedElement xmi:type="uml:Class" xmi:id="_cMxa8AP_EfCkhq75xJPwpA" name="InClass1"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_qYAKkAP_EfCkhq75xJPwpA" name="InClass2"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_8WNggEmrEd2kFfZE5plhWg" name="SubClass1">
+      <ownedAttribute xmi:id="_rOlyIPBoEe-sUa64Dl7qNw" name="a"/>
+      <ownedAttribute xmi:id="__y-NcPBuEe-sUa64Dl7qNw" name="b"/>
+      <nestedClassifier xmi:type="uml:AssociationClass" xmi:id="_W0W_UADfEfCCQaB7ukJWEg" name="c"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_7ZyHQADjEfCCQaB7ukJWEg" name="SubClass2" isAbstract="true"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_FbJD8AQEEfCkhq75xJPwpA" name="Sub1"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_sQN84FM5Ed2swLTvVm1NKg" name="EmptyPackage">
+  </packagedElement>
+</uml:Model>

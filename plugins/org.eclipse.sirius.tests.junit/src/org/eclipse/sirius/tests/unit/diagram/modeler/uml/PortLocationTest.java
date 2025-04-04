@@ -62,10 +62,13 @@ import org.eclipse.uml2.uml.UMLFactory;
  * @author lredor
  */
 public class PortLocationTest extends SiriusDiagramTestCase {
+    
+    
+    private static final String RESOURCE_PATH = "/org.eclipse.sirius.tests.junit/data/unit/refresh/grid/";
 
-    private static final String SEMANTIC_MODEL_PATH = "/org.eclipse.sirius.tests.junit/data/unit/refresh/node/noderefresh.uml";
+    private static final String SEMANTIC_MODEL_PATH = RESOURCE_PATH + "noderefresh.uml";
 
-    private static final String MODELER_PATH = "/org.eclipse.sirius.tests.junit/data/unit/refresh/node/noderefresh.odesign";
+    private static final String MODELER_PATH = RESOURCE_PATH + "noderefresh.odesign";
 
     private static final String VIEWPOINT_NAME = "UML2";
 
