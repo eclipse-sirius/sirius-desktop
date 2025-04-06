@@ -61,7 +61,7 @@ public class NodePositionHelper {
      *            space of grid point of current diagram .
      */
     public NodePositionHelper(boolean snapToGrid, int gridSpacing) {
-        this.snapToGrid = snapToGrid;
+        this.snapToGrid = snapToGrid && gridSpacing > 0;
         this.gridSpacing = gridSpacing;
     }
 
@@ -205,16 +205,16 @@ public class NodePositionHelper {
                 }
             }
             if ((enlargedAxis & PositionConstants.HORIZONTAL) != 0) {
-                result.width = extendToGrid(result.width);
+                result.width = extendSizeToGrid(result.width);
             }
             if ((enlargedAxis & PositionConstants.VERTICAL) != 0) {
-                result.height = extendToGrid(result.height);
+                result.height = extendSizeToGrid(result.height);
             }
         }
         return result;
     }
 
-    private int extendToGrid(int value) {
+    private int extendSizeToGrid(int value) {
         if (value == -1) {
             // no value
             return -1;
@@ -351,5 +351,53 @@ public class NodePositionHelper {
     private static boolean isAboveLine(Point point, int a, int r, int b) {
         // Y head to South !
         return point.y * r <= a * point.x + b * r;
+    }
+
+    /**
+     * Adjust the location of node when grid is on.
+     * <p>
+     * When some dimension is not resizable, shift the location the element center matches a grid point. This will
+     * improve edge alignment.
+     * <p>
+     * 
+     * 
+     * @param node
+     *            element to move
+     * @param location
+     *            point where element should be place
+     * @return adjusted location
+     */
+    public Point getAdjustedLocation(Node node, Point location) {
+        if (location != null && snapToGrid && node.getLayoutConstraint() instanceof Size size) {
+            return location.getCopy().translate(getShiftToCenter(node, size, gridSpacing));
+        }
+        return location;
+    }
+
+    private static int shiftLocationToCenter(boolean resizable, int size, int gridSpacing) {
+        return !resizable && size > 0
+                // Halfing before modulo ensures the center is on a point.
+                ? -(size / 2 % gridSpacing)
+                // no shift
+                : 0;
+    }
+
+    /**
+     * Gets the shift for a node to be centered on a point if not resizable.
+     * 
+     * @param node
+     *            to shift
+     * @param size
+     *            dimension of the node
+     * @param gridSpacing
+     *            spacing of the grid
+     * @return Point with x, y indicating the shift
+     */
+    public static Point getShiftToCenter(Node node, Size size, int gridSpacing) {
+        return new Point(
+                // Horizontal shift
+                shiftLocationToCenter(canResizeWidth(node), size.getWidth(), gridSpacing),
+                // Vertical shift
+                shiftLocationToCenter(canResizeHeight(node), size.getHeight(), gridSpacing));
     }
 }
