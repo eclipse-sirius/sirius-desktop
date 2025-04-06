@@ -636,7 +636,8 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
     private void updateBoundsConstraint(Node createdNode, Point location, Dimension size) {
         LayoutConstraint constraint = createdNode.getLayoutConstraint();
         if (constraint instanceof Location locationConstraint) {
-            updateLocationConstraint(locationConstraint, location);
+            Point ajdustedLocation = new NodePositionHelper(isSnapToGrid(), getGridSpacing()).getAdjustedLocation(createdNode, location);
+            updateLocationConstraint(locationConstraint, ajdustedLocation);  
         }
         if (constraint instanceof Size sizeConstraint) {
             updateSizeConstraint(createdNode, sizeConstraint, size);
