@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2007, 2016 IBM Corporation and others.
+ * Copyright (c) 2007, 2025 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -24,7 +24,6 @@ import org.eclipse.gef.rulers.RulerProvider;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.editparts.ISurfaceEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.ruler.CompoundSnapToHelperEx;
-import org.eclipse.gmf.runtime.diagram.ui.internal.ruler.SnapToGridEx;
 import org.eclipse.gmf.runtime.diagram.ui.internal.ruler.SnapToGuidesEx;
 import org.eclipse.gmf.runtime.diagram.ui.internal.ruler.SnapToHelperUtil;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
@@ -90,7 +89,7 @@ public class SiriusSnapToHelperUtil extends SnapToHelperUtil {
         val = (Boolean) viewer.getProperty(SnapToGrid.PROPERTY_GRID_ENABLED);
 
         if (val != null && val.booleanValue()) {
-            snapStrategies.add(new SnapToGridEx(diagramEditPart));
+            snapStrategies.add(new SiriusSnapToGrid(diagramEditPart));
         }
 
         if (snapStrategies.size() == 0) {

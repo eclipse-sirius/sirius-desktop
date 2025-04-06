@@ -622,7 +622,8 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
     protected void updateSizeConstraint(Node createdNode, Size constraint, Dimension size) {
         Dimension safeSize = size != null ? size : NO_CHANGE_SIZE;
 
-        Dimension defaultSize = new NodePositionHelper(isSnapToGrid(), getGridSpacing()).getAdjustedDimension(createdNode, constraint);
+        var positionHelper = new NodePositionHelper(isSnapToGrid(), getGridSpacing());
+        Dimension defaultSize = positionHelper.getAdjustedDimension(createdNode, constraint);
 
         if (NodePositionHelper.canResizeWidth(createdNode)) { // Horizontal
             constraint.setWidth(safeSize.width != -1 ? safeSize.width : defaultSize.width);
@@ -635,7 +636,9 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
     private void updateBoundsConstraint(Node createdNode, Point location, Dimension size) {
         LayoutConstraint constraint = createdNode.getLayoutConstraint();
         if (constraint instanceof Location locationConstraint) {
-            updateLocationConstraint(locationConstraint, location);
+            var positionHelper = new NodePositionHelper(isSnapToGrid(), getGridSpacing());
+            Point ajdustedLocation = positionHelper.getAdjustedLocation(createdNode, location);
+            updateLocationConstraint(locationConstraint, ajdustedLocation);  
         }
         if (constraint instanceof Size sizeConstraint) {
             updateSizeConstraint(createdNode, sizeConstraint, size);
@@ -664,9 +667,7 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
      * @return view descriptor
      */
     protected CreateViewRequest.ViewDescriptor getViewDescriptor(final EObject element, final String factoryHint) {
-        //
-        // create the view descritor
-        // final IAdaptable elementAdapter = new EObjectAdapter(element);
+        // Create the view descriptor
         final IAdaptable elementAdapter = new CanonicalElementAdapter(element, factoryHint);
 
         final int pos = ViewUtil.APPEND;
