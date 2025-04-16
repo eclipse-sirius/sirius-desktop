@@ -510,6 +510,8 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         doTestStrikeFromAppearanceSection("myAttribute", DNodeListElementEditPart.class);
         doTestStrikeFromAppearanceSection("myPackage", DNodeContainerEditPart.class);
         doTestStrikeFromAppearanceSection("myPackage2", DNodeContainer2EditPart.class);
+        doTestStrikeFromAppearanceSection("[0..1] newEReference1", DEdgeEditPart.class);
+        doTestStrikeFromAppearanceSection("[0..1] newEReference1", DEdgeNameEditPart.class);
     }
 
     /**
@@ -523,7 +525,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
      */
     public void doTestStrikeFromAppearanceSection(String name, Class<? extends EditPart> type) {
         SWTBotGefEditPart selectedEditPart = selectAndCheckEditPart(name, type);
-        if (type == DEdgeEditPart.class) {
+        if (type == DEdgeEditPart.class || type == DEdgeNameEditPart.class) {
             doTestStyleCustomizationThroughToggleButtonFromAppearanceSection(selectedEditPart, FONTS_COLORS_GROUP, 3, NORMAL_FONT_STATE_PREDICATE, STRIKE_FONT_STATE_PREDICATE, true);
         } else {
             doTestStyleCustomizationThroughToggleButtonFromAppearanceSection(selectedEditPart, FONTS_COLORS_GROUP, 3, NORMAL_FONT_STATE_PREDICATE, STRIKE_FONT_STATE_PREDICATE, false);
@@ -540,6 +542,8 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         doTestUnderlineFromAppearanceSection("myAttribute", DNodeListElementEditPart.class);
         doTestUnderlineFromAppearanceSection("myPackage", DNodeContainerEditPart.class);
         doTestUnderlineFromAppearanceSection("myPackage2", DNodeContainer2EditPart.class);
+        doTestUnderlineFromAppearanceSection("[0..1] newEReference1", DEdgeEditPart.class);
+        doTestUnderlineFromAppearanceSection("[0..1] newEReference1", DEdgeNameEditPart.class);
     }
 
     /**
@@ -623,7 +627,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
      */
     public void doTestUnderlineFromAppearanceSection(String name, Class<? extends EditPart> type) {
         SWTBotGefEditPart selectedEditPart = selectAndCheckEditPart(name, type);
-        if (type == DEdgeEditPart.class) {
+        if (type == DEdgeEditPart.class || type == DEdgeNameEditPart.class) {
             doTestStyleCustomizationThroughToggleButtonFromAppearanceSection(selectedEditPart, FONTS_COLORS_GROUP, 2, NORMAL_FONT_STATE_PREDICATE, UNDERLINE_FONT_STATE_PREDICATE, true);
         } else {
             doTestStyleCustomizationThroughToggleButtonFromAppearanceSection(selectedEditPart, FONTS_COLORS_GROUP, 2, NORMAL_FONT_STATE_PREDICATE, UNDERLINE_FONT_STATE_PREDICATE, false);
@@ -792,6 +796,8 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         doTestChangeFontSizeFromAppearanceSection("myAttribute", DNodeListElementEditPart.class);
         doTestChangeFontSizeFromAppearanceSection("myPackage", DNodeContainerEditPart.class);
         doTestChangeFontSizeFromAppearanceSection("myPackage2", DNodeContainer2EditPart.class);
+        doTestChangeFontSizeFromAppearanceSection("[0..1] newEReference1", DEdgeEditPart.class);
+        doTestChangeFontSizeFromAppearanceSection("[0..1] newEReference1", DEdgeNameEditPart.class);
     }
 
     /**
@@ -818,8 +824,8 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
             }
 
         };
-
-        doTestStyleCustomizationThroughComboBoxInAppearanceSection(selectedEditPart, NORMAL_FONT_STATE_PREDICATE, stateWhenButtonIsCheckedPredicate, 1, "12", false);
+        boolean customizationRevertable = (type == DEdgeEditPart.class || type == DEdgeNameEditPart.class);
+        doTestStyleCustomizationThroughComboBoxInAppearanceSection(selectedEditPart, NORMAL_FONT_STATE_PREDICATE, stateWhenButtonIsCheckedPredicate, 1, "12", customizationRevertable);
     }
 
     /**
@@ -832,6 +838,8 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         doTestChangeFontFromAppearanceSection("myAttribute", DNodeListElementEditPart.class);
         doTestChangeFontFromAppearanceSection("myPackage", DNodeContainerEditPart.class);
         doTestChangeFontFromAppearanceSection("myPackage2", DNodeContainer2EditPart.class);
+        doTestChangeFontFromAppearanceSection("[0..1] newEReference1", DEdgeEditPart.class);
+        doTestChangeFontFromAppearanceSection("[0..1] newEReference1", DEdgeNameEditPart.class);
     }
 
     /**

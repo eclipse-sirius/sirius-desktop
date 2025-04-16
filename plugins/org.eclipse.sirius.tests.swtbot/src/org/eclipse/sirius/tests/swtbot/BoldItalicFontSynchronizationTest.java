@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,8 @@ import java.util.Arrays;
 
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.gef.EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainer2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeList2EditPart;
@@ -52,6 +54,8 @@ public class BoldItalicFontSynchronizationTest extends AbstractFontModificationT
         doTestBoldItalicSynchronizationFromTabbar("myAttribute", DNodeListElementEditPart.class);
         doTestBoldItalicSynchronizationFromTabbar("myPackage", DNodeContainerEditPart.class);
         doTestBoldItalicSynchronizationFromTabbar("myPackage2", DNodeContainer2EditPart.class);
+        doTestBoldItalicSynchronizationFromTabbar("[0..1] newEReference1", DEdgeEditPart.class);
+        doTestBoldItalicSynchronizationFromTabbar("[0..1] newEReference1", DEdgeNameEditPart.class);
     }
 
     /**
@@ -122,6 +126,8 @@ public class BoldItalicFontSynchronizationTest extends AbstractFontModificationT
         doTestBoldItalicSynchronizationFromAppearanceSection("myAttribute", DNodeListElementEditPart.class);
         doTestBoldItalicSynchronizationFromAppearanceSection("myPackage", DNodeContainerEditPart.class);
         doTestBoldItalicSynchronizationFromAppearanceSection("myPackage2", DNodeContainer2EditPart.class);
+        doTestBoldItalicSynchronizationFromAppearanceSection("[0..1] newEReference1", DEdgeEditPart.class);
+        doTestBoldItalicSynchronizationFromAppearanceSection("[0..1] newEReference1", DEdgeNameEditPart.class);
     }
 
     /**
