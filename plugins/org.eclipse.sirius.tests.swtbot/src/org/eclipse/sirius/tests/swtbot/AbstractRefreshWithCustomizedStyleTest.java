@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -348,7 +348,19 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
         // Step 5: Reopen diagram
         editor.close();
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(SessionManager.INSTANCE.getSessions().iterator().next(), representationDescriptionName, representationName, DDiagram.class);
-        selectedEditPart = editor.getEditPart(editor.getBounds(selectedEditPart).getCenter(), selectedEditPart.part().getClass());
+        if (DEdgeEditPart.class.isInstance(selectedEditPart.part())) {
+            // Select the corresponding DEdge in the new editor
+            Edge gmfEdge = (Edge) ((DEdgeEditPart) selectedEditPart.part()).getModel();
+            DEdge dEdge = (DEdge) gmfEdge.getElement();
+            selectedEditPart = editor.getEditPart(dEdge.getName(), DEdgeEditPart.class);
+        } else if (DEdgeNameEditPart.class.isInstance(selectedEditPart.part())) {
+            // Select the corresponding DEdge name in the new editor
+            Node gmfNode = (Node) ((DEdgeNameEditPart) selectedEditPart.part()).getModel();
+            DEdge dEdge = (DEdge) gmfNode.getElement();
+            selectedEditPart = editor.getEditPart(dEdge.getName(), DEdgeNameEditPart.class);
+        } else {
+            selectedEditPart = editor.getEditPart(editor.getBounds(selectedEditPart).getCenter(), selectedEditPart.part().getClass());
+        }
         selectedEditPart.select();
         propertiesBot = selectAppearanceTab();
         comboBoxToTest = propertiesBot.ccomboBoxInGroup("Fonts and Colors:", comboBoxIdIngroup);
@@ -515,7 +527,19 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
         // Step 3: Reopen diagram
         editor.close();
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(SessionManager.INSTANCE.getSessions().iterator().next(), representationDescriptionName, representationName, DDiagram.class);
-        selectedEditPart = editor.getEditPart(editor.getBounds(selectedEditPart).getCenter(), selectedEditPart.part().getClass());
+        if (DEdgeEditPart.class.isInstance(selectedEditPart.part())) {
+            // Select the corresponding DEdge in the new editor
+            Edge gmfEdge = (Edge) ((DEdgeEditPart) selectedEditPart.part()).getModel();
+            DEdge dEdge = (DEdge) gmfEdge.getElement();
+            selectedEditPart = editor.getEditPart(dEdge.getName(), DEdgeEditPart.class);
+        } else if (DEdgeNameEditPart.class.isInstance(selectedEditPart.part())) {
+            // Select the corresponding DEdge name in the new editor
+            Node gmfNode = (Node) ((DEdgeNameEditPart) selectedEditPart.part()).getModel();
+            DEdge dEdge = (DEdge) gmfNode.getElement();
+            selectedEditPart = editor.getEditPart(dEdge.getName(), DEdgeNameEditPart.class);
+        } else {
+            selectedEditPart = editor.getEditPart(editor.getBounds(selectedEditPart).getCenter(), selectedEditPart.part().getClass());
+        }
         selectedEditPart.select();
         propertiesBot = selectAppearanceTab();
         resetStylePropertiesToDefaultValuesButtonFromAppearanceTab = getResetStylePropertiesToDefaultValuesButtonFromAppearanceTab();
@@ -962,7 +986,19 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
         // Step 3: Reopen diagram
         editor.close();
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(SessionManager.INSTANCE.getSessions().iterator().next(), representationDescriptionName, representationName, DDiagram.class);
-        selectedEditPart = editor.getEditPart(editor.getBounds(selectedEditPart).getCenter(), selectedEditPart.part().getClass());
+        if (DEdgeEditPart.class.isInstance(selectedEditPart.part())) {
+            // Select the corresponding DEdge in the new editor
+            Edge gmfEdge = (Edge) ((DEdgeEditPart) selectedEditPart.part()).getModel();
+            DEdge dEdge = (DEdge) gmfEdge.getElement();
+            selectedEditPart = editor.getEditPart(dEdge.getName(), DEdgeEditPart.class);
+        } else if (DEdgeNameEditPart.class.isInstance(selectedEditPart.part())) {
+            // Select the corresponding DEdge name in the new editor
+            Node gmfNode = (Node) ((DEdgeNameEditPart) selectedEditPart.part()).getModel();
+            DEdge dEdge = (DEdge) gmfNode.getElement();
+            selectedEditPart = editor.getEditPart(dEdge.getName(), DEdgeNameEditPart.class);
+        } else {
+            selectedEditPart = editor.getEditPart(editor.getBounds(selectedEditPart).getCenter(), selectedEditPart.part().getClass());
+        }
         selectedEditPart.select();
 
         resetStylePropertiesToDefaultValuesButtonFromTabbar = getResetStylePropertiesToDefaultValuesButtonFromTabbar();
