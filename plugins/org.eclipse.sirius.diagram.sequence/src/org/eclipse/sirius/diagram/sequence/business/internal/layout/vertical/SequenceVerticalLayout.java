@@ -40,6 +40,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.EndOfLife;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.Execution;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
@@ -395,8 +396,10 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
         }
 
         ISequenceEvent commonIse = commonIses.iterator().next();
-        if (commonIse instanceof Message && ((Message) commonIse).isReflective()) {
+        if (commonIse instanceof Message msg && msg.isReflective()) {
             beforeGap = LayoutConstants.MESSAGE_TO_SELF_BENDPOINT_VERTICAL_GAP;
+        } else if (commonIse instanceof Message msg && msg.isOblique()) {
+            beforeGap = pack ? LayoutConstants.DEFAULT_MESSAGE_OBLIQUE_HEIGHT_PACKING : LayoutConstants.DEFAULT_MESSAGE_MIN_OBLIQUE_HEIGHT;
         } else if (commonIse instanceof AbstractNodeEvent) {
             beforeGap = Math.max(genericGap, getAbstractNodeEventVerticalSize(end, (AbstractNodeEvent) commonIse, commonIses, pack));
         } else if (commonIse instanceof InteractionUse) {
@@ -1094,8 +1097,13 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
         } else if (isSafeToolCreation(end)) {
             if (toolCreated) {
                 toolCreatedEnds.add(end);
-            } else if (toolSemanticCreated && ((end instanceof SingleEventEnd && ((SingleEventEnd) end).isStart()) || lost)) {
-                toolCreatedEnds.add(end);
+            } else if (toolSemanticCreated) {
+                if ((end instanceof SingleEventEnd && ((SingleEventEnd) end).isStart()) || lost) {
+                    toolCreatedEnds.add(end);
+                } else if (end instanceof CompoundEventEnd) {
+                    toolCreatedEnds.add(end);
+                    // TODO
+                }
             }
         }
     }
@@ -1103,8 +1111,15 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
     private boolean isSafeToolCreation(EventEnd end) {
         boolean safe = !(end instanceof CompoundEventEnd);
         safe = safe || EventEndHelper.PUNCTUAL_COMPOUND_EVENT_END.apply(end);
+        boolean isOblique = false;
         for (Message msg : Iterables.filter(endToISequencEvents.get(end), Message.class)) {
             safe = safe || msg.getSourceElement() instanceof LostMessageEnd || msg.getTargetElement() instanceof LostMessageEnd;
+            isOblique = isOblique || msg.isOblique();
+        }
+
+        for (Execution exec : Iterables.filter(endToISequencEvents.get(end), Execution.class)) {
+            safe = safe
+                    || end instanceof CompoundEventEnd cee && isOblique && cee.getEventEnds().stream().anyMatch(ee -> ee.isStart() && ee.getSemanticEvent() == exec.getSemanticTargetElement().get());
         }
 
         return safe;

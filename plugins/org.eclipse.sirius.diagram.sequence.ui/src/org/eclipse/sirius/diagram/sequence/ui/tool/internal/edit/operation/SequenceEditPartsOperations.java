@@ -38,6 +38,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.operation.RefreshGr
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.RefreshSemanticOrderingsOperation;
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.SynchronizeISequenceEventsSemanticOrderingOperation;
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.SynchronizeInstanceRoleSemanticOrderingOperation;
+import org.eclipse.sirius.diagram.sequence.business.internal.query.SequenceMessageMappingQuery;
 import org.eclipse.sirius.diagram.sequence.business.internal.tool.ToolCommandBuilder;
 import org.eclipse.sirius.diagram.sequence.description.tool.MessageCreationTool;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
@@ -248,7 +249,7 @@ public final class SequenceEditPartsOperations {
             EdgeCreationDescription edgeCreationDescription, IDiagramCommandFactoryProvider cmdFactoryProvider) {
         org.eclipse.emf.common.command.Command emfCommand;
         TransactionalEditingDomain domain = self.getEditingDomain();
-        if (edgeCreationDescription instanceof MessageCreationTool && ((DDiagramElement) source).getParentDiagram() instanceof SequenceDDiagram) {
+        if (edgeCreationDescription instanceof MessageCreationTool msgCreationTool && ((DDiagramElement) source).getParentDiagram() instanceof SequenceDDiagram) {
             Point sourceLocation = request.getLocation().getCopy();
             Point targetLocation = request.getLocation().getCopy();
             GraphicalHelper.screen2logical(sourceLocation, self);
@@ -266,7 +267,7 @@ public final class SequenceEditPartsOperations {
             }
 
             // Avoid deferred message, accept only messageToSelf
-            if (source != target) {
+            if (source != target && !msgCreationTool.getEdgeMappings().stream().allMatch(mapping -> new SequenceMessageMappingQuery(mapping).isOblique())) {
                 targetLocation = sourceLocation;
             }
 
@@ -274,7 +275,7 @@ public final class SequenceEditPartsOperations {
             SequenceDDiagram diagram = sequenceDiagram.getSequenceDDiagram();
             EventEnd startingEndBefore = SequenceGraphicalHelper.getEndBefore(diagram, sourceLocation.y);
             EventEnd finishingEndBefore = SequenceGraphicalHelper.getEndBefore(diagram, targetLocation.y);
-            emfCommand = ToolCommandBuilder.buildCreateMessageCommand(source, target, (MessageCreationTool) edgeCreationDescription, startingEndBefore, finishingEndBefore);
+            emfCommand = ToolCommandBuilder.buildCreateMessageCommand(source, target, msgCreationTool, startingEndBefore, finishingEndBefore);
 
             org.eclipse.emf.common.command.CompoundCommand cc = new org.eclipse.emf.common.command.CompoundCommand();
             cc.append(emfCommand);

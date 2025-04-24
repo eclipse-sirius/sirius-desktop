@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,8 @@ import org.eclipse.gmf.runtime.diagram.ui.internal.editparts.NoteAttachmentEditP
 import org.eclipse.gmf.runtime.draw2d.ui.figures.BaseSlidableAnchor;
 import org.eclipse.gmf.runtime.gef.ui.figures.SlidableAnchor;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.diagram.sequence.business.internal.query.SequenceMessageMappingQuery;
+import org.eclipse.sirius.diagram.sequence.description.tool.MessageCreationTool;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ISequenceEventEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.LifelineEditPart;
@@ -111,19 +113,31 @@ public final class ConnectionAnchorOperation {
      *            the request to modify.
      */
     public static void matchRequestYLocationWithSourceAnchor(DropRequest request) {
-        if (request instanceof Request && !new RequestQuery((Request) request).isSequenceMessageCreation()) {
+        if (request instanceof Request && !new RequestQuery((Request) request).isSequenceMessageCreation() //
+                || request.getLocation() == null) {
             return;
-        } else if (request.getLocation() != null) {
-            Object sourceLocation = ViewLocationHint.getInstance().getData(ViewLocationHint.SOURCE_ANCHOR_LOCATION);
-            if (sourceLocation instanceof Point && request instanceof CreateConnectionRequest) {
-                EditPart sourceEP = ((CreateConnectionRequest) request).getSourceEditPart();
-                EditPart targetEP = ((CreateConnectionRequest) request).getTargetEditPart();
-                Point sourceLocationPoint = ((Point) sourceLocation).getCopy();
-                if (!sourceEP.equals(targetEP)) {
-                    request.getLocation().setY(sourceLocationPoint.y);
-                } else if (request.getLocation().y <= sourceLocationPoint.y) {
+        }
+        Object sourceLocation = ViewLocationHint.getInstance().getData(ViewLocationHint.SOURCE_ANCHOR_LOCATION);
+        if (sourceLocation instanceof Point && request instanceof CreateConnectionRequest createRequest) {
+            EditPart sourceEP = createRequest.getSourceEditPart();
+            EditPart targetEP = createRequest.getTargetEditPart();
+            Point sourceLocationPoint = ((Point) sourceLocation).getCopy();
+            if (!sourceEP.equals(targetEP)) {
+                // check its oblique
+                if (createRequest.getNewObject() instanceof MessageCreationTool creationTool && creationTool.getEdgeMappings().stream().anyMatch(mapping -> new SequenceMessageMappingQuery(mapping).isOblique())) {
+                    if (request.getLocation().y <= sourceLocationPoint.y) {
+                        // Set Y if the mapping is "oblique" and the target is upper than the source
+                        request.getLocation().setY(sourceLocationPoint.y);
+                    } else {
+                        // Do not set Y if the mapping is "oblique" and the target is lower than the source
+                    }
+                } else {
+                    // Set Y for non oblique mapping
                     request.getLocation().setY(sourceLocationPoint.y);
                 }
+            } else if (request.getLocation().y <= sourceLocationPoint.y) {
+                // If the target is upper than the source, we set Y IF the source and target are the same (reflective ?)
+                request.getLocation().setY(sourceLocationPoint.y);
             }
         }
     }

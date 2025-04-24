@@ -332,6 +332,7 @@ public class SiriusDebugView extends AbstractDebugView {
         Edge edge = (Edge) conn.getNotationView();
         StringBuilder sb = new StringBuilder();
         sb.append(conn.toString());
+        sb.append("\n");
 
         if (conn instanceof IDiagramElementEditPart) {
             appendSequenceEventInfo((IDiagramElementEditPart) conn, sb);

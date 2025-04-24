@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.WeakHashMap;
 
 import org.eclipse.draw2d.AbsoluteBendpoint;
@@ -29,13 +30,14 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.gef.requests.BendpointRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.EndOfLifeEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InstanceRoleEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageEditPart;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceMessageEditPolicy;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.LifelineNodeFigure;
@@ -50,40 +52,53 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
     /**
      * A point, reused for computations to avoid creating many instances.
      */
+    private static final PrecisionPoint BUTTON_DOWN_POINT = new PrecisionPoint();
+
+    /**
+     * A point, reused for computations to avoid creating many instances.
+     */
     private static final PrecisionPoint A_POINT = new PrecisionPoint();
+
+    /**
+     * A point, reused for computations to avoid creating many instances.
+     */
+    private static final PrecisionPoint S_POINT = new PrecisionPoint();
+
+    /**
+     * A point, reused for computations to avoid creating many instances.
+     */
+    private static final PrecisionPoint F_POINT = new PrecisionPoint();
+
+    private static Optional<Connection> dragInProgress = Optional.empty();
 
     /**
      * The constraints associated to each connection to route.
      */
     private Map<Connection, Object> constraints = new WeakHashMap<Connection, Object>();
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void setConstraint(Connection connection, Object constraint) {
+        if (constraint instanceof BendpointRequest br) {
+            Object initialClick = br.getExtendedData().get(SequenceMessageEditPart.MSG_OBLIQUE_CBR_INITAL_CLICK);
+            if (dragInProgress.isEmpty() && initialClick instanceof Point obliqueMsgInitialClick) {
+                BUTTON_DOWN_POINT.setLocation(obliqueMsgInitialClick);
+                dragInProgress = Optional.of(connection);
+            }
+            return;
+        }
         this.constraints.put(connection, constraint);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Object getConstraint(Connection connection) {
         return this.constraints.get(connection);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void remove(Connection connection) {
         this.constraints.remove(connection);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void route(Connection conn) {
         if (!isValidConnection(conn)) {
@@ -95,8 +110,9 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
             part = ((AbstractDiagramEdgeEditPart.ViewEdgeFigure) conn).getEditPart();
         }
 
+        boolean isObliqueMessage = isObliqueMessage(part);
         boolean isReflexiveMessage = isReflectiveMessage(part);
-        List<Bendpoint> bendpoints = getRefreshedConstraint(conn, isReflexiveMessage);
+        List<Bendpoint> bendpoints = getRefreshedConstraint(conn, isReflexiveMessage, isObliqueMessage);
 
         Point sourceRef = getReferencePoint(conn, true, bendpoints);
         Point targetRef = getReferencePoint(conn, false, bendpoints);
@@ -104,6 +120,7 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
         boolean leftToRight = conn.getSourceAnchor().getReferencePoint().x < conn.getTargetAnchor().getReferencePoint().x;
         boolean msgToSelf = sourceRef.x == targetRef.x && sourceRef.y != targetRef.y || bendpoints.size() >= 4;
         msgToSelf = msgToSelf || isReflexiveMessage;
+        msgToSelf = msgToSelf && (!isObliqueMessage || isReflexiveMessage);
 
         Rectangle sourceOwnerBounds = getAnchorOwnerBounds(conn.getSourceAnchor());
         Rectangle targetOwnerBounds = getAnchorOwnerBounds(conn.getTargetAnchor());
@@ -121,13 +138,10 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
             Point thirdPoint = targetRef.getCopy();
             double zoom = part == null ? 1.0 : GraphicalHelper.getZoom(part);
 
-            int hGap = LayoutConstants.MESSAGE_TO_SELF_BENDPOINT_HORIZONTAL_GAP;
-            if (part instanceof SequenceMessageEditPart) {
-                Message msg = (Message) ((SequenceMessageEditPart) part).getISequenceEvent();
-                if (isReflexiveMessage) {
-                    hGap = msg.getReflexiveMessageWidth();
-                }
-            }
+            int hGap = getMessageFromPart(part) //
+                    .filter(msg -> isReflexiveMessage) //
+                    .map(Message::getReflexiveMessageWidth) //
+                    .orElse(LayoutConstants.MESSAGE_TO_SELF_BENDPOINT_HORIZONTAL_GAP);
 
             secondPoint.setX(Math.max(sourceRef.x, targetRef.x) + (int) (hGap * zoom));
             thirdPoint.setX(secondPoint.x);
@@ -193,15 +207,23 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
         return ownerBounds;
     }
 
-    private boolean isReflectiveMessage(IGraphicalEditPart part) {
-        if (part instanceof SequenceMessageEditPart) {
-            ISequenceEvent ise = ((SequenceMessageEditPart) part).getISequenceEvent();
-            return ise instanceof Message && ((Message) ise).isReflective();
+    private static Optional<Message> getMessageFromPart(IGraphicalEditPart part) {
+        Optional<Message> optMsg = Optional.empty();
+        if (part instanceof SequenceMessageEditPart isePart && isePart.getISequenceEvent() instanceof Message msg) {
+            return Optional.of(msg);
         }
-        return false;
+        return optMsg;
     }
 
-    private List<Bendpoint> getRefreshedConstraint(Connection conn, boolean isReflectiveMessage) {
+    private boolean isObliqueMessage(IGraphicalEditPart part) {
+        return getMessageFromPart(part).map(Message::isOblique).orElse(false);
+    }
+
+    private boolean isReflectiveMessage(IGraphicalEditPart part) {
+        return getMessageFromPart(part).map(Message::isReflective).orElse(false);
+    }
+
+    private List<Bendpoint> getRefreshedConstraint(Connection conn, boolean isReflectiveMessage, boolean isObliqueMessage) {
         boolean noBendpointsAtbeginning = false;
         @SuppressWarnings("unchecked")
         List<Bendpoint> bendpoints = (List<Bendpoint>) getConstraint(conn);
@@ -209,7 +231,7 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
             noBendpointsAtbeginning = true;
             bendpoints = Collections.emptyList();
         }
-        refreshBendpoints(bendpoints, conn, isReflectiveMessage);
+        refreshBendpoints(bendpoints, conn, isReflectiveMessage, isObliqueMessage);
 
         if (!(noBendpointsAtbeginning && Collections.emptyList().equals(bendpoints))) {
             // There is no need to set constraint if there is no bendpoints at
@@ -227,7 +249,7 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
         return anchor != null && anchor.getOwner() != null;
     }
 
-    private void refreshBendpoints(List<Bendpoint> bendpoints, Connection conn, boolean isReflexiveMessage) {
+    private void refreshBendpoints(List<Bendpoint> bendpoints, Connection conn, boolean isReflexiveMessage, boolean isObliqueMessage) {
 
         IGraphicalEditPart part = null;
         if (conn instanceof AbstractDiagramEdgeEditPart.ViewEdgeFigure) {
@@ -246,6 +268,8 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
                     // bendpoint
                     align4BendpointsOfMessageToSelf(bendpoints, conn);
                 }
+            } else if (isObliqueMessage) {
+                refreshBendpointsForObliqueMessage(bendpoints, conn);
             } else {
                 /*
                  * The only case where we have more than two bendpoints is when the user has dragged a connection, which
@@ -272,6 +296,16 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
                 bendpoints.add(newEnd);
             }
         } else if (bendpoints.size() == 2) {
+
+            // Do not re-init helper points when routing others messages.
+            if (dragInProgress.isPresent() && (dragInProgress.get() == conn || dragInProgress.get().getParent() == null)) {
+                // Re-init computation points : connection drag is over.
+                A_POINT.setLocation(0, 0);
+                S_POINT.setLocation(0, 0);
+                F_POINT.setLocation(0, 0);
+                dragInProgress = Optional.empty();
+            }
+
             Bendpoint start = bendpoints.get(0);
             Bendpoint end = bendpoints.get(bendpoints.size() - 1);
 
@@ -291,11 +325,76 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
                 }
 
                 bendpoints.add(newStart);
-                // Ensure the message is horizontal.
-                newEnd.getLocation().setY(newStart.getLocation().y);
+
+                if (!isObliqueMessage) {
+                    // Ensure the message is horizontal.
+                    newEnd.getLocation().setY(newStart.getLocation().y);
+                }
                 bendpoints.add(newEnd);
             }
         }
+    }
+
+    private void refreshBendpointsForObliqueMessage(List<Bendpoint> bendpoints, Connection conn) {
+        // Should be computed in policy and passed as a ready to use constraint.
+
+        Bendpoint start = bendpoints.get(0);
+        Bendpoint cursorReference = bendpoints.get(1);
+        Bendpoint finish = bendpoints.get(bendpoints.size() - 1);
+
+        // Compute move type and reference points once (equivalent to handleButtonDown)
+        if (BUTTON_DOWN_POINT.y != 0 && dragInProgress.isPresent() && dragInProgress.get() == conn) {
+            A_POINT.setLocation(BUTTON_DOWN_POINT);
+            BUTTON_DOWN_POINT.setLocation(0, 0);
+
+            S_POINT.setLocation(start.getLocation());
+            F_POINT.setLocation(finish.getLocation());
+        }
+        Bendpoint newStart = start;
+        Bendpoint newFinish = finish;
+        int deltaY = cursorReference.getLocation().y - A_POINT.y;
+
+        int width = finish.getLocation().x - start.getLocation().x;
+        if (width < 0) {
+            if (A_POINT.x == SequenceMessageEditPolicy.OBLIQUE_MESSAGE_MOVE_TARGET) {
+                // Move target
+                Point preciseFinish = new Point(finish.getLocation().x, Math.max(S_POINT.y + LayoutConstants.DEFAULT_MESSAGE_MIN_OBLIQUE_HEIGHT, F_POINT.y + deltaY));
+                newFinish = new AbsoluteBendpoint(preciseFinish);
+            } else if (A_POINT.x == SequenceMessageEditPolicy.OBLIQUE_MESSAGE_MOVE_SOURCE) {
+                // Move source
+                Point preciseStart = new Point(start.getLocation().x, Math.min(F_POINT.y - LayoutConstants.DEFAULT_MESSAGE_MIN_OBLIQUE_HEIGHT, S_POINT.y + deltaY));
+                newStart = new AbsoluteBendpoint(preciseStart);
+            } else {
+                // Move edge
+                Point preciseStart = new Point(start.getLocation().x, S_POINT.y + deltaY);
+                newStart = new AbsoluteBendpoint(preciseStart);
+
+                Point preciseFinish = new Point(finish.getLocation().x, F_POINT.y + deltaY);
+                newFinish = new AbsoluteBendpoint(preciseFinish);
+            }
+        } else {
+            if (A_POINT.x == SequenceMessageEditPolicy.OBLIQUE_MESSAGE_MOVE_SOURCE) {
+                // Move source
+                Point preciseStart = new Point(start.getLocation().x, Math.min(F_POINT.y - LayoutConstants.DEFAULT_MESSAGE_MIN_OBLIQUE_HEIGHT, S_POINT.y + deltaY));
+                newStart = new AbsoluteBendpoint(preciseStart);
+            } else if (A_POINT.x == SequenceMessageEditPolicy.OBLIQUE_MESSAGE_MOVE_TARGET) {
+                // Move target
+                Point preciseFinish = new Point(finish.getLocation().x, Math.max(S_POINT.y + LayoutConstants.DEFAULT_MESSAGE_MIN_OBLIQUE_HEIGHT, F_POINT.y + deltaY));
+                newFinish = new AbsoluteBendpoint(preciseFinish);
+            } else {
+                // Move edge
+                Point preciseStart = new Point(start.getLocation().x, S_POINT.y + deltaY);
+                newStart = new AbsoluteBendpoint(preciseStart);
+
+                Point preciseFinish = new Point(finish.getLocation().x, F_POINT.y + deltaY);
+                newFinish = new AbsoluteBendpoint(preciseFinish);
+            }
+        }
+
+        bendpoints.clear();
+        bendpoints.add(newStart);
+        bendpoints.add(cursorReference);
+        bendpoints.add(newFinish);
     }
 
     /**

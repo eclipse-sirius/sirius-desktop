@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,9 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
+import org.eclipse.draw2d.ConnectionRouter;
 import org.eclipse.draw2d.Cursors;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.PositionConstants;
@@ -41,6 +43,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.ConnectionBendpointEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.internal.commands.SetConnectionBendpointsCommand;
 import org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants;
+import org.eclipse.gmf.runtime.draw2d.ui.internal.figures.OnConnectionLocator;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
@@ -77,7 +80,9 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.LifelineEd
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceDiagramEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator.PositionsChecker;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout.SequenceMessagesRouter;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.EditPartsHelper;
+import org.eclipse.sirius.diagram.ui.internal.edit.handles.SiriusBendpointMoveHandle;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
@@ -107,6 +112,26 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
     public static final String REQUEST_FROM_SEQUENCE_MESSAGE_EDIT_POLICY = "org.eclipse.sirius.sequence.resize.execution.from.bendpoint.request"; //$NON-NLS-1$
 
     /**
+     * Key constant use for request from a BendpointRequest on Message.
+     */
+    public static final String REQUEST_FROM_SEQUENCE_MESSAGE_EDIT_POLICY_OBLIQUE_MOVE_TYPE = "org.eclipse.sirius.sequence.resize.execution.from.bendpoint.request.oblique.move.type"; //$NON-NLS-1$
+
+    /**
+     * The value used to identify a move of the target of an oblique message.
+     */
+    public static final int OBLIQUE_MESSAGE_MOVE_TARGET = 1;
+
+    /**
+     * The value used to identify a move of the source of an oblique message.
+     */
+    public static final int OBLIQUE_MESSAGE_MOVE_SOURCE = -1;
+
+    /**
+     * The value used to identify the move of an oblique message.
+     */
+    public static final int OBLIQUE_MESSAGE_MOVE_MESSAGE = 0;
+
+    /**
      * The color top use for the horizontal feedback rules shown when moving a message.
      */
     private static final Color MESSAGE_FEEDBACK_COLOR = SequenceInteractionFeedBackBuilder.ISE_FEEDBACK_COLOR;
@@ -130,6 +155,17 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
 
     protected SequenceMessageEditPart getMessage() {
         return (SequenceMessageEditPart) getHost();
+    }
+
+    @Override
+    protected List createManualHandles() {
+        List list = super.createManualHandles();
+        SequenceMessageEditPart message = getMessage();
+        if (isObliqueMessage(message)) {
+            list.add(new SiriusBendpointMoveHandle(message, 0, new OnConnectionLocator(getConnection(), 25)));
+            list.add(new SiriusBendpointMoveHandle(message, 0, new OnConnectionLocator(getConnection(), 75)));
+        }
+        return list;
     }
 
     @Override
@@ -158,61 +194,99 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
         SequenceMessageEditPart thisEvent = (SequenceMessageEditPart) getHost();
         ISequenceEvent iSequenceEvent = thisEvent.getISequenceEvent();
         List<EventEnd> ends = EventEndHelper.findEndsFromSemanticOrdering(iSequenceEvent);
-        super.showSourceFeedback(br);
 
         MoveType moveType = getMoveType(thisEvent, br, ends);
+        boolean isOblique = isObliqueMessage(getMessage());
+        if (isOblique) {
+            ConnectionRouter connectionRouter = thisEvent.getPrimaryShape().getConnectionRouter();
+            if (connectionRouter instanceof SequenceMessagesRouter smr) {
+                connectionRouter.setConstraint(getConnection(), br);
+            }
+        }
+        super.showSourceFeedback(br);
+
         if (moveType.needsCompoundMove()) {
             showCompoundEndFeedback(br, thisEvent, ends, moveType.isFromTop());
         } else {
-            Point location = new Point(1, thisEvent.getConnectionFigure().getPoints().getFirstPoint().y);
-            location.performScale(GraphicalHelper.getZoom(getHost()));
+            showMessageFeedback(br, thisEvent, iSequenceEvent, isOblique);
+        }
+    }
 
-            Figure guide = new HorizontalGuide(MESSAGE_FEEDBACK_COLOR, location.y);
-            Rectangle bounds = getFeedbackLayer().getBounds().getCopy();
+    private void showMessageFeedback(BendpointRequest br, SequenceMessageEditPart thisEvent, ISequenceEvent iSequenceEvent, boolean isOblique) {
+        Point reqLoc = br.getLocation().getCopy();
+        GraphicalHelper.screen2logical(reqLoc, thisEvent);
+        Optional<Range> finalRange = computeFinalRange(br, thisEvent, reqLoc);
+        Point location = new Point(1, thisEvent.getConnectionFigure().getPoints().getFirstPoint().y);
+        location.performScale(GraphicalHelper.getZoom(thisEvent));
+
+        if (isOblique && finalRange.isPresent()) {
+            Point startLocation = new Point(1, finalRange.get().getLowerBound());
+            startLocation.performScale(GraphicalHelper.getZoom(thisEvent));
+            location.y = startLocation.y;
+        }
+
+        Figure guide = new HorizontalGuide(MESSAGE_FEEDBACK_COLOR, location.y);
+        Rectangle bounds = getFeedbackLayer().getBounds().getCopy();
+        bounds.setHeight(1);
+        bounds.setY(location.y);
+        guide.setBounds(bounds);
+        addFeedback(guide);
+        guides.add(guide);
+
+        if (isReflectiveMessage(getMessage())) {
+            Point endLocation = new Point(1, thisEvent.getConnectionFigure().getPoints().getLastPoint().y);
+            endLocation.performScale(GraphicalHelper.getZoom(thisEvent));
+            Figure messageToSelfBottomGuide = new HorizontalGuide(MESSAGE_FEEDBACK_COLOR, endLocation.y);
+            bounds = getFeedbackLayer().getBounds().getCopy();
             bounds.setHeight(1);
-            bounds.setY(location.y);
-            guide.setBounds(bounds);
-            addFeedback(guide);
-            guides.add(guide);
+            bounds.setY(endLocation.y);
+            messageToSelfBottomGuide.setBounds(bounds);
+            addFeedback(messageToSelfBottomGuide);
+            guides.add(messageToSelfBottomGuide);
+        } else if (isOblique && finalRange.isPresent()) {
+            int upperBound = finalRange.get().getUpperBound();
+            Point endLocation = new Point(1, upperBound);
+            endLocation.performScale(GraphicalHelper.getZoom(thisEvent));
 
-            if (new ISequenceEventQuery(getMessage().getISequenceEvent()).isReflectiveMessage()) {
-                Point endLocation = new Point(1, thisEvent.getConnectionFigure().getPoints().getLastPoint().y);
-                endLocation.performScale(GraphicalHelper.getZoom(getHost()));
-                Figure messageToSelfBottomGuide = new HorizontalGuide(MESSAGE_FEEDBACK_COLOR, endLocation.y);
+            Figure obliqueMessageBottomGuide = new HorizontalGuide(MESSAGE_FEEDBACK_COLOR, endLocation.y);
+            bounds = getFeedbackLayer().getBounds().getCopy();
+            bounds.setHeight(1);
+            bounds.setY(endLocation.y);
+            obliqueMessageBottomGuide.setBounds(bounds);
+            addFeedback(obliqueMessageBottomGuide);
+            guides.add(obliqueMessageBottomGuide);
+        }
+
+        if (thisEvent.getTarget() instanceof InstanceRoleEditPart) {
+            showInstanceRoleFeedback(br);
+        } else if (thisEvent.getTarget() instanceof EndOfLifeEditPart) {
+            showEndOfLifeFeedback(br);
+        }
+
+        if (finalRange.isPresent()) {
+            Collection<Integer> invalidPositions = checkGlobalPositions(iSequenceEvent, finalRange);
+            for (Integer conflict : invalidPositions) {
                 bounds = getFeedbackLayer().getBounds().getCopy();
+
+                Point conflictingPosition = new Point(0, conflict);
+                conflictingPosition.performScale(GraphicalHelper.getZoom(thisEvent));
+
+                HorizontalGuide conflictGuide = new HorizontalGuide(SequenceInteractionFeedBackBuilder.CONFLICT_FEEDBACK_COLOR, conflictingPosition.y);
+                bounds.setY(conflictingPosition.y);
                 bounds.setHeight(1);
-                bounds.setY(endLocation.y);
-                messageToSelfBottomGuide.setBounds(bounds);
-                addFeedback(messageToSelfBottomGuide);
-                guides.add(messageToSelfBottomGuide);
-            }
-
-            if (thisEvent.getTarget() instanceof InstanceRoleEditPart) {
-                showInstanceRoleFeedback(br);
-            } else if (thisEvent.getTarget() instanceof EndOfLifeEditPart) {
-                showEndOfLifeFeedback(br);
-            }
-
-            Point reqLoc = br.getLocation().getCopy();
-            GraphicalHelper.screen2logical(reqLoc, (IGraphicalEditPart) getHost());
-            Option<Range> finalRange = computeFinalRange(br, thisEvent, reqLoc);
-            if (finalRange.some()) {
-                Collection<Integer> invalidPositions = checkGlobalPositions(iSequenceEvent, finalRange);
-                for (Integer conflict : invalidPositions) {
-                    bounds = getFeedbackLayer().getBounds().getCopy();
-
-                    Point conflictingPosition = new Point(0, conflict);
-                    conflictingPosition.performScale(GraphicalHelper.getZoom(getHost()));
-
-                    HorizontalGuide conflictGuide = new HorizontalGuide(SequenceInteractionFeedBackBuilder.CONFLICT_FEEDBACK_COLOR, conflictingPosition.y);
-                    bounds.setY(conflictingPosition.y);
-                    bounds.setHeight(1);
-                    conflictGuide.setBounds(bounds);
-                    addFeedback(conflictGuide);
-                    guides.add(conflictGuide);
-                }
+                conflictGuide.setBounds(bounds);
+                addFeedback(conflictGuide);
+                guides.add(conflictGuide);
             }
         }
+    }
+
+    private static boolean isReflectiveMessage(SequenceMessageEditPart messageEP) {
+        return new ISequenceEventQuery(messageEP.getISequenceEvent()).isReflectiveMessage();
+    }
+
+    private static boolean isObliqueMessage(SequenceMessageEditPart messageEP) {
+        return new ISequenceEventQuery(messageEP.getISequenceEvent()).isObliqueMessage();
     }
 
     private void removeFeedBackOnGuides() {
@@ -236,11 +310,24 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
             }
         };
 
-        Dimension resizeDelta = getResizeDelta(location.getCopy(), thisEvent, thisRange, fromTop);
+        Dimension resizeDelta = getResizeDelta(request, location.getCopy(), thisEvent, thisRange, fromTop);
+        int obliqueMoveType = resizeDelta.width;
+        boolean obliqueMessage = isObliqueMessage(thisEvent);
+        resizeDelta.width = 0;
         for (CompoundEventEnd cee : Iterables.filter(ends, CompoundEventEnd.class)) {
             for (SingleEventEnd see : Iterables.filter(Lists.newArrayList(cee.getEventEnds()), toMove)) {
                 ISequenceEventEditPart ise = EditPartsHelper.findISequenceEvent(see, sdep);
-                ChangeBoundsRequest cbr = buildChangeBoundRequest(location.getCopy(), thisEvent, see, resizeDelta);
+                ISequenceEvent sequenceEvent = ise.getISequenceEvent();
+                ChangeBoundsRequest cbr = buildChangeBoundRequest(location.getCopy(), ise, see, resizeDelta);
+                if (sequenceEvent instanceof AbstractNodeEvent) {
+                    // if sequenveEvent is Execution, we must indicates to the
+                    // ExecutionSelectionValidator that we want resize its
+                    // Execution
+                    cbr.getExtendedData().put(REQUEST_FROM_SEQUENCE_MESSAGE_EDIT_POLICY, true);
+                    if (obliqueMessage) {
+                        cbr.getExtendedData().put(REQUEST_FROM_SEQUENCE_MESSAGE_EDIT_POLICY_OBLIQUE_MOVE_TYPE, obliqueMoveType);
+                    }
+                }
                 ise.showSourceFeedback(cbr);
             }
         }
@@ -259,11 +346,11 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
             }
         };
 
-        Dimension resizeDelta = getResizeDelta(location.getCopy(), thisEvent, thisRange, fromTop);
+        Dimension resizeDelta = getResizeDelta(request, location.getCopy(), thisEvent, thisRange, fromTop);
         for (CompoundEventEnd cee : Iterables.filter(ends, CompoundEventEnd.class)) {
             for (SingleEventEnd see : Iterables.filter(Lists.newArrayList(cee.getEventEnds()), toMove)) {
-                ISequenceEventEditPart ise = EditPartsHelper.findISequenceEvent(see, sdep);
-                ChangeBoundsRequest cbr = buildChangeBoundRequest(location.getCopy(), thisEvent, see, resizeDelta);
+                ISequenceEventEditPart ise = EditPartsHelper.findISequenceEvent(see, sdep); 
+                ChangeBoundsRequest cbr = buildChangeBoundRequest(location.getCopy(), ise, see, resizeDelta);
                 ise.eraseSourceFeedback(cbr);
             }
         }
@@ -335,13 +422,12 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
             List<EventEnd> ends = EventEndHelper.findEndsFromSemanticOrdering(((ISequenceEventEditPart) getHost()).getISequenceEvent());
             BendpointRequest br = (BendpointRequest) request;
             // thisEvent.setCursor(org.eclipse.gmf.runtime.gef.ui.internal.l10n.Cursors.CURSOR_SEG_MOVE);
-            if (thisEvent.getTarget() instanceof InstanceRoleEditPart) {
-                InstanceRoleEditPart target = (InstanceRoleEditPart) thisEvent.getTarget();
+            if (thisEvent.getTarget() instanceof InstanceRoleEditPart target) {
                 ChangeBoundsRequest cbr = new ChangeBoundsRequest(org.eclipse.gef.RequestConstants.REQ_MOVE);
                 cbr.getMoveDelta().setY(br.getLocation().y - (target.getFigure().getBounds().y + target.getFigure().getBounds().height / 2)); // br.getLocation().y
                 target.eraseSourceFeedback(cbr);
-            } else if (thisEvent.getTarget() instanceof EndOfLifeEditPart) {
-                EndOfLifeOperations.eraseEndOfLifeFeedback((LifelineEditPart) thisEvent.getTarget().getParent(), br);
+            } else if (thisEvent.getTarget() instanceof EndOfLifeEditPart eolEditPart) {
+                EndOfLifeOperations.eraseEndOfLifeFeedback(eolEditPart.getLifelineEditPart(), br);
             } else {
                 MoveType moveType = getMoveType(thisEvent, br, ends);
                 if (moveType.needsCompoundMove()) {
@@ -377,14 +463,13 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
         Point location = request.getLocation().getCopy();
         GraphicalHelper.screen2logical(location, (IGraphicalEditPart) getHost());
 
-        Option<Range> finalRange = computeFinalRange(request, thisEvent, location);
-
-        if (finalRange.some()) {
+        Optional<Range> finalRange = computeFinalRange(request, thisEvent, location);
+        if (finalRange.isPresent()) {
             smrc = createReconnectionCommandOnBendpointMove(request, thisEvent, location, finalRange.get());
         }
 
         List<EventEnd> ends = EventEndHelper.findEndsFromSemanticOrdering(thisEvent.getISequenceEvent());
-        invalidCommand = invalidCommand || !baseCommand.canExecute() || !finalRange.some();
+        invalidCommand = invalidCommand || !baseCommand.canExecute() || !finalRange.isPresent();
         invalidCommand = invalidCommand || org.eclipse.gef.RequestConstants.REQ_MOVE_BENDPOINT.equals(request.getType());
         invalidCommand = invalidCommand || !validateMessageParentOperand(finalRange);
         invalidCommand = invalidCommand || !checkGlobalPositions(thisEvent.getISequenceEvent(), finalRange).isEmpty();
@@ -434,12 +519,12 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
         return result;
     }
 
-    private Collection<Integer> checkGlobalPositions(final ISequenceEvent thisEvent, final Option<Range> finalRange) {
+    private Collection<Integer> checkGlobalPositions(final ISequenceEvent thisEvent, final Optional<Range> finalRange) {
         Function<ISequenceEvent, Range> futureRangeFunction = new Function<ISequenceEvent, Range>() {
             @Override
             public Range apply(ISequenceEvent from) {
                 Range verticalRange = from.getVerticalRange();
-                if (thisEvent.equals(from) && finalRange.some()) {
+                if (thisEvent.equals(from) && finalRange.isPresent()) {
                     verticalRange = finalRange.get();
                 }
                 return verticalRange;
@@ -451,17 +536,18 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
     private ICommand createReconnectionCommandOnBendpointMove(BendpointRequest request, SequenceMessageEditPart thisEvent, Point location, Range finalRange) {
         SetMessageRangeOperation smrc = new SetMessageRangeOperation((Edge) thisEvent.getNotationView(), finalRange);
         Message message = (Message) thisEvent.getISequenceEvent();
-        boolean reflectiveMessage = message.isReflective();
 
-        setOperations(true, message, finalRange, smrc, reflectiveMessage);
-        setOperations(false, message, finalRange, smrc, reflectiveMessage);
+        setOperations(true, message, finalRange, smrc);
+        setOperations(false, message, finalRange, smrc);
 
         return CommandFactory.createICommand(thisEvent.getEditingDomain(), smrc);
     }
 
-    private void setOperations(boolean source, Message message, Range finalRange, SetMessageRangeOperation smrc, boolean reflectiveMessage) {
+    private void setOperations(boolean source, Message message, Range finalRange, SetMessageRangeOperation smrc) {
         Range messageEndRange = source ? new Range(finalRange.getLowerBound(), finalRange.getLowerBound()) : new Range(finalRange.getUpperBound(), finalRange.getUpperBound());
         ISequenceNode currentEnd = source ? message.getSourceElement() : message.getTargetElement();
+        boolean reflectiveMessage = message.isReflective();
+        boolean obliqueMessage = message.isOblique();
         Option<Lifeline> endLifeline = currentEnd.getLifeline();
         if (endLifeline.some() && currentEnd instanceof ISequenceEvent) {
             ISequenceEvent finalEnd;
@@ -470,18 +556,23 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
             EventFinder endFinder = new EventFinder(endLifeline.get());
             endFinder.setReconnection(true);
 
-            if (!reflectiveMessage) {
+            if (!(reflectiveMessage || obliqueMessage)) {
                 finalEnd = endFinder.findMostSpecificEvent(finalRange);
             } else {
                 finalEnd = (ISequenceEvent) currentEnd;
 
+                ISequenceEvent potentialFinalEnd = endFinder.findMostSpecificEvent(messageEndRange);
                 boolean compoundSrc = finalEnd instanceof Execution && message.equals(source ? ((Execution) finalEnd).getEndMessage().get() : ((Execution) finalEnd).getStartMessage().get());
-                if (!compoundSrc && !finalEnd.equals(endFinder.findMostSpecificEvent(messageEndRange))) {
+                if (!compoundSrc && !finalEnd.equals(potentialFinalEnd)) {
                     // It is not allowed to reconnect a reflexive message by
                     // moving bendpoints
-                    invalidCommand = true;
+                    invalidCommand = reflectiveMessage;
                 }
 
+                if (obliqueMessage && !compoundSrc) {
+                    finalEnd = potentialFinalEnd;
+
+                }
                 // look for event source
                 endFinder.setReconnection(false);
                 ISequenceEvent potentialSource = endFinder.findMostSpecificEvent(messageEndRange);
@@ -532,11 +623,9 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
 
     }
 
-    private Option<Range> computeFinalRange(BendpointRequest request, SequenceMessageEditPart smep, Point location) {
+    private Optional<Range> computeFinalRange(BendpointRequest request, SequenceMessageEditPart smep, Point location) {
         Range finalRange = null;
-        if (!new ISequenceEventQuery(smep.getISequenceEvent()).isReflectiveMessage()) {
-            finalRange = new Range(location.y, location.y);
-        } else {
+        if (isReflectiveMessage(smep)) {
             Edge edge = (Edge) smep.getNotationView();
             SequenceMessageViewQuery query = new SequenceMessageViewQuery(edge);
 
@@ -555,8 +644,26 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
                 finalRange = new Range(firstPointVerticalPosition, lastPointVerticalPosition);
                 break;
             }
+        } else if (isObliqueMessage(smep)) {
+            int deltaY = 0;
+            int moveType = 0;
+            Object initialClick = request.getExtendedData().get(SequenceMessageEditPart.MSG_OBLIQUE_CBR_INITAL_CLICK);
+            if (initialClick instanceof Point obliqueMsgInitialClick) {
+                deltaY = location.y - obliqueMsgInitialClick.y;
+                moveType = obliqueMsgInitialClick.x;
+            }
+            Range verticalRange = smep.getISequenceEvent().getVerticalRange();
+            if (moveType == SequenceMessageEditPolicy.OBLIQUE_MESSAGE_MOVE_SOURCE) {
+                finalRange = new Range(Math.min(verticalRange.getUpperBound() - LayoutConstants.DEFAULT_MESSAGE_MIN_OBLIQUE_HEIGHT, verticalRange.getLowerBound() + deltaY), verticalRange.getUpperBound());
+            } else if (moveType == SequenceMessageEditPolicy.OBLIQUE_MESSAGE_MOVE_MESSAGE) {
+                finalRange = verticalRange.shifted(deltaY);
+            } else if (moveType == SequenceMessageEditPolicy.OBLIQUE_MESSAGE_MOVE_TARGET) {
+                finalRange = new Range(verticalRange.getLowerBound(), Math.max(verticalRange.getLowerBound() + LayoutConstants.DEFAULT_MESSAGE_MIN_OBLIQUE_HEIGHT, verticalRange.getUpperBound() + deltaY));
+            }
+        } else {
+            finalRange = new Range(location.y, location.y);
         }
-        return Options.newSome(finalRange);
+        return Optional.ofNullable(finalRange);
     }
 
     private Range safeComputeMessageToSelfFinalRangeFromBottom(int firstPointVerticalPosition, Point newBottomLocation) {
@@ -577,12 +684,11 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
 
     private MoveType getMoveType(SequenceMessageEditPart event, BendpointRequest request, List<EventEnd> ends) {
         boolean compoundMove = !Iterables.isEmpty(Iterables.filter(ends, CompoundEventEnd.class));
-        boolean msgToSelfMove = new ISequenceEventQuery(event.getISequenceEvent()).isReflectiveMessage();
-        boolean needsCompoundEventCommands = compoundMove && !msgToSelfMove;
+        boolean msgToSelfMove = isReflectiveMessage(event);
+        boolean obliqueMove = isObliqueMessage(event);
+        boolean needsCompoundEventCommands = compoundMove && !msgToSelfMove || compoundMove && !obliqueMove;
         boolean fromTop = true;
         if (compoundMove && msgToSelfMove && ends.size() == 2) {
-            Point location = request.getLocation().getCopy();
-            GraphicalHelper.screen2logical(location, event);
             if (request.getExtendedData().containsKey(SequenceMessageEditPart.MSG_TO_SELF_TOP_MOVE)) {
                 fromTop = (Boolean) request.getExtendedData().get(SequenceMessageEditPart.MSG_TO_SELF_TOP_MOVE);
                 needsCompoundEventCommands = fromTop ? ends.get(0) instanceof CompoundEventEnd : ends.get(1) instanceof CompoundEventEnd;
@@ -590,6 +696,15 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
                 needsCompoundEventCommands = false;
             }
         }
+
+        if (compoundMove && obliqueMove && ends.size() == 2) {
+            Object initialClick = request.getExtendedData().get(SequenceMessageEditPart.MSG_OBLIQUE_CBR_INITAL_CLICK);
+            if (initialClick instanceof Point obliqueMsgInitialClick) {
+                // Handle only ObliqueAsyncCall case with move target or move edge
+                needsCompoundEventCommands = obliqueMsgInitialClick.x == OBLIQUE_MESSAGE_MOVE_TARGET || obliqueMsgInitialClick.x == OBLIQUE_MESSAGE_MOVE_MESSAGE;
+            }
+        }
+
         return new MoveType(needsCompoundEventCommands, fromTop);
     }
 
@@ -606,7 +721,10 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
             }
         };
 
-        Dimension resizeDelta = getResizeDelta(location.getCopy(), thisEvent, thisRange, fromTop);
+        Dimension resizeDelta = getResizeDelta(request, location.getCopy(), thisEvent, thisRange, fromTop);
+        int obliqueMoveType = resizeDelta.width;
+        boolean obliqueMessage = isObliqueMessage(thisEvent);
+        resizeDelta.width = 0;
         for (CompoundEventEnd cee : Iterables.filter(ends, CompoundEventEnd.class)) {
             for (SingleEventEnd see : Iterables.filter(Lists.newArrayList(cee.getEventEnds()), toMove)) {
                 ISequenceEventEditPart ise = EditPartsHelper.findISequenceEvent(see, sdep);
@@ -617,6 +735,9 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
                     // ExecutionSelectionValidator that we want resize its
                     // Execution
                     cbr.getExtendedData().put(REQUEST_FROM_SEQUENCE_MESSAGE_EDIT_POLICY, true);
+                    if (obliqueMessage) {
+                        cbr.getExtendedData().put(REQUEST_FROM_SEQUENCE_MESSAGE_EDIT_POLICY_OBLIQUE_MOVE_TYPE, obliqueMoveType);
+                    }
                 }
                 ctc.compose(new CommandProxy(ise.getCommand(cbr)));
             }
@@ -641,11 +762,22 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
         return cbr;
     }
 
-    private Dimension getResizeDelta(Point location, ISequenceEventEditPart ise, Range range, boolean fromTop) {
+    private Dimension getResizeDelta(BendpointRequest request, Point location, ISequenceEventEditPart ise, Range range, boolean fromTop) {
         GraphicalHelper.screen2logical(location, ise);
-        int deltaY = location.y - (fromTop ? range.getLowerBound() : range.getUpperBound());
+        int deltaY;
+        int moveType = 0;
+        Object initialClick = request.getExtendedData().get(SequenceMessageEditPart.MSG_OBLIQUE_CBR_INITAL_CLICK);
+        if (initialClick instanceof Point obliqueMsgInitialClick) {
+            deltaY =  location.y - obliqueMsgInitialClick.y;
+            moveType = obliqueMsgInitialClick.x;
+            if (range.getUpperBound() + deltaY < range.getLowerBound() + LayoutConstants.DEFAULT_MESSAGE_MIN_OBLIQUE_HEIGHT && moveType == OBLIQUE_MESSAGE_MOVE_TARGET) {
+                deltaY = -range.width() + LayoutConstants.DEFAULT_MESSAGE_MIN_OBLIQUE_HEIGHT;
+            }
+        } else {
+            deltaY = location.y - (fromTop ? range.getLowerBound() : range.getUpperBound());
+        }
         deltaY = (int) (deltaY * GraphicalHelper.getZoom(ise));
-        return new Dimension(0, deltaY);
+        return new Dimension(moveType, deltaY);
     }
 
     /**
@@ -783,7 +915,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
         return sourceRangeLimit;
     }
 
-    private boolean validateMessageParentOperand(Option<Range> finalRange) {
+    private boolean validateMessageParentOperand(Optional<Range> finalRange) {
         boolean valid = true;
 
         SequenceMessageEditPart thisEvent = (SequenceMessageEditPart) getHost();
@@ -791,7 +923,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
         Option<Lifeline> sourceLifeline = message.getSourceLifeline();
         Option<Lifeline> targetLifeline = message.getTargetLifeline();
 
-        if (finalRange.some() && sourceLifeline.some() && targetLifeline.some()) {
+        if (finalRange.isPresent() && sourceLifeline.some() && targetLifeline.some()) {
             Option<Operand> sourceFinalOperand = Options.newNone();
             Option<Operand> targetFinalOperand = Options.newNone();
 
@@ -833,7 +965,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
 
         @Override
         public String toString() {
-            return "[fromTop:" + fromTop + ", compound:" + needsCompoundMove + "]"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+            return "[fromTop:" + fromTop + ", compound:" + needsCompoundMove + "]";  //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
         }
     }
 }

@@ -18,6 +18,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Stream;
 
@@ -243,7 +244,13 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
         Stream<Message> messagesToReconnect = self.getDiagram().getAllMessages().stream() //
                 .filter(Message.class::isInstance).map(Message.class::cast) //
                 .filter(ise -> !self.getVerticalRange().intersects(ise.getVerticalRange())) //
-                .filter(ise -> movedRange.includes(ise.getVerticalRange())) //
+                .filter(ise -> {
+                    if (ise.isOblique()) {
+                        return movedRange.includesAtLeastOneBound(ise.getVerticalRange());
+                    } else {
+                        return movedRange.includes(ise.getVerticalRange());
+                    }
+                }) //
                 .filter(ise -> validator.getExpansionZone() == null || !validator.getExpansionZone().intersects(ise.getVerticalRange()));
 
         messagesToReconnect.forEach(msg -> {
@@ -421,29 +428,51 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
                 final Range seeRange = ise.getVerticalRange();
                 int lDelta = 0;
                 int uDelta = 0;
-                if (seeRange.getLowerBound() == movedBound && doNotMoveSourceOfReturnMessageOfReflexiveSyncCall(self, ise, rq)) {
-                    lDelta = height;
-                    if (new ISequenceEventQuery(ise).isReflectiveMessage() && getSelection(ise) == EditPart.SELECTED_NONE) {
-                        // A reflexive message does not have the same lower and
-                        // upper bound but both bound have to be moved like
-                        // "normal" messages
-                        uDelta = height;
-                    }
-                }
-                if (seeRange.getUpperBound() == movedBound && doNotMoveTargetOfStartMessageOfReflexiveSyncCall(self, ise, rq)) {
-                    uDelta = height;
-                    if (new ISequenceEventQuery(ise).isReflectiveMessage() && getSelection(ise) == EditPart.SELECTED_NONE) {
-                        // A reflexive message does not have the same lower and
-                        // upper bound but both bound have to be moved like
-                        // "normal" messages
+                if (ise instanceof Message msg) {
+                    ISequenceEventQuery iseQuery = new ISequenceEventQuery(ise);
+                    boolean isReflectiveMessage = iseQuery.isReflectiveMessage();
+                    boolean isObliqueMessage = iseQuery.isObliqueMessage();
+
+                    if (seeRange.getLowerBound() == movedBound && doNotMoveSourceOfReturnMessageOfReflexiveSyncCall(self, msg, rq, isReflectiveMessage)) {
                         lDelta = height;
+                        if (isReflectiveMessage && getSelection(msg) == EditPart.SELECTED_NONE) {
+                            // A reflexive message does not have the same lower and
+                            // upper bound but both bound have to be moved like
+                            // "normal" messages
+                            uDelta = height;
+                        }
+
+                        if (isObliqueMessage && getSelection(msg) == EditPart.SELECTED_NONE) {
+                            // A reflexive message does not have the same lower and
+                            // upper bound but both bound have to be moved like
+                            // "normal" messages
+                            uDelta = height;
+                        }
+                    }
+                    if (seeRange.getUpperBound() == movedBound && doNotMoveTargetOfStartMessageOfReflexiveSyncCall(self, msg, rq, isReflectiveMessage)) {
+                        uDelta = height;
+                        if (isReflectiveMessage && getSelection(msg) == EditPart.SELECTED_NONE) {
+                            // A reflexive message does not have the same lower and
+                            // upper bound but both bound have to be moved like
+                            // "normal" messages
+                            lDelta = height;
+                        }
+
+                        if (isObliqueMessage) {
+                            if (getSelection(msg) == EditPart.SELECTED_NONE //
+                                    || (rq.isDirectedByMessage() && rq.getObliqueMoveType().isPresent() && rq.getObliqueMoveType().get() == SequenceMessageEditPolicy.OBLIQUE_MESSAGE_MOVE_MESSAGE)) {
+                                // Oblique message move
+                                lDelta = height;
+                            } else if (rq.isDirectedByMessage() && rq.getObliqueMoveType().isPresent() && rq.getObliqueMoveType().get() == SequenceMessageEditPolicy.OBLIQUE_MESSAGE_MOVE_TARGET) {
+                                // Oblique message target move.
+                            }
+                        }
                     }
                 }
 
                 if ((seeRange.getLowerBound() + lDelta) <= (seeRange.getUpperBound() + uDelta)) {
                     final Range newRange = new Range(seeRange.getLowerBound() + lDelta, seeRange.getUpperBound() + uDelta);
-                    if (ise instanceof Message && !hasBothEndMoving((Message) ise)) {
-                        Message msg = (Message) ise;
+                    if (ise instanceof Message msg && !hasBothEndMoving(msg)) {
                         addMessageReconnectionCommand(self, cc, msg, newRange, request, validator, sequenceDiagram);
                     } else {
                         cc.compose(CommandFactory.createICommand(cc.getEditingDomain(), new SetVerticalRangeOperation(ise, newRange)));
@@ -468,7 +497,6 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
             AbstractNodeEventResizeSelectionValidator validator, SequenceDiagram sequenceDiagram) {
 
         Set<Execution> executionsInMove = new RequestQuery(request).getExecutions();
-        boolean invalidCommand = false;
 
         Predicate<EventEnd> filterCompoundEventEnd = new Predicate<EventEnd>() {
             @Override
@@ -479,7 +507,6 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
 
         SetMessageRangeOperation smrc = new SetMessageRangeOperation((Edge) message.getNotationView(), newRange);
 
-        Lifeline selfLifeline = self.getLifeline().get();
         Rectangle logicalDelta = new RequestQuery(request).getLogicalDelta();
         Rectangle bounds = self.getProperLogicalBounds().getCopy();
         bounds.translate(logicalDelta.getLocation());
@@ -489,7 +516,6 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
         List<ISequenceEvent> toIgnore = new ArrayList<>();
         boolean isReplyMessage = message.getKind() == Message.Kind.REPLY;
         boolean isReflective = message.isReflective();
-        ISequenceNode sourceElement = message.getSourceElement();
         ISequenceNode targetElement = message.getTargetElement();
         List<EventEnd> messageEnds = EventEndHelper.findEndsFromSemanticOrdering(message);
         if (!isReplyMessage && isReflective && Iterables.any(messageEnds, filterCompoundEventEnd) && targetElement == self) {
@@ -505,41 +531,76 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
             toIgnore.addAll(sequenceEventsUpperToInsertionTime);
         }
 
-        Option<Lifeline> srcLifeline = message.getSourceLifeline();
-        if (srcLifeline.some()) {
-            EventFinder srcFinder = new EventFinder(srcLifeline.get());
-            srcFinder.setReconnection(true);
-            srcFinder.setEventsToIgnore(Predicates.in(toIgnore));
-            srcFinder.setExpansionZone(validator.getExpansionZone());
-            ISequenceEvent finalSrc = (srcLifeline.get() == selfLifeline && sourceElement == self) ? self : srcFinder.findMostSpecificEvent(newRange);
-            Range finalSrcRange = (srcLifeline.get() == selfLifeline && sourceElement == self) ? thisFinalRange : finalSrc.getVerticalRange();
-            smrc.setSource(finalSrc.getNotationView(), new Rectangle(0, finalSrcRange.getLowerBound(), 0, finalSrcRange.width()));
-        } else {
-            Range finalSrcRange = RangeHelper.verticalRange(sourceElement.getProperLogicalBounds());
-            smrc.setSource(sourceElement.getNotationView(), new Rectangle(0, finalSrcRange.getLowerBound(), 0, finalSrcRange.width()));
-        }
-
+        boolean invalidCommand = handleSourceReconnection(self, message, newRange, validator, smrc, thisFinalRange, toIgnore);
         toIgnore.clear();
+
+        ISequenceNode sourceElement = message.getSourceElement();
         if (isReplyMessage && isReflective && Iterables.any(messageEnds, filterCompoundEventEnd) && sourceElement == self) {
-            // Avoid target of the return message of a reflexive sync call to
-            // reconnect on its execution
+            // Avoid target of the return message of a reflexive sync call to reconnect on its execution
             toIgnore.add(self);
         }
-        // if a verticalSpaceExpansion will occurs, ignore ISequenceEvent under
-        // the insertionPoint
+        // if a verticalSpaceExpansion will occurs, ignore ISequenceEvent under the insertionPoint
         if (needVerticalSpaceExpansion(validator, request)) {
             Collection<ISequenceEvent> sequenceEventsUpperToInsertionTime = getSequenceEventsUpperToInsertionTime(sequenceDiagram, validator.getExpansionZone().getLowerBound());
             sequenceEventsUpperToInsertionTime.removeAll(executionsInMove);
             toIgnore.addAll(sequenceEventsUpperToInsertionTime);
         }
 
+        invalidCommand = invalidCommand || handleTargetReconnection(self, message, newRange, validator, smrc, thisFinalRange, toIgnore);
+
+        if (invalidCommand) {
+            cc.compose(org.eclipse.gmf.runtime.common.core.command.UnexecutableCommand.INSTANCE);
+        } else {
+            cc.compose(CommandFactory.createICommand(cc.getEditingDomain(), smrc));
+        }
+
+    }
+
+    private boolean handleSourceReconnection(Execution self, Message message, Range newRange, AbstractNodeEventResizeSelectionValidator validator, SetMessageRangeOperation smrc, Range thisFinalRange,
+            List<ISequenceEvent> toIgnore) {
+        boolean invalidCommand = false;
+        Lifeline selfLifeline = self.getLifeline().get();
+        ISequenceNode sourceElement = message.getSourceElement();
+        Option<Lifeline> srcLifeline = message.getSourceLifeline();
+        if (srcLifeline.some()) {
+            EventFinder srcFinder = new EventFinder(srcLifeline.get());
+            srcFinder.setReconnection(true);
+            srcFinder.setEventsToIgnore(Predicates.in(toIgnore));
+            srcFinder.setExpansionZone(validator.getExpansionZone());
+            Range lookedRange = newRange;
+            if (message.isOblique()) {
+                lookedRange = new Range(newRange.getLowerBound(), newRange.getLowerBound());
+            }
+            ISequenceEvent finalSrc = (srcLifeline.get() == selfLifeline && sourceElement == self) ? self : srcFinder.findMostSpecificEvent(lookedRange);
+            if (finalSrc == null) {
+                invalidCommand = true;
+            } else {
+                Range finalSrcRange = (srcLifeline.get() == selfLifeline && sourceElement == self) ? thisFinalRange : finalSrc.getVerticalRange();
+                smrc.setSource(finalSrc.getNotationView(), new Rectangle(0, finalSrcRange.getLowerBound(), 0, finalSrcRange.width()));
+            }
+        } else {
+            Range finalSrcRange = RangeHelper.verticalRange(sourceElement.getProperLogicalBounds());
+            smrc.setSource(sourceElement.getNotationView(), new Rectangle(0, finalSrcRange.getLowerBound(), 0, finalSrcRange.width()));
+        }
+        return invalidCommand;
+    }
+
+    private boolean handleTargetReconnection(Execution self, Message message, Range newRange, AbstractNodeEventResizeSelectionValidator validator, SetMessageRangeOperation smrc,
+            Range thisFinalRange, List<ISequenceEvent> toIgnore) {
+        boolean invalidCommand = false;
+        ISequenceNode targetElement = message.getTargetElement();
+        Lifeline selfLifeline = self.getLifeline().get();
         Option<Lifeline> tgtLifeline = message.getTargetLifeline();
         if (tgtLifeline.some()) {
             EventFinder tgtFinder = new EventFinder(tgtLifeline.get());
             tgtFinder.setReconnection(true);
             tgtFinder.setEventsToIgnore(Predicates.in(toIgnore));
             tgtFinder.setExpansionZone(validator.getExpansionZone());
-            ISequenceEvent finalTgt = (tgtLifeline.get() == selfLifeline && targetElement == self) ? self : tgtFinder.findMostSpecificEvent(newRange);
+            Range lookedRange = newRange;
+            if (message.isOblique()) {
+                lookedRange = new Range(newRange.getUpperBound(), newRange.getUpperBound());
+            }
+            ISequenceEvent finalTgt = (tgtLifeline.get() == selfLifeline && targetElement == self) ? self : tgtFinder.findMostSpecificEvent(lookedRange);
             if (finalTgt == null) {
                 invalidCommand = true;
             } else {
@@ -550,13 +611,7 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
             Range finalTgtRange = RangeHelper.verticalRange(targetElement.getProperLogicalBounds());
             smrc.setTarget(targetElement.getNotationView(), new Rectangle(0, finalTgtRange.getLowerBound(), 0, finalTgtRange.width()));
         }
-
-        if (invalidCommand) {
-            cc.compose(org.eclipse.gmf.runtime.common.core.command.UnexecutableCommand.INSTANCE);
-        } else {
-            cc.compose(CommandFactory.createICommand(cc.getEditingDomain(), smrc));
-        }
-
+        return invalidCommand;
     }
 
     private boolean hasBothEndMoving(Message smep) {
@@ -591,9 +646,10 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
      *            the sequence event to validate if it is a reflexive message we do not want to move
      * @return the validation result of the message move.
      */
-    private boolean doNotMoveSourceOfReturnMessageOfReflexiveSyncCall(Execution self, ISequenceEvent ise, RequestQuery rq) {
-        return !(isMovedReflexiveMessage(ise, rq) && self.equals(((Message) ise).getSourceElement()) && getSelection(((Message) ise).getSourceElement()) == EditPart.SELECTED_NONE
-                && getSelection(ise) == EditPart.SELECTED_NONE);
+    private boolean doNotMoveSourceOfReturnMessageOfReflexiveSyncCall(Execution self, Message msg, RequestQuery rq, boolean isReflectiveMessage) {
+        ISequenceNode messageSource = msg.getSourceElement();
+        return !(isMovedReflexiveMessage(rq, isReflectiveMessage) && self.equals(messageSource) && getSelection(messageSource) == EditPart.SELECTED_NONE
+                && getSelection(msg) == EditPart.SELECTED_NONE);
     }
 
     /**
@@ -604,13 +660,14 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
      *            the sequence event to validate if it is a reflexive message we do not want to move
      * @return the validation result of the message move.
      */
-    private boolean doNotMoveTargetOfStartMessageOfReflexiveSyncCall(Execution self, ISequenceEvent ise, RequestQuery rq) {
-        return !(isMovedReflexiveMessage(ise, rq) && self.equals(((Message) ise).getTargetElement()) && getSelection(((Message) ise).getTargetElement()) == EditPart.SELECTED_NONE
-                && getSelection(ise) == EditPart.SELECTED_NONE);
+    private boolean doNotMoveTargetOfStartMessageOfReflexiveSyncCall(Execution self, Message msg, RequestQuery rq, boolean isReflectiveMessage) {
+        ISequenceNode messageTarget = msg.getTargetElement();
+        return !(isMovedReflexiveMessage(rq, isReflectiveMessage) && self.equals(messageTarget) && getSelection(messageTarget) == EditPart.SELECTED_NONE
+                && getSelection(msg) == EditPart.SELECTED_NONE);
     }
 
-    private boolean isMovedReflexiveMessage(ISequenceEvent ise, RequestQuery rq) {
-        return rq.isResize() && new ISequenceEventQuery(ise).isReflectiveMessage();
+    private boolean isMovedReflexiveMessage(RequestQuery rq, boolean isReflectiveMessage) {
+        return rq.isResize() && isReflectiveMessage;
     }
 
     /*
@@ -719,7 +776,9 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
             if (delimitingMessages.size() > 0) {
                 ISequenceEvent callMessage = delimitingMessages.get(0);
                 Range callMsgRange = callMessage.getVerticalRange();
-                if (request.isConstrainedMove()) {
+                RequestQuery requestQuery = new RequestQuery(request);
+                Optional<Integer> obliqueMoveType = requestQuery.getObliqueMoveType();
+                if (request.isConstrainedMove() && (!obliqueMoveType.isPresent() || obliqueMoveType.get().intValue() == SequenceMessageEditPolicy.OBLIQUE_MESSAGE_MOVE_TARGET)) {
                     fullFinalRange = new Range(oldRange.getLowerBound() - callMsgRange.width(), fullFinalRange.getUpperBound());
                 } else {
                     fullFinalRange = new Range(fullFinalRange.getLowerBound() - callMsgRange.width(), fullFinalRange.getUpperBound());

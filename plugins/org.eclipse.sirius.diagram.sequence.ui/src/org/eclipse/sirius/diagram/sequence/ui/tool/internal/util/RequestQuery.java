@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -250,6 +251,20 @@ public class RequestQuery extends org.eclipse.sirius.diagram.ui.business.interna
     public boolean isDirectedByMessage() {
         Object object = request.getExtendedData().get(SequenceMessageEditPolicy.REQUEST_FROM_SEQUENCE_MESSAGE_EDIT_POLICY);
         return object instanceof Boolean && Boolean.TRUE.equals(object);
+    }
+    
+    /**
+     * Request created from SequenceMessageEditPolicy.
+     * 
+     * @return the oblique message type.
+     */
+    public Optional<Integer> getObliqueMoveType() {
+        Object object = request.getExtendedData().get(SequenceMessageEditPolicy.REQUEST_FROM_SEQUENCE_MESSAGE_EDIT_POLICY_OBLIQUE_MOVE_TYPE);
+        if (object instanceof Integer i) {
+            return Optional.ofNullable(i);
+        } else {
+            return Optional.empty();
+        }
     }
 
     public Map getExtendedData() {
