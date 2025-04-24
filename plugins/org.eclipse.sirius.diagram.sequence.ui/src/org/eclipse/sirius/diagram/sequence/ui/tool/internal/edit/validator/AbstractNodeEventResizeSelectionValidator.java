@@ -37,6 +37,7 @@ import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
 import org.eclipse.sirius.diagram.sequence.ui.Messages;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionEditPart;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceMessageEditPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.FinalParentHelper;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 import org.eclipse.sirius.ext.base.Option;
@@ -277,6 +278,8 @@ public class AbstractNodeEventResizeSelectionValidator {
             result = result && respectLowRangeMarginOfParent(startMessageRemote, callMessage, newRange) && respectUpperRangeMarginOfParent(startMessageRemote, returnMessage, newRange);
 
         } else if (delimitingMessages.size() == 1) {
+            Message msg = delimitingMessages.get(0);
+
             List<EventEnd> ends = EventEndHelper.findEndsFromSemanticOrdering(self.getISequenceEvent());
             SingleEventEnd delimitedSee = getDelimitedSingleEventEnd(self, ends);
 
@@ -291,7 +294,6 @@ public class AbstractNodeEventResizeSelectionValidator {
                 delimitedDeltaY = delimitedSee.isStart() ? deltaYStart : deltaYFinish;
 
                 if (requestQuery.isDirectedByMessage()) {
-                    Message msg = delimitingMessages.get(0);
                     if (delimitedSee.isStart() && requestQuery.isResizeFromTop() && msg.isReflective()) {
                         delimitedDeltaH = delimitedDeltaY;
                         delimitedDeltaY = 0;
@@ -303,14 +305,11 @@ public class AbstractNodeEventResizeSelectionValidator {
                 }
             }
 
-            ISequenceEvent prevMessageRemote = FinalParentHelper.getFinalRemoteParent(abstractNodeEvent, delimitingMessages.get(0), 0, 0);
-            ISequenceEvent delimitingMessageRemote = FinalParentHelper.getFinalRemoteParent(abstractNodeEvent, delimitingMessages.get(0), delimitedDeltaY, delimitedDeltaH);
-            result = prevMessageRemote == delimitingMessageRemote;
-
-            // prevMessageRemote == delimitingMessageRemote
-            Message callMessage = delimitingMessages.get(0);
-            result = result && respectLowRangeMarginOfParent(prevMessageRemote, callMessage, newRange);
-
+            ISequenceEvent prevMessageRemote = FinalParentHelper.getFinalRemoteParent(abstractNodeEvent, msg, 0, 0);
+            ISequenceEvent delimitingMessageRemote = FinalParentHelper.getFinalRemoteParent(abstractNodeEvent, msg, delimitedDeltaY, delimitedDeltaH);
+            result = delimitingMessageRemote != null;
+            result = result && respectLowRangeMarginOfParent(prevMessageRemote, msg, newRange);
+            result = result && prevMessageRemote != delimitingMessageRemote ? respectLowRangeMarginOfParent(delimitingMessageRemote, msg, newRange) : true;
         }
         return result;
     }
@@ -481,43 +480,55 @@ public class AbstractNodeEventResizeSelectionValidator {
             Function<ISequenceEvent, Range> futureRangeFunction = new Function<ISequenceEvent, Range>() {
                 @Override
                 public Range apply(ISequenceEvent from) {
-                    Range verticalRange = from.getVerticalRange();
-                    if (host.equals(from)) {
-                        verticalRange = finalRange;
-                    } else if (startMessage.some() && startMessage.get().equals(from)) {
-                        if (!startMessage.get().isReflective()) {
-                            verticalRange = new Range(finalRange.getLowerBound(), finalRange.getLowerBound());
-                        } else if (requestQuery.isResizeFromTop()) {
-                            if (requestQuery.isDirectedByMessage()) {
-                                verticalRange = new Range(verticalRange.getLowerBound(), verticalRange.getUpperBound() + requestQuery.getLogicalDelta().y);
-                            } else {
-                                // reflexive and resized -> moved message
-                                verticalRange = verticalRange.shifted(requestQuery.getLogicalDelta().y);
-                            }
-                        }
-                    } else if (endMessage.some() && endMessage.get().equals(from)) {
-                        if (!endMessage.get().isReflective()) {
-                            verticalRange = new Range(finalRange.getUpperBound(), finalRange.getUpperBound());
-                        } else if (requestQuery.isResizeFromBottom()) {
-                            if (requestQuery.isDirectedByMessage()) {
-                                verticalRange = new Range(verticalRange.getLowerBound() + requestQuery.getLogicalDelta().height, verticalRange.getUpperBound());
-                            } else { // reflexive and resized -> moved message
-                                verticalRange = verticalRange.shifted(requestQuery.getLogicalDelta().height);
-                            }
-                        }
-                    } else if (from instanceof Operand && from.equals(host.getParentEvent())) {
-                        // The parent Operand will be resized.
-                        verticalRange = finalRange.grown(LayoutConstants.EXECUTION_CHILDREN_MARGIN).union(verticalRange);
-                    } else if (from instanceof CombinedFragment && host.getParentEvent() != null && from.equals(host.getParentEvent().getParentEvent())) {
-                        // The grand parent CombinedFragment will be resized.
-                        verticalRange = finalRange.shifted(-LayoutConstants.COMBINED_FRAGMENT_TITLE_HEIGHT - LayoutConstants.EXECUTION_CHILDREN_MARGIN).union(verticalRange);
-                    }
-                    return verticalRange;
+                    return getFutureRange(startMessage, endMessage, finalRange, from);
                 }
             };
             invalidPositions.addAll(new PositionsChecker(host.getDiagram(), futureRangeFunction).getInvalidPositions());
             safeMove = invalidPositions.isEmpty();
         }
         return safeMove;
+    }
+
+    private Range getFutureRange(final Option<Message> startMessage, final Option<Message> endMessage, final Range finalRange, ISequenceEvent from) {
+        Range verticalRange = from.getVerticalRange();
+        if (host.equals(from)) {
+            verticalRange = finalRange;
+        } else if (startMessage.some() && startMessage.get().equals(from)) {
+            boolean reflexiveStart = startMessage.get().isReflective();
+            boolean obliqueStart = startMessage.get().isOblique();
+            if (!reflexiveStart && !obliqueStart) {
+                verticalRange = new Range(finalRange.getLowerBound(), finalRange.getLowerBound());
+            } else if (requestQuery.isResizeFromTop()) {
+                boolean isReflexiveMoveDirectedByMessage = reflexiveStart && requestQuery.isDirectedByMessage();
+                boolean isObliqueMoveRirectedByTargetSegment = obliqueStart && requestQuery.isDirectedByMessage() && requestQuery.getObliqueMoveType().isPresent()
+                        && requestQuery.getObliqueMoveType().get() == SequenceMessageEditPolicy.OBLIQUE_MESSAGE_MOVE_TARGET;
+                if (isReflexiveMoveDirectedByMessage || isObliqueMoveRirectedByTargetSegment) {
+                    int validAdditionalDelta = verticalRange.getLowerBound() > verticalRange.getUpperBound() + requestQuery.getLogicalDelta().y ? 0 : requestQuery.getLogicalDelta().y; 
+                    verticalRange = new Range(verticalRange.getLowerBound(), verticalRange.getUpperBound() + validAdditionalDelta);
+                } else { // reflexive or oblique, and resized -> moved message
+                    verticalRange = verticalRange.shifted(requestQuery.getLogicalDelta().y);
+                }
+            }
+        } else if (endMessage.some() && endMessage.get().equals(from)) {
+            boolean reflexiveEnd = endMessage.get().isReflective();
+            boolean obliqueEnd = endMessage.get().isOblique();
+            if (!reflexiveEnd && !obliqueEnd) {
+                verticalRange = new Range(finalRange.getUpperBound(), finalRange.getUpperBound());
+            } else if (requestQuery.isResizeFromBottom()) {
+                if (reflexiveEnd && requestQuery.isDirectedByMessage()) {
+                    int validAdditionalDelta = verticalRange.getLowerBound() + requestQuery.getLogicalDelta().height > verticalRange.getUpperBound() ? 0 : requestQuery.getLogicalDelta().height;
+                    verticalRange = new Range(verticalRange.getLowerBound() + validAdditionalDelta, verticalRange.getUpperBound());
+                } else { // reflexive and resized -> moved message
+                    verticalRange = verticalRange.shifted(requestQuery.getLogicalDelta().height);
+                }
+            }
+        } else if (from instanceof Operand && from.equals(host.getParentEvent())) {
+            // The parent Operand will be resized.
+            verticalRange = finalRange.grown(LayoutConstants.EXECUTION_CHILDREN_MARGIN).union(verticalRange);
+        } else if (from instanceof CombinedFragment && host.getParentEvent() != null && from.equals(host.getParentEvent().getParentEvent())) {
+            // The grand parent CombinedFragment will be resized.
+            verticalRange = finalRange.shifted(-LayoutConstants.COMBINED_FRAGMENT_TITLE_HEIGHT - LayoutConstants.EXECUTION_CHILDREN_MARGIN).union(verticalRange);
+        }
+        return verticalRange;
     }
 }

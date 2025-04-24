@@ -85,11 +85,9 @@ public class SequenceObservationLayout extends AbstractSequenceLayout<Observatio
                 Point refPoint = null;
                 ObservationPoint observationPoint = endToObservationPoint.get(eventEnd);
                 if (observationPoint != null) {
-                    if (eventEnd instanceof SingleEventEnd) {
-                        SingleEventEnd see = (SingleEventEnd) eventEnd;
-                        if (ise instanceof Message) {
-                            Message msg = (Message) ise;
-                            if (msg.isReflective()) {
+                    if (eventEnd instanceof SingleEventEnd see) {
+                        if (ise instanceof Message msg) {
+                            if (msg.isReflective() || msg.isOblique()) {
                                 refPoint = see.isStart() ? bounds.getTopLeft().getCopy() : bounds.getBottomRight().getCopy();
                             } else {
                                 refPoint = see.isStart() ? bounds.getTopLeft().getCopy() : bounds.getBottomRight().getCopy();

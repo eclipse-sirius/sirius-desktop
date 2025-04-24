@@ -266,13 +266,13 @@ public class ISEComplexMoveCommandBuilder {
 
             // check source change
             ISequenceNode sourceElement = message.getSourceElement();
-            ISequenceNode newSource = getNewReconnectionEnd(message, sourceElement);
+            ISequenceNode newSource = getNewReconnectionEnd(message, sourceElement, true);
 
             // check target change
             ISequenceNode targetElement = message.getTargetElement();
             ISequenceNode newTarget = targetElement;
             if (targetElement instanceof ISequenceEvent) {
-                newTarget = getNewReconnectionEnd(message, targetElement);
+                newTarget = getNewReconnectionEnd(message, targetElement, false);
             }
 
             if (!sourceElement.equals(newSource) || !targetElement.equals(newTarget)) {
@@ -301,7 +301,7 @@ public class ISEComplexMoveCommandBuilder {
         return potentialParent;
     }
 
-    private ISequenceNode getNewReconnectionEnd(Message message, ISequenceNode actualEnd) {
+    private ISequenceNode getNewReconnectionEnd(Message message, ISequenceNode actualEnd, boolean source) {
         boolean compoundEnds = false;
         if (message.isReflective() && actualEnd instanceof Execution) {
             Execution exec = (Execution) actualEnd;
@@ -318,7 +318,16 @@ public class ISEComplexMoveCommandBuilder {
             Range lookedRange = validator.getRangeFunction().apply(message);
             newEndFinder.setVerticalRangefunction(validator.getRangeFunction());
 
-            ISequenceEvent potentialEnd = newEndFinder.findMostSpecificEvent(lookedRange);
+            ISequenceEvent potentialEnd;
+            if (message.isOblique()) {
+                if (source) {
+                    potentialEnd = newEndFinder.findMostSpecificEvent(new Range(lookedRange.getLowerBound(), lookedRange.getLowerBound()));
+                } else {
+                    potentialEnd = newEndFinder.findMostSpecificEvent(new Range(lookedRange.getUpperBound(), lookedRange.getUpperBound()));
+                }
+            } else {
+                potentialEnd = newEndFinder.findMostSpecificEvent(lookedRange);
+            }
             if (potentialEnd instanceof ISequenceNode) {
                 return (ISequenceNode) potentialEnd;
             }

@@ -132,6 +132,16 @@ public final class LayoutConstants {
     public static final int DEFAULT_EXECUTION_WIDTH = 2 * UNIT;
 
     /**
+     * How much space there is between bendpoints of an oblique message.
+     */
+    public static final int DEFAULT_MESSAGE_OBLIQUE_HEIGHT_PACKING = 5;
+
+    /**
+     * The default minimal delta between source and target of an oblique message.
+     */
+    public static final int DEFAULT_MESSAGE_MIN_OBLIQUE_HEIGHT = 5;
+
+    /**
      * How much space there is between bendpoints of a message to self.
      */
     public static final int MESSAGE_TO_SELF_BENDPOINT_VERTICAL_GAP = UNIT;

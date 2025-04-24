@@ -139,7 +139,7 @@ public final class EndOfLifeOperations {
         int lastMessageInTargetInstanceRole = Integer.MIN_VALUE;
         Range occupiedRange = lifelineEditPart.getISequenceEvent().getOccupiedRange();
         if (!occupiedRange.isEmpty()) {
-            // limite the move to the first sequence event of the target
+            // limit the move to the first sequence event of the target
             // lifeline
             lastMessageInTargetInstanceRole = occupiedRange.getUpperBound() + LayoutConstants.EXECUTION_CHILDREN_MARGIN;
         }

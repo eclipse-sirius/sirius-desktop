@@ -92,9 +92,9 @@ public class PositionsChecker {
                 }
             } else if (ise instanceof Operand) {
                 positions.add(futureLowerBound);
-            } else if (ise instanceof Message) {
+            } else if (ise instanceof Message msg) {
                 positions.add(futureLowerBound);
-                if (((Message) ise).isReflective()) {
+                if (msg.isReflective() || msg.isOblique()) {
                     positions.add(futureUpperBound);
                 }
             } else if (ise instanceof State && ise.isLogicallyInstantaneous()) {
