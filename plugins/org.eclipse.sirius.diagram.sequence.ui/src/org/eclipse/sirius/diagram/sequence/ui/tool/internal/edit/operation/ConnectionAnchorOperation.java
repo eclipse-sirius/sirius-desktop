@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,7 +15,6 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation;
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
-import org.eclipse.gef.EditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.requests.CreateConnectionRequest;
 import org.eclipse.gef.requests.DropRequest;
@@ -115,13 +114,10 @@ public final class ConnectionAnchorOperation {
             return;
         } else if (request.getLocation() != null) {
             Object sourceLocation = ViewLocationHint.getInstance().getData(ViewLocationHint.SOURCE_ANCHOR_LOCATION);
-            if (sourceLocation instanceof Point && request instanceof CreateConnectionRequest) {
-                EditPart sourceEP = ((CreateConnectionRequest) request).getSourceEditPart();
-                EditPart targetEP = ((CreateConnectionRequest) request).getTargetEditPart();
+            if (sourceLocation instanceof Point && request instanceof CreateConnectionRequest createRequest) {
                 Point sourceLocationPoint = ((Point) sourceLocation).getCopy();
-                if (!sourceEP.equals(targetEP)) {
-                    request.getLocation().setY(sourceLocationPoint.y);
-                } else if (request.getLocation().y <= sourceLocationPoint.y) {
+                // Adjust the location if the target's Y is lower than the source's Y, which would render an invalid message.
+                if (request.getLocation().y <= sourceLocationPoint.y) {
                     request.getLocation().setY(sourceLocationPoint.y);
                 }
             }
