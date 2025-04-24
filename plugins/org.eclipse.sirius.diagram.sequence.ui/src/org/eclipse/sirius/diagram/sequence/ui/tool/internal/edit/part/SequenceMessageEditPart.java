@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -50,6 +50,11 @@ public class SequenceMessageEditPart extends DEdgeEditPart implements ISequenceE
      * id for extended meta data.
      */
     public static final String MSG_TO_SELF_TOP_MOVE = "messageToSelfTopMove"; //$NON-NLS-1$
+
+    /**
+     * id for extended meta data.
+     */
+    public static final String MSG_OBLIQUE_CBR_INITAL_CLICK = "messageObliqueChangeBoundsRequestInitialClick"; //$NON-NLS-1$
 
     /**
      * The global router for all the messages.

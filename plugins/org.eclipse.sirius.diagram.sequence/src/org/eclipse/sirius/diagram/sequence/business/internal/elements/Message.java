@@ -204,7 +204,11 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
 
     @Override
     public boolean isLogicallyInstantaneous() {
-        return !isReflective();
+        return !(isReflective() || isOblique()); 
+    }
+
+    public boolean isOblique() {
+        return new SequenceMessageViewQuery(getNotationEdge()).isOblique();
     }
 
     @Override
