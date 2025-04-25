@@ -89,7 +89,7 @@ public class SequenceObservationLayout extends AbstractSequenceLayout<Observatio
                         SingleEventEnd see = (SingleEventEnd) eventEnd;
                         if (ise instanceof Message) {
                             Message msg = (Message) ise;
-                            if (msg.isReflective()) {
+                            if (msg.isReflective() || msg.isOblique()) {
                                 refPoint = see.isStart() ? bounds.getTopLeft().getCopy() : bounds.getBottomRight().getCopy();
                             } else {
                                 refPoint = see.isStart() ? bounds.getTopLeft().getCopy() : bounds.getBottomRight().getCopy();

@@ -19,6 +19,8 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.model.business.internal.query.IEdgeMappingQuery;
 import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.VerticalRangeFunction;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
@@ -63,6 +65,10 @@ public class SequenceMessageViewQuery {
         Option<Node> optSource = getSourceLifeline();
         Option<Node> optTarget = getTargetLifeline();
         return optSource.some() && optTarget.some() && optSource.get() == optTarget.get();
+    }
+
+    public boolean isOblique() {
+        return edge.getElement() instanceof DEdge edge && new IEdgeMappingQuery(edge.getActualMapping()).getEdgeMapping().get().getName().endsWith("_Oblique"); //$NON-NLS-1$
     }
 
     /**
@@ -314,6 +320,6 @@ public class SequenceMessageViewQuery {
     }
 
     private boolean isLogicallyInstantaneous() {
-        return !isReflective();
+        return !(isReflective() || isOblique());
     }
 }
