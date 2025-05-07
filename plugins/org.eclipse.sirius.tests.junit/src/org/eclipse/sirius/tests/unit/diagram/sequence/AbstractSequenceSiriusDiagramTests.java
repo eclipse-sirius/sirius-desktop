@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ package org.eclipse.sirius.tests.unit.diagram.sequence;
 
 import java.io.IOException;
 import java.util.Collection;
+import java.util.Objects;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.draw2d.Polyline;
@@ -58,8 +59,6 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.junit.Assert;
-
-import com.google.common.base.Objects;
 
 public abstract class AbstractSequenceSiriusDiagramTests extends SiriusDiagramTestCase {
 
@@ -216,7 +215,7 @@ public abstract class AbstractSequenceSiriusDiagramTests extends SiriusDiagramTe
 
     protected Option<Lifeline> getLifelineByName(Collection<Lifeline> lifelines, String name) {
         for (Lifeline lifeline : lifelines) {
-            if (Objects.equal(getLifelineSemanticName(lifeline), name)) {
+            if (Objects.equals(getLifelineSemanticName(lifeline), name)) {
                 return Options.newSome(lifeline);
             }
         }
@@ -238,7 +237,7 @@ public abstract class AbstractSequenceSiriusDiagramTests extends SiriusDiagramTe
 
     protected Option<Message> getMessageByName(Collection<Message> messages, String name) {
         for (Message message : messages) {
-            if (Objects.equal(getMessageSemanticName(message), name)) {
+            if (Objects.equals(getMessageSemanticName(message), name)) {
                 return Options.newSome(message);
             }
         }
@@ -260,7 +259,7 @@ public abstract class AbstractSequenceSiriusDiagramTests extends SiriusDiagramTe
 
     protected Option<InteractionUse> getInteractionUseByName(Collection<InteractionUse> ius, String name) {
         for (InteractionUse iu : ius) {
-            if (Objects.equal(getInteractionUseSemanticName(iu), name)) {
+            if (Objects.equals(getInteractionUseSemanticName(iu), name)) {
                 return Options.newSome(iu);
             }
         }
@@ -282,7 +281,7 @@ public abstract class AbstractSequenceSiriusDiagramTests extends SiriusDiagramTe
 
     protected Option<CombinedFragment> getCombinedFragmentByName(Collection<CombinedFragment> cfs, String name) {
         for (CombinedFragment cf : cfs) {
-            if (Objects.equal(getCombinedFragmentSemanticName(cf), name)) {
+            if (Objects.equals(getCombinedFragmentSemanticName(cf), name)) {
                 return Options.newSome(cf);
             }
         }
@@ -304,7 +303,7 @@ public abstract class AbstractSequenceSiriusDiagramTests extends SiriusDiagramTe
 
     protected Option<Execution> getExecutionByName(Collection<Execution> executions, String name) {
         for (Execution execution : executions) {
-            if (Objects.equal(getExecutionSemanticName(execution), name)) {
+            if (Objects.equals(getExecutionSemanticName(execution), name)) {
                 return Options.newSome(execution);
             }
         }
@@ -326,7 +325,7 @@ public abstract class AbstractSequenceSiriusDiagramTests extends SiriusDiagramTe
 
     protected Option<State> getStateByName(Collection<State> states, String name) {
         for (State state : states) {
-            if (Objects.equal(getStateSemanticName(state), name)) {
+            if (Objects.equals(getStateSemanticName(state), name)) {
                 return Options.newSome(state);
             }
         }
@@ -348,7 +347,7 @@ public abstract class AbstractSequenceSiriusDiagramTests extends SiriusDiagramTe
 
     protected Option<Operand> getOperandByName(Collection<Operand> operands, String name) {
         for (Operand operand : operands) {
-            if (Objects.equal(getOperandSemanticName(operand), name)) {
+            if (Objects.equals(getOperandSemanticName(operand), name)) {
                 return Options.newSome(operand);
             }
         }
