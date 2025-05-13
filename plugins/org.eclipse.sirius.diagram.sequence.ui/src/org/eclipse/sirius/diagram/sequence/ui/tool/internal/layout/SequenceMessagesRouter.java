@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.WeakHashMap;
 
 import org.eclipse.draw2d.AbsoluteBendpoint;
@@ -30,7 +31,6 @@ import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.EndOfLifeEditPart;
@@ -95,8 +95,9 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
             part = ((AbstractDiagramEdgeEditPart.ViewEdgeFigure) conn).getEditPart();
         }
 
+        boolean isObliqueMessage = isObliqueMessage(part);
         boolean isReflexiveMessage = isReflectiveMessage(part);
-        List<Bendpoint> bendpoints = getRefreshedConstraint(conn, isReflexiveMessage);
+        List<Bendpoint> bendpoints = getRefreshedConstraint(conn, isReflexiveMessage, isObliqueMessage);
 
         Point sourceRef = getReferencePoint(conn, true, bendpoints);
         Point targetRef = getReferencePoint(conn, false, bendpoints);
@@ -121,13 +122,10 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
             Point thirdPoint = targetRef.getCopy();
             double zoom = part == null ? 1.0 : GraphicalHelper.getZoom(part);
 
-            int hGap = LayoutConstants.MESSAGE_TO_SELF_BENDPOINT_HORIZONTAL_GAP;
-            if (part instanceof SequenceMessageEditPart) {
-                Message msg = (Message) ((SequenceMessageEditPart) part).getISequenceEvent();
-                if (isReflexiveMessage) {
-                    hGap = msg.getReflexiveMessageWidth();
-                }
-            }
+            int hGap = getMessageFromPart(part)
+                    .filter(msg -> isReflexiveMessage)
+                    .map(Message::getReflexiveMessageWidth)
+                    .orElse(LayoutConstants.MESSAGE_TO_SELF_BENDPOINT_HORIZONTAL_GAP);
 
             secondPoint.setX(Math.max(sourceRef.x, targetRef.x) + (int) (hGap * zoom));
             thirdPoint.setX(secondPoint.x);
@@ -192,16 +190,24 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
         anchor.getOwner().getParent().translateToAbsolute(ownerBounds);
         return ownerBounds;
     }
-
-    private boolean isReflectiveMessage(IGraphicalEditPart part) {
-        if (part instanceof SequenceMessageEditPart) {
-            ISequenceEvent ise = ((SequenceMessageEditPart) part).getISequenceEvent();
-            return ise instanceof Message && ((Message) ise).isReflective();
+    
+    private static Optional<Message> getMessageFromPart(IGraphicalEditPart part) {
+        Optional<Message> optMsg = Optional.empty();
+        if (part instanceof SequenceMessageEditPart isePart && isePart.getISequenceEvent() instanceof Message msg) {
+            return Optional.of(msg);
         }
-        return false;
+        return optMsg;
     }
 
-    private List<Bendpoint> getRefreshedConstraint(Connection conn, boolean isReflectiveMessage) {
+    private boolean isObliqueMessage(IGraphicalEditPart part) {
+        return getMessageFromPart(part).map(Message::isOblique).orElse(false);
+    }
+    
+    private boolean isReflectiveMessage(IGraphicalEditPart part) {
+        return getMessageFromPart(part).map(Message::isReflective).orElse(false);
+    }
+
+    private List<Bendpoint> getRefreshedConstraint(Connection conn, boolean isReflectiveMessage, boolean isObliqueMessage) {
         boolean noBendpointsAtbeginning = false;
         @SuppressWarnings("unchecked")
         List<Bendpoint> bendpoints = (List<Bendpoint>) getConstraint(conn);
@@ -209,7 +215,7 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
             noBendpointsAtbeginning = true;
             bendpoints = Collections.emptyList();
         }
-        refreshBendpoints(bendpoints, conn, isReflectiveMessage);
+        refreshBendpoints(bendpoints, conn, isReflectiveMessage, isObliqueMessage);
 
         if (!(noBendpointsAtbeginning && Collections.emptyList().equals(bendpoints))) {
             // There is no need to set constraint if there is no bendpoints at
@@ -227,7 +233,7 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
         return anchor != null && anchor.getOwner() != null;
     }
 
-    private void refreshBendpoints(List<Bendpoint> bendpoints, Connection conn, boolean isReflexiveMessage) {
+    private void refreshBendpoints(List<Bendpoint> bendpoints, Connection conn, boolean isReflexiveMessage, boolean isObliqueMessage) {
 
         IGraphicalEditPart part = null;
         if (conn instanceof AbstractDiagramEdgeEditPart.ViewEdgeFigure) {
@@ -246,6 +252,14 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
                     // bendpoint
                     align4BendpointsOfMessageToSelf(bendpoints, conn);
                 }
+            } else if (isObliqueMessage) {
+                Bendpoint cursorReference = bendpoints.get(1);
+                MessageBendpoints bendpointsObliqueMessage = refreshBendpointsForObliqueMessage(bendpoints, cursorReference);
+                
+                bendpoints.clear();
+                bendpoints.add(bendpointsObliqueMessage.start);
+                bendpoints.add(cursorReference);
+                bendpoints.add(bendpointsObliqueMessage.finish);
             } else {
                 /*
                  * The only case where we have more than two bendpoints is when the user has dragged a connection, which
@@ -292,11 +306,26 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
 
                 bendpoints.add(newStart);
                 // Ensure the message is horizontal.
-                newEnd.getLocation().setY(newStart.getLocation().y);
+//                newEnd.getLocation().setY(newStart.getLocation().y);
                 bendpoints.add(newEnd);
             }
         }
     }
+
+    private MessageBendpoints refreshBendpointsForObliqueMessage(List<Bendpoint> bendpoints, Bendpoint cursorReference) {
+        Bendpoint start = bendpoints.get(0);
+        Bendpoint finish = bendpoints.get(bendpoints.size() - 1);
+
+        int deltaStartFinish = finish.getLocation().y - start.getLocation().y;
+        Point preciseStart = new PrecisionPoint(start.getLocation().x, cursorReference.getLocation().y);
+        Bendpoint newStart = new AbsoluteBendpoint(preciseStart);
+
+        Point preciseFinish = new PrecisionPoint(finish.getLocation().x, cursorReference.getLocation().y + deltaStartFinish);
+        Bendpoint newFinish = new AbsoluteBendpoint(preciseFinish);
+        return new MessageBendpoints(newStart, newFinish);
+    }
+
+    private record MessageBendpoints(Bendpoint start, Bendpoint finish) { }
 
     /**
      * Having a connection with 5 bendpoints means that we are working on a message to self. We will compare the
