@@ -100,9 +100,9 @@ public class RefreshLayoutCommand extends RecordingCommand {
         IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(sequenceDDiagram);
         if (permissionAuthority != null && permissionAuthority.canEditInstance(sequenceDDiagram)) {
             sequenceDiagram.useCache(true);
-            CacheHelper.clearCaches();
+//            CacheHelper.clearCaches();
             CacheHelper.setStructuralCacheEnabled(true);
-            CacheHelper.setVerticalRangeCacheEnabled(false);
+            CacheHelper.setVerticalRangeCacheEnabled(true);
             try {
                 /*
                  * Everything has been committed, so we should be in a stable state where it is safe to refresh both
