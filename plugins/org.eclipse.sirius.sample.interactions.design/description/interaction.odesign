@@ -58,7 +58,23 @@
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
-        <edgeMappings xsi:type="description_1:BasicMessageMapping" name="Feature Access Message" deletionDescription="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.3/@ownedTools[name='Delete%20Message']" labelDirectEdit="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.3/@ownedTools[name='Edit%20Message']" semanticCandidatesExpression="feature:messages" semanticElements="service:getMessageAssociatedElements" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline'] //@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution'] //@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Lost%20Message%20End']" targetMapping="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline'] //@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution'] //@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Lost%20Message%20End']" targetFinderExpression="service:getReceivingContext" sourceFinderExpression="service:getSendingContext" domainClass="interactions.FeatureAccessMessage" useDomainElement="true" sendingEndFinderExpression="feature:sendingEnd" receivingEndFinderExpression="feature:receivingEnd">
+        <edgeMappings xsi:type="description_1:BasicMessageMapping" name="Feature Access Message_Oblique" preconditionExpression="aql:self.name.startsWith('oblique_')" deletionDescription="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.3/@ownedTools[name='Delete%20Message']" labelDirectEdit="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.3/@ownedTools[name='Edit%20Message']" semanticCandidatesExpression="feature:messages" semanticElements="service:getMessageAssociatedElements" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline'] //@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution'] //@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Lost%20Message%20End']" targetMapping="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline'] //@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution'] //@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Lost%20Message%20End']" targetFinderExpression="service:getReceivingContext" sourceFinderExpression="service:getSendingContext" domainClass="interactions.FeatureAccessMessage" useDomainElement="true" sendingEndFinderExpression="feature:sendingEnd" receivingEndFinderExpression="feature:receivingEnd">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="feature:name">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+          <conditionnalStyles predicateExpression="feature:isWrite">
+            <style sizeComputationExpression="2">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+              <centerLabelStyleDescription showIcon="false" labelExpression="feature:name">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+        </edgeMappings>
+        <edgeMappings xsi:type="description_1:BasicMessageMapping" name="Feature Access Message" preconditionExpression="aql:not self.name.startsWith('oblique_')" deletionDescription="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.3/@ownedTools[name='Delete%20Message']" labelDirectEdit="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.3/@ownedTools[name='Edit%20Message']" semanticCandidatesExpression="feature:messages" semanticElements="service:getMessageAssociatedElements" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline'] //@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution'] //@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Lost%20Message%20End']" targetMapping="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline'] //@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution'] //@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Lost%20Message%20End']" targetFinderExpression="service:getReceivingContext" sourceFinderExpression="service:getSendingContext" domainClass="interactions.FeatureAccessMessage" useDomainElement="true" sendingEndFinderExpression="feature:sendingEnd" receivingEndFinderExpression="feature:receivingEnd">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="feature:name">
@@ -612,6 +628,60 @@
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newMessage">
                     <subModelOperations xsi:type="tool_1:ExternalJavaActionCall" name="Adjust new write message position" action="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.6/@ownedTools[name='Reorder%20Executions%2C%20States%20Messages%2C%20InteractionUses']/@onEventMovedOperation/@firstModelOperations/@subModelOperations.3/@subModelOperations.2"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'m' + self.eContainerOrSelf(interactions::Interaction).messages->size()"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:sendingEnd">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'send_' + self.message.name"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:receivingEnd">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'receive_' + self.message.name"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+              <startingEndPredecessor name="startingEndPredecessor"/>
+              <finishingEndPredecessor name="finishingEndPredecessor"/>
+            </tools>
+            <tools xsi:type="tool:MessageCreationTool" name="Write_Oblique" edgeMappings="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@edgeMappings[name='Feature%20Access%20Message']">
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable name="sourceView"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source.eContainer(interactions::Interaction)">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Show variables" id="org.eclipse.sirius.business.api.action.printVariables">
+                    <parameters name="title" value="Write Feature Message Creation"/>
+                    <parameters name="enabled" value="aql:false"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.FeatureAccessMessage" referenceName="messages" variableName="newMessage">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="aql:target.currentParticipant().type.eStructuralFeatures->first()"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="isWrite" valueExpression="aql:true"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.MessageEnd" referenceName="ends" variableName="sendingEnd">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="message" valueExpression="var:newMessage"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="context" valueExpression="service:source.currentParticipant"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.MessageEnd" referenceName="ends" variableName="receivingEnd">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="message" valueExpression="var:newMessage"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="context" valueExpression="service:target.currentParticipant"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newMessage">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="sendingEnd" valueExpression="var:sendingEnd"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="receivingEnd" valueExpression="var:receivingEnd"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move receivingEnd" icon="" id="org.eclipse.sirius.business.api.action.moveElement">
+                    <parameters name="referenceOwner" value="var:self"/>
+                    <parameters name="referenceName" value="ends"/>
+                    <parameters name="element" value="var:receivingEnd"/>
+                    <parameters name="predecessor" value="aql:finishingEndPredecessor.semanticEnd"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move sendingEnd" icon="" id="org.eclipse.sirius.business.api.action.moveElement">
+                    <parameters name="referenceOwner" value="var:self"/>
+                    <parameters name="referenceName" value="ends"/>
+                    <parameters name="element" value="var:sendingEnd"/>
+                    <parameters name="predecessor" value="aql:startingEndPredecessor.semanticEnd"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newMessage">
+                    <subModelOperations xsi:type="tool_1:ExternalJavaActionCall" name="Adjust new write message position" action="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.6/@ownedTools[name='Reorder%20Executions%2C%20States%20Messages%2C%20InteractionUses']/@onEventMovedOperation/@firstModelOperations/@subModelOperations.3/@subModelOperations.2"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'oblique_' + self.eContainerOrSelf(interactions::Interaction).messages->size()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:sendingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'send_' + self.message.name"/>
