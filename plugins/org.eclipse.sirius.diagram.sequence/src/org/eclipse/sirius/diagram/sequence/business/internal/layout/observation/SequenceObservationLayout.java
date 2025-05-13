@@ -77,7 +77,8 @@ public class SequenceObservationLayout extends AbstractSequenceLayout<Observatio
             return computedLayout;
         }
 
-        for (ISequenceEvent ise : sequenceDiagram.getAllDelimitedSequenceEvents()) {
+        Iterable<? extends ISequenceEvent> sequenceEvents = sequenceDiagram.getAllDelimitedSequenceEvents();
+        for (ISequenceEvent ise : sequenceEvents) {
             Rectangle bounds = ise.getProperLogicalBounds();
 
             List<EventEnd> foundEnds = sequenceDiagram.findEnds(ise);
@@ -85,10 +86,8 @@ public class SequenceObservationLayout extends AbstractSequenceLayout<Observatio
                 Point refPoint = null;
                 ObservationPoint observationPoint = endToObservationPoint.get(eventEnd);
                 if (observationPoint != null) {
-                    if (eventEnd instanceof SingleEventEnd) {
-                        SingleEventEnd see = (SingleEventEnd) eventEnd;
-                        if (ise instanceof Message) {
-                            Message msg = (Message) ise;
+                    if (eventEnd instanceof SingleEventEnd see) {
+                        if (ise instanceof Message msg) {
                             if (msg.isReflective() || msg.isOblique()) {
                                 refPoint = see.isStart() ? bounds.getTopLeft().getCopy() : bounds.getBottomRight().getCopy();
                             } else {
