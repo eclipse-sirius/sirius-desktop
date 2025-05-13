@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation;
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
+import org.eclipse.gef.EditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.requests.CreateConnectionRequest;
 import org.eclipse.gef.requests.DropRequest;
@@ -25,6 +26,7 @@ import org.eclipse.gmf.runtime.diagram.ui.internal.editparts.NoteAttachmentEditP
 import org.eclipse.gmf.runtime.draw2d.ui.figures.BaseSlidableAnchor;
 import org.eclipse.gmf.runtime.gef.ui.figures.SlidableAnchor;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.diagram.sequence.description.tool.MessageCreationTool;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ISequenceEventEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.LifelineEditPart;
@@ -115,9 +117,24 @@ public final class ConnectionAnchorOperation {
         } else if (request.getLocation() != null) {
             Object sourceLocation = ViewLocationHint.getInstance().getData(ViewLocationHint.SOURCE_ANCHOR_LOCATION);
             if (sourceLocation instanceof Point && request instanceof CreateConnectionRequest createRequest) {
+                EditPart sourceEP = createRequest.getSourceEditPart();
+                EditPart targetEP = createRequest.getTargetEditPart();
                 Point sourceLocationPoint = ((Point) sourceLocation).getCopy();
-                // Adjust the location if the target's Y is lower than the source's Y, which would render an invalid message.
-                if (request.getLocation().y <= sourceLocationPoint.y) {
+                if (!sourceEP.equals(targetEP)) {
+                    // check its oblique
+                    if (createRequest.getNewObject() instanceof MessageCreationTool creationTool && creationTool.getName().endsWith("_Oblique")) { //$NON-NLS-1$
+                        if (request.getLocation().y <= sourceLocationPoint.y) {
+                            // if the mapping is "oblique" and the target is upper than the source, we set Y
+                            request.getLocation().setY(sourceLocationPoint.y);
+                        } else {
+                         // if the mapping is "oblique" and the target is lower than the source, we don't set Y
+                        }
+                    } else {
+                        // Si le mapping est pas oblique, on set le Y (à virer si on veut un truc générique)
+                        request.getLocation().setY(sourceLocationPoint.y);
+                    }
+                } else if (request.getLocation().y <= sourceLocationPoint.y) {
+                    // If the target is upper than the source, we set Y IF the source and target are the same (reflective ?)
                     request.getLocation().setY(sourceLocationPoint.y);
                 }
             }
