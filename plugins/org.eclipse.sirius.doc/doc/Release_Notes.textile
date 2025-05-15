@@ -4,6 +4,10 @@ h1. Release Notes for Sirius Desktop
 
 This document contains the release notes for recent major releases of Sirius. See also "the release notes from previous versions":Release_Notes_Previous.html for details about older releases.
 
+h2(#sirius7.4.10). Changes in Sirius  Desktop 7.4.10
+
+Nothing.
+
 h2(#sirius7.4.9). Changes in Sirius  Desktop 7.4.9
 
 Nothing.
