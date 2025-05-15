@@ -2,49 +2,49 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.table.ui;singleton:=true
-Bundle-Version: 7.4.9.qualifier
+Bundle-Version: 7.4.10.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: org.eclipse.sirius.table.metamodel.table.provider.TableUIPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-17
-Export-Package: org.eclipse.sirius.table.metamodel.table.description.provider;version="7.4.9",
- org.eclipse.sirius.table.metamodel.table.provider;version="7.4.9",
- org.eclipse.sirius.table.ui.business.api.helper;version="7.4.9",
- org.eclipse.sirius.table.ui.business.internal.dialect;version="7.4.9";x-internal:=true,
- org.eclipse.sirius.table.ui.business.internal.refresh;version="7.4.9";x-internal:=true,
- org.eclipse.sirius.table.ui.tools.api.editor;version="7.4.9",
- org.eclipse.sirius.table.ui.tools.internal.commands;version="7.4.9";x-internal:=true,
- org.eclipse.sirius.table.ui.tools.internal.editor;version="7.4.9";x-internal:=true,
- org.eclipse.sirius.table.ui.tools.internal.editor.action;version="7.4.9";x-internal:=true,
- org.eclipse.sirius.table.ui.tools.internal.editor.listeners;version="7.4.9";x-internal:=true,
- org.eclipse.sirius.table.ui.tools.internal.editor.print;version="7.4.9";x-internal:=true,
- org.eclipse.sirius.table.ui.tools.internal.editor.provider;version="7.4.9";x-internal:=true,
- org.eclipse.sirius.table.ui.tools.internal.editor.utils;version="7.4.9";x-internal:=true,
- org.eclipse.sirius.table.ui.tools.internal.export;version="7.4.9";x-internal:=true,
- org.eclipse.sirius.table.ui.tools.internal.properties.propertysource;version="7.4.9";x-internal:=true,
- org.eclipse.sirius.table.ui.tools.internal.properties.section.common;version="7.4.9";x-internal:=true,
- org.eclipse.sirius.table.ui.tools.internal.properties.section.core;version="7.4.9";x-internal:=true,
- org.eclipse.sirius.table.ui.tools.internal.properties.section.semantic;version="7.4.9";x-internal:=true,
- org.eclipse.sirius.table.ui.tools.internal.properties.section.style;version="7.4.9";x-internal:=true
+Export-Package: org.eclipse.sirius.table.metamodel.table.description.provider;version="7.4.10",
+ org.eclipse.sirius.table.metamodel.table.provider;version="7.4.10",
+ org.eclipse.sirius.table.ui.business.api.helper;version="7.4.10",
+ org.eclipse.sirius.table.ui.business.internal.dialect;version="7.4.10";x-internal:=true,
+ org.eclipse.sirius.table.ui.business.internal.refresh;version="7.4.10";x-internal:=true,
+ org.eclipse.sirius.table.ui.tools.api.editor;version="7.4.10",
+ org.eclipse.sirius.table.ui.tools.internal.commands;version="7.4.10";x-internal:=true,
+ org.eclipse.sirius.table.ui.tools.internal.editor;version="7.4.10";x-internal:=true,
+ org.eclipse.sirius.table.ui.tools.internal.editor.action;version="7.4.10";x-internal:=true,
+ org.eclipse.sirius.table.ui.tools.internal.editor.listeners;version="7.4.10";x-internal:=true,
+ org.eclipse.sirius.table.ui.tools.internal.editor.print;version="7.4.10";x-internal:=true,
+ org.eclipse.sirius.table.ui.tools.internal.editor.provider;version="7.4.10";x-internal:=true,
+ org.eclipse.sirius.table.ui.tools.internal.editor.utils;version="7.4.10";x-internal:=true,
+ org.eclipse.sirius.table.ui.tools.internal.export;version="7.4.10";x-internal:=true,
+ org.eclipse.sirius.table.ui.tools.internal.properties.propertysource;version="7.4.10";x-internal:=true,
+ org.eclipse.sirius.table.ui.tools.internal.properties.section.common;version="7.4.10";x-internal:=true,
+ org.eclipse.sirius.table.ui.tools.internal.properties.section.core;version="7.4.10";x-internal:=true,
+ org.eclipse.sirius.table.ui.tools.internal.properties.section.semantic;version="7.4.10";x-internal:=true,
+ org.eclipse.sirius.table.ui.tools.internal.properties.section.style;version="7.4.10";x-internal:=true
 Require-Bundle: org.eclipse.core.runtime;bundle-version="3.8.0",
- org.eclipse.sirius.table.model;bundle-version="7.4.9";visibility:=reexport,
- org.eclipse.sirius.table;bundle-version="7.4.9";visibility:=reexport,
+ org.eclipse.sirius.table.model;bundle-version="7.4.10";visibility:=reexport,
+ org.eclipse.sirius.table;bundle-version="7.4.10";visibility:=reexport,
  org.eclipse.emf.edit;bundle-version="2.8.0";visibility:=reexport,
  org.eclipse.emf.ecore;bundle-version="2.8.3";visibility:=reexport,
  org.eclipse.emf.ecore.edit;bundle-version="2.8.0";visibility:=reexport,
- org.eclipse.sirius.model;bundle-version="7.4.9";visibility:=reexport,
- org.eclipse.sirius;bundle-version="7.4.9";visibility:=reexport,
- org.eclipse.sirius.ui;bundle-version="7.4.9";visibility:=reexport,
- org.eclipse.sirius.ecore.extender;bundle-version="7.4.9",
- org.eclipse.sirius.common;bundle-version="7.4.9",
+ org.eclipse.sirius.model;bundle-version="7.4.10";visibility:=reexport,
+ org.eclipse.sirius;bundle-version="7.4.10";visibility:=reexport,
+ org.eclipse.sirius.ui;bundle-version="7.4.10";visibility:=reexport,
+ org.eclipse.sirius.ecore.extender;bundle-version="7.4.10",
+ org.eclipse.sirius.common;bundle-version="7.4.10",
  org.eclipse.ui.ide;bundle-version="3.8.2",
  org.eclipse.draw2d;bundle-version="3.13.0",
  org.eclipse.ui.views.properties.tabbed;bundle-version="3.5.300",
  org.eclipse.emf.edit.ui;bundle-version="2.8.0",
  org.eclipse.emf.workspace;bundle-version="1.5.1",
  com.google.guava;bundle-version="27.0",
- org.eclipse.sirius.common.ui;bundle-version="7.4.9",
+ org.eclipse.sirius.common.ui;bundle-version="7.4.10",
  org.eclipse.jface.text;bundle-version="3.8.2"
 Eclipse-LazyStart: true
 Bundle-ActivationPolicy: lazy

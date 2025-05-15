@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.ext.emf
-Bundle-Version: 7.4.9.qualifier
+Bundle-Version: 7.4.10.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Localization: plugin
 Require-Bundle: com.google.guava;bundle-version="27.0",
