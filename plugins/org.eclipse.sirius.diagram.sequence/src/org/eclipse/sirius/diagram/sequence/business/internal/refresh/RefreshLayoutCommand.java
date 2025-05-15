@@ -100,7 +100,7 @@ public class RefreshLayoutCommand extends RecordingCommand {
         IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(sequenceDDiagram);
         if (permissionAuthority != null && permissionAuthority.canEditInstance(sequenceDDiagram)) {
             sequenceDiagram.useCache(true);
-//            CacheHelper.clearCaches();
+            CacheHelper.clearCaches();
             CacheHelper.setStructuralCacheEnabled(true);
             CacheHelper.setVerticalRangeCacheEnabled(true);
             try {

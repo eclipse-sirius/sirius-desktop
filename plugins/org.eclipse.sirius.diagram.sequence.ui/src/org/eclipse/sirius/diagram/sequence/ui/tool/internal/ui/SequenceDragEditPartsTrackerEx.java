@@ -77,9 +77,9 @@ public class SequenceDragEditPartsTrackerEx extends SiriusDragEditPartsTrackerEx
                 diagram.useCache(false);
                 diagram.clearAllCaches();
             }
-//            CacheHelper.setStructuralCacheEnabled(false);
-//            CacheHelper.setVerticalRangeCacheEnabled(false);
-//            CacheHelper.clearCaches();
+            CacheHelper.setStructuralCacheEnabled(false);
+            CacheHelper.setVerticalRangeCacheEnabled(false);
+            CacheHelper.clearCaches();
         }
 
         /**
@@ -89,7 +89,7 @@ public class SequenceDragEditPartsTrackerEx extends SiriusDragEditPartsTrackerEx
          *            the drag tracker source/owner edit part.
          */
         public static void handleButtonDown(IGraphicalEditPart smep) {
-//            CacheHelper.clearCaches();
+            CacheHelper.clearCaches();
             CacheHelper.setStructuralCacheEnabled(true);
             CacheHelper.setVerticalRangeCacheEnabled(true);
 
