@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2013, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,7 +13,8 @@
 package org.eclipse.sirius.common.tools.internal.interpreter;
 
 import java.text.MessageFormat;
-import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -32,9 +33,6 @@ import org.eclipse.sirius.common.tools.api.interpreter.InterpreterStatusFactory;
 import org.eclipse.sirius.common.tools.api.interpreter.TypeName;
 import org.eclipse.sirius.common.tools.api.interpreter.ValidationResult;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
-
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
 
 /**
  * A specialized interpreter which only supports direct access to a named
@@ -89,7 +87,9 @@ public class FeatureInterpreter extends AbstractInterpreter implements org.eclip
             } else if (E_CONTENTS_FEATURE_NAME.equals(featureName)) {
                 result = target.eContents();
             } else if (E_ALL_CONTENTS_FEATURE_NAME.equals(featureName)) {
-                result = Lists.newArrayList(target.eAllContents());
+                var objects = new ArrayList<>();
+                target.eAllContents().forEachRemaining(objects::add);
+                result = objects;
             } else if (E_CLASS_FEATURE_NAME.equals(featureName)) {
                 result = targetEClass;
             } else if (E_CROSS_REFERENCES_FEATURE_NAME.equals(featureName)) {
@@ -115,11 +115,15 @@ public class FeatureInterpreter extends AbstractInterpreter implements org.eclip
             if (!isDefaultFeatureName(featureName)) {
                 Set<EClassifier> possibleReturnTypes = new LinkedHashSet<>();
                 for (TypeName typeName : targetType.getPossibleTypes()) {
-                    Iterator<EClass> possibleEClasses = Iterators.filter(typeName.search(context.getAvailableEPackages()).iterator(), EClass.class);
+                    Collection<EClassifier> classifiers = typeName.search(context.getAvailableEPackages());
                     boolean foundAtLeastOneValid = false;
-                    while (!foundAtLeastOneValid && possibleEClasses.hasNext()) {
-                        EClass cur = possibleEClasses.next();
-                        foundAtLeastOneValid = hasFeatureNameAndCollectReturnTypes(cur, featureName, possibleReturnTypes);
+                    for (EClassifier eClassifier : classifiers) {
+                        if (eClassifier instanceof EClass cur) {
+                            foundAtLeastOneValid = hasFeatureNameAndCollectReturnTypes(cur, featureName, possibleReturnTypes);
+                        }
+                        if (foundAtLeastOneValid) {
+                            break;
+                        }
                     }
                     if (!foundAtLeastOneValid) {
                         interpreterStatus.addStatus(InterpreterStatusFactory.createInterpreterStatus(context, IInterpreterStatus.ERROR,
