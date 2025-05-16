@@ -88,7 +88,11 @@ public class ISequenceEventQuery {
      * @return <code>true</code> if this event is a reflective message.
      */
     public boolean isReflectiveMessage() {
-        return event instanceof Message && ((Message) event).isReflective();
+        return event instanceof Message message && message.isReflective();
+    }
+
+    public boolean isObliqueMessage() {
+        return event instanceof Message message && message.isOblique();
     }
 
     /**

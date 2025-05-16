@@ -175,7 +175,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
             addFeedback(guide);
             guides.add(guide);
 
-            if (new ISequenceEventQuery(getMessage().getISequenceEvent()).isReflectiveMessage()) {
+            if (isReflectiveMessage(getMessage()) || isObliqueMessage(getMessage())) {
                 Point endLocation = new Point(1, thisEvent.getConnectionFigure().getPoints().getLastPoint().y);
                 endLocation.performScale(GraphicalHelper.getZoom(getHost()));
                 Figure messageToSelfBottomGuide = new HorizontalGuide(MESSAGE_FEEDBACK_COLOR, endLocation.y);
@@ -213,6 +213,14 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
                 }
             }
         }
+    }
+
+    private static boolean isReflectiveMessage(SequenceMessageEditPart messageEP) {
+        return new ISequenceEventQuery(messageEP.getISequenceEvent()).isReflectiveMessage();
+    }
+
+    private static boolean isObliqueMessage(SequenceMessageEditPart messageEP) {
+        return new ISequenceEventQuery(messageEP.getISequenceEvent()).isObliqueMessage();
     }
 
     private void removeFeedBackOnGuides() {
@@ -452,14 +460,15 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
         SetMessageRangeOperation smrc = new SetMessageRangeOperation((Edge) thisEvent.getNotationView(), finalRange);
         Message message = (Message) thisEvent.getISequenceEvent();
         boolean reflectiveMessage = message.isReflective();
+        boolean obliqueMessage = message.isOblique();
 
-        setOperations(true, message, finalRange, smrc, reflectiveMessage);
-        setOperations(false, message, finalRange, smrc, reflectiveMessage);
+        setOperations(true, message, finalRange, smrc, reflectiveMessage, obliqueMessage);
+        setOperations(false, message, finalRange, smrc, reflectiveMessage, obliqueMessage);
 
         return CommandFactory.createICommand(thisEvent.getEditingDomain(), smrc);
     }
 
-    private void setOperations(boolean source, Message message, Range finalRange, SetMessageRangeOperation smrc, boolean reflectiveMessage) {
+    private void setOperations(boolean source, Message message, Range finalRange, SetMessageRangeOperation smrc, boolean reflectiveMessage, boolean obliqueMessage) {
         Range messageEndRange = source ? new Range(finalRange.getLowerBound(), finalRange.getLowerBound()) : new Range(finalRange.getUpperBound(), finalRange.getUpperBound());
         ISequenceNode currentEnd = source ? message.getSourceElement() : message.getTargetElement();
         Option<Lifeline> endLifeline = currentEnd.getLifeline();
@@ -470,18 +479,22 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
             EventFinder endFinder = new EventFinder(endLifeline.get());
             endFinder.setReconnection(true);
 
-            if (!reflectiveMessage) {
+            if (!(reflectiveMessage || obliqueMessage)) {
                 finalEnd = endFinder.findMostSpecificEvent(finalRange);
             } else {
                 finalEnd = (ISequenceEvent) currentEnd;
 
+                ISequenceEvent potentialFinalEnd = endFinder.findMostSpecificEvent(messageEndRange);
                 boolean compoundSrc = finalEnd instanceof Execution && message.equals(source ? ((Execution) finalEnd).getEndMessage().get() : ((Execution) finalEnd).getStartMessage().get());
-                if (!compoundSrc && !finalEnd.equals(endFinder.findMostSpecificEvent(messageEndRange))) {
+                if (!compoundSrc && !finalEnd.equals(potentialFinalEnd)) {
                     // It is not allowed to reconnect a reflexive message by
                     // moving bendpoints
-                    invalidCommand = true;
+                    invalidCommand = reflectiveMessage;
                 }
 
+                if (obliqueMessage) {
+                    finalEnd = potentialFinalEnd;
+                }
                 // look for event source
                 endFinder.setReconnection(false);
                 ISequenceEvent potentialSource = endFinder.findMostSpecificEvent(messageEndRange);
@@ -534,9 +547,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
 
     private Option<Range> computeFinalRange(BendpointRequest request, SequenceMessageEditPart smep, Point location) {
         Range finalRange = null;
-        if (!new ISequenceEventQuery(smep.getISequenceEvent()).isReflectiveMessage()) {
-            finalRange = new Range(location.y, location.y);
-        } else {
+        if (isReflectiveMessage(smep)) {
             Edge edge = (Edge) smep.getNotationView();
             SequenceMessageViewQuery query = new SequenceMessageViewQuery(edge);
 
@@ -555,7 +566,13 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
                 finalRange = new Range(firstPointVerticalPosition, lastPointVerticalPosition);
                 break;
             }
+        } else if (isObliqueMessage(smep)) {
+            int width = smep.getISequenceEvent().getVerticalRange().width();
+            finalRange = new Range(location.y, location.y + width);
+        } else {
+            finalRange = new Range(location.y, location.y);
         }
+        System.out.println(finalRange);
         return Options.newSome(finalRange);
     }
 
@@ -577,7 +594,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
 
     private MoveType getMoveType(SequenceMessageEditPart event, BendpointRequest request, List<EventEnd> ends) {
         boolean compoundMove = !Iterables.isEmpty(Iterables.filter(ends, CompoundEventEnd.class));
-        boolean msgToSelfMove = new ISequenceEventQuery(event.getISequenceEvent()).isReflectiveMessage();
+        boolean msgToSelfMove = isReflectiveMessage(event);
         boolean needsCompoundEventCommands = compoundMove && !msgToSelfMove;
         boolean fromTop = true;
         if (compoundMove && msgToSelfMove && ends.size() == 2) {

@@ -18,6 +18,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
+import org.eclipse.sirius.diagram.sequence.business.internal.query.SequenceMessageViewQuery;
 import org.eclipse.sirius.diagram.sequence.tool.internal.Messages;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
 
@@ -115,6 +116,8 @@ public class SetMessageRangeOperation extends AbstractModelChangeOperation<Void>
             SequenceMessageRangeHelper helper = new SequenceMessageRangeHelper();
             if (isMessageToSelf(currentMessage)) {
                 helper.setMessageRangeForMessageToSelf(currentMessage, range, srcTop, tgtTop);
+            } else if (isObliqueMessage(currentMessage)) {
+                helper.setMessageRangeForObliqueMessage(currentMessage, range, srcTop, tgtTop);
             } else {
                 helper.setMessageRangeForNormalMessage(currentMessage, range, srcTop, tgtTop);
             }
@@ -133,6 +136,10 @@ public class SetMessageRangeOperation extends AbstractModelChangeOperation<Void>
         View src = msg.getSource();
         View tgt = msg.getTarget();
         return Objects.equal(src, tgt) || Objects.equal(src.eContainer(), tgt) || Objects.equal(src, tgt.eContainer());
+    }
+
+    private boolean isObliqueMessage(Edge msg) {
+        return new SequenceMessageViewQuery(msg).isOblique();
     }
 
 }

@@ -26,6 +26,7 @@ import org.eclipse.gmf.runtime.diagram.ui.internal.editparts.NoteAttachmentEditP
 import org.eclipse.gmf.runtime.draw2d.ui.figures.BaseSlidableAnchor;
 import org.eclipse.gmf.runtime.gef.ui.figures.SlidableAnchor;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.diagram.sequence.description.tool.MessageCreationTool;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ISequenceEventEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.LifelineEditPart;
@@ -115,15 +116,34 @@ public final class ConnectionAnchorOperation {
             return;
         } else if (request.getLocation() != null) {
             Object sourceLocation = ViewLocationHint.getInstance().getData(ViewLocationHint.SOURCE_ANCHOR_LOCATION);
-            if (sourceLocation instanceof Point && request instanceof CreateConnectionRequest) {
-                EditPart sourceEP = ((CreateConnectionRequest) request).getSourceEditPart();
-                EditPart targetEP = ((CreateConnectionRequest) request).getTargetEditPart();
+            if (sourceLocation instanceof Point && request instanceof CreateConnectionRequest createRequest) {
+                EditPart sourceEP = createRequest.getSourceEditPart();
+                EditPart targetEP = createRequest.getTargetEditPart();
                 Point sourceLocationPoint = ((Point) sourceLocation).getCopy();
                 if (!sourceEP.equals(targetEP)) {
-                    request.getLocation().setY(sourceLocationPoint.y);
+                    // check its oblique
+                    if (createRequest.getNewObject() instanceof MessageCreationTool creationTool && creationTool.getName().endsWith("_Oblique")) { //$NON-NLS-1$
+                        if (request.getLocation().y <= sourceLocationPoint.y) {
+                            // if the mapping is "oblique" and the target is upper than the source, we set Y
+                            request.getLocation().setY(sourceLocationPoint.y);
+                            System.out.println("We updated the wrong oblique message Y with " + sourceLocationPoint.y + " instead of " + request.getLocation().y); //$NON-NLS-1$ //$NON-NLS-2$
+                        } else {
+                         // if the mapping is "oblique" and the target is lower than the source, we don't set Y
+                            System.out.println("There, its a correct oblique message, so we don't update Y with " + sourceLocationPoint.y + " instead of " + request.getLocation().y); //$NON-NLS-1$ //$NON-NLS-2$
+                        }
+                    } else {
+                        // Si le mapping est pas oblique, on set le Y (à virer si on veut un truc générique)
+                        System.out.println("We should update Y with " + sourceLocationPoint.y + " because it was " + request.getLocation().y); //$NON-NLS-1$ //$NON-NLS-2$
+                        request.getLocation().setY(sourceLocationPoint.y);
+                    }
                 } else if (request.getLocation().y <= sourceLocationPoint.y) {
+                    // If the target is upper than the source, we set Y IF the source and target are the same (reflective ?)
+                    System.out.println("We should update Y with " + sourceLocationPoint.y + " because it was " + request.getLocation().y); //$NON-NLS-1$ //$NON-NLS-2$
                     request.getLocation().setY(sourceLocationPoint.y);
                 }
+//                if ((!sourceEP.equals(targetEP) && request.getLocation().y <= sourceLocationPoint.y) || (sourceEP.equals(targetEP) && request.getLocation().y <= sourceLocationPoint.y)) {
+//                    request.getLocation().setY(sourceLocationPoint.y);
+//                }
             }
         }
     }
