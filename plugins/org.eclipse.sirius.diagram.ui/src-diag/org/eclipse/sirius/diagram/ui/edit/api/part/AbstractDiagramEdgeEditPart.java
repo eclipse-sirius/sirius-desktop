@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -44,8 +44,10 @@ import org.eclipse.gmf.runtime.diagram.ui.internal.util.LabelViewConstants;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateUnspecifiedTypeConnectionRequest;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.routers.ITreeConnection;
+import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.RoutingStyle;
+import org.eclipse.gmf.runtime.notation.Smoothness;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -198,6 +200,31 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
     public Command getCommand(final Request request) {
         final Command cmd = super.getCommand(request);
         return CommonEditPartOperation.handleAutoPinOnInteractiveMove(this, request, cmd);
+    }
+    
+    @Override
+    protected void refreshSmoothness() {
+        super.refreshSmoothness();
+        Connection connection = getConnectionFigure();
+        if (!(connection instanceof SiriusPolylineConnectionEx)) {
+            return;
+        }
+
+        SiriusPolylineConnectionEx poly = (SiriusPolylineConnectionEx) connection;
+        RoutingStyle style = (RoutingStyle) ((View) getModel()).getStyle(NotationPackage.Literals.ROUTING_STYLE);
+        if (style != null) {
+            Smoothness smoothness = style.getSmoothness();
+
+            if (Smoothness.LESS_LITERAL == smoothness) {
+                poly.setSiriusSmoothness(PolylineConnectionEx.SMOOTH_LESS);
+            } else if (Smoothness.NORMAL_LITERAL == smoothness) {
+                poly.setSiriusSmoothness(PolylineConnectionEx.SMOOTH_NORMAL);
+            } else if (Smoothness.MORE_LITERAL == smoothness) {
+                poly.setSiriusSmoothness(PolylineConnectionEx.SMOOTH_MORE);
+            } else if (Smoothness.NONE_LITERAL == smoothness) {
+                poly.setSiriusSmoothness(PolylineConnectionEx.SMOOTH_NONE);
+            }
+        }
     }
 
     @Override
