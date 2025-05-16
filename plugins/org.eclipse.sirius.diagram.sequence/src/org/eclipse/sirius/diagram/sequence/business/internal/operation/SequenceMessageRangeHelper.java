@@ -71,6 +71,35 @@ public class SequenceMessageRangeHelper {
         bendpoints.setPoints(newBendpoints);
     }
 
+    public void setMessageRangeForObliqueMessage(Edge edge, Range range, int sourceTop, int targetTop) {
+        resetAnchors(edge);
+
+        RelativeBendpoints bendpoints = (RelativeBendpoints) edge.getBendpoints();
+
+        int[] sourceX = getSourceX(bendpoints);
+        int[] targetX = getTargetX(bendpoints);
+        assert sourceX != null && sourceX.length == 2;
+        assert targetX != null && targetX.length == 2;
+
+        /*
+         * The vertical offsets of the two first/top bendpoints from the top of the source/target.
+         */
+        int topSourceDeltaY = range.getLowerBound() - sourceTop;
+        int topTargetDeltaY = range.getLowerBound() - targetTop;
+
+        /*
+         * The vertical offsets of the two last/bottom bendpoints from the top of the source/target.
+         */
+        int bottomSourceDeltaY = range.getUpperBound() - sourceTop;
+        int bottomTargetDeltaY = range.getUpperBound() - targetTop;
+
+        List<RelativeBendpoint> newBendpoints = new ArrayList<RelativeBendpoint>();
+        newBendpoints.add(new RelativeBendpoint(sourceX[0], topSourceDeltaY, targetX[0], topTargetDeltaY));
+        newBendpoints.add(new RelativeBendpoint(sourceX[1], bottomSourceDeltaY, targetX[1], bottomTargetDeltaY));
+
+        bendpoints.setPoints(newBendpoints);
+    }
+
     /**
      * Sets the range for a reflective message.
      * 
