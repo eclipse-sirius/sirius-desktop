@@ -29,6 +29,7 @@ import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalC
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
+import org.eclipse.sirius.diagram.model.business.internal.query.IEdgeMappingQuery;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
@@ -248,7 +249,7 @@ public final class SequenceEditPartsOperations {
             EdgeCreationDescription edgeCreationDescription, IDiagramCommandFactoryProvider cmdFactoryProvider) {
         org.eclipse.emf.common.command.Command emfCommand;
         TransactionalEditingDomain domain = self.getEditingDomain();
-        if (edgeCreationDescription instanceof MessageCreationTool && ((DDiagramElement) source).getParentDiagram() instanceof SequenceDDiagram) {
+        if (edgeCreationDescription instanceof MessageCreationTool msgCreationTool && ((DDiagramElement) source).getParentDiagram() instanceof SequenceDDiagram) {
             Point sourceLocation = request.getLocation().getCopy();
             Point targetLocation = request.getLocation().getCopy();
             GraphicalHelper.screen2logical(sourceLocation, self);
@@ -266,7 +267,7 @@ public final class SequenceEditPartsOperations {
             }
 
             // Avoid deferred message, accept only messageToSelf
-            if (source != target) {
+            if (source != target && !msgCreationTool.getEdgeMappings().stream().allMatch(mapping -> new IEdgeMappingQuery(mapping).getEdgeMapping().get().getName().endsWith("_Oblique"))) { //$NON-NLS-1$
                 targetLocation = sourceLocation;
             }
 
@@ -274,7 +275,7 @@ public final class SequenceEditPartsOperations {
             SequenceDDiagram diagram = sequenceDiagram.getSequenceDDiagram();
             EventEnd startingEndBefore = SequenceGraphicalHelper.getEndBefore(diagram, sourceLocation.y);
             EventEnd finishingEndBefore = SequenceGraphicalHelper.getEndBefore(diagram, targetLocation.y);
-            emfCommand = ToolCommandBuilder.buildCreateMessageCommand(source, target, (MessageCreationTool) edgeCreationDescription, startingEndBefore, finishingEndBefore);
+            emfCommand = ToolCommandBuilder.buildCreateMessageCommand(source, target, msgCreationTool, startingEndBefore, finishingEndBefore);
 
             org.eclipse.emf.common.command.CompoundCommand cc = new org.eclipse.emf.common.command.CompoundCommand();
             cc.append(emfCommand);
