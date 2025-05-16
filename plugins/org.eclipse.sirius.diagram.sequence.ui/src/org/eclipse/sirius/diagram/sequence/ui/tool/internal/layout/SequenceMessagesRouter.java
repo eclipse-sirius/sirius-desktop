@@ -137,6 +137,7 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
             points.addPoint(sourceRef);
             points.addPoint(secondPoint);
             points.addPoint(thirdPoint);
+//        } else if (isObliqueMessage) {
         } else {
             conn.translateToRelative(sourceRef);
             points.addPoint(sourceRef);
