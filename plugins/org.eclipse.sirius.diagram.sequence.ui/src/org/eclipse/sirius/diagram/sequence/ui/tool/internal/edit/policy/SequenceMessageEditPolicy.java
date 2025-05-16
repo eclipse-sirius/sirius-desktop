@@ -484,13 +484,17 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
             } else {
                 finalEnd = (ISequenceEvent) currentEnd;
 
+                ISequenceEvent potentialFinalEnd = endFinder.findMostSpecificEvent(messageEndRange);
                 boolean compoundSrc = finalEnd instanceof Execution && message.equals(source ? ((Execution) finalEnd).getEndMessage().get() : ((Execution) finalEnd).getStartMessage().get());
-                if (!compoundSrc && !finalEnd.equals(endFinder.findMostSpecificEvent(messageEndRange))) {
+                if (!compoundSrc && !finalEnd.equals(potentialFinalEnd)) {
                     // It is not allowed to reconnect a reflexive message by
                     // moving bendpoints
-                    invalidCommand = true;
+                    invalidCommand = reflectiveMessage;
                 }
 
+                if (obliqueMessage) {
+                    finalEnd = potentialFinalEnd;
+                }
                 // look for event source
                 endFinder.setReconnection(false);
                 ISequenceEvent potentialSource = endFinder.findMostSpecificEvent(messageEndRange);
@@ -543,9 +547,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
 
     private Option<Range> computeFinalRange(BendpointRequest request, SequenceMessageEditPart smep, Point location) {
         Range finalRange = null;
-        if (!isReflectiveMessage(smep)) {
-            finalRange = new Range(location.y, location.y);
-        } else {
+        if (isReflectiveMessage(smep)) {
             Edge edge = (Edge) smep.getNotationView();
             SequenceMessageViewQuery query = new SequenceMessageViewQuery(edge);
 
@@ -564,7 +566,13 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
                 finalRange = new Range(firstPointVerticalPosition, lastPointVerticalPosition);
                 break;
             }
+        } else if (isObliqueMessage(smep)) {
+            int width = smep.getISequenceEvent().getVerticalRange().width();
+            finalRange = new Range(location.y, location.y + width);
+        } else {
+            finalRange = new Range(location.y, location.y);
         }
+        System.out.println(finalRange);
         return Options.newSome(finalRange);
     }
 
