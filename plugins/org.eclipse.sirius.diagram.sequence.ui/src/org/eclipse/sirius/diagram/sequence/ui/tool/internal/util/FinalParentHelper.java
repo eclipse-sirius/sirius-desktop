@@ -66,9 +66,10 @@ public class FinalParentHelper {
             // Some event could not be parents : states for examples.
             boolean includedInput = !self.getValidSubEventsRange().isEmpty() && fullFinalRange.includes(inputRange.grown(1));
 
-            if (input instanceof Message) {
-                Message msg = (Message) input;
-
+            if (input instanceof Message msg) {
+                if (msg.isOblique()) {
+                    includedInput = !self.getValidSubEventsRange().isEmpty() && fullFinalRange.includesAtLeastOneBound(inputRange.grown(1));
+                }
                 if (msg.isReflective() && !includedInput) {
                     intersection = inputRange.intersects(fullFinalRange) && !inputRange.includes(fullFinalRange);
                     includedInput = inputRange.includes(fullFinalRange);

@@ -243,7 +243,13 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
         Stream<Message> messagesToReconnect = self.getDiagram().getAllMessages().stream() //
                 .filter(Message.class::isInstance).map(Message.class::cast) //
                 .filter(ise -> !self.getVerticalRange().intersects(ise.getVerticalRange())) //
-                .filter(ise -> movedRange.includes(ise.getVerticalRange())) //
+                .filter(ise -> {
+                    if (ise.isOblique()) {
+                        return movedRange.includesAtLeastOneBound(ise.getVerticalRange());
+                    } else {
+                        return movedRange.includes(ise.getVerticalRange());
+                    }
+                }) //
                 .filter(ise -> validator.getExpansionZone() == null || !validator.getExpansionZone().intersects(ise.getVerticalRange()));
 
         messagesToReconnect.forEach(msg -> {
