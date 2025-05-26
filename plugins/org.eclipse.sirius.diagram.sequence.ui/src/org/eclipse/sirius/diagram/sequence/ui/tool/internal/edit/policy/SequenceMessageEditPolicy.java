@@ -244,7 +244,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
             }
         };
 
-        Dimension resizeDelta = getResizeDelta(location.getCopy(), thisEvent, thisRange, fromTop);
+        Dimension resizeDelta = getResizeDelta(request, location.getCopy(), thisEvent, thisRange, fromTop);
         for (CompoundEventEnd cee : Iterables.filter(ends, CompoundEventEnd.class)) {
             for (SingleEventEnd see : Iterables.filter(Lists.newArrayList(cee.getEventEnds()), toMove)) {
                 ISequenceEventEditPart ise = EditPartsHelper.findISequenceEvent(see, sdep);
@@ -267,7 +267,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
             }
         };
 
-        Dimension resizeDelta = getResizeDelta(location.getCopy(), thisEvent, thisRange, fromTop);
+        Dimension resizeDelta = getResizeDelta(request, location.getCopy(), thisEvent, thisRange, fromTop);
         for (CompoundEventEnd cee : Iterables.filter(ends, CompoundEventEnd.class)) {
             for (SingleEventEnd see : Iterables.filter(Lists.newArrayList(cee.getEventEnds()), toMove)) {
                 ISequenceEventEditPart ise = EditPartsHelper.findISequenceEvent(see, sdep);
@@ -572,7 +572,6 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
         } else {
             finalRange = new Range(location.y, location.y);
         }
-        System.out.println(finalRange);
         return Options.newSome(finalRange);
     }
 
@@ -623,7 +622,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
             }
         };
 
-        Dimension resizeDelta = getResizeDelta(location.getCopy(), thisEvent, thisRange, fromTop);
+        Dimension resizeDelta = getResizeDelta(request, location.getCopy(), thisEvent, thisRange, fromTop);
         for (CompoundEventEnd cee : Iterables.filter(ends, CompoundEventEnd.class)) {
             for (SingleEventEnd see : Iterables.filter(Lists.newArrayList(cee.getEventEnds()), toMove)) {
                 ISequenceEventEditPart ise = EditPartsHelper.findISequenceEvent(see, sdep);
@@ -658,9 +657,15 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
         return cbr;
     }
 
-    private Dimension getResizeDelta(Point location, ISequenceEventEditPart ise, Range range, boolean fromTop) {
+    private Dimension getResizeDelta(BendpointRequest request, Point location, ISequenceEventEditPart ise, Range range, boolean fromTop) {
         GraphicalHelper.screen2logical(location, ise);
-        int deltaY = location.y - (fromTop ? range.getLowerBound() : range.getUpperBound());
+        int deltaY;
+        Object initialClick = request.getExtendedData().get(SequenceMessageEditPart.MSG_OBLIQUE_CBR_INITAL_CLICK);
+        if (initialClick instanceof Point obliqueMsgInitialClick) {
+            deltaY = location.y - obliqueMsgInitialClick.y;
+        } else {
+            deltaY = location.y - (fromTop ? range.getLowerBound() : range.getUpperBound());
+        }
         deltaY = (int) (deltaY * GraphicalHelper.getZoom(ise));
         return new Dimension(0, deltaY);
     }

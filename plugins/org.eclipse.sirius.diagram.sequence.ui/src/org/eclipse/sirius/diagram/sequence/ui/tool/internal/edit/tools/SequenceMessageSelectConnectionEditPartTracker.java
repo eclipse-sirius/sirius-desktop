@@ -13,6 +13,7 @@
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.tools;
 
 import java.util.Map;
+import java.util.Optional;
 
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.geometry.Point;
@@ -44,6 +45,8 @@ public class SequenceMessageSelectConnectionEditPartTracker extends SelectConnec
 
     private boolean msgToSelfMove;
 
+    private Optional<Point> initialClick = Optional.empty();
+
     /**
      * Method SequenceMessageSelectConnectionEditPartTracker.
      * 
@@ -73,6 +76,11 @@ public class SequenceMessageSelectConnectionEditPartTracker extends SelectConnec
             } else {
                 extData.remove(SequenceMessageEditPart.MSG_TO_SELF_TOP_MOVE);
             }
+            if (initialClick.isPresent()) {
+                extData.put(SequenceMessageEditPart.MSG_OBLIQUE_CBR_INITAL_CLICK, initialClick.get());
+            } else {
+                extData.remove(SequenceMessageEditPart.MSG_OBLIQUE_CBR_INITAL_CLICK);
+            }
         }
     }
 
@@ -97,6 +105,10 @@ public class SequenceMessageSelectConnectionEditPartTracker extends SelectConnec
                 fromTop = location.y <= range.getLowerBound() || location.y < range.middleValue();
                 msgToSelfMove = true;
             }
+        } else if (new ISequenceEventQuery(iSequenceEvent).isObliqueMessage()) {
+            Point location = getLocation().getCopy();
+            GraphicalHelper.screen2logical(location, smep);
+            initialClick = Optional.of(location.getCopy());
         }
         return res;
     }

@@ -51,6 +51,8 @@ public class SequenceMessageEditPart extends DEdgeEditPart implements ISequenceE
      */
     public static final String MSG_TO_SELF_TOP_MOVE = "messageToSelfTopMove"; //$NON-NLS-1$
 
+    public static final String MSG_OBLIQUE_CBR_INITAL_CLICK = "messageObliqueChangeBoundsRequestInitialClick"; //$NON-NLS-1$
+
     /**
      * The global router for all the messages.
      */
