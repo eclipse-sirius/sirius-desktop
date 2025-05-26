@@ -427,9 +427,13 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
                 final Range seeRange = ise.getVerticalRange();
                 int lDelta = 0;
                 int uDelta = 0;
+                ISequenceEventQuery iseQuery = new ISequenceEventQuery(ise);
+                //TODO reduces calls to isOblique and isReflexiv
+                
+                
                 if (seeRange.getLowerBound() == movedBound && doNotMoveSourceOfReturnMessageOfReflexiveSyncCall(self, ise, rq)) {
                     lDelta = height;
-                    if (new ISequenceEventQuery(ise).isReflectiveMessage() && getSelection(ise) == EditPart.SELECTED_NONE) {
+                    if ((iseQuery.isReflectiveMessage() || iseQuery.isObliqueMessage()) && getSelection(ise) == EditPart.SELECTED_NONE) {
                         // A reflexive message does not have the same lower and
                         // upper bound but both bound have to be moved like
                         // "normal" messages
@@ -438,7 +442,7 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
                 }
                 if (seeRange.getUpperBound() == movedBound && doNotMoveTargetOfStartMessageOfReflexiveSyncCall(self, ise, rq)) {
                     uDelta = height;
-                    if (new ISequenceEventQuery(ise).isReflectiveMessage() && getSelection(ise) == EditPart.SELECTED_NONE) {
+                    if ((iseQuery.isReflectiveMessage() || iseQuery.isObliqueMessage()) && getSelection(ise) == EditPart.SELECTED_NONE) {
                         // A reflexive message does not have the same lower and
                         // upper bound but both bound have to be moved like
                         // "normal" messages

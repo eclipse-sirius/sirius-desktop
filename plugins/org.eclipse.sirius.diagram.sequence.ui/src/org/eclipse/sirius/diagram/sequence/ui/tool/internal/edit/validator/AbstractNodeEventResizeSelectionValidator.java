@@ -277,6 +277,8 @@ public class AbstractNodeEventResizeSelectionValidator {
             result = result && respectLowRangeMarginOfParent(startMessageRemote, callMessage, newRange) && respectUpperRangeMarginOfParent(startMessageRemote, returnMessage, newRange);
 
         } else if (delimitingMessages.size() == 1) {
+            Message msg = delimitingMessages.get(0);
+
             List<EventEnd> ends = EventEndHelper.findEndsFromSemanticOrdering(self.getISequenceEvent());
             SingleEventEnd delimitedSee = getDelimitedSingleEventEnd(self, ends);
 
@@ -291,7 +293,7 @@ public class AbstractNodeEventResizeSelectionValidator {
                 delimitedDeltaY = delimitedSee.isStart() ? deltaYStart : deltaYFinish;
 
                 if (requestQuery.isDirectedByMessage()) {
-                    Message msg = delimitingMessages.get(0);
+
                     if (delimitedSee.isStart() && requestQuery.isResizeFromTop() && msg.isReflective()) {
                         delimitedDeltaH = delimitedDeltaY;
                         delimitedDeltaY = 0;
@@ -303,13 +305,12 @@ public class AbstractNodeEventResizeSelectionValidator {
                 }
             }
 
-            ISequenceEvent prevMessageRemote = FinalParentHelper.getFinalRemoteParent(abstractNodeEvent, delimitingMessages.get(0), 0, 0);
-            ISequenceEvent delimitingMessageRemote = FinalParentHelper.getFinalRemoteParent(abstractNodeEvent, delimitingMessages.get(0), delimitedDeltaY, delimitedDeltaH);
-            result = prevMessageRemote == delimitingMessageRemote;
-
-            // prevMessageRemote == delimitingMessageRemote
-            Message callMessage = delimitingMessages.get(0);
-            result = result && respectLowRangeMarginOfParent(prevMessageRemote, callMessage, newRange);
+            ISequenceEvent prevMessageRemote = FinalParentHelper.getFinalRemoteParent(abstractNodeEvent, msg, 0, 0);
+            ISequenceEvent delimitingMessageRemote = FinalParentHelper.getFinalRemoteParent(abstractNodeEvent, msg, delimitedDeltaY, delimitedDeltaH);
+            result = delimitingMessageRemote != null;
+            result = result && respectLowRangeMarginOfParent(prevMessageRemote, msg, newRange);
+            result = result && prevMessageRemote != delimitingMessageRemote ? respectLowRangeMarginOfParent(delimitingMessageRemote, msg, newRange) : true;
+           
 
         }
         return result;
@@ -485,21 +486,25 @@ public class AbstractNodeEventResizeSelectionValidator {
                     if (host.equals(from)) {
                         verticalRange = finalRange;
                     } else if (startMessage.some() && startMessage.get().equals(from)) {
-                        if (!startMessage.get().isReflective()) {
+                        boolean reflexiveStart = startMessage.get().isReflective();
+                        boolean obliqueStart = startMessage.get().isOblique();
+                        if (!reflexiveStart && !obliqueStart) {
                             verticalRange = new Range(finalRange.getLowerBound(), finalRange.getLowerBound());
                         } else if (requestQuery.isResizeFromTop()) {
-                            if (requestQuery.isDirectedByMessage()) {
+                            if (reflexiveStart && requestQuery.isDirectedByMessage()) {
                                 verticalRange = new Range(verticalRange.getLowerBound(), verticalRange.getUpperBound() + requestQuery.getLogicalDelta().y);
                             } else {
-                                // reflexive and resized -> moved message
+                                // reflexive or oblique, and resized -> moved message
                                 verticalRange = verticalRange.shifted(requestQuery.getLogicalDelta().y);
                             }
                         }
                     } else if (endMessage.some() && endMessage.get().equals(from)) {
-                        if (!endMessage.get().isReflective()) {
+                        boolean reflexiveEnd = endMessage.get().isReflective();
+                        boolean obliqueEnd = endMessage.get().isOblique();
+                        if (!reflexiveEnd && !obliqueEnd) {
                             verticalRange = new Range(finalRange.getUpperBound(), finalRange.getUpperBound());
                         } else if (requestQuery.isResizeFromBottom()) {
-                            if (requestQuery.isDirectedByMessage()) {
+                            if (reflexiveEnd && requestQuery.isDirectedByMessage()) {
                                 verticalRange = new Range(verticalRange.getLowerBound() + requestQuery.getLogicalDelta().height, verticalRange.getUpperBound());
                             } else { // reflexive and resized -> moved message
                                 verticalRange = verticalRange.shifted(requestQuery.getLogicalDelta().height);
