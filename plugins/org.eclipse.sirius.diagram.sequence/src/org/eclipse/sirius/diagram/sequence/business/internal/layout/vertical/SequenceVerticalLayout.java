@@ -399,7 +399,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
         if (commonIse instanceof Message msg && msg.isReflective()) {
             beforeGap = LayoutConstants.MESSAGE_TO_SELF_BENDPOINT_VERTICAL_GAP;
         } else if (commonIse instanceof Message msg && msg.isOblique()) {
-            beforeGap = 50;
+            beforeGap = 5;
         } else if (commonIse instanceof AbstractNodeEvent) {
             beforeGap = Math.max(genericGap, getAbstractNodeEventVerticalSize(end, (AbstractNodeEvent) commonIse, commonIses, pack));
         } else if (commonIse instanceof InteractionUse) {
