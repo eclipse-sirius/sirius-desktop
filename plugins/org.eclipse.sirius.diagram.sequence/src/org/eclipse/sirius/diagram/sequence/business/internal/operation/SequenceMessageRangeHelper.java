@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -37,7 +37,7 @@ public class SequenceMessageRangeHelper {
     private static final String TOP_CENTER_TERMINAL = "(0.5, 0.0)"; //$NON-NLS-1$
 
     /**
-     * Sets the range for a normal (non-reflective), horizontal message.
+     * Sets the range for a normal (non-reflective and non-oblique), horizontal message.
      * 
      * @param edge
      *            the edge representing the message.
@@ -71,6 +71,18 @@ public class SequenceMessageRangeHelper {
         bendpoints.setPoints(newBendpoints);
     }
 
+    /**
+     * Sets the range for an oblique.
+     * 
+     * @param edge
+     *            the edge representing the message.
+     * @param range
+     *            the final range of the message. In practice it is a range of width 1 for horizontal messages.
+     * @param sourceTop
+     *            the logical vertical position of the top of the source element of the message.
+     * @param targetTop
+     *            the logical vertical position of the top of the target element of the message.
+     */
     public void setMessageRangeForObliqueMessage(Edge edge, Range range, int sourceTop, int targetTop) {
         resetAnchors(edge);
 

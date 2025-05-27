@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -36,8 +36,7 @@ import org.eclipse.sirius.diagram.ui.internal.view.factories.ViewLocationHint;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SequenceSlidableAnchor;
 
 /**
- * Helper class to business code between different kinds of edit parts when
- * inheritance is not possible or inconvenient.
+ * Helper class to business code between different kinds of edit parts when inheritance is not possible or inconvenient.
  * 
  * @author mporhel
  */
@@ -47,8 +46,7 @@ public final class ConnectionAnchorOperation {
     }
 
     /**
-     * If possible, returns an equivalent anchor to the one given, but
-     * horizontally centered on its owner.
+     * If possible, returns an equivalent anchor to the one given, but horizontally centered on its owner.
      * 
      * @param anchor
      *            the anchor.
@@ -59,26 +57,22 @@ public final class ConnectionAnchorOperation {
     }
 
     /**
-     * If possible, returns an equivalent anchor to the one given, but
-     * horizontally centered on its owner north face.
+     * If possible, returns an equivalent anchor to the one given, but horizontally centered on its owner north face.
      * 
      * @param anchor
      *            the anchor.
-     * @return an equivalent anchor horizontally centered on its owner north
-     *         face.
+     * @return an equivalent anchor horizontally centered on its owner north face.
      */
     public static ConnectionAnchor getHorizontallyCenteredAndTopAnchor(ConnectionAnchor anchor) {
         return getCorrectedAnchor(anchor, "(0.5,0)", 0.5); //$NON-NLS-1$
     }
 
     /**
-     * If possible, returns an equivalent anchor to the one given, but
-     * horizontally centered on its owner south face.
+     * If possible, returns an equivalent anchor to the one given, but horizontally centered on its owner south face.
      * 
      * @param anchor
      *            the anchor.
-     * @return an equivalent anchor horizontally centered on its owner north
-     *         face.
+     * @return an equivalent anchor horizontally centered on its owner north face.
      */
     public static ConnectionAnchor getHorizontallyCenteredAndBottomAnchor(ConnectionAnchor anchor) {
         return getCorrectedAnchor(anchor, "(0.5,1)", 0.5); //$NON-NLS-1$
@@ -103,40 +97,39 @@ public final class ConnectionAnchorOperation {
     }
 
     /**
-     * Adjusts the Y location of a request to match the Y location of the source
-     * anchor as stored by ViewLocationHint. This can be used before a call to
-     * {@link #getTargetConnectionAnchor(org.eclipse.gef.ConnectionEditPart)} to
-     * make sure a connection is horizontal.
+     * Adjusts the Y location of a request to match the Y location of the source anchor as stored by ViewLocationHint.
+     * This can be used before a call to {@link #getTargetConnectionAnchor(org.eclipse.gef.ConnectionEditPart)} to make
+     * sure a connection is horizontal.
      * 
      * @param request
      *            the request to modify.
      */
     public static void matchRequestYLocationWithSourceAnchor(DropRequest request) {
-        if (request instanceof Request && !new RequestQuery((Request) request).isSequenceMessageCreation()) {
+        if (request instanceof Request && !new RequestQuery((Request) request).isSequenceMessageCreation() //
+                || request.getLocation() == null) {
             return;
-        } else if (request.getLocation() != null) {
-            Object sourceLocation = ViewLocationHint.getInstance().getData(ViewLocationHint.SOURCE_ANCHOR_LOCATION);
-            if (sourceLocation instanceof Point && request instanceof CreateConnectionRequest createRequest) {
-                EditPart sourceEP = createRequest.getSourceEditPart();
-                EditPart targetEP = createRequest.getTargetEditPart();
-                Point sourceLocationPoint = ((Point) sourceLocation).getCopy();
-                if (!sourceEP.equals(targetEP)) {
-                    // check its oblique
-                    if (createRequest.getNewObject() instanceof MessageCreationTool creationTool && creationTool.getName().endsWith("_Oblique")) { //$NON-NLS-1$
-                        if (request.getLocation().y <= sourceLocationPoint.y) {
-                            // if the mapping is "oblique" and the target is upper than the source, we set Y
-                            request.getLocation().setY(sourceLocationPoint.y);
-                        } else {
-                         // if the mapping is "oblique" and the target is lower than the source, we don't set Y
-                        }
-                    } else {
-                        // Si le mapping est pas oblique, on set le Y (à virer si on veut un truc générique)
+        }
+        Object sourceLocation = ViewLocationHint.getInstance().getData(ViewLocationHint.SOURCE_ANCHOR_LOCATION);
+        if (sourceLocation instanceof Point && request instanceof CreateConnectionRequest createRequest) {
+            EditPart sourceEP = createRequest.getSourceEditPart();
+            EditPart targetEP = createRequest.getTargetEditPart();
+            Point sourceLocationPoint = ((Point) sourceLocation).getCopy();
+            if (!sourceEP.equals(targetEP)) {
+                // check its oblique
+                if (createRequest.getNewObject() instanceof MessageCreationTool creationTool && creationTool.getName().endsWith("_Oblique")) { //$NON-NLS-1$
+                    if (request.getLocation().y <= sourceLocationPoint.y) {
+                        // Set Y if the mapping is "oblique" and the target is upper than the source
                         request.getLocation().setY(sourceLocationPoint.y);
+                    } else {
+                        // Do not set Y if the mapping is "oblique" and the target is lower than the source
                     }
-                } else if (request.getLocation().y <= sourceLocationPoint.y) {
-                    // If the target is upper than the source, we set Y IF the source and target are the same (reflective ?)
+                } else {
+                    // Set Y for non oblique mapping
                     request.getLocation().setY(sourceLocationPoint.y);
                 }
+            } else if (request.getLocation().y <= sourceLocationPoint.y) {
+                // If the target is upper than the source, we set Y IF the source and target are the same (reflective ?)
+                request.getLocation().setY(sourceLocationPoint.y);
             }
         }
     }
@@ -165,9 +158,8 @@ public final class ConnectionAnchorOperation {
     }
 
     /**
-     * During message creation, use the same y location as the corresponding
-     * source connection anchor, stored in ViewLocationHint, to improve user
-     * feedback.
+     * During message creation, use the same y location as the corresponding source connection anchor, stored in
+     * ViewLocationHint, to improve user feedback.
      * 
      * @param self
      *            .

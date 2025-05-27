@@ -310,8 +310,6 @@ public class AbstractNodeEventResizeSelectionValidator {
             result = delimitingMessageRemote != null;
             result = result && respectLowRangeMarginOfParent(prevMessageRemote, msg, newRange);
             result = result && prevMessageRemote != delimitingMessageRemote ? respectLowRangeMarginOfParent(delimitingMessageRemote, msg, newRange) : true;
-           
-
         }
         return result;
     }
@@ -493,8 +491,7 @@ public class AbstractNodeEventResizeSelectionValidator {
                         } else if (requestQuery.isResizeFromTop()) {
                             if (reflexiveStart && requestQuery.isDirectedByMessage()) {
                                 verticalRange = new Range(verticalRange.getLowerBound(), verticalRange.getUpperBound() + requestQuery.getLogicalDelta().y);
-                            } else {
-                                // reflexive or oblique, and resized -> moved message
+                            } else { // reflexive or oblique, and resized -> moved message
                                 verticalRange = verticalRange.shifted(requestQuery.getLogicalDelta().y);
                             }
                         }
