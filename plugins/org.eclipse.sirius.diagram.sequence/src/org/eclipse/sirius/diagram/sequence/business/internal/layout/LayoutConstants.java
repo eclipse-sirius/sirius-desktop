@@ -15,37 +15,33 @@ package org.eclipse.sirius.diagram.sequence.business.internal.layout;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 /**
- * A utility class to centralize all the dimensions ("magic number") used during
- * the layout of sequence diagrams. Unless otherwise stated, all the dimensions
- * and locations are in pixels.
+ * A utility class to centralize all the dimensions ("magic number") used during the layout of sequence diagrams. Unless
+ * otherwise stated, all the dimensions and locations are in pixels.
  * 
  * @author pcdavid, smonnier, mporhel, edugueperoux
  */
 public final class LayoutConstants {
 
     /**
-     * This should be LayoutUtils.SCALE, but we do not want to depend here on
-     * the plug-in where LayoutUtils is defined.
+     * This should be LayoutUtils.SCALE, but we do not want to depend here on the plug-in where LayoutUtils is defined.
      */
     public static final int UNIT = 10;
 
     /**
-     * The minimal amount of vertical space between the bottom of an instance
-     * role and the first element (message or execution) on its root execution
-     * for packing layout.
+     * The minimal amount of vertical space between the bottom of an instance role and the first element (message or
+     * execution) on its root execution for packing layout.
      */
     public static final int TIME_START_OFFSET = 3 * UNIT;
 
     /**
-     * The minimal amount of vertical space between the bottom of an instance
-     * role and the first element (message or execution) on its root execution
-     * for non-packing layout.
+     * The minimal amount of vertical space between the bottom of an instance role and the first element (message or
+     * execution) on its root execution for non-packing layout.
      */
     public static final int TIME_START_MIN_OFFSET = 1 * UNIT;
 
     /**
-     * The minimal amount of vertical space between the last element (message or
-     * execution) on a root execution and the bottom of the root execution.
+     * The minimal amount of vertical space between the last element (message or execution) on a root execution and the
+     * bottom of the root execution.
      */
     public static final int TIME_STOP_OFFSET = 5 * UNIT;
 
@@ -80,8 +76,7 @@ public final class LayoutConstants {
     public static final int MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP = 2 * UNIT;
 
     /**
-     * The minimum margin between the start/finish of an execution and its
-     * first/last child.
+     * The minimum margin between the start/finish of an execution and its first/last child.
      */
     public static final int EXECUTION_CHILDREN_MARGIN = 5;
 
@@ -106,8 +101,7 @@ public final class LayoutConstants {
     public static final int DEFAULT_INTERACTION_USE_HEIGHT = 5 * UNIT;
 
     /**
-     * How much space between the top of a combined fragment and the top of its
-     * first operand.
+     * How much space between the top of a combined fragment and the top of its first operand.
      */
     public static final int COMBINED_FRAGMENT_TITLE_HEIGHT = 3 * UNIT;
 
@@ -132,6 +126,11 @@ public final class LayoutConstants {
     public static final int DEFAULT_EXECUTION_WIDTH = 2 * UNIT;
 
     /**
+     * How much space there is between bendpoints of an oblique message.
+     */
+    public static final int DEFAULT_MESSAGE_OBLIQUE_HEIGHT = 2 * UNIT;
+
+    /**
      * How much space there is between bendpoints of a message to self.
      */
     public static final int MESSAGE_TO_SELF_BENDPOINT_VERTICAL_GAP = UNIT;
@@ -142,8 +141,7 @@ public final class LayoutConstants {
     public static final int MESSAGE_TO_SELF_BENDPOINT_HORIZONTAL_GAP = 3 * UNIT;
 
     /**
-     * How much space there is between bendpoints of a two included messages to
-     * self.
+     * How much space there is between bendpoints of a two included messages to self.
      */
     public static final int MESSAGE_TO_SELF_HORIZONTAL_GAP = 2 * UNIT;
 
@@ -156,8 +154,8 @@ public final class LayoutConstants {
     public static final int[] OPERAND_DASH_STYLE = new int[] { 5, 5 };
 
     /**
-     * Default height of execution after a layout, also the default height of
-     * syncCall/asyncCall execution after creation.
+     * Default height of execution after a layout, also the default height of syncCall/asyncCall execution after
+     * creation.
      */
     public static final int INTERACTION_EXECUTION_MIN_HEIGHT_AFTER_LAYOUT = 50;
 
