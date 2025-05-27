@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import java.util.Optional;
 
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.DragTracker;
 import org.eclipse.gef.Request;
@@ -105,10 +106,39 @@ public class SequenceMessageSelectConnectionEditPartTracker extends SelectConnec
                 fromTop = location.y <= range.getLowerBound() || location.y < range.middleValue();
                 msgToSelfMove = true;
             }
-        } else if (new ISequenceEventQuery(iSequenceEvent).isObliqueMessage()) {
+        } else if (new ISequenceEventQuery(iSequenceEvent).isObliqueMessage() && initialClick.isEmpty()) {
             Point location = getLocation().getCopy();
             GraphicalHelper.screen2logical(location, smep);
+            // Store logical clicked position on button down
+            // Scroll might change before button up.
             initialClick = Optional.of(location.getCopy());
+            Rectangle properLogicalBounds = iSequenceEvent.getProperLogicalBounds();
+            if (properLogicalBounds.width < 0) {
+                // right to left message
+                if (initialClick.get().x <= (properLogicalBounds.right() - properLogicalBounds.width / 4)) {
+                    // move target
+                    initialClick.get().x = 1;
+                } else if (initialClick.get().x >= (properLogicalBounds.left() + properLogicalBounds.width / 4)) {
+                    // move source
+                    initialClick.get().x = -1;
+                } else {
+                    // move message
+                    initialClick.get().x = 0;
+                }
+
+            } else {
+                // left to right message
+                if (initialClick.get().x <= (properLogicalBounds.left() + properLogicalBounds.width / 4)) {
+                    // move source
+                    initialClick.get().x = -1;
+                } else if (initialClick.get().x >= (properLogicalBounds.right() - properLogicalBounds.width / 4)) {
+                    // move target
+                    initialClick.get().x = 1;
+                } else {
+                    // move message
+                    initialClick.get().x = 0;
+                }
+            }
         }
         return res;
     }
@@ -119,6 +149,8 @@ public class SequenceMessageSelectConnectionEditPartTracker extends SelectConnec
      */
     @Override
     protected boolean handleButtonUp(int button) {
+        // Cleanup initial click;
+        initialClick = Optional.empty();
         SequenceCacheDragTrackerHelper.handleButtonUp((IGraphicalEditPart) getSourceEditPart());
         return super.handleButtonUp(button);
     }

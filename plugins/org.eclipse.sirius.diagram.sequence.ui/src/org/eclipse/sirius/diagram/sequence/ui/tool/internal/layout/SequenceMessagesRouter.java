@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -30,6 +30,7 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.gef.requests.BendpointRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
@@ -50,40 +51,53 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
     /**
      * A point, reused for computations to avoid creating many instances.
      */
+    private static final PrecisionPoint BUTTON_DOWN_POINT = new PrecisionPoint();
+
+    /**
+     * A point, reused for computations to avoid creating many instances.
+     */
     private static final PrecisionPoint A_POINT = new PrecisionPoint();
+
+    /**
+     * A point, reused for computations to avoid creating many instances.
+     */
+    private static final PrecisionPoint S_POINT = new PrecisionPoint();
+
+    /**
+     * A point, reused for computations to avoid creating many instances.
+     */
+    private static final PrecisionPoint F_POINT = new PrecisionPoint();
+
+    private static Optional<Connection> dragInProgress = Optional.empty();
 
     /**
      * The constraints associated to each connection to route.
      */
     private Map<Connection, Object> constraints = new WeakHashMap<Connection, Object>();
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void setConstraint(Connection connection, Object constraint) {
+        if (constraint instanceof BendpointRequest br) {
+            Object initialClick = br.getExtendedData().get(SequenceMessageEditPart.MSG_OBLIQUE_CBR_INITAL_CLICK);
+            if (dragInProgress.isEmpty() && initialClick instanceof Point obliqueMsgInitialClick) {
+                BUTTON_DOWN_POINT.setLocation(obliqueMsgInitialClick);
+                dragInProgress = Optional.of(connection);
+            }
+            return;
+        }
         this.constraints.put(connection, constraint);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Object getConstraint(Connection connection) {
         return this.constraints.get(connection);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void remove(Connection connection) {
         this.constraints.remove(connection);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void route(Connection conn) {
         if (!isValidConnection(conn)) {
@@ -122,9 +136,9 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
             Point thirdPoint = targetRef.getCopy();
             double zoom = part == null ? 1.0 : GraphicalHelper.getZoom(part);
 
-            int hGap = getMessageFromPart(part)
-                    .filter(msg -> isReflexiveMessage)
-                    .map(Message::getReflexiveMessageWidth)
+            int hGap = getMessageFromPart(part) //
+                    .filter(msg -> isReflexiveMessage) //
+                    .map(Message::getReflexiveMessageWidth) //
                     .orElse(LayoutConstants.MESSAGE_TO_SELF_BENDPOINT_HORIZONTAL_GAP);
 
             secondPoint.setX(Math.max(sourceRef.x, targetRef.x) + (int) (hGap * zoom));
@@ -137,7 +151,6 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
             points.addPoint(sourceRef);
             points.addPoint(secondPoint);
             points.addPoint(thirdPoint);
-//        } else if (isObliqueMessage) {
         } else {
             conn.translateToRelative(sourceRef);
             points.addPoint(sourceRef);
@@ -191,7 +204,7 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
         anchor.getOwner().getParent().translateToAbsolute(ownerBounds);
         return ownerBounds;
     }
-    
+
     private static Optional<Message> getMessageFromPart(IGraphicalEditPart part) {
         Optional<Message> optMsg = Optional.empty();
         if (part instanceof SequenceMessageEditPart isePart && isePart.getISequenceEvent() instanceof Message msg) {
@@ -203,7 +216,7 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
     private boolean isObliqueMessage(IGraphicalEditPart part) {
         return getMessageFromPart(part).map(Message::isOblique).orElse(false);
     }
-    
+
     private boolean isReflectiveMessage(IGraphicalEditPart part) {
         return getMessageFromPart(part).map(Message::isReflective).orElse(false);
     }
@@ -254,13 +267,7 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
                     align4BendpointsOfMessageToSelf(bendpoints, conn);
                 }
             } else if (isObliqueMessage) {
-                Bendpoint cursorReference = bendpoints.get(1);
-                MessageBendpoints bendpointsObliqueMessage = refreshBendpointsForObliqueMessage(bendpoints, cursorReference);
-                
-                bendpoints.clear();
-                bendpoints.add(bendpointsObliqueMessage.start);
-                bendpoints.add(cursorReference);
-                bendpoints.add(bendpointsObliqueMessage.finish);
+                refreshBendpointsForObliqueMessage(bendpoints, conn);
             } else {
                 /*
                  * The only case where we have more than two bendpoints is when the user has dragged a connection, which
@@ -287,6 +294,16 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
                 bendpoints.add(newEnd);
             }
         } else if (bendpoints.size() == 2) {
+
+            // Do not re-init helper points when routing others messages.
+            if (dragInProgress.isPresent() && (dragInProgress.get() == conn || dragInProgress.get().getParent() == null)) {
+                // Re-init computation points : connection drag is over.
+                A_POINT.setLocation(0, 0);
+                S_POINT.setLocation(0, 0);
+                F_POINT.setLocation(0, 0);
+                dragInProgress = Optional.empty();
+            }
+
             Bendpoint start = bendpoints.get(0);
             Bendpoint end = bendpoints.get(bendpoints.size() - 1);
 
@@ -306,27 +323,77 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
                 }
 
                 bendpoints.add(newStart);
-                // Ensure the message is horizontal.
-//                newEnd.getLocation().setY(newStart.getLocation().y);
+
+                if (!isObliqueMessage) {
+                    // Ensure the message is horizontal.
+                    newEnd.getLocation().setY(newStart.getLocation().y);
+                }
                 bendpoints.add(newEnd);
             }
         }
     }
 
-    private MessageBendpoints refreshBendpointsForObliqueMessage(List<Bendpoint> bendpoints, Bendpoint cursorReference) {
+    private void refreshBendpointsForObliqueMessage(List<Bendpoint> bendpoints, Connection conn) {
+        // Should be computed in policy and passed as a ready to use constraint.
+
         Bendpoint start = bendpoints.get(0);
+        Bendpoint cursorReference = bendpoints.get(1);
         Bendpoint finish = bendpoints.get(bendpoints.size() - 1);
 
-        int deltaStartFinish = finish.getLocation().y - start.getLocation().y;
-        Point preciseStart = new PrecisionPoint(start.getLocation().x, cursorReference.getLocation().y);
-        Bendpoint newStart = new AbsoluteBendpoint(preciseStart);
+        // Compute move type and reference points once (equivalent to handleButtonDown)
+        if (BUTTON_DOWN_POINT.y != 0 && dragInProgress.isPresent() && dragInProgress.get() == conn) {
+            A_POINT.setLocation(BUTTON_DOWN_POINT);
+            BUTTON_DOWN_POINT.setLocation(0, 0);
 
-        Point preciseFinish = new PrecisionPoint(finish.getLocation().x, cursorReference.getLocation().y + deltaStartFinish);
-        Bendpoint newFinish = new AbsoluteBendpoint(preciseFinish);
-        return new MessageBendpoints(newStart, newFinish);
+            S_POINT.setLocation(start.getLocation());
+            F_POINT.setLocation(finish.getLocation());
+        }
+        Bendpoint newStart = start;
+        Bendpoint newFinish = finish;
+        int deltaY = cursorReference.getLocation().y - A_POINT.y;
+
+        int width = finish.getLocation().x - start.getLocation().x;
+        if (width < 0) {
+            if (A_POINT.x == 1) {
+                // Move target
+                Point preciseFinish = new Point(finish.getLocation().x, Math.max(S_POINT.y + 5, F_POINT.y + deltaY));
+                newFinish = new AbsoluteBendpoint(preciseFinish);
+            } else if (A_POINT.x == -1) {
+                // Move source
+                Point preciseStart = new Point(start.getLocation().x, Math.min(F_POINT.y - 5, S_POINT.y + deltaY));
+                newStart = new AbsoluteBendpoint(preciseStart);
+            } else {
+                // Move edge
+                Point preciseStart = new Point(start.getLocation().x, S_POINT.y + deltaY);
+                newStart = new AbsoluteBendpoint(preciseStart);
+
+                Point preciseFinish = new Point(finish.getLocation().x, F_POINT.y + deltaY);
+                newFinish = new AbsoluteBendpoint(preciseFinish);
+            }
+        } else {
+            if (A_POINT.x == -1) {
+                // Move source
+                Point preciseStart = new Point(start.getLocation().x, Math.min(F_POINT.y - 5, S_POINT.y + deltaY));
+                newStart = new AbsoluteBendpoint(preciseStart);
+            } else if (A_POINT.x == 1) {
+                // Move target
+                Point preciseFinish = new Point(finish.getLocation().x, Math.max(S_POINT.y + 5, F_POINT.y + deltaY));
+                newFinish = new AbsoluteBendpoint(preciseFinish);
+            } else {
+                // Move edge
+                Point preciseStart = new Point(start.getLocation().x, S_POINT.y + deltaY);
+                newStart = new AbsoluteBendpoint(preciseStart);
+
+                Point preciseFinish = new Point(finish.getLocation().x, F_POINT.y + deltaY);
+                newFinish = new AbsoluteBendpoint(preciseFinish);
+            }
+        }
+
+        bendpoints.clear();
+        bendpoints.add(newStart);
+        bendpoints.add(cursorReference);
+        bendpoints.add(newFinish);
     }
-
-    private record MessageBendpoints(Bendpoint start, Bendpoint finish) { }
 
     /**
      * Having a connection with 5 bendpoints means that we are working on a message to self. We will compare the

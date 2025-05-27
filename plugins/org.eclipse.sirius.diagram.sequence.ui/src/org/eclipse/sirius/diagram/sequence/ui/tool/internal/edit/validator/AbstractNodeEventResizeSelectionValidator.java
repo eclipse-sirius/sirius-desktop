@@ -480,46 +480,53 @@ public class AbstractNodeEventResizeSelectionValidator {
             Function<ISequenceEvent, Range> futureRangeFunction = new Function<ISequenceEvent, Range>() {
                 @Override
                 public Range apply(ISequenceEvent from) {
-                    Range verticalRange = from.getVerticalRange();
-                    if (host.equals(from)) {
-                        verticalRange = finalRange;
-                    } else if (startMessage.some() && startMessage.get().equals(from)) {
-                        boolean reflexiveStart = startMessage.get().isReflective();
-                        boolean obliqueStart = startMessage.get().isOblique();
-                        if (!reflexiveStart && !obliqueStart) {
-                            verticalRange = new Range(finalRange.getLowerBound(), finalRange.getLowerBound());
-                        } else if (requestQuery.isResizeFromTop()) {
-                            if (reflexiveStart && requestQuery.isDirectedByMessage()) {
-                                verticalRange = new Range(verticalRange.getLowerBound(), verticalRange.getUpperBound() + requestQuery.getLogicalDelta().y);
-                            } else { // reflexive or oblique, and resized -> moved message
-                                verticalRange = verticalRange.shifted(requestQuery.getLogicalDelta().y);
-                            }
-                        }
-                    } else if (endMessage.some() && endMessage.get().equals(from)) {
-                        boolean reflexiveEnd = endMessage.get().isReflective();
-                        boolean obliqueEnd = endMessage.get().isOblique();
-                        if (!reflexiveEnd && !obliqueEnd) {
-                            verticalRange = new Range(finalRange.getUpperBound(), finalRange.getUpperBound());
-                        } else if (requestQuery.isResizeFromBottom()) {
-                            if (reflexiveEnd && requestQuery.isDirectedByMessage()) {
-                                verticalRange = new Range(verticalRange.getLowerBound() + requestQuery.getLogicalDelta().height, verticalRange.getUpperBound());
-                            } else { // reflexive and resized -> moved message
-                                verticalRange = verticalRange.shifted(requestQuery.getLogicalDelta().height);
-                            }
-                        }
-                    } else if (from instanceof Operand && from.equals(host.getParentEvent())) {
-                        // The parent Operand will be resized.
-                        verticalRange = finalRange.grown(LayoutConstants.EXECUTION_CHILDREN_MARGIN).union(verticalRange);
-                    } else if (from instanceof CombinedFragment && host.getParentEvent() != null && from.equals(host.getParentEvent().getParentEvent())) {
-                        // The grand parent CombinedFragment will be resized.
-                        verticalRange = finalRange.shifted(-LayoutConstants.COMBINED_FRAGMENT_TITLE_HEIGHT - LayoutConstants.EXECUTION_CHILDREN_MARGIN).union(verticalRange);
-                    }
-                    return verticalRange;
+                    return getFutureRange(startMessage, endMessage, finalRange, from);
                 }
             };
             invalidPositions.addAll(new PositionsChecker(host.getDiagram(), futureRangeFunction).getInvalidPositions());
             safeMove = invalidPositions.isEmpty();
         }
         return safeMove;
+    }
+
+    private Range getFutureRange(final Option<Message> startMessage, final Option<Message> endMessage, final Range finalRange, ISequenceEvent from) {
+        Range verticalRange = from.getVerticalRange();
+        if (host.equals(from)) {
+            verticalRange = finalRange;
+        } else if (startMessage.some() && startMessage.get().equals(from)) {
+            boolean reflexiveStart = startMessage.get().isReflective();
+            boolean obliqueStart = startMessage.get().isOblique();
+            if (!reflexiveStart && !obliqueStart) {
+                verticalRange = new Range(finalRange.getLowerBound(), finalRange.getLowerBound());
+            } else if (requestQuery.isResizeFromTop()) {
+                boolean isReflexiveMoveDirectedByMessage = reflexiveStart && requestQuery.isDirectedByMessage();
+                boolean isObliqueMoveRirectedByTargetSegment = obliqueStart && requestQuery.isDirectedByMessage() && requestQuery.getObliqueMoveType().isPresent()
+                        && requestQuery.getObliqueMoveType().get() == 1;
+                if (isReflexiveMoveDirectedByMessage || isObliqueMoveRirectedByTargetSegment) {
+                    verticalRange = new Range(verticalRange.getLowerBound(), verticalRange.getUpperBound() + requestQuery.getLogicalDelta().y);
+                } else { // reflexive or oblique, and resized -> moved message
+                    verticalRange = verticalRange.shifted(requestQuery.getLogicalDelta().y);
+                }
+            }
+        } else if (endMessage.some() && endMessage.get().equals(from)) {
+            boolean reflexiveEnd = endMessage.get().isReflective();
+            boolean obliqueEnd = endMessage.get().isOblique();
+            if (!reflexiveEnd && !obliqueEnd) {
+                verticalRange = new Range(finalRange.getUpperBound(), finalRange.getUpperBound());
+            } else if (requestQuery.isResizeFromBottom()) {
+                if (reflexiveEnd && requestQuery.isDirectedByMessage()) {
+                    verticalRange = new Range(verticalRange.getLowerBound() + requestQuery.getLogicalDelta().height, verticalRange.getUpperBound());
+                } else { // reflexive and resized -> moved message
+                    verticalRange = verticalRange.shifted(requestQuery.getLogicalDelta().height);
+                }
+            }
+        } else if (from instanceof Operand && from.equals(host.getParentEvent())) {
+            // The parent Operand will be resized.
+            verticalRange = finalRange.grown(LayoutConstants.EXECUTION_CHILDREN_MARGIN).union(verticalRange);
+        } else if (from instanceof CombinedFragment && host.getParentEvent() != null && from.equals(host.getParentEvent().getParentEvent())) {
+            // The grand parent CombinedFragment will be resized.
+            verticalRange = finalRange.shifted(-LayoutConstants.COMBINED_FRAGMENT_TITLE_HEIGHT - LayoutConstants.EXECUTION_CHILDREN_MARGIN).union(verticalRange);
+        }
+        return verticalRange;
     }
 }
