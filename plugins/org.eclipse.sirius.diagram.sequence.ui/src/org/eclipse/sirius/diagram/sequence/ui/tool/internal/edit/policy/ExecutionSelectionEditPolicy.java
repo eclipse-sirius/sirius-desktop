@@ -18,6 +18,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Stream;
 
@@ -243,7 +244,13 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
         Stream<Message> messagesToReconnect = self.getDiagram().getAllMessages().stream() //
                 .filter(Message.class::isInstance).map(Message.class::cast) //
                 .filter(ise -> !self.getVerticalRange().intersects(ise.getVerticalRange())) //
-                .filter(ise -> movedRange.includes(ise.getVerticalRange())) //
+                .filter(ise -> {
+                    if (ise.isOblique()) {
+                        return movedRange.includesAtLeastOneBound(ise.getVerticalRange());
+                    } else {
+                        return movedRange.includes(ise.getVerticalRange());
+                    }
+                }) //
                 .filter(ise -> validator.getExpansionZone() == null || !validator.getExpansionZone().intersects(ise.getVerticalRange()));
 
         messagesToReconnect.forEach(msg -> {
@@ -421,9 +428,19 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
                 final Range seeRange = ise.getVerticalRange();
                 int lDelta = 0;
                 int uDelta = 0;
+                ISequenceEventQuery iseQuery = new ISequenceEventQuery(ise);
+                // TODO reduces calls to isOblique and isReflexive
+
                 if (seeRange.getLowerBound() == movedBound && doNotMoveSourceOfReturnMessageOfReflexiveSyncCall(self, ise, rq)) {
                     lDelta = height;
-                    if (new ISequenceEventQuery(ise).isReflectiveMessage() && getSelection(ise) == EditPart.SELECTED_NONE) {
+                    if (iseQuery.isReflectiveMessage() && getSelection(ise) == EditPart.SELECTED_NONE) {
+                        // A reflexive message does not have the same lower and
+                        // upper bound but both bound have to be moved like
+                        // "normal" messages
+                        uDelta = height;
+                    }
+
+                    if (iseQuery.isObliqueMessage() && getSelection(ise) == EditPart.SELECTED_NONE) {
                         // A reflexive message does not have the same lower and
                         // upper bound but both bound have to be moved like
                         // "normal" messages
@@ -432,11 +449,21 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
                 }
                 if (seeRange.getUpperBound() == movedBound && doNotMoveTargetOfStartMessageOfReflexiveSyncCall(self, ise, rq)) {
                     uDelta = height;
-                    if (new ISequenceEventQuery(ise).isReflectiveMessage() && getSelection(ise) == EditPart.SELECTED_NONE) {
+                    if (iseQuery.isReflectiveMessage() && getSelection(ise) == EditPart.SELECTED_NONE) {
                         // A reflexive message does not have the same lower and
                         // upper bound but both bound have to be moved like
                         // "normal" messages
                         lDelta = height;
+                    }
+
+                    if (iseQuery.isObliqueMessage()) {
+                        if (getSelection(ise) == EditPart.SELECTED_NONE //
+                                || (rq.isDirectedByMessage() && rq.getObliqueMoveType().isPresent() && rq.getObliqueMoveType().get() == 0)) {
+                            // Oblique message move
+                            lDelta = height;
+                        } else if (rq.isDirectedByMessage() && rq.getObliqueMoveType().isPresent() && rq.getObliqueMoveType().get() == 1) {
+                            // Oblique message target move.
+                        }
                     }
                 }
 
@@ -511,22 +538,24 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
             srcFinder.setReconnection(true);
             srcFinder.setEventsToIgnore(Predicates.in(toIgnore));
             srcFinder.setExpansionZone(validator.getExpansionZone());
-            ISequenceEvent finalSrc = (srcLifeline.get() == selfLifeline && sourceElement == self) ? self : srcFinder.findMostSpecificEvent(newRange);
+            Range lookedRange = newRange;
+            if (message.isOblique()) {
+                lookedRange = new Range(newRange.getLowerBound(), newRange.getLowerBound());
+            }
+            ISequenceEvent finalSrc = (srcLifeline.get() == selfLifeline && sourceElement == self) ? self : srcFinder.findMostSpecificEvent(lookedRange);
             Range finalSrcRange = (srcLifeline.get() == selfLifeline && sourceElement == self) ? thisFinalRange : finalSrc.getVerticalRange();
             smrc.setSource(finalSrc.getNotationView(), new Rectangle(0, finalSrcRange.getLowerBound(), 0, finalSrcRange.width()));
         } else {
             Range finalSrcRange = RangeHelper.verticalRange(sourceElement.getProperLogicalBounds());
             smrc.setSource(sourceElement.getNotationView(), new Rectangle(0, finalSrcRange.getLowerBound(), 0, finalSrcRange.width()));
         }
-
         toIgnore.clear();
+
         if (isReplyMessage && isReflective && Iterables.any(messageEnds, filterCompoundEventEnd) && sourceElement == self) {
-            // Avoid target of the return message of a reflexive sync call to
-            // reconnect on its execution
+            // Avoid target of the return message of a reflexive sync call to reconnect on its execution
             toIgnore.add(self);
         }
-        // if a verticalSpaceExpansion will occurs, ignore ISequenceEvent under
-        // the insertionPoint
+        // if a verticalSpaceExpansion will occurs, ignore ISequenceEvent under the insertionPoint
         if (needVerticalSpaceExpansion(validator, request)) {
             Collection<ISequenceEvent> sequenceEventsUpperToInsertionTime = getSequenceEventsUpperToInsertionTime(sequenceDiagram, validator.getExpansionZone().getLowerBound());
             sequenceEventsUpperToInsertionTime.removeAll(executionsInMove);
@@ -539,7 +568,11 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
             tgtFinder.setReconnection(true);
             tgtFinder.setEventsToIgnore(Predicates.in(toIgnore));
             tgtFinder.setExpansionZone(validator.getExpansionZone());
-            ISequenceEvent finalTgt = (tgtLifeline.get() == selfLifeline && targetElement == self) ? self : tgtFinder.findMostSpecificEvent(newRange);
+            Range lookedRange = newRange;
+            if (message.isOblique()) {
+                lookedRange = new Range(newRange.getUpperBound(), newRange.getUpperBound());
+            }
+            ISequenceEvent finalTgt = (tgtLifeline.get() == selfLifeline && targetElement == self) ? self : tgtFinder.findMostSpecificEvent(lookedRange);
             if (finalTgt == null) {
                 invalidCommand = true;
             } else {
@@ -719,7 +752,9 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
             if (delimitingMessages.size() > 0) {
                 ISequenceEvent callMessage = delimitingMessages.get(0);
                 Range callMsgRange = callMessage.getVerticalRange();
-                if (request.isConstrainedMove()) {
+                RequestQuery requestQuery = new RequestQuery(request);
+                Optional<Integer> obliqueMoveType = requestQuery.getObliqueMoveType();
+                if (request.isConstrainedMove() && obliqueMoveType.isPresent() && obliqueMoveType.get().intValue() == 1) {
                     fullFinalRange = new Range(oldRange.getLowerBound() - callMsgRange.width(), fullFinalRange.getUpperBound());
                 } else {
                     fullFinalRange = new Range(fullFinalRange.getLowerBound() - callMsgRange.width(), fullFinalRange.getUpperBound());
