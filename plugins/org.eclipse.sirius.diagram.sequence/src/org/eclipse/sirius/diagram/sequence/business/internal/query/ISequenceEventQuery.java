@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -261,7 +261,18 @@ public class ISequenceEventQuery {
     public Range getOccupiedRange() {
         Range range = Range.emptyRange();
         for (ISequenceEvent child : event.getSubEvents()) {
-            range = range.union(child.getVerticalRange());
+            Range childRange = child.getVerticalRange();
+            if (child instanceof Message msg && msg.isOblique() && !msg.isReflective()) {
+                // Oblique Message represent asynchronous concept, do not include "the other end".
+                // This currently forbids to remove this child by resizing an execution, to keep consistency with non-oblique message)
+                if (msg.getSourceElement() == this.event) {
+                    childRange = new Range(childRange.getLowerBound(), childRange.getLowerBound());
+                } else if (msg.getTargetElement() == this.event) {
+                    childRange = new Range(childRange.getUpperBound(), childRange.getUpperBound());
+                }
+            }
+
+            range = range.union(childRange);
         }
         return range;
     }
