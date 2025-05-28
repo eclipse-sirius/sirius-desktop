@@ -119,6 +119,7 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
         boolean leftToRight = conn.getSourceAnchor().getReferencePoint().x < conn.getTargetAnchor().getReferencePoint().x;
         boolean msgToSelf = sourceRef.x == targetRef.x && sourceRef.y != targetRef.y || bendpoints.size() >= 4;
         msgToSelf = msgToSelf || isReflexiveMessage;
+        msgToSelf = msgToSelf && (!isObliqueMessage || isReflexiveMessage);
 
         Rectangle sourceOwnerBounds = getAnchorOwnerBounds(conn.getSourceAnchor());
         Rectangle targetOwnerBounds = getAnchorOwnerBounds(conn.getTargetAnchor());
