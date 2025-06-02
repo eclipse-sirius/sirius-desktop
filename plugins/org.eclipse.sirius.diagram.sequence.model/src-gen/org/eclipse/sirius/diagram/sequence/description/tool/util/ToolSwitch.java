@@ -22,6 +22,7 @@ import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.diagram.sequence.description.tool.CombinedFragmentCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.CoveringElementCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ExecutionCreationTool;
+import org.eclipse.sirius.diagram.sequence.description.tool.GateCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleReorderTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.InteractionUseCreationTool;
@@ -462,6 +463,38 @@ public class ToolSwitch<T> {
             }
             return result;
         }
+        case ToolPackage.GATE_CREATION_TOOL: {
+            GateCreationTool gateCreationTool = (GateCreationTool) theEObject;
+            T result = caseGateCreationTool(gateCreationTool);
+            if (result == null) {
+                result = caseNodeCreationDescription(gateCreationTool);
+            }
+            if (result == null) {
+                result = caseSequenceDiagramToolDescription(gateCreationTool);
+            }
+            if (result == null) {
+                result = caseOrderedElementCreationTool(gateCreationTool);
+            }
+            if (result == null) {
+                result = caseMappingBasedToolDescription(gateCreationTool);
+            }
+            if (result == null) {
+                result = caseAbstractToolDescription(gateCreationTool);
+            }
+            if (result == null) {
+                result = caseToolEntry(gateCreationTool);
+            }
+            if (result == null) {
+                result = caseDocumentedElement(gateCreationTool);
+            }
+            if (result == null) {
+                result = caseIdentifiedElement(gateCreationTool);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
         default:
             return defaultCase(theEObject);
         }
@@ -613,6 +646,21 @@ public class ToolSwitch<T> {
      * @generated
      */
     public T caseInstanceRoleReorderTool(InstanceRoleReorderTool object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Gate Creation Tool</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Gate Creation Tool</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseGateCreationTool(GateCreationTool object) {
         return null;
     }
 
