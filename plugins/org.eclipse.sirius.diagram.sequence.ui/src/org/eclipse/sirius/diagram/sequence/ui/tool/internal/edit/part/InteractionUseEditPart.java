@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part;
 
 import java.util.Iterator;
 
+import org.eclipse.draw2d.IFigure;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -23,25 +24,32 @@ import org.eclipse.gef.Request;
 import org.eclipse.gef.requests.SelectionRequest;
 import org.eclipse.gmf.runtime.diagram.core.listener.DiagramEventBroker;
 import org.eclipse.gmf.runtime.diagram.core.listener.NotificationListener;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.Gate;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.description.FrameMapping;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.ExecutionOperations;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.SequenceEditPartsOperations;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.InteractionUseResizableEditPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceLaunchToolEditPolicy;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceNodeCreationPolicy;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.GateItemLocator;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.ui.SequenceNoCopyDragEditPartsTrackerEx;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.NodeCreationEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
 import org.eclipse.sirius.ext.gmf.runtime.diagram.ui.tools.RubberbandDragTracker;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
@@ -121,6 +129,7 @@ public class InteractionUseEditPart extends DNodeContainerEditPart implements IS
     @Override
     protected void createDefaultEditPolicies() {
         super.createDefaultEditPolicies();
+        ExecutionOperations.replaceEditPolicy(this, EditPolicy.CONTAINER_ROLE, new SequenceNodeCreationPolicy(), NodeCreationEditPolicy.class);
 
         // Handle $endBefore for launch tools.
         installEditPolicy(org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants.REQ_LAUNCH_TOOL, new SequenceLaunchToolEditPolicy());
@@ -255,16 +264,22 @@ public class InteractionUseEditPart extends DNodeContainerEditPart implements IS
 
         return figure;
     }
-
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public DragTracker getDragTracker(Request request) {
         if (request instanceof SelectionRequest && ((SelectionRequest) request).isAltKeyPressed()) {
             return new RubberbandDragTracker();
         }
         return new SequenceNoCopyDragEditPartsTrackerEx(this);
+    }
+    
+
+    @Override
+    public IBorderItemLocator createBorderItemLocator(IFigure figure, DDiagramElement vpElementBorderItem) {
+        if (Gate.viewpointElementPredicate().apply(vpElementBorderItem)) {
+            return new GateItemLocator(this, figure);
+        } else {
+            return super.createBorderItemLocator(figure, vpElementBorderItem);
+        }
     }
 
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -31,6 +31,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.operation.RefreshSe
 import org.eclipse.sirius.diagram.sequence.business.internal.tool.ToolCommandBuilder;
 import org.eclipse.sirius.diagram.sequence.description.tool.CombinedFragmentCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ExecutionCreationTool;
+import org.eclipse.sirius.diagram.sequence.description.tool.GateCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.InteractionUseCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ObservationPointCreationTool;
@@ -46,8 +47,7 @@ import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
 
 /**
- * A specialized diagram command factory which knows how to handle the
- * additional variables passed to sequence tools.
+ * A specialized diagram command factory which knows how to handle the additional variables passed to sequence tools.
  * 
  * 
  * @author mporhel
@@ -290,6 +290,8 @@ public final class SequenceDelegatingCommandFactory extends DelegatingDiagramCom
             result = org.eclipse.emf.common.command.UnexecutableCommand.INSTANCE;
         } else if (tool instanceof ObservationPointCreationTool) {
             result = buildObservationPointCreationCommandFromTool(container, (ObservationPointCreationTool) tool);
+        } else if (tool instanceof GateCreationTool) {
+            result = buildGateCreationCommandFromTool(container, (GateCreationTool) tool);
         } else {
             result = super.buildCreateNodeCommandFromTool(container, tool);
         }
@@ -337,6 +339,8 @@ public final class SequenceDelegatingCommandFactory extends DelegatingDiagramCom
             result = org.eclipse.emf.common.command.UnexecutableCommand.INSTANCE;
         } else if (tool instanceof OperandCreationTool) {
             result = buildOperandCreationCommandFromTool(nodeContainer, (OperandCreationTool) tool);
+        } else if (tool instanceof GateCreationTool) {
+            result = buildGateCreationCommandFromTool(nodeContainer, (GateCreationTool) tool);
         } else {
             result = super.buildCreateContainerCommandFromTool(nodeContainer, tool);
         }
@@ -378,6 +382,13 @@ public final class SequenceDelegatingCommandFactory extends DelegatingDiagramCom
 
     private org.eclipse.emf.common.command.Command buildOperandCreationCommandFromTool(DDiagramElementContainer nodeContainer, OperandCreationTool tool) {
         org.eclipse.emf.common.command.Command emfCommand = ToolCommandBuilder.buildCreateOperantCommandFromTool(nodeContainer, tool, startingEndPredecessor, finishingEndPredecessor);
+        SequenceDDiagram diagram = (SequenceDDiagram) nodeContainer.getParentDiagram();
+        emfCommand = emfCommand.chain(CommandFactory.createRecordingCommand(domain, new RefreshSemanticOrderingsOperation(diagram)));
+        return emfCommand;
+    }
+
+    private org.eclipse.emf.common.command.Command buildGateCreationCommandFromTool(DDiagramElementContainer nodeContainer, GateCreationTool tool) {
+        org.eclipse.emf.common.command.Command emfCommand = ToolCommandBuilder.buildCreateGateCommandFromTool(nodeContainer, tool, startingEndPredecessor, finishingEndPredecessor, location);
         SequenceDDiagram diagram = (SequenceDDiagram) nodeContainer.getParentDiagram();
         emfCommand = emfCommand.chain(CommandFactory.createRecordingCommand(domain, new RefreshSemanticOrderingsOperation(diagram)));
         return emfCommand;

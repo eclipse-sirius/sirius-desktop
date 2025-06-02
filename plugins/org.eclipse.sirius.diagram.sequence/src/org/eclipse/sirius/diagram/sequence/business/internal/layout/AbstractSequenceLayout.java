@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,8 +15,11 @@ package org.eclipse.sirius.diagram.sequence.business.internal.layout;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.EndOfLife;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.Gate;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceNode;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.LostMessageEnd;
@@ -29,8 +32,8 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
- * Computes the appropriate graphical locations of sequence events and lifelines
- * on a sequence diagram to reflect the semantic order.
+ * Computes the appropriate graphical locations of sequence events and lifelines on a sequence diagram to reflect the
+ * semantic order.
  * 
  * @param <S>
  *            the layouted element type.
@@ -65,8 +68,7 @@ public abstract class AbstractSequenceLayout<S, T> {
     }
 
     /**
-     * Compute and apply a specific layout. Should be use in a
-     * {@link org.eclipse.emf.transaction.RecordingCommand}.
+     * Compute and apply a specific layout. Should be use in a {@link org.eclipse.emf.transaction.RecordingCommand}.
      * 
      * @param pack
      *            pack the space between instance roles.
@@ -107,13 +109,11 @@ public abstract class AbstractSequenceLayout<S, T> {
     protected abstract T getOldLayoutData(S ise);
 
     /**
-     * Computes the absolute vertical (Y) location for all the messages in the
-     * sequence diagram.
+     * Computes the absolute vertical (Y) location for all the messages in the sequence diagram.
      * 
      * @param pack
      *            pack the diagram
-     * @return a map associating each message edit part to the new absolute
-     *         vertical location it should have.
+     * @return a map associating each message edit part to the new absolute vertical location it should have.
      */
     protected abstract Map<? extends S, T> computeLayout(boolean pack);
 
@@ -121,8 +121,7 @@ public abstract class AbstractSequenceLayout<S, T> {
      * Apply the computed layout.
      * 
      * @param finalRanges
-     *            a map associating each message edit part to the new absolute
-     *            vertical location it should have.
+     *            a map associating each message edit part to the new absolute vertical location it should have.
      * @param pack
      *            pack the diagram
      * 
@@ -177,25 +176,29 @@ public abstract class AbstractSequenceLayout<S, T> {
     }
 
     /**
-     * Check if the current lost end has been created from a tool application.
-     * Tool creation flags will be erased after the first layout.
+     * Check if the current sequence node has been created from a tool application. Tool creation flags will be erased
+     * after the first layout.
      * 
-     * @param lostEnd
-     *            the current end.
+     * @param node
+     *            a sequence node (e.g. LostMessageEnd or Gate).
      * @return true if the end was created by a tool.
      */
-    public static boolean createdFromTool(LostMessageEnd lostEnd) {
+    public static boolean createdFromTool(ISequenceNode node) {
         boolean toolCreated = false;
-        ISequenceElementQuery query = new ISequenceElementQuery(lostEnd);
-        if (query.hasAbsoluteBoundsFlag() && query.getFlaggedAbsoluteBounds().x == LayoutConstants.TOOL_CREATION_FLAG_FROM_SEMANTIC.x) {
-            toolCreated = true;
+        ISequenceElementQuery query = new ISequenceElementQuery(node);
+        if (query.hasAbsoluteBoundsFlag()) {
+            Rectangle flag = query.getFlaggedAbsoluteBounds();
+            if (flag.x == LayoutConstants.TOOL_CREATION_FLAG_FROM_SEMANTIC.x //
+                    || node instanceof Gate && flag.width == LayoutConstants.TOOL_CREATION_FLAG_FROM_SEMANTIC.x) {
+                toolCreated = true;
+            }
         }
         return toolCreated;
     }
 
     /**
-     * Check if the current lost end has been created from a tool application.
-     * Tool creation flags will be erased after the first layout.
+     * Check if the current lost end has been created from a tool application. Tool creation flags will be erased after
+     * the first layout.
      * 
      * @param lostEnd
      *            the current end.

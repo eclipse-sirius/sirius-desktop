@@ -26,6 +26,7 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.Gate;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.LostMessageEnd;
@@ -35,6 +36,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.operation.SetMessag
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.SetVerticalRangeOperation;
 import org.eclipse.sirius.diagram.sequence.ui.Messages;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionEditPart;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.GateEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ISequenceEventEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.LostMessageEndEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageEditPart;
@@ -199,6 +201,10 @@ public final class ExecutionOperations {
         if (target instanceof ISequenceEventEditPart) {
             Range targetRange = SequenceEditPartsOperations.getVerticalRange((ISequenceEventEditPart) target);
             targetBounds = new Rectangle(0, targetRange.getLowerBound(), 0, targetRange.width());
+        } else if (target instanceof GateEditPart gep) {
+            Gate gate = gep.getGate();
+            targetBounds = gate.getProperLogicalBounds().getCopy();
+
         } else {
             targetBounds = target.getFigure().getBounds().getCopy();
             if (target.getFigure().getParent() != null) {
@@ -218,12 +224,15 @@ public final class ExecutionOperations {
         // The source side does not change but we need to compute its bounds.
         IGraphicalEditPart source = (IGraphicalEditPart) msg.getSource();
         Rectangle sourceBounds;
-        if (source instanceof ISequenceEventEditPart) {
-            Range sourceRange = SequenceEditPartsOperations.getVerticalRange((ISequenceEventEditPart) source);
+        if (source instanceof ISequenceEventEditPart isep) {
+            Range sourceRange = SequenceEditPartsOperations.getVerticalRange(isep);
             sourceBounds = new Rectangle(0, sourceRange.getLowerBound(), 0, sourceRange.width());
-        } else if (source instanceof LostMessageEndEditPart) {
-            LostMessageEnd lostMessageEnd = ((LostMessageEndEditPart) source).getLostMessageEnd();
+        } else if (source instanceof LostMessageEndEditPart lep) {
+            LostMessageEnd lostMessageEnd = lep.getLostMessageEnd();
             sourceBounds = lostMessageEnd.getProperLogicalBounds().getCopy();
+        } else if (source instanceof GateEditPart gep) {
+            Gate gate = gep.getGate();
+            sourceBounds = gate.getProperLogicalBounds().getCopy();
         } else {
             throw new RuntimeException(MessageFormat.format(Messages.ExecutionOperations_invalidMessageSource, String.valueOf(source)));
         }

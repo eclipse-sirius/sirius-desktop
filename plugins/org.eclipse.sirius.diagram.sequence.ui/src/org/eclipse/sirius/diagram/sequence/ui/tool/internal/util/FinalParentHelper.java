@@ -131,13 +131,13 @@ public class FinalParentHelper {
     /**
      * Constructor.
      * 
-     * @param self
+     * @param host
      *            the execution which will be resized.
      * @param resizeRequest
      *            the resize query.
      */
-    public FinalParentHelper(AbstractNodeEvent self, RequestQuery resizeRequest) {
-        this.self = Objects.requireNonNull(self);
+    public FinalParentHelper(AbstractNodeEvent host, RequestQuery resizeRequest) {
+        this.self = Objects.requireNonNull(host);
         this.request = Objects.requireNonNull(resizeRequest);
         Preconditions.checkArgument(resizeRequest.isResize());
     }

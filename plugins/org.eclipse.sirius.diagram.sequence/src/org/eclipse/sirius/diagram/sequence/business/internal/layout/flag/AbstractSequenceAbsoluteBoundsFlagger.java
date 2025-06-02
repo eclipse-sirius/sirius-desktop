@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2025 THALES GLOBAL SERVICES and others
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -36,8 +36,7 @@ import com.google.common.collect.Lists;
 public abstract class AbstractSequenceAbsoluteBoundsFlagger {
 
     /**
-     * Compute absolute bounds flags for each delimited sequence events of the
-     * current diagram.
+     * Compute absolute bounds flags for each delimited sequence events of the current diagram.
      */
     public final void flag() {
         for (ISequenceElement ise : getEventsToFlag()) {

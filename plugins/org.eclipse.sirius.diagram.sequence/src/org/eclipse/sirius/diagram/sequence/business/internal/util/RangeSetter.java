@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -28,6 +28,8 @@ import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.EndOfLife;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.Gate;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceNode;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InteractionUse;
@@ -261,8 +263,8 @@ public final class RangeSetter {
     public static void setVerticalRange(Message self, Range range) {
         CacheHelper.clearRangeDependantCaches();
 
-        RangeSetter.handlePotentialLostEnd(self.getSourceElement(), range);
-        RangeSetter.handlePotentialLostEnd(self.getTargetElement(), range);
+        RangeSetter.handlePotentialLostEndOrGate(self.getSourceElement(), range.getLowerBound());
+        RangeSetter.handlePotentialLostEndOrGate(self.getTargetElement(), range.getUpperBound());
 
         Edge edge = self.getNotationEdge();
         SequenceMessageViewQuery query = new SequenceMessageViewQuery(edge);
@@ -282,14 +284,25 @@ public final class RangeSetter {
         RangeSetter.updateBendpoints(edge, firstPointVerticalPosition, lastPointVerticalPosition, deltaFirstPointY, deltaFirstPointYFromTarget, deltaLastPointY, deltaLastPointYFromTarget);
     }
 
-    private static void handlePotentialLostEnd(ISequenceNode end, Range range) {
+    private static void handlePotentialLostEndOrGate(ISequenceNode end, int targetLogicalMiddleValue) {
         if (end instanceof LostMessageEnd) {
             Node node = end.getNotationNode();
             LayoutConstraint layoutConstraint = node.getLayoutConstraint();
             if (layoutConstraint instanceof Bounds) {
                 Bounds bounds = (Bounds) layoutConstraint;
                 int middleValue = bounds.getY() + bounds.getHeight() / 2;
-                RangeSetter.setVerticalRange(node, range.middleValue() - middleValue, bounds.getHeight());
+                RangeSetter.setVerticalRange(node, targetLogicalMiddleValue - middleValue, bounds.getHeight());
+            }
+        } else if (end instanceof Gate g) {
+            ISequenceElement hierarchicalParent = g.getHierarchicalParent();
+            int targetMiddle = targetLogicalMiddleValue - hierarchicalParent.getProperLogicalBounds().y;
+            
+            Node node = end.getNotationNode();
+            LayoutConstraint layoutConstraint = node.getLayoutConstraint();
+            if (layoutConstraint instanceof Bounds) {
+                Bounds bounds = (Bounds) layoutConstraint;
+                int middleValue = bounds.getY() + bounds.getHeight() / 2;
+                RangeSetter.setVerticalRange(node, targetMiddle - middleValue, bounds.getHeight());
             }
         }
     }

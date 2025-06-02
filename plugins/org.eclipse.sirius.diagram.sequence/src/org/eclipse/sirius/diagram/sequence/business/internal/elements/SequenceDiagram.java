@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EClass;
@@ -46,6 +47,7 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Ordering;
 import com.google.common.collect.Sets;
+import com.google.common.collect.Streams;
 
 /**
  * Represents a sequence diagram. This is the root of all sequence elements.
@@ -112,6 +114,8 @@ public class SequenceDiagram extends AbstractSequenceElement {
     private List<Lifeline> allLifelinesCache;
 
     private Collection<LostMessageEnd> allLostMessageEndCache;
+
+    private Collection<Gate> allGatesCache;
 
     private List<Message> allMessagesCache;
 
@@ -343,6 +347,40 @@ public class SequenceDiagram extends AbstractSequenceElement {
             }
         }
         return allLostMessageEnd;
+    }
+
+    /**
+     * Returns all the {@link Node}s in the specified diagram which represent a lost sequence message end.
+     * 
+     * @return the Nodes inside this diagram which represent lost sequence messages end. An empty iterator is returned
+     *         if the diagram is not a sequence diagram.
+     */
+    public Collection<Gate> getAllGates() {
+        Collection<Gate> allGates = null;
+        if (useCache) {
+            // Initialize from cache
+            allGates = allGatesCache;
+        }
+        if (allGates == null) {
+            Collection<Gate> gates = new ArrayList<>();
+
+            Stream<? extends AbstractFrame> gateParents = Streams.concat(getAllCombinedFragments().stream(), getAllInteractionUses().stream());
+            gateParents.forEach(parent -> {
+                gates.addAll(parent.getGates());
+            });
+            Optional<InteractionContainer> interactionContainer = getInteractionContainer();
+            if (interactionContainer.isPresent()) {
+                gates.addAll(interactionContainer.get().getGates());
+            }
+
+            allGates = gates;
+        }
+        if (useCache) {
+            // Store the result
+            allGatesCache = allGates;
+        }
+        return allGates;
+
     }
 
     /**
@@ -823,6 +861,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
         this.allStatesCache = null;
         this.allDelimitedEventsCache = null;
         this.interactionContainerCache = null;
+        this.allGatesCache = null;
         clearOrderedCaches();
     }
 

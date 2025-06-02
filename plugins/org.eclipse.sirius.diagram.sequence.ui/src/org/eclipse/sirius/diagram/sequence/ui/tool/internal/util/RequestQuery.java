@@ -36,6 +36,7 @@ import org.eclipse.sirius.diagram.sequence.description.CreationMessageMapping;
 import org.eclipse.sirius.diagram.sequence.description.DestructionMessageMapping;
 import org.eclipse.sirius.diagram.sequence.description.tool.MessageCreationTool;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionEditPart;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.GateEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceMessageEditPolicy;
 import org.eclipse.sirius.ext.base.Option;
 
@@ -76,6 +77,21 @@ public class RequestQuery extends org.eclipse.sirius.diagram.ui.business.interna
      * @return final bounds of self
      */
     public Rectangle getFinalBounds(ExecutionEditPart self) {
+        Rectangle bounds = self.getFigure().getBounds().getCopy();
+        return getLogicalTransformedRectangle(bounds);
+    }
+
+    /**
+     * Determines the final bounds for this gate (in logical coordinates)
+     * if we accept the specified request. Uses Draw2D information to get the
+     * current bounds.
+     * 
+     * @param self
+     *            {@link AbstractNodeEvent} in move/resize
+     * 
+     * @return final bounds of self
+     */
+     public Rectangle getFinalBounds(GateEditPart self) {
         Rectangle bounds = self.getFigure().getBounds().getCopy();
         return getLogicalTransformedRectangle(bounds);
     }

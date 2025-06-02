@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -34,6 +34,8 @@ public class ISequenceNodeMoveOperation extends AbstractModelChangeOperation<Voi
 
     private final int logicalShift;
 
+    private final int horizontalShift;
+
     /**
      * Constructor.
      * 
@@ -46,6 +48,7 @@ public class ISequenceNodeMoveOperation extends AbstractModelChangeOperation<Voi
         super(Messages.ISequenceNodeMoveOperation_operationName);
         this.seqNodes.add(Objects.requireNonNull(node));
         this.logicalShift = logicalShift;
+        this.horizontalShift = 0;
     }
 
     /**
@@ -61,6 +64,23 @@ public class ISequenceNodeMoveOperation extends AbstractModelChangeOperation<Voi
         Objects.requireNonNull(nodes);
         this.seqNodes.addAll(nodes);
         this.logicalShift = logicalShift;
+        this.horizontalShift = 0;
+    }
+
+    /**
+     * Constructor.
+     * 
+     * @param nodes
+     *            the sequence nodes to move.
+     * @param logicalShift
+     *            the logical shift.
+     */
+    public ISequenceNodeMoveOperation(Collection<ISequenceNode> nodes, int logicalShift, int horizontalShift) {
+        super(Messages.ISequenceNodeMoveOperation_operationName);
+        Objects.requireNonNull(nodes);
+        this.seqNodes.addAll(nodes);
+        this.logicalShift = logicalShift;
+        this.horizontalShift = horizontalShift;
     }
 
     @Override
@@ -71,6 +91,9 @@ public class ISequenceNodeMoveOperation extends AbstractModelChangeOperation<Voi
             if (layoutConstraint instanceof Location && logicalShift != 0) {
                 Location location = (Location) layoutConstraint;
                 location.setY(location.getY() + logicalShift);
+                if (horizontalShift != 0) {
+                    location.setX(location.getX() + horizontalShift);
+                }
             }
         }
         return null;

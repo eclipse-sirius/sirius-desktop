@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2020, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -23,7 +23,9 @@ import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractFrame;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.Gate;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceNode;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Operand;
@@ -53,6 +55,10 @@ public final class CacheHelper {
     private static ConcurrentHashMap<ISequenceEvent, Message> endCompoundMessageCache = new ConcurrentHashMap<>();
 
     private static ConcurrentHashMap<AbstractNodeEvent, ISequenceEvent> nodeEventToHierarchicalParentCache = new ConcurrentHashMap<>();
+
+    private static ConcurrentHashMap<Gate, ISequenceNode> gateToHierarchicalParentCache = new ConcurrentHashMap<>();
+
+    private static ConcurrentHashMap<ISequenceNode, List<Gate>> parentToGateCache = new ConcurrentHashMap<>();
 
     private static ConcurrentHashMap<ISequenceEvent, Option<Operand>> eventToParentOperandCache = new ConcurrentHashMap<>();
 
@@ -121,6 +127,8 @@ public final class CacheHelper {
         eventEndToISequenceEventCache.clear();
         combinedFragmentToOperandsCache.clear();
         operandToCombinedFragmentCache.clear();
+        gateToHierarchicalParentCache.clear();
+        parentToGateCache.clear();
         clearRangeDependantCaches();
     }
 
@@ -232,6 +240,24 @@ public final class CacheHelper {
      */
     public static ConcurrentHashMap<Operand, CombinedFragment> getOperandToCombinedFragmentCache() {
         return operandToCombinedFragmentCache;
+    }
+
+    /**
+     * Get gate parent event cache.
+     * 
+     * @return the cache
+     */
+    public static ConcurrentHashMap<Gate, ISequenceNode> getGateToHierarchicalParentCache() {
+        return gateToHierarchicalParentCache;
+    }
+
+    /**
+     * Get parent to gate cache.
+     * 
+     * @return the cache
+     */
+    public static ConcurrentHashMap<ISequenceNode, List<Gate>> getParentToGatesCache() {
+        return parentToGateCache;
     }
 
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -50,6 +50,7 @@ public class SequenceDiagramAbsoluteBoundsFlagger extends AbstractSequenceAbsolu
             Iterables.addAll(eventsToFlag, diagram.getAllDelimitedSequenceEvents());
             Iterables.addAll(eventsToFlag, diagram.getAllLostMessageEnds());
             Iterables.addAll(eventsToFlag, diagram.getAllInstanceRoles());
+            Iterables.addAll(eventsToFlag, diagram.getAllGates());
         }
         return eventsToFlag;
     }

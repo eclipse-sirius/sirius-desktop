@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -42,6 +42,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDi
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.description.tool.CombinedFragmentCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ExecutionCreationTool;
+import org.eclipse.sirius.diagram.sequence.description.tool.GateCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.InteractionUseCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ObservationPointCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.OperandCreationTool;
@@ -69,8 +70,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
- * A node creation edit policy which invokes the ExecutionCreationTool correctly
- * (with all the proper variables).
+ * A node creation edit policy which invokes the ExecutionCreationTool correctly (with all the proper variables).
  * 
  * @author pcdavid
  */
@@ -93,10 +93,8 @@ public class SequenceNodeCreationPolicy extends NodeCreationEditPolicy {
             AbstractToolDescription tool = getTool(request);
             if (tool instanceof InteractionUseCreationTool || tool instanceof CombinedFragmentCreationTool) {
                 /*
-                 * If the user is trying to create an IU or CF by clicking on a
-                 * lifeline or execution, redirect the request to the diagram,
-                 * but note the original target so that the initial coverage can
-                 * be computed.
+                 * If the user is trying to create an IU or CF by clicking on a lifeline or execution, redirect the
+                 * request to the diagram, but note the original target so that the initial coverage can be computed.
                  */
                 IGraphicalEditPart self = (IGraphicalEditPart) getHost();
                 SequenceDiagramEditPart sdep = EditPartsHelper.getSequenceDiagramPart(self);
@@ -163,11 +161,31 @@ public class SequenceNodeCreationPolicy extends NodeCreationEditPolicy {
                 GraphicalHelper.logical2screen(bottomRight, (IGraphicalEditPart) getHost());
                 request.setSize(new Dimension(LayoutConstants.DEFAULT_EXECUTION_WIDTH, LayoutConstants.DEFAULT_EXECUTION_HEIGHT));
             }
-            CreationUtil creationUtil = new CreationUtil(getDiagramCommandFactory(startingEndPredecessor, startingEndPredecessor, location), getRealLocation(request, parentEditPartToUse),
-                    request.getSize(), getHost());
+            IDiagramCommandFactory diagramCommandFactory = getDiagramCommandFactory(startingEndPredecessor, startingEndPredecessor, location);
+            Point realLocation = getRealLocation(request, parentEditPartToUse);
+            CreationUtil creationUtil = new CreationUtil(diagramCommandFactory, realLocation, request.getSize(), getHost());
             return creationUtil.getNodeCreationCommand(viewnode, tool);
         } else {
             return super.getCreateNodeOnNodeCommand(request, tool, viewnode, parentEditPartToUse);
+        }
+    }
+
+    @Override
+    protected Command getCreateNodeInContainerCommand(CreateRequest request, NodeCreationDescription tool, DDiagramElementContainer viewNodeContainer, EditPart parentEditPartToUse) {
+        if (tool instanceof GateCreationTool) {
+            SequenceDiagram sequenceDiagram = EditPartsHelper.getSequenceDiagram(getHost());
+            SequenceDDiagram diagram = sequenceDiagram.getSequenceDDiagram();
+
+            Point location = request.getLocation().getCopy();
+            GraphicalHelper.screen2logical(location, (IGraphicalEditPart) getHost());
+            EventEnd startingEndPredecessor = SequenceGraphicalHelper.getEndBefore(diagram, location.y);
+
+            IDiagramCommandFactory diagramCommandFactory = getDiagramCommandFactory(startingEndPredecessor, startingEndPredecessor, location);
+            Point realLocation = getRealLocation(request, parentEditPartToUse);
+            CreationUtil creationUtil = new CreationUtil(diagramCommandFactory, realLocation, null, getHost());
+            return creationUtil.getNodeCreationCommand(viewNodeContainer, tool);
+        } else {
+            return super.getCreateNodeInContainerCommand(request, tool, viewNodeContainer, parentEditPartToUse);
         }
     }
 
@@ -190,8 +208,9 @@ public class SequenceNodeCreationPolicy extends NodeCreationEditPolicy {
                 Point location = request.getLocation().getCopy();
                 GraphicalHelper.screen2logical(location, (IGraphicalEditPart) getHost());
 
-                CreationUtil creationUtil = new CreationUtil(request, getDiagramCommandFactory(startingEndPredecessor, startingEndPredecessor, location), getRealLocation(request, getHost()),
-                        getHost());
+                IDiagramCommandFactory diagramCommandFactory = getDiagramCommandFactory(startingEndPredecessor, startingEndPredecessor, location);
+                Point realLocation = getRealLocation(request, getHost());
+                CreationUtil creationUtil = new CreationUtil(request, diagramCommandFactory, realLocation, getHost());
                 result = creationUtil.getContainerCreationDescription((DDiagramElementContainer) viewNodeContainer.eContainer(), tool);
             } else {
                 result = UnexecutableCommand.INSTANCE;

@@ -41,6 +41,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNo
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.EndOfLife;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Execution;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.Gate;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
@@ -106,6 +107,16 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
      * Unconnected lostMessageEnds.
      */
     protected final List<LostMessageEnd> unconnectedLostEnds;
+
+    /**
+     * A map to link an {@link EventEnd} to an attached {@link Gate}.
+     */
+    protected final Map<EventEnd, Gate> gates;
+
+    /**
+     * Unconnected gates.
+     */
+    protected final List<Gate> unconnectedGates;
 
     /**
      * Semantic flagged event ends at creation.
@@ -216,11 +227,10 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
         this.destructors = new HashMap<>();
         this.losts = new HashMap<>();
         this.unconnectedLostEnds = new ArrayList<>();
+        this.gates = new HashMap<>();
+        this.unconnectedGates = new ArrayList<>();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void init(boolean pack) {
         initSortedEventEnds(pack);
@@ -229,13 +239,11 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
         registerEventEnds();
 
         lookForUnconnectedLostEnd();
+        lookForUnconnectedGates();
 
         checkOrderingSync();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Range getOldLayoutData(ISequenceElement ise) {
         Range verticalRange = Range.emptyRange();
@@ -264,9 +272,6 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
         return verticalRange;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected boolean applyComputedLayout(Map<? extends ISequenceElement, Range> finalRanges, boolean pack) {
         boolean applied = false;
@@ -279,6 +284,11 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
             applied = true;
         }
 
+        // Then apply interaction container layout (can have gates))
+        for (InteractionContainer interactionContainer : Iterables.filter(finalRanges.keySet(), InteractionContainer.class)) {
+            applied = layoutInteractionContainer(interactionContainer, finalRanges.get(interactionContainer)) || applied;
+        }
+
         // Then apply computed vertical range on messages
         for (Message smep : Iterables.filter(keySet, Message.class)) {
             final Range newRange = finalRanges.get(smep);
@@ -287,17 +297,11 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
         }
 
         applied = layoutUnconnectedLostMessageEnd() || applied;
-
-        for (InteractionContainer interactionContainer : Iterables.filter(finalRanges.keySet(), InteractionContainer.class)) {
-            applied = layoutInteractionContainer(interactionContainer, finalRanges.get(interactionContainer)) || applied;
-        }
+        applied = layoutUnconnectedGates() || applied;
 
         return applied;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Map<? extends ISequenceElement, Range> computeLayout(boolean pack) {
         LinkedHashMap<ISequenceElement, Range> sequenceEventRanges = new LinkedHashMap<ISequenceElement, Range>();
@@ -328,15 +332,14 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
         return sequenceEventRanges;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void dispose() {
         creators.clear();
         destructors.clear();
         losts.clear();
         unconnectedLostEnds.clear();
+        gates.clear();
+        unconnectedGates.clear();
         toolCreatedEnds.clear();
 
         endToISequencEvents.clear();
@@ -689,7 +692,25 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
                 }
             } else if (losts.containsKey(endBefore)) {
                 beforeGap += losts.get(endBefore).getBounds().height / 2;
+            } else if (gates.containsKey(endBefore) && gates.containsKey(end)) {
+                Gate gateBefore = gates.get(endBefore);
+                Gate gate = gates.get(end);
+                ISequenceElement gateParent = gate.getHierarchicalParent();
+                Rectangle gateParentBounds = gateParent.getProperLogicalBounds();
+                int gateX = gate.getProperLogicalBounds().x;
+                int gateBeforeX = gateBefore.getProperLogicalBounds().x;
+                if (gate.getHierarchicalParent().equals(gateBefore.getHierarchicalParent())) {
+                    if ((gateX <= gateParentBounds.getCenter().x && gateBeforeX <= gateParentBounds.getCenter().x) //
+                            || (gateX >= gateParentBounds.getCenter().x && gateBeforeX >= gateParentBounds.getCenter().x)) { //
+                        beforeGap += gates.get(endBefore).getBounds().height / 2;
+                    }
+                }
+            } else if (gates.containsKey(endBefore) && gates.get(endBefore).getHierarchicalParent() instanceof CombinedFragment cf) {
+                if (end instanceof CompoundEventEnd cee && endToISequencEvents.get(end).contains(cf)) {
+                    beforeGap += gates.get(endBefore).getBounds().height / 2;
+                }
             }
+
         } else {
             beforeGap = pack ? LayoutConstants.TIME_START_OFFSET : LayoutConstants.TIME_START_MIN_OFFSET;
         }
@@ -698,9 +719,22 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
             beforeGap += getTargetFigureMidHeight(destructors.get(end));
         } else if (losts.containsKey(end)) {
             beforeGap += losts.get(end).getBounds().height / 2;
+        } else if (gates.containsKey(endBefore) && gates.containsKey(end)) {
+            Gate gateBefore = gates.get(endBefore);
+            Gate gate = gates.get(end);
+            ISequenceElement gateParent = gate.getHierarchicalParent();
+            Rectangle gateParentBounds = gateParent.getProperLogicalBounds();
+            int gateX = gate.getProperLogicalBounds().x;
+            int gateBeforeX = gateBefore.getProperLogicalBounds().x;
+            if (gate.getHierarchicalParent().equals(gateBefore.getHierarchicalParent())) {
+                if ((gateX <= gateParentBounds.getCenter().x && gateBeforeX <= gateParentBounds.getCenter().x) //
+                        || (gateX >= gateParentBounds.getCenter().x && gateBeforeX >= gateParentBounds.getCenter().x)) { //
+                    beforeGap += gates.get(end).getBounds().height / 2;
+                }
+            }
         }
 
-        // current event : Logically instantaneouse States
+        // current event : Logically instantaneous States
         Collection<ISequenceEvent> endEvents = eventEndToSequenceEvents.apply(end);
         Iterable<State> states = Iterables.filter(endEvents, State.class);
         if (EventEndHelper.PUNCTUAL_COMPOUND_EVENT_END.apply(end) && endEvents.size() == 1 && Iterables.size(states) == 1) {
@@ -778,6 +812,36 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
         return applied;
     }
 
+    private boolean layoutUnconnectedGates() {
+        boolean applied = false;
+        for (Gate gate : unconnectedGates) {
+            if (createdFromTool(gate)) {
+                ISequenceElementQuery query = new ISequenceElementQuery(gate);
+                Rectangle flaggedAbsoluteBounds = query.getFlaggedAbsoluteBounds();
+                int y = flaggedAbsoluteBounds.y;
+                if (y != -1) {
+                    y = y - gate.getHierarchicalParent().getProperLogicalBounds().y;
+                    LayoutConstraint layoutConstraint = gate.getNotationNode().getLayoutConstraint();
+                    if (layoutConstraint instanceof Location l) {
+                        Rectangle bounds = gate.getProperLogicalBounds();
+                        l.setY(y - bounds.height / 2);
+                        applied = true;
+                    }
+                }
+                int x = flaggedAbsoluteBounds.x;
+                if (x != -1) {
+                    x = x - gate.getHierarchicalParent().getProperLogicalBounds().x;
+                    LayoutConstraint layoutConstraint = gate.getNotationNode().getLayoutConstraint();
+                    if (layoutConstraint instanceof Location l) {
+                        l.setX(x);
+                        applied = true;
+                    }
+                }
+            }
+        }
+        return applied;
+    }
+
     private Range computeInteractionContainerLayout(InteractionContainer interactionContainer, Map<ISequenceEvent, Range> lifelinesRanges) {
         Range range = new Range(0, InteractionContainer.DEFAULT_HEIGHT);
         for (Entry<ISequenceEvent, Range> entry : lifelinesRanges.entrySet()) {
@@ -845,19 +909,39 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
         Collection<LostMessageEnd> discoveredLostEnds = new ArrayList<>();
         for (Message knownMsgs : Iterables.filter(iSequenceEventsToEventEnds.keySet(), Message.class)) {
             ISequenceNode sourceElement = knownMsgs.getSourceElement();
-            if (sourceElement instanceof LostMessageEnd) {
-                discoveredLostEnds.add((LostMessageEnd) sourceElement);
+            if (sourceElement instanceof LostMessageEnd lme) {
+                discoveredLostEnds.add(lme);
             }
 
             ISequenceNode targetElement = knownMsgs.getTargetElement();
-            if (targetElement instanceof LostMessageEnd) {
-                discoveredLostEnds.add((LostMessageEnd) targetElement);
+            if (targetElement instanceof LostMessageEnd lme) {
+                discoveredLostEnds.add(lme);
             }
         }
 
         Iterables.removeAll(allLostMessageEnds, discoveredLostEnds);
 
         unconnectedLostEnds.addAll(allLostMessageEnds);
+    }
+
+    private void lookForUnconnectedGates() {
+        Collection<Gate> allGates = new ArrayList<>(sequenceDiagram.getAllGates());
+        Collection<Gate> discoveredGates = new ArrayList<>();
+        for (Message knownMsgs : Iterables.filter(iSequenceEventsToEventEnds.keySet(), Message.class)) {
+            ISequenceNode sourceElement = knownMsgs.getSourceElement();
+            if (sourceElement instanceof Gate g) {
+                discoveredGates.add(g);
+            }
+
+            ISequenceNode targetElement = knownMsgs.getTargetElement();
+            if (targetElement instanceof Gate g) {
+                discoveredGates.add(g);
+            }
+        }
+
+        Iterables.removeAll(allGates, discoveredGates);
+
+        unconnectedGates.addAll(allGates);
     }
 
     /**
@@ -1072,22 +1156,25 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
                 }
             }
 
-            if (ise instanceof Message) {
-                Message smep = (Message) ise;
-                ISequenceNode targetElement = smep.getTargetElement();
+            if (ise instanceof Message msg) {
+                ISequenceNode targetElement = msg.getTargetElement();
                 if (targetElement instanceof InstanceRole) {
-                    creators.put(end, smep);
+                    creators.put(end, msg);
                 } else if (targetElement instanceof EndOfLife) {
-                    destructors.put(end, smep);
-                } else if (targetElement instanceof LostMessageEnd) {
+                    destructors.put(end, msg);
+                } else if (targetElement instanceof LostMessageEnd lme) {
                     lost = true;
-                    losts.put(end, (LostMessageEnd) targetElement);
+                    losts.put(end, lme);
+                } else if (targetElement instanceof Gate g) {
+                    gates.put(end, g);
                 }
 
-                ISequenceNode sourceElement = smep.getSourceElement();
-                if (sourceElement instanceof LostMessageEnd) {
+                ISequenceNode sourceElement = msg.getSourceElement();
+                if (sourceElement instanceof LostMessageEnd lme) {
                     lost = true;
-                    losts.put(end, (LostMessageEnd) sourceElement);
+                    losts.put(end, lme);
+                } else if (sourceElement instanceof Gate g) {
+                    gates.put(end, g);
                 }
             }
         }
@@ -1102,7 +1189,6 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
                     toolCreatedEnds.add(end);
                 } else if (end instanceof CompoundEventEnd) {
                     toolCreatedEnds.add(end);
-                    // TODO
                 }
             }
         }
