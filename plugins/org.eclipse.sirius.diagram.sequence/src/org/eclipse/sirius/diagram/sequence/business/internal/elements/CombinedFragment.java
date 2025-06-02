@@ -120,7 +120,9 @@ public class CombinedFragment extends AbstractFrame {
 
     @Override
     public List<ISequenceEvent> getSubEvents() {
-        return Lists.newArrayList(Iterables.filter(getOperands(), ISequenceEvent.class));
+        ArrayList<ISequenceEvent> iSequenceEvents = Lists.newArrayList(Iterables.filter(getOperands(), ISequenceEvent.class));
+        iSequenceEvents.addAll(Lists.newArrayList(Iterables.filter(getGates(), ISequenceEvent.class)));
+        return iSequenceEvents;
     }
 
     /**
@@ -208,5 +210,45 @@ public class CombinedFragment extends AbstractFrame {
         // A combined fragment always have at least one operand
         int lastIndex = getOperands().size() - 1;
         return getOperand(lastIndex).get();
+    }
+
+    /**
+     * Get the operands of the current combined fragment.
+     * 
+     * @return the operands of the current combined fragment.
+     */
+    public List<Gate> getGates() {
+        List<Gate> result = null;
+        // if (CacheHelper.isStructuralCacheEnabled()) {
+        // result = CacheHelper.getCombinedFragmentToOperandsCache().get(this);
+        // }
+
+        if (result == null) {
+            result = new ArrayList<>();
+            Predicate<View> compartementView = new Predicate<View>() {
+
+                @Override
+                public boolean apply(View input) {
+                    return input.getType().equals(Integer.toString(Gate.VISUAL_ID));
+                }
+            };
+            // The combined fragment contains a compartment that contains the
+            // operands
+            for (View view : Iterables.filter(Iterables.filter(this.view.eContents(), View.class), compartementView)) {
+                // Filtering compartments
+                // for (View viewChild : Iterables.filter(view.eContents(), View.class)) {
+                    // Filtering operands
+                Option<Gate> gate = ISequenceElementAccessor.getGate(view);
+                    if (gate.some()) {
+                        result.add(gate.get());
+                    }
+                    // }
+            }
+            Collections.sort(result, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
+            // if (CacheHelper.isStructuralCacheEnabled()) {
+            // CacheHelper.getCombinedFragmentToOperandsCache().put(this, result);
+            // }
+        }
+        return result;
     }
 }

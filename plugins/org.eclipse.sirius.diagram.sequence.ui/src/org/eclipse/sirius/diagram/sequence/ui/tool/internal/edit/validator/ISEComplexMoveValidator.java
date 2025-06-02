@@ -398,7 +398,7 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
 
         // If parent operand is moved too, no check for source/target validity :
         // it will not change.
-        if (!(parentOperand.some() && movedElements.contains(parentOperand.get()))) {
+        if (!(parentOperand.some() && movedElements.contains(parentOperand.get())) && !(message.getSourceElement() instanceof Gate) && !(message.getTargetElement() instanceof Gate)) {
 
             ISequenceEvent potentialSource = getMessageEnd(message, message.getSourceLifeline(), parentOperand);
             ISequenceEvent potentialTarget = getMessageEnd(message, message.getTargetLifeline(), parentOperand);

@@ -23,6 +23,7 @@ import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Execution;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.Gate;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InteractionUse;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
@@ -56,6 +57,7 @@ public final class ParentOperandFinder {
         types.add(InteractionUse.class);
         types.add(CombinedFragment.class);
         types.add(Message.class);
+        types.add(Gate.class);
     }
 
     private Function<ISequenceEvent, Range> rangeFunction = ISequenceEvent.VERTICAL_RANGE;
