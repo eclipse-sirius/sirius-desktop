@@ -35,6 +35,7 @@ import org.eclipse.sirius.diagram.sequence.description.EndOfLifeMapping;
 import org.eclipse.sirius.diagram.sequence.description.EventMapping;
 import org.eclipse.sirius.diagram.sequence.description.ExecutionMapping;
 import org.eclipse.sirius.diagram.sequence.description.FrameMapping;
+import org.eclipse.sirius.diagram.sequence.description.GateMapping;
 import org.eclipse.sirius.diagram.sequence.description.InstanceRoleMapping;
 import org.eclipse.sirius.diagram.sequence.description.InteractionContainerMapping;
 import org.eclipse.sirius.diagram.sequence.description.InteractionUseMapping;
@@ -721,6 +722,38 @@ public class DescriptionSwitch<T> {
             }
             return result;
         }
+        case DescriptionPackage.GATE_MAPPING: {
+            GateMapping gateMapping = (GateMapping) theEObject;
+            T result = caseGateMapping(gateMapping);
+            if (result == null) {
+                result = caseNodeMapping(gateMapping);
+            }
+            if (result == null) {
+                result = caseAbstractNodeMapping(gateMapping);
+            }
+            if (result == null) {
+                result = caseDragAndDropTargetDescription(gateMapping);
+            }
+            if (result == null) {
+                result = caseDiagramElementMapping(gateMapping);
+            }
+            if (result == null) {
+                result = caseDocumentedElement(gateMapping);
+            }
+            if (result == null) {
+                result = caseRepresentationElementMapping(gateMapping);
+            }
+            if (result == null) {
+                result = casePasteTargetDescription(gateMapping);
+            }
+            if (result == null) {
+                result = caseIdentifiedElement(gateMapping);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
         default:
             return defaultCase(theEObject);
         }
@@ -1020,6 +1053,20 @@ public class DescriptionSwitch<T> {
      * @generated
      */
     public T caseInteractionContainerMapping(InteractionContainerMapping object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Gate Mapping</em>'. <!-- begin-user-doc -->
+     * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Gate Mapping</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseGateMapping(GateMapping object) {
         return null;
     }
 

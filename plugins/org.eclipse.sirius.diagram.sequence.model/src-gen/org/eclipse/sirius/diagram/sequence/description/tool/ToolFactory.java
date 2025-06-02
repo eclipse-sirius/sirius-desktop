@@ -97,6 +97,14 @@ public interface ToolFactory extends EFactory {
     InstanceRoleReorderTool createInstanceRoleReorderTool();
 
     /**
+     * Returns a new object of class '<em>Gate Creation Tool</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Gate Creation Tool</em>'.
+     * @generated
+     */
+    GateCreationTool createGateCreationTool();
+
+    /**
      * Returns a new object of class '<em>Observation Point Creation Tool</em>'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *

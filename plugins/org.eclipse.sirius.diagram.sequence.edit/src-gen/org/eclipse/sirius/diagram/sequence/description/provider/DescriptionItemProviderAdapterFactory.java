@@ -464,6 +464,30 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     }
 
     /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.diagram.sequence.description.GateMapping} instances. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     */
+    protected GateMappingItemProvider gateMappingItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.eclipse.sirius.diagram.sequence.description.GateMapping}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createGateMappingAdapter() {
+        if (gateMappingItemProvider == null) {
+            gateMappingItemProvider = new GateMappingItemProvider(this);
+        }
+
+        return gateMappingItemProvider;
+    }
+
+    /**
      * This returns the root adapter factory that contains this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
@@ -610,6 +634,9 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
         }
         if (interactionContainerMappingItemProvider != null) {
             interactionContainerMappingItemProvider.dispose();
+        }
+        if (gateMappingItemProvider != null) {
+            gateMappingItemProvider.dispose();
         }
     }
 

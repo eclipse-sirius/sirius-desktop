@@ -31,6 +31,7 @@ import org.eclipse.sirius.diagram.sequence.description.EndOfLifeMapping;
 import org.eclipse.sirius.diagram.sequence.description.EventMapping;
 import org.eclipse.sirius.diagram.sequence.description.ExecutionMapping;
 import org.eclipse.sirius.diagram.sequence.description.FrameMapping;
+import org.eclipse.sirius.diagram.sequence.description.GateMapping;
 import org.eclipse.sirius.diagram.sequence.description.InstanceRoleMapping;
 import org.eclipse.sirius.diagram.sequence.description.InteractionContainerMapping;
 import org.eclipse.sirius.diagram.sequence.description.InteractionUseMapping;
@@ -195,6 +196,13 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     private EClass interactionContainerMappingEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass gateMappingEClass = null;
 
     /**
      * Creates an instance of the model <b>Package</b>, registered with {@link org.eclipse.emf.ecore.EPackage.Registry
@@ -588,6 +596,16 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     @Override
+    public EClass getGateMapping() {
+        return gateMappingEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public DescriptionFactory getDescriptionFactory() {
         return (DescriptionFactory) getEFactoryInstance();
     }
@@ -661,6 +679,8 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         observationPointMappingEClass = createEClass(DescriptionPackage.OBSERVATION_POINT_MAPPING);
 
         interactionContainerMappingEClass = createEClass(DescriptionPackage.INTERACTION_CONTAINER_MAPPING);
+
+        gateMappingEClass = createEClass(DescriptionPackage.GATE_MAPPING);
     }
 
     /**
@@ -727,6 +747,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         operandMappingEClass.getESuperTypes().add(this.getDelimitedEventMapping());
         observationPointMappingEClass.getESuperTypes().add(theDescriptionPackage_1.getNodeMapping());
         interactionContainerMappingEClass.getESuperTypes().add(theDescriptionPackage_1.getContainerMapping());
+        gateMappingEClass.getESuperTypes().add(theDescriptionPackage_1.getNodeMapping());
 
         // Initialize classes and features; add operations and parameters
         initEClass(sequenceDiagramDescriptionEClass, SequenceDiagramDescription.class, "SequenceDiagramDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
@@ -801,6 +822,8 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
         initEClass(interactionContainerMappingEClass, InteractionContainerMapping.class, "InteractionContainerMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
                 EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+
+        initEClass(gateMappingEClass, GateMapping.class, "GateMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
         // Create annotations
         // http://www.eclipse.org/sirius/interpreted/expression/returnType
