@@ -274,6 +274,30 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
 
     /**
      * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.diagram.sequence.description.tool.GateCreationTool} instances. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected GateCreationToolItemProvider gateCreationToolItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.eclipse.sirius.diagram.sequence.description.tool.GateCreationTool}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createGateCreationToolAdapter() {
+        if (gateCreationToolItemProvider == null) {
+            gateCreationToolItemProvider = new GateCreationToolItemProvider(this);
+        }
+
+        return gateCreationToolItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.sequence.description.tool.ObservationPointCreationTool} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -506,6 +530,9 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
         }
         if (instanceRoleReorderToolItemProvider != null) {
             instanceRoleReorderToolItemProvider.dispose();
+        }
+        if (gateCreationToolItemProvider != null) {
+            gateCreationToolItemProvider.dispose();
         }
     }
 
