@@ -22,6 +22,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractSequenceNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Execution;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
@@ -119,7 +120,7 @@ public class FinalParentHelper {
         }
     }
 
-    private final AbstractNodeEvent self;
+    private final AbstractSequenceNodeEvent self;
 
     private final RequestQuery request;
 
@@ -135,7 +136,7 @@ public class FinalParentHelper {
      * @param resizeRequest
      *            the resize query.
      */
-    public FinalParentHelper(AbstractNodeEvent self, RequestQuery resizeRequest) {
+    public FinalParentHelper(AbstractSequenceNodeEvent self, RequestQuery resizeRequest) {
         this.self = Objects.requireNonNull(self);
         this.request = Objects.requireNonNull(resizeRequest);
         Preconditions.checkArgument(resizeRequest.isResize());

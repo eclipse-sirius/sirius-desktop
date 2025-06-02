@@ -48,6 +48,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNo
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.EndOfLife;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Execution;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.Gate;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceNode;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
@@ -470,7 +471,9 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
             EventFinder endFinder = new EventFinder(endLifeline.get());
             endFinder.setReconnection(true);
 
-            if (!reflectiveMessage) {
+            if (currentEnd instanceof Gate) {
+                finalEnd = (ISequenceEvent) currentEnd;
+            } else if (!reflectiveMessage) {
                 finalEnd = endFinder.findMostSpecificEvent(finalRange);
             } else {
                 finalEnd = (ISequenceEvent) currentEnd;
@@ -521,7 +524,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
                     invalidCommand = true;
                 }
             }
-        } else if (currentEnd instanceof LostMessageEnd || currentEnd instanceof EndOfLife || currentEnd instanceof InstanceRole) {
+        } else if (currentEnd instanceof LostMessageEnd || currentEnd instanceof EndOfLife || currentEnd instanceof InstanceRole || currentEnd instanceof Gate) {
             Rectangle finalEndBounds = currentEnd.getProperLogicalBounds().getCopy();
             if (source) {
                 smrc.setSource(currentEnd.getNotationView(), finalEndBounds);
@@ -788,6 +791,9 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
 
         SequenceMessageEditPart thisEvent = (SequenceMessageEditPart) getHost();
         Message message = (Message) thisEvent.getISequenceEvent();
+        if (message.getSourceElement() instanceof Gate || message.getTargetElement() instanceof Gate) {
+            return true;
+        }
         Option<Lifeline> sourceLifeline = message.getSourceLifeline();
         Option<Lifeline> targetLifeline = message.getTargetLifeline();
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2025 CEA.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -40,7 +40,6 @@ import org.eclipse.sirius.diagram.sequence.business.internal.ordering.EventEndHe
 import org.eclipse.sirius.diagram.sequence.business.internal.query.ISequenceEventQuery;
 import org.eclipse.sirius.ext.base.Option;
 
-import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
@@ -77,7 +76,7 @@ public final class SubEventsHelper {
      *            a supported {@link ISequenceEvent} : {@linkLifeline}, {@link AbstractNodeEvent}, {@link Operand}.
      */
     public SubEventsHelper(ISequenceEvent event) {
-        Preconditions.checkArgument(types.contains(event.getClass()));
+        // Preconditions.checkArgument(types.contains(event.getClass()));
         Objects.requireNonNull(event);
         this.parentEvent = event;
         this.parentRange = event.getVerticalRange();
