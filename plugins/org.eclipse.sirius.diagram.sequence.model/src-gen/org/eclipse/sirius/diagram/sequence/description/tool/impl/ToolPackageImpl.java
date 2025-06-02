@@ -24,6 +24,7 @@ import org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageIm
 import org.eclipse.sirius.diagram.sequence.description.tool.CombinedFragmentCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.CoveringElementCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ExecutionCreationTool;
+import org.eclipse.sirius.diagram.sequence.description.tool.GateCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleReorderTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.InteractionUseCreationTool;
@@ -119,6 +120,13 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * @generated
      */
     private EClass instanceRoleReorderToolEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass gateCreationToolEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -479,6 +487,16 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * @generated
      */
     @Override
+    public EClass getGateCreationTool() {
+        return gateCreationToolEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EClass getObservationPointCreationTool() {
         return observationPointCreationToolEClass;
     }
@@ -584,6 +602,8 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         createEReference(instanceRoleReorderToolEClass, ToolPackage.INSTANCE_ROLE_REORDER_TOOL__PREDECESSOR_BEFORE);
         createEReference(instanceRoleReorderToolEClass, ToolPackage.INSTANCE_ROLE_REORDER_TOOL__PREDECESSOR_AFTER);
         createEReference(instanceRoleReorderToolEClass, ToolPackage.INSTANCE_ROLE_REORDER_TOOL__INSTANCE_ROLE_MOVED);
+
+        gateCreationToolEClass = createEClass(ToolPackage.GATE_CREATION_TOOL);
     }
 
     /**
@@ -653,6 +673,9 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         reorderToolEClass.getESuperTypes().add(this.getSequenceDiagramToolDescription());
         instanceRoleReorderToolEClass.getESuperTypes().add(theToolPackage_2.getAbstractToolDescription());
         instanceRoleReorderToolEClass.getESuperTypes().add(this.getSequenceDiagramToolDescription());
+        gateCreationToolEClass.getESuperTypes().add(theToolPackage_1.getNodeCreationDescription());
+        gateCreationToolEClass.getESuperTypes().add(this.getSequenceDiagramToolDescription());
+        gateCreationToolEClass.getESuperTypes().add(this.getOrderedElementCreationTool());
 
         // Initialize classes and features; add operations and parameters
         initEClass(sequenceDiagramToolDescriptionEClass, SequenceDiagramToolDescription.class, "SequenceDiagramToolDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
@@ -731,6 +754,8 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         initEReference(getInstanceRoleReorderTool_InstanceRoleMoved(), theToolPackage_2.getInitialOperation(), null, "instanceRoleMoved", null, 1, 1, InstanceRoleReorderTool.class, //$NON-NLS-1$
                 !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+
+        initEClass(gateCreationToolEClass, GateCreationTool.class, "GateCreationTool", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
         // Create annotations
         // toolVariable
