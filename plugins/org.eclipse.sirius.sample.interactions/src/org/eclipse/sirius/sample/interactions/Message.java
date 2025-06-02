@@ -18,20 +18,18 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Message</b></em>'. <!-- end-user-doc -->
  *
- * <!-- begin-model-doc --> A message sent from a participant to another (or
- * itself). <!-- end-model-doc -->
+ * <!-- begin-model-doc -->
+ * A message sent from a participant to another (or itself).
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.sirius.sample.interactions.Message#getName <em>Name
- * </em>}</li>
- * <li>{@link org.eclipse.sirius.sample.interactions.Message#getSendingEnd <em>
- * Sending End</em>}</li>
- * <li>{@link org.eclipse.sirius.sample.interactions.Message#getReceivingEnd
- * <em>Receiving End</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.Message#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.Message#getSendingEnd <em>Sending End</em>}</li>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.Message#getReceivingEnd <em>Receiving End</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getMessage()
  * @model abstract="true"
@@ -56,12 +54,9 @@ public interface Message extends EObject {
     String getName();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.sample.interactions.Message#getName
-     * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @param value
-     *            the new value of the '<em>Name</em>' attribute.
+     * Sets the value of the '{@link org.eclipse.sirius.sample.interactions.Message#getName <em>Name</em>}' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * @param value the new value of the '<em>Name</em>' attribute.
      * @see #getName()
      * @generated
      */
@@ -85,13 +80,10 @@ public interface Message extends EObject {
     MessageEnd getSendingEnd();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.sample.interactions.Message#getSendingEnd
-     * <em>Sending End</em>}' reference. <!-- begin-user-doc --> <!--
+     * Sets the value of the '{@link org.eclipse.sirius.sample.interactions.Message#getSendingEnd <em>Sending End</em>}' reference.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
-     * @param value
-     *            the new value of the '<em>Sending End</em>' reference.
+     * @param value the new value of the '<em>Sending End</em>' reference.
      * @see #getSendingEnd()
      * @generated
      */
@@ -115,13 +107,10 @@ public interface Message extends EObject {
     MessageEnd getReceivingEnd();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.sample.interactions.Message#getReceivingEnd
-     * <em>Receiving End</em>}' reference. <!-- begin-user-doc --> <!--
+     * Sets the value of the '{@link org.eclipse.sirius.sample.interactions.Message#getReceivingEnd <em>Receiving End</em>}' reference.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
-     * @param value
-     *            the new value of the '<em>Receiving End</em>' reference.
+     * @param value the new value of the '<em>Receiving End</em>' reference.
      * @see #getReceivingEnd()
      * @generated
      */

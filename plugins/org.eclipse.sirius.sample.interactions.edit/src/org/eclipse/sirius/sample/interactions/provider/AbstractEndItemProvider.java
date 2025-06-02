@@ -38,8 +38,8 @@ import org.eclipse.sirius.sample.interactions.InteractionsPackage;
  *
  * @generated
  */
-public class AbstractEndItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-IItemPropertySource {
+public class AbstractEndItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -68,9 +68,9 @@ IItemPropertySource {
     }
 
     /**
-     * This adds a property descriptor for the Name feature. <!-- begin-user-doc
+     * This adds a property descriptor for the Name feature.
+     * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
@@ -86,31 +86,30 @@ IItemPropertySource {
      * @generated
      */
     protected void addContextPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_AbstractEnd_context_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_AbstractEnd_context_feature", "_UI_AbstractEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                InteractionsPackage.Literals.ABSTRACT_END__CONTEXT, true, false, true, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_AbstractEnd_context_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_AbstractEnd_context_feature", "_UI_AbstractEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        InteractionsPackage.Literals.ABSTRACT_END__CONTEXT, true, false, true, null, null, null));
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
+     * This returns the label text for the adapted class.
+     * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((AbstractEnd) object).getName();
         return label == null || label.length() == 0 ? getString("_UI_AbstractEnd_type") : //$NON-NLS-1$
-            getString("_UI_AbstractEnd_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_AbstractEnd_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
+     * This handles model notifications by calling {@link #updateChildren} to update any cached
+     * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
      * @generated
      */
     @Override

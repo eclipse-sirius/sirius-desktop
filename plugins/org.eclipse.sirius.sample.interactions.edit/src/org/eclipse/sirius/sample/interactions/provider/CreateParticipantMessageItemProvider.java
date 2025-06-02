@@ -21,10 +21,8 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.sirius.sample.interactions.CreateParticipantMessage;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.sample.interactions.CreateParticipantMessage}
- * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- *
+ * This is the item provider adapter for a {@link org.eclipse.sirius.sample.interactions.CreateParticipantMessage} object.
+ * <!-- begin-user-doc --> <!-- end-user-doc -->
  * @generated
  */
 public class CreateParticipantMessageItemProvider extends MessageItemProvider {
@@ -54,9 +52,9 @@ public class CreateParticipantMessageItemProvider extends MessageItemProvider {
     }
 
     /**
-     * This returns CreateParticipantMessage.gif. <!-- begin-user-doc --> <!--
+     * This returns CreateParticipantMessage.gif.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -65,24 +63,23 @@ public class CreateParticipantMessageItemProvider extends MessageItemProvider {
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
+     * This returns the label text for the adapted class.
+     * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((CreateParticipantMessage) object).getName();
         return label == null || label.length() == 0 ? getString("_UI_CreateParticipantMessage_type") : //$NON-NLS-1$
-            getString("_UI_CreateParticipantMessage_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_CreateParticipantMessage_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
+     * This handles model notifications by calling {@link #updateChildren} to update any cached
+     * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
      * @generated
      */
     @Override

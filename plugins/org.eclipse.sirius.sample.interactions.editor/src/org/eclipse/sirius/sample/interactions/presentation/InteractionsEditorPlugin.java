@@ -41,8 +41,8 @@ public final class InteractionsEditorPlugin extends EMFPlugin {
     private static Implementation plugin;
 
     /**
-     * Create the instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Create the instance.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     public InteractionsEditorPlugin() {
@@ -50,26 +50,26 @@ public final class InteractionsEditorPlugin extends EMFPlugin {
     }
 
     /**
-     * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc
+     * Returns the singleton instance of the Eclipse plugin.
+     * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
      * @return the singleton instance.
      * @generated
      */
     @Override
     public ResourceLocator getPluginResourceLocator() {
-        return InteractionsEditorPlugin.plugin;
+        return plugin;
     }
 
     /**
-     * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc
+     * Returns the singleton instance of the Eclipse plugin.
+     * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
      * @return the singleton instance.
      * @generated
      */
     public static Implementation getPlugin() {
-        return InteractionsEditorPlugin.plugin;
+        return plugin;
     }
 
     /**
@@ -80,8 +80,8 @@ public final class InteractionsEditorPlugin extends EMFPlugin {
      */
     public static class Implementation extends EclipseUIPlugin {
         /**
-         * Creates an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * Creates an instance.
+         * <!-- begin-user-doc --> <!-- end-user-doc -->
          * @generated
          */
         public Implementation() {
@@ -89,7 +89,7 @@ public final class InteractionsEditorPlugin extends EMFPlugin {
 
             // Remember the static instance.
             //
-            InteractionsEditorPlugin.plugin = this;
+            plugin = this;
         }
     }
 

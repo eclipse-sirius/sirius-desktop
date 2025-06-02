@@ -25,10 +25,8 @@ import org.eclipse.sirius.sample.interactions.FeatureAccessMessage;
 import org.eclipse.sirius.sample.interactions.InteractionsPackage;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.sample.interactions.FeatureAccessMessage} object.
+ * This is the item provider adapter for a {@link org.eclipse.sirius.sample.interactions.FeatureAccessMessage} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- *
  * @generated
  */
 public class FeatureAccessMessageItemProvider extends MessageItemProvider {
@@ -66,10 +64,10 @@ public class FeatureAccessMessageItemProvider extends MessageItemProvider {
      * @generated
      */
     protected void addIsWritePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_FeatureAccessMessage_isWrite_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_FeatureAccessMessage_isWrite_feature", "_UI_FeatureAccessMessage_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                InteractionsPackage.Literals.FEATURE_ACCESS_MESSAGE__IS_WRITE, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_FeatureAccessMessage_isWrite_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_FeatureAccessMessage_isWrite_feature", "_UI_FeatureAccessMessage_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        InteractionsPackage.Literals.FEATURE_ACCESS_MESSAGE__IS_WRITE, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -79,16 +77,16 @@ public class FeatureAccessMessageItemProvider extends MessageItemProvider {
      * @generated
      */
     protected void addFeaturePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_FeatureAccessMessage_feature_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_FeatureAccessMessage_feature_feature", "_UI_FeatureAccessMessage_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                InteractionsPackage.Literals.FEATURE_ACCESS_MESSAGE__FEATURE, true, false, true, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_FeatureAccessMessage_feature_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_FeatureAccessMessage_feature_feature", "_UI_FeatureAccessMessage_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        InteractionsPackage.Literals.FEATURE_ACCESS_MESSAGE__FEATURE, true, false, true, null, null, null));
     }
 
     /**
-     * This returns FeatureAccessMessage.gif. <!-- begin-user-doc --> <!--
+     * This returns FeatureAccessMessage.gif.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -97,24 +95,23 @@ public class FeatureAccessMessageItemProvider extends MessageItemProvider {
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
+     * This returns the label text for the adapted class.
+     * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((FeatureAccessMessage) object).getName();
         return label == null || label.length() == 0 ? getString("_UI_FeatureAccessMessage_type") : //$NON-NLS-1$
-            getString("_UI_FeatureAccessMessage_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_FeatureAccessMessage_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
+     * This handles model notifications by calling {@link #updateChildren} to update any cached
+     * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
      * @generated
      */
     @Override

@@ -19,18 +19,17 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Model</b></em>'. <!-- end-user-doc -->
  *
- * <!-- begin-model-doc --> A simple container for Interactions, so that one can
- * put several interactions inside the same resource. <!-- end-model-doc -->
+ * <!-- begin-model-doc -->
+ * A simple container for Interactions, so that one can put several interactions inside the same resource.
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.sirius.sample.interactions.Model#getName <em>Name
- * </em>}</li>
- * <li>{@link org.eclipse.sirius.sample.interactions.Model#getOwnedInteractions
- * <em>Owned Interactions</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.Model#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.Model#getOwnedInteractions <em>Owned Interactions</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getModel()
  * @model
@@ -55,12 +54,9 @@ public interface Model extends EObject {
     String getName();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.sample.interactions.Model#getName
-     * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @param value
-     *            the new value of the '<em>Name</em>' attribute.
+     * Sets the value of the '{@link org.eclipse.sirius.sample.interactions.Model#getName <em>Name</em>}' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * @param value the new value of the '<em>Name</em>' attribute.
      * @see #getName()
      * @generated
      */

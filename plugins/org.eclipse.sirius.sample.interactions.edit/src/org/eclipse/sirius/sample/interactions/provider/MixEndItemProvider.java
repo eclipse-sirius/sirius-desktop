@@ -63,15 +63,15 @@ public class MixEndItemProvider extends ExecutionEndItemProvider {
      * @generated
      */
     protected void addMessagePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_MessageEnd_message_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_MessageEnd_message_feature", "_UI_MessageEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                InteractionsPackage.Literals.MESSAGE_END__MESSAGE, true, false, true, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_MessageEnd_message_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_MessageEnd_message_feature", "_UI_MessageEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        InteractionsPackage.Literals.MESSAGE_END__MESSAGE, true, false, true, null, null, null));
     }
 
     /**
-     * This returns MixEnd.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns MixEnd.gif.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     @Override
@@ -80,24 +80,23 @@ public class MixEndItemProvider extends ExecutionEndItemProvider {
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
+     * This returns the label text for the adapted class.
+     * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((MixEnd) object).getName();
         return label == null || label.length() == 0 ? getString("_UI_MixEnd_type") : //$NON-NLS-1$
-            getString("_UI_MixEnd_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_MixEnd_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
+     * This handles model notifications by calling {@link #updateChildren} to update any cached
+     * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
      * @generated
      */
     @Override

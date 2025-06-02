@@ -18,22 +18,19 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Execution</b></em>'. <!-- end-user-doc -->
  *
- * <!-- begin-model-doc --> Represents an interval of time in which a
- * particapant is active executing some code. <!-- end-model-doc -->
+ * <!-- begin-model-doc -->
+ * Represents an interval of time in which a particapant is active executing some code.
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.sirius.sample.interactions.Execution#getName <em>Name
- * </em>}</li>
- * <li>{@link org.eclipse.sirius.sample.interactions.Execution#getOwner <em>
- * Owner</em>}</li>
- * <li>{@link org.eclipse.sirius.sample.interactions.Execution#getStart <em>
- * Start</em>}</li>
- * <li>{@link org.eclipse.sirius.sample.interactions.Execution#getEnd <em>End
- * </em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.Execution#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.Execution#getOwner <em>Owner</em>}</li>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.Execution#getStart <em>Start</em>}</li>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.Execution#getEnd <em>End</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getExecution()
  * @model
@@ -58,12 +55,9 @@ public interface Execution extends EObject {
     String getName();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.sample.interactions.Execution#getName
-     * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @param value
-     *            the new value of the '<em>Name</em>' attribute.
+     * Sets the value of the '{@link org.eclipse.sirius.sample.interactions.Execution#getName <em>Name</em>}' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * @param value the new value of the '<em>Name</em>' attribute.
      * @see #getName()
      * @generated
      */
@@ -87,12 +81,9 @@ public interface Execution extends EObject {
     Participant getOwner();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.sample.interactions.Execution#getOwner
-     * <em>Owner</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @param value
-     *            the new value of the '<em>Owner</em>' reference.
+     * Sets the value of the '{@link org.eclipse.sirius.sample.interactions.Execution#getOwner <em>Owner</em>}' reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * @param value the new value of the '<em>Owner</em>' reference.
      * @see #getOwner()
      * @generated
      */
@@ -116,12 +107,9 @@ public interface Execution extends EObject {
     ExecutionEnd getStart();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.sample.interactions.Execution#getStart
-     * <em>Start</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @param value
-     *            the new value of the '<em>Start</em>' reference.
+     * Sets the value of the '{@link org.eclipse.sirius.sample.interactions.Execution#getStart <em>Start</em>}' reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * @param value the new value of the '<em>Start</em>' reference.
      * @see #getStart()
      * @generated
      */
@@ -145,12 +133,9 @@ public interface Execution extends EObject {
     ExecutionEnd getEnd();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.sample.interactions.Execution#getEnd
-     * <em>End</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @param value
-     *            the new value of the '<em>End</em>' reference.
+     * Sets the value of the '{@link org.eclipse.sirius.sample.interactions.Execution#getEnd <em>End</em>}' reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * @param value the new value of the '<em>End</em>' reference.
      * @see #getEnd()
      * @generated
      */

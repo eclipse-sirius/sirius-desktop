@@ -25,20 +25,17 @@ import org.eclipse.sirius.sample.interactions.InteractionsPackage;
  * <em><b>Execution End</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.impl.ExecutionEndImpl#getExecution
- * <em>Execution</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.impl.ExecutionEndImpl#getExecution <em>Execution</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public class ExecutionEndImpl extends AbstractEndImpl implements ExecutionEnd {
     /**
-     * The cached value of the '{@link #getExecution() <em>Execution</em>}'
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getExecution() <em>Execution</em>}' reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see #getExecution()
      * @generated
      * @ordered
@@ -47,7 +44,6 @@ public class ExecutionEndImpl extends AbstractEndImpl implements ExecutionEnd {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     protected ExecutionEndImpl() {
@@ -56,7 +52,6 @@ public class ExecutionEndImpl extends AbstractEndImpl implements ExecutionEnd {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -66,7 +61,6 @@ public class ExecutionEndImpl extends AbstractEndImpl implements ExecutionEnd {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -75,9 +69,8 @@ public class ExecutionEndImpl extends AbstractEndImpl implements ExecutionEnd {
             InternalEObject oldExecution = (InternalEObject) execution;
             execution = (Execution) eResolveProxy(oldExecution);
             if (execution != oldExecution) {
-                if (eNotificationRequired()) {
+                if (eNotificationRequired())
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionsPackage.EXECUTION_END__EXECUTION, oldExecution, execution));
-                }
             }
         }
         return execution;
@@ -85,7 +78,6 @@ public class ExecutionEndImpl extends AbstractEndImpl implements ExecutionEnd {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     public Execution basicGetExecution() {
@@ -94,30 +86,26 @@ public class ExecutionEndImpl extends AbstractEndImpl implements ExecutionEnd {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
     public void setExecution(Execution newExecution) {
         Execution oldExecution = execution;
         execution = newExecution;
-        if (eNotificationRequired()) {
+        if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.EXECUTION_END__EXECUTION, oldExecution, execution));
-        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case InteractionsPackage.EXECUTION_END__EXECUTION:
-            if (resolve) {
+            if (resolve)
                 return getExecution();
-            }
             return basicGetExecution();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -125,7 +113,6 @@ public class ExecutionEndImpl extends AbstractEndImpl implements ExecutionEnd {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -140,7 +127,6 @@ public class ExecutionEndImpl extends AbstractEndImpl implements ExecutionEnd {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -155,7 +141,6 @@ public class ExecutionEndImpl extends AbstractEndImpl implements ExecutionEnd {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override

@@ -18,11 +18,10 @@ package org.eclipse.sirius.sample.interactions;
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.sirius.sample.interactions.StateEnd#getState <em>State
- * </em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.StateEnd#getState <em>State</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getStateEnd()
  * @model
@@ -47,12 +46,9 @@ public interface StateEnd extends AbstractEnd {
     State getState();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.sample.interactions.StateEnd#getState
-     * <em>State</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @param value
-     *            the new value of the '<em>State</em>' reference.
+     * Sets the value of the '{@link org.eclipse.sirius.sample.interactions.StateEnd#getState <em>State</em>}' reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * @param value the new value of the '<em>State</em>' reference.
      * @see #getState()
      * @generated
      */

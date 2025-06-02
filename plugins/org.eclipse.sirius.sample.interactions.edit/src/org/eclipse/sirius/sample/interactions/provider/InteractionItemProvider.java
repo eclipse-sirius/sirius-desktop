@@ -40,8 +40,8 @@ import org.eclipse.sirius.sample.interactions.InteractionsPackage;
  *
  * @generated
  */
-public class InteractionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-IItemPropertySource {
+public class InteractionItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -72,9 +72,9 @@ IItemPropertySource {
     }
 
     /**
-     * This adds a property descriptor for the Name feature. <!-- begin-user-doc
+     * This adds a property descriptor for the Name feature.
+     * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
@@ -90,16 +90,16 @@ IItemPropertySource {
      * @generated
      */
     protected void addMessagesPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_Interaction_messages_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_Interaction_messages_feature", "_UI_Interaction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                InteractionsPackage.Literals.INTERACTION__MESSAGES, true, false, true, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Interaction_messages_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_Interaction_messages_feature", "_UI_Interaction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        InteractionsPackage.Literals.INTERACTION__MESSAGES, true, false, true, null, null, null));
     }
 
     /**
-     * This adds a property descriptor for the Ends feature. <!-- begin-user-doc
+     * This adds a property descriptor for the Ends feature.
+     * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
      * @generated
      */
     protected void addEndsPropertyDescriptor(Object object) {
@@ -115,20 +115,17 @@ IItemPropertySource {
      * @generated
      */
     protected void addConstraintsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_Interaction_constraints_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_Interaction_constraints_feature", "_UI_Interaction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                InteractionsPackage.Literals.INTERACTION__CONSTRAINTS, true, false, true, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Interaction_constraints_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_Interaction_constraints_feature", "_UI_Interaction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        InteractionsPackage.Literals.INTERACTION__CONSTRAINTS, true, false, true, null, null, null));
     }
 
     /**
-     * This specifies how to implement {@link #getChildren} and is used to
-     * deduce an appropriate feature for an
-     * {@link org.eclipse.emf.edit.command.AddCommand},
-     * {@link org.eclipse.emf.edit.command.RemoveCommand} or
-     * {@link org.eclipse.emf.edit.command.MoveCommand} in
-     * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+     * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+     * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     @Override
@@ -143,19 +140,18 @@ IItemPropertySource {
             childrenFeatures.add(InteractionsPackage.Literals.INTERACTION__COMBINED_FRAGMENTS);
             childrenFeatures.add(InteractionsPackage.Literals.INTERACTION__ENDS);
             childrenFeatures.add(InteractionsPackage.Literals.INTERACTION__CONSTRAINTS);
+            childrenFeatures.add(InteractionsPackage.Literals.INTERACTION__OWNED_GATES);
         }
         return childrenFeatures;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
     protected EStructuralFeature getChildFeature(Object object, Object child) {
-        // Check the type of the specified child object and return the proper
-        // feature to use for
+        // Check the type of the specified child object and return the proper feature to use for
         // adding (see {@link AddCommand}) it as a child.
 
         return super.getChildFeature(object, child);
@@ -173,24 +169,23 @@ IItemPropertySource {
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
+     * This returns the label text for the adapted class.
+     * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((Interaction) object).getName();
         return label == null || label.length() == 0 ? getString("_UI_Interaction_type") : //$NON-NLS-1$
-            getString("_UI_Interaction_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_Interaction_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
+     * This handles model notifications by calling {@link #updateChildren} to update any cached
+     * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -209,6 +204,7 @@ IItemPropertySource {
         case InteractionsPackage.INTERACTION__COMBINED_FRAGMENTS:
         case InteractionsPackage.INTERACTION__ENDS:
         case InteractionsPackage.INTERACTION__CONSTRAINTS:
+        case InteractionsPackage.INTERACTION__OWNED_GATES:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -260,7 +256,11 @@ IItemPropertySource {
 
         newChildDescriptors.add(createChildParameter(InteractionsPackage.Literals.INTERACTION__ENDS, InteractionsFactory.eINSTANCE.createMixEnd()));
 
+        newChildDescriptors.add(createChildParameter(InteractionsPackage.Literals.INTERACTION__ENDS, InteractionsFactory.eINSTANCE.createGateEnd()));
+
         newChildDescriptors.add(createChildParameter(InteractionsPackage.Literals.INTERACTION__CONSTRAINTS, InteractionsFactory.eINSTANCE.createConstraint()));
+
+        newChildDescriptors.add(createChildParameter(InteractionsPackage.Literals.INTERACTION__OWNED_GATES, InteractionsFactory.eINSTANCE.createGate()));
     }
 
     /**

@@ -38,7 +38,8 @@ import org.eclipse.sirius.sample.interactions.InteractionsPackage;
  *
  * @generated
  */
-public class ExecutionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class ExecutionItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -69,9 +70,9 @@ public class ExecutionItemProvider extends ItemProviderAdapter implements IEditi
     }
 
     /**
-     * This adds a property descriptor for the Name feature. <!-- begin-user-doc
+     * This adds a property descriptor for the Name feature.
+     * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
@@ -105,9 +106,9 @@ public class ExecutionItemProvider extends ItemProviderAdapter implements IEditi
     }
 
     /**
-     * This adds a property descriptor for the End feature. <!-- begin-user-doc
+     * This adds a property descriptor for the End feature.
+     * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
      * @generated
      */
     protected void addEndPropertyDescriptor(Object object) {
@@ -117,8 +118,8 @@ public class ExecutionItemProvider extends ItemProviderAdapter implements IEditi
     }
 
     /**
-     * This returns Execution.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns Execution.gif.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     @Override
@@ -127,24 +128,23 @@ public class ExecutionItemProvider extends ItemProviderAdapter implements IEditi
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
+     * This returns the label text for the adapted class.
+     * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((Execution) object).getName();
         return label == null || label.length() == 0 ? getString("_UI_Execution_type") : //$NON-NLS-1$
-            getString("_UI_Execution_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_Execution_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
+     * This handles model notifications by calling {@link #updateChildren} to update any cached
+     * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
      * @generated
      */
     @Override

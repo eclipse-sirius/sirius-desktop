@@ -19,27 +19,21 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Combined Fragment</b></em>'. <!-- end-user-doc -->
  *
- * <!-- begin-model-doc --> A group of events with some special semantics (e.g.
- * optional). <!-- end-model-doc -->
+ * <!-- begin-model-doc -->
+ * A group of events with some special semantics (e.g. optional).
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.CombinedFragment#getOperator
- * <em>Operator</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.CombinedFragment#getCoveredParticipants
- * <em>Covered Participants</em>}</li>
- * <li>{@link org.eclipse.sirius.sample.interactions.CombinedFragment#getStart
- * <em>Start</em>}</li>
- * <li>{@link org.eclipse.sirius.sample.interactions.CombinedFragment#getFinish
- * <em>Finish</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.CombinedFragment#getOwnedOperands
- * <em>Owned Operands</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.CombinedFragment#getOperator <em>Operator</em>}</li>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.CombinedFragment#getCoveredParticipants <em>Covered Participants</em>}</li>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.CombinedFragment#getStart <em>Start</em>}</li>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.CombinedFragment#getFinish <em>Finish</em>}</li>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.CombinedFragment#getOwnedOperands <em>Owned Operands</em>}</li>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.CombinedFragment#getOwnedGates <em>Owned Gates</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getCombinedFragment()
  * @model
@@ -47,14 +41,14 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface CombinedFragment extends EObject {
     /**
-     * Returns the value of the '<em><b>Operator</b></em>' attribute. The
-     * default value is <code>"\"opt\""</code>. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Operator</b></em>' attribute.
+     * The default value is <code>"\"opt\""</code>.
+     * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Operator</em>' attribute isn't clear, there
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
      * @return the value of the '<em>Operator</em>' attribute.
      * @see #setOperator(String)
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getCombinedFragment_Operator()
@@ -112,12 +106,9 @@ public interface CombinedFragment extends EObject {
     CombinedFragmentEnd getStart();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.sample.interactions.CombinedFragment#getStart
-     * <em>Start</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @param value
-     *            the new value of the '<em>Start</em>' reference.
+     * Sets the value of the '{@link org.eclipse.sirius.sample.interactions.CombinedFragment#getStart <em>Start</em>}' reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * @param value the new value of the '<em>Start</em>' reference.
      * @see #getStart()
      * @generated
      */
@@ -171,5 +162,17 @@ public interface CombinedFragment extends EObject {
      * @generated
      */
     EList<Operand> getOwnedOperands();
+
+    /**
+     * Returns the value of the '<em><b>Owned Gates</b></em>' containment reference list.
+     * The list contents are of type {@link org.eclipse.sirius.sample.interactions.Gate}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Owned Gates</em>' containment reference list.
+     * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getCombinedFragment_OwnedGates()
+     * @model containment="true"
+     * @generated
+     */
+    EList<Gate> getOwnedGates();
 
 } // CombinedFragment

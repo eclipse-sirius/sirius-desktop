@@ -18,20 +18,17 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Abstract End</b></em>'. <!-- end-user-doc -->
  *
- * <!-- begin-model-doc --> All the atomic events (sending of a message, start
- * and finish of an execution...) are represented by AbstractEnds and stored in
- * chronological order in the interaction. The ordering must be total. <!--
- * end-model-doc -->
+ * <!-- begin-model-doc -->
+ * All the atomic events (sending of a message, start and finish of an execution...) are represented by AbstractEnds and stored in chronological order in the interaction. The ordering must be total.
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.sirius.sample.interactions.AbstractEnd#getName <em>
- * Name</em>}</li>
- * <li>{@link org.eclipse.sirius.sample.interactions.AbstractEnd#getContext <em>
- * Context</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.AbstractEnd#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.AbstractEnd#getContext <em>Context</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getAbstractEnd()
  * @model abstract="true"
@@ -56,12 +53,9 @@ public interface AbstractEnd extends EObject {
     String getName();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.sample.interactions.AbstractEnd#getName
-     * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @param value
-     *            the new value of the '<em>Name</em>' attribute.
+     * Sets the value of the '{@link org.eclipse.sirius.sample.interactions.AbstractEnd#getName <em>Name</em>}' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * @param value the new value of the '<em>Name</em>' attribute.
      * @see #getName()
      * @generated
      */
@@ -82,19 +76,16 @@ public interface AbstractEnd extends EObject {
      * @model required="true"
      * @generated
      */
-    Participant getContext();
+    AbstractEndContext getContext();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.sample.interactions.AbstractEnd#getContext
-     * <em>Context</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
-     * @param value
-     *            the new value of the '<em>Context</em>' reference.
+     * Sets the value of the '{@link org.eclipse.sirius.sample.interactions.AbstractEnd#getContext <em>Context</em>}' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Context</em>' reference.
      * @see #getContext()
      * @generated
      */
-    void setContext(Participant value);
+    void setContext(AbstractEndContext value);
 
 } // AbstractEnd

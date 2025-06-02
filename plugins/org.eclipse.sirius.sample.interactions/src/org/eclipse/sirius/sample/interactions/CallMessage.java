@@ -20,11 +20,10 @@ import org.eclipse.emf.ecore.EOperation;
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.sirius.sample.interactions.CallMessage#getOperation
- * <em>Operation</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.CallMessage#getOperation <em>Operation</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getCallMessage()
  * @model

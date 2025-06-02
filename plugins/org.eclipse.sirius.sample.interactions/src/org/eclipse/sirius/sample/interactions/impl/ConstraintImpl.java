@@ -29,23 +29,18 @@ import org.eclipse.sirius.sample.interactions.InteractionsPackage;
  * <em><b>Constraint</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.impl.ConstraintImpl#getExpression
- * <em>Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.impl.ConstraintImpl#getConstrainedEnds
- * <em>Constrained Ends</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.impl.ConstraintImpl#getExpression <em>Expression</em>}</li>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.impl.ConstraintImpl#getConstrainedEnds <em>Constrained Ends</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public class ConstraintImpl extends EObjectImpl implements Constraint {
     /**
-     * The default value of the '{@link #getExpression() <em>Expression</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getExpression() <em>Expression</em>}' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see #getExpression()
      * @generated
      * @ordered
@@ -53,20 +48,18 @@ public class ConstraintImpl extends EObjectImpl implements Constraint {
     protected static final String EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getExpression() <em>Expression</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getExpression() <em>Expression</em>}' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see #getExpression()
      * @generated
      * @ordered
      */
-    protected String expression = ConstraintImpl.EXPRESSION_EDEFAULT;
+    protected String expression = EXPRESSION_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getConstrainedEnds()
-     * <em>Constrained Ends</em>}' reference list. <!-- begin-user-doc --> <!--
+     * The cached value of the '{@link #getConstrainedEnds() <em>Constrained Ends</em>}' reference list.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
      * @see #getConstrainedEnds()
      * @generated
      * @ordered
@@ -75,7 +68,6 @@ public class ConstraintImpl extends EObjectImpl implements Constraint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     protected ConstraintImpl() {
@@ -84,7 +76,6 @@ public class ConstraintImpl extends EObjectImpl implements Constraint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -94,7 +85,6 @@ public class ConstraintImpl extends EObjectImpl implements Constraint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -104,21 +94,18 @@ public class ConstraintImpl extends EObjectImpl implements Constraint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
     public void setExpression(String newExpression) {
         String oldExpression = expression;
         expression = newExpression;
-        if (eNotificationRequired()) {
+        if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.CONSTRAINT__EXPRESSION, oldExpression, expression));
-        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -131,7 +118,6 @@ public class ConstraintImpl extends EObjectImpl implements Constraint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -147,7 +133,6 @@ public class ConstraintImpl extends EObjectImpl implements Constraint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -167,14 +152,13 @@ public class ConstraintImpl extends EObjectImpl implements Constraint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case InteractionsPackage.CONSTRAINT__EXPRESSION:
-            setExpression(ConstraintImpl.EXPRESSION_EDEFAULT);
+            setExpression(EXPRESSION_EDEFAULT);
             return;
         case InteractionsPackage.CONSTRAINT__CONSTRAINED_ENDS:
             getConstrainedEnds().clear();
@@ -185,14 +169,13 @@ public class ConstraintImpl extends EObjectImpl implements Constraint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case InteractionsPackage.CONSTRAINT__EXPRESSION:
-            return ConstraintImpl.EXPRESSION_EDEFAULT == null ? expression != null : !ConstraintImpl.EXPRESSION_EDEFAULT.equals(expression);
+            return EXPRESSION_EDEFAULT == null ? expression != null : !EXPRESSION_EDEFAULT.equals(expression);
         case InteractionsPackage.CONSTRAINT__CONSTRAINED_ENDS:
             return constrainedEnds != null && !constrainedEnds.isEmpty();
         }
@@ -201,16 +184,14 @@ public class ConstraintImpl extends EObjectImpl implements Constraint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy()) {
+        if (eIsProxy())
             return super.toString();
-        }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (expression: "); //$NON-NLS-1$
         result.append(expression);
         result.append(')');

@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.sample.interactions.CombinedFragment;
 import org.eclipse.sirius.sample.interactions.CombinedFragmentEnd;
+import org.eclipse.sirius.sample.interactions.Gate;
 import org.eclipse.sirius.sample.interactions.InteractionsPackage;
 import org.eclipse.sirius.sample.interactions.Operand;
 import org.eclipse.sirius.sample.interactions.Participant;
@@ -35,32 +36,22 @@ import org.eclipse.sirius.sample.interactions.Participant;
  * <em><b>Combined Fragment</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.impl.CombinedFragmentImpl#getOperator
- * <em>Operator</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.impl.CombinedFragmentImpl#getCoveredParticipants
- * <em>Covered Participants</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.impl.CombinedFragmentImpl#getStart
- * <em>Start</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.impl.CombinedFragmentImpl#getFinish
- * <em>Finish</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.impl.CombinedFragmentImpl#getOwnedOperands
- * <em>Owned Operands</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.impl.CombinedFragmentImpl#getOperator <em>Operator</em>}</li>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.impl.CombinedFragmentImpl#getCoveredParticipants <em>Covered Participants</em>}</li>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.impl.CombinedFragmentImpl#getStart <em>Start</em>}</li>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.impl.CombinedFragmentImpl#getFinish <em>Finish</em>}</li>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.impl.CombinedFragmentImpl#getOwnedOperands <em>Owned Operands</em>}</li>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.impl.CombinedFragmentImpl#getOwnedGates <em>Owned Gates</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public class CombinedFragmentImpl extends EObjectImpl implements CombinedFragment {
     /**
-     * The default value of the '{@link #getOperator() <em>Operator</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getOperator() <em>Operator</em>}' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see #getOperator()
      * @generated
      * @ordered
@@ -68,20 +59,18 @@ public class CombinedFragmentImpl extends EObjectImpl implements CombinedFragmen
     protected static final String OPERATOR_EDEFAULT = "\"opt\""; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getOperator() <em>Operator</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getOperator() <em>Operator</em>}' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see #getOperator()
      * @generated
      * @ordered
      */
-    protected String operator = CombinedFragmentImpl.OPERATOR_EDEFAULT;
+    protected String operator = OPERATOR_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getCoveredParticipants()
-     * <em>Covered Participants</em>}' reference list. <!-- begin-user-doc -->
+     * The cached value of the '{@link #getCoveredParticipants() <em>Covered Participants</em>}' reference list.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
      * @see #getCoveredParticipants()
      * @generated
      * @ordered
@@ -91,7 +80,6 @@ public class CombinedFragmentImpl extends EObjectImpl implements CombinedFragmen
     /**
      * The cached value of the '{@link #getStart() <em>Start</em>}' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @see #getStart()
      * @generated
      * @ordered
@@ -101,7 +89,6 @@ public class CombinedFragmentImpl extends EObjectImpl implements CombinedFragmen
     /**
      * The cached value of the '{@link #getFinish() <em>Finish</em>}' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @see #getFinish()
      * @generated
      * @ordered
@@ -109,10 +96,9 @@ public class CombinedFragmentImpl extends EObjectImpl implements CombinedFragmen
     protected CombinedFragmentEnd finish;
 
     /**
-     * The cached value of the '{@link #getOwnedOperands()
-     * <em>Owned Operands</em>}' containment reference list. <!-- begin-user-doc
+     * The cached value of the '{@link #getOwnedOperands() <em>Owned Operands</em>}' containment reference list.
+     * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
      * @see #getOwnedOperands()
      * @generated
      * @ordered
@@ -120,8 +106,17 @@ public class CombinedFragmentImpl extends EObjectImpl implements CombinedFragmen
     protected EList<Operand> ownedOperands;
 
     /**
+     * The cached value of the '{@link #getOwnedGates() <em>Owned Gates</em>}' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getOwnedGates()
+     * @generated
+     * @ordered
+     */
+    protected EList<Gate> ownedGates;
+
+    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     protected CombinedFragmentImpl() {
@@ -130,7 +125,6 @@ public class CombinedFragmentImpl extends EObjectImpl implements CombinedFragmen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -140,7 +134,6 @@ public class CombinedFragmentImpl extends EObjectImpl implements CombinedFragmen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -150,21 +143,18 @@ public class CombinedFragmentImpl extends EObjectImpl implements CombinedFragmen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
     public void setOperator(String newOperator) {
         String oldOperator = operator;
         operator = newOperator;
-        if (eNotificationRequired()) {
+        if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.COMBINED_FRAGMENT__OPERATOR, oldOperator, operator));
-        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -177,7 +167,6 @@ public class CombinedFragmentImpl extends EObjectImpl implements CombinedFragmen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -186,9 +175,8 @@ public class CombinedFragmentImpl extends EObjectImpl implements CombinedFragmen
             InternalEObject oldStart = (InternalEObject) start;
             start = (CombinedFragmentEnd) eResolveProxy(oldStart);
             if (start != oldStart) {
-                if (eNotificationRequired()) {
+                if (eNotificationRequired())
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionsPackage.COMBINED_FRAGMENT__START, oldStart, start));
-                }
             }
         }
         return start;
@@ -196,7 +184,6 @@ public class CombinedFragmentImpl extends EObjectImpl implements CombinedFragmen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     public CombinedFragmentEnd basicGetStart() {
@@ -205,21 +192,18 @@ public class CombinedFragmentImpl extends EObjectImpl implements CombinedFragmen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
     public void setStart(CombinedFragmentEnd newStart) {
         CombinedFragmentEnd oldStart = start;
         start = newStart;
-        if (eNotificationRequired()) {
+        if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.COMBINED_FRAGMENT__START, oldStart, start));
-        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -228,9 +212,8 @@ public class CombinedFragmentImpl extends EObjectImpl implements CombinedFragmen
             InternalEObject oldFinish = (InternalEObject) finish;
             finish = (CombinedFragmentEnd) eResolveProxy(oldFinish);
             if (finish != oldFinish) {
-                if (eNotificationRequired()) {
+                if (eNotificationRequired())
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionsPackage.COMBINED_FRAGMENT__FINISH, oldFinish, finish));
-                }
             }
         }
         return finish;
@@ -238,7 +221,6 @@ public class CombinedFragmentImpl extends EObjectImpl implements CombinedFragmen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     public CombinedFragmentEnd basicGetFinish() {
@@ -247,21 +229,18 @@ public class CombinedFragmentImpl extends EObjectImpl implements CombinedFragmen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
     public void setFinish(CombinedFragmentEnd newFinish) {
         CombinedFragmentEnd oldFinish = finish;
         finish = newFinish;
-        if (eNotificationRequired()) {
+        if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.COMBINED_FRAGMENT__FINISH, oldFinish, finish));
-        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -273,8 +252,19 @@ public class CombinedFragmentImpl extends EObjectImpl implements CombinedFragmen
     }
 
     /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EList<Gate> getOwnedGates() {
+        if (ownedGates == null) {
+            ownedGates = new EObjectContainmentEList<Gate>(Gate.class, this, InteractionsPackage.COMBINED_FRAGMENT__OWNED_GATES);
+        }
+        return ownedGates;
+    }
+
+    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -282,13 +272,14 @@ public class CombinedFragmentImpl extends EObjectImpl implements CombinedFragmen
         switch (featureID) {
         case InteractionsPackage.COMBINED_FRAGMENT__OWNED_OPERANDS:
             return ((InternalEList<?>) getOwnedOperands()).basicRemove(otherEnd, msgs);
+        case InteractionsPackage.COMBINED_FRAGMENT__OWNED_GATES:
+            return ((InternalEList<?>) getOwnedGates()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -299,24 +290,23 @@ public class CombinedFragmentImpl extends EObjectImpl implements CombinedFragmen
         case InteractionsPackage.COMBINED_FRAGMENT__COVERED_PARTICIPANTS:
             return getCoveredParticipants();
         case InteractionsPackage.COMBINED_FRAGMENT__START:
-            if (resolve) {
+            if (resolve)
                 return getStart();
-            }
             return basicGetStart();
         case InteractionsPackage.COMBINED_FRAGMENT__FINISH:
-            if (resolve) {
+            if (resolve)
                 return getFinish();
-            }
             return basicGetFinish();
         case InteractionsPackage.COMBINED_FRAGMENT__OWNED_OPERANDS:
             return getOwnedOperands();
+        case InteractionsPackage.COMBINED_FRAGMENT__OWNED_GATES:
+            return getOwnedGates();
         }
         return super.eGet(featureID, resolve, coreType);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -340,20 +330,23 @@ public class CombinedFragmentImpl extends EObjectImpl implements CombinedFragmen
             getOwnedOperands().clear();
             getOwnedOperands().addAll((Collection<? extends Operand>) newValue);
             return;
+        case InteractionsPackage.COMBINED_FRAGMENT__OWNED_GATES:
+            getOwnedGates().clear();
+            getOwnedGates().addAll((Collection<? extends Gate>) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case InteractionsPackage.COMBINED_FRAGMENT__OPERATOR:
-            setOperator(CombinedFragmentImpl.OPERATOR_EDEFAULT);
+            setOperator(OPERATOR_EDEFAULT);
             return;
         case InteractionsPackage.COMBINED_FRAGMENT__COVERED_PARTICIPANTS:
             getCoveredParticipants().clear();
@@ -367,20 +360,22 @@ public class CombinedFragmentImpl extends EObjectImpl implements CombinedFragmen
         case InteractionsPackage.COMBINED_FRAGMENT__OWNED_OPERANDS:
             getOwnedOperands().clear();
             return;
+        case InteractionsPackage.COMBINED_FRAGMENT__OWNED_GATES:
+            getOwnedGates().clear();
+            return;
         }
         super.eUnset(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case InteractionsPackage.COMBINED_FRAGMENT__OPERATOR:
-            return CombinedFragmentImpl.OPERATOR_EDEFAULT == null ? operator != null : !CombinedFragmentImpl.OPERATOR_EDEFAULT.equals(operator);
+            return OPERATOR_EDEFAULT == null ? operator != null : !OPERATOR_EDEFAULT.equals(operator);
         case InteractionsPackage.COMBINED_FRAGMENT__COVERED_PARTICIPANTS:
             return coveredParticipants != null && !coveredParticipants.isEmpty();
         case InteractionsPackage.COMBINED_FRAGMENT__START:
@@ -389,22 +384,22 @@ public class CombinedFragmentImpl extends EObjectImpl implements CombinedFragmen
             return finish != null;
         case InteractionsPackage.COMBINED_FRAGMENT__OWNED_OPERANDS:
             return ownedOperands != null && !ownedOperands.isEmpty();
+        case InteractionsPackage.COMBINED_FRAGMENT__OWNED_GATES:
+            return ownedGates != null && !ownedGates.isEmpty();
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy()) {
+        if (eIsProxy())
             return super.toString();
-        }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (operator: "); //$NON-NLS-1$
         result.append(operator);
         result.append(')');
