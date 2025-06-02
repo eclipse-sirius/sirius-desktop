@@ -27,19 +27,13 @@ import org.eclipse.sirius.sample.interactions.Participant;
  * <em><b>Execution</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>{@link org.eclipse.sirius.sample.interactions.impl.ExecutionImpl#getName
- * <em>Name</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.impl.ExecutionImpl#getOwner
- * <em>Owner</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.impl.ExecutionImpl#getStart
- * <em>Start</em>}</li>
- * <li>{@link org.eclipse.sirius.sample.interactions.impl.ExecutionImpl#getEnd
- * <em>End</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.impl.ExecutionImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.impl.ExecutionImpl#getOwner <em>Owner</em>}</li>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.impl.ExecutionImpl#getStart <em>Start</em>}</li>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.impl.ExecutionImpl#getEnd <em>End</em>}</li>
+ * </ul>
  *
  * @generated
  */
@@ -47,7 +41,6 @@ public class ExecutionImpl extends EObjectImpl implements Execution {
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @see #getName()
      * @generated
      * @ordered
@@ -57,17 +50,15 @@ public class ExecutionImpl extends EObjectImpl implements Execution {
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @see #getName()
      * @generated
      * @ordered
      */
-    protected String name = ExecutionImpl.NAME_EDEFAULT;
+    protected String name = NAME_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getOwner() <em>Owner</em>}' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @see #getOwner()
      * @generated
      * @ordered
@@ -77,7 +68,6 @@ public class ExecutionImpl extends EObjectImpl implements Execution {
     /**
      * The cached value of the '{@link #getStart() <em>Start</em>}' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @see #getStart()
      * @generated
      * @ordered
@@ -96,7 +86,6 @@ public class ExecutionImpl extends EObjectImpl implements Execution {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     protected ExecutionImpl() {
@@ -105,7 +94,6 @@ public class ExecutionImpl extends EObjectImpl implements Execution {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -115,7 +103,6 @@ public class ExecutionImpl extends EObjectImpl implements Execution {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -125,21 +112,18 @@ public class ExecutionImpl extends EObjectImpl implements Execution {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired()) {
+        if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.EXECUTION__NAME, oldName, name));
-        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -148,9 +132,8 @@ public class ExecutionImpl extends EObjectImpl implements Execution {
             InternalEObject oldOwner = (InternalEObject) owner;
             owner = (Participant) eResolveProxy(oldOwner);
             if (owner != oldOwner) {
-                if (eNotificationRequired()) {
+                if (eNotificationRequired())
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionsPackage.EXECUTION__OWNER, oldOwner, owner));
-                }
             }
         }
         return owner;
@@ -158,7 +141,6 @@ public class ExecutionImpl extends EObjectImpl implements Execution {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     public Participant basicGetOwner() {
@@ -167,21 +149,18 @@ public class ExecutionImpl extends EObjectImpl implements Execution {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
     public void setOwner(Participant newOwner) {
         Participant oldOwner = owner;
         owner = newOwner;
-        if (eNotificationRequired()) {
+        if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.EXECUTION__OWNER, oldOwner, owner));
-        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -190,9 +169,8 @@ public class ExecutionImpl extends EObjectImpl implements Execution {
             InternalEObject oldStart = (InternalEObject) start;
             start = (ExecutionEnd) eResolveProxy(oldStart);
             if (start != oldStart) {
-                if (eNotificationRequired()) {
+                if (eNotificationRequired())
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionsPackage.EXECUTION__START, oldStart, start));
-                }
             }
         }
         return start;
@@ -200,7 +178,6 @@ public class ExecutionImpl extends EObjectImpl implements Execution {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     public ExecutionEnd basicGetStart() {
@@ -209,21 +186,18 @@ public class ExecutionImpl extends EObjectImpl implements Execution {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
     public void setStart(ExecutionEnd newStart) {
         ExecutionEnd oldStart = start;
         start = newStart;
-        if (eNotificationRequired()) {
+        if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.EXECUTION__START, oldStart, start));
-        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -232,9 +206,8 @@ public class ExecutionImpl extends EObjectImpl implements Execution {
             InternalEObject oldEnd = (InternalEObject) end;
             end = (ExecutionEnd) eResolveProxy(oldEnd);
             if (end != oldEnd) {
-                if (eNotificationRequired()) {
+                if (eNotificationRequired())
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionsPackage.EXECUTION__END, oldEnd, end));
-                }
             }
         }
         return end;
@@ -242,7 +215,6 @@ public class ExecutionImpl extends EObjectImpl implements Execution {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     public ExecutionEnd basicGetEnd() {
@@ -251,21 +223,18 @@ public class ExecutionImpl extends EObjectImpl implements Execution {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
     public void setEnd(ExecutionEnd newEnd) {
         ExecutionEnd oldEnd = end;
         end = newEnd;
-        if (eNotificationRequired()) {
+        if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.EXECUTION__END, oldEnd, end));
-        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -274,19 +243,16 @@ public class ExecutionImpl extends EObjectImpl implements Execution {
         case InteractionsPackage.EXECUTION__NAME:
             return getName();
         case InteractionsPackage.EXECUTION__OWNER:
-            if (resolve) {
+            if (resolve)
                 return getOwner();
-            }
             return basicGetOwner();
         case InteractionsPackage.EXECUTION__START:
-            if (resolve) {
+            if (resolve)
                 return getStart();
-            }
             return basicGetStart();
         case InteractionsPackage.EXECUTION__END:
-            if (resolve) {
+            if (resolve)
                 return getEnd();
-            }
             return basicGetEnd();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -294,7 +260,6 @@ public class ExecutionImpl extends EObjectImpl implements Execution {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -318,14 +283,13 @@ public class ExecutionImpl extends EObjectImpl implements Execution {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case InteractionsPackage.EXECUTION__NAME:
-            setName(ExecutionImpl.NAME_EDEFAULT);
+            setName(NAME_EDEFAULT);
             return;
         case InteractionsPackage.EXECUTION__OWNER:
             setOwner((Participant) null);
@@ -342,14 +306,13 @@ public class ExecutionImpl extends EObjectImpl implements Execution {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case InteractionsPackage.EXECUTION__NAME:
-            return ExecutionImpl.NAME_EDEFAULT == null ? name != null : !ExecutionImpl.NAME_EDEFAULT.equals(name);
+            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
         case InteractionsPackage.EXECUTION__OWNER:
             return owner != null;
         case InteractionsPackage.EXECUTION__START:
@@ -362,16 +325,14 @@ public class ExecutionImpl extends EObjectImpl implements Execution {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy()) {
+        if (eIsProxy())
             return super.toString();
-        }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
         result.append(')');

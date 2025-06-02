@@ -23,10 +23,8 @@ import org.eclipse.sirius.sample.interactions.CombinedFragmentEnd;
 import org.eclipse.sirius.sample.interactions.InteractionsPackage;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.sample.interactions.CombinedFragmentEnd} object.
+ * This is the item provider adapter for a {@link org.eclipse.sirius.sample.interactions.CombinedFragmentEnd} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- *
  * @generated
  */
 public class CombinedFragmentEndItemProvider extends AbstractEndItemProvider {
@@ -63,16 +61,16 @@ public class CombinedFragmentEndItemProvider extends AbstractEndItemProvider {
      * @generated
      */
     protected void addOwnerPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CombinedFragmentEnd_owner_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_CombinedFragmentEnd_owner_feature", "_UI_CombinedFragmentEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                InteractionsPackage.Literals.COMBINED_FRAGMENT_END__OWNER, true, false, true, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_CombinedFragmentEnd_owner_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_CombinedFragmentEnd_owner_feature", "_UI_CombinedFragmentEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        InteractionsPackage.Literals.COMBINED_FRAGMENT_END__OWNER, true, false, true, null, null, null));
     }
 
     /**
-     * This returns CombinedFragmentEnd.gif. <!-- begin-user-doc --> <!--
+     * This returns CombinedFragmentEnd.gif.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -81,24 +79,23 @@ public class CombinedFragmentEndItemProvider extends AbstractEndItemProvider {
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
+     * This returns the label text for the adapted class.
+     * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((CombinedFragmentEnd) object).getName();
         return label == null || label.length() == 0 ? getString("_UI_CombinedFragmentEnd_type") : //$NON-NLS-1$
-            getString("_UI_CombinedFragmentEnd_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_CombinedFragmentEnd_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
+     * This handles model notifications by calling {@link #updateChildren} to update any cached
+     * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
      * @generated
      */
     @Override

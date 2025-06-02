@@ -19,35 +19,25 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Interaction</b></em>'. <!-- end-user-doc -->
  *
- * <!-- begin-model-doc --> Describes the interactions between several
- * participants over time. <!-- end-model-doc -->
+ * <!-- begin-model-doc -->
+ * Describes the interactions between several participants over time.
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.sirius.sample.interactions.Interaction#getName <em>
- * Name</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.Interaction#getParticipants
- * <em>Participants</em>}</li>
- * <li>{@link org.eclipse.sirius.sample.interactions.Interaction#getMessages
- * <em>Messages</em>}</li>
- * <li>{@link org.eclipse.sirius.sample.interactions.Interaction#getExecutions
- * <em>Executions</em>}</li>
- * <li>{@link org.eclipse.sirius.sample.interactions.Interaction#getStates <em>
- * States</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.Interaction#getInteractionUses
- * <em>Interaction Uses</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.Interaction#getCombinedFragments
- * <em>Combined Fragments</em>}</li>
- * <li>{@link org.eclipse.sirius.sample.interactions.Interaction#getEnds <em>
- * Ends</em>}</li>
- * <li>{@link org.eclipse.sirius.sample.interactions.Interaction#getConstraints
- * <em>Constraints</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.Interaction#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.Interaction#getParticipants <em>Participants</em>}</li>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.Interaction#getMessages <em>Messages</em>}</li>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.Interaction#getExecutions <em>Executions</em>}</li>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.Interaction#getStates <em>States</em>}</li>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.Interaction#getInteractionUses <em>Interaction Uses</em>}</li>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.Interaction#getCombinedFragments <em>Combined Fragments</em>}</li>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.Interaction#getEnds <em>Ends</em>}</li>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.Interaction#getConstraints <em>Constraints</em>}</li>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.Interaction#getOwnedGates <em>Owned Gates</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getInteraction()
  * @model
@@ -72,12 +62,9 @@ public interface Interaction extends EObject {
     String getName();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.sample.interactions.Interaction#getName
-     * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @param value
-     *            the new value of the '<em>Name</em>' attribute.
+     * Sets the value of the '{@link org.eclipse.sirius.sample.interactions.Interaction#getName <em>Name</em>}' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * @param value the new value of the '<em>Name</em>' attribute.
      * @see #getName()
      * @generated
      */
@@ -140,16 +127,15 @@ public interface Interaction extends EObject {
     EList<Execution> getExecutions();
 
     /**
-     * Returns the value of the '<em><b>States</b></em>' containment reference
-     * list. The list contents are of type
-     * {@link org.eclipse.sirius.sample.interactions.State}. <!-- begin-user-doc
+     * Returns the value of the '<em><b>States</b></em>' containment reference list.
+     * The list contents are of type {@link org.eclipse.sirius.sample.interactions.State}.
+     * <!-- begin-user-doc
      * -->
      * <p>
      * If the meaning of the '<em>States</em>' containment reference list isn't
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
      * @return the value of the '<em>States</em>' containment reference list.
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getInteraction_States()
      * @model containment="true"
@@ -231,5 +217,17 @@ public interface Interaction extends EObject {
      * @generated
      */
     EList<Constraint> getConstraints();
+
+    /**
+     * Returns the value of the '<em><b>Owned Gates</b></em>' containment reference list.
+     * The list contents are of type {@link org.eclipse.sirius.sample.interactions.Gate}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Owned Gates</em>' containment reference list.
+     * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getInteraction_OwnedGates()
+     * @model containment="true"
+     * @generated
+     */
+    EList<Gate> getOwnedGates();
 
 } // Interaction

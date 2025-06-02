@@ -42,6 +42,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDi
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.description.tool.CombinedFragmentCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ExecutionCreationTool;
+import org.eclipse.sirius.diagram.sequence.description.tool.GateCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.InteractionUseCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ObservationPointCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.OperandCreationTool;
@@ -149,7 +150,7 @@ public class SequenceNodeCreationPolicy extends NodeCreationEditPolicy {
      */
     @Override
     protected Command getCreateNodeOnNodeCommand(CreateRequest request, NodeCreationDescription tool, DNode viewnode, EditPart parentEditPartToUse) {
-        if (tool instanceof ExecutionCreationTool || tool instanceof StateCreationTool || tool instanceof ObservationPointCreationTool) {
+        if (tool instanceof ExecutionCreationTool || tool instanceof StateCreationTool || tool instanceof ObservationPointCreationTool || tool instanceof GateCreationTool) {
             SequenceDiagram sequenceDiagram = EditPartsHelper.getSequenceDiagram(getHost());
             SequenceDDiagram diagram = sequenceDiagram.getSequenceDDiagram();
 

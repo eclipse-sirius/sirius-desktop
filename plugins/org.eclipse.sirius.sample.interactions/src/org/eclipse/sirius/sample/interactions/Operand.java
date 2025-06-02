@@ -18,18 +18,17 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Operand</b></em>'. <!-- end-user-doc -->
  *
- * <!-- begin-model-doc --> A sub-group of events in a combined fragment, for
- * example the "else" part of a conditional. <!-- end-model-doc -->
+ * <!-- begin-model-doc -->
+ * A sub-group of events in a combined fragment, for example the "else" part of a conditional.
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.sirius.sample.interactions.Operand#getName <em>Name
- * </em>}</li>
- * <li>{@link org.eclipse.sirius.sample.interactions.Operand#getStart <em>Start
- * </em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.Operand#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.Operand#getStart <em>Start</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getOperand()
  * @model
@@ -54,12 +53,9 @@ public interface Operand extends EObject {
     String getName();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.sample.interactions.Operand#getName
-     * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @param value
-     *            the new value of the '<em>Name</em>' attribute.
+     * Sets the value of the '{@link org.eclipse.sirius.sample.interactions.Operand#getName <em>Name</em>}' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * @param value the new value of the '<em>Name</em>' attribute.
      * @see #getName()
      * @generated
      */
@@ -83,12 +79,9 @@ public interface Operand extends EObject {
     OperandEnd getStart();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.sample.interactions.Operand#getStart
-     * <em>Start</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @param value
-     *            the new value of the '<em>Start</em>' reference.
+     * Sets the value of the '{@link org.eclipse.sirius.sample.interactions.Operand#getStart <em>Start</em>}' reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * @param value the new value of the '<em>Start</em>' reference.
      * @see #getStart()
      * @generated
      */

@@ -31,6 +31,7 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Execution;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.Gate;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceNode;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
@@ -302,6 +303,9 @@ public class ISEComplexMoveCommandBuilder {
     }
 
     private ISequenceNode getNewReconnectionEnd(Message message, ISequenceNode actualEnd) {
+//        if (actualEnd instanceof Gate) {
+//            return actualEnd;
+//        }
         boolean compoundEnds = false;
         if (message.isReflective() && actualEnd instanceof Execution) {
             Execution exec = (Execution) actualEnd;
@@ -311,7 +315,7 @@ public class ISEComplexMoveCommandBuilder {
         boolean bothMoved = false;
         bothMoved = validator.getMovedElements().contains(message) && validator.getMovedElements().contains(actualEnd);
 
-        if (!compoundEnds && !bothMoved && actualEnd instanceof ISequenceEvent) {
+        if (!(actualEnd instanceof Gate) && !compoundEnds && !bothMoved && actualEnd instanceof ISequenceEvent) {
             EventFinder newEndFinder = new EventFinder(actualEnd.getLifeline().get());
             newEndFinder.setReconnection(true);
 

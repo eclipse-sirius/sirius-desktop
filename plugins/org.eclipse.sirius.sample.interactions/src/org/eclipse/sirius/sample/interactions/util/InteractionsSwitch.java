@@ -16,6 +16,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.sample.interactions.*;
 import org.eclipse.sirius.sample.interactions.AbstractEnd;
 import org.eclipse.sirius.sample.interactions.CallMessage;
 import org.eclipse.sirius.sample.interactions.CombinedFragment;
@@ -48,37 +49,34 @@ import org.eclipse.sirius.sample.interactions.StateEnd;
  * starting with the actual class of the object and proceeding up the
  * inheritance hierarchy until a non-null result is returned, which is the
  * result of the switch. <!-- end-user-doc -->
- *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage
  * @generated
  */
 public class InteractionsSwitch<T> {
     /**
-     * The cached model package <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached model package
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     protected static InteractionsPackage modelPackage;
 
     /**
-     * Creates an instance of the switch. <!-- begin-user-doc --> <!--
+     * Creates an instance of the switch.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
      * @generated
      */
     public InteractionsSwitch() {
-        if (InteractionsSwitch.modelPackage == null) {
-            InteractionsSwitch.modelPackage = InteractionsPackage.eINSTANCE;
+        if (modelPackage == null) {
+            modelPackage = InteractionsPackage.eINSTANCE;
         }
     }
 
     /**
-     * Calls <code>caseXXX</code> for each class of the model until one returns
-     * a non null result; it yields that result. <!-- begin-user-doc --> <!--
+     * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
-     * @return the first non-null result returned by a <code>caseXXX</code>
-     *         call.
+     * @return the first non-null result returned by a <code>caseXXX</code> call.
      * @generated
      */
     public T doSwitch(EObject theEObject) {
@@ -86,16 +84,14 @@ public class InteractionsSwitch<T> {
     }
 
     /**
-     * Calls <code>caseXXX</code> for each class of the model until one returns
-     * a non null result; it yields that result. <!-- begin-user-doc --> <!--
+     * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
-     * @return the first non-null result returned by a <code>caseXXX</code>
-     *         call.
+     * @return the first non-null result returned by a <code>caseXXX</code> call.
      * @generated
      */
     protected T doSwitch(EClass theEClass, EObject theEObject) {
-        if (theEClass.eContainer() == InteractionsSwitch.modelPackage) {
+        if (theEClass.eContainer() == modelPackage) {
             return doSwitch(theEClass.getClassifierID(), theEObject);
         } else {
             List<EClass> eSuperTypes = theEClass.getESuperTypes();
@@ -104,12 +100,10 @@ public class InteractionsSwitch<T> {
     }
 
     /**
-     * Calls <code>caseXXX</code> for each class of the model until one returns
-     * a non null result; it yields that result. <!-- begin-user-doc --> <!--
+     * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
-     * @return the first non-null result returned by a <code>caseXXX</code>
-     *         call.
+     * @return the first non-null result returned by a <code>caseXXX</code> call.
      * @generated
      */
     protected T doSwitch(int classifierID, EObject theEObject) {
@@ -117,227 +111,217 @@ public class InteractionsSwitch<T> {
         case InteractionsPackage.MODEL: {
             Model model = (Model) theEObject;
             T result = caseModel(model);
-            if (result == null) {
+            if (result == null)
                 result = defaultCase(theEObject);
-            }
             return result;
         }
         case InteractionsPackage.INTERACTION: {
             Interaction interaction = (Interaction) theEObject;
             T result = caseInteraction(interaction);
-            if (result == null) {
+            if (result == null)
                 result = defaultCase(theEObject);
-            }
             return result;
         }
         case InteractionsPackage.PARTICIPANT: {
             Participant participant = (Participant) theEObject;
             T result = caseParticipant(participant);
-            if (result == null) {
+            if (result == null)
+                result = caseAbstractEndContext(participant);
+            if (result == null)
                 result = defaultCase(theEObject);
-            }
             return result;
         }
         case InteractionsPackage.MESSAGE: {
             Message message = (Message) theEObject;
             T result = caseMessage(message);
-            if (result == null) {
+            if (result == null)
                 result = defaultCase(theEObject);
-            }
             return result;
         }
         case InteractionsPackage.CALL_MESSAGE: {
             CallMessage callMessage = (CallMessage) theEObject;
             T result = caseCallMessage(callMessage);
-            if (result == null) {
+            if (result == null)
                 result = caseMessage(callMessage);
-            }
-            if (result == null) {
+            if (result == null)
                 result = defaultCase(theEObject);
-            }
             return result;
         }
         case InteractionsPackage.FEATURE_ACCESS_MESSAGE: {
             FeatureAccessMessage featureAccessMessage = (FeatureAccessMessage) theEObject;
             T result = caseFeatureAccessMessage(featureAccessMessage);
-            if (result == null) {
+            if (result == null)
                 result = caseMessage(featureAccessMessage);
-            }
-            if (result == null) {
+            if (result == null)
                 result = defaultCase(theEObject);
-            }
             return result;
         }
         case InteractionsPackage.CREATE_PARTICIPANT_MESSAGE: {
             CreateParticipantMessage createParticipantMessage = (CreateParticipantMessage) theEObject;
             T result = caseCreateParticipantMessage(createParticipantMessage);
-            if (result == null) {
+            if (result == null)
                 result = caseMessage(createParticipantMessage);
-            }
-            if (result == null) {
+            if (result == null)
                 result = defaultCase(theEObject);
-            }
             return result;
         }
         case InteractionsPackage.DESTROY_PARTICIPANT_MESSAGE: {
             DestroyParticipantMessage destroyParticipantMessage = (DestroyParticipantMessage) theEObject;
             T result = caseDestroyParticipantMessage(destroyParticipantMessage);
-            if (result == null) {
+            if (result == null)
                 result = caseMessage(destroyParticipantMessage);
-            }
-            if (result == null) {
+            if (result == null)
                 result = defaultCase(theEObject);
-            }
             return result;
         }
         case InteractionsPackage.RETURN_MESSAGE: {
             ReturnMessage returnMessage = (ReturnMessage) theEObject;
             T result = caseReturnMessage(returnMessage);
-            if (result == null) {
+            if (result == null)
                 result = caseMessage(returnMessage);
-            }
-            if (result == null) {
+            if (result == null)
                 result = defaultCase(theEObject);
-            }
             return result;
         }
         case InteractionsPackage.EXECUTION: {
             Execution execution = (Execution) theEObject;
             T result = caseExecution(execution);
-            if (result == null) {
+            if (result == null)
                 result = defaultCase(theEObject);
-            }
             return result;
         }
         case InteractionsPackage.STATE: {
             State state = (State) theEObject;
             T result = caseState(state);
-            if (result == null) {
+            if (result == null)
                 result = defaultCase(theEObject);
-            }
             return result;
         }
         case InteractionsPackage.INTERACTION_USE: {
             InteractionUse interactionUse = (InteractionUse) theEObject;
             T result = caseInteractionUse(interactionUse);
-            if (result == null) {
+            if (result == null)
                 result = defaultCase(theEObject);
-            }
             return result;
         }
         case InteractionsPackage.COMBINED_FRAGMENT: {
             CombinedFragment combinedFragment = (CombinedFragment) theEObject;
             T result = caseCombinedFragment(combinedFragment);
-            if (result == null) {
+            if (result == null)
                 result = defaultCase(theEObject);
-            }
             return result;
         }
         case InteractionsPackage.OPERAND: {
             Operand operand = (Operand) theEObject;
             T result = caseOperand(operand);
-            if (result == null) {
+            if (result == null)
                 result = defaultCase(theEObject);
-            }
             return result;
         }
         case InteractionsPackage.ABSTRACT_END: {
             AbstractEnd abstractEnd = (AbstractEnd) theEObject;
             T result = caseAbstractEnd(abstractEnd);
-            if (result == null) {
+            if (result == null)
                 result = defaultCase(theEObject);
-            }
             return result;
         }
         case InteractionsPackage.MESSAGE_END: {
             MessageEnd messageEnd = (MessageEnd) theEObject;
             T result = caseMessageEnd(messageEnd);
-            if (result == null) {
+            if (result == null)
                 result = caseAbstractEnd(messageEnd);
-            }
-            if (result == null) {
+            if (result == null)
                 result = defaultCase(theEObject);
-            }
             return result;
         }
         case InteractionsPackage.EXECUTION_END: {
             ExecutionEnd executionEnd = (ExecutionEnd) theEObject;
             T result = caseExecutionEnd(executionEnd);
-            if (result == null) {
+            if (result == null)
                 result = caseAbstractEnd(executionEnd);
-            }
-            if (result == null) {
+            if (result == null)
                 result = defaultCase(theEObject);
-            }
             return result;
         }
         case InteractionsPackage.STATE_END: {
             StateEnd stateEnd = (StateEnd) theEObject;
             T result = caseStateEnd(stateEnd);
-            if (result == null) {
+            if (result == null)
                 result = caseAbstractEnd(stateEnd);
-            }
-            if (result == null) {
+            if (result == null)
                 result = defaultCase(theEObject);
-            }
             return result;
         }
         case InteractionsPackage.INTERACTION_USE_END: {
             InteractionUseEnd interactionUseEnd = (InteractionUseEnd) theEObject;
             T result = caseInteractionUseEnd(interactionUseEnd);
-            if (result == null) {
+            if (result == null)
                 result = caseAbstractEnd(interactionUseEnd);
-            }
-            if (result == null) {
+            if (result == null)
                 result = defaultCase(theEObject);
-            }
             return result;
         }
         case InteractionsPackage.COMBINED_FRAGMENT_END: {
             CombinedFragmentEnd combinedFragmentEnd = (CombinedFragmentEnd) theEObject;
             T result = caseCombinedFragmentEnd(combinedFragmentEnd);
-            if (result == null) {
+            if (result == null)
                 result = caseAbstractEnd(combinedFragmentEnd);
-            }
-            if (result == null) {
+            if (result == null)
                 result = defaultCase(theEObject);
-            }
             return result;
         }
         case InteractionsPackage.OPERAND_END: {
             OperandEnd operandEnd = (OperandEnd) theEObject;
             T result = caseOperandEnd(operandEnd);
-            if (result == null) {
+            if (result == null)
                 result = caseAbstractEnd(operandEnd);
-            }
-            if (result == null) {
+            if (result == null)
                 result = defaultCase(theEObject);
-            }
             return result;
         }
         case InteractionsPackage.MIX_END: {
             MixEnd mixEnd = (MixEnd) theEObject;
             T result = caseMixEnd(mixEnd);
-            if (result == null) {
+            if (result == null)
                 result = caseExecutionEnd(mixEnd);
-            }
-            if (result == null) {
+            if (result == null)
                 result = caseMessageEnd(mixEnd);
-            }
-            if (result == null) {
+            if (result == null)
                 result = caseAbstractEnd(mixEnd);
-            }
-            if (result == null) {
+            if (result == null)
                 result = defaultCase(theEObject);
-            }
             return result;
         }
         case InteractionsPackage.CONSTRAINT: {
             Constraint constraint = (Constraint) theEObject;
             T result = caseConstraint(constraint);
-            if (result == null) {
+            if (result == null)
                 result = defaultCase(theEObject);
-            }
+            return result;
+        }
+        case InteractionsPackage.GATE: {
+            Gate gate = (Gate) theEObject;
+            T result = caseGate(gate);
+            if (result == null)
+                result = caseAbstractEndContext(gate);
+            if (result == null)
+                result = defaultCase(theEObject);
+            return result;
+        }
+        case InteractionsPackage.GATE_END: {
+            GateEnd gateEnd = (GateEnd) theEObject;
+            T result = caseGateEnd(gateEnd);
+            if (result == null)
+                result = caseAbstractEnd(gateEnd);
+            if (result == null)
+                result = defaultCase(theEObject);
+            return result;
+        }
+        case InteractionsPackage.ABSTRACT_END_CONTEXT: {
+            AbstractEndContext abstractEndContext = (AbstractEndContext) theEObject;
+            T result = caseAbstractEndContext(abstractEndContext);
+            if (result == null)
+                result = defaultCase(theEObject);
             return result;
         }
         default:
@@ -346,15 +330,12 @@ public class InteractionsSwitch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Model</em>'. <!-- begin-user-doc --> This implementation returns
+     * Returns the result of interpreting the object as an instance of '<em>Model</em>'.
+     * <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Model</em>'.
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Model</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -363,15 +344,12 @@ public class InteractionsSwitch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Interaction</em>'. <!-- begin-user-doc --> This implementation
+     * Returns the result of interpreting the object as an instance of '<em>Interaction</em>'.
+     * <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Interaction</em>'.
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Interaction</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -380,15 +358,12 @@ public class InteractionsSwitch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Participant</em>'. <!-- begin-user-doc --> This implementation
+     * Returns the result of interpreting the object as an instance of '<em>Participant</em>'.
+     * <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Participant</em>'.
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Participant</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -397,15 +372,12 @@ public class InteractionsSwitch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Message</em>'. <!-- begin-user-doc --> This implementation returns
+     * Returns the result of interpreting the object as an instance of '<em>Message</em>'.
+     * <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Message</em>'.
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Message</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -414,15 +386,12 @@ public class InteractionsSwitch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Call Message</em>'. <!-- begin-user-doc --> This implementation
+     * Returns the result of interpreting the object as an instance of '<em>Call Message</em>'.
+     * <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Call Message</em>'.
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Call Message</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -431,15 +400,12 @@ public class InteractionsSwitch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Feature Access Message</em>'. <!-- begin-user-doc --> This
+     * Returns the result of interpreting the object as an instance of '<em>Feature Access Message</em>'.
+     * <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Feature Access Message</em>'.
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Feature Access Message</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -448,15 +414,12 @@ public class InteractionsSwitch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Create Participant Message</em>'. <!-- begin-user-doc --> This
+     * Returns the result of interpreting the object as an instance of '<em>Create Participant Message</em>'.
+     * <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Create Participant Message</em>'.
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Create Participant Message</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -465,15 +428,12 @@ public class InteractionsSwitch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Destroy Participant Message</em>'. <!-- begin-user-doc --> This
+     * Returns the result of interpreting the object as an instance of '<em>Destroy Participant Message</em>'.
+     * <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Destroy Participant Message</em>'.
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Destroy Participant Message</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -482,15 +442,12 @@ public class InteractionsSwitch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Return Message</em>'. <!-- begin-user-doc --> This implementation
+     * Returns the result of interpreting the object as an instance of '<em>Return Message</em>'.
+     * <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Return Message</em>'.
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Return Message</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -499,15 +456,12 @@ public class InteractionsSwitch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Execution</em>'. <!-- begin-user-doc --> This implementation returns
+     * Returns the result of interpreting the object as an instance of '<em>Execution</em>'.
+     * <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Execution</em>'.
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Execution</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -516,15 +470,12 @@ public class InteractionsSwitch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>State</em>'. <!-- begin-user-doc --> This implementation returns
+     * Returns the result of interpreting the object as an instance of '<em>State</em>'.
+     * <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>State</em>'.
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>State</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -533,15 +484,12 @@ public class InteractionsSwitch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Interaction Use</em>'. <!-- begin-user-doc --> This implementation
+     * Returns the result of interpreting the object as an instance of '<em>Interaction Use</em>'.
+     * <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Interaction Use</em>'.
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Interaction Use</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -550,15 +498,12 @@ public class InteractionsSwitch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Combined Fragment</em>'. <!-- begin-user-doc --> This implementation
+     * Returns the result of interpreting the object as an instance of '<em>Combined Fragment</em>'.
+     * <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Combined Fragment</em>'.
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Combined Fragment</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -567,15 +512,12 @@ public class InteractionsSwitch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Operand</em>'. <!-- begin-user-doc --> This implementation returns
+     * Returns the result of interpreting the object as an instance of '<em>Operand</em>'.
+     * <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Operand</em>'.
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Operand</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -584,15 +526,12 @@ public class InteractionsSwitch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Abstract End</em>'. <!-- begin-user-doc --> This implementation
+     * Returns the result of interpreting the object as an instance of '<em>Abstract End</em>'.
+     * <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Abstract End</em>'.
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Abstract End</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -601,15 +540,12 @@ public class InteractionsSwitch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Message End</em>'. <!-- begin-user-doc --> This implementation
+     * Returns the result of interpreting the object as an instance of '<em>Message End</em>'.
+     * <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Message End</em>'.
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Message End</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -618,15 +554,12 @@ public class InteractionsSwitch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Execution End</em>'. <!-- begin-user-doc --> This implementation
+     * Returns the result of interpreting the object as an instance of '<em>Execution End</em>'.
+     * <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Execution End</em>'.
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Execution End</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -635,15 +568,12 @@ public class InteractionsSwitch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>State End</em>'. <!-- begin-user-doc --> This implementation returns
+     * Returns the result of interpreting the object as an instance of '<em>State End</em>'.
+     * <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>State End</em>'.
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>State End</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -652,15 +582,12 @@ public class InteractionsSwitch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Interaction Use End</em>'. <!-- begin-user-doc --> This
+     * Returns the result of interpreting the object as an instance of '<em>Interaction Use End</em>'.
+     * <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Interaction Use End</em>'.
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Interaction Use End</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -669,15 +596,12 @@ public class InteractionsSwitch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Combined Fragment End</em>'. <!-- begin-user-doc --> This
+     * Returns the result of interpreting the object as an instance of '<em>Combined Fragment End</em>'.
+     * <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Combined Fragment End</em>'.
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Combined Fragment End</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -686,15 +610,12 @@ public class InteractionsSwitch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Operand End</em>'. <!-- begin-user-doc --> This implementation
+     * Returns the result of interpreting the object as an instance of '<em>Operand End</em>'.
+     * <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Operand End</em>'.
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Operand End</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -703,15 +624,12 @@ public class InteractionsSwitch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Mix End</em>'. <!-- begin-user-doc --> This implementation returns
+     * Returns the result of interpreting the object as an instance of '<em>Mix End</em>'.
+     * <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Mix End</em>'.
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Mix End</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -720,15 +638,12 @@ public class InteractionsSwitch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Constraint</em>'. <!-- begin-user-doc --> This implementation returns
+     * Returns the result of interpreting the object as an instance of '<em>Constraint</em>'.
+     * <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Constraint</em>'.
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Constraint</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -737,15 +652,57 @@ public class InteractionsSwitch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>EObject</em>'. <!-- begin-user-doc --> This implementation returns
+     * Returns the result of interpreting the object as an instance of '<em>Gate</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Gate</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseGate(Gate object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Gate End</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Gate End</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseGateEnd(GateEnd object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Abstract End Context</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Abstract End Context</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseAbstractEndContext(AbstractEndContext object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
+     * <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch, but this is
      * the last case anyway. <!-- end-user-doc -->
-     *
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>EObject</em>'.
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject)
      * @generated
      */

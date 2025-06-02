@@ -20,15 +20,11 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.FeatureAccessMessage#isIsWrite
- * <em>Is Write</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.FeatureAccessMessage#getFeature
- * <em>Feature</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.FeatureAccessMessage#isIsWrite <em>Is Write</em>}</li>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.FeatureAccessMessage#getFeature <em>Feature</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getFeatureAccessMessage()
  * @model

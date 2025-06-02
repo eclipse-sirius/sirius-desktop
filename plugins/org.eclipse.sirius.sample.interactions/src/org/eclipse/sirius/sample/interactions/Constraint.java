@@ -19,19 +19,17 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Constraint</b></em>'. <!-- end-user-doc -->
  *
- * <!-- begin-model-doc --> A constraint between two abstract ends. <!--
- * end-model-doc -->
+ * <!-- begin-model-doc -->
+ * A constraint between two abstract ends. 
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.sirius.sample.interactions.Constraint#getExpression
- * <em>Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.Constraint#getConstrainedEnds
- * <em>Constrained Ends</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.Constraint#getExpression <em>Expression</em>}</li>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.Constraint#getConstrainedEnds <em>Constrained Ends</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getConstraint()
  * @model
@@ -56,13 +54,10 @@ public interface Constraint extends EObject {
     String getExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.sample.interactions.Constraint#getExpression
-     * <em>Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * Sets the value of the '{@link org.eclipse.sirius.sample.interactions.Constraint#getExpression <em>Expression</em>}' attribute.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
-     * @param value
-     *            the new value of the '<em>Expression</em>' attribute.
+     * @param value the new value of the '<em>Expression</em>' attribute.
      * @see #getExpression()
      * @generated
      */

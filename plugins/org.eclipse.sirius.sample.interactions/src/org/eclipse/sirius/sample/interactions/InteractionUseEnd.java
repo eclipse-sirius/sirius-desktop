@@ -18,11 +18,10 @@ package org.eclipse.sirius.sample.interactions;
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.sirius.sample.interactions.InteractionUseEnd#getOwner
- * <em>Owner</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.InteractionUseEnd#getOwner <em>Owner</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getInteractionUseEnd()
  * @model
@@ -47,12 +46,9 @@ public interface InteractionUseEnd extends AbstractEnd {
     InteractionUse getOwner();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.sample.interactions.InteractionUseEnd#getOwner
-     * <em>Owner</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @param value
-     *            the new value of the '<em>Owner</em>' reference.
+     * Sets the value of the '{@link org.eclipse.sirius.sample.interactions.InteractionUseEnd#getOwner <em>Owner</em>}' reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * @param value the new value of the '<em>Owner</em>' reference.
      * @see #getOwner()
      * @generated
      */

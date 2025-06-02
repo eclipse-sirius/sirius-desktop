@@ -18,21 +18,19 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>State</b></em>'. <!-- end-user-doc -->
  *
- * <!-- begin-model-doc --> A state transition of a participant. <!--
- * end-model-doc -->
+ * <!-- begin-model-doc -->
+ * A state transition of a participant.
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.sirius.sample.interactions.State#getName <em>Name
- * </em>}</li>
- * <li>{@link org.eclipse.sirius.sample.interactions.State#getOwner <em>Owner
- * </em>}</li>
- * <li>{@link org.eclipse.sirius.sample.interactions.State#getStart <em>Start
- * </em>}</li>
- * <li>{@link org.eclipse.sirius.sample.interactions.State#getEnd <em>End</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.State#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.State#getOwner <em>Owner</em>}</li>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.State#getStart <em>Start</em>}</li>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.State#getEnd <em>End</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getState()
  * @model
@@ -57,12 +55,9 @@ public interface State extends EObject {
     String getName();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.sample.interactions.State#getName
-     * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @param value
-     *            the new value of the '<em>Name</em>' attribute.
+     * Sets the value of the '{@link org.eclipse.sirius.sample.interactions.State#getName <em>Name</em>}' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * @param value the new value of the '<em>Name</em>' attribute.
      * @see #getName()
      * @generated
      */
@@ -86,12 +81,9 @@ public interface State extends EObject {
     Participant getOwner();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.sample.interactions.State#getOwner
-     * <em>Owner</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @param value
-     *            the new value of the '<em>Owner</em>' reference.
+     * Sets the value of the '{@link org.eclipse.sirius.sample.interactions.State#getOwner <em>Owner</em>}' reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * @param value the new value of the '<em>Owner</em>' reference.
      * @see #getOwner()
      * @generated
      */
@@ -115,12 +107,9 @@ public interface State extends EObject {
     StateEnd getStart();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.sample.interactions.State#getStart
-     * <em>Start</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @param value
-     *            the new value of the '<em>Start</em>' reference.
+     * Sets the value of the '{@link org.eclipse.sirius.sample.interactions.State#getStart <em>Start</em>}' reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * @param value the new value of the '<em>Start</em>' reference.
      * @see #getStart()
      * @generated
      */
@@ -144,12 +133,9 @@ public interface State extends EObject {
     StateEnd getEnd();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.sample.interactions.State#getEnd <em>End</em>}'
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @param value
-     *            the new value of the '<em>End</em>' reference.
+     * Sets the value of the '{@link org.eclipse.sirius.sample.interactions.State#getEnd <em>End</em>}' reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * @param value the new value of the '<em>End</em>' reference.
      * @see #getEnd()
      * @generated
      */

@@ -26,6 +26,7 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.EndOfLife;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Execution;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.Gate;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InteractionContainer;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InteractionUse;
@@ -40,6 +41,7 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.CombinedFr
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.CombinedFragmentEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.EndOfLifeEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionEditPart;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.GateEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InstanceRoleEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InteractionContainerEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InteractionContainerViewNodeContainerCompartmentEditPart;
@@ -100,6 +102,8 @@ public class SequenceDiagramEditPartProvider extends AbstractEditPartProvider {
                     return LostMessageEndEditPart.class;
                 } else if (ObservationPoint.notationPredicate().apply(view)) {
                     return ObservationPointEditPart.class;
+                } else if (Gate.notationPredicate().apply(view)) {
+                    return GateEditPart.class;
                 }
             } else if (DiagramPackage.eINSTANCE.getDNodeContainer().isInstance(semanticElement)) {
                 if (InteractionUse.notationPredicate().apply(view)) {

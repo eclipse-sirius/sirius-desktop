@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.sirius.sample.interactions.*;
 import org.eclipse.sirius.sample.interactions.CallMessage;
 import org.eclipse.sirius.sample.interactions.CombinedFragment;
 import org.eclipse.sirius.sample.interactions.CombinedFragmentEnd;
@@ -44,14 +45,13 @@ import org.eclipse.sirius.sample.interactions.StateEnd;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- *
  * @generated
  */
 public class InteractionsFactoryImpl extends EFactoryImpl implements InteractionsFactory {
     /**
-     * Creates the default factory implementation. <!-- begin-user-doc --> <!--
+     * Creates the default factory implementation.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
      * @generated
      */
     public static InteractionsFactory init() {
@@ -67,9 +67,9 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
     }
 
     /**
-     * Creates an instance of the factory. <!-- begin-user-doc --> <!--
+     * Creates an instance of the factory.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
      * @generated
      */
     public InteractionsFactoryImpl() {
@@ -78,7 +78,6 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -126,6 +125,10 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
             return createMixEnd();
         case InteractionsPackage.CONSTRAINT:
             return createConstraint();
+        case InteractionsPackage.GATE:
+            return createGate();
+        case InteractionsPackage.GATE_END:
+            return createGateEnd();
         default:
             throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
@@ -133,7 +136,6 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -144,7 +146,6 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -155,7 +156,6 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -166,7 +166,6 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -177,7 +176,6 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -188,7 +186,6 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -199,7 +196,6 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -210,7 +206,6 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -221,7 +216,6 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -232,7 +226,6 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -243,7 +236,6 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -254,7 +246,6 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -265,7 +256,6 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -276,7 +266,6 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -287,7 +276,6 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -298,7 +286,6 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -309,7 +296,6 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -320,7 +306,6 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -331,7 +316,6 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -342,7 +326,6 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -353,7 +336,6 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -363,8 +345,27 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
     }
 
     /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public Gate createGate() {
+        GateImpl gate = new GateImpl();
+        return gate;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public GateEnd createGateEnd() {
+        GateEndImpl gateEnd = new GateEndImpl();
+        return gateEnd;
+    }
+
+    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -374,7 +375,6 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @deprecated
      * @generated
      */

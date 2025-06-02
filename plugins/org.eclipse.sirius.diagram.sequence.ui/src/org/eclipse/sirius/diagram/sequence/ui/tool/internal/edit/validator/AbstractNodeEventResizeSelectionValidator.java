@@ -24,6 +24,7 @@ import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractFrame;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractSequenceNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Execution;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
@@ -77,7 +78,7 @@ public class AbstractNodeEventResizeSelectionValidator {
 
     private boolean valid;
 
-    private AbstractNodeEvent host;
+    private AbstractSequenceNodeEvent host;
 
     private ChangeBoundsRequest request;
 
@@ -95,7 +96,7 @@ public class AbstractNodeEventResizeSelectionValidator {
      * @param request
      *            the resize request targeting the execution.
      */
-    protected AbstractNodeEventResizeSelectionValidator(AbstractNodeEvent host, ChangeBoundsRequest request) {
+    protected AbstractNodeEventResizeSelectionValidator(AbstractSequenceNodeEvent host, ChangeBoundsRequest request) {
         this.host = host;
         this.requestQuery = new RequestQuery(request);
         Preconditions.checkArgument(requestQuery.isResize());
@@ -418,7 +419,7 @@ public class AbstractNodeEventResizeSelectionValidator {
      *            the host execution
      * @return a validator.
      */
-    public static AbstractNodeEventResizeSelectionValidator getOrCreateValidator(ChangeBoundsRequest cbr, AbstractNodeEvent host) {
+    public static AbstractNodeEventResizeSelectionValidator getOrCreateValidator(ChangeBoundsRequest cbr, AbstractSequenceNodeEvent host) {
         AbstractNodeEventResizeSelectionValidator validator = null;
         if (lastRequest != cbr) {
             lastValidator = null;

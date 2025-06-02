@@ -26,6 +26,7 @@ import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.description.DestructionMessageMapping;
 import org.eclipse.sirius.diagram.sequence.description.EndOfLifeMapping;
 import org.eclipse.sirius.diagram.sequence.description.ExecutionMapping;
+import org.eclipse.sirius.diagram.sequence.description.GateMapping;
 import org.eclipse.sirius.diagram.sequence.description.InstanceRoleMapping;
 import org.eclipse.sirius.diagram.sequence.description.InteractionContainerMapping;
 import org.eclipse.sirius.diagram.sequence.description.InteractionUseMapping;
@@ -117,6 +118,8 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
             return createObservationPointMapping();
         case DescriptionPackage.INTERACTION_CONTAINER_MAPPING:
             return createInteractionContainerMapping();
+        case DescriptionPackage.GATE_MAPPING:
+            return createGateMapping();
         default:
             throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
@@ -296,6 +299,17 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
     public InteractionContainerMapping createInteractionContainerMapping() {
         InteractionContainerMappingImpl interactionContainerMapping = new InteractionContainerMappingImpl();
         return interactionContainerMapping;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public GateMapping createGateMapping() {
+        GateMappingImpl gateMapping = new GateMappingImpl();
+        return gateMapping;
     }
 
     /**

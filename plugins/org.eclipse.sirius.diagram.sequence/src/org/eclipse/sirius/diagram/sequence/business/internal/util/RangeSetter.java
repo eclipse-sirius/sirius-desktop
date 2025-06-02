@@ -25,7 +25,7 @@ import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
-import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractSequenceNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.EndOfLife;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceNode;
@@ -66,7 +66,7 @@ public final class RangeSetter {
      * @param range
      *            the vertical range of the given sequence event.
      */
-    public static void setVerticalRange(AbstractNodeEvent self, Range range) {
+    public static void setVerticalRange(AbstractSequenceNodeEvent self, Range range) {
         CacheHelper.clearRangeDependantCaches();
 
         Range oldRange = self.getVerticalRange();

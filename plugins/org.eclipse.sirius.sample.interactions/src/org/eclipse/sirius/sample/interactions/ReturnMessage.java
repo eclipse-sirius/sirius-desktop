@@ -18,12 +18,10 @@ package org.eclipse.sirius.sample.interactions;
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.ReturnMessage#getInvocationMessage
- * <em>Invocation Message</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.ReturnMessage#getInvocationMessage <em>Invocation Message</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getReturnMessage()
  * @model
@@ -38,7 +36,6 @@ public interface ReturnMessage extends Message {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
      * @return the value of the '<em>Invocation Message</em>' reference.
      * @see #setInvocationMessage(Message)
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getReturnMessage_InvocationMessage()
@@ -48,13 +45,10 @@ public interface ReturnMessage extends Message {
     Message getInvocationMessage();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.sample.interactions.ReturnMessage#getInvocationMessage
-     * <em>Invocation Message</em>}' reference. <!-- begin-user-doc --> <!--
+     * Sets the value of the '{@link org.eclipse.sirius.sample.interactions.ReturnMessage#getInvocationMessage <em>Invocation Message</em>}' reference.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
-     * @param value
-     *            the new value of the '<em>Invocation Message</em>' reference.
+     * @param value the new value of the '<em>Invocation Message</em>' reference.
      * @see #getInvocationMessage()
      * @generated
      */

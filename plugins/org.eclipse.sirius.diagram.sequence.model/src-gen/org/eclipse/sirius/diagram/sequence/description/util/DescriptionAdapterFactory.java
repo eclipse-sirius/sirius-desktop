@@ -35,6 +35,7 @@ import org.eclipse.sirius.diagram.sequence.description.EndOfLifeMapping;
 import org.eclipse.sirius.diagram.sequence.description.EventMapping;
 import org.eclipse.sirius.diagram.sequence.description.ExecutionMapping;
 import org.eclipse.sirius.diagram.sequence.description.FrameMapping;
+import org.eclipse.sirius.diagram.sequence.description.GateMapping;
 import org.eclipse.sirius.diagram.sequence.description.InstanceRoleMapping;
 import org.eclipse.sirius.diagram.sequence.description.InteractionContainerMapping;
 import org.eclipse.sirius.diagram.sequence.description.InteractionUseMapping;
@@ -202,6 +203,11 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseInteractionContainerMapping(InteractionContainerMapping object) {
             return createInteractionContainerMappingAdapter();
+        }
+
+        @Override
+        public Adapter caseGateMapping(GateMapping object) {
+            return createGateMappingAdapter();
         }
 
         @Override
@@ -575,6 +581,20 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createInteractionContainerMappingAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.diagram.sequence.description.GateMapping
+     * <em>Gate Mapping</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+     * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc
+     * -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.diagram.sequence.description.GateMapping
+     * @generated
+     */
+    public Adapter createGateMappingAdapter() {
         return null;
     }
 

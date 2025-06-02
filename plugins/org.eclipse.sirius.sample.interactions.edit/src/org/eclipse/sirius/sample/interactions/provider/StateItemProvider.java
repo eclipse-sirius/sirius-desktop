@@ -69,9 +69,9 @@ public class StateItemProvider extends ItemProviderAdapter implements IEditingDo
     }
 
     /**
-     * This adds a property descriptor for the Name feature. <!-- begin-user-doc
+     * This adds a property descriptor for the Name feature.
+     * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
@@ -105,9 +105,9 @@ public class StateItemProvider extends ItemProviderAdapter implements IEditingDo
     }
 
     /**
-     * This adds a property descriptor for the End feature. <!-- begin-user-doc
+     * This adds a property descriptor for the End feature.
+     * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
      * @generated
      */
     protected void addEndPropertyDescriptor(Object object) {
@@ -117,8 +117,8 @@ public class StateItemProvider extends ItemProviderAdapter implements IEditingDo
     }
 
     /**
-     * This returns State.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns State.gif.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     @Override
@@ -127,24 +127,23 @@ public class StateItemProvider extends ItemProviderAdapter implements IEditingDo
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
+     * This returns the label text for the adapted class.
+     * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((State) object).getName();
         return label == null || label.length() == 0 ? getString("_UI_State_type") : //$NON-NLS-1$
-            getString("_UI_State_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_State_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
+     * This handles model notifications by calling {@link #updateChildren} to update any cached
+     * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
      * @generated
      */
     @Override

@@ -28,6 +28,7 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.Gate;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InteractionUse;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Operand;
@@ -55,7 +56,7 @@ import com.google.common.collect.Multimap;
 public final class RefreshOrderingHelper {
     @SuppressWarnings("unchecked")
     private static final Predicate<DDiagramElement> DELIMITED_EVENT_PREDICATE = Predicates.or(AbstractNodeEvent.viewpointElementPredicate(), State.viewpointElementPredicate(),
-            InteractionUse.viewpointElementPredicate(), CombinedFragment.viewpointElementPredicate(), Operand.viewpointElementPredicate());
+            InteractionUse.viewpointElementPredicate(), CombinedFragment.viewpointElementPredicate(), Operand.viewpointElementPredicate(), Gate.viewpointElementPredicate());
 
     private RefreshOrderingHelper() {
         // Prevent instantiation.

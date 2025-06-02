@@ -55,6 +55,7 @@ import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.description.provider.DescriptionItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.sequence.description.tool.CombinedFragmentCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ExecutionCreationTool;
+import org.eclipse.sirius.diagram.sequence.description.tool.GateCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleReorderTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.InteractionUseCreationTool;
@@ -141,6 +142,7 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
                 collectOperandCreation(result, ref);
                 collectReorderCreations(result, ref);
                 collectObservationPointCreation(result, ref);
+                collectGateCreation(result, ref);
             }
         }
         return result;
@@ -309,6 +311,12 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
         ObservationPointCreationTool obsPointCreationTool = ToolFactory.eINSTANCE.createObservationPointCreationTool();
         addVariables(obsPointCreationTool);
         result.add(new CommandParameter(null, ref, obsPointCreationTool));
+    }
+
+    private void collectGateCreation(Collection<CommandParameter> result, EReference ref) {
+        GateCreationTool gateCreationTool = ToolFactory.eINSTANCE.createGateCreationTool();
+        addVariables(gateCreationTool);
+        result.add(new CommandParameter(null, ref, gateCreationTool));
     }
 
     private void addVariables(SequenceDiagramToolDescription sequenceDiagramTool) {

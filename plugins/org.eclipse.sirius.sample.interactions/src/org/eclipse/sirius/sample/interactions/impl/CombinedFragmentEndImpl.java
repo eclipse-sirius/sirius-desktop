@@ -25,12 +25,10 @@ import org.eclipse.sirius.sample.interactions.InteractionsPackage;
  * <em><b>Combined Fragment End</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.impl.CombinedFragmentEndImpl#getOwner
- * <em>Owner</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.eclipse.sirius.sample.interactions.impl.CombinedFragmentEndImpl#getOwner <em>Owner</em>}</li>
+ * </ul>
  *
  * @generated
  */
@@ -38,7 +36,6 @@ public class CombinedFragmentEndImpl extends AbstractEndImpl implements Combined
     /**
      * The cached value of the '{@link #getOwner() <em>Owner</em>}' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @see #getOwner()
      * @generated
      * @ordered
@@ -47,7 +44,6 @@ public class CombinedFragmentEndImpl extends AbstractEndImpl implements Combined
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     protected CombinedFragmentEndImpl() {
@@ -56,7 +52,6 @@ public class CombinedFragmentEndImpl extends AbstractEndImpl implements Combined
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -66,7 +61,6 @@ public class CombinedFragmentEndImpl extends AbstractEndImpl implements Combined
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -75,9 +69,8 @@ public class CombinedFragmentEndImpl extends AbstractEndImpl implements Combined
             InternalEObject oldOwner = (InternalEObject) owner;
             owner = (CombinedFragment) eResolveProxy(oldOwner);
             if (owner != oldOwner) {
-                if (eNotificationRequired()) {
+                if (eNotificationRequired())
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionsPackage.COMBINED_FRAGMENT_END__OWNER, oldOwner, owner));
-                }
             }
         }
         return owner;
@@ -85,7 +78,6 @@ public class CombinedFragmentEndImpl extends AbstractEndImpl implements Combined
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     public CombinedFragment basicGetOwner() {
@@ -94,30 +86,26 @@ public class CombinedFragmentEndImpl extends AbstractEndImpl implements Combined
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
     public void setOwner(CombinedFragment newOwner) {
         CombinedFragment oldOwner = owner;
         owner = newOwner;
-        if (eNotificationRequired()) {
+        if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.COMBINED_FRAGMENT_END__OWNER, oldOwner, owner));
-        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case InteractionsPackage.COMBINED_FRAGMENT_END__OWNER:
-            if (resolve) {
+            if (resolve)
                 return getOwner();
-            }
             return basicGetOwner();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -125,7 +113,6 @@ public class CombinedFragmentEndImpl extends AbstractEndImpl implements Combined
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -140,7 +127,6 @@ public class CombinedFragmentEndImpl extends AbstractEndImpl implements Combined
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
@@ -155,7 +141,6 @@ public class CombinedFragmentEndImpl extends AbstractEndImpl implements Combined
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override

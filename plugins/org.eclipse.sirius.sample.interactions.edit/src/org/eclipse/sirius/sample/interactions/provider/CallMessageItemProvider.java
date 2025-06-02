@@ -63,10 +63,10 @@ public class CallMessageItemProvider extends MessageItemProvider {
      * @generated
      */
     protected void addOperationPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CallMessage_operation_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_CallMessage_operation_feature", "_UI_CallMessage_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                InteractionsPackage.Literals.CALL_MESSAGE__OPERATION, true, false, true, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_CallMessage_operation_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_CallMessage_operation_feature", "_UI_CallMessage_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        InteractionsPackage.Literals.CALL_MESSAGE__OPERATION, true, false, true, null, null, null));
     }
 
     /**
@@ -81,24 +81,23 @@ public class CallMessageItemProvider extends MessageItemProvider {
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
+     * This returns the label text for the adapted class.
+     * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
      * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((CallMessage) object).getName();
         return label == null || label.length() == 0 ? getString("_UI_CallMessage_type") : //$NON-NLS-1$
-            getString("_UI_CallMessage_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_CallMessage_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
+     * This handles model notifications by calling {@link #updateChildren} to update any cached
+     * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
      * @generated
      */
     @Override

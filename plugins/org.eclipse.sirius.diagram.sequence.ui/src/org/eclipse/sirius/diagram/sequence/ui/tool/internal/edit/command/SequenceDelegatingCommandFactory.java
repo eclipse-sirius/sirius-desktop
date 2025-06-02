@@ -31,6 +31,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.operation.RefreshSe
 import org.eclipse.sirius.diagram.sequence.business.internal.tool.ToolCommandBuilder;
 import org.eclipse.sirius.diagram.sequence.description.tool.CombinedFragmentCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ExecutionCreationTool;
+import org.eclipse.sirius.diagram.sequence.description.tool.GateCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.InteractionUseCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ObservationPointCreationTool;
@@ -309,6 +310,8 @@ public final class SequenceDelegatingCommandFactory extends DelegatingDiagramCom
             result = buildStateCreationCommandFromTool(node, (StateCreationTool) tool);
         } else if (tool instanceof ObservationPointCreationTool) {
             result = buildObservationPointCreationCommandFromTool(node, (ObservationPointCreationTool) tool);
+        } else if (tool instanceof GateCreationTool) {
+            result = buildGateCreationCommandFromTool(node, (GateCreationTool) tool);
         } else {
             result = super.buildCreateNodeCommandFromTool(node, tool);
         }
@@ -379,6 +382,13 @@ public final class SequenceDelegatingCommandFactory extends DelegatingDiagramCom
     private org.eclipse.emf.common.command.Command buildOperandCreationCommandFromTool(DDiagramElementContainer nodeContainer, OperandCreationTool tool) {
         org.eclipse.emf.common.command.Command emfCommand = ToolCommandBuilder.buildCreateOperantCommandFromTool(nodeContainer, tool, startingEndPredecessor, finishingEndPredecessor);
         SequenceDDiagram diagram = (SequenceDDiagram) nodeContainer.getParentDiagram();
+        emfCommand = emfCommand.chain(CommandFactory.createRecordingCommand(domain, new RefreshSemanticOrderingsOperation(diagram)));
+        return emfCommand;
+    }
+
+    private org.eclipse.emf.common.command.Command buildGateCreationCommandFromTool(DNode node, GateCreationTool tool) {
+        org.eclipse.emf.common.command.Command emfCommand = ToolCommandBuilder.buildCreateGateCommandFromTool(node, tool, startingEndPredecessor, finishingEndPredecessor);
+        SequenceDDiagram diagram = (SequenceDDiagram) node.getParentDiagram();
         emfCommand = emfCommand.chain(CommandFactory.createRecordingCommand(domain, new RefreshSemanticOrderingsOperation(diagram)));
         return emfCommand;
     }
