@@ -77,6 +77,9 @@ public final class Messages {
     public static String ISequenceNodeMoveOperation_operationName;
 
     @TranslatableMessage
+    public static String Gate_nonGateNode;
+
+    @TranslatableMessage
     public static String Lifeline_nonLifelineNode;
 
     @TranslatableMessage

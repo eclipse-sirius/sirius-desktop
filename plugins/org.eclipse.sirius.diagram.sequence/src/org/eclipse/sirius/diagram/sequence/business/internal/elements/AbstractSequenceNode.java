@@ -83,7 +83,7 @@ abstract class AbstractSequenceNode extends AbstractSequenceElement implements I
     @Override
     public Option<Lifeline> getLifeline() {
         Option<Lifeline> result;
-        if (cachedLifeline != null) {
+        if (cachedLifeline != null && cachedLifeline.some()) {
             result = cachedLifeline;
         } else {
             result = getParentLifeline();
