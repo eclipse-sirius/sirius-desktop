@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2024 CEA.
+ * Copyright (c) 2025 CEA.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -37,6 +37,14 @@ public class InteractionContainer extends AbstractSequenceNode {
     public static final int VISUAL_ID = 2002;
 
     /**
+     * The visual ID of the compartment contained by the InteractionContainer.
+     * 
+     * see
+     * org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart.VISUAL_ID
+     */
+    public static final int COMPARTMENT_VISUAL_ID = 7001;
+
+    /**
      * Default margin of the Interaction Container.
      */
     public static final int MARGIN = 50;
@@ -62,6 +70,15 @@ public class InteractionContainer extends AbstractSequenceNode {
      */
     public static Predicate<View> notationPredicate() {
         return new NotationPredicate(NotationPackage.eINSTANCE.getNode(), VISUAL_ID, InteractionContainer.viewpointElementPredicate());
+    }
+
+    /**
+     * Returns a predicate to check whether a GMF View represents an combined fragment compartment.
+     * 
+     * @return a predicate to check whether a GMF View represents an combined fragment compartment.
+     */
+    public static Predicate<View> compartmentNotationPredicate() {
+        return new NotationPredicate(NotationPackage.eINSTANCE.getNode(), COMPARTMENT_VISUAL_ID, InteractionContainer.viewpointElementPredicate());
     }
 
     /**

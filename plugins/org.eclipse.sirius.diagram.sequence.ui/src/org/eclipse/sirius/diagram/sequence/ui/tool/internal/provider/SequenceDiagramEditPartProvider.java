@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.EndOfLife;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Execution;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.Gate;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InteractionContainer;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InteractionUse;
@@ -40,9 +41,11 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.CombinedFr
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.CombinedFragmentEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.EndOfLifeEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionEditPart;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.GateEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InstanceRoleEditPart;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InteractionContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InteractionContainerEditPart;
-import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InteractionContainerViewNodeContainerCompartmentEditPart;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InteractionUseCompartmentEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InteractionUseEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.LifelineEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.LostMessageEndEditPart;
@@ -54,7 +57,6 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceDi
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageNameEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.StateEditPart;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 
 /**
@@ -100,10 +102,14 @@ public class SequenceDiagramEditPartProvider extends AbstractEditPartProvider {
                     return LostMessageEndEditPart.class;
                 } else if (ObservationPoint.notationPredicate().apply(view)) {
                     return ObservationPointEditPart.class;
+                } else if (Gate.notationPredicate().apply(view)) {
+                    return GateEditPart.class;
                 }
             } else if (DiagramPackage.eINSTANCE.getDNodeContainer().isInstance(semanticElement)) {
                 if (InteractionUse.notationPredicate().apply(view)) {
                     return InteractionUseEditPart.class;
+                } else if (InteractionUse.compartmentNotationPredicate().apply(view)) {
+                    return InteractionUseCompartmentEditPart.class;
                 } else if (CombinedFragment.notationPredicate().apply(view)) {
                     return CombinedFragmentEditPart.class;
                 } else if (CombinedFragment.compartmentNotationPredicate().apply(view)) {
@@ -114,9 +120,8 @@ public class SequenceDiagramEditPartProvider extends AbstractEditPartProvider {
                     return OperandCompartmentEditPart.class;
                 } else if (InteractionContainer.notationPredicate().apply(view)) {
                     return InteractionContainerEditPart.class;
-                } else if (view.eContainer() instanceof View && SiriusVisualIDRegistry.getVisualID(view) == DNodeContainerViewNodeContainerCompartmentEditPart.VISUAL_ID
-                        && InteractionContainer.notationPredicate().apply((View) view.eContainer())) {
-                    return InteractionContainerViewNodeContainerCompartmentEditPart.class;
+                } else if (InteractionContainer.compartmentNotationPredicate().apply(view)) {
+                    return InteractionContainerCompartmentEditPart.class;
                 }
             } else if (DiagramPackage.eINSTANCE.getDEdge().isInstance(semanticElement)) {
                 DEdge edge = (DEdge) semanticElement;

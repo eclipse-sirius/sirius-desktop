@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -28,6 +28,7 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.Gate;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InteractionUse;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Operand;
@@ -55,7 +56,7 @@ import com.google.common.collect.Multimap;
 public final class RefreshOrderingHelper {
     @SuppressWarnings("unchecked")
     private static final Predicate<DDiagramElement> DELIMITED_EVENT_PREDICATE = Predicates.or(AbstractNodeEvent.viewpointElementPredicate(), State.viewpointElementPredicate(),
-            InteractionUse.viewpointElementPredicate(), CombinedFragment.viewpointElementPredicate(), Operand.viewpointElementPredicate());
+            InteractionUse.viewpointElementPredicate(), CombinedFragment.viewpointElementPredicate(), Operand.viewpointElementPredicate(), Gate.viewpointElementPredicate());
 
     private RefreshOrderingHelper() {
         // Prevent instantiation.

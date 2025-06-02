@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -37,7 +37,7 @@ public interface ISequenceEvent extends ISequenceElement {
      */
     @SuppressWarnings("unchecked")
     Predicate<View> ISEQUENCEEVENT_NOTATION_PREDICATE = Predicates.or(AbstractNodeEvent.notationPredicate(), Message.notationPredicate(), InteractionUse.notationPredicate(),
-            CombinedFragment.notationPredicate(), Operand.notationPredicate());
+            CombinedFragment.notationPredicate(), Operand.notationPredicate(), Gate.notationPredicate());
 
     /**
      * A function to compute the vertical range a sequence event.

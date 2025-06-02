@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2025 CEA and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,17 +13,15 @@
 package org.eclipse.sirius.diagram.sequence.business.internal.elements;
 
 import org.eclipse.gmf.runtime.notation.Node;
-import org.eclipse.sirius.diagram.sequence.tool.internal.Messages;
 
-import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 
 /**
- * Represents an execution on a lifeline or another parent execution.
+ * Represents an Gate.
  * 
- * @author mporhel, pcdavid, smonnier
+ * @author smonnier
  */
-public abstract class AbstractNodeEvent extends AbstractSequenceNodeEvent implements ISequenceEvent {
+public abstract class AbstractMultiLifelineNodeEvent extends AbstractSequenceNodeEvent implements ISequenceElement {
 
     /**
      * Predicate to filter Frames and Operand from possible new parents of an execution reparent.
@@ -31,7 +29,7 @@ public abstract class AbstractNodeEvent extends AbstractSequenceNodeEvent implem
     public static final Predicate<ISequenceEvent> NO_REPARENTABLE_EVENTS = new Predicate<ISequenceEvent>() {
         @Override
         public boolean apply(ISequenceEvent input) {
-            return input instanceof AbstractFrame || input instanceof State || input instanceof Operand || input instanceof Message;
+            return input instanceof Gate || input instanceof Message;
         }
     };
 
@@ -48,8 +46,7 @@ public abstract class AbstractNodeEvent extends AbstractSequenceNodeEvent implem
      * @param node
      *            the GMF Node representing this execution.
      */
-    AbstractNodeEvent(Node node) {
+    AbstractMultiLifelineNodeEvent(Node node) {
         super(node);
-        Preconditions.checkArgument(AbstractNodeEvent.notationPredicate().apply(node), Messages.AbstractNodeEvent_nonAbstractNodeEventNode);
     }
 }
