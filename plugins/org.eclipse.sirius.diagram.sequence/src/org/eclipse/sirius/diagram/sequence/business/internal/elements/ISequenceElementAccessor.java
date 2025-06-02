@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -261,8 +261,18 @@ public final class ISequenceElementAccessor {
     }
 
     /**
-     * Get the existing {@link ISequenceElement} corresponding to the given View
-     * or create it.
+     * .
+     * 
+     * @param view
+     *            .
+     * @return .
+     */
+    public static Option<Gate> getGate(View view) {
+        return ISequenceElementAccessor.getOrCreate(view, Gate.class);
+    }
+
+    /**
+     * Get the existing {@link ISequenceElement} corresponding to the given View or create it.
      * 
      * @param notationView
      *            the notation view.
@@ -316,6 +326,8 @@ public final class ISequenceElementAccessor {
             created = new ObservationPoint((Node) notationView);
         } else if (InteractionContainer.notationPredicate().apply(notationView)) {
             created = new InteractionContainer((Node) notationView);
+        } else if (Gate.notationPredicate().apply(notationView)) {
+            created = new Gate((Node) notationView);
         }
 
         if (created != null) {

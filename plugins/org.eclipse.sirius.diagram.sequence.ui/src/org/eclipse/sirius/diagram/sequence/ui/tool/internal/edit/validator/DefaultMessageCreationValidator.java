@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator;
 import org.eclipse.gef.requests.CreateConnectionRequest;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.EndOfLife;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.Gate;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InteractionUse;
@@ -43,8 +44,11 @@ public class DefaultMessageCreationValidator extends AbstractMessageCreationVali
     @Override
     public boolean isValid(CreateConnectionRequest request) {
         boolean valid = super.isValid(request);
-        valid = valid && validateNotCreatingMessageOnState() && validateNotCreatingMessageInInteractionUse() && validateNotCreatingMessageInDifferentOperands();
-        valid = valid && checkTargetLifelineNotExplicitlyCreatedAtUpperTime() && checkTargetLifelineNotExplicitlyDestroyedAtLowerTime();
+        if (!(sequenceElementTarget instanceof Gate)) {
+            valid = valid && validateNotCreatingMessageOnState() && validateNotCreatingMessageInInteractionUse();
+            valid = valid && checkTargetLifelineNotExplicitlyCreatedAtUpperTime() && checkTargetLifelineNotExplicitlyDestroyedAtLowerTime();
+        }
+        valid = valid && validateNotCreatingMessageInDifferentOperands();
         return valid;
     }
 
@@ -86,8 +90,7 @@ public class DefaultMessageCreationValidator extends AbstractMessageCreationVali
      * @param lifelineTarget
      *            the probable parent (direct or indirect) of sequenceEvent
      * 
-     * @return true if sequenceEvent is a {@link ISequenceEvent} of
-     *         lifelineTarget
+     * @return true if sequenceEvent is a {@link ISequenceEvent} of lifelineTarget
      */
     protected boolean isSequenceEventOfLifeline(ISequenceEvent sequenceEvent, Option<Lifeline> lifelineTarget) {
         Option<Lifeline> lifeline = sequenceEvent.getLifeline();
@@ -98,16 +101,14 @@ public class DefaultMessageCreationValidator extends AbstractMessageCreationVali
     }
 
     /**
-     * Check if sequenceEvent is a message targeting (directly or indirectly)
-     * lifelineTarget.
+     * Check if sequenceEvent is a message targeting (directly or indirectly) lifelineTarget.
      * 
      * @param sequenceEvent
      *            the {@link ISequenceEvent} to check
      * @param lifelineTarget
      *            the probable target (direct or indirect) of sequenceEvent
      * 
-     * @return true if sequenceEvent is a {@link Message} targeting (directly or
-     *         indirectly) lifelineTarget
+     * @return true if sequenceEvent is a {@link Message} targeting (directly or indirectly) lifelineTarget
      */
     protected boolean isMessageTargeting(ISequenceEvent sequenceEvent, Option<Lifeline> lifelineTarget) {
         boolean result = false;
@@ -119,39 +120,51 @@ public class DefaultMessageCreationValidator extends AbstractMessageCreationVali
     }
 
     /**
-     * Validates that a message is not created between two elements that are not
-     * in the same operand.
+     * Validates that a message is not created between two elements that are not in the same operand.
      * 
-     * @return the validation that a message is not created between two elements
-     *         that are not in the same operand.
+     * @return the validation that a message is not created between two elements that are not in the same operand.
      */
     private boolean validateNotCreatingMessageInDifferentOperands() {
         boolean result = true;
 
         Option<Operand> sourceParentOperand = null;
-        if (sequenceElementSource instanceof Lifeline) {
-            sourceParentOperand = ((Lifeline) sequenceElementSource).getParentOperand(secondClickLocation.y);
-        } else if (sequenceElementSource instanceof AbstractNodeEvent) {
-            sourceParentOperand = ((AbstractNodeEvent) sequenceElementSource).getParentOperand(secondClickLocation.y);
-        } else if (sequenceElementSource instanceof ISequenceEvent) {
-            sourceParentOperand = ((ISequenceEvent) sequenceElementSource).getParentOperand();
-        } else if (sequenceElementSource instanceof InstanceRole) {
-            sourceParentOperand = ((InstanceRole) sequenceElementSource).getLifeline().get().getParentOperand(secondClickLocation.y);
+        Option<Operand> sourceGateSiblingOperand = null;
+        if (sequenceElementSource instanceof Lifeline l) {
+            sourceParentOperand = l.getParentOperand(secondClickLocation.y);
+        } else if (sequenceElementSource instanceof AbstractNodeEvent ane) {
+            sourceParentOperand = ane.getParentOperand(secondClickLocation.y);
+        } else if (sequenceElementSource instanceof ISequenceEvent ise) {
+            sourceParentOperand = ise.getParentOperand();
+        } else if (sequenceElementSource instanceof InstanceRole ir) {
+            sourceParentOperand = ir.getLifeline().get().getParentOperand(secondClickLocation.y);
+        } else if (sequenceElementSource instanceof Gate g) {
+            sourceParentOperand = g.getParentOperand();
+            sourceGateSiblingOperand = g.getSiblingOperand();
         }
 
         Option<Operand> targetParentOperand = null;
-        if (sequenceElementTarget instanceof Lifeline) {
-            targetParentOperand = ((Lifeline) sequenceElementTarget).getParentOperand(secondClickLocation.y);
-        } else if (sequenceElementTarget instanceof AbstractNodeEvent) {
-            targetParentOperand = ((AbstractNodeEvent) sequenceElementTarget).getParentOperand(secondClickLocation.y);
-        } else if (sequenceElementTarget instanceof ISequenceEvent) {
-            targetParentOperand = ((ISequenceEvent) sequenceElementTarget).getParentOperand();
-        } else if (sequenceElementTarget instanceof InstanceRole) {
-            targetParentOperand = ((InstanceRole) sequenceElementTarget).getLifeline().get().getParentOperand(secondClickLocation.y);
+        Option<Operand> targetGateSiblingOperand = null;
+        if (sequenceElementTarget instanceof Lifeline l) {
+            targetParentOperand = l.getParentOperand(secondClickLocation.y);
+        } else if (sequenceElementTarget instanceof AbstractNodeEvent ane) {
+            targetParentOperand = ane.getParentOperand(secondClickLocation.y);
+        } else if (sequenceElementTarget instanceof ISequenceEvent ise) {
+            targetParentOperand = ise.getParentOperand();
+        } else if (sequenceElementTarget instanceof InstanceRole ir) {
+            targetParentOperand = ir.getLifeline().get().getParentOperand(secondClickLocation.y);
+        } else if (sequenceElementTarget instanceof Gate g) {
+            targetParentOperand = g.getParentOperand();
+            targetGateSiblingOperand = g.getSiblingOperand();
         }
 
         if (targetParentOperand != null && sourceParentOperand != null) {
             result = targetParentOperand.equals(sourceParentOperand);
+            if (sourceGateSiblingOperand != null && sourceGateSiblingOperand.some() && targetParentOperand.some()) {
+                result = result || sourceGateSiblingOperand.get().getCombinedFragment().equals(targetParentOperand.get().getCombinedFragment());
+            }
+            if (targetGateSiblingOperand != null && targetGateSiblingOperand.some() && sourceParentOperand.some()) {
+                result = result || targetGateSiblingOperand.get().getCombinedFragment().equals(sourceParentOperand.get().getCombinedFragment());
+            }
         }
         return result;
     }
@@ -159,14 +172,15 @@ public class DefaultMessageCreationValidator extends AbstractMessageCreationVali
     /**
      * Validates that a message is not created inside an interaction use.
      * 
-     * @return the validation that a message is not created inside an
-     *         interaction use.
+     * @return the validation that a message is not created inside an interaction use.
      */
     private boolean validateNotCreatingMessageOnState() {
         boolean result = true;
         Option<Lifeline> lifelineOption = sequenceElementTarget.getLifeline();
 
-        if (!lifelineOption.some()) {
+        if (sequenceElementTarget instanceof Gate) {
+            result = true;
+        } else if (!lifelineOption.some()) {
             result = false;
         } else {
             Lifeline lifeline = lifelineOption.get();
@@ -183,8 +197,7 @@ public class DefaultMessageCreationValidator extends AbstractMessageCreationVali
     /**
      * Validates that a message is not created inside an interaction use.
      * 
-     * @return the validation that a message is not created inside an
-     *         interaction use.
+     * @return the validation that a message is not created inside an interaction use.
      */
     private boolean validateNotCreatingMessageInInteractionUse() {
         Option<Lifeline> lifeline = sequenceElementTarget.getLifeline();
@@ -197,7 +210,7 @@ public class DefaultMessageCreationValidator extends AbstractMessageCreationVali
             }
         };
 
-        return lifeline.some() && !Iterables.any(lifeline.get().getAllCoveringInteractionUses(), interactionUseOnRealTargetLocation);
+        return sequenceElementTarget instanceof Gate || (lifeline.some() && !Iterables.any(lifeline.get().getAllCoveringInteractionUses(), interactionUseOnRealTargetLocation));
     }
 
     /**
@@ -229,8 +242,7 @@ public class DefaultMessageCreationValidator extends AbstractMessageCreationVali
      * @param destroyedInstanceRole
      *            the probably {@link InstanceRole} destroyed by sequenceEvent
      * 
-     * @return true if destroyedInstanceRole is well destroyed by the
-     *         sequenceEvent
+     * @return true if destroyedInstanceRole is well destroyed by the sequenceEvent
      */
     protected boolean isDestroyMessageFor(ISequenceEvent sequenceEvent, InstanceRole destroyedInstanceRole) {
         boolean result = false;

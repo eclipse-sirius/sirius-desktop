@@ -51,6 +51,8 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNo
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.EndOfLife;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Execution;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.Gate;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceNode;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
@@ -349,7 +351,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
         Dimension resizeDelta = getResizeDelta(request, location.getCopy(), thisEvent, thisRange, fromTop);
         for (CompoundEventEnd cee : Iterables.filter(ends, CompoundEventEnd.class)) {
             for (SingleEventEnd see : Iterables.filter(Lists.newArrayList(cee.getEventEnds()), toMove)) {
-                ISequenceEventEditPart ise = EditPartsHelper.findISequenceEvent(see, sdep); 
+                ISequenceEventEditPart ise = EditPartsHelper.findISequenceEvent(see, sdep);
                 ChangeBoundsRequest cbr = buildChangeBoundRequest(location.getCopy(), ise, see, resizeDelta);
                 ise.eraseSourceFeedback(cbr);
             }
@@ -549,7 +551,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
         boolean reflectiveMessage = message.isReflective();
         boolean obliqueMessage = message.isOblique();
         Option<Lifeline> endLifeline = currentEnd.getLifeline();
-        if (endLifeline.some() && currentEnd instanceof ISequenceEvent) {
+        if (endLifeline.some() && currentEnd instanceof ISequenceEvent && !(currentEnd instanceof Gate)) {
             ISequenceEvent finalEnd;
             Range finalEndRange;
 
@@ -612,7 +614,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
                     invalidCommand = true;
                 }
             }
-        } else if (currentEnd instanceof LostMessageEnd || currentEnd instanceof EndOfLife || currentEnd instanceof InstanceRole) {
+        } else if (currentEnd instanceof LostMessageEnd || currentEnd instanceof EndOfLife || currentEnd instanceof InstanceRole || currentEnd instanceof Gate) {
             Rectangle finalEndBounds = currentEnd.getProperLogicalBounds().getCopy();
             if (source) {
                 smrc.setSource(currentEnd.getNotationView(), finalEndBounds);
@@ -654,11 +656,13 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
             }
             Range verticalRange = smep.getISequenceEvent().getVerticalRange();
             if (moveType == SequenceMessageEditPolicy.OBLIQUE_MESSAGE_MOVE_SOURCE) {
-                finalRange = new Range(Math.min(verticalRange.getUpperBound() - LayoutConstants.DEFAULT_MESSAGE_MIN_OBLIQUE_HEIGHT, verticalRange.getLowerBound() + deltaY), verticalRange.getUpperBound());
+                finalRange = new Range(Math.min(verticalRange.getUpperBound() - LayoutConstants.DEFAULT_MESSAGE_MIN_OBLIQUE_HEIGHT, verticalRange.getLowerBound() + deltaY),
+                        verticalRange.getUpperBound());
             } else if (moveType == SequenceMessageEditPolicy.OBLIQUE_MESSAGE_MOVE_MESSAGE) {
                 finalRange = verticalRange.shifted(deltaY);
             } else if (moveType == SequenceMessageEditPolicy.OBLIQUE_MESSAGE_MOVE_TARGET) {
-                finalRange = new Range(verticalRange.getLowerBound(), Math.max(verticalRange.getLowerBound() + LayoutConstants.DEFAULT_MESSAGE_MIN_OBLIQUE_HEIGHT, verticalRange.getUpperBound() + deltaY));
+                finalRange = new Range(verticalRange.getLowerBound(),
+                        Math.max(verticalRange.getLowerBound() + LayoutConstants.DEFAULT_MESSAGE_MIN_OBLIQUE_HEIGHT, verticalRange.getUpperBound() + deltaY));
             }
         } else {
             finalRange = new Range(location.y, location.y);
@@ -768,7 +772,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
         int moveType = 0;
         Object initialClick = request.getExtendedData().get(SequenceMessageEditPart.MSG_OBLIQUE_CBR_INITAL_CLICK);
         if (initialClick instanceof Point obliqueMsgInitialClick) {
-            deltaY =  location.y - obliqueMsgInitialClick.y;
+            deltaY = location.y - obliqueMsgInitialClick.y;
             moveType = obliqueMsgInitialClick.x;
             if (range.getUpperBound() + deltaY < range.getLowerBound() + LayoutConstants.DEFAULT_MESSAGE_MIN_OBLIQUE_HEIGHT && moveType == OBLIQUE_MESSAGE_MOVE_TARGET) {
                 deltaY = -range.width() + LayoutConstants.DEFAULT_MESSAGE_MIN_OBLIQUE_HEIGHT;
@@ -923,22 +927,34 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
         Option<Lifeline> sourceLifeline = message.getSourceLifeline();
         Option<Lifeline> targetLifeline = message.getTargetLifeline();
 
-        if (finalRange.isPresent() && sourceLifeline.some() && targetLifeline.some()) {
-            Option<Operand> sourceFinalOperand = Options.newNone();
-            Option<Operand> targetFinalOperand = Options.newNone();
+        if (finalRange.isPresent()) {
+            if (sourceLifeline.some() && targetLifeline.some()) {
+                Option<Operand> sourceFinalOperand = Options.newNone();
+                Option<Operand> targetFinalOperand = Options.newNone();
 
-            if (sourceLifeline.get().equals(targetLifeline.get())) {
-                int lBound = finalRange.get().getLowerBound();
-                int uBound = finalRange.get().getUpperBound();
+                if (sourceLifeline.get().equals(targetLifeline.get())) {
+                    int lBound = finalRange.get().getLowerBound();
+                    int uBound = finalRange.get().getUpperBound();
 
-                sourceFinalOperand = sourceLifeline.get().getParentOperand(new Range(lBound, lBound));
-                targetFinalOperand = targetLifeline.get().getParentOperand(new Range(uBound, uBound));
-            } else {
-                sourceFinalOperand = sourceLifeline.get().getParentOperand(finalRange.get());
-                targetFinalOperand = targetLifeline.get().getParentOperand(finalRange.get());
+                    sourceFinalOperand = sourceLifeline.get().getParentOperand(new Range(lBound, lBound));
+                    targetFinalOperand = targetLifeline.get().getParentOperand(new Range(uBound, uBound));
+                } else {
+                    sourceFinalOperand = sourceLifeline.get().getParentOperand(finalRange.get());
+                    targetFinalOperand = targetLifeline.get().getParentOperand(finalRange.get());
+                }
+
+                valid = sourceFinalOperand.get() == targetFinalOperand.get();
+            } else if (message.getSourceElement() instanceof Gate g) {
+                ISequenceElement hierarchicalParent = g.getHierarchicalParent();
+                if (hierarchicalParent instanceof ISequenceEvent ise) {
+                    valid = ise.getVerticalRange().includes(finalRange.get());
+                }
+            } else if (message.getTargetElement() instanceof Gate g) {
+                ISequenceElement hierarchicalParent = g.getHierarchicalParent();
+                if (hierarchicalParent instanceof ISequenceEvent ise) {
+                    valid = ise.getVerticalRange().includes(finalRange.get());
+                }
             }
-
-            valid = sourceFinalOperand.get() == targetFinalOperand.get();
         }
 
         return valid;
@@ -965,7 +981,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
 
         @Override
         public String toString() {
-            return "[fromTop:" + fromTop + ", compound:" + needsCompoundMove + "]";  //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
+            return "[fromTop:" + fromTop + ", compound:" + needsCompoundMove + "]"; //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
         }
     }
 }

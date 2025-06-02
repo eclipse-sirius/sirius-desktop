@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.gef.EditPart;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.UnexecutableCommand;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
@@ -33,6 +35,7 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.Seque
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ISequenceEventEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InteractionUseEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator.AbstractInteractionFrameValidator;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator.ISEComplexMoveValidator;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator.InteractionUseMoveValidator;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
@@ -56,12 +59,27 @@ public class InteractionUseResizableEditPolicy extends AbstractFrameResizableEdi
         InteractionUseMoveValidator validator = new InteractionUseMoveValidator((InteractionUse) iuep.getISequenceEvent(), new RequestQuery(request));
 
         if (validator.isValid()) {
-            // TODO Implement MoveInteractionUseCommand
+            RequestQuery requestQuery = new RequestQuery(request);
+
+            if (iuep.getISequenceEvent() instanceof InteractionUse iu && !iu.getGates().isEmpty()) {
+                result = UnexecutableCommand.INSTANCE;
+                if (iuep.getSelected() == EditPart.SELECTED_PRIMARY && requestQuery.isMove()) {
+                    ISEComplexMoveValidator v2 = ISEComplexMoveValidator.getOrCreateValidator(request, requestQuery, iuep.getISequenceEvent());
+                    if (validator != null && validator.isValid()) {
+                        TransactionalEditingDomain editingDomain = iuep.getEditingDomain();
+                        ISEComplexMoveCommandBuilder builder = new ISEComplexMoveCommandBuilder(editingDomain, Messages.CombinedFragmentResizableEditPolicy_moveCompositeCommand,
+                                new RequestQuery(request), v2);
+                        CompositeTransactionalCommand buildCommand = builder.buildCommand();
+                        postProcessDefaultCommand(iuep, request, buildCommand, null);
+                        result = new ICommandProxy(buildCommand);
+                    }
+                }
+            } else {
+                result = postProcessDefaultCommand(iuep, request, result, validator);
+            }
         } else {
             result = UnexecutableCommand.INSTANCE;
         }
-
-        result = postProcessDefaultCommand(iuep, request, result, validator);
         return result;
     }
 
@@ -116,5 +134,17 @@ public class InteractionUseResizableEditPolicy extends AbstractFrameResizableEdi
     @Override
     protected Collection<ISequenceEventEditPart> getChildrenToFeedBack(ChangeBoundsRequest request) {
         return new ArrayList<>();
+    }
+
+    private void postProcessDefaultCommand(InteractionUseEditPart self, ChangeBoundsRequest request, CompositeTransactionalCommand ctc, ICommand autoExpand) {
+        if (ctc != null && ctc.canExecute()) {
+            if (autoExpand != null) {
+                ctc.compose(autoExpand);
+            }
+
+            SequenceEditPartsOperations.addRefreshGraphicalOrderingCommand(ctc, self);
+            SequenceEditPartsOperations.addRefreshSemanticOrderingCommand(ctc, self);
+            SequenceEditPartsOperations.addSynchronizeSemanticOrderingCommand(ctc, self.getISequenceEvent());
+        }
     }
 }

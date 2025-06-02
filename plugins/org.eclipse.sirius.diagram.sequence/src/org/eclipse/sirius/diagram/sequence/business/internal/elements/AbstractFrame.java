@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,7 +14,9 @@ package org.eclipse.sirius.diagram.sequence.business.internal.elements;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -41,8 +43,11 @@ import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.ui.tools.api.profiler.SiriusTasks;
 
+import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Ordering;
 
 /**
  * Represents a frame container.
@@ -61,6 +66,15 @@ public abstract class AbstractFrame extends AbstractSequenceNode implements ISeq
      */
     AbstractFrame(Node node) {
         super(node);
+    }
+
+    /**
+     * A function to obtain the lower bound of a range.
+     * 
+     * @return a function to obtain the lower bound of a range.
+     */
+    public static Function<Gate, Integer> gateOrderingFunction() {
+        return GateOrderingFunction.INSTANCE;
     }
 
     /**
@@ -223,6 +237,64 @@ public abstract class AbstractFrame extends AbstractSequenceNode implements ISeq
 
     @Override
     public Collection<ISequenceEvent> getEventsToMoveWith() {
-        return getSubEvents();
+        LinkedHashSet<ISequenceEvent> result = new LinkedHashSet<>();
+        result.addAll(getSubEvents());
+        getGates().stream() //
+                .filter(g -> g.getMessage().some()) //
+                .map(g -> g.getMessage().get()) //
+                .forEach(result::add);
+        return result;
+
+    }
+
+    /**
+     * Get the gates of the current combined fragment.
+     * 
+     * @return the gates of the current combined fragment.
+     */
+    public Collection<Gate> getGates() {
+        List<Gate> result = null;
+        if (CacheHelper.isStructuralCacheEnabled()) {
+            result = CacheHelper.getParentToGatesCache().get(this);
+        }
+
+        if (result == null) {
+            result = new ArrayList<>();
+            Predicate<View> gateView = new Predicate<View>() {
+
+                @Override
+                public boolean apply(View input) {
+                    return input.getType().equals(Integer.toString(Gate.VISUAL_ID));
+                }
+            };
+            for (View view : Iterables.filter(Iterables.filter(this.view.eContents(), View.class), gateView)) {
+                Option<Gate> gate = ISequenceElementAccessor.getGate(view);
+                if (gate.some()) {
+                    result.add(gate.get());
+                }
+            }
+            Collections.sort(result, Ordering.natural().onResultOf(gateOrderingFunction()));
+            if (CacheHelper.isStructuralCacheEnabled()) {
+                CacheHelper.getParentToGatesCache().put(this, result);
+            }
+        }
+        return result;
+    }
+
+    /**
+     * The gate ordering function.
+     */
+    private enum GateOrderingFunction implements Function<Gate, Integer> {
+        INSTANCE;
+
+        @Override
+        public Integer apply(Gate from) {
+            return from.getBounds().y;
+        }
+
+        @Override
+        public String toString() {
+            return "gate y"; //$NON-NLS-1$
+        }
     }
 }

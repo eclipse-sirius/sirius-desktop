@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractFr
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.EndOfLife;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Execution;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.Gate;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
@@ -280,6 +281,14 @@ public class ISequenceElementSwitch<T> {
             if (result == null) {
                 result = caseEvent(operand);
             }
+            if (result == null) {
+                result = defaultCase(element);
+            }
+            return result;
+        }
+        case DescriptionPackage.GATE_MAPPING: {
+            Gate gate = (Gate) element;
+            T result = caseGate(gate);
             if (result == null) {
                 result = defaultCase(element);
             }
@@ -565,15 +574,27 @@ public class ISequenceElementSwitch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>EObject</em>'. <!-- begin-user-doc --> This implementation returns
-     * null; returning a non-null result will terminate the switch, but this is
-     * the last case anyway. <!-- end-user-doc -->
+     * Returns the result of interpreting the object as an instance of ' <em>Gate </em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
      * 
      * @param object
      *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>EObject</em>'.
+     * @return the result of interpreting the object as an instance of ' <em>Execution </em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseGate(Gate object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of ' <em>EObject</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate the switch, but this is the last case
+     * anyway. <!-- end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of ' <em>EObject</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject)
      * @generated
      */

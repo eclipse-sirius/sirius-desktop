@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -33,6 +33,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizerFactory;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.Gate;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.LostMessageEnd;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.tool.internal.Messages;
@@ -72,8 +73,7 @@ public class SequenceCreatedEventsFlaggingSiriusCommand extends SiriusCommand {
      * @param diagram
      *            the current diagram
      * @param shouldFlag
-     *            predicates to select created {@link DDiagramElement} eleemnts
-     *            to flag.
+     *            predicates to select created {@link DDiagramElement} eleemnts to flag.
      */
     public SequenceCreatedEventsFlaggingSiriusCommand(TransactionalEditingDomain domain, String name, DDiagram diagram, Predicate<DDiagramElement> shouldFlag) {
         super(domain, name);
@@ -134,8 +134,7 @@ public class SequenceCreatedEventsFlaggingSiriusCommand extends SiriusCommand {
     }
 
     /**
-     * Flag indirectly created by tool elements, distinguish the main semantics
-     * from other semantics elements.
+     * Flag indirectly created by tool elements, distinguish the main semantics from other semantics elements.
      */
     private Collection<DDiagramElement> flagPostRefresh(final Collection<EObject> mainSemantics, final Collection<EObject> createdSemantics) {
         Collection<DDiagramElement> flags = new ArrayList<>();
@@ -163,14 +162,21 @@ public class SequenceCreatedEventsFlaggingSiriusCommand extends SiriusCommand {
         if (Iterables.isEmpty(Iterables.filter(dde.getGraphicalFilters(), AbsoluteBoundsFilter.class))) {
             AbsoluteBoundsFilter flag = getFlag(toolCreationFlag);
 
-            if (LostMessageEnd.viewpointElementPredicate().apply(dde) && lostNodesLocation != null) {
-                flag.setY(lostNodesLocation.y);
+            if (lostNodesLocation != null) {
+                if (LostMessageEnd.viewpointElementPredicate().apply(dde)) {
+                    flag.setY(lostNodesLocation.y);
+                } else if (Gate.viewpointElementPredicate().apply(dde)) {
+                    flag.setY(lostNodesLocation.y);
+                    flag.setWidth(flag.getX());
+                    flag.setX(lostNodesLocation.x);
+                }
             }
 
             dde.getGraphicalFilters().add(flag);
             return Options.newSome(dde);
         }
         return Options.newNone();
+
     }
 
     private AbsoluteBoundsFilter getFlag(Rectangle toolCreationFlag) {
@@ -194,8 +200,7 @@ public class SequenceCreatedEventsFlaggingSiriusCommand extends SiriusCommand {
     }
 
     /**
-     * Post refresh factory to flag elements created during precommit
-     * representation refresh.
+     * Post refresh factory to flag elements created during precommit representation refresh.
      */
     private final class SequencePostRefreshFactory implements PostRefreshCommandFactory {
 

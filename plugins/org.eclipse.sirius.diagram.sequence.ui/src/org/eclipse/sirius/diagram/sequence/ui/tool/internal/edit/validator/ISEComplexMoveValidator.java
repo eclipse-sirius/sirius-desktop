@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -29,6 +29,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractFrame;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Execution;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.Gate;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceNode;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InteractionUse;
@@ -341,7 +342,7 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
         Option<Lifeline> lifeline = ise.getLifeline();
         boolean result = true;
 
-        if (lifeline.some()) {
+        if (!(ise instanceof Gate) && lifeline.some()) {
             EventFinder futureParentFinder = new EventFinder(lifeline.get());
             futureParentFinder.setEventsToIgnore(Predicates.equalTo(ise));
             futureParentFinder.setVerticalRangefunction(rangeFunction);
@@ -377,7 +378,12 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
             result = subValidator.isValid();
             expansionZone = expansionZone.union(subValidator.getExpansionZone());
         } else if (ise instanceof Message) {
-            result = messageMoveIsValid((Message) ise);
+            if (((Message) ise).getSourceElement() instanceof Gate || ((Message) ise).getTargetElement() instanceof Gate) {
+                // Messages on gates does not need an operand validation
+                result = true;
+            } else {
+                result = messageMoveIsValid((Message) ise);
+            }
         }
         return result;
     }
@@ -398,7 +404,7 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
 
         // If parent operand is moved too, no check for source/target validity :
         // it will not change.
-        if (!(parentOperand.some() && movedElements.contains(parentOperand.get()))) {
+        if (!(parentOperand.some() && movedElements.contains(parentOperand.get())) && !(message.getSourceElement() instanceof Gate) && !(message.getTargetElement() instanceof Gate)) {
 
             ISequenceEvent potentialSource = getMessageEnd(message, message.getSourceLifeline(), parentOperand);
             ISequenceEvent potentialTarget = getMessageEnd(message, message.getTargetLifeline(), parentOperand);
@@ -569,7 +575,10 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
                 @Override
                 public boolean apply(Message input) {
                     boolean movedBySrc = movedElements.contains(input.getSourceElement());
+                    movedBySrc = movedBySrc || input.getSourceElement() instanceof Gate g && movedElements.contains(g.getHierarchicalParent());
+
                     boolean movedByTgt = movedElements.contains(input.getTargetElement());
+                    movedByTgt = movedByTgt || input.getTargetElement() instanceof Gate g && movedElements.contains(g.getHierarchicalParent());
 
                     return !(movedBySrc && movedByTgt);
                 }

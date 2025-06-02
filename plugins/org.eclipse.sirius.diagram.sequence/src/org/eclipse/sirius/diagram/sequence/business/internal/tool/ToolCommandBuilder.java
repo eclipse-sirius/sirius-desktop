@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -41,6 +41,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDi
 import org.eclipse.sirius.diagram.sequence.business.internal.ordering.EventEndHelper;
 import org.eclipse.sirius.diagram.sequence.description.tool.CombinedFragmentCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ExecutionCreationTool;
+import org.eclipse.sirius.diagram.sequence.description.tool.GateCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleReorderTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.InteractionUseCreationTool;
@@ -51,6 +52,7 @@ import org.eclipse.sirius.diagram.sequence.description.tool.ReorderTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.StateCreationTool;
 import org.eclipse.sirius.diagram.sequence.internal.tool.command.builders.ExecutionCreationCommandBuilder;
 import org.eclipse.sirius.diagram.sequence.internal.tool.command.builders.FrameCreationCommandBuilder;
+import org.eclipse.sirius.diagram.sequence.internal.tool.command.builders.GateCreationCommandBuilder;
 import org.eclipse.sirius.diagram.sequence.internal.tool.command.builders.InstanceRoleCreationCommandBuilder;
 import org.eclipse.sirius.diagram.sequence.internal.tool.command.builders.MessageCreationCommandBuilder;
 import org.eclipse.sirius.diagram.sequence.internal.tool.command.builders.ObservationPointCreationCommandBuilder;
@@ -454,6 +456,28 @@ public final class ToolCommandBuilder {
             Point location) {
         CommandBuilder builder = new SequenceSelectionWizardCommandBuilder(tool, dContainer, selectedElement, endBefore, location);
         Session session = SessionManager.INSTANCE.getSession(dContainer.getTarget());
+        return getCommand(builder, session);
+    }
+
+    /**
+     * Builds the command which will execute the user-specified operations to create a new Gate.
+     *
+     * @param node
+     *            the node on which to create the new Gate.
+     * @param tool
+     *            the tool to use to create the Gate.
+     * @param startingEndPredecessor
+     *            the event end graphically preceding the starting position of the new Gate.
+     * @param finishingEndPredecessor
+     *            the event end graphically preceding the finishing position of the new Gate.
+     * @param location
+     *            the clicked location.
+     * @return a command to create the Gate.
+     */
+    public static Command buildCreateGateCommandFromTool(final DDiagramElementContainer node, final GateCreationTool tool, final EventEnd startingEndPredecessor,
+            final EventEnd finishingEndPredecessor, Point location) {
+        CommandBuilder builder = new GateCreationCommandBuilder(tool, node, startingEndPredecessor, finishingEndPredecessor, location);
+        Session session = SessionManager.INSTANCE.getSession(node.getTarget());
         return getCommand(builder, session);
     }
 }

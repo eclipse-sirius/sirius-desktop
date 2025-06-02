@@ -18,10 +18,14 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.requests.SelectionRequest;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.Gate;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.SequenceEditPartsOperations;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceLaunchToolEditPolicy;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.GateItemLocator;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.ui.SequenceDragEditPartsTrackerEx;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.ui.SequenceNoCopyDragEditPartsTrackerEx;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
@@ -118,6 +122,16 @@ public class InteractionContainerEditPart extends DNodeContainerEditPart {
     @Override
     public EditPart getTargetEditPart(Request request) {
         return getParent();
+    }
+    
+
+    @Override
+    public IBorderItemLocator createBorderItemLocator(IFigure figure, DDiagramElement vpElementBorderItem) {
+        if (Gate.viewpointElementPredicate().apply(vpElementBorderItem)) {
+            return new GateItemLocator(this, figure);
+        } else {
+            return super.createBorderItemLocator(figure, vpElementBorderItem);
+        }
     }
 
 }

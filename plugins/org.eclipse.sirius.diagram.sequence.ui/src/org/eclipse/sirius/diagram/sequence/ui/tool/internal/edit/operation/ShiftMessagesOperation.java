@@ -21,15 +21,15 @@ import java.util.Objects;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.Gate;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
 import org.eclipse.sirius.diagram.sequence.ui.Messages;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
 
 /**
- * This operation is called to shift the given messages. It adjusts the GMF
- * bendpoints of the messages to/from an execution (or any of its
- * sub-executions).
+ * This operation is called to shift the given messages. It adjusts the GMF bendpoints of the messages to/from an
+ * execution (or any of its sub-executions).
  * 
  * @author mporhel
  */
@@ -66,9 +66,8 @@ public class ShiftMessagesOperation extends AbstractModelChangeOperation<Void> {
      * @param revert
      *            if true, revert the adjustments from source/target vectors
      * @param move
-     *            if true, the messages of any of its sub-executions will be
-     *            shifted. If false, the parent part was resized and only direct
-     *            sub messages will be shifted
+     *            if true, the messages of any of its sub-executions will be shifted. If false, the parent part was
+     *            resized and only direct sub messages will be shifted
      */
     protected ShiftMessagesOperation(String name, int deltaY, boolean revert, boolean move) {
         super(name);
@@ -89,9 +88,8 @@ public class ShiftMessagesOperation extends AbstractModelChangeOperation<Void> {
      * @param revert
      *            if true, revert the adjustments from source/target vectors
      * @param move
-     *            if true, the messages of any of its sub-executions will be
-     *            shifted. If false, the parent part was resized and only direct
-     *            sub messages will be shifted
+     *            if true, the messages of any of its sub-executions will be shifted. If false, the parent part was
+     *            resized and only direct sub messages will be shifted
      */
     public ShiftMessagesOperation(Collection<Message> messagesToShift, Collection<ISequenceEvent> movedElements, int deltaY, boolean revert, boolean move) {
         this(Messages.ShiftMessagesOperation_operationName, deltaY, revert, move);
@@ -120,16 +118,14 @@ public class ShiftMessagesOperation extends AbstractModelChangeOperation<Void> {
         int currentTargetDeltaY = 0;
 
         /*
-         * If the message starts from the execution being moved (or any of its
-         * sub-executions), its sourceX/sourceY vectors are still valid as they
-         * are relative to the source anchor which moved along with the
-         * execution. However, the target execution/lifeline on the other side
-         * did not move, so we need to adjust the target vector.
+         * If the message starts from the execution being moved (or any of its sub-executions), its sourceX/sourceY
+         * vectors are still valid as they are relative to the source anchor which moved along with the execution.
+         * However, the target execution/lifeline on the other side did not move, so we need to adjust the target
+         * vector.
          */
 
         /*
-         * The current message is moved by its target, so we need to adjust the
-         * source vector.
+         * The current message is moved by its target, so we need to adjust the source vector.
          */
         int srcShift = getDeltaY(edge, false);
         if (needShiftFromSrc) {
@@ -137,8 +133,7 @@ public class ShiftMessagesOperation extends AbstractModelChangeOperation<Void> {
             currentTargetDeltaY = revert ? srcShift : 0;
         }
         /*
-         * The current message is moved by its source, so we need to adjust the
-         * target vector.
+         * The current message is moved by its source, so we need to adjust the target vector.
          */
         int tgtShift = getDeltaY(edge, true);
         if (needShiftFromTgt) {
@@ -161,12 +156,13 @@ public class ShiftMessagesOperation extends AbstractModelChangeOperation<Void> {
      * 
      * @param message
      *            the message to check.
-     * @return true if the given message source lifeline is the actual context
-     *         lifeline.
+     * @return true if the given message source lifeline is the actual context lifeline.
      */
     private boolean needShift(Message message, boolean source) {
         boolean movedBySrc = movedElements.contains(message.getSourceElement());
+        movedBySrc = movedBySrc || message.getSourceElement() instanceof Gate g && movedElements.contains(g.getHierarchicalParent());
         boolean movedByTgt = movedElements.contains(message.getTargetElement());
+        movedByTgt = movedByTgt || message.getTargetElement() instanceof Gate g && movedElements.contains(g.getHierarchicalParent());
         boolean moved = movedBySrc || movedByTgt;
 
         if (move && !revert) {
