@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.sirius.diagram.sequence.description.tool.CombinedFragmentCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ExecutionCreationTool;
+import org.eclipse.sirius.diagram.sequence.description.tool.GateCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleReorderTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.InteractionUseCreationTool;
@@ -99,6 +100,8 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
             return createReorderTool();
         case ToolPackage.INSTANCE_ROLE_REORDER_TOOL:
             return createInstanceRoleReorderTool();
+        case ToolPackage.GATE_CREATION_TOOL:
+            return createGateCreationTool();
         default:
             throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
@@ -202,6 +205,17 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
         InitialOperation initialOperation = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialOperation();
         instanceRoleReorderTool.setInstanceRoleMoved(initialOperation);
         return instanceRoleReorderTool;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public GateCreationTool createGateCreationTool() {
+        GateCreationToolImpl gateCreationTool = new GateCreationToolImpl();
+        return gateCreationTool;
     }
 
     /**

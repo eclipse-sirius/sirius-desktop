@@ -1857,6 +1857,163 @@ public interface ToolPackage extends EPackage {
     int INSTANCE_ROLE_REORDER_TOOL_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION_FEATURE_COUNT + 4;
 
     /**
+     * The meta object id for the '{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.GateCreationToolImpl
+     * <em>Gate Creation Tool</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see org.eclipse.sirius.diagram.sequence.description.tool.impl.GateCreationToolImpl
+     * @see org.eclipse.sirius.diagram.sequence.description.tool.impl.ToolPackageImpl#getGateCreationTool()
+     * @generated
+     */
+    int GATE_CREATION_TOOL = 14;
+
+    /**
+     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GATE_CREATION_TOOL__DOCUMENTATION = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__DOCUMENTATION;
+
+    /**
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GATE_CREATION_TOOL__NAME = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__NAME;
+
+    /**
+     * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GATE_CREATION_TOOL__LABEL = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__LABEL;
+
+    /**
+     * The feature id for the '<em><b>Precondition</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GATE_CREATION_TOOL__PRECONDITION = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__PRECONDITION;
+
+    /**
+     * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GATE_CREATION_TOOL__FORCE_REFRESH = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__FORCE_REFRESH;
+
+    /**
+     * The feature id for the '<em><b>Filters</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GATE_CREATION_TOOL__FILTERS = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__FILTERS;
+
+    /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GATE_CREATION_TOOL__ELEMENTS_TO_SELECT = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GATE_CREATION_TOOL__INVERSE_SELECTION_ORDER = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__INVERSE_SELECTION_ORDER;
+
+    /**
+     * The feature id for the '<em><b>Node Mappings</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GATE_CREATION_TOOL__NODE_MAPPINGS = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__NODE_MAPPINGS;
+
+    /**
+     * The feature id for the '<em><b>Variable</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GATE_CREATION_TOOL__VARIABLE = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__VARIABLE;
+
+    /**
+     * The feature id for the '<em><b>View Variable</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GATE_CREATION_TOOL__VIEW_VARIABLE = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE;
+
+    /**
+     * The feature id for the '<em><b>Initial Operation</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GATE_CREATION_TOOL__INITIAL_OPERATION = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__INITIAL_OPERATION;
+
+    /**
+     * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GATE_CREATION_TOOL__ICON_PATH = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__ICON_PATH;
+
+    /**
+     * The feature id for the '<em><b>Extra Mappings</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GATE_CREATION_TOOL__EXTRA_MAPPINGS = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__EXTRA_MAPPINGS;
+
+    /**
+     * The feature id for the '<em><b>Starting End Predecessor</b></em>' containment reference. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GATE_CREATION_TOOL__STARTING_END_PREDECESSOR = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION_FEATURE_COUNT + 0;
+
+    /**
+     * The feature id for the '<em><b>Finishing End Predecessor</b></em>' containment reference. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GATE_CREATION_TOOL__FINISHING_END_PREDECESSOR = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION_FEATURE_COUNT + 1;
+
+    /**
+     * The number of structural features of the '<em>Gate Creation Tool</em>' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GATE_CREATION_TOOL_FEATURE_COUNT = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION_FEATURE_COUNT + 2;
+
+    /**
      * Returns the meta object for class
      * '{@link org.eclipse.sirius.diagram.sequence.description.tool.SequenceDiagramToolDescription <em>Sequence Diagram
      * Tool Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -2131,6 +2288,16 @@ public interface ToolPackage extends EPackage {
      * @generated
      */
     EReference getInstanceRoleReorderTool_InstanceRoleMoved();
+
+    /**
+     * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.description.tool.GateCreationTool
+     * <em>Gate Creation Tool</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for class '<em>Gate Creation Tool</em>'.
+     * @see org.eclipse.sirius.diagram.sequence.description.tool.GateCreationTool
+     * @generated
+     */
+    EClass getGateCreationTool();
 
     /**
      * Returns the meta object for class
@@ -2418,6 +2585,17 @@ public interface ToolPackage extends EPackage {
          * @generated
          */
         EReference INSTANCE_ROLE_REORDER_TOOL__INSTANCE_ROLE_MOVED = ToolPackage.eINSTANCE.getInstanceRoleReorderTool_InstanceRoleMoved();
+
+        /**
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.GateCreationToolImpl <em>Gate Creation
+         * Tool</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @see org.eclipse.sirius.diagram.sequence.description.tool.impl.GateCreationToolImpl
+         * @see org.eclipse.sirius.diagram.sequence.description.tool.impl.ToolPackageImpl#getGateCreationTool()
+         * @generated
+         */
+        EClass GATE_CREATION_TOOL = ToolPackage.eINSTANCE.getGateCreationTool();
 
         /**
          * The meta object literal for the

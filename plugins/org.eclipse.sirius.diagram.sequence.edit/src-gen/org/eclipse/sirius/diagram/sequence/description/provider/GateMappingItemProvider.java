@@ -1,7 +1,7 @@
-/*******************************************************************************
- * Copyright (c) 2007-2015 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License 2.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
  * https://www.eclipse.org/legal/epl-2.0/
  *
@@ -9,7 +9,7 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ */
 package org.eclipse.sirius.diagram.sequence.description.provider;
 
 import java.util.Collection;
@@ -19,26 +19,23 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
-import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.provider.NodeMappingItemProvider;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionFactory;
-import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
+import org.eclipse.sirius.diagram.sequence.description.GateMapping;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.diagram.sequence.description.ObservationPointMapping} object. <!-- begin-user-doc --> <!--
- * end-user-doc -->
+ * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.sequence.description.GateMapping} object.
+ * <!-- begin-user-doc --> <!-- end-user-doc -->
  *
  * @generated
  */
-public class ObservationPointMappingItemProvider extends NodeMappingItemProvider {
+public class GateMappingItemProvider extends NodeMappingItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    public ObservationPointMappingItemProvider(AdapterFactory adapterFactory) {
+    public GateMappingItemProvider(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -57,24 +54,25 @@ public class ObservationPointMappingItemProvider extends NodeMappingItemProvider
     }
 
     /**
-     * This returns ObservationPointMapping.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This returns GateMapping.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ObservationPointMapping")); //$NON-NLS-1$
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/GateMapping")); //$NON-NLS-1$
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @not-generated
+     * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = new IdentifiedElementQuery((IdentifiedElement) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_ObservationPointMapping_type") : getString("_UI_ObservationPointMapping_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        String label = ((GateMapping) object).getName();
+        return label == null || label.length() == 0 ? getString("_UI_GateMapping_type") : //$NON-NLS-1$
+                getString("_UI_GateMapping_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -100,17 +98,23 @@ public class ObservationPointMappingItemProvider extends NodeMappingItemProvider
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createInstanceRoleMapping()));
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
+                DescriptionFactory.eINSTANCE.createInstanceRoleMapping()));
 
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createExecutionMapping()));
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
+                DescriptionFactory.eINSTANCE.createExecutionMapping()));
 
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createStateMapping()));
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
+                DescriptionFactory.eINSTANCE.createStateMapping()));
 
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createEndOfLifeMapping()));
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
+                DescriptionFactory.eINSTANCE.createEndOfLifeMapping()));
 
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createObservationPointMapping()));
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
+                DescriptionFactory.eINSTANCE.createObservationPointMapping()));
 
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createGateMapping()));
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
+                DescriptionFactory.eINSTANCE.createGateMapping()));
     }
 
     /**

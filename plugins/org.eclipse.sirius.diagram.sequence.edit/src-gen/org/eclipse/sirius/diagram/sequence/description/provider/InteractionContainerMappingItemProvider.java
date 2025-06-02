@@ -110,6 +110,8 @@ public class InteractionContainerMappingItemProvider extends ContainerMappingIte
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createObservationPointMapping()));
 
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createGateMapping()));
+
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createInstanceRoleMapping()));
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createExecutionMapping()));
@@ -119,6 +121,8 @@ public class InteractionContainerMappingItemProvider extends ContainerMappingIte
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createEndOfLifeMapping()));
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createObservationPointMapping()));
+
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createGateMapping()));
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_CONTAINER_MAPPINGS, DescriptionFactory.eINSTANCE.createInteractionUseMapping()));
 

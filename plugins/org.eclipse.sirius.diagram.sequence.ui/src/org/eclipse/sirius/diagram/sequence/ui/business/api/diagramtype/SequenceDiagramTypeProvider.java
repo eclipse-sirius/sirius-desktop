@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -55,6 +55,7 @@ import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.description.provider.DescriptionItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.sequence.description.tool.CombinedFragmentCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ExecutionCreationTool;
+import org.eclipse.sirius.diagram.sequence.description.tool.GateCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleReorderTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.InteractionUseCreationTool;
@@ -141,6 +142,7 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
                 collectOperandCreation(result, ref);
                 collectReorderCreations(result, ref);
                 collectObservationPointCreation(result, ref);
+                collectGateCreation(result, ref);
             }
         }
         return result;
@@ -158,15 +160,15 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
         result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createStateMapping()));
         result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createEndOfLifeMapping()));
         result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createObservationPointMapping()));
+        result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createGateMapping()));
         // Containers
         result.add(
                 new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__CONTAINER_MAPPINGS, DescriptionFactory.eINSTANCE.createInteractionUseMapping()));
         result.add(
                 new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__CONTAINER_MAPPINGS, DescriptionFactory.eINSTANCE.createCombinedFragmentMapping()));
         result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__CONTAINER_MAPPINGS, DescriptionFactory.eINSTANCE.createOperandMapping()));
-         result.add(new CommandParameter(null,
-         org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__CONTAINER_MAPPINGS,
-         DescriptionFactory.eINSTANCE.createInteractionContainerMapping()));
+        result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__CONTAINER_MAPPINGS,
+                DescriptionFactory.eINSTANCE.createInteractionContainerMapping()));
         // Edges
         result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__EDGE_MAPPINGS, DescriptionFactory.eINSTANCE.createBasicMessageMapping()));
         result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__EDGE_MAPPINGS, DescriptionFactory.eINSTANCE.createReturnMessageMapping()));
@@ -309,6 +311,12 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
         ObservationPointCreationTool obsPointCreationTool = ToolFactory.eINSTANCE.createObservationPointCreationTool();
         addVariables(obsPointCreationTool);
         result.add(new CommandParameter(null, ref, obsPointCreationTool));
+    }
+
+    private void collectGateCreation(Collection<CommandParameter> result, EReference ref) {
+        GateCreationTool gateCreationTool = ToolFactory.eINSTANCE.createGateCreationTool();
+        addVariables(gateCreationTool);
+        result.add(new CommandParameter(null, ref, gateCreationTool));
     }
 
     private void addVariables(SequenceDiagramToolDescription sequenceDiagramTool) {

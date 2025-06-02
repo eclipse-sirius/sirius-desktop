@@ -162,6 +162,14 @@ public interface DescriptionFactory extends EFactory {
     InteractionContainerMapping createInteractionContainerMapping();
 
     /**
+     * Returns a new object of class '<em>Gate Mapping</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Gate Mapping</em>'.
+     * @generated
+     */
+    GateMapping createGateMapping();
+
+    /**
      * Returns the package supported by this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the package supported by this factory.

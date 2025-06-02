@@ -106,6 +106,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="OperandMapping" eSuperTypes="../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//description/ContainerMapping #//description/DelimitedEventMapping"/>
     <eClassifiers xsi:type="ecore:EClass" name="ObservationPointMapping" eSuperTypes="../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//description/NodeMapping"/>
     <eClassifiers xsi:type="ecore:EClass" name="InteractionContainerMapping" eSuperTypes="../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//description/ContainerMapping"/>
+    <eClassifiers xsi:type="ecore:EClass" name="GateMapping" eSuperTypes="../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//description/NodeMapping"/>
     <eSubpackages name="tool" nsURI="http://www.eclipse.org/sirius/diagram/sequence/description/tool/2.0.0"
         nsPrefix="tool">
       <eClassifiers xsi:type="ecore:EClass" name="SequenceDiagramToolDescription"/>
@@ -194,6 +195,7 @@
             lowerBound="1" eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/InitialOperation"
             containment="true"/>
       </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="GateCreationTool" eSuperTypes="../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//description/tool/NodeCreationDescription #//description/tool/SequenceDiagramToolDescription #//description/tool/OrderedElementCreationTool"/>
     </eSubpackages>
   </eSubpackages>
   <eSubpackages name="ordering" nsURI="http://www.eclipse.org/sirius/diagram/sequence/ordering/2.0.0"
