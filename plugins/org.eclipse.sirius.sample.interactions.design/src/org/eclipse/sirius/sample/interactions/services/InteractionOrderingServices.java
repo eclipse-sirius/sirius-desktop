@@ -184,7 +184,7 @@ public class InteractionOrderingServices {
         if (self instanceof Participant) {
             return (Participant) self;
         } else if (self instanceof AbstractEnd) {
-            return ((AbstractEnd) self).getContext();
+            return (Participant) ((AbstractEnd) self).getContext();
         } else if (self instanceof Execution) {
             return ((Execution) self).getOwner();
         } else if (self instanceof State) {
@@ -269,16 +269,20 @@ public class InteractionOrderingServices {
         MessageEnd sendingEnd = msg.getSendingEnd();
         if (sendingEnd != null) {
             Participant p = sendingEnd.getContext();
-            List<EventContext> structure = computeContainmentStructure(p);
-            for (EventContext ec : structure) {
-                if (ec.getElement().equals(msg) && ec.isStart()) {
-                    EObject parent = ec.getParent();
-                    if (parent != null) {
-                        return parent;
-                    } else {
-                        return p;
+            if (p != null) {
+                List<EventContext> structure = computeContainmentStructure(p);
+                for (EventContext ec : structure) {
+                    if (ec.getElement().equals(msg) && ec.isStart()) {
+                        EObject parent = ec.getParent();
+                        if (parent != null) {
+                            return parent;
+                        } else {
+                            return p;
+                        }
                     }
                 }
+            } else if (sendingEnd.getGate() != null) {
+                return sendingEnd.getGate();
             }
         }
         return msg;
@@ -308,6 +312,8 @@ public class InteractionOrderingServices {
                         }
                     }
                 }
+            } else if (receivingEnd.getGate() != null) {
+                return receivingEnd.getGate();
             }
         }
         return msg;
