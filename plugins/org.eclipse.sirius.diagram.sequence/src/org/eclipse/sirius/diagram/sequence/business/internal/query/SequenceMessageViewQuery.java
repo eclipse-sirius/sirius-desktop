@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,8 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.model.business.internal.query.IEdgeMappingQuery;
 import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.VerticalRangeFunction;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
@@ -63,6 +65,10 @@ public class SequenceMessageViewQuery {
         Option<Node> optSource = getSourceLifeline();
         Option<Node> optTarget = getTargetLifeline();
         return optSource.some() && optTarget.some() && optSource.get() == optTarget.get();
+    }
+
+    public boolean isOblique() {
+        return edge.getElement() instanceof DEdge dEdge && new IEdgeMappingQuery(dEdge.getActualMapping()).getEdgeMapping().get().getName().endsWith("_Oblique"); //$NON-NLS-1$
     }
 
     /**
@@ -314,6 +320,6 @@ public class SequenceMessageViewQuery {
     }
 
     private boolean isLogicallyInstantaneous() {
-        return !isReflective();
+        return !(isReflective() || isOblique());
     }
 }

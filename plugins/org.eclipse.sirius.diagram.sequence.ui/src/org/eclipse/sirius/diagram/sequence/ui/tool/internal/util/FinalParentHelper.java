@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -66,9 +66,10 @@ public class FinalParentHelper {
             // Some event could not be parents : states for examples.
             boolean includedInput = !self.getValidSubEventsRange().isEmpty() && fullFinalRange.includes(inputRange.grown(1));
 
-            if (input instanceof Message) {
-                Message msg = (Message) input;
-
+            if (input instanceof Message msg) {
+                if (msg.isOblique()) {
+                    includedInput = !self.getValidSubEventsRange().isEmpty() && fullFinalRange.includesAtLeastOneBound(inputRange.grown(1));
+                }
                 if (msg.isReflective() && !includedInput) {
                     intersection = inputRange.intersects(fullFinalRange) && !inputRange.includes(fullFinalRange);
                     includedInput = inputRange.includes(fullFinalRange);
@@ -192,12 +193,12 @@ public class FinalParentHelper {
             Execution execution = (Execution) self;
 
             Option<Message> startMessage = execution.getStartMessage();
-            if (startMessage.some() && !startMessage.get().surroundsEventOnSameLifeline()) {
+            if (startMessage.some() && !startMessage.get().surroundsEventOnSameLifeline() && !startMessage.get().isOblique()) {
                 int startY = fullFinalRange.getLowerBound() - startMessage.get().getVerticalRange().width();
                 fullFinalRange = new Range(startY, fullFinalRange.getUpperBound());
             }
             Option<Message> endMessage = execution.getEndMessage();
-            if (endMessage.some() && !endMessage.get().surroundsEventOnSameLifeline()) {
+            if (endMessage.some() && !endMessage.get().surroundsEventOnSameLifeline() && !endMessage.get().isOblique()) {
                 int finishY = fullFinalRange.getUpperBound() + endMessage.get().getVerticalRange().width();
                 fullFinalRange = new Range(fullFinalRange.getLowerBound(), finishY);
             }

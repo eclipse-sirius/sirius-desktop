@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,9 +13,11 @@
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.tools;
 
 import java.util.Map;
+import java.util.Optional;
 
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.DragTracker;
 import org.eclipse.gef.Request;
@@ -25,6 +27,7 @@ import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.ISequenceEventQuery;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageEditPart;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceMessageEditPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.ui.SequenceDragEditPartsTrackerEx.SequenceCacheDragTrackerHelper;
 import org.eclipse.sirius.diagram.ui.tools.internal.ui.SelectConnectionEditPartTracker;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
@@ -43,6 +46,8 @@ public class SequenceMessageSelectConnectionEditPartTracker extends SelectConnec
     private BendpointRequest bendpointRequest;
 
     private boolean msgToSelfMove;
+
+    private Optional<Point> initialClick = Optional.empty();
 
     /**
      * Method SequenceMessageSelectConnectionEditPartTracker.
@@ -73,6 +78,11 @@ public class SequenceMessageSelectConnectionEditPartTracker extends SelectConnec
             } else {
                 extData.remove(SequenceMessageEditPart.MSG_TO_SELF_TOP_MOVE);
             }
+            if (initialClick.isPresent()) {
+                extData.put(SequenceMessageEditPart.MSG_OBLIQUE_CBR_INITAL_CLICK, initialClick.get());
+            } else {
+                extData.remove(SequenceMessageEditPart.MSG_OBLIQUE_CBR_INITAL_CLICK);
+            }
         }
     }
 
@@ -97,6 +107,39 @@ public class SequenceMessageSelectConnectionEditPartTracker extends SelectConnec
                 fromTop = location.y <= range.getLowerBound() || location.y < range.middleValue();
                 msgToSelfMove = true;
             }
+        } else if (new ISequenceEventQuery(iSequenceEvent).isObliqueMessage() && initialClick.isEmpty()) {
+            Point location = getLocation().getCopy();
+            GraphicalHelper.screen2logical(location, smep);
+            // Store logical clicked position on button down
+            // Scroll might change before button up.
+            initialClick = Optional.of(location.getCopy());
+            Rectangle properLogicalBounds = iSequenceEvent.getProperLogicalBounds();
+            if (properLogicalBounds.width < 0) {
+                // right to left message
+                if (initialClick.get().x <= (properLogicalBounds.right() - properLogicalBounds.width / 4)) {
+                    // move target
+                    initialClick.get().x = SequenceMessageEditPolicy.OBLIQUE_MESSAGE_MOVE_TARGET;
+                } else if (initialClick.get().x >= (properLogicalBounds.left() + properLogicalBounds.width / 4)) {
+                    // move source
+                    initialClick.get().x = SequenceMessageEditPolicy.OBLIQUE_MESSAGE_MOVE_SOURCE;
+                } else {
+                    // move message
+                    initialClick.get().x = SequenceMessageEditPolicy.OBLIQUE_MESSAGE_MOVE_MESSAGE;
+                }
+
+            } else {
+                // left to right message
+                if (initialClick.get().x <= (properLogicalBounds.left() + properLogicalBounds.width / 4)) {
+                    // move source
+                    initialClick.get().x = SequenceMessageEditPolicy.OBLIQUE_MESSAGE_MOVE_SOURCE;
+                } else if (initialClick.get().x >= (properLogicalBounds.right() - properLogicalBounds.width / 4)) {
+                    // move target
+                    initialClick.get().x = SequenceMessageEditPolicy.OBLIQUE_MESSAGE_MOVE_TARGET;
+                } else {
+                    // move message
+                    initialClick.get().x = SequenceMessageEditPolicy.OBLIQUE_MESSAGE_MOVE_MESSAGE;
+                }
+            }
         }
         return res;
     }
@@ -107,6 +150,8 @@ public class SequenceMessageSelectConnectionEditPartTracker extends SelectConnec
      */
     @Override
     protected boolean handleButtonUp(int button) {
+        // Cleanup initial click;
+        initialClick = Optional.empty();
         SequenceCacheDragTrackerHelper.handleButtonUp((IGraphicalEditPart) getSourceEditPart());
         return super.handleButtonUp(button);
     }
