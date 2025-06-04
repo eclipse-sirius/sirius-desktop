@@ -117,6 +117,21 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
     public static final String REQUEST_FROM_SEQUENCE_MESSAGE_EDIT_POLICY_OBLIQUE_MOVE_TYPE = "org.eclipse.sirius.sequence.resize.execution.from.bendpoint.request.oblique.move.type"; //$NON-NLS-1$
 
     /**
+     * The value used to identify a move of the target of an oblique message.
+     */
+    public static final int OBLIQUE_MESSAGE_MOVE_TARGET = 1;
+
+    /**
+     * The value used to identify a move of the source of an oblique message.
+     */
+    public static final int OBLIQUE_MESSAGE_MOVE_SOURCE = -1;
+
+    /**
+     * The value used to identify the move of an oblique message.
+     */
+    public static final int OBLIQUE_MESSAGE_MOVE_MESSAGE = 0;
+
+    /**
      * The color top use for the horizontal feedback rules shown when moving a message.
      */
     private static final Color MESSAGE_FEEDBACK_COLOR = SequenceInteractionFeedBackBuilder.ISE_FEEDBACK_COLOR;
@@ -521,18 +536,18 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
     private ICommand createReconnectionCommandOnBendpointMove(BendpointRequest request, SequenceMessageEditPart thisEvent, Point location, Range finalRange) {
         SetMessageRangeOperation smrc = new SetMessageRangeOperation((Edge) thisEvent.getNotationView(), finalRange);
         Message message = (Message) thisEvent.getISequenceEvent();
-        boolean reflectiveMessage = message.isReflective();
-        boolean obliqueMessage = message.isOblique();
 
-        setOperations(true, message, finalRange, smrc, reflectiveMessage, obliqueMessage);
-        setOperations(false, message, finalRange, smrc, reflectiveMessage, obliqueMessage);
+        setOperations(true, message, finalRange, smrc);
+        setOperations(false, message, finalRange, smrc);
 
         return CommandFactory.createICommand(thisEvent.getEditingDomain(), smrc);
     }
 
-    private void setOperations(boolean source, Message message, Range finalRange, SetMessageRangeOperation smrc, boolean reflectiveMessage, boolean obliqueMessage) {
+    private void setOperations(boolean source, Message message, Range finalRange, SetMessageRangeOperation smrc) {
         Range messageEndRange = source ? new Range(finalRange.getLowerBound(), finalRange.getLowerBound()) : new Range(finalRange.getUpperBound(), finalRange.getUpperBound());
         ISequenceNode currentEnd = source ? message.getSourceElement() : message.getTargetElement();
+        boolean reflectiveMessage = message.isReflective();
+        boolean obliqueMessage = message.isOblique();
         Option<Lifeline> endLifeline = currentEnd.getLifeline();
         if (endLifeline.some() && currentEnd instanceof ISequenceEvent) {
             ISequenceEvent finalEnd;
@@ -638,12 +653,12 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
                 moveType = obliqueMsgInitialClick.x;
             }
             Range verticalRange = smep.getISequenceEvent().getVerticalRange();
-            if (moveType == -1) {
-                finalRange = new Range(Math.min(verticalRange.getUpperBound() - 5, verticalRange.getLowerBound() + deltaY), verticalRange.getUpperBound());
-            } else if (moveType == 0) {
+            if (moveType == SequenceMessageEditPolicy.OBLIQUE_MESSAGE_MOVE_SOURCE) {
+                finalRange = new Range(Math.min(verticalRange.getUpperBound() - LayoutConstants.EXECUTION_CHILDREN_MARGIN, verticalRange.getLowerBound() + deltaY), verticalRange.getUpperBound());
+            } else if (moveType == SequenceMessageEditPolicy.OBLIQUE_MESSAGE_MOVE_MESSAGE) {
                 finalRange = verticalRange.shifted(deltaY);
-            } else if (moveType == 1) {
-                finalRange = new Range(verticalRange.getLowerBound(), Math.max(verticalRange.getLowerBound() + 5, verticalRange.getUpperBound() + deltaY));
+            } else if (moveType == SequenceMessageEditPolicy.OBLIQUE_MESSAGE_MOVE_TARGET) {
+                finalRange = new Range(verticalRange.getLowerBound(), Math.max(verticalRange.getLowerBound() + LayoutConstants.EXECUTION_CHILDREN_MARGIN, verticalRange.getUpperBound() + deltaY));
             }
         } else {
             finalRange = new Range(location.y, location.y);
@@ -686,7 +701,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
             Object initialClick = request.getExtendedData().get(SequenceMessageEditPart.MSG_OBLIQUE_CBR_INITAL_CLICK);
             if (initialClick instanceof Point obliqueMsgInitialClick) {
                 // Handle only ObliqueAsyncCall case with move target or move edge
-                needsCompoundEventCommands = obliqueMsgInitialClick.x == 1 || obliqueMsgInitialClick.x == 0;
+                needsCompoundEventCommands = obliqueMsgInitialClick.x == OBLIQUE_MESSAGE_MOVE_TARGET || obliqueMsgInitialClick.x == OBLIQUE_MESSAGE_MOVE_MESSAGE;
             }
         }
 
@@ -755,7 +770,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
         if (initialClick instanceof Point obliqueMsgInitialClick) {
             deltaY =  location.y - obliqueMsgInitialClick.y;
             moveType = obliqueMsgInitialClick.x;
-            if (range.getUpperBound() + deltaY < range.getLowerBound() + LayoutConstants.EXECUTION_CHILDREN_MARGIN) {
+            if (range.getUpperBound() + deltaY < range.getLowerBound() + LayoutConstants.EXECUTION_CHILDREN_MARGIN && moveType == OBLIQUE_MESSAGE_MOVE_TARGET) {
                 deltaY = -range.width() + LayoutConstants.EXECUTION_CHILDREN_MARGIN;
             }
         } else {
@@ -950,7 +965,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
 
         @Override
         public String toString() {
-            return "[fromTop:" + fromTop + ", compound:" + needsCompoundMove + "]"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+            return "[fromTop:" + fromTop + ", compound:" + needsCompoundMove + "]";  //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
         }
     }
 }

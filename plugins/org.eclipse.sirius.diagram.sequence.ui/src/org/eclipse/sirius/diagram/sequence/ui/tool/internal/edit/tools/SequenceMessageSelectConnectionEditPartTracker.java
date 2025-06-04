@@ -27,6 +27,7 @@ import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.ISequenceEventQuery;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageEditPart;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceMessageEditPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.ui.SequenceDragEditPartsTrackerEx.SequenceCacheDragTrackerHelper;
 import org.eclipse.sirius.diagram.ui.tools.internal.ui.SelectConnectionEditPartTracker;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
@@ -117,26 +118,26 @@ public class SequenceMessageSelectConnectionEditPartTracker extends SelectConnec
                 // right to left message
                 if (initialClick.get().x <= (properLogicalBounds.right() - properLogicalBounds.width / 4)) {
                     // move target
-                    initialClick.get().x = 1;
+                    initialClick.get().x = SequenceMessageEditPolicy.OBLIQUE_MESSAGE_MOVE_TARGET;
                 } else if (initialClick.get().x >= (properLogicalBounds.left() + properLogicalBounds.width / 4)) {
                     // move source
-                    initialClick.get().x = -1;
+                    initialClick.get().x = SequenceMessageEditPolicy.OBLIQUE_MESSAGE_MOVE_SOURCE;
                 } else {
                     // move message
-                    initialClick.get().x = 0;
+                    initialClick.get().x = SequenceMessageEditPolicy.OBLIQUE_MESSAGE_MOVE_MESSAGE;
                 }
 
             } else {
                 // left to right message
                 if (initialClick.get().x <= (properLogicalBounds.left() + properLogicalBounds.width / 4)) {
                     // move source
-                    initialClick.get().x = -1;
+                    initialClick.get().x = SequenceMessageEditPolicy.OBLIQUE_MESSAGE_MOVE_SOURCE;
                 } else if (initialClick.get().x >= (properLogicalBounds.right() - properLogicalBounds.width / 4)) {
                     // move target
-                    initialClick.get().x = 1;
+                    initialClick.get().x = SequenceMessageEditPolicy.OBLIQUE_MESSAGE_MOVE_TARGET;
                 } else {
                     // move message
-                    initialClick.get().x = 0;
+                    initialClick.get().x = SequenceMessageEditPolicy.OBLIQUE_MESSAGE_MOVE_MESSAGE;
                 }
             }
         }

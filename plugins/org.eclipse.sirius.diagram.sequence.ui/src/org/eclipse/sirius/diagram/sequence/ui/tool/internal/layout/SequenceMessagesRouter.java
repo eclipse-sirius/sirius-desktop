@@ -37,6 +37,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConsta
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.EndOfLifeEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InstanceRoleEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageEditPart;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceMessageEditPolicy;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.LifelineNodeFigure;
@@ -355,13 +356,13 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
 
         int width = finish.getLocation().x - start.getLocation().x;
         if (width < 0) {
-            if (A_POINT.x == 1) {
+            if (A_POINT.x == SequenceMessageEditPolicy.OBLIQUE_MESSAGE_MOVE_TARGET) {
                 // Move target
-                Point preciseFinish = new Point(finish.getLocation().x, Math.max(S_POINT.y + 5, F_POINT.y + deltaY));
+                Point preciseFinish = new Point(finish.getLocation().x, Math.max(S_POINT.y + LayoutConstants.EXECUTION_CHILDREN_MARGIN, F_POINT.y + deltaY));
                 newFinish = new AbsoluteBendpoint(preciseFinish);
-            } else if (A_POINT.x == -1) {
+            } else if (A_POINT.x == SequenceMessageEditPolicy.OBLIQUE_MESSAGE_MOVE_SOURCE) {
                 // Move source
-                Point preciseStart = new Point(start.getLocation().x, Math.min(F_POINT.y - 5, S_POINT.y + deltaY));
+                Point preciseStart = new Point(start.getLocation().x, Math.min(F_POINT.y - LayoutConstants.EXECUTION_CHILDREN_MARGIN, S_POINT.y + deltaY));
                 newStart = new AbsoluteBendpoint(preciseStart);
             } else {
                 // Move edge
@@ -372,13 +373,13 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
                 newFinish = new AbsoluteBendpoint(preciseFinish);
             }
         } else {
-            if (A_POINT.x == -1) {
+            if (A_POINT.x == SequenceMessageEditPolicy.OBLIQUE_MESSAGE_MOVE_SOURCE) {
                 // Move source
-                Point preciseStart = new Point(start.getLocation().x, Math.min(F_POINT.y - 5, S_POINT.y + deltaY));
+                Point preciseStart = new Point(start.getLocation().x, Math.min(F_POINT.y - LayoutConstants.EXECUTION_CHILDREN_MARGIN, S_POINT.y + deltaY));
                 newStart = new AbsoluteBendpoint(preciseStart);
-            } else if (A_POINT.x == 1) {
+            } else if (A_POINT.x == SequenceMessageEditPolicy.OBLIQUE_MESSAGE_MOVE_TARGET) {
                 // Move target
-                Point preciseFinish = new Point(finish.getLocation().x, Math.max(S_POINT.y + 5, F_POINT.y + deltaY));
+                Point preciseFinish = new Point(finish.getLocation().x, Math.max(S_POINT.y + LayoutConstants.EXECUTION_CHILDREN_MARGIN, F_POINT.y + deltaY));
                 newFinish = new AbsoluteBendpoint(preciseFinish);
             } else {
                 // Move edge

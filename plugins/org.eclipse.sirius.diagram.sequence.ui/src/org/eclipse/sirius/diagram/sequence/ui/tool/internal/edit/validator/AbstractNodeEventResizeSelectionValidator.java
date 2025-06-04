@@ -37,6 +37,7 @@ import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
 import org.eclipse.sirius.diagram.sequence.ui.Messages;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionEditPart;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceMessageEditPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.FinalParentHelper;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 import org.eclipse.sirius.ext.base.Option;
@@ -500,10 +501,10 @@ public class AbstractNodeEventResizeSelectionValidator {
             } else if (requestQuery.isResizeFromTop()) {
                 boolean isReflexiveMoveDirectedByMessage = reflexiveStart && requestQuery.isDirectedByMessage();
                 boolean isObliqueMoveRirectedByTargetSegment = obliqueStart && requestQuery.isDirectedByMessage() && requestQuery.getObliqueMoveType().isPresent()
-                        && requestQuery.getObliqueMoveType().get() == 1;
+                        && requestQuery.getObliqueMoveType().get() == SequenceMessageEditPolicy.OBLIQUE_MESSAGE_MOVE_TARGET;
                 if (isReflexiveMoveDirectedByMessage || isObliqueMoveRirectedByTargetSegment) {
-                    int validDelta = verticalRange.getLowerBound() > verticalRange.getUpperBound() + requestQuery.getLogicalDelta().y ? 0 : requestQuery.getLogicalDelta().y; 
-                    verticalRange = new Range(verticalRange.getLowerBound(), verticalRange.getUpperBound() + validDelta);
+                    int validAdditionalDelta = verticalRange.getLowerBound() > verticalRange.getUpperBound() + requestQuery.getLogicalDelta().y ? 0 : requestQuery.getLogicalDelta().y; 
+                    verticalRange = new Range(verticalRange.getLowerBound(), verticalRange.getUpperBound() + validAdditionalDelta);
                 } else { // reflexive or oblique, and resized -> moved message
                     verticalRange = verticalRange.shifted(requestQuery.getLogicalDelta().y);
                 }
@@ -515,7 +516,8 @@ public class AbstractNodeEventResizeSelectionValidator {
                 verticalRange = new Range(finalRange.getUpperBound(), finalRange.getUpperBound());
             } else if (requestQuery.isResizeFromBottom()) {
                 if (reflexiveEnd && requestQuery.isDirectedByMessage()) {
-                    verticalRange = new Range(verticalRange.getLowerBound() + requestQuery.getLogicalDelta().height, verticalRange.getUpperBound());
+                    int validAdditionalDelta = verticalRange.getLowerBound() + requestQuery.getLogicalDelta().height > verticalRange.getUpperBound() ? 0 : requestQuery.getLogicalDelta().height;
+                    verticalRange = new Range(verticalRange.getLowerBound() + validAdditionalDelta, verticalRange.getUpperBound());
                 } else { // reflexive and resized -> moved message
                     verticalRange = verticalRange.shifted(requestQuery.getLogicalDelta().height);
                 }

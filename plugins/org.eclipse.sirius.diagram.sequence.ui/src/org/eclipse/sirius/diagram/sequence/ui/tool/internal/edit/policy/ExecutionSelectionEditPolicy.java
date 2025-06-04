@@ -428,49 +428,51 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
                 final Range seeRange = ise.getVerticalRange();
                 int lDelta = 0;
                 int uDelta = 0;
-                ISequenceEventQuery iseQuery = new ISequenceEventQuery(ise);
-                // TODO reduces calls to isOblique and isReflexive
+                if (ise instanceof Message msg) {
+                    ISequenceEventQuery iseQuery = new ISequenceEventQuery(ise);
+                    boolean isReflectiveMessage = iseQuery.isReflectiveMessage();
+                    boolean isObliqueMessage = iseQuery.isObliqueMessage();
 
-                if (seeRange.getLowerBound() == movedBound && doNotMoveSourceOfReturnMessageOfReflexiveSyncCall(self, ise, rq)) {
-                    lDelta = height;
-                    if (iseQuery.isReflectiveMessage() && getSelection(ise) == EditPart.SELECTED_NONE) {
-                        // A reflexive message does not have the same lower and
-                        // upper bound but both bound have to be moved like
-                        // "normal" messages
-                        uDelta = height;
-                    }
-
-                    if (iseQuery.isObliqueMessage() && getSelection(ise) == EditPart.SELECTED_NONE) {
-                        // A reflexive message does not have the same lower and
-                        // upper bound but both bound have to be moved like
-                        // "normal" messages
-                        uDelta = height;
-                    }
-                }
-                if (seeRange.getUpperBound() == movedBound && doNotMoveTargetOfStartMessageOfReflexiveSyncCall(self, ise, rq)) {
-                    uDelta = height;
-                    if (iseQuery.isReflectiveMessage() && getSelection(ise) == EditPart.SELECTED_NONE) {
-                        // A reflexive message does not have the same lower and
-                        // upper bound but both bound have to be moved like
-                        // "normal" messages
+                    if (seeRange.getLowerBound() == movedBound && doNotMoveSourceOfReturnMessageOfReflexiveSyncCall(self, msg, rq, isReflectiveMessage)) {
                         lDelta = height;
-                    }
+                        if (isReflectiveMessage && getSelection(msg) == EditPart.SELECTED_NONE) {
+                            // A reflexive message does not have the same lower and
+                            // upper bound but both bound have to be moved like
+                            // "normal" messages
+                            uDelta = height;
+                        }
 
-                    if (iseQuery.isObliqueMessage()) {
-                        if (getSelection(ise) == EditPart.SELECTED_NONE //
-                                || (rq.isDirectedByMessage() && rq.getObliqueMoveType().isPresent() && rq.getObliqueMoveType().get() == 0)) {
-                            // Oblique message move
+                        if (isObliqueMessage && getSelection(msg) == EditPart.SELECTED_NONE) {
+                            // A reflexive message does not have the same lower and
+                            // upper bound but both bound have to be moved like
+                            // "normal" messages
+                            uDelta = height;
+                        }
+                    }
+                    if (seeRange.getUpperBound() == movedBound && doNotMoveTargetOfStartMessageOfReflexiveSyncCall(self, msg, rq, isReflectiveMessage)) {
+                        uDelta = height;
+                        if (isReflectiveMessage && getSelection(msg) == EditPart.SELECTED_NONE) {
+                            // A reflexive message does not have the same lower and
+                            // upper bound but both bound have to be moved like
+                            // "normal" messages
                             lDelta = height;
-                        } else if (rq.isDirectedByMessage() && rq.getObliqueMoveType().isPresent() && rq.getObliqueMoveType().get() == 1) {
-                            // Oblique message target move.
+                        }
+
+                        if (isObliqueMessage) {
+                            if (getSelection(msg) == EditPart.SELECTED_NONE //
+                                    || (rq.isDirectedByMessage() && rq.getObliqueMoveType().isPresent() && rq.getObliqueMoveType().get() == SequenceMessageEditPolicy.OBLIQUE_MESSAGE_MOVE_MESSAGE)) {
+                                // Oblique message move
+                                lDelta = height;
+                            } else if (rq.isDirectedByMessage() && rq.getObliqueMoveType().isPresent() && rq.getObliqueMoveType().get() == SequenceMessageEditPolicy.OBLIQUE_MESSAGE_MOVE_TARGET) {
+                                // Oblique message target move.
+                            }
                         }
                     }
                 }
 
                 if ((seeRange.getLowerBound() + lDelta) <= (seeRange.getUpperBound() + uDelta)) {
                     final Range newRange = new Range(seeRange.getLowerBound() + lDelta, seeRange.getUpperBound() + uDelta);
-                    if (ise instanceof Message && !hasBothEndMoving((Message) ise)) {
-                        Message msg = (Message) ise;
+                    if (ise instanceof Message msg && !hasBothEndMoving(msg)) {
                         addMessageReconnectionCommand(self, cc, msg, newRange, request, validator, sequenceDiagram);
                     } else {
                         cc.compose(CommandFactory.createICommand(cc.getEditingDomain(), new SetVerticalRangeOperation(ise, newRange)));
@@ -624,9 +626,10 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
      *            the sequence event to validate if it is a reflexive message we do not want to move
      * @return the validation result of the message move.
      */
-    private boolean doNotMoveSourceOfReturnMessageOfReflexiveSyncCall(Execution self, ISequenceEvent ise, RequestQuery rq) {
-        return !(isMovedReflexiveMessage(ise, rq) && self.equals(((Message) ise).getSourceElement()) && getSelection(((Message) ise).getSourceElement()) == EditPart.SELECTED_NONE
-                && getSelection(ise) == EditPart.SELECTED_NONE);
+    private boolean doNotMoveSourceOfReturnMessageOfReflexiveSyncCall(Execution self, Message msg, RequestQuery rq, boolean isReflectiveMessage) {
+        ISequenceNode messageSource = msg.getSourceElement();
+        return !(isMovedReflexiveMessage(rq, isReflectiveMessage) && self.equals(messageSource) && getSelection(messageSource) == EditPart.SELECTED_NONE
+                && getSelection(msg) == EditPart.SELECTED_NONE);
     }
 
     /**
@@ -637,13 +640,14 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
      *            the sequence event to validate if it is a reflexive message we do not want to move
      * @return the validation result of the message move.
      */
-    private boolean doNotMoveTargetOfStartMessageOfReflexiveSyncCall(Execution self, ISequenceEvent ise, RequestQuery rq) {
-        return !(isMovedReflexiveMessage(ise, rq) && self.equals(((Message) ise).getTargetElement()) && getSelection(((Message) ise).getTargetElement()) == EditPart.SELECTED_NONE
-                && getSelection(ise) == EditPart.SELECTED_NONE);
+    private boolean doNotMoveTargetOfStartMessageOfReflexiveSyncCall(Execution self, Message msg, RequestQuery rq, boolean isReflectiveMessage) {
+        ISequenceNode messageTarget = msg.getTargetElement();
+        return !(isMovedReflexiveMessage(rq, isReflectiveMessage) && self.equals(messageTarget) && getSelection(messageTarget) == EditPart.SELECTED_NONE
+                && getSelection(msg) == EditPart.SELECTED_NONE);
     }
 
-    private boolean isMovedReflexiveMessage(ISequenceEvent ise, RequestQuery rq) {
-        return rq.isResize() && new ISequenceEventQuery(ise).isReflectiveMessage();
+    private boolean isMovedReflexiveMessage(RequestQuery rq, boolean isReflectiveMessage) {
+        return rq.isResize() && isReflectiveMessage;
     }
 
     /*
@@ -754,7 +758,7 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
                 Range callMsgRange = callMessage.getVerticalRange();
                 RequestQuery requestQuery = new RequestQuery(request);
                 Optional<Integer> obliqueMoveType = requestQuery.getObliqueMoveType();
-                if (request.isConstrainedMove() && (!obliqueMoveType.isPresent() || obliqueMoveType.get().intValue() == 1)) {
+                if (request.isConstrainedMove() && (!obliqueMoveType.isPresent() || obliqueMoveType.get().intValue() == SequenceMessageEditPolicy.OBLIQUE_MESSAGE_MOVE_TARGET)) {
                     fullFinalRange = new Range(oldRange.getLowerBound() - callMsgRange.width(), fullFinalRange.getUpperBound());
                 } else {
                     fullFinalRange = new Range(fullFinalRange.getLowerBound() - callMsgRange.width(), fullFinalRange.getUpperBound());
