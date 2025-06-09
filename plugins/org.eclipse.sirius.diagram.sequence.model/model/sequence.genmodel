@@ -59,6 +59,7 @@
       <genClasses ecoreClass="sequence.ecore#//description/CombinedFragmentMapping"/>
       <genClasses ecoreClass="sequence.ecore#//description/OperandMapping"/>
       <genClasses ecoreClass="sequence.ecore#//description/ObservationPointMapping"/>
+      <genClasses ecoreClass="sequence.ecore#//description/InteractionContainerMapping"/>
       <nestedGenPackages prefix="Tool" basePackage="org.eclipse.sirius.diagram.sequence.description"
           disposableProviderFactory="true" ecorePackage="sequence.ecore#//description/tool">
         <genClasses ecoreClass="sequence.ecore#//description/tool/SequenceDiagramToolDescription"/>
