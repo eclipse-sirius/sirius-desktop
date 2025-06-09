@@ -120,6 +120,16 @@ Internally, Sirius maintains three ordered sets:
 
 To provide a functional diagram, each semantic/graphical orderings couple must always be coherent. Creation tools and reordering tool must manage the semantic orderings. More explanations are given in the next section.
 
+h3. Gate
+ 
+The gate typically represents a port for message connecting to a sub-component. You can have a gate on a combined fragment, interaction use or interaction container. As messages are connected to MessageEnd model elements, it is the MessageEnd that has a reference to the Gate.
+
+  !images/gate.png!
+
+You can move a message connected to a gate along from its parent but you can't reconnect it to a different gate, nor move it to a different parent and reconnect the gate there. For instance, on the diagram below, it is not possible to move the message from the interaction use ref.1 to ref.2.
+
+  !images/gate_move.png!
+
 h2(#sd_description). Sequence Diagram Description
 
 First, in an odesign file, from an existing viewpoint, you have to create a new kind of representation : Sequence Diagram Description.
@@ -284,6 +294,21 @@ As the interaction container edit part forwards command requests to the sequence
   
 Only one interaction container mapping can be created.
 
+
+h3. Gate
+
+The gate mapping is used for displaying a gate on a combined fragment, interaction use or interaction container.
+
+We will define the gate mapping:
+
+  !images/new_gate_mapping.png!
+
+It is defined like an execution mapping .
+
+  !images/gate_mapping_properties.png!
+  
+Note that there is no reconnect tool for GateMapping. Gates do not reconnect to other parents.
+
 h2(#tools). Tools
 
 h3. Java Services
@@ -340,6 +365,10 @@ In this example, we want to create a new @Message_1@ from the existing compute e
   !images/message_creation_precondition.png!
 
 A variable is available for the Acceleo expression : $preTarget. This variable is the semantic element associated to graphical element that is currently hovered by the mouse.
+
+h4. Gate Creation Tool
+
+A Gate can be created using _Gate Creation Tool_. Its specification is similar to the _Execution Creation Tool_.
 
 h3(#eventReorderTool). Event Reorder Tool
 

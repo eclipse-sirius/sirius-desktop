@@ -42,6 +42,9 @@
 							<li>
 								<a href="#Ordering">Ordering</a>
 							</li>
+							<li>
+								<a href="#Gate">Gate</a>
+							</li>
 						</ol>
 					</li>
 					<li>
@@ -64,6 +67,9 @@
 							</li>
 							<li>
 								<a href="#InteractionContainer">Interaction Container</a>
+							</li>
+							<li>
+								<a href="#Gate2">Gate</a>
 							</li>
 						</ol>
 					</li>
@@ -320,6 +326,11 @@
 		</ul> 
 		<img border="0" src="images/orderings.png"/>
 		<p>To provide a functional diagram, each semantic/graphical orderings couple must always be coherent. Creation tools and reordering tool must manage the semantic orderings. More explanations are given in the next section.</p>
+		<h3 id="Gate">Gate</h3>
+		<p>The gate typically represents a port for message connecting to a sub-component. You can have a gate on a combined fragment, interaction use or interaction container. As messages are connected to MessageEnd model elements, it is the MessageEnd that has a reference to the Gate.</p> 
+		<img border="0" src="images/gate.png"/>
+		<p>You can move a message connected to a gate along from its parent but you can&#8217;t reconnect it to a different gate, nor move it to a different parent and reconnect the gate there. For instance, on the diagram below, it is not possible to move the message from the interaction use ref.1 to ref.2.</p> 
+		<img border="0" src="images/gate_move.png"/>
 		<h2 id="sd_description">Sequence Diagram Description</h2>
 		<p>First, in an odesign file, from an existing viewpoint, you have to create a new kind of representation : Sequence Diagram Description.</p> 
 		<img border="0" src="images/new_description.png"/> 
@@ -506,6 +517,13 @@
 		<p>As the interaction container edit part forwards command requests to the sequence diagram edit part, tools that applies on the diagram (like instance role creation) will keep working. Note that in the model operations, the containerView variable will be different though.</p> 
 		<img border="0" src="images/interaction_container_mapping_example.png"/>
 		<p>Only one interaction container mapping can be created.</p>
+		<h3 id="Gate2">Gate</h3>
+		<p>The gate mapping is used for displaying a gate on a combined fragment, interaction use or interaction container.</p>
+		<p>We will define the gate mapping:</p> 
+		<img border="0" src="images/new_gate_mapping.png"/>
+		<p>It is defined like an execution mapping .</p> 
+		<img border="0" src="images/gate_mapping_properties.png"/>
+		<p>Note that there is no reconnect tool for GateMapping. Gates do not reconnect to other parents.</p>
 		<h2 id="tools">Tools</h2>
 		<h3 id="JavaServices">Java Services</h3>
 		<p>To use a java service in an Acceleo expression, service must be define like this in odesign:</p> 
@@ -581,6 +599,11 @@
 		</p> 
 		<img border="0" src="images/message_creation_precondition.png"/>
 		<p>A variable is available for the Acceleo expression : $preTarget. This variable is the semantic element associated to graphical element that is currently hovered by the mouse.</p>
+		<h4 id="GateCreationTool">Gate Creation Tool</h4>
+		<p>A Gate can be created using 
+			<em>Gate Creation Tool</em>. Its specification is similar to the 
+			<em>Execution Creation Tool</em>.
+		</p>
 		<h3 id="eventReorderTool">Event Reorder Tool</h3>
 		<p>This tool is called when the user moves or changes the size of graphical elements on the diagram.</p>
 		<p>A single unique event reorder tool can and must be specified for message and execution mappings. The purpose of the tool is to re-synchronize the graphical ordering with the semantic ordering. When the user reorders a graphical element, the global order of graphical elements changes and the tool must then reorder the semantic elements according to these changes.</p> 
