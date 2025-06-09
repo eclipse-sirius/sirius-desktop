@@ -75,6 +75,16 @@ The message represents a kind of communication between lifelines of an interacti
 
 In UML2, the message is represented by an element of type @Message Specification@, the message send and receive are defined by one abstract type @Occurrence Specification@.
 
+h3. Gate
+ 
+The gate typically represents a port for message connecting to a sub-component. You can have a gate on a combined fragment, interaction use or interaction container. As messages are connected to MessageEnd model elements, it is the MessageEnd that has a reference to the Gate.
+
+  !images/gate.png!
+
+You can move a message connected to a gate along from its parent but you can't reconnect it to a different gate, nor move it to a different parent and reconnect the gate there. For instance, on the diagram below, it is not possible to move the message from the interaction use ref.1 to ref.2.
+
+  !images/gate_move.png!
+
 h3. SingleEventEnd and CompoundEventEnd
 
 Sirius internally manages a list of start/finish execution occurrences and sender/receiver message occurrences defined for each interaction. All these occurrences are event ends contained in the @EventEnds@ list.
@@ -284,6 +294,21 @@ As the interaction container edit part forwards command requests to the sequence
   
 Only one interaction container mapping can be created.
 
+
+h3. Gate
+
+The gate mapping is used for displaying a gate on a combined fragment, interaction use or interaction container.
+
+We will define the gate mapping:
+
+  !images/new_gate_mapping.png!
+
+It is defined like an execution mapping .
+
+  !images/gate_mapping_properties.png!
+  
+Note that there is no reconnect tool for GateMapping. Gates do not reconnect to other parents.
+
 h2(#tools). Tools
 
 h3. Java Services
@@ -319,6 +344,17 @@ The following variables can be used from inside the tool definition:
   !images/execution_creation_tool_visual.png!
 
 In the example above, we want to create a new @BehaviorExecution_2@ on the existing get execution. Thus, the @startingEndPredecessor@ and @finishingEndPredecessor@ will point to the @get_receiver@ message occurrence. This variables represent the semantic elements (@get_receiver@) associated to the graphical element preceding the @startingEnd@ (@BehaviorExecution_2_start@) and @finishingEnd@ (@BehaviorExecution_2_finish@) of the new element.
+
+h4. Gate Creation Tool
+
+A Gate can be created using _Gate Creation Tool_. Its specification is similar to the _Execution Creation Tool_.
+
+  !images/gate_creation_tool.png!
+
+The following variables can be used from inside the tool definition:
+* @variable@: the element where the tool was applied and that will contain the newly created gate
+* @viewVariable@: the graphical element where the tool was applied
+* @startingEndPredecessor@ and @finishingEndPredecessor@: represent in the global event ends list, the element preceding the new execution start and the element preceding the new execution finish. To get the corresponding semantic end element associated to event end: @startingEndPredecessor.semanticEnd@ or @finishingEndPredecessor.semanticEnd@.
 
 h4. Message Creation Tool
 
