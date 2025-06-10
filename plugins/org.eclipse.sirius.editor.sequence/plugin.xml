@@ -2,7 +2,7 @@
 <?eclipse version="3.0"?>
 <!-- Start of user code plugin.xml start specifics  -->
 <!--
-  Copyright (c) 2009 THALES GLOBAL SERVICES
+  Copyright (c) 2009, 2025 THALES GLOBAL SERVICES
   This program and the accompanying materials
   are made available under the terms of the Eclipse Public License 2.0
   which accompanies this distribution, and is available at
@@ -139,6 +139,14 @@
                afterSection="template.section.tMessageMapping.SendingEndFinderExpression"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.diagram.sequence.template.TMessageMapping"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.diagram.sequence.editor.properties.sections.template.tbasicmessagemapping.TBasicMessageMappingObliquePropertySection"
+               id="template.section.tBasicMessageMapping.Oblique"
+               filter="org.eclipse.sirius.diagram.sequence.editor.properties.filters.template.tbasicmessagemapping.TBasicMessageMappingObliqueFilter"
+               afterSection="template.section.tMessageMapping.ReceivingEndFinderExpression"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.diagram.sequence.template.TBasicMessageMapping"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.diagram.sequence.editor.properties.sections.template.tmessagemapping.TMessageMappingSendingEndFinderExpressionPropertySection"
@@ -373,6 +381,14 @@
                afterSection="description.section.messageMapping.SendingEndFinderExpression"              
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.diagram.sequence.description.MessageMapping"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.diagram.sequence.editor.properties.sections.description.basicmessagemapping.BasicMessageMappingObliquePropertySection"
+               id="description.section.basicMessageMapping.Oblique"
+               filter="org.eclipse.sirius.diagram.sequence.editor.properties.filters.description.basicmessagemapping.BasicMessageMappingObliqueFilter"
+               afterSection="description.section.messageMapping.ReceivingEndFinderExpression"              
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.diagram.sequence.description.BasicMessageMapping"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.diagram.sequence.editor.properties.sections.description.returnmessagemapping.ReturnMessageMappingInvocationMessageFinderExpressionPropertySection"
