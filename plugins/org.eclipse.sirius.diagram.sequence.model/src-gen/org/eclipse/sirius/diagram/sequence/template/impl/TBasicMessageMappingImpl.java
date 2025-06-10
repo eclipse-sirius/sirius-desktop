@@ -14,8 +14,10 @@ package org.eclipse.sirius.diagram.sequence.template.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.sirius.diagram.sequence.template.TBasicMessageMapping;
 import org.eclipse.sirius.diagram.sequence.template.TMessageExtremity;
@@ -29,6 +31,8 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.sequence.template.impl.TBasicMessageMappingImpl#getTarget <em>Target</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.template.impl.TBasicMessageMappingImpl#isOblique
+ * <em>Oblique</em>}</li>
  * </ul>
  *
  * @generated
@@ -43,6 +47,26 @@ public class TBasicMessageMappingImpl extends TSourceTargetMessageMappingImpl im
      * @ordered
      */
     protected EList<TMessageExtremity> target;
+
+    /**
+     * The default value of the '{@link #isOblique() <em>Oblique</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #isOblique()
+     * @generated
+     * @ordered
+     */
+    protected static final boolean OBLIQUE_EDEFAULT = false;
+
+    /**
+     * The cached value of the '{@link #isOblique() <em>Oblique</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #isOblique()
+     * @generated
+     * @ordered
+     */
+    protected boolean oblique = TBasicMessageMappingImpl.OBLIQUE_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -82,10 +106,36 @@ public class TBasicMessageMappingImpl extends TSourceTargetMessageMappingImpl im
      * @generated
      */
     @Override
+    public boolean isOblique() {
+        return oblique;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setOblique(boolean newOblique) {
+        boolean oldOblique = oblique;
+        oblique = newOblique;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, TemplatePackage.TBASIC_MESSAGE_MAPPING__OBLIQUE, oldOblique, oblique));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case TemplatePackage.TBASIC_MESSAGE_MAPPING__TARGET:
             return getTarget();
+        case TemplatePackage.TBASIC_MESSAGE_MAPPING__OBLIQUE:
+            return isOblique();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -103,6 +153,9 @@ public class TBasicMessageMappingImpl extends TSourceTargetMessageMappingImpl im
             getTarget().clear();
             getTarget().addAll((Collection<? extends TMessageExtremity>) newValue);
             return;
+        case TemplatePackage.TBASIC_MESSAGE_MAPPING__OBLIQUE:
+            setOblique((Boolean) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -118,6 +171,9 @@ public class TBasicMessageMappingImpl extends TSourceTargetMessageMappingImpl im
         case TemplatePackage.TBASIC_MESSAGE_MAPPING__TARGET:
             getTarget().clear();
             return;
+        case TemplatePackage.TBASIC_MESSAGE_MAPPING__OBLIQUE:
+            setOblique(TBasicMessageMappingImpl.OBLIQUE_EDEFAULT);
+            return;
         }
         super.eUnset(featureID);
     }
@@ -132,8 +188,28 @@ public class TBasicMessageMappingImpl extends TSourceTargetMessageMappingImpl im
         switch (featureID) {
         case TemplatePackage.TBASIC_MESSAGE_MAPPING__TARGET:
             return target != null && !target.isEmpty();
+        case TemplatePackage.TBASIC_MESSAGE_MAPPING__OBLIQUE:
+            return oblique != TBasicMessageMappingImpl.OBLIQUE_EDEFAULT;
         }
         return super.eIsSet(featureID);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public String toString() {
+        if (eIsProxy()) {
+            return super.toString();
+        }
+
+        StringBuilder result = new StringBuilder(super.toString());
+        result.append(" (oblique: "); //$NON-NLS-1$
+        result.append(oblique);
+        result.append(')');
+        return result.toString();
     }
 
 } // TBasicMessageMappingImpl

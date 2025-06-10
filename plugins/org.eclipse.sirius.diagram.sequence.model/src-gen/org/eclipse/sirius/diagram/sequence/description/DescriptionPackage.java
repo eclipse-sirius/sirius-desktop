@@ -1755,13 +1755,21 @@ public interface DescriptionPackage extends EPackage {
     int BASIC_MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION = DescriptionPackage.MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION;
 
     /**
+     * The feature id for the '<em><b>Oblique</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int BASIC_MESSAGE_MAPPING__OBLIQUE = DescriptionPackage.MESSAGE_MAPPING_FEATURE_COUNT + 0;
+
+    /**
      * The number of structural features of the '<em>Basic Message Mapping</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int BASIC_MESSAGE_MAPPING_FEATURE_COUNT = DescriptionPackage.MESSAGE_MAPPING_FEATURE_COUNT + 0;
+    int BASIC_MESSAGE_MAPPING_FEATURE_COUNT = DescriptionPackage.MESSAGE_MAPPING_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.sequence.description.impl.ReturnMessageMappingImpl
@@ -4306,6 +4314,18 @@ public interface DescriptionPackage extends EPackage {
     EClass getBasicMessageMapping();
 
     /**
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.diagram.sequence.description.BasicMessageMapping#isOblique <em>Oblique</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Oblique</em>'.
+     * @see org.eclipse.sirius.diagram.sequence.description.BasicMessageMapping#isOblique()
+     * @see #getBasicMessageMapping()
+     * @generated
+     */
+    EAttribute getBasicMessageMapping_Oblique();
+
+    /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.description.ReturnMessageMapping
      * <em>Return Message Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -4619,6 +4639,14 @@ public interface DescriptionPackage extends EPackage {
          * @generated
          */
         EClass BASIC_MESSAGE_MAPPING = DescriptionPackage.eINSTANCE.getBasicMessageMapping();
+
+        /**
+         * The meta object literal for the '<em><b>Oblique</b></em>' attribute feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute BASIC_MESSAGE_MAPPING__OBLIQUE = DescriptionPackage.eINSTANCE.getBasicMessageMapping_Oblique();
 
         /**
          * The meta object literal for the

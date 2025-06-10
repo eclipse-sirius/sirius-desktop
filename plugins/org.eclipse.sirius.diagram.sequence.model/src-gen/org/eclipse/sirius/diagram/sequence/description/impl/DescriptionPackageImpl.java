@@ -438,6 +438,16 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     @Override
+    public EAttribute getBasicMessageMapping_Oblique() {
+        return (EAttribute) basicMessageMappingEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EClass getReturnMessageMapping() {
         return returnMessageMappingEClass;
     }
@@ -625,6 +635,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         createEAttribute(messageMappingEClass, DescriptionPackage.MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION);
 
         basicMessageMappingEClass = createEClass(DescriptionPackage.BASIC_MESSAGE_MAPPING);
+        createEAttribute(basicMessageMappingEClass, DescriptionPackage.BASIC_MESSAGE_MAPPING__OBLIQUE);
 
         returnMessageMappingEClass = createEClass(DescriptionPackage.RETURN_MESSAGE_MAPPING);
         createEAttribute(returnMessageMappingEClass, DescriptionPackage.RETURN_MESSAGE_MAPPING__INVOCATION_MESSAGE_FINDER_EXPRESSION);
@@ -682,6 +693,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                 .getEPackage(org.eclipse.sirius.diagram.description.DescriptionPackage.eNS_URI);
         org.eclipse.sirius.viewpoint.description.DescriptionPackage theDescriptionPackage_2 = (org.eclipse.sirius.viewpoint.description.DescriptionPackage) EPackage.Registry.INSTANCE
                 .getEPackage(org.eclipse.sirius.viewpoint.description.DescriptionPackage.eNS_URI);
+        EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 
         // Add subpackages
         getESubpackages().add(theToolPackage);
@@ -752,6 +764,8 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                 EPackageImpl.IS_ORDERED);
 
         initEClass(basicMessageMappingEClass, BasicMessageMapping.class, "BasicMessageMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEAttribute(getBasicMessageMapping_Oblique(), theEcorePackage.getEBoolean(), "oblique", null, 1, 1, BasicMessageMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(returnMessageMappingEClass, ReturnMessageMapping.class, "ReturnMessageMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEAttribute(getReturnMessageMapping_InvocationMessageFinderExpression(), theDescriptionPackage_2.getInterpretedExpression(), "invocationMessageFinderExpression", null, 1, 1, //$NON-NLS-1$

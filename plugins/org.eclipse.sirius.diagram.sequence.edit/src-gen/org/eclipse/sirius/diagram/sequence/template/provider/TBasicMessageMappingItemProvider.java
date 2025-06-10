@@ -19,6 +19,8 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.diagram.sequence.template.TBasicMessageMapping;
 import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
 
@@ -49,6 +51,7 @@ public class TBasicMessageMappingItemProvider extends TSourceTargetMessageMappin
             super.getPropertyDescriptors(object);
 
             addTargetPropertyDescriptor(object);
+            addObliquePropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -64,6 +67,18 @@ public class TBasicMessageMappingItemProvider extends TSourceTargetMessageMappin
                         getString("_UI_PropertyDescriptor_description", "_UI_TBasicMessageMapping_target_feature", "_UI_TBasicMessageMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                         TemplatePackage.Literals.TBASIC_MESSAGE_MAPPING__TARGET, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
                         null));
+    }
+
+    /**
+     * This adds a property descriptor for the Oblique feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addObliquePropertyDescriptor(Object object) {
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_TBasicMessageMapping_oblique_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_TBasicMessageMapping_oblique_feature", "_UI_TBasicMessageMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        TemplatePackage.Literals.TBASIC_MESSAGE_MAPPING__OBLIQUE, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -97,6 +112,12 @@ public class TBasicMessageMappingItemProvider extends TSourceTargetMessageMappin
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
+
+        switch (notification.getFeatureID(TBasicMessageMapping.class)) {
+        case TemplatePackage.TBASIC_MESSAGE_MAPPING__OBLIQUE:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+            return;
+        }
         super.notifyChanged(notification);
     }
 

@@ -643,6 +643,16 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
      * @generated
      */
     @Override
+    public EAttribute getTBasicMessageMapping_Oblique() {
+        return (EAttribute) tBasicMessageMappingEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EClass getTSourceTargetMessageMapping() {
         return tSourceTargetMessageMappingEClass;
     }
@@ -1035,6 +1045,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
         tBasicMessageMappingEClass = createEClass(TemplatePackage.TBASIC_MESSAGE_MAPPING);
         createEReference(tBasicMessageMappingEClass, TemplatePackage.TBASIC_MESSAGE_MAPPING__TARGET);
+        createEAttribute(tBasicMessageMappingEClass, TemplatePackage.TBASIC_MESSAGE_MAPPING__OBLIQUE);
 
         tSourceTargetMessageMappingEClass = createEClass(TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING);
         createEReference(tSourceTargetMessageMappingEClass, TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING__SOURCE);
@@ -1241,6 +1252,8 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
         initEClass(tBasicMessageMappingEClass, TBasicMessageMapping.class, "TBasicMessageMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEReference(getTBasicMessageMapping_Target(), this.getTMessageExtremity(), null, "target", null, 1, -1, TBasicMessageMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getTBasicMessageMapping_Oblique(), theEcorePackage.getEBoolean(), "oblique", null, 1, 1, TBasicMessageMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(tSourceTargetMessageMappingEClass, TSourceTargetMessageMapping.class, "TSourceTargetMessageMapping", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
                 EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
