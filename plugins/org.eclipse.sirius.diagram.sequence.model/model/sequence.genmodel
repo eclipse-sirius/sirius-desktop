@@ -43,7 +43,9 @@
         <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute sequence.ecore#//description/MessageMapping/sendingEndFinderExpression"/>
         <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute sequence.ecore#//description/MessageMapping/receivingEndFinderExpression"/>
       </genClasses>
-      <genClasses ecoreClass="sequence.ecore#//description/BasicMessageMapping"/>
+      <genClasses ecoreClass="sequence.ecore#//description/BasicMessageMapping">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sequence.ecore#//description/BasicMessageMapping/oblique"/>
+      </genClasses>
       <genClasses ecoreClass="sequence.ecore#//description/ReturnMessageMapping">
         <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute sequence.ecore#//description/ReturnMessageMapping/invocationMessageFinderExpression"/>
       </genClasses>
@@ -214,6 +216,7 @@
       <genClasses ecoreClass="sequence.ecore#//template/TBasicMessageMapping">
         <genFeatures notify="false" createChild="false" propertyCategory="General"
             propertySortChoices="true" ecoreFeature="ecore:EReference sequence.ecore#//template/TBasicMessageMapping/target"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sequence.ecore#//template/TBasicMessageMapping/oblique"/>
       </genClasses>
       <genClasses image="false" ecoreClass="sequence.ecore#//template/TSourceTargetMessageMapping">
         <genFeatures notify="false" createChild="false" propertyCategory="General"

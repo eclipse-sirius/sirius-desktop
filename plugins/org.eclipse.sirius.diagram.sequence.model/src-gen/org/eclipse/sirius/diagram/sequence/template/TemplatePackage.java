@@ -1085,13 +1085,21 @@ public interface TemplatePackage extends EPackage {
     int TBASIC_MESSAGE_MAPPING__TARGET = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING_FEATURE_COUNT + 0;
 
     /**
+     * The feature id for the '<em><b>Oblique</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TBASIC_MESSAGE_MAPPING__OBLIQUE = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING_FEATURE_COUNT + 1;
+
+    /**
      * The number of structural features of the '<em>TBasic Message Mapping</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int TBASIC_MESSAGE_MAPPING_FEATURE_COUNT = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING_FEATURE_COUNT + 1;
+    int TBASIC_MESSAGE_MAPPING_FEATURE_COUNT = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.sequence.template.impl.TReturnMessageMappingImpl
@@ -1887,6 +1895,18 @@ public interface TemplatePackage extends EPackage {
     EReference getTBasicMessageMapping_Target();
 
     /**
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TBasicMessageMapping#isOblique <em>Oblique</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Oblique</em>'.
+     * @see org.eclipse.sirius.diagram.sequence.template.TBasicMessageMapping#isOblique()
+     * @see #getTBasicMessageMapping()
+     * @generated
+     */
+    EAttribute getTBasicMessageMapping_Oblique();
+
+    /**
      * Returns the meta object for class
      * '{@link org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping <em>TSource Target Message
      * Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -2574,6 +2594,14 @@ public interface TemplatePackage extends EPackage {
          * @generated
          */
         EReference TBASIC_MESSAGE_MAPPING__TARGET = TemplatePackage.eINSTANCE.getTBasicMessageMapping_Target();
+
+        /**
+         * The meta object literal for the '<em><b>Oblique</b></em>' attribute feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute TBASIC_MESSAGE_MAPPING__OBLIQUE = TemplatePackage.eINSTANCE.getTBasicMessageMapping_Oblique();
 
         /**
          * The meta object literal for the

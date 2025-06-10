@@ -23,6 +23,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.sequence.template.TBasicMessageMapping#getTarget <em>Target</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.template.TBasicMessageMapping#isOblique <em>Oblique</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTBasicMessageMapping()
@@ -46,4 +47,26 @@ public interface TBasicMessageMapping extends TSourceTargetMessageMapping {
      * @generated
      */
     EList<TMessageExtremity> getTarget();
+
+    /**
+     * Returns the value of the '<em><b>Oblique</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Oblique</em>' attribute.
+     * @see #setOblique(boolean)
+     * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTBasicMessageMapping_Oblique()
+     * @model required="true"
+     * @generated
+     */
+    boolean isOblique();
+
+    /**
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.sequence.template.TBasicMessageMapping#isOblique
+     * <em>Oblique</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @param value
+     *            the new value of the '<em>Oblique</em>' attribute.
+     * @see #isOblique()
+     * @generated
+     */
+    void setOblique(boolean value);
 } // TBasicMessageMapping

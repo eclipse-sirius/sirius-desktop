@@ -17,8 +17,13 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.diagram.sequence.description.BasicMessageMapping;
+import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 
 /**
@@ -47,8 +52,21 @@ public class BasicMessageMappingItemProvider extends MessageMappingItemProvider 
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
+            addObliquePropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
+    }
+
+    /**
+     * This adds a property descriptor for the Oblique feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addObliquePropertyDescriptor(Object object) {
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_BasicMessageMapping_oblique_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_BasicMessageMapping_oblique_feature", "_UI_BasicMessageMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DescriptionPackage.Literals.BASIC_MESSAGE_MAPPING__OBLIQUE, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -82,6 +100,12 @@ public class BasicMessageMappingItemProvider extends MessageMappingItemProvider 
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
+
+        switch (notification.getFeatureID(BasicMessageMapping.class)) {
+        case DescriptionPackage.BASIC_MESSAGE_MAPPING__OBLIQUE:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+            return;
+        }
         super.notifyChanged(notification);
     }
 
