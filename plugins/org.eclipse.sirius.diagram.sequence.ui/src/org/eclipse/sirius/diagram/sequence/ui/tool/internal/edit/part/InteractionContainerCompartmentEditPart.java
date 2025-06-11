@@ -12,9 +12,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part;
 
+import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.ExecutionOperations;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceNodeCreationPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.NodeCreationEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
 
 /**
@@ -23,7 +27,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeC
  * 
  * @author smonnier
  */
-public class InteractionContainerViewNodeContainerCompartmentEditPart extends DNodeContainerViewNodeContainerCompartmentEditPart {
+public class InteractionContainerCompartmentEditPart extends DNodeContainerViewNodeContainerCompartmentEditPart {
 
     /**
      * Default constructor.
@@ -31,7 +35,7 @@ public class InteractionContainerViewNodeContainerCompartmentEditPart extends DN
      * @param view
      *            {@link View} element that will be represented by this edit part.
      */
-    public InteractionContainerViewNodeContainerCompartmentEditPart(View view) {
+    public InteractionContainerCompartmentEditPart(View view) {
         super(view);
     }
 
@@ -42,6 +46,12 @@ public class InteractionContainerViewNodeContainerCompartmentEditPart extends DN
             return sequenceDiagramEditPart.getCommand(request);
         }
         return super.getCommand(request);
+    }
+
+    @Override
+    protected void createDefaultEditPolicies() {
+        super.createDefaultEditPolicies();
+        ExecutionOperations.replaceEditPolicy(this, EditPolicy.CONTAINER_ROLE, new SequenceNodeCreationPolicy(), NodeCreationEditPolicy.class);
     }
 
 }

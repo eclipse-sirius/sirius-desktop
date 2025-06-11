@@ -461,7 +461,7 @@ public final class ToolCommandBuilder {
 
     /**
      * Builds the command which will execute the user-specified operations to create a new Gate.
-     * 
+     *
      * @param node
      *            the node on which to create the new Gate.
      * @param tool
@@ -472,7 +472,8 @@ public final class ToolCommandBuilder {
      *            the event end graphically preceding the finishing position of the new Gate.
      * @return a command to create the Gate.
      */
-    public static Command buildCreateGateCommandFromTool(final DNode node, final GateCreationTool tool, final EventEnd startingEndPredecessor, final EventEnd finishingEndPredecessor) {
+    public static Command buildCreateGateCommandFromTool(final DDiagramElementContainer node, final GateCreationTool tool, final EventEnd startingEndPredecessor,
+            final EventEnd finishingEndPredecessor) {
         CommandBuilder builder = new GateCreationCommandBuilder(tool, node, startingEndPredecessor, finishingEndPredecessor);
         Session session = SessionManager.INSTANCE.getSession(node.getTarget());
         return getCommand(builder, session);

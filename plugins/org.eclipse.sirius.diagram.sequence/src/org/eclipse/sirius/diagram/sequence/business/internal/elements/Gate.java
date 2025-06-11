@@ -14,6 +14,7 @@ package org.eclipse.sirius.diagram.sequence.business.internal.elements;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -128,7 +129,7 @@ public class Gate extends AbstractNodeEvent {
 
     @Override
     public List<ISequenceEvent> getSubEvents() {
-        return new SubEventsHelper(this).getSubEvents();
+        return Collections.emptyList();
     }
 
     @Override

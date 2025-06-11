@@ -28,14 +28,12 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.sample.interactions.AbstractEnd;
-import org.eclipse.sirius.sample.interactions.AbstractEndContext;
 import org.eclipse.sirius.sample.interactions.CallMessage;
 import org.eclipse.sirius.sample.interactions.CombinedFragment;
 import org.eclipse.sirius.sample.interactions.CombinedFragmentEnd;
 import org.eclipse.sirius.sample.interactions.DestroyParticipantMessage;
 import org.eclipse.sirius.sample.interactions.Execution;
 import org.eclipse.sirius.sample.interactions.ExecutionEnd;
-import org.eclipse.sirius.sample.interactions.Gate;
 import org.eclipse.sirius.sample.interactions.GateEnd;
 import org.eclipse.sirius.sample.interactions.Interaction;
 import org.eclipse.sirius.sample.interactions.InteractionUse;
@@ -186,10 +184,8 @@ public class InteractionOrderingServices {
     }
 
     public Participant currentParticipant(EObject self) {
-//    public AbstractEndContext currentParticipant(EObject self) {
         if (self instanceof Participant) {
             return (Participant) self;
-//        } else if (self instanceof AbstractEnd) {
         } else if (self instanceof AbstractEnd && !(self instanceof GateEnd)) {
             return (Participant) ((AbstractEnd) self).getContext();
         } else if (self instanceof Execution) {
@@ -275,18 +271,21 @@ public class InteractionOrderingServices {
     public EObject getSendingContext(Message msg) {
         MessageEnd sendingEnd = msg.getSendingEnd();
         if (sendingEnd != null) {
-//            Participant p = sendingEnd.getContext();
-            AbstractEndContext p = sendingEnd.getContext();
-            List<EventContext> structure = computeContainmentStructure(p);
-            for (EventContext ec : structure) {
-                if (ec.getElement().equals(msg) && ec.isStart()) {
-                    EObject parent = ec.getParent();
-                    if (parent != null) {
-                        return parent;
-                    } else {
-                        return p;
+            Participant p = sendingEnd.getContext();
+            if (p != null) {
+                List<EventContext> structure = computeContainmentStructure(p);
+                for (EventContext ec : structure) {
+                    if (ec.getElement().equals(msg) && ec.isStart()) {
+                        EObject parent = ec.getParent();
+                        if (parent != null) {
+                            return parent;
+                        } else {
+                            return p;
+                        }
                     }
                 }
+            } else if (sendingEnd.getGate() != null) {
+                return sendingEnd.getGate();
             }
         }
         return msg;
@@ -303,8 +302,7 @@ public class InteractionOrderingServices {
     public EObject getReceivingContext(Message msg) {
         MessageEnd receivingEnd = msg.getReceivingEnd();
         if (receivingEnd != null) {
-//            Participant p = receivingEnd.getContext();
-            AbstractEndContext p = receivingEnd.getContext();            
+            Participant p = receivingEnd.getContext();
             if (p != null) {
                 List<EventContext> structure = computeContainmentStructure(p);
                 for (EventContext ec : structure) {
@@ -317,6 +315,8 @@ public class InteractionOrderingServices {
                         }
                     }
                 }
+            } else if (receivingEnd.getGate() != null) {
+                return receivingEnd.getGate();
             }
         }
         return msg;
@@ -472,19 +472,11 @@ public class InteractionOrderingServices {
         }
     }
 
-//    public List<EventContext> computeContainmentStructure(Participant owner) {
-    public List<EventContext> computeContainmentStructure(AbstractEndContext owner) {
-        if (owner == null || !(owner.eContainer() instanceof Interaction) && !(owner instanceof Gate)) {
+    public List<EventContext> computeContainmentStructure(Participant owner) {
+        if (owner == null || !(owner.eContainer() instanceof Interaction)) {
             return Collections.emptyList();
         } else {
-//            Interaction interaction = (Interaction) owner.eContainer();
-            Interaction interaction;
-            if(owner instanceof Gate) {
-                interaction = (Interaction) owner.eContainer().eContainer();
-            } else {
-                interaction = (Interaction) owner.eContainer();
-            }
-            
+            Interaction interaction = (Interaction) owner.eContainer();
             Stack<EObject> ancestors = new Stack<EObject>();
             ancestors.push(owner);
             List<EventContext> result = new ArrayList<EventContext>();

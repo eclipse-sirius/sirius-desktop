@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
 import org.eclipse.sirius.business.api.helper.task.UnexecutableTask;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Gate;
 import org.eclipse.sirius.diagram.sequence.description.tool.GateCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.OrderedElementCreationTool;
@@ -58,7 +58,7 @@ public class GateCreationCommandBuilder extends NodeCreationCommandBuilder {
      * @param finishingEndPredecessor
      *            the eventEnd finishing
      */
-    public GateCreationCommandBuilder(GateCreationTool tool, DNode node, EventEnd startingEndPredecessor, EventEnd finishingEndPredecessor) {
+    public GateCreationCommandBuilder(GateCreationTool tool, DDiagramElementContainer node, EventEnd startingEndPredecessor, EventEnd finishingEndPredecessor) {
         super(tool, node);
         this.startingEndPredecessor = startingEndPredecessor;
         this.finishingEndPredecessor = finishingEndPredecessor;

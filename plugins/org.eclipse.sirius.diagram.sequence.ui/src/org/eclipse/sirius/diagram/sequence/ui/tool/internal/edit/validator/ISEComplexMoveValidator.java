@@ -29,6 +29,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractFrame;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Execution;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.Gate;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceNode;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InteractionUse;
@@ -341,7 +342,7 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
         Option<Lifeline> lifeline = ise.getLifeline();
         boolean result = true;
 
-        if (lifeline.some()) {
+        if (!(ise instanceof Gate) && lifeline.some()) {
             EventFinder futureParentFinder = new EventFinder(lifeline.get());
             futureParentFinder.setEventsToIgnore(Predicates.equalTo(ise));
             futureParentFinder.setVerticalRangefunction(rangeFunction);
@@ -610,6 +611,15 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
 
         @Override
         public Range caseState(State movedEvent) {
+            ISequenceEvent hierarchicalParentEvent = movedEvent.getHierarchicalParentEvent();
+            if (hierarchicalParentEvent instanceof ISequenceNode && !movedElements.contains(hierarchicalParentEvent)) {
+                sequenceNodesToMove.add(movedEvent);
+            }
+            return initialRangeFunction.apply(movedEvent);
+        }
+
+        @Override
+        public Range caseGate(Gate movedEvent) {
             ISequenceEvent hierarchicalParentEvent = movedEvent.getHierarchicalParentEvent();
             if (hierarchicalParentEvent instanceof ISequenceNode && !movedElements.contains(hierarchicalParentEvent)) {
                 sequenceNodesToMove.add(movedEvent);

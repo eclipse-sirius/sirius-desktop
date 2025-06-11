@@ -131,7 +131,7 @@
           </style>
         </edgeMappings>
         <containerMappings xsi:type="description_1:InteractionUseMapping" name="Interaction Use" preconditionExpression="aql:not self.coveredParticipants->isEmpty()" deletionDescription="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.7/@ownedTools[name='Delete%20Interaction%20Use']" labelDirectEdit="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.7/@ownedTools[name='Edit%20IU%20Label']" semanticCandidatesExpression="feature:eAllContents" semanticElements="self->asSet()->union(self.interaction->asSet())" synchronizationLock="true" domainClass="interactions.InteractionUse" startingEndFinderExpression="service:startingEnd" finishingEndFinderExpression="service:finishingEnd" coveredLifelinesExpression="feature:coveredParticipants" centerLabelExpression="aql:'call(' + self.interaction.name + ')'">
-          <borderedNodeMappings xsi:type="description_1:GateMapping" name="Gate on Interaction Use" semanticCandidatesExpression="feature:ownedGates" domainClass="interactions::Gate">
+          <borderedNodeMappings xsi:type="description_1:GateMapping" name="Gate on Interaction Use" semanticCandidatesExpression="feature:ownedGates" domainClass="interactions::Gate" startingEndFinderExpression="feature:start" finishingEndFinderExpression="feature:end">
             <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -150,7 +150,7 @@
         </containerMappings>
         <containerMappings xsi:type="description_1:CombinedFragmentMapping" name="Combined Fragment" preconditionExpression="aql:not self.coveredParticipants->isEmpty()" deletionDescription="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.8/@ownedTools[name='Delete%20Combined%20Fragment']" labelDirectEdit="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.8/@ownedTools[name='Edit%20Combined%20Fragment']" semanticCandidatesExpression="feature:eAllContents" semanticElements="var:self" synchronizationLock="true" domainClass="interactions.CombinedFragment" startingEndFinderExpression="feature:start" finishingEndFinderExpression="feature:finish" coveredLifelinesExpression="feature:coveredParticipants">
           <borderedNodeMappings xsi:type="description_1:GateMapping" name="Gate on Combined Fragment" semanticCandidatesExpression="feature:ownedGates" domainClass="interactions::Gate" startingEndFinderExpression="feature:start" finishingEndFinderExpression="feature:end">
-            <style xsi:type="style:SquareDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <forbiddenSides>SOUTH</forbiddenSides>
@@ -970,11 +970,9 @@
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainerOrSelf(interactions::Interaction)">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.GateEnd" referenceName="ends" variableName="startingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="gate" valueExpression="var:newGate"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="context" valueExpression="aql:newGate"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.GateEnd" referenceName="ends" variableName="finishingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="gate" valueExpression="var:newGate"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="context" valueExpression="aql:newGate"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newGate">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="start" valueExpression="var:startingEnd"/>
@@ -993,6 +991,7 @@
                     <parameters name="predecessor" value="aql:startingEndPredecessor.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newGate">
+                    <subModelOperations xsi:type="tool_1:ExternalJavaActionCall" name="Adjust new gate position" action="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.6/@ownedTools[name='Reorder%20Executions%2C%20States%20Messages%2C%20InteractionUses']/@onEventMovedOperation/@firstModelOperations/@subModelOperations.7/@subModelOperations.2"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'g' + self.eContainer().ownedGates->size()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:startingEnd">
@@ -1426,10 +1425,10 @@
                     <parameters name="predecessor" value="aql:finishingEndPredecessorAfter.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Adjust gate position" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
-                    <parameters name="referenceName" value="states"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainer()"/>
+                    <parameters name="referenceName" value="ownedGates"/>
                     <parameters name="element" value="var:self"/>
-                    <parameters name="predecessor" value="aql:self.start.precedingSiblings()->filter(interactions::StateEnd)->select(current | current.state.start = current)->last().state"/>
+                    <parameters name="predecessor" value="aql:self.start.precedingSiblings()->filter(interactions::GateEnd)->select(gateEnd | self.eContainer() = gateEnd.gate.eContainer())->last().gate)"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
