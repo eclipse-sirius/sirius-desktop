@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.EObject;
  * <li>{@link org.eclipse.sirius.sample.interactions.Interaction#getCombinedFragments <em>Combined Fragments</em>}</li>
  * <li>{@link org.eclipse.sirius.sample.interactions.Interaction#getEnds <em>Ends</em>}</li>
  * <li>{@link org.eclipse.sirius.sample.interactions.Interaction#getConstraints <em>Constraints</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.interactions.Interaction#getOwnedGates <em>Owned Gates</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getInteraction()
@@ -150,5 +151,16 @@ public interface Interaction extends EObject {
      * @generated
      */
     EList<Constraint> getConstraints();
+
+    /**
+     * Returns the value of the '<em><b>Owned Gates</b></em>' containment reference list. The list contents are of type
+     * {@link org.eclipse.sirius.sample.interactions.Gate}. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Owned Gates</em>' containment reference list.
+     * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getInteraction_OwnedGates()
+     * @model containment="true"
+     * @generated
+     */
+    EList<Gate> getOwnedGates();
 
 } // Interaction

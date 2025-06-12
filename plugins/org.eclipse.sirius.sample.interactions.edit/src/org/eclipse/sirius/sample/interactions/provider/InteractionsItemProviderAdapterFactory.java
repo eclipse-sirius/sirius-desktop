@@ -380,6 +380,29 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
     }
 
     /**
+     * This keeps track of the one adapter used for all {@link org.eclipse.sirius.sample.interactions.Gate} instances.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected GateItemProvider gateItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.eclipse.sirius.sample.interactions.Gate}. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createGateAdapter() {
+        if (gateItemProvider == null) {
+            gateItemProvider = new GateItemProvider(this);
+        }
+
+        return gateItemProvider;
+    }
+
+    /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.sample.interactions.MessageEnd}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -542,6 +565,29 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
     }
 
     /**
+     * This keeps track of the one adapter used for all {@link org.eclipse.sirius.sample.interactions.GateEnd}
+     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected GateEndItemProvider gateEndItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.eclipse.sirius.sample.interactions.GateEnd}. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createGateEndAdapter() {
+        if (gateEndItemProvider == null) {
+            gateEndItemProvider = new GateEndItemProvider(this);
+        }
+
+        return gateEndItemProvider;
+    }
+
+    /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.sample.interactions.Constraint}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -690,6 +736,8 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
             combinedFragmentItemProvider.dispose();
         if (operandItemProvider != null)
             operandItemProvider.dispose();
+        if (gateItemProvider != null)
+            gateItemProvider.dispose();
         if (messageEndItemProvider != null)
             messageEndItemProvider.dispose();
         if (executionEndItemProvider != null)
@@ -704,6 +752,8 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
             operandEndItemProvider.dispose();
         if (mixEndItemProvider != null)
             mixEndItemProvider.dispose();
+        if (gateEndItemProvider != null)
+            gateEndItemProvider.dispose();
         if (constraintItemProvider != null)
             constraintItemProvider.dispose();
     }

@@ -19,22 +19,22 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.sirius.sample.interactions.GateEnd;
 import org.eclipse.sirius.sample.interactions.InteractionsPackage;
-import org.eclipse.sirius.sample.interactions.MixEnd;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.sirius.sample.interactions.MixEnd} object. <!--
+ * This is the item provider adapter for a {@link org.eclipse.sirius.sample.interactions.GateEnd} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
  *
  * @generated
  */
-public class MixEndItemProvider extends ExecutionEndItemProvider {
+public class GateEndItemProvider extends AbstractEndItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    public MixEndItemProvider(AdapterFactory adapterFactory) {
+    public GateEndItemProvider(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -48,22 +48,9 @@ public class MixEndItemProvider extends ExecutionEndItemProvider {
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
-            addMessagePropertyDescriptor(object);
             addGatePropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
-    }
-
-    /**
-     * This adds a property descriptor for the Message feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    protected void addMessagePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_MessageEnd_message_feature"), //$NON-NLS-1$
-                        getString("_UI_PropertyDescriptor_description", "_UI_MessageEnd_message_feature", "_UI_MessageEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                        InteractionsPackage.Literals.MESSAGE_END__MESSAGE, true, false, true, null, null, null));
     }
 
     /**
@@ -72,19 +59,19 @@ public class MixEndItemProvider extends ExecutionEndItemProvider {
      * @generated
      */
     protected void addGatePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_MessageEnd_gate_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_MessageEnd_gate_feature", "_UI_MessageEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                InteractionsPackage.Literals.MESSAGE_END__GATE, true, false, true, null, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_GateEnd_gate_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_GateEnd_gate_feature", "_UI_GateEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                InteractionsPackage.Literals.GATE_END__GATE, true, false, true, null, null, null));
     }
 
     /**
-     * This returns MixEnd.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This returns GateEnd.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/MixEnd")); //$NON-NLS-1$
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/GateEnd")); //$NON-NLS-1$
     }
 
     /**
@@ -94,9 +81,9 @@ public class MixEndItemProvider extends ExecutionEndItemProvider {
      */
     @Override
     public String getText(Object object) {
-        String label = ((MixEnd) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_MixEnd_type") : //$NON-NLS-1$
-                getString("_UI_MixEnd_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+        String label = ((GateEnd) object).getName();
+        return label == null || label.length() == 0 ? getString("_UI_GateEnd_type") : //$NON-NLS-1$
+                getString("_UI_GateEnd_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

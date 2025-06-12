@@ -26,6 +26,8 @@ import org.eclipse.sirius.sample.interactions.DestroyParticipantMessage;
 import org.eclipse.sirius.sample.interactions.Execution;
 import org.eclipse.sirius.sample.interactions.ExecutionEnd;
 import org.eclipse.sirius.sample.interactions.FeatureAccessMessage;
+import org.eclipse.sirius.sample.interactions.Gate;
+import org.eclipse.sirius.sample.interactions.GateEnd;
 import org.eclipse.sirius.sample.interactions.Interaction;
 import org.eclipse.sirius.sample.interactions.InteractionUse;
 import org.eclipse.sirius.sample.interactions.InteractionUseEnd;
@@ -213,6 +215,13 @@ public class InteractionsSwitch<T> {
                 result = defaultCase(theEObject);
             return result;
         }
+        case InteractionsPackage.GATE: {
+            Gate gate = (Gate) theEObject;
+            T result = caseGate(gate);
+            if (result == null)
+                result = defaultCase(theEObject);
+            return result;
+        }
         case InteractionsPackage.ABSTRACT_END: {
             AbstractEnd abstractEnd = (AbstractEnd) theEObject;
             T result = caseAbstractEnd(abstractEnd);
@@ -283,6 +292,15 @@ public class InteractionsSwitch<T> {
                 result = caseMessageEnd(mixEnd);
             if (result == null)
                 result = caseAbstractEnd(mixEnd);
+            if (result == null)
+                result = defaultCase(theEObject);
+            return result;
+        }
+        case InteractionsPackage.GATE_END: {
+            GateEnd gateEnd = (GateEnd) theEObject;
+            T result = caseGateEnd(gateEnd);
+            if (result == null)
+                result = caseAbstractEnd(gateEnd);
             if (result == null)
                 result = defaultCase(theEObject);
             return result;
@@ -502,6 +520,20 @@ public class InteractionsSwitch<T> {
     }
 
     /**
+     * Returns the result of interpreting the object as an instance of '<em>Gate</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Gate</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseGate(Gate object) {
+        return null;
+    }
+
+    /**
      * Returns the result of interpreting the object as an instance of '<em>Abstract End</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
      *
@@ -612,6 +644,20 @@ public class InteractionsSwitch<T> {
      * @generated
      */
     public T caseMixEnd(MixEnd object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Gate End</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Gate End</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseGateEnd(GateEnd object) {
         return null;
     }
 
