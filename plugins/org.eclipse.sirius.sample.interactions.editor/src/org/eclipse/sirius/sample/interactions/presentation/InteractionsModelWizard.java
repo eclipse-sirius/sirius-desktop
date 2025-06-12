@@ -1,7 +1,7 @@
-/*******************************************************************************
- * Copyright (c) 2010, 2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License 2.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
  * https://www.eclipse.org/legal/epl-2.0/
  *
@@ -9,7 +9,7 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ */
 package org.eclipse.sirius.sample.interactions.presentation;
 
 import java.util.ArrayList;
@@ -69,88 +69,80 @@ import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.ISetSelectionTarget;
 
 /**
- * This is a simple wizard for creating a new model file. <!-- begin-user-doc
- * --> <!-- end-user-doc -->
+ * This is a simple wizard for creating a new model file. <!-- begin-user-doc --> <!-- end-user-doc -->
  *
  * @generated
  */
 public class InteractionsModelWizard extends Wizard implements INewWizard {
     /**
-     * The supported extensions for created files. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The supported extensions for created files. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    public static final List<String> FILE_EXTENSIONS = Collections.unmodifiableList(Arrays.asList(InteractionsEditorPlugin.INSTANCE
-            .getString("_UI_InteractionsEditorFilenameExtensions").split("\\s*,\\s*"))); //$NON-NLS-1$ //$NON-NLS-2$
+    public static final List<String> FILE_EXTENSIONS = Collections
+            .unmodifiableList(Arrays.asList(InteractionsEditorPlugin.INSTANCE.getString("_UI_InteractionsEditorFilenameExtensions").split("\\s*,\\s*"))); //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * A formatted list of supported file extensions, suitable for display. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * A formatted list of supported file extensions, suitable for display. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
     public static final String FORMATTED_FILE_EXTENSIONS = InteractionsEditorPlugin.INSTANCE.getString("_UI_InteractionsEditorFilenameExtensions").replaceAll("\\s*,\\s*", ", "); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 
     /**
-     * This caches an instance of the model package. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * This caches an instance of the model package. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     protected InteractionsPackage interactionsPackage = InteractionsPackage.eINSTANCE;
 
     /**
-     * This caches an instance of the model factory. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * This caches an instance of the model factory. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     protected InteractionsFactory interactionsFactory = interactionsPackage.getInteractionsFactory();
 
     /**
-     * This is the file creation page. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * This is the file creation page. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     protected InteractionsModelWizardNewFileCreationPage newFileCreationPage;
 
     /**
-     * This is the initial object creation page. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This is the initial object creation page. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     protected InteractionsModelWizardInitialObjectCreationPage initialObjectCreationPage;
 
     /**
-     * Remember the selection during initialization for populating the default
-     * container. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Remember the selection during initialization for populating the default container. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @generated
      */
     protected IStructuredSelection selection;
 
     /**
-     * Remember the workbench during initialization. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Remember the workbench during initialization. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     protected IWorkbench workbench;
 
     /**
-     * Caches the names of the types that can be created as the root object.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Caches the names of the types that can be created as the root object. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
     protected List<String> initialObjectNames;
 
     /**
-     * This just records the information. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This just records the information. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -163,8 +155,8 @@ public class InteractionsModelWizard extends Wizard implements INewWizard {
     }
 
     /**
-     * Returns the names of the types that can be created as the root object.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the names of the types that can be created as the root object. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -196,8 +188,7 @@ public class InteractionsModelWizard extends Wizard implements INewWizard {
     }
 
     /**
-     * Do the work after everything is specified. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * Do the work after everything is specified. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -280,8 +271,7 @@ public class InteractionsModelWizard extends Wizard implements INewWizard {
     }
 
     /**
-     * This is the one page of the wizard. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This is the one page of the wizard. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -296,8 +286,7 @@ public class InteractionsModelWizard extends Wizard implements INewWizard {
         }
 
         /**
-         * The framework calls this to see if the file is correct. <!--
-         * begin-user-doc --> <!-- end-user-doc -->
+         * The framework calls this to see if the file is correct. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
@@ -305,9 +294,9 @@ public class InteractionsModelWizard extends Wizard implements INewWizard {
         protected boolean validatePage() {
             if (super.validatePage()) {
                 String extension = new Path(getFileName()).getFileExtension();
-                if (extension == null || !InteractionsModelWizard.FILE_EXTENSIONS.contains(extension)) {
-                    String key = InteractionsModelWizard.FILE_EXTENSIONS.size() > 1 ? "_WARN_FilenameExtensions" : "_WARN_FilenameExtension"; //$NON-NLS-1$ //$NON-NLS-2$
-                    setErrorMessage(InteractionsEditorPlugin.INSTANCE.getString(key, new Object[] { InteractionsModelWizard.FORMATTED_FILE_EXTENSIONS }));
+                if (extension == null || !FILE_EXTENSIONS.contains(extension)) {
+                    String key = FILE_EXTENSIONS.size() > 1 ? "_WARN_FilenameExtensions" : "_WARN_FilenameExtension"; //$NON-NLS-1$ //$NON-NLS-2$
+                    setErrorMessage(InteractionsEditorPlugin.INSTANCE.getString(key, new Object[] { FORMATTED_FILE_EXTENSIONS }));
                     return false;
                 }
                 return true;
@@ -326,8 +315,7 @@ public class InteractionsModelWizard extends Wizard implements INewWizard {
     }
 
     /**
-     * This is the page where the type of object to create is selected. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This is the page where the type of object to create is selected. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -500,8 +488,7 @@ public class InteractionsModelWizard extends Wizard implements INewWizard {
         }
 
         /**
-         * Returns the label for the specified type name. <!-- begin-user-doc
-         * --> <!-- end-user-doc -->
+         * Returns the label for the specified type name. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
@@ -532,8 +519,7 @@ public class InteractionsModelWizard extends Wizard implements INewWizard {
     }
 
     /**
-     * The framework calls this to create the contents of the wizard. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The framework calls this to create the contents of the wizard. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -544,11 +530,10 @@ public class InteractionsModelWizard extends Wizard implements INewWizard {
         newFileCreationPage = new InteractionsModelWizardNewFileCreationPage("Whatever", selection); //$NON-NLS-1$
         newFileCreationPage.setTitle(InteractionsEditorPlugin.INSTANCE.getString("_UI_InteractionsModelWizard_label")); //$NON-NLS-1$
         newFileCreationPage.setDescription(InteractionsEditorPlugin.INSTANCE.getString("_UI_InteractionsModelWizard_description")); //$NON-NLS-1$
-        newFileCreationPage.setFileName(InteractionsEditorPlugin.INSTANCE.getString("_UI_InteractionsEditorFilenameDefaultBase") + "." + InteractionsModelWizard.FILE_EXTENSIONS.get(0)); //$NON-NLS-1$ //$NON-NLS-2$
+        newFileCreationPage.setFileName(InteractionsEditorPlugin.INSTANCE.getString("_UI_InteractionsEditorFilenameDefaultBase") + "." + FILE_EXTENSIONS.get(0)); //$NON-NLS-1$ //$NON-NLS-2$
         addPage(newFileCreationPage);
 
-        // Try and get the resource selection to determine a current directory
-        // for the file dialog.
+        // Try and get the resource selection to determine a current directory for the file dialog.
         //
         if (selection != null && !selection.isEmpty()) {
             // Get the resource...
@@ -572,7 +557,7 @@ public class InteractionsModelWizard extends Wizard implements INewWizard {
                     // Make up a unique new name here.
                     //
                     String defaultModelBaseFilename = InteractionsEditorPlugin.INSTANCE.getString("_UI_InteractionsEditorFilenameDefaultBase"); //$NON-NLS-1$
-                    String defaultModelFilenameExtension = InteractionsModelWizard.FILE_EXTENSIONS.get(0);
+                    String defaultModelFilenameExtension = FILE_EXTENSIONS.get(0);
                     String modelFilename = defaultModelBaseFilename + "." + defaultModelFilenameExtension; //$NON-NLS-1$
                     for (int i = 1; ((IContainer) selectedResource).findMember(modelFilename) != null; ++i) {
                         modelFilename = defaultModelBaseFilename + i + "." + defaultModelFilenameExtension; //$NON-NLS-1$

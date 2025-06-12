@@ -1,7 +1,7 @@
-/*******************************************************************************
- * Copyright (c) 2010, 2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License 2.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
  * https://www.eclipse.org/legal/epl-2.0/
  *
@@ -9,7 +9,7 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ */
 package org.eclipse.sirius.sample.interactions.impl;
 
 import java.util.Collection;
@@ -28,25 +28,22 @@ import org.eclipse.sirius.sample.interactions.InteractionsPackage;
 import org.eclipse.sirius.sample.interactions.Model;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Model</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Model</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>{@link org.eclipse.sirius.sample.interactions.impl.ModelImpl#getName <em>
- * Name</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.impl.ModelImpl#getOwnedInteractions
- * <em>Owned Interactions</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.ModelImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.ModelImpl#getOwnedInteractions <em>Owned
+ * Interactions</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public class ModelImpl extends EObjectImpl implements Model {
     /**
-     * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
@@ -55,19 +52,18 @@ public class ModelImpl extends EObjectImpl implements Model {
     protected static final String NAME_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
      * @ordered
      */
-    protected String name = ModelImpl.NAME_EDEFAULT;
+    protected String name = NAME_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getOwnedInteractions()
-     * <em>Owned Interactions</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getOwnedInteractions() <em>Owned Interactions</em>}' containment reference list.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getOwnedInteractions()
      * @generated
@@ -113,9 +109,8 @@ public class ModelImpl extends EObjectImpl implements Model {
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired()) {
+        if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.MODEL__NAME, oldName, name));
-        }
     }
 
     /**
@@ -190,7 +185,7 @@ public class ModelImpl extends EObjectImpl implements Model {
     public void eUnset(int featureID) {
         switch (featureID) {
         case InteractionsPackage.MODEL__NAME:
-            setName(ModelImpl.NAME_EDEFAULT);
+            setName(NAME_EDEFAULT);
             return;
         case InteractionsPackage.MODEL__OWNED_INTERACTIONS:
             getOwnedInteractions().clear();
@@ -208,7 +203,7 @@ public class ModelImpl extends EObjectImpl implements Model {
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case InteractionsPackage.MODEL__NAME:
-            return ModelImpl.NAME_EDEFAULT == null ? name != null : !ModelImpl.NAME_EDEFAULT.equals(name);
+            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
         case InteractionsPackage.MODEL__OWNED_INTERACTIONS:
             return ownedInteractions != null && !ownedInteractions.isEmpty();
         }
@@ -222,11 +217,10 @@ public class ModelImpl extends EObjectImpl implements Model {
      */
     @Override
     public String toString() {
-        if (eIsProxy()) {
+        if (eIsProxy())
             return super.toString();
-        }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
         result.append(')');

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.&#xA;This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v2.0&#xA;which accompanies this distribution, and is available at&#xA;https://www.eclipse.org/legal/epl-2.0/&#xA;&#xA;Contributors:&#xA;   Obeo - initial API and implementation"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2007, 2025 THALES GLOBAL SERVICES.&#xA;This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v2.0&#xA;which accompanies this distribution, and is available at&#xA;https://www.eclipse.org/legal/epl-2.0/&#xA;&#xA;SPDX-License-Identifier: EPL-2.0&#xA;&#xA;Contributors:&#xA;   Obeo - initial API and implementation"
     modelDirectory="/org.eclipse.sirius.sample.interactions/src" creationIcons="false"
     modelPluginID="org.eclipse.sirius.sample.interactions" modelName="Interactions"
     modelPluginClass="" editPluginClass="org.eclipse.sirius.sample.interactions.provider.InteractionsEditPlugin"
     editorPluginClass="org.eclipse.sirius.sample.interactions.presentation.InteractionsEditorPlugin"
-    nonNLSMarkers="true" codeFormatting="true" testSuiteClass="org.eclipse.sirius.sample.interactions.tests.InteractionsAllTests"
-    booleanFlagsField="" importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0"
-    copyrightFields="false" runtimeVersion="2.3" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"
-    classNamePattern="">
+    nonNLSMarkers="true" codeFormatting="true" testsDirectory="" testSuiteClass=""
+    booleanFlagsField="" importerID="org.eclipse.emf.importer.ecore" complianceLevel="17.0"
+    copyrightFields="false" testsPluginID="org.eclipse.sirius.sample.interactions.tests"
+    runtimeVersion="2.3" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"
+    classNamePattern="" importOrganizing="true" cleanup="true">
   <foreignModel>interactions.ecore</foreignModel>
   <genPackages prefix="Interactions" basePackage="org.eclipse.sirius.sample" disposableProviderFactory="true"
       ecorePackage="interactions.ecore#/">
