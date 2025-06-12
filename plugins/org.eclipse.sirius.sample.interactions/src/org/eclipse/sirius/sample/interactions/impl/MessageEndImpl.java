@@ -16,6 +16,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.sirius.sample.interactions.Gate;
 import org.eclipse.sirius.sample.interactions.InteractionsPackage;
 import org.eclipse.sirius.sample.interactions.Message;
 import org.eclipse.sirius.sample.interactions.MessageEnd;
@@ -27,6 +28,7 @@ import org.eclipse.sirius.sample.interactions.MessageEnd;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.sample.interactions.impl.MessageEndImpl#getMessage <em>Message</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.MessageEndImpl#getGate <em>Gate</em>}</li>
  * </ul>
  *
  * @generated
@@ -41,6 +43,16 @@ public class MessageEndImpl extends AbstractEndImpl implements MessageEnd {
      * @ordered
      */
     protected Message message;
+
+    /**
+     * The cached value of the '{@link #getGate() <em>Gate</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @see #getGate()
+     * @generated
+     * @ordered
+     */
+    protected Gate gate;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -107,12 +119,56 @@ public class MessageEndImpl extends AbstractEndImpl implements MessageEnd {
      * @generated
      */
     @Override
+    public Gate getGate() {
+        if (gate != null && gate.eIsProxy()) {
+            InternalEObject oldGate = (InternalEObject) gate;
+            gate = (Gate) eResolveProxy(oldGate);
+            if (gate != oldGate) {
+                if (eNotificationRequired())
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionsPackage.MESSAGE_END__GATE, oldGate, gate));
+            }
+        }
+        return gate;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public Gate basicGetGate() {
+        return gate;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setGate(Gate newGate) {
+        Gate oldGate = gate;
+        gate = newGate;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.MESSAGE_END__GATE, oldGate, gate));
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case InteractionsPackage.MESSAGE_END__MESSAGE:
             if (resolve)
                 return getMessage();
             return basicGetMessage();
+        case InteractionsPackage.MESSAGE_END__GATE:
+            if (resolve)
+                return getGate();
+            return basicGetGate();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -127,6 +183,9 @@ public class MessageEndImpl extends AbstractEndImpl implements MessageEnd {
         switch (featureID) {
         case InteractionsPackage.MESSAGE_END__MESSAGE:
             setMessage((Message) newValue);
+            return;
+        case InteractionsPackage.MESSAGE_END__GATE:
+            setGate((Gate) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -143,6 +202,9 @@ public class MessageEndImpl extends AbstractEndImpl implements MessageEnd {
         case InteractionsPackage.MESSAGE_END__MESSAGE:
             setMessage((Message) null);
             return;
+        case InteractionsPackage.MESSAGE_END__GATE:
+            setGate((Gate) null);
+            return;
         }
         super.eUnset(featureID);
     }
@@ -157,6 +219,8 @@ public class MessageEndImpl extends AbstractEndImpl implements MessageEnd {
         switch (featureID) {
         case InteractionsPackage.MESSAGE_END__MESSAGE:
             return message != null;
+        case InteractionsPackage.MESSAGE_END__GATE:
+            return gate != null;
         }
         return super.eIsSet(featureID);
     }

@@ -136,6 +136,14 @@ public interface InteractionsFactory extends EFactory {
     Operand createOperand();
 
     /**
+     * Returns a new object of class '<em>Gate</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Gate</em>'.
+     * @generated
+     */
+    Gate createGate();
+
+    /**
      * Returns a new object of class '<em>Message End</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @return a new object of class '<em>Message End</em>'.

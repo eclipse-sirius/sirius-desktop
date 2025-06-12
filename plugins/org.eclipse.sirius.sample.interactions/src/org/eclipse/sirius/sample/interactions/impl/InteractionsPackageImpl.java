@@ -28,6 +28,7 @@ import org.eclipse.sirius.sample.interactions.DestroyParticipantMessage;
 import org.eclipse.sirius.sample.interactions.Execution;
 import org.eclipse.sirius.sample.interactions.ExecutionEnd;
 import org.eclipse.sirius.sample.interactions.FeatureAccessMessage;
+import org.eclipse.sirius.sample.interactions.Gate;
 import org.eclipse.sirius.sample.interactions.Interaction;
 import org.eclipse.sirius.sample.interactions.InteractionUse;
 import org.eclipse.sirius.sample.interactions.InteractionUseEnd;
@@ -147,6 +148,13 @@ public class InteractionsPackageImpl extends EPackageImpl implements Interaction
      * @generated
      */
     private EClass operandEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass gateEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -404,6 +412,16 @@ public class InteractionsPackageImpl extends EPackageImpl implements Interaction
     @Override
     public EReference getInteraction_Constraints() {
         return (EReference) interactionEClass.getEStructuralFeatures().get(8);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getInteraction_OwnedGates() {
+        return (EReference) interactionEClass.getEStructuralFeatures().get(9);
     }
 
     /**
@@ -732,6 +750,16 @@ public class InteractionsPackageImpl extends EPackageImpl implements Interaction
      * @generated
      */
     @Override
+    public EReference getInteractionUse_OwnedGates() {
+        return (EReference) interactionUseEClass.getEStructuralFeatures().get(5);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EClass getCombinedFragment() {
         return combinedFragmentEClass;
     }
@@ -792,6 +820,16 @@ public class InteractionsPackageImpl extends EPackageImpl implements Interaction
      * @generated
      */
     @Override
+    public EReference getCombinedFragment_OwnedGates() {
+        return (EReference) combinedFragmentEClass.getEStructuralFeatures().get(5);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EClass getOperand() {
         return operandEClass;
     }
@@ -814,6 +852,26 @@ public class InteractionsPackageImpl extends EPackageImpl implements Interaction
     @Override
     public EReference getOperand_Start() {
         return (EReference) operandEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EClass getGate() {
+        return gateEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getGate_Name() {
+        return (EAttribute) gateEClass.getEStructuralFeatures().get(0);
     }
 
     /**
@@ -864,6 +922,16 @@ public class InteractionsPackageImpl extends EPackageImpl implements Interaction
     @Override
     public EReference getMessageEnd_Message() {
         return (EReference) messageEndEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getMessageEnd_Gate() {
+        return (EReference) messageEndEClass.getEStructuralFeatures().get(1);
     }
 
     /**
@@ -1049,6 +1117,7 @@ public class InteractionsPackageImpl extends EPackageImpl implements Interaction
         createEReference(interactionEClass, INTERACTION__COMBINED_FRAGMENTS);
         createEReference(interactionEClass, INTERACTION__ENDS);
         createEReference(interactionEClass, INTERACTION__CONSTRAINTS);
+        createEReference(interactionEClass, INTERACTION__OWNED_GATES);
 
         participantEClass = createEClass(PARTICIPANT);
         createEAttribute(participantEClass, PARTICIPANT__NAME);
@@ -1091,6 +1160,7 @@ public class InteractionsPackageImpl extends EPackageImpl implements Interaction
         createEReference(interactionUseEClass, INTERACTION_USE__COVERED_PARTICIPANTS);
         createEReference(interactionUseEClass, INTERACTION_USE__START);
         createEReference(interactionUseEClass, INTERACTION_USE__FINISH);
+        createEReference(interactionUseEClass, INTERACTION_USE__OWNED_GATES);
 
         combinedFragmentEClass = createEClass(COMBINED_FRAGMENT);
         createEAttribute(combinedFragmentEClass, COMBINED_FRAGMENT__OPERATOR);
@@ -1098,10 +1168,14 @@ public class InteractionsPackageImpl extends EPackageImpl implements Interaction
         createEReference(combinedFragmentEClass, COMBINED_FRAGMENT__START);
         createEReference(combinedFragmentEClass, COMBINED_FRAGMENT__FINISH);
         createEReference(combinedFragmentEClass, COMBINED_FRAGMENT__OWNED_OPERANDS);
+        createEReference(combinedFragmentEClass, COMBINED_FRAGMENT__OWNED_GATES);
 
         operandEClass = createEClass(OPERAND);
         createEAttribute(operandEClass, OPERAND__NAME);
         createEReference(operandEClass, OPERAND__START);
+
+        gateEClass = createEClass(GATE);
+        createEAttribute(gateEClass, GATE__NAME);
 
         abstractEndEClass = createEClass(ABSTRACT_END);
         createEAttribute(abstractEndEClass, ABSTRACT_END__NAME);
@@ -1109,6 +1183,7 @@ public class InteractionsPackageImpl extends EPackageImpl implements Interaction
 
         messageEndEClass = createEClass(MESSAGE_END);
         createEReference(messageEndEClass, MESSAGE_END__MESSAGE);
+        createEReference(messageEndEClass, MESSAGE_END__GATE);
 
         executionEndEClass = createEClass(EXECUTION_END);
         createEReference(executionEndEClass, EXECUTION_END__EXECUTION);
@@ -1203,6 +1278,8 @@ public class InteractionsPackageImpl extends EPackageImpl implements Interaction
                 !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getInteraction_Constraints(), this.getConstraint(), null, "constraints", null, 0, -1, Interaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, //$NON-NLS-1$
                 !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getInteraction_OwnedGates(), this.getGate(), null, "ownedGates", null, 0, -1, Interaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, //$NON-NLS-1$
+                !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(participantEClass, Participant.class, "Participant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEAttribute(getParticipant_Name(), ecorePackage.getEString(), "name", null, 1, 1, Participant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, //$NON-NLS-1$
@@ -1267,6 +1344,8 @@ public class InteractionsPackageImpl extends EPackageImpl implements Interaction
                 IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getInteractionUse_Finish(), this.getInteractionUseEnd(), null, "finish", null, 1, 1, InteractionUse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, //$NON-NLS-1$
                 IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getInteractionUse_OwnedGates(), this.getGate(), null, "ownedGates", null, 0, -1, InteractionUse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, //$NON-NLS-1$
+                !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(combinedFragmentEClass, CombinedFragment.class, "CombinedFragment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEAttribute(getCombinedFragment_Operator(), ecorePackage.getEString(), "operator", "\"opt\"", 1, 1, CombinedFragment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, //$NON-NLS-1$//$NON-NLS-2$
@@ -1279,12 +1358,18 @@ public class InteractionsPackageImpl extends EPackageImpl implements Interaction
                 IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getCombinedFragment_OwnedOperands(), this.getOperand(), null, "ownedOperands", null, 1, -1, CombinedFragment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, //$NON-NLS-1$
                 !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getCombinedFragment_OwnedGates(), this.getGate(), null, "ownedGates", null, 0, -1, CombinedFragment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, //$NON-NLS-1$
+                !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(operandEClass, Operand.class, "Operand", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEAttribute(getOperand_Name(), ecorePackage.getEString(), "name", null, 1, 1, Operand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, //$NON-NLS-1$
                 IS_ORDERED);
         initEReference(getOperand_Start(), this.getOperandEnd(), null, "start", null, 1, 1, Operand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, //$NON-NLS-1$
                 !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        initEClass(gateEClass, Gate.class, "Gate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEAttribute(getGate_Name(), ecorePackage.getEString(), "name", null, 1, 1, Gate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, //$NON-NLS-1$
+                IS_ORDERED);
 
         initEClass(abstractEndEClass, AbstractEnd.class, "AbstractEnd", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEAttribute(getAbstractEnd_Name(), theEcorePackage.getEString(), "name", null, 1, 1, AbstractEnd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, //$NON-NLS-1$
@@ -1295,6 +1380,8 @@ public class InteractionsPackageImpl extends EPackageImpl implements Interaction
         initEClass(messageEndEClass, MessageEnd.class, "MessageEnd", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEReference(getMessageEnd_Message(), this.getMessage(), null, "message", null, 1, 1, MessageEnd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, //$NON-NLS-1$
                 !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getMessageEnd_Gate(), this.getGate(), null, "gate", null, 0, 1, MessageEnd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, //$NON-NLS-1$
+                IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(executionEndEClass, ExecutionEnd.class, "ExecutionEnd", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEReference(getExecutionEnd_Execution(), this.getExecution(), null, "execution", null, 1, 1, ExecutionEnd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, //$NON-NLS-1$

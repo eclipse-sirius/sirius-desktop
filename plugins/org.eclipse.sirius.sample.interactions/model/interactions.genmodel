@@ -27,6 +27,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference interactions.ecore#//Interaction/combinedFragments"/>
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//Interaction/ends"/>
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//Interaction/constraints"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference interactions.ecore#//Interaction/ownedGates"/>
     </genClasses>
     <genClasses ecoreClass="interactions.ecore#//Participant">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute interactions.ecore#//Participant/name"/>
@@ -67,6 +68,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//InteractionUse/coveredParticipants"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//InteractionUse/start"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//InteractionUse/finish"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference interactions.ecore#//InteractionUse/ownedGates"/>
     </genClasses>
     <genClasses ecoreClass="interactions.ecore#//CombinedFragment">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute interactions.ecore#//CombinedFragment/operator"/>
@@ -74,10 +76,14 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//CombinedFragment/start"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//CombinedFragment/finish"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference interactions.ecore#//CombinedFragment/ownedOperands"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference interactions.ecore#//CombinedFragment/ownedGates"/>
     </genClasses>
     <genClasses ecoreClass="interactions.ecore#//Operand">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute interactions.ecore#//Operand/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//Operand/start"/>
+    </genClasses>
+    <genClasses ecoreClass="interactions.ecore#//Gate">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute interactions.ecore#//Gate/name"/>
     </genClasses>
     <genClasses image="false" ecoreClass="interactions.ecore#//AbstractEnd">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute interactions.ecore#//AbstractEnd/name"/>
@@ -85,6 +91,7 @@
     </genClasses>
     <genClasses ecoreClass="interactions.ecore#//MessageEnd">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//MessageEnd/message"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//MessageEnd/gate"/>
     </genClasses>
     <genClasses ecoreClass="interactions.ecore#//ExecutionEnd">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//ExecutionEnd/execution"/>
