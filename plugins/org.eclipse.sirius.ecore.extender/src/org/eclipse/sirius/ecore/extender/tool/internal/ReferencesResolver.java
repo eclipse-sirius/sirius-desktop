@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
@@ -28,9 +29,6 @@ import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuth
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ecore.extender.business.internal.Messages;
 import org.eclipse.sirius.ext.emf.EReferencePredicate;
-
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterators;
 
 /**
  * Class responsible for resolving some references.
@@ -52,13 +50,8 @@ public class ReferencesResolver {
      * @param set
      *            resource set to resolve.
      */
-    public ReferencesResolver(ResourceSet set, final EReferencePredicate filter) {
-        this.filter = new Predicate<EReference>() {
-            @Override
-            public boolean apply(EReference input) {
-                return filter.apply(input);
-            }
-        };
+    public ReferencesResolver(ResourceSet set, EReferencePredicate filter) {
+        this.filter = filter::apply;
         this.set = set;
     }
 
@@ -97,10 +90,7 @@ public class ReferencesResolver {
     }
 
     private void resolveCrossReferences(EObject eObject) {
-        Iterator<EReference> it = Iterators.filter(eObject.eClass().getEAllReferences().iterator(), filter);
-        while (it.hasNext()) {
-            eObject.eGet(it.next());
-        }
+        eObject.eClass().getEAllReferences().stream().filter(filter).forEach(eObject::eGet);
     }
 
     /**
@@ -116,12 +106,12 @@ public class ReferencesResolver {
         if (authority != null) {
             authority.setListening(false);
         }
-        final List<Resource> cachedIdsResources = new LinkedList<Resource>();
+        final List<Resource> cachedIdsResources = new LinkedList<>();
         Iterator<Resource> iterResources = set.getResources().iterator();
         while (iterResources.hasNext()) {
             final Resource resource = iterResources.next();
             if (resource instanceof ResourceImpl && ((ResourceImpl) resource).getIntrinsicIDToEObjectMap() == null) {
-                ((ResourceImpl) resource).setIntrinsicIDToEObjectMap(new HashMap<String, EObject>());
+                ((ResourceImpl) resource).setIntrinsicIDToEObjectMap(new HashMap<>());
                 cachedIdsResources.add(resource);
             }
         }
