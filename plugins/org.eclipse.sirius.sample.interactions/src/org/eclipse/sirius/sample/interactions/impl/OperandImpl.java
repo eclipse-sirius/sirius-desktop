@@ -1,7 +1,7 @@
-/*******************************************************************************
- * Copyright (c) 2010, 2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License 2.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
  * https://www.eclipse.org/legal/epl-2.0/
  *
@@ -9,7 +9,7 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ */
 package org.eclipse.sirius.sample.interactions.impl;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -22,24 +22,21 @@ import org.eclipse.sirius.sample.interactions.Operand;
 import org.eclipse.sirius.sample.interactions.OperandEnd;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Operand</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Operand</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>{@link org.eclipse.sirius.sample.interactions.impl.OperandImpl#getName
- * <em>Name</em>}</li>
- * <li>{@link org.eclipse.sirius.sample.interactions.impl.OperandImpl#getStart
- * <em>Start</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.OperandImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.OperandImpl#getStart <em>Start</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public class OperandImpl extends EObjectImpl implements Operand {
     /**
-     * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
@@ -48,18 +45,18 @@ public class OperandImpl extends EObjectImpl implements Operand {
     protected static final String NAME_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
      * @ordered
      */
-    protected String name = OperandImpl.NAME_EDEFAULT;
+    protected String name = NAME_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getStart() <em>Start</em>}' reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getStart() <em>Start</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getStart()
      * @generated
@@ -105,9 +102,8 @@ public class OperandImpl extends EObjectImpl implements Operand {
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired()) {
+        if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.OPERAND__NAME, oldName, name));
-        }
     }
 
     /**
@@ -121,9 +117,8 @@ public class OperandImpl extends EObjectImpl implements Operand {
             InternalEObject oldStart = (InternalEObject) start;
             start = (OperandEnd) eResolveProxy(oldStart);
             if (start != oldStart) {
-                if (eNotificationRequired()) {
+                if (eNotificationRequired())
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionsPackage.OPERAND__START, oldStart, start));
-                }
             }
         }
         return start;
@@ -147,9 +142,8 @@ public class OperandImpl extends EObjectImpl implements Operand {
     public void setStart(OperandEnd newStart) {
         OperandEnd oldStart = start;
         start = newStart;
-        if (eNotificationRequired()) {
+        if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.OPERAND__START, oldStart, start));
-        }
     }
 
     /**
@@ -163,9 +157,8 @@ public class OperandImpl extends EObjectImpl implements Operand {
         case InteractionsPackage.OPERAND__NAME:
             return getName();
         case InteractionsPackage.OPERAND__START:
-            if (resolve) {
+            if (resolve)
                 return getStart();
-            }
             return basicGetStart();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -198,7 +191,7 @@ public class OperandImpl extends EObjectImpl implements Operand {
     public void eUnset(int featureID) {
         switch (featureID) {
         case InteractionsPackage.OPERAND__NAME:
-            setName(OperandImpl.NAME_EDEFAULT);
+            setName(NAME_EDEFAULT);
             return;
         case InteractionsPackage.OPERAND__START:
             setStart((OperandEnd) null);
@@ -216,7 +209,7 @@ public class OperandImpl extends EObjectImpl implements Operand {
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case InteractionsPackage.OPERAND__NAME:
-            return OperandImpl.NAME_EDEFAULT == null ? name != null : !OperandImpl.NAME_EDEFAULT.equals(name);
+            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
         case InteractionsPackage.OPERAND__START:
             return start != null;
         }
@@ -230,11 +223,10 @@ public class OperandImpl extends EObjectImpl implements Operand {
      */
     @Override
     public String toString() {
-        if (eIsProxy()) {
+        if (eIsProxy())
             return super.toString();
-        }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
         result.append(')');
