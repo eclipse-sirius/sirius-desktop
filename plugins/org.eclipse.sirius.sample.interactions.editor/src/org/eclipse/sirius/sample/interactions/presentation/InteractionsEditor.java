@@ -1,7 +1,7 @@
-/*******************************************************************************
- * Copyright (c) 2010, 2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License 2.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
  * https://www.eclipse.org/legal/epl-2.0/
  *
@@ -9,7 +9,7 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ */
 package org.eclipse.sirius.sample.interactions.presentation;
 
 import java.io.IOException;
@@ -101,6 +101,7 @@ import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.events.ControlAdapter;
 import org.eclipse.swt.events.ControlEvent;
 import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
@@ -128,32 +129,29 @@ import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 
 /**
- * This is an example of a Interactions model editor. <!-- begin-user-doc -->
- * <!-- end-user-doc -->
+ * This is an example of a Interactions model editor. <!-- begin-user-doc --> <!-- end-user-doc -->
  *
  * @generated
  */
 public class InteractionsEditor extends MultiPageEditorPart implements IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider, IGotoMarker {
-
     /**
-     * This keeps track of the editing domain that is used to track all changes
-     * to the model. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This keeps track of the editing domain that is used to track all changes to the model. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      *
      * @generated
      */
     protected AdapterFactoryEditingDomain editingDomain;
 
     /**
-     * This is the one adapter factory used for providing views of the model.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This is the one adapter factory used for providing views of the model. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
     protected ComposedAdapterFactory adapterFactory;
 
     /**
-     * This is the content outline page. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This is the content outline page. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -167,124 +165,112 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
     protected IStatusLineManager contentOutlineStatusLineManager;
 
     /**
-     * This is the content outline page's viewer. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This is the content outline page's viewer. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     protected TreeViewer contentOutlineViewer;
 
     /**
-     * This is the property sheet page. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This is the property sheet page. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     protected List<PropertySheetPage> propertySheetPages = new ArrayList<PropertySheetPage>();
 
     /**
-     * This is the viewer that shadows the selection in the content outline. The
-     * parent relation must be correctly defined for this to work. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This is the viewer that shadows the selection in the content outline. The parent relation must be correctly
+     * defined for this to work. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     protected TreeViewer selectionViewer;
 
     /**
-     * This inverts the roll of parent and child in the content provider and
-     * show parents as a tree. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This inverts the roll of parent and child in the content provider and show parents as a tree. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
      *
      * @generated
      */
     protected TreeViewer parentViewer;
 
     /**
-     * This shows how a tree view works. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This shows how a tree view works. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     protected TreeViewer treeViewer;
 
     /**
-     * This shows how a list view works. A list viewer doesn't support icons.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This shows how a list view works. A list viewer doesn't support icons. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
     protected ListViewer listViewer;
 
     /**
-     * This shows how a table view works. A table can be used as a list with
-     * icons. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This shows how a table view works. A table can be used as a list with icons. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @generated
      */
     protected TableViewer tableViewer;
 
     /**
-     * This shows how a tree view with columns works. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * This shows how a tree view with columns works. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     protected TreeViewer treeViewerWithColumns;
 
     /**
-     * This keeps track of the active viewer pane, in the book. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This keeps track of the active viewer pane, in the book. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     protected ViewerPane currentViewerPane;
 
     /**
-     * This keeps track of the active content viewer, which may be either one of
-     * the viewers in the pages or the content outline viewer. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This keeps track of the active content viewer, which may be either one of the viewers in the pages or the content
+     * outline viewer. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     protected Viewer currentViewer;
 
     /**
-     * This listens to which ever viewer is active. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This listens to which ever viewer is active. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     protected ISelectionChangedListener selectionChangedListener;
 
     /**
-     * This keeps track of all the
-     * {@link org.eclipse.jface.viewers.ISelectionChangedListener}s that are
-     * listening to this editor. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This keeps track of all the {@link org.eclipse.jface.viewers.ISelectionChangedListener}s that are listening to
+     * this editor. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     protected Collection<ISelectionChangedListener> selectionChangedListeners = new ArrayList<ISelectionChangedListener>();
 
     /**
-     * This keeps track of the selection of the editor as a whole. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This keeps track of the selection of the editor as a whole. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     protected ISelection editorSelection = StructuredSelection.EMPTY;
 
     /**
-     * The MarkerHelper is responsible for creating workspace resource markers
-     * presented in Eclipse's Problems View. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The MarkerHelper is responsible for creating workspace resource markers presented in Eclipse's Problems View.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     protected MarkerHelper markerHelper = new EditUIMarkerHelper();
 
     /**
-     * This listens for when the outline becomes active <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * This listens for when the outline becomes active <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -329,52 +315,49 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
     };
 
     /**
-     * Resources that have been removed since last activation. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Resources that have been removed since last activation. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     protected Collection<Resource> removedResources = new ArrayList<Resource>();
 
     /**
-     * Resources that have been changed since last activation. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Resources that have been changed since last activation. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     protected Collection<Resource> changedResources = new ArrayList<Resource>();
 
     /**
-     * Resources that have been saved. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * Resources that have been saved. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     protected Collection<Resource> savedResources = new ArrayList<Resource>();
 
     /**
-     * Map to store the diagnostic associated with a resource. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Map to store the diagnostic associated with a resource. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     protected Map<Resource, Diagnostic> resourceToDiagnosticMap = new LinkedHashMap<Resource, Diagnostic>();
 
     /**
-     * Controls whether the problem indication should be updated. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Controls whether the problem indication should be updated. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     protected boolean updateProblemIndication = true;
 
     /**
-     * Adapter used to update the problem indication when resources are demanded
-     * loaded. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Adapter used to update the problem indication when resources are demanded loaded. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @generated
      */
     protected EContentAdapter problemIndicationAdapter = new EContentAdapter() {
+        protected boolean dispatching;
+
         @Override
         public void notifyChanged(Notification notification) {
             if (notification.getNotifier() instanceof Resource) {
@@ -389,20 +372,25 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
                     } else {
                         resourceToDiagnosticMap.remove(resource);
                     }
-
-                    if (updateProblemIndication) {
-                        getSite().getShell().getDisplay().asyncExec(new Runnable() {
-                            @Override
-                            public void run() {
-                                updateProblemIndication();
-                            }
-                        });
-                    }
+                    dispatchUpdateProblemIndication();
                     break;
                 }
                 }
             } else {
                 super.notifyChanged(notification);
+            }
+        }
+
+        protected void dispatchUpdateProblemIndication() {
+            if (updateProblemIndication && !dispatching) {
+                dispatching = true;
+                getSite().getShell().getDisplay().asyncExec(new Runnable() {
+                    @Override
+                    public void run() {
+                        dispatching = false;
+                        updateProblemIndication();
+                    }
+                });
             }
         }
 
@@ -415,20 +403,12 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
         protected void unsetTarget(Resource target) {
             basicUnsetTarget(target);
             resourceToDiagnosticMap.remove(target);
-            if (updateProblemIndication) {
-                getSite().getShell().getDisplay().asyncExec(new Runnable() {
-                    @Override
-                    public void run() {
-                        updateProblemIndication();
-                    }
-                });
-            }
+            dispatchUpdateProblemIndication();
         }
     };
 
     /**
-     * This listens for workspace changes. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This listens for workspace changes. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -505,8 +485,7 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
     };
 
     /**
-     * Handles activation of the editor or it's associated views. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Handles activation of the editor or it's associated views. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -538,15 +517,15 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
     }
 
     /**
-     * Handles what to do with changed resources on activation. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Handles what to do with changed resources on activation. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     protected void handleChangedResources() {
         if (!changedResources.isEmpty() && (!isDirty() || handleDirtyConflict())) {
+            ResourceSet resourceSet = editingDomain.getResourceSet();
             if (isDirty()) {
-                changedResources.addAll(editingDomain.getResourceSet().getResources());
+                changedResources.addAll(resourceSet.getResources());
             }
             editingDomain.getCommandStack().flush();
 
@@ -555,7 +534,7 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
                 if (resource.isLoaded()) {
                     resource.unload();
                     try {
-                        resource.load(Collections.EMPTY_MAP);
+                        resource.load(resourceSet.getLoadOptions());
                     } catch (IOException exception) {
                         if (!resourceToDiagnosticMap.containsKey(resource)) {
                             resourceToDiagnosticMap.put(resource, analyzeResourceProblems(resource, exception));
@@ -570,8 +549,8 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
     }
 
     /**
-     * Updates the problems indication with the information described in the
-     * specified diagnostic. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Updates the problems indication with the information described in the specified diagnostic. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -619,19 +598,18 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
     }
 
     /**
-     * Shows a dialog that asks if conflicting changes should be discarded. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Shows a dialog that asks if conflicting changes should be discarded. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
     protected boolean handleDirtyConflict() {
-        return MessageDialog.openQuestion(getSite().getShell(), InteractionsEditor.getString("_UI_FileConflict_label"), //$NON-NLS-1$
-                InteractionsEditor.getString("_WARN_FileConflict")); //$NON-NLS-1$
+        return MessageDialog.openQuestion(getSite().getShell(), getString("_UI_FileConflict_label"), //$NON-NLS-1$
+                getString("_WARN_FileConflict")); //$NON-NLS-1$
     }
 
     /**
-     * This creates a model editor. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * This creates a model editor. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -641,8 +619,7 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
     }
 
     /**
-     * This sets up the editing domain for the model editor. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * This sets up the editing domain for the model editor. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -656,13 +633,12 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
         adapterFactory.addAdapterFactory(new EcoreItemProviderAdapterFactory());
         adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
-        // Create the command stack that will notify this editor as commands are
-        // executed.
+        // Create the command stack that will notify this editor as commands are executed.
         //
         BasicCommandStack commandStack = new BasicCommandStack();
 
-        // Add a listener to set the most recent command's affected objects to
-        // be the selection of the viewer with focus.
+        // Add a listener to set the most recent command's affected objects to be the selection of the viewer with
+        // focus.
         //
         commandStack.addCommandStackListener(new CommandStackListener() {
             @Override
@@ -680,7 +656,7 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
                         }
                         for (Iterator<PropertySheetPage> i = propertySheetPages.iterator(); i.hasNext();) {
                             PropertySheetPage propertySheetPage = i.next();
-                            if (propertySheetPage.getControl().isDisposed()) {
+                            if (propertySheetPage.getControl() == null || propertySheetPage.getControl().isDisposed()) {
                                 i.remove();
                             } else {
                                 propertySheetPage.refresh();
@@ -697,8 +673,7 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
     }
 
     /**
-     * This is here for the listener to be able to call it. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * This is here for the listener to be able to call it. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -708,8 +683,7 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
     }
 
     /**
-     * This sets the selection into whichever viewer is active. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This sets the selection into whichever viewer is active. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -721,8 +695,7 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
             Runnable runnable = new Runnable() {
                 @Override
                 public void run() {
-                    // Try to select the items in the current content viewer of
-                    // the editor.
+                    // Try to select the items in the current content viewer of the editor.
                     //
                     if (currentViewer != null) {
                         currentViewer.setSelection(new StructuredSelection(theSelection.toArray()), true);
@@ -734,11 +707,9 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
     }
 
     /**
-     * This returns the editing domain as required by the
-     * {@link IEditingDomainProvider} interface. This is important for
-     * implementing the static methods of {@link AdapterFactoryEditingDomain}
-     * and for supporting {@link org.eclipse.emf.edit.ui.action.CommandAction}.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This returns the editing domain as required by the {@link IEditingDomainProvider} interface. This is important
+     * for implementing the static methods of {@link AdapterFactoryEditingDomain} and for supporting
+     * {@link org.eclipse.emf.edit.ui.action.CommandAction}. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -822,9 +793,8 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
     }
 
     /**
-     * This makes sure that one content viewer, either for the current page or
-     * the outline view, if it has focus, is the current one. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This makes sure that one content viewer, either for the current page or the outline view, if it has focus, is the
+     * current one. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -836,8 +806,7 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
                 // Create the listener on demand.
                 //
                 selectionChangedListener = new ISelectionChangedListener() {
-                    // This just notifies those things that are affected by the
-                    // section.
+                    // This just notifies those things that are affected by the section.
                     //
                     @Override
                     public void selectionChanged(SelectionChangedEvent selectionChangedEvent) {
@@ -862,16 +831,15 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
             //
             currentViewer = viewer;
 
-            // Set the editors selection based on the current viewer's
-            // selection.
+            // Set the editors selection based on the current viewer's selection.
             //
             setSelection(currentViewer == null ? StructuredSelection.EMPTY : currentViewer.getSelection());
         }
     }
 
     /**
-     * This returns the viewer as required by the {@link IViewerProvider}
-     * interface. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This returns the viewer as required by the {@link IViewerProvider} interface. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @generated
      */
@@ -881,9 +849,8 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
     }
 
     /**
-     * This creates a context menu for the viewer and adds a listener as well
-     * registering the menu for extension. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This creates a context menu for the viewer and adds a listener as well registering the menu for extension. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -903,9 +870,8 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
     }
 
     /**
-     * This is the method called to load a resource into the editing domain's
-     * resource set based on the editor's input. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This is the method called to load a resource into the editing domain's resource set based on the editor's input.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -930,22 +896,22 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
     }
 
     /**
-     * Returns a diagnostic describing the errors and warnings listed in the
-     * resource and the specified exception (if any). <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Returns a diagnostic describing the errors and warnings listed in the resource and the specified exception (if
+     * any). <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     public Diagnostic analyzeResourceProblems(Resource resource, Exception exception) {
-        if (!resource.getErrors().isEmpty() || !resource.getWarnings().isEmpty()) {
-            BasicDiagnostic basicDiagnostic = new BasicDiagnostic(Diagnostic.ERROR, "org.eclipse.sirius.sample.interactions.editor", //$NON-NLS-1$
-                    0, InteractionsEditor.getString("_UI_CreateModelError_message", resource.getURI()), //$NON-NLS-1$
+        boolean hasErrors = !resource.getErrors().isEmpty();
+        if (hasErrors || !resource.getWarnings().isEmpty()) {
+            BasicDiagnostic basicDiagnostic = new BasicDiagnostic(hasErrors ? Diagnostic.ERROR : Diagnostic.WARNING, "org.eclipse.sirius.sample.interactions.editor", //$NON-NLS-1$
+                    0, getString("_UI_CreateModelError_message", resource.getURI()), //$NON-NLS-1$
                     new Object[] { exception == null ? (Object) resource : exception });
             basicDiagnostic.merge(EcoreUtil.computeDiagnostic(resource, true));
             return basicDiagnostic;
         } else if (exception != null) {
             return new BasicDiagnostic(Diagnostic.ERROR, "org.eclipse.sirius.sample.interactions.editor", //$NON-NLS-1$
-                    0, InteractionsEditor.getString("_UI_CreateModelError_message", resource.getURI()), //$NON-NLS-1$
+                    0, getString("_UI_CreateModelError_message", resource.getURI()), //$NON-NLS-1$
                     new Object[] { exception });
         } else {
             return Diagnostic.OK_INSTANCE;
@@ -953,8 +919,8 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
     }
 
     /**
-     * This is the method used by the framework to install your own controls.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This is the method used by the framework to install your own controls. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -988,6 +954,7 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
 
                 selectionViewer = (TreeViewer) viewerPane.getViewer();
                 selectionViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
+                selectionViewer.setUseHashlookup(true);
 
                 selectionViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
                 selectionViewer.setInput(editingDomain.getResourceSet());
@@ -998,7 +965,7 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
 
                 createContextMenuFor(selectionViewer);
                 int pageIndex = addPage(viewerPane.getControl());
-                setPageText(pageIndex, InteractionsEditor.getString("_UI_SelectionPage_label")); //$NON-NLS-1$
+                setPageText(pageIndex, getString("_UI_SelectionPage_label")); //$NON-NLS-1$
             }
 
             // Create a page for the parent tree view.
@@ -1027,7 +994,7 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
 
                 createContextMenuFor(parentViewer);
                 int pageIndex = addPage(viewerPane.getControl());
-                setPageText(pageIndex, InteractionsEditor.getString("_UI_ParentPage_label")); //$NON-NLS-1$
+                setPageText(pageIndex, getString("_UI_ParentPage_label")); //$NON-NLS-1$
             }
 
             // This is the page for the list viewer
@@ -1052,7 +1019,7 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
 
                 createContextMenuFor(listViewer);
                 int pageIndex = addPage(viewerPane.getControl());
-                setPageText(pageIndex, InteractionsEditor.getString("_UI_ListPage_label")); //$NON-NLS-1$
+                setPageText(pageIndex, getString("_UI_ListPage_label")); //$NON-NLS-1$
             }
 
             // This is the page for the tree viewer
@@ -1079,7 +1046,7 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
 
                 createContextMenuFor(treeViewer);
                 int pageIndex = addPage(viewerPane.getControl());
-                setPageText(pageIndex, InteractionsEditor.getString("_UI_TreePage_label")); //$NON-NLS-1$
+                setPageText(pageIndex, getString("_UI_TreePage_label")); //$NON-NLS-1$
             }
 
             // This is the page for the table viewer.
@@ -1108,12 +1075,12 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
 
                 TableColumn objectColumn = new TableColumn(table, SWT.NONE);
                 layout.addColumnData(new ColumnWeightData(3, 100, true));
-                objectColumn.setText(InteractionsEditor.getString("_UI_ObjectColumn_label")); //$NON-NLS-1$
+                objectColumn.setText(getString("_UI_ObjectColumn_label")); //$NON-NLS-1$
                 objectColumn.setResizable(true);
 
                 TableColumn selfColumn = new TableColumn(table, SWT.NONE);
                 layout.addColumnData(new ColumnWeightData(2, 100, true));
-                selfColumn.setText(InteractionsEditor.getString("_UI_SelfColumn_label")); //$NON-NLS-1$
+                selfColumn.setText(getString("_UI_SelfColumn_label")); //$NON-NLS-1$
                 selfColumn.setResizable(true);
 
                 tableViewer.setColumnProperties(new String[] { "a", "b" }); //$NON-NLS-1$ //$NON-NLS-2$
@@ -1122,7 +1089,7 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
 
                 createContextMenuFor(tableViewer);
                 int pageIndex = addPage(viewerPane.getControl());
-                setPageText(pageIndex, InteractionsEditor.getString("_UI_TablePage_label")); //$NON-NLS-1$
+                setPageText(pageIndex, getString("_UI_TablePage_label")); //$NON-NLS-1$
             }
 
             // This is the page for the table tree viewer.
@@ -1150,12 +1117,12 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
                 tree.setLinesVisible(true);
 
                 TreeColumn objectColumn = new TreeColumn(tree, SWT.NONE);
-                objectColumn.setText(InteractionsEditor.getString("_UI_ObjectColumn_label")); //$NON-NLS-1$
+                objectColumn.setText(getString("_UI_ObjectColumn_label")); //$NON-NLS-1$
                 objectColumn.setResizable(true);
                 objectColumn.setWidth(250);
 
                 TreeColumn selfColumn = new TreeColumn(tree, SWT.NONE);
-                selfColumn.setText(InteractionsEditor.getString("_UI_SelfColumn_label")); //$NON-NLS-1$
+                selfColumn.setText(getString("_UI_SelfColumn_label")); //$NON-NLS-1$
                 selfColumn.setResizable(true);
                 selfColumn.setWidth(200);
 
@@ -1165,13 +1132,15 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
 
                 createContextMenuFor(treeViewerWithColumns);
                 int pageIndex = addPage(viewerPane.getControl());
-                setPageText(pageIndex, InteractionsEditor.getString("_UI_TreeWithColumnsPage_label")); //$NON-NLS-1$
+                setPageText(pageIndex, getString("_UI_TreeWithColumnsPage_label")); //$NON-NLS-1$
             }
 
             getSite().getShell().getDisplay().asyncExec(new Runnable() {
                 @Override
                 public void run() {
-                    setActivePage(0);
+                    if (!getContainer().isDisposed()) {
+                        setActivePage(0);
+                    }
                 }
             });
         }
@@ -1201,8 +1170,8 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
     }
 
     /**
-     * If there is just one page in the multi-page editor part, this hides the
-     * single tab at the bottom. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * If there is just one page in the multi-page editor part, this hides the single tab at the bottom. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -1210,33 +1179,32 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
         if (getPageCount() <= 1) {
             setPageText(0, ""); //$NON-NLS-1$
             if (getContainer() instanceof CTabFolder) {
-                ((CTabFolder) getContainer()).setTabHeight(1);
                 Point point = getContainer().getSize();
-                getContainer().setSize(point.x, point.y + 6);
+                Rectangle clientArea = getContainer().getClientArea();
+                getContainer().setSize(point.x, 2 * point.y - clientArea.height - clientArea.y);
             }
         }
     }
 
     /**
-     * If there is more than one page in the multi-page editor part, this shows
-     * the tabs at the bottom. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * If there is more than one page in the multi-page editor part, this shows the tabs at the bottom. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     protected void showTabs() {
         if (getPageCount() > 1) {
-            setPageText(0, InteractionsEditor.getString("_UI_SelectionPage_label")); //$NON-NLS-1$
+            setPageText(0, getString("_UI_SelectionPage_label")); //$NON-NLS-1$
             if (getContainer() instanceof CTabFolder) {
-                ((CTabFolder) getContainer()).setTabHeight(SWT.DEFAULT);
                 Point point = getContainer().getSize();
-                getContainer().setSize(point.x, point.y - 6);
+                Rectangle clientArea = getContainer().getClientArea();
+                getContainer().setSize(point.x, clientArea.height + clientArea.y);
             }
         }
     }
 
     /**
-     * This is used to track the active viewer. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This is used to track the active viewer. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -1250,28 +1218,25 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
     }
 
     /**
-     * This is how the framework determines which interfaces we implement. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This is how the framework determines which interfaces we implement. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    @SuppressWarnings("unchecked")
     @Override
-    public Object getAdapter(Class key) {
+    public <T> T getAdapter(Class<T> key) {
         if (key.equals(IContentOutlinePage.class)) {
-            return showOutlineView() ? getContentOutlinePage() : null;
+            return showOutlineView() ? key.cast(getContentOutlinePage()) : null;
         } else if (key.equals(IPropertySheetPage.class)) {
-            return getPropertySheetPage();
+            return key.cast(getPropertySheetPage());
         } else if (key.equals(IGotoMarker.class)) {
-            return this;
+            return key.cast(this);
         } else {
             return super.getAdapter(key);
         }
     }
 
     /**
-     * This accesses a cached version of the content outliner. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This accesses a cached version of the content outliner. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -1288,6 +1253,7 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
 
                     // Set up the tree viewer.
                     //
+                    contentOutlineViewer.setUseHashlookup(true);
                     contentOutlineViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
                     contentOutlineViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
                     contentOutlineViewer.setInput(editingDomain.getResourceSet());
@@ -1334,8 +1300,7 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
     }
 
     /**
-     * This accesses a cached version of the property sheet. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * This accesses a cached version of the property sheet. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -1360,8 +1325,8 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
     }
 
     /**
-     * This deals with how we want selection in the outliner to affect the other
-     * views. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This deals with how we want selection in the outliner to affect the other views. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @generated
      */
@@ -1373,8 +1338,7 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
                 //
                 Object selectedElement = selectedElements.next();
 
-                // If it's the selection viewer, then we want it to select the
-                // same selection as this selection.
+                // If it's the selection viewer, then we want it to select the same selection as this selection.
                 //
                 if (currentViewerPane.getViewer() == selectionViewer) {
                     ArrayList<Object> selectionList = new ArrayList<Object>();
@@ -1399,8 +1363,8 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
     }
 
     /**
-     * This is for implementing {@link IEditorPart} and simply tests the command
-     * stack. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This is for implementing {@link IEditorPart} and simply tests the command stack. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @generated
      */
@@ -1410,8 +1374,8 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
     }
 
     /**
-     * This is for implementing {@link IEditorPart} and simply saves the model
-     * file. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This is for implementing {@link IEditorPart} and simply saves the model file. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @generated
      */
@@ -1422,8 +1386,7 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
         final Map<Object, Object> saveOptions = new HashMap<Object, Object>();
         saveOptions.put(Resource.OPTION_SAVE_ONLY_IF_CHANGED, Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER);
 
-        // Do the work within an operation because this is a long running
-        // activity that modifies the workbench.
+        // Do the work within an operation because this is a long running activity that modifies the workbench.
         //
         WorkspaceModifyOperation operation = new WorkspaceModifyOperation() {
             // This is the method that gets invoked when the operation runs.
@@ -1433,7 +1396,9 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
                 // Save the resources to the file system.
                 //
                 boolean first = true;
-                for (Resource resource : editingDomain.getResourceSet().getResources()) {
+                List<Resource> resources = editingDomain.getResourceSet().getResources();
+                for (int i = 0; i < resources.size(); ++i) {
+                    Resource resource = resources.get(i);
                     if ((first || !resource.getContents().isEmpty() || isPersisted(resource)) && !editingDomain.isReadOnly(resource)) {
                         try {
                             resource.save(saveOptions);
@@ -1467,10 +1432,9 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
     }
 
     /**
-     * This returns whether something has been persisted to the URI of the
-     * specified resource. The implementation uses the URI converter from the
-     * editor's resource set to try to open an input stream. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * This returns whether something has been persisted to the URI of the specified resource. The implementation uses
+     * the URI converter from the editor's resource set to try to open an input stream. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @generated
      */
@@ -1489,8 +1453,7 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
     }
 
     /**
-     * This always returns true because it is not currently supported. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This always returns true because it is not currently supported. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -1500,8 +1463,7 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
     }
 
     /**
-     * This also changes the editor's input. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This also changes the editor's input. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -1545,8 +1507,7 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
     }
 
     /**
-     * This is called during startup. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * This is called during startup. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -1575,8 +1536,8 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
     }
 
     /**
-     * This implements {@link org.eclipse.jface.viewers.ISelectionProvider}.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This implements {@link org.eclipse.jface.viewers.ISelectionProvider}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -1586,8 +1547,8 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
     }
 
     /**
-     * This implements {@link org.eclipse.jface.viewers.ISelectionProvider}.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This implements {@link org.eclipse.jface.viewers.ISelectionProvider}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -1597,9 +1558,8 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
     }
 
     /**
-     * This implements {@link org.eclipse.jface.viewers.ISelectionProvider} to
-     * return this editor's overall selection. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This implements {@link org.eclipse.jface.viewers.ISelectionProvider} to return this editor's overall selection.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -1609,9 +1569,8 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
     }
 
     /**
-     * This implements {@link org.eclipse.jface.viewers.ISelectionProvider} to
-     * set this editor's overall selection. Calling this result will notify the
-     * listeners. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This implements {@link org.eclipse.jface.viewers.ISelectionProvider} to set this editor's overall selection.
+     * Calling this result will notify the listeners. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -1638,16 +1597,16 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
                 Collection<?> collection = ((IStructuredSelection) selection).toList();
                 switch (collection.size()) {
                 case 0: {
-                    statusLineManager.setMessage(InteractionsEditor.getString("_UI_NoObjectSelected")); //$NON-NLS-1$
+                    statusLineManager.setMessage(getString("_UI_NoObjectSelected")); //$NON-NLS-1$
                     break;
                 }
                 case 1: {
                     String text = new AdapterFactoryItemDelegator(adapterFactory).getText(collection.iterator().next());
-                    statusLineManager.setMessage(InteractionsEditor.getString("_UI_SingleObjectSelected", text)); //$NON-NLS-1$
+                    statusLineManager.setMessage(getString("_UI_SingleObjectSelected", text)); //$NON-NLS-1$
                     break;
                 }
                 default: {
-                    statusLineManager.setMessage(InteractionsEditor.getString("_UI_MultiObjectSelected", Integer.toString(collection.size()))); //$NON-NLS-1$
+                    statusLineManager.setMessage(getString("_UI_MultiObjectSelected", Integer.toString(collection.size()))); //$NON-NLS-1$
                     break;
                 }
                 }
@@ -1658,8 +1617,7 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
     }
 
     /**
-     * This looks up a string in the plugin's plugin.properties file. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This looks up a string in the plugin's plugin.properties file. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -1668,8 +1626,7 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
     }
 
     /**
-     * This looks up a string in plugin.properties, making a substitution. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This looks up a string in plugin.properties, making a substitution. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -1678,9 +1635,8 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
     }
 
     /**
-     * This implements {@link org.eclipse.jface.action.IMenuListener} to help
-     * fill the context menus with contributions from the Edit menu. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This implements {@link org.eclipse.jface.action.IMenuListener} to help fill the context menus with contributions
+     * from the Edit menu. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -1747,8 +1703,7 @@ public class InteractionsEditor extends MultiPageEditorPart implements IEditingD
     }
 
     /**
-     * Returns whether the outline view should be presented to the user. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns whether the outline view should be presented to the user. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */

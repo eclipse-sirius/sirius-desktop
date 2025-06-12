@@ -1,7 +1,7 @@
-/*******************************************************************************
- * Copyright (c) 2010, 2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License 2.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
  * https://www.eclipse.org/legal/epl-2.0/
  *
@@ -9,7 +9,7 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ */
 package org.eclipse.sirius.sample.interactions.impl;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -21,22 +21,20 @@ import org.eclipse.sirius.sample.interactions.State;
 import org.eclipse.sirius.sample.interactions.StateEnd;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>State End</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>State End</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>{@link org.eclipse.sirius.sample.interactions.impl.StateEndImpl#getState
- * <em>State</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.StateEndImpl#getState <em>State</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public class StateEndImpl extends AbstractEndImpl implements StateEnd {
     /**
-     * The cached value of the '{@link #getState() <em>State</em>}' reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getState() <em>State</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getState()
      * @generated
@@ -74,9 +72,8 @@ public class StateEndImpl extends AbstractEndImpl implements StateEnd {
             InternalEObject oldState = (InternalEObject) state;
             state = (State) eResolveProxy(oldState);
             if (state != oldState) {
-                if (eNotificationRequired()) {
+                if (eNotificationRequired())
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionsPackage.STATE_END__STATE, oldState, state));
-                }
             }
         }
         return state;
@@ -100,9 +97,8 @@ public class StateEndImpl extends AbstractEndImpl implements StateEnd {
     public void setState(State newState) {
         State oldState = state;
         state = newState;
-        if (eNotificationRequired()) {
+        if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.STATE_END__STATE, oldState, state));
-        }
     }
 
     /**
@@ -114,9 +110,8 @@ public class StateEndImpl extends AbstractEndImpl implements StateEnd {
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case InteractionsPackage.STATE_END__STATE:
-            if (resolve) {
+            if (resolve)
                 return getState();
-            }
             return basicGetState();
         }
         return super.eGet(featureID, resolve, coreType);

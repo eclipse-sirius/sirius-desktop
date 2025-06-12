@@ -1,7 +1,7 @@
-/*******************************************************************************
- * Copyright (c) 2010, 2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License 2.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
  * https://www.eclipse.org/legal/epl-2.0/
  *
@@ -9,7 +9,7 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ */
 package org.eclipse.sirius.sample.interactions.impl;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -22,26 +22,21 @@ import org.eclipse.sirius.sample.interactions.InteractionsPackage;
 import org.eclipse.sirius.sample.interactions.Participant;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Abstract End</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Abstract End</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.impl.AbstractEndImpl#getName
- * <em>Name</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.impl.AbstractEndImpl#getContext
- * <em>Context</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.AbstractEndImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.AbstractEndImpl#getContext <em>Context</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public abstract class AbstractEndImpl extends EObjectImpl implements AbstractEnd {
     /**
-     * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
@@ -50,18 +45,18 @@ public abstract class AbstractEndImpl extends EObjectImpl implements AbstractEnd
     protected static final String NAME_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
      * @ordered
      */
-    protected String name = AbstractEndImpl.NAME_EDEFAULT;
+    protected String name = NAME_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getContext() <em>Context</em>}'
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getContext() <em>Context</em>}' reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getContext()
      * @generated
@@ -107,9 +102,8 @@ public abstract class AbstractEndImpl extends EObjectImpl implements AbstractEnd
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired()) {
+        if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.ABSTRACT_END__NAME, oldName, name));
-        }
     }
 
     /**
@@ -123,9 +117,8 @@ public abstract class AbstractEndImpl extends EObjectImpl implements AbstractEnd
             InternalEObject oldContext = (InternalEObject) context;
             context = (Participant) eResolveProxy(oldContext);
             if (context != oldContext) {
-                if (eNotificationRequired()) {
+                if (eNotificationRequired())
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionsPackage.ABSTRACT_END__CONTEXT, oldContext, context));
-                }
             }
         }
         return context;
@@ -149,9 +142,8 @@ public abstract class AbstractEndImpl extends EObjectImpl implements AbstractEnd
     public void setContext(Participant newContext) {
         Participant oldContext = context;
         context = newContext;
-        if (eNotificationRequired()) {
+        if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.ABSTRACT_END__CONTEXT, oldContext, context));
-        }
     }
 
     /**
@@ -165,9 +157,8 @@ public abstract class AbstractEndImpl extends EObjectImpl implements AbstractEnd
         case InteractionsPackage.ABSTRACT_END__NAME:
             return getName();
         case InteractionsPackage.ABSTRACT_END__CONTEXT:
-            if (resolve) {
+            if (resolve)
                 return getContext();
-            }
             return basicGetContext();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -200,7 +191,7 @@ public abstract class AbstractEndImpl extends EObjectImpl implements AbstractEnd
     public void eUnset(int featureID) {
         switch (featureID) {
         case InteractionsPackage.ABSTRACT_END__NAME:
-            setName(AbstractEndImpl.NAME_EDEFAULT);
+            setName(NAME_EDEFAULT);
             return;
         case InteractionsPackage.ABSTRACT_END__CONTEXT:
             setContext((Participant) null);
@@ -218,7 +209,7 @@ public abstract class AbstractEndImpl extends EObjectImpl implements AbstractEnd
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case InteractionsPackage.ABSTRACT_END__NAME:
-            return AbstractEndImpl.NAME_EDEFAULT == null ? name != null : !AbstractEndImpl.NAME_EDEFAULT.equals(name);
+            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
         case InteractionsPackage.ABSTRACT_END__CONTEXT:
             return context != null;
         }
@@ -232,11 +223,10 @@ public abstract class AbstractEndImpl extends EObjectImpl implements AbstractEnd
      */
     @Override
     public String toString() {
-        if (eIsProxy()) {
+        if (eIsProxy())
             return super.toString();
-        }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
         result.append(')');

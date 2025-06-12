@@ -1,7 +1,7 @@
-/*******************************************************************************
- * Copyright (c) 2010, 2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License 2.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
  * https://www.eclipse.org/legal/epl-2.0/
  *
@@ -9,7 +9,7 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ */
 package org.eclipse.sirius.sample.interactions.impl;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -21,24 +21,21 @@ import org.eclipse.sirius.sample.interactions.Message;
 import org.eclipse.sirius.sample.interactions.ReturnMessage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Return Message</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Return Message</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.impl.ReturnMessageImpl#getInvocationMessage
- * <em>Invocation Message</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.ReturnMessageImpl#getInvocationMessage <em>Invocation
+ * Message</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public class ReturnMessageImpl extends MessageImpl implements ReturnMessage {
     /**
-     * The cached value of the '{@link #getInvocationMessage()
-     * <em>Invocation Message</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getInvocationMessage() <em>Invocation Message</em>}' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getInvocationMessage()
      * @generated
@@ -76,9 +73,8 @@ public class ReturnMessageImpl extends MessageImpl implements ReturnMessage {
             InternalEObject oldInvocationMessage = (InternalEObject) invocationMessage;
             invocationMessage = (Message) eResolveProxy(oldInvocationMessage);
             if (invocationMessage != oldInvocationMessage) {
-                if (eNotificationRequired()) {
+                if (eNotificationRequired())
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionsPackage.RETURN_MESSAGE__INVOCATION_MESSAGE, oldInvocationMessage, invocationMessage));
-                }
             }
         }
         return invocationMessage;
@@ -102,9 +98,8 @@ public class ReturnMessageImpl extends MessageImpl implements ReturnMessage {
     public void setInvocationMessage(Message newInvocationMessage) {
         Message oldInvocationMessage = invocationMessage;
         invocationMessage = newInvocationMessage;
-        if (eNotificationRequired()) {
+        if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.RETURN_MESSAGE__INVOCATION_MESSAGE, oldInvocationMessage, invocationMessage));
-        }
     }
 
     /**
@@ -116,9 +111,8 @@ public class ReturnMessageImpl extends MessageImpl implements ReturnMessage {
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case InteractionsPackage.RETURN_MESSAGE__INVOCATION_MESSAGE:
-            if (resolve) {
+            if (resolve)
                 return getInvocationMessage();
-            }
             return basicGetInvocationMessage();
         }
         return super.eGet(featureID, resolve, coreType);

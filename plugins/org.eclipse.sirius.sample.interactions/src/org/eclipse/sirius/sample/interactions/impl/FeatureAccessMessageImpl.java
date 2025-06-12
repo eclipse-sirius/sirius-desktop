@@ -1,7 +1,7 @@
-/*******************************************************************************
- * Copyright (c) 2010, 2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License 2.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
  * https://www.eclipse.org/legal/epl-2.0/
  *
@@ -9,7 +9,7 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ */
 package org.eclipse.sirius.sample.interactions.impl;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -21,26 +21,22 @@ import org.eclipse.sirius.sample.interactions.FeatureAccessMessage;
 import org.eclipse.sirius.sample.interactions.InteractionsPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Feature Access Message</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Feature Access Message</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.impl.FeatureAccessMessageImpl#isIsWrite
- * <em>Is Write</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.impl.FeatureAccessMessageImpl#getFeature
- * <em>Feature</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.FeatureAccessMessageImpl#isIsWrite <em>Is Write</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.FeatureAccessMessageImpl#getFeature <em>Feature</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public class FeatureAccessMessageImpl extends MessageImpl implements FeatureAccessMessage {
     /**
-     * The default value of the '{@link #isIsWrite() <em>Is Write</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #isIsWrite() <em>Is Write</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #isIsWrite()
      * @generated
@@ -49,18 +45,18 @@ public class FeatureAccessMessageImpl extends MessageImpl implements FeatureAcce
     protected static final boolean IS_WRITE_EDEFAULT = false;
 
     /**
-     * The cached value of the '{@link #isIsWrite() <em>Is Write</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #isIsWrite() <em>Is Write</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #isIsWrite()
      * @generated
      * @ordered
      */
-    protected boolean isWrite = FeatureAccessMessageImpl.IS_WRITE_EDEFAULT;
+    protected boolean isWrite = IS_WRITE_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getFeature() <em>Feature</em>}'
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getFeature() <em>Feature</em>}' reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFeature()
      * @generated
@@ -106,9 +102,8 @@ public class FeatureAccessMessageImpl extends MessageImpl implements FeatureAcce
     public void setIsWrite(boolean newIsWrite) {
         boolean oldIsWrite = isWrite;
         isWrite = newIsWrite;
-        if (eNotificationRequired()) {
+        if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.FEATURE_ACCESS_MESSAGE__IS_WRITE, oldIsWrite, isWrite));
-        }
     }
 
     /**
@@ -122,9 +117,8 @@ public class FeatureAccessMessageImpl extends MessageImpl implements FeatureAcce
             InternalEObject oldFeature = (InternalEObject) feature;
             feature = (EStructuralFeature) eResolveProxy(oldFeature);
             if (feature != oldFeature) {
-                if (eNotificationRequired()) {
+                if (eNotificationRequired())
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionsPackage.FEATURE_ACCESS_MESSAGE__FEATURE, oldFeature, feature));
-                }
             }
         }
         return feature;
@@ -148,9 +142,8 @@ public class FeatureAccessMessageImpl extends MessageImpl implements FeatureAcce
     public void setFeature(EStructuralFeature newFeature) {
         EStructuralFeature oldFeature = feature;
         feature = newFeature;
-        if (eNotificationRequired()) {
+        if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.FEATURE_ACCESS_MESSAGE__FEATURE, oldFeature, feature));
-        }
     }
 
     /**
@@ -164,9 +157,8 @@ public class FeatureAccessMessageImpl extends MessageImpl implements FeatureAcce
         case InteractionsPackage.FEATURE_ACCESS_MESSAGE__IS_WRITE:
             return isIsWrite();
         case InteractionsPackage.FEATURE_ACCESS_MESSAGE__FEATURE:
-            if (resolve) {
+            if (resolve)
                 return getFeature();
-            }
             return basicGetFeature();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -199,7 +191,7 @@ public class FeatureAccessMessageImpl extends MessageImpl implements FeatureAcce
     public void eUnset(int featureID) {
         switch (featureID) {
         case InteractionsPackage.FEATURE_ACCESS_MESSAGE__IS_WRITE:
-            setIsWrite(FeatureAccessMessageImpl.IS_WRITE_EDEFAULT);
+            setIsWrite(IS_WRITE_EDEFAULT);
             return;
         case InteractionsPackage.FEATURE_ACCESS_MESSAGE__FEATURE:
             setFeature((EStructuralFeature) null);
@@ -217,7 +209,7 @@ public class FeatureAccessMessageImpl extends MessageImpl implements FeatureAcce
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case InteractionsPackage.FEATURE_ACCESS_MESSAGE__IS_WRITE:
-            return isWrite != FeatureAccessMessageImpl.IS_WRITE_EDEFAULT;
+            return isWrite != IS_WRITE_EDEFAULT;
         case InteractionsPackage.FEATURE_ACCESS_MESSAGE__FEATURE:
             return feature != null;
         }
@@ -231,14 +223,14 @@ public class FeatureAccessMessageImpl extends MessageImpl implements FeatureAcce
      */
     @Override
     public String toString() {
-        if (eIsProxy()) {
+        if (eIsProxy())
             return super.toString();
-        }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (isWrite: "); //$NON-NLS-1$
         result.append(isWrite);
         result.append(')');
         return result.toString();
     }
+
 } // FeatureAccessMessageImpl

@@ -1,7 +1,7 @@
-/*******************************************************************************
- * Copyright (c) 2010, 2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License 2.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
  * https://www.eclipse.org/legal/epl-2.0/
  *
@@ -9,7 +9,7 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ */
 package org.eclipse.sirius.sample.interactions.impl;
 
 import java.util.Collection;
@@ -25,26 +25,22 @@ import org.eclipse.sirius.sample.interactions.Constraint;
 import org.eclipse.sirius.sample.interactions.InteractionsPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Constraint</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Constraint</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.impl.ConstraintImpl#getExpression
- * <em>Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.impl.ConstraintImpl#getConstrainedEnds
- * <em>Constrained Ends</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.ConstraintImpl#getExpression <em>Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.ConstraintImpl#getConstrainedEnds <em>Constrained
+ * Ends</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public class ConstraintImpl extends EObjectImpl implements Constraint {
     /**
-     * The default value of the '{@link #getExpression() <em>Expression</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getExpression() <em>Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getExpression()
      * @generated
@@ -53,19 +49,18 @@ public class ConstraintImpl extends EObjectImpl implements Constraint {
     protected static final String EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getExpression() <em>Expression</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getExpression() <em>Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getExpression()
      * @generated
      * @ordered
      */
-    protected String expression = ConstraintImpl.EXPRESSION_EDEFAULT;
+    protected String expression = EXPRESSION_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getConstrainedEnds()
-     * <em>Constrained Ends</em>}' reference list. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getConstrainedEnds() <em>Constrained Ends</em>}' reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getConstrainedEnds()
      * @generated
@@ -111,9 +106,8 @@ public class ConstraintImpl extends EObjectImpl implements Constraint {
     public void setExpression(String newExpression) {
         String oldExpression = expression;
         expression = newExpression;
-        if (eNotificationRequired()) {
+        if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.CONSTRAINT__EXPRESSION, oldExpression, expression));
-        }
     }
 
     /**
@@ -174,7 +168,7 @@ public class ConstraintImpl extends EObjectImpl implements Constraint {
     public void eUnset(int featureID) {
         switch (featureID) {
         case InteractionsPackage.CONSTRAINT__EXPRESSION:
-            setExpression(ConstraintImpl.EXPRESSION_EDEFAULT);
+            setExpression(EXPRESSION_EDEFAULT);
             return;
         case InteractionsPackage.CONSTRAINT__CONSTRAINED_ENDS:
             getConstrainedEnds().clear();
@@ -192,7 +186,7 @@ public class ConstraintImpl extends EObjectImpl implements Constraint {
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case InteractionsPackage.CONSTRAINT__EXPRESSION:
-            return ConstraintImpl.EXPRESSION_EDEFAULT == null ? expression != null : !ConstraintImpl.EXPRESSION_EDEFAULT.equals(expression);
+            return EXPRESSION_EDEFAULT == null ? expression != null : !EXPRESSION_EDEFAULT.equals(expression);
         case InteractionsPackage.CONSTRAINT__CONSTRAINED_ENDS:
             return constrainedEnds != null && !constrainedEnds.isEmpty();
         }
@@ -206,11 +200,10 @@ public class ConstraintImpl extends EObjectImpl implements Constraint {
      */
     @Override
     public String toString() {
-        if (eIsProxy()) {
+        if (eIsProxy())
             return super.toString();
-        }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (expression: "); //$NON-NLS-1$
         result.append(expression);
         result.append(')');
