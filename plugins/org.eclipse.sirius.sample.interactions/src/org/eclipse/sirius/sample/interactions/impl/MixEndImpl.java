@@ -1,7 +1,7 @@
-/*******************************************************************************
- * Copyright (c) 2010, 2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License 2.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
  * https://www.eclipse.org/legal/epl-2.0/
  *
@@ -9,7 +9,7 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ */
 package org.eclipse.sirius.sample.interactions.impl;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -22,22 +22,20 @@ import org.eclipse.sirius.sample.interactions.MessageEnd;
 import org.eclipse.sirius.sample.interactions.MixEnd;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Mix End</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Mix End</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>{@link org.eclipse.sirius.sample.interactions.impl.MixEndImpl#getMessage
- * <em>Message</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.MixEndImpl#getMessage <em>Message</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public class MixEndImpl extends ExecutionEndImpl implements MixEnd {
     /**
-     * The cached value of the '{@link #getMessage() <em>Message</em>}'
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getMessage() <em>Message</em>}' reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getMessage()
      * @generated
@@ -75,9 +73,8 @@ public class MixEndImpl extends ExecutionEndImpl implements MixEnd {
             InternalEObject oldMessage = (InternalEObject) message;
             message = (Message) eResolveProxy(oldMessage);
             if (message != oldMessage) {
-                if (eNotificationRequired()) {
+                if (eNotificationRequired())
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionsPackage.MIX_END__MESSAGE, oldMessage, message));
-                }
             }
         }
         return message;
@@ -101,9 +98,8 @@ public class MixEndImpl extends ExecutionEndImpl implements MixEnd {
     public void setMessage(Message newMessage) {
         Message oldMessage = message;
         message = newMessage;
-        if (eNotificationRequired()) {
+        if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.MIX_END__MESSAGE, oldMessage, message));
-        }
     }
 
     /**
@@ -115,9 +111,8 @@ public class MixEndImpl extends ExecutionEndImpl implements MixEnd {
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case InteractionsPackage.MIX_END__MESSAGE:
-            if (resolve) {
+            if (resolve)
                 return getMessage();
-            }
             return basicGetMessage();
         }
         return super.eGet(featureID, resolve, coreType);

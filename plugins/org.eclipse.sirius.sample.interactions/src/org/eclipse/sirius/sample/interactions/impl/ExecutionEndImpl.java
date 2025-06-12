@@ -1,7 +1,7 @@
-/*******************************************************************************
- * Copyright (c) 2010, 2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License 2.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
  * https://www.eclipse.org/legal/epl-2.0/
  *
@@ -9,7 +9,7 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ */
 package org.eclipse.sirius.sample.interactions.impl;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -21,23 +21,20 @@ import org.eclipse.sirius.sample.interactions.ExecutionEnd;
 import org.eclipse.sirius.sample.interactions.InteractionsPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Execution End</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Execution End</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.impl.ExecutionEndImpl#getExecution
- * <em>Execution</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.ExecutionEndImpl#getExecution <em>Execution</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public class ExecutionEndImpl extends AbstractEndImpl implements ExecutionEnd {
     /**
-     * The cached value of the '{@link #getExecution() <em>Execution</em>}'
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getExecution() <em>Execution</em>}' reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getExecution()
      * @generated
@@ -75,9 +72,8 @@ public class ExecutionEndImpl extends AbstractEndImpl implements ExecutionEnd {
             InternalEObject oldExecution = (InternalEObject) execution;
             execution = (Execution) eResolveProxy(oldExecution);
             if (execution != oldExecution) {
-                if (eNotificationRequired()) {
+                if (eNotificationRequired())
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionsPackage.EXECUTION_END__EXECUTION, oldExecution, execution));
-                }
             }
         }
         return execution;
@@ -101,9 +97,8 @@ public class ExecutionEndImpl extends AbstractEndImpl implements ExecutionEnd {
     public void setExecution(Execution newExecution) {
         Execution oldExecution = execution;
         execution = newExecution;
-        if (eNotificationRequired()) {
+        if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.EXECUTION_END__EXECUTION, oldExecution, execution));
-        }
     }
 
     /**
@@ -115,9 +110,8 @@ public class ExecutionEndImpl extends AbstractEndImpl implements ExecutionEnd {
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case InteractionsPackage.EXECUTION_END__EXECUTION:
-            if (resolve) {
+            if (resolve)
                 return getExecution();
-            }
             return basicGetExecution();
         }
         return super.eGet(featureID, resolve, coreType);

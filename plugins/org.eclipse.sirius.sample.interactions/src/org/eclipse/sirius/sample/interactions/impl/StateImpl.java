@@ -1,7 +1,7 @@
-/*******************************************************************************
- * Copyright (c) 2010, 2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License 2.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
  * https://www.eclipse.org/legal/epl-2.0/
  *
@@ -9,7 +9,7 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ */
 package org.eclipse.sirius.sample.interactions.impl;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -23,28 +23,23 @@ import org.eclipse.sirius.sample.interactions.State;
 import org.eclipse.sirius.sample.interactions.StateEnd;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>State</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>State</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>{@link org.eclipse.sirius.sample.interactions.impl.StateImpl#getName <em>
- * Name</em>}</li>
- * <li>{@link org.eclipse.sirius.sample.interactions.impl.StateImpl#getOwner
- * <em>Owner</em>}</li>
- * <li>{@link org.eclipse.sirius.sample.interactions.impl.StateImpl#getStart
- * <em>Start</em>}</li>
- * <li>{@link org.eclipse.sirius.sample.interactions.impl.StateImpl#getEnd <em>
- * End</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.StateImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.StateImpl#getOwner <em>Owner</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.StateImpl#getStart <em>Start</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.StateImpl#getEnd <em>End</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public class StateImpl extends EObjectImpl implements State {
     /**
-     * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
@@ -53,18 +48,18 @@ public class StateImpl extends EObjectImpl implements State {
     protected static final String NAME_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
      * @ordered
      */
-    protected String name = StateImpl.NAME_EDEFAULT;
+    protected String name = NAME_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getOwner() <em>Owner</em>}' reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getOwner() <em>Owner</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getOwner()
      * @generated
@@ -73,8 +68,8 @@ public class StateImpl extends EObjectImpl implements State {
     protected Participant owner;
 
     /**
-     * The cached value of the '{@link #getStart() <em>Start</em>}' reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getStart() <em>Start</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getStart()
      * @generated
@@ -83,8 +78,7 @@ public class StateImpl extends EObjectImpl implements State {
     protected StateEnd start;
 
     /**
-     * The cached value of the '{@link #getEnd() <em>End</em>}' reference. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getEnd() <em>End</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getEnd()
      * @generated
@@ -130,9 +124,8 @@ public class StateImpl extends EObjectImpl implements State {
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired()) {
+        if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.STATE__NAME, oldName, name));
-        }
     }
 
     /**
@@ -146,9 +139,8 @@ public class StateImpl extends EObjectImpl implements State {
             InternalEObject oldOwner = (InternalEObject) owner;
             owner = (Participant) eResolveProxy(oldOwner);
             if (owner != oldOwner) {
-                if (eNotificationRequired()) {
+                if (eNotificationRequired())
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionsPackage.STATE__OWNER, oldOwner, owner));
-                }
             }
         }
         return owner;
@@ -172,9 +164,8 @@ public class StateImpl extends EObjectImpl implements State {
     public void setOwner(Participant newOwner) {
         Participant oldOwner = owner;
         owner = newOwner;
-        if (eNotificationRequired()) {
+        if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.STATE__OWNER, oldOwner, owner));
-        }
     }
 
     /**
@@ -188,9 +179,8 @@ public class StateImpl extends EObjectImpl implements State {
             InternalEObject oldStart = (InternalEObject) start;
             start = (StateEnd) eResolveProxy(oldStart);
             if (start != oldStart) {
-                if (eNotificationRequired()) {
+                if (eNotificationRequired())
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionsPackage.STATE__START, oldStart, start));
-                }
             }
         }
         return start;
@@ -214,9 +204,8 @@ public class StateImpl extends EObjectImpl implements State {
     public void setStart(StateEnd newStart) {
         StateEnd oldStart = start;
         start = newStart;
-        if (eNotificationRequired()) {
+        if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.STATE__START, oldStart, start));
-        }
     }
 
     /**
@@ -230,9 +219,8 @@ public class StateImpl extends EObjectImpl implements State {
             InternalEObject oldEnd = (InternalEObject) end;
             end = (StateEnd) eResolveProxy(oldEnd);
             if (end != oldEnd) {
-                if (eNotificationRequired()) {
+                if (eNotificationRequired())
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionsPackage.STATE__END, oldEnd, end));
-                }
             }
         }
         return end;
@@ -256,9 +244,8 @@ public class StateImpl extends EObjectImpl implements State {
     public void setEnd(StateEnd newEnd) {
         StateEnd oldEnd = end;
         end = newEnd;
-        if (eNotificationRequired()) {
+        if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.STATE__END, oldEnd, end));
-        }
     }
 
     /**
@@ -272,19 +259,16 @@ public class StateImpl extends EObjectImpl implements State {
         case InteractionsPackage.STATE__NAME:
             return getName();
         case InteractionsPackage.STATE__OWNER:
-            if (resolve) {
+            if (resolve)
                 return getOwner();
-            }
             return basicGetOwner();
         case InteractionsPackage.STATE__START:
-            if (resolve) {
+            if (resolve)
                 return getStart();
-            }
             return basicGetStart();
         case InteractionsPackage.STATE__END:
-            if (resolve) {
+            if (resolve)
                 return getEnd();
-            }
             return basicGetEnd();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -323,7 +307,7 @@ public class StateImpl extends EObjectImpl implements State {
     public void eUnset(int featureID) {
         switch (featureID) {
         case InteractionsPackage.STATE__NAME:
-            setName(StateImpl.NAME_EDEFAULT);
+            setName(NAME_EDEFAULT);
             return;
         case InteractionsPackage.STATE__OWNER:
             setOwner((Participant) null);
@@ -347,7 +331,7 @@ public class StateImpl extends EObjectImpl implements State {
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case InteractionsPackage.STATE__NAME:
-            return StateImpl.NAME_EDEFAULT == null ? name != null : !StateImpl.NAME_EDEFAULT.equals(name);
+            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
         case InteractionsPackage.STATE__OWNER:
             return owner != null;
         case InteractionsPackage.STATE__START:
@@ -365,11 +349,10 @@ public class StateImpl extends EObjectImpl implements State {
      */
     @Override
     public String toString() {
-        if (eIsProxy()) {
+        if (eIsProxy())
             return super.toString();
-        }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
         result.append(')');

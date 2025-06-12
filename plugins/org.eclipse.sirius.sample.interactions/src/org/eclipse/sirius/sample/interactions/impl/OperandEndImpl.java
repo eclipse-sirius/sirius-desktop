@@ -1,7 +1,7 @@
-/*******************************************************************************
- * Copyright (c) 2010, 2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License 2.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
  * https://www.eclipse.org/legal/epl-2.0/
  *
@@ -9,7 +9,7 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ */
 package org.eclipse.sirius.sample.interactions.impl;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -21,23 +21,20 @@ import org.eclipse.sirius.sample.interactions.Operand;
 import org.eclipse.sirius.sample.interactions.OperandEnd;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Operand End</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Operand End</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.impl.OperandEndImpl#getOwner
- * <em>Owner</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.OperandEndImpl#getOwner <em>Owner</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public class OperandEndImpl extends AbstractEndImpl implements OperandEnd {
     /**
-     * The cached value of the '{@link #getOwner() <em>Owner</em>}' reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getOwner() <em>Owner</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getOwner()
      * @generated
@@ -75,9 +72,8 @@ public class OperandEndImpl extends AbstractEndImpl implements OperandEnd {
             InternalEObject oldOwner = (InternalEObject) owner;
             owner = (Operand) eResolveProxy(oldOwner);
             if (owner != oldOwner) {
-                if (eNotificationRequired()) {
+                if (eNotificationRequired())
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionsPackage.OPERAND_END__OWNER, oldOwner, owner));
-                }
             }
         }
         return owner;
@@ -101,9 +97,8 @@ public class OperandEndImpl extends AbstractEndImpl implements OperandEnd {
     public void setOwner(Operand newOwner) {
         Operand oldOwner = owner;
         owner = newOwner;
-        if (eNotificationRequired()) {
+        if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.OPERAND_END__OWNER, oldOwner, owner));
-        }
     }
 
     /**
@@ -115,9 +110,8 @@ public class OperandEndImpl extends AbstractEndImpl implements OperandEnd {
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case InteractionsPackage.OPERAND_END__OWNER:
-            if (resolve) {
+            if (resolve)
                 return getOwner();
-            }
             return basicGetOwner();
         }
         return super.eGet(featureID, resolve, coreType);

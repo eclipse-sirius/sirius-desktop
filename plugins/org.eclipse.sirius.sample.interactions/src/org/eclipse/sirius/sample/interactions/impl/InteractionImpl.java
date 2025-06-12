@@ -1,7 +1,7 @@
-/*******************************************************************************
- * Copyright (c) 2010, 2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License 2.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
  * https://www.eclipse.org/legal/epl-2.0/
  *
@@ -9,7 +9,7 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ */
 package org.eclipse.sirius.sample.interactions.impl;
 
 import java.util.Collection;
@@ -35,47 +35,30 @@ import org.eclipse.sirius.sample.interactions.Participant;
 import org.eclipse.sirius.sample.interactions.State;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Interaction</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Interaction</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.impl.InteractionImpl#getName
- * <em>Name</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.impl.InteractionImpl#getParticipants
- * <em>Participants</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.impl.InteractionImpl#getMessages
- * <em>Messages</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.impl.InteractionImpl#getExecutions
- * <em>Executions</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.impl.InteractionImpl#getStates
- * <em>States</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.impl.InteractionImpl#getInteractionUses
- * <em>Interaction Uses</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.impl.InteractionImpl#getCombinedFragments
- * <em>Combined Fragments</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.impl.InteractionImpl#getEnds
- * <em>Ends</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.impl.InteractionImpl#getConstraints
- * <em>Constraints</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.InteractionImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.InteractionImpl#getParticipants <em>Participants</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.InteractionImpl#getMessages <em>Messages</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.InteractionImpl#getExecutions <em>Executions</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.InteractionImpl#getStates <em>States</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.InteractionImpl#getInteractionUses <em>Interaction
+ * Uses</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.InteractionImpl#getCombinedFragments <em>Combined
+ * Fragments</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.InteractionImpl#getEnds <em>Ends</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.InteractionImpl#getConstraints <em>Constraints</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public class InteractionImpl extends EObjectImpl implements Interaction {
     /**
-     * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
@@ -84,19 +67,18 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
     protected static final String NAME_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
      * @ordered
      */
-    protected String name = InteractionImpl.NAME_EDEFAULT;
+    protected String name = NAME_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getParticipants() <em>Participants</em>}
-     * ' containment reference list. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * The cached value of the '{@link #getParticipants() <em>Participants</em>}' containment reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getParticipants()
      * @generated
@@ -105,8 +87,8 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
     protected EList<Participant> participants;
 
     /**
-     * The cached value of the '{@link #getMessages() <em>Messages</em>}'
-     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getMessages() <em>Messages</em>}' containment reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getMessages()
      * @generated
@@ -115,8 +97,8 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
     protected EList<Message> messages;
 
     /**
-     * The cached value of the '{@link #getExecutions() <em>Executions</em>}'
-     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getExecutions() <em>Executions</em>}' containment reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getExecutions()
      * @generated
@@ -125,8 +107,8 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
     protected EList<Execution> executions;
 
     /**
-     * The cached value of the '{@link #getStates() <em>States</em>}'
-     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getStates() <em>States</em>}' containment reference list. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
      *
      * @see #getStates()
      * @generated
@@ -135,9 +117,8 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
     protected EList<State> states;
 
     /**
-     * The cached value of the '{@link #getInteractionUses()
-     * <em>Interaction Uses</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getInteractionUses() <em>Interaction Uses</em>}' containment reference list.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getInteractionUses()
      * @generated
@@ -146,9 +127,8 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
     protected EList<InteractionUse> interactionUses;
 
     /**
-     * The cached value of the '{@link #getCombinedFragments()
-     * <em>Combined Fragments</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getCombinedFragments() <em>Combined Fragments</em>}' containment reference list.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getCombinedFragments()
      * @generated
@@ -157,8 +137,8 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
     protected EList<CombinedFragment> combinedFragments;
 
     /**
-     * The cached value of the '{@link #getEnds() <em>Ends</em>}' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getEnds() <em>Ends</em>}' containment reference list. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      *
      * @see #getEnds()
      * @generated
@@ -167,8 +147,8 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
     protected EList<AbstractEnd> ends;
 
     /**
-     * The cached value of the '{@link #getConstraints() <em>Constraints</em>}'
-     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getConstraints() <em>Constraints</em>}' containment reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getConstraints()
      * @generated
@@ -214,9 +194,8 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired()) {
+        if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.INTERACTION__NAME, oldName, name));
-        }
     }
 
     /**
@@ -438,7 +417,7 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
     public void eUnset(int featureID) {
         switch (featureID) {
         case InteractionsPackage.INTERACTION__NAME:
-            setName(InteractionImpl.NAME_EDEFAULT);
+            setName(NAME_EDEFAULT);
             return;
         case InteractionsPackage.INTERACTION__PARTICIPANTS:
             getParticipants().clear();
@@ -477,7 +456,7 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case InteractionsPackage.INTERACTION__NAME:
-            return InteractionImpl.NAME_EDEFAULT == null ? name != null : !InteractionImpl.NAME_EDEFAULT.equals(name);
+            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
         case InteractionsPackage.INTERACTION__PARTICIPANTS:
             return participants != null && !participants.isEmpty();
         case InteractionsPackage.INTERACTION__MESSAGES:
@@ -505,11 +484,10 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
      */
     @Override
     public String toString() {
-        if (eIsProxy()) {
+        if (eIsProxy())
             return super.toString();
-        }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
         result.append(')');
