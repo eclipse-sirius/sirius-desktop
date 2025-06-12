@@ -186,13 +186,22 @@ public interface InteractionsPackage extends EPackage {
     int INTERACTION__CONSTRAINTS = 8;
 
     /**
+     * The feature id for the '<em><b>Owned Gates</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int INTERACTION__OWNED_GATES = 9;
+
+    /**
      * The number of structural features of the '<em>Interaction</em>' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
      *
      * @generated
      * @ordered
      */
-    int INTERACTION_FEATURE_COUNT = 9;
+    int INTERACTION_FEATURE_COUNT = 10;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.sample.interactions.impl.ParticipantImpl
@@ -672,13 +681,22 @@ public interface InteractionsPackage extends EPackage {
     int INTERACTION_USE__FINISH = 4;
 
     /**
+     * The feature id for the '<em><b>Owned Gates</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int INTERACTION_USE__OWNED_GATES = 5;
+
+    /**
      * The number of structural features of the '<em>Interaction Use</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_FEATURE_COUNT = 5;
+    int INTERACTION_USE_FEATURE_COUNT = 6;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.sample.interactions.impl.CombinedFragmentImpl <em>Combined
@@ -733,13 +751,22 @@ public interface InteractionsPackage extends EPackage {
     int COMBINED_FRAGMENT__OWNED_OPERANDS = 4;
 
     /**
+     * The feature id for the '<em><b>Owned Gates</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int COMBINED_FRAGMENT__OWNED_GATES = 5;
+
+    /**
      * The number of structural features of the '<em>Combined Fragment</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_FEATURE_COUNT = 5;
+    int COMBINED_FRAGMENT_FEATURE_COUNT = 6;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.sample.interactions.impl.OperandImpl <em>Operand</em>}'
@@ -776,6 +803,32 @@ public interface InteractionsPackage extends EPackage {
     int OPERAND_FEATURE_COUNT = 2;
 
     /**
+     * The meta object id for the '{@link org.eclipse.sirius.sample.interactions.impl.GateImpl <em>Gate</em>}' class.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see org.eclipse.sirius.sample.interactions.impl.GateImpl
+     * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getGate()
+     * @generated
+     */
+    int GATE = 14;
+
+    /**
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GATE__NAME = 0;
+
+    /**
+     * The number of structural features of the '<em>Gate</em>' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GATE_FEATURE_COUNT = 1;
+
+    /**
      * The meta object id for the '{@link org.eclipse.sirius.sample.interactions.impl.AbstractEndImpl <em>Abstract
      * End</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -783,7 +836,7 @@ public interface InteractionsPackage extends EPackage {
      * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getAbstractEnd()
      * @generated
      */
-    int ABSTRACT_END = 14;
+    int ABSTRACT_END = 15;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -818,7 +871,7 @@ public interface InteractionsPackage extends EPackage {
      * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getMessageEnd()
      * @generated
      */
-    int MESSAGE_END = 15;
+    int MESSAGE_END = 16;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -845,13 +898,21 @@ public interface InteractionsPackage extends EPackage {
     int MESSAGE_END__MESSAGE = ABSTRACT_END_FEATURE_COUNT + 0;
 
     /**
+     * The feature id for the '<em><b>Gate</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int MESSAGE_END__GATE = ABSTRACT_END_FEATURE_COUNT + 1;
+
+    /**
      * The number of structural features of the '<em>Message End</em>' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
      *
      * @generated
      * @ordered
      */
-    int MESSAGE_END_FEATURE_COUNT = ABSTRACT_END_FEATURE_COUNT + 1;
+    int MESSAGE_END_FEATURE_COUNT = ABSTRACT_END_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.sample.interactions.impl.ExecutionEndImpl <em>Execution
@@ -861,7 +922,7 @@ public interface InteractionsPackage extends EPackage {
      * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getExecutionEnd()
      * @generated
      */
-    int EXECUTION_END = 16;
+    int EXECUTION_END = 17;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -904,7 +965,7 @@ public interface InteractionsPackage extends EPackage {
      * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getStateEnd()
      * @generated
      */
-    int STATE_END = 17;
+    int STATE_END = 18;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -947,7 +1008,7 @@ public interface InteractionsPackage extends EPackage {
      * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getInteractionUseEnd()
      * @generated
      */
-    int INTERACTION_USE_END = 18;
+    int INTERACTION_USE_END = 19;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -990,7 +1051,7 @@ public interface InteractionsPackage extends EPackage {
      * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getCombinedFragmentEnd()
      * @generated
      */
-    int COMBINED_FRAGMENT_END = 19;
+    int COMBINED_FRAGMENT_END = 20;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1033,7 +1094,7 @@ public interface InteractionsPackage extends EPackage {
      * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getOperandEnd()
      * @generated
      */
-    int OPERAND_END = 20;
+    int OPERAND_END = 21;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1076,7 +1137,7 @@ public interface InteractionsPackage extends EPackage {
      * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getMixEnd()
      * @generated
      */
-    int MIX_END = 21;
+    int MIX_END = 22;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1111,12 +1172,20 @@ public interface InteractionsPackage extends EPackage {
     int MIX_END__MESSAGE = EXECUTION_END_FEATURE_COUNT + 0;
 
     /**
+     * The feature id for the '<em><b>Gate</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int MIX_END__GATE = EXECUTION_END_FEATURE_COUNT + 1;
+
+    /**
      * The number of structural features of the '<em>Mix End</em>' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int MIX_END_FEATURE_COUNT = EXECUTION_END_FEATURE_COUNT + 1;
+    int MIX_END_FEATURE_COUNT = EXECUTION_END_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.sample.interactions.impl.ConstraintImpl
@@ -1126,7 +1195,7 @@ public interface InteractionsPackage extends EPackage {
      * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getConstraint()
      * @generated
      */
-    int CONSTRAINT = 22;
+    int CONSTRAINT = 23;
 
     /**
      * The feature id for the '<em><b>Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1303,6 +1372,18 @@ public interface InteractionsPackage extends EPackage {
      * @generated
      */
     EReference getInteraction_Constraints();
+
+    /**
+     * Returns the meta object for the containment reference list
+     * '{@link org.eclipse.sirius.sample.interactions.Interaction#getOwnedGates <em>Owned Gates</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the containment reference list '<em>Owned Gates</em>'.
+     * @see org.eclipse.sirius.sample.interactions.Interaction#getOwnedGates()
+     * @see #getInteraction()
+     * @generated
+     */
+    EReference getInteraction_OwnedGates();
 
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.sample.interactions.Participant
@@ -1652,6 +1733,18 @@ public interface InteractionsPackage extends EPackage {
     EReference getInteractionUse_Finish();
 
     /**
+     * Returns the meta object for the containment reference list
+     * '{@link org.eclipse.sirius.sample.interactions.InteractionUse#getOwnedGates <em>Owned Gates</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the containment reference list '<em>Owned Gates</em>'.
+     * @see org.eclipse.sirius.sample.interactions.InteractionUse#getOwnedGates()
+     * @see #getInteractionUse()
+     * @generated
+     */
+    EReference getInteractionUse_OwnedGates();
+
+    /**
      * Returns the meta object for class '{@link org.eclipse.sirius.sample.interactions.CombinedFragment <em>Combined
      * Fragment</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -1722,6 +1815,18 @@ public interface InteractionsPackage extends EPackage {
     EReference getCombinedFragment_OwnedOperands();
 
     /**
+     * Returns the meta object for the containment reference list
+     * '{@link org.eclipse.sirius.sample.interactions.CombinedFragment#getOwnedGates <em>Owned Gates</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the containment reference list '<em>Owned Gates</em>'.
+     * @see org.eclipse.sirius.sample.interactions.CombinedFragment#getOwnedGates()
+     * @see #getCombinedFragment()
+     * @generated
+     */
+    EReference getCombinedFragment_OwnedGates();
+
+    /**
      * Returns the meta object for class '{@link org.eclipse.sirius.sample.interactions.Operand <em>Operand</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -1752,6 +1857,27 @@ public interface InteractionsPackage extends EPackage {
      * @generated
      */
     EReference getOperand_Start();
+
+    /**
+     * Returns the meta object for class '{@link org.eclipse.sirius.sample.interactions.Gate <em>Gate</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for class '<em>Gate</em>'.
+     * @see org.eclipse.sirius.sample.interactions.Gate
+     * @generated
+     */
+    EClass getGate();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.eclipse.sirius.sample.interactions.Gate#getName
+     * <em>Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Name</em>'.
+     * @see org.eclipse.sirius.sample.interactions.Gate#getName()
+     * @see #getGate()
+     * @generated
+     */
+    EAttribute getGate_Name();
 
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.sample.interactions.AbstractEnd <em>Abstract
@@ -1805,6 +1931,17 @@ public interface InteractionsPackage extends EPackage {
      * @generated
      */
     EReference getMessageEnd_Message();
+
+    /**
+     * Returns the meta object for the reference '{@link org.eclipse.sirius.sample.interactions.MessageEnd#getGate
+     * <em>Gate</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the reference '<em>Gate</em>'.
+     * @see org.eclipse.sirius.sample.interactions.MessageEnd#getGate()
+     * @see #getMessageEnd()
+     * @generated
+     */
+    EReference getMessageEnd_Gate();
 
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.sample.interactions.ExecutionEnd <em>Execution
@@ -2087,6 +2224,14 @@ public interface InteractionsPackage extends EPackage {
         EReference INTERACTION__CONSTRAINTS = eINSTANCE.getInteraction_Constraints();
 
         /**
+         * The meta object literal for the '<em><b>Owned Gates</b></em>' containment reference list feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference INTERACTION__OWNED_GATES = eINSTANCE.getInteraction_OwnedGates();
+
+        /**
          * The meta object literal for the '{@link org.eclipse.sirius.sample.interactions.impl.ParticipantImpl
          * <em>Participant</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
@@ -2365,6 +2510,14 @@ public interface InteractionsPackage extends EPackage {
         EReference INTERACTION_USE__FINISH = eINSTANCE.getInteractionUse_Finish();
 
         /**
+         * The meta object literal for the '<em><b>Owned Gates</b></em>' containment reference list feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference INTERACTION_USE__OWNED_GATES = eINSTANCE.getInteractionUse_OwnedGates();
+
+        /**
          * The meta object literal for the '{@link org.eclipse.sirius.sample.interactions.impl.CombinedFragmentImpl
          * <em>Combined Fragment</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
@@ -2415,6 +2568,14 @@ public interface InteractionsPackage extends EPackage {
         EReference COMBINED_FRAGMENT__OWNED_OPERANDS = eINSTANCE.getCombinedFragment_OwnedOperands();
 
         /**
+         * The meta object literal for the '<em><b>Owned Gates</b></em>' containment reference list feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference COMBINED_FRAGMENT__OWNED_GATES = eINSTANCE.getCombinedFragment_OwnedGates();
+
+        /**
          * The meta object literal for the '{@link org.eclipse.sirius.sample.interactions.impl.OperandImpl
          * <em>Operand</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
@@ -2439,6 +2600,24 @@ public interface InteractionsPackage extends EPackage {
          * @generated
          */
         EReference OPERAND__START = eINSTANCE.getOperand_Start();
+
+        /**
+         * The meta object literal for the '{@link org.eclipse.sirius.sample.interactions.impl.GateImpl <em>Gate</em>}'
+         * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @see org.eclipse.sirius.sample.interactions.impl.GateImpl
+         * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getGate()
+         * @generated
+         */
+        EClass GATE = eINSTANCE.getGate();
+
+        /**
+         * The meta object literal for the '<em><b>Name</b></em>' attribute feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute GATE__NAME = eINSTANCE.getGate_Name();
 
         /**
          * The meta object literal for the '{@link org.eclipse.sirius.sample.interactions.impl.AbstractEndImpl
@@ -2483,6 +2662,14 @@ public interface InteractionsPackage extends EPackage {
          * @generated
          */
         EReference MESSAGE_END__MESSAGE = eINSTANCE.getMessageEnd_Message();
+
+        /**
+         * The meta object literal for the '<em><b>Gate</b></em>' reference feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EReference MESSAGE_END__GATE = eINSTANCE.getMessageEnd_Gate();
 
         /**
          * The meta object literal for the '{@link org.eclipse.sirius.sample.interactions.impl.ExecutionEndImpl

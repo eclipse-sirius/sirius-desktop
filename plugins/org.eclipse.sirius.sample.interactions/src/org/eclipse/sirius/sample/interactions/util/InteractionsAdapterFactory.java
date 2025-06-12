@@ -4,9 +4,9 @@
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
  * https://www.eclipse.org/legal/epl-2.0/
- * 
+ *
  * SPDX-License-Identifier: EPL-2.0
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  */
@@ -14,34 +14,52 @@ package org.eclipse.sirius.sample.interactions.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.sample.interactions.*;
+import org.eclipse.sirius.sample.interactions.AbstractEnd;
+import org.eclipse.sirius.sample.interactions.CallMessage;
+import org.eclipse.sirius.sample.interactions.CombinedFragment;
+import org.eclipse.sirius.sample.interactions.CombinedFragmentEnd;
+import org.eclipse.sirius.sample.interactions.Constraint;
+import org.eclipse.sirius.sample.interactions.CreateParticipantMessage;
+import org.eclipse.sirius.sample.interactions.DestroyParticipantMessage;
+import org.eclipse.sirius.sample.interactions.Execution;
+import org.eclipse.sirius.sample.interactions.ExecutionEnd;
+import org.eclipse.sirius.sample.interactions.FeatureAccessMessage;
+import org.eclipse.sirius.sample.interactions.Gate;
+import org.eclipse.sirius.sample.interactions.Interaction;
+import org.eclipse.sirius.sample.interactions.InteractionUse;
+import org.eclipse.sirius.sample.interactions.InteractionUseEnd;
+import org.eclipse.sirius.sample.interactions.InteractionsPackage;
+import org.eclipse.sirius.sample.interactions.Message;
+import org.eclipse.sirius.sample.interactions.MessageEnd;
+import org.eclipse.sirius.sample.interactions.MixEnd;
+import org.eclipse.sirius.sample.interactions.Model;
+import org.eclipse.sirius.sample.interactions.Operand;
+import org.eclipse.sirius.sample.interactions.OperandEnd;
+import org.eclipse.sirius.sample.interactions.Participant;
+import org.eclipse.sirius.sample.interactions.ReturnMessage;
+import org.eclipse.sirius.sample.interactions.State;
+import org.eclipse.sirius.sample.interactions.StateEnd;
 
 /**
- * <!-- begin-user-doc -->
- * The <b>Adapter Factory</b> for the model.
- * It provides an adapter <code>createXXX</code> method for each class of the model.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> The <b>Adapter Factory</b> for the model. It provides an adapter <code>createXXX</code>
+ * method for each class of the model. <!-- end-user-doc -->
+ *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage
  * @generated
  */
 public class InteractionsAdapterFactory extends AdapterFactoryImpl {
     /**
-     * The cached model package.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached model package. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     protected static InteractionsPackage modelPackage;
 
     /**
-     * Creates an instance of the adapter factory.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Creates an instance of the adapter factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     public InteractionsAdapterFactory() {
@@ -51,10 +69,10 @@ public class InteractionsAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Returns whether this factory is applicable for the type of the object.
-     * <!-- begin-user-doc -->
-     * This implementation returns <code>true</code> if the object is either the model's package or is an instance object of the model.
-     * <!-- end-user-doc -->
+     * Returns whether this factory is applicable for the type of the object. <!-- begin-user-doc --> This
+     * implementation returns <code>true</code> if the object is either the model's package or is an instance object of
+     * the model. <!-- end-user-doc -->
+     *
      * @return whether this factory is applicable for the type of the object.
      * @generated
      */
@@ -70,9 +88,8 @@ public class InteractionsAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * The switch that delegates to the <code>createXXX</code> methods.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The switch that delegates to the <code>createXXX</code> methods. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     protected InteractionsSwitch<Adapter> modelSwitch = new InteractionsSwitch<Adapter>() {
@@ -147,6 +164,11 @@ public class InteractionsAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
+        public Adapter caseGate(Gate object) {
+            return createGateAdapter();
+        }
+
+        @Override
         public Adapter caseAbstractEnd(AbstractEnd object) {
             return createAbstractEndAdapter();
         }
@@ -198,10 +220,10 @@ public class InteractionsAdapterFactory extends AdapterFactoryImpl {
     };
 
     /**
-     * Creates an adapter for the <code>target</code>.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param target the object to adapt.
+     * Creates an adapter for the <code>target</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @param target
+     *            the object to adapt.
      * @return the adapter for the <code>target</code>.
      * @generated
      */
@@ -211,11 +233,10 @@ public class InteractionsAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.Model <em>Model</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.Model
+     * <em>Model</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.sample.interactions.Model
      * @generated
@@ -225,11 +246,11 @@ public class InteractionsAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.Interaction <em>Interaction</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.Interaction
+     * <em>Interaction</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+     * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc
+     * -->
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.sample.interactions.Interaction
      * @generated
@@ -239,11 +260,11 @@ public class InteractionsAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.Participant <em>Participant</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.Participant
+     * <em>Participant</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+     * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc
+     * -->
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.sample.interactions.Participant
      * @generated
@@ -253,11 +274,10 @@ public class InteractionsAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.Message <em>Message</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.Message
+     * <em>Message</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.sample.interactions.Message
      * @generated
@@ -267,11 +287,10 @@ public class InteractionsAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.CallMessage <em>Call Message</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.CallMessage <em>Call
+     * Message</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.sample.interactions.CallMessage
      * @generated
@@ -281,11 +300,11 @@ public class InteractionsAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.FeatureAccessMessage <em>Feature Access Message</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.FeatureAccessMessage
+     * <em>Feature Access Message</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we
+     * can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.sample.interactions.FeatureAccessMessage
      * @generated
@@ -295,11 +314,11 @@ public class InteractionsAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.CreateParticipantMessage <em>Create Participant Message</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class
+     * '{@link org.eclipse.sirius.sample.interactions.CreateParticipantMessage <em>Create Participant Message</em>}'.
+     * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful
+     * to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.sample.interactions.CreateParticipantMessage
      * @generated
@@ -309,11 +328,11 @@ public class InteractionsAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.DestroyParticipantMessage <em>Destroy Participant Message</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class
+     * '{@link org.eclipse.sirius.sample.interactions.DestroyParticipantMessage <em>Destroy Participant Message</em>}'.
+     * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful
+     * to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.sample.interactions.DestroyParticipantMessage
      * @generated
@@ -323,11 +342,11 @@ public class InteractionsAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.ReturnMessage <em>Return Message</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.ReturnMessage
+     * <em>Return Message</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+     * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc
+     * -->
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.sample.interactions.ReturnMessage
      * @generated
@@ -337,11 +356,11 @@ public class InteractionsAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.Execution <em>Execution</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.Execution
+     * <em>Execution</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+     * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc
+     * -->
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.sample.interactions.Execution
      * @generated
@@ -351,11 +370,10 @@ public class InteractionsAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.State <em>State</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.State
+     * <em>State</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.sample.interactions.State
      * @generated
@@ -365,11 +383,11 @@ public class InteractionsAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.InteractionUse <em>Interaction Use</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.InteractionUse
+     * <em>Interaction Use</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+     * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.sample.interactions.InteractionUse
      * @generated
@@ -379,11 +397,11 @@ public class InteractionsAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.CombinedFragment <em>Combined Fragment</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.CombinedFragment
+     * <em>Combined Fragment</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+     * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.sample.interactions.CombinedFragment
      * @generated
@@ -393,11 +411,10 @@ public class InteractionsAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.Operand <em>Operand</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.Operand
+     * <em>Operand</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.sample.interactions.Operand
      * @generated
@@ -407,11 +424,24 @@ public class InteractionsAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.AbstractEnd <em>Abstract End</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.Gate <em>Gate</em>}'.
+     * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful
+     * to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.sample.interactions.Gate
+     * @generated
+     */
+    public Adapter createGateAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.AbstractEnd
+     * <em>Abstract End</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+     * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc
+     * -->
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.sample.interactions.AbstractEnd
      * @generated
@@ -421,11 +451,11 @@ public class InteractionsAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.MessageEnd <em>Message End</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.MessageEnd
+     * <em>Message End</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+     * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc
+     * -->
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.sample.interactions.MessageEnd
      * @generated
@@ -435,11 +465,11 @@ public class InteractionsAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.ExecutionEnd <em>Execution End</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.ExecutionEnd
+     * <em>Execution End</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+     * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc
+     * -->
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.sample.interactions.ExecutionEnd
      * @generated
@@ -449,11 +479,10 @@ public class InteractionsAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.StateEnd <em>State End</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.StateEnd <em>State
+     * End</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.sample.interactions.StateEnd
      * @generated
@@ -463,11 +492,11 @@ public class InteractionsAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.InteractionUseEnd <em>Interaction Use End</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.InteractionUseEnd
+     * <em>Interaction Use End</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+     * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.sample.interactions.InteractionUseEnd
      * @generated
@@ -477,11 +506,11 @@ public class InteractionsAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.CombinedFragmentEnd <em>Combined Fragment End</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.CombinedFragmentEnd
+     * <em>Combined Fragment End</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+     * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.sample.interactions.CombinedFragmentEnd
      * @generated
@@ -491,11 +520,11 @@ public class InteractionsAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.OperandEnd <em>Operand End</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.OperandEnd
+     * <em>Operand End</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+     * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc
+     * -->
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.sample.interactions.OperandEnd
      * @generated
@@ -505,11 +534,10 @@ public class InteractionsAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.MixEnd <em>Mix End</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.MixEnd <em>Mix
+     * End</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.sample.interactions.MixEnd
      * @generated
@@ -519,11 +547,11 @@ public class InteractionsAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.Constraint <em>Constraint</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.Constraint
+     * <em>Constraint</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+     * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc
+     * -->
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.sample.interactions.Constraint
      * @generated
@@ -533,10 +561,9 @@ public class InteractionsAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for the default case.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null.
+     * Creates a new adapter for the default case. <!-- begin-user-doc --> This default implementation returns null.
      * <!-- end-user-doc -->
+     *
      * @return the new adapter.
      * @generated
      */
@@ -544,4 +571,4 @@ public class InteractionsAdapterFactory extends AdapterFactoryImpl {
         return null;
     }
 
-} //InteractionsAdapterFactory
+} // InteractionsAdapterFactory

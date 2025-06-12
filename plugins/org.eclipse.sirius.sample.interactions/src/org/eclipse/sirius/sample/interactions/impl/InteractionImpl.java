@@ -27,6 +27,7 @@ import org.eclipse.sirius.sample.interactions.AbstractEnd;
 import org.eclipse.sirius.sample.interactions.CombinedFragment;
 import org.eclipse.sirius.sample.interactions.Constraint;
 import org.eclipse.sirius.sample.interactions.Execution;
+import org.eclipse.sirius.sample.interactions.Gate;
 import org.eclipse.sirius.sample.interactions.Interaction;
 import org.eclipse.sirius.sample.interactions.InteractionUse;
 import org.eclipse.sirius.sample.interactions.InteractionsPackage;
@@ -51,6 +52,7 @@ import org.eclipse.sirius.sample.interactions.State;
  * Fragments</em>}</li>
  * <li>{@link org.eclipse.sirius.sample.interactions.impl.InteractionImpl#getEnds <em>Ends</em>}</li>
  * <li>{@link org.eclipse.sirius.sample.interactions.impl.InteractionImpl#getConstraints <em>Constraints</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.InteractionImpl#getOwnedGates <em>Owned Gates</em>}</li>
  * </ul>
  *
  * @generated
@@ -155,6 +157,16 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
      * @ordered
      */
     protected EList<Constraint> constraints;
+
+    /**
+     * The cached value of the '{@link #getOwnedGates() <em>Owned Gates</em>}' containment reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #getOwnedGates()
+     * @generated
+     * @ordered
+     */
+    protected EList<Gate> ownedGates;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -308,6 +320,19 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
      * @generated
      */
     @Override
+    public EList<Gate> getOwnedGates() {
+        if (ownedGates == null) {
+            ownedGates = new EObjectContainmentEList<Gate>(Gate.class, this, InteractionsPackage.INTERACTION__OWNED_GATES);
+        }
+        return ownedGates;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case InteractionsPackage.INTERACTION__PARTICIPANTS:
@@ -326,6 +351,8 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
             return ((InternalEList<?>) getEnds()).basicRemove(otherEnd, msgs);
         case InteractionsPackage.INTERACTION__CONSTRAINTS:
             return ((InternalEList<?>) getConstraints()).basicRemove(otherEnd, msgs);
+        case InteractionsPackage.INTERACTION__OWNED_GATES:
+            return ((InternalEList<?>) getOwnedGates()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -356,6 +383,8 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
             return getEnds();
         case InteractionsPackage.INTERACTION__CONSTRAINTS:
             return getConstraints();
+        case InteractionsPackage.INTERACTION__OWNED_GATES:
+            return getOwnedGates();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -404,6 +433,10 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
             getConstraints().clear();
             getConstraints().addAll((Collection<? extends Constraint>) newValue);
             return;
+        case InteractionsPackage.INTERACTION__OWNED_GATES:
+            getOwnedGates().clear();
+            getOwnedGates().addAll((Collection<? extends Gate>) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -443,6 +476,9 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
         case InteractionsPackage.INTERACTION__CONSTRAINTS:
             getConstraints().clear();
             return;
+        case InteractionsPackage.INTERACTION__OWNED_GATES:
+            getOwnedGates().clear();
+            return;
         }
         super.eUnset(featureID);
     }
@@ -473,6 +509,8 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
             return ends != null && !ends.isEmpty();
         case InteractionsPackage.INTERACTION__CONSTRAINTS:
             return constraints != null && !constraints.isEmpty();
+        case InteractionsPackage.INTERACTION__OWNED_GATES:
+            return ownedGates != null && !ownedGates.isEmpty();
         }
         return super.eIsSet(featureID);
     }

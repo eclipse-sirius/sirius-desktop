@@ -26,6 +26,7 @@ import org.eclipse.sirius.sample.interactions.DestroyParticipantMessage;
 import org.eclipse.sirius.sample.interactions.Execution;
 import org.eclipse.sirius.sample.interactions.ExecutionEnd;
 import org.eclipse.sirius.sample.interactions.FeatureAccessMessage;
+import org.eclipse.sirius.sample.interactions.Gate;
 import org.eclipse.sirius.sample.interactions.Interaction;
 import org.eclipse.sirius.sample.interactions.InteractionUse;
 import org.eclipse.sirius.sample.interactions.InteractionUseEnd;
@@ -209,6 +210,13 @@ public class InteractionsSwitch<T> {
         case InteractionsPackage.OPERAND: {
             Operand operand = (Operand) theEObject;
             T result = caseOperand(operand);
+            if (result == null)
+                result = defaultCase(theEObject);
+            return result;
+        }
+        case InteractionsPackage.GATE: {
+            Gate gate = (Gate) theEObject;
+            T result = caseGate(gate);
             if (result == null)
                 result = defaultCase(theEObject);
             return result;
@@ -498,6 +506,20 @@ public class InteractionsSwitch<T> {
      * @generated
      */
     public T caseOperand(Operand object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Gate</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Gate</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseGate(Gate object) {
         return null;
     }
 

@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.EObject;
  * Participants</em>}</li>
  * <li>{@link org.eclipse.sirius.sample.interactions.InteractionUse#getStart <em>Start</em>}</li>
  * <li>{@link org.eclipse.sirius.sample.interactions.InteractionUse#getFinish <em>Finish</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.interactions.InteractionUse#getOwnedGates <em>Owned Gates</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getInteractionUse()
@@ -137,5 +138,16 @@ public interface InteractionUse extends EObject {
      * @generated
      */
     void setFinish(InteractionUseEnd value);
+
+    /**
+     * Returns the value of the '<em><b>Owned Gates</b></em>' containment reference list. The list contents are of type
+     * {@link org.eclipse.sirius.sample.interactions.Gate}. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Owned Gates</em>' containment reference list.
+     * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getInteractionUse_OwnedGates()
+     * @model containment="true"
+     * @generated
+     */
+    EList<Gate> getOwnedGates();
 
 } // InteractionUse

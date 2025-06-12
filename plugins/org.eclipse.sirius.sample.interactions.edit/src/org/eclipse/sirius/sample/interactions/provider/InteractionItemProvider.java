@@ -134,6 +134,7 @@ public class InteractionItemProvider extends ItemProviderAdapter
             childrenFeatures.add(InteractionsPackage.Literals.INTERACTION__COMBINED_FRAGMENTS);
             childrenFeatures.add(InteractionsPackage.Literals.INTERACTION__ENDS);
             childrenFeatures.add(InteractionsPackage.Literals.INTERACTION__CONSTRAINTS);
+            childrenFeatures.add(InteractionsPackage.Literals.INTERACTION__OWNED_GATES);
         }
         return childrenFeatures;
     }
@@ -196,6 +197,7 @@ public class InteractionItemProvider extends ItemProviderAdapter
         case InteractionsPackage.INTERACTION__COMBINED_FRAGMENTS:
         case InteractionsPackage.INTERACTION__ENDS:
         case InteractionsPackage.INTERACTION__CONSTRAINTS:
+        case InteractionsPackage.INTERACTION__OWNED_GATES:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -247,6 +249,8 @@ public class InteractionItemProvider extends ItemProviderAdapter
         newChildDescriptors.add(createChildParameter(InteractionsPackage.Literals.INTERACTION__ENDS, InteractionsFactory.eINSTANCE.createMixEnd()));
 
         newChildDescriptors.add(createChildParameter(InteractionsPackage.Literals.INTERACTION__CONSTRAINTS, InteractionsFactory.eINSTANCE.createConstraint()));
+
+        newChildDescriptors.add(createChildParameter(InteractionsPackage.Literals.INTERACTION__OWNED_GATES, InteractionsFactory.eINSTANCE.createGate()));
     }
 
     /**
