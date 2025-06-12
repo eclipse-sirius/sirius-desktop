@@ -20,6 +20,7 @@ package org.eclipse.sirius.sample.interactions;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.sample.interactions.MessageEnd#getMessage <em>Message</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.interactions.MessageEnd#getGate <em>Gate</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getMessageEnd()
@@ -48,5 +49,27 @@ public interface MessageEnd extends AbstractEnd {
      * @generated
      */
     void setMessage(Message value);
+
+    /**
+     * Returns the value of the '<em><b>Gate</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Gate</em>' reference.
+     * @see #setGate(Gate)
+     * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getMessageEnd_Gate()
+     * @model
+     * @generated
+     */
+    Gate getGate();
+
+    /**
+     * Sets the value of the '{@link org.eclipse.sirius.sample.interactions.MessageEnd#getGate <em>Gate</em>}'
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @param value
+     *            the new value of the '<em>Gate</em>' reference.
+     * @see #getGate()
+     * @generated
+     */
+    void setGate(Gate value);
 
 } // MessageEnd

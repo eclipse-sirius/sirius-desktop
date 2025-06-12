@@ -49,6 +49,7 @@ public class MessageEndItemProvider extends AbstractEndItemProvider {
             super.getPropertyDescriptors(object);
 
             addMessagePropertyDescriptor(object);
+            addGatePropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -63,6 +64,17 @@ public class MessageEndItemProvider extends AbstractEndItemProvider {
                 .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_MessageEnd_message_feature"), //$NON-NLS-1$
                         getString("_UI_PropertyDescriptor_description", "_UI_MessageEnd_message_feature", "_UI_MessageEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                         InteractionsPackage.Literals.MESSAGE_END__MESSAGE, true, false, true, null, null, null));
+    }
+
+    /**
+     * This adds a property descriptor for the Gate feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addGatePropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_MessageEnd_gate_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_MessageEnd_gate_feature", "_UI_MessageEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                InteractionsPackage.Literals.MESSAGE_END__GATE, true, false, true, null, null, null));
     }
 
     /**

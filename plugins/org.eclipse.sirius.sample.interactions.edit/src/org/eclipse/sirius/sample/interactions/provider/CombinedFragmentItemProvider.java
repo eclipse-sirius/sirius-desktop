@@ -130,6 +130,7 @@ public class CombinedFragmentItemProvider extends ItemProviderAdapter
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
             childrenFeatures.add(InteractionsPackage.Literals.COMBINED_FRAGMENT__OWNED_OPERANDS);
+            childrenFeatures.add(InteractionsPackage.Literals.COMBINED_FRAGMENT__OWNED_GATES);
         }
         return childrenFeatures;
     }
@@ -185,6 +186,7 @@ public class CombinedFragmentItemProvider extends ItemProviderAdapter
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         case InteractionsPackage.COMBINED_FRAGMENT__OWNED_OPERANDS:
+        case InteractionsPackage.COMBINED_FRAGMENT__OWNED_GATES:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -202,6 +204,8 @@ public class CombinedFragmentItemProvider extends ItemProviderAdapter
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
         newChildDescriptors.add(createChildParameter(InteractionsPackage.Literals.COMBINED_FRAGMENT__OWNED_OPERANDS, InteractionsFactory.eINSTANCE.createOperand()));
+
+        newChildDescriptors.add(createChildParameter(InteractionsPackage.Literals.COMBINED_FRAGMENT__OWNED_GATES, InteractionsFactory.eINSTANCE.createGate()));
     }
 
     /**

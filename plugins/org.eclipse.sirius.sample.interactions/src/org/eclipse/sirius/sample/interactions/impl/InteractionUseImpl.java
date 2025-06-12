@@ -15,12 +15,16 @@ package org.eclipse.sirius.sample.interactions.impl;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.sirius.sample.interactions.Gate;
 import org.eclipse.sirius.sample.interactions.Interaction;
 import org.eclipse.sirius.sample.interactions.InteractionUse;
 import org.eclipse.sirius.sample.interactions.InteractionUseEnd;
@@ -40,6 +44,7 @@ import org.eclipse.sirius.sample.interactions.Participant;
  * Participants</em>}</li>
  * <li>{@link org.eclipse.sirius.sample.interactions.impl.InteractionUseImpl#getStart <em>Start</em>}</li>
  * <li>{@link org.eclipse.sirius.sample.interactions.impl.InteractionUseImpl#getFinish <em>Finish</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.InteractionUseImpl#getOwnedGates <em>Owned Gates</em>}</li>
  * </ul>
  *
  * @generated
@@ -104,6 +109,16 @@ public class InteractionUseImpl extends EObjectImpl implements InteractionUse {
      * @ordered
      */
     protected InteractionUseEnd finish;
+
+    /**
+     * The cached value of the '{@link #getOwnedGates() <em>Owned Gates</em>}' containment reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #getOwnedGates()
+     * @generated
+     * @ordered
+     */
+    protected EList<Gate> ownedGates;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -286,6 +301,33 @@ public class InteractionUseImpl extends EObjectImpl implements InteractionUse {
      * @generated
      */
     @Override
+    public EList<Gate> getOwnedGates() {
+        if (ownedGates == null) {
+            ownedGates = new EObjectContainmentEList<Gate>(Gate.class, this, InteractionsPackage.INTERACTION_USE__OWNED_GATES);
+        }
+        return ownedGates;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+        switch (featureID) {
+        case InteractionsPackage.INTERACTION_USE__OWNED_GATES:
+            return ((InternalEList<?>) getOwnedGates()).basicRemove(otherEnd, msgs);
+        }
+        return super.eInverseRemove(otherEnd, featureID, msgs);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case InteractionsPackage.INTERACTION_USE__TYPE:
@@ -304,6 +346,8 @@ public class InteractionUseImpl extends EObjectImpl implements InteractionUse {
             if (resolve)
                 return getFinish();
             return basicGetFinish();
+        case InteractionsPackage.INTERACTION_USE__OWNED_GATES:
+            return getOwnedGates();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -333,6 +377,10 @@ public class InteractionUseImpl extends EObjectImpl implements InteractionUse {
         case InteractionsPackage.INTERACTION_USE__FINISH:
             setFinish((InteractionUseEnd) newValue);
             return;
+        case InteractionsPackage.INTERACTION_USE__OWNED_GATES:
+            getOwnedGates().clear();
+            getOwnedGates().addAll((Collection<? extends Gate>) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -360,6 +408,9 @@ public class InteractionUseImpl extends EObjectImpl implements InteractionUse {
         case InteractionsPackage.INTERACTION_USE__FINISH:
             setFinish((InteractionUseEnd) null);
             return;
+        case InteractionsPackage.INTERACTION_USE__OWNED_GATES:
+            getOwnedGates().clear();
+            return;
         }
         super.eUnset(featureID);
     }
@@ -382,6 +433,8 @@ public class InteractionUseImpl extends EObjectImpl implements InteractionUse {
             return start != null;
         case InteractionsPackage.INTERACTION_USE__FINISH:
             return finish != null;
+        case InteractionsPackage.INTERACTION_USE__OWNED_GATES:
+            return ownedGates != null && !ownedGates.isEmpty();
         }
         return super.eIsSet(featureID);
     }

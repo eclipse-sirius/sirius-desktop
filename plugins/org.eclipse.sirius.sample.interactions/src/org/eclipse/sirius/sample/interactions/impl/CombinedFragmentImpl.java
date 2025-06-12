@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.sample.interactions.CombinedFragment;
 import org.eclipse.sirius.sample.interactions.CombinedFragmentEnd;
+import org.eclipse.sirius.sample.interactions.Gate;
 import org.eclipse.sirius.sample.interactions.InteractionsPackage;
 import org.eclipse.sirius.sample.interactions.Operand;
 import org.eclipse.sirius.sample.interactions.Participant;
@@ -44,6 +45,7 @@ import org.eclipse.sirius.sample.interactions.Participant;
  * <li>{@link org.eclipse.sirius.sample.interactions.impl.CombinedFragmentImpl#getFinish <em>Finish</em>}</li>
  * <li>{@link org.eclipse.sirius.sample.interactions.impl.CombinedFragmentImpl#getOwnedOperands <em>Owned
  * Operands</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.CombinedFragmentImpl#getOwnedGates <em>Owned Gates</em>}</li>
  * </ul>
  *
  * @generated
@@ -108,6 +110,16 @@ public class CombinedFragmentImpl extends EObjectImpl implements CombinedFragmen
      * @ordered
      */
     protected EList<Operand> ownedOperands;
+
+    /**
+     * The cached value of the '{@link #getOwnedGates() <em>Owned Gates</em>}' containment reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #getOwnedGates()
+     * @generated
+     * @ordered
+     */
+    protected EList<Gate> ownedGates;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -263,10 +275,25 @@ public class CombinedFragmentImpl extends EObjectImpl implements CombinedFragmen
      * @generated
      */
     @Override
+    public EList<Gate> getOwnedGates() {
+        if (ownedGates == null) {
+            ownedGates = new EObjectContainmentEList<Gate>(Gate.class, this, InteractionsPackage.COMBINED_FRAGMENT__OWNED_GATES);
+        }
+        return ownedGates;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case InteractionsPackage.COMBINED_FRAGMENT__OWNED_OPERANDS:
             return ((InternalEList<?>) getOwnedOperands()).basicRemove(otherEnd, msgs);
+        case InteractionsPackage.COMBINED_FRAGMENT__OWNED_GATES:
+            return ((InternalEList<?>) getOwnedGates()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -293,6 +320,8 @@ public class CombinedFragmentImpl extends EObjectImpl implements CombinedFragmen
             return basicGetFinish();
         case InteractionsPackage.COMBINED_FRAGMENT__OWNED_OPERANDS:
             return getOwnedOperands();
+        case InteractionsPackage.COMBINED_FRAGMENT__OWNED_GATES:
+            return getOwnedGates();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -323,6 +352,10 @@ public class CombinedFragmentImpl extends EObjectImpl implements CombinedFragmen
             getOwnedOperands().clear();
             getOwnedOperands().addAll((Collection<? extends Operand>) newValue);
             return;
+        case InteractionsPackage.COMBINED_FRAGMENT__OWNED_GATES:
+            getOwnedGates().clear();
+            getOwnedGates().addAll((Collection<? extends Gate>) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -350,6 +383,9 @@ public class CombinedFragmentImpl extends EObjectImpl implements CombinedFragmen
         case InteractionsPackage.COMBINED_FRAGMENT__OWNED_OPERANDS:
             getOwnedOperands().clear();
             return;
+        case InteractionsPackage.COMBINED_FRAGMENT__OWNED_GATES:
+            getOwnedGates().clear();
+            return;
         }
         super.eUnset(featureID);
     }
@@ -372,6 +408,8 @@ public class CombinedFragmentImpl extends EObjectImpl implements CombinedFragmen
             return finish != null;
         case InteractionsPackage.COMBINED_FRAGMENT__OWNED_OPERANDS:
             return ownedOperands != null && !ownedOperands.isEmpty();
+        case InteractionsPackage.COMBINED_FRAGMENT__OWNED_GATES:
+            return ownedGates != null && !ownedGates.isEmpty();
         }
         return super.eIsSet(featureID);
     }

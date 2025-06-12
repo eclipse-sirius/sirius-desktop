@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.EObject;
  * <li>{@link org.eclipse.sirius.sample.interactions.CombinedFragment#getStart <em>Start</em>}</li>
  * <li>{@link org.eclipse.sirius.sample.interactions.CombinedFragment#getFinish <em>Finish</em>}</li>
  * <li>{@link org.eclipse.sirius.sample.interactions.CombinedFragment#getOwnedOperands <em>Owned Operands</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.interactions.CombinedFragment#getOwnedGates <em>Owned Gates</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getCombinedFragment()
@@ -126,5 +127,16 @@ public interface CombinedFragment extends EObject {
      * @generated
      */
     EList<Operand> getOwnedOperands();
+
+    /**
+     * Returns the value of the '<em><b>Owned Gates</b></em>' containment reference list. The list contents are of type
+     * {@link org.eclipse.sirius.sample.interactions.Gate}. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Owned Gates</em>' containment reference list.
+     * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getCombinedFragment_OwnedGates()
+     * @model containment="true"
+     * @generated
+     */
+    EList<Gate> getOwnedGates();
 
 } // CombinedFragment

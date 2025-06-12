@@ -147,6 +147,11 @@ public class InteractionsAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
+        public Adapter caseGate(Gate object) {
+            return createGateAdapter();
+        }
+
+        @Override
         public Adapter caseAbstractEnd(AbstractEnd object) {
             return createAbstractEndAdapter();
         }
@@ -184,6 +189,11 @@ public class InteractionsAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseMixEnd(MixEnd object) {
             return createMixEndAdapter();
+        }
+
+        @Override
+        public Adapter caseGateEnd(GateEnd object) {
+            return createGateEndAdapter();
         }
 
         @Override
@@ -407,6 +417,20 @@ public class InteractionsAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.Gate <em>Gate</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.eclipse.sirius.sample.interactions.Gate
+     * @generated
+     */
+    public Adapter createGateAdapter() {
+        return null;
+    }
+
+    /**
      * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.AbstractEnd <em>Abstract End</em>}'.
      * <!-- begin-user-doc -->
      * This default implementation returns null so that we can easily ignore cases;
@@ -515,6 +539,20 @@ public class InteractionsAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createMixEndAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.sample.interactions.GateEnd <em>Gate End</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.eclipse.sirius.sample.interactions.GateEnd
+     * @generated
+     */
+    public Adapter createGateEndAdapter() {
         return null;
     }
 
