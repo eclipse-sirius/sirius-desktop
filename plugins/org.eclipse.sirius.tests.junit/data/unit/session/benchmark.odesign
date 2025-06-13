@@ -146,7 +146,7 @@
   </ownedViewpoints>
   <ownedViewpoints name="UML2 Benchmarks OCL" modelFileExtension="uml">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="OCL Class Diagram" initialisation="true" domainClass="Package">
-      <edgeMappings name="CD_Association" semanticCandidatesExpression="feature:eAllContents" semanticElements="" sourceMapping="//@ownedViewpoints[name='UML2%20Benchmarks%20OCL']/@ownedRepresentations[name='OCL%20Class%20Diagram']/@containerMappings[name='CD_Class']" targetMapping="//@ownedViewpoints[name='UML2%20Benchmarks%20OCL']/@ownedRepresentations[name='OCL%20Class%20Diagram']/@containerMappings[name='CD_Class']" targetFinderExpression="ocl:oclAsType(uml::Association).memberEnd->last().type" sourceFinderExpression="ocl:oclAsType(uml::Association).memberEnd->first().type" targetExpression="ocl:self" domainClass="Association" useDomainElement="true">
+      <edgeMappings name="CD_Association" semanticCandidatesExpression="feature:eAllContents" semanticElements="" sourceMapping="//@ownedViewpoints[name='UML2%20Benchmarks%20OCL']/@ownedRepresentations[name='OCL%20Class%20Diagram']/@containerMappings[name='CD_Class']" targetMapping="//@ownedViewpoints[name='UML2%20Benchmarks%20OCL']/@ownedRepresentations[name='OCL%20Class%20Diagram']/@containerMappings[name='CD_Class']" targetFinderExpression="aql:oclAsType(uml::Association).memberEnd->last().type" sourceFinderExpression="aql:oclAsType(uml::Association).memberEnd->first().type" targetExpression="aql:self" domainClass="Association" useDomainElement="true">
         <style sizeComputationExpression="2">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           <centerLabelStyleDescription labelSize="10">
@@ -154,25 +154,25 @@
           </centerLabelStyleDescription>
         </style>
       </edgeMappings>
-      <edgeMappings name="CD_Generalization_Class_To_Class" semanticCandidatesExpression="ocl:self.packagedElement->select( c | c.oclIsTypeOf(uml::Class)).oclAsType(uml::Class).generalization" semanticElements="" sourceMapping="//@ownedViewpoints[name='UML2%20Benchmarks%20OCL']/@ownedRepresentations[name='OCL%20Class%20Diagram']/@containerMappings[name='CD_Class']" targetMapping="//@ownedViewpoints[name='UML2%20Benchmarks%20OCL']/@ownedRepresentations[name='OCL%20Class%20Diagram']/@containerMappings[name='CD_Class']" targetFinderExpression="ocl:general" sourceFinderExpression="ocl:specific" targetExpression="" domainClass="Generalization" useDomainElement="true" pathExpression="">
+      <edgeMappings name="CD_Generalization_Class_To_Class" semanticCandidatesExpression="aql:self.packagedElement->select( c | c.oclIsTypeOf(uml::Class)).oclAsType(uml::Class).generalization" semanticElements="" sourceMapping="//@ownedViewpoints[name='UML2%20Benchmarks%20OCL']/@ownedRepresentations[name='OCL%20Class%20Diagram']/@containerMappings[name='CD_Class']" targetMapping="//@ownedViewpoints[name='UML2%20Benchmarks%20OCL']/@ownedRepresentations[name='OCL%20Class%20Diagram']/@containerMappings[name='CD_Class']" targetFinderExpression="aql:general" sourceFinderExpression="aql:specific" targetExpression="" domainClass="Generalization" useDomainElement="true" pathExpression="">
         <style sizeComputationExpression="2">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
         </style>
       </edgeMappings>
-      <edgeMappings name="CD_InterfaceRealization" semanticCandidatesExpression="ocl:self.packagedElement->select( c | c.oclIsTypeOf(uml::Class)).oclAsType(uml::Class).interfaceRealization" sourceMapping="//@ownedViewpoints[name='UML2%20Benchmarks%20OCL']/@ownedRepresentations[name='OCL%20Class%20Diagram']/@containerMappings[name='CD_Class']" targetMapping="//@ownedViewpoints[name='UML2%20Benchmarks%20OCL']/@ownedRepresentations[name='OCL%20Class%20Diagram']/@containerMappings[name='CD_Interface']" targetFinderExpression="ocl:contract" sourceFinderExpression="ocl:implementingClassifier" targetExpression="" domainClass="InterfaceRealization" useDomainElement="true">
+      <edgeMappings name="CD_InterfaceRealization" semanticCandidatesExpression="aql:self.packagedElement->select( c | c.oclIsTypeOf(uml::Class)).oclAsType(uml::Class).interfaceRealization" sourceMapping="//@ownedViewpoints[name='UML2%20Benchmarks%20OCL']/@ownedRepresentations[name='OCL%20Class%20Diagram']/@containerMappings[name='CD_Class']" targetMapping="//@ownedViewpoints[name='UML2%20Benchmarks%20OCL']/@ownedRepresentations[name='OCL%20Class%20Diagram']/@containerMappings[name='CD_Interface']" targetFinderExpression="aql:contract" sourceFinderExpression="aql:implementingClassifier" targetExpression="" domainClass="InterfaceRealization" useDomainElement="true">
         <style lineStyle="dash" sizeComputationExpression="2">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
         </style>
       </edgeMappings>
-      <containerMappings name="CD_Class" semanticCandidatesExpression="ocl:self.packagedElement->select( c | c.oclIsTypeOf(uml::Class))" semanticElements="" domainClass="Class" childrenPresentation="List">
-        <subNodeMappings name="CD_Property" semanticCandidatesExpression="ocl:attribute" domainClass="Property">
+      <containerMappings name="CD_Class" semanticCandidatesExpression="aql:self.packagedElement->select( c | c.oclIsTypeOf(uml::Class))" semanticElements="" domainClass="Class" childrenPresentation="List">
+        <subNodeMappings name="CD_Property" semanticCandidatesExpression="aql:attribute" domainClass="Property">
           <style xsi:type="style:BundledImageDescription" labelExpression="name" labelAlignment="LEFT">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </subNodeMappings>
-        <subNodeMappings name="CD_Operation" semanticCandidatesExpression="ocl:ownedOperation" domainClass="Operation">
+        <subNodeMappings name="CD_Operation" semanticCandidatesExpression="aql:ownedOperation" domainClass="Operation">
           <style xsi:type="style:BundledImageDescription" labelExpression="name" labelAlignment="LEFT">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -186,7 +186,7 @@
           <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
         </style>
       </containerMappings>
-      <containerMappings name="CD_Interface" semanticCandidatesExpression="ocl:self.packagedElement->select( c | c.oclIsTypeOf(uml::Interface))" semanticElements="" domainClass="Interface" reusedNodeMappings="//@ownedViewpoints[name='UML2%20Benchmarks%20OCL']/@ownedRepresentations[name='OCL%20Class%20Diagram']/@containerMappings[name='CD_Class']/@subNodeMappings[name='CD_Operation']" childrenPresentation="List">
+      <containerMappings name="CD_Interface" semanticCandidatesExpression="aql:self.packagedElement->select( c | c.oclIsTypeOf(uml::Interface))" semanticElements="" domainClass="Interface" reusedNodeMappings="//@ownedViewpoints[name='UML2%20Benchmarks%20OCL']/@ownedRepresentations[name='OCL%20Class%20Diagram']/@containerMappings[name='CD_Class']/@subNodeMappings[name='CD_Operation']" childrenPresentation="List">
         <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelSize="10" labelExpression="name" backgroundStyle="GradientTopToBottom">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelFormat>italic</labelFormat>
@@ -206,7 +206,7 @@
           <viewVariable name="containerView"/>
           <initialOperation>
             <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Class" referenceName="packagedElement">
-              <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="ocl:'New '.concat(self.oclAsType(ecore::EObject).eClass())"/>
+              <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'New '.concat(self.oclAsType(ecore::EObject).eClass())"/>
             </firstModelOperations>
           </initialOperation>
         </ownedTools>
@@ -215,7 +215,7 @@
           <viewVariable name="containerView"/>
           <initialOperation>
             <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Interface" referenceName="packagedElement">
-              <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="ocl:'New '.concat(self.oclAsType(ecore::EObject).eClass())"/>
+              <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'New '.concat(self.oclAsType(ecore::EObject).eClass())"/>
             </firstModelOperations>
           </initialOperation>
         </ownedTools>
@@ -224,7 +224,7 @@
           <viewVariable name="containerView"/>
           <initialOperation>
             <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Property" referenceName="ownedAttribute">
-              <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="ocl:'New '.concat(self.oclAsType(ecore::EObject).eClass())"/>
+              <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'New '.concat(self.oclAsType(ecore::EObject).eClass())"/>
             </firstModelOperations>
           </initialOperation>
         </ownedTools>
@@ -233,7 +233,7 @@
           <viewVariable name="containerView"/>
           <initialOperation>
             <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Operation" referenceName="ownedOperation">
-              <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="ocl:'New '.concat(self.oclAsType(ecore::EObject).eClass())"/>
+              <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'New '.concat(self.oclAsType(ecore::EObject).eClass())"/>
             </firstModelOperations>
           </initialOperation>
         </ownedTools>
@@ -254,7 +254,7 @@
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="var:source"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="navigableOwnedEnd" valueExpression="aql:self.memberEnd->first()"/>
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="ocl:'New '.concat(self.oclAsType(ecore::EObject).eClass())"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'New '.concat(self.oclAsType(ecore::EObject).eClass())"/>
               </subModelOperations>
             </firstModelOperations>
           </initialOperation>

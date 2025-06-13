@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -121,12 +121,12 @@ public class ContentHelperTests extends TestCase {
      * There is a bug in Acceleo completion without context:
      * getEStructuralFeature(name) is not proposed.
      */
-    public void testContextHelperAndOCL() {
+    public void testContextHelperAndAQL() {
 
-        ContentContextHelper cch = new ContentContextHelper("ocl:", 4, "");
+        ContentContextHelper cch = new ContentContextHelper("aql:", 4, "");
         assertEquals("", cch.getProposalStart());
 
-        cch = new ContentContextHelper("ocl:sel", 7, "");
+        cch = new ContentContextHelper("aql:sel", 7, "");
         assertEquals("sel", cch.getProposalStart());
     }
 
