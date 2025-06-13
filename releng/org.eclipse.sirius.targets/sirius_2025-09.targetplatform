@@ -3,7 +3,7 @@ target "sirius_2025-09"
 include "modules/orbit.tpd"
 include "modules/swtbot-4.3.tpd"
 include "modules/shared-license.tpd"
-include "modules/aql-3.7.tpd"
+include "modules/aql.tpd"
 include "modules/acceleo-3.7.tpd"
 include "modules/eef-1.5.tpd"
 include "modules/eef-2.1.tpd"
@@ -12,7 +12,7 @@ include "modules/gmf-runtime-1.16.tpd"
 
 with source, requirements
 
-location Sirius-7.4.11 "https://download.eclipse.org/sirius/updates/releases/7.4.11/2023-03/" {
+location Sirius-7.4.12 "https://download.eclipse.org/sirius/updates/releases/7.4.12/2023-03/" {
 	org.eclipse.sirius.common.interpreter lazy
 }
 

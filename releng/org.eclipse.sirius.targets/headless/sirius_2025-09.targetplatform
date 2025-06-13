@@ -3,27 +3,24 @@ target "sirius_headless_2025-09"
 include "../modules/orbit.tpd"
 include "../modules/elk-0.9.tpd"
 include "../modules/shared-license.tpd"
-include "../modules/gmf-runtime-1.16.tpd"
+include "../modules/gmf-runtime-1.16.tpd" with source, requirements
 
-with source, requirements
-
-location Acceleo-3.7 "https://download.eclipse.org/acceleo/updates/releases/3.7/R202408201303/" {
-    org.eclipse.acceleo.engine lazy
-    org.eclipse.acceleo.parser lazy
-    org.eclipse.acceleo.query.feature.group lazy
+location Acceleo-4.1 "https://download.eclipse.org/acceleo/updates/releases/4.1/R202502130921/" {
+	org.eclipse.acceleo.query.feature.group lazy
+	org.eclipse.acceleo.query.source.feature.group lazy
 }
 
 location Eclipse-2025-09 "https://download.eclipse.org/releases/2025-09/" {
-    org.eclipse.equinox.core.feature.feature.group lazy
-    org.eclipse.equinox.compendium.sdk.feature.group lazy
-    org.eclipse.equinox.executable.feature.group lazy
-    org.eclipse.equinox.p2.core.feature.feature.group lazy
-    org.eclipse.equinox.p2.extras.feature.feature.group lazy
-    com.google.guava lazy
-    org.eclipse.emf lazy
-    org.eclipse.emf.common lazy
-    org.eclipse.emf.ecore lazy
-    org.eclipse.emf.ecore.xmi lazy
-    org.eclipse.emf.edit lazy
-    org.eclipse.emf.workspace lazy
+	org.eclipse.equinox.core.feature.feature.group lazy
+	org.eclipse.equinox.compendium.sdk.feature.group lazy
+	org.eclipse.equinox.executable.feature.group lazy
+	org.eclipse.equinox.p2.core.feature.feature.group lazy
+	org.eclipse.equinox.p2.extras.feature.feature.group lazy
+	com.google.guava lazy
+	org.eclipse.emf lazy
+	org.eclipse.emf.common lazy
+	org.eclipse.emf.ecore lazy
+	org.eclipse.emf.ecore.xmi lazy
+	org.eclipse.emf.edit lazy
+	org.eclipse.emf.workspace lazy
 }
