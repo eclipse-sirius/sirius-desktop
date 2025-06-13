@@ -27,7 +27,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <containerMappings name="EClassListContainerMapping" semanticCandidatesExpression="ocl: self.eClassifiers->select(cl : EClassifier | cl.oclIsTypeOf(EClass))->collect(cl : EClassifier | cl.oclAsType(EClass))->select(c : EClass | not c.eStructuralFeatures->isEmpty())" domainClass="EClass">
+        <containerMappings name="EClassListContainerMapping" semanticCandidatesExpression="aql: self.eClassifiers->select(cl : EClassifier | cl.oclIsTypeOf(EClass))->collect(cl : EClassifier | cl.oclAsType(EClass))->select(c : EClass | not c.eStructuralFeatures->isEmpty())" domainClass="EClass">
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="100" arcHeight="100" borderSizeComputationExpression="1" labelAlignment="RIGHT">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

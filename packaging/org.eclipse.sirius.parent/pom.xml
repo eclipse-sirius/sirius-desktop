@@ -323,7 +323,6 @@
         <module>../../plugins/org.eclipse.sirius.common.acceleo.aql</module>
         <module>../../plugins/org.eclipse.sirius.common.acceleo.mtl</module>
         <module>../../plugins/org.eclipse.sirius.common.interpreter</module>
-        <module>../../plugins/org.eclipse.sirius.common.ocl</module>
         <module>../../plugins/org.eclipse.sirius.diagram.model</module>
         <module>../../plugins/org.eclipse.sirius.diagram</module>
         <module>../../plugins/org.eclipse.sirius.diagram.formatdata</module>
@@ -339,7 +338,6 @@
         <module>../../packaging/org.eclipse.sirius.runtime</module>
         <module>../../packaging/org.eclipse.sirius.runtime.acceleo</module>
         <module>../../packaging/org.eclipse.sirius.runtime.aql</module>
-        <module>../../packaging/org.eclipse.sirius.runtime.ocl</module>
 
         <!-- update sites -->
         <module>../../packaging/org.eclipse.sirius.headless.update</module>
