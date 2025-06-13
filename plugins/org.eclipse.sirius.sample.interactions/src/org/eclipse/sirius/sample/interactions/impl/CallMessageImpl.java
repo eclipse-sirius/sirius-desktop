@@ -1,7 +1,7 @@
-/*******************************************************************************
- * Copyright (c) 2010, 2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License 2.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
  * https://www.eclipse.org/legal/epl-2.0/
  *
@@ -9,7 +9,7 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ */
 package org.eclipse.sirius.sample.interactions.impl;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -21,23 +21,20 @@ import org.eclipse.sirius.sample.interactions.CallMessage;
 import org.eclipse.sirius.sample.interactions.InteractionsPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Call Message</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Call Message</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.impl.CallMessageImpl#getOperation
- * <em>Operation</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.CallMessageImpl#getOperation <em>Operation</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public class CallMessageImpl extends MessageImpl implements CallMessage {
     /**
-     * The cached value of the '{@link #getOperation() <em>Operation</em>}'
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getOperation() <em>Operation</em>}' reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getOperation()
      * @generated
@@ -75,9 +72,8 @@ public class CallMessageImpl extends MessageImpl implements CallMessage {
             InternalEObject oldOperation = (InternalEObject) operation;
             operation = (EOperation) eResolveProxy(oldOperation);
             if (operation != oldOperation) {
-                if (eNotificationRequired()) {
+                if (eNotificationRequired())
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionsPackage.CALL_MESSAGE__OPERATION, oldOperation, operation));
-                }
             }
         }
         return operation;
@@ -101,9 +97,8 @@ public class CallMessageImpl extends MessageImpl implements CallMessage {
     public void setOperation(EOperation newOperation) {
         EOperation oldOperation = operation;
         operation = newOperation;
-        if (eNotificationRequired()) {
+        if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.CALL_MESSAGE__OPERATION, oldOperation, operation));
-        }
     }
 
     /**
@@ -115,9 +110,8 @@ public class CallMessageImpl extends MessageImpl implements CallMessage {
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case InteractionsPackage.CALL_MESSAGE__OPERATION:
-            if (resolve) {
+            if (resolve)
                 return getOperation();
-            }
             return basicGetOperation();
         }
         return super.eGet(featureID, resolve, coreType);

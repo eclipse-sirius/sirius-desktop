@@ -1,7 +1,7 @@
-/*******************************************************************************
- * Copyright (c) 2010, 2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License 2.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
  * https://www.eclipse.org/legal/epl-2.0/
  *
@@ -9,41 +9,51 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ */
 package org.eclipse.sirius.sample.interactions.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.sirius.sample.interactions.Gate;
 import org.eclipse.sirius.sample.interactions.InteractionsPackage;
 import org.eclipse.sirius.sample.interactions.Message;
 import org.eclipse.sirius.sample.interactions.MessageEnd;
 import org.eclipse.sirius.sample.interactions.MixEnd;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Mix End</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Mix End</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>{@link org.eclipse.sirius.sample.interactions.impl.MixEndImpl#getMessage
- * <em>Message</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.MixEndImpl#getMessage <em>Message</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.MixEndImpl#getGate <em>Gate</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public class MixEndImpl extends ExecutionEndImpl implements MixEnd {
     /**
-     * The cached value of the '{@link #getMessage() <em>Message</em>}'
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getMessage() <em>Message</em>}' reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getMessage()
      * @generated
      * @ordered
      */
     protected Message message;
+
+    /**
+     * The cached value of the '{@link #getGate() <em>Gate</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @see #getGate()
+     * @generated
+     * @ordered
+     */
+    protected Gate gate;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -75,9 +85,8 @@ public class MixEndImpl extends ExecutionEndImpl implements MixEnd {
             InternalEObject oldMessage = (InternalEObject) message;
             message = (Message) eResolveProxy(oldMessage);
             if (message != oldMessage) {
-                if (eNotificationRequired()) {
+                if (eNotificationRequired())
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionsPackage.MIX_END__MESSAGE, oldMessage, message));
-                }
             }
         }
         return message;
@@ -101,9 +110,48 @@ public class MixEndImpl extends ExecutionEndImpl implements MixEnd {
     public void setMessage(Message newMessage) {
         Message oldMessage = message;
         message = newMessage;
-        if (eNotificationRequired()) {
+        if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.MIX_END__MESSAGE, oldMessage, message));
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Gate getGate() {
+        if (gate != null && gate.eIsProxy()) {
+            InternalEObject oldGate = (InternalEObject) gate;
+            gate = (Gate) eResolveProxy(oldGate);
+            if (gate != oldGate) {
+                if (eNotificationRequired())
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionsPackage.MIX_END__GATE, oldGate, gate));
+            }
         }
+        return gate;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public Gate basicGetGate() {
+        return gate;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setGate(Gate newGate) {
+        Gate oldGate = gate;
+        gate = newGate;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.MIX_END__GATE, oldGate, gate));
     }
 
     /**
@@ -115,10 +163,13 @@ public class MixEndImpl extends ExecutionEndImpl implements MixEnd {
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case InteractionsPackage.MIX_END__MESSAGE:
-            if (resolve) {
+            if (resolve)
                 return getMessage();
-            }
             return basicGetMessage();
+        case InteractionsPackage.MIX_END__GATE:
+            if (resolve)
+                return getGate();
+            return basicGetGate();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -133,6 +184,9 @@ public class MixEndImpl extends ExecutionEndImpl implements MixEnd {
         switch (featureID) {
         case InteractionsPackage.MIX_END__MESSAGE:
             setMessage((Message) newValue);
+            return;
+        case InteractionsPackage.MIX_END__GATE:
+            setGate((Gate) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -149,6 +203,9 @@ public class MixEndImpl extends ExecutionEndImpl implements MixEnd {
         case InteractionsPackage.MIX_END__MESSAGE:
             setMessage((Message) null);
             return;
+        case InteractionsPackage.MIX_END__GATE:
+            setGate((Gate) null);
+            return;
         }
         super.eUnset(featureID);
     }
@@ -163,6 +220,8 @@ public class MixEndImpl extends ExecutionEndImpl implements MixEnd {
         switch (featureID) {
         case InteractionsPackage.MIX_END__MESSAGE:
             return message != null;
+        case InteractionsPackage.MIX_END__GATE:
+            return gate != null;
         }
         return super.eIsSet(featureID);
     }
@@ -178,6 +237,8 @@ public class MixEndImpl extends ExecutionEndImpl implements MixEnd {
             switch (derivedFeatureID) {
             case InteractionsPackage.MIX_END__MESSAGE:
                 return InteractionsPackage.MESSAGE_END__MESSAGE;
+            case InteractionsPackage.MIX_END__GATE:
+                return InteractionsPackage.MESSAGE_END__GATE;
             default:
                 return -1;
             }
@@ -196,6 +257,8 @@ public class MixEndImpl extends ExecutionEndImpl implements MixEnd {
             switch (baseFeatureID) {
             case InteractionsPackage.MESSAGE_END__MESSAGE:
                 return InteractionsPackage.MIX_END__MESSAGE;
+            case InteractionsPackage.MESSAGE_END__GATE:
+                return InteractionsPackage.MIX_END__GATE;
             default:
                 return -1;
             }

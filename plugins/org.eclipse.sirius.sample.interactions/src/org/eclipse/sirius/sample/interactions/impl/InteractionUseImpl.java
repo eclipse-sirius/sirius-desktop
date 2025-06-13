@@ -1,7 +1,7 @@
-/*******************************************************************************
- * Copyright (c) 2010, 2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License 2.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
  * https://www.eclipse.org/legal/epl-2.0/
  *
@@ -9,18 +9,22 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ */
 package org.eclipse.sirius.sample.interactions.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.sirius.sample.interactions.Gate;
 import org.eclipse.sirius.sample.interactions.Interaction;
 import org.eclipse.sirius.sample.interactions.InteractionUse;
 import org.eclipse.sirius.sample.interactions.InteractionUseEnd;
@@ -28,35 +32,27 @@ import org.eclipse.sirius.sample.interactions.InteractionsPackage;
 import org.eclipse.sirius.sample.interactions.Participant;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Interaction Use</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Interaction Use</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.impl.InteractionUseImpl#getType
- * <em>Type</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.impl.InteractionUseImpl#getInteraction
- * <em>Interaction</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.impl.InteractionUseImpl#getCoveredParticipants
- * <em>Covered Participants</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.impl.InteractionUseImpl#getStart
- * <em>Start</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.impl.InteractionUseImpl#getFinish
- * <em>Finish</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.InteractionUseImpl#getType <em>Type</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.InteractionUseImpl#getInteraction <em>Interaction</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.InteractionUseImpl#getCoveredParticipants <em>Covered
+ * Participants</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.InteractionUseImpl#getStart <em>Start</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.InteractionUseImpl#getFinish <em>Finish</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.interactions.impl.InteractionUseImpl#getOwnedGates <em>Owned Gates</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public class InteractionUseImpl extends EObjectImpl implements InteractionUse {
     /**
-     * The default value of the '{@link #getType() <em>Type</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getType() <em>Type</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getType()
      * @generated
@@ -65,18 +61,18 @@ public class InteractionUseImpl extends EObjectImpl implements InteractionUse {
     protected static final String TYPE_EDEFAULT = "\"ref\""; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getType() <em>Type</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getType()
      * @generated
      * @ordered
      */
-    protected String type = InteractionUseImpl.TYPE_EDEFAULT;
+    protected String type = TYPE_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getInteraction() <em>Interaction</em>}'
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getInteraction() <em>Interaction</em>}' reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getInteraction()
      * @generated
@@ -85,9 +81,8 @@ public class InteractionUseImpl extends EObjectImpl implements InteractionUse {
     protected Interaction interaction;
 
     /**
-     * The cached value of the '{@link #getCoveredParticipants()
-     * <em>Covered Participants</em>}' reference list. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getCoveredParticipants() <em>Covered Participants</em>}' reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getCoveredParticipants()
      * @generated
@@ -96,8 +91,8 @@ public class InteractionUseImpl extends EObjectImpl implements InteractionUse {
     protected EList<Participant> coveredParticipants;
 
     /**
-     * The cached value of the '{@link #getStart() <em>Start</em>}' reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getStart() <em>Start</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getStart()
      * @generated
@@ -106,14 +101,24 @@ public class InteractionUseImpl extends EObjectImpl implements InteractionUse {
     protected InteractionUseEnd start;
 
     /**
-     * The cached value of the '{@link #getFinish() <em>Finish</em>}' reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getFinish() <em>Finish</em>}' reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFinish()
      * @generated
      * @ordered
      */
     protected InteractionUseEnd finish;
+
+    /**
+     * The cached value of the '{@link #getOwnedGates() <em>Owned Gates</em>}' containment reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #getOwnedGates()
+     * @generated
+     * @ordered
+     */
+    protected EList<Gate> ownedGates;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -153,9 +158,8 @@ public class InteractionUseImpl extends EObjectImpl implements InteractionUse {
     public void setType(String newType) {
         String oldType = type;
         type = newType;
-        if (eNotificationRequired()) {
+        if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.INTERACTION_USE__TYPE, oldType, type));
-        }
     }
 
     /**
@@ -169,9 +173,8 @@ public class InteractionUseImpl extends EObjectImpl implements InteractionUse {
             InternalEObject oldInteraction = (InternalEObject) interaction;
             interaction = (Interaction) eResolveProxy(oldInteraction);
             if (interaction != oldInteraction) {
-                if (eNotificationRequired()) {
+                if (eNotificationRequired())
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionsPackage.INTERACTION_USE__INTERACTION, oldInteraction, interaction));
-                }
             }
         }
         return interaction;
@@ -195,9 +198,8 @@ public class InteractionUseImpl extends EObjectImpl implements InteractionUse {
     public void setInteraction(Interaction newInteraction) {
         Interaction oldInteraction = interaction;
         interaction = newInteraction;
-        if (eNotificationRequired()) {
+        if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.INTERACTION_USE__INTERACTION, oldInteraction, interaction));
-        }
     }
 
     /**
@@ -224,9 +226,8 @@ public class InteractionUseImpl extends EObjectImpl implements InteractionUse {
             InternalEObject oldStart = (InternalEObject) start;
             start = (InteractionUseEnd) eResolveProxy(oldStart);
             if (start != oldStart) {
-                if (eNotificationRequired()) {
+                if (eNotificationRequired())
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionsPackage.INTERACTION_USE__START, oldStart, start));
-                }
             }
         }
         return start;
@@ -250,9 +251,8 @@ public class InteractionUseImpl extends EObjectImpl implements InteractionUse {
     public void setStart(InteractionUseEnd newStart) {
         InteractionUseEnd oldStart = start;
         start = newStart;
-        if (eNotificationRequired()) {
+        if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.INTERACTION_USE__START, oldStart, start));
-        }
     }
 
     /**
@@ -266,9 +266,8 @@ public class InteractionUseImpl extends EObjectImpl implements InteractionUse {
             InternalEObject oldFinish = (InternalEObject) finish;
             finish = (InteractionUseEnd) eResolveProxy(oldFinish);
             if (finish != oldFinish) {
-                if (eNotificationRequired()) {
+                if (eNotificationRequired())
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionsPackage.INTERACTION_USE__FINISH, oldFinish, finish));
-                }
             }
         }
         return finish;
@@ -292,9 +291,35 @@ public class InteractionUseImpl extends EObjectImpl implements InteractionUse {
     public void setFinish(InteractionUseEnd newFinish) {
         InteractionUseEnd oldFinish = finish;
         finish = newFinish;
-        if (eNotificationRequired()) {
+        if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.INTERACTION_USE__FINISH, oldFinish, finish));
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EList<Gate> getOwnedGates() {
+        if (ownedGates == null) {
+            ownedGates = new EObjectContainmentEList<Gate>(Gate.class, this, InteractionsPackage.INTERACTION_USE__OWNED_GATES);
         }
+        return ownedGates;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+        switch (featureID) {
+        case InteractionsPackage.INTERACTION_USE__OWNED_GATES:
+            return ((InternalEList<?>) getOwnedGates()).basicRemove(otherEnd, msgs);
+        }
+        return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
     /**
@@ -308,22 +333,21 @@ public class InteractionUseImpl extends EObjectImpl implements InteractionUse {
         case InteractionsPackage.INTERACTION_USE__TYPE:
             return getType();
         case InteractionsPackage.INTERACTION_USE__INTERACTION:
-            if (resolve) {
+            if (resolve)
                 return getInteraction();
-            }
             return basicGetInteraction();
         case InteractionsPackage.INTERACTION_USE__COVERED_PARTICIPANTS:
             return getCoveredParticipants();
         case InteractionsPackage.INTERACTION_USE__START:
-            if (resolve) {
+            if (resolve)
                 return getStart();
-            }
             return basicGetStart();
         case InteractionsPackage.INTERACTION_USE__FINISH:
-            if (resolve) {
+            if (resolve)
                 return getFinish();
-            }
             return basicGetFinish();
+        case InteractionsPackage.INTERACTION_USE__OWNED_GATES:
+            return getOwnedGates();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -353,6 +377,10 @@ public class InteractionUseImpl extends EObjectImpl implements InteractionUse {
         case InteractionsPackage.INTERACTION_USE__FINISH:
             setFinish((InteractionUseEnd) newValue);
             return;
+        case InteractionsPackage.INTERACTION_USE__OWNED_GATES:
+            getOwnedGates().clear();
+            getOwnedGates().addAll((Collection<? extends Gate>) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -366,7 +394,7 @@ public class InteractionUseImpl extends EObjectImpl implements InteractionUse {
     public void eUnset(int featureID) {
         switch (featureID) {
         case InteractionsPackage.INTERACTION_USE__TYPE:
-            setType(InteractionUseImpl.TYPE_EDEFAULT);
+            setType(TYPE_EDEFAULT);
             return;
         case InteractionsPackage.INTERACTION_USE__INTERACTION:
             setInteraction((Interaction) null);
@@ -379,6 +407,9 @@ public class InteractionUseImpl extends EObjectImpl implements InteractionUse {
             return;
         case InteractionsPackage.INTERACTION_USE__FINISH:
             setFinish((InteractionUseEnd) null);
+            return;
+        case InteractionsPackage.INTERACTION_USE__OWNED_GATES:
+            getOwnedGates().clear();
             return;
         }
         super.eUnset(featureID);
@@ -393,7 +424,7 @@ public class InteractionUseImpl extends EObjectImpl implements InteractionUse {
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case InteractionsPackage.INTERACTION_USE__TYPE:
-            return InteractionUseImpl.TYPE_EDEFAULT == null ? type != null : !InteractionUseImpl.TYPE_EDEFAULT.equals(type);
+            return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
         case InteractionsPackage.INTERACTION_USE__INTERACTION:
             return interaction != null;
         case InteractionsPackage.INTERACTION_USE__COVERED_PARTICIPANTS:
@@ -402,6 +433,8 @@ public class InteractionUseImpl extends EObjectImpl implements InteractionUse {
             return start != null;
         case InteractionsPackage.INTERACTION_USE__FINISH:
             return finish != null;
+        case InteractionsPackage.INTERACTION_USE__OWNED_GATES:
+            return ownedGates != null && !ownedGates.isEmpty();
         }
         return super.eIsSet(featureID);
     }
@@ -413,11 +446,10 @@ public class InteractionUseImpl extends EObjectImpl implements InteractionUse {
      */
     @Override
     public String toString() {
-        if (eIsProxy()) {
+        if (eIsProxy())
             return super.toString();
-        }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (type: "); //$NON-NLS-1$
         result.append(type);
         result.append(')');

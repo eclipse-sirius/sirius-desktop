@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.description.DestructionMessageMapping;
 import org.eclipse.sirius.diagram.sequence.description.EndOfLifeMapping;
 import org.eclipse.sirius.diagram.sequence.description.ExecutionMapping;
+import org.eclipse.sirius.diagram.sequence.description.GateMapping;
 import org.eclipse.sirius.diagram.sequence.description.InstanceRoleMapping;
 import org.eclipse.sirius.diagram.sequence.description.InteractionContainerMapping;
 import org.eclipse.sirius.diagram.sequence.description.InteractionUseMapping;
@@ -38,6 +39,7 @@ import org.eclipse.sirius.diagram.sequence.description.StateMapping;
 import org.eclipse.sirius.diagram.sequence.model.business.internal.description.CombinedFragmentMappingSpec;
 import org.eclipse.sirius.diagram.sequence.model.business.internal.description.EndOfLifeMappingSpec;
 import org.eclipse.sirius.diagram.sequence.model.business.internal.description.ExecutionMappingSpec;
+import org.eclipse.sirius.diagram.sequence.model.business.internal.description.GateMappingSpec;
 import org.eclipse.sirius.diagram.sequence.model.business.internal.description.InstanceRoleMappingSpec;
 import org.eclipse.sirius.diagram.sequence.model.business.internal.description.InteractionUseMappingSpec;
 import org.eclipse.sirius.diagram.sequence.model.business.internal.description.ObservationPointMappingSpec;
@@ -117,6 +119,8 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
             return createObservationPointMapping();
         case DescriptionPackage.INTERACTION_CONTAINER_MAPPING:
             return createInteractionContainerMapping();
+        case DescriptionPackage.GATE_MAPPING:
+            return createGateMapping();
         default:
             throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
@@ -296,6 +300,17 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
     public InteractionContainerMapping createInteractionContainerMapping() {
         InteractionContainerMappingImpl interactionContainerMapping = new InteractionContainerMappingImpl();
         return interactionContainerMapping;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public GateMapping createGateMapping() {
+        GateMappingImpl gateMapping = new GateMappingSpec();
+        return gateMapping;
     }
 
     /**

@@ -22,6 +22,7 @@ import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.diagram.sequence.description.tool.CombinedFragmentCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.CoveringElementCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ExecutionCreationTool;
+import org.eclipse.sirius.diagram.sequence.description.tool.GateCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleReorderTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.InteractionUseCreationTool;
@@ -159,6 +160,11 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseInstanceRoleReorderTool(InstanceRoleReorderTool object) {
             return createInstanceRoleReorderToolAdapter();
+        }
+
+        @Override
+        public Adapter caseGateCreationTool(GateCreationTool object) {
+            return createGateCreationToolAdapter();
         }
 
         @Override
@@ -360,6 +366,20 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createInstanceRoleReorderToolAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class
+     * '{@link org.eclipse.sirius.diagram.sequence.description.tool.GateCreationTool <em>Gate Creation Tool</em>}'. <!--
+     * begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful to
+     * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.diagram.sequence.description.tool.GateCreationTool
+     * @generated
+     */
+    public Adapter createGateCreationToolAdapter() {
         return null;
     }
 
