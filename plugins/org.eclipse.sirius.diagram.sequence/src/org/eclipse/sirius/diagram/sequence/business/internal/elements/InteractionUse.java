@@ -43,6 +43,14 @@ public class InteractionUse extends AbstractFrame {
     public static final int VISUAL_ID = 2002;
 
     /**
+     * The visual ID of the compartment contained by the interactionUse.
+     * 
+     * see
+     * org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart.VISUAL_ID
+     */
+    public static final int COMPARTMENT_VISUAL_ID = 7001;
+
+    /**
      * Predicate to check whether a Sirius DDiagramElement represents an execution.
      */
     private enum SiriusElementPredicate implements Predicate<DDiagramElement> {
@@ -73,6 +81,16 @@ public class InteractionUse extends AbstractFrame {
      */
     public static Predicate<View> notationPredicate() {
         return new NotationPredicate(NotationPackage.eINSTANCE.getNode(), VISUAL_ID, InteractionUse.viewpointElementPredicate());
+
+    }
+
+    /**
+     * Returns a predicate to check whether a GMF View represents an combined fragment compartment.
+     * 
+     * @return a predicate to check whether a GMF View represents an combined fragment compartment.
+     */
+    public static Predicate<View> compartmentNotationPredicate() {
+        return new NotationPredicate(NotationPackage.eINSTANCE.getNode(), COMPARTMENT_VISUAL_ID, InteractionUse.viewpointElementPredicate());
     }
 
     /**

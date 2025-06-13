@@ -410,7 +410,8 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
 
         boolean noOperand = !sourceParentOperand.some() && !targetParentOperand.some();
         boolean lostEnd = sourceLifeline.some() && !targetLifeline.some() || !sourceLifeline.some() && targetLifeline.some();
-        boolean sameOperand = lostEnd || noOperand || sourceParentOperand.get().equals(targetParentOperand.get());
+        // FIXME !sourceParentOperand.some()
+        boolean sameOperand = lostEnd || noOperand || !sourceParentOperand.some() || sourceParentOperand.get().equals(targetParentOperand.get());
         Preconditions.checkArgument(noOperand || sameOperand, Messages.Message_invalidOperand);
 
         Option<Operand> parentOperand = sourceParentOperand;

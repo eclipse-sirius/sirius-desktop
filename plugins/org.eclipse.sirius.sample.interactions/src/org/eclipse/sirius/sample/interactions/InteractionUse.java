@@ -1,7 +1,7 @@
-/*******************************************************************************
- * Copyright (c) 2010, 2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License 2.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
  * https://www.eclipse.org/legal/epl-2.0/
  *
@@ -9,36 +9,30 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ */
 package org.eclipse.sirius.sample.interactions;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Interaction Use</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Interaction Use</b></em>'. <!-- end-user-doc -->
  *
- * <!-- begin-model-doc --> A reference to or invocation of another interaction
- * defined elsewhere. <!-- end-model-doc -->
+ * <!-- begin-model-doc --> A reference to or invocation of another interaction defined elsewhere. <!-- end-model-doc
+ * -->
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.sirius.sample.interactions.InteractionUse#getType <em>
- * Type</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.InteractionUse#getInteraction
- * <em>Interaction</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.sample.interactions.InteractionUse#getCoveredParticipants
- * <em>Covered Participants</em>}</li>
- * <li>{@link org.eclipse.sirius.sample.interactions.InteractionUse#getStart
- * <em>Start</em>}</li>
- * <li>{@link org.eclipse.sirius.sample.interactions.InteractionUse#getFinish
- * <em>Finish</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.sample.interactions.InteractionUse#getType <em>Type</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.interactions.InteractionUse#getInteraction <em>Interaction</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.interactions.InteractionUse#getCoveredParticipants <em>Covered
+ * Participants</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.interactions.InteractionUse#getStart <em>Start</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.interactions.InteractionUse#getFinish <em>Finish</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.interactions.InteractionUse#getOwnedGates <em>Owned Gates</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getInteractionUse()
  * @model
@@ -46,13 +40,8 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface InteractionUse extends EObject {
     /**
-     * Returns the value of the '<em><b>Type</b></em>' attribute. The default
-     * value is <code>"\"ref\""</code>. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Type</em>' attribute isn't clear, there really
-     * should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+     * Returns the value of the '<em><b>Type</b></em>' attribute. The default value is <code>"\"ref\""</code>. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the value of the '<em>Type</em>' attribute.
      * @see #setType(String)
@@ -63,9 +52,8 @@ public interface InteractionUse extends EObject {
     String getType();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.sample.interactions.InteractionUse#getType
-     * <em>Type</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.sample.interactions.InteractionUse#getType <em>Type</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Type</em>' attribute.
@@ -75,13 +63,7 @@ public interface InteractionUse extends EObject {
     void setType(String value);
 
     /**
-     * Returns the value of the '<em><b>Interaction</b></em>' reference. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Interaction</em>' reference isn't clear, there
-     * really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+     * Returns the value of the '<em><b>Interaction</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the value of the '<em>Interaction</em>' reference.
      * @see #setInteraction(Interaction)
@@ -92,10 +74,8 @@ public interface InteractionUse extends EObject {
     Interaction getInteraction();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.sample.interactions.InteractionUse#getInteraction
-     * <em>Interaction</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.sample.interactions.InteractionUse#getInteraction
+     * <em>Interaction</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Interaction</em>' reference.
@@ -105,15 +85,8 @@ public interface InteractionUse extends EObject {
     void setInteraction(Interaction value);
 
     /**
-     * Returns the value of the '<em><b>Covered Participants</b></em>' reference
-     * list. The list contents are of type
-     * {@link org.eclipse.sirius.sample.interactions.Participant}. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Covered Participants</em>' reference list
-     * isn't clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+     * Returns the value of the '<em><b>Covered Participants</b></em>' reference list. The list contents are of type
+     * {@link org.eclipse.sirius.sample.interactions.Participant}. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the value of the '<em>Covered Participants</em>' reference list.
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getInteractionUse_CoveredParticipants()
@@ -123,13 +96,7 @@ public interface InteractionUse extends EObject {
     EList<Participant> getCoveredParticipants();
 
     /**
-     * Returns the value of the '<em><b>Start</b></em>' reference. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Start</em>' reference isn't clear, there
-     * really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+     * Returns the value of the '<em><b>Start</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the value of the '<em>Start</em>' reference.
      * @see #setStart(InteractionUseEnd)
@@ -140,9 +107,8 @@ public interface InteractionUse extends EObject {
     InteractionUseEnd getStart();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.sample.interactions.InteractionUse#getStart
-     * <em>Start</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.sample.interactions.InteractionUse#getStart <em>Start</em>}'
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Start</em>' reference.
@@ -152,13 +118,7 @@ public interface InteractionUse extends EObject {
     void setStart(InteractionUseEnd value);
 
     /**
-     * Returns the value of the '<em><b>Finish</b></em>' reference. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Finish</em>' reference isn't clear, there
-     * really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+     * Returns the value of the '<em><b>Finish</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the value of the '<em>Finish</em>' reference.
      * @see #setFinish(InteractionUseEnd)
@@ -169,10 +129,8 @@ public interface InteractionUse extends EObject {
     InteractionUseEnd getFinish();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.sample.interactions.InteractionUse#getFinish
-     * <em>Finish</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * Sets the value of the '{@link org.eclipse.sirius.sample.interactions.InteractionUse#getFinish <em>Finish</em>}'
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Finish</em>' reference.
@@ -180,5 +138,16 @@ public interface InteractionUse extends EObject {
      * @generated
      */
     void setFinish(InteractionUseEnd value);
+
+    /**
+     * Returns the value of the '<em><b>Owned Gates</b></em>' containment reference list. The list contents are of type
+     * {@link org.eclipse.sirius.sample.interactions.Gate}. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Owned Gates</em>' containment reference list.
+     * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getInteractionUse_OwnedGates()
+     * @model containment="true"
+     * @generated
+     */
+    EList<Gate> getOwnedGates();
 
 } // InteractionUse

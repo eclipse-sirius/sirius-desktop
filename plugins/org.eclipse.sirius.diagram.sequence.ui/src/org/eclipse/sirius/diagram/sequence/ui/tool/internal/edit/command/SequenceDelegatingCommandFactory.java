@@ -31,6 +31,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.operation.RefreshSe
 import org.eclipse.sirius.diagram.sequence.business.internal.tool.ToolCommandBuilder;
 import org.eclipse.sirius.diagram.sequence.description.tool.CombinedFragmentCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ExecutionCreationTool;
+import org.eclipse.sirius.diagram.sequence.description.tool.GateCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.InteractionUseCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ObservationPointCreationTool;
@@ -290,6 +291,8 @@ public final class SequenceDelegatingCommandFactory extends DelegatingDiagramCom
             result = org.eclipse.emf.common.command.UnexecutableCommand.INSTANCE;
         } else if (tool instanceof ObservationPointCreationTool) {
             result = buildObservationPointCreationCommandFromTool(container, (ObservationPointCreationTool) tool);
+        } else if (tool instanceof GateCreationTool) {
+            result = buildGateCreationCommandFromTool(container, (GateCreationTool) tool);
         } else {
             result = super.buildCreateNodeCommandFromTool(container, tool);
         }
@@ -337,6 +340,8 @@ public final class SequenceDelegatingCommandFactory extends DelegatingDiagramCom
             result = org.eclipse.emf.common.command.UnexecutableCommand.INSTANCE;
         } else if (tool instanceof OperandCreationTool) {
             result = buildOperandCreationCommandFromTool(nodeContainer, (OperandCreationTool) tool);
+        } else if (tool instanceof GateCreationTool) {
+            result = buildGateCreationCommandFromTool(nodeContainer, (GateCreationTool) tool);
         } else {
             result = super.buildCreateContainerCommandFromTool(nodeContainer, tool);
         }
@@ -382,4 +387,21 @@ public final class SequenceDelegatingCommandFactory extends DelegatingDiagramCom
         emfCommand = emfCommand.chain(CommandFactory.createRecordingCommand(domain, new RefreshSemanticOrderingsOperation(diagram)));
         return emfCommand;
     }
+
+    private org.eclipse.emf.common.command.Command buildGateCreationCommandFromTool(DDiagramElementContainer nodeContainer, GateCreationTool tool) {
+        org.eclipse.emf.common.command.Command emfCommand = ToolCommandBuilder.buildCreateGateCommandFromTool(nodeContainer, tool, startingEndPredecessor, finishingEndPredecessor);
+        SequenceDDiagram diagram = (SequenceDDiagram) nodeContainer.getParentDiagram();
+        emfCommand = emfCommand.chain(CommandFactory.createRecordingCommand(domain, new RefreshSemanticOrderingsOperation(diagram)));
+        return emfCommand;
+    }
+
+    // private org.eclipse.emf.common.command.Command buildGateCreationCommandFromTool(DNode node, GateCreationTool
+    // tool) {
+    // org.eclipse.emf.common.command.Command emfCommand = ToolCommandBuilder.buildCreateGateCommandFromTool(node, tool,
+    // startingEndPredecessor, finishingEndPredecessor);
+    // SequenceDDiagram diagram = (SequenceDDiagram) node.getParentDiagram();
+    // emfCommand = emfCommand.chain(CommandFactory.createRecordingCommand(domain, new
+    // RefreshSemanticOrderingsOperation(diagram)));
+    // return emfCommand;
+    // }
 }

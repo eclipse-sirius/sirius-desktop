@@ -1,7 +1,7 @@
-/*******************************************************************************
- * Copyright (c) 2010, 2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License 2.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
  * https://www.eclipse.org/legal/epl-2.0/
  *
@@ -9,7 +9,7 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ */
 package org.eclipse.sirius.sample.interactions.impl;
 
 import org.eclipse.emf.ecore.EClass;
@@ -26,6 +26,8 @@ import org.eclipse.sirius.sample.interactions.DestroyParticipantMessage;
 import org.eclipse.sirius.sample.interactions.Execution;
 import org.eclipse.sirius.sample.interactions.ExecutionEnd;
 import org.eclipse.sirius.sample.interactions.FeatureAccessMessage;
+import org.eclipse.sirius.sample.interactions.Gate;
+import org.eclipse.sirius.sample.interactions.GateEnd;
 import org.eclipse.sirius.sample.interactions.Interaction;
 import org.eclipse.sirius.sample.interactions.InteractionUse;
 import org.eclipse.sirius.sample.interactions.InteractionUseEnd;
@@ -42,15 +44,13 @@ import org.eclipse.sirius.sample.interactions.State;
 import org.eclipse.sirius.sample.interactions.StateEnd;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
- * end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
  *
  * @generated
  */
 public class InteractionsFactoryImpl extends EFactoryImpl implements InteractionsFactory {
     /**
-     * Creates the default factory implementation. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -67,8 +67,7 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
     }
 
     /**
-     * Creates an instance of the factory. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -110,6 +109,8 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
             return createCombinedFragment();
         case InteractionsPackage.OPERAND:
             return createOperand();
+        case InteractionsPackage.GATE:
+            return createGate();
         case InteractionsPackage.MESSAGE_END:
             return createMessageEnd();
         case InteractionsPackage.EXECUTION_END:
@@ -124,6 +125,8 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
             return createOperandEnd();
         case InteractionsPackage.MIX_END:
             return createMixEnd();
+        case InteractionsPackage.GATE_END:
+            return createGateEnd();
         case InteractionsPackage.CONSTRAINT:
             return createConstraint();
         default:
@@ -280,6 +283,17 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
      * @generated
      */
     @Override
+    public Gate createGate() {
+        GateImpl gate = new GateImpl();
+        return gate;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public MessageEnd createMessageEnd() {
         MessageEndImpl messageEnd = new MessageEndImpl();
         return messageEnd;
@@ -349,6 +363,17 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
     public MixEnd createMixEnd() {
         MixEndImpl mixEnd = new MixEndImpl();
         return mixEnd;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public GateEnd createGateEnd() {
+        GateEndImpl gateEnd = new GateEndImpl();
+        return gateEnd;
     }
 
     /**

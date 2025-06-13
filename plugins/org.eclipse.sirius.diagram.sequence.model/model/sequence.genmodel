@@ -62,6 +62,7 @@
       <genClasses ecoreClass="sequence.ecore#//description/OperandMapping"/>
       <genClasses ecoreClass="sequence.ecore#//description/ObservationPointMapping"/>
       <genClasses ecoreClass="sequence.ecore#//description/InteractionContainerMapping"/>
+      <genClasses ecoreClass="sequence.ecore#//description/GateMapping"/>
       <nestedGenPackages prefix="Tool" basePackage="org.eclipse.sirius.diagram.sequence.description"
           disposableProviderFactory="true" ecorePackage="sequence.ecore#//description/tool">
         <genClasses ecoreClass="sequence.ecore#//description/tool/SequenceDiagramToolDescription"/>
@@ -101,6 +102,7 @@
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//description/tool/InstanceRoleReorderTool/predecessorAfter"/>
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//description/tool/InstanceRoleReorderTool/instanceRoleMoved"/>
         </genClasses>
+        <genClasses ecoreClass="sequence.ecore#//description/tool/GateCreationTool"/>
       </nestedGenPackages>
     </nestedGenPackages>
     <nestedGenPackages prefix="Ordering" basePackage="org.eclipse.sirius.diagram.sequence"

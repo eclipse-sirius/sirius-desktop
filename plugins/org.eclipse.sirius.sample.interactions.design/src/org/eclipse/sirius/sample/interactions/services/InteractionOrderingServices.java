@@ -34,6 +34,7 @@ import org.eclipse.sirius.sample.interactions.CombinedFragmentEnd;
 import org.eclipse.sirius.sample.interactions.DestroyParticipantMessage;
 import org.eclipse.sirius.sample.interactions.Execution;
 import org.eclipse.sirius.sample.interactions.ExecutionEnd;
+import org.eclipse.sirius.sample.interactions.GateEnd;
 import org.eclipse.sirius.sample.interactions.Interaction;
 import org.eclipse.sirius.sample.interactions.InteractionUse;
 import org.eclipse.sirius.sample.interactions.InteractionUseEnd;
@@ -175,6 +176,8 @@ public class InteractionOrderingServices {
             return ((ExecutionEnd) self).getExecution();
         } else if (self instanceof StateEnd) {
             return ((StateEnd) self).getState();
+        } else if (self instanceof GateEnd) {
+            return ((GateEnd) self).getGate();
         } else {
             return null;
         }
@@ -183,8 +186,8 @@ public class InteractionOrderingServices {
     public Participant currentParticipant(EObject self) {
         if (self instanceof Participant) {
             return (Participant) self;
-        } else if (self instanceof AbstractEnd) {
-            return ((AbstractEnd) self).getContext();
+        } else if (self instanceof AbstractEnd && !(self instanceof GateEnd)) {
+            return (Participant) ((AbstractEnd) self).getContext();
         } else if (self instanceof Execution) {
             return ((Execution) self).getOwner();
         } else if (self instanceof State) {
@@ -269,16 +272,20 @@ public class InteractionOrderingServices {
         MessageEnd sendingEnd = msg.getSendingEnd();
         if (sendingEnd != null) {
             Participant p = sendingEnd.getContext();
-            List<EventContext> structure = computeContainmentStructure(p);
-            for (EventContext ec : structure) {
-                if (ec.getElement().equals(msg) && ec.isStart()) {
-                    EObject parent = ec.getParent();
-                    if (parent != null) {
-                        return parent;
-                    } else {
-                        return p;
+            if (p != null) {
+                List<EventContext> structure = computeContainmentStructure(p);
+                for (EventContext ec : structure) {
+                    if (ec.getElement().equals(msg) && ec.isStart()) {
+                        EObject parent = ec.getParent();
+                        if (parent != null) {
+                            return parent;
+                        } else {
+                            return p;
+                        }
                     }
                 }
+            } else if (sendingEnd.getGate() != null) {
+                return sendingEnd.getGate();
             }
         }
         return msg;
@@ -308,6 +315,8 @@ public class InteractionOrderingServices {
                         }
                     }
                 }
+            } else if (receivingEnd.getGate() != null) {
+                return receivingEnd.getGate();
             }
         }
         return msg;
@@ -432,6 +441,8 @@ public class InteractionOrderingServices {
             return ((InteractionUseEnd) end).getOwner();
         } else if (end instanceof OperandEnd) {
             return ((OperandEnd) end).getOwner();
+        } else if (end instanceof GateEnd) {
+            return ((GateEnd) end).getGate();
         } else {
             assert false : "unhandled kind of AbstractEnd";
             return null;
@@ -484,6 +495,11 @@ public class InteractionOrderingServices {
                     result.add(new EventContext(ancestors.peek(), execEnd.getState(), true, ancestors.size() + 1));
                     ancestors.push(execEnd.getState());
                 }
+                if (isStartingGateEnd(end)) {
+                    GateEnd execEnd = (GateEnd) end;
+                    result.add(new EventContext(ancestors.peek(), execEnd.getGate(), true, ancestors.size() + 1));
+                    ancestors.push(execEnd.getGate());
+                }
 
                 if (end instanceof MessageEnd) {
                     MessageEnd msgEnd = (MessageEnd) end;
@@ -502,6 +518,11 @@ public class InteractionOrderingServices {
                     StateEnd execEnd = (StateEnd) end;
                     ancestors.pop();
                     result.add(new EventContext(ancestors.peek(), execEnd.getState(), false, ancestors.size() + 1));
+                }
+                if (isFinishingGateEnd(end)) {
+                    GateEnd execEnd = (GateEnd) end;
+                    ancestors.pop();
+                    result.add(new EventContext(ancestors.peek(), execEnd.getGate(), false, ancestors.size() + 1));
                 }
             }
             return result;
@@ -539,6 +560,24 @@ public class InteractionOrderingServices {
         if (end instanceof StateEnd) {
             StateEnd ee = (StateEnd) end;
             return ee.getState() != null && ee.getState().getEnd() == end;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean isStartingGateEnd(AbstractEnd end) {
+        if (end instanceof GateEnd) {
+            GateEnd ee = (GateEnd) end;
+            return ee.getGate() != null && ee.getGate().getStart() == end;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean isFinishingGateEnd(AbstractEnd end) {
+        if (end instanceof GateEnd) {
+            GateEnd ee = (GateEnd) end;
+            return ee.getGate() != null && ee.getGate().getEnd() == end;
         } else {
             return false;
         }

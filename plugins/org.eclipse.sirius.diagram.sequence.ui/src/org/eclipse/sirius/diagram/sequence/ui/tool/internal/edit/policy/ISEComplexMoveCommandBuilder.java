@@ -212,7 +212,10 @@ public class ISEComplexMoveCommandBuilder {
 
     private void computeReparents(Collection<ISequenceNode> sequenceNodesToMove, Map<AbstractNodeEvent, ISequenceEvent> reparents) {
         // reparent directly moved execution
-        Collection<AbstractNodeEvent> movedExecutions = Lists.newArrayList(Iterables.filter(sequenceNodesToMove, AbstractNodeEvent.class));
+        // Collection<AbstractNodeEvent> movedExecutions = Lists.newArrayList(Iterables.filter(sequenceNodesToMove,
+        // AbstractNodeEvent.class));
+        Collection<AbstractNodeEvent> movedExecutions = Lists.newArrayList(Iterables.filter(sequenceNodesToMove, Execution.class));
+        movedExecutions.addAll(Lists.newArrayList(Iterables.filter(sequenceNodesToMove, State.class)));
 
         // reparent unmoved executions
         // filter unmoved executions to keep only ones with an intersection with initial or final range

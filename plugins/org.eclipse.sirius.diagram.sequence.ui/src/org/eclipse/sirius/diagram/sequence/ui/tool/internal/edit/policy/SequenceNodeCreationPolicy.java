@@ -42,6 +42,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDi
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.description.tool.CombinedFragmentCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ExecutionCreationTool;
+import org.eclipse.sirius.diagram.sequence.description.tool.GateCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.InteractionUseCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ObservationPointCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.OperandCreationTool;
@@ -168,6 +169,32 @@ public class SequenceNodeCreationPolicy extends NodeCreationEditPolicy {
             return creationUtil.getNodeCreationCommand(viewnode, tool);
         } else {
             return super.getCreateNodeOnNodeCommand(request, tool, viewnode, parentEditPartToUse);
+        }
+    }
+
+    @Override
+    protected Command getCreateNodeInContainerCommand(CreateRequest request, NodeCreationDescription tool, DDiagramElementContainer viewNodeContainer, EditPart parentEditPartToUse) {
+        if (tool instanceof GateCreationTool) {
+            SequenceDiagram sequenceDiagram = EditPartsHelper.getSequenceDiagram(getHost());
+            SequenceDDiagram diagram = sequenceDiagram.getSequenceDDiagram();
+
+            Point location = request.getLocation().getCopy();
+            GraphicalHelper.screen2logical(location, (IGraphicalEditPart) getHost());
+            EventEnd startingEndPredecessor = SequenceGraphicalHelper.getEndBefore(diagram, location.y);
+            EventEnd startingEndSuccessor = SequenceGraphicalHelper.getEndAfter(diagram, location.y);
+            // if (tool instanceof GateCreationTool) {
+            // Point bottomRight = location.getCopy().getTranslated(0, 1);
+            // bottomRight = new Point(location.x + 2 * LayoutUtils.SCALE, computeBottomY(diagram, location,
+            // startingEndSuccessor));
+            // GraphicalHelper.logical2screen(bottomRight, (IGraphicalEditPart) getHost());
+            // request.setSize(new Dimension(LayoutConstants.DEFAULT_EXECUTION_WIDTH,
+            // LayoutConstants.DEFAULT_EXECUTION_HEIGHT));
+            // }
+            CreationUtil creationUtil = new CreationUtil(getDiagramCommandFactory(startingEndPredecessor, startingEndPredecessor, location), getRealLocation(request, parentEditPartToUse),
+                    request.getSize(), getHost());
+            return creationUtil.getNodeCreationCommand(viewNodeContainer, tool);
+        } else {
+            return super.getCreateNodeInContainerCommand(request, tool, viewNodeContainer, parentEditPartToUse);
         }
     }
 
