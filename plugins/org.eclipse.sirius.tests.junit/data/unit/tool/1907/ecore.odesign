@@ -89,7 +89,7 @@
           </conditionnalStyles>
         </edgeMappings>
         <containerMappings name="EC EEnum" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EEnum)" domainClass="EEnum" childrenPresentation="List">
-          <subNodeMappings name="EC EEnumLiteral" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="ocl:eLiterals" domainClass="EEnumLiteral">
+          <subNodeMappings name="EC EEnumLiteral" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="aql:eLiterals" domainClass="EEnumLiteral">
             <style xsi:type="style:BundledImageDescription" labelAlignment="LEFT" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -549,7 +549,7 @@
           </conditionnalStyles>
         </containerMappings>
         <containerMappings name="Blank EC EEnum" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Blank%20Entities']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="aql:self.allRoots().eAllContents(ecore::EEnum)" createElements="false" domainClass="EEnum" childrenPresentation="List">
-          <subNodeMappings name="EC EEnumLiteral" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Blank%20Entities']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="ocl:eLiterals" domainClass="EEnumLiteral">
+          <subNodeMappings name="EC EEnumLiteral" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Blank%20Entities']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="aql:eLiterals" domainClass="EEnumLiteral">
             <style xsi:type="style:BundledImageDescription" labelAlignment="LEFT" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

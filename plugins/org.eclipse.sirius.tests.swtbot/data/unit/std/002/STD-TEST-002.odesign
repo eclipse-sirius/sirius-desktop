@@ -4,7 +4,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="STD002-Diag" domainClass="EPackage">
       <defaultLayer name="Default">
         <nodeMappings name="C_EClass" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="EClass">
-          <style xsi:type="style:SquareDescription" labelExpression="ocl:name">
+          <style xsi:type="style:SquareDescription" labelExpression="aql:name">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
