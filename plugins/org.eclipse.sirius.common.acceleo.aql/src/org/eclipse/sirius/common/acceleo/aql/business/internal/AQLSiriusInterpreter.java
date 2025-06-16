@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2017 Obeo.
+ * Copyright (c) 2015, 2025 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -209,7 +209,7 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter implements 
     @Override
     public IEvaluationResult evaluateExpression(final EObject target, final String fullExpression) throws EvaluationException {
         this.javaExtensions.reloadIfNeeded();
-        String expression = new ExpressionTrimmer(fullExpression).getExpression();
+        String expression = new ExpressionTrimmer(fullExpression).getExpression().trim();
         Map<String, Object> variables = getVariables();
         variables.put("self", target); //$NON-NLS-1$
 

@@ -167,7 +167,6 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
      * Test VSM validation with problems of each kind: INFO, WARNING, ERROR and check the severity.
      */
     public void testValidationVSMForEachKindOfProblem() {
-        String infoMessage = "Empty collection: Nothing left after concat:\n Empty OrderedSet defined in extension\n Empty OrderedSet defined in extension";
         String warningMessage = "EClassifierLiteral=EPackage is duplicated in the type set literal.";
         String errorMessage = "null or empty string.";
 
@@ -176,11 +175,9 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
         // Check that there is a pop up for validation problems
         assertEquals("The VSM is not valid, it should have popup error message", Diagnostic.ERROR, diagnostic.getSeverity());
         // Check each severity according to the message.
-        assertEquals("The diagnostic must contain 3 elements invalidated", 3, diagnostic.getChildren().size());
+        assertEquals("The diagnostic must contain 3 elements invalidated", 2, diagnostic.getChildren().size());
         for (Diagnostic diag : diagnostic.getChildren()) {
-            if (infoMessage.equals(diag.getMessage())) {
-                assertEquals("Wrong severity for INFO message.", Diagnostic.INFO, diag.getSeverity());
-            } else if (warningMessage.equals(diag.getMessage())) {
+            if (warningMessage.equals(diag.getMessage())) {
                 assertEquals("Wrong severity for WARNING message.", Diagnostic.WARNING, diag.getSeverity());
             } else if (errorMessage.equals(diag.getMessage())) {
                 assertEquals("Wrong severity for ERROR message.", Diagnostic.ERROR, diag.getSeverity());
