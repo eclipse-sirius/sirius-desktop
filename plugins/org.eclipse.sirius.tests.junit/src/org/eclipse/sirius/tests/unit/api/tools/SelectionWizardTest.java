@@ -117,7 +117,7 @@ public class SelectionWizardTest extends DocbookTestCase {
 
         /* retrieve elements from the diagram. */
         try {
-            selectedElements = new ArrayList<EObject>(INTERPRETER.evaluateCollection(evoluateDiagram, "aql:self.eAllContents(viewpoint::DSemanticDecorator)->select(e | e.target.data->size() = 0)"));
+            selectedElements = new ArrayList<EObject>(INTERPRETER.evaluateCollection(evoluateDiagram, "aql:self.eAllContents(viewpoint::DSemanticDecorator)->select(e | e.target.data <> null and e.target.data->size() = 0)"));
         } catch (final EvaluationException e) {
             fail("Exception while trying to fetch the created chapter.");
         }
