@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -29,15 +29,11 @@ import org.eclipse.sirius.diagram.sequence.description.CombinedFragmentMapping;
 import org.eclipse.sirius.diagram.sequence.description.CreationMessageMapping;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.sequence.description.DestructionMessageMapping;
-import org.eclipse.sirius.diagram.sequence.description.EndOfLifeMapping;
-import org.eclipse.sirius.diagram.sequence.description.ExecutionMapping;
 import org.eclipse.sirius.diagram.sequence.description.InstanceRoleMapping;
 import org.eclipse.sirius.diagram.sequence.description.InteractionUseMapping;
 import org.eclipse.sirius.diagram.sequence.description.ObservationPointMapping;
-import org.eclipse.sirius.diagram.sequence.description.OperandMapping;
 import org.eclipse.sirius.diagram.sequence.description.ReturnMessageMapping;
 import org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription;
-import org.eclipse.sirius.diagram.sequence.description.StateMapping;
 import org.eclipse.sirius.diagram.sequence.description.tool.CombinedFragmentCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ExecutionCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.InteractionUseCreationTool;
@@ -111,13 +107,6 @@ public class NewChildMenusExtensionTests extends SiriusDiagramTestCase {
         assertContainsCommandFor(descriptors, CombinedFragmentMapping.class);
         assertContainsCommandFor(descriptors, InteractionUseMapping.class);
         assertContainsCommandFor(descriptors, ObservationPointMapping.class);
-        
-        // The current test will not be valid when contextual menu will be
-        // improved for sequence mappings
-        assertContainsCommandFor(descriptors, ExecutionMapping.class);
-        assertContainsCommandFor(descriptors, StateMapping.class);
-        assertContainsCommandFor(descriptors, OperandMapping.class);
-        assertContainsCommandFor(descriptors, EndOfLifeMapping.class);
     }
 
     public void testSequenceSpecificToolsAvailable() throws Exception {
