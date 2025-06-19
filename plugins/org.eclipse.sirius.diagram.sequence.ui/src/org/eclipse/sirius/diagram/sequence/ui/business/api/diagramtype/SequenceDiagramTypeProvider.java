@@ -116,17 +116,11 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
         return DescriptionPackage.eINSTANCE.equals(eClass.getEPackage());
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public DiagramDescription createDiagramDescription() {
         return DescriptionFactory.eINSTANCE.createSequenceDiagramDescription();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Collection<? extends CommandParameter> collectToolCommands(EObject context) {
         Collection<CommandParameter> result = new ArrayList<>();
@@ -148,25 +142,17 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Collection<? extends CommandParameter> collectMappingsCommands() {
         Collection<CommandParameter> result = new ArrayList<>();
         // Nodes
         result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createInstanceRoleMapping()));
-        result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createExecutionMapping()));
-        result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createStateMapping()));
-        result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createEndOfLifeMapping()));
         result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createObservationPointMapping()));
-        result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createGateMapping()));
         // Containers
         result.add(
                 new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__CONTAINER_MAPPINGS, DescriptionFactory.eINSTANCE.createInteractionUseMapping()));
         result.add(
                 new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__CONTAINER_MAPPINGS, DescriptionFactory.eINSTANCE.createCombinedFragmentMapping()));
-        result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__CONTAINER_MAPPINGS, DescriptionFactory.eINSTANCE.createOperandMapping()));
         result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__CONTAINER_MAPPINGS,
                 DescriptionFactory.eINSTANCE.createInteractionContainerMapping()));
         // Edges
@@ -177,9 +163,6 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public AdapterFactory getAdapterFactory() {
         ComposedAdapterFactory composed = new ComposedAdapterFactory();
