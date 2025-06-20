@@ -205,7 +205,7 @@
           <variable name="container"/>
           <viewVariable name="containerView"/>
           <initialOperation>
-            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eResource().getContents()->first().eAllContents(docbook::Sect2)->last())">
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eResource().getContents()->first().eAllContents(docbook::Sect2)->last()">
               <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Sect3" referenceName="sect3">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="aql:'Sect3-' + self.precedingSiblings()->size()"/>
               </subModelOperations>
@@ -560,7 +560,7 @@
           <variable name="container"/>
           <viewVariable name="containerView"/>
           <initialOperation>
-            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eResource().getContents()->first().eContents()->filter(docbook::Chapter)->last())">
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eResource().getContents()->first().eContents()->filter(docbook::Chapter)->last()">
               <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Title" referenceName="title"/>
             </firstModelOperations>
           </initialOperation>

@@ -67,7 +67,7 @@
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="target"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="eType" valueExpression="var:targetType"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='Ticket_1843']/@ownedRepresentations[name='Fixture']/@defaultLayer/@edgeMappings[name='EM_AssociationClass']" containerViewExpression="aql:sourceView.eContainerOrSelf(diagram::DDiagram) " sourceExpression="var:sourceType" targetExpression="var:targetType"/>
+                    <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='Ticket_1843']/@ownedRepresentations[name='Fixture']/@defaultLayer/@edgeMappings[name='EM_AssociationClass']" containerViewExpression="aql:sourceView.eContainerOrSelf(diagram::DDiagram)" sourceExpression="var:sourceType" targetExpression="var:targetType"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
