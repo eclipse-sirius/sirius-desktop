@@ -15,20 +15,12 @@ package org.eclipse.sirius.diagram.sequence.business.internal.elements;
 import java.text.MessageFormat;
 import java.util.List;
 
-import org.eclipse.draw2d.geometry.Dimension;
-import org.eclipse.draw2d.geometry.Point;
-import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
-import org.eclipse.sirius.diagram.sequence.business.internal.query.SequenceNodeQuery;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.CacheHelper;
-import org.eclipse.sirius.diagram.sequence.business.internal.util.ParentOperandFinder;
-import org.eclipse.sirius.diagram.sequence.business.internal.util.RangeSetter;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.ext.base.Option;
 

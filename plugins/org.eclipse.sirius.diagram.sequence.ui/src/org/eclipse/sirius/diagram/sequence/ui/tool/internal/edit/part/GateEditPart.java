@@ -40,6 +40,7 @@ import org.eclipse.sirius.viewpoint.DStylizable;
  * @author smonnier
  */
 public class GateEditPart extends AbstractSequenceBordered4EditPart {
+
     /**
      * Constructor.
      * 
@@ -93,49 +94,4 @@ public class GateEditPart extends AbstractSequenceBordered4EditPart {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void refreshVisuals() {
-        super.refreshVisuals();
-        // collapsedExecutionRefreshVisuals();
-    }
-
-
-    // private void collapsedExecutionRefreshVisuals() {
-    // DDiagramElement dde = resolveDiagramElement();
-    // IBorderItemLocator bil = getBorderItemLocator();
-    //
-    // if (dde == null || !(bil instanceof ExecutionItemLocator)) {
-    // return;
-    // }
-    //
-    // // Modify locator constraint to collapse only the width.
-    // if (new DDiagramElementQuery(dde).isIndirectlyCollapsed()) {
-    // final int x = ((Integer) getStructuralFeatureValue(NotationPackage.eINSTANCE.getLocation_X())).intValue();
-    // final int y = ((Integer) getStructuralFeatureValue(NotationPackage.eINSTANCE.getLocation_Y())).intValue();
-    // final int width = ((Integer) getStructuralFeatureValue(NotationPackage.eINSTANCE.getSize_Width())).intValue();
-    // final int height = ((Integer) getStructuralFeatureValue(NotationPackage.eINSTANCE.getSize_Height())).intValue();
-    //
-    // bil.setConstraint(new Rectangle(x, y, width, height));
-    //
-    // if (bil instanceof BorderItemLocator) {
-    // ((BorderItemLocator) bil).setBorderItemOffset(ICollapseMode.COLLAPSE_DEFAULT_OFFSET);
-    // }
-    //
-    // if (getPrimaryFigure() != null) {
-    // refreshFigure();
-    // getPrimaryFigure().repaint();
-    // }
-    // }
-    // }
-
-    // /**
-    // * {@inheritDoc}
-    // */
-    // @Override
-    // public ISequenceEvent getISequenceEvent() {
-    // return ISequenceElementAccessor.getGate(getNotationView()).get();
-    // }
 }

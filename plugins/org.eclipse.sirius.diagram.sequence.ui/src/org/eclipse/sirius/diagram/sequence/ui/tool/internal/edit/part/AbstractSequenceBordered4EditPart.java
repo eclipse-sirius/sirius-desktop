@@ -20,6 +20,7 @@ import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.gef.DragTracker;
 import org.eclipse.gef.EditPart;
+import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.GraphicalViewer;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.RequestConstants;
@@ -31,9 +32,13 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.ConnectionAnchorOperation;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.ExecutionOperations;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.SequenceEditPartsOperations;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceGateSiriusGraphicalNodeEditPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceLaunchToolEditPolicy;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceNodeCreationPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.ui.SequenceDragEditPartsTrackerEx;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.NodeCreationEditPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusGraphicalNodeEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode4EditPart;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.SiriusBlankSpacesDragTracker;
 import org.eclipse.sirius.ext.gmf.runtime.diagram.ui.tools.RubberbandDragTracker;
@@ -44,7 +49,7 @@ import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
  * 
  * @author mporhel
  */
-public abstract class AbstractSequenceBordered4EditPart extends DNode4EditPart /* implements ISequenceEventEditPart */ {
+public abstract class AbstractSequenceBordered4EditPart extends DNode4EditPart {
 
     /**
      * Constructor.
@@ -84,6 +89,9 @@ public abstract class AbstractSequenceBordered4EditPart extends DNode4EditPart /
         super.createDefaultEditPolicies();
         // installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new ExecutionSemanticEditPolicy());
         // ExecutionOperations.installExecutionAwareNodeCreationPolicy(this);
+
+        ExecutionOperations.replaceEditPolicy(this, EditPolicy.CONTAINER_ROLE, new SequenceNodeCreationPolicy(), NodeCreationEditPolicy.class);
+        ExecutionOperations.replaceEditPolicy(this, EditPolicy.GRAPHICAL_NODE_ROLE, new SequenceGateSiriusGraphicalNodeEditPolicy(), SiriusGraphicalNodeEditPolicy.class);
 
         // Handle $endBefore for launch tools.
         installEditPolicy(org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants.REQ_LAUNCH_TOOL, new SequenceLaunchToolEditPolicy());
