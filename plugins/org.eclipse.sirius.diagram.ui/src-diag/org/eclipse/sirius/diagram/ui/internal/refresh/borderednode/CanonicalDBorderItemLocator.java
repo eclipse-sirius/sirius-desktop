@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2024 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -181,7 +181,16 @@ public class CanonicalDBorderItemLocator {
     }
 
     /**
-     * Find the closest side when x,y is inside parent.
+     * Find the closest side when x, y is inside parent.
+     * <p>
+     * Possible results are:
+     * <ul>
+     * <li> {@link PositionConstants.NORTH}, </li>
+     * <li> {@link PositionConstants.SOUTH}, </li>
+     * <li> {@link PositionConstants.EAST}, </li>
+     * <li> {@link PositionConstants.WEST}. </li>
+     * </ul>
+     * </p>
      * 
      * @param proposedBounds
      *            the proposed bounds
@@ -191,6 +200,29 @@ public class CanonicalDBorderItemLocator {
      */
     public static int findClosestSideOfParent(final Rectangle proposedBounds, final Rectangle parentBorder) {
         return findClosestSideOfParent(proposedBounds, parentBorder, null, false, 0);
+    }
+
+    /**
+     * Find the closest side when x, y is inside parent.
+     * <p>
+     * Possible results are:
+     * <ul>
+     * <li> {@link PositionConstants.NORTH}, </li>
+     * <li> {@link PositionConstants.SOUTH}, </li>
+     * <li> {@link PositionConstants.EAST}, </li>
+     * <li> {@link PositionConstants.WEST}. </li>
+     * </ul>
+     * </p>
+     * 
+     * @param proposedBounds
+     *            the proposed bounds
+     * @param parentBorder
+     *            the parent border
+     * @return draw constant
+     */
+    public static int findClosestSideOfParent(final Bounds proposedBounds, final Bounds parentBorder) {
+        return findClosestSideOfParent(new Rectangle(proposedBounds.getX(), proposedBounds.getY(), proposedBounds.getWidth(), proposedBounds.getHeight()),
+                new Rectangle(parentBorder.getX(), parentBorder.getY(), parentBorder.getWidth(), parentBorder.getHeight()));
     }
 
     /**
