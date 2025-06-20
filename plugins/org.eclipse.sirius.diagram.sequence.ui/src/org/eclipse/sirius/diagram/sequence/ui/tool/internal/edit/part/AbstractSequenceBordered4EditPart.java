@@ -14,7 +14,6 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.draw2d.ConnectionAnchor;
@@ -27,17 +26,11 @@ import org.eclipse.gef.RequestConstants;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gef.requests.DropRequest;
 import org.eclipse.gef.requests.SelectionRequest;
-import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
-import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
-import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
-import org.eclipse.sirius.diagram.sequence.business.internal.util.EventFinder;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.ConnectionAnchorOperation;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.ExecutionOperations;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.SequenceEditPartsOperations;
-import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.ExecutionSemanticEditPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceLaunchToolEditPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.ui.SequenceDragEditPartsTrackerEx;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
@@ -51,7 +44,7 @@ import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
  * 
  * @author mporhel
  */
-public abstract class AbstractSequenceBordered4EditPart extends DNode4EditPart implements ISequenceEventEditPart {
+public abstract class AbstractSequenceBordered4EditPart extends DNode4EditPart /* implements ISequenceEventEditPart */ {
 
     /**
      * Constructor.
@@ -89,8 +82,8 @@ public abstract class AbstractSequenceBordered4EditPart extends DNode4EditPart i
     @Override
     protected void createDefaultEditPolicies() {
         super.createDefaultEditPolicies();
-        installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new ExecutionSemanticEditPolicy());
-        ExecutionOperations.installExecutionAwareNodeCreationPolicy(this);
+        // installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new ExecutionSemanticEditPolicy());
+        // ExecutionOperations.installExecutionAwareNodeCreationPolicy(this);
 
         // Handle $endBefore for launch tools.
         installEditPolicy(org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants.REQ_LAUNCH_TOOL, new SequenceLaunchToolEditPolicy());
@@ -115,9 +108,9 @@ public abstract class AbstractSequenceBordered4EditPart extends DNode4EditPart i
     @Override
     public ConnectionAnchor getSourceConnectionAnchor(Request request) {
         ConnectionAnchor anchor = super.getSourceConnectionAnchor(request);
-        if (new RequestQuery(request).isSequenceMessageCreation()) {
-            anchor = ConnectionAnchorOperation.getSourceConnectionAnchor(this, request, anchor);
-        }
+        // if (new RequestQuery(request).isSequenceMessageCreation()) {
+        // anchor = ConnectionAnchorOperation.getSourceConnectionAnchor(this, request, anchor);
+        // }
         return anchor;
     }
 
@@ -136,9 +129,9 @@ public abstract class AbstractSequenceBordered4EditPart extends DNode4EditPart i
 
         ConnectionAnchor anchor = super.getTargetConnectionAnchor(request);
 
-        if (sequenceMessageCreation) {
-            anchor = ConnectionAnchorOperation.getTargetConnectionAnchor(this, request, anchor);
-        }
+        // if (sequenceMessageCreation) {
+        // anchor = ConnectionAnchorOperation.getTargetConnectionAnchor(this, request, anchor);
+        // }
         return anchor;
     }
 
@@ -155,19 +148,20 @@ public abstract class AbstractSequenceBordered4EditPart extends DNode4EditPart i
             CreateRequest createRequest = (CreateRequest) request;
             Point location = createRequest.getLocation().getCopy();
             GraphicalHelper.screen2logical(location, this);
-            Range insertionPoint = new Range(location.y, location.y);
-            ISequenceEvent sequenceEvent = getISequenceEvent();
-            EventFinder eventFinder = new EventFinder(sequenceEvent, sequenceEvent.getLifeline().get());
-            ISequenceEvent mostSpecificSequenceEvent = eventFinder.findMostSpecificEvent(insertionPoint);
-
-            if (mostSpecificSequenceEvent instanceof AbstractNodeEvent && !sequenceEvent.equals(mostSpecificSequenceEvent)) {
-                Map<?, ?> editPartRegistry = getTopGraphicEditPart().getViewer().getEditPartRegistry();
-                Object obj = editPartRegistry.get(mostSpecificSequenceEvent.getNotationView());
-                if (obj instanceof ExecutionEditPart) {
-                    ExecutionEditPart targetEditPart = (ExecutionEditPart) obj;
-                    return targetEditPart;
-                }
-            }
+            // Range insertionPoint = new Range(location.y, location.y);
+            // ISequenceEvent sequenceEvent = getISequenceEvent();
+            // EventFinder eventFinder = new EventFinder(sequenceEvent, sequenceEvent.getLifeline().get());
+            // ISequenceEvent mostSpecificSequenceEvent = eventFinder.findMostSpecificEvent(insertionPoint);
+            //
+            // if (mostSpecificSequenceEvent instanceof AbstractNodeEvent &&
+            // !sequenceEvent.equals(mostSpecificSequenceEvent)) {
+            // Map<?, ?> editPartRegistry = getTopGraphicEditPart().getViewer().getEditPartRegistry();
+            // Object obj = editPartRegistry.get(mostSpecificSequenceEvent.getNotationView());
+            // if (obj instanceof ExecutionEditPart) {
+            // ExecutionEditPart targetEditPart = (ExecutionEditPart) obj;
+            // return targetEditPart;
+            // }
+            // }
         }
         return super.getTargetEditPart(request);
     }

@@ -624,15 +624,6 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
         }
 
         @Override
-        public Range caseGate(Gate movedEvent) {
-            ISequenceEvent hierarchicalParentEvent = movedEvent.getHierarchicalParentEvent();
-            if (hierarchicalParentEvent instanceof ISequenceNode && !movedElements.contains(hierarchicalParentEvent)) {
-                sequenceNodesToMove.add(movedEvent);
-            }
-            return initialRangeFunction.apply(movedEvent);
-        }
-
-        @Override
         public Range caseFrame(AbstractFrame movedEvent) {
             sequenceNodesToMove.add(movedEvent);
             return initialRangeFunction.apply(movedEvent);

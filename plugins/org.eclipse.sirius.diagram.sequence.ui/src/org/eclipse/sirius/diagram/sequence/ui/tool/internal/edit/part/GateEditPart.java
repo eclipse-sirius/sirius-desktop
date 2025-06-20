@@ -24,8 +24,6 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractMultiLifelineNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
-import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
-import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.GateSelectionEditPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.GateItemLocator;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramBorderNodeEditPartOperation;
@@ -104,6 +102,7 @@ public class GateEditPart extends AbstractSequenceBordered4EditPart {
         // collapsedExecutionRefreshVisuals();
     }
 
+
     // private void collapsedExecutionRefreshVisuals() {
     // DDiagramElement dde = resolveDiagramElement();
     // IBorderItemLocator bil = getBorderItemLocator();
@@ -132,11 +131,11 @@ public class GateEditPart extends AbstractSequenceBordered4EditPart {
     // }
     // }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public ISequenceEvent getISequenceEvent() {
-        return ISequenceElementAccessor.getGate(getNotationView()).get();
-    }
+    // /**
+    // * {@inheritDoc}
+    // */
+    // @Override
+    // public ISequenceEvent getISequenceEvent() {
+    // return ISequenceElementAccessor.getGate(getNotationView()).get();
+    // }
 }

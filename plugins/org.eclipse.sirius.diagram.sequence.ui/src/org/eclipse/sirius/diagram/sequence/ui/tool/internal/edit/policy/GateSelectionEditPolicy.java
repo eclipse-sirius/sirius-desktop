@@ -14,8 +14,6 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -26,21 +24,13 @@ import org.eclipse.draw2d.FreeformViewport;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
-import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
-import org.eclipse.gef.EditPartViewer;
-import org.eclipse.gef.commands.Command;
-import org.eclipse.gef.commands.CompoundCommand;
-import org.eclipse.gef.commands.UnexecutableCommand;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gef.tools.ResizeTracker;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
-import org.eclipse.gmf.runtime.common.core.command.IdentityCommand;
-import org.eclipse.gmf.runtime.diagram.ui.commands.CommandProxy;
-import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
@@ -51,7 +41,6 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
-import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractSequenceNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Execution;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
@@ -63,7 +52,6 @@ import org.eclipse.sirius.diagram.sequence.business.internal.operation.ReparentE
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.SetMessageRangeOperation;
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.SetVerticalRangeOperation;
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.ShiftDirectSubExecutionsOperation;
-import org.eclipse.sirius.diagram.sequence.business.internal.operation.VerticalSpaceExpansionOrReduction;
 import org.eclipse.sirius.diagram.sequence.business.internal.ordering.EventEndHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.ISequenceEventQuery;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.EventFinder;
@@ -75,14 +63,11 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.Seque
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.ShiftDescendantMessagesOperation;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.GateEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ISequenceEventEditPart;
-import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceDiagramEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator.AbstractNodeEventResizeSelectionValidator;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator.ISEComplexMoveValidator;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.RangeGuide;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.ui.SequenceDragEditPartsTrackerEx.SequenceCacheDragTrackerHelper;
-import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.EditPartsHelper;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
-import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramBorderNodeEditPartOperation;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SpecificBorderItemSelectionEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 import org.eclipse.sirius.ext.base.Option;
@@ -118,26 +103,27 @@ public class GateSelectionEditPolicy extends SpecificBorderItemSelectionEditPoli
      */
     protected Collection<Figure> guides = new ArrayList<>();
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected Command getMoveCommand(ChangeBoundsRequest request) {
-        // cancelHorizontalDelta(request);
-        ICommand solution = IdentityCommand.INSTANCE;
-        GateEditPart hostPart = (GateEditPart) getHost();
-
-        RequestQuery requestQuery = new RequestQuery(request);
-        if (hostPart.getSelected() == EditPart.SELECTED_PRIMARY && requestQuery.isMove()) {
-            ISEComplexMoveValidator validator = ISEComplexMoveValidator.getOrCreateValidator(request, requestQuery, hostPart.getISequenceEvent());
-            if (validator != null && validator.isValid()) {
-                solution = buildMoveCommand(hostPart, request, validator);
-            } else {
-                solution = org.eclipse.gmf.runtime.common.core.command.UnexecutableCommand.INSTANCE;
-            }
-        }
-        return new ICommandProxy(solution);
-    }
+    // /**
+    // * {@inheritDoc}
+    // */
+    // @Override
+    // protected Command getMoveCommand(ChangeBoundsRequest request) {
+    // // cancelHorizontalDelta(request);
+    // ICommand solution = IdentityCommand.INSTANCE;
+    // GateEditPart hostPart = (GateEditPart) getHost();
+    //
+    // RequestQuery requestQuery = new RequestQuery(request);
+    // if (hostPart.getSelected() == EditPart.SELECTED_PRIMARY && requestQuery.isMove()) {
+    // ISEComplexMoveValidator validator = ISEComplexMoveValidator.getOrCreateValidator(request, requestQuery,
+    // hostPart.getISequenceEvent());
+    // if (validator != null && validator.isValid()) {
+    // solution = buildMoveCommand(hostPart, request, validator);
+    // } else {
+    // solution = org.eclipse.gmf.runtime.common.core.command.UnexecutableCommand.INSTANCE;
+    // }
+    // }
+    // return new ICommandProxy(solution);
+    // }
 
     private ICommand buildMoveCommand(GateEditPart hostPart, ChangeBoundsRequest request, ISEComplexMoveValidator validator) {
         TransactionalEditingDomain editingDomain = hostPart.getEditingDomain();
@@ -146,93 +132,100 @@ public class GateSelectionEditPolicy extends SpecificBorderItemSelectionEditPoli
         return postProcessCommand(builder.buildCommand(), hostPart, requestQuery);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected Command getResizeCommand(ChangeBoundsRequest request) {
-        Command result = UnexecutableCommand.INSTANCE;
-        GateEditPart hostPart = (GateEditPart) getHost();
-        AbstractSequenceNodeEvent host = (AbstractSequenceNodeEvent) hostPart.getISequenceEvent();
-
-        // The resize in top direction is not handled as the resize in bottom direction. A vertical space expansion can
-        // be needed for resize to bottom, and there is always free space in bottom. All this aspect is handled by the
-        // AbstractNodeEventResizeSelectionValidator. For resize to top, we only need to resize recursively the parent
-        // as long as it is possible.
-        Command resizeParentToTopCmd = null;
-        RequestQuery requestQuery = new RequestQuery(request);
-        if (requestQuery.isResizeFromTop() && request.getSizeDelta().height() > 0) {
-            ISequenceEvent parentEvent = host.getParentEvent();
-            EditPart parentEventEditPart = (EditPart) hostPart.getViewer().getEditPartRegistry().get(parentEvent.getNotationView());
-            if (hostPart != null && parentEventEditPart != null) {
-                // Get resize command in top direction from for its container
-                Rectangle executionFinalBounds = requestQuery.getFinalBounds(hostPart);
-                Range executionFinalRange = RangeHelper.verticalRange(executionFinalBounds);
-                if (parentEvent.getValidSubEventsRange().getLowerBound() >= executionFinalRange.getLowerBound()) {
-                    ChangeBoundsRequest parentRequest = new ChangeBoundsRequest(request.getType());
-                    int yDelta = parentEvent.getValidSubEventsRange().getLowerBound() - executionFinalRange.getLowerBound();
-                    parentRequest.setMoveDelta(new PrecisionPoint(request.getMoveDelta().x(), -yDelta));
-                    parentRequest.setSizeDelta(new Dimension(request.getSizeDelta().width(), yDelta));
-                    parentRequest.setEditParts(parentEventEditPart);
-                    parentRequest.setResizeDirection(request.getResizeDirection());
-                    parentRequest.setLocation(request.getLocation());
-
-                    resizeParentToTopCmd = parentEventEditPart.getCommand(parentRequest);
-                }
-            }
-        }
-
-        AbstractNodeEventResizeSelectionValidator validator = AbstractNodeEventResizeSelectionValidator.getOrCreateValidator(request, host);
-
-        if (validator.isValid()) {
-            ICommand solution = buildResizeCommand(request, hostPart, validator);
-            if (solution == null) {
-                solution = IdentityCommand.INSTANCE;
-            }
-            if (resizeParentToTopCmd == null) {
-                result = new ICommandProxy(solution);
-            } else if (resizeParentToTopCmd.canExecute()) {
-                CompoundCommand cc = new CompoundCommand(solution.getLabel());
-                cc.add(resizeParentToTopCmd);
-                cc.add(new ICommandProxy(solution));
-                result = cc;
-            }
-        }
-        return result;
-    }
-
-    private ICommand buildResizeCommand(ChangeBoundsRequest request, GateEditPart hostPart, AbstractNodeEventResizeSelectionValidator validator) {
-        TransactionalEditingDomain editingDomain = hostPart.getEditingDomain();
-        ICommand solution = null;
-
-        AbstractSequenceNodeEvent self = (AbstractSequenceNodeEvent) hostPart.getISequenceEvent();
-        RequestQuery requestQuery = new RequestQuery(request);
-        if (requestQuery.isMultiSelectionOperation()) {
-            validator.setExpansionZone(null);
-        }
-
-        CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(editingDomain, Messages.ExecutionSelectionEditPolicy_resizeCompositeCommand);
-        if (needVerticalSpaceExpansion(validator, request)) {
-            SequenceDiagramEditPart diagram = EditPartsHelper.getSequenceDiagramPart(hostPart);
-            Collection<ISequenceEvent> eventToIgnore = Collections.singletonList((ISequenceEvent) self);
-            ctc.compose(CommandFactory.createICommand(editingDomain, new VerticalSpaceExpansionOrReduction(diagram.getSequenceDiagram(), validator.getExpansionZone(), 0, eventToIgnore)));
-        }
-        ISequenceEvent finalHierarchicalParent = validator.getFinalHierarchicalParent();
-        if (finalHierarchicalParent.equals(self.getHierarchicalParentEvent())) {
-            Command cmd = DiagramBorderNodeEditPartOperation.getResizeBorderItemCommand((GateEditPart) getHost(), request, false);
-            ctc.add(new CommandProxy(cmd));
-            ctc.setLabel(cmd.getLabel());
-
-            if (self instanceof Execution exec) {
-                addChildrenAdjustmentCommands(exec, ctc, request, validator);
-
-                reconnectMessages(validator, editingDomain, exec, requestQuery, ctc, finalHierarchicalParent);
-                reparentSubExecutions(validator, editingDomain, exec, requestQuery, ctc, finalHierarchicalParent);
-            }
-            solution = postProcessCommand(ctc, hostPart, requestQuery);
-        }
-        return solution;
-    }
+    // /**
+    // * {@inheritDoc}
+    // */
+    // @Override
+    // protected Command getResizeCommand(ChangeBoundsRequest request) {
+    // Command result = UnexecutableCommand.INSTANCE;
+    // GateEditPart hostPart = (GateEditPart) getHost();
+    // AbstractSequenceNodeEvent host = (AbstractSequenceNodeEvent) hostPart.getISequenceEvent();
+    //
+    // // The resize in top direction is not handled as the resize in bottom direction. A vertical space expansion can
+    // // be needed for resize to bottom, and there is always free space in bottom. All this aspect is handled by the
+    // // AbstractNodeEventResizeSelectionValidator. For resize to top, we only need to resize recursively the parent
+    // // as long as it is possible.
+    // Command resizeParentToTopCmd = null;
+    // RequestQuery requestQuery = new RequestQuery(request);
+    // if (requestQuery.isResizeFromTop() && request.getSizeDelta().height() > 0) {
+    // ISequenceEvent parentEvent = host.getParentEvent();
+    // EditPart parentEventEditPart = (EditPart)
+    // hostPart.getViewer().getEditPartRegistry().get(parentEvent.getNotationView());
+    // if (hostPart != null && parentEventEditPart != null) {
+    // // Get resize command in top direction from for its container
+    // Rectangle executionFinalBounds = requestQuery.getFinalBounds(hostPart);
+    // Range executionFinalRange = RangeHelper.verticalRange(executionFinalBounds);
+    // if (parentEvent.getValidSubEventsRange().getLowerBound() >= executionFinalRange.getLowerBound()) {
+    // ChangeBoundsRequest parentRequest = new ChangeBoundsRequest(request.getType());
+    // int yDelta = parentEvent.getValidSubEventsRange().getLowerBound() - executionFinalRange.getLowerBound();
+    // parentRequest.setMoveDelta(new PrecisionPoint(request.getMoveDelta().x(), -yDelta));
+    // parentRequest.setSizeDelta(new Dimension(request.getSizeDelta().width(), yDelta));
+    // parentRequest.setEditParts(parentEventEditPart);
+    // parentRequest.setResizeDirection(request.getResizeDirection());
+    // parentRequest.setLocation(request.getLocation());
+    //
+    // resizeParentToTopCmd = parentEventEditPart.getCommand(parentRequest);
+    // }
+    // }
+    // }
+    //
+    // AbstractNodeEventResizeSelectionValidator validator =
+    // AbstractNodeEventResizeSelectionValidator.getOrCreateValidator(request, host);
+    //
+    // if (validator.isValid()) {
+    // ICommand solution = buildResizeCommand(request, hostPart, validator);
+    // if (solution == null) {
+    // solution = IdentityCommand.INSTANCE;
+    // }
+    // if (resizeParentToTopCmd == null) {
+    // result = new ICommandProxy(solution);
+    // } else if (resizeParentToTopCmd.canExecute()) {
+    // CompoundCommand cc = new CompoundCommand(solution.getLabel());
+    // cc.add(resizeParentToTopCmd);
+    // cc.add(new ICommandProxy(solution));
+    // result = cc;
+    // }
+    // }
+    // return result;
+    // }
+    //
+    // private ICommand buildResizeCommand(ChangeBoundsRequest request, GateEditPart hostPart,
+    // AbstractNodeEventResizeSelectionValidator validator) {
+    // TransactionalEditingDomain editingDomain = hostPart.getEditingDomain();
+    // ICommand solution = null;
+    //
+    // AbstractSequenceNodeEvent self = (AbstractSequenceNodeEvent) hostPart.getISequenceEvent();
+    // RequestQuery requestQuery = new RequestQuery(request);
+    // if (requestQuery.isMultiSelectionOperation()) {
+    // validator.setExpansionZone(null);
+    // }
+    //
+    // CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(editingDomain,
+    // Messages.ExecutionSelectionEditPolicy_resizeCompositeCommand);
+    // if (needVerticalSpaceExpansion(validator, request)) {
+    // SequenceDiagramEditPart diagram = EditPartsHelper.getSequenceDiagramPart(hostPart);
+    // Collection<ISequenceEvent> eventToIgnore = Collections.singletonList((ISequenceEvent) self);
+    // ctc.compose(CommandFactory.createICommand(editingDomain, new
+    // VerticalSpaceExpansionOrReduction(diagram.getSequenceDiagram(), validator.getExpansionZone(), 0,
+    // eventToIgnore)));
+    // }
+    // ISequenceEvent finalHierarchicalParent = validator.getFinalHierarchicalParent();
+    // if (finalHierarchicalParent.equals(self.getHierarchicalParentEvent())) {
+    // Command cmd = DiagramBorderNodeEditPartOperation.getResizeBorderItemCommand((GateEditPart) getHost(), request,
+    // false);
+    // ctc.add(new CommandProxy(cmd));
+    // ctc.setLabel(cmd.getLabel());
+    //
+    // if (self instanceof Execution exec) {
+    // addChildrenAdjustmentCommands(exec, ctc, request, validator);
+    //
+    // reconnectMessages(validator, editingDomain, exec, requestQuery, ctc, finalHierarchicalParent);
+    // reparentSubExecutions(validator, editingDomain, exec, requestQuery, ctc, finalHierarchicalParent);
+    // }
+    // solution = postProcessCommand(ctc, hostPart, requestQuery);
+    // }
+    // return solution;
+    // }
 
     private void reconnectMessages(AbstractNodeEventResizeSelectionValidator validator, TransactionalEditingDomain editingDomain, Execution self, RequestQuery requestQuery,
             CompositeTransactionalCommand ctc, ISequenceEvent finalHierarchicalParent) {
@@ -324,23 +317,24 @@ public class GateSelectionEditPolicy extends SpecificBorderItemSelectionEditPoli
      * @return the completed command
      */
     protected ICommand postProcessCommand(CompositeTransactionalCommand ctc, GateEditPart selfEditPart, RequestQuery requestQuery) {
-        AbstractSequenceNodeEvent self = (AbstractSequenceNodeEvent) selfEditPart.getISequenceEvent();
+        // AbstractSequenceNodeEvent self = (AbstractSequenceNodeEvent) selfEditPart.getISequenceEvent();
         SequenceEditPartsOperations.addRefreshGraphicalOrderingCommand(ctc, selfEditPart);
         SequenceEditPartsOperations.addRefreshSemanticOrderingCommand(ctc, selfEditPart);
 
-        List<Message> linkedMessages = self.getLinkedMessages();
-        if (!linkedMessages.isEmpty() && !linkedMessages.get(0).isLogicallyInstantaneous()) {
-            SequenceEditPartsOperations.addSynchronizeSemanticOrderingCommand(ctc, linkedMessages.get(0));
-        }
+        // List<Message> linkedMessages = self.getLinkedMessages();
+        // if (!linkedMessages.isEmpty() && !linkedMessages.get(0).isLogicallyInstantaneous()) {
+        // SequenceEditPartsOperations.addSynchronizeSemanticOrderingCommand(ctc, linkedMessages.get(0));
+        // }
 
-        if (requestQuery.isMultiSelectionOperation()) {
-            SequenceEditPartsOperations.addSynchronizeSemanticOrderingCommand(ctc, self, requestQuery.getISequenceEvents());
-        } else {
-            SequenceEditPartsOperations.addSynchronizeSemanticOrderingCommand(ctc, self);
-        }
-        if (linkedMessages.size() >= 2 && !linkedMessages.get(1).isLogicallyInstantaneous()) {
-            SequenceEditPartsOperations.addSynchronizeSemanticOrderingCommand(ctc, linkedMessages.get(1));
-        }
+        // if (requestQuery.isMultiSelectionOperation()) {
+        // SequenceEditPartsOperations.addSynchronizeSemanticOrderingCommand(ctc, self,
+        // requestQuery.getISequenceEvents());
+        // } else {
+        // SequenceEditPartsOperations.addSynchronizeSemanticOrderingCommand(ctc, self);
+        // }
+        // if (linkedMessages.size() >= 2 && !linkedMessages.get(1).isLogicallyInstantaneous()) {
+        // SequenceEditPartsOperations.addSynchronizeSemanticOrderingCommand(ctc, linkedMessages.get(1));
+        // }
         return ctc;
     }
 
@@ -443,12 +437,12 @@ public class GateSelectionEditPolicy extends SpecificBorderItemSelectionEditPoli
 
                 if ((seeRange.getLowerBound() + lDelta) <= (seeRange.getUpperBound() + uDelta)) {
                     final Range newRange = new Range(seeRange.getLowerBound() + lDelta, seeRange.getUpperBound() + uDelta);
-                    if (ise instanceof Message && !hasBothEndMoving((Message) ise)) {
-                        Message msg = (Message) ise;
-                        addMessageReconnectionCommand(self, cc, msg, newRange, request, validator, sequenceDiagram);
-                    } else {
+                    // if (ise instanceof Message && !hasBothEndMoving((Message) ise)) {
+                    // Message msg = (Message) ise;
+                    // addMessageReconnectionCommand(self, cc, msg, newRange, request, validator, sequenceDiagram);
+                    // } else {
                         cc.compose(CommandFactory.createICommand(cc.getEditingDomain(), new SetVerticalRangeOperation(ise, newRange)));
-                    }
+                    // }
                 } else {
                     cc.compose(org.eclipse.gmf.runtime.common.core.command.UnexecutableCommand.INSTANCE);
                 }
@@ -560,29 +554,30 @@ public class GateSelectionEditPolicy extends SpecificBorderItemSelectionEditPoli
 
     }
 
-    private boolean hasBothEndMoving(Message smep) {
-        Set<AbstractNodeEvent> movingExecutionEditPart = getMovingExecutions();
-        return movingExecutionEditPart.contains(smep.getSourceElement()) && movingExecutionEditPart.contains(smep.getTargetElement());
-    }
-
-    private Set<AbstractNodeEvent> getMovingExecutions() {
-        EditPartViewer viewer = getHost().getViewer();
-        Set<AbstractNodeEvent> movingExecutions = new HashSet<>();
-        for (GateEditPart eep : Iterables.filter(viewer.getSelectedEditParts(), GateEditPart.class)) {
-            AbstractNodeEvent exec = (AbstractNodeEvent) eep.getISequenceEvent();
-            movingExecutions.add(exec);
-            if (exec instanceof Execution) {
-                movingExecutions.addAll(((Execution) exec).findLinkedExecutions(true));
-            }
-        }
-
-        ArrayList<Execution> subExecutions = new ArrayList<>();
-        for (Execution eep : Iterables.filter(movingExecutions, Execution.class)) {
-            subExecutions.addAll(new ISequenceEventQuery(eep).getAllExecutions());
-        }
-        movingExecutions.addAll(subExecutions);
-        return movingExecutions;
-    }
+    // private boolean hasBothEndMoving(Message smep) {
+    // Set<AbstractNodeEvent> movingExecutionEditPart = getMovingExecutions();
+    // return movingExecutionEditPart.contains(smep.getSourceElement()) &&
+    // movingExecutionEditPart.contains(smep.getTargetElement());
+    // }
+    //
+    // private Set<AbstractNodeEvent> getMovingExecutions() {
+    // EditPartViewer viewer = getHost().getViewer();
+    // Set<AbstractNodeEvent> movingExecutions = new HashSet<>();
+    // for (GateEditPart eep : Iterables.filter(viewer.getSelectedEditParts(), GateEditPart.class)) {
+    // AbstractNodeEvent exec = (AbstractNodeEvent) eep.getISequenceEvent();
+    // movingExecutions.add(exec);
+    // if (exec instanceof Execution) {
+    // movingExecutions.addAll(((Execution) exec).findLinkedExecutions(true));
+    // }
+    // }
+    //
+    // ArrayList<Execution> subExecutions = new ArrayList<>();
+    // for (Execution eep : Iterables.filter(movingExecutions, Execution.class)) {
+    // subExecutions.addAll(new ISequenceEventQuery(eep).getAllExecutions());
+    // }
+    // movingExecutions.addAll(subExecutions);
+    // return movingExecutions;
+    // }
 
     /**
      * Avoid moving the source of the return message of a reflexive synchronous message when resizing a parent
@@ -614,39 +609,41 @@ public class GateSelectionEditPolicy extends SpecificBorderItemSelectionEditPoli
         return rq.isResize() && new ISequenceEventQuery(ise).isReflectiveMessage();
     }
 
-    /*
-     * Feedback
-     */
-    /**
-     * Show/update the horizontal feedback lines aligned on the top and bottom of the execution.
-     * <p>
-     * {@inheritDoc}
-     */
-    @Override
-    protected void showChangeBoundsFeedback(ChangeBoundsRequest request) {
-        eraseChangeBoundsFeedback(request);
-        super.showChangeBoundsFeedback(request);
-
-        GateEditPart hostPart = (GateEditPart) getHost();
-        AbstractSequenceNodeEvent host = (AbstractSequenceNodeEvent) hostPart.getISequenceEvent();
-        RequestQuery requestQuery = new RequestQuery(request);
-
-        if (hostPart.getSelected() == EditPart.SELECTED_PRIMARY && requestQuery.isMove()) {
-            ISEComplexMoveValidator validator = ISEComplexMoveValidator.getOrCreateValidator(request, requestQuery, host);
-            if (validator != null) {
-                SequenceInteractionFeedBackBuilder feedBackBuilder = new SequenceInteractionFeedBackBuilder(validator, getFeedbackLayer(), hostPart);
-                for (Figure fig : feedBackBuilder.buildFeedBack()) {
-                    addFeedback(fig);
-                    guides.add(fig);
-                }
-            }
-        } else if (requestQuery.isResize()) {
-            AbstractNodeEventResizeSelectionValidator validator = AbstractNodeEventResizeSelectionValidator.getOrCreateValidator(request, host);
-            validator.validate();
-            showResizeFeedBack(request);
-            feedBack(validator);
-        }
-    }
+    // /*
+    // * Feedback
+    // */
+    // /**
+    // * Show/update the horizontal feedback lines aligned on the top and bottom of the execution.
+    // * <p>
+    // * {@inheritDoc}
+    // */
+    // @Override
+    // protected void showChangeBoundsFeedback(ChangeBoundsRequest request) {
+    // eraseChangeBoundsFeedback(request);
+    // super.showChangeBoundsFeedback(request);
+    //
+    // GateEditPart hostPart = (GateEditPart) getHost();
+    // AbstractSequenceNodeEvent host = (AbstractSequenceNodeEvent) hostPart.getISequenceEvent();
+    // RequestQuery requestQuery = new RequestQuery(request);
+    //
+    // if (hostPart.getSelected() == EditPart.SELECTED_PRIMARY && requestQuery.isMove()) {
+    // ISEComplexMoveValidator validator = ISEComplexMoveValidator.getOrCreateValidator(request, requestQuery, host);
+    // if (validator != null) {
+    // SequenceInteractionFeedBackBuilder feedBackBuilder = new SequenceInteractionFeedBackBuilder(validator,
+    // getFeedbackLayer(), hostPart);
+    // for (Figure fig : feedBackBuilder.buildFeedBack()) {
+    // addFeedback(fig);
+    // guides.add(fig);
+    // }
+    // }
+    // } else if (requestQuery.isResize()) {
+    // AbstractNodeEventResizeSelectionValidator validator =
+    // AbstractNodeEventResizeSelectionValidator.getOrCreateValidator(request, host);
+    // validator.validate();
+    // showResizeFeedBack(request);
+    // feedBack(validator);
+    // }
+    // }
 
     /**
      * Show feedback for computed conflicts during validation.

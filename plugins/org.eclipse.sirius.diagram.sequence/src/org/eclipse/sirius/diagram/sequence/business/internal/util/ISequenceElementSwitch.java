@@ -290,12 +290,6 @@ public class ISequenceElementSwitch<T> {
             Gate gate = (Gate) element;
             T result = caseGate(gate);
             if (result == null) {
-                result = caseDelimitedEvent(gate);
-            }
-            if (result == null) {
-                result = caseEvent(gate);
-            }
-            if (result == null) {
                 result = defaultCase(element);
             }
             return result;

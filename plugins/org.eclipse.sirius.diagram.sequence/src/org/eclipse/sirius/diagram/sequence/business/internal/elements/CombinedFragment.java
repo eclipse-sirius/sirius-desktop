@@ -240,7 +240,7 @@ public class CombinedFragment extends AbstractFrame {
                         result.add(gate.get());
                     }
             }
-            Collections.sort(result, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
+            // Collections.sort(result, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
             // if (CacheHelper.isStructuralCacheEnabled()) {
             // CacheHelper.getCombinedFragmentToOperandsCache().put(this, result);
             // }

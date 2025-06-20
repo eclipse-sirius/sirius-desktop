@@ -39,7 +39,7 @@ import com.google.common.base.Predicate;
  * 
  * @author mporhel, pcdavid, smonnier
  */
-public abstract class AbstractSequenceNodeEvent extends AbstractSequenceNode implements ISequenceEvent {
+public abstract class AbstractSequenceNodeEvent extends AbstractSequenceNode {
 
     /**
      * Predicate to filter Frames and Operand from possible new parents of an execution reparent.
@@ -100,121 +100,6 @@ public abstract class AbstractSequenceNodeEvent extends AbstractSequenceNode imp
      */
     public static Predicate<DDiagramElement> viewpointElementPredicate() {
         return SiriusElementPredicate.INSTANCE;
-    }
-
-    @Override
-    public ISequenceEvent getParentEvent() {
-        if (CacheHelper.isStructuralCacheEnabled()) {
-            ISequenceEvent parentEvent = CacheHelper.getEventToParentEventCache().get(this);
-            if (parentEvent != null) {
-                return parentEvent;
-            }
-        }
-
-        ISequenceEvent parent = getHierarchicalParentEvent();
-        List<ISequenceEvent> potentialSiblings = parent.getSubEvents();
-        if (!potentialSiblings.contains(this) && !(this instanceof Gate)) {
-            // look for parentOperand
-            parent = getParentOperand().get();
-        }
-
-        if (CacheHelper.isStructuralCacheEnabled()) {
-            CacheHelper.getEventToParentEventCache().put(this, parent);
-        }
-        return parent;
-    }
-
-    /**
-     * Finds the deepest Operand container including the position if existing.
-     * 
-     * @param verticalPosition
-     *            the position where to look for the deepest operand
-     * @return the deepest Operand convering this lifeline at this range
-     * @see ISequenceEvent#getParentOperand()
-     */
-    public Option<Operand> getParentOperand(final int verticalPosition) {
-        return new ParentOperandFinder(this).getParentOperand(new Range(verticalPosition, verticalPosition));
-    }
-
-    /**
-     * Finds the deepest Operand container including the position if existing.
-     * 
-     * @param range
-     *            the range where to look for the deepest operand
-     * @return the deepest Operand convering this lifeline at this range
-     * @see ISequenceEvent#getParentOperand()
-     */
-    public Option<Operand> getParentOperand(final Range range) {
-        return new ParentOperandFinder(this).getParentOperand(range);
-    }
-
-    /**
-     * Finds the deepest Operand container if existing.
-     * 
-     * @return the deepest Operand container if existing
-     */
-    @Override
-    public Option<Operand> getParentOperand() {
-        if (CacheHelper.isStructuralCacheEnabled()) {
-            Option<Operand> parentOperand = CacheHelper.getEventToParentOperandCache().get(this);
-            if (parentOperand != null) {
-                return parentOperand;
-            }
-        }
-
-        Option<Operand> parentOperand = new ParentOperandFinder(this).getParentOperand();
-        if (CacheHelper.isStructuralCacheEnabled()) {
-            CacheHelper.getEventToParentOperandCache().put(this, parentOperand);
-        }
-        return parentOperand;
-    }
-
-    @Override
-    public Range getVerticalRange() {
-        return new SequenceNodeQuery(getNotationNode()).getVerticalRange();
-    }
-
-    @Override
-    public void setVerticalRange(Range range) throws IllegalStateException {
-        RangeSetter.setVerticalRange(this, range);
-    }
-
-    @Override
-    public Rectangle getProperLogicalBounds() {
-        if (getNotationNode().getLayoutConstraint() instanceof Bounds) {
-            Bounds bounds = (Bounds) getNotationNode().getLayoutConstraint();
-            ISequenceEvent parent = getHierarchicalParentEvent();
-            Rectangle parentLogicalBounds = parent.getProperLogicalBounds();
-
-            Point location = getProperLogicalLocation(parent, bounds, parentLogicalBounds);
-            Dimension size = new Dimension(bounds.getWidth(), bounds.getHeight());
-            return new Rectangle(location, size);
-        } else {
-            throw new RuntimeException();
-        }
-    }
-
-    private Point getProperLogicalLocation(ISequenceEvent parent, Bounds bounds, Rectangle parentLogicalBounds) {
-        int x = parentLogicalBounds.x;
-        int y = parentLogicalBounds.y + bounds.getY();
-
-        if (Lifeline.notationPredicate().apply(parent.getNotationView()) || this instanceof State) {
-            /*
-             * Top-level executions which are directly on a lifeline are horizontally centered on the lifeline.
-             */
-            Point top = parentLogicalBounds.getTop();
-            int width = bounds.getWidth();
-            x = top.x - width / 2;
-        } else {
-            /*
-             * Sub-executions horizontally overlap partially their parent execution of
-             * IBorderItemOffsets.DEFAULT_OFFSET.width. We can not depend on that type here (it is in a UI plug-in, but
-             * we use its value: 8 pixels.
-             */
-            Point topRight = parentLogicalBounds.getTopRight();
-            x = topRight.x - 5;
-        }
-        return new Point(x, y);
     }
 
     /**

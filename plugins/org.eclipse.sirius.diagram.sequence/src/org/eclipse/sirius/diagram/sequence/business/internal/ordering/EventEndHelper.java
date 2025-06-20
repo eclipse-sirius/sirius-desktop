@@ -23,6 +23,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.CacheHelper;
@@ -141,7 +142,7 @@ public final class EventEndHelper {
      *            the part to look for
      * @return the EventEnds corresponding to the given part
      */
-    public static List<EventEnd> findEndsFromSemanticOrdering(ISequenceEvent part) {
+    public static List<EventEnd> findEndsFromSemanticOrdering(ISequenceElement part) {
         SequenceDiagram sdep = part.getDiagram();
         SequenceDDiagram seqDiag = sdep != null ? sdep.getSequenceDDiagram() : null;
         return findEndsFromSemanticOrdering(part, seqDiag);
@@ -157,7 +158,7 @@ public final class EventEndHelper {
      *            the current SequenceDDiagram
      * @return the EventEnds corresponding to the given part
      */
-    public static List<EventEnd> findEndsFromSemanticOrdering(ISequenceEvent part, SequenceDDiagram sequenceDDiagram) {
+    public static List<EventEnd> findEndsFromSemanticOrdering(ISequenceElement part, SequenceDDiagram sequenceDDiagram) {
         List<EventEnd> ends = new ArrayList<>();
         Option<EObject> semanticEvent = part.getSemanticTargetElement();
         if (sequenceDDiagram != null && semanticEvent.some()) {

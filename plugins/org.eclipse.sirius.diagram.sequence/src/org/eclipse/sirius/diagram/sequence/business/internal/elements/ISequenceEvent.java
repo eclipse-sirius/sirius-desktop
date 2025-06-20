@@ -37,7 +37,7 @@ public interface ISequenceEvent extends ISequenceElement {
      */
     @SuppressWarnings("unchecked")
     Predicate<View> ISEQUENCEEVENT_NOTATION_PREDICATE = Predicates.or(AbstractNodeEvent.notationPredicate(), Message.notationPredicate(), InteractionUse.notationPredicate(),
-            CombinedFragment.notationPredicate(), Operand.notationPredicate(), Gate.notationPredicate());
+            CombinedFragment.notationPredicate(), Operand.notationPredicate());
 
     /**
      * A function to compute the vertical range a sequence event.

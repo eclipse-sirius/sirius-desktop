@@ -13,26 +13,19 @@
 package org.eclipse.sirius.diagram.sequence.business.internal.elements;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
-import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.business.internal.ordering.EventEndHelper;
-import org.eclipse.sirius.diagram.sequence.business.internal.query.ISequenceEventQuery;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.CacheHelper;
-import org.eclipse.sirius.diagram.sequence.business.internal.util.SubEventsHelper;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.sequence.tool.internal.Messages;
@@ -106,74 +99,74 @@ public class Gate extends AbstractMultiLifelineNodeEvent {
         return SiriusElementPredicate.INSTANCE;
     }
 
-    @Override
-    public boolean canChildOccupy(ISequenceEvent child, Range range) {
-        return new SubEventsHelper(this).canChildOccupy(child, range);
-    }
-
-    @Override
-    public boolean canChildOccupy(ISequenceEvent child, Range range, List<ISequenceEvent> eventsToIgnore, Collection<Lifeline> lifelines) {
-        return new SubEventsHelper(this).canChildOccupy(child, range, eventsToIgnore, lifelines);
-    }
-
-    @Override
-    public boolean isLogicallyInstantaneous() {
-        return false;
-    }
-
-    @Override
-    public ISequenceEvent getHierarchicalParentEvent() {
-        return getHierarchicalParentEvent(Messages.Gate_invalidGateContext);
-    }
-
-    @Override
-    public Rectangle getProperLogicalBounds() {
-        EObject viewContainer = this.view.eContainer();
-        if (viewContainer instanceof View) {
-            View parentView = (View) viewContainer;
-            Option<InteractionContainer> interactionContainer = ISequenceElementAccessor.getInteractionContainer(parentView);
-            if (interactionContainer.some()) {
-                return interactionContainer.get().getProperLogicalBounds();
-            }
-        }
-        return super.getProperLogicalBounds();
-    }
-
-    @Override
-    public List<ISequenceEvent> getSubEvents() {
-        return Collections.emptyList();
-    }
-
-    @Override
-    public Collection<ISequenceEvent> getEventsToMoveWith() {
-        Set<ISequenceEvent> toMove = new LinkedHashSet<>();
-        List<ISequenceEvent> subEvents = getSubEvents();
-        // toMove.addAll(findLinkedExecutions(subEvents));
-        toMove.addAll(getLinkedMessages());
-        // toMove.addAll(findCoveredExecutions(subEvents));
-        toMove.addAll(subEvents);
-        return toMove;
-    }
-
-    @Override
-    public Range getOccupiedRange() {
-        return new ISequenceEventQuery(this).getOccupiedRange();
-    }
-
-    /**
-     * Sub-events can occur anywhere on a normal execution as long as it is strictly inside.
-     * <p>
-     * {@inheritDoc}
-     */
-    @Override
-    public Range getValidSubEventsRange() {
-        Range range = getVerticalRange();
-        if (range.width() > 2 * LayoutConstants.EXECUTION_CHILDREN_MARGIN) {
-            return range.shrinked(LayoutConstants.EXECUTION_CHILDREN_MARGIN);
-        } else {
-            return range;
-        }
-    }
+//    @Override
+//    public boolean canChildOccupy(ISequenceEvent child, Range range) {
+//        return new SubEventsHelper(this).canChildOccupy(child, range);
+//    }
+//
+//    @Override
+//    public boolean canChildOccupy(ISequenceEvent child, Range range, List<ISequenceEvent> eventsToIgnore, Collection<Lifeline> lifelines) {
+//        return new SubEventsHelper(this).canChildOccupy(child, range, eventsToIgnore, lifelines);
+//    }
+//
+//    @Override
+//    public boolean isLogicallyInstantaneous() {
+//        return false;
+//    }
+//
+//    @Override
+//    public ISequenceEvent getHierarchicalParentEvent() {
+//        return getHierarchicalParentEvent(Messages.Gate_invalidGateContext);
+//    }
+//
+//    @Override
+//    public Rectangle getProperLogicalBounds() {
+//        EObject viewContainer = this.view.eContainer();
+//        if (viewContainer instanceof View) {
+//            View parentView = (View) viewContainer;
+// Option<Gate> gate = ISequenceElementAccessor.getGate(parentView);
+// if (gate.some()) {
+// return gate.get().getProperLogicalBounds();
+//            }
+//        }
+//        return super.getProperLogicalBounds();
+//    }
+//
+//    @Override
+//    public List<ISequenceEvent> getSubEvents() {
+//        return Collections.emptyList();
+//    }
+//
+//    @Override
+//    public Collection<ISequenceEvent> getEventsToMoveWith() {
+//        Set<ISequenceEvent> toMove = new LinkedHashSet<>();
+//        List<ISequenceEvent> subEvents = getSubEvents();
+//        // toMove.addAll(findLinkedExecutions(subEvents));
+//        toMove.addAll(getLinkedMessages());
+//        // toMove.addAll(findCoveredExecutions(subEvents));
+//        toMove.addAll(subEvents);
+//        return toMove;
+//    }
+//
+//    @Override
+//    public Range getOccupiedRange() {
+//        return new ISequenceEventQuery(this).getOccupiedRange();
+//    }
+//
+//    /**
+//     * Sub-events can occur anywhere on a normal execution as long as it is strictly inside.
+//     * <p>
+//     * {@inheritDoc}
+//     */
+//    @Override
+//    public Range getValidSubEventsRange() {
+//        Range range = getVerticalRange();
+//        if (range.width() > 2 * LayoutConstants.EXECUTION_CHILDREN_MARGIN) {
+//            return range.shrinked(LayoutConstants.EXECUTION_CHILDREN_MARGIN);
+//        } else {
+//            return range;
+//        }
+//    }
 
     @Override
     public List<Message> getLinkedMessages() {
@@ -245,15 +238,15 @@ public class Gate extends AbstractMultiLifelineNodeEvent {
         return resultOption;
     }
 
-    private void putMessageInCache(boolean start, Message message) {
-        if (CacheHelper.isStructuralCacheEnabled()) {
-            if (start) {
-                CacheHelper.getStartCompoundMessageCache().put(this, message);
-            } else {
-                CacheHelper.getEndCompoundMessageCache().put(this, message);
-            }
-        }
-    }
+//    private void putMessageInCache(boolean start, Message message) {
+//        if (CacheHelper.isStructuralCacheEnabled()) {
+//            if (start) {
+//                CacheHelper.getStartCompoundMessageCache().put(this, message);
+//            } else {
+//                CacheHelper.getEndCompoundMessageCache().put(this, message);
+//            }
+//        }
+//    }
 
     /**
      * Tests whether this gate starts with a reflective message.
@@ -376,21 +369,21 @@ public class Gate extends AbstractMultiLifelineNodeEvent {
     // }
     // }
 
-    /**
-     * Returns the extended vertical range of this gate, i.e. the vertical range of the gate including any extensions
-     * like branches for linked start/end reflective messages. This corresponds to the range of all the elements which
-     * are tied to the gate and will move along with it when the gate is moved.
-     * 
-     * @return the extended vertical range of this gate.
-     */
-    public Range getExtendedVerticalRange() {
-        Range result = getVerticalRange();
-        for (Message linkedMessage : getLinkedMessages()) {
-            // For non-reflective and non-deferred messages, this is a no-op.
-            result = result.union(linkedMessage.getVerticalRange());
-        }
-        return result;
-    }
+//    /**
+//     * Returns the extended vertical range of this gate, i.e. the vertical range of the gate including any extensions
+//     * like branches for linked start/end reflective messages. This corresponds to the range of all the elements which
+//     * are tied to the gate and will move along with it when the gate is moved.
+//     * 
+//     * @return the extended vertical range of this gate.
+//     */
+//    public Range getExtendedVerticalRange() {
+//        Range result = getVerticalRange();
+//        for (Message linkedMessage : getLinkedMessages()) {
+//            // For non-reflective and non-deferred messages, this is a no-op.
+//            result = result.union(linkedMessage.getVerticalRange());
+//        }
+//        return result;
+//    }
 
     @Override
     public Option<Lifeline> getLifeline() {
@@ -401,5 +394,15 @@ public class Gate extends AbstractMultiLifelineNodeEvent {
     protected Option<Lifeline> getParentLifeline() {
         // TODO return a lifeline covered by parent or empty list?
         return Options.newSome(this.getDiagram().getAllLifelines().get(0));
+    }
+
+    @Override
+    public Rectangle getProperLogicalBounds() {
+        if (getNotationNode().getLayoutConstraint() instanceof Bounds) {
+            Bounds bounds = (Bounds) getNotationNode().getLayoutConstraint();
+            return new Rectangle(bounds.getX(), bounds.getY(), bounds.getWidth(), bounds.getHeight());
+        } else {
+            throw new RuntimeException();
+        }
     }
 }
