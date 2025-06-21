@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -231,6 +231,9 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
      * @return <code>true</code> if this message is reflective.
      */
     public boolean isReflective() {
+        if (getSourceElement() instanceof Gate || getTargetElement() instanceof Gate) {
+            return false;
+        }
         Option<Lifeline> sourceLifeline = getSourceLifeline();
         Option<Lifeline> targetLifeline = getTargetLifeline();
         return sourceLifeline.some() && targetLifeline.some() && sourceLifeline.get() == targetLifeline.get();
@@ -410,7 +413,8 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
 
         boolean noOperand = !sourceParentOperand.some() && !targetParentOperand.some();
         boolean lostEnd = sourceLifeline.some() && !targetLifeline.some() || !sourceLifeline.some() && targetLifeline.some();
-        boolean sameOperand = lostEnd || noOperand || sourceParentOperand.get().equals(targetParentOperand.get());
+        // FIXME !sourceParentOperand.some()
+        boolean sameOperand = lostEnd || noOperand || !sourceParentOperand.some() || sourceParentOperand.get().equals(targetParentOperand.get());
         Preconditions.checkArgument(noOperand || sameOperand, Messages.Message_invalidOperand);
 
         Option<Operand> parentOperand = sourceParentOperand;

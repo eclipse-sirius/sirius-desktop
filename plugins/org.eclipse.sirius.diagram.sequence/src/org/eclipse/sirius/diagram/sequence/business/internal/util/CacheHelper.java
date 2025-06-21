@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2020, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,7 +21,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractFrame;
-import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractSequenceNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
@@ -52,7 +52,7 @@ public final class CacheHelper {
 
     private static ConcurrentHashMap<ISequenceEvent, Message> endCompoundMessageCache = new ConcurrentHashMap<>();
 
-    private static ConcurrentHashMap<AbstractNodeEvent, ISequenceEvent> nodeEventToHierarchicalParentCache = new ConcurrentHashMap<>();
+    private static ConcurrentHashMap<AbstractSequenceNodeEvent, ISequenceEvent> nodeEventToHierarchicalParentCache = new ConcurrentHashMap<>();
 
     private static ConcurrentHashMap<ISequenceEvent, Option<Operand>> eventToParentOperandCache = new ConcurrentHashMap<>();
 
@@ -185,7 +185,7 @@ public final class CacheHelper {
      * 
      * @return the cache
      */
-    public static ConcurrentHashMap<AbstractNodeEvent, ISequenceEvent> getAbstractNodeEventToHierarchicalParentCache() {
+    public static ConcurrentHashMap<AbstractSequenceNodeEvent, ISequenceEvent> getAbstractNodeEventToHierarchicalParentCache() {
         return nodeEventToHierarchicalParentCache;
     }
 

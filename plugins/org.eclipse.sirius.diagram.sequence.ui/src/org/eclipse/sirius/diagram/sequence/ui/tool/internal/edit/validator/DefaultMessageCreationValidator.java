@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator;
 import org.eclipse.gef.requests.CreateConnectionRequest;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.EndOfLife;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.Gate;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InteractionUse;
@@ -150,7 +151,7 @@ public class DefaultMessageCreationValidator extends AbstractMessageCreationVali
             targetParentOperand = ((InstanceRole) sequenceElementTarget).getLifeline().get().getParentOperand(secondClickLocation.y);
         }
 
-        if (targetParentOperand != null && sourceParentOperand != null) {
+        if (targetParentOperand != null && sourceParentOperand != null && !(sequenceElementSource instanceof Gate || sequenceElementTarget instanceof Gate)) {
             result = targetParentOperand.equals(sourceParentOperand);
         }
         return result;
@@ -197,7 +198,7 @@ public class DefaultMessageCreationValidator extends AbstractMessageCreationVali
             }
         };
 
-        return lifeline.some() && !Iterables.any(lifeline.get().getAllCoveringInteractionUses(), interactionUseOnRealTargetLocation);
+        return sequenceElementTarget instanceof Gate || (lifeline.some() && !Iterables.any(lifeline.get().getAllCoveringInteractionUses(), interactionUseOnRealTargetLocation));
     }
 
     /**

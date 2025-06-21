@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2024 Obeo.
+ * Copyright (c) 2015, 2025 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -75,6 +75,12 @@ public final class Messages {
 
     @TranslatableMessage
     public static String ISequenceNodeMoveOperation_operationName;
+
+    @TranslatableMessage
+    public static String Gate_nonGateNode;
+
+    @TranslatableMessage
+    public static String Gate_invalidGateContext;
 
     @TranslatableMessage
     public static String Lifeline_nonLifelineNode;

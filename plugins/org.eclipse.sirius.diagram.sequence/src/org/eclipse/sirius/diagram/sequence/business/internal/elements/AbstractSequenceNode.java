@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -83,7 +83,7 @@ abstract class AbstractSequenceNode extends AbstractSequenceElement implements I
     @Override
     public Option<Lifeline> getLifeline() {
         Option<Lifeline> result;
-        if (cachedLifeline != null) {
+        if (cachedLifeline != null && cachedLifeline.some()) {
             result = cachedLifeline;
         } else {
             result = getParentLifeline();

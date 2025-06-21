@@ -51,6 +51,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNo
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.EndOfLife;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Execution;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.Gate;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceNode;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
@@ -549,7 +550,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
         boolean reflectiveMessage = message.isReflective();
         boolean obliqueMessage = message.isOblique();
         Option<Lifeline> endLifeline = currentEnd.getLifeline();
-        if (endLifeline.some() && currentEnd instanceof ISequenceEvent) {
+        if (endLifeline.some() && currentEnd instanceof ISequenceEvent && !(currentEnd instanceof Gate)) {
             ISequenceEvent finalEnd;
             Range finalEndRange;
 
@@ -612,7 +613,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
                     invalidCommand = true;
                 }
             }
-        } else if (currentEnd instanceof LostMessageEnd || currentEnd instanceof EndOfLife || currentEnd instanceof InstanceRole) {
+        } else if (currentEnd instanceof LostMessageEnd || currentEnd instanceof EndOfLife || currentEnd instanceof InstanceRole || currentEnd instanceof Gate) {
             Rectangle finalEndBounds = currentEnd.getProperLogicalBounds().getCopy();
             if (source) {
                 smrc.setSource(currentEnd.getNotationView(), finalEndBounds);
@@ -923,7 +924,8 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
         Option<Lifeline> sourceLifeline = message.getSourceLifeline();
         Option<Lifeline> targetLifeline = message.getTargetLifeline();
 
-        if (finalRange.isPresent() && sourceLifeline.some() && targetLifeline.some()) {
+        boolean messageNotLinkedToGate = !(message.getSourceElement() instanceof Gate) && !(message.getTargetElement() instanceof Gate);
+        if (finalRange.isPresent() && sourceLifeline.some() && targetLifeline.some() && messageNotLinkedToGate) {
             Option<Operand> sourceFinalOperand = Options.newNone();
             Option<Operand> targetFinalOperand = Options.newNone();
 

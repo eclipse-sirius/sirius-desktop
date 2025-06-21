@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -31,6 +31,7 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Execution;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.Gate;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceNode;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
@@ -94,7 +95,12 @@ public class ISEComplexMoveCommandBuilder {
 
         Integer vMove = requestQuery.getLogicalDelta().y;
         expandDiagram(ctc, vMove);
-        handleNodes(ctc, vMove);
+        if (requestQuery.getISequenceEvents().stream().allMatch(event -> event instanceof Gate)) {
+            Integer hMove = requestQuery.getLogicalDelta().x;
+            handleNodes(ctc, vMove, hMove);
+        } else {
+            handleNodes(ctc, vMove);
+        }
         handleMessages(ctc, vMove);
 
         return ctc;
@@ -115,6 +121,16 @@ public class ISEComplexMoveCommandBuilder {
         computeReparents(seqNodesToMove, reparents);
 
         moveNodes(ctc, vMove, seqNodesToMove);
+        reparentNodes(ctc, vMove, reparents);
+    }
+
+    private void handleNodes(CompositeTransactionalCommand ctc, Integer vMove, Integer hMove) {
+        Collection<ISequenceNode> seqNodesToMove = new ArrayList<ISequenceNode>(validator.getSequenceNodeToMove());
+        Map<AbstractNodeEvent, ISequenceEvent> reparents = new HashMap<>();
+
+        computeReparents(seqNodesToMove, reparents);
+
+        moveNodes(ctc, vMove, hMove, seqNodesToMove);
         reparentNodes(ctc, vMove, reparents);
     }
 
@@ -204,6 +220,12 @@ public class ISEComplexMoveCommandBuilder {
         ctc.setLabel(moveExecCmd.getLabel());
     }
 
+    private void moveNodes(CompositeTransactionalCommand ctc, Integer vMove, Integer hMove, Collection<ISequenceNode> seqNodesToMove) {
+        ICommand moveExecCmd = CommandFactory.createICommand(editingDomain, new ISequenceNodeMoveOperation(seqNodesToMove, vMove, hMove));
+        ctc.compose(moveExecCmd);
+        ctc.setLabel(moveExecCmd.getLabel());
+    }
+
     private void expandDiagram(CompositeTransactionalCommand ctc, Integer vMove) {
         if (validator.getExpansionZone() != null && !validator.getExpansionZone().isEmpty()) {
             ctc.compose(CommandFactory.createICommand(editingDomain, new VerticalSpaceExpansionOrReduction(validator.getDiagram(), validator.getExpansionZone(), vMove, validator.getMovedElements())));
@@ -212,7 +234,10 @@ public class ISEComplexMoveCommandBuilder {
 
     private void computeReparents(Collection<ISequenceNode> sequenceNodesToMove, Map<AbstractNodeEvent, ISequenceEvent> reparents) {
         // reparent directly moved execution
-        Collection<AbstractNodeEvent> movedExecutions = Lists.newArrayList(Iterables.filter(sequenceNodesToMove, AbstractNodeEvent.class));
+        // Collection<AbstractNodeEvent> movedExecutions = Lists.newArrayList(Iterables.filter(sequenceNodesToMove,
+        // AbstractNodeEvent.class));
+        Collection<AbstractNodeEvent> movedExecutions = Lists.newArrayList(Iterables.filter(sequenceNodesToMove, Execution.class));
+        movedExecutions.addAll(Lists.newArrayList(Iterables.filter(sequenceNodesToMove, State.class)));
 
         // reparent unmoved executions
         // filter unmoved executions to keep only ones with an intersection with initial or final range
@@ -255,10 +280,16 @@ public class ISEComplexMoveCommandBuilder {
                 Range initialRange = msg.getVerticalRange();
                 Range futureRange = validator.getRangeFunction().apply(msg);
 
-                if (initialRange.width() == 0) {
-                    return validatorInitialRange.includes(initialRange.getLowerBound()) || validatorFinalRange.includes(futureRange.getLowerBound());
+                boolean result;
+                if (msg.getSourceElement() instanceof Gate || msg.getTargetElement() instanceof Gate) {
+                    // No reconnection for edges connected to gates.
+                    result = false;
+                } else if (initialRange.width() == 0) {
+                    result = validatorInitialRange.includes(initialRange.getLowerBound()) || validatorFinalRange.includes(futureRange.getLowerBound());
+                } else {
+                    result = validatorInitialRange.intersects(initialRange) || validatorFinalRange.intersects(futureRange);
                 }
-                return validatorInitialRange.intersects(initialRange) || validatorFinalRange.intersects(futureRange);
+                return result;
             }
         };
 
