@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.operation;
 
+import java.util.Objects;
+
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.View;
@@ -21,8 +23,6 @@ import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.SequenceMessageViewQuery;
 import org.eclipse.sirius.diagram.sequence.tool.internal.Messages;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
-
-import com.google.common.base.Objects;
 
 /**
  * An operation to set the vertical range of a sequence message.
@@ -103,12 +103,12 @@ public class SetMessageRangeOperation extends AbstractModelChangeOperation<Void>
             Edge currentMessage = message;
 
             currentMessage.setSource(source);
-            if (currentMessage.getElement() instanceof DEdge && source.getElement() instanceof EdgeTarget) {
-                ((DEdge) currentMessage.getElement()).setSourceNode((EdgeTarget) source.getElement());
+            if (currentMessage.getElement() instanceof DEdge edge && source.getElement() instanceof EdgeTarget edgeTarget) {
+                edge.setSourceNode(edgeTarget);
             }
             currentMessage.setTarget(target);
-            if (currentMessage.getElement() instanceof DEdge && target.getElement() instanceof EdgeTarget) {
-                ((DEdge) currentMessage.getElement()).setTargetNode((EdgeTarget) target.getElement());
+            if (currentMessage.getElement() instanceof DEdge edge && target.getElement() instanceof EdgeTarget edgeTarget) {
+                edge.setTargetNode(edgeTarget);
             }
 
             int srcTop = sourceBounds.getTop().y;
@@ -135,7 +135,7 @@ public class SetMessageRangeOperation extends AbstractModelChangeOperation<Void>
     private boolean isMessageToSelf(Edge msg) {
         View src = msg.getSource();
         View tgt = msg.getTarget();
-        return Objects.equal(src, tgt) || Objects.equal(src.eContainer(), tgt) || Objects.equal(src, tgt.eContainer());
+        return Objects.equals(src, tgt) || Objects.equals(src.eContainer(), tgt) || Objects.equals(src, tgt.eContainer());
     }
 
     private boolean isObliqueMessage(Edge msg) {
