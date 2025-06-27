@@ -13,6 +13,7 @@
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator;
 
 import org.eclipse.gef.requests.CreateConnectionRequest;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.Gate;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
@@ -40,7 +41,7 @@ public class CreateMessageCreationValidator extends DefaultMessageCreationValida
         // super.getConnectionCreateCommand()
         // valid = valid && (sequenceElementTarget instanceof Lifeline ||
         // sequenceElementTarget instanceof InstanceRole);
-        valid = valid && !sequenceElementTarget.getLifeline().get().isExplicitlyCreated();
+        valid = valid && (sequenceElementTarget instanceof Gate || !sequenceElementTarget.getLifeline().get().isExplicitlyCreated());
 
         valid = valid && checkNotEventAtLowerTimeInSameLifeline();
 
