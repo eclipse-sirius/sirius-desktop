@@ -199,7 +199,7 @@
 				<code>i</code> in AQL.
 			</li>
 			<li>AQL is more persmissive in terms of missing/empty intermediate results in complex expressions: 
-				<code>aql:self.anEmptyReference.somethingElse</code> will not result in an error as the equivalent Acceleo (or OCL) expression would, but simply return an empty result.
+				<code>aql:self.anEmptyReference.somethingElse</code> will not result in an error as the equivalent Acceleo expression would, but simply return an empty result.
 			</li>
 			<li>AQL provides different services/methods by default compared to Acceleo. In general the set of default services in AQL is better suited to the typically use cases encountered in Sirius.</li>
 		</ul>
@@ -264,11 +264,9 @@
 			<em>Note:</em> Due to internal changes in the Eclipse Equinox runtime, starting with Eclipse Luna (4.4) it is impossible to evaluate Java services from an Acceleo 3 expression if the Java service is defined directly in the workspace. This only affect specifiers (not end-users). When developing modelers which use Acceleo expressions and rely on Java services, you must launch an Eclipse runtime from your development environement to test the resulting modeler in a context where the service is available as part of a deployed plug-in. Starting with Sirius 3.0 you can also use the AQL language instead, which has a syntax very similar to Acceleo 3/MTL, but does not have this limitation regarding services in the workspace.
 		</p>
 		<h2 id="ocl">Using Raw OCL</h2>
-		<p>Sirius also supports raw OCL expressions, but this support is deprecated and will be removed in future versions. OCL expressions must be prefixed with 
-			<code>ocl:</code>. If you use it your Sirius project must declare a dependency to the 
-			<code>org.eclipse.sirius.common.ocl</code> plug-in to ensure OCL support will be available wherever your modelers are used.
+		<p>
+			<em>Note</em>: Starting from version 7.5.0, Sirius no longer supports OCL as an expression language.
 		</p>
-		<p>It is highly recommended that you use Acceleo, which implemented the MTL standard and is a super-set of the OCL language, instead of raw OCL.</p>
 		<h2 id="custom">Providing a Custom Language</h2>
 		<p>Sirius allows you to provide your own language implementations, if you have very specific needs or want to reuse an existing custom language. Note that Sirius must be able to syntactically and unambiguously determine from an expression which language it is written in (to send it to the appropriate interpreter). The simplest way to achieve this is to define a prefix (like 
 			<code>ocl:</code> for OCL) so that expressions written in your language can be distinguished from expressions written in any of the others.
