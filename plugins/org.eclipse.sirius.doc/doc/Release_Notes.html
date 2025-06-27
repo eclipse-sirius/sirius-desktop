@@ -14,12 +14,17 @@
 				<ol style="list-style: disc;">
 					<li>
 						<a href="#sirius7.5.0">Changes in Sirius  Desktop 7.5.0</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="#SpecifiersVisibleChanges">Specifiers-Visible Changes</a>
+							</li>
+						</ol>
 					</li>
 					<li>
 						<a href="#sirius7.4.11">Changes in Sirius  Desktop 7.4.11</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#SpecifiersVisibleChanges">Specifiers-Visible Changes</a>
+								<a href="#SpecifiersVisibleChanges2">Specifiers-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -33,7 +38,7 @@
 						<a href="#sirius7.4.8">Changes in Sirius  Desktop 7.4.8</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#SpecifiersVisibleChanges2">Specifiers-Visible Changes</a>
+								<a href="#SpecifiersVisibleChanges3">Specifiers-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -44,7 +49,7 @@
 						<a href="#sirius7.4.6">Changes in Sirius  Desktop 7.4.6</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#SpecifiersVisibleChanges3">Specifiers-Visible Changes</a>
+								<a href="#SpecifiersVisibleChanges4">Specifiers-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#DeveloperVisibleChanges">Developer-Visible Changes</a>
@@ -274,8 +279,17 @@
 				<code>org.eclipse.sirius.eef.adapters</code> plugin and EEF 1.5 support have been removed.
 			</li>
 		</ul>
-		<h2 id="sirius7.4.11">Changes in Sirius  Desktop 7.4.11</h2>
 		<h3 id="SpecifiersVisibleChanges">Specifiers-Visible Changes</h3>
+		<ul>
+			<li><span class="label label-danger">Removed</span> Support for OCL expressions in 
+				<code>odesign</code> files have been removed. AQL is recommended instead.
+			</li>
+		</ul>
+		<p>See 
+			<a href="https://github.com/eclipse-acceleo/acceleo/blob/6ca859c3b92027de716787de751cfce85d3c1597/query/plugins/org.eclipse.acceleo.query.doc/pages/index.adoc#5-migrating-from-mtl-queries">this document</a> if you need to migrate non-trivial expressions. 
+		</p>
+		<h2 id="sirius7.4.11">Changes in Sirius  Desktop 7.4.11</h2>
+		<h3 id="SpecifiersVisibleChanges2">Specifiers-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> 
 				<code>GateMapping</code> and 
@@ -293,14 +307,14 @@
 		<h2 id="sirius7.4.9">Changes in Sirius  Desktop 7.4.9</h2>
 		<p>Nothing.</p>
 		<h2 id="sirius7.4.8">Changes in Sirius  Desktop 7.4.8</h2>
-		<h3 id="SpecifiersVisibleChanges2">Specifiers-Visible Changes</h3>
+		<h3 id="SpecifiersVisibleChanges3">Specifiers-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-info">Modified</span> In tables, the header label expression configured for Feature columns are now correctly evaluated as actual expressions.</li>
 		</ul>
 		<h2 id="sirius7.4.7">Changes in Sirius  Desktop 7.4.7</h2>
 		<p>Nothing.</p>
 		<h2 id="sirius7.4.6">Changes in Sirius  Desktop 7.4.6</h2>
-		<h3 id="SpecifiersVisibleChanges3">Specifiers-Visible Changes</h3>
+		<h3 id="SpecifiersVisibleChanges4">Specifiers-Visible Changes</h3>
 		<ul>
 			<li>The &#8216;interaction container mapping&#8217; has been added to the sequence diagram metamodel. It is configured like a container mapping. Its edit part deactivate user interaction. Its goal is to have a background container that graphically wraps around all sequence diagram element.</li>
 		</ul>
