@@ -45,6 +45,7 @@ import org.eclipse.sirius.tests.swtbot.sequence.ExternalModificationsTests;
 import org.eclipse.sirius.tests.swtbot.sequence.FoundLostMessageTests;
 import org.eclipse.sirius.tests.swtbot.sequence.FrameMoveWithExpansionTest;
 import org.eclipse.sirius.tests.swtbot.sequence.FrameReparentTest;
+import org.eclipse.sirius.tests.swtbot.sequence.GatesTests;
 import org.eclipse.sirius.tests.swtbot.sequence.HeaderSequenceDiagramTests;
 import org.eclipse.sirius.tests.swtbot.sequence.InstanceRoleOrderingTests;
 import org.eclipse.sirius.tests.swtbot.sequence.InstanceRoleResizableEditPolicyTests;
@@ -152,6 +153,7 @@ public class SequenceSwtBotTestSuite extends TestCase {
         suite.addTestSuite(InstanceRoleOrderingTests.class);
         // suite.addTestSuite(InteractionContainerTests.class);
         // suite.addTestSuite(ContextMenuInDiagramTest.class);
+        suite.addTestSuite(GatesTests.class);
     }
 
     /**

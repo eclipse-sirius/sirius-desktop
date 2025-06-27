@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interactions:Interaction xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:interactions="http://www.eclipse.org/sirius/sample/interactions" name="Interaction Use tests">
+  <participants name="a">
+    <type href="types.ecore#//A"/>
+  </participants>
+  <participants name="b">
+    <type href="types.ecore#//B"/>
+  </participants>
+  <participants name="c">
+    <type href="types.ecore#//C"/>
+  </participants>
+  <participants name="d">
+    <type href="types.ecore#//D"/>
+  </participants>
+  <participants name="e">
+    <type href="types.ecore#//E"/>
+  </participants>
+  <interactionUses type="ref.2" interaction="/" coveredParticipants="//@participants.1 //@participants.2" start="//@ends.3" finish="//@ends.4"/>
+  <combinedFragments operator="alt.1" coveredParticipants="//@participants.0 //@participants.1" start="//@ends.0" finish="//@ends.2">
+    <ownedOperands name="condition1" start="//@ends.1"/>
+  </combinedFragments>
+  <ends xsi:type="interactions:CombinedFragmentEnd" name="start_alt.1" owner="//@combinedFragments.0"/>
+  <ends xsi:type="interactions:OperandEnd" name="start_condition1" owner="//@combinedFragments.0/@ownedOperands.0"/>
+  <ends xsi:type="interactions:CombinedFragmentEnd" name="finish_alt.1" owner="//@combinedFragments.0"/>
+  <ends xsi:type="interactions:InteractionUseEnd" owner="//@interactionUses.0"/>
+  <ends xsi:type="interactions:InteractionUseEnd" owner="//@interactionUses.0"/>
+</interactions:Interaction>
