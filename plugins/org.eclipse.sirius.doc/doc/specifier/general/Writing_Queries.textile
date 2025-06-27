@@ -61,7 +61,7 @@ h2(#aql). Using AQL
 Starting from Sirius 3.1, _AQL_ (Acceleo Query Language, first introduced in Sirius 3.0) is the recommended language to write queries/interpreted expressions. AQL is similar to Acceleo 3/MTL, but simpler and provides much better performance in the Sirius context. AQL expressions start with the @aql:@ prefix and have a syntax similar to Acceleo (without the enclosing @[../]@ brackets). The main differences between the two languages are:
 * Feature access must *always* explicitly specify the target object, even if the target is @self@. This means an Acceleo expression like <code>[name/]</code> which accesses the @name@ attribute of the current element translates in AQL as @aql:self.name@. The expression @aql:name@ with no explicit receiver will always be interpreted as an access to the @name@ variable, and may result in an error if the variable in question is not defined. 
 * "Lambda" expressions must always declare their parameters and use them explicitly. Again, there is no implicit @self@ in such a context. For example: <code>[self.eContents()&#45;>select(name.startsWith(&apos;A&apos;))/]</code> becomes <code>aql:self.eContents()&#45;>select(i | i.name.startsWith(&apos;A&apos;))</code> with an explicit declaration and usage of @i@ in AQL.
-* AQL is more persmissive in terms of missing/empty intermediate results in complex expressions: @aql:self.anEmptyReference.somethingElse@ will not result in an error as the equivalent Acceleo (or OCL) expression would, but simply return an empty result.
+* AQL is more persmissive in terms of missing/empty intermediate results in complex expressions: @aql:self.anEmptyReference.somethingElse@ will not result in an error as the equivalent Acceleo expression would, but simply return an empty result.
 * AQL provides different services/methods by default compared to Acceleo. In general the set of default services in AQL is better suited to the typically use cases encountered in Sirius.
 
 See <a href="https://www.eclipse.org/acceleo/documentation/aql.html" target="_blank">the AQL documentation</a> for more details about the language itself, the full list of standard services, and the differences with Acceleo/MTL.
@@ -92,9 +92,7 @@ _Note:_ Due to internal changes in the Eclipse Equinox runtime, starting with Ec
 
 h2(#ocl). Using Raw OCL
 
-Sirius also supports raw OCL expressions, but this support is deprecated and will be removed in future versions. OCL expressions must be prefixed with @ocl:@. If you use it your Sirius project must declare a dependency to the @org.eclipse.sirius.common.ocl@ plug-in to ensure OCL support will be available wherever your modelers are used.
-
-It is highly recommended that you use Acceleo, which implemented the MTL standard and is a super-set of the OCL language, instead of raw OCL.
+_Note_: Starting from version 7.5.0, Sirius no longer supports OCL as an expression language.
 
 h2(#custom). Providing a Custom Language
 
