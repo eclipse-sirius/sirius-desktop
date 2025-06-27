@@ -584,9 +584,9 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
             }
 
             // finalSrc can be null while moving a message under its lifeline.
-            // finalTgt cannot be null : restrain the capability to move out of
+            // finalTgt cannot be null : restrain the capability to move down out of
             // lifeline for destruction messages.
-            if (source && finalEnd == null) {
+            if (source && finalEnd == null && message.getSourceElement().getProperLogicalBounds().y < finalRange.getLowerBound()) {
                 finalEnd = (ISequenceEvent) currentEnd;
             }
 
