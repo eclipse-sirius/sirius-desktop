@@ -55,16 +55,19 @@ public class GateSelectionEditPolicy extends SpecificBorderItemSelectionEditPoli
     protected Command getMoveCommand(ChangeBoundsRequest request) {
         if (getHost() instanceof GateEditPart gep && gep.getGate().getMessage().some()) {
             cancelVerticalDelta(request);
+            return UnexecutableCommand.INSTANCE;
+        } else {
+            return super.getMoveCommand(request);
         }
-        return super.getMoveCommand(request);
     }
 
     @Override
     protected void showChangeBoundsFeedback(ChangeBoundsRequest request) {
         if (getHost() instanceof GateEditPart gep && gep.getGate().getMessage().some()) {
             cancelVerticalDelta(request);
+        } else {
+            super.showChangeBoundsFeedback(request);
         }
-        super.showChangeBoundsFeedback(request);
     }
 
     @Override
