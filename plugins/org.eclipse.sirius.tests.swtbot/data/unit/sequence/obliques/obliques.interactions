@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interactions:Interaction xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:interactions="http://www.eclipse.org/sirius/sample/interactions" name="Obliques tests">
+  <participants name="a">
+    <type href="types.ecore#//A"/>
+  </participants>
+  <participants name="b">
+    <type href="types.ecore#//B"/>
+  </participants>
+  <participants name="c">
+    <type href="types.ecore#//C"/>
+  </participants>
+  <executions name="e1" owner="//@participants.2" start="//@ends.0" end="//@ends.1"/>
+  <executions name="e2" owner="//@participants.1" start="//@ends.2" end="//@ends.3"/>
+  <executions name="e3" owner="//@participants.0" start="//@ends.6" end="//@ends.7"/>
+  <combinedFragments operator="alt.1" coveredParticipants="//@participants.0 //@participants.1" start="//@ends.4" finish="//@ends.8">
+    <ownedOperands name="condition1" start="//@ends.5"/>
+    <ownedGates name="g1"/>
+    <ownedGates name="g2"/>
+  </combinedFragments>
+  <ends xsi:type="interactions:ExecutionEnd" name="start_e1" context="//@participants.2" execution="//@executions.0"/>
+  <ends xsi:type="interactions:ExecutionEnd" name="finishe1" context="//@participants.2" execution="//@executions.0"/>
+  <ends xsi:type="interactions:ExecutionEnd" name="start_e2" context="//@participants.1" execution="//@executions.1"/>
+  <ends xsi:type="interactions:ExecutionEnd" name="finishe2" context="//@participants.1" execution="//@executions.1"/>
+  <ends xsi:type="interactions:CombinedFragmentEnd" name="start_alt.1" owner="//@combinedFragments.0"/>
+  <ends xsi:type="interactions:OperandEnd" name="start_condition1" owner="//@combinedFragments.0/@ownedOperands.0"/>
+  <ends xsi:type="interactions:ExecutionEnd" name="start_e3" context="//@participants.0" execution="//@executions.2"/>
+  <ends xsi:type="interactions:ExecutionEnd" name="finishe3" context="//@participants.0" execution="//@executions.2"/>
+  <ends xsi:type="interactions:CombinedFragmentEnd" name="finish_alt.1" owner="//@combinedFragments.0"/>
+</interactions:Interaction>

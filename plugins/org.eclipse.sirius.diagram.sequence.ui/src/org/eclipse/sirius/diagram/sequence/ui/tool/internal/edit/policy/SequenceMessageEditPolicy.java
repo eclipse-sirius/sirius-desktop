@@ -599,7 +599,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
                 realEnd = (ISequenceEvent) currentEnd;
             }
 
-            boolean noValidation = reflectiveMessage || realEnd instanceof Lifeline;
+            boolean noValidation = reflectiveMessage || obliqueMessage || realEnd instanceof Lifeline;
             if (!invalidCommand) {
                 if (finalEnd != null && (noValidation || realEnd != null && realEnd.canChildOccupy(message, finalRange))) {
                     finalEndRange = finalEnd.getVerticalRange();
