@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -75,6 +75,10 @@ public final class InteractionsConstants {
     public static final String SYNC_CALL_TOOL_ID = "Sync Call";
 
     public static final String ASYNC_CALL_TOOL_ID = "Async Call";
+
+    public static final String ASYNC_CALL_OBLIQUE_TOOL_ID = "Async Call_Oblique";
+
+    public static final String WRITE_OBLIQUE_TOOL_ID = "Write_Oblique";
 
     public static final String INTERACTION_USE_TOOL_ID = "Interaction Use";
 

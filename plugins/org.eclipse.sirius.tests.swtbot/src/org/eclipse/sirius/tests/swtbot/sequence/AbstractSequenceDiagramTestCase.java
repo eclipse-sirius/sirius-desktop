@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -442,6 +442,30 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
      */
     protected void createAsyncCall(Point start, Point end) {
         createMessage(InteractionsConstants.ASYNC_CALL_TOOL_ID, start, end);
+    }
+
+    /**
+     * Try to create an async call oblique from start to end Point
+     * 
+     * @param start
+     *            Point of the first click
+     * @param end
+     *            Point of the second click
+     */
+    protected void createAsyncCallOblique(Point start, Point end) {
+        createMessage(InteractionsConstants.ASYNC_CALL_OBLIQUE_TOOL_ID, start, end);
+    }
+
+    /**
+     * Try to create a write oblique message from start to end Point
+     * 
+     * @param start
+     *            Point of the first click
+     * @param end
+     *            Point of the second click
+     */
+    protected void createWriteOblique(Point start, Point end) {
+        createMessage(InteractionsConstants.WRITE_OBLIQUE_TOOL_ID, start, end);
     }
 
     protected void createMessage(String toolName, int sourceX, int sourceY, String targetLifelineName, int targetY) {
