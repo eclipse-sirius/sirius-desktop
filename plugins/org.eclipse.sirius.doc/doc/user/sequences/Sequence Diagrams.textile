@@ -121,7 +121,7 @@ h3. Basic Messages
 
 Basic messages represent some form of communication between lifelines. They are represented by horizontal arrows between lifelines (or executions on lifelines).
 
-The example below shows three lifelines and three messages. Note that the last one, @m3@, is a _reflective_ message which is received by the same lifeline which sent it. 
+The example below shows three lifelines and four messages. Note that @m3@ is a _reflective_ message which is received by the same lifeline which sent it, and @oblique_4@ is an _oblique_ message which has a target coordinate with an y-value less than or equal to its source coordinate.. 
 
   !images/basic_messages.png!
 

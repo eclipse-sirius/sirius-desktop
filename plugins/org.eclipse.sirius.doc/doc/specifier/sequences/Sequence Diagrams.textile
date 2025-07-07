@@ -271,6 +271,8 @@ Set the mandatory properties:
 
   !images/basic_message_mapping_visual3.png!
 
+The properties _Oblique_ is specific to Basic Messages. It allows the message to be displayed as oblique with source.y < target.y.
+
 h4. Lost and Found Messages
 
 Standard node mappings, direct children of a layer of the current sequence diagram description, can be used to represent the unknown message end. Lost and found messages should be created using a generic tool.

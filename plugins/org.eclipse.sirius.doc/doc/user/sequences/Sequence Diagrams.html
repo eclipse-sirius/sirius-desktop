@@ -250,9 +250,11 @@
 		<p>Note that not all sequence diagram modelers will allow for the creation of &#8220;raw&#8221; executions like these, which are not connected to messages. This all depends on the semantics of the underlying models and of the diagram&#8217;s configuration.</p>
 		<h3 id="BasicMessages">Basic Messages</h3>
 		<p>Basic messages represent some form of communication between lifelines. They are represented by horizontal arrows between lifelines (or executions on lifelines).</p>
-		<p>The example below shows three lifelines and three messages. Note that the last one, 
-			<code>m3</code>, is a 
-			<em>reflective</em> message which is received by the same lifeline which sent it. 
+		<p>The example below shows three lifelines and four messages. Note that 
+			<code>m3</code> is a 
+			<em>reflective</em> message which is received by the same lifeline which sent it, and 
+			<code>oblique_4</code> is an 
+			<em>oblique</em> message which has a target coordinate with an y-value less than or equal to its source coordinate.. 
 		</p> 
 		<img border="0" src="images/basic_messages.png"/>
 		<p>Note that not all sequence diagram modelers will allow for the creation of basic message like these, which are not connected the beginning or end of an execution. This all depends on the semantics of the underlying models and of the diagram&#8217;s configuration.</p>
