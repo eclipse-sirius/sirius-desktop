@@ -15,7 +15,7 @@ Contributors:
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.eclipse.sirius.tests.rcptt</groupId>
   <artifactId>rcpttTests</artifactId>
-  <version>7.4.11-SNAPSHOT</version>
+  <version>7.5.0-SNAPSHOT</version>
   <packaging>rcpttTest</packaging>
 
   <pluginRepositories>
