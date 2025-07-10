@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -223,9 +223,12 @@ public class FrameCreationValidator extends AbstractSequenceInteractionValidator
         Object originalTarget = request.getExtendedData().get(ORIGINAL_TARGET);
         if (originalTarget instanceof ISequenceEventEditPart) {
             ISequenceEventEditPart sequenceEventEditPart = (ISequenceEventEditPart) originalTarget;
-            Lifeline lifeline = sequenceEventEditPart.getISequenceEvent().getLifeline().get();
-            request.getExtendedData().remove(ORIGINAL_TARGET);
-            coverage.add(lifeline);
+            Option<Lifeline> optLifeline = sequenceEventEditPart.getISequenceEvent().getLifeline();
+            if (optLifeline.some()) {
+                Lifeline lifeline = optLifeline.get();
+                request.getExtendedData().remove(ORIGINAL_TARGET);
+                coverage.add(lifeline);
+            }
         } else {
             for (Lifeline coveredLifeline : computeGraphicalCoverageFromSelectionArea(graphicallyCoveredLifelines)) {
                 coverage.add(coveredLifeline);
