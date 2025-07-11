@@ -445,6 +445,7 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
     @Override
     public void deactivate() {
         if (isActive()) {
+            removeNotationalListeners();
             DiagramEdgeEditPartOperation.deactivate(this);
             DiagramElementEditPartOperation.deactivate(this);
             super.deactivate();
