@@ -58,6 +58,7 @@ import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.CreationUtil;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.NodeCreationEditPolicy;
+import org.eclipse.sirius.diagram.ui.tools.api.command.DoNothingCommand;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.DistributeRequest;
@@ -83,7 +84,11 @@ public class SequenceNodeCreationPolicy extends NodeCreationEditPolicy {
     protected Command getCreateCommand(CreateRequest request) {
         Option<SequenceDiagramEditPart> sdep = shouldRetargetToDiagram(request);
         if (sdep.some()) {
-            return sdep.get().getCommand(request);
+            Command returnCommand = sdep.get().getCommand(request);
+            if (returnCommand instanceof DoNothingCommand) {
+                returnCommand = UnexecutableCommand.INSTANCE;
+            }
+            return returnCommand;
         }
         return super.getCreateCommand(request);
     }
