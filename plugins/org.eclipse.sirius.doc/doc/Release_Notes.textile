@@ -6,7 +6,10 @@ This document contains the release notes for recent major releases of Sirius. Se
 
 h2(#sirius7.4.11). Changes in Sirius  Desktop 7.4.11
 
-Nothing.
+h3. Specifiers-Visible Changes
+
+* <span class="label label-success">Added</span> @GateMapping@ and @GateCreationTool@ have been added in sequence metamodel @org.eclipse.sirius.diagram.sequence.model/model/sequence.ecore@ to add the Gate concept in sequence diagrams. It is used to display a Gate on a CombinedFragment, an InteractionUse or InteractionContainer.
+* <span class="label label-success">Added</span> The boolean @BasicMessageMapping#oblique@ has been added for @BasicMessageMapping@ in sequence metamodel @org.eclipse.sirius.diagram.sequence.model/model/sequence.ecore@ to enable the use of oblique messages in Sequence diagrams.
 
 h2(#sirius7.4.10). Changes in Sirius  Desktop 7.4.10
 
