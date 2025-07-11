@@ -49,6 +49,7 @@ import org.eclipse.sirius.diagram.sequence.description.tool.OperandCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.StateCreationTool;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.command.SequenceDelegatingCommandFactory;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InteractionUseCompartmentEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceDiagramEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.StateEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator.FrameCreationValidator;
@@ -58,6 +59,7 @@ import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.CreationUtil;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.NodeCreationEditPolicy;
+import org.eclipse.sirius.diagram.ui.tools.api.command.DoNothingCommand;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.DistributeRequest;
@@ -83,7 +85,11 @@ public class SequenceNodeCreationPolicy extends NodeCreationEditPolicy {
     protected Command getCreateCommand(CreateRequest request) {
         Option<SequenceDiagramEditPart> sdep = shouldRetargetToDiagram(request);
         if (sdep.some()) {
-            return sdep.get().getCommand(request);
+            Command returnCommand = sdep.get().getCommand(request);
+            if (returnCommand instanceof DoNothingCommand && getHost() instanceof InteractionUseCompartmentEditPart) {
+                returnCommand = UnexecutableCommand.INSTANCE;
+            }
+            return returnCommand;
         }
         return super.getCreateCommand(request);
     }
