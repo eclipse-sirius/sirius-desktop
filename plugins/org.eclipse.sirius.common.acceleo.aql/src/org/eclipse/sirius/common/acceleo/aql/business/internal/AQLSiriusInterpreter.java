@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2017 Obeo.
+ * Copyright (c) 2015, 2025 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -25,15 +25,16 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ExecutionException;
 
+import org.eclipse.acceleo.query.parser.AstResult;
 import org.eclipse.acceleo.query.runtime.AcceleoQueryEvaluationException;
 import org.eclipse.acceleo.query.runtime.AcceleoQueryValidationException;
 import org.eclipse.acceleo.query.runtime.CrossReferenceProvider;
 import org.eclipse.acceleo.query.runtime.EvaluationResult;
 import org.eclipse.acceleo.query.runtime.IQueryBuilderEngine;
-import org.eclipse.acceleo.query.runtime.IQueryBuilderEngine.AstResult;
 import org.eclipse.acceleo.query.runtime.IQueryEnvironment;
 import org.eclipse.acceleo.query.runtime.IQueryEvaluationEngine;
 import org.eclipse.acceleo.query.runtime.IQueryValidationEngine;
+import org.eclipse.acceleo.query.runtime.IService;
 import org.eclipse.acceleo.query.runtime.IValidationMessage;
 import org.eclipse.acceleo.query.runtime.IValidationResult;
 import org.eclipse.acceleo.query.runtime.Query;
@@ -144,7 +145,7 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter implements 
 
             @Override
             public void unloaded(String nsURI, EPackage pak) {
-                queryEnvironment.removeEPackage(pak.getName());
+                queryEnvironment.removeEPackage(pak);
             }
         };
         this.javaExtensions.addClassLoadingCallBack(callback);
@@ -208,14 +209,14 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter implements 
     @Override
     public IEvaluationResult evaluateExpression(final EObject target, final String fullExpression) throws EvaluationException {
         this.javaExtensions.reloadIfNeeded();
-        String expression = new ExpressionTrimmer(fullExpression).getExpression();
+        String expression = new ExpressionTrimmer(fullExpression).getExpression().trim();
         Map<String, Object> variables = getVariables();
         variables.put("self", target); //$NON-NLS-1$
 
         try {
             AstResult build = parsedExpressions.get(expression);
             IQueryEvaluationEngine evaluationEngine = QueryEvaluation.newEngine(queryEnvironment);
-            final EvaluationResult evalResult = evaluationEngine.eval(build, variables);
+            EvaluationResult evalResult = evaluationEngine.eval(build, variables);
 
             final BasicDiagnostic diagnostic = new BasicDiagnostic();
             if (Diagnostic.OK != build.getDiagnostic().getSeverity()) {
@@ -359,11 +360,11 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter implements 
     @Override
     public Collection<Method> getImplementation(String serviceCall) {
         javaExtensions.reloadIfNeeded();
-        Set<org.eclipse.acceleo.query.runtime.IService> registeredServices = queryEnvironment.getLookupEngine().getRegisteredServices();
+        Set<IService<?>> registeredServices = queryEnvironment.getLookupEngine().getRegisteredServices();
         List<Method> results = new ArrayList<Method>();
         registeredServices.iterator().forEachRemaining(s -> {
             if (s instanceof JavaMethodService) {
-                results.add(((JavaMethodService) s).getMethod());
+                results.add(((JavaMethodService) s).getOrigin());
             }
         });
 
