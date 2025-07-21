@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -241,7 +241,9 @@ import org.eclipse.sirius.tests.unit.diagram.style.LabelColorOnListElementTest;
 import org.eclipse.sirius.tests.unit.diagram.style.LabelColorTest;
 import org.eclipse.sirius.tests.unit.diagram.style.MappingImportChainsTest;
 import org.eclipse.sirius.tests.unit.diagram.style.NodeSizeOnDiagramCreationTest;
+import org.eclipse.sirius.tests.unit.diagram.style.NodeSizeOnDiagramCreationWithSnapToGridTest;
 import org.eclipse.sirius.tests.unit.diagram.style.NodeSizeTest;
+import org.eclipse.sirius.tests.unit.diagram.style.NodeSizeWithSnapToGridTest;
 import org.eclipse.sirius.tests.unit.diagram.style.WorkspaceImageTest;
 import org.eclipse.sirius.tests.unit.diagram.synchronization.DiagramSynchronizationTest;
 import org.eclipse.sirius.tests.unit.diagram.synchronization.DiagramUnsynchronizedRefreshTest;
@@ -412,6 +414,8 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(SynchronizationLockTest.class);
         suite.addTestSuite(NodeSizeTest.class);
         suite.addTestSuite(NodeSizeOnDiagramCreationTest.class);
+        suite.addTestSuite(NodeSizeWithSnapToGridTest.class);
+        suite.addTestSuite(NodeSizeOnDiagramCreationWithSnapToGridTest.class);
         suite.addTestSuite(EdgeSizeTest.class);
         suite.addTestSuite(EdgeSizeComputationVariableTest.class);
         suite.addTestSuite(AttachmentBetweenEdgeAndItsLabelsTest.class);
