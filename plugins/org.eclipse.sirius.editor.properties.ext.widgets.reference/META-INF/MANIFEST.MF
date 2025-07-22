@@ -2,20 +2,20 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.editor.properties.ext.widgets.reference;singleton:=true
-Bundle-Version: 7.4.11.qualifier
+Bundle-Version: 7.5.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-17
-Require-Bundle: org.eclipse.sirius.properties.ext.widgets.reference;bundle-version="7.4.11",
- org.eclipse.sirius.properties.ext.widgets.reference.edit;bundle-version="7.4.11",
+Require-Bundle: org.eclipse.sirius.properties.ext.widgets.reference;bundle-version="7.5.0",
+ org.eclipse.sirius.properties.ext.widgets.reference.edit;bundle-version="7.5.0",
  org.eclipse.ui.views.properties.tabbed;bundle-version="[3.5.0,4.0.0)",
- org.eclipse.sirius.editor;bundle-version="7.4.11",
- org.eclipse.sirius.editor.properties;bundle-version="7.4.11",
+ org.eclipse.sirius.editor;bundle-version="7.5.0",
+ org.eclipse.sirius.editor.properties;bundle-version="7.5.0",
  org.eclipse.emf.common.ui;bundle-version="2.8.0",
  org.eclipse.sirius.ext.base;bundle-version="5.0.0",
  org.eclipse.core.runtime;bundle-version="3.0.0",
  org.eclipse.sirius.ext.swt;bundle-version="5.0.0"
 Bundle-Localization: plugin
-Export-Package: org.eclipse.sirius.editor.properties.ext.widgets.reference.internal;version="7.4.11";x-internal:=true
+Export-Package: org.eclipse.sirius.editor.properties.ext.widgets.reference.internal;version="7.5.0";x-internal:=true
 Bundle-Activator: org.eclipse.sirius.editor.properties.ext.widgets.reference.internal.SiriusEditorPropertiesExtWidgetsReferencePlugin$Implementation
 Bundle-ActivationPolicy: lazy
 Automatic-Module-Name: org.eclipse.sirius.editor.properties.ext.widgets.reference
