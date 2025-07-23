@@ -22,8 +22,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.impl.InternalTransaction;
 import org.eclipse.emf.transaction.impl.InternalTransactionalEditingDomain;
-import org.eclipse.gef.rulers.RulerProvider;
-import org.eclipse.gmf.runtime.diagram.ui.preferences.IPreferenceConstants;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
@@ -79,11 +77,18 @@ public class GridOnLocationTest extends SiriusDiagramTestCase {
         super.setUp();
         genericSetUp(SEMANTIC_MODEL_PATH, MODELER_PATH);
         initViewpoint(VIEWPOINT_NAME);
-        changeDiagramUIPreference(IPreferenceConstants.PREF_SNAP_TO_GRID, true);
-        changeDiagramUIPreference(IPreferenceConstants.PREF_RULER_UNITS, RulerProvider.UNIT_PIXELS);
-        changeDiagramUIPreference(IPreferenceConstants.PREF_GRID_SPACING, SPACING);
     }
     
+    @Override
+    protected boolean isSnapToGrid() {
+        return true;
+    }
+
+    @Override
+    protected Integer getGridSpacing() {
+        return SPACING;
+    }
+
     /**
      * Tests elements size matches grid spacing when creating a diagram, ie the bottom right corner is on a grid point.
      */
