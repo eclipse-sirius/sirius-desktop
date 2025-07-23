@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2024 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -51,6 +51,7 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.eclipse.gef.rulers.RulerProvider;
 import org.eclipse.gmf.runtime.diagram.ui.preferences.IPreferenceConstants;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
@@ -140,6 +141,9 @@ public abstract class SiriusTestCase extends TestCase {
 
     private static final String DOT = ".";
 
+    /** Default grid spacing. */
+    public static final int DEFAULT_GRID_SPACING = 20;
+
     /** The local session. */
     protected Session session;
 
@@ -197,12 +201,34 @@ public abstract class SiriusTestCase extends TestCase {
         // launched "randomly".
         changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), false);
         changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), false);
+        // Change the snapToGrid default values
+        changeDiagramUIPreference(IPreferenceConstants.PREF_RULER_UNITS, RulerProvider.UNIT_PIXELS);
+        changeDiagramUIPreference(IPreferenceConstants.PREF_SNAP_TO_GRID, isSnapToGrid());
+        changeDiagramUIPreference(IPreferenceConstants.PREF_GRID_SPACING, getGridSpacing());
 
         if (createModelingProject) {
             EclipseTestsSupportHelper.INSTANCE.createModelingProject(SiriusTestCase.TEMPORARY_PROJECT_NAME, false);
         } else {
             EclipseTestsSupportHelper.INSTANCE.createProject(SiriusTestCase.TEMPORARY_PROJECT_NAME);
         }
+    }
+
+    /**
+     * Get the grid spacing to use by default for new diagram.
+     * 
+     * @return the grid spacing.
+     */
+    protected Integer getGridSpacing() {
+        return DEFAULT_GRID_SPACING;
+    };
+
+    /**
+     * Is the snapToGrid is enabled by default for new diagram.
+     * 
+     * @return the snapToGrid default value.
+     */
+    protected boolean isSnapToGrid() {
+        return false;
     }
 
     /**
