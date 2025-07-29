@@ -46,7 +46,7 @@ NOTE: these layout algorithms manage only nodes connected by edges, other nodes 
 
 h4(#useElk). Use an ELK layout algorithm
 
-Additional layout algorithms can be available if you have installed the ELK integration feature with Sirius. Please refers to the "ELK documentation":https://www.eclipse.org/elk/reference/algorithms.html if you want details about these algorithms. This feature is considered as experimental because of remaining bugs concerning the ELK integration.
+Additional layout algorithms can be available if you have installed the ELK integration feature with Sirius. Please refers to the "ELK documentation":https://www.eclipse.org/elk/reference/algorithms.html if you want details about these algorithms. This feature is considered experimental due to remaining issues with the ELK integration.
 
 When using one of the ELK layout algorithms, there are some specificities in comparison with the other "standard" Sirius layout:
 * The pinned status is not considered. All pinned elements are layouted as if they are not pinned. ELK does not manage this kind of property and Sirius does not add post treatement that could break the layout result.
