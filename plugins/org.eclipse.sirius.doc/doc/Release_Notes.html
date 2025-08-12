@@ -296,23 +296,30 @@
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<ul>
-			<li>The addition of an &#8216;interaction container mapping&#8217; to the sequence metamodel introduced new API classes such as:</br></li>
+			<li>The addition of an &#8216;interaction container mapping&#8217; to the sequence metamodel introduced new API classes such as:
+				<ul>
+					<li>
+						<code>org.eclipse.sirius.diagram.sequence.business.internal.elements.InteractionContainer</code> to determine a View element should be represented as an InteractionContainer;
+					</li>
+					<li>
+						<code>org.eclipse.sirius.diagram.sequence.description.InteractionContainerMapping</code> to specify an &#8216;interaction container mapping&#8217; in a sequence diagram;
+					</li>
+					<li>
+						<code>org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InteractionContainerEditPart</code> a custom edit part to deactivate user interaction as this custom &#8220;Container mapping is automatically resized depending on diagram element locations&#8221;.
+					</li>
+				</ul>
+			</li>
 		</ul>
-		<p>	- 
-			<code>org.eclipse.sirius.diagram.sequence.business.internal.elements.InteractionContainer</code> to determine a View element should be represented as an InteractionContainer; </br>
-			<br/>	- 
-			<code>org.eclipse.sirius.diagram.sequence.description.InteractionContainerMapping</code> to specify an &#8216;interaction container mapping&#8217; in a sequence diagram</br> 
-			<br/>	- 
-			<code>org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InteractionContainerEditPart</code> a custom edit part to deactivate user interaction as this custom &#8220;Container mapping is automatically resized depending on diagram element locations&#8221;.
-		</p>
 		<h2 id="sirius7.4.5">Changes in Sirius  Desktop 7.4.5</h2>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> In the 
-				<code>ImageSelectionDialog</code>, a new feature has been added to reset the WorkspaceImage assigned to a DDiagramElement. Before this improvement, it was necessary to use the “Reset style properties to default values” button, but this also affected all other style modifications. This new button in the dialog resets only the WorkspaceImage style to the style of the element as defined in the Viewpoint Specification Model. </br> 
-				<img style="width: 500px" border="0" src="user/diagrams/images/selectImageDialog_resetImage.png"/>
+				<code>ImageSelectionDialog</code>, a new feature has been added to reset the WorkspaceImage assigned to a DDiagramElement. Before this improvement, it was necessary to use the “Reset style properties to default values” button, but this also affected all other style modifications. This new button in the dialog resets only the WorkspaceImage style to the style of the element as defined in the Viewpoint Specification Model.
 			</li>
 		</ul>
+		<p>
+			<img style="width: 500px" border="0" src="user/diagrams/images/selectImageDialog_resetImage.png"/>
+		</p>
 		<h3 id="DeveloperVisibleChanges2">Developer-Visible Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
