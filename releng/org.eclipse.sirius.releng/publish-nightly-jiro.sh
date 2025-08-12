@@ -35,7 +35,7 @@ provided by the Jenkins build.
 set -e
 
 # The full version (should be taken as an argument)
-export VERSION="7.4.11"
+export VERSION="7.4.12"
 
 # The type of build being published
 export BUILD_TYPE="nightly"

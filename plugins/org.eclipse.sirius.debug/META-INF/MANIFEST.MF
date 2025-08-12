@@ -2,13 +2,13 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.debug;singleton:=true
-Bundle-Version: 7.4.11.qualifier
+Bundle-Version: 7.4.12.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Localization: plugin
 Bundle-ActivationPolicy: lazy
 Eclipse-LazyStart: true
 Bundle-Vendor: %providerName
-Export-Package: org.eclipse.sirius.api.debug;version="7.4.11"
+Export-Package: org.eclipse.sirius.api.debug;version="7.4.12"
 Automatic-Module-Name: org.eclipse.sirius.debug
 Require-Bundle: org.eclipse.emf.common,
  org.eclipse.ui.workbench,
