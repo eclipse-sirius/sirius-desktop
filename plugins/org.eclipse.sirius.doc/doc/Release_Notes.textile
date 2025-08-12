@@ -37,16 +37,18 @@ h3. Specifiers-Visible Changes
 
 h3. Developer-Visible Changes
 
-* The addition of an 'interaction container mapping' to the sequence metamodel introduced new API classes such as:</br>
-	- @org.eclipse.sirius.diagram.sequence.business.internal.elements.InteractionContainer@ to determine a View element should be represented as an InteractionContainer; </br>
-	- @org.eclipse.sirius.diagram.sequence.description.InteractionContainerMapping@ to specify an 'interaction container mapping' in a sequence diagram</br> 
-	- @org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InteractionContainerEditPart@ a custom edit part to deactivate user interaction as this custom "Container mapping is automatically resized depending on diagram element locations".
+* The addition of an 'interaction container mapping' to the sequence metamodel introduced new API classes such as:
+** @org.eclipse.sirius.diagram.sequence.business.internal.elements.InteractionContainer@ to determine a View element should be represented as an InteractionContainer;
+** @org.eclipse.sirius.diagram.sequence.description.InteractionContainerMapping@ to specify an 'interaction container mapping' in a sequence diagram;
+** @org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InteractionContainerEditPart@ a custom edit part to deactivate user interaction as this custom "Container mapping is automatically resized depending on diagram element locations".
 
 h2(#sirius7.4.5). Changes in Sirius  Desktop 7.4.5
 
 h3. User-Visible Changes
 
-* <span class="label label-success">Added</span> In the @ImageSelectionDialog@, a new feature has been added to reset the WorkspaceImage assigned to a DDiagramElement. Before this improvement, it was necessary to use the “Reset style properties to default values” button, but this also affected all other style modifications. This new button in the dialog resets only the WorkspaceImage style to the style of the element as defined in the Viewpoint Specification Model. </br> !{width: 500px}user/diagrams/images/selectImageDialog_resetImage.png!
+* <span class="label label-success">Added</span> In the @ImageSelectionDialog@, a new feature has been added to reset the WorkspaceImage assigned to a DDiagramElement. Before this improvement, it was necessary to use the “Reset style properties to default values” button, but this also affected all other style modifications. This new button in the dialog resets only the WorkspaceImage style to the style of the element as defined in the Viewpoint Specification Model.
+
+!{width: 500px}user/diagrams/images/selectImageDialog_resetImage.png!
 
 h3. Developer-Visible Changes
 
