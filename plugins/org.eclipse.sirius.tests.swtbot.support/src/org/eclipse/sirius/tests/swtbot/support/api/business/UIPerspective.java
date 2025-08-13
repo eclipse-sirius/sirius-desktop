@@ -31,7 +31,6 @@ import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
-import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UISessionCreationWizardFlow.SessionChoice;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OpenedSessionCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.TreeItemAvailableCondition;
@@ -61,8 +60,6 @@ public class UIPerspective {
     private static final String VIEWPOINT = "Sirius";
 
     private static final String NEW_MENU = "New";
-
-    private static final String WIZARDS_LIST_TITLE = "Select a wizard";
 
     private static final String REPRESENTATIONS_FILE_LABEL = "Representations File";
 
@@ -208,16 +205,8 @@ public class UIPerspective {
     private void openRepresentationsFileWizard() {
         SWTBotSiriusHelper.menu(bot, "File").menu(UIPerspective.NEW_MENU).menu("Other...").click();
 
-        String shellTitle;
-        if (TestsUtil.is202106Platform()) {
-            shellTitle = UIPerspective.WIZARDS_LIST_TITLE;
-        } else {
-            // Older versions.
-            shellTitle = NEW_MENU;
-        }
-
-        bot.waitUntil(Conditions.shellIsActive(shellTitle));
-        SWTBot wizardListBot = bot.shell(shellTitle).bot();
+        bot.waitUntil(Conditions.shellIsActive(NEW_MENU));
+        SWTBot wizardListBot = bot.shell(NEW_MENU).bot();
         wizardListBot.text().setText(UIPerspective.REPRESENTATIONS_FILE_LABEL);
 
         SWTBotTree wizardsTree = wizardListBot.tree();
