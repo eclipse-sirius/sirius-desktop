@@ -15,7 +15,7 @@
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.sirius.common.interpreter" version="0.0.0"/>
-      <repository id="Sirius-7.2.1" location="https://download.eclipse.org/sirius/updates/releases/7.2.1/2023-03/"/>
+      <repository id="Sirius-7.4.11" location="https://download.eclipse.org/sirius/updates/releases/7.4.11/2023-03/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.platform.feature.group" version="0.0.0"/>
