@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2024 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -522,7 +522,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      */
     protected void undo(String cmdName) {
         String menuLabel = "Undo " + cmdName;
-        if (PLATFORM_VERSION.getMajor() == 3 && PLATFORM_VERSION.getMinor() >= 30) {
+        if (PLATFORM_VERSION.getMajor() == 3 && PLATFORM_VERSION.getMinor() >= 30 && PLATFORM_VERSION.getMinor() < 33) {
             menuLabel = "Undo";
         }
         SWTBotSiriusHelper.menu(bot, AbstractSiriusSwtBotGefTestCase.EDIT_MENU_NAME).menu(menuLabel).click();
@@ -556,7 +556,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      */
     protected void redo(String cmdName) {
         String menuLabel = "Redo " + cmdName;
-        if (PLATFORM_VERSION.getMajor() == 3 && PLATFORM_VERSION.getMinor() >= 30) {
+        if (PLATFORM_VERSION.getMajor() == 3 && PLATFORM_VERSION.getMinor() >= 30 && PLATFORM_VERSION.getMinor() < 33) {
             menuLabel = "Redo";
         }
         SWTBotSiriusHelper.menu(bot, AbstractSiriusSwtBotGefTestCase.EDIT_MENU_NAME).menu(menuLabel).click();

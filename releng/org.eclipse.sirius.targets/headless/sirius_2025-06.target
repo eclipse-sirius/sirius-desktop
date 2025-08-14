@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="sirius_headless_photon" sequenceNumber="1707401172">
+<target name="sirius_headless_2025-06" sequenceNumber="1755071915">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.easymock" version="0.0.0"/>
@@ -66,7 +66,7 @@
       <unit id="org.eclipse.emf.ecore.xmi" version="0.0.0"/>
       <unit id="org.eclipse.emf.edit" version="0.0.0"/>
       <unit id="org.eclipse.emf.workspace" version="0.0.0"/>
-      <repository id="Eclipse-2023-03" location="https://download.eclipse.org/releases/2023-03/"/>
+      <repository id="Eclipse-2025-06" location="https://download.eclipse.org/releases/2025-06/"/>
     </location>
   </locations>
 </target>

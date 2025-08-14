@@ -1,4 +1,4 @@
-target "sirius_headless_photon"
+target "sirius_headless_2025-06"
 
 include "../modules/orbit.tpd"
 include "../modules/elk-0.9.tpd"
@@ -13,7 +13,7 @@ location Acceleo-3.7 "https://download.eclipse.org/acceleo/updates/releases/3.7/
     org.eclipse.acceleo.query.feature.group lazy
 }
 
-location Eclipse-2023-03 "https://download.eclipse.org/releases/2023-03/" {
+location Eclipse-2025-06 "https://download.eclipse.org/releases/2025-06/" {
     org.eclipse.equinox.core.feature.feature.group lazy
     org.eclipse.equinox.compendium.sdk.feature.group lazy
     org.eclipse.equinox.executable.feature.group lazy
