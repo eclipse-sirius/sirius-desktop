@@ -50,5 +50,36 @@
 			<stylesheet url="../../resources/bootstrap.css" />
 			<stylesheet url="../../resources/custom.css" />
 		</wikitext-to-html>
+		
+		<!-- Regen the pages with same file name, which produces conflicting HTML titles -->
+        <wikitext-to-html markupLanguage="Textile" formatOutput="true" failonvalidationerror="true" failonvalidationwarning="true" validate="true" title="Specifier - Diagrams">
+            <fileset dir="${basedir}">
+                <include name="doc/specifier/diagrams/Diagrams.textile" />
+            </fileset>
+            <stylesheet url="../../resources/bootstrap.css" />
+            <stylesheet url="../../resources/custom.css" />
+        </wikitext-to-html>
+        <wikitext-to-html markupLanguage="Textile" formatOutput="true" failonvalidationerror="true" failonvalidationwarning="true" validate="true" title="Specifier - Sequence Diagrams">
+            <fileset dir="${basedir}">
+                <include name="doc/specifier/sequence/Sequence Diagrams.textile.textile" />
+            </fileset>
+            <stylesheet url="../../resources/bootstrap.css" />
+            <stylesheet url="../../resources/custom.css" />
+        </wikitext-to-html>
+        <wikitext-to-html markupLanguage="Textile" formatOutput="true" failonvalidationerror="true" failonvalidationwarning="true" validate="true" title="Specifier - Tables">
+            <fileset dir="${basedir}">
+                <include name="doc/specifier/tables/Tables.textile" />
+            </fileset>
+            <stylesheet url="../../resources/bootstrap.css" />
+            <stylesheet url="../../resources/custom.css" />
+        </wikitext-to-html>
+        <wikitext-to-html markupLanguage="Textile" formatOutput="true" failonvalidationerror="true" failonvalidationwarning="true" validate="true" title="Specifier - Trees">
+            <fileset dir="${basedir}">
+                <include name="doc/specifier/trees/Trees.textile" />
+            </fileset>
+            <stylesheet url="../../resources/bootstrap.css" />
+            <stylesheet url="../../resources/custom.css" />
+        </wikitext-to-html>
+		
 	</target>
 </project>
