@@ -409,7 +409,7 @@ h3. User-Visible Changes
 
 h3. Specifier-Visible Changes
 
-* <span class="label label-success">Added</span> "Initial documentation":specifier/workflows/Workflows.html has been added for the "Workflow" feature introduced in 6.0.0 (which is still experimental).
+* <span class="label label-success">Added</span> Initial documentation has been added for the "Workflow" feature introduced in 6.0.0 (which is still experimental).
 * <span class="label label-success">Added</span> The contribution of @PopupMenu@ in diagram has been improved. It is now possible to define @Group@ in @PopupMenu@. A group allows to group several actions. It appears like a separator between groups of actions. It is also possible to reuse existing menu or group.
 Previously, it was possible to add new menus and actions at the end of the contextual menu:
 !images/popupMenuBefore.png!
@@ -796,7 +796,7 @@ h4. Changes in @org.eclipse.sirius@
 * <span class="label label-success">Added</span> @org.eclipse.sirius.viewpoint.DRepresentationDescriptor#repPath@ attribute has been added to hold the representation path since the @org.eclipse.sirius.viewpoint.DRepresentationDescriptor#representation@ feature is derived. This attribute is not intended to be modified by client. You should use @org.eclipse.sirius.viewpoint.DRepresentationDescriptor.setRepresentation(DRepresentation)@ or @org.eclipse.sirius.viewpoint.DRepresentationDescriptor.updateRepresentation(DRepresentation)@ instead.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.viewpoint.DRepresentationDescriptor.updateRepresentation(DRepresentation)@ has been added to update the repPath attribute according to the given representation. This method is intended to be called if the representation instance is still the same but requires to recompute the repPath.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.business.api.query.FileQuery.isSrmFile()@ has been added to indicate if the file extension is dedicated to a file containing representations.
-* <span class="label label-success">Added</span> @org.eclipse.sirius.dRepresentationLocationRule@ extension point has been added to customize the resource location of new representations. See "Provide representation location rule (experimental)":extensions-provide_representation_location_rule.html for more details.
+* <span class="label label-success">Added</span> @org.eclipse.sirius.dRepresentationLocationRule@ extension point has been added to customize the resource location of new representations. See _Provide representation location rule (experimental)_.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.business.api.session.danalysis.DRepresentationLocationRule@ interface has been added to provide a customized rule to the @org.eclipse.sirius.dRepresentationLocationRule@ extension point.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.business.api.helper.SiriusUtil.REPRESENTATION_FILE_EXTENSION@ constant has been added to reference the new *.srm extension.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.business.api.session.Session.getSrmResources()@ has been added to provide the list of representation resources (serialized as *.srm files by default).
