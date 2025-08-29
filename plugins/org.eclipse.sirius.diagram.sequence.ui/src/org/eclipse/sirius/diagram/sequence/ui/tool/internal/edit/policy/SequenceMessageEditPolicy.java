@@ -944,15 +944,19 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
                 }
 
                 valid = sourceFinalOperand.get() == targetFinalOperand.get();
-            } else if (message.getSourceElement() instanceof Gate g) {
-                ISequenceElement hierarchicalParent = g.getHierarchicalParent();
-                if (hierarchicalParent instanceof ISequenceEvent ise) {
-                    valid = ise.getVerticalRange().includes(finalRange.get());
-                }
-            } else if (message.getTargetElement() instanceof Gate g) {
-                ISequenceElement hierarchicalParent = g.getHierarchicalParent();
-                if (hierarchicalParent instanceof ISequenceEvent ise) {
-                    valid = ise.getVerticalRange().includes(finalRange.get());
+            } else {
+                if (message.getSourceElement() instanceof Gate g) {
+                    ISequenceElement hierarchicalParent = g.getHierarchicalParent();
+                    if (hierarchicalParent instanceof ISequenceEvent ise) {
+                        valid = valid && ise.getVerticalRange().includes(finalRange.get().getLowerBound());
+                    }
+                } 
+                
+                if (message.getTargetElement() instanceof Gate g) {
+                    ISequenceElement hierarchicalParent = g.getHierarchicalParent();
+                    if (hierarchicalParent instanceof ISequenceEvent ise) {
+                        valid = valid && ise.getVerticalRange().includes(finalRange.get().getUpperBound());
+                    }
                 }
             }
         }
