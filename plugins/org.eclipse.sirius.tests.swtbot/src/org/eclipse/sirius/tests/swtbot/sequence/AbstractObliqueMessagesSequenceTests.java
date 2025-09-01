@@ -26,6 +26,7 @@ import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.CombinedFragmentEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.GateEditPart;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InteractionUseEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.LifelineEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.OperandEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceDiagramEditPart;
@@ -36,6 +37,7 @@ import org.eclipse.sirius.sample.interactions.CombinedFragment;
 import org.eclipse.sirius.sample.interactions.Execution;
 import org.eclipse.sirius.sample.interactions.Gate;
 import org.eclipse.sirius.sample.interactions.Interaction;
+import org.eclipse.sirius.sample.interactions.InteractionUse;
 import org.eclipse.sirius.sample.interactions.Operand;
 import org.eclipse.sirius.sample.interactions.Participant;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartIsNotDisplayed;
@@ -46,6 +48,7 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
+import org.eclipse.swtbot.swt.finder.widgets.TimeoutException;
 
 /**
  * Abstract tests class for oblique messages in Sequence Diagram.
@@ -53,6 +56,11 @@ import org.eclipse.swtbot.swt.finder.waits.ICondition;
  * @author <a href="mailto:glenn.plouhinec@obeo.fr">Glenn Plouhinec</a>
  */
 public class AbstractObliqueMessagesSequenceTests extends AbstractSequenceDiagramTestCase {
+
+    /**
+     * Timeout for "waitUntil" is fixed to 1000 ms instead of 5000 ms.
+     */
+    private static final long TIMEOUT_ERROR = 1000;
 
     private static final String PATH = DATA_UNIT_DIR + "obliques/";
 
@@ -82,10 +90,15 @@ public class AbstractObliqueMessagesSequenceTests extends AbstractSequenceDiagra
 
     protected OperandData operandData;
 
+    /** InteractionUses */
+    protected InteractionUseData interactionUseData;
+
     /** Gates */
     protected GateData gate1Data;
 
     protected GateData gate2Data;
+
+    protected GateData gate3Data;
 
     /** Executions */
     protected ExecutionData execution1Data;
@@ -99,6 +112,9 @@ public class AbstractObliqueMessagesSequenceTests extends AbstractSequenceDiagra
     }
 
     protected record CombinedFragmentData(SWTBotGefEditPart bot, CombinedFragmentEditPart editPart, CombinedFragment semanticElement, Rectangle bounds) {
+    }
+
+    protected record InteractionUseData(SWTBotGefEditPart bot, InteractionUseEditPart editPart, InteractionUse semanticElement, Rectangle bounds) {
     }
 
     protected record OperandData(SWTBotGefEditPart bot, OperandEditPart editPart, Operand semanticElement, Rectangle bounds) {
@@ -137,9 +153,13 @@ public class AbstractObliqueMessagesSequenceTests extends AbstractSequenceDiagra
 
         operandData = initializeOperandData(combinedFragmentData.bot, 0);
 
+        // InteractionUses
+        interactionUseData = initializeInteractionUseData(0);
+
         // Gates
         gate1Data = initializeGateData(combinedFragmentData.bot, "g1");
         gate2Data = initializeGateData(combinedFragmentData.bot, "g2");
+        gate3Data = initializeGateData(interactionUseData.bot, "g3");
 
         // Executions
         execution1Data = initializeExecutionData("e1");
@@ -188,6 +208,15 @@ public class AbstractObliqueMessagesSequenceTests extends AbstractSequenceDiagra
         return new OperandData(operandBot, operandEditPart, operand, operandBounds);
     }
 
+    private InteractionUseData initializeInteractionUseData(int interactionUseIndex) {
+        SWTBotGefEditPart interactionUseBot = sequenceDiagramBot.descendants(IsInstanceOf.instanceOf(InteractionUseEditPart.class)).get(interactionUseIndex);
+        InteractionUseEditPart interactionUseEditPart = (InteractionUseEditPart) interactionUseBot.part();
+        InteractionUse interactionUse = (InteractionUse) interactionUseEditPart.resolveTargetSemanticElement();
+        Rectangle interactionUseBounds = editor.getBounds(interactionUseBot);
+
+        return new InteractionUseData(interactionUseBot, interactionUseEditPart, interactionUse, interactionUseBounds);
+    }
+
     private GateData initializeGateData(SWTBotGefEditPart parentBot, String gateName) {
         List<SWTBotGefEditPart> descendants = parentBot.descendants(IsInstanceOf.instanceOf(GateEditPart.class));
         SWTBotGefEditPart gateBot = findByName(descendants, gateName);
@@ -227,9 +256,15 @@ public class AbstractObliqueMessagesSequenceTests extends AbstractSequenceDiagra
         // CombinedFragments
         combinedFragmentData = null;
 
+        operandData = null;
+
+        // InteractionUses
+        interactionUseData = null;
+
         // Gates
         gate1Data = null;
         gate2Data = null;
+        gate3Data = null;
 
         // Executions
         execution1Data = null;
@@ -276,68 +311,107 @@ public class AbstractObliqueMessagesSequenceTests extends AbstractSequenceDiagra
     }
 
     protected void moveMessage() {
+        moveMessage(15, false);
+    }
+
+    protected void moveMessage(int translateY, boolean shouldFail) {
         assertEquals("The diagram should have 1 message", 1, editor.getConnectionsEditPart().size());
 
         SWTBotGefConnectionEditPart swtBotGefConnectionEditPart = editor.getConnectionsEditPart().get(0);
         SequenceMessageEditPart messageEditPart = (SequenceMessageEditPart) swtBotGefConnectionEditPart.part();
         Point centerHandleMessagePosition = getHandleNearCenter(messageEditPart);
 
-        Point dropPosition = centerHandleMessagePosition.getTranslated(0, 15);
+        Point dropPosition = centerHandleMessagePosition.getTranslated(0, translateY);
         editor.drag(centerHandleMessagePosition, dropPosition);
         // Check message move
-        bot.waitUntil(new DefaultCondition() {
-            @Override
-            public boolean test() throws Exception {
-                return areClose(getHandleNearCenter(messageEditPart), dropPosition);
-            }
+        try {
+            bot.waitUntil(new DefaultCondition() {
+                @Override
+                public boolean test() throws Exception {
+                    return areClose(getHandleNearCenter(messageEditPart), dropPosition);
+                }
 
-            @Override
-            public String getFailureMessage() {
-                return "The message has not been moved at the expected location";
+                @Override
+                public String getFailureMessage() {
+                    return "The message has not been moved at the expected location";
+                }
+            }, TIMEOUT_ERROR);
+            if (shouldFail) {
+                fail("Expected the move to fail, but it succeeded");
             }
-        });
+        } catch (TimeoutException e) {
+            if (!shouldFail) {
+                throw e;
+            }
+        }
     }
 
     protected void moveSourceHandleMessage() {
+        moveSourceHandleMessage(-15, false);
+    }
+
+    protected void moveSourceHandleMessage(int translateY, boolean shouldFail) {
         SWTBotGefConnectionEditPart swtBotGefConnectionEditPart = editor.getConnectionsEditPart().get(0);
         SequenceMessageEditPart messageEditPart = (SequenceMessageEditPart) swtBotGefConnectionEditPart.part();
         Point sourceHandleMessagePosition = getHandleNearSource(messageEditPart);
 
-        Point dropPosition = sourceHandleMessagePosition.getTranslated(0, -15);
+        Point dropPosition = sourceHandleMessagePosition.getTranslated(0, translateY);
         editor.drag(sourceHandleMessagePosition, dropPosition);
         // Check message move
-        bot.waitUntil(new DefaultCondition() {
-            @Override
-            public boolean test() throws Exception {
-                return areClose(getHandleNearSource(messageEditPart), dropPosition);
-            }
+        try {
+            bot.waitUntil(new DefaultCondition() {
+                @Override
+                public boolean test() throws Exception {
+                    return areClose(getHandleNearSource(messageEditPart), dropPosition);
+                }
 
-            @Override
-            public String getFailureMessage() {
-                return "The message has not been moved at the expected location";
+                @Override
+                public String getFailureMessage() {
+                    return "The message has not been moved at the expected location";
+                }
+            }, TIMEOUT_ERROR);
+            if (shouldFail) {
+                fail("Expected the move to fail, but it succeeded");
             }
-        });
+        } catch (TimeoutException e) {
+            if (!shouldFail) {
+                throw e;
+            }
+        }
     }
 
     protected void moveTargetHandleMessage() {
+        moveTargetHandleMessage(-15, false);
+    }
+
+    protected void moveTargetHandleMessage(int translateY, boolean shouldFail) {
         SWTBotGefConnectionEditPart swtBotGefConnectionEditPart = editor.getConnectionsEditPart().get(0);
         SequenceMessageEditPart messageEditPart = (SequenceMessageEditPart) swtBotGefConnectionEditPart.part();
         Point targetHandleMessagePosition = getHandleNearTarget(messageEditPart);
 
-        Point dropPosition = targetHandleMessagePosition.getTranslated(0, -15);
+        Point dropPosition = targetHandleMessagePosition.getTranslated(0, translateY);
         editor.drag(targetHandleMessagePosition, dropPosition);
         // Check message move
-        bot.waitUntil(new DefaultCondition() {
-            @Override
-            public boolean test() throws Exception {
-                return areClose(getHandleNearTarget(messageEditPart), dropPosition);
-            }
+        try {
+            bot.waitUntil(new DefaultCondition() {
+                @Override
+                public boolean test() throws Exception {
+                    return areClose(getHandleNearTarget(messageEditPart), dropPosition);
+                }
 
-            @Override
-            public String getFailureMessage() {
-                return "The message has not been moved at the expected location";
+                @Override
+                public String getFailureMessage() {
+                    return "The message has not been moved at the expected location";
+                }
+            }, TIMEOUT_ERROR);
+            if (shouldFail) {
+                fail("Expected the move to fail, but it succeeded");
             }
-        });
+        } catch (TimeoutException e) {
+            if (!shouldFail) {
+                throw e;
+            }
+        }
     }
 
     protected boolean areClose(Point p1, Point p2) {

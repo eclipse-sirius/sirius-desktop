@@ -132,6 +132,22 @@ public class ObliqueMessagesTests extends AbstractObliqueMessagesSequenceTests {
         moveTargetHandleMessage();
     }
 
+    public void testWriteObliqueMessage_betweenGates_InteractionUse() {
+        Point sourceMessage = gate3Data.bounds().getCenter();
+        Point targetMessage = gate1Data.bounds().getCenter();
+        createWriteOblique(sourceMessage, targetMessage);
+        moveMessage(60, true);
+        moveSourceHandleMessage(-60, true);
+        moveTargetHandleMessage(60, true);
+    }
+
+    public void testCreateInvalidWriteObliqueMessage_betweenGates_InteractionUse() {
+        Point sourceMessage = gate1Data.bounds().getCenter();
+        Point targetMessage = gate3Data.bounds().getCenter();
+        createWriteOblique(sourceMessage, targetMessage);
+        assertEquals("The diagram should have 0 message", 0, editor.getConnectionsEditPart().size());
+    }
+
     public void testWriteObliqueMessage_fromExecutionToLifeline() {
         Point sourceMessage = execution1Data.bounds().getCenter();
         Point targetMessage = participantAData.bounds().getCenter().getTranslated(0, 10);
