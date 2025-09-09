@@ -16,6 +16,7 @@ import org.eclipse.gef.requests.CreateConnectionRequest;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.EndOfLife;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Gate;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InteractionUse;
@@ -44,11 +45,24 @@ public class DefaultMessageCreationValidator extends AbstractMessageCreationVali
     @Override
     public boolean isValid(CreateConnectionRequest request) {
         boolean valid = super.isValid(request);
-        if (!(sequenceElementTarget instanceof Gate)) {
+        if (sequenceElementTarget instanceof Gate targetGate) {
+            valid = valid && checkTargetGateNotExplicitlyMovedOutOfParentUpperTime(targetGate);
+        } else {
             valid = valid && validateNotCreatingMessageOnState() && validateNotCreatingMessageInInteractionUse();
             valid = valid && checkTargetLifelineNotExplicitlyCreatedAtUpperTime() && checkTargetLifelineNotExplicitlyDestroyedAtLowerTime();
         }
         valid = valid && validateNotCreatingMessageInDifferentOperands();
+        return valid;
+    }
+
+    private boolean checkTargetGateNotExplicitlyMovedOutOfParentUpperTime(Gate targetGate) {
+        boolean valid = true;
+
+        ISequenceElement hierarchicalParent = targetGate.getHierarchicalParent();
+        if (hierarchicalParent instanceof ISequenceEvent ise) {
+            valid = ise.getVerticalRange().getUpperBound() >= firstClickLocation.y;
+        }
+
         return valid;
     }
 
