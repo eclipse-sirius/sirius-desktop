@@ -38,8 +38,8 @@
   </licenses>
 
   <properties>
-    <tycho-version>4.0.10</tycho-version>
-    <tycho-extras-version>4.0.10</tycho-extras-version>
+    <tycho-version>4.0.13</tycho-version>
+    <tycho-extras-version>4.0.13</tycho-extras-version>
     <platform-version-name>2025-09</platform-version-name>
     <!-- This property is used to customize the maven build folder. Used for parallel builds -->
     <build-folder-name>target</build-folder-name>
@@ -116,6 +116,7 @@
         <groupId>org.eclipse.tycho</groupId>
         <artifactId>target-platform-configuration</artifactId>
         <configuration>
+          <executionEnvironment>JavaSE-21</executionEnvironment>
           <dependency-resolution>
             <optionalDependencies>ignore</optionalDependencies>
           </dependency-resolution>
