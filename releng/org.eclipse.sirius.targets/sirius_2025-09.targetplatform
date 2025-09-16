@@ -1,7 +1,7 @@
 target "sirius_2025-09"
 
 include "modules/orbit.tpd"
-include "modules/swtbot-3.1.tpd"
+include "modules/swtbot-4.3.tpd"
 include "modules/shared-license.tpd"
 include "modules/aql-3.7.tpd"
 include "modules/acceleo-3.7.tpd"
