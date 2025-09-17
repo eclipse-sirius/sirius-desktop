@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -111,7 +111,7 @@ public class TreeInterpretedExpressionQuery extends AbstractInterpretedExpressio
      * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
      * 
      */
-    private class TreeGlobalInterpretedTargetSwitch implements IInterpretedExpressionTargetSwitch {
+    private final class TreeGlobalInterpretedTargetSwitch implements IInterpretedExpressionTargetSwitch {
 
         private final DefaultInterpretedExpressionTargetSwitch defaultSwitch = new DefaultInterpretedExpressionTargetSwitch(feature, this);
 

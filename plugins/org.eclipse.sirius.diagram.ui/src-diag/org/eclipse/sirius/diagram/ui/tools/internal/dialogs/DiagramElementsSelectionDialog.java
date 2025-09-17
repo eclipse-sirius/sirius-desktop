@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -880,7 +880,7 @@ public class DiagramElementsSelectionDialog {
         }
     }
 
-    private class ModeFilter extends ViewerFilter {
+    private final class ModeFilter extends ViewerFilter {
 
         @Override
         public boolean select(Viewer viewer, Object parentElement, Object element) {
@@ -922,7 +922,7 @@ public class DiagramElementsSelectionDialog {
         }
     }
 
-    private class SelectionDialogLabelProvider extends OutlineLabelProvider implements IColorProvider {
+    private final class SelectionDialogLabelProvider extends OutlineLabelProvider implements IColorProvider {
 
         /**
          * {@inheritDoc}

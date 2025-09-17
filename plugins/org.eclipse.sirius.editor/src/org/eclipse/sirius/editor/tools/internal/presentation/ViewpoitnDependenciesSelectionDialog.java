@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -141,7 +141,7 @@ public class ViewpoitnDependenciesSelectionDialog {
         }), Predicates.notNull()));
     }
 
-    private static class SiriusURIContentProvider implements IStructuredContentProvider {
+    private static final class SiriusURIContentProvider implements IStructuredContentProvider {
         /**
          * {@inheritDoc}
          */

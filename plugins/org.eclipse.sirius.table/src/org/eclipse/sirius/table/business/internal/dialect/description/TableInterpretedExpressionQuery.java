@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
@@ -266,7 +266,7 @@ public class TableInterpretedExpressionQuery extends AbstractInterpretedExpressi
      * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
      * 
      */
-    private class TableGlobalInterpretedTargetSwitch implements IInterpretedExpressionTargetSwitch {
+    private final class TableGlobalInterpretedTargetSwitch implements IInterpretedExpressionTargetSwitch {
 
         private final DefaultInterpretedExpressionTargetSwitch defaultSwitch = new DefaultInterpretedExpressionTargetSwitch(feature, this);
 

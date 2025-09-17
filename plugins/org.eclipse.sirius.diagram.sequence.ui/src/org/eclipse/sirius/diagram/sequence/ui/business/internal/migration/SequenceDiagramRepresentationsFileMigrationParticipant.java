@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2023 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -250,7 +250,7 @@ public class SequenceDiagramRepresentationsFileMigrationParticipant extends Abst
      * <LI>and this Node is a viewpoint node.</LI>
      * </UL>
      */
-    private static class IsNode implements Predicate<Node> {
+    private static final class IsNode implements Predicate<Node> {
         @Override
         public boolean apply(Node input) {
             return new ViewQuery(input).isNode();
@@ -263,7 +263,7 @@ public class SequenceDiagramRepresentationsFileMigrationParticipant extends Abst
      * No check is done on the border position of a node because we need to
      * handle ObservationPoints.
      */
-    private static class IsCollapsedNode implements Predicate<Node> {
+    private static final class IsCollapsedNode implements Predicate<Node> {
         @Override
         public boolean apply(Node input) {
             return new NodeQuery(input).isCollapsed();
@@ -276,7 +276,7 @@ public class SequenceDiagramRepresentationsFileMigrationParticipant extends Abst
      * No check is done on the border position of a node because we need to
      * handle ObservationPoints.
      */
-    private static class IsDirectlyCollapsedNode implements Predicate<Node> {
+    private static final class IsDirectlyCollapsedNode implements Predicate<Node> {
         @Override
         public boolean apply(Node input) {
             boolean apply = false;

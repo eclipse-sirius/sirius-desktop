@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017 Obeo
+ * Copyright (c) 2017, 2025 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -284,7 +284,7 @@ public class SelectEMFMetamodelWizardPage extends WizardPage {
      * A label provider for the {@link SelectEMFMetamodelWizardPage#metamodelFilteredList}.
      */
     @SuppressWarnings("unchecked")
-    private class MetamodelsListLabelProvider extends LabelProvider {
+    private final class MetamodelsListLabelProvider extends LabelProvider {
         @Override
         public String getText(Object element) {
             if (element instanceof Entry) {

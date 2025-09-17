@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2013, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -142,7 +142,7 @@ public class SemanticResourceDialog extends ResourceDialog {
      * @author mporhel
      *
      */
-    private static class PotentialSemanticResourceFilter extends ViewerFilter {
+    private static final class PotentialSemanticResourceFilter extends ViewerFilter {
         @Override
         public boolean select(Viewer viewer, Object parentElement, Object element) {
             boolean isValid = true;

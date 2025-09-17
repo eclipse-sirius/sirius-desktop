@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2021, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -105,7 +105,7 @@ public class SiriusPreferencesPropertyPage extends PropertyPage {
      * It throws an SAXException as soon as the value is found to stop the parsing.
      *
      */
-    private class SearchDAnalysisUidHandler extends DefaultHandler {
+    private final class SearchDAnalysisUidHandler extends DefaultHandler {
         private final String dAnalysisTag = ViewpointPackage.eNAME + ":" + ViewpointPackage.eINSTANCE.getDAnalysis().getName(); //$NON-NLS-1$
 
         private String dAnalysisUid;

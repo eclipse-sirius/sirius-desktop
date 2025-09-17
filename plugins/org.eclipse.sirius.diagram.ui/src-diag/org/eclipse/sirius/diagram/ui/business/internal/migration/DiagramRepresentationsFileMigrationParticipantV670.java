@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -286,7 +286,7 @@ public class DiagramRepresentationsFileMigrationParticipantV670 {
      * <LI>and its description is defined by the DescriptionPackage,</LI>
      * </UL>
      */
-    private static class IsStandardDiagramPredicate implements Predicate<Diagram> {
+    private static final class IsStandardDiagramPredicate implements Predicate<Diagram> {
         @Override
         public boolean apply(Diagram input) {
             boolean apply = false;
@@ -310,7 +310,7 @@ public class DiagramRepresentationsFileMigrationParticipantV670 {
      * <LI>and this Node is a bordered node.</LI>
      * </UL>
      */
-    private static class IsBorderedNodePredicate implements Predicate<Node> {
+    private static final class IsBorderedNodePredicate implements Predicate<Node> {
 
         @Override
         public boolean apply(Node input) {
@@ -328,7 +328,7 @@ public class DiagramRepresentationsFileMigrationParticipantV670 {
      * </UL>
      */
 
-    private static class IsDirectlyCollapsedNodePredicate implements Predicate<Node> {
+    private static final class IsDirectlyCollapsedNodePredicate implements Predicate<Node> {
         @Override
         public boolean apply(Node input) {
             boolean apply = false;

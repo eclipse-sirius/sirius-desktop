@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -137,7 +137,7 @@ public class CompositeFilterApplicationBuilder {
      * Predicate that checks if the filter is a hide filter.
      * 
      */
-    private static class IsHideFilter implements Predicate<CompositeFilterDescription> {
+    private static final class IsHideFilter implements Predicate<CompositeFilterDescription> {
         public boolean apply(CompositeFilterDescription input) {
             return new CompositeFilterDescriptionQuery(input).isHideCompositeFilter();
         }
