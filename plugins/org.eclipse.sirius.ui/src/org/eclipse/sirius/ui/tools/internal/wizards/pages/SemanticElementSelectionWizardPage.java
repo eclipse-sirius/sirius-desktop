@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -232,7 +232,7 @@ public class SemanticElementSelectionWizardPage extends WizardPage {
      * @author nlepine
      *
      */
-    private class EObjectFilter extends PatternFilter {
+    private final class EObjectFilter extends PatternFilter {
 
         @Override
         protected boolean isParentMatch(Viewer viewer, Object element) {

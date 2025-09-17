@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -690,6 +690,9 @@ public final class ViewpointSelection {
      */
     private abstract static class AbstractViewpointsTableCellModifier implements TableViewerAwareCellModifier {
 
+        /**
+         * Table viewer of the current table cell modifier.
+         */
         protected TableViewer tableViewer;
 
         /** ll viewpoints and there selection state. */

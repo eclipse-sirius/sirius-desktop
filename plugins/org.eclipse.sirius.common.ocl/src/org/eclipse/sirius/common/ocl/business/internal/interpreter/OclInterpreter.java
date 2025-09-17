@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -70,7 +70,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
      * 
      * @author pcdavid
      */
-    private static class OclConverter implements IConverter {
+    private static final class OclConverter implements IConverter {
 
         @Override
         public OptionalInt toInt(Object rawValue) {

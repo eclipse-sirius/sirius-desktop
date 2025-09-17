@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -336,7 +336,7 @@ public final class SiriusTransPlugin extends EMFPlugin {
          * 
          * @author ymortier
          */
-        private class PreferenceChangeListener implements IPropertyChangeListener {
+        private final class PreferenceChangeListener implements IPropertyChangeListener {
 
             public void propertyChange(final PropertyChangeEvent event) {
                 final boolean profiling = getPreferenceStore().getBoolean(CommonPreferencesConstants.PREF_TRACE_ON);

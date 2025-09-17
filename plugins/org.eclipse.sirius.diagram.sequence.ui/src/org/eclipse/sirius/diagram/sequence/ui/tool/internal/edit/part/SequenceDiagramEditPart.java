@@ -339,7 +339,7 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
         return ISequenceElementAccessor.getSequenceDiagram(getDiagramView()).get();
     }
 
-    private class ZOrderAndInstanceRolePartRefresher extends ResourceSetListenerImpl {
+    private final class ZOrderAndInstanceRolePartRefresher extends ResourceSetListenerImpl {
 
         @Override
         public boolean isPostcommitOnly() {

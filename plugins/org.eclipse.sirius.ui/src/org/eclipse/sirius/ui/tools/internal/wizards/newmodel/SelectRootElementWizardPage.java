@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017 Obeo
+ * Copyright (c) 2017, 2025 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -316,7 +316,7 @@ public class SelectRootElementWizardPage extends WizardPage implements PropertyC
     /**
      * A label provider for the {@link SelectRootElementWizardPage#rootElementFilteredTree}.
      */
-    private class RootElementsListLabelProvider extends LabelProvider {
+    private final class RootElementsListLabelProvider extends LabelProvider {
 
         @Override
         public String getText(Object element) {
