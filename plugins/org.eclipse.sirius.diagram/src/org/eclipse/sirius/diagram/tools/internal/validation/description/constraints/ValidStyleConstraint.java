@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -32,9 +32,8 @@ import org.eclipse.sirius.diagram.description.util.DescriptionSwitch;
 import org.eclipse.sirius.diagram.tools.api.Messages;
 
 /**
- * Validate that the node mapping, container mapping, edgeMapping, the
- * conditional node style description, the conditional container style
- * description and the conditional edge style description had a style define.
+ * Validate that the node mapping, container mapping, edgeMapping, the conditional node style description, the
+ * conditional container style description and the conditional edge style description had a style define.
  * 
  * @author <a href="mailto:julien.dupont@obeo.fr">Julien DUPONT</a>
  * 
@@ -42,20 +41,16 @@ import org.eclipse.sirius.diagram.tools.api.Messages;
 public class ValidStyleConstraint extends AbstractModelConstraint {
 
     /**
-     * Validate that nodeMapping, edgeMapping, containerMapping,
-     * conditionalEdgeDescription, conditionalNodeDescription and
-     * conditionalContainerDescription had a style define. If nodeImportMapping;
-     * edgeMappingIMport or ContainerMappingImport had no style define it's OK.
+     * Validate that nodeMapping, edgeMapping, containerMapping, conditionalEdgeDescription, conditionalNodeDescription
+     * and conditionalContainerDescription had a style define. If nodeImportMapping; edgeMappingIMport or
+     * ContainerMappingImport had no style define it's OK.
      * 
      * @param ctx
-     *            the validation context that provides access to the current
-     *            constraint evaluation environment. The framework will never
-     *            pass a <code>null</code> value
-     * @return the status of validation of the target object. The
-     *         {@link IStatus#getSeverity()} of the record is either
-     *         {@link IStatus#OK} to indicate success, or some other value to
-     *         indicate that validation failed. Must not return
-     *         <code>null</code>
+     *            the validation context that provides access to the current constraint evaluation environment. The
+     *            framework will never pass a <code>null</code> value
+     * @return the status of validation of the target object. The {@link IStatus#getSeverity()} of the record is either
+     *         {@link IStatus#OK} to indicate success, or some other value to indicate that validation failed. Must not
+     *         return <code>null</code>
      * 
      * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
      */
@@ -71,15 +66,17 @@ public class ValidStyleConstraint extends AbstractModelConstraint {
     }
 
     /**
-     * Switch class to validate nodeMapping, edgeMapping, containerMapping,
-     * conditionalEdgeDescription, conditionalNodeDescription and
-     * conditionalContainerDescription had a style defines.
+     * Switch class to validate nodeMapping, edgeMapping, containerMapping, conditionalEdgeDescription,
+     * conditionalNodeDescription and conditionalContainerDescription had a style defines.
      * 
      * @author <a href="mailto:julien.dupont@obeo.fr">Julien DUPONT</a>
      * 
      */
-    private static class ElementMappingSwitch extends DescriptionSwitch<Object> {
+    private static final class ElementMappingSwitch extends DescriptionSwitch<Object> {
 
+        /**
+         * Singleton instance of {@link ElementMappingSwitch}.
+         */
         public static final ElementMappingSwitch INSTANCE = new ElementMappingSwitch();
 
         /**
@@ -88,8 +85,7 @@ public class ValidStyleConstraint extends AbstractModelConstraint {
          * @param object
          *            object to switch
          * @param ctx
-         *            the validation context that provides access to the current
-         *            constraint evaluation environment
+         *            the validation context that provides access to the current constraint evaluation environment
          * @param modelConstraint
          *            the constraint that failed
          * @return the constraint status.

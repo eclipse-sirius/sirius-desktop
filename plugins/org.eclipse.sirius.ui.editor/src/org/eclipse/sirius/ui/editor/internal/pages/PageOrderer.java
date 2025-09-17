@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2019 Obeo
+ * Copyright (c) 2017, 2025 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -48,7 +48,7 @@ public class PageOrderer {
      * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
      *
      */
-    private class PagePositioning {
+    private final class PagePositioning {
         /**
          * The page positioned.
          */

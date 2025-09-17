@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2007 Borland Software Corp.
+ * Copyright (c) 2006, 2025 Borland Software Corp.
  *
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
@@ -189,7 +189,7 @@ public class ModelElementChooserDialog extends Dialog {
      * 
      * @author cbrun
      */
-    private class ModelElementsTreeContentProvider implements ITreeContentProvider {
+    private final class ModelElementsTreeContentProvider implements ITreeContentProvider {
 
         private ITreeContentProvider myWorkbenchContentProvider = new WorkbenchContentProvider();
 
@@ -262,7 +262,7 @@ public class ModelElementChooserDialog extends Dialog {
      * 
      * @author cbrun
      */
-    private class ModelElementsTreeLabelProvider implements ILabelProvider {
+    private final class ModelElementsTreeLabelProvider implements ILabelProvider {
 
         private WorkbenchLabelProvider myWorkbenchLabelProvider = new WorkbenchLabelProvider();
 
@@ -302,7 +302,7 @@ public class ModelElementChooserDialog extends Dialog {
      * 
      * @author cbun
      */
-    private class ModelFilesFilter extends ViewerFilter {
+    private final class ModelFilesFilter extends ViewerFilter {
 
         @Override
         public boolean select(final Viewer viewer, final Object parentElement, final Object element) {
@@ -325,7 +325,7 @@ public class ModelElementChooserDialog extends Dialog {
      * 
      * @author cbrun
      */
-    private class OkButtonEnabler implements ISelectionChangedListener {
+    private final class OkButtonEnabler implements ISelectionChangedListener {
 
         public void selectionChanged(final SelectionChangedEvent event) {
             if (event.getSelection() instanceof IStructuredSelection) {

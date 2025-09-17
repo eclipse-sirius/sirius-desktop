@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -172,7 +172,7 @@ public class DiagramSelectionWizardPage extends WizardPage {
      * 
      * @author ymortier
      */
-    private class DiagramSelectionFilter extends ViewerFilter {
+    private final class DiagramSelectionFilter extends ViewerFilter {
 
         /**
          * {@inheritDoc}
@@ -206,7 +206,7 @@ public class DiagramSelectionWizardPage extends WizardPage {
      * 
      * @author ymortier
      */
-    private class SiriusDiagramSelectionCheckStateListener implements ICheckStateListener {
+    private final class SiriusDiagramSelectionCheckStateListener implements ICheckStateListener {
 
         /**
          * {@inheritDoc}
