@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2002, 2022 IBM Corporation and others and others.
+ * Copyright (c) 2002, 2025 IBM Corporation and others and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -284,7 +284,7 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
     /**
      * @author ymortier
      */
-    private static class LightweightSystemWithUpdateToggle extends LightweightSystem {
+    private static final class LightweightSystemWithUpdateToggle extends LightweightSystem {
 
         /**
          * @return the {@link ToggleUpdateManager}.

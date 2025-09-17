@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -887,7 +887,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
     /**
      * Session Manager Listener.
      */
-    private class CommonSessionManagerListener implements SessionManagerListener {
+    private final class CommonSessionManagerListener implements SessionManagerListener {
         @Override
         public void notifyAddSession(Session newSession) {
             /* does nothing. */

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -130,7 +130,7 @@ public class ViewpointRegistry implements IResourceChangeListener {
      * both thread safe, lazy, and does not introduce extra synchronization
      * locks.
      */
-    private static class ViewpointRegistryHolder {
+    private static final class ViewpointRegistryHolder {
         private static ViewpointRegistry instance;
         static {
             instance = new ViewpointRegistryImpl();

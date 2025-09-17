@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2025 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -361,7 +361,7 @@ public class WorkspaceAndPluginsResourceDialog extends ElementTreeSelectionDialo
      * @author bgrouhan
      *
      */
-    private static class DeferredWorkbenchContentProvider extends WorkbenchContentProvider {
+    private static final class DeferredWorkbenchContentProvider extends WorkbenchContentProvider {
         DeferredTreeContentManager manager;
 
         @Override
@@ -387,7 +387,7 @@ public class WorkspaceAndPluginsResourceDialog extends ElementTreeSelectionDialo
     /**
      * WorkbenchAdapter for non-workbench elements.
      */
-    private static class CustomWorkbenchAdapter implements IDeferredWorkbenchAdapter {
+    private static final class CustomWorkbenchAdapter implements IDeferredWorkbenchAdapter {
         @Override
         public String getLabel(Object object) {
             return ((WorkbenchProxyObject) object).getLabel();
@@ -468,7 +468,7 @@ public class WorkspaceAndPluginsResourceDialog extends ElementTreeSelectionDialo
      * Instances of this class will be used to filter out of the navigator the
      * resources which file extension is not one of the expected.
      */
-    private class FileExtensionFilter extends ViewerFilter {
+    private final class FileExtensionFilter extends ViewerFilter {
         @Override
         public boolean select(final Viewer theViewer, final Object parentElement, final Object element) {
             if (extensions == null || extensions.size() == 0 || extensions.contains("*")) {

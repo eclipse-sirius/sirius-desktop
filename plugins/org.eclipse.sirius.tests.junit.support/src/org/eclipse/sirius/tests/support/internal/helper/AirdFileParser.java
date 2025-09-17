@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2022 Obeo.
+ * Copyright (c) 2015, 2025 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -90,7 +90,7 @@ public final class AirdFileParser {
         return semanticResourcesTagContent;
     }
 
-    private static class TestHandler extends DefaultHandler {
+    private static final class TestHandler extends DefaultHandler {
         private final String dAnalysisSemanticResourcesTag = ViewpointPackage.eINSTANCE.getDAnalysis_SemanticResources().getName();
 
         private List<String> semanticResourcesTagContent = new ArrayList<>();

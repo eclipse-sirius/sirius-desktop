@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -241,7 +241,7 @@ public class RefreshSiriusElement extends RecordingCommand {
      * 
      * @author pcdavid
      */
-    private static class Refresher extends DiagramSwitch<DRefreshable> {
+    private static final class Refresher extends DiagramSwitch<DRefreshable> {
         @Override
         public DRefreshable caseDRepresentation(DRepresentation object) {
             DialectManager.INSTANCE.refresh(object, new NullProgressMonitor());

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -328,7 +328,7 @@ public class EObjectSelectionWizardPage extends AbstractSelectionWizardPage {
      * 
      * @author mchauvin
      */
-    private class EObjectSelectionListAdapter implements ISelectionChangedListener {
+    private final class EObjectSelectionListAdapter implements ISelectionChangedListener {
 
         @Override
         public void selectionChanged(final SelectionChangedEvent event) {
@@ -362,7 +362,7 @@ public class EObjectSelectionWizardPage extends AbstractSelectionWizardPage {
      * 
      * @author mchauvin
      */
-    private class EObjectSelectionLabelProvider extends LabelProvider {
+    private final class EObjectSelectionLabelProvider extends LabelProvider {
 
         @Override
         public Image getImage(final Object element) {
