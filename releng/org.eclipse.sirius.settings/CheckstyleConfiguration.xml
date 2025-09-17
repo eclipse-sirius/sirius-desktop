@@ -31,8 +31,8 @@
       <metadata name="com.atlassw.tools.eclipse.checkstyle.lastEnabledSeverity" value="error"/>
     </module>
     <module name="JavadocVariable">
-      <property name="severity" value="error"/>
-      <property name="scope" value="protected"/>
+       <property name="severity" value="error"/>
+      <property name="accessModifiers" value="public, protected"/>
     </module>
     <module name="ConstantName">
       <property name="severity" value="error"/>
