@@ -373,7 +373,7 @@ public class SiriusSWTBotTable extends AbstractSWTBotControl<Table> {
 	public void unselect() {
 		waitForEnabled();
 		setFocus();
-		log.debug(MessageFormat.format("Unselecting all in {0}", this)); //$NON-NLS-1$
+		log.debug(MessageFormat.format("Unselecting all in {0}", this).toString()); //$NON-NLS-1$
 		TableItem[] selection = syncExec(new ArrayResult<TableItem>() {
 			@Override
 			public TableItem[] run() {
@@ -418,7 +418,7 @@ public class SiriusSWTBotTable extends AbstractSWTBotControl<Table> {
 			return;
 		}
 		setFocus();
-		log.debug(MessageFormat.format("Selecting rows {0} in {1}", Arrays.toString(indices), this)); //$NON-NLS-1$ //$NON-NLS-2$
+		log.debug(MessageFormat.format("Selecting rows {0} in {1}", Arrays.toString(indices), this).toString()); //$NON-NLS-1$ //$NON-NLS-2$
 		for (int i = 0; i < indices.length; i++) {
 			assertIsLegalRowIndex(indices[i]);
 		}
@@ -688,7 +688,7 @@ public class SiriusSWTBotTable extends AbstractSWTBotControl<Table> {
      */
     @Override
     protected void doubleClickXY(int x, int y) {
-        log.debug(MessageFormat.format("Double-clicking on {0}", widget)); //$NON-NLS-1$
+        log.debug(MessageFormat.format("Double-clicking on {0}", widget).toString()); //$NON-NLS-1$
         notify(SWT.MouseEnter);
         notify(SWT.MouseMove);
         notify(SWT.Activate);
@@ -706,7 +706,7 @@ public class SiriusSWTBotTable extends AbstractSWTBotControl<Table> {
         notify(SWT.MouseExit);
         notify(SWT.Deactivate);
         notify(SWT.FocusOut);
-        log.debug(MessageFormat.format("Double-clicked on {0}", widget)); //$NON-NLS-1$
+        log.debug(MessageFormat.format("Double-clicked on {0}", widget).toString()); //$NON-NLS-1$
     }
 }
 // CHECKSTYLE:ON

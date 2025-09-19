@@ -381,7 +381,7 @@ public class SiriusSWTBotTree extends AbstractSWTBotControl<Tree> {
      */
     public SiriusSWTBotTree unselect() {
         waitForEnabled();
-        log.debug(MessageFormat.format("Unselecting all in {0}", this)); //$NON-NLS-1$
+        log.debug(MessageFormat.format("Unselecting all in {0}", this).toString()); //$NON-NLS-1$
         TreeItem[] selection = syncExec(new ArrayResult<TreeItem>() {
             @Override
             public TreeItem[] run() {
@@ -429,7 +429,7 @@ public class SiriusSWTBotTree extends AbstractSWTBotControl<Tree> {
         for (int index : indices) {
             selection.add(getItem(index));
         }
-        log.debug(MessageFormat.format("Selecting rows {0} in {1}", Arrays.toString(indices), this)); //$NON-NLS-1$ //$NON-NLS-2$
+        log.debug(MessageFormat.format("Selecting rows {0} in {1}", Arrays.toString(indices), this).toString()); //$NON-NLS-1$ //$NON-NLS-2$
         for (int i = 0; i < selection.size(); i++) {
             int stateMask = (i == 0) ? SWT.NONE : SWT.MOD1;
             notifySelect(selection.get(i), stateMask);
@@ -514,7 +514,7 @@ public class SiriusSWTBotTree extends AbstractSWTBotControl<Tree> {
         // TODO: this method should be made iterative instead of recursive
         Assert.isNotEmpty((Object[]) nodes);
 
-        log.debug(MessageFormat.format("Expanding nodes {0} in tree {1}", StringUtils.join(nodes, ">"), this));
+        log.debug(MessageFormat.format("Expanding nodes {0} in tree {1}", StringUtils.join(nodes, ">"), this).toString());
 
         waitForEnabled();
         SiriusSWTBotTreeItem item = getTreeItem(nodes[0]).expand();
