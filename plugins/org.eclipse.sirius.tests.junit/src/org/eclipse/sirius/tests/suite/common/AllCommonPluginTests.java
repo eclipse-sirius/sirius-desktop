@@ -32,7 +32,6 @@ import org.eclipse.sirius.tests.unit.api.editors.traceability.GoToMarkerTests;
 import org.eclipse.sirius.tests.unit.api.find.FindTest;
 import org.eclipse.sirius.tests.unit.api.initialization.InitializationTest;
 import org.eclipse.sirius.tests.unit.api.interpreter.CompletionTests;
-import org.eclipse.sirius.tests.unit.api.interpreter.crossReferencer.AcceleoCrossReferencerTest;
 import org.eclipse.sirius.tests.unit.api.mm.DAnnotationTest;
 import org.eclipse.sirius.tests.unit.api.modelingproject.ModelingProjectDetectionTest;
 import org.eclipse.sirius.tests.unit.api.modelingproject.SaveWhenNoEditorsTests;
@@ -89,9 +88,6 @@ import org.eclipse.sirius.tests.unit.common.interpreter.CompoundInterpreterTestC
 import org.eclipse.sirius.tests.unit.common.interpreter.CreateCellToolInterpreterTest;
 import org.eclipse.sirius.tests.unit.common.interpreter.acceleo.aql.AcceleoQueryLanguageCompletionTests;
 import org.eclipse.sirius.tests.unit.common.interpreter.acceleo.mtl.AcceleoMTInterpreterOnPackageImportTests;
-import org.eclipse.sirius.tests.unit.common.interpreter.acceleo.mtl.AcceleoMTLCompletionTests;
-import org.eclipse.sirius.tests.unit.common.interpreter.acceleo.mtl.AcceleoMTLInterpreterTests;
-import org.eclipse.sirius.tests.unit.common.interpreter.acceleo.mtl.AcceleoPackageRegistryTest;
 import org.eclipse.sirius.tests.unit.common.interpreter.acceleo.mtl.IInterpreterValidationExpressionTest;
 import org.eclipse.sirius.tests.unit.common.interpreter.acceleo.mtl.InterpretedExpressionTargetSwitchTest;
 import org.eclipse.sirius.tests.unit.common.interpreter.feature.FeatureCompletionTests;
@@ -325,11 +321,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(ModifyHeaderLabelExpressionTest.class);
 
         suite.addTestSuite(CreateCellToolInterpreterTest.class);
-        suite.addTestSuite(AcceleoMTLInterpreterTests.class);
-        suite.addTestSuite(AcceleoMTLCompletionTests.class);
         suite.addTestSuite(AcceleoQueryLanguageCompletionTests.class);
-        suite.addTestSuite(AcceleoCrossReferencerTest.class);
-        suite.addTestSuite(AcceleoPackageRegistryTest.class);
         suite.addTestSuite(IInterpreterValidationExpressionTest.class);
         suite.addTestSuite(FeatureInterpreterTests.class);
         suite.addTestSuite(FeatureCompletionTests.class);

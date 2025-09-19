@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import org.eclipse.sirius.common.acceleo.mtl.business.internal.interpreter.AcceleoMTLInterpreter;
+import org.eclipse.sirius.common.acceleo.aql.business.internal.AQLSiriusInterpreter;
 import org.eclipse.sirius.diagram.BracketEdgeStyle;
 import org.eclipse.sirius.diagram.BundledImage;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -83,7 +83,7 @@ public class DDiagramElementSynchronizerTest extends TestCase {
 
     private ModelAccessor accessor;
 
-    private AcceleoMTLInterpreter interpreter;
+    private AQLSiriusInterpreter interpreter;
 
 
     @Override
@@ -95,7 +95,7 @@ public class DDiagramElementSynchronizerTest extends TestCase {
         Resource res = loadFromClassLoader("elementsync.odesign");
 
         description = (DiagramDescription) ((Viewpoint) ((Group) res.getContents().get(0)).getOwnedViewpoints().get(0)).getOwnedRepresentations().get(0);
-        interpreter = AcceleoMTLInterpreter.createStandaloneInterpreter();
+        interpreter = new AQLSiriusInterpreter();
 
         accessor = new ModelAccessor();
         accessor.addExtender(new EcoreIntrinsicExtender(), ExtenderConstants.HIGH_PRIORITY);
