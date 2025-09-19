@@ -20,7 +20,6 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.gmf.runtime.common.ui.services.action.contributionitem.ContributionItemService;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.preferences.IPreferenceConstants;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocumentEditor;
 import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Location;
@@ -62,10 +61,13 @@ import org.eclipse.uml2.uml.UMLFactory;
  * @author lredor
  */
 public class PortLocationTest extends SiriusDiagramTestCase {
+    
+    
+    private static final String RESOURCE_PATH = "/org.eclipse.sirius.tests.junit/data/unit/refresh/grid/";
 
-    private static final String SEMANTIC_MODEL_PATH = "/org.eclipse.sirius.tests.junit/data/unit/refresh/node/noderefresh.uml";
+    private static final String SEMANTIC_MODEL_PATH = RESOURCE_PATH + "noderefresh.uml";
 
-    private static final String MODELER_PATH = "/org.eclipse.sirius.tests.junit/data/unit/refresh/node/noderefresh.odesign";
+    private static final String MODELER_PATH = RESOURCE_PATH + "noderefresh.odesign";
 
     private static final String VIEWPOINT_NAME = "UML2";
 
@@ -80,7 +82,6 @@ public class PortLocationTest extends SiriusDiagramTestCase {
         super.setUp();
         genericSetUp(SEMANTIC_MODEL_PATH, MODELER_PATH);
         initViewpoint(VIEWPOINT_NAME);
-        changeDiagramUIPreference(IPreferenceConstants.PREF_SNAP_TO_GRID, false);
     }
 
     /**
@@ -276,7 +277,7 @@ public class PortLocationTest extends SiriusDiagramTestCase {
         assertTrue("We should have a DiagramDocumentEditor", editor2 instanceof DiagramDocumentEditor);
 
         final DiagramDocumentEditor diagramEditor2 = (DiagramDocumentEditor) editor2;
-        GraphicalEditPart diagramPart = (GraphicalEditPart) diagramEditor2.getDiagramEditPart();
+        GraphicalEditPart diagramPart = diagramEditor2.getDiagramEditPart();
         final DSemanticDiagram diagram2 = (DSemanticDiagram) diagramPart.resolveSemanticElement();
 
         assertEquals("The opened diagram is not valid", diagram2.getTarget(), focusedElement.getTarget());
