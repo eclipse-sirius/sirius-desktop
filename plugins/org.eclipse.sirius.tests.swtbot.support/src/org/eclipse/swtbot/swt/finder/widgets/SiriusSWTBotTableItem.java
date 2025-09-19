@@ -93,7 +93,7 @@ public class SiriusSWTBotTableItem extends AbstractSWTBot<TableItem> {
 	 */
 	@Override
 	protected void clickXY(int x, int y) {
-		log.debug(MessageFormat.format("Clicking on {0}", this)); //$NON-NLS-1$
+		log.debug(MessageFormat.format("Clicking on {0}", this).toString()); //$NON-NLS-1$
 		notifyTable(SWT.MouseEnter, createMouseEvent(x, y, 0, SWT.NONE, 0));
 		notifyTable(SWT.Activate, super.createEvent());
 		syncExec(new VoidResult() {
@@ -114,7 +114,7 @@ public class SiriusSWTBotTableItem extends AbstractSWTBot<TableItem> {
 		notifyTable(SWT.MouseExit, createMouseEvent(x, y, 0, SWT.NONE, 0));
 		notifyTable(SWT.Deactivate, super.createEvent());
 		notifyTable(SWT.FocusOut, super.createEvent());
-		log.debug(MessageFormat.format("Clicked on {0}", this)); //$NON-NLS-1$
+		log.debug(MessageFormat.format("Clicked on {0}", this).toString()); //$NON-NLS-1$
 	}
 
 	private void notifyTable(int eventType, Event event) {
@@ -160,7 +160,7 @@ public class SiriusSWTBotTableItem extends AbstractSWTBot<TableItem> {
 	public SiriusSWTBotTableItem doubleClick() {
 		waitForEnabled();
 
-		log.debug(MessageFormat.format("Double-clicking on {0}", this)); //$NON-NLS-1$
+		log.debug(MessageFormat.format("Double-clicking on {0}", this).toString()); //$NON-NLS-1$
 		notifyTable(SWT.MouseEnter, createMouseEvent(0, SWT.NONE, 0));
 		notifyTable(SWT.Activate, super.createEvent());
 		syncExec(new VoidResult() {
@@ -186,7 +186,7 @@ public class SiriusSWTBotTableItem extends AbstractSWTBot<TableItem> {
 		notifyTable(SWT.MouseExit, createMouseEvent(0, SWT.NONE, 0));
 		notifyTable(SWT.Deactivate, super.createEvent());
 		notifyTable(SWT.FocusOut, super.createEvent());
-		log.debug(MessageFormat.format("Double-clicked on {0}", this)); //$NON-NLS-1$
+		log.debug(MessageFormat.format("Double-clicked on {0}", this).toString()); //$NON-NLS-1$
 		return this;
 	}
 
@@ -344,7 +344,7 @@ public class SiriusSWTBotTableItem extends AbstractSWTBot<TableItem> {
 			@Override
 			public void run() {
 				TableItem item = widget;
-				log.debug(MessageFormat.format("Setting state to {0} on: {1}", (checked ? "checked" : "unchecked"), item.getText())); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				log.debug(MessageFormat.format("Setting state to {0} on: {1}", (checked ? "checked" : "unchecked"), item.getText()).toString()); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				item.setChecked(checked);
 			}
 		});

@@ -16,10 +16,12 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.common.acceleo.mtl.business.internal.interpreter.AcceleoMTLInterpreter;
-import org.eclipse.sirius.common.acceleo.mtl.ide.AcceleoProposalProvider;
+import org.eclipse.sirius.common.acceleo.aql.business.internal.AQLSiriusInterpreter;
+import org.eclipse.sirius.common.acceleo.aql.ide.proposal.AQLProposalProvider;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
+import org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.table.metamodel.table.description.CreateCellTool;
 import org.eclipse.sirius.table.metamodel.table.description.CreateColumnTool;
@@ -63,9 +65,9 @@ public class TableToolPreconditionCompletionTest extends SiriusDiagramTestCase {
 
     private EAttribute preconditionAttribute;
 
-    private AcceleoProposalProvider acceleoPrososalProvider;
+    private IProposalProvider acceleoPrososalProvider;
 
-    private AcceleoMTLInterpreter acceleoIntepreter;
+    private IInterpreter acceleoIntepreter;
 
     @Override
     protected void setUp() throws Exception {
@@ -75,8 +77,8 @@ public class TableToolPreconditionCompletionTest extends SiriusDiagramTestCase {
         preconditionAttribute = ToolPackage.eINSTANCE.getAbstractToolDescription_Precondition();
 
         // Use the Acceleo interpreter
-        acceleoPrososalProvider = new AcceleoProposalProvider();
-        acceleoIntepreter = new AcceleoMTLInterpreter();
+        acceleoPrososalProvider = new AQLProposalProvider();
+        acceleoIntepreter = new AQLSiriusInterpreter();
 
         // Create the project
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, PATH + "/" + SEMANTIC_MODEL_FILENAME, "/" + TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_MODEL_FILENAME);

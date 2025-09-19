@@ -45,16 +45,16 @@ public class WrappedSWTBotRadio extends SWTBotRadio {
     @Override
     public SWTBotRadio click() {
         if (isSelected()) {
-            log.debug(MessageFormat.format("Widget {0} is already selected, not clicking again.", this)); //$NON-NLS-1$
+            log.debug(MessageFormat.format("Widget {0} is already selected, not clicking again.", this).toString()); //$NON-NLS-1$
             return this;
         }
         waitForEnabled();
-        log.debug(MessageFormat.format("Clicking on {0}", this)); //$NON-NLS-1$
+        log.debug(MessageFormat.format("Clicking on {0}", this).toString()); //$NON-NLS-1$
         asyncExec(new VoidResult() {
             @Override
             public void run() {
                 deselectOtherRadioButtons();
-                log.debug(MessageFormat.format("Clicking on {0}", this)); //$NON-NLS-1$
+                log.debug(MessageFormat.format("Clicking on {0}", this).toString()); //$NON-NLS-1$
                 widget.setSelection(true);
             }
 
@@ -85,7 +85,7 @@ public class WrappedSWTBotRadio extends SWTBotRadio {
         notify(SWT.MouseExit);
         notify(SWT.Deactivate);
         notify(SWT.FocusOut);
-        log.debug(MessageFormat.format("Clicked on {0}", this)); //$NON-NLS-1$
+        log.debug(MessageFormat.format("Clicked on {0}", this).toString()); //$NON-NLS-1$
         return this;
     }
     // CHECKSTYLE:ON

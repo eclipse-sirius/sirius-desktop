@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -29,7 +29,6 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.resource.JFaceResources;
-import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramContainerEditPart;
@@ -64,19 +63,11 @@ public class PinnedNotesTest extends AbstractPinnedElementsTest {
 
     private static final String VSM_FILE = "description/pinUnpinNote.odesign";
 
-    private DDiagram dDiagram;
-
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE, VSM_FILE);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, "pinUnpinNote.aird");
@@ -358,7 +349,7 @@ public class PinnedNotesTest extends AbstractPinnedElementsTest {
     }
 
     private void changeMoveNoteDuringLayoutInPreferencePage(boolean enable) {
-        bot.menu("Window").menu("Preferences").click();
+        bot.menu("Window").menu("Preferences...").click();
         bot.waitUntil(Conditions.shellIsActive("Preferences"));
         bot.tree().getTreeItem("Sirius").expand().select().getNode("Sirius Diagram").select();
         SWTBotCheckBox checkBox = bot.checkBox("Move unlinked notes during layout");
@@ -371,7 +362,7 @@ public class PinnedNotesTest extends AbstractPinnedElementsTest {
     }
 
     private void checkSiriusDiagramPreferencePage(boolean expectedValue) {
-        bot.menu("Window").menu("Preferences").click();
+        bot.menu("Window").menu("Preferences...").click();
         bot.waitUntil(Conditions.shellIsActive("Preferences"));
         bot.tree().getTreeItem("Sirius").expand().select().getNode("Sirius Diagram").select();
         assertEquals(expectedValue, bot.checkBox("Move unlinked notes during layout").isChecked());
@@ -403,11 +394,9 @@ public class PinnedNotesTest extends AbstractPinnedElementsTest {
         final IDiagramWorkbenchPart gmfEditor = getGmfEditor();
         final Diagram gmfDiagram = gmfEditor.getDiagram();
 
-        for (Object node : gmfDiagram.getChildren()) {
-            if (node instanceof Node) {
-                if (((Node) node).getType().equals("Note")) {
-                    notes.add((Node) node);
-                }
+        for (Object child : gmfDiagram.getChildren()) {
+            if (child instanceof Node node && node.getType().equals("Note")) {
+                notes.add((Node) child);
             }
         }
 

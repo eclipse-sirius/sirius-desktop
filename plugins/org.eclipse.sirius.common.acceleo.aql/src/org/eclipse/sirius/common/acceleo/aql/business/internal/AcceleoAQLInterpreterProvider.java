@@ -23,25 +23,27 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterProvider;
  * @author <a href="mailto:cedric.brun@obeo.fr">Cedric Brun</a>
  */
 public class AcceleoAQLInterpreterProvider implements IInterpreterProvider {
+    /**
+     * This represents the prefix of an Acceleo 3 expression.
+     * 
+     * @see IAcceleoConstants#DEFAULT_BEGIN
+     */
+    private static final String ACCELEO_EXPRESSION_PREFIX = "["; //$NON-NLS-1$
 
     /**
-     * {@inheritDoc}
+     * This represents the suffix of an Acceleo 3 expression.
      * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreterProvider#createInterpreter()
+     * @see IAcceleoConstants#INVOCATION_END
      */
+    private static final String ACCELEO_EXPRESSION_SUFFIX = "/]"; //$NON-NLS-1$
+    
+    @Override
     public IInterpreter createInterpreter() {
         return new AQLSiriusInterpreter();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreterProvider#provides(java.lang.String)
-     */
+    @Override
     public boolean provides(String expression) {
-        if (expression != null) {
-            return expression.startsWith(AQLConstants.AQL_PREFIX);
-        }
-        return false;
+        return expression != null && (expression.startsWith(AQLConstants.AQL_PREFIX) || (expression.startsWith(ACCELEO_EXPRESSION_PREFIX) && expression.endsWith(ACCELEO_EXPRESSION_SUFFIX)));
     }
 }

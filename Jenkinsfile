@@ -30,7 +30,7 @@ pipeline {
                         timeout(time: 2, unit: 'HOURS') {
                             script {
                                 wrap([$class: 'Xvnc', takeScreenshot: true, useXauthority: true]) {
-                                    sh "mvn -B -Dplatform-version-name=2023-03 -Dtests.skipUnreliableTests=true -f packaging/org.eclipse.sirius.parent/pom.xml -P headless,full,gerrit-junit integration-test"
+                                    sh "mvn -B -Dplatform-version-name=2025-09 -Dtests.skipUnreliableTests=true -f packaging/org.eclipse.sirius.parent/pom.xml -P headless,full,gerrit-junit integration-test"
                                 }
                             }
                         }
@@ -64,7 +64,7 @@ pipeline {
                                     sleep 2
                                     rm -f plugins/org.eclipse.sirius.tests*/org_eclipse_sirius_tests_*.txt
 
-                                    mvn -B -Dplatform-version-name=2023-03 -Dtests.skipUnreliableTests=true -f packaging/org.eclipse.sirius.parent/pom.xml -P headless,full,gerrit-swtbot integration-test
+                                    mvn -B -Dplatform-version-name=2025-09 -Dtests.skipUnreliableTests=true -f packaging/org.eclipse.sirius.parent/pom.xml -P headless,full,gerrit-swtbot integration-test
                                     '''
                                 }
                             }
@@ -99,7 +99,7 @@ pipeline {
                                     sleep 2
                                     rm -f plugins/org.eclipse.sirius.tests*/org_eclipse_sirius_tests_*.txt
 
-                                    mvn -B -Dplatform-version-name=2023-03 -Dtests.skipUnreliableTests=true -f packaging/org.eclipse.sirius.parent/pom.xml -P headless,full,gerrit-swtbot-sequence integration-test
+                                    mvn -B -Dplatform-version-name=2025-09 -Dtests.skipUnreliableTests=true -f packaging/org.eclipse.sirius.parent/pom.xml -P headless,full,gerrit-swtbot-sequence integration-test
                                     '''
                                 }
                             }
