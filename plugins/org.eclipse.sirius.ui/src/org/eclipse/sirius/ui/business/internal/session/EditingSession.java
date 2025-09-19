@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -507,7 +507,7 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
      * 
      * @author mporhel
      */
-    private class NeedSaveOnCloseDetector {
+    private final class NeedSaveOnCloseDetector {
 
         private Set<IEditorPart> closingEditors = new HashSet<>();
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -57,8 +57,7 @@ public final class TableUIHelper {
      * @param inverse
      *            true if table should invert table/columns.
      * @param filler
-     *            class responsible for getting the cell,line and column
-     *            content.
+     *            class responsible for getting the cell,line and column content.
      * @return a list of list representing the table.
      */
     protected static List<List<String>> toTableDescriptor(final DTable table, final boolean inverse, final TableFiller filler) {
@@ -266,8 +265,7 @@ public final class TableUIHelper {
     }
 
     /**
-     * Export the given table to HTML format using the named color names as
-     * table content.
+     * Export the given table to HTML format using the named color names as table content.
      *
      * @param table
      *            table to export.
@@ -286,8 +284,7 @@ public final class TableUIHelper {
     }
 
     /**
-     * Export the given table to HTML format using the named color names as
-     * table content.
+     * Export the given table to HTML format using the named color names as table content.
      *
      * @param tree
      *            tree to export.
@@ -320,8 +317,7 @@ public final class TableUIHelper {
     }
 
     /**
-     * Export the given table to HTML format using the named color names as
-     * table content.
+     * Export the given table to HTML format using the named color names as table content.
      *
      * @param table
      *            table to export.
@@ -345,8 +341,7 @@ public final class TableUIHelper {
     }
 
     /**
-     * Export the given table to HTML format using the width of the column as
-     * table content.
+     * Export the given table to HTML format using the width of the column as table content.
      *
      * @param tree
      *            tree to export.
@@ -369,8 +364,7 @@ public final class TableUIHelper {
     }
 
     /**
-     * Export the given table to HTML format using the width of the column as
-     * table content.
+     * Export the given table to HTML format using the width of the column as table content.
      *
      * @param table
      *            table to export.
@@ -408,8 +402,7 @@ public final class TableUIHelper {
     }
 
     /**
-     * Export the given table to HTML format using the named color names as
-     * table content.
+     * Export the given table to HTML format using the named color names as table content.
      *
      * @param tree
      *            tree to export.
@@ -467,6 +460,10 @@ public final class TableUIHelper {
  * @author lredor
  */
 class TableFiller {
+
+    /**
+     * Constant to share and reuse blank marker, ie "_";
+     */
     protected static final String BLANK_MARKER = "_"; //$NON-NLS-1$
 
     public String getContent(final DLine line) {

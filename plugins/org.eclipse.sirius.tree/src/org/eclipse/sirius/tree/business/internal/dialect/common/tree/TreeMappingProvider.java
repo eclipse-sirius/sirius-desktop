@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2015, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,9 @@ import com.google.common.collect.HashBiMap;
  */
 class TreeMappingProvider {
 
+    /**
+     * A mapping between {@link TreeItemMapping} and {@link RTreeItemMapping}.
+     */
     protected BiMap<EObject, Mapping> mappingToRMapping = HashBiMap.create();
 
     private SemanticPartitionProvider semProvider;

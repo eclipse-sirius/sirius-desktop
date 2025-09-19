@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -173,7 +173,7 @@ public class SelectModelElementWizardPage extends WizardPage {
      * 
      * @author mchauvin
      */
-    private class OkButtonEnabler implements ISelectionChangedListener {
+    private final class OkButtonEnabler implements ISelectionChangedListener {
 
         public void selectionChanged(final SelectionChangedEvent event) {
             if (event.getSelection() instanceof IStructuredSelection) {
@@ -271,7 +271,7 @@ public class SelectModelElementWizardPage extends WizardPage {
      * 
      * @author mchauvin
      */
-    private class ModelElementsTreeContentProvider implements ITreeContentProvider {
+    private final class ModelElementsTreeContentProvider implements ITreeContentProvider {
 
         private ITreeContentProvider myWorkbenchContentProvider = new WorkbenchContentProvider();
 
@@ -371,7 +371,7 @@ public class SelectModelElementWizardPage extends WizardPage {
      * 
      * @author mchauvin
      */
-    private class ModelElementsTreeLabelProvider implements ILabelProvider {
+    private final class ModelElementsTreeLabelProvider implements ILabelProvider {
 
         private WorkbenchLabelProvider myWorkbenchLabelProvider = new WorkbenchLabelProvider();
 
@@ -440,7 +440,7 @@ public class SelectModelElementWizardPage extends WizardPage {
      * 
      * @author mchauvin
      */
-    private class ModelFilesFilter extends ViewerFilter {
+    private final class ModelFilesFilter extends ViewerFilter {
         @Override
         public boolean select(final Viewer viewer, final Object parentElement, final Object element) {
 

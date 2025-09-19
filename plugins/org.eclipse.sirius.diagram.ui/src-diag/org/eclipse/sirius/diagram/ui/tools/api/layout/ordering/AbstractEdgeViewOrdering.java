@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -88,7 +88,7 @@ public abstract class AbstractEdgeViewOrdering extends AbstractViewOrdering {
      * 
      * @author ymortier
      */
-    private class EdgeComparator implements Comparator<View> {
+    private final class EdgeComparator implements Comparator<View> {
 
         /**
          * {@inheritDoc}

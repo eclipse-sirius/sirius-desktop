@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -288,7 +288,7 @@ public class TimeProfilerTreeView extends ViewPart implements ProfilerListener {
      * 
      * @author ymortier
      */
-    private static class InverseViewerSorter extends ViewerSorter {
+    private static final class InverseViewerSorter extends ViewerSorter {
 
         /** The sorter to inverse. */
         private ViewerSorter sorter;

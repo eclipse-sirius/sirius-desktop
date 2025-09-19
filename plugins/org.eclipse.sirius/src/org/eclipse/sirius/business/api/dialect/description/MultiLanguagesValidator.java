@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2025 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -101,7 +101,7 @@ public final class MultiLanguagesValidator {
         return MultiLanguagesValidatorHolder.instance;
     }
 
-    private static class MultiLanguagesValidatorHolder {
+    private static final class MultiLanguagesValidatorHolder {
         private static MultiLanguagesValidator instance;
         static {
             instance = new MultiLanguagesValidator();

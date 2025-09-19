@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2022 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -673,7 +673,7 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
      * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
      * 
      */
-    private class DiagramGlobalInterpretedTargetSwitch implements IInterpretedExpressionTargetSwitch {
+    private final class DiagramGlobalInterpretedTargetSwitch implements IInterpretedExpressionTargetSwitch {
 
         private DefaultInterpretedExpressionTargetSwitch defaultSwitch = new DefaultInterpretedExpressionTargetSwitch(feature, this) {
             @Override
