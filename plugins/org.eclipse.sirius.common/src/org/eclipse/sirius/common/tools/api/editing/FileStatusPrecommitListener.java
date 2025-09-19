@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@
 package org.eclipse.sirius.common.tools.api.editing;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -39,10 +40,6 @@ import org.eclipse.sirius.common.tools.api.query.NotificationQuery;
 import org.eclipse.sirius.common.tools.api.resource.FileModificationValidatorProvider;
 import org.eclipse.sirius.common.tools.api.resource.IFileModificationValidator;
 
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
-import com.google.common.collect.Iterables;
-
 /**
  * ResourceSetListener responsible for asking for file edit validation before
  * commits.
@@ -59,7 +56,6 @@ public class FileStatusPrecommitListener extends ResourceSetListenerImpl {
      * Create a new listener.
      */
     public FileStatusPrecommitListener() {
-        super();
         fileModificationValidators = FileModificationValidatorProvider.INSTANCE.getFileModificationValidator();
     }
 
@@ -73,45 +69,22 @@ public class FileStatusPrecommitListener extends ResourceSetListenerImpl {
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Command transactionAboutToCommit(final ResourceSetChangeEvent event) throws RollbackException {
-        final boolean defensiveEditValidation = Platform.getPreferencesService().getBoolean("org.eclipse.sirius.common.ui", CommonPreferencesConstants.PREF_DEFENSIVE_EDIT_VALIDATION, true, null); //$NON-NLS-1$
-        final Command cmd = super.transactionAboutToCommit(event);
+        boolean defensiveEditValidation = Platform.getPreferencesService().getBoolean("org.eclipse.sirius.common.ui", CommonPreferencesConstants.PREF_DEFENSIVE_EDIT_VALIDATION, true, null); //$NON-NLS-1$
+        Command cmd = super.transactionAboutToCommit(event);
         if (defensiveEditValidation) {
-            final Set<Resource> changedRes = new LinkedHashSet<>();
-            if (!event.getTransaction().isReadOnly()) {
-                for (org.eclipse.emf.common.notify.Notification notif : Iterables.filter(event.getNotifications(), org.eclipse.emf.common.notify.Notification.class)) {
-                    if (notif.getNotifier() instanceof EObject) {
-                        final Resource res = ((EObject) notif.getNotifier()).eResource();
-                        if (resourceChange(res, notif)) {
-                            changedRes.add(res);
-                        }
-                    }
-                }
-            }
-
-            final BiMap<IFile, Resource> files2Validate = HashBiMap.create();
-            final Iterator<Resource> it = changedRes.iterator();
-            while (it.hasNext()) {
-                final Resource nextResource = it.next();
-                final IFile file = WorkspaceSynchronizer.getFile(nextResource);
-                if (file != null && file.isReadOnly()) {
-                    files2Validate.put(file, nextResource);
-                }
-            }
-
-            if (!files2Validate.isEmpty()) {
+            Set<Resource> changedRes = getModifiedResources(event);
+            Set<IFile> filesToValidate = getFilesToValidate(changedRes);
+            if (!filesToValidate.isEmpty()) {
                 final RollbackException cancelException = new RollbackException(new Status(IStatus.CANCEL, DslCommonPlugin.PLUGIN_ID, Messages.FileStatusPrecommitListener_fileModificationValidationStatus));
                 final MultiStatus status = new MultiStatus(DslCommonPlugin.PLUGIN_ID, IStatus.ERROR, Messages.FileStatusPrecommitListener_fileModificationValidationStatus, cancelException);
                 if (fileModificationValidators.isEmpty()) {
                     // No extension found, use the default process.
-                    status.add(ResourcesPlugin.getWorkspace().validateEdit(files2Validate.keySet().toArray(new IFile[files2Validate.size()]), IWorkspace.VALIDATE_PROMPT));
+                    status.add(ResourcesPlugin.getWorkspace().validateEdit(filesToValidate.toArray(new IFile[filesToValidate.size()]), IWorkspace.VALIDATE_PROMPT));
                 } else {
                     for (final IFileModificationValidator fileModificationValidator : fileModificationValidators) {
-                        final IStatus validationStatus = fileModificationValidator.validateEdit(files2Validate.keySet());
+                        final IStatus validationStatus = fileModificationValidator.validateEdit(filesToValidate);
                         if (validationStatus != null) {
                             status.add(validationStatus);
                         }
@@ -124,6 +97,34 @@ public class FileStatusPrecommitListener extends ResourceSetListenerImpl {
             }
         }
         return cmd;
+    }
+
+    private Set<Resource> getModifiedResources(ResourceSetChangeEvent event) {
+        Set<Resource> changedRes = new LinkedHashSet<>();
+        if (!event.getTransaction().isReadOnly()) {
+            for (Notification notif : event.getNotifications()) {
+                if (notif.getNotifier() instanceof EObject eObject) {
+                    Resource res = eObject.eResource();
+                    if (resourceChange(res, notif)) {
+                        changedRes.add(res);
+                    }
+                }
+            }
+        }
+        return changedRes;
+    }
+
+    private Set<IFile> getFilesToValidate(Set<Resource> changedRes) {
+        Set<IFile> filesToValidate = new HashSet<>();
+        Iterator<Resource> it = changedRes.iterator();
+        while (it.hasNext()) {
+            Resource nextResource = it.next();
+            IFile file = WorkspaceSynchronizer.getFile(nextResource);
+            if (file != null && file.isReadOnly()) {
+                filesToValidate.add(file);
+            }
+        }
+        return filesToValidate;
     }
 
     /**

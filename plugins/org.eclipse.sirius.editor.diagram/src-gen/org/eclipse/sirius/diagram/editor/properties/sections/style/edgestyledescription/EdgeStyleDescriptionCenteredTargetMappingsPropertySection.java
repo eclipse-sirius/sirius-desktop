@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,9 +15,9 @@ package org.eclipse.sirius.diagram.editor.properties.sections.style.edgestyledes
 // Start of user code imports
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -35,9 +35,6 @@ import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
-import com.google.common.base.Predicates;
-import com.google.common.collect.Collections2;
 
 // End of user code imports
 
@@ -153,8 +150,7 @@ public class EdgeStyleDescriptionCenteredTargetMappingsPropertySection extends A
     protected List<?> getChoiceOfValues(List<?> currentValues) {
         List<?> choiceOfValues = super.getChoiceOfValues(currentValues);
         removeUnrelatedMappings(choiceOfValues);
-        Collection<?> collection = Collections2.filter(choiceOfValues, Predicates.instanceOf(AbstractNodeMapping.class));
-        return new ArrayList<Object>(collection);
+        return choiceOfValues.stream().filter(AbstractNodeMapping.class::isInstance).collect(Collectors.toCollection(ArrayList::new));
     }
 
     private void removeUnrelatedMappings(List<?> choiceOfValues) {

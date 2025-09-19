@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,10 +12,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.ecore.extender.business.api.accessor;
 
+import java.util.Objects;
+
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
-
-import com.google.common.base.Objects;
 
 /**
  * A descriptors for EPackages.
@@ -75,11 +75,6 @@ public class EcoreMetamodelDescriptor implements MetamodelDescriptor {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -89,25 +84,17 @@ public class EcoreMetamodelDescriptor implements MetamodelDescriptor {
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     // CHECKSTYLE:OFF
     @Override
     public boolean equals(Object obj) {
-
         if (this == obj) {
             return true;
         }
         if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
-
-        final EcoreMetamodelDescriptor other = (EcoreMetamodelDescriptor) obj;
-
-        return ePackage == other.ePackage && Objects.equal(nsURI, other.nsURI);
+        EcoreMetamodelDescriptor other = (EcoreMetamodelDescriptor) obj;
+        return ePackage == other.ePackage && Objects.equals(nsURI, other.nsURI);
         // CHECKSTYLE:ON
     }
 }

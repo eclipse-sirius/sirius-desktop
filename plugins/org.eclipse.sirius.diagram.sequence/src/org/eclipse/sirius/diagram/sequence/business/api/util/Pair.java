@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.api.util;
 
-import com.google.common.base.Objects;
+import java.util.Objects;
 
 /**
  * Generic helper class to hold two elements of the same type. In some
@@ -62,32 +62,22 @@ public class Pair<T> {
         return second;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public int hashCode() {
-        return Objects.hashCode(first, second);
+        return Objects.hash(first, second);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean equals(Object obj) {
         boolean result = false;
         if (this == obj) {
             result = true;
-        } else if (obj instanceof Pair<?>) {
-            Pair<?> that = (Pair<?>) obj;
-            result = Objects.equal(this.first, that.first) && Objects.equal(this.second, that.second);
+        } else if (obj instanceof Pair<?> that) {
+            result = Objects.equals(this.first, that.first) && Objects.equals(this.second, that.second);
         }
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String toString() {
         return "<" + String.valueOf(first) + ", " + String.valueOf(second) + ">"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
