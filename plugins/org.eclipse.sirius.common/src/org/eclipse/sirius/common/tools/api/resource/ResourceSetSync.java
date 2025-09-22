@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -51,18 +50,16 @@ import org.eclipse.sirius.common.tools.api.query.NotificationQuery;
 import org.eclipse.sirius.common.tools.internal.resource.WorkspaceBackend;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 
 /**
- * A new implementation of a common synchronizer for the EMF Resource with
- * external events (like, for instance, workspace). You can attach the
- * synchronizer to a {@link ResourceSet} and then either get notified of
- * resource status change or query the synchronizer to get the status.
+ * A new implementation of a common synchronizer for the EMF Resource with external events (like, for instance,
+ * workspace). You can attach the synchronizer to a {@link ResourceSet} and then either get notified of resource status
+ * change or query the synchronizer to get the status.
  * 
- * This implementation is based on several {@link AbstractResourceSyncBackend}
- * dedicated to a particular synchronization. For instance one of the backends
- * takes care of updating the status in regard of the Eclipse Workspace events.
+ * This implementation is based on several {@link AbstractResourceSyncBackend} dedicated to a particular
+ * synchronization. For instance one of the backends takes care of updating the status in regard of the Eclipse
+ * Workspace events.
  * 
  * @author cbrun
  * @since 0.9.0
@@ -70,9 +67,8 @@ import com.google.common.collect.Lists;
 public final class ResourceSetSync extends ResourceSetListenerImpl implements ResourceSyncClient {
 
     /**
-     * A scheme indicating that the resource is located on a cdo repository
-     * (only use to not consider CDOResources as read-only, see
-     * {@link ResourceSetSync#isReadOnly(Resource)}).
+     * A scheme indicating that the resource is located on a cdo repository (only use to not consider CDOResources as
+     * read-only, see {@link ResourceSetSync#isReadOnly(Resource)}).
      */
     public static final String CDO_URI_SCHEME = "cdo"; //$NON-NLS-1$
 
@@ -138,9 +134,8 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
     }
 
     /**
-     * Instantiate a new {@link ResourceSetSync}. You should attach it to a
-     * {@link ResourceSet} using eAdapters() and kick install() to get
-     * everything in place.
+     * Instantiate a new {@link ResourceSetSync}. You should attach it to a {@link ResourceSet} using eAdapters() and
+     * kick install() to get everything in place.
      */
     private ResourceSetSync() {
         super(NotificationFilter.ANY);
@@ -174,11 +169,10 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
     }
 
     /**
-     * This method is an utility method to retrieve or create the synchronizer
-     * from a resourceset. If not is found, then it install a new one.
+     * This method is an utility method to retrieve or create the synchronizer from a resourceset. If not is found, then
+     * it install a new one.
      * 
-     * Do not forget to uninstall this synchronizer once you're done with it or
-     * you'll have a major memory leak.
+     * Do not forget to uninstall this synchronizer once you're done with it or you'll have a major memory leak.
      * 
      * @param domain
      *            editing domain to inspect.
@@ -196,11 +190,9 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
     }
 
     /**
-     * This method is an utility method to retrieve an existing synchronizer
-     * from a resourceset.
+     * This method is an utility method to retrieve an existing synchronizer from a resourceset.
      * 
-     * Do not forget to uninstall this synchronizer once you're done with it or
-     * you'll have a major memory leak.
+     * Do not forget to uninstall this synchronizer once you're done with it or you'll have a major memory leak.
      * 
      * @param domain
      *            editing domain to inspect.
@@ -212,22 +204,20 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
 
     private static ResourceSetSync getResourceSetSync(final ResourceSet resourceSet) {
         if (resourceSet != null) {
-            Iterator<MarkerAdapter> it = Iterators.filter(resourceSet.eAdapters().iterator(), MarkerAdapter.class);
-            if (it.hasNext()) {
-                return it.next().getSync();
+            Optional<MarkerAdapter> adapter = resourceSet.eAdapters().stream().filter(MarkerAdapter.class::isInstance).map(MarkerAdapter.class::cast).findFirst();
+            if (adapter.isPresent()) {
+                return adapter.get().getSync();
             }
         }
         return null;
     }
 
     /**
-     * Return the resource status, unknown if the synchronizer knows nothing
-     * about this resource.
+     * Return the resource status, unknown if the synchronizer knows nothing about this resource.
      * 
      * @param res
      *            the resource to check.
-     * @return the resource status, unknown if the synchronizer knows nothing
-     *         about this resource.
+     * @return the resource status, unknown if the synchronizer knows nothing about this resource.
      * 
      */
     public static ResourceStatus getStatus(final Resource res) {
@@ -261,13 +251,12 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
     }
 
     /**
-     * Test if the specified resource corresponds to a {@link EPackage} from
-     * central {@link EPackage.Registry} or one from {@link ResourceSet}.
+     * Test if the specified resource corresponds to a {@link EPackage} from central {@link EPackage.Registry} or one
+     * from {@link ResourceSet}.
      * 
      * @param resource
      *            the {@link Resource} to test
-     * @return true if the resource corresponds to a {@link EPackage}, false
-     *         otherwise
+     * @return true if the resource corresponds to a {@link EPackage}, false otherwise
      */
     private static boolean isMetamodel(Resource resource) {
         boolean isMetamodel = false;
@@ -278,8 +267,7 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
     }
 
     /**
-     * This method is an utility method to remove the synchronizer from a
-     * resourceset.
+     * This method is an utility method to remove the synchronizer from a resourceset.
      * 
      * @param domain
      *            domain to remove the synchronizer from.
@@ -317,13 +305,11 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
 
     private void newResourceOnTheResourceSet(final Resource res, Collection<ResourceStatusChange> changes) {
         /*
-         * tracking modification means listening to any change to the resource
-         * and setting isModified = true if there is a change. The problem is
-         * that this behavior is based on eAdapters and as such the
-         * isModified=>true change will be made even if a transaction has been
-         * canceled (and rollbacked.) as such we should not rely on this
-         * mechanism but instead simulate it through our own resource set
-         * listener (only notified when a transaction is validated).
+         * tracking modification means listening to any change to the resource and setting isModified = true if there is
+         * a change. The problem is that this behavior is based on eAdapters and as such the isModified=>true change
+         * will be made even if a transaction has been canceled (and rollbacked.) as such we should not rely on this
+         * mechanism but instead simulate it through our own resource set listener (only notified when a transaction is
+         * validated).
          */
         if (res.isModified()) {
             resourceNewStatus(res, ResourceStatus.CHANGED, changes);
@@ -378,8 +364,7 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
     private ResourceStatus retrieveOldStatus(final Resource resource) {
         ResourceStatus status = statuses.get(resource);
         /*
-         * If we've got no information that mean we had no event from the
-         * backends.
+         * If we've got no information that mean we had no event from the backends.
          */
         if (status == null) {
             status = ResourceStatus.UNKNOWN;
@@ -388,12 +373,10 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
     }
 
     /**
-     * Tell whether the synchronizer should notify it's client or not. Default
-     * is true.
+     * Tell whether the synchronizer should notify it's client or not. Default is true.
      * 
      * @param newValue
-     *            the new value telling whether the notification is required or
-     *            not.
+     *            the new value telling whether the notification is required or not.
      */
     public void setNotificationIsRequired(final boolean newValue) {
         this.notificationIsRequired = newValue;
@@ -449,8 +432,7 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
     @Override
     public void statusChanged(final Resource resource, final ResourceStatus oldStatus, final ResourceStatus newStatus) {
         /*
-         * we're handling the changes from the workspace backend in batch in the
-         * statusesChanges method.
+         * we're handling the changes from the workspace backend in batch in the statusesChanges method.
          */
         statusesChanged(Collections.singletonList(new ResourceStatusChange(resource, newStatus, oldStatus)));
     }
@@ -459,8 +441,8 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
      * 
      * {@inheritDoc}
      * 
-     * You should not need to call this method, it's called by the synchronizer
-     * backends to give updates to the synchronizer.
+     * You should not need to call this method, it's called by the synchronizer backends to give updates to the
+     * synchronizer.
      */
     @Override
     public void statusesChanged(Collection<ResourceStatusChange> changesFromBackend) {
@@ -469,8 +451,7 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
             if (!itsAChangeWeReExpectingFromOurSave(changeFromWorkspace.getResource(), changeFromWorkspace.getNewStatus())) {
 
                 /*
-                 * the ResourceSetSync is client of his backend but leverage
-                 * events only when listening.
+                 * the ResourceSetSync is client of his backend but leverage events only when listening.
                  */
                 resourceNewStatus(changeFromWorkspace.getResource(), changeFromWorkspace.getNewStatus(), changesToTransmit);
             }
