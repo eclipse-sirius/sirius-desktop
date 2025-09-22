@@ -35,7 +35,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.sirius.ecore.extender,
  org.eclipse.ui.views.log,
  org.eclipse.sirius.diagram.ui,
- org.slf4j.api;bundle-version="1.7.30";visibility:=reexport
+ slf4j.api;bundle-version="2.0.17";visibility:=reexport
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: org.eclipse.sirius.tests.swtbot.support.api;
