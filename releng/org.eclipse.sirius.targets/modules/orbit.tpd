@@ -1,7 +1,6 @@
 target "orbit" with source, requirements
 
 location Orbit-2023-03 "https://download.eclipse.org/tools/orbit/downloads/drops/R20230302014618/repository/" {
-	org.junit lazy
 	org.antlr.runtime [4.7.2,4.7.3)
 }
 
@@ -10,5 +9,6 @@ location Orbit-2025-09 "https://download.eclipse.org/tools/orbit/simrel/orbit-ag
 	org.easymock lazy
 	org.hamcrest.core [2.2.0,3.0.0)
 	org.hamcrest.library [2.2.0,3.0.0)
+	org.junit lazy
 	slf4j.api [2.0.17,3.0.0)
 }
