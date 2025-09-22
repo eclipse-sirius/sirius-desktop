@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,13 +15,11 @@ package org.eclipse.sirius.tests.swtbot.support.api.matcher.geometry;
 import org.eclipse.draw2d.geometry.Point;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
-import org.hamcrest.Factory;
 import org.hamcrest.Matcher;
 
 /**
- * Matcher to check if a spcified point is "around" another expected point, that
- * is to say, specified point is located in a circle centered on expected point
- * and whom radius is equal to provided distance, edge of the circle included.
+ * Matcher to check if a spcified point is "around" another expected point, that is to say, specified point is located
+ * in a circle centered on expected point and whom radius is equal to provided distance, edge of the circle included.
  * 
  * @author dlecan
  */
@@ -44,13 +42,10 @@ public class PointAround extends BaseMatcher<Point> {
         this.distance = distance;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean matches(Object item) {
-        if (item instanceof Point) {
-            return PointAround.isAround(expected, (Point) item, distance);
+        if (item instanceof Point other) {
+            return isAround(other, other, distance);
         }
         return false;
     }
@@ -61,7 +56,7 @@ public class PointAround extends BaseMatcher<Point> {
      * @param expected
      *            Expected point.
      * @param actual
-     *            ctual point
+     *            Actual point
      * @param distance
      *            Distance to check.
      * @return <code>true</code> if actual point is around expected point.
@@ -89,7 +84,6 @@ public class PointAround extends BaseMatcher<Point> {
      *            Distance between.
      * @return Matcher.
      */
-    @Factory
     public static Matcher<Point> around(Point expected, int distance) {
         return new PointAround(expected, distance);
     }
