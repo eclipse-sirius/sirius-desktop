@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,15 +15,12 @@ package org.eclipse.sirius.tests.swtbot.support.api.matcher.geometry;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
-import org.hamcrest.Factory;
 import org.hamcrest.Matcher;
 
 /**
- * Matcher to check if a spcified rectangle is "around" another expected
- * rectangle, that is to say, topleft point of the specified rectangle is
- * located in a circle centered on topleft point of expected rectangle and whom
- * radius is equal to provided distance, edge of the circle included. More over,
- * both rectangles must have same heigh and width.
+ * Matcher to check if a spcified rectangle is "around" another expected rectangle, that is to say, topleft point of the
+ * specified rectangle is located in a circle centered on topleft point of expected rectangle and whom radius is equal
+ * to provided distance, edge of the circle included. More over, both rectangles must have same heigh and width.
  * 
  * @author dlecan
  */
@@ -46,14 +43,10 @@ public class RectangleAround extends BaseMatcher<Rectangle> {
         this.distance = distance;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean matches(Object item) {
         boolean result = false;
-        if (item instanceof Rectangle) {
-            Rectangle other = (Rectangle) item;
+        if (item instanceof Rectangle other) {
             result = other.height == expected.height;
             result = result && other.width == expected.width;
             result = result && PointAround.isAround(expected.getTopLeft(), other.getTopLeft(), distance);
@@ -61,9 +54,6 @@ public class RectangleAround extends BaseMatcher<Rectangle> {
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void describeTo(Description description) {
         description.appendText("A rectangle around ");
@@ -80,7 +70,6 @@ public class RectangleAround extends BaseMatcher<Rectangle> {
      *            Distance between.
      * @return Matcher.
      */
-    @Factory
     public static Matcher<Rectangle> around(Rectangle expected, int distance) {
         return new RectangleAround(expected, distance);
     }
