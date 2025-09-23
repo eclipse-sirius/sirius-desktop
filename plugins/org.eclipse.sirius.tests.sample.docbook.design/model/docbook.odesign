@@ -863,7 +863,7 @@
       </containerMappings>
       <toolSection documentation="All the tools of this diagram" name="Tools">
         <subSections documentation="The tools to create objects" name="Creation">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Chapter" forceRefresh="true" containerMappings="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='BookOrganizer']/@containerMappings[name='2Chapter']" iconPath="/org.eclipse.sirius.tests.sample.docbook.edit/icons/full/obj16/Chapter.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Chapter" forceRefresh="true" containerMappings="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='BookOrganizer']/@containerMappings[name='2Chapter']" >
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -875,7 +875,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="BigSection" forceRefresh="true" containerMappings="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='BookOrganizer']/@containerMappings[name='2Chapter']/@subContainerMappings[name='2BigSection']" iconPath="/org.eclipse.sirius.tests.sample.docbook.edit/icons/full/obj16/Sect1.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="BigSection" forceRefresh="true" containerMappings="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='BookOrganizer']/@containerMappings[name='2Chapter']/@subContainerMappings[name='2BigSection']" >
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -887,7 +887,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="MediumSection" nodeMappings="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='BookOrganizer']/@containerMappings[name='2Chapter']/@subContainerMappings[name='2BigSection']/@subNodeMappings[name='2MediumSection']" iconPath="/org.eclipse.sirius.tests.sample.docbook.edit/icons/full/obj16/Sect2.gif">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="MediumSection" nodeMappings="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='BookOrganizer']/@containerMappings[name='2Chapter']/@subContainerMappings[name='2BigSection']/@subNodeMappings[name='2MediumSection']" >
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -1004,7 +1004,7 @@
       </containerMappings>
       <toolSection documentation="All the tools of this diagram" name="Tools">
         <subSections documentation="The tools to create objects" name="Creation">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="BigSection" forceRefresh="true" containerMappings="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='ChapterOrganizer']/@containerMappings[name='5BigSection']" iconPath="/org.eclipse.sirius.tests.sample.docbook.edit/icons/full/obj16/Sect1.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="BigSection" forceRefresh="true" containerMappings="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='ChapterOrganizer']/@containerMappings[name='5BigSection']" >
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -1016,7 +1016,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="MediumSection" forceRefresh="true" containerMappings="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='ChapterOrganizer']/@containerMappings[name='5BigSection']/@subContainerMappings[name='5MediumSection']" iconPath="/org.eclipse.sirius.tests.sample.docbook.edit/icons/full/obj16/Sect2.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="MediumSection" forceRefresh="true" containerMappings="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='ChapterOrganizer']/@containerMappings[name='5BigSection']/@subContainerMappings[name='5MediumSection']" >
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -1028,7 +1028,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="TinySection" nodeMappings="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='ChapterOrganizer']/@containerMappings[name='5BigSection']/@subContainerMappings[name='5MediumSection']/@subNodeMappings[name='5TinySection']" iconPath="/org.eclipse.sirius.tests.sample.docbook.edit/icons/full/obj16/Sect3.gif">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="TinySection" nodeMappings="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='ChapterOrganizer']/@containerMappings[name='5BigSection']/@subContainerMappings[name='5MediumSection']/@subNodeMappings[name='5TinySection']" >
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -1092,7 +1092,7 @@
           </ownedTools>
         </subSections>
         <subSections documentation="The tools to create objects" name="Creation">
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Paragraphe" nodeMappings="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='ParagraphOrganizer']/@nodeMappings[name='6Paragraphe']" iconPath="/org.eclipse.sirius.tests.sample.docbook.edit/icons/full/obj16/Para.gif">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Paragraphe" nodeMappings="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='ParagraphOrganizer']/@nodeMappings[name='6Paragraphe']" >
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>

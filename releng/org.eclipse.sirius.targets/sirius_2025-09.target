@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="sirius_2025-09" sequenceNumber="1759827569">
+<target name="sirius_2025-09" sequenceNumber="1759828601">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.antlr.runtime" version="4.7.2.v20221112-0806"/>
@@ -41,10 +41,6 @@
       <unit id="org.eclipse.acceleo.ui.interpreter.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.acceleo.ui.interpreter.source.feature.group" version="0.0.0"/>
       <repository id="Acceleo-3.7" location="https://download.eclipse.org/acceleo/updates/releases/3.7/R202408201303/"/>
-    </location>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.emf.eef.runtime-feature.feature.group" version="1.5.1.201601141612"/>
-      <repository id="EEF-1.5" location="https://download.eclipse.org/modeling/emft/eef/updates/releases/1.5/R201601141612"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.eef.sdk.feature.feature.group" version="0.0.0"/>
