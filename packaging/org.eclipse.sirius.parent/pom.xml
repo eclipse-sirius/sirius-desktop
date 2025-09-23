@@ -387,7 +387,6 @@
         <module>../../plugins/org.eclipse.sirius.editor.table</module>
         <module>../../plugins/org.eclipse.sirius.editor.tree</module>
         <module>../../plugins/org.eclipse.sirius.editor</module>
-        <module>../../plugins/org.eclipse.sirius.eef.adapters</module>
         <module>../../plugins/org.eclipse.sirius.interpreter</module>
         <module>../../plugins/org.eclipse.sirius.table.ui</module>
         <module>../../plugins/org.eclipse.sirius.table.ui.ext</module>
@@ -426,7 +425,6 @@
         <!-- features -->
         <module>../../packaging/org.eclipse.sirius.aql</module>
         <module>../../packaging/org.eclipse.sirius.doc.feature</module>
-        <module>../../packaging/org.eclipse.sirius.runtime.ide.eef</module>
         <module>../../packaging/org.eclipse.sirius.runtime.ide.ui.acceleo</module>
         <module>../../packaging/org.eclipse.sirius.runtime.ide.ui</module>
         <module>../../packaging/org.eclipse.sirius.runtime.ide.xtext</module>
@@ -461,8 +459,6 @@
         <module>../../plugins/org.eclipse.sirius.tests.sample.benchmark</module>
         <module>../../plugins/org.eclipse.sirius.tests.sample.docbook</module>
         <module>../../plugins/org.eclipse.sirius.tests.sample.docbook.design</module>
-        <module>../../plugins/org.eclipse.sirius.tests.sample.docbook.edit</module>
-        <module>../../plugins/org.eclipse.sirius.tests.sample.docbook.editor</module>
         <module>../../plugins/org.eclipse.sirius.tests.sample.migration</module>
         <module>../../plugins/org.eclipse.sirius.tests.sample.migration.design</module>
         <module>../../plugins/org.eclipse.sirius.tests.sample.component</module>
@@ -534,7 +530,6 @@
         <module>../../plugins/org.eclipse.sirius.editor.table</module>
         <module>../../plugins/org.eclipse.sirius.editor.tree</module>
         <module>../../plugins/org.eclipse.sirius.editor</module>
-        <module>../../plugins/org.eclipse.sirius.eef.adapters</module>
         <module>../../plugins/org.eclipse.sirius.interpreter</module>
         <module>../../plugins/org.eclipse.sirius.table.ui</module>
         <module>../../plugins/org.eclipse.sirius.table.ui.ext</module>
@@ -558,7 +553,6 @@
         <!-- features -->
         <module>../../packaging/org.eclipse.sirius.aql</module>
         <module>../../packaging/org.eclipse.sirius.doc.feature</module>
-        <module>../../packaging/org.eclipse.sirius.runtime.ide.eef</module>
         <module>../../packaging/org.eclipse.sirius.runtime.ide.ui.acceleo</module>
         <module>../../packaging/org.eclipse.sirius.runtime.ide.ui</module>
         <module>../../packaging/org.eclipse.sirius.runtime.ide.xtext</module>
@@ -581,8 +575,6 @@
         <module>../../plugins/org.eclipse.sirius.tests.sample.benchmark</module>
         <module>../../plugins/org.eclipse.sirius.tests.sample.docbook</module>
         <module>../../plugins/org.eclipse.sirius.tests.sample.docbook.design</module>
-        <module>../../plugins/org.eclipse.sirius.tests.sample.docbook.edit</module>
-        <module>../../plugins/org.eclipse.sirius.tests.sample.docbook.editor</module>
         <module>../../plugins/org.eclipse.sirius.tests.sample.migration</module>
         <module>../../plugins/org.eclipse.sirius.tests.sample.migration.design</module>
         <module>../../plugins/org.eclipse.sirius.tests.sample.component</module>
