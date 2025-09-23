@@ -40,9 +40,6 @@
    <feature id="org.eclipse.sirius.doc.feature" version="0.0.0">
       <category name="Sirius"/>
    </feature>
-   <feature id="org.eclipse.sirius.runtime.ide.eef" version="0.0.0">
-      <category name="Sirius"/>
-   </feature>
    <feature id="org.eclipse.sirius.specifier.ide.ui" version="0.0.0">
       <category name="Sirius"/>
    </feature>
@@ -113,9 +110,6 @@
       <category name="Sirius.SDK"/>
    </feature>
    <feature id="org.eclipse.sirius.doc.feature.source" version="0.0.0">
-      <category name="Sirius.SDK"/>
-   </feature>
-   <feature id="org.eclipse.sirius.runtime.ide.eef.source" version="0.0.0">
       <category name="Sirius.SDK"/>
    </feature>
    <feature id="org.eclipse.sirius.specifier.ide.ui.source" version="0.0.0">
