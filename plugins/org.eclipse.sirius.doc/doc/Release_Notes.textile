@@ -6,7 +6,11 @@ This document contains the release notes for recent major releases of Sirius. Se
 
 h2(#sirius7.5.0). Changes in Sirius  Desktop 7.5.0
 
-Nothing.
+h3. User-Visible Changes
+
+* <span class="label label-info">Modified</span> Edition using the Grid is enhanced. 
+** When creating a node with active "Snap To Grid", the size is adapted to the Grid Spacing so the resizable sides fit on it. This behavior results in having corners of the node matching the grid. Currently, it only applies if the node mapping has size indications to provide a preferred size.
+** When creating or moving a node with active "Snap To Grid", the position is adapted to the Grid Spacing so fixed-size sides are centered. This behavior results in a better alignment and centering of edges and for most of border and image-based nodes.
 
 h2(#sirius7.4.11). Changes in Sirius  Desktop 7.4.11
 
