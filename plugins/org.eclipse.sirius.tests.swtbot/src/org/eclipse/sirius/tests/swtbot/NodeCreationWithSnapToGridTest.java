@@ -13,6 +13,8 @@
 package org.eclipse.sirius.tests.swtbot;
 
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.gef.rulers.RulerProvider;
+import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 
 /**
  * Same tests as {@link NodeCreationTest} but with snapToGrid enabled.
@@ -21,15 +23,28 @@ import org.eclipse.draw2d.geometry.Point;
  */
 public class NodeCreationWithSnapToGridTest extends NodeCreationTest {
 
+    // In vp-1174.odesign, 
+    // Class mapping is un-resizable square.
+    
+    protected static final int VSM_SIDE_SIZE = 3; // as expressed 
+    protected static final int SIDE_SIZE = VSM_SIDE_SIZE * LayoutUtils.SCALE; // as expressed 
+    protected static final int GRID_SIZE = 100;
+    
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-
-        editor.setSnapToGrid(true, 100, 2);
+        
+        editor.setSnapToGrid(true, GRID_SIZE, RulerProvider.UNIT_PIXELS);
     }
 
     @Override
-    protected Point adaptLocation(Point expectedAbsoluteLocation) {
-        return editor.adaptLocationToSnap(expectedAbsoluteLocation);
+    protected Point adaptNodeLocation(Point expectedAbsoluteLocation) {
+        Point onGridLocation = editor.adaptLocationToSnap(expectedAbsoluteLocation);
+        // As the element is not resizable,
+        // its position is shifted so the node center is on a grid point.
+        int shift = - SIDE_SIZE % GRID_SIZE / 2;
+        // Negative shift is consistent with NodePositionHelper#shiftLocationToCenter(...) implementation.
+                
+        return onGridLocation.translate(shift, shift);
     }
 }

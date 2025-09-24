@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2024 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,9 +13,7 @@
 package org.eclipse.sirius.diagram.ui.internal.refresh;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -26,9 +24,6 @@ import java.util.Optional;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.draw2d.Figure;
-import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -48,31 +43,23 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.AbstractDNode;
-import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
-import org.eclipse.sirius.diagram.ResizeKind;
-import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer;
 import org.eclipse.sirius.diagram.model.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.model.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
-import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.view.LayoutData;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainer2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.providers.SiriusViewProvider;
-import org.eclipse.sirius.diagram.ui.internal.refresh.borderednode.CanonicalDBorderItemLocator;
 import org.eclipse.sirius.diagram.ui.internal.view.factories.AbstractContainerViewFactory;
 import org.eclipse.sirius.diagram.ui.internal.view.factories.ViewSizeHint;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramUpdater;
 import org.eclipse.sirius.diagram.ui.part.SiriusNodeDescriptor;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
-import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.eclipse.sirius.ext.base.Option;
 
 import com.google.common.collect.Iterables;
@@ -96,6 +83,11 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
 
     private final static boolean STANDARD_LAYOUT_FOR_CREATED_REGION_CONTENT = Boolean.getBoolean("org.eclipse.sirius.diagram.ui.internal.region.content.canonical.layout.standard"); //$NON-NLS-1$
 
+    // Default size is already provided by 
+    // AbstractDNodeViewFactory#updateLayoutConstraint(View, IAdaptable).
+    // There is no need to compute default size here.
+    private final static Dimension NO_CHANGE_SIZE = new Dimension(-1, -1);
+    
     /**
      * Say if we should store created views to layout in SiriusLayoutDataManager.
      */
@@ -333,7 +325,10 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
     }
 
     private List<View> getViewChildren(final View current) {
-        return new ArrayList<>(current.getChildren());
+        // API Legacy adaptation: 
+        // children is the (hand-made) aggregation of transientChildren and persistedChildren.
+        // List only used for reading.
+        return current.getChildren();
     }
 
     /**
@@ -460,11 +455,11 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
     private LayoutDataResult updateLocationAndSize(View createdView) {
         LayoutDataResult updateLocationAndSize;
         EObject element = createdView.getElement();
-        if (isBorderedNode(element) || new ViewQuery(createdView).isForNameEditPartOnBorder()) {
+        if (NodePositionHelper.isBorderedNode(element) || new ViewQuery(createdView).isForNameEditPartOnBorder()) {
             updateLocationAndSize = updateAbstractDNode_ownedBorderedNodes_Bounds(createdView);
-        } else if (isTopLevelNode(element)) {
+        } else if (NodePositionHelper.isTopLevelNode(element)) {
             updateLocationAndSize = updateDDiagramChildBounds(createdView);
-        } else if (isChildNodeButNotBorderedNodeOfContainer(element)) {
+        } else if (NodePositionHelper.isInsideNodeContainer(element)) {
             updateLocationAndSize = updateDNodeContainerChildButNotBorderedNodeBounds(createdView);
         } else {
             updateLocationAndSize = new LayoutDataResult(true, false, false, false, false);
@@ -474,8 +469,8 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
 
     private LayoutDataResult updateDDiagramChildBounds(View createdView) {
         Dimension size = null;
-        Point location = null;
 
+        Point location = null;
         boolean normalLayout = true;
         boolean centerLayout = false;
         boolean borderLayout = false;
@@ -483,63 +478,34 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
         boolean isLayoutReference = false;
 
         EObject element = createdView.getElement();
-        org.eclipse.sirius.diagram.business.api.query.DNodeQuery dNodeQuery = null;
-        if (element instanceof DNode) {
-            DNode dNode = (DNode) element;
-            dNodeQuery = new org.eclipse.sirius.diagram.business.api.query.DNodeQuery(dNode);
-        }
-        if (element instanceof DDiagramElement) {
-            if (element instanceof AbstractDNode) {
-                AbstractDNode abstractDNode = (AbstractDNode) element;
-                LayoutData layoutData = SiriusLayoutDataManager.INSTANCE.getData(abstractDNode);
-                if (layoutData == null) {
-                    layoutData = SiriusLayoutDataManager.INSTANCE.getData(abstractDNode, true);
-                }
-                if (layoutData != null && layoutData.getSize() != null) {
-                    if (dNodeQuery == null || (dNodeQuery != null && dNodeQuery.allowsHorizontalResize() && dNodeQuery.allowsVerticalResize())) {
-                        size = layoutData.getSize();
-                    } else if (dNodeQuery != null && dNodeQuery.allowsHorizontalResize()) {
-                        size = new Dimension(layoutData.getSize().width, getDefaultSize((AbstractDNode) element).height);
-                    } else if (dNodeQuery != null && dNodeQuery.allowsVerticalResize()) {
-                        size = new Dimension(getDefaultSize((AbstractDNode) element).width, layoutData.getSize().height);
-                    }
-                }
-                if (layoutData != null && layoutData.getLocation() != null) {
-                    location = layoutData.getLocation();
-                    isLayoutReference = true;
-                }
 
-                // If the AbstractDNode has BorderNodes, it should be marked as to layout its BorderNodes.
-                if (!abstractDNode.getOwnedBorderedNodes().isEmpty()) { // if (has border nodes)
-                    borderLayout = true;
-                }
+        AbstractDNode abstractDNode = null;
+        if (element instanceof AbstractDNode) {
+            abstractDNode = (AbstractDNode) element;
+
+            LayoutData layoutData = SiriusLayoutDataManager.INSTANCE.getData(abstractDNode);
+            if (layoutData == null) {
+                layoutData = SiriusLayoutDataManager.INSTANCE.getData(abstractDNode, true);
             }
+            if (layoutData != null) {
+                size = layoutData.getSize();
+                location = layoutData.getLocation();
+                isLayoutReference = location != null;
+            }
+
+            // If the AbstractDNode has BorderNodes, it should be marked as to layout its BorderNodes.
+            borderLayout = !abstractDNode.getOwnedBorderedNodes().isEmpty();
+
         } else {
             size = ViewSizeHint.getInstance().consumeSize();
         }
-        if (size == null) {
-            size = getDefaultSize((AbstractDNode) element);
-        }
-        if (createdView instanceof Node && ((Node) createdView).getLayoutConstraint() instanceof Bounds) {
-            Bounds bounds = (Bounds) ((Node) createdView).getLayoutConstraint();
-            if (location == null) {
-                normalLayout = false;
-                centerLayout = true;
-                isAlreadyLayouted = true;
-            } else {
-                bounds.setX(location.x);
-                bounds.setY(location.y);
-                normalLayout = false;
-                isAlreadyLayouted = true;
-            }
-            if (size != null) {
-                if (size.width != -1) {
-                    bounds.setWidth(size.width);
-                }
-                if (size.height != -1) {
-                    bounds.setHeight(size.height);
-                }
-            }
+
+        if (createdView instanceof Node createdNode && createdNode.getLayoutConstraint() instanceof Bounds) {
+            normalLayout = false;
+            isAlreadyLayouted = true;
+            centerLayout = location == null;
+
+            updateBoundsConstraint(createdNode, location, size);
         }
 
         return new LayoutDataResult(normalLayout, centerLayout, borderLayout, isAlreadyLayouted, isLayoutReference);
@@ -548,7 +514,7 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
     private LayoutDataResult updateAbstractDNode_ownedBorderedNodes_Bounds(View createdView) {
         Node createdNode = (Node) createdView;
         AbstractDNode portNode = (AbstractDNode) createdView.getElement();
-        Node parentNode = (Node) createdView.eContainer();
+
         LayoutData layoutData = SiriusLayoutDataManager.INSTANCE.getData(portNode);
 
         boolean laidOut = false;
@@ -558,137 +524,36 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
             // In creation mode we must calculate the best position for the new
             // port
             layoutData = SiriusLayoutDataManager.INSTANCE.getData(portNode, true);
-            Rectangle tempBounds;
+            Dimension size = null;
+            Point contextLocation = null;
+            
             if (layoutData != null) {
                 laidOut = true;
-                // We get the layoutData from the manager with the parent of the
-                // node
-                final Point location = layoutData.getLocation() != null ? layoutData.getLocation() : new Point(0, 0);
-                Dimension size = null;
-                if (layoutData.getSize() != null) {
-                    size = layoutData.getSize();
-                } else {
-                    size = getDefaultSize(portNode);
-                }
-                tempBounds = new Rectangle(location, size);
-            } else {
-                Dimension size = ViewSizeHint.getInstance().consumeSize();
-                Point location = null;
-
-                if (size == null) {
-                    if (new ViewQuery(createdView).isForNameEditPart()) {
-                        Optional<Rectangle> optionalRect = GMFHelper.getAbsoluteBounds(createdView);
-                        if (optionalRect.isPresent()) {
-                            size = optionalRect.get().getSize();
-                        }
-                    }
-                    if (size == null) {
-                        size = getDefaultSize(portNode);
-                    }
-                }
-                if (location == null) {
-                    location = new Point(0, 0);
-                }
-                tempBounds = new Rectangle(location, size);
-            }
-
-            CanonicalDBorderItemLocator locator = new CanonicalDBorderItemLocator(parentNode, PositionConstants.NSEW, isSnapToGrid(), getGridSpacing());
-            if (new ViewQuery(createdView).isForNameEditPart()) {
-                locator.setBorderItemOffset(IBorderItemOffsets.NO_OFFSET);
-            } else {
-                if (new DDiagramElementQuery(portNode).isIndirectlyCollapsed()) {
-                    locator.setBorderItemOffset(IBorderItemOffsets.COLLAPSE_FILTER_OFFSET);
-                } else {
-                    locator.setBorderItemOffset(IBorderItemOffsets.DEFAULT_OFFSET);
-                }
-            }
-
-            final IFigure dummyFigure = new Figure();
-            final Rectangle constraint = tempBounds.getCopy();
-            locator.setConstraint(constraint);
-            dummyFigure.setVisible(true);
-            final Rectangle rect = new Rectangle(constraint);
-            Point parentAbsoluteLocation = GMFHelper.getAbsoluteLocation(parentNode, true, false);
-            rect.translate(parentAbsoluteLocation.x, parentAbsoluteLocation.y);
-            dummyFigure.setBounds(rect);
-            final Point realLocation = locator.getValidLocation(rect, createdNode, new ArrayList<Node>(Arrays.asList(createdNode)));
-            final Dimension d = realLocation.getDifference(parentAbsoluteLocation);
-            final Point location = new Point(d.width, d.height);
-            realLocation.setLocation(location);
-
-            locator.relocate(createdNode);
-
-            LayoutConstraint createdNodeLayoutConstraint = createdNode.getLayoutConstraint();
-            if (createdNodeLayoutConstraint instanceof Location) {
-                laidOut = true;
-                Location createdNodeBounds = (Location) createdNodeLayoutConstraint;
-                createdNodeBounds.setX(location.x);
-                createdNodeBounds.setY(location.y);
-            }
-            if (createdNodeLayoutConstraint instanceof Size) {
-                Size createdNodeBounds = (Size) createdNodeLayoutConstraint;
-                ResizeKind resizeKind = ResizeKind.NSEW_LITERAL;
-                if (portNode instanceof DNode) {
-                    resizeKind = ((DNode) portNode).getResizeKind();
-                }
-                if (constraint.width != -1 && canResizeWidth(resizeKind)) {
-                    createdNodeBounds.setWidth(constraint.width);
-                }
-                if (constraint.height != -1 && canResizeHeight(resizeKind)) {
-                    createdNodeBounds.setHeight(constraint.height);
-                }
-            }
-        } else {
-            laidOut = true;
-            // We get the layoutData from the manager directly with the node
-            // (drag'n'drop) but this location should be adapt to be correct
-            // according to CanonicalDBorderItemLocator.
-            final Point location = layoutData.getLocation() != null ? layoutData.getLocation() : new Point(0, 0);
-
-            Dimension size = null;
-            if (layoutData.getSize() != null) {
+                // We get the layoutData from the manager with the parent of the node
+                contextLocation = layoutData.getLocation();
                 size = layoutData.getSize();
             } else {
-                size = getDefaultSize(portNode);
-            }
-
-            // Compute the best location according to other existing bordered
-            // nodes.
-            CanonicalDBorderItemLocator locator = new CanonicalDBorderItemLocator(parentNode, PositionConstants.NSEW);
-            if (portNode != null) {
-                if (new DDiagramElementQuery(portNode).isIndirectlyCollapsed()) {
-                    locator.setBorderItemOffset(IBorderItemOffsets.COLLAPSE_FILTER_OFFSET);
-                } else {
-                    locator.setBorderItemOffset(IBorderItemOffsets.DEFAULT_OFFSET);
+                size = ViewSizeHint.getInstance().consumeSize();
+                if (size == null && new ViewQuery(createdView).isForNameEditPart()) {
+                    Optional<Rectangle> optionalRect = GMFHelper.getAbsoluteBounds(createdView);
+                    if (optionalRect.isPresent()) {
+                        size = optionalRect.get().getSize();
+                    }
                 }
-            } else {
-                locator.setBorderItemOffset(IBorderItemOffsets.DEFAULT_OFFSET);
             }
 
-            // CanonicalDBorderItemLocator works with absolute GMF parent
-            // location so we need to translate BorderedNode absolute location.
-            final org.eclipse.draw2d.geometry.Point parentAbsoluteLocation = GMFHelper.getAbsoluteBounds(parentNode, false, false, false, false).getTopLeft();
-            final Point realLocation = locator.getValidLocation(new Rectangle(location.getTranslated(parentAbsoluteLocation), size), createdNode, Collections.singleton(createdNode));
+            final Point location = new NodePositionHelper(isSnapToGrid(), getGridSpacing()).getOnBorderPositionFromParent(createdNode, contextLocation, size);
 
-            // Compute the new relative position to the parent
-            realLocation.translate(parentAbsoluteLocation.negate());
+            laidOut = laidOut || createdNode.getLayoutConstraint() instanceof Location;
+            updateBoundsConstraint(createdNode, location, size != null ? size : NO_CHANGE_SIZE);
 
-            Node node = (Node) createdView;
-            Bounds bounds = (Bounds) node.getLayoutConstraint();
-            bounds.setX(realLocation.x);
-            bounds.setY(realLocation.y);
-            if (size.width != -1) {
-                bounds.setWidth(size.width);
-            }
-            if (size.height != -1) {
-                bounds.setHeight(size.height);
-            }
-        }
-        if (laidOut) {
-            return new LayoutDataResult(false, false, false, true, false);
         } else {
-            return new LayoutDataResult(true, false, false, false, false);
+            laidOut = true;
+            final Point location = new NodePositionHelper(isSnapToGrid(), getGridSpacing()).getOnBorderPositionFromLayoutData(createdNode, layoutData);
+
+            updateBoundsConstraint(createdNode, location, layoutData.getSize());
         }
+        return new LayoutDataResult(!laidOut, false, false, laidOut, false);
     }
 
     private LayoutDataResult updateDNodeContainerChildButNotBorderedNodeBounds(View createdView) {
@@ -701,11 +566,10 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
         boolean isAlreadylayouted = false;
         boolean isLayoutReference = false;
 
-        if (element instanceof AbstractDNode && parent instanceof DNodeContainer) {
+        if (element instanceof AbstractDNode abstractDNode && parent instanceof DNodeContainer nodeContainer) {
             Dimension size = null;
             Point location = null;
 
-            AbstractDNode abstractDNode = (AbstractDNode) element;
             LayoutData layoutData = SiriusLayoutDataManager.INSTANCE.getData(abstractDNode);
             if (layoutData == null) {
                 layoutData = SiriusLayoutDataManager.INSTANCE.getData(abstractDNode, true);
@@ -718,81 +582,67 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
                 isLayoutReference = true;
             }
 
-            if (size == null) {
-                size = getDefaultSize(abstractDNode);
-            }
-            if (location == null) {
-                boolean isInRegionContainer = new DNodeContainerExperimentalQuery((DNodeContainer) parent).isRegionContainer();
-                boolean skip = false;
-                if (STANDARD_LAYOUT_FOR_CREATED_REGION_CONTENT && new DDiagramElementContainerExperimentalQuery((DNodeContainer) parent).isRegion()) {
-                    // Get CompartmentView edit part
-                    EObject dnodeContainer2_3008 = createdView.eContainer();
-                    dnodeContainer2_3008 = dnodeContainer2_3008 != null ? dnodeContainer2_3008.eContainer() : null;
-
-                    skip = dnodeContainer2_3008 != null && (dnodeContainer2_3008.eAdapters().contains(SiriusLayoutDataManager.INSTANCE.getCenterAdapterMarker())
-                            || dnodeContainer2_3008.eAdapters().contains(SiriusLayoutDataManager.INSTANCE.getAdapterMarker()));
-                }
-                if (!skip && !isInRegionContainer) {
-                    normalLayout = false;
-                    centerLayout = true;
-                    isAlreadylayouted = true;
-                }
+            if (location == null && !isInForcedLayout(createdView, nodeContainer)) {
+                normalLayout = false;
+                centerLayout = true;
+                isAlreadylayouted = true;
             }
             // If the DNodeContainer has BorderNodes, it should be marked as to layout its BorderNodes.
             if (!abstractDNode.getOwnedBorderedNodes().isEmpty()) { // if (has border nodes)
                 borderLayout = true;
             }
 
-            if (createdView instanceof Node) {
-                Node createdNode = (Node) createdView;
-                updateBoundsConstraint(createdNode, size, location, abstractDNode);
+            if (createdView instanceof Node createdNode) {
+                updateBoundsConstraint(createdNode, location, size);
             }
         }
         return new LayoutDataResult(normalLayout, centerLayout, borderLayout, isAlreadylayouted, isLayoutReference);
     }
 
-    protected void updateLocationConstraint(Bounds bounds, Point location) {
+    private boolean isInForcedLayout(View createdView, DNodeContainer nodeContainer) {
+        boolean skip = false;
+        if (STANDARD_LAYOUT_FOR_CREATED_REGION_CONTENT && new DDiagramElementContainerExperimentalQuery(nodeContainer).isRegion()) {
+            // Get CompartmentView edit part
+            EObject dnodeContainer2_3008 = createdView.eContainer();
+            dnodeContainer2_3008 = dnodeContainer2_3008 != null ? dnodeContainer2_3008.eContainer() : null;
+
+            skip = dnodeContainer2_3008 != null && (dnodeContainer2_3008.eAdapters().contains(SiriusLayoutDataManager.INSTANCE.getCenterAdapterMarker())
+                    || dnodeContainer2_3008.eAdapters().contains(SiriusLayoutDataManager.INSTANCE.getAdapterMarker()));
+        }
+        return skip || new DNodeContainerExperimentalQuery(nodeContainer).isRegionContainer();
+    }
+
+    protected void updateLocationConstraint(Location constraint, Point location) {
         if (location != null) {
-            bounds.setX(location.x);
-            bounds.setY(location.y);
+            constraint.setX(location.x);
+            constraint.setY(location.y);
         }
     }
 
-    protected void updateSizeConstraint(Bounds bounds, Dimension size, EObject abstractDNode) {
-        ResizeKind resizeKind = ResizeKind.NSEW_LITERAL;
-        if (abstractDNode instanceof DNode dNode) {
-            resizeKind = dNode.getResizeKind();
+    protected void updateSizeConstraint(Node createdNode, Size constraint, Dimension size) {
+        Dimension safeSize = size != null ? size : NO_CHANGE_SIZE;
+
+        var positionHelper = new NodePositionHelper(isSnapToGrid(), getGridSpacing());
+        Dimension defaultSize = positionHelper.getAdjustedDimension(createdNode, constraint);
+
+        if (NodePositionHelper.canResizeWidth(createdNode)) { // Horizontal
+            constraint.setWidth(safeSize.width != -1 ? safeSize.width : defaultSize.width);
         }
-        if (size != null) {
-            if (size.width != -1 && canResizeWidth(resizeKind)) {
-                bounds.setWidth(size.width);
-            }
-            if (size.height != -1 && canResizeHeight(resizeKind)) {
-                bounds.setHeight(size.height);
-            }
+        if (NodePositionHelper.canResizeHeight(createdNode)) { // Vertical
+            constraint.setHeight(safeSize.height != -1 ? safeSize.height : defaultSize.height);
         }
     }
 
-    private void updateBoundsConstraint(Node createdNode, Dimension size, Point location, AbstractDNode abstractDNode) {
-        Bounds bounds = (Bounds) createdNode.getLayoutConstraint();
-        updateLocationConstraint(bounds, location);
-        updateSizeConstraint(bounds, size, abstractDNode);
-    }
-
-    private boolean canResizeHeight(ResizeKind resizeKind) {
-        return resizeKind.getValue() == ResizeKind.NORTH_SOUTH || resizeKind.getValue() == ResizeKind.NSEW;
-    }
-
-    private boolean canResizeWidth(ResizeKind resizeKind) {
-        return resizeKind.getValue() == ResizeKind.EAST_WEST || resizeKind.getValue() == ResizeKind.NSEW;
-    }
-
-    private Dimension getDefaultSize(AbstractDNode abstractDNode) {
-        Dimension defaultSize = new Dimension(-1, -1);
-        if (abstractDNode instanceof DNode viewNode && !new org.eclipse.sirius.diagram.business.api.query.DNodeQuery(viewNode).isAutoSize()) {
-            defaultSize = new DNodeQuery(viewNode).getDefaultDimension();
+    private void updateBoundsConstraint(Node createdNode, Point location, Dimension size) {
+        LayoutConstraint constraint = createdNode.getLayoutConstraint();
+        if (constraint instanceof Location locationConstraint) {
+            var positionHelper = new NodePositionHelper(isSnapToGrid(), getGridSpacing());
+            Point ajdustedLocation = positionHelper.getAdjustedLocation(createdNode, location);
+            updateLocationConstraint(locationConstraint, ajdustedLocation);  
         }
-        return defaultSize;
+        if (constraint instanceof Size sizeConstraint) {
+            updateSizeConstraint(createdNode, sizeConstraint, size);
+        }
     }
 
     /**
@@ -807,61 +657,6 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
     }
 
     /**
-     * Check if element is a borderedNode.
-     * 
-     * @param element
-     *            the element to check
-     * @return true if the element is a bordered node, false otherwise
-     */
-    protected boolean isBorderedNode(EObject element) {
-        boolean result = false;
-        if (element instanceof DNode) {
-            EObject parent = element.eContainer();
-            if (parent instanceof AbstractDNode) {
-                AbstractDNode parentDNode = (AbstractDNode) parent;
-                result = parentDNode.getOwnedBorderedNodes().contains(element);
-            }
-        }
-        return result;
-    }
-
-    /**
-     * Check if element is a direct child of {@link DDiagram}.
-     * 
-     * @param element
-     *            the element to check
-     * 
-     * @return true if the element is a direct child of {@link DDiagram}, false otherwise
-     */
-    protected boolean isTopLevelNode(EObject element) {
-        boolean isTopLevelNode = false;
-        EObject container = element.eContainer();
-        if (container instanceof DDiagram) {
-            DDiagram dDiagram = (DDiagram) container;
-            isTopLevelNode = dDiagram.getOwnedDiagramElements().contains(element);
-        }
-        return isTopLevelNode;
-    }
-
-    /**
-     * Check if element is a child of {@link DNodeContainer} but not a bordered node.
-     * 
-     * @param element
-     *            the element to check
-     * 
-     * @return true if the element is a child of {@link DNodeContainer} but not a bordered node, false otherwise
-     */
-    private boolean isChildNodeButNotBorderedNodeOfContainer(EObject element) {
-        boolean isChildNodeButNotBorderedNodeOfContainer = false;
-        EObject container = element.eContainer();
-        if (container instanceof DNodeContainer) {
-            DNodeContainer dNodeContainer = (DNodeContainer) container;
-            isChildNodeButNotBorderedNodeOfContainer = dNodeContainer.getOwnedDiagramElements().contains(element);
-        }
-        return isChildNodeButNotBorderedNodeOfContainer;
-    }
-
-    /**
      * Convenience method to create a view descriptor. Will call
      * {@link #getViewDescriptor(IAdaptable, Class, String, int)}
      * 
@@ -872,9 +667,7 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
      * @return view descriptor
      */
     protected CreateViewRequest.ViewDescriptor getViewDescriptor(final EObject element, final String factoryHint) {
-        //
-        // create the view descritor
-        // final IAdaptable elementAdapter = new EObjectAdapter(element);
+        // Create the view descriptor
         final IAdaptable elementAdapter = new CanonicalElementAdapter(element, factoryHint);
 
         final int pos = ViewUtil.APPEND;
