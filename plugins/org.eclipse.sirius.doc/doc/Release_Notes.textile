@@ -9,6 +9,11 @@ h2(#sirius7.5.0). Changes in Sirius  Desktop 7.5.0
 * <span class="label label-info">Modified</span> As of version 7.5.0, Sirius Desktop now requires Eclipse 2025-09 or later (and the corresponding versions of EMF, GEF, GMF, EEF, Acceleo).
 * <span class="label label-danger">Removed</span> @org.eclipse.sirius.eef.adapters@ plugin and EEF 1.5 support have been removed.
 
+h3. User-Visible Changes
+
+* <span class="label label-info">Modified</span> Edition using the Grid has been improved. 
+** When creating a node with "Snap to Grid" enabled, its size is adjusted to the grid spacing so that its resizable sides align with the grid. This ensures that the node’s corners match the grid intersections. Currently, this only applies when the node mapping provides size hints to define a preferred size.
+
 h3. Specifiers-Visible Changes
 
 * <span class="label label-danger">Removed</span> Support for MTL and OCL expressions in @odesign@ files have been removed. AQL is recommended instead.
