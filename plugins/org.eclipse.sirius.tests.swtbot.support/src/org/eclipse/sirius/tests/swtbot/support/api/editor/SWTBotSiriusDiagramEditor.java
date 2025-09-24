@@ -42,13 +42,13 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPar
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.properties.WorkspaceViewerProperties;
-import org.eclipse.gmf.runtime.diagram.ui.internal.ruler.SnapToGridEx;
 import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramGraphicalViewer;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants;
 import org.eclipse.jface.bindings.keys.KeyStroke;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
@@ -63,6 +63,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
+import org.eclipse.sirius.diagram.ui.tools.internal.ruler.SiriusSnapToGrid;
 import org.eclipse.sirius.ext.draw2d.figure.FigureUtilities;
 import org.eclipse.sirius.tests.swtbot.support.api.bot.SWTDesignerBot;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
@@ -90,7 +91,6 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefFigureCanvas;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory;
-import org.eclipse.swtbot.swt.finder.results.BoolResult;
 import org.eclipse.swtbot.swt.finder.results.Result;
 import org.eclipse.swtbot.swt.finder.results.VoidResult;
 import org.eclipse.swtbot.swt.finder.utils.SWTUtils;
@@ -1588,6 +1588,10 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
         setSnapToGrid(false);
     }
 
+    private IPreferenceStore getDiagramPreferenceStore() {
+        return ((DiagramGraphicalViewer) getDiagramGraphicalViewer()).getWorkspaceViewerPreferenceStore();
+    }
+    
     /**
      * Disable or enable the snapToGrid option for this editor.
      * 
@@ -1595,12 +1599,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
      *            true to enable, false to disable snap to grid property
      */
     public void setSnapToGrid(final boolean snap) {
-        UIThreadRunnable.syncExec(SWTUtils.display(), new VoidResult() {
-            @Override
-            public void run() {
-                ((DiagramGraphicalViewer) getDiagramGraphicalViewer()).getWorkspaceViewerPreferenceStore().setValue(WorkspaceViewerProperties.SNAPTOGRID, snap);
-            }
-        });
+        UIThreadRunnable.syncExec(() -> getDiagramPreferenceStore().setValue(WorkspaceViewerProperties.SNAPTOGRID, snap));
     }
 
     /**
@@ -1610,12 +1609,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
      *            true to enable, false to disable snap to shape property
      */
     public void setSnapToShape(final boolean snap) {
-        UIThreadRunnable.syncExec(SWTUtils.display(), new VoidResult() {
-            @Override
-            public void run() {
-                ((DiagramGraphicalViewer) getDiagramGraphicalViewer()).getWorkspaceViewerPreferenceStore().setValue(WorkspaceViewerProperties.SNAPTOGEOMETRY, snap);
-            }
-        });
+        UIThreadRunnable.syncExec(() -> getDiagramPreferenceStore().setValue(WorkspaceViewerProperties.SNAPTOGEOMETRY, snap));
     }
 
     /**
@@ -1624,14 +1618,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
      * @return the "Snap to grid" option value for this editor.
      */
     public boolean isSnapToShape() {
-        BoolResult snapToShape = new BoolResult() {
-
-            @Override
-            public Boolean run() {
-                return ((DiagramGraphicalViewer) getDiagramGraphicalViewer()).getWorkspaceViewerPreferenceStore().getBoolean(WorkspaceViewerProperties.SNAPTOGEOMETRY);
-            }
-        };
-        return UIThreadRunnable.syncExec(snapToShape).booleanValue();
+        return UIThreadRunnable.syncExec(() -> getDiagramPreferenceStore().getBoolean(WorkspaceViewerProperties.SNAPTOGEOMETRY));
     }
 
     /**
@@ -1645,14 +1632,12 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
      *            The ruler units value (0 for Inches, 1 for Centimeters, 2 for Pixels)
      */
     public void setSnapToGrid(final boolean snap, final double gridSpacing, final int rulerUnits) {
-        PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
-            @Override
-            public void run() {
-                ((DiagramGraphicalViewer) getDiagramGraphicalViewer()).getWorkspaceViewerPreferenceStore().setValue(WorkspaceViewerProperties.SNAPTOGRID, snap);
-                ((DiagramGraphicalViewer) getDiagramGraphicalViewer()).getWorkspaceViewerPreferenceStore().setValue(WorkspaceViewerProperties.VIEWGRID, snap);
-                ((DiagramGraphicalViewer) getDiagramGraphicalViewer()).getWorkspaceViewerPreferenceStore().setValue(WorkspaceViewerProperties.GRIDSPACING, gridSpacing);
-                ((DiagramGraphicalViewer) getDiagramGraphicalViewer()).getWorkspaceViewerPreferenceStore().setValue(WorkspaceViewerProperties.RULERUNIT, rulerUnits);
-            }
+        UIThreadRunnable.syncExec(() -> {
+            var prefStore = getDiagramPreferenceStore();
+            prefStore.setValue(WorkspaceViewerProperties.SNAPTOGRID, snap);
+            prefStore.setValue(WorkspaceViewerProperties.VIEWGRID, snap);
+            prefStore.setValue(WorkspaceViewerProperties.GRIDSPACING, gridSpacing);
+            prefStore.setValue(WorkspaceViewerProperties.RULERUNIT, rulerUnits);
         });
     }
 
@@ -1662,14 +1647,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
      * @return the "Snap to grid" option value for this editor.
      */
     public boolean isSnapToGrid() {
-        BoolResult snapToGrid = new BoolResult() {
-
-            @Override
-            public Boolean run() {
-                return ((DiagramGraphicalViewer) getDiagramGraphicalViewer()).getWorkspaceViewerPreferenceStore().getBoolean(WorkspaceViewerProperties.SNAPTOGRID);
-            }
-        };
-        return UIThreadRunnable.syncExec(snapToGrid).booleanValue();
+        return UIThreadRunnable.syncExec(() -> getDiagramPreferenceStore().getBoolean(WorkspaceViewerProperties.SNAPTOGRID));
     }
 
     /**
@@ -1889,7 +1867,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
      */
     public PrecisionPoint adaptLocationToSnap(Point expectedAbsoluteLocation) {
         IGraphicalEditPart diagramEditPart = getDiagramEditPart();
-        SnapToHelper snapToHelper = new SnapToGridEx(diagramEditPart);
+        SnapToHelper snapToHelper = new SiriusSnapToGrid(diagramEditPart);
         PrecisionPoint preciseLocation = new PrecisionPoint(expectedAbsoluteLocation);
         diagramEditPart.getFigure().translateToAbsolute(preciseLocation);
         PrecisionPoint result = new PrecisionPoint(preciseLocation);
