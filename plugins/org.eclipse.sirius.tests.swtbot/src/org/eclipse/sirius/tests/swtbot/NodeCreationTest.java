@@ -314,9 +314,7 @@ public class NodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Check that the created Node is near the expected location. We don't check
-     * precisely the location because the zoom can have round effect on the
-     * location.
+     * Check that the created Node is near the expected location.
      * 
      * @param nodeLabel
      *            the name of the Node to check
@@ -326,7 +324,7 @@ public class NodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
      */
     private void assertNodeAtLocation(String nodeLabel, Point expectedLocation) {
         Point nodeLocation = editor.getAbsoluteLocation(nodeLabel, NodeEditPart.class);
-        assertEquals("The Node has been created at wrong location.", adaptLocation(expectedLocation), nodeLocation);
+        assertEquals("The Node has been created at wrong location.", adaptNodeLocation(expectedLocation), nodeLocation);
     }
 
     /**
@@ -337,7 +335,7 @@ public class NodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
      *            The initial expected location
      * @return The adapted location
      */
-    protected Point adaptLocation(Point expectedLocation) {
+    protected Point adaptNodeLocation(Point expectedLocation) {
         return expectedLocation;
     }
 }
