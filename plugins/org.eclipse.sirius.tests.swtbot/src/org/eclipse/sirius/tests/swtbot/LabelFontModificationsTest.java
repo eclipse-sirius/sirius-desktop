@@ -750,11 +750,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         }
 
         // Undo the change
-        if (TestsUtil.is202309Platform()) {
-            bot.menu("Edit").menu("Undo").click();
-        } else {
-            bot.menu("Edit").menu("Undo ").click();
-        }
+        bot.menu("Edit").menu("Undo ").click();
         // Wait all UI events to ensure that the tabbar is correctly refreshed.
         SWTBotUtils.waitAllUiEvents();
 
@@ -764,11 +760,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         }
 
         // Redo the change
-        if (TestsUtil.is202309Platform()) {
-            bot.menu("Edit").menu("Redo").click();
-        } else {
-            bot.menu("Edit").menu("Redo ").click();
-        }
+        bot.menu("Edit").menu("Redo ").click();
         // Wait all UI events to ensure that the tabbar is correctly refreshed.
         SWTBotUtils.waitAllUiEvents();
 

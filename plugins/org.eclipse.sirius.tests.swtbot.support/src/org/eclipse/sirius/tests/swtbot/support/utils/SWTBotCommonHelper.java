@@ -22,7 +22,6 @@ import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.SessionSavedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
@@ -117,12 +116,7 @@ public final class SWTBotCommonHelper {
      * Close the current editor.
      */
     public static void closeCurrentEditor() {
-        if (TestsUtil.is202006Platform()) {
-            SWTBotSiriusHelper.menu(SWTBotCommonHelper.bot, SWTBotCommonHelper.FILE).menu("Close Editor").click();
-        } else {
-            SWTBotSiriusHelper.menu(SWTBotCommonHelper.bot, SWTBotCommonHelper.FILE).menu("Close").click();
-        }
-
+        SWTBotSiriusHelper.menu(SWTBotCommonHelper.bot, SWTBotCommonHelper.FILE).menu("Close All Editors").click();
     }
 
     /**
