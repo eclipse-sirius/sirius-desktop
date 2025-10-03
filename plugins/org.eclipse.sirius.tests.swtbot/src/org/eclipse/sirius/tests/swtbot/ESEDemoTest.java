@@ -16,7 +16,6 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.requests.DirectEditRequest;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UISessionCreationWizardFlow.SessionChoice;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
@@ -27,7 +26,6 @@ import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotCommonHelper;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
-import org.eclipse.swtbot.swt.finder.results.VoidResult;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
@@ -41,8 +39,6 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 public class ESEDemoTest extends AbstractScenarioTestCase {
 
     private final String[] viewpointsSelection = new String[] { "Design", "Quality" };
-
-    private UILocalSession localSession;
 
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
@@ -97,12 +93,7 @@ public class ESEDemoTest extends AbstractScenarioTestCase {
         request.getExtendedData().put("directedit_extendeddata_initial_char", 'a');
 
         final EditPart part = editor.getEditPart(NEW_ECLASS_1).part();
-        UIThreadRunnable.syncExec(new VoidResult() {
-            @Override
-            public void run() {
-                part.performRequest(request);
-            }
-        });
+        UIThreadRunnable.syncExec(() -> part.performRequest(request));
 
         editor.directEditType("MySuperClassForEse");
 

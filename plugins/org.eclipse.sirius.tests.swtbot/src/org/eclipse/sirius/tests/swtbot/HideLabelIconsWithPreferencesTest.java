@@ -296,7 +296,7 @@ public class HideLabelIconsWithPreferencesTest extends AbstractSiriusSwtBotGefTe
      *            indicates if all label icons of connectors (edges) should be hidden
      */
     protected void changeHideLabelIconPreferences(boolean hideLabelIconsForShapes, boolean hideLabelIconsForConnectors) {
-        bot.menu("Window").menu("Preferences").click();
+        bot.menu("Window").menu("Preferences...").click();
         SWTBot preferenceBot = SWTBotSiriusHelper.getShellBot("Preferences");
         preferenceBot.tree().getTreeItem("Sirius").expand().select().getNode("Sirius Diagram").expand().select().getNode("Appearance").select();
 
@@ -325,7 +325,7 @@ public class HideLabelIconsWithPreferencesTest extends AbstractSiriusSwtBotGefTe
      *            expected value for the hide label icons for connectors properties
      */
     protected void checkHideLabelIconPreferences(boolean expectedHideLabelIconsForShapes, boolean expectedHideLabelIconsForConnectors) {
-        bot.menu("Window").menu("Preferences").click();
+        bot.menu("Window").menu("Preferences...").click();
         SWTBot preferenceBot = SWTBotSiriusHelper.getShellBot("Preferences");
         preferenceBot.tree().getTreeItem("Sirius").expand().select().getNode("Sirius Diagram").expand().select().getNode("Appearance").select();
 
