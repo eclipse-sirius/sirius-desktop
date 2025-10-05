@@ -1,0 +1,22 @@
+/*******************************************************************************
+ * Copyright (c) 2025 Obeo
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License 2.0
+ * which accompanies this distribution, and is available at
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ *******************************************************************************/
+
+.View#org-eclipse-ui-views-PropertySheet Composite Text.siriusVSMEditorInterpretedExpression {
+	background-color: #fff5b5;
+}
+
+.View#org-eclipse-ui-views-PropertySheet  Composite Text.siriusVSMEditorTranslatableMessage {
+	background-color: #d4e5f7;
+}
+
+.View#org-eclipse-ui-views-PropertySheet  Composite Text.siriusVSMEditorTypeName {
+	background-color: #ccf2a6;
+}
