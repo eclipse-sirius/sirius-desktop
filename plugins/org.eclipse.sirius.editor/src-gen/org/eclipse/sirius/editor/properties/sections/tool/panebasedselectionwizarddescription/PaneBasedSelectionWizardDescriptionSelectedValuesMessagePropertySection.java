@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -83,6 +83,7 @@ public class PaneBasedSelectionWizardDescriptionSelectedValuesMessagePropertySec
          * We set the color as it's a TranslatableMessage
          */
         text.setBackground(SiriusEditor.getColorRegistry().get("light_blue"));
+        text.setData("org.eclipse.e4.ui.css.CssClassName", "siriusVSMEditorTranslatableMessage");
 
         // Start of user code create controls
 
