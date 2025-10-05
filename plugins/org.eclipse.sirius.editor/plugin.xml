@@ -1429,6 +1429,22 @@
            type="java.lang.Object">
      </propertyTester>
   </extension>
+   <extension
+        point="org.eclipse.e4.ui.css.swt.theme">
+     <stylesheet uri="css/sirius_vsm_editor.css" />
+     <stylesheet
+           uri="css/sirius_vsm_editor.css">
+        <themeid
+              refid="org.eclipse.e4.ui.css.theme.e4_dark">
+        </themeid>
+     </stylesheet>
+     <stylesheet
+           uri="css/sirius_vsm_editor.css">
+        <themeid
+              refid="org.eclipse.e4.ui.css.theme.e4_default">
+        </themeid>
+     </stylesheet>
+  </extension>
     
  <!-- End of user code plugin.xml end specifics  -->
 </plugin>
