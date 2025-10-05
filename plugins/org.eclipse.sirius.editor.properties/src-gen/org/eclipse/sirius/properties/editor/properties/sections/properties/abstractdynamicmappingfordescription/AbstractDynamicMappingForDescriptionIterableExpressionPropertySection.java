@@ -89,6 +89,7 @@ public class AbstractDynamicMappingForDescriptionIterableExpressionPropertySecti
          * We set the color as it's a InterpretedExpression
          */
         text.setBackground(SiriusEditor.getColorRegistry().get("yellow"));
+        text.setData("org.eclipse.e4.ui.css.CssClassName", "siriusVSMEditorInterpretedExpression");
 
         nameLabel.setFont(SiriusEditor.getFontRegistry().get("required"));
 
