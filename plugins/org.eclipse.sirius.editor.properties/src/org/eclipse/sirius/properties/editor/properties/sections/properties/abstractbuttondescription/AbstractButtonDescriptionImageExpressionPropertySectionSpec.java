@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 Obeo.
+ * Copyright (c) 2017, 2025 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -64,6 +64,7 @@ public class AbstractButtonDescriptionImageExpressionPropertySectionSpec extends
          * We set the color as it's a InterpretedExpression
          */
         text.setBackground(SiriusEditor.getColorRegistry().get("yellow"));
+        text.setData("org.eclipse.e4.ui.css.CssClassName", "siriusVSMEditorInterpretedExpression");
 
         TypeContentProposalProvider.bindPluginsCompletionProcessors(this, text);
     }

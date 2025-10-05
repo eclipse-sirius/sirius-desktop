@@ -83,6 +83,7 @@ public class AbstractGroupDescriptionDomainClassPropertySection extends Abstract
          * We set the color as it's a TypeName
          */
         text.setBackground(SiriusEditor.getColorRegistry().get("green"));
+        text.setData("org.eclipse.e4.ui.css.CssClassName", "siriusVSMEditorTypeName");
 
         TypeContentProposalProvider.bindCompletionProcessor(this, text);
 
