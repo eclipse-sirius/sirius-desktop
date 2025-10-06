@@ -9,6 +9,10 @@
  * SPDX-License-Identifier: EPL-2.0
  *******************************************************************************/
 
+.View#org-eclipse-ui-views-PropertySheet  Composite Text.siriusVSMEditorFeatureName {
+	background-color: #e3f9cc;
+}
+
 .View#org-eclipse-ui-views-PropertySheet Composite Text.siriusVSMEditorInterpretedExpression {
 	background-color: #fff5b5;
 }
