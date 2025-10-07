@@ -74,7 +74,7 @@ public class AcceleoQueryLanguageCompletionTests extends AbstractCompletionTestC
         ContentInstanceContext cic = new ContentInstanceContext(c, "aql:self.na", 11);
         List<ContentProposal> proposals = this.getProposals(cic);
 
-        assertEquals(1, proposals.size());
+        assertEquals(3, proposals.size());
 
         if (proposals.get(0) instanceof ContentProposalWithReplacement) {
             ContentProposalWithReplacement proposalWithReplacement = (ContentProposalWithReplacement) proposals.get(0);
@@ -95,7 +95,7 @@ public class AcceleoQueryLanguageCompletionTests extends AbstractCompletionTestC
 
         List<ContentProposal> proposals = getProposals(contentContext);
 
-        assertEquals(1, proposals.size());
+        assertEquals(3, proposals.size());
 
         ContentProposal proposal = proposals.get(0);
         assertEquals("me", proposal.getProposal());
@@ -181,8 +181,8 @@ public class AcceleoQueryLanguageCompletionTests extends AbstractCompletionTestC
 
         ContentInstanceContext cic = new ContentInstanceContext(c, "aql:self.nana", "aql:self.na".length());
         List<ContentProposal> proposals = this.getProposals(cic);
-
-        assertEquals(1, proposals.size());
+        
+        assertEquals(3, proposals.size());
 
         if (proposals.get(0) instanceof ContentProposalWithReplacement) {
             // The proposal should be to insert "name" right after the dot and replacing the first "na".
@@ -203,7 +203,7 @@ public class AcceleoQueryLanguageCompletionTests extends AbstractCompletionTestC
         ContentInstanceContext cic = new ContentInstanceContext(c, "aql:self.nam", "aql:self.na".length());
         List<ContentProposal> proposals = this.getProposals(cic);
 
-        assertEquals(1, proposals.size());
+        assertEquals(3, proposals.size());
 
         if (proposals.get(0) instanceof ContentProposalWithReplacement) {
             ContentProposalWithReplacement proposalWithReplacement = (ContentProposalWithReplacement) proposals.get(0);
