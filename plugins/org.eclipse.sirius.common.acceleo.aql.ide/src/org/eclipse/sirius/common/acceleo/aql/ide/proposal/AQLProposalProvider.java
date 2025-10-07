@@ -130,10 +130,10 @@ public class AQLProposalProvider implements IProposalProvider {
             if (proposalAcceptanceStyle.equals(ProposalAcceptanceStyle.PROPOSAL_INSERT)) {
                 // as the TextContentProposalProvider uses the ContentProposalAdapter.PROPOSAL_INSERT style, we remove a
                 // part of the proposal
-                proposal = propFromAQL.getProposal().substring(completionResult.getReplacementLength());
+                proposal = propFromAQL.getProposal().substring(completionResult.getReplacementLength() - completionResult.getRemaining().length());
                 contentProposal = ContentProposalBuilder.proposal(proposal, propFromAQL.toString(), propFromAQL.getDescription(), propFromAQL.getCursorOffset()).build();
             } else if (proposalAcceptanceStyle.equals(ProposalAcceptanceStyle.PROPOSAL_REPLACE)) {
-                int length = completionResult.getReplacementLength() + completionResult.getRemaining().length();
+                int length = completionResult.getReplacementLength();
                 proposal = propFromAQL.getProposal();
                 contentProposal = ContentProposalBuilder.proposal(proposal, propFromAQL.toString(), propFromAQL.getDescription(), propFromAQL.getCursorOffset()).withReplacement(offset, length)
                         .build();
