@@ -761,7 +761,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="OpToRef" sourceMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClasses']/@defaultLayer/@containerMappings[name='Operations']" targetMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClasses']/@defaultLayer/@edgeMappings[name='References']" targetFinderExpression="aql:self.eContainer().eReferences->select(ref | ref.eType = self.eType))" sourceFinderExpression="aql:self" domainClass="ecore::EOperation" useDomainElement="true">
+        <edgeMappings name="OpToRef" sourceMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClasses']/@defaultLayer/@containerMappings[name='Operations']" targetMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClasses']/@defaultLayer/@edgeMappings[name='References']" targetFinderExpression="aql:self.eContainer().eReferences->select(ref | ref.eType = self.eType)" sourceFinderExpression="aql:self" domainClass="ecore::EOperation" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelSize="12" showIcon="false">
@@ -846,7 +846,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="OpToRef" sourceMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClassesReverse']/@defaultLayer/@edgeMappings[name='References']" targetMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClassesReverse']/@defaultLayer/@containerMappings[name='Operations']" targetFinderExpression="aql:self" sourceFinderExpression="aql:self.eContainer().eReferences->select(ref | ref.eType = self.eType))" domainClass="ecore::EOperation" useDomainElement="true">
+        <edgeMappings name="OpToRef" sourceMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClassesReverse']/@defaultLayer/@edgeMappings[name='References']" targetMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClassesReverse']/@defaultLayer/@containerMappings[name='Operations']" targetFinderExpression="aql:self" sourceFinderExpression="aql:self.eContainer().eReferences->select(ref | ref.eType = self.eType)" domainClass="ecore::EOperation" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelSize="12" showIcon="false">
@@ -1242,7 +1242,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="OpToRef" sourceMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClassesReverse_nodeOrderReverse']/@defaultLayer/@edgeMappings[name='References']" targetMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClassesReverse_nodeOrderReverse']/@defaultLayer/@containerMappings[name='Operations']" targetFinderExpression="aql:self" sourceFinderExpression="aql:self.eContainer().eReferences->select(ref | ref.eType = self.eType))" domainClass="ecore::EOperation" useDomainElement="true">
+        <edgeMappings name="OpToRef" sourceMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClassesReverse_nodeOrderReverse']/@defaultLayer/@edgeMappings[name='References']" targetMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClassesReverse_nodeOrderReverse']/@defaultLayer/@containerMappings[name='Operations']" targetFinderExpression="aql:self" sourceFinderExpression="aql:self.eContainer().eReferences->select(ref | ref.eType = self.eType)" domainClass="ecore::EOperation" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelSize="12" showIcon="false">

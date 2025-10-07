@@ -177,7 +177,7 @@ public class EntitiesDiagramBackgroundTests extends SiriusDiagramTestCase implem
         color.setName("myComputedColor"); //$NON-NLS-1$
         color.setRed("aql:255-diagram.ownedDiagramElements->size()*16"); //$NON-NLS-1$
         color.setGreen("aql:255"); //$NON-NLS-1$
-        color.setBlue("aql:255f"); //$NON-NLS-1$
+        color.setBlue("aql:255"); //$NON-NLS-1$
         return color;
     }
 
