@@ -80,7 +80,7 @@
           </defaultStyle>
         </subItemMappings>
         <create name="CreatePackageToolTree" label="%EPackageCreationTool">
-          <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="[element/]">
+          <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:element">
             <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages"/>
           </firstModelOperation>
           <variables name="root" documentation="The semantic element of the tree."/>
