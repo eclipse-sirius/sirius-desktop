@@ -123,7 +123,7 @@
           <ownedTools xsi:type="tool:DirectEditLabel" name="EditDataLabel">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="[getDataID(arg0)/]"/>
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="expr" valueExpression="[getDataExpression(arg0)/]"/>
               </firstModelOperations>
@@ -182,7 +182,7 @@
           <ownedTools xsi:type="tool:DirectEditLabel" name="EditTransitionLabel">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="event" valueExpression="[getTransitionEvent(arg0)/]"/>
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="cond" valueExpression="[getTransitionCondition(arg0)/]"/>
               </firstModelOperations>

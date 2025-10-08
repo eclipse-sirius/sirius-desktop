@@ -17,20 +17,20 @@
           </style>
         </containerMappings>
         <toolSections name="Tool" icon="icon">
-          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="Wizard" iconPath="/org.eclipse.sirius.tests.junit/icons/DiagramMatchEngine.gif" candidatesExpression="[self/]">
+          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="Wizard" iconPath="/org.eclipse.sirius.tests.junit/icons/DiagramMatchEngine.gif" candidatesExpression="aql:self">
             <element name="element"/>
             <containerView name="containerView"/>
             <container name="container"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[self/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:SelectionWizardDescription" name="Wizard2" candidatesExpression="[self/]" iconPath="/org.eclipse.sirius.tests.junit/plugin.xml" windowImagePath="C:\images\image.png">
+          <ownedTools xsi:type="tool:SelectionWizardDescription" name="Wizard2" candidatesExpression="aql:self" iconPath="/org.eclipse.sirius.tests.junit/plugin.xml" windowImagePath="C:\images\image.png">
             <element name="element"/>
             <containerView name="containerView"/>
             <container name="container"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[self/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self"/>
             </initialOperation>
           </ownedTools>
         </toolSections>

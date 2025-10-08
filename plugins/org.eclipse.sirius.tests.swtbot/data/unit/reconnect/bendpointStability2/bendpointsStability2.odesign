@@ -14,7 +14,7 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="bendpointsStabilityBorderedDiag" domainClass="EPackage">
       <defaultLayer name="Default">
-        <nodeMappings name="NodeRoot" semanticCandidatesExpression="[self/]" domainClass="EPackage" reusedBorderedNodeMappings="//@ownedViewpoints[name='bendpointsStabilityViewpoint']/@ownedRepresentations[name='bendpointsStabilityDiag']/@defaultLayer/@nodeMappings[name='ClassBorderedNode']">
+        <nodeMappings name="NodeRoot" semanticCandidatesExpression="aql:self" domainClass="EPackage" reusedBorderedNodeMappings="//@ownedViewpoints[name='bendpointsStabilityViewpoint']/@ownedRepresentations[name='bendpointsStabilityDiag']/@defaultLayer/@nodeMappings[name='ClassBorderedNode']">
           <style xsi:type="style:BundledImageDescription" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -29,7 +29,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="Container to Container" sourceMapping="//@ownedViewpoints[name='bendpointsStabilityViewpoint']/@ownedRepresentations[name='bendpointsStabilityBorderedDiag']/@defaultLayer/@containerMappings[name='SuperContainer']" targetMapping="//@ownedViewpoints[name='bendpointsStabilityViewpoint']/@ownedRepresentations[name='bendpointsStabilityBorderedDiag']/@defaultLayer/@containerMappings[name='SuperContainer2']" targetFinderExpression="[self/]">
+        <edgeMappings name="Container to Container" sourceMapping="//@ownedViewpoints[name='bendpointsStabilityViewpoint']/@ownedRepresentations[name='bendpointsStabilityBorderedDiag']/@defaultLayer/@containerMappings[name='SuperContainer']" targetMapping="//@ownedViewpoints[name='bendpointsStabilityViewpoint']/@ownedRepresentations[name='bendpointsStabilityBorderedDiag']/@defaultLayer/@containerMappings[name='SuperContainer2']" targetFinderExpression="aql:self">
           <style sizeComputationExpression="2" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -37,7 +37,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="Container to Container 2" sourceMapping="//@ownedViewpoints[name='bendpointsStabilityViewpoint']/@ownedRepresentations[name='bendpointsStabilityBorderedDiag']/@defaultLayer/@containerMappings[name='SuperContainer2']" targetMapping="//@ownedViewpoints[name='bendpointsStabilityViewpoint']/@ownedRepresentations[name='bendpointsStabilityBorderedDiag']/@defaultLayer/@containerMappings[name='SuperContainer']" targetFinderExpression="[self/]">
+        <edgeMappings name="Container to Container 2" sourceMapping="//@ownedViewpoints[name='bendpointsStabilityViewpoint']/@ownedRepresentations[name='bendpointsStabilityBorderedDiag']/@defaultLayer/@containerMappings[name='SuperContainer2']" targetMapping="//@ownedViewpoints[name='bendpointsStabilityViewpoint']/@ownedRepresentations[name='bendpointsStabilityBorderedDiag']/@defaultLayer/@containerMappings[name='SuperContainer']" targetFinderExpression="aql:self">
           <style sizeComputationExpression="2" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -69,7 +69,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="Container3 to Node" sourceMapping="//@ownedViewpoints[name='bendpointsStabilityViewpoint']/@ownedRepresentations[name='bendpointsStabilityBorderedDiag']/@defaultLayer/@containerMappings[name='SuperContainer3']" targetMapping="//@ownedViewpoints[name='bendpointsStabilityViewpoint']/@ownedRepresentations[name='bendpointsStabilityBorderedDiag']/@defaultLayer/@nodeMappings[name='NodeRoot']" targetFinderExpression="[self/]">
+        <edgeMappings name="Container3 to Node" sourceMapping="//@ownedViewpoints[name='bendpointsStabilityViewpoint']/@ownedRepresentations[name='bendpointsStabilityBorderedDiag']/@defaultLayer/@containerMappings[name='SuperContainer3']" targetMapping="//@ownedViewpoints[name='bendpointsStabilityViewpoint']/@ownedRepresentations[name='bendpointsStabilityBorderedDiag']/@defaultLayer/@nodeMappings[name='NodeRoot']" targetFinderExpression="aql:self">
           <style sizeComputationExpression="2" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -77,7 +77,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="Node to Container3" sourceMapping="//@ownedViewpoints[name='bendpointsStabilityViewpoint']/@ownedRepresentations[name='bendpointsStabilityBorderedDiag']/@defaultLayer/@nodeMappings[name='NodeRoot']" targetMapping="//@ownedViewpoints[name='bendpointsStabilityViewpoint']/@ownedRepresentations[name='bendpointsStabilityBorderedDiag']/@defaultLayer/@containerMappings[name='SuperContainer3']" targetFinderExpression="[self/]">
+        <edgeMappings name="Node to Container3" sourceMapping="//@ownedViewpoints[name='bendpointsStabilityViewpoint']/@ownedRepresentations[name='bendpointsStabilityBorderedDiag']/@defaultLayer/@nodeMappings[name='NodeRoot']" targetMapping="//@ownedViewpoints[name='bendpointsStabilityViewpoint']/@ownedRepresentations[name='bendpointsStabilityBorderedDiag']/@defaultLayer/@containerMappings[name='SuperContainer3']" targetFinderExpression="aql:self">
           <style sizeComputationExpression="2" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -101,7 +101,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <containerMappings name="SuperContainer2" semanticCandidatesExpression="[self/]" domainClass="EPackage">
+        <containerMappings name="SuperContainer2" semanticCandidatesExpression="aql:self" domainClass="EPackage">
           <subContainerMappings name="Package_List" semanticCandidatesExpression="feature:eAllContents" domainClass="EPackage" childrenPresentation="List">
             <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
