@@ -117,7 +117,7 @@
     </ownedRepresentations>
   </ownedViewpoints>
   <userColorsPalettes name="MyColorPalette">
-    <entries xsi:type="description:InterpolatedColor" name="InterpolatedColor1" colorValueComputationExpression="[eContents()->size()/]">
+    <entries xsi:type="description:InterpolatedColor" name="InterpolatedColor1" colorValueComputationExpression="aql:self.eContents()->size()">
       <colorSteps associatedValue="1">
         <associatedColor href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
       </colorSteps>

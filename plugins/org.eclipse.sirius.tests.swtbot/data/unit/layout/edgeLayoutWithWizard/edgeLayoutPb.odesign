@@ -4,7 +4,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="edgeLayoutPbDiag" domainClass="EPackage">
       <defaultLayer name="Default">
         <edgeMappings name="Ref" semanticCandidatesExpression="feature:eAllContents" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='edgeLayoutPb']/@ownedRepresentations[name='edgeLayoutPbDiag']/@defaultLayer/@containerMappings[name='EPackage']/@borderedNodeMappings[name='EClass']" targetMapping="//@ownedViewpoints[name='edgeLayoutPb']/@ownedRepresentations[name='edgeLayoutPbDiag']/@defaultLayer/@containerMappings[name='EPackage']/@borderedNodeMappings[name='EClass']" targetFinderExpression="aql:self.eAllStructuralFeatures->filter(ecore::EReference).eReferenceType">
-          <style sizeComputationExpression="[eContents()->size()/]">
+          <style sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </edgeMappings>

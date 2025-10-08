@@ -344,7 +344,7 @@
           </centerLabelStyleDescription>
         </style>
         <conditionnalStyles predicateExpression="aql:view.target.memberEnd->first().isNavigableP()  and  view.target.memberEnd->at(2).isNavigableP()">
-          <style sourceArrow="InputArrow" sizeComputationExpression="[eContents()->size()/]">
+          <style sourceArrow="InputArrow" sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription labelSize="10">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -352,7 +352,7 @@
           </style>
         </conditionnalStyles>
         <conditionnalStyles predicateExpression="aql:view.target.memberEnd->at(2).isNavigableP()  and   not view.target.memberEnd->first().isNavigableP()">
-          <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="[eContents()->size()/]">
+          <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription labelSize="10">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -360,7 +360,7 @@
           </style>
         </conditionnalStyles>
         <conditionnalStyles predicateExpression="aql:not view.target.memberEnd->first().isNavigableP()  and   not view.target.memberEnd->at(2).isNavigableP()">
-          <style targetArrow="NoDecoration" sizeComputationExpression="[eContents()->size()/]">
+          <style targetArrow="NoDecoration" sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription labelSize="10">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -376,7 +376,7 @@
           </centerLabelStyleDescription>
         </style>
         <conditionnalStyles predicateExpression="aql:view.target.memberEnd->first().isNavigableP()  and  view.target.memberEnd->at(2).isNavigableP()">
-          <style sourceArrow="InputArrow" sizeComputationExpression="[eContents()->size()/]">
+          <style sourceArrow="InputArrow" sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription labelSize="10">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -384,7 +384,7 @@
           </style>
         </conditionnalStyles>
         <conditionnalStyles predicateExpression="aql:view.target.memberEnd->at(2).isNavigableP()  and   not view.target.memberEnd->first().isNavigableP()">
-          <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="[eContents()->size()/]">
+          <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription labelSize="10">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -392,7 +392,7 @@
           </style>
         </conditionnalStyles>
         <conditionnalStyles predicateExpression="aql:not view.target.memberEnd->first().isNavigableP()  and   not view.target.memberEnd->at(2).isNavigableP()">
-          <style targetArrow="NoDecoration" sizeComputationExpression="[eContents()->size()/]">
+          <style targetArrow="NoDecoration" sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription labelSize="10">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -408,7 +408,7 @@
           </centerLabelStyleDescription>
         </style>
         <conditionnalStyles predicateExpression="aql:view.target.memberEnd->first().isNavigableP()  and  view.target.memberEnd->at(2).isNavigableP()">
-          <style sourceArrow="InputArrow" sizeComputationExpression="[eContents()->size()/]">
+          <style sourceArrow="InputArrow" sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription labelSize="10">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -416,7 +416,7 @@
           </style>
         </conditionnalStyles>
         <conditionnalStyles predicateExpression="aql:view.target.memberEnd->at(2).isNavigableP()  and   not view.target.memberEnd->first().isNavigableP()">
-          <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="[eContents()->size()/]">
+          <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription labelSize="10">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -424,7 +424,7 @@
           </style>
         </conditionnalStyles>
         <conditionnalStyles predicateExpression="aql:not view.target.memberEnd->first().isNavigableP()  and   not view.target.memberEnd->at(2).isNavigableP()">
-          <style targetArrow="NoDecoration" sizeComputationExpression="[eContents()->size()/]">
+          <style targetArrow="NoDecoration" sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription labelSize="10">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -440,7 +440,7 @@
           </centerLabelStyleDescription>
         </style>
         <conditionnalStyles predicateExpression="aql:view.target.memberEnd->first().isNavigableP()  and  view.target.memberEnd->at(2).isNavigableP()">
-          <style sourceArrow="InputArrow" sizeComputationExpression="[eContents()->size()/]">
+          <style sourceArrow="InputArrow" sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription labelSize="10">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -448,7 +448,7 @@
           </style>
         </conditionnalStyles>
         <conditionnalStyles predicateExpression="aql:view.target.memberEnd->at(2).isNavigableP()  and   not view.target.memberEnd->first().isNavigableP()">
-          <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="[eContents()->size()/]">
+          <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription labelSize="10">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -456,7 +456,7 @@
           </style>
         </conditionnalStyles>
         <conditionnalStyles predicateExpression="aql:not view.target.memberEnd->first().isNavigableP()  and   not view.target.memberEnd->at(2).isNavigableP()">
-          <style targetArrow="NoDecoration" sizeComputationExpression="[eContents()->size()/]">
+          <style targetArrow="NoDecoration" sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription labelSize="10">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -472,7 +472,7 @@
           </centerLabelStyleDescription>
         </style>
         <conditionnalStyles predicateExpression="aql:view.target.memberEnd->first().isNavigableP()  and  view.target.memberEnd->at(2).isNavigableP()">
-          <style sourceArrow="InputArrow" sizeComputationExpression="[eContents()->size()/]">
+          <style sourceArrow="InputArrow" sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription labelSize="10">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -480,7 +480,7 @@
           </style>
         </conditionnalStyles>
         <conditionnalStyles predicateExpression="aql:view.target.memberEnd->at(2).isNavigableP()  and   not view.target.memberEnd->first().isNavigableP()">
-          <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="[eContents()->size()/]">
+          <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription labelSize="10">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -488,7 +488,7 @@
           </style>
         </conditionnalStyles>
         <conditionnalStyles predicateExpression="aql:not view.target.memberEnd->first().isNavigableP()  and   not view.target.memberEnd->at(2).isNavigableP()">
-          <style targetArrow="NoDecoration" sizeComputationExpression="[eContents()->size()/]">
+          <style targetArrow="NoDecoration" sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription labelSize="10">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -938,7 +938,7 @@
           </centerLabelStyleDescription>
         </style>
         <conditionnalStyles predicateExpression="aql:self.eContents()->size() > 0">
-          <style sizeComputationExpression="[eContents()->size()/]">
+          <style sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
             <centerLabelStyleDescription labelSize="10">
               <labelFormat>italic</labelFormat>

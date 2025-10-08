@@ -799,7 +799,7 @@
       </additionalLayers>
       <additionalLayers name="layerWithEdgeStyles">
         <edgeMappings name="ESuperType" sourceMapping="//@ownedViewpoints[name='VP-3535_Viewpoint']/@ownedRepresentations[name='VP-3535_Diagram']/@defaultLayer/@nodeMappings[name='EClassNodeWithSquareStyle']" targetMapping="//@ownedViewpoints[name='VP-3535_Viewpoint']/@ownedRepresentations[name='VP-3535_Diagram']/@defaultLayer/@nodeMappings[name='EClassNodeWithSquareStyle']" targetFinderExpression="[eSuperTypes/]">
-          <style xsi:type="style:BracketEdgeStyleDescription" sizeComputationExpression="[eContents()->size()/]">
+          <style xsi:type="style:BracketEdgeStyleDescription" sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <beginLabelStyleDescription labelExpression="['beginSuperType'+name/]" iconPath="/DesignerTestProject/image.bmp">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
