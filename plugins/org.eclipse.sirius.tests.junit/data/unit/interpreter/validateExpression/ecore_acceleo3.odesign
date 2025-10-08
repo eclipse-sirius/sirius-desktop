@@ -632,7 +632,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="EC EClass" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="[eClassifiers/]" domainClass="ecore.EClass" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@toolSections.1/@ownedTools[name='Drop%20attribute'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@toolSections.1/@ownedTools[name='Drop%20operation']" childrenPresentation="List">
+        <containerMappings name="EC EClass" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="ecore.EClass" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@toolSections.1/@ownedTools[name='Drop%20attribute'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@toolSections.1/@ownedTools[name='Drop%20operation']" childrenPresentation="List">
           <subNodeMappings name="EC EAttribute" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20EAttribute%20Name']" semanticCandidatesExpression="[eAttributes/]" domainClass="ecore.EAttribute">
             <style xsi:type="style:BundledImageDescription" labelExpression="[name/]" labelAlignment="LEFT" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1080,7 +1080,7 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:EditionTableDescription" endUserDocumentation="A tabular editor (spreadsheet-like) of the entities in an Ecore model." name="Classes Acceleo3" titleExpression="aql:'Classes in ' + self.name + ' package'" domainClass="ecore.EPackage">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
-      <ownedLineMappings name="Classes lines" domainClass="ecore.EClass" semanticCandidatesExpression="[eClassifiers/]">
+      <ownedLineMappings name="Classes lines" domainClass="ecore.EClass" semanticCandidatesExpression="aql:self.eClassifiers">
         <foregroundConditionalStyle predicateExpression="[abstract/]">
           <style labelSize="10">
             <labelFormat>italic</labelFormat>
@@ -1093,7 +1093,7 @@
         <defaultBackground>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
         </defaultBackground>
-        <ownedSubLines name="Classes lines" domainClass="ecore.EClass" semanticCandidatesExpression="[eClassifiers/]">
+        <ownedSubLines name="Classes lines" domainClass="ecore.EClass" semanticCandidatesExpression="aql:self.eClassifiers">
           <ownedSubLines name="Feature" domainClass="EStructuralFeature" semanticCandidatesExpression="[eStructuralFeatures/]"/>
         </ownedSubLines>
       </ownedLineMappings>

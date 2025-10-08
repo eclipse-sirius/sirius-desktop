@@ -4,7 +4,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="VP-3834_Diagram" initialisation="true" domainClass="EPackage" preconditionExpression="aql:self.eContainer() = null">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <defaultLayer name="Default">
-        <nodeMappings name="EClassMapping" semanticCandidatesExpression="[eClassifiers/]" domainClass="ecore.EClass">
+        <nodeMappings name="EClassMapping" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="ecore.EClass">
           <style xsi:type="style:SquareDescription" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -181,7 +181,7 @@
           </style>
         </nodeMappings>
         <containerMappings xsi:type="description_1:ContainerMappingImport" name="EPackageMappingImportOfL3" preconditionExpression="aql:self.eContainer() &lt;> null" semanticCandidatesExpression="[eSubpackages/]" domainClass="ecore.EPackage" importedMapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentationExtensions[name='VP-3834_DiagramExtension']/@layers[name='L2']/@containerMappings[name='EPackageMappingTer']">
-          <borderedNodeMappings name="EClassBorderedNodeMappingOfL3" semanticCandidatesExpression="[eClassifiers/]" domainClass="ecore.EClass">
+          <borderedNodeMappings name="EClassBorderedNodeMappingOfL3" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="ecore.EClass">
             <borderedNodeMappings name="EAttributeSubBorderedNodeMappingOfL3" semanticCandidatesExpression="[eAttributes/]" domainClass="ecore.EAttribute">
               <style xsi:type="style:SquareDescription" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

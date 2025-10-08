@@ -10,14 +10,14 @@
       </filters>
       <defaultLayer name="Default">
         <containerMappings name="package" semanticCandidatesExpression="[eSubpackages/]" domainClass="EPackage">
-          <borderedNodeMappings name="class" semanticCandidatesExpression="[eClassifiers/]" domainClass="EClass">
+          <borderedNodeMappings name="class" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="EClass">
             <style xsi:type="style:SquareDescription" sizeComputationExpression="1" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </borderedNodeMappings>
-          <borderedNodeMappings name="eenum" semanticCandidatesExpression="[eClassifiers/]" domainClass="EEnum">
+          <borderedNodeMappings name="eenum" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="EEnum">
             <style xsi:type="style:SquareDescription" sizeComputationExpression="1" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

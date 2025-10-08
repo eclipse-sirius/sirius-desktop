@@ -4,61 +4,61 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Diagram" domainClass="ecore.EPackage">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <defaultLayer name="Default">
-        <nodeMappings name="BasicShape" semanticCandidatesExpression="[eClassifiers/]" domainClass="EClass">
+        <nodeMappings name="BasicShape" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="EClass">
           <style xsi:type="style:BundledImageDescription" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="Diamond" semanticCandidatesExpression="[eClassifiers/]" domainClass="EClass">
+        <nodeMappings name="Diamond" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="EClass">
           <style xsi:type="style:LozengeNodeDescription" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="Dot" semanticCandidatesExpression="[eClassifiers/]" domainClass="EClass">
+        <nodeMappings name="Dot" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="EClass">
           <style xsi:type="style:DotDescription" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="Ellipse" semanticCandidatesExpression="[eClassifiers/]" domainClass="EClass">
+        <nodeMappings name="Ellipse" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="EClass">
           <style xsi:type="style:EllipseNodeDescription" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="Gauge" semanticCandidatesExpression="[eClassifiers/]" domainClass="EClass">
+        <nodeMappings name="Gauge" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="EClass">
           <style xsi:type="style:GaugeCompositeStyleDescription" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="Note" semanticCandidatesExpression="[eClassifiers/]" domainClass="EClass">
+        <nodeMappings name="Note" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="EClass">
           <style xsi:type="style:NoteDescription" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="SquareGray" semanticCandidatesExpression="[eClassifiers/]" domainClass="EClass">
+        <nodeMappings name="SquareGray" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="EClass">
           <style xsi:type="style:SquareDescription" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="ImageNode" semanticCandidatesExpression="[eClassifiers/]" domainClass="EClass">
+        <nodeMappings name="ImageNode" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="EClass">
           <style xsi:type="style:WorkspaceImageDescription" sizeComputationExpression="-1" labelPosition="node" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
-        <containerMappings name="Gradient" semanticCandidatesExpression="[eClassifiers/]" domainClass="ecore.EClass">
+        <containerMappings name="Gradient" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="ecore.EClass">
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -66,14 +66,14 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <containerMappings name="Parallelogram" semanticCandidatesExpression="[eClassifiers/]" domainClass="ecore.EClass">
+        <containerMappings name="Parallelogram" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="ecore.EClass">
           <style xsi:type="style:ShapeContainerStyleDescription" borderSizeComputationExpression="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <containerMappings name="ImageContainer" semanticCandidatesExpression="[eClassifiers/]" domainClass="ecore.EClass">
+        <containerMappings name="ImageContainer" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="ecore.EClass">
           <style xsi:type="style:WorkspaceImageDescription" sizeComputationExpression="-1" labelPosition="node" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

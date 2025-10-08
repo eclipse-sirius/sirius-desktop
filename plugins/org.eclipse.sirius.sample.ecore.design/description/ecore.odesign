@@ -804,7 +804,7 @@
       </defaultLayer>
       <additionalLayers name="Content">
         <containerMappings xsi:type="description_1:ContainerMappingImport" name="Package" semanticCandidatesExpression="feature:eAllContents" domainClass="EPackage" importedMapping="//@ownedViewpoints[name='Quality']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Dep%20Package']">
-          <subContainerMappings name="PD EClass" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="[eClassifiers/]" domainClass="EClass" childrenPresentation="List">
+          <subContainerMappings name="PD EClass" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="EClass" childrenPresentation="List">
             <subNodeMappings name="EC EAttribute" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="[eAttributes/]" domainClass="EAttribute">
               <style xsi:type="style:BundledImageDescription" labelExpression="service:render" labelAlignment="LEFT" sizeComputationExpression="1">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

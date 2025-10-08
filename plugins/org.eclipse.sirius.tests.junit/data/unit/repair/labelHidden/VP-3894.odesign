@@ -3,7 +3,7 @@
   <ownedViewpoints name="VP-3894_Viewpoint" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='VP-3894_Viewpoint']/@ownedRepresentations[name='VP-3894_Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='DropClass'] //@ownedViewpoints[name='VP-3894_Viewpoint']/@ownedRepresentations[name='VP-3894_Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20EPackage%20into%20EPackage']" name="VP-3894_Diagram" domainClass="ecore.EPackage">
       <defaultLayer name="Default">
-        <nodeMappings name="EClassMapping" semanticCandidatesExpression="[eClassifiers/]" domainClass="ecore.EClass" dropDescriptions="//@ownedViewpoints[name='VP-3894_Viewpoint']/@ownedRepresentations[name='VP-3894_Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='DropAttribute']">
+        <nodeMappings name="EClassMapping" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="ecore.EClass" dropDescriptions="//@ownedViewpoints[name='VP-3894_Viewpoint']/@ownedRepresentations[name='VP-3894_Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='DropAttribute']">
           <borderedNodeMappings name="EAttributeMapping" semanticCandidatesExpression="[eStructuralFeatures/]" domainClass="EAttribute">
             <style xsi:type="style:SquareDescription" sizeComputationExpression="1" hideLabelByDefault="true">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -17,7 +17,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="EDatatypeMapping" semanticCandidatesExpression="[eClassifiers/]" domainClass="ecore.EDataType">
+        <nodeMappings name="EDatatypeMapping" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="ecore.EDataType">
           <style xsi:type="style:LozengeNodeDescription" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

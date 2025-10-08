@@ -26,7 +26,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <containerMappings name="EClassMapping" semanticCandidatesExpression="[eClassifiers/]" domainClass="ecore.EClass" childrenPresentation="List">
+        <containerMappings name="EClassMapping" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="ecore.EClass" childrenPresentation="List">
           <subNodeMappings name="EAttributeMapping" semanticCandidatesExpression="[eAttributes/]" domainClass="ecore.EAttribute">
             <style xsi:type="style:GaugeCompositeStyleDescription" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_red']"/>

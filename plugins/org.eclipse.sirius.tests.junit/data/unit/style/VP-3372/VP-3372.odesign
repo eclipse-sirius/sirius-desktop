@@ -2,7 +2,7 @@
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="VP-3372" version="8.0.0">
   <ownedViewpoints name="VP-3372">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="VP-3372 diagram" domainClass="EPackage">
-      <nodeMappings name="EClass" semanticCandidatesExpression="[eClassifiers/]" domainClass="EClass">
+      <nodeMappings name="EClass" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="EClass">
         <style xsi:type="style:EllipseNodeDescription" resizeKind="NSEW">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
