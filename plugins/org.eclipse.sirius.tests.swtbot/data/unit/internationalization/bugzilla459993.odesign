@@ -39,14 +39,14 @@
             <menuItemDescription xsi:type="tool_1:OperationAction" label="%operationAction1">
               <view name="views"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]"/>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self"/>
               </initialOperation>
             </menuItemDescription>
           </ownedTools>
           <ownedTools xsi:type="tool_1:OperationAction" name="Operation_Action2" label="%operationAction2">
             <view name="views"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DiagramCreationDescription" name="CreateDiag" label="%bugzillaDiag" diagramDescription="//@ownedViewpoints[name='bugzilla459993']/@ownedRepresentations[name='bugzilla459993Diag']">
@@ -91,7 +91,7 @@
           <menuItemDescriptions xsi:type="tool_1:OperationAction" label="%operationAction1">
             <view name="views"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages"/>
               </firstModelOperations>
             </initialOperation>
