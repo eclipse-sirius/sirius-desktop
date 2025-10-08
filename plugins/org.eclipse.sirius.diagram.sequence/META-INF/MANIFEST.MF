@@ -24,7 +24,6 @@ Export-Package: org.eclipse.sirius.diagram.sequence.business.api.util;version="7
  org.eclipse.sirius.diagram.sequence.internal.tool.command.builders;version="7.5.0";x-internal:=true,
  org.eclipse.sirius.diagram.sequence.tool.internal;version="7.5.0",
  org.eclipse.sirius.diagram.sequence.tool.internal.action.repair;version="7.5.0";x-internal:=true,
- org.eclipse.sirius.diagram.sequence.tool.internal.template;version="7.5.0";x-internal:=true,
  org.eclipse.sirius.diagram.sequence.tool.internal.validation.description.constraints;version="7.5.0";x-internal:=true
 Require-Bundle: org.eclipse.sirius.common;bundle-version="7.5.0",
  org.eclipse.sirius.ecore.extender;bundle-version="7.5.0",

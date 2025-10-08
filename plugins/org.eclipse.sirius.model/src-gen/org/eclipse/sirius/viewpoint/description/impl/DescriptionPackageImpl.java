@@ -63,7 +63,6 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationImportDescription;
-import org.eclipse.sirius.viewpoint.description.RepresentationTemplate;
 import org.eclipse.sirius.viewpoint.description.SelectionDescription;
 import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
 import org.eclipse.sirius.viewpoint.description.SubVariable;
@@ -2529,14 +2528,6 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getRepresentationDescription_ShowOnStartup(), theEcorePackage.getEBoolean(), "showOnStartup", null, 0, 1, RepresentationDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-
-        initEClass(representationTemplateEClass, RepresentationTemplate.class, "RepresentationTemplate", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
-                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getRepresentationTemplate_Name(), theEcorePackage.getEString(), "name", null, 1, 1, RepresentationTemplate.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
-                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEReference(getRepresentationTemplate_OwnedRepresentations(), this.getRepresentationDescription(), null, "ownedRepresentations", null, 0, -1, RepresentationTemplate.class, //$NON-NLS-1$
-                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
-                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(representationImportDescriptionEClass, RepresentationImportDescription.class, "RepresentationImportDescription", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
                 EPackageImpl.IS_GENERATED_INSTANCE_CLASS);

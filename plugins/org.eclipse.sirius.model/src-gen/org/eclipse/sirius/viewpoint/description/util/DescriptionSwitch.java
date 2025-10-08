@@ -54,7 +54,6 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationImportDescription;
-import org.eclipse.sirius.viewpoint.description.RepresentationTemplate;
 import org.eclipse.sirius.viewpoint.description.SelectionDescription;
 import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
 import org.eclipse.sirius.viewpoint.description.SubVariable;
@@ -202,14 +201,6 @@ public class DescriptionSwitch<T> {
             if (result == null) {
                 result = caseIdentifiedElement(representationDescription);
             }
-            if (result == null) {
-                result = defaultCase(theEObject);
-            }
-            return result;
-        }
-        case DescriptionPackage.REPRESENTATION_TEMPLATE: {
-            RepresentationTemplate representationTemplate = (RepresentationTemplate) theEObject;
-            T result = caseRepresentationTemplate(representationTemplate);
             if (result == null) {
                 result = defaultCase(theEObject);
             }
@@ -726,20 +717,6 @@ public class DescriptionSwitch<T> {
         return null;
     }
 
-    /**
-     * Returns the result of interpreting the object as an instance of '<em>Representation Template</em>'. <!--
-     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
-     * end-user-doc -->
-     *
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '<em>Representation Template</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseRepresentationTemplate(RepresentationTemplate object) {
-        return null;
-    }
 
     /**
      * Returns the result of interpreting the object as an instance of '<em>Representation Import Description</em>'.

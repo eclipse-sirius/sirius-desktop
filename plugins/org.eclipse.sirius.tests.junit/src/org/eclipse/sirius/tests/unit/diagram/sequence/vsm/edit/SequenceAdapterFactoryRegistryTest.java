@@ -20,7 +20,6 @@ import org.eclipse.sirius.diagram.sequence.SequencePackage;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
 import org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage;
-import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
 import org.eclipse.sirius.tests.support.api.AbstractItemProviderAdapterFactoryRegistryTestCase;
 
 /**
@@ -38,7 +37,6 @@ public class SequenceAdapterFactoryRegistryTest extends AbstractItemProviderAdap
         exposedPackages.add(SequencePackage.eINSTANCE);
         exposedPackages.add(DescriptionPackage.eINSTANCE);
         exposedPackages.add(ToolPackage.eINSTANCE);
-        exposedPackages.add(TemplatePackage.eINSTANCE);
         exposedPackages.add(OrderingPackage.eINSTANCE);
 
         setPackagesWithExposedAdapterFactory(exposedPackages);

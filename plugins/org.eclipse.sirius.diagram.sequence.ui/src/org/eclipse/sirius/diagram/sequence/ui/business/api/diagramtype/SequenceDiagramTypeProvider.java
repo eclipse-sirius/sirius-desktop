@@ -69,7 +69,6 @@ import org.eclipse.sirius.diagram.sequence.description.tool.ToolFactory;
 import org.eclipse.sirius.diagram.sequence.description.tool.provider.ToolItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.sequence.ordering.provider.OrderingItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.sequence.provider.SequenceItemProviderAdapterFactory;
-import org.eclipse.sirius.diagram.sequence.template.provider.TemplateItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.sequence.ui.Messages;
 import org.eclipse.sirius.diagram.sequence.ui.business.internal.diagramtype.SequenceCollapseUpdater;
 import org.eclipse.sirius.diagram.sequence.ui.business.internal.diagramtype.SequenceToolInterpretedExpressionSwitch;
@@ -167,7 +166,6 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
     public AdapterFactory getAdapterFactory() {
         ComposedAdapterFactory composed = new ComposedAdapterFactory();
         composed.addAdapterFactory(new SequenceItemProviderAdapterFactory());
-        composed.addAdapterFactory(new TemplateItemProviderAdapterFactory());
         composed.addAdapterFactory(new DescriptionItemProviderAdapterFactory());
         composed.addAdapterFactory(new OrderingItemProviderAdapterFactory());
         composed.addAdapterFactory(new ToolItemProviderAdapterFactory());

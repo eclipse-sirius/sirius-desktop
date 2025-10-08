@@ -30,7 +30,6 @@ import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.featureExtensions.FeatureExtensionsUIManager;
-import org.eclipse.sirius.ui.business.api.template.RepresentationTemplateEditManager;
 import org.eclipse.sirius.ui.tools.internal.util.EMFCoreUtil;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -306,9 +305,6 @@ public class ViewpointItemProvider extends DocumentedElementItemProvider {
 
         // add known representation descriptions
         newChildDescriptors.addAll(DialectUIManager.INSTANCE.provideNewChildDescriptors());
-
-        // add known representation templates
-        newChildDescriptors.addAll(RepresentationTemplateEditManager.INSTANCE.provideNewChildDescriptors());
 
         // add known feature extensions
         newChildDescriptors.addAll(FeatureExtensionsUIManager.INSTANCE.provideNewChildDescriptors());

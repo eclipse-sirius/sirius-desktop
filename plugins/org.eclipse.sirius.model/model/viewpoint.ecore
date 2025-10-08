@@ -401,7 +401,7 @@
         </eAnnotations>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EReference" name="ownedTemplates" upperBound="-1"
-          eType="#//description/RepresentationTemplate" containment="true" eKeys="#//description/RepresentationTemplate/name"/>
+          containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="conflicts" upperBound="-1"
           eType="#//description/URI"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="reuses" upperBound="-1"
@@ -436,12 +436,6 @@
         </eAnnotations>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="showOnStartup" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="RepresentationTemplate" abstract="true">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1"
-          eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="ownedRepresentations"
-          upperBound="-1" eType="#//description/RepresentationDescription" containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="RepresentationImportDescription" abstract="true"
         interface="true" eSuperTypes="#//description/RepresentationDescription"/>

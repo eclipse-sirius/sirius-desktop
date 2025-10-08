@@ -27,7 +27,6 @@ import org.eclipse.sirius.tests.unit.diagram.sequence.structure.SequenceDiagramE
 import org.eclipse.sirius.tests.unit.diagram.sequence.structure.SequenceDiagramElementsNavigationWithCFTests;
 import org.eclipse.sirius.tests.unit.diagram.sequence.structure.SequenceDiagramElementsParentEventsTests;
 import org.eclipse.sirius.tests.unit.diagram.sequence.structure.SequenceDiagramElementsSubEventsTests;
-import org.eclipse.sirius.tests.unit.diagram.sequence.template.TemplateToDiagramDescriptionTest;
 import org.eclipse.sirius.tests.unit.diagram.sequence.vsm.edit.SequenceAdapterFactoryRegistryTest;
 import org.eclipse.sirius.tests.unit.diagram.sequence.vsm.interpreted.expression.variables.AbstractToolDescription_Precondition_AbstractVariable_Access_Tests;
 
@@ -60,7 +59,6 @@ public class AllSequenceDiagramsPluginTests extends TestCase {
         final TestSuite suite = new TestSuite("Sequence Diagrams Plug-in Tests");
         suite.addTestSuite(SiriusSequenceDiagramTests.class);
         suite.addTestSuite(SequenceAdapterFactoryRegistryTest.class);
-        suite.addTestSuite(TemplateToDiagramDescriptionTest.class);
         suite.addTestSuite(NewChildMenusExtensionTests.class);
         suite.addTestSuite(SequenceDiagramElementsIdentificationTests.class);
         suite.addTestSuite(SequenceDiagramElementsNavigationTests.class);

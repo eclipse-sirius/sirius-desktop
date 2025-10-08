@@ -205,22 +205,6 @@ public interface Viewpoint extends DocumentedElement, Component, EndUserDocument
     void setIcon(String value);
 
     /**
-     * Returns the value of the '<em><b>Owned Templates</b></em>' containment reference list. The list contents are of
-     * type {@link org.eclipse.sirius.viewpoint.description.RepresentationTemplate}. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Owned Templates</em>' containment reference list isn't clear, there really should be
-     * more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
-     *
-     * @return the value of the '<em>Owned Templates</em>' containment reference list.
-     * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getViewpoint_OwnedTemplates()
-     * @model containment="true" resolveProxies="true" keys="name"
-     * @generated
-     */
-    EList<RepresentationTemplate> getOwnedTemplates();
-
-    /**
      * Returns the value of the '<em><b>Conflicts</b></em>' attribute list. The list contents are of type
      * {@link org.eclipse.emf.common.util.URI}. <!-- begin-user-doc -->
      * <p>

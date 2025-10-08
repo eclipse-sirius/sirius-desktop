@@ -47,8 +47,6 @@ import org.eclipse.sirius.diagram.sequence.description.tool.impl.ToolPackageImpl
 import org.eclipse.sirius.diagram.sequence.impl.SequencePackageImpl;
 import org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage;
 import org.eclipse.sirius.diagram.sequence.ordering.impl.OrderingPackageImpl;
-import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
-import org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
@@ -265,22 +263,18 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         ToolPackageImpl theToolPackage = (ToolPackageImpl) (registeredPackage instanceof ToolPackageImpl ? registeredPackage : ToolPackage.eINSTANCE);
         registeredPackage = EPackage.Registry.INSTANCE.getEPackage(OrderingPackage.eNS_URI);
         OrderingPackageImpl theOrderingPackage = (OrderingPackageImpl) (registeredPackage instanceof OrderingPackageImpl ? registeredPackage : OrderingPackage.eINSTANCE);
-        registeredPackage = EPackage.Registry.INSTANCE.getEPackage(TemplatePackage.eNS_URI);
-        TemplatePackageImpl theTemplatePackage = (TemplatePackageImpl) (registeredPackage instanceof TemplatePackageImpl ? registeredPackage : TemplatePackage.eINSTANCE);
 
         // Create package meta-data objects
         theDescriptionPackage.createPackageContents();
         theSequencePackage.createPackageContents();
         theToolPackage.createPackageContents();
         theOrderingPackage.createPackageContents();
-        theTemplatePackage.createPackageContents();
 
         // Initialize created meta-data
         theDescriptionPackage.initializePackageContents();
         theSequencePackage.initializePackageContents();
         theToolPackage.initializePackageContents();
         theOrderingPackage.initializePackageContents();
-        theTemplatePackage.initializePackageContents();
 
         // Mark meta-data to indicate it can't be changed
         theDescriptionPackage.freeze();

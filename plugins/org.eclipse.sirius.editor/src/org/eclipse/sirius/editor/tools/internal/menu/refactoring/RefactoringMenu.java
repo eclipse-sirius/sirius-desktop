@@ -20,7 +20,6 @@ import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractEObjectRefactoringAction;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractMenuBuilder;
-import org.eclipse.sirius.editor.tools.internal.menu.refactoring.border.MaterializeTemplateRefactoring;
 import org.eclipse.ui.IEditorPart;
 
 import com.google.common.base.Predicate;
@@ -59,7 +58,6 @@ public class RefactoringMenu extends AbstractMenuBuilder {
 
         // We first build all candidate Actions
         Set<AbstractEObjectRefactoringAction> allActions = new LinkedHashSet<>();
-        allActions.add(new MaterializeTemplateRefactoring(editor, selection));
 
         // We only add to the menu the actions that have a valid selection
         return Sets.filter(allActions, new Predicate<AbstractEObjectRefactoringAction>() {

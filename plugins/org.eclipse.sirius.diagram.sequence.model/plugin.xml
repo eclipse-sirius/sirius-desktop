@@ -43,11 +43,5 @@
         genModel = "model/sequence.genmodel" />
   </extension>
   
-  <extension point="org.eclipse.emf.ecore.generated_package">
-    <package
-        uri = "http://www.eclipse.org/sirius/diagram/sequence/template/2.0.0"
-        class = "org.eclipse.sirius.diagram.sequence.template.TemplatePackage"
-        genModel = "model/sequence.genmodel" />
-  </extension>
-  
+
 </plugin>

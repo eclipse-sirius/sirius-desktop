@@ -35,7 +35,6 @@ import org.eclipse.sirius.viewpoint.description.JavaExtension;
 import org.eclipse.sirius.viewpoint.description.MetamodelExtensionSetting;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
-import org.eclipse.sirius.viewpoint.description.RepresentationTemplate;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
 
@@ -232,16 +231,6 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
      * @ordered
      */
     protected String icon = ViewpointImpl.ICON_EDEFAULT;
-
-    /**
-     * The cached value of the '{@link #getOwnedTemplates() <em>Owned Templates</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @see #getOwnedTemplates()
-     * @generated
-     * @ordered
-     */
-    protected EList<RepresentationTemplate> ownedTemplates;
 
     /**
      * The cached value of the '{@link #getConflicts() <em>Conflicts</em>}' attribute list. <!-- begin-user-doc --> <!--
@@ -562,19 +551,6 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
      * @generated
      */
     @Override
-    public EList<RepresentationTemplate> getOwnedTemplates() {
-        if (ownedTemplates == null) {
-            ownedTemplates = new EObjectContainmentEList.Resolving<>(RepresentationTemplate.class, this, DescriptionPackage.VIEWPOINT__OWNED_TEMPLATES);
-        }
-        return ownedTemplates;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
     public EList<URI> getConflicts() {
         if (conflicts == null) {
             conflicts = new EDataTypeUniqueEList<>(URI.class, this, DescriptionPackage.VIEWPOINT__CONFLICTS);
@@ -640,8 +616,6 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
             return ((InternalEList<?>) getOwnedMMExtensions()).basicRemove(otherEnd, msgs);
         case DescriptionPackage.VIEWPOINT__OWNED_FEATURE_EXTENSIONS:
             return ((InternalEList<?>) getOwnedFeatureExtensions()).basicRemove(otherEnd, msgs);
-        case DescriptionPackage.VIEWPOINT__OWNED_TEMPLATES:
-            return ((InternalEList<?>) getOwnedTemplates()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -679,8 +653,6 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
             return getOwnedFeatureExtensions();
         case DescriptionPackage.VIEWPOINT__ICON:
             return getIcon();
-        case DescriptionPackage.VIEWPOINT__OWNED_TEMPLATES:
-            return getOwnedTemplates();
         case DescriptionPackage.VIEWPOINT__CONFLICTS:
             return getConflicts();
         case DescriptionPackage.VIEWPOINT__REUSES:
@@ -737,10 +709,6 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
             return;
         case DescriptionPackage.VIEWPOINT__ICON:
             setIcon((String) newValue);
-            return;
-        case DescriptionPackage.VIEWPOINT__OWNED_TEMPLATES:
-            getOwnedTemplates().clear();
-            getOwnedTemplates().addAll((Collection<? extends RepresentationTemplate>) newValue);
             return;
         case DescriptionPackage.VIEWPOINT__CONFLICTS:
             getConflicts().clear();
@@ -799,9 +767,6 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
         case DescriptionPackage.VIEWPOINT__ICON:
             setIcon(ViewpointImpl.ICON_EDEFAULT);
             return;
-        case DescriptionPackage.VIEWPOINT__OWNED_TEMPLATES:
-            getOwnedTemplates().clear();
-            return;
         case DescriptionPackage.VIEWPOINT__CONFLICTS:
             getConflicts().clear();
             return;
@@ -845,8 +810,6 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
             return ownedFeatureExtensions != null && !ownedFeatureExtensions.isEmpty();
         case DescriptionPackage.VIEWPOINT__ICON:
             return ViewpointImpl.ICON_EDEFAULT == null ? icon != null : !ViewpointImpl.ICON_EDEFAULT.equals(icon);
-        case DescriptionPackage.VIEWPOINT__OWNED_TEMPLATES:
-            return ownedTemplates != null && !ownedTemplates.isEmpty();
         case DescriptionPackage.VIEWPOINT__CONFLICTS:
             return conflicts != null && !conflicts.isEmpty();
         case DescriptionPackage.VIEWPOINT__REUSES:

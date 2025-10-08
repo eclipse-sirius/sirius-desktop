@@ -23,13 +23,6 @@
     </editpartProvider>
   </extension>
 
-  <extension
-        point="org.eclipse.sirius.ui.representationTemplateEdit">
-     <dialectUI
-           class="org.eclipse.sirius.diagram.sequence.ui.business.internal.SequenceDiagramTemplateEdit">
-     </dialectUI>
-  </extension>
-  
      <extension
         point="org.eclipse.sirius.diagram.ui.layoutProvider">
      <layoutProvider

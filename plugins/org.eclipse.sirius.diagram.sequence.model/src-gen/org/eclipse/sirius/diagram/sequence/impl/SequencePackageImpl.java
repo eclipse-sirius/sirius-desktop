@@ -27,8 +27,6 @@ import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
 import org.eclipse.sirius.diagram.sequence.description.tool.impl.ToolPackageImpl;
 import org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage;
 import org.eclipse.sirius.diagram.sequence.ordering.impl.OrderingPackageImpl;
-import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
-import org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
@@ -104,25 +102,18 @@ public class SequencePackageImpl extends EPackageImpl implements SequencePackage
         ToolPackageImpl theToolPackage = (ToolPackageImpl) (registeredPackage instanceof ToolPackageImpl ? registeredPackage : ToolPackage.eINSTANCE);
         registeredPackage = EPackage.Registry.INSTANCE.getEPackage(OrderingPackage.eNS_URI);
         OrderingPackageImpl theOrderingPackage = (OrderingPackageImpl) (registeredPackage instanceof OrderingPackageImpl ? registeredPackage : OrderingPackage.eINSTANCE);
-        registeredPackage = EPackage.Registry.INSTANCE.getEPackage(TemplatePackage.eNS_URI);
-        TemplatePackageImpl theTemplatePackage = (TemplatePackageImpl) (registeredPackage instanceof TemplatePackageImpl ? registeredPackage : TemplatePackage.eINSTANCE);
 
         // Create package meta-data objects
         theSequencePackage.createPackageContents();
         theDescriptionPackage.createPackageContents();
         theToolPackage.createPackageContents();
         theOrderingPackage.createPackageContents();
-        theTemplatePackage.createPackageContents();
 
         // Initialize created meta-data
         theSequencePackage.initializePackageContents();
         theDescriptionPackage.initializePackageContents();
         theToolPackage.initializePackageContents();
         theOrderingPackage.initializePackageContents();
-        theTemplatePackage.initializePackageContents();
-
-        // Mark meta-data to indicate it can't be changed
-        theSequencePackage.freeze();
 
         // Update the registry and return the package
         EPackage.Registry.INSTANCE.put(SequencePackage.eNS_URI, theSequencePackage);
@@ -232,13 +223,11 @@ public class SequencePackageImpl extends EPackageImpl implements SequencePackage
         // Obtain other dependent packages
         DescriptionPackage theDescriptionPackage = (DescriptionPackage) EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI);
         OrderingPackage theOrderingPackage = (OrderingPackage) EPackage.Registry.INSTANCE.getEPackage(OrderingPackage.eNS_URI);
-        TemplatePackage theTemplatePackage = (TemplatePackage) EPackage.Registry.INSTANCE.getEPackage(TemplatePackage.eNS_URI);
         DiagramPackage theDiagramPackage = (DiagramPackage) EPackage.Registry.INSTANCE.getEPackage(DiagramPackage.eNS_URI);
 
         // Add subpackages
         getESubpackages().add(theDescriptionPackage);
         getESubpackages().add(theOrderingPackage);
-        getESubpackages().add(theTemplatePackage);
 
         // Create type parameters
 

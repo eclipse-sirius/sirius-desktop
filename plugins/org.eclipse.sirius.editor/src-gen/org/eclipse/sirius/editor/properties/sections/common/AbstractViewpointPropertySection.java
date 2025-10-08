@@ -32,7 +32,6 @@ import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin;
 import org.eclipse.sirius.editor.properties.ViewpointPropertySheetPage;
 import org.eclipse.sirius.editor.tools.internal.property.section.SiriusPropertySectionHelper;
-import org.eclipse.sirius.ui.business.api.template.RepresentationTemplateEditManager;
 import org.eclipse.sirius.viewpoint.description.RepresentationImportDescription;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
@@ -127,10 +126,6 @@ public abstract class AbstractViewpointPropertySection extends AbstractPropertyS
     protected boolean shouldBeReadOnly() {
         boolean readonly = false;
         // Start of user code common readonly
-        if (getFeature() != null) {
-            readonly = RepresentationTemplateEditManager.INSTANCE.isOverriden(eObject, getFeature());
-        }
-
         // if selected element is imported from a representation description
         RepresentationImportDescription representationImportDescription = SiriusPropertySectionHelper.getRepresentationImportDescriptionInSelection(getSelection());
         if (representationImportDescription != null && !SiriusPropertySectionHelper.isChildOfRepresentationDescription(eObject, representationImportDescription)) {

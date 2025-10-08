@@ -21,7 +21,6 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: org.eclipse.sirius.diagram.sequence.ui;version="7.5.0",
  org.eclipse.sirius.diagram.sequence.ui.business.api.diagramtype;version="7.5.0",
- org.eclipse.sirius.diagram.sequence.ui.business.internal;version="7.5.0";x-internal:=true,
  org.eclipse.sirius.diagram.sequence.ui.business.internal.diagramtype;version="7.5.0";x-internal:=true,
  org.eclipse.sirius.diagram.sequence.ui.business.internal.migration;version="7.5.0";x-internal:=true,
  org.eclipse.sirius.diagram.sequence.ui.business.internal.refresh;version="7.5.0";x-internal:=true,

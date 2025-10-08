@@ -55,6 +55,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.AbstractTreeViewer;
+import org.eclipse.jface.viewers.DecoratingStyledCellLabelProvider;
 import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider.IStyledLabelProvider;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
@@ -77,7 +78,6 @@ import org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin;
 import org.eclipse.sirius.editor.properties.validation.SiriusInterpreterErrorDecorator;
 import org.eclipse.sirius.editor.tools.internal.actions.ValidateAction;
 import org.eclipse.sirius.model.business.api.helper.ViewpointUtil;
-import org.eclipse.sirius.ui.business.api.template.RepresentationTemplateEditManager;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.JavaExtension;
@@ -133,8 +133,6 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
 
     private static final ImageDescriptor COLLAPSE_IMAGE_DESCRIPTOR = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditorPlugin.PLUGIN_ID, "icons/full/collapseall.gif");
 
-    private final RepresentationTemplateUpdateTrigger templateUpdateTrigger = new RepresentationTemplateUpdateTrigger();
-
     private final ViewpointURIHandler vsmURIHandler;
 
     private CommandStackListener cmdStackListener = new CommandStackListener() {
@@ -154,7 +152,7 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
         }
     };
 
-    private GeneratedElementsLabelProvider decoratingLabelProvider;
+    private DecoratingStyledCellLabelProvider decoratingLabelProvider;
 
     private ValidationDecoration validationDecorator;
 
@@ -233,7 +231,7 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
                 }
             });
             validationDecorator = new ValidationDecoration();
-            decoratingLabelProvider = new GeneratedElementsLabelProvider((IStyledLabelProvider) selectionViewer.getLabelProvider(), validationDecorator);
+            decoratingLabelProvider = new DecoratingStyledCellLabelProvider((IStyledLabelProvider) selectionViewer.getLabelProvider(), validationDecorator, null);
             decoratingLabelProvider.setLabelDecorator(new SiriusInterpreterErrorDecorator(this.getURIFromInput(getEditorInput())));
 
             selectionViewer.setLabelProvider(decoratingLabelProvider);
@@ -244,12 +242,7 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
                     ISelection selection = selectionViewer.getSelection();
                     if (selection instanceof StructuredSelection && ((StructuredSelection) selection).getFirstElement() instanceof EObject) {
                         EObject selectedEObject = (EObject) ((StructuredSelection) selection).getFirstElement();
-                        if (RepresentationTemplateEditManager.INSTANCE.isGenerated(selectedEObject)) {
-                            EObject original = RepresentationTemplateEditManager.INSTANCE.getSourceElement(selectedEObject);
-                            if (original != null) {
-                                setSelectionToViewer(Collections.singleton(editingDomain.getWrapper(original)));
-                            }
-                        } else if (selectedEObject instanceof JavaExtension) {
+                        if (selectedEObject instanceof JavaExtension) {
                             navigateToJavaExtension((JavaExtension) selectedEObject);
                         }
 
@@ -264,7 +257,6 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
             addTooBarActions(tbm);
             tbm.update(true);
         }
-        editingDomain.getResourceSet().eAdapters().add(templateUpdateTrigger);
     }
 
     private void navigateToJavaExtension(JavaExtension ext) {
@@ -465,7 +457,6 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
 
         editingDomain.getCommandStack().removeCommandStackListener(cmdStackListener);
 
-        editingDomain.getResourceSet().eAdapters().remove(templateUpdateTrigger);
         if (decoratingLabelProvider != null) {
             decoratingLabelProvider.dispose();
         }

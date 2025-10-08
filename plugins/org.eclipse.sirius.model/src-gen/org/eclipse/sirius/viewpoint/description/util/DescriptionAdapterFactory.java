@@ -54,7 +54,6 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationImportDescription;
-import org.eclipse.sirius.viewpoint.description.RepresentationTemplate;
 import org.eclipse.sirius.viewpoint.description.SelectionDescription;
 import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
 import org.eclipse.sirius.viewpoint.description.SubVariable;
@@ -147,11 +146,6 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseRepresentationDescription(RepresentationDescription object) {
             return createRepresentationDescriptionAdapter();
-        }
-
-        @Override
-        public Adapter caseRepresentationTemplate(RepresentationTemplate object) {
-            return createRepresentationTemplateAdapter();
         }
 
         @Override
