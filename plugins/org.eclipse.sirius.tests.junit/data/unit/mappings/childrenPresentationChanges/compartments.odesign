@@ -114,7 +114,7 @@
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[element/]">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element">
                 <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="[newSemanticContainer/]" featureName="eClassifiers"/>
               </firstModelOperations>
             </initialOperation>

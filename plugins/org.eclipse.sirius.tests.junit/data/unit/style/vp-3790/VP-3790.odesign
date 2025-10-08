@@ -71,7 +71,7 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[element/]">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.name + '_d'"/>
               </firstModelOperations>
             </initialOperation>
