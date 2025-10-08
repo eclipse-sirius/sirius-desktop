@@ -67,7 +67,7 @@
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[newSemanticContainer/]">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:newSemanticContainer">
                 <subModelOperations xsi:type="tool:SetValue" featureName="eClassifiers" valueExpression="aql:element"/>
               </firstModelOperations>
             </initialOperation>
@@ -78,7 +78,7 @@
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[newSemanticContainer/]">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:newSemanticContainer">
                 <subModelOperations xsi:type="tool:SetValue" featureName="eStructuralFeatures" valueExpression="aql:element"/>
               </firstModelOperations>
             </initialOperation>
@@ -133,7 +133,7 @@
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[newSemanticContainer/]">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:newSemanticContainer">
                 <subModelOperations xsi:type="tool:SetValue" featureName="eSubpackages" valueExpression="aql:element"/>
               </firstModelOperations>
             </initialOperation>
