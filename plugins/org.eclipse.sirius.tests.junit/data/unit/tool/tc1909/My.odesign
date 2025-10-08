@@ -4,7 +4,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Test" domainClass="EPackage">
       <defaultLayer name="Default">
         <edgeMappings name="relation" semanticCandidatesExpression="aql:self.eAllContents(ecore::EReference)" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='zzz']/@ownedRepresentations[name='Test']/@defaultLayer/@containerMappings[name='classe']" targetMapping="//@ownedViewpoints[name='zzz']/@ownedRepresentations[name='Test']/@defaultLayer/@containerMappings[name='classe']" targetFinderExpression="aql:self.eType" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true">
-          <style sizeComputationExpression="[eContents()->size()/]">
+          <style sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

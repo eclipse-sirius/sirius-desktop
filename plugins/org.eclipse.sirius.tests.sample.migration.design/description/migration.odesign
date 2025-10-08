@@ -323,7 +323,7 @@
       </additionalLayers>
       <additionalLayers name="layerWithEdgeStyles">
         <edgeMappings name="EdgeWithBracketStyle" sourceMapping="//@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@defaultLayer/@nodeMappings[name='NodeWithSquareStyle'] //@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@additionalLayers[name='layerOfContainerStyles']/@containerMappings[name='ContainerWithFlatContainerStyle']" targetMapping="//@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@defaultLayer/@nodeMappings[name='NodeWithSquareStyle'] //@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@additionalLayers[name='layerOfContainerStyles']/@containerMappings[name='ContainerWithFlatContainerStyle']" targetFinderExpression="aql:self.target" sourceFinderExpression="aql:self.source" domainClass="migrationmodeler.Edge" useDomainElement="true">
-          <style xsi:type="style:BracketEdgeStyleDescription" sizeComputationExpression="[eContents()->size()/]">
+          <style xsi:type="style:BracketEdgeStyleDescription" sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <beginLabelStyleDescription labelExpression="['beginBracketEdgeStyle'+id/]" iconPath="/DesignerTestProject/image.bmp">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

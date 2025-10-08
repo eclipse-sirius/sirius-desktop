@@ -4,7 +4,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="TC732 Square representation 1" domainClass="EPackage" enablePopupBars="true">
       <defaultLayer name="Default">
         <edgeMappings name="package hierarchie" detailDescriptions="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%23732']/@ownedRepresentations[name='TC732%20Square%20representation%201']/@defaultLayer/@toolSections.0/@ownedTools[name='Representation%202']" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%23732']/@ownedRepresentations[name='TC732%20Square%20representation%201']/@defaultLayer/@containerMappings[name='Container%20EPackage%20R1']" targetMapping="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%23732']/@ownedRepresentations[name='TC732%20Square%20representation%201']/@defaultLayer/@containerMappings[name='Container%20EPackage%20R1']/@subNodeMappings[name='Node%20EPackage%20R1']" targetFinderExpression="aql:self.eContents()->filter(ecore::EPackage)">
-          <style sizeComputationExpression="[eContents()->size()/]">
+          <style sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
           </style>
         </edgeMappings>

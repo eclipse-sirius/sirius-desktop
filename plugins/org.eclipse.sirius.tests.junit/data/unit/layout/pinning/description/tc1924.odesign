@@ -11,7 +11,7 @@
         </style>
       </nodeMappings>
       <edgeMappings name="SuperClass" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='Tests%20Cases%20for%20ticket%20%231924%20(pin%2Funpin%20on%20tree%20diagram)']/@ownedRepresentations[name='SimpleTreeDiagram']/@nodeMappings[name='Class']" targetMapping="//@ownedViewpoints[name='Tests%20Cases%20for%20ticket%20%231924%20(pin%2Funpin%20on%20tree%20diagram)']/@ownedRepresentations[name='SimpleTreeDiagram']/@nodeMappings[name='Class']" targetFinderExpression="aql:self.eSuperTypes">
-        <style targetArrow="InputClosedArrow" sizeComputationExpression="[eContents()->size()/]" routingStyle="tree">
+        <style targetArrow="InputClosedArrow" sizeComputationExpression="aql:self.eContents()->size()" routingStyle="tree">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
         </style>
       </edgeMappings>
@@ -25,7 +25,7 @@
         </style>
       </nodeMappings>
       <edgeMappings name="SuperClass" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='Tests%20Cases%20for%20ticket%20%231924%20(pin%2Funpin%20on%20tree%20diagram)']/@ownedRepresentations[name='SimpleDiagram']/@nodeMappings[name='Class']" targetMapping="//@ownedViewpoints[name='Tests%20Cases%20for%20ticket%20%231924%20(pin%2Funpin%20on%20tree%20diagram)']/@ownedRepresentations[name='SimpleDiagram']/@nodeMappings[name='Class']" targetFinderExpression="aql:self.eSuperTypes">
-        <style targetArrow="InputClosedArrow" sizeComputationExpression="[eContents()->size()/]" routingStyle="tree">
+        <style targetArrow="InputClosedArrow" sizeComputationExpression="aql:self.eContents()->size()" routingStyle="tree">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
         </style>
       </edgeMappings>
@@ -40,7 +40,7 @@
         </style>
       </nodeMappings>
       <edgeMappings name="SuperClass" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='Tests%20Cases%20for%20ticket%20%231924%20(pin%2Funpin%20on%20tree%20diagram)']/@ownedRepresentations[name='RecursiveTreeDiagram']/@nodeMappings[name='Class']" targetMapping="//@ownedViewpoints[name='Tests%20Cases%20for%20ticket%20%231924%20(pin%2Funpin%20on%20tree%20diagram)']/@ownedRepresentations[name='RecursiveTreeDiagram']/@nodeMappings[name='Class']" targetFinderExpression="aql:self.eSuperTypes">
-        <style targetArrow="InputClosedArrow" sizeComputationExpression="[eContents()->size()/]" routingStyle="tree">
+        <style targetArrow="InputClosedArrow" sizeComputationExpression="aql:self.eContents()->size()" routingStyle="tree">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
         </style>
       </edgeMappings>

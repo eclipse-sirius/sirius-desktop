@@ -14,7 +14,7 @@
           </style>
         </nodeMappings>
         <edgeMappings name="EM_Ref" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='2330']/@ownedRepresentations[name='2330%20Diagram']/@defaultLayer/@containerMappings[name='CM_EPackage']/@borderedNodeMappings[name='BN_EClass']" targetMapping="//@ownedViewpoints[name='2330']/@ownedRepresentations[name='2330%20Diagram']/@defaultLayer/@containerMappings[name='CM_EPackage']/@borderedNodeMappings[name='BN_EClass']" targetFinderExpression="aql:self.eReferenceType" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true">
-          <style sizeComputationExpression="[eContents()->size()/]" routingStyle="manhattan">
+          <style sizeComputationExpression="aql:self.eContents()->size()" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelExpression="aql:self.name">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
