@@ -3,7 +3,7 @@
   <ownedViewpoints name="RectilinearEdge">
     <ownedRepresentations xsi:type="description:DiagramDescription" name="Diagram" domainClass="EPackage">
       <defaultLayer name="Default">
-        <nodeMappings name="Class" semanticCandidatesExpression="[eClassifiers/]" domainClass="EClass">
+        <nodeMappings name="Class" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="EClass">
           <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="aql:self.name" hideLabelByDefault="true" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

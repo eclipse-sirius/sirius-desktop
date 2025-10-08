@@ -26,7 +26,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="EClass" deletionDescription="//@ownedViewpoints[name='VSMForEdgeLabelsMoveTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete%20Class']" labelDirectEdit="//@ownedViewpoints[name='VSMForEdgeLabelsMoveTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="[eClassifiers/]" doubleClickDescription="//@ownedViewpoints[name='VSMForEdgeLabelsMoveTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='Double%20Click']" synchronizationLock="true" domainClass="ecore.EClass" dropDescriptions="//@ownedViewpoints[name='VSMForEdgeLabelsMoveTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='DnDPortOut']" childrenPresentation="List">
+        <containerMappings name="EClass" deletionDescription="//@ownedViewpoints[name='VSMForEdgeLabelsMoveTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete%20Class']" labelDirectEdit="//@ownedViewpoints[name='VSMForEdgeLabelsMoveTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="aql:self.eClassifiers" doubleClickDescription="//@ownedViewpoints[name='VSMForEdgeLabelsMoveTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='Double%20Click']" synchronizationLock="true" domainClass="ecore.EClass" dropDescriptions="//@ownedViewpoints[name='VSMForEdgeLabelsMoveTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='DnDPortOut']" childrenPresentation="List">
           <borderedNodeMappings name="PortIn" preconditionExpression="[name.equalsIgnoreCase('in')/]" semanticCandidatesExpression="feature:eAttributes" createElements="false" domainClass="ecore.EAttribute">
             <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="" hideLabelByDefault="true" sizeComputationExpression="1" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -423,7 +423,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="EClass" semanticCandidatesExpression="[eClassifiers/]" synchronizationLock="true" domainClass="ecore.EClass" childrenPresentation="List">
+        <containerMappings name="EClass" semanticCandidatesExpression="aql:self.eClassifiers" synchronizationLock="true" domainClass="ecore.EClass" childrenPresentation="List">
           <borderedNodeMappings name="PortIn" preconditionExpression="[name.equalsIgnoreCase('in')/]" semanticCandidatesExpression="feature:eAttributes" createElements="false" domainClass="ecore.EAttribute">
             <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="" hideLabelByDefault="true" sizeComputationExpression="1" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -484,7 +484,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="EClass" semanticCandidatesExpression="[eClassifiers/]" synchronizationLock="true" domainClass="ecore.EClass" childrenPresentation="List">
+        <containerMappings name="EClass" semanticCandidatesExpression="aql:self.eClassifiers" synchronizationLock="true" domainClass="ecore.EClass" childrenPresentation="List">
           <borderedNodeMappings name="PortIn" preconditionExpression="[name.equalsIgnoreCase('in')/]" semanticCandidatesExpression="feature:eAttributes" createElements="false" domainClass="ecore.EAttribute">
             <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="" hideLabelByDefault="true" sizeComputationExpression="1" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -554,7 +554,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="EClass" semanticCandidatesExpression="[eClassifiers/]" synchronizationLock="true" domainClass="ecore.EClass" childrenPresentation="List">
+        <containerMappings name="EClass" semanticCandidatesExpression="aql:self.eClassifiers" synchronizationLock="true" domainClass="ecore.EClass" childrenPresentation="List">
           <borderedNodeMappings name="PortIn" preconditionExpression="[name.equalsIgnoreCase('in')/]" semanticCandidatesExpression="feature:eAttributes" createElements="false" domainClass="ecore.EAttribute">
             <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="" hideLabelByDefault="true" sizeComputationExpression="1" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -653,7 +653,7 @@
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <layout xsi:type="description_1:OrderedTreeLayout" childrenExpression="aql:self.eInverse('eSuperTypes')" nodeMapping="//@ownedViewpoints[name='VSMForEdgeLabelsMoveTest']/@ownedRepresentations[name='DiagWithNodeAndTreeLayout']/@defaultLayer/@nodeMappings[name='EClass']"/>
       <defaultLayer name="Default">
-        <nodeMappings name="EClass" semanticCandidatesExpression="[eClassifiers/]" domainClass="ecore.EClass">
+        <nodeMappings name="EClass" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="ecore.EClass">
           <style xsi:type="style:SquareDescription" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -681,7 +681,7 @@
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <layout xsi:type="description_1:OrderedTreeLayout" childrenExpression="aql:self.eInverse('eSuperTypes')" nodeMapping="//@ownedViewpoints[name='VSMForEdgeLabelsMoveTest']/@ownedRepresentations[name='DiagWithNodeAndTreeLayoutAndIconOnEdgeLabel']/@defaultLayer/@nodeMappings[name='EClass']"/>
       <defaultLayer name="Default">
-        <nodeMappings name="EClass" semanticCandidatesExpression="[eClassifiers/]" domainClass="ecore.EClass">
+        <nodeMappings name="EClass" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="ecore.EClass">
           <style xsi:type="style:SquareDescription" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
