@@ -114,13 +114,13 @@
         <edgeMappings name="EReference" sourceMapping="//@ownedViewpoints[name='VP-3535_Viewpoint']/@ownedRepresentations[name='VP-3535_Diagram']/@defaultLayer/@nodeMappings[name='EClassNodeWithSquareStyle']" targetMapping="//@ownedViewpoints[name='VP-3535_Viewpoint']/@ownedRepresentations[name='VP-3535_Diagram']/@defaultLayer/@nodeMappings[name='EClassNodeWithSquareStyle']" targetFinderExpression="[eType/]" sourceFinderExpression="[eContainer()/]" domainClass="ecore.EReference" useDomainElement="true">
           <style sizeComputationExpression="2" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <beginLabelStyleDescription labelExpression="[name/]" iconPath="/DesignerTestProject/image.bmp">
+            <beginLabelStyleDescription labelExpression="aql:self.name" iconPath="/DesignerTestProject/image.bmp">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </beginLabelStyleDescription>
-            <centerLabelStyleDescription labelExpression="[name/]" iconPath="/DesignerTestProject/image.bmp">
+            <centerLabelStyleDescription labelExpression="aql:self.name" iconPath="/DesignerTestProject/image.bmp">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
-            <endLabelStyleDescription labelExpression="[name/]" iconPath="/DesignerTestProject/image.bmp">
+            <endLabelStyleDescription labelExpression="aql:self.name" iconPath="/DesignerTestProject/image.bmp">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </endLabelStyleDescription>
           </style>
