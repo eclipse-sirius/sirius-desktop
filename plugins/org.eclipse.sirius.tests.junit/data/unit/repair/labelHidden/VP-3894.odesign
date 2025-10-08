@@ -30,7 +30,7 @@
             <beginLabelStyleDescription labelExpression="['Begin'+name/]">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </beginLabelStyleDescription>
-            <centerLabelStyleDescription labelExpression="[name/]">
+            <centerLabelStyleDescription labelExpression="aql:self.name">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
             <endLabelStyleDescription labelExpression="['End'+name/]">
@@ -44,7 +44,7 @@
             <beginLabelStyleDescription labelExpression="['Begin'+name/]">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </beginLabelStyleDescription>
-            <centerLabelStyleDescription labelExpression="[name/]">
+            <centerLabelStyleDescription labelExpression="aql:self.name">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
             <endLabelStyleDescription labelExpression="['End'+name/]">

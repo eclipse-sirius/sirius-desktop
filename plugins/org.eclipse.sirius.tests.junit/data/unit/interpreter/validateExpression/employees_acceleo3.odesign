@@ -5,7 +5,7 @@
     <ownedRepresentations xsi:type="description_2:CrossTableDescription" name="Budget"/>
     <ownedRepresentations xsi:type="description_3:TreeDescription" name="Employee Repartition" domainClass="Company">
       <subItemMappings name="Department" detailDescriptions="//@ownedViewpoints[name='Human%20Resources']/@ownedRepresentations[name='Employee%20Repartition']/@ownedRepresentationCreationDescriptions[name='Department%20Navigation']" domainClass="Department" semanticCandidatesExpression="[departments/]">
-        <defaultStyle labelExpression="[name/]">
+        <defaultStyle labelExpression="aql:self.name">
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
         </defaultStyle>
@@ -18,7 +18,7 @@
           <root name="root"/>
         </directEdit>
         <subItemMappings name="Employee" domainClass="Employee" semanticCandidatesExpression="[employees/]">
-          <defaultStyle labelExpression="[name/]">
+          <defaultStyle labelExpression="aql:self.name">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </defaultStyle>
@@ -34,7 +34,7 @@
             <menuItemDescriptions xsi:type="tool:OperationAction" name="Rename Employee" icon="/org.eclipse.sirius.sample.ecore.design/icons/full/obj16/Description.gif">
               <view name="views"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="[name/]_renammed"/>
+                <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:self.name_renammed"/>
               </initialOperation>
             </menuItemDescriptions>
           </ownedToolDescriptions>
@@ -47,7 +47,7 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_3:TreeDescription" name="Department" domainClass="Department">
       <subItemMappings name="Employee" domainClass="Employee" semanticCandidatesExpression="[employees/]">
-        <defaultStyle labelExpression="[name/]">
+        <defaultStyle labelExpression="aql:self.name">
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
         </defaultStyle>
@@ -63,7 +63,7 @@
           <menuItemDescriptions xsi:type="tool:OperationAction" name="Rename Employee" icon="/org.eclipse.sirius.sample.ecore.design/icons/full/obj16/Description.gif">
             <view name="views"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="[name/]_renammed"/>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:self.name_renammed"/>
             </initialOperation>
           </menuItemDescriptions>
         </ownedToolDescriptions>
