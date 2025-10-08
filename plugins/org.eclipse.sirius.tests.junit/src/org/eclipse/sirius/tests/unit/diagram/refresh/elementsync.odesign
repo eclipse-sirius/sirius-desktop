@@ -3,7 +3,7 @@
   <ownedViewpoints name="VP-2075">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DDiagramElementSynchronizer" domainClass="EPackage">
       <defaultLayer name="Default">
-        <nodeMappings name="Node" semanticCandidatesExpression="[self/]" domainClass="EPackage">
+        <nodeMappings name="Node" semanticCandidatesExpression="aql:self" domainClass="EPackage">
           <style xsi:type="style:BundledImageDescription" labelExpression="aql:self.name" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -17,7 +17,7 @@
             </style>
           </conditionnalStyles>
         </nodeMappings>
-        <edgeMappings name="Edge" sourceMapping="//@ownedViewpoints[name='VP-2075']/@ownedRepresentations[name='DDiagramElementSynchronizer']/@defaultLayer/@nodeMappings[name='Node']" targetMapping="//@ownedViewpoints[name='VP-2075']/@ownedRepresentations[name='DDiagramElementSynchronizer']/@defaultLayer/@containerMappings[name='Container']" targetFinderExpression="[self/]">
+        <edgeMappings name="Edge" sourceMapping="//@ownedViewpoints[name='VP-2075']/@ownedRepresentations[name='DDiagramElementSynchronizer']/@defaultLayer/@nodeMappings[name='Node']" targetMapping="//@ownedViewpoints[name='VP-2075']/@ownedRepresentations[name='DDiagramElementSynchronizer']/@defaultLayer/@containerMappings[name='Container']" targetFinderExpression="aql:self">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -33,7 +33,7 @@
             </style>
           </conditionnalStyles>
         </edgeMappings>
-        <containerMappings name="Container" semanticCandidatesExpression="[self/]" domainClass="EPackage">
+        <containerMappings name="Container" semanticCandidatesExpression="aql:self" domainClass="EPackage">
           <style xsi:type="style:FlatContainerStyleDescription" labelExpression="aql:self.name">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -48,7 +48,7 @@
             </style>
           </conditionnalStyles>
         </containerMappings>
-        <containerMappings name="List" semanticCandidatesExpression="[self/]" domainClass="EPackage" childrenPresentation="List">
+        <containerMappings name="List" semanticCandidatesExpression="aql:self" domainClass="EPackage" childrenPresentation="List">
           <style xsi:type="style:FlatContainerStyleDescription" labelExpression="aql:self.name">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

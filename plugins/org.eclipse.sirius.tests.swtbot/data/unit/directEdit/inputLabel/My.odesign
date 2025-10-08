@@ -4,7 +4,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="ClassDiag" domainClass="EPackage">
       <defaultLayer name="Default">
         <nodeMappings name="ClassNode" labelDirectEdit="//@ownedViewpoints[name='NewInputLabelForDirectEdit']/@ownedRepresentations[name='ClassDiag']/@defaultLayer/@toolSections.0/@ownedTools[name='DirectEditClass']" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="EClass">
-          <borderedNodeMappings name="ClassBNOnNode" labelDirectEdit="//@ownedViewpoints[name='NewInputLabelForDirectEdit']/@ownedRepresentations[name='ClassDiag']/@defaultLayer/@toolSections.0/@ownedTools[name='DirectEditClass']" semanticCandidatesExpression="[self/]" domainClass="EClass">
+          <borderedNodeMappings name="ClassBNOnNode" labelDirectEdit="//@ownedViewpoints[name='NewInputLabelForDirectEdit']/@ownedRepresentations[name='ClassDiag']/@defaultLayer/@toolSections.0/@ownedTools[name='DirectEditClass']" semanticCandidatesExpression="aql:self" domainClass="EClass">
             <style xsi:type="style:SquareDescription" labelExpression="['&lt;&lt;borderedNode>> ' + name/]" sizeComputationExpression="1" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -26,7 +26,7 @@
           </style>
         </containerMappings>
         <containerMappings name="ClassContainer" labelDirectEdit="//@ownedViewpoints[name='NewInputLabelForDirectEdit']/@ownedRepresentations[name='ClassDiag']/@defaultLayer/@toolSections.0/@ownedTools[name='DirectEditClass']" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="EClass">
-          <subNodeMappings name="ClassNodeInContainer" labelDirectEdit="//@ownedViewpoints[name='NewInputLabelForDirectEdit']/@ownedRepresentations[name='ClassDiag']/@defaultLayer/@toolSections.0/@ownedTools[name='DirectEditClass']" semanticCandidatesExpression="[self/]" domainClass="EClass">
+          <subNodeMappings name="ClassNodeInContainer" labelDirectEdit="//@ownedViewpoints[name='NewInputLabelForDirectEdit']/@ownedRepresentations[name='ClassDiag']/@defaultLayer/@toolSections.0/@ownedTools[name='DirectEditClass']" semanticCandidatesExpression="aql:self" domainClass="EClass">
             <style xsi:type="style:SquareDescription" labelExpression="['&lt;&lt;nodeInContainer>> ' + name/]" tooltipExpression="aql:self.name" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

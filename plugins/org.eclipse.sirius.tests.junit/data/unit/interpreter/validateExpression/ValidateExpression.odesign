@@ -27,7 +27,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="AC3_InvalidNode" label="AC3_InvalidNode" semanticCandidatesExpression="[self/]" domainClass="ecore.Nothing"/>
+        <nodeMappings name="AC3_InvalidNode" label="AC3_InvalidNode" semanticCandidatesExpression="aql:self" domainClass="ecore.Nothing"/>
         <edgeMappings name="AC3_relationBaseEdge" sourceMapping="//@ownedViewpoints[name='']/@ownedRepresentations[name='']/@additionalLayers[name='Acceleo3']/@nodeMappings[name='AC3_NodeMapping_EClass']" targetMapping="//@ownedViewpoints[name='']/@ownedRepresentations[name='']/@additionalLayers[name='Acceleo3']/@nodeMappings[name='AC3_NodeMapping_DNode']" targetFinderExpression="[self.eAttributes/]"/>
         <edgeMappings name="AC3_InvalidEdge" sourceMapping="//@ownedViewpoints[name='']/@ownedRepresentations[name='']/@additionalLayers[name='Acceleo3']/@nodeMappings[name='AC3_InvalidNode']" targetMapping="//@ownedViewpoints[name='']/@ownedRepresentations[name='']/@additionalLayers[name='Acceleo3']/@nodeMappings[name='AC3_NodeMapping_EClass']" targetFinderExpression="[self.titi/]"/>
         <toolSections name="AC3_Section">

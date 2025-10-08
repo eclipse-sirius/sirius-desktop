@@ -3,7 +3,7 @@
   <ownedViewpoints name="RemoveAcceleoReferences">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Representation" domainClass="EPackage">
       <defaultLayer name="Default">
-        <containerMappings name="Package" semanticCandidatesExpression="[self/]" domainClass="EPackage">
+        <containerMappings name="Package" semanticCandidatesExpression="aql:self" domainClass="EPackage">
           <subContainerMappings name="Class" semanticCandidatesExpression="feature:eAllContents" domainClass="EClass">
             <style xsi:type="style:FlatContainerStyleDescription" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='white_blue']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='blue_white']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
