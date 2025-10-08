@@ -11,7 +11,7 @@
           </style>
         </nodeMappings>
         <edgeMappings name="Supertypes" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@nodeMappings[name='Class']" targetMapping="//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@nodeMappings[name='Class']" targetFinderExpression="aql:self.eSuperTypes">
-          <style targetArrow="InputClosedArrow" sizeComputationExpression="[eContents()->size()/]">
+          <style targetArrow="InputClosedArrow" sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </edgeMappings>

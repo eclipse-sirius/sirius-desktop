@@ -159,8 +159,8 @@
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[element/]">
-                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="[newSemanticContainer/]" featureName="eClassifiers"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="aql:newSemanticContainer" featureName="eClassifiers"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -403,8 +403,8 @@
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[element/]">
-                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="[newSemanticContainer/]" featureName="eClassifiers"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="aql:newSemanticContainer" featureName="eClassifiers"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -612,7 +612,7 @@
             <newViewContainer name="newContainerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="[newSemanticContainer/]" featureName="eSubpackages"/>
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="aql:newSemanticContainer" featureName="eSubpackages"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -644,7 +644,7 @@
             <newViewContainer name="newContainerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="[newSemanticContainer/]" featureName="eSubpackages"/>
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="aql:newSemanticContainer" featureName="eSubpackages"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -1062,8 +1062,8 @@
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[element/]">
-                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="[newSemanticContainer/]" featureName="eClassifiers"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="aql:newSemanticContainer" featureName="eClassifiers"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -1298,8 +1298,8 @@
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[element/]">
-                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="[newSemanticContainer/]" featureName="eClassifiers"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="aql:newSemanticContainer" featureName="eClassifiers"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

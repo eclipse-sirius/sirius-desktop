@@ -276,7 +276,7 @@
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[newSemanticContainer/]">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:newSemanticContainer">
                 <subModelOperations xsi:type="tool:SetValue" featureName="eStructuralFeatures" valueExpression="var:element"/>
               </firstModelOperations>
             </initialOperation>
@@ -287,7 +287,7 @@
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[newSemanticContainer/]">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:newSemanticContainer">
                 <subModelOperations xsi:type="tool:SetValue" featureName="eOperations" valueExpression="var:element"/>
               </firstModelOperations>
             </initialOperation>
@@ -408,7 +408,7 @@
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:If" conditionExpression="[otherEnd &lt;> edgeView.targetNode/]">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="eType" valueExpression="[edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="eType" valueExpression="aql:edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target"/>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[otherEnd.oclAsType(viewpoint::DSemanticDecorator).target/]">
                         <subModelOperations xsi:type="tool:SetValue" featureName="eStructuralFeatures" valueExpression="var:element"/>
@@ -443,7 +443,7 @@
                   <subModelOperations xsi:type="tool:If" conditionExpression="[otherEnd = sourceView/]">
                     <subModelOperations xsi:type="tool:If" conditionExpression="[otherEnd = edgeView.targetNode/]">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="eSuperTypes" valueExpression="[edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="eSuperTypes" valueExpression="aql:edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target"/>
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
                           <subModelOperations xsi:type="tool:Unset" featureName="eSuperTypes" elementExpression="var:element"/>
                         </subModelOperations>
@@ -458,10 +458,10 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="[otherEnd &lt;> sourceView/]">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="eSuperTypes" valueExpression="[edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="eSuperTypes" valueExpression="aql:edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
-                      <subModelOperations xsi:type="tool:Unset" featureName="eSuperTypes" elementExpression="[edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+                      <subModelOperations xsi:type="tool:Unset" featureName="eSuperTypes" elementExpression="aql:edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target"/>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
@@ -608,7 +608,7 @@
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[newSemanticContainer/]">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:newSemanticContainer">
                 <subModelOperations xsi:type="tool:SetValue" featureName="eClassifiers" valueExpression="var:element"/>
               </firstModelOperations>
             </initialOperation>
@@ -628,7 +628,7 @@
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[newSemanticContainer/]">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:newSemanticContainer">
                 <subModelOperations xsi:type="tool:SetValue" featureName="eSubpackages" valueExpression="var:element"/>
               </firstModelOperations>
             </initialOperation>
@@ -804,7 +804,7 @@
       </defaultLayer>
       <additionalLayers name="Content">
         <containerMappings xsi:type="description_1:ContainerMappingImport" name="Package" semanticCandidatesExpression="feature:eAllContents" domainClass="EPackage" importedMapping="//@ownedViewpoints[name='Quality']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Dep%20Package']">
-          <subContainerMappings name="PD EClass" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="[eClassifiers/]" domainClass="EClass" childrenPresentation="List">
+          <subContainerMappings name="PD EClass" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="EClass" childrenPresentation="List">
             <subNodeMappings name="EC EAttribute" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="[eAttributes/]" domainClass="EAttribute">
               <style xsi:type="style:BundledImageDescription" labelExpression="service:render" labelAlignment="LEFT" sizeComputationExpression="1">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1144,7 +1144,7 @@
     </ownedRepresentations>
   </ownedViewpoints>
   <userColorsPalettes name="Ecore Palette">
-    <entries xsi:type="description:InterpolatedColor" name="Size Based Color" colorValueComputationExpression="[eContents()->size()/]" minValueComputationExpression="[0/]" maxValueComputationExpression="[10/]"/>
+    <entries xsi:type="description:InterpolatedColor" name="Size Based Color" colorValueComputationExpression="aql:self.eContents()->size()" minValueComputationExpression="[0/]" maxValueComputationExpression="[10/]"/>
     <entries xsi:type="description:UserFixedColor" red="250" green="190" blue="190" name="MomentIntervalColor"/>
     <entries xsi:type="description:UserFixedColor" red="250" green="240" blue="180" name="RoleColor"/>
     <entries xsi:type="description:UserFixedColor" red="180" green="230" blue="180" name="PartyPlaceThingColor"/>

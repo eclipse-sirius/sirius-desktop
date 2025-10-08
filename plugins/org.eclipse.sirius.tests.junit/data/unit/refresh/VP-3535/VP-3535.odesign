@@ -3,7 +3,7 @@
   <ownedViewpoints name="VP-3535_Viewpoint" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="VP-3535_Diagram" domainClass="ecore.EPackage">
       <defaultLayer name="Default">
-        <nodeMappings name="EClassNodeWithSquareStyle" semanticCandidatesExpression="[eClassifiers/]" domainClass="ecore.EClass">
+        <nodeMappings name="EClassNodeWithSquareStyle" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="ecore.EClass">
           <style xsi:type="style:SquareDescription" labelExpression="[name+'WithSquareStyle'/]" iconPath="/DesignerTestProject/image.bmp" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -88,7 +88,7 @@
             </style>
           </conditionnalStyles>
         </nodeMappings>
-        <nodeMappings name="EClassNodeWithLozengeStyle" semanticCandidatesExpression="[eClassifiers/]" domainClass="ecore.EClass">
+        <nodeMappings name="EClassNodeWithLozengeStyle" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="ecore.EClass">
           <style xsi:type="style:LozengeNodeDescription" labelExpression="[name+'WithLozengeStyle'/]" iconPath="/DesignerTestProject/image.bmp" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -173,7 +173,7 @@
             </style>
           </conditionnalStyles>
         </nodeMappings>
-        <nodeMappings name="EClassNodeWithEllipseStyle" semanticCandidatesExpression="[eClassifiers/]" domainClass="ecore.EClass">
+        <nodeMappings name="EClassNodeWithEllipseStyle" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="ecore.EClass">
           <style xsi:type="style:EllipseNodeDescription" labelExpression="[name+'WithEllipseStyle'/]" iconPath="/DesignerTestProject/image.bmp" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -258,7 +258,7 @@
             </style>
           </conditionnalStyles>
         </nodeMappings>
-        <nodeMappings name="EClassNodeWithBundledImageStyle" semanticCandidatesExpression="[eClassifiers/]" domainClass="ecore.EClass">
+        <nodeMappings name="EClassNodeWithBundledImageStyle" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="ecore.EClass">
           <style xsi:type="style:BundledImageDescription" labelExpression="[name+'WithBundledImageStyle'/]" iconPath="/DesignerTestProject/image.bmp" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -343,7 +343,7 @@
             </style>
           </conditionnalStyles>
         </nodeMappings>
-        <nodeMappings name="EClassNodeWithNoteStyle" semanticCandidatesExpression="[eClassifiers/]" domainClass="ecore.EClass">
+        <nodeMappings name="EClassNodeWithNoteStyle" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="ecore.EClass">
           <style xsi:type="style:NoteDescription" labelExpression="[name+'WithNoteStyle'/]" iconPath="/DesignerTestProject/image.bmp" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -428,7 +428,7 @@
             </style>
           </conditionnalStyles>
         </nodeMappings>
-        <nodeMappings name="EClassNodeWithDotStyle" semanticCandidatesExpression="[eClassifiers/]" domainClass="ecore.EClass">
+        <nodeMappings name="EClassNodeWithDotStyle" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="ecore.EClass">
           <style xsi:type="style:DotDescription" labelExpression="[name+'WithDotStyle'/]" iconPath="/DesignerTestProject/image.bmp" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -513,7 +513,7 @@
             </style>
           </conditionnalStyles>
         </nodeMappings>
-        <nodeMappings name="EClassNodeWithGaugeStyle" semanticCandidatesExpression="[eClassifiers/]" domainClass="ecore.EClass">
+        <nodeMappings name="EClassNodeWithGaugeStyle" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="ecore.EClass">
           <style xsi:type="style:GaugeCompositeStyleDescription" labelExpression="[name+'WithGaugeStyle'/]" iconPath="/DesignerTestProject/image.bmp" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -605,7 +605,7 @@
             </style>
           </conditionnalStyles>
         </nodeMappings>
-        <nodeMappings name="EClassNodeWithWorkspaceImageStyle" semanticCandidatesExpression="[eClassifiers/]" domainClass="ecore.EClass">
+        <nodeMappings name="EClassNodeWithWorkspaceImageStyle" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="ecore.EClass">
           <style xsi:type="style:WorkspaceImageDescription" labelExpression="[name+'WithWorkspaceImageStyle'/]" iconPath="/DesignerTestProject/image.bmp" sizeComputationExpression="-1" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/DesignerTestProject/image.bmp">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -799,7 +799,7 @@
       </additionalLayers>
       <additionalLayers name="layerWithEdgeStyles">
         <edgeMappings name="ESuperType" sourceMapping="//@ownedViewpoints[name='VP-3535_Viewpoint']/@ownedRepresentations[name='VP-3535_Diagram']/@defaultLayer/@nodeMappings[name='EClassNodeWithSquareStyle']" targetMapping="//@ownedViewpoints[name='VP-3535_Viewpoint']/@ownedRepresentations[name='VP-3535_Diagram']/@defaultLayer/@nodeMappings[name='EClassNodeWithSquareStyle']" targetFinderExpression="[eSuperTypes/]">
-          <style xsi:type="style:BracketEdgeStyleDescription" sizeComputationExpression="[eContents()->size()/]">
+          <style xsi:type="style:BracketEdgeStyleDescription" sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <beginLabelStyleDescription labelExpression="['beginSuperType'+name/]" iconPath="/DesignerTestProject/image.bmp">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -834,17 +834,17 @@
           <conditionnalStyles predicateExpression="[container.oclAsType(EPackage).nsURI = 'edgeStyle'/]">
             <style lineStyle="dot" sourceArrow="Diamond" targetArrow="InputArrowWithDiamond" sizeComputationExpression="4" routingStyle="tree">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_yellow']"/>
-              <beginLabelStyleDescription labelSize="4" showIcon="false" labelExpression="[name/]" iconPath="/DesignerTestProject/image.bmp">
+              <beginLabelStyleDescription labelSize="4" showIcon="false" labelExpression="aql:self.name" iconPath="/DesignerTestProject/image.bmp">
                 <labelFormat>italic</labelFormat>
                 <labelFormat>bold</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
               </beginLabelStyleDescription>
-              <centerLabelStyleDescription labelSize="9" showIcon="false" labelExpression="[name/]" iconPath="/DesignerTestProject/image.bmp">
+              <centerLabelStyleDescription labelSize="9" showIcon="false" labelExpression="aql:self.name" iconPath="/DesignerTestProject/image.bmp">
                 <labelFormat>italic</labelFormat>
                 <labelFormat>bold</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
               </centerLabelStyleDescription>
-              <endLabelStyleDescription labelSize="5" showIcon="false" labelExpression="[name/]" iconPath="/DesignerTestProject/image.bmp">
+              <endLabelStyleDescription labelSize="5" showIcon="false" labelExpression="aql:self.name" iconPath="/DesignerTestProject/image.bmp">
                 <labelFormat>italic</labelFormat>
                 <labelFormat>bold</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
@@ -855,13 +855,13 @@
         <edgeMappings name="EReference" sourceMapping="//@ownedViewpoints[name='VP-3535_Viewpoint']/@ownedRepresentations[name='VP-3535_Diagram']/@defaultLayer/@nodeMappings[name='EClassNodeWithSquareStyle']" targetMapping="//@ownedViewpoints[name='VP-3535_Viewpoint']/@ownedRepresentations[name='VP-3535_Diagram']/@defaultLayer/@nodeMappings[name='EClassNodeWithSquareStyle']" targetFinderExpression="[eType/]" sourceFinderExpression="[eContainer()/]" domainClass="ecore.EReference" useDomainElement="true">
           <style sizeComputationExpression="2" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <beginLabelStyleDescription labelExpression="[name/]" iconPath="/DesignerTestProject/image.bmp">
+            <beginLabelStyleDescription labelExpression="aql:self.name" iconPath="/DesignerTestProject/image.bmp">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </beginLabelStyleDescription>
-            <centerLabelStyleDescription labelExpression="[name/]" iconPath="/DesignerTestProject/image.bmp">
+            <centerLabelStyleDescription labelExpression="aql:self.name" iconPath="/DesignerTestProject/image.bmp">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
-            <endLabelStyleDescription labelExpression="[name/]" iconPath="/DesignerTestProject/image.bmp">
+            <endLabelStyleDescription labelExpression="aql:self.name" iconPath="/DesignerTestProject/image.bmp">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </endLabelStyleDescription>
           </style>
@@ -888,17 +888,17 @@
           <conditionnalStyles predicateExpression="[container.oclAsType(EPackage).nsURI = 'edgeStyle'/]">
             <style lineStyle="dot" sourceArrow="Diamond" targetArrow="InputArrowWithDiamond" sizeComputationExpression="4" routingStyle="tree">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_yellow']"/>
-              <beginLabelStyleDescription labelSize="4" showIcon="false" labelExpression="[name/]" iconPath="/DesignerTestProject/image.bmp">
+              <beginLabelStyleDescription labelSize="4" showIcon="false" labelExpression="aql:self.name" iconPath="/DesignerTestProject/image.bmp">
                 <labelFormat>italic</labelFormat>
                 <labelFormat>bold</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
               </beginLabelStyleDescription>
-              <centerLabelStyleDescription labelSize="9" showIcon="false" labelExpression="[name/]" iconPath="/DesignerTestProject/image.bmp">
+              <centerLabelStyleDescription labelSize="9" showIcon="false" labelExpression="aql:self.name" iconPath="/DesignerTestProject/image.bmp">
                 <labelFormat>italic</labelFormat>
                 <labelFormat>bold</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
               </centerLabelStyleDescription>
-              <endLabelStyleDescription labelSize="5" showIcon="false" labelExpression="[name/]" iconPath="/DesignerTestProject/image.bmp">
+              <endLabelStyleDescription labelSize="5" showIcon="false" labelExpression="aql:self.name" iconPath="/DesignerTestProject/image.bmp">
                 <labelFormat>italic</labelFormat>
                 <labelFormat>bold</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>

@@ -276,7 +276,7 @@ public class IInterpreterValidationExpressionTest extends SiriusDiagramTestCase 
         ModelOperation setValue = goTo.getSubModelOperations().iterator().next();
         // a warning should be raised as this operation is inside a change
         // context
-        ensureExpressionValidationRaisedExpectedErrors(setValue, "valueExpression", "[self/]");
+        ensureExpressionValidationRaisedExpectedErrors(setValue, "valueExpression", "aql:self");
     }
 
     /**
@@ -340,7 +340,7 @@ public class IInterpreterValidationExpressionTest extends SiriusDiagramTestCase 
      */
     public void testValidationExpressionWithAcceleo3OnSequenceDiagramInstanceRole() {
         InstanceRoleMapping instanceRole = (InstanceRoleMapping) sequenceDiagramAcceleo3.getDefaultLayer().getNodeMappings().iterator().next();
-        ensureExpressionValidationRaisedExpectedErrors(instanceRole, "semanticCandidatesExpression", "[self/]",
+        ensureExpressionValidationRaisedExpectedErrors(instanceRole, "semanticCandidatesExpression", "aql:self",
                 "The EClass interactions.Participant used in domainClass is not accessible. You are most likely trying to use an EClass without having a dependency to its plugin.");
         ensureExpressionValidationRaisedExpectedErrors(instanceRole, "semanticCandidatesExpression", "[self.invalidFeature/]",
                 "The EClass interactions.Participant used in domainClass is not accessible. You are most likely trying to use an EClass without having a dependency to its plugin.",
@@ -357,7 +357,7 @@ public class IInterpreterValidationExpressionTest extends SiriusDiagramTestCase 
         allMappings.addAll(MappingHelper.getAllBorderedNodeMappings(instanceRole));
 
         ExecutionMapping executionMapping = (ExecutionMapping) allMappings.iterator().next();
-        ensureExpressionValidationRaisedExpectedErrors(executionMapping, "startingEndFinderExpression", "[self/]",
+        ensureExpressionValidationRaisedExpectedErrors(executionMapping, "startingEndFinderExpression", "aql:self",
                 "The EClass interactions.Participant used in domainClass is not accessible. You are most likely trying to use an EClass without having a dependency to its plugin.");
         ensureExpressionValidationRaisedExpectedErrors(executionMapping, "startingEndFinderExpression", "[self.invalidFeature/]",
                 "The EClass interactions.Participant used in domainClass is not accessible. You are most likely trying to use an EClass without having a dependency to its plugin.",

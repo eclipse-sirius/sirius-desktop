@@ -20,14 +20,14 @@
         <edgeMappings name="refs" deletionDescription="//@ownedViewpoints[name='VP-3790']/@ownedRepresentations[name='VP-3790']/@defaultLayer/@toolSections.0/@ownedTools[name='noDeleteButRename']" sourceMapping="//@ownedViewpoints[name='VP-3790']/@ownedRepresentations[name='VP-3790']/@defaultLayer/@nodeMappings[name='class']" targetMapping="//@ownedViewpoints[name='VP-3790']/@ownedRepresentations[name='VP-3790']/@defaultLayer/@nodeMappings[name='class']" targetFinderExpression="[thisEObject.eReferenceType/]" sourceFinderExpression="[thisEObject.eContainer()/]" domainClass="EReference" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription labelExpression="[name/]">
+            <centerLabelStyleDescription labelExpression="aql:self.name">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
           <conditionnalStyles predicateExpression="aql:self.name = 'force base style'">
             <style sizeComputationExpression="2">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <centerLabelStyleDescription labelExpression="[name/]">
+              <centerLabelStyleDescription labelExpression="aql:self.name">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </centerLabelStyleDescription>
             </style>
@@ -71,7 +71,7 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[element/]">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.name + '_d'"/>
               </firstModelOperations>
             </initialOperation>
@@ -97,7 +97,7 @@
           <conditionnalStyles predicateExpression="aql:self.name = 'force level 1 style'">
             <style sizeComputationExpression="2">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
-              <centerLabelStyleDescription labelExpression="[name/]">
+              <centerLabelStyleDescription labelExpression="aql:self.name">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </centerLabelStyleDescription>
             </style>
@@ -108,7 +108,7 @@
               <beginLabelStyleDescription showIcon="false" labelExpression="dash">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </beginLabelStyleDescription>
-              <centerLabelStyleDescription labelExpression="[name/]">
+              <centerLabelStyleDescription labelExpression="aql:self.name">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </centerLabelStyleDescription>
             </style>

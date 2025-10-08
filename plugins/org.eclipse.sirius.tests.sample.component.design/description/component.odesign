@@ -192,7 +192,7 @@
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="[otherEnd = sourceView/]">
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="[otherEnd = edgeView.targetNode/]">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="reference" valueExpression="[edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="reference" valueExpression="aql:edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target"/>
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
                           <subModelOperations xsi:type="tool_1:Unset" featureName="reference" elementExpression="var:element"/>
                         </subModelOperations>
@@ -207,10 +207,10 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="[otherEnd &lt;> sourceView/]">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="reference" valueExpression="[edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="reference" valueExpression="aql:edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
-                      <subModelOperations xsi:type="tool_1:Unset" featureName="reference" elementExpression="[edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+                      <subModelOperations xsi:type="tool_1:Unset" featureName="reference" elementExpression="aql:edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target"/>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
@@ -236,7 +236,7 @@
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="[otherEnd = sourceView/]">
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="[otherEnd = edgeView.targetNode/]">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="references" valueExpression="[edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="references" valueExpression="aql:edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target"/>
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
                           <subModelOperations xsi:type="tool_1:Unset" featureName="references" elementExpression="var:element"/>
                         </subModelOperations>
@@ -251,10 +251,10 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="[otherEnd &lt;> sourceView/]">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="references" valueExpression="[edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="references" valueExpression="aql:edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
-                      <subModelOperations xsi:type="tool_1:Unset" featureName="references" elementExpression="[edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+                      <subModelOperations xsi:type="tool_1:Unset" featureName="references" elementExpression="aql:edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target"/>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
@@ -280,7 +280,7 @@
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="[otherEnd = sourceView/]">
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="[otherEnd = edgeView.targetNode/]">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="references2" valueExpression="[edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="references2" valueExpression="aql:edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target"/>
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
                           <subModelOperations xsi:type="tool_1:Unset" featureName="references2" elementExpression="var:element"/>
                         </subModelOperations>
@@ -295,10 +295,10 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="[otherEnd &lt;> sourceView/]">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="references2" valueExpression="[edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="references2" valueExpression="aql:edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
-                      <subModelOperations xsi:type="tool_1:Unset" featureName="references2" elementExpression="[edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+                      <subModelOperations xsi:type="tool_1:Unset" featureName="references2" elementExpression="aql:edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target"/>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
@@ -605,7 +605,7 @@
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="[otherEnd = sourceView/]">
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="[otherEnd = edgeView.targetNode/]">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="reference" valueExpression="[edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="reference" valueExpression="aql:edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target"/>
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
                           <subModelOperations xsi:type="tool_1:Unset" featureName="reference" elementExpression="var:element"/>
                         </subModelOperations>
@@ -620,10 +620,10 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="[otherEnd &lt;> sourceView/]">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="reference" valueExpression="[edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="reference" valueExpression="aql:edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
-                      <subModelOperations xsi:type="tool_1:Unset" featureName="reference" elementExpression="[edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+                      <subModelOperations xsi:type="tool_1:Unset" featureName="reference" elementExpression="aql:edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target"/>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
@@ -649,7 +649,7 @@
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="[otherEnd = sourceView/]">
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="[otherEnd = edgeView.targetNode/]">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="references" valueExpression="[edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="references" valueExpression="aql:edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target"/>
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
                           <subModelOperations xsi:type="tool_1:Unset" featureName="references" elementExpression="var:element"/>
                         </subModelOperations>
@@ -664,10 +664,10 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="[otherEnd &lt;> sourceView/]">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="references" valueExpression="[edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="references" valueExpression="aql:edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
-                      <subModelOperations xsi:type="tool_1:Unset" featureName="references" elementExpression="[edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+                      <subModelOperations xsi:type="tool_1:Unset" featureName="references" elementExpression="aql:edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target"/>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
@@ -693,7 +693,7 @@
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="[otherEnd = sourceView/]">
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="[otherEnd = edgeView.targetNode/]">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="references2" valueExpression="[edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="references2" valueExpression="aql:edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target"/>
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
                           <subModelOperations xsi:type="tool_1:Unset" featureName="references2" elementExpression="var:element"/>
                         </subModelOperations>
@@ -708,10 +708,10 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="[otherEnd &lt;> sourceView/]">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="references2" valueExpression="[edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="references2" valueExpression="aql:edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
-                      <subModelOperations xsi:type="tool_1:Unset" featureName="references2" elementExpression="[edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+                      <subModelOperations xsi:type="tool_1:Unset" featureName="references2" elementExpression="aql:edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target"/>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>

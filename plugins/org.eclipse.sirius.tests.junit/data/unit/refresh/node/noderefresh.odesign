@@ -134,7 +134,7 @@
         </style>
       </nodeMappings>
       <edgeMappings name="ECD_PropertyEdge" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Edges%20Class%20Diagram']/@nodeMappings[name='ECD_Class']" targetMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Edges%20Class%20Diagram']/@nodeMappings[name='ECD_Class']" targetFinderExpression="aql:self.attribute.type">
-        <style sizeComputationExpression="[eContents()->size()/]">
+        <style sizeComputationExpression="aql:self.eContents()->size()">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           <centerLabelStyleDescription>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -152,7 +152,7 @@
         </style>
       </nodeMappings>
       <edgeMappings name="ECD_PropertyEdge" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Edges%20Class%20Diagram%20with%20Domain']/@nodeMappings[name='ECD_Class']" targetMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Edges%20Class%20Diagram%20with%20Domain']/@nodeMappings[name='ECD_Class']" targetFinderExpression="aql:self.type" sourceFinderExpression="feature:eContainer" domainClass="Property" useDomainElement="true">
-        <style sizeComputationExpression="[eContents()->size()/]">
+        <style sizeComputationExpression="aql:self.eContents()->size()">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           <centerLabelStyleDescription>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -170,7 +170,7 @@
         </style>
       </nodeMappings>
       <edgeMappings name="ECD_PropertyEdge" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Model%20Scaling%20Class%20Diagram']/@nodeMappings[name='ECD_Class']" targetMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Model%20Scaling%20Class%20Diagram']/@nodeMappings[name='ECD_Class']" targetFinderExpression="aql:self.type" sourceFinderExpression="feature:eContainer" domainClass="Property" useDomainElement="true">
-        <style sizeComputationExpression="[eContents()->size()/]">
+        <style sizeComputationExpression="aql:self.eContents()->size()">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           <centerLabelStyleDescription>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -181,7 +181,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Test a simple class diagram with only a box representing a Class" name="Edges Class Diagram with Container" domainClass="Package">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
       <edgeMappings name="ECD_PropertyEdge" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Edges%20Class%20Diagram%20with%20Container']/@containerMappings[name='ECD_Class']" targetMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Edges%20Class%20Diagram%20with%20Container']/@containerMappings[name='ECD_Class']" targetFinderExpression="aql:self.attribute.type">
-        <style sizeComputationExpression="[eContents()->size()/]">
+        <style sizeComputationExpression="aql:self.eContents()->size()">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           <centerLabelStyleDescription>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -200,7 +200,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Test a simple class diagram with only a box representing a Class" name="Edges Class Diagram with Container with Edge Mapping precondition" domainClass="Package">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
       <edgeMappings name="ECD_PropertyEdge" preconditionExpression="aql:source.eClass().name ='Class'  and  target.eClass().name ='Class'" semanticCandidatesExpression="feature:eAllContents" semanticElements="" sourceMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Edges%20Class%20Diagram%20with%20Container%20with%20Edge%20Mapping%20precondition']/@containerMappings[name='ECD_Class']" targetMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Edges%20Class%20Diagram%20with%20Container%20with%20Edge%20Mapping%20precondition']/@containerMappings[name='ECD_Class']" targetFinderExpression="aql:self.attribute.type">
-        <style sizeComputationExpression="[eContents()->size()/]">
+        <style sizeComputationExpression="aql:self.eContents()->size()">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           <centerLabelStyleDescription>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -226,7 +226,7 @@
         </style>
       </nodeMappings>
       <edgeMappings name="ECDCN_PropertyEdge" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Edges%20Class%20Diagram%20with%20Container%20and%20Node']/@containerMappings[name='ECDCN_Class']" targetMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Edges%20Class%20Diagram%20with%20Container%20and%20Node']/@nodeMappings[name='ECDCN_Class']" targetFinderExpression="aql:self.attribute.type">
-        <style sizeComputationExpression="[eContents()->size()/]">
+        <style sizeComputationExpression="aql:self.eContents()->size()">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           <centerLabelStyleDescription>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -259,7 +259,7 @@
         </style>
       </nodeMappings>
       <edgeMappings name="ECDB_PropertyEdge" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Edges%20Class%20Diagram%20with%20Border%20to%20Node']/@nodeMappings[name='ECDB_Class']/@borderedNodeMappings[name='ECDB_BorderClass']" targetMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Edges%20Class%20Diagram%20with%20Border%20to%20Node']/@nodeMappings[name='ECDB_Class']/@borderedNodeMappings[name='ECDB_BorderClass']" targetFinderExpression="aql:self.attribute.type">
-        <style sizeComputationExpression="[eContents()->size()/]">
+        <style sizeComputationExpression="aql:self.eContents()->size()">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           <centerLabelStyleDescription>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

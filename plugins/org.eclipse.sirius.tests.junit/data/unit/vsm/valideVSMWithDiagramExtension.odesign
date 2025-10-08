@@ -4,7 +4,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="VP-3834_Diagram" initialisation="true" domainClass="ecore.EPackage" preconditionExpression="aql:self.eContainer() = null">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <defaultLayer name="Default">
-        <nodeMappings name="EClassMapping" semanticCandidatesExpression="[eClassifiers/]" domainClass="ecore.EClass">
+        <nodeMappings name="EClassMapping" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="ecore.EClass">
           <style xsi:type="style:SquareDescription" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -53,7 +53,7 @@
             <elementView name="elementView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EReference" referenceName="eStructuralFeatures">
-                <subModelOperations xsi:type="tool:SetValue" featureName="eReferenceType" valueExpression="[element/]"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="eReferenceType" valueExpression="aql:element"/>
                 <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="ref"/>
                 <subModelOperations xsi:type="tool_1:CreateEdgeView" mapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@defaultLayer/@edgeMappings[name='EReferenceMapping']" containerViewExpression="[elementView.eContainer()/]" sourceExpression="[elementView/]" targetExpression="[elementView/]"/>
               </firstModelOperations>

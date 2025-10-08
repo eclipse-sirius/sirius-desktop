@@ -255,7 +255,7 @@ public class EdgeWithConditionalStyleTest extends DocbookTestCase {
         assertEquals("Wrong LineStyle for second Edge.", LineStyle.SOLID_LITERAL, edgeStyle.getLineStyle());
         assertEquals("Wrong RoutingStyle for second Edge.", EdgeRouting.STRAIGHT_LITERAL, edgeStyleDescription.getRoutingStyle());
         assertEquals("Wrong LabelExpression for second Edge.", "", edgeStyleDescription.getCenterLabelStyleDescription().getLabelExpression());
-        assertEquals("Wrong SizeComputationExpression for second Edge.", "[eContents()->size()/]", edgeStyleDescription.getSizeComputationExpression());
+        assertEquals("Wrong SizeComputationExpression for second Edge.", "aql:self.eContents()->size()", edgeStyleDescription.getSizeComputationExpression());
         assertEquals("Wrong StrokeColor for second Edge, we should have the default one", "gray", ((SystemColor) edgeStyleDescription.getStrokeColor()).getName());
     }
 

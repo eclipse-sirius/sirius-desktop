@@ -20,7 +20,7 @@
           </style>
         </nodeMappings>
         <edgeMappings name="M2" sourceMapping="//@ownedViewpoints[name='trac1926']/@ownedRepresentations[name='D1']/@defaultLayer/@nodeMappings[name='M1']" targetMapping="//@ownedViewpoints[name='trac1926']/@ownedRepresentations[name='D1']/@defaultLayer/@nodeMappings[name='M1']" targetFinderExpression="aql:self.eStructuralFeatures.eType->asSet()">
-          <style sizeComputationExpression="[eContents()->size()/]">
+          <style sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </edgeMappings>
@@ -43,7 +43,7 @@
         </nodeMappings>
         <edgeMappingImports name="MI2" importedMapping="//@ownedViewpoints[name='trac1926']/@ownedRepresentations[name='D1']/@defaultLayer/@edgeMappings[name='M2']">
           <conditionnalStyles predicateExpression="aql:true">
-            <style sizeComputationExpression="[eContents()->size()/]">
+            <style sizeComputationExpression="aql:self.eContents()->size()">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
             </style>
           </conditionnalStyles>
@@ -69,7 +69,7 @@
         </nodeMappings>
         <edgeMappingImports name="MIE2" importedMapping="//@ownedViewpoints[name='trac1926']/@ownedRepresentations[name='D1']/@defaultLayer/@edgeMappings[name='M2']">
           <conditionnalStyles predicateExpression="aql:true">
-            <style sizeComputationExpression="[eContents()->size()/]">
+            <style sizeComputationExpression="aql:self.eContents()->size()">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
             </style>
           </conditionnalStyles>

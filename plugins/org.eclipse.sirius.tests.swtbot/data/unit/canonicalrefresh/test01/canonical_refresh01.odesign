@@ -4,7 +4,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="TC2026_Container" domainClass="EPackage">
       <defaultLayer name="Default">
         <edgeMappings name="Reference" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%232026']/@ownedRepresentations[name='TC2026_Container']/@defaultLayer/@containerMappings[name='ContainerPackage']/@borderedNodeMappings[name='BorderClass2']" targetMapping="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%232026']/@ownedRepresentations[name='TC2026_Container']/@defaultLayer/@containerMappings[name='ContainerPackage']/@borderedNodeMappings[name='BorderClass2']" targetFinderExpression="aql:self.eReferenceType" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true">
-          <style sizeComputationExpression="[eContents()->size()/]">
+          <style sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelExpression="aql:self.name">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -111,7 +111,7 @@
           </style>
         </nodeMappings>
         <edgeMappings name="superType" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnNode']/@defaultLayer/@nodeMappings[name='EPackage']/@borderedNodeMappings[name='EClass']" targetMapping="//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnNode']/@defaultLayer/@nodeMappings[name='EPackage']/@borderedNodeMappings[name='EClass']" targetFinderExpression="aql:self.eSuperTypes">
-          <style sizeComputationExpression="[eContents()->size()/]">
+          <style sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelExpression="aql:self.name">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -147,7 +147,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="doremi2253-borderedNodeOnNodeInContainer" domainClass="EPackage">
       <defaultLayer name="Default">
         <edgeMappings name="superType" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnNodeInContainer']/@defaultLayer/@containerMappings[name='EPackageContainer']/@subNodeMappings[name='EPackageNode']/@borderedNodeMappings[name='EClass2']" targetMapping="//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnNodeInContainer']/@defaultLayer/@containerMappings[name='EPackageContainer']/@subNodeMappings[name='EPackageNode']/@borderedNodeMappings[name='EClass2']" targetFinderExpression="aql:self.eSuperTypes">
-          <style sizeComputationExpression="[eContents()->size()/]">
+          <style sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelExpression="aql:self.name">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -212,7 +212,7 @@
           </style>
         </nodeMappings>
         <edgeMappings name="superType" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-Node']/@defaultLayer/@nodeMappings[name='EClassNode']" targetMapping="//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-Node']/@defaultLayer/@nodeMappings[name='EClassNode']" targetFinderExpression="aql:self.eSuperTypes">
-          <style sizeComputationExpression="[eContents()->size()/]">
+          <style sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelExpression="aql:self.name">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -236,7 +236,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="doremi2253-NodeInContainer" domainClass="EPackage">
       <defaultLayer name="Default">
         <edgeMappings name="superType" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-NodeInContainer']/@defaultLayer/@containerMappings[name='EPackage4']/@subNodeMappings[name='EClass4']" targetMapping="//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-NodeInContainer']/@defaultLayer/@containerMappings[name='EPackage4']/@subNodeMappings[name='EClass4']" targetFinderExpression="aql:self.eSuperTypes">
-          <style sizeComputationExpression="[eContents()->size()/]">
+          <style sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelExpression="aql:self.name">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -304,7 +304,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="doremi2253-Container" domainClass="EPackage">
       <defaultLayer name="Default">
         <edgeMappings name="superType" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-Container']/@defaultLayer/@containerMappings[name='EClassContainer']" targetMapping="//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-Container']/@defaultLayer/@containerMappings[name='EClassContainer']" targetFinderExpression="aql:self.eSuperTypes">
-          <style sizeComputationExpression="[eContents()->size()/]">
+          <style sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelExpression="aql:self.name">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -336,7 +336,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="doremi2253-ContainerInContainer" domainClass="EPackage">
       <defaultLayer name="Default">
         <edgeMappings name="superType" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-ContainerInContainer']/@defaultLayer/@containerMappings[name='EPackage5']/@subContainerMappings[name='EClass5']" targetMapping="//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-ContainerInContainer']/@defaultLayer/@containerMappings[name='EPackage5']/@subContainerMappings[name='EClass5']" targetFinderExpression="aql:self.eSuperTypes">
-          <style sizeComputationExpression="[eContents()->size()/]">
+          <style sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelExpression="aql:self.name">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -405,7 +405,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="doremi2253-ContainerList" domainClass="EPackage">
       <defaultLayer name="Default">
         <edgeMappings name="superType" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-ContainerList']/@defaultLayer/@containerMappings[name='EClassContainerList']" targetMapping="//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-ContainerList']/@defaultLayer/@containerMappings[name='EClassContainerList']" targetFinderExpression="aql:self.eSuperTypes">
-          <style sizeComputationExpression="[eContents()->size()/]">
+          <style sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelExpression="aql:self.name">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -437,7 +437,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="doremi2253-ContainerListInContainer" domainClass="EPackage">
       <defaultLayer name="Default">
         <edgeMappings name="superType" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-ContainerListInContainer']/@defaultLayer/@containerMappings[name='EPackage6']/@subContainerMappings[name='EClass6List']" targetMapping="//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-ContainerListInContainer']/@defaultLayer/@containerMappings[name='EPackage6']/@subContainerMappings[name='EClass6List']" targetFinderExpression="aql:self.eSuperTypes">
-          <style sizeComputationExpression="[eContents()->size()/]">
+          <style sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelExpression="aql:self.name">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -489,7 +489,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="doremi2253-borderedNodeOnContainer" domainClass="EPackage">
       <defaultLayer name="Default">
         <edgeMappings name="superType" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnContainer']/@defaultLayer/@containerMappings[name='EPackage']/@borderedNodeMappings[name='EClass']" targetMapping="//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnContainer']/@defaultLayer/@containerMappings[name='EPackage']/@borderedNodeMappings[name='EClass']" targetFinderExpression="aql:self.eSuperTypes">
-          <style sizeComputationExpression="[eContents()->size()/]">
+          <style sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelExpression="aql:self.name">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -540,7 +540,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="doremi2253-borderedNodeOnContainerInContainer" domainClass="EPackage">
       <defaultLayer name="Default">
         <edgeMappings name="superType" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnContainerInContainer']/@defaultLayer/@containerMappings[name='EPackageContainer']/@subContainerMappings[name='EPackageContainerInContainer']/@borderedNodeMappings[name='EClass2']" targetMapping="//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnContainerInContainer']/@defaultLayer/@containerMappings[name='EPackageContainer']/@subContainerMappings[name='EPackageContainerInContainer']/@borderedNodeMappings[name='EClass2']" targetFinderExpression="aql:self.eSuperTypes">
-          <style sizeComputationExpression="[eContents()->size()/]">
+          <style sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelExpression="aql:self.name">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

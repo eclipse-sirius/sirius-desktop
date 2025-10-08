@@ -4,7 +4,7 @@
     <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="others" viewpointURI="viewpoint:/DesignerTestProject/classes" representationName="classDiagram">
       <layers name="Others_Layer_1">
         <nodeMappings name="EEnumNode" semanticCandidatesExpression="feature:eClassifiers" domainClass="ecore.EEnum">
-          <style xsi:type="style:SquareDescription" labelExpression="[name/]" resizeKind="NSEW">
+          <style xsi:type="style:SquareDescription" labelExpression="aql:self.name" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
@@ -22,7 +22,7 @@
       </layers>
       <layers name="Others_Layer_2">
         <nodeMappings name="EEnumNode2" semanticCandidatesExpression="feature:eClassifiers" domainClass="ecore.EEnum">
-          <style xsi:type="style:SquareDescription" labelExpression="[name/]" resizeKind="NSEW">
+          <style xsi:type="style:SquareDescription" labelExpression="aql:self.name" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>

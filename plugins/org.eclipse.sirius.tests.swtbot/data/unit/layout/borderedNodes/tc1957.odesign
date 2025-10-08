@@ -18,7 +18,7 @@
           </style>
         </nodeMappings>
         <edgeMappings name="Reference" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='TC1957']/@defaultLayer/@nodeMappings[name='NodePackage']/@borderedNodeMappings[name='BorderClass']" targetMapping="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='TC1957']/@defaultLayer/@nodeMappings[name='NodePackage']/@borderedNodeMappings[name='BorderClass']" targetFinderExpression="aql:self.eReferenceType" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true">
-          <style sizeComputationExpression="[eContents()->size()/]" routingStyle="manhattan">
+          <style sizeComputationExpression="aql:self.eContents()->size()" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -66,7 +66,7 @@
           </style>
         </nodeMappings>
         <edgeMappings name="Reference" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='TC1957_withoutLabel']/@defaultLayer/@nodeMappings[name='NodePackage']/@borderedNodeMappings[name='BorderClass']" targetMapping="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='TC1957_withoutLabel']/@defaultLayer/@nodeMappings[name='NodePackage']/@borderedNodeMappings[name='BorderClass']" targetFinderExpression="aql:self.eReferenceType" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true">
-          <style sizeComputationExpression="[eContents()->size()/]">
+          <style sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -105,7 +105,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="TC1957_Container" domainClass="EPackage">
       <defaultLayer name="Default">
         <edgeMappings name="Reference" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='TC1957_Container']/@defaultLayer/@containerMappings[name='ContainerPackage']/@borderedNodeMappings[name='BorderClass2']" targetMapping="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='TC1957_Container']/@defaultLayer/@containerMappings[name='ContainerPackage']/@borderedNodeMappings[name='BorderClass2']" targetFinderExpression="aql:self.eReferenceType" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true">
-          <style sizeComputationExpression="[eContents()->size()/]">
+          <style sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -754,7 +754,7 @@
       <layout xsi:type="description_1:CompositeLayout" direction="LeftToRight"/>
       <defaultLayer name="Default">
         <edgeMappings name="Reference" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='TC1957_Container_LeftRight']/@defaultLayer/@containerMappings[name='ContainerPackage']/@borderedNodeMappings[name='BorderClass2']" targetMapping="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='TC1957_Container_LeftRight']/@defaultLayer/@containerMappings[name='ContainerPackage']/@borderedNodeMappings[name='BorderClass2']" targetFinderExpression="aql:self.eReferenceType" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true">
-          <style sizeComputationExpression="[eContents()->size()/]">
+          <style sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

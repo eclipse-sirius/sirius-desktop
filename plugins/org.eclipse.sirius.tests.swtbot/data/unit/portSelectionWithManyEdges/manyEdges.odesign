@@ -891,7 +891,7 @@
             </centerLabelStyleDescription>
           </style>
           <conditionnalStyles predicateExpression="aql:self.eContents()->size() > 0">
-            <style sizeComputationExpression="[eContents()->size()/]">
+            <style sizeComputationExpression="aql:self.eContents()->size()">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
               <centerLabelStyleDescription labelSize="10">
                 <labelFormat>italic</labelFormat>

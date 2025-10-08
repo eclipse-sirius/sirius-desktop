@@ -25,37 +25,37 @@
         </style>
       </nodeMappings>
       <edgeMappings name="chapter" detailDescriptions="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='navigation%20links']/@ownedTools[name='navigate%20throw%20link']" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']" targetMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']" targetFinderExpression="aql:self.followingSiblings()->first()">
-        <style sizeComputationExpression="[eContents()->size()/]">
+        <style sizeComputationExpression="aql:self.eContents()->size()">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
         </style>
       </edgeMappings>
       <edgeMappings name="tinyToMed" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@nodeMappings[name='tiny%20section']" targetMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@subContainerMappings[name='big%20section']/@subNodeMappings[name='medium%20section']" targetFinderExpression="aql:self.eContainer()" reconnections="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='medium%20section%20target%20reconnection'] //@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20target%20reconnection']">
-        <style sizeComputationExpression="[eContents()->size()/]">
+        <style sizeComputationExpression="aql:self.eContents()->size()">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
         </style>
       </edgeMappings>
       <edgeMappings name="noteToTitle" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@nodeMappings[name='note']" targetMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@borderedNodeMappings[name='title']" targetFinderExpression="aql:self.eContainerOrSelf(docbook::Chapter).eAllContents(docbook::Title)->first()">
-        <style sizeComputationExpression="[eContents()->size()/]">
+        <style sizeComputationExpression="aql:self.eContents()->size()">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
         </style>
       </edgeMappings>
       <edgeMappings name="TitleToChapter" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@borderedNodeMappings[name='title']" targetMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']" targetFinderExpression="aql:self.eContainer()">
-        <style sizeComputationExpression="[eContents()->size()/]">
+        <style sizeComputationExpression="aql:self.eContents()->size()">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
         </style>
       </edgeMappings>
       <edgeMappings name="tinyNote" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@nodeMappings[name='tiny%20section']/@borderedNodeMappings[name='tiny%20note']" targetMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@nodeMappings[name='tiny%20section']/@borderedNodeMappings[name='tiny%20note']" targetFinderExpression="aql:self.followingSiblings()">
-        <style sizeComputationExpression="[eContents()->size()/]">
+        <style sizeComputationExpression="aql:self.eContents()->size()">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
         </style>
       </edgeMappings>
       <edgeMappings name="chapterNoteToMed" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@borderedNodeMappings[name='chapNote']" targetMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@subContainerMappings[name='big%20section']/@subNodeMappings[name='medium%20section']" targetFinderExpression="aql:self.eContainer().eAllContents(docbook::Sect2)->first()">
-        <style sizeComputationExpression="[eContents()->size()/]">
+        <style sizeComputationExpression="aql:self.eContents()->size()">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
         </style>
       </edgeMappings>
       <edgeMappings name="tinyToChapter" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@nodeMappings[name='tiny%20section']" targetMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']" targetFinderExpression="aql:self.eContainer().eContainer().eContainer()" reconnections="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20target%20reconnection'] //@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='medium%20section%20target%20reconnection']">
-        <style sizeComputationExpression="[eContents()->size()/]">
+        <style sizeComputationExpression="aql:self.eContents()->size()">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
         </style>
       </edgeMappings>
@@ -482,7 +482,7 @@
         </style>
       </nodeMappings>
       <edgeMappings name="belong To Chapter" semanticCandidatesExpression="feature:eAllContents" semanticElements="aql:self.eContainer()" documentation="This edge has a different style if it represents the first BigSection of the chapter." sourceMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@nodeMappings[name='big%20sect']" targetMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@nodeMappings[name='chapt']" targetFinderExpression="aql:self.eContainer()" reconnections="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@toolSection/@subSections[name='reconnection']/@ownedTools[name='reconnection']">
-        <style sizeComputationExpression="[eContents()->size()/]">
+        <style sizeComputationExpression="aql:self.eContents()->size()">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           <centerLabelStyleDescription>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -508,12 +508,12 @@
         </conditionnalStyles>
       </edgeMappings>
       <edgeMappings name="belong to big sect" semanticCandidatesExpression="feature:eAllContents" semanticElements="" sourceMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@nodeMappings[name='med%20sect']" targetMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@nodeMappings[name='big%20sect']" targetFinderExpression="aql:self.eContainer()" reconnections="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@toolSection/@subSections[name='reconnection']/@ownedTools[name='reconnection2']">
-        <style sizeComputationExpression="[eContents()->size()/]">
+        <style sizeComputationExpression="aql:self.eContents()->size()">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
         </style>
       </edgeMappings>
       <edgeMappings name="belong to med section" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@nodeMappings[name='tiny%20sect']" targetMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@nodeMappings[name='med%20sect']" targetFinderExpression="aql:self.eContainer()" reconnections="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@toolSection/@subSections[name='reconnection']/@ownedTools[name='reconnection3']">
-        <style sizeComputationExpression="[eContents()->size()/]">
+        <style sizeComputationExpression="aql:self.eContents()->size()">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
         </style>
       </edgeMappings>

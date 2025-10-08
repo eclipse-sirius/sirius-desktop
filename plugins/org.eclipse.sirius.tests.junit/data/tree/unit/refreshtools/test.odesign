@@ -3,14 +3,14 @@
   <ownedViewpoints name="test">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="test" domainClass="EPackage">
       <defaultLayer name="Default">
-        <nodeMappings name="package" semanticCandidatesExpression="[self/]" domainClass="EPackage">
+        <nodeMappings name="package" semanticCandidatesExpression="aql:self" domainClass="EPackage">
           <style xsi:type="style:LozengeNodeDescription" borderSizeComputationExpression="3" sizeComputationExpression="8" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="package2" semanticCandidatesExpression="[self/]" domainClass="EPackage">
+        <nodeMappings name="package2" semanticCandidatesExpression="aql:self" domainClass="EPackage">
           <style xsi:type="style:EllipseNodeDescription" borderSizeComputationExpression="2" sizeComputationExpression="5" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -19,14 +19,14 @@
         </nodeMappings>
       </defaultLayer>
       <additionalLayers name="test">
-        <nodeMappings xsi:type="description_1:NodeMappingImport" name="package_import" semanticCandidatesExpression="[self/]" domainClass="EPackage" importedMapping="//@ownedViewpoints[name='test']/@ownedRepresentations[name='test']/@defaultLayer/@nodeMappings[name='package']">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="package_import" semanticCandidatesExpression="aql:self" domainClass="EPackage" importedMapping="//@ownedViewpoints[name='test']/@ownedRepresentations[name='test']/@defaultLayer/@nodeMappings[name='package']">
           <style xsi:type="style:SquareDescription" borderSizeComputationExpression="2" sizeComputationExpression="5" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
           </style>
         </nodeMappings>
-        <nodeMappings xsi:type="description_1:NodeMappingImport" name="package_import2" semanticCandidatesExpression="[self/]" domainClass="EPackage" importedMapping="//@ownedViewpoints[name='test']/@ownedRepresentations[name='test']/@defaultLayer/@nodeMappings[name='package2']">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="package_import2" semanticCandidatesExpression="aql:self" domainClass="EPackage" importedMapping="//@ownedViewpoints[name='test']/@ownedRepresentations[name='test']/@defaultLayer/@nodeMappings[name='package2']">
           <style xsi:type="style:SquareDescription" borderSizeComputationExpression="2" sizeComputationExpression="5" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

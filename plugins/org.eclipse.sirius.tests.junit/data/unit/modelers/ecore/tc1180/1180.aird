@@ -46,13 +46,13 @@
       </ownedAnnotationEntries>
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_4uftQN80EeK88Yo4jfTeow" source="DANNOTATION_CUSTOMIZATION_KEY">
         <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_4uiwkN80EeK88Yo4jfTeow">
-          <computedStyleDescriptions xmi:type="style:FlatContainerStyleDescription" xmi:id="_4uwL8d80EeK88Yo4jfTeow" labelExpression="[name/]" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
+          <computedStyleDescriptions xmi:type="style:FlatContainerStyleDescription" xmi:id="_4uwL8d80EeK88Yo4jfTeow" labelExpression="aql:self.name" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
             <borderColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <foregroundColor xmi:type="description:UserFixedColor" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='MomentIntervalColor']"/>
           </computedStyleDescriptions>
-          <computedStyleDescriptions xmi:type="style:FlatContainerStyleDescription" xmi:id="_4wxlMt80EeK88Yo4jfTeow" labelExpression="[name/]" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
+          <computedStyleDescriptions xmi:type="style:FlatContainerStyleDescription" xmi:id="_4wxlMt80EeK88Yo4jfTeow" labelExpression="aql:self.name" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
             <borderColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
