@@ -4,13 +4,13 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DDiagramElementSynchronizer" domainClass="EPackage">
       <defaultLayer name="Default">
         <nodeMappings name="Node" semanticCandidatesExpression="[self/]" domainClass="EPackage">
-          <style xsi:type="style:BundledImageDescription" labelExpression="[name/]" resizeKind="NSEW">
+          <style xsi:type="style:BundledImageDescription" labelExpression="aql:self.name" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
           <conditionnalStyles predicateExpression="[name.startsWith('a')/]">
-            <style xsi:type="style:SquareDescription" labelExpression="[name/]" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" labelExpression="aql:self.name" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -34,14 +34,14 @@
           </conditionnalStyles>
         </edgeMappings>
         <containerMappings name="Container" semanticCandidatesExpression="[self/]" domainClass="EPackage">
-          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="[name/]">
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="aql:self.name">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
           <conditionnalStyles predicateExpression="[name.startsWith('a')/]">
-            <style xsi:type="style:ShapeContainerStyleDescription" labelExpression="[name/]">
+            <style xsi:type="style:ShapeContainerStyleDescription" labelExpression="aql:self.name">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
@@ -49,14 +49,14 @@
           </conditionnalStyles>
         </containerMappings>
         <containerMappings name="List" semanticCandidatesExpression="[self/]" domainClass="EPackage" childrenPresentation="List">
-          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="[name/]">
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="aql:self.name">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
           <conditionnalStyles predicateExpression="[name.startsWith('a')/]">
-            <style xsi:type="style:ShapeContainerStyleDescription" labelExpression="[name/]">
+            <style xsi:type="style:ShapeContainerStyleDescription" labelExpression="aql:self.name">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>

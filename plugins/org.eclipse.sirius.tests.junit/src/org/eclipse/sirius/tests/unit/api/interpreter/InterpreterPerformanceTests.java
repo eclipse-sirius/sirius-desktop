@@ -74,7 +74,7 @@ public class InterpreterPerformanceTests extends SiriusDiagramTestCase implement
     }
 
     public void testEvaluateNameWithAcceleo3() throws EvaluationException {
-        measure("Acceleo 3", semanticModel, "[name/]", NAME, ITER);
+        measure("Acceleo 3", semanticModel, "aql:self.name", NAME, ITER);
     }
 
     public void testEvaluateNameWithFeature() throws EvaluationException {
