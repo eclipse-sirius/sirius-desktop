@@ -68,7 +68,7 @@
             <newViewContainer name="newContainerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[newSemanticContainer/]">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="eStructuralFeatures" valueExpression="[element/]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="eStructuralFeatures" valueExpression="aql:element"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

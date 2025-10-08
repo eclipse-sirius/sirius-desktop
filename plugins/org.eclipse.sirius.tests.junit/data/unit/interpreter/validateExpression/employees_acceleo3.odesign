@@ -10,7 +10,7 @@
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
         </defaultStyle>
         <directEdit name="Department Renamming" mapping="//@ownedViewpoints[name='Human%20Resources']/@ownedRepresentations[name='Employee%20Repartition']/@subItemMappings[name='Department']">
-          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="[element/]">
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="aql:element">
             <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="[0/]"/>
           </firstModelOperation>
           <mask mask="{0}"/>
@@ -23,7 +23,7 @@
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </defaultStyle>
           <directEdit name="Employee Renamming" mapping="//@ownedViewpoints[name='Human%20Resources']/@ownedRepresentations[name='Employee%20Repartition']/@subItemMappings[name='Department']/@subItemMappings[name='Employee']">
-            <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="[element/]">
+            <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="aql:element">
               <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="[0/]"/>
             </firstModelOperation>
             <mask mask="{0}"/>
@@ -52,7 +52,7 @@
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
         </defaultStyle>
         <directEdit name="Employee Renamming" mapping="//@ownedViewpoints[name='Human%20Resources']/@ownedRepresentations[name='Department']/@subItemMappings[name='Employee']">
-          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="[element/]">
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="aql:element">
             <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="[0/]"/>
           </firstModelOperation>
           <mask mask="{0}"/>

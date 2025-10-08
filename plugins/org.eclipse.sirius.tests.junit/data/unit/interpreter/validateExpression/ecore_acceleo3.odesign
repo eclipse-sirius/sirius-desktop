@@ -746,7 +746,7 @@
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[element/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
