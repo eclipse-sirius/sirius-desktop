@@ -4,7 +4,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Entities" titleExpression="aql:self.name + ' package entities'" domainClass="EPackage" enablePopupBars="true">
       <defaultLayer name="Default">
         <edgeMappings name="EC Just from A" semanticCandidatesExpression="aql:self.eAllContents()->filter(ecore::EClass)->select( e | e.name = 'A')" createElements="false" sourceMapping="//@ownedViewpoints[name='Design%20tc1945']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@borderedNodeMappings[name='PortJustFromAIn']" targetMapping="//@ownedViewpoints[name='Design%20tc1945']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@borderedNodeMappings[name='PortJustFromAOut']" targetFinderExpression="var:self" sourceFinderExpression="var:self" domainClass="EClass" useDomainElement="true">
-          <style sizeComputationExpression="[eContents()->size()/]">
+          <style sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelExpression="Just from A">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -12,7 +12,7 @@
           </style>
         </edgeMappings>
         <edgeMappings name="EC Just from B" createElements="false" sourceMapping="//@ownedViewpoints[name='Design%20tc1945']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@borderedNodeMappings[name='PortJustFromAOut']" targetMapping="//@ownedViewpoints[name='Design%20tc1945']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@borderedNodeMappings[name='PortJustFromAIn']" targetFinderExpression="var:self">
-          <style lineStyle="dash" sizeComputationExpression="[eContents()->size()/]">
+          <style lineStyle="dash" sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelExpression="Just from A">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -52,7 +52,7 @@
     </ownedRepresentations>
   </ownedViewpoints>
   <userColorsPalettes name="Ecore Palette">
-    <entries xsi:type="description:InterpolatedColor" name="Size Based Color" colorValueComputationExpression="[eContents()->size()/]"/>
+    <entries xsi:type="description:InterpolatedColor" name="Size Based Color" colorValueComputationExpression="aql:self.eContents()->size()"/>
     <entries xsi:type="description:UserFixedColor" red="250" green="190" blue="190" name="MomentIntervalColor"/>
     <entries xsi:type="description:UserFixedColor" red="250" green="240" blue="180" name="RoleColor"/>
     <entries xsi:type="description:UserFixedColor" red="180" green="230" blue="180" name="PartyPlaceThingColor"/>

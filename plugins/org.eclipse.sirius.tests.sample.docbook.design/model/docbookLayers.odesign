@@ -54,7 +54,7 @@
           </style>
         </nodeMappings>
         <edgeMappings name="belong To Chapter" documentation="This edge has a different style if it represents the first BigSection of the chapter." sourceMapping="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@nodeMappings[name='big%20sect']" targetMapping="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@nodeMappings[name='chapt']" targetFinderExpression="aql:self.eContainer()" reconnections="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@toolSections.0/@subSections[name='reconnection']/@ownedTools[name='reconnection']">
-          <style sizeComputationExpression="[eContents()->size()/]">
+          <style sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
           <conditionnalStyles predicateExpression="aql:self.eContainer().sect1->first() = self">
@@ -68,12 +68,12 @@
           </conditionnalStyles>
         </edgeMappings>
         <edgeMappings name="belong to big sect" sourceMapping="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@nodeMappings[name='med%20sect']" targetMapping="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@nodeMappings[name='big%20sect']" targetFinderExpression="aql:self.eContainer()" reconnections="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@toolSections.0/@subSections[name='reconnection']/@ownedTools[name='reconnection2']">
-          <style sizeComputationExpression="[eContents()->size()/]">
+          <style sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </edgeMappings>
         <edgeMappings name="belong to med section" sourceMapping="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@nodeMappings[name='tiny%20sect']" targetMapping="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@nodeMappings[name='med%20sect']" targetFinderExpression="aql:self.eContainer()" reconnections="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@toolSections.0/@subSections[name='reconnection']/@ownedTools[name='reconnection3']">
-          <style sizeComputationExpression="[eContents()->size()/]">
+          <style sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </edgeMappings>

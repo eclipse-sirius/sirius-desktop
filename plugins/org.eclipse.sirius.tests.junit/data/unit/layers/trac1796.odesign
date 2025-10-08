@@ -12,7 +12,7 @@
           </style>
         </nodeMappings>
         <edgeMappings name="Reference Mapping" semanticCandidatesExpression="aql:self.eAllContents(uml::Property)->select( e | e.type.oclIsKindOf(uml::Class))" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='trac1796']/@ownedRepresentations[name='trac1796']/@defaultLayer/@nodeMappings[name='Class%20Mapping']" targetMapping="//@ownedViewpoints[name='trac1796']/@ownedRepresentations[name='trac1796']/@defaultLayer/@nodeMappings[name='Class%20Mapping']" targetFinderExpression="aql:self.type->filter(uml::Class)" sourceFinderExpression="feature:eContainer" domainClass="Property" useDomainElement="true">
-          <style sizeComputationExpression="[eContents()->size()/]">
+          <style sizeComputationExpression="aql:self.eContents()->size()">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription labelExpression="aql:self.name">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -25,7 +25,7 @@
       <layers name="Extension for compositions">
         <edgeMappingImports name="Extension Reference Mapping" importedMapping="//@ownedViewpoints[name='trac1796']/@ownedRepresentations[name='trac1796']/@defaultLayer/@edgeMappings[name='Reference%20Mapping']">
           <conditionnalStyles predicateExpression="aql:self.isComposite">
-            <style sourceArrow="FillDiamond" sizeComputationExpression="[eContents()->size()/]">
+            <style sourceArrow="FillDiamond" sizeComputationExpression="aql:self.eContents()->size()">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
               <centerLabelStyleDescription labelExpression="aql:self.name">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

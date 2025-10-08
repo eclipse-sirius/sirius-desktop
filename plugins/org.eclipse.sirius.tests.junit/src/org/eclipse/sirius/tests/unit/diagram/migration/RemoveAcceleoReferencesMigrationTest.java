@@ -93,8 +93,8 @@ public class RemoveAcceleoReferencesMigrationTest extends SiriusTestCase {
         InterpolatedColor interpolatedColor1 = (InterpolatedColor) group.getUserColorsPalettes().get(0).getEntries().get(0);
         InterpolatedColor interpolatedColor2 = (InterpolatedColor) group.getUserColorsPalettes().get(0).getEntries().get(1);
         assertEquals("Setted Color Value Computation Expression values in VSM should not change after migration", interpolatedColor1.getColorValueComputationExpression(), "1");
-        assertEquals("Default Color Value Computation Expression values in VSM must be set to [eContents()->size()/]", interpolatedColor2.getColorValueComputationExpression(),
-                "[eContents()->size()/]");
+        assertEquals("Default Color Value Computation Expression values in VSM must be set to aql:self.eContents()->size()", interpolatedColor2.getColorValueComputationExpression(),
+                "aql:self.eContents()->size()");
     }
 
 }
