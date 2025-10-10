@@ -128,7 +128,7 @@
       <feature id="org.eclipse.sirius.runtime.aql" version="7.5.0.qualifier"/>
       <feature id="org.eclipse.sirius.runtime.ide.eef" version="7.5.0.qualifier"/>
       <feature id="org.eclipse.sirius.runtime.ide.ui" version="7.5.0.qualifier"/>
-      <feature id="org.eclipse.sirius.runtime.ide.ui.acceleo" version="7.5.0.qualifier"/>
+      <feature id="org.eclipse.sirius.runtime.ide.ui.interpreter" version="7.5.0.qualifier"/>
       <feature id="org.eclipse.sirius.runtime.ide.xtext" version="7.5.0.qualifier"/>
       <feature id="org.eclipse.sirius.specifier" version="7.5.0.qualifier"/>
       <feature id="org.eclipse.sirius.specifier.ide.ui" version="7.5.0.qualifier"/>

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -26,7 +26,8 @@ import org.eclipse.ui.IPerspectiveFactory;
  * @author mchauvin
  */
 public class DesignerDesignPerspective implements IPerspectiveFactory, DesignPerspective {
-    private static final String ORG_ECLIPSE_ACCELEO_UI_INTERPRETER_VIEW = "org.eclipse.acceleo.ui.interpreter.view";
+    
+    private static final String ORG_ECLIPSE_SIRIUS_UI_INTERPRETER_VIEW = "org.eclipse.sirius.ui.interpreter.view";
 
     /**
      * {@inheritDoc}
@@ -44,7 +45,7 @@ public class DesignerDesignPerspective implements IPerspectiveFactory, DesignPer
      */
     private void defineActions(final IPageLayout layout) {
         // wizards
-        layout.addNewWizardShortcut("org.eclipse.ui.wizards.new.folder"); //$NON-NLS-1$ 
+        layout.addNewWizardShortcut("org.eclipse.ui.wizards.new.folder"); //$NON-NLS-1$
         layout.addNewWizardShortcut("org.eclipse.ui.wizards.new.file"); //$NON-NLS-1$
         layout.addNewWizardShortcut(ModelingProjectWizard.ID);
         layout.addNewWizardShortcut(NewSessionWizard.ID);
@@ -76,6 +77,6 @@ public class DesignerDesignPerspective implements IPerspectiveFactory, DesignPer
     }
 
     private String getInterpreterViewID() {
-        return ORG_ECLIPSE_ACCELEO_UI_INTERPRETER_VIEW;
+        return ORG_ECLIPSE_SIRIUS_UI_INTERPRETER_VIEW;
     }
 }
