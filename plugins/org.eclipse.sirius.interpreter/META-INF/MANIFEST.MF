@@ -3,9 +3,8 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.interpreter;singleton:=true
 Bundle-Version: 7.5.0.qualifier
-Bundle-Activator: org.eclipse.sirius.common.acceleo.interpreter.InterpreterViewPlugin$Implementation
+Bundle-Activator: org.eclipse.sirius.common.acceleo.interpreter.InterpreterPlugin
 Require-Bundle: org.eclipse.core.runtime;bundle-version="3.8.0",
- org.eclipse.acceleo.ui.interpreter;bundle-version="3.4.1",
  org.eclipse.sirius.common;bundle-version="2.0.0",
  org.eclipse.sirius.ecore.extender;bundle-version="3.1.0",
  org.eclipse.emf.ecore;bundle-version="2.8.3",
@@ -13,11 +12,48 @@ Require-Bundle: org.eclipse.core.runtime;bundle-version="3.8.0",
  org.eclipse.jface;bundle-version="3.8.0",
  org.eclipse.jface.text;bundle-version="3.8.2",
  org.eclipse.ui.editors;bundle-version="3.8.0",
- org.eclipse.emf.common.ui;bundle-version="2.7.0"
+ org.eclipse.emf.common.ui;bundle-version="2.7.0",
+ org.eclipse.ui.forms;bundle-version="3.13.600",
+ org.eclipse.emf.edit.ui;bundle-version="2.26.0",
+ org.eclipse.core.resources;bundle-version="3.23.0",
+ org.eclipse.ui.ide;bundle-version="3.22.700",
+ org.eclipse.debug.ui;bundle-version="3.19.0";resolution:=optional
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Import-Package: org.eclipse.sirius.ext.base;version="2.1.0"
-Export-Package: org.eclipse.sirius.common.acceleo.interpreter;version="3.0.0"
+Export-Package: org.eclipse.acceleo.ui.interpreter.internal;x-friends:="org.eclipse.acceleo.ide.ui",
+ org.eclipse.acceleo.ui.interpreter.internal.compatibility.view;x-internal:=true,
+ org.eclipse.acceleo.ui.interpreter.internal.language;x-internal:=true,
+ org.eclipse.acceleo.ui.interpreter.internal.optional;x-internal:=true,
+ org.eclipse.acceleo.ui.interpreter.internal.optional.debug;x-internal:=true,
+ org.eclipse.acceleo.ui.interpreter.internal.view;x-internal:=true,
+ org.eclipse.acceleo.ui.interpreter.internal.view.actions;x-friends:="org.eclipse.acceleo.ide.ui",
+ org.eclipse.acceleo.ui.interpreter.internal.view.wizards;x-internal:=true,
+ org.eclipse.acceleo.ui.interpreter.language;
+  uses:="org.eclipse.jface.action,
+   org.eclipse.jface.text.source,
+   org.eclipse.core.runtime,
+   org.eclipse.ui,
+   org.eclipse.acceleo.ui.interpreter.view,
+   org.eclipse.jface.viewers,
+   org.eclipse.swt.widgets",
+ org.eclipse.acceleo.ui.interpreter.view;
+  uses:="org.eclipse.acceleo.ui.interpreter.internal.view.actions,
+   org.eclipse.core.runtime,
+   org.eclipse.jface.text.source,
+   org.eclipse.acceleo.ui.interpreter.internal.compatibility.view,
+   org.eclipse.ui,
+   org.eclipse.acceleo.ui.interpreter.language,
+   org.eclipse.ui.part,
+   org.eclipse.emf.common.notify,
+   org.eclipse.ui.forms.widgets,
+   org.eclipse.jface.action,
+   org.eclipse.emf.ecore,
+   org.eclipse.jface.viewers,
+   org.eclipse.swt.widgets,
+   org.eclipse.acceleo.ui.interpreter.internal.language",
+ org.eclipse.acceleo.ui.interpreter.view.providers,
+ org.eclipse.sirius.common.acceleo.interpreter;version="3.0.0"
 Automatic-Module-Name: org.eclipse.sirius.interpreter
