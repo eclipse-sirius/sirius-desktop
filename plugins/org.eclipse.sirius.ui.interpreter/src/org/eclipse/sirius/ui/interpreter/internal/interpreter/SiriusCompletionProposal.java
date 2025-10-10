@@ -11,7 +11,7 @@
  *     IBM Corporation - initial API and implementation
  *     Obeo - implementation of the ICompletionProposalExtension2 interface
  *******************************************************************************/
-package org.eclipse.sirius.common.acceleo.interpreter;
+package org.eclipse.sirius.ui.interpreter.internal.interpreter;
 
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.jface.text.BadLocationException;

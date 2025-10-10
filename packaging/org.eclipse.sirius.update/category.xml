@@ -27,7 +27,7 @@
    <feature id="org.eclipse.sirius.samples" version="0.0.0">
       <category name="Sirius"/>
    </feature>
-   <feature id="org.eclipse.sirius.runtime.ide.ui.acceleo" version="0.0.0">
+   <feature id="org.eclipse.sirius.runtime.ide.ui.interpreter" version="0.0.0">
       <category name="Sirius"/>
    </feature>
    <feature id="org.eclipse.sirius.specifier" version="0.0.0"/>
@@ -88,7 +88,7 @@
    <feature id="org.eclipse.sirius.samples.source" version="0.0.0">
       <category name="Sirius.SDK"/>
    </feature>
-   <feature id="org.eclipse.sirius.runtime.ide.ui.acceleo.source" version="0.0.0">
+   <feature id="org.eclipse.sirius.runtime.ide.ui.interpreter.source" version="0.0.0">
       <category name="Sirius.SDK"/>
    </feature>
    <feature id="org.eclipse.sirius.specifier.source" version="0.0.0">

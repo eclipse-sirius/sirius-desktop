@@ -28,7 +28,7 @@
     <sonar.skip>true</sonar.skip>
   </properties>
 
-  <artifactId>org.eclipse.sirius.runtime.ide.ui.acceleo</artifactId>
+  <artifactId>org.eclipse.sirius.runtime.ide.ui.interpreter</artifactId>
   <packaging>eclipse-feature</packaging>
 
   <build>
