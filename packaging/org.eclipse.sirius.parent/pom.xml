@@ -338,7 +338,6 @@
         <!-- features -->
         <module>../../packaging/org.eclipse.sirius.model.feature</module>
         <module>../../packaging/org.eclipse.sirius.runtime</module>
-        <module>../../packaging/org.eclipse.sirius.runtime.acceleo</module>
         <module>../../packaging/org.eclipse.sirius.runtime.aql</module>
 
         <!-- update sites -->
@@ -367,7 +366,6 @@
         <module>../../plugins/org.eclipse.sirius.ext.jface</module>
         <module>../../plugins/org.eclipse.sirius.ext.swt</module>
         <module>../../plugins/org.eclipse.sirius.common.acceleo.aql.ide</module>
-        <module>../../plugins/org.eclipse.sirius.common.acceleo.mtl.ide</module>
         <module>../../plugins/org.eclipse.sirius.common.ui</module>
         <module>../../plugins/org.eclipse.sirius.common.ui.ext</module>
         <module>../../plugins/org.eclipse.sirius.common.xtext</module>
@@ -429,7 +427,6 @@
         <module>../../packaging/org.eclipse.sirius.runtime.ide.xtext</module>
         <module>../../packaging/org.eclipse.sirius.samples</module>
         <module>../../packaging/org.eclipse.sirius.specifier</module>
-        <module>../../packaging/org.eclipse.sirius.specifier.ide.ui.acceleo</module>
         <module>../../packaging/org.eclipse.sirius.specifier.ide.ui.aql</module>
         <module>../../packaging/org.eclipse.sirius.specifier.ide.ui</module>
         <module>../../packaging/org.eclipse.sirius.tests.support</module>

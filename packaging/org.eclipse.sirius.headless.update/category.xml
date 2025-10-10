@@ -15,14 +15,8 @@
    <feature id="org.eclipse.sirius.runtime.source" version="0.0.0">
       <category name="Sirius.SDK"/>
    </feature>
-   <feature id="org.eclipse.sirius.runtime.acceleo" version="0.0.0">
-      <category name="Sirius"/>
-   </feature>
    <feature id="org.eclipse.sirius.runtime.aql" version="0.0.0">
       <category name="Sirius"/>
-   </feature>
-   <feature id="org.eclipse.sirius.runtime.acceleo.source" version="0.0.0">
-      <category name="Sirius.SDK"/>
    </feature>
    <feature id="org.eclipse.sirius.runtime.aql.source" version="0.0.0">
       <category name="Sirius.SDK"/>

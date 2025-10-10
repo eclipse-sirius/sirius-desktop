@@ -24,9 +24,6 @@
    <feature id="org.eclipse.sirius.specifier.ide.ui.aql" version="0.0.0">
       <category name="Sirius"/>
    </feature>
-   <feature id="org.eclipse.sirius.runtime.acceleo" version="0.0.0">
-      <category name="Sirius"/>
-   </feature>
    <feature id="org.eclipse.sirius.samples" version="0.0.0">
       <category name="Sirius"/>
    </feature>
@@ -47,9 +44,6 @@
       <category name="Sirius"/>
    </feature>
    <feature id="org.eclipse.sirius.samples.properties.feature" version="0.0.0">
-      <category name="Sirius"/>
-   </feature>
-   <feature id="org.eclipse.sirius.specifier.ide.ui.acceleo" version="0.0.0">
       <category name="Sirius"/>
    </feature>
    <feature id="org.eclipse.sirius.runtime.ide.xtext" version="0.0.0">
@@ -91,9 +85,6 @@
    <feature id="org.eclipse.sirius.runtime.source" version="0.0.0">
       <category name="Sirius.SDK"/>
    </feature>
-   <feature id="org.eclipse.sirius.runtime.acceleo.source" version="0.0.0">
-      <category name="Sirius.SDK"/>
-   </feature>
    <feature id="org.eclipse.sirius.samples.source" version="0.0.0">
       <category name="Sirius.SDK"/>
    </feature>
@@ -119,9 +110,6 @@
       <category name="Sirius.SDK"/>
    </feature>
    <feature id="org.eclipse.sirius.tests.rcptt.feature.source" version="0.0.0">
-      <category name="Sirius.SDK"/>
-   </feature>
-   <feature id="org.eclipse.sirius.specifier.ide.ui.acceleo.source" version="0.0.0">
       <category name="Sirius.SDK"/>
    </feature>
    <feature id="org.eclipse.sirius.runtime.ide.xtext.source" version="0.0.0">
