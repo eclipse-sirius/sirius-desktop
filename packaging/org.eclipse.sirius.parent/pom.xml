@@ -508,7 +508,6 @@
         <module>../../plugins/org.eclipse.sirius.ext.jface</module>
         <module>../../plugins/org.eclipse.sirius.ext.swt</module>
         <module>../../plugins/org.eclipse.sirius.common.acceleo.aql.ide</module>
-        <module>../../plugins/org.eclipse.sirius.common.acceleo.mtl.ide</module>
         <module>../../plugins/org.eclipse.sirius.common.ui</module>
         <module>../../plugins/org.eclipse.sirius.common.ui.ext</module>
         <module>../../plugins/org.eclipse.sirius.common.xtext</module>
