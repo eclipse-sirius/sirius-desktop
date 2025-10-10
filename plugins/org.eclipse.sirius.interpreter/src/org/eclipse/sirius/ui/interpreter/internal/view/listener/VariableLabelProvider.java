@@ -8,9 +8,10 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.ui.interpreter.internal.view;
+package org.eclipse.sirius.ui.interpreter.internal.view.listener;
 
 import org.eclipse.sirius.ui.interpreter.internal.InterpreterMessages;
+import org.eclipse.sirius.ui.interpreter.internal.view.Variable;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.viewers.CellLabelProvider;

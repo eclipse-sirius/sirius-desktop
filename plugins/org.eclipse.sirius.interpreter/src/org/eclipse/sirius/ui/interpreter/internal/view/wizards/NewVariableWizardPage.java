@@ -16,7 +16,7 @@ import java.util.List;
 import org.eclipse.sirius.ui.interpreter.internal.InterpreterMessages;
 import org.eclipse.sirius.ui.interpreter.internal.SWTUtil;
 import org.eclipse.sirius.ui.interpreter.internal.view.Variable;
-import org.eclipse.sirius.ui.interpreter.internal.view.VariableLabelProvider;
+import org.eclipse.sirius.ui.interpreter.internal.view.listener.VariableLabelProvider;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
