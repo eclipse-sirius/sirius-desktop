@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>org.eclipse.sirius.runtime.ide.ui.acceleo</name>
+	<name>org.eclipse.sirius.runtime.ide.ui.interpreter</name>
 	<comment></comment>
 	<projects>
 	</projects>

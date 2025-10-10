@@ -384,7 +384,6 @@
         <module>../../plugins/org.eclipse.sirius.editor.table</module>
         <module>../../plugins/org.eclipse.sirius.editor.tree</module>
         <module>../../plugins/org.eclipse.sirius.editor</module>
-        <module>../../plugins/org.eclipse.sirius.interpreter</module>
         <module>../../plugins/org.eclipse.sirius.table.ui</module>
         <module>../../plugins/org.eclipse.sirius.table.ui.ext</module>
         <module>../../plugins/org.eclipse.sirius.tree.ui</module>
@@ -392,6 +391,7 @@
         <module>../../plugins/org.eclipse.sirius.ui</module>
         <module>../../plugins/org.eclipse.sirius.ui.ext</module>
         <module>../../plugins/org.eclipse.sirius.ui.editor</module>
+        <module>../../plugins/org.eclipse.sirius.ui.interpreter</module>
         <module>../../plugins/org.eclipse.sirius.tests.junit.support</module>
         <module>../../plugins/org.eclipse.sirius.tests.swtbot.support</module>
 
@@ -422,7 +422,7 @@
         <!-- features -->
         <module>../../packaging/org.eclipse.sirius.aql</module>
         <module>../../packaging/org.eclipse.sirius.doc.feature</module>
-        <module>../../packaging/org.eclipse.sirius.runtime.ide.ui.acceleo</module>
+        <module>../../packaging/org.eclipse.sirius.runtime.ide.ui.interpreter</module>
         <module>../../packaging/org.eclipse.sirius.runtime.ide.ui</module>
         <module>../../packaging/org.eclipse.sirius.runtime.ide.xtext</module>
         <module>../../packaging/org.eclipse.sirius.samples</module>
@@ -525,7 +525,6 @@
         <module>../../plugins/org.eclipse.sirius.editor.table</module>
         <module>../../plugins/org.eclipse.sirius.editor.tree</module>
         <module>../../plugins/org.eclipse.sirius.editor</module>
-        <module>../../plugins/org.eclipse.sirius.interpreter</module>
         <module>../../plugins/org.eclipse.sirius.table.ui</module>
         <module>../../plugins/org.eclipse.sirius.table.ui.ext</module>
         <module>../../plugins/org.eclipse.sirius.tree.ui</module>
@@ -533,6 +532,7 @@
         <module>../../plugins/org.eclipse.sirius.ui</module>
         <module>../../plugins/org.eclipse.sirius.ui.ext</module>
         <module>../../plugins/org.eclipse.sirius.ui.editor</module>
+        <module>../../plugins/org.eclipse.sirius.ui.interpreter</module>
         <module>../../plugins/org.eclipse.sirius.tests.junit.support</module>
         <module>../../plugins/org.eclipse.sirius.tests.swtbot.support</module>
 
@@ -548,7 +548,7 @@
         <!-- features -->
         <module>../../packaging/org.eclipse.sirius.aql</module>
         <module>../../packaging/org.eclipse.sirius.doc.feature</module>
-        <module>../../packaging/org.eclipse.sirius.runtime.ide.ui.acceleo</module>
+        <module>../../packaging/org.eclipse.sirius.runtime.ide.ui.interpreter</module>
         <module>../../packaging/org.eclipse.sirius.runtime.ide.ui</module>
         <module>../../packaging/org.eclipse.sirius.runtime.ide.xtext</module>
         <module>../../packaging/org.eclipse.sirius.samples</module>

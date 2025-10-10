@@ -12,11 +12,11 @@
        Obeo - Initial API and implementation
 -->
 <feature
-      id="org.eclipse.sirius.runtime.ide.ui.acceleo"
+      id="org.eclipse.sirius.runtime.ide.ui.interpreter"
       label="%featureName"
       version="7.5.0.qualifier"
       provider-name="%providerName"
-      plugin="org.eclipse.sirius.interpreter"
+      plugin="org.eclipse.sirius.ui.interpreter"
       license-feature="org.eclipse.license"
       license-feature-version="0.0.0">
 
@@ -34,7 +34,7 @@ Install this if you want to create Sirius-based modelers and want to easily test
    </license>
 
    <plugin
-         id="org.eclipse.sirius.interpreter"
+         id="org.eclipse.sirius.ui.interpreter"
          download-size="0"
          install-size="0"
          version="0.0.0"

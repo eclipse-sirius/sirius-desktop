@@ -10,7 +10,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.common.acceleo.interpreter;
+package org.eclipse.sirius.ui.interpreter.internal.interpreter;
 
 import java.util.Collection;
 import java.util.LinkedHashSet;

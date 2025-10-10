@@ -21,7 +21,7 @@
    </license>
 
    <plugin
-         id="org.eclipse.sirius.interpreter"
+         id="org.eclipse.sirius.ui.interpreter"
          download-size="0"
          install-size="0"
          version="0.0.0"
