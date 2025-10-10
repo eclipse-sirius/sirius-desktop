@@ -91,7 +91,7 @@ public class CompoundInterpreterTestCase extends TestCase {
             List<ContentProposal> proposals = getProposals(firstChar);
             ContentProposalConverter converter = new ContentProposalConverter(firstChar);
 
-            // The following assert is valid for: "aql:" "[/]" "ocl:" "var:"
+            // The following assert is valid for: "aql:" "[/]" "var:"
             // "service:" and "feature:"
             assertEquals("Proposals should contains only one proposal", 1, proposals.size());
 
