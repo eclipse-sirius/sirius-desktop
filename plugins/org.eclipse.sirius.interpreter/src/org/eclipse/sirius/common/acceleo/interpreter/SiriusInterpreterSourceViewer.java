@@ -16,8 +16,6 @@ import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
 
-import org.eclipse.acceleo.ui.interpreter.language.IInterpreterSourceViewer;
-import org.eclipse.acceleo.ui.interpreter.language.InterpreterContext;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.source.IVerticalRuler;
 import org.eclipse.jface.text.source.SourceViewer;
@@ -29,6 +27,8 @@ import org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.internal.assist.ProposalProviderRegistry;
+import org.eclipse.sirius.ui.interpreter.internal.language.IInterpreterSourceViewer;
+import org.eclipse.sirius.ui.interpreter.internal.language.InterpreterContext;
 import org.eclipse.swt.widgets.Composite;
 
 /**
@@ -73,7 +73,7 @@ public class SiriusInterpreterSourceViewer extends SourceViewer implements IInte
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.acceleo.ui.interpreter.language.IInterpreterSourceViewer#showContentAssist(org.eclipse.acceleo.ui.interpreter.language.InterpreterContext)
+     * @see org.eclipse.sirius.ui.interpreter.internal.language.IInterpreterSourceViewer#showContentAssist(org.eclipse.sirius.ui.interpreter.internal.language.InterpreterContext)
      */
     public void showContentAssist(InterpreterContext context) {
         if (fContentAssistant == null) {
