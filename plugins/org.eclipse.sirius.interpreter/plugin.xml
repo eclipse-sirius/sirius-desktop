@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <!--
-  Copyright (c) 2013 THALES GLOBAL SERVICES
+  Copyright (c) 2013, 2025 THALES GLOBAL SERVICES and others
   This program and the accompanying materials
   are made available under the terms of the Eclipse Public License 2.0
   which accompanies this distribution, and is available at
@@ -14,11 +14,70 @@
 -->
 
 <plugin>
+   
+    <extension
+         point="org.eclipse.ui.views">
+      <view
+            category="org.eclipse.acceleo.ide.ui"
+            class="org.eclipse.acceleo.ui.interpreter.view.InterpreterView"
+            icon="icons/view_icon.gif"
+            id="org.eclipse.acceleo.ui.interpreter.view"
+            name="%InterpreterViewName"
+            restorable="true">
+         <description>
+            %InterpreterViewDescription
+         </description>
+      </view>
+   </extension>
+   
    <extension
-         point="org.eclipse.acceleo.ui.language.interpreter">
-      <languageInterpreter
-            class="org.eclipse.sirius.common.acceleo.interpreter.SiriusInterpreter"
-            label="%siriusInterpreter.label">
-      </languageInterpreter>
+         point="org.eclipse.ui.commands">
+      <command
+            id="org.eclipse.acceleo.ui.interpreter.evaluateaction"
+            name="%InterpreterView.actions.evaluate.label">
+      </command>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="org.eclipse.acceleo.ui.interpreter.evaluateaction"
+            contextId="org.eclipse.acceleo.ui.interpreter.interpreterview"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+M2+D">
+      </key>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.contexts">
+      <context
+            id="org.eclipse.acceleo.ui.interpreter.interpreterview"
+            name="%InterpreterContextName"
+            parentId="org.eclipse.ui.contexts.dialogAndWindow">
+      </context>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="org.eclipse.acceleo.ui.interpreter.internal.view.actions.InterpreterActionHandler"
+            commandId="org.eclipse.acceleo.ui.interpreter.evaluateaction">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.viewActions">
+      <viewContribution
+            id="org.eclipse.acceleo.ui.interpreter.debug.VariableViewActions"
+            targetID="org.eclipse.debug.ui.VariableView">
+         <action
+               class="org.eclipse.acceleo.ui.interpreter.internal.optional.debug.AddVariablesDebugViewActionDelegate"
+               icon="icons/add_variable_action.gif"
+               id="org.eclipse.acceleo.ui.interpreter.debug.AddVariablesToInterpreterAction"
+               label="%AddVariableToInterpreterAction.Label"
+               style="push"
+               toolbarPath="additions"
+               tooltip="%AddVariableToInterpreterAction.Tooltip">
+         </action>
+      </viewContribution>
    </extension>
 </plugin>
