@@ -21,8 +21,7 @@
       license-feature-version="0.0.0">
 
    <description url="http://www.eclipse.org/sirius">
-Sirius IDE integration with Interpreter view of Acceleo 3. Provides Sirius-specific extensions to the Acceleo Interpreter view.
-This view is provided through feature org.eclipse.acceleo.ui.interpreter and is independent of the rest of Acceleo.
+Sirius IDE integration. Provides Sirius-specific Interpreter view.
 Install this if you want to create Sirius-based modelers and want to easily test your expressions.
    </description>
 

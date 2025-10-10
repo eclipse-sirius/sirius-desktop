@@ -139,12 +139,6 @@
    <feature id="org.eclipse.acceleo.query.source" version="0.0.0">
       <category name="Sirius.Dependencies"/>
    </feature>
-   <feature id="org.eclipse.acceleo.ui.interpreter" version="0.0.0">
-      <category name="Sirius.Dependencies"/>
-   </feature>
-   <feature id="org.eclipse.acceleo.ui.interpreter.source" version="0.0.0">
-      <category name="Sirius.Dependencies"/>
-   </feature>
    <feature id="org.eclipse.eef.sdk.feature" version="0.0.0">
       <category name="Sirius.Dependencies"/>
    </feature>
