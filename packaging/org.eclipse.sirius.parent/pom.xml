@@ -340,7 +340,6 @@
         <module>../../packaging/org.eclipse.sirius.runtime</module>
         <module>../../packaging/org.eclipse.sirius.runtime.acceleo</module>
         <module>../../packaging/org.eclipse.sirius.runtime.aql</module>
-        <module>../../packaging/org.eclipse.sirius.runtime.ocl</module>
 
         <!-- update sites -->
         <module>../../packaging/org.eclipse.sirius.headless.update</module>

@@ -21,12 +21,5 @@
             interpreterProviderClass="org.eclipse.sirius.common.ocl.business.internal.interpreter.OclInterpreter">
       </expressionInterpreterProvider>
    </extension>
-   <extension
-         point="org.eclipse.sirius.common.proposalProvider">
-      <proposalProvider
-            class="org.eclipse.sirius.common.ocl.business.internal.interpreter.OclInterpreter"
-            interpreter="org.eclipse.sirius.common.ocl.interpreter.OclInterpreter">
-      </proposalProvider>
-   </extension>
 
 </plugin>

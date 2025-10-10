@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -97,7 +97,6 @@ import org.eclipse.sirius.tests.unit.common.interpreter.acceleo.mtl.InterpretedE
 import org.eclipse.sirius.tests.unit.common.interpreter.feature.FeatureCompletionTests;
 import org.eclipse.sirius.tests.unit.common.interpreter.feature.FeatureInterpreterTests;
 import org.eclipse.sirius.tests.unit.common.interpreter.feature.FeatureProposalProviderWithPseudoFeatureTests;
-import org.eclipse.sirius.tests.unit.common.interpreter.ocl.OCLCompletionTest;
 import org.eclipse.sirius.tests.unit.common.interpreter.service.ServiceCompletionTests;
 import org.eclipse.sirius.tests.unit.common.interpreter.service.ServiceInterpreterTests;
 import org.eclipse.sirius.tests.unit.common.interpreter.service.ServiceProposalProviderTests;
@@ -283,7 +282,6 @@ public class AllCommonPluginTests extends TestCase {
 
         suite.addTestSuite(InitializationTest.class);
         suite.addTestSuite(CompletionTests.class);
-        suite.addTestSuite(OCLCompletionTest.class);
         suite.addTestSuite(DiagramComponentizationManagerTest.class);
         suite.addTestSuite(DiagramExtensionDescriptionTest.class);
         suite.addTestSuite(MetamodelSpecificationInRepresentationExtensionDescriptionTest.class);

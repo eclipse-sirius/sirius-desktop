@@ -9,6 +9,11 @@ h2(#sirius7.5.0). Changes in Sirius  Desktop 7.5.0
 * <span class="label label-info">Modified</span> As of version 7.5.0, Sirius Desktop now requires Eclipse 2025-09 or later (and the corresponding versions of EMF, GEF, GMF, EEF, Acceleo).
 * <span class="label label-danger">Removed</span> @org.eclipse.sirius.eef.adapters@ plugin and EEF 1.5 support have been removed.
 
+h3. Specifiers-Visible Changes
+
+* <span class="label label-danger">Removed</span> Support for OCL expressions in @odesign@ files have been removed. AQL is recommended instead.
+See "this document":https://github.com/eclipse-acceleo/acceleo/blob/6ca859c3b92027de716787de751cfce85d3c1597/query/plugins/org.eclipse.acceleo.query.doc/pages/index.adoc#5-migrating-from-mtl-queries if you need to migrate non-trivial expressions. 
+
 h2(#sirius7.4.11). Changes in Sirius  Desktop 7.4.11
 
 h3. Specifiers-Visible Changes
