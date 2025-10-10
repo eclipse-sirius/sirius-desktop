@@ -153,7 +153,7 @@
 						<code>feature:eAllContents</code> returns all the elements directly and indirectly contained inside the current element (or an empty collection if there is none). This is equivalent to <code>aql:self.eAllContents()</code>.
 					</li>
 					<li>
-						<code>feature:eCrossReferences</code> returns all the model elements which are directly referenced by the current element (or an empty collection if there is none). This is equivalent to <code>[self.eCrossReferences()/] using Acceleo 3/MTL</code>.
+						<code>feature:eCrossReferences</code> returns all the model elements which are directly referenced by the current element (or an empty collection if there is none). This is equivalent to <code>aql:self.eCrossReferences() using AQL</code>.
 					</li>
 				</ul>
 			</li>
@@ -181,7 +181,7 @@
 		</ul>
 		<h2 id="aql">Using AQL</h2>
 		<p>Starting from Sirius 3.1, 
-			<em>AQL</em> (Acceleo Query Language, first introduced in Sirius 3.0) is the recommended language to write queries/interpreted expressions. AQL is similar to Acceleo 3/MTL, but simpler and provides much better performance in the Sirius context. AQL expressions start with the 
+			<em>AQL</em> (Acceleo Query Language, first introduced in Sirius 3.0) is the recommended language to write queries/interpreted expressions. AQL has replaced Acceleo 3/MTL, it is similar but simpler and provides much better performance in the Sirius context. AQL expressions start with the 
 			<code>aql:</code> prefix and have a syntax similar to Acceleo (without the enclosing 
 			<code>[../]</code> brackets). The main differences between the two languages are:
 		</p>
@@ -198,7 +198,7 @@
 				<code>self</code> in such a context. For example: <code>[self.eContents()&#45;&gt;select(name.startsWith(&apos;A&apos;))/]</code> becomes <code>aql:self.eContents()&#45;&gt;select(i | i.name.startsWith(&apos;A&apos;))</code> with an explicit declaration and usage of 
 				<code>i</code> in AQL.
 			</li>
-			<li>AQL is more persmissive in terms of missing/empty intermediate results in complex expressions: 
+			<li>AQL is more permissive in terms of missing/empty intermediate results in complex expressions: 
 				<code>aql:self.anEmptyReference.somethingElse</code> will not result in an error as the equivalent Acceleo expression would, but simply return an empty result.
 			</li>
 			<li>AQL provides different services/methods by default compared to Acceleo. In general the set of default services in AQL is better suited to the typically use cases encountered in Sirius.</li>
@@ -215,53 +215,8 @@
 			<em>Note:</em> Several services like olcIsKindOf() or filter() use type literals and will require to explicitly reference the known meta-models as dependencies to work. It is recommended to add the corresponding meta-models plug-ins to the dependencies of the Viewpoint Specific Project.
 		</p>
 		<h2 id="acceleo">Using Acceleo</h2>
-		<p>Acceleo 3 implements the MTL standard, and provides a query language similar to OCL (with some extensions). It provides relatively good static validation and auto-completion when editing your expressions, but AQL is even better, and faster. For new modelers, prefer AQL over Acceleo/MTL. If you have existing modelers which use Acceleo/MTL, converting them to use AQL is relatively straightforward, see <a href="https://www.eclipse.org/acceleo/documentation/aql.html#MigratingfromMTLqueries" target="_blank">the AQL documentation</a> for details.</p>
-		<p>Acceleo expressions are enclosed in brackets: <code>[theExpression/]</code>. Inside the brackets you can write any valid Acceleo expression, including using 
-			<code>if</code> and 
-			<code>let</code> statements, for example. See <a href="https://wiki.eclipse.org/Acceleo" target="_blank">the Acceleo documentation</a> for the exact syntax and semantics of the language.
-		</p>
-		<p>Note that  Acceleo expressions used inside VSMs 
-			<strong>must</strong> be enclosed inside a single bracket. It is not currently possible to mix Acceleo expressions and fixed text (like 
-			<code>"prefix[someExpression/]suffix"</code>). Instead, you can use Acceleo&#8217;s string manipulation operations to obtain the same result: <code>[&apos;prefix&apos; + someExpression + &apos;suffix&apos;/]</code>). Related to this, auto-completion only works if you are inside a well-formed bracket (i.e. <code>[&lt;cursor&gt;/]</code>); if you have simply opened the bracket but not closed it (i.e. <code>[&lt;cursor&gt;</code>), completion will not be available.
-		</p>
-		<p>Acceleo expressions can transparently invoke methods from Java classes which follow the 
-			<a href="#service_methods">service methods</a> conventions and have been properly declared in the VSM. Note that currently this only works if the Java service class is in the same project as the 
-			<em>VSM</em>. You can also invoke Acceleo 
-			<em>queries</em> defined in 
-			<code>.mtl</code> files in your Viewpoint Specification Project. For this to work, your Viewpoint Specification Project should be an Acceleo Generator project, you can convert the project with the 
-			<em>Configure &gt; Toggle Acceleo Nature</em> contextual menu. If you want to use queries from 
-			<code>.mtl</code> files in you Sirius project, the parent 
-			<em>Viewpoint</em> element must have a 
-			<em>Java Extension</em> element which references the MTL file, using the 
-			<code>com::example::domain::design::module</code> syntax (note that the qualified name does not contain the 
-			<code>.mtl</code> or 
-			<code>.emtl</code> file extension). Also make sure to read <a href="http://www.obeonetwork.com/page/building-an-acceleo-generator"  target="_blank">http://www.obeonetwork.com/page/building-an-acceleo-generator</a> to ensure the project is built correctly, or the queries defined in the 
-			<code>.mtl</code> files may not be available when the project is deployed as a plug-in.
-		</p>
 		<p>
-			<em>Note:</em> due to an incompatible change in serialization format in EMF 2.9, if you use external 
-			<code>.mtl</code> files in your modeler definitions and build your modeler plug-ins using EMF 2.9 or later, the resulting modeler will not work with previous versions of EMF (as the resulting 
-			<code>.emtl</code> files will not load correctly with EMF 2.8 and earlier). For reference, EMF 2.9 corresponds to Eclipse 4.3 (Kepler). 
-		</p>
-		<p>Acceleo is very precise (and  very demanding) about the types of elements your queries are executed on. This generally means you get good auto-completion and useful validation and diagnostics. However sometimes Sirius is not able to statically determine the precise type of the model elements on which an expression will be evaluated. In that case, it assumes a plain 
-			<em>EObject</em>. If you know the actual type which will be used, prefix your expression with 
-			<code>filter(ExpectedType)</code> to help Sirius. Note that if the actual type at runtime is not compatible with 
-			<code>ExpectedType</code>, the rest of your expression will silently be ignored.
-		</p>
-		<p>In the context of Sirius, you have access to a special feature which can be used to follow &#8220;back-links&#8221; or &#8220;cross-references&#8221;. From a given model element, this allows you to easily (and efficiently) find all the elements which refer to it in the scope of the models and representations in the same modeling project. This feature is available through the 
-			<code>eInverse()</code> method, which can be used on any model element inside an Acceleo expression.
-		</p>
-		<p>Note that in most cases, expressions in Sirius are evaluated in a context where 
-			<em>variables</em> are defined. For example, most expressions inside tool definitions have access to variables telling them which elements the tool has been applied on. In some cases, the names of these variable can conflict with names of features in your meta-model. The evaluation rules of Acceleo (OCL actually) give precedence to variables, so it is recommended to always prefix accesses to your meta-model features with 
-			<code>self</code> (or another expression) to avoid ambiguity. As a concrete example, say you have an expression 
-			<code>"[target/]"</code> that you expect to access the 
-			<code>target</code> feature of one of your object. If evaluated in a context where a 
-			<code>target</code> variable exist, the value of the expression will be the value of the variable, 
-			<em>not</em> the value of the object&#8217;s property. To avoid ambiguity, always use expressions of the form 
-			<code>"[self.target/]"</code> in such cases.
-		</p>
-		<p>
-			<em>Note:</em> Due to internal changes in the Eclipse Equinox runtime, starting with Eclipse Luna (4.4) it is impossible to evaluate Java services from an Acceleo 3 expression if the Java service is defined directly in the workspace. This only affect specifiers (not end-users). When developing modelers which use Acceleo expressions and rely on Java services, you must launch an Eclipse runtime from your development environement to test the resulting modeler in a context where the service is available as part of a deployed plug-in. Starting with Sirius 3.0 you can also use the AQL language instead, which has a syntax very similar to Acceleo 3/MTL, but does not have this limitation regarding services in the workspace.
+			<em>Note</em>: Starting from version 7.5.0, Sirius no longer supports MTL as an expression language.
 		</p>
 		<h2 id="ocl">Using Raw OCL</h2>
 		<p>
@@ -274,31 +229,34 @@
 		<p>To provide your custom language, you must 
 			<em>at least</em> implement the 
 			<code>org.eclipse.sirius.common.expressionInterpreter</code> extension point, and provide an implementation of the 
-			<code>org.eclipse.sirius.common.tools.api.interpreter.IInterpreter</code> interface. The example below shows how the Acceleo interpreter is registered. The 
-			<code>AcceleoMTLInterpreterProvider</code> is the one which implements the 
+			<code>org.eclipse.sirius.common.tools.api.interpreter.IInterpreter</code> interface. The example below shows how the AQL interpreter is registered. The 
+			<code>AcceleoAQLInterpreterProvider</code> is the one which implements the 
 			<code>IInterpreter</code> interface.
 		</p>
-		<pre><code>   &lt;extension point="org.eclipse.sirius.common.expressionInterpreter"
-              id="org.eclipse.sirius.common.acceleo.mtl.AcceleoMTLInterpreter"&gt;
+		<pre><code>   &lt;extension
+         id="org.eclipse.sirius.common.acceleo.aql.AcceleoAQLInterpreter"
+         point="org.eclipse.sirius.common.expressionInterpreter"&gt;
       &lt;expressionInterpreterProvider
-            interpreterProviderClass="org.eclipse.sirius.common.acceleo.mtl.business.internal.interpreter.AcceleoMTLInterpreterProvider" /&gt;
+            interpreterProviderClass="org.eclipse.sirius.common.acceleo.aql.business.internal.AcceleoAQLInterpreterProvider"&gt;
+      &lt;/expressionInterpreterProvider&gt;
    &lt;/extension&gt;
 </code></pre>
 		<p>You can also optionally provide support for auto-completion for your language by implementing the 
 			<code>org.eclipse.sirius.common.proposalProvider</code> extension point and providing an implementation of 
-			<code>org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider</code> interface. For example, here is how the completion support for Acceleo is registered (
-			<code>AcceleoProposalProvider</code> is the class which implements the 
+			<code>org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider</code> interface. For example, here is how the completion support for AQL is registered (
+			<code>AQLProposalProvider</code> is the class which implements the 
 			<code>IProposalProvider</code> interface):
 		</p>
 		<pre><code>   &lt;extension point="org.eclipse.sirius.common.proposalProvider"&gt;
       &lt;proposalProvider
-            class="org.eclipse.sirius.common.acceleo.mtl.ide.AcceleoProposalProvider"
-            interpreter="org.eclipse.sirius.common.acceleo.mtl.AcceleoMTLInterpreter" /&gt;
+            class="org.eclipse.sirius.common.acceleo.aql.ide.proposal.AQLProposalProvider"
+            interpreter="org.eclipse.sirius.common.acceleo.aql.AcceleoAQLInterpreter"&gt;
+      &lt;/proposalProvider&gt;
    &lt;/extension&gt;
 </code></pre>
 		<h2 id="service_methods">Writing Java Services</h2>
 		<p>Query languages may support the notion of 
-			<em>Java services</em>, which are methods written in Java that can be transparently invoked from interpreted expressions in Sirius. Acceleo 3 includes this support. All you need to do is to create a Java class whose methods follow some conventions (described below) in your Viewpoint Specification Project, and declare the class (using its fully qualified Java name) in the VSM. You can then use the services defined in that class in any of you interpreted expressions written in either Acceleo or another language which supports services (refer to the query language&#8217;s documentation for details).
+			<em>Java services</em>, which are methods written in Java that can be transparently invoked from interpreted expressions in Sirius. AQL includes this support. All you need to do is to create a Java class whose methods follow some conventions (described below) in your Viewpoint Specification Project, and declare the class (using its fully qualified Java name) in the VSM. You can then use the services defined in that class in any of you interpreted expressions written in either AQL or another language which supports services (refer to the query language&#8217;s documentation for details).
 		</p>
 		<p>A service is simply a public Java methods which follows some conventions:</p>
 		<ul>
@@ -338,24 +296,12 @@
 		<p>
 			<img border="0" src="images/serviceVsmRegistration.png"/>
 		</p>
-		<p>Then you can invoke it in the expressions of languages which support it  like this: <code>[aFamily.getFamiliesContainingParents()/]</code>. (using Acceleo syntax) The invocation looks as if the service was a normal feature of the 
+		<p>Then you can invoke it in the expressions of languages which support it  like this: <code>aql:aFamily.getFamiliesContainingParents()</code>. (using AQL syntax) The invocation looks as if the service was a normal feature of the 
 			<code>Family</code> type. When the service is invoked, the model element on which it is invoked is used as the first argument to the Java method. If arguments are passed in the expression, they are mapped to the second, third, etc. parameters of the Java method, assuming the types are compatible. The result of evaluating a service invocation is the result of the Java method.
 		</p>
 		<p>
 			<em>Warning:</em> Java service methods should be stateless. There is no guarantee that two successive invocations of the same service method on two model elements (or even on the same one) will use the same instance of the service class.
 		</p>
-		<p>
-			<em>Warning:</em> There are currently some limitations on the use of Java services from Acceleo:
-		</p>
-		<ul>
-			<li>primitive types can not be used as arguments or return types for service methods invoked from Acceleo 3 expressions. The workaround is to use the corresponding wrapper type (e.g. 
-				<code>Integer</code> instead of 
-				<code>int</code>).
-			</li>
-			<li>service methods invoked from Acceleo 3 expressions can not return 
-				<code>void</code>. You can return any value instead, for example target argument (the service method&#8217;s first parameter). 
-			</li>
-		</ul>
 		<h2 id="service_navigation">Accessing Java service implementations from interpreted expression or Java extension</h2>
 		<p>If you want to see the service implementation(s) used in an interpreted expression in the Java editor, you just have to put your cursor on the service and press the 
 			<strong>F3</strong> keyboard key. Three scenarios can occur after hitting F3:
@@ -367,12 +313,6 @@
 		</ul>
 		<p>
 			<img border="0" src="images/serviceNavigation.png"/>
-		</p>
-		<p>
-			<em>Warning:</em> This functionnality works only with 
-			<code>service:</code> and 
-			<code>aql:</code> interpreters, not with the Acceleo 3/MTL 
-			<code>[/]</code> interpreter.
 		</p>
 		<p>You also can open the service class specified in a Java extension by a double click on it in the VSM. It will open a Java editor if the qualified name corresponds to an existing implementation. </p>
 		<h2 id="standard_services">Standard Services</h2>

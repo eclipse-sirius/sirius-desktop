@@ -161,7 +161,7 @@ Pay attention: the evaluation of the _Ends Ordering_ expression should returned 
 
 The _Instance Roles Ordering_ handles the horizontal order of instance roles / lifelines. It specifies with an expression how semantic elements must be ordered. These elements should be the semantic elements which will be represented as instance role. 
 
-If we have a look at the UML2 meta-model, the fragment reference defined in an @Interaction@ contains all the execution occurrences and the message occurrences. Execution occurrences and messages occurrences are @EventEnd@ elements. But the fragment reference contains also some other types of elements as execution specifications. In order that the _Ends Ordering_ property only references @EventEnd@ elements we need to do an intersection of fragments elements and eventEnds (using either Acceleo or delegating to a Java service using @service:@).. 
+If we have a look at the UML2 meta-model, the fragment reference defined in an @Interaction@ contains all the execution occurrences and the message occurrences. Execution occurrences and messages occurrences are @EventEnd@ elements. But the fragment reference contains also some other types of elements as execution specifications. In order that the _Ends Ordering_ property only references @EventEnd@ elements we need to do an intersection of fragments elements and eventEnds (using either AQL or delegating to a Java service using @service:@).. 
 
 Furthermore, the lifeline reference defined in an @Interaction@ contains all the @Lifeline@ representing both lifeline and instance role.
 
@@ -198,7 +198,7 @@ Set the mandatory properties _Id_, _Label_ and _Domain class_:
 
   !images/instance_role_mapping_properties.png!
 
-The Semantic Candidates Expression is an Acceleo expression returning the semantic elements for which the mapping will be evaluated and then a graphical element will represent the semantic element on the diagram.
+The Semantic Candidates Expression is an interpreted expression returning the semantic elements for which the mapping will be evaluated and then a graphical element will represent the semantic element on the diagram.
 
 Don't forget to create a new Style for the instance role mapping.
 
@@ -315,7 +315,7 @@ h2(#tools). Tools
 
 h3. Java Services
 
-To use a java service in an Acceleo expression, service must be define like this in odesign:
+To use a java service in an interpreted expression, service must be define like this in odesign:
 
   !images/java_service.png!
 
@@ -377,7 +377,7 @@ In this example, we want to create a new @Message_1@ from the existing compute e
 
   !images/message_creation_precondition.png!
 
-A variable is available for the Acceleo expression : $preTarget. This variable is the semantic element associated to graphical element that is currently hovered by the mouse.
+A variable is available for the interpreted expression : $preTarget. This variable is the semantic element associated to graphical element that is currently hovered by the mouse.
 
 h3(#eventReorderTool). Event Reorder Tool
 
