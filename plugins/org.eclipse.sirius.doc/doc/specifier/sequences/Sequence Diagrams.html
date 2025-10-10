@@ -379,7 +379,7 @@
 			<code>Interaction</code> contains all the execution occurrences and the message occurrences. Execution occurrences and messages occurrences are 
 			<code>EventEnd</code> elements. But the fragment reference contains also some other types of elements as execution specifications. In order that the 
 			<em>Ends Ordering</em> property only references 
-			<code>EventEnd</code> elements we need to do an intersection of fragments elements and eventEnds (using either Acceleo or delegating to a Java service using 
+			<code>EventEnd</code> elements we need to do an intersection of fragments elements and eventEnds (using either AQL or delegating to a Java service using 
 			<code>service:</code>).. 
 		</p>
 		<p>Furthermore, the lifeline reference defined in an 
@@ -424,7 +424,7 @@
 			<em>Domain class</em>:
 		</p> 
 		<img border="0" src="images/instance_role_mapping_properties.png"/>
-		<p>The Semantic Candidates Expression is an Acceleo expression returning the semantic elements for which the mapping will be evaluated and then a graphical element will represent the semantic element on the diagram.</p>
+		<p>The Semantic Candidates Expression is an interpreted expression returning the semantic elements for which the mapping will be evaluated and then a graphical element will represent the semantic element on the diagram.</p>
 		<p>Don&#8217;t forget to create a new Style for the instance role mapping.</p>
 		<img border="0" src="images/instance_role_mapping_style.png"/>
 		<h3 id="Executions">Executions</h3>
@@ -529,7 +529,7 @@
 		<p>Note that there is no reconnect tool for GateMapping. Gates do not reconnect to other parents.</p>
 		<h2 id="tools">Tools</h2>
 		<h3 id="JavaServices">Java Services</h3>
-		<p>To use a java service in an Acceleo expression, service must be define like this in odesign:</p> 
+		<p>To use a java service in an interpreted expression, service must be define like this in odesign:</p> 
 		<img border="0" src="images/java_service.png"/>
 		<h3 id="CreationTools">Creation Tools</h3>
 		<p>Define a new Section to add creation tools:</p> 
@@ -622,7 +622,7 @@
 			<strong>Precondition.</strong> As for many other tools, it is possible to define a precondition for message creation tools. Depending on the precondition expression, the tool allows the element creation only under certain conditions. The precondition is defined as an interpreted expression.
 		</p> 
 		<img border="0" src="images/message_creation_precondition.png"/>
-		<p>A variable is available for the Acceleo expression : $preTarget. This variable is the semantic element associated to graphical element that is currently hovered by the mouse.</p>
+		<p>A variable is available for the interpreted expression : $preTarget. This variable is the semantic element associated to graphical element that is currently hovered by the mouse.</p>
 		<h3 id="eventReorderTool">Event Reorder Tool</h3>
 		<p>This tool is called when the user moves or changes the size of graphical elements on the diagram.</p>
 		<p>A single unique event reorder tool can and must be specified for message and execution mappings. The purpose of the tool is to re-synchronize the graphical ordering with the semantic ordering. When the user reorders a graphical element, the global order of graphical elements changes and the tool must then reorder the semantic elements according to these changes.</p> 
