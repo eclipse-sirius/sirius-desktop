@@ -11,7 +11,7 @@ h2(#sirius7.5.0). Changes in Sirius  Desktop 7.5.0
 
 h3. Specifiers-Visible Changes
 
-* <span class="label label-danger">Removed</span> Support for OCL expressions in @odesign@ files have been removed. AQL is recommended instead.
+* <span class="label label-danger">Removed</span> Support for MTL and OCL expressions in @odesign@ files have been removed. AQL is recommended instead.
 See "this document":https://github.com/eclipse-acceleo/acceleo/blob/6ca859c3b92027de716787de751cfce85d3c1597/query/plugins/org.eclipse.acceleo.query.doc/pages/index.adoc#5-migrating-from-mtl-queries if you need to migrate non-trivial expressions. 
 
 h2(#sirius7.4.11). Changes in Sirius  Desktop 7.4.11
