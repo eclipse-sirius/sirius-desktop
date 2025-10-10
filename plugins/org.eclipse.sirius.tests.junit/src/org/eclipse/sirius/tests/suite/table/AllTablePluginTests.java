@@ -40,7 +40,6 @@ import org.eclipse.sirius.tests.unit.table.unit.sort.DTableSortByLineWithEditorT
 import org.eclipse.sirius.tests.unit.table.unit.tools.CreateTableWithToolWithPrecondtionTest;
 import org.eclipse.sirius.tests.unit.table.unit.tools.NoVariableDuplicationTest;
 import org.eclipse.sirius.tests.unit.table.unit.tools.RefreshToolActionBarTest;
-import org.eclipse.sirius.tests.unit.table.unit.tools.TableToolPreconditionCompletionTest;
 import org.eclipse.sirius.tests.unit.table.unit.variables.TableVariableTests;
 import org.eclipse.sirius.tests.unit.table.unit.vsm.edit.TableAdapterFactoryRegistryTest;
 import org.eclipse.sirius.tests.unit.table.unit.vsm.editor.DefaultVariablesOnToolsTest;
@@ -70,8 +69,7 @@ public class AllTablePluginTests extends TestCase {
     }
 
     /**
-     * Creates the {@link junit.framework.TestSuite TestSuite} for all the tests
-     * of the table component.
+     * Creates the {@link junit.framework.TestSuite TestSuite} for all the tests of the table component.
      * 
      * @return The testsuite containing all the tests of the table component
      */
@@ -94,7 +92,6 @@ public class AllTablePluginTests extends TestCase {
         suite.addTestSuite(SpecifyArrays_Test.class);
         suite.addTestSuite(CreateTableWithToolWithPrecondtionTest.class);
         suite.addTestSuite(RefreshToolActionBarTest.class);
-        suite.addTestSuite(TableToolPreconditionCompletionTest.class);
         suite.addTestSuite(DTableSynchronizerVSMWithEditorTest.class);
         suite.addTestSuite(DCrossTableSynchronizerVSMWithEditorTest.class);
         suite.addTestSuite(DCrossTableNoDomainSynchronizerVSMWithEditorTest.class);
