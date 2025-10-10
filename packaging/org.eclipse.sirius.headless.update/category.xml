@@ -27,12 +27,6 @@
    <feature id="org.eclipse.sirius.runtime.aql.source" version="0.0.0">
       <category name="Sirius.SDK"/>
    </feature>
-   <feature id="org.eclipse.sirius.runtime.ocl" version="0.0.0">
-      <category name="Sirius"/>
-   </feature>
-   <feature id="org.eclipse.sirius.runtime.ocl.source" version="0.0.0">
-      <category name="Sirius.SDK"/>
-   </feature>
    <category-def name="Sirius" label="Sirius">
       <description>
          The Sirius Modeling Platform
