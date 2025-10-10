@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -43,8 +43,10 @@ import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest.ViewDescriptor;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
+import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Size;
+import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
@@ -338,14 +340,10 @@ public class AirXYLayoutEditPolicy extends XYLayoutEditPolicy {
         // figure size. In some cases, the GMF Bounds may have been updated but the figure has not been refreshed yet.
         // Note that the auto-size is a particular case (-1): during an arrange all, the figure constraint is set before
         // the GMF bounds.
-        if (REQ_MOVE_CHILDREN.equals(request.getType()) && (constraint.width() != -1 && constraint.height() != -1)) {
-            // We retrieve the Size of the GMF Node attached to the edit part.
-            Optional<Size> optionalSize = Optional.ofNullable(child.getModel()).filter(Node.class::isInstance).map(model -> ((Node) model).getLayoutConstraint()).filter(Size.class::isInstance)
-                    .map(Size.class::cast);
-            if (optionalSize.isPresent()) {
-                Dimension dimension = new Dimension(optionalSize.get().getWidth(), optionalSize.get().getHeight());
-                constraint.setSize(dimension);
-            }
+        if (REQ_MOVE_CHILDREN.equals(request.getType())) {
+            // The constraint is really a position, not a position+size.
+            // If we provide Dimension(-1, -1) to command, size will be erased.
+            return constraint.getTopLeft();
         } else if (isRegion(child)) {
             // We change the constraint width and height only for width and height sizeDelta with non 0 value
             Optional<Size> optionalSize = Optional.ofNullable(child.getModel()).filter(Node.class::isInstance).map(model -> ((Node) model).getLayoutConstraint()).filter(Size.class::isInstance)
@@ -363,6 +361,28 @@ public class AirXYLayoutEditPolicy extends XYLayoutEditPolicy {
         }
 
         return constraint;
+    }
+    
+    @Override
+    protected Command createChangeConstraintCommand(EditPart child, Object constraint) {
+        View shapeView = (View) child.getModel();
+        TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) getHost()).getEditingDomain();
+
+        ICommand changeCommand;
+        String message = DiagramUIMessages.SetLocationCommand_Label_Resize;
+        IAdaptable adaptable = new EObjectAdapter(shapeView);
+        if (constraint instanceof Rectangle bounds) {
+            changeCommand = new SetBoundsCommand(editingDomain, message, adaptable, bounds);
+        } else if (constraint instanceof Point location) {
+            changeCommand = new SetBoundsCommand(editingDomain, message, adaptable, location);
+        } else if (constraint instanceof Dimension size) {
+            changeCommand = new SetBoundsCommand(editingDomain, message, adaptable, size);
+        } else {
+            // unreachable: getConstraintFor
+            throw new UnsupportedOperationException();
+        }
+
+        return new ICommandProxy(changeCommand);
     }
 
     /**
