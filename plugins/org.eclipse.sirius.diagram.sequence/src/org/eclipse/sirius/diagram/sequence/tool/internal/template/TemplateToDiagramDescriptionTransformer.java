@@ -460,7 +460,7 @@ public class TemplateToDiagramDescriptionTransformer {
             to.setBorderSizeComputationExpression(from.getBorderSizeComputationExpression());
             to.setResizeKind(ResizeKind.NORTH_SOUTH_LITERAL);
             to.setShowIcon(false);
-            to.setLabelExpression("[''/]"); //$NON-NLS-1$
+            to.setLabelExpression(""); //$NON-NLS-1$
             to.setWidth(2);
             to.setHeight(3);
             return to;
