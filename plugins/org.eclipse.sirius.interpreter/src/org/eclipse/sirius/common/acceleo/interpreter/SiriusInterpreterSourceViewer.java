@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -32,19 +32,17 @@ import org.eclipse.sirius.common.tools.internal.assist.ProposalProviderRegistry;
 import org.eclipse.swt.widgets.Composite;
 
 /**
- * This will be provided to the interpreter view as the source viewer for the
- * "viewpoint" language.
+ * This will be provided to the interpreter view as the source viewer for the "viewpoint" language.
  * <p>
- * Though it will not be capable of displaying syntax highlighting, it will
- * provide the completion for all languages supported by viewpoint.
+ * Though it will not be capable of displaying syntax highlighting, it will provide the completion for all languages
+ * supported by viewpoint.
  * </p>
  * 
  * @author <a href="mailto:laurent.goubet@obeo.fr">Laurent Goubet</a>
  */
 public class SiriusInterpreterSourceViewer extends SourceViewer implements IInterpreterSourceViewer {
     /**
-     * This will be computed every time
-     * {@link #showContentAssist(InterpreterContext)} is called.
+     * This will be computed every time {@link #showContentAssist(InterpreterContext)} is called.
      */
     private Collection<ContentProposal> computedProposals;
 
@@ -56,8 +54,8 @@ public class SiriusInterpreterSourceViewer extends SourceViewer implements IInte
      * @param ruler
      *            the vertical ruler used by this source viewer
      * @param styles
-     *            the SWT style bits for the viewer's control,
-     *            <em>if <code>SWT.WRAP</code> is set then a custom document adapter needs to be provided, see {@link #createDocumentAdapter()}
+     *            the SWT style bits for the viewer's control, <em>if <code>SWT.WRAP</code> is set then a custom
+     *            document adapter needs to be provided, see {@link #createDocumentAdapter()}
      */
     public SiriusInterpreterSourceViewer(Composite parent, IVerticalRuler ruler, int styles) {
         super(parent, ruler, styles);

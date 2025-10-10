@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.acceleo.interpreter;
 
-import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -20,6 +19,7 @@ import java.util.Set;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CancellationException;
 
+import org.eclipse.acceleo.ui.interpreter.internal.InterpreterMessages;
 import org.eclipse.acceleo.ui.interpreter.language.EvaluationContext;
 import org.eclipse.acceleo.ui.interpreter.language.EvaluationResult;
 import org.eclipse.acceleo.ui.interpreter.view.Variable;
@@ -43,8 +43,7 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescript
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
- * This task delegates to the viewpoint's CompoundInterpreter for expression
- * evaluations.
+ * This task delegates to the viewpoint's CompoundInterpreter for expression evaluations.
  * 
  * @author <a href="mailto:laurent.goubet@obeo.fr">Laurent Goubet</a>
  */
@@ -69,7 +68,7 @@ public class SiriusEvaluationTask implements Callable<EvaluationResult> {
 
         final String expression = context.getExpression();
         if (context.getTargetEObjects().isEmpty()) {
-            IStatus errorStatus = new Status(IStatus.ERROR, InterpreterViewPlugin.PLUGIN_ID, MessageFormat.format(Messages.SiriusEvaluationTask_status_noEvaluationTarget, expression));
+            IStatus errorStatus = new Status(IStatus.ERROR, InterpreterPlugin.PLUGIN_ID, InterpreterMessages.getString("SiriusEvaluationTask_status_noEvaluationTarget", expression)); //$NON-NLS-1$
             return new EvaluationResult(errorStatus);
         }
 
@@ -88,10 +87,9 @@ public class SiriusEvaluationTask implements Callable<EvaluationResult> {
             vpInterpreter = CompoundInterpreter.INSTANCE.getInterpreterForExpression(expression);
 
             /*
-             * we can't rely on the session initializing the interpreter with
-             * the accessible EPackages as we are in a case where there is no
-             * session. As such we at least make sure the current EPackage of
-             * the current selection is known by the interpreter.
+             * we can't rely on the session initializing the interpreter with the accessible EPackages as we are in a
+             * case where there is no session. As such we at least make sure the current EPackage of the current
+             * selection is known by the interpreter.
              */
             Collection<MetamodelDescriptor> mmDescriptors = new LinkedHashSet<>();
 
@@ -116,7 +114,7 @@ public class SiriusEvaluationTask implements Callable<EvaluationResult> {
             final IStatus status = createResultStatus(result);
             evaluationResult = new EvaluationResult(result.getValue(), status);
         } catch (EvaluationException e) {
-            final IStatus status = new Status(IStatus.ERROR, InterpreterViewPlugin.PLUGIN_ID, e.getMessage(), e);
+            final IStatus status = new Status(IStatus.ERROR, InterpreterPlugin.PLUGIN_ID, e.getMessage(), e);
             evaluationResult = new EvaluationResult(status);
         }
 
@@ -144,9 +142,8 @@ public class SiriusEvaluationTask implements Callable<EvaluationResult> {
             localyRegisteredNsURIs.addAll(registry.keySet());
             for (String nsURI : registry.keySet()) {
                 /*
-                 * we get the instance by using Map.get() instead of
-                 * getEPackage() in order to avoid resolving EPackages which
-                 * would be registered but not used yet.
+                 * we get the instance by using Map.get() instead of getEPackage() in order to avoid resolving EPackages
+                 * which would be registered but not used yet.
                  */
                 Object value = registry.get(nsURI);
                 if (value instanceof EPackage) {
@@ -167,16 +164,15 @@ public class SiriusEvaluationTask implements Callable<EvaluationResult> {
     }
 
     /**
-     * This will create the status that allows the interpreter to display the
-     * type and size of the result object for successful evaluations.
+     * This will create the status that allows the interpreter to display the type and size of the result object for
+     * successful evaluations.
      * 
      * @param result
      *            The result of the evaluation.
-     * @return Status that can be displayed by the interpreter for this
-     *         evaluation.
+     * @return Status that can be displayed by the interpreter for this evaluation.
      */
     private IStatus createResultStatus(Object result) {
-        IStatus status = new Status(IStatus.OK, InterpreterViewPlugin.PLUGIN_ID, ""); //$NON-NLS-1$
+        IStatus status = new Status(IStatus.OK, InterpreterPlugin.PLUGIN_ID, ""); //$NON-NLS-1$
         if (result instanceof IEvaluationResult) {
             IEvaluationResult evaluationResult = (IEvaluationResult) result;
             status = this.getStatus(evaluationResult);
@@ -184,7 +180,7 @@ public class SiriusEvaluationTask implements Callable<EvaluationResult> {
             // Fallback to the original behavior if we are not using an
             // IEvaluationResult but a regular object
             String message = this.getDefaultMessage(result);
-            status = new Status(IStatus.OK, InterpreterViewPlugin.PLUGIN_ID, message);
+            status = new Status(IStatus.OK, InterpreterPlugin.PLUGIN_ID, message);
         }
         return status;
     }
@@ -204,15 +200,15 @@ public class SiriusEvaluationTask implements Callable<EvaluationResult> {
         Diagnostic diagnostic = evaluationResult.getDiagnostic();
         int statusCode = BasicDiagnostic.toIStatus(diagnostic).getSeverity();
 
-        IStatus status = new Status(statusCode, InterpreterViewPlugin.PLUGIN_ID, message);
+        IStatus status = new Status(statusCode, InterpreterPlugin.PLUGIN_ID, message);
         if (Diagnostic.OK != diagnostic.getSeverity() && !diagnostic.getChildren().isEmpty()) {
-            MultiStatus multiStatus = new MultiStatus(InterpreterViewPlugin.PLUGIN_ID, statusCode, message, null);
+            MultiStatus multiStatus = new MultiStatus(InterpreterPlugin.PLUGIN_ID, statusCode, message, null);
 
             List<Diagnostic> children = diagnostic.getChildren();
             for (Diagnostic childDiagnostic : children) {
                 int childStatusCode = BasicDiagnostic.toIStatus(childDiagnostic).getSeverity();
                 String childMessage = childDiagnostic.getMessage();
-                IStatus childStatus = new Status(childStatusCode, InterpreterViewPlugin.PLUGIN_ID, childMessage);
+                IStatus childStatus = new Status(childStatusCode, InterpreterPlugin.PLUGIN_ID, childMessage);
                 multiStatus.add(childStatus);
             }
 
@@ -259,16 +255,15 @@ public class SiriusEvaluationTask implements Callable<EvaluationResult> {
 
         String message;
         if (size == null) {
-            message = MessageFormat.format(Messages.SiriusEvaluationTask_status_resultMessage, type);
+            message = InterpreterMessages.getString("SiriusEvaluationTask_status_resultMessage", type); //$NON-NLS-1$
         } else {
-            message = MessageFormat.format(Messages.SiriusEvaluationTask_status_sizedResultMessage, type, size);
+            message = InterpreterMessages.getString("SiriusEvaluationTask_status_sizedResultMessage", type, size); //$NON-NLS-1$
         }
         return message;
     }
 
     /**
-     * Throws a new {@link CancellationException} if the current thread has been
-     * cancelled.
+     * Throws a new {@link CancellationException} if the current thread has been cancelled.
      */
     private void checkCancelled() {
         if (Thread.currentThread().isInterrupted()) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2000, 2018 IBM Corporation and others.
+ * Copyright (c) 2000, 2025 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -27,9 +27,8 @@ import org.eclipse.swt.graphics.Point;
 /**
  * Implementation of a completion proposal for Sirius.
  * <p>
- * Base implementation is a verbatim copy of jface's CompletionProposal since it
- * has for some reason been made final. All we are really interested in here is
- * the implementation of ICompletionProposalExtension2.
+ * Base implementation is a verbatim copy of jface's CompletionProposal since it has for some reason been made final.
+ * All we are really interested in here is the implementation of ICompletionProposalExtension2.
  * </p>
  * 
  * @author <a href="mailto:laurent.goubet@obeo.fr">Laurent Goubet</a>
@@ -60,9 +59,8 @@ public class SiriusCompletionProposal implements ICompletionProposal, ICompletio
     private String fAdditionalProposalInfo;
 
     /**
-     * Creates a new completion proposal based on the provided information. The
-     * replacement string is considered being the display string too. All
-     * remaining fields are set to <code>null</code>.
+     * Creates a new completion proposal based on the provided information. The replacement string is considered being
+     * the display string too. All remaining fields are set to <code>null</code>.
      * 
      * @param replacementString
      *            the actual string to be inserted into the document
@@ -71,16 +69,14 @@ public class SiriusCompletionProposal implements ICompletionProposal, ICompletio
      * @param replacementLength
      *            the length of the text to be replaced
      * @param cursorPosition
-     *            the position of the cursor following the insert relative to
-     *            replacementOffset
+     *            the position of the cursor following the insert relative to replacementOffset
      */
     public SiriusCompletionProposal(String replacementString, int replacementOffset, int replacementLength, int cursorPosition) {
         this(replacementString, replacementOffset, replacementLength, cursorPosition, null, null, null, null);
     }
 
     /**
-     * Creates a new completion proposal. All fields are initialized based on
-     * the provided information.
+     * Creates a new completion proposal. All fields are initialized based on the provided information.
      * 
      * @param replacementString
      *            the actual string to be inserted into the document
@@ -89,8 +85,7 @@ public class SiriusCompletionProposal implements ICompletionProposal, ICompletio
      * @param replacementLength
      *            the length of the text to be replaced
      * @param cursorPosition
-     *            the position of the cursor following the insert relative to
-     *            replacementOffset
+     *            the position of the cursor following the insert relative to replacementOffset
      * @param image
      *            the image to display for this proposal
      * @param displayString
@@ -206,8 +201,8 @@ public class SiriusCompletionProposal implements ICompletionProposal, ICompletio
     }
 
     /**
-     * Remove the "${variable}" parts in the completion. There are needed in the
-     * context of a full editor, but here they just add noise.
+     * Remove the "${variable}" parts in the completion. There are needed in the context of a full editor, but here they
+     * just add noise.
      */
     private String removeTemplateVariables(String s) {
         final String trimmed = s.replaceAll("\\$\\{[^\\}]+\\}", ""); //$NON-NLS-1$ //$NON-NLS-2$
