@@ -19,7 +19,7 @@
          point="org.eclipse.ui.views">
       <view
             category="org.eclipse.acceleo.ide.ui"
-            class="org.eclipse.acceleo.ui.interpreter.view.InterpreterView"
+            class="org.eclipse.sirius.ui.interpreter.internal.view.InterpreterView"
             icon="icons/view_icon.gif"
             id="org.eclipse.sirius.ui.interpreter.view"
             name="%InterpreterViewName"
@@ -33,7 +33,7 @@
    <extension
          point="org.eclipse.ui.commands">
       <command
-            id="org.eclipse.acceleo.ui.interpreter.evaluateaction"
+            id="org.eclipse.sirius.ui.interpreter.evaluateaction"
             name="%InterpreterView.actions.evaluate.label">
       </command>
    </extension>
@@ -41,8 +41,8 @@
    <extension
          point="org.eclipse.ui.bindings">
       <key
-            commandId="org.eclipse.acceleo.ui.interpreter.evaluateaction"
-            contextId="org.eclipse.acceleo.ui.interpreter.interpreterview"
+            commandId="org.eclipse.sirius.ui.interpreter.evaluateaction"
+            contextId="org.eclipse.sirius.ui.interpreter.interpreterview"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
             sequence="M1+M2+D">
       </key>
@@ -51,7 +51,7 @@
    <extension
          point="org.eclipse.ui.contexts">
       <context
-            id="org.eclipse.acceleo.ui.interpreter.interpreterview"
+            id="org.eclipse.sirius.ui.interpreter.interpreterview"
             name="%InterpreterContextName"
             parentId="org.eclipse.ui.contexts.dialogAndWindow">
       </context>
@@ -60,19 +60,19 @@
    <extension
          point="org.eclipse.ui.handlers">
       <handler
-            class="org.eclipse.acceleo.ui.interpreter.internal.view.actions.InterpreterActionHandler"
-            commandId="org.eclipse.acceleo.ui.interpreter.evaluateaction">
+            class="org.eclipse.sirius.ui.interpreter.internal.view.actions.InterpreterActionHandler"
+            commandId="org.eclipse.sirius.ui.interpreter.evaluateaction">
       </handler>
    </extension>
    <extension
          point="org.eclipse.ui.viewActions">
       <viewContribution
-            id="org.eclipse.acceleo.ui.interpreter.debug.VariableViewActions"
+            id="org.eclipse.sirius.ui.interpreter.debug.VariableViewActions"
             targetID="org.eclipse.debug.ui.VariableView">
          <action
-               class="org.eclipse.acceleo.ui.interpreter.internal.optional.debug.AddVariablesDebugViewActionDelegate"
+               class="org.eclipse.sirius.ui.interpreter.internal.optional.debug.AddVariablesDebugViewActionDelegate"
                icon="icons/add_variable_action.gif"
-               id="org.eclipse.acceleo.ui.interpreter.debug.AddVariablesToInterpreterAction"
+               id="org.eclipse.sirius.ui.interpreter.debug.AddVariablesToInterpreterAction"
                label="%AddVariableToInterpreterAction.Label"
                style="push"
                toolbarPath="additions"

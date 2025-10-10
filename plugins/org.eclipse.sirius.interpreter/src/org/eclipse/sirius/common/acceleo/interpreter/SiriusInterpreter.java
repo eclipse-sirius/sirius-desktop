@@ -14,10 +14,10 @@ package org.eclipse.sirius.common.acceleo.interpreter;
 
 import java.util.concurrent.Callable;
 
-import org.eclipse.acceleo.ui.interpreter.internal.SWTUtil;
-import org.eclipse.acceleo.ui.interpreter.language.AbstractLanguageInterpreter;
-import org.eclipse.acceleo.ui.interpreter.language.EvaluationContext;
-import org.eclipse.acceleo.ui.interpreter.language.EvaluationResult;
+import org.eclipse.sirius.ui.interpreter.internal.SWTUtil;
+import org.eclipse.sirius.ui.interpreter.internal.language.AbstractLanguageInterpreter;
+import org.eclipse.sirius.ui.interpreter.internal.language.EvaluationContext;
+import org.eclipse.sirius.ui.interpreter.internal.language.EvaluationResult;
 import org.eclipse.jface.text.Document;
 import org.eclipse.jface.text.source.SourceViewer;
 import org.eclipse.swt.SWT;
@@ -33,7 +33,7 @@ public class SiriusInterpreter extends AbstractLanguageInterpreter {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.acceleo.ui.interpreter.language.AbstractLanguageInterpreter#getEvaluationTask(org.eclipse.acceleo.ui.interpreter.language.EvaluationContext)
+     * @see org.eclipse.sirius.ui.interpreter.internal.language.AbstractLanguageInterpreter#getEvaluationTask(org.eclipse.sirius.ui.interpreter.internal.language.EvaluationContext)
      */
     @Override
     public Callable<EvaluationResult> getEvaluationTask(EvaluationContext context) {
@@ -43,7 +43,7 @@ public class SiriusInterpreter extends AbstractLanguageInterpreter {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.acceleo.ui.interpreter.language.AbstractLanguageInterpreter#createSourceViewer(org.eclipse.swt.widgets.Composite)
+     * @see org.eclipse.sirius.ui.interpreter.internal.language.AbstractLanguageInterpreter#createSourceViewer(org.eclipse.swt.widgets.Composite)
      */
     @Override
     public SourceViewer createSourceViewer(Composite parent) {

@@ -19,10 +19,11 @@ import java.util.Set;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CancellationException;
 
-import org.eclipse.acceleo.ui.interpreter.internal.InterpreterMessages;
-import org.eclipse.acceleo.ui.interpreter.language.EvaluationContext;
-import org.eclipse.acceleo.ui.interpreter.language.EvaluationResult;
-import org.eclipse.acceleo.ui.interpreter.view.Variable;
+import org.eclipse.sirius.ui.interpreter.internal.InterpreterMessages;
+import org.eclipse.sirius.ui.interpreter.internal.InterpreterPlugin;
+import org.eclipse.sirius.ui.interpreter.internal.language.EvaluationContext;
+import org.eclipse.sirius.ui.interpreter.internal.language.EvaluationResult;
+import org.eclipse.sirius.ui.interpreter.internal.view.Variable;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.Status;
