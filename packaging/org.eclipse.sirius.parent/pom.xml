@@ -117,9 +117,6 @@
         <artifactId>target-platform-configuration</artifactId>
         <configuration>
           <executionEnvironment>JavaSE-21</executionEnvironment>
-          <dependency-resolution>
-            <optionalDependencies>ignore</optionalDependencies>
-          </dependency-resolution>
           <target>
             <artifact>
               <groupId>org.eclipse.sirius</groupId>
