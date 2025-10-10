@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2025 Obeo.
+ * Copyright (c) 2010, 2021 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
@@ -13,22 +13,15 @@ package org.eclipse.sirius.ui.interpreter.internal.view;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.Callable;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 import org.eclipse.core.commands.IHandler;
-import org.eclipse.core.resources.IStorage;
-import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EObject;
@@ -38,7 +31,6 @@ import org.eclipse.emf.edit.ui.dnd.LocalTransfer;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IMenuListener;
-import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
@@ -54,34 +46,23 @@ import org.eclipse.jface.text.TextSelection;
 import org.eclipse.jface.text.source.SourceViewer;
 import org.eclipse.jface.util.LocalSelectionTransfer;
 import org.eclipse.jface.viewers.ColumnViewerToolTipSupport;
-import org.eclipse.jface.viewers.DoubleClickEvent;
-import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
-import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.ITreeSelection;
-import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredViewer;
-import org.eclipse.jface.viewers.TreePath;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.sirius.common.acceleo.interpreter.SiriusInterpreter;
 import org.eclipse.sirius.ui.interpreter.internal.IInterpreterConstants;
 import org.eclipse.sirius.ui.interpreter.internal.InterpreterImages;
 import org.eclipse.sirius.ui.interpreter.internal.InterpreterMessages;
-import org.eclipse.sirius.ui.interpreter.internal.InterpreterPlugin;
 import org.eclipse.sirius.ui.interpreter.internal.SWTUtil;
-import org.eclipse.sirius.ui.interpreter.internal.compatibility.view.FormMessageManager;
-import org.eclipse.sirius.ui.interpreter.internal.compatibility.view.IFormMessageManager;
 import org.eclipse.sirius.ui.interpreter.internal.language.AbstractLanguageInterpreter;
 import org.eclipse.sirius.ui.interpreter.internal.language.CompilationResult;
-import org.eclipse.sirius.ui.interpreter.internal.language.EvaluationContext;
 import org.eclipse.sirius.ui.interpreter.internal.language.EvaluationResult;
 import org.eclipse.sirius.ui.interpreter.internal.language.IInterpreterSourceViewer;
 import org.eclipse.sirius.ui.interpreter.internal.language.InterpreterContext;
 import org.eclipse.sirius.ui.interpreter.internal.language.SplitExpression;
-import org.eclipse.sirius.ui.interpreter.internal.language.SubExpression;
 import org.eclipse.sirius.ui.interpreter.internal.optional.InterpreterDependencyChecks;
 import org.eclipse.sirius.ui.interpreter.internal.optional.debug.DebugViewHelper;
 import org.eclipse.sirius.ui.interpreter.internal.view.actions.ClearExpressionViewerAction;
@@ -92,15 +73,31 @@ import org.eclipse.sirius.ui.interpreter.internal.view.actions.EvaluateAction;
 import org.eclipse.sirius.ui.interpreter.internal.view.actions.LexicalSortAction;
 import org.eclipse.sirius.ui.interpreter.internal.view.actions.LinkWithEditorContextAction;
 import org.eclipse.sirius.ui.interpreter.internal.view.actions.NewVariableAction;
-import org.eclipse.sirius.ui.interpreter.internal.view.actions.NewVariableWizardAction;
 import org.eclipse.sirius.ui.interpreter.internal.view.actions.RenameVariableAction;
 import org.eclipse.sirius.ui.interpreter.internal.view.actions.ToggleRealTimeAction;
 import org.eclipse.sirius.ui.interpreter.internal.view.actions.ToggleStepByStepVisibilityAction;
 import org.eclipse.sirius.ui.interpreter.internal.view.actions.ToggleVariableVisibilityAction;
+import org.eclipse.sirius.ui.interpreter.internal.view.listener.ActivationListener;
+import org.eclipse.sirius.ui.interpreter.internal.view.listener.ExpressionMenuListener;
+import org.eclipse.sirius.ui.interpreter.internal.view.listener.InterpreterEditorPartListener;
+import org.eclipse.sirius.ui.interpreter.internal.view.listener.NotifierSelectionListener;
+import org.eclipse.sirius.ui.interpreter.internal.view.listener.ResultDoubleClickListener;
+import org.eclipse.sirius.ui.interpreter.internal.view.listener.ResultDragListener;
+import org.eclipse.sirius.ui.interpreter.internal.view.listener.ResultMenuListener;
+import org.eclipse.sirius.ui.interpreter.internal.view.listener.SubExpressionDoubleClickListener;
+import org.eclipse.sirius.ui.interpreter.internal.view.listener.SubExpressionListener;
+import org.eclipse.sirius.ui.interpreter.internal.view.listener.VariableContentProvider;
+import org.eclipse.sirius.ui.interpreter.internal.view.listener.VariableDropListener;
+import org.eclipse.sirius.ui.interpreter.internal.view.listener.VariableLabelProvider;
+import org.eclipse.sirius.ui.interpreter.internal.view.listener.VariableMenuListener;
 import org.eclipse.sirius.ui.interpreter.internal.view.providers.ResultContentProvider;
 import org.eclipse.sirius.ui.interpreter.internal.view.providers.ResultLabelProvider;
 import org.eclipse.sirius.ui.interpreter.internal.view.providers.StepByStepContentProvider;
 import org.eclipse.sirius.ui.interpreter.internal.view.providers.StepLabelProvider;
+import org.eclipse.sirius.ui.interpreter.internal.view.thread.CompilationThread;
+import org.eclipse.sirius.ui.interpreter.internal.view.thread.EvaluationThread;
+import org.eclipse.sirius.ui.interpreter.internal.view.thread.ExpressionSplittingThread;
+import org.eclipse.sirius.ui.interpreter.internal.view.thread.RealTimeThread;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.dnd.DND;
@@ -120,27 +117,18 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.swt.widgets.Tree;
-import org.eclipse.swt.widgets.TreeItem;
-import org.eclipse.ui.IEditorDescriptor;
-import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IMemento;
 import org.eclipse.ui.IPartListener;
 import org.eclipse.ui.IPartListener2;
 import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IViewSite;
-import org.eclipse.ui.IWorkbench;
-import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.IWorkbenchPartReference;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.contexts.IContextActivation;
 import org.eclipse.ui.contexts.IContextService;
-import org.eclipse.ui.editors.text.EditorsUI;
 import org.eclipse.ui.editors.text.TextSourceViewerConfiguration;
 import org.eclipse.ui.forms.widgets.ExpandableComposite;
 import org.eclipse.ui.forms.widgets.Form;
@@ -158,10 +146,10 @@ import org.eclipse.ui.texteditor.ITextEditorActionDefinitionIds;
  */
 public class InterpreterView extends ViewPart implements ISelectionProvider {
     /** Prefix of the messages corresponding to compilation problems. */
-    protected static final String COMPILATION_MESSAGE_PREFIX = "compilation.message"; //$NON-NLS-1$
+    public static final String COMPILATION_MESSAGE_PREFIX = "compilation.message"; //$NON-NLS-1$
 
     /** Prefix of the messages corresponding to evaluation problems. */
-    protected static final String EVALUATION_MESSAGE_PREFIX = "evaluation.message"; //$NON-NLS-1$
+    public static final String EVALUATION_MESSAGE_PREFIX = "evaluation.message"; //$NON-NLS-1$
 
     /**
      * This will be used as the key for the "information" message that the interpreter will display for compilation "OK"
@@ -176,28 +164,28 @@ public class InterpreterView extends ViewPart implements ISelectionProvider {
     private static final String EVALUATION_INFO_MESSAGE_KEY = "interpreter.evaluation.info.message"; //$NON-NLS-1$
 
     /** ID of the interpreter view context. Must be kept in sync with the plugin.xml declaration. */
-    private static final String INTERPRETER_VIEW_CONTEXT_ID = "org.eclipse.acceleo.ui.interpreter.interpreterview"; //$NON-NLS-1$
+    private static final String INTERPRETER_VIEW_CONTEXT_ID = "org.eclipse.sirius.ui.interpreter.interpreterview"; //$NON-NLS-1$
 
     /** ID of the toolbar's group in which we'll add language specific actions. */
     private static final String LANGUAGE_SPECIFIC_ACTION_GROUP = "LanguageSpecificActions"; //$NON-NLS-1$
 
     /** Key for the expression as stored in this view's memento. */
-    private static final String MEMENTO_EXPRESSION_KEY = "org.eclipse.acceleo.ui.interpreter.memento.expression"; //$NON-NLS-1$
+    private static final String MEMENTO_EXPRESSION_KEY = "org.eclipse.sirius.ui.interpreter.memento.expression"; //$NON-NLS-1$
 
     /** Key for the real-time compilation state as stored in this view's memento. */
-    private static final String MEMENTO_REAL_TIME_KEY = "org.eclipse.acceleo.ui.interpreter.memento.realtime"; //$NON-NLS-1$
+    private static final String MEMENTO_REAL_TIME_KEY = "org.eclipse.sirius.ui.interpreter.memento.realtime"; //$NON-NLS-1$
 
     /** Key for the hidden state of the variable viewer as stored in this view's memento. */
-    private static final String MEMENTO_VARIABLES_VISIBLE_KEY = "org.eclipse.acceleo.ui.interpreter.memento.variables.hide"; //$NON-NLS-1$
+    private static final String MEMENTO_VARIABLES_VISIBLE_KEY = "org.eclipse.sirius.ui.interpreter.memento.variables.hide"; //$NON-NLS-1$
 
     /** Key for the hidden state of the Sub-Expressions viewer as stored in this view's memento. */
-    private static final String MEMENTO_SUB_EXPRESSIONS_VISIBLE_KEY = "org.eclipse.acceleo.ui.interpreter.memento.subexpressions.hide"; //$NON-NLS-1$
+    private static final String MEMENTO_SUB_EXPRESSIONS_VISIBLE_KEY = "org.eclipse.sirius.ui.interpreter.memento.subexpressions.hide"; //$NON-NLS-1$
 
     /** Key for the sorted state of the result viewer as stored in this view's memento. */
-    private static final String MEMENTO_RESULT_SORTED_KEY = "org.eclipse.acceleo.ui.interpreter.memento.result.sorted"; //$NON-NLS-1$
+    private static final String MEMENTO_RESULT_SORTED_KEY = "org.eclipse.sirius.ui.interpreter.memento.result.sorted"; //$NON-NLS-1$
 
     /** Key for the sorted state of the Sub-Expressions viewer as stored in this view's memento. */
-    private static final String MEMENTO_SUB_EXPRESSIONS_SORTED_KEY = "org.eclipse.acceleo.ui.interpreter.memento.subexpressions.sorted"; //$NON-NLS-1$
+    private static final String MEMENTO_SUB_EXPRESSIONS_SORTED_KEY = "org.eclipse.sirius.ui.interpreter.memento.subexpressions.sorted"; //$NON-NLS-1$
 
     /** We'll use this as the id of our viewers' menus. */
     private static final String MENU_ID = "#PopupMenu"; //$NON-NLS-1$
@@ -260,7 +248,7 @@ public class InterpreterView extends ViewPart implements ISelectionProvider {
     private AbstractLanguageInterpreter currentLanguageInterpreter;
 
     /** This will be used to listen to editor focus changes in the workbench. */
-    private IPartListener2 editorPartListener = new InterpreterEditorPartListener();
+    private IPartListener2 editorPartListener;
 
     /** This will be used to listen to EObject selection within the workbench. */
     private ISelectionListener eobjectSelectionListener;
@@ -427,7 +415,7 @@ public class InterpreterView extends ViewPart implements ISelectionProvider {
 
         if (compilationTask != null) {
             Future<CompilationResult> compilationFuture = compilationPool.submit(compilationTask);
-            compilationThread = new CompilationThread(compilationFuture);
+            compilationThread = new CompilationThread(compilationFuture, this);
             compilationThread.start();
         }
     }
@@ -438,7 +426,7 @@ public class InterpreterView extends ViewPart implements ISelectionProvider {
      * @param expression
      *            The expression to evaluate.
      */
-    protected void evaluateSubExpression(final Object expression) {
+    public void evaluateSubExpression(final Object expression) {
         if (this.expressionViewer == null || this.expressionViewer.getTextWidget() == null || this.expressionViewer.getTextWidget().isDisposed()) {
             return;
         }
@@ -458,12 +446,12 @@ public class InterpreterView extends ViewPart implements ISelectionProvider {
                 return new CompilationResult(expression);
             }
         });
-        compilationThread = new CompilationThread(compilationFuture);
+        compilationThread = new CompilationThread(compilationFuture, this);
         compilationThread.start();
 
         InterpreterContext interpreterContext = getInterpreterContext();
         if (interpreterContext != null) {
-            evaluationThread = new EvaluationThread(interpreterContext);
+            evaluationThread = new EvaluationThread(interpreterContext, this);
             evaluationThread.start();
         }
     }
@@ -578,7 +566,7 @@ public class InterpreterView extends ViewPart implements ISelectionProvider {
 
         InterpreterContext interpreterContext = getInterpreterContext();
         if (interpreterContext != null) {
-            evaluationThread = new EvaluationThread(interpreterContext);
+            evaluationThread = new EvaluationThread(interpreterContext, this);
             evaluationThread.start();
         }
     }
@@ -590,7 +578,7 @@ public class InterpreterView extends ViewPart implements ISelectionProvider {
         // populates the sub-expressions tree viewer
         InterpreterContext interpreterContext = getInterpreterContext();
         if (interpreterContext != null) {
-            expressionSplittingThread = new ExpressionSplittingThread(interpreterContext);
+            expressionSplittingThread = new ExpressionSplittingThread(interpreterContext, this);
             expressionSplittingThread.start();
         }
     }
@@ -601,7 +589,7 @@ public class InterpreterView extends ViewPart implements ISelectionProvider {
      * @param splitExpression
      *            The split expression.
      */
-    protected final void setSubExpressions(SplitExpression splitExpression) {
+    public final void setSubExpressions(SplitExpression splitExpression) {
         TreeViewer viewer = subExpressionViewer;
         if (splitExpression != null) {
             viewer.setInput(Collections.singleton(splitExpression));
@@ -767,7 +755,7 @@ public class InterpreterView extends ViewPart implements ISelectionProvider {
     public synchronized void toggleRealTime() {
         realTime = !realTime;
         if (realTime) {
-            realTimeThread = new RealTimeThread();
+            realTimeThread = new RealTimeThread(this);
 
             // Launch a compilation right from the get-go
             compileAndEvaluate();
@@ -853,7 +841,7 @@ public class InterpreterView extends ViewPart implements ISelectionProvider {
      * @param keyPrefix
      *            Prefix of the message key.
      */
-    protected final void addStatusMessages(IStatus status, String keyPrefix) {
+    public final void addStatusMessages(IStatus status, String keyPrefix) {
         if (status instanceof MultiStatus) {
             for (IStatus child : status.getChildren()) {
                 addStatusMessages(child, keyPrefix);
@@ -898,7 +886,7 @@ public class InterpreterView extends ViewPart implements ISelectionProvider {
      * @param notifier
      *            The element that is to be added to the current selection.
      */
-    protected void addToSelection(Notifier notifier) {
+    public void addToSelection(Notifier notifier) {
         if (selectedNotifiers == null) {
             // Assumes the "usual" selection is always 1 element long
             selectedNotifiers = new ArrayList<Notifier>(1);
@@ -913,7 +901,7 @@ public class InterpreterView extends ViewPart implements ISelectionProvider {
     /**
      * Clears all compilation messages out of the interpreter view.
      */
-    protected void clearCompilationMessages() {
+    public void clearCompilationMessages() {
         /*
          * add a dummy message to ensure there is always one while we clear the rest (we'll need to reset the color
          * without having _all_ messages removed, lest the color stays at its previous state : bug 357906 in
@@ -933,7 +921,7 @@ public class InterpreterView extends ViewPart implements ISelectionProvider {
     /**
      * Clears all evaluation messages out of the interpreter view.
      */
-    protected void clearEvaluationMessages() {
+    public void clearEvaluationMessages() {
         /*
          * add a dummy message to ensure there is always one while we clear the rest (we'll need to reset the color
          * without having _all_ messages removed, lest the color stays at its previous state : bug 357906 in
@@ -953,7 +941,7 @@ public class InterpreterView extends ViewPart implements ISelectionProvider {
     /**
      * If we currently have EObjects selected, this will clear the whole list.
      */
-    protected void clearSelection() {
+    public void clearSelection() {
         if (selectedNotifiers != null) {
             selectedNotifiers.clear();
             selectedNotifiers = null;
@@ -981,7 +969,7 @@ public class InterpreterView extends ViewPart implements ISelectionProvider {
      * @return The newly created listener.
      */
     protected IMenuListener createExpressionMenuListener(SourceViewer viewer) {
-        return new ExpressionMenuListener(viewer);
+        return new ExpressionMenuListener(viewer, this);
     }
 
     /**
@@ -1114,7 +1102,7 @@ public class InterpreterView extends ViewPart implements ISelectionProvider {
      * square" in place of its vertical scroll bar. This glitch happened when closing and reopening the view without
      * restarting the runtime.
      */
-    protected void refreshExpressionSection() {
+    public void refreshExpressionSection() {
         if (!expressionSection.isDisposed()) {
             expressionSection.layout();
         }
@@ -1213,7 +1201,7 @@ public class InterpreterView extends ViewPart implements ISelectionProvider {
         linkWithEditorContextAction = new LinkWithEditorContextAction(this);
         final IWorkbenchPage currentPage = getSite().getPage();
         if (currentPage != null) {
-            editorPartListener = new InterpreterEditorPartListener();
+            editorPartListener = new InterpreterEditorPartListener(linkWithEditorContextAction, this);
             getSite().getPage().addPartListener(editorPartListener);
 
             IEditorPart currentEditor = currentPage.getActiveEditor();
@@ -1363,7 +1351,7 @@ public class InterpreterView extends ViewPart implements ISelectionProvider {
         AdapterFactory adapterFactory = createAdapterFactory();
         viewer.setContentProvider(new StepByStepContentProvider(adapterFactory));
         viewer.setLabelProvider(new StepLabelProvider());
-        viewer.addSelectionChangedListener(new SubExpressionListener());
+        viewer.addSelectionChangedListener(new SubExpressionListener(this));
         viewer.addDoubleClickListener(new SubExpressionDoubleClickListener());
 
         return viewer;
@@ -1374,7 +1362,7 @@ public class InterpreterView extends ViewPart implements ISelectionProvider {
      * 
      * @return The interpreter form.
      */
-    protected Form getForm() {
+    public Form getForm() {
         return interpreterForm;
     }
 
@@ -1472,7 +1460,7 @@ public class InterpreterView extends ViewPart implements ISelectionProvider {
      * @param compilationResult
      *            The current expression's compilation result.
      */
-    protected final void setCompilationResult(CompilationResult compilationResult) {
+    public final void setCompilationResult(CompilationResult compilationResult) {
         this.compilationResult = compilationResult;
     }
 
@@ -1482,7 +1470,7 @@ public class InterpreterView extends ViewPart implements ISelectionProvider {
      * @param result
      *            The current expressions's evaluation result.
      */
-    protected final void setEvaluationResult(EvaluationResult result) {
+    public final void setEvaluationResult(EvaluationResult result) {
         List<Object> input = new ArrayList<Object>();
         Object evaluationResult = result.getEvaluationResult();
         if (evaluationResult instanceof Collection<?>) {
@@ -1726,942 +1714,6 @@ public class InterpreterView extends ViewPart implements ISelectionProvider {
         activationTokenUndo = service.activateHandler(WORKBENCH_CONSTANT_EDIT_UNDO, undoHandler);
     }
 
-    /**
-     * This class will be used in order to populate the right-click menu of the Expression viewer.
-     * 
-     * @author <a href="mailto:laurent.goubet@obeo.fr">Laurent Goubet</a>
-     */
-    protected class ExpressionMenuListener implements IMenuListener {
-        /** The viewer on which this menu listener operates. */
-        private final SourceViewer sourceViewer;
-
-        /**
-         * Creates this menu listener given the viewer on which it operates.
-         * 
-         * @param sourceViewer
-         *            The viewer on which this menu listener operates.
-         */
-        public ExpressionMenuListener(SourceViewer sourceViewer) {
-            this.sourceViewer = sourceViewer;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.action.IMenuListener#menuAboutToShow(org.eclipse.jface.action.IMenuManager)
-         */
-        public void menuAboutToShow(IMenuManager manager) {
-            manager.add(new Separator("org.eclipse.ui.interpreter.view.expression.menu")); //$NON-NLS-1$
-            manager.add(new EvaluateAction(InterpreterView.this));
-            manager.add(new ClearExpressionViewerAction(sourceViewer));
-            manager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
-        }
-    }
-
-    /**
-     * This implementation of a part listener will allow us to determine at all times whether the "work in editor
-     * context" action should be enabled.
-     * 
-     * @author <a href="mailto:laurent.goubet@obeo.fr">Laurent Goubet</a>
-     */
-    protected class InterpreterEditorPartListener implements IPartListener2 {
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.ui.IPartListener2#partActivated(org.eclipse.ui.IWorkbenchPartReference)
-         */
-        public void partActivated(IWorkbenchPartReference partRef) {
-            // If the toggle is checked, defer enablement computing till we uncheck it
-            if (!linkWithEditorContextAction.isChecked() && partRef instanceof IEditorReference) {
-                linkWithEditorContextAction.setEnabled(getCurrentLanguageInterpreter().canLinkWithEditor(((IEditorReference) partRef).getEditor(false)));
-            }
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.ui.IPartListener2#partBroughtToTop(org.eclipse.ui.IWorkbenchPartReference)
-         */
-        public void partBroughtToTop(IWorkbenchPartReference partRef) {
-            // No need to react to this event
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.ui.IPartListener2#partClosed(org.eclipse.ui.IWorkbenchPartReference)
-         */
-        public void partClosed(IWorkbenchPartReference partRef) {
-            // If the toggle is checked, defer enablement computing till we uncheck it
-            if (!linkWithEditorContextAction.isChecked() && partRef instanceof IEditorReference && getSite().getPage() != null) {
-                final IEditorPart editorPart = getSite().getPage().getActiveEditor();
-                if (editorPart == null) {
-                    linkWithEditorContextAction.setEnabled(false);
-                } else {
-                    linkWithEditorContextAction.setEnabled(getCurrentLanguageInterpreter().canLinkWithEditor(editorPart));
-                }
-            }
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.ui.IPartListener2#partDeactivated(org.eclipse.ui.IWorkbenchPartReference)
-         */
-        public void partDeactivated(IWorkbenchPartReference partRef) {
-            // No need to react to this event
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.ui.IPartListener2#partHidden(org.eclipse.ui.IWorkbenchPartReference)
-         */
-        public void partHidden(IWorkbenchPartReference partRef) {
-            // No need to react to this event
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.ui.IPartListener2#partInputChanged(org.eclipse.ui.IWorkbenchPartReference)
-         */
-        public void partInputChanged(IWorkbenchPartReference partRef) {
-            // No need to react to this event
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.ui.IPartListener2#partOpened(org.eclipse.ui.IWorkbenchPartReference)
-         */
-        public void partOpened(IWorkbenchPartReference partRef) {
-            // No need to react to this event
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.ui.IPartListener2#partVisible(org.eclipse.ui.IWorkbenchPartReference)
-         */
-        public void partVisible(IWorkbenchPartReference partRef) {
-            // No need to react to this event
-        }
-    }
-
-    /**
-     * This will allow us to react to double click events in the result view in order to display the long Strings and
-     * generated files in a more suitable way.
-     * 
-     * @author <a href="mailto:laurent.goubet@obeo.fr">Laurent Goubet</a>
-     */
-    protected static class ResultDoubleClickListener implements IDoubleClickListener {
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.IDoubleClickListener#doubleClick(org.eclipse.jface.viewers.DoubleClickEvent)
-         */
-        public void doubleClick(DoubleClickEvent event) {
-            ISelection selection = event.getSelection();
-            if (selection.isEmpty() || !(selection instanceof IStructuredSelection)) {
-                return;
-            }
-            final Object target = ((IStructuredSelection) selection).getFirstElement();
-            if (target instanceof InterpreterFile) {
-                showGeneratedFile((InterpreterFile) target);
-            } else if (target instanceof String && (((String) target).indexOf('\n') >= 0 || ((String) target).indexOf('\r') >= 0)) {
-                GeneratedTextDialog dialog = new GeneratedTextDialog(Display.getCurrent().getActiveShell(), "Evaluation Result", (String) target); //$NON-NLS-1$
-                dialog.open();
-            } else if (event.getViewer() instanceof TreeViewer && ((TreeViewer) event.getViewer()).isExpandable(target)) {
-                final TreeViewer viewer = (TreeViewer) event.getViewer();
-                if (selection instanceof ITreeSelection) {
-                    TreePath[] paths = ((ITreeSelection) selection).getPathsFor(target);
-                    for (int i = 0; i < paths.length; i++) {
-                        viewer.setExpandedState(paths[i], !viewer.getExpandedState(paths[i]));
-                    }
-                } else {
-                    viewer.setExpandedState(target, !viewer.getExpandedState(target));
-                }
-            }
-        }
-
-        /**
-         * Displays the given generated file in its own read-only editor.
-         * 
-         * @param file
-         *            The file we are to display.
-         */
-        private void showGeneratedFile(InterpreterFile file) {
-            final IWorkbench workbench = PlatformUI.getWorkbench();
-            if (workbench.getActiveWorkbenchWindow() == null || workbench.getActiveWorkbenchWindow().getActivePage() == null) {
-                return;
-            }
-            final IWorkbenchPage page = workbench.getActiveWorkbenchWindow().getActivePage();
-            final IStorage storage = new InterpreterFileStorage(file);
-            final IEditorDescriptor editor = workbench.getEditorRegistry().getDefaultEditor(file.getFileName());
-            final IEditorInput input = new StorageEditorInput(storage);
-
-            try {
-                final String editorID;
-                if (editor == null) {
-                    editorID = EditorsUI.DEFAULT_TEXT_EDITOR_ID;
-                } else {
-                    editorID = editor.getId();
-                }
-                page.openEditor(input, editorID);
-            } catch (PartInitException e) {
-                // swallow : we just won't open editors
-            }
-        }
-    }
-
-    /**
-     * This will allow us to react to double click events in the sub-expressions view in order to expand when needed.
-     * 
-     * @author <a href="mailto:laurent.goubet@obeo.fr">Laurent Goubet</a>
-     */
-    protected static class SubExpressionDoubleClickListener implements IDoubleClickListener {
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.IDoubleClickListener#doubleClick(org.eclipse.jface.viewers.DoubleClickEvent)
-         */
-        public void doubleClick(DoubleClickEvent event) {
-            ISelection selection = event.getSelection();
-            if (selection.isEmpty() || !(selection instanceof IStructuredSelection)) {
-                return;
-            }
-            final Object target = ((IStructuredSelection) selection).getFirstElement();
-            if (event.getViewer() instanceof TreeViewer && ((TreeViewer) event.getViewer()).isExpandable(target)) {
-                final TreeViewer viewer = (TreeViewer) event.getViewer();
-                if (selection instanceof ITreeSelection) {
-                    TreePath[] paths = ((ITreeSelection) selection).getPathsFor(target);
-                    for (int i = 0; i < paths.length; i++) {
-                        viewer.setExpandedState(paths[i], !viewer.getExpandedState(paths[i]));
-                    }
-                } else {
-                    viewer.setExpandedState(target, !viewer.getExpandedState(target));
-                }
-            }
-        }
-    }
-
-    /**
-     * This class will be used in order to populate the right-click menu of the result viewer.
-     * 
-     * @author <a href="mailto:laurent.goubet@obeo.fr">Laurent Goubet</a>
-     */
-    protected class ResultMenuListener implements IMenuListener {
-        /** The viewer on which this menu listener operates. */
-        private Viewer resultViewer;
-
-        /**
-         * Creates this menu listener given the viewer on which it operates.
-         * 
-         * @param resultViewer
-         *            The viewer on which this menu listener operates.
-         */
-        public ResultMenuListener(Viewer resultViewer) {
-            this.resultViewer = resultViewer;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.action.IMenuListener#menuAboutToShow(org.eclipse.jface.action.IMenuManager)
-         */
-        public void menuAboutToShow(IMenuManager manager) {
-            manager.add(new ClearResultViewerAction(resultViewer));
-            manager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
-        }
-    }
-
-    /**
-     * This class will be used in order to populate the right-click menu of the Variable viewer.
-     * 
-     * @author <a href="mailto:laurent.goubet@obeo.fr">Laurent Goubet</a>
-     */
-    protected class VariableMenuListener implements IMenuListener {
-        /** The viewer on which this menu listener operates. */
-        private TreeViewer variableViewer;
-
-        /**
-         * Creates this menu listener given the viewer on which it operates.
-         * 
-         * @param variableViewer
-         *            The viewer on which this menu listener operates.
-         */
-        public VariableMenuListener(TreeViewer variableViewer) {
-            this.variableViewer = variableViewer;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.action.IMenuListener#menuAboutToShow(org.eclipse.jface.action.IMenuManager)
-         */
-        public void menuAboutToShow(IMenuManager manager) {
-            final Variable variable = getCurrentVariable();
-            manager.add(new NewVariableWizardAction(variableViewer, variable));
-            manager.add(new ClearVariableViewerAction(variableViewer));
-            manager.add(new Separator());
-            manager.add(new DeleteVariableOrValueAction(variableViewer));
-            manager.add(new RenameVariableAction(variableViewer));
-            manager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
-        }
-
-        /**
-         * Returns the first of the currently selected Variable(s).
-         * 
-         * @return The first of the currently selected Variable(s)
-         */
-        private Variable getCurrentVariable() {
-            if (variableViewer == null || variableViewer.getTree() == null || variableViewer.getTree().isDisposed()) {
-                return null;
-            }
-            Tree tree = variableViewer.getTree();
-
-            TreeItem[] selectedItems = tree.getSelection();
-            Variable selectedVariable = null;
-            if (selectedItems != null && selectedItems.length > 0) {
-                for (int i = 0; i < selectedItems.length && selectedVariable == null; i++) {
-                    TreeItem item = selectedItems[i];
-                    if (item.getData() instanceof Variable) {
-                        selectedVariable = (Variable) item.getData();
-                    }
-                }
-                for (int i = 0; i < selectedItems.length && selectedVariable == null; i++) {
-                    TreeItem item = selectedItems[i].getParentItem();
-                    while (item != null && selectedVariable == null) {
-                        if (item.getData() instanceof Variable) {
-                            selectedVariable = (Variable) item.getData();
-                        }
-                        item = item.getParentItem();
-                    }
-                }
-            }
-            return selectedVariable;
-        }
-    }
-
-    /**
-     * This implementation of a Thread will be used to wrap a compilation task as returned by the LanguageInterpreter,
-     * then asynchronously update the form with all error messages (if any) that were raised by this compilation task.
-     * Afterwards, this Thread will update the interpreter context with the compilation result.
-     * 
-     * @author <a href="mailto:laurent.goubet@obeo.fr">Laurent Goubet</a>
-     */
-    private class CompilationThread extends Thread {
-        /**
-         * We will set this flag on {@link #interrupt()} in order to determine whether the thread was cancelled (which
-         * could happen <b>after</b> the thread has completed, which would make the "interrupted" flag quiet.
-         */
-        private boolean cancelled;
-
-        /** The compilation thread which result we are to wait for. */
-        private Future<CompilationResult> compilationTask;
-
-        /**
-         * Instantiates a compilation thread given the compilation task of which we are to check the result.
-         * 
-         * @param compilationTask
-         *            Thread which result we are to wait for.
-         */
-        CompilationThread(Future<CompilationResult> compilationTask) {
-            super("InterpreterCompilationThread"); //$NON-NLS-1$
-            this.compilationTask = compilationTask;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Thread#interrupt()
-         */
-        @Override
-        public void interrupt() {
-            cancelled = true;
-            compilationTask.cancel(true);
-            super.interrupt();
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Thread#run()
-         */
-        @Override
-        public void run() {
-            try {
-                final CompilationResult result = compilationTask.get();
-                checkCancelled();
-
-                if (result != null && result.getStatus() != null) {
-                    Display.getDefault().asyncExec(new Runnable() {
-                        /**
-                         * {@inheritDoc}
-                         * 
-                         * @see java.lang.Runnable#run()
-                         */
-                        public void run() {
-                            clearCompilationMessages();
-                            checkCancelled();
-                            addStatusMessages(result.getStatus(), COMPILATION_MESSAGE_PREFIX);
-                        }
-                    });
-                }
-
-                // Whether there were problems or not, update the context with this result.
-                setCompilationResult(result);
-            } catch (InterruptedException e) {
-                // Thread is expected to be cancelled if another is started
-            } catch (CancellationException e) {
-                // Thread is expected to be cancelled if another is started
-            } catch (ExecutionException e) {
-                checkCancelled();
-                String message = e.getMessage();
-                if (e.getCause() != null) {
-                    message = e.getCause().getMessage();
-                }
-                final IStatus status = new Status(IStatus.ERROR, InterpreterPlugin.PLUGIN_ID, message);
-                final CompilationResult result = new CompilationResult(status);
-
-                Display.getDefault().asyncExec(new Runnable() {
-                    /**
-                     * {@inheritDoc}
-                     * 
-                     * @see java.lang.Runnable#run()
-                     */
-                    public void run() {
-                        clearCompilationMessages();
-                        checkCancelled();
-                        addStatusMessages(status, COMPILATION_MESSAGE_PREFIX);
-                    }
-                });
-
-                setCompilationResult(result);
-            }
-        }
-
-        /**
-         * Throws a new {@link CancellationException} if the current thread has been cancelled.
-         */
-        protected void checkCancelled() {
-            if (cancelled) {
-                throw new CancellationException();
-            }
-        }
-    }
-
-    /**
-     * This will be installed on the workbench page on which this view is displayed in order to listen to selection
-     * events corresponding to Notifiers.
-     * 
-     * @author <a href="mailto:laurent.goubet@obeo.fr">Laurent Goubet</a>
-     */
-    private class NotifierSelectionListener implements ISelectionListener {
-
-        /**
-         * This interpreter view.
-         */
-        private final InterpreterView view;
-
-        /**
-         * Constructs this listener.
-         * 
-         * @param view
-         *            The view on which the selection should not be triggered.
-         */
-        NotifierSelectionListener(InterpreterView view) {
-            this.view = view;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.ui.ISelectionListener#selectionChanged(org.eclipse.ui.IWorkbenchPart,
-         *      org.eclipse.jface.viewers.ISelection)
-         */
-        @SuppressWarnings("unchecked")
-        public void selectionChanged(IWorkbenchPart part, ISelection selection) {
-            if (!selection.isEmpty() && selection instanceof IStructuredSelection && part != this.view) {
-                boolean cleared = false;
-                final Iterator<Object> selectionIterator = ((IStructuredSelection) selection).iterator();
-                while (selectionIterator.hasNext()) {
-                    final Object next = selectionIterator.next();
-                    final Notifier nextNotifier;
-                    if (next instanceof Notifier) {
-                        nextNotifier = (Notifier) next;
-                    } else {
-                        final Notifier adaptedNotifier = adaptAs(next, Notifier.class);
-                        if (adaptedNotifier != null) {
-                            nextNotifier = adaptedNotifier;
-                        } else {
-                            nextNotifier = adaptAs(next, EObject.class);
-                        }
-                    }
-                    if (nextNotifier != null) {
-                        // At least one of the selected objects is a Notifier, clear current selection
-                        if (!cleared) {
-                            clearSelection();
-                            cleared = true;
-                        }
-                        addToSelection(nextNotifier);
-                    }
-                }
-                // If the selection changed somehow, relaunch the real-time evaluation
-                if (cleared && realTimeThread != null) {
-                    realTimeThread.setDirty();
-                }
-            }
-        }
-
-        /**
-         * Adapts the given object to the given class.
-         * 
-         * @param object
-         *            The object to adapt
-         * @param clazz
-         *            The class to which the object should be adapted
-         * @param <T>
-         *            The type of the class to obtain
-         * @return The adapted object
-         */
-        @SuppressWarnings("unchecked")
-        private <T> T adaptAs(Object object, Class<T> clazz) {
-            if (object instanceof IAdaptable) {
-                return (T) ((IAdaptable) object).getAdapter(clazz);
-            }
-            return (T) Platform.getAdapterManager().getAdapter(object, clazz);
-        }
-    }
-
-    /**
-     * This implementation of a Thread will be used to wrap an evaluation task as returned by the LanguageInterpreter,
-     * then asynchronously update the form with all error messages (if any) that were raised by this compilation task.
-     * Afterwards, this Thread will update the result view of the interpreter form.
-     * 
-     * @author <a href="mailto:laurent.goubet@obeo.fr">Laurent Goubet</a>
-     */
-    private class EvaluationThread extends Thread {
-        /**
-         * We will set this flag on {@link #interrupt()} in order to determine whether the thread was cancelled (which
-         * could happen <b>after</b> the thread has completed, which would make the "interrupted" flag quiet.
-         */
-        private boolean cancelled;
-
-        /** The evaluation thread which result we are to wait for. */
-        private Future<EvaluationResult> evaluationTask;
-
-        /** Context of the interpreter as it was when this Thread has been created. */
-        private final InterpreterContext interpreterContext;
-
-        /**
-         * Instantiates our Thread given the initial interpreter context.
-         * 
-         * @param interpreterContext
-         *            The initial interpreter context.
-         */
-        EvaluationThread(InterpreterContext interpreterContext) {
-            super("InterpreterEvaluationThread"); //$NON-NLS-1$
-            this.interpreterContext = interpreterContext;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Thread#interrupt()
-         */
-        @Override
-        public void interrupt() {
-            cancelled = true;
-            if (evaluationTask != null) {
-                evaluationTask.cancel(true);
-            }
-            super.interrupt();
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Thread#run()
-         */
-        @Override
-        public void run() {
-            try {
-                checkCancelled();
-                Display.getDefault().syncExec(new Runnable() {
-                    public void run() {
-                        getForm().setBusy(true);
-                    }
-                });
-                // Cannot do anything before the current compilation thread stops.
-                if (compilationThread != null) {
-                    compilationThread.join();
-                }
-                checkCancelled();
-
-                Callable<EvaluationResult> evaluationCallable = getCurrentLanguageInterpreter().getEvaluationTask(new EvaluationContext(interpreterContext, compilationResult));
-                evaluationTask = evaluationPool.submit(evaluationCallable);
-
-                final EvaluationResult result = evaluationTask.get();
-                checkCancelled();
-
-                if (result != null) {
-                    Display.getDefault().asyncExec(new Runnable() {
-                        /**
-                         * {@inheritDoc}
-                         * 
-                         * @see java.lang.Runnable#run()
-                         */
-                        public void run() {
-                            clearEvaluationMessages();
-                            if (result.getStatus() != null) {
-                                addStatusMessages(result.getStatus(), EVALUATION_MESSAGE_PREFIX);
-                            }
-                            // whether there were problems or not, try and update the result viewer.
-                            setEvaluationResult(result);
-                        }
-                    });
-                }
-            } catch (InterruptedException e) {
-                // Thread is expected to be cancelled if another is started
-            } catch (CancellationException e) {
-                // Thread is expected to be cancelled if another is started
-            } catch (ExecutionException e) {
-                String message = e.getMessage();
-                if (e.getCause() != null) {
-                    message = e.getCause().getMessage();
-                }
-                message = e.getClass().getName() + ' ' + message;
-                final IStatus status = new Status(IStatus.ERROR, InterpreterPlugin.PLUGIN_ID, message);
-                final EvaluationResult result = new EvaluationResult(status);
-
-                Display.getDefault().asyncExec(new Runnable() {
-                    /**
-                     * {@inheritDoc}
-                     * 
-                     * @see java.lang.Runnable#run()
-                     */
-                    public void run() {
-                        clearEvaluationMessages();
-                        addStatusMessages(status, EVALUATION_MESSAGE_PREFIX);
-                        setEvaluationResult(result);
-                    }
-                });
-            } finally {
-                Display.getDefault().syncExec(new Runnable() {
-                    public void run() {
-                        getForm().setBusy(false);
-                    }
-                });
-            }
-        }
-
-        /**
-         * Throws a new {@link CancellationException} if the current thread has been cancelled.
-         */
-        protected void checkCancelled() {
-            if (cancelled) {
-                throw new CancellationException();
-            }
-        }
-    }
-
-    /**
-     * This implementation of a Thread will be used to wrap a splitting task as returned by the LanguageInterpreter,
-     * then asynchronously update the form with all error messages (if any) that were raised by this compilation task.
-     * Afterwards, this Thread will update the sub-expressions view of the interpreter form.
-     * 
-     * @author <a href="mailto:marwa.rostren@obeo.fr">Marwa Rostren</a>
-     */
-    private class ExpressionSplittingThread extends Thread {
-        /**
-         * We will set this flag on {@link #interrupt()} in order to determine whether the thread was cancelled (which
-         * could happen <b>after</b> the thread has completed, which would make the "interrupted" flag quiet.
-         */
-        private boolean cancelled;
-
-        /** The splitting thread which result we are to wait for. */
-        private Future<SplitExpression> splittingTask;
-
-        /** Context of the interpreter as it was when this Thread has been created. */
-        private final InterpreterContext interpreterContext;
-
-        /**
-         * Instantiates our Thread given the initial interpreter context.
-         * 
-         * @param interpreterContext
-         *            The initial interpreter context.
-         */
-        ExpressionSplittingThread(InterpreterContext interpreterContext) {
-            super("InterpreterExpressionSplittingThread"); //$NON-NLS-1$
-            this.interpreterContext = interpreterContext;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Thread#interrupt()
-         */
-        @Override
-        public void interrupt() {
-            cancelled = true;
-            if (splittingTask != null) {
-                splittingTask.cancel(true);
-            }
-            super.interrupt();
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Thread#run()
-         */
-        @Override
-        public void run() {
-            try {
-                checkCancelled();
-                // Cannot do anything before the current compilation thread stops.
-                if (compilationThread != null) {
-                    compilationThread.join();
-                }
-                checkCancelled();
-
-                Callable<SplitExpression> splitExpressionCallable = getCurrentLanguageInterpreter().getExpressionSplittingTask(new EvaluationContext(interpreterContext, compilationResult));
-
-                if (splitExpressionCallable == null) {
-                    return;
-                }
-
-                splittingTask = splittingPool.submit(splitExpressionCallable);
-
-                final SplitExpression splitExpression = splittingTask.get();
-                checkCancelled();
-
-                Display.getDefault().asyncExec(new Runnable() {
-                    /**
-                     * {@inheritDoc}
-                     * 
-                     * @see java.lang.Runnable#run()
-                     */
-                    public void run() {
-                        setSubExpressions(splitExpression);
-                    }
-                });
-            } catch (InterruptedException e) {
-                // Thread is expected to be cancelled if another is started
-            } catch (CancellationException e) {
-                // Thread is expected to be cancelled if another is started
-            } catch (ExecutionException e) {
-                Display.getDefault().asyncExec(new Runnable() {
-                    /**
-                     * {@inheritDoc}
-                     * 
-                     * @see java.lang.Runnable#run()
-                     */
-                    public void run() {
-                        setSubExpressions(null);
-                    }
-                });
-            }
-        }
-
-        /**
-         * Throws a new {@link CancellationException} if the current thread has been cancelled.
-         */
-        protected void checkCancelled() {
-            if (cancelled) {
-                throw new CancellationException();
-            }
-        }
-    }
-
-    /**
-     * This daemon thread will be launched whenever the "real-time" toggle is activated, and will only be stopped when
-     * the view is disposed or the "real-time" toggle is disabled.
-     * <p>
-     * This Thread will be constantly reset on modifications of the expression viewer, and will only really start its
-     * work if the expression is left untouched for a given count of seconds.
-     * </p>
-     * 
-     * @author <a href="mailto:laurent.goubet@obeo.fr">Laurent Goubet</a>
-     */
-    private class RealTimeThread extends Thread {
-        /** Time to wait before launching the evaluation (0.1 second by default). */
-        private static final int DELAY = 100;
-
-        /** This will be set to <code>true</code> whenever we need to recompile the expression. */
-        private boolean dirty;
-
-        /** The lock we'll acquire for this thread's work. */
-        private final Object lock = new Object();
-
-        /** This will be set to <code>true</code> whenever we should reset this thread's timer. */
-        private boolean reset;
-
-        /**
-         * Instantiates the real-time evaluation thread.
-         */
-        RealTimeThread() {
-            super("InterpreterRealTimeThread"); //$NON-NLS-1$
-            setPriority(Thread.MIN_PRIORITY);
-            setDaemon(true);
-        }
-
-        /**
-         * Resets this thread's timer.
-         */
-        public void reset() {
-            synchronized (this) {
-                reset = true;
-            }
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Thread#run()
-         */
-        @Override
-        public void run() {
-            while (!Thread.interrupted()) {
-                synchronized (lock) {
-                    try {
-                        lock.wait(DELAY);
-                    } catch (InterruptedException e) {
-                        // This is expected
-                    }
-                }
-
-                synchronized (this) {
-                    if (reset) {
-                        reset = false;
-                        // If a reset has been asked for, stop this iteration
-                        continue;
-                    }
-                    if (dirty) {
-                        dirty = false;
-                    } else {
-                        // The expression does not need to be recompiled
-                        continue;
-                    }
-                }
-
-                Display.getDefault().asyncExec(new Runnable() {
-                    /**
-                     * {@inheritDoc}
-                     * 
-                     * @see java.lang.Runnable#run()
-                     */
-                    public void run() {
-                        compileAndEvaluate();
-                    }
-                });
-            }
-        }
-
-        /**
-         * Sets the "dirty" state of this thread to indicate the expression needs to be recompiled.
-         */
-        public void setDirty() {
-            synchronized (this) {
-                dirty = true;
-            }
-        }
-    }
-
-    /**
-     * This listener will react to activation events on this view in order to avoid some visual glitches appearing when
-     * closing then reopening the view.
-     * 
-     * @author <a href="mailto:laurent.goubet@obeo.fr">Laurent Goubet</a>
-     */
-    private static class ActivationListener implements IPartListener {
-        /** This interpreter view. */
-        private final InterpreterView view;
-
-        /**
-         * Constructs this listener.
-         * 
-         * @param view
-         *            The view which activation we are interested in.
-         */
-        ActivationListener(InterpreterView view) {
-            this.view = view;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see IPartListener#partActivated(IWorkbenchPart)
-         */
-        public void partActivated(IWorkbenchPart part) {
-            if (part == view) {
-                view.refreshExpressionSection();
-            }
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see IPartListener#partDeactivated(IWorkbenchPart)
-         */
-        public void partDeactivated(IWorkbenchPart part) {
-            // Empty implementation
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see IPartListener#partClosed(IWorkbenchPart)
-         */
-        public void partClosed(IWorkbenchPart part) {
-            // Empty implementation
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see IPartListener#partBroughtToTop(IWorkbenchPart)
-         */
-        public void partBroughtToTop(IWorkbenchPart part) {
-            // Empty implementation
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see IPartListener#partOpened(IWorkbenchPart)
-         */
-        public void partOpened(IWorkbenchPart part) {
-            // Empty implementation
-        }
-    }
-
-    /**
-     * This will be added to the sub-expression viewer in order to launch evaluation of parts of the expression entered
-     * by the user as split through the expression splitting thread.
-     * 
-     * @author <a href="mailto:marwa.rostren@obeo.fr">Marwa Rostren</a>
-     */
-    protected class SubExpressionListener implements ISelectionChangedListener {
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-         */
-        public void selectionChanged(SelectionChangedEvent event) {
-            if (event.getSelection() instanceof IStructuredSelection) {
-                Object selection = ((IStructuredSelection) event.getSelection()).getFirstElement();
-                if (selection instanceof SubExpression) {
-                    evaluateSubExpression(((SubExpression) selection).getExpression());
-                } else if (selection instanceof SplitExpression) {
-                    evaluateSubExpression(((SplitExpression) selection).getFullExpression());
-                }
-            }
-        }
-    }
-
     @Override
     public void addSelectionChangedListener(ISelectionChangedListener listener) {
         if (resultViewer != null) {
@@ -2692,5 +1744,25 @@ public class InterpreterView extends ViewPart implements ISelectionProvider {
         if (resultViewer != null) {
             this.resultViewer.setSelection(selection);
         }
+    }
+
+    public RealTimeThread getRealTimeThread() {
+        return realTimeThread;
+    }
+
+    public CompilationThread getCompilationThread() {
+        return compilationThread;
+    }
+
+    public ExecutorService getEvaluationPool() {
+        return evaluationPool;
+    }
+
+    public CompilationResult getCompilationResult() {
+        return compilationResult;
+    }
+
+    public ExecutorService getSplittingPool() {
+        return splittingPool;
     }
 }

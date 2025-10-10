@@ -8,7 +8,7 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.ui.interpreter.internal.compatibility.view;
+package org.eclipse.sirius.ui.interpreter.internal.view;
 
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.forms.widgets.Form;
@@ -37,7 +37,7 @@ public class FormMessageManager implements IFormMessageManager {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.interpreter.internal.compatibility.view.IFormMessageManager#addMessage(java.lang.Object,
+     * @see org.eclipse.sirius.ui.interpreter.internal.view.IFormMessageManager#addMessage(java.lang.Object,
      *      java.lang.String, int)
      */
     public void addMessage(Object key, String message, int type) {
@@ -49,7 +49,7 @@ public class FormMessageManager implements IFormMessageManager {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.interpreter.internal.compatibility.view.IFormMessageManager#addMessage(java.lang.String,
+     * @see org.eclipse.sirius.ui.interpreter.internal.view.IFormMessageManager#addMessage(java.lang.String,
      *      java.lang.String, int, org.eclipse.swt.widgets.Control)
      */
     public void addMessage(String key, String message, int type, Control control) {
@@ -61,7 +61,7 @@ public class FormMessageManager implements IFormMessageManager {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.interpreter.internal.compatibility.view.IFormMessageManager#removeAllMessages()
+     * @see org.eclipse.sirius.ui.interpreter.internal.view.IFormMessageManager#removeAllMessages()
      */
     public void removeAllMessages() {
         if (!managedForm.isDisposed()) {
@@ -72,7 +72,7 @@ public class FormMessageManager implements IFormMessageManager {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.interpreter.internal.compatibility.view.IFormMessageManager#removeMessage(java.lang.Object)
+     * @see org.eclipse.sirius.ui.interpreter.internal.view.IFormMessageManager#removeMessage(java.lang.Object)
      */
     public void removeMessage(Object key) {
         if (!managedForm.isDisposed()) {
@@ -83,7 +83,7 @@ public class FormMessageManager implements IFormMessageManager {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.interpreter.internal.compatibility.view.IFormMessageManager#removeMessages(org.eclipse.swt.widgets.Control)
+     * @see org.eclipse.sirius.ui.interpreter.internal.view.IFormMessageManager#removeMessages(org.eclipse.swt.widgets.Control)
      */
     public void removeMessages(Control control) {
         if (!managedForm.isDisposed()) {
@@ -94,7 +94,7 @@ public class FormMessageManager implements IFormMessageManager {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.interpreter.internal.compatibility.view.IFormMessageManager#setDecorationPosition(int)
+     * @see org.eclipse.sirius.ui.interpreter.internal.view.IFormMessageManager#setDecorationPosition(int)
      */
     public void setDecorationPosition(int position) {
         if (!managedForm.isDisposed()) {

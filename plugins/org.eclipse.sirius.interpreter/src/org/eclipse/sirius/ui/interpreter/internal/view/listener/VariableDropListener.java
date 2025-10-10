@@ -8,13 +8,14 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.ui.interpreter.internal.view;
+package org.eclipse.sirius.ui.interpreter.internal.view.listener;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.sirius.ui.interpreter.internal.view.Variable;
 import org.eclipse.sirius.ui.interpreter.internal.view.actions.NewVariableAction;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.Platform;

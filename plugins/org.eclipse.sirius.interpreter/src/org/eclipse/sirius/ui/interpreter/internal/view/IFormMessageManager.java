@@ -8,7 +8,7 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.ui.interpreter.internal.compatibility.view;
+package org.eclipse.sirius.ui.interpreter.internal.view;
 
 import org.eclipse.swt.widgets.Control;
 
