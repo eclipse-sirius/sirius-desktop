@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="ASCII"?>
-<eef-gen:EEFGenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:eef-gen="http://www.eclipse.org/emf/eef/generation/1.0.0" genDirectory="/org.eclipse.sirius.tests.sample.docbook.edit/src-gen" license="/**&#xD;&#xA; * Copyright (c) 2015 Obeo&#xD;&#xA; * This program and the accompanying materials&#xD;&#xA; * are made available under the terms of the Eclipse Public License 2.0&#xD;&#xA; * which accompanies this distribution, and is available at&#xD;&#xA; * https://www.eclipse.org/legal/epl-2.0/&#xD;&#xA; *&#xD;&#xA; * Contributors:&#xD;&#xA; *    Obeo - initial API and implementation&#xD;&#xA; *&#xD;&#xA; */">
-  <editionContexts basePackage="org.eclipse.sirius.tests.sample" descriptorsGenericPropertiesViews="true" leafComponentsSuperClass="org.eclipse.sirius.eef.components.SiriusAwarePropertiesEditingComponent">
-    <PropertiesEditionContext href="docbook.components#_6u7x0PiOEeSjnZMs8ur7NQ"/>
-  </editionContexts>
-  <viewsRepositories basePackage="org.eclipse.sirius.tests.sample.docbook" swtViews="true" formViews="true">
-    <viewsRepository href="docbook.components#_6u7yA_iOEeSjnZMs8ur7NQ"/>
-  </viewsRepositories>
-</eef-gen:EEFGenModel>

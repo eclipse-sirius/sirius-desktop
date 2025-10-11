@@ -7,6 +7,7 @@ This document contains the release notes for recent major releases of Sirius. Se
 h2(#sirius7.5.0). Changes in Sirius  Desktop 7.5.0
 
 * <span class="label label-info">Modified</span> As of version 7.5.0, Sirius Desktop now requires Eclipse 2025-09 or later (and the corresponding versions of EMF, GEF, GMF, EEF, Acceleo).
+* <span class="label label-danger">Removed</span> @org.eclipse.sirius.eef.adapters@ plugin and EEF 1.5 support have been removed.
 
 h2(#sirius7.4.11). Changes in Sirius  Desktop 7.4.11
 
