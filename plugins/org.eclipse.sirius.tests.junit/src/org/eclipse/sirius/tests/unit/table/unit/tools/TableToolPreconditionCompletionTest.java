@@ -16,8 +16,9 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.common.acceleo.mtl.business.internal.interpreter.AcceleoMTLInterpreter;
-import org.eclipse.sirius.common.acceleo.mtl.ide.AcceleoProposalProvider;
+import org.eclipse.sirius.common.acceleo.aql.business.internal.AQLSiriusInterpreter;
+import org.eclipse.sirius.common.acceleo.aql.business.internal.AcceleoAQLInterpreterProvider;
+import org.eclipse.sirius.common.acceleo.aql.ide.proposal.AQLProposalProvider;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
@@ -63,9 +64,9 @@ public class TableToolPreconditionCompletionTest extends SiriusDiagramTestCase {
 
     private EAttribute preconditionAttribute;
 
-    private AcceleoProposalProvider acceleoPrososalProvider;
+    private AQLProposalProvider prososalProvider;
 
-    private AcceleoMTLInterpreter acceleoIntepreter;
+    private AQLSiriusInterpreter interpreter;
 
     @Override
     protected void setUp() throws Exception {
@@ -75,8 +76,8 @@ public class TableToolPreconditionCompletionTest extends SiriusDiagramTestCase {
         preconditionAttribute = ToolPackage.eINSTANCE.getAbstractToolDescription_Precondition();
 
         // Use the Acceleo interpreter
-        acceleoPrososalProvider = new AcceleoProposalProvider();
-        acceleoIntepreter = new AcceleoMTLInterpreter();
+        prososalProvider = new AQLProposalProvider();
+        interpreter = new AQLSiriusInterpreter();
 
         // Create the project
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, PATH + "/" + SEMANTIC_MODEL_FILENAME, "/" + TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_MODEL_FILENAME);
@@ -112,8 +113,7 @@ public class TableToolPreconditionCompletionTest extends SiriusDiagramTestCase {
     }
 
     /**
-     * Ensure that the auto completion is valid for {@link CreateColumnTool} &
-     * {@link CreateColumnTool}
+     * Ensure that the auto completion is valid for {@link CreateColumnTool} & {@link CreateColumnTool}
      */
     public void testCreateColumnTool() {
         CrossTableDescription tableDescription = getTableDescription(CROSS_TABLE_DESCRIPTION, CrossTableDescription.class);
@@ -160,11 +160,11 @@ public class TableToolPreconditionCompletionTest extends SiriusDiagramTestCase {
     private void checkThisEObjectInCompletion(EObject element, final String expectedType) {
         // Compute the content context
         IInterpreterContext interContext = SiriusInterpreterContextFactory.createInterpreterContext(element, preconditionAttribute);
-        ContentContext context = new ContentContext("[/]", 1, interContext);
+        ContentContext context = new ContentContext("aql:", 4, interContext);
 
-        List<ContentProposal> contentProposals = acceleoPrososalProvider.getProposals(acceleoIntepreter, context);
-        ContentProposal contentProposal = contentProposals.stream().filter(input->input.getProposal().equals("thisEObject")).findFirst().orElse(null);
-        
+        List<ContentProposal> contentProposals = prososalProvider.getProposals(interpreter, context);
+        ContentProposal contentProposal = contentProposals.stream().filter(input -> input.getProposal().equals("thisEObject")).findFirst().orElse(null);
+
         assertNotNull("The 'thisEObject' is not found", contentProposal);
         assertEquals("thisEObject:" + expectedType, contentProposal.getDisplay());
     }
