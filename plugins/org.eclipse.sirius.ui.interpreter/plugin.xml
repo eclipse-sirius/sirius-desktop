@@ -18,7 +18,7 @@
     <extension
          point="org.eclipse.ui.views">
       <view
-            category="org.eclipse.acceleo.ide.ui"
+            category="org.eclipse.sirius.category"
             class="org.eclipse.sirius.ui.interpreter.internal.view.InterpreterView"
             icon="icons/view_icon.gif"
             id="org.eclipse.sirius.ui.interpreter.view"
