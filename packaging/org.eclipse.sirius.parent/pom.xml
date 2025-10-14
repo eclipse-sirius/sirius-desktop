@@ -549,7 +549,6 @@
         <module>../../packaging/org.eclipse.sirius.runtime.ide.ui</module>
         <module>../../packaging/org.eclipse.sirius.runtime.ide.xtext</module>
         <module>../../packaging/org.eclipse.sirius.samples</module>
-        <module>../../packaging/org.eclipse.sirius.specifier.ide.ui.acceleo</module>
         <module>../../packaging/org.eclipse.sirius.specifier.ide.ui.aql</module>
         <module>../../packaging/org.eclipse.sirius.specifier.ide.ui</module>
         <module>../../packaging/org.eclipse.sirius.tests.support</module>
