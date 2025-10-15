@@ -29,7 +29,7 @@
           </style>
         </containerMappings>
         <toolSections name="DefaultSection">
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="ChangeTypeTool" precondition="aql:otherEnd.target.name.equalsIgnoreCase('ref2') or otherEnd.target.name.equalsIgnoreCase('EClass2') or (otherEnd.target.name.equalsIgnoreCase('ref1') and not(target.name.equalsIgnoreCase('EClassKO')))">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="ChangeTypeTool" precondition="aql:otherEnd.target.name.equalsIgnoreCase('ref2') or otherEnd.target.name.equalsIgnoreCase('EClass2') or otherEnd.target.name.equalsIgnoreCase('ref1') and not(target.name.equalsIgnoreCase('EClassKO'))">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
