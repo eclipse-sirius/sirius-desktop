@@ -6,7 +6,6 @@ Bundle-Version: 7.5.0.qualifier
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.sirius,
  org.eclipse.sirius.common,
- org.eclipse.sirius.common.ocl,
  org.eclipse.sirius.common.ui,
  org.eclipse.sirius.common.ui.ext,
  org.eclipse.sirius.table,

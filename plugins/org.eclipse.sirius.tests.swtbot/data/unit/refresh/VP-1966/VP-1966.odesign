@@ -3,14 +3,14 @@
   <ownedViewpoints name="vp_1966" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="VP_1966_Diagram" domainClass="EPackage">
       <defaultLayer name="Default1">
-        <nodeMappings name="Nodes" semanticCandidatesExpression="ocl: self.eClassifiers->select(cl : EClassifier | cl.oclIsTypeOf(EClass))->collect(cl : EClassifier | cl.oclAsType(EClass))->select(c : EClass | c.eStructuralFeatures->isEmpty())" domainClass="EClass">
+        <nodeMappings name="Nodes" semanticCandidatesExpression="aql: self.eClassifiers->select(cl : EClassifier | cl.oclIsTypeOf(EClass))->collect(cl : EClassifier | cl.oclAsType(EClass))->select(c : EClass | c.eStructuralFeatures->isEmpty())" domainClass="EClass">
           <style xsi:type="style:SquareDescription">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="AbstractNodes" semanticCandidatesExpression="ocl: self.eClassifiers->select(cl : EClassifier | cl.oclIsTypeOf(EClass))->collect(cl : EClassifier | cl.oclAsType(EClass))->select(c : EClass | not c.eStructuralFeatures->isEmpty() and c.abstract)" domainClass="EClass">
+        <nodeMappings name="AbstractNodes" semanticCandidatesExpression="aql: self.eClassifiers->select(cl : EClassifier | cl.oclIsTypeOf(EClass))->collect(cl : EClassifier | cl.oclAsType(EClass))->select(c : EClass | not c.eStructuralFeatures->isEmpty() and c.abstract)" domainClass="EClass">
           <borderedNodeMappings name="AttributeNodeMapping" semanticCandidatesExpression="aql:self.eStructuralFeatures->filter(ecore::EAttribute)" domainClass="EAttribute">
             <borderedNodeMappings name="EDataTypeBorderedNodeMapping" semanticCandidatesExpression="aql:self.eAttributeType" domainClass="EDataType">
               <style xsi:type="style:DotDescription">
@@ -69,7 +69,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <containerMappings name="EClassListContainerMapping" semanticCandidatesExpression="ocl: self.eClassifiers->select(cl : EClassifier | cl.oclIsTypeOf(EClass))->collect(cl : EClassifier | cl.oclAsType(EClass))->select(c : EClass | not c.eStructuralFeatures->isEmpty())" domainClass="EClass" childrenPresentation="List">
+        <containerMappings name="EClassListContainerMapping" semanticCandidatesExpression="aql: self.eClassifiers->select(cl : EClassifier | cl.oclIsTypeOf(EClass))->collect(cl : EClassifier | cl.oclAsType(EClass))->select(c : EClass | not c.eStructuralFeatures->isEmpty())" domainClass="EClass" childrenPresentation="List">
           <subNodeMappings name="AttributeNodeMapping" semanticCandidatesExpression="aql:self.eStructuralFeatures->filter(ecore::EAttribute)" domainClass="EAttribute">
             <borderedNodeMappings name="EDataTypeBorderedNodeMapping" semanticCandidatesExpression="aql:self.eAttributeType" domainClass="EDataType">
               <style xsi:type="style:DotDescription">

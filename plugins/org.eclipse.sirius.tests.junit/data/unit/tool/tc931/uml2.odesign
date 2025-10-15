@@ -73,49 +73,49 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
             </style>
-            <conditionnalStyles predicateExpression="ocl:oclIsKindOf(&quot;InitialNode&quot;)">
+            <conditionnalStyles predicateExpression="aql:oclIsKindOf(&quot;InitialNode&quot;)">
               <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="" resizeKind="NSEW" shape="dot">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
               </style>
             </conditionnalStyles>
-            <conditionnalStyles predicateExpression="ocl:oclIsKindOf(&quot;ForkNode&quot;)">
+            <conditionnalStyles predicateExpression="aql:oclIsKindOf(&quot;ForkNode&quot;)">
               <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="" resizeKind="EAST_WEST" width="3" height="1">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
               </style>
             </conditionnalStyles>
-            <conditionnalStyles predicateExpression="ocl:oclIsKindOf(&quot;JoinNode&quot;)">
+            <conditionnalStyles predicateExpression="aql:oclIsKindOf(&quot;JoinNode&quot;)">
               <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="" resizeKind="EAST_WEST">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
               </style>
             </conditionnalStyles>
-            <conditionnalStyles predicateExpression="ocl:oclIsKindOf(&quot;ActivityFinalNode&quot;)">
+            <conditionnalStyles predicateExpression="aql:oclIsKindOf(&quot;ActivityFinalNode&quot;)">
               <style xsi:type="style:BundledImageDescription" labelExpression="" resizeKind="NSEW" shape="dot">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
               </style>
             </conditionnalStyles>
-            <conditionnalStyles predicateExpression="ocl:oclIsKindOf(&quot;MergeNode&quot;)">
+            <conditionnalStyles predicateExpression="aql:oclIsKindOf(&quot;MergeNode&quot;)">
               <style xsi:type="style:LozengeNodeDescription" showIcon="false" labelExpression="" sizeComputationExpression="0">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_chocolate']"/>
               </style>
             </conditionnalStyles>
-            <conditionnalStyles predicateExpression="ocl:oclIsKindOf(&quot;DecisionNode&quot;)">
+            <conditionnalStyles predicateExpression="aql:oclIsKindOf(&quot;DecisionNode&quot;)">
               <style xsi:type="style:LozengeNodeDescription" showIcon="false" labelExpression="">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
               </style>
             </conditionnalStyles>
-            <conditionnalStyles predicateExpression="ocl:oclIsKindOf(&quot;FlowFinalNode&quot;)">
+            <conditionnalStyles predicateExpression="aql:oclIsKindOf(&quot;FlowFinalNode&quot;)">
               <style xsi:type="style:BundledImageDescription" resizeKind="NSEW" shape="ring">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
