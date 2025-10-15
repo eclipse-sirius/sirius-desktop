@@ -116,7 +116,7 @@ public final class SWTBotCommonHelper {
      * Close the current editor.
      */
     public static void closeCurrentEditor() {
-        SWTBotSiriusHelper.menu(SWTBotCommonHelper.bot, SWTBotCommonHelper.FILE).menu("Close All Editors").click();
+        SWTBotSiriusHelper.menu(SWTBotCommonHelper.bot, SWTBotCommonHelper.FILE).menu("Close Editor").click();
     }
 
     /**
