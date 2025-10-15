@@ -18,7 +18,7 @@ import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 
 /**
- * Matcher to check if a spcified point is "around" another expected point, that is to say, specified point is located
+ * Matcher to check if a specified point is "around" another expected point, that is to say, specified point is located
  * in a circle centered on expected point and whom radius is equal to provided distance, edge of the circle included.
  * 
  * @author dlecan
@@ -45,7 +45,7 @@ public class PointAround extends BaseMatcher<Point> {
     @Override
     public boolean matches(Object item) {
         if (item instanceof Point other) {
-            return isAround(other, other, distance);
+            return isAround(expected, other, distance);
         }
         return false;
     }

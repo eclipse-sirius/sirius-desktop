@@ -18,7 +18,7 @@ import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 
 /**
- * Matcher to check if a spcified rectangle is "around" another expected rectangle, that is to say, topleft point of the
+ * Matcher to check if a specified rectangle is "around" another expected rectangle, that is to say, topleft point of the
  * specified rectangle is located in a circle centered on topleft point of expected rectangle and whom radius is equal
  * to provided distance, edge of the circle included. More over, both rectangles must have same heigh and width.
  * 
