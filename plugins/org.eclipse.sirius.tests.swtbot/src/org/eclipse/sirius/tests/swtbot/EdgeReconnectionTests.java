@@ -32,12 +32,14 @@ import org.eclipse.sirius.tests.support.api.GraphicTestsSupportHelp;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
+import org.eclipse.swtbot.swt.finder.waits.ICondition;
 import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IWorkbenchPart;
 import org.hamcrest.core.IsInstanceOf;
@@ -133,12 +135,15 @@ public class EdgeReconnectionTests extends AbstractSiriusSwtBotGefTestCase {
             Point from = connection1Points.getLastPoint();
             Point to = from.getCopy().setX(editor.getBounds(eClass2EditPartBot).x);
             connection1EditPartBot.select();
+            bot.waitUntil(new CheckSelectedCondition(editor, connection1EditPartBot.part()));
 
             // Add a selection listener to detect wrong diagram selection during drag'n'drop
             NoDiagramSelectionListener selectionListener = new NoDiagramSelectionListener();
             EclipseUIUtil.getActivePage().addSelectionListener(selectionListener);
             try {
+                ICondition dropDone = new OperationDoneCondition();
                 editor.drag(from, to);
+                bot.waitUntil(dropDone);
                 // Check that reconnection is correct
                 assertEquals(0, editor.getConnectionEditPart(ref1EditPartBot, eClass1EditPartBot).size());
                 List<SWTBotGefConnectionEditPart> newConnection1EditPartBotList = editor.getConnectionEditPart(ref1EditPartBot, eClass2EditPartBot);
@@ -161,10 +166,13 @@ public class EdgeReconnectionTests extends AbstractSiriusSwtBotGefTestCase {
             from = connection2Points.getLastPoint();
             to = from.getCopy().setX(editor.getBounds(eClass2EditPartBot).x);
             connection2EditPartBot.select();
+            bot.waitUntil(new CheckSelectedCondition(editor, connection2EditPartBot.part()));
             selectionListener = new NoDiagramSelectionListener();
             EclipseUIUtil.getActivePage().addSelectionListener(selectionListener);
             try {
+                ICondition dropDone = new OperationDoneCondition();
                 editor.drag(from, to);
+                bot.waitUntil(dropDone);
                 // Check that reconnection is correct
                 assertEquals(0, editor.getConnectionEditPart(ref2EditPartBot, eClass1EditPartBot).size());
                 List<SWTBotGefConnectionEditPart> newConnection2EditPartBotList = editor.getConnectionEditPart(ref2EditPartBot, eClass2EditPartBot);
@@ -187,10 +195,14 @@ public class EdgeReconnectionTests extends AbstractSiriusSwtBotGefTestCase {
             from = connection1Points.getLastPoint();
             to = from.getCopy().setX(editor.getBounds(eClass1EditPartBot).getRight().x - 20);
             connection1EditPartBot.select();
+            bot.waitUntil(new CheckSelectedCondition(editor, connection1EditPartBot.part()));
+            
             selectionListener = new NoDiagramSelectionListener();
             EclipseUIUtil.getActivePage().addSelectionListener(selectionListener);
             try {
+                ICondition dropDone = new OperationDoneCondition();
                 editor.drag(from, to);
+                bot.waitUntil(dropDone);
                 // Check that reconnection is correct
                 assertEquals(0, editor.getConnectionEditPart(ref1EditPartBot, eClass2EditPartBot).size());
                 List<SWTBotGefConnectionEditPart> newConnection1EditPartBotList = editor.getConnectionEditPart(ref1EditPartBot, eClass1EditPartBot);
@@ -213,10 +225,14 @@ public class EdgeReconnectionTests extends AbstractSiriusSwtBotGefTestCase {
             from = connection2Points.getLastPoint();
             to = from.getCopy().setX(editor.getBounds(eClass1EditPartBot).getRight().x - 20);
             connection2EditPartBot.select();
+            bot.waitUntil(new CheckSelectedCondition(editor, connection2EditPartBot.part()));
+            
             selectionListener = new NoDiagramSelectionListener();
             EclipseUIUtil.getActivePage().addSelectionListener(selectionListener);
             try {
+                ICondition dropDone = new OperationDoneCondition();
                 editor.drag(from, to);
+                bot.waitUntil(dropDone);
                 // Check that reconnection is correct
                 assertEquals(0, editor.getConnectionEditPart(ref2EditPartBot, eClass2EditPartBot).size());
                 List<SWTBotGefConnectionEditPart> newConnection2EditPartBotList = editor.getConnectionEditPart(ref2EditPartBot, eClass1EditPartBot);
@@ -239,10 +255,13 @@ public class EdgeReconnectionTests extends AbstractSiriusSwtBotGefTestCase {
             from = connection1Points.getFirstPoint();
             to = from.getCopy().setX(editor.getBounds(ref3EditPartBot).x);
             connection1EditPartBot.select();
+            bot.waitUntil(new CheckSelectedCondition(editor, connection1EditPartBot.part()));
             selectionListener = new NoDiagramSelectionListener();
             EclipseUIUtil.getActivePage().addSelectionListener(selectionListener);
             try {
+                ICondition dropDone = new OperationDoneCondition();
                 editor.drag(from, to);
+                bot.waitUntil(dropDone);
                 // Check that reconnection is correct
                 assertEquals(0, editor.getConnectionEditPart(ref1EditPartBot, eClass1EditPartBot).size());
                 List<SWTBotGefConnectionEditPart> newConnection1EditPartBotList = editor.getConnectionEditPart(ref3EditPartBot, eClass1EditPartBot);
@@ -265,10 +284,13 @@ public class EdgeReconnectionTests extends AbstractSiriusSwtBotGefTestCase {
             from = connection2Points.getFirstPoint();
             to = from.getCopy().setX(editor.getBounds(ref4EditPartBot).x);
             connection2EditPartBot.select();
+            bot.waitUntil(new CheckSelectedCondition(editor, connection2EditPartBot.part()));
             selectionListener = new NoDiagramSelectionListener();
             EclipseUIUtil.getActivePage().addSelectionListener(selectionListener);
             try {
+                ICondition dropDone = new OperationDoneCondition();
                 editor.drag(from, to);
+                bot.waitUntil(dropDone);
                 // Check that reconnection is correct
                 assertEquals(0, editor.getConnectionEditPart(ref2EditPartBot, eClass1EditPartBot).size());
                 List<SWTBotGefConnectionEditPart> newConnection2EditPartBotList = editor.getConnectionEditPart(ref4EditPartBot, eClass1EditPartBot);
@@ -291,6 +313,7 @@ public class EdgeReconnectionTests extends AbstractSiriusSwtBotGefTestCase {
             from = connection1Points.getFirstPoint();
             to = from.getCopy().setX(editor.getBounds(ref1EditPartBot).getRight().x - 2);
             connection1EditPartBot.select();
+            bot.waitUntil(new CheckSelectedCondition(editor, connection1EditPartBot.part()));
             selectionListener = new NoDiagramSelectionListener();
             EclipseUIUtil.getActivePage().addSelectionListener(selectionListener);
             PointList newConnection1Points;
@@ -317,10 +340,13 @@ public class EdgeReconnectionTests extends AbstractSiriusSwtBotGefTestCase {
             from = connection2Points.getFirstPoint();
             to = from.getCopy().setX(editor.getBounds(ref2EditPartBot).getRight().x - 2);
             connection2EditPartBot.select();
+            bot.waitUntil(new CheckSelectedCondition(editor, connection2EditPartBot.part()));
             selectionListener = new NoDiagramSelectionListener();
             EclipseUIUtil.getActivePage().addSelectionListener(selectionListener);
             try {
+                ICondition dropDone = new OperationDoneCondition();
                 editor.drag(from, to);
+                bot.waitUntil(dropDone);
                 // Check that reconnection is correct
                 assertEquals(0, editor.getConnectionEditPart(ref4EditPartBot, eClass2EditPartBot).size());
                 List<SWTBotGefConnectionEditPart> newConnection2EditPartBotList = editor.getConnectionEditPart(ref2EditPartBot, eClass1EditPartBot);
@@ -343,12 +369,15 @@ public class EdgeReconnectionTests extends AbstractSiriusSwtBotGefTestCase {
             from = connection1Points.getLastPoint();
             to = from.getCopy().setX(editor.getBounds(eClassKOEditPartBot).x);
             connection1EditPartBot.select();
+            bot.waitUntil(new CheckSelectedCondition(editor, connection1EditPartBot.part()));
 
             // Add a selection listener to detect wrong diagram selection during drag'n'drop
             selectionListener = new NoDiagramSelectionListener();
             EclipseUIUtil.getActivePage().addSelectionListener(selectionListener);
             try {
+                ICondition dropDone = new OperationDoneCondition();
                 editor.drag(from, to);
+                bot.waitUntil(dropDone);
                 // Check that reconnection does nothing (wrong precondition)
                 assertEquals("The edge should still exist as before reconnection, before the precondition is false.", 1, editor.getConnectionEditPart(ref1EditPartBot, eClass1EditPartBot).size()); //$NON-NLS-1$
                 List<SWTBotGefConnectionEditPart> newConnection1EditPartBotList = editor.getConnectionEditPart(ref1EditPartBot, eClassKOEditPartBot);
@@ -392,7 +421,9 @@ public class EdgeReconnectionTests extends AbstractSiriusSwtBotGefTestCase {
         Point to = from.getCopy().setX(editor.getBounds(eClass2EditPartBot).x);
         connection1EditPartBot.select();
         bot.waitUntil(new CheckSelectedCondition(editor, connection1EditPartBot.part()));
+        ICondition dropDone = new OperationDoneCondition();
         editor.drag(from, to);
+        bot.waitUntil(dropDone);
         // Check that reconnection is correct
         assertEquals(0, editor.getConnectionEditPart(ref1EditPartBot, eClass1EditPartBot).size());
         List<SWTBotGefConnectionEditPart> newConnection1EditPartBotList = editor.getConnectionEditPart(ref1EditPartBot, eClass2EditPartBot);
@@ -447,7 +478,9 @@ public class EdgeReconnectionTests extends AbstractSiriusSwtBotGefTestCase {
         to = from.getCopy().setX(editor.getBounds(eClass1EditPartBot).getRight().x - 2);
         connection2EditPartBot.select();
         bot.waitUntil(new CheckSelectedCondition(editor, connection2EditPartBot.part()));
+        dropDone = new OperationDoneCondition();
         editor.drag(from, to);
+        bot.waitUntil(dropDone);
         // Check that reconnection is correct
         assertEquals(0, editor.getConnectionEditPart(ref2EditPartBot, eClass2EditPartBot).size());
         newConnection2EditPartBotList = editor.getConnectionEditPart(ref2EditPartBot, eClass1EditPartBot);
@@ -465,7 +498,9 @@ public class EdgeReconnectionTests extends AbstractSiriusSwtBotGefTestCase {
         to = from.getCopy().setX(editor.getBounds(ref3EditPartBot).x);
         connection1EditPartBot.select();
         bot.waitUntil(new CheckSelectedCondition(editor, connection1EditPartBot.part()));
+        dropDone = new OperationDoneCondition();
         editor.drag(from, to);
+        bot.waitUntil(dropDone);
         // Check that reconnection is correct
         assertEquals(0, editor.getConnectionEditPart(ref1EditPartBot, eClass1EditPartBot).size());
         newConnection1EditPartBotList = editor.getConnectionEditPart(ref3EditPartBot, eClass1EditPartBot);
@@ -484,7 +519,9 @@ public class EdgeReconnectionTests extends AbstractSiriusSwtBotGefTestCase {
         to = from.getCopy().setX(editor.getBounds(ref4EditPartBot).x);
         connection2EditPartBot.select();
         bot.waitUntil(new CheckSelectedCondition(editor, connection2EditPartBot.part()));
+        dropDone = new OperationDoneCondition();
         editor.drag(from, to);
+        bot.waitUntil(dropDone);
         // Check that reconnection is correct
         assertEquals(0, editor.getConnectionEditPart(ref2EditPartBot, eClass1EditPartBot).size());
         newConnection2EditPartBotList = editor.getConnectionEditPart(ref4EditPartBot, eClass1EditPartBot);
@@ -519,7 +556,10 @@ public class EdgeReconnectionTests extends AbstractSiriusSwtBotGefTestCase {
         Point from = c131EditPartBounds.getCenter();
         Point to = editor.getBounds(c1EditPartBot).getRight().setY(from.y).getTranslated(-5, 0);
         c131EditPartBot.select();
+        bot.waitUntil(new CheckSelectedCondition(editor, c131EditPartBot.part()));
+        ICondition dropDone = new OperationDoneCondition();
         editor.drag(from, to);
+        bot.waitUntil(dropDone);
         // Check that port dnd is correct
         c131EditPartBot = editor.getEditPart("c131", AbstractDiagramBorderNodeEditPart.class);
         assertEquals(0, c13EditPartBot.descendants(IsInstanceOf.<EditPart> instanceOf(AbstractDiagramBorderNodeEditPart.class)).size());
@@ -540,7 +580,10 @@ public class EdgeReconnectionTests extends AbstractSiriusSwtBotGefTestCase {
         from = editor.getBounds(c111EditPartBot).getCenter();
         to = editor.getBounds(c1EditPartBot).getRight().setY(from.y).getTranslated(-5, 0);
         c111EditPartBot.select();
+        bot.waitUntil(new CheckSelectedCondition(editor, c111EditPartBot.part()));
+        dropDone = new OperationDoneCondition();
         editor.drag(from, to);
+        bot.waitUntil(dropDone);
         // Check that port dnd is correct
         c111EditPartBot = editor.getEditPart("c111", AbstractDiagramBorderNodeEditPart.class);
         assertEquals(0, c11EditPartBot.descendants(IsInstanceOf.<EditPart> instanceOf(AbstractDiagramBorderNodeEditPart.class)).size());
@@ -560,7 +603,10 @@ public class EdgeReconnectionTests extends AbstractSiriusSwtBotGefTestCase {
         from = editor.getBounds(c131EditPartBot).getCenter();
         to = editor.getBounds(c13EditPartBot).getRight().setY(from.y).getTranslated(-5, 0);
         c131EditPartBot.select();
+        bot.waitUntil(new CheckSelectedCondition(editor, c131EditPartBot.part()));
+        dropDone = new OperationDoneCondition();
         editor.drag(from, to);
+        bot.waitUntil(dropDone);
         // Check that port dnd is correct
         c131EditPartBot = editor.getEditPart("c131", AbstractDiagramBorderNodeEditPart.class);
         assertEquals(1, c13EditPartBot.descendants(IsInstanceOf.<EditPart> instanceOf(AbstractDiagramBorderNodeEditPart.class)).size());
@@ -581,7 +627,10 @@ public class EdgeReconnectionTests extends AbstractSiriusSwtBotGefTestCase {
         from = editor.getBounds(c111EditPartBot).getCenter();
         to = editor.getBounds(c11EditPartBot).getRight().setY(from.y).getTranslated(-5, 0);
         c111EditPartBot.select();
+        bot.waitUntil(new CheckSelectedCondition(editor, c111EditPartBot.part()));
+        dropDone = new OperationDoneCondition();
         editor.drag(from, to);
+        bot.waitUntil(dropDone);
         // Check that port dnd is correct
         c111EditPartBot = editor.getEditPart("c111", AbstractDiagramBorderNodeEditPart.class);
         assertEquals(1, c11EditPartBot.descendants(IsInstanceOf.<EditPart> instanceOf(AbstractDiagramBorderNodeEditPart.class)).size());
@@ -626,17 +675,21 @@ public class EdgeReconnectionTests extends AbstractSiriusSwtBotGefTestCase {
             Point from = connection1Points.getFirstPoint();
             Point to = from.getCopy().setX(editor.getBounds(ref3EditPartBot).x);
             connection1EditPartBot.select();
+            bot.waitUntil(new CheckSelectedCondition(editor, connection1EditPartBot.part()));
 
             // Add a selection listener to detect wrong diagram selection during drag'n'drop
             NoDiagramSelectionListener selectionListener = new NoDiagramSelectionListener();
             EclipseUIUtil.getActivePage().addSelectionListener(selectionListener);
             try {
+                ICondition dropDone = new OperationDoneCondition();
                 editor.drag(from, to);
+                bot.waitUntil(dropDone);
                 // Check that reconnection no longer exists
                 assertEquals(0, editor.getConnectionEditPart(ref1EditPartBot, eClass1EditPartBot).size());
                 assertEquals(0, editor.getConnectionEditPart(ref3EditPartBot, eClass1EditPartBot).size());
                 // Select another class to check that notifications are thrown, Properties view is used to check this.
                 editor.select(eClass2EditPartBot);
+                bot.waitUntil(new CheckSelectedCondition(editor, eClass2EditPartBot.part()));
                 try {
                     // Check that "EClass2" item is displayed in the General tab of Properties view
                     propertiesView.bot().tree(0).getTreeItem("EClass2");
