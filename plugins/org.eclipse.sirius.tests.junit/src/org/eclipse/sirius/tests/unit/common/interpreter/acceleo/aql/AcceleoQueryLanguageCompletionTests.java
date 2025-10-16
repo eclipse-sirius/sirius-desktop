@@ -12,16 +12,23 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.common.interpreter.acceleo.aql;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EcoreFactory;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.sirius.common.acceleo.aql.business.internal.AQLSiriusInterpreter;
 import org.eclipse.sirius.common.acceleo.aql.ide.proposal.AQLProposalProvider;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentInstanceContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentProposalWithReplacement;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.unit.common.interpreter.AbstractCompletionTestCase;
 
 /**
@@ -30,6 +37,8 @@ import org.eclipse.sirius.tests.unit.common.interpreter.AbstractCompletionTestCa
  * @author <a href="mailto:stephane.begaudeau@obeo.fr">Stephane Begaudeau</a>
  */
 public class AcceleoQueryLanguageCompletionTests extends AbstractCompletionTestCase {
+
+    private static final String SERVICE = "org.eclipse.sirius.tests.unit.common.interpreter.acceleo.aql.BasicService";
 
     @Override
     protected void setUp() throws Exception {
@@ -181,7 +190,7 @@ public class AcceleoQueryLanguageCompletionTests extends AbstractCompletionTestC
 
         ContentInstanceContext cic = new ContentInstanceContext(c, "aql:self.nana", "aql:self.na".length());
         List<ContentProposal> proposals = this.getProposals(cic);
-        
+
         assertEquals(3, proposals.size());
 
         if (proposals.get(0) instanceof ContentProposalWithReplacement) {
@@ -211,5 +220,94 @@ public class AcceleoQueryLanguageCompletionTests extends AbstractCompletionTestC
             assertEquals(3, proposalWithReplacement.getReplacementLength());
             assertEquals(9, proposalWithReplacement.getReplacementOffset());
         }
+    }
+
+    /**
+     * Tests completion for an EClass.
+     */
+    public void testAQLCompletionWithDependencies() {
+        EClass c = EcoreFactory.eINSTANCE.createEClass();
+
+        List<String> mockVsms = new ArrayList<String>();
+        mockVsms.add(SiriusTestsPlugin.PLUGIN_ID);
+        concreteInterpreter.setProperty(IInterpreter.FILES, mockVsms);
+
+        Collection<String> dependencies = new ArrayList<String>(Arrays.asList(SERVICE));
+        ContentContext cc = createContentContext("aql:self.getN", 13, c, "EClass", EcorePackage.eINSTANCE, new HashMap<>(), dependencies);
+        List<ContentProposal> proposals = getProposals(cc);
+
+        assertEquals(2, proposals.size());
+        List<String> displays = proposals.stream().map(ContentProposal::getDisplay).toList();
+        List<String> props = proposals.stream().map(ContentProposal::getProposal).toList();
+
+        assertTrue(displays.contains("getNameQuery()"));
+        assertTrue(props.contains("ameQuery()"));
+        assertTrue(displays.contains("getName()"));
+        assertTrue(props.contains("ame()"));
+
+        cc = createContentContext("aql:self.sam", 12, c, "EClass", EcorePackage.eINSTANCE, new HashMap<>(), dependencies);
+        proposals = getProposals(cc);
+        assertEquals(1, proposals.size());
+
+        assertTrue(proposals.get(0).getDisplay().contains("sampleService()"));
+        assertTrue(proposals.get(0).getDisplay().contains("pleService()"));
+
+        cc = createContentContext("aql:self.name.concat(self.serv)", 30, c, "EClass", EcorePackage.eINSTANCE, new HashMap<>(), dependencies);
+        proposals = getProposals(cc);
+        assertEquals(1, proposals.size());
+
+        assertTrue(proposals.get(0).getDisplay().contains("sampleService()"));
+        // Not ideal here, but current behavior, might need to switch to REPLACE mode see testAQLInstanceCompletionWithDependencies
+        assertTrue(proposals.get(0).getProposal().contains("leService()"));
+    }
+
+    /**
+     * Tests completion for an EClass.
+     */
+    public void testAQLInstanceCompletionWithDependencies() {
+        EClass c = EcoreFactory.eINSTANCE.createEClass();
+
+        List<String> mockVsms = new ArrayList<String>();
+        mockVsms.add(SiriusTestsPlugin.PLUGIN_ID);
+        concreteInterpreter.setProperty(IInterpreter.FILES, mockVsms);
+
+        concreteInterpreter.addImport(SERVICE);
+
+        ContentInstanceContext cic = new ContentInstanceContext(c, "aql:self.getN", 13);
+        List<ContentProposal> proposals = getProposals(cic);
+
+        assertEquals(2, proposals.size());
+        
+        List<String> displays = proposals.stream().map(ContentProposal::getDisplay).toList();
+        List<String> props = proposals.stream().map(ContentProposal::getProposal).toList();
+
+        assertTrue(displays.contains("getNameQuery()"));
+        assertTrue(props.contains("getNameQuery()"));
+        assertTrue(displays.contains("getName()"));
+        assertTrue(props.contains("getName()"));
+        
+        cic = new ContentInstanceContext(c, "aql:self.sam", 12);
+        proposals = getProposals(cic);
+
+        assertEquals(1, proposals.size());
+        assertTrue(proposals.get(0).getDisplay().contains("sampleService()"));
+        assertTrue(proposals.get(0).getDisplay().contains("sampleService()"));
+        if (proposals.get(0) instanceof ContentProposalWithReplacement proposalWithReplacement) {
+            assertEquals(3, proposalWithReplacement.getReplacementLength());
+            assertEquals(9, proposalWithReplacement.getReplacementOffset());
+        }
+
+        cic = new ContentInstanceContext(c, "aql:self.name.concat(self.serv)", 30);
+        proposals = getProposals(cic);
+
+        assertEquals(1, proposals.size());
+        assertTrue(proposals.get(0).getDisplay().contains("sampleService()"));
+        assertTrue(proposals.get(0).getProposal().contains("sampleService()"));
+        if (proposals.get(0) instanceof ContentProposalWithReplacement proposalWithReplacement) {
+            assertEquals(4, proposalWithReplacement.getReplacementLength());
+            assertEquals(26, proposalWithReplacement.getReplacementOffset());
+        }
+
+        concreteInterpreter.removeImport(SERVICE);
     }
 }

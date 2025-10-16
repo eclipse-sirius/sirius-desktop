@@ -10,7 +10,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.tests.unit.common.interpreter.acceleo.mtl;
+package org.eclipse.sirius.tests.unit.common.interpreter.acceleo.aql;
 
 import java.util.Collections;
 
@@ -21,12 +21,12 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.common.acceleo.aql.business.internal.AQLSiriusInterpreter;
 import org.eclipse.sirius.common.acceleo.mtl.business.internal.interpreter.AcceleoMTLInterpreter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.ext.emf.AllContents;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
-import org.eclipse.sirius.tests.unit.common.interpreter.acceleo.aql.Freezer;
 
 import junit.framework.TestCase;
 
@@ -36,17 +36,17 @@ import junit.framework.TestCase;
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
-public class AcceleoPackageRegistryTest extends TestCase {
+public class AQLPackageRegistryTest extends TestCase {
 
     private static final String TEMPORARY_PROJECT_NAME = "DesignerTestProject";
 
-    private AcceleoMTLInterpreter acceleoMTLInterpreter;
+    private AQLSiriusInterpreter aqlSiriusInterpreter;
 
     @Override
     protected void setUp() throws Exception {
         super.setUp();
         EclipseTestsSupportHelper.INSTANCE.createProject(TEMPORARY_PROJECT_NAME);
-        acceleoMTLInterpreter = new AcceleoMTLInterpreter();
+        aqlSiriusInterpreter = new AQLSiriusInterpreter();
     }
 
     /**
@@ -65,8 +65,8 @@ public class AcceleoPackageRegistryTest extends TestCase {
         EPackage content = EcoreUtil.copy(EcorePackage.eINSTANCE);
         ecoreRes.getContents().add(content);
         ecoreRes.save(Collections.emptyMap());
-        acceleoMTLInterpreter.activateMetamodels(Collections.<MetamodelDescriptor> singletonList(new EcoreMetamodelDescriptor(content)));
-        acceleoMTLInterpreter.dispose();
+        aqlSiriusInterpreter.activateMetamodels(Collections.<MetamodelDescriptor> singletonList(new EcoreMetamodelDescriptor(content)));
+        aqlSiriusInterpreter.dispose();
         EclipseTestsSupportHelper.INSTANCE.deleteProject(TEMPORARY_PROJECT_NAME);
 
         EPackage ecorePackageAfter = EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
@@ -76,7 +76,7 @@ public class AcceleoPackageRegistryTest extends TestCase {
     @Override
     protected void tearDown() throws Exception {
         Freezer.thaw(AllContents.of(EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI), true));
-        acceleoMTLInterpreter = null;
+        aqlSiriusInterpreter = null;
         super.tearDown();
     }
 }
