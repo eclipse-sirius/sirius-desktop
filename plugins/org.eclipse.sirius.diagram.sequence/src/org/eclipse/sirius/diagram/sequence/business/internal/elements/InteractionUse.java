@@ -130,45 +130,4 @@ public class InteractionUse extends AbstractFrame {
         return false;
     }
 
-
-    /**
-     * Get the gates of the current combined fragment.
-     * 
-     * @return the gates of the current combined fragment.
-     */
-    public List<Gate> getGates() {
-        List<Gate> result = null;
-        // if (CacheHelper.isStructuralCacheEnabled()) {
-        // result = CacheHelper.getCombinedFragmentToOperandsCache().get(this);
-        // }
-
-        if (result == null) {
-            result = new ArrayList<>();
-            Predicate<View> compartementView = new Predicate<View>() {
-
-                @Override
-                public boolean apply(View input) {
-                    return input.getType().equals(Integer.toString(Gate.VISUAL_ID));
-                }
-            };
-            // The combined fragment contains a compartment that contains the
-            // operands
-            for (View view : Iterables.filter(Iterables.filter(this.view.eContents(), View.class), compartementView)) {
-                // Filtering compartments
-                // for (View viewChild : Iterables.filter(view.eContents(), View.class)) {
-                    // Filtering operands
-                Option<Gate> gate = ISequenceElementAccessor.getGate(view);
-                    if (gate.some()) {
-                        result.add(gate.get());
-                    }
-                    // }
-            }
-            // Collections.sort(result, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
-            // if (CacheHelper.isStructuralCacheEnabled()) {
-            // CacheHelper.getCombinedFragmentToOperandsCache().put(this, result);
-            // }
-        }
-        return result;
-    }
-
 }
