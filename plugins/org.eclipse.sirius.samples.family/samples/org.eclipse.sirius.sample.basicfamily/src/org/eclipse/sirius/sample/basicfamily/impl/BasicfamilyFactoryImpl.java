@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014 Obeo
+ * Copyright (c) 2014-2025 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * SPDX-License-Identifier: EPL-2.0
  *
  * Contributors:
- *  Obeo - initial API and implementation
+ *    Obeo - initial API and implementation
  */
 package org.eclipse.sirius.sample.basicfamily.impl;
 
@@ -24,16 +24,14 @@ import org.eclipse.sirius.sample.basicfamily.Man;
 import org.eclipse.sirius.sample.basicfamily.Woman;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
- * end-user-doc -->
- * 
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
+ *
  * @generated
  */
 public class BasicfamilyFactoryImpl extends EFactoryImpl implements BasicfamilyFactory {
     /**
-     * Creates the default factory implementation. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
+     * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     public static BasicfamilyFactory init() {
@@ -49,9 +47,8 @@ public class BasicfamilyFactoryImpl extends EFactoryImpl implements BasicfamilyF
     }
 
     /**
-     * Creates an instance of the factory. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
+     * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     public BasicfamilyFactoryImpl() {
@@ -60,7 +57,7 @@ public class BasicfamilyFactoryImpl extends EFactoryImpl implements BasicfamilyF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -79,7 +76,7 @@ public class BasicfamilyFactoryImpl extends EFactoryImpl implements BasicfamilyF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -90,7 +87,7 @@ public class BasicfamilyFactoryImpl extends EFactoryImpl implements BasicfamilyF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -101,7 +98,7 @@ public class BasicfamilyFactoryImpl extends EFactoryImpl implements BasicfamilyF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -112,7 +109,7 @@ public class BasicfamilyFactoryImpl extends EFactoryImpl implements BasicfamilyF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -122,7 +119,7 @@ public class BasicfamilyFactoryImpl extends EFactoryImpl implements BasicfamilyF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @deprecated
      * @generated
      */
