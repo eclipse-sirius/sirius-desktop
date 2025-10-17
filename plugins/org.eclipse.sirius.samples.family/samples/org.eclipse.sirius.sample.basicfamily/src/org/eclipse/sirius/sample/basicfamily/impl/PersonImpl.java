@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014 Obeo
+ * Copyright (c) 2014-2025 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * SPDX-License-Identifier: EPL-2.0
  *
  * Contributors:
- *  Obeo - initial API and implementation
+ *    Obeo - initial API and implementation
  */
 package org.eclipse.sirius.sample.basicfamily.impl;
 
@@ -29,31 +29,25 @@ import org.eclipse.sirius.sample.basicfamily.Person;
 import org.eclipse.sirius.sample.basicfamily.Woman;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Person</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Person</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>{@link org.eclipse.sirius.sample.basicfamily.impl.PersonImpl#getName <em>
- * Name</em>}</li>
- * <li>{@link org.eclipse.sirius.sample.basicfamily.impl.PersonImpl#getChildren
- * <em>Children</em>}</li>
- * <li>{@link org.eclipse.sirius.sample.basicfamily.impl.PersonImpl#getParents
- * <em>Parents</em>}</li>
- * <li>{@link org.eclipse.sirius.sample.basicfamily.impl.PersonImpl#getMother
- * <em>Mother</em>}</li>
- * <li>{@link org.eclipse.sirius.sample.basicfamily.impl.PersonImpl#getFather
- * <em>Father</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.sample.basicfamily.impl.PersonImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.basicfamily.impl.PersonImpl#getChildren <em>Children</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.basicfamily.impl.PersonImpl#getParents <em>Parents</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.basicfamily.impl.PersonImpl#getMother <em>Mother</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.basicfamily.impl.PersonImpl#getFather <em>Father</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public abstract class PersonImpl extends MinimalEObjectImpl.Container implements Person {
     /**
-     * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -61,9 +55,9 @@ public abstract class PersonImpl extends MinimalEObjectImpl.Container implements
     protected static final String NAME_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -71,9 +65,9 @@ public abstract class PersonImpl extends MinimalEObjectImpl.Container implements
     protected String name = NAME_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getChildren() <em>Children</em>}'
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The cached value of the '{@link #getChildren() <em>Children</em>}' reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
      * @see #getChildren()
      * @generated
      * @ordered
@@ -81,9 +75,9 @@ public abstract class PersonImpl extends MinimalEObjectImpl.Container implements
     protected EList<Person> children;
 
     /**
-     * The cached value of the '{@link #getParents() <em>Parents</em>}'
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The cached value of the '{@link #getParents() <em>Parents</em>}' reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
      * @see #getParents()
      * @generated
      * @ordered
@@ -91,9 +85,9 @@ public abstract class PersonImpl extends MinimalEObjectImpl.Container implements
     protected EList<Person> parents;
 
     /**
-     * The cached value of the '{@link #getMother() <em>Mother</em>}' reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The cached value of the '{@link #getMother() <em>Mother</em>}' reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
      * @see #getMother()
      * @generated
      * @ordered
@@ -101,9 +95,9 @@ public abstract class PersonImpl extends MinimalEObjectImpl.Container implements
     protected Woman mother;
 
     /**
-     * The cached value of the '{@link #getFather() <em>Father</em>}' reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The cached value of the '{@link #getFather() <em>Father</em>}' reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
      * @see #getFather()
      * @generated
      * @ordered
@@ -112,7 +106,7 @@ public abstract class PersonImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected PersonImpl() {
@@ -121,7 +115,7 @@ public abstract class PersonImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -131,7 +125,7 @@ public abstract class PersonImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +135,7 @@ public abstract class PersonImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -154,7 +148,7 @@ public abstract class PersonImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -167,7 +161,7 @@ public abstract class PersonImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -181,15 +175,16 @@ public abstract class PersonImpl extends MinimalEObjectImpl.Container implements
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @generated NOT
+     * @generated
      */
     @Override
     public Woman getMother() {
-        if (!getParents().isEmpty()) {
-            for (Person parent : getParents()) {
-                if (parent instanceof Woman) {
-                    return (Woman) parent;
-                }
+        if (mother != null && mother.eIsProxy()) {
+            InternalEObject oldMother = (InternalEObject) mother;
+            mother = (Woman) eResolveProxy(oldMother);
+            if (mother != oldMother) {
+                if (eNotificationRequired())
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, BasicfamilyPackage.PERSON__MOTHER, oldMother, mother));
             }
         }
         return mother;
@@ -197,7 +192,7 @@ public abstract class PersonImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public Woman basicGetMother() {
@@ -207,38 +202,29 @@ public abstract class PersonImpl extends MinimalEObjectImpl.Container implements
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @generated NOT
+     * @generated
      */
     @Override
     public void setMother(Woman newMother) {
-        Woman oldMother = getMother();
-        if (oldMother != newMother) {
-            if (oldMother != null) {
-                getParents().remove(oldMother);
-            }
-            if (newMother != null && !getParents().contains(newMother)) {
-                getParents().add(newMother);
-            }
-
-            mother = newMother;
-            if (eNotificationRequired()) {
-                eNotify(new ENotificationImpl(this, Notification.SET, BasicfamilyPackage.PERSON__MOTHER, oldMother, mother));
-            }
-        }
+        Woman oldMother = mother;
+        mother = newMother;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, BasicfamilyPackage.PERSON__MOTHER, oldMother, mother));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @generated NOT
+     * @generated
      */
     @Override
     public Man getFather() {
-        if (!getParents().isEmpty()) {
-            for (Person parent : getParents()) {
-                if (parent instanceof Man) {
-                    return (Man) parent;
-                }
+        if (father != null && father.eIsProxy()) {
+            InternalEObject oldFather = (InternalEObject) father;
+            father = (Man) eResolveProxy(oldFather);
+            if (father != oldFather) {
+                if (eNotificationRequired())
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, BasicfamilyPackage.PERSON__FATHER, oldFather, father));
             }
         }
         return father;
@@ -246,7 +232,7 @@ public abstract class PersonImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public Man basicGetFather() {
@@ -256,30 +242,19 @@ public abstract class PersonImpl extends MinimalEObjectImpl.Container implements
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @generated NOT
+     * @generated
      */
     @Override
     public void setFather(Man newFather) {
-        Man oldFather = getFather();
-
-        if (oldFather != newFather) {
-            if (oldFather != null) {
-                getParents().remove(oldFather);
-            }
-            if (newFather != null && !getParents().contains(newFather)) {
-                getParents().add(newFather);
-            }
-
-            father = newFather;
-            if (eNotificationRequired()) {
-                eNotify(new ENotificationImpl(this, Notification.SET, BasicfamilyPackage.PERSON__FATHER, oldFather, father));
-            }
-        }
+        Man oldFather = father;
+        father = newFather;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, BasicfamilyPackage.PERSON__FATHER, oldFather, father));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -296,7 +271,7 @@ public abstract class PersonImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -312,7 +287,7 @@ public abstract class PersonImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -338,7 +313,7 @@ public abstract class PersonImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -368,7 +343,7 @@ public abstract class PersonImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -395,7 +370,7 @@ public abstract class PersonImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -417,7 +392,7 @@ public abstract class PersonImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -425,7 +400,7 @@ public abstract class PersonImpl extends MinimalEObjectImpl.Container implements
         if (eIsProxy())
             return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
         result.append(')');

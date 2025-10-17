@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014 Obeo
+ * Copyright (c) 2014-2025 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * SPDX-License-Identifier: EPL-2.0
  *
  * Contributors:
- *  Obeo - initial API and implementation
+ *    Obeo - initial API and implementation
  */
 package org.eclipse.sirius.sample.basicfamily.impl;
 
@@ -28,25 +28,22 @@ import org.eclipse.sirius.sample.basicfamily.Family;
 import org.eclipse.sirius.sample.basicfamily.Person;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Family</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Family</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>{@link org.eclipse.sirius.sample.basicfamily.impl.FamilyImpl#getName <em>
- * Name</em>}</li>
- * <li>{@link org.eclipse.sirius.sample.basicfamily.impl.FamilyImpl#getMembers
- * <em>Members</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.sample.basicfamily.impl.FamilyImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.sample.basicfamily.impl.FamilyImpl#getMembers <em>Members</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public class FamilyImpl extends MinimalEObjectImpl.Container implements Family {
     /**
-     * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -54,9 +51,9 @@ public class FamilyImpl extends MinimalEObjectImpl.Container implements Family {
     protected static final String NAME_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -64,9 +61,9 @@ public class FamilyImpl extends MinimalEObjectImpl.Container implements Family {
     protected String name = NAME_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getMembers() <em>Members</em>}'
-     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The cached value of the '{@link #getMembers() <em>Members</em>}' containment reference list. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
      * @see #getMembers()
      * @generated
      * @ordered
@@ -75,7 +72,7 @@ public class FamilyImpl extends MinimalEObjectImpl.Container implements Family {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected FamilyImpl() {
@@ -84,7 +81,7 @@ public class FamilyImpl extends MinimalEObjectImpl.Container implements Family {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -94,7 +91,7 @@ public class FamilyImpl extends MinimalEObjectImpl.Container implements Family {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -104,7 +101,7 @@ public class FamilyImpl extends MinimalEObjectImpl.Container implements Family {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -117,7 +114,7 @@ public class FamilyImpl extends MinimalEObjectImpl.Container implements Family {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -130,7 +127,7 @@ public class FamilyImpl extends MinimalEObjectImpl.Container implements Family {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -144,7 +141,7 @@ public class FamilyImpl extends MinimalEObjectImpl.Container implements Family {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -160,7 +157,7 @@ public class FamilyImpl extends MinimalEObjectImpl.Container implements Family {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -180,7 +177,7 @@ public class FamilyImpl extends MinimalEObjectImpl.Container implements Family {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -198,7 +195,7 @@ public class FamilyImpl extends MinimalEObjectImpl.Container implements Family {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -214,7 +211,7 @@ public class FamilyImpl extends MinimalEObjectImpl.Container implements Family {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -222,7 +219,7 @@ public class FamilyImpl extends MinimalEObjectImpl.Container implements Family {
         if (eIsProxy())
             return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
         result.append(')');

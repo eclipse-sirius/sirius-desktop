@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014 Obeo
+ * Copyright (c) 2014-2025 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * SPDX-License-Identifier: EPL-2.0
  *
  * Contributors:
- *  Obeo - initial API and implementation
+ *    Obeo - initial API and implementation
  */
 package org.eclipse.sirius.sample.basicfamily.provider;
 
@@ -16,23 +16,20 @@ import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 /**
- * This is the central singleton for the Basicfamily edit plugin. <!--
- * begin-user-doc --> <!-- end-user-doc -->
+ * This is the central singleton for the Basicfamily edit plugin. <!-- begin-user-doc --> <!-- end-user-doc -->
  *
  * @generated
  */
 public final class BasicfamilyEditPlugin extends EMFPlugin {
     /**
-     * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     public static final BasicfamilyEditPlugin INSTANCE = new BasicfamilyEditPlugin();
 
     /**
-     * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -40,7 +37,7 @@ public final class BasicfamilyEditPlugin extends EMFPlugin {
 
     /**
      * Create the instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public BasicfamilyEditPlugin() {
@@ -48,9 +45,8 @@ public final class BasicfamilyEditPlugin extends EMFPlugin {
     }
 
     /**
-     * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
+     * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the singleton instance.
      * @generated
      */
@@ -60,9 +56,8 @@ public final class BasicfamilyEditPlugin extends EMFPlugin {
     }
 
     /**
-     * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
+     * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the singleton instance.
      * @generated
      */
@@ -71,15 +66,14 @@ public final class BasicfamilyEditPlugin extends EMFPlugin {
     }
 
     /**
-     * The actual implementation of the Eclipse <b>Plugin</b>. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The actual implementation of the Eclipse <b>Plugin</b>. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     public static class Implementation extends EclipsePlugin {
         /**
          * Creates an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         public Implementation() {

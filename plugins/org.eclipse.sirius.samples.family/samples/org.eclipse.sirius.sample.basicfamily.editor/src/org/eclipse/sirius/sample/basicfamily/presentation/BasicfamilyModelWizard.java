@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014 Obeo
+ * Copyright (c) 2014-2025 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * SPDX-License-Identifier: EPL-2.0
  *
  * Contributors:
- *  Obeo - initial API and implementation
+ *    Obeo - initial API and implementation
  */
 package org.eclipse.sirius.sample.basicfamily.presentation;
 
@@ -69,89 +69,81 @@ import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.ISetSelectionTarget;
 
 /**
- * This is a simple wizard for creating a new model file. <!-- begin-user-doc
- * --> <!-- end-user-doc -->
- * 
+ * This is a simple wizard for creating a new model file. <!-- begin-user-doc --> <!-- end-user-doc -->
+ *
  * @generated
  */
 public class BasicfamilyModelWizard extends Wizard implements INewWizard {
     /**
-     * The supported extensions for created files. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
+     * The supported extensions for created files. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
-    public static final List<String> FILE_EXTENSIONS = Collections.unmodifiableList(Arrays.asList(BasicfamilyEditorPlugin.INSTANCE
-            .getString("_UI_BasicfamilyEditorFilenameExtensions").split("\\s*,\\s*"))); //$NON-NLS-1$ //$NON-NLS-2$
+    public static final List<String> FILE_EXTENSIONS = Collections
+            .unmodifiableList(Arrays.asList(BasicfamilyEditorPlugin.INSTANCE.getString("_UI_BasicfamilyEditorFilenameExtensions").split("\\s*,\\s*"))); //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * A formatted list of supported file extensions, suitable for display. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * A formatted list of supported file extensions, suitable for display. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
     public static final String FORMATTED_FILE_EXTENSIONS = BasicfamilyEditorPlugin.INSTANCE.getString("_UI_BasicfamilyEditorFilenameExtensions").replaceAll("\\s*,\\s*", ", "); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 
     /**
-     * This caches an instance of the model package. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * 
+     * This caches an instance of the model package. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     protected BasicfamilyPackage basicfamilyPackage = BasicfamilyPackage.eINSTANCE;
 
     /**
-     * This caches an instance of the model factory. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * 
+     * This caches an instance of the model factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     protected BasicfamilyFactory basicfamilyFactory = basicfamilyPackage.getBasicfamilyFactory();
 
     /**
-     * This is the file creation page. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * This is the file creation page. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     protected BasicfamilyModelWizardNewFileCreationPage newFileCreationPage;
 
     /**
-     * This is the initial object creation page. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
+     * This is the initial object creation page. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     protected BasicfamilyModelWizardInitialObjectCreationPage initialObjectCreationPage;
 
     /**
-     * Remember the selection during initialization for populating the default
-     * container. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Remember the selection during initialization for populating the default container. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
      * @generated
      */
     protected IStructuredSelection selection;
 
     /**
-     * Remember the workbench during initialization. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * 
+     * Remember the workbench during initialization. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     protected IWorkbench workbench;
 
     /**
-     * Caches the names of the types that can be created as the root object.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Caches the names of the types that can be created as the root object. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
      * @generated
      */
     protected List<String> initialObjectNames;
 
     /**
-     * This just records the information. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
+     * This just records the information. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -163,9 +155,9 @@ public class BasicfamilyModelWizard extends Wizard implements INewWizard {
     }
 
     /**
-     * Returns the names of the types that can be created as the root object.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Returns the names of the types that can be created as the root object. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
      * @generated
      */
     protected Collection<String> getInitialObjectNames() {
@@ -186,7 +178,7 @@ public class BasicfamilyModelWizard extends Wizard implements INewWizard {
 
     /**
      * Create a new model. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EObject createInitialModel() {
@@ -196,9 +188,8 @@ public class BasicfamilyModelWizard extends Wizard implements INewWizard {
     }
 
     /**
-     * Do the work after everything is specified. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
+     * Do the work after everything is specified. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -256,6 +247,7 @@ public class BasicfamilyModelWizard extends Wizard implements INewWizard {
             if (activePart instanceof ISetSelectionTarget) {
                 final ISelection targetSelection = new StructuredSelection(modelFile);
                 getShell().getDisplay().asyncExec(new Runnable() {
+                    @Override
                     public void run() {
                         ((ISetSelectionTarget) activePart).selectReveal(targetSelection);
                     }
@@ -279,15 +271,14 @@ public class BasicfamilyModelWizard extends Wizard implements INewWizard {
     }
 
     /**
-     * This is the one page of the wizard. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
+     * This is the one page of the wizard. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     public class BasicfamilyModelWizardNewFileCreationPage extends WizardNewFileCreationPage {
         /**
          * Pass in the selection. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         public BasicfamilyModelWizardNewFileCreationPage(String pageId, IStructuredSelection selection) {
@@ -295,8 +286,7 @@ public class BasicfamilyModelWizard extends Wizard implements INewWizard {
         }
 
         /**
-         * The framework calls this to see if the file is correct. <!--
-         * begin-user-doc --> <!-- end-user-doc -->
+         * The framework calls this to see if the file is correct. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
@@ -316,7 +306,7 @@ public class BasicfamilyModelWizard extends Wizard implements INewWizard {
 
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         public IFile getModelFile() {
@@ -325,15 +315,14 @@ public class BasicfamilyModelWizard extends Wizard implements INewWizard {
     }
 
     /**
-     * This is the page where the type of object to create is selected. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This is the page where the type of object to create is selected. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     public class BasicfamilyModelWizardInitialObjectCreationPage extends WizardPage {
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         protected Combo initialObjectField;
@@ -345,14 +334,14 @@ public class BasicfamilyModelWizard extends Wizard implements INewWizard {
 
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         protected Combo encodingField;
 
         /**
          * Pass in the selection. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         public BasicfamilyModelWizardInitialObjectCreationPage(String pageId) {
@@ -361,7 +350,7 @@ public class BasicfamilyModelWizard extends Wizard implements INewWizard {
 
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         @Override
@@ -435,10 +424,11 @@ public class BasicfamilyModelWizard extends Wizard implements INewWizard {
 
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         protected ModifyListener validator = new ModifyListener() {
+            @Override
             public void modifyText(ModifyEvent e) {
                 setPageComplete(validatePage());
             }
@@ -446,7 +436,7 @@ public class BasicfamilyModelWizard extends Wizard implements INewWizard {
 
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         protected boolean validatePage() {
@@ -455,7 +445,7 @@ public class BasicfamilyModelWizard extends Wizard implements INewWizard {
 
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         @Override
@@ -474,7 +464,7 @@ public class BasicfamilyModelWizard extends Wizard implements INewWizard {
 
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         public String getInitialObjectName() {
@@ -490,7 +480,7 @@ public class BasicfamilyModelWizard extends Wizard implements INewWizard {
 
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         public String getEncoding() {
@@ -498,9 +488,8 @@ public class BasicfamilyModelWizard extends Wizard implements INewWizard {
         }
 
         /**
-         * Returns the label for the specified type name. <!-- begin-user-doc
-         * --> <!-- end-user-doc -->
-         * 
+         * Returns the label for the specified type name. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @generated
          */
         protected String getLabel(String typeName) {
@@ -514,7 +503,7 @@ public class BasicfamilyModelWizard extends Wizard implements INewWizard {
 
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         protected Collection<String> getEncodings() {
@@ -530,8 +519,7 @@ public class BasicfamilyModelWizard extends Wizard implements INewWizard {
     }
 
     /**
-     * The framework calls this to create the contents of the wizard. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The framework calls this to create the contents of the wizard. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -545,8 +533,7 @@ public class BasicfamilyModelWizard extends Wizard implements INewWizard {
         newFileCreationPage.setFileName(BasicfamilyEditorPlugin.INSTANCE.getString("_UI_BasicfamilyEditorFilenameDefaultBase") + "." + FILE_EXTENSIONS.get(0)); //$NON-NLS-1$ //$NON-NLS-2$
         addPage(newFileCreationPage);
 
-        // Try and get the resource selection to determine a current directory
-        // for the file dialog.
+        // Try and get the resource selection to determine a current directory for the file dialog.
         //
         if (selection != null && !selection.isEmpty()) {
             // Get the resource...
@@ -587,7 +574,7 @@ public class BasicfamilyModelWizard extends Wizard implements INewWizard {
 
     /**
      * Get the file from the page. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public IFile getModelFile() {
