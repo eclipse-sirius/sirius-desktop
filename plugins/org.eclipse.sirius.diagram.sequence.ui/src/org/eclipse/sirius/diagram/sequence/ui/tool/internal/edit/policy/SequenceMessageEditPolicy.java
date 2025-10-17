@@ -47,6 +47,7 @@ import org.eclipse.gmf.runtime.draw2d.ui.internal.figures.OnConnectionLocator;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractFrame;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.EndOfLife;
@@ -56,6 +57,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceE
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceNode;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.InteractionContainer;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.LostMessageEnd;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
@@ -950,6 +952,8 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
                     if (hierarchicalParent instanceof ISequenceEvent ise) {
                         valid = valid && ise.getVerticalRange().includes(finalRange.get().getLowerBound());
                     }
+                    Rectangle gFinalBounds = g.getBounds().getTranslated(0,finalRange.get().getLowerBound()-g.getProperLogicalBounds().getCenter().y);
+                    valid = valid && validateNoOverlapWithGateSiblings(g, gFinalBounds, hierarchicalParent);
                 } 
                 
                 if (message.getTargetElement() instanceof Gate g) {
@@ -957,12 +961,29 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
                     if (hierarchicalParent instanceof ISequenceEvent ise) {
                         valid = valid && ise.getVerticalRange().includes(finalRange.get().getUpperBound());
                     }
+                    Rectangle gFinalBounds = g.getBounds().getTranslated(0,finalRange.get().getUpperBound()-g.getProperLogicalBounds().getCenter().y);
+                    valid = valid && validateNoOverlapWithGateSiblings(g, gFinalBounds, hierarchicalParent);
                 }
             }
         }
 
         return valid;
 
+    }
+
+    private boolean validateNoOverlapWithGateSiblings(Gate g, Rectangle gFinalBounds, ISequenceElement hierarchicalParent) {
+        boolean valid = true;
+        Collection<Gate> otherGates = null;
+        if (hierarchicalParent instanceof AbstractFrame af) {
+            otherGates = new ArrayList<>(af.getGates());                            
+        } else if (hierarchicalParent instanceof InteractionContainer ic) {
+            otherGates = new ArrayList<>(ic.getGates());
+        }
+        otherGates.remove(g);
+        for (Gate gate : otherGates) {
+            valid = valid && !gate.getBounds().intersects(gFinalBounds);
+        }
+        return valid;
     }
 
     private static class MoveType {
