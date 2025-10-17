@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014 Obeo
+ * Copyright (c) 2014-2025 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * SPDX-License-Identifier: EPL-2.0
  *
  * Contributors:
- *  Obeo - initial API and implementation
+ *    Obeo - initial API and implementation
  */
 package org.eclipse.sirius.sample.basicfamily.impl;
 
@@ -25,48 +25,45 @@ import org.eclipse.sirius.sample.basicfamily.Person;
 import org.eclipse.sirius.sample.basicfamily.Woman;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
- * end-user-doc -->
- * 
+ * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!-- end-user-doc -->
+ *
  * @generated
  */
 public class BasicfamilyPackageImpl extends EPackageImpl implements BasicfamilyPackage {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass personEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass familyEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass manEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass womanEClass = null;
 
     /**
-     * Creates an instance of the model <b>Package</b>, registered with
-     * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the
-     * package package URI value.
+     * Creates an instance of the model <b>Package</b>, registered with {@link org.eclipse.emf.ecore.EPackage.Registry
+     * EPackage.Registry} by the package package URI value.
      * <p>
-     * Note: the correct way to create the package is via the static factory
-     * method {@link #init init()}, which also performs initialization of the
-     * package, or returns the registered package, if one already exists. <!--
+     * Note: the correct way to create the package is via the static factory method {@link #init init()}, which also
+     * performs initialization of the package, or returns the registered package, if one already exists. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see org.eclipse.emf.ecore.EPackage.Registry
@@ -80,19 +77,17 @@ public class BasicfamilyPackageImpl extends EPackageImpl implements BasicfamilyP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static boolean isInited = false;
 
     /**
-     * Creates, registers, and initializes the <b>Package</b> for this model,
-     * and for any others upon which it depends.
+     * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
      *
      * <p>
-     * This method is used to initialize {@link BasicfamilyPackage#eINSTANCE}
-     * when that field is accessed. Clients should not invoke it directly.
-     * Instead, they should simply access that field to obtain the package. <!--
+     * This method is used to initialize {@link BasicfamilyPackage#eINSTANCE} when that field is accessed. Clients
+     * should not invoke it directly. Instead, they should simply access that field to obtain the package. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #eNS_URI
@@ -105,8 +100,9 @@ public class BasicfamilyPackageImpl extends EPackageImpl implements BasicfamilyP
             return (BasicfamilyPackage) EPackage.Registry.INSTANCE.getEPackage(BasicfamilyPackage.eNS_URI);
 
         // Obtain or create and register package
-        BasicfamilyPackageImpl theBasicfamilyPackage = (BasicfamilyPackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof BasicfamilyPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI)
-                : new BasicfamilyPackageImpl());
+        Object registeredBasicfamilyPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+        BasicfamilyPackageImpl theBasicfamilyPackage = registeredBasicfamilyPackage instanceof BasicfamilyPackageImpl ? (BasicfamilyPackageImpl) registeredBasicfamilyPackage
+                : new BasicfamilyPackageImpl();
 
         isInited = true;
 
@@ -126,7 +122,7 @@ public class BasicfamilyPackageImpl extends EPackageImpl implements BasicfamilyP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -136,7 +132,7 @@ public class BasicfamilyPackageImpl extends EPackageImpl implements BasicfamilyP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -146,7 +142,7 @@ public class BasicfamilyPackageImpl extends EPackageImpl implements BasicfamilyP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -156,7 +152,7 @@ public class BasicfamilyPackageImpl extends EPackageImpl implements BasicfamilyP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -166,7 +162,7 @@ public class BasicfamilyPackageImpl extends EPackageImpl implements BasicfamilyP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -176,7 +172,7 @@ public class BasicfamilyPackageImpl extends EPackageImpl implements BasicfamilyP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -186,7 +182,7 @@ public class BasicfamilyPackageImpl extends EPackageImpl implements BasicfamilyP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -196,7 +192,7 @@ public class BasicfamilyPackageImpl extends EPackageImpl implements BasicfamilyP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -206,7 +202,7 @@ public class BasicfamilyPackageImpl extends EPackageImpl implements BasicfamilyP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -216,7 +212,7 @@ public class BasicfamilyPackageImpl extends EPackageImpl implements BasicfamilyP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -226,7 +222,7 @@ public class BasicfamilyPackageImpl extends EPackageImpl implements BasicfamilyP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -236,7 +232,7 @@ public class BasicfamilyPackageImpl extends EPackageImpl implements BasicfamilyP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -246,16 +242,15 @@ public class BasicfamilyPackageImpl extends EPackageImpl implements BasicfamilyP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isCreated = false;
 
     /**
-     * Creates the meta-model objects for the package. This method is guarded to
-     * have no affect on any invocation but its first. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * 
+     * Creates the meta-model objects for the package. This method is guarded to have no affect on any invocation but
+     * its first. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     public void createPackageContents() {
@@ -282,15 +277,14 @@ public class BasicfamilyPackageImpl extends EPackageImpl implements BasicfamilyP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isInitialized = false;
 
     /**
-     * Complete the initialization of the package and its meta-model. This
-     * method is guarded to have no affect on any invocation but its first. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Complete the initialization of the package and its meta-model. This method is guarded to have no affect on any
+     * invocation but its first. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -314,22 +308,22 @@ public class BasicfamilyPackageImpl extends EPackageImpl implements BasicfamilyP
 
         // Initialize classes and features; add operations and parameters
         initEClass(personEClass, Person.class, "Person", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(getPerson_Name(), ecorePackage.getEString(),
-                "name", null, 0, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-        initEReference(getPerson_Children(), this.getPerson(), this.getPerson_Parents(),
-                "children", null, 0, -1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-        initEReference(getPerson_Parents(), this.getPerson(), this.getPerson_Children(),
-                "parents", null, 0, 2, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-        initEReference(getPerson_Mother(), this.getWoman(), null,
-                "mother", null, 0, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-        initEReference(getPerson_Father(), this.getMan(), null,
-                "father", null, 0, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(getPerson_Name(), ecorePackage.getEString(), "name", null, 0, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, //$NON-NLS-1$
+                IS_ORDERED);
+        initEReference(getPerson_Children(), this.getPerson(), this.getPerson_Parents(), "children", null, 0, -1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, //$NON-NLS-1$
+                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getPerson_Parents(), this.getPerson(), this.getPerson_Children(), "parents", null, 0, 2, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, //$NON-NLS-1$
+                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getPerson_Mother(), this.getWoman(), null, "mother", null, 0, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, //$NON-NLS-1$
+                IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+        initEReference(getPerson_Father(), this.getMan(), null, "father", null, 0, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, //$NON-NLS-1$
+                IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
         initEClass(familyEClass, Family.class, "Family", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(getFamily_Name(), ecorePackage.getEString(),
-                "name", null, 0, 1, Family.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-        initEReference(getFamily_Members(), this.getPerson(), null,
-                "members", null, 0, -1, Family.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(getFamily_Name(), ecorePackage.getEString(), "name", null, 0, 1, Family.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, //$NON-NLS-1$
+                IS_ORDERED);
+        initEReference(getFamily_Members(), this.getPerson(), null, "members", null, 0, -1, Family.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, //$NON-NLS-1$
+                IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(manEClass, Man.class, "Man", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 

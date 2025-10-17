@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014 Obeo
+ * Copyright (c) 2014-2025 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * SPDX-License-Identifier: EPL-2.0
  *
  * Contributors:
- *  Obeo - initial API and implementation
+ *    Obeo - initial API and implementation
  */
 package org.eclipse.sirius.sample.basicfamily.provider;
 
@@ -32,16 +32,14 @@ import org.eclipse.sirius.sample.basicfamily.BasicfamilyPackage;
 import org.eclipse.sirius.sample.basicfamily.Person;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.sample.basicfamily.Person} object. <!--
+ * This is the item provider adapter for a {@link org.eclipse.sirius.sample.basicfamily.Person} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
  *
  * @generated
  */
 public class PersonItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
-     * This constructs an instance from a factory and a notifier. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -50,8 +48,7 @@ public class PersonItemProvider extends ItemProviderAdapter implements IEditingD
     }
 
     /**
-     * This returns the property descriptors for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -70,9 +67,8 @@ public class PersonItemProvider extends ItemProviderAdapter implements IEditingD
     }
 
     /**
-     * This adds a property descriptor for the Name feature. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
+     * This adds a property descriptor for the Name feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
@@ -82,8 +78,7 @@ public class PersonItemProvider extends ItemProviderAdapter implements IEditingD
     }
 
     /**
-     * This adds a property descriptor for the Children feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the Children feature. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -94,8 +89,7 @@ public class PersonItemProvider extends ItemProviderAdapter implements IEditingD
     }
 
     /**
-     * This adds a property descriptor for the Parents feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the Parents feature. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -106,8 +100,7 @@ public class PersonItemProvider extends ItemProviderAdapter implements IEditingD
     }
 
     /**
-     * This adds a property descriptor for the Mother feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the Mother feature. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -118,8 +111,7 @@ public class PersonItemProvider extends ItemProviderAdapter implements IEditingD
     }
 
     /**
-     * This adds a property descriptor for the Father feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the Father feature. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -130,9 +122,8 @@ public class PersonItemProvider extends ItemProviderAdapter implements IEditingD
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -143,11 +134,10 @@ public class PersonItemProvider extends ItemProviderAdapter implements IEditingD
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
+     * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
+     * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
      * @generated
      */
     @Override
@@ -163,9 +153,8 @@ public class PersonItemProvider extends ItemProviderAdapter implements IEditingD
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -175,8 +164,7 @@ public class PersonItemProvider extends ItemProviderAdapter implements IEditingD
     }
 
     /**
-     * Return the resource locator for this item provider's resources. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */

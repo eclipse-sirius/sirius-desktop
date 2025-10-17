@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014 Obeo
+ * Copyright (c) 2014-2025 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * SPDX-License-Identifier: EPL-2.0
  *
  * Contributors:
- *  Obeo - initial API and implementation
+ *    Obeo - initial API and implementation
  */
 package org.eclipse.sirius.sample.basicfamily.impl;
 
@@ -17,17 +17,14 @@ import org.eclipse.sirius.sample.basicfamily.BasicfamilyPackage;
 import org.eclipse.sirius.sample.basicfamily.Woman;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Woman</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Woman</b></em>'. <!-- end-user-doc -->
  *
  * @generated
  */
 public class WomanImpl extends PersonImpl implements Woman {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected WomanImpl() {
@@ -36,7 +33,7 @@ public class WomanImpl extends PersonImpl implements Woman {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
