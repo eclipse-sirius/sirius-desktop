@@ -21,7 +21,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.function.Predicate;
 
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.ConnectionRouter;
@@ -66,6 +65,7 @@ import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.ui.IEditorPart;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
@@ -300,7 +300,7 @@ public class EdgeLayoutUpdaterModelChangeTrigger implements ModelChangeTrigger {
         } else if (REFRESH_FEATURES_WITH_CONSEQUENCE.contains(notification.getFeature())) {
             otherNotificationsAreIndirectlyConcerned = Iterables.all(notifications, new Predicate<Notification>() {
                 @Override
-                public boolean test(Notification currentNotification) {
+                public boolean apply(Notification currentNotification) {
                     boolean considerAsConsequence = false;
                     if (currentNotification == notification) {
                         considerAsConsequence = true;

@@ -32,6 +32,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescripti
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Sets;
 
 /**
  * This class helps to use the Imported Diagram and Diagram Extension on Sirius .
@@ -63,7 +64,7 @@ public final class DiagramComponentizationHelper {
         final Set<Layer> result = new LinkedHashSet<Layer>();
         processGetContributedLayers(diagramDescription, viewpoints, result, false);
 
-        return new LinkedHashSet<>();
+        return Sets.newLinkedHashSet(Iterables.filter(result, Layer.class));
     }
 
     /**

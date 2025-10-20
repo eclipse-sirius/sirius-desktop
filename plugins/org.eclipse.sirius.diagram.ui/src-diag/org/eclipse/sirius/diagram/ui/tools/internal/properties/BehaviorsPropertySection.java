@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.properties;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -35,6 +34,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * Sections that allows the user to choose activated filters.
@@ -99,11 +99,11 @@ public class BehaviorsPropertySection extends FiltersPropertySection {
 
     @Override
     protected void newElementsSelected(final Collection<?> newElements) {
-        domain.getCommandStack().execute(new ActivateBehaviorToolsCommand(domain, getDiagram(), new ArrayList<>()));
+        domain.getCommandStack().execute(new ActivateBehaviorToolsCommand(domain, getDiagram(), Lists.newArrayList(Iterables.filter(newElements, BehaviorTool.class))));
     }
 
     @Override
     protected void oldElementsRemoved(final Collection<?> oldElements) {
-        domain.getCommandStack().execute(new DeactivateBehaviorToolsCommand(domain, getDiagram(), new ArrayList<>()));
+        domain.getCommandStack().execute(new DeactivateBehaviorToolsCommand(domain, getDiagram(), Lists.newArrayList(Iterables.filter(oldElements, BehaviorTool.class))));
     }
 }

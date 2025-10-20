@@ -15,7 +15,6 @@ package org.eclipse.sirius.tests.unit.diagram.action;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
-import java.util.function.Predicate;
 
 import org.eclipse.emf.common.util.AbstractTreeIterator;
 import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
@@ -25,6 +24,7 @@ import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocument
 import org.eclipse.sirius.common.tools.api.util.CommandStackUtil;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterators;
 
 /**

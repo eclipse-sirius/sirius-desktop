@@ -15,7 +15,6 @@ package org.eclipse.sirius.diagram.sequence.business.internal.elements;
 import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.List;
-import java.util.function.Predicate;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
@@ -40,6 +39,7 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
 import com.google.common.base.Preconditions;
+import com.google.common.base.Predicate;
 
 /**
  * Represents an operand inside a combined fragment.
@@ -68,7 +68,7 @@ public class Operand extends AbstractSequenceNode implements ISequenceEvent {
         INSTANCE;
 
         @Override
-        public boolean test(DDiagramElement input) {
+        public boolean apply(DDiagramElement input) {
             return AbstractSequenceElement.isSequenceDiagramElement(input, DescriptionPackage.eINSTANCE.getOperandMapping());
         }
     }
@@ -81,7 +81,7 @@ public class Operand extends AbstractSequenceNode implements ISequenceEvent {
      */
     Operand(Node node) {
         super(node);
-        Preconditions.checkArgument(Operand.notationPredicate().test(node), Messages.Operand_nonOperandNode);
+        Preconditions.checkArgument(Operand.notationPredicate().apply(node), Messages.Operand_nonOperandNode);
     }
 
     /**

@@ -13,7 +13,6 @@
 package org.eclipse.sirius.tests.unit.diagram.migration;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -40,6 +39,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
 import org.osgi.framework.Version;
 
 import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
 
 public class OptionalLayerToAdditionalLayerMigrationTest extends SiriusTestCase {
 
@@ -120,7 +120,7 @@ public class OptionalLayerToAdditionalLayerMigrationTest extends SiriusTestCase 
 
     private void checkMigrationEffect(Group modeler) {
 
-        List<AdditionalLayer> additonalLayers = new ArrayList<>();
+        List<AdditionalLayer> additonalLayers = Lists.newArrayList(Iterators.filter(modeler.eAllContents(), AdditionalLayer.class));
         assertEquals("The VSM model should contains 2 additional layers.", 2, additonalLayers.size());
 
         // Get the tool of the optional layer

@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.format.data;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 
@@ -37,6 +36,7 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
 import com.google.common.collect.UnmodifiableIterator;
 
 /**
@@ -86,7 +86,7 @@ public class SiriusFormatDataManagerForDDiagramElementWithSameSemanticElementsTe
         EObject commonSemTgt = diagram.getOwnedDiagramElements().iterator().next().getTarget();
         UnmodifiableIterator<DDiagramElement> eAllDDiagramElements = Iterators.filter(diagram.eAllContents(), DDiagramElement.class);
         assertEquals(WRONG_TESTS_DATA, 4, Iterators.size(eAllDDiagramElements));
-        for (DDiagramElement dde : new ArrayList<>()) {
+        for (DDiagramElement dde : Lists.newArrayList(eAllDDiagramElements)) {
             String message = "Wrong data for the current test : there should be on ecommon semantic target for all elements on the diagram.";
             assertEquals(message, commonSemTgt, dde.getTarget());
         }

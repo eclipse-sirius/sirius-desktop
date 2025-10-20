@@ -23,7 +23,6 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
-import java.util.function.Predicate;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.draw2d.IFigure;
@@ -65,6 +64,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.layout.ArrangeAllWithAutoSiz
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.AutoSizeAndRegionAwareGraphLayout;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.DiagramLayoutCustomization;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
@@ -89,7 +89,7 @@ public abstract class AbstractCompositeLayoutProvider extends CompositeLayoutPro
     private Predicate<Object> validateAllElementInArrayListAreIDiagramElementEditPart = new Predicate<Object>() {
 
         @Override
-        public boolean test(Object input) {
+        public boolean apply(Object input) {
             return input instanceof IDiagramElementEditPart;
         }
     };

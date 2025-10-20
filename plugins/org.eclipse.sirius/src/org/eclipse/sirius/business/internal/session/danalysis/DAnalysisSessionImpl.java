@@ -25,7 +25,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
-import java.util.function.Predicate;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.ListenerList;
@@ -114,10 +113,12 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.impl.DAnalysisSessionEObjectImpl;
 
 import com.google.common.base.Preconditions;
+import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 /**
  * A session which store data in {@link DAnalysis} references.
@@ -472,7 +473,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     private void addAllReferencedAnalyses(final Collection<DAnalysis> analysisAndReferenced, final DAnalysis analysis) {
-        for (DAnalysis referenced : new LinkedHashSet<>()) {
+        for (DAnalysis referenced : Sets.newLinkedHashSet(analysis.getReferencedAnalysis())) {
             if (!analysisAndReferenced.contains(referenced) && referenced.eResource() != null) {
                 analysisAndReferenced.add(referenced);
                 addAllReferencedAnalyses(analysisAndReferenced, referenced);
@@ -816,7 +817,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     protected final void setSynchronizeStatusofEveryResource(Iterable<Resource> resourcesToConsider) {
         ResourceSetSync rsSetSync = ResourceSetSync.getOrInstallResourceSetSync(transactionalEditingDomain);
         Collection<ResourceSyncClient.ResourceStatusChange> changes = new ArrayList<>();
-        for (Resource resource : new HashSet<>(Arrays.asList(resourcesToConsider))) {
+        for (Resource resource : Sets.newHashSet(resourcesToConsider)) {
             ResourceStatus oldStatus = ResourceSetSync.getStatus(resource);
             ResourceStatus newStatus = resource.isModified() ? ResourceStatus.CHANGED : ResourceStatus.SYNC;
             changes.add(new ResourceSyncClient.ResourceStatusChange(resource, newStatus, oldStatus));
@@ -1289,7 +1290,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         }
 
         // Prevent loading a session which Aird resource contains errors
-        Iterable<Resource> representationResources = Iterables.concat(getReferencedSessionResources(), new HashSet<>(Arrays.asList(getSessionResource())));
+        Iterable<Resource> representationResources = Iterables.concat(getReferencedSessionResources(), Sets.newHashSet(getSessionResource()));
         for (Resource resource : representationResources) {
             for (Diagnostic diagnostic : resource.getErrors()) {
                 if (diagnostic instanceof ResourceVersionMismatchDiagnostic) {

@@ -15,7 +15,6 @@ package org.eclipse.sirius.common.ui.tools.internal.interpreter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -70,7 +69,8 @@ public class FeatureProposalProvider implements IProposalProvider {
             IInterpreterContext interpreterContext = context.getInterpreterContext();
             for (TypeName type : interpreterContext.getTargetType().getPossibleTypes()) {
                 for (EClass possibleEClass : Iterables.filter(type.search(interpreterContext.getAvailableEPackages()), EClass.class)) {
-                    Set<ContentProposal> proposalsForThisType = new LinkedHashSet<>();
+                    Set<ContentProposal> proposalsForThisType = Sets
+                            .newLinkedHashSet(getProposals(context.getContents(), context.getPosition(), possibleEClass, getExpectedFeatureType(interpreterContext)));
                     if (intersectingProposals == null) {
                         intersectingProposals = proposalsForThisType;
                     } else {

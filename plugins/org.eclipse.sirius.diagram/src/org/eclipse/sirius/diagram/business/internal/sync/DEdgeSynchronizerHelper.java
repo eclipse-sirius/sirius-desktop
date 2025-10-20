@@ -17,11 +17,9 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.function.Predicate;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -47,8 +45,10 @@ import org.eclipse.sirius.ext.base.collect.MultipleCollection;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Sets;
 
 /**
  * An helper class to handle edges specific operations.
@@ -119,7 +119,7 @@ public class DEdgeSynchronizerHelper extends AbstractSynchronizerHelper {
 
         final Collection<DEdgeCandidate> result = new ArrayList<DEdgeCandidate>();
 
-        final Set<EObject> targetCandidates = new LinkedHashSet<>();
+        final Set<EObject> targetCandidates = Sets.newLinkedHashSet(getSemanticCandidates(diagram, mapping));
         if (tool || new DiagramElementMappingQuery(mapping).isSynchronizedAndCreateElement(diagram)) {
             /*
              * Now we've got the semantic element from which we should try to create Edges we can start evaluating
@@ -133,7 +133,7 @@ public class DEdgeSynchronizerHelper extends AbstractSynchronizerHelper {
             Set<DDiagramElement> previousDiagramElements = sync.getPreviousDiagramElements(diagram, mapping);
             sync.resetforceRetrieve();
             Predicate<DDiagramElement> stillCandidate = new Predicate<DDiagramElement>() {
-                public boolean test(DDiagramElement input) {
+                public boolean apply(DDiagramElement input) {
                     return input != null && input.getTarget() != null && targetCandidates.contains(input.getTarget());
                 }
             };
@@ -149,7 +149,7 @@ public class DEdgeSynchronizerHelper extends AbstractSynchronizerHelper {
         final EdgeMappingQuery edgeMappingQuery = new EdgeMappingQuery(mapping);
 
         Predicate<DEdge> stillCandidate = new Predicate<DEdge>() {
-            public boolean test(DEdge input) {
+            public boolean apply(DEdge input) {
                 // Validate source node (and its semantic target) exists in the
                 // sourceViewsSemantics
                 boolean stillCandidate = validateNode(input.getSourceNode(), sourceViewsSemantics);

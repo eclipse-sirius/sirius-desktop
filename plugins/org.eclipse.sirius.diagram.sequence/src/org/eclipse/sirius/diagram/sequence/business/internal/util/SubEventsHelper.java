@@ -20,7 +20,6 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
-import java.util.function.Predicate;
 
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
@@ -42,6 +41,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.query.ISequenceEven
 import org.eclipse.sirius.ext.base.Option;
 
 import com.google.common.base.Preconditions;
+import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.LinkedHashMultimap;
@@ -242,7 +242,7 @@ public final class SubEventsHelper {
 
             Predicate<ISequenceEvent> isParentOfCurrent = new Predicate<ISequenceEvent>() {
                 @Override
-                public boolean test(ISequenceEvent input) {
+                public boolean apply(ISequenceEvent input) {
                     Range inputRange = input.getVerticalRange();
                     boolean isParent = inputRange.includes(verticalRange);
                     return isParent && input != potentialChild;
@@ -376,7 +376,7 @@ public final class SubEventsHelper {
         Predicate<ISequenceEvent> inRangePredicate = new Predicate<ISequenceEvent>() {
 
             @Override
-            public boolean test(ISequenceEvent input) {
+            public boolean apply(ISequenceEvent input) {
                 Range inputRange = input.getVerticalRange();
                 return range.includesAtLeastOneBound(inputRange) || new ISequenceEventQuery(input).isReflectiveMessage() && inputRange.includesAtLeastOneBound(range);
             }
@@ -385,7 +385,7 @@ public final class SubEventsHelper {
         Predicate<ISequenceEvent> inCoverage = new Predicate<ISequenceEvent>() {
 
             @Override
-            public boolean test(ISequenceEvent input) {
+            public boolean apply(ISequenceEvent input) {
                 Collection<Lifeline> inputCoverage = new ArrayList<Lifeline>(getCoverage(input));
                 return Iterables.removeAll(inputCoverage, lifelines);
             }

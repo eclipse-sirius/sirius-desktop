@@ -14,11 +14,11 @@ package org.eclipse.sirius.ext.emf;
 
 import java.util.Collections;
 import java.util.Iterator;
-import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterators;
 
 /**
@@ -126,7 +126,7 @@ public final class AllContents implements Iterable<EObject> {
             contentsIterator = root.eAllContents();
         } else {
             contentsIterator = Iterators.filter(root.eAllContents(), new Predicate<EObject>() {
-                public boolean test(EObject input) {
+                public boolean apply(EObject input) {
                     return klass.isInstance(input);
                 }
             });

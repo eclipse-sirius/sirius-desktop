@@ -18,8 +18,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Function;
-import java.util.function.Predicate;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
@@ -36,6 +34,8 @@ import org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage;
 import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
 import org.eclipse.sirius.ext.base.Option;
 
+import com.google.common.base.Function;
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
@@ -70,7 +70,7 @@ public final class EventEndHelper {
      */
     public static final Predicate<SingleEventEnd> IS_START = new Predicate<SingleEventEnd>() {
         @Override
-        public boolean test(SingleEventEnd from) {
+        public boolean apply(SingleEventEnd from) {
             return from.isStart();
         }
     };
@@ -80,7 +80,7 @@ public final class EventEndHelper {
      */
     public static final Predicate<EventEnd> PUNCTUAL_COMPOUND_EVENT_END = new Predicate<EventEnd>() {
         @Override
-        public boolean test(EventEnd input) {
+        public boolean apply(EventEnd input) {
             return input instanceof CompoundEventEnd && EventEndHelper.getSemanticEvents(input).size() == 1;
         }
     };
@@ -204,7 +204,7 @@ public final class EventEndHelper {
         final List<EventEnd> parentEnds = EventEndHelper.findEndsFromSemanticOrdering(self);
         Predicate<ISequenceEvent> isValidSubEvent = new Predicate<ISequenceEvent>() {
             @Override
-            public boolean test(ISequenceEvent input) {
+            public boolean apply(ISequenceEvent input) {
                 List<EventEnd> inputEnds = EventEndHelper.findEndsFromSemanticOrdering(input);
                 boolean res = inputEnds.stream().anyMatch(element -> parentEnds.contains(element));
                 return !res;

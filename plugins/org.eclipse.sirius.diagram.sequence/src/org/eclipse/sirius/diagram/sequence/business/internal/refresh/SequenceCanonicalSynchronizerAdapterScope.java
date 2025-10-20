@@ -12,14 +12,14 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.refresh;
 
-import java.util.function.Predicate;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
+
+import com.google.common.base.Predicate;
 
 /**
  * Predicate to notify SequenceCanonicalSynchronizerAdapter only for adding of GMF View.
@@ -44,7 +44,7 @@ public class SequenceCanonicalSynchronizerAdapterScope implements Predicate<Noti
      * {@inheritDoc}
      */
     @Override
-    public boolean test(Notification notification) {
+    public boolean apply(Notification notification) {
         return (isNotificationForNodeAdding(notification) || isNotificationForEdgeAdding(notification)) && isDiagramOfInterestConcerned(notification);
     }
 

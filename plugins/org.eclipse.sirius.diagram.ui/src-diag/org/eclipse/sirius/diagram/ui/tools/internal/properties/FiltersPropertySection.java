@@ -69,6 +69,7 @@ import org.eclipse.ui.views.properties.tabbed.AbstractPropertySection;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * This Property section shows currently activated filters and helps in adding/removing new ones.
@@ -141,7 +142,7 @@ public class FiltersPropertySection extends AbstractPropertySection {
      *            .
      */
     protected void newElementsSelected(final Collection<?> newElements) {
-        domain.getCommandStack().execute(new ActivateFiltersCommand(domain, getDiagram(), new ArrayList<>()));
+        domain.getCommandStack().execute(new ActivateFiltersCommand(domain, getDiagram(), Lists.newArrayList(Iterables.filter(newElements, FilterDescription.class))));
     }
 
     // TODOCBR comment this !
@@ -152,7 +153,7 @@ public class FiltersPropertySection extends AbstractPropertySection {
      *            .
      */
     protected void oldElementsRemoved(final Collection<?> oldElements) {
-        domain.getCommandStack().execute(new DeactivateFiltersCommand(domain, getDiagram(), new ArrayList<>()));
+        domain.getCommandStack().execute(new DeactivateFiltersCommand(domain, getDiagram(), Lists.newArrayList(Iterables.filter(oldElements, FilterDescription.class))));
     }
 
     /**

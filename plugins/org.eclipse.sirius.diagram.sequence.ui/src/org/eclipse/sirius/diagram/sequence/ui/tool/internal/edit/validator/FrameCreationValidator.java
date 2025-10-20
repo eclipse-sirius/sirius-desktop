@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
@@ -20,7 +19,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
-import java.util.function.Function;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
@@ -49,9 +47,11 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.CreateRequestQu
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
+import com.google.common.base.Function;
 import com.google.common.base.Predicates;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 
 /**
@@ -171,7 +171,7 @@ public class FrameCreationValidator extends AbstractSequenceInteractionValidator
                 }
             }
         } else if (ccdTool instanceof CombinedFragmentCreationTool) {
-            Collection<ISequenceEvent> partialOverlaps = new ArrayList<>();
+            Collection<ISequenceEvent> partialOverlaps = Lists.newArrayList(Iterables.concat(localParents, eventsToShift));
             for (ISequenceEvent parent : localParents) {
                 checkOtherLifelines(parent, partialOverlaps);
                 int expansionCut = Math.max(creationRange.getLowerBound(), parent.getVerticalRange().getUpperBound() - 1);
@@ -440,7 +440,7 @@ public class FrameCreationValidator extends AbstractSequenceInteractionValidator
     }
 
     public List<EObject> getCoverage() {
-        return new ArrayList<>();
+        return Lists.newArrayList(Iterables.transform(coverage, ISequenceElement.SEMANTIC_TARGET));
     }
 
     public Rectangle getCreationBounds() {

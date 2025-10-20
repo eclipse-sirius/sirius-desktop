@@ -19,7 +19,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.function.Predicate;
 
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.emf.ecore.EObject;
@@ -46,8 +45,10 @@ import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.Customizable;
 import org.eclipse.sirius.viewpoint.Style;
 
+import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * This will be used to save the current state of a given DDiagramElement. An element is identified via the URIs of both
@@ -193,7 +194,7 @@ public abstract class AbstractDiagramElementState<D extends DDiagramElement> imp
         Predicate<Object> predicate = new Predicate<Object>() {
 
             @Override
-            public boolean test(Object input) {
+            public boolean apply(Object input) {
                 if (input instanceof CollapseFilter) {
                     if (((CollapseFilter) input).eIsSet(DiagramPackage.eINSTANCE.getCollapseFilter_Height()) && ((CollapseFilter) input).eIsSet(DiagramPackage.eINSTANCE.getCollapseFilter_Width())) {
                         return true;
@@ -227,7 +228,7 @@ public abstract class AbstractDiagramElementState<D extends DDiagramElement> imp
             if (structuralFeature != null) {
                 Object value = customizable.eGet(structuralFeature);
                 if (value instanceof Collection<?>) {
-                    value = new ArrayList<>((Collection<?>) value);
+                    value = Lists.newArrayList((Collection<?>) value);
                 }
                 customFeatures.put(featureName, value);
 

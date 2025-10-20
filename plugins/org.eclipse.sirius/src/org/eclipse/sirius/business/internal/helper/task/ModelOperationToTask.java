@@ -15,7 +15,6 @@ package org.eclipse.sirius.business.internal.helper.task;
 import java.text.MessageFormat;
 import java.util.Iterator;
 import java.util.Optional;
-import java.util.function.Function;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -64,6 +63,7 @@ import org.eclipse.sirius.viewpoint.description.tool.Switch;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.tool.Unset;
 
+import com.google.common.base.Function;
 import com.google.common.collect.Collections2;
 
 /**

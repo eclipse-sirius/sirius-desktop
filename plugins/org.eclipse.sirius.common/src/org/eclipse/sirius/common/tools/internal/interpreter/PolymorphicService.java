@@ -20,12 +20,12 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
-import java.util.function.Predicate;
 
 import org.eclipse.sirius.common.tools.Messages;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 
 import com.google.common.base.Preconditions;
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
@@ -73,7 +73,7 @@ class PolymorphicService implements IPolymorphicService {
     private Predicate<IMonomorphicService> getCompatibilityChecker(final Object[] target) {
         Predicate<IMonomorphicService> isCompatible = new Predicate<IMonomorphicService>() {
             @Override
-            public boolean test(IMonomorphicService svc) {
+            public boolean apply(IMonomorphicService svc) {
                 return svc.appliesTo(target);
             }
         };

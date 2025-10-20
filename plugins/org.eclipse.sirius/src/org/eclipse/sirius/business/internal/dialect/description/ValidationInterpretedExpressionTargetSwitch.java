@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.dialect.description;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 
@@ -138,7 +137,7 @@ public class ValidationInterpretedExpressionTargetSwitch extends ValidationSwitc
         switch (featureID) {
         case ValidationPackage.SEMANTIC_VALIDATION_RULE__MESSAGE:
         case DO_NOT_CONSIDER_FEATURE:
-            Collection<String> targets = new ArrayList<>();
+            Collection<String> targets = Lists.newArrayList(object.getTargetClass());
             result = Options.newSome(targets);
             break;
         default:

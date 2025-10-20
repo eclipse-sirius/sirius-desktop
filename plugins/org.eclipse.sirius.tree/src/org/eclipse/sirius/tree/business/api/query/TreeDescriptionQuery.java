@@ -12,13 +12,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.business.api.query;
 
-import java.util.ArrayList;
 import java.util.Collections;
 
 import org.eclipse.sirius.tree.description.TreeDescription;
 import org.eclipse.sirius.tree.description.TreeItemMapping;
 
 import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
 
 /**
  * Query for {@link TreeDescription}.
@@ -46,7 +46,7 @@ public class TreeDescriptionQuery {
      */
     public Iterable<? extends TreeItemMapping> getAllDescendantMappings() {
         if (description != null) {
-            return new ArrayList<>();
+            return Lists.newArrayList(Iterators.filter(description.eAllContents(), TreeItemMapping.class));
         } else {
             return Collections.emptyList();
         }

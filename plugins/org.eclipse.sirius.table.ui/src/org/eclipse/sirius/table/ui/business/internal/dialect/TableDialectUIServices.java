@@ -86,6 +86,7 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * The table dialect ui services.
@@ -296,7 +297,7 @@ public class TableDialectUIServices implements DialectUIServices {
             Viewer viewer = ((IViewerProvider) dialectEditor).getViewer();
             Iterable<DTableElement> tableElements = Iterables.filter(selection, DTableElement.class);
             if (viewer != null) {
-                viewer.setSelection(new StructuredSelection(new ArrayList<>()));
+                viewer.setSelection(new StructuredSelection(Lists.newArrayList(tableElements)));
             }
         }
     }

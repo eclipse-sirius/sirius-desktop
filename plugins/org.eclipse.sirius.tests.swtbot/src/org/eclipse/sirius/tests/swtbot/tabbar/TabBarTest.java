@@ -21,8 +21,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
 
 import org.eclipse.gmf.runtime.common.ui.action.IDisposableAction;
 import org.eclipse.jface.action.ActionContributionItem;
@@ -69,6 +67,8 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.menus.CommandContributionItem;
 
+import com.google.common.base.Function;
+import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 
 /**
@@ -389,11 +389,11 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
                 final Collection<Class<?>> acceptedNonDisposedTypes = Arrays.asList(IAction.class, ImageDescriptor.class, Predicate.class, Function.class);
                 Predicate<Field> acceptedNonDisposedField = new Predicate<Field>() {
                     @Override
-                    public boolean test(Field input) {
+                    public boolean apply(Field input) {
                         return acceptedNonDisposedTypes.contains(input.getType());
                     }
                 };
-                assertFieldsAreDisposed(action, (input) -> acceptedNonDisposedField.test(input) || staticFieldFilter.test(input));
+                assertFieldsAreDisposed(action, (input) -> acceptedNonDisposedField.apply(input) || staticFieldFilter.apply(input));
             }
             // Collection<Class<?>> acceptedNonDisposedTypes =
             // Arrays.asList(IAction.class, ImageDescriptor.class,
@@ -411,7 +411,7 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
             Predicate<Field> privateEnclosingClassAccessor = new Predicate<Field>() {
 
                 @Override
-                public boolean test(Field input) {
+                public boolean apply(Field input) {
                     return input.getType() == item.getClass().getEnclosingClass() && "this$0".equals(input.getName());
                 }
             };
@@ -420,7 +420,7 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
 
             Predicate<Field> acceptedNonDisposedField = new Predicate<Field>() {
                 @Override
-                public boolean test(Field input) {
+                public boolean apply(Field input) {
                     return acceptedNonDisposedTypes.contains(input.getType());
                 }
             };
@@ -435,7 +435,7 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
         // Reflectively check the disposal
         for (Field field : obj.getClass().getDeclaredFields()) {
             if (!(field.getType().isPrimitive() || String.class == field.getType() || field.isSynthetic())) {
-                if (skippedFieldPredicate != null && skippedFieldPredicate.test(field)) {
+                if (skippedFieldPredicate != null && skippedFieldPredicate.apply(field)) {
                     // Accepted non null field.
                     continue;
                 }

@@ -16,7 +16,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
 import java.util.Collection;
-import java.util.function.Predicate;
 
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.common.util.EList;
@@ -40,6 +39,7 @@ import org.eclipse.swtbot.swt.finder.results.VoidResult;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 
 /**
@@ -69,7 +69,7 @@ public class ToolWizardTest extends AbstractSiriusSwtBotGefTestCase {
          * {@inheritDoc}
          */
         @Override
-        public boolean test(final EAttribute arg0) {
+        public boolean apply(final EAttribute arg0) {
             return arg0.getName().equals(name);
         }
     }

@@ -44,6 +44,7 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Multimap;
+import com.google.common.collect.Sets;
 
 /**
  * This metamodel Extender accesses the intrinsic data of an EObject.
@@ -438,7 +439,7 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
 
     @Override
     public void updateMetamodels(final Collection<? extends MetamodelDescriptor> metamodelDescriptors) {
-        final Collection<? extends MetamodelDescriptor> metamodelDescriptorsCopy = new LinkedHashSet<>(metamodelDescriptors);
+        final Collection<? extends MetamodelDescriptor> metamodelDescriptorsCopy = Sets.newLinkedHashSet(metamodelDescriptors);
         if (lastDescriptors != null) {
             metamodelDescriptorsCopy.removeAll(lastDescriptors);
         }

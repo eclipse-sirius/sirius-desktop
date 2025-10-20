@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,6 +53,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Sets;
 
 /**
  * Test class which checks drag&drop from Model Content to the diagram.
@@ -752,7 +752,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
         SWTBotGefEditPart targetSwtBotPart = editor.getEditPart(CONTAINER_TO_DRAG_P1, AbstractDiagramContainerEditPart.class);
         Iterable<AbstractDiagramNodeEditPart> filter = Iterables.filter(((CompartmentEditPart) targetSwtBotPart.part().getChildren().get(1)).getChildren(), AbstractDiagramNodeEditPart.class);
 
-        assertEquals("Bad number of elements", 0, new LinkedHashSet<>().size());
+        assertEquals("Bad number of elements", 0, Sets.newLinkedHashSet(filter).size());
         assertFalse("An error message was generated !", platformProblemsListener.doesAWarningOccurs() || platformProblemsListener.doesAnErrorOccurs());
     }
 
@@ -936,7 +936,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
         SWTBotGefEditPart targetSwtBotPart = editor.getEditPart(CONTAINER_TO_DRAG_P1, AbstractDiagramContainerEditPart.class);
         Iterable<AbstractDiagramNodeEditPart> filter = Iterables.filter(((CompartmentEditPart) targetSwtBotPart.part().getChildren().get(1)).getChildren(), AbstractDiagramNodeEditPart.class);
 
-        assertEquals("Bad number of elements", 0, new LinkedHashSet<>().size());
+        assertEquals("Bad number of elements", 0, Sets.newLinkedHashSet(filter).size());
         assertFalse("An error message was generated !", platformProblemsListener.doesAWarningOccurs() || platformProblemsListener.doesAnErrorOccurs());
     }
 

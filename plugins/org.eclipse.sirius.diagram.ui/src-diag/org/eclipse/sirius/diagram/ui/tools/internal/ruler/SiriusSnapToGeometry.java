@@ -97,7 +97,7 @@ public class SiriusSnapToGeometry extends SnapToGeometryEx {
             // Same code as super.generateSnapPartsList(exclusions); but with
             // border nodes add to children list
             // Don't snap to any figure that is being dragged
-            List children = new ArrayList<>(container.getChildren());
+            List children = Lists.newArrayList(container.getChildren());
             // Add border nodes
             Iterables.addAll(children, Iterables.filter(container.getParent().getChildren(), AbstractDiagramBorderNodeEditPart.class));
             children.removeAll(exclusions);

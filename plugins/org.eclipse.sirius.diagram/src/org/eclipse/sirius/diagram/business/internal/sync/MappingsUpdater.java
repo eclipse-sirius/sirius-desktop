@@ -12,14 +12,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.internal.sync;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import java.util.function.Function;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.common.tools.api.util.RefreshIdsHolder;
@@ -36,6 +34,7 @@ import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.model.business.internal.query.DSemanticDecoratorQuery;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
+import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 
@@ -144,12 +143,12 @@ public class MappingsUpdater {
 
                 final Set<EObject> semanticElementsDone = new HashSet<EObject>();
                 if (!validCandidates.isEmpty()) {
-                    final Set<EObject> validSemantics = new HashSet<>(Arrays.asList(Iterables.transform(validCandidates, new Function<DNodeCandidate, EObject>() {
+                    final Set<EObject> validSemantics = Sets.newHashSet(Iterables.transform(validCandidates, new Function<DNodeCandidate, EObject>() {
                         @Override
                         public EObject apply(final DNodeCandidate from) {
                             return from.getSemantic();
                         }
-                    })));
+                    }));
                     for (final DDiagramElement element : DragAndDropTargetQuery.on(container).getLogicalChildren()) {
                         final DiagramElementMapping elementMapping = element.getDiagramElementMapping();
                         final EObject semanticElement = element.getTarget();
@@ -163,12 +162,12 @@ public class MappingsUpdater {
                     }
                 }
 
-                result = new HashSet<>(Arrays.asList(Iterables.transform(semanticElementsDone, new Function<EObject, DNodeCandidate>() {
+                result = Sets.newHashSet(Iterables.transform(semanticElementsDone, new Function<EObject, DNodeCandidate>() {
                     @Override
                     public DNodeCandidate apply(final EObject from) {
                         return new DNodeCandidate(mapping, from, container, factory);
                     }
-                })));
+                }));
             } else {
                 result = Collections.emptySet();
             }

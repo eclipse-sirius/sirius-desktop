@@ -15,9 +15,8 @@ package org.eclipse.sirius.diagram.sequence.business.internal;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 
+import com.google.common.base.Function;
 import com.google.common.collect.Ordering;
-
-import java.util.function.Function;
 
 /**
  * Helper functions and orderings for the Range type.

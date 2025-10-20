@@ -12,13 +12,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.sequence;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
 
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.geometry.Point;
@@ -57,9 +54,12 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
 
+import com.google.common.base.Function;
+import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
 
 /**
  * This class tests the ObservationPoint concept of Sequence dagrams.
@@ -74,7 +74,7 @@ public class ObservationPointTests extends AbstractDefaultModelSequenceTests {
 
     private final Predicate<DDiagramElement> isVisible = new Predicate<DDiagramElement>() {
         @Override
-        public boolean test(DDiagramElement input) {
+        public boolean apply(DDiagramElement input) {
             return input.isVisible();
         }
     };
@@ -598,7 +598,7 @@ public class ObservationPointTests extends AbstractDefaultModelSequenceTests {
             }
         };
 
-        List<ObservationPointEditPart> createdObsPoint = new ArrayList<>();
+        List<ObservationPointEditPart> createdObsPoint = Lists.newArrayList(Iterables.filter(Iterables.transform(getObservationPoints(), getPart), ObservationPointEditPart.class));
         // Sort the observation point regarding their horizontal position.
 
         Collections.sort(createdObsPoint, new Comparator<ObservationPointEditPart>() {

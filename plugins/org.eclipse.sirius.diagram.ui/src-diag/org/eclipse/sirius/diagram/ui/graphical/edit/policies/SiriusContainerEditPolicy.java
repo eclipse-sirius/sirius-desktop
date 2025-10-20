@@ -17,7 +17,6 @@ package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Predicate;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -53,6 +52,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.requests.DistributeRequest;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.SnapCommand;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.LayoutService;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
@@ -67,7 +67,7 @@ public class SiriusContainerEditPolicy extends ContainerEditPolicy {
 
     private final Predicate<Object> isRegionEditPart = new Predicate<Object>() {
         @Override
-        public boolean test(Object input) {
+        public boolean apply(Object input) {
             return input instanceof AbstractDiagramElementContainerEditPart && ((AbstractDiagramElementContainerEditPart) input).isRegion();
         }
     };

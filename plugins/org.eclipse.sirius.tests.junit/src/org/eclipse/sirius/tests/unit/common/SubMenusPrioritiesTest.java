@@ -25,6 +25,7 @@ import org.eclipse.sirius.business.internal.metamodel.helper.EClassHelper;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin;
 import org.eclipse.sirius.ext.emf.AllContents;
 
+import com.google.common.base.Joiner;
 import com.google.common.collect.Iterables;
 
 import junit.framework.TestCase;
@@ -91,10 +92,10 @@ public class SubMenusPrioritiesTest extends TestCase {
         // Report any errors or warnings
         if (missing.size() > 0 && REPORT_MISSING_KEYS) {
             System.err.println("The following concrete types do not have any priority set; they will get the default value from AbstractMenuBuilder.DEFAULT_PRIORITY:");
-            System.err.println("* " + String.join("\n* ", missing));
+            System.err.println("* " + Joiner.on("\n* ").join(missing));
         }
         if (invalid.size() > 0) {
-            fail("The following keys have malformed values which can not be parsed as integers: " + String.join(", ", invalid));
+            fail("The following keys have malformed values which can not be parsed as integers: " + Joiner.on(", ").join(invalid));
         }
     }
 }

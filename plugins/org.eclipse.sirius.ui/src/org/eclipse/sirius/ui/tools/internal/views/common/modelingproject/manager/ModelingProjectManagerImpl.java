@@ -20,7 +20,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import java.util.function.Predicate;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -61,6 +60,7 @@ import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.resourcelistener
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
+import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
@@ -96,7 +96,7 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
 
     private Predicate<URI> isAlreadyLoadedPredicate = new Predicate<URI>() {
         @Override
-        public boolean test(URI representationsFileURI) {
+        public boolean apply(URI representationsFileURI) {
             return isAlreadyLoaded(representationsFileURI);
         }
     };

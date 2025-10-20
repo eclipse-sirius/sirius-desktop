@@ -12,10 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.action;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.function.Predicate;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EClass;
@@ -45,7 +43,9 @@ import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * Tests on delete from model action on entities diagram of ecore modeler.
@@ -160,12 +160,12 @@ public class DeleteFromModelActionTests extends SiriusDiagramTestCase implements
         Predicate<DEdge> relation = new Predicate<DEdge>() {
 
             @Override
-            public boolean test(DEdge input) {
+            public boolean apply(DEdge input) {
                 IEdgeMapping actualMapping = input.getActualMapping();
                 return !new IEdgeMappingQuery(actualMapping).getEdgeMapping().get().isUseDomainElement();
             }
         };
-        List<DEdge> relationBasedEdge = new ArrayList<>();
+        List<DEdge> relationBasedEdge = Lists.newArrayList(Iterables.filter(diagram.getEdges(), relation));
         assertFalse("Test data should have relation based edges.", relationBasedEdge.isEmpty());
 
         DEdge edgeToTry = relationBasedEdge.get(0);
@@ -175,7 +175,7 @@ public class DeleteFromModelActionTests extends SiriusDiagramTestCase implements
 
         delete(edgeEditPart);
 
-        List<DEdge> relEdgesAfterDeleteTry = new ArrayList<>();
+        List<DEdge> relEdgesAfterDeleteTry = Lists.newArrayList(Iterables.filter(diagram.getEdges(), relation));
         assertEquals("Delete should occurs", relationBasedEdge.size() - 1, relEdgesAfterDeleteTry.size());
         assertFalse("Deletion should occurs", relEdgesAfterDeleteTry.contains(edgeToTry));
     }
@@ -184,12 +184,12 @@ public class DeleteFromModelActionTests extends SiriusDiagramTestCase implements
         Predicate<DEdge> relation = new Predicate<DEdge>() {
 
             @Override
-            public boolean test(DEdge input) {
+            public boolean apply(DEdge input) {
                 IEdgeMapping actualMapping = input.getActualMapping();
                 return new IEdgeMappingQuery(actualMapping).getEdgeMapping().get().isUseDomainElement();
             }
         };
-        List<DEdge> elementBasedEdges = new ArrayList<>();
+        List<DEdge> elementBasedEdges = Lists.newArrayList(Iterables.filter(diagram.getEdges(), relation));
         assertFalse("Test data should have element based edges.", elementBasedEdges.isEmpty());
 
         DEdge edgeToTry = elementBasedEdges.get(0);
@@ -199,7 +199,7 @@ public class DeleteFromModelActionTests extends SiriusDiagramTestCase implements
 
         delete(edgeEditPart);
 
-        List<DEdge> eltEdgesAfterDeleteTry = new ArrayList<>();
+        List<DEdge> eltEdgesAfterDeleteTry = Lists.newArrayList(Iterables.filter(diagram.getEdges(), relation));
         assertFalse("Deletion should occurs", eltEdgesAfterDeleteTry.contains(edgeToTry));
         assertEquals("Delete should occurs", elementBasedEdges.size() - 1, eltEdgesAfterDeleteTry.size());
 

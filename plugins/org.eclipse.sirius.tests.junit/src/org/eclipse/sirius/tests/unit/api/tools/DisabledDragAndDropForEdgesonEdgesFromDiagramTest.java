@@ -12,8 +12,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.api.tools;
 
-import java.util.function.Predicate;
-
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -27,6 +25,8 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
 import org.eclipse.sirius.tests.unit.api.mappings.edgeonedge.AbstractEdgeOnEdgeTest;
+
+import com.google.common.base.Predicate;
 
 /**
  * Disabled tests of {@link DragAndDropForEdgesonEdgesFromDiagramTest}, related
@@ -50,7 +50,7 @@ public class DisabledDragAndDropForEdgesonEdgesFromDiagramTest extends AbstractE
 
     private Predicate<EPackage> dndFromModelContentViewFromNodeToEdgeSemanticPredicate_fromdiagram = new Predicate<EPackage>() {
         @Override
-        public boolean test(EPackage semanticRoot) {
+        public boolean apply(EPackage semanticRoot) {
             boolean dndCorrectlyOccured = false;
             EClass targetContainer = ((EClass) semanticRoot.getEClassifier("C1"));
             dndCorrectlyOccured = targetContainer != null;
@@ -64,7 +64,7 @@ public class DisabledDragAndDropForEdgesonEdgesFromDiagramTest extends AbstractE
 
     private Predicate<EPackage> dndFromModelContentViewFromEdgeToNodeSemanticPredicate_fromdiagram = new Predicate<EPackage>() {
         @Override
-        public boolean test(EPackage semanticRoot) {
+        public boolean apply(EPackage semanticRoot) {
             boolean dndCorrectlyOccured = false;
             EClass targetContainer = ((EClass) semanticRoot.getEClassifier("C1"));
             dndCorrectlyOccured = targetContainer != null;
@@ -261,7 +261,7 @@ public class DisabledDragAndDropForEdgesonEdgesFromDiagramTest extends AbstractE
 
         // Step 1 : create an edge on edge
         // edge should not exist before tool applying
-        assertFalse("Invalid initial state", semanticPredicate.test(semanticRoot));
+        assertFalse("Invalid initial state", semanticPredicate.apply(semanticRoot));
 
         DragAndDropTarget targetContainer = (DragAndDropTarget) getFirstDiagramElement(diagram, targetSemanticContainer);
         assertNotNull("Cannot find Drag and Drop target for semantic element : " + targetSemanticContainer, targetContainer);
@@ -274,7 +274,7 @@ public class DisabledDragAndDropForEdgesonEdgesFromDiagramTest extends AbstractE
         // Step 3.1 : Undo the creation of the edge
         session.getTransactionalEditingDomain().getCommandStack().undo();
         // -> semantic model should have been modified
-        assertFalse("Undo failed", semanticPredicate.test(semanticRoot));
+        assertFalse("Undo failed", semanticPredicate.apply(semanticRoot));
 
         // Step 3.2 : Redo the creation of the edge
         session.getTransactionalEditingDomain().getCommandStack().redo();
@@ -309,7 +309,7 @@ public class DisabledDragAndDropForEdgesonEdgesFromDiagramTest extends AbstractE
     private void checkEdgeAsBeenDroppedGraphicallyAndSemantically(Predicate<EPackage> semanticPredicate, EObject semanticSource, EObject semanticTarget, Predicate<EPackage> predicate,
             boolean sourceShouldBeAnEge, boolean targetShouldBeAnEdge) {
 
-        assertTrue("Semantic model was not correctly updated", semanticPredicate.test(semanticRoot));
+        assertTrue("Semantic model was not correctly updated", semanticPredicate.apply(semanticRoot));
         DEdge edgeElement = null;
         for (final DEdge edge : diagram.getEdges()) {
             EObject edgeSource = ((DDiagramElement) edge.getSourceNode()).getTarget();

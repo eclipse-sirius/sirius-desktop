@@ -14,7 +14,6 @@ package org.eclipse.sirius.editor.properties.sections.tool.pastedescription;
 
 // Start of user code imports
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -37,6 +36,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
 import com.google.common.collect.UnmodifiableIterator;
 
 // End of user code imports
@@ -107,7 +107,7 @@ public class PasteDescriptionContainersPropertySection extends AbstractEditorDia
     @Override
     protected List getChoiceOfValues() {
         UnmodifiableIterator<PasteTargetDescription> filter = Iterators.filter(eObject.eResource().getResourceSet().getAllContents(), PasteTargetDescription.class);
-        return new ArrayList<>();
+        return Lists.newArrayList(filter);
     }
 
     /**

@@ -18,7 +18,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.BasicEList;
@@ -94,6 +93,7 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
 
@@ -596,7 +596,7 @@ public class DDiagramElementSynchronizer {
         if (!StringUtil.isEmpty(style.getTooltipExpression())) {
             final String oldValue = elt.getTooltipText();
             final String newValue = computeTooltip(elt, style);
-            if (!Objects.equals(newValue, oldValue)) {
+            if (!Objects.equal(newValue, oldValue)) {
                 elt.setTooltipText(newValue);
             }
         }

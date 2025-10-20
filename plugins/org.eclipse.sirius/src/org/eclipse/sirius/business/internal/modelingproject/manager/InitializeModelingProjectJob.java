@@ -14,7 +14,6 @@ package org.eclipse.sirius.business.internal.modelingproject.manager;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
 
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
@@ -33,6 +32,7 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.Messages;
 import org.eclipse.sirius.tools.api.SiriusPlugin;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterators;
 
 /**
@@ -84,7 +84,7 @@ public class InitializeModelingProjectJob extends WorkspaceJob {
     public InitializeModelingProjectJob(List<IProject> projects) {
         this(Iterators.all(projects.iterator(), new Predicate<IProject>() {
             @Override
-            public boolean test(IProject input) {
+            public boolean apply(IProject input) {
                 try {
                     return input.members().length == 1;
                 } catch (CoreException e) {

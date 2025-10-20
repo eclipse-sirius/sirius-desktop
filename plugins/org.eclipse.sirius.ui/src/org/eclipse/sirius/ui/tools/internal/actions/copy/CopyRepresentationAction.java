@@ -13,7 +13,6 @@
 package org.eclipse.sirius.ui.tools.internal.actions.copy;
 
 import java.util.Collection;
-import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -33,6 +32,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
@@ -116,7 +116,7 @@ public class CopyRepresentationAction extends Action {
         boolean anyInvalidCopy = Iterables.any(repDescriptors, new Predicate<DRepresentationDescriptor>() {
 
             @Override
-            public boolean test(DRepresentationDescriptor input) {
+            public boolean apply(DRepresentationDescriptor input) {
                 EObject container = input.eContainer();
                 if (container instanceof DView) {
                     IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(container);

@@ -13,7 +13,6 @@
 package org.eclipse.sirius.diagram.business.internal.query;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -33,6 +32,8 @@ import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.PasteTargetDescription;
 import org.eclipse.sirius.viewpoint.description.tool.PasteDescription;
+
+import com.google.common.collect.Sets;
 
 /**
  * A class aggregating all the queries (read-only!) having a paste target as a
@@ -85,11 +86,11 @@ public class PasteTargetQuery {
     private Collection<PasteDescription> getAllPasteTools(final PasteTargetDescription pasteTargetDescription) {
         Collection<PasteDescription> pasteTools = new HashSet<>();
         if (pasteTargetDescription instanceof DiagramElementMapping) {
-            pasteTools = new HashSet<>(new DiagramElementMappingQuery((DiagramElementMapping) pasteTargetDescription).getAllPasteTools());
+            pasteTools = Sets.newHashSet(new DiagramElementMappingQuery((DiagramElementMapping) pasteTargetDescription).getAllPasteTools());
         } else if (pasteTargetDescription instanceof DiagramDescription) {
-            pasteTools = new HashSet<>(new DiagramDescriptionQuery((DiagramDescription) pasteTargetDescription).getAllPasteTools());
+            pasteTools = Sets.newHashSet(new DiagramDescriptionQuery((DiagramDescription) pasteTargetDescription).getAllPasteTools());
         } else {
-            pasteTools = new HashSet<>(Arrays.asList(pasteTargetDescription.getPasteDescriptions()));
+            pasteTools = Sets.newHashSet(pasteTargetDescription.getPasteDescriptions());
         }
         return pasteTools;
     }
