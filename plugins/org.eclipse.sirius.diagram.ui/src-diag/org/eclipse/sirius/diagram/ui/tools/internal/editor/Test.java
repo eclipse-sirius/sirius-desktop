@@ -1,20 +1,20 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.editor;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
+import com.google.common.base.Predicates;
 
 class Test {
     public static void test() {
-        List<Exception> myExceptions = new ArrayList<Exception>();
-        Predicate<Exception> isTrue = new Predicate<Exception>() {
-
+        Predicate<Object> result = Predicates.and(new Predicate<Object>() {
             @Override
-            public boolean apply(Exception input) {
+            public boolean apply(Object input) {
                 return false;
             }
-        };
-        Iterable<Exception> iterable = Iterables.filter(myExceptions, isTrue);
+        }, new Predicate<Object>() {
+            @Override
+            public boolean apply(Object input) {
+                return false;
+            }
+        });
     }
 }
