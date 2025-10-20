@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.views.common.navigator;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -61,9 +62,7 @@ import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonLabelProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Sirius label provider for common navigator.
@@ -361,12 +360,7 @@ public class SiriusCommonLabelProvider extends ColumnLabelProvider implements IC
      */
     private List<Session> getOpenSessions(IFile file) {
 
-        return Lists.newArrayList(Iterables.filter(FileSessionFinder.getSelectedSessions(Collections.singletonList(file)), new Predicate<Session>() {
-            @Override
-            public boolean apply(Session input) {
-                return input.isOpen();
-            }
-        }));
+        return new ArrayList<>();
     }
 
     /**

@@ -13,12 +13,15 @@
 package org.eclipse.sirius.tests.unit.diagram.layout.pinning;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Predicate;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -44,10 +47,8 @@ import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.ui.IEditorPart;
 
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
 
 /**
  * Tests for the "pinned" attribute on diagram elements and its effect on
@@ -89,7 +90,7 @@ public class PinnedElementsTest extends SiriusDiagramTestCase {
         }
         editorPart = DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
         TestsUtil.synchronizationWithUIThread();
-        allPinnableElements = Sets.newHashSet(Iterables.filter(diagram.getDiagramElements(), isPinnable));
+        allPinnableElements = new HashSet<>(Arrays.asList(Iterables.filter(diagram.getDiagramElements(), isPinnable)));
     }
 
     public void testPinElements() throws Exception {

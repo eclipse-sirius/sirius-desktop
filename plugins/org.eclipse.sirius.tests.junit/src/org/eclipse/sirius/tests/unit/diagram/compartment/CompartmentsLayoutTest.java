@@ -98,8 +98,6 @@ import org.eclipse.swt.graphics.FontData;
 import org.junit.Assert;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.primitives.Ints;
 
 /**
  * Tests defined to ensure that compartments are correctly layouted.
@@ -1207,7 +1205,7 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
             checkShapeLineStyle(ddec, primaryShape, expectedBorderSize, expectedBorderStyle, false);
 
             // Check the border
-            int regionIndex = Lists.newArrayList(Iterables.filter(editPart.getParent().getChildren(), AbstractDiagramElementContainerEditPart.class)).indexOf(editPart);
+            int regionIndex = new ArrayList<>().indexOf(editPart);
             if (expectedBorderSize == 0 || 0 == regionIndex) {
                 // No border or First Region
                 assertTrue(ddec.getName() + " is a first region or has a 0pix border size: it should have a MarginBorder.", primaryShapeBorder.getClass() == MarginBorder.class);
@@ -1263,7 +1261,7 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
             assertTrue(ddec.getName() + " should have more specific corners than small corners.", expectedSpecificCorners > expectedCorners);
             assertFalse(ddec.getName() + "should have different size of corners.", additionalCorners.isEmpty() || additionalCorners.cardinality() == 4);
             assertTrue(ddec.getName() + "should have 1, 2 or 3 corners with its specified corner dimension.", additionalCorners.cardinality() < 4);
-            List<Integer> specificCornersList = Ints.asList(specificCorners);
+            List<Integer> specificCornersList = Arrays.asList(specificCorners);
             for (int corner : CORNERS) {
                 assertEquals("Wrong specifc corner distribution for " + ddec.getName() + " (check PositionConstants=" + corner + ").", !specificCornersList.contains(corner),
                         additionalCorners.get(corner));

@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.dialect.command;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -22,8 +23,6 @@ import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.tools.api.Messages;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-
-import com.google.common.collect.Lists;
 
 /**
  * Refresh representations command. Launch the refresh for all kind of representations and launch a compute visibility
@@ -86,7 +85,7 @@ public class RefreshRepresentationsCommand extends RecordingCommand {
      *            the representations to refresh.
      */
     public RefreshRepresentationsCommand(TransactionalEditingDomain domain, IProgressMonitor monitor, DRepresentation... representationsToRefresh) {
-        this(domain, false, monitor, Lists.newArrayList(representationsToRefresh));
+        this(domain, false, monitor, new ArrayList<>());
     }
 
     /**
@@ -104,7 +103,7 @@ public class RefreshRepresentationsCommand extends RecordingCommand {
      *            the representations to refresh.
      */
     public RefreshRepresentationsCommand(TransactionalEditingDomain domain, boolean fullRefresh, IProgressMonitor monitor, DRepresentation... representationsToRefresh) {
-        this(domain, fullRefresh, monitor, Lists.newArrayList(representationsToRefresh));
+        this(domain, fullRefresh, monitor, new ArrayList<>());
     }
 
     @Override

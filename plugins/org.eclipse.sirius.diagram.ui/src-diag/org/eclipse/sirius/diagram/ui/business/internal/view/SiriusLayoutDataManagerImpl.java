@@ -24,6 +24,7 @@ import java.util.ListIterator;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.function.Predicate;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.operations.IOperationHistoryListener;
@@ -74,7 +75,6 @@ import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.BorderItemAw
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 
 /**
@@ -224,7 +224,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
     Predicate<View> predicate = new Predicate<View>() {
 
         @Override
-        public boolean apply(View input) {
+        public boolean test(View input) {
             return hasToArrange(input);
         }
     };

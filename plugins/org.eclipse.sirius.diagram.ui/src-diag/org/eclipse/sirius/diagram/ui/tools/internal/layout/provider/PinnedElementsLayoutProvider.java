@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.function.Predicate;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.draw2d.geometry.Dimension;
@@ -45,7 +46,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.ExtendableLayoutP
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.ArrangeAllWithAutoSize;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.PinnedElementsHandler;
 
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -79,7 +79,7 @@ public class PinnedElementsLayoutProvider extends DefaultLayoutProvider {
     private Predicate<Object> validateAllElementInArrayListAreIDiagramElementEditPart = new Predicate<Object>() {
 
         @Override
-        public boolean apply(Object input) {
+        public boolean test(Object input) {
             return input instanceof IDiagramElementEditPart;
         }
     };
@@ -152,7 +152,7 @@ public class PinnedElementsLayoutProvider extends DefaultLayoutProvider {
          */
         final Map<IGraphicalEditPart, Rectangle> initialBoundsForThisLevel = Maps.filterEntries(initialBounds, new Predicate<Map.Entry<IGraphicalEditPart, Rectangle>>() {
             @Override
-            public boolean apply(final Entry<IGraphicalEditPart, Rectangle> input) {
+            public boolean test(final Entry<IGraphicalEditPart, Rectangle> input) {
                 return editParts.contains(input.getKey());
             }
         });

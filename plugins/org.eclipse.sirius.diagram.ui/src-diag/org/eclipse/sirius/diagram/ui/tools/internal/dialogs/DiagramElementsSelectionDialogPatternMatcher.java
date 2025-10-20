@@ -12,11 +12,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.dialogs;
 
+import java.util.function.Predicate;
+
 import org.eclipse.gmf.runtime.common.core.util.StringMatcher;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.ui.business.api.provider.AbstractDDiagramElementLabelItemProvider;
-
-import com.google.common.base.Predicate;
 
 /**
  * <p>
@@ -77,7 +77,7 @@ public class DiagramElementsSelectionDialogPatternMatcher {
         if (matchPredicate == null) {
             matchPredicate = new Predicate<Object>() {
 
-                public boolean apply(Object input) {
+                public boolean test(Object input) {
                     String elementName = null;
                     if (input instanceof DDiagramElement) {
                         DDiagramElement element = (DDiagramElement) input;

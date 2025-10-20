@@ -14,6 +14,7 @@ package org.eclipse.sirius.diagram.sequence.business.internal.layout;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Predicate;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.EndOfLife;
@@ -28,7 +29,6 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDi
 import org.eclipse.sirius.diagram.sequence.business.internal.query.ISequenceElementQuery;
 import org.eclipse.sirius.ext.base.Option;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
@@ -143,7 +143,7 @@ public abstract class AbstractSequenceLayout<S, T> {
      */
     protected Iterable<Lifeline> getLifeLinesWithoutCreation() {
         Predicate<Lifeline> isMainLifeline = new Predicate<Lifeline>() {
-            public boolean apply(Lifeline input) {
+            public boolean test(Lifeline input) {
                 boolean main = true;
                 InstanceRole instanceRole = input.getInstanceRole();
                 if (instanceRole != null) {
@@ -162,7 +162,7 @@ public abstract class AbstractSequenceLayout<S, T> {
      */
     protected Iterable<Lifeline> getLifeLinesWithoutDestruction() {
         Predicate<Lifeline> isLifelineWithoutDestruction = new Predicate<Lifeline>() {
-            public boolean apply(Lifeline input) {
+            public boolean test(Lifeline input) {
                 boolean result = true;
                 // filter lifeline with endOfLife
                 Option<EndOfLife> endOfLife = input.getEndOfLife();

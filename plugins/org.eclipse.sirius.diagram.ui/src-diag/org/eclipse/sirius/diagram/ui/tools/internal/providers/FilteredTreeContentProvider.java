@@ -14,11 +14,10 @@ package org.eclipse.sirius.diagram.ui.tools.internal.providers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
-
-import com.google.common.base.Predicate;
 
 /**
  * An AdapterFactoryContentProvider which filters some of its children properly,
@@ -62,7 +61,7 @@ public final class FilteredTreeContentProvider extends AdapterFactoryContentProv
     private Object[] filter(Object[] unfiltered) {
         List<Object> filtered = new ArrayList<>();
         for (Object o : unfiltered) {
-            if (predicate.apply(o)) {
+            if (predicate.test(o)) {
                 filtered.add(o);
             }
         }

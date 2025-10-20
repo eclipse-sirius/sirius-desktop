@@ -14,6 +14,7 @@ package org.eclipse.sirius.tests.unit.diagram.migration;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -38,7 +39,6 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
 
 /**
  * Test class to test the feature name change from
@@ -109,7 +109,7 @@ public class DecorationDescriptionImageExpressionMigrationTest extends SiriusTes
     }
 
     private void checkMigrationEffect(Group modeler) {
-        List<DecorationDescription> decorationDescriptions = Lists.newArrayList(Iterators.filter(modeler.eAllContents(), DecorationDescription.class));
+        List<DecorationDescription> decorationDescriptions = new ArrayList<>();
         assertEquals("The VSM model should contains 2 additional layers.", 2, decorationDescriptions.size());
 
         for (DecorationDescription decorationDescription : decorationDescriptions) {

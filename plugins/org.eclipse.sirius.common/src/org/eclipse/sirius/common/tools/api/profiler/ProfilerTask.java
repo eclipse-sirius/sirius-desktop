@@ -12,7 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.api.profiler;
 
-import com.google.common.base.Objects;
+import java.util.Objects;
 
 /**
  * Represents a task.
@@ -144,8 +144,8 @@ public class ProfilerTask {
             result = true;
         } else if (obj instanceof ProfilerTask) {
             ProfilerTask that = (ProfilerTask) obj;
-            result = Objects.equal(this.name, that.name) && Objects.equal(this.category, that.category) && Objects.equal(this.categoryImage, that.categoryImage)
-                    && Objects.equal(this.taskImage, that.taskImage);
+            result = Objects.equals(this.name, that.name) && Objects.equals(this.category, that.category) && Objects.equals(this.categoryImage, that.categoryImage)
+                    && Objects.equals(this.taskImage, that.taskImage);
         }
         return result;
     }

@@ -59,7 +59,6 @@ import org.eclipse.sirius.viewpoint.DView;
 import org.osgi.framework.Version;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * A representation file migration to detect labels that are far from their edge and reset them to their default
@@ -443,7 +442,7 @@ public class SnapBackDistantLabelsMigrationParticipant extends AbstractRepresent
         DDiagramGraphicalQuery query = new DDiagramGraphicalQuery(dDiagram);
         Option<Diagram> gmfDiagram = query.getAssociatedGMFDiagram();
         if (gmfDiagram.some()) {
-            return Lists.newArrayList(Iterables.filter(gmfDiagram.get().getEdges(), Edge.class));
+            return new ArrayList<>();
         }
         return new ArrayList<>();
     }
@@ -459,7 +458,7 @@ public class SnapBackDistantLabelsMigrationParticipant extends AbstractRepresent
         DDiagramGraphicalQuery query = new DDiagramGraphicalQuery(dDiagram);
         Option<Diagram> gmfDiagram = query.getAssociatedGMFDiagram();
         if (gmfDiagram.some()) {
-            return Lists.newArrayList(Iterables.filter(gmfDiagram.get().getChildren(), Node.class));
+            return new ArrayList<>();
         }
         return new ArrayList<>();
     }

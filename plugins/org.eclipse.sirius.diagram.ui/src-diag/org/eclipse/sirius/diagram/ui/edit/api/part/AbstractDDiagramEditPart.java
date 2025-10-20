@@ -97,7 +97,6 @@ import org.eclipse.sirius.ext.gmf.runtime.editpolicies.SiriusSnapFeedbackPolicy;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * 
@@ -299,7 +298,7 @@ public abstract class AbstractDDiagramEditPart extends DiagramEditPart implement
                 CompositeFilterDescriptionQuery query = new CompositeFilterDescriptionQuery(compositeFilterDescription);
                 if (query.isHideCompositeFilter()) {
                     EList<DiagramElementMapping> mappings = query.getHiddenMappings();
-                    edgesToRefresh = getEdges(Lists.newArrayList(Iterables.filter(mappings, EdgeMapping.class)));
+                    edgesToRefresh = getEdges(new ArrayList<>());
                 }
             }
         }

@@ -15,6 +15,7 @@ package org.eclipse.sirius.diagram.ui.business.internal.edit.helpers;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.Edge;
@@ -27,7 +28,6 @@ import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.description.tool.ReconnectionKind;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
@@ -86,7 +86,7 @@ public class EdgeReconnectionHelper {
             Predicate<Edge> notToReconnectingEdge = new Predicate<Edge>() {
 
                 @Override
-                public boolean apply(Edge input) {
+                public boolean test(Edge input) {
                     return !sourceEdges.contains(input.getTarget());
                 }
             };
@@ -112,7 +112,7 @@ public class EdgeReconnectionHelper {
             Predicate<Edge> notFromReconnectingEdge = new Predicate<Edge>() {
 
                 @Override
-                public boolean apply(Edge input) {
+                public boolean test(Edge input) {
                     return !targetEdges.contains(input.getSource());
                 }
             };

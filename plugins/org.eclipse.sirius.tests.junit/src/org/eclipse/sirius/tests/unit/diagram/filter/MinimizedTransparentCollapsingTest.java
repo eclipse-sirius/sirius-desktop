@@ -12,8 +12,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.filter;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.draw2d.geometry.Dimension;
@@ -36,9 +38,7 @@ import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Tests to check the behavior of transparent minimization of border node on
@@ -68,7 +68,7 @@ public class MinimizedTransparentCollapsingTest extends SiriusDiagramTestCase {
 
     private Predicate<DDiagramElement> collapsable = new Predicate<DDiagramElement>() {
         @Override
-        public boolean apply(DDiagramElement input) {
+        public boolean test(DDiagramElement input) {
             return "EAttribute as border node".equals(new DDiagramElementQuery(input).getMappingName().get());
         }
     };
@@ -141,7 +141,7 @@ public class MinimizedTransparentCollapsingTest extends SiriusDiagramTestCase {
     private void checkDiagramConsistency(boolean collapsed) {
         checkDiagramElements(true);
 
-        List<DDiagramElement> borderNodes = Lists.newArrayList(Iterables.filter(diagram.getDiagramElements(), collapsable));
+        List<DDiagramElement> borderNodes = new ArrayList<>();
         assertEquals("Wrong number of border nodes to test", 7, borderNodes.size());
 
         for (DDiagramElement dde : borderNodes) {
@@ -191,7 +191,7 @@ public class MinimizedTransparentCollapsingTest extends SiriusDiagramTestCase {
 
         Predicate<DDiagramElement> isVisible = new Predicate<DDiagramElement>() {
             @Override
-            public boolean apply(DDiagramElement input) {
+            public boolean test(DDiagramElement input) {
                 return input.isVisible();
             };
         };

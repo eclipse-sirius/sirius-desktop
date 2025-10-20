@@ -21,6 +21,8 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -41,12 +43,9 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.emf.AllContents;
 
-import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Ordering;
-import com.google.common.collect.Sets;
 import com.google.common.collect.Streams;
 
 /**
@@ -63,10 +62,10 @@ public class SequenceDiagram extends AbstractSequenceElement {
         INSTANCE;
 
         @Override
-        public boolean apply(View input) {
+        public boolean test(View input) {
             if (input instanceof Diagram) {
                 EObject element = input.getElement();
-                return element instanceof DDiagram && SequenceDiagram.viewpointElementPredicate().apply((DDiagram) element);
+                return element instanceof DDiagram && SequenceDiagram.viewpointElementPredicate().test((DDiagram) element);
             } else {
                 return false;
             }
@@ -81,7 +80,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
         INSTANCE;
 
         @Override
-        public boolean apply(DDiagram input) {
+        public boolean test(DDiagram input) {
             if (input == null) {
                 return false;
             } else {
@@ -157,7 +156,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
      */
     SequenceDiagram(Diagram diagram) {
         super(diagram);
-        Preconditions.checkArgument(SequenceDiagram.notationPredicate().apply(diagram), Messages.SequenceDiagram_nonSequenceDiagramDiagram);
+        Preconditions.checkArgument(SequenceDiagram.notationPredicate().test(diagram), Messages.SequenceDiagram_nonSequenceDiagramDiagram);
     }
 
     /**
@@ -197,12 +196,12 @@ public class SequenceDiagram extends AbstractSequenceElement {
         List<Lifeline> result = new ArrayList<>();
         Iterables.addAll(result, Iterables.filter(getAllLifelines(), new Predicate<Lifeline>() {
             @Override
-            public boolean apply(Lifeline input) {
+            public boolean test(Lifeline input) {
                 return input.getProperLogicalBounds().intersects(area) && input.getVerticalRange().includes(area.getTop().y);
             }
         }));
         Collections.sort(result, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
-        return Sets.newLinkedHashSet(result);
+        return new LinkedHashSet<>(result);
     }
 
     /**
@@ -238,7 +237,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
         if (allInstanceRoles == null) {
             allInstanceRoles = new ArrayList<>();
             for (View child : Iterables.filter(getNotationView().getChildren(), View.class)) {
-                if (InstanceRole.notationPredicate().apply(child)) {
+                if (InstanceRole.notationPredicate().test(child)) {
                     Option<InstanceRole> instanceRole = ISequenceElementAccessor.getInstanceRole(child);
                     if (instanceRole.some()) {
                         allInstanceRoles.add(instanceRole.get());
@@ -304,7 +303,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
         if (allObservationPoints == null) {
             allObservationPoints = new ArrayList<>();
             for (View child : Iterables.filter(getNotationView().getChildren(), View.class)) {
-                if (ObservationPoint.notationPredicate().apply(child)) {
+                if (ObservationPoint.notationPredicate().test(child)) {
                     Option<ObservationPoint> obsPoint = ISequenceElementAccessor.getObservationPoint(child);
                     if (obsPoint.some()) {
                         allObservationPoints.add(obsPoint.get());
@@ -334,7 +333,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
         if (allLostMessageEnd == null) {
             allLostMessageEnd = new ArrayList<>();
             for (View child : Iterables.filter(getNotationView().getChildren(), View.class)) {
-                if (LostMessageEnd.notationPredicate().apply(child)) {
+                if (LostMessageEnd.notationPredicate().test(child)) {
                     Option<LostMessageEnd> lostMessageEnd = ISequenceElementAccessor.getLostMessageEnd(child);
                     if (lostMessageEnd.some()) {
                         allLostMessageEnd.add(lostMessageEnd.get());
@@ -413,7 +412,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
                 }
             }
             Collections.sort(allMessages, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
-            allOrderedMessages = Sets.newLinkedHashSet(allMessages);
+            allOrderedMessages = new LinkedHashSet<>(allMessages);
             if (useCache) {
                 // Store the result
                 allOrderedMessagesCache = allOrderedMessages;
@@ -451,7 +450,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
                 }
             }
             Collections.sort(allAbstractNodeEvents, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
-            allOrderedAbstractNodeEvents = Sets.newLinkedHashSet(allAbstractNodeEvents);
+            allOrderedAbstractNodeEvents = new LinkedHashSet<>(allAbstractNodeEvents);
             if (useCache) {
                 // Store the result
                 allOrderedAbstractNodeEventsCache = allOrderedAbstractNodeEvents;
@@ -489,7 +488,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
                 }
             }
             Collections.sort(allExecutions, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
-            allOrderedExecutions = Sets.newLinkedHashSet(allExecutions);
+            allOrderedExecutions = new LinkedHashSet<>(allExecutions);
             if (useCache) {
                 // Store the result
                 allOrderedExecutionsCache = allOrderedExecutions;
@@ -527,7 +526,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
                 }
             }
             Collections.sort(allStates, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
-            allOrderedStates = Sets.newLinkedHashSet(allStates);
+            allOrderedStates = new LinkedHashSet<>(allStates);
             if (useCache) {
                 // Store the result
                 allOrderedStatesCache = allOrderedStates;
@@ -567,7 +566,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
                 }
             }
             Collections.sort(allFrames, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
-            allOrderedFrames = Sets.newLinkedHashSet(allFrames);
+            allOrderedFrames = new LinkedHashSet<>(allFrames);
             if (useCache) {
                 // Store the result
                 allOrderedFramesCache = allOrderedFrames;
@@ -605,7 +604,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
                 }
             }
             Collections.sort(allInteractionUses, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
-            allOrderedInteractionUses = Sets.newLinkedHashSet(allInteractionUses);
+            allOrderedInteractionUses = new LinkedHashSet<>(allInteractionUses);
             if (useCache) {
                 // Store the result
                 allOrderedInteractionUsesCache = allOrderedInteractionUses;
@@ -643,7 +642,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
                 }
             }
             Collections.sort(allCombinedFragments, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
-            allOrderedCombinedFragments = Sets.newLinkedHashSet(allCombinedFragments);
+            allOrderedCombinedFragments = new LinkedHashSet<>(allCombinedFragments);
             if (useCache) {
                 // Store the result
                 allOrderedCombinedFragmentsCache = allOrderedCombinedFragments;
@@ -681,7 +680,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
                 }
             }
             Collections.sort(allOperands, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
-            allOrderedOperands = Sets.newLinkedHashSet(allOperands);
+            allOrderedOperands = new LinkedHashSet<>(allOperands);
             if (useCache) {
                 // Store the result
                 allOrderedOperandsCache = allOrderedOperands;
@@ -732,7 +731,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
             Iterables.addAll(result, getAllDelimitedSequenceEvents());
 
             Collections.sort(result, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
-            allOrderedDelimitedSequenceEvents = Sets.newLinkedHashSet(result);
+            allOrderedDelimitedSequenceEvents = new LinkedHashSet<>(result);
             if (useCache) {
                 // Store the result
                 allOrderedDelimitedSequenceEventsCache = allOrderedDelimitedSequenceEvents;

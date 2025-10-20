@@ -39,7 +39,6 @@ import org.eclipse.sirius.ext.base.Options;
 
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * A default {@link ICollapseUpdater} to modify the graphical filters of
@@ -222,13 +221,12 @@ public class CollapseUpdater implements ICollapseUpdater {
         if (kindOfFilter.equals(CollapseFilter.class)) {
             // Iterate on all CollapseFilter that are not
             // IndirectlyCollapseFilter
-            for (CollapseFilter collapseApplication : Lists.newArrayList(Iterables.filter(Iterables.filter(element.getGraphicalFilters(), CollapseFilter.class),
-                    Predicates.not(Predicates.instanceOf(IndirectlyCollapseFilter.class))))) {
+            for (CollapseFilter collapseApplication : new ArrayList<>()) {
                 element.getGraphicalFilters().remove(collapseApplication);
             }
             removeFromChildrenIndirectlyCollapsedFilter(element);
         } else if (kindOfFilter.equals(IndirectlyCollapseFilter.class)) {
-            for (IndirectlyCollapseFilter collapseApplication : Lists.newArrayList(Iterables.filter(element.getGraphicalFilters(), IndirectlyCollapseFilter.class))) {
+            for (IndirectlyCollapseFilter collapseApplication : new ArrayList<>()) {
                 element.getGraphicalFilters().remove(collapseApplication);
             }
         }

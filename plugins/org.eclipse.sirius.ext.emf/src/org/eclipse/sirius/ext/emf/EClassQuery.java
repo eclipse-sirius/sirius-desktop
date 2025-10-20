@@ -16,13 +16,13 @@ import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
-import com.google.common.base.Function;
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
@@ -39,7 +39,7 @@ public class EClassQuery {
      * @author pierre-charles.david@obeo.fr
      */
     private static final class IsContaintmentFeature implements Predicate<EStructuralFeature> {
-        public boolean apply(EStructuralFeature input) {
+        public boolean test(EStructuralFeature input) {
             return new EStructuralFeatureQuery(input).isContainment();
         }
     }

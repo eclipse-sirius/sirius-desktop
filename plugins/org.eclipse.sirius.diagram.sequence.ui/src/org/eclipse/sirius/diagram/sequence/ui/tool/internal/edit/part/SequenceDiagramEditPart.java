@@ -17,6 +17,7 @@ import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 import org.eclipse.draw2d.IFigure;
@@ -78,7 +79,6 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.swt.widgets.Display;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**

@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.sequence;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -37,7 +38,6 @@ import org.osgi.framework.Version;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
 
 /**
  * Ensures that collapse filter migration is correctly done for sequence
@@ -126,8 +126,8 @@ public class CollapseFilterSequenceMigrationTest extends AbstractSequenceSiriusD
         // The data contains 5 collapsed executions && 1 indirectly collapsed
         // state.
         openSequenceDiagramOfType(REPRESENTATION_NAME, REPRESENTATION_TYPE);
-        List<CollapseFilter> collapseFilters = Lists.newArrayList(Iterators.filter(sequenceDDiagram.eAllContents(), CollapseFilter.class));
-        List<IndirectlyCollapseFilter> indirectCollapseFilters = Lists.newArrayList(Iterables.filter(collapseFilters, IndirectlyCollapseFilter.class));
+        List<CollapseFilter> collapseFilters = new ArrayList<>();
+        List<IndirectlyCollapseFilter> indirectCollapseFilters = new ArrayList<>();
         assertEquals("The model should contains 4 indirectly collapse filters.", 4, indirectCollapseFilters.size());
         assertEquals("The model should contains 9 collapse filters : 5 CollapseFilter and 4 IndirectlyCollapseFilter.", 9, collapseFilters.size());
 

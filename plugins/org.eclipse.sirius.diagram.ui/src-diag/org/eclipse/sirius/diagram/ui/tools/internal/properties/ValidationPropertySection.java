@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.properties;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -26,7 +27,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * This Property section shows currently activated validation rules and helps in
@@ -107,7 +107,7 @@ public class ValidationPropertySection extends FiltersPropertySection {
      */
     @Override
     protected void newElementsSelected(final Collection<?> newElements) {
-        domain.getCommandStack().execute(new ActivateRulesCommand(domain, getDiagram(), Lists.newArrayList(Iterables.filter(newElements, ValidationRule.class))));
+        domain.getCommandStack().execute(new ActivateRulesCommand(domain, getDiagram(), new ArrayList<>()));
     }
 
     /**
@@ -117,7 +117,7 @@ public class ValidationPropertySection extends FiltersPropertySection {
      */
     @Override
     protected void oldElementsRemoved(final Collection<?> oldElements) {
-        domain.getCommandStack().execute(new DeactivateRulesCommand(domain, getDiagram(), Lists.newArrayList(Iterables.filter(oldElements, ValidationRule.class))));
+        domain.getCommandStack().execute(new DeactivateRulesCommand(domain, getDiagram(), new ArrayList<>()));
     }
 
 }

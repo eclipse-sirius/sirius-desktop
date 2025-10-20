@@ -16,6 +16,7 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.WeakHashMap;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.Notification;
@@ -26,8 +27,6 @@ import org.eclipse.sirius.business.internal.session.SessionEventBrokerImpl;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.SiriusPlugin;
-
-import com.google.common.base.Predicate;
 
 /**
  * Specific {@link ModelChangeTrigger} per Session to synchronize the GMF notation models from the Session Resource

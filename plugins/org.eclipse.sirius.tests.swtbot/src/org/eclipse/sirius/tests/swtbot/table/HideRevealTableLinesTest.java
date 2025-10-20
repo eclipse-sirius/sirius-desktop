@@ -14,6 +14,7 @@ package org.eclipse.sirius.tests.swtbot.table;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.swt.widgets.Tree;
@@ -24,7 +25,6 @@ import org.eclipse.swtbot.swt.finder.results.Result;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
-import com.google.common.base.Function;
 import com.google.common.collect.Collections2;
 
 /**

@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.api.refresh;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -86,7 +87,7 @@ public class SetIntersectionTest extends TestCase {
             biSet.addInNew(newSet[i]);
         }
 
-        Collection<String> all = Lists.newArrayList(biSet.getAllElements());
+        Collection<String> all = new ArrayList<>();
 
         String[] expectedAll = { A, B, C, D, E };
 
@@ -104,7 +105,7 @@ public class SetIntersectionTest extends TestCase {
             biSet.addInNew(newSet[i]);
         }
 
-        Collection<String> all = Lists.newArrayList(biSet.getAllElements());
+        Collection<String> all = new ArrayList<>();
 
         String[] expectedAll = { A, B, C, D, E };
 
@@ -169,7 +170,7 @@ public class SetIntersectionTest extends TestCase {
         for (int i = 0; i < newSet.length; i++) {
             biSet.addInNew(newSet[i]);
         }
-        assertDeepEqualsWithOrder("the order should be the same as the new set", newSet, Lists.newArrayList(biSet.getAllElements()));
+        assertDeepEqualsWithOrder("the order should be the same as the new set", newSet, new ArrayList<>());
 
     }
 

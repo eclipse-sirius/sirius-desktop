@@ -18,6 +18,8 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
@@ -43,10 +45,8 @@ import org.eclipse.sirius.diagram.sequence.tool.internal.Messages;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
-import com.google.common.base.Function;
 import com.google.common.base.Functions;
 import com.google.common.base.Preconditions;
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Ordering;
@@ -63,7 +63,7 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
      */
     public static final Predicate<ISequenceEvent> NO_RECONNECTABLE_EVENTS = new Predicate<ISequenceEvent>() {
         @Override
-        public boolean apply(ISequenceEvent input) {
+        public boolean test(ISequenceEvent input) {
             return input instanceof AbstractFrame || input instanceof Operand || input instanceof State;
         }
     };
@@ -125,7 +125,7 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
         INSTANCE;
 
         @Override
-        public boolean apply(DDiagramElement input) {
+        public boolean test(DDiagramElement input) {
             return AbstractSequenceElement.isSequenceDiagramElement(input, DescriptionPackage.eINSTANCE.getMessageMapping());
         }
     }
@@ -140,7 +140,7 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
      */
     public Message(Edge edge) {
         super(edge);
-        Preconditions.checkArgument(Message.notationPredicate().apply(edge), Messages.Message_nonSequenceMessageEdge);
+        Preconditions.checkArgument(Message.notationPredicate().test(edge), Messages.Message_nonSequenceMessageEdge);
     }
 
     /**
@@ -456,7 +456,7 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
             final Range range = getVerticalRange();
             Predicate<ISequenceEvent> toConsider = new Predicate<ISequenceEvent>() {
                 @Override
-                public boolean apply(ISequenceEvent input) {
+                public boolean test(ISequenceEvent input) {
                     Range inputRange = input.getVerticalRange();
                     boolean toConsider = range.includes(inputRange);
                     if (input instanceof Message) {

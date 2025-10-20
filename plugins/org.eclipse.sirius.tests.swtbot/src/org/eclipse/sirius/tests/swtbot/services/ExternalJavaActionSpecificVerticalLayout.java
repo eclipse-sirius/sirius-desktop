@@ -16,6 +16,7 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -49,7 +50,6 @@ import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.ui.PlatformUI;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
@@ -63,7 +63,7 @@ public class ExternalJavaActionSpecificVerticalLayout implements IExternalJavaAc
     private Node getGMFNode(DDiagramElement dDiagramElement, ECrossReferenceAdapter xref) {
         for (EStructuralFeature.Setting setting : Iterables.filter(xref.getInverseReferences(dDiagramElement), new Predicate<EStructuralFeature.Setting>() {
             @Override
-            public boolean apply(Setting input) {
+            public boolean test(Setting input) {
                 return input != null && input.getEStructuralFeature().getName().equals("element");
             }
         })) {

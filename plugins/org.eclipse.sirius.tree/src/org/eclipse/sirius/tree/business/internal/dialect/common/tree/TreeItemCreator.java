@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.synchronizer.AutomaticCreator;
@@ -24,7 +25,6 @@ import org.eclipse.sirius.synchronizer.OutputDescriptor;
 import org.eclipse.sirius.tree.DTreeItemContainer;
 import org.eclipse.sirius.tree.description.TreeItemMapping;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 
 /**
@@ -58,7 +58,7 @@ class TreeItemCreator implements AutomaticCreator {
         Predicate<OutputTreeItemDescriptor> filterPredicates = new Predicate<OutputTreeItemDescriptor>() {
 
             @Override
-            public boolean apply(OutputTreeItemDescriptor input) {
+            public boolean test(OutputTreeItemDescriptor input) {
                 return new TreeItemMappingExpression(castedContext.getGlobalContext(), input.getMapping().getDescription()).checkPrecondition(input.getSourceElement(), input.getViewContainer());
             }
         };

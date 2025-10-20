@@ -25,8 +25,9 @@ import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
+
+import java.util.function.Predicate;
 
 /**
  * Test that the GMF CrossReferenceAdapter is not present on resource.
@@ -74,7 +75,7 @@ public class GMFCrossReferenceAdapterTest extends SiriusDiagramTestCase implemen
         return Iterables.any(resource.eAdapters(), new Predicate<Adapter>() {
 
             @Override
-            public boolean apply(Adapter input) {
+            public boolean test(Adapter input) {
                 return input instanceof CrossReferenceAdapter;
             }
         });

@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.transaction.RecordingCommand;
@@ -67,9 +68,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.uml2.uml.NamedElement;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Test creation od decorators via Designer Decorations.
@@ -171,8 +170,7 @@ public class DecoratorsTest extends GenericTestCase {
         assertNotNull(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, defaultLayer);
 
         assertNotNull(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, defaultLayer.getDecorationDescriptionsSet());
-        final List<MappingBasedDecoration> decorationDescriptions = Lists
-                .newArrayList(Iterables.filter(defaultLayer.getDecorationDescriptionsSet().getDecorationDescriptions(), MappingBasedDecoration.class));
+        final List<MappingBasedDecoration> decorationDescriptions = new ArrayList<>();
         assertEquals(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, 3, Iterables.size(decorationDescriptions));
 
         MappingBasedDecoration mbd = decorationDescriptions.get(0);
@@ -594,7 +592,7 @@ public class DecoratorsTest extends GenericTestCase {
             Iterable<DSemanticDiagram> allDSemanticDiagrams = Iterables.filter(new DViewQuery(dView).getLoadedRepresentations(), DSemanticDiagram.class);
             matchingDescriptions = Iterables.filter(allDSemanticDiagrams, new Predicate<DSemanticDiagram>() {
                 @Override
-                public boolean apply(DSemanticDiagram input) {
+                public boolean test(DSemanticDiagram input) {
                     return name.equals(input.getDescription().getName());
                 }
             });

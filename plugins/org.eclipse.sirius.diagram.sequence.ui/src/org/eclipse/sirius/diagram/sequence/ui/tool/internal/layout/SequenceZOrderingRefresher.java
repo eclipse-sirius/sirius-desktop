@@ -12,10 +12,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 import org.eclipse.gef.GraphicalEditPart;
@@ -27,9 +29,7 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.Observatio
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
 
-import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Ordering;
 
 /**
@@ -121,7 +121,7 @@ public class SequenceZOrderingRefresher implements Runnable {
      * sorter if not null. Reverse the result if move to front.
      */
     private void moveParts(Class<? extends IGraphicalEditPart> typeToMove, boolean moveToFront, Function<IGraphicalEditPart, Integer> sorter) {
-        List<? extends IGraphicalEditPart> partsToMove = Lists.newArrayList(Iterables.filter(sequenceDiagramPart.getChildren(), typeToMove));
+        List<? extends IGraphicalEditPart> partsToMove = new ArrayList<>();
 
         if (sorter != null) {
             Ordering<IGraphicalEditPart> onResultOf = Ordering.natural().onResultOf(sorter);

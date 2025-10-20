@@ -13,6 +13,7 @@
 package org.eclipse.sirius.tests.unit.diagram.migration;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -31,7 +32,6 @@ import org.eclipse.sirius.viewpoint.description.Group;
 import org.osgi.framework.Version;
 
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
 
 /**
  * Ensures that listContainer attribute migration to childrenPresentation =
@@ -140,7 +140,7 @@ public class ListContainerAttributeMigrationTest extends SiriusTestCase {
         // children presentation and a list container, ie with LIST children
         // presentation.
         // state.
-        List<ContainerMapping> containerMappings = Lists.newArrayList(Iterators.filter(modeler.eAllContents(), ContainerMapping.class));
+        List<ContainerMapping> containerMappings = new ArrayList<>();
         assertEquals("The model should contains 2 containerMappings collapse.", 2, containerMappings.size());
 
         ContainerMapping c1 = containerMappings.get(0);

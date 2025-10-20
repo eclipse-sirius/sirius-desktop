@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.api.tools;
 
+import java.util.function.Predicate;
+
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -24,8 +26,6 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
 import org.eclipse.sirius.tests.unit.api.mappings.edgeonedge.AbstractEdgeOnEdgeTest;
-
-import com.google.common.base.Predicate;
 
 /**
  * Ensures that creation tool works correctly when creating Edges on Edges.
@@ -55,7 +55,7 @@ public class CreateEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
      * model has expected.
      */
     private Predicate<EPackage> edgeCreationFromEdgeToNodeSemanticPredicate = new Predicate<EPackage>() {
-        public boolean apply(EPackage semanticRoot) {
+        public boolean test(EPackage semanticRoot) {
             EReference sourceReference = ((EClass) semanticRoot.getEClassifier("C2")).getEReferences().iterator().next();
             EAnnotation targetAnnotation = getAnnotationFromSource(sourceReference, "myAnnotation");
             assertNotNull("Cannot find any EAnnotation with source " + sourceReference, targetAnnotation);
@@ -68,7 +68,7 @@ public class CreateEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
      * model has expected.
      */
     private Predicate<EPackage> edgeCreationFromNodeToEdgeSemanticPredicate = new Predicate<EPackage>() {
-        public boolean apply(EPackage semanticRoot) {
+        public boolean test(EPackage semanticRoot) {
             EReference targetReference = ((EClass) semanticRoot.getEClassifier("C2")).getEReferences().iterator().next();
             EAnnotation sourceAnnotation = getAnnotationFromSource(targetReference, "myAnnotation");
             assertNotNull("Cannot find any EAnnotation with source " + targetReference, sourceAnnotation);
@@ -375,7 +375,7 @@ public class CreateEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
 
         // Step 1 : create an edge on edge
         // edge should not exist before tool applying
-        assertFalse("Invalid initial state", semanticPredicate.apply(semanticRoot));
+        assertFalse("Invalid initial state", semanticPredicate.test(semanticRoot));
         applyEdgeCreationTool(edgeCreationToolName, diagram, (EdgeTarget) getFirstDiagramElement(diagram, semanticEdgeSource), (EdgeTarget) getFirstDiagramElement(diagram, semanticEdgeTarget));
 
         // Step 2 : check that edge has been created
@@ -385,7 +385,7 @@ public class CreateEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
         // Step 3.1 : Undo the creation of the edge
         session.getTransactionalEditingDomain().getCommandStack().undo();
         // -> semantic model should have been modified
-        assertFalse("Undo failed", semanticPredicate.apply(semanticRoot));
+        assertFalse("Undo failed", semanticPredicate.test(semanticRoot));
 
         // Step 3.2 : Redo the creation of the edge
         session.getTransactionalEditingDomain().getCommandStack().redo();
@@ -421,7 +421,7 @@ public class CreateEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
             boolean targetShouldBeAnEdge) {
         // Step 1 :check that edge creation correctly modified the semantic
         // model
-        assertTrue("Semantic Model was not correctly modified", predicate.apply(semanticRoot));
+        assertTrue("Semantic Model was not correctly modified", predicate.test(semanticRoot));
 
         // Step 2: check that edge creation is graphically correct
         // Step 2.1 : a DEdge should have been created

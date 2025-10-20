@@ -17,6 +17,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
 
 import org.eclipse.jface.viewers.CheckStateChangedEvent;
 import org.eclipse.jface.viewers.CheckboxTableViewer;
@@ -32,7 +33,6 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.widgets.Composite;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 
 /**
@@ -162,7 +162,7 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
         return Collections2.filter(registry.getViewpoints(), new Predicate<Viewpoint>() {
 
             @Override
-            public boolean apply(Viewpoint viewpoint) {
+            public boolean test(Viewpoint viewpoint) {
                 for (final String ext : computeSemanticFileExtensions(session)) {
                     if (new ViewpointQuery(viewpoint).handlesSemanticModelExtension(ext)) {
                         return true;

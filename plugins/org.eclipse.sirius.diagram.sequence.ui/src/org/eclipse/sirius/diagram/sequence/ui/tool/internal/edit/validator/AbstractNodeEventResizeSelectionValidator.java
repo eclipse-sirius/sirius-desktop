@@ -17,6 +17,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
@@ -43,11 +45,8 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
-import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Abstract class to validate Execution move & resize request and get from it a command.
@@ -157,7 +156,7 @@ public class AbstractNodeEventResizeSelectionValidator {
     protected boolean validateNewBoundsForAllTargets() {
         return Iterables.all(Iterables.filter(request.getEditParts(), ExecutionEditPart.class), new Predicate<ExecutionEditPart>() {
             @Override
-            public boolean apply(ExecutionEditPart input) {
+            public boolean test(ExecutionEditPart input) {
                 return validateNewBounds(input);
             }
         });
@@ -239,7 +238,7 @@ public class AbstractNodeEventResizeSelectionValidator {
     private boolean validateMessageEndsConsistency(ExecutionEditPart self, Rectangle bounds, Rectangle newBounds) {
         boolean result = true;
         AbstractNodeEvent abstractNodeEvent = (AbstractNodeEvent) self.getISequenceEvent();
-        List<Message> delimitingMessages = Lists.newArrayList(Iterables.filter(EventEndHelper.getCompoundEvents(self.getISequenceEvent()), Message.class));
+        List<Message> delimitingMessages = new ArrayList<>();
         if (delimitingMessages.size() == 2) {
             Message callMessage = delimitingMessages.get(0);
             Message returnMessage = delimitingMessages.get(1);

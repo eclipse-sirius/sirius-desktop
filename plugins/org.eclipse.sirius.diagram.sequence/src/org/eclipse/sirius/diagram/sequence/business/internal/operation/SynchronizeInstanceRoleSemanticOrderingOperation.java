@@ -13,6 +13,7 @@
 package org.eclipse.sirius.diagram.sequence.business.internal.operation;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
@@ -41,7 +42,6 @@ import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Refreshes the semantic ordering of a an element of a sequence diagram to reflect the current graphical ordering. This
@@ -136,7 +136,7 @@ public class SynchronizeInstanceRoleSemanticOrderingOperation extends AbstractMo
         if (!Iterables.isEmpty(diagramViews)) {
             Option<SequenceDiagram> seqDiag = ISequenceElementAccessor.getSequenceDiagram(diagramViews.iterator().next());
             if (seqDiag.some()) {
-                return Lists.newArrayList(Iterables.transform(seqDiag.get().getSortedInstanceRole(), ISequenceElement.SEMANTIC_TARGET));
+                return new ArrayList<>();
             }
         }
         return Collections.emptyList();

@@ -15,6 +15,7 @@ package org.eclipse.sirius.tests.unit.diagram.migration;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.emf.common.util.URI;
@@ -52,7 +53,6 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
 import org.osgi.framework.Version;
 
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterators;
 
@@ -91,7 +91,7 @@ public class MigrationOfCollapsedBorderedNodeTest extends SiriusDiagramTestCase 
      */
     private Predicate<Node> isCollapsedNode = new Predicate<Node>() {
         @Override
-        public boolean apply(Node input) {
+        public boolean test(Node input) {
             boolean apply = false;
 
             int type = SiriusVisualIDRegistry.getVisualID(input.getType());

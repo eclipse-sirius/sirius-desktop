@@ -12,12 +12,14 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.edit.internal.part;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Predicate;
 
 import org.eclipse.draw2d.Connection;
 import org.eclipse.gef.ConnectionEditPart;
@@ -31,9 +33,7 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
 
 /**
  * Specific Connection refresh manager to remove invalid connection parts.
@@ -50,7 +50,7 @@ public class DCompartmentConnectionRefreshMgr extends ConnectionRefreshMgr {
 
     private Predicate safeConnection = new Predicate() {
         @Override
-        public boolean apply(Object input) {
+        public boolean test(Object input) {
             boolean selected = true;
             if (input instanceof ConnectionEditPart) {
                 ConnectionEditPart part = (ConnectionEditPart) input;
@@ -138,7 +138,7 @@ public class DCompartmentConnectionRefreshMgr extends ConnectionRefreshMgr {
 
         if (connectionsNodes != null) {
             Iterable<?> filteredConnectionNodes = Iterables.filter(connectionsNodes, safeConnection);
-            return Sets.newHashSet(filteredConnectionNodes);
+            return new HashSet<>(Arrays.asList(filteredConnectionNodes));
         }
         return connectionsNodes;
     }

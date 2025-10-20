@@ -12,11 +12,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.ui.tools.internal.editor;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.function.Predicate;
 
 import org.eclipse.core.commands.common.CommandException;
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -83,9 +85,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.handlers.IHandlerService;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * A menu listener which show or hide the menu according to :
@@ -492,13 +492,13 @@ public class DTableMenuListener implements IMenuListener {
         if (selectedLines != null && !selectedLines.isEmpty()) {
             Predicate<DLine> isVisible = new Predicate<DLine>() {
                 @Override
-                public boolean apply(DLine input) {
+                public boolean test(DLine input) {
                     return input.isVisible();
                 }
             };
             Iterable<DLine> visibleSelection = Iterables.filter(selectedLines, isVisible);
 
-            hideLineAction.setLines(Lists.newArrayList(visibleSelection));
+            hideLineAction.setLines(new ArrayList<>());
             if (hideLineAction.isEnabled()) {
                 hideRevealMenuManager.appendToGroup(DTableMenuListener.VIEWPOINT_GROUP_SEPARATOR, hideLineAction);
             }

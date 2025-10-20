@@ -24,8 +24,6 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 
-import com.google.common.collect.Sets;
-
 /**
  * Utility methods for working with IInterpreterContexts.
  * 
@@ -115,8 +113,8 @@ public final class IInterpreterContextUtils {
      *         otherwise.
      */
     public static boolean haveSameScopeDefinition(IInterpreterContext a, IInterpreterContext b) {
-        Set<String> aDependencies = Sets.newLinkedHashSet(a.getDependencies());
-        Set<String> bDependencies = Sets.newLinkedHashSet(b.getDependencies());
+        Set<String> aDependencies = new LinkedHashSet<>(a.getDependencies());
+        Set<String> bDependencies = new LinkedHashSet<>(b.getDependencies());
         Set<String> aNSURI = collectNSUris(a);
         Set<String> bNSURI = collectNSUris(b);
         Set<String> aProjects = collectProjectsOrPlugins(a);

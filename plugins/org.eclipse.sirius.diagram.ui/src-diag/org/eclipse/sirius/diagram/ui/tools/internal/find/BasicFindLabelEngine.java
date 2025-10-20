@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.gef.EditPart;
@@ -29,7 +30,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.FigureQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.AirStyleDefaultSizeNodeFigure;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 
 /**
@@ -44,7 +44,7 @@ public class BasicFindLabelEngine extends AbstractFindLabelEngine {
      * matched with text.
      */
     private static final Predicate<EditPart> IS_LABEL_EDIT_PART = new Predicate<EditPart>() {
-        public boolean apply(final EditPart part) {
+        public boolean test(final EditPart part) {
             final boolean result;
             if (part instanceof AbstractGraphicalEditPart && part instanceof ITextAwareEditPart) {
                 result = true;

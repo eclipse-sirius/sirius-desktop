@@ -28,8 +28,9 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.draw2d.figure.ICollapseMode;
 
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
+
+import java.util.function.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
@@ -70,7 +71,7 @@ public class SequenceCollapseUpdater extends CollapseUpdater {
      *      DDiagramElement)
      */
     public void collapseBounds(Node node, DDiagramElement element) {
-        if (!specificCollapsePredicate.apply(element)) {
+        if (!specificCollapsePredicate.test(element)) {
             super.collapseBounds(node, element);
         } else {
             LayoutConstraint layoutConstraint = node.getLayoutConstraint();
@@ -103,7 +104,7 @@ public class SequenceCollapseUpdater extends CollapseUpdater {
     @Override
     public Option<Bounds> getExpandedBounds(Node node, DDiagramElement element) {
         Option<Bounds> optionalBounds;
-        if (!specificCollapsePredicate.apply(element)) {
+        if (!specificCollapsePredicate.test(element)) {
             optionalBounds = super.getExpandedBounds(node, element);
         } else {
             CollapseFilter filter = Iterables.getFirst(Iterables.filter(element.getGraphicalFilters(), CollapseFilter.class), null);

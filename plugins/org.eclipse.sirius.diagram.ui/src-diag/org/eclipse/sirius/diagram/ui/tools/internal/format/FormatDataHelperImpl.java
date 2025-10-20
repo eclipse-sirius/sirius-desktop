@@ -15,6 +15,7 @@ package org.eclipse.sirius.diagram.ui.tools.internal.format;
 import java.text.MessageFormat;
 import java.util.Arrays;
 import java.util.Map;
+import java.util.function.Predicate;
 
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.PointList;
@@ -51,7 +52,6 @@ import org.eclipse.sirius.ext.draw2d.figure.FigureUtilities;
 import org.eclipse.sirius.tools.internal.SiriusCopierHelper;
 import org.eclipse.sirius.viewpoint.DStylizable;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Maps;
 
 /**
@@ -67,7 +67,7 @@ public class FormatDataHelperImpl implements FormatDataHelper {
          * {@inheritDoc}
          */
         @Override
-        public boolean apply(final EObject input) {
+        public boolean test(final EObject input) {
             return input.eContainer() == null;
         }
     };

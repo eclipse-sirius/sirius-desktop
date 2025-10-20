@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.gef.EditPart;
@@ -30,7 +31,6 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.AbstractLayoutProvider;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
@@ -61,7 +61,7 @@ public class ArrangeSelectionLayoutProvider extends AbstractLayoutProvider {
     private Predicate<EditPart> editPartIsNotSelected = new Predicate<EditPart>() {
 
         @Override
-        public boolean apply(EditPart input) {
+        public boolean test(EditPart input) {
             return input.getSelected() == EditPart.SELECTED_NONE;
         }
     };

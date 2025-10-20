@@ -28,8 +28,9 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.State;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.SequenceDiagramQuery;
 import org.eclipse.sirius.ext.base.Option;
 
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
+
+import java.util.function.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
@@ -219,7 +220,7 @@ public class DefaultMessageCreationValidator extends AbstractMessageCreationVali
         Predicate<InteractionUse> interactionUseOnRealTargetLocation = new Predicate<InteractionUse>() {
             // Filters interaction use at the vertical position of the
             // source but on the targeted lifeline.
-            public boolean apply(InteractionUse input) {
+            public boolean test(InteractionUse input) {
                 return input.getVerticalRange().includes(firstClickLocation.y);
             }
         };

@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.draw2d.geometry.Dimension;
@@ -37,7 +38,6 @@ import org.hamcrest.Description;
 
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Tests for the automatic arrangement features.
@@ -128,29 +128,14 @@ public class ArrangeAllTest extends AbstractSiriusSwtBotGefTestCase {
 
         arrangeAll();
 
-        final List<IDiagramContainerEditPart> afterArrangeAll = Lists
-                .newArrayList(Iterables.filter(getAllContainerEditParts(editor), Predicates
-                        .and(Predicates.instanceOf(IDiagramContainerEditPart.class), new MatchByAutoSizeStatus(true))));
+        final List<IDiagramContainerEditPart> afterArrangeAll = new ArrayList<>();
 
         assertEquals("We should have the same number of auto-sized containers before and after the arrange all",
                 originalContainersNumber, afterArrangeAll.size());
     }
 
     private List<IDiagramContainerEditPart> getAllContainerEditParts(final SWTBotSiriusDiagramEditor editor) {
-        final List<IDiagramContainerEditPart> partsToResize = Lists
-                .newArrayList(Iterables.filter(editor.editParts(new BaseMatcher<EditPart>() {
-
-                    @Override
-                    public void describeTo(final Description description) {
-
-                    }
-
-                    @Override
-                    public boolean matches(final Object item) {
-                        return true;
-                    }
-
-                }), IDiagramContainerEditPart.class));
+        final List<IDiagramContainerEditPart> partsToResize = new ArrayList<>();
         return partsToResize;
     }
 

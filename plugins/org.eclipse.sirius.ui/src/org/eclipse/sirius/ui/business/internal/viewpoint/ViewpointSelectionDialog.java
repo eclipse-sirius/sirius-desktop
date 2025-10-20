@@ -13,6 +13,7 @@
 package org.eclipse.sirius.ui.business.internal.viewpoint;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +22,8 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -54,13 +57,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 
-import com.google.common.base.Function;
-import com.google.common.base.Joiner;
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 
@@ -318,12 +317,7 @@ public class ViewpointSelectionDialog extends TitleAreaDialog {
      * @return the new list of items
      */
     private List<Item> computeItemList() {
-        return Lists.newArrayList(Iterables.transform(selection.keySet(), new Function<Viewpoint, Item>() {
-            @Override
-            public Item apply(Viewpoint from) {
-                return new Item(from);
-            }
-        }));
+        return new ArrayList<>();
     }
 
     @Override
@@ -374,7 +368,7 @@ public class ViewpointSelectionDialog extends TitleAreaDialog {
                 // Is there at least one available selected viewpoint URI ?
                 if (!Iterables.any(selected, new Predicate<Viewpoint>() {
                     @Override
-                    public boolean apply(Viewpoint vp) {
+                    public boolean test(Viewpoint vp) {
                         Option<URI> uri = new ViewpointQuery(vp).getViewpointURI();
                         if (uri.some()) {
                             Matcher matcher = pattern.matcher(uri.get().toString());
@@ -402,10 +396,10 @@ public class ViewpointSelectionDialog extends TitleAreaDialog {
         final Function<Collection<String>, String> toStringList = new Function<Collection<String>, String>() {
             @Override
             public String apply(java.util.Collection<String> from) {
-                return Joiner.on(", ").join(from); //$NON-NLS-1$
+                return String.join(", ", from); //$NON-NLS-1$
             }
         };
-        return Joiner.on("\n").join(Iterables.transform(missingDependencies.entrySet(), new Function<Map.Entry<String, Collection<String>>, String>() { //$NON-NLS-1$
+        return String.join("\n", Iterables.transform(missingDependencies.entrySet(), new Function<Map.Entry<String, Collection<String>>, String>() { //$NON-NLS-1$
             @Override
             public String apply(Entry<String, Collection<String>> entry) {
                 return MessageFormat.format(Messages.ViewpointSelection_missingDependencies_requirements, entry.getKey(), toStringList.apply(entry.getValue()));

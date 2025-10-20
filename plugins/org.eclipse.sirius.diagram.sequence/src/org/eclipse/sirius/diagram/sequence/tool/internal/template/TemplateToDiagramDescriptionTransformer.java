@@ -56,7 +56,6 @@ import org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping;
 import org.eclipse.sirius.tools.api.command.semantic.RemoveDanglingReferences;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Class responsible for refreshing the computed representations based on the given sequence diagram template.
@@ -97,10 +96,10 @@ public class TemplateToDiagramDescriptionTransformer {
             marker.clearGenerateds(to.getNodeMappings());
             to.getNodeMappings().addAll(AbstractRule.transform(from.getLifelineMappings(), lifeline2InstanceRoleMapping));
             marker.clearGenerateds(to.getEdgeMappings());
-            to.getEdgeMappings().addAll(AbstractRule.transform(Lists.newArrayList(Iterables.filter(from.getMessageMappings(), TBasicMessageMapping.class)), basicMessageToEdgeMapping));
-            to.getEdgeMappings().addAll(AbstractRule.transform(Lists.newArrayList(Iterables.filter(from.getMessageMappings(), TCreationMessageMapping.class)), creationMessageToEdgeMapping));
-            to.getEdgeMappings().addAll(AbstractRule.transform(Lists.newArrayList(Iterables.filter(from.getMessageMappings(), TDestructionMessageMapping.class)), destructionMessageToEdgeMapping));
-            to.getEdgeMappings().addAll(AbstractRule.transform(Lists.newArrayList(Iterables.filter(from.getMessageMappings(), TReturnMessageMapping.class)), returnMessageToEdgeMapping));
+            to.getEdgeMappings().addAll(AbstractRule.transform(new ArrayList<>(), basicMessageToEdgeMapping));
+            to.getEdgeMappings().addAll(AbstractRule.transform(new ArrayList<>(), creationMessageToEdgeMapping));
+            to.getEdgeMappings().addAll(AbstractRule.transform(new ArrayList<>(), destructionMessageToEdgeMapping));
+            to.getEdgeMappings().addAll(AbstractRule.transform(new ArrayList<>(), returnMessageToEdgeMapping));
             return to;
         }
 
@@ -242,12 +241,12 @@ public class TemplateToDiagramDescriptionTransformer {
                     Collection<EObject> sourceOutputs = AbstractRule.collectGeneratedElements(execution2ExecutionMaping, DescriptionPackage.eINSTANCE.getExecutionMapping(), from.getSource());
                     sourceOutputs.addAll(AbstractRule.collectGeneratedElements(lifeline2ExecutionMapping, DescriptionPackage.eINSTANCE.getExecutionMapping(), from.getSource()));
                     to.getSourceMapping().clear();
-                    to.getSourceMapping().addAll(Lists.newArrayList(Iterables.filter(sourceOutputs, AbstractNodeMapping.class)));
+                    to.getSourceMapping().addAll(new ArrayList<>());
 
                     Collection<EObject> targetOutputs = AbstractRule.collectGeneratedElements(execution2ExecutionMaping, DescriptionPackage.eINSTANCE.getExecutionMapping(), from.getTarget());
                     targetOutputs.addAll(AbstractRule.collectGeneratedElements(lifeline2ExecutionMapping, DescriptionPackage.eINSTANCE.getExecutionMapping(), from.getTarget()));
                     to.getTargetMapping().clear();
-                    to.getTargetMapping().addAll(Lists.newArrayList(Iterables.filter(targetOutputs, AbstractNodeMapping.class)));
+                    to.getTargetMapping().addAll(new ArrayList<>());
                 }
 
             });
@@ -277,12 +276,12 @@ public class TemplateToDiagramDescriptionTransformer {
                     Collection<EObject> sourceOutputs = AbstractRule.collectGeneratedElements(execution2ExecutionMaping, DescriptionPackage.eINSTANCE.getExecutionMapping(), from.getSource());
                     sourceOutputs.addAll(AbstractRule.collectGeneratedElements(lifeline2ExecutionMapping, DescriptionPackage.eINSTANCE.getExecutionMapping(), from.getSource()));
                     to.getSourceMapping().clear();
-                    to.getSourceMapping().addAll(Lists.newArrayList(Iterables.filter(sourceOutputs, AbstractNodeMapping.class)));
+                    to.getSourceMapping().addAll(new ArrayList<>());
 
                     Collection<EObject> targetOutputs = new ArrayList<>();
                     targetOutputs.addAll(AbstractRule.collectGeneratedElements(lifeline2InstanceRoleMapping, DescriptionPackage.eINSTANCE.getInstanceRoleMapping(), from.getTarget()));
                     to.getTargetMapping().clear();
-                    to.getTargetMapping().addAll(Lists.newArrayList(Iterables.filter(targetOutputs, AbstractNodeMapping.class)));
+                    to.getTargetMapping().addAll(new ArrayList<>());
 
                 }
 
@@ -313,12 +312,12 @@ public class TemplateToDiagramDescriptionTransformer {
                     Collection<EObject> sourceOutputs = AbstractRule.collectGeneratedElements(execution2ExecutionMaping, DescriptionPackage.eINSTANCE.getExecutionMapping(), from.getSource());
                     sourceOutputs.addAll(AbstractRule.collectGeneratedElements(lifeline2ExecutionMapping, DescriptionPackage.eINSTANCE.getExecutionMapping(), from.getSource()));
                     to.getSourceMapping().clear();
-                    to.getSourceMapping().addAll(Lists.newArrayList(Iterables.filter(sourceOutputs, AbstractNodeMapping.class)));
+                    to.getSourceMapping().addAll(new ArrayList<>());
 
                     Collection<EObject> targetOutputs = new ArrayList<>();
                     targetOutputs.addAll(AbstractRule.collectGeneratedElements(lifeline2EndOfLineMapping, DescriptionPackage.eINSTANCE.getEndOfLifeMapping(), from.getTarget()));
                     to.getTargetMapping().clear();
-                    to.getTargetMapping().addAll(Lists.newArrayList(Iterables.filter(targetOutputs, AbstractNodeMapping.class)));
+                    to.getTargetMapping().addAll(new ArrayList<>());
 
                 }
 

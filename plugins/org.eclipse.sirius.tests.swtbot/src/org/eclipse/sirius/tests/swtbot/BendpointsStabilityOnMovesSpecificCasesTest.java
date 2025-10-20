@@ -15,6 +15,7 @@ package org.eclipse.sirius.tests.swtbot;
 import static org.junit.Assert.assertNotEquals;
 
 import java.util.List;
+import java.util.function.Function;
 
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
@@ -38,8 +39,6 @@ import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-
-import com.google.common.base.Function;
 
 /**
  * This class is complementary to {@link BendpointsStabilityOnMovesTest} but

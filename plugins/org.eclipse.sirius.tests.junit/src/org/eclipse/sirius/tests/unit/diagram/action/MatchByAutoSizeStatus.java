@@ -12,12 +12,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.action;
 
+import java.util.function.Predicate;
+
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
-
-import com.google.common.base.Predicate;
 
 /**
  * A specific predicate to match edit part with their autosize status.
@@ -43,7 +43,7 @@ public class MatchByAutoSizeStatus implements Predicate<IGraphicalEditPart> {
     /**
      * {@inheritDoc}
      */
-    public boolean apply(final IGraphicalEditPart editpart) {
+    public boolean test(final IGraphicalEditPart editpart) {
         final View view = editpart.getNotationView();
         if (view instanceof Node) {
             final boolean isAutosize = isAutosized((Node) view);

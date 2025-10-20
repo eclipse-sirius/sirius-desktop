@@ -99,7 +99,7 @@ public class SequenceNodeQuery {
     }
 
     private boolean isShifted() {
-        return Lifeline.notationPredicate().apply(node) || AbstractNodeEvent.notationPredicate().apply(node) || EndOfLife.notationPredicate().apply(node);
+        return Lifeline.notationPredicate().test(node) || AbstractNodeEvent.notationPredicate().test(node) || EndOfLife.notationPredicate().test(node);
     }
 
 }

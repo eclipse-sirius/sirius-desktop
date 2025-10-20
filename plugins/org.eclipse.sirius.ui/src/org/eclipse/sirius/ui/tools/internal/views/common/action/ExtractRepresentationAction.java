@@ -14,6 +14,7 @@ package org.eclipse.sirius.ui.tools.internal.views.common.action;
 
 import java.text.MessageFormat;
 import java.util.Collection;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -33,7 +34,6 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
@@ -89,7 +89,7 @@ public class ExtractRepresentationAction extends Action {
     private boolean isValidSelection() {
         boolean anyInvalidExtract = Iterables.any(repDescriptors, new Predicate<DRepresentationDescriptor>() {
             @Override
-            public boolean apply(DRepresentationDescriptor input) {
+            public boolean test(DRepresentationDescriptor input) {
                 EObject container = input.eContainer();
                 if (container instanceof DView) {
                     IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(container);

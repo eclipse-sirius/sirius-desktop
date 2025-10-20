@@ -15,6 +15,7 @@ package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EObject;
@@ -40,7 +41,6 @@ import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.LayersActivationAction;
 import org.eclipse.swt.graphics.Image;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
@@ -127,7 +127,7 @@ public class LayersContribution extends AbstractMenuContributionItem {
         Iterables.removeIf(allLayers, new Predicate<Layer>() {
 
             @Override
-            public boolean apply(Layer layer) {
+            public boolean test(Layer layer) {
                 if (layer instanceof AdditionalLayer) {
                     return !((AdditionalLayer) layer).isOptional();
                 }

@@ -73,7 +73,7 @@ public abstract class AbstractSequenceElement extends AdapterImpl implements ISe
             DiagramElementMapping mapping = element.getDiagramElementMapping();
             if (mapping != null) {
                 DiagramElementMapping mappingToCheck = new DiagramElementMappingQuery(mapping).getRootMapping();
-                result = mappingType.isInstance(mappingToCheck) && SequenceDiagram.viewpointElementPredicate().apply(element.getParentDiagram());
+                result = mappingType.isInstance(mappingToCheck) && SequenceDiagram.viewpointElementPredicate().test(element.getParentDiagram());
             }
         }
         return result;
