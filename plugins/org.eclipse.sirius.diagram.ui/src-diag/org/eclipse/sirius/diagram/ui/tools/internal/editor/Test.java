@@ -1,24 +1,15 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.editor;
 
-import org.eclipse.sirius.business.api.action.Test4;
-import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.Test3;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Sets;
 
 class Test {
     public static void test() {
-        new Test().isDetached(new Object());
-    }
-
-    private boolean isDetached(Object object) {
-        boolean detached = false;
-        if (Test2.A_PREDICATE_DECLARE_IN_A_CLASS_IN_SAME_PACKAGE.apply(object)) {
-            detached = true;
-        }
-        if (Test3.A_PREDICATE_DECLARE_IN_A_CLASS_IN_ANOTHER_PACKAGE.apply(object)) {
-            detached = true;
-        }
-        if (Test4.A_PREDICATE_DECLARE_IN_A_CLASS_IN_ANOTHER_MODULE.apply(object)) {
-            detached = true;
-        }
-        return detached;
+        final List<ClassCastException> result = new ArrayList<ClassCastException>();
+        List<Exception> myExceptions = new ArrayList<Exception>();
+        result.addAll(Sets.newHashSet(Iterables.filter(myExceptions, ClassCastException.class)));
     }
 }
