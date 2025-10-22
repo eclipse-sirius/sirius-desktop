@@ -14,6 +14,7 @@ package org.eclipse.sirius.diagram.business.internal.metamodel.operations;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -44,8 +45,6 @@ import org.eclipse.sirius.diagram.tools.api.Messages;
 import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.DragSource;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
-
-import com.google.common.collect.Sets;
 
 /**
  * Implementation of DDiagramElementContainerImpl.java.
@@ -181,9 +180,9 @@ public final class DDiagramElementContainerWithInterpreterOperations {
     private static Collection<ContainerDropDescription> getDropTools(final DragAndDropTargetDescription mapping) {
         Collection<ContainerDropDescription> dropTools;
         if (mapping instanceof DiagramElementMapping) {
-            dropTools = Sets.newHashSet(new DiagramElementMappingQuery((DiagramElementMapping) mapping).getDropTools());
+            dropTools = new HashSet<>(new DiagramElementMappingQuery((DiagramElementMapping) mapping).getDropTools());
         } else {
-            dropTools = Sets.newHashSet(mapping.getDropDescriptions());
+            dropTools = new HashSet<>(Arrays.asList(mapping.getDropDescriptions()));
         }
         return dropTools;
     }

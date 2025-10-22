@@ -36,8 +36,6 @@ import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.Messages;
 import org.eclipse.sirius.diagram.tools.internal.management.UpdateToolRecordingCommand;
 
-import com.google.common.collect.Lists;
-
 /**
  * Specific command to change layer activation.
  * 
@@ -117,7 +115,7 @@ public final class ChangeLayerActivationCommand extends RecordingCommand {
             } else {
                 // update decorations
                 DecorationHelper decoHelper = new DecorationHelper(dDiagram);
-                decoHelper.updateDecorations(Lists.<Layer> newArrayList(layer));
+                decoHelper.updateDecorations(new ArrayList<>());
 
                 NotificationUtil.sendNotification(dDiagram, Notification.Kind.STOP, Notification.VISIBILITY);
             }

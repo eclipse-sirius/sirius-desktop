@@ -12,11 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.business.internal.refresh;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
@@ -49,8 +45,6 @@ import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
 import org.eclipse.sirius.table.metamodel.table.description.TableMapping;
 import org.eclipse.sirius.table.tools.internal.Messages;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
-
-import com.google.common.collect.Sets;
 
 /**
  * Common methods of synchronizer for tables.
@@ -399,12 +393,12 @@ public abstract class AbstractTableSynchronizer<D extends TableDescription, C ex
      */
     protected void doDeleteLine(DLine lineToDelete) {
         // Step 1: delete all sublines (and all references to these sublines)
-        for (DLine line : Sets.newLinkedHashSet(lineToDelete.getLines())) {
+        for (DLine line : new LinkedHashSet<>()) {
             doDeleteLine(line);
         }
 
         // Step 2 : delete all cells (and all references to these cells)
-        for (DCell cell : Sets.newLinkedHashSet(lineToDelete.getCells())) {
+        for (DCell cell : new LinkedHashSet<>()) {
             this.sync.removeUneededCell(cell);
         }
 
@@ -423,7 +417,7 @@ public abstract class AbstractTableSynchronizer<D extends TableDescription, C ex
     protected void doDeleteColumn(DColumn columnToDelete) {
         // Step 1: delete all cells contained in this column (and all references
         // to these cells)
-        for (DCell cell : Sets.newLinkedHashSet(columnToDelete.getCells())) {
+        for (DCell cell : new LinkedHashSet<>()) {
             this.sync.removeUneededCell(cell);
         }
         // Step 2: delete the column (and all references to this column)

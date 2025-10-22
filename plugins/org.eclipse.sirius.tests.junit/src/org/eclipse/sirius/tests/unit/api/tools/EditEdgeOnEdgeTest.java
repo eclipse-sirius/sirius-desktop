@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.api.tools;
 
+import java.util.function.Predicate;
+
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -27,8 +29,6 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
 import org.eclipse.sirius.tests.unit.api.mappings.edgeonedge.AbstractEdgeOnEdgeTest;
 import org.junit.Assert;
-
-import com.google.common.base.Predicate;
 
 /**
  * Ensures that edition tool works correctly when edit label of Edges on Edges.
@@ -60,7 +60,7 @@ public class EditEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
      * model has expected.
      */
     private Predicate<EPackage> edgeLabelEditedFromEdgeToNodeSemanticPredicate = new Predicate<EPackage>() {
-        public boolean apply(EPackage semanticRoot) {
+        public boolean test(EPackage semanticRoot) {
             EReference annotationReference = ((EClass) semanticRoot.getEClassifier("C0")).getEReferences().iterator().next();
             return EDIT_LABEL.equals(annotationReference.getName());
         }
@@ -71,7 +71,7 @@ public class EditEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
      * model has expected.
      */
     private Predicate<EPackage> edgeLabelEditedFromNodeToEdgeSemanticPredicate = new Predicate<EPackage>() {
-        public boolean apply(EPackage semanticRoot) {
+        public boolean test(EPackage semanticRoot) {
             EReference annotationReference = ((EClass) semanticRoot.getEClassifier("C0")).getEReferences().iterator().next();
             EAnnotation sourceAnnotation = getAnnotationFromSource(annotationReference, "A1");
             assertNotNull("Cannot find any EAnnotation with source " + annotationReference, sourceAnnotation);
@@ -379,7 +379,7 @@ public class EditEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
 
         // Step 1 : label edited an edge on edge
         // label should not exist before tool applying
-        assertFalse("Invalid initial state", semanticPredicate.apply(semanticRoot));
+        assertFalse("Invalid initial state", semanticPredicate.test(semanticRoot));
         applyDirectEditTool(edgeEditedLabelTool, diagram, getFirstDiagramElement(diagram, semanticEdgeSource), "RefEditedLabel");
 
         // Step 2 : check that label has been edited
@@ -389,7 +389,7 @@ public class EditEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
         // Step 3.1 : Undo the edited of the edge
         session.getTransactionalEditingDomain().getCommandStack().undo();
         // -> semantic model should have been modified
-        assertFalse("Undo failed", semanticPredicate.apply(semanticRoot));
+        assertFalse("Undo failed", semanticPredicate.test(semanticRoot));
 
         // Step 3.2 : Redo the lable edited of the edge
         session.getTransactionalEditingDomain().getCommandStack().redo();
@@ -426,7 +426,7 @@ public class EditEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
             boolean targetShouldBeAnEdge) {
         // Step 1 :check that edge edit correctly modified the semantic
         // model
-        assertTrue("Semantic Model was not correctly modified", predicate.apply(semanticRoot));
+        assertTrue("Semantic Model was not correctly modified", predicate.test(semanticRoot));
 
         // Step 2: check that edge edit is graphically correct
         // Step 2.1 : a DEdge should have been created

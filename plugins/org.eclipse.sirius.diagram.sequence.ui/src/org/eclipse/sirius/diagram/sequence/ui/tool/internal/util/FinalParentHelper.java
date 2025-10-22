@@ -17,6 +17,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.util.function.Predicate;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
@@ -33,10 +34,8 @@ import org.eclipse.sirius.diagram.sequence.business.internal.util.EventFinder;
 import org.eclipse.sirius.ext.base.Option;
 
 import com.google.common.base.Preconditions;
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 public class FinalParentHelper {
     /**
@@ -60,7 +59,7 @@ public class FinalParentHelper {
         }
 
         @Override
-        public boolean apply(ISequenceEvent input) {
+        public boolean test(ISequenceEvent input) {
             Range inputRange = input.getVerticalRange();
             boolean intersection = inputRange.intersects(fullFinalRange) && !linkedSiblings.contains(input);
             // Some event could not be parents : states for examples.
@@ -105,7 +104,7 @@ public class FinalParentHelper {
         }
 
         @Override
-        public boolean apply(ISequenceEvent input) {
+        public boolean test(ISequenceEvent input) {
             Option<Lifeline> inputLifeline = input.getLifeline();
             boolean same = !inputLifeline.some() || (selfLifeline.some() && inputLifeline.get() == selfLifeline.get());
 
@@ -232,7 +231,7 @@ public class FinalParentHelper {
          */
         Predicate<ISequenceEvent> notParentCombinedFragment = new Predicate<ISequenceEvent>() {
             @Override
-            public boolean apply(ISequenceEvent input) {
+            public boolean test(ISequenceEvent input) {
                 if (input instanceof CombinedFragment && self.getLifeline().some()) {
                     CombinedFragment combinedFragment = (CombinedFragment) input;
                     return !(combinedFragment.computeCoveredLifelines().contains(self.getLifeline().get()) && combinedFragment.getVerticalRange().includes(fullFinalRange));
@@ -315,7 +314,7 @@ public class FinalParentHelper {
             Option<Lifeline> remoteLifeline = remoteParent.getLifeline();
             if (remoteLifeline.some()) {
                 EventFinder remoteFinder = new EventFinder(remoteLifeline.get());
-                remoteFinder.setEventsToIgnore(Predicates.in(Lists.newArrayList(allMovedElements)));
+                remoteFinder.setEventsToIgnore(Predicates.in(new ArrayList<>()));
                 finalRemoteParent = remoteFinder.findMostSpecificEvent(finalMessageRange);
             }
         }

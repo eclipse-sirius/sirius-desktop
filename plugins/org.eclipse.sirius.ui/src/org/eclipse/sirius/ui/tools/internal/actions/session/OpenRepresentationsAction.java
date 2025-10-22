@@ -15,6 +15,7 @@ package org.eclipse.sirius.ui.tools.internal.actions.session;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.SubMonitor;
@@ -33,7 +34,6 @@ import org.eclipse.ui.PlatformUI;
 
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
 
 /**
  * Action to open the given representations and init/update the corresponding ui session(s).
@@ -54,7 +54,7 @@ public class OpenRepresentationsAction extends Action {
         super(Messages.OpenRepresentationsAction_name);
 
         if (repDesriptors != null) {
-            this.representationsToOpen = Sets.newLinkedHashSet(Iterables.filter(repDesriptors, Predicates.notNull()));
+            this.representationsToOpen = new LinkedHashSet<>();
         }
     }
 

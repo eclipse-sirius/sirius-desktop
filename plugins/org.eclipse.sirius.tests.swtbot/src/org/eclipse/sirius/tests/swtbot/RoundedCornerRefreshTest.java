@@ -13,6 +13,7 @@
 package org.eclipse.sirius.tests.swtbot;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -46,7 +47,6 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
 
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
 
 /**
  * Test rounded corner style for container (VP-2700).
@@ -84,7 +84,7 @@ public class RoundedCornerRefreshTest extends AbstractSiriusSwtBotGefTestCase {
         URI modelerResourceURI = viewpoint.eResource().getURI();
         modelerResource = resourceSet.getResource(modelerResourceURI, true);
 
-        containerMappings = Lists.newArrayList(Iterators.filter(modelerResource.getAllContents(), ContainerMapping.class));
+        containerMappings = new ArrayList<>();
     }
 
     /**

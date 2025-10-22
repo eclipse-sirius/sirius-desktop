@@ -13,6 +13,7 @@
 package org.eclipse.sirius.tests.unit.common.interpreter;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.eclipse.jface.fieldassist.IContentProposal;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentContext;
@@ -25,7 +26,6 @@ import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.tools.internal.interpreter.SiriusInterpreterContextFactory;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 import junit.framework.TestCase;
@@ -123,7 +123,7 @@ public class CompoundInterpreterTestCase extends TestCase {
             // available empty expressions
             assertFalse("Proposals must not contains interpreter empty expressions", Iterables.any(availableEmptyExpressions, new Predicate<ContentProposal>() {
                 @Override
-                public boolean apply(ContentProposal arg0) {
+                public boolean test(ContentProposal arg0) {
                     return proposals.contains(arg0);
                 }
             }));

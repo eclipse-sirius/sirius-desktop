@@ -15,6 +15,7 @@ package org.eclipse.sirius.diagram.sequence.internal.tool.command.builders;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.function.Predicate;
 
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -45,10 +46,8 @@ import org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Specific sequence viewpoint command to flag created elements from tool.
@@ -121,9 +120,9 @@ public class SequenceCreatedEventsFlaggingSiriusCommand extends SiriusCommand {
      */
     private Collection<EObject> flagAndRegisterMainCreatedElements() {
         final Collection<EObject> mainSemantics = new HashSet<>();
-        final Collection<DDiagramElement> createdDDE = Lists.newArrayList(Iterables.filter(getCreatedRepresentationElements(), DDiagramElement.class));
+        final Collection<DDiagramElement> createdDDE = new ArrayList<>();
         for (DDiagramElement dde : createdDDE) {
-            if (shouldFlag != null && shouldFlag.apply(dde)) {
+            if (shouldFlag != null && shouldFlag.test(dde)) {
                 safeAddCreationFlag(dde, LayoutConstants.TOOL_CREATION_FLAG);
                 mainSemantics.add(dde.getTarget());
             } else if (dde.getTarget() != null) {
@@ -163,9 +162,9 @@ public class SequenceCreatedEventsFlaggingSiriusCommand extends SiriusCommand {
             AbsoluteBoundsFilter flag = getFlag(toolCreationFlag);
 
             if (lostNodesLocation != null) {
-                if (LostMessageEnd.viewpointElementPredicate().apply(dde)) {
+                if (LostMessageEnd.viewpointElementPredicate().test(dde)) {
                     flag.setY(lostNodesLocation.y);
-                } else if (Gate.viewpointElementPredicate().apply(dde)) {
+                } else if (Gate.viewpointElementPredicate().test(dde)) {
                     flag.setY(lostNodesLocation.y);
                     flag.setWidth(flag.getX());
                     flag.setX(lostNodesLocation.x);

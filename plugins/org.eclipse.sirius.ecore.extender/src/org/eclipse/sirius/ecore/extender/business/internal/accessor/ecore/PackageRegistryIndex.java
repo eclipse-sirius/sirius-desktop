@@ -14,11 +14,11 @@ package org.eclipse.sirius.ecore.extender.business.internal.accessor.ecore;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Multimap;
@@ -109,7 +109,7 @@ public class PackageRegistryIndex {
     }
 
     private void indexTypesFrom(EPackage value) {
-        if (packageFilter.apply(value)) {
+        if (packageFilter.test(value)) {
             for (EClass cur : Iterables.filter(value.getEClassifiers(), EClass.class)) {
                 index.put(cur.getName(), cur);
                 index.put(value.getName() + SEPARATOR + cur.getName(), cur);

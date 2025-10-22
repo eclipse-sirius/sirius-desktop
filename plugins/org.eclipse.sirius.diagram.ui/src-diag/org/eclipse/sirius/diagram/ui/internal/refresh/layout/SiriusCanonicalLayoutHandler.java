@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IAdaptable;
@@ -44,7 +45,6 @@ import org.eclipse.sirius.diagram.ui.tools.internal.layout.LayoutUtil;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.LayoutService;
 import org.eclipse.swt.widgets.Display;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
@@ -206,7 +206,7 @@ public final class SiriusCanonicalLayoutHandler {
         // computed multiple times
         Predicate<Entry<IGraphicalEditPart, List<IAdaptable>>> typeOfElementToLayout = new Predicate<Map.Entry<IGraphicalEditPart, List<IAdaptable>>>() {
             @Override
-            public boolean apply(Entry<IGraphicalEditPart, List<IAdaptable>> input) {
+            public boolean test(Entry<IGraphicalEditPart, List<IAdaptable>> input) {
                 return input.getKey() instanceof DDiagramEditPart || input.getKey() instanceof DNodeContainerViewNodeContainerCompartmentEditPart
                         || (input.getKey() instanceof DNodeContainerViewNodeContainerCompartment2EditPart
                                 && !(input.getKey().getParent().getParent() instanceof DNodeContainerViewNodeContainerCompartment2EditPart));

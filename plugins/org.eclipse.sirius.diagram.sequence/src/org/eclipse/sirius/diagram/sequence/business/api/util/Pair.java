@@ -12,7 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.api.util;
 
-import com.google.common.base.Objects;
+import java.util.Objects;
 
 /**
  * Generic helper class to hold two elements of the same type. In some
@@ -67,7 +67,7 @@ public class Pair<T> {
      */
     @Override
     public int hashCode() {
-        return Objects.hashCode(first, second);
+        return Objects.hash(first, second);
     }
 
     /**
@@ -80,7 +80,7 @@ public class Pair<T> {
             result = true;
         } else if (obj instanceof Pair<?>) {
             Pair<?> that = (Pair<?>) obj;
-            result = Objects.equal(this.first, that.first) && Objects.equal(this.second, that.second);
+            result = Objects.equals(this.first, that.first) && Objects.equals(this.second, that.second);
         }
         return result;
     }

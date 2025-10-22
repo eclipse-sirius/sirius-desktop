@@ -18,6 +18,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
@@ -54,7 +55,6 @@ import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 
@@ -286,7 +286,7 @@ public class HideDDiagramElementAction extends Action implements IObjectActionDe
         // by any DiagramDescriptionProvider).
         Predicate<DDiagramElement> result = new Predicate<DDiagramElement>() {
             @Override
-            public boolean apply(DDiagramElement dde) {
+            public boolean test(DDiagramElement dde) {
                 if (dde instanceof DDiagramElementContainer) {
                     DDiagramElementContainerExperimentalQuery query = new DDiagramElementContainerExperimentalQuery((DDiagramElementContainer) dde);
                     return !query.isRegion();
@@ -310,7 +310,7 @@ public class HideDDiagramElementAction extends Action implements IObjectActionDe
                 final IDiagramDescriptionProvider provider = diagramTypeDescriptor.getDiagramDescriptionProvider();
                 result = new Predicate<DDiagramElement>() {
                     @Override
-                    public boolean apply(DDiagramElement input) {
+                    public boolean test(DDiagramElement input) {
                         return provider.allowsHideReveal(input);
                     }
                 };

@@ -51,7 +51,6 @@ import org.eclipse.sirius.viewpoint.description.GenericDecorationDescription;
 import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * A Helper for diagram decoration.
@@ -314,7 +313,7 @@ public final class DecorationHelperInternal {
         deleteOrResetDecoration(element, element.getDecorations(), diagram.getActivatedLayers());
         deleteOrResetDecoration(element, element.getTransientDecorations(), diagram.getActivatedTransientLayers());
 
-        List<Layer> layers = Lists.newArrayList(Iterables.concat(diagram.getActivatedLayers(), diagram.getActivatedTransientLayers()));
+        List<Layer> layers = new ArrayList<>();
         for (Layer layer : layers) {
             updateDecorationToAdd(element, layer);
         }

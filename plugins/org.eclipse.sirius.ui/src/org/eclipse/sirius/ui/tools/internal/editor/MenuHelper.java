@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.editor;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
@@ -44,8 +45,6 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.provider.Messages;
-
-import com.google.common.collect.Lists;
 
 /**
  * Menus/actions common to all Sirius dialect editors.
@@ -130,7 +129,7 @@ public final class MenuHelper {
             candidates = safeInterpreter.evaluateCollection(element.getTarget(), navDesc, browseExpressionFeature);
         } else {
             final ModelAccessor modelAccessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(element.getTarget());
-            candidates = Lists.newArrayList(modelAccessor.eAllContents(element.getTarget()));
+            candidates = new ArrayList<>();
         }
         return candidates;
     }

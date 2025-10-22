@@ -24,7 +24,6 @@ import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
 
 /**
  * Check that {@link EdgeMapping}s with an {@link EdgeMapping} as source or
@@ -45,9 +44,8 @@ public class EdgeMappingCycleConstraint extends AbstractModelConstraint {
                 EdgeMapping edgeMapping = (EdgeMapping) eObj;
                 boolean findCycle = hasCycle(
                         edgeMapping,
-                        Sets.<EdgeMapping> newLinkedHashSet(),
-                        Sets.<EdgeMapping> newLinkedHashSet(Iterables.concat(Iterables.filter(edgeMapping.getSourceMapping(), EdgeMapping.class),
-                                Iterables.filter(edgeMapping.getTargetMapping(), EdgeMapping.class))));
+                new LinkedHashSet<>(),
+                new LinkedHashSet<>());
                 if (findCycle) {
                     return ctx.createFailureStatus(new Object[] { edgeMapping, edgeMapping.getName() });
                 }
@@ -80,12 +78,11 @@ public class EdgeMappingCycleConstraint extends AbstractModelConstraint {
         } else {
             // Recursively investigate source/target EdgeMapping of the
             // edgeMappingsToProcess Set.
-            LinkedHashSet<EdgeMapping> newEdgeMappingsToProcess = Sets.<EdgeMapping> newLinkedHashSet();
+            LinkedHashSet<EdgeMapping> newEdgeMappingsToProcess = new LinkedHashSet<>();
             for (EdgeMapping edgeMappingToProcess : edgeMappingsToProcess) {
-                newEdgeMappingsToProcess.addAll(Sets.newLinkedHashSet(Iterables.concat(Iterables.filter(edgeMappingToProcess.getSourceMapping(), EdgeMapping.class),
-                        Iterables.filter(edgeMappingToProcess.getTargetMapping(), EdgeMapping.class))));
+                newEdgeMappingsToProcess.addAll(new LinkedHashSet<>());
             }
-            hasCycle = hasCycle(edgeMapping, Sets.newLinkedHashSet(Iterables.concat(processedEdgeMappings, edgeMappingsToProcess)), newEdgeMappingsToProcess);
+            hasCycle = hasCycle(edgeMapping, new LinkedHashSet<>(), newEdgeMappingsToProcess);
         }
         return hasCycle;
     }

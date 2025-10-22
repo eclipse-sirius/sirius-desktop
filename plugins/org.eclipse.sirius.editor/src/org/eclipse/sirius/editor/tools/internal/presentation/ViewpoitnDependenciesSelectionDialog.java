@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.editor.tools.internal.presentation;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
@@ -32,7 +33,6 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.dialogs.ListSelectionDialog;
 
-import com.google.common.base.Function;
 import com.google.common.base.Predicates;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
@@ -129,16 +129,7 @@ public class ViewpoitnDependenciesSelectionDialog {
     }
 
     private List<URI> getAvailableViewpointsURIs() {
-        return Lists.newArrayList(Iterables.filter(Iterables.transform(ViewpointRegistry.getInstance().getViewpoints(), new Function<Viewpoint, URI>() {
-            public URI apply(Viewpoint from) {
-                Option<URI> uri = new ViewpointQuery(from).getViewpointURI();
-                if (uri.some()) {
-                    return uri.get();
-                } else {
-                    return null;
-                }
-            }
-        }), Predicates.notNull()));
+        return new ArrayList<>();
     }
 
     private static final class SiriusURIContentProvider implements IStructuredContentProvider {

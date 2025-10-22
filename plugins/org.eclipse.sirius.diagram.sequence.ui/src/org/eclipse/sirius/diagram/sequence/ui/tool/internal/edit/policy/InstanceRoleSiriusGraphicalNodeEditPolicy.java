@@ -60,8 +60,9 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
+
+import java.util.function.Predicate;
 
 /**
  * {@link SiriusGraphicalNodeEditPolicy} specific to sequence to manage creation of message targeting InstanceRole
@@ -260,7 +261,7 @@ public class InstanceRoleSiriusGraphicalNodeEditPolicy extends SiriusGraphicalNo
         Predicate<ISequenceEvent> notParentCombinedFragment = new Predicate<ISequenceEvent>() {
 
             @Override
-            public boolean apply(ISequenceEvent input) {
+            public boolean test(ISequenceEvent input) {
                 if (input instanceof CombinedFragment) {
                     CombinedFragment combinedFragment = (CombinedFragment) input;
                     return !combinedFragment.getVerticalRange().includes(sourceLocation.y);

@@ -14,6 +14,7 @@ package org.eclipse.sirius.tests.unit.diagram.format.data;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.function.Predicate;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -37,7 +38,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 
 /**
@@ -80,7 +80,7 @@ public class SiriusFormatDataManagerForSemanticElementsApplyWithPredefinedDataTe
     };
 
     protected static final Predicate<Diagram> ONLY_RAW_DIAGRAM = new Predicate<Diagram>() {
-        public boolean apply(final Diagram input) {
+        public boolean test(final Diagram input) {
             return input.raw;
         }
     };

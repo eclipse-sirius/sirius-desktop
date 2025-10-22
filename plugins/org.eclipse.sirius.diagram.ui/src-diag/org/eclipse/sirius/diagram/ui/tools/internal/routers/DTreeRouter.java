@@ -32,8 +32,6 @@ import org.eclipse.gmf.runtime.draw2d.ui.internal.routers.ITreeConnection;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.routers.OrthogonalRouter;
 import org.eclipse.gmf.runtime.draw2d.ui.mapmode.MapModeUtil;
 
-import com.google.common.collect.Lists;
-
 /**
  * The tree router of a forest router.
  */
@@ -123,7 +121,7 @@ public class DTreeRouter extends BendpointConnectionRouter implements Orthogonal
             return;
         }
 
-        final ListIterator li = Lists.newArrayList(connectionList).listIterator();
+        final ListIterator li = new ArrayList<>(connectionList).listIterator();
         while (li.hasNext()) {
             final Connection connNext = (Connection) li.next();
 

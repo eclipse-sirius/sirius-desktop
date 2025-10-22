@@ -16,6 +16,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EcoreFactory;
@@ -28,8 +29,6 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.tests.unit.common.interpreter.AbstractCompletionTestCase;
-
-import com.google.common.base.Predicate;
 
 /**
  * Tests for the {@link ServiceInterpreter} utility class.
@@ -180,7 +179,7 @@ public class ServiceCompletionTests extends AbstractCompletionTestCase {
         StringBuilder errorMsg = new StringBuilder();
 
         Predicate<String> concerned = new Predicate<String>() {
-            public boolean apply(String input) {
+            public boolean test(String input) {
                 return true;
             }
         };

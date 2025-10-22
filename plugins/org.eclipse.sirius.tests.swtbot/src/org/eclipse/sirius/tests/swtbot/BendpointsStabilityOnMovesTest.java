@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.function.Predicate;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.draw2d.geometry.Point;
@@ -58,7 +59,6 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 import com.google.common.collect.Sets.SetView;
@@ -1069,7 +1069,7 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
                                 final Point point = expectedEntry.getValue().getPoint(i);
                                 atLeastOneBendpointUnderAMovedNode = !(Iterables.all(movedNodes, new Predicate<SWTBotGefEditPart>() {
                                     @Override
-                                    public boolean apply(SWTBotGefEditPart input) {
+                                    public boolean test(SWTBotGefEditPart input) {
                                         return !((GraphicalEditPart) input.part()).getFigure().getBounds().contains(point);
                                     }
                                 }));
@@ -1088,7 +1088,7 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
                     final Point point = expectedEntry.getValue().getPoint(i);
                     boolean atLeastOneBendpointUnderAMovedNode = !(Iterables.all(movedNodes, new Predicate<SWTBotGefEditPart>() {
                         @Override
-                        public boolean apply(SWTBotGefEditPart input) {
+                        public boolean test(SWTBotGefEditPart input) {
                             return !((GraphicalEditPart) input.part()).getFigure().getBounds().contains(point);
                         }
                     }));
@@ -1181,6 +1181,6 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
      *         nodeEditPart
      */
     private SetView<SWTBotGefConnectionEditPart> getAllConnectionsEditPart(SWTBotGefEditPart nodeEditPart) {
-        return Sets.union(Sets.newLinkedHashSet(nodeEditPart.sourceConnections()), Sets.newLinkedHashSet(nodeEditPart.targetConnections()));
+        return Sets.union(new LinkedHashSet<>(nodeEditPart.sourceConnections()), new LinkedHashSet<>(nodeEditPart.targetConnections()));
     }
 }

@@ -17,8 +17,9 @@ import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.description.FoldingStyle;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
+
+import java.util.function.Predicate;
 
 /**
  * Queries relative to a {@link EdgeTarget}.
@@ -83,7 +84,7 @@ public class EdgeTargetQuery {
      */
     public Iterable<DEdge> getFoldableEdgesToFollow() {
         return Iterables.filter(getAllFoldableEdges(), new Predicate<DEdge>() {
-            public boolean apply(DEdge input) {
+            public boolean test(DEdge input) {
                 return !new DDiagramElementQuery(input).isExplicitlyFolded();
             }
         });
@@ -99,7 +100,7 @@ public class EdgeTargetQuery {
         Iterable<DEdge> outgoingFoldables = Iterables.filter(Iterables.filter(target.getOutgoingEdges(), DEdge.class), DEdgeQuery.hasFoldingStyle(FoldingStyle.SOURCE_LITERAL));
         Iterable<DEdge> allFoldables = Iterables.concat(incomingFoldables, outgoingFoldables);
         return Iterables.filter(allFoldables, new Predicate<DEdge>() {
-            public boolean apply(DEdge input) {
+            public boolean test(DEdge input) {
                 return input != null && input.eContainer() != null;
             }
         });

@@ -25,6 +25,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.Predicate;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.ListenerList;
@@ -113,7 +114,6 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.impl.DAnalysisSessionEObjectImpl;
 
 import com.google.common.base.Preconditions;
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
@@ -473,7 +473,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     private void addAllReferencedAnalyses(final Collection<DAnalysis> analysisAndReferenced, final DAnalysis analysis) {
-        for (DAnalysis referenced : Sets.newLinkedHashSet(analysis.getReferencedAnalysis())) {
+        for (DAnalysis referenced : new LinkedHashSet<>()) {
             if (!analysisAndReferenced.contains(referenced) && referenced.eResource() != null) {
                 analysisAndReferenced.add(referenced);
                 addAllReferencedAnalyses(analysisAndReferenced, referenced);
@@ -1040,7 +1040,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      * launching the SessionListener.OPENED notifications.
      */
     protected void initLocalTriggers() {
-        Predicate<Notification> danglingRemovalPredicate = Predicates.or(DanglingRefRemovalTrigger.IS_DETACHMENT, DanglingRefRemovalTrigger.IS_ATTACHMENT);
+        Predicate<Notification> danglingRemovalPredicate = DanglingRefRemovalTrigger.IS_DETACHMENT.or(DanglingRefRemovalTrigger.IS_ATTACHMENT);
         DanglingRefRemovalTrigger danglingRemovalTrigger = new DanglingRefRemovalTrigger(this);
         getEventBroker().addLocalTrigger(SessionEventBrokerImpl.asFilter(danglingRemovalPredicate), danglingRemovalTrigger);
 
@@ -1290,7 +1290,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         }
 
         // Prevent loading a session which Aird resource contains errors
-        Iterable<Resource> representationResources = Iterables.concat(getReferencedSessionResources(), Sets.newHashSet(getSessionResource()));
+        Iterable<Resource> representationResources = Iterables.concat(getReferencedSessionResources(), new HashSet<>(Arrays.asList(getSessionResource())));
         for (Resource resource : representationResources) {
             for (Diagnostic diagnostic : resource.getErrors()) {
                 if (diagnostic instanceof ResourceVersionMismatchDiagnostic) {

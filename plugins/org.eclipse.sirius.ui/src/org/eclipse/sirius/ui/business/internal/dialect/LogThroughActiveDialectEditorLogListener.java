@@ -14,6 +14,7 @@ package org.eclipse.sirius.ui.business.internal.dialect;
 
 import java.lang.ref.SoftReference;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 import org.eclipse.core.runtime.ILogListener;
 import org.eclipse.core.runtime.IStatus;
@@ -39,7 +40,6 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.internal.WorkbenchMessages;
 
-import com.google.common.base.Predicate;
 import com.google.common.base.Throwables;
 import com.google.common.collect.Iterables;
 
@@ -146,7 +146,7 @@ public final class LogThroughActiveDialectEditorLogListener implements ILogListe
                 Iterable<Setting> representationsElementsReferencingLockedElement = Iterables.filter(session.getSemanticCrossReferencer().getInverseReferences(lockedElement),
                         new Predicate<Setting>() {
                             @Override
-                            public boolean apply(Setting input) {
+                            public boolean test(Setting input) {
                                 if (input.getEObject() instanceof DSemanticDecorator) {
                                     DRepresentation concernedRepresentation = null;
                                     if (input.getEObject() instanceof DRepresentation) {

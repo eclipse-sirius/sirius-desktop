@@ -14,6 +14,7 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.handler;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -32,7 +33,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.handlers.HandlerUtil;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 
@@ -55,7 +55,7 @@ public class ResetOriginHandler extends AbstractHandler {
             } else {
                 Predicate<AbstractDiagramContainerEditPart> noRegionContainer = new Predicate<AbstractDiagramContainerEditPart>() {
                     @Override
-                    public boolean apply(AbstractDiagramContainerEditPart input) {
+                    public boolean test(AbstractDiagramContainerEditPart input) {
                         return !input.isRegionContainer();
                     }
                 };

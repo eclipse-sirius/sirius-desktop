@@ -18,6 +18,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Predicate;
 
 import org.eclipse.draw2d.Connection;
 import org.eclipse.gef.ConnectionEditPart;
@@ -31,7 +32,6 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 
@@ -50,7 +50,7 @@ public class DCompartmentConnectionRefreshMgr extends ConnectionRefreshMgr {
 
     private Predicate safeConnection = new Predicate() {
         @Override
-        public boolean apply(Object input) {
+        public boolean test(Object input) {
             boolean selected = true;
             if (input instanceof ConnectionEditPart) {
                 ConnectionEditPart part = (ConnectionEditPart) input;

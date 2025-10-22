@@ -17,6 +17,8 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
@@ -33,12 +35,9 @@ import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConsta
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 import org.eclipse.sirius.ext.base.Option;
 
-import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * This class is responsible to check whether a request on an interaction use should be accepted (i.e. it would produce
@@ -166,8 +165,8 @@ public abstract class AbstractInteractionFrameValidator {
             Collection<Lifeline> coveredLifelines = frame.computeCoveredLifelines();
             Collection<ISequenceEvent> finalParents = getFinalParentsWithAutoExpand(coveredLifelines);
 
-            Collection<ISequenceEvent> movableParents = Lists.newArrayList(Iterables.filter(finalParents, Predicates.not(unMove)));
-            Collection<ISequenceEvent> fixedParents = Lists.newArrayList(Iterables.filter(finalParents, unMove));
+            Collection<ISequenceEvent> movableParents = new ArrayList<>();
+            Collection<ISequenceEvent> fixedParents = new ArrayList<>();
             if (movableParents.isEmpty() || !movedElements.containsAll(movableParents)) {
                 valid = valid && Iterables.isEmpty(Iterables.filter(finalParents, invalidParents));
                 valid = valid && checkParentOperands(finalParents, coveredLifelines);

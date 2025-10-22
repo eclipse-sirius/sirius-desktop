@@ -21,6 +21,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
@@ -46,9 +48,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.util.ParentOperandF
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 import org.eclipse.sirius.ext.base.Option;
 
-import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 
@@ -344,7 +344,7 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
 
         if (!(ise instanceof Gate) && lifeline.some()) {
             EventFinder futureParentFinder = new EventFinder(lifeline.get());
-            futureParentFinder.setEventsToIgnore(Predicates.equalTo(ise));
+            futureParentFinder.setEventsToIgnore(Predicate.isEqual(ise));
             futureParentFinder.setVerticalRangefunction(rangeFunction);
             Range insertionPoint = getInsertionPoint(ise, futureExtRange);
             ISequenceEvent insertionParent = futureParentFinder.findMostSpecificEvent(insertionPoint);
@@ -533,7 +533,7 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
         ISequenceEvent remoteEnd = null;
         if (lifeline.some()) {
             EventFinder remoteSrcFinder = new EventFinder(lifeline.get());
-            remoteSrcFinder.setEventsToIgnore(Predicates.equalTo((ISequenceEvent) message.get()));
+            remoteSrcFinder.setEventsToIgnore(Predicate.isEqual((ISequenceEvent) message.get()));
             remoteSrcFinder.setVerticalRangefunction(rangeFunction);
             remoteSrcFinder.setExpansionZone(expansionZone);
             remoteSrcFinder.setReconnection(true);
@@ -573,7 +573,7 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
         public Range caseMessage(Message movedEvent) {
             Predicate<Message> toMove = new Predicate<Message>() {
                 @Override
-                public boolean apply(Message input) {
+                public boolean test(Message input) {
                     boolean movedBySrc = movedElements.contains(input.getSourceElement());
                     movedBySrc = movedBySrc || input.getSourceElement() instanceof Gate g && movedElements.contains(g.getHierarchicalParent());
 
@@ -583,7 +583,7 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
                     return !(movedBySrc && movedByTgt);
                 }
             };
-            if (toMove.apply(movedEvent)) {
+            if (toMove.test(movedEvent)) {
                 if (startReflexiveMessageToResize.contains(movedEvent) || endReflexiveMessageToResize.contains(movedEvent)) {
                     movedElements.remove(movedEvent);
                     return Range.emptyRange();

@@ -18,6 +18,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Predicate;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
@@ -37,7 +38,6 @@ import org.eclipse.sirius.diagram.sequence.business.internal.layout.AbstractSequ
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.ext.base.Option;
 
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Iterables;
@@ -89,7 +89,7 @@ public class LostMessageEndHorizontalLayoutHelper {
     }
 
     private void registerUnconnectedLostEnds() {
-        Predicate<LostMessageEnd> unConnectedEnds = Predicates.not(Predicates.in(lostMessages.keySet()));
+        Predicate<LostMessageEnd> unConnectedEnds = Predicate.not(Predicates.in(lostMessages.keySet()));
         for (LostMessageEnd lme : Iterables.filter(sequenceDiagram.getAllLostMessageEnds(), unConnectedEnds)) {
             unconnectedLostEnds.add(lme);
 
@@ -246,7 +246,7 @@ public class LostMessageEndHorizontalLayoutHelper {
                         deltas.put(source, maxSourceDelta);
                     }
                 }
-                for (LostMessageEnd source : Iterables.filter(lostSources.get(lifeline), Predicates.not(Predicates.in(operands.keySet())))) {
+                for (LostMessageEnd source : Iterables.filter(lostSources.get(lifeline), Predicate.not(Predicates.in(operands.keySet())))) {
                     Kind kind = getMessageKind(source);
 
                     if (!Message.Kind.CREATION.equals(kind) && !Message.Kind.DESTRUCTION.equals(kind)) {
@@ -259,7 +259,7 @@ public class LostMessageEndHorizontalLayoutHelper {
                         deltas.put(target, maxTargetDelta);
                     }
                 }
-                for (LostMessageEnd target : Iterables.filter(lostTargets.get(lifeline), Predicates.not(Predicates.in(operands.keySet())))) {
+                for (LostMessageEnd target : Iterables.filter(lostTargets.get(lifeline), Predicate.not(Predicates.in(operands.keySet())))) {
                     deltas.put(target, maxLifelineTargetDelta);
                 }
             }

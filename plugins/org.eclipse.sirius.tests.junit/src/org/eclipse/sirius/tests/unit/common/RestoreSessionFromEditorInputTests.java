@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.common;
 
+import java.util.ArrayList;
 import java.util.Collections;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -28,8 +29,6 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.internal.NavigationHistoryAction;
-
-import com.google.common.collect.Lists;
 
 /**
  * A test ensuring that restoring editors from memento work as expected
@@ -56,7 +55,7 @@ public class RestoreSessionFromEditorInputTests extends SiriusDiagramTestCase {
         copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, "/data/unit/control", SEMANTIC_ROOT, AIRD_ROOT, SEMANTIC_FRAGMENT, AIRD_FRAGMENT);
         genericSetUp(Collections.singleton(TEMPORARY_PROJECT_NAME + SEMANTIC_ROOT), Collections.<String> emptySet(), TEMPORARY_PROJECT_NAME + AIRD_ROOT);
 
-        controledRepresentation = new DViewQuery(((DAnalysis) Lists.newArrayList(session.getAllSessionResources()).get(1).getContents().iterator().next()).getOwnedViews().get(0))
+        controledRepresentation = new DViewQuery(((DAnalysis) new ArrayList<>().get(1).getContents().iterator().next()).getOwnedViews().get(0))
                 .getLoadedRepresentations().get(0);
     }
 

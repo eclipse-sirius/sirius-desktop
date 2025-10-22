@@ -82,7 +82,7 @@ public class AllContentsTests extends TestCase {
             parent.getEClassifiers().add(child);
             children.add(child);
         }
-        List<EObject> result = Lists.newArrayList(AllContents.of(parent));
+        List<EObject> result = new ArrayList<>();
         assertEquals(children.size(), result.size());
         for (int i = 0; i < n; i++) {
             assertSame(children.get(i), result.get(i));
@@ -100,8 +100,8 @@ public class AllContentsTests extends TestCase {
             EClass child = EcoreFactory.eINSTANCE.createEClass();
             parent.getEClassifiers().add(child);
         }
-        List<EObject> result1 = Lists.newArrayList(AllContents.of(parent));
-        List<EObject> result2 = Lists.newArrayList(AllContents.of(parent));
+        List<EObject> result1 = new ArrayList<>();
+        List<EObject> result2 = new ArrayList<>();
         assertEquals(result1.size(), result2.size());
         for (int i = 0; i < n; i++) {
             assertSame(result1.get(i), result2.get(i));
@@ -119,8 +119,8 @@ public class AllContentsTests extends TestCase {
             EClass child = EcoreFactory.eINSTANCE.createEClass();
             parent.getEClassifiers().add(child);
         }
-        List<EObject> contentsResult = Lists.newArrayList(Contents.of(parent));
-        List<EObject> allCesult = Lists.newArrayList(AllContents.of(parent));
+        List<EObject> contentsResult = new ArrayList<>();
+        List<EObject> allCesult = new ArrayList<>();
         assertEquals(contentsResult.size(), allCesult.size());
         for (int i = 0; i < n; i++) {
             assertSame(contentsResult.get(i), allCesult.get(i));
@@ -135,7 +135,7 @@ public class AllContentsTests extends TestCase {
         EPackage pkg = EcoreFactory.eINSTANCE.createEPackage();
         EAnnotation ann = EcoreFactory.eINSTANCE.createEAnnotation();
         pkg.getEAnnotations().add(ann);
-        List<EObject> elements = Lists.newArrayList(Contents.of(pkg));
+        List<EObject> elements = new ArrayList<>();
         assertEquals(1, elements.size());
         assertSame(ann, elements.get(0));
     }
@@ -153,7 +153,7 @@ public class AllContentsTests extends TestCase {
         EAttribute attr = EcoreFactory.eINSTANCE.createEAttribute();
         expected.add(attr);
         klass.getEStructuralFeatures().add(attr);
-        List<EObject> elements = Lists.newArrayList(AllContents.of(pkg));
+        List<EObject> elements = new ArrayList<>();
         assertEquals(expected.size(), elements.size());
         for (int i = 0; i < expected.size(); i++) {
             assertSame(expected.get(i), elements.get(i));

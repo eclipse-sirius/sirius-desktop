@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
@@ -47,7 +48,6 @@ import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.uml2.uml.NamedElement;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 public class LayersTest extends AbtsractLayerTests {
@@ -578,7 +578,7 @@ public class LayersTest extends AbtsractLayerTests {
     private DDiagramElement findByTargetName(final List<DDiagramElement> list, final String targetName) {
         DDiagramElement found = Iterables.find(list, new Predicate<DDiagramElement>() {
             @Override
-            public boolean apply(DDiagramElement input) {
+            public boolean test(DDiagramElement input) {
                 return input.getTarget() instanceof NamedElement && targetName.equals(((NamedElement) input.getTarget()).getName());
             }
         });

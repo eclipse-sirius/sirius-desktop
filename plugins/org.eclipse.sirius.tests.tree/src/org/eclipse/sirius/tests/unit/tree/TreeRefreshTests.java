@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.tree;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -55,7 +56,6 @@ import org.junit.Assert;
 import org.junit.Before;
 
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
 
 public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, TreeEcoreModeler {
 
@@ -107,7 +107,7 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
         DTree newTree = TreeFactory.eINSTANCE.createDTree();
         newTree.setTarget(semanticModel);
         newTree.setDescription(odesign.group().design().epackagecontent().object());
-        List<TreeItemMapping> mappings = Lists.newArrayList(Iterators.filter(odesign.group().design().epackagecontent().object().eAllContents(), TreeItemMapping.class));
+        List<TreeItemMapping> mappings = new ArrayList<>();
 
         Assert.assertFalse(platformProblemsListener.doesAWarningOccurs());
         mappings.get(0).setSemanticCandidatesExpression("aql:incorrectExpression");
@@ -153,7 +153,7 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
 
         newTree.setTarget(semanticModel);
         newTree.setDescription(odesign.group().design().epackagecontent().object());
-        List<TreeItemMapping> mappings = Lists.newArrayList(Iterators.filter(odesign.group().design().epackagecontent().object().eAllContents(), TreeItemMapping.class));
+        List<TreeItemMapping> mappings = new ArrayList<>();
 
         DTreeRefresh refresher = new DTreeRefresh(newTree, mappings, invalidator, ctx);
         refresher.refresh(new NullProgressMonitor());
@@ -203,7 +203,7 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
         repToName.put(newTree, "ENamedElement");
         newTree.setTarget(semanticModel);
         newTree.setDescription(odesign.group().design().epackagecontent().object());
-        List<TreeItemMapping> mappings = Lists.newArrayList(Iterators.filter(odesign.group().design().epackagecontent().object().eAllContents(), TreeItemMapping.class));
+        List<TreeItemMapping> mappings = new ArrayList<>();
 
         DTreeRefresh refresher = new DTreeRefresh(newTree, mappings, invalidator, ctx);
         refresher.refresh(new NullProgressMonitor());
@@ -224,7 +224,7 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
         repToName.put(newTree, "ENamedElement");
         newTree.setTarget(semanticModel);
         newTree.setDescription(odesign.group().design().epackagecontent().object());
-        List<TreeItemMapping> mappings = Lists.newArrayList(Iterators.filter(odesign.group().design().epackagecontent().object().eAllContents(), TreeItemMapping.class));
+        List<TreeItemMapping> mappings = new ArrayList<>();
 
         DTreeRefresh refresher = new DTreeRefresh(newTree, mappings, invalidator, ctx);
         refresher.refresh(new NullProgressMonitor());
@@ -261,7 +261,7 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
         repToName.put(newTree, "ENamedElement");
         newTree.setTarget(semanticModel);
         newTree.setDescription(odesign.group().design().epackagecontent().object());
-        List<TreeItemMapping> mappings = Lists.newArrayList(Iterators.filter(odesign.group().design().epackagecontent().object().eAllContents(), TreeItemMapping.class));
+        List<TreeItemMapping> mappings = new ArrayList<>();
 
         DTreeRefresh refresher = new DTreeRefresh(newTree, mappings, invalidator, ctx);
         refresher.refresh(new NullProgressMonitor());
@@ -282,7 +282,7 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
         TreeDescription specification = odesign.group().design().genericemftree().object();
         newTree.setDescription(specification);
 
-        List<TreeItemMapping> mappings = Lists.newArrayList(Iterators.filter(specification.eAllContents(), TreeItemMapping.class));
+        List<TreeItemMapping> mappings = new ArrayList<>();
 
         DTreeRefresh refresher = new DTreeRefresh(newTree, mappings, invalidator, ctx);
         refresher.refresh(new NullProgressMonitor());
@@ -367,7 +367,7 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
         DTree newTree = TreeFactory.eINSTANCE.createDTree();
         newTree.setTarget(semanticModel);
         newTree.setDescription(odesign.group().design().genericemftree().object());
-        List<TreeItemMapping> mappings = Lists.newArrayList(Iterators.filter(odesign.group().design().genericemftree().object().eAllContents(), TreeItemMapping.class));
+        List<TreeItemMapping> mappings = new ArrayList<>();
 
         DTreeRefresh refresher = new DTreeRefresh(newTree, mappings, invalidator, ctx);
         refresher.refresh(new NullProgressMonitor());

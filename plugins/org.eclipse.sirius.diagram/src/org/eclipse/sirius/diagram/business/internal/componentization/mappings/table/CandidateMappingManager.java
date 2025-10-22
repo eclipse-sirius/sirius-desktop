@@ -19,6 +19,7 @@ import java.util.Comparator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Predicate;
 
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsManager;
@@ -36,7 +37,6 @@ import org.eclipse.sirius.diagram.description.NodeMappingImport;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
@@ -70,21 +70,21 @@ public class CandidateMappingManager {
 
         nodeMappingPredicate = new Predicate<CandidateMapping>() {
             @Override
-            public boolean apply(final CandidateMapping input) {
+            public boolean test(final CandidateMapping input) {
                 return input.getMapping() instanceof NodeMapping;
             }
         };
 
         containerMappingPredicate = new Predicate<CandidateMapping>() {
             @Override
-            public boolean apply(final CandidateMapping input) {
+            public boolean test(final CandidateMapping input) {
                 return input.getMapping() instanceof ContainerMapping;
             }
         };
 
         edgeMappingPredicate = new Predicate<CandidateMapping>() {
             @Override
-            public boolean apply(final CandidateMapping input) {
+            public boolean test(final CandidateMapping input) {
                 return input.getMapping() instanceof EdgeMapping;
             }
         };
@@ -106,7 +106,7 @@ public class CandidateMappingManager {
 
         final Predicate<CandidateMapping> availablePredicate = new Predicate<CandidateMapping>() {
             @Override
-            public boolean apply(final CandidateMapping input) {
+            public boolean test(final CandidateMapping input) {
                 final Collection<Layer> layers = input.getParentLayers();
                 for (final Layer layer : layers) {
                     if (EqualityHelper.contains(activatedLayers, layer)) {

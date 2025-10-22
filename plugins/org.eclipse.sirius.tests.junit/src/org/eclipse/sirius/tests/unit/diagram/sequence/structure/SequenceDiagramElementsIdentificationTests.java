@@ -12,7 +12,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.sequence.structure;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.notation.View;
@@ -35,9 +37,7 @@ import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.unit.diagram.sequence.AbstractSequenceSiriusDiagramTests;
 import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Test for the various basic identification and structural navigation methods
@@ -91,7 +91,7 @@ public class SequenceDiagramElementsIdentificationTests extends AbstractSequence
     }
 
     private View getView(Predicate<DDiagramElement> viewpointElementPredicate) {
-        List<DDiagramElement> elements = Lists.newArrayList(Iterables.filter(sequenceDDiagram.getDiagramElements(), viewpointElementPredicate));
+        List<DDiagramElement> elements = new ArrayList<>();
         assertFalse(elements.isEmpty());
         IGraphicalEditPart editPart = getEditPart(elements.get(0));
         assertNotNull(editPart);

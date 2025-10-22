@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -69,7 +70,6 @@ import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * A node creation edit policy which invokes the ExecutionCreationTool correctly (with all the proper variables).
@@ -229,7 +229,7 @@ public class SequenceNodeCreationPolicy extends NodeCreationEditPolicy {
 
     private Option<Operand> getOperand(DDiagramElementContainer viewNodeContainer) {
         Collection<View> views = ISequenceElementAccessor.getViewsForSemanticElement((SequenceDDiagram) viewNodeContainer.getParentDiagram(), viewNodeContainer.getTarget());
-        List<View> operandViews = Lists.newArrayList(Iterables.filter(views, Operand.notationPredicate()));
+        List<View> operandViews = new ArrayList<>();
         for (View view : operandViews) {
             Option<Operand> optOperand = ISequenceElementAccessor.getOperand(view);
             if (optOperand.some()) {

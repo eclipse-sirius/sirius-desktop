@@ -15,6 +15,7 @@ package org.eclipse.sirius.diagram.ui.tools.internal.editor;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
@@ -33,8 +34,6 @@ import org.eclipse.sirius.ui.tools.internal.editor.SelectDRepresentationElements
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
-
-import com.google.common.base.Predicate;
 
 /**
  * A post commit listener which selects the representation elements specified through the "Elements To Select"
@@ -62,7 +61,7 @@ public class DiagramSelectDRepresentationElementsListener extends SelectDReprese
          * {@inheritDoc}
          */
         @Override
-        public boolean apply(Notification input) {
+        public boolean test(Notification input) {
             if (input.getEventType() == Notification.SET && 
                     (DiagramPackage.eINSTANCE.getDEdge_SourceNode().equals(input.getFeature()) || DiagramPackage.eINSTANCE.getDEdge_TargetNode().equals(input.getFeature()))) {
                 return input.getOldValue() != null && input.getNewValue() != null && !(input.getOldValue().equals(input.getNewValue()));

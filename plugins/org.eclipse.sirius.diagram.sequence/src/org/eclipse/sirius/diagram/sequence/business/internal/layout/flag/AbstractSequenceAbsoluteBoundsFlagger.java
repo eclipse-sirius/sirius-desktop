@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.layout.flag;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -26,7 +27,6 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Helper to compute and attach absolute bounds flag for sequence events.
@@ -89,7 +89,7 @@ public abstract class AbstractSequenceAbsoluteBoundsFlagger {
 
     private AbsoluteBoundsFilter getOrCreateFlag(DDiagramElement dde) {
         AbsoluteBoundsFilter flag = null;
-        Collection<AbsoluteBoundsFilter> flags = Lists.newArrayList(Iterables.filter(dde.getGraphicalFilters(), AbsoluteBoundsFilter.class));
+        Collection<AbsoluteBoundsFilter> flags = new ArrayList<>();
         for (AbsoluteBoundsFilter prevFlag : flags) {
             flag = prevFlag;
             break;

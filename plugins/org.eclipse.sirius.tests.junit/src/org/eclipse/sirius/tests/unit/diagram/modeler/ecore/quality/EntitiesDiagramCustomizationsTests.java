@@ -24,8 +24,9 @@ import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallback;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
+
+import java.util.function.Predicate;
 
 /**
  * Layers tests for Entities diagram of ecore modeler.
@@ -82,7 +83,7 @@ public class EntitiesDiagramCustomizationsTests extends SiriusDiagramTestCase im
     private Iterable<Viewpoint> getSiriusFromRegistry(final String name) {
         return Iterables.filter(ViewpointRegistry.getInstance().getViewpoints(), new Predicate<Viewpoint>() {
 
-            public boolean apply(final Viewpoint input) {
+            public boolean test(final Viewpoint input) {
                 return name.equals(input.getName()) && MODELER_PATH.equals(input.eResource().getURI().toPlatformString(false));
             }
         });

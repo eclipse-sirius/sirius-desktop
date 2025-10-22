@@ -15,6 +15,8 @@ package org.eclipse.sirius.diagram.ui.edit.internal.part.listener;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
@@ -32,11 +34,10 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
-import com.google.common.base.Function;
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
+
 /**
  * A ResourceSet listener
  * 
@@ -148,7 +149,7 @@ public class VisibilityPostCommitListener extends ResourceSetListenerImpl {
 
     private Iterable<Notification> getVisibilityChanges(ResourceSetChangeEvent event) {
         return Iterables.filter(Iterables.filter(event.getNotifications(), Notification.class), new Predicate<Notification>() {
-            public boolean apply(Notification input) {
+            public boolean test(Notification input) {
                 return NotationPackage.eINSTANCE.getView_Visible().equals(input.getFeature()) && !input.isTouch() && input.getNewBooleanValue();
             }
         });

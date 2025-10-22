@@ -12,8 +12,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.refresh;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.AbsoluteBoundsFilter;
@@ -26,10 +28,8 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNo
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 /**
@@ -101,8 +101,8 @@ public class SequenceRefreshExtension implements IRefreshExtension {
     }
 
     private Collection<DDiagramElement> getEventsToSync(SequenceDDiagram sdd) {
-        Collection<DDiagramElement> diagramElements = Lists.newArrayList(sdd.getDiagramElements());
+        Collection<DDiagramElement> diagramElements = new ArrayList<>();
         Predicate<DDiagramElement> eventsToSync = Predicates.or(AbstractNodeEvent.viewpointElementPredicate(), Message.viewpointElementPredicate());
-        return Lists.newArrayList(Iterables.filter(diagramElements, eventsToSync));
+        return new ArrayList<>();
     }
 }

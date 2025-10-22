@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.views.modelexplorer.extension.tab;
 
+import java.util.LinkedHashSet;
+
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.IModelExplorerTabExtension;
@@ -28,8 +30,6 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IViewSite;
 import org.eclipse.ui.actions.ActionFactory;
-
-import com.google.common.collect.Sets;
 
 /**
  * TODO MCH comment here.
@@ -103,7 +103,7 @@ public class CommonNavigatorTab implements IModelExplorerTabExtension {
 
     @Override
     public Iterable<IAction> getActions() {
-        return Sets.<IAction>newLinkedHashSet();
+        return new LinkedHashSet<>();
     }
 
     /**

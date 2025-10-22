@@ -76,7 +76,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItem
 import org.eclipse.sirius.ext.base.Option;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
 
 /**
  * Abstract class define common behavior between all {@link CanonicalSynchronizer}s.
@@ -442,7 +441,7 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
     private void removeJustCreatedMarker(View createdView) {
 
         // to avoid concurrent modification exception
-        Set<Adapter> adapters = Sets.newLinkedHashSet(createdView.eAdapters());
+        Set<Adapter> adapters = new LinkedHashSet<>(createdView.eAdapters());
         Iterator<Adapter> iterator = adapters.iterator();
         List<Adapter> adaptersToRemove = new ArrayList<Adapter>();
         while (iterator.hasNext()) {

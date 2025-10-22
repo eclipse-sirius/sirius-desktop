@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.api.helper.decoration;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -25,7 +26,6 @@ import org.eclipse.sirius.viewpoint.description.DecorationDescription;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
 
 /**
  * An helper for diagram decoration.
@@ -61,7 +61,7 @@ public class DecorationHelper {
      *            the layers
      */
     public void updateDecorations(List<Layer> layers) {
-        Collection<DDiagramElement> dDiagramElements = Lists.newArrayList(Iterators.filter(diagram.eAllContents(), DDiagramElement.class));
+        Collection<DDiagramElement> dDiagramElements = new ArrayList<>();
         for (Layer layer : layers) {
             boolean transientLayer = LayerModelHelper.isTransientLayer(layer);
             List<Layer> activatedLayers = diagram.getActivatedLayers();
@@ -86,10 +86,10 @@ public class DecorationHelper {
      * {@link Layer Layers}.
      */
     public void updateAllDecorations() {
-        Collection<DDiagramElement> dDiagramElements = Lists.newArrayList(Iterators.filter(diagram.eAllContents(), DDiagramElement.class));
+        Collection<DDiagramElement> dDiagramElements = new ArrayList<>();
         List<Layer> activatedLayers = diagram.getActivatedLayers();
         List<AdditionalLayer> activatedTransientLayers = diagram.getActivatedTransientLayers();
-        List<Layer> layers = Lists.newArrayList(Iterables.concat(diagram.getActivatedLayers(), diagram.getActivatedTransientLayers()));
+        List<Layer> layers = new ArrayList<>();
         for (DDiagramElement diagElement : dDiagramElements) {
             decorationHelperInternal.deleteOrResetDecoration(diagElement, diagElement.getTransientDecorations(), activatedTransientLayers);
             decorationHelperInternal.deleteOrResetDecoration(diagElement, diagElement.getDecorations(), activatedLayers);

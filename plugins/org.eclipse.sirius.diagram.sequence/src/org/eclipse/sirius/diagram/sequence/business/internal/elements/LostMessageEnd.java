@@ -14,6 +14,7 @@ package org.eclipse.sirius.diagram.sequence.business.internal.elements;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.notation.Bounds;
@@ -28,7 +29,6 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
 import com.google.common.base.Preconditions;
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 
@@ -53,7 +53,7 @@ public class LostMessageEnd extends AbstractSequenceNode {
         INSTANCE;
 
         @Override
-        public boolean apply(DDiagramElement input) {
+        public boolean test(DDiagramElement input) {
             boolean result = AbstractSequenceElement.isSequenceDiagramElement(input, org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE.getNodeMapping());
             if (input instanceof EdgeTarget) {
                 EdgeTarget et = (EdgeTarget) input;
@@ -80,7 +80,7 @@ public class LostMessageEnd extends AbstractSequenceNode {
      */
     LostMessageEnd(Node node) {
         super(node);
-        Preconditions.checkArgument(LostMessageEnd.notationPredicate().apply(node), Messages.LostMessage_nonLostMessageEndNode);
+        Preconditions.checkArgument(LostMessageEnd.notationPredicate().test(node), Messages.LostMessage_nonLostMessageEndNode);
     }
 
     /**

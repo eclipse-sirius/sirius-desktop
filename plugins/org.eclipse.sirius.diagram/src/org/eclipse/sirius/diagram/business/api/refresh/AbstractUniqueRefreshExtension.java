@@ -12,11 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.api.refresh;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
@@ -38,8 +34,6 @@ import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.model.business.internal.operations.DDiagramSpecOperations;
 import org.eclipse.sirius.diagram.tools.api.Messages;
 import org.eclipse.sirius.tools.api.SiriusPlugin;
-
-import com.google.common.collect.Lists;
 
 /**
  * A refresh extension that constrained all views that are issued from the mappings that are "unique"
@@ -87,7 +81,7 @@ public abstract class AbstractUniqueRefreshExtension implements IRefreshExtensio
 
     private void clearNode(final NodeMapping nodeMapping, final DDiagram viewPoint) {
         final Set<NodeFilter> allViews = new HashSet<NodeFilter>();
-        final List<? extends DDiagramElement> nodes = Lists.newArrayList(DDiagramSpecOperations.getNodesFromMapping(viewPoint, nodeMapping));
+        final List<? extends DDiagramElement> nodes = new ArrayList<>();
         for (DDiagramElement vpElement : nodes) {
             NodeFilter nodeFilter = null;
             if (vpElement instanceof DNodeListElement) {
@@ -107,7 +101,7 @@ public abstract class AbstractUniqueRefreshExtension implements IRefreshExtensio
 
     private void clearContainer(final ContainerMapping containerMapping, final DDiagram viewPoint) {
         final Set<NodeFilter> allViews = new HashSet<NodeFilter>();
-        final List<? extends DDiagramElement> containers = Lists.newArrayList(DDiagramSpecOperations.getContainersFromMapping(viewPoint, containerMapping));
+        final List<? extends DDiagramElement> containers = new ArrayList<>();
         for (DDiagramElement vpElement : containers) {
             NodeFilter nodeFilter = null;
             if (vpElement instanceof DNodeContainer) {
@@ -127,7 +121,7 @@ public abstract class AbstractUniqueRefreshExtension implements IRefreshExtensio
 
     private void clearEdge(final EdgeMapping edgeMapping, final DDiagram diagram) {
         final Set<EdgeFilter> allViews = new HashSet<EdgeFilter>();
-        final List<DEdge> edges = Lists.newArrayList(DDiagramSpecOperations.getEdgesFromMapping(diagram, edgeMapping));
+        final List<DEdge> edges = new ArrayList<>();
         for (DEdge edge : edges) {
             final EdgeFilter edgeFilter = new EdgeFilter(edge);
             if (!allViews.contains(edgeFilter)) {

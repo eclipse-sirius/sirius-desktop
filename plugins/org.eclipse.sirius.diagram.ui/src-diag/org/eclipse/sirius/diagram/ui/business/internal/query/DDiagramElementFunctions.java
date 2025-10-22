@@ -12,9 +12,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.business.internal.query;
 
-import org.eclipse.sirius.diagram.DDiagramElement;
+import java.util.function.Predicate;
 
-import com.google.common.base.Predicate;
+import org.eclipse.sirius.diagram.DDiagramElement;
 
 /**
  * Functions which take a {@link DDiagramElement} as input.
@@ -30,7 +30,7 @@ public final class DDiagramElementFunctions {
     private enum IsVisiblePredicate implements Predicate<DDiagramElement> {
         INSTANCE;
 
-        public boolean apply(DDiagramElement input) {
+        public boolean test(DDiagramElement input) {
             return input != null && input.isVisible();
         }
     }

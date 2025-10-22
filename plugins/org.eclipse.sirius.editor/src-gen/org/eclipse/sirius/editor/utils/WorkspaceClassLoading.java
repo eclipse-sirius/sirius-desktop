@@ -69,7 +69,6 @@ import org.osgi.framework.Bundle;
 import org.osgi.framework.Constants;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
 
 /**
  * Limitations :
@@ -417,7 +416,7 @@ public class WorkspaceClassLoading extends BundleClassLoading {
         /*
          * we have this bundle in the workspace.
          */
-        Collection<Object> dependencies = Sets.newLinkedHashSet(findCallees(pdeModel));
+        Collection<Object> dependencies = new LinkedHashSet<>(findCallees(pdeModel));
         for (VersionConstraint requireBundleOrImportPackage : Iterables.filter(dependencies, VersionConstraint.class)) {
             BaseDescription supplier = requireBundleOrImportPackage.getSupplier();
             if (requireBundleOrImportPackage instanceof ImportPackageSpecification && supplier instanceof ExportPackageDescription) {

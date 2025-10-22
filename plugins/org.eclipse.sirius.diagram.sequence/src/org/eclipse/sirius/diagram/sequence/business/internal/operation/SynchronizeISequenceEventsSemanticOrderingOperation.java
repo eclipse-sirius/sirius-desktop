@@ -14,12 +14,14 @@ package org.eclipse.sirius.diagram.sequence.business.internal.operation;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -49,10 +51,8 @@ import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelCh
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
@@ -200,7 +200,7 @@ public class SynchronizeISequenceEventsSemanticOrderingOperation extends Abstrac
         List<ISequenceEvent> compoundEvents = EventEndHelper.getCompoundEvents(eventToUpdate);
         Predicate<ISequenceEvent> isLogicallyInstantaneousNonReorderedEvent = new Predicate<ISequenceEvent>() {
             @Override
-            public boolean apply(ISequenceEvent input) {
+            public boolean test(ISequenceEvent input) {
                 return input.isLogicallyInstantaneous() && !reordered.contains(input);
             };
         };
@@ -208,7 +208,7 @@ public class SynchronizeISequenceEventsSemanticOrderingOperation extends Abstrac
         Iterable<EventEnd> nonReorderedEndsOfCompoundEvents = Iterables.concat(Iterables.transform(compoundEventsToReorder, EventEndHelper.EVENT_ENDS));
         Predicate<EventEnd> isCompoundEnd = Predicates.and(Predicates.instanceOf(SingleEventEnd.class), Predicates.not(Predicates.in(ends)));
 
-        return Lists.newArrayList(Iterables.filter(nonReorderedEndsOfCompoundEvents, isCompoundEnd));
+        return new ArrayList<>();
     }
 
     private void updateSubEventsSemanticPositions(ISequenceEvent eventToUpdate) {
@@ -260,11 +260,11 @@ public class SynchronizeISequenceEventsSemanticOrderingOperation extends Abstrac
     }
 
     private Set<EventEnd> selectEndsToIgnore(ISequenceEvent ise, List<EventEnd> endsBySemanticOrder, final List<EventEnd> iseEnds, final List<EventEnd> compoundEnds) {
-        final Iterable<ISequenceEvent> movedElements = Iterables.filter(allElementsToReorder, Predicates.not(Predicates.in(reordered)));
+        final Iterable<ISequenceEvent> movedElements = Iterables.filter(allElementsToReorder, Predicate.not(Predicates.in(reordered)));
         final Set<EObject> semanticLinked = Sets.newHashSet(Iterables.filter(Iterables.transform(movedElements, ISequenceElement.SEMANTIC_TARGET), Predicates.notNull()));
         final Predicate<EObject> isLinkedSubEventEnd = new Predicate<EObject>() {
             @Override
-            public boolean apply(EObject input) {
+            public boolean test(EObject input) {
                 return semanticLinked.contains(input);
             }
         };
@@ -273,18 +273,18 @@ public class SynchronizeISequenceEventsSemanticOrderingOperation extends Abstrac
                 .newHashSet(Iterables.filter(Iterables.transform(new ISequenceEventQuery(ise).getAllDescendants(), ISequenceElement.SEMANTIC_TARGET), Predicates.notNull()));
         final Predicate<EObject> isSemanticSubEventEnd = new Predicate<EObject>() {
             @Override
-            public boolean apply(EObject input) {
+            public boolean test(EObject input) {
                 return semanticDescendants.contains(input);
             }
         };
 
         Predicate<EventEnd> toIgnore = new Predicate<EventEnd>() {
             @Override
-            public boolean apply(EventEnd input) {
-                return !iseEnds.contains(input) && (Iterables.any(EventEndHelper.getSemanticEvents(input), Predicates.or(isSemanticSubEventEnd, isLinkedSubEventEnd)) || compoundEnds.contains(input));
+            public boolean test(EventEnd input) {
+                return !iseEnds.contains(input) && (Iterables.any(EventEndHelper.getSemanticEvents(input), isSemanticSubEventEnd.or(isLinkedSubEventEnd)) || compoundEnds.contains(input));
             }
         };
-        HashSet<EventEnd> newHashSet = Sets.newHashSet(Iterables.filter(endsBySemanticOrder, toIgnore));
+        HashSet<EventEnd> newHashSet = new HashSet<>(Arrays.asList(Iterables.filter(endsBySemanticOrder, toIgnore)));
         return newHashSet;
     }
 
@@ -305,7 +305,7 @@ public class SynchronizeISequenceEventsSemanticOrderingOperation extends Abstrac
         List<EObject> semanticEvents = EventEndHelper.getSemanticEvents(end);
         if (semanticEvents.contains(semanticElement)) {
             boolean lookedEventEnd = EventEndHelper.getSingleEventEnd(end, semanticElement).isStart() == startingEnd;
-            boolean punctualCompoundEvent = EventEndHelper.PUNCTUAL_COMPOUND_EVENT_END.apply(end);
+            boolean punctualCompoundEvent = EventEndHelper.PUNCTUAL_COMPOUND_EVENT_END.test(end);
             currentMovedEnd = lookedEventEnd || punctualCompoundEvent;
         }
         return currentMovedEnd;
