@@ -22,9 +22,8 @@ import org.eclipse.sirius.diagram.sequence.ordering.CompoundEventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
 
+import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
-
-import java.util.function.Function;
 
 /**
  * A function which computes the vertical position (in absolute, normalized coordinates) of an {@link EventEnd}.
@@ -99,9 +98,9 @@ public class VerticalPositionFunction implements Function<EventEnd, Integer> {
                 }
             }
 
-            if (EventEndHelper.PUNCTUAL_COMPOUND_EVENT_END.test(end)) {
+            if (EventEndHelper.PUNCTUAL_COMPOUND_EVENT_END.apply(end)) {
                 result = (int) range.middleValue();
-            } else if (EventEndHelper.PUNCTUAL_COMPOUND_EVENT_END.test(end)) {
+            } else if (EventEndHelper.PUNCTUAL_COMPOUND_EVENT_END.apply(end)) {
                 result = (int) range.middleValue();
             } else {
                 result = (int) (see.isStart() ? range.getLowerBound() : range.getUpperBound());

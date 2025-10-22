@@ -14,7 +14,6 @@ package org.eclipse.sirius.diagram.ui.tools.internal.actions.distribute;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.function.Predicate;
 
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.gef.ConnectionEditPart;
@@ -284,7 +283,7 @@ public class DistributeAction extends DiagramAction {
             // Get the the top level selected edit parts
             selection = ToolUtilities.getSelectionWithoutDependants(selection.stream().filter(EditPart.class::isInstance).map(EditPart.class::cast).toList());
             // Remove the connections
-            selection = Lists.newArrayList(Iterables.filter(selection, Predicate.not(Predicates.instanceOf(ConnectionEditPart.class))));
+            selection = Lists.newArrayList(Iterables.filter(selection, Predicates.not(Predicates.instanceOf(ConnectionEditPart.class))));
             if (selection.size() < 3) {
                 selection = Collections.EMPTY_LIST;
             } else {

@@ -12,11 +12,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.action;
 
-import java.util.function.Predicate;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+
+import com.google.common.base.Predicate;
 
 /**
  * A specific predicate to match edit part by the semantic element they should
@@ -42,7 +42,7 @@ public class MatchBySemanticElement implements Predicate<IGraphicalEditPart> {
     /**
      * {@inheritDoc}
      */
-    public boolean test(final IGraphicalEditPart editpart) {
+    public boolean apply(final IGraphicalEditPart editpart) {
         final EObject semanticElement = editpart.resolveSemanticElement();
         if (semanticElement == target || (semanticElement instanceof DSemanticDecorator && ((DSemanticDecorator) semanticElement).getTarget() == target)) {
             return true;

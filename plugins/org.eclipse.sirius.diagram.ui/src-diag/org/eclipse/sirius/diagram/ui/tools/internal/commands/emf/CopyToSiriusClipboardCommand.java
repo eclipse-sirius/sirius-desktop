@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.commands.emf;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -27,6 +26,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.clipboard.SiriusClipboardMan
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * A copy command which is a proxy to {@link CopyToClipboardCommand} but set the
@@ -75,7 +75,7 @@ public class CopyToSiriusClipboardCommand extends RecordingCommand implements Ab
      * @return the object to copy.
      */
     public Collection<?> getSourceObjects() {
-        return new ArrayList<>();
+        return Lists.newArrayList(Iterables.concat(dElementsToCopy, elementsToCopy));
     }
 
     /**

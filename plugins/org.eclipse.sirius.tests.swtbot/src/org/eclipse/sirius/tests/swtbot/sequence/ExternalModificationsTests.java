@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.function.Function;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.notation.Diagram;
@@ -39,8 +38,10 @@ import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 
+import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Ordering;
 
 /**
@@ -177,7 +178,7 @@ public class ExternalModificationsTests extends AbstractSequenceDiagramTestCase 
         Diagram diag = (Diagram) editor.mainEditPart().part().getModel();
         Option<SequenceDiagram> sequenceDiagram = ISequenceElementAccessor.getSequenceDiagram(diag);
         assertTrue(sequenceDiagram.some());
-        Collection<AbsoluteBoundsFilter> flags = new ArrayList<>();
+        Collection<AbsoluteBoundsFilter> flags = Lists.newArrayList(Iterators.filter(sequenceDiagram.get().getSequenceDDiagram().eAllContents(), AbsoluteBoundsFilter.class));
         assertFalse(flags.isEmpty());
         for (AbsoluteBoundsFilter flag : flags) {
             Integer specificFlagValue1 = Integer.valueOf(-1);

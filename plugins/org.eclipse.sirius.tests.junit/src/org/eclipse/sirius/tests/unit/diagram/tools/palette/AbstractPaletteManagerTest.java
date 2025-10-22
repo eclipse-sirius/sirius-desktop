@@ -21,7 +21,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
-import java.util.function.Predicate;
 
 import org.eclipse.gef.DefaultEditDomain;
 import org.eclipse.gef.EditDomain;
@@ -37,6 +36,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
@@ -112,7 +112,7 @@ public abstract class AbstractPaletteManagerTest extends SiriusDiagramTestCase {
          * {@inheritDoc}
          */
         @Override
-        public boolean test(PaletteEntry input) {
+        public boolean apply(PaletteEntry input) {
             return input.isVisible();
         }
     };

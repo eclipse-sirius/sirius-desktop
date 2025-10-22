@@ -17,7 +17,6 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
-import java.util.function.Predicate;
 
 import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
@@ -155,7 +154,7 @@ public class SequenceDiagramQuery {
      */
     public Set<ISequenceEvent> getAllSequenceEventsOnLifeline(Lifeline lifeline) {
         Set<ISequenceEvent> allSequenceEventsOnLifeline = new TreeSet<ISequenceEvent>(new RangeComparator());
-        for (ISequenceEvent sequenceEvent : Iterables.filter(getAllSequenceEvents(), Predicate.not(Predicates.instanceOf(Lifeline.class)))) {
+        for (ISequenceEvent sequenceEvent : Iterables.filter(getAllSequenceEvents(), Predicates.not(Predicates.instanceOf(Lifeline.class)))) {
             Option<Lifeline> lifelineOfSequenceEventOption = sequenceEvent.getLifeline();
             if (lifelineOfSequenceEventOption.some() && lifelineOfSequenceEventOption.get().equals(lifeline)) {
                 allSequenceEventsOnLifeline.add(sequenceEvent);

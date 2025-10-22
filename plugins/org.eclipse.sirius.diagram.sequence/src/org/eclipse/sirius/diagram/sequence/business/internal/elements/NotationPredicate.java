@@ -13,12 +13,13 @@
 package org.eclipse.sirius.diagram.sequence.business.internal.elements;
 
 import java.util.Objects;
-import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
+
+import com.google.common.base.Predicate;
 
 /**
  * Predicate to check whether a GMF View represents an EndOfLife.
@@ -49,10 +50,10 @@ public class NotationPredicate implements Predicate<View> {
     }
 
     @Override
-    public boolean test(View input) {
+    public boolean apply(View input) {
         if (viewType.isInstance(input) && viewHasType(input, visualId)) {
             EObject element = input.getElement();
-            return (element instanceof DDiagramElement) && viewpointElementPredicate.test((DDiagramElement) element);
+            return (element instanceof DDiagramElement) && viewpointElementPredicate.apply((DDiagramElement) element);
         } else {
             return false;
         }

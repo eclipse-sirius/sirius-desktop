@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-import java.util.function.Predicate;
 
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.BaseSlidableAnchor;
@@ -41,6 +40,7 @@ import org.eclipse.sirius.diagram.sequence.ui.Messages;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout.SequenceGraphicalHelper;
 import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
@@ -164,7 +164,7 @@ public class ShiftDescendantMessagesOperation extends ShiftMessagesOperation {
 
         final Predicate<Message> filterReflexiveMessage = new Predicate<Message>() {
             @Override
-            public boolean test(final Message input) {
+            public boolean apply(final Message input) {
                 return !input.isReflective();
             }
         };

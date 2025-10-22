@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
-import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -31,6 +30,7 @@ import org.eclipse.sirius.synchronizer.SemanticPartitions;
 import org.eclipse.sirius.tree.business.internal.helper.TreeHelper;
 import org.eclipse.sirius.tree.tools.internal.Messages;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterators;
 
@@ -87,7 +87,7 @@ public class MappingBasedPartition implements SemanticPartition {
         return SemanticPartitions.eObjectList(ImmutableList.copyOf(Iterators.filter(elements, new Predicate<EObject>() {
 
             @Override
-            public boolean test(EObject input) {
+            public boolean apply(EObject input) {
                 return ctx.getModelAccessor().eInstanceOf(input, domainClass);
             }
         })));

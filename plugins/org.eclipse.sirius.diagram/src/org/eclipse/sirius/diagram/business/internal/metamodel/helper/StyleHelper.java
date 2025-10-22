@@ -962,7 +962,7 @@ public final class StyleHelper {
         if (image.eContainer() instanceof DNode && description.getSizeComputationExpression() != null) {
             final DNode node = (DNode) image.eContainer();
             Integer size = computeStyleSize(node.getTarget(), description);
-            if (java.util.Objects.equals(-1, size)) {
+            if (Objects.equal(-1, size)) {
                 // real image size
                 if (!size.equals(node.getHeight())) {
                     node.setHeight(size);

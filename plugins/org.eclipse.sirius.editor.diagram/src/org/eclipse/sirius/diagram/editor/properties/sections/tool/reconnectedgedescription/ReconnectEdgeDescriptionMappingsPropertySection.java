@@ -14,7 +14,6 @@ package org.eclipse.sirius.diagram.editor.properties.sections.tool.reconnectedge
 
 // Start of user code imports
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -39,6 +38,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
 import com.google.common.collect.UnmodifiableIterator;
 
 // End of user code imports
@@ -109,7 +109,7 @@ public class ReconnectEdgeDescriptionMappingsPropertySection extends AbstractEdi
     @Override
     protected List getChoiceOfValues() {
         UnmodifiableIterator<EdgeMapping> filter = Iterators.filter(eObject.eResource().getResourceSet().getAllContents(), EdgeMapping.class);
-        return new ArrayList<>();
+        return Lists.newArrayList(filter);
     }
 
     /**

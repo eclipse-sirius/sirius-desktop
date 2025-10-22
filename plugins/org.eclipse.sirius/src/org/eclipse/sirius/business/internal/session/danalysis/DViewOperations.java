@@ -14,10 +14,8 @@ package org.eclipse.sirius.business.internal.session.danalysis;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
@@ -199,7 +197,7 @@ final class DViewOperations {
                     selectedViewpoints.add(viewpoint);
                 }
             }
-            SetView<Viewpoint> difference = Sets.difference(new HashSet<>(Arrays.asList(session.getActivatedViewpoints())), new HashSet<>(selectedViewpoints));
+            SetView<Viewpoint> difference = Sets.difference(Sets.newHashSet(session.getActivatedViewpoints()), Sets.newHashSet(selectedViewpoints));
             monitor.beginTask(Messages.DViewOperations_updateSelectedVPDataMsg, selectedViewpoints.size() + difference.size() + 1);
             // FIXME : it is useful?
             for (Viewpoint viewpoint : selectedViewpoints) {

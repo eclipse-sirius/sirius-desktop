@@ -14,7 +14,6 @@ package org.eclipse.sirius.diagram.ui.business.internal.migration;
 
 import java.util.Collection;
 import java.util.LinkedHashSet;
-import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -37,6 +36,7 @@ import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DView;
 import org.osgi.framework.Version;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
@@ -97,7 +97,7 @@ public class CollapseSupportOnRegionMigrationParticipant extends AbstractReprese
     private final class IsRegionCompartmentPredicate implements Predicate<Node> {
 
         @Override
-        public boolean test(Node node) {
+        public boolean apply(Node node) {
             int id = SiriusVisualIDRegistry.getVisualID(node.getType());
             if (id == DNodeContainerViewNodeContainerCompartment2EditPart.VISUAL_ID || id == DNodeListViewNodeListCompartmentEditPart.VISUAL_ID) {
                 EObject element = node.getElement();

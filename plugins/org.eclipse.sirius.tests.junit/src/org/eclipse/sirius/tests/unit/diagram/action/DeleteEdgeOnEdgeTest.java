@@ -13,7 +13,6 @@
 package org.eclipse.sirius.tests.unit.diagram.action;
 
 import java.util.List;
-import java.util.function.Predicate;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.Command;
@@ -38,6 +37,8 @@ import org.eclipse.sirius.tests.unit.api.mappings.edgeonedge.AbstractEdgeOnEdgeT
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.ui.IEditorPart;
+
+import com.google.common.base.Predicate;
 
 /**
  * Ensures that deletion of Edges on Edges works correctly.
@@ -68,7 +69,7 @@ public class DeleteEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
      */
     private Predicate<EPackage> edgeDeletionFromEdgeToNodeSemanticPredicate = new Predicate<EPackage>() {
         @Override
-        public boolean test(EPackage semanticRoot) {
+        public boolean apply(EPackage semanticRoot) {
             EReference annotationReference = ((EClass) semanticRoot.getEClassifier("C0")).getEReferences().iterator().next();
             EAnnotation targetAnnotation = getAnnotationFromSource(annotationReference, "AnnotRef1");
             assertNotNull("Cannot find any EAnnotation with source " + annotationReference, targetAnnotation);
@@ -82,7 +83,7 @@ public class DeleteEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
      */
     private Predicate<EPackage> edgeDeletionFromNodeToEdgeSemanticPredicate = new Predicate<EPackage>() {
         @Override
-        public boolean test(EPackage semanticRoot) {
+        public boolean apply(EPackage semanticRoot) {
             EReference annotationReference = ((EClass) semanticRoot.getEClassifier("C0")).getEReferences().iterator().next();
             EAnnotation sourceAnnotation = getAnnotationFromSource(annotationReference, "AnnotRef1");
             assertNotNull("Cannot find any EAnnotation with source " + annotationReference, sourceAnnotation);
@@ -543,7 +544,7 @@ public class DeleteEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
 
         // Step 1 : delete an edge on edge
         // edge should not exist before tool applying
-        assertFalse("Invalid initial state", semanticPredicate.test(semanticRoot));
+        assertFalse("Invalid initial state", semanticPredicate.apply(semanticRoot));
         deleteEdge(semanticEdgeSource, semanticEdgeTarget, sourceShouldBeAnEge, targetShouldBeAnEdge);
 
         // Step 2 : check that edge has been deleted
@@ -553,7 +554,7 @@ public class DeleteEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
         // Step 3.1 : Undo the Deletion of the edge
         session.getTransactionalEditingDomain().getCommandStack().undo();
         // -> semantic model should have been modified
-        assertFalse("Undo failed", semanticPredicate.test(semanticRoot));
+        assertFalse("Undo failed", semanticPredicate.apply(semanticRoot));
 
         // Step 3.2 : Redo the Deletion of the edge
         session.getTransactionalEditingDomain().getCommandStack().redo();
@@ -631,7 +632,7 @@ public class DeleteEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
             boolean targetShouldBeAnEdge) {
         // Step 1 :check that edge Deletion correctly modified the semantic
         // model
-        assertTrue("Semantic Model was not correctly modified", predicate.test(semanticRoot));
+        assertTrue("Semantic Model was not correctly modified", predicate.apply(semanticRoot));
 
         // Step 2: check that edge Deletion is graphically correct
         // Step 2.1 : a DEdge should have been deleted

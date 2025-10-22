@@ -15,7 +15,6 @@ package org.eclipse.sirius.diagram.sequence.business.internal.elements;
 import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Optional;
-import java.util.function.Predicate;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
@@ -34,6 +33,7 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
 import com.google.common.base.Preconditions;
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
@@ -55,9 +55,9 @@ public class Gate extends AbstractSequenceNode {
         INSTANCE;
 
         @Override
-        public boolean test(DDiagramElement input) {
+        public boolean apply(DDiagramElement input) {
             return AbstractSequenceElement.isSequenceDiagramElement(input, DescriptionPackage.eINSTANCE.getGateMapping())
-                    && !InstanceRole.viewpointElementPredicate().test((DDiagramElement) input.eContainer());
+                    && !InstanceRole.viewpointElementPredicate().apply((DDiagramElement) input.eContainer());
         }
     }
 
@@ -69,7 +69,7 @@ public class Gate extends AbstractSequenceNode {
      */
     Gate(Node node) {
         super(node);
-        Preconditions.checkArgument(Gate.notationPredicate().test(node), Messages.Gate_nonGateNode);
+        Preconditions.checkArgument(Gate.notationPredicate().apply(node), Messages.Gate_nonGateNode);
     }
 
     /**

@@ -14,7 +14,6 @@ package org.eclipse.sirius.common.acceleo.mtl.business.api.extension;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -23,6 +22,8 @@ import org.eclipse.acceleo.parser.interpreter.ModuleDescriptor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.URI;
 import org.osgi.framework.Bundle;
+
+import com.google.common.collect.Lists;
 
 /**
  * This import handler will try and import a dependency as a Java class
@@ -56,7 +57,7 @@ public class JavaImportHandler extends AbstractImportHandler {
      */
     private static List<String> getPublicSignaturesFrom(Class<?> clazz) {
         final Method[] methods = clazz.getDeclaredMethods();
-        List<String> signatures = new ArrayList<>(methods.length);
+        List<String> signatures = Lists.newArrayListWithCapacity(methods.length);
 
         for (int i = 0; i < methods.length; i++) {
             final Method method = methods[i];

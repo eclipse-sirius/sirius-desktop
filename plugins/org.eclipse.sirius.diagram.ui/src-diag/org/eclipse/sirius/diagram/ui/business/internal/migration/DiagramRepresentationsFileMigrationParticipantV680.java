@@ -14,7 +14,6 @@ package org.eclipse.sirius.diagram.ui.business.internal.migration;
 
 import java.util.Iterator;
 import java.util.List;
-import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.Bounds;
@@ -30,6 +29,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeC
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.osgi.framework.Version;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 
@@ -97,7 +97,7 @@ public class DiagramRepresentationsFileMigrationParticipantV680 {
      */
     private final class IsCompartmentPredicate implements Predicate<EObject> {
 
-        public boolean test(EObject arg0) {
+        public boolean apply(EObject arg0) {
             if (arg0 instanceof Node) {
                 int id = SiriusVisualIDRegistry.getVisualID(((Node) arg0).getType());
                 return id == DNodeContainerViewNodeContainerCompartment2EditPart.VISUAL_ID || id == DNodeContainerViewNodeContainerCompartmentEditPart.VISUAL_ID;

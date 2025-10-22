@@ -24,7 +24,6 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 import java.util.function.BinaryOperator;
 import java.util.function.Function;
-import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collector;
@@ -58,6 +57,7 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 
 /**
@@ -320,7 +320,7 @@ public final class ViewpointHelper {
         return Collections2.filter(registry.getViewpoints(), new Predicate<Viewpoint>() {
 
             @Override
-            public boolean test(Viewpoint viewpoint) {
+            public boolean apply(Viewpoint viewpoint) {
                 for (final String ext : getSemanticFileExtensionsFromSession(session)) {
                     if (new ViewpointQuery(viewpoint).handlesSemanticModelExtension(ext)) {
                         return true;

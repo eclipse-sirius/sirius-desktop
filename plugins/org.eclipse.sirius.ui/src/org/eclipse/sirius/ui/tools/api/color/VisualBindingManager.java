@@ -530,7 +530,7 @@ public class VisualBindingManager {
             } else if (obj instanceof PatternDescriptor) {
                 final PatternDescriptor that = (PatternDescriptor) obj;
                 final boolean sameCoordinates = this.x == that.x && this.y == that.y && this.h == that.h && this.w == that.w;
-                result = sameCoordinates && java.util.Objects.equals(this.backgroundColor, that.backgroundColor) && java.util.Objects.equals(this.foregroundColor, that.foregroundColor);
+                result = sameCoordinates && Objects.equal(this.backgroundColor, that.backgroundColor) && Objects.equal(this.foregroundColor, that.foregroundColor);
             } else {
                 result = false;
             }
@@ -539,7 +539,7 @@ public class VisualBindingManager {
 
         @Override
         public int hashCode() {
-            return java.util.Objects.hash(this.x, this.y, this.w, this.h, this.foregroundColor, this.backgroundColor);
+            return Objects.hashCode(this.x, this.y, this.w, this.h, this.foregroundColor, this.backgroundColor);
         }
 
         public Pattern createPattern() {
@@ -799,7 +799,7 @@ public class VisualBindingManager {
 
         @Override
         public int hashCode() {
-            return java.util.Objects.hash(name, format, size);
+            return Objects.hashCode(name, format, size);
         }
 
         @Override
@@ -809,7 +809,7 @@ public class VisualBindingManager {
                 result = true;
             } else if (obj instanceof FontStyleDescriptor) {
                 final FontStyleDescriptor that = (FontStyleDescriptor) obj;
-                result = java.util.Objects.equals(this.name, that.name) && Objects.equal(this.format, that.format) && this.size == that.size;
+                result = Objects.equal(this.name, that.name) && Objects.equal(this.format, that.format) && this.size == that.size;
             } else {
                 result = false;
             }

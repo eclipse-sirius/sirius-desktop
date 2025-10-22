@@ -28,10 +28,9 @@ import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.Global
 import org.eclipse.sirius.tree.description.TreeItemMapping;
 import org.eclipse.sirius.tree.tools.internal.Messages;
 
-import java.util.ArrayList;
-import java.util.function.Function;
-
+import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * Update the {@link DTree} model according to the semantic model and the
@@ -109,7 +108,7 @@ public class DTreeRefresh {
                 }
                 monitor.worked(1);
 
-                hierarchy.compute(new ArrayList<>());
+                hierarchy.compute(Lists.newArrayList(providedMappings));
                 if (monitor.isCanceled()) {
                     throw new OperationCanceledException();
                 }

@@ -12,11 +12,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.format.semantic;
 
-import java.util.Objects;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.diagram.ui.tools.api.format.FormatDataKey;
+
+import com.google.common.base.Objects;
 
 /**
  * Common behavior for Semantic*FormatDataKey classes.
@@ -59,7 +59,7 @@ public abstract class AbstractSemanticFormatDataKey implements FormatDataKey, Co
      */
     @Override
     public int hashCode() {
-        return Objects.hash(semanticElementURIFragment);
+        return Objects.hashCode(semanticElementURIFragment);
     }
 
     /**

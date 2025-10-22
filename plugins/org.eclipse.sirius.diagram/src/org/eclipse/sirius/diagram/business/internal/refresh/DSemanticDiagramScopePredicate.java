@@ -14,12 +14,13 @@ package org.eclipse.sirius.diagram.business.internal.refresh;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
-import java.util.function.Predicate;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.sirius.diagram.DiagramPackage;
+
+import com.google.common.base.Predicate;
 
 /**
  * Pridicate to filter {@link Notification} concerning only the DSemanticDiagram & DDiagramElement.
@@ -65,7 +66,7 @@ public class DSemanticDiagramScopePredicate implements Predicate<Notification> {
      * {@inheritDoc}
      */
     @Override
-    public boolean test(Notification input) {
+    public boolean apply(Notification input) {
         if (!input.isTouch()) {
             switch (input.getEventType()) {
             case Notification.SET:

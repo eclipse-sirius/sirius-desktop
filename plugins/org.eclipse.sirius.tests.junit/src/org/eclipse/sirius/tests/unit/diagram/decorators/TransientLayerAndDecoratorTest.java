@@ -51,6 +51,7 @@ import org.eclipse.ui.IEditorPart;
 import org.junit.Assert;
 
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * Test the transient layer and its decorators functionality.
@@ -141,7 +142,8 @@ public class TransientLayerAndDecoratorTest extends GenericTestCase {
         Assert.assertEquals("The first transient layer has not the expected name", TRANSIENT_LAYER_MAPPING_BASED_DECORATOR_LABEL, transientLayers.get(0).getLabel());
 
         assertNotNull(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, transientLayers.get(0).getDecorationDescriptionsSet());
-        final List<MappingBasedDecoration> decorationDescriptions = new ArrayList<>();
+        final List<MappingBasedDecoration> decorationDescriptions = Lists
+                .newArrayList(Iterables.filter(transientLayers.get(0).getDecorationDescriptionsSet().getDecorationDescriptions(), MappingBasedDecoration.class));
         assertEquals(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, 1, Iterables.size(decorationDescriptions));
 
         MappingBasedDecoration mbd = decorationDescriptions.get(0);
@@ -189,7 +191,8 @@ public class TransientLayerAndDecoratorTest extends GenericTestCase {
         Assert.assertEquals("The first transient layer has not the expected name", TRANSIENT_LAYER_MAPPING_BASED_DECORATOR_EXTENSION_LABEL, transientLayers.get(0).getLabel());
 
         assertNotNull(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, transientLayers.get(0).getDecorationDescriptionsSet());
-        final List<MappingBasedDecoration> decorationDescriptions = new ArrayList<>();
+        final List<MappingBasedDecoration> decorationDescriptions = Lists
+                .newArrayList(Iterables.filter(transientLayers.get(0).getDecorationDescriptionsSet().getDecorationDescriptions(), MappingBasedDecoration.class));
         assertEquals(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, 1, Iterables.size(decorationDescriptions));
 
         MappingBasedDecoration mbd = decorationDescriptions.get(0);
@@ -226,7 +229,8 @@ public class TransientLayerAndDecoratorTest extends GenericTestCase {
         Assert.assertEquals("The third transient layer has not the expected name", TRANSIENT_LAYER_MAPPING_BASED_DECORATOR_DEFAULT_OPTIONAL_LABEL, transientLayer.getLabel());
 
         assertNotNull(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, transientLayer.getDecorationDescriptionsSet());
-        final List<MappingBasedDecoration> decorationDescriptions = new ArrayList<>();
+        final List<MappingBasedDecoration> decorationDescriptions = Lists
+                .newArrayList(Iterables.filter(transientLayer.getDecorationDescriptionsSet().getDecorationDescriptions(), MappingBasedDecoration.class));
         assertEquals(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, 1, Iterables.size(decorationDescriptions));
 
         // Initialize the diagram
@@ -265,7 +269,8 @@ public class TransientLayerAndDecoratorTest extends GenericTestCase {
         Assert.assertEquals("The third transient layer has not the expected name", TRANSIENT_LAYER_MAPPING_BASED_DECORATOR_DEFAULT_NOT_OPTIONAL_LABEL, transientLayer.getLabel());
 
         assertNotNull(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, transientLayer.getDecorationDescriptionsSet());
-        final List<MappingBasedDecoration> decorationDescriptions = new ArrayList<>();
+        final List<MappingBasedDecoration> decorationDescriptions = Lists
+                .newArrayList(Iterables.filter(transientLayer.getDecorationDescriptionsSet().getDecorationDescriptions(), MappingBasedDecoration.class));
         assertEquals(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, 1, Iterables.size(decorationDescriptions));
 
         // Initialize the diagram
@@ -310,7 +315,8 @@ public class TransientLayerAndDecoratorTest extends GenericTestCase {
         Assert.assertEquals("The second transient layer has not the expected name", TRANSIENT_LAYER_SEMANTIC_BASED_DECORATOR_LABEL, transientLayers.get(1).getLabel());
 
         assertNotNull(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, transientLayers.get(1).getDecorationDescriptionsSet());
-        final List<SemanticBasedDecoration> decorationDescriptions = new ArrayList<>();
+        final List<SemanticBasedDecoration> decorationDescriptions = Lists
+                .newArrayList(Iterables.filter(transientLayers.get(1).getDecorationDescriptionsSet().getDecorationDescriptions(), SemanticBasedDecoration.class));
         assertEquals(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, 1, Iterables.size(decorationDescriptions));
 
         SemanticBasedDecoration sbd = decorationDescriptions.get(0);
@@ -360,7 +366,8 @@ public class TransientLayerAndDecoratorTest extends GenericTestCase {
         Assert.assertEquals("The second transient layer has not the expected name", TRANSIENT_LAYER_SEMANTIC_BASED_DECORATOR_EXTENSION_LABEL, transientLayers.get(1).getLabel());
 
         assertNotNull(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, transientLayers.get(1).getDecorationDescriptionsSet());
-        final List<SemanticBasedDecoration> decorationDescriptions = new ArrayList<>();
+        final List<SemanticBasedDecoration> decorationDescriptions = Lists
+                .newArrayList(Iterables.filter(transientLayers.get(1).getDecorationDescriptionsSet().getDecorationDescriptions(), SemanticBasedDecoration.class));
         assertEquals(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, 1, Iterables.size(decorationDescriptions));
 
         SemanticBasedDecoration sbd = decorationDescriptions.get(0);
@@ -401,7 +408,8 @@ public class TransientLayerAndDecoratorTest extends GenericTestCase {
         Assert.assertEquals("The second transient layer has not the expected name", TRANSIENT_LAYER_SEMANTIC_BASED_DECORATOR_DEFAULT_OPTIONAL_LABEL, transientLayer.getLabel());
 
         assertNotNull(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, transientLayer.getDecorationDescriptionsSet());
-        final List<SemanticBasedDecoration> decorationDescriptions = new ArrayList<>();
+        final List<SemanticBasedDecoration> decorationDescriptions = Lists
+                .newArrayList(Iterables.filter(transientLayer.getDecorationDescriptionsSet().getDecorationDescriptions(), SemanticBasedDecoration.class));
         assertEquals(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, 1, Iterables.size(decorationDescriptions));
 
         // Initialize the diagram
@@ -452,7 +460,8 @@ public class TransientLayerAndDecoratorTest extends GenericTestCase {
         Assert.assertEquals("The second transient layer has not the expected name", TRANSIENT_LAYER_SEMANTIC_BASED_DECORATOR_DEFAULT_OPTIONAL_LABEL, transientLayer.getLabel());
 
         assertNotNull(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, transientLayer.getDecorationDescriptionsSet());
-        final List<SemanticBasedDecoration> decorationDescriptions = new ArrayList<>();
+        final List<SemanticBasedDecoration> decorationDescriptions = Lists
+                .newArrayList(Iterables.filter(transientLayer.getDecorationDescriptionsSet().getDecorationDescriptions(), SemanticBasedDecoration.class));
         assertEquals(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, 1, Iterables.size(decorationDescriptions));
 
         // Initialize the diagram
@@ -507,7 +516,8 @@ public class TransientLayerAndDecoratorTest extends GenericTestCase {
         Assert.assertEquals("The second transient layer has not the expected name", TRANSIENT_LAYER_SEMANTIC_BASED_DECORATOR_DEFAULT_NOT_OPTIONAL_LABEL, transientLayer.getLabel());
 
         assertNotNull(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, transientLayer.getDecorationDescriptionsSet());
-        final List<SemanticBasedDecoration> decorationDescriptions = new ArrayList<>();
+        final List<SemanticBasedDecoration> decorationDescriptions = Lists
+                .newArrayList(Iterables.filter(transientLayer.getDecorationDescriptionsSet().getDecorationDescriptions(), SemanticBasedDecoration.class));
         assertEquals(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, 1, Iterables.size(decorationDescriptions));
 
         // Initialize the diagram

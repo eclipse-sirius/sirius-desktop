@@ -20,7 +20,6 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.WeakHashMap;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import org.eclipse.core.resources.IProject;
@@ -100,6 +99,7 @@ import org.eclipse.ui.Saveable;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
+import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
@@ -696,7 +696,7 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
         Collection<EObject> eObjects = Collections.emptyList();
         if (selection != null) {
             // Keep only EObjects, not Resources (CDOResources are EObjects).
-            eObjects = Sets.newLinkedHashSet(Iterables.filter(Iterables.filter(selection, EObject.class), Predicate.not(Predicates.instanceOf(Resource.class))));
+            eObjects = Sets.newLinkedHashSet(Iterables.filter(Iterables.filter(selection, EObject.class), Predicates.not(Predicates.instanceOf(Resource.class))));
         }
         return eObjects;
     }
@@ -714,7 +714,7 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
         if (selection != null) {
             projects = Sets.newLinkedHashSet(Iterables.filter(Iterables.filter(selection, IProject.class), new Predicate<IProject>() {
                 @Override
-                public boolean test(IProject input) {
+                public boolean apply(IProject input) {
                     return ModelingProject.hasModelingProjectNature(input);
                 }
             }));

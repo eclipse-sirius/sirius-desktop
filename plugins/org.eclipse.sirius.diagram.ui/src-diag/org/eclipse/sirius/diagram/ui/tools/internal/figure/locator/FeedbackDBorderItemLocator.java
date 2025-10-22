@@ -15,7 +15,6 @@ package org.eclipse.sirius.diagram.ui.tools.internal.figure.locator;
 import java.util.Collection;
 import java.util.List;
 import java.util.ListIterator;
-import java.util.function.Predicate;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -52,7 +51,7 @@ public class FeedbackDBorderItemLocator extends DBorderItemLocator {
             parentFigure = ((BorderedNodeFigure) parentFigure).getBorderItemContainer();
         }
         @SuppressWarnings("unchecked")
-        Iterable<? extends IFigure> brotherFigures = Iterables.filter(parentFigure.getChildren(), Predicates.instanceOf(IFigure.class).and(Predicate.not(Predicate.isEqual(targetBorderItem))));
+        Iterable<? extends IFigure> brotherFigures = Iterables.filter(parentFigure.getChildren(), Predicates.and(Predicates.instanceOf(IFigure.class), Predicates.not(Predicates.equalTo(targetBorderItem))));
         return Lists.newArrayList(brotherFigures);
     }
 

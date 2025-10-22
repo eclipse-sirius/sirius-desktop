@@ -15,7 +15,6 @@ package org.eclipse.sirius.tests.swtbot.sequence;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.function.Predicate;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.SnapToGeometry;
@@ -32,6 +31,7 @@ import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
 
+import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 
 /**
@@ -113,7 +113,7 @@ public class SyncCallInOperandReorderTest extends AbstractDefaultModelSequenceTe
 
         // A reparent might occurs for sync call (common test on several use
         // case)
-        syncCallExecBot = Iterables.filter(sequenceDiagramBot.descendants(IsInstanceOf.instanceOf(ExecutionEditPart.class)), Predicate.not(Predicate.isEqual(execBot))).iterator().next();
+        syncCallExecBot = Iterables.filter(sequenceDiagramBot.descendants(IsInstanceOf.instanceOf(ExecutionEditPart.class)), Predicates.not(Predicates.equalTo(execBot))).iterator().next();
         // No x test, all tests data will not produce a reparent.
         Rectangle expectedSyncCallExecBounds = syncCallExecBounds.getTranslated(0, dy);
 

@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import java.util.function.Predicate;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Dimension;
@@ -87,6 +86,7 @@ import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.junit.Assert;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
@@ -763,7 +763,7 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
         Predicate<SWTBotGefEditPart> combinedFragmentIncludingClickLocation = new Predicate<SWTBotGefEditPart>() {
 
             @Override
-            public boolean test(SWTBotGefEditPart input) {
+            public boolean apply(SWTBotGefEditPart input) {
                 if (input.part() instanceof CombinedFragmentEditPart) {
                     CombinedFragmentEditPart combinedFragmentEditPart = (CombinedFragmentEditPart) input.part();
                     return combinedFragmentEditPart.getFigure().getBounds().contains(singleClickPoint) && combinedFragmentEditPart.getISequenceEvent().getVerticalRange().includes(singleClickPoint.y);
@@ -1206,7 +1206,7 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
     protected LifelineEditPart getLifelineEditPart(String lifelineName) {
         Predicate<SWTBotGefEditPart> pred = new Predicate<SWTBotGefEditPart>() {
             @Override
-            public boolean test(SWTBotGefEditPart input) {
+            public boolean apply(SWTBotGefEditPart input) {
                 return input.part() instanceof LifelineEditPart;
             };
         };

@@ -13,7 +13,6 @@
 package org.eclipse.sirius.tests.swtbot;
 
 import java.util.List;
-import java.util.function.Function;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
@@ -35,6 +34,8 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.keyboard.Keystrokes;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
+
+import com.google.common.base.Function;
 
 /**
  * This class aims to tests deletion from model via key board when a label is

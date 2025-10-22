@@ -47,6 +47,8 @@ import org.eclipse.swtbot.swt.finder.results.VoidResult;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.junit.Assert;
 
+import com.google.common.collect.Lists;
+
 /**
  * A test for ensuring that the 'SelectAll' Action selects the right Edit Parts, and that elements can be correctly
  * deselected.
@@ -160,7 +162,7 @@ public class SelectAllAndDeselectionTest extends AbstractSiriusSwtBotGefTestCase
         if (platformProblemsListener.doesAnErrorOccurs()) {
             Assert.fail(platformProblemsListener.getErrorLoggersMessage());
         }
-        checkSelectedEditParts(new ArrayList<>(getEditPartsFromNames(PACKAGE_1_NAME)));
+        checkSelectedEditParts(Lists.newArrayList(getEditPartsFromNames(PACKAGE_1_NAME)));
     }
 
     /**

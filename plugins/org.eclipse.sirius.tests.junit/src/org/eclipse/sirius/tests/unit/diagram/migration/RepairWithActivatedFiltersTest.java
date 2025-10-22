@@ -14,7 +14,6 @@ package org.eclipse.sirius.tests.unit.diagram.migration;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.function.Predicate;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -40,6 +39,7 @@ import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 
+import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 
@@ -129,7 +129,7 @@ public class RepairWithActivatedFiltersTest extends AbstractRepairMigrateTest {
         assertTrue("wrong expected type", diagramElement instanceof DNodeContainer);
         Predicate<Object> predicate = new Predicate<Object>() {
 
-            public boolean test(Object input) {
+            public boolean apply(Object input) {
                 if (input instanceof DNodeContainer) {
                     String name = ((DNodeContainer) input).getName();
                     if (name.equals("Test") || name.equals("Test2") || name.equals("testPackage")) {

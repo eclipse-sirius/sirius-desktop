@@ -20,8 +20,6 @@ import java.util.BitSet;
 import java.util.Collection;
 import java.util.List;
 import java.util.ListIterator;
-import java.util.function.Function;
-import java.util.function.Predicate;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Layer;
@@ -34,6 +32,7 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.DBorderedNodeFigure;
 
+import com.google.common.base.Function;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -825,7 +824,7 @@ public class DBorderItemLocator extends BorderItemLocator {
     protected List<IFigure> getBrotherFigures(final IFigure targetBorderItem) {
         @SuppressWarnings("unchecked")
         Iterable<? extends IFigure> brotherFigures = Iterables.filter(targetBorderItem.getParent().getChildren(),
-        Predicates.instanceOf(IFigure.class).and(Predicate.not(Predicate.isEqual(targetBorderItem))));
+                Predicates.and(Predicates.instanceOf(IFigure.class), Predicates.not(Predicates.equalTo(targetBorderItem))));
         return Lists.newArrayList(brotherFigures);
     }
 

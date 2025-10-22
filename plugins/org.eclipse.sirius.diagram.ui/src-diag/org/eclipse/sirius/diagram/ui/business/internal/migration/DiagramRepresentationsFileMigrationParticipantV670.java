@@ -15,7 +15,6 @@ package org.eclipse.sirius.diagram.ui.business.internal.migration;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.function.Predicate;
 
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
@@ -59,6 +58,7 @@ import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.osgi.framework.Version;
 
+import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
@@ -288,7 +288,7 @@ public class DiagramRepresentationsFileMigrationParticipantV670 {
      */
     private static final class IsStandardDiagramPredicate implements Predicate<Diagram> {
         @Override
-        public boolean test(Diagram input) {
+        public boolean apply(Diagram input) {
             boolean apply = false;
             if (input.getElement() instanceof DDiagram) {
                 DDiagram diag = (DDiagram) input.getElement();
@@ -313,7 +313,7 @@ public class DiagramRepresentationsFileMigrationParticipantV670 {
     private static final class IsBorderedNodePredicate implements Predicate<Node> {
 
         @Override
-        public boolean test(Node input) {
+        public boolean apply(Node input) {
             // Is this node the main view of a DNode and a border
             // node ?
             return new NodeQuery(input).isBorderedNode();
@@ -330,7 +330,7 @@ public class DiagramRepresentationsFileMigrationParticipantV670 {
 
     private static final class IsDirectlyCollapsedNodePredicate implements Predicate<Node> {
         @Override
-        public boolean test(Node input) {
+        public boolean apply(Node input) {
             boolean apply = false;
 
             int type = SiriusVisualIDRegistry.getVisualID(input.getType());

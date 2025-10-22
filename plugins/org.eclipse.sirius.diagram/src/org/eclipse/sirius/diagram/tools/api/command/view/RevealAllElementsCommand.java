@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.tools.api.command.view;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 
 import org.eclipse.emf.common.util.AbstractTreeIterator;
@@ -23,6 +22,8 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.HideFilterHelper;
 import org.eclipse.sirius.diagram.tools.api.Messages;
+
+import com.google.common.collect.Lists;
 
 /**
  * Command that is able to reveal all elements of a viewpoint.
@@ -89,7 +90,7 @@ public class RevealAllElementsCommand extends RecordingCommand {
 
         @Override
         protected Iterator<EObject> getChildren(Object object) {
-            return new ArrayList<>(((EObject) object).eContents()).iterator();
+            return Lists.newArrayList(((EObject) object).eContents()).iterator();
         }
     }
 

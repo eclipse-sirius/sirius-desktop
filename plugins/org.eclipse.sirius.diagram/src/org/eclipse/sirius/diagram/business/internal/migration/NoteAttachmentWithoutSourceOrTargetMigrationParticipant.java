@@ -15,7 +15,6 @@ package org.eclipse.sirius.diagram.business.internal.migration;
 import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -34,6 +33,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
 import org.osgi.framework.Version;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
@@ -122,7 +122,7 @@ public class NoteAttachmentWithoutSourceOrTargetMigrationParticipant extends Abs
     private void deleteNoteAttachmentWithoutSourceOrTarget(Diagram gmfDiagram, String diagramName) {
         Iterable<Connector> noteAttachmentsToRemoveIter = Iterables.filter(Iterables.filter(gmfDiagram.getEdges(), Connector.class), new Predicate<Connector>() {
             @Override
-            public boolean test(Connector connector) {
+            public boolean apply(Connector connector) {
                 if (ViewType.NOTEATTACHMENT.equals(connector.getType())) {
                     if (connector.getSource() == null || connector.getTarget() == null) {
                         return true;

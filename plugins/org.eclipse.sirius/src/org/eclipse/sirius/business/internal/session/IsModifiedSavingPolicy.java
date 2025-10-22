@@ -18,7 +18,6 @@ import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
-import java.util.function.Predicate;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
@@ -35,6 +34,8 @@ import org.eclipse.sirius.common.tools.api.resource.ResourceMigrationMarker;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
 
+import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Sets;
@@ -72,7 +73,7 @@ public class IsModifiedSavingPolicy extends AbstractSavingPolicy {
     private Predicate<Resource> isModified = new Predicate<Resource>() {
 
         @Override
-        public boolean test(Resource resource) {
+        public boolean apply(Resource resource) {
             /*
              * We assume the resource always is "tracking modification" but not using the Resource-specific
              * implementation. We rely on the fact that the Sirius runtime will set the isModified flag itself when a
@@ -93,7 +94,7 @@ public class IsModifiedSavingPolicy extends AbstractSavingPolicy {
     private Predicate<Resource> underlyingFileIsDeletedOrConflicting = new Predicate<Resource>() {
 
         @Override
-        public boolean test(Resource resource) {
+        public boolean apply(Resource resource) {
             ResourceStatus resourceStatus = ResourceSetSync.getStatus(resource);
             return resourceStatus == ResourceStatus.DELETED || resourceStatus == ResourceStatus.CONFLICTING_DELETED;
         }
@@ -131,7 +132,7 @@ public class IsModifiedSavingPolicy extends AbstractSavingPolicy {
         Set<Resource> saveable = Sets.newLinkedHashSet(Iterables.filter(scope, new Predicate<Resource>() {
 
             @Override
-            public boolean test(Resource resourcetoSave) {
+            public boolean apply(Resource resourcetoSave) {
                 return !ResourceSetSync.isReadOnly(resourcetoSave) && !SiriusUtil.isModelerDescriptionFile(resourcetoSave);
             }
 
@@ -154,7 +155,7 @@ public class IsModifiedSavingPolicy extends AbstractSavingPolicy {
             private URIConverter defaultConverter;
 
             @Override
-            public boolean test(Resource resourcetoSave) {
+            public boolean apply(Resource resourcetoSave) {
                 ResourceSet rs = resourcetoSave.getResourceSet();
                 URIConverter uriConverter = rs == null ? getDefaultURIConverter() : rs.getURIConverter();
                 return uriConverter.exists(resourcetoSave.getURI(), mergedOptions);
@@ -167,7 +168,7 @@ public class IsModifiedSavingPolicy extends AbstractSavingPolicy {
                 return defaultConverter;
             }
         };
-        Set<Resource> underlyingFileDoesNotExist = Sets.newLinkedHashSet(Iterables.filter(saveable, Predicate.not(exists)));
+        Set<Resource> underlyingFileDoesNotExist = Sets.newLinkedHashSet(Iterables.filter(saveable, Predicates.not(exists)));
         Set<Resource> isConflictingOrDeleted = Sets.newLinkedHashSet(Iterables.filter(saveable, underlyingFileIsDeletedOrConflicting));
         /*
          * or the underlying file is out of date and must be recreated/updated to match the version in memory.
@@ -196,7 +197,7 @@ public class IsModifiedSavingPolicy extends AbstractSavingPolicy {
         }
 
         @Override
-        public boolean test(Resource resource) {
+        public boolean apply(Resource resource) {
             Predicate<EObject> hasOuterRef = new EObjectHasReferencesTo(modifiedResources);
             return Iterators.any(EcoreUtil.<EObject> getAllProperContents(resource, false), hasOuterRef);
         }
@@ -210,7 +211,7 @@ public class IsModifiedSavingPolicy extends AbstractSavingPolicy {
         }
 
         @Override
-        public boolean test(EObject source) {
+        public boolean apply(EObject source) {
             if (!source.eIsProxy()) {
                 /*
                  * We could process the references in an order which gives us the highest chance to hit a success sooner
@@ -225,7 +226,7 @@ public class IsModifiedSavingPolicy extends AbstractSavingPolicy {
                     if (!ref.isTransient() && !ref.isContainment()) {
                         for (EObject target : getReferencedEObjects(source, ref)) {
                             final Resource targetResource = target.eResource();
-                            if (!target.eIsProxy() && targetResource != null && modifiedResources.test(targetResource)) {
+                            if (!target.eIsProxy() && targetResource != null && modifiedResources.apply(targetResource)) {
                                 return true;
                             }
                         }
