@@ -372,8 +372,8 @@ public class DefaultGalleryGroupRenderer extends AbstractGridGroupRenderer {
 	}
 
 	/**
-	 * @see org.eclipse.nebula.widgets.gallery.AbstractGridGroupRenderer#draw(org
-	 *      .eclipse.swt.graphics.GC,
+	 * @see org.eclipse.nebula.widgets.gallery.AbstractGridGroupRenderer#draw(
+	 *      org.eclipse.swt.graphics.GC,
 	 *      org.eclipse.nebula.widgets.gallery.GalleryItem, int, int, int, int,
 	 *      int, int)
 	 */

@@ -2184,8 +2184,8 @@ public class Gallery extends Canvas {
 	}
 
 	/**
-	 * @see org.eclipse.swt.widgets.Control#setBackground(org.eclipse.swt.graphics
-	 *      .Color)
+	 * @see org.eclipse.swt.widgets.Control#setBackground(
+	 *      org.eclipse.swt.graphics.Color)
 	 */
 	public void setBackground(Color color) {
 		// Cache color locally
@@ -2199,8 +2199,8 @@ public class Gallery extends Canvas {
 	}
 
 	/**
-	 * @see org.eclipse.swt.widgets.Control#setForeground(org.eclipse.swt.graphics
-	 *      .Color)
+	 * @see org.eclipse.swt.widgets.Control#setForeground(
+	 *      org.eclipse.swt.graphics.Color)
 	 */
 	public void setForeground(Color color) {
 		// Cache color locally

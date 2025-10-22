@@ -166,7 +166,7 @@ public class NoUICallback implements UICallBack {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.tools.api.command.ui.UICallBack#openError(java.lang .String, java.lang.String)
+     * @see org.eclipse.sirius.tools.api.command.ui.UICallBack#openError(java.lang.String, java.lang.String)
      */
     @Override
     public void openError(String title, String message) {

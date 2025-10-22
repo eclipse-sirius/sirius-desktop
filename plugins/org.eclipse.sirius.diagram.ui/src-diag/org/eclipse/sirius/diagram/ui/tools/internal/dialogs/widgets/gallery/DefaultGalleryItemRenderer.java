@@ -125,8 +125,8 @@ public class DefaultGalleryItemRenderer extends AbstractGalleryItemRenderer {
 	}
 
 	/**
-	 * @see org.eclipse.nebula.widgets.gallery.AbstractGalleryItemRenderer#draw(org
-	 *      .eclipse.swt.graphics.GC,
+	 * @see org.eclipse.nebula.widgets.gallery.AbstractGalleryItemRenderer#draw(
+	 *      org.eclipse.swt.graphics.GC,
 	 *      org.eclipse.nebula.widgets.gallery.GalleryItem, int, int, int, int,
 	 *      int)
 	 */
