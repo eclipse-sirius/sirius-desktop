@@ -52,15 +52,6 @@
    <feature id="org.eclipse.sirius.diagram.elk.feature" version="0.0.0">
       <category name="Sirius"/>
    </feature>
-   <feature id="org.eclipse.sirius.tests.rcptt.feature" version="0.0.0">
-      <category name="Sirius.SDK"/>
-   </feature>
-   <feature id="org.eclipse.sirius.tests" version="0.0.0">
-      <category name="Sirius.SDK"/>
-   </feature>
-   <feature id="org.eclipse.sirius.tests.support" version="0.0.0">
-      <category name="Sirius.SDK"/>
-   </feature>
    <feature id="org.eclipse.sirius.diagram.elk.sdk.feature" version="0.0.0">
       <category name="Sirius.SDK"/>
    </feature>
@@ -109,13 +100,7 @@
    <feature id="org.eclipse.sirius.samples.properties.feature.source" version="0.0.0">
       <category name="Sirius.SDK"/>
    </feature>
-   <feature id="org.eclipse.sirius.tests.rcptt.feature.source" version="0.0.0">
-      <category name="Sirius.SDK"/>
-   </feature>
    <feature id="org.eclipse.sirius.runtime.ide.xtext.source" version="0.0.0">
-      <category name="Sirius.SDK"/>
-   </feature>
-   <feature id="org.eclipse.sirius.tests.source" version="0.0.0">
       <category name="Sirius.SDK"/>
    </feature>
    <feature id="org.eclipse.sirius.debug.feature" version="0.0.0">
@@ -125,9 +110,6 @@
       <category name="Sirius.SDK"/>
    </feature>
    <feature id="org.eclipse.sirius.diagram.elk.feature.source" version="0.0.0">
-      <category name="Sirius.SDK"/>
-   </feature>
-   <feature id="org.eclipse.sirius.tests.support.source" version="0.0.0">
       <category name="Sirius.SDK"/>
    </feature>
    <feature id="org.eclipse.sirius.diagram.elk.sdk.feature.source" version="0.0.0">

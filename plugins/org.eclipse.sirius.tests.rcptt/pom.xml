@@ -64,5 +64,7 @@ Contributors:
       </plugin>
     </plugins>
   </build>
+  <dependencies>
+  </dependencies>
 </project>
 

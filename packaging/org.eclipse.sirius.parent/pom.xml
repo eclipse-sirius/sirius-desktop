@@ -389,6 +389,7 @@
         <module>../../plugins/org.eclipse.sirius.ui.ext</module>
         <module>../../plugins/org.eclipse.sirius.ui.editor</module>
         <module>../../plugins/org.eclipse.sirius.ui.interpreter</module>
+
         <module>../../plugins/org.eclipse.sirius.tests.junit.support</module>
         <module>../../plugins/org.eclipse.sirius.tests.swtbot.support</module>
 
@@ -426,7 +427,9 @@
         <module>../../packaging/org.eclipse.sirius.specifier</module>
         <module>../../packaging/org.eclipse.sirius.specifier.ide.ui.aql</module>
         <module>../../packaging/org.eclipse.sirius.specifier.ide.ui</module>
+
         <module>../../packaging/org.eclipse.sirius.tests.support</module>
+
 
         <module>../../packaging/org.eclipse.sirius.interpreter.feature</module>
         <module>../../packaging/org.eclipse.sirius.properties.feature</module>
@@ -464,9 +467,12 @@
         <module>../../plugins/org.eclipse.sirius.tests.sample.xtext.statemachine.ide</module>
         <module>../../plugins/org.eclipse.sirius.tests.sample.xtext.statemachine.design</module>
 
+
+
         <module>../../plugins/org.eclipse.sirius.tests.junit</module>
         <module>../../plugins/org.eclipse.sirius.tests.junit.xtext</module>
         <module>../../plugins/org.eclipse.sirius.tests.tree</module>
+
         <module>../../plugins/org.eclipse.sirius.tests.swtbot</module>
         <module>../../plugins/org.eclipse.sirius.tests.rcptt.properties</module>
         <module>../../plugins/org.eclipse.sirius.tests.rcptt.properties.edit</module>
@@ -474,11 +480,15 @@
         <module>../../plugins/org.eclipse.sirius.tests.rcptt.properties.samples</module>
 
         <!-- features -->
+<!--
         <module>../../packaging/org.eclipse.sirius.tests</module>
         <module>../../packaging/org.eclipse.sirius.tests.rcptt.feature</module>
+-->
 
         <!-- update sites -->
+<!--
         <module>../../packaging/org.eclipse.sirius.tests.update</module>
+-->
     </modules>
   </profile>
 

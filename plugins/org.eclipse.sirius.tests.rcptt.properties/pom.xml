@@ -29,4 +29,6 @@
   <packaging>eclipse-plugin</packaging>
   <version>7.5.0-SNAPSHOT</version>
 
+  <dependencies>
+  </dependencies>
 </project>

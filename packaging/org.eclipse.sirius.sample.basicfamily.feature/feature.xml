@@ -19,25 +19,6 @@
       %license
    </license>
 
-   <plugin
-         id="org.eclipse.sirius.sample.basicfamily.design"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
 
-   <plugin
-         id="org.eclipse.sirius.sample.basicfamily.edit"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.sirius.sample.basicfamily"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
 
 </feature>

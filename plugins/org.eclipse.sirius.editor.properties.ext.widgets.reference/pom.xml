@@ -25,4 +25,51 @@
   <packaging>eclipse-plugin</packaging>
   <version>7.5.0-SNAPSHOT</version>
 
+  <dependencies>
+    <dependency>
+      <groupId>org.eclipse.sirius</groupId>
+      <artifactId>org.eclipse.sirius.ui</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.sirius</groupId>
+      <artifactId>org.eclipse.sirius.properties</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.sirius</groupId>
+      <artifactId>org.eclipse.sirius.properties.ext.widgets.reference</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.sirius</groupId>
+      <artifactId>org.eclipse.sirius.properties.ext.widgets.reference.edit</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.sirius</groupId>
+      <artifactId>org.eclipse.sirius.editor</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.sirius</groupId>
+      <artifactId>org.eclipse.sirius.editor.properties</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.sirius</groupId>
+      <artifactId>org.eclipse.sirius.ext.base</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.sirius</groupId>
+      <artifactId>org.eclipse.sirius.ext.emf</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.sirius</groupId>
+      <artifactId>org.eclipse.sirius.ext.swt</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+  </dependencies>
 </project>

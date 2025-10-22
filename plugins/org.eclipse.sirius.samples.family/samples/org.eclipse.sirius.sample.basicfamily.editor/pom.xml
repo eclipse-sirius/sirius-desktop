@@ -32,4 +32,28 @@
   <packaging>eclipse-plugin</packaging>
   <version>1.0.0-SNAPSHOT</version>
 
+  <dependencies>
+<!--
+     <dependency>
+      <groupId>org.eclipse.sirius</groupId>
+      <artifactId>org.eclipse.sirius</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+     <dependency>
+      <groupId>org.eclipse.sirius</groupId>
+      <artifactId>org.eclipse.sirius.common.acceleo.aql</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+-->
+     <dependency>
+      <groupId>org.eclipse.sirius</groupId>
+      <artifactId>org.eclipse.sirius.sample.basicfamily.edit</artifactId>
+      <version>${project.version}</version>
+    </dependency>    
+     <dependency>
+      <groupId>org.eclipse.sirius</groupId>
+      <artifactId>org.eclipse.sirius.sample.basicfamily</artifactId>
+      <version>${project.version}</version>
+    </dependency>    
+  </dependencies>
 </project>
