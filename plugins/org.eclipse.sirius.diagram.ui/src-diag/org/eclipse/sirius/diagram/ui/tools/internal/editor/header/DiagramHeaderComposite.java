@@ -31,6 +31,7 @@ import org.eclipse.gef.editparts.ZoomManager;
 import org.eclipse.gef.rulers.RulerProvider;
 import org.eclipse.gef.ui.parts.ScrollingGraphicalViewer;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DiagramPackage;
@@ -58,19 +59,25 @@ import org.eclipse.swt.widgets.Sash;
 import com.google.common.collect.Lists;
 
 /**
- * A specific composite to display header diagram. This composite has 2 sub
- * composites :
+ * A specific composite to display header diagram. This composite has 2 sub composites :
  * <UL>
- * <LI>One for the header composite, headerSection, to display Labels
- * corresponding to HeaderData</LI>
- * <LI>and one for display others composite, mainSection, (currently the GMF
- * diagram).</LI>
+ * <LI>One for the header composite, headerSection, to display Labels corresponding to HeaderData</LI>
+ * <LI>and one for display others composite, mainSection, (currently the GMF diagram).</LI>
  * </UL>
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  * 
  */
 public class DiagramHeaderComposite extends Composite {
+
+    private static final String WIDGET_DATA_STYLE_KEYSTYLE = "style"; //$NON-NLS-1$
+
+    private static final String LABEL_CONTAINER_FORCED_STYLE_FORMAT_STRING = "background-color: %s!important;"; //$NON-NLS-1$
+
+    private static final String LABEL_FORCED_STYLE_FORMAT_STRING = "background-color: %s !important; color: %s !important;"; //$NON-NLS-1$
+
+    private static final String HEX_COLOR_FORMAT_STRING = "#%02X%02X%02X"; //$NON-NLS-1$
+
     /**
      * The minimum height of a line for the header.
      */
@@ -82,8 +89,7 @@ public class DiagramHeaderComposite extends Composite {
     private static int lineHeight;
 
     /**
-     * The width of the left ruler in
-     * {@link org.eclipse.gef.ui.rulers.RulerComposite}.
+     * The width of the left ruler in {@link org.eclipse.gef.ui.rulers.RulerComposite}.
      */
     private static final int LEFT_RULER_WIDTH = 22;
 
@@ -133,9 +139,9 @@ public class DiagramHeaderComposite extends Composite {
         verticalGridLayout.marginWidth = 0;
         verticalGridLayout.verticalSpacing = 0;
         this.setLayout(verticalGridLayout);
-        Color defaultSeparatorColor = VisualBindingManager.getDefault().getLabelColorFromRGBValues(HeaderData.DEFAULT_SEPARATOR_BACKGROUND_COLOR);
 
-        addLineSeparator(defaultSeparatorColor);
+        Color defaultSeparatorColor = VisualBindingManager.getDefault().getColorFromRGBValues(HeaderData.DEFAULT_SEPARATOR_BACKGROUND_COLOR);
+        addLineSeparator(defaultSeparatorColor, false);
 
         headerSection = new Composite(this, SWT.NONE);
         GridData gd = new GridData(GridData.FILL_HORIZONTAL);
@@ -149,8 +155,8 @@ public class DiagramHeaderComposite extends Composite {
         headerSection.setBackground(defaultSeparatorColor);
         headerSection.setCursor(DISABLED_CURSOR);
 
-        addLineSeparator(defaultSeparatorColor);
-        addLineSeparator(ColorConstants.lightGray);
+        addLineSeparator(defaultSeparatorColor, false);
+        addLineSeparator(ColorConstants.lightGray, true);
 
         // Add a Sash to allow to resize the height of the header.
         sash = new Sash(parent, SWT.HORIZONTAL);
@@ -164,8 +170,8 @@ public class DiagramHeaderComposite extends Composite {
             }
 
             /**
-             * @see org.eclipse.swt.events.MouseListener#mouseDoubleClick(org.eclipse.swt.events.MouseEvent)
-             *      The header is auto-sized when the use double-click on sash.
+             * @see org.eclipse.swt.events.MouseListener#mouseDoubleClick(org.eclipse.swt.events.MouseEvent) The header
+             *      is auto-sized when the use double-click on sash.
              */
             public void mouseDoubleClick(MouseEvent e) {
                 int nbLines = getNbLinesNeeded();
@@ -182,9 +188,8 @@ public class DiagramHeaderComposite extends Composite {
     }
 
     /**
-     * Return the height of a line in diagram header. The height is computing
-     * according to the default font of the System.
-     * {@link DEFAULT_HEADER_LINE_HEIGHT} is a minimum.
+     * Return the height of a line in diagram header. The height is computing according to the default font of the
+     * System. {@link DEFAULT_HEADER_LINE_HEIGHT} is a minimum.
      * 
      * @return The height of a line in diagram header.
      */
@@ -204,19 +209,26 @@ public class DiagramHeaderComposite extends Composite {
      * 
      * @param color
      *            the color of this line separator
+     * @param force
+     *            force style to not being overridden by CSS engine
      */
-    protected void addLineSeparator(Color color) {
+    protected void addLineSeparator(Color color, boolean force) {
         Composite separator = new Composite(this, SWT.NONE);
         GridData gd = new GridData(GridData.FILL_HORIZONTAL);
         gd.heightHint = 1;
         separator.setLayoutData(gd);
         separator.setBackground(color);
         separator.setCursor(DISABLED_CURSOR);
+
+        if (force) {
+            String colorHex = String.format(HEX_COLOR_FORMAT_STRING, color.getRed(), color.getGreen(), color.getBlue());
+            String newForcedStyle = String.format(LABEL_CONTAINER_FORCED_STYLE_FORMAT_STRING, colorHex);
+            separator.setData(WIDGET_DATA_STYLE_KEYSTYLE, newForcedStyle);
+        }
     }
 
     /**
-     * Rebuild the label composite of the header section according to the header
-     * data.
+     * Rebuild the label composite of the header section according to the header data.
      */
     public void rebuildHeaderSection() {
         headerSection.setRedraw(false);
@@ -241,8 +253,8 @@ public class DiagramHeaderComposite extends Composite {
             headerSection.setLayout(layout);
 
             if (isRulerVisible) {
-                // Add a blank label for the space take by the ruler.
-                createLabelInHeaderSection("", DiagramHeaderComposite.LEFT_RULER_WIDTH, VisualBindingManager.getDefault().getLabelColorFromRGBValues(HeaderData.DEFAULT_SEPARATOR_BACKGROUND_COLOR), //$NON-NLS-1$
+                // Add a blank label for the space taken by the ruler.
+                createLabelInHeaderSection("", DiagramHeaderComposite.LEFT_RULER_WIDTH, VisualBindingManager.getDefault().getColorFromRGBValues(HeaderData.DEFAULT_SEPARATOR_BACKGROUND_COLOR), //$NON-NLS-1$
                         VisualBindingManager.getDefault().getLabelColorFromRGBValues(HeaderData.DEFAULT_LABEL_COLOR));
             }
             int previousXLocation = 0;
@@ -259,7 +271,7 @@ public class DiagramHeaderComposite extends Composite {
                     }
                     int blankWidth = xLocation - (previousXLocation + previousWidth);
                     if (blankWidth > 0) {
-                        createLabelInHeaderSection("", blankWidth, VisualBindingManager.getDefault().getLabelColorFromRGBValues(HeaderData.DEFAULT_SEPARATOR_BACKGROUND_COLOR), VisualBindingManager //$NON-NLS-1$
+                        createLabelInHeaderSection("", blankWidth, VisualBindingManager.getDefault().getColorFromRGBValues(HeaderData.DEFAULT_SEPARATOR_BACKGROUND_COLOR), VisualBindingManager //$NON-NLS-1$
                                 .getDefault().getLabelColorFromRGBValues(HeaderData.DEFAULT_LABEL_COLOR));
                     }
                     Color backgroundColor;
@@ -329,7 +341,14 @@ public class DiagramHeaderComposite extends Composite {
         gl.marginWidth = 0;
         gl.verticalSpacing = 0;
         labelContainer.setLayout(gl);
+
         labelContainer.setBackground(backgroundColor);
+
+        if (VisualBindingManager.getDefault().getColorFromRGBValues(HeaderData.DEFAULT_SEPARATOR_BACKGROUND_COLOR) != backgroundColor) {
+            String colorHex = String.format(HEX_COLOR_FORMAT_STRING, backgroundColor.getRed(), backgroundColor.getGreen(), backgroundColor.getBlue());
+            String newForcedStyle = String.format(LABEL_CONTAINER_FORCED_STYLE_FORMAT_STRING, colorHex);
+            labelContainer.setData(WIDGET_DATA_STYLE_KEYSTYLE, newForcedStyle); // $NON-NLS-1$
+        }
 
         final Label label = new Label(labelContainer, SWT.CENTER | SWT.HORIZONTAL | SWT.WRAP);
         label.setText(text);
@@ -338,10 +357,17 @@ public class DiagramHeaderComposite extends Composite {
         label.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, true, true));
         label.setBackground(backgroundColor);
         label.setForeground(labelColor);
+
+        if (!StringUtil.isEmpty(text)) {
+            String colorHex = String.format(HEX_COLOR_FORMAT_STRING, backgroundColor.getRed(), backgroundColor.getGreen(), backgroundColor.getBlue());
+            String labelColorHex = String.format(HEX_COLOR_FORMAT_STRING, labelColor.getRed(), labelColor.getGreen(), labelColor.getBlue());
+            String newForcedStyle = String.format(LABEL_FORCED_STYLE_FORMAT_STRING, colorHex, labelColorHex);
+            label.setData(WIDGET_DATA_STYLE_KEYSTYLE, newForcedStyle); // $NON-NLS-1$
+        }
+
         labelContainer.addControlListener(new ControlListener() {
             /**
-             * When the label container is resized the displayed label is
-             * recomputed to truncate it if needed.
+             * When the label container is resized the displayed label is recomputed to truncate it if needed.
              * 
              * @see org.eclipse.swt.events.ControlListener#controlResized(org.eclipse.swt.events.ControlEvent)
              */
@@ -362,8 +388,7 @@ public class DiagramHeaderComposite extends Composite {
     }
 
     /**
-     * Get number of lines that is needed to display entirely all the header
-     * labels according to the current widths.
+     * Get number of lines that is needed to display entirely all the header labels according to the current widths.
      * 
      * @return
      */
@@ -382,8 +407,8 @@ public class DiagramHeaderComposite extends Composite {
     }
 
     /**
-     * Get the number of lines needed to display the <code>text</code> according
-     * to the font and the width of this <code>control</code>.
+     * Get the number of lines needed to display the <code>text</code> according to the font and the width of this
+     * <code>control</code>.
      * 
      * @param text
      *            The text to display
@@ -397,17 +422,14 @@ public class DiagramHeaderComposite extends Composite {
     }
 
     /**
-     * Add listeners and initialize this composite for the given graphical
-     * viewer.
+     * Add listeners and initialize this composite for the given graphical viewer.
      * <p>
-     * The primaryViewer or its Control cannot be <code>null</code>. The
-     * primaryViewer's Control should be a FigureCanvas and a child of this
-     * Composite. This method should only be invoked once.
+     * The primaryViewer or its Control cannot be <code>null</code>. The primaryViewer's Control should be a
+     * FigureCanvas and a child of this Composite. This method should only be invoked once.
      * <p>
      * 
      * @param primaryViewer
-     *            The graphical viewer for which this composite have to be
-     *            created
+     *            The graphical viewer for which this composite have to be created
      */
     public void setGraphicalViewer(ScrollingGraphicalViewer primaryViewer) {
         // pre-conditions
@@ -503,8 +525,8 @@ public class DiagramHeaderComposite extends Composite {
     }
 
     /**
-     * Set the height of the header section according to the
-     * <code>newHeight</code>. The heightHeader is also set in DDiagram.
+     * Set the height of the header section according to the <code>newHeight</code>. The heightHeader is also set in
+     * DDiagram.
      * 
      * @param newHeight
      *            The new height in pixels.
