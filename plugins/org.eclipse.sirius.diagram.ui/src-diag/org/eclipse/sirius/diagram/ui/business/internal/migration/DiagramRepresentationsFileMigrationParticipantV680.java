@@ -97,7 +97,7 @@ public class DiagramRepresentationsFileMigrationParticipantV680 {
      */
     private final class IsCompartmentPredicate implements Predicate<EObject> {
 
-        public boolean test(EObject arg0) {
+        public boolean apply(EObject arg0) {
             if (arg0 instanceof Node) {
                 int id = SiriusVisualIDRegistry.getVisualID(((Node) arg0).getType());
                 return id == DNodeContainerViewNodeContainerCompartment2EditPart.VISUAL_ID || id == DNodeContainerViewNodeContainerCompartmentEditPart.VISUAL_ID;

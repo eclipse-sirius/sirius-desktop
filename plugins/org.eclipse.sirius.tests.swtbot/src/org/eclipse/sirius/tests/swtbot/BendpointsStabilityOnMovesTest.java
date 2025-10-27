@@ -1069,7 +1069,7 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
                                 final Point point = expectedEntry.getValue().getPoint(i);
                                 atLeastOneBendpointUnderAMovedNode = !(Iterables.all(movedNodes, new Predicate<SWTBotGefEditPart>() {
                                     @Override
-                                    public boolean test(SWTBotGefEditPart input) {
+                                    public boolean apply(SWTBotGefEditPart input) {
                                         return !((GraphicalEditPart) input.part()).getFigure().getBounds().contains(point);
                                     }
                                 }));
@@ -1088,7 +1088,7 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
                     final Point point = expectedEntry.getValue().getPoint(i);
                     boolean atLeastOneBendpointUnderAMovedNode = !(Iterables.all(movedNodes, new Predicate<SWTBotGefEditPart>() {
                         @Override
-                        public boolean test(SWTBotGefEditPart input) {
+                        public boolean apply(SWTBotGefEditPart input) {
                             return !((GraphicalEditPart) input.part()).getFigure().getBounds().contains(point);
                         }
                     }));
@@ -1181,6 +1181,6 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
      *         nodeEditPart
      */
     private SetView<SWTBotGefConnectionEditPart> getAllConnectionsEditPart(SWTBotGefEditPart nodeEditPart) {
-        return Sets.union(new LinkedHashSet<>(nodeEditPart.sourceConnections()), new LinkedHashSet<>(nodeEditPart.targetConnections()));
+        return Sets.union(Sets.newLinkedHashSet(nodeEditPart.sourceConnections()), Sets.newLinkedHashSet(nodeEditPart.targetConnections()));
     }
 }

@@ -94,6 +94,7 @@ import org.eclipse.swt.graphics.Color;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * Specialization of the default policy for executions, in order to validate and execute the specific resize and move
@@ -405,20 +406,20 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
         final EObject sem = self.getSemanticTargetElement().get();
         final Predicate<SingleEventEnd> toMove = new Predicate<SingleEventEnd>() {
             @Override
-            public boolean test(SingleEventEnd input) {
+            public boolean apply(SingleEventEnd input) {
                 return !input.getSemanticEvent().equals(sem);
             }
         };
         final Predicate<EventEnd> moved = new Predicate<EventEnd>() {
             @Override
-            public boolean test(EventEnd input) {
+            public boolean apply(EventEnd input) {
                 return EventEndHelper.getSingleEventEnd(input, sem).isStart() == top;
             }
         };
 
         SequenceDiagram sequenceDiagram = self.getDiagram();
-        for (CompoundEventEnd cee : Iterables.filter(findEnds.stream().filter(moved).toList(), CompoundEventEnd.class)) {
-            for (SingleEventEnd see : new ArrayList<>(cee.getEventEnds()).stream().filter(toMove).toList()) {
+        for (CompoundEventEnd cee : Iterables.filter(Iterables.filter(findEnds, moved), CompoundEventEnd.class)) {
+            for (SingleEventEnd see : Iterables.filter(Lists.newArrayList(cee.getEventEnds()), toMove)) {
                 final ISequenceEvent ise = EventEndHelper.findISequenceEvent(see, sequenceDiagram);
                 if (ise == null) {
                     continue;
@@ -499,7 +500,7 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
 
         Predicate<EventEnd> filterCompoundEventEnd = new Predicate<EventEnd>() {
             @Override
-            public boolean test(EventEnd input) {
+            public boolean apply(EventEnd input) {
                 return input instanceof CompoundEventEnd;
             }
         };
@@ -517,7 +518,7 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
         boolean isReflective = message.isReflective();
         ISequenceNode targetElement = message.getTargetElement();
         List<EventEnd> messageEnds = EventEndHelper.findEndsFromSemanticOrdering(message);
-        if (!isReplyMessage && isReflective && messageEnds.stream().anyMatch(filterCompoundEventEnd) && targetElement == self) {
+        if (!isReplyMessage && isReflective && Iterables.any(messageEnds, filterCompoundEventEnd) && targetElement == self) {
             // Avoid target of the return message of a reflexive sync call to
             // reconnect on its execution
             toIgnore.add(self);
@@ -534,7 +535,7 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
         toIgnore.clear();
 
         ISequenceNode sourceElement = message.getSourceElement();
-        if (isReplyMessage && isReflective && messageEnds.stream().anyMatch(filterCompoundEventEnd) && sourceElement == self) {
+        if (isReplyMessage && isReflective && Iterables.any(messageEnds, filterCompoundEventEnd) && sourceElement == self) {
             // Avoid target of the return message of a reflexive sync call to reconnect on its execution
             toIgnore.add(self);
         }

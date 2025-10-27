@@ -21,7 +21,6 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.function.Function;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.transaction.RecordingCommand;
@@ -50,6 +49,7 @@ import org.eclipse.swt.widgets.Widget;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.CheckedTreeSelectionDialog;
 
+import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Sets;
 import com.google.common.collect.Sets.SetView;
@@ -70,7 +70,7 @@ public class DiagramElementSelectionDialogTest extends SiriusDiagramTestCase imp
 
     private final Predicate<Object> isVisible = new Predicate<Object>() {
         @Override
-        public boolean test(Object input) {
+        public boolean apply(Object input) {
             boolean result = false;
             if (input instanceof DDiagramElement) {
                 result = !(new DDiagramElementQuery((DDiagramElement) input).isHidden());

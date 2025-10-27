@@ -49,6 +49,8 @@ import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.junit.Assert;
 
+import com.google.common.collect.Lists;
+
 public class SiriusControlTest extends AbstractControlTest {
 
     private static final String PATH = "/data/unit/control/";
@@ -175,7 +177,7 @@ public class SiriusControlTest extends AbstractControlTest {
      */
     public void testControlUncontrolSecondModel() throws Exception {
         // Addition of 2 models as semantic resources
-        ArrayList<String> semanticModelPaths = new ArrayList<>();
+        ArrayList<String> semanticModelPaths = Lists.<String> newArrayList();
         semanticModelPaths.add(TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_MODEL_FILENAME_8);
         semanticModelPaths.add(TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_MODEL_FILENAME_8_1);
         genericSetUp(semanticModelPaths, Collections.<String> emptyList(), TEMPORARY_PROJECT_NAME + "/" + SESSION_MODEL_FILENAME_8);

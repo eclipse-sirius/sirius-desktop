@@ -19,7 +19,6 @@ import java.util.Comparator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsManager;
@@ -40,6 +39,7 @@ import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
 
 /**
  * Manage the candidate mappings availability based on activated layers.
@@ -70,21 +70,21 @@ public class CandidateMappingManager {
 
         nodeMappingPredicate = new Predicate<CandidateMapping>() {
             @Override
-            public boolean test(final CandidateMapping input) {
+            public boolean apply(final CandidateMapping input) {
                 return input.getMapping() instanceof NodeMapping;
             }
         };
 
         containerMappingPredicate = new Predicate<CandidateMapping>() {
             @Override
-            public boolean test(final CandidateMapping input) {
+            public boolean apply(final CandidateMapping input) {
                 return input.getMapping() instanceof ContainerMapping;
             }
         };
 
         edgeMappingPredicate = new Predicate<CandidateMapping>() {
             @Override
-            public boolean test(final CandidateMapping input) {
+            public boolean apply(final CandidateMapping input) {
                 return input.getMapping() instanceof EdgeMapping;
             }
         };
@@ -106,7 +106,7 @@ public class CandidateMappingManager {
 
         final Predicate<CandidateMapping> availablePredicate = new Predicate<CandidateMapping>() {
             @Override
-            public boolean test(final CandidateMapping input) {
+            public boolean apply(final CandidateMapping input) {
                 final Collection<Layer> layers = input.getParentLayers();
                 for (final Layer layer : layers) {
                     if (EqualityHelper.contains(activatedLayers, layer)) {
@@ -116,7 +116,7 @@ public class CandidateMappingManager {
                 return false;
             }
         };
-        availableCandidates = candidates.stream().filter(availablePredicate).collect(Collectors.toSet());
+        availableCandidates = Sets.filter(candidates, availablePredicate);
     }
 
     private void computeAllMappings() {

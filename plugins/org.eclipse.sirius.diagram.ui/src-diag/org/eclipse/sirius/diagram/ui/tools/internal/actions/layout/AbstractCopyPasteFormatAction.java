@@ -191,7 +191,7 @@ public abstract class AbstractCopyPasteFormatAction extends AbstractDiagramActio
                 final IDiagramDescriptionProvider provider = diagramTypeDescriptor.getDiagramDescriptionProvider();
                 result = new Predicate<DSemanticDecorator>() {
                     @Override
-                    public boolean test(DSemanticDecorator input) {
+                    public boolean apply(DSemanticDecorator input) {
                         return provider.allowsCopyPasteFormat(input);
                     }
                 };

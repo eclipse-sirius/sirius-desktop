@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.layout;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -48,6 +47,7 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * Class test for the new feature that straighten edges. See bug #499991 for details.
@@ -521,7 +521,7 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
             // Map only used if checkOtherEdges is true
             Map<TestPart, PointList> otherEdgeEditParts2ExpectedPointList = new HashMap<>();
             for (String edgeName : edgeNames) {
-                gefEditParts2ExpectedPointList.put(new TestPart(edgeName, editor.getEditPart(edgeName, AbstractDiagramEdgeEditPart.class)), new ArrayList<>());
+                gefEditParts2ExpectedPointList.put(new TestPart(edgeName, editor.getEditPart(edgeName, AbstractDiagramEdgeEditPart.class)), Lists.<Point> newArrayList());
             }
             editor.select(gefEditParts2ExpectedPointList.keySet().stream().map(part -> part.swtBotpart).collect(Collectors.toSet()));
             try {

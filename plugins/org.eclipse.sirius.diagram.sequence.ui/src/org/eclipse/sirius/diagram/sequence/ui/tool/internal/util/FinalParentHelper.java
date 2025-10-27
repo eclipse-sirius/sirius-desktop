@@ -36,6 +36,7 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 public class FinalParentHelper {
     /**
@@ -59,7 +60,7 @@ public class FinalParentHelper {
         }
 
         @Override
-        public boolean test(ISequenceEvent input) {
+        public boolean apply(ISequenceEvent input) {
             Range inputRange = input.getVerticalRange();
             boolean intersection = inputRange.intersects(fullFinalRange) && !linkedSiblings.contains(input);
             // Some event could not be parents : states for examples.
@@ -104,7 +105,7 @@ public class FinalParentHelper {
         }
 
         @Override
-        public boolean test(ISequenceEvent input) {
+        public boolean apply(ISequenceEvent input) {
             Option<Lifeline> inputLifeline = input.getLifeline();
             boolean same = !inputLifeline.some() || (selfLifeline.some() && inputLifeline.get() == selfLifeline.get());
 
@@ -231,7 +232,7 @@ public class FinalParentHelper {
          */
         Predicate<ISequenceEvent> notParentCombinedFragment = new Predicate<ISequenceEvent>() {
             @Override
-            public boolean test(ISequenceEvent input) {
+            public boolean apply(ISequenceEvent input) {
                 if (input instanceof CombinedFragment && self.getLifeline().some()) {
                     CombinedFragment combinedFragment = (CombinedFragment) input;
                     return !(combinedFragment.computeCoveredLifelines().contains(self.getLifeline().get()) && combinedFragment.getVerticalRange().includes(fullFinalRange));
@@ -240,7 +241,7 @@ public class FinalParentHelper {
             }
         };
 
-        Iterable<ISequenceEvent> invalids = Iterables.filter(finalSiblings, sameLifeline.and(notParentCombinedFragment).and(intersectsFinalBounds));
+        Iterable<ISequenceEvent> invalids = Iterables.filter(finalSiblings, Predicates.and(sameLifeline, notParentCombinedFragment, intersectsFinalBounds));
         if (!Iterables.isEmpty(invalids)) {
             finalParent = null;
             for (ISequenceEvent ise : Iterables.concat(invalids, remoteErrors)) {
@@ -314,7 +315,7 @@ public class FinalParentHelper {
             Option<Lifeline> remoteLifeline = remoteParent.getLifeline();
             if (remoteLifeline.some()) {
                 EventFinder remoteFinder = new EventFinder(remoteLifeline.get());
-                remoteFinder.setEventsToIgnore(Predicates.in(new ArrayList<>(allMovedElements)));
+                remoteFinder.setEventsToIgnore(Predicates.in(Lists.newArrayList(allMovedElements)));
                 finalRemoteParent = remoteFinder.findMostSpecificEvent(finalMessageRange);
             }
         }

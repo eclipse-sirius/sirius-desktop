@@ -451,23 +451,23 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
                 }
             }
             // Get the notifications concerning a deletion of an element.
-            final Iterable<Notification> removeNotificationsIterable = notifications.stream().filter(new Predicate<Notification>() {
+            final Iterable<Notification> removeNotificationsIterable = Iterables.filter(notifications, new Predicate<Notification>() {
                 @Override
-                public boolean test(Notification notification) {
+                public boolean apply(Notification notification) {
                     boolean isRemoveNotif = notification.getEventType() == Notification.REMOVE || notification.getEventType() == Notification.REMOVE_MANY;
                     // Ignore transient feature
                     return isRemoveNotif && !(new NotificationQuery(notification).isTransientNotification());
                 }
-            }).toList();
+            });
             // Get the list of notifiers that have been changed
             List<EObject> changedNotifiers = new ArrayList<>();
             for (final Map.Entry<EObject, List<Notification>> entry : notificationsByNotifer.entrySet()) {
-                if (entry.getValue().stream().anyMatch(new Predicate<Notification>() {
+                if (Iterables.any(entry.getValue(), new Predicate<Notification>() {
                     @Override
-                    public boolean test(Notification notification) {
+                    public boolean apply(Notification notification) {
                         boolean expecetedEventType = notification.getEventType() == Notification.SET || notification.getEventType() == Notification.UNSET;
                         expecetedEventType = expecetedEventType || notification.getEventType() == Notification.ADD || notification.getEventType() == Notification.ADD_MANY
-                        || notification.getEventType() == Notification.MOVE;
+                                || notification.getEventType() == Notification.MOVE;
                         return expecetedEventType;
                     }
                 })) {
@@ -480,7 +480,7 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
             for (final EObject changedNotifier : changedNotifiers) {
                 if (!(Iterables.any(removeNotificationsIterable, new Predicate<Notification>() {
                     @Override
-                    public boolean test(Notification notification) {
+                    public boolean apply(Notification notification) {
                         boolean isRemoveOfCurrentElement = notification.getEventType() == Notification.REMOVE && changedNotifier.equals(notification.getOldValue());
                         if (isRemoveOfCurrentElement) {
                             return true;

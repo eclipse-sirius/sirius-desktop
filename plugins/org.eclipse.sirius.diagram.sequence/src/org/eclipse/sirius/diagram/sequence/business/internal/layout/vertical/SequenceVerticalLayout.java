@@ -23,7 +23,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
-import java.util.function.Function;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
@@ -70,6 +69,8 @@ import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
+import com.google.common.base.Function;
+import com.google.common.base.Functions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.HashMultimap;
@@ -277,7 +278,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
         Iterable<ISequenceEvent> keySet = Iterables.filter(finalRanges.keySet(), ISequenceEvent.class);
 
         // Begin with lifelines and executions (anchor positions move)
-        for (ISequenceEvent ise : Iterables.filter(keySet, java.util.function.Predicate.not(Predicates.instanceOf(Message.class)))) {
+        for (ISequenceEvent ise : Iterables.filter(keySet, Predicates.not(Predicates.instanceOf(Message.class)))) {
             final Range newRange = finalRanges.get(ise);
             ise.setVerticalRange(newRange);
             applied = true;
@@ -350,12 +351,12 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
     private Map<ISequenceEvent, Range> computePunctualEventsGraphicalRanges(Map<EventEnd, Integer> endLocations, boolean pack) {
         final Map<ISequenceEvent, Range> sequenceEventsToRange = new LinkedHashMap<ISequenceEvent, Range>();
         if (pack) {
-            for (EventEnd cee : semanticOrdering.stream().filter(EventEndHelper.PUNCTUAL_COMPOUND_EVENT_END).toList()) {
+            for (EventEnd cee : Iterables.filter(semanticOrdering, EventEndHelper.PUNCTUAL_COMPOUND_EVENT_END)) {
                 if (endLocations.containsKey(cee) && endToISequencEvents.containsKey(cee)) {
                     int loc = endLocations.get(cee);
                     Collection<ISequenceEvent> ises = endToISequencEvents.get(cee);
 
-                    if (ises.stream().anyMatch(Predicates.instanceOf(State.class)) && ises.size() == 1) {
+                    if (Iterables.any(ises, Predicates.instanceOf(State.class)) && ises.size() == 1) {
                         State ise = (State) ises.iterator().next();
                         int midSize = getAbstractNodeEventVerticalSize(cee, ise, ises, pack) / 2;
                         sequenceEventsToRange.put(ise, new Range(loc - midSize, loc + midSize));
@@ -433,27 +434,27 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
 
     private Map<ISequenceEvent, Range> computeBasicRanges(Map<EventEnd, Integer> endLocations) {
         final Map<ISequenceEvent, Range> sequenceEventsToRange = new LinkedHashMap<ISequenceEvent, Range>();
-        Predicate<ISequenceEvent> notMoved = java.util.function.Predicate.not(Predicates.in(sequenceEventsToRange.keySet()));
+        Predicate<ISequenceEvent> notMoved = Predicates.not(Predicates.in(sequenceEventsToRange.keySet()));
 
         // CombinedFragments
         for (EventEnd sortedEnd : semanticOrdering) {
-            Predicate<ISequenceEvent> frames = notMoved.and(Predicates.or(Predicates.instanceOf(CombinedFragment.class), Predicates.instanceOf(InteractionUse.class)));
-            for (ISequenceEvent ise : endToISequencEvents.get(sortedEnd).stream().filter(frames).toList()) {
+            Predicate<ISequenceEvent> frames = Predicates.and(notMoved, Predicates.or(Predicates.instanceOf(CombinedFragment.class), Predicates.instanceOf(InteractionUse.class)));
+            for (ISequenceEvent ise : Iterables.filter(endToISequencEvents.get(sortedEnd), frames)) {
                 computeFinalRange(endLocations, sequenceEventsToRange, ise);
             }
         }
 
         // Operands
         for (EventEnd sortedEnd : semanticOrdering) {
-            Predicate<ISequenceEvent> operands = notMoved.and(Predicates.instanceOf(Operand.class));
-            for (ISequenceEvent ise : endToISequencEvents.get(sortedEnd).stream().filter(operands).toList()) {
+            Predicate<ISequenceEvent> operands = Predicates.and(notMoved, Predicates.instanceOf(Operand.class));
+            for (ISequenceEvent ise : Iterables.filter(endToISequencEvents.get(sortedEnd), operands)) {
                 computeFinalRange(endLocations, sequenceEventsToRange, ise);
             }
         }
 
         // Other sequence events
         for (EventEnd sortedEnd : semanticOrdering) {
-            for (ISequenceEvent ise : endToISequencEvents.get(sortedEnd).stream().filter(notMoved).toList()) {
+            for (ISequenceEvent ise : Iterables.filter(endToISequencEvents.get(sortedEnd), notMoved)) {
                 computeFinalRange(endLocations, sequenceEventsToRange, ise);
             }
         }
@@ -469,7 +470,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
 
             Range newRange = getNewRange(ise, start, finish, endLocations);
             sequenceEventsToRange.put(ise, newRange);
-        } else if (ends.size() == 1 && ise.isLogicallyInstantaneous() && (ise instanceof Message || EventEndHelper.PUNCTUAL_COMPOUND_EVENT_END.test(ends.iterator().next()))) {
+        } else if (ends.size() == 1 && ise.isLogicallyInstantaneous() && (ise instanceof Message || EventEndHelper.PUNCTUAL_COMPOUND_EVENT_END.apply(ends.iterator().next()))) {
             Iterator<EventEnd> it = ends.iterator();
             EventEnd middle = it.next();
 
@@ -650,7 +651,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
             int commonIseGap = getGapFromCommonSequenceEvent(end, commonIses, pack, genericGap);
             minGap = commonIseGap;
         } else {
-            boolean operands = eventEndToSequenceEvents.apply(end).stream().anyMatch(Predicates.instanceOf(Operand.class));
+            boolean operands = Iterables.any(eventEndToSequenceEvents.apply(end), Predicates.instanceOf(Operand.class));
             if (operands) {
                 minGap = getGapBeforeOperandEnd(endBefore, end, currentLocation, genericGap, alreadyComputedLocations);
             }
@@ -668,18 +669,18 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
 
             // Predecessor : Logically instantaneouse States
             Iterable<State> predStates = Iterables.filter(endBeforeEvents, State.class);
-            if (EventEndHelper.PUNCTUAL_COMPOUND_EVENT_END.test(endBefore) && endBeforeEvents.size() == 1 && Iterables.size(predStates) == 1) {
+            if (EventEndHelper.PUNCTUAL_COMPOUND_EVENT_END.apply(endBefore) && endBeforeEvents.size() == 1 && Iterables.size(predStates) == 1) {
                 State predState = Iterables.getOnlyElement(predStates);
                 if (predState.isLogicallyInstantaneous()) {
                     beforeGap += getAbstractNodeEventVerticalSize(endBefore, predState, endBeforeEvents, pack) / 2;
                 }
             }
 
-            if (endBeforeEvents.stream().anyMatch(Predicates.instanceOf(InteractionUse.class)) && endBefore instanceof SingleEventEnd && ((SingleEventEnd) endBefore).isStart()) {
+            if (Iterables.any(endBeforeEvents, Predicates.instanceOf(InteractionUse.class)) && endBefore instanceof SingleEventEnd && ((SingleEventEnd) endBefore).isStart()) {
                 beforeGap = LayoutConstants.DEFAULT_INTERACTION_USE_HEIGHT / 2;
             }
 
-            if (eventEndToSequenceEvents.apply(end).stream().anyMatch(Predicates.instanceOf(InteractionUse.class)) && end instanceof SingleEventEnd && !((SingleEventEnd) end).isStart()) {
+            if (Iterables.any(eventEndToSequenceEvents.apply(end), Predicates.instanceOf(InteractionUse.class)) && end instanceof SingleEventEnd && !((SingleEventEnd) end).isStart()) {
                 beforeGap = LayoutConstants.DEFAULT_INTERACTION_USE_HEIGHT / 2;
             }
 
@@ -736,7 +737,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
         // current event : Logically instantaneous States
         Collection<ISequenceEvent> endEvents = eventEndToSequenceEvents.apply(end);
         Iterable<State> states = Iterables.filter(endEvents, State.class);
-        if (EventEndHelper.PUNCTUAL_COMPOUND_EVENT_END.test(end) && endEvents.size() == 1 && Iterables.size(states) == 1) {
+        if (EventEndHelper.PUNCTUAL_COMPOUND_EVENT_END.apply(end) && endEvents.size() == 1 && Iterables.size(states) == 1) {
             State state = Iterables.getOnlyElement(states);
             if (state.isLogicallyInstantaneous()) {
                 beforeGap += getAbstractNodeEventVerticalSize(endBefore, state, endEvents, pack) / 2;
@@ -749,7 +750,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
         int beforeGap = genericGap;
         Iterable<Operand> operands = Iterables.filter(eventEndToSequenceEvents.apply(end), Operand.class);
         if (!Iterables.isEmpty(operands) && endBefore instanceof SingleEventEnd) {
-            if (eventEndToSequenceEvents.apply(endBefore).stream().anyMatch(Predicates.instanceOf(CombinedFragment.class)) && ((SingleEventEnd) endBefore).isStart()) {
+            if (Iterables.any(eventEndToSequenceEvents.apply(endBefore), Predicates.instanceOf(CombinedFragment.class)) && ((SingleEventEnd) endBefore).isStart()) {
                 beforeGap = LayoutConstants.COMBINED_FRAGMENT_TITLE_HEIGHT;
             } else {
                 Operand op = selectEndedOperand(end, operands);
@@ -966,7 +967,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
             // Avoid to handle lifelines to move up for max computation.
             Predicate<Lifeline> isMaxRangeCandidate = new Predicate<Lifeline>() {
                 @Override
-                public boolean test(Lifeline input) {
+                public boolean apply(Lifeline input) {
                     InstanceRole irep = input.getInstanceRole();
                     if (irep != null) {
                         return irep.getBounds().getLocation().y <= LayoutConstants.LIFELINES_START_Y;
@@ -976,7 +977,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
             };
 
             Collection<Lifeline> lifelinesToConsider = Lists.newArrayList(Iterables.filter(lifelinesWithoutDestruction, isMaxRangeCandidate));
-            Ordering<ISequenceEvent> maxOrdering = Ordering.natural().onResultOf(RangeHelper.upperBoundFunction().compose(ISequenceEvent.VERTICAL_RANGE));
+            Ordering<ISequenceEvent> maxOrdering = Ordering.natural().onResultOf(Functions.compose(RangeHelper.upperBoundFunction(), ISequenceEvent.VERTICAL_RANGE));
             if (!lifelinesToConsider.isEmpty()) {
                 Lifeline lep = maxOrdering.max(lifelinesToConsider);
                 max = lep.getVerticalRange().getUpperBound();
@@ -992,7 +993,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
 
         for (Lifeline lep : allLifelines) {
             DDiagramElement dde = (DDiagramElement) lep.getNotationNode().getElement();
-            if (dde instanceof DNode && Lifeline.viewpointElementPredicate().test(dde)) {
+            if (dde instanceof DNode && Lifeline.viewpointElementPredicate().apply(dde)) {
                 DNode node = (DNode) dde;
                 int specifiedVSize = getSpecifiedVSize(node);
                 int endOfLifeVsize = getSpecifiedEndOfLifeVSize(node);
@@ -1006,12 +1007,12 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
     private int getSpecifiedEndOfLifeVSize(DNode node) {
         int endOfLifeVsize = 0;
 
-        List<DNode> endOfLifes = new ArrayList<>(node.getOwnedBorderedNodes().stream().filter(new Predicate<DNode>() {
+        List<DNode> endOfLifes = Lists.newArrayList(Iterables.filter(node.getOwnedBorderedNodes(), new Predicate<DNode>() {
             @Override
-            public boolean test(DNode input) {
-                return input.isVisible() && EndOfLife.viewpointElementPredicate().test(input);
+            public boolean apply(DNode input) {
+                return input.isVisible() && EndOfLife.viewpointElementPredicate().apply(input);
             }
-        }).toList());
+        }));
 
         if (!endOfLifes.isEmpty()) {
             endOfLifeVsize = getSpecifiedVSize(endOfLifes.iterator().next());
@@ -1037,7 +1038,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
         // Avoid to handle lifelines to move up for min computation.
         Predicate<Lifeline> isMinRangeCandidate = new Predicate<Lifeline>() {
             @Override
-            public boolean test(Lifeline input) {
+            public boolean apply(Lifeline input) {
                 InstanceRole irep = input.getInstanceRole();
                 if (irep != null) {
                     return irep.getBounds().getLocation().y <= LayoutConstants.LIFELINES_START_Y;
@@ -1195,7 +1196,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
 
     private boolean isSafeToolCreation(EventEnd end) {
         boolean safe = !(end instanceof CompoundEventEnd);
-        safe = safe || EventEndHelper.PUNCTUAL_COMPOUND_EVENT_END.test(end);
+        safe = safe || EventEndHelper.PUNCTUAL_COMPOUND_EVENT_END.apply(end);
         boolean isOblique = false;
         for (Message msg : Iterables.filter(endToISequencEvents.get(end), Message.class)) {
             safe = safe || msg.getSourceElement() instanceof LostMessageEnd || msg.getTargetElement() instanceof LostMessageEnd;

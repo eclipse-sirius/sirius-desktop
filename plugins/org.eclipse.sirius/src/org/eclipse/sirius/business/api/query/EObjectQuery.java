@@ -45,6 +45,7 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
 
 /**
  * A class aggregating all the queries (read-only!) having a {@link EObject} as a starting point.
@@ -127,7 +128,7 @@ public class EObjectQuery {
         Objects.requireNonNull(featureName);
         return getInverseReferences(new Predicate<EStructuralFeature.Setting>() {
             @Override
-            public boolean test(Setting input) {
+            public boolean apply(Setting input) {
                 return input != null && input.getEStructuralFeature() != null && featureName.equals(input.getEStructuralFeature().getName());
             }
         });
@@ -145,7 +146,7 @@ public class EObjectQuery {
         Objects.requireNonNull(ref);
         return getInverseReferences(new Predicate<EStructuralFeature.Setting>() {
             @Override
-            public boolean test(Setting input) {
+            public boolean apply(Setting input) {
                 return input != null && ref.equals(input.getEStructuralFeature());
             }
         });
@@ -164,7 +165,7 @@ public class EObjectQuery {
         Objects.requireNonNull(refs);
         return getInverseReferences(new Predicate<EStructuralFeature.Setting>() {
             @Override
-            public boolean test(Setting input) {
+            public boolean apply(Setting input) {
                 return input != null && refs.contains(input.getEStructuralFeature());
             }
         });
@@ -190,7 +191,7 @@ public class EObjectQuery {
             return Collections.emptySet();
         } else {
             Collection<EObject> result = new LinkedHashSet<>();
-            for (EStructuralFeature.Setting setting : xref.getInverseReferences(internalQuery.getEObject()).stream().filter(predicate).toList()) {
+            for (EStructuralFeature.Setting setting : Iterables.filter(xref.getInverseReferences(internalQuery.getEObject()), predicate)) {
                 result.add(setting.getEObject());
             }
             return result;

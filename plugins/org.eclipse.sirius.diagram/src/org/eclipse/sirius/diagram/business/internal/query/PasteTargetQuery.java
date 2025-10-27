@@ -33,6 +33,8 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.PasteTargetDescription;
 import org.eclipse.sirius.viewpoint.description.tool.PasteDescription;
 
+import com.google.common.collect.Sets;
+
 /**
  * A class aggregating all the queries (read-only!) having a paste target as a
  * starting point.
@@ -84,11 +86,11 @@ public class PasteTargetQuery {
     private Collection<PasteDescription> getAllPasteTools(final PasteTargetDescription pasteTargetDescription) {
         Collection<PasteDescription> pasteTools = new HashSet<>();
         if (pasteTargetDescription instanceof DiagramElementMapping) {
-            pasteTools = new HashSet<>(new DiagramElementMappingQuery((DiagramElementMapping) pasteTargetDescription).getAllPasteTools());
+            pasteTools = Sets.newHashSet(new DiagramElementMappingQuery((DiagramElementMapping) pasteTargetDescription).getAllPasteTools());
         } else if (pasteTargetDescription instanceof DiagramDescription) {
-            pasteTools = new HashSet<>(new DiagramDescriptionQuery((DiagramDescription) pasteTargetDescription).getAllPasteTools());
+            pasteTools = Sets.newHashSet(new DiagramDescriptionQuery((DiagramDescription) pasteTargetDescription).getAllPasteTools());
         } else {
-            pasteTools = new HashSet<>(pasteTargetDescription.getPasteDescriptions());
+            pasteTools = Sets.newHashSet(pasteTargetDescription.getPasteDescriptions());
         }
         return pasteTools;
     }

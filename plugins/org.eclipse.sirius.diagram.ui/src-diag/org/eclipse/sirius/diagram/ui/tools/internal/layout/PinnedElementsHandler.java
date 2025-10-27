@@ -33,7 +33,6 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
-import java.util.stream.Collectors;
 
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Insets;
@@ -47,6 +46,7 @@ import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Sets;
 
@@ -227,7 +227,7 @@ public class PinnedElementsHandler {
 
     private boolean hasRemainingSolvableOverlaps() {
         for (IGraphicalEditPart part : fixedEditParts) {
-            if (!Collections2.filter(findOverlappingParts(part), java.util.function.Predicate.not(isPinned)).isEmpty()) {
+            if (!Collections2.filter(findOverlappingParts(part), Predicates.not(isPinned)).isEmpty()) {
                 return true;
             }
         }
@@ -275,7 +275,7 @@ public class PinnedElementsHandler {
      */
     private void packHorizontally() {
         final int[] hRange = getHorizontalRange(allEditParts, EXCLUDE_PADDING);
-        final List<IGraphicalEditPart> movableParts = new ArrayList<IGraphicalEditPart>(Collections2.filter(allEditParts, java.util.function.Predicate.not(isPinned)));
+        final List<IGraphicalEditPart> movableParts = new ArrayList<IGraphicalEditPart>(Collections2.filter(allEditParts, Predicates.not(isPinned)));
         Collections.sort(movableParts, leftToRightComparator);
         for (int i = 0; i < movableParts.size(); i++) {
             /*
@@ -400,7 +400,7 @@ public class PinnedElementsHandler {
      */
     private void packVertically() {
         final int[] vRange = getVerticalRange(allEditParts, EXCLUDE_PADDING);
-        final List<IGraphicalEditPart> movableParts = new ArrayList<IGraphicalEditPart>(Collections2.filter(allEditParts, java.util.function.Predicate.not(isPinned)));
+        final List<IGraphicalEditPart> movableParts = new ArrayList<IGraphicalEditPart>(Collections2.filter(allEditParts, Predicates.not(isPinned)));
         Collections.sort(movableParts, topToBottomComparator);
         for (int i = 0; i < movableParts.size(); i++) {
             /*
@@ -502,7 +502,7 @@ public class PinnedElementsHandler {
      *            the fixed edit part to consider.
      */
     private void resolveOverlaps(final IGraphicalEditPart fixedPart) {
-        final Set<IGraphicalEditPart> solvableOverlaps = findOverlappingParts(fixedPart).stream().filter(java.util.function.Predicate.not(isPinned)).collect(Collectors.toSet());
+        final Set<IGraphicalEditPart> solvableOverlaps = Sets.filter(findOverlappingParts(fixedPart), Predicates.not(isPinned));
         final Map<Direction, SortedSet<IGraphicalEditPart>> groupedOverlaps = groupByDirection(fixedPart, solvableOverlaps);
         for (Entry<Direction, SortedSet<IGraphicalEditPart>> group : groupedOverlaps.entrySet()) {
             // For a same group, we kept the movedPositions to allow a complete
@@ -514,7 +514,7 @@ public class PinnedElementsHandler {
                 assert !overlaps(fixedPart, part);
             }
         }
-        assert Collections2.filter(findOverlappingParts(fixedPart), java.util.function.Predicate.not(isPinned)).isEmpty() : Messages.PinnedElementsHandler_remainOverlapsMsg;
+        assert Collections2.filter(findOverlappingParts(fixedPart), Predicates.not(isPinned)).isEmpty() : Messages.PinnedElementsHandler_remainOverlapsMsg;
     }
 
     /**
@@ -554,7 +554,7 @@ public class PinnedElementsHandler {
             Set<IGraphicalEditPart> newMovables = parts;
             Set<IGraphicalEditPart> newFixed = fixedParts;
 
-            final Set<IGraphicalEditPart> movableOverlaps = new HashSet<IGraphicalEditPart>(Collections2.filter(overlaps, java.util.function.Predicate.not(isPinned)));
+            final Set<IGraphicalEditPart> movableOverlaps = new HashSet<IGraphicalEditPart>(Collections2.filter(overlaps, Predicates.not(isPinned)));
             if (!movableOverlaps.isEmpty()) {
                 /*
                  * If we created new overlaps with movable parts, simply re-try
@@ -584,7 +584,7 @@ public class PinnedElementsHandler {
          * Check that the specified movable parts no longer overlap with the
          * specified fixed parts.
          */
-        assert Sets.intersection(findOverlappingParts(fixedParts).stream().filter(java.util.function.Predicate.not(isPinned)).collect(Collectors.toSet()), parts).isEmpty();
+        assert Sets.intersection(Sets.filter(findOverlappingParts(fixedParts), Predicates.not(isPinned)), parts).isEmpty();
         return previousMovedPositionsOfSameDir;
     }
 
@@ -602,7 +602,7 @@ public class PinnedElementsHandler {
      * overlaps with parts other than those in <code>fixedParts</code>.
      */
     private void tryMove(final Set<IGraphicalEditPart> parts, final Set<IGraphicalEditPart> fixedParts, final Direction direction) {
-        assert !Sets.intersection(findOverlappingParts(fixedParts).stream().filter(java.util.function.Predicate.not(isPinned)).collect(Collectors.toSet()), parts).isEmpty();
+        assert !Sets.intersection(Sets.filter(findOverlappingParts(fixedParts), Predicates.not(isPinned)), parts).isEmpty();
         final Rectangle movablesBox = getBoundingBox(parts, EXCLUDE_PADDING);
         final Insets movablesPadding = getPadding(parts);
         final Rectangle fixedBox = getBoundingBox(fixedParts, EXCLUDE_PADDING);
@@ -611,7 +611,7 @@ public class PinnedElementsHandler {
         for (IGraphicalEditPart part : parts) {
             translate(part, move);
         }
-        assert Sets.intersection(findOverlappingParts(fixedParts).stream().filter(java.util.function.Predicate.not(isPinned)).collect(Collectors.toSet()), parts).isEmpty();
+        assert Sets.intersection(Sets.filter(findOverlappingParts(fixedParts), Predicates.not(isPinned)), parts).isEmpty();
     }
 
     /**
@@ -855,7 +855,7 @@ public class PinnedElementsHandler {
     }
 
     private void setCurrentPosition(final IGraphicalEditPart part, final Point position) {
-        Preconditions.checkArgument(!isPinned.test(part), Messages.PinnedElementsHandler_notMovableMsg);
+        Preconditions.checkArgument(!isPinned.apply(part), Messages.PinnedElementsHandler_notMovableMsg);
         if (position.equals(getInitialPosition(part))) {
             currentBounds.remove(part);
         } else {
@@ -886,7 +886,7 @@ public class PinnedElementsHandler {
         debugMessage("----------------------------------------"); //$NON-NLS-1$
         for (IGraphicalEditPart part : allEditParts) {
             debugMessage("- " + part.getClass().getSimpleName() + " (semantic: " + part.resolveSemanticElement() + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-            debugMessage("  Pinned: " + isPinned.test(part)); //$NON-NLS-1$
+            debugMessage("  Pinned: " + isPinned.apply(part)); //$NON-NLS-1$
             debugMessage("  Intrinsic bounds (main figure):              " + part.getFigure().getBounds()); //$NON-NLS-1$
             debugMessage("  Initial bounds (after previous layout pass): " + getInitialBounds(part)); //$NON-NLS-1$
         }
@@ -899,7 +899,7 @@ public class PinnedElementsHandler {
         debugMessage("------------------------------"); //$NON-NLS-1$
         for (IGraphicalEditPart part : currentBounds.keySet()) {
             debugMessage("- " + part.getClass().getSimpleName() + " (semantic: " + part.resolveSemanticElement() + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-            debugMessage("  Pinned: " + isPinned.test(part)); //$NON-NLS-1$
+            debugMessage("  Pinned: " + isPinned.apply(part)); //$NON-NLS-1$
             debugMessage("  Intrinsic bounds (main figure):              " + part.getFigure().getBounds()); //$NON-NLS-1$
             debugMessage("  Initial bounds (after previous layout pass): " + getInitialBounds(part)); //$NON-NLS-1$
             debugMessage("  Computed bounds (after resolution):          " + getCurrentPosition(part)); //$NON-NLS-1$

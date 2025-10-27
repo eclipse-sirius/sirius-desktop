@@ -55,7 +55,7 @@ public class ReferencesResolver {
     public ReferencesResolver(ResourceSet set, final EReferencePredicate filter) {
         this.filter = new Predicate<EReference>() {
             @Override
-            public boolean test(EReference input) {
+            public boolean apply(EReference input) {
                 return filter.apply(input);
             }
         };

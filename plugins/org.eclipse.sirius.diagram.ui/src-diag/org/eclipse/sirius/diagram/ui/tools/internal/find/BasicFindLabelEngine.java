@@ -44,7 +44,7 @@ public class BasicFindLabelEngine extends AbstractFindLabelEngine {
      * matched with text.
      */
     private static final Predicate<EditPart> IS_LABEL_EDIT_PART = new Predicate<EditPart>() {
-        public boolean test(final EditPart part) {
+        public boolean apply(final EditPart part) {
             final boolean result;
             if (part instanceof AbstractGraphicalEditPart && part instanceof ITextAwareEditPart) {
                 result = true;

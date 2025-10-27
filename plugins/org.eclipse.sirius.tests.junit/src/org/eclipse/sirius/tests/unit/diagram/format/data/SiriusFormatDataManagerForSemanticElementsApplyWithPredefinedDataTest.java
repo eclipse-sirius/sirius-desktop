@@ -80,7 +80,7 @@ public class SiriusFormatDataManagerForSemanticElementsApplyWithPredefinedDataTe
     };
 
     protected static final Predicate<Diagram> ONLY_RAW_DIAGRAM = new Predicate<Diagram>() {
-        public boolean test(final Diagram input) {
+        public boolean apply(final Diagram input) {
             return input.raw;
         }
     };

@@ -91,7 +91,7 @@ public class MigrationOfCollapsedBorderedNodeTest extends SiriusDiagramTestCase 
      */
     private Predicate<Node> isCollapsedNode = new Predicate<Node>() {
         @Override
-        public boolean test(Node input) {
+        public boolean apply(Node input) {
             boolean apply = false;
 
             int type = SiriusVisualIDRegistry.getVisualID(input.getType());

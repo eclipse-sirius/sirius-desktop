@@ -320,7 +320,7 @@ public final class ViewpointHelper {
         return Collections2.filter(registry.getViewpoints(), new Predicate<Viewpoint>() {
 
             @Override
-            public boolean test(Viewpoint viewpoint) {
+            public boolean apply(Viewpoint viewpoint) {
                 for (final String ext : getSemanticFileExtensionsFromSession(session)) {
                     if (new ViewpointQuery(viewpoint).handlesSemanticModelExtension(ext)) {
                         return true;

@@ -224,7 +224,7 @@ public class FragmentedFilesMigrationTest extends AbstractRepairMigrateTest {
         final DSemanticDiagram diagram = getDiagramFromName(newSession, diagramName);
         final EPackage package2 = Iterables.find(root.getESubpackages(), new Predicate<EPackage>() {
             @Override
-            public boolean test(EPackage input) {
+            public boolean apply(EPackage input) {
                 return "p2".equals(input.getName());
             }
         });

@@ -150,7 +150,7 @@ public class ISequenceEventQuery {
 
     private void addAllDescendants(ISequenceEvent ise, Predicate<? super View> predicate, Collection<ISequenceEvent> parts) {
         View element = ise.getNotationView();
-        if (predicate.test(element)) {
+        if (predicate.apply(element)) {
             Option<ISequenceEvent> iSequenceEvent = ISequenceElementAccessor.getISequenceEvent(element);
             if (iSequenceEvent.some()) {
                 parts.add(iSequenceEvent.get());
@@ -308,7 +308,7 @@ public class ISequenceEventQuery {
 
     private void populateMovedElements(ISequenceEvent inspectedElement, Collection<ISequenceEvent> moved) {
         moved.add(inspectedElement);
-        for (ISequenceEvent subEvent : inspectedElement.getEventsToMoveWith().stream().filter(java.util.function.Predicate.not(Predicates.in(moved))).toList()) {
+        for (ISequenceEvent subEvent : Iterables.filter(inspectedElement.getEventsToMoveWith(), Predicates.not(Predicates.in(moved)))) {
             populateMovedElements(subEvent, moved);
         }
 

@@ -19,7 +19,6 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
-import java.util.function.Function;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
@@ -53,6 +52,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.distribute.DistributeAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 
+import com.google.common.base.Function;
 import com.google.common.base.Functions;
 import com.google.common.collect.Lists;
 
@@ -565,7 +565,7 @@ public class DistributeCommand extends AbstractTransactionalCommand {
         // Get the gap between each parts
         int gap = getGapFunction.apply(firstPart, lastPart);
         // Sort other parts according to their centers
-        List<IGraphicalEditPart> partsToMove = new ArrayList<>(partsToDistribute);
+        List<IGraphicalEditPart> partsToMove = Lists.newArrayList(partsToDistribute);
         partsToMove.remove(firstPart);
         partsToMove.remove(lastPart);
         Collections.sort(partsToMove, comparator);

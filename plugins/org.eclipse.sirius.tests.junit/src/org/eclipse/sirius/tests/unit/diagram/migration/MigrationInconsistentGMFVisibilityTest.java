@@ -84,7 +84,7 @@ public class MigrationInconsistentGMFVisibilityTest extends SiriusDiagramTestCas
         if (option.some()) {
             Iterator<EObject> iterator = Iterators.filter(option.get().eAllContents(), new Predicate<EObject>() {
                 @Override
-                public boolean test(EObject arg0) {
+                public boolean apply(EObject arg0) {
                     if (arg0 instanceof Node) {
                         int typeInt = SiriusVisualIDRegistry.getVisualID(((Node) arg0).getType());
                         return typeInt == DNode4EditPart.VISUAL_ID;

@@ -79,7 +79,7 @@ public class PinnedElementsLayoutProvider extends DefaultLayoutProvider {
     private Predicate<Object> validateAllElementInArrayListAreIDiagramElementEditPart = new Predicate<Object>() {
 
         @Override
-        public boolean test(Object input) {
+        public boolean apply(Object input) {
             return input instanceof IDiagramElementEditPart;
         }
     };
@@ -152,7 +152,7 @@ public class PinnedElementsLayoutProvider extends DefaultLayoutProvider {
          */
         final Map<IGraphicalEditPart, Rectangle> initialBoundsForThisLevel = Maps.filterEntries(initialBounds, new Predicate<Map.Entry<IGraphicalEditPart, Rectangle>>() {
             @Override
-            public boolean test(final Entry<IGraphicalEditPart, Rectangle> input) {
+            public boolean apply(final Entry<IGraphicalEditPart, Rectangle> input) {
                 return editParts.contains(input.getKey());
             }
         });
@@ -177,12 +177,12 @@ public class PinnedElementsLayoutProvider extends DefaultLayoutProvider {
         // These are OK.
         final Predicate<Object> validChildKind = Predicates.or(Predicates.instanceOf(IDiagramNodeEditPart.class), Predicates.instanceOf(IDiagramContainerEditPart.class),
                 Predicates.instanceOf(IDiagramListEditPart.class));
-        final Predicate<Object> isProperChild = validChildKind.and(java.util.function.Predicate.not(invalidChildKind));
+        final Predicate<Object> isProperChild = Predicates.and(validChildKind, Predicates.not(invalidChildKind));
         final Collection<IGraphicalEditPart> result = Lists.newArrayList(Iterables.filter(rawChildren, isProperChild));
         // Containers have an intermediate level of children edit parts. We
         // ignore these "wrapper" parts, but must look inside for proper
         // children of the container.
-        for (IGraphicalEditPart part : Iterables.filter(rawChildren, java.util.function.Predicate.not(isProperChild))) {
+        for (IGraphicalEditPart part : Iterables.filter(rawChildren, Predicates.not(isProperChild))) {
             if (part instanceof DNodeContainerViewNodeContainerCompartmentEditPart || part instanceof DNodeContainerViewNodeContainerCompartment2EditPart) {
                 result.addAll(getChildrenOfInterest(part));
             }

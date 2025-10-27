@@ -16,8 +16,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Set;
 import java.util.TreeSet;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
@@ -69,6 +67,7 @@ import org.eclipse.sirius.ext.base.Options;
 
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Sets;
 
 /**
  * {@link ModelChangeTrigger} which return a {@link Command} to be executed just a SynchronizeGMFModelCommand to correct
@@ -310,7 +309,7 @@ public class SequenceCanonicalSynchronizerAdapter implements ModelChangeTrigger 
         Set<ISequenceEvent> eventEndsAfterUpperRange = new TreeSet<ISequenceEvent>(new RangeComparator());
         Set<ISequenceEvent> allSequenceEventsInUpperRange = new SequenceDiagramQuery(sequenceDiagram).getAllSequenceEventsUpperThan(upperRange);
         allSequenceEventsInUpperRange.removeAll(sequenceEventToIgnores);
-        eventEndsAfterUpperRange.addAll(allSequenceEventsInUpperRange.stream().filter(Predicate.not(Predicates.instanceOf(Lifeline.class))).collect(Collectors.toSet()));
+        eventEndsAfterUpperRange.addAll(Sets.filter(allSequenceEventsInUpperRange, Predicates.not(Predicates.instanceOf(Lifeline.class))));
         return eventEndsAfterUpperRange;
     }
 
@@ -318,7 +317,7 @@ public class SequenceCanonicalSynchronizerAdapter implements ModelChangeTrigger 
         Set<ISequenceEvent> eventEndsOnUpperRange = new TreeSet<ISequenceEvent>(new RangeComparator());
         Set<ISequenceEvent> allSequenceEventsOnRange = new SequenceDiagramQuery(sequenceDiagram).getAllSequenceEventsOn(upperRange);
         allSequenceEventsOnRange.removeAll(sequenceEventToIgnores);
-        eventEndsOnUpperRange.addAll(allSequenceEventsOnRange.stream().filter(Predicate.not(Predicates.instanceOf(Lifeline.class))).collect(Collectors.toSet()));
+        eventEndsOnUpperRange.addAll(Sets.filter(allSequenceEventsOnRange, Predicates.not(Predicates.instanceOf(Lifeline.class))));
         return eventEndsOnUpperRange;
     }
 

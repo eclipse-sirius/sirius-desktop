@@ -14,7 +14,6 @@ package org.eclipse.sirius.diagram.ui.business.api.helper.graphicalfilters;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
 
 import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
@@ -224,7 +223,7 @@ public class CollapseUpdater implements ICollapseUpdater {
             // Iterate on all CollapseFilter that are not
             // IndirectlyCollapseFilter
             for (CollapseFilter collapseApplication : Lists.newArrayList(Iterables.filter(Iterables.filter(element.getGraphicalFilters(), CollapseFilter.class),
-                    Predicate.not(Predicates.instanceOf(IndirectlyCollapseFilter.class))))) {
+                    Predicates.not(Predicates.instanceOf(IndirectlyCollapseFilter.class))))) {
                 element.getGraphicalFilters().remove(collapseApplication);
             }
             removeFromChildrenIndirectlyCollapsedFilter(element);

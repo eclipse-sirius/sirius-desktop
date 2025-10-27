@@ -105,7 +105,7 @@ public class InteractionContainer extends AbstractSequenceNode {
         INSTANCE;
 
         @Override
-        public boolean test(DDiagramElement input) {
+        public boolean apply(DDiagramElement input) {
             return AbstractSequenceElement.isSequenceDiagramElement(input, DescriptionPackage.eINSTANCE.getInteractionContainerMapping());
         }
     }
@@ -139,7 +139,7 @@ public class InteractionContainer extends AbstractSequenceNode {
             Predicate<View> gateView = new Predicate<View>() {
 
                 @Override
-                public boolean test(View input) {
+                public boolean apply(View input) {
                     return input.getType().equals(Integer.toString(Gate.VISUAL_ID));
                 }
             };

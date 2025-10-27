@@ -15,7 +15,6 @@ package org.eclipse.sirius.ui.tools.internal.views.common.item;
 import java.lang.ref.WeakReference;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.function.Function;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.ecore.EObject;
@@ -25,6 +24,8 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+
+import com.google.common.base.Function;
 
 /**
  * {@link DRepresentationDescriptor} item wrapper class.

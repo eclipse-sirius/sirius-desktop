@@ -86,9 +86,9 @@ public class InitializeCreationToolElementsToSelectExpressionParticipant extends
 
                 if (atLeastOneChange) {
                     // Add the Java Extension to use the service:
-                    if (!viewpoint.getOwnedJavaExtensions().stream().anyMatch(new Predicate<JavaExtension>() {
+                    if (!Iterables.any(viewpoint.getOwnedJavaExtensions(), new Predicate<JavaExtension>() {
                         @Override
-                        public boolean test(JavaExtension input) {
+                        public boolean apply(JavaExtension input) {
                             return JAVA_EXTENSION_QUALIFIED_NAME.equals(input.getQualifiedClassName());
                         }
                     })) {

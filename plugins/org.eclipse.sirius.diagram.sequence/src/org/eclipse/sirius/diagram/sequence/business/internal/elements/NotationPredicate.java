@@ -50,10 +50,10 @@ public class NotationPredicate implements Predicate<View> {
     }
 
     @Override
-    public boolean test(View input) {
+    public boolean apply(View input) {
         if (viewType.isInstance(input) && viewHasType(input, visualId)) {
             EObject element = input.getElement();
-            return (element instanceof DDiagramElement) && viewpointElementPredicate.test((DDiagramElement) element);
+            return (element instanceof DDiagramElement) && viewpointElementPredicate.apply((DDiagramElement) element);
         } else {
             return false;
         }

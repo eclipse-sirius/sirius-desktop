@@ -68,7 +68,7 @@ public class Operand extends AbstractSequenceNode implements ISequenceEvent {
         INSTANCE;
 
         @Override
-        public boolean test(DDiagramElement input) {
+        public boolean apply(DDiagramElement input) {
             return AbstractSequenceElement.isSequenceDiagramElement(input, DescriptionPackage.eINSTANCE.getOperandMapping());
         }
     }
@@ -81,7 +81,7 @@ public class Operand extends AbstractSequenceNode implements ISequenceEvent {
      */
     Operand(Node node) {
         super(node);
-        Preconditions.checkArgument(Operand.notationPredicate().test(node), Messages.Operand_nonOperandNode);
+        Preconditions.checkArgument(Operand.notationPredicate().apply(node), Messages.Operand_nonOperandNode);
     }
 
     /**

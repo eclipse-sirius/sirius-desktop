@@ -15,7 +15,6 @@ package org.eclipse.sirius.diagram.tools.api.layout;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.NotificationFilter;
@@ -34,6 +33,7 @@ import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionPr
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
 import org.eclipse.sirius.diagram.model.business.internal.query.DDiagramElementContainerExperimentalQuery;
 
+import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 
 /**
@@ -163,7 +163,7 @@ public final class PinHelper {
      * @return true if the given element can be pinned/unpinned.
      */
     public static boolean allowsPinUnpin(DDiagramElement element) {
-        return element != null && allowsPinUnpin(element.getParentDiagram()).test(element);
+        return element != null && allowsPinUnpin(element.getParentDiagram()).apply(element);
     }
 
     /**
@@ -179,7 +179,7 @@ public final class PinHelper {
         // by any DiagramDescriptionProvider).
         Predicate<DDiagramElement> result = new Predicate<DDiagramElement>() {
             @Override
-            public boolean test(DDiagramElement dde) {
+            public boolean apply(DDiagramElement dde) {
                 if (dde instanceof DDiagramElementContainer) {
                     DDiagramElementContainerExperimentalQuery query = new DDiagramElementContainerExperimentalQuery((DDiagramElementContainer) dde);
                     return !query.isRegion();
@@ -202,7 +202,7 @@ public final class PinHelper {
                 final IDiagramDescriptionProvider provider = diagramTypeDescriptor.getDiagramDescriptionProvider();
                 result = new Predicate<DDiagramElement>() {
                     @Override
-                    public boolean test(DDiagramElement input) {
+                    public boolean apply(DDiagramElement input) {
                         return provider.allowsPinUnpin(input);
                     }
                 };

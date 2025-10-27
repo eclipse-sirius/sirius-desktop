@@ -18,7 +18,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import java.util.function.Predicate;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
@@ -55,7 +54,9 @@ import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 
+import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
+import com.google.common.collect.Iterables;
 
 /**
  * Hide a {@link DDiagramElement} on a {@link org.eclipse.sirius.diagram.DDiagram}.
@@ -153,7 +154,7 @@ public class HideDDiagramElementAction extends Action implements IObjectActionDe
                 DDiagram parentDiagram = ddes.iterator().next().getParentDiagram();
                 Predicate<DDiagramElement> allowsHideReveal = allowsHideReveal(parentDiagram);
                 Predicate<DDiagramElement> notDirectlyHidden = dde -> dde.isVisible();
-                return ddes.stream().anyMatch(allowsHideReveal.and(notDirectlyHidden));
+                return Iterables.any(ddes, Predicates.and(allowsHideReveal, notDirectlyHidden));
             }
 
         }
@@ -285,7 +286,7 @@ public class HideDDiagramElementAction extends Action implements IObjectActionDe
         // by any DiagramDescriptionProvider).
         Predicate<DDiagramElement> result = new Predicate<DDiagramElement>() {
             @Override
-            public boolean test(DDiagramElement dde) {
+            public boolean apply(DDiagramElement dde) {
                 if (dde instanceof DDiagramElementContainer) {
                     DDiagramElementContainerExperimentalQuery query = new DDiagramElementContainerExperimentalQuery((DDiagramElementContainer) dde);
                     return !query.isRegion();
@@ -309,7 +310,7 @@ public class HideDDiagramElementAction extends Action implements IObjectActionDe
                 final IDiagramDescriptionProvider provider = diagramTypeDescriptor.getDiagramDescriptionProvider();
                 result = new Predicate<DDiagramElement>() {
                     @Override
-                    public boolean test(DDiagramElement input) {
+                    public boolean apply(DDiagramElement input) {
                         return provider.allowsHideReveal(input);
                     }
                 };

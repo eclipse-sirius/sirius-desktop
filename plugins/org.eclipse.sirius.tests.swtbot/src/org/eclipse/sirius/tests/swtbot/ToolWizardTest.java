@@ -69,7 +69,7 @@ public class ToolWizardTest extends AbstractSiriusSwtBotGefTestCase {
          * {@inheritDoc}
          */
         @Override
-        public boolean test(final EAttribute arg0) {
+        public boolean apply(final EAttribute arg0) {
             return arg0.getName().equals(name);
         }
     }

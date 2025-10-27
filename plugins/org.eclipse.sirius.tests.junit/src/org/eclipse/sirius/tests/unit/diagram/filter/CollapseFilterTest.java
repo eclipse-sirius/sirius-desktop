@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.filter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -43,6 +42,7 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * Tests to check the behavior of graphical collapse filters computation. See
@@ -325,7 +325,7 @@ public class CollapseFilterTest extends SiriusDiagramTestCase {
             if (element.getName().startsWith("a")) {
                 // One CollapseApplication per DDiagramElement
                 assertEquals(filters.length == 0 ? 0 : 1,
-                        Iterables.size(Iterables.filter(Iterables.filter(element.getGraphicalFilters(), CollapseFilter.class), java.util.function.Predicate.not(Predicates.instanceOf(IndirectlyCollapseFilter.class)))));
+                        Iterables.size(Iterables.filter(Iterables.filter(element.getGraphicalFilters(), CollapseFilter.class), Predicates.not(Predicates.instanceOf(IndirectlyCollapseFilter.class)))));
 
                 DDiagramElementQuery elementQuery = new DDiagramElementQuery(element);
 
@@ -468,11 +468,11 @@ public class CollapseFilterTest extends SiriusDiagramTestCase {
     private List<DDiagramElement> getDiagramElements(final EClass type) {
         Predicate<DDiagramElement> expectedType = new Predicate<DDiagramElement>() {
             @Override
-            public boolean test(DDiagramElement input) {
+            public boolean apply(DDiagramElement input) {
                 return type.isInstance(input.getTarget());
             }
         };
-        return new ArrayList<>(diagram.getDiagramElements().stream().filter(expectedType).toList());
+        return Lists.newArrayList(Iterables.filter(diagram.getDiagramElements(), expectedType));
     }
 
 }

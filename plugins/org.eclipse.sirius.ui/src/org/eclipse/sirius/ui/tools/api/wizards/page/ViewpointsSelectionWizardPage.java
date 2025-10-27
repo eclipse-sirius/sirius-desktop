@@ -162,7 +162,7 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
         return Collections2.filter(registry.getViewpoints(), new Predicate<Viewpoint>() {
 
             @Override
-            public boolean test(Viewpoint viewpoint) {
+            public boolean apply(Viewpoint viewpoint) {
                 for (final String ext : computeSemanticFileExtensions(session)) {
                     if (new ViewpointQuery(viewpoint).handlesSemanticModelExtension(ext)) {
                         return true;

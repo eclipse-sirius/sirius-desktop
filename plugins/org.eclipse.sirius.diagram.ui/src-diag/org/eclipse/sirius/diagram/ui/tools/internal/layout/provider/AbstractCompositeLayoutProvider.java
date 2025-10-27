@@ -89,7 +89,7 @@ public abstract class AbstractCompositeLayoutProvider extends CompositeLayoutPro
     private Predicate<Object> validateAllElementInArrayListAreIDiagramElementEditPart = new Predicate<Object>() {
 
         @Override
-        public boolean test(Object input) {
+        public boolean apply(Object input) {
             return input instanceof IDiagramElementEditPart;
         }
     };

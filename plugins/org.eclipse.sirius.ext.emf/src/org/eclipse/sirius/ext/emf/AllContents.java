@@ -126,7 +126,7 @@ public final class AllContents implements Iterable<EObject> {
             contentsIterator = root.eAllContents();
         } else {
             contentsIterator = Iterators.filter(root.eAllContents(), new Predicate<EObject>() {
-                public boolean test(EObject input) {
+                public boolean apply(EObject input) {
                     return klass.isInstance(input);
                 }
             });

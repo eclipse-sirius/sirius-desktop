@@ -14,7 +14,6 @@ package org.eclipse.sirius.diagram.business.internal.helper.display;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.session.Session;
@@ -35,6 +34,9 @@ import org.eclipse.sirius.diagram.business.api.helper.display.DisplayService;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
 
 /**
  * Default implementation of {@link DisplayService}.
@@ -228,9 +230,9 @@ public final class DisplayServiceImpl implements DisplayService {
     }
 
     private boolean isFold(final DDiagramElement element) {
-        return element.getGraphicalFilters().stream().anyMatch(new Predicate<GraphicalFilter>() {
+        return Iterables.any(element.getGraphicalFilters(), new Predicate<GraphicalFilter>() {
             @Override
-            public boolean test(GraphicalFilter input) {
+            public boolean apply(GraphicalFilter input) {
                 return DiagramPackage.eINSTANCE.getFoldingFilter().isInstance(input) || DiagramPackage.eINSTANCE.getFoldingPointFilter().isInstance(input);
             }
         });

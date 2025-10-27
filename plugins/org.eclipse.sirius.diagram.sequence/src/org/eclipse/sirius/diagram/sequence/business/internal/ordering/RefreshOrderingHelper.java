@@ -139,12 +139,12 @@ public final class RefreshOrderingHelper {
 
                 if (sees.size() == 2 && RefreshOrderingHelper.countEvents(sees) == 1) {
                     // start first
-                    Iterables.addAll(cee.getEventEnds(), sees.stream().filter(EventEndHelper.IS_START).toList());
-                    Iterables.addAll(cee.getEventEnds(), sees.stream().filter(java.util.function.Predicate.not(EventEndHelper.IS_START)).toList());
+                    Iterables.addAll(cee.getEventEnds(), Iterables.filter(sees, EventEndHelper.IS_START));
+                    Iterables.addAll(cee.getEventEnds(), Iterables.filter(sees, Predicates.not(EventEndHelper.IS_START)));
                 } else {
                     // end first
-                    Iterables.addAll(cee.getEventEnds(), sees.stream().filter(java.util.function.Predicate.not(EventEndHelper.IS_START)).toList());
-                    Iterables.addAll(cee.getEventEnds(), sees.stream().filter(EventEndHelper.IS_START).toList());
+                    Iterables.addAll(cee.getEventEnds(), Iterables.filter(sees, Predicates.not(EventEndHelper.IS_START)));
+                    Iterables.addAll(cee.getEventEnds(), Iterables.filter(sees, EventEndHelper.IS_START));
                 }
                 result.add(cee);
             }
@@ -162,7 +162,7 @@ public final class RefreshOrderingHelper {
     private static void addAllSingleEventEnds(SequenceDDiagram sequenceDiagram, Multimap<EObject, SingleEventEnd> semanticEndToSingleEventEnd) {
 
         // Messages
-        for (DEdge edge : sequenceDiagram.getEdges().stream().filter(Message.viewpointElementPredicate()).toList()) {
+        for (DEdge edge : Iterables.filter(sequenceDiagram.getEdges(), Message.viewpointElementPredicate())) {
             /*
              * Target may be null if the semantic element has been removed from
              * the model but the canonical refresh has not happened yet.

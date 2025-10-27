@@ -62,7 +62,7 @@ public class DiagramSelectDRepresentationElementsListener extends SelectDReprese
          * {@inheritDoc}
          */
         @Override
-        public boolean test(Notification input) {
+        public boolean apply(Notification input) {
             if (input.getEventType() == Notification.SET && 
                     (DiagramPackage.eINSTANCE.getDEdge_SourceNode().equals(input.getFeature()) || DiagramPackage.eINSTANCE.getDEdge_TargetNode().equals(input.getFeature()))) {
                 return input.getOldValue() != null && input.getNewValue() != null && !(input.getOldValue().equals(input.getNewValue()));

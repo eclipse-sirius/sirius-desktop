@@ -348,7 +348,7 @@ public final class LayerHelper {
             List<AdditionalLayer> transientLayersToActivate) {
         final Predicate<Layer> isActiveByDefault = new Predicate<Layer>() {
             @Override
-            public boolean test(final Layer layer) {
+            public boolean apply(final Layer layer) {
                 boolean result = true;
                 if (layer instanceof AdditionalLayer) {
                     AdditionalLayer additionalLayer = (AdditionalLayer) layer;
@@ -392,7 +392,7 @@ public final class LayerHelper {
     public static void getMandatoriesAdditionalLayers(DiagramDescription diagDescription, Collection<Viewpoint> viewpointsFilter, List<Layer> layers, List<AdditionalLayer> transientLayers) {
         final Predicate<Layer> isMandatory = new Predicate<Layer>() {
             @Override
-            public boolean test(final Layer layer) {
+            public boolean apply(final Layer layer) {
                 return (layer instanceof AdditionalLayer) && !((AdditionalLayer) layer).isOptional();
             }
         };

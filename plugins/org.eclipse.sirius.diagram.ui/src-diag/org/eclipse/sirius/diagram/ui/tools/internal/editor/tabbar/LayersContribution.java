@@ -127,7 +127,7 @@ public class LayersContribution extends AbstractMenuContributionItem {
         Iterables.removeIf(allLayers, new Predicate<Layer>() {
 
             @Override
-            public boolean test(Layer layer) {
+            public boolean apply(Layer layer) {
                 if (layer instanceof AdditionalLayer) {
                     return !((AdditionalLayer) layer).isOptional();
                 }

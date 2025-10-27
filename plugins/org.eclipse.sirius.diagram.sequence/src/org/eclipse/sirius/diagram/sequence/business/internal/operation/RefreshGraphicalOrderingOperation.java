@@ -15,7 +15,6 @@ package org.eclipse.sirius.diagram.sequence.business.internal.operation;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-import java.util.function.Function;
 
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.VerticalPositionFunction;
@@ -27,6 +26,7 @@ import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
 import org.eclipse.sirius.diagram.sequence.tool.internal.Messages;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
 
+import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
@@ -88,7 +88,7 @@ public class RefreshGraphicalOrderingOperation extends AbstractModelChangeOperat
         final LoadingCache<EventEnd, Integer> positions = CacheBuilder.newBuilder().build(CacheLoader.from(verticalPosition));
         Predicate<EventEnd> isValidEnd = new Predicate<EventEnd>() {
             @Override
-            public boolean test(EventEnd input) {
+            public boolean apply(EventEnd input) {
                 try {
                     Integer pos = positions.get(input);
                     return pos != VerticalPositionFunction.INVALID_POSITION && pos != -VerticalPositionFunction.INVALID_POSITION;

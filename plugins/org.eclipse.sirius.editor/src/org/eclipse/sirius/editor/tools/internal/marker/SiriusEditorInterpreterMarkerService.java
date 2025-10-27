@@ -16,13 +16,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Set;
-import java.util.function.Predicate;
 
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.ecore.EValidator;
 
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
@@ -71,14 +72,14 @@ public final class SiriusEditorInterpreterMarkerService {
         } else {
             validationMarkers = new ArrayList<>();
         }
-        ArrayList<IMarker> validationMarkersRelativeToElement = new ArrayList<>(validationMarkers.stream().filter(new Predicate<IMarker>() {
+        ArrayList<IMarker> validationMarkersRelativeToElement = Lists.newArrayList(Iterables.filter(validationMarkers, new Predicate<IMarker>() {
 
-            public boolean test(IMarker input) {
+            public boolean apply(IMarker input) {
                 String uriAttribute = input.getAttribute(EValidator.URI_ATTRIBUTE, null);
                 return elementURI.equals(uriAttribute);
             }
 
-        }).toList());
+        }));
         return validationMarkersRelativeToElement;
     }
 

@@ -127,7 +127,7 @@ public class HideRevealColumnsAction extends AbstractHideRevealAction<DColumn> {
         return Collections2.filter(getAllElements(), new Predicate<DColumn>() {
 
             @Override
-            public boolean test(final DColumn input) {
+            public boolean apply(final DColumn input) {
                 return input.isVisible();
             }
         });

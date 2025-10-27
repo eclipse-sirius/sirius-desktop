@@ -55,9 +55,9 @@ public class Gate extends AbstractSequenceNode {
         INSTANCE;
 
         @Override
-        public boolean test(DDiagramElement input) {
+        public boolean apply(DDiagramElement input) {
             return AbstractSequenceElement.isSequenceDiagramElement(input, DescriptionPackage.eINSTANCE.getGateMapping())
-                    && !InstanceRole.viewpointElementPredicate().test((DDiagramElement) input.eContainer());
+                    && !InstanceRole.viewpointElementPredicate().apply((DDiagramElement) input.eContainer());
         }
     }
 
@@ -69,7 +69,7 @@ public class Gate extends AbstractSequenceNode {
      */
     Gate(Node node) {
         super(node);
-        Preconditions.checkArgument(Gate.notationPredicate().test(node), Messages.Gate_nonGateNode);
+        Preconditions.checkArgument(Gate.notationPredicate().apply(node), Messages.Gate_nonGateNode);
     }
 
     /**

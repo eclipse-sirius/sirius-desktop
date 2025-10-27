@@ -37,6 +37,8 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 // End of user code imports
 
@@ -129,9 +131,9 @@ public class CreateViewMappingPropertySection extends AbstractComboPropertySecti
         if (!values.isEmpty()) {
             Predicate<Object> predicate = Predicates.or(Predicates.instanceOf(EdgeMapping.class), Predicates.instanceOf(EdgeMappingImport.class));
             if (eObject instanceof CreateEdgeView) {
-                values = new ArrayList<>(values.stream().filter(predicate).toList());
+                values = Lists.newArrayList(Iterables.filter(values, predicate));
             } else if (eObject instanceof CreateView) {
-                values = new ArrayList<>(values.stream().filter(java.util.function.Predicate.not(predicate)).toList());
+                values = Lists.newArrayList(Iterables.filter(values, Predicates.not(predicate)));
             }
         }
         // End of user code choice of values

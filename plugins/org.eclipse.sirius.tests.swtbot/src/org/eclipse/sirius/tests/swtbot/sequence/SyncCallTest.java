@@ -2530,8 +2530,8 @@ public class SyncCallTest extends AbstractDefaultModelSequenceTests {
 
         // Get the flagged expanded sizes.
         CollapseFilter filterE1 = Iterables.filter(dde1.getGraphicalFilters(), CollapseFilter.class).iterator().next();
-        Predicate<Object> dde2CollapseFilter = Predicates.and(Predicates.instanceOf(CollapseFilter.class), java.util.function.Predicate.not(Predicates.instanceOf(IndirectlyCollapseFilter.class)));
-        CollapseFilter filterE2 = (CollapseFilter) dde2.getGraphicalFilters().stream().filter(dde2CollapseFilter).toList().iterator().next();
+        Predicate<Object> dde2CollapseFilter = Predicates.and(Predicates.instanceOf(CollapseFilter.class), Predicates.not(Predicates.instanceOf(IndirectlyCollapseFilter.class)));
+        CollapseFilter filterE2 = (CollapseFilter) Iterables.filter(dde2.getGraphicalFilters(), dde2CollapseFilter).iterator().next();
         IndirectlyCollapseFilter filterE2_indirect = Iterables.filter(dde2.getGraphicalFilters(), IndirectlyCollapseFilter.class).iterator().next();
         IndirectlyCollapseFilter filterS1 = Iterables.filter(dde3.getGraphicalFilters(), IndirectlyCollapseFilter.class).iterator().next();
 
@@ -2583,9 +2583,9 @@ public class SyncCallTest extends AbstractDefaultModelSequenceTests {
         Size expandedGmfSizeS1 = (Size) ((Node) s1.getNotationView()).getLayoutConstraint();
 
         // Get the flagged expanded sizes.
-        assertFalse(dde1.getGraphicalFilters().stream().anyMatch(Predicates.instanceOf(CollapseFilter.class)));
-        assertFalse(dde2.getGraphicalFilters().stream().anyMatch(Predicates.instanceOf(CollapseFilter.class)));
-        assertFalse(dde3.getGraphicalFilters().stream().anyMatch(Predicates.instanceOf(CollapseFilter.class)));
+        assertFalse(Iterables.any(dde1.getGraphicalFilters(), Predicates.instanceOf(CollapseFilter.class)));
+        assertFalse(Iterables.any(dde2.getGraphicalFilters(), Predicates.instanceOf(CollapseFilter.class)));
+        assertFalse(Iterables.any(dde3.getGraphicalFilters(), Predicates.instanceOf(CollapseFilter.class)));
 
         assertEquals(sizeE1.height, expandedSizeE1.height);
         assertEquals(sizeE1.height, expandedGmfSizeE1.getHeight());

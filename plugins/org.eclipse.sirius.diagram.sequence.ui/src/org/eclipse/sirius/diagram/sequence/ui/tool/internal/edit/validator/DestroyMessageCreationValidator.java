@@ -20,8 +20,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDi
 import org.eclipse.sirius.diagram.sequence.business.internal.query.SequenceDiagramQuery;
 
 import com.google.common.base.Predicates;
-
-import java.util.function.Predicate;
+import com.google.common.collect.Iterables;
 
 /**
  * Validator to check if a destroy message creation request is valid.
@@ -56,7 +55,7 @@ public class DestroyMessageCreationValidator extends DefaultMessageCreationValid
         SequenceDiagram sequenceDiagram = sequenceElementSource.getDiagram();
         SequenceDiagramQuery sequenceDiagramQuery = new SequenceDiagramQuery(sequenceDiagram);
 
-        for (ISequenceEvent sequenceEvent : sequenceDiagramQuery.getAllSequenceEventsUpperThan(firstClickLocation.y).stream().filter(Predicate.not(Predicates.instanceOf(Lifeline.class))).toList()) {
+        for (ISequenceEvent sequenceEvent : Iterables.filter(sequenceDiagramQuery.getAllSequenceEventsUpperThan(firstClickLocation.y), Predicates.not(Predicates.instanceOf(Lifeline.class)))) {
             if (isSequenceEventOfLifeline(sequenceEvent, sequenceElementTarget.getLifeline()) || isMessageTargeting(sequenceEvent, sequenceElementTarget.getLifeline())
                     || isDestroyMessageFor(sequenceEvent, sequenceElementTarget.getLifeline().get().getInstanceRole())) {
                 valid = false;

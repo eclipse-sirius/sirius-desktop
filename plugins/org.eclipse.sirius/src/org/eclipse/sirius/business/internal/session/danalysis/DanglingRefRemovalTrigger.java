@@ -72,7 +72,7 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
          * {@inheritDoc}
          */
         @Override
-        public boolean test(Notification input) {
+        public boolean apply(Notification input) {
             boolean potentialExplicitDetachment = input.getEventType() == Notification.REMOVE || input.getEventType() == Notification.REMOVE_MANY || input.getEventType() == Notification.UNSET;
             boolean potentialImplicitDetachment = input.getEventType() == Notification.SET && input.getNewValue() == null;
             if (potentialExplicitDetachment || potentialImplicitDetachment) {
@@ -107,7 +107,7 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
          * {@inheritDoc}
          */
         @Override
-        public boolean test(Notification input) {
+        public boolean apply(Notification input) {
             if (input.getEventType() == Notification.ADD || input.getEventType() == Notification.ADD_MANY || input.getEventType() == Notification.SET) {
                 // The input.getNewValue() check required to make IS_ATTACHMENT
                 // and IS_DETACHMENT mutually exclusive.
@@ -171,7 +171,7 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
          * {@inheritDoc}
          */
         @Override
-        public boolean test(EReference eReference) {
+        public boolean apply(EReference eReference) {
             // ignoring the EPackage.eFactoryInstance reference
             return EcorePackage.eINSTANCE.getEPackage_EFactoryInstance().equals(eReference);
         }
@@ -202,7 +202,7 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
 
     @Override
     public Option<Command> localChangesAboutToCommit(Collection<Notification> notifications) {
-        final Set<EObject> allDetachedObjects = getChangedEObjectsAndChildren(notifications.stream().filter(IS_DETACHMENT).toList(), null);
+        final Set<EObject> allDetachedObjects = getChangedEObjectsAndChildren(Iterables.filter(notifications, IS_DETACHMENT), null);
         if (allDetachedObjects.size() > 0) {
             DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.CLEANING_REMOVEDANGLING_KEY);
 
@@ -212,14 +212,14 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
                 allDetachedObjectsAsNotifier.add(notifier);
             }
             Predicate<Notifier> ignoreNotifierInDetachedObjects = Predicates.in(allDetachedObjectsAsNotifier);
-            final Set<EObject> allAttachedObjects = getChangedEObjectsAndChildren(notifications.stream().filter(IS_ATTACHMENT).toList(), ignoreNotifierInDetachedObjects);
+            final Set<EObject> allAttachedObjects = getChangedEObjectsAndChildren(Iterables.filter(notifications, IS_ATTACHMENT), ignoreNotifierInDetachedObjects);
             final Set<EObject> toRemoveXRefFrom = Sets.difference(allDetachedObjects, allAttachedObjects);
             if (toRemoveXRefFrom.size() > 0) {
                 EReferencePredicate refToIgnore = new EReferencePredicate() {
                     @Override
                     public boolean apply(EReference ref) {
                         return DSEMANTICDECORATOR_REFERENCE_TO_IGNORE_PREDICATE.apply(ref) || NOTATION_VIEW_ELEMENT_REFERENCE_TO_IGNORE_PREDICATE.apply(ref)
-                                || EPACKAGE_EFACTORYINSTANCE_REFERENCE_TO_IGNORE_PREDICATE.test(ref);
+                                || EPACKAGE_EFACTORYINSTANCE_REFERENCE_TO_IGNORE_PREDICATE.apply(ref);
                     }
                 };
 
@@ -247,7 +247,7 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
         for (Notification notification : notifications) {
             Object notifier = notification.getNotifier();
             if (notifier instanceof Notifier) {
-                if (notifierToIgnore == null || !notifierToIgnore.test((Notifier) notifier)) {
+                if (notifierToIgnore == null || !notifierToIgnore.apply((Notifier) notifier)) {
                     for (EObject root : getNotificationValues(notification)) {
                         // Add the element and all its contents to the
                         // changedEObjects set only once.
@@ -272,7 +272,7 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
     protected Set<EObject> getNotificationValues(Notification notification) {
         final Set<EObject> values = new LinkedHashSet<>();
         Object value = notification.getOldValue();
-        if (IS_ATTACHMENT.test(notification)) {
+        if (IS_ATTACHMENT.apply(notification)) {
             // IS_DETACHMENT is the default case : notification.getOldValue and
             // the two predicates are mutually exclusive: see the SET case.
             value = notification.getNewValue();

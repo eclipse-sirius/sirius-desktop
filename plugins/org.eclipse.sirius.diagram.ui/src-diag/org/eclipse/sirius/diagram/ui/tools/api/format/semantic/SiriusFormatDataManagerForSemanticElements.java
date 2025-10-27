@@ -68,7 +68,7 @@ public class SiriusFormatDataManagerForSemanticElements extends AbstractSiriusFo
          * {@inheritDoc}
          */
         @Override
-        public boolean test(final EObject input) {
+        public boolean apply(final EObject input) {
             return input.eContainer() == null;
         }
     };

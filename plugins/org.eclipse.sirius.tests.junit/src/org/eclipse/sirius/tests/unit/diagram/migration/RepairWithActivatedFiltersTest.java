@@ -129,7 +129,7 @@ public class RepairWithActivatedFiltersTest extends AbstractRepairMigrateTest {
         assertTrue("wrong expected type", diagramElement instanceof DNodeContainer);
         Predicate<Object> predicate = new Predicate<Object>() {
 
-            public boolean test(Object input) {
+            public boolean apply(Object input) {
                 if (input instanceof DNodeContainer) {
                     String name = ((DNodeContainer) input).getName();
                     if (name.equals("Test") || name.equals("Test2") || name.equals("testPackage")) {
@@ -139,7 +139,7 @@ public class RepairWithActivatedFiltersTest extends AbstractRepairMigrateTest {
                 return false;
             }
         };
-        Iterable<DDiagramElement> iterable = ((DNodeContainer) diagramElement).getElements().stream().filter(predicate).toList();
+        Iterable<DDiagramElement> iterable = Iterables.filter(((DNodeContainer) diagramElement).getElements(), predicate);
         assertEquals("Wrong expected number of DNode container. There should have 3 container named Test, Test2 and testPackage", 3, Iterables.size(iterable));
         for (DDiagramElement dDiagramElement : iterable) {
             Iterable<CollapseFilter> collapseFilters = Iterables.filter(dDiagramElement.getGraphicalFilters(), CollapseFilter.class);
@@ -182,7 +182,8 @@ public class RepairWithActivatedFiltersTest extends AbstractRepairMigrateTest {
             assertEquals("wrong expected width value for " + indirectlyCollapseFilter, 10, indirectlyCollapseFilter.getWidth());
 
             if (node.getTarget() instanceof EOperation) {
-                Iterable<GraphicalFilter> onlyCollapseFilter = node.getGraphicalFilters().stream().filter(Predicates.and(Predicates.instanceOf(CollapseFilter.class), java.util.function.Predicate.not(Predicates.instanceOf(IndirectlyCollapseFilter.class)))).toList();
+                Iterable<GraphicalFilter> onlyCollapseFilter = Iterables.filter(node.getGraphicalFilters(),
+                        Predicates.and(Predicates.instanceOf(CollapseFilter.class), Predicates.not(Predicates.instanceOf(IndirectlyCollapseFilter.class))));
                 assertEquals("There should be one CollapseFilter in " + node, 1, Iterables.size(onlyCollapseFilter));
                 CollapseFilter collapseFilter = (CollapseFilter) Iterables.get(onlyCollapseFilter, 0);
                 assertEquals("wrong expected height value for " + collapseFilter, 10, collapseFilter.getHeight());

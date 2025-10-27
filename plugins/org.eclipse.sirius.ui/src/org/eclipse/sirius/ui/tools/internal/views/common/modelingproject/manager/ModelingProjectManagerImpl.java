@@ -96,7 +96,7 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
 
     private Predicate<URI> isAlreadyLoadedPredicate = new Predicate<URI>() {
         @Override
-        public boolean test(URI representationsFileURI) {
+        public boolean apply(URI representationsFileURI) {
             return isAlreadyLoaded(representationsFileURI);
         }
     };
@@ -177,7 +177,7 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
         // List only the representations files that are not already loaded or
         // that are not currently in loading.
         Iterator<URI> representationsFilesURIsToLoadIterator = Iterators.filter(representationsFilesURIs.iterator(),
-                java.util.function.Predicate.not(Predicates.or(Predicates.in(sessionFileLoading), isAlreadyLoadedPredicate)));
+                Predicates.not(Predicates.or(Predicates.in(sessionFileLoading), isAlreadyLoadedPredicate)));
         if (!representationsFilesURIsToLoadIterator.hasNext()) {
             return;
         }

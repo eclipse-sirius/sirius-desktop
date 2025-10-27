@@ -12,8 +12,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.api.tools;
 
-import java.util.function.Predicate;
-
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -25,6 +23,9 @@ import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.junit.Assert;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
 
 /**
  * Tests for ensuring that the Tree Item Edition Tool works as expected.
@@ -78,12 +79,12 @@ public class TreeItemEditionToolTest extends TreeTestCase {
      */
     public void testDirectEditWithNoBehavior() {
         // Step 1 : getting the semantic element to edit
-        EPackage pkgToEdit = semanticModel.getESubpackages().stream().filter(new Predicate<EPackage>() {
+        EPackage pkgToEdit = Iterables.filter(semanticModel.getESubpackages(), new Predicate<EPackage>() {
 
-            public boolean test(EPackage input) {
+            public boolean apply(EPackage input) {
                 return elementNameP2.equals(input.getName());
             }
-        }).toList().iterator().next();
+        }).iterator().next();
 
         // Step 2 : getting the tree items corresponding to this element
         DTreeItem treeitem = (DTreeItem) getFirstRepresentationElement(tree, pkgToEdit);
@@ -154,12 +155,12 @@ public class TreeItemEditionToolTest extends TreeTestCase {
      */
     public void testDirectEditWithEditMask() {
         // Step 1 : getting the semantic elements to edit
-        EPackage pkgToEdit = semanticModel.getESubpackages().stream().filter(new Predicate<EPackage>() {
+        EPackage pkgToEdit = Iterables.filter(semanticModel.getESubpackages(), new Predicate<EPackage>() {
 
-            public boolean test(EPackage input) {
+            public boolean apply(EPackage input) {
                 return elementNameP2.equals(input.getName());
             }
-        }).toList().iterator().next();
+        }).iterator().next();
         EAttribute attributeToEdit = ((EClass) pkgToEdit.getEClassifier("C4")).getEAttributes().iterator().next();
 
         // Step 2 : getting the tree items corresponding to these elements

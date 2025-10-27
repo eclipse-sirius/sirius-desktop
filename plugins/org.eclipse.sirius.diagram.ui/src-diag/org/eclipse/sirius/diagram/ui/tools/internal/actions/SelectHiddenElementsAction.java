@@ -17,7 +17,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.function.Function;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
@@ -56,6 +55,7 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPage;
 
+import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 
@@ -100,9 +100,9 @@ public class SelectHiddenElementsAction extends AbstractDiagramAction {
 
             return new Predicate<Object>() {
                 @Override
-                public boolean test(Object input) {
+                public boolean apply(Object input) {
                     if (input instanceof DDiagramElement) {
-                        return !allowsHideReveal.test((DDiagramElement) input);
+                        return !allowsHideReveal.apply((DDiagramElement) input);
                     }
                     return false;
                 }
@@ -117,7 +117,7 @@ public class SelectHiddenElementsAction extends AbstractDiagramAction {
 
     private static final Predicate<Object> IS_VISIBLE = new Predicate<Object>() {
         @Override
-        public boolean test(Object input) {
+        public boolean apply(Object input) {
             boolean result = false;
             if (input instanceof DDiagramElement) {
                 result = !(new DDiagramElementQuery((DDiagramElement) input).isHidden());
