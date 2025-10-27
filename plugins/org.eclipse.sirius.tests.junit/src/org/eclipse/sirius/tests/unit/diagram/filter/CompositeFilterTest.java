@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.filter;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -45,7 +46,6 @@ import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Tests to check the behavior of graphical filters computation.
@@ -955,7 +955,7 @@ public class CompositeFilterTest extends SiriusDiagramTestCase {
         DDiagramElement element = elementsFromType.get(0);
         // One CollapseApplication per DDiagramElement
         assertEquals(filters.length == 0 ? 0 : 1, Iterables.size(
-                Iterables.filter(element.getGraphicalFilters(), Predicates.and(Predicates.instanceOf(CollapseFilter.class), Predicates.not(Predicates.instanceOf(IndirectlyCollapseFilter.class))))));
+        element.getGraphicalFilters().stream().filter(Predicates.and(Predicates.instanceOf(CollapseFilter.class), java.util.function.Predicate.not(Predicates.instanceOf(IndirectlyCollapseFilter.class)))).toList()));
 
         DDiagramElementQuery elementQuery = new DDiagramElementQuery(element);
 
@@ -1018,11 +1018,11 @@ public class CompositeFilterTest extends SiriusDiagramTestCase {
 
     private List<DDiagramElement> getDiagramElements(final EClass type) {
         Predicate<DDiagramElement> expectedType = new Predicate<DDiagramElement>() {
-            public boolean apply(DDiagramElement input) {
+            public boolean test(DDiagramElement input) {
                 return type.isInstance(input.getTarget());
             }
         };
-        return Lists.newArrayList(Iterables.filter(diagram.getDiagramElements(), expectedType));
+        return new ArrayList<>(diagram.getDiagramElements().stream().filter(expectedType).toList());
     }
 
     @Override

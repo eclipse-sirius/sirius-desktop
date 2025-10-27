@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -28,8 +29,6 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.junit.Assert;
-
-import com.google.common.collect.Sets;
 
 /**
  * Test class concerning the marker and quick fix for modeling project without representations file.
@@ -158,10 +157,10 @@ public class CreateMissingRepresentationFileResolutionTest extends AbstractScena
         designerProject.getProjectTreeItem().select();
         SWTBotUtils.clickContextMenu(designerProject.getProjectTreeItem(), "Viewpoints Selection");
         final SWTBotShell shellViewpointsSelection = bot.shell("Viewpoints Selection");
-        Set<String> viewpointToSelect = Sets.newLinkedHashSet();
+        Set<String> viewpointToSelect = new LinkedHashSet<>();
         viewpointToSelect.add("Documentation");
         viewpointToSelect.add("Garage");
-        Set<String> viewpointToDeselect = Sets.newLinkedHashSet();
+        Set<String> viewpointToDeselect = new LinkedHashSet<>();
         new ViewpointSelectionDialog(bot).selectViewpoint(viewpointToSelect, viewpointToDeselect);
         bot.waitUntil(Conditions.shellCloses(shellViewpointsSelection));
         Assert.assertEquals("2 viewpoints should have been selected", 2, session.getSelectedViewpoints(false).size());

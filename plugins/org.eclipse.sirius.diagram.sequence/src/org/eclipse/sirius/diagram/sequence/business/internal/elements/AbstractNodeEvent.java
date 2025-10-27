@@ -48,7 +48,7 @@ public abstract class AbstractNodeEvent extends AbstractSequenceNode implements 
      */
     public static final Predicate<ISequenceEvent> NO_REPARENTABLE_EVENTS = new Predicate<ISequenceEvent>() {
         @Override
-        public boolean apply(ISequenceEvent input) {
+        public boolean test(ISequenceEvent input) {
             return input instanceof AbstractFrame || input instanceof State || input instanceof Operand || input instanceof Message;
         }
     };
@@ -67,10 +67,10 @@ public abstract class AbstractNodeEvent extends AbstractSequenceNode implements 
         INSTANCE;
 
         @Override
-        public boolean apply(DDiagramElement input) {
+        public boolean test(DDiagramElement input) {
             return (AbstractSequenceElement.isSequenceDiagramElement(input, DescriptionPackage.eINSTANCE.getExecutionMapping())
                     || AbstractSequenceElement.isSequenceDiagramElement(input, DescriptionPackage.eINSTANCE.getStateMapping()))
-                    && !InstanceRole.viewpointElementPredicate().apply((DDiagramElement) input.eContainer());
+                    && !InstanceRole.viewpointElementPredicate().test((DDiagramElement) input.eContainer());
         }
     }
 
@@ -82,7 +82,7 @@ public abstract class AbstractNodeEvent extends AbstractSequenceNode implements 
      */
     AbstractNodeEvent(Node node) {
         super(node);
-        Preconditions.checkArgument(AbstractNodeEvent.notationPredicate().apply(node), Messages.AbstractNodeEvent_nonAbstractNodeEventNode);
+        Preconditions.checkArgument(AbstractNodeEvent.notationPredicate().test(node), Messages.AbstractNodeEvent_nonAbstractNodeEventNode);
     }
 
     /**
@@ -199,7 +199,7 @@ public abstract class AbstractNodeEvent extends AbstractSequenceNode implements 
         int x = parentLogicalBounds.x;
         int y = parentLogicalBounds.y + bounds.getY();
 
-        if (Lifeline.notationPredicate().apply(parent.getNotationView()) || this instanceof State) {
+        if (Lifeline.notationPredicate().test(parent.getNotationView()) || this instanceof State) {
             /*
              * Top-level executions which are directly on a lifeline are horizontally centered on the lifeline.
              */

@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -67,9 +68,6 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * A node creation edit policy which invokes the ExecutionCreationTool correctly (with all the proper variables).
@@ -229,7 +227,7 @@ public class SequenceNodeCreationPolicy extends NodeCreationEditPolicy {
 
     private Option<Operand> getOperand(DDiagramElementContainer viewNodeContainer) {
         Collection<View> views = ISequenceElementAccessor.getViewsForSemanticElement((SequenceDDiagram) viewNodeContainer.getParentDiagram(), viewNodeContainer.getTarget());
-        List<View> operandViews = Lists.newArrayList(Iterables.filter(views, Operand.notationPredicate()));
+        List<View> operandViews = new ArrayList<>(views.stream().filter(Operand.notationPredicate()).toList());
         for (View view : operandViews) {
             Option<Operand> optOperand = ISequenceElementAccessor.getOperand(view);
             if (optOperand.some()) {
@@ -240,8 +238,8 @@ public class SequenceNodeCreationPolicy extends NodeCreationEditPolicy {
     }
 
     private boolean isCreatingOperandInCombinedFragment(ContainerCreationDescription tool, DDiagramElementContainer viewNodeContainer) {
-        return tool instanceof OperandCreationTool && Operand.viewpointElementPredicate().apply(viewNodeContainer)
-                && CombinedFragment.viewpointElementPredicate().apply((DDiagramElement) viewNodeContainer.eContainer());
+        return tool instanceof OperandCreationTool && Operand.viewpointElementPredicate().test(viewNodeContainer)
+                && CombinedFragment.viewpointElementPredicate().test((DDiagramElement) viewNodeContainer.eContainer());
     }
 
     private int computeBottomY(SequenceDDiagram diagram, Point location, EventEnd startingEndSuccessor) {

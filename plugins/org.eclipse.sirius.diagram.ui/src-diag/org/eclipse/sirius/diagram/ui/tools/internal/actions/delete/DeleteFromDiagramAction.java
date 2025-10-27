@@ -17,6 +17,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.function.Function;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
@@ -215,7 +216,7 @@ public class DeleteFromDiagramAction extends RetargetAction implements IObjectAc
      */
     public static boolean shouldBeEnabledForEditParts(Iterable<? extends IGraphicalEditPart> selectedParts) {
         Predicate<IGraphicalEditPart> isEditModeEnabledPredicate = new Predicate<IGraphicalEditPart>() {
-            public boolean apply(IGraphicalEditPart input) {
+            public boolean test(IGraphicalEditPart input) {
                 return input.isEditModeEnabled();
             }
         };
@@ -235,7 +236,7 @@ public class DeleteFromDiagramAction extends RetargetAction implements IObjectAc
      * @return the selected objects
      */
     public static Iterable<EObject> getSelectedEObject(Iterable<? extends IGraphicalEditPart> selectedParts) {
-        return Iterables.transform(selectedParts, new com.google.common.base.Function<IGraphicalEditPart, EObject>() {
+        return Iterables.transform(selectedParts, new Function<IGraphicalEditPart, EObject>() {
             public EObject apply(final IGraphicalEditPart from) {
                 return from.resolveSemanticElement();
             }

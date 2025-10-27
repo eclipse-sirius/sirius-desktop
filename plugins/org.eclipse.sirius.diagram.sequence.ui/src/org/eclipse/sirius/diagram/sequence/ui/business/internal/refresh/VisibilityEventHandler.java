@@ -28,7 +28,6 @@ import org.eclipse.sirius.diagram.sequence.ui.business.api.diagramtype.SequenceD
 import org.eclipse.sirius.diagram.ui.tools.internal.util.NotificationQuery;
 
 import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 
 /**
@@ -70,7 +69,7 @@ public class VisibilityEventHandler extends ResourceSetListenerImpl {
     private boolean containsVisibilityEvent(ResourceSetChangeEvent event) {
         Predicate<Notification> isVisibilityEvent = new Predicate<Notification>() {
             @Override
-            public boolean apply(Notification input) {
+            public boolean test(Notification input) {
                 NotificationQuery nq = new NotificationQuery(input);
                 return nq.isViewBecomingInvisibleEvent() || nq.isHideFilterAddEvent();
             }
@@ -78,7 +77,7 @@ public class VisibilityEventHandler extends ResourceSetListenerImpl {
 
         Predicate<Notification> isAlwaysVisibleSequenceElement = new Predicate<Notification>() {
             @Override
-            public boolean apply(Notification input) {
+            public boolean test(Notification input) {
                 Object notifier = input.getNotifier();
                 if (notifier instanceof DDiagramElement) {
                     DDiagramElement dde = (DDiagramElement) notifier;
@@ -88,6 +87,6 @@ public class VisibilityEventHandler extends ResourceSetListenerImpl {
                 return false;
             }
         };
-        return Iterables.any(Iterables.filter(event.getNotifications(), Notification.class), Predicates.and(isAlwaysVisibleSequenceElement, isVisibilityEvent));
+        return Iterables.any(Iterables.filter(event.getNotifications(), Notification.class), isAlwaysVisibleSequenceElement.and(isVisibilityEvent));
     }
 }

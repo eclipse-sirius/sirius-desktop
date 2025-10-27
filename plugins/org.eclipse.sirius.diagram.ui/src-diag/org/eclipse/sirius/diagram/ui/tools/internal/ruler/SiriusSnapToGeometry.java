@@ -15,6 +15,7 @@ package org.eclipse.sirius.diagram.ui.tools.internal.ruler;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.eclipse.draw2d.geometry.PrecisionRectangle;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -97,12 +98,12 @@ public class SiriusSnapToGeometry extends SnapToGeometryEx {
             // Same code as super.generateSnapPartsList(exclusions); but with
             // border nodes add to children list
             // Don't snap to any figure that is being dragged
-            List children = Lists.newArrayList(container.getChildren());
+            List children = new ArrayList<>(container.getChildren());
             // Add border nodes
             Iterables.addAll(children, Iterables.filter(container.getParent().getChildren(), AbstractDiagramBorderNodeEditPart.class));
             children.removeAll(exclusions);
             // Remove IStyleEditPart from list of children
-            Iterable<Object> filteredChildren = Iterables.filter(children, Predicates.not(Predicates.instanceOf(IStyleEditPart.class)));
+            Iterable<Object> filteredChildren = children.stream().filter(Predicate.not(Predicates.instanceOf(IStyleEditPart.class))).toList();
 
             // Don't snap to hidden figures
             List hiddenChildren = new ArrayList<>();

@@ -84,7 +84,7 @@ public class InitializeModelingProjectJob extends WorkspaceJob {
     public InitializeModelingProjectJob(List<IProject> projects) {
         this(Iterators.all(projects.iterator(), new Predicate<IProject>() {
             @Override
-            public boolean apply(IProject input) {
+            public boolean test(IProject input) {
                 try {
                     return input.members().length == 1;
                 } catch (CoreException e) {

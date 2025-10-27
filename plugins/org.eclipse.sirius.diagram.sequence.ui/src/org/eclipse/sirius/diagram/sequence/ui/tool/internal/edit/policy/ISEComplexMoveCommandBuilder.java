@@ -246,14 +246,13 @@ public class ISEComplexMoveCommandBuilder {
         Predicate<AbstractNodeEvent> filterRange = new Predicate<AbstractNodeEvent>() {
 
             @Override
-            public boolean apply(AbstractNodeEvent nodeEvent) {
+            public boolean test(AbstractNodeEvent nodeEvent) {
                 Range initialRange = nodeEvent.getVerticalRange();
                 Range futureRange = validator.getRangeFunction().apply(nodeEvent);
                 return validatorInitialRange.intersects(initialRange) || validatorFinalRange.intersects(futureRange);
             }
         };
-        Iterable<AbstractNodeEvent> filterUnmovedExecutions = Iterables.filter(validator.getDiagram().getAllAbstractNodeEvents(),
-                Predicates.and(Predicates.not(Predicates.in(validator.getMovedElements())), filterRange));
+        Iterable<AbstractNodeEvent> filterUnmovedExecutions = validator.getDiagram().getAllAbstractNodeEvents().stream().filter(Predicates.and(java.util.function.Predicate.not(Predicates.in(validator.getMovedElements())), filterRange)).toList();
         Collection<AbstractNodeEvent> unmovedExecutions = Lists.newArrayList(filterUnmovedExecutions);
 
         for (AbstractNodeEvent execToReparent : Iterables.concat(movedExecutions, unmovedExecutions)) {
@@ -276,7 +275,7 @@ public class ISEComplexMoveCommandBuilder {
         Predicate<Message> filterRange = new Predicate<Message>() {
 
             @Override
-            public boolean apply(Message msg) {
+            public boolean test(Message msg) {
                 Range initialRange = msg.getVerticalRange();
                 Range futureRange = validator.getRangeFunction().apply(msg);
 
@@ -294,7 +293,7 @@ public class ISEComplexMoveCommandBuilder {
             }
         };
 
-        for (Message message : Iterables.filter(allMessages, filterRange)) {
+        for (Message message : allMessages.stream().filter(filterRange).toList()) {
 
             // check source change
             ISequenceNode sourceElement = message.getSourceElement();
@@ -319,7 +318,7 @@ public class ISEComplexMoveCommandBuilder {
         EventFinder newParentFinder = new EventFinder(movedExec.getLifeline().get());
         newParentFinder.setReparent(true);
         newParentFinder.setVerticalRangefunction(validator.getRangeFunction());
-        newParentFinder.setEventsToIgnore(Predicates.equalTo((ISequenceEvent) movedExec));
+        newParentFinder.setEventsToIgnore(java.util.function.Predicate.isEqual((ISequenceEvent) movedExec));
         newParentFinder.setReparented(reparents);
         Range futureRange = validator.getRangeFunction().apply(movedExec);
         Range lookedRange = new Range(futureRange.getLowerBound(), futureRange.getLowerBound());

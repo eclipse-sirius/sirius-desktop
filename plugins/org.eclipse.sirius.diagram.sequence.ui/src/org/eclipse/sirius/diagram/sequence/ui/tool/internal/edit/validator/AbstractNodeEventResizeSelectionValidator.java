@@ -17,6 +17,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Function;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
@@ -43,7 +44,6 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
-import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
@@ -157,7 +157,7 @@ public class AbstractNodeEventResizeSelectionValidator {
     protected boolean validateNewBoundsForAllTargets() {
         return Iterables.all(Iterables.filter(request.getEditParts(), ExecutionEditPart.class), new Predicate<ExecutionEditPart>() {
             @Override
-            public boolean apply(ExecutionEditPart input) {
+            public boolean test(ExecutionEditPart input) {
                 return validateNewBounds(input);
             }
         });

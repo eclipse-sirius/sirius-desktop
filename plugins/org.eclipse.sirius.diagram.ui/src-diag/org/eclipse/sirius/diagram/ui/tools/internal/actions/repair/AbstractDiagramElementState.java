@@ -19,6 +19,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.function.Predicate;
 
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.emf.ecore.EObject;
@@ -45,10 +46,8 @@ import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.Customizable;
 import org.eclipse.sirius.viewpoint.Style;
 
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * This will be used to save the current state of a given DDiagramElement. An element is identified via the URIs of both
@@ -194,7 +193,7 @@ public abstract class AbstractDiagramElementState<D extends DDiagramElement> imp
         Predicate<Object> predicate = new Predicate<Object>() {
 
             @Override
-            public boolean apply(Object input) {
+            public boolean test(Object input) {
                 if (input instanceof CollapseFilter) {
                     if (((CollapseFilter) input).eIsSet(DiagramPackage.eINSTANCE.getCollapseFilter_Height()) && ((CollapseFilter) input).eIsSet(DiagramPackage.eINSTANCE.getCollapseFilter_Width())) {
                         return true;
@@ -205,7 +204,7 @@ public abstract class AbstractDiagramElementState<D extends DDiagramElement> imp
         };
 
         // if the node is collapsed, we save its expanded bounds.
-        Iterable<GraphicalFilter> elementCollapseFilters = Iterables.filter(element.getGraphicalFilters(), predicate);
+        Iterable<GraphicalFilter> elementCollapseFilters = element.getGraphicalFilters().stream().filter(predicate).toList();
         if (!Iterables.isEmpty(elementCollapseFilters)) {
             GraphicalFilter graphicalFilter = Iterables.get(elementCollapseFilters, 0);
             if (graphicalFilter instanceof CollapseFilter) {
@@ -228,7 +227,7 @@ public abstract class AbstractDiagramElementState<D extends DDiagramElement> imp
             if (structuralFeature != null) {
                 Object value = customizable.eGet(structuralFeature);
                 if (value instanceof Collection<?>) {
-                    value = Lists.newArrayList((Collection<?>) value);
+                    value = new ArrayList<>((Collection<?>) value);
                 }
                 customFeatures.put(featureName, value);
 
@@ -407,7 +406,7 @@ public abstract class AbstractDiagramElementState<D extends DDiagramElement> imp
      *            the specified {@link GraphicalFilter} to restore
      */
     protected void addFilterType(DDiagramElement element, GraphicalFilter filter) {
-        if (!Iterables.any(element.getGraphicalFilters(), Predicates.instanceOf(filter.getClass()))) {
+        if (!element.getGraphicalFilters().stream().anyMatch(Predicates.instanceOf(filter.getClass()))) {
             element.getGraphicalFilters().add(filter);
         }
     }

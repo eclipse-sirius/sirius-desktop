@@ -145,7 +145,7 @@ public class SiriusControlAndDeleteRepresentationTest extends SiriusDiagramTestC
 
         final DRepresentationDescriptor existingRepresentation = Iterables.find(getRepresentationDescriptors(ENTITIES_DESC_NAME, session), new Predicate<DRepresentationDescriptor>() {
             @Override
-            public boolean apply(DRepresentationDescriptor input) {
+            public boolean test(DRepresentationDescriptor input) {
                 return input.getName().equals("package2 package entities");
             }
         });
@@ -265,7 +265,7 @@ public class SiriusControlAndDeleteRepresentationTest extends SiriusDiagramTestC
         // Delete the diagram created earlier.
         final DRepresentationDescriptor repDescriptor2 = Iterables.find(getRepresentationDescriptors(ENTITIES_DESC_NAME, session), new Predicate<DRepresentationDescriptor>() {
             @Override
-            public boolean apply(DRepresentationDescriptor input) {
+            public boolean test(DRepresentationDescriptor input) {
                 return input.getName().equals("New package2 diagram");
             }
         });
@@ -306,7 +306,7 @@ public class SiriusControlAndDeleteRepresentationTest extends SiriusDiagramTestC
         genericSetUp(TEMPORARY_PROJECT_NAME + "/" + MAIN_SEMANTIC_MODEL_FILENAME, TEMPORARY_PROJECT_NAME + "/" + "modeler.odesign", TEMPORARY_PROJECT_NAME + "/" + MAIN_SESSION_MODEL_FILENAME);
         final DRepresentationDescriptor repDescriptor3 = Iterables.find(getRepresentationDescriptors(ENTITIES_DESC_NAME, session), new Predicate<DRepresentationDescriptor>() {
             @Override
-            public boolean apply(DRepresentationDescriptor input) {
+            public boolean test(DRepresentationDescriptor input) {
                 return input.eResource().getURI().equals(mainSessionResourceURI);
             }
         });
@@ -326,7 +326,7 @@ public class SiriusControlAndDeleteRepresentationTest extends SiriusDiagramTestC
         // (one for each package) in the same aird.
         DView dView = Iterables.find(session.getOwnedViews(), new Predicate<DView>() {
             @Override
-            public boolean apply(DView v) {
+            public boolean test(DView v) {
                 return new DViewQuery(v).getLoadedRepresentations().size() == 4;
             }
         });

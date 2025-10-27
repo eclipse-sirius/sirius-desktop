@@ -61,7 +61,7 @@ public class ArrangeSelectionLayoutProvider extends AbstractLayoutProvider {
     private Predicate<EditPart> editPartIsNotSelected = new Predicate<EditPart>() {
 
         @Override
-        public boolean apply(EditPart input) {
+        public boolean test(EditPart input) {
             return input.getSelected() == EditPart.SELECTED_NONE;
         }
     };
@@ -112,7 +112,7 @@ public class ArrangeSelectionLayoutProvider extends AbstractLayoutProvider {
                 if (arrangeIsArrangeSelection) {
                     // Find out unselected diagram element on container (same
                     // parent) that are unpinned
-                    List<ShapeNodeEditPart> notSelectedShapeNodeEditPart = Lists.newArrayList(Iterables.filter(topLevelEditParts, editPartIsNotSelected));
+                    List<ShapeNodeEditPart> notSelectedShapeNodeEditPart = new ArrayList<>(topLevelEditParts.stream().filter(editPartIsNotSelected).toList());
                     notSelectedShapeNodeEditPart.removeAll(selectedObjectsLinkedList);
                     notSelectedShapeNodeEditPartAndUnpinned = Lists
                             .newArrayList(Iterables.filter(Iterables.filter(notSelectedShapeNodeEditPart, IDiagramElementEditPart.class), diagramElementEditPartIsUnpinned));
@@ -174,7 +174,7 @@ public class ArrangeSelectionLayoutProvider extends AbstractLayoutProvider {
      */
     private void addChildrenToNotSelectedUnpinnedList(Collection<? extends EditPart> notSelectedParent) {
         for (EditPart editPart : notSelectedParent) {
-            ArrayList<EditPart> notSelectedChildrenShapeNodeEditPart = Lists.newArrayList(Iterables.filter(editPart.getChildren(), editPartIsNotSelected));
+            ArrayList<EditPart> notSelectedChildrenShapeNodeEditPart = new ArrayList<>(editPart.getChildren().stream().filter(editPartIsNotSelected).toList());
             if (!notSelectedChildrenShapeNodeEditPart.isEmpty()) {
                 notSelectedShapeNodeEditPartAndUnpinned.addAll(Lists.newArrayList(Iterables
                         .filter(Iterables.filter(Iterables.filter(notSelectedChildrenShapeNodeEditPart, ShapeNodeEditPart.class), IDiagramElementEditPart.class), diagramElementEditPartIsUnpinned)));

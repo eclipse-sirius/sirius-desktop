@@ -12,11 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
+import java.util.*;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -54,8 +50,6 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.junit.Assert;
-
-import com.google.common.collect.Sets;
 
 /**
  * Test class for diagram creation description.
@@ -596,7 +590,7 @@ public class SiriusInternationalizationTest extends AbstractSiriusSwtBotGefTestC
 
         // Activate the viewpoint
         Assert.assertEquals("There should be no activated viewpoint", 0, localSession.getOpenedSession().getSelectedViewpoints(false).size());
-        localSession.changeViewpointSelection(Collections.singleton(getViewpointLabel()), Sets.<String> newLinkedHashSet());
+        localSession.changeViewpointSelection(Collections.singleton(getViewpointLabel()), new LinkedHashSet<>());
         Assert.assertEquals("There should be 1 activated viewpoint", 1, localSession.getOpenedSession().getSelectedViewpoints(false).size());
     }
 

@@ -201,7 +201,7 @@ public class HideRevealLinesAction extends AbstractHideRevealAction<DLine> {
         return Collections2.filter(getAllElements(), new Predicate<DLine>() {
 
             @Override
-            public boolean apply(final DLine input) {
+            public boolean test(final DLine input) {
                 return input.isVisible();
             }
         });

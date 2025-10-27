@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.function.Predicate;
 
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Location;
@@ -217,7 +218,7 @@ public class VerticalSpaceExpansionOrReduction extends AbstractModelChangeOperat
     private void categorizeMessages(Set<Message> messages) {
         messagesToResize = new HashSet<>();
         messagesToShift = new HashSet<>();
-        for (Message ise : Iterables.filter(messages, Predicates.not(Predicates.in(eventsToIgnore)))) {
+        for (Message ise : messages.stream().filter(Predicate.not(Predicates.in(eventsToIgnore))).toList()) {
             if (containsInsertionPoint(ise)) {
                 messagesToResize.add(ise);
             } else if (isStrictlyBelowInsertionPoint(ise) || isConnectedToAMovedExecutionByASingleEnd(ise)) {
@@ -254,7 +255,7 @@ public class VerticalSpaceExpansionOrReduction extends AbstractModelChangeOperat
 
     private void shiftSequenceNodes() {
 
-        for (ISequenceNode nodes : Iterables.filter(eventsToShift, Predicates.not(Predicates.instanceOf(AbstractNodeEvent.class)))) {
+        for (ISequenceNode nodes : eventsToShift.stream().filter(Predicate.not(Predicates.instanceOf(AbstractNodeEvent.class))).toList()) {
             shift(nodes, expansionSize);
         }
 

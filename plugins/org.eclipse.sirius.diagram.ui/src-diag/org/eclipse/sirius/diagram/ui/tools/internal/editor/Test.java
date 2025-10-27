@@ -8,7 +8,6 @@ import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 import com.google.common.base.Predicate;
-import com.google.common.collect.Sets;
 
 class Test {
     public static void main(String[] args) {
@@ -38,7 +37,7 @@ class Test {
     }
 
     public static Set<Object> test(Set<Object> set, Predicate<Object> isNotNull) {
-        return Sets.filter(set, isNotNull);
+        return set.stream().filter(isNotNull).collect(Collectors.toSet());
     }
 
     public static Set<Object> test2(Set<Object> set, Predicate<Object> isNotNull) {

@@ -67,7 +67,7 @@ public class FormatDataHelperImpl implements FormatDataHelper {
          * {@inheritDoc}
          */
         @Override
-        public boolean apply(final EObject input) {
+        public boolean test(final EObject input) {
             return input.eContainer() == null;
         }
     };

@@ -199,7 +199,7 @@ public class NoteAttachmentMigrationTest extends SiriusTestCase {
                     Diagram gmfDiagram = diagramCreationUtil.getAssociatedGMFDiagram();
                     noteAttachmentWithoutSourceOrTarget = Iterators.filter(gmfDiagram.eAllContents(), Predicates.and(Predicates.instanceOf(Connector.class), new Predicate<EObject>() {
                         @Override
-                        public boolean apply(EObject input) {
+                        public boolean test(EObject input) {
                             Connector connector = (Connector) input;
                             if (ViewType.NOTEATTACHMENT.equals(connector.getType())) {
                                 return connector.getSource() == null || connector.getTarget() == null;

@@ -65,7 +65,7 @@ public class MappingForReconnectToolsConstraint extends AbstractModelConstraint 
     private Collection<String> getReconnectOnRegions(ReconnectEdgeDescription tool) {
         Predicate<ContainerMapping> isRegionMapping = new Predicate<ContainerMapping>() {
             @Override
-            public boolean apply(ContainerMapping input) {
+            public boolean test(ContainerMapping input) {
                 return new ContainerMappingQuery(input).isRegion();
             }
         };

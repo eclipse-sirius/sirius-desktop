@@ -300,7 +300,7 @@ public class EdgeLayoutUpdaterModelChangeTrigger implements ModelChangeTrigger {
         } else if (REFRESH_FEATURES_WITH_CONSEQUENCE.contains(notification.getFeature())) {
             otherNotificationsAreIndirectlyConcerned = Iterables.all(notifications, new Predicate<Notification>() {
                 @Override
-                public boolean apply(Notification currentNotification) {
+                public boolean test(Notification currentNotification) {
                     boolean considerAsConsequence = false;
                     if (currentNotification == notification) {
                         considerAsConsequence = true;

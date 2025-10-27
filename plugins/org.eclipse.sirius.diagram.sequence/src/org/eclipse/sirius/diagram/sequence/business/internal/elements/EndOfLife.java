@@ -51,7 +51,7 @@ public class EndOfLife extends AbstractSequenceNode {
         INSTANCE;
 
         @Override
-        public boolean apply(DDiagramElement input) {
+        public boolean test(DDiagramElement input) {
             return AbstractSequenceElement.isSequenceDiagramElement(input, DescriptionPackage.eINSTANCE.getEndOfLifeMapping());
         }
     }
@@ -64,7 +64,7 @@ public class EndOfLife extends AbstractSequenceNode {
      */
     EndOfLife(Node node) {
         super(node);
-        Preconditions.checkArgument(EndOfLife.notationPredicate().apply(node), Messages.EndOfLife_nonEndOfLifeNode);
+        Preconditions.checkArgument(EndOfLife.notationPredicate().test(node), Messages.EndOfLife_nonEndOfLifeNode);
     }
 
     /**

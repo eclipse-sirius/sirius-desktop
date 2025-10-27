@@ -283,7 +283,7 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
         Iterable<RepresentationDescription> candidates = new ViewpointQuery(vp).getAllRepresentationDescriptions();
         return Iterables.filter(candidates, new Predicate<RepresentationDescription>() {
             @Override
-            public boolean apply(RepresentationDescription input) {
+            public boolean test(RepresentationDescription input) {
                 return canCreate(semantic, input);
             }
         });

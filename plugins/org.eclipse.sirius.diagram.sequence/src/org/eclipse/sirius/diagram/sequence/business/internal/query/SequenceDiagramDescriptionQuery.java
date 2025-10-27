@@ -55,7 +55,7 @@ public class SequenceDiagramDescriptionQuery {
     public Iterator<InstanceRoleMapping> getInstanceRoleMappings(final String name) {
         return Iterators.filter(Iterators.filter(diag.eAllContents(), InstanceRoleMapping.class), new Predicate<InstanceRoleMapping>() {
 
-            public boolean apply(InstanceRoleMapping input) {
+            public boolean test(InstanceRoleMapping input) {
                 return name.equals(input.getName());
             }
 
@@ -74,7 +74,7 @@ public class SequenceDiagramDescriptionQuery {
     public Iterator<ExecutionMapping> getExecutionMappings(final String name) {
         return Iterators.filter(Iterators.filter(diag.eAllContents(), ExecutionMapping.class), new Predicate<ExecutionMapping>() {
 
-            public boolean apply(ExecutionMapping input) {
+            public boolean test(ExecutionMapping input) {
                 return name.equals(input.getName());
             }
 
@@ -93,7 +93,7 @@ public class SequenceDiagramDescriptionQuery {
     public Iterator<EndOfLifeMapping> getEndOfLifeMappings(final String name) {
         return Iterators.filter(Iterators.filter(diag.eAllContents(), EndOfLifeMapping.class), new Predicate<EndOfLifeMapping>() {
 
-            public boolean apply(EndOfLifeMapping input) {
+            public boolean test(EndOfLifeMapping input) {
                 return name.equals(input.getName());
             }
 
@@ -112,7 +112,7 @@ public class SequenceDiagramDescriptionQuery {
     public Iterator<MessageMapping> getMessageMappings(final String name) {
         return Iterators.filter(Iterators.filter(diag.eAllContents(), MessageMapping.class), new Predicate<MessageMapping>() {
 
-            public boolean apply(MessageMapping input) {
+            public boolean test(MessageMapping input) {
                 return name.equals(input.getName());
             }
 

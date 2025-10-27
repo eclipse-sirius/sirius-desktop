@@ -87,7 +87,7 @@ public class MappingBasedPartition implements SemanticPartition {
         return SemanticPartitions.eObjectList(ImmutableList.copyOf(Iterators.filter(elements, new Predicate<EObject>() {
 
             @Override
-            public boolean apply(EObject input) {
+            public boolean test(EObject input) {
                 return ctx.getModelAccessor().eInstanceOf(input, domainClass);
             }
         })));

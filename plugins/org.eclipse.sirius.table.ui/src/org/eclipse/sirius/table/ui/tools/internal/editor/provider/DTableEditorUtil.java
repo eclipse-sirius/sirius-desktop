@@ -111,7 +111,7 @@ public final class DTableEditorUtil {
             }
         }
         // Step 4: handle added columns
-        for (DColumn newColumn : Sets.difference(Sets.newLinkedHashSet(dTable.getColumns()), handledDColumns)) {
+        for (DColumn newColumn : Sets.difference(new LinkedHashSet<>(dTable.getColumns()), handledDColumns)) {
             int position = dTable.getColumns().indexOf(newColumn) + 1;
             addNewColumn(treeViewerManager, position, newColumn);
         }

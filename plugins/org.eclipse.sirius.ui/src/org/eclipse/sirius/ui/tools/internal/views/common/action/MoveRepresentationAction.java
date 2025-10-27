@@ -15,6 +15,7 @@ package org.eclipse.sirius.ui.tools.internal.views.common.action;
 import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.function.Predicate;
 
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.OperationCanceledException;
@@ -41,9 +42,6 @@ import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
 
 /**
  * An action to move selected representations.
@@ -156,10 +154,10 @@ public class MoveRepresentationAction extends Action {
             return session.getReferencedSessionResources().size() > 0;
         } else {
 
-            boolean anyInvalidMove = Iterables.any(repDescriptors, new Predicate<DRepresentationDescriptor>() {
+            boolean anyInvalidMove = repDescriptors.stream().anyMatch(new Predicate<DRepresentationDescriptor>() {
 
                 @Override
-                public boolean apply(DRepresentationDescriptor input) {
+                public boolean test(DRepresentationDescriptor input) {
                     boolean invalid = false; // false is the default value
 
                     // Step 1: Check source representation container

@@ -71,7 +71,7 @@ public class CanonicalDBorderItemLocatorTest extends SiriusDiagramTestCase {
         if (option.some()) {
             Iterator<EObject> iterator = Iterators.filter(option.get().eAllContents(), new Predicate<EObject>() {
                 @Override
-                public boolean apply(EObject arg0) {
+                public boolean test(EObject arg0) {
                     if (arg0 instanceof Node) {
                         int typeInt = SiriusVisualIDRegistry.getVisualID(((Node) arg0).getType());
                         if (typeInt == DNode4EditPart.VISUAL_ID) {

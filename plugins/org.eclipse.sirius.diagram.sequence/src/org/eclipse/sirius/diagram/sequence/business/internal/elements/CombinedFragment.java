@@ -63,7 +63,7 @@ public class CombinedFragment extends AbstractFrame {
         INSTANCE;
 
         @Override
-        public boolean apply(DDiagramElement input) {
+        public boolean test(DDiagramElement input) {
             return AbstractSequenceElement.isSequenceDiagramElement(input, DescriptionPackage.eINSTANCE.getCombinedFragmentMapping());
         }
     }
@@ -76,7 +76,7 @@ public class CombinedFragment extends AbstractFrame {
      */
     CombinedFragment(Node node) {
         super(node);
-        Preconditions.checkArgument(CombinedFragment.notationPredicate().apply(node), Messages.CombinedFragment_nonCombinedFragmentNode);
+        Preconditions.checkArgument(CombinedFragment.notationPredicate().test(node), Messages.CombinedFragment_nonCombinedFragmentNode);
     }
 
     /**
@@ -139,7 +139,7 @@ public class CombinedFragment extends AbstractFrame {
             Predicate<View> compartementView = new Predicate<View>() {
 
                 @Override
-                public boolean apply(View input) {
+                public boolean test(View input) {
                     return input.getType().equals(Integer.toString(COMPARTMENT_VISUAL_ID));
                 }
             };

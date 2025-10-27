@@ -52,7 +52,7 @@ public class TSequenceDiagramQuery {
     public Iterator<TLifelineMapping> getLifeLineMappings(final String name) {
         return Iterators.filter(Iterators.filter(template.eAllContents(), TLifelineMapping.class), new Predicate<TLifelineMapping>() {
 
-            public boolean apply(TLifelineMapping input) {
+            public boolean test(TLifelineMapping input) {
                 return name.equals(input.getName());
             }
 
@@ -69,7 +69,7 @@ public class TSequenceDiagramQuery {
     public Iterator<TExecutionMapping> getExecutionMappings(final String name) {
         return Iterators.filter(Iterators.filter(template.eAllContents(), TExecutionMapping.class), new Predicate<TExecutionMapping>() {
 
-            public boolean apply(TExecutionMapping input) {
+            public boolean test(TExecutionMapping input) {
                 return name.equals(input.getName());
             }
 
@@ -86,7 +86,7 @@ public class TSequenceDiagramQuery {
     public Iterator<TBasicMessageMapping> getBasicMessageMapping(final String name) {
         return Iterators.filter(Iterators.filter(template.eAllContents(), TBasicMessageMapping.class), new Predicate<TBasicMessageMapping>() {
 
-            public boolean apply(TBasicMessageMapping input) {
+            public boolean test(TBasicMessageMapping input) {
                 return name.equals(input.getName());
             }
 

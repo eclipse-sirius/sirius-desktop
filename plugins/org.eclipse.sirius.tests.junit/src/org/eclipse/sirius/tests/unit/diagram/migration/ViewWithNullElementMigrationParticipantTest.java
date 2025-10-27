@@ -205,7 +205,7 @@ public class ViewWithNullElementMigrationParticipantTest extends SiriusTestCase 
                     Diagram gmfDiagram = diagramCreationUtil.getAssociatedGMFDiagram();
                     invalidViews = Iterators.filter(gmfDiagram.eAllContents(), Predicates.and(Predicates.instanceOf(View.class), new Predicate<EObject>() {
                         @Override
-                        public boolean apply(EObject input) {
+                        public boolean test(EObject input) {
                             View view = (View) input;
                             String viewType = view.getType();
                             if (!view.isSetElement()) {

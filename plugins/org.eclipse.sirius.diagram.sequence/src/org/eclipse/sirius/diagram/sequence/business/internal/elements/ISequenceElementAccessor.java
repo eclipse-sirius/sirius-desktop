@@ -76,7 +76,7 @@ public final class ISequenceElementAccessor {
     public static boolean isPartOfSequenceElement(View notationView) {
         boolean isPartOfSequenceElement = false;
         View view = notationView;
-        if (view.eContainer() instanceof View && (CombinedFragment.compartmentNotationPredicate().apply(view) || Operand.compartmentNotationPredicate().apply(view))) {
+        if (view.eContainer() instanceof View && (CombinedFragment.compartmentNotationPredicate().test(view) || Operand.compartmentNotationPredicate().test(view))) {
             view = (View) view.eContainer();
         }
         Option<ISequenceElement> sequenceElementOption = ISequenceElementAccessor.getISequenceElement(view);
@@ -300,33 +300,33 @@ public final class ISequenceElementAccessor {
 
     private static ISequenceElement createSequenceElement(View notationView) {
         ISequenceElement created = null;
-        if (SequenceDiagram.notationPredicate().apply(notationView)) {
+        if (SequenceDiagram.notationPredicate().test(notationView)) {
             created = new SequenceDiagram((Diagram) notationView);
-        } else if (InstanceRole.notationPredicate().apply(notationView)) {
+        } else if (InstanceRole.notationPredicate().test(notationView)) {
             created = new InstanceRole((Node) notationView);
-        } else if (Lifeline.notationPredicate().apply(notationView)) {
+        } else if (Lifeline.notationPredicate().test(notationView)) {
             created = new Lifeline((Node) notationView);
-        } else if (EndOfLife.notationPredicate().apply(notationView)) {
+        } else if (EndOfLife.notationPredicate().test(notationView)) {
             created = new EndOfLife((Node) notationView);
-        } else if (Execution.notationPredicate().apply(notationView)) {
+        } else if (Execution.notationPredicate().test(notationView)) {
             created = new Execution((Node) notationView);
-        } else if (State.notationPredicate().apply(notationView)) {
+        } else if (State.notationPredicate().test(notationView)) {
             created = new State((Node) notationView);
-        } else if (Message.notationPredicate().apply(notationView)) {
+        } else if (Message.notationPredicate().test(notationView)) {
             created = new Message((Edge) notationView);
-        } else if (CombinedFragment.notationPredicate().apply(notationView)) {
+        } else if (CombinedFragment.notationPredicate().test(notationView)) {
             created = new CombinedFragment((Node) notationView);
-        } else if (Operand.notationPredicate().apply(notationView)) {
+        } else if (Operand.notationPredicate().test(notationView)) {
             created = new Operand((Node) notationView);
-        } else if (InteractionUse.notationPredicate().apply(notationView)) {
+        } else if (InteractionUse.notationPredicate().test(notationView)) {
             created = new InteractionUse((Node) notationView);
-        } else if (LostMessageEnd.notationPredicate().apply(notationView)) {
+        } else if (LostMessageEnd.notationPredicate().test(notationView)) {
             created = new LostMessageEnd((Node) notationView);
-        } else if (ObservationPoint.notationPredicate().apply(notationView)) {
+        } else if (ObservationPoint.notationPredicate().test(notationView)) {
             created = new ObservationPoint((Node) notationView);
-        } else if (InteractionContainer.notationPredicate().apply(notationView)) {
+        } else if (InteractionContainer.notationPredicate().test(notationView)) {
             created = new InteractionContainer((Node) notationView);
-        } else if (Gate.notationPredicate().apply(notationView)) {
+        } else if (Gate.notationPredicate().test(notationView)) {
             created = new Gate((Node) notationView);
         }
 

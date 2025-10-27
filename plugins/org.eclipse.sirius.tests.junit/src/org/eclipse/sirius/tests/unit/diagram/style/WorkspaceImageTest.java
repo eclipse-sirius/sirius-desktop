@@ -13,9 +13,11 @@
 package org.eclipse.sirius.tests.unit.diagram.style;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.draw2d.IFigure;
@@ -55,9 +57,7 @@ import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * 
@@ -422,12 +422,12 @@ public class WorkspaceImageTest extends SiriusDiagramTestCase {
 
         Predicate<DNode> expectedType = new Predicate<DNode>() {
             @Override
-            public boolean apply(DNode input) {
+            public boolean test(DNode input) {
                 return type.isInstance(input.getTarget());
             }
         };
 
-        List<DNode> nodesFromType = Lists.newArrayList(Iterables.filter(query.getNodes(), expectedType));
+        List<DNode> nodesFromType = new ArrayList<>(query.getNodes().stream().filter(expectedType).toList());
 
         // one nodes per node edit part type.
         assertEquals(4, nodesFromType.size());

@@ -490,7 +490,7 @@ public class SiriusRepairProcess {
     private List<Resource> getFragmentedResources(final Resource modelResource) {
         return new ArrayList<Resource>(Collections2.filter(modelResource.getResourceSet().getResources(), new Predicate<Resource>() {
             @Override
-            public boolean apply(Resource resource) {
+            public boolean test(Resource resource) {
                 return !resource.equals(modelResource) && resource instanceof AirdResource && resource.getURI().isPlatformResource();
             }
         }));

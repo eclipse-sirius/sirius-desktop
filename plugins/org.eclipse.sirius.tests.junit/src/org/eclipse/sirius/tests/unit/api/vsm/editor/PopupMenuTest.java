@@ -127,11 +127,11 @@ public class PopupMenuTest extends TestCase {
     protected int getNbChildren(final Collection<?> newChildDescriptors, final Class<? extends Object> classOfValue) {
         Predicate<Object> and = Predicates.and(Predicates.instanceOf(CommandParameter.class), new Predicate<Object>() {
             @Override
-            public boolean apply(Object input) {
+            public boolean test(Object input) {
                 return classOfValue.isInstance(((CommandParameter) input).getValue());
             }
         });
-        Iterable<?> filtered = Iterables.filter(newChildDescriptors, and);
+        Iterable<?> filtered = newChildDescriptors.stream().filter(and).toList();
 
         return Iterables.size(filtered);
     }

@@ -60,7 +60,7 @@ public class InteractionUse extends AbstractFrame {
         INSTANCE;
 
         @Override
-        public boolean apply(DDiagramElement input) {
+        public boolean test(DDiagramElement input) {
             return AbstractSequenceElement.isSequenceDiagramElement(input, DescriptionPackage.eINSTANCE.getInteractionUseMapping());
         }
 
@@ -74,7 +74,7 @@ public class InteractionUse extends AbstractFrame {
      */
     InteractionUse(Node node) {
         super(node);
-        Preconditions.checkArgument(InteractionUse.notationPredicate().apply(node), Messages.InteractionUse_nonInsteractionUseNode);
+        Preconditions.checkArgument(InteractionUse.notationPredicate().test(node), Messages.InteractionUse_nonInsteractionUseNode);
     }
 
     /**
@@ -147,7 +147,7 @@ public class InteractionUse extends AbstractFrame {
             Predicate<View> compartementView = new Predicate<View>() {
 
                 @Override
-                public boolean apply(View input) {
+                public boolean test(View input) {
                     return input.getType().equals(Integer.toString(Gate.VISUAL_ID));
                 }
             };

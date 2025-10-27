@@ -164,7 +164,7 @@ public class ShiftDescendantMessagesOperation extends ShiftMessagesOperation {
 
         final Predicate<Message> filterReflexiveMessage = new Predicate<Message>() {
             @Override
-            public boolean apply(final Message input) {
+            public boolean test(final Message input) {
                 return !input.isReflective();
             }
         };

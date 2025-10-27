@@ -12,11 +12,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.synchronizer;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EObject;
-
-import com.google.common.collect.Lists;
 
 /**
  * A {@link SemanticPartition} represents a set of elements in the input model.
@@ -39,7 +38,7 @@ public interface SemanticPartition {
                 }
 
                 public Iterator<EObject> elements() {
-                    return Lists.<EObject> newArrayList().iterator();
+                    return new ArrayList<>().iterator();
                 }
             };
         }

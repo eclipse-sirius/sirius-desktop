@@ -12,7 +12,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.refresh;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
@@ -29,8 +31,6 @@ import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConsta
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 
 /**
  * Specific refresh extension to handle structural changes in sequence diagrams.
@@ -56,7 +56,7 @@ public class SequenceRefreshExtension implements IRefreshExtension {
             Collection<DDiagramElement> nodeEvents = getEventsToSync(currentDiagram);
 
             if (nodeEvents.size() != 0) {
-                flags = Maps.newHashMapWithExpectedSize(nodeEvents.size());
+                flags = new HashMap<>(nodeEvents.size());
                 for (DDiagramElement elt : nodeEvents) {
                     Iterable<AbsoluteBoundsFilter> flag = Iterables.filter(elt.getGraphicalFilters(), AbsoluteBoundsFilter.class);
                     EObject semanticTarget = elt.getTarget();
@@ -101,8 +101,8 @@ public class SequenceRefreshExtension implements IRefreshExtension {
     }
 
     private Collection<DDiagramElement> getEventsToSync(SequenceDDiagram sdd) {
-        Collection<DDiagramElement> diagramElements = Lists.newArrayList(sdd.getDiagramElements());
+        Collection<DDiagramElement> diagramElements = new ArrayList<>(sdd.getDiagramElements());
         Predicate<DDiagramElement> eventsToSync = Predicates.or(AbstractNodeEvent.viewpointElementPredicate(), Message.viewpointElementPredicate());
-        return Lists.newArrayList(Iterables.filter(diagramElements, eventsToSync));
+        return new ArrayList<>(diagramElements.stream().filter(eventsToSync).toList());
     }
 }

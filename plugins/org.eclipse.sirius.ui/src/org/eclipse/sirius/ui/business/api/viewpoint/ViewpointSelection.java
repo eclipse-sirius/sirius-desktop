@@ -25,6 +25,7 @@ import java.util.SortedMap;
 import java.util.SortedSet;
 import java.util.TreeMap;
 import java.util.TreeSet;
+import java.util.function.Function;
 import java.util.regex.Pattern;
 
 import org.eclipse.core.resources.IFile;
@@ -74,8 +75,6 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.progress.IProgressService;
 
-import com.google.common.base.Function;
-import com.google.common.base.Joiner;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Collections2;
@@ -115,7 +114,7 @@ public final class ViewpointSelection {
     public static Set<Viewpoint> getViewpoints(final String fileExtension) {
         final Predicate<Viewpoint> isValidViewpoint = new Predicate<Viewpoint>() {
             @Override
-            public boolean apply(final Viewpoint viewpoint) {
+            public boolean test(final Viewpoint viewpoint) {
                 return new ViewpointQuery(viewpoint).handlesSemanticModelExtension(fileExtension != null ? fileExtension : StringUtil.JOKER_STRING);
             }
         };
@@ -189,7 +188,7 @@ public final class ViewpointSelection {
             private boolean isThereOneSelectedViewpoint() {
                 return Maps.filterValues(viewpointsMap, new Predicate<Boolean>() {
                     @Override
-                    public boolean apply(final Boolean input) {
+                    public boolean test(final Boolean input) {
                         return input.booleanValue();
                     }
                 }).entrySet().iterator().hasNext();
@@ -299,7 +298,7 @@ public final class ViewpointSelection {
         Function<Collection<String>, String> toStringList = new Function<Collection<String>, String>() {
             @Override
             public String apply(java.util.Collection<String> from) {
-                return Joiner.on(", ").join(from); //$NON-NLS-1$
+                return String.join(", ", from); //$NON-NLS-1$
             }
         };
         StringBuilder sb = new StringBuilder(Messages.ViewpointSelection_missingDependencies_header).append("\n"); //$NON-NLS-1$
@@ -307,7 +306,7 @@ public final class ViewpointSelection {
         for (Map.Entry<String, Collection<String>> entry : missingDependencies.entrySet()) {
             lines.add("- " + MessageFormat.format(Messages.ViewpointSelection_missingDependencies_requirements, entry.getKey(), toStringList.apply(entry.getValue()))); //$NON-NLS-1$
         }
-        sb.append(Joiner.on("\n").join(lines)); //$NON-NLS-1$
+        sb.append(String.join("\n", lines)); //$NON-NLS-1$
         return sb.toString();
     }
 

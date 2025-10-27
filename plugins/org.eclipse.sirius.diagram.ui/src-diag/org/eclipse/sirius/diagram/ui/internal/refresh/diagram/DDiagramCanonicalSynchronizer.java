@@ -526,7 +526,7 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
             if (element instanceof DDiagramElement && cu instanceof CollapseUpdater) {
                 DDiagramElement dde = (DDiagramElement) element;
                 if (new DDiagramElementQuery(dde).isIndirectlyCollapsed()) {
-                    CollapseFilter filter = (CollapseFilter) Iterables.getFirst(Iterables.filter(dde.getGraphicalFilters(), Predicates.instanceOf(CollapseFilter.class)), null);
+                    CollapseFilter filter = (CollapseFilter) Iterables.getFirst(dde.getGraphicalFilters().stream().filter(Predicates.instanceOf(CollapseFilter.class)).toList(), null);
 
                     if (filter != null && filter.getWidth() == 0 && filter.getHeight() == 0) {
                         ((CollapseUpdater) cu).storeInFilterAndCollapseBounds(dde, Options.newSome(node), false);

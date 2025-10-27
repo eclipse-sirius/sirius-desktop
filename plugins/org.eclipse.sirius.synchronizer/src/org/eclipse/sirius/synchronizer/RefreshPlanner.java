@@ -14,12 +14,12 @@ package org.eclipse.sirius.synchronizer;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
-import com.google.common.base.Function;
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 
@@ -86,12 +86,12 @@ public class RefreshPlanner {
         pre.computeStatus(container, childMappings);
         post.addPreviousStatus(pre.getExistingOutputs());
 
-        Iterable<? extends Mapping> mappingsCreatingElements = Iterables.filter(childMappings, new Predicate<Mapping>() {
+        Iterable<? extends Mapping> mappingsCreatingElements = childMappings.stream().filter(new Predicate<Mapping>() {
             @Override
-            public boolean apply(Mapping input) {
+            public boolean test(Mapping input) {
                 return input.getCreator().some();
             }
-        });
+        }).toList();
         Iterable<Collection<MappingHiearchy>> transformedHiearchy = Iterables.transform(mappingsCreatingElements, toHierarchy);
         Iterable<MappingHiearchy> childHiearchies = Sets.newLinkedHashSet(Iterables.concat(transformedHiearchy));
 

@@ -96,9 +96,9 @@ public class DEdgeSynchronizerHelper extends AbstractSynchronizerHelper {
                 }
                 return true;
             };
-            final Iterable<EdgeTarget> sourceViews = Iterables.filter(this.computeTargetElements(this.diagram, mapping.getSourceMapping(), mappingsToEdgeTargets), isValidTarget);
+            final Iterable<EdgeTarget> sourceViews = this.computeTargetElements(this.diagram, mapping.getSourceMapping(), mappingsToEdgeTargets).stream().filter(isValidTarget).toList();
             final Map<EObject, Collection<EdgeTarget>> targetViewsSemantics = new HashMap<EObject, Collection<EdgeTarget>>();
-            final Iterable<EdgeTarget> targetViews = Iterables.filter(this.computeTargetElements(this.diagram, mapping.getTargetMapping(), mappingsToEdgeTargets, targetViewsSemantics), isValidTarget);
+            final Iterable<EdgeTarget> targetViews = this.computeTargetElements(this.diagram, mapping.getTargetMapping(), mappingsToEdgeTargets, targetViewsSemantics).stream().filter(isValidTarget).toList();
             edgeCandidates = computeEdgeCandidatesWithoutDomain(sourceViews, targetViews, targetViewsSemantics, mapping);
         } else {
             final Map<EObject, Collection<EdgeTarget>> sourceViewsSemantics = new HashMap<EObject, Collection<EdgeTarget>>();
@@ -133,11 +133,11 @@ public class DEdgeSynchronizerHelper extends AbstractSynchronizerHelper {
             Set<DDiagramElement> previousDiagramElements = sync.getPreviousDiagramElements(diagram, mapping);
             sync.resetforceRetrieve();
             Predicate<DDiagramElement> stillCandidate = new Predicate<DDiagramElement>() {
-                public boolean apply(DDiagramElement input) {
+                public boolean test(DDiagramElement input) {
                     return input != null && input.getTarget() != null && targetCandidates.contains(input.getTarget());
                 }
             };
-            handlePreviousCandidates(result, Iterables.filter(previousDiagramElements, stillCandidate), mapping, sourceViewsSemantics, targetViewsSemantics);
+            handlePreviousCandidates(result, previousDiagramElements.stream().filter(stillCandidate).toList(), mapping, sourceViewsSemantics, targetViewsSemantics);
         }
         DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.GET_EDGE_CANDIDATES_KEY);
         return result;
@@ -149,7 +149,7 @@ public class DEdgeSynchronizerHelper extends AbstractSynchronizerHelper {
         final EdgeMappingQuery edgeMappingQuery = new EdgeMappingQuery(mapping);
 
         Predicate<DEdge> stillCandidate = new Predicate<DEdge>() {
-            public boolean apply(DEdge input) {
+            public boolean test(DEdge input) {
                 // Validate source node (and its semantic target) exists in the
                 // sourceViewsSemantics
                 boolean stillCandidate = validateNode(input.getSourceNode(), sourceViewsSemantics);

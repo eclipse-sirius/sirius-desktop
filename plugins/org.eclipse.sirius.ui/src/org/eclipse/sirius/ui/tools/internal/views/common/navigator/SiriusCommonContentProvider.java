@@ -25,6 +25,7 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Function;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -78,7 +79,6 @@ import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonContentProvider;
 import org.eclipse.ui.progress.UIJob;
 
-import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -243,12 +243,12 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
         // Look for opened sessions on parent file : detect main aird for non
         // modeling projects, all aird for modeling ones, semantic file for
         // transient sessions.
-        List<Session> openedSessions = Lists.newArrayList(Iterables.filter(FileSessionFinder.getSelectedSessions(Collections.singletonList(parentFile)), new Predicate<Session>() {
+        List<Session> openedSessions = new ArrayList<>(FileSessionFinder.getSelectedSessions(Collections.singletonList(parentFile)).stream().filter(new Predicate<Session>() {
             @Override
-            public boolean apply(Session input) {
+            public boolean test(Session input) {
                 return input.isOpen();
             }
-        }));
+        }).toList());
 
         // Modeling project case.
         Option<ModelingProject> modelingProject = ModelingProject.asModelingProject(parentProject);
@@ -292,7 +292,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
 
         // Transient case
         if (!SiriusUtil.SESSION_RESOURCE_EXTENSION.equals(parentFile.getFileExtension())) {
-            Iterable<Session> transientSessions = Iterables.filter(openedSessions, new TransientSessionPredicate());
+            Iterable<Session> transientSessions = openedSessions.stream().filter(new TransientSessionPredicate()).toList();
             if (!Iterables.isEmpty(transientSessions)) {
                 if (modelingProject.some() || Iterables.size(transientSessions) > 1) {
                     Iterables.addAll(fileChildren, transientSessions);
@@ -406,7 +406,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
             Option<ModelingProject> modelingProj = ModelingProject.asModelingProject(mainAirdFile.getProject());
             if (modelingProj.some()) {
                 parent = new ProjectDependenciesItemImpl(modelingProj.get());
-            } else if (new TransientSessionPredicate().apply(session)) {
+            } else if (new TransientSessionPredicate().test(session)) {
                 parent = res.getURI().isPlatformResource() ? WorkspaceSynchronizer.getFile(res) : null;
             } else {
                 parent = mainAirdFile;
@@ -417,7 +417,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
 
     private Object getSessionParent(Session session) {
         Object parent = null;
-        if (new TransientSessionPredicate().apply(session)) {
+        if (new TransientSessionPredicate().test(session)) {
             for (Resource res : session.getSemanticResources()) {
                 if (res.getURI().isPlatformResource()) {
                     parent = WorkspaceSynchronizer.getFile(res);
@@ -946,7 +946,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
          * {@inheritDoc}
          */
         @Override
-        public boolean apply(Session input) {
+        public boolean test(Session input) {
             return new URIQuery(input.getSessionResource().getURI()).isInMemoryURI();
         }
     }
@@ -1045,7 +1045,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
         }
 
         @Override
-        public boolean apply(Notification notification) {
+        public boolean test(Notification notification) {
             Object notifier = notification.getNotifier();
             boolean result = false;
 

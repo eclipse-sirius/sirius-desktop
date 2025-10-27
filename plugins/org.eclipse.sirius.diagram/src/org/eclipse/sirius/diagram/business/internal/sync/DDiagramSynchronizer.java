@@ -112,7 +112,6 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.LinkedHashMultimap;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.SetMultimap;
 
@@ -425,7 +424,7 @@ public class DDiagramSynchronizer {
 
         Predicate<EdgeMapping> edgeMappingWithoutEdgeAsSourceOrTarget = new Predicate<EdgeMapping>() {
             @Override
-            public boolean apply(EdgeMapping input) {
+            public boolean test(EdgeMapping input) {
                 // Valid if source mapping and target mapping are not
                 // EdgeMappings
                 Iterable<EdgeMapping> edgeSourceMappings = Iterables.filter(Iterables.filter(input.getSourceMapping(), EdgeMapping.class), isEdgeMappingOfCurrentDiagramDescription);
@@ -436,7 +435,7 @@ public class DDiagramSynchronizer {
 
         final Predicate<EdgeMapping> refreshedEdgeMapping = new Predicate<EdgeMapping>() {
             @Override
-            public boolean apply(EdgeMapping input) {
+            public boolean test(EdgeMapping input) {
                 // Valid if edge mapping has been refreshed or is not in the
                 // activated layers
                 boolean hasBeenRefreshed = mappingsToEdgeTargets.keySet().contains(input);
@@ -450,7 +449,7 @@ public class DDiagramSynchronizer {
 
         Predicate<EdgeMapping> unrefreshedEdgeMappingWithRefreshedEdgeAsSourceOrTarget = new Predicate<EdgeMapping>() {
             @Override
-            public boolean apply(EdgeMapping input) {
+            public boolean test(EdgeMapping input) {
                 // Valid if the EdgeMapping is not refresh and the source or
                 // target EdgeMapping has been refreshed
                 boolean result = !mappingsToEdgeTargets.keySet().contains(input);
@@ -462,7 +461,7 @@ public class DDiagramSynchronizer {
 
         // Firstly, we need to refresh the EdgeMapping having no other
         // EdgeMapping as source neither as target
-        for (final EdgeMapping mapping : Iterables.filter(edgeMappings, edgeMappingWithoutEdgeAsSourceOrTarget)) {
+        for (final EdgeMapping mapping : edgeMappings.stream().filter(edgeMappingWithoutEdgeAsSourceOrTarget).toList()) {
             refreshEdgeMapping(diagramMappingsManager, mappingsToEdgeTargets, mapping, edgeToMappingBasedDecoration, edgeToSemanticBasedDecoration, new SubProgressMonitor(monitor, 1));
             mappingsToEdgeTargets.put(mapping, (Collection) DDiagramSpecOperations.getEdgesFromMapping(diagram, mapping));
         }
@@ -478,7 +477,7 @@ public class DDiagramSynchronizer {
         // other EdgeMapping has been refreshed (therefore is included in the
         // mappingsToEdgeTargets map).
         while (!mappingsToEdgeTargets.keySet().containsAll(edgeMappings)) {
-            for (final EdgeMapping mapping : Iterables.filter(remaingEdgeMappingsToRefresh, unrefreshedEdgeMappingWithRefreshedEdgeAsSourceOrTarget)) {
+            for (final EdgeMapping mapping : remaingEdgeMappingsToRefresh.stream().filter(unrefreshedEdgeMappingWithRefreshedEdgeAsSourceOrTarget).toList()) {
                 refreshEdgeMapping(diagramMappingsManager, mappingsToEdgeTargets, mapping, edgeToMappingBasedDecoration, edgeToSemanticBasedDecoration, new SubProgressMonitor(monitor, 1));
                 mappingsToEdgeTargets.put(mapping, (Collection) DDiagramSpecOperations.getEdgesFromMapping(diagram, mapping));
                 noRefreshImpliesCycleDetected = false;
@@ -614,7 +613,7 @@ public class DDiagramSynchronizer {
         for (final Setting setting : settings) {
             final EObject referencer = setting.getEObject();
             if (setting.getEStructuralFeature().isMany()) {
-                List values = Lists.newArrayList((List) setting.get(false));
+                List values = new ArrayList<>((List) setting.get(false));
                 values.remove(referencer);
                 values.add(newNode);
                 setting.set(values);

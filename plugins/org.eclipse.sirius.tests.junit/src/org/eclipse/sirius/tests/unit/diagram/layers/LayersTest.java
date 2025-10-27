@@ -578,7 +578,7 @@ public class LayersTest extends AbtsractLayerTests {
     private DDiagramElement findByTargetName(final List<DDiagramElement> list, final String targetName) {
         DDiagramElement found = Iterables.find(list, new Predicate<DDiagramElement>() {
             @Override
-            public boolean apply(DDiagramElement input) {
+            public boolean test(DDiagramElement input) {
                 return input.getTarget() instanceof NamedElement && targetName.equals(((NamedElement) input.getTarget()).getName());
             }
         });

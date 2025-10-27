@@ -14,13 +14,13 @@ package org.eclipse.sirius.diagram.sequence.business.internal.elements;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.ext.base.Option;
 
-import com.google.common.base.Function;
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 
 /**

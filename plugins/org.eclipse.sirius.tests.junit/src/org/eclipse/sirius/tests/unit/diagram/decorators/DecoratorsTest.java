@@ -594,7 +594,7 @@ public class DecoratorsTest extends GenericTestCase {
             Iterable<DSemanticDiagram> allDSemanticDiagrams = Iterables.filter(new DViewQuery(dView).getLoadedRepresentations(), DSemanticDiagram.class);
             matchingDescriptions = Iterables.filter(allDSemanticDiagrams, new Predicate<DSemanticDiagram>() {
                 @Override
-                public boolean apply(DSemanticDiagram input) {
+                public boolean test(DSemanticDiagram input) {
                     return name.equals(input.getDescription().getName());
                 }
             });

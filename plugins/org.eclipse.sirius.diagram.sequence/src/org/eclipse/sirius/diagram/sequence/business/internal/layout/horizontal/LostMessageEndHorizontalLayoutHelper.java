@@ -18,6 +18,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Predicate;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
@@ -37,7 +38,6 @@ import org.eclipse.sirius.diagram.sequence.business.internal.layout.AbstractSequ
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.ext.base.Option;
 
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Iterables;
@@ -89,8 +89,8 @@ public class LostMessageEndHorizontalLayoutHelper {
     }
 
     private void registerUnconnectedLostEnds() {
-        Predicate<LostMessageEnd> unConnectedEnds = Predicates.not(Predicates.in(lostMessages.keySet()));
-        for (LostMessageEnd lme : Iterables.filter(sequenceDiagram.getAllLostMessageEnds(), unConnectedEnds)) {
+        Predicate<LostMessageEnd> unConnectedEnds = Predicate.not(Predicates.in(lostMessages.keySet()));
+        for (LostMessageEnd lme : sequenceDiagram.getAllLostMessageEnds().stream().filter(unConnectedEnds).toList()) {
             unconnectedLostEnds.add(lme);
 
             // look viewpoint edges
@@ -242,11 +242,11 @@ public class LostMessageEndHorizontalLayoutHelper {
             if (pack) {
                 for (Map.Entry<Operand, Integer> entry : maxOpSourceDeltas.entrySet()) {
                     Integer maxSourceDelta = entry.getValue();
-                    for (LostMessageEnd source : Iterables.filter(operands2lostEnds.get(entry.getKey()), Predicates.in(lostSources.get(lifeline)))) {
+                    for (LostMessageEnd source : operands2lostEnds.get(entry.getKey()).stream().filter(Predicates.in(lostSources.get(lifeline))).toList()) {
                         deltas.put(source, maxSourceDelta);
                     }
                 }
-                for (LostMessageEnd source : Iterables.filter(lostSources.get(lifeline), Predicates.not(Predicates.in(operands.keySet())))) {
+                for (LostMessageEnd source : lostSources.get(lifeline).stream().filter(Predicate.not(Predicates.in(operands.keySet()))).toList()) {
                     Kind kind = getMessageKind(source);
 
                     if (!Message.Kind.CREATION.equals(kind) && !Message.Kind.DESTRUCTION.equals(kind)) {
@@ -255,11 +255,11 @@ public class LostMessageEndHorizontalLayoutHelper {
                 }
                 for (Map.Entry<Operand, Integer> entry : maxOpTargetDeltas.entrySet()) {
                     Integer maxTargetDelta = entry.getValue();
-                    for (LostMessageEnd target : Iterables.filter(operands2lostEnds.get(entry.getKey()), Predicates.in(lostTargets.get(lifeline)))) {
+                    for (LostMessageEnd target : operands2lostEnds.get(entry.getKey()).stream().filter(Predicates.in(lostTargets.get(lifeline))).toList()) {
                         deltas.put(target, maxTargetDelta);
                     }
                 }
-                for (LostMessageEnd target : Iterables.filter(lostTargets.get(lifeline), Predicates.not(Predicates.in(operands.keySet())))) {
+                for (LostMessageEnd target : lostTargets.get(lifeline).stream().filter(Predicate.not(Predicates.in(operands.keySet()))).toList()) {
                     deltas.put(target, maxLifelineTargetDelta);
                 }
             }
@@ -316,7 +316,7 @@ public class LostMessageEndHorizontalLayoutHelper {
     private EdgeTarget getKnownSourceNode(LostMessageEnd lme) {
         EdgeTarget sourceNode = null;
         EdgeTarget dde = (EdgeTarget) lme.getNotationNode().getElement();
-        Iterable<DEdge> incomingEdges = Iterables.filter(dde.getIncomingEdges(), Message.viewpointElementPredicate());
+        Iterable<DEdge> incomingEdges = dde.getIncomingEdges().stream().filter(Message.viewpointElementPredicate()).toList();
         if (!Iterables.isEmpty(incomingEdges)) {
             DEdge msg = incomingEdges.iterator().next();
             sourceNode = msg.getSourceNode();
@@ -327,7 +327,7 @@ public class LostMessageEndHorizontalLayoutHelper {
     private EdgeTarget getKnownTargetNode(LostMessageEnd lme) {
         EdgeTarget targetNode = null;
         EdgeTarget dde = (EdgeTarget) lme.getNotationNode().getElement();
-        Iterable<DEdge> outgoingEdges = Iterables.filter(dde.getOutgoingEdges(), Message.viewpointElementPredicate());
+        Iterable<DEdge> outgoingEdges = dde.getOutgoingEdges().stream().filter(Message.viewpointElementPredicate()).toList();
         if (!Iterables.isEmpty(outgoingEdges)) {
             DEdge msg = outgoingEdges.iterator().next();
             targetNode = msg.getTargetNode();

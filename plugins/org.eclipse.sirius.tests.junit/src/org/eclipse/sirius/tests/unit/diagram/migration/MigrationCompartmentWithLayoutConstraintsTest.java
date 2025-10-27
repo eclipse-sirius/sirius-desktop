@@ -121,7 +121,7 @@ public class MigrationCompartmentWithLayoutConstraintsTest extends SiriusDiagram
     private class IsCompartmentPredicate implements Predicate<EObject> {
 
         @Override
-        public boolean apply(EObject arg0) {
+        public boolean test(EObject arg0) {
             if (arg0 instanceof Node) {
                 int id = SiriusVisualIDRegistry.getVisualID(((Node) arg0).getType());
                 return id == DNodeContainerViewNodeContainerCompartment2EditPart.VISUAL_ID || id == DNodeContainerViewNodeContainerCompartmentEditPart.VISUAL_ID;

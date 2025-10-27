@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Function;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -75,10 +76,8 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.CheckedTreeSelectionDialog;
 
-import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
-import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
@@ -175,7 +174,7 @@ public class DiagramElementsSelectionDialog {
 
         @Override
         public void setInitialElementSelections(List selectedElements) {
-            List<Object> filteredSeletection = Lists.newArrayList(Iterables.filter(selectedElements, Predicates.not(isGrayed)));
+            List<Object> filteredSeletection = new ArrayList<>(selectedElements.stream().filter(java.util.function.Predicate.not(isGrayed)).toList());
             checkedElements.addAll(filteredSeletection);
             super.setInitialElementSelections(filteredSeletection);
         }
@@ -218,7 +217,7 @@ public class DiagramElementsSelectionDialog {
 
                 @Override
                 public boolean isGrayed(Object element) {
-                    return isGrayed.apply(element);
+                    return isGrayed.test(element);
                 }
 
                 @Override
@@ -229,7 +228,7 @@ public class DiagramElementsSelectionDialog {
             getTreeViewer().addCheckStateListener(new ICheckStateListener() {
                 @Override
                 public void checkStateChanged(CheckStateChangedEvent event) {
-                    if (!isGrayed.apply(event.getElement())) {
+                    if (!isGrayed.test(event.getElement())) {
                         if (event.getChecked()) {
                             checkedElements.add(event.getElement());
                         } else {
@@ -444,7 +443,7 @@ public class DiagramElementsSelectionDialog {
 
         private void setRecursiveState(Object element, boolean state) {
             getTreeViewer().setChecked(element, state);
-            if (!isGrayed.apply(element)) {
+            if (!isGrayed.test(element)) {
                 if (state) {
                     checkedElements.add(element);
                 } else {
@@ -493,7 +492,7 @@ public class DiagramElementsSelectionDialog {
         public boolean isMatchingExpregOrHasMatchingExpregDescendantsCheckedMode(Object element) {
             Predicate<Object> isCheckedElementPredicate = Predicates.in(checkedElements);
             Predicate<Object> isMatchinExpregPredicate = getRegexpMatchPredicate();
-            return isOrHasDescendant(element, Predicates.and(isCheckedElementPredicate, isMatchinExpregPredicate));
+            return isOrHasDescendant(element, isCheckedElementPredicate.and(isMatchinExpregPredicate));
         }
 
         /**
@@ -505,9 +504,9 @@ public class DiagramElementsSelectionDialog {
          *         false otherwise.
          */
         public boolean isMatchingExpregOrHasMatchingExpregDescendantsUncheckedMode(Object element) {
-            Predicate<Object> isUncheckedElementPredicate = Predicates.not(Predicates.in(checkedElements));
+            Predicate<Object> isUncheckedElementPredicate = java.util.function.Predicate.not(Predicates.in(checkedElements));
             Predicate<Object> isMatchinExpregPredicate = getRegexpMatchPredicate();
-            return isOrHasDescendant(element, Predicates.and(isUncheckedElementPredicate, isMatchinExpregPredicate));
+            return isOrHasDescendant(element, isUncheckedElementPredicate.and(isMatchinExpregPredicate));
         }
 
         /**
@@ -531,13 +530,13 @@ public class DiagramElementsSelectionDialog {
          * @return true if the given element or at least one of its children checks the given predicate, false otherwise
          */
         public boolean isOrHasDescendant(Object element, final Predicate<Object> pred) {
-            boolean matches = pred.apply(element);
+            boolean matches = pred.test(element);
             if (matches) {
                 return true;
             } else {
-                return Iterables.any(Arrays.asList(contentProvider.getChildren(element)), new Predicate<Object>() {
+                return Arrays.asList(contentProvider.getChildren(element)).stream().anyMatch(new Predicate<Object>() {
                     @Override
-                    public boolean apply(Object input) {
+                    public boolean test(Object input) {
                         return isOrHasDescendant(input, pred);
                     }
                 });
@@ -703,7 +702,7 @@ public class DiagramElementsSelectionDialog {
         AdapterFactory adapterFactory = getAdapterFactory(includeLabel);
         Predicate<Object> predicate = Predicates.instanceOf(DDiagramElement.class);
         if (includeLabel) {
-            predicate = Predicates.or(predicate, Predicates.instanceOf(AbstractDDiagramElementLabelItemProvider.class));
+            predicate = predicate.or(Predicates.instanceOf(AbstractDDiagramElementLabelItemProvider.class));
         }
         contentProvider = new FilteredTreeContentProvider(adapterFactory, predicate);
     }
@@ -715,7 +714,7 @@ public class DiagramElementsSelectionDialog {
      */
     protected Set<Object> getAllSelectedElements() {
         Set<Object> treeElements = getAllChildren(diagram);
-        return Sets.newHashSet(Iterators.filter(treeElements.iterator(), Predicates.and(isSelected, Predicates.not(isGrayed))));
+        return new HashSet<>(Arrays.asList(Iterators.filter(treeElements.iterator(), isSelected.and(java.util.function.Predicate.not(isGrayed)))));
     }
 
     /**
@@ -761,7 +760,7 @@ public class DiagramElementsSelectionDialog {
         dialog.setMessage(msg);
         dialog.setInput(diagram);
         dialog.addFilter(new ModeFilter());
-        dialog.setInitialElementSelections(Lists.newArrayList(initialSelection));
+        dialog.setInitialElementSelections(new ArrayList<>(initialSelection));
     }
 
     /**
@@ -931,7 +930,7 @@ public class DiagramElementsSelectionDialog {
         public Color getForeground(final Object element) {
 
             Color foreground = null;
-            if (isGrayed.apply(element)) {
+            if (isGrayed.test(element)) {
                 foreground = VisualBindingManager.getDefault().getColorFromName("light_gray"); //$NON-NLS-1$
             }
             return foreground;

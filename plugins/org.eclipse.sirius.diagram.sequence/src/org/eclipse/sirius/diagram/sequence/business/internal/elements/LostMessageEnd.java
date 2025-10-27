@@ -53,7 +53,7 @@ public class LostMessageEnd extends AbstractSequenceNode {
         INSTANCE;
 
         @Override
-        public boolean apply(DDiagramElement input) {
+        public boolean test(DDiagramElement input) {
             boolean result = AbstractSequenceElement.isSequenceDiagramElement(input, org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE.getNodeMapping());
             if (input instanceof EdgeTarget) {
                 EdgeTarget et = (EdgeTarget) input;
@@ -66,7 +66,7 @@ public class LostMessageEnd extends AbstractSequenceNode {
             potentialMessageTarget.add(Lifeline.viewpointElementPredicate());
             potentialMessageTarget.add(InstanceRole.viewpointElementPredicate());
 
-            result = result && !Predicates.or(potentialMessageTarget).apply(input);
+            result = result && !Predicates.or(potentialMessageTarget).test(input);
 
             return result;
         }
@@ -80,7 +80,7 @@ public class LostMessageEnd extends AbstractSequenceNode {
      */
     LostMessageEnd(Node node) {
         super(node);
-        Preconditions.checkArgument(LostMessageEnd.notationPredicate().apply(node), Messages.LostMessage_nonLostMessageEndNode);
+        Preconditions.checkArgument(LostMessageEnd.notationPredicate().test(node), Messages.LostMessage_nonLostMessageEndNode);
     }
 
     /**

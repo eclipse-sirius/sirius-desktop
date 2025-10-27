@@ -58,7 +58,7 @@ class TreeItemCreator implements AutomaticCreator {
         Predicate<OutputTreeItemDescriptor> filterPredicates = new Predicate<OutputTreeItemDescriptor>() {
 
             @Override
-            public boolean apply(OutputTreeItemDescriptor input) {
+            public boolean test(OutputTreeItemDescriptor input) {
                 return new TreeItemMappingExpression(castedContext.getGlobalContext(), input.getMapping().getDescription()).checkPrecondition(input.getSourceElement(), input.getViewContainer());
             }
         };

@@ -270,7 +270,7 @@ public abstract class AbstractNodeSizeTest extends SiriusDiagramTestCase {
             this.nodeType = Objects.requireNonNull(nodeType);
         }
 
-        public boolean apply(DNode input) {
+        public boolean test(DNode input) {
             boolean expectedType = false;
             if (nodeType.some()) {
                 if (nodeType.get().isBordered()) {
@@ -293,7 +293,7 @@ public abstract class AbstractNodeSizeTest extends SiriusDiagramTestCase {
             this.parentType = Objects.requireNonNull(parentType);
         }
 
-        public boolean apply(DNode input) {
+        public boolean test(DNode input) {
             boolean expectedParentType = false;
             EObject parent = input.eContainer();
             if (!parentType.some()) {

@@ -60,7 +60,6 @@ import org.osgi.framework.Version;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
-import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 
@@ -130,7 +129,7 @@ public class DiagramRepresentationsFileMigrationParticipantV670 {
      *            list of GMF Diagram to migrate.
      */
     public void migrateGMFBoundsOfBorderedNodes(List<Diagram> diagrams) {
-        for (Diagram diagram : Iterables.filter(diagrams, new IsStandardDiagramPredicate())) {
+        for (Diagram diagram : diagrams.stream().filter(new IsStandardDiagramPredicate()).toList()) {
             // 1-Add new IndirectlyCollapseFilter
             migrateChildrenOfCollapsedNode(diagram);
             // 2-Set width and height of graphical filters of collapsed nodes
@@ -271,7 +270,7 @@ public class DiagramRepresentationsFileMigrationParticipantV670 {
             }
         }
         for (DDiagramElement indirectlyCollaspedDDE : indirectlyCollaspedDDEs) {
-            if (!Iterables.any(indirectlyCollaspedDDE.getGraphicalFilters(), Predicates.instanceOf(IndirectlyCollapseFilter.class))) {
+            if (!indirectlyCollaspedDDE.getGraphicalFilters().stream().anyMatch(Predicates.instanceOf(IndirectlyCollapseFilter.class))) {
                 IndirectlyCollapseFilter indirectlyCollapseFilter = DiagramFactory.eINSTANCE.createIndirectlyCollapseFilter();
                 indirectlyCollaspedDDE.getGraphicalFilters().add(indirectlyCollapseFilter);
             }
@@ -288,7 +287,7 @@ public class DiagramRepresentationsFileMigrationParticipantV670 {
      */
     private static final class IsStandardDiagramPredicate implements Predicate<Diagram> {
         @Override
-        public boolean apply(Diagram input) {
+        public boolean test(Diagram input) {
             boolean apply = false;
             if (input.getElement() instanceof DDiagram) {
                 DDiagram diag = (DDiagram) input.getElement();
@@ -313,7 +312,7 @@ public class DiagramRepresentationsFileMigrationParticipantV670 {
     private static final class IsBorderedNodePredicate implements Predicate<Node> {
 
         @Override
-        public boolean apply(Node input) {
+        public boolean test(Node input) {
             // Is this node the main view of a DNode and a border
             // node ?
             return new NodeQuery(input).isBorderedNode();
@@ -330,7 +329,7 @@ public class DiagramRepresentationsFileMigrationParticipantV670 {
 
     private static final class IsDirectlyCollapsedNodePredicate implements Predicate<Node> {
         @Override
-        public boolean apply(Node input) {
+        public boolean test(Node input) {
             boolean apply = false;
 
             int type = SiriusVisualIDRegistry.getVisualID(input.getType());

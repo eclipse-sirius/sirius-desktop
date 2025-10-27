@@ -224,7 +224,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
     Predicate<View> predicate = new Predicate<View>() {
 
         @Override
-        public boolean apply(View input) {
+        public boolean test(View input) {
             return hasToArrange(input);
         }
     };

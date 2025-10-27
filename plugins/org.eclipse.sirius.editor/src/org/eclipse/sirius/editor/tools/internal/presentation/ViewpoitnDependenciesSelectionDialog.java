@@ -12,9 +12,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.editor.tools.internal.presentation;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Function;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
@@ -32,7 +34,6 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.dialogs.ListSelectionDialog;
 
-import com.google.common.base.Function;
 import com.google.common.base.Predicates;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
@@ -125,7 +126,7 @@ public class ViewpoitnDependenciesSelectionDialog {
 
     @SuppressWarnings("unchecked")
     private List<URI> getSelectedSiriusURIs(Viewpoint vp, EStructuralFeature feature) {
-        return Lists.newArrayList(Iterables.filter((List<URI>) vp.eGet(feature), Predicates.notNull()));
+        return new ArrayList<>(((List<URI>) vp.eGet(feature)).stream().filter(Predicates.notNull()).toList());
     }
 
     private List<URI> getAvailableViewpointsURIs() {

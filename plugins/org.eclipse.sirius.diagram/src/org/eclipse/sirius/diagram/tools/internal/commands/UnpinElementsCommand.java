@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.tools.internal.commands;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.emf.transaction.RecordingCommand;
@@ -19,8 +20,6 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.tools.api.Messages;
 import org.eclipse.sirius.diagram.tools.api.layout.PinHelper;
-
-import com.google.common.collect.Lists;
 
 /**
  * A command to mark a collection of diagram elements as "un-pinned" so that
@@ -42,7 +41,7 @@ public class UnpinElementsCommand extends RecordingCommand {
      */
     public UnpinElementsCommand(final Collection<? extends DDiagramElement> targetElements) {
         super(TransactionUtil.getEditingDomain(targetElements.iterator().next()), Messages.UnpinElementsCommand_commandLabel);
-        this.targetElements = Lists.newArrayList(targetElements);
+        this.targetElements = new ArrayList<>(targetElements);
     }
 
     /**

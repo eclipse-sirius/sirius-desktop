@@ -184,7 +184,7 @@ public class SequenceDiagramRepresentationsFileMigrationParticipant extends Abst
             migrateChildrenOfCollapsedNode(diagram);
             // 2-Set width and height of graphical filters of collapsed nodes
             // (directly or not) with GMF size and set GMF bounds.
-            Iterator<Node> viewIterator = Iterators.filter(Iterators.filter(diagram.eAllContents(), Node.class), Predicates.and(isNode, isCollapsedNode));
+            Iterator<Node> viewIterator = Iterators.filter(Iterators.filter(diagram.eAllContents(), Node.class), isNode.and(isCollapsedNode));
             while (viewIterator.hasNext()) {
                 Node node = viewIterator.next();
                 DNode dNode = (DNode) node.getElement();
@@ -236,7 +236,7 @@ public class SequenceDiagramRepresentationsFileMigrationParticipant extends Abst
             }
         }
         for (DDiagramElement indirectlyCollaspedDDE : indirectlyCollaspedDDEs) {
-            if (!Iterables.any(indirectlyCollaspedDDE.getGraphicalFilters(), Predicates.instanceOf(IndirectlyCollapseFilter.class))) {
+            if (!indirectlyCollaspedDDE.getGraphicalFilters().stream().anyMatch(Predicates.instanceOf(IndirectlyCollapseFilter.class))) {
                 IndirectlyCollapseFilter indirectlyCollapseFilter = DiagramFactory.eINSTANCE.createIndirectlyCollapseFilter();
                 indirectlyCollaspedDDE.getGraphicalFilters().add(indirectlyCollapseFilter);
             }
@@ -252,7 +252,7 @@ public class SequenceDiagramRepresentationsFileMigrationParticipant extends Abst
      */
     private static final class IsNode implements Predicate<Node> {
         @Override
-        public boolean apply(Node input) {
+        public boolean test(Node input) {
             return new ViewQuery(input).isNode();
         }
     }
@@ -265,7 +265,7 @@ public class SequenceDiagramRepresentationsFileMigrationParticipant extends Abst
      */
     private static final class IsCollapsedNode implements Predicate<Node> {
         @Override
-        public boolean apply(Node input) {
+        public boolean test(Node input) {
             return new NodeQuery(input).isCollapsed();
         }
     }
@@ -278,7 +278,7 @@ public class SequenceDiagramRepresentationsFileMigrationParticipant extends Abst
      */
     private static final class IsDirectlyCollapsedNode implements Predicate<Node> {
         @Override
-        public boolean apply(Node input) {
+        public boolean test(Node input) {
             boolean apply = false;
 
             int type = SiriusVisualIDRegistry.getVisualID(input.getType());

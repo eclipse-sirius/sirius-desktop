@@ -15,6 +15,7 @@ package org.eclipse.sirius.diagram.ui.business.internal.edit.helpers;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.Edge;
@@ -27,7 +28,6 @@ import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.description.tool.ReconnectionKind;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
@@ -86,7 +86,7 @@ public class EdgeReconnectionHelper {
             Predicate<Edge> notToReconnectingEdge = new Predicate<Edge>() {
 
                 @Override
-                public boolean apply(Edge input) {
+                public boolean test(Edge input) {
                     return !sourceEdges.contains(input.getTarget());
                 }
             };
@@ -101,10 +101,10 @@ public class EdgeReconnectionHelper {
                     Collection<EObject> inverseReferences = new EObjectQuery(borderedNode).getInverseReferences(NotationPackage.eINSTANCE.getView_Element());
                     Node nodeSource = Iterables.getOnlyElement(Iterables.filter(inverseReferences, Node.class));
                     List<Edge> sourceEdgesOfBorderedNode = new ArrayList<Edge>(nodeSource.getSourceEdges());
-                    edge = Iterables.getOnlyElement(Iterables.filter(sourceEdgesOfBorderedNode, notToReconnectingEdge));
+                    edge = Iterables.getOnlyElement(sourceEdgesOfBorderedNode.stream().filter(notToReconnectingEdge).toList());
                 }
             } else {
-                edge = Iterables.getOnlyElement(Iterables.filter(sourceEdges, notToReconnectingEdge));
+                edge = Iterables.getOnlyElement(sourceEdges.stream().filter(notToReconnectingEdge).toList());
             }
         } else {
             final List<Edge> targetEdges = new ArrayList<Edge>(reconnectionTarget.getTargetEdges());
@@ -112,7 +112,7 @@ public class EdgeReconnectionHelper {
             Predicate<Edge> notFromReconnectingEdge = new Predicate<Edge>() {
 
                 @Override
-                public boolean apply(Edge input) {
+                public boolean test(Edge input) {
                     return !targetEdges.contains(input.getSource());
                 }
             };
@@ -127,10 +127,10 @@ public class EdgeReconnectionHelper {
                     Collection<EObject> inverseReferences = new EObjectQuery(borderedNode).getInverseReferences(NotationPackage.eINSTANCE.getView_Element());
                     Node nodeTarget = Iterables.getOnlyElement(Iterables.filter(inverseReferences, Node.class));
                     List<Edge> targetEdgesOfBorderedNode = new ArrayList<Edge>(nodeTarget.getTargetEdges());
-                    edge = Iterables.getOnlyElement(Iterables.filter(targetEdgesOfBorderedNode, notFromReconnectingEdge));
+                    edge = Iterables.getOnlyElement(targetEdgesOfBorderedNode.stream().filter(notFromReconnectingEdge).toList());
                 }
             } else {
-                edge = Iterables.getOnlyElement(Iterables.filter(targetEdges, notFromReconnectingEdge));
+                edge = Iterables.getOnlyElement(targetEdges.stream().filter(notFromReconnectingEdge).toList());
             }
         }
         return edge;

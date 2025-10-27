@@ -97,7 +97,7 @@ public class CollapseSupportOnRegionMigrationParticipant extends AbstractReprese
     private final class IsRegionCompartmentPredicate implements Predicate<Node> {
 
         @Override
-        public boolean apply(Node node) {
+        public boolean test(Node node) {
             int id = SiriusVisualIDRegistry.getVisualID(node.getType());
             if (id == DNodeContainerViewNodeContainerCompartment2EditPart.VISUAL_ID || id == DNodeListViewNodeListCompartmentEditPart.VISUAL_ID) {
                 EObject element = node.getElement();

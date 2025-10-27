@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.color;
 
+import java.util.function.Predicate;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
@@ -25,9 +27,6 @@ import org.eclipse.sirius.viewpoint.description.ComputedColor;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.FixedColor;
 import org.eclipse.sirius.viewpoint.description.InterpolatedColor;
-
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
 
 /**
  * Class responsible to provide RGBValues from the color definitions.
@@ -44,7 +43,7 @@ public class RGBValuesProvider {
      * Predicate that validate a ColorSet.
      */
     private static final Predicate<ColorStep> WELL_DEFINED_STEP = new Predicate<ColorStep>() {
-        public boolean apply(ColorStep input) {
+        public boolean test(ColorStep input) {
             return input.getAssociatedColor() != null && input.getAssociatedValue() != null && !"".equals(input.getAssociatedValue()); //$NON-NLS-1$
         }
 
@@ -103,7 +102,7 @@ public class RGBValuesProvider {
      * @return the rgb values from the color definition.
      */
     public RGBValues getRGBValues(final InterpolatedColor object, final EObject evaluationContext, final IInterpreter interpreter) {
-        if (object.getColorSteps().isEmpty() || !Iterables.any(object.getColorSteps(), WELL_DEFINED_STEP)) {
+        if (object.getColorSteps().isEmpty() || !object.getColorSteps().stream().anyMatch(WELL_DEFINED_STEP)) {
             return getDefaultRGBValues(object, evaluationContext, interpreter);
         } else {
             return getInterpolatedRGBValues(object, evaluationContext, interpreter);
@@ -129,7 +128,7 @@ public class RGBValuesProvider {
         // Investigate colors to find the closest lower and upper LevelColor
         // Also find the min and max color if the value is out of LevelColors
         // range
-        for (ColorStep colorStep : Iterables.filter(object.getColorSteps(), WELL_DEFINED_STEP)) {
+        for (ColorStep colorStep : object.getColorSteps().stream().filter(WELL_DEFINED_STEP).toList()) {
             Integer associatedValue = RGBValuesProvider.getIntFromAcceleoExpression(interpreter, evaluationContext, colorStep, DescriptionPackage.eINSTANCE.getColorStep_AssociatedValue());
             if (associatedValue != null && associatedValue > closestLowerBound && associatedValue <= value) {
                 closestLowerBound = associatedValue;

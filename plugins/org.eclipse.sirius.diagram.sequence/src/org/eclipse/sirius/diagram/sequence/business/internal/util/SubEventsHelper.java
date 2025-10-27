@@ -166,7 +166,7 @@ public final class SubEventsHelper {
         for (Lifeline lifeline : coveredLifelines) {
             EventFinder localParentFinder = new EventFinder(lifeline);
             localParentFinder.setReparent(true);
-            localParentFinder.setEventsToIgnore(Predicates.equalTo((ISequenceEvent) frame));
+            localParentFinder.setEventsToIgnore(java.util.function.Predicate.isEqual((ISequenceEvent) frame));
             ISequenceEvent localParent = localParentFinder.findMostSpecificEvent(frame.getVerticalRange());
             if (localParent != null) {
                 coveredEvents.add(localParent);
@@ -242,14 +242,14 @@ public final class SubEventsHelper {
 
             Predicate<ISequenceEvent> isParentOfCurrent = new Predicate<ISequenceEvent>() {
                 @Override
-                public boolean apply(ISequenceEvent input) {
+                public boolean test(ISequenceEvent input) {
                     Range inputRange = input.getVerticalRange();
                     boolean isParent = inputRange.includes(verticalRange);
                     return isParent && input != potentialChild;
                 }
             };
 
-            Iterable<ISequenceEvent> parents = Iterables.filter(potentialParents, isParentOfCurrent);
+            Iterable<ISequenceEvent> parents = potentialParents.stream().filter(isParentOfCurrent).toList();
             if (Iterables.isEmpty(parents)) {
                 topLevel.add(potentialChild);
             } else if (potentialChild instanceof AbstractFrame && !parentFrames) {
@@ -376,7 +376,7 @@ public final class SubEventsHelper {
         Predicate<ISequenceEvent> inRangePredicate = new Predicate<ISequenceEvent>() {
 
             @Override
-            public boolean apply(ISequenceEvent input) {
+            public boolean test(ISequenceEvent input) {
                 Range inputRange = input.getVerticalRange();
                 return range.includesAtLeastOneBound(inputRange) || new ISequenceEventQuery(input).isReflectiveMessage() && inputRange.includesAtLeastOneBound(range);
             }
@@ -385,7 +385,7 @@ public final class SubEventsHelper {
         Predicate<ISequenceEvent> inCoverage = new Predicate<ISequenceEvent>() {
 
             @Override
-            public boolean apply(ISequenceEvent input) {
+            public boolean test(ISequenceEvent input) {
                 Collection<Lifeline> inputCoverage = new ArrayList<Lifeline>(getCoverage(input));
                 return Iterables.removeAll(inputCoverage, lifelines);
             }
@@ -393,7 +393,7 @@ public final class SubEventsHelper {
         };
 
         @SuppressWarnings("unchecked")
-        Predicate<ISequenceEvent> predicateFilter = Predicates.and(Predicates.not(Predicates.equalTo(child)), inRangePredicate, inCoverage);
-        return Iterables.filter(result, predicateFilter);
+        Predicate<ISequenceEvent> predicateFilter = Predicates.and(java.util.function.Predicate.not(java.util.function.Predicate.isEqual(child)), inRangePredicate, inCoverage);
+        return result.stream().filter(predicateFilter).toList();
     }
 }

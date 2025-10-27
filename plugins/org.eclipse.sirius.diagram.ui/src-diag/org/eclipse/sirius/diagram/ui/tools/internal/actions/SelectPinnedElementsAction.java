@@ -14,6 +14,7 @@ package org.eclipse.sirius.diagram.ui.tools.internal.actions;
 
 import java.util.Iterator;
 import java.util.Objects;
+import java.util.function.Function;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
@@ -41,7 +42,6 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 
-import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 
 /**
@@ -79,7 +79,7 @@ public class SelectPinnedElementsAction extends AbstractDiagramAction {
         private Predicate<Object> getNonSelectablePredicate() {
             return new Predicate<Object>() {
                 @Override
-                public boolean apply(Object input) {
+                public boolean test(Object input) {
                     if (input instanceof DDiagramElement) {
                         return !PinHelper.allowsPinUnpin((DDiagramElement) input);
                     }
@@ -98,7 +98,7 @@ public class SelectPinnedElementsAction extends AbstractDiagramAction {
 
     private static final Predicate<Object> IS_PINNED = new Predicate<Object>() {
         @Override
-        public boolean apply(Object input) {
+        public boolean test(Object input) {
             if (input instanceof DDiagramElement) {
                 return new PinHelper().isPinned((DDiagramElement) input);
             }

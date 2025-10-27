@@ -55,7 +55,7 @@ public class ResetOriginHandler extends AbstractHandler {
             } else {
                 Predicate<AbstractDiagramContainerEditPart> noRegionContainer = new Predicate<AbstractDiagramContainerEditPart>() {
                     @Override
-                    public boolean apply(AbstractDiagramContainerEditPart input) {
+                    public boolean test(AbstractDiagramContainerEditPart input) {
                         return !input.isRegionContainer();
                     }
                 };
