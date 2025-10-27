@@ -1,51 +1,52 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.editor;
 
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.Comparator;
+import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
-import java.util.stream.Collectors;
 
-import com.google.common.base.Predicate;
-import com.google.common.collect.Sets;
+import com.google.common.base.Function;
+import com.google.common.collect.ImmutableSortedSet;
+import com.google.common.collect.Ordering;
 
 class Test {
     public static void main(String[] args) {
-        Set<Object> set = new HashSet<>();
-        set.add(new String("First")); //$NON-NLS-1$
-        set.add(new String("Second")); //$NON-NLS-1$
-        set.add(new String("Third")); //$NON-NLS-1$
-        set.add(new String("Fourth")); //$NON-NLS-1$
-        Predicate<Object> isNotNull = Objects::nonNull;
-        Set<Object> result = test(set, isNotNull);
-        Set<Object> result2 = test2(set, isNotNull);
-        System.out.println(result);
-        System.out.println(result2);
-        
-        Set<Object> set2 = new TreeSet<>();
-        set2.add(new String("First")); //$NON-NLS-1$
-        set2.add(new String("Second")); //$NON-NLS-1$
-        set2.add(new String("Third")); //$NON-NLS-1$
-        set2.add(new String("Fourth")); //$NON-NLS-1$
-        result = test(set2, isNotNull);
-        result2 = test2(set2, isNotNull);
-        Set<Object> result3 = test3(set2, isNotNull);
-        System.out.println(result);
-        System.out.println(result2);
-        System.out.println(result3);
-
+        new Test().test();
     }
 
-    public static Set<Object> test(Set<Object> set, Predicate<Object> isNotNull) {
-        return Sets.filter(set, isNotNull);
+    public void test() {
+        List<String> param = List.of("Aaa", "Aaaa", "Cccef", "Z", "Ab", "Bbbbdfgfg"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$
+        System.out.println("----   GUAVA   ----"); //$NON-NLS-1$
+        for (String string : testGuava(param)) {
+            System.out.println("- " + string); //$NON-NLS-1$
+        }
+        System.out.println("---- NO GUAVA ----"); //$NON-NLS-1$
+        for (String string : testNoGuava(param)) {
+            System.out.println("- " + string); //$NON-NLS-1$
+        }
     }
 
-    public static Set<Object> test2(Set<Object> set, Predicate<Object> isNotNull) {
-        return set.stream().filter(isNotNull).collect(Collectors.toSet());
+    public ImmutableSortedSet<String> testGuava(List<String> input) {
+        Function<String, Integer> getValueToCompareFunction = new Function<String, Integer>() {
+            @Override
+            public Integer apply(String from) {
+                return from.length();
+            }
+        };
+        Ordering<String> ordering = Ordering.natural().onResultOf(getValueToCompareFunction);
+        return ImmutableSortedSet.orderedBy(ordering).addAll(input).build();
     }
 
-    public static SortedSet<Object> test3(Set<Object> set, Predicate<Object> isNotNull) {
-        return set.stream().filter(isNotNull).collect(Collectors.toCollection(TreeSet::new));
+    public SortedSet<String> testNoGuava(List<String> input) {
+        java.util.function.Function<String, Integer> getValueToCompareFunction = new java.util.function.Function<String, Integer>() {
+            @Override
+            public Integer apply(String from) {
+                return from.length();
+            }
+        };
+        SortedSet<String> result = new TreeSet<String>(Comparator.comparing(getValueToCompareFunction, Comparator.naturalOrder()));
+        result.addAll(input);
+        return result;
     }
+
 }
