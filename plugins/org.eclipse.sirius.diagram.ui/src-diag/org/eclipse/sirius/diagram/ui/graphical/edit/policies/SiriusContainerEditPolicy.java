@@ -17,6 +17,7 @@ package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -52,9 +53,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.requests.DistributeRequest;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.SnapCommand;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.LayoutService;
 
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-
 /**
  * A specific class to override the arrangeCommand to handles edge centering, snapping, ...<BR>
  * This class launches the arrange even for one element.
@@ -67,7 +65,7 @@ public class SiriusContainerEditPolicy extends ContainerEditPolicy {
 
     private final Predicate<Object> isRegionEditPart = new Predicate<Object>() {
         @Override
-        public boolean apply(Object input) {
+        public boolean test(Object input) {
             return input instanceof AbstractDiagramElementContainerEditPart && ((AbstractDiagramElementContainerEditPart) input).isRegion();
         }
     };
@@ -87,7 +85,7 @@ public class SiriusContainerEditPolicy extends ContainerEditPolicy {
     @Override
     protected Command getArrangeCommand(ArrangeRequest request) {
         if ((ActionIds.ACTION_ARRANGE_SELECTION.equals(request.getType())) || (ActionIds.ACTION_TOOLBAR_ARRANGE_SELECTION.equals(request.getType()))) {
-            if (Iterables.any(request.getPartsToArrange(), isRegionEditPart)) {
+            if (request.getPartsToArrange().stream().anyMatch(isRegionEditPart)) {
                 return UnexecutableCommand.INSTANCE;
             }
         }

@@ -696,7 +696,7 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
         Collection<EObject> eObjects = Collections.emptyList();
         if (selection != null) {
             // Keep only EObjects, not Resources (CDOResources are EObjects).
-            eObjects = Sets.newLinkedHashSet(Iterables.filter(Iterables.filter(selection, EObject.class), Predicates.not(Predicates.instanceOf(Resource.class))));
+            eObjects = Sets.newLinkedHashSet(Iterables.filter(Iterables.filter(selection, EObject.class), java.util.function.Predicate.not(Predicates.instanceOf(Resource.class))));
         }
         return eObjects;
     }

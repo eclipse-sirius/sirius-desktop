@@ -13,6 +13,7 @@
 package org.eclipse.sirius.tests.unit.common.interpreter;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -33,9 +34,6 @@ import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
 import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
-
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
 
 /**
  * Interpreter tests for {@link CreateCellTool}.
@@ -87,9 +85,9 @@ public class CreateCellToolInterpreterTest extends TableTestCase {
         List<ContentProposal> proposals = CompoundInterpreter.INSTANCE.getProposals(CompoundInterpreter.INSTANCE, context);
 
         // Ensure that arg0 exists
-        assertTrue(Iterables.any(proposals, new Predicate<ContentProposal>() {
+        assertTrue(proposals.stream().anyMatch(new Predicate<ContentProposal>() {
             @Override
-            public boolean apply(ContentProposal proposal) {
+            public boolean test(ContentProposal proposal) {
                 return proposal.getProposal().equals("arg0");
             }
         }));

@@ -14,6 +14,7 @@ package org.eclipse.sirius.tests.swtbot;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.function.Function;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.LayoutManager;
@@ -58,7 +59,6 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
 import org.junit.Assert;
 
-import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 
 /**

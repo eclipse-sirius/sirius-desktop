@@ -20,7 +20,8 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDi
 import org.eclipse.sirius.diagram.sequence.business.internal.query.SequenceDiagramQuery;
 
 import com.google.common.base.Predicates;
-import com.google.common.collect.Iterables;
+
+import java.util.function.Predicate;
 
 /**
  * Validator to check if a create message creation request is valid.
@@ -60,7 +61,7 @@ public class CreateMessageCreationValidator extends DefaultMessageCreationValida
 
         SequenceDiagram sequenceDiagram = sequenceElementSource.getDiagram();
         SequenceDiagramQuery sequenceDiagramQuery = new SequenceDiagramQuery(sequenceDiagram);
-        for (ISequenceEvent sequenceEvent : Iterables.filter(sequenceDiagramQuery.getAllSequenceEventsLowerThan(firstClickLocation.y), Predicates.not(Predicates.instanceOf(Lifeline.class)))) {
+        for (ISequenceEvent sequenceEvent : sequenceDiagramQuery.getAllSequenceEventsLowerThan(firstClickLocation.y).stream().filter(Predicate.not(Predicates.instanceOf(Lifeline.class))).toList()) {
             if (isSequenceEventOfLifeline(sequenceEvent, sequenceElementTarget.getLifeline()) || isMessageTargeting(sequenceEvent, sequenceElementTarget.getLifeline())
                     || isCreateMessageFor(sequenceEvent, sequenceElementTarget.getLifeline().get().getInstanceRole())) {
                 valid = false;

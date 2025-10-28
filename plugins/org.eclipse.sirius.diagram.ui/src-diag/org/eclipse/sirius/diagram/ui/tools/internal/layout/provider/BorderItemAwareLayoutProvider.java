@@ -24,6 +24,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -1585,7 +1586,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
     private int getRightSizeXCoordinateOfRightMostChild(final IGraphicalEditPart part, final double scale, final Dimension moveDelta) {
         int result = 0;
         Collection<IGraphicalEditPart> children = Collections2.filter(part.getChildren(), Predicates.and(Predicates.instanceOf(IGraphicalEditPart.class), //
-                Predicates.not(Predicates.instanceOf(AbstractDiagramBorderNodeEditPart.class)), Predicates.not(Predicates.instanceOf(AbstractDiagramNameEditPart.class)))) //
+                Predicate.not(Predicates.instanceOf(AbstractDiagramBorderNodeEditPart.class)), Predicate.not(Predicates.instanceOf(AbstractDiagramNameEditPart.class)))) //
                 .stream() //
                 .filter(IGraphicalEditPart.class::isInstance) //
                 .map(IGraphicalEditPart.class::cast) //
@@ -1594,7 +1595,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
             if (child instanceof ShapeCompartmentEditPart) {
                 // Only delegates to the grandchildren
                 var grandchildren = Collections2.filter(child.getChildren(), Predicates.and(Predicates.instanceOf(IGraphicalEditPart.class),
-                        Predicates.not(Predicates.instanceOf(AbstractDiagramBorderNodeEditPart.class)), Predicates.not(Predicates.instanceOf(AbstractDiagramNameEditPart.class))));
+                        Predicate.not(Predicates.instanceOf(AbstractDiagramBorderNodeEditPart.class)), Predicate.not(Predicates.instanceOf(AbstractDiagramNameEditPart.class))));
                 for (var grandchild : grandchildren) {
                     final Rectangle bounds = getBounds((IGraphicalEditPart) grandchild, scale, moveDelta, true, false);
                     final int rightSizeXCoordinate = bounds.x + bounds.width;
@@ -1627,7 +1628,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
     private int getBottomSizeYCoordinateOfLowestChild(final IGraphicalEditPart part, final double scale, final Dimension moveDelta) {
         int result = 0;
         Collection<IGraphicalEditPart> children = Collections2.filter(part.getChildren(), Predicates.and(Predicates.instanceOf(IGraphicalEditPart.class), //
-                Predicates.not(Predicates.instanceOf(AbstractDiagramBorderNodeEditPart.class)), Predicates.not(Predicates.instanceOf(AbstractDiagramNameEditPart.class)))) //
+                Predicate.not(Predicates.instanceOf(AbstractDiagramBorderNodeEditPart.class)), Predicate.not(Predicates.instanceOf(AbstractDiagramNameEditPart.class)))) //
                 .stream() //
                 .filter(IGraphicalEditPart.class::isInstance) //
                 .map(IGraphicalEditPart.class::cast) //
@@ -1636,7 +1637,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
             if (child instanceof ShapeCompartmentEditPart) {
                 // Only delegates to the grandchildren
                 var grandchildren = Collections2.filter(child.getChildren(), Predicates.and(Predicates.instanceOf(IGraphicalEditPart.class),
-                        Predicates.not(Predicates.instanceOf(AbstractDiagramBorderNodeEditPart.class)), Predicates.not(Predicates.instanceOf(AbstractDiagramNameEditPart.class))));
+                        Predicate.not(Predicates.instanceOf(AbstractDiagramBorderNodeEditPart.class)), Predicate.not(Predicates.instanceOf(AbstractDiagramNameEditPart.class))));
                 for (var grandchild : grandchildren) {
                     final Rectangle bounds = getBounds((IGraphicalEditPart) grandchild, scale, moveDelta, false, true);
                     final int bottomSizeYCoordinate = bounds.y + bounds.height;

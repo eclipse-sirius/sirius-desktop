@@ -1,6 +1,6 @@
 package org.eclipse.sirius.business.api.action;
 
-import com.google.common.base.Predicate;
+import java.util.function.Predicate;
 
 public class Test4 {
     public static final Predicate<Object> A_PREDICATE_DECLARE_IN_A_CLASS_IN_ANOTHER_MODULE = new Predicate<Object>() {
@@ -9,7 +9,7 @@ public class Test4 {
          * {@inheritDoc}
          */
         @Override
-        public boolean apply(Object input) {
+        public boolean test(Object input) {
             return false;
         }
     };

@@ -46,7 +46,6 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
@@ -84,7 +83,7 @@ public class SequenceCreatedEventsFlaggingSiriusCommand extends SiriusCommand {
     private Predicate<DDiagramElement> completeShouldFlagPredicate(Predicate<DDiagramElement> pred) {
         Predicate<DDiagramElement> result = LostMessageEnd.viewpointElementPredicate();
         if (pred != null) {
-            result = Predicates.or(pred, result);
+            result = pred.or(result);
         }
         return result;
     }
@@ -140,7 +139,7 @@ public class SequenceCreatedEventsFlaggingSiriusCommand extends SiriusCommand {
         Collection<DDiagramElement> flags = new ArrayList<>();
 
         if (parentDiagram != null && shouldFlag != null) {
-            for (DDiagramElement dde : Iterables.filter(parentDiagram.getDiagramElements(), shouldFlag)) {
+            for (DDiagramElement dde : parentDiagram.getDiagramElements().stream().filter(shouldFlag).toList()) {
                 Option<DDiagramElement> flagged = Options.newNone();
                 if (dde.getTarget() != null) {
                     if (mainSemantics.contains(dde.getTarget())) {
@@ -260,7 +259,7 @@ public class SequenceCreatedEventsFlaggingSiriusCommand extends SiriusCommand {
         protected void doExecute() {
             Collection<DDiagramElement> flagPostRefresh = flagPostRefresh(mainSemantics, createdObjects);
 
-            if (flagPostRefresh != null && Iterables.any(flagPostRefresh, LostMessageEnd.viewpointElementPredicate())) {
+            if (flagPostRefresh != null && flagPostRefresh.stream().anyMatch(LostMessageEnd.viewpointElementPredicate())) {
                 CanonicalSynchronizer canonicalSynchronizer = CanonicalSynchronizerFactory.INSTANCE.createCanonicalSynchronizer(gmfDiag);
                 canonicalSynchronizer.storeViewsToArrange(false);
                 canonicalSynchronizer.synchronize();

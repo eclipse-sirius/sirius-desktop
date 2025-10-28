@@ -12,7 +12,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.action;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EPackage;
@@ -31,10 +33,6 @@ import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.ui.IEditorPart;
-
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Tests on delete from model action for elements without delete tool or
@@ -62,7 +60,7 @@ public class DeleteWithoutToolFromModelActionTests extends SiriusDiagramTestCase
 
     private Predicate<DEdge> relation = new Predicate<DEdge>() {
 
-        public boolean apply(DEdge input) {
+        public boolean test(DEdge input) {
             IEdgeMapping actualMapping = input.getActualMapping();
             return !new IEdgeMappingQuery(actualMapping).getEdgeMapping().get().isUseDomainElement();
         }
@@ -81,7 +79,7 @@ public class DeleteWithoutToolFromModelActionTests extends SiriusDiagramTestCase
     }
 
     public void testNoDeleteRelationEdgeEditPartWithoutDeleteTool() throws Exception {
-        List<DEdge> relationBasedEdge = Lists.newArrayList(Iterables.filter(diagram.getEdges(), relation));
+        List<DEdge> relationBasedEdge = new ArrayList<>(diagram.getEdges().stream().filter(relation).toList());
         assertFalse("Test data should have relation based edges.", relationBasedEdge.isEmpty());
 
         DEdge edgeToTry = relationBasedEdge.get(0);
@@ -96,13 +94,13 @@ public class DeleteWithoutToolFromModelActionTests extends SiriusDiagramTestCase
         // NPE will be raised, workbench page will be null.
         TestsUtil.synchronizationWithUIThread();
 
-        List<DEdge> relEdgesAfterDeleteTry = Lists.newArrayList(Iterables.filter(diagram.getEdges(), relation));
+        List<DEdge> relEdgesAfterDeleteTry = new ArrayList<>(diagram.getEdges().stream().filter(relation).toList());
         assertEquals("Delete should not occurs", relationBasedEdge.size(), relEdgesAfterDeleteTry.size());
         assertTrue("Deletion should notoccurs", relEdgesAfterDeleteTry.contains(edgeToTry));
     }
 
     public void testDeleteDisabledRelationEdgeEditPart() throws Exception {
-        List<DEdge> relationBasedEdge = Lists.newArrayList(Iterables.filter(diagram.getEdges(), relation));
+        List<DEdge> relationBasedEdge = new ArrayList<>(diagram.getEdges().stream().filter(relation).toList());
         assertFalse("Test data should have relation based edges.", relationBasedEdge.isEmpty());
 
         DEdge edgeToTry = relationBasedEdge.get(0);
@@ -127,7 +125,7 @@ public class DeleteWithoutToolFromModelActionTests extends SiriusDiagramTestCase
     }
 
     public void testDeleteViaKeyboardContainerEditPart() throws Exception {
-        List<DEdge> relationBasedEdge = Lists.newArrayList(Iterables.filter(diagram.getEdges(), relation));
+        List<DEdge> relationBasedEdge = new ArrayList<>(diagram.getEdges().stream().filter(relation).toList());
         assertFalse("Test data should have relation based edges.", relationBasedEdge.isEmpty());
 
         DEdge edgeToTry = relationBasedEdge.get(0);
@@ -142,7 +140,7 @@ public class DeleteWithoutToolFromModelActionTests extends SiriusDiagramTestCase
         // NPE will be raised, workbench page will be null.
         TestsUtil.synchronizationWithUIThread();
 
-        List<DEdge> relEdgesAfterDeleteTry = Lists.newArrayList(Iterables.filter(diagram.getEdges(), relation));
+        List<DEdge> relEdgesAfterDeleteTry = new ArrayList<>(diagram.getEdges().stream().filter(relation).toList());
         assertEquals("Delete should not occurs", relationBasedEdge.size(), relEdgesAfterDeleteTry.size());
         assertTrue("Deletion should notoccurs", relEdgesAfterDeleteTry.contains(edgeToTry));
     }

@@ -18,6 +18,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
@@ -33,11 +35,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.State;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
-import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
-import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
-import com.google.common.collect.Iterables;
 
 /**
  * .
@@ -117,7 +115,7 @@ public final class ParentOperandFinder {
         Predicate<Operand> coveredLifeline = new Predicate<Operand>() {
             // Filter the operands that cover the execution parent lifeline
             @Override
-            public boolean apply(Operand input) {
+            public boolean test(Operand input) {
                 CombinedFragment parentCombinedFragment = input.getCombinedFragment();
                 Collection<Lifeline> computeCoveredLifelines = combinedFragmentToCoveredLifelines.get(parentCombinedFragment);
                 if (computeCoveredLifelines == null) {
@@ -132,14 +130,14 @@ public final class ParentOperandFinder {
             // Filter the operands having a range that contains the execution
             // range (we consider the insertion point : lowerbound of range)
             @Override
-            public boolean apply(Operand input) {
+            public boolean test(Operand input) {
                 return rangeFunction.apply(input).includes(new Range(verticalRange.getLowerBound(), verticalRange.getLowerBound()));
                 // return rangeFunction.apply(input).includes(verticalRange);
             }
         };
 
         Operand deepestCoveringOperand = null;
-        for (Operand operand : Iterables.filter(allOperands, Predicates.and(includingExecutionRange, coveredLifeline))) {
+        for (Operand operand : allOperands.stream().filter(includingExecutionRange.and(coveredLifeline)).toList()) {
             // Find the deepest operand among the filtered ones
             if (deepestCoveringOperand == null || rangeFunction.apply(deepestCoveringOperand).includes(rangeFunction.apply(operand))) {
                 deepestCoveringOperand = operand;

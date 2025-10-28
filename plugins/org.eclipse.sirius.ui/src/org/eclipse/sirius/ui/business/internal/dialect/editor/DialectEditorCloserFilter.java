@@ -141,7 +141,7 @@ public class DialectEditorCloserFilter extends NotificationFilter.Custom {
 
     private boolean isTargetDetachment(Notification notification) {
         boolean detachedTarget = false;
-        if (DanglingRefRemovalTrigger.IS_DETACHMENT.apply(notification)) {
+        if (DanglingRefRemovalTrigger.IS_DETACHMENT.test(notification)) {
             resolveDRepDescriptorProxy(notification);
             DRepresentation representation = dRepDescriptor.getRepresentation();
             if (representation instanceof DSemanticDecorator) {

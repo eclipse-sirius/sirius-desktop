@@ -12,8 +12,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.business.api.helper.graphicalfilters;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.eclipse.sirius.diagram.AppliedCompositeFilters;
 import org.eclipse.sirius.diagram.CollapseFilter;
@@ -27,7 +29,6 @@ import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
 import org.eclipse.sirius.ext.base.Option;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
@@ -81,7 +82,7 @@ public class CompositeFilterApplicationBuilder {
     private void handleHideCompositeFilters(final DDiagramElement element, final List<CompositeFilterDescription> appliedFilters) {
         DDiagramElementQuery elementQuery = new DDiagramElementQuery(element);
 
-        Iterable<CompositeFilterDescription> appliedHideFilters = Iterables.filter(appliedFilters, new IsHideFilter());
+        Iterable<CompositeFilterDescription> appliedHideFilters = appliedFilters.stream().filter(new IsHideFilter()).toList();
 
         Option<AppliedCompositeFilters> appliedCompositeFilters = elementQuery.getAppliedCompositeFilters();
         if (appliedCompositeFilters.some()) {
@@ -120,10 +121,10 @@ public class CompositeFilterApplicationBuilder {
             if (appliedFilters.isEmpty()) {
                 element.getGraphicalFilters().remove(filterApplication);
             } else {
-                Collection<CompositeFilterDescription> filterToAdd = Lists.newArrayList(appliedFilters);
+                Collection<CompositeFilterDescription> filterToAdd = new ArrayList<>(appliedFilters);
                 Iterables.removeAll(filterToAdd, filterApplication.getCompositeFilterDescriptions());
 
-                Collection<CompositeFilterDescription> filterToRemove = Lists.newArrayList(filterApplication.getCompositeFilterDescriptions());
+                Collection<CompositeFilterDescription> filterToRemove = new ArrayList<>(filterApplication.getCompositeFilterDescriptions());
                 Iterables.removeAll(filterToRemove, appliedFilters);
 
                 filterApplication.getCompositeFilterDescriptions().removeAll(filterToRemove);
@@ -138,7 +139,7 @@ public class CompositeFilterApplicationBuilder {
      * 
      */
     private static final class IsHideFilter implements Predicate<CompositeFilterDescription> {
-        public boolean apply(CompositeFilterDescription input) {
+        public boolean test(CompositeFilterDescription input) {
             return new CompositeFilterDescriptionQuery(input).isHideCompositeFilter();
         }
     }

@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.operation;
 
+import java.util.Objects;
+
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.View;
@@ -21,8 +23,6 @@ import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.SequenceMessageViewQuery;
 import org.eclipse.sirius.diagram.sequence.tool.internal.Messages;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
-
-import com.google.common.base.Objects;
 
 /**
  * An operation to set the vertical range of a sequence message.
@@ -135,7 +135,7 @@ public class SetMessageRangeOperation extends AbstractModelChangeOperation<Void>
     private boolean isMessageToSelf(Edge msg) {
         View src = msg.getSource();
         View tgt = msg.getTarget();
-        return Objects.equal(src, tgt) || Objects.equal(src.eContainer(), tgt) || Objects.equal(src, tgt.eContainer());
+        return Objects.equals(src, tgt) || Objects.equals(src.eContainer(), tgt) || Objects.equals(src, tgt.eContainer());
     }
 
     private boolean isObliqueMessage(Edge msg) {

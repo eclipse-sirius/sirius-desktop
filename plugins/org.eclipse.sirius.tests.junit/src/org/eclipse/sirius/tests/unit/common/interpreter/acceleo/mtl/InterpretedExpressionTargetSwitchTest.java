@@ -331,7 +331,7 @@ public class InterpretedExpressionTargetSwitchTest extends SiriusTestCase {
     private void inspectTestedData(Scope scope, Collection<EClass> instanciatedEClasses, Collection<EAttribute> abstractIntExp, Collection<EAttribute> instanciatedIntExp,
             Collection<EAttribute> nonDirectlyInstanciatedIntExp) {
         for (EPackage pkg : scope.getScope()) {
-            for (EClass eClass : Iterables.filter(Iterables.filter(pkg.getEClassifiers(), EClass.class), Predicates.not(Predicates.in(scope.getEclassesToAvoid())))) {
+            for (EClass eClass : Iterables.filter(Iterables.filter(pkg.getEClassifiers(), EClass.class), java.util.function.Predicate.not(Predicates.in(scope.getEclassesToAvoid())))) {
                 boolean concrete = !(eClass.isAbstract() || eClass.isInterface());
                 boolean instanciated = concrete && instanciatedEClasses.contains(eClass);
                 if (instanciated) {
@@ -357,7 +357,7 @@ public class InterpretedExpressionTargetSwitchTest extends SiriusTestCase {
 
                     if (!concrete) {
                         // Look for uncreated possibilities.
-                        for (EAttribute attribute : Iterables.filter(eClass.getEAllAttributes(), Predicates.not(Predicates.in(eClass.getEAttributes())))) {
+                        for (EAttribute attribute : eClass.getEAllAttributes().stream().filter(java.util.function.Predicate.not(Predicates.in(eClass.getEAttributes()))).toList()) {
                             if (DescriptionPackage.eINSTANCE.getInterpretedExpression().equals(attribute.getEAttributeType())) {
                                 data_defined_expressions.add(attribute);
                             }

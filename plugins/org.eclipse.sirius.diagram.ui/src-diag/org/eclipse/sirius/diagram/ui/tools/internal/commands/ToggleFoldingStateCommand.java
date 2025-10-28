@@ -32,7 +32,6 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 import com.google.common.base.Predicates;
-import com.google.common.collect.Iterables;
 
 /**
  * A command to fold all the edges (which support it) which have a given element
@@ -127,7 +126,7 @@ public class ToggleFoldingStateCommand extends RecordingCommand {
     }
 
     private void addFilterType(DDiagramElement element, GraphicalFilter filter) {
-        if (!Iterables.any(element.getGraphicalFilters(), Predicates.instanceOf(filter.getClass()))) {
+        if (!element.getGraphicalFilters().stream().anyMatch(Predicates.instanceOf(filter.getClass()))) {
             element.getGraphicalFilters().add(filter);
         }
     }

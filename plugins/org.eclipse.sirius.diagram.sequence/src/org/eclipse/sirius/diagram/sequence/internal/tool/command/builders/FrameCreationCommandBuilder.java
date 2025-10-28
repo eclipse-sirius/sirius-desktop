@@ -34,7 +34,6 @@ import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.description.AbstractVariable;
 
 import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
 
 /**
  * Specific ContainerCreationCommandBuilder for InteractionUse &
@@ -117,7 +116,7 @@ public class FrameCreationCommandBuilder extends ContainerCreationCommandBuilder
      */
     @Override
     protected DCommand createEnclosingCommand() {
-        Predicate<DDiagramElement> shouldFlag = Predicates.or(CombinedFragment.viewpointElementPredicate(), InteractionUse.viewpointElementPredicate());
+        Predicate<DDiagramElement> shouldFlag = CombinedFragment.viewpointElementPredicate().or(InteractionUse.viewpointElementPredicate());
         return new SequenceCreatedEventsFlaggingSiriusCommand(editingDomain, getEnclosingCommandLabel(), diagram, shouldFlag);
     }
 

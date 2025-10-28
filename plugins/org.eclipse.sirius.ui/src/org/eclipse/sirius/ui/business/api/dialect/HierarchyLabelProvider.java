@@ -23,8 +23,6 @@ import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescripti
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.graphics.Image;
 
-import com.google.common.base.Joiner;
-
 /**
  * A {@link LabelProvider} to display Sirius model description element in a
  * hierarchical way.
@@ -60,7 +58,7 @@ public class HierarchyLabelProvider extends LabelProvider {
             for (EObject current = (EObject) element; current != null; current = current.eContainer()) {
                 segments.addFirst(getLabel(current));
             }
-            return Joiner.on(getDelimiter()).join(segments);
+            return String.join(getDelimiter(), segments);
         }
         return wrappedProvider != null ? wrappedProvider.getText(element) : super.getText(element);
     }

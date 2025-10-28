@@ -28,9 +28,9 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.State;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.SequenceDiagramQuery;
 import org.eclipse.sirius.ext.base.Option;
 
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
-import com.google.common.collect.Iterables;
+
+import java.util.function.Predicate;
 
 /**
  * Default validator to check if a message creation request is valid.
@@ -71,7 +71,7 @@ public class DefaultMessageCreationValidator extends AbstractMessageCreationVali
 
         SequenceDiagram sequenceDiagram = sequenceElementSource.getDiagram();
         SequenceDiagramQuery sequenceDiagramQuery = new SequenceDiagramQuery(sequenceDiagram);
-        for (ISequenceEvent sequenceEvent : Iterables.filter(sequenceDiagramQuery.getAllSequenceEventsUpperThan(firstClickLocation.y), Predicates.not(Predicates.instanceOf(Lifeline.class)))) {
+        for (ISequenceEvent sequenceEvent : sequenceDiagramQuery.getAllSequenceEventsUpperThan(firstClickLocation.y).stream().filter(Predicate.not(Predicates.instanceOf(Lifeline.class))).toList()) {
             if (isCreateMessageFor(sequenceEvent, sequenceElementTarget.getLifeline().get().getInstanceRole())) {
                 valid = false;
                 break;
@@ -86,7 +86,7 @@ public class DefaultMessageCreationValidator extends AbstractMessageCreationVali
         SequenceDiagram sequenceDiagram = sequenceElementSource.getDiagram();
         SequenceDiagramQuery sequenceDiagramQuery = new SequenceDiagramQuery(sequenceDiagram);
 
-        for (ISequenceEvent sequenceEvent : Iterables.filter(sequenceDiagramQuery.getAllSequenceEventsLowerThan(firstClickLocation.y), Predicates.not(Predicates.instanceOf(Lifeline.class)))) {
+        for (ISequenceEvent sequenceEvent : sequenceDiagramQuery.getAllSequenceEventsLowerThan(firstClickLocation.y).stream().filter(Predicate.not(Predicates.instanceOf(Lifeline.class))).toList()) {
             if (isDestroyMessageFor(sequenceEvent, sequenceElementTarget.getLifeline().get().getInstanceRole())) {
                 valid = false;
                 break;
@@ -219,12 +219,12 @@ public class DefaultMessageCreationValidator extends AbstractMessageCreationVali
         Predicate<InteractionUse> interactionUseOnRealTargetLocation = new Predicate<InteractionUse>() {
             // Filters interaction use at the vertical position of the
             // source but on the targeted lifeline.
-            public boolean apply(InteractionUse input) {
+            public boolean test(InteractionUse input) {
                 return input.getVerticalRange().includes(firstClickLocation.y);
             }
         };
 
-        return sequenceElementTarget instanceof Gate || (lifeline.some() && !Iterables.any(lifeline.get().getAllCoveringInteractionUses(), interactionUseOnRealTargetLocation));
+        return sequenceElementTarget instanceof Gate || (lifeline.some() && !lifeline.get().getAllCoveringInteractionUses().stream().anyMatch(interactionUseOnRealTargetLocation));
     }
 
     /**

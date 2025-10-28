@@ -14,6 +14,7 @@ package org.eclipse.sirius.editor.editorPlugin;
 
 // Start of user code imports
 
+import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.function.Supplier;
 
@@ -36,8 +37,6 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
-
-import com.google.common.collect.Sets;
 
 // End of user code imports
 
@@ -66,7 +65,7 @@ public final class SiriusEditorPlugin extends EMFPlugin {
      */
     private static Implementation plugin;
 
-    private static Set<String> siriusRuntimeBundles = Sets.newLinkedHashSet();
+    private static Set<String> siriusRuntimeBundles = new LinkedHashSet<>();
 
     // Start of user code fields
 

@@ -82,7 +82,7 @@ public class NodeQuery extends ViewQuery {
         EObject element = node.getElement();
         Dimension dim = new Dimension(0, 0);
         if (element instanceof DDiagramElement) {
-            CollapseFilter filter = (CollapseFilter) Iterables.getFirst(Iterables.filter(((DDiagramElement) element).getGraphicalFilters(), Predicates.instanceOf(CollapseFilter.class)), null);
+            CollapseFilter filter = (CollapseFilter) Iterables.getFirst(((DDiagramElement) element).getGraphicalFilters().stream().filter(Predicates.instanceOf(CollapseFilter.class)).toList(), null);
             if (filter == null || filter.getWidth() == 0 || filter.getHeight() == 0) {
                 dim.setSize(getDefaultDim((DDiagramElement) element));
             } else {
@@ -216,7 +216,7 @@ public class NodeQuery extends ViewQuery {
             if (isCollapsed) {
                 dim = getCollapsedSize();
             } else {
-                CollapseFilter filter = (CollapseFilter) Iterables.getFirst(Iterables.filter(((DDiagramElement) element).getGraphicalFilters(), Predicates.instanceOf(CollapseFilter.class)), null);
+                CollapseFilter filter = (CollapseFilter) Iterables.getFirst(((DDiagramElement) element).getGraphicalFilters().stream().filter(Predicates.instanceOf(CollapseFilter.class)).toList(), null);
 
                 if (filter == null || (filter.getWidth() == 0 || filter.getHeight() == 0)) {
                     dim = getDefaultDim((DDiagramElement) element);

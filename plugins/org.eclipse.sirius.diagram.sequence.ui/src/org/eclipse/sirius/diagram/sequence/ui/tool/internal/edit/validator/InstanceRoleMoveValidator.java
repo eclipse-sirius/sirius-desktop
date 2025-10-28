@@ -14,6 +14,7 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -58,7 +59,7 @@ public class InstanceRoleMoveValidator extends AbstractInstanceRoleValidator {
                 moveDelta.setY(0);
             }
 
-            Iterable<Rectangle> notMovedIRBounds = Iterables.transform(Iterables.filter(allInstanceRoles, Predicates.not(Predicates.in(instanceRoles))), ISequenceElement.PROPER_LOGICAL_BOUNDS);
+            Iterable<Rectangle> notMovedIRBounds = Iterables.transform(allInstanceRoles.stream().filter(Predicate.not(Predicates.in(instanceRoles))).toList(), ISequenceElement.PROPER_LOGICAL_BOUNDS);
 
             // Iterate on all instanceRoles to move from the request
             for (InstanceRole instanceRole : instanceRoles) {

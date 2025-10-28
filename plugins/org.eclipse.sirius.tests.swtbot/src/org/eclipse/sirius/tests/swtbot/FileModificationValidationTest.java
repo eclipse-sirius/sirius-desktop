@@ -55,7 +55,6 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.junit.Assert;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Maps;
 
 /**
  * Test class for edge shape when the connected port are collapsed.
@@ -199,7 +198,7 @@ public class FileModificationValidationTest extends AbstractSiriusSwtBotGefTestC
         URI resourceURI = semanticResource.getURI();
         ResourceSet resourceSet = semanticResource.getResourceSet();
         Assert.assertNotNull("ResourceSet should not been null", resourceSet);
-        HashMap<String, Boolean> attributes = Maps.<String, Boolean> newHashMap();
+        HashMap<String, Boolean> attributes = new HashMap<>();
         attributes.put(URIConverter.ATTRIBUTE_READ_ONLY, true);
         resourceSet.getURIConverter().setAttributes(resourceURI, attributes, null);
 

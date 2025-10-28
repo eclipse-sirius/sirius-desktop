@@ -21,6 +21,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.Function;
 import java.util.stream.Stream;
 
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -41,12 +42,10 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.emf.AllContents;
 
-import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Ordering;
-import com.google.common.collect.Sets;
 import com.google.common.collect.Streams;
 
 /**
@@ -195,14 +194,14 @@ public class SequenceDiagram extends AbstractSequenceElement {
      */
     public Set<Lifeline> getGraphicallyCoveredLifelines(final Rectangle area) {
         List<Lifeline> result = new ArrayList<>();
-        Iterables.addAll(result, Iterables.filter(getAllLifelines(), new Predicate<Lifeline>() {
+        Iterables.addAll(result, getAllLifelines().stream().filter(new Predicate<Lifeline>() {
             @Override
             public boolean apply(Lifeline input) {
                 return input.getProperLogicalBounds().intersects(area) && input.getVerticalRange().includes(area.getTop().y);
             }
-        }));
+        }).toList());
         Collections.sort(result, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
-        return Sets.newLinkedHashSet(result);
+        return new LinkedHashSet<>(result);
     }
 
     /**
@@ -413,7 +412,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
                 }
             }
             Collections.sort(allMessages, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
-            allOrderedMessages = Sets.newLinkedHashSet(allMessages);
+            allOrderedMessages = new LinkedHashSet<>(allMessages);
             if (useCache) {
                 // Store the result
                 allOrderedMessagesCache = allOrderedMessages;
@@ -451,7 +450,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
                 }
             }
             Collections.sort(allAbstractNodeEvents, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
-            allOrderedAbstractNodeEvents = Sets.newLinkedHashSet(allAbstractNodeEvents);
+            allOrderedAbstractNodeEvents = new LinkedHashSet<>(allAbstractNodeEvents);
             if (useCache) {
                 // Store the result
                 allOrderedAbstractNodeEventsCache = allOrderedAbstractNodeEvents;
@@ -489,7 +488,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
                 }
             }
             Collections.sort(allExecutions, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
-            allOrderedExecutions = Sets.newLinkedHashSet(allExecutions);
+            allOrderedExecutions = new LinkedHashSet<>(allExecutions);
             if (useCache) {
                 // Store the result
                 allOrderedExecutionsCache = allOrderedExecutions;
@@ -527,7 +526,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
                 }
             }
             Collections.sort(allStates, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
-            allOrderedStates = Sets.newLinkedHashSet(allStates);
+            allOrderedStates = new LinkedHashSet<>(allStates);
             if (useCache) {
                 // Store the result
                 allOrderedStatesCache = allOrderedStates;
@@ -567,7 +566,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
                 }
             }
             Collections.sort(allFrames, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
-            allOrderedFrames = Sets.newLinkedHashSet(allFrames);
+            allOrderedFrames = new LinkedHashSet<>(allFrames);
             if (useCache) {
                 // Store the result
                 allOrderedFramesCache = allOrderedFrames;
@@ -605,7 +604,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
                 }
             }
             Collections.sort(allInteractionUses, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
-            allOrderedInteractionUses = Sets.newLinkedHashSet(allInteractionUses);
+            allOrderedInteractionUses = new LinkedHashSet<>(allInteractionUses);
             if (useCache) {
                 // Store the result
                 allOrderedInteractionUsesCache = allOrderedInteractionUses;
@@ -643,7 +642,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
                 }
             }
             Collections.sort(allCombinedFragments, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
-            allOrderedCombinedFragments = Sets.newLinkedHashSet(allCombinedFragments);
+            allOrderedCombinedFragments = new LinkedHashSet<>(allCombinedFragments);
             if (useCache) {
                 // Store the result
                 allOrderedCombinedFragmentsCache = allOrderedCombinedFragments;
@@ -681,7 +680,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
                 }
             }
             Collections.sort(allOperands, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
-            allOrderedOperands = Sets.newLinkedHashSet(allOperands);
+            allOrderedOperands = new LinkedHashSet<>(allOperands);
             if (useCache) {
                 // Store the result
                 allOrderedOperandsCache = allOrderedOperands;
@@ -732,7 +731,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
             Iterables.addAll(result, getAllDelimitedSequenceEvents());
 
             Collections.sort(result, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
-            allOrderedDelimitedSequenceEvents = Sets.newLinkedHashSet(result);
+            allOrderedDelimitedSequenceEvents = new LinkedHashSet<>(result);
             if (useCache) {
                 // Store the result
                 allOrderedDelimitedSequenceEventsCache = allOrderedDelimitedSequenceEvents;

@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.function.Function;
 
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
@@ -27,7 +28,6 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
 import org.eclipse.sirius.ext.base.Option;
 
-import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
@@ -188,7 +188,7 @@ public class EventFinder {
                 eventsToInspect.addAll(context.getSubEvents());
             }
 
-            for (ISequenceEvent child : Iterables.filter(eventsToInspect, Predicates.and(includeRange, Predicates.not(shouldIgnore()), sameLifeline))) {
+            for (ISequenceEvent child : eventsToInspect.stream().filter(includeRange.and(java.util.function.Predicate.not(shouldIgnore())).and(sameLifeline)).toList()) {
                 EventFinder childFinder = new EventFinder(child, lifeline);
                 childFinder.setReconnection(isReconnection());
                 childFinder.setReparent(isReparent());

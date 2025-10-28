@@ -15,13 +15,13 @@ package org.eclipse.sirius.ui.tools.internal.views.common.item;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 
-import com.google.common.base.Function;
 import com.google.common.collect.Ordering;
 
 /**

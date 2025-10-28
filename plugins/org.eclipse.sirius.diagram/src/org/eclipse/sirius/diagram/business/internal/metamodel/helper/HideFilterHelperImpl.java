@@ -27,7 +27,6 @@ import org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.HideFilte
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 
 import com.google.common.base.Predicates;
-import com.google.common.collect.Iterables;
 
 /**
  * Default implementation of an helper to handle HideFilter.
@@ -115,7 +114,7 @@ public final class HideFilterHelperImpl implements HideFilterHelper {
         }
 
         HideLabelFilter filter;
-        if (Iterables.any(element.getGraphicalFilters(), Predicates.instanceOf(HideLabelFilter.class))) {
+        if (element.getGraphicalFilters().stream().anyMatch(Predicates.instanceOf(HideLabelFilter.class))) {
             filter = element.getGraphicalFilters().stream().filter(HideLabelFilter.class::isInstance).map(HideLabelFilter.class::cast).findFirst().get();
         } else {
             filter = DiagramFactory.eINSTANCE.createHideLabelFilter();

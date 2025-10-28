@@ -89,7 +89,6 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescript
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.osgi.framework.Bundle;
 
-import com.google.common.base.Joiner;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.ListMultimap;
@@ -412,7 +411,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
         }
 
         Iterable<String> reversed = Lists.reverse(ancestors);
-        return Joiner.on(IAcceleoConstants.NAMESPACE_SEPARATOR).join(reversed);
+        return String.join(IAcceleoConstants.NAMESPACE_SEPARATOR, reversed);
     }
 
     /**
@@ -591,7 +590,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
             nsURIs.add(pack.getNsURI());
         }
 
-        return new CompilationContext(expression, targetType, variableTypes, nsURIs, mtlDependencies, Sets.newLinkedHashSet(extendedDependencies));
+        return new CompilationContext(expression, targetType, variableTypes, nsURIs, mtlDependencies, new LinkedHashSet<>(extendedDependencies));
     }
 
     @Override

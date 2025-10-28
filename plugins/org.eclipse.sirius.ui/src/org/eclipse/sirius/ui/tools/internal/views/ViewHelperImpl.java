@@ -15,6 +15,7 @@ package org.eclipse.sirius.ui.tools.internal.views;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Function;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -29,7 +30,6 @@ import org.eclipse.sirius.ui.tools.internal.views.common.SessionWrapperContentPr
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.extension.IContextMenuActionProvider;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.extension.ISessionViewExtension;
 
-import com.google.common.base.Function;
 import com.google.common.collect.Collections2;
 
 /**

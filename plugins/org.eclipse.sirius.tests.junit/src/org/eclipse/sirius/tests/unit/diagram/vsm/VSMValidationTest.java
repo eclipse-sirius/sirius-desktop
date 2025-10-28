@@ -14,6 +14,7 @@ package org.eclipse.sirius.tests.unit.diagram.vsm;
 
 import java.text.MessageFormat;
 import java.util.List;
+import java.util.function.Function;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
@@ -40,7 +41,6 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 
-import com.google.common.base.Function;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Iterables;
 

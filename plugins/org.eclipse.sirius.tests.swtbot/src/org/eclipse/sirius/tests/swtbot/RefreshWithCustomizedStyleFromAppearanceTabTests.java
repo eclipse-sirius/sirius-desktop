@@ -20,7 +20,6 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 
 import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
 
 /**
  * Tests ensuring that customizing styles through the appearance section works
@@ -50,7 +49,7 @@ public class RefreshWithCustomizedStyleFromAppearanceTabTests extends AbstractRe
                 return routing.getValue() == Routing.TREE;
             }
         };
-        final Predicate<SWTBotGefEditPart> initialStatePredicate = Predicates.not(modifiedStatePredicate);
+        final Predicate<SWTBotGefEditPart> initialStatePredicate = java.util.function.Predicate.not(modifiedStatePredicate);
         doTestStyleCustomizationThroughRadioInAppearanceSection(referenceEditPartBot, "eClass2", initialStatePredicate, modifiedStatePredicate, "Styles:", 2);
     }
 
@@ -74,7 +73,7 @@ public class RefreshWithCustomizedStyleFromAppearanceTabTests extends AbstractRe
                 return avoidObstructions;
             }
         };
-        final Predicate<SWTBotGefEditPart> initialStatePredicate = Predicates.not(modifiedStatePredicate);
+        final Predicate<SWTBotGefEditPart> initialStatePredicate = java.util.function.Predicate.not(modifiedStatePredicate);
         doTestStyleCustomizationThroughCheckboxInAppearanceSection(referenceEditPartBot, "eClass2", initialStatePredicate, modifiedStatePredicate, "Routing", 0);
     }
 
@@ -98,7 +97,7 @@ public class RefreshWithCustomizedStyleFromAppearanceTabTests extends AbstractRe
                 return closesDistance;
             }
         };
-        final Predicate<SWTBotGefEditPart> initialStatePredicate = Predicates.not(modifiedStatePredicate);
+        final Predicate<SWTBotGefEditPart> initialStatePredicate = java.util.function.Predicate.not(modifiedStatePredicate);
         doTestStyleCustomizationThroughCheckboxInAppearanceSection(referenceEditPartBot, "eClass2", initialStatePredicate, modifiedStatePredicate, "Routing", 1);
     }
 
@@ -121,7 +120,7 @@ public class RefreshWithCustomizedStyleFromAppearanceTabTests extends AbstractRe
                 return ((org.eclipse.gmf.runtime.notation.ConnectorStyle) ((View) input.part().getModel()).getStyles().iterator().next()).isJumpLinksReverse();
             }
         };
-        final Predicate<SWTBotGefEditPart> initialStatePredicate = Predicates.not(modifiedStatePredicate);
+        final Predicate<SWTBotGefEditPart> initialStatePredicate = java.util.function.Predicate.not(modifiedStatePredicate);
         doTestStyleCustomizationThroughCheckboxInAppearanceSection(referenceEditPartBot, "eClass2", initialStatePredicate, modifiedStatePredicate, "Jump links", 0);
     }
 
@@ -145,7 +144,7 @@ public class RefreshWithCustomizedStyleFromAppearanceTabTests extends AbstractRe
                 return jumpLinkStatus.getValue() == JumpLinkStatus.ABOVE;
             }
         };
-        final Predicate<SWTBotGefEditPart> initialStatePredicate = Predicates.not(modifiedStatePredicate);
+        final Predicate<SWTBotGefEditPart> initialStatePredicate = java.util.function.Predicate.not(modifiedStatePredicate);
         doTestStyleCustomizationThroughRadioInAppearanceSection(referenceEditPartBot, "eClass2", initialStatePredicate, modifiedStatePredicate, "Status:", 3);
     }
 
@@ -169,7 +168,7 @@ public class RefreshWithCustomizedStyleFromAppearanceTabTests extends AbstractRe
                 return jumpLinkType.getValue() == JumpLinkType.CHAMFERED;
             }
         };
-        final Predicate<SWTBotGefEditPart> initialStatePredicate = Predicates.not(modifiedStatePredicate);
+        final Predicate<SWTBotGefEditPart> initialStatePredicate = java.util.function.Predicate.not(modifiedStatePredicate);
         doTestStyleCustomizationThroughRadioInAppearanceSection(referenceEditPartBot, "eClass2", initialStatePredicate, modifiedStatePredicate, "Type:", 2);
     }
 
@@ -193,7 +192,7 @@ public class RefreshWithCustomizedStyleFromAppearanceTabTests extends AbstractRe
                 return smoothness.getValue() == Smoothness.MORE;
             }
         };
-        final Predicate<SWTBotGefEditPart> initialStatePredicate = Predicates.not(modifiedStatePredicate);
+        final Predicate<SWTBotGefEditPart> initialStatePredicate = java.util.function.Predicate.not(modifiedStatePredicate);
         doTestStyleCustomizationThroughRadioInAppearanceSection(referenceEditPartBot, "eClass2", initialStatePredicate, modifiedStatePredicate, "Smoothness:", 3);
     }
 
@@ -216,7 +215,7 @@ public class RefreshWithCustomizedStyleFromAppearanceTabTests extends AbstractRe
                 return getWorkspaceImage(input) != null;
             }
         };
-        final Predicate<SWTBotGefEditPart> stateWithInitialBackgroundImagePredicate = Predicates.not(stateWhenBackgroundImageIsChangedPredicate);
+        final Predicate<SWTBotGefEditPart> stateWithInitialBackgroundImagePredicate = java.util.function.Predicate.not(stateWhenBackgroundImageIsChangedPredicate);
         doTestStyleCustomizationThroughBackgroundImageFromAppearanceSection(eClass1WithSquareStyleBot, stateWithInitialBackgroundImagePredicate, stateWhenBackgroundImageIsChangedPredicate,
                 NEW_IMAGE_NAME);
     }

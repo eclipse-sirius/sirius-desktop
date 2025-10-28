@@ -20,14 +20,12 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.function.Predicate;
 
 import org.eclipse.sirius.common.tools.Messages;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 
 import com.google.common.base.Preconditions;
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * A service which corresponds to more than one Java method. Which of the methods will actually be invoked will depend
@@ -57,12 +55,12 @@ class PolymorphicService implements IPolymorphicService {
 
     @Override
     public boolean appliesTo(Object[] target) {
-        return Iterables.any(implementers, getCompatibilityChecker(target));
+        return implementers.stream().anyMatch(getCompatibilityChecker(target));
     }
 
     @Override
     public Object call(Object[] target) throws EvaluationException {
-        List<IMonomorphicService> candidates = Lists.newArrayList(Iterables.filter(implementers, getCompatibilityChecker(target)));
+        List<IMonomorphicService> candidates = new ArrayList<>(implementers.stream().filter(getCompatibilityChecker(target)).toList());
         if (!candidates.isEmpty()) {
             return candidates.get(0).call(target);
         } else {
@@ -73,7 +71,7 @@ class PolymorphicService implements IPolymorphicService {
     private Predicate<IMonomorphicService> getCompatibilityChecker(final Object[] target) {
         Predicate<IMonomorphicService> isCompatible = new Predicate<IMonomorphicService>() {
             @Override
-            public boolean apply(IMonomorphicService svc) {
+            public boolean test(IMonomorphicService svc) {
                 return svc.appliesTo(target);
             }
         };

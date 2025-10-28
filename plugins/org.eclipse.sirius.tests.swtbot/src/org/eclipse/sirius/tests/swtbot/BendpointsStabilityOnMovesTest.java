@@ -1181,6 +1181,6 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
      *         nodeEditPart
      */
     private SetView<SWTBotGefConnectionEditPart> getAllConnectionsEditPart(SWTBotGefEditPart nodeEditPart) {
-        return Sets.union(Sets.newLinkedHashSet(nodeEditPart.sourceConnections()), Sets.newLinkedHashSet(nodeEditPart.targetConnections()));
+        return Sets.union(new LinkedHashSet<>(nodeEditPart.sourceConnections()), new LinkedHashSet<>(nodeEditPart.targetConnections()));
     }
 }
