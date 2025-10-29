@@ -305,7 +305,7 @@ public class SynchronizeISequenceEventsSemanticOrderingOperation extends Abstrac
         List<EObject> semanticEvents = EventEndHelper.getSemanticEvents(end);
         if (semanticEvents.contains(semanticElement)) {
             boolean lookedEventEnd = EventEndHelper.getSingleEventEnd(end, semanticElement).isStart() == startingEnd;
-            boolean punctualCompoundEvent = EventEndHelper.PUNCTUAL_COMPOUND_EVENT_END.apply(end);
+            boolean punctualCompoundEvent = EventEndHelper.PUNCTUAL_COMPOUND_EVENT_END.test(end);
             currentMovedEnd = lookedEventEnd || punctualCompoundEvent;
         }
         return currentMovedEnd;
