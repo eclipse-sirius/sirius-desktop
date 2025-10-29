@@ -255,9 +255,9 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
                 ISequenceElementQuery query = null;
                 ISequenceNode sourceElement = msg.getSourceElement();
                 ISequenceNode targetElement = msg.getTargetElement();
-                if (sourceElement instanceof LostMessageEnd && AbstractSequenceLayout.createdFromTool(sourceElement)) {
+                if (sourceElement instanceof LostMessageEnd && AbstractSequenceLayout.createdFromTool((LostMessageEnd) sourceElement)) {
                     query = new ISequenceElementQuery(sourceElement);
-                } else if (targetElement instanceof LostMessageEnd && AbstractSequenceLayout.createdFromTool(targetElement)) {
+                } else if (targetElement instanceof LostMessageEnd && AbstractSequenceLayout.createdFromTool((LostMessageEnd) targetElement)) {
                     query = new ISequenceElementQuery(targetElement);
                 }
 
@@ -469,7 +469,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
 
             Range newRange = getNewRange(ise, start, finish, endLocations);
             sequenceEventsToRange.put(ise, newRange);
-        } else if (ends.size() == 1 && ise.isLogicallyInstantaneous() && (ise instanceof Message || EventEndHelper.PUNCTUAL_COMPOUND_EVENT_END.test(ends.iterator().next()))) {
+        } else if (ends.size() == 1 && ise.isLogicallyInstantaneous() && (ise instanceof Message || EventEndHelper.PUNCTUAL_COMPOUND_EVENT_END.apply(ends.iterator().next()))) {
             Iterator<EventEnd> it = ends.iterator();
             EventEnd middle = it.next();
 
@@ -668,7 +668,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
 
             // Predecessor : Logically instantaneouse States
             Iterable<State> predStates = Iterables.filter(endBeforeEvents, State.class);
-            if (EventEndHelper.PUNCTUAL_COMPOUND_EVENT_END.test(endBefore) && endBeforeEvents.size() == 1 && Iterables.size(predStates) == 1) {
+            if (EventEndHelper.PUNCTUAL_COMPOUND_EVENT_END.apply(endBefore) && endBeforeEvents.size() == 1 && Iterables.size(predStates) == 1) {
                 State predState = Iterables.getOnlyElement(predStates);
                 if (predState.isLogicallyInstantaneous()) {
                     beforeGap += getAbstractNodeEventVerticalSize(endBefore, predState, endBeforeEvents, pack) / 2;
@@ -736,7 +736,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
         // current event : Logically instantaneous States
         Collection<ISequenceEvent> endEvents = eventEndToSequenceEvents.apply(end);
         Iterable<State> states = Iterables.filter(endEvents, State.class);
-        if (EventEndHelper.PUNCTUAL_COMPOUND_EVENT_END.test(end) && endEvents.size() == 1 && Iterables.size(states) == 1) {
+        if (EventEndHelper.PUNCTUAL_COMPOUND_EVENT_END.apply(end) && endEvents.size() == 1 && Iterables.size(states) == 1) {
             State state = Iterables.getOnlyElement(states);
             if (state.isLogicallyInstantaneous()) {
                 beforeGap += getAbstractNodeEventVerticalSize(endBefore, state, endEvents, pack) / 2;
@@ -1195,7 +1195,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
 
     private boolean isSafeToolCreation(EventEnd end) {
         boolean safe = !(end instanceof CompoundEventEnd);
-        safe = safe || EventEndHelper.PUNCTUAL_COMPOUND_EVENT_END.test(end);
+        safe = safe || EventEndHelper.PUNCTUAL_COMPOUND_EVENT_END.apply(end);
         boolean isOblique = false;
         for (Message msg : Iterables.filter(endToISequencEvents.get(end), Message.class)) {
             safe = safe || msg.getSourceElement() instanceof LostMessageEnd || msg.getTargetElement() instanceof LostMessageEnd;
