@@ -15,6 +15,7 @@ package org.eclipse.sirius.diagram.sequence.internal.tool.command.builders;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.function.Predicate;
 
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -45,7 +46,6 @@ import org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
@@ -122,7 +122,7 @@ public class SequenceCreatedEventsFlaggingSiriusCommand extends SiriusCommand {
         final Collection<EObject> mainSemantics = new HashSet<>();
         final Collection<DDiagramElement> createdDDE = Lists.newArrayList(Iterables.filter(getCreatedRepresentationElements(), DDiagramElement.class));
         for (DDiagramElement dde : createdDDE) {
-            if (shouldFlag != null && shouldFlag.apply(dde)) {
+            if (shouldFlag != null && shouldFlag.test(dde)) {
                 safeAddCreationFlag(dde, LayoutConstants.TOOL_CREATION_FLAG);
                 mainSemantics.add(dde.getTarget());
             } else if (dde.getTarget() != null) {

@@ -73,7 +73,7 @@ public class EventEndToPositionFunction implements Function<EventEnd, Integer> {
             ise = ises.iterator().next();
         } else if (end instanceof CompoundEventEnd && !ises.isEmpty()) {
             CompoundEventEnd cee = (CompoundEventEnd) end;
-            if (EventEndHelper.PUNCTUAL_COMPOUND_EVENT_END.apply(cee)) {
+            if (EventEndHelper.PUNCTUAL_COMPOUND_EVENT_END.test(cee)) {
                 ise = getSafeEvent(ises);
             } else {
                 ise = getSafeEvent(ises);

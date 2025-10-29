@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Predicate;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.gef.EditPart;
@@ -52,8 +53,6 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotToggleButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarToggleButton;
 
-import com.google.common.base.Predicate;
-
 /**
  * Tests the label font modifications.
  *
@@ -72,7 +71,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
          * {@inheritDoc}
          */
         @Override
-        public boolean apply(SWTBotGefEditPart input) {
+        public boolean test(SWTBotGefEditPart input) {
             try {
                 checkNormalFontStyle(input);
             } catch (AssertionError e) {
@@ -87,7 +86,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
          * {@inheritDoc}
          */
         @Override
-        public boolean apply(SWTBotGefEditPart input) {
+        public boolean test(SWTBotGefEditPart input) {
             try {
                 checkBoldFontStyle(input);
                 return true;
@@ -102,7 +101,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
          * {@inheritDoc}
          */
         @Override
-        public boolean apply(SWTBotGefEditPart input) {
+        public boolean test(SWTBotGefEditPart input) {
             try {
                 checkItalicFontStyle(input);
                 return true;
@@ -117,7 +116,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
          * {@inheritDoc}
          */
         @Override
-        public boolean apply(SWTBotGefEditPart input) {
+        public boolean test(SWTBotGefEditPart input) {
             try {
                 List<FontFormat> format = new ArrayList<FontFormat>();
                 FontFormatHelper.setFontFormat(format, FontFormat.UNDERLINE_LITERAL);
@@ -134,7 +133,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
          * {@inheritDoc}
          */
         @Override
-        public boolean apply(SWTBotGefEditPart input) {
+        public boolean test(SWTBotGefEditPart input) {
             try {
                 List<FontFormat> format = new ArrayList<FontFormat>();
                 FontFormatHelper.setFontFormat(format, FontFormat.STRIKE_THROUGH_LITERAL);
@@ -149,7 +148,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     private static final Predicate<SWTBotGefEditPart> STATE_WHEN_LABEL_COLOR_IS_CHANGED_TO_GRAY_PREDICATE = new Predicate<SWTBotGefEditPart>() {
 
         @Override
-        public boolean apply(SWTBotGefEditPart input) {
+        public boolean test(SWTBotGefEditPart input) {
             try {
                 // Use same Color as
                 // org.eclipse.sirius.diagram.ui.tools.internal.dialogs.ColorPalettePopup.GRAY
@@ -165,8 +164,8 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     private final Predicate<SWTBotGefEditPart> STATE_WHEN_LABEL_COLOR_IS_UNCHANGED_PREDICATE = new Predicate<SWTBotGefEditPart>() {
 
         @Override
-        public boolean apply(SWTBotGefEditPart input) {
-            return NORMAL_FONT_STATE_PREDICATE.apply(input) && !STATE_WHEN_LABEL_COLOR_IS_CHANGED_TO_GRAY_PREDICATE.apply(input);
+        public boolean test(SWTBotGefEditPart input) {
+            return NORMAL_FONT_STATE_PREDICATE.test(input) && !STATE_WHEN_LABEL_COLOR_IS_CHANGED_TO_GRAY_PREDICATE.test(input);
         }
     };
 
@@ -338,7 +337,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         final Predicate<SWTBotGefEditPart> stateWhenButtonIsCheckedPredicate = new Predicate<SWTBotGefEditPart>() {
 
             @Override
-            public boolean apply(SWTBotGefEditPart input) {
+            public boolean test(SWTBotGefEditPart input) {
                 try {
                     checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, new ArrayList<FontFormat>(), false, false, null, -1, 5237244);
                     return true;
@@ -805,7 +804,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         Predicate<SWTBotGefEditPart> stateWhenButtonIsCheckedPredicate = new Predicate<SWTBotGefEditPart>() {
 
             @Override
-            public boolean apply(SWTBotGefEditPart input) {
+            public boolean test(SWTBotGefEditPart input) {
                 try {
                     checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, new ArrayList<FontFormat>(), false, false, null, 12, -1);
                     return true;
@@ -857,7 +856,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         Predicate<SWTBotGefEditPart> stateWhenButtonIsCheckedPredicate = new Predicate<SWTBotGefEditPart>() {
 
             @Override
-            public boolean apply(SWTBotGefEditPart input) {
+            public boolean test(SWTBotGefEditPart input) {
                 try {
                     checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, new ArrayList<FontFormat>(), false, false, newFontNameToUse.get(), -1, -1);
                     return true;

@@ -18,6 +18,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
@@ -35,7 +36,6 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 import org.eclipse.sirius.ext.base.Option;
 
 import com.google.common.base.Preconditions;
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 

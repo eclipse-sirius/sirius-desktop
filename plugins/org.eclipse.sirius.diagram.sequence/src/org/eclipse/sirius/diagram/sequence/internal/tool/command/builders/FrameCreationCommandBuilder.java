@@ -15,6 +15,7 @@ package org.eclipse.sirius.diagram.sequence.internal.tool.command.builders;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
@@ -33,7 +34,6 @@ import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.description.AbstractVariable;
 
-import com.google.common.base.Predicate;
 
 /**
  * Specific ContainerCreationCommandBuilder for InteractionUse &

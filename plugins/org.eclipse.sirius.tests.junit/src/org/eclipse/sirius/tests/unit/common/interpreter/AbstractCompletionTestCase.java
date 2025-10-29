@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EClass;
@@ -36,7 +37,6 @@ import org.eclipse.sirius.common.tools.api.interpreter.DefaultInterpreterContext
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
@@ -68,6 +68,7 @@ public class AbstractCompletionTestCase extends TestCase {
      * {@link ContentContext}
      */
     protected Function<ContentContext, List<ContentProposal>> proposalFunction = new Function<ContentContext, List<ContentProposal>>() {
+        @Override
         public List<ContentProposal> apply(ContentContext input) {
             return getProposals(input);
         }
@@ -78,6 +79,7 @@ public class AbstractCompletionTestCase extends TestCase {
      * {@link ContentInstanceContext}
      */
     protected Function<ContentInstanceContext, List<ContentProposal>> proposalInstanceFunction = new Function<ContentInstanceContext, List<ContentProposal>>() {
+        @Override
         public List<ContentProposal> apply(ContentInstanceContext input) {
             return getProposals(input);
         }
@@ -88,6 +90,7 @@ public class AbstractCompletionTestCase extends TestCase {
      * {@link ContentContext}
      */
     protected Function<ContentContext, List<ContentProposal>> compoundProposalFunction = new Function<ContentContext, List<ContentProposal>>() {
+        @Override
         public List<ContentProposal> apply(ContentContext input) {
             return CompoundInterpreter.INSTANCE.getProposals(CompoundInterpreter.INSTANCE, input);
         }
@@ -98,6 +101,7 @@ public class AbstractCompletionTestCase extends TestCase {
      * {@link ContentInstanceContext}
      */
     protected Function<ContentInstanceContext, List<ContentProposal>> compoundProposalInstanceFunction = new Function<ContentInstanceContext, List<ContentProposal>>() {
+        @Override
         public List<ContentProposal> apply(ContentInstanceContext input) {
             return CompoundInterpreter.INSTANCE.getProposals(CompoundInterpreter.INSTANCE, input);
         }
@@ -291,6 +295,7 @@ public class AbstractCompletionTestCase extends TestCase {
      */
     protected Collection<String> extractProposal(List<ContentProposal> proposals) {
         return Lists.newArrayList(proposals.stream().map(new Function<ContentProposal, String>() {
+            @Override
             public String apply(ContentProposal from) {
                 return from.getProposal();
             }
@@ -362,6 +367,7 @@ public class AbstractCompletionTestCase extends TestCase {
      */
     protected void checkEStruturalFeatures(EClass eClass, Collection<String> proposals, Predicate<String> concerned, StringBuilder errorMsg) {
         Function<EStructuralFeature, String> getExpectedProposal = new Function<EStructuralFeature, String>() {
+            @Override
             public String apply(EStructuralFeature from) {
                 return from.getName();
             }

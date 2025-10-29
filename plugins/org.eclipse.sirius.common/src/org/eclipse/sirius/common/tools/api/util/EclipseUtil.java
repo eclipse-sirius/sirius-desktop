@@ -19,6 +19,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
@@ -35,7 +36,6 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.Messages;
 
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 
 /**
@@ -102,7 +102,7 @@ public final class EclipseUtil {
      * @since 0.9.0
      */
     public static <T> List<T> getExtensionPlugins(final Class<T> clazz, final String extensionId, final String executableAttribute, final String attributeName, final String exceptedAttributeValue) {
-        return EclipseUtil.getExtensionPlugins(clazz, extensionId, executableAttribute, attributeName, java.util.function.Predicate.isEqual(exceptedAttributeValue));
+        return EclipseUtil.getExtensionPlugins(clazz, extensionId, executableAttribute, attributeName, java.util.function.Predicate.<String> isEqual(exceptedAttributeValue));
     }
 
     /**
@@ -226,7 +226,7 @@ public final class EclipseUtil {
     private static boolean checkAttribute(final IConfigurationElement element, final String attributeName, final Predicate<String> exceptedAttributeValue) {
         if (attributeName != null) {
             final String namedAttribute = element.getAttribute(attributeName);
-            return namedAttribute != null && (exceptedAttributeValue == null || exceptedAttributeValue.apply(namedAttribute));
+            return namedAttribute != null && (exceptedAttributeValue == null || exceptedAttributeValue.test(namedAttribute));
         }
         return true;
     }
@@ -254,6 +254,7 @@ public final class EclipseUtil {
             IWorkspaceRoot root = EcorePlugin.getWorkspaceRoot();
             if (root != null) {
                 root.accept(new IResourceVisitor() {
+                    @Override
                     public boolean visit(IResource resource) throws CoreException {
                         if (resource.isAccessible() && resource instanceof IFile) {
                             IFile file = (IFile) resource;

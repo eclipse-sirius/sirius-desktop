@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
@@ -29,7 +30,6 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
 import org.eclipse.sirius.ext.base.Option;
 
 import com.google.common.base.Preconditions;
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 
@@ -149,7 +149,7 @@ public class EventFinder {
         ISequenceEvent result = null;
         boolean contextIncludesRange = contextIncludesRange(range);
         if (contextIncludesRange) {
-            if (context != null && !shouldIgnore().apply(context)) {
+            if (context != null && !shouldIgnore().test(context)) {
                 boolean okForReconnection = !isReconnection() || !Message.NO_RECONNECTABLE_EVENTS.apply(context);
                 boolean okForReparent = !isReparent() || !AbstractNodeEvent.NO_REPARENTABLE_EVENTS.apply(context);
                 if (okForReconnection && okForReparent) {
@@ -162,7 +162,7 @@ public class EventFinder {
             Predicate<ISequenceEvent> includeRange = new Predicate<ISequenceEvent>() {
 
                 @Override
-                public boolean apply(ISequenceEvent ise) {
+                public boolean test(ISequenceEvent ise) {
                     return includeRange(ise, range);
                 }
 
