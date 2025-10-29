@@ -952,16 +952,16 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
                     if (hierarchicalParent instanceof ISequenceEvent ise) {
                         valid = valid && ise.getVerticalRange().includes(finalRange.get().getLowerBound());
                     }
-                    Rectangle gFinalBounds = g.getBounds().getTranslated(0,finalRange.get().getLowerBound()-g.getProperLogicalBounds().getCenter().y);
+                    Rectangle gFinalBounds = g.getBounds().getTranslated(0, finalRange.get().getLowerBound() - g.getProperLogicalBounds().getCenter().y);
                     valid = valid && validateNoOverlapWithGateSiblings(g, gFinalBounds, hierarchicalParent);
-                } 
-                
+                }
+
                 if (message.getTargetElement() instanceof Gate g) {
                     ISequenceElement hierarchicalParent = g.getHierarchicalParent();
                     if (hierarchicalParent instanceof ISequenceEvent ise) {
                         valid = valid && ise.getVerticalRange().includes(finalRange.get().getUpperBound());
                     }
-                    Rectangle gFinalBounds = g.getBounds().getTranslated(0,finalRange.get().getUpperBound()-g.getProperLogicalBounds().getCenter().y);
+                    Rectangle gFinalBounds = g.getBounds().getTranslated(0, finalRange.get().getUpperBound() - g.getProperLogicalBounds().getCenter().y);
                     valid = valid && validateNoOverlapWithGateSiblings(g, gFinalBounds, hierarchicalParent);
                 }
             }
