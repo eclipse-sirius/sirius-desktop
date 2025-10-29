@@ -14,7 +14,6 @@ package org.eclipse.sirius.ui.tools.internal.views.common.action;
 
 import java.text.MessageFormat;
 import java.util.Collection;
-import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -33,6 +32,9 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
 
 /**
  * An action to extract selected representations.
@@ -85,9 +87,9 @@ public class ExtractRepresentationAction extends Action {
      * @return true if the selection is valid
      */
     private boolean isValidSelection() {
-        boolean anyInvalidExtract = repDescriptors.stream().anyMatch(new Predicate<DRepresentationDescriptor>() {
+        boolean anyInvalidExtract = Iterables.any(repDescriptors, new Predicate<DRepresentationDescriptor>() {
             @Override
-            public boolean test(DRepresentationDescriptor input) {
+            public boolean apply(DRepresentationDescriptor input) {
                 EObject container = input.eContainer();
                 if (container instanceof DView) {
                     IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(container);

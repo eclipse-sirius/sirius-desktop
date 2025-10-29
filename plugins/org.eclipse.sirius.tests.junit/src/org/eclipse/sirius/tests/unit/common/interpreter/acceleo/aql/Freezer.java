@@ -38,7 +38,7 @@ public class Freezer extends AdapterImpl {
     }
 
     public static void freeze(EObject obj) {
-        if (!obj.eAdapters().stream().anyMatch(Predicates.instanceOf(Freezer.class))) {
+        if (!Iterables.any(obj.eAdapters(), Predicates.instanceOf(Freezer.class))) {
             obj.eAdapters().add(new Freezer());
         }
     }

@@ -13,7 +13,6 @@
 package org.eclipse.sirius.diagram.business.internal.metamodel.helper;
 
 import java.util.List;
-import java.util.Objects;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.IPreferencesService;
@@ -104,6 +103,8 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
+
+import com.google.common.base.Objects;
 
 /**
  * This helper class contains utility methods to create and update (refresh) concrete style instances from a style
@@ -292,7 +293,7 @@ public final class StyleHelper {
                     } catch (final EvaluationException e) {
                         // silent.
                     }
-                    if (!Objects.equals(size, edgeStyle.getSize())) {
+                    if (!Objects.equal(size, edgeStyle.getSize())) {
                         edgeStyle.setSize(size);
                     }
                 }
@@ -774,7 +775,7 @@ public final class StyleHelper {
                     && !style.getCustomFeatures().contains(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE.getName())) {
                 try {
                     Integer borderSize = interpreter.evaluateInteger(((AbstractDNode) style.eContainer()).getTarget(), description.getBorderSizeComputationExpression());
-                    if (!Objects.equals(borderSize, style.getBorderSize())) {
+                    if (!Objects.equal(borderSize, style.getBorderSize())) {
                         style.setBorderSize(borderSize);
                     }
                 } catch (final EvaluationException e) {
@@ -961,7 +962,7 @@ public final class StyleHelper {
         if (image.eContainer() instanceof DNode && description.getSizeComputationExpression() != null) {
             final DNode node = (DNode) image.eContainer();
             Integer size = computeStyleSize(node.getTarget(), description);
-            if (Objects.equals(-1, size)) {
+            if (Objects.equal(-1, size)) {
                 // real image size
                 if (!size.equals(node.getHeight())) {
                     node.setHeight(size);

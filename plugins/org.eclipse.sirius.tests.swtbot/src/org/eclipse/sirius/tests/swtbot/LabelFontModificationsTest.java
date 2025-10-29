@@ -53,6 +53,7 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarToggleButton;
 
 import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
 
 /**
  * Tests the label font modifications.
@@ -348,7 +349,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
             }
 
         };
-        Predicate<SWTBotGefEditPart> initialStatePredicate = java.util.function.Predicate.not(stateWhenButtonIsCheckedPredicate);
+        Predicate<SWTBotGefEditPart> initialStatePredicate = Predicates.not(stateWhenButtonIsCheckedPredicate);
 
         doTestStyleCustomizationThroughColorSelectionFromTabbar(selectedEditPart, "Font Color", initialStatePredicate, stateWhenButtonIsCheckedPredicate, "{252, 233, 79}");
     }

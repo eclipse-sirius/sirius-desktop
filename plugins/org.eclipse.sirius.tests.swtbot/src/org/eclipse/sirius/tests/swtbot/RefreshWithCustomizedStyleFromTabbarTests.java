@@ -12,12 +12,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
-import java.util.function.Predicate;
-
 import org.eclipse.gmf.runtime.notation.Routing;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
+
+import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
 
 /**
  * Tests ensuring that customizing styles through the tabbar works as expected.
@@ -41,12 +42,12 @@ public class RefreshWithCustomizedStyleFromTabbarTests extends AbstractRefreshWi
         final Predicate<SWTBotGefEditPart> modifiedStatePredicate = new Predicate<SWTBotGefEditPart>() {
 
             @Override
-            public boolean test(SWTBotGefEditPart input) {
+            public boolean apply(SWTBotGefEditPart input) {
                 Routing routing = ((org.eclipse.gmf.runtime.notation.ConnectorStyle) ((View) input.part().getModel()).getStyles().iterator().next()).getRouting();
                 return routing.getValue() == Routing.TREE;
             }
         };
-        final Predicate<SWTBotGefEditPart> initialStatePredicate = Predicate.not(modifiedStatePredicate);
+        final Predicate<SWTBotGefEditPart> initialStatePredicate = Predicates.not(modifiedStatePredicate);
         doTestStyleCustomizationThroughRoutingStyleSelectionFromTabbar(referenceEditPartBot, "eClass2", initialStatePredicate, modifiedStatePredicate, "Tree Style Routing");
     }
 
@@ -65,11 +66,11 @@ public class RefreshWithCustomizedStyleFromTabbarTests extends AbstractRefreshWi
         final Predicate<SWTBotGefEditPart> stateWhenBackgroundImageIsChangedPredicate = new Predicate<SWTBotGefEditPart>() {
 
             @Override
-            public boolean test(SWTBotGefEditPart input) {
+            public boolean apply(SWTBotGefEditPart input) {
                 return getWorkspaceImage(input) != null;
             }
         };
-        final Predicate<SWTBotGefEditPart> stateWithInitialBackgroundImagePredicate = Predicate.not(stateWhenBackgroundImageIsChangedPredicate);
+        final Predicate<SWTBotGefEditPart> stateWithInitialBackgroundImagePredicate = Predicates.not(stateWhenBackgroundImageIsChangedPredicate);
         doTestStyleCustomizationThroughBackgroundImageFromTabbar(eClass1WithSquareStyleBot, stateWithInitialBackgroundImagePredicate, stateWhenBackgroundImageIsChangedPredicate, NEW_IMAGE_NAME);
     }
 

@@ -20,8 +20,6 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
@@ -46,7 +44,9 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+import com.google.common.base.Function;
 import com.google.common.base.Joiner;
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
@@ -153,12 +153,12 @@ public class VSMVariableTypesValidationTest {
                          * its ok to have an error here.
                          */
                     } else if (!useNonExistantFeature && errors.size() > 0) {
-                        Iterable<IInterpreterStatus> errorsWithoutInfo = errors.stream().filter(new Predicate<IInterpreterStatus>() {
+                        Iterable<IInterpreterStatus> errorsWithoutInfo = Iterables.filter(errors, new Predicate<IInterpreterStatus>() {
                             @Override
-                            public boolean test(IInterpreterStatus input) {
+                            public boolean apply(IInterpreterStatus input) {
                                 return IInterpreterStatus.INFO != input.getSeverity();
                             }
-                        }).toList();
+                        });
 
                         if (!Iterables.isEmpty(errorsWithoutInfo)) {
                             String message = underTest.toString() + "triggers unexpected errors \n"

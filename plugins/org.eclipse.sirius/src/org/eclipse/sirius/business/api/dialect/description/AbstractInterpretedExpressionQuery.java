@@ -70,6 +70,7 @@ import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
 
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Sets;
 
 /**
  * Query allowing to get the target domain classes and available packages for a given Interpreted expression.
@@ -221,7 +222,7 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
                 // If no EPackage has been explicitly imported
                 if (((RepresentationDescription) representation).getMetamodel().isEmpty()) {
                     // We add all available packages
-                    for (String nsURI : new LinkedHashSet<>(EPackage.Registry.INSTANCE.keySet())) {
+                    for (String nsURI : Sets.newLinkedHashSet(EPackage.Registry.INSTANCE.keySet())) {
                         try {
                             packagesToImport.add(EPackage.Registry.INSTANCE.getEPackage(nsURI));
                             // CHECKSTYLE:OFF

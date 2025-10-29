@@ -177,12 +177,12 @@ public class PinnedElementsLayoutProvider extends DefaultLayoutProvider {
         // These are OK.
         final Predicate<Object> validChildKind = Predicates.or(Predicates.instanceOf(IDiagramNodeEditPart.class), Predicates.instanceOf(IDiagramContainerEditPart.class),
                 Predicates.instanceOf(IDiagramListEditPart.class));
-        final Predicate<Object> isProperChild = validChildKind.and(java.util.function.Predicate.not(invalidChildKind));
+        final Predicate<Object> isProperChild = Predicates.and(validChildKind, Predicates.not(invalidChildKind));
         final Collection<IGraphicalEditPart> result = Lists.newArrayList(Iterables.filter(rawChildren, isProperChild));
         // Containers have an intermediate level of children edit parts. We
         // ignore these "wrapper" parts, but must look inside for proper
         // children of the container.
-        for (IGraphicalEditPart part : Iterables.filter(rawChildren, java.util.function.Predicate.not(isProperChild))) {
+        for (IGraphicalEditPart part : Iterables.filter(rawChildren, Predicates.not(isProperChild))) {
             if (part instanceof DNodeContainerViewNodeContainerCompartmentEditPart || part instanceof DNodeContainerViewNodeContainerCompartment2EditPart) {
                 result.addAll(getChildrenOfInterest(part));
             }

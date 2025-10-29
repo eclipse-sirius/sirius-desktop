@@ -60,6 +60,7 @@ import org.osgi.framework.Version;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 
@@ -129,7 +130,7 @@ public class DiagramRepresentationsFileMigrationParticipantV670 {
      *            list of GMF Diagram to migrate.
      */
     public void migrateGMFBoundsOfBorderedNodes(List<Diagram> diagrams) {
-        for (Diagram diagram : diagrams.stream().filter(new IsStandardDiagramPredicate()).toList()) {
+        for (Diagram diagram : Iterables.filter(diagrams, new IsStandardDiagramPredicate())) {
             // 1-Add new IndirectlyCollapseFilter
             migrateChildrenOfCollapsedNode(diagram);
             // 2-Set width and height of graphical filters of collapsed nodes
@@ -270,7 +271,7 @@ public class DiagramRepresentationsFileMigrationParticipantV670 {
             }
         }
         for (DDiagramElement indirectlyCollaspedDDE : indirectlyCollaspedDDEs) {
-            if (!indirectlyCollaspedDDE.getGraphicalFilters().stream().anyMatch(Predicates.instanceOf(IndirectlyCollapseFilter.class))) {
+            if (!Iterables.any(indirectlyCollaspedDDE.getGraphicalFilters(), Predicates.instanceOf(IndirectlyCollapseFilter.class))) {
                 IndirectlyCollapseFilter indirectlyCollapseFilter = DiagramFactory.eINSTANCE.createIndirectlyCollapseFilter();
                 indirectlyCollaspedDDE.getGraphicalFilters().add(indirectlyCollapseFilter);
             }

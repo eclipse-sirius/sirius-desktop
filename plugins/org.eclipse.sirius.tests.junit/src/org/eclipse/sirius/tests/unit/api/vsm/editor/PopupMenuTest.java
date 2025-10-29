@@ -131,7 +131,7 @@ public class PopupMenuTest extends TestCase {
                 return classOfValue.isInstance(((CommandParameter) input).getValue());
             }
         });
-        Iterable<?> filtered = newChildDescriptors.stream().filter(and).toList();
+        Iterable<?> filtered = Iterables.filter(newChildDescriptors, and);
 
         return Iterables.size(filtered);
     }

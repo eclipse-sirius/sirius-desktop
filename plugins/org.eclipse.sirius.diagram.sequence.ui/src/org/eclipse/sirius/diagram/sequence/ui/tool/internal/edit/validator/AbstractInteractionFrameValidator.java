@@ -17,7 +17,6 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-import java.util.function.Function;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
@@ -34,10 +33,12 @@ import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConsta
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 import org.eclipse.sirius.ext.base.Option;
 
+import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * This class is responsible to check whether a request on an interaction use should be accepted (i.e. it would produce
@@ -87,7 +88,7 @@ public abstract class AbstractInteractionFrameValidator {
     /**
      * Not in moved elements.
      */
-    protected final Predicate<ISequenceEvent> unmoved = java.util.function.Predicate.not(Predicates.in(movedElements));
+    protected final Predicate<ISequenceEvent> unmoved = Predicates.not(Predicates.in(movedElements));
 
     private boolean initialized;
 
@@ -165,10 +166,10 @@ public abstract class AbstractInteractionFrameValidator {
             Collection<Lifeline> coveredLifelines = frame.computeCoveredLifelines();
             Collection<ISequenceEvent> finalParents = getFinalParentsWithAutoExpand(coveredLifelines);
 
-            Collection<ISequenceEvent> movableParents = new ArrayList<>(finalParents.stream().filter(java.util.function.Predicate.not(unMove)).toList());
-            Collection<ISequenceEvent> fixedParents = new ArrayList<>(finalParents.stream().filter(unMove).toList());
+            Collection<ISequenceEvent> movableParents = Lists.newArrayList(Iterables.filter(finalParents, Predicates.not(unMove)));
+            Collection<ISequenceEvent> fixedParents = Lists.newArrayList(Iterables.filter(finalParents, unMove));
             if (movableParents.isEmpty() || !movedElements.containsAll(movableParents)) {
-                valid = valid && Iterables.isEmpty(finalParents.stream().filter(invalidParents).toList());
+                valid = valid && Iterables.isEmpty(Iterables.filter(finalParents, invalidParents));
                 valid = valid && checkParentOperands(finalParents, coveredLifelines);
                 valid = valid && checkFinalRangeStrictlyIncludedInParents(movableParents);
                 valid = valid && checkLocalSiblings(movableParents, coveredLifelines);
@@ -286,7 +287,7 @@ public abstract class AbstractInteractionFrameValidator {
     private boolean checkFinalRangeStrictlyIncludedInParents(Collection<ISequenceEvent> parentEvents) {
         boolean checked = true;
 
-        Iterable<ISequenceEvent> unMovedParents = parentEvents.stream().filter(unmoved).toList();
+        Iterable<ISequenceEvent> unMovedParents = Iterables.filter(parentEvents, unmoved);
         Iterator<ISequenceEvent> iterator = unMovedParents.iterator();
         while (checked && iterator.hasNext()) {
             ISequenceEvent parent = iterator.next();
@@ -319,7 +320,7 @@ public abstract class AbstractInteractionFrameValidator {
     private boolean checkLocalSiblings(Collection<ISequenceEvent> finalParents, Collection<Lifeline> coveredLifelines) {
         boolean okForSiblings = true;
         for (ISequenceEvent localParent : finalParents) {
-            for (ISequenceEvent localSibling : localParent.getSubEvents().stream().filter(unmoved).toList()) {
+            for (ISequenceEvent localSibling : Iterables.filter(localParent.getSubEvents(), unmoved)) {
                 if (frame.equals(localSibling) || finalParents.contains(localSibling)) {
                     // Frame is moved : to not check it.
                     // Do not consider elements identified as final parents as siblings. By construction, their range

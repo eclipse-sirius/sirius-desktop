@@ -14,7 +14,6 @@ package org.eclipse.sirius.diagram.sequence.business.internal.refresh;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.function.Predicate;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
@@ -33,6 +32,8 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRo
 import org.eclipse.sirius.diagram.sequence.business.internal.util.BendpointsHelper;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.NotificationQuery;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
+
+import com.google.common.base.Predicate;
 
 /**
  * Default refresh layout scope for sequence diagram. This predicate decides whether or not we need to refresh the
@@ -53,7 +54,7 @@ public class RefreshLayoutScope implements Predicate<Notification> {
                 NotationPackage.eINSTANCE.getSize_Width(), NotationPackage.eINSTANCE.getSize_Height(), };
 
         @Override
-        public boolean test(Notification input) {
+        public boolean apply(Notification input) {
             boolean isLayout = false;
             Object feature = input.getFeature();
             for (Object feature2 : features) {
@@ -71,7 +72,7 @@ public class RefreshLayoutScope implements Predicate<Notification> {
         int[] types = new int[] { Notification.ADD, Notification.ADD_MANY, Notification.MOVE, Notification.REMOVE, Notification.REMOVE_MANY };
 
         @Override
-        public boolean test(Notification input) {
+        public boolean apply(Notification input) {
             return isStructural(input.getEventType());
         }
 
@@ -98,7 +99,7 @@ public class RefreshLayoutScope implements Predicate<Notification> {
     }
 
     @Override
-    public boolean test(Notification input) {
+    public boolean apply(Notification input) {
         boolean validScopeContext = diagram != null && !diagram.eIsProxy();
         validScopeContext = validScopeContext && dDiagram != null && !dDiagram.eIsProxy();
         validScopeContext = validScopeContext && semanticElement != null && !semanticElement.eIsProxy();
@@ -178,11 +179,11 @@ public class RefreshLayoutScope implements Predicate<Notification> {
     }
 
     private boolean containsLayoutConstraintNotationChanges(Notification notification) {
-        return isLayoutConstraintNotationChange.test(notification);
+        return isLayoutConstraintNotationChange.apply(notification);
     }
 
     private boolean containsStructuralNotationChanges(Notification notification) {
-        return isSructuralNotationChange.test(notification);
+        return isSructuralNotationChange.apply(notification);
     }
 
     private boolean isLayoutTouch(Notification notification) {
@@ -214,8 +215,8 @@ public class RefreshLayoutScope implements Predicate<Notification> {
     private boolean hasSequenceMapping(Object notifier) {
         if (notifier instanceof DDiagramElement) {
             DDiagramElement dde = (DDiagramElement) notifier;
-            boolean hasSequenceMapping = AbstractNodeEvent.viewpointElementPredicate().test(dde) || EndOfLife.viewpointElementPredicate().test(dde)
-                    || InstanceRole.viewpointElementPredicate().test(dde);
+            boolean hasSequenceMapping = AbstractNodeEvent.viewpointElementPredicate().apply(dde) || EndOfLife.viewpointElementPredicate().apply(dde)
+                    || InstanceRole.viewpointElementPredicate().apply(dde);
             return hasSequenceMapping && shouldTriggerLayoutForChangeOn(dde.getParentDiagram());
         }
         return false;

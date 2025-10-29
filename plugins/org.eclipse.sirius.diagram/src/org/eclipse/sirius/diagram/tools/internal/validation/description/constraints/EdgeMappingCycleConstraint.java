@@ -45,7 +45,7 @@ public class EdgeMappingCycleConstraint extends AbstractModelConstraint {
                 EdgeMapping edgeMapping = (EdgeMapping) eObj;
                 boolean findCycle = hasCycle(
                         edgeMapping,
-                new LinkedHashSet<>(),
+                        Sets.<EdgeMapping> newLinkedHashSet(),
                         Sets.<EdgeMapping> newLinkedHashSet(Iterables.concat(Iterables.filter(edgeMapping.getSourceMapping(), EdgeMapping.class),
                                 Iterables.filter(edgeMapping.getTargetMapping(), EdgeMapping.class))));
                 if (findCycle) {
@@ -80,7 +80,7 @@ public class EdgeMappingCycleConstraint extends AbstractModelConstraint {
         } else {
             // Recursively investigate source/target EdgeMapping of the
             // edgeMappingsToProcess Set.
-            LinkedHashSet<EdgeMapping> newEdgeMappingsToProcess = new LinkedHashSet<>();
+            LinkedHashSet<EdgeMapping> newEdgeMappingsToProcess = Sets.<EdgeMapping> newLinkedHashSet();
             for (EdgeMapping edgeMappingToProcess : edgeMappingsToProcess) {
                 newEdgeMappingsToProcess.addAll(Sets.newLinkedHashSet(Iterables.concat(Iterables.filter(edgeMappingToProcess.getSourceMapping(), EdgeMapping.class),
                         Iterables.filter(edgeMappingToProcess.getTargetMapping(), EdgeMapping.class))));

@@ -35,6 +35,7 @@ import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
 
 import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Sets;
@@ -128,18 +129,18 @@ public class IsModifiedSavingPolicy extends AbstractSavingPolicy {
             mergedOptions.putAll(options);
         }
 
-        Set<Resource> saveable = new LinkedHashSet<>(scope.stream().filter(new Predicate<Resource>() {
+        Set<Resource> saveable = Sets.newLinkedHashSet(Iterables.filter(scope, new Predicate<Resource>() {
 
             @Override
             public boolean apply(Resource resourcetoSave) {
                 return !ResourceSetSync.isReadOnly(resourcetoSave) && !SiriusUtil.isModelerDescriptionFile(resourcetoSave);
             }
 
-        }).toList());
+        }));
 
         /* We must save a resource if is has been logically modified ... */
 
-        Set<Resource> logicallyModified = new LinkedHashSet<>(saveable.stream().filter(isModified).toList());
+        Set<Resource> logicallyModified = Sets.newLinkedHashSet(Iterables.filter(saveable, isModified));
 
         /*
          * ... or it references a resource which has been modified (in which case the URIs to the referenced elements in
@@ -147,7 +148,7 @@ public class IsModifiedSavingPolicy extends AbstractSavingPolicy {
          */
         Set<Resource> dependOnLogicallyModified = new LinkedHashSet<>();
         if (logicallyModified.size() > 0) {
-            Iterables.addAll(dependOnLogicallyModified, Sets.difference(saveable, logicallyModified).stream().filter(new ResourceHasReferenceTo(isModified)).toList());
+            Iterables.addAll(dependOnLogicallyModified, Iterables.filter(Sets.difference(saveable, logicallyModified), new ResourceHasReferenceTo(isModified)));
         }
 
         Predicate<Resource> exists = new Predicate<Resource>() {
@@ -167,8 +168,8 @@ public class IsModifiedSavingPolicy extends AbstractSavingPolicy {
                 return defaultConverter;
             }
         };
-        Set<Resource> underlyingFileDoesNotExist = new LinkedHashSet<>(saveable.stream().filter(java.util.function.Predicate.not(exists)).toList());
-        Set<Resource> isConflictingOrDeleted = new LinkedHashSet<>(saveable.stream().filter(underlyingFileIsDeletedOrConflicting).toList());
+        Set<Resource> underlyingFileDoesNotExist = Sets.newLinkedHashSet(Iterables.filter(saveable, Predicates.not(exists)));
+        Set<Resource> isConflictingOrDeleted = Sets.newLinkedHashSet(Iterables.filter(saveable, underlyingFileIsDeletedOrConflicting));
         /*
          * or the underlying file is out of date and must be recreated/updated to match the version in memory.
          */

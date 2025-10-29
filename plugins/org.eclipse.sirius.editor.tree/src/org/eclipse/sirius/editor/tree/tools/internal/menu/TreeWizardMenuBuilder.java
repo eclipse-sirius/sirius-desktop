@@ -16,7 +16,6 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.UnexecutableCommand;
@@ -57,6 +56,7 @@ import org.eclipse.ui.IEditorPart;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
@@ -84,12 +84,12 @@ public class TreeWizardMenuBuilder extends AbstractMenuBuilder {
         Set<AbstractEObjectRefactoringAction> allActions = new LinkedHashSet<>();
         allActions.add(new InitializeTreeFromEClass(editor, selection));
 
-        return allActions.stream().filter(new Predicate<AbstractEObjectRefactoringAction>() {
+        return Sets.filter(allActions, new Predicate<AbstractEObjectRefactoringAction>() {
 
             public boolean apply(AbstractEObjectRefactoringAction candidateAction) {
                 return candidateAction.isSelectionValid();
             }
-        }).collect(Collectors.toSet());
+        });
     }
 
     @Override
@@ -224,12 +224,12 @@ class TreeDescriptionBuilderFromEClass {
         TreePopupMenu menu = DescriptionFactory.eINSTANCE.createTreePopupMenu();
         menu.setName("New");
 
-        for (EReference ownedReferences : eClassToStartFrom.getEAllReferences().stream().filter(new Predicate<EReference>() {
+        for (EReference ownedReferences : Iterables.filter(eClassToStartFrom.getEAllReferences(), new Predicate<EReference>() {
 
             public boolean apply(EReference input) {
                 return input.isContainment() && input.getEType() instanceof EClass;
             }
-        }).toList()) {
+        })) {
             EClass targetClass = (EClass) ownedReferences.getEType();
 
             Collection<EClass> concreteSubclasses = Lists.newArrayList(hiearchy.getConcreteSubclassesLeafs(targetClass));
@@ -360,7 +360,7 @@ class EClassHierarchy {
 
     EClassHierarchy(ResourceSet resourceSet) {
 
-        Set<EClass> allClasses = new LinkedHashSet<>(Lists.newArrayList(Iterators.filter(resourceSet.getAllContents(), EClass.class)));
+        Set<EClass> allClasses = Sets.newLinkedHashSet(Lists.newArrayList(Iterators.filter(resourceSet.getAllContents(), EClass.class)));
 
         Set<EClass> somebodyIsExtendingMe = new LinkedHashSet<>();
         for (EClass eClass : allClasses) {
@@ -381,12 +381,12 @@ class EClassHierarchy {
     }
 
     public Iterable<EClass> getConcreteSubclassesLeafs(EClass targetClass) {
-        return mostSpecific.get(targetClass).stream().filter(new Predicate<EClass>() {
+        return Iterables.filter(mostSpecific.get(targetClass), new Predicate<EClass>() {
 
             public boolean apply(EClass input) {
                 return !input.isAbstract();
             }
-        }).toList();
+        });
     }
 
 }

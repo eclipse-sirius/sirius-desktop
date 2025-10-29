@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import java.util.function.Predicate;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
@@ -73,6 +72,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.ISetSelectionTarget;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
@@ -444,12 +444,12 @@ public class IInterpreterValidationExpressionTest extends SiriusDiagramTestCase 
     }
 
     private Layer getLayer(DiagramDescription diagramDescription, final String expectedLayerName) {
-        Iterable<Layer> layers = LayerModelHelper.getAllLayers(diagramDescription).stream().filter(new Predicate<Layer>() {
+        Iterable<Layer> layers = Iterables.filter(LayerModelHelper.getAllLayers(diagramDescription), new Predicate<Layer>() {
             @Override
-            public boolean test(Layer input) {
+            public boolean apply(Layer input) {
                 return input.getName().equals(expectedLayerName);
             }
-        }).toList();
+        });
         assertTrue(layers.iterator().hasNext());
         return layers.iterator().next();
     }

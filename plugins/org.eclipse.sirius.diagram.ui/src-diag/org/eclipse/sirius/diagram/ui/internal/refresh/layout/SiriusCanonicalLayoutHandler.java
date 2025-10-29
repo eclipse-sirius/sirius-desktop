@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IAdaptable;
@@ -44,6 +43,9 @@ import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.LayoutProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.LayoutUtil;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.LayoutService;
 import org.eclipse.swt.widgets.Display;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
 
 /**
  * Helper to execute a ArrangeRequest's {@link Command} for created views (in the DDiagramCanonicalSynchronizer ) to
@@ -204,20 +206,20 @@ public final class SiriusCanonicalLayoutHandler {
         // computed multiple times
         Predicate<Entry<IGraphicalEditPart, List<IAdaptable>>> typeOfElementToLayout = new Predicate<Map.Entry<IGraphicalEditPart, List<IAdaptable>>>() {
             @Override
-            public boolean test(Entry<IGraphicalEditPart, List<IAdaptable>> input) {
+            public boolean apply(Entry<IGraphicalEditPart, List<IAdaptable>> input) {
                 return input.getKey() instanceof DDiagramEditPart || input.getKey() instanceof DNodeContainerViewNodeContainerCompartmentEditPart
                         || (input.getKey() instanceof DNodeContainerViewNodeContainerCompartment2EditPart
                                 && !(input.getKey().getParent().getParent() instanceof DNodeContainerViewNodeContainerCompartment2EditPart));
             }
         };
-        for (Entry<IGraphicalEditPart, List<IAdaptable>> entry : centeredCreatedViewsToLayoutMap.entrySet().stream().filter(typeOfElementToLayout).toList()) {
+        for (Entry<IGraphicalEditPart, List<IAdaptable>> entry : Iterables.filter(centeredCreatedViewsToLayoutMap.entrySet(), typeOfElementToLayout)) {
             IGraphicalEditPart parentEditPart = entry.getKey();
             List<IAdaptable> childViewsAdapters = entry.getValue();
             List<IAdaptable> referenceViews = createdViewsAsReferenceLayoutMap.get(parentEditPart);
             Command layoutCommand = SiriusCanonicalLayoutCommand.initial(editingDomain, parentEditPart, childViewsAdapters, referenceViews, specificLayoutType);
             compoundCommand.append(layoutCommand);
         }
-        for (Entry<IGraphicalEditPart, List<IAdaptable>> entry : createdViewsToLayoutMap.entrySet().stream().filter(typeOfElementToLayout).toList()) {
+        for (Entry<IGraphicalEditPart, List<IAdaptable>> entry : Iterables.filter(createdViewsToLayoutMap.entrySet(), typeOfElementToLayout)) {
             IGraphicalEditPart parentEditPart = entry.getKey();
             List<IAdaptable> childViewsAdapters = entry.getValue();
             Command layoutCommand = SiriusCanonicalLayoutCommand.normal(editingDomain, parentEditPart, childViewsAdapters, specificLayoutType);

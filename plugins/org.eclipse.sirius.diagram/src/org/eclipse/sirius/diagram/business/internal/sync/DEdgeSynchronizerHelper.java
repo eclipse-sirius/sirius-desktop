@@ -96,9 +96,9 @@ public class DEdgeSynchronizerHelper extends AbstractSynchronizerHelper {
                 }
                 return true;
             };
-            final Iterable<EdgeTarget> sourceViews = this.computeTargetElements(this.diagram, mapping.getSourceMapping(), mappingsToEdgeTargets).stream().filter(isValidTarget).toList();
+            final Iterable<EdgeTarget> sourceViews = Iterables.filter(this.computeTargetElements(this.diagram, mapping.getSourceMapping(), mappingsToEdgeTargets), isValidTarget);
             final Map<EObject, Collection<EdgeTarget>> targetViewsSemantics = new HashMap<EObject, Collection<EdgeTarget>>();
-            final Iterable<EdgeTarget> targetViews = this.computeTargetElements(this.diagram, mapping.getTargetMapping(), mappingsToEdgeTargets, targetViewsSemantics).stream().filter(isValidTarget).toList();
+            final Iterable<EdgeTarget> targetViews = Iterables.filter(this.computeTargetElements(this.diagram, mapping.getTargetMapping(), mappingsToEdgeTargets, targetViewsSemantics), isValidTarget);
             edgeCandidates = computeEdgeCandidatesWithoutDomain(sourceViews, targetViews, targetViewsSemantics, mapping);
         } else {
             final Map<EObject, Collection<EdgeTarget>> sourceViewsSemantics = new HashMap<EObject, Collection<EdgeTarget>>();
@@ -137,7 +137,7 @@ public class DEdgeSynchronizerHelper extends AbstractSynchronizerHelper {
                     return input != null && input.getTarget() != null && targetCandidates.contains(input.getTarget());
                 }
             };
-            handlePreviousCandidates(result, previousDiagramElements.stream().filter(stillCandidate).toList(), mapping, sourceViewsSemantics, targetViewsSemantics);
+            handlePreviousCandidates(result, Iterables.filter(previousDiagramElements, stillCandidate), mapping, sourceViewsSemantics, targetViewsSemantics);
         }
         DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.GET_EDGE_CANDIDATES_KEY);
         return result;

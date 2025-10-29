@@ -72,7 +72,7 @@ public class SequenceDiagramEditPartProvider extends AbstractEditPartProvider {
     protected Class<?> getDiagramEditPartClass(View view) {
         if (view instanceof Diagram) {
             EObject semanticElement = ViewUtil.resolveSemanticElement(view);
-            if (semanticElement instanceof DDiagram && SequenceDiagram.viewpointElementPredicate().test((DDiagram) semanticElement)) {
+            if (semanticElement instanceof DDiagram && SequenceDiagram.viewpointElementPredicate().apply((DDiagram) semanticElement)) {
                 return SequenceDiagramEditPart.class;
             }
         }
@@ -88,44 +88,44 @@ public class SequenceDiagramEditPartProvider extends AbstractEditPartProvider {
         if (view instanceof Node) {
             EObject semanticElement = ViewUtil.resolveSemanticElement(view);
             if (DiagramPackage.eINSTANCE.getDNode().isInstance(semanticElement)) {
-                if (InstanceRole.notationPredicate().test(view)) {
+                if (InstanceRole.notationPredicate().apply(view)) {
                     return InstanceRoleEditPart.class;
-                } else if (Lifeline.notationPredicate().test(view)) {
+                } else if (Lifeline.notationPredicate().apply(view)) {
                     return LifelineEditPart.class;
-                } else if (Execution.notationPredicate().test(view)) {
+                } else if (Execution.notationPredicate().apply(view)) {
                     return ExecutionEditPart.class;
-                } else if (State.notationPredicate().test(view)) {
+                } else if (State.notationPredicate().apply(view)) {
                     return StateEditPart.class;
-                } else if (EndOfLife.notationPredicate().test(view)) {
+                } else if (EndOfLife.notationPredicate().apply(view)) {
                     return EndOfLifeEditPart.class;
-                } else if (LostMessageEnd.notationPredicate().test(view)) {
+                } else if (LostMessageEnd.notationPredicate().apply(view)) {
                     return LostMessageEndEditPart.class;
-                } else if (ObservationPoint.notationPredicate().test(view)) {
+                } else if (ObservationPoint.notationPredicate().apply(view)) {
                     return ObservationPointEditPart.class;
-                } else if (Gate.notationPredicate().test(view)) {
+                } else if (Gate.notationPredicate().apply(view)) {
                     return GateEditPart.class;
                 }
             } else if (DiagramPackage.eINSTANCE.getDNodeContainer().isInstance(semanticElement)) {
-                if (InteractionUse.notationPredicate().test(view)) {
+                if (InteractionUse.notationPredicate().apply(view)) {
                     return InteractionUseEditPart.class;
-                } else if (InteractionUse.compartmentNotationPredicate().test(view)) {
+                } else if (InteractionUse.compartmentNotationPredicate().apply(view)) {
                     return InteractionUseCompartmentEditPart.class;
-                } else if (CombinedFragment.notationPredicate().test(view)) {
+                } else if (CombinedFragment.notationPredicate().apply(view)) {
                     return CombinedFragmentEditPart.class;
-                } else if (CombinedFragment.compartmentNotationPredicate().test(view)) {
+                } else if (CombinedFragment.compartmentNotationPredicate().apply(view)) {
                     return CombinedFragmentCompartmentEditPart.class;
-                } else if (Operand.notationPredicate().test(view)) {
+                } else if (Operand.notationPredicate().apply(view)) {
                     return OperandEditPart.class;
-                } else if (Operand.compartmentNotationPredicate().test(view)) {
+                } else if (Operand.compartmentNotationPredicate().apply(view)) {
                     return OperandCompartmentEditPart.class;
-                } else if (InteractionContainer.notationPredicate().test(view)) {
+                } else if (InteractionContainer.notationPredicate().apply(view)) {
                     return InteractionContainerEditPart.class;
-                } else if (InteractionContainer.compartmentNotationPredicate().test(view)) {
+                } else if (InteractionContainer.compartmentNotationPredicate().apply(view)) {
                     return InteractionContainerCompartmentEditPart.class;
                 }
             } else if (DiagramPackage.eINSTANCE.getDEdge().isInstance(semanticElement)) {
                 DEdge edge = (DEdge) semanticElement;
-                if (Message.viewpointElementPredicate().test(edge) && SiriusVisualIDRegistry.getVisualID(view) == SequenceMessageNameEditPart.VISUAL_ID) {
+                if (Message.viewpointElementPredicate().apply(edge) && SiriusVisualIDRegistry.getVisualID(view) == SequenceMessageNameEditPart.VISUAL_ID) {
                     return SequenceMessageNameEditPart.class;
                 }
             }
@@ -145,9 +145,9 @@ public class SequenceDiagramEditPartProvider extends AbstractEditPartProvider {
             EObject semanticElement = ViewUtil.resolveSemanticElement(view);
             if (semanticElement instanceof DEdge) {
                 DEdge edge = (DEdge) semanticElement;
-                if (Message.viewpointElementPredicate().test((DEdge) semanticElement)) {
+                if (Message.viewpointElementPredicate().apply((DEdge) semanticElement)) {
                     edgeEditPartClass = SequenceMessageEditPart.class;
-                } else if (SequenceDiagram.viewpointElementPredicate().test(edge.getParentDiagram()) && edge.getStyle() instanceof BracketEdgeStyle) {
+                } else if (SequenceDiagram.viewpointElementPredicate().apply(edge.getParentDiagram()) && edge.getStyle() instanceof BracketEdgeStyle) {
                     // Force the default location.
                     edgeEditPartClass = SequenceBracketEdgeEditPart.class;
                 }

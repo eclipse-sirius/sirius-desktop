@@ -14,7 +14,6 @@ package org.eclipse.sirius.diagram.business.api.query;
 
 import java.util.List;
 import java.util.Set;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EObject;
@@ -97,7 +96,7 @@ public class DDiagramElementQuery {
      * @return true if the given element is hidden.
      */
     public boolean isHidden() {
-        return element.getGraphicalFilters().stream().anyMatch(Predicates.instanceOf(HideFilter.class));
+        return Iterables.any(element.getGraphicalFilters(), Predicates.instanceOf(HideFilter.class));
     }
 
     /**
@@ -140,7 +139,7 @@ public class DDiagramElementQuery {
             // Edges have multiple labels
             return areAllLabelsHidden();
         }
-        return element.getGraphicalFilters().stream().anyMatch(Predicates.instanceOf(HideLabelFilter.class));
+        return Iterables.any(element.getGraphicalFilters(), Predicates.instanceOf(HideLabelFilter.class));
     }
 
     /**
@@ -150,7 +149,7 @@ public class DDiagramElementQuery {
      */
     public boolean hasAnyHiddenLabel() {
         if (element instanceof DEdge) {
-            return element.getGraphicalFilters().stream().anyMatch(Predicates.instanceOf(HideLabelFilter.class));
+            return Iterables.any(element.getGraphicalFilters(), Predicates.instanceOf(HideLabelFilter.class));
         }
         return isLabelHidden();
     }
@@ -284,7 +283,7 @@ public class DDiagramElementQuery {
      * @return true if the given element is directly collapsed.
      */
     public boolean isCollapsed() {
-        return element.getGraphicalFilters().stream().anyMatch(Predicates.and(Predicates.instanceOf(CollapseFilter.class), Predicate.not(Predicates.instanceOf(IndirectlyCollapseFilter.class))));
+        return Iterables.any(element.getGraphicalFilters(), Predicates.and(Predicates.instanceOf(CollapseFilter.class), Predicates.not(Predicates.instanceOf(IndirectlyCollapseFilter.class))));
 
     }
 
@@ -309,7 +308,7 @@ public class DDiagramElementQuery {
      * @return true if the given element is indirectly filtered.
      */
     public boolean isOnlyIndirectlyCollapsed() {
-        return element.getGraphicalFilters().stream().anyMatch(Predicates.instanceOf(IndirectlyCollapseFilter.class));
+        return Iterables.any(element.getGraphicalFilters(), Predicates.instanceOf(IndirectlyCollapseFilter.class));
     }
 
     /**
@@ -319,7 +318,7 @@ public class DDiagramElementQuery {
      * @return true if the given element is filtered.
      */
     public boolean isFiltered() {
-        return element.getGraphicalFilters().stream().anyMatch(Predicates.instanceOf(AppliedCompositeFilters.class));
+        return Iterables.any(element.getGraphicalFilters(), Predicates.instanceOf(AppliedCompositeFilters.class));
     }
 
     /**
@@ -438,7 +437,7 @@ public class DDiagramElementQuery {
      * @return <code>true</code> if the dDiagramElement is explicitly folded.
      */
     public boolean isExplicitlyFolded() {
-        return element.getGraphicalFilters().stream().anyMatch(Predicates.instanceOf(FoldingPointFilter.class));
+        return Iterables.any(element.getGraphicalFilters(), Predicates.instanceOf(FoldingPointFilter.class));
     }
 
     /**
@@ -448,7 +447,7 @@ public class DDiagramElementQuery {
      * @return <code>true</code> if the dDiagramElement is explicitly folded.
      */
     public boolean isIndirectlyFolded() {
-        return element.getGraphicalFilters().stream().anyMatch(Predicates.instanceOf(FoldingFilter.class));
+        return Iterables.any(element.getGraphicalFilters(), Predicates.instanceOf(FoldingFilter.class));
     }
 
     /**
@@ -458,6 +457,6 @@ public class DDiagramElementQuery {
      *         indirectly).
      */
     public boolean isFolded() {
-        return element.getGraphicalFilters().stream().anyMatch(Predicates.or(Predicates.instanceOf(FoldingPointFilter.class), Predicates.instanceOf(FoldingFilter.class)));
+        return Iterables.any(element.getGraphicalFilters(), Predicates.or(Predicates.instanceOf(FoldingPointFilter.class), Predicates.instanceOf(FoldingFilter.class)));
     }
 }

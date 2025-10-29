@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.actions.session;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -133,7 +132,7 @@ public class OpenCloseSessionAction extends SelectionListenerAction {
                 }
             }
         }
-        return new ArrayList<>(openedSession);
+        return Lists.newArrayList(openedSession);
     }
 
     /**

@@ -15,8 +15,6 @@ package org.eclipse.sirius.editor.tools.internal.menu.refactoring;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.jface.viewers.ISelection;
@@ -24,6 +22,9 @@ import org.eclipse.sirius.editor.tools.api.menu.AbstractEObjectRefactoringAction
 import org.eclipse.sirius.editor.tools.api.menu.AbstractMenuBuilder;
 import org.eclipse.sirius.editor.tools.internal.menu.refactoring.border.MaterializeTemplateRefactoring;
 import org.eclipse.ui.IEditorPart;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Sets;
 
 /**
  * The menu for the refactoring actions.
@@ -61,12 +62,12 @@ public class RefactoringMenu extends AbstractMenuBuilder {
         allActions.add(new MaterializeTemplateRefactoring(editor, selection));
 
         // We only add to the menu the actions that have a valid selection
-        return allActions.stream().filter(new Predicate<AbstractEObjectRefactoringAction>() {
+        return Sets.filter(allActions, new Predicate<AbstractEObjectRefactoringAction>() {
 
-            public boolean test(AbstractEObjectRefactoringAction candidateAction) {
+            public boolean apply(AbstractEObjectRefactoringAction candidateAction) {
                 return candidateAction.isSelectionValid();
             }
-        }).collect(Collectors.toSet());
+        });
     }
 
     @Override
