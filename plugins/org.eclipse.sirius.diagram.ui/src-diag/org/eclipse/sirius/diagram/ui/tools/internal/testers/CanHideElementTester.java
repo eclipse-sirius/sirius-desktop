@@ -62,7 +62,7 @@ public class CanHideElementTester extends PropertyTester {
         } else {
             boolean elementIsHidden = !diagramElement.isVisible();
             DDiagram parentDiagram = diagramElement.getParentDiagram();
-            result = parentDiagram != null ? HideDDiagramElementAction.allowsHideReveal(parentDiagram).apply(diagramElement) : false;
+            result = parentDiagram != null ? HideDDiagramElementAction.allowsHideReveal(parentDiagram).test(diagramElement) : false;
             result = result && !elementIsHidden;
         }
         return result;

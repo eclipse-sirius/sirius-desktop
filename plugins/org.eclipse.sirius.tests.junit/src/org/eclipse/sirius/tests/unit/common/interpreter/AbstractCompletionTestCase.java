@@ -19,6 +19,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -34,7 +36,6 @@ import org.eclipse.sirius.common.tools.api.interpreter.DefaultInterpreterContext
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 
-import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -289,11 +290,11 @@ public class AbstractCompletionTestCase extends TestCase {
      * @return collection of proposal string
      */
     protected Collection<String> extractProposal(List<ContentProposal> proposals) {
-        return Lists.newArrayList(Iterables.transform(proposals, new Function<ContentProposal, String>() {
+        return Lists.newArrayList(proposals.stream().map(new Function<ContentProposal, String>() {
             public String apply(ContentProposal from) {
                 return from.getProposal();
             }
-        }));
+        }).collect(Collectors.toList()));
     }
 
     /**
@@ -367,7 +368,7 @@ public class AbstractCompletionTestCase extends TestCase {
         };
 
         // EStructuralfeatures
-        StringBuilder tmpMsg = lookForExpectedProposals(Iterables.transform(eClass.getEAllStructuralFeatures(), getExpectedProposal), proposals, concerned);
+        StringBuilder tmpMsg = lookForExpectedProposals(eClass.getEAllStructuralFeatures().stream().map(getExpectedProposal).collect(Collectors.toList()), proposals, concerned);
 
         if (tmpMsg.length() != 0) {
             tmpMsg.insert(0, "\nSome expected features are not present in completion proposals:");
@@ -404,7 +405,7 @@ public class AbstractCompletionTestCase extends TestCase {
             }
         }
 
-        StringBuilder tmpMsg = lookForExpectedProposals(Iterables.transform(opToCheck, signature), proposals, concerned);
+        StringBuilder tmpMsg = lookForExpectedProposals(opToCheck.stream().map(signature).collect(Collectors.toList()), proposals, concerned);
 
         if (tmpMsg.length() != 0) {
             tmpMsg.insert(0, "\nSome expected operations are not present in completion proposals:");

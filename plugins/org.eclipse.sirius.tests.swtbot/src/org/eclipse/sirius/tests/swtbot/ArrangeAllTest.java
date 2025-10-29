@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.draw2d.geometry.Dimension;
@@ -128,9 +129,8 @@ public class ArrangeAllTest extends AbstractSiriusSwtBotGefTestCase {
 
         arrangeAll();
 
-        final List<IDiagramContainerEditPart> afterArrangeAll = Lists
-                .newArrayList(Iterables.filter(getAllContainerEditParts(editor), Predicates
-                        .and(Predicates.instanceOf(IDiagramContainerEditPart.class), new MatchByAutoSizeStatus(true))));
+        final List<IDiagramContainerEditPart> afterArrangeAll = new ArrayList<>(getAllContainerEditParts(editor).stream().filter(Predicates
+        .and(Predicates.instanceOf(IDiagramContainerEditPart.class), new MatchByAutoSizeStatus(true))).toList());
 
         assertEquals("We should have the same number of auto-sized containers before and after the arrange all",
                 originalContainersNumber, afterArrangeAll.size());

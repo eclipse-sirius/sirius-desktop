@@ -204,7 +204,7 @@ public class RefreshLayoutScopeTests extends AbstractSiriusSwtBotGefTestCase {
         public void resourceSetChanged(ResourceSetChangeEvent event) {
             super.resourceSetChanged(event);
             for (Notification notification : event.getNotifications()) {
-                if (refreshLayoutScope.apply(notification)) {
+                if (refreshLayoutScope.test(notification)) {
                     refreshLayoutScopeApply = true;
                     break;
                 }

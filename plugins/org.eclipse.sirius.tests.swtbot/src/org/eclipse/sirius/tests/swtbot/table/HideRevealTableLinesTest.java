@@ -14,6 +14,8 @@ package org.eclipse.sirius.tests.swtbot.table;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.swt.widgets.Tree;
@@ -23,9 +25,6 @@ import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.results.Result;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
-
-import com.google.common.base.Function;
-import com.google.common.collect.Collections2;
 
 /**
  * Test class.
@@ -72,11 +71,11 @@ public class HideRevealTableLinesTest extends AbstractHideRevealTableElementsTes
     protected List<String> getElementsHeader() {
         return UIThreadRunnable.syncExec(new Result<List<String>>() {
             public List<String> run() {
-                return new ArrayList<String>(Collections2.transform(getAllTreeItems(treeTable.widget), new Function<TreeItem, String>() {
+                return new ArrayList<String>(getAllTreeItems(treeTable.widget).stream().map(new Function<TreeItem, String>() {
                     public String apply(final TreeItem from) {
                         return from.getText();
                     }
-                }));
+                }).collect(Collectors.toList()));
             }
         });
     }

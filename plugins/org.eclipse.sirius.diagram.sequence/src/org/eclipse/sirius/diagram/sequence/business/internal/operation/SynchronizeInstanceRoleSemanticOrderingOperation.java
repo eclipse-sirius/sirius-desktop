@@ -19,6 +19,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.Diagram;
@@ -136,7 +137,7 @@ public class SynchronizeInstanceRoleSemanticOrderingOperation extends AbstractMo
         if (!Iterables.isEmpty(diagramViews)) {
             Option<SequenceDiagram> seqDiag = ISequenceElementAccessor.getSequenceDiagram(diagramViews.iterator().next());
             if (seqDiag.some()) {
-                return Lists.newArrayList(Iterables.transform(seqDiag.get().getSortedInstanceRole(), ISequenceElement.SEMANTIC_TARGET));
+                return Lists.newArrayList(seqDiag.get().getSortedInstanceRole().stream().map(ISequenceElement.SEMANTIC_TARGET).collect(Collectors.toList()));
             }
         }
         return Collections.emptyList();

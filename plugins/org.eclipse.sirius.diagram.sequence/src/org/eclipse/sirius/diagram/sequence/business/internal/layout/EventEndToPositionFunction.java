@@ -14,6 +14,7 @@ package org.eclipse.sirius.diagram.sequence.business.internal.layout;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.function.Function;
 
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
@@ -28,7 +29,6 @@ import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
 import org.eclipse.sirius.ext.base.Option;
 
-import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
@@ -86,7 +86,7 @@ public class EventEndToPositionFunction implements Function<EventEnd, Integer> {
     private ISequenceEvent getSafeEvent(Collection<ISequenceEvent> ises) {
         ISequenceEvent ise = null;
         Predicate<Object> safe = Predicates.or(Predicates.instanceOf(AbstractNodeEvent.class), Predicates.instanceOf(AbstractFrame.class));
-        Iterable<? extends ISequenceEvent> safeEvents = Iterables.filter(ises, safe);
+        Iterable<? extends ISequenceEvent> safeEvents = ises.stream().filter(safe).toList();
 
         if (!Iterables.isEmpty(safeEvents)) {
             ise = safeEvents.iterator().next();

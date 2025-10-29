@@ -15,6 +15,8 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Execution;
@@ -24,8 +26,6 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.Operand;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.State;
 
-import com.google.common.base.Function;
-import com.google.common.base.Predicate;
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Multiset;
@@ -106,13 +106,13 @@ public class PositionsChecker {
         }
 
         Set<Integer> invalidPositions = new HashSet<>();
-        Iterables.addAll(invalidPositions, Iterables.filter(positions, new Predicate<Integer>() {
+        Iterables.addAll(invalidPositions, positions.stream().filter(new Predicate<Integer>() {
             @Override
-            public boolean apply(Integer input) {
+            public boolean test(Integer input) {
                 int count = positions.count(input);
                 return count != 1;
             }
-        }));
+        }).toList());
 
         return invalidPositions;
     }

@@ -41,7 +41,6 @@ import org.eclipse.sirius.ext.emf.AllContents;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 
 import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Multimap;
@@ -54,8 +53,7 @@ import com.google.common.collect.Multimap;
  */
 public final class RefreshOrderingHelper {
     @SuppressWarnings("unchecked")
-    private static final Predicate<DDiagramElement> DELIMITED_EVENT_PREDICATE = Predicates.or(AbstractNodeEvent.viewpointElementPredicate(), State.viewpointElementPredicate(),
-            InteractionUse.viewpointElementPredicate(), CombinedFragment.viewpointElementPredicate(), Operand.viewpointElementPredicate());
+    private static final Predicate<DDiagramElement> DELIMITED_EVENT_PREDICATE = AbstractNodeEvent.viewpointElementPredicate().or(State.viewpointElementPredicate()).or(InteractionUse.viewpointElementPredicate()).or(CombinedFragment.viewpointElementPredicate()).or(Operand.viewpointElementPredicate());
 
     private RefreshOrderingHelper() {
         // Prevent instantiation.
@@ -139,12 +137,12 @@ public final class RefreshOrderingHelper {
 
                 if (sees.size() == 2 && RefreshOrderingHelper.countEvents(sees) == 1) {
                     // start first
-                    Iterables.addAll(cee.getEventEnds(), Iterables.filter(sees, EventEndHelper.IS_START));
-                    Iterables.addAll(cee.getEventEnds(), Iterables.filter(sees, Predicates.not(EventEndHelper.IS_START)));
+                    Iterables.addAll(cee.getEventEnds(), sees.stream().filter(EventEndHelper.IS_START).toList());
+                    Iterables.addAll(cee.getEventEnds(), sees.stream().filter(java.util.function.Predicate.not(EventEndHelper.IS_START)).toList());
                 } else {
                     // end first
-                    Iterables.addAll(cee.getEventEnds(), Iterables.filter(sees, Predicates.not(EventEndHelper.IS_START)));
-                    Iterables.addAll(cee.getEventEnds(), Iterables.filter(sees, EventEndHelper.IS_START));
+                    Iterables.addAll(cee.getEventEnds(), sees.stream().filter(java.util.function.Predicate.not(EventEndHelper.IS_START)).toList());
+                    Iterables.addAll(cee.getEventEnds(), sees.stream().filter(EventEndHelper.IS_START).toList());
                 }
                 result.add(cee);
             }
@@ -162,7 +160,7 @@ public final class RefreshOrderingHelper {
     private static void addAllSingleEventEnds(SequenceDDiagram sequenceDiagram, Multimap<EObject, SingleEventEnd> semanticEndToSingleEventEnd) {
 
         // Messages
-        for (DEdge edge : Iterables.filter(sequenceDiagram.getEdges(), Message.viewpointElementPredicate())) {
+        for (DEdge edge : sequenceDiagram.getEdges().stream().filter(Message.viewpointElementPredicate()).toList()) {
             /*
              * Target may be null if the semantic element has been removed from
              * the model but the canonical refresh has not happened yet.

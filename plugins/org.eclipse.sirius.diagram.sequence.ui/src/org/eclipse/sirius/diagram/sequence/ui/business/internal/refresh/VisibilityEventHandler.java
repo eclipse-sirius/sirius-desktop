@@ -28,7 +28,6 @@ import org.eclipse.sirius.diagram.sequence.ui.business.api.diagramtype.SequenceD
 import org.eclipse.sirius.diagram.ui.tools.internal.util.NotificationQuery;
 
 import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 
 /**
@@ -88,6 +87,6 @@ public class VisibilityEventHandler extends ResourceSetListenerImpl {
                 return false;
             }
         };
-        return Iterables.any(Iterables.filter(event.getNotifications(), Notification.class), Predicates.and(isAlwaysVisibleSequenceElement, isVisibilityEvent));
+        return Iterables.any(Iterables.filter(event.getNotifications(), Notification.class), isAlwaysVisibleSequenceElement.and(isVisibilityEvent));
     }
 }

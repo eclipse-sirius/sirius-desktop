@@ -14,14 +14,12 @@ package org.eclipse.sirius.diagram.sequence.business.internal.elements;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.ext.base.Option;
-
-import com.google.common.base.Function;
-import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
 
 /**
  * Common interface for all the elements of a sequence diagram which represent an event associated to a (logical) time
@@ -36,8 +34,7 @@ public interface ISequenceEvent extends ISequenceElement {
      * Predicate to test all notation predicate of existing sequence events.
      */
     @SuppressWarnings("unchecked")
-    Predicate<View> ISEQUENCEEVENT_NOTATION_PREDICATE = Predicates.or(AbstractNodeEvent.notationPredicate(), Message.notationPredicate(), InteractionUse.notationPredicate(),
-            CombinedFragment.notationPredicate(), Operand.notationPredicate());
+    Predicate<View> ISEQUENCEEVENT_NOTATION_PREDICATE = AbstractNodeEvent.notationPredicate().or(Message.notationPredicate()).or(InteractionUse.notationPredicate()).or(CombinedFragment.notationPredicate()).or(Operand.notationPredicate());
 
     /**
      * A function to compute the vertical range a sequence event.

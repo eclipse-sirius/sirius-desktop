@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Dimension;
@@ -86,7 +88,6 @@ import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.junit.Assert;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
@@ -763,7 +764,7 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
         Predicate<SWTBotGefEditPart> combinedFragmentIncludingClickLocation = new Predicate<SWTBotGefEditPart>() {
 
             @Override
-            public boolean apply(SWTBotGefEditPart input) {
+            public boolean test(SWTBotGefEditPart input) {
                 if (input.part() instanceof CombinedFragmentEditPart) {
                     CombinedFragmentEditPart combinedFragmentEditPart = (CombinedFragmentEditPart) input.part();
                     return combinedFragmentEditPart.getFigure().getBounds().contains(singleClickPoint) && combinedFragmentEditPart.getISequenceEvent().getVerticalRange().includes(singleClickPoint.y);
@@ -773,7 +774,7 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
         };
 
         SWTBotGefEditPart deeepestCombinedFragmentBotAtLocation = null;
-        for (SWTBotGefEditPart combinedFragmentBot : Iterables.filter(combinedFragments, combinedFragmentIncludingClickLocation)) {
+        for (SWTBotGefEditPart combinedFragmentBot : combinedFragments.stream().filter(combinedFragmentIncludingClickLocation).toList()) {
             if (deeepestCombinedFragmentBotAtLocation == null) {
                 deeepestCombinedFragmentBotAtLocation = combinedFragmentBot;
             } else {
@@ -1179,7 +1180,7 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
                 Iterables.elementsEqual(sequenceDDiagram.getSemanticOrdering().getEventEnds(), sequenceDDiagram.getGraphicalOrdering().getEventEnds()));
 
         // Check horizontal ordering
-        Iterable<EObject> instanceRoleGraphicalOrdering = Iterables.transform(sequenceDiagram.getSortedInstanceRole(), ISequenceEvent.SEMANTIC_TARGET);
+        Iterable<EObject> instanceRoleGraphicalOrdering = sequenceDiagram.getSortedInstanceRole().stream().map(ISequenceEvent.SEMANTIC_TARGET).collect(Collectors.toList());
         EList<EObject> semanticInstanceRoles = sequenceDDiagram.getInstanceRoleSemanticOrdering().getSemanticInstanceRoles();
         assertTrue("The horizontal semantic ordering does not match its corresponding the graphical ordering", Iterables.elementsEqual(semanticInstanceRoles, instanceRoleGraphicalOrdering));
 
@@ -1206,11 +1207,11 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
     protected LifelineEditPart getLifelineEditPart(String lifelineName) {
         Predicate<SWTBotGefEditPart> pred = new Predicate<SWTBotGefEditPart>() {
             @Override
-            public boolean apply(SWTBotGefEditPart input) {
+            public boolean test(SWTBotGefEditPart input) {
                 return input.part() instanceof LifelineEditPart;
             };
         };
-        return (LifelineEditPart) Iterables.getOnlyElement(Iterables.filter(editor.getEditPart(lifelineName).parent().children(), pred)).part();
+        return (LifelineEditPart) Iterables.getOnlyElement(editor.getEditPart(lifelineName).parent().children().stream().filter(pred).toList()).part();
     }
 
     protected void validateSequenceMessageCenteredOnTarget(String messageLabel) {

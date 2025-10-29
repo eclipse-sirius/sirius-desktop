@@ -14,6 +14,8 @@ package org.eclipse.sirius.tree.business.internal.dialect.common.tree;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
@@ -21,9 +23,6 @@ import org.eclipse.sirius.synchronizer.AutomaticCreator;
 import org.eclipse.sirius.synchronizer.Mapping;
 import org.eclipse.sirius.synchronizer.SemanticPartition;
 import org.eclipse.sirius.tree.description.TreeItemMapping;
-
-import com.google.common.base.Function;
-import com.google.common.collect.Collections2;
 
 /**
  * A {@link Mapping}.
@@ -67,13 +66,13 @@ class RTreeItemMapping implements Mapping {
 
     public List<Mapping> getChildMappings() {
         List<Mapping> result = new ArrayList<>();
-        result.addAll(Collections2.transform(nm.getAllSubMappings(), new Function<TreeItemMapping, RTreeItemMapping>() {
+        result.addAll(nm.getAllSubMappings().stream().map(new Function<TreeItemMapping, RTreeItemMapping>() {
 
             @Override
             public RTreeItemMapping apply(TreeItemMapping from) {
                 return provider.getOrCreate(from);
             }
-        }));
+        }).collect(Collectors.toList()));
         return result;
     }
 

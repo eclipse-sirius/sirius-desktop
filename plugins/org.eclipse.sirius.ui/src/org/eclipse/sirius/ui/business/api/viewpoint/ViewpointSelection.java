@@ -25,7 +25,9 @@ import java.util.SortedMap;
 import java.util.SortedSet;
 import java.util.TreeMap;
 import java.util.TreeSet;
+import java.util.function.Function;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -74,8 +76,6 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.progress.IProgressService;
 
-import com.google.common.base.Function;
-import com.google.common.base.Joiner;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Collections2;
@@ -299,7 +299,7 @@ public final class ViewpointSelection {
         Function<Collection<String>, String> toStringList = new Function<Collection<String>, String>() {
             @Override
             public String apply(java.util.Collection<String> from) {
-                return Joiner.on(", ").join(from); //$NON-NLS-1$
+                return String.join(", ", from); //$NON-NLS-1$
             }
         };
         StringBuilder sb = new StringBuilder(Messages.ViewpointSelection_missingDependencies_header).append("\n"); //$NON-NLS-1$
@@ -307,7 +307,7 @@ public final class ViewpointSelection {
         for (Map.Entry<String, Collection<String>> entry : missingDependencies.entrySet()) {
             lines.add("- " + MessageFormat.format(Messages.ViewpointSelection_missingDependencies_requirements, entry.getKey(), toStringList.apply(entry.getValue()))); //$NON-NLS-1$
         }
-        sb.append(Joiner.on("\n").join(lines)); //$NON-NLS-1$
+        sb.append(String.join("\n", lines)); //$NON-NLS-1$
         return sb.toString();
     }
 
@@ -320,7 +320,7 @@ public final class ViewpointSelection {
      *         as key and the list of the missing viewpoints' names as value.
      */
     public static Map<String, Collection<String>> getMissingDependencies(Set<Viewpoint> selected) {
-        Set<String> selectedURIs = Sets.newHashSet(Iterables.filter(Iterables.transform(selected, new Function<Viewpoint, String>() {
+        Set<String> selectedURIs = Sets.newHashSet(Iterables.filter(selected.stream().map(new Function<Viewpoint, String>() {
             @Override
             public String apply(Viewpoint from) {
                 Option<URI> uri = new ViewpointQuery(from).getViewpointURI();
@@ -330,7 +330,7 @@ public final class ViewpointSelection {
                     return null;
                 }
             }
-        }), Predicates.notNull()));
+        }).collect(Collectors.toList()), Predicates.notNull()));
 
         Multimap<String, String> result = HashMultimap.create();
         for (Viewpoint viewpoint : selected) {

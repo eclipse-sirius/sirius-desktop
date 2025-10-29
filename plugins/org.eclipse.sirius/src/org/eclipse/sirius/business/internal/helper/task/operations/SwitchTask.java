@@ -15,6 +15,7 @@ package org.eclipse.sirius.business.internal.helper.task.operations;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
@@ -30,8 +31,6 @@ import org.eclipse.sirius.viewpoint.description.tool.Case;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.Switch;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
-
-import com.google.common.collect.Collections2;
 
 /**
  * An Switch task.
@@ -103,7 +102,7 @@ public class SwitchTask extends AbstractOperationTask {
         // Transforms all model operations to tasks. Case operation and default
         // operation just serve to evaluate the condition. They have no
         // corresponding task because they are the son that interest us
-        Collection<ICommandTask> childTasks = Collections2.transform(operations, new ModelOperationToTask(extPackage, uiCallback, session, this.context));
+        Collection<ICommandTask> childTasks = operations.stream().map(new ModelOperationToTask(extPackage, uiCallback, session, this.context)).collect(Collectors.toList());
         getChildrenTasks().addAll(childTasks);
     }
 

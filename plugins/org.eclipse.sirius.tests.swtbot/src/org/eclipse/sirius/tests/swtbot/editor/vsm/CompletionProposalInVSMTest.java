@@ -53,8 +53,6 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.commands.ICommandService;
 import org.eclipse.ui.handlers.IHandlerService;
 
-import com.google.common.base.Joiner;
-
 /**
  * Tests completion in MTL interpreted expression and domain class property section.
  * 
@@ -473,7 +471,7 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
 
             @Override
             public String getFailureMessage() {
-                return "Some of the expected metamodels were not found: " + Joiner.on(", ").join(expectedNsURIs);
+                return "Some of the expected metamodels were not found: " + String.join(", ", expectedNsURIs);
             }
         });
         wizardBot.text().setText("*sirius*");

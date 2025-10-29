@@ -15,6 +15,8 @@ package org.eclipse.sirius.business.internal.helper.task;
 import java.text.MessageFormat;
 import java.util.Iterator;
 import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -62,9 +64,6 @@ import org.eclipse.sirius.viewpoint.description.tool.SetValue;
 import org.eclipse.sirius.viewpoint.description.tool.Switch;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.tool.Unset;
-
-import com.google.common.base.Function;
-import com.google.common.collect.Collections2;
 
 /**
  * Transform operation object to task.
@@ -186,7 +185,7 @@ public class ModelOperationToTask implements Function<ModelOperation, ICommandTa
     public ICommandTask apply(ModelOperation from) {
         ICommandTask result = createTask(from);
         if (from instanceof ContainerModelOperation) {
-            result.getChildrenTasks().addAll(Collections2.transform(((ContainerModelOperation) from).getSubModelOperations(), this));
+            result.getChildrenTasks().addAll(((ContainerModelOperation) from).getSubModelOperations().stream().map(this).collect(Collectors.toList()));
         }
         return result;
     }

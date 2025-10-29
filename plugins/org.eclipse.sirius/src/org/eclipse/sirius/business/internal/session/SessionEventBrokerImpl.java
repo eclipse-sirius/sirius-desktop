@@ -17,6 +17,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
@@ -32,10 +34,7 @@ import org.eclipse.sirius.business.api.session.ModelChangeTrigger;
 import org.eclipse.sirius.business.api.session.SessionEventBroker;
 import org.eclipse.sirius.ext.base.Option;
 
-import com.google.common.base.Function;
-import com.google.common.base.Predicate;
 import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Iterables;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Ordering;
 
@@ -90,7 +89,7 @@ public class SessionEventBrokerImpl extends ResourceSetListenerImpl implements S
         return new NotificationFilter.Custom() {
             @Override
             public boolean matches(Notification notification) {
-                return pred.apply(notification);
+                return pred.test(notification);
             }
         };
     }
@@ -121,12 +120,12 @@ public class SessionEventBrokerImpl extends ResourceSetListenerImpl implements S
     }
 
     private void collectScopedListeners(final Notification msg, Multimap<ModelChangeTrigger, Notification> result) {
-        Iterable<NotificationFilter> filteredScoped = Iterables.filter(scopedTriggers.keys(), new Predicate<NotificationFilter>() {
+        Iterable<NotificationFilter> filteredScoped = scopedTriggers.keys().stream().filter(new Predicate<NotificationFilter>() {
             @Override
-            public boolean apply(NotificationFilter input) {
+            public boolean test(NotificationFilter input) {
                 return input.matches(msg);
             }
-        });
+        }).toList();
         for (NotificationFilter predicate : filteredScoped) {
             Collection<ModelChangeTrigger> triggersValidForThisNotification = scopedTriggers.get(predicate);
             if (triggersValidForThisNotification != null) {

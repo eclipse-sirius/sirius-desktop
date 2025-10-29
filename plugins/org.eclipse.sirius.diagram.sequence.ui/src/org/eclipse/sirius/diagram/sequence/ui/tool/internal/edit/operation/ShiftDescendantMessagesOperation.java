@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.BaseSlidableAnchor;
@@ -190,7 +191,7 @@ public class ShiftDescendantMessagesOperation extends ShiftMessagesOperation {
     }
 
     private void shiftAnchor(Edge edge) {
-        boolean isOutgoing = Iterables.contains(Iterables.transform(movedElements, ISequenceElement.NOTATION_VIEW), edge.getSource());
+        boolean isOutgoing = Iterables.contains(movedElements.stream().map(ISequenceElement.NOTATION_VIEW).collect(Collectors.toList()), edge.getSource());
 
         if (isOutgoing) {
             Anchor sourceAnchor = edge.getSourceAnchor();

@@ -177,7 +177,7 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
         // List only the representations files that are not already loaded or
         // that are not currently in loading.
         Iterator<URI> representationsFilesURIsToLoadIterator = Iterators.filter(representationsFilesURIs.iterator(),
-                Predicates.not(Predicates.or(Predicates.in(sessionFileLoading), isAlreadyLoadedPredicate)));
+                java.util.function.Predicate.not(Predicates.or(Predicates.in(sessionFileLoading), isAlreadyLoadedPredicate)));
         if (!representationsFilesURIsToLoadIterator.hasNext()) {
             return;
         }

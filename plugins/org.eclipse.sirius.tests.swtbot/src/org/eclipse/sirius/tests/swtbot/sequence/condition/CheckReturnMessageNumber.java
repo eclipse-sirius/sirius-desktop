@@ -13,6 +13,8 @@
 package org.eclipse.sirius.tests.swtbot.sequence.condition;
 
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
@@ -23,7 +25,6 @@ import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEdi
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 
-import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
@@ -87,7 +88,7 @@ public class CheckReturnMessageNumber extends DefaultCondition {
                 return false;
             }
         };
-        return Iterables.size(Iterables.filter(Iterables.transform(connections, getEditPart), isReturnMessage));
+        return Iterables.size(Iterables.filter(connections.stream().map(getEditPart).collect(Collectors.toList()), isReturnMessage));
     }
 
     public String getFailureMessage() {

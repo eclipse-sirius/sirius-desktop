@@ -20,6 +20,9 @@ import java.util.BitSet;
 import java.util.Collection;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Layer;
@@ -32,9 +35,7 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.DBorderedNodeFigure;
 
-import com.google.common.base.Function;
 import com.google.common.base.Predicates;
-import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
@@ -791,7 +792,7 @@ public class DBorderItemLocator extends BorderItemLocator {
         if (!conflictedRectangle.some() && additionalFiguresForConflictDetection != null && additionalFiguresForConflictDetection.size() > 0) {
             // Translate to same coordinates system as current border node
             // (targetBorderItem)
-            Iterable<IFigure> feedbackFigures = Iterables.transform(additionalFiguresForConflictDetection, new Function<IFigure, IFigure>() {
+            Iterable<IFigure> feedbackFigures = additionalFiguresForConflictDetection.stream().map(new Function<IFigure, IFigure>() {
                 @Override
                 public IFigure apply(IFigure input) {
                     Rectangle newBounds = new Rectangle(input.getBounds());
@@ -800,7 +801,7 @@ public class DBorderItemLocator extends BorderItemLocator {
                     input.setBounds(newBounds);
                     return input;
                 }
-            });
+            }).collect(Collectors.toList());
             conflictedRectangle = conflicts(recommendedRect, Lists.newArrayList(feedbackFigures), portsFiguresToIgnore);
             // Reset to the feedback layer coordinates system
             for (IFigure figure : additionalFiguresForConflictDetection) {
@@ -823,8 +824,7 @@ public class DBorderItemLocator extends BorderItemLocator {
      */
     protected List<IFigure> getBrotherFigures(final IFigure targetBorderItem) {
         @SuppressWarnings("unchecked")
-        Iterable<? extends IFigure> brotherFigures = Iterables.filter(targetBorderItem.getParent().getChildren(),
-                Predicates.and(Predicates.instanceOf(IFigure.class), Predicates.not(Predicates.equalTo(targetBorderItem))));
+        Iterable<? extends IFigure> brotherFigures = targetBorderItem.getParent().getChildren().stream().filter(Predicates.and(Predicates.instanceOf(IFigure.class), Predicate.not(Predicate.isEqual(targetBorderItem)))).toList();
         return Lists.newArrayList(brotherFigures);
     }
 

@@ -14,6 +14,7 @@ package org.eclipse.sirius.diagram.ui.business.internal.query;
 
 import java.util.Objects;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.Routing;
@@ -23,8 +24,6 @@ import org.eclipse.sirius.diagram.EdgeRouting;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.description.FoldingStyle;
-
-import com.google.common.base.Predicate;
 
 /**
  * Queries relative to a DEdge.
@@ -54,7 +53,7 @@ public class DEdgeQuery {
     public static Predicate<DEdge> hasFoldingStyle(final FoldingStyle style) {
         return new Predicate<DEdge>() {
             @Override
-            public boolean apply(DEdge input) {
+            public boolean test(DEdge input) {
                 return new DEdgeQuery(input).getFoldingStyle() == style;
             }
         };

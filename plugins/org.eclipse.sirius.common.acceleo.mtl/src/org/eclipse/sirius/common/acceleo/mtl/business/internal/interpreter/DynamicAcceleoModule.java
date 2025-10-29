@@ -256,7 +256,7 @@ public class DynamicAcceleoModule {
      *         nsURIs.
      */
     private String buildNsURIString(CompilationContext context) {
-        final Set<String> metamodelURIs = Sets.newLinkedHashSet(context.getNsURIs());
+        final Set<String> metamodelURIs = new LinkedHashSet<>(context.getNsURIs());
 
         for (EPackage additionalEPackage : additionalEPackages) {
             metamodelURIs.add(additionalEPackage.getNsURI());
@@ -432,7 +432,7 @@ public class DynamicAcceleoModule {
             if (cachedResult == null) {
                 // Complete extended dependencies if needed, then compile them
                 final Set<URI> extendedImports = compileExtendedDependencies(context, resourceSet);
-                final Set<URI> importsCopy = Sets.newLinkedHashSet(context.getDependencies().values());
+                final Set<URI> importsCopy = new LinkedHashSet<>(context.getDependencies().values());
 
                 // Module built in memory, its qualified name is its name alone
                 final AcceleoCompilationTask compilationTask = new AcceleoCompilationTask(descriptor, Sets.union(importsCopy, extendedImports), queryName, resourceSet);
@@ -668,7 +668,7 @@ public class DynamicAcceleoModule {
      *            compiling or evaluating this module.
      */
     public void registerAdditionalEPackages(Set<EPackage> newPackages) {
-        additionalEPackages = Sets.newLinkedHashSet(newPackages);
+        additionalEPackages = new LinkedHashSet<>(newPackages);
         invalidate();
     }
 

@@ -14,6 +14,7 @@ package org.eclipse.sirius.ui.business.internal.dialect;
 
 import java.lang.ref.SoftReference;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 import org.eclipse.core.runtime.ILogListener;
 import org.eclipse.core.runtime.IStatus;
@@ -39,9 +40,7 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.internal.WorkbenchMessages;
 
-import com.google.common.base.Predicate;
 import com.google.common.base.Throwables;
-import com.google.common.collect.Iterables;
 
 /**
  * A {@link ILogListener} that reacts to specific exceptions by logging them through the active {@link DialectEditor}
@@ -143,24 +142,23 @@ public final class LogThroughActiveDialectEditorLogListener implements ILogListe
                 } else {
                     session = SessionManager.INSTANCE.getSession(lockedElement);
                 }
-                Iterable<Setting> representationsElementsReferencingLockedElement = Iterables.filter(session.getSemanticCrossReferencer().getInverseReferences(lockedElement),
-                        new Predicate<Setting>() {
-                            @Override
-                            public boolean apply(Setting input) {
-                                if (input.getEObject() instanceof DSemanticDecorator) {
-                                    DRepresentation concernedRepresentation = null;
-                                    if (input.getEObject() instanceof DRepresentation) {
-                                        concernedRepresentation = (DRepresentation) input.getEObject();
-                                    } else {
-                                        if (input.getEObject() instanceof DRepresentationElement) {
-                                            concernedRepresentation = new DRepresentationElementQuery((DRepresentationElement) input.getEObject()).getParentRepresentation();
-                                        }
-                                    }
-                                    return concernedRepresentation == activeRepresentation;
+                Iterable<Setting> representationsElementsReferencingLockedElement = session.getSemanticCrossReferencer().getInverseReferences(lockedElement).stream().filter(new Predicate<Setting>() {
+                    @Override
+                    public boolean test(Setting input) {
+                        if (input.getEObject() instanceof DSemanticDecorator) {
+                            DRepresentation concernedRepresentation = null;
+                            if (input.getEObject() instanceof DRepresentation) {
+                                concernedRepresentation = (DRepresentation) input.getEObject();
+                            } else {
+                                if (input.getEObject() instanceof DRepresentationElement) {
+                                    concernedRepresentation = new DRepresentationElementQuery((DRepresentationElement) input.getEObject()).getParentRepresentation();
                                 }
-                                return false;
                             }
-                        });
+                            return concernedRepresentation == activeRepresentation;
+                        }
+                        return false;
+                    }
+                }).toList();
                 isConcerningObjectsOfCurrentEditor = representationsElementsReferencingLockedElement.iterator().hasNext();
             }
             return isConcerningObjectsOfCurrentEditor;

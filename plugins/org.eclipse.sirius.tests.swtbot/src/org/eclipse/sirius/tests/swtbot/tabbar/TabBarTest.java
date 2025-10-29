@@ -21,6 +21,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
 
 import org.eclipse.gmf.runtime.common.ui.action.IDisposableAction;
 import org.eclipse.jface.action.ActionContributionItem;
@@ -67,9 +68,7 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.menus.CommandContributionItem;
 
-import com.google.common.base.Function;
 import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
 
 /**
  * Tests that check the content of the tabbar.
@@ -425,7 +424,7 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
                 }
             };
 
-            assertFieldsAreDisposed(item, Predicates.or(privateEnclosingClassAccessor, acceptedNonDisposedField, staticFieldFilter));
+            assertFieldsAreDisposed(item, privateEnclosingClassAccessor.or(acceptedNonDisposedField).or(staticFieldFilter));
         }
     }
 

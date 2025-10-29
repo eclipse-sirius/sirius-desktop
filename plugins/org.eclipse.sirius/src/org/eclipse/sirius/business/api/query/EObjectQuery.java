@@ -45,7 +45,6 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
 
 /**
  * A class aggregating all the queries (read-only!) having a {@link EObject} as a starting point.
@@ -191,7 +190,7 @@ public class EObjectQuery {
             return Collections.emptySet();
         } else {
             Collection<EObject> result = new LinkedHashSet<>();
-            for (EStructuralFeature.Setting setting : Iterables.filter(xref.getInverseReferences(internalQuery.getEObject()), predicate)) {
+            for (EStructuralFeature.Setting setting : xref.getInverseReferences(internalQuery.getEObject()).stream().filter(predicate).toList()) {
                 result.add(setting.getEObject());
             }
             return result;

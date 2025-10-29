@@ -25,6 +25,8 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -78,7 +80,6 @@ import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonContentProvider;
 import org.eclipse.ui.progress.UIJob;
 
-import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -243,12 +244,12 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
         // Look for opened sessions on parent file : detect main aird for non
         // modeling projects, all aird for modeling ones, semantic file for
         // transient sessions.
-        List<Session> openedSessions = Lists.newArrayList(Iterables.filter(FileSessionFinder.getSelectedSessions(Collections.singletonList(parentFile)), new Predicate<Session>() {
+        List<Session> openedSessions = new ArrayList<>(FileSessionFinder.getSelectedSessions(Collections.singletonList(parentFile)).stream().filter(new Predicate<Session>() {
             @Override
             public boolean apply(Session input) {
                 return input.isOpen();
             }
-        }));
+        }).toList());
 
         // Modeling project case.
         Option<ModelingProject> modelingProject = ModelingProject.asModelingProject(parentProject);
@@ -292,7 +293,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
 
         // Transient case
         if (!SiriusUtil.SESSION_RESOURCE_EXTENSION.equals(parentFile.getFileExtension())) {
-            Iterable<Session> transientSessions = Iterables.filter(openedSessions, new TransientSessionPredicate());
+            Iterable<Session> transientSessions = openedSessions.stream().filter(new TransientSessionPredicate()).toList();
             if (!Iterables.isEmpty(transientSessions)) {
                 if (modelingProject.some() || Iterables.size(transientSessions) > 1) {
                     Iterables.addAll(fileChildren, transientSessions);
@@ -981,7 +982,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
                     return from.getNotifier();
                 }
             };
-            Collection<EObject> impactedElements = Lists.newArrayList(Iterables.filter(Iterables.transform(notifications, notifToNotifier), EObject.class));
+            Collection<EObject> impactedElements = Lists.newArrayList(Iterables.filter(notifications.stream().map(notifToNotifier).collect(Collectors.toList()), EObject.class));
 
             if (!impactedElements.isEmpty()) {
                 boolean needRefresh = shouldRefresh(notifications, impactedElements);

@@ -15,6 +15,7 @@ package org.eclipse.sirius.common.tools.api.util;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.eclipse.emf.common.util.URI;
@@ -23,8 +24,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
-
-import com.google.common.base.Objects;
 
 /**
  * An helper to check EObject equality.</br>
@@ -94,7 +93,7 @@ public final class EqualityHelper extends org.eclipse.emf.ecore.util.EcoreUtil.E
      *         <code>false</code>
      */
     public static boolean areEquals(EObject eObj1, EObject eObj2) {
-        if (Objects.equal(eObj1, eObj2)) {
+        if (Objects.equals(eObj1, eObj2)) {
             return true;
         }
         return haveSameURIFragment(eObj1, eObj2);

@@ -42,7 +42,6 @@ import org.eclipse.sirius.ext.base.Option;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Lists;
@@ -166,7 +165,7 @@ public final class SubEventsHelper {
         for (Lifeline lifeline : coveredLifelines) {
             EventFinder localParentFinder = new EventFinder(lifeline);
             localParentFinder.setReparent(true);
-            localParentFinder.setEventsToIgnore(Predicates.equalTo((ISequenceEvent) frame));
+            localParentFinder.setEventsToIgnore(java.util.function.Predicate.isEqual((ISequenceEvent) frame));
             ISequenceEvent localParent = localParentFinder.findMostSpecificEvent(frame.getVerticalRange());
             if (localParent != null) {
                 coveredEvents.add(localParent);
@@ -249,7 +248,7 @@ public final class SubEventsHelper {
                 }
             };
 
-            Iterable<ISequenceEvent> parents = Iterables.filter(potentialParents, isParentOfCurrent);
+            Iterable<ISequenceEvent> parents = potentialParents.stream().filter(isParentOfCurrent).toList();
             if (Iterables.isEmpty(parents)) {
                 topLevel.add(potentialChild);
             } else if (potentialChild instanceof AbstractFrame && !parentFrames) {
@@ -393,7 +392,7 @@ public final class SubEventsHelper {
         };
 
         @SuppressWarnings("unchecked")
-        Predicate<ISequenceEvent> predicateFilter = Predicates.and(Predicates.not(Predicates.equalTo(child)), inRangePredicate, inCoverage);
-        return Iterables.filter(result, predicateFilter);
+        Predicate<ISequenceEvent> predicateFilter = java.util.function.Predicate.not(java.util.function.Predicate.isEqual(child)).and(inRangePredicate).and(inCoverage);
+        return result.stream().filter(predicateFilter).toList();
     }
 }

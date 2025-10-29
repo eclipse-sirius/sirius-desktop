@@ -14,6 +14,8 @@ package org.eclipse.sirius.tests.unit.diagram.vsm;
 
 import java.text.MessageFormat;
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
@@ -40,9 +42,7 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 
-import com.google.common.base.Function;
 import com.google.common.base.Joiner;
-import com.google.common.collect.Iterables;
 
 /**
  * Test VSM validation. VP-2506, VP-2475, VP-3836
@@ -308,13 +308,13 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
                 "^The required feature 'imageExpression' of 'org.eclipse.sirius.viewpoint.description.impl.SemanticBasedDecorationImpl@.*' must be set$" };
 
         assertEquals("The diagnostic must contain " + expectedMessagesPatterns.length + " validation platformProblemsListener.getErrors(). Returned messages were :\n"
-                + Joiner.on('\n').join(Iterables.transform(children, new Function<Diagnostic, String>() {
+                + Joiner.on('\n').join(children.stream().map(new Function<Diagnostic, String>() {
 
-                    @Override
-                    public String apply(Diagnostic input) {
-                        return input.getMessage();
-                    }
-                })), expectedMessagesPatterns.length, children.size());
+            @Override
+            public String apply(Diagnostic input) {
+                return input.getMessage();
+            }
+        }).collect(Collectors.toList())), expectedMessagesPatterns.length, children.size());
         for (int i = 0; i < expectedMessagesPatterns.length; i++) {
             assertTrue("Unexpected validation error at position " + i + ": " + children.get(i).getMessage(), children.get(i).getMessage().matches(expectedMessagesPatterns[i]));
         }

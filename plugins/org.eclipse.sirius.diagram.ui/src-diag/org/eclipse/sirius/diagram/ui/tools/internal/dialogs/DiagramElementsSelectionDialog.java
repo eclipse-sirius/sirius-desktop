@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Function;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -75,10 +76,8 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.CheckedTreeSelectionDialog;
 
-import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
-import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
@@ -175,7 +174,7 @@ public class DiagramElementsSelectionDialog {
 
         @Override
         public void setInitialElementSelections(List selectedElements) {
-            List<Object> filteredSeletection = Lists.newArrayList(Iterables.filter(selectedElements, Predicates.not(isGrayed)));
+            List<Object> filteredSeletection = new ArrayList<>(selectedElements.stream().filter(java.util.function.Predicate.not(isGrayed)).toList());
             checkedElements.addAll(filteredSeletection);
             super.setInitialElementSelections(filteredSeletection);
         }
@@ -493,7 +492,7 @@ public class DiagramElementsSelectionDialog {
         public boolean isMatchingExpregOrHasMatchingExpregDescendantsCheckedMode(Object element) {
             Predicate<Object> isCheckedElementPredicate = Predicates.in(checkedElements);
             Predicate<Object> isMatchinExpregPredicate = getRegexpMatchPredicate();
-            return isOrHasDescendant(element, Predicates.and(isCheckedElementPredicate, isMatchinExpregPredicate));
+            return isOrHasDescendant(element, isCheckedElementPredicate.and(isMatchinExpregPredicate));
         }
 
         /**
@@ -505,9 +504,9 @@ public class DiagramElementsSelectionDialog {
          *         false otherwise.
          */
         public boolean isMatchingExpregOrHasMatchingExpregDescendantsUncheckedMode(Object element) {
-            Predicate<Object> isUncheckedElementPredicate = Predicates.not(Predicates.in(checkedElements));
+            Predicate<Object> isUncheckedElementPredicate = java.util.function.Predicate.not(Predicates.in(checkedElements));
             Predicate<Object> isMatchinExpregPredicate = getRegexpMatchPredicate();
-            return isOrHasDescendant(element, Predicates.and(isUncheckedElementPredicate, isMatchinExpregPredicate));
+            return isOrHasDescendant(element, isUncheckedElementPredicate.and(isMatchinExpregPredicate));
         }
 
         /**
@@ -535,7 +534,7 @@ public class DiagramElementsSelectionDialog {
             if (matches) {
                 return true;
             } else {
-                return Iterables.any(Arrays.asList(contentProvider.getChildren(element)), new Predicate<Object>() {
+                return Arrays.asList(contentProvider.getChildren(element)).stream().anyMatch(new Predicate<Object>() {
                     @Override
                     public boolean apply(Object input) {
                         return isOrHasDescendant(input, pred);
@@ -715,7 +714,7 @@ public class DiagramElementsSelectionDialog {
      */
     protected Set<Object> getAllSelectedElements() {
         Set<Object> treeElements = getAllChildren(diagram);
-        return Sets.newHashSet(Iterators.filter(treeElements.iterator(), Predicates.and(isSelected, Predicates.not(isGrayed))));
+        return Sets.newHashSet(Iterators.filter(treeElements.iterator(), isSelected.and(java.util.function.Predicate.not(isGrayed))));
     }
 
     /**
@@ -761,7 +760,7 @@ public class DiagramElementsSelectionDialog {
         dialog.setMessage(msg);
         dialog.setInput(diagram);
         dialog.addFilter(new ModeFilter());
-        dialog.setInitialElementSelections(Lists.newArrayList(initialSelection));
+        dialog.setInitialElementSelections(new ArrayList<>(initialSelection));
     }
 
     /**

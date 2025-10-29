@@ -15,14 +15,14 @@ package org.eclipse.sirius.diagram.sequence.tool.internal.template;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.diagram.sequence.template.TTransformer;
 
-import com.google.common.base.Function;
-import com.google.common.collect.Collections2;
 import com.google.common.collect.Iterables;
 
 /**
@@ -163,12 +163,12 @@ public abstract class AbstractRule<F extends TTransformer, T extends EObject> im
      * @return a collection with transformed element.
      */
     public static <FC, TC> Collection<TC> transform(Collection<FC> fromCollection, final Transformer<? super FC, TC> transformer) {
-        return Collections2.transform(fromCollection, new Function<FC, TC>() {
+        return fromCollection.stream().map(new Function<FC, TC>() {
             @Override
             public TC apply(FC input) {
                 return transformer.apply(input);
             }
-        });
+        }).collect(Collectors.toList());
     }
 
 }

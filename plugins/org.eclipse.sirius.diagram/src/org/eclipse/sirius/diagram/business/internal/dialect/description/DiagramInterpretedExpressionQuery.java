@@ -91,7 +91,6 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * Query allowing to get the target domain classes and available packages for a given Interpreted expression. This
@@ -268,7 +267,7 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
         if (target instanceof OrderedTreeLayout && this.feature == DescriptionPackage.Literals.ORDERED_TREE_LAYOUT__CHILDREN_EXPRESSION) {
             Collection<String> possibleSemanticTypes = new LinkedHashSet<>();
             for (AbstractNodeMapping n : ((OrderedTreeLayout) target).getNodeMapping()) {
-                collectTypes(possibleSemanticTypes, Sets.<String> newLinkedHashSet(), n);
+                collectTypes(possibleSemanticTypes, new LinkedHashSet<>(), n);
             }
             refineVariableType(availableVariables, SELF, possibleSemanticTypes);
         }
@@ -325,7 +324,7 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
         Collection<String> possibleSemanticTargets = new LinkedHashSet<>();
         Collection<String> possibleViewTargets = new LinkedHashSet<>();
         Collection<String> possibleContainerTypes = new LinkedHashSet<>();
-        collectPotentialContainerTypes(possibleContainerTypes, Sets.<String> newLinkedHashSet(), tool.getEdgeMappings());
+        collectPotentialContainerTypes(possibleContainerTypes, new LinkedHashSet<>(), tool.getEdgeMappings());
         for (EdgeMapping eMapping : tool.getEdgeMappings()) {
             for (DiagramElementMapping endMapping : eMapping.getSourceMapping()) {
                 collectTypes(possibleSemanticSources, possibleViewSources, endMapping);
@@ -379,7 +378,7 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
                 Collection<String> possibleContainerViewTypes = new LinkedHashSet<>();
                 for (DiagramElementMapping mapping : tool.getMappings()) {
                     collectTypes(possibleSemanticTypes, possibleViewTypes, mapping);
-                    collectPotentialContainerTypes(Sets.<String> newLinkedHashSet(), possibleContainerViewTypes, mapping);
+                    collectPotentialContainerTypes(new LinkedHashSet<>(), possibleContainerViewTypes, mapping);
                 }
                 refineVariableType(availableVariables, IInterpreterSiriusVariables.ELEMENT, possibleSemanticTypes);
                 refineVariableType(availableVariables, "elementView", possibleViewTypes); //$NON-NLS-1$
@@ -640,7 +639,7 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
     private void collectReconnectEdgeDescriptionVariableTypes(Map<String, VariableType> availableVariables) {
         Collection<String> possibleContainerTypes = new LinkedHashSet<>();
         EList<EdgeMapping> mappings = ((ReconnectEdgeDescription) target).getMappings();
-        collectPotentialContainerTypes(possibleContainerTypes, Sets.<String> newLinkedHashSet(), mappings);
+        collectPotentialContainerTypes(possibleContainerTypes, new LinkedHashSet<>(), mappings);
         availableVariables.put(IInterpreterSiriusVariables.CONTAINER, VariableType.fromStrings(possibleContainerTypes));
 
         Set<String> sourceSemanticType = new LinkedHashSet<>();

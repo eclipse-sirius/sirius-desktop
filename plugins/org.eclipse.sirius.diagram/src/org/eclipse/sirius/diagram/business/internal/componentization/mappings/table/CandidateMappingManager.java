@@ -19,6 +19,7 @@ import java.util.Comparator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsManager;
@@ -39,7 +40,6 @@ import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
 
 /**
  * Manage the candidate mappings availability based on activated layers.
@@ -116,7 +116,7 @@ public class CandidateMappingManager {
                 return false;
             }
         };
-        availableCandidates = Sets.filter(candidates, availablePredicate);
+        availableCandidates = candidates.stream().filter(availablePredicate).collect(Collectors.toSet());
     }
 
     private void computeAllMappings() {

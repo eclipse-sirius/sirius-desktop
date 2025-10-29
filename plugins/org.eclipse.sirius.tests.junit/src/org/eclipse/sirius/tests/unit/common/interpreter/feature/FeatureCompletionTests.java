@@ -14,6 +14,8 @@ package org.eclipse.sirius.tests.unit.common.interpreter.feature;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EcoreFactory;
@@ -27,9 +29,6 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.tests.unit.common.interpreter.AbstractCompletionTestCase;
-
-import com.google.common.base.Function;
-import com.google.common.base.Predicate;
 
 /**
  * Tests for the {@link FeatureInterpreter} utility class.
@@ -202,7 +201,7 @@ public class FeatureCompletionTests extends AbstractCompletionTestCase {
 
         Predicate<String> concerned = new Predicate<String>() {
             @Override
-            public boolean apply(String input) {
+            public boolean test(String input) {
                 return true;
             }
         };

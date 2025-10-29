@@ -308,7 +308,7 @@ public class ISequenceEventQuery {
 
     private void populateMovedElements(ISequenceEvent inspectedElement, Collection<ISequenceEvent> moved) {
         moved.add(inspectedElement);
-        for (ISequenceEvent subEvent : Iterables.filter(inspectedElement.getEventsToMoveWith(), Predicates.not(Predicates.in(moved)))) {
+        for (ISequenceEvent subEvent : inspectedElement.getEventsToMoveWith().stream().filter(java.util.function.Predicate.not(Predicates.in(moved))).toList()) {
             populateMovedElements(subEvent, moved);
         }
 

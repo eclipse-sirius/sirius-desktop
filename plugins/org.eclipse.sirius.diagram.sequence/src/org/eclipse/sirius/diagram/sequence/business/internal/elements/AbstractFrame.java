@@ -18,6 +18,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.function.Function;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
@@ -43,9 +44,7 @@ import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.ui.tools.api.profiler.SiriusTasks;
 
-import com.google.common.base.Function;
 import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Ordering;
 
@@ -83,7 +82,7 @@ public abstract class AbstractFrame extends AbstractSequenceNode implements ISeq
      * @return a predicate to check whether a GMF View represents a frame.
      */
     public static Predicate<View> notationPredicate() {
-        return Predicates.or(InteractionUse.notationPredicate(), CombinedFragment.notationPredicate());
+        return InteractionUse.notationPredicate().or(CombinedFragment.notationPredicate());
     }
 
     /**
@@ -176,7 +175,7 @@ public abstract class AbstractFrame extends AbstractSequenceNode implements ISeq
         Range verticalRange = this.getVerticalRange();
         for (Lifeline lifeline : coveredLifelines) {
             EventFinder finder = new EventFinder(lifeline);
-            finder.setEventsToIgnore(Predicates.equalTo((ISequenceEvent) this));
+            finder.setEventsToIgnore(java.util.function.Predicate.isEqual((ISequenceEvent) this));
             ISequenceEvent localParent = finder.findMostSpecificEvent(verticalRange);
             if (localParent != null && localParent.getVerticalRange().includes(verticalRange)) {
                 parentEvents.add(localParent);

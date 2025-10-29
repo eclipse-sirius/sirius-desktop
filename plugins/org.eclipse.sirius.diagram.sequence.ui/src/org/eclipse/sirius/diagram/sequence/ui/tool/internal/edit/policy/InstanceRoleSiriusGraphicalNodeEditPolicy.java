@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy;
 
+import java.util.function.Predicate;
+
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -59,9 +61,6 @@ import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
-
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
 
 /**
  * {@link SiriusGraphicalNodeEditPolicy} specific to sequence to manage creation of message targeting InstanceRole
@@ -260,7 +259,7 @@ public class InstanceRoleSiriusGraphicalNodeEditPolicy extends SiriusGraphicalNo
         Predicate<ISequenceEvent> notParentCombinedFragment = new Predicate<ISequenceEvent>() {
 
             @Override
-            public boolean apply(ISequenceEvent input) {
+            public boolean test(ISequenceEvent input) {
                 if (input instanceof CombinedFragment) {
                     CombinedFragment combinedFragment = (CombinedFragment) input;
                     return !combinedFragment.getVerticalRange().includes(sourceLocation.y);
@@ -269,7 +268,7 @@ public class InstanceRoleSiriusGraphicalNodeEditPolicy extends SiriusGraphicalNo
             }
         };
 
-        for (ISequenceEvent ise : Iterables.filter(lifeline.getSubEvents(), notParentCombinedFragment)) {
+        for (ISequenceEvent ise : lifeline.getSubEvents().stream().filter(notParentCombinedFragment).toList()) {
             firstEventInTargetInstanceRole = Math.min(firstEventInTargetInstanceRole, ise.getVerticalRange().getLowerBound());
         }
 

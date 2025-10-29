@@ -92,7 +92,7 @@ public class ExecutionEditPart extends AbstractSequenceBorderedEditPart {
      */
     @Override
     public IBorderItemLocator createBorderItemLocator(IFigure figure, DDiagramElement vpElementBorderItem) {
-        if (AbstractNodeEvent.viewpointElementPredicate().apply(vpElementBorderItem)) {
+        if (AbstractNodeEvent.viewpointElementPredicate().test(vpElementBorderItem)) {
             return new ExecutionItemLocator(this, figure);
         } else {
             return super.createBorderItemLocator(figure, vpElementBorderItem);
