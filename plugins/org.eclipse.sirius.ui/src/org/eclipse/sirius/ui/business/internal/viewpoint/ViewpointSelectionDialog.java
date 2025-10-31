@@ -364,7 +364,7 @@ public class ViewpointSelectionDialog extends TitleAreaDialog {
      * @return missing dependencies
      */
     private Map<String, Collection<String>> getMissingDependencies() {
-        Set<Viewpoint> selected = Maps.filterValues(selection, java.util.function.Predicate.<Boolean> isEqual(Boolean.TRUE)).keySet();
+        Set<Viewpoint> selected = Maps.filterValues(selection, java.util.function.Predicate.isEqual(Boolean.TRUE)).keySet();
 
         Multimap<String, String> result = HashMultimap.create();
         for (Viewpoint viewpoint : selected) {

@@ -98,7 +98,7 @@ public class State extends AbstractNodeEvent {
     @Override
     public boolean isLogicallyInstantaneous() {
         List<EventEnd> ends = EventEndHelper.findEndsFromSemanticOrdering(this);
-        return ends.size() == 1 && EventEndHelper.PUNCTUAL_COMPOUND_EVENT_END.test(ends.iterator().next());
+        return ends.size() == 1 && EventEndHelper.PUNCTUAL_COMPOUND_EVENT_END.apply(ends.iterator().next());
     }
 
     @Override

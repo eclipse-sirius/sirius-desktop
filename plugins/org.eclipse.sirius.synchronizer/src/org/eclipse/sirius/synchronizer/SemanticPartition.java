@@ -30,18 +30,15 @@ public interface SemanticPartition {
      */
     SemanticPartition NONE = new SemanticPartition() {
 
-        @Override
         public EvaluatedSemanticPartition evaluate(EObject context, CreatedOutput parentElement) {
             return new EvaluatedSemanticPartition() {
 
-                @Override
                 public boolean isElementOf(EObject sem) {
                     return false;
                 }
 
-                @Override
                 public Iterator<EObject> elements() {
-                    return new ArrayList<EObject>().iterator();
+                    return new ArrayList<>().iterator();
                 }
             };
         }

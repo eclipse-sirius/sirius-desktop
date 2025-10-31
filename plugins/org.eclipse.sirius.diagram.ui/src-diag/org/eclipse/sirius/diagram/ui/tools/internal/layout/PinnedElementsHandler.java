@@ -33,7 +33,6 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import org.eclipse.draw2d.geometry.Dimension;
@@ -47,6 +46,7 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 import com.google.common.base.Preconditions;
+import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Sets;
 
@@ -855,7 +855,7 @@ public class PinnedElementsHandler {
     }
 
     private void setCurrentPosition(final IGraphicalEditPart part, final Point position) {
-        Preconditions.checkArgument(!isPinned.test(part), Messages.PinnedElementsHandler_notMovableMsg);
+        Preconditions.checkArgument(!isPinned.apply(part), Messages.PinnedElementsHandler_notMovableMsg);
         if (position.equals(getInitialPosition(part))) {
             currentBounds.remove(part);
         } else {
@@ -886,7 +886,7 @@ public class PinnedElementsHandler {
         debugMessage("----------------------------------------"); //$NON-NLS-1$
         for (IGraphicalEditPart part : allEditParts) {
             debugMessage("- " + part.getClass().getSimpleName() + " (semantic: " + part.resolveSemanticElement() + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-            debugMessage("  Pinned: " + isPinned.test(part)); //$NON-NLS-1$
+            debugMessage("  Pinned: " + isPinned.apply(part)); //$NON-NLS-1$
             debugMessage("  Intrinsic bounds (main figure):              " + part.getFigure().getBounds()); //$NON-NLS-1$
             debugMessage("  Initial bounds (after previous layout pass): " + getInitialBounds(part)); //$NON-NLS-1$
         }
@@ -899,7 +899,7 @@ public class PinnedElementsHandler {
         debugMessage("------------------------------"); //$NON-NLS-1$
         for (IGraphicalEditPart part : currentBounds.keySet()) {
             debugMessage("- " + part.getClass().getSimpleName() + " (semantic: " + part.resolveSemanticElement() + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-            debugMessage("  Pinned: " + isPinned.test(part)); //$NON-NLS-1$
+            debugMessage("  Pinned: " + isPinned.apply(part)); //$NON-NLS-1$
             debugMessage("  Intrinsic bounds (main figure):              " + part.getFigure().getBounds()); //$NON-NLS-1$
             debugMessage("  Initial bounds (after previous layout pass): " + getInitialBounds(part)); //$NON-NLS-1$
             debugMessage("  Computed bounds (after resolution):          " + getCurrentPosition(part)); //$NON-NLS-1$

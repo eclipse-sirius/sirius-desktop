@@ -12,8 +12,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.internal.tool.command.builders;
 
-import java.util.function.Predicate;
-
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.Diagram;
@@ -37,6 +35,7 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
 
+import com.google.common.base.Predicate;
 
 /**
  * Specific GenericToolCommandBuilder.

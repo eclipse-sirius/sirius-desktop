@@ -19,7 +19,6 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
@@ -45,6 +44,7 @@ import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.ui.tools.api.profiler.SiriusTasks;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Ordering;
 
@@ -262,7 +262,7 @@ public abstract class AbstractFrame extends AbstractSequenceNode implements ISeq
             Predicate<View> gateView = new Predicate<View>() {
 
                 @Override
-                public boolean test(View input) {
+                public boolean apply(View input) {
                     return input.getType().equals(Integer.toString(Gate.VISUAL_ID));
                 }
             };

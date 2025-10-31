@@ -13,7 +13,6 @@
 package org.eclipse.sirius.diagram.sequence.internal.tool.command.builders;
 
 import java.util.Collection;
-import java.util.function.Predicate;
 
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.ecore.EObject;
@@ -33,6 +32,7 @@ import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;
 
+import com.google.common.base.Predicate;
 
 /**
  * Specific GenericToolCommandBuilder.
