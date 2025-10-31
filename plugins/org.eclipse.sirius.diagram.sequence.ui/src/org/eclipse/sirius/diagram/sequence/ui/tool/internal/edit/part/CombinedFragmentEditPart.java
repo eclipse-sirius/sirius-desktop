@@ -136,7 +136,7 @@ public class CombinedFragmentEditPart extends DNodeContainerEditPart implements 
 
     @Override
     public IBorderItemLocator createBorderItemLocator(IFigure figure, DDiagramElement vpElementBorderItem) {
-        if (Gate.viewpointElementPredicate().apply(vpElementBorderItem)) {
+        if (Gate.viewpointElementPredicate().test(vpElementBorderItem)) {
             return new GateItemLocator(this, figure);
         } else {
             return super.createBorderItemLocator(figure, vpElementBorderItem);

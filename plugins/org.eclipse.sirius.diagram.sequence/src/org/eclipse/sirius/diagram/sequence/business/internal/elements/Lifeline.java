@@ -14,6 +14,7 @@ package org.eclipse.sirius.diagram.sequence.business.internal.elements;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -35,7 +36,6 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
 import com.google.common.base.Preconditions;
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
@@ -59,9 +59,9 @@ public class Lifeline extends AbstractSequenceNode implements ISequenceEvent {
         INSTANCE;
 
         @Override
-        public boolean apply(DDiagramElement input) {
+        public boolean test(DDiagramElement input) {
             return AbstractSequenceElement.isSequenceDiagramElement(input, DescriptionPackage.eINSTANCE.getExecutionMapping())
-                    && InstanceRole.viewpointElementPredicate().apply((DDiagramElement) input.eContainer());
+                    && InstanceRole.viewpointElementPredicate().test((DDiagramElement) input.eContainer());
         }
     }
 
@@ -73,7 +73,7 @@ public class Lifeline extends AbstractSequenceNode implements ISequenceEvent {
      */
     Lifeline(Node node) {
         super(node);
-        Preconditions.checkArgument(Lifeline.notationPredicate().apply(node), Messages.Lifeline_nonLifelineNode);
+        Preconditions.checkArgument(Lifeline.notationPredicate().test(node), Messages.Lifeline_nonLifelineNode);
     }
 
     /**
@@ -122,7 +122,7 @@ public class Lifeline extends AbstractSequenceNode implements ISequenceEvent {
      */
     public Option<EndOfLife> getEndOfLife() {
         for (View child : Iterables.filter(getNotationView().getChildren(), View.class)) {
-            if (EndOfLife.notationPredicate().apply(child)) {
+            if (EndOfLife.notationPredicate().test(child)) {
                 return ISequenceElementAccessor.getEndOfLife(child);
             }
         }
@@ -291,7 +291,7 @@ public class Lifeline extends AbstractSequenceNode implements ISequenceEvent {
         Predicate<InteractionUse> interactionUseCoveringLifeline = new Predicate<InteractionUse>() {
 
             @Override
-            public boolean apply(InteractionUse input) {
+            public boolean test(InteractionUse input) {
                 return input.computeCoveredLifelines().contains(Lifeline.this);
             }
         };

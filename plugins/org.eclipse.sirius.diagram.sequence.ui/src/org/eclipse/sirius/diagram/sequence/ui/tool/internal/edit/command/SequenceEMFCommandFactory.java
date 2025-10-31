@@ -74,13 +74,13 @@ public final class SequenceEMFCommandFactory extends UndoRedoCapableEMFCommandFa
     @Override
     public Command buildDeleteDiagramElement(DDiagramElement element) {
         Command result = super.buildDeleteDiagramElement(element);
-        if (AbstractNodeEvent.viewpointElementPredicate().apply(element)) {
+        if (AbstractNodeEvent.viewpointElementPredicate().test(element)) {
             Object part = sdep.getViewer().getEditPartRegistry().get(element);
             if (part instanceof ExecutionEditPart) {
                 ExecutionEditPart executionPart = (ExecutionEditPart) part;
                 result = getDeleteExecutionCommand(executionPart, result);
             }
-        } else if (Operand.viewpointElementPredicate().apply(element)) {
+        } else if (Operand.viewpointElementPredicate().test(element)) {
             Object part = sdep.getViewer().getEditPartRegistry().get(element);
             if (part instanceof OperandEditPart) {
                 OperandEditPart operandPart = (OperandEditPart) part;

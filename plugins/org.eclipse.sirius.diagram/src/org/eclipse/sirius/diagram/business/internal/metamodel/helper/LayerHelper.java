@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -43,7 +44,6 @@ import org.eclipse.sirius.diagram.model.business.internal.helper.MappingHelper;
 import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 
 /**
@@ -348,7 +348,7 @@ public final class LayerHelper {
             List<AdditionalLayer> transientLayersToActivate) {
         final Predicate<Layer> isActiveByDefault = new Predicate<Layer>() {
             @Override
-            public boolean apply(final Layer layer) {
+            public boolean test(final Layer layer) {
                 boolean result = true;
                 if (layer instanceof AdditionalLayer) {
                     AdditionalLayer additionalLayer = (AdditionalLayer) layer;
@@ -392,7 +392,7 @@ public final class LayerHelper {
     public static void getMandatoriesAdditionalLayers(DiagramDescription diagDescription, Collection<Viewpoint> viewpointsFilter, List<Layer> layers, List<AdditionalLayer> transientLayers) {
         final Predicate<Layer> isMandatory = new Predicate<Layer>() {
             @Override
-            public boolean apply(final Layer layer) {
+            public boolean test(final Layer layer) {
                 return (layer instanceof AdditionalLayer) && !((AdditionalLayer) layer).isOptional();
             }
         };

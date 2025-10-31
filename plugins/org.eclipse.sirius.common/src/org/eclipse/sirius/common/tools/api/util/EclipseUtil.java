@@ -19,6 +19,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
@@ -35,7 +36,6 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.Messages;
 
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 
 /**
@@ -226,7 +226,7 @@ public final class EclipseUtil {
     private static boolean checkAttribute(final IConfigurationElement element, final String attributeName, final Predicate<String> exceptedAttributeValue) {
         if (attributeName != null) {
             final String namedAttribute = element.getAttribute(attributeName);
-            return namedAttribute != null && (exceptedAttributeValue == null || exceptedAttributeValue.apply(namedAttribute));
+            return namedAttribute != null && (exceptedAttributeValue == null || exceptedAttributeValue.test(namedAttribute));
         }
         return true;
     }

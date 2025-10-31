@@ -13,6 +13,7 @@
 package org.eclipse.sirius.tests.unit.diagram.migration;
 
 import java.util.Iterator;
+import java.util.function.Predicate;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -43,7 +44,6 @@ import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DView;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
@@ -224,7 +224,7 @@ public class FragmentedFilesMigrationTest extends AbstractRepairMigrateTest {
         final DSemanticDiagram diagram = getDiagramFromName(newSession, diagramName);
         final EPackage package2 = Iterables.find(root.getESubpackages(), new Predicate<EPackage>() {
             @Override
-            public boolean apply(EPackage input) {
+            public boolean test(EPackage input) {
                 return "p2".equals(input.getName());
             }
         });

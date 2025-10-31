@@ -18,6 +18,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.common.util.AbstractTreeIterator;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -27,7 +28,6 @@ import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.sirius.ecore.extender.business.internal.common.ExtenderDescriptor;
 import org.eclipse.sirius.ext.emf.EReferencePredicate;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 
@@ -479,7 +479,7 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
         if (activeExtenders == null) {
             activeExtenders = Iterables.filter(extenders, new Predicate<IMetamodelExtender>() {
                 @Override
-                public boolean apply(IMetamodelExtender extender) {
+                public boolean test(IMetamodelExtender extender) {
                     return extender.isActive();
                 }
             });

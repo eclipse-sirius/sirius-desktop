@@ -21,6 +21,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -53,7 +54,6 @@ import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DView;
 import org.osgi.framework.Version;
 
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
@@ -199,7 +199,7 @@ public class NoteAttachmentMigrationTest extends SiriusTestCase {
                     Diagram gmfDiagram = diagramCreationUtil.getAssociatedGMFDiagram();
                     noteAttachmentWithoutSourceOrTarget = Iterators.filter(gmfDiagram.eAllContents(), Predicates.and(Predicates.instanceOf(Connector.class), new Predicate<EObject>() {
                         @Override
-                        public boolean apply(EObject input) {
+                        public boolean test(EObject input) {
                             Connector connector = (Connector) input;
                             if (ViewType.NOTEATTACHMENT.equals(connector.getType())) {
                                 return connector.getSource() == null || connector.getTarget() == null;

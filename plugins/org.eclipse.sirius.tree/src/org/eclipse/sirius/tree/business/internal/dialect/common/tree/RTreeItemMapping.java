@@ -14,6 +14,7 @@ package org.eclipse.sirius.tree.business.internal.dialect.common.tree;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
@@ -22,7 +23,6 @@ import org.eclipse.sirius.synchronizer.Mapping;
 import org.eclipse.sirius.synchronizer.SemanticPartition;
 import org.eclipse.sirius.tree.description.TreeItemMapping;
 
-import com.google.common.base.Function;
 import com.google.common.collect.Collections2;
 
 /**

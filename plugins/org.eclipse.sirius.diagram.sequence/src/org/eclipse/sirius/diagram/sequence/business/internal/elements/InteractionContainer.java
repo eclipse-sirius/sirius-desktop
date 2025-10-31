@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.notation.Node;
@@ -26,7 +27,6 @@ import org.eclipse.sirius.diagram.sequence.business.internal.util.CacheHelper;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.ext.base.Option;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Ordering;
 
@@ -105,7 +105,7 @@ public class InteractionContainer extends AbstractSequenceNode {
         INSTANCE;
 
         @Override
-        public boolean apply(DDiagramElement input) {
+        public boolean test(DDiagramElement input) {
             return AbstractSequenceElement.isSequenceDiagramElement(input, DescriptionPackage.eINSTANCE.getInteractionContainerMapping());
         }
     }
@@ -139,7 +139,7 @@ public class InteractionContainer extends AbstractSequenceNode {
             Predicate<View> gateView = new Predicate<View>() {
 
                 @Override
-                public boolean apply(View input) {
+                public boolean test(View input) {
                     return input.getType().equals(Integer.toString(Gate.VISUAL_ID));
                 }
             };

@@ -20,6 +20,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Predicate;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -93,7 +94,6 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
@@ -453,7 +453,7 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
             // Get the notifications concerning a deletion of an element.
             final Iterable<Notification> removeNotificationsIterable = Iterables.filter(notifications, new Predicate<Notification>() {
                 @Override
-                public boolean apply(Notification notification) {
+                public boolean test(Notification notification) {
                     boolean isRemoveNotif = notification.getEventType() == Notification.REMOVE || notification.getEventType() == Notification.REMOVE_MANY;
                     // Ignore transient feature
                     return isRemoveNotif && !(new NotificationQuery(notification).isTransientNotification());
@@ -464,7 +464,7 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
             for (final Map.Entry<EObject, List<Notification>> entry : notificationsByNotifer.entrySet()) {
                 if (Iterables.any(entry.getValue(), new Predicate<Notification>() {
                     @Override
-                    public boolean apply(Notification notification) {
+                    public boolean test(Notification notification) {
                         boolean expecetedEventType = notification.getEventType() == Notification.SET || notification.getEventType() == Notification.UNSET;
                         expecetedEventType = expecetedEventType || notification.getEventType() == Notification.ADD || notification.getEventType() == Notification.ADD_MANY
                                 || notification.getEventType() == Notification.MOVE;
@@ -480,7 +480,7 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
             for (final EObject changedNotifier : changedNotifiers) {
                 if (!(Iterables.any(removeNotificationsIterable, new Predicate<Notification>() {
                     @Override
-                    public boolean apply(Notification notification) {
+                    public boolean test(Notification notification) {
                         boolean isRemoveOfCurrentElement = notification.getEventType() == Notification.REMOVE && changedNotifier.equals(notification.getOldValue());
                         if (isRemoveOfCurrentElement) {
                             return true;

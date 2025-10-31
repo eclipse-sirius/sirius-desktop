@@ -27,7 +27,8 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
 import com.google.common.base.Preconditions;
-import com.google.common.base.Predicate;
+
+import java.util.function.Predicate;
 
 /**
  * Represents the ObservationPoint marker which can appear to represent a EventEnd location.
@@ -49,7 +50,7 @@ public class ObservationPoint extends AbstractSequenceNode {
         INSTANCE;
 
         @Override
-        public boolean apply(DDiagramElement input) {
+        public boolean test(DDiagramElement input) {
             return AbstractSequenceElement.isSequenceDiagramElement(input, DescriptionPackage.eINSTANCE.getObservationPointMapping());
         }
     }
@@ -62,7 +63,7 @@ public class ObservationPoint extends AbstractSequenceNode {
      */
     ObservationPoint(Node node) {
         super(node);
-        Preconditions.checkArgument(ObservationPoint.notationPredicate().apply(node), Messages.ObservationPoint_nonObservationPointNode);
+        Preconditions.checkArgument(ObservationPoint.notationPredicate().test(node), Messages.ObservationPoint_nonObservationPointNode);
     }
 
     /**

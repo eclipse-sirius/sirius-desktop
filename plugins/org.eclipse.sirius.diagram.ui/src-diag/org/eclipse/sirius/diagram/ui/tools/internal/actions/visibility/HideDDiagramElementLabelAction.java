@@ -21,6 +21,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.command.Command;
@@ -62,7 +63,6 @@ import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
@@ -75,7 +75,7 @@ public class HideDDiagramElementLabelAction extends Action implements IObjectAct
 
     private static Predicate<Object> isEnabledPredicate = new Predicate<Object>() {
         @Override
-        public boolean apply(Object input) {
+        public boolean test(Object input) {
             boolean result = false;
             if (input instanceof IGraphicalEditPart) {
                 result = HideDDiagramElementLabelAction.isEnabled((IGraphicalEditPart) input);
@@ -270,7 +270,7 @@ public class HideDDiagramElementLabelAction extends Action implements IObjectAct
         semanticToLabelsVisualIDToHideMap.clear();
         while (it.hasNext()) {
             final Object obj = it.next();
-            if (isEnabledPredicate.apply(obj)) {
+            if (isEnabledPredicate.test(obj)) {
                 if (obj instanceof EObject) {
                     eObjectSelection.add((EObject) obj);
                 } else if (obj instanceof AbstractDDiagramElementLabelItemProvider && ((AbstractDDiagramElementLabelItemProvider) obj).getDiagramElementTarget().some()) {

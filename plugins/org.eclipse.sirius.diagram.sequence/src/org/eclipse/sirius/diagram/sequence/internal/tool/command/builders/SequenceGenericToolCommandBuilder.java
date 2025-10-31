@@ -35,8 +35,9 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
 
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
+
+import java.util.function.Predicate;
 
 /**
  * Specific GenericToolCommandBuilder.

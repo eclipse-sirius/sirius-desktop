@@ -18,6 +18,7 @@ import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
@@ -37,7 +38,6 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 
@@ -191,7 +191,7 @@ public abstract class AbstractCopyPasteFormatAction extends AbstractDiagramActio
                 final IDiagramDescriptionProvider provider = diagramTypeDescriptor.getDiagramDescriptionProvider();
                 result = new Predicate<DSemanticDecorator>() {
                     @Override
-                    public boolean apply(DSemanticDecorator input) {
+                    public boolean test(DSemanticDecorator input) {
                         return provider.allowsCopyPasteFormat(input);
                     }
                 };

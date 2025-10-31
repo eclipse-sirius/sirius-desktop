@@ -17,6 +17,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
@@ -40,7 +41,6 @@ import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
 import org.eclipse.sirius.ext.emf.AllContents;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Iterables;

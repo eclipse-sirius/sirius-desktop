@@ -38,7 +38,6 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.tool.impl.CreateInstanceImpl;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
 
 /**
  * Constraint ensuring that all Feature Name of the odesign are valid.
@@ -89,7 +88,7 @@ public class ValidFeatureNameConstraint extends AbstractConstraint {
                     returnStatus = ctx.createFailureStatus(expression, variableType);
                 } else if (target instanceof CreateInstanceImpl) {
                     EClassifier eType = optional.get().getEType();
-                    VariableType refType =  VariableType.fromEClassifiers(Sets.newLinkedHashSet(Arrays.asList(eType)));
+                    VariableType refType =  VariableType.fromEClassifiers(new LinkedHashSet<>(Arrays.asList(eType)));
                     returnStatus = checkFeatureWithType(ctx, target, feature, refType);
                 }
             }

@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
+import java.util.function.Function;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
@@ -47,7 +48,6 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.CreateRequestQu
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
-import com.google.common.base.Function;
 import com.google.common.base.Predicates;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Iterables;

@@ -14,6 +14,7 @@ package org.eclipse.sirius.tests.unit.diagram.migration;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -32,7 +33,6 @@ import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.viewpoint.DView;
 import org.osgi.framework.Version;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterators;
 
 /**
@@ -84,7 +84,7 @@ public class MigrationInconsistentGMFVisibilityTest extends SiriusDiagramTestCas
         if (option.some()) {
             Iterator<EObject> iterator = Iterators.filter(option.get().eAllContents(), new Predicate<EObject>() {
                 @Override
-                public boolean apply(EObject arg0) {
+                public boolean test(EObject arg0) {
                     if (arg0 instanceof Node) {
                         int typeInt = SiriusVisualIDRegistry.getVisualID(((Node) arg0).getType());
                         return typeInt == DNode4EditPart.VISUAL_ID;

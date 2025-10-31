@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
@@ -29,7 +30,6 @@ import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAutho
 import org.eclipse.sirius.ecore.extender.business.internal.Messages;
 import org.eclipse.sirius.ext.emf.EReferencePredicate;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterators;
 
 /**
@@ -55,7 +55,7 @@ public class ReferencesResolver {
     public ReferencesResolver(ResourceSet set, final EReferencePredicate filter) {
         this.filter = new Predicate<EReference>() {
             @Override
-            public boolean apply(EReference input) {
+            public boolean test(EReference input) {
                 return filter.apply(input);
             }
         };

@@ -64,7 +64,6 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription;
 
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
@@ -230,7 +229,7 @@ public class ToolManagement {
      */
     public void clearFilters() {
         listenersManager.init(dDiagram);
-        Collection<ToolFilter> filtersCopy = Lists.newArrayList(filters);
+        Collection<ToolFilter> filtersCopy = new ArrayList<>(filters);
         for (final ToolFilter filter : filtersCopy) {
             if (filter instanceof ToolFilterFromDescription) {
                 removeToolFilter(filter);
@@ -468,10 +467,10 @@ public class ToolManagement {
         // not)
         Set<Layer> activatedLayers = new HashSet<Layer>(new DDiagramQuery(dDiagram).getAllActivatedLayers());
         // Get the list of activated layers (of selected viewpoints)
-        activatedLayersOfSelectedViewpoints = Lists.newArrayList(Sets.intersection(layersInActivatedViewpoints, activatedLayers));
+        activatedLayersOfSelectedViewpoints = new ArrayList<>(Sets.intersection(layersInActivatedViewpoints, activatedLayers));
         // Get the list of deactivated layers (deactivated layers of selected
         // viewpoints and all layers of deselected viewpoints)
-        deactivatedLayersAndAllLayersOfDeselectedViewpoints = Lists.newArrayList(Sets.symmetricDifference(layersInActivatedViewpoints, activatedLayers));
+        deactivatedLayersAndAllLayersOfDeselectedViewpoints = new ArrayList<>(Sets.symmetricDifference(layersInActivatedViewpoints, activatedLayers));
         Map<String, ToolSectionInstance> idToToolSection = new HashMap<>();
         // Update the filters
         for (final ToolSection section : new DiagramComponentizationManager().getRootPaletteSections(session.getSelectedViewpoints(false), dDiagram.getDescription())) {
@@ -511,7 +510,7 @@ public class ToolManagement {
 
             }
         }
-        for (final Layer layer : Lists.newArrayList(deactivatedLayersAndAllLayersOfDeselectedViewpoints)) {
+        for (final Layer layer : new ArrayList<>(deactivatedLayersAndAllLayersOfDeselectedViewpoints)) {
             EList<ToolSection> toolSections = layer.getToolSections();
             for (ToolSection toolSection : toolSections) {
                 ToolSectionInstance toolSectionInstance = idToToolSection.get(ToolManagement.getId(toolSection));

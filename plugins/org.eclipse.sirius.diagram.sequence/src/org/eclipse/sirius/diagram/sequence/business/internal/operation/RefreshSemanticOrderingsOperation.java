@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.function.Function;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
@@ -39,7 +40,6 @@ import org.eclipse.sirius.diagram.sequence.tool.internal.Messages;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 
-import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
@@ -167,7 +167,7 @@ public class RefreshSemanticOrderingsOperation extends AbstractModelChangeOperat
         try {
             RuntimeLoggerInterpreter loggerInterpreter = RuntimeLoggerManager.INSTANCE.decorate(interpreter);
             Collection<EObject> result = loggerInterpreter.evaluateCollection(sequenceDDiagram.getTarget(), getSequenceDescription(), expressionAttribute);
-            return Lists.newArrayList(result);
+            return new ArrayList<>(result);
         } finally {
             if (declareEventEndsVariable) {
                 interpreter.unSetVariable(EVENT_ENDS_TO_SORT_VARIABLE);

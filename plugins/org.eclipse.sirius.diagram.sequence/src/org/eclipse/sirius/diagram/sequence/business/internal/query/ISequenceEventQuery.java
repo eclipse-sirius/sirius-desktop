@@ -19,6 +19,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.function.Predicate;
 
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.Node;
@@ -30,7 +31,6 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceE
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
 import org.eclipse.sirius.ext.base.Option;
 
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -150,7 +150,7 @@ public class ISequenceEventQuery {
 
     private void addAllDescendants(ISequenceEvent ise, Predicate<? super View> predicate, Collection<ISequenceEvent> parts) {
         View element = ise.getNotationView();
-        if (predicate.apply(element)) {
+        if (predicate.test(element)) {
             Option<ISequenceEvent> iSequenceEvent = ISequenceElementAccessor.getISequenceEvent(element);
             if (iSequenceEvent.some()) {
                 parts.add(iSequenceEvent.get());

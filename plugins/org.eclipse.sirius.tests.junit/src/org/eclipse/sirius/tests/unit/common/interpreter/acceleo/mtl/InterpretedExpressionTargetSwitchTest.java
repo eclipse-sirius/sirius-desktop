@@ -20,6 +20,7 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
@@ -66,7 +67,6 @@ import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRul
 import org.eclipse.sirius.viewpoint.description.validation.ValidationFix;
 import org.eclipse.sirius.viewpoint.description.validation.ViewValidationRule;
 
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Iterables;
@@ -511,7 +511,7 @@ public class InterpretedExpressionTargetSwitchTest extends SiriusTestCase {
                 // in diagrams tools sections (type compatibility).
                 Predicate<EClass> toRemove = new Predicate<EClass>() {
                     @Override
-                    public boolean apply(EClass input) {
+                    public boolean test(EClass input) {
                         boolean abstratToolDesc = ToolPackage.eINSTANCE.getAbstractToolDescription().isSuperTypeOf(input);
                         boolean popup = org.eclipse.sirius.tree.description.DescriptionPackage.eINSTANCE.getTreePopupMenu() == input;
                         boolean interDialect = ToolPackage.eINSTANCE.getRepresentationCreationDescription().isSuperTypeOf(input)

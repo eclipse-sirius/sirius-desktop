@@ -14,6 +14,7 @@ package org.eclipse.sirius.table.ui.tools.internal.editor.action;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -31,7 +32,6 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.ListSelectionDialog;
 import org.eclipse.ui.dialogs.SelectionDialog;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 
 /**
@@ -127,7 +127,7 @@ public class HideRevealColumnsAction extends AbstractHideRevealAction<DColumn> {
         return Collections2.filter(getAllElements(), new Predicate<DColumn>() {
 
             @Override
-            public boolean apply(final DColumn input) {
+            public boolean test(final DColumn input) {
                 return input.isVisible();
             }
         });

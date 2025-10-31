@@ -13,6 +13,8 @@
 package org.eclipse.sirius.tests.swtbot.sequence.condition;
 
 import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
@@ -23,8 +25,6 @@ import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEdi
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 
-import com.google.common.base.Function;
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
@@ -75,12 +75,12 @@ public class CheckReturnMessageNumber extends DefaultCondition {
         };
 
         Predicate<ConnectionEditPart> isReturnMessage = new Predicate<ConnectionEditPart>() {
-            public boolean apply(ConnectionEditPart input) {
+            public boolean test(ConnectionEditPart input) {
                 if (input instanceof SequenceMessageEditPart) {
                     SequenceMessageEditPart smep = (SequenceMessageEditPart) input;
 
                     Option<Message> message = ISequenceElementAccessor.getMessage(smep.getNotationView());
-                    if (Message.viewpointElementPredicate().apply(smep.resolveDiagramElement()) && message.some()) {
+                    if (Message.viewpointElementPredicate().test(smep.resolveDiagramElement()) && message.some()) {
                         return Message.Kind.REPLY.equals(message.get().getKind());
                     }
                 }

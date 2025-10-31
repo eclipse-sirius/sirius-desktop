@@ -13,6 +13,7 @@
 package org.eclipse.sirius.tests.swtbot.tabbar;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.bindings.keys.IKeyLookup;
@@ -38,7 +39,6 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarDropDownButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
@@ -205,7 +205,7 @@ public class ResetToDefaultFiltersActionTests extends AbstractSiriusSwtBotGefTes
     private int getNbOfVisibleDiagramElements(DDiagram dDiagram) {
         return Iterables.size(Iterables.filter(dDiagram.getOwnedDiagramElements(), new Predicate<DDiagramElement>() {
             @Override
-            public boolean apply(DDiagramElement input) {
+            public boolean test(DDiagramElement input) {
                 return input.isVisible();
             }
         }));

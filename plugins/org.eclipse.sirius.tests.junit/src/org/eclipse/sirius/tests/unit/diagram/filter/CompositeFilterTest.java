@@ -13,6 +13,7 @@
 package org.eclipse.sirius.tests.unit.diagram.filter;
 
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -42,7 +43,6 @@ import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -1018,7 +1018,7 @@ public class CompositeFilterTest extends SiriusDiagramTestCase {
 
     private List<DDiagramElement> getDiagramElements(final EClass type) {
         Predicate<DDiagramElement> expectedType = new Predicate<DDiagramElement>() {
-            public boolean apply(DDiagramElement input) {
+            public boolean test(DDiagramElement input) {
                 return type.isInstance(input.getTarget());
             }
         };

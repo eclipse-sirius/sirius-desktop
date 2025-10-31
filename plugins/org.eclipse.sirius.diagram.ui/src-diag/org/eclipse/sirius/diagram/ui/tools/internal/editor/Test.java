@@ -4,8 +4,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
+import java.util.function.Function;
 
-import com.google.common.base.Function;
 import com.google.common.collect.ImmutableSortedSet;
 import com.google.common.collect.Ordering;
 
@@ -38,7 +38,7 @@ class Test {
     }
 
     public SortedSet<String> testNoGuava(List<String> input) {
-        java.util.function.Function<String, Integer> getValueToCompareFunction = new java.util.function.Function<String, Integer>() {
+        Function<String, Integer> getValueToCompareFunction = new Function<String, Integer>() {
             @Override
             public Integer apply(String from) {
                 return from.length();

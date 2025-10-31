@@ -17,6 +17,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.AbstractDNode;
@@ -35,7 +36,6 @@ import org.eclipse.sirius.diagram.ui.tools.internal.format.semantic.SemanticNode
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Maps;
 
 /**
@@ -68,7 +68,7 @@ public class SiriusFormatDataManagerForSemanticElements extends AbstractSiriusFo
          * {@inheritDoc}
          */
         @Override
-        public boolean apply(final EObject input) {
+        public boolean test(final EObject input) {
             return input.eContainer() == null;
         }
     };

@@ -13,6 +13,7 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility;
 
 import java.util.Collection;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.gef.Disposable;
@@ -35,7 +36,6 @@ import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuth
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ext.base.Option;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
@@ -47,7 +47,7 @@ public class TabbarRevealLabelsAction extends RevealOutlineLabelsAction implemen
 
     private static Predicate<Object> isEnabledPredicate = new Predicate<Object>() {
         @Override
-        public boolean apply(Object input) {
+        public boolean test(Object input) {
             boolean result = false;
             if (input instanceof IGraphicalEditPart) {
                 result = TabbarRevealLabelsAction.isEnabled((IGraphicalEditPart) input);

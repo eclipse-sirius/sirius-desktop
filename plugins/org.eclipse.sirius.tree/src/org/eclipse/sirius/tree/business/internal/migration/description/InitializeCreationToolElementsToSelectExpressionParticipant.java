@@ -13,6 +13,7 @@
 package org.eclipse.sirius.tree.business.internal.migration.description;
 
 import java.util.Iterator;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -30,7 +31,6 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.osgi.framework.Version;
 
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
@@ -88,7 +88,7 @@ public class InitializeCreationToolElementsToSelectExpressionParticipant extends
                     // Add the Java Extension to use the service:
                     if (!Iterables.any(viewpoint.getOwnedJavaExtensions(), new Predicate<JavaExtension>() {
                         @Override
-                        public boolean apply(JavaExtension input) {
+                        public boolean test(JavaExtension input) {
                             return JAVA_EXTENSION_QUALIFIED_NAME.equals(input.getQualifiedClassName());
                         }
                     })) {

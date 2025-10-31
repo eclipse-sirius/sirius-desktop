@@ -18,6 +18,7 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Predicate;
 
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.Node;
@@ -39,7 +40,6 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
 import com.google.common.base.Preconditions;
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
@@ -53,7 +53,7 @@ public class Execution extends AbstractNodeEvent {
      */
     public static final Predicate<ISequenceEvent> NO_REPARENTABLE_EVENTS = new Predicate<ISequenceEvent>() {
         @Override
-        public boolean apply(ISequenceEvent input) {
+        public boolean test(ISequenceEvent input) {
             return input instanceof AbstractFrame || input instanceof Operand || input instanceof Message;
         }
     };
@@ -70,9 +70,9 @@ public class Execution extends AbstractNodeEvent {
         INSTANCE;
 
         @Override
-        public boolean apply(DDiagramElement input) {
+        public boolean test(DDiagramElement input) {
             return AbstractSequenceElement.isSequenceDiagramElement(input, DescriptionPackage.eINSTANCE.getExecutionMapping())
-                    && !InstanceRole.viewpointElementPredicate().apply((DDiagramElement) input.eContainer());
+                    && !InstanceRole.viewpointElementPredicate().test((DDiagramElement) input.eContainer());
         }
     }
 
@@ -84,7 +84,7 @@ public class Execution extends AbstractNodeEvent {
      */
     Execution(Node node) {
         super(node);
-        Preconditions.checkArgument(Execution.notationPredicate().apply(node), Messages.Execution_nonExecutionNode);
+        Preconditions.checkArgument(Execution.notationPredicate().test(node), Messages.Execution_nonExecutionNode);
     }
 
     /**

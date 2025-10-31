@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 import org.eclipse.draw2d.Figure;
@@ -91,10 +92,8 @@ import org.eclipse.sirius.ext.draw2d.figure.HorizontalGuide;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.swt.graphics.Color;
 
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Specialization of the default policy for executions, in order to validate and execute the specific resize and move
@@ -406,20 +405,20 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
         final EObject sem = self.getSemanticTargetElement().get();
         final Predicate<SingleEventEnd> toMove = new Predicate<SingleEventEnd>() {
             @Override
-            public boolean apply(SingleEventEnd input) {
+            public boolean test(SingleEventEnd input) {
                 return !input.getSemanticEvent().equals(sem);
             }
         };
         final Predicate<EventEnd> moved = new Predicate<EventEnd>() {
             @Override
-            public boolean apply(EventEnd input) {
+            public boolean test(EventEnd input) {
                 return EventEndHelper.getSingleEventEnd(input, sem).isStart() == top;
             }
         };
 
         SequenceDiagram sequenceDiagram = self.getDiagram();
         for (CompoundEventEnd cee : Iterables.filter(Iterables.filter(findEnds, moved), CompoundEventEnd.class)) {
-            for (SingleEventEnd see : Iterables.filter(Lists.newArrayList(cee.getEventEnds()), toMove)) {
+            for (SingleEventEnd see : Iterables.filter(new ArrayList<>(cee.getEventEnds()), toMove)) {
                 final ISequenceEvent ise = EventEndHelper.findISequenceEvent(see, sequenceDiagram);
                 if (ise == null) {
                     continue;
@@ -500,7 +499,7 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
 
         Predicate<EventEnd> filterCompoundEventEnd = new Predicate<EventEnd>() {
             @Override
-            public boolean apply(EventEnd input) {
+            public boolean test(EventEnd input) {
                 return input instanceof CompoundEventEnd;
             }
         };

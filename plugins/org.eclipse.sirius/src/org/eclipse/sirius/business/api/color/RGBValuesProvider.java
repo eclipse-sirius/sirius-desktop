@@ -26,8 +26,9 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.FixedColor;
 import org.eclipse.sirius.viewpoint.description.InterpolatedColor;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
+
+import java.util.function.Predicate;
 
 /**
  * Class responsible to provide RGBValues from the color definitions.
@@ -44,7 +45,7 @@ public class RGBValuesProvider {
      * Predicate that validate a ColorSet.
      */
     private static final Predicate<ColorStep> WELL_DEFINED_STEP = new Predicate<ColorStep>() {
-        public boolean apply(ColorStep input) {
+        public boolean test(ColorStep input) {
             return input.getAssociatedColor() != null && input.getAssociatedValue() != null && !"".equals(input.getAssociatedValue()); //$NON-NLS-1$
         }
 

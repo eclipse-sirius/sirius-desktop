@@ -14,6 +14,7 @@ package org.eclipse.sirius.ui.tools.internal.views.common.navigator;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
@@ -61,7 +62,6 @@ import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonLabelProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
@@ -363,7 +363,7 @@ public class SiriusCommonLabelProvider extends ColumnLabelProvider implements IC
 
         return Lists.newArrayList(Iterables.filter(FileSessionFinder.getSelectedSessions(Collections.singletonList(file)), new Predicate<Session>() {
             @Override
-            public boolean apply(Session input) {
+            public boolean test(Session input) {
                 return input.isOpen();
             }
         }));

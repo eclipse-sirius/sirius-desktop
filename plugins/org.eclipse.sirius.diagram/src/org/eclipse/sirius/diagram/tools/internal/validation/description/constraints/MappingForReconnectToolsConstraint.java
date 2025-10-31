@@ -15,6 +15,7 @@ package org.eclipse.sirius.diagram.tools.internal.validation.description.constra
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashSet;
+import java.util.function.Predicate;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
@@ -29,7 +30,6 @@ import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription;
 import org.eclipse.sirius.diagram.description.tool.ReconnectionKind;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
@@ -65,7 +65,7 @@ public class MappingForReconnectToolsConstraint extends AbstractModelConstraint 
     private Collection<String> getReconnectOnRegions(ReconnectEdgeDescription tool) {
         Predicate<ContainerMapping> isRegionMapping = new Predicate<ContainerMapping>() {
             @Override
-            public boolean apply(ContainerMapping input) {
+            public boolean test(ContainerMapping input) {
                 return new ContainerMappingQuery(input).isRegion();
             }
         };

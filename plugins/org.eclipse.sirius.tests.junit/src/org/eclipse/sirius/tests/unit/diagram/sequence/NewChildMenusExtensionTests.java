@@ -13,6 +13,7 @@
 package org.eclipse.sirius.tests.unit.diagram.sequence;
 
 import java.util.Collection;
+import java.util.function.Function;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -46,7 +47,6 @@ import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
-import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 
 /**

@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.function.Predicate;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -42,7 +43,6 @@ import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DView;
 
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
@@ -269,7 +269,7 @@ class SessionResourcesTracker {
 
         final Iterable<Resource> newSemanticResourcesIterator = Iterables.filter(resourcesAfterLoadOfSession, new Predicate<Resource>() {
             @Override
-            public boolean apply(Resource resource) {
+            public boolean test(Resource resource) {
                 // Remove empty resource and the Sirius environment
                 return !resource.getContents().isEmpty() && !(new URIQuery(resource.getURI()).isEnvironmentURI());
             }

@@ -14,8 +14,10 @@ package org.eclipse.sirius.business.api.control;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -37,7 +39,6 @@ import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Sets;
 
 /**
  * An extension of the basic {@link UncontrolCommand} to handle both the semantic model and the corresponding Sirius
@@ -227,7 +228,7 @@ public class SiriusUncontrolCommand extends UncontrolCommand {
     }
 
     private Collection<DRepresentationDescriptor> collectExistingRepresentations(final Resource resource) {
-        return Sets.newHashSet(Iterators.filter(EcoreUtil.getAllProperContents(resource, true), DRepresentationDescriptor.class));
+        return new HashSet<>(Arrays.asList(Iterators.filter(EcoreUtil.getAllProperContents(resource, true), DRepresentationDescriptor.class)));
     }
 
     private void markContainerResourceAsModified(final EObject obj) {

@@ -13,6 +13,7 @@
 package org.eclipse.sirius.tests.unit.diagram.action;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EPackage;
@@ -32,7 +33,6 @@ import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.ui.IEditorPart;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
@@ -62,7 +62,7 @@ public class DeleteWithoutToolFromModelActionTests extends SiriusDiagramTestCase
 
     private Predicate<DEdge> relation = new Predicate<DEdge>() {
 
-        public boolean apply(DEdge input) {
+        public boolean test(DEdge input) {
             IEdgeMapping actualMapping = input.getActualMapping();
             return !new IEdgeMappingQuery(actualMapping).getEdgeMapping().get().isUseDomainElement();
         }
