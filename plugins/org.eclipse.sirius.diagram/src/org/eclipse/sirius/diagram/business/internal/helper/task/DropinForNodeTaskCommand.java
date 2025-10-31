@@ -12,8 +12,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.internal.helper.task;
 
-import java.util.Objects;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
@@ -31,6 +29,8 @@ import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.model.business.internal.helper.MappingHelper;
 import org.eclipse.sirius.diagram.tools.api.Messages;
 import org.eclipse.sirius.tools.api.SiriusPlugin;
+
+import com.google.common.base.Objects;
 
 /**
  * Default command for dropin node.
@@ -120,7 +120,7 @@ public class DropinForNodeTaskCommand extends AbstractCommandTask {
         } else if (abstractDNode instanceof DNode) {
             ((DNodeList) target).getOwnedBorderedNodes().add((DNode) abstractDNode);
         }
-        if (!Objects.equals(abstractDNode, droppedDiagramElement)) {
+        if (!Objects.equal(abstractDNode, droppedDiagramElement)) {
             if (moveEdges) {
                 DnDTasksOperations.moveEdges(target, semanticContainer, droppedDiagramElement, abstractDNode);
             }

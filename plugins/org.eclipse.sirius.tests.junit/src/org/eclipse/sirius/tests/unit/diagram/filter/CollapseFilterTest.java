@@ -13,7 +13,6 @@
 package org.eclipse.sirius.tests.unit.diagram.filter;
 
 import java.util.List;
-import java.util.function.Predicate;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.draw2d.IFigure;
@@ -40,6 +39,7 @@ import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 
+import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -468,7 +468,7 @@ public class CollapseFilterTest extends SiriusDiagramTestCase {
     private List<DDiagramElement> getDiagramElements(final EClass type) {
         Predicate<DDiagramElement> expectedType = new Predicate<DDiagramElement>() {
             @Override
-            public boolean test(DDiagramElement input) {
+            public boolean apply(DDiagramElement input) {
                 return type.isInstance(input.getTarget());
             }
         };

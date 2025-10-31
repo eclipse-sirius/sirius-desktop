@@ -24,9 +24,8 @@ import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.junit.Assert;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-
-import java.util.function.Predicate;
 
 /**
  * Tests for ensuring that the Tree Item Edition Tool works as expected.
@@ -82,7 +81,7 @@ public class TreeItemEditionToolTest extends TreeTestCase {
         // Step 1 : getting the semantic element to edit
         EPackage pkgToEdit = Iterables.filter(semanticModel.getESubpackages(), new Predicate<EPackage>() {
 
-            public boolean test(EPackage input) {
+            public boolean apply(EPackage input) {
                 return elementNameP2.equals(input.getName());
             }
         }).iterator().next();
@@ -158,7 +157,7 @@ public class TreeItemEditionToolTest extends TreeTestCase {
         // Step 1 : getting the semantic elements to edit
         EPackage pkgToEdit = Iterables.filter(semanticModel.getESubpackages(), new Predicate<EPackage>() {
 
-            public boolean test(EPackage input) {
+            public boolean apply(EPackage input) {
                 return elementNameP2.equals(input.getName());
             }
         }).iterator().next();

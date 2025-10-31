@@ -17,7 +17,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.function.Predicate;
 
 import org.eclipse.core.commands.common.CommandException;
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -84,6 +83,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.handlers.IHandlerService;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
@@ -492,7 +492,7 @@ public class DTableMenuListener implements IMenuListener {
         if (selectedLines != null && !selectedLines.isEmpty()) {
             Predicate<DLine> isVisible = new Predicate<DLine>() {
                 @Override
-                public boolean test(DLine input) {
+                public boolean apply(DLine input) {
                     return input.isVisible();
                 }
             };

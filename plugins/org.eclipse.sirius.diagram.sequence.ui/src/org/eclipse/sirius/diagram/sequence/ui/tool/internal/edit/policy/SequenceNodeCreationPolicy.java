@@ -240,8 +240,8 @@ public class SequenceNodeCreationPolicy extends NodeCreationEditPolicy {
     }
 
     private boolean isCreatingOperandInCombinedFragment(ContainerCreationDescription tool, DDiagramElementContainer viewNodeContainer) {
-        return tool instanceof OperandCreationTool && Operand.viewpointElementPredicate().test(viewNodeContainer)
-                && CombinedFragment.viewpointElementPredicate().test((DDiagramElement) viewNodeContainer.eContainer());
+        return tool instanceof OperandCreationTool && Operand.viewpointElementPredicate().apply(viewNodeContainer)
+                && CombinedFragment.viewpointElementPredicate().apply((DDiagramElement) viewNodeContainer.eContainer());
     }
 
     private int computeBottomY(SequenceDDiagram diagram, Point location, EventEnd startingEndSuccessor) {

@@ -127,6 +127,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 /**
@@ -540,7 +541,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         // Computation of the bendpoints locations before reconnection using
         // data from the gmf model instead of the figure (unreliable as it
         // updates during reconnection)
-        ArrayList<Point> previousBendpoints = new ArrayList<>();
+        ArrayList<Point> previousBendpoints = Lists.<Point> newArrayList();
         if (bendpoints instanceof RelativeBendpoints && sourceEndAnchorLocation != null && targetEndAnchorLocation != null) {
             RelativeBendpoints relativeBendpoints = (RelativeBendpoints) bendpoints;
             List<?> points = relativeBendpoints.getPoints();

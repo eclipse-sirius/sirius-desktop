@@ -15,7 +15,6 @@ package org.eclipse.sirius.diagram.sequence.ui.business.internal.migration;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.function.Predicate;
 
 import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Diagram;
@@ -54,6 +53,7 @@ import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DView;
 import org.osgi.framework.Version;
 
+import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
@@ -252,7 +252,7 @@ public class SequenceDiagramRepresentationsFileMigrationParticipant extends Abst
      */
     private static final class IsNode implements Predicate<Node> {
         @Override
-        public boolean test(Node input) {
+        public boolean apply(Node input) {
             return new ViewQuery(input).isNode();
         }
     }
@@ -265,7 +265,7 @@ public class SequenceDiagramRepresentationsFileMigrationParticipant extends Abst
      */
     private static final class IsCollapsedNode implements Predicate<Node> {
         @Override
-        public boolean test(Node input) {
+        public boolean apply(Node input) {
             return new NodeQuery(input).isCollapsed();
         }
     }
@@ -278,7 +278,7 @@ public class SequenceDiagramRepresentationsFileMigrationParticipant extends Abst
      */
     private static final class IsDirectlyCollapsedNode implements Predicate<Node> {
         @Override
-        public boolean test(Node input) {
+        public boolean apply(Node input) {
             boolean apply = false;
 
             int type = SiriusVisualIDRegistry.getVisualID(input.getType());

@@ -72,6 +72,6 @@ public class MappingHiearchyTable {
                 hasChildren.add(mapping.getSuper().get());
             }
         }
-        return Sets.difference(new LinkedHashSet<>(mappings), hasChildren);
+        return Sets.difference(Sets.newLinkedHashSet(mappings), hasChildren);
     }
 }

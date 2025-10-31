@@ -13,7 +13,6 @@
 package org.eclipse.sirius.tests.unit.api.vsm.editor;
 
 import java.util.Collection;
-import java.util.function.Predicate;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.edit.command.CommandParameter;
@@ -29,6 +28,7 @@ import org.eclipse.sirius.viewpoint.description.tool.GroupMenu;
 import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
 import org.eclipse.sirius.viewpoint.description.tool.PopupMenu;
 
+import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 
@@ -127,7 +127,7 @@ public class PopupMenuTest extends TestCase {
     protected int getNbChildren(final Collection<?> newChildDescriptors, final Class<? extends Object> classOfValue) {
         Predicate<Object> and = Predicates.and(Predicates.instanceOf(CommandParameter.class), new Predicate<Object>() {
             @Override
-            public boolean test(Object input) {
+            public boolean apply(Object input) {
                 return classOfValue.isInstance(((CommandParameter) input).getValue());
             }
         });

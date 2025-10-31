@@ -30,8 +30,7 @@ import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.RGBValues;
 
 import com.google.common.base.Preconditions;
-
-import java.util.function.Predicate;
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
@@ -53,7 +52,7 @@ public class InstanceRole extends AbstractSequenceNode {
         INSTANCE;
 
         @Override
-        public boolean test(DDiagramElement input) {
+        public boolean apply(DDiagramElement input) {
             return AbstractSequenceElement.isSequenceDiagramElement(input, DescriptionPackage.eINSTANCE.getInstanceRoleMapping());
         }
     }
@@ -66,7 +65,7 @@ public class InstanceRole extends AbstractSequenceNode {
      */
     InstanceRole(Node node) {
         super(node);
-        Preconditions.checkArgument(InstanceRole.notationPredicate().test(node), Messages.InstanceRole_nonInstanceRoleNode);
+        Preconditions.checkArgument(InstanceRole.notationPredicate().apply(node), Messages.InstanceRole_nonInstanceRoleNode);
 
     }
 

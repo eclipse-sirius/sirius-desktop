@@ -15,7 +15,6 @@ package org.eclipse.sirius.tests.unit.diagram.style;
 import java.awt.Dimension;
 import java.util.List;
 import java.util.Objects;
-import java.util.function.Predicate;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -38,6 +37,7 @@ import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
@@ -270,7 +270,7 @@ public abstract class AbstractNodeSizeTest extends SiriusDiagramTestCase {
             this.nodeType = Objects.requireNonNull(nodeType);
         }
 
-        public boolean test(DNode input) {
+        public boolean apply(DNode input) {
             boolean expectedType = false;
             if (nodeType.some()) {
                 if (nodeType.get().isBordered()) {
@@ -293,7 +293,7 @@ public abstract class AbstractNodeSizeTest extends SiriusDiagramTestCase {
             this.parentType = Objects.requireNonNull(parentType);
         }
 
-        public boolean test(DNode input) {
+        public boolean apply(DNode input) {
             boolean expectedParentType = false;
             EObject parent = input.eContainer();
             if (!parentType.some()) {

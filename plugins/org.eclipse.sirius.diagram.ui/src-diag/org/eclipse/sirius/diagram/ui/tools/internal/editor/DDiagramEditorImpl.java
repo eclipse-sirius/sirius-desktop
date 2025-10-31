@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -254,6 +253,7 @@ import org.eclipse.ui.views.contentoutline.ContentOutline;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Sets;
 
 /**
  * The diagram editor.
@@ -1194,7 +1194,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
                         if (diagramElementTarget.some()) {
                             String elementID = EMFCoreUtil.getProxyID(diagramElementTarget.get());
                             final List<IGraphicalEditPart> concernedEditParts = viewer.findEditPartsForElement(elementID, IGraphicalEditPart.class);
-                            result.addAll(new HashSet<>(Arrays.asList(Iterables.filter(concernedEditParts, AbstractDiagramNameEditPart.class))));
+                            result.addAll(Sets.newHashSet(Iterables.filter(concernedEditParts, AbstractDiagramNameEditPart.class)));
                         }
                     } else {
                         if (object instanceof EObject) {

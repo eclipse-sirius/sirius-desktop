@@ -13,7 +13,6 @@
 package org.eclipse.sirius.tests.swtbot.sequence.condition;
 
 import java.util.List;
-import java.util.function.Predicate;
 
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
@@ -21,6 +20,7 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.hamcrest.Matcher;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
@@ -60,7 +60,7 @@ public class CheckNumberOfChildren extends DefaultCondition {
             /**
              * {@inheritDoc}
              */
-            public boolean test(SWTBotGefEditPart input) {
+            public boolean apply(SWTBotGefEditPart input) {
                 return instanceOf.matches(input);
             }
         };

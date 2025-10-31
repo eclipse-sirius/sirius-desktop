@@ -29,6 +29,8 @@ import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.junit.Assert;
 
+import com.google.common.collect.Lists;
+
 /**
  * Tests only zoom and creation with single/double click, others features to
  * test are Junit Plugin Tests.
@@ -155,7 +157,7 @@ public class CombinedFragmentsAndElementsCreationTests extends AbstractCombinedF
         SWTBotGefEditPart newExecutionBot;
         Rectangle newExecutionBounds;
 
-        ArrayList<Rectangle> combinedFragmentBounds = new ArrayList<>();
+        ArrayList<Rectangle> combinedFragmentBounds = Lists.<Rectangle> newArrayList();
 
         final int NB_SUBEXECUTION_CREATION = TestsUtil.shouldSkipLongTests() ? 5 : 20;
         for (int i = 0; i < NB_SUBEXECUTION_CREATION; i++) {

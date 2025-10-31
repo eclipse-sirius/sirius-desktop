@@ -13,13 +13,13 @@
 package org.eclipse.sirius.diagram.sequence.business.internal.query;
 
 import java.util.Iterator;
-import java.util.function.Predicate;
 
 import org.eclipse.sirius.diagram.sequence.template.TBasicMessageMapping;
 import org.eclipse.sirius.diagram.sequence.template.TExecutionMapping;
 import org.eclipse.sirius.diagram.sequence.template.TLifelineMapping;
 import org.eclipse.sirius.diagram.sequence.template.TSequenceDiagram;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterators;
 
 /**
@@ -52,7 +52,7 @@ public class TSequenceDiagramQuery {
     public Iterator<TLifelineMapping> getLifeLineMappings(final String name) {
         return Iterators.filter(Iterators.filter(template.eAllContents(), TLifelineMapping.class), new Predicate<TLifelineMapping>() {
 
-            public boolean test(TLifelineMapping input) {
+            public boolean apply(TLifelineMapping input) {
                 return name.equals(input.getName());
             }
 
@@ -69,7 +69,7 @@ public class TSequenceDiagramQuery {
     public Iterator<TExecutionMapping> getExecutionMappings(final String name) {
         return Iterators.filter(Iterators.filter(template.eAllContents(), TExecutionMapping.class), new Predicate<TExecutionMapping>() {
 
-            public boolean test(TExecutionMapping input) {
+            public boolean apply(TExecutionMapping input) {
                 return name.equals(input.getName());
             }
 
@@ -86,7 +86,7 @@ public class TSequenceDiagramQuery {
     public Iterator<TBasicMessageMapping> getBasicMessageMapping(final String name) {
         return Iterators.filter(Iterators.filter(template.eAllContents(), TBasicMessageMapping.class), new Predicate<TBasicMessageMapping>() {
 
-            public boolean test(TBasicMessageMapping input) {
+            public boolean apply(TBasicMessageMapping input) {
                 return name.equals(input.getName());
             }
 

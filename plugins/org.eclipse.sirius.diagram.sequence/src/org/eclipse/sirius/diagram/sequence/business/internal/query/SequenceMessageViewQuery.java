@@ -51,7 +51,7 @@ public class SequenceMessageViewQuery {
      *            the message to query.
      */
     public SequenceMessageViewQuery(Edge edge) {
-        Preconditions.checkArgument(Message.notationPredicate().test(edge));
+        Preconditions.checkArgument(Message.notationPredicate().apply(edge));
         this.edge = edge;
     }
 

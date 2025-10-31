@@ -17,9 +17,8 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 
+import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
-
-import java.util.function.Predicate;
 
 /**
  * Tests ensuring that customizing styles through the tabbar works as expected.
@@ -43,7 +42,7 @@ public class RefreshWithCustomizedStyleFromTabbarTests extends AbstractRefreshWi
         final Predicate<SWTBotGefEditPart> modifiedStatePredicate = new Predicate<SWTBotGefEditPart>() {
 
             @Override
-            public boolean test(SWTBotGefEditPart input) {
+            public boolean apply(SWTBotGefEditPart input) {
                 Routing routing = ((org.eclipse.gmf.runtime.notation.ConnectorStyle) ((View) input.part().getModel()).getStyles().iterator().next()).getRouting();
                 return routing.getValue() == Routing.TREE;
             }
@@ -67,7 +66,7 @@ public class RefreshWithCustomizedStyleFromTabbarTests extends AbstractRefreshWi
         final Predicate<SWTBotGefEditPart> stateWhenBackgroundImageIsChangedPredicate = new Predicate<SWTBotGefEditPart>() {
 
             @Override
-            public boolean test(SWTBotGefEditPart input) {
+            public boolean apply(SWTBotGefEditPart input) {
                 return getWorkspaceImage(input) != null;
             }
         };

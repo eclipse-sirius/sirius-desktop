@@ -14,7 +14,6 @@ package org.eclipse.sirius.tests.unit.diagram;
 
 import java.util.Collections;
 import java.util.Iterator;
-import java.util.function.Predicate;
 
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Point;
@@ -37,6 +36,7 @@ import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.viewpoint.DView;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterators;
 
 /**
@@ -71,7 +71,7 @@ public class CanonicalDBorderItemLocatorTest extends SiriusDiagramTestCase {
         if (option.some()) {
             Iterator<EObject> iterator = Iterators.filter(option.get().eAllContents(), new Predicate<EObject>() {
                 @Override
-                public boolean test(EObject arg0) {
+                public boolean apply(EObject arg0) {
                     if (arg0 instanceof Node) {
                         int typeInt = SiriusVisualIDRegistry.getVisualID(((Node) arg0).getType());
                         if (typeInt == DNode4EditPart.VISUAL_ID) {

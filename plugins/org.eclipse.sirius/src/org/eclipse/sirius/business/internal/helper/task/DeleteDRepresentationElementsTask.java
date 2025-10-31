@@ -14,7 +14,6 @@ package org.eclipse.sirius.business.internal.helper.task;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -32,6 +31,7 @@ import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 import com.google.common.collect.Iterators;
+import com.google.common.collect.Sets;
 
 /**
  * A task to delete several {@link DRepresentationElement} instances.
@@ -130,7 +130,7 @@ public class DeleteDRepresentationElementsTask extends AbstractCompoundTask {
     }
 
     private Set<EObject> completeCollection(final Collection<EObject> semantics) {
-        final Set<EObject> result = new HashSet<>(semantics);
+        final Set<EObject> result = Sets.newHashSet(semantics);
         for (EObject sem : semantics) {
             Iterators.addAll(result, sem.eAllContents());
         }

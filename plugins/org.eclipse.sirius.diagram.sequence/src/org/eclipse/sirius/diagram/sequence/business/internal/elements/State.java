@@ -15,7 +15,6 @@ package org.eclipse.sirius.diagram.sequence.business.internal.elements;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.function.Predicate;
 
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
@@ -28,6 +27,7 @@ import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.sequence.tool.internal.Messages;
 
 import com.google.common.base.Preconditions;
+import com.google.common.base.Predicate;
 
 /**
  * Represents a state on a lifeline or an execution.
@@ -50,9 +50,9 @@ public class State extends AbstractNodeEvent {
         INSTANCE;
 
         @Override
-        public boolean test(DDiagramElement input) {
+        public boolean apply(DDiagramElement input) {
             return AbstractSequenceElement.isSequenceDiagramElement(input, DescriptionPackage.eINSTANCE.getStateMapping())
-                    && !InstanceRole.viewpointElementPredicate().test((DDiagramElement) input.eContainer());
+                    && !InstanceRole.viewpointElementPredicate().apply((DDiagramElement) input.eContainer());
         }
     }
 
@@ -64,7 +64,7 @@ public class State extends AbstractNodeEvent {
      */
     State(Node node) {
         super(node);
-        Preconditions.checkArgument(State.notationPredicate().test(node), Messages.State_nonStaveNode);
+        Preconditions.checkArgument(State.notationPredicate().apply(node), Messages.State_nonStaveNode);
     }
 
     /**
@@ -98,7 +98,7 @@ public class State extends AbstractNodeEvent {
     @Override
     public boolean isLogicallyInstantaneous() {
         List<EventEnd> ends = EventEndHelper.findEndsFromSemanticOrdering(this);
-        return ends.size() == 1 && EventEndHelper.PUNCTUAL_COMPOUND_EVENT_END.test(ends.iterator().next());
+        return ends.size() == 1 && EventEndHelper.PUNCTUAL_COMPOUND_EVENT_END.apply(ends.iterator().next());
     }
 
     @Override

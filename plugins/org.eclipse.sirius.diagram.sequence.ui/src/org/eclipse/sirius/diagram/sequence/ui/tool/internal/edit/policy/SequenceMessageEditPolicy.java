@@ -17,8 +17,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
 
 import org.eclipse.draw2d.ConnectionRouter;
 import org.eclipse.draw2d.Cursors;
@@ -94,8 +92,11 @@ import org.eclipse.sirius.ext.draw2d.figure.HorizontalGuide;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.swt.graphics.Color;
 
+import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * Specialized edit policy for sequence diagrams messages: tracks graphical reordering and invokes user-specified
@@ -306,7 +307,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
 
         final Predicate<SingleEventEnd> toMove = new Predicate<SingleEventEnd>() {
             @Override
-            public boolean test(SingleEventEnd input) {
+            public boolean apply(SingleEventEnd input) {
                 return !input.getSemanticEvent().equals(thisSemanticEvent);
             }
         };
@@ -316,7 +317,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
         boolean obliqueMessage = isObliqueMessage(thisEvent);
         resizeDelta.width = 0;
         for (CompoundEventEnd cee : Iterables.filter(ends, CompoundEventEnd.class)) {
-            for (SingleEventEnd see : Iterables.filter(new ArrayList<>(cee.getEventEnds()), toMove)) {
+            for (SingleEventEnd see : Iterables.filter(Lists.newArrayList(cee.getEventEnds()), toMove)) {
                 ISequenceEventEditPart ise = EditPartsHelper.findISequenceEvent(see, sdep);
                 ISequenceEvent sequenceEvent = ise.getISequenceEvent();
                 ChangeBoundsRequest cbr = buildChangeBoundRequest(location.getCopy(), ise, see, resizeDelta);
@@ -342,14 +343,14 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
 
         final Predicate<SingleEventEnd> toMove = new Predicate<SingleEventEnd>() {
             @Override
-            public boolean test(SingleEventEnd input) {
+            public boolean apply(SingleEventEnd input) {
                 return !input.getSemanticEvent().equals(thisSemanticEvent);
             }
         };
 
         Dimension resizeDelta = getResizeDelta(request, location.getCopy(), thisEvent, thisRange, fromTop);
         for (CompoundEventEnd cee : Iterables.filter(ends, CompoundEventEnd.class)) {
-            for (SingleEventEnd see : Iterables.filter(new ArrayList<>(cee.getEventEnds()), toMove)) {
+            for (SingleEventEnd see : Iterables.filter(Lists.newArrayList(cee.getEventEnds()), toMove)) {
                 ISequenceEventEditPart ise = EditPartsHelper.findISequenceEvent(see, sdep);
                 ChangeBoundsRequest cbr = buildChangeBoundRequest(location.getCopy(), ise, see, resizeDelta);
                 ise.eraseSourceFeedback(cbr);
@@ -719,7 +720,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
 
         final Predicate<SingleEventEnd> toMove = new Predicate<SingleEventEnd>() {
             @Override
-            public boolean test(SingleEventEnd input) {
+            public boolean apply(SingleEventEnd input) {
                 return !input.getSemanticEvent().equals(thisSemanticEvent);
             }
         };
@@ -729,7 +730,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
         boolean obliqueMessage = isObliqueMessage(thisEvent);
         resizeDelta.width = 0;
         for (CompoundEventEnd cee : Iterables.filter(ends, CompoundEventEnd.class)) {
-            for (SingleEventEnd see : Iterables.filter(new ArrayList<>(cee.getEventEnds()), toMove)) {
+            for (SingleEventEnd see : Iterables.filter(Lists.newArrayList(cee.getEventEnds()), toMove)) {
                 ISequenceEventEditPart ise = EditPartsHelper.findISequenceEvent(see, sdep);
                 ISequenceEvent sequenceEvent = ise.getISequenceEvent();
                 ChangeBoundsRequest cbr = buildChangeBoundRequest(location.getCopy(), ise, see, resizeDelta);

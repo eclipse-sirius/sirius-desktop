@@ -26,8 +26,7 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
 import com.google.common.base.Preconditions;
-
-import java.util.function.Predicate;
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
@@ -52,7 +51,7 @@ public class EndOfLife extends AbstractSequenceNode {
         INSTANCE;
 
         @Override
-        public boolean test(DDiagramElement input) {
+        public boolean apply(DDiagramElement input) {
             return AbstractSequenceElement.isSequenceDiagramElement(input, DescriptionPackage.eINSTANCE.getEndOfLifeMapping());
         }
     }
@@ -65,7 +64,7 @@ public class EndOfLife extends AbstractSequenceNode {
      */
     EndOfLife(Node node) {
         super(node);
-        Preconditions.checkArgument(EndOfLife.notationPredicate().test(node), Messages.EndOfLife_nonEndOfLifeNode);
+        Preconditions.checkArgument(EndOfLife.notationPredicate().apply(node), Messages.EndOfLife_nonEndOfLifeNode);
     }
 
     /**

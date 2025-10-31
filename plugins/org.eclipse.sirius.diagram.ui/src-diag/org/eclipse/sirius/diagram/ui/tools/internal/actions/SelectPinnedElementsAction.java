@@ -14,8 +14,6 @@ package org.eclipse.sirius.diagram.ui.tools.internal.actions;
 
 import java.util.Iterator;
 import java.util.Objects;
-import java.util.function.Function;
-import java.util.function.Predicate;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
@@ -42,6 +40,9 @@ import org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
+
+import com.google.common.base.Function;
+import com.google.common.base.Predicate;
 
 /**
  * Action to open a dialog box where the user can select/deselect the diagram elements which should be pinned.
@@ -78,7 +79,7 @@ public class SelectPinnedElementsAction extends AbstractDiagramAction {
         private Predicate<Object> getNonSelectablePredicate() {
             return new Predicate<Object>() {
                 @Override
-                public boolean test(Object input) {
+                public boolean apply(Object input) {
                     if (input instanceof DDiagramElement) {
                         return !PinHelper.allowsPinUnpin((DDiagramElement) input);
                     }
@@ -97,7 +98,7 @@ public class SelectPinnedElementsAction extends AbstractDiagramAction {
 
     private static final Predicate<Object> IS_PINNED = new Predicate<Object>() {
         @Override
-        public boolean test(Object input) {
+        public boolean apply(Object input) {
             if (input instanceof DDiagramElement) {
                 return new PinHelper().isPinned((DDiagramElement) input);
             }

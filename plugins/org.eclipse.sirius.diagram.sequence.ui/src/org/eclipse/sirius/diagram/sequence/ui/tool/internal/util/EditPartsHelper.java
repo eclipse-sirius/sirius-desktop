@@ -17,7 +17,6 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.ConnectionEditPart;
@@ -32,6 +31,7 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceDi
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageEditPart;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
@@ -51,7 +51,7 @@ public final class EditPartsHelper {
     private enum IsValidPredicate implements Predicate<IGraphicalEditPart> {
         INSTANCE;
 
-        public boolean test(IGraphicalEditPart input) {
+        public boolean apply(IGraphicalEditPart input) {
             return input.getParent() != null;
         }
     }
@@ -148,11 +148,11 @@ public final class EditPartsHelper {
      */
     private static void addAllMessagesFrom(IGraphicalEditPart element, Collection<SequenceMessageEditPart> messages) {
         for (IGraphicalEditPart connectionPart : Iterables.filter(element.getSourceConnections(), IGraphicalEditPart.class)) {
-            if (connectionPart instanceof SequenceMessageEditPart && EditPartsHelper.isValid().test(connectionPart)) {
+            if (connectionPart instanceof SequenceMessageEditPart && EditPartsHelper.isValid().apply(connectionPart)) {
                 messages.add((SequenceMessageEditPart) connectionPart);
             }
         }
-        if (element instanceof SequenceMessageEditPart && EditPartsHelper.isValid().test(element)) {
+        if (element instanceof SequenceMessageEditPart && EditPartsHelper.isValid().apply(element)) {
             messages.add((SequenceMessageEditPart) element);
         }
         for (IGraphicalEditPart child : Iterables.filter(element.getChildren(), IGraphicalEditPart.class)) {
@@ -171,11 +171,11 @@ public final class EditPartsHelper {
      */
     private static void addAllMessagesTo(IGraphicalEditPart element, Collection<SequenceMessageEditPart> messages) {
         for (IGraphicalEditPart connectionPart : Iterables.filter(element.getTargetConnections(), IGraphicalEditPart.class)) {
-            if (connectionPart instanceof SequenceMessageEditPart && EditPartsHelper.isValid().test(connectionPart)) {
+            if (connectionPart instanceof SequenceMessageEditPart && EditPartsHelper.isValid().apply(connectionPart)) {
                 messages.add((SequenceMessageEditPart) connectionPart);
             }
         }
-        if (element instanceof SequenceMessageEditPart && EditPartsHelper.isValid().test(element)) {
+        if (element instanceof SequenceMessageEditPart && EditPartsHelper.isValid().apply(element)) {
             messages.add((SequenceMessageEditPart) element);
         }
         for (IGraphicalEditPart child : Iterables.filter(element.getChildren(), IGraphicalEditPart.class)) {
@@ -193,7 +193,7 @@ public final class EditPartsHelper {
      */
     public static LifelineEditPart findParentLifeline(IGraphicalEditPart part) {
         final LifelineEditPart result;
-        if (part instanceof LifelineEditPart && EditPartsHelper.isValid().test(part)) {
+        if (part instanceof LifelineEditPart && EditPartsHelper.isValid().apply(part)) {
             result = (LifelineEditPart) part;
         } else if (part != null) {
             result = new EditPartQuery(part).getFirstAncestorOfType(LifelineEditPart.class);

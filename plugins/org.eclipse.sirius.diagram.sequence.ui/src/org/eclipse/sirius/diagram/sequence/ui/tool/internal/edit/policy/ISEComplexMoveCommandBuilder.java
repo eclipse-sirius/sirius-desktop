@@ -17,7 +17,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-import java.util.function.Predicate;
 
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
@@ -47,6 +46,7 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator.ISECo
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 
+import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -246,7 +246,7 @@ public class ISEComplexMoveCommandBuilder {
         Predicate<AbstractNodeEvent> filterRange = new Predicate<AbstractNodeEvent>() {
 
             @Override
-            public boolean test(AbstractNodeEvent nodeEvent) {
+            public boolean apply(AbstractNodeEvent nodeEvent) {
                 Range initialRange = nodeEvent.getVerticalRange();
                 Range futureRange = validator.getRangeFunction().apply(nodeEvent);
                 return validatorInitialRange.intersects(initialRange) || validatorFinalRange.intersects(futureRange);
@@ -276,7 +276,7 @@ public class ISEComplexMoveCommandBuilder {
         Predicate<Message> filterRange = new Predicate<Message>() {
 
             @Override
-            public boolean test(Message msg) {
+            public boolean apply(Message msg) {
                 Range initialRange = msg.getVerticalRange();
                 Range futureRange = validator.getRangeFunction().apply(msg);
 

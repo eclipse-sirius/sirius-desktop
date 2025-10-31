@@ -16,7 +16,6 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Set;
-import java.util.function.Predicate;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.UnexecutableCommand;
@@ -55,6 +54,7 @@ import org.eclipse.sirius.viewpoint.description.tool.SetValue;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 import org.eclipse.ui.IEditorPart;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
@@ -86,7 +86,7 @@ public class TreeWizardMenuBuilder extends AbstractMenuBuilder {
 
         return Sets.filter(allActions, new Predicate<AbstractEObjectRefactoringAction>() {
 
-            public boolean test(AbstractEObjectRefactoringAction candidateAction) {
+            public boolean apply(AbstractEObjectRefactoringAction candidateAction) {
                 return candidateAction.isSelectionValid();
             }
         });
@@ -226,7 +226,7 @@ class TreeDescriptionBuilderFromEClass {
 
         for (EReference ownedReferences : Iterables.filter(eClassToStartFrom.getEAllReferences(), new Predicate<EReference>() {
 
-            public boolean test(EReference input) {
+            public boolean apply(EReference input) {
                 return input.isContainment() && input.getEType() instanceof EClass;
             }
         })) {
@@ -341,7 +341,7 @@ class TreeDescriptionBuilderFromEClass {
     private Option<EAttribute> lookForEditableName(EClass eClassToStartFrom) {
         Iterator<EAttribute> it = Iterators.filter(eClassToStartFrom.getEAllAttributes().iterator(), new Predicate<EAttribute>() {
 
-            public boolean test(EAttribute input) {
+            public boolean apply(EAttribute input) {
                 return "name".equals(input.getName()) && "EString".equals(input.getEType().getName());
             }
         });
@@ -360,7 +360,7 @@ class EClassHierarchy {
 
     EClassHierarchy(ResourceSet resourceSet) {
 
-        Set<EClass> allClasses = new LinkedHashSet<>(Lists.newArrayList(Iterators.filter(resourceSet.getAllContents(), EClass.class)));
+        Set<EClass> allClasses = Sets.newLinkedHashSet(Lists.newArrayList(Iterators.filter(resourceSet.getAllContents(), EClass.class)));
 
         Set<EClass> somebodyIsExtendingMe = new LinkedHashSet<>();
         for (EClass eClass : allClasses) {
@@ -383,7 +383,7 @@ class EClassHierarchy {
     public Iterable<EClass> getConcreteSubclassesLeafs(EClass targetClass) {
         return Iterables.filter(mostSpecific.get(targetClass), new Predicate<EClass>() {
 
-            public boolean test(EClass input) {
+            public boolean apply(EClass input) {
                 return !input.isAbstract();
             }
         });

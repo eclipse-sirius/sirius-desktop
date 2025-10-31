@@ -28,9 +28,8 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.draw2d.figure.ICollapseMode;
 
+import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
-
-import java.util.function.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
@@ -58,7 +57,7 @@ public class SequenceCollapseUpdater extends CollapseUpdater {
      */
     protected void synchronizeCollapseFiltersAndGMFBounds(DDiagramElement element, Option<Node> optionalNode, boolean add, Class<? extends CollapseFilter> kindOfFilter) {
 
-        if (InstanceRole.viewpointElementPredicate().test(element))
+        if (InstanceRole.viewpointElementPredicate().apply(element))
             return;
 
         super.synchronizeCollapseFiltersAndGMFBounds(element, optionalNode, add, kindOfFilter);
@@ -71,7 +70,7 @@ public class SequenceCollapseUpdater extends CollapseUpdater {
      *      DDiagramElement)
      */
     public void collapseBounds(Node node, DDiagramElement element) {
-        if (!specificCollapsePredicate.test(element)) {
+        if (!specificCollapsePredicate.apply(element)) {
             super.collapseBounds(node, element);
         } else {
             LayoutConstraint layoutConstraint = node.getLayoutConstraint();
@@ -84,7 +83,7 @@ public class SequenceCollapseUpdater extends CollapseUpdater {
 
                 int newY = bounds.getY();
                 int newHeight = bounds.getHeight();
-                if (ObservationPoint.notationPredicate().test(node)) {
+                if (ObservationPoint.notationPredicate().apply(node)) {
                     newY = bounds.getY() + bounds.getHeight() / 2;
                     newHeight = ICollapseMode.COLLAPSED_DIMENSION.height;
                 }
@@ -104,7 +103,7 @@ public class SequenceCollapseUpdater extends CollapseUpdater {
     @Override
     public Option<Bounds> getExpandedBounds(Node node, DDiagramElement element) {
         Option<Bounds> optionalBounds;
-        if (!specificCollapsePredicate.test(element)) {
+        if (!specificCollapsePredicate.apply(element)) {
             optionalBounds = super.getExpandedBounds(node, element);
         } else {
             CollapseFilter filter = Iterables.getFirst(Iterables.filter(element.getGraphicalFilters(), CollapseFilter.class), null);
@@ -136,7 +135,7 @@ public class SequenceCollapseUpdater extends CollapseUpdater {
             Bounds newBounds = NotationFactory.eINSTANCE.createBounds();
             newBounds.setX(bounds.getX() - expandedSize.width / 2);
             int newY = bounds.getY();
-            if (ObservationPoint.notationPredicate().test(node)) {
+            if (ObservationPoint.notationPredicate().apply(node)) {
                 newY = bounds.getY() - expandedSize.height / 2;
             }
             newBounds.setY(newY);

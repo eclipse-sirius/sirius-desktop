@@ -48,6 +48,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * Abstract action to export representations as images.
@@ -139,7 +140,7 @@ public abstract class AbstractExportRepresentationsAction extends Action {
             for (DRepresentationDescriptor dRepresentationDescriptor : representationsToExport) {
                 dRepresentations.add(dRepresentationDescriptor.getRepresentation());
             }
-            List<DRepresentation> toExport = new ArrayList<>(dRepresentations);
+            List<DRepresentation> toExport = Lists.<DRepresentation> newArrayList(dRepresentations);
             final ExportAction exportAction = new ExportAction(session, toExport, dialog.getOutputPath(), dialog.getImageFormat(), dialog.isExportToHtml(), dialog.isExportDecorations());
             exportAction.setDiagramScaleLevel(dialog.getDiagramScaleLevelInPercent());
             final ProgressMonitorDialog pmd = new ProgressMonitorDialog(shell);

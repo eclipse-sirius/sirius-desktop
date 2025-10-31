@@ -195,7 +195,7 @@ public class PaletteUpdateDoesNotDeleteAllToolsTest extends AbstractPaletteManag
         assertEquals(ERROR_MESSAGE_WHEN_PALETTE_ELEMENTS_ARE_RE_CREATED, paletteEntriesAfterSecondCreation.size(), paletteEntriesAfterFilterDisablement.size());
 
         // Step 3: we delete all nodes
-        for (DDiagramElement diagramElement : new LinkedHashSet<>(dDiagram.getOwnedDiagramElements())) {
+        for (DDiagramElement diagramElement : Sets.newLinkedHashSet(dDiagram.getOwnedDiagramElements())) {
             Command deleteDiagramElementCommand = getCommandFactory().buildDeleteFromDiagramCommand(diagramElement);
             session.getTransactionalEditingDomain().getCommandStack().execute(deleteDiagramElementCommand);
         }

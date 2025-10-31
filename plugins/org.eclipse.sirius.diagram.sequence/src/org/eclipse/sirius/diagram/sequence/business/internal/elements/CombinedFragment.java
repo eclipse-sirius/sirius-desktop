@@ -15,7 +15,6 @@ package org.eclipse.sirius.diagram.sequence.business.internal.elements;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.function.Predicate;
 
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
@@ -32,6 +31,7 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
 import com.google.common.base.Preconditions;
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
@@ -63,7 +63,7 @@ public class CombinedFragment extends AbstractFrame {
         INSTANCE;
 
         @Override
-        public boolean test(DDiagramElement input) {
+        public boolean apply(DDiagramElement input) {
             return AbstractSequenceElement.isSequenceDiagramElement(input, DescriptionPackage.eINSTANCE.getCombinedFragmentMapping());
         }
     }
@@ -76,7 +76,7 @@ public class CombinedFragment extends AbstractFrame {
      */
     CombinedFragment(Node node) {
         super(node);
-        Preconditions.checkArgument(CombinedFragment.notationPredicate().test(node), Messages.CombinedFragment_nonCombinedFragmentNode);
+        Preconditions.checkArgument(CombinedFragment.notationPredicate().apply(node), Messages.CombinedFragment_nonCombinedFragmentNode);
     }
 
     /**
@@ -139,7 +139,7 @@ public class CombinedFragment extends AbstractFrame {
             Predicate<View> compartementView = new Predicate<View>() {
 
                 @Override
-                public boolean test(View input) {
+                public boolean apply(View input) {
                     return input.getType().equals(Integer.toString(COMPARTMENT_VISUAL_ID));
                 }
             };

@@ -45,6 +45,8 @@ import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.DragSource;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
+import com.google.common.collect.Sets;
+
 /**
  * Implementation of DDiagramElementContainerImpl.java.
  * 
@@ -179,9 +181,9 @@ public final class DDiagramElementContainerWithInterpreterOperations {
     private static Collection<ContainerDropDescription> getDropTools(final DragAndDropTargetDescription mapping) {
         Collection<ContainerDropDescription> dropTools;
         if (mapping instanceof DiagramElementMapping) {
-            dropTools = new HashSet<>(new DiagramElementMappingQuery((DiagramElementMapping) mapping).getDropTools());
+            dropTools = Sets.newHashSet(new DiagramElementMappingQuery((DiagramElementMapping) mapping).getDropTools());
         } else {
-            dropTools = new HashSet<>(mapping.getDropDescriptions());
+            dropTools = Sets.newHashSet(mapping.getDropDescriptions());
         }
         return dropTools;
     }

@@ -18,7 +18,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-import java.util.function.Predicate;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -30,6 +29,7 @@ import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.Sets;
 
 /**
@@ -196,7 +196,7 @@ public class DiagramElementSelectionDialogPatternMatcherTest extends SiriusDiagr
         for (Object matchingElementName : matchingElementsNames) {
             DDiagramElement matchingElement = this.nameToDiagramElements.get(matchingElementName);
             assertNotNull(matchingElementName + " does not exist in the Diagram", matchingElement);
-            assertTrue(matchingElementName + " should match the regexp '" + regexp + "'", matchPredicate.test(matchingElement));
+            assertTrue(matchingElementName + " should match the regexp '" + regexp + "'", matchPredicate.apply(matchingElement));
         }
 
         // Step 3 : ensure that all expected unmatching elements are not
@@ -204,7 +204,7 @@ public class DiagramElementSelectionDialogPatternMatcherTest extends SiriusDiagr
         for (Object unmatchingElementName : Sets.difference(this.nameToDiagramElements.keySet(), matchingElementsNames)) {
             DDiagramElement unmatchingElement = this.nameToDiagramElements.get(unmatchingElementName);
             assertNotNull(unmatchingElementName + " does not exist in the Diagram", unmatchingElement);
-            assertFalse(unmatchingElementName + " should not match the regexp '" + regexp + "'", matchPredicate.test(unmatchingElement));
+            assertFalse(unmatchingElementName + " should not match the regexp '" + regexp + "'", matchPredicate.apply(unmatchingElement));
         }
     }
 }
