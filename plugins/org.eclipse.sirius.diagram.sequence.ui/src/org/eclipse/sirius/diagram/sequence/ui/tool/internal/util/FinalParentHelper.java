@@ -36,6 +36,7 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 public class FinalParentHelper {
     /**
@@ -240,7 +241,7 @@ public class FinalParentHelper {
             }
         };
 
-        Iterable<ISequenceEvent> invalids = Iterables.filter(finalSiblings, sameLifeline.and(notParentCombinedFragment).and(intersectsFinalBounds));
+        Iterable<ISequenceEvent> invalids = Iterables.filter(finalSiblings, Predicates.and(sameLifeline, notParentCombinedFragment, intersectsFinalBounds));
         if (!Iterables.isEmpty(invalids)) {
             finalParent = null;
             for (ISequenceEvent ise : Iterables.concat(invalids, remoteErrors)) {
@@ -314,7 +315,7 @@ public class FinalParentHelper {
             Option<Lifeline> remoteLifeline = remoteParent.getLifeline();
             if (remoteLifeline.some()) {
                 EventFinder remoteFinder = new EventFinder(remoteLifeline.get());
-                remoteFinder.setEventsToIgnore(Predicates.in(new ArrayList<>(allMovedElements)));
+                remoteFinder.setEventsToIgnore(Predicates.in(Lists.newArrayList(allMovedElements)));
                 finalRemoteParent = remoteFinder.findMostSpecificEvent(finalMessageRange);
             }
         }

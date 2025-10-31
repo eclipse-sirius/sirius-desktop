@@ -14,8 +14,6 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -26,6 +24,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDi
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 
 import com.google.common.base.Predicates;
+import com.google.common.collect.Iterables;
 
 /**
  * Validator for ChangeBoundsRequest of type RequestConstants#REQ_MOVE.
@@ -59,7 +58,7 @@ public class InstanceRoleMoveValidator extends AbstractInstanceRoleValidator {
                 moveDelta.setY(0);
             }
 
-            Iterable<Rectangle> notMovedIRBounds = allInstanceRoles.stream().filter(Predicate.not(Predicates.in(instanceRoles))).toList().stream().map(ISequenceElement.PROPER_LOGICAL_BOUNDS).collect(Collectors.toList());
+            Iterable<Rectangle> notMovedIRBounds = Iterables.transform(Iterables.filter(allInstanceRoles, Predicates.not(Predicates.in(instanceRoles))), ISequenceElement.PROPER_LOGICAL_BOUNDS);
 
             // Iterate on all instanceRoles to move from the request
             for (InstanceRole instanceRole : instanceRoles) {

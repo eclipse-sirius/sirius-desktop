@@ -33,6 +33,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
 
 import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
 
 /**
  * Specific GenericToolCommandBuilder.
@@ -89,7 +90,8 @@ public class SequenceSelectionWizardCommandBuilder extends SelectionWizardComman
     @Override
     protected DCommand createEnclosingCommand() {
         Option<DDiagram> parentDiagram = getDDiagram();
-        Predicate<DDiagramElement> viewpointElementPredicate = Message.viewpointElementPredicate().or(Execution.viewpointElementPredicate()).or(State.viewpointElementPredicate()).or(CombinedFragment.viewpointElementPredicate()).or(Operand.viewpointElementPredicate()).or(InteractionUse.viewpointElementPredicate());
+        Predicate<DDiagramElement> viewpointElementPredicate = Predicates.or(Message.viewpointElementPredicate(), Execution.viewpointElementPredicate(), State.viewpointElementPredicate(),
+                CombinedFragment.viewpointElementPredicate(), Operand.viewpointElementPredicate(), InteractionUse.viewpointElementPredicate());
         SequenceCreatedEventsFlaggingSiriusCommand cmd = new SequenceCreatedEventsFlaggingSiriusCommand(editingDomain, getEnclosingCommandLabel(), parentDiagram.get(), viewpointElementPredicate);
         if (location != null) {
             cmd.setLostNodesLocation(location);

@@ -173,7 +173,7 @@ public abstract class AbstractSynchronizerHelper {
                 /* Check domain class */
                 Option<String> domainClassOption = new DiagramElementMappingQuery(mapping).getDomainClass();
                 if (domainClassOption.some()) {
-                    semantics = Iterables.concat(semantics, allCandidates.stream().filter(input -> accessor.eInstanceOf(input, domainClassOption.get())).toList());
+                    semantics = Iterables.concat(semantics, Iterables.filter(allCandidates, input -> accessor.eInstanceOf(input, domainClassOption.get())));
                 }
             } else {
                 sync.forceRetrieve();

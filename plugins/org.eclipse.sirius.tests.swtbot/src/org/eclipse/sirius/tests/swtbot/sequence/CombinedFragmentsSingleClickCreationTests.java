@@ -30,6 +30,8 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
 import org.junit.Assert;
 
+import com.google.common.collect.Lists;
+
 /**
  * Tests only zoom and creation with single/double click, others features to
  * test are Junit Plugin Tests.
@@ -56,7 +58,7 @@ public class CombinedFragmentsSingleClickCreationTests extends AbstractCombinedF
         Rectangle newCombinedFragmentBounds;
 
         HashMap<SWTBotGefEditPart, Rectangle> combinedFragmentBoundsMap = new HashMap<SWTBotGefEditPart, Rectangle>();
-        ArrayList<SWTBotGefEditPart> combinedFragmentBots = new ArrayList<>();
+        ArrayList<SWTBotGefEditPart> combinedFragmentBots = Lists.<SWTBotGefEditPart> newArrayList();
 
         final int NB_CFC_CREATION = TestsUtil.shouldSkipLongTests() ? 5 : 20;
         for (int i = 0; i < NB_CFC_CREATION; i++) {

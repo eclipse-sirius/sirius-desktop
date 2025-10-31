@@ -12,9 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.commands.emf;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.function.Predicate;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
@@ -26,6 +24,8 @@ import org.eclipse.sirius.diagram.ui.tools.internal.clipboard.SiriusClipboardMan
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 import com.google.common.base.Predicates;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * A command to paste from viewpoint clipboard into a new container.
@@ -78,7 +78,7 @@ public class PasteFromSiriusClipboardCommand extends RecordingCommand {
 
         // and filter DElements
         if (clipboard != null) {
-            clipboard = new ArrayList<>(clipboard.stream().filter(Predicate.not(Predicates.instanceOf(DSemanticDecorator.class))).toList());
+            clipboard = Lists.newArrayList(Iterables.filter(clipboard, Predicates.not(Predicates.instanceOf(DSemanticDecorator.class))));
         }
 
         // add to current domain clipboard

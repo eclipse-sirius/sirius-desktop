@@ -14,7 +14,6 @@ package org.eclipse.sirius.common.tools.internal.interpreter;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.LinkedHashSet;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
@@ -29,6 +28,8 @@ import org.eclipse.sirius.common.tools.api.interpreter.TypedValidation;
 import org.eclipse.sirius.common.tools.api.interpreter.ValidationResult;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+
+import com.google.common.collect.Sets;
 
 /**
  * A minimal implementation of {@link IInterpreter} which only handles litteral integers, booleans and strings. It is
@@ -180,7 +181,7 @@ public class DefaultInterpreterProvider implements IInterpreterProvider, IInterp
 
     @Override
     public Collection<IInterpreterStatus> validateExpression(IInterpreterContext context, String expression) {
-        return new LinkedHashSet<>();
+        return Sets.newLinkedHashSet();
     }
 
     @Override

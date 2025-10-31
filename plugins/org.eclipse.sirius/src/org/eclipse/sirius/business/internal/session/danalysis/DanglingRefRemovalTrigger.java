@@ -202,7 +202,7 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
 
     @Override
     public Option<Command> localChangesAboutToCommit(Collection<Notification> notifications) {
-        final Set<EObject> allDetachedObjects = getChangedEObjectsAndChildren(notifications.stream().filter(IS_DETACHMENT).toList(), null);
+        final Set<EObject> allDetachedObjects = getChangedEObjectsAndChildren(Iterables.filter(notifications, IS_DETACHMENT), null);
         if (allDetachedObjects.size() > 0) {
             DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.CLEANING_REMOVEDANGLING_KEY);
 
@@ -212,7 +212,7 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
                 allDetachedObjectsAsNotifier.add(notifier);
             }
             Predicate<Notifier> ignoreNotifierInDetachedObjects = Predicates.in(allDetachedObjectsAsNotifier);
-            final Set<EObject> allAttachedObjects = getChangedEObjectsAndChildren(notifications.stream().filter(IS_ATTACHMENT).toList(), ignoreNotifierInDetachedObjects);
+            final Set<EObject> allAttachedObjects = getChangedEObjectsAndChildren(Iterables.filter(notifications, IS_ATTACHMENT), ignoreNotifierInDetachedObjects);
             final Set<EObject> toRemoveXRefFrom = Sets.difference(allDetachedObjects, allAttachedObjects);
             if (toRemoveXRefFrom.size() > 0) {
                 EReferencePredicate refToIgnore = new EReferencePredicate() {

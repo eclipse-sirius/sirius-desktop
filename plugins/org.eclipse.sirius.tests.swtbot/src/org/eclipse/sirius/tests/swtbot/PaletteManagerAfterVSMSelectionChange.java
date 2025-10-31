@@ -16,7 +16,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.SortedSet;
 import java.util.TreeSet;
-import java.util.function.Predicate;
 
 import org.eclipse.gef.palette.PaletteEntry;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -26,6 +25,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCa
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
@@ -102,7 +102,7 @@ public class PaletteManagerAfterVSMSelectionChange extends AbstractSiriusSwtBotG
                 SectionPaletteDrawer.class);
         TreeSet<String> result = new TreeSet<>();
         for (PaletteEntry paletteEntry : filtered) {
-            Iterable<? extends PaletteEntry> visibleEntries = ((SectionPaletteDrawer) paletteEntry).getChildren().stream().filter(VISIBLE_ENTRY).toList();
+            Iterable<? extends PaletteEntry> visibleEntries = Iterables.filter(((SectionPaletteDrawer) paletteEntry).getChildren(), VISIBLE_ENTRY);
             for (PaletteEntry visiblePaletteEntry : visibleEntries) {
                 result.add(visiblePaletteEntry.getLabel());
             }
@@ -115,7 +115,7 @@ public class PaletteManagerAfterVSMSelectionChange extends AbstractSiriusSwtBotG
          * {@inheritDoc}
          */
         @Override
-        public boolean test(PaletteEntry input) {
+        public boolean apply(PaletteEntry input) {
             return input.isVisible();
         }
     };

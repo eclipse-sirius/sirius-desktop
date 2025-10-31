@@ -42,6 +42,7 @@ import org.eclipse.sirius.ext.base.Option;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
+import com.google.common.collect.Iterables;
 
 /**
  * Queries on GEF and GMF requests.
@@ -249,7 +250,7 @@ public class RequestQuery extends org.eclipse.sirius.diagram.ui.business.interna
             if (!(request instanceof CreateUnspecifiedTypeConnectionRequest) && createRequest.getNewObject() instanceof MessageCreationTool) {
                 if (expectedMessageCreationToolMappingTypes != null) {
                     MessageCreationTool messageCreationTool = (MessageCreationTool) createRequest.getNewObject();
-                    result = messageCreationTool.getEdgeMappings().stream().anyMatch(expectedMessageCreationToolMappingTypes);
+                    result = Iterables.any(messageCreationTool.getEdgeMappings(), expectedMessageCreationToolMappingTypes);
                 } else {
                     result = true;
                 }

@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.elements;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -38,6 +37,7 @@ import org.eclipse.sirius.ext.base.Options;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * Common interface for all the elements of a sequence diagram.
@@ -295,6 +295,6 @@ public class Lifeline extends AbstractSequenceNode implements ISequenceEvent {
                 return input.computeCoveredLifelines().contains(Lifeline.this);
             }
         };
-        return new ArrayList<>(getDiagram().getAllInteractionUses().stream().filter(interactionUseCoveringLifeline).toList());
+        return Lists.newArrayList(Iterables.filter(getDiagram().getAllInteractionUses(), interactionUseCoveringLifeline));
     }
 }

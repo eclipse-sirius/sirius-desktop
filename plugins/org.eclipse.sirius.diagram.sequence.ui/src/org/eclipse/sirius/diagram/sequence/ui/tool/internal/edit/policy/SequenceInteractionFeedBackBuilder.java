@@ -14,7 +14,6 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.function.Predicate;
 
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Figure;
@@ -32,6 +31,7 @@ import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.swt.graphics.Color;
 
 import com.google.common.base.Predicates;
+import com.google.common.collect.Iterables;
 
 /**
  * A builder for complex sequence move feedback.
@@ -178,7 +178,7 @@ public class SequenceInteractionFeedBackBuilder {
     }
 
     private void feedBackMovedElements(Collection<Figure> feedbacks) {
-        for (ISequenceEvent movedElement : validator.getMovedElements().stream().filter(Predicate.not(Predicates.in(validator.getEventsInError()))).toList()) {
+        for (ISequenceEvent movedElement : Iterables.filter(validator.getMovedElements(), Predicates.not(Predicates.in(validator.getEventsInError())))) {
             addFeedBack(movedElement, ISE_FEEDBACK_COLOR, false, feedbacks, validator.getRangeFunction().apply(movedElement));
         }
     }
@@ -190,11 +190,11 @@ public class SequenceInteractionFeedBackBuilder {
     }
 
     private void feedBackResizedElements(Collection<Figure> feedbacks) {
-        for (ISequenceEvent movedElement : validator.getResizedStartMessages().stream().filter(Predicate.not(Predicates.in(validator.getEventsInError()))).toList()) {
+        for (ISequenceEvent movedElement : Iterables.filter(validator.getResizedStartMessages(), Predicates.not(Predicates.in(validator.getEventsInError())))) {
             addFeedBack(movedElement, ISE_FEEDBACK_COLOR, false, feedbacks, validator.getRangeFunction().apply(movedElement));
         }
 
-        for (ISequenceEvent movedElement : validator.getResizedEndMessages().stream().filter(Predicate.not(Predicates.in(validator.getEventsInError()))).toList()) {
+        for (ISequenceEvent movedElement : Iterables.filter(validator.getResizedEndMessages(), Predicates.not(Predicates.in(validator.getEventsInError())))) {
             Range feedbackRange = validator.getRangeFunction().apply(movedElement);
             Range expansionZone = validator.getExpansionZone();
             if ((expansionZone != null && !expansionZone.isEmpty()) && feedbackRange.includes(expansionZone.getUpperBound())) {

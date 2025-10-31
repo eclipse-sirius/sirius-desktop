@@ -12,8 +12,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.refresh.listeners;
 
-import java.util.function.Predicate;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
@@ -21,6 +19,8 @@ import org.eclipse.sirius.common.tools.api.query.NotificationQuery;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.GraphicalFilter;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
+
+import com.google.common.base.Predicate;
 
 /**
  * A NotificationFilter for {@link FilterListener}.
@@ -33,7 +33,7 @@ public class FilterListenerScope implements Predicate<Notification> {
      * {@inheritDoc}
      */
     @Override
-    public boolean test(Notification input) {
+    public boolean apply(Notification input) {
         boolean applies = false;
 
         Object notifier = input.getNotifier();

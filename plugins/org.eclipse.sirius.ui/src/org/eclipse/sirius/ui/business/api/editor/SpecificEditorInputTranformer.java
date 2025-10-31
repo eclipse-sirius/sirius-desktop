@@ -60,6 +60,8 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IFileEditorInput;
 
+import com.google.common.collect.Sets;
+
 /**
  * Transform a standard editor input into a session, by creating silently a
  * session.
@@ -282,7 +284,7 @@ public class SpecificEditorInputTranformer {
     private void activateSirius() {
         final ViewpointSelectionCallback selectionCallback = new ViewpointSelectionCallback();
         session.getTransactionalEditingDomain().getCommandStack()
-                .execute(new ChangeViewpointSelectionCommand(session, selectionCallback, new HashSet<Viewpoint>(Arrays.asList(viewpoint)), new HashSet<>(), new NullProgressMonitor()) {
+                .execute(new ChangeViewpointSelectionCommand(session, selectionCallback, new HashSet<Viewpoint>(Arrays.asList(viewpoint)), Sets.<Viewpoint> newHashSet(), new NullProgressMonitor()) {
 
                     @Override
                     public boolean canUndo() {

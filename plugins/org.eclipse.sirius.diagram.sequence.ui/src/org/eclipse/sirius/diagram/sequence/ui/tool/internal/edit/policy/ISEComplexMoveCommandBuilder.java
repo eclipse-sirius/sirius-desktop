@@ -252,7 +252,8 @@ public class ISEComplexMoveCommandBuilder {
                 return validatorInitialRange.intersects(initialRange) || validatorFinalRange.intersects(futureRange);
             }
         };
-        Iterable<AbstractNodeEvent> filterUnmovedExecutions = validator.getDiagram().getAllAbstractNodeEvents().stream().filter(java.util.function.Predicate.not(Predicates.in(validator.getMovedElements())).and(filterRange)).toList();
+        Iterable<AbstractNodeEvent> filterUnmovedExecutions = Iterables.filter(validator.getDiagram().getAllAbstractNodeEvents(),
+                Predicates.and(Predicates.not(Predicates.in(validator.getMovedElements())), filterRange));
         Collection<AbstractNodeEvent> unmovedExecutions = Lists.newArrayList(filterUnmovedExecutions);
 
         for (AbstractNodeEvent execToReparent : Iterables.concat(movedExecutions, unmovedExecutions)) {
@@ -293,7 +294,7 @@ public class ISEComplexMoveCommandBuilder {
             }
         };
 
-        for (Message message : allMessages.stream().filter(filterRange).toList()) {
+        for (Message message : Iterables.filter(allMessages, filterRange)) {
 
             // check source change
             ISequenceNode sourceElement = message.getSourceElement();
@@ -318,7 +319,7 @@ public class ISEComplexMoveCommandBuilder {
         EventFinder newParentFinder = new EventFinder(movedExec.getLifeline().get());
         newParentFinder.setReparent(true);
         newParentFinder.setVerticalRangefunction(validator.getRangeFunction());
-        newParentFinder.setEventsToIgnore(java.util.function.Predicate.isEqual((ISequenceEvent) movedExec));
+        newParentFinder.setEventsToIgnore(Predicates.equalTo((ISequenceEvent) movedExec));
         newParentFinder.setReparented(reparents);
         Range futureRange = validator.getRangeFunction().apply(movedExec);
         Range lookedRange = new Range(futureRange.getLowerBound(), futureRange.getLowerBound());

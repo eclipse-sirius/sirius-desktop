@@ -12,10 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.actions.distribute;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.function.Predicate;
 
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.gef.ConnectionEditPart;
@@ -40,6 +38,8 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
 
 import com.google.common.base.Predicates;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * A {@link DiagramAction} to distribute shapes or labels of edges.<BR>
@@ -283,7 +283,7 @@ public class DistributeAction extends DiagramAction {
             // Get the the top level selected edit parts
             selection = ToolUtilities.getSelectionWithoutDependants(selection.stream().filter(EditPart.class::isInstance).map(EditPart.class::cast).toList());
             // Remove the connections
-            selection = new ArrayList<>(selection.stream().filter(Predicate.not(Predicates.instanceOf(ConnectionEditPart.class))).toList());
+            selection = Lists.newArrayList(Iterables.filter(selection, Predicates.not(Predicates.instanceOf(ConnectionEditPart.class))));
             if (selection.size() < 3) {
                 selection = Collections.EMPTY_LIST;
             } else {

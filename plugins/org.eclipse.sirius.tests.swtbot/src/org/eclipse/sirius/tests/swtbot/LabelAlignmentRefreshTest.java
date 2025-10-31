@@ -14,8 +14,6 @@ package org.eclipse.sirius.tests.swtbot;
 
 import java.util.Iterator;
 import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.LayoutManager;
@@ -60,6 +58,7 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
 import org.junit.Assert;
 
+import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 
 /**
@@ -181,14 +180,14 @@ public class LabelAlignmentRefreshTest extends AbstractSiriusSwtBotGefTestCase {
 
     private Iterator<EditPart> getParentStyleEditPartsIterator(SWTBotGefEditPart swtBotGefEditPart, EObject semanticElt) {
         List<SWTBotGefEditPart> semanticEltEditPartBots = swtBotGefEditPart.descendants(WithSemantic.withSemantic(semanticElt));
-        Iterator<EditPart> semanticEltEditPartBotsNameEditPartsIterator = semanticEltEditPartBots.stream().map(Bot2EditPartFunction.function()).collect(Collectors.toList()).iterator();
+        Iterator<EditPart> semanticEltEditPartBotsNameEditPartsIterator = Iterables.transform(semanticEltEditPartBots, Bot2EditPartFunction.function()).iterator();
         return semanticEltEditPartBotsNameEditPartsIterator;
     }
 
     private Iterator<AbstractDiagramNameEditPart> getAbstractDiagramNameEditPartsIterator(SWTBotGefEditPart swtBotGefEditPart, EObject semanticElt) {
         List<SWTBotGefEditPart> semanticEltEditPartBots = swtBotGefEditPart.descendants(WithSemantic.withSemantic(semanticElt));
         Iterator<AbstractDiagramNameEditPart> semanticEltEditPartBotsNameEditPartsIterator = Iterables
-                .filter(semanticEltEditPartBots.stream().map(Bot2EditPartFunction.function()).collect(Collectors.toList()), AbstractDiagramNameEditPart.class).iterator();
+                .filter(Iterables.transform(semanticEltEditPartBots, Bot2EditPartFunction.function()), AbstractDiagramNameEditPart.class).iterator();
         return semanticEltEditPartBotsNameEditPartsIterator;
     }
 

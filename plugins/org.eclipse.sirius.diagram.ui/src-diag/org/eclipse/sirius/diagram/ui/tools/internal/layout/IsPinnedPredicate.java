@@ -13,11 +13,12 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.layout;
 
 import java.util.List;
-import java.util.function.Predicate;
 
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.ui.business.api.query.EditPartQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+
+import com.google.common.base.Predicate;
 
 /**
  * A predicate to identify pinned/fixed edit-parts.
@@ -41,10 +42,10 @@ public class IsPinnedPredicate implements Predicate<IGraphicalEditPart> {
     /**
      * {@inheritDoc}
      * 
-     * @see java.util.function.Predicate#test(java.lang.Object)
+     * @see com.google.common.base.Predicate#apply(java.lang.Object)
      */
     @Override
-    public boolean test(final IGraphicalEditPart part) {
+    public boolean apply(final IGraphicalEditPart part) {
         return !(new EditPartQuery(part).isMovableByAutomaticLayout(elementsToKeepFixed));
     }
 }

@@ -20,8 +20,6 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
@@ -45,7 +43,9 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+import com.google.common.base.Function;
 import com.google.common.base.Joiner;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
@@ -122,13 +122,13 @@ public class VSMVariableTypesValidationTest {
             IInterpreterContext context = SiriusInterpreterContextFactory.createInterpreterContext(this.interpretedExpToTest.getDeclaration(), this.interpretedExpToTest.getFeature());
             errors = MultiLanguagesValidator.getInstance().validateExpression(context, expression).getStatuses();
             if (errors.size() > 0) {
-                String message = interpretedExpToTest.toString() + "triggers unexpected errors \n" + Joiner.on('\n').join(errors.stream().map(new Function<IInterpreterStatus, String>() {
+                String message = interpretedExpToTest.toString() + "triggers unexpected errors \n" + Joiner.on('\n').join(Iterables.transform(errors, new Function<IInterpreterStatus, String>() {
 
                     @Override
                     public String apply(IInterpreterStatus input) {
                         return input.getSeverity() + " : " + input.getMessage();
                     }
-                }).collect(Collectors.toList()));
+                }));
 
                 fail(message);
             }

@@ -16,8 +16,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.geometry.Point;
@@ -56,7 +54,9 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
 
+import com.google.common.base.Function;
 import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
@@ -79,9 +79,9 @@ public class ObservationPointTests extends AbstractDefaultModelSequenceTests {
         }
     };
 
-    private final Predicate<DDiagramElement> isVisibleObsPoint = ObservationPoint.viewpointElementPredicate().and(isVisible);
+    private final Predicate<DDiagramElement> isVisibleObsPoint = Predicates.and(ObservationPoint.viewpointElementPredicate(), isVisible);
 
-    private final Predicate<DDiagramElement> isNonVisibleObsPoint = ObservationPoint.viewpointElementPredicate().and(java.util.function.Predicate.not(isVisible));
+    private final Predicate<DDiagramElement> isNonVisibleObsPoint = Predicates.and(ObservationPoint.viewpointElementPredicate(), Predicates.not(isVisible));
 
     /**
      * Test the activation of the observation layer. It should trigger the creation of observation points. They should
@@ -598,7 +598,7 @@ public class ObservationPointTests extends AbstractDefaultModelSequenceTests {
             }
         };
 
-        List<ObservationPointEditPart> createdObsPoint = Lists.newArrayList(Iterables.filter(getObservationPoints().stream().map(getPart).collect(Collectors.toList()), ObservationPointEditPart.class));
+        List<ObservationPointEditPart> createdObsPoint = Lists.newArrayList(Iterables.filter(Iterables.transform(getObservationPoints(), getPart), ObservationPointEditPart.class));
         // Sort the observation point regarding their horizontal position.
 
         Collections.sort(createdObsPoint, new Comparator<ObservationPointEditPart>() {

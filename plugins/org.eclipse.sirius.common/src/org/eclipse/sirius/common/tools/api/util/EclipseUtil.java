@@ -102,7 +102,7 @@ public final class EclipseUtil {
      * @since 0.9.0
      */
     public static <T> List<T> getExtensionPlugins(final Class<T> clazz, final String extensionId, final String executableAttribute, final String attributeName, final String exceptedAttributeValue) {
-        return EclipseUtil.getExtensionPlugins(clazz, extensionId, executableAttribute, attributeName, java.util.function.Predicate.isEqual(exceptedAttributeValue));
+        return EclipseUtil.getExtensionPlugins(clazz, extensionId, executableAttribute, attributeName, Predicates.equalTo(exceptedAttributeValue));
     }
 
     /**

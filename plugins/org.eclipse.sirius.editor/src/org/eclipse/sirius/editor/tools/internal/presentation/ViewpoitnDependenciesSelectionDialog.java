@@ -12,12 +12,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.editor.tools.internal.presentation;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
@@ -35,6 +32,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.dialogs.ListSelectionDialog;
 
+import com.google.common.base.Function;
 import com.google.common.base.Predicates;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
@@ -127,11 +125,11 @@ public class ViewpoitnDependenciesSelectionDialog {
 
     @SuppressWarnings("unchecked")
     private List<URI> getSelectedSiriusURIs(Viewpoint vp, EStructuralFeature feature) {
-        return new ArrayList<>(((List<URI>) vp.eGet(feature)).stream().filter(Predicates.notNull()).toList());
+        return Lists.newArrayList(Iterables.filter((List<URI>) vp.eGet(feature), Predicates.notNull()));
     }
 
     private List<URI> getAvailableViewpointsURIs() {
-        return Lists.newArrayList(Iterables.filter(ViewpointRegistry.getInstance().getViewpoints().stream().map(new Function<Viewpoint, URI>() {
+        return Lists.newArrayList(Iterables.filter(Iterables.transform(ViewpointRegistry.getInstance().getViewpoints(), new Function<Viewpoint, URI>() {
             public URI apply(Viewpoint from) {
                 Option<URI> uri = new ViewpointQuery(from).getViewpointURI();
                 if (uri.some()) {
@@ -140,7 +138,7 @@ public class ViewpoitnDependenciesSelectionDialog {
                     return null;
                 }
             }
-        }).collect(Collectors.toList()), Predicates.notNull()));
+        }), Predicates.notNull()));
     }
 
     private static final class SiriusURIContentProvider implements IStructuredContentProvider {

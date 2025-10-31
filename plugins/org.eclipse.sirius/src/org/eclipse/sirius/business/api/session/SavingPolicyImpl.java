@@ -12,18 +12,20 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.session;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-import java.util.function.Predicate;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * A policy implementing save operation.
@@ -55,11 +57,11 @@ public class SavingPolicyImpl extends AbstractSavingPolicy {
         this.saveOptions = options;
         final Predicate<Resource> savingFilter = new Predicate<Resource>() {
             @Override
-            public boolean test(final Resource input) {
+            public boolean apply(final Resource input) {
                 return shouldSave(input);
             }
         };
-        return new ArrayList<>(scope.stream().filter(savingFilter).toList());
+        return Lists.newArrayList(Iterables.filter(scope, savingFilter));
     }
 
     /**

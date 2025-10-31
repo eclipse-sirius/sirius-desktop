@@ -14,7 +14,6 @@ package org.eclipse.sirius.diagram.ui.tools.internal.actions;
 
 import java.util.Iterator;
 import java.util.Objects;
-import java.util.function.Function;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
@@ -42,6 +41,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 
+import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 
 /**

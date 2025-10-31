@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.List;
 
 import org.eclipse.core.resources.IFile;
@@ -235,7 +234,7 @@ public class WorkspaceEPackageRegistry extends HashMap<String, Object> implement
      */
     @Override
     public Collection<Object> values() {
-        return Sets.union(new LinkedHashSet<>(super.values()), new LinkedHashSet<>(delegated.values()));
+        return Sets.union(Sets.newLinkedHashSet(super.values()), Sets.newLinkedHashSet(delegated.values()));
     }
 
     /**

@@ -20,7 +20,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.Set;
-import java.util.function.Predicate;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -49,6 +48,9 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
 
 /**
  * Action to delete on or more Sirius representations.
@@ -197,10 +199,10 @@ public class DeleteRepresentationAction extends Action {
      */
     private boolean isValidSelection() {
 
-        boolean anyInvalidDelete = selectedRepDescriptors.stream().anyMatch(new Predicate<DRepresentationDescriptor>() {
+        boolean anyInvalidDelete = Iterables.any(selectedRepDescriptors, new Predicate<DRepresentationDescriptor>() {
 
             @Override
-            public boolean test(DRepresentationDescriptor input) {
+            public boolean apply(DRepresentationDescriptor input) {
                 EObject container = input.eContainer();
                 if (container instanceof DView) {
                     IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(container);

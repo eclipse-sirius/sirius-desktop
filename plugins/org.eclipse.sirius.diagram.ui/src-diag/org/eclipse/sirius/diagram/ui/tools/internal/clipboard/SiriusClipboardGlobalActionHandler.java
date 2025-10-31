@@ -79,6 +79,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IWorkbenchPart;
 
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Sets;
 
 /**
  * Handle for clipboard action.
@@ -272,7 +273,7 @@ public class SiriusClipboardGlobalActionHandler extends ImageSupportGlobalAction
     }
 
     private void minimizeSelection(Set<? extends EObject> selection) {
-        for (EObject selected : new LinkedHashSet<>(selection)) {
+        for (EObject selected : Sets.newLinkedHashSet(selection)) {
             EObject cont = selected.eContainer();
             while (cont != null) {
                 if (selection.contains(cont)) {

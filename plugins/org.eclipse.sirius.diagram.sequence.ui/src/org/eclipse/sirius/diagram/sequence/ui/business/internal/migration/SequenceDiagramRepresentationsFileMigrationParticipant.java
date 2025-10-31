@@ -184,7 +184,7 @@ public class SequenceDiagramRepresentationsFileMigrationParticipant extends Abst
             migrateChildrenOfCollapsedNode(diagram);
             // 2-Set width and height of graphical filters of collapsed nodes
             // (directly or not) with GMF size and set GMF bounds.
-            Iterator<Node> viewIterator = Iterators.filter(Iterators.filter(diagram.eAllContents(), Node.class), isNode.and(isCollapsedNode));
+            Iterator<Node> viewIterator = Iterators.filter(Iterators.filter(diagram.eAllContents(), Node.class), Predicates.and(isNode, isCollapsedNode));
             while (viewIterator.hasNext()) {
                 Node node = viewIterator.next();
                 DNode dNode = (DNode) node.getElement();
@@ -236,7 +236,7 @@ public class SequenceDiagramRepresentationsFileMigrationParticipant extends Abst
             }
         }
         for (DDiagramElement indirectlyCollaspedDDE : indirectlyCollaspedDDEs) {
-            if (!indirectlyCollaspedDDE.getGraphicalFilters().stream().anyMatch(Predicates.instanceOf(IndirectlyCollapseFilter.class))) {
+            if (!Iterables.any(indirectlyCollaspedDDE.getGraphicalFilters(), Predicates.instanceOf(IndirectlyCollapseFilter.class))) {
                 IndirectlyCollapseFilter indirectlyCollapseFilter = DiagramFactory.eINSTANCE.createIndirectlyCollapseFilter();
                 indirectlyCollaspedDDE.getGraphicalFilters().add(indirectlyCollapseFilter);
             }

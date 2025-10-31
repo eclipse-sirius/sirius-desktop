@@ -15,8 +15,6 @@ package org.eclipse.sirius.ui.tools.internal.views;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -30,6 +28,9 @@ import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
 import org.eclipse.sirius.ui.tools.internal.views.common.SessionWrapperContentProvider;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.extension.IContextMenuActionProvider;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.extension.ISessionViewExtension;
+
+import com.google.common.base.Function;
+import com.google.common.collect.Collections2;
 
 /**
  * An helper to provide facilities to view which extends viewpoint.
@@ -70,12 +71,12 @@ public final class ViewHelperImpl implements ViewHelper {
     public ITreeContentProvider createContentProvider() {
             SessionWrapperContentProvider sessionWrapperContentProvider = new SessionWrapperContentProvider(new AdapterFactoryContentProvider(createAdapterFactory()));
             ITreeContentProvider contentProvider = new GroupingContentProvider(sessionWrapperContentProvider);
-            Collection<ITreeContentProvider> liveProviders = extensions.stream().map(new Function<ISessionViewExtension, ITreeContentProvider>() {
+            Collection<ITreeContentProvider> liveProviders = Collections2.transform(extensions, new Function<ISessionViewExtension, ITreeContentProvider>() {
                 @Override
                 public ITreeContentProvider apply(ISessionViewExtension from) {
                     return from.getContentProvider();
                 }
-            }).collect(Collectors.toList());
+            });
             sessionWrapperContentProvider.setExtensions(liveProviders);
             return contentProvider;
     }
@@ -86,12 +87,12 @@ public final class ViewHelperImpl implements ViewHelper {
      * @return the providers
      */
     public Collection<IContextMenuActionProvider> getContextMenuActionsProviders() {
-        Collection<IContextMenuActionProvider> liveProviders = extensions.stream().map(new Function<ISessionViewExtension, IContextMenuActionProvider>() {
+        Collection<IContextMenuActionProvider> liveProviders = Collections2.transform(extensions, new Function<ISessionViewExtension, IContextMenuActionProvider>() {
             @Override
             public IContextMenuActionProvider apply(ISessionViewExtension from) {
                 return from.getContextMenuActionProvider();
             }
-        }).collect(Collectors.toList());
+        });
         return liveProviders;
     }
 

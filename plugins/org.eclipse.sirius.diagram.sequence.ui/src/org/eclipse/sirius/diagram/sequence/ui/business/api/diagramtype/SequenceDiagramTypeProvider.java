@@ -17,7 +17,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
-import java.util.function.Predicate;
 
 import org.eclipse.core.commands.operations.OperationHistoryEvent;
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -80,6 +79,7 @@ import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.AbstractVariable;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
@@ -91,12 +91,12 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
 
     private final Predicate<DSemanticDecorator> isSequenceSemanticDecorator = new Predicate<DSemanticDecorator>() {
         @Override
-        public boolean test(DSemanticDecorator input) {
+        public boolean apply(DSemanticDecorator input) {
             boolean result = false;
             if (input instanceof DDiagram) {
                 result = checkSequenceDescriptionPackage(((DDiagram) input).getDescription().eClass());
             } else if (input instanceof DDiagramElement) {
-                result = isSequenceDDiagramElement.test((DDiagramElement) input);
+                result = isSequenceDDiagramElement.apply((DDiagramElement) input);
             }
             return result;
         }
@@ -104,11 +104,11 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
 
     private final Predicate<DDiagramElement> isSequenceDDiagramElement = new Predicate<DDiagramElement>() {
         @Override
-        public boolean test(DDiagramElement input) {
+        public boolean apply(DDiagramElement input) {
             // check that input has a Sequence mapping or is a simple node
             // connected to a sequence message : a lost end.
             DiagramElementMapping mappingToCheck = new DiagramElementMappingQuery(input.getDiagramElementMapping()).getRootMapping();
-            return checkSequenceDescriptionPackage(mappingToCheck.eClass()) || LostMessageEnd.viewpointElementPredicate().test(input);
+            return checkSequenceDescriptionPackage(mappingToCheck.eClass()) || LostMessageEnd.viewpointElementPredicate().apply(input);
         }
     };
 
@@ -215,12 +215,12 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
 
     @Override
     public boolean allowsPinUnpin(DDiagramElement element) {
-        return !isSequenceDDiagramElement.test(element);
+        return !isSequenceDDiagramElement.apply(element);
     }
 
     @Override
     public boolean allowsHideReveal(DDiagramElement element) {
-        return !isSequenceDDiagramElement.test(element);
+        return !isSequenceDDiagramElement.apply(element);
     }
 
     @Override
@@ -230,12 +230,12 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
 
     @Override
     public boolean allowsCopyPasteFormat(DSemanticDecorator element) {
-        return !isSequenceSemanticDecorator.test(element);
+        return !isSequenceSemanticDecorator.apply(element);
     }
 
     @Override
     public boolean allowsAutoSizeNodeStyle(DNode element) {
-        return !isSequenceSemanticDecorator.test(element);
+        return !isSequenceSemanticDecorator.apply(element);
     }
 
     private void collectInstanceRoleCreation(Collection<CommandParameter> result, EReference ref) {
