@@ -468,14 +468,9 @@
         <module>../../plugins/org.eclipse.sirius.tests.junit.xtext</module>
         <module>../../plugins/org.eclipse.sirius.tests.tree</module>
         <module>../../plugins/org.eclipse.sirius.tests.swtbot</module>
-        <module>../../plugins/org.eclipse.sirius.tests.rcptt.properties</module>
-        <module>../../plugins/org.eclipse.sirius.tests.rcptt.properties.edit</module>
-        <module>../../plugins/org.eclipse.sirius.tests.rcptt.properties.editor</module>
-        <module>../../plugins/org.eclipse.sirius.tests.rcptt.properties.samples</module>
 
         <!-- features -->
         <module>../../packaging/org.eclipse.sirius.tests</module>
-        <module>../../packaging/org.eclipse.sirius.tests.rcptt.feature</module>
 
         <!-- update sites -->
         <module>../../packaging/org.eclipse.sirius.tests.update</module>
@@ -584,19 +579,6 @@
      </modules>
     </profile>
 
-    <profile>
-      <id>rcptt</id>
-      <activation>
-        <activeByDefault>false</activeByDefault>
-      </activation>
-      <build>
-          <directory>${build-folder-name}</directory>
-      </build>
-      <modules>
-        <module>../../packaging/org.eclipse.sirius.tests.product</module>
-      </modules>
-    </profile>
-    
     <profile>
       <id>sign</id>
       <activation>
