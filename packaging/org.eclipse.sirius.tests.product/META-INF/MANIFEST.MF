@@ -1,6 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: %pluginName
-Bundle-SymbolicName: org.eclipse.sirius.tests.product;singleton:=true
-Bundle-Version: 7.5.0.qualifier
-Bundle-Vendor: %providerName
