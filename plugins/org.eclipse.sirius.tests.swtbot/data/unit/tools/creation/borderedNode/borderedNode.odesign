@@ -9,7 +9,7 @@
       <defaultLayer name="Default">
         <nodeMappings name="Class" label="Class" preconditionExpression="[not interface/]" semanticCandidatesExpression="feature:eClassifiers" domainClass="EClass">
           <borderedNodeMappings name="Attribute" semanticCandidatesExpression="feature:eAttributes" domainClass="EAttribute">
-            <style xsi:type="style:SquareDescription" showIcon="false" sizeComputationExpression="1" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" showIcon="false" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
@@ -39,14 +39,14 @@
         </edgeMappings>
         <containerMappings name="Package" label="Package" semanticCandidatesExpression="feature:eSubpackages" domainClass="EPackage" dropDescriptions="//@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='DnDInterface'] //@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='DnDClass']" reusedNodeMappings="//@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@nodeMappings[name='Class']">
           <borderedNodeMappings name="Enum" semanticCandidatesExpression="feature:eClassifiers" domainClass="EEnum">
-            <style xsi:type="style:SquareDescription" showIcon="false" sizeComputationExpression="1" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" showIcon="false" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
             </style>
           </borderedNodeMappings>
           <borderedNodeMappings name="Interface" preconditionExpression="feature:interface" semanticCandidatesExpression="feature:eClassifiers" domainClass="ecore.EClass">
-            <style xsi:type="style:SquareDescription" showIcon="false" sizeComputationExpression="1" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" showIcon="false" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_orange']"/>
