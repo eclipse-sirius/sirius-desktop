@@ -122,7 +122,7 @@ public class ContainerDefaultSizeLayoutTest extends AbstractSiriusSwtBotGefTestC
         // Change preference to disable the auto size at arrange.
         changeDiagramUIPreference(SiriusDiagramUiInternalPreferencesKeys.PREF_AUTOSIZE_ON_ARRANGE.name(), autosize);
 
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME, DDiagram.class, true, true);
         EPackage root = loadRootPackage();
         createNewPackage(root, "Pkg1");
 
@@ -156,7 +156,7 @@ public class ContainerDefaultSizeLayoutTest extends AbstractSiriusSwtBotGefTestC
      * </ul>
      */
     public void testDefaultSizeWithToolCreationOnShape() {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME, DDiagram.class, true, true);
         // EPackage root = loadRootPackage();
         // createNewPackage(root, "Pkg1");
 
@@ -189,7 +189,7 @@ public class ContainerDefaultSizeLayoutTest extends AbstractSiriusSwtBotGefTestC
      * </ul>
      */
     public void testDefaultSizeWithToolCreationOnFlat() {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME, DDiagram.class, true, true);
 
         editor.activateTool("Create eenum");
         editor.click(new Point(100, 100));
@@ -218,7 +218,7 @@ public class ContainerDefaultSizeLayoutTest extends AbstractSiriusSwtBotGefTestC
      * </ul>
      */
     public void testDefaultSizeWithExternalCreationOnFlat() {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME, DDiagram.class, true, true);
         EPackage root = loadRootPackage();
         createNewEEnum(root, "eenum1");
 
