@@ -48,6 +48,7 @@ import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer;
 import org.eclipse.sirius.diagram.model.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.model.business.internal.query.DNodeContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.business.internal.view.LayoutData;
@@ -624,10 +625,13 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
 
         Dimension defaultSize = new NodePositionHelper(isSnapToGrid(), getGridSpacing()).getAdjustedDimension(createdNode, constraint);
 
-        if (NodePositionHelper.canResizeWidth(createdNode)) { // Horizontal
+        // Dnd nodes are not really new and must be kept as-is.
+        boolean collapsedSizeForced = new NodeQuery(createdNode).isCollapsed() && size != null;
+
+        if (collapsedSizeForced || NodePositionHelper.canResizeWidth(createdNode)) { // Horizontal
             constraint.setWidth(safeSize.width != -1 ? safeSize.width : defaultSize.width);
         }
-        if (NodePositionHelper.canResizeHeight(createdNode)) { // Vertical
+        if (collapsedSizeForced || NodePositionHelper.canResizeHeight(createdNode)) { // Vertical
             constraint.setHeight(safeSize.height != -1 ? safeSize.height : defaultSize.height);
         }
     }
