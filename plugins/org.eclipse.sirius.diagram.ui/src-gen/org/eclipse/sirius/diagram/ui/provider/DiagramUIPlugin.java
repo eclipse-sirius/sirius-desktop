@@ -550,7 +550,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
          */
         public static ImageDescriptor getDecoratedImageDescriptor(final ImageDescriptor imageDescriptor, String decoratorPath) {
             if (imageDescriptor != null) {
-                return Implementation.getOverlayedDescriptor(DiagramUIPlugin.getPlugin().getImage(imageDescriptor), decoratorPath);
+                return Implementation.getOverlayedDescriptor(imageDescriptor, decoratorPath);
             }
             return imageDescriptor;
         }
@@ -570,9 +570,9 @@ public final class DiagramUIPlugin extends EMFPlugin {
          * @return the image decorated
          */
         public static Image getDecoratedImage(final ImageDescriptor imageDescriptor, String decoratorPath) {
-            Image image = DiagramUIPlugin.getPlugin().getImage(imageDescriptor);
-            if (image != null) {
-                return DiagramUIPlugin.getPlugin().getImage(Implementation.getOverlayedDescriptor(image, decoratorPath));
+        	Image image = DiagramUIPlugin.getPlugin().getImage(imageDescriptor);
+        	if (image != null) {
+                return DiagramUIPlugin.getPlugin().getImage(Implementation.getOverlayedDescriptor(imageDescriptor, decoratorPath));
             }
             return image;
         }
@@ -587,6 +587,11 @@ public final class DiagramUIPlugin extends EMFPlugin {
                 return DiagramUIPlugin.getPlugin().getImage(Implementation.getOverlayedDescriptor(image, decoratorPath));
             }
             return image;
+        }
+        
+        private static ImageDescriptor getOverlayedDescriptor(final ImageDescriptor baseImageDesc, final String decoratorPath) {
+            final ImageDescriptor decoratorDescriptor = DiagramUIPlugin.Implementation.getBundledImageDescriptor(decoratorPath);
+            return new DecorationOverlayIcon(baseImageDesc, decoratorDescriptor, IDecoration.BOTTOM_RIGHT);
         }
 
         private static ImageDescriptor getOverlayedDescriptor(final Image baseImage, final String decoratorPath) {
