@@ -203,14 +203,11 @@ public class SiriusVisualIDRegistry {
             }
             break;
         case DNode2EditPart.VISUAL_ID:
-            if (DiagramPackage.eINSTANCE.getBundledImage().isSuperTypeOf(domainElement.eClass())) {
-                return BundledImageEditPart.VISUAL_ID;
+            if (DiagramPackage.eINSTANCE.getDNode().isSuperTypeOf(domainElement.eClass())) {
+                return DNode2EditPart.VISUAL_ID;
             }
             if (DiagramPackage.eINSTANCE.getDot().isSuperTypeOf(domainElement.eClass())) {
                 return DotEditPart.VISUAL_ID;
-            }
-            if (DiagramPackage.eINSTANCE.getGaugeCompositeStyle().isSuperTypeOf(domainElement.eClass())) {
-                return GaugeCompositeEditPart.VISUAL_ID;
             }
             if (DiagramPackage.eINSTANCE.getSquare().isSuperTypeOf(domainElement.eClass())) {
                 return SquareEditPart.VISUAL_ID;
@@ -221,11 +218,17 @@ public class SiriusVisualIDRegistry {
             if (DiagramPackage.eINSTANCE.getLozenge().isSuperTypeOf(domainElement.eClass())) {
                 return LozengeEditPart.VISUAL_ID;
             }
+            if (DiagramPackage.eINSTANCE.getBundledImage().isSuperTypeOf(domainElement.eClass())) {
+                return BundledImageEditPart.VISUAL_ID;
+            }
+            if (DiagramPackage.eINSTANCE.getNote().isSuperTypeOf(domainElement.eClass())) {
+                return NoteEditPart.VISUAL_ID;
+            }
             if (DiagramPackage.eINSTANCE.getWorkspaceImage().isSuperTypeOf(domainElement.eClass())) {
                 return WorkspaceImageEditPart.VISUAL_ID;
             }
-            if (DiagramPackage.eINSTANCE.getDNode().isSuperTypeOf(domainElement.eClass())) {
-                return DNode2EditPart.VISUAL_ID;
+            if (DiagramPackage.eINSTANCE.getGaugeCompositeStyle().isSuperTypeOf(domainElement.eClass())) {
+                return GaugeCompositeEditPart.VISUAL_ID;
             }
             if (DiagramPackage.eINSTANCE.getCustomStyle().isSuperTypeOf(domainElement.eClass())) {
                 return CustomStyleEditPart.VISUAL_ID;
@@ -274,14 +277,11 @@ public class SiriusVisualIDRegistry {
             }
             break;
         case DNode4EditPart.VISUAL_ID:
-            if (DiagramPackage.eINSTANCE.getBundledImage().isSuperTypeOf(domainElement.eClass())) {
-                return BundledImageEditPart.VISUAL_ID;
+            if (DiagramPackage.eINSTANCE.getDNode().isSuperTypeOf(domainElement.eClass())) {
+                return DNode4EditPart.VISUAL_ID;
             }
             if (DiagramPackage.eINSTANCE.getDot().isSuperTypeOf(domainElement.eClass())) {
                 return DotEditPart.VISUAL_ID;
-            }
-            if (DiagramPackage.eINSTANCE.getGaugeCompositeStyle().isSuperTypeOf(domainElement.eClass())) {
-                return GaugeCompositeEditPart.VISUAL_ID;
             }
             if (DiagramPackage.eINSTANCE.getSquare().isSuperTypeOf(domainElement.eClass())) {
                 return SquareEditPart.VISUAL_ID;
@@ -292,11 +292,17 @@ public class SiriusVisualIDRegistry {
             if (DiagramPackage.eINSTANCE.getLozenge().isSuperTypeOf(domainElement.eClass())) {
                 return LozengeEditPart.VISUAL_ID;
             }
+            if (DiagramPackage.eINSTANCE.getBundledImage().isSuperTypeOf(domainElement.eClass())) {
+                return BundledImageEditPart.VISUAL_ID;
+            }
+            if (DiagramPackage.eINSTANCE.getNote().isSuperTypeOf(domainElement.eClass())) {
+                return NoteEditPart.VISUAL_ID;
+            }
             if (DiagramPackage.eINSTANCE.getWorkspaceImage().isSuperTypeOf(domainElement.eClass())) {
                 return WorkspaceImageEditPart.VISUAL_ID;
             }
-            if (DiagramPackage.eINSTANCE.getDNode().isSuperTypeOf(domainElement.eClass())) {
-                return DNode4EditPart.VISUAL_ID;
+            if (DiagramPackage.eINSTANCE.getGaugeCompositeStyle().isSuperTypeOf(domainElement.eClass())) {
+                return GaugeCompositeEditPart.VISUAL_ID;
             }
             if (DiagramPackage.eINSTANCE.getCustomStyle().isSuperTypeOf(domainElement.eClass())) {
                 return CustomStyleEditPart.VISUAL_ID;
@@ -429,13 +435,10 @@ public class SiriusVisualIDRegistry {
             if (NotationViewIDs.DNODE_NAME_2_EDIT_PART_VISUAL_ID == nodeVisualID) {
                 return true;
             }
-            if (BundledImageEditPart.VISUAL_ID == nodeVisualID) {
+            if (DNode2EditPart.VISUAL_ID == nodeVisualID) {
                 return true;
             }
             if (DotEditPart.VISUAL_ID == nodeVisualID) {
-                return true;
-            }
-            if (GaugeCompositeEditPart.VISUAL_ID == nodeVisualID) {
                 return true;
             }
             if (SquareEditPart.VISUAL_ID == nodeVisualID) {
@@ -447,10 +450,16 @@ public class SiriusVisualIDRegistry {
             if (LozengeEditPart.VISUAL_ID == nodeVisualID) {
                 return true;
             }
+            if (BundledImageEditPart.VISUAL_ID == nodeVisualID) {
+                return true;
+            }
+            if (NoteEditPart.VISUAL_ID == nodeVisualID) {
+                return true;
+            }
             if (WorkspaceImageEditPart.VISUAL_ID == nodeVisualID) {
                 return true;
             }
-            if (DNode2EditPart.VISUAL_ID == nodeVisualID) {
+            if (GaugeCompositeEditPart.VISUAL_ID == nodeVisualID) {
                 return true;
             }
             if (CustomStyleEditPart.VISUAL_ID == nodeVisualID) {
@@ -518,13 +527,10 @@ public class SiriusVisualIDRegistry {
             if (NotationViewIDs.DNODE_NAME_4_EDIT_PART_VISUAL_ID == nodeVisualID) {
                 return true;
             }
-            if (BundledImageEditPart.VISUAL_ID == nodeVisualID) {
+            if (DNode2EditPart.VISUAL_ID == nodeVisualID) {
                 return true;
             }
             if (DotEditPart.VISUAL_ID == nodeVisualID) {
-                return true;
-            }
-            if (GaugeCompositeEditPart.VISUAL_ID == nodeVisualID) {
                 return true;
             }
             if (SquareEditPart.VISUAL_ID == nodeVisualID) {
@@ -536,10 +542,16 @@ public class SiriusVisualIDRegistry {
             if (LozengeEditPart.VISUAL_ID == nodeVisualID) {
                 return true;
             }
+            if (BundledImageEditPart.VISUAL_ID == nodeVisualID) {
+                return true;
+            }
+            if (NoteEditPart.VISUAL_ID == nodeVisualID) {
+                return true;
+            }
             if (WorkspaceImageEditPart.VISUAL_ID == nodeVisualID) {
                 return true;
             }
-            if (DNode4EditPart.VISUAL_ID == nodeVisualID) {
+            if (GaugeCompositeEditPart.VISUAL_ID == nodeVisualID) {
                 return true;
             }
             if (CustomStyleEditPart.VISUAL_ID == nodeVisualID) {

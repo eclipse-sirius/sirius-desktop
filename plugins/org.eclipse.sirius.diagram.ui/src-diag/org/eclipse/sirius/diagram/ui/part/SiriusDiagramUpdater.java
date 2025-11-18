@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2025 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -203,13 +203,7 @@ public class SiriusDiagramUpdater {
         {
             NodeStyle childElement = modelElement.getOwnedStyle();
             int visualID = SiriusVisualIDRegistry.getNodeVisualID(view, childElement);
-            if (visualID == BundledImageEditPart.VISUAL_ID) {
-                result.add(new SiriusNodeDescriptor(childElement, visualID));
-            }
             if (visualID == DotEditPart.VISUAL_ID) {
-                result.add(new SiriusNodeDescriptor(childElement, visualID));
-            }
-            if (visualID == GaugeCompositeEditPart.VISUAL_ID) {
                 result.add(new SiriusNodeDescriptor(childElement, visualID));
             }
             if (visualID == SquareEditPart.VISUAL_ID) {
@@ -221,7 +215,16 @@ public class SiriusDiagramUpdater {
             if (visualID == LozengeEditPart.VISUAL_ID) {
                 result.add(new SiriusNodeDescriptor(childElement, visualID));
             }
+            if (visualID == BundledImageEditPart.VISUAL_ID) {
+                result.add(new SiriusNodeDescriptor(childElement, visualID));
+            }
+            if (visualID == NoteEditPart.VISUAL_ID) {
+                result.add(new SiriusNodeDescriptor(childElement, visualID));
+            }
             if (visualID == WorkspaceImageEditPart.VISUAL_ID) {
+                result.add(new SiriusNodeDescriptor(childElement, visualID));
+            }
+            if (visualID == GaugeCompositeEditPart.VISUAL_ID) {
                 result.add(new SiriusNodeDescriptor(childElement, visualID));
             }
             if (visualID == CustomStyleEditPart.VISUAL_ID) {
@@ -342,13 +345,7 @@ public class SiriusDiagramUpdater {
         {
             NodeStyle childElement = modelElement.getOwnedStyle();
             int visualID = SiriusVisualIDRegistry.getNodeVisualID(view, childElement);
-            if (visualID == BundledImageEditPart.VISUAL_ID) {
-                result.add(new SiriusNodeDescriptor(childElement, visualID));
-            }
             if (visualID == DotEditPart.VISUAL_ID) {
-                result.add(new SiriusNodeDescriptor(childElement, visualID));
-            }
-            if (visualID == GaugeCompositeEditPart.VISUAL_ID) {
                 result.add(new SiriusNodeDescriptor(childElement, visualID));
             }
             if (visualID == SquareEditPart.VISUAL_ID) {
@@ -360,7 +357,16 @@ public class SiriusDiagramUpdater {
             if (visualID == LozengeEditPart.VISUAL_ID) {
                 result.add(new SiriusNodeDescriptor(childElement, visualID));
             }
+            if (visualID == BundledImageEditPart.VISUAL_ID) {
+                result.add(new SiriusNodeDescriptor(childElement, visualID));
+            }
+            if (visualID == NoteEditPart.VISUAL_ID) {
+                result.add(new SiriusNodeDescriptor(childElement, visualID));
+            }
             if (visualID == WorkspaceImageEditPart.VISUAL_ID) {
+                result.add(new SiriusNodeDescriptor(childElement, visualID));
+            }
+            if (visualID == GaugeCompositeEditPart.VISUAL_ID) {
                 result.add(new SiriusNodeDescriptor(childElement, visualID));
             }
             if (visualID == CustomStyleEditPart.VISUAL_ID) {

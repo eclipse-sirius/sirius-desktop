@@ -158,14 +158,15 @@ public class IsOrphanedSwitch {
     public Boolean caseDNode2EditPart() {
         final int visualID = SiriusVisualIDRegistry.getVisualID(gmfView);
         switch (visualID) {
-        case BundledImageEditPart.VISUAL_ID:
+        case DNode2EditPart.VISUAL_ID:
         case DotEditPart.VISUAL_ID:
-        case GaugeCompositeEditPart.VISUAL_ID:
         case SquareEditPart.VISUAL_ID:
         case EllipseEditPart.VISUAL_ID:
         case LozengeEditPart.VISUAL_ID:
+        case BundledImageEditPart.VISUAL_ID:
+        case NoteEditPart.VISUAL_ID:
         case WorkspaceImageEditPart.VISUAL_ID:
-        case DNode2EditPart.VISUAL_ID:
+        case GaugeCompositeEditPart.VISUAL_ID:
         case CustomStyleEditPart.VISUAL_ID:
             return Boolean.valueOf(!semanticChildren.contains(gmfView.getElement()) || visualID != SiriusVisualIDRegistry.getNodeVisualID(parentView, gmfView.getElement()));
         default:
@@ -239,14 +240,15 @@ public class IsOrphanedSwitch {
     public Boolean caseDNode4EditPart() {
         final int visualID = SiriusVisualIDRegistry.getVisualID(gmfView);
         switch (visualID) {
-        case BundledImageEditPart.VISUAL_ID:
+        case DNode4EditPart.VISUAL_ID:
         case DotEditPart.VISUAL_ID:
-        case GaugeCompositeEditPart.VISUAL_ID:
         case SquareEditPart.VISUAL_ID:
         case EllipseEditPart.VISUAL_ID:
         case LozengeEditPart.VISUAL_ID:
+        case BundledImageEditPart.VISUAL_ID:
+        case NoteEditPart.VISUAL_ID:
         case WorkspaceImageEditPart.VISUAL_ID:
-        case DNode4EditPart.VISUAL_ID:
+        case GaugeCompositeEditPart.VISUAL_ID:
         case CustomStyleEditPart.VISUAL_ID:
             return Boolean.valueOf(!semanticChildren.contains(gmfView.getElement()) || visualID != SiriusVisualIDRegistry.getNodeVisualID(parentView, gmfView.getElement()));
         default:
