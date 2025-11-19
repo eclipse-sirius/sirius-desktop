@@ -3,7 +3,7 @@
   <ownedViewpoints name="bug461991" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="bug461991" domainClass="EPackage">
       <defaultLayer name="Default">
-        <containerMappings name="EPackage" semanticCandidatesExpression="[eContents()/]" doubleClickDescription="//@ownedViewpoints[name='bug461991']/@ownedRepresentations[name='bug461991']/@defaultLayer/@toolSections.0/@ownedTools[name='Double%20click%20EPackage']" domainClass="EPackage" reusedContainerMappings="//@ownedViewpoints[name='bug461991']/@ownedRepresentations[name='bug461991']/@defaultLayer/@containerMappings[name='EPackage']">
+        <containerMappings name="EPackage" semanticCandidatesExpression="aql:self.eContents()" doubleClickDescription="//@ownedViewpoints[name='bug461991']/@ownedRepresentations[name='bug461991']/@defaultLayer/@toolSections.0/@ownedTools[name='Double%20click%20EPackage']" domainClass="EPackage" reusedContainerMappings="//@ownedViewpoints[name='bug461991']/@ownedRepresentations[name='bug461991']/@defaultLayer/@containerMappings[name='EPackage']">
           <style xsi:type="style:FlatContainerStyleDescription">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>

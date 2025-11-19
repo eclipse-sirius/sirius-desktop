@@ -17,7 +17,7 @@
             <containerView name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[element.eContainer()/]">
-                <subModelOperations xsi:type="tool_1:Unset" featureName="eClassifiers" elementExpression="[element/]"/>
+                <subModelOperations xsi:type="tool_1:Unset" featureName="eClassifiers" elementExpression="var:element"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

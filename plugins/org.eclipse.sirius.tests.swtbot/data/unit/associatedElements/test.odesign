@@ -3,7 +3,7 @@
   <ownedViewpoints name="test">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="diagram" domainClass="EPackage">
       <defaultLayer name="Default">
-        <containerMappings name="eClass" semanticCandidatesExpression="[eContents()/]" semanticElements="[container.eSubpackages/]" domainClass="EClass">
+        <containerMappings name="eClass" semanticCandidatesExpression="aql:self.eContents()" semanticElements="[container.eSubpackages/]" domainClass="EClass">
           <style xsi:type="style:FlatContainerStyleDescription">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -14,14 +14,14 @@
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:TreeDescription" name="tree" domainClass="EPackage">
-      <subItemMappings name="class" semanticElements="[container.eSubpackages/]" domainClass="EClass" semanticCandidatesExpression="[eContents()/]">
+      <subItemMappings name="class" semanticElements="[container.eSubpackages/]" domainClass="EClass" semanticCandidatesExpression="aql:self.eContents()">
       </subItemMappings>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_3:EditionTableDescription" name="edit_table" domainClass="EPackage" initialHeaderColumnWidth="2">
-      <ownedLineMappings semanticElements="[container.eSubpackages/]" domainClass="EClass" semanticCandidatesExpression="[eContents()/]"/>
+      <ownedLineMappings semanticElements="[container.eSubpackages/]" domainClass="EClass" semanticCandidatesExpression="aql:self.eContents()"/>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_3:CrossTableDescription" name="cross_table" domainClass="EPackage">
-      <ownedLineMappings semanticElements="[container.eSubpackages/]" domainClass="EClass" semanticCandidatesExpression="[eContents()/]"/>
+      <ownedLineMappings semanticElements="[container.eSubpackages/]" domainClass="EClass" semanticCandidatesExpression="aql:self.eContents()"/>
     </ownedRepresentations>
   </ownedViewpoints>
 </description:Group>

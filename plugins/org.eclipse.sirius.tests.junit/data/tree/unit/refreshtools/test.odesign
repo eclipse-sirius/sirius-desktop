@@ -51,7 +51,7 @@
           <menuItemDescriptions xsi:type="tool:OperationAction" name="Create Sibling Class">
             <view name="views"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[eContainer()/]">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.eContainer()">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers"/>
               </firstModelOperations>
             </initialOperation>
