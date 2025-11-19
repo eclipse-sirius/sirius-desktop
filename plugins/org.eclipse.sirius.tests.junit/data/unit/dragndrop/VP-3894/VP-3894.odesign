@@ -103,7 +103,7 @@
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[target/]">
                         <subModelOperations xsi:type="tool:SetValue" featureName="eSuperTypes" valueExpression="aql:edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target"/>
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element">
-                          <subModelOperations xsi:type="tool:Unset" featureName="eSuperTypes" elementExpression="[element/]"/>
+                          <subModelOperations xsi:type="tool:Unset" featureName="eSuperTypes" elementExpression="var:element"/>
                         </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>

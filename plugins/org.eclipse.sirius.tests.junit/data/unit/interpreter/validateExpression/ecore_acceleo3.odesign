@@ -782,8 +782,8 @@
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[newSemanticContainer/]">
-                <subModelOperations xsi:type="tool:SetValue" featureName="eStructuralFeatures" valueExpression="[element/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:newSemanticContainer">
+                <subModelOperations xsi:type="tool:SetValue" featureName="eStructuralFeatures" valueExpression="var:element"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

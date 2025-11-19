@@ -11,7 +11,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="EReferenceMapping" sourceMapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@defaultLayer/@nodeMappings[name='EClassMapping']" targetMapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@defaultLayer/@nodeMappings[name='EClassMapping']" targetFinderExpression="[eType/]" sourceFinderExpression="[eContainer()/]" domainClass="ecore.EReference" useDomainElement="true">
+        <edgeMappings name="EReferenceMapping" sourceMapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@defaultLayer/@nodeMappings[name='EClassMapping']" targetMapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@defaultLayer/@nodeMappings[name='EClassMapping']" targetFinderExpression="[eType/]" sourceFinderExpression="aql:self.eContainer()" domainClass="ecore.EReference" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -55,7 +55,7 @@
               <firstModelOperations xsi:type="tool:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures">
                 <subModelOperations xsi:type="tool:SetValue" featureName="eType" valueExpression="aql:element"/>
                 <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="ref"/>
-                <subModelOperations xsi:type="tool_1:CreateEdgeView" mapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@defaultLayer/@edgeMappings[name='EReferenceMapping']" containerViewExpression="[elementView.eContainer(DDiagram)/]" sourceExpression="[element/]" targetExpression="[element/]"/>
+                <subModelOperations xsi:type="tool_1:CreateEdgeView" mapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@defaultLayer/@edgeMappings[name='EReferenceMapping']" containerViewExpression="[elementView.eContainer(DDiagram)/]" sourceExpression="var:element" targetExpression="var:element"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
