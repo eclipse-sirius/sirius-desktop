@@ -15,7 +15,6 @@ package org.eclipse.sirius.tests.swtbot.support.api.matcher.geometry;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
-import org.hamcrest.Factory;
 import org.hamcrest.Matcher;
 
 /**
@@ -80,7 +79,6 @@ public class RectangleAround extends BaseMatcher<Rectangle> {
      *            Distance between.
      * @return Matcher.
      */
-    @Factory
     public static Matcher<Rectangle> around(Rectangle expected, int distance) {
         return new RectangleAround(expected, distance);
     }
