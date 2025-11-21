@@ -1,7 +1,7 @@
 target "sirius_2023-03"
 
-include "modules/orbit.tpd"
-include "modules/swtbot-3.1.tpd"
+//include "modules/orbit.tpd"
+//include "modules/swtbot-3.1.tpd"
 include "modules/shared-license.tpd"
 include "modules/aql-3.7.tpd"
 include "modules/acceleo-3.7.tpd"
@@ -12,7 +12,24 @@ include "modules/gmf-runtime-1.16.tpd"
 
 with source, requirements
 
-location Sirius-7.2.1 "https://download.eclipse.org/sirius/updates/releases/7.2.1/2023-03/" {
+location Orbit-2025-09 "https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2025-09" {
+    org.apache.log4j lazy
+    org.easymock lazy
+    org.hamcrest.core [2.2.0,3.0.0)
+    org.hamcrest.library [2.2.0,3.0.0)
+    org.junit lazy
+    slf4j.api [2.0.17,3.0.0)
+}
+
+location SWTBot-4.3 "https://download.eclipse.org/technology/swtbot/releases/4.3.0" {
+    org.eclipse.swtbot.eclipse.feature.group lazy
+    org.eclipse.swtbot.eclipse.gef.feature.group lazy
+    org.eclipse.swtbot.feature.group lazy
+    org.eclipse.swtbot.forms.feature.group lazy
+    org.eclipse.swtbot.ide.feature.group lazy
+}
+
+location Sirius-7.4.10 "https://download.eclipse.org/sirius/updates/releases/7.4.10/2023-03/" {
 	org.eclipse.sirius.common.interpreter lazy
 }
 
