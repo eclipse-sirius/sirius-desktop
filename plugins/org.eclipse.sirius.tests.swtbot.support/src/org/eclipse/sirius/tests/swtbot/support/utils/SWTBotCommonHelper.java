@@ -117,7 +117,7 @@ public final class SWTBotCommonHelper {
      * Close the current editor.
      */
     public static void closeCurrentEditor() {
-        if (TestsUtil.is202006Platform()) {
+        if (TestsUtil.is202006Platform() || TestsUtil.is202509Platform()) {
             SWTBotSiriusHelper.menu(SWTBotCommonHelper.bot, SWTBotCommonHelper.FILE).menu("Close Editor").click();
         } else {
             SWTBotSiriusHelper.menu(SWTBotCommonHelper.bot, SWTBotCommonHelper.FILE).menu("Close").click();

@@ -750,7 +750,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         }
 
         // Undo the change
-        if (TestsUtil.is202309Platform()) {
+        if (TestsUtil.is202309Platform() && !TestsUtil.is202509Platform()) {
             bot.menu("Edit").menu("Undo").click();
         } else {
             bot.menu("Edit").menu("Undo ").click();
@@ -764,7 +764,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         }
 
         // Redo the change
-        if (TestsUtil.is202309Platform()) {
+        if (TestsUtil.is202309Platform() && !TestsUtil.is202509Platform()) {
             bot.menu("Edit").menu("Redo").click();
         } else {
             bot.menu("Edit").menu("Redo ").click();
