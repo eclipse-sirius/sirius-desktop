@@ -523,7 +523,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      */
     protected void undo(String cmdName) {
         String menuLabel = "Undo " + cmdName;
-        if (PLATFORM_VERSION.getMajor() == 3 && PLATFORM_VERSION.getMinor() >= 30) {
+        if (PLATFORM_VERSION.getMajor() == 3 && PLATFORM_VERSION.getMinor() >= 30 && PLATFORM_VERSION.getMinor() < 33) {
             menuLabel = "Undo";
         }
         SWTBotSiriusHelper.menu(bot, AbstractSiriusSwtBotGefTestCase.EDIT_MENU_NAME).menu(menuLabel).click();
@@ -557,7 +557,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      */
     protected void redo(String cmdName) {
         String menuLabel = "Redo " + cmdName;
-        if (PLATFORM_VERSION.getMajor() == 3 && PLATFORM_VERSION.getMinor() >= 30) {
+        if (PLATFORM_VERSION.getMajor() == 3 && PLATFORM_VERSION.getMinor() >= 30 && PLATFORM_VERSION.getMinor() < 33) {
             menuLabel = "Redo";
         }
         SWTBotSiriusHelper.menu(bot, AbstractSiriusSwtBotGefTestCase.EDIT_MENU_NAME).menu(menuLabel).click();
