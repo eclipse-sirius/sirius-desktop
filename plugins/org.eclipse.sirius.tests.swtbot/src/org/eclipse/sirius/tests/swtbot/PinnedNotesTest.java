@@ -64,19 +64,11 @@ public class PinnedNotesTest extends AbstractPinnedElementsTest {
 
     private static final String VSM_FILE = "description/pinUnpinNote.odesign";
 
-    private DDiagram dDiagram;
-
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE, VSM_FILE);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, "pinUnpinNote.aird");
@@ -358,7 +350,11 @@ public class PinnedNotesTest extends AbstractPinnedElementsTest {
     }
 
     private void changeMoveNoteDuringLayoutInPreferencePage(boolean enable) {
-        bot.menu("Window").menu("Preferences").click();
+        if (TestsUtil.is202509Platform()) {
+            bot.menu("Window").menu("Preferences...").click();
+        } else {
+            bot.menu("Window").menu("Preferences").click();
+        }
         bot.waitUntil(Conditions.shellIsActive("Preferences"));
         bot.tree().getTreeItem("Sirius").expand().select().getNode("Sirius Diagram").select();
         SWTBotCheckBox checkBox = bot.checkBox("Move unlinked notes during layout");
@@ -371,7 +367,11 @@ public class PinnedNotesTest extends AbstractPinnedElementsTest {
     }
 
     private void checkSiriusDiagramPreferencePage(boolean expectedValue) {
-        bot.menu("Window").menu("Preferences").click();
+        if (TestsUtil.is202509Platform()) {
+            bot.menu("Window").menu("Preferences...").click();
+        } else {
+            bot.menu("Window").menu("Preferences").click();
+        }
         bot.waitUntil(Conditions.shellIsActive("Preferences"));
         bot.tree().getTreeItem("Sirius").expand().select().getNode("Sirius Diagram").select();
         assertEquals(expectedValue, bot.checkBox("Move unlinked notes during layout").isChecked());

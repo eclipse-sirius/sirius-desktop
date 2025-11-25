@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES
+ * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -62,6 +62,8 @@ public final class TestsUtil {
     private static final String UI_WORKBENCH_202303_START = "3.128";
 
     private static final String UI_WORKBENCH_202309_START = "3.130";
+    
+    private static final String UI_WORKBENCH_202509_START = "3.136";
 
     private static final String CREATE_REPRESENTATATION_IN_SEPARATE_RESOURCE = "createLocalRepresentationInSeparateResource";
 
@@ -349,6 +351,15 @@ public final class TestsUtil {
      */
     public static boolean is202309Platform() {
         return checkUiWorkbenchVersion(Version.parseVersion(UI_WORKBENCH_202309_START), null);
+    }
+    
+    /**
+     * Tells if the current platform corresponds to 2025-09 or later.
+     *
+     * @return true if the current platform corresponds to 2025-09 or later, false otherwise.
+     */
+    public static boolean is202509Platform() {
+        return checkUiWorkbenchVersion(Version.parseVersion(UI_WORKBENCH_202509_START), null);
     }
 
     /**

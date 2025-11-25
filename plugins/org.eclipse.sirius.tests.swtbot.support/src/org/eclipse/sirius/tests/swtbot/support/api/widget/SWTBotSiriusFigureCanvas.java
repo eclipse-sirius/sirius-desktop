@@ -424,6 +424,7 @@ public class SWTBotSiriusFigureCanvas extends SWTBotGefFigureCanvas {
 
                 final Event event = new Event();
                 event.type = SWT.MouseWheel;
+                event.widget = SWTBotSiriusFigureCanvas.this.widget;
                 event.keyCode = SWT.MouseHorizontalWheel;
                 event.detail = SWT.SCROLL_LINE;
                 event.stateMask = SWT.CTRL;
