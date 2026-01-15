@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES
+ * Copyright (c) 2009, 2026 THALES GLOBAL SERVICES and others
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -61,6 +61,8 @@ public class UIPerspective {
     private static final String VIEWPOINT = "Sirius";
 
     private static final String NEW_MENU = "New";
+    
+    private static final String WIZARDS_LIST_TITLE = "Select a wizard";
 
     private static final String REPRESENTATIONS_FILE_LABEL = "Representations File";
 
@@ -206,8 +208,14 @@ public class UIPerspective {
     private void openRepresentationsFileWizard() {
         SWTBotSiriusHelper.menu(bot, "File").menu(UIPerspective.NEW_MENU).menu("Other...").click();
 
-        bot.waitUntil(Conditions.shellIsActive(NEW_MENU));
-        SWTBot wizardListBot = bot.shell(NEW_MENU).bot();
+        String shellTitle= NEW_MENU;
+        if (TestsUtil.is202106Platform() && !TestsUtil.is202509Platform()) {
+            // For a while between 2021-06 and 2025-09, this windows's title was different.
+            shellTitle = UIPerspective.WIZARDS_LIST_TITLE;
+        }
+
+        bot.waitUntil(Conditions.shellIsActive(shellTitle));
+        SWTBot wizardListBot = bot.shell(shellTitle).bot();
         wizardListBot.text().setText(UIPerspective.REPRESENTATIONS_FILE_LABEL);
 
         SWTBotTree wizardsTree = wizardListBot.tree();
