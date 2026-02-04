@@ -16,6 +16,9 @@
 						<a href="#sirius7.6.2">Changes in Sirius Desktop 7.6.2</a>
 						<ol style="list-style: disc;">
 							<li>
+								<a href="#sirius7.6.2user">User-Visible Changes</a>
+							</li>
+							<li>
 								<a href="#DeveloperVisibleChanges">Developer-Visible Changes</a>
 							</li>
 						</ol>
@@ -295,6 +298,14 @@
 			<a href="Release_Notes_Previous.html">the release notes from previous versions</a> for details about older releases.
 		</p>
 		<h2 id="sirius7.6.2">Changes in Sirius Desktop 7.6.2</h2>
+		<h3 id="sirius7.6.2user">User-Visible Changes</h3>
+		<ul>
+			<li><span class="label label-success">Added</span> Added system property
+				<code>org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteImageAction.fetchImageFromClipboard</code> (default:
+				<code>true</code>). Set it to
+				<code>false</code> to disable clipboard image retrieval as a workaround for Linux freezes.
+			</li>
+		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<h4 id="Migrations">Migrations</h4>
 		<ul>
