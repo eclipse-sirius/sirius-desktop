@@ -32,6 +32,7 @@ import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.sirius.business.api.image.ImageManager;
 import org.eclipse.sirius.business.api.image.ImageManager.CreateImageFileProvider;
 import org.eclipse.sirius.business.api.image.ImageManagerProvider;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.ui.business.api.image.WorkspaceImageHelper;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
@@ -46,6 +47,8 @@ import org.eclipse.swt.dnd.ImageTransfer;
 import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.ImageLoader;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.ISelectionListener;
+import org.eclipse.ui.IWorkbenchPage;
 
 /**
  * This action provides past image from the clipboard on Sirius elements that can have workspace image style. This
@@ -65,6 +68,11 @@ public class PasteImageAction extends Action implements IDisposableAction {
     private boolean isDisposed = true;
 
     private Optional<IPropertyChangeListener> changeListenerOpt = Optional.empty();
+
+    // - Selection
+    private ISelectionListener onChangeSelection = (part, selection) -> {
+        EclipseUIUtil.displaySyncExec(() -> updateState());
+    };
 
     /**
      * Default constructor.
@@ -89,6 +97,11 @@ public class PasteImageAction extends Action implements IDisposableAction {
     public void init() {
         awtClipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 
+        IWorkbenchPage page = EclipseUIUtil.getActivePage();
+        if (page != null) {
+            page.addSelectionListener(this.onChangeSelection);
+        }
+
         updateState();
 
         // listen clipboard for update state
@@ -108,6 +121,11 @@ public class PasteImageAction extends Action implements IDisposableAction {
         changeListenerOpt.ifPresent(changeListener -> {
             this.removePropertyChangeListener(changeListener);
         });
+        IWorkbenchPage page = EclipseUIUtil.getActivePage();
+        if (page != null) {
+            page.removeSelectionListener(this.onChangeSelection);
+            this.onChangeSelection = null;
+        }
         isDisposed = true;
     }
 
@@ -211,9 +229,4 @@ public class PasteImageAction extends Action implements IDisposableAction {
         return imgData != null && SetStyleToWorkspaceImageAction.selectionCanHaveWorkspaceImage();
     }
 
-    @Override
-    public boolean isEnabled() {
-        updateState();
-        return super.isEnabled();
-    }
 }
