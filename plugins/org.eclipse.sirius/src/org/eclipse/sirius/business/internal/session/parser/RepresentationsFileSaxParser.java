@@ -20,6 +20,7 @@ import java.io.InputStream;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import javax.xml.XMLConstants;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -72,6 +73,8 @@ public class RepresentationsFileSaxParser {
         try {
             inputStream = new FileInputStream(new File(representationsFile.getRawLocation().toOSString()));
             SAXParserFactory factory = SAXParserFactory.newInstance();
+            factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+            factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true); //$NON-NLS-1$
             SAXParser saxParser = factory.newSAXParser();
             saxParser.parse(inputStream, sessionHandler);
         } catch (final SiriusSaxParserNormalAbortException e) {
