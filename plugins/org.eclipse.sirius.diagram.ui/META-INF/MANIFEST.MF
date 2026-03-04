@@ -211,7 +211,7 @@ Export-Package: org.eclipse.sirius.diagram.description.concern.provider;version=
  org.eclipse.sirius.diagram.ui.tools.internal.views.providers.filters;version="7.6.0";x-internal:=true,
  org.eclipse.sirius.diagram.ui.tools.internal.views.providers.layers;version="7.6.0";x-internal:=true,
  org.eclipse.sirius.diagram.ui.tools.internal.views.providers.outline;version="7.6.0";x-internal:=true
-Bundle-RequiredExecutionEnvironment: JavaSE-17
+Bundle-RequiredExecutionEnvironment: JavaSE-21
 Bundle-ActivationPolicy: lazy
 Import-Package: org.w3c.dom.svg;version="1.1.0",
  org.eclipse.sirius.ext.base;version="2.1.0",

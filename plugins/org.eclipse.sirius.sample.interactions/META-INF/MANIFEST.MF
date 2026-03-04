@@ -6,7 +6,7 @@ Bundle-Version: 7.6.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-17
+Bundle-RequiredExecutionEnvironment: JavaSE-21
 Export-Package: org.eclipse.sirius.sample.interactions,
  org.eclipse.sirius.sample.interactions.impl,
  org.eclipse.sirius.sample.interactions.util
