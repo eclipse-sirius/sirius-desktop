@@ -19,7 +19,7 @@ Require-Bundle: org.eclipse.core.runtime;bundle-version="3.8.0",
  org.eclipse.ui.ide;bundle-version="3.22.700",
  org.eclipse.debug.ui;bundle-version="3.19.0";resolution:=optional
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-17
+Bundle-RequiredExecutionEnvironment: JavaSE-21
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Import-Package: org.eclipse.sirius.ext.base;version="2.1.0"
