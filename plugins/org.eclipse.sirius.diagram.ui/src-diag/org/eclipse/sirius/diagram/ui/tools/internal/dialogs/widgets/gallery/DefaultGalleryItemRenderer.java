@@ -1,6 +1,6 @@
 // CHECKSTYLE:OFF copied from org.eclipse.nebula.widgets.gallery.DefaultGalleryItemRenderer
 /*******************************************************************************
- * Copyright (c) 2006-2007 Nicolas Richeton.
+ * Copyright (c) 2006-2026 Nicolas Richeton and others.
  *
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
@@ -287,7 +287,7 @@ public class DefaultGalleryItemRenderer extends AbstractGalleryItemRenderer {
 			// Create new colors
 			for (int i = dropShadowsSize - 1; i >= 0; i--) {
 				int value = 255 - i * step;
-				Color c = new Color(Display.getDefault(), value, value, value);
+				Color c = new Color(value, value, value);
 				dropShadowsColors.add(c);
 			}
 		}

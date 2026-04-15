@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2026 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,7 +17,6 @@ import org.eclipse.jface.viewers.DecoratingStyledCellLabelProvider;
 import org.eclipse.jface.viewers.ILabelDecorator;
 import org.eclipse.sirius.ui.business.api.template.RepresentationTemplateEditManager;
 import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.widgets.Display;
 
 /**
  * Label provider highlighting generated model elements with a specific color.
@@ -27,7 +26,7 @@ import org.eclipse.swt.widgets.Display;
  */
 public class GeneratedElementsLabelProvider extends DecoratingStyledCellLabelProvider {
 
-    private final Color generated = new Color(Display.getDefault(), 136, 138, 133);
+    private final Color generated = new Color(136, 138, 133);
 
     /**
      * Create the provider.

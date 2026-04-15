@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2023 Obeo.
+ * Copyright (c) 2018, 2026 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -56,16 +56,16 @@ public class EntitiesDiagramBackgroundTests extends SiriusDiagramTestCase implem
     private DDiagramEditPart dDiagramEditPart;
 
     /** White color */
-    private final Color WHITE_COLOR = new Color(null, 255, 255, 255);
+    private final Color WHITE_COLOR = new Color(255, 255, 255);
 
     /** Green color */
-    private final Color GREEN_COLOR = new Color(null, 0, 255, 0);
+    private final Color GREEN_COLOR = new Color(0, 255, 0);
 
     /** Red color */
-    private final Color RED_COLOR = new Color(null, 255, 0, 0);
+    private final Color RED_COLOR = new Color(255, 0, 0);
 
     /** Intense blue color */
-    private final Color INTENSE_BLUE_COLOR = new Color(null, 0, 255, 255);
+    private final Color INTENSE_BLUE_COLOR = new Color(0, 255, 255);
 
     @Override
     protected void setUp() throws Exception {

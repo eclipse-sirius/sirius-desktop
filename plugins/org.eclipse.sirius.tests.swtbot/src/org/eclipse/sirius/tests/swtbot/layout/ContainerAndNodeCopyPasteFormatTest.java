@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2024 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2026 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -1294,7 +1294,7 @@ public class ContainerAndNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGef
             AbstractDiagramNodeEditPart part = (AbstractDiagramNodeEditPart) editPart.part();
             Object shape = part.getStyleEditPart().getFigure().getChildren().get(0);
             assertTrue("The shape of figure for " + label + " must be a square.", shape instanceof SquareFigure);
-            Color gray = new Color(null, 136, 136, 136);
+            Color gray = new Color(136, 136, 136);
             try {
                 assertEquals("The color of figure for " + label + " must be gray.", gray, ((Shape) shape).getBackgroundColor());
             } finally {
@@ -1317,8 +1317,8 @@ public class ContainerAndNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGef
             AbstractDiagramNodeEditPart part = (AbstractDiagramNodeEditPart) editPart.part();
             Object shape = part.getStyleEditPart().getFigure().getChildren().get(0);
             assertTrue("The shape of figure for " + label + " must be a diamond.", shape instanceof LozengeFigure);
-            Color orange = new Color(null, 252, 175, 62);
-            Color blue = new Color(null, 152, 168, 191);
+            Color orange = new Color(252, 175, 62);
+            Color blue = new Color(152, 168, 191);
             try {
                 assertEquals("The color of figure for " + label + " must be orange.", orange, ((Shape) shape).getBackgroundColor());
                 assertEquals("The color of the label for " + label + " must be blue.", blue, ((IFigure) ((Shape) shape).getChildren().get(0)).getForegroundColor());
@@ -1343,7 +1343,7 @@ public class ContainerAndNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGef
             AbstractDiagramNodeEditPart part = (AbstractDiagramNodeEditPart) editPart.part();
             Object shape = part.getStyleEditPart().getFigure().getChildren().get(0);
             assertTrue("The shape of figure for " + label + " must be an ellipse.", shape instanceof ODesignEllipseFigure);
-            Color yellow = new Color(null, 252, 233, 79);
+            Color yellow = new Color(252, 233, 79);
             try {
                 assertEquals("The color of figure for " + label + " must be yellow.", yellow, ((Shape) shape).getBackgroundColor());
             } finally {
