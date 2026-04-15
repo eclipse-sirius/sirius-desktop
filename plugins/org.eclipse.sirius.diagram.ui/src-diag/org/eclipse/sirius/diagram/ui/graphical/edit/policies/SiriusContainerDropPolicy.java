@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2022 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2026 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -168,7 +168,7 @@ public class SiriusContainerDropPolicy extends DragDropEditPolicy {
     public static final String DROP_ELEMENTS_CMD_NAME = Messages.SiriusContainerDropPolicy_dropElementsCommandLabel;
 
     /** The background feedback color as in GMF. */
-    private static final Color GRAY = new Color(null, 200, 200, 200);
+    private static final Color GRAY = new Color(200, 200, 200);
 
     /**
      * the original target figure

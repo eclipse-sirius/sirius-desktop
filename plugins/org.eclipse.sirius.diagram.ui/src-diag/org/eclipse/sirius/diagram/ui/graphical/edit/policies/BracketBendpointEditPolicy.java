@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2026 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -70,7 +70,7 @@ public class BracketBendpointEditPolicy extends BendpointEditPolicy {
     public static final String ROTATE_COMMAND_LABEL = Messages.BracketBendpointEditPolicy_rotateBracketCommandLabel;
 
     /** The background feedback color as in GMF. */
-    private static final Color GRAY = new Color(null, 200, 200, 200);
+    private static final Color GRAY = new Color(200, 200, 200);
 
     /** The feeback figure. */
     private IFigure feedbackFigure;
