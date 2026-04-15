@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2025 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2026 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -142,7 +142,7 @@ public abstract class SiriusTestCase extends TestCase {
     private static final String DOT = ".";
 
     /** Default grid spacing. */
-    public static final int DEFAULT_GRID_SPACING = 20;
+    private static final int DEFAULT_GRID_SPACING = 20;
 
     /** The local session. */
     protected Session session;

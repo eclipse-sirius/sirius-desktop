@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2026 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -212,8 +212,8 @@ public class BorderedNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGefTest
         // layout.
         checkFirstContainerABorderedNodes(diagramEditor1, expectedAList, expectedAList_GMF);
         // Check the color before copy layout
-        Color yellow = new Color(null, 225, 225, 135);
-        Color lightBlue = new Color(null, 194, 239, 255);
+        Color yellow = new Color(225, 225, 135);
+        Color lightBlue = new Color(194, 239, 255);
         try {
             checkBorderNodeColor("r", diagramEditor1, yellow, "Yellow", 1);
             checkBorderNodeColor("r", diagramEditor2, lightBlue, "Light Blue", 1);
@@ -885,7 +885,7 @@ public class BorderedNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGefTest
         checkBorderNode("a", diagramEditor4, A1_SECOND_DIAG_LOCATION, A1_SECOND_DIAG_GMF_LOCATION, 1);
 
         // Check border node color
-        Color yellow = new Color(null, 252, 233, 79);
+        Color yellow = new Color(252, 233, 79);
         try {
             checkBorderNodeColor("a", diagramEditor4, yellow, "Yellow", 1);
         } finally {

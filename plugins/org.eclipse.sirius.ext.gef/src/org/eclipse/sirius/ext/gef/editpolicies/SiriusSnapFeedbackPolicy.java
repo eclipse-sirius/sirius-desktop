@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2003, 2021 IBM Corporation and others.
+ * Copyright (c) 2003, 2026 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -63,14 +63,14 @@ public class SiriusSnapFeedbackPolicy extends GraphicalEditPolicy {
      * This is the original color used by GEF in
      * {@link org.eclipse.gef.editpolicies.SnapFeedbackPolicy}.
      */
-    public static final Color VERTICAL_HORIZONTAL_ORIGINAL_GUIDE_COLOR = new Color(null, 255, 175, 175);
+    public static final Color VERTICAL_HORIZONTAL_ORIGINAL_GUIDE_COLOR = new Color(255, 175, 175);
 
     /**
      * Color for guides corresponding to Vertical guide or Horizontal guide.
      * Replace the red color of
      * {@link org.eclipse.gef.editpolicies.SnapFeedbackPolicy}.
      */
-    public static final Color VERTICAL_HORIZONTAL_GUIDE_COLOR = new Color(null, 255, 175, 175);
+    public static final Color VERTICAL_HORIZONTAL_GUIDE_COLOR = new Color(255, 175, 175);
 
     /**
      * Color for guides of North, South, East or West side for snap to geometry.

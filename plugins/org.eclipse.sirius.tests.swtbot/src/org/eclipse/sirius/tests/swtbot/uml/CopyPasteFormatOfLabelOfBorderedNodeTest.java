@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2024 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2026 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -64,7 +64,7 @@ public class CopyPasteFormatOfLabelOfBorderedNodeTest extends AbstractUmlDragAnd
      * launching Paste Layout action.
      */
     public void testCopyPasteLayout() {
-        Color red = new Color(null, 227, 164, 156);
+        Color red = new Color(227, 164, 156);
         try {
             final EditPart srcLabelEditPart = editor.getEditPart("DropPort", AbstractDiagramNameEditPart.class).part();
             assertTrue("The model of the DropPort editPart in source diagram should be a Node", srcLabelEditPart.getModel() instanceof Node);
@@ -102,7 +102,7 @@ public class CopyPasteFormatOfLabelOfBorderedNodeTest extends AbstractUmlDragAnd
      * launching Paste Style action.
      */
     public void testCopyPasteStyle() {
-        Color red = new Color(null, 227, 164, 156);
+        Color red = new Color(227, 164, 156);
         try {
             final EditPart srcLabelEditPart = editor.getEditPart("DropPort", AbstractDiagramNameEditPart.class).part();
             checkBorderNodeLabelColor(srcLabelEditPart, red, "Red");
@@ -141,7 +141,7 @@ public class CopyPasteFormatOfLabelOfBorderedNodeTest extends AbstractUmlDragAnd
      * launching Paste Format action.
      */
     public void testCopyPasteFormat() {
-        Color red = new Color(null, 227, 164, 156);
+        Color red = new Color(227, 164, 156);
         try {
             final EditPart srcLabelEditPart = editor.getEditPart("DropPort", AbstractDiagramNameEditPart.class).part();
             assertTrue("The model of the DropPort editPart in source diagram should be a Node", srcLabelEditPart.getModel() instanceof Node);
