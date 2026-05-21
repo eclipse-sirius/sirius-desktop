@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019 Obeo.
+ * Copyright (c) 2019, 2026 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.render;
 
+import java.text.MessageFormat;
 import java.util.function.Supplier;
 
 import org.eclipse.draw2d.Graphics;
@@ -19,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gmf.runtime.draw2d.ui.mapmode.IMapMode;
 import org.eclipse.gmf.runtime.draw2d.ui.render.internal.graphics.RenderedMapModeGraphics;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 /**
  * Extends org.eclipse.gmf.runtime.draw2d.ui.render.internal.graphics.RenderedMapModeGraphics to make it possible to
@@ -102,7 +104,7 @@ public class SiriusRenderedMapModeGraphics extends RenderedMapModeGraphics {
             SiriusGraphicsSVG svgGraphics = (SiriusGraphicsSVG) subGraphics;
             svgGraphics.drawSVGReference(uri, x1, y1, w1, h1, x2, y2, w2, h2);
         } else {
-            throw new RuntimeException();
+            throw new RuntimeException(MessageFormat.format(Messages.SVGFigure_notExpectedGraphics, subGraphics.getClass().getSimpleName()));
         }
     }
 

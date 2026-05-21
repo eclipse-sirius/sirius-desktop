@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2024 Obeo and THALES GLOBAL SERVICES.
+ * Copyright (c) 2015, 2026 Obeo and THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -1794,6 +1794,9 @@ public final class Messages {
 
     @TranslatableMessage
     public static String SVGFigure_usingInvalidBundledImageShape;
+
+    @TranslatableMessage
+    public static String SVGFigure_notExpectedGraphics;
 
     @TranslatableMessage
     public static String SVGFigure_loadError;
