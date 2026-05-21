@@ -14,7 +14,6 @@ package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.SnapToHelper;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
@@ -57,8 +56,6 @@ public class DDiagramEditPart extends AbstractDDiagramEditPart {
     public static final String MODEL_ID = "Sirius"; //$NON-NLS-1$
 
     public static final int VISUAL_ID = 1000;
-
-    private static final RGBValues WHITE = RGBValues.create(255, 255, 255);
     
     public DDiagramEditPart(View view) {
         super(view);
@@ -254,7 +251,7 @@ public class DDiagramEditPart extends AbstractDDiagramEditPart {
         if (resolveDDiagram().some() && fig != null) {
             DSemanticDiagram dSemanticDiagram = (DSemanticDiagram) this.resolveDDiagram().get();
             ColorDescription colorDesc = dSemanticDiagram.getDescription().getBackgroundColor();
-            RGBValues rgb = WHITE;
+            RGBValues rgb = null;
             if (colorDesc != null) {
                 // Save the diagram variable initial value to restore it after configuring the diagram background to
                 // avoid any side effect.
@@ -273,28 +270,23 @@ public class DDiagramEditPart extends AbstractDDiagramEditPart {
             }
 
             Color previousColor = fig.getBackgroundColor();
-            if (!sameColor(previousColor, rgb)) {
-                EditPartViewer viewer = this.getViewer();
-                if (viewer instanceof SiriusDiagramGraphicalViewer) {
-                    Color backgroundColor;
-                    if (WHITE.equals(rgb)) {
-                        backgroundColor = null;
-                    } else {
-                        backgroundColor = new Color(viewer.getControl().getDisplay(), rgb.getRed(), rgb.getGreen(), rgb.getBlue());
-                    }
-                    fig.setBackgroundColor(backgroundColor);
-                    fig.setOpaque(backgroundColor != null);
-                    ((SiriusDiagramGraphicalViewer) viewer).setBackgroundColor(backgroundColor);
+            if (!sameColor(previousColor, rgb) && getViewer() instanceof SiriusDiagramGraphicalViewer viewer) {
+                Color backgroundColor = null;
+                if (rgb != null) {
+                    backgroundColor = new Color(rgb.getRed(), rgb.getGreen(), rgb.getBlue());
                 }
+                fig.setBackgroundColor(backgroundColor);
+                fig.setOpaque(backgroundColor != null);
+                viewer.setBackgroundColor(backgroundColor);
             }
         }
     }
 
     private boolean sameColor(Color current, RGBValues expected) {
-        if (current == null) {
-            return WHITE.equals(expected);
-        } else {
-            return current.getRed() == expected.getRed() && current.getGreen() == expected.getGreen() && current.getBlue() == expected.getBlue();
-        }
+        // If current is null, its real value depends of Preferences theme.
+        // So color must be forced if current is null.
+        return current == null && expected == null
+                || current != null && expected != null && current.getRed() == expected.getRed() && current.getGreen() == expected.getGreen() && current.getBlue() == expected.getBlue();
     }
+    
 }
