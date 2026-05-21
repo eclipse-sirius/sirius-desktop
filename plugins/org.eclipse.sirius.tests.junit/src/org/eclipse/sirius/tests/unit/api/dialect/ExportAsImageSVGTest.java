@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2022, 2024 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2022, 2026 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -71,6 +71,8 @@ public class ExportAsImageSVGTest extends AbstractExportAsImageTest {
 
     private static final String REPRESENTATION_NODE_RESIZE = "new SVGImages_Node_Resize"; //$NON-NLS-1$
 
+    private static final String REPRESENTATION_NODE_WITHOUT_VIEWBOX = "new SVGImages_NodeWithoutViewBox"; //$NON-NLS-1$
+
     private static final String IMAGES_SYSTEM_ACTOR_SVG = "/images/SystemActor.svg"; //$NON-NLS-1$
 
     private static final String IMAGES_SQUARE_SVG = "/images/square.svg"; //$NON-NLS-1$
@@ -84,6 +86,8 @@ public class ExportAsImageSVGTest extends AbstractExportAsImageTest {
     private static final String IMAGES_CAPABILITY_SVG = "/images/Capability.svg"; //$NON-NLS-1$
 
     private static final String IMAGES_PORT_SVG = "/images/StandardPort_providedrequired_right.svg"; //$NON-NLS-1$
+
+    private static final String IMAGES_ACTOR_SVG = "/images/Actor.svg"; //$NON-NLS-1$
 
     @Override
     protected void setUp() throws Exception {
@@ -99,6 +103,7 @@ public class ExportAsImageSVGTest extends AbstractExportAsImageTest {
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, DATA_FOLFER_TEST + IMAGES_SYSTEM_ACTOR_SVG, TEMPORARY_PROJECT_NAME + IMAGES_SYSTEM_ACTOR_SVG);
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, DATA_FOLFER_TEST + IMAGES_CAPABILITY_SVG, TEMPORARY_PROJECT_NAME + IMAGES_CAPABILITY_SVG);
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, DATA_FOLFER_TEST + IMAGES_PORT_SVG, TEMPORARY_PROJECT_NAME + IMAGES_PORT_SVG);
+        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, DATA_FOLFER_TEST + IMAGES_ACTOR_SVG, TEMPORARY_PROJECT_NAME + IMAGES_ACTOR_SVG);
 
         genericSetUp(SEMANTIC_MODEL_WORKSPACE_PATH, TEMPORARY_PROJECT_NAME + MODELER_FILE_NAME, AIRD_WORKSPACE_PATH);
 
@@ -172,6 +177,15 @@ public class ExportAsImageSVGTest extends AbstractExportAsImageTest {
      */
     public void testExportAsSVGNoAutoScaling() throws Exception {
         verifyExports(null, ScalingPolicy.NO_SCALING);
+    }
+
+    /**
+     * Tests the export of diagrams as image with SVG format and containing a SVG without ViewBox.
+     * 
+     * @throws Exception
+     */
+    public void testExportDiagramContainingASVGWitoutViewBow() throws Exception {
+        verifyExport(REPRESENTATION_NODE_WITHOUT_VIEWBOX, null, ScalingPolicy.NO_SCALING, 1, 1, 0.0);
     }
 
     /**

@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_qQSh0JlxEeyArMQjDt_ywA" selectedViews="_e6lfcJrSEeyArMQjDt_ywA _0nowIJlxEeyArMQjDt_ywA __TTvsJrREeyArMQjDt_ywA _ivHc4M1aEeyseICF_f7tKg" version="15.0.0.202201261500">
+  <viewpoint:DAnalysis uid="_qQSh0JlxEeyArMQjDt_ywA" selectedViews="_e6lfcJrSEeyArMQjDt_ywA _0nowIJlxEeyArMQjDt_ywA __TTvsJrREeyArMQjDt_ywA _ivHc4M1aEeyseICF_f7tKg" version="15.4.3.202406261640">
     <semanticResources>My.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_0nowIJlxEeyArMQjDt_ywA">
       <viewpoint xmi:type="description:Viewpoint" href="description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Vsznsc1bEeyseICF_f7tKg" name="new SVGImages_Node_ForAttributesTest" repPath="#_VsxygM1bEeyseICF_f7tKg" changeId="e42f3ee6-a509-482b-b3ad-79cc1ef393a3">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Vsznsc1bEeyseICF_f7tKg" name="new SVGImages_Node_ForAttributesTest" repPath="#_VsxygM1bEeyseICF_f7tKg" changeId="1779353559242">
         <description xmi:type="description_1:DiagramDescription" href="description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Node_ForAttributesTest']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#//p2"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_CSlKgNEHEeyVv4XUDiPTkQ" name="new SVGImages_Node_ForInnerReferencesTest" repPath="#_CSg5ENEHEeyVv4XUDiPTkQ" changeId="61de0c73-ba19-40ed-9f40-2c0452462335">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_CSlKgNEHEeyVv4XUDiPTkQ" name="new SVGImages_Node_ForInnerReferencesTest" repPath="#_CSg5ENEHEeyVv4XUDiPTkQ" changeId="1779353559242">
         <description xmi:type="description_1:DiagramDescription" href="description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Node_ForAttributesTest']"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//p2"/>
+      </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_gXuCUlTyEfGycpEFhfU1cQ" name="new SVGImages_NodeWithoutViewBox" repPath="#_gXuCUFTyEfGycpEFhfU1cQ" changeId="1779353600222">
+        <description xmi:type="description_1:DiagramDescription" href="description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_NodeWithoutViewBox']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#//p2"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
@@ -18,35 +22,35 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_e6lfcJrSEeyArMQjDt_ywA">
       <viewpoint xmi:type="description:Viewpoint" href="description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_IrOr4prTEeyArMQjDt_ywA" name="new SVGImages_Node" repPath="#_IrOr4JrTEeyArMQjDt_ywA" changeId="a2bfa7ab-3489-4ba6-8a81-ffcb5e43a27b">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_IrOr4prTEeyArMQjDt_ywA" name="new SVGImages_Node" repPath="#_IrOr4JrTEeyArMQjDt_ywA" changeId="1779353559242">
         <description xmi:type="description_1:DiagramDescription" href="description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Node']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#//p1"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_ZBO-QJsFEeytjv1FlCBMSQ" name="new SVGImages_Node_Resize" repPath="#_ZBMiAJsFEeytjv1FlCBMSQ" changeId="ec5557cc-8fda-4308-bba7-6b3790a73983">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_ZBO-QJsFEeytjv1FlCBMSQ" name="new SVGImages_Node_Resize" repPath="#_ZBMiAJsFEeytjv1FlCBMSQ" changeId="1779353559242">
         <description xmi:type="description_1:DiagramDescription" href="description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Node']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#//p1"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_twXdUJuVEeytjv1FlCBMSQ" name="new SVGImages_Container" repPath="#_twWPMJuVEeytjv1FlCBMSQ" changeId="b7e626e9-4cfe-42d5-84a8-b4f14a6c21ff">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_twXdUJuVEeytjv1FlCBMSQ" name="new SVGImages_Container" repPath="#_twWPMJuVEeytjv1FlCBMSQ" changeId="1779353559242">
         <description xmi:type="description_1:DiagramDescription" href="description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Container']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#//p1"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_xQdf8ZuVEeytjv1FlCBMSQ" name="new SVGImages_Container_Resize" repPath="#_xQc44JuVEeytjv1FlCBMSQ" changeId="86c0444b-66ce-4c68-b5d5-6bff8311beff">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_xQdf8ZuVEeytjv1FlCBMSQ" name="new SVGImages_Container_Resize" repPath="#_xQc44JuVEeytjv1FlCBMSQ" changeId="1779353559242">
         <description xmi:type="description_1:DiagramDescription" href="description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Container']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#//p1"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Eh-M4JuWEeytjv1FlCBMSQ" name="new SVGImages_Container_Image" repPath="#_Eh9l0JuWEeytjv1FlCBMSQ" changeId="5af74bc6-beee-4d7c-b663-af62f4eb806a">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Eh-M4JuWEeytjv1FlCBMSQ" name="new SVGImages_Container_Image" repPath="#_Eh9l0JuWEeytjv1FlCBMSQ" changeId="1779353559242">
         <description xmi:type="description_1:DiagramDescription" href="description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Container_Image']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#//p1"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_FsSD4JuWEeytjv1FlCBMSQ" name="new SVGImages_Container_Parallelogram" repPath="#_FsRc0JuWEeytjv1FlCBMSQ" changeId="1f878f85-db6f-4852-b950-f534388701f7">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_FsSD4JuWEeytjv1FlCBMSQ" name="new SVGImages_Container_Parallelogram" repPath="#_FsRc0JuWEeytjv1FlCBMSQ" changeId="1779353559242">
         <description xmi:type="description_1:DiagramDescription" href="description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Container_Parallelogram']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#//p1"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_InNj8puWEeytjv1FlCBMSQ" name="new SVGImages_Bordered_Node" repPath="#_InNj8JuWEeytjv1FlCBMSQ" changeId="2b22a177-7e78-4c0b-85be-eb630ee235a0">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_InNj8puWEeytjv1FlCBMSQ" name="new SVGImages_Bordered_Node" repPath="#_InNj8JuWEeytjv1FlCBMSQ" changeId="1779353559242">
         <description xmi:type="description_1:DiagramDescription" href="description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Bordered_Node']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#//p1"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Me-fsJuWEeytjv1FlCBMSQ" name="new SVGImages_Bordered_Node_Resize" repPath="#_Me94oJuWEeytjv1FlCBMSQ" changeId="731e6cd2-5903-49d9-9add-d860246d4a8c">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Me-fsJuWEeytjv1FlCBMSQ" name="new SVGImages_Bordered_Node_Resize" repPath="#_Me94oJuWEeytjv1FlCBMSQ" changeId="1779353559242">
         <description xmi:type="description_1:DiagramDescription" href="description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Bordered_Node']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#//p1"/>
       </ownedRepresentationDescriptors>
@@ -3398,6 +3402,39 @@
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_CSiHMdEHEeyVv4XUDiPTkQ"/>
     <activatedLayers xmi:type="description_1:Layer" href="description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Node_ForAttributesTest']/@defaultLayer"/>
+    <target xmi:type="ecore:EPackage" href="My.ecore#//p2"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram uid="_gXuCUFTyEfGycpEFhfU1cQ">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_gXuCVFTyEfGycpEFhfU1cQ" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_gXuCVVTyEfGycpEFhfU1cQ" type="Sirius" element="_gXuCUFTyEfGycpEFhfU1cQ" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_gYEAkFTyEfGycpEFhfU1cQ" type="2001" element="_gXuCV1TyEfGycpEFhfU1cQ">
+          <children xmi:type="notation:Node" xmi:id="_gYEAk1TyEfGycpEFhfU1cQ" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_gYEAlFTyEfGycpEFhfU1cQ" y="-22"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_gYISAFTyEfGycpEFhfU1cQ" type="3005" element="_gXuCWFTyEfGycpEFhfU1cQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_gYISAVTyEfGycpEFhfU1cQ" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gYISAlTyEfGycpEFhfU1cQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_gYEAkVTyEfGycpEFhfU1cQ" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gYEAklTyEfGycpEFhfU1cQ" x="20" y="42" width="50" height="35"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_gXuCVlTyEfGycpEFhfU1cQ"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_gXuCWlTyEfGycpEFhfU1cQ" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_gXuCW1TyEfGycpEFhfU1cQ"/>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_gXuCV1TyEfGycpEFhfU1cQ" name="C4" width="5" height="5" resizeKind="NSEW">
+      <target xmi:type="ecore:EClass" href="My.ecore#//p2/C4"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//p2/C4"/>
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_gXuCWFTyEfGycpEFhfU1cQ" labelSize="12" workspacePath="/DesignerTestProject/images/Actor.svg">
+        <description xmi:type="style:WorkspaceImageDescription" href="description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_NodeWithoutViewBox']/@defaultLayer/@nodeMappings[name='EClass_WorkspaceImageWithoutViewBox']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_NodeWithoutViewBox']/@defaultLayer/@nodeMappings[name='EClass_WorkspaceImageWithoutViewBox']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_NodeWithoutViewBox']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_gXuCUVTyEfGycpEFhfU1cQ"/>
+    <activatedLayers xmi:type="description_1:Layer" href="description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_NodeWithoutViewBox']/@defaultLayer"/>
     <target xmi:type="ecore:EPackage" href="My.ecore#//p2"/>
   </diagram:DSemanticDiagram>
 </xmi:XMI>
