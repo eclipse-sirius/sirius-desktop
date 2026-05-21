@@ -334,12 +334,14 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
                             // for both and take to closer of the two.
                             int idx = contentType.indexOf(',', eqIdx);
                             int semiIdx = contentType.indexOf(';', eqIdx);
-                            if ((semiIdx != -1) && ((semiIdx < idx) || (idx == -1)))
+                            if ((semiIdx != -1) && ((semiIdx < idx) || (idx == -1))) {
                                 idx = semiIdx;
-                            if (idx != -1)
+                            }
+                            if (idx != -1) {
                                 charset = contentType.substring(eqIdx, idx);
-                            else
+                            } else {
                                 charset = contentType.substring(eqIdx);
+                            }
                             charset = charset.trim();
                             isrc.setEncoding(charset);
                         }
@@ -408,7 +410,7 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
                 if (node instanceof Element) {
                     String viewBoxValue = ((Element) node).getAttribute("viewBox"); //$NON-NLS-1$
                     if (!StringUtil.isEmpty(viewBoxValue)) {
-                        // stretch the image is not supported as the current version of Batif used does not handled it
+                        // stretch the image is not supported as the current version of Batik used does not handled it
                         // (org.apache.batik.dom.svg.SVGOMSVGElement.getViewBox()).
                         modeWithViewBox = true;
                     }
@@ -570,8 +572,18 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
      *            Rectangle
      */
     protected void paintSVGReference(Graphics graphics, String imageRegistryURI, Rectangle svgArea, Rectangle scaledArea) {
+        // Retrieve the SiriusGraphicsSVG or throw an exception if the graphics type is unsupported.
+        SiriusGraphicsSVG svgGraphics;
+        if (graphics instanceof SiriusRenderedMapModeGraphics rendered && rendered.getGraphics() instanceof SiriusGraphicsSVG svg) {
+            svgGraphics = svg;
+        } else if (graphics instanceof SiriusGraphicsSVG svg) {
+            svgGraphics = svg;
+        } else {
+            throw new RuntimeException(MessageFormat.format(Messages.SVGFigure_notExpectedGraphics, graphics.getClass().getSimpleName()));
+        }
+
         if (modeWithViewBox) {
-            ((SiriusRenderedMapModeGraphics) graphics).drawSVGReference(imageRegistryURI, 0, 0, scaledArea.width(), scaledArea.height(), svgArea.x(), svgArea.y(), svgArea.width(), svgArea.height());
+            svgGraphics.drawSVGReference(imageRegistryURI, 0, 0, scaledArea.width(), scaledArea.height(), svgArea.x(), svgArea.y(), svgArea.width(), svgArea.height());
         } else {
             double scaledWidth = svgArea.width() * graphics.getAbsoluteScale();
             double scaledHeight = scaledWidth / getImageAspectRatio();
@@ -580,7 +592,7 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
                 scaledHeight = svgArea.height() * graphics.getAbsoluteScale();
                 scaledWidth = scaledHeight * getImageAspectRatio();
             }
-            ((SiriusGraphicsSVG) graphics).drawSVGReference(imageRegistryURI, 0, 0, (int) scaledWidth, (int) scaledHeight, svgArea.x(), svgArea.y(), svgArea.width(), svgArea.height());
+            svgGraphics.drawSVGReference(imageRegistryURI, 0, 0, (int) scaledWidth, (int) scaledHeight, svgArea.x(), svgArea.y(), svgArea.width(), svgArea.height());
         }
     }
 
