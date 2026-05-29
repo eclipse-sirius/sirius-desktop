@@ -141,10 +141,6 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
         }
     }
 
-    private NodePositionHelper getNodePositionHelper() {
-        return new NodePositionHelper(isSnapToGrid(), getGridSpacing());
-    }
-
     /**
      * Refresh the specified {@link View} children with the specified semantic element.
      * 
@@ -547,14 +543,14 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
                 }
             }
 
-            final Point location = getNodePositionHelper().getOnBorderPositionFromParent(createdNode, contextLocation, size);
+            final Point location = new NodePositionHelper(isSnapToGrid(), getGridSpacing()).getOnBorderPositionFromParent(createdNode, contextLocation, size);
 
             laidOut = laidOut || createdNode.getLayoutConstraint() instanceof Location;
             updateBoundsConstraint(createdNode, location, size != null ? size : NO_CHANGE_SIZE);
 
         } else {
             laidOut = true;
-            final Point location = getNodePositionHelper().getOnBorderPositionFromLayoutData(createdNode, layoutData);
+            final Point location = new NodePositionHelper(isSnapToGrid(), getGridSpacing()).getOnBorderPositionFromLayoutData(createdNode, layoutData);
 
             updateBoundsConstraint(createdNode, location, layoutData.getSize());
         }
@@ -627,7 +623,7 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
     protected void updateSizeConstraint(Node createdNode, Size constraint, Dimension size) {
         Dimension safeSize = size != null ? size : NO_CHANGE_SIZE;
 
-        Dimension defaultSize = getNodePositionHelper().getAdjustedDimension(createdNode, constraint);
+        Dimension defaultSize = new NodePositionHelper(isSnapToGrid(), getGridSpacing()).getAdjustedDimension(createdNode, constraint);
 
         // Dnd nodes are not really new and must be kept as-is.
         boolean collapsedSizeForced = new NodeQuery(createdNode).isCollapsed() && size != null;
@@ -643,8 +639,7 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
     private void updateBoundsConstraint(Node createdNode, Point location, Dimension size) {
         LayoutConstraint constraint = createdNode.getLayoutConstraint();
         if (constraint instanceof Location locationConstraint) {
-            Point ajdustedLocation = getNodePositionHelper().getAdjustedLocation(createdNode, location);
-            updateLocationConstraint(locationConstraint, ajdustedLocation);  
+            updateLocationConstraint(locationConstraint, location);
         }
         if (constraint instanceof Size sizeConstraint) {
             updateSizeConstraint(createdNode, sizeConstraint, size);
@@ -673,7 +668,9 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
      * @return view descriptor
      */
     protected CreateViewRequest.ViewDescriptor getViewDescriptor(final EObject element, final String factoryHint) {
-        // Create the view descriptor
+        //
+        // create the view descritor
+        // final IAdaptable elementAdapter = new EObjectAdapter(element);
         final IAdaptable elementAdapter = new CanonicalElementAdapter(element, factoryHint);
 
         final int pos = ViewUtil.APPEND;
