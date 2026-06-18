@@ -32,6 +32,7 @@ import org.eclipse.sirius.diagram.BracketEdgeStyle;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.ui.business.api.query.EdgeQuery;
+import org.eclipse.sirius.diagram.ui.internal.refresh.GMFBoundsHelper;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.routers.RectilinearEdgeUtil;
@@ -96,8 +97,8 @@ public class RepairEdgesWithOneBendpointMigrationParticipant extends RepairGMFbe
                     Point srcRef = getAnchorPoint(srcAnchor, source);
                     Point tgtRef = getAnchorPoint(tgtAnchor, target);
 
-                    Rectangle srcBounds = GMFHelper.getAbsoluteBounds(source).get();
-                    Rectangle tgtBounds = GMFHelper.getAbsoluteBounds(target).get();
+                    Rectangle srcBounds = new GMFBoundsHelper().getAbsoluteBounds(source).get();
+                    Rectangle tgtBounds = new GMFBoundsHelper().getAbsoluteBounds(target).get();
 
                     isEdgeModified = repairBendpointsOfEdge(edge, srcBounds, srcRef, tgtBounds, tgtRef);
                 }
