@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2025 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2026 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -84,11 +84,11 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
 
     private final static boolean STANDARD_LAYOUT_FOR_CREATED_REGION_CONTENT = Boolean.getBoolean("org.eclipse.sirius.diagram.ui.internal.region.content.canonical.layout.standard"); //$NON-NLS-1$
 
-    // Default size is already provided by 
+    // Default size is already provided by
     // AbstractDNodeViewFactory#updateLayoutConstraint(View, IAdaptable).
     // There is no need to compute default size here.
     private final static Dimension NO_CHANGE_SIZE = new Dimension(-1, -1);
-    
+
     /**
      * Say if we should store created views to layout in SiriusLayoutDataManager.
      */
@@ -326,7 +326,7 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
     }
 
     private List<View> getViewChildren(final View current) {
-        // API Legacy adaptation: 
+        // API Legacy adaptation:
         // children is the (hand-made) aggregation of transientChildren and persistedChildren.
         // List only used for reading.
         return current.getChildren();
@@ -527,7 +527,7 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
             layoutData = SiriusLayoutDataManager.INSTANCE.getData(portNode, true);
             Dimension size = null;
             Point contextLocation = null;
-            
+
             if (layoutData != null) {
                 laidOut = true;
                 // We get the layoutData from the manager with the parent of the node
@@ -536,7 +536,7 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
             } else {
                 size = ViewSizeHint.getInstance().consumeSize();
                 if (size == null && new ViewQuery(createdView).isForNameEditPart()) {
-                    Optional<Rectangle> optionalRect = GMFHelper.getAbsoluteBounds(createdView);
+                    Optional<Rectangle> optionalRect = new GMFBoundsHelper().getAbsoluteBounds(createdView);
                     if (optionalRect.isPresent()) {
                         size = optionalRect.get().getSize();
                     }
