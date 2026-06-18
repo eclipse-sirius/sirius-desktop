@@ -482,7 +482,7 @@ public final class GMFHelper {
         }
     }
 
-    private static boolean hasFullLabelBorder(DDiagramElementContainer ddec) {
+    public static boolean hasFullLabelBorder(DDiagramElementContainer ddec) {
         Optional<LabelBorderStyleDescription> labelBorderStyle = new DDiagramElementContainerExperimentalQuery(ddec).getLabelBorderStyle();
         return labelBorderStyle.isPresent() && LabelBorderStyleIds.LABEL_FULL_BORDER_STYLE_FOR_CONTAINER_ID.equals(labelBorderStyle.get().getId());
     }
@@ -620,7 +620,9 @@ public final class GMFHelper {
      *            the GMF Node or Edge
      * 
      * @return an optional absolute bounds of the node or edge relative to the origin (Diagram)
+     * @deprecated Use {@link GMFBoundsHelper#getAbsoluteBounds(View)}: <code>new GMFBoundsHelper().getAbsoluteBounds(view)</code>
      */
+    @Deprecated(since = "7.4.15")
     public static Optional<Rectangle> getAbsoluteBounds(View view) {
         return getAbsoluteBounds(view, false);
     }
@@ -1015,7 +1017,7 @@ public final class GMFHelper {
         return null;
     }
 
-    private static Dimension getDefaultSize(AbstractDNode abstractDNode) {
+    static Dimension getDefaultSize(AbstractDNode abstractDNode) {
         Dimension defaultSize = new Dimension(-1, -1);
         if (abstractDNode instanceof DNode dNode) {
             defaultSize = new DNodeQuery(dNode).getDefaultDimension();

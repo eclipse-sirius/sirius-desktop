@@ -39,6 +39,7 @@ import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.business.api.query.EdgeQuery;
+import org.eclipse.sirius.diagram.ui.internal.refresh.GMFBoundsHelper;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.diagram.ui.internal.refresh.edge.SlidableAnchor;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
@@ -147,8 +148,8 @@ public class RepairGMFbendpointsMigrationParticipant extends AbstractRepresentat
                 RelativeBendpoint lastPoint = pointList.get(pointList.size() - 1);
                 PrecisionPoint tgtPoint = new PrecisionPoint(lastPoint.getTargetX() + tgtRef.x, lastPoint.getTargetY() + tgtRef.y);
 
-                Rectangle srcBounds = GMFHelper.getAbsoluteBounds(source).get();
-                Rectangle tgtBounds = GMFHelper.getAbsoluteBounds(target).get();
+                Rectangle srcBounds = new GMFBoundsHelper().getAbsoluteBounds(source).get();
+                Rectangle tgtBounds = new GMFBoundsHelper().getAbsoluteBounds(target).get();
 
                 EdgeQuery edgeQuery = new EdgeQuery(edge);
                 Routing routingStyle = edgeQuery.getRoutingStyle();
