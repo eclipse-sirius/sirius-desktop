@@ -52,6 +52,7 @@ import org.eclipse.sirius.diagram.ui.business.api.query.EdgeQuery;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.business.internal.view.EdgeLayoutData;
 import org.eclipse.sirius.diagram.ui.business.internal.view.LayoutData;
+import org.eclipse.sirius.diagram.ui.internal.refresh.GMFBoundsHelper;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.diagram.ui.internal.refresh.edge.SlidableAnchor;
 import org.eclipse.sirius.diagram.ui.part.SiriusLinkDescriptor;
@@ -230,7 +231,7 @@ public class ConnectionsFactory {
                         getAttributesForSourceOrTargetMove(edgeLayoutData, edge, source, target);
                     }
                 } else {
-                    Optional<Rectangle> optionalSourceBounds = GMFHelper.getAbsoluteBounds(source);
+                    Optional<Rectangle> optionalSourceBounds = new GMFBoundsHelper().getAbsoluteBounds(source);
                     LayoutData sourceLayoutData = null;
                     if (sourceEdgeTarget instanceof AbstractDNode) {
                         AbstractDNode sourceDNode = (AbstractDNode) sourceEdgeTarget;
@@ -245,7 +246,7 @@ public class ConnectionsFactory {
                         sourceTerminal = GMFNotationUtilities.getTerminalString(0.5d, 0.5d);
                     }
 
-                    Optional<Rectangle> optionaltargetBounds = GMFHelper.getAbsoluteBounds(target);
+                    Optional<Rectangle> optionaltargetBounds = new GMFBoundsHelper().getAbsoluteBounds(target);
                     LayoutData targetLayoutData = null;
                     if (targetEdgeTarget instanceof AbstractDNode) {
                         AbstractDNode targetDNode = (AbstractDNode) targetEdgeTarget;

@@ -32,6 +32,7 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.BaseSlidableAnchor;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.IdentityAnchor;
 import org.eclipse.gmf.runtime.notation.NotationFactory;
+import org.eclipse.sirius.diagram.ui.internal.refresh.GMFBoundsHelper;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.GMFNotationUtilities;
@@ -93,7 +94,7 @@ public class TreeLayoutSetConnectionAnchorsCommand extends SetConnectionAnchorsC
                 } else {
                     // We are in reconnection (compute the sourceRefPoint using
                     // GMF model data)
-                    Optional<Rectangle> optionalSourceBounds = GMFHelper.getAbsoluteBounds(edge.getSource());
+                    Optional<Rectangle> optionalSourceBounds = new GMFBoundsHelper().getAbsoluteBounds(edge.getSource());
                     if (optionalSourceBounds.isPresent()) {
                         sourceBounds = optionalSourceBounds.get();
                     }
@@ -118,7 +119,7 @@ public class TreeLayoutSetConnectionAnchorsCommand extends SetConnectionAnchorsC
                 } else {
                     // We are in reconnection (compute the sourceRefPoint using
                     // GMF model data)
-                    Optional<Rectangle> optionalTargetBounds = GMFHelper.getAbsoluteBounds(edge.getTarget());
+                    Optional<Rectangle> optionalTargetBounds = new GMFBoundsHelper().getAbsoluteBounds(edge.getTarget());
                     if (optionalTargetBounds.isPresent()) {
                         targetBounds = optionalTargetBounds.get();
                     }

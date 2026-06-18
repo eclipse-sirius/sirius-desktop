@@ -577,7 +577,7 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
 
                 if (size == null) {
                     if (new ViewQuery(createdView).isForNameEditPart()) {
-                        Optional<Rectangle> optionalRect = GMFHelper.getAbsoluteBounds(createdView);
+                        Optional<Rectangle> optionalRect = new GMFBoundsHelper().getAbsoluteBounds(createdView);
                         if (optionalRect.isPresent()) {
                             size = optionalRect.get().getSize();
                         }
