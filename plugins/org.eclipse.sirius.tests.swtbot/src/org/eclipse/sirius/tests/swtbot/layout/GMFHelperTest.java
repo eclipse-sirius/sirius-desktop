@@ -12,16 +12,38 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.layout;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
+import java.util.concurrent.atomic.AtomicBoolean;
+
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EcoreFactory;
+import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainer2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPart;
+import org.eclipse.sirius.diagram.ui.internal.refresh.DiagramRefresherHelper;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
@@ -29,6 +51,8 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.view.DesignerViews;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Synchronizer;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 
 /**
@@ -47,6 +71,8 @@ public class GMFHelperTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String HSTACK_CONTAINER_REPRESENTATION_NAME = "DiagramWithHStackContainers";
 
     private static final String VSTACK_CONTAINER_REPRESENTATION_NAME = "DiagramWithVStackContainers";
+
+    private static final String VSTACK_CONTAINER_AND_EDGES_REPRESENTATION_NAME = "DiagramWithVStackContainersAndEdges";
 
     private static final String MODEL = "My.ecore";
 
@@ -98,6 +124,16 @@ public class GMFHelperTest extends AbstractSiriusSwtBotGefTestCase {
      * The name of an empty container with border node, inside a container.
      */
     private static final String EMPTY_CONTAINER_WITH_BORDER_NODE_INSIDE_CONTAINER_3_NAME = "p53";
+
+    /**
+     * The name of a the vertical stack container class 1 in the diagram with edges.
+     */
+    private static final String CONTAINER_WITH_VSTACK_CLASS1_NAME = "Class1";
+
+    /**
+     * The name of a the vertical stack container class 2 in the diagram with edges.
+     */
+    private static final String CONTAINER_WITH_VSTACK_CLASS2_NAME = "Class2";
 
     /**
      * {@inheritDoc}
@@ -282,5 +318,67 @@ public class GMFHelperTest extends AbstractSiriusSwtBotGefTestCase {
                 gmfAbsoluteBounds.preciseX());
         assertEquals("The GMF y coordinate of " + elementToCheckName + " in " + representationName + " does not correspond to the Draw2D one.", draw2DAbsoluteBounds.preciseY(),
                 gmfAbsoluteBounds.preciseY());
+    }
+    
+    public void testVStackEdgeRefreshPerformance() {
+        openEditor(VSTACK_CONTAINER_AND_EDGES_REPRESENTATION_NAME);
+
+        EPackage semanticPackage = null;
+        if (editor.getDRepresentation() instanceof DSemanticDiagram semanticDiagram && semanticDiagram.getTarget() instanceof EPackage pkg) {
+            semanticPackage = pkg;
+        }
+        assertNotNull("Cannot found semantic element of the diagram", semanticPackage);
+        
+        EClass eClass1;
+        if (semanticPackage.getEClassifier(CONTAINER_WITH_VSTACK_CLASS1_NAME) instanceof EClass cls) {
+            eClass1 = cls;
+        } else {
+            eClass1 = null;
+        }
+        assertNotNull("Cannot found semantic element Class1 in the package of diagram", eClass1);
+        
+        EClass eClass2;
+        if (semanticPackage.getEClassifier(CONTAINER_WITH_VSTACK_CLASS2_NAME) instanceof EClass cls) {
+            eClass2 = cls;
+        } else {
+            eClass2 = null;
+        }
+        assertNotNull("Cannot found semantic element Class1 in the package of diagram", eClass2);
+        
+        var ted = localSession.getOpenedSession().getTransactionalEditingDomain();
+        ted.getCommandStack().execute(new RecordingCommand(ted) {
+            
+            @Override
+            protected void doExecute() {
+                for (int i=0; i<12; ++i) {
+                    EAttribute attr = EcoreFactory.eINSTANCE.createEAttribute();
+                    attr.setName("attr" + i);
+                    attr.setEType(EcorePackage.eINSTANCE.getEString());
+                    eClass1.getEStructuralFeatures().add(attr);
+                }
+            }
+        });
+        editor.refresh();
+        ted.getCommandStack().execute(new RecordingCommand(ted) {
+            
+            @Override
+            protected void doExecute() {
+                EReference ref = EcoreFactory.eINSTANCE.createEReference();
+                ref.setName("ref");
+                ref.setEType(eClass2);
+                eClass1.getEStructuralFeatures().add(ref);
+            }
+        });
+        editor.scrollTo(0, 0);
+        editor.click(1, 1); // Set the focus on the diagram
+        editor.setFocus();
+
+        AtomicBoolean finished = new AtomicBoolean(false);
+        CompletableFuture.runAsync(() -> Display.getDefault().syncExec(() -> {
+            DiagramRefresherHelper.refreshEditParts((DDiagram)editor.getDRepresentation(), Collections.singleton(editor.getDiagramEditPart()));
+            finished.set(true);
+        })).completeOnTimeout(null, 5, TimeUnit.SECONDS).join();
+        assertTrue("The refresh didn't finish in less than 5 seconds.", finished.get());
+        SWTBotUtils.waitAllUiEvents();
     }
 }
