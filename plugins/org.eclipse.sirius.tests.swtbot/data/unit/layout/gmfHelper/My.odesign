@@ -119,5 +119,34 @@
         </containerMappings>
       </defaultLayer>
     </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagramWithVStackContainersAndEdges" domainClass="ecore::EPackage">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <defaultLayer name="Default" label="default">
+        <edgeMappings name="EdgeVStackMapping" sourceMapping="//@ownedViewpoints[name='SampleWithContainers']/@ownedRepresentations[name='DiagramWithVStackContainersAndEdges']/@defaultLayer/@containerMappings[name='EClassVStackMapping']" targetMapping="//@ownedViewpoints[name='SampleWithContainers']/@ownedRepresentations[name='DiagramWithVStackContainersAndEdges']/@defaultLayer/@containerMappings[name='EClassVStackMapping']" targetFinderExpression="aql:self.eType" sourceFinderExpression="aql:self.eContainer()" domainClass="ecore::EReference" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="EClassVStackMapping" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="ecore::EClass" childrenPresentation="VerticalStack">
+          <subContainerMappings name="EAttributeContainerInVStack" semanticCandidatesExpression="aql:self.eAttributes" domainClass="ecore::EAttribute">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
   </ownedViewpoints>
 </description:Group>
