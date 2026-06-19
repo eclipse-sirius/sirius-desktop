@@ -20,6 +20,10 @@
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='SampleWithContainers']/@ownedRepresentations[name='DiagramWithVStackContainers']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_g5qGImu5EfGXJN700gAINg" name="DiagramWithVStackContainersAndEdges" repPath="#_g5qGIGu5EfGXJN700gAINg" changeId="1781858173717">
+        <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='SampleWithContainers']/@ownedRepresentations[name='DiagramWithVStackContainersAndEdges']"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//p3"/>
+      </ownedRepresentationDescriptors>
     </ownedViews>
   </viewpoint:DAnalysis>
   <diagram:DSemanticDiagram uid="_HxB6IDO3Ee-fh55MefVB6Q">
@@ -1480,5 +1484,53 @@
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_lcYC8D-PEe--waJe9VgAOw"/>
     <activatedLayers xmi:type="description_1:Layer" href="My.odesign#//@ownedViewpoints[name='SampleWithContainers']/@ownedRepresentations[name='DiagramWithVStackContainers']/@defaultLayer"/>
     <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram uid="_g5qGIGu5EfGXJN700gAINg">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_g5z3IGu5EfGXJN700gAINg" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_g5z3IWu5EfGXJN700gAINg" type="Sirius" element="_g5qGIGu5EfGXJN700gAINg" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_g59oIGu5EfGXJN700gAINg" type="2002" element="_g5z3I2u5EfGXJN700gAINg">
+          <children xmi:type="notation:Node" xmi:id="_g59oI2u5EfGXJN700gAINg" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_g59oJGu5EfGXJN700gAINg" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_g59oJWu5EfGXJN700gAINg"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_g59oJmu5EfGXJN700gAINg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_g59oIWu5EfGXJN700gAINg" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_g59oImu5EfGXJN700gAINg" x="50" y="55"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_g59oJ2u5EfGXJN700gAINg" type="2002" element="_g5z3Jmu5EfGXJN700gAINg">
+          <children xmi:type="notation:Node" xmi:id="_g59oKmu5EfGXJN700gAINg" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_g59oK2u5EfGXJN700gAINg" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_g59oLGu5EfGXJN700gAINg"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_g59oLWu5EfGXJN700gAINg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_g59oKGu5EfGXJN700gAINg" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_g59oKWu5EfGXJN700gAINg" x="165" y="55"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_g5z3Imu5EfGXJN700gAINg"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_g5z3KWu5EfGXJN700gAINg" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_g5z3Kmu5EfGXJN700gAINg"/>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_g5z3I2u5EfGXJN700gAINg" name="Class1" childrenPresentation="VerticalStack">
+      <target xmi:type="ecore:EClass" href="My.ecore#//p3/Class1"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//p3/Class1"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_g5z3JGu5EfGXJN700gAINg" borderSize="1" borderSizeComputationExpression="1" backgroundColor="255,245,181" foregroundColor="255,245,181">
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='SampleWithContainers']/@ownedRepresentations[name='DiagramWithVStackContainersAndEdges']/@defaultLayer/@containerMappings[name='EClassVStackMapping']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='SampleWithContainers']/@ownedRepresentations[name='DiagramWithVStackContainersAndEdges']/@defaultLayer/@containerMappings[name='EClassVStackMapping']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_g5z3Jmu5EfGXJN700gAINg" name="Class2" childrenPresentation="VerticalStack">
+      <target xmi:type="ecore:EClass" href="My.ecore#//p3/Class2"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//p3/Class2"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_g5z3J2u5EfGXJN700gAINg" borderSize="1" borderSizeComputationExpression="1" backgroundColor="255,245,181" foregroundColor="255,245,181">
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='SampleWithContainers']/@ownedRepresentations[name='DiagramWithVStackContainersAndEdges']/@defaultLayer/@containerMappings[name='EClassVStackMapping']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='SampleWithContainers']/@ownedRepresentations[name='DiagramWithVStackContainersAndEdges']/@defaultLayer/@containerMappings[name='EClassVStackMapping']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='SampleWithContainers']/@ownedRepresentations[name='DiagramWithVStackContainersAndEdges']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_g5qGIWu5EfGXJN700gAINg"/>
+    <activatedLayers xmi:type="description_1:Layer" href="My.odesign#//@ownedViewpoints[name='SampleWithContainers']/@ownedRepresentations[name='DiagramWithVStackContainersAndEdges']/@defaultLayer"/>
+    <target xmi:type="ecore:EPackage" href="My.ecore#//p3"/>
   </diagram:DSemanticDiagram>
 </xmi:XMI>
