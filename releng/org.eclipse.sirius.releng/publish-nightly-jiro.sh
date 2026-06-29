@@ -21,9 +21,6 @@ provided by the Jenkins build.
 - GIT_BRANCH      : the name fo the Git branch being build/published.
 - BUILD_TIMESTAMP : timestamp to use to identify this particular build (e.g. 20180201-113000)
 "
-     echo "****** CURRENT ENVIRONMENT ******"
-     env | sort
-     
      exit 1
 }
 
@@ -35,7 +32,7 @@ provided by the Jenkins build.
 set -e
 
 # The full version (should be taken as an argument)
-export VERSION="7.4.15"
+export VERSION="7.4.16"
 
 # The type of build being published
 export BUILD_TYPE="nightly"
@@ -93,10 +90,6 @@ if [ "origin/master" = "$GIT_BRANCH" ]; then
     ssh "$SSH_ACCOUNT" mkdir -p  "$TARGET_ROOT/latest/targets"
     scp -rp "$WKS"/releng/org.eclipse.sirius.targets/* "$SSH_ACCOUNT:$TARGET_ROOT/latest/targets"
 fi
-# Publish a dump of the build environment, may be useful to debug
-env | sort > build_env.txt
-scp build_env.txt "$SSH_ACCOUNT:$TARGET_DIR/build_env.txt"
-rm build_env.txt
 
 ######################################################################
 # Setup or update the redirects (implemented as composite repos)
