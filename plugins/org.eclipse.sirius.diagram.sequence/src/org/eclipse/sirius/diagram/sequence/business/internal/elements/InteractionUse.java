@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.elements;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -25,7 +24,6 @@ import org.eclipse.sirius.diagram.sequence.business.internal.query.SequenceNodeQ
 import org.eclipse.sirius.diagram.sequence.business.internal.util.RangeSetter;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.tool.internal.Messages;
-import org.eclipse.sirius.ext.base.Option;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
