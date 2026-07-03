@@ -208,7 +208,7 @@ public class UIPerspective {
     private void openRepresentationsFileWizard() {
         SWTBotSiriusHelper.menu(bot, "File").menu(UIPerspective.NEW_MENU).menu("Other...").click();
 
-        String shellTitle= NEW_MENU;
+        String shellTitle = NEW_MENU;
         if (TestsUtil.is202106Platform() && !TestsUtil.is202509Platform()) {
             // For a while between 2021-06 and 2025-09, this windows's title was different.
             shellTitle = UIPerspective.WIZARDS_LIST_TITLE;

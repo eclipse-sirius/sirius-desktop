@@ -40,7 +40,6 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.business.api.query.EdgeQuery;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFBoundsHelper;
-import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.diagram.ui.internal.refresh.edge.SlidableAnchor;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.routers.RectilinearEdgeUtil;
