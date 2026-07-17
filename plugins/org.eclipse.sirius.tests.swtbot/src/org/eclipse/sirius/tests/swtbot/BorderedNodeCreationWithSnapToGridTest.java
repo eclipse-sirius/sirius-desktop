@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2026 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -129,12 +129,10 @@ public class BorderedNodeCreationWithSnapToGridTest extends BorderedNodeCreation
 
     /**
      * Only one of the coordinates is snap to grid. The other is constrained by the parent border.
-     * 
-     * @see org.eclipse.sirius.tests.swtbot.BorderedNodeCreationTest#assertSameLocation(String, Point, Point, Point,
-     *      Point, IGraphicalEditPart)
      */
     @Override
-    protected void assertSameLocation(String errorMessage, Point expectedLocation, Point nodeLocation, Point parentLocation, Point creationLocation, IGraphicalEditPart parentPart) {
+    protected void assertSameLocation(String errorMessage, Node borderNode, Point nodeLocation, IGraphicalEditPart borderNodePart, Point expectedLocation, Point parentLocation, Point creationLocation,
+            IGraphicalEditPart parentPart) {
         // Adapt the expected location to the grid
         Point snapToLocation = editor.adaptLocationToSnap(expectedLocation);
         // Adapt the expected location to the scrollbar of the parents
@@ -143,26 +141,7 @@ public class BorderedNodeCreationWithSnapToGridTest extends BorderedNodeCreation
             addParentScrollbar(parentPart.getFigure(), absoluteSnapToLocation);
         }
 
-        if (nodeLocation.x == parentLocation.x + 8 || nodeLocation.x == parentLocation.x) {
-            // Case where the grid is outside the parent
-            errorMessage += " expected <Point(" + nodeLocation.x + ", " + absoluteSnapToLocation.y + ")> or <Point(" + nodeLocation.x + ", " + expectedLocation.y + ")> but was: " + nodeLocation;
-            assertTrue(errorMessage, nodeLocation.x == nodeLocation.x && nodeLocation.y == absoluteSnapToLocation.y || nodeLocation.x == nodeLocation.x && nodeLocation.y == expectedLocation.y);
-        } else if (nodeLocation.y == parentLocation.y) {
-            // The y axis is the same as parent. Check that this axis also
-            // corresponds to the grid. The x axis is constrained by the border
-            // (east or west).
-            errorMessage += " expected <Point(" + nodeLocation.x + ", " + absoluteSnapToLocation.y + ")> or <Point(" + nodeLocation.x + ", " + expectedLocation.y + ")> but was: " + nodeLocation;
-            assertTrue(errorMessage, nodeLocation.y == absoluteSnapToLocation.y);
-        } else {
-            // Get the absolute bounds of parent
-            Rectangle parentBounds = new Rectangle(editor.getAbsoluteLocation(parentPart), parentPart.getFigure().getSize());
-
-            errorMessage += " At least x or y must be on the grid (grid spacing = " + GRID_SPACING + "), but was: " + nodeLocation + " for parent: " + parentBounds;
-
-            assertTrue(errorMessage,
-                    (nodeLocation.x % GRID_SPACING == 0 && (nodeLocation.y == expectedLocation.y || nodeLocation.y == parentLocation.y - 2 || nodeLocation.y == parentBounds.bottom() - 8))
-                            || ((nodeLocation.x == expectedLocation.x || nodeLocation.x == parentLocation.x - 2 || nodeLocation.x == parentBounds.right() - 8) && nodeLocation.y % GRID_SPACING == 0));
-        }
+        assertBorderNodeCenteredOnGrid(errorMessage, borderNode, nodeLocation, borderNodePart, parentLocation, parentPart, absoluteSnapToLocation, GRID_SPACING, new Point(0, 0));
     }
 
     /**
@@ -193,8 +172,9 @@ public class BorderedNodeCreationWithSnapToGridTest extends BorderedNodeCreation
      *            The current grid spacing
      */
     private void checkLocationAlignOnGrid(IGraphicalEditPart editPart, String elementNameToDisplay, int gridSpacing) {
-        Point location = editPart.getFigure().getBounds().getTopLeft();
-        boolean locationIsOK = (location.x % gridSpacing) == 0 || (location.y % gridSpacing) == 0;
+        Rectangle bounds = editPart.getFigure().getBounds();
+        Point location = bounds.getTopLeft();
+        boolean locationIsOK = ((location.x + bounds.width / 2) % gridSpacing) == 0 || ((location.y + bounds.height / 2) % gridSpacing) == 0;
         if (!locationIsOK) {
             IGraphicalEditPart parentPart = (IGraphicalEditPart) editPart.getParent();
             Rectangle parentBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent(parentPart);
@@ -202,7 +182,7 @@ public class BorderedNodeCreationWithSnapToGridTest extends BorderedNodeCreation
                     || (location.y == parentBounds.y || location.y == (parentBounds.y + parentBounds.height));
         }
         if (!locationIsOK) {
-            fail("For " + elementNameToDisplay + ", the x or y coordinate of the top left corner should be on the grid (grid spacing = " + gridSpacing + "), but was: " + location + ".");
+            fail("For " + elementNameToDisplay + ", the center of the free axis should be on the grid (grid spacing = " + gridSpacing + "), but bounds were: " + bounds + ".");
         }
 
     }

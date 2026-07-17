@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_rR6JYGlhEeKsCtNUNlpK4A" selectedViews="_s-Bs8GlhEeKsCtNUNlpK4A" version="15.4.1.202403191723">
+  <viewpoint:DAnalysis uid="_rR6JYGlhEeKsCtNUNlpK4A" selectedViews="_s-Bs8GlhEeKsCtNUNlpK4A" version="15.4.3.202406261640">
     <semanticResources>borderedNode.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_s-Bs8GlhEeKsCtNUNlpK4A">
       <viewpoint xmi:type="description:Viewpoint" href="borderedNode.odesign#//@ownedViewpoints[name='BorderedNode']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_uiSUsRnWEe-UE_ZLMlCLfg" name="new BorderedNodeDiagram" repPath="#_82_iAGlnEeKsCtNUNlpK4A" changeId="1716906919787">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_uiSUsRnWEe-UE_ZLMlCLfg" name="new BorderedNodeDiagram" repPath="#_82_iAGlnEeKsCtNUNlpK4A" changeId="1784285278647">
         <description xmi:type="description_1:DiagramDescription" href="borderedNode.odesign#//@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']"/>
         <target xmi:type="ecore:EPackage" href="borderedNode.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -73,7 +73,7 @@
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aAFPkWr-EeKUzcXlhUGLrg" x="28" y="1" width="1" height="1"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_83X8gWlnEeKsCtNUNlpK4A" fontName="Comic Sans MS" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-RB3EWlnEeKsCtNUNlpK4A" x="35" y="60" width="60" height="30"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-RB3EWlnEeKsCtNUNlpK4A" x="35" y="60" width="60" height="35"/>
             </children>
             <styles xmi:type="notation:SortingStyle" xmi:id="_83RO0mlnEeKsCtNUNlpK4A"/>
             <styles xmi:type="notation:FilteringStyle" xmi:id="_83RO02lnEeKsCtNUNlpK4A"/>
@@ -383,7 +383,7 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_82_iAWlnEeKsCtNUNlpK4A" name="C1" width="3" height="3" resizeKind="NSEW">
       <target xmi:type="ecore:EClass" href="borderedNode.ecore#//C1"/>
       <semanticElements xmi:type="ecore:EClass" href="borderedNode.ecore#//C1"/>
-      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_84KgAGrCEeKsaIulyop9Pg" name="C1collapse" width="1" height="1" resizeKind="NSEW">
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_84KgAGrCEeKsaIulyop9Pg" name="C1collapse" width="1" height="1">
         <target xmi:type="ecore:EAttribute" href="borderedNode.ecore#//C1/C1collapse"/>
         <semanticElements xmi:type="ecore:EAttribute" href="borderedNode.ecore#//C1/C1collapse"/>
         <graphicalFilters xmi:type="diagram:CollapseFilter" uid="_aADaYGr-EeKUzcXlhUGLrg" width="10" height="10"/>
@@ -400,7 +400,7 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_sgGEsGlqEeKsCtNUNlpK4A" name="C3" width="3" height="3" resizeKind="NSEW">
       <target xmi:type="ecore:EClass" href="borderedNode.ecore#//C3"/>
       <semanticElements xmi:type="ecore:EClass" href="borderedNode.ecore#//C3"/>
-      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_kuVtYGrPEeKUzcXlhUGLrg" name="C3collapse" width="1" height="1" resizeKind="NSEW">
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_kuVtYGrPEeKUzcXlhUGLrg" name="C3collapse" width="1" height="1">
         <target xmi:type="ecore:EAttribute" href="borderedNode.ecore#//C3/C3collapse"/>
         <semanticElements xmi:type="ecore:EAttribute" href="borderedNode.ecore#//C3/C3collapse"/>
         <graphicalFilters xmi:type="diagram:CollapseFilter" uid="_aAEBcGr-EeKUzcXlhUGLrg" width="10" height="10"/>
@@ -417,7 +417,7 @@
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_82_iBmlnEeKsCtNUNlpK4A" name="P1">
       <target xmi:type="ecore:EPackage" href="borderedNode.ecore#//P1"/>
       <semanticElements xmi:type="ecore:EPackage" href="borderedNode.ecore#//P1"/>
-      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_7sO2kGr9EeKUzcXlhUGLrg" name="P1collapse" width="1" height="1" resizeKind="NSEW">
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_7sO2kGr9EeKUzcXlhUGLrg" name="P1collapse" width="1" height="1">
         <target xmi:type="ecore:EEnum" href="borderedNode.ecore#//P1/P1collapse"/>
         <semanticElements xmi:type="ecore:EEnum" href="borderedNode.ecore#//P1/P1collapse"/>
         <graphicalFilters xmi:type="diagram:CollapseFilter" uid="_aAEogGr-EeKUzcXlhUGLrg" width="10" height="10"/>
@@ -433,7 +433,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" uid="_82_iC2lnEeKsCtNUNlpK4A" name="Class1" width="3" height="3" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="borderedNode.ecore#//P1/Class1"/>
         <semanticElements xmi:type="ecore:EClass" href="borderedNode.ecore#//P1/Class1"/>
-        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_82_iDGlnEeKsCtNUNlpK4A" name="a" width="1" height="1" resizeKind="NSEW">
+        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_82_iDGlnEeKsCtNUNlpK4A" name="a" width="1" height="1">
           <target xmi:type="ecore:EAttribute" href="borderedNode.ecore#//P1/Class1/a"/>
           <semanticElements xmi:type="ecore:EAttribute" href="borderedNode.ecore#//P1/Class1/a"/>
           <ownedStyle xmi:type="diagram:Square" uid="_82_iDWlnEeKsCtNUNlpK4A" showIcon="false" color="138,226,52">
@@ -441,7 +441,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="borderedNode.odesign#//@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@nodeMappings[name='Class']/@borderedNodeMappings[name='Attribute']"/>
         </ownedBorderedNodes>
-        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_1E26wGrNEeKUzcXlhUGLrg" name="Class1collapse" width="1" height="1" resizeKind="NSEW">
+        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_1E26wGrNEeKUzcXlhUGLrg" name="Class1collapse" width="1" height="1">
           <target xmi:type="ecore:EAttribute" href="borderedNode.ecore#//P1/Class1/Class1collapse"/>
           <semanticElements xmi:type="ecore:EAttribute" href="borderedNode.ecore#//P1/Class1/Class1collapse"/>
           <graphicalFilters xmi:type="diagram:CollapseFilter" uid="_aAFPkGr-EeKUzcXlhUGLrg" width="10" height="10"/>
@@ -459,7 +459,7 @@
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_82_iGmlnEeKsCtNUNlpK4A" name="P2">
       <target xmi:type="ecore:EPackage" href="borderedNode.ecore#//P2"/>
       <semanticElements xmi:type="ecore:EPackage" href="borderedNode.ecore#//P2"/>
-      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_Gi1zwGr-EeKUzcXlhUGLrg" name="P2collapse" width="1" height="1" resizeKind="NSEW">
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_Gi1zwGr-EeKUzcXlhUGLrg" name="P2collapse" width="1" height="1">
         <target xmi:type="ecore:EEnum" href="borderedNode.ecore#//P2/P2collapse"/>
         <semanticElements xmi:type="ecore:EEnum" href="borderedNode.ecore#//P2/P2collapse"/>
         <graphicalFilters xmi:type="diagram:CollapseFilter" uid="_aAF2oGr-EeKUzcXlhUGLrg" width="10" height="10"/>
@@ -475,7 +475,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" uid="_82_iH2lnEeKsCtNUNlpK4A" name="Class2" width="3" height="3" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="borderedNode.ecore#//P2/Class2"/>
         <semanticElements xmi:type="ecore:EClass" href="borderedNode.ecore#//P2/Class2"/>
-        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_82_iIGlnEeKsCtNUNlpK4A" name="c" width="1" height="1" resizeKind="NSEW">
+        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_82_iIGlnEeKsCtNUNlpK4A" name="c" width="1" height="1">
           <target xmi:type="ecore:EAttribute" href="borderedNode.ecore#//P2/Class2/c"/>
           <semanticElements xmi:type="ecore:EAttribute" href="borderedNode.ecore#//P2/Class2/c"/>
           <ownedStyle xmi:type="diagram:Square" uid="_82_iIWlnEeKsCtNUNlpK4A" showIcon="false" color="138,226,52">
@@ -483,7 +483,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="borderedNode.odesign#//@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@nodeMappings[name='Class']/@borderedNodeMappings[name='Attribute']"/>
         </ownedBorderedNodes>
-        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_83AJEGlnEeKsCtNUNlpK4A" name="d" width="1" height="1" resizeKind="NSEW">
+        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_83AJEGlnEeKsCtNUNlpK4A" name="d" width="1" height="1">
           <target xmi:type="ecore:EAttribute" href="borderedNode.ecore#//P2/Class2/d"/>
           <semanticElements xmi:type="ecore:EAttribute" href="borderedNode.ecore#//P2/Class2/d"/>
           <ownedStyle xmi:type="diagram:Square" uid="_83AJEWlnEeKsCtNUNlpK4A" showIcon="false" color="138,226,52">
@@ -491,7 +491,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="borderedNode.odesign#//@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@nodeMappings[name='Class']/@borderedNodeMappings[name='Attribute']"/>
         </ownedBorderedNodes>
-        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_1FXREGrNEeKUzcXlhUGLrg" name="Class2collapse" width="1" height="1" resizeKind="NSEW">
+        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_1FXREGrNEeKUzcXlhUGLrg" name="Class2collapse" width="1" height="1">
           <target xmi:type="ecore:EAttribute" href="borderedNode.ecore#//P2/Class2/Class2collapse"/>
           <semanticElements xmi:type="ecore:EAttribute" href="borderedNode.ecore#//P2/Class2/Class2collapse"/>
           <graphicalFilters xmi:type="diagram:CollapseFilter" uid="_aAGdsGr-EeKUzcXlhUGLrg" width="10" height="10"/>
@@ -509,7 +509,7 @@
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_83AJGWlnEeKsCtNUNlpK4A" name="P3">
       <target xmi:type="ecore:EPackage" href="borderedNode.ecore#//P3"/>
       <semanticElements xmi:type="ecore:EPackage" href="borderedNode.ecore#//P3"/>
-      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_MuGcIGr-EeKUzcXlhUGLrg" name="P3collapse" width="1" height="1" resizeKind="NSEW">
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_MuGcIGr-EeKUzcXlhUGLrg" name="P3collapse" width="1" height="1">
         <target xmi:type="ecore:EEnum" href="borderedNode.ecore#//P3/P3collapse"/>
         <semanticElements xmi:type="ecore:EEnum" href="borderedNode.ecore#//P3/P3collapse"/>
         <graphicalFilters xmi:type="diagram:CollapseFilter" uid="_aAHEwWr-EeKUzcXlhUGLrg" width="10" height="10"/>
@@ -525,7 +525,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" uid="_83AJHmlnEeKsCtNUNlpK4A" name="Class3" width="3" height="3" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="borderedNode.ecore#//P3/Class3"/>
         <semanticElements xmi:type="ecore:EClass" href="borderedNode.ecore#//P3/Class3"/>
-        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_83AJH2lnEeKsCtNUNlpK4A" name="e" width="1" height="1" resizeKind="NSEW">
+        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_83AJH2lnEeKsCtNUNlpK4A" name="e" width="1" height="1">
           <target xmi:type="ecore:EAttribute" href="borderedNode.ecore#//P3/Class3/e"/>
           <semanticElements xmi:type="ecore:EAttribute" href="borderedNode.ecore#//P3/Class3/e"/>
           <ownedStyle xmi:type="diagram:Square" uid="_83AJIGlnEeKsCtNUNlpK4A" showIcon="false" color="138,226,52">
@@ -533,7 +533,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="borderedNode.odesign#//@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@nodeMappings[name='Class']/@borderedNodeMappings[name='Attribute']"/>
         </ownedBorderedNodes>
-        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_83AJJGlnEeKsCtNUNlpK4A" name="f" width="1" height="1" resizeKind="NSEW">
+        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_83AJJGlnEeKsCtNUNlpK4A" name="f" width="1" height="1">
           <target xmi:type="ecore:EAttribute" href="borderedNode.ecore#//P3/Class3/f"/>
           <semanticElements xmi:type="ecore:EAttribute" href="borderedNode.ecore#//P3/Class3/f"/>
           <ownedStyle xmi:type="diagram:Square" uid="_83AJJWlnEeKsCtNUNlpK4A" showIcon="false" color="138,226,52">
@@ -549,7 +549,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" uid="_83AJLWlnEeKsCtNUNlpK4A" name="Class4" width="3" height="3" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="borderedNode.ecore#//P3/Class4"/>
         <semanticElements xmi:type="ecore:EClass" href="borderedNode.ecore#//P3/Class4"/>
-        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_83AJM2lnEeKsCtNUNlpK4A" name="h" width="1" height="1" resizeKind="NSEW">
+        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_83AJM2lnEeKsCtNUNlpK4A" name="h" width="1" height="1">
           <target xmi:type="ecore:EAttribute" href="borderedNode.ecore#//P3/Class4/h"/>
           <semanticElements xmi:type="ecore:EAttribute" href="borderedNode.ecore#//P3/Class4/h"/>
           <ownedStyle xmi:type="diagram:Square" uid="_83AJNGlnEeKsCtNUNlpK4A" showIcon="false" color="138,226,52">
@@ -557,7 +557,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="borderedNode.odesign#//@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@nodeMappings[name='Class']/@borderedNodeMappings[name='Attribute']"/>
         </ownedBorderedNodes>
-        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_83AJOGlnEeKsCtNUNlpK4A" name="i" width="1" height="1" resizeKind="NSEW">
+        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_83AJOGlnEeKsCtNUNlpK4A" name="i" width="1" height="1">
           <target xmi:type="ecore:EAttribute" href="borderedNode.ecore#//P3/Class4/i"/>
           <semanticElements xmi:type="ecore:EAttribute" href="borderedNode.ecore#//P3/Class4/i"/>
           <ownedStyle xmi:type="diagram:Square" uid="_83AJOWlnEeKsCtNUNlpK4A" showIcon="false" color="138,226,52">
@@ -565,7 +565,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="borderedNode.odesign#//@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@nodeMappings[name='Class']/@borderedNodeMappings[name='Attribute']"/>
         </ownedBorderedNodes>
-        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_s0LokGrOEeKUzcXlhUGLrg" name="Class4collapse" width="1" height="1" resizeKind="NSEW">
+        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_s0LokGrOEeKUzcXlhUGLrg" name="Class4collapse" width="1" height="1">
           <target xmi:type="ecore:EAttribute" href="borderedNode.ecore#//P3/Class4/Class4collapse"/>
           <semanticElements xmi:type="ecore:EAttribute" href="borderedNode.ecore#//P3/Class4/Class4collapse"/>
           <graphicalFilters xmi:type="diagram:CollapseFilter" uid="_aALWMGr-EeKUzcXlhUGLrg" width="10" height="10"/>
@@ -583,7 +583,7 @@
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_83AJQWlnEeKsCtNUNlpK4A" name="P4">
       <target xmi:type="ecore:EPackage" href="borderedNode.ecore#//P4"/>
       <semanticElements xmi:type="ecore:EPackage" href="borderedNode.ecore#//P4"/>
-      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_7sWyYGr9EeKUzcXlhUGLrg" name="P4collapse" width="1" height="1" resizeKind="NSEW">
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_7sWyYGr9EeKUzcXlhUGLrg" name="P4collapse" width="1" height="1">
         <target xmi:type="ecore:EEnum" href="borderedNode.ecore#//P4/P4collapse"/>
         <semanticElements xmi:type="ecore:EEnum" href="borderedNode.ecore#//P4/P4collapse"/>
         <graphicalFilters xmi:type="diagram:CollapseFilter" uid="_aALWMmr-EeKUzcXlhUGLrg" width="10" height="10"/>

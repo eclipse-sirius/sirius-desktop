@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2026 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -19,8 +19,8 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.PortLayoutHelper;
-import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
 /**
  * Same tests as {@link CollapsedBorderedNodeCreationTest} but with snapToGrid
@@ -56,13 +56,10 @@ public class CollapsedBorderedNodeCreationWithSnapToGridTest extends CollapsedBo
     /**
      * Only one of the coordinates is snap to grid. The other is constrained by
      * the parent border.
-     * {@link #assertSameLocation(String, Point, Point, Point, Point, IGraphicalEditPart)}
-     * 
-     * @see org.eclipse.sirius.tests.swtbot.BorderedNodeCreationTest#assertSameLocation(String,
-     *      Point, Point, Point, Point, IGraphicalEditPart)
      */
     @Override
-    protected void assertSameLocation(String errorMessage, Point absoluteExpectedLocation, Point nodeLocation, Point parentAbsoluteLocation, Point creationLocation, IGraphicalEditPart parentPart) {
+    protected void assertSameLocation(String errorMessage, Node borderNode, Point nodeLocation, IGraphicalEditPart borderNodePart, Point absoluteExpectedLocation, Point parentAbsoluteLocation,
+            Point creationLocation, IGraphicalEditPart parentPart) {
         // Adapt the expected location to the grid
         Point snapToLocation = editor.adaptLocationToSnap(absoluteExpectedLocation);
         // Adapt the expected location to the scrollbar of the parents
@@ -72,38 +69,15 @@ public class CollapsedBorderedNodeCreationWithSnapToGridTest extends CollapsedBo
         }
         if (createCollapsedBorderedNode) {
             // Adapt the expected location to collapsed one.
-            absoluteExpectedLocation = PortLayoutHelper.getCollapseCandidateLocation(new Dimension(1, 1), new Rectangle(absoluteExpectedLocation.x, absoluteExpectedLocation.y, 10, 10),
+            absoluteExpectedLocation = PortLayoutHelper.getCollapseCandidateLocation(new Dimension(BorderedNodeCreationTest.COLLAPSED_SIZE, BorderedNodeCreationTest.COLLAPSED_SIZE),
+                    new Rectangle(absoluteExpectedLocation.x, absoluteExpectedLocation.y, BorderedNodeCreationTest.EXPANDED_SIZE, BorderedNodeCreationTest.EXPANDED_SIZE),
                     new Rectangle(parentAbsoluteLocation, parentPart.getFigure().getSize())).getTopLeft();
             // Adapt the snap location to collapsed one.
-            absoluteSnapToLocation = PortLayoutHelper.getCollapseCandidateLocation(new Dimension(1, 1), new Rectangle(absoluteSnapToLocation.x, absoluteSnapToLocation.y, 10, 10),
+            absoluteSnapToLocation = PortLayoutHelper.getCollapseCandidateLocation(new Dimension(BorderedNodeCreationTest.COLLAPSED_SIZE, BorderedNodeCreationTest.COLLAPSED_SIZE),
+                    new Rectangle(absoluteSnapToLocation.x, absoluteSnapToLocation.y, BorderedNodeCreationTest.EXPANDED_SIZE, BorderedNodeCreationTest.EXPANDED_SIZE),
                     new Rectangle(parentAbsoluteLocation, parentPart.getFigure().getSize())).getTopLeft();
         }
-
-        if (nodeLocation.x == parentAbsoluteLocation.x + 8 + 4 || nodeLocation.x == parentAbsoluteLocation.x + 4) {
-            // Case where the grid is outside the parent
-            // + 8 for regular shift and + 4 for collapsed border node
-            errorMessage += " expected <Point(" + nodeLocation.x + ", " + absoluteExpectedLocation.y + ")> or <Point(" + nodeLocation.x + ", " + absoluteExpectedLocation.y + ")> but was:"
-                    + nodeLocation;
-            assertTrue(errorMessage, nodeLocation.y == absoluteSnapToLocation.y || nodeLocation.y == absoluteExpectedLocation.y);
-        } else if (nodeLocation.y == parentAbsoluteLocation.y + 4) {
-            // The y axis is the same as parent (plus the 4 pixels for collapsed
-            // border node). Check that this axis also
-            // corresponds to the grid. The x axis is constrained by the border
-            // (east or west).
-            errorMessage += " expected <Point(" + nodeLocation.x + ", " + absoluteSnapToLocation.y + ")> but was:" + nodeLocation;
-            assertTrue(errorMessage, nodeLocation.y == absoluteSnapToLocation.y);
-        } else {
-            // Get the absolute bounds of parent
-            Rectangle parentBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent(parentPart, true);
-
-            errorMessage += " At least x or y must be on the grid (grid spacing = " + GRID_SPACING + "), but was: " + nodeLocation + "for parent: " + parentBounds;
-
-            assertTrue(errorMessage,
-                    ((nodeLocation.x - 4) % GRID_SPACING == 0
-                            && (nodeLocation.y == absoluteExpectedLocation.y || nodeLocation.y == parentAbsoluteLocation.y + 1 || nodeLocation.y == parentBounds.bottom() - 2))
-                            || ((nodeLocation.x == absoluteExpectedLocation.x || nodeLocation.x == parentAbsoluteLocation.x + 1 || nodeLocation.x == parentBounds.right() - 2)
-                                    && (nodeLocation.y - 4) % GRID_SPACING == 0));
-        }
+        assertBorderNodeCenteredOnGrid(errorMessage, borderNode, nodeLocation, borderNodePart, parentAbsoluteLocation, parentPart, absoluteSnapToLocation, GRID_SPACING, new Point(0, 0));
     }
 
     /**

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2025 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2026 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ package org.eclipse.sirius.diagram.ui.internal.refresh.borderednode;
 
 import java.util.BitSet;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -94,7 +95,7 @@ public class CanonicalDBorderItemLocator {
     public CanonicalDBorderItemLocator(Node containerNode, int preferredSide) {
         this.container = containerNode;
         this.preferredSide = preferredSide;
-        initAuthorizedSides();
+        this.authorizedSides = getAuthorizedSide(Collections.EMPTY_LIST);
     }
 
     /**
@@ -218,7 +219,7 @@ public class CanonicalDBorderItemLocator {
      *            The grid step in pixels
      * @return draw constant
      */
-    private static int findClosestSideOfParent(final Rectangle proposedBounds, final Rectangle parentBorder, BitSet authorizedSides, boolean snapToGrid, int gridSpacing) {
+    public static int findClosestSideOfParent(final Rectangle proposedBounds, final Rectangle parentBorder, BitSet authorizedSides, boolean snapToGrid, int gridSpacing) {
         final Point parentCenter = parentBorder.getCenter();
         final Point childCenter = proposedBounds.getCenter();
 
@@ -584,33 +585,33 @@ public class CanonicalDBorderItemLocator {
         return min < value && value < max;
     }
 
-    private void updateAuthorizedSide(DNode borderNode) {
-        initAuthorizedSides();
-        DNodeQuery query = new DNodeQuery(borderNode);
-        List<Side> forbiddenSides = query.getForbiddenSide();
+    public static BitSet getAuthorizedSide(List<Side> forbiddenSides) {
+        BitSet authorizedSides = new BitSet(PositionConstants.NSEW);
+        authorizedSides.set(PositionConstants.WEST);
+        authorizedSides.set(PositionConstants.SOUTH);
+        authorizedSides.set(PositionConstants.EAST);
+        authorizedSides.set(PositionConstants.NORTH);
         // If all the sides are forbidden, we consider all sides as authorized
         // since the border node has to be located somewhere anyway.
         if (!(forbiddenSides.size() == Side.VALUES.size())) {
             for (Side side : forbiddenSides) {
                 if (Side.WEST.getName().equals(side.getName())) {
-                    this.authorizedSides.clear(PositionConstants.WEST);
+                    authorizedSides.clear(PositionConstants.WEST);
                 } else if (Side.EAST.getName().equals(side.getName())) {
-                    this.authorizedSides.clear(PositionConstants.EAST);
+                    authorizedSides.clear(PositionConstants.EAST);
                 } else if (Side.NORTH.getName().equals(side.getName())) {
-                    this.authorizedSides.clear(PositionConstants.NORTH);
+                    authorizedSides.clear(PositionConstants.NORTH);
                 } else if (Side.SOUTH.getName().equals(side.getName())) {
-                    this.authorizedSides.clear(PositionConstants.SOUTH);
+                    authorizedSides.clear(PositionConstants.SOUTH);
                 }
             }
         }
+        return authorizedSides;
     }
 
-    private void initAuthorizedSides() {
-        this.authorizedSides.clear();
-        this.authorizedSides.set(PositionConstants.WEST);
-        this.authorizedSides.set(PositionConstants.SOUTH);
-        this.authorizedSides.set(PositionConstants.EAST);
-        this.authorizedSides.set(PositionConstants.NORTH);
+    private void updateAuthorizedSide(DNode borderNode) {
+        DNodeQuery query = new DNodeQuery(borderNode);
+        this.authorizedSides = getAuthorizedSide(query.getForbiddenSide());
     }
 
     private static boolean isAuthorized(BitSet authorizedSides, int side) {

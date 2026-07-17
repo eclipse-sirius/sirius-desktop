@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2026 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -51,5 +51,11 @@ public interface RequestConstants extends org.eclipse.gmf.runtime.diagram.ui.req
 
     /** request to straighten edges. */
     String REQ_STRAIGHTEN = "straightenTo"; //$NON-NLS-1$
+
+    /** Raw mouse location before creation snap-to-grid/geometry. */
+    String CREATION_RAW_LOCATION = "creationRawLocation"; //$NON-NLS-1$
+
+    /** Snapped mouse location computed for a creation request. */
+    String CREATION_SNAPPED_LOCATION = "creationSnappedLocation"; //$NON-NLS-1$
 
 }

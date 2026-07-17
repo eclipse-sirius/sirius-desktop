@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2026 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,7 +15,10 @@ package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 import java.util.Optional;
 
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.PositionConstants;
+import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -40,8 +43,11 @@ import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.view.RootLayoutData;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeListCompartmentEditPart;
+import org.eclipse.sirius.diagram.ui.internal.refresh.borderednode.CanonicalDBorderItemLocator;
 import org.eclipse.sirius.diagram.ui.tools.api.draw2d.ui.figures.FigureUtilities;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
+import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 
 /**
@@ -187,7 +193,16 @@ public class NodeCreationEditPolicy extends SiriusContainerEditPolicy {
      * @return the real location where the element must be created.
      */
     protected RootLayoutData getRealLayoutData(final CreateRequest request, EditPart parentEditPartToUse) {
-        Point location = request.getLocation().getCopy();
+        boolean isBorderNodeCreationRequest = new RequestQuery(request).isDropOrCreationOfBorderNode();
+        Point realLocation = getRealLocation(request.getLocation(), parentEditPartToUse, isBorderNodeCreationRequest);
+        if (isBorderNodeCreationRequest) {
+            realLocation = getBorderNodeCreationLocation(request, parentEditPartToUse, realLocation);
+        }
+        return new RootLayoutData(parentEditPartToUse, realLocation.getCopy(), CreationUtil.adaptRequestSizeToZoomFactor(request, parentEditPartToUse));
+    }
+
+    private Point getRealLocation(Point requestLocation, EditPart parentEditPartToUse, boolean isBorderNodeCreationRequest) {
+        Point location = requestLocation != null ? requestLocation.getCopy() : null;
         final Point realLocation;
         if (location != null && parentEditPartToUse instanceof GraphicalEditPart graphicalParentEditPart) {
             final IFigure fig = graphicalParentEditPart.getFigure();
@@ -195,7 +210,6 @@ public class NodeCreationEditPolicy extends SiriusContainerEditPolicy {
             final Point containerLocation = fig.getBounds().getLocation();
             location = new Point(location.x - containerLocation.x, location.y - containerLocation.y);
             if (fig instanceof ResizableCompartmentFigure) {
-                boolean isBorderNodeCreationRequest = new RequestQuery(request).isDropOrCreationOfBorderNode();
                 Point scrollOffset;
                 if (isBorderNodeCreationRequest) {
                     // Ignore scroll for border node, the border of the parent
@@ -213,7 +227,59 @@ public class NodeCreationEditPolicy extends SiriusContainerEditPolicy {
         } else {
             realLocation = location;
         }
-        return new RootLayoutData(parentEditPartToUse, realLocation.getCopy(), CreationUtil.adaptRequestSizeToZoomFactor(request, parentEditPartToUse));
+        return realLocation;
+    }
+
+    private Point getBorderNodeCreationLocation(CreateRequest request, EditPart parentEditPartToUse, Point defaultLocation) {
+        Point rawLocation = getCreationLocation(request, RequestConstants.CREATION_RAW_LOCATION);
+        Point snappedLocation = getCreationLocation(request, RequestConstants.CREATION_SNAPPED_LOCATION);
+        if (rawLocation != null && snappedLocation != null) {
+            Point rawRealLocation = getRealLocation(rawLocation, parentEditPartToUse, true);
+            Point snappedRealLocation = getRealLocation(snappedLocation, parentEditPartToUse, true);
+            int side = getBorderNodeSide(request, parentEditPartToUse, snappedRealLocation);
+            // Border nodes snap only on their free axis; the other axis must stay driven by the clicked side.
+            Point result = rawRealLocation.getCopy();
+            switch (side) {
+            case PositionConstants.NORTH:
+            case PositionConstants.SOUTH:
+                result.x = snappedRealLocation.x;
+                break;
+            case PositionConstants.EAST:
+            case PositionConstants.WEST:
+                result.y = snappedRealLocation.y;
+                break;
+            default:
+                result = defaultLocation;
+                break;
+            }
+            return result;
+        }
+        return defaultLocation;
+    }
+
+    private Point getCreationLocation(CreateRequest request, String key) {
+        Object value = request.getExtendedData().get(key);
+        if (value instanceof Point point) {
+            return point.getCopy();
+        }
+        return null;
+    }
+
+    private int getBorderNodeSide(CreateRequest request, EditPart parentEditPartToUse, Point snappedRealLocation) {
+        int side = PositionConstants.NONE;
+        if (parentEditPartToUse instanceof GraphicalEditPart graphicalParentEditPart) {
+            Dimension borderNodeSize = CreationUtil.adaptRequestSizeToZoomFactor(request, parentEditPartToUse);
+            if (borderNodeSize == null) {
+                borderNodeSize = new Dimension(1, 1);
+            }
+            Dimension parentSize = graphicalParentEditPart.getFigure().getSize();
+            Rectangle parentBounds = new Rectangle(0, 0, parentSize.width, parentSize.height);
+            boolean snapToGrid = GraphicalHelper.isSnapToGridEnabled(parentEditPartToUse);
+            int gridSpacing = snapToGrid ? GraphicalHelper.getGridSpacing(parentEditPartToUse) : 0;
+            side = CanonicalDBorderItemLocator.findClosestSideOfParent(new Rectangle(snappedRealLocation, borderNodeSize), parentBounds,
+                    CanonicalDBorderItemLocator.getAuthorizedSide(new RequestQuery(request).getForbiddenSidesOfBorderNodeCreationRequest()), snapToGrid, gridSpacing);
+        }
+        return side;
     }
 
     private Optional<GraphicalEditPart> getParentEditPartWithExpectedMapping(GraphicalEditPart editPart, EList<AbstractNodeMapping> extraMappings, EList<NodeMapping> nodeMappings) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2025 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2025, 2026 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -88,6 +88,8 @@ public class NodePositionHelper {
         Node parent = (Node) node.eContainer();
 
         CanonicalDBorderItemLocator locator = new CanonicalDBorderItemLocator(parent, PositionConstants.NSEW, snapToGrid, gridSpacing);
+        Rectangle parentBorderBounds = getParentAbsoluteBorderBounds(parent);
+        locator.setParentBorderBounds(parentBorderBounds);
         Dimension borderOffsets = IBorderItemOffsets.DEFAULT_OFFSET;
         if (new ViewQuery(node).isForNameEditPart()) {
             borderOffsets = IBorderItemOffsets.NO_OFFSET;
@@ -103,7 +105,7 @@ public class NodePositionHelper {
                 size != null ? size : getBorderNodeDefaultSize(port));
         locator.setConstraint(constraint);
         final Rectangle dummyBounds = new Rectangle(constraint);
-        Point parentAbsoluteLocation = GMFHelper.getAbsoluteLocation(parent, true, false);
+        Point parentAbsoluteLocation = parentBorderBounds.getLocation();
         dummyBounds.translate(parentAbsoluteLocation);
 
         final Point realLocation = locator.getValidLocation(dummyBounds, node, Collections.singleton(node));
@@ -136,7 +138,9 @@ public class NodePositionHelper {
         Dimension size = layoutData.getSize();
 
         // Compute the best location according to other existing bordered nodes.
-        CanonicalDBorderItemLocator locator = new CanonicalDBorderItemLocator(parent, PositionConstants.NSEW);
+        CanonicalDBorderItemLocator locator = new CanonicalDBorderItemLocator(parent, PositionConstants.NSEW, snapToGrid, gridSpacing);
+        Rectangle parentBorderBounds = getParentAbsoluteBorderBounds(parent);
+        locator.setParentBorderBounds(parentBorderBounds);
         Dimension borderOffsets = IBorderItemOffsets.DEFAULT_OFFSET;
         if (port != null && new DDiagramElementQuery(port).isIndirectlyCollapsed()) {
             borderOffsets = IBorderItemOffsets.COLLAPSE_FILTER_OFFSET;
@@ -145,7 +149,7 @@ public class NodePositionHelper {
 
         // CanonicalDBorderItemLocator works with absolute GMF parent
         // location so we need to translate BorderedNode absolute location.
-        final Point parentAbsoluteLocation = GMFHelper.getAbsoluteBounds(parent, false, false, false, false).getTopLeft();
+        final Point parentAbsoluteLocation = parentBorderBounds.getTopLeft();
         final Point realLocation = locator.getValidLocation(new Rectangle(location.getTranslated(parentAbsoluteLocation), size), node, Collections.singleton(node));
 
         // Compute the new relative position to the parent
@@ -191,13 +195,12 @@ public class NodePositionHelper {
             if (isBorderedNode(node.getElement())) {
                 enlargedAxis = PositionConstants.NONE;
                 if (node.getLayoutConstraint() instanceof Bounds nodeBounds // this node
-                        && node.eContainer() instanceof Node parent // and parent
-                        && parent.getLayoutConstraint() instanceof Bounds parentBounds) {
+                        && node.eContainer() instanceof Node parent) {
                     // For Border node, only enlarge the attached dimension.
                     // As there is a small shift inside the component,
                     // adjusting the other dimension is useless:
                     // when moving the element, the size would not match the grid.
-                    int borderSide = getPortSide(nodeBounds, parentBounds);
+                    int borderSide = getPortSide(new Rectangle(nodeBounds.getX(), nodeBounds.getY(), nodeBounds.getWidth(), nodeBounds.getHeight()), getParentRelativeBounds(parent));
                     switch (borderSide) {
                     case PositionConstants.NORTH:
                     case PositionConstants.SOUTH:
@@ -304,66 +307,10 @@ public class NodePositionHelper {
     }
 
     /**
-     * Returns the side of a border node from its container using {@link PositionConstants}.
-     * 
-     * @param borderNode
-     *            bounds of border node
-     * @param container
-     *            bounds of container node
-     * @return side
-     */
-    private static int getPortSide(Bounds borderNode, Bounds container) {
-        // Warning: legacy implementation has suspicious results.
-        // CanonicalDBorderItemLocator.findClosestSideOfParent(borderNode, container);
-        if (container.getWidth() == 0) { // no dimension, 0-division risk
-            return PositionConstants.WEST;
-        }
-
-        Point center = new Rectangle(borderNode.getX(), borderNode.getY(), borderNode.getWidth(), borderNode.getHeight()).getCenter();
-        // Diagonal SW to NE
-        boolean aboveNwse = isAboveLine(center, container.getHeight(), container.getWidth(), 0);
-        // Diagonal NW to SE
-        boolean aboveSwne = isAboveLine(center, -container.getHeight(), container.getWidth(), container.getHeight());
-        if (aboveSwne) {
-            return aboveNwse ? PositionConstants.NORTH : PositionConstants.WEST;
-        } else {
-            return aboveNwse ? PositionConstants.EAST : PositionConstants.SOUTH;
-        }
-    }
-
-    /**
-     * Returns if a point is above a line.
-     * <p>
-     * Referential is screen-based (Y-axis increases toward the South, X-Axis increases toward East).
-     * </p>
-     * <p>
-     * Line is defined with formula:
-     * 
-     * <pre>
-     * y = (a / r) * x + b
-     * </pre>
-     * </p>
-     * 
-     * @param point
-     *            location to test
-     * @param a
-     *            ratio of slope
-     * @param r
-     *            division of slope
-     * @param b
-     *            y-intercept
-     * @return true if above
-     */
-    private static boolean isAboveLine(Point point, int a, int r, int b) {
-        // Y head to South !
-        return point.y * r <= a * point.x + b * r;
-    }
-
-    /**
      * Adjust the location of node when grid is on.
      * <p>
-     * If the width, or the height, is not resizable, adjusting the location — i.e., shifting it 
-     * so that the center of the node aligns with a grid point — helps improve edge alignment.
+     * If the width, or the height, is not resizable, adjusting the location — i.e., shifting it so that the center of
+     * the node aligns with a grid point — helps improve edge alignment.
      * <p>
      * 
      * 
@@ -375,9 +322,30 @@ public class NodePositionHelper {
      */
     public Point getAdjustedLocation(Node node, Point location) {
         if (location != null && snapToGrid && node.getLayoutConstraint() instanceof Size size) {
-            return location.getCopy().translate(getShiftToCenter(node, size, gridSpacing));
+            Point adjustedLocation = location.getCopy().translate(getShiftToCenter(node, location, size, gridSpacing));
+            return constrainBorderNodeFreeAxis(node, location, adjustedLocation, size);
         }
         return location;
+    }
+
+    private static Point constrainBorderNodeFreeAxis(Node node, Point location, Point adjustedLocation, Size size) {
+        if (location != null && isBorderedNode(node.getElement()) && node.eContainer() instanceof Node parent) {
+            Rectangle parentBounds = getParentRelativeBounds(parent);
+            int borderSide = getPortSide(new Rectangle(location.x(), location.y(), size.getWidth(), size.getHeight()), parentBounds);
+            switch (borderSide) {
+            case PositionConstants.NORTH:
+            case PositionConstants.SOUTH:
+                adjustedLocation.x = Math.clamp(adjustedLocation.x, 0, parentBounds.width - size.getWidth());
+                break;
+            case PositionConstants.EAST:
+            case PositionConstants.WEST:
+                adjustedLocation.y = Math.clamp(adjustedLocation.y, 0, parentBounds.height - size.getHeight());
+                break;
+            default:
+                break;
+            }
+        }
+        return adjustedLocation;
     }
 
     private static int shiftLocationToCenter(boolean resizable, int size, int gridSpacing) {
@@ -403,10 +371,60 @@ public class NodePositionHelper {
      * @return Point with x, y indicating the shift
      */
     public static Point getShiftToCenter(Node node, Size size, int gridSpacing) {
-        return new Point(
+        return getShiftToCenter(node, null, size, gridSpacing);
+    }
+
+    /**
+     * Gets the shift for a node to be centered on a point of the grid, if the node is not resizable.
+     * <p>
+     * For border nodes, the shift is applied only on the free axis. The other axis is constrained by the parent side.
+     * </p>
+     *
+     * @param node
+     *            to shift
+     * @param location
+     *            candidate location
+     * @param size
+     *            dimension of the node
+     * @param gridSpacing
+     *            spacing of the grid
+     * @return Point with x, y indicating the shift
+     */
+    public static Point getShiftToCenter(Node node, Point location, Size size, int gridSpacing) {
+        Point shift = new Point(
                 // Horizontal shift
                 shiftLocationToCenter(canResizeWidth(node), size.getWidth(), gridSpacing),
                 // Vertical shift
                 shiftLocationToCenter(canResizeHeight(node), size.getHeight(), gridSpacing));
+        if (location != null && isBorderedNode(node.getElement()) && node.eContainer() instanceof Node parent) {
+            Rectangle parentBounds = getParentRelativeBounds(parent);
+            int borderSide = getPortSide(new Rectangle(location.x(), location.y(), size.getWidth(), size.getHeight()), parentBounds);
+            switch (borderSide) {
+            case PositionConstants.NORTH:
+            case PositionConstants.SOUTH:
+                shift.y = 0;
+                break;
+            case PositionConstants.EAST:
+            case PositionConstants.WEST:
+                shift.x = 0;
+                break;
+            default:
+                break;
+            }
+        }
+        return shift;
+    }
+
+    private static int getPortSide(Rectangle borderNode, Rectangle container) {
+        return CanonicalDBorderItemLocator.findClosestSideOfParent(borderNode, container);
+    }
+
+    private static Rectangle getParentRelativeBounds(Node parent) {
+        Rectangle absoluteBounds = getParentAbsoluteBorderBounds(parent);
+        return new Rectangle(0, 0, absoluteBounds.width(), absoluteBounds.height());
+    }
+
+    private static Rectangle getParentAbsoluteBorderBounds(Node parent) {
+        return GMFHelper.getAbsoluteBounds(parent, true, true, false, false);
     }
 }

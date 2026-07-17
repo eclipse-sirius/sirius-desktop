@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2026 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,11 +13,13 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.palette;
 
 import org.eclipse.draw2d.PositionConstants;
+import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.SnapToHelper;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gef.requests.CreationFactory;
+import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.swt.SWT;
 
 /**
@@ -51,6 +53,7 @@ public class CreationTool extends org.eclipse.gef.tools.CreationTool {
      * 
      * {@inheritDoc}
      */
+    @Override
     public Request createTargetRequest() {
         return super.createTargetRequest();
     }
@@ -75,16 +78,21 @@ public class CreationTool extends org.eclipse.gef.tools.CreationTool {
     @Override
     protected void updateTargetRequest() {
         super.updateTargetRequest();
+        CreateRequest req = getTargetRequest();
+        req.getExtendedData().remove(RequestConstants.CREATION_RAW_LOCATION);
+        req.getExtendedData().remove(RequestConstants.CREATION_SNAPPED_LOCATION);
         if (!isInState(STATE_DRAG_IN_PROGRESS)) {
             if (!getCurrentInput().isAltKeyDown()) {
                 if (getTargetEditPart() != null) {
                     SnapToHelper helper = getTargetEditPart().getAdapter(SnapToHelper.class);
                     if (helper != null) {
-                        PrecisionPoint preciseLocation = new PrecisionPoint(getLocation());
-                        PrecisionPoint result = new PrecisionPoint(getLocation());
-                        CreateRequest req = getCreateRequest();
-                        helper.snapPoint(req, PositionConstants.HORIZONTAL | PositionConstants.VERTICAL, preciseLocation, result);
-                        req.setLocation(result.getCopy());
+                        Point rawLocation = getLocation().getCopy();
+                        PrecisionPoint preciseLocation = new PrecisionPoint(rawLocation);
+                        PrecisionPoint resultSnappedLocation = new PrecisionPoint(rawLocation);
+                        helper.snapPoint(req, PositionConstants.HORIZONTAL | PositionConstants.VERTICAL, preciseLocation, resultSnappedLocation);
+                        req.getExtendedData().put(RequestConstants.CREATION_RAW_LOCATION, rawLocation);
+                        req.getExtendedData().put(RequestConstants.CREATION_SNAPPED_LOCATION, resultSnappedLocation.getCopy());
+                        req.setLocation(resultSnappedLocation);
                     }
                 }
             }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2026 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import java.util.function.Function;
+
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -28,7 +31,10 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditP
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.PortLayoutHelper;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
+import org.eclipse.sirius.diagram.ui.internal.refresh.NodePositionHelper;
+import org.eclipse.sirius.diagram.ui.internal.refresh.borderednode.CanonicalDBorderItemLocator;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
@@ -122,6 +128,10 @@ public class BorderedNodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String CLASS_3_NAME = "Class3";
 
     private static final String CLASS_4_NAME = "Class4";
+
+    public static final int COLLAPSED_SIZE = 1;
+
+    public static final int EXPANDED_SIZE = 10;
 
     /**
      * If true, the creation will be made near the bordered node named
@@ -397,7 +407,8 @@ public class BorderedNodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
     protected Point adaptExpectedLocation(IFigure parentFigure, Point parentAbsoluteLocation, Point absoluteExpectedLocation) {
         if (createCollapsedBorderedNode) {
             // Adapt the expected location to collapsed one.
-            absoluteExpectedLocation = PortLayoutHelper.getCollapseCandidateLocation(new Dimension(1, 1), new Rectangle(absoluteExpectedLocation.x, absoluteExpectedLocation.y, 10, 10),
+            absoluteExpectedLocation = PortLayoutHelper
+                    .getCollapseCandidateLocation(new Dimension(COLLAPSED_SIZE, COLLAPSED_SIZE), new Rectangle(absoluteExpectedLocation.x, absoluteExpectedLocation.y, EXPANDED_SIZE, EXPANDED_SIZE),
                     new Rectangle(parentAbsoluteLocation, parentFigure.getSize())).getTopLeft();
         }
         return absoluteExpectedLocation;
@@ -649,10 +660,11 @@ public class BorderedNodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
             errorMessage = "the BorderedNode has been created at wrong location (for near collapsed bordered node case).";
         }
         // Check GMF
-        Point gmfNodeLocation = GMFHelper.getAbsoluteLocation((Node) borderNodePart.getModel(), true, true);
-        assertSameLocation("For GMF, " + errorMessage, expectedLocation, gmfNodeLocation, parentLocation, creationLocation, parentPart);
+        Node borderNode = (Node) borderNodePart.getModel();
+        Point gmfNodeLocation = GMFHelper.getAbsoluteLocation(borderNode, true, false);
+        assertSameLocation("For GMF, " + errorMessage, borderNode, gmfNodeLocation, borderNodePart, expectedLocation, parentLocation, creationLocation, parentPart);
         // Check Draw2d
-        assertSameLocation("For Draw2d, " + errorMessage, expectedLocation, nodeLocation, parentLocation, creationLocation, parentPart);
+        assertSameLocation("For Draw2d, " + errorMessage, borderNode, nodeLocation, borderNodePart, expectedLocation, parentLocation, creationLocation, parentPart);
     }
 
     /**
@@ -664,8 +676,8 @@ public class BorderedNodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
     private void assertBorderedNodeSize(String borderedNodeLabel) {
         SWTBotGefEditPart editPart = editor.getEditPart(borderedNodeLabel, AbstractDiagramBorderNodeEditPart.class);
         Size size = (Size) ((Node) editPart.part().getModel()).getLayoutConstraint();
-        assertEquals("The port size should have 1 pixel width.", 1, size.getWidth());
-        assertEquals("The port size should have 1 pixel height.", 1, size.getHeight());
+        assertEquals("The port size should have 1 pixel width.", COLLAPSED_SIZE, size.getWidth());
+        assertEquals("The port size should have 1 pixel height.", COLLAPSED_SIZE, size.getHeight());
     }
 
     /**
@@ -795,24 +807,210 @@ public class BorderedNodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Possibility to adapt the expected location according to some parameters
-     * (snap to grid, ...).
-     * 
+     * Possibility to adapt the expected location according to some parameters (snap to grid, ...).
+     *
      * @param errorMessage
-     *            The identifying message or null
-     * @param expectedLocation
-     *            The expected location (in absolute coordinates)
+     *            the assertion message
+     * @param borderNode
+     *            the border node
      * @param nodeLocation
      *            The actual node location (in absolute coordinates)
+     * @param borderNodePart
+     *            the border node edit part
+     * @param expectedLocation
+     *            The expected location (in absolute coordinates)
      * @param parentLocation
      *            The parent location (in absolute coordinates)
      * @param creationLocation
-     *            The relative creation location used to create the border node
-     *            or null
+     *            The relative creation location used to create the border node or null
      * @param parentPart
      *            the parent edit part
      */
-    protected void assertSameLocation(String errorMessage, Point expectedLocation, Point nodeLocation, Point parentLocation, Point creationLocation, IGraphicalEditPart parentPart) {
+    protected void assertSameLocation(String errorMessage, Node borderNode, Point nodeLocation, IGraphicalEditPart borderNodePart, Point expectedLocation, Point parentLocation, Point creationLocation,
+            IGraphicalEditPart parentPart) {
         assertEquals(errorMessage, expectedLocation, nodeLocation);
+    }
+
+    /**
+     * Checks that the center of the free axis of a border node is on the grid. The other axis is constrained by its
+     * container.
+     *
+     * @param errorMessage
+     *            the assertion message
+     * @param borderNode
+     *            the border node
+     * @param nodeLocation
+     *            the actual node location
+     * @param borderNodePart
+     *            the border node edit part
+     * @param parentLocation
+     *            the parent location
+     * @param parentPart
+     *            the parent edit part
+     * @param snapToLocation
+     *            the snap-to-grid location expected for the free axis
+     * @param gridSpacing
+     *            the grid spacing
+     * @param centerOffset
+     *            offset to apply before checking the center, for collapsed bordered nodes
+     */
+    protected void assertBorderNodeCenteredOnGrid(String errorMessage, Node borderNode, Point nodeLocation, IGraphicalEditPart borderNodePart, Point parentLocation,
+            IGraphicalEditPart parentPart, Point snapToLocation, int gridSpacing, Point centerOffset) {
+        Dimension nodeSize = getBorderNodeSize(borderNode, borderNodePart);
+        Point logicalNodeLocation = getLogicalNodeLocationForSnap(borderNode, nodeLocation, borderNodePart);
+        Point logicalParentLocation = getLogicalParentLocationForSnap(borderNode, parentLocation, parentPart);
+        int side = getBorderNodeSide(logicalNodeLocation, nodeSize, logicalParentLocation, parentPart);
+        assertBorderNodeCenteredOnGrid(errorMessage, borderNode, nodeLocation, borderNodePart, snapToLocation, gridSpacing, centerOffset, side);
+    }
+
+    /**
+     * Checks that the center of the free axis of a border node is on the grid. The other axis is constrained by its
+     * container.
+     *
+     * @param errorMessage
+     *            the assertion message
+     * @param borderNode
+     *            the border node
+     * @param nodeLocation
+     *            the actual node location
+     * @param borderNodePart
+     *            the border node edit part
+     * @param snapToLocation
+     *            the snap-to-grid location expected for the free axis
+     * @param gridSpacing
+     *            the grid spacing
+     * @param centerOffset
+     *            offset to apply before checking the center, for collapsed bordered nodes
+     * @param side
+     *            the side on which the bordered node is located
+     */
+    protected void assertBorderNodeCenteredOnGrid(String errorMessage, Node borderNode, Point nodeLocation, IGraphicalEditPart borderNodePart, Point snapToLocation, int gridSpacing,
+            Point centerOffset, int side) {
+        Dimension nodeSize = getBorderNodeSize(borderNode, borderNodePart);
+        Point logicalNodeLocation = getLogicalNodeLocationForSnap(borderNode, nodeLocation, borderNodePart);
+        Rectangle parentBounds = getLogicalParentBoundsForSnap(borderNode, borderNodePart);
+        Point effectiveCenterOffset = getEffectiveCollapsedCenterOffset(nodeSize, side, centerOffset);
+        if ((side == PositionConstants.WEST || side == PositionConstants.EAST) && !NodePositionHelper.canResizeHeight(borderNode)) {
+            int centerY = logicalNodeLocation.y + effectiveCenterOffset.y + nodeSize.height / 2;
+            Point center = new Point(logicalNodeLocation.x + centerOffset.x + nodeSize.width / 2, centerY);
+            Point snappedCenter = editor.adaptLocationToSnap(center);
+            if (isClampedOnFreeAxis(logicalNodeLocation, parentBounds, nodeSize, effectiveCenterOffset, snappedCenter, pt -> pt.y)) {
+                // In this case, it is expected to not have a border node centered.
+                return;
+            }
+            assertEquals(errorMessage + " The border node vertical center should be on the grid. location=" + nodeLocation + ", size=" + nodeSize + ", centerOffset=" + centerOffset + ", side="
+                    + side + ", logicalLocation=" + logicalNodeLocation + ", centerY=" + centerY + ", snappedCenter=" + snappedCenter + ", previousSnapToLocation=" + snapToLocation
+                    + ", gridSpacing=" + gridSpacing + ", constraint=" + borderNode.getLayoutConstraint() + ", element=" + borderNode.getElement() + ".", snappedCenter.y, centerY);
+        } else if ((side == PositionConstants.NORTH || side == PositionConstants.SOUTH) && !NodePositionHelper.canResizeWidth(borderNode)) {
+            int centerX = logicalNodeLocation.x + effectiveCenterOffset.x + nodeSize.width / 2;
+            Point center = new Point(centerX, logicalNodeLocation.y + centerOffset.y + nodeSize.height / 2);
+            Point snappedCenter = editor.adaptLocationToSnap(center);
+            if (isClampedOnFreeAxis(logicalNodeLocation, parentBounds, nodeSize, effectiveCenterOffset, snappedCenter, pt -> pt.x)) {
+                // In this case, it is expected to not have a border node centered.
+                return;
+            }
+            assertEquals(errorMessage + " The border node horizontal center should be on the grid. location=" + nodeLocation + ", size=" + nodeSize + ", centerOffset=" + centerOffset + ", side="
+                    + side + ", logicalLocation=" + logicalNodeLocation + ", centerX=" + centerX + ", snappedCenter=" + snappedCenter + ", previousSnapToLocation=" + snapToLocation
+                    + ", gridSpacing=" + gridSpacing + ", constraint=" + borderNode.getLayoutConstraint() + ", element=" + borderNode.getElement() + ".", snappedCenter.x, centerX);
+        }
+    }
+
+    /**
+     * Returns true when a WEST/EAST border node can not have its vertical center aligned on the grid, or reciprocally
+     * when a NORTH/SOUTH border node can not have its horizontal center aligned on the grid because the corresponding
+     * location would be outside of the parent bounds.
+     * <p>
+     * In this situation the locator keeps the border node on the closest authorized vertical bound instead of
+     * preserving the snapped center. For collapsed border nodes, the effective bounds include the collapse offsets used
+     * by the locator.
+     * </p>
+     *
+     * @param nodeLocation
+     *            the actual logical location of the border node
+     * @param parentBounds
+     *            the logical bounds of the parent border
+     * @param nodeSize
+     *            the logical size of the border node
+     * @param centerOffset
+     *            the offset to apply to the node location to compute the effective center
+     * @param snappedCenterY
+     *            the expected snapped vertical center
+     * @return true if the node is clamped on the top or bottom effective bound because the snapped top-left location
+     *         would be outside of the parent bounds, false otherwise.
+     */
+    private boolean isClampedOnFreeAxis(Point nodeLocation, Rectangle parentBounds, Dimension nodeSize, Point centerOffset, Point snappedCenter, Function<Point, Integer> axis) {
+        // A collapsed bordered node of size 1 is centered inside its expanded bounds.
+        // With integer coordinates, centering 1px in 10px gives (10 - 1) / 2 = 4,
+        // leaving 4px before the collapsed node and 5px after it.
+        int shiftForCollapsed = (EXPANDED_SIZE - COLLAPSED_SIZE) / 2;
+        int oppositeShiftForCollapsed = EXPANDED_SIZE - shiftForCollapsed;
+        var topleft = parentBounds.getTopLeft();
+        var opposite = parentBounds.getBottomRight();
+        var dim = new Point(nodeSize.width, nodeSize.height);
+        int minCoordinate = isCollapsedSize(nodeSize) ? axis.apply(topleft) + shiftForCollapsed : axis.apply(topleft);
+        int maxCoordinate = isCollapsedSize(nodeSize) ? axis.apply(opposite) - oppositeShiftForCollapsed : axis.apply(opposite) - axis.apply(dim);
+        int snappedCoordinate = axis.apply(snappedCenter) - axis.apply(centerOffset) - axis.apply(dim) / 2;
+        return (axis.apply(nodeLocation) == minCoordinate && snappedCoordinate < minCoordinate) || (axis.apply(nodeLocation) == maxCoordinate && snappedCoordinate > maxCoordinate);
+    }
+
+    private Point getEffectiveCollapsedCenterOffset(Dimension nodeSize, int side, Point centerOffset) {
+        Point result = centerOffset;
+        if (isCollapsedSize(nodeSize)) {
+            result = centerOffset.getCopy();
+            if (side == PositionConstants.WEST || side == PositionConstants.EAST) {
+                result.y = 1;
+            } else if (side == PositionConstants.NORTH || side == PositionConstants.SOUTH) {
+                result.x = 1;
+            }
+        }
+        return result;
+    }
+
+    private boolean isCollapsedSize(Dimension nodeSize) {
+        return nodeSize.width == COLLAPSED_SIZE && nodeSize.height == COLLAPSED_SIZE;
+    }
+
+    private Point getLogicalNodeLocationForSnap(Node borderNode, Point nodeLocation, IGraphicalEditPart borderNodePart) {
+        if (borderNode.eContainer() instanceof Node parentNode && borderNodePart.getParent() instanceof IGraphicalEditPart parentPart) {
+            Point borderNodeGMFLocation = GMFHelper.getAbsoluteLocation(borderNode, true, false);
+            if (borderNodeGMFLocation.equals(nodeLocation)) {
+                return nodeLocation;
+            }
+            Point parentGMFLocation = GMFHelper.getAbsoluteLocation(parentNode, true, false);
+            Point parentDraw2DLocation = GraphicalHelper.getAbsoluteBoundsIn100Percent(parentPart, true).getLocation();
+            return nodeLocation.getTranslated(parentGMFLocation.getDifference(parentDraw2DLocation));
+        }
+        return nodeLocation;
+    }
+
+    private Point getLogicalParentLocationForSnap(Node borderNode, Point parentLocation, IGraphicalEditPart parentPart) {
+        if (borderNode.eContainer() instanceof Node parentNode) {
+            return GMFHelper.getAbsoluteLocation(parentNode, true, false);
+        }
+        return parentLocation;
+    }
+
+    private Rectangle getLogicalParentBoundsForSnap(Node borderNode, IGraphicalEditPart borderNodePart) {
+        if (borderNode.eContainer() instanceof Node parentNode && borderNodePart.getParent() instanceof IGraphicalEditPart parentPart) {
+            Rectangle parentBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent(parentPart, true);
+            Point parentGMFLocation = GMFHelper.getAbsoluteLocation(parentNode, true, false);
+            parentBounds.setLocation(parentGMFLocation);
+            return parentBounds;
+        }
+        return GraphicalHelper.getAbsoluteBoundsIn100Percent((IGraphicalEditPart) borderNodePart.getParent(), true);
+    }
+
+    protected Dimension getBorderNodeSize(Node borderNode, IGraphicalEditPart borderNodePart) {
+        Dimension nodeSize = borderNodePart.getFigure().getSize().getCopy();
+        if (borderNode.getLayoutConstraint() instanceof Size size && size.getWidth() > 0 && size.getHeight() > 0) {
+            nodeSize = new Dimension(size.getWidth(), size.getHeight());
+        }
+        return nodeSize;
+    }
+
+    protected int getBorderNodeSide(Point nodeLocation, Dimension nodeSize, Point parentLocation, IGraphicalEditPart parentPart) {
+        Rectangle parentBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent(parentPart, true);
+        parentBounds.setLocation(parentLocation);
+        return CanonicalDBorderItemLocator.findClosestSideOfParent(new Rectangle(nodeLocation, nodeSize), parentBounds);
     }
 }

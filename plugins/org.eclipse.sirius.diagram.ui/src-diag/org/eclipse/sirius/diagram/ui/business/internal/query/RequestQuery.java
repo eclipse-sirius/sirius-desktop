@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2026 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.business.internal.query;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -29,8 +30,12 @@ import org.eclipse.gmf.runtime.diagram.ui.requests.CreateConnectionViewRequest;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest.ViewDescriptor;
 import org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants;
+import org.eclipse.sirius.diagram.description.ConditionalNodeStyleDescription;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
+import org.eclipse.sirius.diagram.description.style.Side;
+import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.impl.NodeCreationDescriptionImpl;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
@@ -359,6 +364,43 @@ public class RequestQuery {
             isConcerningBorderNode = !getEditParts().isEmpty() && Iterables.all(getEditParts(), Predicates.instanceOf(IBorderItemEditPart.class));
         }
         return isConcerningBorderNode;
+    }
+
+    /**
+     * Returns the forbidden sides for the border node concerned by this creation request.
+     * <p>
+     * If this request does not create a border node, an empty list is returned.
+     * </p>
+     * <p>
+     * At this stage the semantic element does not exist yet, so conditional style predicates can not be evaluated. The
+     * result therefore aggregates the forbidden sides declared on the default style and on all conditional styles of
+     * the node mappings referenced by the creation tool. If this aggregation results in all sides being forbidden, one
+     * side will still be considered in the rest of the algorithm to avoid getting stuck (see
+     * {@link org.eclipse.sirius.diagram.ui.internal.refresh.borderednode.CanonicalDBorderItemLocator#getAuthorizedSide(List)}).
+     * </p>
+     *
+     * @return the forbidden sides for the border node concerned by this creation request, or an empty list
+     */
+    public List<Side> getForbiddenSidesOfBorderNodeCreationRequest() {
+        List<Side> forbiddenSides = new ArrayList<Side>();
+        if (request instanceof CreateRequest) {
+            CreateRequest createRequest = (CreateRequest) request;
+            if (createRequest.getNewObject() instanceof NodeCreationDescription nodeCreationDescription) {
+                for (NodeMapping nodeMapping : nodeCreationDescription.getNodeMappings()) {
+                    addForbiddenSides(forbiddenSides, nodeMapping.getStyle());
+                    for (ConditionalNodeStyleDescription conditionalStyle : nodeMapping.getConditionnalStyles()) {
+                        addForbiddenSides(forbiddenSides, conditionalStyle.getStyle());
+                    }
+                }
+            }
+        }
+        return forbiddenSides;
+    }
+
+    private void addForbiddenSides(List<Side> forbiddenSides, NodeStyleDescription style) {
+        if (style != null) {
+            forbiddenSides.addAll(style.getForbiddenSides());
+        }
     }
 
     /**
