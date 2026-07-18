@@ -41,6 +41,9 @@
     <tycho-version>5.0.3</tycho-version>
     <tycho-extras-version>5.0.3</tycho-extras-version>
     <platform-version-name>2025-09</platform-version-name>
+    <cyclonedx-version>2.9.1</cyclonedx-version>
+    <cyclonedx-schema-version>1.6</cyclonedx-schema-version>
+    <tycho.sbom.url>https://download.eclipse.org/sirius/updates/releases/</tycho.sbom.url>
     <!-- This property is used to customize the maven build folder. Used for parallel builds -->
     <build-folder-name>target</build-folder-name>
     <target-platform-path>.</target-platform-path>
@@ -289,6 +292,11 @@
                     </goals>
                 </execution>
             </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.cyclonedx</groupId>
+          <artifactId>cyclonedx-maven-plugin</artifactId>
+          <version>${cyclonedx-version}</version>
         </plugin>
         </plugins>
     </pluginManagement>
@@ -768,5 +776,36 @@
              <tests.vmargs>${jacoco.agent.ut.arg} ${tests.vmargs.mac} -Xmx1024m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
          </properties>
      </profile>
- </profiles>
+     <profile>
+       <id>sbom</id>
+       <build>
+         <plugins>
+           <plugin>
+             <groupId>org.cyclonedx</groupId>
+             <artifactId>cyclonedx-maven-plugin</artifactId>
+             <configuration>
+               <schemaVersion>${cyclonedx-schema-version}</schemaVersion>
+             </configuration>
+             <dependencies>
+               <dependency>
+                 <groupId>org.eclipse.tycho</groupId>
+                 <artifactId>tycho-sbom</artifactId>
+                 <version>${tycho-version}</version>
+               </dependency>
+             </dependencies>
+             <executions>
+               <execution>
+                 <id>create-bom</id>
+                 <phase>package</phase>
+                 <goals>
+                   <goal>makeBom</goal>
+                   <!-- <goal>makeAggregateBom</goal> -->
+                 </goals>
+               </execution>
+             </executions>
+           </plugin>
+         </plugins>
+       </build>
+     </profile>
+   </profiles>
 </project>
