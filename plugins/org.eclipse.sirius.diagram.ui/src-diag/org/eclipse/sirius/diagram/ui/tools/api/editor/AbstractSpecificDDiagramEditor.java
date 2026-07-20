@@ -14,30 +14,31 @@ package org.eclipse.sirius.diagram.ui.tools.api.editor;
 
 import java.util.Collection;
 
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.notation.Diagram;
+import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
-import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.business.internal.dialect.NotYetOpenedDiagramAdapter;
+import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.business.internal.command.CreateAndStoreGMFDiagramCommand;
-import org.eclipse.sirius.diagram.ui.business.internal.dialect.DiagramDialectArrangeOperation;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl;
+import org.eclipse.sirius.diagram.ui.tools.internal.layout.LayoutUtil;
+import org.eclipse.sirius.diagram.ui.tools.internal.part.OffscreenEditPartFactory;
 import org.eclipse.sirius.ui.business.api.editor.SpecificEditor;
 import org.eclipse.sirius.ui.business.api.editor.SpecificEditorInputTranformer;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.ui.IEditorInput;
-import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
 
 /**
  * A specific editor you may extend, which includes a session. The session
@@ -59,28 +60,38 @@ public abstract class AbstractSpecificDDiagramEditor extends DDiagramEditorImpl 
         }
 
         private Diagram createGMFDiagram(final DDiagram diagram) {
+            Collection<EObject> gmfDiags = session.getServices().getCustomData(CustomDataConstants.GMF_DIAGRAMS, diagram);
+            boolean isNew = gmfDiags.isEmpty();
+            if (isNew) {
+                TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
+                domain.getCommandStack().execute(new CreateAndStoreGMFDiagramCommand(session, (DSemanticDiagram) diagram));
+                gmfDiags = session.getServices().getCustomData(CustomDataConstants.GMF_DIAGRAMS, diagram);
+            }
 
-            TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
-            domain.getCommandStack().execute(new RecordingCommand(domain) {
-                @Override
-                protected void doExecute() {
-                    DialectManager.INSTANCE.refresh(diagram, new NullProgressMonitor());
-                }
-            });
-            domain.getCommandStack().execute(new CreateAndStoreGMFDiagramCommand(session, (DSemanticDiagram) diagram));
-
-            EclipseUIUtil.displayAsyncExec(new Runnable() {
-                public void run() {
-                    final IEditorPart activeEditor = EclipseUIUtil.getActiveEditor();
-                    if (activeEditor != null) {
-                        new DiagramDialectArrangeOperation().arrange(activeEditor, diagram);
-                    }
-                }
-            });
-            final Collection<EObject> gmfDiags = session.getServices().getCustomData(CustomDataConstants.GMF_DIAGRAMS, diagram);
-            return (Diagram) gmfDiags.iterator().next();
+            // creating GMF diagram
+            org.eclipse.gmf.runtime.notation.Diagram gmfDiagram = (org.eclipse.gmf.runtime.notation.Diagram) gmfDiags.iterator().next();
+            if (gmfDiagram != null) {
+                arrangeIfRequired(diagram, gmfDiagram);
+            }
+            return gmfDiagram;
         }
 
+        public void arrangeIfRequired(final DRepresentation representation, org.eclipse.gmf.runtime.notation.Diagram gmfDiagram) {
+            if (representation.eAdapters().contains(NotYetOpenedDiagramAdapter.INSTANCE)) {
+                DiagramEditPart editpart = OffscreenEditPartFactory.getInstance().createDiagramEditPart(gmfDiagram, PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+                if (editpart != null) {
+                    LayoutUtil.arrange(editpart);
+                }
+                representation.eAdapters().remove(NotYetOpenedDiagramAdapter.INSTANCE);
+
+                // Not to layout
+                for (Object child : gmfDiagram.getChildren()) {
+                    if (child instanceof View) {
+                        ((View) child).eAdapters().add(SiriusLayoutDataManager.INSTANCE.getAdapterMarker());
+                    }
+                }
+            }
+        }
     };
 
     /**
