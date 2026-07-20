@@ -37,7 +37,6 @@ import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant;
 import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.business.api.query.EdgeQuery;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFBoundsHelper;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
@@ -101,7 +100,7 @@ public class RepairGMFbendpointsMigrationParticipant extends AbstractRepresentat
                 }
             }
             if (isModified) {
-                DiagramPlugin.getDefault().logInfo(sb.toString());
+                logMigrationInfo(sb.toString());
             }
         }
     }

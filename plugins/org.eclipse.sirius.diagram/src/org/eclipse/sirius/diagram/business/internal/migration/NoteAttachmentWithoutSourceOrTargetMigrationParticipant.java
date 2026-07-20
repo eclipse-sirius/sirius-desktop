@@ -26,7 +26,6 @@ import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigr
 import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.api.refresh.DiagramCreationUtil;
-import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.Messages;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -115,7 +114,7 @@ public class NoteAttachmentWithoutSourceOrTargetMigrationParticipant extends Abs
         sb = new StringBuilder(MessageFormat.format(Messages.NoteAttachmentWithoutSourceOrTargetMigrationParticipant_title, resource.getURI().toPlatformString(true)));
         super.postLoad(resource, loadedVersion);
         if (deletionOccured) {
-            DiagramPlugin.getDefault().logInfo(sb.toString());
+            logMigrationInfo(sb.toString());
         }
     }
 

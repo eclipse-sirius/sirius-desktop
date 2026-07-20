@@ -24,7 +24,6 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant;
 import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.business.api.query.DDiagramGraphicalQuery;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.ext.base.Option;
@@ -92,7 +91,7 @@ public class EdgesZOrderMigrationParticipant extends AbstractRepresentationsFile
             }
 
             if (isModified) {
-                DiagramPlugin.getDefault().logInfo(sb.toString());
+                logMigrationInfo(sb.toString());
             }
         }
     }
