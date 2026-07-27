@@ -54,6 +54,10 @@ public class NodePositionHelper {
 
     /**
      * Default constructor.
+     * <p>
+     * If {@code snapToGrid } value is invalid (not strictly positive), the Snap-To-Grid behavior is
+     * disabled whatever the value of {@code snapToGrid }.
+     * </p>
      * 
      * @param snapToGrid
      *            flag of current diagram regarding element alignment.
@@ -61,7 +65,10 @@ public class NodePositionHelper {
      *            grid spacing of the current diagram.
      */
     public NodePositionHelper(boolean snapToGrid, int gridSpacing) {
-        this.snapToGrid = snapToGrid;
+        this.snapToGrid = snapToGrid 
+                // Protection against 0 division and invalid computations.
+                && gridSpacing > 0;
+        
         this.gridSpacing = gridSpacing;
     }
 
@@ -350,5 +357,56 @@ public class NodePositionHelper {
     private static boolean isAboveLine(Point point, int a, int r, int b) {
         // Y head to South !
         return point.y * r <= a * point.x + b * r;
+    }
+
+    /**
+     * Adjust the location of node when grid is on.
+     * <p>
+     * If the width, or the height, is not resizable, adjusting the location — i.e., shifting it 
+     * so that the center of the node aligns with a grid point — helps improve edge alignment.
+     * <p>
+     * 
+     * 
+     * @param node
+     *            element to move
+     * @param location
+     *            point where element should be place
+     * @return adjusted location
+     */
+    public Point getAdjustedLocation(Node node, Point location) {
+        if (location != null && snapToGrid && node.getLayoutConstraint() instanceof Size size) {
+            return location.getCopy().translate(getShiftToCenter(node, size, gridSpacing));
+        }
+        return location;
+    }
+
+    private static int shiftLocationToCenter(boolean resizable, int size, int gridSpacing) {
+        // Negative shift is less perturbing for user.
+        // This way the figure includes the click point.
+        // If it was positive, for some regions, the element would appear outside the click point.
+        return !resizable && size > 0
+                // Halfing before modulo ensures the center is on a point.
+                ? -(size / 2 % gridSpacing)
+                // no shift
+                : 0;
+    }
+
+    /**
+     * Gets the shift for a node to be centered on a point of the grid, if the node is not resizable.
+     * 
+     * @param node
+     *            to shift
+     * @param size
+     *            dimension of the node
+     * @param gridSpacing
+     *            spacing of the grid
+     * @return Point with x, y indicating the shift
+     */
+    public static Point getShiftToCenter(Node node, Size size, int gridSpacing) {
+        return new Point(
+                // Horizontal shift
+                shiftLocationToCenter(canResizeWidth(node), size.getWidth(), gridSpacing),
+                // Vertical shift
+                shiftLocationToCenter(canResizeHeight(node), size.getHeight(), gridSpacing));
     }
 }
