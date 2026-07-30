@@ -1,0 +1,62 @@
+name: Generate Maven SBOM
+
+on:
+  push:
+    branches:
+      - "master"
+  workflow_dispatch:
+
+env:
+  JAVA_VERSION: "21"
+  JAVA_DISTRO: "temurin"
+
+permissions:
+  contents: read
+
+jobs:
+  generate-sbom:
+    name: Generate SBOM
+    runs-on: ubuntu-latest
+    outputs:
+      project-version: ${{ steps.version.outputs.PROJECT_VERSION }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Setup Java SDK
+        uses: actions/setup-java@03ad4de0992f5dab5e18fcb136590ce7c4a0ac95 # v5.6.0
+        with:
+          java-version: ${{ env.JAVA_VERSION }}
+          distribution: ${{ env.JAVA_DISTRO }}
+
+      - name: Extract product version
+        id: version
+        shell: bash
+        run: |
+          VERSION="$(git describe --long HEAD)"
+          echo "PROJECT_VERSION=$VERSION" >> $GITHUB_OUTPUT
+          echo "Product version: $VERSION"
+
+      - name: Generate SBOM
+        env:
+          PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mvn --quiet -Dmaven.test.skip.exec=true -Dxml.skip=true -Dcheckstyle.skip=true -f packaging/org.eclipse.sirius.parent/pom.xml -Psbom,headless,full,junit,swtbot-sequence,swtbot clean package
+
+      - name: Upload SBOM
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: sbom
+          path: packaging/org.eclipse.sirius.update/target/bom.json
+
+  store-sbom-data: # stores sbom and metadata in a predefined format for otterdog to pick up
+    needs: ["generate-sbom"]
+    uses: eclipse-csi/workflows/.github/workflows/store-sbom-data.yml@main
+    with:
+      projectName: "Sirius Desktop"
+      projectVersion: ${{ needs.generate-sbom.outputs.project-version }}
+      bomArtifact: "sbom"
+      bomFilename: "bom.json"
+      parentProject: "26a9bf06-68ca-439e-93c7-2e08fe1fe4bc"
