@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="sirius_2026-03" sequenceNumber="1779344375">
+<target name="sirius_2026-03" sequenceNumber="1785424953">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.apache.log4j" version="0.0.0"/>
@@ -63,21 +63,21 @@
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.gmf.runtime.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.gmf.runtime.thirdparty.feature.group" version="0.0.0"/>
-      <repository id="GMF-Runtime-1.16.7" location="https://download.eclipse.org/modeling/gmp/gmf-runtime/updates/releases/R202508120942"/>
+      <repository id="GMF-Runtime-1.16.7" location="https://download.eclipse.org/modeling/gmp/gmf-runtime/updates/releases/R202512020858/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.gef.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.gef.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.draw2d.sdk.feature.group" version="0.0.0"/>
-      <repository id="GEF-Classic" location="https://download.eclipse.org/tools/gef/classic/release/3.24.0"/>
+      <repository id="GEF-Classic" location="https://download.eclipse.org/tools/gef/classic/release/3.25.0"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.sirius.common.interpreter" version="0.0.0"/>
-      <repository id="Sirius-7.4.12" location="https://download.eclipse.org/sirius/updates/releases/7.4.12/2023-03/"/>
+      <repository id="Sirius-7.5.0" location="https://download.eclipse.org/sirius/updates/releases/7.5.0/2025-09/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.compare.feature.group" version="0.0.0"/>
-      <repository id="EMF-Compare" location="https://download.eclipse.org/modeling/emf/compare/updates/releases/3.3/R202505141345/"/>
+      <repository id="EMF-Compare" location="https://download.eclipse.org/modeling/emf/compare/updates/releases/3.3/R202508281322/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="com.google.guava" version="0.0.0"/>
@@ -99,7 +99,7 @@
       <unit id="org.eclipse.uml2.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.xtend.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.xtext.sdk.feature.group" version="0.0.0"/>
-      <repository id="Eclipse-2025-12" location="https://download.eclipse.org/releases/2025-12/"/>
+      <repository id="Eclipse-2026-03" location="https://download.eclipse.org/releases/2026-03/"/>
     </location>
   </locations>
 </target>

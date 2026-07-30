@@ -11,11 +11,11 @@ include "modules/gmf-runtime-1.16.tpd"
 
 with source, requirements
 
-location Sirius-7.4.12 "https://download.eclipse.org/sirius/updates/releases/7.4.12/2023-03/" {
-	org.eclipse.sirius.common.interpreter lazy
+location Sirius-7.5.0 "https://download.eclipse.org/sirius/updates/releases/7.5.0/2025-09/" {
+    org.eclipse.sirius.common.interpreter lazy
 }
 
-location EMF-Compare "https://download.eclipse.org/modeling/emf/compare/updates/releases/3.3/R202505141345/" {
+location EMF-Compare "https://download.eclipse.org/modeling/emf/compare/updates/releases/3.3/R202508281322/" {
     org.eclipse.emf.compare.feature.group lazy
 }
 

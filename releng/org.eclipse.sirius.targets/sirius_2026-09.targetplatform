@@ -1,4 +1,4 @@
-target "sirius_2026-03"
+target "sirius_2026-09"
 
 include "modules/orbit.tpd"
 include "modules/swtbot-4.3.tpd"
@@ -15,11 +15,11 @@ location Sirius-7.5.0 "https://download.eclipse.org/sirius/updates/releases/7.5.
     org.eclipse.sirius.common.interpreter lazy
 }
 
-location EMF-Compare "https://download.eclipse.org/modeling/emf/compare/updates/releases/3.3/R202508281322/" {
+location EMF-Compare "https://download.eclipse.org/modeling/emf/compare/updates/releases/3.3/R202605071334/" {
     org.eclipse.emf.compare.feature.group lazy
 }
 
-location Eclipse-2026-03 "https://download.eclipse.org/releases/2026-03/" {
+location Eclipse-2026-09 "https://download.eclipse.org/releases/2026-09/" {
 	com.google.guava lazy
 	org.eclipse.emf.common.feature.group lazy
 	org.eclipse.emf.ecore.feature.group lazy
