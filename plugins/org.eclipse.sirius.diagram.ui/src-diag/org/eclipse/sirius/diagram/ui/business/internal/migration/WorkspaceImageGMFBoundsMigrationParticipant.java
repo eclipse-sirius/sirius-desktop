@@ -35,7 +35,6 @@ import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription;
-import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.business.api.query.DDiagramGraphicalQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.query.WorkspaceImageQuery;
@@ -100,7 +99,7 @@ public class WorkspaceImageGMFBoundsMigrationParticipant extends AbstractReprese
                 }
             }
             if (migrationOccurred) {
-                DiagramPlugin.getDefault().logInfo(sb.toString());
+                logMigrationInfo(sb.toString());
                 migrationOccurred = false;
             }
         }

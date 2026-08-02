@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.osgi.framework.Version;
 import org.xml.sax.Attributes;
 
@@ -42,6 +43,7 @@ import com.google.common.collect.Lists;
  * @author fbarbin
  */
 public abstract class AbstractMigrationParticipant implements IMigrationParticipant {
+
     /**
      * Version number return when the representations file has never been loaded since the rewrite of migration
      * framework.
@@ -52,6 +54,8 @@ public abstract class AbstractMigrationParticipant implements IMigrationParticip
      * Version 6.5.0 of Sirius.
      */
     public static final Version VERSION_VP_6_5_0 = Version.parseVersion("6.5.0"); //$NON-NLS-1$
+
+    private static final String DISABLE_LOG_MIGRATION_INFO = "org.eclipse.sirius.migration.disableLogMigrationInfo"; //$NON-NLS-1$
 
     @Override
     public EStructuralFeature getAttribute(EClass eClass, String name, String loadedVersion) {
@@ -157,6 +161,18 @@ public abstract class AbstractMigrationParticipant implements IMigrationParticip
     @Override
     public void postXMLEndElement(Object doneObject, Attributes xmlAttributes, String uri, String localName, String qName, String loadedVersion) {
         // nothing to do by default.
+    }
+
+    /**
+     * Log a migration message (unless disabled).
+     * 
+     * @param message
+     *            the migration message.
+     */
+    protected void logMigrationInfo(String message) {
+        if (!Boolean.getBoolean(DISABLE_LOG_MIGRATION_INFO)) {
+            SiriusPlugin.getDefault().getLog().info(message);
+        }
     }
 
 }
