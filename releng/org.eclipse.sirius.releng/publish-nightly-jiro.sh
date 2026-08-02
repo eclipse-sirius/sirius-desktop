@@ -36,7 +36,6 @@ set -e
 
 # The full version (should be taken as an argument)
 export VERSION="7.6.1"
-export VERSION="$(mvn --quiet -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive org.codehaus.mojo:exec-maven-plugin:exec 2> /dev/null | sed -e 's/-SNAPSHOT//')"
 
 # The type of build being published
 export BUILD_TYPE="nightly"
