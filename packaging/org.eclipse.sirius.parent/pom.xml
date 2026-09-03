@@ -41,7 +41,7 @@
     <tycho-version>5.0.4</tycho-version>
     <tycho-extras-version>5.0.4</tycho-extras-version>
     <platform-version-name>2025-09</platform-version-name>
-    <cyclonedx-version>2.9.1</cyclonedx-version>
+    <cyclonedx-version>2.9.3</cyclonedx-version>
     <cyclonedx-schema-version>1.6</cyclonedx-schema-version>
     <tycho.sbom.url>https://download.eclipse.org/sirius/updates/releases/</tycho.sbom.url>
     <!-- This property is used to customize the maven build folder. Used for parallel builds -->
