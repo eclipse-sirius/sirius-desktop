@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2024 Obeo
+ * Copyright (c) 2019, 2026 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -23,7 +23,7 @@ import java.util.Optional;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
@@ -99,9 +99,9 @@ public abstract class ExportToElkGraphHandler extends AbstractHandler {
 
         Path exportedPath;
 
-        IFile targetFolder;
+        IContainer targetFolder;
 
-        public SaveToFileWorkspaceModifyOperation(ElkNode graph, String diagramName, IFile targetFolder) {
+        public SaveToFileWorkspaceModifyOperation(ElkNode graph, String diagramName, IContainer targetFolder) {
             super(ResourcesPlugin.getWorkspace().getRuleFactory().refreshRule(targetFolder));
             this.graph = graph;
             this.diagramName = diagramName;
@@ -111,7 +111,9 @@ public abstract class ExportToElkGraphHandler extends AbstractHandler {
         @Override
         protected void execute(IProgressMonitor monitor) throws CoreException, InvocationTargetException, InterruptedException {
             exportedPath = saveToFile(graph, diagramName);
-            targetFolder.refreshLocal(IResource.DEPTH_ONE, monitor);
+            if (targetFolder != null) {
+                targetFolder.refreshLocal(IResource.DEPTH_INFINITE, monitor);
+            }
         }
 
         /**
@@ -177,7 +179,7 @@ public abstract class ExportToElkGraphHandler extends AbstractHandler {
 
         // Store the ELK graph result in a file
         Path result = null;
-        Optional<IFile> optionalTargetFolder = getTracer().getTargetFolderIfInWorkspace();
+        Optional<IContainer> optionalTargetFolder = getTracer().getTargetFolderIfInWorkspace();
         if (optionalTargetFolder.isEmpty()) {
             result = saveToFile(layoutMapping.getLayoutGraph(), getDiagramName(diagramEditPart));
         } else {
