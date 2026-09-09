@@ -20,7 +20,7 @@ import java.text.MessageFormat;
 import java.util.Collections;
 import java.util.Optional;
 
-import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
@@ -184,10 +184,11 @@ public class ElkDiagramLayoutTracer {
      * 
      * @return the target folder if it is contained in the workspace, empty optional otherwise.
      */
-    public Optional<IFile> getTargetFolderIfInWorkspace() {
+    public Optional<IContainer> getTargetFolderIfInWorkspace() {
         try {
-            String abosluteTargetFolderPath = VariablesPlugin.getDefault().getStringVariableManager().performStringSubstitution(targetFolderPath);
-            return Optional.ofNullable(workspaceRoot.getFileForLocation(org.eclipse.core.runtime.Path.fromOSString(abosluteTargetFolderPath)));
+            String resolvedFolder = VariablesPlugin.getDefault().getStringVariableManager().performStringSubstitution(targetFolderPath);
+            var targetPath = org.eclipse.core.runtime.Path.fromOSString(resolvedFolder);
+            return Optional.ofNullable(workspaceRoot.getContainerForLocation(targetPath));
         } catch (CoreException e) {
             // Default location will be used (nothing is displayed, it will be done later) in getTargetFile method.
             return Optional.empty();
