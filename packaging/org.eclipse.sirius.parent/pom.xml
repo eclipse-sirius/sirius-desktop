@@ -304,6 +304,26 @@
 
   <profiles>
     <profile>
+      <id>canary-target-platform</id>
+      <activation>
+        <property>
+          <name>platform-version-name</name>
+          <value>canary</value>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.eclipse.tycho</groupId>
+            <artifactId>target-platform-configuration</artifactId>
+            <configuration>
+              <executionEnvironment>JavaSE-25</executionEnvironment>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
       <id>headless</id>
       <activation>
         <activeByDefault>true</activeByDefault>
