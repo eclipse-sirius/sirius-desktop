@@ -132,6 +132,9 @@ public abstract class SiriusTestCase extends TestCase {
     /** Initialization error message. */
     public static final String INIT_ERROR_MSG = "An error occurs during tests initialization";
 
+    /** Default grid spacing. */
+    public static final int DEFAULT_GRID_SPACING = 20;
+    
     /** name of the project created in the test workspace. */
     protected static final String TEMPORARY_PROJECT_NAME = "DesignerTestProject";
 
@@ -140,9 +143,6 @@ public abstract class SiriusTestCase extends TestCase {
             .createPlatformResourceURI(File.separator + SiriusTestCase.TEMPORARY_PROJECT_NAME + File.separator + ModelingProject.DEFAULT_REPRESENTATIONS_FILE_NAME, true);
 
     private static final String DOT = ".";
-
-    /** Default grid spacing. */
-    public static final int DEFAULT_GRID_SPACING = 20;
 
     /** The local session. */
     protected Session session;
