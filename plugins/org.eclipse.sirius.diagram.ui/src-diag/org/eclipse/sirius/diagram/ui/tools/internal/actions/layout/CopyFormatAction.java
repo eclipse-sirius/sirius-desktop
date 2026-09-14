@@ -24,11 +24,13 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.commands.Command;
+import org.eclipse.gef.commands.CommandStack;
 import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramCommandStack;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -250,6 +252,22 @@ public class CopyFormatAction extends AbstractCopyPasteFormatAction {
             }
             return super.doUndo(monitor, info);
         }
+    }
+
+
+    /**
+     * gives access to the diagram command stack.
+     * 
+     * @return the diagram command stack
+     */
+    protected DiagramCommandStack getDiagramCommandStack() {
+        IWorkbenchPart workbenchPart = getWorkbenchPart();
+        if (workbenchPart == null) {
+            workbenchPart = getWorkbenchPage().getActivePart();
+        }
+        Object stack = workbenchPart.getAdapter(CommandStack.class);
+        return (stack instanceof DiagramCommandStack) ? (DiagramCommandStack) stack
+            : null;
     }
 
 }
