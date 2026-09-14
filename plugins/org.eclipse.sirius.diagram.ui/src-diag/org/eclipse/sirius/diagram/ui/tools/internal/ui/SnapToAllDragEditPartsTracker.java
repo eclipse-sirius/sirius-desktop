@@ -16,17 +16,14 @@ import java.util.Date;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.draw2d.FigureCanvas;
-import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
-import org.eclipse.draw2d.geometry.PrecisionRectangle;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.SharedCursors;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gef.tools.AbstractTool;
-import org.eclipse.gmf.runtime.diagram.ui.internal.ruler.SnapToHelperUtil;
 import org.eclipse.gmf.runtime.diagram.ui.tools.DragEditPartsTrackerEx;
 import org.eclipse.sirius.ext.gmf.runtime.diagram.ui.tools.MoveInDiagramDragTracker;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
@@ -116,8 +113,7 @@ public class SnapToAllDragEditPartsTracker extends DragEditPartsTrackerEx implem
     }
 
     /**
-     * Overridden to update the {@link ChangeBoundsRequest} with information about snapToAll mode and to adapt all code
-     * usually called in all "super.snapPoint()" for the new mode.
+     * Overridden to update the {@link ChangeBoundsRequest} with information about snapToAll mode.
      * 
      * @see org.eclipse.sirius.diagram.ui.tools.internal.ui.SnapToAllDragEditPartsTracker#snapPoint(org.eclipse.gef.requests.ChangeBoundsRequest)
      */
@@ -128,41 +124,7 @@ public class SnapToAllDragEditPartsTracker extends DragEditPartsTrackerEx implem
         } else {
             getTargetRequest().getExtendedData().put(SnapToAllDragEditPartsTracker.SNAP_TO_ALL_SHAPE_KEY, Boolean.FALSE);
         }
-        if (!moveWithArrowKeysSiriusMode) {
-            super.snapPoint(request);
-        } else {
-            // Copied from
-            // org.eclipse.gmf.runtime.diagram.ui.tools.DragEditPartsTrackerEx.snapPoint(ChangeBoundsRequest)
-            // Adapted to use precise coordinates for move delta (in case of zoom of 50% for example).
-            Point moveDelta = request.getMoveDelta();
-            if (getState() == STATE_ACCESSIBLE_DRAG_IN_PROGRESS) {
-                int restrictedDirection = 0;
-
-                if (moveDelta.preciseX() > 0) {
-                    restrictedDirection = restrictedDirection | PositionConstants.EAST;
-                } else if (moveDelta.preciseX() < 0) {
-                    restrictedDirection = restrictedDirection | PositionConstants.WEST;
-                }
-
-                if (moveDelta.preciseY() > 0) {
-                    restrictedDirection = restrictedDirection | PositionConstants.SOUTH;
-                } else if (moveDelta.preciseY() < 0) {
-                    restrictedDirection = restrictedDirection | PositionConstants.NORTH;
-                }
-
-                request.getExtendedData().put(SnapToHelperUtil.RESTRICTED_DIRECTIONS, restrictedDirection);
-            }
-            // Copied from org.eclipse.gef.tools.DragEditPartsTracker.snapPoint(ChangeBoundsRequest)
-            if (getSnapToHelper() != null && request.isSnapToEnabled()) {
-                PrecisionRectangle baseRect = getSourceBounds().getPreciseCopy();
-                PrecisionRectangle jointRect = getOperationSetBounds().getPreciseCopy();
-                PrecisionPoint preciseDelta = new PrecisionPoint(moveDelta);
-                baseRect.translate(preciseDelta);
-                jointRect.translate(preciseDelta);
-                getSnapToHelper().snapPoint(request, PositionConstants.HORIZONTAL | PositionConstants.VERTICAL, new PrecisionRectangle[] { baseRect, jointRect }, preciseDelta);
-                request.setMoveDelta(preciseDelta);
-            }
-        }
+        super.snapPoint(request);
     }
 
     /**
