@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="project" version="15.4.0.202401051836">
+  <ownedViewpoints name="MyViewpoint">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DTestBugLabelEdge" domainClass="ecore::EPackage" enablePopupBars="true">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <defaultLayer name="Default">
+        <edgeMappings name="ReferenceEdge" sourceMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DTestBugLabelEdge']/@defaultLayer/@containerMappings[name='Package']/@subNodeMappings[name='Class']/@borderedNodeMappings[name='Reference']" targetMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='DTestBugLabelEdge']/@defaultLayer/@containerMappings[name='Package']/@subNodeMappings[name='Class']/@borderedNodeMappings[name='TargetClass']" targetFinderExpression="feature:eReferenceType">
+          <style targetArrow="NoDecoration" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <beginLabelStyleDescription labelSize="12" showIcon="false" labelExpression=".">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </beginLabelStyleDescription>
+            <centerLabelStyleDescription labelSize="12" labelExpression="feature:name">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+            <endLabelStyleDescription labelSize="12" showIcon="false" labelExpression=".">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </endLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="Package" semanticCandidatesExpression="feature:eSubpackages" domainClass="ecore::EPackage">
+          <subNodeMappings name="Class" semanticCandidatesExpression="feature:eClassifiers" domainClass="ecore::EClass">
+            <borderedNodeMappings name="Reference" semanticCandidatesExpression="aql:self.eReferences" domainClass="ecore::EReference">
+              <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" hideLabelByDefault="true" resizeKind="NSEW" width="1" height="1">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+              </style>
+            </borderedNodeMappings>
+            <borderedNodeMappings name="TargetClass" semanticCandidatesExpression="aql:self" domainClass="ecore::EClass">
+              <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" hideLabelByDefault="true" resizeKind="NSEW" width="1" height="1">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+              </style>
+            </borderedNodeMappings>
+            <style xsi:type="style:SquareDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>
