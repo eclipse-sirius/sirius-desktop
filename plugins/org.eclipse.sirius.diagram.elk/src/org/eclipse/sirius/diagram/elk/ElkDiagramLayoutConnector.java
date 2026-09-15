@@ -804,6 +804,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
      * Reset origin for the content of <code>parentNode<code> to {20, 20}:
      * <UL>
      * <LI>The origin of the bounding box of all children of the <code>parentNode</code> are set to {20, 20},</LI>
+     * <LI>this bounding box is also expanded with the labels of these children,</LI>
      * <LI>this bounding box is also expanded with the ports of these children,</LI>
      * <LI>this bounding box is also expanded with the edges of parentNode.</LI>
      * </UL>
@@ -819,12 +820,38 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
      *            The node to consider
      */
     public static void resetOrigin(ElkNode parentNode) {
+        KVector originCoordinates = getOriginCoordinates(parentNode);
+
+        ElkUtil.translate(parentNode, ResetOriginChangeModelOperation.MARGIN - originCoordinates.x, ResetOriginChangeModelOperation.MARGIN - originCoordinates.y);
+    }
+
+    /**
+     * The origin coordinates of a node are determined by combining the x-coordinate of its leftmost element and the
+     * y-coordinate of its topmost element. This takes into account:
+     * <UL>
+     * <LI>its chilren,</LI>
+     * <LI>the labels of these children,</LI>
+     * <LI>the ports of these children,</LI>
+     * <LI>the edges of parentNode.</LI>
+     * </UL>
+     * 
+     * @param parentNode
+     *            The node to consider
+     * @return the origin coordinates
+     */
+    private static KVector getOriginCoordinates(ElkNode parentNode) {
         double minx = Integer.MAX_VALUE;
         double miny = Integer.MAX_VALUE;
         // Handle children of this parent node
         for (ElkNode child : parentNode.getChildren()) {
             minx = Math.min(minx, child.getX());
             miny = Math.min(miny, child.getY());
+            // Handle labels of this child
+            for (ElkLabel label : child.getLabels()) {
+                KVector absoluteLabelLocation = ElkUtil.absolutePosition(label);
+                minx = Math.min(minx, absoluteLabelLocation.x);
+                miny = Math.min(miny, absoluteLabelLocation.y);
+            }
             // Handle ports of this child
             for (ElkPort port : child.getPorts()) {
                 KVector absolutePortLocation = ElkUtil.absolutePosition(port);
@@ -857,8 +884,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                 miny = Math.min(miny, absoluteLabelLocation.y);
             }
         }
-
-        ElkUtil.translate(parentNode, ResetOriginChangeModelOperation.MARGIN - minx, ResetOriginChangeModelOperation.MARGIN - miny);
+        return new KVector(minx, miny);
     }
 
     /**
@@ -871,15 +897,10 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
      */
     protected static void addOffset(final ElkNode parentNode, final KVector offset) {
         // correct the offset with the minimal computed coordinates
-        double minx = Integer.MAX_VALUE;
-        double miny = Integer.MAX_VALUE;
-        for (ElkNode child : parentNode.getChildren()) {
-            minx = Math.min(minx, child.getX());
-            miny = Math.min(miny, child.getY());
-        }
+        KVector originCoordinates = getOriginCoordinates(parentNode);
 
         // add the corrected offset
-        offset.add(-minx, -miny);
+        offset.add(-originCoordinates.x, -originCoordinates.y);
         ElkUtil.translate(parentNode, offset.x, offset.y);
     }
 
