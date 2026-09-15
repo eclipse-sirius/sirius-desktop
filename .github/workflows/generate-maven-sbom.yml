@@ -17,8 +17,9 @@ jobs:
   generate-sbom:
     name: Generate SBOM
     runs-on: ubuntu-latest
-    outputs:
-      project-version: ${{ steps.version.outputs.PROJECT_VERSION }}
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -43,20 +44,11 @@ jobs:
         env:
           PASSWORD: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          mvn --quiet -Dmaven.test.skip.exec=true -Dxml.skip=true -Dcheckstyle.skip=true -f packaging/org.eclipse.sirius.parent/pom.xml -Psbom,headless,full,junit,swtbot-sequence,swtbot clean package
+          mvn --quiet -Dmaven.test.skip.exec=true -Dxml.skip=true -Dcheckstyle.skip=true -Dplatform-version-name=2026-09 -f packaging/org.eclipse.sirius.parent/pom.xml -Psbom,headless,full,junit,swtbot-sequence,swtbot clean package
 
       - name: Upload SBOM
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: eclipse-csi/workflows/upload-sbom@3d34535001cf5d48ba1e763e9b2a6fa79013d4d5 # main
         with:
-          name: sbom
-          path: packaging/org.eclipse.sirius.update/target/bom.json
-
-  store-sbom-data: # stores sbom and metadata in a predefined format for otterdog to pick up
-    needs: ["generate-sbom"]
-    uses: eclipse-csi/workflows/.github/workflows/store-sbom-data.yml@main
-    with:
-      projectName: "Sirius Desktop"
-      projectVersion: ${{ needs.generate-sbom.outputs.project-version }}
-      bomArtifact: "sbom"
-      bomFilename: "bom.json"
-      parentProject: "26a9bf06-68ca-439e-93c7-2e08fe1fe4bc"
+          sbom-file: packaging/org.eclipse.sirius.update/target/bom.json
+          product-name: "Sirius Desktop"
+          product-version: ${{ steps.version.outputs.PROJECT_VERSION }}
