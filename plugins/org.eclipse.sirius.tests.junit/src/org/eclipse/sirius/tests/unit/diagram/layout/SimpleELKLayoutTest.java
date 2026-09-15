@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2025 Obeo.
+ * Copyright (c) 2020, 2026 Obeo.
  * All rights reserved.
  *
  * Contributors:
@@ -717,6 +717,25 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      */
     public void testArrangeAllResult() {
         testArrangeAllResult_ForPackageArrangeSelection("diagramWithContainer");
+    }
+
+    /**
+     * Makes sure that the result of an arrange all respects that the top left corner of the bounding box is {20, 20},
+     * even with a label outside of a node.
+     */
+    public void testArrangeAllResultWithALabelOutside() {
+        openDiagram("simpleDiagramWithLabelOutside");
+
+        // Launch an arrange all
+        arrangeAll((DiagramEditor) editorPart);
+
+        // Assert that the bounding box coordinates of all elements are {20, 20}
+        // Compute primary edit parts (first level edit parts of the container)
+        List<?> primaryEditParts = getPrimaryEditParts(editorPart.getDiagramEditPart());
+        List<IGraphicalEditPart> primaryGraphicalEditParts = Lists.newArrayList(Iterables.filter(primaryEditParts, IGraphicalEditPart.class));
+        Rectangle boundingbox = DiagramImageUtils.calculateImageRectangle(primaryGraphicalEditParts, 0, new Dimension(0, 0));
+        assertEquals("Wrong x coordinate for the bounding box of all diagram elements.", ResetOriginChangeModelOperation.MARGIN, boundingbox.x());
+        assertEquals("Wrong y coordinate for the bounding box of all diagram elements.", ResetOriginChangeModelOperation.MARGIN, boundingbox.y());
     }
 
     /**
@@ -2303,7 +2322,7 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         IGraphicalEditPart targetNodeEditPart = getEditPart(targetNodeName, AbstractDiagramContainerEditPart.class);
 
         Optional<DEdgeEditPart> edgeEditPart = sourceNodeEditPart.getSourceConnections().stream().filter(DEdgeEditPart.class::isInstance).map(DEdgeEditPart.class::cast)
-                .filter(deep -> targetNodeEditPart.equals(((DEdgeEditPart) deep).getTarget())).findFirst();
+                .filter(deep -> targetNodeEditPart.equals(deep.getTarget())).findFirst();
         assertTrue("The diagram should have an edge between \"" + sourceNodeName + "\" and \"" + targetNodeName + "\".", edgeEditPart.isPresent());
         Connection connectionFigure = edgeEditPart.get().getConnectionFigure();
         if (mustBeHorizontal) {
