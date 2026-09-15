@@ -181,4 +181,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="MyClassA4"/>
   </eSubpackages>
+  <eSubpackages name="ClassWithLongName">
+    <eClassifiers xsi:type="ecore:EClass" name="AClassWithAVeryVeryVeryVeryLongName"/>
+  </eSubpackages>
 </ecore:EPackage>
