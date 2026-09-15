@@ -1443,19 +1443,28 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                         if (!forcedValue) {
                             DDiagramElement dde = (DDiagramElement) siriusObject;
                             Style style = dde.getStyle();
+                            boolean horizontalAlignmentIsCentered = true;
                             if (style instanceof LabelStyle) {
                                 LabelAlignment labelAlignment = ((LabelStyle) style).getLabelAlignment();
                                 if (labelAlignment.equals(LabelAlignment.LEFT)) {
                                     horizontalLabelPlacement = NodeLabelPlacement.H_LEFT;
+                                    horizontalAlignmentIsCentered = false;
                                 } else if (labelAlignment.equals(LabelAlignment.RIGHT)) {
                                     horizontalLabelPlacement = NodeLabelPlacement.H_RIGHT;
+                                    horizontalAlignmentIsCentered = false;
                                 }
                             }
                             if (style instanceof NodeStyle) {
                                 if (((NodeStyle) style).getLabelPosition().equals(LabelPosition.BORDER_LITERAL)) {
                                     insideLabelPlacement = NodeLabelPlacement.OUTSIDE;
+                                    if (horizontalAlignmentIsCentered) {
+                                        verticalNodeLabelPlacement = NodeLabelPlacement.V_BOTTOM;
+                                    } else {
+                                        verticalNodeLabelPlacement = NodeLabelPlacement.V_CENTER;
+                                    }
+                                } else {
+                                    verticalNodeLabelPlacement = NodeLabelPlacement.V_CENTER;
                                 }
-                                verticalNodeLabelPlacement = NodeLabelPlacement.V_CENTER;
                             }
                         }
                     }
