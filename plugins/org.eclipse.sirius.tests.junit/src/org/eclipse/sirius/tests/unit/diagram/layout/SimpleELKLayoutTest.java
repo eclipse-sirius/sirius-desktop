@@ -2321,8 +2321,13 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         IGraphicalEditPart sourceNodeEditPart = getEditPart(sourceNodeName, AbstractDiagramContainerEditPart.class);
         IGraphicalEditPart targetNodeEditPart = getEditPart(targetNodeName, AbstractDiagramContainerEditPart.class);
 
-        Optional<DEdgeEditPart> edgeEditPart = sourceNodeEditPart.getSourceConnections().stream().filter(DEdgeEditPart.class::isInstance).map(DEdgeEditPart.class::cast)
-                .filter(deep -> targetNodeEditPart.equals(deep.getTarget())).findFirst();
+        List<? extends ConnectionEditPart> connections = sourceNodeEditPart.getSourceConnections();
+        Optional<DEdgeEditPart> edgeEditPart = connections.stream()
+            .filter(DEdgeEditPart.class::isInstance)
+            .map(DEdgeEditPart.class::cast)
+            .filter(edge -> targetNodeEditPart.equals(edge.getTarget()))
+            .findFirst();
+
         assertTrue("The diagram should have an edge between \"" + sourceNodeName + "\" and \"" + targetNodeName + "\".", edgeEditPart.isPresent());
         Connection connectionFigure = edgeEditPart.get().getConnectionFigure();
         if (mustBeHorizontal) {
