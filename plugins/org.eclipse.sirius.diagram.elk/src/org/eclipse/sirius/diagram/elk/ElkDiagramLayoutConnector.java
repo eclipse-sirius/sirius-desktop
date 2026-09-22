@@ -896,11 +896,18 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
      *            the offset to add
      */
     protected static void addOffset(final ElkNode parentNode, final KVector offset) {
-        // correct the offset with the minimal computed coordinates
-        KVector originCoordinates = getOriginCoordinates(parentNode);
+        // Correct the offset with the minimal computed coordinates. The getOriginCoordinates method is not used here
+        // because, in the case of a single selection, the selected element must not be moved. Only its contents, and
+        // potentially its size, are changed.
+        double minx = Integer.MAX_VALUE;
+        double miny = Integer.MAX_VALUE;
+        for (ElkNode child : parentNode.getChildren()) {
+            minx = Math.min(minx, child.getX());
+            miny = Math.min(miny, child.getY());
+        }
 
         // add the corrected offset
-        offset.add(-originCoordinates.x, -originCoordinates.y);
+        offset.add(-minx, -miny);
         ElkUtil.translate(parentNode, offset.x, offset.y);
     }
 
