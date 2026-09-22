@@ -187,6 +187,8 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
 
     private boolean initialSnapToGridValue;
 
+    private boolean initialSnapToShapeValue;
+
     private double initialGridSpacingValue;
 
     private int initialRulerUnitValue;
@@ -1996,6 +1998,7 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         diagram = (DDiagram) getRepresentationsByName(diagramName).toArray()[0];
         editorPart = (IDiagramWorkbenchPart) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
         TestsUtil.synchronizationWithUIThread();
+        changeSnapToPreferences(((DiagramGraphicalViewer) ((DiagramEditor) editorPart).getDiagramGraphicalViewer()).getWorkspaceViewerPreferenceStore());
         checkStringValueStyle();
     }
 
@@ -2076,15 +2079,18 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
 
     private void restoreInitilaPreferences(IPreferenceStore workspaceViewerPreferenceStore) {
         workspaceViewerPreferenceStore.setValue(WorkspaceViewerProperties.SNAPTOGRID, initialSnapToGridValue);
+        workspaceViewerPreferenceStore.setValue(WorkspaceViewerProperties.SNAPTOGEOMETRY, initialSnapToShapeValue);
         workspaceViewerPreferenceStore.setValue(WorkspaceViewerProperties.GRIDSPACING, initialGridSpacingValue);
         workspaceViewerPreferenceStore.setValue(WorkspaceViewerProperties.RULERUNIT, initialRulerUnitValue);
     }
 
     private void changeSnapToPreferences(IPreferenceStore workspaceViewerPreferenceStore) {
         initialSnapToGridValue = workspaceViewerPreferenceStore.getBoolean(WorkspaceViewerProperties.SNAPTOGRID);
+        initialSnapToShapeValue = workspaceViewerPreferenceStore.getBoolean(WorkspaceViewerProperties.SNAPTOGEOMETRY);
         initialGridSpacingValue = workspaceViewerPreferenceStore.getDouble(WorkspaceViewerProperties.GRIDSPACING);
         initialRulerUnitValue = workspaceViewerPreferenceStore.getInt(WorkspaceViewerProperties.RULERUNIT);
         workspaceViewerPreferenceStore.setValue(WorkspaceViewerProperties.SNAPTOGRID, false);
+        workspaceViewerPreferenceStore.setValue(WorkspaceViewerProperties.SNAPTOGEOMETRY, false);
         workspaceViewerPreferenceStore.setValue(WorkspaceViewerProperties.GRIDSPACING, 100.0);
         workspaceViewerPreferenceStore.setValue(WorkspaceViewerProperties.RULERUNIT, RulerProvider.UNIT_PIXELS);
     }
