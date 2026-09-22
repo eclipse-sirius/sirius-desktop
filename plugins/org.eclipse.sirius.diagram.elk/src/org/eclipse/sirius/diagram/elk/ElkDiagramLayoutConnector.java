@@ -849,8 +849,13 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             // Handle labels of this child
             for (ElkLabel label : child.getLabels()) {
                 KVector absoluteLabelLocation = ElkUtil.absolutePosition(label);
-                minx = Math.min(minx, absoluteLabelLocation.x);
-                miny = Math.min(miny, absoluteLabelLocation.y);
+                // Rounding is used here because a centered outside label with an odd width can have a negative ELK
+                // x-coordinate ending in ".5". If that label is the leftmost element, this can shift the origin by one
+                // pixel, resulting in {21, 20} instead of {20, 20}, for example.
+                int roundX = Math.toIntExact(Math.round(absoluteLabelLocation.x));
+                int roundY = Math.toIntExact(Math.round(absoluteLabelLocation.y));
+                minx = Math.min(minx, roundX);
+                miny = Math.min(miny, roundY);
             }
             // Handle ports of this child
             for (ElkPort port : child.getPorts()) {
@@ -860,8 +865,11 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                 // Handle labels of this port
                 for (ElkLabel label : port.getLabels()) {
                     KVector absoluteLabelLocation = ElkUtil.absolutePosition(label);
-                    minx = Math.min(minx, absoluteLabelLocation.x);
-                    miny = Math.min(miny, absoluteLabelLocation.y);
+                    // Same rationale as above for the rounding.
+                    int roundX = Math.toIntExact(Math.round(absoluteLabelLocation.x));
+                    int roundY = Math.toIntExact(Math.round(absoluteLabelLocation.y));
+                    minx = Math.min(minx, roundX);
+                    miny = Math.min(miny, roundY);
                 }
             }
         }
