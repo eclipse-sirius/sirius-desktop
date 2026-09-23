@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2023 THALES GLOBAL SERVICES.
+ * Copyright (c) 2023, 2026 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -54,6 +54,8 @@ import org.eclipse.swt.widgets.Display;
  * @author Séraphin Costa
  */
 public class PasteImageAction extends Action implements IDisposableAction {
+
+    private static final String FETCH_FROM_CLIPBOARD = System.getProperty("org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteImageAction.fetchImageFromClipboard", "true"); //$NON-NLS-1$ //$NON-NLS-2$
 
     // There are no clipboard listener in SWT, so we need to use the AWT clipboard listener.
     private java.awt.datatransfer.Clipboard awtClipboard;
@@ -183,11 +185,13 @@ public class PasteImageAction extends Action implements IDisposableAction {
     }
 
     private ImageData fetchImageFromClipboard() {
-        ImageTransfer imgTransfer = ImageTransfer.getInstance();
-        Clipboard clipboard = new Clipboard(Display.getCurrent());
-        ImageData imgData = (ImageData) clipboard.getContents(imgTransfer);
-        clipboard.dispose();
-
+        ImageData imgData = null;
+        if (!Boolean.parseBoolean(FETCH_FROM_CLIPBOARD)) {
+            ImageTransfer imgTransfer = ImageTransfer.getInstance();
+            Clipboard clipboard = new Clipboard(Display.getCurrent());
+            imgData = (ImageData) clipboard.getContents(imgTransfer);
+            clipboard.dispose();
+        }
         return imgData;
     }
 
