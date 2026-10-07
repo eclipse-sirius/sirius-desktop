@@ -6,7 +6,11 @@ This document contains the release notes for recent major releases of Sirius. Se
 
 h2(#sirius7.4.16). Changes in Sirius Desktop 7.4.16
 
-Nothing.
+h3. Developer-Visible Changes
+
+h4. Migrations
+
+* <span class="label label-success">Added</span> A migration participant has been added to update the model version. Installing the experimental ELK feature could previously result in an .aird file that could not be opened by users who did not have this feature installed, because it adds a specific migration participant. The corresponding version, stored in the version attribute of viewpoint:DAnalysis in the .aird file, is _15.4.16.202610070916_.
 
 h2(#sirius7.4.15). Changes in Sirius Desktop 7.4.15
 
