@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2025 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2026 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -174,6 +174,7 @@ import org.eclipse.sirius.tests.unit.diagram.migration.JumpLinkNewTypeMigrationT
 import org.eclipse.sirius.tests.unit.diagram.migration.LabelOnBorderMigrationTests6_3_0;
 import org.eclipse.sirius.tests.unit.diagram.migration.LabelOnBorderMigrationTestsBefore6_3_0;
 import org.eclipse.sirius.tests.unit.diagram.migration.NodeStyleMigrationParticipantTest;
+import org.eclipse.sirius.tests.unit.diagram.migration.PostExperimentalFeatureMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.WorkspaceImageGMFBoundsMigrationParticipantTest;
 import org.eclipse.sirius.tests.unit.diagram.modelaccessor.ModelAccessorTest;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.design.EntitiesDiagramBackgroundTests;
@@ -579,6 +580,7 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(EdgesZOrderMigrationParticipantTest.class);
         suite.addTestSuite(WorkspaceImageGMFBoundsMigrationParticipantTest.class);
         suite.addTestSuite(NodeStyleMigrationParticipantTest.class);
+        suite.addTestSuite(PostExperimentalFeatureMigrationTest.class);
 
         // Edge on edge tests
         suite.addTestSuite(EdgeOnEdgeHideRevealTest.class);
