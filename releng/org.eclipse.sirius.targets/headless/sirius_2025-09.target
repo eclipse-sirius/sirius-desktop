@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="sirius_headless_2025-09" sequenceNumber="1761211994">
+<target name="sirius_headless_2025-09" sequenceNumber="1793121073">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.apache.log4j" version="0.0.0"/>
@@ -36,19 +36,19 @@
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.gmf.runtime.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.gmf.runtime.thirdparty.feature.group" version="0.0.0"/>
-      <repository id="GMF-Runtime-1.16.7" location="https://download.eclipse.org/modeling/gmp/gmf-runtime/updates/releases/R202508120942"/>
+      <repository id="GMF-Runtime-1.16.7" location="https://download.eclipse.org/modeling/gmp/gmf-runtime/updates/releases/R202512020858/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.gef.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.gef.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.draw2d.sdk.feature.group" version="0.0.0"/>
-      <repository id="GEF-Classic" location="https://download.eclipse.org/tools/gef/classic/release/3.24.0"/>
+      <repository id="GEF-Classic" location="https://download.eclipse.org/tools/gef/classic/release/3.25.0"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.acceleo.query.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.acceleo.query.source.feature.group" version="0.0.0"/>
       <unit id="org.antlr.antlr4-runtime" version="0.0.0"/>
-      <repository id="Acceleo_4.2_AQL_8.1" location="https://download.eclipse.org/acceleo/updates/releases/4.2/R202510230846/"/>
+      <repository id="Acceleo_4.2_AQL_8.1" location="https://download.eclipse.org/acceleo/updates/releases/4.2/R202603201315/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.equinox.core.feature.feature.group" version="0.0.0"/>
