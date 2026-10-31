@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2025 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -66,7 +66,7 @@ public class DEdgeEndLabelItemProvider extends AbstractDDiagramElementLabelItemP
      */
     private static boolean hasRelevantDEdgelabelItem(DEdge edge) {
         boolean isRelevant = false;
-        if (edge != null) {
+        if (edge != null && edge.getOwnedStyle() != null) {
             DEdgeQuery candidateEdgeQuery = new DEdgeQuery(edge);
             isRelevant = candidateEdgeQuery.getEndLabelStyle().some() && candidateEdgeQuery.hasNonEmptyEndNameDefinition();
         }
@@ -82,8 +82,8 @@ public class DEdgeEndLabelItemProvider extends AbstractDDiagramElementLabelItemP
      *         as children.
      */
     public static boolean hasRelevantLabelItem(DDiagramElement dDiagramElement) {
-        if (dDiagramElement instanceof DEdge) {
-            return DEdgeEndLabelItemProvider.hasRelevantDEdgelabelItem((DEdge) dDiagramElement);
+        if (dDiagramElement instanceof DEdge edge) {
+            return DEdgeEndLabelItemProvider.hasRelevantDEdgelabelItem(edge);
         }
         return false;
     }
