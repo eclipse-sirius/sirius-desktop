@@ -17,7 +17,6 @@ import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.business.api.helper.RepresentationHelper;
 import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant;
-import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
@@ -58,7 +57,7 @@ public class SetChangeIdMigrationParticipant extends AbstractRepresentationsFile
                 }
             }
             if (migrationOccured) {
-                DiagramPlugin.getDefault().logInfo(Messages.SetChangeIdMigrationParticipant_title);
+                logMigrationInfo(Messages.SetChangeIdMigrationParticipant_title);
                 migrationOccured = false;
             }
         }
