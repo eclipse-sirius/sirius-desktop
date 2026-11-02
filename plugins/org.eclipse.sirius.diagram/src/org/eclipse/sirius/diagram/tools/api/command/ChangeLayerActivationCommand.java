@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCom
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.common.tools.api.listener.Notification;
 import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
+import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.api.helper.decoration.DecorationHelper;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramQuery;
@@ -66,19 +67,28 @@ public final class ChangeLayerActivationCommand extends RecordingCommand {
      *            a {@link IProgressMonitor} to show progression of layer activation changes
      */
     public ChangeLayerActivationCommand(TransactionalEditingDomain domain, DDiagram dDiagram, Layer layer, IProgressMonitor monitor) {
-        super(domain, new DDiagramQuery(dDiagram).getAllActivatedLayers().contains(layer) ? Messages.ChangeLayerActivationCommand_hideLabel
-                : MessageFormat.format(Messages.ChangeLayerActivationCommand_showLabel, new IdentifiedElementQuery(layer).getLabel()));
+        super(domain, computeCommandLabel(dDiagram, layer));
         this.dDiagram = dDiagram;
         this.layer = layer;
         this.monitor = monitor;
     }
 
+    private static String computeCommandLabel(DDiagram dDiagram, Layer layer) {
+        if (new DDiagramQuery(dDiagram).getAllActivatedLayers().contains(layer)) {
+            return Messages.ChangeLayerActivationCommand_hideLabel;
+        } else {
+            String rawLayerLabel = new IdentifiedElementQuery(layer).getLabel();
+            String translatedLayerLabel = MessageTranslator.INSTANCE.getMessage(layer, rawLayerLabel);
+            return MessageFormat.format(Messages.ChangeLayerActivationCommand_showLabel, translatedLayerLabel);
+        }
+    }
+
     @Override
     protected void doExecute() {
         try {
-            // 553866 : testing editiingDoman of diagram to check if the command can be called
+            // 553866 : testing editingDomain of diagram to check if the command can be called
             TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(dDiagram);
-            result = new ArrayList<Layer>();
+            result = new ArrayList<>();
             if (editingDomain == null) {
                 return; // do nothing; getResult will return an empty collection
             }
@@ -135,7 +145,7 @@ public final class ChangeLayerActivationCommand extends RecordingCommand {
     }
 
     /**
-     * Return the list of layers activated or deactivated by the command Can be used to test if the command succeed.
+     * Return the list of layers activated or deactivated by the command. Can be used to test if the command succeeded.
      */
     @Override
     public Collection<?> getResult() {
