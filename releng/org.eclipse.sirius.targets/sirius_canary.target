@@ -29,6 +29,10 @@
       <unit id="org.hamcrest.library" version="0.0.0"/>
       <unit id="org.junit" version="0.0.0"/>
       <unit id="slf4j.api" version="0.0.0"/>
+	  <unit id="io.github.classgraph.classgraph" version="[5.0.0,6.0.0)"/>
+	  <unit id="io.github.classgraph.classgraph-base" version="[5.0.0,6.0.0)"/>
+	  <unit id="io.github.classgraph.classgraph-classpath" version="[5.0.0,6.0.0)"/>
+	  <unit id="io.github.classgraph.classgraph-vfs" version="[5.0.0,6.0.0)"/>
       <repository id="Orbit-latest-I" location="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/nightly"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
