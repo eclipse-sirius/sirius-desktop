@@ -31,7 +31,6 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.business.internal.migration.ActivatedFilterSortingMigrationParticipant;
-import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.business.api.query.DDiagramGraphicalQuery;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode3EditPart;
@@ -99,7 +98,7 @@ public class LabelOnBorderMigrationParticipant extends AbstractRepresentationsFi
                         }
                     });
             if (migrationOccured) {
-                DiagramPlugin.getDefault().logInfo(sb.toString());
+                logMigrationInfo(sb.toString());
                 migrationOccured = false;
             }
         }
