@@ -526,6 +526,7 @@ public class TabbarContributionFactory {
      */
     public IContributionItem createDistributeContribution() {
         TabbarDistributeMenuManager distributeMenu = new TabbarDistributeMenuManager();
+        distributeMenu.setVisible(true);
         return distributeMenu;
     }
 
