@@ -481,11 +481,34 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
         return result.toString();
     }
 
+    /**
+     * Paints the figure background before the SVG image is drawn.
+     *
+     * This keeps transparent areas of SVG files transparent while still showing the configured figure background color.
+     *
+     * @param graphics
+     *            Graphics
+     * @param area
+     *            Area to fill
+     */
+    protected void paintSVGBackground(Graphics graphics, Rectangle area) {
+        if (graphics != null && area != null && area.width > 0 && area.height > 0 && getBackgroundColor() != null) {
+            graphics.pushState();
+            try {
+                graphics.setBackgroundColor(getBackgroundColor());
+                graphics.fillRectangle(area);
+            } finally {
+                graphics.popState();
+            }
+        }
+    }
+
     @Override
     protected void paintFigure(Graphics graphics) {
         TransparentFigureGraphicsModifier modifier = new TransparentFigureGraphicsModifier(this, graphics);
         modifier.pushState();
         Rectangle svgArea = getClientArea();
+        paintSVGBackground(graphics, svgArea);
         if (CACHE_SCALED_IMAGES) {
             Rectangle scaledArea = new PrecisionRectangle(svgArea);
             scaledArea.performScale(graphics.getAbsoluteScale());
