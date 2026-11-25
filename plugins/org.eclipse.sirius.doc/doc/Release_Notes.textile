@@ -4,6 +4,12 @@ h1. Release Notes for Sirius Desktop
 
 This document contains the release notes for recent major releases of Sirius. See also "the release notes from previous versions":Release_Notes_Previous.html for details about older releases.
 
+h2(#sirius7.5.2). Changes in Sirius Desktop 7.5.2
+
+h3(#sirius7.5.2user). User-Visible Changes
+
+* <span class="label label-success">Added</span> Added system property @org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteImageAction.fetchImageFromClipboard@ (default: @true@). Set it to @false@ to disable clipboard image retrieval as a workaround for Linux freezes.
+
 h2(#sirius7.5.1). Changes in Sirius  Desktop 7.5.1
 
 h3. Developer-Visible Changes
