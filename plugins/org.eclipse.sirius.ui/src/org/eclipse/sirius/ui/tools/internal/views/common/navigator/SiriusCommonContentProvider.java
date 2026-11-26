@@ -1066,11 +1066,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
         }
 
         private boolean isSemanticChange(Resource resource) {
-            boolean result = false;
-            if (resource != null) {
-                allSemanticResources.contains(resource);
-            }
-            return result;
+            return resource != null && allSemanticResources.contains(resource);
         }
 
     }
