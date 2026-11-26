@@ -33,7 +33,6 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramQuery;
-import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.Messages;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.osgi.framework.Version;
@@ -127,7 +126,7 @@ public class UnsetOriginalStyleFeatureMigrationParticipant extends AbstractRepre
             if (numberOfOrignalStyeDanglingFeature > 0) {
                 message.append(MessageFormat.format(Messages.UnsetOriginalStyleFeatureMigrationParticipant_danglingFeatures, numberOfOrignalStyeDanglingFeature));
             }
-            DiagramPlugin.getDefault().logInfo(message.toString());
+            logMigrationInfo(message.toString());
 
             numberOfOrignalStyeFeatureUnset = 0;
         }
